@@ -219,27 +219,27 @@ bool LootkitObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "components") {
+	if (_name == "LootkitObject.components") {
 		TypeInfo<VectorMap<unsigned int, bool> >::parseFromBinaryStream(&components, stream);
 		return true;
 	}
 
-	if (_name == "attributes") {
+	if (_name == "LootkitObject.attributes") {
 		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&attributes, stream);
 		return true;
 	}
 
-	if (_name == "comps") {
+	if (_name == "LootkitObject.comps") {
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&comps, stream);
 		return true;
 	}
 
-	if (_name == "reward") {
+	if (_name == "LootkitObject.reward") {
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&reward, stream);
 		return true;
 	}
 
-	if (_name == "deleteComponents") {
+	if (_name == "LootkitObject.deleteComponents") {
 		TypeInfo<bool >::parseFromBinaryStream(&deleteComponents, stream);
 		return true;
 	}
@@ -259,7 +259,7 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "components";
+	_name = "LootkitObject.components";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -267,7 +267,7 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attributes";
+	_name = "LootkitObject.attributes";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -275,7 +275,7 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "comps";
+	_name = "LootkitObject.comps";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -283,7 +283,7 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "reward";
+	_name = "LootkitObject.reward";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -291,7 +291,7 @@ int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "deleteComponents";
+	_name = "LootkitObject.deleteComponents";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

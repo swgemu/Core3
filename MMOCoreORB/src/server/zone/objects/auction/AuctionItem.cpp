@@ -730,122 +730,122 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "vendorID") {
+	if (_name == "AuctionItem.vendorID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&vendorID, stream);
 		return true;
 	}
 
-	if (_name == "auctionedItemObjectID") {
+	if (_name == "AuctionItem.auctionedItemObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&auctionedItemObjectID, stream);
 		return true;
 	}
 
-	if (_name == "itemType") {
+	if (_name == "AuctionItem.itemType") {
 		TypeInfo<int >::parseFromBinaryStream(&itemType, stream);
 		return true;
 	}
 
-	if (_name == "ownerID") {
+	if (_name == "AuctionItem.ownerID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&ownerID, stream);
 		return true;
 	}
 
-	if (_name == "ownerName") {
+	if (_name == "AuctionItem.ownerName") {
 		TypeInfo<String >::parseFromBinaryStream(&ownerName, stream);
 		return true;
 	}
 
-	if (_name == "bidderName") {
+	if (_name == "AuctionItem.bidderName") {
 		TypeInfo<String >::parseFromBinaryStream(&bidderName, stream);
 		return true;
 	}
 
-	if (_name == "planet") {
+	if (_name == "AuctionItem.planet") {
 		TypeInfo<String >::parseFromBinaryStream(&planet, stream);
 		return true;
 	}
 
-	if (_name == "region") {
+	if (_name == "AuctionItem.region") {
 		TypeInfo<String >::parseFromBinaryStream(&region, stream);
 		return true;
 	}
 
-	if (_name == "location") {
+	if (_name == "AuctionItem.location") {
 		TypeInfo<String >::parseFromBinaryStream(&location, stream);
 		return true;
 	}
 
-	if (_name == "terminalTitle") {
+	if (_name == "AuctionItem.terminalTitle") {
 		TypeInfo<String >::parseFromBinaryStream(&terminalTitle, stream);
 		return true;
 	}
 
-	if (_name == "itemName") {
+	if (_name == "AuctionItem.itemName") {
 		TypeInfo<String >::parseFromBinaryStream(&itemName, stream);
 		return true;
 	}
 
-	if (_name == "itemDescription") {
+	if (_name == "AuctionItem.itemDescription") {
 		TypeInfo<String >::parseFromBinaryStream(&itemDescription, stream);
 		return true;
 	}
 
-	if (_name == "price") {
+	if (_name == "AuctionItem.price") {
 		TypeInfo<int >::parseFromBinaryStream(&price, stream);
 		return true;
 	}
 
-	if (_name == "auction") {
+	if (_name == "AuctionItem.auction") {
 		TypeInfo<bool >::parseFromBinaryStream(&auction, stream);
 		return true;
 	}
 
-	if (_name == "sold") {
+	if (_name == "AuctionItem.sold") {
 		TypeInfo<bool >::parseFromBinaryStream(&sold, stream);
 		return true;
 	}
 
-	if (_name == "ownerRemove") {
+	if (_name == "AuctionItem.ownerRemove") {
 		TypeInfo<bool >::parseFromBinaryStream(&ownerRemove, stream);
 		return true;
 	}
 
-	if (_name == "inStockroom") {
+	if (_name == "AuctionItem.inStockroom") {
 		TypeInfo<bool >::parseFromBinaryStream(&inStockroom, stream);
 		return true;
 	}
 
-	if (_name == "offer") {
+	if (_name == "AuctionItem.offer") {
 		TypeInfo<bool >::parseFromBinaryStream(&offer, stream);
 		return true;
 	}
 
-	if (_name == "onBazaar") {
+	if (_name == "AuctionItem.onBazaar") {
 		TypeInfo<bool >::parseFromBinaryStream(&onBazaar, stream);
 		return true;
 	}
 
-	if (_name == "buyerID") {
+	if (_name == "AuctionItem.buyerID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&buyerID, stream);
 		return true;
 	}
 
-	if (_name == "expireTime") {
+	if (_name == "AuctionItem.expireTime") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&expireTime, stream);
 		return true;
 	}
 
-	if (_name == "remainingTime") {
+	if (_name == "AuctionItem.remainingTime") {
 		TypeInfo<int >::parseFromBinaryStream(&remainingTime, stream);
 		return true;
 	}
 
-	if (_name == "updated") {
+	if (_name == "AuctionItem.updated") {
 		TypeInfo<bool >::parseFromBinaryStream(&updated, stream);
 		return true;
 	}
 
-	if (_name == "auctionOptions") {
+	if (_name == "AuctionItem.auctionOptions") {
 		TypeInfo<int >::parseFromBinaryStream(&auctionOptions, stream);
 		return true;
 	}
@@ -865,7 +865,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "vendorID";
+	_name = "AuctionItem.vendorID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -873,7 +873,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "auctionedItemObjectID";
+	_name = "AuctionItem.auctionedItemObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -881,7 +881,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "itemType";
+	_name = "AuctionItem.itemType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -889,7 +889,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ownerID";
+	_name = "AuctionItem.ownerID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -897,7 +897,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ownerName";
+	_name = "AuctionItem.ownerName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -905,7 +905,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bidderName";
+	_name = "AuctionItem.bidderName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -913,7 +913,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "planet";
+	_name = "AuctionItem.planet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -921,7 +921,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "region";
+	_name = "AuctionItem.region";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -929,7 +929,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "location";
+	_name = "AuctionItem.location";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -937,7 +937,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terminalTitle";
+	_name = "AuctionItem.terminalTitle";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -945,7 +945,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "itemName";
+	_name = "AuctionItem.itemName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -953,7 +953,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "itemDescription";
+	_name = "AuctionItem.itemDescription";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -961,7 +961,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "price";
+	_name = "AuctionItem.price";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -969,7 +969,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "auction";
+	_name = "AuctionItem.auction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -977,7 +977,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sold";
+	_name = "AuctionItem.sold";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -985,7 +985,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ownerRemove";
+	_name = "AuctionItem.ownerRemove";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -993,7 +993,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "inStockroom";
+	_name = "AuctionItem.inStockroom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1001,7 +1001,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "offer";
+	_name = "AuctionItem.offer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1009,7 +1009,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "onBazaar";
+	_name = "AuctionItem.onBazaar";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1017,7 +1017,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buyerID";
+	_name = "AuctionItem.buyerID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1025,7 +1025,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "expireTime";
+	_name = "AuctionItem.expireTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1033,7 +1033,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "remainingTime";
+	_name = "AuctionItem.remainingTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1041,7 +1041,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "updated";
+	_name = "AuctionItem.updated";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1049,7 +1049,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "auctionOptions";
+	_name = "AuctionItem.auctionOptions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

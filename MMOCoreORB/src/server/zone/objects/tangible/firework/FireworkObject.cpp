@@ -192,7 +192,7 @@ bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "fireworkObject") {
+	if (_name == "FireworkObject.fireworkObject") {
 		TypeInfo<String >::parseFromBinaryStream(&fireworkObject, stream);
 		return true;
 	}
@@ -212,7 +212,7 @@ int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "fireworkObject";
+	_name = "FireworkObject.fireworkObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

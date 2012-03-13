@@ -169,7 +169,7 @@ bool RadialManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneServer") {
+	if (_name == "RadialManager.zoneServer") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
 	}
@@ -189,7 +189,7 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneServer";
+	_name = "RadialManager.zoneServer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

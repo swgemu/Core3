@@ -214,12 +214,12 @@ bool MigrateStatsSessionImplementation::readObjectMember(ObjectInputStream* stre
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creature") {
+	if (_name == "MigrateStatsSession.creature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creature, stream);
 		return true;
 	}
 
-	if (_name == "attributesToModify") {
+	if (_name == "MigrateStatsSession.attributesToModify") {
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&attributesToModify, stream);
 		return true;
 	}
@@ -239,7 +239,7 @@ int MigrateStatsSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creature";
+	_name = "MigrateStatsSession.creature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -247,7 +247,7 @@ int MigrateStatsSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attributesToModify";
+	_name = "MigrateStatsSession.attributesToModify";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

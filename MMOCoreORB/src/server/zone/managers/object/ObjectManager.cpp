@@ -419,7 +419,7 @@ void ObjectManager::loadStaticObjects() {
 		if (object != NULL)
 			continue;
 
-		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+		if (!Serializable::getVariable<uint32>("SceneObject.serverObjectCRC", &serverObjectCRC, &objectData)) {
 			error("unknown scene object in static database");
 			continue;
 		}
@@ -706,7 +706,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	String className;
 
 	try {
-		if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+		if (Serializable::getVariable<uint32>("SceneObject.serverObjectCRC", &serverObjectCRC, &objectData)) {
 			object = instantiateSceneObject(serverObjectCRC, objectID, true);
 
 			if (object == NULL) {

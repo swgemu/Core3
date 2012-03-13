@@ -250,12 +250,12 @@ bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const Str
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "bazaars") {
+	if (_name == "Region.bazaars") {
 		TypeInfo<VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > >::parseFromBinaryStream(&bazaars, stream);
 		return true;
 	}
 
-	if (_name == "cityRegion") {
+	if (_name == "Region.cityRegion") {
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
@@ -275,7 +275,7 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "bazaars";
+	_name = "Region.bazaars";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -283,7 +283,7 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityRegion";
+	_name = "Region.cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

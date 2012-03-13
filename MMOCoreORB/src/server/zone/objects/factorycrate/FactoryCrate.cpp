@@ -347,7 +347,7 @@ bool FactoryCrateImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "maxCapacity") {
+	if (_name == "FactoryCrate.maxCapacity") {
 		TypeInfo<int >::parseFromBinaryStream(&maxCapacity, stream);
 		return true;
 	}
@@ -367,7 +367,7 @@ int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "maxCapacity";
+	_name = "FactoryCrate.maxCapacity";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

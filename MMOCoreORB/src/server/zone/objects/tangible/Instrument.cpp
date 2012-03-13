@@ -326,22 +326,22 @@ bool InstrumentImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "instrumentType") {
+	if (_name == "Instrument.instrumentType") {
 		TypeInfo<int >::parseFromBinaryStream(&instrumentType, stream);
 		return true;
 	}
 
-	if (_name == "beingUsed") {
+	if (_name == "Instrument.beingUsed") {
 		TypeInfo<bool >::parseFromBinaryStream(&beingUsed, stream);
 		return true;
 	}
 
-	if (_name == "spawnedObject") {
+	if (_name == "Instrument.spawnedObject") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&spawnedObject, stream);
 		return true;
 	}
 
-	if (_name == "spawnerPlayer") {
+	if (_name == "Instrument.spawnerPlayer") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&spawnerPlayer, stream);
 		return true;
 	}
@@ -361,7 +361,7 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "instrumentType";
+	_name = "Instrument.instrumentType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -369,7 +369,7 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "beingUsed";
+	_name = "Instrument.beingUsed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -377,7 +377,7 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnedObject";
+	_name = "Instrument.spawnedObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -385,7 +385,7 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnerPlayer";
+	_name = "Instrument.spawnerPlayer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

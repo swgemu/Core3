@@ -659,67 +659,67 @@ bool ChatRoomImplementation::readObjectMember(ObjectInputStream* stream, const S
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "server") {
+	if (_name == "ChatRoom.server") {
 		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
-	if (_name == "name") {
+	if (_name == "ChatRoom.name") {
 		TypeInfo<String >::parseFromBinaryStream(&name, stream);
 		return true;
 	}
 
-	if (_name == "fullPath") {
+	if (_name == "ChatRoom.fullPath") {
 		TypeInfo<String >::parseFromBinaryStream(&fullPath, stream);
 		return true;
 	}
 
-	if (_name == "owner") {
+	if (_name == "ChatRoom.owner") {
 		TypeInfo<String >::parseFromBinaryStream(&owner, stream);
 		return true;
 	}
 
-	if (_name == "creator") {
+	if (_name == "ChatRoom.creator") {
 		TypeInfo<String >::parseFromBinaryStream(&creator, stream);
 		return true;
 	}
 
-	if (_name == "title") {
+	if (_name == "ChatRoom.title") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&title, stream);
 		return true;
 	}
 
-	if (_name == "roomID") {
+	if (_name == "ChatRoom.roomID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&roomID, stream);
 		return true;
 	}
 
-	if (_name == "parent") {
+	if (_name == "ChatRoom.parent") {
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&parent, stream);
 		return true;
 	}
 
-	if (_name == "playerList") {
+	if (_name == "ChatRoom.playerList") {
 		TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&playerList, stream);
 		return true;
 	}
 
-	if (_name == "moderatorList") {
+	if (_name == "ChatRoom.moderatorList") {
 		TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&moderatorList, stream);
 		return true;
 	}
 
-	if (_name == "subRooms") {
+	if (_name == "ChatRoom.subRooms") {
 		TypeInfo<VectorMap<String, ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&subRooms, stream);
 		return true;
 	}
 
-	if (_name == "isPublicRoom") {
+	if (_name == "ChatRoom.isPublicRoom") {
 		TypeInfo<bool >::parseFromBinaryStream(&isPublicRoom, stream);
 		return true;
 	}
 
-	if (_name == "moderated") {
+	if (_name == "ChatRoom.moderated") {
 		TypeInfo<bool >::parseFromBinaryStream(&moderated, stream);
 		return true;
 	}
@@ -739,7 +739,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "server";
+	_name = "ChatRoom.server";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -747,7 +747,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "name";
+	_name = "ChatRoom.name";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -755,7 +755,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fullPath";
+	_name = "ChatRoom.fullPath";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -763,7 +763,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "owner";
+	_name = "ChatRoom.owner";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -771,7 +771,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "creator";
+	_name = "ChatRoom.creator";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -779,7 +779,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "title";
+	_name = "ChatRoom.title";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -787,7 +787,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "roomID";
+	_name = "ChatRoom.roomID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -795,7 +795,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "parent";
+	_name = "ChatRoom.parent";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -803,7 +803,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerList";
+	_name = "ChatRoom.playerList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -811,7 +811,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "moderatorList";
+	_name = "ChatRoom.moderatorList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -819,7 +819,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "subRooms";
+	_name = "ChatRoom.subRooms";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -827,7 +827,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "isPublicRoom";
+	_name = "ChatRoom.isPublicRoom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -835,7 +835,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "moderated";
+	_name = "ChatRoom.moderated";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

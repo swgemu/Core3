@@ -376,17 +376,17 @@ bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "maxModifiers") {
+	if (_name == "Attachment.maxModifiers") {
 		TypeInfo<int >::parseFromBinaryStream(&maxModifiers, stream);
 		return true;
 	}
 
-	if (_name == "attachmentType") {
+	if (_name == "Attachment.attachmentType") {
 		TypeInfo<int >::parseFromBinaryStream(&attachmentType, stream);
 		return true;
 	}
 
-	if (_name == "skillModMap") {
+	if (_name == "Attachment.skillModMap") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&skillModMap, stream);
 		return true;
 	}
@@ -406,7 +406,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "maxModifiers";
+	_name = "Attachment.maxModifiers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -414,7 +414,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attachmentType";
+	_name = "Attachment.attachmentType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -422,7 +422,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillModMap";
+	_name = "Attachment.skillModMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

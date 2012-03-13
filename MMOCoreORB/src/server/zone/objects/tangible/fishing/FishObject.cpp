@@ -230,22 +230,22 @@ bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "player") {
+	if (_name == "FishObject.player") {
 		TypeInfo<String >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "zoneName") {
+	if (_name == "FishObject.zoneName") {
 		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
 	}
 
-	if (_name == "timeCaught") {
+	if (_name == "FishObject.timeCaught") {
 		TypeInfo<String >::parseFromBinaryStream(&timeCaught, stream);
 		return true;
 	}
 
-	if (_name == "length") {
+	if (_name == "FishObject.length") {
 		TypeInfo<float >::parseFromBinaryStream(&length, stream);
 		return true;
 	}
@@ -265,7 +265,7 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "player";
+	_name = "FishObject.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -273,7 +273,7 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoneName";
+	_name = "FishObject.zoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -281,7 +281,7 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "timeCaught";
+	_name = "FishObject.timeCaught";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -289,7 +289,7 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "length";
+	_name = "FishObject.length";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -412,42 +412,42 @@ bool PersistentMessageImplementation::readObjectMember(ObjectInputStream* stream
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "senderName") {
+	if (_name == "PersistentMessage.senderName") {
 		TypeInfo<String >::parseFromBinaryStream(&senderName, stream);
 		return true;
 	}
 
-	if (_name == "subject") {
+	if (_name == "PersistentMessage.subject") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&subject, stream);
 		return true;
 	}
 
-	if (_name == "body") {
+	if (_name == "PersistentMessage.body") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&body, stream);
 		return true;
 	}
 
-	if (_name == "timeStamp") {
+	if (_name == "PersistentMessage.timeStamp") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&timeStamp, stream);
 		return true;
 	}
 
-	if (_name == "status") {
+	if (_name == "PersistentMessage.status") {
 		TypeInfo<byte >::parseFromBinaryStream(&status, stream);
 		return true;
 	}
 
-	if (_name == "receiverObjectID") {
+	if (_name == "PersistentMessage.receiverObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&receiverObjectID, stream);
 		return true;
 	}
 
-	if (_name == "stringIdParameters") {
+	if (_name == "PersistentMessage.stringIdParameters") {
 		TypeInfo<StringIdChatParameterVector >::parseFromBinaryStream(&stringIdParameters, stream);
 		return true;
 	}
 
-	if (_name == "waypointParameters") {
+	if (_name == "PersistentMessage.waypointParameters") {
 		TypeInfo<WaypointChatParameterVector >::parseFromBinaryStream(&waypointParameters, stream);
 		return true;
 	}
@@ -467,7 +467,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "senderName";
+	_name = "PersistentMessage.senderName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -475,7 +475,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "subject";
+	_name = "PersistentMessage.subject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -483,7 +483,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "body";
+	_name = "PersistentMessage.body";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -491,7 +491,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "timeStamp";
+	_name = "PersistentMessage.timeStamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -499,7 +499,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "status";
+	_name = "PersistentMessage.status";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -507,7 +507,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "receiverObjectID";
+	_name = "PersistentMessage.receiverObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -515,7 +515,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "stringIdParameters";
+	_name = "PersistentMessage.stringIdParameters";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -523,7 +523,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "waypointParameters";
+	_name = "PersistentMessage.waypointParameters";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

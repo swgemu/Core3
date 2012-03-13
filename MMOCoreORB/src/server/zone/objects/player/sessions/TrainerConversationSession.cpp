@@ -297,22 +297,22 @@ bool TrainerConversationSessionImplementation::readObjectMember(ObjectInputStrea
 	if (ConversationSessionImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "trainableSkills") {
+	if (_name == "TrainerConversationSession.trainableSkills") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&trainableSkills, stream);
 		return true;
 	}
 
-	if (_name == "nextSkills") {
+	if (_name == "TrainerConversationSession.nextSkills") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&nextSkills, stream);
 		return true;
 	}
 
-	if (_name == "masterSkill") {
+	if (_name == "TrainerConversationSession.masterSkill") {
 		TypeInfo<String >::parseFromBinaryStream(&masterSkill, stream);
 		return true;
 	}
 
-	if (_name == "selectedSkill") {
+	if (_name == "TrainerConversationSession.selectedSkill") {
 		TypeInfo<String >::parseFromBinaryStream(&selectedSkill, stream);
 		return true;
 	}
@@ -332,7 +332,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "trainableSkills";
+	_name = "TrainerConversationSession.trainableSkills";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -340,7 +340,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextSkills";
+	_name = "TrainerConversationSession.nextSkills";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -348,7 +348,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "masterSkill";
+	_name = "TrainerConversationSession.masterSkill";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -356,7 +356,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "selectedSkill";
+	_name = "TrainerConversationSession.selectedSkill";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

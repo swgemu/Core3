@@ -148,7 +148,7 @@ bool ThreatMapObserverImplementation::readObjectMember(ObjectInputStream* stream
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "self") {
+	if (_name == "ThreatMapObserver.self") {
 		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&self, stream);
 		return true;
 	}
@@ -168,7 +168,7 @@ int ThreatMapObserverImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "self";
+	_name = "ThreatMapObserver.self";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

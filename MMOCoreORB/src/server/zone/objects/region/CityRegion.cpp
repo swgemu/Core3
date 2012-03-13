@@ -911,82 +911,82 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "cityHall") {
+	if (_name == "CityRegion.cityHall") {
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&cityHall, stream);
 		return true;
 	}
 
-	if (_name == "regionName") {
+	if (_name == "CityRegion.regionName") {
 		TypeInfo<StringId >::parseFromBinaryStream(&regionName, stream);
 		return true;
 	}
 
-	if (_name == "customRegionName") {
+	if (_name == "CityRegion.customRegionName") {
 		TypeInfo<String >::parseFromBinaryStream(&customRegionName, stream);
 		return true;
 	}
 
-	if (_name == "zone") {
+	if (_name == "CityRegion.zone") {
 		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
-	if (_name == "regions") {
+	if (_name == "CityRegion.regions") {
 		TypeInfo<SortedVector<ManagedReference<Region* > > >::parseFromBinaryStream(&regions, stream);
 		return true;
 	}
 
-	if (_name == "zoningRights") {
+	if (_name == "CityRegion.zoningRights") {
 		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&zoningRights, stream);
 		return true;
 	}
 
-	if (_name == "militiaMembers") {
+	if (_name == "CityRegion.militiaMembers") {
 		TypeInfo<CitizenList >::parseFromBinaryStream(&militiaMembers, stream);
 		return true;
 	}
 
-	if (_name == "citizenList") {
+	if (_name == "CityRegion.citizenList") {
 		TypeInfo<CitizenList >::parseFromBinaryStream(&citizenList, stream);
 		return true;
 	}
 
-	if (_name == "bannedList") {
+	if (_name == "CityRegion.bannedList") {
 		TypeInfo<CitizenList >::parseFromBinaryStream(&bannedList, stream);
 		return true;
 	}
 
-	if (_name == "cityRank") {
+	if (_name == "CityRegion.cityRank") {
 		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
 		return true;
 	}
 
-	if (_name == "cityTreasury") {
+	if (_name == "CityRegion.cityTreasury") {
 		TypeInfo<int >::parseFromBinaryStream(&cityTreasury, stream);
 		return true;
 	}
 
-	if (_name == "mayorID") {
+	if (_name == "CityRegion.mayorID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&mayorID, stream);
 		return true;
 	}
 
-	if (_name == "zoningEnabled") {
+	if (_name == "CityRegion.zoningEnabled") {
 		TypeInfo<bool >::parseFromBinaryStream(&zoningEnabled, stream);
 		return true;
 	}
 
-	if (_name == "registered") {
+	if (_name == "CityRegion.registered") {
 		TypeInfo<bool >::parseFromBinaryStream(&registered, stream);
 		return true;
 	}
 
-	if (_name == "nextUpdateTime") {
+	if (_name == "CityRegion.nextUpdateTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextUpdateTime, stream);
 		return true;
 	}
 
-	if (_name == "citySpecialization") {
+	if (_name == "CityRegion.citySpecialization") {
 		TypeInfo<String >::parseFromBinaryStream(&citySpecialization, stream);
 		return true;
 	}
@@ -1006,7 +1006,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "cityHall";
+	_name = "CityRegion.cityHall";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1014,7 +1014,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "regionName";
+	_name = "CityRegion.regionName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1022,7 +1022,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "customRegionName";
+	_name = "CityRegion.customRegionName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1030,7 +1030,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zone";
+	_name = "CityRegion.zone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1038,7 +1038,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "regions";
+	_name = "CityRegion.regions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1046,7 +1046,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoningRights";
+	_name = "CityRegion.zoningRights";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1054,7 +1054,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "militiaMembers";
+	_name = "CityRegion.militiaMembers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1062,7 +1062,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "citizenList";
+	_name = "CityRegion.citizenList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1070,7 +1070,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bannedList";
+	_name = "CityRegion.bannedList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1078,7 +1078,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityRank";
+	_name = "CityRegion.cityRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1086,7 +1086,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityTreasury";
+	_name = "CityRegion.cityTreasury";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1094,7 +1094,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "mayorID";
+	_name = "CityRegion.mayorID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1102,7 +1102,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoningEnabled";
+	_name = "CityRegion.zoningEnabled";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1110,7 +1110,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "registered";
+	_name = "CityRegion.registered";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1118,7 +1118,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextUpdateTime";
+	_name = "CityRegion.nextUpdateTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1126,7 +1126,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "citySpecialization";
+	_name = "CityRegion.citySpecialization";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

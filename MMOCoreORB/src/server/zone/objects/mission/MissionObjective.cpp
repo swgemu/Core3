@@ -370,27 +370,27 @@ bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream,
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "observers") {
+	if (_name == "MissionObjective.observers") {
 		TypeInfo<SortedVector<ManagedReference<MissionObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
 	}
 
-	if (_name == "mission") {
+	if (_name == "MissionObjective.mission") {
 		TypeInfo<ManagedWeakReference<MissionObject* > >::parseFromBinaryStream(&mission, stream);
 		return true;
 	}
 
-	if (_name == "objectiveType") {
+	if (_name == "MissionObjective.objectiveType") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&objectiveType, stream);
 		return true;
 	}
 
-	if (_name == "missionStartTime") {
+	if (_name == "MissionObjective.missionStartTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&missionStartTime, stream);
 		return true;
 	}
 
-	if (_name == "failTask") {
+	if (_name == "MissionObjective.failTask") {
 		TypeInfo<Reference<FailMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&failTask, stream);
 		return true;
 	}
@@ -410,7 +410,7 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "observers";
+	_name = "MissionObjective.observers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -418,7 +418,7 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "mission";
+	_name = "MissionObjective.mission";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -426,7 +426,7 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectiveType";
+	_name = "MissionObjective.objectiveType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -434,7 +434,7 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "missionStartTime";
+	_name = "MissionObjective.missionStartTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -442,7 +442,7 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "failTask";
+	_name = "MissionObjective.failTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

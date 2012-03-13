@@ -211,7 +211,7 @@ bool SlicingToolImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "effectiveness") {
+	if (_name == "SlicingTool.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
@@ -231,7 +231,7 @@ int SlicingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "effectiveness";
+	_name = "SlicingTool.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

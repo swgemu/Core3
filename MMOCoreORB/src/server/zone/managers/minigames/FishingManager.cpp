@@ -854,47 +854,47 @@ bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "miscLoot") {
+	if (_name == "FishingManager.miscLoot") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&miscLoot, stream);
 		return true;
 	}
 
-	if (_name == "rareLoot") {
+	if (_name == "FishingManager.rareLoot") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&rareLoot, stream);
 		return true;
 	}
 
-	if (_name == "color") {
+	if (_name == "FishingManager.color") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&color, stream);
 		return true;
 	}
 
-	if (_name == "fishLength") {
+	if (_name == "FishingManager.fishLength") {
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&fishLength, stream);
 		return true;
 	}
 
-	if (_name == "fishType") {
+	if (_name == "FishingManager.fishType") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&fishType, stream);
 		return true;
 	}
 
-	if (_name == "state") {
+	if (_name == "FishingManager.state") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&state, stream);
 		return true;
 	}
 
-	if (_name == "action") {
+	if (_name == "FishingManager.action") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&action, stream);
 		return true;
 	}
 
-	if (_name == "property") {
+	if (_name == "FishingManager.property") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&property, stream);
 		return true;
 	}
 
-	if (_name == "baitStatus") {
+	if (_name == "FishingManager.baitStatus") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&baitStatus, stream);
 		return true;
 	}
@@ -914,7 +914,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "miscLoot";
+	_name = "FishingManager.miscLoot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -922,7 +922,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "rareLoot";
+	_name = "FishingManager.rareLoot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -930,7 +930,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "color";
+	_name = "FishingManager.color";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -938,7 +938,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fishLength";
+	_name = "FishingManager.fishLength";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -946,7 +946,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fishType";
+	_name = "FishingManager.fishType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -954,7 +954,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "state";
+	_name = "FishingManager.state";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -962,7 +962,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "action";
+	_name = "FishingManager.action";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -970,7 +970,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "property";
+	_name = "FishingManager.property";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -978,7 +978,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "baitStatus";
+	_name = "FishingManager.baitStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

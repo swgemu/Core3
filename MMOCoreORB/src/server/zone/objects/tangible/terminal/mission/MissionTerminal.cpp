@@ -346,7 +346,7 @@ bool MissionTerminalImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "terminalType") {
+	if (_name == "MissionTerminal.terminalType") {
 		TypeInfo<String >::parseFromBinaryStream(&terminalType, stream);
 		return true;
 	}
@@ -366,7 +366,7 @@ int MissionTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "terminalType";
+	_name = "MissionTerminal.terminalType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

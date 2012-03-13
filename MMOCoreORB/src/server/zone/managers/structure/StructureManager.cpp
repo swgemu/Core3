@@ -392,7 +392,7 @@ bool StructureManagerImplementation::readObjectMember(ObjectInputStream* stream,
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zone") {
+	if (_name == "StructureManager.zone") {
 		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
@@ -412,7 +412,7 @@ int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zone";
+	_name = "StructureManager.zone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -158,12 +158,12 @@ bool SuiListBoxMenuItemImplementation::readObjectMember(ObjectInputStream* strea
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "optionName") {
+	if (_name == "SuiListBoxMenuItem.optionName") {
 		TypeInfo<String >::parseFromBinaryStream(&optionName, stream);
 		return true;
 	}
 
-	if (_name == "objectID") {
+	if (_name == "SuiListBoxMenuItem.objectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&objectID, stream);
 		return true;
 	}
@@ -183,7 +183,7 @@ int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "optionName";
+	_name = "SuiListBoxMenuItem.optionName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -191,7 +191,7 @@ int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectID";
+	_name = "SuiListBoxMenuItem.objectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

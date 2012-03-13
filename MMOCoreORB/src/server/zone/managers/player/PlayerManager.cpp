@@ -970,17 +970,17 @@ bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "highestBadgeIndex") {
+	if (_name == "PlayerManager.highestBadgeIndex") {
 		TypeInfo<int >::parseFromBinaryStream(&highestBadgeIndex, stream);
 		return true;
 	}
 
-	if (_name == "server") {
+	if (_name == "PlayerManager.server") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
-	if (_name == "globalExpMultiplier") {
+	if (_name == "PlayerManager.globalExpMultiplier") {
 		TypeInfo<float >::parseFromBinaryStream(&globalExpMultiplier, stream);
 		return true;
 	}
@@ -1000,7 +1000,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "highestBadgeIndex";
+	_name = "PlayerManager.highestBadgeIndex";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1008,7 +1008,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "server";
+	_name = "PlayerManager.server";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1016,7 +1016,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "globalExpMultiplier";
+	_name = "PlayerManager.globalExpMultiplier";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

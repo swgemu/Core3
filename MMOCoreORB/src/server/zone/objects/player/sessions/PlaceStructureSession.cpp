@@ -211,37 +211,37 @@ bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* st
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creatureObject") {
+	if (_name == "PlaceStructureSession.creatureObject") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
-	if (_name == "deedObject") {
+	if (_name == "PlaceStructureSession.deedObject") {
 		TypeInfo<ManagedReference<StructureDeed* > >::parseFromBinaryStream(&deedObject, stream);
 		return true;
 	}
 
-	if (_name == "positionX") {
+	if (_name == "PlaceStructureSession.positionX") {
 		TypeInfo<float >::parseFromBinaryStream(&positionX, stream);
 		return true;
 	}
 
-	if (_name == "positionY") {
+	if (_name == "PlaceStructureSession.positionY") {
 		TypeInfo<float >::parseFromBinaryStream(&positionY, stream);
 		return true;
 	}
 
-	if (_name == "directionAngle") {
+	if (_name == "PlaceStructureSession.directionAngle") {
 		TypeInfo<int >::parseFromBinaryStream(&directionAngle, stream);
 		return true;
 	}
 
-	if (_name == "constructionBarricade") {
+	if (_name == "PlaceStructureSession.constructionBarricade") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&constructionBarricade, stream);
 		return true;
 	}
 
-	if (_name == "zone") {
+	if (_name == "PlaceStructureSession.zone") {
 		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
@@ -261,7 +261,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creatureObject";
+	_name = "PlaceStructureSession.creatureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -269,7 +269,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "deedObject";
+	_name = "PlaceStructureSession.deedObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -277,7 +277,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "positionX";
+	_name = "PlaceStructureSession.positionX";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -285,7 +285,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "positionY";
+	_name = "PlaceStructureSession.positionY";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -293,7 +293,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "directionAngle";
+	_name = "PlaceStructureSession.directionAngle";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -301,7 +301,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "constructionBarricade";
+	_name = "PlaceStructureSession.constructionBarricade";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -309,7 +309,7 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zone";
+	_name = "PlaceStructureSession.zone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

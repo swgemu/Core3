@@ -466,42 +466,42 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "characters") {
+	if (_name == "ZoneClientSession.characters") {
 		TypeInfo<HashSet<unsigned long long> >::parseFromBinaryStream(&characters, stream);
 		return true;
 	}
 
-	if (_name == "player") {
+	if (_name == "ZoneClientSession.player") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "sessionID") {
+	if (_name == "ZoneClientSession.sessionID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&sessionID, stream);
 		return true;
 	}
 
-	if (_name == "account") {
+	if (_name == "ZoneClientSession.account") {
 		TypeInfo<ManagedReference<Account* > >::parseFromBinaryStream(&account, stream);
 		return true;
 	}
 
-	if (_name == "accountID") {
+	if (_name == "ZoneClientSession.accountID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
 		return true;
 	}
 
-	if (_name == "disconnecting") {
+	if (_name == "ZoneClientSession.disconnecting") {
 		TypeInfo<bool >::parseFromBinaryStream(&disconnecting, stream);
 		return true;
 	}
 
-	if (_name == "commandSpamCooldown") {
+	if (_name == "ZoneClientSession.commandSpamCooldown") {
 		TypeInfo<Time >::parseFromBinaryStream(&commandSpamCooldown, stream);
 		return true;
 	}
 
-	if (_name == "commandCount") {
+	if (_name == "ZoneClientSession.commandCount") {
 		TypeInfo<int >::parseFromBinaryStream(&commandCount, stream);
 		return true;
 	}
@@ -521,7 +521,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "characters";
+	_name = "ZoneClientSession.characters";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -529,7 +529,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "player";
+	_name = "ZoneClientSession.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -537,7 +537,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sessionID";
+	_name = "ZoneClientSession.sessionID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -545,7 +545,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "account";
+	_name = "ZoneClientSession.account";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -553,7 +553,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accountID";
+	_name = "ZoneClientSession.accountID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -561,7 +561,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "disconnecting";
+	_name = "ZoneClientSession.disconnecting";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -569,7 +569,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandSpamCooldown";
+	_name = "ZoneClientSession.commandSpamCooldown";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -577,7 +577,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandCount";
+	_name = "ZoneClientSession.commandCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

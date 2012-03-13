@@ -202,12 +202,12 @@ bool ScreenPlayObserverImplementation::readObjectMember(ObjectInputStream* strea
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "play") {
+	if (_name == "ScreenPlayObserver.play") {
 		TypeInfo<String >::parseFromBinaryStream(&play, stream);
 		return true;
 	}
 
-	if (_name == "key") {
+	if (_name == "ScreenPlayObserver.key") {
 		TypeInfo<String >::parseFromBinaryStream(&key, stream);
 		return true;
 	}
@@ -227,7 +227,7 @@ int ScreenPlayObserverImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "play";
+	_name = "ScreenPlayObserver.play";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -235,7 +235,7 @@ int ScreenPlayObserverImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "key";
+	_name = "ScreenPlayObserver.key";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

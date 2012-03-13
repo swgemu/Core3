@@ -237,7 +237,7 @@ bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "controlledObject") {
+	if (_name == "ControlDevice.controlledObject") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&controlledObject, stream);
 		return true;
 	}
@@ -257,7 +257,7 @@ int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "controlledObject";
+	_name = "ControlDevice.controlledObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

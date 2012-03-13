@@ -266,22 +266,22 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "imageDesignManager") {
+	if (_name == "ImageDesignSession.imageDesignManager") {
 		TypeInfo<Reference<ImageDesignManager* > >::parseFromBinaryStream(&imageDesignManager, stream);
 		return true;
 	}
 
-	if (_name == "designerCreature") {
+	if (_name == "ImageDesignSession.designerCreature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&designerCreature, stream);
 		return true;
 	}
 
-	if (_name == "targetCreature") {
+	if (_name == "ImageDesignSession.targetCreature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&targetCreature, stream);
 		return true;
 	}
 
-	if (_name == "imageDesignData") {
+	if (_name == "ImageDesignSession.imageDesignData") {
 		TypeInfo<ImageDesignData >::parseFromBinaryStream(&imageDesignData, stream);
 		return true;
 	}
@@ -301,7 +301,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "imageDesignManager";
+	_name = "ImageDesignSession.imageDesignManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -309,7 +309,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "designerCreature";
+	_name = "ImageDesignSession.designerCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -317,7 +317,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "targetCreature";
+	_name = "ImageDesignSession.targetCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -325,7 +325,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "imageDesignData";
+	_name = "ImageDesignSession.imageDesignData";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

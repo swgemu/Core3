@@ -626,62 +626,62 @@ bool GamblingTerminalImplementation::readObjectMember(ObjectInputStream* stream,
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "gamblingRegion") {
+	if (_name == "GamblingTerminal.gamblingRegion") {
 		TypeInfo<String >::parseFromBinaryStream(&gamblingRegion, stream);
 		return true;
 	}
 
-	if (_name == "machineType") {
+	if (_name == "GamblingTerminal.machineType") {
 		TypeInfo<int >::parseFromBinaryStream(&machineType, stream);
 		return true;
 	}
 
-	if (_name == "playersWindows") {
+	if (_name == "GamblingTerminal.playersWindows") {
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, unsigned int> >::parseFromBinaryStream(&playersWindows, stream);
 		return true;
 	}
 
-	if (_name == "winnings") {
+	if (_name == "GamblingTerminal.winnings") {
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, int> >::parseFromBinaryStream(&winnings, stream);
 		return true;
 	}
 
-	if (_name == "gameCount") {
+	if (_name == "GamblingTerminal.gameCount") {
 		TypeInfo<int >::parseFromBinaryStream(&gameCount, stream);
 		return true;
 	}
 
-	if (_name == "first") {
+	if (_name == "GamblingTerminal.first") {
 		TypeInfo<int >::parseFromBinaryStream(&first, stream);
 		return true;
 	}
 
-	if (_name == "second") {
+	if (_name == "GamblingTerminal.second") {
 		TypeInfo<int >::parseFromBinaryStream(&second, stream);
 		return true;
 	}
 
-	if (_name == "third") {
+	if (_name == "GamblingTerminal.third") {
 		TypeInfo<int >::parseFromBinaryStream(&third, stream);
 		return true;
 	}
 
-	if (_name == "minBet") {
+	if (_name == "GamblingTerminal.minBet") {
 		TypeInfo<int >::parseFromBinaryStream(&minBet, stream);
 		return true;
 	}
 
-	if (_name == "maxBet") {
+	if (_name == "GamblingTerminal.maxBet") {
 		TypeInfo<int >::parseFromBinaryStream(&maxBet, stream);
 		return true;
 	}
 
-	if (_name == "state") {
+	if (_name == "GamblingTerminal.state") {
 		TypeInfo<int >::parseFromBinaryStream(&state, stream);
 		return true;
 	}
 
-	if (_name == "bets") {
+	if (_name == "GamblingTerminal.bets") {
 		TypeInfo<Vector<GamblingBet*> >::parseFromBinaryStream(&bets, stream);
 		return true;
 	}
@@ -701,7 +701,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "gamblingRegion";
+	_name = "GamblingTerminal.gamblingRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -709,7 +709,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "machineType";
+	_name = "GamblingTerminal.machineType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -717,7 +717,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playersWindows";
+	_name = "GamblingTerminal.playersWindows";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -725,7 +725,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "winnings";
+	_name = "GamblingTerminal.winnings";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -733,7 +733,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "gameCount";
+	_name = "GamblingTerminal.gameCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -741,7 +741,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "first";
+	_name = "GamblingTerminal.first";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -749,7 +749,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "second";
+	_name = "GamblingTerminal.second";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -757,7 +757,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "third";
+	_name = "GamblingTerminal.third";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -765,7 +765,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "minBet";
+	_name = "GamblingTerminal.minBet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -773,7 +773,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxBet";
+	_name = "GamblingTerminal.maxBet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -781,7 +781,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "state";
+	_name = "GamblingTerminal.state";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -789,7 +789,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bets";
+	_name = "GamblingTerminal.bets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

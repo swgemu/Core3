@@ -240,82 +240,82 @@ bool AiGroupImplementation::readObjectMember(ObjectInputStream* stream, const St
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "leader") {
+	if (_name == "AiGroup.leader") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&leader, stream);
 		return true;
 	}
 
-	if (_name == "scouts") {
+	if (_name == "AiGroup.scouts") {
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&scouts, stream);
 		return true;
 	}
 
-	if (_name == "scoutTemps") {
+	if (_name == "AiGroup.scoutTemps") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&scoutTemps, stream);
 		return true;
 	}
 
-	if (_name == "protectors") {
+	if (_name == "AiGroup.protectors") {
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&protectors, stream);
 		return true;
 	}
 
-	if (_name == "protectorTemps") {
+	if (_name == "AiGroup.protectorTemps") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&protectorTemps, stream);
 		return true;
 	}
 
-	if (_name == "babies") {
+	if (_name == "AiGroup.babies") {
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&babies, stream);
 		return true;
 	}
 
-	if (_name == "babyTemps") {
+	if (_name == "AiGroup.babyTemps") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&babyTemps, stream);
 		return true;
 	}
 
-	if (_name == "subgroups") {
+	if (_name == "AiGroup.subgroups") {
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&subgroups, stream);
 		return true;
 	}
 
-	if (_name == "observers") {
+	if (_name == "AiGroup.observers") {
 		TypeInfo<SortedVector<ManagedReference<AiGroupObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
 	}
 
-	if (_name == "commandLevel") {
+	if (_name == "AiGroup.commandLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&commandLevel, stream);
 		return true;
 	}
 
-	if (_name == "wanderRadius") {
+	if (_name == "AiGroup.wanderRadius") {
 		TypeInfo<float >::parseFromBinaryStream(&wanderRadius, stream);
 		return true;
 	}
 
-	if (_name == "size") {
+	if (_name == "AiGroup.size") {
 		TypeInfo<int >::parseFromBinaryStream(&size, stream);
 		return true;
 	}
 
-	if (_name == "scoutWeight") {
+	if (_name == "AiGroup.scoutWeight") {
 		TypeInfo<float >::parseFromBinaryStream(&scoutWeight, stream);
 		return true;
 	}
 
-	if (_name == "protectorWeight") {
+	if (_name == "AiGroup.protectorWeight") {
 		TypeInfo<float >::parseFromBinaryStream(&protectorWeight, stream);
 		return true;
 	}
 
-	if (_name == "babyWeight") {
+	if (_name == "AiGroup.babyWeight") {
 		TypeInfo<float >::parseFromBinaryStream(&babyWeight, stream);
 		return true;
 	}
 
-	if (_name == "isStatic") {
+	if (_name == "AiGroup.isStatic") {
 		TypeInfo<bool >::parseFromBinaryStream(&isStatic, stream);
 		return true;
 	}
@@ -335,7 +335,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "leader";
+	_name = "AiGroup.leader";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -343,7 +343,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "scouts";
+	_name = "AiGroup.scouts";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -351,7 +351,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "scoutTemps";
+	_name = "AiGroup.scoutTemps";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -359,7 +359,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "protectors";
+	_name = "AiGroup.protectors";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -367,7 +367,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "protectorTemps";
+	_name = "AiGroup.protectorTemps";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -375,7 +375,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "babies";
+	_name = "AiGroup.babies";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -383,7 +383,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "babyTemps";
+	_name = "AiGroup.babyTemps";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -391,7 +391,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "subgroups";
+	_name = "AiGroup.subgroups";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -399,7 +399,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "observers";
+	_name = "AiGroup.observers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -407,7 +407,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandLevel";
+	_name = "AiGroup.commandLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -415,7 +415,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "wanderRadius";
+	_name = "AiGroup.wanderRadius";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -423,7 +423,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "size";
+	_name = "AiGroup.size";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -431,7 +431,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "scoutWeight";
+	_name = "AiGroup.scoutWeight";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -439,7 +439,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "protectorWeight";
+	_name = "AiGroup.protectorWeight";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -447,7 +447,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "babyWeight";
+	_name = "AiGroup.babyWeight";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -455,7 +455,7 @@ int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "isStatic";
+	_name = "AiGroup.isStatic";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

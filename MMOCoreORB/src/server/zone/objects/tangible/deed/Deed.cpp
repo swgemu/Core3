@@ -218,12 +218,12 @@ bool DeedImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "generatedObjectTemplate") {
+	if (_name == "Deed.generatedObjectTemplate") {
 		TypeInfo<String >::parseFromBinaryStream(&generatedObjectTemplate, stream);
 		return true;
 	}
 
-	if (_name == "generated") {
+	if (_name == "Deed.generated") {
 		TypeInfo<bool >::parseFromBinaryStream(&generated, stream);
 		return true;
 	}
@@ -243,7 +243,7 @@ int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "generatedObjectTemplate";
+	_name = "Deed.generatedObjectTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -251,7 +251,7 @@ int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "generated";
+	_name = "Deed.generated";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

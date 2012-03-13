@@ -208,7 +208,7 @@ bool IntangibleObjectImplementation::readObjectMember(ObjectInputStream* stream,
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "status") {
+	if (_name == "IntangibleObject.status") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&status, stream);
 		return true;
 	}
@@ -228,7 +228,7 @@ int IntangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "status";
+	_name = "IntangibleObject.status";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

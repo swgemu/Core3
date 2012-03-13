@@ -300,7 +300,7 @@ bool PharmaceuticalObjectImplementation::readObjectMember(ObjectInputStream* str
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "medicineUseRequired") {
+	if (_name == "PharmaceuticalObject.medicineUseRequired") {
 		TypeInfo<int >::parseFromBinaryStream(&medicineUseRequired, stream);
 		return true;
 	}
@@ -320,7 +320,7 @@ int PharmaceuticalObjectImplementation::writeObjectMembers(ObjectOutputStream* s
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "medicineUseRequired";
+	_name = "PharmaceuticalObject.medicineUseRequired";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

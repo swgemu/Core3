@@ -271,42 +271,42 @@ bool SlicingSessionImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "player") {
+	if (_name == "SlicingSession.player") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "slicingSuiBox") {
+	if (_name == "SlicingSession.slicingSuiBox") {
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&slicingSuiBox, stream);
 		return true;
 	}
 
-	if (_name == "firstCable") {
+	if (_name == "SlicingSession.firstCable") {
 		TypeInfo<byte >::parseFromBinaryStream(&firstCable, stream);
 		return true;
 	}
 
-	if (_name == "nodeCable") {
+	if (_name == "SlicingSession.nodeCable") {
 		TypeInfo<byte >::parseFromBinaryStream(&nodeCable, stream);
 		return true;
 	}
 
-	if (_name == "cableBlue") {
+	if (_name == "SlicingSession.cableBlue") {
 		TypeInfo<bool >::parseFromBinaryStream(&cableBlue, stream);
 		return true;
 	}
 
-	if (_name == "cableRed") {
+	if (_name == "SlicingSession.cableRed") {
 		TypeInfo<bool >::parseFromBinaryStream(&cableRed, stream);
 		return true;
 	}
 
-	if (_name == "usedNode") {
+	if (_name == "SlicingSession.usedNode") {
 		TypeInfo<bool >::parseFromBinaryStream(&usedNode, stream);
 		return true;
 	}
 
-	if (_name == "usedClamp") {
+	if (_name == "SlicingSession.usedClamp") {
 		TypeInfo<bool >::parseFromBinaryStream(&usedClamp, stream);
 		return true;
 	}
@@ -326,7 +326,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "player";
+	_name = "SlicingSession.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -334,7 +334,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "slicingSuiBox";
+	_name = "SlicingSession.slicingSuiBox";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -342,7 +342,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "firstCable";
+	_name = "SlicingSession.firstCable";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -350,7 +350,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nodeCable";
+	_name = "SlicingSession.nodeCable";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -358,7 +358,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cableBlue";
+	_name = "SlicingSession.cableBlue";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -366,7 +366,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cableRed";
+	_name = "SlicingSession.cableRed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -374,7 +374,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "usedNode";
+	_name = "SlicingSession.usedNode";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -382,7 +382,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "usedClamp";
+	_name = "SlicingSession.usedClamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

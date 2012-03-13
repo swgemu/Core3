@@ -298,22 +298,22 @@ bool SuiListBoxImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (SuiBoxImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "menuItems") {
+	if (_name == "SuiListBox.menuItems") {
 		TypeInfo<Vector<ManagedReference<SuiListBoxMenuItem* > > >::parseFromBinaryStream(&menuItems, stream);
 		return true;
 	}
 
-	if (_name == "type") {
+	if (_name == "SuiListBox.type") {
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
 	}
 
-	if (_name == "next") {
+	if (_name == "SuiListBox.next") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&next, stream);
 		return true;
 	}
 
-	if (_name == "previous") {
+	if (_name == "SuiListBox.previous") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&previous, stream);
 		return true;
 	}
@@ -333,7 +333,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "menuItems";
+	_name = "SuiListBox.menuItems";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -341,7 +341,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "type";
+	_name = "SuiListBox.type";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -349,7 +349,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "next";
+	_name = "SuiListBox.next";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -357,7 +357,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "previous";
+	_name = "SuiListBox.previous";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -272,27 +272,27 @@ bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lairTemplate") {
+	if (_name == "DestroyMissionObjective.lairTemplate") {
 		TypeInfo<String >::parseFromBinaryStream(&lairTemplate, stream);
 		return true;
 	}
 
-	if (_name == "spawnActiveArea") {
+	if (_name == "DestroyMissionObjective.spawnActiveArea") {
 		TypeInfo<ManagedReference<MissionSpawnActiveArea* > >::parseFromBinaryStream(&spawnActiveArea, stream);
 		return true;
 	}
 
-	if (_name == "lairObject") {
+	if (_name == "DestroyMissionObjective.lairObject") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&lairObject, stream);
 		return true;
 	}
 
-	if (_name == "minDifficulty") {
+	if (_name == "DestroyMissionObjective.minDifficulty") {
 		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
 		return true;
 	}
 
-	if (_name == "maxDifficulty") {
+	if (_name == "DestroyMissionObjective.maxDifficulty") {
 		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
 		return true;
 	}
@@ -312,7 +312,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lairTemplate";
+	_name = "DestroyMissionObjective.lairTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -320,7 +320,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnActiveArea";
+	_name = "DestroyMissionObjective.spawnActiveArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -328,7 +328,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lairObject";
+	_name = "DestroyMissionObjective.lairObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -336,7 +336,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "minDifficulty";
+	_name = "DestroyMissionObjective.minDifficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -344,7 +344,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxDifficulty";
+	_name = "DestroyMissionObjective.maxDifficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

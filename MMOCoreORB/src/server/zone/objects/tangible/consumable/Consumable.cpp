@@ -282,92 +282,92 @@ bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "duration") {
+	if (_name == "Consumable.duration") {
 		TypeInfo<int >::parseFromBinaryStream(&duration, stream);
 		return true;
 	}
 
-	if (_name == "filling") {
+	if (_name == "Consumable.filling") {
 		TypeInfo<int >::parseFromBinaryStream(&filling, stream);
 		return true;
 	}
 
-	if (_name == "nutrition") {
+	if (_name == "Consumable.nutrition") {
 		TypeInfo<int >::parseFromBinaryStream(&nutrition, stream);
 		return true;
 	}
 
-	if (_name == "effectType") {
+	if (_name == "Consumable.effectType") {
 		TypeInfo<int >::parseFromBinaryStream(&effectType, stream);
 		return true;
 	}
 
-	if (_name == "fillingMin") {
+	if (_name == "Consumable.fillingMin") {
 		TypeInfo<int >::parseFromBinaryStream(&fillingMin, stream);
 		return true;
 	}
 
-	if (_name == "fillingMax") {
+	if (_name == "Consumable.fillingMax") {
 		TypeInfo<int >::parseFromBinaryStream(&fillingMax, stream);
 		return true;
 	}
 
-	if (_name == "flavorMin") {
+	if (_name == "Consumable.flavorMin") {
 		TypeInfo<int >::parseFromBinaryStream(&flavorMin, stream);
 		return true;
 	}
 
-	if (_name == "flavorMax") {
+	if (_name == "Consumable.flavorMax") {
 		TypeInfo<int >::parseFromBinaryStream(&flavorMax, stream);
 		return true;
 	}
 
-	if (_name == "nutritionMin") {
+	if (_name == "Consumable.nutritionMin") {
 		TypeInfo<int >::parseFromBinaryStream(&nutritionMin, stream);
 		return true;
 	}
 
-	if (_name == "nutritionMax") {
+	if (_name == "Consumable.nutritionMax") {
 		TypeInfo<int >::parseFromBinaryStream(&nutritionMax, stream);
 		return true;
 	}
 
-	if (_name == "quantityMin") {
+	if (_name == "Consumable.quantityMin") {
 		TypeInfo<int >::parseFromBinaryStream(&quantityMin, stream);
 		return true;
 	}
 
-	if (_name == "quantityMax") {
+	if (_name == "Consumable.quantityMax") {
 		TypeInfo<int >::parseFromBinaryStream(&quantityMax, stream);
 		return true;
 	}
 
-	if (_name == "modifiers") {
+	if (_name == "Consumable.modifiers") {
 		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&modifiers, stream);
 		return true;
 	}
 
-	if (_name == "buffName") {
+	if (_name == "Consumable.buffName") {
 		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
 		return true;
 	}
 
-	if (_name == "buffCRC") {
+	if (_name == "Consumable.buffCRC") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
 		return true;
 	}
 
-	if (_name == "consumableType") {
+	if (_name == "Consumable.consumableType") {
 		TypeInfo<int >::parseFromBinaryStream(&consumableType, stream);
 		return true;
 	}
 
-	if (_name == "foragedFood") {
+	if (_name == "Consumable.foragedFood") {
 		TypeInfo<int >::parseFromBinaryStream(&foragedFood, stream);
 		return true;
 	}
 
-	if (_name == "speciesRestriction") {
+	if (_name == "Consumable.speciesRestriction") {
 		TypeInfo<String >::parseFromBinaryStream(&speciesRestriction, stream);
 		return true;
 	}
@@ -387,7 +387,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "duration";
+	_name = "Consumable.duration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -395,7 +395,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "filling";
+	_name = "Consumable.filling";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -403,7 +403,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nutrition";
+	_name = "Consumable.nutrition";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -411,7 +411,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "effectType";
+	_name = "Consumable.effectType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -419,7 +419,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fillingMin";
+	_name = "Consumable.fillingMin";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -427,7 +427,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fillingMax";
+	_name = "Consumable.fillingMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -435,7 +435,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "flavorMin";
+	_name = "Consumable.flavorMin";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -443,7 +443,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "flavorMax";
+	_name = "Consumable.flavorMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -451,7 +451,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nutritionMin";
+	_name = "Consumable.nutritionMin";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -459,7 +459,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nutritionMax";
+	_name = "Consumable.nutritionMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -467,7 +467,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "quantityMin";
+	_name = "Consumable.quantityMin";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -475,7 +475,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "quantityMax";
+	_name = "Consumable.quantityMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -483,7 +483,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "modifiers";
+	_name = "Consumable.modifiers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -491,7 +491,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffName";
+	_name = "Consumable.buffName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -499,7 +499,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffCRC";
+	_name = "Consumable.buffCRC";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -507,7 +507,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "consumableType";
+	_name = "Consumable.consumableType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -515,7 +515,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "foragedFood";
+	_name = "Consumable.foragedFood";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -523,7 +523,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "speciesRestriction";
+	_name = "Consumable.speciesRestriction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

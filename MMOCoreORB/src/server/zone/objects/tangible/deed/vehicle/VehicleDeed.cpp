@@ -216,12 +216,12 @@ bool VehicleDeedImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (DeedImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "hitPoints") {
+	if (_name == "VehicleDeed.hitPoints") {
 		TypeInfo<int >::parseFromBinaryStream(&hitPoints, stream);
 		return true;
 	}
 
-	if (_name == "controlDeviceObjectTemplate") {
+	if (_name == "VehicleDeed.controlDeviceObjectTemplate") {
 		TypeInfo<String >::parseFromBinaryStream(&controlDeviceObjectTemplate, stream);
 		return true;
 	}
@@ -241,7 +241,7 @@ int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "hitPoints";
+	_name = "VehicleDeed.hitPoints";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -249,7 +249,7 @@ int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "controlDeviceObjectTemplate";
+	_name = "VehicleDeed.controlDeviceObjectTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

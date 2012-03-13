@@ -159,7 +159,7 @@ bool ChatMessageImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "message") {
+	if (_name == "ChatMessage.message") {
 		TypeInfo<String >::parseFromBinaryStream(&message, stream);
 		return true;
 	}
@@ -179,7 +179,7 @@ int ChatMessageImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "message";
+	_name = "ChatMessage.message";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

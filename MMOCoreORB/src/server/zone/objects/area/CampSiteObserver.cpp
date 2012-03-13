@@ -146,7 +146,7 @@ bool CampSiteObserverImplementation::readObjectMember(ObjectInputStream* stream,
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "campArea") {
+	if (_name == "CampSiteObserver.campArea") {
 		TypeInfo<ManagedWeakReference<CampSiteActiveArea* > >::parseFromBinaryStream(&campArea, stream);
 		return true;
 	}
@@ -166,7 +166,7 @@ int CampSiteObserverImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "campArea";
+	_name = "CampSiteObserver.campArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

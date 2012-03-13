@@ -218,7 +218,7 @@ bool ForageManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "forageAreas") {
+	if (_name == "ForageManager.forageAreas") {
 		TypeInfo<ForageMap >::parseFromBinaryStream(&forageAreas, stream);
 		return true;
 	}
@@ -238,7 +238,7 @@ int ForageManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "forageAreas";
+	_name = "ForageManager.forageAreas";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

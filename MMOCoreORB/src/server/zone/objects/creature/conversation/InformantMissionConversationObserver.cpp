@@ -127,7 +127,7 @@ bool InformantMissionConversationObserverImplementation::readObjectMember(Object
 	if (ConversationObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "informantMissionScreenHandler") {
+	if (_name == "InformantMissionConversationObserver.informantMissionScreenHandler") {
 		TypeInfo<InformantMissionScreenHandler >::parseFromBinaryStream(&informantMissionScreenHandler, stream);
 		return true;
 	}
@@ -147,7 +147,7 @@ int InformantMissionConversationObserverImplementation::writeObjectMembers(Objec
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "informantMissionScreenHandler";
+	_name = "InformantMissionConversationObserver.informantMissionScreenHandler";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

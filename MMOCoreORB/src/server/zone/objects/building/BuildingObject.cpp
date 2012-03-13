@@ -830,37 +830,37 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (StructureObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "cells") {
+	if (_name == "BuildingObject.cells") {
 		TypeInfo<VectorMap<unsigned int, ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
 		return true;
 	}
 
-	if (_name == "totalCellNumber") {
+	if (_name == "BuildingObject.totalCellNumber") {
 		TypeInfo<int >::parseFromBinaryStream(&totalCellNumber, stream);
 		return true;
 	}
 
-	if (_name == "signObject") {
+	if (_name == "BuildingObject.signObject") {
 		TypeInfo<ManagedReference<SignObject* > >::parseFromBinaryStream(&signObject, stream);
 		return true;
 	}
 
-	if (_name == "deedObjectID") {
+	if (_name == "BuildingObject.deedObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
 		return true;
 	}
 
-	if (_name == "accessFee") {
+	if (_name == "BuildingObject.accessFee") {
 		TypeInfo<int >::parseFromBinaryStream(&accessFee, stream);
 		return true;
 	}
 
-	if (_name == "publicStructure") {
+	if (_name == "BuildingObject.publicStructure") {
 		TypeInfo<bool >::parseFromBinaryStream(&publicStructure, stream);
 		return true;
 	}
 
-	if (_name == "signName") {
+	if (_name == "BuildingObject.signName") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&signName, stream);
 		return true;
 	}
@@ -880,7 +880,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "cells";
+	_name = "BuildingObject.cells";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -888,7 +888,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "totalCellNumber";
+	_name = "BuildingObject.totalCellNumber";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -896,7 +896,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "signObject";
+	_name = "BuildingObject.signObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -904,7 +904,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "deedObjectID";
+	_name = "BuildingObject.deedObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -912,7 +912,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accessFee";
+	_name = "BuildingObject.accessFee";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -920,7 +920,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "publicStructure";
+	_name = "BuildingObject.publicStructure";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -928,7 +928,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "signName";
+	_name = "BuildingObject.signName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

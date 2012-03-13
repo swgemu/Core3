@@ -202,47 +202,47 @@ bool SuiBankTransferBoxImplementation::readObjectMember(ObjectInputStream* strea
 	if (SuiBoxImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lblFrom") {
+	if (_name == "SuiBankTransferBox.lblFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblStartingFrom") {
+	if (_name == "SuiBankTransferBox.lblStartingFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblInputFrom") {
+	if (_name == "SuiBankTransferBox.lblInputFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblInputFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblTo") {
+	if (_name == "SuiBankTransferBox.lblTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblTo, stream);
 		return true;
 	}
 
-	if (_name == "lblStartingTo") {
+	if (_name == "SuiBankTransferBox.lblStartingTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingTo, stream);
 		return true;
 	}
 
-	if (_name == "lblInputTo") {
+	if (_name == "SuiBankTransferBox.lblInputTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblInputTo, stream);
 		return true;
 	}
 
-	if (_name == "convertRatioFrom") {
+	if (_name == "SuiBankTransferBox.convertRatioFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioFrom, stream);
 		return true;
 	}
 
-	if (_name == "convertRatioTo") {
+	if (_name == "SuiBankTransferBox.convertRatioTo") {
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioTo, stream);
 		return true;
 	}
 
-	if (_name == "bank") {
+	if (_name == "SuiBankTransferBox.bank") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&bank, stream);
 		return true;
 	}
@@ -262,7 +262,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lblFrom";
+	_name = "SuiBankTransferBox.lblFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -270,7 +270,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblStartingFrom";
+	_name = "SuiBankTransferBox.lblStartingFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -278,7 +278,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblInputFrom";
+	_name = "SuiBankTransferBox.lblInputFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -286,7 +286,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblTo";
+	_name = "SuiBankTransferBox.lblTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -294,7 +294,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblStartingTo";
+	_name = "SuiBankTransferBox.lblStartingTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -302,7 +302,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblInputTo";
+	_name = "SuiBankTransferBox.lblInputTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -310,7 +310,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "convertRatioFrom";
+	_name = "SuiBankTransferBox.convertRatioFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -318,7 +318,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "convertRatioTo";
+	_name = "SuiBankTransferBox.convertRatioTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -326,7 +326,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bank";
+	_name = "SuiBankTransferBox.bank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

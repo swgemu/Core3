@@ -441,22 +441,22 @@ bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ZoneManagerImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zone") {
+	if (_name == "CreatureManager.zone") {
 		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
-	if (_name == "spawnAreaMap") {
+	if (_name == "CreatureManager.spawnAreaMap") {
 		TypeInfo<SpawnAreaMap >::parseFromBinaryStream(&spawnAreaMap, stream);
 		return true;
 	}
 
-	if (_name == "reservePool") {
+	if (_name == "CreatureManager.reservePool") {
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&reservePool, stream);
 		return true;
 	}
 
-	if (_name == "spawnedRandomCreatures") {
+	if (_name == "CreatureManager.spawnedRandomCreatures") {
 		TypeInfo<int >::parseFromBinaryStream(&spawnedRandomCreatures, stream);
 		return true;
 	}
@@ -476,7 +476,7 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zone";
+	_name = "CreatureManager.zone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -484,7 +484,7 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnAreaMap";
+	_name = "CreatureManager.spawnAreaMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -492,7 +492,7 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "reservePool";
+	_name = "CreatureManager.reservePool";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -500,7 +500,7 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnedRandomCreatures";
+	_name = "CreatureManager.spawnedRandomCreatures";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

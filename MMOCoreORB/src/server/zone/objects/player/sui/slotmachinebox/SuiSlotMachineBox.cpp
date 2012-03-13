@@ -150,7 +150,7 @@ bool SuiSlotMachineBoxImplementation::readObjectMember(ObjectInputStream* stream
 	if (SuiListBoxImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "payoutBoxID") {
+	if (_name == "SuiSlotMachineBox.payoutBoxID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&payoutBoxID, stream);
 		return true;
 	}
@@ -170,7 +170,7 @@ int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "payoutBoxID";
+	_name = "SuiSlotMachineBox.payoutBoxID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

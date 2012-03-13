@@ -181,7 +181,7 @@ bool StructureStatusSessionImplementation::readObjectMember(ObjectInputStream* s
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "structureObject") {
+	if (_name == "StructureStatusSession.structureObject") {
 		TypeInfo<ManagedWeakReference<StructureObject* > >::parseFromBinaryStream(&structureObject, stream);
 		return true;
 	}
@@ -201,7 +201,7 @@ int StructureStatusSessionImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "structureObject";
+	_name = "StructureStatusSession.structureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

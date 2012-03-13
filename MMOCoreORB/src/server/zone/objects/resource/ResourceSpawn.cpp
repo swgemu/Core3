@@ -691,92 +691,92 @@ bool ResourceSpawnImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnType") {
+	if (_name == "ResourceSpawn.spawnType") {
 		TypeInfo<String >::parseFromBinaryStream(&spawnType, stream);
 		return true;
 	}
 
-	if (_name == "spawnName") {
+	if (_name == "ResourceSpawn.spawnName") {
 		TypeInfo<String >::parseFromBinaryStream(&spawnName, stream);
 		return true;
 	}
 
-	if (_name == "spawnClasses") {
+	if (_name == "ResourceSpawn.spawnClasses") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&spawnClasses, stream);
 		return true;
 	}
 
-	if (_name == "stfSpawnClasses") {
+	if (_name == "ResourceSpawn.stfSpawnClasses") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&stfSpawnClasses, stream);
 		return true;
 	}
 
-	if (_name == "spawnAttributes") {
+	if (_name == "ResourceSpawn.spawnAttributes") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&spawnAttributes, stream);
 		return true;
 	}
 
-	if (_name == "poolSlot") {
+	if (_name == "ResourceSpawn.poolSlot") {
 		TypeInfo<String >::parseFromBinaryStream(&poolSlot, stream);
 		return true;
 	}
 
-	if (_name == "spawnPool") {
+	if (_name == "ResourceSpawn.spawnPool") {
 		TypeInfo<int >::parseFromBinaryStream(&spawnPool, stream);
 		return true;
 	}
 
-	if (_name == "zoneRestriction") {
+	if (_name == "ResourceSpawn.zoneRestriction") {
 		TypeInfo<String >::parseFromBinaryStream(&zoneRestriction, stream);
 		return true;
 	}
 
-	if (_name == "surveyToolType") {
+	if (_name == "ResourceSpawn.surveyToolType") {
 		TypeInfo<int >::parseFromBinaryStream(&surveyToolType, stream);
 		return true;
 	}
 
-	if (_name == "containerCRC") {
+	if (_name == "ResourceSpawn.containerCRC") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&containerCRC, stream);
 		return true;
 	}
 
-	if (_name == "spawned") {
+	if (_name == "ResourceSpawn.spawned") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&spawned, stream);
 		return true;
 	}
 
-	if (_name == "despawned") {
+	if (_name == "ResourceSpawn.despawned") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&despawned, stream);
 		return true;
 	}
 
-	if (_name == "spawnMaps") {
+	if (_name == "ResourceSpawn.spawnMaps") {
 		TypeInfo<SpawnMap >::parseFromBinaryStream(&spawnMaps, stream);
 		return true;
 	}
 
-	if (_name == "maxUnitsSpawned") {
+	if (_name == "ResourceSpawn.maxUnitsSpawned") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&maxUnitsSpawned, stream);
 		return true;
 	}
 
-	if (_name == "unitsInCirculation") {
+	if (_name == "ResourceSpawn.unitsInCirculation") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&unitsInCirculation, stream);
 		return true;
 	}
 
-	if (_name == "containerReferenceCount") {
+	if (_name == "ResourceSpawn.containerReferenceCount") {
 		TypeInfo<int >::parseFromBinaryStream(&containerReferenceCount, stream);
 		return true;
 	}
 
-	if (_name == "dbDestroyed") {
+	if (_name == "ResourceSpawn.dbDestroyed") {
 		TypeInfo<bool >::parseFromBinaryStream(&dbDestroyed, stream);
 		return true;
 	}
 
-	if (_name == "energy") {
+	if (_name == "ResourceSpawn.energy") {
 		TypeInfo<bool >::parseFromBinaryStream(&energy, stream);
 		return true;
 	}
@@ -796,7 +796,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnType";
+	_name = "ResourceSpawn.spawnType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -804,7 +804,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnName";
+	_name = "ResourceSpawn.spawnName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -812,7 +812,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnClasses";
+	_name = "ResourceSpawn.spawnClasses";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -820,7 +820,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "stfSpawnClasses";
+	_name = "ResourceSpawn.stfSpawnClasses";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -828,7 +828,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnAttributes";
+	_name = "ResourceSpawn.spawnAttributes";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -836,7 +836,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "poolSlot";
+	_name = "ResourceSpawn.poolSlot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -844,7 +844,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnPool";
+	_name = "ResourceSpawn.spawnPool";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -852,7 +852,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoneRestriction";
+	_name = "ResourceSpawn.zoneRestriction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -860,7 +860,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "surveyToolType";
+	_name = "ResourceSpawn.surveyToolType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -868,7 +868,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "containerCRC";
+	_name = "ResourceSpawn.containerCRC";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -876,7 +876,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawned";
+	_name = "ResourceSpawn.spawned";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -884,7 +884,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "despawned";
+	_name = "ResourceSpawn.despawned";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -892,7 +892,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnMaps";
+	_name = "ResourceSpawn.spawnMaps";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -900,7 +900,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxUnitsSpawned";
+	_name = "ResourceSpawn.maxUnitsSpawned";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -908,7 +908,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "unitsInCirculation";
+	_name = "ResourceSpawn.unitsInCirculation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -916,7 +916,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "containerReferenceCount";
+	_name = "ResourceSpawn.containerReferenceCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -924,7 +924,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "dbDestroyed";
+	_name = "ResourceSpawn.dbDestroyed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -932,7 +932,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "energy";
+	_name = "ResourceSpawn.energy";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -580,82 +580,82 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (WearableObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "healthEncumbrance") {
+	if (_name == "ArmorObject.healthEncumbrance") {
 		TypeInfo<int >::parseFromBinaryStream(&healthEncumbrance, stream);
 		return true;
 	}
 
-	if (_name == "actionEncumbrance") {
+	if (_name == "ArmorObject.actionEncumbrance") {
 		TypeInfo<int >::parseFromBinaryStream(&actionEncumbrance, stream);
 		return true;
 	}
 
-	if (_name == "mindEncumbrance") {
+	if (_name == "ArmorObject.mindEncumbrance") {
 		TypeInfo<int >::parseFromBinaryStream(&mindEncumbrance, stream);
 		return true;
 	}
 
-	if (_name == "rating") {
+	if (_name == "ArmorObject.rating") {
 		TypeInfo<int >::parseFromBinaryStream(&rating, stream);
 		return true;
 	}
 
-	if (_name == "kinetic") {
+	if (_name == "ArmorObject.kinetic") {
 		TypeInfo<float >::parseFromBinaryStream(&kinetic, stream);
 		return true;
 	}
 
-	if (_name == "energy") {
+	if (_name == "ArmorObject.energy") {
 		TypeInfo<float >::parseFromBinaryStream(&energy, stream);
 		return true;
 	}
 
-	if (_name == "electricity") {
+	if (_name == "ArmorObject.electricity") {
 		TypeInfo<float >::parseFromBinaryStream(&electricity, stream);
 		return true;
 	}
 
-	if (_name == "stun") {
+	if (_name == "ArmorObject.stun") {
 		TypeInfo<float >::parseFromBinaryStream(&stun, stream);
 		return true;
 	}
 
-	if (_name == "blast") {
+	if (_name == "ArmorObject.blast") {
 		TypeInfo<float >::parseFromBinaryStream(&blast, stream);
 		return true;
 	}
 
-	if (_name == "heat") {
+	if (_name == "ArmorObject.heat") {
 		TypeInfo<float >::parseFromBinaryStream(&heat, stream);
 		return true;
 	}
 
-	if (_name == "cold") {
+	if (_name == "ArmorObject.cold") {
 		TypeInfo<float >::parseFromBinaryStream(&cold, stream);
 		return true;
 	}
 
-	if (_name == "acid") {
+	if (_name == "ArmorObject.acid") {
 		TypeInfo<float >::parseFromBinaryStream(&acid, stream);
 		return true;
 	}
 
-	if (_name == "lightSaber") {
+	if (_name == "ArmorObject.lightSaber") {
 		TypeInfo<float >::parseFromBinaryStream(&lightSaber, stream);
 		return true;
 	}
 
-	if (_name == "specialResists") {
+	if (_name == "ArmorObject.specialResists") {
 		TypeInfo<int >::parseFromBinaryStream(&specialResists, stream);
 		return true;
 	}
 
-	if (_name == "vulnerabilites") {
+	if (_name == "ArmorObject.vulnerabilites") {
 		TypeInfo<int >::parseFromBinaryStream(&vulnerabilites, stream);
 		return true;
 	}
 
-	if (_name == "specialBase") {
+	if (_name == "ArmorObject.specialBase") {
 		TypeInfo<float >::parseFromBinaryStream(&specialBase, stream);
 		return true;
 	}
@@ -675,7 +675,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "healthEncumbrance";
+	_name = "ArmorObject.healthEncumbrance";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -683,7 +683,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "actionEncumbrance";
+	_name = "ArmorObject.actionEncumbrance";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -691,7 +691,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "mindEncumbrance";
+	_name = "ArmorObject.mindEncumbrance";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -699,7 +699,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "rating";
+	_name = "ArmorObject.rating";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -707,7 +707,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "kinetic";
+	_name = "ArmorObject.kinetic";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -715,7 +715,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "energy";
+	_name = "ArmorObject.energy";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -723,7 +723,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "electricity";
+	_name = "ArmorObject.electricity";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -731,7 +731,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "stun";
+	_name = "ArmorObject.stun";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -739,7 +739,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "blast";
+	_name = "ArmorObject.blast";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -747,7 +747,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "heat";
+	_name = "ArmorObject.heat";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -755,7 +755,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cold";
+	_name = "ArmorObject.cold";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -763,7 +763,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "acid";
+	_name = "ArmorObject.acid";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -771,7 +771,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lightSaber";
+	_name = "ArmorObject.lightSaber";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -779,7 +779,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "specialResists";
+	_name = "ArmorObject.specialResists";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -787,7 +787,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "vulnerabilites";
+	_name = "ArmorObject.vulnerabilites";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -795,7 +795,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "specialBase";
+	_name = "ArmorObject.specialBase";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

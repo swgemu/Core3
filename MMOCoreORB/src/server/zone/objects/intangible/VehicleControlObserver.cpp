@@ -150,7 +150,7 @@ bool VehicleControlObserverImplementation::readObjectMember(ObjectInputStream* s
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "vehicleControlDevice") {
+	if (_name == "VehicleControlObserver.vehicleControlDevice") {
 		TypeInfo<ManagedWeakReference<VehicleControlDevice* > >::parseFromBinaryStream(&vehicleControlDevice, stream);
 		return true;
 	}
@@ -170,7 +170,7 @@ int VehicleControlObserverImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "vehicleControlDevice";
+	_name = "VehicleControlObserver.vehicleControlDevice";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -189,7 +189,7 @@ bool ReconMissionObjectiveImplementation::readObjectMember(ObjectInputStream* st
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "locationActiveArea") {
+	if (_name == "ReconMissionObjective.locationActiveArea") {
 		TypeInfo<ManagedReference<MissionReconActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
 		return true;
 	}
@@ -209,7 +209,7 @@ int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "locationActiveArea";
+	_name = "ReconMissionObjective.locationActiveArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -165,7 +165,7 @@ bool MissionSpawnActiveAreaImplementation::readObjectMember(ObjectInputStream* s
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "destroyMissionObjective") {
+	if (_name == "MissionSpawnActiveArea.destroyMissionObjective") {
 		TypeInfo<ManagedWeakReference<DestroyMissionObjective* > >::parseFromBinaryStream(&destroyMissionObjective, stream);
 		return true;
 	}
@@ -185,7 +185,7 @@ int MissionSpawnActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "destroyMissionObjective";
+	_name = "MissionSpawnActiveArea.destroyMissionObjective";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -177,7 +177,7 @@ bool StartingLocationTerminalImplementation::readObjectMember(ObjectInputStream*
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "authorizationState") {
+	if (_name == "StartingLocationTerminal.authorizationState") {
 		TypeInfo<bool >::parseFromBinaryStream(&authorizationState, stream);
 		return true;
 	}
@@ -197,7 +197,7 @@ int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStrea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "authorizationState";
+	_name = "StartingLocationTerminal.authorizationState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

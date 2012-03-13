@@ -150,7 +150,7 @@ bool AiGroupObserverImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "aiGroup") {
+	if (_name == "AiGroupObserver.aiGroup") {
 		TypeInfo<ManagedReference<AiGroup* > >::parseFromBinaryStream(&aiGroup, stream);
 		return true;
 	}
@@ -170,7 +170,7 @@ int AiGroupObserverImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "aiGroup";
+	_name = "AiGroupObserver.aiGroup";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

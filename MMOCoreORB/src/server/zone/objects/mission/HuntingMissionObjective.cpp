@@ -207,7 +207,7 @@ bool HuntingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "targetsKilled") {
+	if (_name == "HuntingMissionObjective.targetsKilled") {
 		TypeInfo<int >::parseFromBinaryStream(&targetsKilled, stream);
 		return true;
 	}
@@ -227,7 +227,7 @@ int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "targetsKilled";
+	_name = "HuntingMissionObjective.targetsKilled";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

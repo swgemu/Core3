@@ -216,32 +216,32 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "player") {
+	if (_name == "CreateVendorSession.player") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "vendor") {
+	if (_name == "CreateVendorSession.vendor") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&vendor, stream);
 		return true;
 	}
 
-	if (_name == "currentNode") {
+	if (_name == "CreateVendorSession.currentNode") {
 		TypeInfo<Reference<VendorSelectionNode* > >::parseFromBinaryStream(&currentNode, stream);
 		return true;
 	}
 
-	if (_name == "suiSelectVendor") {
+	if (_name == "CreateVendorSession.suiSelectVendor") {
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&suiSelectVendor, stream);
 		return true;
 	}
 
-	if (_name == "suiNameVendor") {
+	if (_name == "CreateVendorSession.suiNameVendor") {
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&suiNameVendor, stream);
 		return true;
 	}
 
-	if (_name == "templatePath") {
+	if (_name == "CreateVendorSession.templatePath") {
 		TypeInfo<String >::parseFromBinaryStream(&templatePath, stream);
 		return true;
 	}
@@ -261,7 +261,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "player";
+	_name = "CreateVendorSession.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -269,7 +269,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "vendor";
+	_name = "CreateVendorSession.vendor";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -277,7 +277,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentNode";
+	_name = "CreateVendorSession.currentNode";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -285,7 +285,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "suiSelectVendor";
+	_name = "CreateVendorSession.suiSelectVendor";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -293,7 +293,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "suiNameVendor";
+	_name = "CreateVendorSession.suiNameVendor";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -301,7 +301,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "templatePath";
+	_name = "CreateVendorSession.templatePath";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

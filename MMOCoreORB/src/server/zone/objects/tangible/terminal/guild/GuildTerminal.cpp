@@ -222,7 +222,7 @@ bool GuildTerminalImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "guildObject") {
+	if (_name == "GuildTerminal.guildObject") {
 		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guildObject, stream);
 		return true;
 	}
@@ -242,7 +242,7 @@ int GuildTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "guildObject";
+	_name = "GuildTerminal.guildObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -611,37 +611,37 @@ bool GuildObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "chatRoom") {
+	if (_name == "GuildObject.chatRoom") {
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
 		return true;
 	}
 
-	if (_name == "guildMembers") {
+	if (_name == "GuildObject.guildMembers") {
 		TypeInfo<GuildMemberList >::parseFromBinaryStream(&guildMembers, stream);
 		return true;
 	}
 
-	if (_name == "sponsoredPlayers") {
+	if (_name == "GuildObject.sponsoredPlayers") {
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&sponsoredPlayers, stream);
 		return true;
 	}
 
-	if (_name == "guildID") {
+	if (_name == "GuildObject.guildID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&guildID, stream);
 		return true;
 	}
 
-	if (_name == "guildName") {
+	if (_name == "GuildObject.guildName") {
 		TypeInfo<String >::parseFromBinaryStream(&guildName, stream);
 		return true;
 	}
 
-	if (_name == "guildAbbrev") {
+	if (_name == "GuildObject.guildAbbrev") {
 		TypeInfo<String >::parseFromBinaryStream(&guildAbbrev, stream);
 		return true;
 	}
 
-	if (_name == "guildLeaderID") {
+	if (_name == "GuildObject.guildLeaderID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&guildLeaderID, stream);
 		return true;
 	}
@@ -661,7 +661,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "chatRoom";
+	_name = "GuildObject.chatRoom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -669,7 +669,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildMembers";
+	_name = "GuildObject.guildMembers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -677,7 +677,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sponsoredPlayers";
+	_name = "GuildObject.sponsoredPlayers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -685,7 +685,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildID";
+	_name = "GuildObject.guildID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -693,7 +693,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildName";
+	_name = "GuildObject.guildName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -701,7 +701,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildAbbrev";
+	_name = "GuildObject.guildAbbrev";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -709,7 +709,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildLeaderID";
+	_name = "GuildObject.guildLeaderID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

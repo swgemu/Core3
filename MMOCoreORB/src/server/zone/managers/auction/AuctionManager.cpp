@@ -414,12 +414,12 @@ bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "auctionMap") {
+	if (_name == "AuctionManager.auctionMap") {
 		TypeInfo<ManagedReference<AuctionsMap* > >::parseFromBinaryStream(&auctionMap, stream);
 		return true;
 	}
 
-	if (_name == "zoneServer") {
+	if (_name == "AuctionManager.zoneServer") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
 	}
@@ -439,7 +439,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "auctionMap";
+	_name = "AuctionManager.auctionMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -447,7 +447,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoneServer";
+	_name = "AuctionManager.zoneServer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

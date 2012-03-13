@@ -3899,282 +3899,282 @@ bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "bankCredits") {
+	if (_name == "CreatureObject.bankCredits") {
 		TypeInfo<int >::parseFromBinaryStream(&bankCredits, stream);
 		return true;
 	}
 
-	if (_name == "cashCredits") {
+	if (_name == "CreatureObject.cashCredits") {
 		TypeInfo<int >::parseFromBinaryStream(&cashCredits, stream);
 		return true;
 	}
 
-	if (_name == "gender") {
+	if (_name == "CreatureObject.gender") {
 		TypeInfo<int >::parseFromBinaryStream(&gender, stream);
 		return true;
 	}
 
-	if (_name == "species") {
+	if (_name == "CreatureObject.species") {
 		TypeInfo<int >::parseFromBinaryStream(&species, stream);
 		return true;
 	}
 
-	if (_name == "baseHAM") {
+	if (_name == "CreatureObject.baseHAM") {
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&baseHAM, stream);
 		return true;
 	}
 
-	if (_name == "posture") {
+	if (_name == "CreatureObject.posture") {
 		TypeInfo<byte >::parseFromBinaryStream(&posture, stream);
 		return true;
 	}
 
-	if (_name == "locomotion") {
+	if (_name == "CreatureObject.locomotion") {
 		TypeInfo<byte >::parseFromBinaryStream(&locomotion, stream);
 		return true;
 	}
 
-	if (_name == "factionRank") {
+	if (_name == "CreatureObject.factionRank") {
 		TypeInfo<byte >::parseFromBinaryStream(&factionRank, stream);
 		return true;
 	}
 
-	if (_name == "linkedCreature") {
+	if (_name == "CreatureObject.linkedCreature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&linkedCreature, stream);
 		return true;
 	}
 
-	if (_name == "controlDevice") {
+	if (_name == "CreatureObject.controlDevice") {
 		TypeInfo<ManagedWeakReference<ControlDevice* > >::parseFromBinaryStream(&controlDevice, stream);
 		return true;
 	}
 
-	if (_name == "shockWounds") {
+	if (_name == "CreatureObject.shockWounds") {
 		TypeInfo<float >::parseFromBinaryStream(&shockWounds, stream);
 		return true;
 	}
 
-	if (_name == "wounds") {
+	if (_name == "CreatureObject.wounds") {
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&wounds, stream);
 		return true;
 	}
 
-	if (_name == "stateBitmask") {
+	if (_name == "CreatureObject.stateBitmask") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&stateBitmask, stream);
 		return true;
 	}
 
-	if (_name == "encumbrances") {
+	if (_name == "CreatureObject.encumbrances") {
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&encumbrances, stream);
 		return true;
 	}
 
-	if (_name == "accelerationMultiplierBase") {
+	if (_name == "CreatureObject.accelerationMultiplierBase") {
 		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierBase, stream);
 		return true;
 	}
 
-	if (_name == "accelerationMultiplierMod") {
+	if (_name == "CreatureObject.accelerationMultiplierMod") {
 		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
 		return true;
 	}
 
-	if (_name == "speedMultiplierBase") {
+	if (_name == "CreatureObject.speedMultiplierBase") {
 		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierBase, stream);
 		return true;
 	}
 
-	if (_name == "speedMultiplierModChanges") {
+	if (_name == "CreatureObject.speedMultiplierModChanges") {
 		TypeInfo<SpeedMultiplierModChanges >::parseFromBinaryStream(&speedMultiplierModChanges, stream);
 		return true;
 	}
 
-	if (_name == "speedMultiplierMod") {
+	if (_name == "CreatureObject.speedMultiplierMod") {
 		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
 		return true;
 	}
 
-	if (_name == "turnScale") {
+	if (_name == "CreatureObject.turnScale") {
 		TypeInfo<float >::parseFromBinaryStream(&turnScale, stream);
 		return true;
 	}
 
-	if (_name == "runSpeed") {
+	if (_name == "CreatureObject.runSpeed") {
 		TypeInfo<float >::parseFromBinaryStream(&runSpeed, stream);
 		return true;
 	}
 
-	if (_name == "walkSpeed") {
+	if (_name == "CreatureObject.walkSpeed") {
 		TypeInfo<float >::parseFromBinaryStream(&walkSpeed, stream);
 		return true;
 	}
 
-	if (_name == "currentSpeed") {
+	if (_name == "CreatureObject.currentSpeed") {
 		TypeInfo<float >::parseFromBinaryStream(&currentSpeed, stream);
 		return true;
 	}
 
-	if (_name == "terrainNegotiation") {
+	if (_name == "CreatureObject.terrainNegotiation") {
 		TypeInfo<float >::parseFromBinaryStream(&terrainNegotiation, stream);
 		return true;
 	}
 
-	if (_name == "runAcceleration") {
+	if (_name == "CreatureObject.runAcceleration") {
 		TypeInfo<float >::parseFromBinaryStream(&runAcceleration, stream);
 		return true;
 	}
 
-	if (_name == "walkAcceleration") {
+	if (_name == "CreatureObject.walkAcceleration") {
 		TypeInfo<float >::parseFromBinaryStream(&walkAcceleration, stream);
 		return true;
 	}
 
-	if (_name == "height") {
+	if (_name == "CreatureObject.height") {
 		TypeInfo<float >::parseFromBinaryStream(&height, stream);
 		return true;
 	}
 
-	if (_name == "swimHeight") {
+	if (_name == "CreatureObject.swimHeight") {
 		TypeInfo<float >::parseFromBinaryStream(&swimHeight, stream);
 		return true;
 	}
 
-	if (_name == "slopeModPercent") {
+	if (_name == "CreatureObject.slopeModPercent") {
 		TypeInfo<float >::parseFromBinaryStream(&slopeModPercent, stream);
 		return true;
 	}
 
-	if (_name == "slopeModAngle") {
+	if (_name == "CreatureObject.slopeModAngle") {
 		TypeInfo<float >::parseFromBinaryStream(&slopeModAngle, stream);
 		return true;
 	}
 
-	if (_name == "listenToID") {
+	if (_name == "CreatureObject.listenToID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&listenToID, stream);
 		return true;
 	}
 
-	if (_name == "watchToID") {
+	if (_name == "CreatureObject.watchToID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&watchToID, stream);
 		return true;
 	}
 
-	if (_name == "performanceAnimation") {
+	if (_name == "CreatureObject.performanceAnimation") {
 		TypeInfo<String >::parseFromBinaryStream(&performanceAnimation, stream);
 		return true;
 	}
 
-	if (_name == "moodString") {
+	if (_name == "CreatureObject.moodString") {
 		TypeInfo<String >::parseFromBinaryStream(&moodString, stream);
 		return true;
 	}
 
-	if (_name == "weapon") {
+	if (_name == "CreatureObject.weapon") {
 		TypeInfo<ManagedReference<WeaponObject* > >::parseFromBinaryStream(&weapon, stream);
 		return true;
 	}
 
-	if (_name == "group") {
+	if (_name == "CreatureObject.group") {
 		TypeInfo<ManagedReference<GroupObject* > >::parseFromBinaryStream(&group, stream);
 		return true;
 	}
 
-	if (_name == "groupInviterID") {
+	if (_name == "CreatureObject.groupInviterID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviterID, stream);
 		return true;
 	}
 
-	if (_name == "groupInviteCounter") {
+	if (_name == "CreatureObject.groupInviteCounter") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviteCounter, stream);
 		return true;
 	}
 
-	if (_name == "guild") {
+	if (_name == "CreatureObject.guild") {
 		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guild, stream);
 		return true;
 	}
 
-	if (_name == "targetID") {
+	if (_name == "CreatureObject.targetID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&targetID, stream);
 		return true;
 	}
 
-	if (_name == "moodID") {
+	if (_name == "CreatureObject.moodID") {
 		TypeInfo<byte >::parseFromBinaryStream(&moodID, stream);
 		return true;
 	}
 
-	if (_name == "performanceCounter") {
+	if (_name == "CreatureObject.performanceCounter") {
 		TypeInfo<int >::parseFromBinaryStream(&performanceCounter, stream);
 		return true;
 	}
 
-	if (_name == "instrumentID") {
+	if (_name == "CreatureObject.instrumentID") {
 		TypeInfo<int >::parseFromBinaryStream(&instrumentID, stream);
 		return true;
 	}
 
-	if (_name == "hamList") {
+	if (_name == "CreatureObject.hamList") {
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&hamList, stream);
 		return true;
 	}
 
-	if (_name == "maxHamList") {
+	if (_name == "CreatureObject.maxHamList") {
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&maxHamList, stream);
 		return true;
 	}
 
-	if (_name == "frozen") {
+	if (_name == "CreatureObject.frozen") {
 		TypeInfo<byte >::parseFromBinaryStream(&frozen, stream);
 		return true;
 	}
 
-	if (_name == "templateString") {
+	if (_name == "CreatureObject.templateString") {
 		TypeInfo<String >::parseFromBinaryStream(&templateString, stream);
 		return true;
 	}
 
-	if (_name == "skillList") {
+	if (_name == "CreatureObject.skillList") {
 		TypeInfo<SkillList >::parseFromBinaryStream(&skillList, stream);
 		return true;
 	}
 
-	if (_name == "skillModList") {
+	if (_name == "CreatureObject.skillModList") {
 		TypeInfo<DeltaVectorMap<String, long long> >::parseFromBinaryStream(&skillModList, stream);
 		return true;
 	}
 
-	if (_name == "nextAction") {
+	if (_name == "CreatureObject.nextAction") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextAction, stream);
 		return true;
 	}
 
-	if (_name == "cooldownTimerMap") {
+	if (_name == "CreatureObject.cooldownTimerMap") {
 		TypeInfo<Reference<CooldownTimerMap* > >::parseFromBinaryStream(&cooldownTimerMap, stream);
 		return true;
 	}
 
-	if (_name == "creatureBuffs") {
+	if (_name == "CreatureObject.creatureBuffs") {
 		TypeInfo<BuffList >::parseFromBinaryStream(&creatureBuffs, stream);
 		return true;
 	}
 
-	if (_name == "damageOverTimeList") {
+	if (_name == "CreatureObject.damageOverTimeList") {
 		TypeInfo<DamageOverTimeList >::parseFromBinaryStream(&damageOverTimeList, stream);
 		return true;
 	}
 
-	if (_name == "lastSuccessfulCombatAction") {
+	if (_name == "CreatureObject.lastSuccessfulCombatAction") {
 		TypeInfo<Time >::parseFromBinaryStream(&lastSuccessfulCombatAction, stream);
 		return true;
 	}
 
-	if (_name == "timeOfDeath") {
+	if (_name == "CreatureObject.timeOfDeath") {
 		TypeInfo<Time >::parseFromBinaryStream(&timeOfDeath, stream);
 		return true;
 	}
 
-	if (_name == "screenPlayStates") {
+	if (_name == "CreatureObject.screenPlayStates") {
 		TypeInfo<VectorMap<String, unsigned long long> >::parseFromBinaryStream(&screenPlayStates, stream);
 		return true;
 	}
@@ -4194,7 +4194,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "bankCredits";
+	_name = "CreatureObject.bankCredits";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4202,7 +4202,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cashCredits";
+	_name = "CreatureObject.cashCredits";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4210,7 +4210,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "gender";
+	_name = "CreatureObject.gender";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4218,7 +4218,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "species";
+	_name = "CreatureObject.species";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4226,7 +4226,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "baseHAM";
+	_name = "CreatureObject.baseHAM";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4234,7 +4234,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "posture";
+	_name = "CreatureObject.posture";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4242,7 +4242,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "locomotion";
+	_name = "CreatureObject.locomotion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4250,7 +4250,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "factionRank";
+	_name = "CreatureObject.factionRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4258,7 +4258,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "linkedCreature";
+	_name = "CreatureObject.linkedCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4266,7 +4266,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "controlDevice";
+	_name = "CreatureObject.controlDevice";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4274,7 +4274,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shockWounds";
+	_name = "CreatureObject.shockWounds";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4282,7 +4282,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "wounds";
+	_name = "CreatureObject.wounds";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4290,7 +4290,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "stateBitmask";
+	_name = "CreatureObject.stateBitmask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4298,7 +4298,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "encumbrances";
+	_name = "CreatureObject.encumbrances";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4306,7 +4306,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accelerationMultiplierBase";
+	_name = "CreatureObject.accelerationMultiplierBase";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4314,7 +4314,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accelerationMultiplierMod";
+	_name = "CreatureObject.accelerationMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4322,7 +4322,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "speedMultiplierBase";
+	_name = "CreatureObject.speedMultiplierBase";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4330,7 +4330,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "speedMultiplierModChanges";
+	_name = "CreatureObject.speedMultiplierModChanges";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4338,7 +4338,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "speedMultiplierMod";
+	_name = "CreatureObject.speedMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4346,7 +4346,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "turnScale";
+	_name = "CreatureObject.turnScale";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4354,7 +4354,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "runSpeed";
+	_name = "CreatureObject.runSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4362,7 +4362,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "walkSpeed";
+	_name = "CreatureObject.walkSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4370,7 +4370,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentSpeed";
+	_name = "CreatureObject.currentSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4378,7 +4378,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terrainNegotiation";
+	_name = "CreatureObject.terrainNegotiation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4386,7 +4386,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "runAcceleration";
+	_name = "CreatureObject.runAcceleration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4394,7 +4394,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "walkAcceleration";
+	_name = "CreatureObject.walkAcceleration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4402,7 +4402,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "height";
+	_name = "CreatureObject.height";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4410,7 +4410,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "swimHeight";
+	_name = "CreatureObject.swimHeight";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4418,7 +4418,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "slopeModPercent";
+	_name = "CreatureObject.slopeModPercent";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4426,7 +4426,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "slopeModAngle";
+	_name = "CreatureObject.slopeModAngle";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4434,7 +4434,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "listenToID";
+	_name = "CreatureObject.listenToID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4442,7 +4442,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "watchToID";
+	_name = "CreatureObject.watchToID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4450,7 +4450,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "performanceAnimation";
+	_name = "CreatureObject.performanceAnimation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4458,7 +4458,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "moodString";
+	_name = "CreatureObject.moodString";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4466,7 +4466,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "weapon";
+	_name = "CreatureObject.weapon";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4474,7 +4474,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "group";
+	_name = "CreatureObject.group";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4482,7 +4482,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "groupInviterID";
+	_name = "CreatureObject.groupInviterID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4490,7 +4490,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "groupInviteCounter";
+	_name = "CreatureObject.groupInviteCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4498,7 +4498,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guild";
+	_name = "CreatureObject.guild";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4506,7 +4506,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "targetID";
+	_name = "CreatureObject.targetID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4514,7 +4514,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "moodID";
+	_name = "CreatureObject.moodID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4522,7 +4522,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "performanceCounter";
+	_name = "CreatureObject.performanceCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4530,7 +4530,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "instrumentID";
+	_name = "CreatureObject.instrumentID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4538,7 +4538,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "hamList";
+	_name = "CreatureObject.hamList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4546,7 +4546,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxHamList";
+	_name = "CreatureObject.maxHamList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4554,7 +4554,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "frozen";
+	_name = "CreatureObject.frozen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4562,7 +4562,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "templateString";
+	_name = "CreatureObject.templateString";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4570,7 +4570,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillList";
+	_name = "CreatureObject.skillList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4578,7 +4578,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillModList";
+	_name = "CreatureObject.skillModList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4586,7 +4586,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextAction";
+	_name = "CreatureObject.nextAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4594,7 +4594,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cooldownTimerMap";
+	_name = "CreatureObject.cooldownTimerMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4602,7 +4602,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "creatureBuffs";
+	_name = "CreatureObject.creatureBuffs";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4610,7 +4610,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "damageOverTimeList";
+	_name = "CreatureObject.damageOverTimeList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4618,7 +4618,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastSuccessfulCombatAction";
+	_name = "CreatureObject.lastSuccessfulCombatAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4626,7 +4626,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "timeOfDeath";
+	_name = "CreatureObject.timeOfDeath";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -4634,7 +4634,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "screenPlayStates";
+	_name = "CreatureObject.screenPlayStates";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

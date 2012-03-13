@@ -65,15 +65,6 @@ class TradeSession extends Facade {
 		moneyToTrade = 0;
 	}
 	
-	public void clear() {
-		tradeTargetPlayer = 0;
-		itemsToTrade.removeAll();
-		acceptedTrade = false;
-		acceptedTrade = false;
-		verifiedTrade = false;
-		moneyToTrade = 0;
-	}
-
 	public boolean getAcceptedTrade() {
 		return acceptedTrade;
 	}

@@ -150,7 +150,7 @@ bool AiObserverImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "aiAgent") {
+	if (_name == "AiObserver.aiAgent") {
 		TypeInfo<ManagedWeakReference<AiAgent* > >::parseFromBinaryStream(&aiAgent, stream);
 		return true;
 	}
@@ -170,7 +170,7 @@ int AiObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "aiAgent";
+	_name = "AiObserver.aiAgent";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

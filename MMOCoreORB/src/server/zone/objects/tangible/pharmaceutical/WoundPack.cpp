@@ -244,12 +244,12 @@ bool WoundPackImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "effectiveness") {
+	if (_name == "WoundPack.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "attribute") {
+	if (_name == "WoundPack.attribute") {
 		TypeInfo<byte >::parseFromBinaryStream(&attribute, stream);
 		return true;
 	}
@@ -269,7 +269,7 @@ int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "effectiveness";
+	_name = "WoundPack.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -277,7 +277,7 @@ int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attribute";
+	_name = "WoundPack.attribute";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

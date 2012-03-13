@@ -279,32 +279,32 @@ bool DynamicSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream,
 	if (SpawnAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnedGroups") {
+	if (_name == "DynamicSpawnArea.spawnedGroups") {
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&spawnedGroups, stream);
 		return true;
 	}
 
-	if (_name == "playerOccupants") {
+	if (_name == "DynamicSpawnArea.playerOccupants") {
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, SpawnDynamicAreaCreatureTask*> >::parseFromBinaryStream(&playerOccupants, stream);
 		return true;
 	}
 
-	if (_name == "excludedPlayerOccupants") {
+	if (_name == "DynamicSpawnArea.excludedPlayerOccupants") {
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<DynamicSpawnArea* > > >::parseFromBinaryStream(&excludedPlayerOccupants, stream);
 		return true;
 	}
 
-	if (_name == "observers") {
+	if (_name == "DynamicSpawnArea.observers") {
 		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
 	}
 
-	if (_name == "lastSpawnTime") {
+	if (_name == "DynamicSpawnArea.lastSpawnTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&lastSpawnTime, stream);
 		return true;
 	}
 
-	if (_name == "maxCreaturesToSpawn") {
+	if (_name == "DynamicSpawnArea.maxCreaturesToSpawn") {
 		TypeInfo<int >::parseFromBinaryStream(&maxCreaturesToSpawn, stream);
 		return true;
 	}
@@ -324,7 +324,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnedGroups";
+	_name = "DynamicSpawnArea.spawnedGroups";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -332,7 +332,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerOccupants";
+	_name = "DynamicSpawnArea.playerOccupants";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -340,7 +340,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "excludedPlayerOccupants";
+	_name = "DynamicSpawnArea.excludedPlayerOccupants";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -348,7 +348,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "observers";
+	_name = "DynamicSpawnArea.observers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -356,7 +356,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastSpawnTime";
+	_name = "DynamicSpawnArea.lastSpawnTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -364,7 +364,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxCreaturesToSpawn";
+	_name = "DynamicSpawnArea.maxCreaturesToSpawn";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

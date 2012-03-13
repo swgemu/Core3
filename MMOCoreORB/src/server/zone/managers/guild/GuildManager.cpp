@@ -759,22 +759,22 @@ bool GuildManagerImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "guildList") {
+	if (_name == "GuildManager.guildList") {
 		TypeInfo<DeltaSet<String, ManagedReference<GuildObject* > > >::parseFromBinaryStream(&guildList, stream);
 		return true;
 	}
 
-	if (_name == "requiredMembers") {
+	if (_name == "GuildManager.requiredMembers") {
 		TypeInfo<int >::parseFromBinaryStream(&requiredMembers, stream);
 		return true;
 	}
 
-	if (_name == "maximumMembers") {
+	if (_name == "GuildManager.maximumMembers") {
 		TypeInfo<int >::parseFromBinaryStream(&maximumMembers, stream);
 		return true;
 	}
 
-	if (_name == "guildUpdateInterval") {
+	if (_name == "GuildManager.guildUpdateInterval") {
 		TypeInfo<int >::parseFromBinaryStream(&guildUpdateInterval, stream);
 		return true;
 	}
@@ -794,7 +794,7 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "guildList";
+	_name = "GuildManager.guildList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -802,7 +802,7 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "requiredMembers";
+	_name = "GuildManager.requiredMembers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -810,7 +810,7 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maximumMembers";
+	_name = "GuildManager.maximumMembers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -818,7 +818,7 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildUpdateInterval";
+	_name = "GuildManager.guildUpdateInterval";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

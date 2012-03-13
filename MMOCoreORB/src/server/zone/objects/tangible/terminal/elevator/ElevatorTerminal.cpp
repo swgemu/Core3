@@ -245,12 +245,12 @@ bool ElevatorTerminalImplementation::readObjectMember(ObjectInputStream* stream,
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "elevatorUp") {
+	if (_name == "ElevatorTerminal.elevatorUp") {
 		TypeInfo<ManagedReference<ElevatorTerminal* > >::parseFromBinaryStream(&elevatorUp, stream);
 		return true;
 	}
 
-	if (_name == "elevatorDown") {
+	if (_name == "ElevatorTerminal.elevatorDown") {
 		TypeInfo<ManagedReference<ElevatorTerminal* > >::parseFromBinaryStream(&elevatorDown, stream);
 		return true;
 	}
@@ -270,7 +270,7 @@ int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "elevatorUp";
+	_name = "ElevatorTerminal.elevatorUp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -278,7 +278,7 @@ int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "elevatorDown";
+	_name = "ElevatorTerminal.elevatorDown";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

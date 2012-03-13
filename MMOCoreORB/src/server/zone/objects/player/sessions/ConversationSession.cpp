@@ -164,12 +164,12 @@ bool ConversationSessionImplementation::readObjectMember(ObjectInputStream* stre
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lastConversationScreen") {
+	if (_name == "ConversationSession.lastConversationScreen") {
 		TypeInfo<Reference<ConversationScreen* > >::parseFromBinaryStream(&lastConversationScreen, stream);
 		return true;
 	}
 
-	if (_name == "npc") {
+	if (_name == "ConversationSession.npc") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&npc, stream);
 		return true;
 	}
@@ -189,7 +189,7 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lastConversationScreen";
+	_name = "ConversationSession.lastConversationScreen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -197,7 +197,7 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "npc";
+	_name = "ConversationSession.npc";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -2918,292 +2918,292 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "characterBitmask") {
+	if (_name == "PlayerObject.characterBitmask") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&characterBitmask, stream);
 		return true;
 	}
 
-	if (_name == "title") {
+	if (_name == "PlayerObject.title") {
 		TypeInfo<String >::parseFromBinaryStream(&title, stream);
 		return true;
 	}
 
-	if (_name == "savedTerrainName") {
+	if (_name == "PlayerObject.savedTerrainName") {
 		TypeInfo<String >::parseFromBinaryStream(&savedTerrainName, stream);
 		return true;
 	}
 
-	if (_name == "savedParentID") {
+	if (_name == "PlayerObject.savedParentID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&savedParentID, stream);
 		return true;
 	}
 
-	if (_name == "badges") {
+	if (_name == "PlayerObject.badges") {
 		TypeInfo<Badges >::parseFromBinaryStream(&badges, stream);
 		return true;
 	}
 
-	if (_name == "forcePower") {
+	if (_name == "PlayerObject.forcePower") {
 		TypeInfo<int >::parseFromBinaryStream(&forcePower, stream);
 		return true;
 	}
 
-	if (_name == "forcePowerMax") {
+	if (_name == "PlayerObject.forcePowerMax") {
 		TypeInfo<int >::parseFromBinaryStream(&forcePowerMax, stream);
 		return true;
 	}
 
-	if (_name == "foodFilling") {
+	if (_name == "PlayerObject.foodFilling") {
 		TypeInfo<int >::parseFromBinaryStream(&foodFilling, stream);
 		return true;
 	}
 
-	if (_name == "foodFillingMax") {
+	if (_name == "PlayerObject.foodFillingMax") {
 		TypeInfo<int >::parseFromBinaryStream(&foodFillingMax, stream);
 		return true;
 	}
 
-	if (_name == "drinkFilling") {
+	if (_name == "PlayerObject.drinkFilling") {
 		TypeInfo<int >::parseFromBinaryStream(&drinkFilling, stream);
 		return true;
 	}
 
-	if (_name == "drinkFillingMax") {
+	if (_name == "PlayerObject.drinkFillingMax") {
 		TypeInfo<int >::parseFromBinaryStream(&drinkFillingMax, stream);
 		return true;
 	}
 
-	if (_name == "starterProfession") {
+	if (_name == "PlayerObject.starterProfession") {
 		TypeInfo<String >::parseFromBinaryStream(&starterProfession, stream);
 		return true;
 	}
 
-	if (_name == "bankLocation") {
+	if (_name == "PlayerObject.bankLocation") {
 		TypeInfo<String >::parseFromBinaryStream(&bankLocation, stream);
 		return true;
 	}
 
-	if (_name == "teleporting") {
+	if (_name == "PlayerObject.teleporting") {
 		TypeInfo<bool >::parseFromBinaryStream(&teleporting, stream);
 		return true;
 	}
 
-	if (_name == "ownedStructures") {
+	if (_name == "PlayerObject.ownedStructures") {
 		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&ownedStructures, stream);
 		return true;
 	}
 
-	if (_name == "maximumLots") {
+	if (_name == "PlayerObject.maximumLots") {
 		TypeInfo<byte >::parseFromBinaryStream(&maximumLots, stream);
 		return true;
 	}
 
-	if (_name == "jediState") {
+	if (_name == "PlayerObject.jediState") {
 		TypeInfo<int >::parseFromBinaryStream(&jediState, stream);
 		return true;
 	}
 
-	if (_name == "adminLevel") {
+	if (_name == "PlayerObject.adminLevel") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&adminLevel, stream);
 		return true;
 	}
 
-	if (_name == "languageID") {
+	if (_name == "PlayerObject.languageID") {
 		TypeInfo<byte >::parseFromBinaryStream(&languageID, stream);
 		return true;
 	}
 
-	if (_name == "xpTypeCapList") {
+	if (_name == "PlayerObject.xpTypeCapList") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&xpTypeCapList, stream);
 		return true;
 	}
 
-	if (_name == "commandMessageStrings") {
+	if (_name == "PlayerObject.commandMessageStrings") {
 		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&commandMessageStrings, stream);
 		return true;
 	}
 
-	if (_name == "experienceList") {
+	if (_name == "PlayerObject.experienceList") {
 		TypeInfo<DeltaVectorMap<String, int> >::parseFromBinaryStream(&experienceList, stream);
 		return true;
 	}
 
-	if (_name == "waypointList") {
+	if (_name == "PlayerObject.waypointList") {
 		TypeInfo<WaypointList >::parseFromBinaryStream(&waypointList, stream);
 		return true;
 	}
 
-	if (_name == "abilityList") {
+	if (_name == "PlayerObject.abilityList") {
 		TypeInfo<AbilityList >::parseFromBinaryStream(&abilityList, stream);
 		return true;
 	}
 
-	if (_name == "friendList") {
+	if (_name == "PlayerObject.friendList") {
 		TypeInfo<FriendList >::parseFromBinaryStream(&friendList, stream);
 		return true;
 	}
 
-	if (_name == "ignoreList") {
+	if (_name == "PlayerObject.ignoreList") {
 		TypeInfo<IgnoreList >::parseFromBinaryStream(&ignoreList, stream);
 		return true;
 	}
 
-	if (_name == "factionStandingList") {
+	if (_name == "PlayerObject.factionStandingList") {
 		TypeInfo<FactionStandingList >::parseFromBinaryStream(&factionStandingList, stream);
 		return true;
 	}
 
-	if (_name == "schematicList") {
+	if (_name == "PlayerObject.schematicList") {
 		TypeInfo<SchematicList >::parseFromBinaryStream(&schematicList, stream);
 		return true;
 	}
 
-	if (_name == "incapacitationCounter") {
+	if (_name == "PlayerObject.incapacitationCounter") {
 		TypeInfo<byte >::parseFromBinaryStream(&incapacitationCounter, stream);
 		return true;
 	}
 
-	if (_name == "suiBoxNextID") {
+	if (_name == "PlayerObject.suiBoxNextID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&suiBoxNextID, stream);
 		return true;
 	}
 
-	if (_name == "suiBoxes") {
+	if (_name == "PlayerObject.suiBoxes") {
 		TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::parseFromBinaryStream(&suiBoxes, stream);
 		return true;
 	}
 
-	if (_name == "chatRooms") {
+	if (_name == "PlayerObject.chatRooms") {
 		TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&chatRooms, stream);
 		return true;
 	}
 
-	if (_name == "duelList") {
+	if (_name == "PlayerObject.duelList") {
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&duelList, stream);
 		return true;
 	}
 
-	if (_name == "bountyLockList") {
+	if (_name == "PlayerObject.bountyLockList") {
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&bountyLockList, stream);
 		return true;
 	}
 
-	if (_name == "declaredResidence") {
+	if (_name == "PlayerObject.declaredResidence") {
 		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&declaredResidence, stream);
 		return true;
 	}
 
-	if (_name == "cloningFacility") {
+	if (_name == "PlayerObject.cloningFacility") {
 		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&cloningFacility, stream);
 		return true;
 	}
 
-	if (_name == "surveyTool") {
+	if (_name == "PlayerObject.surveyTool") {
 		TypeInfo<ManagedWeakReference<SurveyTool* > >::parseFromBinaryStream(&surveyTool, stream);
 		return true;
 	}
 
-	if (_name == "persistentMessages") {
+	if (_name == "PlayerObject.persistentMessages") {
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&persistentMessages, stream);
 		return true;
 	}
 
-	if (_name == "biography") {
+	if (_name == "PlayerObject.biography") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&biography, stream);
 		return true;
 	}
 
-	if (_name == "consentList") {
+	if (_name == "PlayerObject.consentList") {
 		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&consentList, stream);
 		return true;
 	}
 
-	if (_name == "lastNpcConvoMessage") {
+	if (_name == "PlayerObject.lastNpcConvoMessage") {
 		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvoMessage, stream);
 		return true;
 	}
 
-	if (_name == "lastNpcConvo") {
+	if (_name == "PlayerObject.lastNpcConvo") {
 		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvo, stream);
 		return true;
 	}
 
-	if (_name == "lastNpcConvoOptions") {
+	if (_name == "PlayerObject.lastNpcConvoOptions") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&lastNpcConvoOptions, stream);
 		return true;
 	}
 
-	if (_name == "conversatingCreature") {
+	if (_name == "PlayerObject.conversatingCreature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&conversatingCreature, stream);
 		return true;
 	}
 
-	if (_name == "logoutTimeStamp") {
+	if (_name == "PlayerObject.logoutTimeStamp") {
 		TypeInfo<Time >::parseFromBinaryStream(&logoutTimeStamp, stream);
 		return true;
 	}
 
-	if (_name == "onlineStatus") {
+	if (_name == "PlayerObject.onlineStatus") {
 		TypeInfo<int >::parseFromBinaryStream(&onlineStatus, stream);
 		return true;
 	}
 
-	if (_name == "skillPoints") {
+	if (_name == "PlayerObject.skillPoints") {
 		TypeInfo<int >::parseFromBinaryStream(&skillPoints, stream);
 		return true;
 	}
 
-	if (_name == "pvpRating") {
+	if (_name == "PlayerObject.pvpRating") {
 		TypeInfo<int >::parseFromBinaryStream(&pvpRating, stream);
 		return true;
 	}
 
-	if (_name == "factionStatus") {
+	if (_name == "PlayerObject.factionStatus") {
 		TypeInfo<int >::parseFromBinaryStream(&factionStatus, stream);
 		return true;
 	}
 
-	if (_name == "invisible") {
+	if (_name == "PlayerObject.invisible") {
 		TypeInfo<bool >::parseFromBinaryStream(&invisible, stream);
 		return true;
 	}
 
-	if (_name == "hologrindProfessions") {
+	if (_name == "PlayerObject.hologrindProfessions") {
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&hologrindProfessions, stream);
 		return true;
 	}
 
-	if (_name == "clientLastMovementStamp") {
+	if (_name == "PlayerObject.clientLastMovementStamp") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&clientLastMovementStamp, stream);
 		return true;
 	}
 
-	if (_name == "serverLastMovementStamp") {
+	if (_name == "PlayerObject.serverLastMovementStamp") {
 		TypeInfo<Time >::parseFromBinaryStream(&serverLastMovementStamp, stream);
 		return true;
 	}
 
-	if (_name == "lastValidatedPosition") {
+	if (_name == "PlayerObject.lastValidatedPosition") {
 		TypeInfo<ValidatedPosition >::parseFromBinaryStream(&lastValidatedPosition, stream);
 		return true;
 	}
 
-	if (_name == "accountID") {
+	if (_name == "PlayerObject.accountID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
 		return true;
 	}
 
-	if (_name == "raceID") {
+	if (_name == "PlayerObject.raceID") {
 		TypeInfo<byte >::parseFromBinaryStream(&raceID, stream);
 		return true;
 	}
 
-	if (_name == "screenPlayData") {
+	if (_name == "PlayerObject.screenPlayData") {
 		TypeInfo<VectorMap<String, String> >::parseFromBinaryStream(&screenPlayData, stream);
 		return true;
 	}
 
-	if (_name == "permissionGroups") {
+	if (_name == "PlayerObject.permissionGroups") {
 		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&permissionGroups, stream);
 		return true;
 	}
@@ -3223,7 +3223,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "characterBitmask";
+	_name = "PlayerObject.characterBitmask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3231,7 +3231,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "title";
+	_name = "PlayerObject.title";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3239,7 +3239,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "savedTerrainName";
+	_name = "PlayerObject.savedTerrainName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3247,7 +3247,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "savedParentID";
+	_name = "PlayerObject.savedParentID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3255,7 +3255,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "badges";
+	_name = "PlayerObject.badges";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3263,7 +3263,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "forcePower";
+	_name = "PlayerObject.forcePower";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3271,7 +3271,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "forcePowerMax";
+	_name = "PlayerObject.forcePowerMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3279,7 +3279,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "foodFilling";
+	_name = "PlayerObject.foodFilling";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3287,7 +3287,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "foodFillingMax";
+	_name = "PlayerObject.foodFillingMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3295,7 +3295,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "drinkFilling";
+	_name = "PlayerObject.drinkFilling";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3303,7 +3303,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "drinkFillingMax";
+	_name = "PlayerObject.drinkFillingMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3311,7 +3311,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "starterProfession";
+	_name = "PlayerObject.starterProfession";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3319,7 +3319,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bankLocation";
+	_name = "PlayerObject.bankLocation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3327,7 +3327,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "teleporting";
+	_name = "PlayerObject.teleporting";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3335,7 +3335,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ownedStructures";
+	_name = "PlayerObject.ownedStructures";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3343,7 +3343,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maximumLots";
+	_name = "PlayerObject.maximumLots";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3351,7 +3351,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "jediState";
+	_name = "PlayerObject.jediState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3359,7 +3359,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "adminLevel";
+	_name = "PlayerObject.adminLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3367,7 +3367,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "languageID";
+	_name = "PlayerObject.languageID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3375,7 +3375,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "xpTypeCapList";
+	_name = "PlayerObject.xpTypeCapList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3383,7 +3383,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandMessageStrings";
+	_name = "PlayerObject.commandMessageStrings";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3391,7 +3391,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "experienceList";
+	_name = "PlayerObject.experienceList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3399,7 +3399,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "waypointList";
+	_name = "PlayerObject.waypointList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3407,7 +3407,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "abilityList";
+	_name = "PlayerObject.abilityList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3415,7 +3415,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "friendList";
+	_name = "PlayerObject.friendList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3423,7 +3423,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ignoreList";
+	_name = "PlayerObject.ignoreList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3431,7 +3431,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "factionStandingList";
+	_name = "PlayerObject.factionStandingList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3439,7 +3439,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "schematicList";
+	_name = "PlayerObject.schematicList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3447,7 +3447,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "incapacitationCounter";
+	_name = "PlayerObject.incapacitationCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3455,7 +3455,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "suiBoxNextID";
+	_name = "PlayerObject.suiBoxNextID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3463,7 +3463,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "suiBoxes";
+	_name = "PlayerObject.suiBoxes";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3471,7 +3471,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "chatRooms";
+	_name = "PlayerObject.chatRooms";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3479,7 +3479,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "duelList";
+	_name = "PlayerObject.duelList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3487,7 +3487,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bountyLockList";
+	_name = "PlayerObject.bountyLockList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3495,7 +3495,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "declaredResidence";
+	_name = "PlayerObject.declaredResidence";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3503,7 +3503,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cloningFacility";
+	_name = "PlayerObject.cloningFacility";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3511,7 +3511,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "surveyTool";
+	_name = "PlayerObject.surveyTool";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3519,7 +3519,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "persistentMessages";
+	_name = "PlayerObject.persistentMessages";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3527,7 +3527,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "biography";
+	_name = "PlayerObject.biography";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3535,7 +3535,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "consentList";
+	_name = "PlayerObject.consentList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3543,7 +3543,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastNpcConvoMessage";
+	_name = "PlayerObject.lastNpcConvoMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3551,7 +3551,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastNpcConvo";
+	_name = "PlayerObject.lastNpcConvo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3559,7 +3559,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastNpcConvoOptions";
+	_name = "PlayerObject.lastNpcConvoOptions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3567,7 +3567,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "conversatingCreature";
+	_name = "PlayerObject.conversatingCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3575,7 +3575,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "logoutTimeStamp";
+	_name = "PlayerObject.logoutTimeStamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3583,7 +3583,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "onlineStatus";
+	_name = "PlayerObject.onlineStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3591,7 +3591,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillPoints";
+	_name = "PlayerObject.skillPoints";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3599,7 +3599,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "pvpRating";
+	_name = "PlayerObject.pvpRating";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3607,7 +3607,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "factionStatus";
+	_name = "PlayerObject.factionStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3615,7 +3615,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "invisible";
+	_name = "PlayerObject.invisible";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3623,7 +3623,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "hologrindProfessions";
+	_name = "PlayerObject.hologrindProfessions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3631,7 +3631,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "clientLastMovementStamp";
+	_name = "PlayerObject.clientLastMovementStamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3639,7 +3639,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "serverLastMovementStamp";
+	_name = "PlayerObject.serverLastMovementStamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3647,7 +3647,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastValidatedPosition";
+	_name = "PlayerObject.lastValidatedPosition";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3655,7 +3655,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accountID";
+	_name = "PlayerObject.accountID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3663,7 +3663,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "raceID";
+	_name = "PlayerObject.raceID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3671,7 +3671,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "screenPlayData";
+	_name = "PlayerObject.screenPlayData";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -3679,7 +3679,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "permissionGroups";
+	_name = "PlayerObject.permissionGroups";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -556,42 +556,42 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zone") {
+	if (_name == "PlanetManager.zone") {
 		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
-	if (_name == "regionMap") {
+	if (_name == "PlanetManager.regionMap") {
 		TypeInfo<RegionMap >::parseFromBinaryStream(&regionMap, stream);
 		return true;
 	}
 
-	if (_name == "travelFares") {
+	if (_name == "PlanetManager.travelFares") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&travelFares, stream);
 		return true;
 	}
 
-	if (_name == "planetTravelPointList") {
+	if (_name == "PlanetManager.planetTravelPointList") {
 		TypeInfo<Reference<PlanetTravelPointList* > >::parseFromBinaryStream(&planetTravelPointList, stream);
 		return true;
 	}
 
-	if (_name == "shuttleLandingDelay") {
+	if (_name == "PlanetManager.shuttleLandingDelay") {
 		TypeInfo<int >::parseFromBinaryStream(&shuttleLandingDelay, stream);
 		return true;
 	}
 
-	if (_name == "shuttleTakeoffDelay") {
+	if (_name == "PlanetManager.shuttleTakeoffDelay") {
 		TypeInfo<int >::parseFromBinaryStream(&shuttleTakeoffDelay, stream);
 		return true;
 	}
 
-	if (_name == "weatherManager") {
+	if (_name == "PlanetManager.weatherManager") {
 		TypeInfo<ManagedReference<WeatherManager* > >::parseFromBinaryStream(&weatherManager, stream);
 		return true;
 	}
 
-	if (_name == "numberOfCities") {
+	if (_name == "PlanetManager.numberOfCities") {
 		TypeInfo<int >::parseFromBinaryStream(&numberOfCities, stream);
 		return true;
 	}
@@ -611,7 +611,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zone";
+	_name = "PlanetManager.zone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -619,7 +619,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "regionMap";
+	_name = "PlanetManager.regionMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -627,7 +627,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "travelFares";
+	_name = "PlanetManager.travelFares";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -635,7 +635,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "planetTravelPointList";
+	_name = "PlanetManager.planetTravelPointList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -643,7 +643,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shuttleLandingDelay";
+	_name = "PlanetManager.shuttleLandingDelay";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -651,7 +651,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shuttleTakeoffDelay";
+	_name = "PlanetManager.shuttleTakeoffDelay";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -659,7 +659,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "weatherManager";
+	_name = "PlanetManager.weatherManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -667,7 +667,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "numberOfCities";
+	_name = "PlanetManager.numberOfCities";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

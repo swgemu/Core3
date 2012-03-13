@@ -58,9 +58,6 @@ void BuildingObjectImplementation::loadTemplateData(
 	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
-
-	closeobjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-	closeobjects->setNoDuplicateInsertPlan();
 }
 
 void BuildingObjectImplementation::createContainerComponent() {

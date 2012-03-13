@@ -432,37 +432,37 @@ bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* strea
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "camp") {
+	if (_name == "CampSiteActiveArea.camp") {
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&camp, stream);
 		return true;
 	}
 
-	if (_name == "terminal") {
+	if (_name == "CampSiteActiveArea.terminal") {
 		TypeInfo<ManagedReference<Terminal* > >::parseFromBinaryStream(&terminal, stream);
 		return true;
 	}
 
-	if (_name == "campObserver") {
+	if (_name == "CampSiteActiveArea.campObserver") {
 		TypeInfo<ManagedReference<CampSiteObserver* > >::parseFromBinaryStream(&campObserver, stream);
 		return true;
 	}
 
-	if (_name == "abandonTask") {
+	if (_name == "CampSiteActiveArea.abandonTask") {
 		TypeInfo<Reference<CampAbandonTask* > >::parseFromBinaryStream(&abandonTask, stream);
 		return true;
 	}
 
-	if (_name == "despawnTask") {
+	if (_name == "CampSiteActiveArea.despawnTask") {
 		TypeInfo<Reference<CampDespawnTask* > >::parseFromBinaryStream(&despawnTask, stream);
 		return true;
 	}
 
-	if (_name == "campOwner") {
+	if (_name == "CampSiteActiveArea.campOwner") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&campOwner, stream);
 		return true;
 	}
 
-	if (_name == "campStructureData") {
+	if (_name == "CampSiteActiveArea.campStructureData") {
 		TypeInfo<TemplateReference<CampStructureTemplate*> >::parseFromBinaryStream(&campStructureData, stream);
 		return true;
 	}
@@ -482,7 +482,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "camp";
+	_name = "CampSiteActiveArea.camp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -490,7 +490,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terminal";
+	_name = "CampSiteActiveArea.terminal";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -498,7 +498,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "campObserver";
+	_name = "CampSiteActiveArea.campObserver";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -506,7 +506,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "abandonTask";
+	_name = "CampSiteActiveArea.abandonTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -514,7 +514,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "despawnTask";
+	_name = "CampSiteActiveArea.despawnTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -522,7 +522,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "campOwner";
+	_name = "CampSiteActiveArea.campOwner";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -530,7 +530,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "campStructureData";
+	_name = "CampSiteActiveArea.campStructureData";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -447,7 +447,7 @@ bool ResourceManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneServer") {
+	if (_name == "ResourceManager.zoneServer") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
 	}
@@ -467,7 +467,7 @@ int ResourceManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneServer";
+	_name = "ResourceManager.zoneServer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

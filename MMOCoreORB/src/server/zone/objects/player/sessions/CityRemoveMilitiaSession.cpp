@@ -191,22 +191,22 @@ bool CityRemoveMilitiaSessionImplementation::readObjectMember(ObjectInputStream*
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creatureObject") {
+	if (_name == "CityRemoveMilitiaSession.creatureObject") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
-	if (_name == "cityRegion") {
+	if (_name == "CityRemoveMilitiaSession.cityRegion") {
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
 
-	if (_name == "terminalObject") {
+	if (_name == "CityRemoveMilitiaSession.terminalObject") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
 	}
 
-	if (_name == "militiaID") {
+	if (_name == "CityRemoveMilitiaSession.militiaID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&militiaID, stream);
 		return true;
 	}
@@ -226,7 +226,7 @@ int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStrea
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creatureObject";
+	_name = "CityRemoveMilitiaSession.creatureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -234,7 +234,7 @@ int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStrea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityRegion";
+	_name = "CityRemoveMilitiaSession.cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -242,7 +242,7 @@ int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStrea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terminalObject";
+	_name = "CityRemoveMilitiaSession.terminalObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -250,7 +250,7 @@ int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStrea
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "militiaID";
+	_name = "CityRemoveMilitiaSession.militiaID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -12,7 +12,7 @@
  *	TradeSessionStub
  */
 
-enum {RPC_CLEAR__ = 6,RPC_GETACCEPTEDTRADE__,RPC_ADDTRADEITEM__SCENEOBJECT_,RPC_GETTRADEITEM__INT_,RPC_GETTRADESIZE__,RPC_GETMONEYTOTRADE__,RPC_GETTRADETARGETPLAYER__,RPC_ISTRYINGTOTRADE__,RPC_HASVERIFIEDTRADE__,RPC_SETACCEPTEDTRADE__BOOL_,RPC_SETMONEYTOTRADE__INT_,RPC_SETTRADETARGETPLAYER__LONG_,RPC_SETVERIFIEDTRADE__BOOL_};
+enum {RPC_GETACCEPTEDTRADE__ = 6,RPC_ADDTRADEITEM__SCENEOBJECT_,RPC_GETTRADEITEM__INT_,RPC_GETTRADESIZE__,RPC_GETMONEYTOTRADE__,RPC_GETTRADETARGETPLAYER__,RPC_ISTRYINGTOTRADE__,RPC_HASVERIFIEDTRADE__,RPC_SETACCEPTEDTRADE__BOOL_,RPC_SETMONEYTOTRADE__INT_,RPC_SETTRADETARGETPLAYER__LONG_,RPC_SETVERIFIEDTRADE__BOOL_};
 
 TradeSession::TradeSession() : Facade(DummyConstructorParameter::instance()) {
 	TradeSessionImplementation* _implementation = new TradeSessionImplementation();
@@ -27,19 +27,6 @@ TradeSession::~TradeSession() {
 }
 
 
-
-void TradeSession::clear() {
-	TradeSessionImplementation* _implementation = static_cast<TradeSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CLEAR__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->clear();
-}
 
 bool TradeSession::getAcceptedTrade() {
 	TradeSessionImplementation* _implementation = static_cast<TradeSessionImplementation*>(_getImplementation());
@@ -317,27 +304,27 @@ bool TradeSessionImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "tradeTargetPlayer") {
+	if (_name == "TradeSession.tradeTargetPlayer") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&tradeTargetPlayer, stream);
 		return true;
 	}
 
-	if (_name == "itemsToTrade") {
+	if (_name == "TradeSession.itemsToTrade") {
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&itemsToTrade, stream);
 		return true;
 	}
 
-	if (_name == "verifiedTrade") {
+	if (_name == "TradeSession.verifiedTrade") {
 		TypeInfo<bool >::parseFromBinaryStream(&verifiedTrade, stream);
 		return true;
 	}
 
-	if (_name == "acceptedTrade") {
+	if (_name == "TradeSession.acceptedTrade") {
 		TypeInfo<bool >::parseFromBinaryStream(&acceptedTrade, stream);
 		return true;
 	}
 
-	if (_name == "moneyToTrade") {
+	if (_name == "TradeSession.moneyToTrade") {
 		TypeInfo<int >::parseFromBinaryStream(&moneyToTrade, stream);
 		return true;
 	}
@@ -357,7 +344,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "tradeTargetPlayer";
+	_name = "TradeSession.tradeTargetPlayer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -365,7 +352,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "itemsToTrade";
+	_name = "TradeSession.itemsToTrade";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -373,7 +360,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "verifiedTrade";
+	_name = "TradeSession.verifiedTrade";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -381,7 +368,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "acceptedTrade";
+	_name = "TradeSession.acceptedTrade";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -389,7 +376,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "moneyToTrade";
+	_name = "TradeSession.moneyToTrade";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -407,21 +394,6 @@ TradeSessionImplementation::TradeSessionImplementation() {
 	tradeTargetPlayer = 0;
 	// server/zone/objects/player/sessions/TradeSession.idl():  		itemsToTrade.setNoDuplicateInsertPlan();
 	(&itemsToTrade)->setNoDuplicateInsertPlan();
-	// server/zone/objects/player/sessions/TradeSession.idl():  		acceptedTrade = false;
-	acceptedTrade = false;
-	// server/zone/objects/player/sessions/TradeSession.idl():  		verifiedTrade = false;
-	verifiedTrade = false;
-	// server/zone/objects/player/sessions/TradeSession.idl():  		moneyToTrade = 0;
-	moneyToTrade = 0;
-}
-
-void TradeSessionImplementation::clear() {
-	// server/zone/objects/player/sessions/TradeSession.idl():  		tradeTargetPlayer = 0;
-	tradeTargetPlayer = 0;
-	// server/zone/objects/player/sessions/TradeSession.idl():  		itemsToTrade.removeAll();
-	(&itemsToTrade)->removeAll();
-	// server/zone/objects/player/sessions/TradeSession.idl():  		acceptedTrade = false;
-	acceptedTrade = false;
 	// server/zone/objects/player/sessions/TradeSession.idl():  		acceptedTrade = false;
 	acceptedTrade = false;
 	// server/zone/objects/player/sessions/TradeSession.idl():  		verifiedTrade = false;
@@ -506,9 +478,6 @@ Packet* TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_CLEAR__:
-		clear();
-		break;
 	case RPC_GETACCEPTEDTRADE__:
 		resp->insertBoolean(getAcceptedTrade());
 		break;
@@ -550,10 +519,6 @@ Packet* TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	}
 
 	return resp;
-}
-
-void TradeSessionAdapter::clear() {
-	(static_cast<TradeSession*>(stub))->clear();
 }
 
 bool TradeSessionAdapter::getAcceptedTrade() {

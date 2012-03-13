@@ -299,17 +299,17 @@ bool CraftingStationImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "type") {
+	if (_name == "CraftingStation.type") {
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
 	}
 
-	if (_name == "effectiveness") {
+	if (_name == "CraftingStation.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "complexityLevel") {
+	if (_name == "CraftingStation.complexityLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
 		return true;
 	}
@@ -329,7 +329,7 @@ int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "type";
+	_name = "CraftingStation.type";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -337,7 +337,7 @@ int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "effectiveness";
+	_name = "CraftingStation.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -345,7 +345,7 @@ int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "complexityLevel";
+	_name = "CraftingStation.complexityLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

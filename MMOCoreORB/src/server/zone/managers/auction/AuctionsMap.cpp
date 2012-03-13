@@ -401,27 +401,27 @@ bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "auctions") {
+	if (_name == "AuctionsMap.auctions") {
 		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&auctions, stream);
 		return true;
 	}
 
-	if (_name == "vendorItems") {
+	if (_name == "AuctionsMap.vendorItems") {
 		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&vendorItems, stream);
 		return true;
 	}
 
-	if (_name == "playerAuctionCount") {
+	if (_name == "AuctionsMap.playerAuctionCount") {
 		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerAuctionCount, stream);
 		return true;
 	}
 
-	if (_name == "playerVendorItemCount") {
+	if (_name == "AuctionsMap.playerVendorItemCount") {
 		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerVendorItemCount, stream);
 		return true;
 	}
 
-	if (_name == "playerVendorCount") {
+	if (_name == "AuctionsMap.playerVendorCount") {
 		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerVendorCount, stream);
 		return true;
 	}
@@ -441,7 +441,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "auctions";
+	_name = "AuctionsMap.auctions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -449,7 +449,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "vendorItems";
+	_name = "AuctionsMap.vendorItems";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -457,7 +457,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerAuctionCount";
+	_name = "AuctionsMap.playerAuctionCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -465,7 +465,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerVendorItemCount";
+	_name = "AuctionsMap.playerVendorItemCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -473,7 +473,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerVendorCount";
+	_name = "AuctionsMap.playerVendorCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

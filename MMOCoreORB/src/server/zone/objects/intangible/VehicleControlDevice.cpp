@@ -244,7 +244,7 @@ bool VehicleControlDeviceImplementation::readObjectMember(ObjectInputStream* str
 	if (ControlDeviceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "vehicleControlObserver") {
+	if (_name == "VehicleControlDevice.vehicleControlObserver") {
 		TypeInfo<ManagedReference<VehicleControlObserver* > >::parseFromBinaryStream(&vehicleControlObserver, stream);
 		return true;
 	}
@@ -264,7 +264,7 @@ int VehicleControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* s
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "vehicleControlObserver";
+	_name = "VehicleControlDevice.vehicleControlObserver";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -220,22 +220,22 @@ bool CityTreasuryWithdrawalSessionImplementation::readObjectMember(ObjectInputSt
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creatureObject") {
+	if (_name == "CityTreasuryWithdrawalSession.creatureObject") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
-	if (_name == "cityRegion") {
+	if (_name == "CityTreasuryWithdrawalSession.cityRegion") {
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
 
-	if (_name == "terminalObject") {
+	if (_name == "CityTreasuryWithdrawalSession.terminalObject") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
 	}
 
-	if (_name == "reason") {
+	if (_name == "CityTreasuryWithdrawalSession.reason") {
 		TypeInfo<String >::parseFromBinaryStream(&reason, stream);
 		return true;
 	}
@@ -255,7 +255,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creatureObject";
+	_name = "CityTreasuryWithdrawalSession.creatureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -263,7 +263,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityRegion";
+	_name = "CityTreasuryWithdrawalSession.cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -271,7 +271,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terminalObject";
+	_name = "CityTreasuryWithdrawalSession.terminalObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -279,7 +279,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "reason";
+	_name = "CityTreasuryWithdrawalSession.reason";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

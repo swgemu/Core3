@@ -393,37 +393,37 @@ bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "npcTemplateToSpawn") {
+	if (_name == "BountyMissionObjective.npcTemplateToSpawn") {
 		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&npcTemplateToSpawn, stream);
 		return true;
 	}
 
-	if (_name == "npcTarget") {
+	if (_name == "BountyMissionObjective.npcTarget") {
 		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&npcTarget, stream);
 		return true;
 	}
 
-	if (_name == "objectiveStatus") {
+	if (_name == "BountyMissionObjective.objectiveStatus") {
 		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
 		return true;
 	}
 
-	if (_name == "activeDroid") {
+	if (_name == "BountyMissionObjective.activeDroid") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&activeDroid, stream);
 		return true;
 	}
 
-	if (_name == "droid") {
+	if (_name == "BountyMissionObjective.droid") {
 		TypeInfo<Reference<BountyHunterDroid* > >::parseFromBinaryStream(&droid, stream);
 		return true;
 	}
 
-	if (_name == "droidTasks") {
+	if (_name == "BountyMissionObjective.droidTasks") {
 		TypeInfo<FindTargetTaskList >::parseFromBinaryStream(&droidTasks, stream);
 		return true;
 	}
 
-	if (_name == "targetTask") {
+	if (_name == "BountyMissionObjective.targetTask") {
 		TypeInfo<Reference<BountyHunterTargetTask* > >::parseFromBinaryStream(&targetTask, stream);
 		return true;
 	}
@@ -443,7 +443,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "npcTemplateToSpawn";
+	_name = "BountyMissionObjective.npcTemplateToSpawn";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -451,7 +451,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "npcTarget";
+	_name = "BountyMissionObjective.npcTarget";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -459,7 +459,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectiveStatus";
+	_name = "BountyMissionObjective.objectiveStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -467,7 +467,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "activeDroid";
+	_name = "BountyMissionObjective.activeDroid";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -475,7 +475,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "droid";
+	_name = "BountyMissionObjective.droid";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -483,7 +483,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "droidTasks";
+	_name = "BountyMissionObjective.droidTasks";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -491,7 +491,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "targetTask";
+	_name = "BountyMissionObjective.targetTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

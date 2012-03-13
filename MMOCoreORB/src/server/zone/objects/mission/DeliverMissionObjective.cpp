@@ -301,32 +301,32 @@ bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "target") {
+	if (_name == "DeliverMissionObjective.target") {
 		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&target, stream);
 		return true;
 	}
 
-	if (_name == "destination") {
+	if (_name == "DeliverMissionObjective.destination") {
 		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&destination, stream);
 		return true;
 	}
 
-	if (_name == "item") {
+	if (_name == "DeliverMissionObjective.item") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
 		return true;
 	}
 
-	if (_name == "targetSpawnPoint") {
+	if (_name == "DeliverMissionObjective.targetSpawnPoint") {
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&targetSpawnPoint, stream);
 		return true;
 	}
 
-	if (_name == "destinationSpawnPoint") {
+	if (_name == "DeliverMissionObjective.destinationSpawnPoint") {
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&destinationSpawnPoint, stream);
 		return true;
 	}
 
-	if (_name == "objectiveStatus") {
+	if (_name == "DeliverMissionObjective.objectiveStatus") {
 		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
 		return true;
 	}
@@ -346,7 +346,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "target";
+	_name = "DeliverMissionObjective.target";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -354,7 +354,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "destination";
+	_name = "DeliverMissionObjective.destination";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -362,7 +362,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "item";
+	_name = "DeliverMissionObjective.item";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -370,7 +370,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "targetSpawnPoint";
+	_name = "DeliverMissionObjective.targetSpawnPoint";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -378,7 +378,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "destinationSpawnPoint";
+	_name = "DeliverMissionObjective.destinationSpawnPoint";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -386,7 +386,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectiveStatus";
+	_name = "DeliverMissionObjective.objectiveStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

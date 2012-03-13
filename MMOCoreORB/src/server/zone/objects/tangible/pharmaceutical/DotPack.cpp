@@ -344,47 +344,47 @@ bool DotPackImplementation::readObjectMember(ObjectInputStream* stream, const St
 	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "effectiveness") {
+	if (_name == "DotPack.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "range") {
+	if (_name == "DotPack.range") {
 		TypeInfo<float >::parseFromBinaryStream(&range, stream);
 		return true;
 	}
 
-	if (_name == "area") {
+	if (_name == "DotPack.area") {
 		TypeInfo<float >::parseFromBinaryStream(&area, stream);
 		return true;
 	}
 
-	if (_name == "rangeMod") {
+	if (_name == "DotPack.rangeMod") {
 		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
 		return true;
 	}
 
-	if (_name == "potency") {
+	if (_name == "DotPack.potency") {
 		TypeInfo<float >::parseFromBinaryStream(&potency, stream);
 		return true;
 	}
 
-	if (_name == "commandToExecute") {
+	if (_name == "DotPack.commandToExecute") {
 		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
 		return true;
 	}
 
-	if (_name == "duration") {
+	if (_name == "DotPack.duration") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&duration, stream);
 		return true;
 	}
 
-	if (_name == "pool") {
+	if (_name == "DotPack.pool") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&pool, stream);
 		return true;
 	}
 
-	if (_name == "dotType") {
+	if (_name == "DotPack.dotType") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&dotType, stream);
 		return true;
 	}
@@ -404,7 +404,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "effectiveness";
+	_name = "DotPack.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -412,7 +412,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "range";
+	_name = "DotPack.range";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -420,7 +420,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "area";
+	_name = "DotPack.area";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -428,7 +428,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "rangeMod";
+	_name = "DotPack.rangeMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -436,7 +436,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "potency";
+	_name = "DotPack.potency";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -444,7 +444,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandToExecute";
+	_name = "DotPack.commandToExecute";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -452,7 +452,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "duration";
+	_name = "DotPack.duration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -460,7 +460,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "pool";
+	_name = "DotPack.pool";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -468,7 +468,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "dotType";
+	_name = "DotPack.dotType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

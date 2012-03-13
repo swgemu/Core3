@@ -384,27 +384,27 @@ bool ComponentImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "attributeMap") {
+	if (_name == "Component.attributeMap") {
 		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&attributeMap, stream);
 		return true;
 	}
 
-	if (_name == "precisionMap") {
+	if (_name == "Component.precisionMap") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&precisionMap, stream);
 		return true;
 	}
 
-	if (_name == "titleMap") {
+	if (_name == "Component.titleMap") {
 		TypeInfo<VectorMap<String, String> >::parseFromBinaryStream(&titleMap, stream);
 		return true;
 	}
 
-	if (_name == "hiddenMap") {
+	if (_name == "Component.hiddenMap") {
 		TypeInfo<VectorMap<String, bool> >::parseFromBinaryStream(&hiddenMap, stream);
 		return true;
 	}
 
-	if (_name == "keyList") {
+	if (_name == "Component.keyList") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&keyList, stream);
 		return true;
 	}
@@ -424,7 +424,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "attributeMap";
+	_name = "Component.attributeMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -432,7 +432,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "precisionMap";
+	_name = "Component.precisionMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -440,7 +440,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "titleMap";
+	_name = "Component.titleMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -448,7 +448,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "hiddenMap";
+	_name = "Component.hiddenMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -456,7 +456,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "keyList";
+	_name = "Component.keyList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

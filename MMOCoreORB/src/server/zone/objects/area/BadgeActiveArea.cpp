@@ -176,7 +176,7 @@ bool BadgeActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "areaBadge") {
+	if (_name == "BadgeActiveArea.areaBadge") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&areaBadge, stream);
 		return true;
 	}
@@ -196,7 +196,7 @@ int BadgeActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "areaBadge";
+	_name = "BadgeActiveArea.areaBadge";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

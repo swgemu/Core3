@@ -348,37 +348,37 @@ bool FishingSessionImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "player") {
+	if (_name == "FishingSession.player") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "marker") {
+	if (_name == "FishingSession.marker") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&marker, stream);
 		return true;
 	}
 
-	if (_name == "nextAction") {
+	if (_name == "FishingSession.nextAction") {
 		TypeInfo<int >::parseFromBinaryStream(&nextAction, stream);
 		return true;
 	}
 
-	if (_name == "fish") {
+	if (_name == "FishingSession.fish") {
 		TypeInfo<int >::parseFromBinaryStream(&fish, stream);
 		return true;
 	}
 
-	if (_name == "boxID") {
+	if (_name == "FishingSession.boxID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&boxID, stream);
 		return true;
 	}
 
-	if (_name == "fishingState") {
+	if (_name == "FishingSession.fishingState") {
 		TypeInfo<int >::parseFromBinaryStream(&fishingState, stream);
 		return true;
 	}
 
-	if (_name == "mood") {
+	if (_name == "FishingSession.mood") {
 		TypeInfo<String >::parseFromBinaryStream(&mood, stream);
 		return true;
 	}
@@ -398,7 +398,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "player";
+	_name = "FishingSession.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -406,7 +406,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "marker";
+	_name = "FishingSession.marker";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -414,7 +414,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextAction";
+	_name = "FishingSession.nextAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -422,7 +422,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fish";
+	_name = "FishingSession.fish";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -430,7 +430,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "boxID";
+	_name = "FishingSession.boxID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -438,7 +438,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fishingState";
+	_name = "FishingSession.fishingState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -446,7 +446,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "mood";
+	_name = "FishingSession.mood";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

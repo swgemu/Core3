@@ -150,7 +150,7 @@ bool InstrumentObserverImplementation::readObjectMember(ObjectInputStream* strea
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "instrument") {
+	if (_name == "InstrumentObserver.instrument") {
 		TypeInfo<ManagedWeakReference<Instrument* > >::parseFromBinaryStream(&instrument, stream);
 		return true;
 	}
@@ -170,7 +170,7 @@ int InstrumentObserverImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "instrument";
+	_name = "InstrumentObserver.instrument";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

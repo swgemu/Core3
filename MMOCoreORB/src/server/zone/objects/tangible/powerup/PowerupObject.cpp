@@ -250,17 +250,17 @@ bool PowerupObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "modifiers") {
+	if (_name == "PowerupObject.modifiers") {
 		TypeInfo<PowerupStatVector >::parseFromBinaryStream(&modifiers, stream);
 		return true;
 	}
 
-	if (_name == "uses") {
+	if (_name == "PowerupObject.uses") {
 		TypeInfo<int >::parseFromBinaryStream(&uses, stream);
 		return true;
 	}
 
-	if (_name == "type") {
+	if (_name == "PowerupObject.type") {
 		TypeInfo<String >::parseFromBinaryStream(&type, stream);
 		return true;
 	}
@@ -280,7 +280,7 @@ int PowerupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "modifiers";
+	_name = "PowerupObject.modifiers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -288,7 +288,7 @@ int PowerupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "uses";
+	_name = "PowerupObject.uses";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -296,7 +296,7 @@ int PowerupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "type";
+	_name = "PowerupObject.type";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

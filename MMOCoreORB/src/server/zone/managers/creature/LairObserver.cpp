@@ -251,17 +251,17 @@ bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnedCreatures") {
+	if (_name == "LairObserver.spawnedCreatures") {
 		TypeInfo<Vector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&spawnedCreatures, stream);
 		return true;
 	}
 
-	if (_name == "minDifficulty") {
+	if (_name == "LairObserver.minDifficulty") {
 		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
 		return true;
 	}
 
-	if (_name == "maxDifficulty") {
+	if (_name == "LairObserver.maxDifficulty") {
 		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
 		return true;
 	}
@@ -281,7 +281,7 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnedCreatures";
+	_name = "LairObserver.spawnedCreatures";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -289,7 +289,7 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "minDifficulty";
+	_name = "LairObserver.minDifficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -297,7 +297,7 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxDifficulty";
+	_name = "LairObserver.maxDifficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

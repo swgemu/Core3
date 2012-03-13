@@ -268,7 +268,7 @@ bool JunkdealerCreatureImplementation::readObjectMember(ObjectInputStream* strea
 	if (CreatureObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "location") {
+	if (_name == "JunkdealerCreature.location") {
 		TypeInfo<String >::parseFromBinaryStream(&location, stream);
 		return true;
 	}
@@ -288,7 +288,7 @@ int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "location";
+	_name = "JunkdealerCreature.location";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

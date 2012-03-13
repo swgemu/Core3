@@ -653,42 +653,42 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 	if (StructureObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "operating") {
+	if (_name == "InstallationObject.operating") {
 		TypeInfo<bool >::parseFromBinaryStream(&operating, stream);
 		return true;
 	}
 
-	if (_name == "operatorList") {
+	if (_name == "InstallationObject.operatorList") {
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&operatorList, stream);
 		return true;
 	}
 
-	if (_name == "installationType") {
+	if (_name == "InstallationObject.installationType") {
 		TypeInfo<int >::parseFromBinaryStream(&installationType, stream);
 		return true;
 	}
 
-	if (_name == "resourceHopperTimestamp") {
+	if (_name == "InstallationObject.resourceHopperTimestamp") {
 		TypeInfo<Time >::parseFromBinaryStream(&resourceHopperTimestamp, stream);
 		return true;
 	}
 
-	if (_name == "lastMaintenanceTime") {
+	if (_name == "InstallationObject.lastMaintenanceTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&lastMaintenanceTime, stream);
 		return true;
 	}
 
-	if (_name == "resourceHopper") {
+	if (_name == "InstallationObject.resourceHopper") {
 		TypeInfo<HopperList >::parseFromBinaryStream(&resourceHopper, stream);
 		return true;
 	}
 
-	if (_name == "hopperSizeMax") {
+	if (_name == "InstallationObject.hopperSizeMax") {
 		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
 		return true;
 	}
 
-	if (_name == "extractionRate") {
+	if (_name == "InstallationObject.extractionRate") {
 		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
 		return true;
 	}
@@ -708,7 +708,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "operating";
+	_name = "InstallationObject.operating";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -716,7 +716,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "operatorList";
+	_name = "InstallationObject.operatorList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -724,7 +724,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "installationType";
+	_name = "InstallationObject.installationType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -732,7 +732,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "resourceHopperTimestamp";
+	_name = "InstallationObject.resourceHopperTimestamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -740,7 +740,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastMaintenanceTime";
+	_name = "InstallationObject.lastMaintenanceTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -748,7 +748,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "resourceHopper";
+	_name = "InstallationObject.resourceHopper";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -756,7 +756,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "hopperSizeMax";
+	_name = "InstallationObject.hopperSizeMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -764,7 +764,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "extractionRate";
+	_name = "InstallationObject.extractionRate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

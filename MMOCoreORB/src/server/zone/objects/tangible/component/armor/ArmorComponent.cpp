@@ -155,7 +155,7 @@ bool ArmorComponentImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ComponentImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "specialResists") {
+	if (_name == "ArmorComponent.specialResists") {
 		TypeInfo<int >::parseFromBinaryStream(&specialResists, stream);
 		return true;
 	}
@@ -175,7 +175,7 @@ int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "specialResists";
+	_name = "ArmorComponent.specialResists";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

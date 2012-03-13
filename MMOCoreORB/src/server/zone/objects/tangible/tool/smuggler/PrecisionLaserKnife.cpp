@@ -219,7 +219,7 @@ bool PrecisionLaserKnifeImplementation::readObjectMember(ObjectInputStream* stre
 	if (SlicingToolImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "charges") {
+	if (_name == "PrecisionLaserKnife.charges") {
 		TypeInfo<int >::parseFromBinaryStream(&charges, stream);
 		return true;
 	}
@@ -239,7 +239,7 @@ int PrecisionLaserKnifeImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "charges";
+	_name = "PrecisionLaserKnife.charges";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -191,7 +191,7 @@ bool SignObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "attachedObject") {
+	if (_name == "SignObject.attachedObject") {
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&attachedObject, stream);
 		return true;
 	}
@@ -211,7 +211,7 @@ int SignObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "attachedObject";
+	_name = "SignObject.attachedObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

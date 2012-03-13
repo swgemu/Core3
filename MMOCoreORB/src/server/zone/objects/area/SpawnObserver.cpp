@@ -148,7 +148,7 @@ bool SpawnObserverImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnArea") {
+	if (_name == "SpawnObserver.spawnArea") {
 		TypeInfo<ManagedWeakReference<SpawnArea* > >::parseFromBinaryStream(&spawnArea, stream);
 		return true;
 	}
@@ -168,7 +168,7 @@ int SpawnObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnArea";
+	_name = "SpawnObserver.spawnArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

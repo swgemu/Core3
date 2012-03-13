@@ -274,7 +274,7 @@ bool VendorTerminalImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "vendor") {
+	if (_name == "VendorTerminal.vendor") {
 		TypeInfo<Vendor >::parseFromBinaryStream(&vendor, stream);
 		return true;
 	}
@@ -294,7 +294,7 @@ int VendorTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "vendor";
+	_name = "VendorTerminal.vendor";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

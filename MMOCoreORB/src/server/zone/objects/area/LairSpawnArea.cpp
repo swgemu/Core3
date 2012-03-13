@@ -241,27 +241,27 @@ bool LairSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (SpawnAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "currentlySpawnedLairs") {
+	if (_name == "LairSpawnArea.currentlySpawnedLairs") {
 		TypeInfo<int >::parseFromBinaryStream(&currentlySpawnedLairs, stream);
 		return true;
 	}
 
-	if (_name == "exitObserver") {
+	if (_name == "LairSpawnArea.exitObserver") {
 		TypeInfo<ManagedReference<SpawnObserver* > >::parseFromBinaryStream(&exitObserver, stream);
 		return true;
 	}
 
-	if (_name == "spawnedGroupsCount") {
+	if (_name == "LairSpawnArea.spawnedGroupsCount") {
 		TypeInfo<HashTable<unsigned int, int> >::parseFromBinaryStream(&spawnedGroupsCount, stream);
 		return true;
 	}
 
-	if (_name == "lairTypes") {
+	if (_name == "LairSpawnArea.lairTypes") {
 		TypeInfo<HashTable<unsigned long long, unsigned int> >::parseFromBinaryStream(&lairTypes, stream);
 		return true;
 	}
 
-	if (_name == "lastSpawn") {
+	if (_name == "LairSpawnArea.lastSpawn") {
 		TypeInfo<Time >::parseFromBinaryStream(&lastSpawn, stream);
 		return true;
 	}
@@ -281,7 +281,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "currentlySpawnedLairs";
+	_name = "LairSpawnArea.currentlySpawnedLairs";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -289,7 +289,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "exitObserver";
+	_name = "LairSpawnArea.exitObserver";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -297,7 +297,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnedGroupsCount";
+	_name = "LairSpawnArea.spawnedGroupsCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -305,7 +305,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lairTypes";
+	_name = "LairSpawnArea.lairTypes";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -313,7 +313,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastSpawn";
+	_name = "LairSpawnArea.lastSpawn";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

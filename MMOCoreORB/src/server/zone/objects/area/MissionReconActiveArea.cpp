@@ -179,12 +179,12 @@ bool MissionReconActiveAreaImplementation::readObjectMember(ObjectInputStream* s
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "missionObjective") {
+	if (_name == "MissionReconActiveArea.missionObjective") {
 		TypeInfo<ManagedWeakReference<ReconMissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
 		return true;
 	}
 
-	if (_name == "completeTask") {
+	if (_name == "MissionReconActiveArea.completeTask") {
 		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
 		return true;
 	}
@@ -204,7 +204,7 @@ int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "missionObjective";
+	_name = "MissionReconActiveArea.missionObjective";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -212,7 +212,7 @@ int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "completeTask";
+	_name = "MissionReconActiveArea.completeTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

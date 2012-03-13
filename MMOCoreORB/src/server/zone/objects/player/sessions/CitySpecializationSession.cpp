@@ -205,22 +205,22 @@ bool CitySpecializationSessionImplementation::readObjectMember(ObjectInputStream
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creatureObject") {
+	if (_name == "CitySpecializationSession.creatureObject") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
-	if (_name == "cityRegion") {
+	if (_name == "CitySpecializationSession.cityRegion") {
 		TypeInfo<ManagedReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
 	}
 
-	if (_name == "terminalObject") {
+	if (_name == "CitySpecializationSession.terminalObject") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
 	}
 
-	if (_name == "specialization") {
+	if (_name == "CitySpecializationSession.specialization") {
 		TypeInfo<String >::parseFromBinaryStream(&specialization, stream);
 		return true;
 	}
@@ -240,7 +240,7 @@ int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creatureObject";
+	_name = "CitySpecializationSession.creatureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -248,7 +248,7 @@ int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cityRegion";
+	_name = "CitySpecializationSession.cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -256,7 +256,7 @@ int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terminalObject";
+	_name = "CitySpecializationSession.terminalObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -264,7 +264,7 @@ int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "specialization";
+	_name = "CitySpecializationSession.specialization";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

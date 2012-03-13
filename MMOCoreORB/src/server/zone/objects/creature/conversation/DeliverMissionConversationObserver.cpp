@@ -127,7 +127,7 @@ bool DeliverMissionConversationObserverImplementation::readObjectMember(ObjectIn
 	if (ConversationObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "deliverMissionScreenHandler") {
+	if (_name == "DeliverMissionConversationObserver.deliverMissionScreenHandler") {
 		TypeInfo<DeliverMissionScreenHandler >::parseFromBinaryStream(&deliverMissionScreenHandler, stream);
 		return true;
 	}
@@ -147,7 +147,7 @@ int DeliverMissionConversationObserverImplementation::writeObjectMembers(ObjectO
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "deliverMissionScreenHandler";
+	_name = "DeliverMissionConversationObserver.deliverMissionScreenHandler";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

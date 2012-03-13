@@ -334,22 +334,22 @@ bool StructureDeedImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (DeedImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "surplusMaintenance") {
+	if (_name == "StructureDeed.surplusMaintenance") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusMaintenance, stream);
 		return true;
 	}
 
-	if (_name == "surplusPower") {
+	if (_name == "StructureDeed.surplusPower") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusPower, stream);
 		return true;
 	}
 
-	if (_name == "extractionRate") {
+	if (_name == "StructureDeed.extractionRate") {
 		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
 		return true;
 	}
 
-	if (_name == "hopperSizeMax") {
+	if (_name == "StructureDeed.hopperSizeMax") {
 		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
 		return true;
 	}
@@ -369,7 +369,7 @@ int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "surplusMaintenance";
+	_name = "StructureDeed.surplusMaintenance";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -377,7 +377,7 @@ int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "surplusPower";
+	_name = "StructureDeed.surplusPower";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -385,7 +385,7 @@ int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "extractionRate";
+	_name = "StructureDeed.extractionRate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -393,7 +393,7 @@ int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "hopperSizeMax";
+	_name = "StructureDeed.hopperSizeMax";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

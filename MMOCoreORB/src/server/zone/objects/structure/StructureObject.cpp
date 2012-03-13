@@ -942,57 +942,57 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "structurePermissionList") {
+	if (_name == "StructureObject.structurePermissionList") {
 		TypeInfo<StructurePermissionList >::parseFromBinaryStream(&structurePermissionList, stream);
 		return true;
 	}
 
-	if (_name == "lastUpdateTimestamp") {
+	if (_name == "StructureObject.lastUpdateTimestamp") {
 		TypeInfo<Time >::parseFromBinaryStream(&lastUpdateTimestamp, stream);
 		return true;
 	}
 
-	if (_name == "maintenanceExpires") {
+	if (_name == "StructureObject.maintenanceExpires") {
 		TypeInfo<Time >::parseFromBinaryStream(&maintenanceExpires, stream);
 		return true;
 	}
 
-	if (_name == "powerExpires") {
+	if (_name == "StructureObject.powerExpires") {
 		TypeInfo<Time >::parseFromBinaryStream(&powerExpires, stream);
 		return true;
 	}
 
-	if (_name == "ownerObjectID") {
+	if (_name == "StructureObject.ownerObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&ownerObjectID, stream);
 		return true;
 	}
 
-	if (_name == "deedObjectID") {
+	if (_name == "StructureObject.deedObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
 		return true;
 	}
 
-	if (_name == "baseMaintenanceRate") {
+	if (_name == "StructureObject.baseMaintenanceRate") {
 		TypeInfo<int >::parseFromBinaryStream(&baseMaintenanceRate, stream);
 		return true;
 	}
 
-	if (_name == "basePowerRate") {
+	if (_name == "StructureObject.basePowerRate") {
 		TypeInfo<int >::parseFromBinaryStream(&basePowerRate, stream);
 		return true;
 	}
 
-	if (_name == "surplusMaintenance") {
+	if (_name == "StructureObject.surplusMaintenance") {
 		TypeInfo<float >::parseFromBinaryStream(&surplusMaintenance, stream);
 		return true;
 	}
 
-	if (_name == "surplusPower") {
+	if (_name == "StructureObject.surplusPower") {
 		TypeInfo<float >::parseFromBinaryStream(&surplusPower, stream);
 		return true;
 	}
 
-	if (_name == "maintenanceReduced") {
+	if (_name == "StructureObject.maintenanceReduced") {
 		TypeInfo<bool >::parseFromBinaryStream(&maintenanceReduced, stream);
 		return true;
 	}
@@ -1012,7 +1012,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "structurePermissionList";
+	_name = "StructureObject.structurePermissionList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1020,7 +1020,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lastUpdateTimestamp";
+	_name = "StructureObject.lastUpdateTimestamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1028,7 +1028,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maintenanceExpires";
+	_name = "StructureObject.maintenanceExpires";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1036,7 +1036,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "powerExpires";
+	_name = "StructureObject.powerExpires";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1044,7 +1044,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ownerObjectID";
+	_name = "StructureObject.ownerObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1052,7 +1052,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "deedObjectID";
+	_name = "StructureObject.deedObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1060,7 +1060,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "baseMaintenanceRate";
+	_name = "StructureObject.baseMaintenanceRate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1068,7 +1068,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "basePowerRate";
+	_name = "StructureObject.basePowerRate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1076,7 +1076,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "surplusMaintenance";
+	_name = "StructureObject.surplusMaintenance";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1084,7 +1084,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "surplusPower";
+	_name = "StructureObject.surplusPower";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1092,7 +1092,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maintenanceReduced";
+	_name = "StructureObject.maintenanceReduced";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

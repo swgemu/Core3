@@ -269,27 +269,27 @@ bool SpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnCreatureTemplates") {
+	if (_name == "SpawnArea.spawnCreatureTemplates") {
 		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&spawnCreatureTemplates, stream);
 		return true;
 	}
 
-	if (_name == "observers") {
+	if (_name == "SpawnArea.observers") {
 		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
 	}
 
-	if (_name == "noSpawnAreas") {
+	if (_name == "SpawnArea.noSpawnAreas") {
 		TypeInfo<Vector<ManagedReference<SpawnArea* > > >::parseFromBinaryStream(&noSpawnAreas, stream);
 		return true;
 	}
 
-	if (_name == "tier") {
+	if (_name == "SpawnArea.tier") {
 		TypeInfo<int >::parseFromBinaryStream(&tier, stream);
 		return true;
 	}
 
-	if (_name == "spawnConstant") {
+	if (_name == "SpawnArea.spawnConstant") {
 		TypeInfo<int >::parseFromBinaryStream(&spawnConstant, stream);
 		return true;
 	}
@@ -309,7 +309,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnCreatureTemplates";
+	_name = "SpawnArea.spawnCreatureTemplates";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -317,7 +317,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "observers";
+	_name = "SpawnArea.observers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -325,7 +325,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "noSpawnAreas";
+	_name = "SpawnArea.noSpawnAreas";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -333,7 +333,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "tier";
+	_name = "SpawnArea.tier";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -341,7 +341,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "spawnConstant";
+	_name = "SpawnArea.spawnConstant";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

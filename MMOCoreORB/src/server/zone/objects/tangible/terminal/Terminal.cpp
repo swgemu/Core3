@@ -252,7 +252,7 @@ bool TerminalImplementation::readObjectMember(ObjectInputStream* stream, const S
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "controlledObject") {
+	if (_name == "Terminal.controlledObject") {
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&controlledObject, stream);
 		return true;
 	}
@@ -272,7 +272,7 @@ int TerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "controlledObject";
+	_name = "Terminal.controlledObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

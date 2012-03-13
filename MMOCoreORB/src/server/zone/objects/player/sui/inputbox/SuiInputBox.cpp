@@ -202,17 +202,17 @@ bool SuiInputBoxImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (SuiBoxImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "maxInputSize") {
+	if (_name == "SuiInputBox.maxInputSize") {
 		TypeInfo<int >::parseFromBinaryStream(&maxInputSize, stream);
 		return true;
 	}
 
-	if (_name == "defaultInput") {
+	if (_name == "SuiInputBox.defaultInput") {
 		TypeInfo<String >::parseFromBinaryStream(&defaultInput, stream);
 		return true;
 	}
 
-	if (_name == "inputType") {
+	if (_name == "SuiInputBox.inputType") {
 		TypeInfo<int >::parseFromBinaryStream(&inputType, stream);
 		return true;
 	}
@@ -232,7 +232,7 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "maxInputSize";
+	_name = "SuiInputBox.maxInputSize";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -240,7 +240,7 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "defaultInput";
+	_name = "SuiInputBox.defaultInput";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -248,7 +248,7 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "inputType";
+	_name = "SuiInputBox.inputType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

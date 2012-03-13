@@ -593,22 +593,22 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneName") {
+	if (_name == "Zone.zoneName") {
 		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
 	}
 
-	if (_name == "zoneCRC") {
+	if (_name == "Zone.zoneCRC") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&zoneCRC, stream);
 		return true;
 	}
 
-	if (_name == "regionTree") {
+	if (_name == "Zone.regionTree") {
 		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&regionTree, stream);
 		return true;
 	}
 
-	if (_name == "quadTree") {
+	if (_name == "Zone.quadTree") {
 		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&quadTree, stream);
 		return true;
 	}
@@ -628,7 +628,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneName";
+	_name = "Zone.zoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -636,7 +636,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "zoneCRC";
+	_name = "Zone.zoneCRC";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -644,7 +644,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "regionTree";
+	_name = "Zone.regionTree";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -652,7 +652,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "quadTree";
+	_name = "Zone.quadTree";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

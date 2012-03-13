@@ -217,12 +217,12 @@ bool FindSessionImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "player") {
+	if (_name == "FindSession.player") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
-	if (_name == "findSuiBox") {
+	if (_name == "FindSession.findSuiBox") {
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&findSuiBox, stream);
 		return true;
 	}
@@ -242,7 +242,7 @@ int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "player";
+	_name = "FindSession.player";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -250,7 +250,7 @@ int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "findSuiBox";
+	_name = "FindSession.findSuiBox";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

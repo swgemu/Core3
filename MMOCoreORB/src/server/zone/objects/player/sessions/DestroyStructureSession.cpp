@@ -229,17 +229,17 @@ bool DestroyStructureSessionImplementation::readObjectMember(ObjectInputStream* 
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creatureObject") {
+	if (_name == "DestroyStructureSession.creatureObject") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
 	}
 
-	if (_name == "structureObject") {
+	if (_name == "DestroyStructureSession.structureObject") {
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&structureObject, stream);
 		return true;
 	}
 
-	if (_name == "destroyCode") {
+	if (_name == "DestroyStructureSession.destroyCode") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&destroyCode, stream);
 		return true;
 	}
@@ -259,7 +259,7 @@ int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creatureObject";
+	_name = "DestroyStructureSession.creatureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -267,7 +267,7 @@ int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "structureObject";
+	_name = "DestroyStructureSession.structureObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -275,7 +275,7 @@ int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "destroyCode";
+	_name = "DestroyStructureSession.destroyCode";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

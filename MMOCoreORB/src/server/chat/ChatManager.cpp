@@ -677,37 +677,37 @@ bool ChatManagerImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "server") {
+	if (_name == "ChatManager.server") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
-	if (_name == "playerManager") {
+	if (_name == "ChatManager.playerManager") {
 		TypeInfo<ManagedWeakReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
 		return true;
 	}
 
-	if (_name == "gameRooms") {
+	if (_name == "ChatManager.gameRooms") {
 		TypeInfo<VectorMap<String, ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&gameRooms, stream);
 		return true;
 	}
 
-	if (_name == "groupRoom") {
+	if (_name == "ChatManager.groupRoom") {
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&groupRoom, stream);
 		return true;
 	}
 
-	if (_name == "guildRoom") {
+	if (_name == "ChatManager.guildRoom") {
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&guildRoom, stream);
 		return true;
 	}
 
-	if (_name == "roomID") {
+	if (_name == "ChatManager.roomID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&roomID, stream);
 		return true;
 	}
 
-	if (_name == "mute") {
+	if (_name == "ChatManager.mute") {
 		TypeInfo<bool >::parseFromBinaryStream(&mute, stream);
 		return true;
 	}
@@ -727,7 +727,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "server";
+	_name = "ChatManager.server";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -735,7 +735,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerManager";
+	_name = "ChatManager.playerManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -743,7 +743,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "gameRooms";
+	_name = "ChatManager.gameRooms";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -751,7 +751,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "groupRoom";
+	_name = "ChatManager.groupRoom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -759,7 +759,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "guildRoom";
+	_name = "ChatManager.guildRoom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -767,7 +767,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "roomID";
+	_name = "ChatManager.roomID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -775,7 +775,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "mute";
+	_name = "ChatManager.mute";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

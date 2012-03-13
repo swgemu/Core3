@@ -95,7 +95,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		String zoneReference;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<String>("zone", &zoneReference, objectData)) {
+			if (!Serializable::getVariable<String>("SceneObject.zone", &zoneReference, objectData)) {
 				objectData->clear();
 				continue;
 			}

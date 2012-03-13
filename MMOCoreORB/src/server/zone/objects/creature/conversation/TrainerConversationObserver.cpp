@@ -129,7 +129,7 @@ bool TrainerConversationObserverImplementation::readObjectMember(ObjectInputStre
 	if (ConversationObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "trainerScreenHandlers") {
+	if (_name == "TrainerConversationObserver.trainerScreenHandlers") {
 		TypeInfo<TrainerScreenHandlers >::parseFromBinaryStream(&trainerScreenHandlers, stream);
 		return true;
 	}
@@ -149,7 +149,7 @@ int TrainerConversationObserverImplementation::writeObjectMembers(ObjectOutputSt
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "trainerScreenHandlers";
+	_name = "TrainerConversationObserver.trainerScreenHandlers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

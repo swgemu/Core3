@@ -218,7 +218,7 @@ bool FishingBaitObjectImplementation::readObjectMember(ObjectInputStream* stream
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "freshness") {
+	if (_name == "FishingBaitObject.freshness") {
 		TypeInfo<int >::parseFromBinaryStream(&freshness, stream);
 		return true;
 	}
@@ -238,7 +238,7 @@ int FishingBaitObjectImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "freshness";
+	_name = "FishingBaitObject.freshness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

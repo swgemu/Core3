@@ -213,7 +213,7 @@ bool StatePackImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "state") {
+	if (_name == "StatePack.state") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&state, stream);
 		return true;
 	}
@@ -233,7 +233,7 @@ int StatePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "state";
+	_name = "StatePack.state";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

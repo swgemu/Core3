@@ -261,17 +261,17 @@ bool EnhancePackImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "effectiveness") {
+	if (_name == "EnhancePack.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "duration") {
+	if (_name == "EnhancePack.duration") {
 		TypeInfo<float >::parseFromBinaryStream(&duration, stream);
 		return true;
 	}
 
-	if (_name == "attribute") {
+	if (_name == "EnhancePack.attribute") {
 		TypeInfo<byte >::parseFromBinaryStream(&attribute, stream);
 		return true;
 	}
@@ -291,7 +291,7 @@ int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "effectiveness";
+	_name = "EnhancePack.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -299,7 +299,7 @@ int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "duration";
+	_name = "EnhancePack.duration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -307,7 +307,7 @@ int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attribute";
+	_name = "EnhancePack.attribute";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

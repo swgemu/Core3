@@ -264,22 +264,22 @@ bool CurePackImplementation::readObjectMember(ObjectInputStream* stream, const S
 	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "effectiveness") {
+	if (_name == "CurePack.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "area") {
+	if (_name == "CurePack.area") {
 		TypeInfo<float >::parseFromBinaryStream(&area, stream);
 		return true;
 	}
 
-	if (_name == "state") {
+	if (_name == "CurePack.state") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&state, stream);
 		return true;
 	}
 
-	if (_name == "commandToExecute") {
+	if (_name == "CurePack.commandToExecute") {
 		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
 		return true;
 	}
@@ -299,7 +299,7 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "effectiveness";
+	_name = "CurePack.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -307,7 +307,7 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "area";
+	_name = "CurePack.area";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -315,7 +315,7 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "state";
+	_name = "CurePack.state";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -323,7 +323,7 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandToExecute";
+	_name = "CurePack.commandToExecute";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

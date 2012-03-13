@@ -163,7 +163,7 @@ bool StaticSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (SpawnAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "groups") {
+	if (_name == "StaticSpawnArea.groups") {
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&groups, stream);
 		return true;
 	}
@@ -183,7 +183,7 @@ int StaticSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "groups";
+	_name = "StaticSpawnArea.groups";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

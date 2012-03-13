@@ -301,22 +301,22 @@ bool TicketObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "departurePlanet") {
+	if (_name == "TicketObject.departurePlanet") {
 		TypeInfo<String >::parseFromBinaryStream(&departurePlanet, stream);
 		return true;
 	}
 
-	if (_name == "departurePoint") {
+	if (_name == "TicketObject.departurePoint") {
 		TypeInfo<String >::parseFromBinaryStream(&departurePoint, stream);
 		return true;
 	}
 
-	if (_name == "arrivalPlanet") {
+	if (_name == "TicketObject.arrivalPlanet") {
 		TypeInfo<String >::parseFromBinaryStream(&arrivalPlanet, stream);
 		return true;
 	}
 
-	if (_name == "arrivalPoint") {
+	if (_name == "TicketObject.arrivalPoint") {
 		TypeInfo<String >::parseFromBinaryStream(&arrivalPoint, stream);
 		return true;
 	}
@@ -336,7 +336,7 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "departurePlanet";
+	_name = "TicketObject.departurePlanet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -344,7 +344,7 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "departurePoint";
+	_name = "TicketObject.departurePoint";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -352,7 +352,7 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "arrivalPlanet";
+	_name = "TicketObject.arrivalPlanet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -360,7 +360,7 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "arrivalPoint";
+	_name = "TicketObject.arrivalPoint";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

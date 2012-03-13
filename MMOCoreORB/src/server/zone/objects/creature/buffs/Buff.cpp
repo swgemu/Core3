@@ -702,122 +702,122 @@ bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "creature") {
+	if (_name == "Buff.creature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creature, stream);
 		return true;
 	}
 
-	if (_name == "attributeModifiers") {
+	if (_name == "Buff.attributeModifiers") {
 		TypeInfo<VectorMap<byte, int> >::parseFromBinaryStream(&attributeModifiers, stream);
 		return true;
 	}
 
-	if (_name == "skillModifiers") {
+	if (_name == "Buff.skillModifiers") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&skillModifiers, stream);
 		return true;
 	}
 
-	if (_name == "states") {
+	if (_name == "Buff.states") {
 		TypeInfo<Vector<unsigned long long> >::parseFromBinaryStream(&states, stream);
 		return true;
 	}
 
-	if (_name == "buffName") {
+	if (_name == "Buff.buffName") {
 		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
 		return true;
 	}
 
-	if (_name == "buffDuration") {
+	if (_name == "Buff.buffDuration") {
 		TypeInfo<float >::parseFromBinaryStream(&buffDuration, stream);
 		return true;
 	}
 
-	if (_name == "buffCRC") {
+	if (_name == "Buff.buffCRC") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
 		return true;
 	}
 
-	if (_name == "buffType") {
+	if (_name == "Buff.buffType") {
 		TypeInfo<int >::parseFromBinaryStream(&buffType, stream);
 		return true;
 	}
 
-	if (_name == "speedMultiplierMod") {
+	if (_name == "Buff.speedMultiplierMod") {
 		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
 		return true;
 	}
 
-	if (_name == "accelerationMultiplierMod") {
+	if (_name == "Buff.accelerationMultiplierMod") {
 		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
 		return true;
 	}
 
-	if (_name == "fillAttributesOnBuff") {
+	if (_name == "Buff.fillAttributesOnBuff") {
 		TypeInfo<bool >::parseFromBinaryStream(&fillAttributesOnBuff, stream);
 		return true;
 	}
 
-	if (_name == "startMessage") {
+	if (_name == "Buff.startMessage") {
 		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&startMessage, stream);
 		return true;
 	}
 
-	if (_name == "endMessage") {
+	if (_name == "Buff.endMessage") {
 		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&endMessage, stream);
 		return true;
 	}
 
-	if (_name == "startFlyFile") {
+	if (_name == "Buff.startFlyFile") {
 		TypeInfo<String >::parseFromBinaryStream(&startFlyFile, stream);
 		return true;
 	}
 
-	if (_name == "startFlyAux") {
+	if (_name == "Buff.startFlyAux") {
 		TypeInfo<String >::parseFromBinaryStream(&startFlyAux, stream);
 		return true;
 	}
 
-	if (_name == "startFlyRed") {
+	if (_name == "Buff.startFlyRed") {
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyRed, stream);
 		return true;
 	}
 
-	if (_name == "startFlyGreen") {
+	if (_name == "Buff.startFlyGreen") {
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyGreen, stream);
 		return true;
 	}
 
-	if (_name == "startFlyBlue") {
+	if (_name == "Buff.startFlyBlue") {
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyBlue, stream);
 		return true;
 	}
 
-	if (_name == "endFlyFile") {
+	if (_name == "Buff.endFlyFile") {
 		TypeInfo<String >::parseFromBinaryStream(&endFlyFile, stream);
 		return true;
 	}
 
-	if (_name == "endFlyAux") {
+	if (_name == "Buff.endFlyAux") {
 		TypeInfo<String >::parseFromBinaryStream(&endFlyAux, stream);
 		return true;
 	}
 
-	if (_name == "endFlyRed") {
+	if (_name == "Buff.endFlyRed") {
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyRed, stream);
 		return true;
 	}
 
-	if (_name == "endFlyGreen") {
+	if (_name == "Buff.endFlyGreen") {
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyGreen, stream);
 		return true;
 	}
 
-	if (_name == "endFlyBlue") {
+	if (_name == "Buff.endFlyBlue") {
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyBlue, stream);
 		return true;
 	}
 
-	if (_name == "nextExecutionTime") {
+	if (_name == "Buff.nextExecutionTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextExecutionTime, stream);
 		return true;
 	}
@@ -837,7 +837,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "creature";
+	_name = "Buff.creature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -845,7 +845,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "attributeModifiers";
+	_name = "Buff.attributeModifiers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -853,7 +853,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillModifiers";
+	_name = "Buff.skillModifiers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -861,7 +861,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "states";
+	_name = "Buff.states";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -869,7 +869,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffName";
+	_name = "Buff.buffName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -877,7 +877,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffDuration";
+	_name = "Buff.buffDuration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -885,7 +885,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffCRC";
+	_name = "Buff.buffCRC";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -893,7 +893,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "buffType";
+	_name = "Buff.buffType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -901,7 +901,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "speedMultiplierMod";
+	_name = "Buff.speedMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -909,7 +909,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "accelerationMultiplierMod";
+	_name = "Buff.accelerationMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -917,7 +917,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "fillAttributesOnBuff";
+	_name = "Buff.fillAttributesOnBuff";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -925,7 +925,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startMessage";
+	_name = "Buff.startMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -933,7 +933,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endMessage";
+	_name = "Buff.endMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -941,7 +941,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startFlyFile";
+	_name = "Buff.startFlyFile";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -949,7 +949,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startFlyAux";
+	_name = "Buff.startFlyAux";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -957,7 +957,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startFlyRed";
+	_name = "Buff.startFlyRed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -965,7 +965,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startFlyGreen";
+	_name = "Buff.startFlyGreen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -973,7 +973,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "startFlyBlue";
+	_name = "Buff.startFlyBlue";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -981,7 +981,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endFlyFile";
+	_name = "Buff.endFlyFile";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -989,7 +989,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endFlyAux";
+	_name = "Buff.endFlyAux";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -997,7 +997,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endFlyRed";
+	_name = "Buff.endFlyRed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1005,7 +1005,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endFlyGreen";
+	_name = "Buff.endFlyGreen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1013,7 +1013,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "endFlyBlue";
+	_name = "Buff.endFlyBlue";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1021,7 +1021,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "nextExecutionTime";
+	_name = "Buff.nextExecutionTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

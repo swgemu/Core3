@@ -189,7 +189,7 @@ bool DelayedBuffImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (BuffImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "usesRemaining") {
+	if (_name == "DelayedBuff.usesRemaining") {
 		TypeInfo<int >::parseFromBinaryStream(&usesRemaining, stream);
 		return true;
 	}
@@ -209,7 +209,7 @@ int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "usesRemaining";
+	_name = "DelayedBuff.usesRemaining";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

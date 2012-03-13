@@ -332,22 +332,22 @@ bool FactoryObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (InstallationObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "craftingTabsSupported") {
+	if (_name == "FactoryObject.craftingTabsSupported") {
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&craftingTabsSupported, stream);
 		return true;
 	}
 
-	if (_name == "timer") {
+	if (_name == "FactoryObject.timer") {
 		TypeInfo<int >::parseFromBinaryStream(&timer, stream);
 		return true;
 	}
 
-	if (_name == "currentUserName") {
+	if (_name == "FactoryObject.currentUserName") {
 		TypeInfo<String >::parseFromBinaryStream(&currentUserName, stream);
 		return true;
 	}
 
-	if (_name == "currentRunCount") {
+	if (_name == "FactoryObject.currentRunCount") {
 		TypeInfo<int >::parseFromBinaryStream(&currentRunCount, stream);
 		return true;
 	}
@@ -367,7 +367,7 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "craftingTabsSupported";
+	_name = "FactoryObject.craftingTabsSupported";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -375,7 +375,7 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "timer";
+	_name = "FactoryObject.timer";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -383,7 +383,7 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentUserName";
+	_name = "FactoryObject.currentUserName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -391,7 +391,7 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentRunCount";
+	_name = "FactoryObject.currentRunCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

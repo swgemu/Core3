@@ -241,7 +241,7 @@ bool ContainerImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "locked") {
+	if (_name == "Container.locked") {
 		TypeInfo<bool >::parseFromBinaryStream(&locked, stream);
 		return true;
 	}
@@ -261,7 +261,7 @@ int ContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "locked";
+	_name = "Container.locked";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

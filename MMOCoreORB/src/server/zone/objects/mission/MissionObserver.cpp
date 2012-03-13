@@ -165,7 +165,7 @@ bool MissionObserverImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "missionObjective") {
+	if (_name == "MissionObserver.missionObjective") {
 		TypeInfo<ManagedWeakReference<MissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
 		return true;
 	}
@@ -185,7 +185,7 @@ int MissionObserverImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "missionObjective";
+	_name = "MissionObserver.missionObjective";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -391,7 +391,7 @@ bool VehicleObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (CreatureObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "vehicleType") {
+	if (_name == "VehicleObject.vehicleType") {
 		TypeInfo<int >::parseFromBinaryStream(&vehicleType, stream);
 		return true;
 	}
@@ -411,7 +411,7 @@ int VehicleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "vehicleType";
+	_name = "VehicleObject.vehicleType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -277,17 +277,17 @@ bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "socketCount") {
+	if (_name == "WearableObject.socketCount") {
 		TypeInfo<int >::parseFromBinaryStream(&socketCount, stream);
 		return true;
 	}
 
-	if (_name == "socketsGenerated") {
+	if (_name == "WearableObject.socketsGenerated") {
 		TypeInfo<bool >::parseFromBinaryStream(&socketsGenerated, stream);
 		return true;
 	}
 
-	if (_name == "wearableSkillModMap") {
+	if (_name == "WearableObject.wearableSkillModMap") {
 		TypeInfo<WearableSkillModMap >::parseFromBinaryStream(&wearableSkillModMap, stream);
 		return true;
 	}
@@ -307,7 +307,7 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "socketCount";
+	_name = "WearableObject.socketCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -315,7 +315,7 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "socketsGenerated";
+	_name = "WearableObject.socketsGenerated";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -323,7 +323,7 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "wearableSkillModMap";
+	_name = "WearableObject.wearableSkillModMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

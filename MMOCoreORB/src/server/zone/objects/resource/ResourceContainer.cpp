@@ -365,12 +365,12 @@ bool ResourceContainerImplementation::readObjectMember(ObjectInputStream* stream
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnObject") {
+	if (_name == "ResourceContainer.spawnObject") {
 		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&spawnObject, stream);
 		return true;
 	}
 
-	if (_name == "stackQuantity") {
+	if (_name == "ResourceContainer.stackQuantity") {
 		TypeInfo<int >::parseFromBinaryStream(&stackQuantity, stream);
 		return true;
 	}
@@ -390,7 +390,7 @@ int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnObject";
+	_name = "ResourceContainer.spawnObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -398,7 +398,7 @@ int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "stackQuantity";
+	_name = "ResourceContainer.stackQuantity";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

@@ -294,12 +294,12 @@ bool CellObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "cellNumber") {
+	if (_name == "CellObject.cellNumber") {
 		TypeInfo<int >::parseFromBinaryStream(&cellNumber, stream);
 		return true;
 	}
 
-	if (_name == "currentNumberOfItems") {
+	if (_name == "CellObject.currentNumberOfItems") {
 		TypeInfo<int >::parseFromBinaryStream(&currentNumberOfItems, stream);
 		return true;
 	}
@@ -319,7 +319,7 @@ int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "cellNumber";
+	_name = "CellObject.cellNumber";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -327,7 +327,7 @@ int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentNumberOfItems";
+	_name = "CellObject.currentNumberOfItems";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

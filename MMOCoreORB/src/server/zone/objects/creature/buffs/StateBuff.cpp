@@ -159,7 +159,7 @@ bool StateBuffImplementation::readObjectMember(ObjectInputStream* stream, const 
 	if (BuffImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "stateApplied") {
+	if (_name == "StateBuff.stateApplied") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&stateApplied, stream);
 		return true;
 	}
@@ -179,7 +179,7 @@ int StateBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "stateApplied";
+	_name = "StateBuff.stateApplied";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

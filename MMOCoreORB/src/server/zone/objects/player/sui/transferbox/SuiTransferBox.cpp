@@ -195,42 +195,42 @@ bool SuiTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (SuiBoxImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lblFrom") {
+	if (_name == "SuiTransferBox.lblFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblStartingFrom") {
+	if (_name == "SuiTransferBox.lblStartingFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblInputFrom") {
+	if (_name == "SuiTransferBox.lblInputFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&lblInputFrom, stream);
 		return true;
 	}
 
-	if (_name == "lblTo") {
+	if (_name == "SuiTransferBox.lblTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblTo, stream);
 		return true;
 	}
 
-	if (_name == "lblStartingTo") {
+	if (_name == "SuiTransferBox.lblStartingTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingTo, stream);
 		return true;
 	}
 
-	if (_name == "lblInputTo") {
+	if (_name == "SuiTransferBox.lblInputTo") {
 		TypeInfo<String >::parseFromBinaryStream(&lblInputTo, stream);
 		return true;
 	}
 
-	if (_name == "convertRatioFrom") {
+	if (_name == "SuiTransferBox.convertRatioFrom") {
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioFrom, stream);
 		return true;
 	}
 
-	if (_name == "convertRatioTo") {
+	if (_name == "SuiTransferBox.convertRatioTo") {
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioTo, stream);
 		return true;
 	}
@@ -250,7 +250,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lblFrom";
+	_name = "SuiTransferBox.lblFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -258,7 +258,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblStartingFrom";
+	_name = "SuiTransferBox.lblStartingFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -266,7 +266,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblInputFrom";
+	_name = "SuiTransferBox.lblInputFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -274,7 +274,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblTo";
+	_name = "SuiTransferBox.lblTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -282,7 +282,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblStartingTo";
+	_name = "SuiTransferBox.lblStartingTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -290,7 +290,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "lblInputTo";
+	_name = "SuiTransferBox.lblInputTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -298,7 +298,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "convertRatioFrom";
+	_name = "SuiTransferBox.convertRatioFrom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -306,7 +306,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "convertRatioTo";
+	_name = "SuiTransferBox.convertRatioTo";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

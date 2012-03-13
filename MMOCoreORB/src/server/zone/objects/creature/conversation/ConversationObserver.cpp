@@ -164,12 +164,12 @@ bool ConversationObserverImplementation::readObjectMember(ObjectInputStream* str
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "conversationTemplate") {
+	if (_name == "ConversationObserver.conversationTemplate") {
 		TypeInfo<Reference<ConversationTemplate* > >::parseFromBinaryStream(&conversationTemplate, stream);
 		return true;
 	}
 
-	if (_name == "screenHandlers") {
+	if (_name == "ConversationObserver.screenHandlers") {
 		TypeInfo<VectorMap<String, ScreenHandler*> >::parseFromBinaryStream(&screenHandlers, stream);
 		return true;
 	}
@@ -189,7 +189,7 @@ int ConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* s
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "conversationTemplate";
+	_name = "ConversationObserver.conversationTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -197,7 +197,7 @@ int ConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "screenHandlers";
+	_name = "ConversationObserver.screenHandlers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

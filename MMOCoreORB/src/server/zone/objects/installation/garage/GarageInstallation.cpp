@@ -158,7 +158,7 @@ bool GarageInstallationImplementation::readObjectMember(ObjectInputStream* strea
 	if (InstallationObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "garageArea") {
+	if (_name == "GarageInstallation.garageArea") {
 		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&garageArea, stream);
 		return true;
 	}
@@ -178,7 +178,7 @@ int GarageInstallationImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "garageArea";
+	_name = "GarageInstallation.garageArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

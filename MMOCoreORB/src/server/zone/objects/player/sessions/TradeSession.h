@@ -55,8 +55,6 @@ class TradeSession : public Facade {
 public:
 	TradeSession();
 
-	void clear();
-
 	bool getAcceptedTrade();
 
 	void addTradeItem(SceneObject* object);
@@ -126,8 +124,6 @@ public:
 
 	TradeSessionImplementation(DummyConstructorParameter* param);
 
-	void clear();
-
 	bool getAcceptedTrade();
 
 	void addTradeItem(SceneObject* object);
@@ -196,8 +192,6 @@ public:
 	TradeSessionAdapter(TradeSession* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void clear();
 
 	bool getAcceptedTrade();
 

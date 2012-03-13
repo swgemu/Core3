@@ -210,7 +210,7 @@ bool ShipObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "totalMass") {
+	if (_name == "ShipObject.totalMass") {
 		TypeInfo<float >::parseFromBinaryStream(&totalMass, stream);
 		return true;
 	}
@@ -230,7 +230,7 @@ int ShipObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "totalMass";
+	_name = "ShipObject.totalMass";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

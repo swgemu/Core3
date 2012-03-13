@@ -391,27 +391,27 @@ bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, con
 	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "status") {
+	if (_name == "CraftingTool.status") {
 		TypeInfo<String >::parseFromBinaryStream(&status, stream);
 		return true;
 	}
 
-	if (_name == "type") {
+	if (_name == "CraftingTool.type") {
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
 	}
 
-	if (_name == "effectiveness") {
+	if (_name == "CraftingTool.effectiveness") {
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
 	}
 
-	if (_name == "complexityLevel") {
+	if (_name == "CraftingTool.complexityLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
 		return true;
 	}
 
-	if (_name == "enabledTabs") {
+	if (_name == "CraftingTool.enabledTabs") {
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&enabledTabs, stream);
 		return true;
 	}
@@ -431,7 +431,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "status";
+	_name = "CraftingTool.status";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -439,7 +439,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "type";
+	_name = "CraftingTool.type";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -447,7 +447,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "effectiveness";
+	_name = "CraftingTool.effectiveness";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -455,7 +455,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "complexityLevel";
+	_name = "CraftingTool.complexityLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -463,7 +463,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "enabledTabs";
+	_name = "CraftingTool.enabledTabs";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

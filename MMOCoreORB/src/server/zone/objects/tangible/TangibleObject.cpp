@@ -1113,87 +1113,87 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "targetable") {
+	if (_name == "TangibleObject.targetable") {
 		TypeInfo<bool >::parseFromBinaryStream(&targetable, stream);
 		return true;
 	}
 
-	if (_name == "complexity") {
+	if (_name == "TangibleObject.complexity") {
 		TypeInfo<float >::parseFromBinaryStream(&complexity, stream);
 		return true;
 	}
 
-	if (_name == "volume") {
+	if (_name == "TangibleObject.volume") {
 		TypeInfo<int >::parseFromBinaryStream(&volume, stream);
 		return true;
 	}
 
-	if (_name == "faction") {
+	if (_name == "TangibleObject.faction") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&faction, stream);
 		return true;
 	}
 
-	if (_name == "customizationVariables") {
+	if (_name == "TangibleObject.customizationVariables") {
 		TypeInfo<CustomizationVariables >::parseFromBinaryStream(&customizationVariables, stream);
 		return true;
 	}
 
-	if (_name == "conditionDamage") {
+	if (_name == "TangibleObject.conditionDamage") {
 		TypeInfo<int >::parseFromBinaryStream(&conditionDamage, stream);
 		return true;
 	}
 
-	if (_name == "maxCondition") {
+	if (_name == "TangibleObject.maxCondition") {
 		TypeInfo<int >::parseFromBinaryStream(&maxCondition, stream);
 		return true;
 	}
 
-	if (_name == "useCount") {
+	if (_name == "TangibleObject.useCount") {
 		TypeInfo<int >::parseFromBinaryStream(&useCount, stream);
 		return true;
 	}
 
-	if (_name == "level") {
+	if (_name == "TangibleObject.level") {
 		TypeInfo<short >::parseFromBinaryStream(&level, stream);
 		return true;
 	}
 
-	if (_name == "optionsBitmask") {
+	if (_name == "TangibleObject.optionsBitmask") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&optionsBitmask, stream);
 		return true;
 	}
 
-	if (_name == "pvpStatusBitmask") {
+	if (_name == "TangibleObject.pvpStatusBitmask") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&pvpStatusBitmask, stream);
 		return true;
 	}
 
-	if (_name == "unknownByte") {
+	if (_name == "TangibleObject.unknownByte") {
 		TypeInfo<byte >::parseFromBinaryStream(&unknownByte, stream);
 		return true;
 	}
 
-	if (_name == "craftersName") {
+	if (_name == "TangibleObject.craftersName") {
 		TypeInfo<String >::parseFromBinaryStream(&craftersName, stream);
 		return true;
 	}
 
-	if (_name == "objectSerial") {
+	if (_name == "TangibleObject.objectSerial") {
 		TypeInfo<String >::parseFromBinaryStream(&objectSerial, stream);
 		return true;
 	}
 
-	if (_name == "defenderList") {
+	if (_name == "TangibleObject.defenderList") {
 		TypeInfo<DeltaVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&defenderList, stream);
 		return true;
 	}
 
-	if (_name == "sliceable") {
+	if (_name == "TangibleObject.sliceable") {
 		TypeInfo<bool >::parseFromBinaryStream(&sliceable, stream);
 		return true;
 	}
 
-	if (_name == "sliced") {
+	if (_name == "TangibleObject.sliced") {
 		TypeInfo<bool >::parseFromBinaryStream(&sliced, stream);
 		return true;
 	}
@@ -1213,7 +1213,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "targetable";
+	_name = "TangibleObject.targetable";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1221,7 +1221,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "complexity";
+	_name = "TangibleObject.complexity";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1229,7 +1229,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "volume";
+	_name = "TangibleObject.volume";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1237,7 +1237,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "faction";
+	_name = "TangibleObject.faction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1245,7 +1245,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "customizationVariables";
+	_name = "TangibleObject.customizationVariables";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1253,7 +1253,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "conditionDamage";
+	_name = "TangibleObject.conditionDamage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1261,7 +1261,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "maxCondition";
+	_name = "TangibleObject.maxCondition";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1269,7 +1269,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "useCount";
+	_name = "TangibleObject.useCount";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1277,7 +1277,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "level";
+	_name = "TangibleObject.level";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1285,7 +1285,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "optionsBitmask";
+	_name = "TangibleObject.optionsBitmask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1293,7 +1293,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "pvpStatusBitmask";
+	_name = "TangibleObject.pvpStatusBitmask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1301,7 +1301,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "unknownByte";
+	_name = "TangibleObject.unknownByte";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1309,7 +1309,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "craftersName";
+	_name = "TangibleObject.craftersName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1317,7 +1317,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectSerial";
+	_name = "TangibleObject.objectSerial";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1325,7 +1325,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "defenderList";
+	_name = "TangibleObject.defenderList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1333,7 +1333,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sliceable";
+	_name = "TangibleObject.sliceable";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1341,7 +1341,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "sliced";
+	_name = "TangibleObject.sliced";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

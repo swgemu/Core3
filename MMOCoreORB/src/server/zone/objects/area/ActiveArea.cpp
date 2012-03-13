@@ -366,22 +366,22 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "radius2") {
+	if (_name == "ActiveArea.radius2") {
 		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
 		return true;
 	}
 
-	if (_name == "noBuildArea") {
+	if (_name == "ActiveArea.noBuildArea") {
 		TypeInfo<bool >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
 	}
 
-	if (_name == "municipalZone") {
+	if (_name == "ActiveArea.municipalZone") {
 		TypeInfo<bool >::parseFromBinaryStream(&municipalZone, stream);
 		return true;
 	}
 
-	if (_name == "cellObjectID") {
+	if (_name == "ActiveArea.cellObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&cellObjectID, stream);
 		return true;
 	}
@@ -401,7 +401,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "radius2";
+	_name = "ActiveArea.radius2";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -409,7 +409,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "noBuildArea";
+	_name = "ActiveArea.noBuildArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -417,7 +417,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "municipalZone";
+	_name = "ActiveArea.municipalZone";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -425,7 +425,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "cellObjectID";
+	_name = "ActiveArea.cellObjectID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

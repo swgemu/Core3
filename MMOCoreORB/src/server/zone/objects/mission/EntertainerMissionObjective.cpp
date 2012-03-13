@@ -238,22 +238,22 @@ bool EntertainerMissionObjectiveImplementation::readObjectMember(ObjectInputStre
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "inMissionArea") {
+	if (_name == "EntertainerMissionObjective.inMissionArea") {
 		TypeInfo<bool >::parseFromBinaryStream(&inMissionArea, stream);
 		return true;
 	}
 
-	if (_name == "isEntertaining") {
+	if (_name == "EntertainerMissionObjective.isEntertaining") {
 		TypeInfo<bool >::parseFromBinaryStream(&isEntertaining, stream);
 		return true;
 	}
 
-	if (_name == "locationActiveArea") {
+	if (_name == "EntertainerMissionObjective.locationActiveArea") {
 		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
 		return true;
 	}
 
-	if (_name == "completeTask") {
+	if (_name == "EntertainerMissionObjective.completeTask") {
 		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
 		return true;
 	}
@@ -273,7 +273,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "inMissionArea";
+	_name = "EntertainerMissionObjective.inMissionArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -281,7 +281,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "isEntertaining";
+	_name = "EntertainerMissionObjective.isEntertaining";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -289,7 +289,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "locationActiveArea";
+	_name = "EntertainerMissionObjective.locationActiveArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -297,7 +297,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "completeTask";
+	_name = "EntertainerMissionObjective.completeTask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

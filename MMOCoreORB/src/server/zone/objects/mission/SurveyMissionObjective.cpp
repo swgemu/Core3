@@ -233,12 +233,12 @@ bool SurveyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* s
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "spawnFamily") {
+	if (_name == "SurveyMissionObjective.spawnFamily") {
 		TypeInfo<String >::parseFromBinaryStream(&spawnFamily, stream);
 		return true;
 	}
 
-	if (_name == "efficiency") {
+	if (_name == "SurveyMissionObjective.efficiency") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&efficiency, stream);
 		return true;
 	}
@@ -258,7 +258,7 @@ int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "spawnFamily";
+	_name = "SurveyMissionObjective.spawnFamily";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -266,7 +266,7 @@ int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "efficiency";
+	_name = "SurveyMissionObjective.efficiency";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

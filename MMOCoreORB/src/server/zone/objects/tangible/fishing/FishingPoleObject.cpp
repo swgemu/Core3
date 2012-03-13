@@ -287,7 +287,7 @@ bool FishingPoleObjectImplementation::readObjectMember(ObjectInputStream* stream
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "quality") {
+	if (_name == "FishingPoleObject.quality") {
 		TypeInfo<int >::parseFromBinaryStream(&quality, stream);
 		return true;
 	}
@@ -307,7 +307,7 @@ int FishingPoleObjectImplementation::writeObjectMembers(ObjectOutputStream* stre
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "quality";
+	_name = "FishingPoleObject.quality";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

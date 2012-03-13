@@ -993,47 +993,47 @@ bool MissionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "server") {
+	if (_name == "MissionManager.server") {
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
-	if (_name == "missionNpcSpawnMap") {
+	if (_name == "MissionManager.missionNpcSpawnMap") {
 		TypeInfo<MissionNpcSpawnMap >::parseFromBinaryStream(&missionNpcSpawnMap, stream);
 		return true;
 	}
 
-	if (_name == "craftingMissionItems") {
+	if (_name == "MissionManager.craftingMissionItems") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&craftingMissionItems, stream);
 		return true;
 	}
 
-	if (_name == "bhTargetZones") {
+	if (_name == "MissionManager.bhTargetZones") {
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&bhTargetZones, stream);
 		return true;
 	}
 
-	if (_name == "bhTargetsAtMissionLevel") {
+	if (_name == "MissionManager.bhTargetsAtMissionLevel") {
 		TypeInfo<VectorMap<unsigned int, Vector<String>*> >::parseFromBinaryStream(&bhTargetsAtMissionLevel, stream);
 		return true;
 	}
 
-	if (_name == "playerBountyList") {
+	if (_name == "MissionManager.playerBountyList") {
 		TypeInfo<VectorMap<unsigned long long, BountyTargetListElement*> >::parseFromBinaryStream(&playerBountyList, stream);
 		return true;
 	}
 
-	if (_name == "enableFactionalCraftingMissions") {
+	if (_name == "MissionManager.enableFactionalCraftingMissions") {
 		TypeInfo<bool >::parseFromBinaryStream(&enableFactionalCraftingMissions, stream);
 		return true;
 	}
 
-	if (_name == "enableFactionalReconMissions") {
+	if (_name == "MissionManager.enableFactionalReconMissions") {
 		TypeInfo<bool >::parseFromBinaryStream(&enableFactionalReconMissions, stream);
 		return true;
 	}
 
-	if (_name == "enableFactionalEntertainerMissions") {
+	if (_name == "MissionManager.enableFactionalEntertainerMissions") {
 		TypeInfo<bool >::parseFromBinaryStream(&enableFactionalEntertainerMissions, stream);
 		return true;
 	}
@@ -1053,7 +1053,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "server";
+	_name = "MissionManager.server";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1061,7 +1061,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "missionNpcSpawnMap";
+	_name = "MissionManager.missionNpcSpawnMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1069,7 +1069,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "craftingMissionItems";
+	_name = "MissionManager.craftingMissionItems";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1077,7 +1077,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bhTargetZones";
+	_name = "MissionManager.bhTargetZones";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1085,7 +1085,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "bhTargetsAtMissionLevel";
+	_name = "MissionManager.bhTargetsAtMissionLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1093,7 +1093,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "playerBountyList";
+	_name = "MissionManager.playerBountyList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1101,7 +1101,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "enableFactionalCraftingMissions";
+	_name = "MissionManager.enableFactionalCraftingMissions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1109,7 +1109,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "enableFactionalReconMissions";
+	_name = "MissionManager.enableFactionalReconMissions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1117,7 +1117,7 @@ int MissionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "enableFactionalEntertainerMissions";
+	_name = "MissionManager.enableFactionalEntertainerMissions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);

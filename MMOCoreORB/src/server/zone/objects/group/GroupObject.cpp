@@ -494,17 +494,17 @@ bool GroupObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "groupMembers") {
+	if (_name == "GroupObject.groupMembers") {
 		TypeInfo<GroupList >::parseFromBinaryStream(&groupMembers, stream);
 		return true;
 	}
 
-	if (_name == "chatRoom") {
+	if (_name == "GroupObject.chatRoom") {
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
 		return true;
 	}
 
-	if (_name == "groupLevel") {
+	if (_name == "GroupObject.groupLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&groupLevel, stream);
 		return true;
 	}
@@ -524,7 +524,7 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "groupMembers";
+	_name = "GroupObject.groupMembers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -532,7 +532,7 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "chatRoom";
+	_name = "GroupObject.chatRoom";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -540,7 +540,7 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "groupLevel";
+	_name = "GroupObject.groupLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
