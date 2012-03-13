@@ -64,8 +64,11 @@ public:
 
 			player->setPosture(CreaturePosture::UPRIGHT);
 
-			if (deadRecovery)
+			if (deadRecovery) {
 				player->playEffect("clienteffect/player_clone_compile.cef");
+				player->getPlayerObject()->resetIncapacitationCounter();
+				player->getPlayerObject()->resetFirstIncapacitationTime();
+			}
 		} catch (Exception& e) {
 			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
 		}
