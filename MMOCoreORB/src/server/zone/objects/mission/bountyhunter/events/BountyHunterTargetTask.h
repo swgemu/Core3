@@ -83,7 +83,7 @@ public:
 		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
 		nextPosition.setZ(0);
 
-		if (mission->getDifficultyLevel() > 1) {
+		if (mission->getMissionLevel() > 1) {
 			move = true;
 		} else {
 			move = false;

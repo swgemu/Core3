@@ -104,10 +104,10 @@ ConversationScreen* InformantMissionScreenHandler::handleScreen(CreatureObject* 
 			conversationScreen->setDialogText(String("@mission/mission_generic:informant_no_bounty_mission"));
 		} else {
 			//Check mission level.
-			if (mission->getDifficultyLevel() < informantLevel) {
+			if (mission->getMissionLevel() < informantLevel) {
 				//Incorrect informant level.
 				conversationScreen->setDialogText(String("@mission/mission_bounty_informant:informant_find_easier"));
-			} else if (mission->getDifficultyLevel() > informantLevel) {
+			} else if (mission->getMissionLevel() > informantLevel) {
 				//Incorrect informant level.
 				conversationScreen->setDialogText(String("@mission/mission_bounty_informant:informant_find_harder"));
 			} else {

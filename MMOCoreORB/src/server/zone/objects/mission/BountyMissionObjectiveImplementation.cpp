@@ -232,13 +232,13 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 
 		if (getPlayerOwner() != NULL && attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
 				attacker->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
-			updateMissionStatus(mission->getDifficultyLevel());
+			updateMissionStatus(mission->getMissionLevel());
 
 			String diffString = "easy";
 
-			if (mission->getDifficultyLevel() == 3) {
+			if (mission->getMissionLevel() == 3) {
 				diffString = "hard";
-			} else if (mission->getDifficultyLevel() == 2) {
+			} else if (mission->getMissionLevel() == 2) {
 				diffString = "medium";
 			}
 
@@ -350,7 +350,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 
 	mission->updateMissionLocation();
 
-	if (mission->getDifficultyLevel() == 1) {
+	if (mission->getMissionLevel() == 1) {
 		getPlayerOwner()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
 	}
 }
@@ -376,7 +376,7 @@ bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int ac
 		levelNeeded = 3;
 	}
 
-	return mission->getDifficultyLevel() >= levelNeeded;
+	return mission->getMissionLevel() >= levelNeeded;
 }
 
 Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {

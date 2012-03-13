@@ -274,6 +274,10 @@ public:
 
 	void setTargetObjectId(unsigned long long id);
 
+	void setMissionLevel(int level);
+
+	int getMissionLevel();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -328,6 +332,8 @@ protected:
 	int missionNumber;
 
 	int faction;
+
+	int missionLevel;
 
 	float startPositionX;
 
@@ -518,6 +524,10 @@ public:
 
 	void setTargetObjectId(unsigned long long id);
 
+	void setMissionLevel(int level);
+
+	int getMissionLevel();
+
 	WeakReference<MissionObject*> _this;
 
 	operator const MissionObject*();
@@ -672,6 +682,10 @@ public:
 	unsigned long long getTargetObjectId();
 
 	void setTargetObjectId(unsigned long long id);
+
+	void setMissionLevel(int level);
+
+	int getMissionLevel();
 
 protected:
 	String _param0_setMissionDescription__String_String_bool_;

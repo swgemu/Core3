@@ -22,7 +22,7 @@
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETREWARDFACTIONPOINTSREBEL__INT_,RPC_SETREWARDFACTIONPOINTSIMPERIAL__INT_,RPC_SETENDPLANET__STRING_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETREWARDFACTIONPOINTSREBEL__,RPC_GETREWARDFACTIONPOINTSIMPERIAL__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANET__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__,RPC_GETTARGETOBJECTID__,RPC_SETTARGETOBJECTID__LONG_};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETREWARDFACTIONPOINTSREBEL__INT_,RPC_SETREWARDFACTIONPOINTSIMPERIAL__INT_,RPC_SETENDPLANET__STRING_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETREWARDFACTIONPOINTSREBEL__,RPC_GETREWARDFACTIONPOINTSIMPERIAL__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANET__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__,RPC_GETTARGETOBJECTID__,RPC_SETTARGETOBJECTID__LONG_,RPC_SETMISSIONLEVEL__INT_,RPC_GETMISSIONLEVEL__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -851,6 +851,33 @@ void MissionObject::setTargetObjectId(unsigned long long id) {
 		_implementation->setTargetObjectId(id);
 }
 
+void MissionObject::setMissionLevel(int level) {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMISSIONLEVEL__INT_);
+		method.addSignedIntParameter(level);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMissionLevel(level);
+}
+
+int MissionObject::getMissionLevel() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMISSIONLEVEL__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMissionLevel();
+}
+
 DistributedObjectServant* MissionObject::_getImplementation() {
 
 	_updated = true;
@@ -956,137 +983,142 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "MissionObject.waypointToMission") {
+	if (_name == "waypointToMission") {
 		TypeInfo<ManagedReference<WaypointObject* > >::parseFromBinaryStream(&waypointToMission, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionObjective") {
+	if (_name == "missionObjective") {
 		TypeInfo<ManagedReference<MissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.typeCRC") {
+	if (_name == "typeCRC") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&typeCRC, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.difficultyLevel") {
+	if (_name == "difficultyLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&difficultyLevel, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.creatorName") {
+	if (_name == "creatorName") {
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&creatorName, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.rewardCredits") {
+	if (_name == "rewardCredits") {
 		TypeInfo<int >::parseFromBinaryStream(&rewardCredits, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.rewardFactionPointsRebel") {
+	if (_name == "rewardFactionPointsRebel") {
 		TypeInfo<int >::parseFromBinaryStream(&rewardFactionPointsRebel, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.rewardFactionPointsImperial") {
+	if (_name == "rewardFactionPointsImperial") {
 		TypeInfo<int >::parseFromBinaryStream(&rewardFactionPointsImperial, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionNumber") {
+	if (_name == "missionNumber") {
 		TypeInfo<int >::parseFromBinaryStream(&missionNumber, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.faction") {
+	if (_name == "faction") {
 		TypeInfo<int >::parseFromBinaryStream(&faction, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.startPositionX") {
+	if (_name == "missionLevel") {
+		TypeInfo<int >::parseFromBinaryStream(&missionLevel, stream);
+		return true;
+	}
+
+	if (_name == "startPositionX") {
 		TypeInfo<float >::parseFromBinaryStream(&startPositionX, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.startPositionY") {
+	if (_name == "startPositionY") {
 		TypeInfo<float >::parseFromBinaryStream(&startPositionY, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.startPlanet") {
+	if (_name == "startPlanet") {
 		TypeInfo<String >::parseFromBinaryStream(&startPlanet, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.endPositionX") {
+	if (_name == "endPositionX") {
 		TypeInfo<float >::parseFromBinaryStream(&endPositionX, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.endPositionY") {
+	if (_name == "endPositionY") {
 		TypeInfo<float >::parseFromBinaryStream(&endPositionY, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.endPlanet") {
+	if (_name == "endPlanet") {
 		TypeInfo<String >::parseFromBinaryStream(&endPlanet, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.targetObjectId") {
+	if (_name == "targetObjectId") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&targetObjectId, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionDescription") {
+	if (_name == "missionDescription") {
 		TypeInfo<StringId >::parseFromBinaryStream(&missionDescription, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionTitle") {
+	if (_name == "missionTitle") {
 		TypeInfo<StringId >::parseFromBinaryStream(&missionTitle, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.refreshCounter") {
+	if (_name == "refreshCounter") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&refreshCounter, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.targetName") {
+	if (_name == "targetName") {
 		TypeInfo<String >::parseFromBinaryStream(&targetName, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionTarget") {
+	if (_name == "missionTarget") {
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTarget, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.missionTargetDest") {
+	if (_name == "missionTargetDest") {
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTargetDest, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.templateString1") {
+	if (_name == "templateString1") {
 		TypeInfo<String >::parseFromBinaryStream(&templateString1, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.templateString2") {
+	if (_name == "templateString2") {
 		TypeInfo<String >::parseFromBinaryStream(&templateString2, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.targetTemplate") {
+	if (_name == "targetTemplate") {
 		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&targetTemplate, stream);
 		return true;
 	}
 
-	if (_name == "MissionObject.targetOptionalTemplate") {
+	if (_name == "targetOptionalTemplate") {
 		TypeInfo<String >::parseFromBinaryStream(&targetOptionalTemplate, stream);
 		return true;
 	}
@@ -1106,7 +1138,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "MissionObject.waypointToMission";
+	_name = "waypointToMission";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1114,7 +1146,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionObjective";
+	_name = "missionObjective";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1122,7 +1154,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.typeCRC";
+	_name = "typeCRC";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1130,7 +1162,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.difficultyLevel";
+	_name = "difficultyLevel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1138,7 +1170,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.creatorName";
+	_name = "creatorName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1146,7 +1178,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.rewardCredits";
+	_name = "rewardCredits";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1154,7 +1186,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.rewardFactionPointsRebel";
+	_name = "rewardFactionPointsRebel";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1162,7 +1194,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.rewardFactionPointsImperial";
+	_name = "rewardFactionPointsImperial";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1170,7 +1202,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionNumber";
+	_name = "missionNumber";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1178,7 +1210,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.faction";
+	_name = "faction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1186,7 +1218,15 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.startPositionX";
+	_name = "missionLevel";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&missionLevel, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "startPositionX";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1194,7 +1234,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.startPositionY";
+	_name = "startPositionY";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1202,7 +1242,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.startPlanet";
+	_name = "startPlanet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1210,7 +1250,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.endPositionX";
+	_name = "endPositionX";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1218,7 +1258,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.endPositionY";
+	_name = "endPositionY";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1226,7 +1266,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.endPlanet";
+	_name = "endPlanet";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1234,7 +1274,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.targetObjectId";
+	_name = "targetObjectId";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1242,7 +1282,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionDescription";
+	_name = "missionDescription";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1250,7 +1290,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionTitle";
+	_name = "missionTitle";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1258,7 +1298,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.refreshCounter";
+	_name = "refreshCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1266,7 +1306,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.targetName";
+	_name = "targetName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1274,7 +1314,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionTarget";
+	_name = "missionTarget";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1282,7 +1322,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.missionTargetDest";
+	_name = "missionTargetDest";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1290,7 +1330,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.templateString1";
+	_name = "templateString1";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1298,7 +1338,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.templateString2";
+	_name = "templateString2";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1306,7 +1346,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.targetTemplate";
+	_name = "targetTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1314,7 +1354,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "MissionObject.targetOptionalTemplate";
+	_name = "targetOptionalTemplate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
@@ -1323,7 +1363,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 27 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 28 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
@@ -1570,6 +1610,16 @@ void MissionObjectImplementation::setTargetObjectId(unsigned long long id) {
 	targetObjectId = id;
 }
 
+void MissionObjectImplementation::setMissionLevel(int level) {
+	// server/zone/objects/mission/MissionObject.idl():  		missionLevel = level;
+	missionLevel = level;
+}
+
+int MissionObjectImplementation::getMissionLevel() {
+	// server/zone/objects/mission/MissionObject.idl():  		return missionLevel;
+	return missionLevel;
+}
+
 /*
  *	MissionObjectAdapter
  */
@@ -1748,6 +1798,12 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_SETTARGETOBJECTID__LONG_:
 		setTargetObjectId(inv->getUnsignedLongParameter());
+		break;
+	case RPC_SETMISSIONLEVEL__INT_:
+		setMissionLevel(inv->getSignedIntParameter());
+		break;
+	case RPC_GETMISSIONLEVEL__:
+		resp->insertSignedInt(getMissionLevel());
 		break;
 	default:
 		return NULL;
@@ -1978,6 +2034,14 @@ unsigned long long MissionObjectAdapter::getTargetObjectId() {
 
 void MissionObjectAdapter::setTargetObjectId(unsigned long long id) {
 	(static_cast<MissionObject*>(stub))->setTargetObjectId(id);
+}
+
+void MissionObjectAdapter::setMissionLevel(int level) {
+	(static_cast<MissionObject*>(stub))->setMissionLevel(level);
+}
+
+int MissionObjectAdapter::getMissionLevel() {
+	return (static_cast<MissionObject*>(stub))->getMissionLevel();
 }
 
 /*

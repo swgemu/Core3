@@ -71,6 +71,7 @@ class MissionObject extends IntangibleObject {
 	protected int rewardFactionPointsImperial;
 	protected int missionNumber;
 	protected int faction;
+	protected int missionLevel;
 	
 	protected float startPositionX;
 	protected float startPositionY;
@@ -360,5 +361,13 @@ class MissionObject extends IntangibleObject {
 	
 	public void setTargetObjectId(unsigned long id) {
 		targetObjectId = id;
+	}
+	
+	public void setMissionLevel(int level) {
+		missionLevel = level;
+	} 
+	
+	public int getMissionLevel() {
+		return missionLevel;
 	}
 }

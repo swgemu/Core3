@@ -479,12 +479,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 				randomizeHuntingMission(player, mission);
 			} else {
 				mission->setTypeCRC(0);
-			} /*
-			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal)
-				randomizeHuntingMission(player, mission);
-			else
-				mission->setTypeCRC(0);*/
-
+			}
 		} else if (missionTerminal->isBountyTerminal()) {
 			if (i < bagSize / maximumNumberOfMissionTypesInOneTerminal) {
 				randomizeBountyMission(player, mission);
@@ -692,19 +687,19 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		return;
 	}
 
-	int difficulty = 1;
+	int level = 1;
 	int randomTexts = 25;
 	if (player->hasSkill("combat_bountyhunter_investigation_03")) {
-		difficulty = 3;
+		level = 3;
 	} else if (player->hasSkill("combat_bountyhunter_investigation_01")) {
-		difficulty = 2;
+		level = 2;
 		randomTexts = 50;
 	}
 
 	NameManager* nm = processor->getNameManager();
 
 	bool npcTarget = true;
-	if (difficulty == 3) {
+	if (level == 3) {
 		int compareValue = playerBountyList.size() > 50 ? 50 : playerBountyList.size();
 		//TODO: remove * 10.
 		if (System::random(100) < compareValue * 10) {
@@ -722,7 +717,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
-	mission->setMissionDifficulty(difficulty);
+	mission->setMissionLevel(level);
 	mission->setFaction(faction);
 
 	if (npcTarget) {
@@ -732,13 +727,13 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		Vector3 endPos = getRandomBountyTargetPosition(player);
 		String planet = player->getZone()->getZoneName();
-		if (difficulty == 3 && bhTargetZones.size() > 0) {
+		if (level == 3 && bhTargetZones.size() > 0) {
 			int randomNumber = System::random(bhTargetZones.size() - 1);
 			planet = bhTargetZones.get(randomNumber);
 		}
 		mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
 
-		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)difficulty)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)difficulty)->size() - 1));
+		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)level)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)level)->size() - 1));
 		mission->setTargetOptionalTemplate(targetTemplate);
 
 		CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
@@ -753,12 +748,13 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		String diffString = "easy";
 
-		if (difficulty == 3) {
+		if (level == 3) {
 			diffString = "hard";
-		} else if (difficulty == 2) {
+		} else if (level == 2) {
 			diffString = "medium";
 		}
 
+		mission->setMissionDifficulty(creoTemplate->getLevel());
 		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
@@ -786,6 +782,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			mission->setTargetOptionalTemplate("");
 
+			mission->setMissionDifficulty(100);
 			mission->setRewardCredits(target->getReward());
 
 			mission->setMissionTitle("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "t");
