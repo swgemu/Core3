@@ -6,6 +6,9 @@ geo_power_cube_red = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/geonosian_power_cube_red.iff",
 	craftingValues = {
+		{"attackhealthcost",-4,-10},
+		{"attackactioncost",-4,-10},
+		{"attackmindcost",-4,-10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

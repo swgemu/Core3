@@ -6,6 +6,8 @@ geo_reinforcement_core = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/geonosian_reinforcement_core.iff",
 	craftingValues = {
+		{"mindamage",25,75},
+		{"maxdamage",25,75}
 	},
 	customizationStringNames = {},
 	customizationValues = {}
