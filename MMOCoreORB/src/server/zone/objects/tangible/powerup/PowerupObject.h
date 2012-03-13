@@ -122,7 +122,7 @@ public:
 	void fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon);
 
 private:
-	float getWeaponStat(const String& attrib, WeaponObject* weapon);
+	float getWeaponStat(const String& attrib, WeaponObject* weapon, bool withPup);
 
 public:
 	WeakReference<PowerupObject*> _this;

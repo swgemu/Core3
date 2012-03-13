@@ -35,48 +35,51 @@ void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* 
 	for(int i  = 0; i < modifiers.size(); ++i) {
 		PowerupStat* stat = &modifiers.get(i);
 
+		float value = getWeaponStat(stat->getAttributeToModify(), weapon, true);
+		float valueNoPup = getWeaponStat(stat->getAttributeToModify(), weapon, false);
+
 		String sign = "+";
-		if(stat->getValue() < 0)
+		if(value < valueNoPup)
 			sign = "-";
-		else if(stat->getValue() == 0)
+		else if(value == valueNoPup)
 			sign = "";
 
-		int value = (stat->getValue() / 100.f) * getWeaponStat(stat->getAttributeToModify(), weapon);
+		float pupvalue = (stat->getValue() / 100.f) * valueNoPup;
 
 		StringBuffer val;
-		val << sign << value;
+		val << sign << Math::getPrecision(pupvalue, 2);
 		alm->insertAttribute(stat->getPupAttribute(), val.toString());
 	}
 }
 
-float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon) {
+float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon, bool withPup) {
 
 	if(attrib == "pointBlankAccuracy")
-		return weapon->getPointBlankAccuracy(false);
+		return weapon->getPointBlankAccuracy(withPup);
 	else if(attrib == "idealRange")
-		return weapon->getIdealRange(false);
+		return weapon->getIdealRange(withPup);
 	else if(attrib == "maxRange")
-		return weapon->getMaxRange(false);
+		return weapon->getMaxRange(withPup);
 	else if(attrib == "idealAccuracy")
-		return weapon->getIdealAccuracy(false);
+		return weapon->getIdealAccuracy(withPup);
 	else if(attrib == "maxRangeAccuracy")
-		return weapon->getMaxRangeAccuracy(false);
+		return weapon->getMaxRangeAccuracy(withPup);
 	else if(attrib == "attackSpeed")
-		return weapon->getAttackSpeed(false);
+		return weapon->getAttackSpeed(withPup);
 	else if(attrib == "maxDamage")
-		return weapon->getMaxDamage(false);
+		return weapon->getMaxDamage(withPup);
 	else if(attrib == "minDamage")
-		return weapon->getMinDamage(false);
+		return weapon->getMinDamage(withPup);
 	else if(attrib == "woundsRatio")
-		return weapon->getWoundsRatio(false);
+		return weapon->getWoundsRatio(withPup);
 	else if(attrib == "damageRadius")
-		return weapon->getDamageRadius(false);
+		return weapon->getDamageRadius(withPup);
 	else if(attrib == "healthAttackCost")
-		return weapon->getHealthAttackCost(false);
+		return weapon->getHealthAttackCost(withPup);
 	else if(attrib == "actionAttackCost")
-		return weapon->getActionAttackCost(false);
+		return weapon->getActionAttackCost(withPup);
 	else if(attrib == "mindAttackCost")
-		return weapon->getMindAttackCost(false);
+		return weapon->getMindAttackCost(withPup);
 
 	return 0;
 }
