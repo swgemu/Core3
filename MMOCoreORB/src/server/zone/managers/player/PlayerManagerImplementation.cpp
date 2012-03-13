@@ -33,7 +33,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/player/LogoutMessage.h"
-
+#include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/tangible/OptionBitmask.h"
 
 #include "server/zone/objects/intangible/ShipControlDevice.h"
@@ -83,7 +83,7 @@
 #include "server/ServerCore.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
-	Logger("PlayerManager") {
+Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -295,7 +295,7 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 		String fname = name.toLowerCase();
 		Database::escapeString(fname);
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
-					   + fname + "\"";
+				+ fname + "\"";
 
 		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 		bool nameExists = res->next();
@@ -507,7 +507,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1));
 	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
 	ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
-	
+
 	shipControlDevice->setControlledObject(ship);
 
 	if (!shipControlDevice->transferObject(ship, 4))
@@ -536,14 +536,14 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	//SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
-/*	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
+	/*	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
 	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);*/
 
 	SceneObject* cellTut = tutorial->getCell(11);
 	//cellTut->transferObject(travelTutorialTerminal, -1);
 
 	SceneObject* cellTutPlayer = tutorial->getCell(1);
-//	cellTut->transferObject(blueFrogTemplate, -1);
+	//	cellTut->transferObject(blueFrogTemplate, -1);
 
 	//tutorial->insertToZone(zone);
 
@@ -554,8 +554,8 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	//travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	//travelTutorialTerminal->insertToZone(zone);
 	//zone->transferObject(travelTutorialTerminal, -1, true);
-//	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
-//	blueFrogTemplate->insertToZone(zone);
+	//	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
+	//	blueFrogTemplate->insertToZone(zone);
 
 	//player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->initializePosition(0, 0, -3);
@@ -1020,7 +1020,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 			BuildingObject* build = cast<BuildingObject*>(parent->getParent());
 
 			if (build != NULL) {
-					build->onExit(player, 0);
+				build->onExit(player, 0);
 			}
 		}
 	}
@@ -1340,7 +1340,7 @@ void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier
  *
  */
 void PlayerManagerImplementation::awardExperience(CreatureObject* player, const String& xpType,
-													int amount, bool sendSystemMessage, float localMultiplier) {
+		int amount, bool sendSystemMessage, float localMultiplier) {
 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
@@ -1390,66 +1390,52 @@ void PlayerManagerImplementation::resendLoginMessageToAll() {
 	}
 }
 
-void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player, bool doLock) {
-	try {
-		player->wlock(doLock);
+void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player) {
+	Locker _locker(player);
 
-		PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
-		TradeContainer* tradeContainer = ghost->getTradeContainer();
-
-		/*if (tradeContainer == NULL) {
-			AbortTradeMessage* msg = new AbortTradeMessage();
-			player->sendMessage(msg);
-
-			player->unlock(doLock);
-			return;
-		}*/
-
-		uint64 targID = tradeContainer->getTradeTargetPlayer();
-		ManagedReference<SceneObject*> obj = server->getObject(targID);
-
+	if (tradeContainer == NULL) {
 		AbortTradeMessage* msg = new AbortTradeMessage();
+		player->sendMessage(msg);
 
-		if (obj != NULL && obj->isPlayerCreature()) {
-			CreatureObject* receiver = cast<CreatureObject*>( obj.get());
+		return;
+	}
 
-			Locker locker(receiver, player);
-			//receiver->wlock(player);
+	uint64 targID = tradeContainer->getTradeTargetPlayer();
+	ManagedReference<SceneObject*> obj = server->getObject(targID);
 
-			PlayerObject* targetGhost = receiver->getPlayerObject();
+	AbortTradeMessage* msg = new AbortTradeMessage();
 
-			TradeContainer* receiverContainer = targetGhost->getTradeContainer();
+	if (obj != NULL && obj->isPlayerCreature()) {
+		CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
-			if (receiverContainer->getTradeTargetPlayer() == player->getObjectID()) {
-				targetGhost->clearTradeContainer();
-				receiver->sendMessage(msg->clone());
-			}
+		Locker locker(receiver, player);
 
-			//receiver->unlock();
-			locker.release();
+		ManagedReference<TradeSession*> receiverContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
+
+		if (receiverContainer != NULL && receiverContainer->getTradeTargetPlayer() == player->getObjectID()) {
+			receiver->dropActiveSession(SessionFacadeType::TRADE);
+			receiver->sendMessage(msg->clone());
 		}
 
-		player->sendMessage(msg->clone());
-
-		delete msg;
-
-		ghost->clearTradeContainer();
-
-		player->unlock(doLock);
-	} catch (...) {
-		player->unlock(doLock);
-
-		throw;
+		locker.release();
 	}
+
+	player->sendMessage(msg->clone());
+
+	delete msg;
+
+	player->dropActiveSession(SessionFacadeType::TRADE);
 }
 
 void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* player, uint64 itemID) {
 	Locker _locker(player);
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
+	if (tradeContainer == NULL)
+		return;
 
 	// First Verify Target is Player
 	uint64 targID = tradeContainer->getTradeTargetPlayer();
@@ -1465,7 +1451,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 
 	if (inventoryObject == NULL) {
 		player->sendSystemMessage("@container_error_message:container26");
-		handleAbortTradeMessage(player, false);
+		handleAbortTradeMessage(player);
 		return;
 	}
 
@@ -1485,9 +1471,10 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(CreatureObject* player,
 	if (value > currentMoney)
 		value = currentMoney;
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
+	if (tradeContainer == NULL)
+		return;
 
 	tradeContainer->setMoneyToTrade(value);
 
@@ -1505,9 +1492,7 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(CreatureObject* player,
 void PlayerManagerImplementation::handleAcceptTransactionMessage(CreatureObject* player) {
 	Locker _locker(player);
 
-	PlayerObject* ghost = player->getPlayerObject();
-
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
 	if (tradeContainer == NULL)
 		return;
@@ -1528,9 +1513,10 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(CreatureObject*
 void PlayerManagerImplementation::handleUnAcceptTransactionMessage(CreatureObject* player) {
 	Locker _locker(player);
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
+	if (tradeContainer == NULL)
+		return;
 
 	tradeContainer->setAcceptedTrade(false);
 
@@ -1550,8 +1536,11 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	PlayerObject* ghost = player->getPlayerObject();
 	PlayerObject* targetGhost = receiver->getPlayerObject();
 
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
-	TradeContainer* receiverContainer = targetGhost->getTradeContainer();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> receiverContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
+
+	if (tradeContainer == NULL || receiverContainer == NULL)
+		return false;
 
 	if (tradeContainer->getTradeTargetPlayer() != receiver->getObjectID())
 		return false;
@@ -1612,6 +1601,13 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	if (receiverMoneyToTrade > receiver->getCashCredits())
 		return false;
 
+	if (player->getDistanceTo(receiver) >= 15.f) {
+		player->sendSystemMessage("You are too far to trade");
+		receiver->sendSystemMessage("You are too far to trade");
+		return false;
+	}
+
+
 	return true;
 }
 
@@ -1620,9 +1616,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 
 	Locker locker(player);
 
-	PlayerObject* ghost = player->getPlayerObject();
-
-	TradeContainer* tradeContainer = ghost->getTradeContainer();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
 	if (tradeContainer == NULL) {
 		return;
@@ -1638,18 +1632,16 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 
 		Locker clocker(receiver, player);
 
-		PlayerObject* targetGhost = receiver->getPlayerObject();
-
-		TradeContainer* receiverTradeContainer = targetGhost->getTradeContainer();
+		ManagedReference<TradeSession*> receiverTradeContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
 
 		if (receiverTradeContainer == NULL) {
-			locker.release();
+			tradeContainer->setVerifiedTrade(false);
 			return;
 		}
 
 		if (!checkTradeItems(player, receiver)) {
 			clocker.release();
-			handleAbortTradeMessage(player, false);
+			handleAbortTradeMessage(player);
 
 			locker.release();
 			return;
@@ -1688,9 +1680,8 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 				player->addCashCredits(giveMoney);
 			}
 
-			targetGhost->clearTradeContainer();
-
-			ghost->clearTradeContainer();
+			receiver->dropActiveSession(SessionFacadeType::TRADE);
+			player->dropActiveSession(SessionFacadeType::TRADE);
 
 			TradeCompleteMessage* msg = new TradeCompleteMessage();
 			receiver->sendMessage(msg->clone());
@@ -1700,6 +1691,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 		}
 	}
 }
+
 int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);
@@ -2131,9 +2123,9 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 
 	StructureObject* structure = NULL;
 	float distance = 16000;
-	
+
 	Zone* zone = creature->getZone();
-	
+
 	if (zone == NULL) {
 		return NULL;
 	}

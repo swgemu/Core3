@@ -2241,24 +2241,6 @@ String PlayerObject::getBankLocation() {
 		return _implementation->getBankLocation();
 }
 
-void PlayerObject::clearTradeContainer() {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->clearTradeContainer();
-}
-
-TradeContainer* PlayerObject::getTradeContainer() {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getTradeContainer();
-}
-
 DeltaVector<String>* PlayerObject::getIgnoreList() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3096,11 +3078,6 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "tradeContainer") {
-		TypeInfo<TradeContainer >::parseFromBinaryStream(&tradeContainer, stream);
-		return true;
-	}
-
 	if (_name == "duelList") {
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&duelList, stream);
 		return true;
@@ -3502,14 +3479,6 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "tradeContainer";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<TradeContainer >::toBinaryStream(&tradeContainer, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "duelList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3719,7 +3688,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 59 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 58 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
@@ -4367,16 +4336,6 @@ void PlayerObjectImplementation::setBankLocation(const String& location) {
 String PlayerObjectImplementation::getBankLocation() {
 	// server/zone/objects/player/PlayerObject.idl():  		return bankLocation;
 	return bankLocation;
-}
-
-void PlayerObjectImplementation::clearTradeContainer() {
-	// server/zone/objects/player/PlayerObject.idl():  		tradeContainer.clear();
-	(&tradeContainer)->clear();
-}
-
-TradeContainer* PlayerObjectImplementation::getTradeContainer() {
-	// server/zone/objects/player/PlayerObject.idl():  		return tradeContainer;
-	return (&tradeContainer);
 }
 
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {

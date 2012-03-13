@@ -264,7 +264,7 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
-	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
+	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 
@@ -440,7 +440,7 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
-	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
+	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 
@@ -587,7 +587,7 @@ public:
 
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier);
 
-	void handleAbortTradeMessage(CreatureObject* player, bool doLock);
+	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 

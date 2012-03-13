@@ -78,7 +78,6 @@ include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.FactionStandingList;
 include server.zone.objects.player.badges.Badges;
-include server.zone.objects.player.TradeContainer;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.draftschematic.DraftSchematic;
@@ -157,10 +156,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SortedVector<ChatRoom> chatRooms;
-	
-	@dereferenced
-	protected TradeContainer tradeContainer;
-	
+		
 	@dereferenced
 	protected SortedVector<CreatureObject> duelList;
 	
@@ -1056,17 +1052,7 @@ class PlayerObject extends IntangibleObject {
 	public string getBankLocation() {
 		return bankLocation;
 	}
-	
-	@local
-	public void clearTradeContainer() {
-		tradeContainer.clear();
-	}
-	
-	@local
-	public TradeContainer getTradeContainer() {
-		return tradeContainer;
-	}
-	
+		
 	@local
 	public DeltaVector<string> getIgnoreList() {
 		return ignoreList;

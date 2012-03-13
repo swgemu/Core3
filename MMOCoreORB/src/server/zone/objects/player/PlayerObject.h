@@ -269,8 +269,6 @@ using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/player/badges/Badges.h"
 
-#include "server/zone/objects/player/TradeContainer.h"
-
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -670,10 +668,6 @@ public:
 
 	String getBankLocation();
 
-	void clearTradeContainer();
-
-	TradeContainer* getTradeContainer();
-
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
@@ -865,8 +859,6 @@ protected:
 	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
 
 	SortedVector<ManagedReference<ChatRoom* > > chatRooms;
-
-	TradeContainer tradeContainer;
 
 	SortedVector<ManagedReference<CreatureObject* > > duelList;
 
@@ -1296,10 +1288,6 @@ public:
 	void setBankLocation(const String& location);
 
 	String getBankLocation();
-
-	void clearTradeContainer();
-
-	TradeContainer* getTradeContainer();
 
 	DeltaVector<String>* getIgnoreList();
 

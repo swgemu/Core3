@@ -107,6 +107,7 @@ which carries forward this exception.
 #include "FactionStatus.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -174,8 +175,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	IntangibleObjectImplementation::notifyLoadFromDatabase();
 
 	chatRooms.removeAll();
-	tradeContainer.clear();
-
 	surveyTool = NULL;
 
 	serverLastMovementStamp.updateToCurrentTime();
@@ -254,7 +253,10 @@ void PlayerObjectImplementation::unload() {
 
 	creature->stopEntertaining();
 
-	tradeContainer.clear();
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+
+	if (tradeContainer != NULL)
+		creature->dropActiveSession(SessionFacadeType::TRADE);
 
 	creature->removeDotsFromVector();
 

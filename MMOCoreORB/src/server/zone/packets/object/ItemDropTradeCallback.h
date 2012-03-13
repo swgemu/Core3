@@ -9,10 +9,9 @@
 #define ITEMDROPTRADECALLBACK_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/trade/BeginTradeMessage.h"
 #include "ObjectControllerMessageCallback.h"
-
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 class ItemDropTradeCallback : public MessageCallback {
 	uint64 targetToTrade;
@@ -44,10 +43,14 @@ public:
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 		PlayerObject* ghost = player->getPlayerObject();
 
-		TradeContainer* playerTradeContainer = ghost->getTradeContainer();
+		ManagedReference<TradeSession*> playerTradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
-		if (playerTradeContainer->getTradeTargetPlayer() == targetToTrade || player->isInCombat()) {
+		if (player->isInCombat() || (playerTradeContainer != NULL && playerTradeContainer->getTradeTargetPlayer() == targetToTrade))
 			return;
+
+		if (playerTradeContainer == NULL) {
+			playerTradeContainer = new TradeSession();
+			player->addActiveSession(SessionFacadeType::TRADE, playerTradeContainer);
 		}
 
 		playerTradeContainer->setTradeTargetPlayer(targetToTrade);
@@ -56,11 +59,9 @@ public:
 
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
-		//player->info("asiodhjsodifjsoijghfoisjg", true);
+		ManagedReference<TradeSession*> targetTradeContainer = dynamic_cast<TradeSession*>(targetPlayer->getActiveSession(SessionFacadeType::TRADE));
 
-		TradeContainer* targetTradeContainer = targetGhost->getTradeContainer();
-
-		if (targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
+		if (targetTradeContainer != NULL && targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
 			BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());
 			player->sendMessage(msg);
 
