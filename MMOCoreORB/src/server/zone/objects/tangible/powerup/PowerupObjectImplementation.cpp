@@ -9,21 +9,76 @@
 #include "PowerupObject.h"
 #include "server/zone/templates/tangible/PowerupTemplate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 float PowerupObjectImplementation::MAXPRIMARY = 33.16;
 float PowerupObjectImplementation::MAXSECONDARY = 16.33;
 
 void PowerupObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
-	if(getParent() != NULL)
-		TangibleObjectImplementation::fillAttributeList(alm, object);
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("cat_pup.pup_uses", uses);
 
 	for(int i  = 0; i < modifiers.size(); ++i) {
 		PowerupStat* stat = &modifiers.get(i);
-		alm->insertAttribute(stat->getPupAttribute(), Math::getPrecision(stat->getValue(), 2));
+		StringBuffer val;
+		val << Math::getPrecision(stat->getValue(), 2) << "%";
+		alm->insertAttribute(stat->getPupAttribute(), val.toString());
 	}
+}
+
+void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon) {
+
+	alm->insertAttribute("cat_pup.pup_uses", uses);
+
+	for(int i  = 0; i < modifiers.size(); ++i) {
+		PowerupStat* stat = &modifiers.get(i);
+
+		String sign = "+";
+		if(stat->getValue() < 0)
+			sign = "-";
+		else if(stat->getValue() == 0)
+			sign = "";
+
+		int value = (stat->getValue() / 100.f) * getWeaponStat(stat->getAttributeToModify(), weapon);
+
+		StringBuffer val;
+		val << sign << value;
+		alm->insertAttribute(stat->getPupAttribute(), val.toString());
+	}
+}
+
+float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObject* weapon) {
+
+	if(attrib == "pointBlankAccuracy")
+		return weapon->getPointBlankAccuracy(false);
+	else if(attrib == "idealRange")
+		return weapon->getIdealRange(false);
+	else if(attrib == "maxRange")
+		return weapon->getMaxRange(false);
+	else if(attrib == "idealAccuracy")
+		return weapon->getIdealAccuracy(false);
+	else if(attrib == "maxRangeAccuracy")
+		return weapon->getMaxRangeAccuracy(false);
+	else if(attrib == "attackSpeed")
+		return weapon->getAttackSpeed(false);
+	else if(attrib == "maxDamage")
+		return weapon->getMaxDamage(false);
+	else if(attrib == "minDamage")
+		return weapon->getMinDamage(false);
+	else if(attrib == "woundsRatio")
+		return weapon->getWoundsRatio(false);
+	else if(attrib == "damageRadius")
+		return weapon->getDamageRadius(false);
+	else if(attrib == "healthAttackCost")
+		return weapon->getHealthAttackCost(false);
+	else if(attrib == "actionAttackCost")
+		return weapon->getActionAttackCost(false);
+	else if(attrib == "mindAttackCost")
+		return weapon->getMindAttackCost(false);
+
+	return 0;
 }
 
 void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -124,7 +179,7 @@ float PowerupObjectImplementation::getPowerupStat(const String& attribName) {
 		if(attribName.toLowerCase() ==
 				stat->getAttributeToModify().toLowerCase()) {
 
-			return stat->getValue();
+			return stat->getValue() / 100.f;
 		}
 	}
 

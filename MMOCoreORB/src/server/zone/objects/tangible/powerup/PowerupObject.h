@@ -55,6 +55,8 @@ public:
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	void fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -117,6 +119,12 @@ public:
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	void fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon);
+
+private:
+	float getWeaponStat(const String& attrib, WeaponObject* weapon);
+
+public:
 	WeakReference<PowerupObject*> _this;
 
 	operator const PowerupObject*();

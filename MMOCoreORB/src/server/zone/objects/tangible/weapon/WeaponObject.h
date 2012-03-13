@@ -207,59 +207,59 @@ public:
 
 	bool isCertified();
 
-	int getPointBlankAccuracy();
+	int getPointBlankAccuracy(bool withPup = true);
 
 	void setPointBlankAccuracy(int value);
 
 	int getPointBlankRange();
 
-	int getIdealRange();
+	int getIdealRange(bool withPup = true);
 
 	void setIdealRange(int value);
 
-	int getMaxRange();
+	int getMaxRange(bool withPup = true);
 
 	void setMaxRange(int value);
 
-	int getIdealAccuracy();
+	int getIdealAccuracy(bool withPup = true);
 
 	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
-	int getMaxRangeAccuracy();
+	int getMaxRangeAccuracy(bool withPup = true);
 
 	void setMaxRangeAccuracy(int value);
 
-	float getAttackSpeed();
+	float getAttackSpeed(bool withPup = true);
 
 	void setAttackSpeed(float value);
 
-	float getMaxDamage();
+	float getMaxDamage(bool withPup = true);
 
 	void setMaxDamage(float value);
 
-	float getMinDamage();
+	float getMinDamage(bool withPup = true);
 
 	void setMinDamage(float value);
 
-	float getWoundsRatio();
+	float getWoundsRatio(bool withPup = true);
 
 	void setWoundsRatio(float value);
 
-	float getDamageRadius();
+	float getDamageRadius(bool withPup = true);
 
 	void setDamageRadius(float value);
 
-	int getHealthAttackCost();
+	int getHealthAttackCost(bool withPup = true);
 
 	void setHealthAttackCost(int value);
 
-	int getActionAttackCost();
+	int getActionAttackCost(bool withPup = true);
 
 	void setActionAttackCost(int value);
 
-	int getMindAttackCost();
+	int getMindAttackCost(bool withPup = true);
 
 	void setMindAttackCost(int value);
 
@@ -468,59 +468,59 @@ public:
 
 	bool isCertified();
 
-	int getPointBlankAccuracy();
+	int getPointBlankAccuracy(bool withPup = true);
 
 	void setPointBlankAccuracy(int value);
 
 	int getPointBlankRange();
 
-	int getIdealRange();
+	int getIdealRange(bool withPup = true);
 
 	void setIdealRange(int value);
 
-	int getMaxRange();
+	int getMaxRange(bool withPup = true);
 
 	void setMaxRange(int value);
 
-	int getIdealAccuracy();
+	int getIdealAccuracy(bool withPup = true);
 
 	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
-	int getMaxRangeAccuracy();
+	int getMaxRangeAccuracy(bool withPup = true);
 
 	void setMaxRangeAccuracy(int value);
 
-	float getAttackSpeed();
+	float getAttackSpeed(bool withPup = true);
 
 	void setAttackSpeed(float value);
 
-	float getMaxDamage();
+	float getMaxDamage(bool withPup = true);
 
 	void setMaxDamage(float value);
 
-	float getMinDamage();
+	float getMinDamage(bool withPup = true);
 
 	void setMinDamage(float value);
 
-	float getWoundsRatio();
+	float getWoundsRatio(bool withPup = true);
 
 	void setWoundsRatio(float value);
 
-	float getDamageRadius();
+	float getDamageRadius(bool withPup = true);
 
 	void setDamageRadius(float value);
 
-	int getHealthAttackCost();
+	int getHealthAttackCost(bool withPup = true);
 
 	void setHealthAttackCost(int value);
 
-	int getActionAttackCost();
+	int getActionAttackCost(bool withPup = true);
 
 	void setActionAttackCost(int value);
 
-	int getMindAttackCost();
+	int getMindAttackCost(bool withPup = true);
 
 	void setMindAttackCost(int value);
 
@@ -623,59 +623,59 @@ public:
 
 	bool isCertified();
 
-	int getPointBlankAccuracy();
+	int getPointBlankAccuracy(bool withPup);
 
 	void setPointBlankAccuracy(int value);
 
 	int getPointBlankRange();
 
-	int getIdealRange();
+	int getIdealRange(bool withPup);
 
 	void setIdealRange(int value);
 
-	int getMaxRange();
+	int getMaxRange(bool withPup);
 
 	void setMaxRange(int value);
 
-	int getIdealAccuracy();
+	int getIdealAccuracy(bool withPup);
 
 	void setIdealAccuracy(int value);
 
 	int getArmorPiercing();
 
-	int getMaxRangeAccuracy();
+	int getMaxRangeAccuracy(bool withPup);
 
 	void setMaxRangeAccuracy(int value);
 
-	float getAttackSpeed();
+	float getAttackSpeed(bool withPup);
 
 	void setAttackSpeed(float value);
 
-	float getMaxDamage();
+	float getMaxDamage(bool withPup);
 
 	void setMaxDamage(float value);
 
-	float getMinDamage();
+	float getMinDamage(bool withPup);
 
 	void setMinDamage(float value);
 
-	float getWoundsRatio();
+	float getWoundsRatio(bool withPup);
 
 	void setWoundsRatio(float value);
 
-	float getDamageRadius();
+	float getDamageRadius(bool withPup);
 
 	void setDamageRadius(float value);
 
-	int getHealthAttackCost();
+	int getHealthAttackCost(bool withPup);
 
 	void setHealthAttackCost(int value);
 
-	int getActionAttackCost();
+	int getActionAttackCost(bool withPup);
 
 	void setActionAttackCost(int value);
 
-	int getMindAttackCost();
+	int getMindAttackCost(bool withPup);
 
 	void setMindAttackCost(int value);
 

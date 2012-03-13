@@ -136,6 +136,15 @@ void PowerupObject::updateCraftingValues(CraftingValues* values, bool firstUpdat
 		_implementation->updateCraftingValues(values, firstUpdate);
 }
 
+void PowerupObject::fillWeaponAttributeList(AttributeListMessage* alm, WeaponObject* weapon) {
+	PowerupObjectImplementation* _implementation = static_cast<PowerupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillWeaponAttributeList(alm, weapon);
+}
+
 DistributedObjectServant* PowerupObject::_getImplementation() {
 
 	_updated = true;

@@ -241,7 +241,7 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	}
 
 	if(hasPowerup())
-		powerupObject->fillAttributeList(alm, object);
+		powerupObject->fillWeaponAttributeList(alm, _this);
 
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");

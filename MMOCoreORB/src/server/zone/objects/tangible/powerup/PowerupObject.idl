@@ -107,4 +107,10 @@ class PowerupObject extends TangibleObject {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@local
+	public native void fillWeaponAttributeList(AttributeListMessage alm, WeaponObject weapon);
+
+	private native float getWeaponStat(final string attrib, WeaponObject weapon);
+
+	
 }

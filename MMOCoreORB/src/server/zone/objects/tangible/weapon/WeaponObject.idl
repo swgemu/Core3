@@ -232,10 +232,10 @@ class WeaponObject extends TangibleObject {
 		return certified;
 	}
 	
-	public int getPointBlankAccuracy() {
+	public int getPointBlankAccuracy(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return pointBlankAccuracy + powerupObject.getPowerupStat("pointBlankAccuracy");
+		if(powerupObject != null && withPup) 
+			return pointBlankAccuracy + (pointBlankAccuracy * powerupObject.getPowerupStat("pointBlankAccuracy"));
 		
 		return pointBlankAccuracy;
 	}
@@ -248,10 +248,10 @@ class WeaponObject extends TangibleObject {
 		return pointBlankRange;
 	}
 	
-	public int getIdealRange() {
+	public int getIdealRange(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return idealRange + powerupObject.getPowerupStat("idealRange");
+		if(powerupObject != null && withPup) 
+			return idealRange + (idealRange * powerupObject.getPowerupStat("idealRange"));
 		
 		return idealRange;
 	}
@@ -260,10 +260,10 @@ class WeaponObject extends TangibleObject {
 		idealRange = value;
 	}
 	
-	public int getMaxRange() {
+	public int getMaxRange(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return maxRange + powerupObject.getPowerupStat("maxRange");
+		if(powerupObject != null && withPup) 
+			return maxRange + (maxRange * powerupObject.getPowerupStat("maxRange"));
 		
 		return maxRange;
 	}
@@ -272,10 +272,10 @@ class WeaponObject extends TangibleObject {
 		maxRange = value;
 	}
 	
-	public int getIdealAccuracy() {
+	public int getIdealAccuracy(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return idealAccuracy + powerupObject.getPowerupStat("idealAccuracy");
+		if(powerupObject != null && withPup)  
+			return idealAccuracy + (idealAccuracy * powerupObject.getPowerupStat("idealAccuracy"));
 		
 		return idealAccuracy;
 	}
@@ -288,10 +288,10 @@ class WeaponObject extends TangibleObject {
 		return armorPiercing;
 	}
 	
-	public int getMaxRangeAccuracy() {
+	public int getMaxRangeAccuracy(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return maxRangeAccuracy + powerupObject.getPowerupStat("maxRangeAccuracy");
+		if(powerupObject != null && withPup) 
+			return maxRangeAccuracy + (maxRangeAccuracy * powerupObject.getPowerupStat("maxRangeAccuracy"));
 		
 		return maxRangeAccuracy;
 	}
@@ -300,10 +300,10 @@ class WeaponObject extends TangibleObject {
 		maxRangeAccuracy = value;
 	}
 	
-	public float getAttackSpeed() {
+	public float getAttackSpeed(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return attackSpeed + powerupObject.getPowerupStat("attackSpeed");
+		if(powerupObject != null && withPup) 
+			return attackSpeed + (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
 
 		return attackSpeed;
 	}
@@ -312,10 +312,10 @@ class WeaponObject extends TangibleObject {
 		attackSpeed = value;
 	}
 	
-	public float getMaxDamage() {
+	public float getMaxDamage(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return maxDamage + powerupObject.getPowerupStat("maxDamage");
+		if(powerupObject != null && withPup) 
+			return maxDamage + (maxDamage * powerupObject.getPowerupStat("maxDamage"));
 		
 		return maxDamage;
 	}
@@ -324,10 +324,10 @@ class WeaponObject extends TangibleObject {
 		maxDamage = value;
 	}
 	
-	public float getMinDamage() {
+	public float getMinDamage(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return minDamage + powerupObject.getPowerupStat("minDamage");
+		if(powerupObject != null && withPup) 
+			return minDamage + (minDamage * powerupObject.getPowerupStat("minDamage"));
 		
 		return minDamage;
 	}
@@ -336,10 +336,10 @@ class WeaponObject extends TangibleObject {
 		minDamage = value;
 	}
 	
-	public float getWoundsRatio() {
+	public float getWoundsRatio(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return woundsRatio + powerupObject.getPowerupStat("woundsRatio");
+		if(powerupObject != null && withPup)
+			return woundsRatio + (woundsRatio * powerupObject.getPowerupStat("woundsRatio"));
 	
 		return woundsRatio;
 	}
@@ -348,10 +348,10 @@ class WeaponObject extends TangibleObject {
 		woundsRatio = value;
 	}
 	
-	public float getDamageRadius() {
+	public float getDamageRadius(boolean withPup = true) {
 		
-		if(powerupObject != null) 
-			return damageRadius + powerupObject.getPowerupStat("damageRadius");
+		if(powerupObject != null && withPup)
+			return damageRadius + (damageRadius * powerupObject.getPowerupStat("damageRadius"));
 	
 		return damageRadius;
 	}
@@ -360,14 +360,11 @@ class WeaponObject extends TangibleObject {
 		damageRadius = value;
 	}
 	
-	public int getHealthAttackCost() {
+	public int getHealthAttackCost(boolean withPup = true) {
 		
-		if(powerupObject != null)  {
-			int cost = healthAttackCost - powerupObject.getPowerupStat("healthAttackCost");
-			if(cost < 1)
-				cost = 1;
-			return cost;
-		}
+		if(powerupObject != null && withPup)
+			return healthAttackCost - (healthAttackCost * powerupObject.getPowerupStat("healthAttackCost"));
+
 		return healthAttackCost;
 	}
 	
@@ -375,14 +372,10 @@ class WeaponObject extends TangibleObject {
 		healthAttackCost = value;
 	}
 	
-	public int getActionAttackCost() {
+	public int getActionAttackCost(boolean withPup = true) {
 		
-		if(powerupObject != null)  {
-			int cost = actionAttackCost - powerupObject.getPowerupStat("actionAttackCost");
-			if(cost < 1)
-				cost = 1;
-			return cost;
-		}
+		if(powerupObject != null && withPup) 
+			return actionAttackCost - (actionAttackCost * powerupObject.getPowerupStat("actionAttackCost"));
 		
 		return actionAttackCost;
 	}
@@ -391,14 +384,10 @@ class WeaponObject extends TangibleObject {
 		actionAttackCost = value;
 	}
 	
-	public int getMindAttackCost() {
+	public int getMindAttackCost(boolean withPup = true) {
 		
-		if(powerupObject != null)  {
-			int cost = mindAttackCost - powerupObject.getPowerupStat("mindAttackCost");
-			if(cost < 1)
-				cost = 1;
-			return cost;
-		}
+		if(powerupObject != null && withPup) 
+			return mindAttackCost - (mindAttackCost * powerupObject.getPowerupStat("mindAttackCost"));
 		
 		return mindAttackCost;
 	}

@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -209,17 +209,18 @@ bool WeaponObject::isCertified() {
 		return _implementation->isCertified();
 }
 
-int WeaponObject::getPointBlankAccuracy() {
+int WeaponObject::getPointBlankAccuracy(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETPOINTBLANKACCURACY__);
+		DistributedMethod method(this, RPC_GETPOINTBLANKACCURACY__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getPointBlankAccuracy();
+		return _implementation->getPointBlankAccuracy(withPup);
 }
 
 void WeaponObject::setPointBlankAccuracy(int value) {
@@ -249,17 +250,18 @@ int WeaponObject::getPointBlankRange() {
 		return _implementation->getPointBlankRange();
 }
 
-int WeaponObject::getIdealRange() {
+int WeaponObject::getIdealRange(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETIDEALRANGE__);
+		DistributedMethod method(this, RPC_GETIDEALRANGE__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getIdealRange();
+		return _implementation->getIdealRange(withPup);
 }
 
 void WeaponObject::setIdealRange(int value) {
@@ -276,17 +278,18 @@ void WeaponObject::setIdealRange(int value) {
 		_implementation->setIdealRange(value);
 }
 
-int WeaponObject::getMaxRange() {
+int WeaponObject::getMaxRange(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMAXRANGE__);
+		DistributedMethod method(this, RPC_GETMAXRANGE__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getMaxRange();
+		return _implementation->getMaxRange(withPup);
 }
 
 void WeaponObject::setMaxRange(int value) {
@@ -303,17 +306,18 @@ void WeaponObject::setMaxRange(int value) {
 		_implementation->setMaxRange(value);
 }
 
-int WeaponObject::getIdealAccuracy() {
+int WeaponObject::getIdealAccuracy(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETIDEALACCURACY__);
+		DistributedMethod method(this, RPC_GETIDEALACCURACY__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getIdealAccuracy();
+		return _implementation->getIdealAccuracy(withPup);
 }
 
 void WeaponObject::setIdealAccuracy(int value) {
@@ -343,17 +347,18 @@ int WeaponObject::getArmorPiercing() {
 		return _implementation->getArmorPiercing();
 }
 
-int WeaponObject::getMaxRangeAccuracy() {
+int WeaponObject::getMaxRangeAccuracy(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMAXRANGEACCURACY__);
+		DistributedMethod method(this, RPC_GETMAXRANGEACCURACY__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getMaxRangeAccuracy();
+		return _implementation->getMaxRangeAccuracy(withPup);
 }
 
 void WeaponObject::setMaxRangeAccuracy(int value) {
@@ -370,17 +375,18 @@ void WeaponObject::setMaxRangeAccuracy(int value) {
 		_implementation->setMaxRangeAccuracy(value);
 }
 
-float WeaponObject::getAttackSpeed() {
+float WeaponObject::getAttackSpeed(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETATTACKSPEED__);
+		DistributedMethod method(this, RPC_GETATTACKSPEED__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getAttackSpeed();
+		return _implementation->getAttackSpeed(withPup);
 }
 
 void WeaponObject::setAttackSpeed(float value) {
@@ -397,17 +403,18 @@ void WeaponObject::setAttackSpeed(float value) {
 		_implementation->setAttackSpeed(value);
 }
 
-float WeaponObject::getMaxDamage() {
+float WeaponObject::getMaxDamage(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMAXDAMAGE__);
+		DistributedMethod method(this, RPC_GETMAXDAMAGE__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getMaxDamage();
+		return _implementation->getMaxDamage(withPup);
 }
 
 void WeaponObject::setMaxDamage(float value) {
@@ -424,17 +431,18 @@ void WeaponObject::setMaxDamage(float value) {
 		_implementation->setMaxDamage(value);
 }
 
-float WeaponObject::getMinDamage() {
+float WeaponObject::getMinDamage(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMINDAMAGE__);
+		DistributedMethod method(this, RPC_GETMINDAMAGE__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getMinDamage();
+		return _implementation->getMinDamage(withPup);
 }
 
 void WeaponObject::setMinDamage(float value) {
@@ -451,17 +459,18 @@ void WeaponObject::setMinDamage(float value) {
 		_implementation->setMinDamage(value);
 }
 
-float WeaponObject::getWoundsRatio() {
+float WeaponObject::getWoundsRatio(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETWOUNDSRATIO__);
+		DistributedMethod method(this, RPC_GETWOUNDSRATIO__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getWoundsRatio();
+		return _implementation->getWoundsRatio(withPup);
 }
 
 void WeaponObject::setWoundsRatio(float value) {
@@ -478,17 +487,18 @@ void WeaponObject::setWoundsRatio(float value) {
 		_implementation->setWoundsRatio(value);
 }
 
-float WeaponObject::getDamageRadius() {
+float WeaponObject::getDamageRadius(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDAMAGERADIUS__);
+		DistributedMethod method(this, RPC_GETDAMAGERADIUS__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithFloatReturn();
 	} else
-		return _implementation->getDamageRadius();
+		return _implementation->getDamageRadius(withPup);
 }
 
 void WeaponObject::setDamageRadius(float value) {
@@ -505,17 +515,18 @@ void WeaponObject::setDamageRadius(float value) {
 		_implementation->setDamageRadius(value);
 }
 
-int WeaponObject::getHealthAttackCost() {
+int WeaponObject::getHealthAttackCost(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETHEALTHATTACKCOST__);
+		DistributedMethod method(this, RPC_GETHEALTHATTACKCOST__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getHealthAttackCost();
+		return _implementation->getHealthAttackCost(withPup);
 }
 
 void WeaponObject::setHealthAttackCost(int value) {
@@ -532,17 +543,18 @@ void WeaponObject::setHealthAttackCost(int value) {
 		_implementation->setHealthAttackCost(value);
 }
 
-int WeaponObject::getActionAttackCost() {
+int WeaponObject::getActionAttackCost(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETACTIONATTACKCOST__);
+		DistributedMethod method(this, RPC_GETACTIONATTACKCOST__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getActionAttackCost();
+		return _implementation->getActionAttackCost(withPup);
 }
 
 void WeaponObject::setActionAttackCost(int value) {
@@ -559,17 +571,18 @@ void WeaponObject::setActionAttackCost(int value) {
 		_implementation->setActionAttackCost(value);
 }
 
-int WeaponObject::getMindAttackCost() {
+int WeaponObject::getMindAttackCost(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMINDATTACKCOST__);
+		DistributedMethod method(this, RPC_GETMINDATTACKCOST__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getMindAttackCost();
+		return _implementation->getMindAttackCost(withPup);
 }
 
 void WeaponObject::setMindAttackCost(int value) {
@@ -1380,10 +1393,10 @@ bool WeaponObjectImplementation::isCertified() {
 	return certified;
 }
 
-int WeaponObjectImplementation::getPointBlankAccuracy() {
+int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return pointBlankAccuracy + powerupObject.getPowerupStat("pointBlankAccuracy");
-	return pointBlankAccuracy + powerupObject->getPowerupStat("pointBlankAccuracy");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return pointBlankAccuracy + (pointBlankAccuracy * powerupObject.getPowerupStat("pointBlankAccuracy"));
+	return pointBlankAccuracy + (pointBlankAccuracy * powerupObject->getPowerupStat("pointBlankAccuracy"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return pointBlankAccuracy;
 	return pointBlankAccuracy;
 }
@@ -1398,10 +1411,10 @@ int WeaponObjectImplementation::getPointBlankRange() {
 	return pointBlankRange;
 }
 
-int WeaponObjectImplementation::getIdealRange() {
+int WeaponObjectImplementation::getIdealRange(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealRange + powerupObject.getPowerupStat("idealRange");
-	return idealRange + powerupObject->getPowerupStat("idealRange");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealRange + (idealRange * powerupObject.getPowerupStat("idealRange"));
+	return idealRange + (idealRange * powerupObject->getPowerupStat("idealRange"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return idealRange;
 	return idealRange;
 }
@@ -1411,10 +1424,10 @@ void WeaponObjectImplementation::setIdealRange(int value) {
 	idealRange = value;
 }
 
-int WeaponObjectImplementation::getMaxRange() {
+int WeaponObjectImplementation::getMaxRange(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRange + powerupObject.getPowerupStat("maxRange");
-	return maxRange + powerupObject->getPowerupStat("maxRange");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRange + (maxRange * powerupObject.getPowerupStat("maxRange"));
+	return maxRange + (maxRange * powerupObject->getPowerupStat("maxRange"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxRange;
 	return maxRange;
 }
@@ -1424,10 +1437,10 @@ void WeaponObjectImplementation::setMaxRange(int value) {
 	maxRange = value;
 }
 
-int WeaponObjectImplementation::getIdealAccuracy() {
+int WeaponObjectImplementation::getIdealAccuracy(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealAccuracy + powerupObject.getPowerupStat("idealAccuracy");
-	return idealAccuracy + powerupObject->getPowerupStat("idealAccuracy");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealAccuracy + (idealAccuracy * powerupObject.getPowerupStat("idealAccuracy"));
+	return idealAccuracy + (idealAccuracy * powerupObject->getPowerupStat("idealAccuracy"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return idealAccuracy;
 	return idealAccuracy;
 }
@@ -1442,10 +1455,10 @@ int WeaponObjectImplementation::getArmorPiercing() {
 	return armorPiercing;
 }
 
-int WeaponObjectImplementation::getMaxRangeAccuracy() {
+int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRangeAccuracy + powerupObject.getPowerupStat("maxRangeAccuracy");
-	return maxRangeAccuracy + powerupObject->getPowerupStat("maxRangeAccuracy");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRangeAccuracy + (maxRangeAccuracy * powerupObject.getPowerupStat("maxRangeAccuracy"));
+	return maxRangeAccuracy + (maxRangeAccuracy * powerupObject->getPowerupStat("maxRangeAccuracy"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxRangeAccuracy;
 	return maxRangeAccuracy;
 }
@@ -1455,10 +1468,10 @@ void WeaponObjectImplementation::setMaxRangeAccuracy(int value) {
 	maxRangeAccuracy = value;
 }
 
-float WeaponObjectImplementation::getAttackSpeed() {
+float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return attackSpeed + powerupObject.getPowerupStat("attackSpeed");
-	return attackSpeed + powerupObject->getPowerupStat("attackSpeed");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return attackSpeed + (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
+	return attackSpeed + (attackSpeed * powerupObject->getPowerupStat("attackSpeed"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return attackSpeed;
 	return attackSpeed;
 }
@@ -1468,10 +1481,10 @@ void WeaponObjectImplementation::setAttackSpeed(float value) {
 	attackSpeed = value;
 }
 
-float WeaponObjectImplementation::getMaxDamage() {
+float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxDamage + powerupObject.getPowerupStat("maxDamage");
-	return maxDamage + powerupObject->getPowerupStat("maxDamage");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxDamage + (maxDamage * powerupObject.getPowerupStat("maxDamage"));
+	return maxDamage + (maxDamage * powerupObject->getPowerupStat("maxDamage"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxDamage;
 	return maxDamage;
 }
@@ -1481,10 +1494,10 @@ void WeaponObjectImplementation::setMaxDamage(float value) {
 	maxDamage = value;
 }
 
-float WeaponObjectImplementation::getMinDamage() {
+float WeaponObjectImplementation::getMinDamage(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return minDamage + powerupObject.getPowerupStat("minDamage");
-	return minDamage + powerupObject->getPowerupStat("minDamage");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return minDamage + (minDamage * powerupObject.getPowerupStat("minDamage"));
+	return minDamage + (minDamage * powerupObject->getPowerupStat("minDamage"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return minDamage;
 	return minDamage;
 }
@@ -1494,10 +1507,10 @@ void WeaponObjectImplementation::setMinDamage(float value) {
 	minDamage = value;
 }
 
-float WeaponObjectImplementation::getWoundsRatio() {
+float WeaponObjectImplementation::getWoundsRatio(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return woundsRatio + powerupObject.getPowerupStat("woundsRatio");
-	return woundsRatio + powerupObject->getPowerupStat("woundsRatio");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return woundsRatio + (woundsRatio * powerupObject.getPowerupStat("woundsRatio"));
+	return woundsRatio + (woundsRatio * powerupObject->getPowerupStat("woundsRatio"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return woundsRatio;
 	return woundsRatio;
 }
@@ -1507,10 +1520,10 @@ void WeaponObjectImplementation::setWoundsRatio(float value) {
 	woundsRatio = value;
 }
 
-float WeaponObjectImplementation::getDamageRadius() {
+float WeaponObjectImplementation::getDamageRadius(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return damageRadius + powerupObject.getPowerupStat("damageRadius");
-	return damageRadius + powerupObject->getPowerupStat("damageRadius");
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return damageRadius + (damageRadius * powerupObject.getPowerupStat("damageRadius"));
+	return damageRadius + (damageRadius * powerupObject->getPowerupStat("damageRadius"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return damageRadius;
 	return damageRadius;
 }
@@ -1520,17 +1533,10 @@ void WeaponObjectImplementation::setDamageRadius(float value) {
 	damageRadius = value;
 }
 
-int WeaponObjectImplementation::getHealthAttackCost() {
+int WeaponObjectImplementation::getHealthAttackCost(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL){
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			int cost = healthAttackCost - powerupObject.getPowerupStat("healthAttackCost");
-	int cost = healthAttackCost - powerupObject->getPowerupStat("healthAttackCost");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return 
-	if (cost < 1)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  				cost = 1;
-	cost = 1;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return cost;
-	return cost;
-}
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return healthAttackCost - (healthAttackCost * powerupObject.getPowerupStat("healthAttackCost"));
+	return healthAttackCost - (healthAttackCost * powerupObject->getPowerupStat("healthAttackCost"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return healthAttackCost;
 	return healthAttackCost;
 }
@@ -1540,17 +1546,10 @@ void WeaponObjectImplementation::setHealthAttackCost(int value) {
 	healthAttackCost = value;
 }
 
-int WeaponObjectImplementation::getActionAttackCost() {
+int WeaponObjectImplementation::getActionAttackCost(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL){
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			int cost = actionAttackCost - powerupObject.getPowerupStat("actionAttackCost");
-	int cost = actionAttackCost - powerupObject->getPowerupStat("actionAttackCost");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return 
-	if (cost < 1)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  				cost = 1;
-	cost = 1;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return cost;
-	return cost;
-}
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return actionAttackCost - (actionAttackCost * powerupObject.getPowerupStat("actionAttackCost"));
+	return actionAttackCost - (actionAttackCost * powerupObject->getPowerupStat("actionAttackCost"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return actionAttackCost;
 	return actionAttackCost;
 }
@@ -1560,17 +1559,10 @@ void WeaponObjectImplementation::setActionAttackCost(int value) {
 	actionAttackCost = value;
 }
 
-int WeaponObjectImplementation::getMindAttackCost() {
+int WeaponObjectImplementation::getMindAttackCost(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL){
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			int cost = mindAttackCost - powerupObject.getPowerupStat("mindAttackCost");
-	int cost = mindAttackCost - powerupObject->getPowerupStat("mindAttackCost");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return 
-	if (cost < 1)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  				cost = 1;
-	cost = 1;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return cost;
-	return cost;
-}
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return mindAttackCost - (mindAttackCost * powerupObject.getPowerupStat("mindAttackCost"));
+	return mindAttackCost - (mindAttackCost * powerupObject->getPowerupStat("mindAttackCost"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return mindAttackCost;
 	return mindAttackCost;
 }
@@ -1731,8 +1723,8 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_ISCERTIFIED__:
 		resp->insertBoolean(isCertified());
 		break;
-	case RPC_GETPOINTBLANKACCURACY__:
-		resp->insertSignedInt(getPointBlankAccuracy());
+	case RPC_GETPOINTBLANKACCURACY__BOOL_:
+		resp->insertSignedInt(getPointBlankAccuracy(inv->getBooleanParameter()));
 		break;
 	case RPC_SETPOINTBLANKACCURACY__INT_:
 		setPointBlankAccuracy(inv->getSignedIntParameter());
@@ -1740,20 +1732,20 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETPOINTBLANKRANGE__:
 		resp->insertSignedInt(getPointBlankRange());
 		break;
-	case RPC_GETIDEALRANGE__:
-		resp->insertSignedInt(getIdealRange());
+	case RPC_GETIDEALRANGE__BOOL_:
+		resp->insertSignedInt(getIdealRange(inv->getBooleanParameter()));
 		break;
 	case RPC_SETIDEALRANGE__INT_:
 		setIdealRange(inv->getSignedIntParameter());
 		break;
-	case RPC_GETMAXRANGE__:
-		resp->insertSignedInt(getMaxRange());
+	case RPC_GETMAXRANGE__BOOL_:
+		resp->insertSignedInt(getMaxRange(inv->getBooleanParameter()));
 		break;
 	case RPC_SETMAXRANGE__INT_:
 		setMaxRange(inv->getSignedIntParameter());
 		break;
-	case RPC_GETIDEALACCURACY__:
-		resp->insertSignedInt(getIdealAccuracy());
+	case RPC_GETIDEALACCURACY__BOOL_:
+		resp->insertSignedInt(getIdealAccuracy(inv->getBooleanParameter()));
 		break;
 	case RPC_SETIDEALACCURACY__INT_:
 		setIdealAccuracy(inv->getSignedIntParameter());
@@ -1761,56 +1753,56 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETARMORPIERCING__:
 		resp->insertSignedInt(getArmorPiercing());
 		break;
-	case RPC_GETMAXRANGEACCURACY__:
-		resp->insertSignedInt(getMaxRangeAccuracy());
+	case RPC_GETMAXRANGEACCURACY__BOOL_:
+		resp->insertSignedInt(getMaxRangeAccuracy(inv->getBooleanParameter()));
 		break;
 	case RPC_SETMAXRANGEACCURACY__INT_:
 		setMaxRangeAccuracy(inv->getSignedIntParameter());
 		break;
-	case RPC_GETATTACKSPEED__:
-		resp->insertFloat(getAttackSpeed());
+	case RPC_GETATTACKSPEED__BOOL_:
+		resp->insertFloat(getAttackSpeed(inv->getBooleanParameter()));
 		break;
 	case RPC_SETATTACKSPEED__FLOAT_:
 		setAttackSpeed(inv->getFloatParameter());
 		break;
-	case RPC_GETMAXDAMAGE__:
-		resp->insertFloat(getMaxDamage());
+	case RPC_GETMAXDAMAGE__BOOL_:
+		resp->insertFloat(getMaxDamage(inv->getBooleanParameter()));
 		break;
 	case RPC_SETMAXDAMAGE__FLOAT_:
 		setMaxDamage(inv->getFloatParameter());
 		break;
-	case RPC_GETMINDAMAGE__:
-		resp->insertFloat(getMinDamage());
+	case RPC_GETMINDAMAGE__BOOL_:
+		resp->insertFloat(getMinDamage(inv->getBooleanParameter()));
 		break;
 	case RPC_SETMINDAMAGE__FLOAT_:
 		setMinDamage(inv->getFloatParameter());
 		break;
-	case RPC_GETWOUNDSRATIO__:
-		resp->insertFloat(getWoundsRatio());
+	case RPC_GETWOUNDSRATIO__BOOL_:
+		resp->insertFloat(getWoundsRatio(inv->getBooleanParameter()));
 		break;
 	case RPC_SETWOUNDSRATIO__FLOAT_:
 		setWoundsRatio(inv->getFloatParameter());
 		break;
-	case RPC_GETDAMAGERADIUS__:
-		resp->insertFloat(getDamageRadius());
+	case RPC_GETDAMAGERADIUS__BOOL_:
+		resp->insertFloat(getDamageRadius(inv->getBooleanParameter()));
 		break;
 	case RPC_SETDAMAGERADIUS__FLOAT_:
 		setDamageRadius(inv->getFloatParameter());
 		break;
-	case RPC_GETHEALTHATTACKCOST__:
-		resp->insertSignedInt(getHealthAttackCost());
+	case RPC_GETHEALTHATTACKCOST__BOOL_:
+		resp->insertSignedInt(getHealthAttackCost(inv->getBooleanParameter()));
 		break;
 	case RPC_SETHEALTHATTACKCOST__INT_:
 		setHealthAttackCost(inv->getSignedIntParameter());
 		break;
-	case RPC_GETACTIONATTACKCOST__:
-		resp->insertSignedInt(getActionAttackCost());
+	case RPC_GETACTIONATTACKCOST__BOOL_:
+		resp->insertSignedInt(getActionAttackCost(inv->getBooleanParameter()));
 		break;
 	case RPC_SETACTIONATTACKCOST__INT_:
 		setActionAttackCost(inv->getSignedIntParameter());
 		break;
-	case RPC_GETMINDATTACKCOST__:
-		resp->insertSignedInt(getMindAttackCost());
+	case RPC_GETMINDATTACKCOST__BOOL_:
+		resp->insertSignedInt(getMindAttackCost(inv->getBooleanParameter()));
 		break;
 	case RPC_SETMINDATTACKCOST__INT_:
 		setMindAttackCost(inv->getSignedIntParameter());
@@ -1912,8 +1904,8 @@ bool WeaponObjectAdapter::isCertified() {
 	return (static_cast<WeaponObject*>(stub))->isCertified();
 }
 
-int WeaponObjectAdapter::getPointBlankAccuracy() {
-	return (static_cast<WeaponObject*>(stub))->getPointBlankAccuracy();
+int WeaponObjectAdapter::getPointBlankAccuracy(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getPointBlankAccuracy(withPup);
 }
 
 void WeaponObjectAdapter::setPointBlankAccuracy(int value) {
@@ -1924,24 +1916,24 @@ int WeaponObjectAdapter::getPointBlankRange() {
 	return (static_cast<WeaponObject*>(stub))->getPointBlankRange();
 }
 
-int WeaponObjectAdapter::getIdealRange() {
-	return (static_cast<WeaponObject*>(stub))->getIdealRange();
+int WeaponObjectAdapter::getIdealRange(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getIdealRange(withPup);
 }
 
 void WeaponObjectAdapter::setIdealRange(int value) {
 	(static_cast<WeaponObject*>(stub))->setIdealRange(value);
 }
 
-int WeaponObjectAdapter::getMaxRange() {
-	return (static_cast<WeaponObject*>(stub))->getMaxRange();
+int WeaponObjectAdapter::getMaxRange(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getMaxRange(withPup);
 }
 
 void WeaponObjectAdapter::setMaxRange(int value) {
 	(static_cast<WeaponObject*>(stub))->setMaxRange(value);
 }
 
-int WeaponObjectAdapter::getIdealAccuracy() {
-	return (static_cast<WeaponObject*>(stub))->getIdealAccuracy();
+int WeaponObjectAdapter::getIdealAccuracy(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getIdealAccuracy(withPup);
 }
 
 void WeaponObjectAdapter::setIdealAccuracy(int value) {
@@ -1952,72 +1944,72 @@ int WeaponObjectAdapter::getArmorPiercing() {
 	return (static_cast<WeaponObject*>(stub))->getArmorPiercing();
 }
 
-int WeaponObjectAdapter::getMaxRangeAccuracy() {
-	return (static_cast<WeaponObject*>(stub))->getMaxRangeAccuracy();
+int WeaponObjectAdapter::getMaxRangeAccuracy(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getMaxRangeAccuracy(withPup);
 }
 
 void WeaponObjectAdapter::setMaxRangeAccuracy(int value) {
 	(static_cast<WeaponObject*>(stub))->setMaxRangeAccuracy(value);
 }
 
-float WeaponObjectAdapter::getAttackSpeed() {
-	return (static_cast<WeaponObject*>(stub))->getAttackSpeed();
+float WeaponObjectAdapter::getAttackSpeed(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getAttackSpeed(withPup);
 }
 
 void WeaponObjectAdapter::setAttackSpeed(float value) {
 	(static_cast<WeaponObject*>(stub))->setAttackSpeed(value);
 }
 
-float WeaponObjectAdapter::getMaxDamage() {
-	return (static_cast<WeaponObject*>(stub))->getMaxDamage();
+float WeaponObjectAdapter::getMaxDamage(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getMaxDamage(withPup);
 }
 
 void WeaponObjectAdapter::setMaxDamage(float value) {
 	(static_cast<WeaponObject*>(stub))->setMaxDamage(value);
 }
 
-float WeaponObjectAdapter::getMinDamage() {
-	return (static_cast<WeaponObject*>(stub))->getMinDamage();
+float WeaponObjectAdapter::getMinDamage(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getMinDamage(withPup);
 }
 
 void WeaponObjectAdapter::setMinDamage(float value) {
 	(static_cast<WeaponObject*>(stub))->setMinDamage(value);
 }
 
-float WeaponObjectAdapter::getWoundsRatio() {
-	return (static_cast<WeaponObject*>(stub))->getWoundsRatio();
+float WeaponObjectAdapter::getWoundsRatio(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getWoundsRatio(withPup);
 }
 
 void WeaponObjectAdapter::setWoundsRatio(float value) {
 	(static_cast<WeaponObject*>(stub))->setWoundsRatio(value);
 }
 
-float WeaponObjectAdapter::getDamageRadius() {
-	return (static_cast<WeaponObject*>(stub))->getDamageRadius();
+float WeaponObjectAdapter::getDamageRadius(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getDamageRadius(withPup);
 }
 
 void WeaponObjectAdapter::setDamageRadius(float value) {
 	(static_cast<WeaponObject*>(stub))->setDamageRadius(value);
 }
 
-int WeaponObjectAdapter::getHealthAttackCost() {
-	return (static_cast<WeaponObject*>(stub))->getHealthAttackCost();
+int WeaponObjectAdapter::getHealthAttackCost(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getHealthAttackCost(withPup);
 }
 
 void WeaponObjectAdapter::setHealthAttackCost(int value) {
 	(static_cast<WeaponObject*>(stub))->setHealthAttackCost(value);
 }
 
-int WeaponObjectAdapter::getActionAttackCost() {
-	return (static_cast<WeaponObject*>(stub))->getActionAttackCost();
+int WeaponObjectAdapter::getActionAttackCost(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getActionAttackCost(withPup);
 }
 
 void WeaponObjectAdapter::setActionAttackCost(int value) {
 	(static_cast<WeaponObject*>(stub))->setActionAttackCost(value);
 }
 
-int WeaponObjectAdapter::getMindAttackCost() {
-	return (static_cast<WeaponObject*>(stub))->getMindAttackCost();
+int WeaponObjectAdapter::getMindAttackCost(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getMindAttackCost(withPup);
 }
 
 void WeaponObjectAdapter::setMindAttackCost(int value) {
