@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "SpawnObserver.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
@@ -59,7 +60,7 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (parent != NULL && parent->isCellObject())
 		return;
 
-	spawnLair(object);
+	trySpawnLair(object);
 }
 
 int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -98,7 +99,7 @@ LairSpawnGroup* LairSpawnAreaImplementation::getSpawnGroup() {
 	return spawnGroup;
 }
 
-void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
+int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
 		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
 
@@ -107,7 +108,7 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	if (spawnGroup == NULL) {
 		error("spawnGroup is NULL");
-		return;
+		return 1;
 	}
 
 	Vector<Reference<LairSpawn*> >* lairs = spawnGroup->getLairList();
@@ -116,40 +117,51 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	if (totalSize == 0) {
 		error("totalSize is NULL");
-		return;
+		return 2;
 	}
 
-	if (getZone() == NULL) {
+	Zone* zone = getZone();
+
+	if (zone == NULL) {
 		error("zone is NULL");
-		return;
+		return 3;
 	}
 
 	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
-		return;
+		return 4;
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
-		return;
-
-	//object->get
-
-	int inRangeTanos = object->inRangeObjects(SceneObjectType::LAIR, 128.f);
-
-	if (inRangeTanos > 4)
-		return;
+		return 5;
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	Vector3 randomPosition = getRandomPosition(object);
 
+	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
+
+	randomPosition.setZ(spawnZ);
+
+	//lets check if we intersect with some object (buildings, etc..)
+	if (CollisionManager::checkSphereCollision(randomPosition, 10, zone))
+		return 7;
+
 	//dont spawn in cities
-	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object)) {
-		return;
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+	zone->getInRangeActiveAreas(randomPosition.getX(), randomPosition.getY(), &activeAreas, true);
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area->isRegion())
+			return 8;
 	}
 
-	float spawnZ = getZone()->getHeight(randomPosition.getX(), randomPosition.getY());
+	//check in range objects for no build radi
+	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object)) {
+		return 9;
+	}
 
 	//Lets choose 3 random spawns;
-
 	LairSpawn* firstSpawn = lairs->get(System::random(totalSize - 1));
 	LairSpawn* secondSpawn = lairs->get(System::random(totalSize - 1));
 	LairSpawn* thirdSpawn = lairs->get(System::random(totalSize - 1));
@@ -181,10 +193,10 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 
 	if (spawnLimit != -1) {
 		if (currentSpawnCount >= spawnLimit)
-			return;
+			return 10;
 	}
 
-	CreatureManager* creatureManager = getZone()->getCreatureManager();
+	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, finalSpawn->getMinDifficulty(), finalSpawn->getMaxDifficulty(), randomPosition.getX(), spawnZ, randomPosition.getY());
 
@@ -193,9 +205,9 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 		msg << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
 		obj->info(msg.toString());
 	} else {
-		error("could not spawn lair" + lairTemplate);
+		error("could not spawn lair " + lairTemplate);
 
-		return;
+		return 11;
 	}
 
 	if (exitObserver == NULL) {
@@ -212,6 +224,8 @@ void LairSpawnAreaImplementation::spawnLair(SceneObject* object) {
 	++currentlySpawnedLairs;
 
 	spawnedGroupsCount.put(lairTemplate.hashCode(), currentSpawnCount);
+
+	return 0;
 }
 
 void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
@@ -229,7 +243,7 @@ void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		return;
 
 	if (System::random(25) == 1)
-		spawnLair(creature);
+		trySpawnLair(creature);
 }
 
 void LairSpawnAreaImplementation::notifyExit(SceneObject* object) {

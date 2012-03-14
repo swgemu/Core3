@@ -59,7 +59,7 @@ public:
 
 	static bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
 	static bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
-	static bool checkLindOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cell);
+	static bool checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cell);
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	//static bool

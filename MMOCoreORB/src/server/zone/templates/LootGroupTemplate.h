@@ -26,6 +26,9 @@ public:
 	LootGroupTemplate(const LootGroupTemplate& lgt) : Object() {
 		templateName = lgt.templateName;
 
+		itemMap.setNoDuplicateInsertPlan();
+		itemMap.setNullValue(0);
+
 		itemMap = lgt.itemMap;
 	}
 
@@ -76,6 +79,10 @@ public:
 		}
 
 		lootItems.pop();
+	}
+
+	String& getTemplateName() {
+		return templateName;
 	}
 };
 

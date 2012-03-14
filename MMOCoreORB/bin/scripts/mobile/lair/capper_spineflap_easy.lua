@@ -3,10 +3,10 @@ capper_spineflap_easy = Lair:new {
 	mobiles = {{"capper_spineflap", 20}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap.iff"},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {}
+	buildingsEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap.iff"},
+	buildingsMedium = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap.iff"},
+	buildingsHard = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap.iff"},
+	buildingsVeryHard = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap.iff"}
 }
 
 addLairTemplate("capper_spineflap_easy", capper_spineflap_easy)

@@ -16,7 +16,7 @@
  *	LairSpawnAreaStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SPAWNLAIR__SCENEOBJECT_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ISLAIRSPAWNAREA__,};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_TRYSPAWNLAIR__SCENEOBJECT_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ISLAIRSPAWNAREA__,};
 
 LairSpawnArea::LairSpawnArea() : SpawnArea(DummyConstructorParameter::instance()) {
 	LairSpawnAreaImplementation* _implementation = new LairSpawnAreaImplementation();
@@ -74,18 +74,18 @@ void LairSpawnArea::notifyPositionUpdate(QuadTreeEntry* obj) {
 		_implementation->notifyPositionUpdate(obj);
 }
 
-void LairSpawnArea::spawnLair(SceneObject* object) {
+int LairSpawnArea::trySpawnLair(SceneObject* object) {
 	LairSpawnAreaImplementation* _implementation = static_cast<LairSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNLAIR__SCENEOBJECT_);
+		DistributedMethod method(this, RPC_TRYSPAWNLAIR__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		_implementation->spawnLair(object);
+		return _implementation->trySpawnLair(object);
 }
 
 int LairSpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -365,8 +365,8 @@ Packet* LairSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
 		notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
 		break;
-	case RPC_SPAWNLAIR__SCENEOBJECT_:
-		spawnLair(static_cast<SceneObject*>(inv->getObjectParameter()));
+	case RPC_TRYSPAWNLAIR__SCENEOBJECT_:
+		resp->insertSignedInt(trySpawnLair(static_cast<SceneObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
@@ -393,8 +393,8 @@ void LairSpawnAreaAdapter::notifyPositionUpdate(QuadTreeEntry* obj) {
 	(static_cast<LairSpawnArea*>(stub))->notifyPositionUpdate(obj);
 }
 
-void LairSpawnAreaAdapter::spawnLair(SceneObject* object) {
-	(static_cast<LairSpawnArea*>(stub))->spawnLair(object);
+int LairSpawnAreaAdapter::trySpawnLair(SceneObject* object) {
+	return (static_cast<LairSpawnArea*>(stub))->trySpawnLair(object);
 }
 
 int LairSpawnAreaAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

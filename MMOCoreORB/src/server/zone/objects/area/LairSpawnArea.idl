@@ -87,7 +87,7 @@ class LairSpawnArea extends SpawnArea {
 	
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
 	
-	public native void spawnLair(SceneObject object);
+	public native int trySpawnLair(SceneObject object);
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	

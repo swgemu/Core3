@@ -294,7 +294,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(group->getLootItemTemplateForRoll(roll));
 
 	if (itemTemplate == NULL) {
-		warning("Loot item template requested does not exist: " + group->getLootItemTemplateForRoll(roll));
+		warning("Loot item template requested does not exist: " + group->getLootItemTemplateForRoll(roll) + " for templateName: " + group->getTemplateName());
 		return false;
 	}
 

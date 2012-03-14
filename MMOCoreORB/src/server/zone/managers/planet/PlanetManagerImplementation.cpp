@@ -331,7 +331,7 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 
 	//If both zones are the same, then intraplanetary travel is allowed.
 	if (arrivalZone == zone)
-			return true;
+		return true;
 
 	//Check to see if interplanetary travel is allowed between both points.
 	if (!isInterplanetaryTravelAllowed(departurePoint) || !arrivalPlanetManager->isInterplanetaryTravelAllowed(arrivalPoint))
@@ -352,10 +352,10 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 	StringBuffer callDesc;
 
 	callDesc << "getNearestPlanetTravelPoint("
-			 << object->getObjectNameStringIdName()
-			 << ":" << object->getObjectID()
-			 << ", " << searchrange
-			 << ") @ " << object->getWorldPosition().toString();
+			<< object->getObjectNameStringIdName()
+			<< ":" << object->getObjectID()
+			<< ", " << searchrange
+			<< ") @ " << object->getWorldPosition().toString();
 #endif
 
 	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
@@ -489,64 +489,38 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 }
 
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
-	Vector<ManagedReference<ActiveArea* > >* activeAreas = NULL;
-	SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = NULL;
-	bool deleteVector = false;
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	if (object != NULL && object->getWorldPosition().distanceTo(targetPos) < 64) {
-		activeAreas = object->getActiveAreas();
-		closeObjects = object->getCloseObjects();
-	} else {
-		activeAreas = new SortedVector<ManagedReference<ActiveArea*> >();
-		zone->getInRangeActiveAreas(x, y, cast<SortedVector<ManagedReference<ActiveArea*> >*>(activeAreas), true);
+	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeObjects(x, y, 512, &closeObjects, true);
 
-		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-		zone->getInRangeObjects(x, y, 512, closeObjects, true);
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
 
-		deleteVector = true;
-	}
-
-	for (int i = 0; i < activeAreas->size(); ++i) {
-		if (activeAreas->get(i)->isNoBuildArea()) {
-			if (deleteVector) {
-				delete closeObjects;
-				delete activeAreas;
-			}
-
+		if (area->isNoBuildArea()) {
 			return false;
 		}
 	}
 
-	if (closeObjects != NULL) {
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
 
-			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
-			if (objectTemplate != NULL) {
-				float radius = objectTemplate->getNoBuildRadius();
+		if (objectTemplate != NULL) {
+			float radius = objectTemplate->getNoBuildRadius();
 
-				if (radius > 0) {
-					Vector3 objWorldPos = obj->getWorldPosition();
+			if (radius > 0) {
+				Vector3 objWorldPos = obj->getWorldPosition();
 
-					if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
-						if (deleteVector) {
-							delete closeObjects;
-							delete activeAreas;
-						}
-
-						return false;
-					}
+				if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
+					return false;
 				}
 			}
 		}
-	}
-
-	if (deleteVector) {
-		delete closeObjects;
-		delete activeAreas;
 	}
 
 	if (isInWater(targetPos.getX(), targetPos.getY())) {

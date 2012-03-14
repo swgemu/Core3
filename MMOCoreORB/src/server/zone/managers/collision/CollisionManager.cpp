@@ -100,9 +100,11 @@ AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFla
 	return mesh->getAABBTree();
 }
 
-bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float radius, Zone* zone) {
+bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius, Zone* zone) {
+	Vector3 sphereOrigin(origin.getX(), origin.getZ(), origin.getY());
+
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
-	zone->getInRangeObjects(sphereOrigin.getX(), sphereOrigin.getY(), 512, &objects, true);
+	zone->getInRangeObjects(origin.getX(), origin.getY(), 512, &objects, true);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
@@ -142,7 +144,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& sphereOrigin, float r
 	return false;
 }
 
-bool CollisionManager::checkLindOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
+bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
 	SceneObject* building = cellObject->getParent();
 
 	if (building == NULL)
@@ -286,7 +288,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		}
 
 		if (cell != NULL) {
-			return checkLindOfSightWorldToCell(rayOrigin, rayEnd, dist, cell);
+			return checkLineOfSightWorldToCell(rayOrigin, rayEnd, dist, cell);
 		}
 	}
 

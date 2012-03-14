@@ -100,7 +100,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 
-	void spawnLair(SceneObject* object);
+	int trySpawnLair(SceneObject* object);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -161,7 +161,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 
-	void spawnLair(SceneObject* object);
+	int trySpawnLair(SceneObject* object);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -220,7 +220,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* obj);
 
-	void spawnLair(SceneObject* object);
+	int trySpawnLair(SceneObject* object);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
