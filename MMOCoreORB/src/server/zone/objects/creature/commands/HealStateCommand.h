@@ -246,9 +246,16 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else
+					return INVALIDTARGET;
+			}
+		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());

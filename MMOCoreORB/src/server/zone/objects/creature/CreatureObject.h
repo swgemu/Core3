@@ -426,8 +426,6 @@ public:
 
 	DamageOverTimeList* getDamageOverTimeList();
 
-	void removeDotsFromVector();
-
 	bool hasBuff(unsigned int buffcrc);
 
 	void notifySelfPositionUpdate();
@@ -1175,8 +1173,6 @@ public:
 
 	DamageOverTimeList* getDamageOverTimeList();
 
-	void removeDotsFromVector();
-
 	bool hasBuff(unsigned int buffcrc);
 
 	void notifySelfPositionUpdate();
@@ -1763,8 +1759,6 @@ public:
 	bool healDot(unsigned long long dotType, int reduction);
 
 	void clearDots();
-
-	void removeDotsFromVector();
 
 	bool hasBuff(unsigned int buffcrc);
 

@@ -660,14 +660,7 @@ class CreatureObject extends TangibleObject {
 	public DamageOverTimeList getDamageOverTimeList() { 
 		return damageOverTimeList;
 	}
-	
-	/**
-	 * This does not clear the dots, use clearDots() instead
-	 */
-	public void removeDotsFromVector() {
-		damageOverTimeList.removeAll();
-	}
-	
+		
 	public boolean hasBuff(unsigned int buffcrc) {
 		return creatureBuffs.hasBuff(buffcrc);
 	}

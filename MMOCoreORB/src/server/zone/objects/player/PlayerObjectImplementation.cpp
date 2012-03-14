@@ -258,7 +258,7 @@ void PlayerObjectImplementation::unload() {
 	if (tradeContainer != NULL)
 		creature->dropActiveSession(SessionFacadeType::TRADE);
 
-	creature->removeDotsFromVector();
+	creature->clearDots();
 
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
 
