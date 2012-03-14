@@ -118,7 +118,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	Region* addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius, bool persistent);
 
 	void rescheduleUpdateEvent(unsigned int seconds);
 
@@ -314,7 +314,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	Region* addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius, bool persistent);
 
 	void rescheduleUpdateEvent(unsigned int seconds);
 
@@ -473,7 +473,7 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	Region* addRegion(float x, float y, float radius);
+	Region* addRegion(float x, float y, float radius, bool persistent);
 
 	void rescheduleUpdateEvent(unsigned int seconds);
 

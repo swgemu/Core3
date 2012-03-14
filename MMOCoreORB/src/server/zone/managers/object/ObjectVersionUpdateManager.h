@@ -20,7 +20,7 @@ public:
 	void checkCurrentRevision();
 	void runScripts();
 
-	void run();
+	int run();
 };
 
 

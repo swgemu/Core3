@@ -3805,11 +3805,6 @@ int SceneObjectImplementation::notifyObjectRemoved(SceneObject* object) {
 	return 0;
 }
 
-void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		activeAreas.put(area);
-	(&activeAreas)->put(area);
-}
-
 void SceneObjectImplementation::dropActiveArea(ActiveArea* area) {
 	// server/zone/objects/scene/SceneObject.idl():  		activeAreas.drop(area);
 	(&activeAreas)->drop(area);

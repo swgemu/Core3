@@ -80,7 +80,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
-	public native Region addRegion(float x, float y, float radius);
+	public native Region addRegion(float x, float y, float radius, boolean persistent);
 	
 	public native void rescheduleUpdateEvent(unsigned int seconds);
 	

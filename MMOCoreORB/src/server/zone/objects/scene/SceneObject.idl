@@ -791,9 +791,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 	
-	public void addActiveArea(ActiveArea area) {
-		activeAreas.put(area);
-	}
+	public native void addActiveArea(ActiveArea area);
 	
 	public void dropActiveArea(ActiveArea area) {
 		activeAreas.drop(area);

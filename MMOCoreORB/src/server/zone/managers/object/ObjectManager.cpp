@@ -346,9 +346,11 @@ void ObjectManager::registerObjectTypes() {
 }
 
 void ObjectManager::updateObjectVersion() {
-	ObjectVersionUpdateManager::instance()->run();
+	if (ObjectVersionUpdateManager::instance()->run() == 0) {
+		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
+		ObjectDatabaseManager::instance()->checkpoint();
+	}
 }
 
 void ObjectManager::loadLastUsedObjectID() {

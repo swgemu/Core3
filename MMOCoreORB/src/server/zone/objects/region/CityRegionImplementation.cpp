@@ -56,13 +56,13 @@ void CityRegionImplementation::initialize() {
 	setLogging(true);
 }
 
-Region* CityRegionImplementation::addRegion(float x, float y, float radius) {
+Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool persistent) {
 	if (zone == NULL) {
 		return NULL;
 	}
 
 	String temp = "object/region_area.iff";
-	SceneObject* obj = zone->getZoneServer()->createObject(temp.hashCode(), 1);
+	SceneObject* obj = zone->getZoneServer()->createObject(temp.hashCode(), persistent ? 1 : 0);
 
 	if (obj == NULL || !obj->isRegion()) {
 		return NULL;

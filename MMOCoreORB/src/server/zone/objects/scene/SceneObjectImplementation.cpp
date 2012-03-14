@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "SceneObject.h"
 
@@ -275,7 +275,7 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 
 	if (startTask)
 		queueUpdateToDatabaseTask();
-		*/
+	 */
 
 	//info("saved in " + String::valueOf(start.miliDifference()) + " ms");
 }
@@ -1332,6 +1332,12 @@ String SceneObjectImplementation::getDisplayedName() {
 }
 
 bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* mat) {
-	// server/zone/objects/scene/SceneObject.idl():  		transformForCollisionMatrix.compareAndSet(null, mat);
 	return transformForCollisionMatrix.compareAndSet(NULL, mat);
+}
+
+void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
+	if (!area->isDeplyoed())
+		area->deploy();
+
+	activeAreas.put(area);
 }

@@ -422,12 +422,13 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion();
+			cityRegion->deploy();
 			cityRegion->setRegionName(regionName);
 			cityRegion->setZone(zone);
 			regionMap.addRegion(cityRegion);
 		}
 
-		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius);
+		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius, false);
 
 		if (region != NULL) {
 			if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
@@ -438,7 +439,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 			region->setMunicipalZone(true);
 		}
 
-		cityRegion->addRegion(x, y, radius * 2);
+		cityRegion->addRegion(x, y, radius * 2, false);
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");

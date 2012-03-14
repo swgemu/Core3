@@ -153,7 +153,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	city->setZone(mayor->getZone());
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
-	city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1));
+	city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
 	city->rescheduleUpdateEvent(newCityGracePeriod * 60); //Minutes
 
 	//TODO: Send email to mayor.
