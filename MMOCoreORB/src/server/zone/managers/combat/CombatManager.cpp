@@ -884,11 +884,11 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 			damage /= 5;
 	}
 
-	if (defender->isKneeling())
-		damage *= 1.5f;
+	/*if (defender->isKneeling())
+		damage *= 1.5f;*/
 
 	if (defender->isKnockedDown() || defender->isProne())
-		damage *= 2.5f;
+		damage *= 1.33f;
 
 	//Toughness
 	int toughness = getDefenderToughnessModifier(defender);
