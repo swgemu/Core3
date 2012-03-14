@@ -95,7 +95,7 @@ void BountyMissionObjectiveImplementation::abort() {
 	getPlayerOwner()->getZoneServer()->getMissionManager()->removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
-	if (waypoint != NULL) {
+	if (waypoint != NULL && waypoint->isActive()) {
 		waypoint->setActive(false);
 	}
 
@@ -262,6 +262,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 			} else if (mission->getTargetObjectId() == killer->getObjectID() ||
 					(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
 				//Player killed by target, fail mission.
+				getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 				fail();
 				return 1;
 			}
