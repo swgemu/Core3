@@ -17,7 +17,7 @@ int SignObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		sendSignNameTo(player);
 		break;
 	default:
-		TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 	}
 
 	return 0;

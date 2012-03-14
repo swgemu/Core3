@@ -644,6 +644,8 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 			String error;
 			if (creature->canAddObject(item, 4, error) == 0)
 				creature->transferObject(item, 4, false);
+		} else {
+			error("could not create item in PlayerCreationManager::addProfessionStartingItems: " + itemTemplate);
 		}
 	}
 
