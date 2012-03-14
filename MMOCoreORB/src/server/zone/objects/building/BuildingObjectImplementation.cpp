@@ -397,6 +397,13 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 
 		if (obj->isPlayerCreature())
 			updateCellPermissionsTo(cast<CreatureObject*>(obj.get()));
+		else if (obj->isVehicleObject()) {
+			SceneObject* rider = obj->getSlottedObject("rider");
+
+			if (rider != NULL) {
+				updateCellPermissionsTo(cast<CreatureObject*>(rider));
+			}
+		}
 	}
 }
 

@@ -71,6 +71,8 @@ public:
 
 		BuildingObject* building = cast<BuildingObject*>( obj.get());
 
+		Locker clocker(building, creature);
+
 		if (!building->isOnAdminList(creature->getFirstName())) {
 			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
 			return INSUFFICIENTPERMISSION;
