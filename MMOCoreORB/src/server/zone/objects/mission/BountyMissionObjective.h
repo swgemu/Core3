@@ -180,6 +180,10 @@ public:
 
 	void removeFromBountyLock();
 
+	void removeObservers();
+
+	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -275,6 +279,10 @@ public:
 
 	void removeFromBountyLock();
 
+	void removeObservers();
+
+	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
+
 	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
@@ -351,6 +359,10 @@ public:
 	void addToBountyLock();
 
 	void removeFromBountyLock();
+
+	void removeObservers();
+
+	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
 
 protected:
 	String _param0_spawnTarget__String_;

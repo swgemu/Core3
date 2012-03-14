@@ -102,55 +102,20 @@ void BountyMissionObjectiveImplementation::abort() {
 	//Remove observers
 	if (hasObservers()) {
 		if (mission->getTargetOptionalTemplate() != "") {
-			ManagedReference<MissionObserver*> observer1 = getObserver(0);
-			ManagedReference<MissionObserver*> observer2 = getObserver(1);
-
 			if (npcTarget != NULL) {
 				ManagedReference<SceneObject*> npcHolder = npcTarget.get();
 				Locker locker(npcTarget);
 
-				npcTarget->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer1);
-				npcTarget->dropObserver(ObserverEventType::DAMAGERECEIVED, observer2);
+				removeObserver(0, ObserverEventType::OBJECTDESTRUCTION, npcTarget);
+				removeObserver(0, ObserverEventType::DAMAGERECEIVED, npcTarget);
+
 				npcTarget->destroyObjectFromDatabase();
 				npcTarget->destroyObjectFromWorld(true);
 
 				npcTarget = NULL;
-
-				dropObserver(observer1, true);
-				dropObserver(observer2, true);
 			}
 		} else {
-			ManagedReference<MissionObserver*> observer1 = getObserver(0);
-			ManagedReference<MissionObserver*> observer3 = getObserver(2);
-			ManagedReference<MissionObserver*> observer5 = getObserver(4);
-
-			ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-
-			if (zoneServer == NULL) {
-				return;
-			}
-
-			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
-
-			if (target != NULL) {
-				target->dropObserver(ObserverEventType::PLAYERKILLED, observer1);
-				dropObserver(observer1, false);
-				target->dropObserver(ObserverEventType::DEFENDERADDED, observer3);
-				dropObserver(observer3, false);
-				target->dropObserver(ObserverEventType::DEFENDERDROPPED, observer5);
-				dropObserver(observer5, false);
-			}
-
-			ManagedReference<MissionObserver*> observer2 = getObserver(1);
-			ManagedReference<MissionObserver*> observer4 = getObserver(3);
-			ManagedReference<MissionObserver*> observer6 = getObserver(5);
-
-			getPlayerOwner()->dropObserver(ObserverEventType::PLAYERKILLED, observer2);
-			dropObserver(observer2, true);
-			getPlayerOwner()->dropObserver(ObserverEventType::DEFENDERADDED, observer4);
-			dropObserver(observer4, true);
-			getPlayerOwner()->dropObserver(ObserverEventType::DEFENDERDROPPED, observer6);
-			dropObserver(observer6, true);
+			removeObservers();
 		}
 	}
 }
@@ -503,4 +468,31 @@ void BountyMissionObjectiveImplementation::removeFromBountyLock() {
 	targetGhost->removeFromBountyLockList(getPlayerOwner());
 	creature->sendPvpStatusTo(getPlayerOwner());
 	getPlayerOwner()->sendPvpStatusTo(creature);
+}
+
+void BountyMissionObjectiveImplementation::removeObservers() {
+	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+
+	if (zoneServer != NULL) {
+		ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+
+		removeObserver(0, ObserverEventType::PLAYERKILLED, target);
+		removeObserver(2, ObserverEventType::DEFENDERADDED, target);
+		removeObserver(4, ObserverEventType::DEFENDERDROPPED, target);
+	}
+
+	removeObserver(1, ObserverEventType::PLAYERKILLED, getPlayerOwner());
+	removeObserver(3, ObserverEventType::DEFENDERADDED, getPlayerOwner());
+	removeObserver(5, ObserverEventType::DEFENDERDROPPED, getPlayerOwner());
+}
+
+void BountyMissionObjectiveImplementation::removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature) {
+	if (getObserverCount() <= observerNumber) {
+		//Observer does not exist.
+		return;
+	}
+
+	ManagedReference<MissionObserver*> observer = getObserver(observerNumber);
+	creature->dropObserver(observerType, observer);
+	dropObserver(observer, true);
 }
