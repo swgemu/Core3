@@ -32,6 +32,20 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (!canDropInstrument())
 			return 1;
 
+		SortedVector<ManagedReference<Observer* > >* observers = player->getObservers(ObserverEventType::POSITIONCHANGED);
+
+		if (observers != NULL) {
+			for (int i = 0; i < observers->size(); ++i) {
+				Observer* observer = observers->get(i);
+
+				if (dynamic_cast<InstrumentObserver*>(observer) != NULL) {
+					//couldnt find stringi
+					player->sendSystemMessage("You already dropped an instrument");
+					return 1;
+				}
+			}
+		}
+
 		SceneObject* playerParent = player->getParent();
 
 		if (playerParent != NULL) {
