@@ -378,7 +378,6 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	int cityRank;
 	float radius;
 
-	//TODO: fix this
 	try {
 		cityRank = city->getCityRank();
 
@@ -421,6 +420,7 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 	uint8 newRank = city->getCityRank() - 1;
 
 	if (newRank == CLIENT) {
+		city->setCityRank(newRank);
 		destroyCity(city);
 		return;
 	}
@@ -510,6 +510,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 		cityhall->destroyObjectFromWorld(false);
 		cityhall->destroyObjectFromDatabase(true);
 	}
+
+	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
 	//TODO: Destroy civic structures.
 }
