@@ -381,15 +381,16 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	//TODO: fix this
 	try {
 		cityRank = city->getCityRank();
+
+		if (cityRank == CLIENT)
+			return; //It's a client region.
+
 		radius = city->getRadius();
 	} catch (Exception& e) {
 		error(e.getMessage() + "in CityManagerImplementation::processCityUpdate");
 
 		return;
 	}
-
-	if (cityRank == CLIENT)
-		return; //It's a client region.
 
 	int citizens = city->getCitizenCount();
 

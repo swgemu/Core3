@@ -1272,6 +1272,13 @@ float CityRegionImplementation::getPositionY() {
 }
 
 float CityRegionImplementation::getRadius() {
+	// server/zone/objects/region/CityRegion.idl():  		ActiveArea 
+	if ((&regions)->size() == 0){
+	// server/zone/objects/region/CityRegion.idl():  			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
+	Logger::error("getRadius called with 0 regions for stringid:" + (&regionName)->getFullPath() + " customName:" + customRegionName);
+	// server/zone/objects/region/CityRegion.idl():  			return 0.0;
+	return 0.0;
+}
 	// server/zone/objects/region/CityRegion.idl():  		ActiveArea aa = regions.get(0);
 	ActiveArea* aa = (&regions)->get(0);
 	// server/zone/objects/region/CityRegion.idl():  		return 

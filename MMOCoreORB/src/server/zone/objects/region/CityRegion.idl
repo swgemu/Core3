@@ -199,6 +199,12 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public float getRadius() {
+		if (regions.size() == 0) {
+			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
+			
+			return 0.0;
+		}
+		
 		ActiveArea aa = regions.get(0);
 		
 		if (aa == null)
