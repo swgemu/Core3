@@ -702,7 +702,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	if (level == 3) {
 		int compareValue = playerBountyList.size() > 50 ? 50 : playerBountyList.size();
 		//TODO: remove * 10.
-		if (System::random(100) < compareValue * 10) {
+		if (System::random(100) < compareValue) {
 			npcTarget = false;
 			randomTexts = 6;
 		}
