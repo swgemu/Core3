@@ -42,7 +42,40 @@
 
 
 object_building_base_base_building = object_building_base_shared_base_building:new {
-	containerComponent = {"cpp", "StructureContainerComponent"}
+	containerComponent = {"cpp", "StructureContainerComponent"},
+	lotSize = 0,
+	baseMaintenanceRate = 0,
+	
+	--What zones can this building be built by a player on.
+	--Default is corellia, dantooine, lok, naboo, rori, talus, tatooine
+	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
+	
+	--The minimum rank of a player city required for this structure to be placed.
+	cityRankRequired = 0,
+	
+	--Skills required to place this structure object. String value of the particular skill box.
+	skillRequired = "",
+	
+	--Abilities required to place this structure object. String value of the ability.
+	abilityRequired = "",
+
+	--Sign is a childObject for the default sign of this structure.
+	sign = {templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 0},
+	
+	--Should the structure be public by default?
+	publicStructure = 1,
+	
+	--Can the structure ever be private?
+	alwaysPublic = 0,
+	
+	--The object that is placed during the construction phase.
+	constructionMarker = "",
+		
+	--Elevator Terminals format is template_path, cell#, x, z, y, qx, qy, qz, qw, dz - where dz is the delta z.
+	elevatorTerminals = {},
+	
+	length = 1,
+	width = 1
 }
 
 ObjectTemplates:addTemplate(object_building_base_base_building, "object/building/base/base_building.iff")
