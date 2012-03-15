@@ -24,6 +24,7 @@ public:
 	const static int CITYMILITIA = 12;
 	const static int FISHING = 13;
 	const static int TRADE = 14;
+	const static int PLAYERTEACH = 15;
 
 	const static int CRAFTING = 50;
 };

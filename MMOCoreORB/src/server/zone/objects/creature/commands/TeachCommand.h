@@ -46,6 +46,9 @@ which carries forward this exception.
 #define TEACHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/PlayerTeachSuiCallback.h"
+#include "server/zone/objects/player/sessions/PlayerTeachSession.h"
 
 class TeachCommand : public QueueCommand {
 public:
@@ -62,6 +65,81 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ZoneServer* zserv = creature->getZoneServer();
+
+		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+			return INVALIDTARGET; // Shouldn't get here, but...
+		}
+
+		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
+
+
+		Locker clocker(targetCreature, creature);
+
+		// By now, the target player should have skills that the teaching player can teach. Let's add each skillbox to a vector.
+
+		PlayerTeachSession* sessioncheck = cast<PlayerTeachSession* >(targetCreature->getActiveSession(SessionFacadeType::PLAYERTEACH));
+
+		if (sessioncheck != NULL) {
+			creature->sendSystemMessage("Your target already has an offer to teach.");
+			targetCreature->dropActiveSession(SessionFacadeType::PLAYERTEACH);
+			return GENERALERROR;
+		}
+
+		ManagedReference<PlayerTeachSession*> session = new PlayerTeachSession(targetCreature);
+		targetCreature->addActiveSession(SessionFacadeType::PLAYERTEACH, session);
+
+		SkillList* skillList = creature->getSkillList();
+
+		for (int i = 0; i < skillList->size(); ++i) {
+			Skill* skill = skillList->get(i);
+			if (SkillManager::instance()->canLearnSkill(skill->getSkillName(), targetCreature, false)){
+			session->addTeachableSkill(skill->getSkillName());
+			}
+		}
+
+		// Now, we check to see if the training player has any skills the target can learn.
+
+		if (session->getTeachableSkillsSize() == 0){
+			StringIdChatParameter params("teaching", "no_skills_for_student"); // You have no skills that %TT can currently learn."
+			params.setTT(targetCreature->getDisplayedName());
+			creature->sendSystemMessage(params);
+			targetCreature->dropActiveSession(SessionFacadeType::PLAYERTEACH);
+			return GENERALERROR;
+		}
+
+		// Now, we display the teachable skills to the player offering teaching.
+
+		ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::TEACH_SKILL);
+		sui->setPromptTitle("@base_player:swg");
+		sui->setPromptText("Select which skill you wish to teach..."); // TODO: Get actual strings.
+
+		for (int i = 0; i < session->getTeachableSkillsSize(); i++) {
+			String skillbox = session->getTeachableSkill(i);
+			sui->addMenuItem("@skl_n:" + skillbox);
+			sui->setCallback(new PlayerTeachSuiCallback(creature->getZoneServer(), skillbox));
+		}
+
+
+		sui->setCancelButton(true, "Cancel");
+		sui->setUsingObject(targetCreature);
+
+		sui->setForceCloseDistance(32);
+
+		creature->getPlayerObject()->addSuiBox(sui);
+		creature->sendMessage(sui->generateMessage());
+
+
+
+		// Dump what was listed in the SUI box, since we've moved on!
+
+			for (int i = 0; i < session->getTeachableSkillsSize() ; i++ ){
+				String theBoxName = session->getTeachableSkill(i);
+				session->dropTeachableSkill(theBoxName);
+			}
 
 		return SUCCESS;
 	}

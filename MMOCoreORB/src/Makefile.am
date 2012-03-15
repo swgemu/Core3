@@ -164,6 +164,7 @@ core3_IDLS =	server/zone/objects/player/sessions/TradeSession.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				server/zone/objects/player/sessions/ConversationSession.cpp \
 				server/zone/objects/player/sessions/TrainerConversationSession.cpp \
+				server/zone/objects/player/sessions/PlayerTeachSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
