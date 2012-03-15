@@ -59,7 +59,8 @@ class ForageManager extends Observer implements Logger {
 	public static final int SCOUT = 1;
 	public static final int MEDICAL = 2;
 	public static final int LAIR = 3;
-	
+	public static final int SHELLFISH = 4;
+	 
 	@dereferenced
 	protected ForageMap forageAreas;
 

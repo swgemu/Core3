@@ -320,6 +320,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ArtCrateMenuComponent.cpp \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
 		server/zone/objects/tangible/components/WeaponObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/ShellfishHarvesterMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \

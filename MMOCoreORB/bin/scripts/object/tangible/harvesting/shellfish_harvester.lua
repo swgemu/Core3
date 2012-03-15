@@ -43,7 +43,8 @@
 
 object_tangible_harvesting_shellfish_harvester = object_tangible_harvesting_shared_shellfish_harvester:new {
 
-
+	objectMenuComponent = {"cpp", "ShellfishHarvesterMenuComponent"},
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

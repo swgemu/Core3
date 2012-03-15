@@ -21,28 +21,61 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	Locker playerLocker(player);
 
 	int actionCost = 50;
+	int mindCost = 200; //for shellfish harvesting
 
 	//Check if already foraging.
 	Reference<Task*> pendingForage = player->getPendingTask("foraging");
 	if (pendingForage != NULL) {
-		player->sendSystemMessage("@skl_use:sys_forage_already"); //"You are already foraging."
+
+		if (forageType == ForageManager::SHELLFISH)
+			player->sendSystemMessage("@harvesting:busy");
+		else
+			player->sendSystemMessage("@skl_use:sys_forage_already"); //"You are already foraging."
 		return;
 	}
 
 	//Check if player is inside a structure.
 	if (player->getParentID() != 0) {
-		player->sendSystemMessage("@skl_use:sys_forage_inside"); //"You can't forage inside a structure."
+		if (forageType == ForageManager::SHELLFISH)
+			player->sendSystemMessage("@harvesting:inside");
+		else
+			player->sendSystemMessage("@skl_use:sys_forage_inside"); //"You can't forage inside a structure."
 		return;
 	}
 
+	//Check if a player is swimming for shellfish harvesting
+	if (player->isSwimming() && forageType == ForageManager::SHELLFISH){
+		player->sendSystemMessage("@harvesting:swimming");
+		return;
+	}
+
+	//Check if player is in water for shellfish harvesting
+	if (!player->isInWater() && forageType == ForageManager::SHELLFISH){
+		player->sendSystemMessage("@harvesting:in_water");
+		return;
+	}
     //Check for action and deduct cost.
-	if (player->getHAM(CreatureAttribute::ACTION) >= actionCost + 1)
-		player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
 
-	else {
-		player->sendSystemMessage("@skl_use:sys_forage_attrib"); //"You need to rest before you can forage again."
-		return;
+	if (forageType == ForageManager::SHELLFISH){
+
+		if (player->getHAM(CreatureAttribute::MIND) >= mindCost + 1)
+			player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
+		else {
+			//player->sendSystemMessage("You need to rest before you can harvest again"); //"You need to rest before you can forage again."
+			return;
+		}
 	}
+	else {
+
+		if (player->getHAM(CreatureAttribute::ACTION) >= actionCost + 1)
+			player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
+
+		else {
+			player->sendSystemMessage("@skl_use:sys_forage_attrib"); //"You need to rest before you can forage again."
+			return;
+		}
+	}
+
 
 	//Collect player's current position.
 	float playerX = player->getPositionX();
@@ -53,7 +86,9 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, player->getZone()->getZoneName());
 	player->addPendingTask("foraging", foragingEvent, 8500);
 
-	player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
+	if (forageType != ForageManager::SHELLFISH)
+		player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
+
 	player->doAnimation("forage");
 
 }
@@ -68,34 +103,35 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 	player->removePendingTask("foraging");
 
 	//Check if player moved.
-	float playerX = player->getPositionX();
-	float playerY = player->getPositionY();
+	if (forageType != ForageManager::SHELLFISH) {
+		float playerX = player->getPositionX();
+		float playerY = player->getPositionY();
 
-	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
-		player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
-		return;
-	}
-
-	//Check if player is in combat.
-	if (player->isInCombat()) {
-		player->sendSystemMessage("@skl_use:sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
-		return;
-	}
-
-	//Check if player is allowed to forage in this area.
-	Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
-
-	if (forageAreaCollection != NULL) { //Player has foraged before.
-		if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName)) {
-			player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
+		if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
+			player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
 			return;
 		}
 
-	} else { //Player has not foraged before.
-		forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName);
-		forageAreas.put(player->getFirstName(), forageAreaCollection);
-	}
+		//Check if player is in combat.
+		if (player->isInCombat()) {
+			player->sendSystemMessage("@skl_use:sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
+			return;
+		}
 
+		//Check if player is allowed to forage in this area.
+		Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
+
+		if (forageAreaCollection != NULL) { //Player has foraged before.
+			if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName)) {
+				player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
+				return;
+			}
+
+		} else { //Player has not foraged before.
+			forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName);
+			forageAreas.put(player->getFirstName(), forageAreaCollection);
+		}
+	}
 	//Calculate the player's chance to find an item.
 	int chance;
 	int skillMod;
@@ -121,12 +157,16 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 		chance = 100;
 
 	if (System::random(80) > chance) {
-		player->sendSystemMessage("@skl_use:sys_forage_fail"); //"You failed to find anything worth foraging."
+		if (forageType == ForageManager::SHELLFISH)
+			player->sendSystemMessage("@harvesting:found_nothing");
+		else
+			player->sendSystemMessage("@skl_use:sys_forage_fail"); //"You failed to find anything worth foraging."
 
 	} else {
 
 		if(forageGiveItems(player, forageType, forageX, forageY, zoneName))
-			player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
+			if (forageType != ForageManager::SHELLFISH)
+				player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
 
 	}
 
@@ -175,6 +215,30 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 	int level = 1;
 	String lootGroup = "";
 	String resName = "";
+
+	if (forageType == ForageManager::SHELLFISH){
+		bool mullosks = false;
+		if (System::random(100) > 50) {
+			resName = "seafood_mollusk";
+			mullosks = true;
+		}
+		else
+			resName = "seafood_crustacean";
+
+		if(forageGiveResource(player, forageX, forageY, planet, resName)) {
+			if (mullosks)
+				player->sendSystemMessage("@harvesting:found_mollusks");
+			else
+				player->sendSystemMessage("@harvesting:found_crustaceans");
+			return true;
+		}
+		else {
+			player->sendSystemMessage("@harvesting:found_nothing");
+			return false;
+		}
+
+	}
+
 
 	if (forageType == ForageManager::SCOUT) {
 
