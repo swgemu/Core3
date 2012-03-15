@@ -103,6 +103,6 @@ ComponentManager::ComponentManager() {
 	components.put("AiDefaultComponent", new AiDefaultComponent());
 	components.put("AiCreatureComponent", new AiCreatureComponent());
 	components.put("AiNPCComponent", new AiNPCComponent());
-
+	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
 	components.put("ShellfishHarvesterMenuComponent", new ShellfishHarvesterMenuComponent());
 }
