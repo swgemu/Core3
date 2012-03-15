@@ -145,4 +145,5 @@ class BountyMissionObjective extends MissionObjective {
 	
 	public native void removeObservers();
 	public native void removeObserver(int observerNumber, unsigned int observerType, CreatureObject creature);
+	public native void addObserverToCreature(unsigned int observerType, CreatureObject creature);
 }
