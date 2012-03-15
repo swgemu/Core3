@@ -754,6 +754,8 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			diffString = "medium";
 		}
 
+		mission->setTargetObjectId(0);
+
 		mission->setMissionDifficulty(creoTemplate->getLevel());
 		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
