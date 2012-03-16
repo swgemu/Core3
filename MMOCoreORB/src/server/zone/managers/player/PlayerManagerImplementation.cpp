@@ -1082,11 +1082,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	groups.setNullValue(0);
 
 	for (int i = 0; i < threatMap->size(); ++i) {
-		CreatureObject* creature = threatMap->elementAt(i).getKey();
-		if (!creature->isPlayerCreature())
+		CreatureObject* player = threatMap->elementAt(i).getKey();
+		if (!player->isPlayerCreature())
 			continue;
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 
