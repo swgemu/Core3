@@ -205,7 +205,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 					(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
 				//Player killed by target, fail mission.
 				getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
-				killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!")
+				killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
 				fail();
 				return 1;
 			}
