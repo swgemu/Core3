@@ -176,10 +176,19 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			if (otherParent->isCreatureObject()) {
 				AiAgent* ai = dynamic_cast<AiAgent*>(otherParent);
 
-				if (ai != NULL && ai->getContainerPermissions()->getOwnerID() != myParent->getObjectID()) {
-					errorDescription = "@group:no_loot_permission";
+				if (ai != NULL) {
+					SceneObject* creatureInventory = ai->getSlottedObject("inventory");
 
-					return TransferErrorCode::NOLOOTPERMISSION;
+					if (creatureInventory != NULL) {
+						uint64 lootOwnerID = creatureInventory->getContainerPermissions()->getOwnerID();
+
+						if (lootOwnerID != myParent->getObjectID()) {
+							errorDescription = "@group:no_loot_permission";
+
+							return TransferErrorCode::NOLOOTPERMISSION;
+						}
+					}
+
 				}
 			}
 		}

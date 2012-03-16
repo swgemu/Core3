@@ -236,7 +236,12 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 	if (alreadyHarvested != NULL && alreadyHarvested->contains(player->getObjectID()))
 		return false;
 
-	uint64 lootOwnerID = getContainerPermissions()->getOwnerID();
+	SceneObject* creatureInventory = getSlottedObject("inventory");
+
+	if (creatureInventory == NULL)
+		return false;
+
+	uint64 lootOwnerID = creatureInventory->getContainerPermissions()->getOwnerID();
 
 	if (player->getObjectID() == lootOwnerID)
 		return true;
