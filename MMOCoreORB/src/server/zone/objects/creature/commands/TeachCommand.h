@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef TEACHCOMMAND_H_
 #define TEACHCOMMAND_H_
@@ -54,7 +54,7 @@ class TeachCommand : public QueueCommand {
 public:
 
 	TeachCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -97,7 +97,7 @@ public:
 		for (int i = 0; i < skillList->size(); ++i) {
 			Skill* skill = skillList->get(i);
 			if (SkillManager::instance()->canLearnSkill(skill->getSkillName(), targetCreature, false)){
-			session->addTeachableSkill(skill->getSkillName());
+				session->addTeachableSkill(skill->getSkillName());
 			}
 		}
 
@@ -132,14 +132,12 @@ public:
 		creature->getPlayerObject()->addSuiBox(sui);
 		creature->sendMessage(sui->generateMessage());
 
-
-
 		// Dump what was listed in the SUI box, since we've moved on!
 
-			for (int i = 0; i < session->getTeachableSkillsSize() ; i++ ){
-				String theBoxName = session->getTeachableSkill(i);
-				session->dropTeachableSkill(theBoxName);
-			}
+		for (int i = 0; i < session->getTeachableSkillsSize() ; i++ ){
+			String theBoxName = session->getTeachableSkill(i);
+			session->dropTeachableSkill(theBoxName);
+		}
 
 		return SUCCESS;
 	}

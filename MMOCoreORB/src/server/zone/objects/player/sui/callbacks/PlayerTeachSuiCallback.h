@@ -25,11 +25,10 @@ public:
 
 		SuiListBox* listBox = cast<SuiListBox*>( sui);
 
-		if(!creature->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return;
 
-		if(!cancelPressed) {
-
+		if (!cancelPressed) {
 			// Send the player being trained a confirmation.
 
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sui->getUsingObject());
@@ -54,10 +53,8 @@ public:
 			params.setTT(creature->getDisplayedName());
 			params.setTO("@skl_n:" + skillname);
 			creature->sendSystemMessage(params);
-
-
-			}
 		}
+	}
 };
 
 
