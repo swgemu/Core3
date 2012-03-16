@@ -125,6 +125,8 @@ public:
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
 			playerManager->sendLoginMessage(player);
 
+			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
+
 		}
 	}
 };

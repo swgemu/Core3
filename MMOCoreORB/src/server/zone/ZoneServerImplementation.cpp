@@ -152,6 +152,8 @@ void ZoneServerImplementation::loadGalaxyName() {
 	}
 
 	setLoggingName("ZoneServer " + galaxyName);
+
+	loadLoginMessage();
 }
 
 void ZoneServerImplementation::initialize() {

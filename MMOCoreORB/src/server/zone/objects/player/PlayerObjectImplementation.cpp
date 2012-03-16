@@ -349,6 +349,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 			weatherManager->sendWeatherTo(creature);
 		}
 	}
+
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
