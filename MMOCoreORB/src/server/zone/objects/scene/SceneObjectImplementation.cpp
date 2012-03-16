@@ -114,9 +114,6 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 	}
 
-	Reference<AiInterfaceComponent*> dummy = ComponentManager::instance()->getComponent<AiDummyComponent*>("AiDummyComponent");
-	aiInterfaceComponents.add(dummy);
-
 	movementCounter = 0;
 
 	//activeAreas.removeAll();
@@ -909,10 +906,15 @@ void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
-		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
-		interface->notifyPositionUpdate(_this, entry);
-	}
+	if (entry == NULL || _this == entry)
+		return;
+
+	//#ifdef WITH_STM
+	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+	//#else
+
+	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+	//#endif
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

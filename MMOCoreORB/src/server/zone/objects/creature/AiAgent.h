@@ -206,20 +206,6 @@ using namespace server::zone::objects::creature::commands;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-
-class AiObserver;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerObject;
@@ -319,6 +305,8 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void updateCurrentPosition(PatrolPoint* point);
 
@@ -503,6 +491,8 @@ protected:
 
 	Reference<AiAwarenessEvent* > awarenessEvent;
 
+	Vector<AiInterfaceComponent*> aiInterfaceComponents;
+
 	Vector<String> skillCommands;
 
 	PatrolPointsVector patrolPoints;
@@ -510,8 +500,6 @@ protected:
 	PatrolPoint homeLocation;
 
 	PatrolPoint nextStepPosition;
-
-	SortedVector<ManagedReference<AiObserver* > > aiObserverMap;
 
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
@@ -597,6 +585,8 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void updateCurrentPosition(PatrolPoint* point);
 
@@ -816,6 +806,8 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell);
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void clearPatrolPoints();
 

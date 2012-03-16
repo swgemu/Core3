@@ -40,8 +40,6 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "PatrolPoint.h"
-#include "AiObserver.h"
-#include "CreatureSetDefenderTask.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
@@ -187,6 +185,15 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiDefaultComponent*>("AiDefaultComponent"));
 	npcTemplate = NULL;
+}
+
+void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
+		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
+		interface->notifyPositionUpdate(_this, entry);
+	}
+
+	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
 void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
@@ -428,31 +435,6 @@ bool AiAgentImplementation::tryRetreat() {
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 
-	Reference<CreatureSetDefenderTask*> task;
-	ManagedReference<AiObserver*> observer = NULL;
-
-	if (aiObserverMap.size() == 0) {
-		observer = new AiObserver(_this);
-		ObjectManager::instance()->persistObject(observer, 1, "aiobservers");
-		aiObserverMap.put(observer);
-	} else {
-		observer = aiObserverMap.get(0);
-
-		task = new CreatureSetDefenderTask(_this, defender, observer, true);
-
-		/*for (int i = 0; i < defenderList.size(); ++i)
-			defenderList.get(i)->dropObserver(ObserverEventType::SPECIALATTACK, observer);*/
-	}
-
-	/*if (observer != NULL)
-			defender->registerObserver(ObserverEventType::SPECIALATTACK, observer);*/
-
-
-	if (task == NULL)
-		task = new CreatureSetDefenderTask(_this, defender, observer, false);
-
-	Core::getTaskManager()->executeTask(task);
-
 	setFollowObject(defender);
 
 	activateRecovery();
@@ -478,9 +460,6 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	if (defender != NULL) {
 		if (defender->isCreatureObject())
 			threatMap->dropDamage(cast<CreatureObject*>(defender));
-
-		if (aiObserverMap.size() > 0)
-			defender->dropObserver(ObserverEventType::SPECIALATTACK, aiObserverMap.get(0));
 	}
 
 	if (followObject == defender) {

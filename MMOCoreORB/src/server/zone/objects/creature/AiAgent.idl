@@ -71,12 +71,12 @@ include server.zone.objects.creature.variables.CreatureAttackMap;
 import engine.util.u3d.Coordinate;
 import server.zone.objects.creature.commands.QueueCommand;
 import engine.util.Observable;
-import server.zone.objects.creature.AiObserver;
 import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.FactionStatus;
 include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.objects.scene.components.AiInterfaceComponent;
+
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -86,6 +86,9 @@ class AiAgent extends CreatureObject {
 	protected transient AiWaitEvent waitEvent;
 	
 	protected transient AiAwarenessEvent awarenessEvent;
+	
+	@dereferenced
+	protected transient Vector<AiInterfaceComponent> aiInterfaceComponents;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
@@ -98,10 +101,7 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected PatrolPoint nextStepPosition;
-	
-	@dereferenced
-	protected SortedVector<AiObserver> aiObserverMap;
-	
+		
 	@dereferenced
 	protected Vector<WeaponObject> weapons;
 	
@@ -218,6 +218,8 @@ class AiAgent extends CreatureObject {
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void setNextPosition(float x, float z, float y, SceneObject cell = null);
+	
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
 	
 	@local
 	public native void updateCurrentPosition(PatrolPoint point);

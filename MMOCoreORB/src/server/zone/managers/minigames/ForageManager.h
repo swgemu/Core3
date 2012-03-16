@@ -70,6 +70,8 @@ public:
 
 	static const int LAIR = 3;
 
+	static const int SHELLFISH = 4;
+
 	ForageManager();
 
 	void deleteForageAreaCollection(String& playerName);
@@ -113,6 +115,8 @@ public:
 	static const int MEDICAL = 2;
 
 	static const int LAIR = 3;
+
+	static const int SHELLFISH = 4;
 
 protected:
 	ForageMap forageAreas;
