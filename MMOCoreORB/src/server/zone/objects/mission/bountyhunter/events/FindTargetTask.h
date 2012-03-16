@@ -85,8 +85,8 @@ class FindTargetTask : public Task, public Logger {
 			player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched");
 		}
 
-		reschedule(10 * 1000);
-		timeLeft -= 10;
+		reschedule(5 * 1000);
+		timeLeft -= 5;
 
 		zoneName = droid->getZone()->getZoneName();
 
