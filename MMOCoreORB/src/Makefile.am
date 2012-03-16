@@ -42,6 +42,7 @@
 
 AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
 
+#ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
 #CC = clang
@@ -128,7 +129,6 @@ core3_IDLS =	server/zone/objects/player/sessions/TradeSession.cpp \
 				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
 				server/zone/objects/creature/Creature.cpp \
 				server/zone/objects/creature/AiAgent.cpp \
-				server/zone/objects/creature/AiObserver.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/creature/aigroup/AiGroup.cpp \
 				server/zone/objects/creature/aigroup/HerdGroup.cpp \
