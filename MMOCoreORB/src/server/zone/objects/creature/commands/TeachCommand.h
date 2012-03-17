@@ -94,9 +94,11 @@ public:
 
 		SkillList* skillList = creature->getSkillList();
 
+		// Exclude ones they don't qualify for, AND novice boxes (aren't player teachable.)
+
 		for (int i = 0; i < skillList->size(); ++i) {
 			Skill* skill = skillList->get(i);
-			if (SkillManager::instance()->canLearnSkill(skill->getSkillName(), targetCreature, false)){
+			if (SkillManager::instance()->canLearnSkill(skill->getSkillName(), targetCreature, false) && (skill->getSkillName().indexOf("_novice") == -1)){
 				session->addTeachableSkill(skill->getSkillName());
 			}
 		}
@@ -120,9 +122,10 @@ public:
 		for (int i = 0; i < session->getTeachableSkillsSize(); i++) {
 			String skillbox = session->getTeachableSkill(i);
 			sui->addMenuItem("@skl_n:" + skillbox);
-			sui->setCallback(new PlayerTeachSuiCallback(creature->getZoneServer(), skillbox));
+
 		}
 
+		sui->setCallback(new PlayerTeachSuiCallback(creature->getZoneServer()));
 
 		sui->setCancelButton(true, "Cancel");
 		sui->setUsingObject(targetCreature);

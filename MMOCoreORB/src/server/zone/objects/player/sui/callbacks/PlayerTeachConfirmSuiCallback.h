@@ -32,8 +32,9 @@ public:
 
 		if (!cancelPressed) {
 			// Let's teach them.
+			String finalSkill = skillname.subString(7, skillname.length()); // Remove skl_n: from the string.
 
-			Skill* skill = SkillManager::instance()->getSkill(skillname);
+			Skill* skill = SkillManager::instance()->getSkill(finalSkill);
 
 			bool canLearnSkill = false;
 			bool playerLacksSkillPoints = false;
@@ -69,7 +70,7 @@ public:
 				StringIdChatParameter params("teaching",
 						"teacher_skill_learned"); // %TT learns %TO from you.
 				params.setTT(creature->getDisplayedName());
-				params.setTO("@skl_n:" + skillname);
+				params.setTO(skillname);
 				player->sendSystemMessage(params);
 
 				// Remove the session.

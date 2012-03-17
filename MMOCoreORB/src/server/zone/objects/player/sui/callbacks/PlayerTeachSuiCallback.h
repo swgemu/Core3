@@ -12,11 +12,9 @@
 #include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
 
 class PlayerTeachSuiCallback : public SuiCallback {
-	String skillname;
 
 public:
-	PlayerTeachSuiCallback(ZoneServer* serv, const String& name) : SuiCallback(serv) {
-		skillname = name;
+	PlayerTeachSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
@@ -31,13 +29,17 @@ public:
 		if (!cancelPressed) {
 			// Send the player being trained a confirmation.
 
+			int index = Integer::valueOf(args->get(0).toString());
+
+			String skillname = listBox->getMenuItemName(index);
+
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sui->getUsingObject());
 
 			ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::TEACH_PLAYER);
 			sui->setPromptTitle("@base_player:swg");
 			sui->setPromptText("Someone has offered you teaching in..."); // TODO: Get actual strings.
 
-			sui->addMenuItem("@skl_n:" + skillname);
+			sui->addMenuItem(skillname);
 
 			sui->setCancelButton(true, "Cancel");
 			sui->setUsingObject(creature);
@@ -51,7 +53,7 @@ public:
 
 			StringIdChatParameter params("teaching", "offer_given"); // You offer to teach %TT %TO.
 			params.setTT(creature->getDisplayedName());
-			params.setTO("@skl_n:" + skillname);
+			params.setTO(skillname);
 			creature->sendSystemMessage(params);
 		}
 	}
