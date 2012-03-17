@@ -193,6 +193,12 @@ rori_static_spawns = {
 	{"trainer_weaponsmith",0,3681,0,-6420,180,0},
 	{"rebel_recruiter", 0, 3683, 0, -6460, -101, 0},
 	{"imperial_recruiter", 0, 5348, 0, 5616, -76, 0},
+	-- Informants
+	{"informant_npc_lvl_3",0,5102,0,5652,30,0},
+	{"informant_npc_lvl_1",0,-5331,0,-2233,180,0},
+	{"informant_npc_lvl_1",0,-5127,0,-2266,45,0},
+	{"informant_npc_lvl_1",0,-5120,0,-2269,0,0},
+	{"informant_npc_lvl_1",0,5401,0,5857,45,0},
 }
 
 rori_badges = {
