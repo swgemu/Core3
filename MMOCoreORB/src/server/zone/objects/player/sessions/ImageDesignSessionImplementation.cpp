@@ -29,11 +29,11 @@ void ImageDesignSessionImplementation::initializeTransientMembers() {
 }
 
 void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
-	uint64 tentID = 0;
+	uint64 tentID = 0; // Equals False, that controls if you can stat migrate or not (only in a Salon).
 
 	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObjectType::SALONBUILDING);
 
-	if (obj != NULL)
+	if (obj != NULL) // If they are in a salon, enable the tickmark for stat migration.
 		tentID = obj->getObjectID();
 
 	designer->addActiveSession(SessionFacadeType::IMAGEDESIGN, _this);
