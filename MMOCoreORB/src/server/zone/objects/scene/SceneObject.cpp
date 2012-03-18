@@ -3343,6 +3343,11 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "SceneObject.dataObjectComponent") {
+		TypeInfo<DataObjectComponentReference >::parseFromBinaryStream(&dataObjectComponent, stream);
+		return true;
+	}
+
 	if (_name == "SceneObject.slottedObjects") {
 		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
 		return true;
@@ -3463,6 +3468,14 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "SceneObject.dataObjectComponent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<DataObjectComponentReference >::toBinaryStream(&dataObjectComponent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "SceneObject.slottedObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3632,7 +3645,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 21 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 22 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {

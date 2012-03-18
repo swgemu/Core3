@@ -240,6 +240,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		//containerComponent = Lua::getStringParameter(state);
 	} else if (varName == "totalCellNumber") {
 		totalCellNumber = Lua::getIntParameter(state);
+	} else if (varName == "dataObjectComponent") {
+		dataObjectComponent = Lua::getStringParameter(state);
 	} else if (varName == "clientGameObjectType") {
 		clientGameObjectType = Lua::getIntParameter(state);
 	} else if (varName == "inheritPermissionsFromParent") {

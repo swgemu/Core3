@@ -43,6 +43,7 @@
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
 #include "server/zone/objects/scene/components/AiInterfaceComponent.h"
 #include "server/zone/objects/scene/components/AiDummyComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/creature/components/AiDefaultComponent.h"
 #include "server/zone/objects/creature/components/AiCreatureComponent.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"

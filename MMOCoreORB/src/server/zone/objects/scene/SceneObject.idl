@@ -91,6 +91,7 @@ include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.scene.components.AttributeListComponent;
+include server.zone.objects.scene.components.DataObjectComponentReference;
 include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
@@ -103,6 +104,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ObjectMenuComponent objectMenuComponent;
 	protected transient AttributeListComponent attributeListComponent;
 	protected transient ContainerComponent containerComponent;
+	
+	@dereferenced
+	protected DataObjectComponentReference dataObjectComponent; 
 	
 	protected transient Matrix4 transformForCollisionMatrix;
 	

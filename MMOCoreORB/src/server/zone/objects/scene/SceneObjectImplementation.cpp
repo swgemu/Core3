@@ -186,6 +186,8 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		planetMapSubCategory = templateData->getPlanetMapSubCategory()->getCrc();
 
 	templateObject = templateData;
+
+	dataObjectComponent = ComponentManager::instance()->getDataObjectComponent(templateData->getDataObjectComponent());
 }
 
 void SceneObjectImplementation::createContainerComponent() {

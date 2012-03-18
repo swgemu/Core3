@@ -207,6 +207,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
 #include "engine/log/Logger.h"
@@ -797,6 +799,8 @@ protected:
 	Reference<AttributeListComponent* > attributeListComponent;
 
 	Reference<ContainerComponent* > containerComponent;
+
+	DataObjectComponentReference dataObjectComponent;
 
 	Reference<Matrix4* > transformForCollisionMatrix;
 

@@ -13,10 +13,13 @@
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"
 #include "server/zone/objects/scene/components/LuaObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/LuaContainerComponent.h"
+#include "server/zone/objects/scene/components/DataObjectComponent.h"
+#include "engine/util/ObjectFactory.h"
 
 class ComponentManager : public Singleton<ComponentManager>, public Object, public ReadWriteLock {
 protected:
 	HashTable<String, Reference<SceneObjectComponent*> > components;
+	ObjectFactory<DataObjectComponent* (), String> dataObjectFactory;
 
 public:
 	ComponentManager();
@@ -37,6 +40,10 @@ public:
 		runlock();
 
 		return comp;
+	}
+
+	DataObjectComponent* getDataObjectComponent(const String& name) {
+		return dataObjectFactory.createObject(name);
 	}
 
 	void putComponent(const String& name, SceneObjectComponent* component) {

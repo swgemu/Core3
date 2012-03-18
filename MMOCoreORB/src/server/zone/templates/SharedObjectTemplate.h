@@ -90,6 +90,8 @@ protected:
 	SceneObjectComponent* containerComponent;
 	SceneObjectComponent* objectMenuComponent;
 
+	String dataObjectComponent;
+
 	bool inheritPermissionsFromParent;
 	HashTable<uint32, uint32> groupPermissions;
 
@@ -337,6 +339,10 @@ public:
     inline String getFullTemplateString() {
 		return fullTemplateString;
 	}
+
+    inline String getDataObjectComponent() {
+    	return dataObjectComponent;
+    }
 
     inline String getTemplateFileName() {
 		return templateFileName;
