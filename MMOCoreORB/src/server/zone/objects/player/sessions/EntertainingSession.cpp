@@ -20,7 +20,7 @@
  *	EntertainingSessionStub
  */
 
-enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_};
+enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_};
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
@@ -359,6 +359,21 @@ int EntertainingSession::getEntertainerBuffDuration(CreatureObject* creature, in
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getEntertainerBuffDuration(creature, performanceType);
+}
+
+int EntertainingSession::getEntertainerBuffStartTime(CreatureObject* creature, int performanceType) {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(performanceType);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getEntertainerBuffStartTime(creature, performanceType);
 }
 
 void EntertainingSession::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {
@@ -929,16 +944,8 @@ void EntertainingSessionImplementation::finalize() {
 }
 
 void EntertainingSessionImplementation::addFlourishXp(int xp) {
-	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishXp 
-	if (flourishCount > 2)	// server/zone/objects/player/sessions/EntertainingSession.idl():  			return;
-	return;
 	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishXp = flourishXp + xp;
 	flourishXp = flourishXp + xp;
-	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishCount 
-	if (flourishXp > 2 * xp)	// server/zone/objects/player/sessions/EntertainingSession.idl():  			flourishXp = 2 * xp;
-	flourishXp = 2 * xp;
-	// server/zone/objects/player/sessions/EntertainingSession.idl():  		flourishCount = flourishCount + 1;
-	flourishCount = flourishCount + 1;
 }
 
 void EntertainingSessionImplementation::addHealingXp(int xp) {
@@ -1087,6 +1094,9 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_:
 		resp->insertSignedInt(getEntertainerBuffDuration(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
+	case RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_:
+		resp->insertSignedInt(getEntertainerBuffStartTime(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		break;
 	case RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_:
 		sendEntertainingUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
 		break;
@@ -1228,6 +1238,10 @@ int EntertainingSessionAdapter::getEntertainerBuffStrength(CreatureObject* creat
 
 int EntertainingSessionAdapter::getEntertainerBuffDuration(CreatureObject* creature, int performanceType) {
 	return (static_cast<EntertainingSession*>(stub))->getEntertainerBuffDuration(creature, performanceType);
+}
+
+int EntertainingSessionAdapter::getEntertainerBuffStartTime(CreatureObject* creature, int performanceType) {
+	return (static_cast<EntertainingSession*>(stub))->getEntertainerBuffStartTime(creature, performanceType);
 }
 
 void EntertainingSessionAdapter::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid) {

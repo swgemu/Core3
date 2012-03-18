@@ -46,6 +46,9 @@ object_building_player_player_house_generic_large_style_01 = object_building_pla
 	baseMaintenanceRate = 50,
 	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	publicStructure = 0,
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address.iff", x = 3.68, z = 2, y = 13.04, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 3.17, z = 4.585, y = -4.4, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 8, containmentType = -1},

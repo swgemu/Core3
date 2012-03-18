@@ -13,11 +13,12 @@
 class EntertainingData : public Serializable {
 	int duration;
 	int strength;
+	int timeStarted;
 public:
 	EntertainingData() {
 		duration = 0;
 		strength = 0;
-
+		timeStarted = time(0);
 		addSerializableVariables();
 	}
 
@@ -50,7 +51,9 @@ public:
 	inline int getStrength() {
 		return strength;
 	}
-
+	inline int getTimeStarted() {
+		return timeStarted;
+	}
 	inline void setStrength(int str) {
 		strength = str;
 	}

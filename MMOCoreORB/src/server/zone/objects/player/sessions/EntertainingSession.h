@@ -173,6 +173,8 @@ public:
 
 	int getEntertainerBuffDuration(CreatureObject* creature, int performanceType);
 
+	int getEntertainerBuffStartTime(CreatureObject* creature, int performanceType);
+
 	void sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid);
 
 	void sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue = false);
@@ -320,6 +322,8 @@ public:
 
 	int getEntertainerBuffDuration(CreatureObject* creature, int performanceType);
 
+	int getEntertainerBuffStartTime(CreatureObject* creature, int performanceType);
+
 	void sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid);
 
 	void sendEntertainmentUpdate(CreatureObject* creature, unsigned long long entid, const String& mood, bool updateEntValue = false);
@@ -436,6 +440,8 @@ public:
 	int getEntertainerBuffStrength(CreatureObject* creature, int performanceType);
 
 	int getEntertainerBuffDuration(CreatureObject* creature, int performanceType);
+
+	int getEntertainerBuffStartTime(CreatureObject* creature, int performanceType);
 
 	void sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, unsigned int perfcntr, int instrid);
 

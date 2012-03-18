@@ -43,6 +43,9 @@
 
 object_building_corellia_hotel_corellia = object_building_corellia_shared_hotel_corellia:new {
 	gameObjectType = 523,
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	planetMapCategory = "hotel"
 }
 

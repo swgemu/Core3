@@ -49,6 +49,9 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_02.iff",
 	length = 5,
 	width = 9,
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 0, z = 1.4, y = 16.24, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 9.13004, z = 1.49609, y = 6.3587, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 2, containmentType = -1}, 

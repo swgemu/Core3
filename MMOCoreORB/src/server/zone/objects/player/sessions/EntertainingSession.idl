@@ -131,15 +131,7 @@ class EntertainingSession extends Facade {
 	public native boolean canGiveEntertainBuff();
 	
 	public void addFlourishXp(int xp) {
-		if (flourishCount > 2)
-			return;
-
 		flourishXp = flourishXp + xp;
-
-		if (flourishXp > 2 * xp)
-			flourishXp = 2 * xp;
-
-		flourishCount = flourishCount + 1;
 	}
 
 	public void addHealingXp(int xp) {
@@ -181,6 +173,7 @@ class EntertainingSession extends Facade {
 	
 	public native int getEntertainerBuffStrength(CreatureObject creature, int performanceType);
 	public native int getEntertainerBuffDuration(CreatureObject creature, int performanceType);
+	public native int getEntertainerBuffStartTime(CreatureObject creature, int performanceType);
 	
 	public native void sendEntertainingUpdate(CreatureObject creature, float entval, final string performance, unsigned int perfcntr, int instrid);
 	public native void sendEntertainmentUpdate(CreatureObject creature, unsigned long entid, final string mood, boolean updateEntValue = false);
@@ -227,6 +220,6 @@ class EntertainingSession extends Facade {
 	public void setTargetInstrument(boolean var) {
 		targetInstrument = var;
 	}
-
+	
 	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
 }

@@ -46,6 +46,9 @@ object_building_player_player_house_naboo_small_style_02 = object_building_playe
 	baseMaintenanceRate = 16,
 	allowedZones = {"dantooine", "naboo", "rori"},
 	publicStructure = 0,
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 8.6, z = 2, y = 7.31, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0.6, z = 0.7, y = 6.15, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1},

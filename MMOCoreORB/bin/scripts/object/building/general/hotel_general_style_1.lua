@@ -42,7 +42,10 @@
 
 
 object_building_general_hotel_general_style_1 = object_building_general_shared_hotel_general_style_1:new {
-	planetMapCategory = "hotel"
+	planetMapCategory = "hotel",
+	skillMods = {
+		{"private_buff_mind", 100}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_general_hotel_general_style_1, "object/building/general/hotel_general_style_1.iff")

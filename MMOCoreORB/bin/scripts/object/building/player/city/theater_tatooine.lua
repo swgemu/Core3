@@ -50,6 +50,9 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	gameObjectType = 524,
 	planetMapCategory = "theater",
 	abilityRequired = "place_theater",
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	cityRankRequired = 4,
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 11, z = 2, y = -14.95, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},

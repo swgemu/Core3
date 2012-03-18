@@ -43,6 +43,9 @@
 
 object_building_corellia_guild_theater_corellia_s01 = object_building_corellia_shared_guild_theater_corellia_s01:new {
 	gameObjectType = 524,
+	skillMods = {
+		{"private_buff_mind", 100}
+	},
 	planetMapCategory = "guild",
 	planetMapSubCategory = "guild_theater"
 }
