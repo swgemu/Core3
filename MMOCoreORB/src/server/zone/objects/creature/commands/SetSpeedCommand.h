@@ -63,6 +63,14 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (!ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
 		float speed = 0.f;
 		int duration = 30;
 
