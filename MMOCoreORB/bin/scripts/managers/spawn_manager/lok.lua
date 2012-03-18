@@ -84,6 +84,9 @@ lok_static_spawns = {
 	{"trainer_doctor",0,-25.366,0.26,-4.25289,84,2745870},
 	{"trainer_medic",0,-16.0068,0.26,-2.42861,117,2745870},
 	{"imperial_recruiter",0,-1843.79,0,-3069,123,0},
+	-- Informants
+	{"informant_npc_lvl_3",0,369,0,5087,90,0},
+	{"informant_npc_lvl_3",0,540,0,5072,180,0},
 }
 
 lok_badges = {
