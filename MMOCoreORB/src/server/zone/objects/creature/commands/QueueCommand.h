@@ -79,6 +79,7 @@ protected:
 
 	bool disabled;
 	bool addToQueue;
+	bool admin;
 
 	uint32 cooldown; // in msec
 
@@ -217,6 +218,9 @@ public:
 
 	inline void setCharacterAbility(const String& ability) {
 		characterAbility = ability;
+
+		if(ability == "admin")
+			admin = true;
 	}
 
 	inline void setDefaultPriority(const String& priority) {
@@ -240,6 +244,10 @@ public:
 	//getters
 	inline uint64 getStateMask() {
 		return stateMask;
+	}
+
+	inline bool requiresAdmin() {
+		return admin == true;
 	}
 
 	/*inline int getTarget() {

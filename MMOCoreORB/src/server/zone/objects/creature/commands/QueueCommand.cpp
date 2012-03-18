@@ -21,6 +21,7 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : L
 	targetType = 0;
 	disabled = false;
 	addToQueue = false;
+	admin = false;
 
 	defaultTime = 0.f;
 

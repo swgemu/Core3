@@ -138,15 +138,15 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	SceneObject* parent = getParent();
+	SceneObject* sceneParent = cast<SceneObject*>(parent.get());
 
-	if(parent->transferObject(newResource, -1, true)) {
-		parent->broadcastObject(newResource, true);
+	if(sceneParent->transferObject(newResource, -1, true)) {
+		sceneParent->broadcastObject(newResource, true);
 
 		setQuantity(getQuantity() - newStackSize);
 	} else {
 		StringBuffer errorMessage;
-		errorMessage << "Unable to split resource in container type: " << parent->getGameObjectType() << " " << parent->getDisplayedName();
+		errorMessage << "Unable to split resource in container type: " << sceneParent->getGameObjectType() << " " << sceneParent->getDisplayedName();
 		error(errorMessage.toString());
 	}
 }

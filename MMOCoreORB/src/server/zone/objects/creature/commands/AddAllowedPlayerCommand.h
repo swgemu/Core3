@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ADDALLOWEDPLAYERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class AddAllowedPlayerCommand : public QueueCommand {
 public:
@@ -62,6 +63,11 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL || !ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
 
 		return SUCCESS;
 	}

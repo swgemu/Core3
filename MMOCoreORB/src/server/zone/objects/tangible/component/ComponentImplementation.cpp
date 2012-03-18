@@ -143,8 +143,15 @@ void ComponentImplementation::updateCraftingValues(CraftingValues* values, bool 
 	titleMap.removeAll();
 	keyList.removeAll();
 
+	if(firstUpdate && values->hasProperty("useCount")) {
+		setUseCount(values->getCurrentValue("useCount"));
+	}
+
 	for (int i = 0; i < values->getExperimentalPropertySubtitleSize(); ++i) {
 		attribute = values->getExperimentalPropertySubtitle(i);
+
+		if(attribute == "useCount")
+			continue;
 
 		value = values->getCurrentValue(attribute);
 		precision = values->getPrecision(attribute);

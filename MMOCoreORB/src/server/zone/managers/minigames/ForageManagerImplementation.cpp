@@ -44,13 +44,13 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	}
 
 	//Check if a player is swimming for shellfish harvesting
-	if (player->isSwimming() && forageType == ForageManager::SHELLFISH){
+	if (forageType == ForageManager::SHELLFISH && player->isSwimming()){
 		player->sendSystemMessage("@harvesting:swimming");
 		return;
 	}
 
 	//Check if player is in water for shellfish harvesting
-	if (!player->isInWater() && forageType == ForageManager::SHELLFISH){
+	if (forageType == ForageManager::SHELLFISH && !player->isInWater()){
 		player->sendSystemMessage("@harvesting:in_water");
 		return;
 	}
@@ -86,8 +86,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, player->getZone()->getZoneName());
 	player->addPendingTask("foraging", foragingEvent, 8500);
 
-	if (forageType != ForageManager::SHELLFISH)
-		player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
+	player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
 
 	player->doAnimation("forage");
 
@@ -159,14 +158,14 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 	if (System::random(80) > chance) {
 		if (forageType == ForageManager::SHELLFISH)
 			player->sendSystemMessage("@harvesting:found_nothing");
+		else if (forageType == ForageManager::LAIR)
+			player->sendSystemMessage("@lair_n:found_nothing");
 		else
 			player->sendSystemMessage("@skl_use:sys_forage_fail"); //"You failed to find anything worth foraging."
 
 	} else {
 
-		if(forageGiveItems(player, forageType, forageX, forageY, zoneName))
-			if (forageType != ForageManager::SHELLFISH)
-				player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
+		forageGiveItems(player, forageType, forageX, forageY, zoneName);
 
 	}
 
@@ -265,9 +264,10 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			lootGroup = "forage_food";
 
 		} else if (dice > 39 && dice < 110) { //Resources.
-			if(forageGiveResource(player, forageX, forageY, planet, resName))
+			if(forageGiveResource(player, forageX, forageY, planet, resName)) {
+				player->sendSystemMessage("@skl_use:sys_forage_success");
 				return true;
-			else {
+			} else {
 				player->sendSystemMessage("@skl_use:sys_forage_fail");
 				return false;
 			}
@@ -294,19 +294,21 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 
 		else if (dice > 39 && dice < 110) { // Eggs
 			resName = "meat_egg";
-			if(forageGiveResource(player, forageX, forageY, planet, resName))
+			if(forageGiveResource(player, forageX, forageY, planet, resName)) {
+				player->sendSystemMessage("@lair_n:found_eggs");
 				return true;
-			else {
-				player->sendSystemMessage("@skl_use:sys_forage_fail");
+			} else {
+				player->sendSystemMessage("@lair_n:found_nothing");
 				return false;
 			}
 		}
 
 		else  {//if (dice > 109 && dice < 200) // Horn
 			resName = "bone_horn";
-			if(forageGiveResource(player, forageX, forageY, planet, resName))
+			if(forageGiveResource(player, forageX, forageY, planet, resName)) {
+				player->sendSystemMessage("@skl_use:sys_forage_success");
 				return true;
-			else {
+			} else {
 				player->sendSystemMessage("@skl_use:sys_forage_fail");
 				return false;
 			}
@@ -316,7 +318,12 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 			player->sendSystemMessage("Unable to create loot for lootgroup " + lootGroup);
 			return false;
 		}
+
+		player->sendSystemMessage("@lair_n:found_bugs");
+		return true;
 	}
+
+	player->sendSystemMessage("@skl_use:sys_forage_success");
 	return true;
 }
 

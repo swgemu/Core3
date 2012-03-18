@@ -165,6 +165,8 @@ class ObjectControllerImplementation : public ManagedServiceImplementation, publ
 
 	Reference<CommandList* > queueCommands;
 
+	Logger adminLog;
+
 public:
 	ObjectControllerImplementation(ZoneProcessServer* srv);
 

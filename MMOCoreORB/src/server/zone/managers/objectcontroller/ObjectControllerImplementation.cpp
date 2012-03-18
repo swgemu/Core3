@@ -30,6 +30,12 @@ void ObjectControllerImplementation::loadCommands() {
 	infoMsg << "loaded " << queueCommands->size() << " commands";
 	info(infoMsg.toString(), true);
 
+	adminLog.setLoggingName("AdminCommands");
+	StringBuffer fileName;
+	fileName << "log/admin/admin.log";
+	adminLog.setFileLogger(fileName.toString(), true);
+	adminLog.setLogging(true);
+
 	// LUA
 	/*init();
 	Luna<LuaCreatureObject>::Register(L);
@@ -167,6 +173,45 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 				return 0.f;
 			}
+		}
+	}
+
+	if(queueCommand->requiresAdmin()) {
+
+		try {
+
+			if(object->isPlayerCreature()) {
+				ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>( object->getSlottedObject("ghost"));
+				if (ghost == NULL || !ghost->isPrivileged()) {
+
+					StringBuffer logEntry;
+					logEntry << object->getDisplayedName() << " attempted to use the '/" << queueCommand->getQueueCommandName()
+							<< "' command without permissions";
+					adminLog.warning(logEntry.toString());
+
+					object->clearQueueAction(actionCount, 0, 2);
+					return 0.f;
+				}
+			} else {
+				return 0.f;
+			}
+
+
+			String name = "unknown";
+
+			ManagedReference<SceneObject*> targetObject = cast<SceneObject*>(Core::getObjectBroker()->lookUp(targetID));
+			if(targetObject != NULL) {
+				name = targetObject->getDisplayedName();
+			} else {
+				name = "(null)";
+			}
+
+			StringBuffer logEntry;
+			logEntry << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
+					<< "' on " << name << " with params '" << arguments.toString() << "'";
+			adminLog.info(logEntry.toString());
+		} catch (Exception e) {
+			Logger::error("Unhandled Exception logging admin commands" + e.getMessage());
 		}
 	}
 

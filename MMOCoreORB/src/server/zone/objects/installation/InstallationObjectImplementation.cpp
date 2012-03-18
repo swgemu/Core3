@@ -59,14 +59,9 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 		//Add the owner name to the examine window.
 		ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
 
-		CreatureObject* owner = cast<CreatureObject*>( obj.get());
-
-		String fullName = owner->getCustomObjectName().toString();
-
-		if (fullName.isEmpty())
-			owner->getObjectName()->getFullPath(fullName);
-
-		alm->insertAttribute("owner", fullName);
+		if(obj != NULL) {
+			alm->insertAttribute("owner", obj->getDisplayedName());
+		}
 	}
 
 }

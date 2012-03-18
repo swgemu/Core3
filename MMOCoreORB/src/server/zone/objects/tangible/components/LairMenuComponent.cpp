@@ -39,9 +39,8 @@ int LairMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 		if(player->isPlayerCreature() && player->hasSkill("outdoors_scout_novice") &&
 				player->getDistanceTo(sceneObject) < 8) {
 
-			CreatureObject* playerCreature = cast<CreatureObject*>(player);
 			ForageManager* forageManager = player->getZoneProcessServer()->getForageManager();
-			forageManager->startForaging(playerCreature, ForageManager::LAIR);
+			forageManager->startForaging(player, ForageManager::LAIR);
 			return 0;
 		}
 	}
