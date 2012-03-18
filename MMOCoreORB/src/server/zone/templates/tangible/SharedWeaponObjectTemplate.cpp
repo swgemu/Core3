@@ -151,7 +151,7 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	accMods.pop();
 
-	creatureAccuracyModifiers.removeAll();
+	creatureAimModifiers.removeAll();
 
 	LuaObject aimMods = templateData->getObjectField("creatureAimModifiers");
 
