@@ -28,6 +28,7 @@ public:
 
 		LuaObject hairTemplate = templateData->getObjectField("hair");
 
+		hairFile.removeAll();
 		for (int i = 1; i <= hairTemplate.getTableSize(); ++i) {
 			hairFile.add(hairTemplate.getStringAt(i));
 		}
@@ -36,6 +37,7 @@ public:
 
 		LuaObject clothesTemplate = templateData->getObjectField("clothing");
 
+		outfits.removeAll();
 		for (int i = 1; i <= clothesTemplate.getTableSize(); ++i) {
 			outfits.add(clothesTemplate.getStringAt(i));
 		}

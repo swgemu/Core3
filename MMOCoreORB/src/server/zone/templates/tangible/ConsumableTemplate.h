@@ -63,6 +63,8 @@ public:
 		quantityMin = templateData->getIntField("quantityMin");;
 		quantityMax = templateData->getIntField("quantityMax");
 
+		modifiers.removeAll();
+
 		LuaObject mods = templateData->getObjectField("modifiers");
 
 		for (int i = 1; i <= mods.getTableSize(); i += 2) {

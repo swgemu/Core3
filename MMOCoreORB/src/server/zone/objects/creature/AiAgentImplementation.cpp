@@ -1048,6 +1048,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
+	//TODO: fix this! too fucked up, no locks anywhere
 
 	/// Check masked scent state
 	if (!target->hasState(CreatureState::MASKSCENT)) {
@@ -1073,7 +1074,8 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	if (roll > chance) {
 		uint32 crc = String("skill_buff_mask_scent").hashCode();
-		if(target->hasBuff(crc)) {
+
+		if (target->hasBuff(crc)) {
 			target->sendSystemMessage("@skl_use:sys_conceal_stop");
 			target->removeBuff(crc);
 		}

@@ -24,6 +24,8 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedBuildingObjectTemplate::readObject(templateData);
 
+		spawningPoints.removeAll();
+
 		LuaObject luaItemList = templateData->getObjectField("spawningPoints");
 
 		int size = luaItemList.getTableSize();

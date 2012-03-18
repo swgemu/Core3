@@ -46,6 +46,8 @@ which carries forward this exception.
 void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
 	lua_State* state = templateData->getLuaState();
 	if (varName == "startingSkills") {
+		startingItems->removeAll();
+
 		LuaObject skills(state);
 
 		for (int i = 1; i <= skills.getTableSize(); ++i) {
@@ -54,6 +56,8 @@ void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject*
 
 		skills.pop();
 	} else if (varName == "startingItems") {
+		startingItems->removeAll();
+
 		LuaObject items(state);
 
 		for (int i = 1; i <= items.getTableSize(); ++i) {

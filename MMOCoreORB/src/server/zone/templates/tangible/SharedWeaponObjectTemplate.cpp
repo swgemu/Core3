@@ -133,11 +133,15 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	LuaObject certifications = templateData->getObjectField("certificationsRequired");
 
+	certificationsRequired.removeAll();
+
 	for (int i = 1; i <= certifications.getTableSize(); ++i) {
 		certificationsRequired.add(certifications.getStringAt(i));
 	}
 
 	certifications.pop();
+
+	creatureAccuracyModifiers.removeAll();
 
 	LuaObject accMods = templateData->getObjectField("creatureAccuracyModifiers");
 
@@ -147,6 +151,8 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	accMods.pop();
 
+	creatureAccuracyModifiers.removeAll();
+
 	LuaObject aimMods = templateData->getObjectField("creatureAimModifiers");
 
 	for (int i = 1; i <= aimMods.getTableSize(); ++i) {
@@ -154,6 +160,8 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	}
 
 	aimMods.pop();
+
+	defenderDefenseModifiers.removeAll();
 
 	LuaObject defMods = templateData->getObjectField("defenderDefenseModifiers");
 
@@ -163,6 +171,8 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	defMods.pop();
 
+	damageModifiers.removeAll();
+
 	LuaObject dmgMods = templateData->getObjectField("damageModifiers");
 
 	for (int i = 1; i <= dmgMods.getTableSize(); ++i) {
@@ -170,6 +180,8 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	}
 
 	dmgMods.pop();
+
+	speedModifiers.removeAll();
 
 	LuaObject speedMods = templateData->getObjectField("speedModifiers");
 
@@ -179,12 +191,16 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 
 	speedMods.pop();
 
+	defenderSecondaryDefenseModifiers.removeAll();
+
 	LuaObject secMods = templateData->getObjectField("defenderSecondaryDefenseModifiers");
 
 	for (int i = 1; i <= secMods.getTableSize(); ++i)
 		defenderSecondaryDefenseModifiers.add(secMods.getStringAt(i));
 
 	secMods.pop();
+
+	defenderToughnessModifiers.removeAll();
 
 	LuaObject toughMods = templateData->getObjectField("defenderToughnessModifiers");
 

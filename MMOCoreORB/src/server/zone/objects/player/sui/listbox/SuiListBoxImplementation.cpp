@@ -9,6 +9,7 @@
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "SuiListBoxMenuItem.h"
+#include <stdio.h>
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.listBox");

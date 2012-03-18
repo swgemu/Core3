@@ -35,6 +35,11 @@ public:
 
 		deleteComponents = templateData->getByteField("deleteComponents");
 
+		components.removeAll();
+		attributes.removeAll();
+		comps.removeAll();
+		reward.removeAll();
+
 		LuaObject collectibleComponents = templateData->getObjectField("collectibleComponents");
 		for (int i = 1; i <= collectibleComponents.getTableSize(); ++i) {
 			components.put(collectibleComponents.getStringAt(i).hashCode(), false);
