@@ -125,6 +125,8 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 
 		races.pop();
 	} else if (varName == "skillMods") {
+		skillMods.removeAll();
+
 		LuaObject smods(state);
 		for (int i = 1; i <= smods.getTableSize(); ++i) {
 			lua_rawgeti(state, -1, i);
