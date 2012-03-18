@@ -92,6 +92,11 @@ dathomir_static_spawns = {
 	{"nightsister_sentry",90,-3971.1,132.6,-138.7,-77,0},
 	{"nightsister_sentry",90,-4072.7,126.7,-85.8,107,0},
 	{"nightsister_spell_weaver",90,-4035.4,121.2,-194.3,-17,0},
+	-- Informants
+	{"informant_npc_lvl_3",0,-6239,0,940,270,0},
+	{"informant_npc_lvl_3",0,-68,0,-1565,270,0},
+	{"informant_npc_lvl_3",0,590,0,3091,0,0},
+	{"informant_npc_lvl_3",0,598,0,3025,180,0},
 	
 	{"mozo_bondog", 1, -6313.0, 128.0, 734.0, -91, 0}
 }
