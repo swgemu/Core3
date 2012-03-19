@@ -52,16 +52,17 @@ public:
 	}
 
 	String getHeader(String key) {
+		key = key.toLowerCase();
+
 		if(headers.contains(key))
 			return headers.get(key);
-
 		return "";
 	}
 
 	String getParameter(String key) {
+		key = key.toLowerCase();
 		if(parameters.contains(key))
 			return parameters.get(key);
-
 		return "";
 	}
 

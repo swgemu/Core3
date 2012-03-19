@@ -16,10 +16,21 @@ HttpSession::HttpSession() {
 
 	request = new HttpRequest(this);
 	response = new HttpResponse(this);
+
+	sessionId = generateRandomKey(48);
+	canSetId = true;
+
+	setLoggingName("HttpSession_" + sessionId);
+	setLogging(true);
+	setInfoLogLevel();
+
+	debug("Session Created");
 }
 
 HttpSession::~HttpSession() {
 	// TODO Auto-generated destructor stub
+
+	debug("Session Destroyed");
 
 	delete request;
 	delete response;
@@ -33,18 +44,30 @@ bool HttpSession::hasExpired() {
 	return false;
 }
 
-bool HttpSession::isValid() {
-	return authenticated;
-}
-
-void HttpSession::update(const struct mg_request_info *request_info) {
+void HttpSession::update(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	request->update(request_info);
-	response->update();
+	response->update(conn);
 
 	updateTimestamp();
 }
 
 void HttpSession::updateTimestamp() {
 	timestamp = time(0);
+}
+
+String HttpSession::generateRandomKey(int length) {
+	StringBuffer value;
+
+	for(int i = 0; i < length; ++i) {
+		char character = System::random(122 - 48) + 48;
+		while (character < 48 || (character > 57 && character < 65) ||
+				character > 122 || (character > 89 && character < 97)) {
+			character = System::random(122 - 48) + 48;
+		}
+
+		value << character;
+	}
+
+	return value.toString();
 }

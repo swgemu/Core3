@@ -355,6 +355,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/web/servlets/main/MainServlet.cpp \
 		server/web/servlets/resource/ResourceServlet.cpp \
 		server/web/servlets/login/LoginServlet.cpp \
+		server/web/servlets/logs/LogsServlet.cpp \
 		server/web/mongoose/mongoose.c \
 		server/zone/ZoneReference.cpp \
 		server/zone/ZoneServerImplementation.cpp \

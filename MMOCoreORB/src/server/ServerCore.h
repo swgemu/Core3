@@ -71,7 +71,14 @@ class StatusServer;
 class Features;
 class PingServer;
 class StatusServer;
-class WebServer;
+
+namespace server {
+ namespace web {
+ 	 class WebServer;
+ }
+}
+
+using namespace server::web;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager* configManager;

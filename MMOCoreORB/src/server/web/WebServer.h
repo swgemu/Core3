@@ -54,6 +54,7 @@
 #include "mongoose/mongoose.h"
 #include "servlets/Servlet.h"
 #include "WebCredentials.h"
+#include "session/HttpSessionList.h"
 
 namespace server {
 namespace web {
@@ -62,8 +63,12 @@ class HttpSession;
 }
 }
 }
+using namespace server::web::session;
 
-class WebServer : public Singleton<WebServer>, public Logger, public Object {
+namespace server {
+ namespace web {
+
+class WebServer : public Singleton<WebServer>, public Logger {
 private:
 	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<LoginServer*> loginServer;
@@ -74,7 +79,7 @@ private:
 
 	VectorMap<String, Servlet*> contexts;
 	VectorMap<String, WebCredentials*> authorizedUsers;
-	VectorMap<uint64, HttpSession* > activeSessions;
+	VectorMap<uint64, HttpSessionList*> activeSessions;
 	Vector<String> authorizedIpAddresses;
 
 public:
@@ -97,7 +102,9 @@ public:
 
 	bool authorize(HttpSession* session);
 
-	void dispatch(String location, HttpRequest* request, HttpResponse* response);
+	void dispatch(String location, HttpSession* session);
+
+	void forward(struct mg_connection *conn, String content, HttpRequest* request);
 
 private:
 
@@ -114,13 +121,11 @@ private:
 
 	HttpSession* getSession(struct mg_connection *conn, const struct mg_request_info *request_info);
 
-	bool validateAccess(long remoteIp);
+	bool validateIPAccess(long remoteIp);
 
 	void displayUnauthorized(struct mg_connection *conn);
 
 	void displayNotFound(struct mg_connection *conn);
-
-	bool validateSession(HttpSession* session);
 
 	void displayUnauthorized(StringBuffer* out);
 
@@ -136,5 +141,11 @@ private:
 
 	String ipLongToString(long address);
 };
+
+}
+}
+
+using namespace server::web;
+
 
 #endif /* WEBSERVER_H_ */

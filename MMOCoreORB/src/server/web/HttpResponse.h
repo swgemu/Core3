@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "session/HttpSession.h"
+#include "mongoose/mongoose.h"
 
 namespace server {
 namespace web {
@@ -20,14 +21,18 @@ private:
 	String docType;
 
 	HttpSession* session;
+
+	struct mg_connection *conn;
 public:
 	HttpResponse(HttpSession* session);
 	virtual ~HttpResponse();
 
-	void update();
+	void update(struct mg_connection *conn);
 
 	void print(String item);
 	void println(String line);
+
+	void forwardTo(String context);
 
 	String generatePage();
 

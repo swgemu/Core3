@@ -20,6 +20,11 @@ LoginServlet::~LoginServlet() {
 
 void LoginServlet::handleGet(HttpRequest* request, HttpResponse* response) {
 
+	StringBuffer cookie;
+	response->println("HTTP/1.1 200 OK");
+	response->println("Content-Type: text/html");
+	cookie << "Set-Cookie: name=" << request->getSession()->getSessionId() << "\r\n";
+	response->println(cookie.toString());
 	response->println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
 	response->println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 	response->println("	<head>");
@@ -43,18 +48,22 @@ void LoginServlet::handleGet(HttpRequest* request, HttpResponse* response) {
 void LoginServlet::handlePost(HttpRequest* request, HttpResponse* response) {
 
 	HttpSession* session = request->getSession();
-	/*session->setUserName(request->getParameter("username"));
+	session->setUserName(request->getParameter("username"));
 	session->setPassword(request->getParameter("password"));
-	session->setRemoteIp(request->getRemoteIp());
+	session->setSessionIp(request->getRemoteIp());
 
 	bool authorized = WebServer::instance()->authorize(session);
 
 	if(authorized) {
-		WebServer::instance()->dispatch("main", session);
-		return;
-	}*/
 
-	response->println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
+		response->forwardTo("/main");
+
+		return;
+	}
+
+	response->println("HTTP/1.1 200 OK\r\n");
+	response->println("Content-Type: text/html\r\n\r\n");
+	response->println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN " "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
 	response->println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 	response->println("	<head>");
 	response->println("		<title>SWGEmu Web Server Login</title>");

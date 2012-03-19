@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "servlets/login/LoginServlet.h"
+#include "servlets/logs/LogsServlet.h"
 #include "servlets/main/MainServlet.h"
 
 mg_context *WebServer::ctx;
@@ -62,10 +63,12 @@ WebServer::WebServer() {
 	// Lookup login for account info
 	loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
 
-	sessionTimeout = 600;
+	// Default Time in minutes, value is in script
+	sessionTimeout = 10;
 
 	setLogging(true);
 	setLoggingName("Webserver");
+	setInfoLogLevel();
 
 }
 
@@ -109,11 +112,16 @@ void WebServer::init() {
 
 void WebServer::registerBaseContexts() {
 
-	LoginServlet* loginServlet = new LoginServlet("login");
-	MainServlet* mainServlet = new MainServlet("main");
+	addContext("login", new LoginServlet("login"));
+	addContext("main", new MainServlet("main"));
+	addContext("logs", new LogsServlet("logs"));
+
 }
 
 void WebServer::whitelistInit() {
+
+	authorizedUsers.removeAll();
+	authorizedIpAddresses.removeAll();
 
 	info("Parsing access whitelist 'conf/webusers.lst'", true);
 
@@ -225,25 +233,43 @@ void* WebServer::uriHandler(
 void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	/// First we validate the IP address to see if we should proceed
-	if(!validateAccess(request_info->remote_ip)) {
+	if(!validateIPAccess(request_info->remote_ip)) {
 
 		displayUnauthorized(conn);
-		info("Unauthorized login attempt from " + ipLongToString((uint32)request_info->remote_ip));
+		info("Unauthorized access attempt from " + ipLongToString((uint32)request_info->remote_ip));
 		return (void*)1;
 	}
 
 	HttpSession* session = getSession(conn, request_info);
 
-	Servlet* servlet = contexts.get(session->getRequest()->getBaseContext());
-
-	/// If the session isn't valid, only the login servlet is Accessable
-	if(!validateSession(session)) {
-		servlet = contexts.get("login");
-	}
-
-	/// If it's a CSS request
+	/// If it's a CSS request grant request
 	if(session->getRequest()->getUri().indexOf(".css") == session->getRequest()->getUri().length() - 4) {
 		return 0;
+	}
+
+	String context = session->getRequest()->getBaseContext();
+	Servlet* servlet = contexts.get(context);
+
+	/// If the session isn't valid, only the login servlet is Accessable
+	if((servlet == NULL || servlet->getContext() != "login") && !session->isAuthenticated()) {
+		session->debug("NOT Authenticated forwarding to /login");
+		forward(conn, "/login", session->getRequest());
+		return (void*)1;
+	} else if (session->isAuthenticated()) {
+
+		/*if(!validateCookie(request_info->remote_ip, session)) {
+			displayUnauthorized(conn);
+			info("Unauthorized login attempt from " + ipLongToString((uint32)request_info->remote_ip));
+			return (void*)1;
+		}*/
+
+		if(servlet != NULL && servlet->getContext() == "login") {
+			forward(conn, "/main", session->getRequest());
+			return (void*)1;
+		}
+
+		if(servlet != NULL)
+			session->debug("Authenticated for /" + servlet->getContext());
 	}
 
 	if(servlet != NULL) {
@@ -258,14 +284,31 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
 	return (void*)1;
 }
 
-void WebServer::dispatch(String location, HttpRequest* request, HttpResponse* response) {
+void WebServer::dispatch(String location, HttpSession* session) {
 
 	Servlet* servlet = contexts.get(location);
 
 	if(servlet != NULL) {
-		servlet->handleGet(request, response);
-		return;
+
+		servlet->handleGet(session->getRequest(), session->getResponse());
 	}
+}
+
+void WebServer::forward(struct mg_connection *conn, String context, HttpRequest* request) {
+
+	StringBuffer content;
+
+	content << "HTTP/1.1 301 Moved Permanently\r\n";
+	content << "Location: " + context + "\r\n\r\n";
+	content << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN " "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\r\n";
+	content << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n";
+	content << "<head>\r\n";
+	content << "</head>\r\n";
+	content << "<body>\r\n";
+	content << "</body>\r\n";
+	content << "</html>";
+
+	mg_printf(conn, content.toString().toCharArray());
 }
 
 /**
@@ -274,49 +317,88 @@ void WebServer::dispatch(String location, HttpRequest* request, HttpResponse* re
  */
 HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
+	HttpSessionList* sessionList = NULL;
 	HttpSession* session = NULL;
+	bool foundSession = false;
 
 	if(activeSessions.contains(request_info->remote_ip)) {
-		session = activeSessions.get((uint64)request_info->remote_ip);
+		sessionList = activeSessions.get((uint64)request_info->remote_ip);
 
-		if(session->hasExpired()) {
-			activeSessions.drop(request_info->remote_ip);
-			info("Deleting session for " + ipLongToString(request_info->remote_ip));
-			delete session;
+		for(int i = 0; i < sessionList->size(); ++i) {
+			session = sessionList->get(i);
+
+			if(session == NULL)
+				continue;
+
+			String sessionId = session->getSessionId();
+			String requestSessionId = session->getRequest()->getHeader("Cookie");
+
+			if(requestSessionId.contains(sessionId)) {
+				foundSession = true;
+				break;
+			}
+
+			session = NULL;
 		}
 
-	} else {
+		if(session != NULL && session->hasExpired()) {
+			sessionList->drop(session->getSessionId());
+			delete session;
 
-		session = new HttpSession();
-		activeSessions.put(request_info->remote_ip, session);
-		info("New session created for " + ipLongToString(request_info->remote_ip));
+			if(sessionList->isEmpty()) {
+				activeSessions.drop(request_info->remote_ip);
+				delete sessionList;
+			}
+		}
+
+		if(session != NULL)
+			session->update(conn, request_info);
 
 	}
 
-	session->update(request_info);
+	if (session == NULL) {
+
+		session = new HttpSession();
+		session->update(conn, request_info);
+		session->setSessionIp(request_info->remote_ip);
+
+		sessionList = activeSessions.get((uint64) request_info->remote_ip);
+		if (sessionList == NULL) {
+			sessionList = new HttpSessionList();
+			activeSessions.put(request_info->remote_ip, sessionList);
+		}
+
+		String requestSessionId = session->getRequest()->getHeader("Cookie");
+
+		if(!requestSessionId.isEmpty()) {
+			session->setSessionId(requestSessionId);
+		}
+
+		sessionList->put(session->getSessionId(), session);
+
+	}
 
 	/// Get Post Data
 	int length = Integer::valueOf(session->getRequest()->getHeader("Content-Length")) + 1;
 
 	/// Ensure no stack corruption
-	if(length > 0 && length < 1000) {
+	if(length > 0 && length < 1024) {
 
-		char* postData = new char[length];
+		char* postDataBuffer = new char[1024];
 
-		mg_read(conn, &postData, length);
+		mg_read(conn, postDataBuffer, 1024);
 
-		//postData[length - 1] = '\0';
+		postDataBuffer[length - 1] = '\0';
 
-		System::out << postData << endl;
+		session->getRequest()->updatePostData(postDataBuffer);
 
-		session->getRequest()->updatePostData(String(postData));
-
-		delete [] postData;
+		delete [] postDataBuffer;
 
 	} else if(length >= 1000) {
 		error("Post data length was too long" + length);
 	}
-	info("Updated session for " + ipLongToString(request_info->remote_ip));
+
+	debug("Using session: " + session->getSessionId());
 
 	return session;
 }
@@ -324,7 +406,7 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 /**
  * Check session IP against valid ip addresses to deny access
  */
-bool WebServer::validateAccess(long remoteIp) {
+bool WebServer::validateIPAccess(long remoteIp) {
 
 	for(int i = 0; i < authorizedIpAddresses.size(); ++i) {
 		long authorizedAddress = ipStringToLong(authorizedIpAddresses.get(i));
@@ -341,6 +423,8 @@ void WebServer::displayUnauthorized(struct mg_connection *conn) {
 
 	StringBuffer out;
 
+	out.append("HTTP/1.1 200 OK\r\n");
+	out.append("Content-Type: text/html\r\n\r\n");
 	out.append("Access denied");
 
 	mg_printf(conn, out.toString());
@@ -350,17 +434,11 @@ void WebServer::displayNotFound(struct mg_connection *conn) {
 
 	StringBuffer out;
 
+	out.append("HTTP/1.1 200 OK\r\n");
+	out.append("Content-Type: text/html\r\n\r\n");
 	out.append("404: Page not found");
 
 	mg_printf(conn, out.toString());
-}
-
-bool WebServer::validateSession(HttpSession* session) {
-
-	if(session->isValid())
-		return true;
-
-	return false;
 }
 
 void WebServer::displayLogin(StringBuffer* out) {
@@ -369,27 +447,36 @@ void WebServer::displayLogin(StringBuffer* out) {
 
 bool WebServer::authorize(HttpSession* session) {
 
-	/*Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
+	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL,
+			session->getUserName(), session->getPassword());
+
+	/// Remove Password
+	session->setPassword("");
 
 	if(account == NULL) {
-		info("Attemped login by " + username +", account doesn't exist");
+		info("Non-existent account: " + session->getUserName());
 		return false;
 	}
 
 	if(account->getAdminLevel() == PlayerObject::NORMALPLAYER ||
-			!authorizedUsers.contains(username)) {
--
-		error("User is not authorized for web access: " + username);
+			!authorizedUsers.contains(session->getUserName())) {
+
+		error("User is not authorized for web access: " + session->getUserName());
 		return false;
 	}
 
-	WebCredentials* credentials = authorizedUsers.get(username);
+	WebCredentials* credentials = authorizedUsers.get(session->getUserName());
 
-	if(credentials->contains(ipLongToString((long)session->getRemoteIp()))) {
+	String address = ipLongToString((long)session->getSessionIp());
+
+	if(credentials->contains(address)) {
+		session->setAuthenticated(true);
+		info("Successful Login: " + session->getUserName() + " from " + address);
 		return true;
 	}
-	else
-		return false;*/
+
+	info("Failed Login: " + session->getUserName());
+
 	return false;
 }
 

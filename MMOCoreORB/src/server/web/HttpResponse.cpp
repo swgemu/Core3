@@ -6,19 +6,26 @@
  */
 
 #include "HttpResponse.h"
+#include "WebServer.h"
 
 HttpResponse::HttpResponse(HttpSession* session) {
 	// TODO Auto-generated constructor stub
 	docType = "html";
 	this->session = session;
+
 }
 
 HttpResponse::~HttpResponse() {
 	// TODO Auto-generated destructor stub
 }
 
-void HttpResponse::update() {
+void HttpResponse::update(struct mg_connection *conn) {
+	this->conn = conn;
 	out.deleteAll();
+}
+
+void HttpResponse::forwardTo(String context) {
+	WebServer::instance()->forward(conn, context, session->getRequest());
 }
 
 void HttpResponse::print(String item) {
@@ -30,14 +37,5 @@ void HttpResponse::println(String line) {
 }
 
 String HttpResponse::generatePage() {
-	StringBuffer page;
-	page << "HTTP/1.1 200 OK\r\n";
-	page << "Content-Type: text/html\r\n\r\n";
-	page << "<!doctype " << docType << ">\r\n";
-	page << "<html lang='en'>\r\n";
-	page << "<body>\r\n";
-	page << out.toString() << "\r\n";
-	page << "</body>\r\n";
-	page << "</html>\r\n";
-	return page.toString();
+	return out.toString();
 }

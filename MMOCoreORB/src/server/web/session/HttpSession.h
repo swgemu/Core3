@@ -21,7 +21,11 @@ class HttpResponse;
 }
 using namespace server::web;
 
-class HttpSession {
+namespace server {
+namespace web {
+namespace session {
+
+class HttpSession : public Logger {
 private:
 
 	/// The request
@@ -39,15 +43,25 @@ private:
 	/// Current user - Core3 Account Name
 	String user;
 
+	/// Current users password
+	String password;
+
+	/// Session id
+	String sessionId;
+
+	/// ip
+	long ip;
+
+	bool canSetId;
+
+
 public:
     HttpSession();
 	virtual ~HttpSession();
 
-	void update(const struct mg_request_info *request_info);
+	void update(struct mg_connection *conn, const struct mg_request_info *request_info);
 
 	bool hasExpired();
-
-    bool isValid();
 
     HttpRequest* getRequest() {
     	return request;
@@ -57,14 +71,66 @@ public:
     	return response;
     }
 
-    String getUser() {
+    String getUserName() {
     	return user;
+    }
+
+    void setUserName(String value) {
+     	user = value;
+    }
+
+    String getPassword() {
+    	return password;
+    }
+
+    void setPassword(String value) {
+     	password = value;
+    }
+
+    String getSessionId() {
+    	return sessionId;
+    }
+
+    void setSessionId(String value) {
+
+    	if(!canSetId)
+    		return;
+
+    	sessionId = value.replaceFirst("name=", "");
+    	canSetId = false;
+
+    	debug("Found existing session, updating: " + sessionId);
+
+    	setLoggingName("HttpSession_" + sessionId);
+    }
+
+    long getSessionIp() {
+    	return ip;
+    }
+
+    void setSessionIp(long value) {
+     	ip = value;
+     }
+
+    bool isAuthenticated() {
+    	return authenticated == true;
+    }
+
+    void setAuthenticated(bool auth) {
+     	authenticated = auth;
     }
 
 private:
 
 	void updateTimestamp();
 
+	String generateRandomKey(int length);
+
 };
+
+}
+}
+}
+using namespace server::web::session;
 
 #endif /* HTTPSESSION_H_ */

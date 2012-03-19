@@ -26,11 +26,16 @@ void HttpRequest::update(const struct mg_request_info *request_info) {
 	StringTokenizer tokenizer(uri);
 	tokenizer.setDelimeter("/");
 
+	contexts.removeAll();
 	while(tokenizer.hasMoreTokens()) {
 		String token;
 		tokenizer.getStringToken(token);
-		contexts.add(token);
+
+		if(!token.isEmpty()) {
+			contexts.add(token);
+		}
 	}
+
 
 	httpVersion = String(request_info->http_version);
 	remoteIp = (uint64) request_info->remote_ip;
@@ -40,7 +45,8 @@ void HttpRequest::update(const struct mg_request_info *request_info) {
 
 	headers.removeAll();
 	for(int i = 0; i < request_info->num_headers; ++i) {
-		headers.put(request_info->http_headers[i].name, request_info->http_headers[i].value);
+		String key = String(request_info->http_headers[i].name);
+		headers.put(key.toLowerCase(), request_info->http_headers[i].value);
 	}
 }
 
@@ -67,7 +73,7 @@ void HttpRequest::updatePostData(String data) {
 				pair.getStringToken(value);
 
 				if(!pair.hasMoreTokens()) {
-					parameters.put(key, value);
+					parameters.put(key.toLowerCase(), value);
 				}
 			}
 		}
@@ -75,5 +81,8 @@ void HttpRequest::updatePostData(String data) {
 }
 
 String HttpRequest::getBaseContext() {
-	return contexts.get(0);
+	if(contexts.size() > 0)
+		return contexts.get(0);
+
+	return "";
 }

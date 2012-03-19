@@ -15,10 +15,6 @@ Servlet::Servlet(String contxt) {
 
 	setLogging(true);
 	setLoggingName("Webserver:" + context);
-
-	if(!WebServer::instance()->addContext(context, this)) {
-		error("Context already exists");
-	}
 }
 
 Servlet::~Servlet() {
