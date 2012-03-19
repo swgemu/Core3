@@ -84,6 +84,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 
 #include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/PaletteTemplate.h"
 #include "server/zone/templates/appearance/AppearanceRedirect.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
@@ -194,6 +195,31 @@ Reference<SlotDescriptor*> TemplateManager::getSlotDescriptor(const String& file
 	}
 
 	return slotDescriptors.get(filename);
+}
+
+PaletteTemplate* TemplateManager::getPaletteTemplate(const String& fileName) {
+	PaletteTemplate* palette = NULL;
+
+	ObjectInputStream* stream = openTreFile(fileName);
+
+	if (stream == NULL)
+		return NULL;
+
+	palette = new PaletteTemplate();
+
+	try {
+		palette->readObject(stream);
+	} catch (Exception& e) {
+		error("could not parse palette template: " + String::valueOf(fileName));
+		error(e.getMessage());
+
+		delete palette;
+		palette = NULL;
+	}
+
+	delete stream;
+
+	return palette;
 }
 
 Reference<ArrangementDescriptor*> TemplateManager::getArrangementDescriptor(const String& filename) {
@@ -314,7 +340,7 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 
 		delete iffStream;
 	}
-	
+
 	templateObject->readObject(templateData);
 
 	if (!clientTemplateFile.isEmpty())

@@ -11,8 +11,6 @@
 #include "../params/RangedIntCustomizationVariable.h"
 
 class BasicRangedIntCustomizationVariable : public RangedIntCustomizationVariable {
-	int minValueInclusive;
-	int maxValueExclusive;
 
 public:
 	BasicRangedIntCustomizationVariable(int min, int max, int def) {
@@ -22,9 +20,6 @@ public:
 	}
 
 	BasicRangedIntCustomizationVariable(const BasicRangedIntCustomizationVariable& m) : RangedIntCustomizationVariable(m){
-		minValueInclusive = m.minValueInclusive;
-		maxValueExclusive = m.maxValueExclusive;
-		defaultValue = m.defaultValue;
 	}
 
 	inline int getMinValueInclusive() {

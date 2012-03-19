@@ -22,6 +22,10 @@ public:
 		create(defaultValue);
 	}
 
+	TemplateBase(const TemplateBase& t) : Param() {
+		create(t.value);
+	}
+
 	virtual ~TemplateBase() {
 
 	}

@@ -26,6 +26,15 @@ public:
 		setType(RANGEDINTCUSTOMIZATIONVARIABLE);
 	}
 
+	RangedIntCustomizationVariable(const RangedIntCustomizationVariable& m) : Param() {
+		setType(RANGEDINTCUSTOMIZATIONVARIABLE);
+
+		variableName = m.variableName;
+		minValueInclusive = m.minValueInclusive;
+		defaultValue = m.defaultValue;
+		maxValueExclusive = m.maxValueExclusive;
+	}
+
 	~RangedIntCustomizationVariable() {
 	}
 

@@ -33,7 +33,7 @@ class FloorMesh;
 class PortalLayout;
 class AppearanceTemplate;
 class TreeDirectory;
-
+class PaletteTemplate;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger, public Object {
 	TemplateCRCMap* templateCRCMap;
@@ -117,6 +117,7 @@ public:
 	PortalLayout* getPortalLayout(const String& fileName);
 	AppearanceTemplate* getAppearanceTemplate(const String& fileName);
 	AppearanceTemplate* instantiateAppearanceTemplate(IffStream* iffStream);
+	PaletteTemplate* getPaletteTemplate(const String& fileName);
 
 	bool existsTemplate(uint32 key);
 

@@ -19,6 +19,10 @@ public:
 		iffStream->closeForm('APPR');
 	}
 
+	virtual ~AppearanceTemplate() {
+
+	}
+
 	//void readObject(IffStream* templateData) = 0;
 
 	virtual AppearanceTemplate* getFirstMesh() {

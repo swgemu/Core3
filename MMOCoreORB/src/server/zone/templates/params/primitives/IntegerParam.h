@@ -17,6 +17,10 @@ public:
 		setType(INTEGER);
 	}
 
+	IntegerParam(const IntegerParam& p) : TemplateBase<int>(p) {
+		setType(INTEGER);
+	}
+
 	IntegerParam& operator= (int val) {
 		create(val);
 
