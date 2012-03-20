@@ -52,7 +52,7 @@ public:
 			player->sendMessage(sui->generateMessage());
 
 			StringIdChatParameter params("teaching", "offer_given"); // You offer to teach %TT %TO.
-			params.setTT(creature->getDisplayedName());
+			params.setTT(player->getDisplayedName());
 			params.setTO(skillname);
 			creature->sendSystemMessage(params);
 		}
