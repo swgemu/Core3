@@ -7,6 +7,7 @@
 
 #include "engine/engine.h"
 #include "ImageDesignSession.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ImageDesignMessage.h"
 #include "server/zone/packets/object/ImageDesignRejectMessageCallback.h"
 #include "server/zone/managers/skill/SkillManager.h"
@@ -90,6 +91,8 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 	if (commitChanges) {
 		//TODO: set XP Values
 
+		int xpGranted = 50; // Minimum Image Design XP granted (base amount).
+
 		String hairTemplate = imageDesignData.getHairTemplate();
 
 		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
@@ -97,25 +100,27 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 
 		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
-		// if Designer is changing just Hair (with no color changes) set default hair template. BUG FIX!
-		if (bodyAttributes->isEmpty() && colorAttributes->isEmpty()) {
-			String hairCustomization = "";
-			imageDesignManager->updateHairObject(targetCreature, hairTemplate, hairCustomization);
-		}
-
 		for (int i = 0; i < bodyAttributes->size(); ++i) {
 			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
 			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
+			xpGranted += 25;
 		}
 
 		for (int i = 0; i < colorAttributes->size(); ++i) {
 			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
 			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
+			xpGranted += 25;
 		}
 
 		// Drop the Session for both the designer and the targetCreature;
 		designerCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
 		targetCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
+
+		// Award XP.
+		PlayerManager* playerManager = designerCreature->getZoneServer()->getPlayerManager();
+
+		if (playerManager != NULL)
+			playerManager->awardExperience(designerCreature, "imagedesigner", xpGranted, true);
 
 		if (idTimeoutEvent->isScheduled())
 			dequeueIdTimeoutEvent();

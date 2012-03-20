@@ -15,7 +15,7 @@ protected:
 	String hairTemplate;
 	CustomizationVariables hairCustomizationVariables;
 
-	uint32 unknownInt1;
+	uint32 sessionID;
 	uint32 timestamp;
 
 	uint32 requiredPayment;
@@ -44,7 +44,7 @@ public:
 	ImageDesignData(const ImageDesignData& idd) : Object() {
 		hairTemplate = idd.hairTemplate;
 		hairCustomizationVariables = idd.hairCustomizationVariables;
-		unknownInt1 = idd.unknownInt1;
+		sessionID = idd.sessionID;
 		timestamp = idd.timestamp;
 		requiredPayment = idd.requiredPayment;
 		offeredPayment = idd.offeredPayment;
@@ -66,7 +66,7 @@ public:
 
 		hairTemplate = idd.hairTemplate;
 		hairCustomizationVariables = idd.hairCustomizationVariables;
-		unknownInt1 = idd.unknownInt1;
+		sessionID = idd.sessionID;
 		timestamp = idd.timestamp;
 		requiredPayment = idd.requiredPayment;
 		offeredPayment = idd.offeredPayment;
@@ -91,8 +91,8 @@ public:
 		message->parseAscii(customizationString);
 		hairCustomizationVariables.parseFromString(customizationString);
 
-		unknownInt1 = message->parseInt();
 		timestamp = message->parseInt();
+		sessionID = message->parseInt();
 
 		requiredPayment = message->parseInt();
 		offeredPayment = message->parseInt();
@@ -147,8 +147,8 @@ public:
 		hairCustomizationVariables.getData(data);
 		message->insertAscii(data);
 
-		message->insertInt(unknownInt1);
 		message->insertInt(timestamp);
+		message->insertInt(sessionID);
 		message->insertInt(requiredPayment);
 		message->insertInt(offeredPayment);
 		message->insertByte(designerAccepted);
@@ -167,7 +167,7 @@ public:
 			VectorMapEntry<String, float>* entry = &bodyAttributes.elementAt(i);
 
 			message->insertAscii(entry->getKey());
-			message->insertFloat(entry->getValue());
+			message->insertInt(entry->getValue());
 		}
 
 		size = colorAttributes.size();
