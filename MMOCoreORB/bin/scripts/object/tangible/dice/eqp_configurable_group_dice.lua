@@ -43,6 +43,15 @@
 
 object_tangible_dice_eqp_configurable_group_dice = object_tangible_dice_shared_eqp_configurable_group_dice:new {
 
+	templateType = DICE,
+	objectMenuComponent = {"cpp", "DiceMenuComponent"},
+	dataObjectComponent = "DiceDataComponent",
+
+	sides = 0,
+	sidesText = "configurable dice",
+
+	selfSingleResult = "configurable_dice_result_self",
+	othersSingleResult = "configurable_dice_result_other", 
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},

@@ -48,6 +48,7 @@
 #include "server/zone/templates/tangible/CampKitTemplate.h"
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/templates/tangible/TrapTemplate.h"
+#include "server/zone/templates/tangible/DiceTemplate.h"
 #include "server/zone/templates/tangible/CamoKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
@@ -420,6 +421,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<TrapTemplate>(SharedObjectTemplate::TRAP);
 	templateFactory.registerObject<CamoKitTemplate>(SharedObjectTemplate::CAMOKIT);
 	templateFactory.registerObject<PowerupTemplate>(SharedObjectTemplate::POWERUP);
+	templateFactory.registerObject<DiceTemplate>(SharedObjectTemplate::DICE);
 }
 
 void TemplateManager::registerFunctions() {
@@ -548,6 +550,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("TRAP", SharedObjectTemplate::TRAP);
 	luaTemplatesInstance->setGlobalInt("CAMOKIT", SharedObjectTemplate::CAMOKIT);
 	luaTemplatesInstance->setGlobalInt("POWERUP", SharedObjectTemplate::POWERUP);
+	luaTemplatesInstance->setGlobalInt("DICE", SharedObjectTemplate::DICE);
 
 }
 

@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/components/ContainerObjectComponent.h"
 #include "server/zone/objects/tangible/components/TrapMenuComponent.h"
 #include "server/zone/objects/tangible/components/LairMenuComponent.h"
+#include "server/zone/objects/tangible/components/DiceMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
 #include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
@@ -48,6 +49,7 @@
 #include "server/zone/objects/creature/components/AiCreatureComponent.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"
 #include "server/zone/objects/tangible/components/ShellfishHarvesterMenuComponent.h"
+#include "server/zone/objects/tangible/components/DiceDataComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -105,5 +107,11 @@ ComponentManager::ComponentManager() {
 	components.put("AiCreatureComponent", new AiCreatureComponent());
 	components.put("AiNPCComponent", new AiNPCComponent());
 	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
+	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
+
 	components.put("ShellfishHarvesterMenuComponent", new ShellfishHarvesterMenuComponent());
+	components.put("DiceMenuComponent", new DiceMenuComponent());
+
+	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
+
 }

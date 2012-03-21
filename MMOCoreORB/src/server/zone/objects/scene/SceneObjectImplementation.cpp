@@ -214,6 +214,7 @@ void SceneObjectImplementation::createComponents() {
 		}
 
 		createContainerComponent();
+
 	} else
 		error("NULL TEMPLATE OBJECT");
 

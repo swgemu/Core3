@@ -1208,6 +1208,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public ObjectMenuComponent getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
+
+	@local
+	@read
+	public DataObjectComponentReference getDataObjectComponent() {
+		return dataObjectComponent;
+	}
 	
 	@local
 	public native void setObjectMenuComponent(final string name);
@@ -1433,6 +1439,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isAttachment() {
 		return false;
+	}
+	
+	@dirty
+	public boolean isDiceObject() {
+		return templateObject.isDiceTemplate();
 	}
 	
 	@read

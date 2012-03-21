@@ -17,6 +17,7 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 	DataObjectComponent* operator=(DataObjectComponent* obj);
+
 };
 
 

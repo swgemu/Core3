@@ -43,6 +43,17 @@
 
 object_tangible_dice_eqp_chance_cube = object_tangible_dice_shared_eqp_chance_cube:new {
 
+	templateType = DICE,
+	objectMenuComponent = {"cpp", "DiceMenuComponent"},
+
+	sides = 2,
+	sidesText = "chance cube",
+
+	selfSingleResult = "chance_cube_result_self",
+	othersSingleResult = "chance_cube_result_other", 
+
+	selfManyResult = "",
+	othersManyResult = "", 
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},

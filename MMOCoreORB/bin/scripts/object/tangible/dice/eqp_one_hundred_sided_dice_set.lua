@@ -43,6 +43,17 @@
 
 object_tangible_dice_eqp_one_hundred_sided_dice_set = object_tangible_dice_shared_eqp_one_hundred_sided_dice_set:new {
 
+	templateType = DICE,
+	objectMenuComponent = {"cpp", "DiceMenuComponent"},
+
+	sides = 100,
+	sidesText = "one hundred",
+
+	selfSingleResult = "roll_one_self",
+	othersSingleResult = "roll_one_other", 
+
+	selfManyResult = "roll_many_self",
+	othersManyResult = "roll_many_other", 
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},

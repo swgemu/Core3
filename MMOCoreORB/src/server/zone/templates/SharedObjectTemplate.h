@@ -166,6 +166,7 @@ public:
 	const static int STRUCTUREDEED = 0x4000027;
 	const static int CAMOKIT = 0x4000028;
 	const static int POWERUP = 0x4000029;
+	const static int DICE = 0x4000030;
 
 public:
 	SharedObjectTemplate();
@@ -607,6 +608,10 @@ public:
 	}
 
 	virtual bool isCampStructureTemplate() {
+		return false;
+	}
+
+	virtual bool isDiceTemplate() {
 		return false;
 	}
 

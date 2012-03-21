@@ -564,6 +564,8 @@ public:
 
 	ObjectMenuComponent* getObjectMenuComponent();
 
+	DataObjectComponentReference* getDataObjectComponent();
+
 	void setObjectMenuComponent(const String& name);
 
 	void setContainerComponent(const String& name);
@@ -655,6 +657,8 @@ public:
 	bool isCamoKit();
 
 	bool isAttachment();
+
+	bool isDiceObject();
 
 	bool isCampKit();
 
@@ -1169,6 +1173,8 @@ public:
 
 	ObjectMenuComponent* getObjectMenuComponent();
 
+	DataObjectComponentReference* getDataObjectComponent();
+
 	void setObjectMenuComponent(const String& name);
 
 	void setContainerComponent(const String& name);
@@ -1260,6 +1266,8 @@ public:
 	bool isCamoKit();
 
 	virtual bool isAttachment();
+
+	bool isDiceObject();
 
 	bool isCampKit();
 
@@ -1741,6 +1749,8 @@ public:
 	bool isCamoKit();
 
 	bool isAttachment();
+
+	bool isDiceObject();
 
 	bool isCampKit();
 

@@ -12,6 +12,10 @@
 
 class DataObjectComponent : public SceneObjectComponent, public Serializable {
 public:
+
+	virtual bool isDiceData() {
+		return false;
+	}
 };
 
 
