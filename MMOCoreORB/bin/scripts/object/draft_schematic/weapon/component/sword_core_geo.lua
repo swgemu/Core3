@@ -56,7 +56,7 @@ object_draft_schematic_weapon_component_sword_core_geo = object_draft_schematic_
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
-   customizationSkill = "", 
+   customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},

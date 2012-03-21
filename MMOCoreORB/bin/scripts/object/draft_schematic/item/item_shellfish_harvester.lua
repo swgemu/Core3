@@ -56,7 +56,7 @@ object_draft_schematic_item_item_shellfish_harvester = object_draft_schematic_it
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
-   customizationSkill = "", 
+   customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},
