@@ -42,7 +42,10 @@
 
 
 object_building_tatooine_lucky_despot = object_building_tatooine_shared_lucky_despot:new {
-
+	skillMods = {
+		{"private_med_wound_mind", 20},
+		{"private_buff_mind", 100}
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_lucky_despot, "object/building/tatooine/lucky_despot.iff")

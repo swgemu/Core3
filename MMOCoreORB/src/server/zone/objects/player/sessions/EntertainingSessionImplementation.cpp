@@ -10,6 +10,7 @@
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/skill/PerformanceManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/player/events/EntertainingSessionTask.h"
@@ -81,8 +82,8 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	//**DETERMINE IF THE ENT CAN HEAL.**
 	canHeal = canGiveEntertainBuff();
 	//**DETERMINE WOUND HEAL AMOUNTS.**
-	int woundHeal = performance->getHealMindWound() * (campModtemp / 100) * (woundHealingSkill / 100);
-	int shockHeal = performance->getHealShockWound() * (campModtemp / 100) * (shockHealingSkill / 100);
+	int woundHeal = ceil(performance->getHealMindWound() * (campModtemp / 100) * (woundHealingSkill / 100.0f));
+	int shockHeal = ceil(performance->getHealShockWound() * (campModtemp / 100) * (shockHealingSkill / 100.0f));
 
 	//**ENTERTAINER HEALS THEIR OWN MIND.**
 	if (canHeal && (entertainer->getWounds(CreatureAttribute::MIND) > 0
@@ -186,14 +187,44 @@ bool EntertainingSessionImplementation::isInEntertainingBuilding(CreatureObject*
 }
 
 void EntertainingSessionImplementation::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
-	creature->addWounds(CreatureAttribute::MIND, -woundHeal);
-	creature->addWounds(CreatureAttribute::FOCUS, -woundHeal);
-	creature->addWounds(CreatureAttribute::WILLPOWER, -woundHeal);
+	float amountHealed = 0;
 
-	creature->addShockWounds(-shockHeal);
+	if(shockHeal > 0 && creature->getShockWounds() > 0) {
+		creature->addShockWounds(-shockHeal);
+		amountHealed += shockHeal;
+	}
+	if(woundHeal > 0 && (creature->getWounds(CreatureAttribute::MIND) > 0
+			|| creature->getWounds(CreatureAttribute::FOCUS) > 0
+			|| creature->getWounds(CreatureAttribute::WILLPOWER) > 0)) {
+		creature->addWounds(CreatureAttribute::MIND, -woundHeal);
+		creature->addWounds(CreatureAttribute::FOCUS, -woundHeal);
+		creature->addWounds(CreatureAttribute::WILLPOWER, -woundHeal);
 
-	addHealingXp(shockHeal);
-	addHealingXp(woundHeal);
+		amountHealed += woundHeal;
+	}
+
+	if(entertainer->getGroup() != NULL)
+		addHealingXpGroup(amountHealed);
+	else
+		addHealingXp(amountHealed);
+
+}
+
+void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
+	ManagedReference<GroupObject*> group = entertainer->getGroup();
+	int groupSize = group->getGroupSize();
+	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
+	for(int i=0;i<groupSize;i++) {
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+		if(groupMember != NULL && groupMember->isEntertaining()) {
+			String healxptype("entertainer_healing");
+
+			if (playerManager != NULL)
+				playerManager->awardExperience(groupMember, healxptype, xp, true);
+
+		}
+
+	}
 }
 
 void EntertainingSessionImplementation::activateAction() {
@@ -837,6 +868,9 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 			campModTemp = getCampModifier();*/
 
 		float buffStrength = getEntertainerBuffStrength(creature, performanceType) / 100.0f;
+
+		if(buffStrength == 0)
+			return;
 
 		ManagedReference<PerformanceBuff*> oldBuff = NULL;
 		switch (performanceType){

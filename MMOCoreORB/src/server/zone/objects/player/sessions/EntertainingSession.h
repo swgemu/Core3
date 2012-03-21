@@ -147,6 +147,8 @@ public:
 
 	void addHealingXp(int xp);
 
+	void addHealingXpGroup(int xp);
+
 	int initializeSession();
 
 	int cancelSession();
@@ -296,6 +298,8 @@ public:
 
 	void addHealingXp(int xp);
 
+	void addHealingXpGroup(int xp);
+
 	int initializeSession();
 
 	int cancelSession();
@@ -422,6 +426,8 @@ public:
 	void addFlourishXp(int xp);
 
 	void addHealingXp(int xp);
+
+	void addHealingXpGroup(int xp);
 
 	int initializeSession();
 

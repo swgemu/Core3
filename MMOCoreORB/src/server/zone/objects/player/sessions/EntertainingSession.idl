@@ -138,6 +138,8 @@ class EntertainingSession extends Facade {
 		healingXp = healingXp + xp;
 	}
 	
+	public native void addHealingXpGroup(int xp);
+	
 	public int initializeSession() {
 		return 0;
 	}
