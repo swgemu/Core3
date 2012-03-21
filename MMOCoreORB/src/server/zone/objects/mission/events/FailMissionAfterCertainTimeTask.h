@@ -66,10 +66,16 @@ public:
 
 		if (objectiveRef != NULL) {
 			//Fail mission.
-			if (objectiveRef->getPlayerOwner() != NULL) {
-				objectiveRef->getPlayerOwner()->sendSystemMessage("Mission expired");
-			}
-			objectiveRef->fail();
+			CreatureObject* owner = objectiveRef->getPlayerOwner();
+			if (owner != NULL) {
+				Locker locker(owner);
+
+				owner->sendSystemMessage("Mission expired");
+
+				objectiveRef->fail();
+			} else
+				objectiveRef->fail();
+
 		}
 	}
 };

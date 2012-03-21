@@ -30,6 +30,8 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 	MissionObjectiveImplementation::destroyObjectFromDatabase();
 
 	if (spawnActiveArea != NULL) {
+		Locker locker(spawnActiveArea);
+
 		spawnActiveArea->destroyObjectFromWorld(true);
 		spawnActiveArea->destroyObjectFromDatabase(true);
 
@@ -115,6 +117,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	Zone* zone = spawnActiveArea->getZone();
 
+	Locker locker(spawnActiveArea);
+
 	spawnActiveArea->destroyObjectFromWorld(true);
 
 	Vector3 pos = findValidSpawnPosition(zone);
@@ -171,8 +175,11 @@ void DestroyMissionObjectiveImplementation::abort() {
 			//spawnActiveArea->destroyObjectFromDatabase(true);
 	}
 
-	if (spawnActiveArea != NULL)
+	if (spawnActiveArea != NULL) {
+		Locker locker(spawnActiveArea);
+
 		spawnActiveArea->destroyObjectFromWorld(true);
+	}
 }
 
 void DestroyMissionObjectiveImplementation::complete() {
