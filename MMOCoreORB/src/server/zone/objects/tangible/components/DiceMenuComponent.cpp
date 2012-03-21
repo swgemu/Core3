@@ -175,6 +175,7 @@ void DiceMenuComponent::doRoll(CreatureObject* player, DiceTemplate* diceTemplat
 			self.setTO("blue");
 			others.setTO("blue");
 		}
+		others.setTT(player->getFirstName());
 	} else {
 
 		StringBuffer rolled;
