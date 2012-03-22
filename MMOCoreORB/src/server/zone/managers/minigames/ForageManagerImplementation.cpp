@@ -21,7 +21,8 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	Locker playerLocker(player);
 
 	int actionCost = 50;
-	int mindCost = 200; //for shellfish harvesting
+	int mindCostShellfish = 100;
+	int actionCostShellfish =  100;
 
 	//Check if already foraging.
 	Reference<Task*> pendingForage = player->getPendingTask("foraging");
@@ -58,11 +59,11 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 
 	if (forageType == ForageManager::SHELLFISH){
 
-		if (player->getHAM(CreatureAttribute::MIND) >= mindCost + 1)
-			player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
-		else {
-			//player->sendSystemMessage("You need to rest before you can harvest again"); //"You need to rest before you can forage again."
+		if (player->getHAM(CreatureAttribute::MIND) < mindCostShellfish + 1 || player->getHAM(CreatureAttribute::ACTION) < actionCostShellfish + 1)
 			return;
+		else {
+			player->inflictDamage(player, CreatureAttribute::MIND, mindCostShellfish, false, true);
+			player->inflictDamage(player, CreatureAttribute::ACTION, actionCostShellfish, false, true);
 		}
 	}
 	else {
