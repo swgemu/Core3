@@ -48,10 +48,9 @@ void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	}
 
 	if (!diceTemplate->isConfigurable() && !diceTemplate->isChanceCube()) {
-		menuResponse->addRadialMenuItem(172, 3, "@dice/dice:dice_roll_one_single");
-		menuResponse->addRadialMenuItem(173, 3, "@dice/dice:dice_roll_two_single");
-		menuResponse->addRadialMenuItem(174, 3, "@dice/dice:dice_roll_three_single");
-		menuResponse->addRadialMenuItem(175, 3, "@dice/dice:dice_roll_four_single");
+		menuResponse->addRadialMenuItemToRadialID(172, 173, 3, "@dice/dice:dice_roll_two_single");
+		menuResponse->addRadialMenuItemToRadialID(172, 174, 3, "@dice/dice:dice_roll_three_single");
+		menuResponse->addRadialMenuItemToRadialID(172, 175, 3, "@dice/dice:dice_roll_four_single");
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject,
