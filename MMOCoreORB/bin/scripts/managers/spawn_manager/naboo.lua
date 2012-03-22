@@ -241,7 +241,7 @@ naboo_static_spawns = {
 	-- Informants
 	{"informant_npc_lvl_3",0,4721,0,-4614,180,0},
 	{"informant_npc_lvl_3",0,4999,0,6822,270,0},
-	{"informant_npc_lvl_3",0,6.37977,-0.894992,6.05897,225,64}
+	{"informant_npc_lvl_3",0,6.37977,-0.894992,6.05897,225,64},
 	{"informant_npc_lvl_3",0,5009,0,6652,315,0},
 	{"informant_npc_lvl_3",0,5277,0,6560,0,0},
 	{"informant_npc_lvl_2",0,5332,0,-1568,225,0},
