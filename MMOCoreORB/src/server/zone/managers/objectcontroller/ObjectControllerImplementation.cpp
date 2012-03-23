@@ -210,7 +210,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			logEntry << object->getDisplayedName() << " used '/" << queueCommand->getQueueCommandName()
 					<< "' on " << name << " with params '" << arguments.toString() << "'";
 			adminLog.info(logEntry.toString());
-		} catch (Exception e) {
+		} catch (Exception& e) {
 			Logger::error("Unhandled Exception logging admin commands" + e.getMessage());
 		}
 	}

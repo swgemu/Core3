@@ -51,8 +51,8 @@ protected:
 	Vector<short>* experimentalWeights;
 	Vector<String>* experimentalGroupTitles;
 	Vector<String>* experimentalSubGroupTitles;
-	Vector<int>* experimentalMin;
-	Vector<int>* experimentalMax;
+	Vector<float>* experimentalMin;
+	Vector<float>* experimentalMax;
 	Vector<short>* experimentalPrecision;
 	Vector<uint32>* playerRaces;
 
@@ -164,11 +164,11 @@ public:
         return experimentalSubGroupTitles;
     }
 
-    Vector<int>* getExperimentalMin() {
+    Vector<float>* getExperimentalMin() {
         return experimentalMin;
     }
 
-    Vector<int>* getExperimentalMax() {
+    Vector<float>* getExperimentalMax() {
         return experimentalMax;
     }
 

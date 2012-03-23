@@ -80,8 +80,8 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	if (tanoTemplate != NULL) {
 		Vector<String>* titles = tanoTemplate->getExperimentalGroupTitles();
 		Vector<String>* props = tanoTemplate->getExperimentalSubGroupTitles();
-		Vector<int>* mins = tanoTemplate->getExperimentalMin();
-		Vector<int>* maxs = tanoTemplate->getExperimentalMax();
+		Vector<float>* mins = tanoTemplate->getExperimentalMin();
+		Vector<float>* maxs = tanoTemplate->getExperimentalMax();
 		Vector<short>* prec = tanoTemplate->getExperimentalPrecision();
 
 		for (int i = 0; i < props->size(); ++i) {

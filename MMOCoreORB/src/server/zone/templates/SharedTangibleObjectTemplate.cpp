@@ -17,8 +17,8 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	experimentalWeights = new Vector<short>();
 	experimentalGroupTitles = new Vector<String>();
 	experimentalSubGroupTitles = new Vector<String>();
-	experimentalMin = new Vector<int>();
-	experimentalMax = new Vector<int>();
+	experimentalMin = new Vector<float>();
+	experimentalMax = new Vector<float>();
 	experimentalPrecision = new Vector<short>();
 	playerRaces = new Vector<uint32>();
 
@@ -184,7 +184,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		LuaObject experimentalMinList(state);
 		experimentalMin->removeAll();
 		for (int i = 1; i <= experimentalMinList.getTableSize(); ++i) {
-			experimentalMin->add(experimentalMinList.getIntAt(i));
+			experimentalMin->add(experimentalMinList.getFloatAt(i));
 		}
 
 		experimentalMinList.pop();
@@ -192,7 +192,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 		LuaObject experimentalMaxList(state);
 		experimentalMax->removeAll();
 		for (int i = 1; i <= experimentalMaxList.getTableSize(); ++i) {
-			experimentalMax->add(experimentalMaxList.getIntAt(i));
+			experimentalMax->add(experimentalMaxList.getFloatAt(i));
 		}
 
 		experimentalMaxList.pop();
