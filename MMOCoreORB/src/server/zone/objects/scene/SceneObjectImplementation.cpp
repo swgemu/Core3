@@ -568,12 +568,12 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	}
 }
 
-void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
+void SceneObjectImplementation::broadcastObject(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastObject(object, sendSelf);
+			grandParent->broadcastObject(object, selfObject);
 
 			return;
 		} else {
@@ -610,7 +610,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 			else
 				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
-			if (!sendSelf && scno == _this)
+			if (selfObject == scno)
 				continue;
 
 			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
@@ -626,12 +626,17 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 	zone->runlock(readlock);
 }
 
-void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendSelf) {
+void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
+	SceneObject* selfObject = sendSelf ? NULL : _this;
+	broadcastObject(object, selfObject);
+}
+
+void SceneObjectImplementation::broadcastDestroy(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastDestroy(object, sendSelf);
+			grandParent->broadcastDestroy(object, selfObject);
 
 			return;
 		} else {
@@ -667,7 +672,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 			else
 				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
-			if (!sendSelf && scno == _this)
+			if (selfObject == scno)
 				continue;
 
 			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
@@ -681,15 +686,19 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 	}
 
 	zone->runlock(readlock);
-
 }
 
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
+void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendSelf) {
+	SceneObject* selfObject = sendSelf ? NULL : _this;
+	broadcastDestroy(object, selfObject);
+}
+
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessage(message, sendSelf, lockZone);
+			grandParent->broadcastMessage(message, selfObject, lockZone);
 
 			return;
 		} else {
@@ -732,7 +741,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 			else
 				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
-			if (!sendSelf && scno == _this)
+			if (selfObject == scno)
 				continue;
 
 			if (scno->isPlayerCreature() || scno->isVehicleObject())
@@ -752,12 +761,18 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 	delete message;
 }
 
-void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
+	SceneObject* selfObject = sendSelf ? NULL : _this;
+
+	broadcastMessage(message, selfObject, lockZone);
+}
+
+void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessages(messages, sendSelf);
+			grandParent->broadcastMessages(messages, selfObject);
 
 			return;
 		} else {
@@ -804,7 +819,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 			else
 				scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
-			if (!sendSelf && scno == _this)
+			if (selfObject == scno)
 				continue;
 
 			if (scno->isPlayerCreature() || scno->isVehicleObject()) {
@@ -826,6 +841,12 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	while (!messages->isEmpty()) {
 		delete messages->remove(0);
 	}
+}
+
+void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
+	SceneObject* selfObject = sendSelf ? NULL : _this;
+
+	broadcastMessages(messages, selfObject);
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {

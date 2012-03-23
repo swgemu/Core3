@@ -594,6 +594,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
+	
+	@read
+	private native void broadcastMessage(BasePacket message, SceneObject selfObject, boolean lockZone);
 
 	/**
 	 * Broadcasts an object to the in range objects
@@ -604,6 +607,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
+	
+	@read
+	private native void broadcastObject(SceneObject object, SceneObject selfObject);
 
 	/**
 	 * Broadcasts an object to the in range objects
@@ -614,6 +620,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public native void broadcastDestroy(SceneObject object, boolean sendSelf);
+	
+	@read
+	private native void broadcastDestroy(SceneObject object, SceneObject selfObject);
 
 
 	/**
@@ -626,6 +635,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
+	
+	@local
+	@read
+	private native void broadcastMessages(Vector<BasePacket> messages, SceneObject selfObject);
 
 	/**
 	 * Sends BasePacket msg to the owner of this object, needs to be overriden

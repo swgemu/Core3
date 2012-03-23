@@ -969,12 +969,28 @@ public:
 
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
+private:
+	void broadcastMessage(BasePacket* message, SceneObject* selfObject, bool lockZone);
+
+public:
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
+private:
+	void broadcastObject(SceneObject* object, SceneObject* selfObject);
+
+public:
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
+private:
+	void broadcastDestroy(SceneObject* object, SceneObject* selfObject);
+
+public:
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
+private:
+	void broadcastMessages(Vector<BasePacket*>* messages, SceneObject* selfObject);
+
+public:
 	virtual void sendMessage(BasePacket* msg);
 
 	int compareTo(SceneObject* obj);
