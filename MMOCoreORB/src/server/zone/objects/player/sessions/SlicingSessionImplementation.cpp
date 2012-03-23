@@ -487,8 +487,8 @@ void SlicingSessionImplementation::handleSliceDamage(uint8 percent) {
 
 	//TODO: Check for Weapon Powerups and Remove it before the Slice
 
-	weap->setMinDamage((weap->getMinDamage() * percent / 100) + weap->getMinDamage());
-	weap->setMaxDamage((weap->getMaxDamage() * percent / 100) + weap->getMaxDamage());
+	weap->setMinDamage((weap->getMinDamage(false) * percent / 100) + weap->getMinDamage(false));
+	weap->setMaxDamage((weap->getMaxDamage(false) * percent / 100) + weap->getMaxDamage(false));
 
 	weap->setSliced(true);
 
@@ -510,9 +510,9 @@ void SlicingSessionImplementation::handleSliceSpeed(uint8 percent) {
 
 	//TODO: Check for Weapon Powerups and Remove it before the Slice
 
-	weap->setAttackSpeed(weap->getAttackSpeed() - (weap->getAttackSpeed() * percent / 100));
+	weap->setAttackSpeed(weap->getAttackSpeed(false) - (weap->getAttackSpeed(false) * percent / 100));
 
-	if (weap->getAttackSpeed() < 1)
+	if (weap->getAttackSpeed(false) < 1)
 		weap->setAttackSpeed(1.0f);
 
 	weap->setSliced(true);
