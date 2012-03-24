@@ -53,16 +53,17 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 			//Logger::console.info("CURERNTINDEX < FINALINDEX ", true);
 			void* ucmpValue = getUCMPValue(*(uint16*)(ulstTable + 2 * currentIndex));
 
+
 			String variableName = getCustomizationVariableName(*(byte*) ucmpValue);
 
-			if (!result.contains(variableName)) {
+			if (!result.contains(variableName) && !(skipSharedOwner && variableName.contains("/shared_owner/"))) {
 				bool isPallette = false;
 				uint16 rtypResult = 0;
 
 				int defaultValue = getDEFVValue(*((byte*)ucmpValue + 2));
 
-				/*Logger::console.info("VARIABLENAME: " + variableName, true);
-				Logger::console.info("DEFAULT VALUE: " + String::valueOf(defaultValue), true);*/
+				//Logger::console.info("VARIABLENAME: " + variableName, true);
+				//Logger::console.info("DEFAULT VALUE: " + String::valueOf(defaultValue), true);
 
 				getRTYP(*((byte*)ucmpValue + 1), isPallette, rtypResult);
 
@@ -70,8 +71,8 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 					int min = *(int*)(irngTable + 8 * rtypResult - 8);
 					int max = *(int*)(irngTable + 8 * rtypResult - 4);
 
-					/*Logger::console.info("MIN: " + String::valueOf(min), true);
-					Logger::console.info("MAX: " + String::valueOf(max), true);*/
+					//Logger::console.info("MIN: " + String::valueOf(min), true);
+					//Logger::console.info("MAX: " + String::valueOf(max), true);
 
 					Reference<BasicRangedIntCustomizationVariable*> var = new BasicRangedIntCustomizationVariable(min, max, defaultValue);
 					result.put(variableName, var.get());
@@ -88,32 +89,32 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 
 			currentIndex++;
 		}
-	} else {
-		//Logger::console.info("UIDXRESULT NULL", true);
-		returnValue = searchLidx(key);
-
-		if (returnValue != NULL) {
-			//Logger::console.info("RETURN VALUE NOT NULL", true);
-
-			uint16 v23 = *((uint16*)returnValue + 1);
-
-			for (int i = v23 + *((byte*)returnValue + 4); v23 < i; ++v23) {
-				returnValue = getCustomizationVariablesFromMap(*(uint16*)(llstTable + 2 * v23), a2, skipSharedOwner, result);
-			}
-		}/* else
-			Logger::console.info("RETURN VALUE NULL", true);*/
 	}
+		//Logger::console.info("UIDXRESULT NULL", true);
+	returnValue = searchLidx(key);
+
+	if (returnValue != NULL) {
+		//Logger::console.info("RETURN VALUE NOT NULL", true);
+
+		uint16 v23 = *((uint16*)returnValue + 1);
+
+		for (int i = v23 + *((byte*)returnValue + 4); v23 < i; ++v23) {
+			returnValue = getCustomizationVariablesFromMap(*(uint16*)(llstTable + 2 * v23), a2, skipSharedOwner, result);
+		}
+	}/* else
+			Logger::console.info("RETURN VALUE NULL", true);*/
+
 
 	return returnValue;
 }
 
-void AssetCustomizationManagerTemplate::getCustomizationVariables(uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables) {
+void AssetCustomizationManagerTemplate::getCustomizationVariables(uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables, bool skipShared) {
 	uint16 key = searchCidx(appearanceFileCRC);
 
 	if (!key)
 		return;
 
-	getCustomizationVariablesFromMap(key, 0, false, variables);
+	getCustomizationVariablesFromMap(key, 0, skipShared, variables);
 }
 
 int AssetCustomizationManagerTemplate::cidxCompareFunction(const void* key, const void* value) {

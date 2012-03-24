@@ -55,7 +55,7 @@ public:
 	~AssetCustomizationManagerTemplate();
 
 	void readObject(IffStream* iffStream);
-	void getCustomizationVariables(uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables);
+	void getCustomizationVariables(uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables, bool skipShared = false);
 
 private:
 	void parseCidxTable(IffStream* iffStream);
