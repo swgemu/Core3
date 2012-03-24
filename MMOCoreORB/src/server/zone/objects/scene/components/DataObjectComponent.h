@@ -16,6 +16,12 @@ public:
 	virtual bool isDiceData() {
 		return false;
 	}
+
+	virtual bool isCreatureHabitatData() {
+		return false;
+	}
+
+
 };
 
 
