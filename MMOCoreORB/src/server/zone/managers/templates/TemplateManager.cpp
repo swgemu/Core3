@@ -75,6 +75,9 @@
 #include "server/zone/templates/tangible/ContainerTemplate.h"
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 #include "server/zone/templates/tangible/PowerupTemplate.h"
+#include "server/zone/templates/tangible/LiveSampleTemplate.h"
+#include "server/zone/templates/tangible/CreatureHabitatTemplate.h"
+
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -422,6 +425,8 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CamoKitTemplate>(SharedObjectTemplate::CAMOKIT);
 	templateFactory.registerObject<PowerupTemplate>(SharedObjectTemplate::POWERUP);
 	templateFactory.registerObject<DiceTemplate>(SharedObjectTemplate::DICE);
+	templateFactory.registerObject<LiveSampleTemplate>(SharedObjectTemplate::LIVESAMPLE);
+	templateFactory.registerObject<CreatureHabitatTemplate>(SharedObjectTemplate::CREATUREHABITAT);
 }
 
 void TemplateManager::registerFunctions() {
@@ -551,7 +556,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CAMOKIT", SharedObjectTemplate::CAMOKIT);
 	luaTemplatesInstance->setGlobalInt("POWERUP", SharedObjectTemplate::POWERUP);
 	luaTemplatesInstance->setGlobalInt("DICE", SharedObjectTemplate::DICE);
-
+	luaTemplatesInstance->setGlobalInt("LIVESAMPLE", SharedObjectTemplate::LIVESAMPLE);
+	luaTemplatesInstance->setGlobalInt("CREATUREHABITAT", SharedObjectTemplate::CREATUREHABITAT);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

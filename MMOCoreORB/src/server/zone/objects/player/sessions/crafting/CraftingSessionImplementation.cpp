@@ -638,6 +638,20 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 		ghost->decreaseSchematicUseCount(draftSchematic);
 
+		/// Add Components to crafted object
+		String craftingComponents = "object/tangible/crafting/crafting_components_container.iff";
+		ManagedReference<SceneObject*> craftingComponentContainer = crafter->getZoneServer()->createObject(craftingComponents.hashCode(), 1);
+
+		for(int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+			Reference<IngredientSlot*> slot = manufactureSchematic->getSlot(i);
+			ManagedReference<SceneObject*> scno = slot->getFactoryIngredient();
+			if(scno->isTangibleObject()) {
+				craftingComponentContainer->transferObject(scno, -1, false);
+			}
+		}
+
+		prototype->transferObject(craftingComponentContainer, 4, false);
+
 	}
 }
 
@@ -664,6 +678,7 @@ void CraftingSessionImplementation::finishAssembly(int clientCounter) {
 
 	crafter->sendMessage(objMsg);
 	// End Object Controller **************************************
+
 }
 
 void CraftingSessionImplementation::experiment(int rowsAttempted, const String& expAttempt, int clientCounter) {

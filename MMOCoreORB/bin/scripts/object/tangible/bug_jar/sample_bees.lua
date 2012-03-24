@@ -42,7 +42,10 @@
 
 
 object_tangible_bug_jar_sample_bees = object_tangible_bug_jar_shared_sample_bees:new {
+	templateType = LIVESAMPLE,
+	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
 
+	animation = "clienteffect/item_bugs_bees.cef",
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_sample_bees, "object/tangible/bug_jar/sample_bees.iff")

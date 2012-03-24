@@ -1,16 +1,18 @@
 /*
- * LootSchematicMenuComponent.h
+ * DiceMenuComponent
  *
- *  Created on: 10/30/2011
+ *  Created on: 1/1/2012
  *      Author: kyle
  */
 
-#ifndef LOOTSCHEMATICMENUCOMPONENT_H_
-#define LOOTSCHEMATICMENUCOMPONENT_H_
+#ifndef DICEMENUCOMPONENT_H_
+#define DICEMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "../TangibleObjectMenuComponent.h"
+#include "server/zone/templates/tangible/DiceTemplate.h"
 
-class LootSchematicMenuComponent : public TangibleObjectMenuComponent {
+
+class DiceMenuComponent : public TangibleObjectMenuComponent {
 public:
 
 	/**
@@ -31,7 +33,8 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
+	void doRoll(CreatureObject* player, DiceTemplate* diceTemplate, int sides, const String& sidesText, int numRoll);
 };
 
 
-#endif /* LOOTSCHEMATICMENUCOMPONENT_H_ */
+#endif /* DICEMENUCOMPONENT_H_ */

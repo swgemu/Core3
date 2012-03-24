@@ -1,18 +1,17 @@
 /*
- * DiceMenuComponent
+ * CreatureHabitatMenuComponent
  *
- *  Created on: 1/1/2012
+ *  Created on: 3/21/2012
  *      Author: kyle
  */
 
-#ifndef DICEMENUCOMPONENT_H_
-#define DICEMENUCOMPONENT_H_
+#ifndef CREATUREHABITATMENUCOMPONENT_H_
+#define CREATUREHABITATMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
-#include "server/zone/templates/tangible/DiceTemplate.h"
+#include "../TangibleObjectMenuComponent.h"
 
 
-class DiceMenuComponent : public TangibleObjectMenuComponent {
+class CreatureHabitatMenuComponent : public TangibleObjectMenuComponent {
 public:
 
 	/**
@@ -33,8 +32,7 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
-	void doRoll(CreatureObject* player, DiceTemplate* diceTemplate, int sides, const String& sidesText, int numRoll);
 };
 
 
-#endif /* DICEMENUCOMPONENT_H_ */
+#endif /* CREATUREHABITATMENUCOMPONENT_H_ */

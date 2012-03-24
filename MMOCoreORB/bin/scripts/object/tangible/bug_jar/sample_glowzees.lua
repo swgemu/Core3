@@ -42,7 +42,10 @@
 
 
 object_tangible_bug_jar_sample_glowzees = object_tangible_bug_jar_shared_sample_glowzees:new {
+	templateType = LIVESAMPLE,
+	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
 
+	animation = "clienteffect/item_bugs_glowzees.cef",
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_sample_glowzees, "object/tangible/bug_jar/sample_glowzees.iff")

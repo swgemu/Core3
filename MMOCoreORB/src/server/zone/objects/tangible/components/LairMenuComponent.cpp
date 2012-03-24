@@ -22,7 +22,7 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 	if(tano == NULL)
 		return;
 
-	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8) {
+	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 4) {
 		menuResponse->addRadialMenuItem(50, 3, "@lair_n:search_lair"); //Search Lair
 	}
 

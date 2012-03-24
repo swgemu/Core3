@@ -1459,6 +1459,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return templateObject.isDiceTemplate();
 	}
 	
+	@dirty
+	public boolean isCreatureHabitat() {
+		return templateObject.isCreatureHabitatTemplate();
+	}
+	
 	@read
 	public boolean isCampKit() {
 		return gameObjectType == SceneObjectType.CAMPKIT;

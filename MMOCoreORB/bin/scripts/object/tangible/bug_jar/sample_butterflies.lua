@@ -42,7 +42,10 @@
 
 
 object_tangible_bug_jar_sample_butterflies = object_tangible_bug_jar_shared_sample_butterflies:new {
+	templateType = LIVESAMPLE,
+	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
 
+	animation = "clienteffect/item_bugs_butterflies.cef",
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_sample_butterflies, "object/tangible/bug_jar/sample_butterflies.iff")

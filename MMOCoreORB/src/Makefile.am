@@ -311,9 +311,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TrapMenuComponent.cpp \
-		server/zone/objects/tangible/components/DiceMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/DiceMenuComponent.cpp \
 		server/zone/objects/tangible/components/LairMenuComponent.cpp \
-		server/zone/objects/tangible/components/LootSchematicMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/LootSchematicMenuComponent.cpp \
 		server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampKitMenuComponent.cpp \
 		server/zone/objects/tangible/components/CampTerminalMenuComponent.cpp \
@@ -321,10 +321,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/BankTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/HologrindHolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
-		server/zone/objects/tangible/components/ArtCrateMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.cpp \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
 		server/zone/objects/tangible/components/WeaponObjectMenuComponent.cpp \
-		server/zone/objects/tangible/components/ShellfishHarvesterMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.cpp \
+		server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaContainerComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuResponse.cpp \

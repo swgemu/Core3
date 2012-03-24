@@ -20,9 +20,9 @@
 #include "server/zone/objects/tangible/components/ContainerObjectComponent.h"
 #include "server/zone/objects/tangible/components/TrapMenuComponent.h"
 #include "server/zone/objects/tangible/components/LairMenuComponent.h"
-#include "server/zone/objects/tangible/components/DiceMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DiceMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
-#include "server/zone/objects/tangible/components/LootSchematicMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/LootSchematicMenuComponent.h"
 #include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
 #include "server/zone/objects/tangible/components/CampKitMenuComponent.h"
 #include "server/zone/objects/tangible/components/CampTerminalMenuComponent.h"
@@ -30,9 +30,9 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
-#include "server/zone/objects/tangible/components/ArtCrateMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
-#include "server/zone/objects/tangible/components/LootSchematicAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
@@ -48,8 +48,10 @@
 #include "server/zone/objects/creature/components/AiDefaultComponent.h"
 #include "server/zone/objects/creature/components/AiCreatureComponent.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"
-#include "server/zone/objects/tangible/components/ShellfishHarvesterMenuComponent.h"
-#include "server/zone/objects/tangible/components/DiceDataComponent.h"
+#include "server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
+#include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
+
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -110,8 +112,9 @@ ComponentManager::ComponentManager() {
 	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
 
 	components.put("ShellfishHarvesterMenuComponent", new ShellfishHarvesterMenuComponent());
-	components.put("DiceMenuComponent", new DiceMenuComponent());
 
+	components.put("DiceMenuComponent", new DiceMenuComponent());
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
 
+	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 }

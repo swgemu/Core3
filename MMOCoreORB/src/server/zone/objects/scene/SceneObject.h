@@ -660,6 +660,8 @@ public:
 
 	bool isDiceObject();
 
+	bool isCreatureHabitat();
+
 	bool isCampKit();
 
 	bool isCampStructure();
@@ -1285,6 +1287,8 @@ public:
 
 	bool isDiceObject();
 
+	bool isCreatureHabitat();
+
 	bool isCampKit();
 
 	virtual bool isCampStructure();
@@ -1767,6 +1771,8 @@ public:
 	bool isAttachment();
 
 	bool isDiceObject();
+
+	bool isCreatureHabitat();
 
 	bool isCampKit();
 

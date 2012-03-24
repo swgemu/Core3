@@ -8,7 +8,7 @@
 #ifndef SHELLFISHHARVESTERMENUCOMPONENT_H_
 #define SHELLFISHHARVESTERMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "../TangibleObjectMenuComponent.h"
 
 class ShellfishHarvesterMenuComponent : public TangibleObjectMenuComponent {
 public:

@@ -42,7 +42,10 @@
 
 
 object_tangible_bug_jar_sample_moths = object_tangible_bug_jar_shared_sample_moths:new {
+	templateType = LIVESAMPLE,
+	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
 
+	animation = "clienteffect/item_bugs_moths.cef",
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_sample_moths, "object/tangible/bug_jar/sample_moths.iff")

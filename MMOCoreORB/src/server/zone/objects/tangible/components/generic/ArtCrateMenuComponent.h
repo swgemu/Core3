@@ -8,7 +8,7 @@
 #ifndef ARTCRATEMENUCOMPONENT_H_
 #define ARTCRATEMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "../TangibleObjectMenuComponent.h"
 
 class ArtCrateMenuComponent : public TangibleObjectMenuComponent {
 public:

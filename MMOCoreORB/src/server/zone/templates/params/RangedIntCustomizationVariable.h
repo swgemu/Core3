@@ -26,7 +26,7 @@ public:
 		setType(RANGEDINTCUSTOMIZATIONVARIABLE);
 	}
 
-	RangedIntCustomizationVariable(const RangedIntCustomizationVariable& m) : Param() {
+	RangedIntCustomizationVariable(const RangedIntCustomizationVariable& m) : CustomizationVariable() , Param() {
 		setType(RANGEDINTCUSTOMIZATIONVARIABLE);
 
 		variableName = m.variableName;

@@ -167,6 +167,8 @@ public:
 	const static int CAMOKIT = 0x4000028;
 	const static int POWERUP = 0x4000029;
 	const static int DICE = 0x4000030;
+	const static int LIVESAMPLE = 0x4000031;
+	const static int CREATUREHABITAT = 0x4000032;
 
 public:
 	SharedObjectTemplate();
@@ -616,6 +618,10 @@ public:
 	}
 
 	virtual bool isVendorCreatureTemplate() {
+		return false;
+	}
+
+	virtual bool isCreatureHabitatTemplate() {
 		return false;
 	}
 
