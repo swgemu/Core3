@@ -114,7 +114,8 @@ class AiAgent extends CreatureObject {
 	
 	//DEBUG
 	protected boolean showNextMovementPosition;
-	protected SceneObject movementMarker;
+	@dereferenced
+	protected Vector<SceneObject> movementMarkers;
 	
 	protected boolean despawnOnNoPlayerInRange;
 	

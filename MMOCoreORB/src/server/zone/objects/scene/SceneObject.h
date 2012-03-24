@@ -360,11 +360,19 @@ public:
 
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
+	void broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone);
+
 	void broadcastObject(SceneObject* object, bool sendSelf);
+
+	void broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject);
 
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
+	void broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject);
+
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
+
+	void broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject);
 
 	void sendMessage(BasePacket* msg);
 
@@ -971,28 +979,20 @@ public:
 
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
-private:
-	void broadcastMessage(BasePacket* message, SceneObject* selfObject, bool lockZone);
+	void broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone);
 
-public:
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
-private:
-	void broadcastObject(SceneObject* object, SceneObject* selfObject);
+	void broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject);
 
-public:
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
-private:
-	void broadcastDestroy(SceneObject* object, SceneObject* selfObject);
+	void broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject);
 
-public:
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
-private:
-	void broadcastMessages(Vector<BasePacket*>* messages, SceneObject* selfObject);
+	void broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject);
 
-public:
 	virtual void sendMessage(BasePacket* msg);
 
 	int compareTo(SceneObject* obj);
@@ -1518,9 +1518,15 @@ public:
 
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
 
+	void broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone);
+
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
+	void broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject);
+
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
+
+	void broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject);
 
 	void sendMessage(BasePacket* msg);
 

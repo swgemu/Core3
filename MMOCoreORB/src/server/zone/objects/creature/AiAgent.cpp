@@ -1371,8 +1371,8 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
-	if (_name == "AiAgent.movementMarker") {
-		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&movementMarker, stream);
+	if (_name == "AiAgent.movementMarkers") {
+		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&movementMarkers, stream);
 		return true;
 	}
 
@@ -1490,11 +1490,11 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "AiAgent.movementMarker";
+	_name = "AiAgent.movementMarkers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&movementMarker, stream);
+	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&movementMarkers, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

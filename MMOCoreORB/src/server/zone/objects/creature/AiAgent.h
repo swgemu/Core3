@@ -511,7 +511,7 @@ protected:
 
 	bool showNextMovementPosition;
 
-	ManagedReference<SceneObject* > movementMarker;
+	Vector<ManagedReference<SceneObject* > > movementMarkers;
 
 	bool despawnOnNoPlayerInRange;
 

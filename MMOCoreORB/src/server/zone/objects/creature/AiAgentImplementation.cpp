@@ -533,8 +533,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
-	if (movementMarker != NULL)
-		movementMarker->destroyObjectFromWorld(false);
+	for (int i = 0; i < movementMarkers.size(); ++i)
+		movementMarkers.get(i)->destroyObjectFromWorld(false);
 
 	if (npcTemplate == NULL)
 		return;
@@ -839,20 +839,40 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 					}
 #ifdef SHOW_NEXT_POSITION
 					if (showNextMovementPosition) {
-						if (movementMarker != NULL)
-							movementMarker->destroyObjectFromWorld(false);
+						for (int i = 0; i < movementMarkers.size(); ++i)
+							movementMarkers.get(i)->destroyObjectFromWorld(false);
 
-						movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+						movementMarkers.removeAll();
+
+						SceneObject* movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
 
 						movementMarker->initializePosition(newPositionX, newPositionZ, newPositionY);
 						StringBuffer msg;
-						msg << "path distance: " << pathDistance << " maxDist:" << maxDist;
+						msg << "Next Position: path distance: " << pathDistance << " maxDist:" << maxDist;
 						movementMarker->setCustomObjectName(msg.toString(), false);
 
 						if (cellObject != NULL) {
 							cellObject->transferObject(movementMarker, -1, true);
 						} else {
 							getZone()->transferObject(movementMarker, -1, false);
+						}
+
+						movementMarkers.add(movementMarker);
+
+						for (int i = 0; i < path->size(); ++i) {
+							WorldCoordinates* coord = &path->get(i);
+							SceneObject* coordCell = coord->getCell();
+
+							movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+							movementMarker->initializePosition(coord->getPoint().getX(), coord->getPoint().getZ(), coord->getPoint().getY());
+
+							if (coordCell != NULL) {
+								coordCell->transferObject(movementMarker, -1, true);
+							} else {
+								getZone()->transferObject(movementMarker, -1, false);
+							}
+
+							movementMarkers.add(movementMarker);
 						}
 					}
 #endif

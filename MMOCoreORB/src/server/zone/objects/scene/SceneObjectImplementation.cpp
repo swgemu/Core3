@@ -568,12 +568,12 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	}
 }
 
-void SceneObjectImplementation::broadcastObject(SceneObject* object, SceneObject* selfObject) {
+void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastObject(object, selfObject);
+			grandParent->broadcastObjectPrivate(object, selfObject);
 
 			return;
 		} else {
@@ -628,15 +628,15 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, SceneObject
 
 void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
 	SceneObject* selfObject = sendSelf ? NULL : _this;
-	broadcastObject(object, selfObject);
+	broadcastObjectPrivate(object, selfObject);
 }
 
-void SceneObjectImplementation::broadcastDestroy(SceneObject* object, SceneObject* selfObject) {
+void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastDestroy(object, selfObject);
+			grandParent->broadcastDestroyPrivate(object, selfObject);
 
 			return;
 		} else {
@@ -690,15 +690,15 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, SceneObjec
 
 void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendSelf) {
 	SceneObject* selfObject = sendSelf ? NULL : _this;
-	broadcastDestroy(object, selfObject);
+	broadcastDestroyPrivate(object, selfObject);
 }
 
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, SceneObject* selfObject, bool lockZone) {
+void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessage(message, selfObject, lockZone);
+			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
 
 			return;
 		} else {
@@ -764,15 +764,15 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, SceneObjec
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
 	SceneObject* selfObject = sendSelf ? NULL : _this;
 
-	broadcastMessage(message, selfObject, lockZone);
+	broadcastMessagePrivate(message, selfObject, lockZone);
 }
 
-void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, SceneObject* selfObject) {
+void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
 		SceneObject* grandParent = getRootParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessages(messages, selfObject);
+			grandParent->broadcastMessagesPrivate(messages, selfObject);
 
 			return;
 		} else {
@@ -846,7 +846,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
 	SceneObject* selfObject = sendSelf ? NULL : _this;
 
-	broadcastMessages(messages, selfObject);
+	broadcastMessagesPrivate(messages, selfObject);
 }
 
 int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float range) {
