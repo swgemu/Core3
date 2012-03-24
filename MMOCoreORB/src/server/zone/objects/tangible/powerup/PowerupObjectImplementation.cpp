@@ -38,13 +38,12 @@ void PowerupObjectImplementation::fillWeaponAttributeList(AttributeListMessage* 
 		float value = getWeaponStat(stat->getAttributeToModify(), weapon, true);
 		float valueNoPup = getWeaponStat(stat->getAttributeToModify(), weapon, false);
 
-		String sign = "+";
-		if(value < valueNoPup)
-			sign = "-";
-		else if(value == valueNoPup)
-			sign = "";
+		String sign = "";
 
 		float pupvalue = (stat->getValue() / 100.f) * valueNoPup;
+
+		if(pupvalue >= 0)
+			sign = "+";
 
 		StringBuffer val;
 		val << sign << Math::getPrecision(pupvalue, 2);
