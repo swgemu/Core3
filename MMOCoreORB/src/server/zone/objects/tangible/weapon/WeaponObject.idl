@@ -303,7 +303,7 @@ class WeaponObject extends TangibleObject {
 	public float getAttackSpeed(boolean withPup = true) {
 		
 		if(powerupObject != null && withPup) 
-			return attackSpeed + (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
+			return attackSpeed - (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
 
 		return attackSpeed;
 	}

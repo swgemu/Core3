@@ -1470,8 +1470,8 @@ void WeaponObjectImplementation::setMaxRangeAccuracy(int value) {
 
 float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return attackSpeed + (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
-	return attackSpeed + (attackSpeed * powerupObject->getPowerupStat("attackSpeed"));
+	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return attackSpeed - (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
+	return attackSpeed - (attackSpeed * powerupObject->getPowerupStat("attackSpeed"));
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return attackSpeed;
 	return attackSpeed;
 }
