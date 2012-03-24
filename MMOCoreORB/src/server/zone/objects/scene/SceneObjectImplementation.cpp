@@ -1174,6 +1174,9 @@ float SceneObjectImplementation::getWorldPositionX() {
 
 	SceneObject* root = getRootParent();
 
+	if (!root->isBuildingObject())
+		return getPositionX();
+
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
 	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
 
@@ -1186,6 +1189,9 @@ float SceneObjectImplementation::getWorldPositionY() {
 
 	SceneObject* root = getRootParent();
 
+	if (!root->isBuildingObject())
+		return getPositionY();
+
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
 	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
 
@@ -1197,6 +1203,9 @@ float SceneObjectImplementation::getWorldPositionZ() {
 		return getPositionZ();
 
 	SceneObject* root = getRootParent();
+
+	if (!root->isBuildingObject())
+		return getPositionZ();
 
 	return root->getPositionZ() + getPositionZ();
 }
