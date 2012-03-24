@@ -143,6 +143,8 @@ using namespace server::zone::managers::crafting;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
+#include "server/zone/templates/customization/CustomizationVariable.h"
+
 #include "engine/util/Facade.h"
 
 namespace server {
@@ -232,6 +234,8 @@ protected:
 	byte experimentationResult;
 
 	unsigned long long lastExperimentTime;
+
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
 
 public:
 	CraftingSessionImplementation(CreatureObject* creature);

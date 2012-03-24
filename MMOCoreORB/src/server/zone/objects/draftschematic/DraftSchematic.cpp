@@ -312,33 +312,6 @@ String DraftSchematic::getCustomizationSkill() {
 		return _implementation->getCustomizationSkill();
 }
 
-Vector<byte>* DraftSchematic::getCustomizationOptions() {
-	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getCustomizationOptions();
-}
-
-Vector<String>* DraftSchematic::getCustomizationStringNames() {
-	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getCustomizationStringNames();
-}
-
-Vector<byte>* DraftSchematic::getCustomizationDefaultValues() {
-	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getCustomizationDefaultValues();
-}
-
 String DraftSchematic::getCustomName() {
 	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

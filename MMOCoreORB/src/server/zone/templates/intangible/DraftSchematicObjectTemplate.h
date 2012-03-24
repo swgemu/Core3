@@ -55,10 +55,6 @@ protected:
 	String experimentingSkill;
 	String customizationSkill;
 
-	Vector<byte>* customizationOptions;
-	Vector<String>* customizationStringNames;
-	Vector<byte>* customizationDefaultValues;
-
 	Vector<String>* ingredientTemplateNames;
 	Vector<String>* ingredientTitleNames;
 	Vector<short>* ingredientSlotType;
@@ -118,18 +114,6 @@ public:
 
     String getCustomizationSkill() {
     	return customizationSkill;
-    }
-
-    Vector<byte>* getCustomizationOptions() {
-        return customizationOptions;
-    }
-
-    Vector<String>* getCustomizationStringNames() {
-        return customizationStringNames;
-    }
-
-    Vector<byte>* getCustomizationDefaultValues() {
-        return customizationDefaultValues;
     }
 
     Vector<short >* getIngredientSlotType() {

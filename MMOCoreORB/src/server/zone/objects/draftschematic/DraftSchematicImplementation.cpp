@@ -199,18 +199,6 @@ String DraftSchematicImplementation::getCustomizationSkill() {
 	return schematicTemplate->getCustomizationSkill();
 }
 
-Vector<String>* DraftSchematicImplementation::getCustomizationStringNames() {
-	return schematicTemplate->getCustomizationStringNames();
-}
-
-Vector<byte>* DraftSchematicImplementation::getCustomizationOptions() {
-	return schematicTemplate->getCustomizationOptions();
-}
-
-Vector<byte>* DraftSchematicImplementation::getCustomizationDefaultValues() {
-	return schematicTemplate->getCustomizationDefaultValues();
-}
-
 String DraftSchematicImplementation::getCustomName() {
 	return schematicTemplate->getCustomObjectName();
 }

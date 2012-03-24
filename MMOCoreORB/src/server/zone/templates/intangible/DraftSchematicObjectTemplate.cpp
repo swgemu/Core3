@@ -9,9 +9,6 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 
 DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
-	customizationOptions = new Vector<byte> ();
-	customizationDefaultValues = new Vector<byte> ();
-	customizationStringNames = new Vector<String> ();
 
 	ingredientTemplateNames = new Vector<String> ();
 	ingredientTitleNames = new Vector<String> ();
@@ -36,10 +33,6 @@ DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
 
 	 while(resourceWeights->size() > 0)
 	 delete resourceWeights->remove(0);*/
-
-	delete customizationOptions;
-	delete customizationDefaultValues;
-	delete customizationStringNames;
 
 	delete ingredientTemplateNames;
 	delete ingredientTitleNames;
@@ -70,29 +63,6 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	assemblySkill = templateData->getStringField("assemblySkill");
 	experimentingSkill = templateData->getStringField("experimentingSkill");
 	customizationSkill = templateData->getStringField("customizationSkill");
-
-	LuaObject customizationOptionsList = templateData->getObjectField(
-			"customizationOptions");
-	for (int i = 1; i <= customizationOptionsList.getTableSize(); ++i) {
-		customizationOptions->add(customizationOptionsList.getIntAt(i));
-	}
-	customizationOptionsList.pop();
-
-	LuaObject customizationStringNamesList = templateData->getObjectField(
-			"customizationStringNames");
-	for (int i = 1; i <= customizationStringNamesList.getTableSize(); ++i) {
-		customizationStringNames->add(
-				customizationStringNamesList.getStringAt(i));
-	}
-	customizationStringNamesList.pop();
-
-	LuaObject customizationDefaultValuesList = templateData->getObjectField(
-			"customizationDefaults");
-	for (int i = 1; i <= customizationDefaultValuesList.getTableSize(); ++i) {
-		customizationDefaultValues->add(
-				customizationDefaultValuesList.getIntAt(i));
-	}
-	customizationDefaultValuesList.pop();
 
 	LuaObject ingredientTemplateNamesList = templateData->getObjectField(
 			"ingredientTemplateNames");

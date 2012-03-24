@@ -12,6 +12,7 @@ import server.zone.objects.draftschematic.DraftSchematic;
 
 import server.zone.managers.crafting.CraftingManager;
 include server.zone.objects.scene.SessionFacadeType;
+include server.zone.templates.customization.CustomizationVariable;
 
 class CraftingSession extends Facade {
 	@weakreference
@@ -45,6 +46,9 @@ class CraftingSession extends Facade {
 
 	/// For experiment hacking attempts
 	protected transient unsigned long lastExperimentTime;
+	
+	@dereferenced
+	protected transient VectorMap<string, Reference<CustomizationVariable> > variables;
 	
 	public CraftingSession(CreatureObject creature) {
 		Logger.setLoggingName("CraftingSession");

@@ -22,6 +22,10 @@
 #include "server/zone/objects/player/sessions/crafting/events/CreateObjectTask.h"
 #include "server/zone/objects/player/sessions/crafting/events/UpdateToolCountdownTask.h"
 
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/templates/params/RangedIntCustomizationVariable.h"
+
+
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
 
 	craftingTool = tool;
@@ -550,13 +554,20 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	prototype->updateCraftingValues(craftingValues, true);
 
 	// Set default customization
-	Vector < byte >* customizationOptions
-			= draftSchematic->getCustomizationOptions();
-	Vector < byte >* customizationDefaultValues
-			= draftSchematic->getCustomizationDefaultValues();
+	SharedTangibleObjectTemplate* templateData =
+			cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
+	if (templateData == NULL) {
+		error("No template for: " + prototype->getServerObjectCRC());
+		return;
+	}
 
-	for (int i = 0; i < customizationOptions->size(); ++i) {
-		prototype->setCustomizationVariable(customizationOptions->get(i), customizationDefaultValues->get(i));
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(templateData->getAppearanceFilename().hashCode(), variables, true);
+
+	for (int i = 0; i < variables.size(); ++i) {
+		Reference<RangedIntCustomizationVariable*> var = cast<RangedIntCustomizationVariable*>(variables.get(i).get());
+		if(var != NULL) {
+			prototype->setCustomizationVariable(variables.elementAt(i).getKey(), var->getDefaultValue());
+		}
 	}
 
 	// Start DMSCO3 ***********************************************************
@@ -576,7 +587,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	dMsco7->updateForAssembly(manufactureSchematic, experimentalFailureRate);
 	if (custpoints > 0)
-		dMsco7->updateCustomizationOptions(manufactureSchematic, custpoints);
+		dMsco7->updateCustomizationOptions(&variables, custpoints);
 
 	dMsco7->close();
 
@@ -647,6 +658,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 			ManagedReference<SceneObject*> scno = slot->getFactoryIngredient();
 
 			if(scno != NULL && scno->isTangibleObject()) {
+
 				craftingComponentContainer->transferObject(scno, -1, false);
 			}
 		}
@@ -839,7 +851,8 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
 	StringTokenizer tokenizer(customizationString);
-	byte customizationindex, customizationvalue, customizationtype;
+	byte customizationindex, customizationvalue;
+	String customizationname = "";
 
 	//Database::escapeString(name);
 
@@ -855,17 +868,17 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	if (!name.isEmpty())
 		manufactureSchematic->setCustomObjectName(customName, false);
 
-	Vector < byte > *customizationOptions
-			= manufactureSchematic->getDraftSchematic()->getCustomizationOptions();
-
 	while (tokenizer.hasMoreTokens()) {
 
 		customizationindex = (byte) tokenizer.getIntToken();
-		customizationtype = customizationOptions->get(customizationindex);
+		RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(variables.get(customizationindex).get());
+
+		if(var != NULL)
+			customizationname = var->getVariableName();
 
 		customizationvalue = (byte) tokenizer.getIntToken();
 
-		prototype->setCustomizationVariable(customizationtype,
+		prototype->setCustomizationVariable(customizationname,
 				customizationvalue);
 	}
 

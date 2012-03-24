@@ -46,6 +46,7 @@
 #define MANUFACTURESCHEMATICOBJECTDELTAMESSAGE7_H_
 
 #include "../BaseLineMessage.h"
+#include "server/zone/templates/params/RangedIntCustomizationVariable.h"
 
 class ManufactureSchematicObjectDeltaMessage7 : public DeltaMessage {
 public:
@@ -64,11 +65,12 @@ public:
 		update13(manufactureSchematic);
 	}
 
-	void updateCustomizationOptions(ManufactureSchematic* manufactureSchematic, int custpoints){
-		update0D(manufactureSchematic);
-		update0E(manufactureSchematic);
-		update0F(manufactureSchematic);
-		update10(manufactureSchematic, custpoints);
+	void updateCustomizationOptions(VectorMap<String, Reference<CustomizationVariable*> >* vars,
+			int custpoints){
+		update0D(vars);
+		update0E(vars);
+		update0F(vars);
+		update10(vars, custpoints);
 		update11();
 	}
 
@@ -221,60 +223,50 @@ public:
 		}
 	}
 
-	void update0D(ManufactureSchematic* manufactureSchematic) {
-
-		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
-		if(draftSchematic == NULL)
-			return;
-
-		Vector<String>* customizationStringNames = draftSchematic->getCustomizationStringNames();
+	void update0D(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
 
 		startUpdate(0x0D);
 
-		startList(customizationStringNames->size(), customizationStringNames->size());
+		startList(vars->size(), vars->size());
 
-		for (int i = 0; i < customizationStringNames->size(); ++i) {
+		for (int i = 0; i < vars->size(); ++i) {
 
 			insertByte(0x01);
 			insertShort(i);
-			insertAscii(customizationStringNames->get(i));
+			RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(vars->get(i).get());
+			if(var == NULL)
+				insertAscii("");
+			else
+				insertAscii(vars->elementAt(i).getKey());
 		}
 	}
 
 	// Starting COlor chooser position
-	void update0E(ManufactureSchematic* manufactureSchematic) {
-
-		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
-		if(draftSchematic == NULL)
-			return;
-
-		Vector<byte>* customizationDefaultValues = draftSchematic->getCustomizationDefaultValues();
+	void update0E(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
 
 		startUpdate(0x0E);
 
-		startList(customizationDefaultValues->size(), customizationDefaultValues->size());
+		startList(vars->size(), vars->size());
 
-		for (int i = 0; i < customizationDefaultValues->size(); ++i) {
+		for (int i = 0; i < vars->size(); ++i) {
 
 			insertByte(0x01);
 			insertShort(i);
-			insertInt(customizationDefaultValues->get(i));
+			RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(vars->get(i).get());
+			if(var == NULL)
+				insertInt(0);
+			else
+				insertInt(var->getDefaultValue());
 		}
 	}
 
-	void update0F(ManufactureSchematic* manufactureSchematic) {
-
-		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
-		if(draftSchematic == NULL)
-			return;
-
-		Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
+	void update0F(VectorMap<String, Reference<CustomizationVariable*> >* vars) {
 
 		startUpdate(0x0F);
 
-		startList(customizationOptions->size(), customizationOptions->size());
+		startList(vars->size(), vars->size());
 
-		for (int i = 0; i < customizationOptions->size(); ++i) {
+		for (int i = 0; i < vars->size(); ++i) {
 			insertByte(0x01);
 			insertShort(i);
 			insertInt(0);
@@ -282,19 +274,13 @@ public:
 	}
 
 	// Number of palette colors
-	void update10(ManufactureSchematic* manufactureSchematic, int custpoints) {
-
-		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
-		if(draftSchematic == NULL)
-			return;
-
-		Vector<byte>* customizationOptions = draftSchematic->getCustomizationOptions();
+	void update10(VectorMap<String, Reference<CustomizationVariable*> >* vars, int custpoints) {
 
 		startUpdate(0x10);
 
-		startList(customizationOptions->size(), customizationOptions->size());
+		startList(vars->size(), vars->size());
 
-		for (int i = 0; i < customizationOptions->size(); ++i) {
+		for (int i = 0; i < vars->size(); ++i) {
 			insertByte(0x01);
 			insertShort(i);
 			insertInt(custpoints);
