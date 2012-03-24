@@ -141,7 +141,8 @@ class Consumable extends TangibleObject {
 				filling = (fillingMax - fillingMin) * values.getCurrentPercentage("filling") + fillingMin;
 			
 			if(values.hasProperty("quantity"))
-				super.setUseCount((quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin);
+				super.setUseCount((quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin +
+				 values.getCurrentValue("quantity_bonus"));
 			
 			if(values.hasProperty("flavor"))
 				duration = (flavorMax - flavorMin) * values.getCurrentPercentage("flavor") + flavorMin;

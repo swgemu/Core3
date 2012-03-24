@@ -584,8 +584,8 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 	if (values->hasProperty("filling"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				filling = (fillingMax - fillingMin) * values.getCurrentPercentage("filling") + fillingMin;
 	filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
-	if (values->hasProperty("quantity"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				super.setUseCount((quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin);
-	TangibleObjectImplementation::setUseCount((quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin);
+	if (values->hasProperty("quantity"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				 values.getCurrentValue("quantity_bonus"));
+	TangibleObjectImplementation::setUseCount((quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin + values->getCurrentValue("quantity_bonus"));
 	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
 	if (values->hasProperty("flavor"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				duration = (flavorMax - flavorMin) * values.getCurrentPercentage("flavor") + flavorMin;
 	duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;

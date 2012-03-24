@@ -51,7 +51,7 @@ object_tangible_dice_eqp_configurable_group_dice = object_tangible_dice_shared_e
 	sidesText = "configurable dice",
 
 	selfSingleResult = "configurable_dice_result_self",
-	othersSingleResult = "configurable_dice_result_other", 
+	othersSingleResult = "configurable_dice_result_single", 
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},

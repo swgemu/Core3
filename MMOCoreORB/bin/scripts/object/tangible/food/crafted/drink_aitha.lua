@@ -61,7 +61,7 @@ object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_d
 	quantityMin = 4,
 	quantityMax = 7,
 
-	modifiers = { "mind_heal", 0 },
+	modifiers = { "mind", 0 },
 
 	buffName = "",
 	buffCRC = 0,
