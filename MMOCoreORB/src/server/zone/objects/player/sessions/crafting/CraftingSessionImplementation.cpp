@@ -645,7 +645,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		for(int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 			Reference<IngredientSlot*> slot = manufactureSchematic->getSlot(i);
 			ManagedReference<SceneObject*> scno = slot->getFactoryIngredient();
-			if(scno->isTangibleObject()) {
+
+			if(scno != NULL && scno->isTangibleObject()) {
 				craftingComponentContainer->transferObject(scno, -1, false);
 			}
 		}
