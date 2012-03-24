@@ -71,6 +71,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 
 	CustomizationVariables hairCustomization;
 
+	String hairCustomizationString;
+
 	if (customData == NULL) {
 		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
 		return;
@@ -128,17 +130,12 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 				else
 					creatureObject->setCustomizationVariable(token_1, (value * 255));
 			} else {
-				if (value == .5f) {
-					creatureObject->setCustomizationVariable(token_1, 0);
+				  if (value >= .5) {
+					creatureObject->setCustomizationVariable(token_1, (((value - .5f) / .5f) * 255));
 					creatureObject->setCustomizationVariable(token_2, 0);
-
-				} else if (value > .5) {
+				} else { // value < .5
 					creatureObject->setCustomizationVariable(token_1, 0);
 					creatureObject->setCustomizationVariable(token_2, (((value - .5f) / .5f) * 255));
-
-				} else { // < .5
-					creatureObject->setCustomizationVariable(token_1, (((.5f - value) / .5f) * 255));
-					creatureObject->setCustomizationVariable(token_2, 0);
 
 				}
 
@@ -149,7 +146,8 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 			float minScale = customData->getMinScale();
 			float maxScale = customData->getMaxScale();
 
-			creatureObject->setHeight(minScale + ((maxScale - minScale) * value));
+
+			creatureObject->setHeight(MAX(MIN(value, maxScale), minScale));
 
 		} else if (
 
@@ -159,8 +157,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 		customizationName == "eyebrows"	||
 		customizationName == "eyeshadow" ||
 		customizationName == "freckles" ||
-		customizationName == "hair_style" ||
-		customizationName == "pattern" ||
+		customizationName == "fur_pattern" ||
 		customizationName == "side_beard" ||
 		customizationName == "tattoo_style") {
 
@@ -170,20 +167,21 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 			while (tokenizer.hasMoreTokens()) {
 				String attribute;
 				tokenizer.getStringToken(attribute);
-				creatureObject->setCustomizationVariable(attribute,(value / 1.0f));
-				//creatureObject->setCustomizationVariable(attribute, ((value / 1.0f) * (choices - 1)));
+				creatureObject->setCustomizationVariable(attribute, value);
 			}
 
 		}
-		String hairCustomizationString;
 		hairCustomization.getData(hairCustomizationString);
 		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
 
 		updateCharacterAppearance(creatureObject);
 
 	} else
-		creatureObject->sendSystemMessage(
-				"This shouldn't have happend.  Please report repro steps to Polonel - updateCustomization(String customizationName, uint32 value)");
+
+		hairCustomization.getData(hairCustomizationString);
+		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+
+		updateCharacterAppearance(creatureObject);
 }
 
 void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, String& hairTemplate, CreatureObject* creo) {
@@ -205,20 +203,19 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 
 	String variables = customData->getVariables();
 	String type = customData->getType();
-
-	if (type == "color") {
+		if (type == "color"){
+		if (
+			customizationName == "hair_color" ||
+			customizationName == "lekku_color" ||
+			customizationName == "horns_color" ||
+			customizationName == "hair_trim_color"){
 		StringTokenizer tokenizer(variables.toCharArray());
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
 			String attribute;
 			tokenizer.getStringToken(attribute);
-			//System::out << attribute << endl;
-			if (customData->getIsVarHairColor())
-				hairCustomization.setVariable(attribute,value);
-				//session->setHairAttribute(attribute, value);
-			else
-				creatureObject->setCustomizationVariable(attribute, value);
+			hairCustomization.setVariable(attribute,value);
 		}
 
 		String hairCustomizationString;
@@ -226,14 +223,39 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
 
 		updateCharacterAppearance(creatureObject);
+		}
+
+		else if(
+				customizationName == "eye_color" ||
+				customizationName == "eyebrows_color" ||
+				customizationName == "facial_hair_color" ||
+				customizationName == "fur_color_bothan" ||
+				customizationName == "skin_color" ||
+				customizationName == "fur_color_wookiee" ||
+				customizationName == "nose_color"){
+
+			StringTokenizer tokenizer(variables.toCharArray());
+			tokenizer.setDelimeter(",");
+
+			while (tokenizer.hasMoreTokens()) {
+				String attribute;
+				tokenizer.getStringToken(attribute);
+				creatureObject->setCustomizationVariable(attribute, value);
+			}
+
+		updateCharacterAppearance(creatureObject);
+		}
 
 	} else if (type == "hslider") {
 		updateCustomization(customizationName, (float) value, hairTemplate, creo);
 		return;
 
 	} else {
-		creatureObject->sendSystemMessage(
-				"This shouldn't have happend.  Please report repro steps to Polonel - updateCustomization(String customizationName, uint32 value)");
+		String hairCustomizationString;
+		hairCustomization.getData(hairCustomizationString);
+		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+
+		updateCharacterAppearance(creatureObject);
 	}
 }
 

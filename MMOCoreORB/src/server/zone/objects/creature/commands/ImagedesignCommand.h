@@ -68,8 +68,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		//ENABLE
-		//return SUCCESS;
+		//Disabled again for public use until bugs can be worked out.
+		return SUCCESS;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 		CreatureObject* playerTarget = NULL;

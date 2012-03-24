@@ -100,16 +100,24 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 
 		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
-		for (int i = 0; i < bodyAttributes->size(); ++i) {
-			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
-			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
-			xpGranted += 25;
-		}
+		if (bodyAttributes->size() == 0) {
+		// Fixes for hair template. With this they could be changing the color as well so leave it out.
+		String empty = "";
+		uint32 iempty = 0;
+		imageDesignManager->updateCustomization(empty, iempty, hairTemplate, targetCreature);
+		} else {
 
-		for (int i = 0; i < colorAttributes->size(); ++i) {
-			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-			imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
-			xpGranted += 25;
+			for (int i = 0; i < bodyAttributes->size(); ++i) {
+				VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
+				imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
+				xpGranted += 25;
+			}
+
+			for (int i = 0; i < colorAttributes->size(); ++i) {
+				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
+				imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
+				xpGranted += 25;
+			}
 		}
 
 		// Drop the Session for both the designer and the targetCreature;
