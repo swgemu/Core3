@@ -60,6 +60,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 	void loadTreArchive();
 	void loadSlotDefinitions();
 	void loadPlanetMapCategories();
+	void loadAssetCustomizationManager();
 
 public:
 	static Lua* luaTemplatesInstance;

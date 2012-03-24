@@ -86,7 +86,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
-
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/PaletteTemplate.h"
 #include "server/zone/templates/appearance/AppearanceRedirect.h"
@@ -133,6 +133,7 @@ TemplateManager::TemplateManager() {
 	loadTreArchive();
 	loadSlotDefinitions();
 	loadPlanetMapCategories();
+	loadAssetCustomizationManager();
 }
 
 TemplateManager::~TemplateManager() {
@@ -182,6 +183,21 @@ void TemplateManager::loadSlotDefinitions() {
 	delete iffStream;
 
 	info("Loaded " + String::valueOf(slotDefinitions.size()) + " slot definitions.", true);
+}
+
+void TemplateManager::loadAssetCustomizationManager() {
+	info("loading asset customization manager", true);
+
+	IffStream* iffStream = openIffFile("customization/asset_customization_manager.iff");
+
+	if (iffStream == NULL) {
+		error("Asset customization manager data not found.");
+		return;
+	}
+
+	AssetCustomizationManagerTemplate::instance()->readObject(iffStream);
+
+	delete iffStream;
 }
 
 Reference<SlotDescriptor*> TemplateManager::getSlotDescriptor(const String& filename) {
