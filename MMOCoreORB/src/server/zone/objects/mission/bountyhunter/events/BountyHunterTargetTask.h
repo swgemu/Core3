@@ -94,6 +94,7 @@ public:
 		cancel();
 	}
 
+	// TODO: add shuttle jumping and planet jumping when path finding in cities is good enough.
 	void run() {
 		ManagedReference<BountyMissionObjective*> objectiveRef = objective.get();
 
@@ -130,6 +131,15 @@ public:
 		reschedule(10 * 1000);
 	}
 
+	Vector3 getTargetPosition() {
+		return currentPosition;
+	}
+
+	String getTargetZoneName() {
+		return zoneName;
+	}
+
+private:
 	void updatePosition(CreatureObject* player) {
 		Vector3 direction = nextPosition - currentPosition;
 		Vector3 movementUpdate = direction;
@@ -142,14 +152,6 @@ public:
 			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
 			nextPosition.setZ(0);
 		}
-	}
-
-	Vector3 getTargetPosition() {
-		return currentPosition;
-	}
-
-	String getTargetZoneName() {
-		return zoneName;
 	}
 
 	void updateToSpawnableTargetPosition() {

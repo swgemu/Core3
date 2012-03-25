@@ -176,16 +176,6 @@ public:
 
 	String getTargetZoneName();
 
-	void addToBountyLock();
-
-	void removeFromBountyLock();
-
-	void removeObservers();
-
-	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
-
-	void addObserverToCreature(unsigned int observerType, CreatureObject* creature);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -277,6 +267,7 @@ public:
 
 	String getTargetZoneName();
 
+private:
 	void addToBountyLock();
 
 	void removeFromBountyLock();
@@ -287,6 +278,7 @@ public:
 
 	void addObserverToCreature(unsigned int observerType, CreatureObject* creature);
 
+public:
 	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
@@ -359,16 +351,6 @@ public:
 	void cancelAllTasks();
 
 	String getTargetZoneName();
-
-	void addToBountyLock();
-
-	void removeFromBountyLock();
-
-	void removeObservers();
-
-	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
-
-	void addObserverToCreature(unsigned int observerType, CreatureObject* creature);
 
 protected:
 	String _param0_spawnTarget__String_;

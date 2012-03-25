@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__,RPC_ADDTOBOUNTYLOCK__,RPC_REMOVEFROMBOUNTYLOCK__,RPC_REMOVEOBSERVERS__,RPC_REMOVEOBSERVER__INT_INT_CREATUREOBJECT_,RPC_ADDOBSERVERTOCREATURE__INT_CREATUREOBJECT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__,};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -262,76 +262,6 @@ String BountyMissionObjective::getTargetZoneName() {
 		return _return_getTargetZoneName;
 	} else
 		return _implementation->getTargetZoneName();
-}
-
-void BountyMissionObjective::addToBountyLock() {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDTOBOUNTYLOCK__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addToBountyLock();
-}
-
-void BountyMissionObjective::removeFromBountyLock() {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMBOUNTYLOCK__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromBountyLock();
-}
-
-void BountyMissionObjective::removeObservers() {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEOBSERVERS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeObservers();
-}
-
-void BountyMissionObjective::removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature) {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEOBSERVER__INT_INT_CREATUREOBJECT_);
-		method.addSignedIntParameter(observerNumber);
-		method.addUnsignedIntParameter(observerType);
-		method.addObjectParameter(creature);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeObserver(observerNumber, observerType, creature);
-}
-
-void BountyMissionObjective::addObserverToCreature(unsigned int observerType, CreatureObject* creature) {
-	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDOBSERVERTOCREATURE__INT_CREATUREOBJECT_);
-		method.addUnsignedIntParameter(observerType);
-		method.addObjectParameter(creature);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addObserverToCreature(observerType, creature);
 }
 
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
@@ -645,21 +575,6 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_GETTARGETZONENAME__:
 		resp->insertAscii(getTargetZoneName());
 		break;
-	case RPC_ADDTOBOUNTYLOCK__:
-		addToBountyLock();
-		break;
-	case RPC_REMOVEFROMBOUNTYLOCK__:
-		removeFromBountyLock();
-		break;
-	case RPC_REMOVEOBSERVERS__:
-		removeObservers();
-		break;
-	case RPC_REMOVEOBSERVER__INT_INT_CREATUREOBJECT_:
-		removeObserver(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ADDOBSERVERTOCREATURE__INT_CREATUREOBJECT_:
-		addObserverToCreature(inv->getUnsignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -729,26 +644,6 @@ void BountyMissionObjectiveAdapter::cancelAllTasks() {
 
 String BountyMissionObjectiveAdapter::getTargetZoneName() {
 	return (static_cast<BountyMissionObjective*>(stub))->getTargetZoneName();
-}
-
-void BountyMissionObjectiveAdapter::addToBountyLock() {
-	(static_cast<BountyMissionObjective*>(stub))->addToBountyLock();
-}
-
-void BountyMissionObjectiveAdapter::removeFromBountyLock() {
-	(static_cast<BountyMissionObjective*>(stub))->removeFromBountyLock();
-}
-
-void BountyMissionObjectiveAdapter::removeObservers() {
-	(static_cast<BountyMissionObjective*>(stub))->removeObservers();
-}
-
-void BountyMissionObjectiveAdapter::removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature) {
-	(static_cast<BountyMissionObjective*>(stub))->removeObserver(observerNumber, observerType, creature);
-}
-
-void BountyMissionObjectiveAdapter::addObserverToCreature(unsigned int observerType, CreatureObject* creature) {
-	(static_cast<BountyMissionObjective*>(stub))->addObserverToCreature(observerType, creature);
 }
 
 /*
