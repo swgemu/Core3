@@ -2211,6 +2211,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isInBountyLockList(object) || targetGhost->isInBountyLockList(_this))
 		return true;
 
+	if (isInBountyMission(_this, object))
+		return true;
+
 	return false;
 }
 

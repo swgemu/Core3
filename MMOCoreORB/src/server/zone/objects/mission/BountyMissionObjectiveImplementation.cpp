@@ -56,6 +56,9 @@ void BountyMissionObjectiveImplementation::activate() {
 				addObserverToCreature(ObserverEventType::DEFENDERDROPPED, playerOwner);
 
 				playerOwner->getZoneServer()->getMissionManager()->addBountyHunterToPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
+
+				//Update aggressive status on target for bh.
+				target->sendPvpStatusTo(playerOwner);
 			} else {
 				missionFailed = true;
 			}
