@@ -77,6 +77,9 @@ class FindTargetTask : public Task, public Logger {
 		Locker locker(player);
 		Locker clocker(droid, player);
 
+		if (droid->getZone() == NULL)
+			return;
+
 		droid->setPosture(CreaturePosture::SITTING, true);
 
 		if (arakyd) {
@@ -344,7 +347,7 @@ public:
 
 		switch(state) {
 		case Init:
-			if (droid == NULL) {
+			if (droid == NULL || droid->getZone() == NULL) {
 				return;
 			}
 			init(player, droid);
