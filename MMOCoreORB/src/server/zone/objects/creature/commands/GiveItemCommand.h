@@ -75,7 +75,16 @@ public:
 		if (!args.hasMoreTokens())
 			return GENERALERROR;
 
-		uint64 targetObjectID = args.getLongToken();
+		uint64 targetObjectID = 0;
+
+		try {
+			targetObjectID = args.getLongToken();
+		} catch (Exception& e) {
+			error("could not get long token in " + arguments.toString());
+			error(e.getMessage());
+
+			return GENERALERROR;
+		}
 
 		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(targetObjectID);
 
