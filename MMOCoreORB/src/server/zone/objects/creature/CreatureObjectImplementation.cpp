@@ -2241,7 +2241,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (ghost->isInBountyLockList(object) || targetGhost->isInBountyLockList(_this))
 		return true;
 
-	if (isInBountyMission(_this, object) || isInBountyMission(object, _this))
+	if (isInBountyMission(_this, object))
 		return true;
 
 	return false;
