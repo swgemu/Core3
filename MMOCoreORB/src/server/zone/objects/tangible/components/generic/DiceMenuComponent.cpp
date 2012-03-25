@@ -19,14 +19,7 @@ void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if (!sceneObject->isDiceObject())
 		return;
 
-	/// Get Dice Template
-	SharedObjectTemplate* templateData =
-			TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
-	if (templateData == NULL) {
-		error("No template for: " + sceneObject->getServerObjectCRC());
-		return;
-	}
-	DiceTemplate* diceTemplate = cast<DiceTemplate*>(templateData);
+	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
 	if (diceTemplate == NULL) {
 		error("No DiceTemplate for: " + sceneObject->getServerObjectCRC());
 		return;
@@ -74,13 +67,7 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 
 	/// Get Dice Template
-	SharedObjectTemplate* templateData =
-			TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
-	if (templateData == NULL) {
-		error("No template for: " + sceneObject->getServerObjectCRC());
-		return 0;
-	}
-	DiceTemplate* diceTemplate = cast<DiceTemplate*>(templateData);
+	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
 	if (diceTemplate == NULL) {
 		error("No DiceTemplate for: " + sceneObject->getServerObjectCRC());
 		return 0;

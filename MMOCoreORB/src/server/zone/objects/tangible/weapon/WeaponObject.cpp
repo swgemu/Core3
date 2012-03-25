@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -237,17 +237,18 @@ void WeaponObject::setPointBlankAccuracy(int value) {
 		_implementation->setPointBlankAccuracy(value);
 }
 
-int WeaponObject::getPointBlankRange() {
+int WeaponObject::getPointBlankRange(bool withPup) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETPOINTBLANKRANGE__);
+		DistributedMethod method(this, RPC_GETPOINTBLANKRANGE__BOOL_);
+		method.addBooleanParameter(withPup);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getPointBlankRange();
+		return _implementation->getPointBlankRange(withPup);
 }
 
 int WeaponObject::getIdealRange(bool withPup) {
@@ -889,6 +890,21 @@ void WeaponObject::decreasePowerupUses(CreatureObject* player) {
 		_implementation->decreasePowerupUses(player);
 }
 
+String WeaponObject::repairAttempt(int repairChance) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
+		method.addSignedIntParameter(repairChance);
+
+		method.executeWithAsciiReturn(_return_repairAttempt);
+		return _return_repairAttempt;
+	} else
+		return _implementation->repairAttempt(repairChance);
+}
+
 DistributedObjectServant* WeaponObject::_getImplementation() {
 
 	_updated = true;
@@ -1393,30 +1409,9 @@ bool WeaponObjectImplementation::isCertified() {
 	return certified;
 }
 
-int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return pointBlankAccuracy + (pointBlankAccuracy * powerupObject.getPowerupStat("pointBlankAccuracy"));
-	return pointBlankAccuracy + (pointBlankAccuracy * powerupObject->getPowerupStat("pointBlankAccuracy"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return pointBlankAccuracy;
-	return pointBlankAccuracy;
-}
-
 void WeaponObjectImplementation::setPointBlankAccuracy(int value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		pointBlankAccuracy = value;
 	pointBlankAccuracy = value;
-}
-
-int WeaponObjectImplementation::getPointBlankRange() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return pointBlankRange;
-	return pointBlankRange;
-}
-
-int WeaponObjectImplementation::getIdealRange(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealRange + (idealRange * powerupObject.getPowerupStat("idealRange"));
-	return idealRange + (idealRange * powerupObject->getPowerupStat("idealRange"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return idealRange;
-	return idealRange;
 }
 
 void WeaponObjectImplementation::setIdealRange(int value) {
@@ -1424,25 +1419,9 @@ void WeaponObjectImplementation::setIdealRange(int value) {
 	idealRange = value;
 }
 
-int WeaponObjectImplementation::getMaxRange(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRange + (maxRange * powerupObject.getPowerupStat("maxRange"));
-	return maxRange + (maxRange * powerupObject->getPowerupStat("maxRange"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxRange;
-	return maxRange;
-}
-
 void WeaponObjectImplementation::setMaxRange(int value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxRange = value;
 	maxRange = value;
-}
-
-int WeaponObjectImplementation::getIdealAccuracy(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return idealAccuracy + (idealAccuracy * powerupObject.getPowerupStat("idealAccuracy"));
-	return idealAccuracy + (idealAccuracy * powerupObject->getPowerupStat("idealAccuracy"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return idealAccuracy;
-	return idealAccuracy;
 }
 
 void WeaponObjectImplementation::setIdealAccuracy(int value) {
@@ -1455,25 +1434,9 @@ int WeaponObjectImplementation::getArmorPiercing() {
 	return armorPiercing;
 }
 
-int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxRangeAccuracy + (maxRangeAccuracy * powerupObject.getPowerupStat("maxRangeAccuracy"));
-	return maxRangeAccuracy + (maxRangeAccuracy * powerupObject->getPowerupStat("maxRangeAccuracy"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxRangeAccuracy;
-	return maxRangeAccuracy;
-}
-
 void WeaponObjectImplementation::setMaxRangeAccuracy(int value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxRangeAccuracy = value;
 	maxRangeAccuracy = value;
-}
-
-float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return attackSpeed - (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
-	return attackSpeed - (attackSpeed * powerupObject->getPowerupStat("attackSpeed"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return attackSpeed;
-	return attackSpeed;
 }
 
 void WeaponObjectImplementation::setAttackSpeed(float value) {
@@ -1481,25 +1444,9 @@ void WeaponObjectImplementation::setAttackSpeed(float value) {
 	attackSpeed = value;
 }
 
-float WeaponObjectImplementation::getMaxDamage(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return maxDamage + (maxDamage * powerupObject.getPowerupStat("maxDamage"));
-	return maxDamage + (maxDamage * powerupObject->getPowerupStat("maxDamage"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return maxDamage;
-	return maxDamage;
-}
-
 void WeaponObjectImplementation::setMaxDamage(float value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxDamage = value;
 	maxDamage = value;
-}
-
-float WeaponObjectImplementation::getMinDamage(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return minDamage + (minDamage * powerupObject.getPowerupStat("minDamage"));
-	return minDamage + (minDamage * powerupObject->getPowerupStat("minDamage"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return minDamage;
-	return minDamage;
 }
 
 void WeaponObjectImplementation::setMinDamage(float value) {
@@ -1507,25 +1454,9 @@ void WeaponObjectImplementation::setMinDamage(float value) {
 	minDamage = value;
 }
 
-float WeaponObjectImplementation::getWoundsRatio(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return woundsRatio + (woundsRatio * powerupObject.getPowerupStat("woundsRatio"));
-	return woundsRatio + (woundsRatio * powerupObject->getPowerupStat("woundsRatio"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return woundsRatio;
-	return woundsRatio;
-}
-
 void WeaponObjectImplementation::setWoundsRatio(float value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		woundsRatio = value;
 	woundsRatio = value;
-}
-
-float WeaponObjectImplementation::getDamageRadius(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return damageRadius + (damageRadius * powerupObject.getPowerupStat("damageRadius"));
-	return damageRadius + (damageRadius * powerupObject->getPowerupStat("damageRadius"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return damageRadius;
-	return damageRadius;
 }
 
 void WeaponObjectImplementation::setDamageRadius(float value) {
@@ -1533,38 +1464,14 @@ void WeaponObjectImplementation::setDamageRadius(float value) {
 	damageRadius = value;
 }
 
-int WeaponObjectImplementation::getHealthAttackCost(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return healthAttackCost - (healthAttackCost * powerupObject.getPowerupStat("healthAttackCost"));
-	return healthAttackCost - (healthAttackCost * powerupObject->getPowerupStat("healthAttackCost"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return healthAttackCost;
-	return healthAttackCost;
-}
-
 void WeaponObjectImplementation::setHealthAttackCost(int value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		healthAttackCost = value;
 	healthAttackCost = value;
 }
 
-int WeaponObjectImplementation::getActionAttackCost(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return actionAttackCost - (actionAttackCost * powerupObject.getPowerupStat("actionAttackCost"));
-	return actionAttackCost - (actionAttackCost * powerupObject->getPowerupStat("actionAttackCost"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return actionAttackCost;
-	return actionAttackCost;
-}
-
 void WeaponObjectImplementation::setActionAttackCost(int value) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		actionAttackCost = value;
 	actionAttackCost = value;
-}
-
-int WeaponObjectImplementation::getMindAttackCost(bool withPup) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
-	if (powerupObject != NULL && withPup)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return mindAttackCost - (mindAttackCost * powerupObject.getPowerupStat("mindAttackCost"));
-	return mindAttackCost - (mindAttackCost * powerupObject->getPowerupStat("mindAttackCost"));
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return mindAttackCost;
-	return mindAttackCost;
 }
 
 void WeaponObjectImplementation::setMindAttackCost(int value) {
@@ -1673,8 +1580,8 @@ void WeaponObjectImplementation::applyPowerup(CreatureObject* player, PowerupObj
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			powerupObject = pup;
 	powerupObject = pup;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			sendAttributeListTo(
-	if (pup->getParent() != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  				pup.getParent().removeObject(pup, null, true);
-	pup->getParent()->removeObject(pup, NULL, true);
+	if (pup->getParent() != NULL)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  				pup.destroyObjectFromWorld(true);
+	pup->destroyObjectFromWorld(true);
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			sendAttributeListTo(player);
 	sendAttributeListTo(player);
 }
@@ -1729,8 +1636,8 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SETPOINTBLANKACCURACY__INT_:
 		setPointBlankAccuracy(inv->getSignedIntParameter());
 		break;
-	case RPC_GETPOINTBLANKRANGE__:
-		resp->insertSignedInt(getPointBlankRange());
+	case RPC_GETPOINTBLANKRANGE__BOOL_:
+		resp->insertSignedInt(getPointBlankRange(inv->getBooleanParameter()));
 		break;
 	case RPC_GETIDEALRANGE__BOOL_:
 		resp->insertSignedInt(getIdealRange(inv->getBooleanParameter()));
@@ -1873,6 +1780,9 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_:
 		decreasePowerupUses(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_REPAIRATTEMPT__INT_:
+		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -1912,8 +1822,8 @@ void WeaponObjectAdapter::setPointBlankAccuracy(int value) {
 	(static_cast<WeaponObject*>(stub))->setPointBlankAccuracy(value);
 }
 
-int WeaponObjectAdapter::getPointBlankRange() {
-	return (static_cast<WeaponObject*>(stub))->getPointBlankRange();
+int WeaponObjectAdapter::getPointBlankRange(bool withPup) {
+	return (static_cast<WeaponObject*>(stub))->getPointBlankRange(withPup);
 }
 
 int WeaponObjectAdapter::getIdealRange(bool withPup) {
@@ -2102,6 +2012,10 @@ PowerupObject* WeaponObjectAdapter::removePowerup() {
 
 void WeaponObjectAdapter::decreasePowerupUses(CreatureObject* player) {
 	(static_cast<WeaponObject*>(stub))->decreasePowerupUses(player);
+}
+
+String WeaponObjectAdapter::repairAttempt(int repairChance) {
+	return (static_cast<WeaponObject*>(stub))->repairAttempt(repairChance);
 }
 
 /*

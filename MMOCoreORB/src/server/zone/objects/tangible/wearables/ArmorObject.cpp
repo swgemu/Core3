@@ -867,8 +867,8 @@ int ArmorObjectImplementation::getRating() {
 }
 
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return kinetic;
-	return kinetic;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return kinetic - getConditionReduction(kinetic);
+	return kinetic - getConditionReduction(kinetic);
 }
 
 void ArmorObjectImplementation::setKinetic(float value) {
@@ -877,8 +877,8 @@ void ArmorObjectImplementation::setKinetic(float value) {
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return energy;
-	return energy;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return energy - getConditionReduction(energy);
+	return energy - getConditionReduction(energy);
 }
 
 void ArmorObjectImplementation::setEnergy(float value) {
@@ -887,8 +887,8 @@ void ArmorObjectImplementation::setEnergy(float value) {
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return electricity;
-	return electricity;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return electricity - getConditionReduction(electricity);
+	return electricity - getConditionReduction(electricity);
 }
 
 void ArmorObjectImplementation::setElectricity(float value) {
@@ -897,8 +897,8 @@ void ArmorObjectImplementation::setElectricity(float value) {
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return stun;
-	return stun;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return stun - getConditionReduction(stun);
+	return stun - getConditionReduction(stun);
 }
 
 void ArmorObjectImplementation::setStun(float value) {
@@ -907,8 +907,8 @@ void ArmorObjectImplementation::setStun(float value) {
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return blast;
-	return blast;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return blast - getConditionReduction(blast);
+	return blast - getConditionReduction(blast);
 }
 
 void ArmorObjectImplementation::setBlast(float value) {
@@ -917,8 +917,8 @@ void ArmorObjectImplementation::setBlast(float value) {
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return heat;
-	return heat;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return heat - getConditionReduction(heat);
+	return heat - getConditionReduction(heat);
 }
 
 void ArmorObjectImplementation::setHeat(float value) {
@@ -927,8 +927,8 @@ void ArmorObjectImplementation::setHeat(float value) {
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return cold;
-	return cold;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return cold - getConditionReduction(cold);
+	return cold - getConditionReduction(cold);
 }
 
 void ArmorObjectImplementation::setCold(float value) {
@@ -937,8 +937,8 @@ void ArmorObjectImplementation::setCold(float value) {
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return acid;
-	return acid;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return acid - getConditionReduction(acid);
+	return acid - getConditionReduction(acid);
 }
 
 void ArmorObjectImplementation::setAcid(float value) {
@@ -947,8 +947,8 @@ void ArmorObjectImplementation::setAcid(float value) {
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return lightSaber;
-	return lightSaber;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return lightSaber - getConditionReduction(lightSaber);
+	return lightSaber - getConditionReduction(lightSaber);
 }
 
 void ArmorObjectImplementation::setLightSaber(float value) {

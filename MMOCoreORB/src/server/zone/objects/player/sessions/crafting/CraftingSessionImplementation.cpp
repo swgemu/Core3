@@ -871,10 +871,8 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	while (tokenizer.hasMoreTokens()) {
 
 		customizationindex = (byte) tokenizer.getIntToken();
-		RangedIntCustomizationVariable* var = cast<RangedIntCustomizationVariable*>(variables.get(customizationindex).get());
 
-		if(var != NULL)
-			customizationname = var->getVariableName();
+		customizationname = variables.elementAt(customizationindex).getKey();
 
 		customizationvalue = (byte) tokenizer.getIntToken();
 

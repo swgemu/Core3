@@ -62,121 +62,121 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 		alm->insertAttribute("armorrating", "@obj_attr_n:armor_pierce_none"); //None
 
 	//Check for special protections
-	if (isSpecial(WeaponObject::KINETIC) && kinetic >= 0.5) {
+	if (isSpecial(WeaponObject::KINETIC) && getKinetic() >= 0.5) {
 		StringBuffer txt;
-		txt << round(kinetic) << "%";
+		txt << round(getKinetic()) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::ENERGY) && energy >= 0.5) {
+	if (isSpecial(WeaponObject::ENERGY) && getEnergy() >= 0.5) {
 		StringBuffer txt;
-		txt << round(energy) << "%";
+		txt << round(getEnergy()) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::ELECTRICITY) && electricity >= 0.5) {
+	if (isSpecial(WeaponObject::ELECTRICITY) && getElectricity() >= 0.5) {
 		StringBuffer txt;
-		txt << round(electricity) << "%";
+		txt << round(getElectricity()) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_electrical",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::STUN) && stun >= 0.5) {
+	if (isSpecial(WeaponObject::STUN) &&  getStun() >= 0.5) {
 		StringBuffer txt;
-		txt << round(stun) << "%";
+		txt << round(getStun()) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::BLAST) && blast >= 0.5) {
+	if (isSpecial(WeaponObject::BLAST) && getBlast() >= 0.5) {
 		StringBuffer txt;
-		txt << round(blast) << "%";
+		txt << round(getBlast()) << "%";
 		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::HEAT) && heat >= 0.5) {
+	if (isSpecial(WeaponObject::HEAT) && getHeat() >= 0.5) {
 		StringBuffer txt;
-		txt << round(heat) << "%";
+		txt << round(getHeat()) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_heat",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::COLD) && cold >= 0.5) {
+	if (isSpecial(WeaponObject::COLD) && getCold() >= 0.5) {
 		StringBuffer txt;
-		txt << round(cold) << "%";
+		txt << round(getCold()) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_cold",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::ACID) && acid >= 0.5) {
+	if (isSpecial(WeaponObject::ACID) && getAcid() >= 0.5) {
 		StringBuffer txt;
-		txt << round(acid) << "%";
+		txt << round(getAcid()) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_elemental_acid",
 				txt.toString());
 	}
-	if (isSpecial(WeaponObject::LIGHTSABER) && lightSaber >= 0.5) {
+	if (isSpecial(WeaponObject::LIGHTSABER) && getLightSaber() >= 0.5) {
 		StringBuffer txt;
-		txt << round(lightSaber) << "%";
+		txt << round(getLightSaber()) << "%";
 		alm->insertAttribute(
 				"cat_armor_special_protection.armor_eff_restraint",
 				txt.toString());
 	}
 	//Check for Effectiveness protections(Normal)
-	if (!isSpecial(WeaponObject::KINETIC) && kinetic >= 0.5) {
+	if (!isSpecial(WeaponObject::KINETIC) && getKinetic() >= 0.5) {
 		StringBuffer txt;
-		txt << round(kinetic) << "%";
+		txt << round(getKinetic()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::ENERGY) && energy >= 0.5) {
+	if (!isSpecial(WeaponObject::ENERGY) && getEnergy() >= 0.5) {
 		StringBuffer txt;
-		txt << round(energy) << "%";
+		txt << round(getEnergy()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::ELECTRICITY) && electricity >= 0.5) {
+	if (!isSpecial(WeaponObject::ELECTRICITY) && getElectricity() >= 0.5) {
 		StringBuffer txt;
-		txt << round(electricity) << "%";
+		txt << round(getElectricity()) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_electrical",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::STUN) && stun >= 0.5) {
+	if (!isSpecial(WeaponObject::STUN) && getStun() >= 0.5) {
 		StringBuffer txt;
-		txt << round(stun) << "%";
+		txt << round(getStun()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::BLAST) && blast >= 0.5) {
+	if (!isSpecial(WeaponObject::BLAST) && getBlast() >= 0.5) {
 		StringBuffer txt;
-		txt << round(blast) << "%";
+		txt << round(getBlast()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::HEAT) && heat >= 0.5) {
+	if (!isSpecial(WeaponObject::HEAT) && getHeat() >= 0.5) {
 		StringBuffer txt;
-		txt << round(heat) << "%";
+		txt << round(getHeat()) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_heat",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::COLD) && cold >= 0.5) {
+	if (!isSpecial(WeaponObject::COLD) && getCold() >= 0.5) {
 		StringBuffer txt;
-		txt << round(cold) << "%";
+		txt << round(getCold()) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_cold",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::ACID) && acid >= 0.5) {
+	if (!isSpecial(WeaponObject::ACID) && getAcid() >= 0.5) {
 		StringBuffer txt;
-		txt << round(acid) << "%";
+		txt << round(getAcid()) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_acid",
 				txt.toString());
 	}
-	if (!isSpecial(WeaponObject::LIGHTSABER) && lightSaber >= 0.5) {
+	if (!isSpecial(WeaponObject::LIGHTSABER) && getLightSaber() >= 0.5) {
 		StringBuffer txt;
-		txt << round(lightSaber) << "%";
+		txt << round(getLightSaber()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint",
 				txt.toString());
 	}
@@ -214,11 +214,11 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 
 	//Encumbrances
-	alm->insertAttribute("cat_armor_encumbrance.health", healthEncumbrance);
+	alm->insertAttribute("cat_armor_encumbrance.health", getHealthEncumbrance());
 
-	alm->insertAttribute("cat_armor_encumbrance.action", actionEncumbrance);
+	alm->insertAttribute("cat_armor_encumbrance.action", getActionEncumbrance());
 
-	alm->insertAttribute("cat_armor_encumbrance.mind", mindEncumbrance);
+	alm->insertAttribute("cat_armor_encumbrance.mind", getMindEncumbrance());
 
 	if (craftersName != "") {
 		alm->insertAttribute("crafter", craftersName);

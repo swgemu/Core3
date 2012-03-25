@@ -90,222 +90,222 @@ void CustomizationVariables::setVariable(uint8 type, uint8 value) {
 }
 
 void CustomizationVariables::setVariable(const String& type, uint8 value) {
-	if (type == "blend_asian_0")
+	if (type.contains("blend_asian_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_ASIAN_0, value);
-	else if (type == "blend_brow_0")
+	else if (type.contains("blend_brow_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_BROW_0, value);
-	else if (type == "blend_brow_1")
+	else if (type.contains("blend_brow_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_BROW_1, value);
-	else if (type == "blend_cheeks_0")
+	else if (type.contains("blend_cheeks_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHEEKS_0, value);
-	else if (type == "blend_cheeks_1")
+	else if (type.contains("blend_cheeks_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHEEKS_1, value);
-	else if (type == "blend_chest_backpack")
+	else if (type.contains("blend_chest_backpack"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHEST_BACKPACK, value);
-	else if (type == "blend_chin_0")
+	else if (type.contains("blend_chin_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHIN_0, value);
-	else if (type == "blend_chin_1")
+	else if (type.contains("blend_chin_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHIN_1, value);
-	else if (type == "blend_chinsize_0")
+	else if (type.contains("blend_chinsize_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHINSIZE_0, value);
-	else if (type == "blend_chinsize_1")
+	else if (type.contains("blend_chinsize_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_CHINSIZE_1, value);
-	else if (type == "blend_ear_0")
+	else if (type.contains("blend_ear_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EAR_0, value);
-	else if (type == "blend_ear_1")
+	else if (type.contains("blend_ear_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EAR_1, value);
-	else if (type == "blend_ears_0")
+	else if (type.contains("blend_ears_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EARS_0, value);
-	else if (type == "blend_ears_1")
+	else if (type.contains("blend_ears_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EARS_1, value);
-	else if (type == "blend_eyedirection_0")
+	else if (type.contains("blend_eyedirection_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYEDIRECTION_0, value);
-	else if (type == "blend_eyedirection_1")
+	else if (type.contains("blend_eyedirection_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYEDIRECTION_1, value);
-	else if (type == "blend_eyeshape_0")
+	else if (type.contains("blend_eyeshape_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_0, value);
-	else if (type == "blend_eyeshape_1")
+	else if (type.contains("blend_eyeshape_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNWER_BLEND_EYESHAPE_1, value);
-	else if (type == "blend_eyesize_0")
+	else if (type.contains("blend_eyesize_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYESIZE_0, value);
-	else if (type == "blend_eyesize_1")
+	else if (type.contains("blend_eyesize_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYESIZE_1, value);
-	else if (type == "blend_eyeslant_0")
+	else if (type.contains("blend_eyeslant_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_EYESLANT_0, value);
-	else if (type == "blend_fat")
+	else if (type.contains("blend_fat"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_FAT, value);
-	else if (type == "blend_flat_chest")
+	else if (type.contains("blend_flat_chest"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_FLAT_CHEST, value);
-	else if (type == "blend_head_0")
+	else if (type.contains("blend_head_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_HEAD_0, value);
-	else if (type == "blend_head_1")
+	else if (type.contains("blend_head_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_HEAD_1, value);
-	else if (type == "blend_headsize_0")
+	else if (type.contains("blend_headsize_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_HEADSIZE_0, value);
-	else if (type == "blend_headsize_1")
+	else if (type.contains("blend_headsize_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_HEADSIZE_1, value);
-	else if (type == "blend_jacket")
+	else if (type.contains("blend_jacket"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JACKET, value);
-	else if (type == "blend_jacket_bandolier")
+	else if (type.contains("blend_jacket_bandolier"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JACKET_BANDOLIER, value);
-	else if (type == "blend_jacket_belt")
+	else if (type.contains("blend_jacket_belt"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JACKET_BELT, value);
-	else if (type == "blend_jacket_robe")
+	else if (type.contains("blend_jacket_robe"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JACKET_ROBE, value);
-	else if (type == "blend_jaw_0")
+	else if (type.contains("blend_jaw_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JAW_0, value);
-	else if (type == "blend_jaw_1")
+	else if (type.contains("blend_jaw_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_JAW_1, value);
-	else if (type == "blend_lipfullness_0")
+	else if (type.contains("blend_lipfullness_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPFULLNESS_0, value);
-	else if (type == "blend_lipfullness_1")
+	else if (type.contains("blend_lipfullness_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPFULLNESS_1, value);
-	else if (type == "blend_lipfulness_0")
+	else if (type.contains("blend_lipfulness_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPFULNESS_0, value);
-	else if (type == "blend_lipfulness_1")
+	else if (type.contains("blend_lipfulness_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPFULNESS_1, value);
-	else if (type == "blend_lipwidth_0")
+	else if (type.contains("blend_lipwidth_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPWIDTH_0, value);
-	else if (type == "blend_lipwidth_1")
+	else if (type.contains("blend_lipwidth_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_LIPWIDTH_1, value);
-	else if (type == "blend_muscle")
+	else if (type.contains("blend_muscle"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_MUSCLE, value);
-	else if (type == "blend_nosedepth_0")
+	else if (type.contains("blend_nosedepth_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSEDEPTH_0, value);
-	else if (type == "blend_nosedepth_1")
+	else if (type.contains("blend_nosedepth_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSEDEPTH_1, value);
-	else if (type == "blend_noselength_0")
+	else if (type.contains("blend_noselength_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSELENGTH_0, value);
-	else if (type == "blend_noselength_1")
+	else if (type.contains("blend_noselength_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSELENGTH_1, value);
-	else if (type == "blend_nosesize_0")
+	else if (type.contains("blend_nosesize_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSESIZE_0, value);
-	else if (type == "blend_nosesize_1")
+	else if (type.contains("blend_nosesize_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSESIZE_1, value);
-	else if (type == "blend_nosewidth_0")
+	else if (type.contains("blend_nosewidth_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSEWIDTH_0, value);
-	else if (type == "blend_nosewidth_1")
+	else if (type.contains("blend_nosewidth_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_NOSEWIDTH_1, value);
-	else if (type == "blend_robe")
+	else if (type.contains("blend_robe"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_ROBE, value);
-	else if (type == "blend_robe_bandolier")
+	else if (type.contains("blend_robe_bandolier"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_ROBE_BANDOLIER, value);
-	else if (type == "blend_robe_belt")
+	else if (type.contains("blend_robe_belt"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_ROBE_BELT, value);
-	else if (type == "blend_sensor_0")
+	else if (type.contains("blend_sensor_0"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_SENSOR_0, value);
-	else if (type == "blend_sensor_1")
+	else if (type.contains("blend_sensor_1"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_SENSOR_1, value);
-	else if (type == "blend_skinny")
+	else if (type.contains("blend_skinny"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_BLEND_SKINNY, value);
-	else if (type == "index_accel_max")
+	else if (type.contains("index_accel_max"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_ACCEL_MAX, value);
-	else if (type == "index_accel_min")
+	else if (type.contains("index_accel_min"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_ACCEL_MIN, value);
-	else if (type == "index_age")
+	else if (type.contains("index_age"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_AGE, value);
-	else if (type == "index_auto_level")
+	else if (type.contains("index_auto_level"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_AUTO_LEVEL, value);
-	else if (type == "index_banking")
+	else if (type.contains("index_banking"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_BANKING, value);
-	else if (type == "index_color_0")  {
+	else if (type.contains("index_color_0"))  {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_0, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_0, value);
-	} else if (type == "index_color_1") {
+	} else if (type.contains("index_color_1")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_1, value);
-	} else if (type == "index_color_107")
+	} else if (type.contains("index_color_107"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_107, value);
-	else if (type == "index_color_2") {
+	else if (type.contains("index_color_2")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_2, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_2, value);
-	} else if (type == "index_color_3") {
+	} else if (type.contains("index_color_3")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_3, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_3, value);
-	} else if (type == "index_color_4") {
+	} else if (type.contains("index_color_4")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_4, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_4, value);
-	} else if (type == "index_color_5")
+	} else if (type.contains("index_color_5"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_5, value);
-	else if (type == "index_color_blade")
+	else if (type.contains("index_color_blade"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_BLADE, value);
-	else if (type == "index_color_eye")
+	else if (type.contains("index_color_eye"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_EYE, value);
-	else if (type == "index_color_eyebrow")
+	else if (type.contains("index_color_eyebrow"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_EYEBROW, value);
-	else if (type == "index_color_eyeshadow")
+	else if (type.contains("index_color_eyeshadow"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_EYESHADOW, value);
-	else if (type == "index_color_facial_hair")
+	else if (type.contains("index_color_facial_hair"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_FACIAL_HAIR, value);
-	else if (type == "index_color_fur")
+	else if (type.contains("index_color_fur"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_FUR, value);
-	else if (type == "index_color_hair")
+	else if (type.contains("index_color_hair"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_HAIR, value);
-	else if (type == "index_color_lips")
+	else if (type.contains("index_color_lips"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_LIPS, value);
-	else if (type == "index_color_pattern") {
+	else if (type.contains("index_color_pattern")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_PATTERN, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_PATTERN, value);
-	} else if (type == "index_color_patterns")
+	} else if (type.contains("index_color_patterns"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_PATTERNS, value);
-	else if (type == "index_color_skin") {
+	else if (type.contains("index_color_skin")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_SKIN, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_COLOR_SKIN, value);
-	} else if (type == "index_color_tat")
+	} else if (type.contains("index_color_tat"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_TAT, value);
-	else if (type == "index_color_tattoo")
+	else if (type.contains("index_color_tattoo"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_TATTOO, value);
-	else if (type == "index_color_test")
+	else if (type.contains("index_color_test"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_TEST, value);
-	else if (type == "index_damp_height")
+	else if (type.contains("index_damp_height"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_DAMP_HEIGHT, value);
-	else if (type == "index_damp_pitch")
+	else if (type.contains("index_damp_pitch"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_DAMP_PITCH, value);
-	else if (type == "index_damp_roll")
+	else if (type.contains("index_damp_roll"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_DAMP_ROLL, value);
-	else if (type == "index_decel")
+	else if (type.contains("index_decel"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_DECEL, value);
-	else if (type == "index_glide")
+	else if (type.contains("index_glide"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_GLIDE, value);
-	else if (type == "index_hover_height")
+	else if (type.contains("index_hover_height"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_HOVER_HEIGHT, value);
-	else if (type == "index_patterns")
+	else if (type.contains("index_patterns"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_PATTERNS, value);
-	else if (type == "index_slope_mod")
+	else if (type.contains("index_slope_mod"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_SLOPE_MOD, value);
-	else if (type == "index_speed_max")
+	else if (type.contains("index_speed_max"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_SPEED_MAX, value);
-	else if (type == "index_style_beard") {
+	else if (type.contains("index_style_beard")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_BEARD, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_STYLE_BEARD, value);
-	} else if (type == "index_style_beard_2") {
+	} else if (type.contains("index_style_beard_2")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_BEARD_2, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_STYLE_BEARD_2, value);
-	} else if (type == "index_style_eyebrow") {
+	} else if (type.contains("index_style_eyebrow")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_EYEBROW, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_STYLE_EYEBROW, value);
-	} else if (type == "index_style_eyebrows")
+	} else if (type.contains("index_style_eyebrows"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_EYEBROWS, value);
-	else if (type == "index_style_eyeshadow")
+	else if (type.contains("index_style_eyeshadow"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_EYESHADOW, value);
-	else if (type == "index_style_freckles")
+	else if (type.contains("index_style_freckles"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_FRECKLES, value);
-	else if (type == "index_style_hair") {
+	else if (type.contains("index_style_hair")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_HAIR, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_STYLE_HAIR, value);
-	} else if (type == "index_style_tattoo")
+	} else if (type.contains("index_style_tattoo"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_STYLE_TATTOO, value);
-	else if (type == "index_texture") {
+	else if (type.contains("index_texture")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_TEXTURE, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_TEXTURE, value);
-	} else if (type == "index_texture_1") {
+	} else if (type.contains("index_texture_1")) {
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_TEXTURE_1, value);
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_INDEX_TEXTURE_1, value);
-	} else if (type == "index_turn_rate_max")
+	} else if (type.contains("index_turn_rate_max"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_TURN_RATE_MAX, value);
-	else if (type == "index_turn_rate_min")
+	else if (type.contains("index_turn_rate_min"))
 		setVariable(CustomizationVariableTypes::PRIVATE_INDEX_TURN_RATE_MIN, value);
-	else if (type == "muscle_fat")
+	else if (type.contains("muscle_fat"))
 		setVariable(CustomizationVariableTypes::SHARED_OWNER_MUSCLE_FAT, value);
 	else {
 

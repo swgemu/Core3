@@ -66,6 +66,12 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
+#include "server/zone/objects/tangible/tool/repair/RepairTool.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+
 
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -370,6 +376,22 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 void TangibleObjectImplementation::decreaseUseCount(CreatureObject* player) {
 	setUseCount(useCount - 1);
+}
+
+void TangibleObjectImplementation::setMaxCondition(int maxCond, bool notifyClient) {
+	if (maxCondition == maxCond)
+		return;
+
+	maxCondition = maxCond;
+
+	if (!notifyClient)
+		return;
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	dtano3->updateMaxCondition();
+	dtano3->close();
+
+	broadcastMessage(dtano3, true);
 }
 
 void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notifyClient) {
@@ -759,4 +781,145 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 
 		targetObject->addSkillMod(entry.getKey(), entry.getValue() * -1);
 	}
+}
+
+bool TangibleObjectImplementation::canRepair(CreatureObject* player) {
+	if(player == NULL || !isASubChildOf(player))
+		return false;
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	if(inventory == NULL)
+		return false;
+
+	for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> item = inventory->getContainerObject(i);
+		if(item->isRepairTool()) {
+			Reference<RepairToolTemplate*> repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
+			if (repairTemplate == NULL) {
+				error("No RepairToolTemplate for: " + item->getServerObjectCRC());
+			}
+			if(repairTemplate->getRepairType() & getGameObjectType()) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void TangibleObjectImplementation::repair(CreatureObject* player) {
+	if(!isASubChildOf(player))
+		return;
+
+	if (getConditionDamage() == 0) {
+		player->sendSystemMessage("That item is not in need of repair.");
+		return;
+	}
+
+	//Condition is unrepairable
+	if ((getMaxCondition() - getConditionDamage()) <= 0) {
+		StringIdChatParameter cantrepair("error_message", "sys_repair_unrepairable");
+		cantrepair.setTT(getDisplayedName());
+		player->sendSystemMessage(cantrepair); //%TT's condition is beyond repair even for your skills.
+		return;
+	}
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	if(inventory == NULL)
+		return;
+
+	ManagedReference<RepairTool*> repairTool = NULL;
+	Reference<RepairToolTemplate*> repairTemplate = NULL;
+
+	for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> item = inventory->getContainerObject(i);
+		if(item->isRepairTool()) {
+			repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
+
+			if (repairTemplate == NULL) {
+				error("No RepairToolTemplate for: " + item->getServerObjectCRC());
+				return;
+			}
+
+			if(repairTemplate->getRepairType() & getGameObjectType()) {
+				repairTool = cast<RepairTool*>(item.get());
+				break;
+			}
+			repairTemplate = NULL;
+		}
+	}
+
+	if(repairTool == NULL)
+		return;
+
+	/// Luck Roll + Profession Mod(25) + Luck Tapes
+	/// + Station Mod - BF
+
+	/// Luck Roll
+	int repairChance = System::random(100);
+
+	/// Profession Bonus
+	if(player->hasSkill(repairTemplate->getSkill()))
+		repairChance += 25;
+
+	/// Get Skill mods
+	repairChance += player->getSkillMod(repairTemplate->getSkillMod()) / 2;
+	repairChance += player->getSkillMod("crafting_repair") / 2;
+	repairChance += player->getSkillMod("force_repair_bonus");
+
+	/// use tool quality to lower chances if bad tool
+	float quality = (repairTool->getQuality() / 100.f);
+	quality += ((100.f - quality) / 2);
+	repairChance *= quality;
+
+	/// Increase if near station
+	if(player->getNearbyCraftingStation(repairTemplate->getStationType()) != NULL) {
+		repairChance += 10;
+	}
+
+	/// Subtract battle fatigue
+	repairChance -= player->getShockWounds();
+
+
+	String result = repairAttempt(repairChance);
+	repairTool->destroyObjectFromWorld(true);
+
+	player->sendSystemMessage(result);
+}
+
+CraftingStation* TangibleObjectImplementation::getNearbyCraftingStation(int type) {
+
+	ManagedReference<Zone*> zone = getZone();
+
+	if (zone == NULL)
+		return NULL;
+
+	ZoneServer* server = zone->getZoneServer();
+
+	if (server == NULL)
+		return NULL;
+
+	ManagedReference<CraftingStation*> station = NULL;
+
+	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
+
+		if (scno->isCraftingStation() && isInRange(scno, 7.0f)) {
+
+			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
+
+			if (station == NULL)
+				continue;
+
+			if (type == station->getStationType() || (type
+					== CraftingTool::JEDI && station->getStationType()
+					== CraftingTool::WEAPON)) {
+
+				return station;
+			}
+		}
+	}
+
+	return NULL;
 }

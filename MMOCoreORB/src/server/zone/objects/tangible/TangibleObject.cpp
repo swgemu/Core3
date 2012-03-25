@@ -24,11 +24,13 @@
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+
 /*
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,RPC_GETNEARBYCRAFTINGSTATION__INT_};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -570,18 +572,19 @@ int TangibleObject::getMaxCondition() {
 		return _implementation->getMaxCondition();
 }
 
-void TangibleObject::setMaxCondition(int maxCond) {
+void TangibleObject::setMaxCondition(int maxCond, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETMAXCONDITION__INT_);
+		DistributedMethod method(this, RPC_SETMAXCONDITION__INT_BOOL_);
 		method.addSignedIntParameter(maxCond);
+		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setMaxCondition(maxCond);
+		_implementation->setMaxCondition(maxCond, notifyClient);
 }
 
 int TangibleObject::getConditionDamage() {
@@ -1006,6 +1009,76 @@ FactoryCrate* TangibleObject::createFactoryCrate(bool insertSelf) {
 		return static_cast<FactoryCrate*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->createFactoryCrate(insertSelf);
+}
+
+bool TangibleObject::canRepair(CreatureObject* player) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANREPAIR__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canRepair(player);
+}
+
+void TangibleObject::repair(CreatureObject* player) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REPAIR__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->repair(player);
+}
+
+String TangibleObject::repairAttempt(int repairChance) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
+		method.addSignedIntParameter(repairChance);
+
+		method.executeWithAsciiReturn(_return_repairAttempt);
+		return _return_repairAttempt;
+	} else
+		return _implementation->repairAttempt(repairChance);
+}
+
+bool TangibleObject::isBroken() {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBROKEN__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBroken();
+}
+
+CraftingStation* TangibleObject::getNearbyCraftingStation(int type) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNEARBYCRAFTINGSTATION__INT_);
+		method.addSignedIntParameter(type);
+
+		return static_cast<CraftingStation*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getNearbyCraftingStation(type);
 }
 
 DistributedObjectServant* TangibleObject::_getImplementation() {
@@ -1455,11 +1528,6 @@ int TangibleObjectImplementation::getMaxCondition() {
 	return maxCondition;
 }
 
-void TangibleObjectImplementation::setMaxCondition(int maxCond) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		maxCondition = maxCond;
-	maxCondition = maxCond;
-}
-
 int TangibleObjectImplementation::getConditionDamage() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage;
 	return conditionDamage;
@@ -1621,6 +1689,31 @@ ThreatMap* TangibleObjectImplementation::getThreatMap() {
 	return threatMap;
 }
 
+String TangibleObjectImplementation::repairAttempt(int repairChance) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return "Repairing is not implemented for this item";
+	return "Repairing is not implemented for this item";
+}
+
+bool TangibleObjectImplementation::isBroken() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return maxCondition < 2;
+	return maxCondition < 2;
+}
+
+float TangibleObjectImplementation::getConditionReduction(float value) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		float 
+	if (isBroken())	// server/zone/objects/tangible/TangibleObject.idl():  			return 0.95 * value;
+	return 0.95 * value;
+	// server/zone/objects/tangible/TangibleObject.idl():  		float ratio = (float)getConditionDamage() / (float)getMaxCondition();
+	float ratio = (float) getConditionDamage() / (float) getMaxCondition();
+	// server/zone/objects/tangible/TangibleObject.idl():  		float 
+	if (ratio < 75)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		float reductionPercent = (ratio - 75.0) / 25.0;
+	float reductionPercent = (ratio - 75.0) / 25.0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return reductionPercent * value;
+	return reductionPercent * value;
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -1731,8 +1824,8 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETMAXCONDITION__:
 		resp->insertSignedInt(getMaxCondition());
 		break;
-	case RPC_SETMAXCONDITION__INT_:
-		setMaxCondition(inv->getSignedIntParameter());
+	case RPC_SETMAXCONDITION__INT_BOOL_:
+		setMaxCondition(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_GETCONDITIONDAMAGE__:
 		resp->insertSignedInt(getConditionDamage());
@@ -1823,6 +1916,21 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_CREATEFACTORYCRATE__BOOL_:
 		resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
+		break;
+	case RPC_CANREPAIR__CREATUREOBJECT_:
+		resp->insertBoolean(canRepair(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_REPAIR__CREATUREOBJECT_:
+		repair(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REPAIRATTEMPT__INT_:
+		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		break;
+	case RPC_ISBROKEN__:
+		resp->insertBoolean(isBroken());
+		break;
+	case RPC_GETNEARBYCRAFTINGSTATION__INT_:
+		resp->insertLong(getNearbyCraftingStation(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1963,8 +2071,8 @@ int TangibleObjectAdapter::getMaxCondition() {
 	return (static_cast<TangibleObject*>(stub))->getMaxCondition();
 }
 
-void TangibleObjectAdapter::setMaxCondition(int maxCond) {
-	(static_cast<TangibleObject*>(stub))->setMaxCondition(maxCond);
+void TangibleObjectAdapter::setMaxCondition(int maxCond, bool notifyClient) {
+	(static_cast<TangibleObject*>(stub))->setMaxCondition(maxCond, notifyClient);
 }
 
 int TangibleObjectAdapter::getConditionDamage() {
@@ -2085,6 +2193,26 @@ bool TangibleObjectAdapter::applyComponentStats(ManufactureSchematic* manufactur
 
 FactoryCrate* TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
 	return (static_cast<TangibleObject*>(stub))->createFactoryCrate(insertSelf);
+}
+
+bool TangibleObjectAdapter::canRepair(CreatureObject* player) {
+	return (static_cast<TangibleObject*>(stub))->canRepair(player);
+}
+
+void TangibleObjectAdapter::repair(CreatureObject* player) {
+	(static_cast<TangibleObject*>(stub))->repair(player);
+}
+
+String TangibleObjectAdapter::repairAttempt(int repairChance) {
+	return (static_cast<TangibleObject*>(stub))->repairAttempt(repairChance);
+}
+
+bool TangibleObjectAdapter::isBroken() {
+	return (static_cast<TangibleObject*>(stub))->isBroken();
+}
+
+CraftingStation* TangibleObjectAdapter::getNearbyCraftingStation(int type) {
+	return (static_cast<TangibleObject*>(stub))->getNearbyCraftingStation(type);
 }
 
 /*

@@ -239,6 +239,130 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 }
 
+int WeaponObjectImplementation::getPointBlankAccuracy(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return pointBlankAccuracy + (abs(pointBlankAccuracy) * powerupObject->getPowerupStat("pointBlankAccuracy"));
+
+	return pointBlankAccuracy;
+}
+
+int WeaponObjectImplementation::getPointBlankRange(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return pointBlankRange + (abs(pointBlankRange) * powerupObject->getPowerupStat("pointBlankRange"));
+
+	return pointBlankRange;
+}
+
+int WeaponObjectImplementation::getIdealRange(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return idealRange + (abs(idealRange) * powerupObject->getPowerupStat("idealRange"));
+
+	return idealRange;
+}
+
+int WeaponObjectImplementation::getMaxRange(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return maxRange + (abs(maxRange) * powerupObject->getPowerupStat("maxRange"));
+
+	return maxRange;
+}
+
+int WeaponObjectImplementation::getIdealAccuracy(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return idealAccuracy + (abs(idealAccuracy) * powerupObject->getPowerupStat("idealAccuracy"));
+
+	return idealAccuracy;
+}
+
+
+int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return maxRangeAccuracy + (abs(maxRangeAccuracy) * powerupObject->getPowerupStat("maxRangeAccuracy"));
+
+	return maxRangeAccuracy;
+}
+
+float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return attackSpeed -
+				(abs(attackSpeed) *
+				powerupObject->getPowerupStat("attackSpeed")) -
+				getConditionReduction(attackSpeed);
+
+	return attackSpeed - getConditionReduction(attackSpeed);
+}
+
+
+float WeaponObjectImplementation::getMaxDamage(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return maxDamage +
+				(abs(maxDamage) *
+				powerupObject->getPowerupStat("maxDamage")) -
+				getConditionReduction(maxDamage);
+
+	return maxDamage - getConditionReduction(maxDamage);
+}
+
+float WeaponObjectImplementation::getMinDamage(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return minDamage +
+				(abs(minDamage) *
+				powerupObject->getPowerupStat("minDamage")) -
+				getConditionReduction(minDamage);
+
+	return minDamage - getConditionReduction(minDamage);
+}
+
+float WeaponObjectImplementation::getWoundsRatio(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return woundsRatio + (abs(woundsRatio) * powerupObject->getPowerupStat("woundsRatio"));
+
+	return woundsRatio;
+}
+
+float WeaponObjectImplementation::getDamageRadius(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return damageRadius + (abs(damageRadius) * powerupObject->getPowerupStat("damageRadius"));
+
+	return damageRadius;
+}
+
+
+int WeaponObjectImplementation::getHealthAttackCost(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return healthAttackCost - (abs(healthAttackCost) * powerupObject->getPowerupStat("healthAttackCost"));
+
+	return healthAttackCost;
+}
+
+int WeaponObjectImplementation::getActionAttackCost(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return actionAttackCost - (abs(actionAttackCost) * powerupObject->getPowerupStat("actionAttackCost"));
+
+	return actionAttackCost;
+}
+
+int WeaponObjectImplementation::getMindAttackCost(bool withPup) {
+
+	if(powerupObject != NULL && withPup)
+		return mindAttackCost - (abs(mindAttackCost) * powerupObject->getPowerupStat("mindAttackCost"));
+
+	return mindAttackCost;
+}
+
 void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Incoming Values:					Ranges:
@@ -339,4 +463,27 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 		}
 		sendAttributeListTo(player);
 	}
+}
+
+String WeaponObjectImplementation::repairAttempt(int repairChance) {
+
+	String message = "@error_message:";
+
+	if(repairChance < 25) {
+		message += "sys_repair_failed";
+		setMaxCondition(1, true);
+		setConditionDamage(0, true);
+	} else if(repairChance < 50) {
+		message += "sys_repair_imperfect";
+		setMaxCondition(getMaxCondition() / 2, true);
+		setConditionDamage(getMaxCondition() / 2, true);
+	} else if(repairChance < 75) {
+		setMaxCondition(getMaxCondition() / 1.5, true);
+		setConditionDamage(getMaxCondition() / 1.5, true);
+	} else {
+		setConditionDamage(0, true);
+		message += "sys_repair_perfect";
+	}
+
+	return message;
 }

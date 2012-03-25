@@ -136,7 +136,7 @@ public:
 			}
 
 			if(craftingStation == NULL) {
-				craftingStation = findCraftingStation(creature, craftingTool->getToolType());
+				craftingStation = creature->getNearbyCraftingStation(craftingTool->getToolType());
 			}
 
 			Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
@@ -162,42 +162,6 @@ public:
 
 		return SUCCESS;
 	}
-
-	CraftingStation* findCraftingStation(CreatureObject* player, int toolType) {
-
-		Zone* zone = player->getZone();
-
-		if (zone == NULL)
-			return NULL;
-
-		ZoneServer* server = player->getZoneServer();
-
-		ManagedReference<CraftingStation*> station = NULL;
-
-		SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = player->getCloseObjects();
-
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
-
-			if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
-
-				station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
-
-				if (station == NULL)
-					continue;
-
-				if (toolType == station->getStationType() || (toolType
-						== CraftingTool::JEDI && station->getStationType()
-						== CraftingTool::WEAPON)) {
-
-					return station;
-				}
-			}
-		}
-
-		return NULL;
-	}
-
 };
 
 #endif //REQUESTCRAFTINGSESSIONCOMMAND_H_

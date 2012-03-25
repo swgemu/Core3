@@ -211,7 +211,7 @@ public:
 
 	void setPointBlankAccuracy(int value);
 
-	int getPointBlankRange();
+	int getPointBlankRange(bool withPup = true);
 
 	int getIdealRange(bool withPup = true);
 
@@ -307,6 +307,8 @@ public:
 
 	void decreasePowerupUses(CreatureObject* player);
 
+	String repairAttempt(int repairChance);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -317,6 +319,7 @@ protected:
 	virtual ~WeaponObject();
 
 	String _return_getXpType;
+	String _return_repairAttempt;
 
 	friend class WeaponObjectHelper;
 };
@@ -472,7 +475,7 @@ public:
 
 	void setPointBlankAccuracy(int value);
 
-	int getPointBlankRange();
+	int getPointBlankRange(bool withPup = true);
 
 	int getIdealRange(bool withPup = true);
 
@@ -568,6 +571,8 @@ public:
 
 	void decreasePowerupUses(CreatureObject* player);
 
+	String repairAttempt(int repairChance);
+
 	WeakReference<WeaponObject*> _this;
 
 	operator const WeaponObject*();
@@ -627,7 +632,7 @@ public:
 
 	void setPointBlankAccuracy(int value);
 
-	int getPointBlankRange();
+	int getPointBlankRange(bool withPup);
 
 	int getIdealRange(bool withPup);
 
@@ -722,6 +727,8 @@ public:
 	PowerupObject* removePowerup();
 
 	void decreasePowerupUses(CreatureObject* player);
+
+	String repairAttempt(int repairChance);
 
 };
 

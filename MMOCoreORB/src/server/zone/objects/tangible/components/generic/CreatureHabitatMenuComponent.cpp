@@ -77,14 +77,8 @@ int CreatureHabitatMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			return 0;
 		}
 
-		/// Get LiveSampleTemplate
-		SharedObjectTemplate* templateData =
-				TemplateManager::instance()->getTemplate(creatures->getServerObjectCRC());
-		if (templateData == NULL) {
-			error("No template for: " + creatures->getServerObjectCRC());
-			return 0;
-		}
-		LiveSampleTemplate* liveSampleTemplate = cast<LiveSampleTemplate*>(templateData);
+
+		Reference<LiveSampleTemplate*> liveSampleTemplate = cast<LiveSampleTemplate*>(creatures->getObjectTemplate());
 		if (liveSampleTemplate == NULL) {
 			error("No LiveSampleTemplate for: " + creatures->getServerObjectCRC());
 			return 0;

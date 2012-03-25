@@ -4,6 +4,8 @@
 
 #include "ClothingObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/Zone.h"
 
 /*

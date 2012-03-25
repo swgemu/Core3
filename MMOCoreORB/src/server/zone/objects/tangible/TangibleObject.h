@@ -149,6 +149,22 @@ class WeaponObject;
 
 using namespace server::zone::objects::tangible::weapon;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace tool {
+
+class CraftingStation;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
 #include "server/zone/objects/tangible/variables/SkillModMap.h"
 
 #include "server/zone/objects/creature/CreatureFlag.h"
@@ -262,7 +278,7 @@ public:
 
 	int getMaxCondition();
 
-	void setMaxCondition(int maxCond);
+	void setMaxCondition(int maxCond, bool notifyClient = true);
 
 	int getConditionDamage();
 
@@ -328,6 +344,16 @@ public:
 
 	FactoryCrate* createFactoryCrate(bool insertSelf = false);
 
+	bool canRepair(CreatureObject* player);
+
+	void repair(CreatureObject* player);
+
+	String repairAttempt(int repairChance);
+
+	bool isBroken();
+
+	CraftingStation* getNearbyCraftingStation(int type);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -339,6 +365,7 @@ protected:
 
 	String _return_getCraftersName;
 	String _return_getSerialNumber;
+	String _return_repairAttempt;
 
 	friend class TangibleObjectHelper;
 };
@@ -476,7 +503,7 @@ public:
 
 	int getMaxCondition();
 
-	void setMaxCondition(int maxCond);
+	void setMaxCondition(int maxCond, bool notifyClient = true);
 
 	int getConditionDamage();
 
@@ -541,6 +568,20 @@ public:
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
 	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+
+	bool canRepair(CreatureObject* player);
+
+	void repair(CreatureObject* player);
+
+	virtual String repairAttempt(int repairChance);
+
+	bool isBroken();
+
+protected:
+	float getConditionReduction(float value);
+
+public:
+	CraftingStation* getNearbyCraftingStation(int type);
 
 	WeakReference<TangibleObject*> _this;
 
@@ -651,7 +692,7 @@ public:
 
 	int getMaxCondition();
 
-	void setMaxCondition(int maxCond);
+	void setMaxCondition(int maxCond, bool notifyClient);
 
 	int getConditionDamage();
 
@@ -712,6 +753,16 @@ public:
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
 	FactoryCrate* createFactoryCrate(bool insertSelf);
+
+	bool canRepair(CreatureObject* player);
+
+	void repair(CreatureObject* player);
+
+	String repairAttempt(int repairChance);
+
+	bool isBroken();
+
+	CraftingStation* getNearbyCraftingStation(int type);
 
 protected:
 	String _param0_addSkillMod__String_long_bool_;

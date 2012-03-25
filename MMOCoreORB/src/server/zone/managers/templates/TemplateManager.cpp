@@ -77,6 +77,7 @@
 #include "server/zone/templates/tangible/PowerupTemplate.h"
 #include "server/zone/templates/tangible/LiveSampleTemplate.h"
 #include "server/zone/templates/tangible/CreatureHabitatTemplate.h"
+#include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
@@ -443,6 +444,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DiceTemplate>(SharedObjectTemplate::DICE);
 	templateFactory.registerObject<LiveSampleTemplate>(SharedObjectTemplate::LIVESAMPLE);
 	templateFactory.registerObject<CreatureHabitatTemplate>(SharedObjectTemplate::CREATUREHABITAT);
+	templateFactory.registerObject<RepairToolTemplate>(SharedObjectTemplate::REPAIRTOOL);
 }
 
 void TemplateManager::registerFunctions() {
@@ -574,6 +576,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DICE", SharedObjectTemplate::DICE);
 	luaTemplatesInstance->setGlobalInt("LIVESAMPLE", SharedObjectTemplate::LIVESAMPLE);
 	luaTemplatesInstance->setGlobalInt("CREATUREHABITAT", SharedObjectTemplate::CREATUREHABITAT);
+	luaTemplatesInstance->setGlobalInt("REPAIRTOOL", SharedObjectTemplate::REPAIRTOOL);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

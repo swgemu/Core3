@@ -50,7 +50,7 @@ object_tangible_powerup_weapon_ranged_muzzle = object_tangible_powerup_weapon_sh
 	baseName = "Muzzle",
 
 	primary = {
-		{"pointBlankAccuracy", "Scattered", "cat_pup.pup_wpn_range_attack_mod_zero"}, 
+		{"idealAccuracy", "Scattered", "cat_pup.pup_wpn_range_attack_mod_mid"}, 
 		{"mindAttackCost", "Muffled", "cat_pup.pup_wpn_attack_cost_mind"}, 
   		{"woundsRatio", "Polished", "cat_pup.pup_wpn_wound_chance"},
 		{"maxDamage", "Tuned", "cat_pup.pup_wpn_damage_max"}

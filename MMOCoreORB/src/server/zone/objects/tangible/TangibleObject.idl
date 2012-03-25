@@ -67,6 +67,7 @@ include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.objects.tangible.tool.CraftingStation;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -385,9 +386,7 @@ class TangibleObject extends SceneObject {
 		return maxCondition;
 	}
 	
-	public void setMaxCondition(int maxCond) {
-		maxCondition = maxCond;
-	}
+	public native void setMaxCondition(int maxCond, boolean notifyClient = true);
 	
 	public int getConditionDamage() {
 		return conditionDamage;
@@ -533,6 +532,33 @@ class TangibleObject extends SceneObject {
 	 * Creates a factory crate for this object, can insert this object or a clone
 	 */
 	public native FactoryCrate createFactoryCrate(boolean insertSelf = false);
+
+	public native boolean canRepair(CreatureObject player);
+	
+	public native void repair(CreatureObject player);
+
+	public abstract string repairAttempt(int repairChance) {
+		return "Repairing is not implemented for this item";
+	}
+	
+	public boolean isBroken() {
+		return maxCondition < 2;
+	}
+	
+	protected float getConditionReduction(float value) {
+		if(isBroken())
+			return 0.95 * value;
+		
+		float ratio = (float)getConditionDamage() / (float)getMaxCondition();
+		if(ratio < 75)
+			return 0;
+		
+		float reductionPercent = (ratio - 75.0) / 25.0;
+			
+		return reductionPercent * value;
+	}
+	
+	public native CraftingStation getNearbyCraftingStation(int type);
 
 }
 

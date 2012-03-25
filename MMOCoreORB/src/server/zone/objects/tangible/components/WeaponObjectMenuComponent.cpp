@@ -30,6 +30,10 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		menuResponse->addRadialMenuItem(71, 3, "@powerup:mnu_remove_powerup"); // Remove Powerup
 	}
 
+	if(weapon->canRepair(player)) {
+		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
+	}
+
 }
 
 int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -62,6 +66,13 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	}
 
+	if(selectedID == 70) {
+
+		weapon->repair(player);
+
+		return 1;
+	}
+
 	if(selectedID == 71) {
 
 		ManagedReference<PowerupObject*> pup = weapon->removePowerup();
@@ -85,4 +96,3 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
-

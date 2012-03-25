@@ -240,6 +240,7 @@ core3_IDLS =	server/zone/objects/player/sessions/TradeSession.cpp \
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
 				server/zone/objects/tangible/tool/smuggler/SlicingTool.cpp \
 				server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.cpp \
+				server/zone/objects/tangible/tool/repair/RepairTool.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
@@ -311,6 +312,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/TrapMenuComponent.cpp \
+		server/zone/objects/tangible/components/WearableObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/DiceMenuComponent.cpp \
 		server/zone/objects/tangible/components/LairMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/LootSchematicMenuComponent.cpp \
@@ -461,6 +463,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/tool/smuggler/SlicingToolImplementation.cpp \
 		server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnifeImplementation.cpp \
+		server/zone/objects/tangible/tool/repair/RepairToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \

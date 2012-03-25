@@ -10,13 +10,11 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 /*
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,RPC_REPAIRATTEMPT__INT_};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -170,6 +168,21 @@ void WearableObject::setMaxSockets(int sockets) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setMaxSockets(sockets);
+}
+
+String WearableObject::repairAttempt(int repairChance) {
+	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
+		method.addSignedIntParameter(repairChance);
+
+		method.executeWithAsciiReturn(_return_repairAttempt);
+		return _return_repairAttempt;
+	} else
+		return _implementation->repairAttempt(repairChance);
 }
 
 DistributedObjectServant* WearableObject::_getImplementation() {
@@ -408,6 +421,9 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETMAXSOCKETS__INT_:
 		setMaxSockets(inv->getSignedIntParameter());
 		break;
+	case RPC_REPAIRATTEMPT__INT_:
+		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -449,6 +465,10 @@ int WearableObjectAdapter::socketsLeft() {
 
 void WearableObjectAdapter::setMaxSockets(int sockets) {
 	(static_cast<WearableObject*>(stub))->setMaxSockets(sockets);
+}
+
+String WearableObjectAdapter::repairAttempt(int repairChance) {
+	return (static_cast<WearableObject*>(stub))->repairAttempt(repairChance);
 }
 
 /*

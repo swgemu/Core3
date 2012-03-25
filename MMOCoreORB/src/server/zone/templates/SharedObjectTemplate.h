@@ -169,6 +169,7 @@ public:
 	const static int DICE = 0x4000030;
 	const static int LIVESAMPLE = 0x4000031;
 	const static int CREATUREHABITAT = 0x4000032;
+	const static int REPAIRTOOL = 0x4000033;
 
 public:
 	SharedObjectTemplate();
@@ -624,6 +625,10 @@ public:
 	virtual bool isCreatureHabitatTemplate() {
 		return false;
 	}
+
+	virtual bool isRepairToolTemplate() {
+    	return false;
+    }
 
 };
 

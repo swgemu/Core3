@@ -79,6 +79,8 @@ float PowerupObjectImplementation::getWeaponStat(const String& attrib, WeaponObj
 		return weapon->getActionAttackCost(withPup);
 	else if(attrib == "mindAttackCost")
 		return weapon->getMindAttackCost(withPup);
+	else if(attrib == "pointBlankRange")
+		return weapon->getPointBlankRange(withPup);
 
 	return 0;
 }

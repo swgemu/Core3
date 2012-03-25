@@ -49,20 +49,6 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
@@ -107,6 +93,8 @@ public:
 
 	void setMaxSockets(int sockets);
 
+	String repairAttempt(int repairChance);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -115,6 +103,8 @@ protected:
 	WearableObject(DummyConstructorParameter* param);
 
 	virtual ~WearableObject();
+
+	String _return_repairAttempt;
 
 	friend class WearableObjectHelper;
 };
@@ -176,6 +166,8 @@ private:
 	void generateSockets(CraftingValues* craftingValues);
 
 public:
+	String repairAttempt(int repairChance);
+
 	WeakReference<WearableObject*> _this;
 
 	operator const WearableObject*();
@@ -236,6 +228,8 @@ public:
 	int socketsLeft();
 
 	void setMaxSockets(int sockets);
+
+	String repairAttempt(int repairChance);
 
 };
 

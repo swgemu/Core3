@@ -51,6 +51,7 @@
 #include "server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
+#include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -117,4 +118,6 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
+	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
+
 }

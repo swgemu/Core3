@@ -232,53 +232,27 @@ class WeaponObject extends TangibleObject {
 		return certified;
 	}
 	
-	public int getPointBlankAccuracy(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return pointBlankAccuracy + (pointBlankAccuracy * powerupObject.getPowerupStat("pointBlankAccuracy"));
-		
-		return pointBlankAccuracy;
-	}
+	public native int getPointBlankAccuracy(boolean withPup = true);
 	
 	public void setPointBlankAccuracy(int value) {
 		pointBlankAccuracy = value;
 	}
 	
-	public int getPointBlankRange() {
-		return pointBlankRange;
-	}
+	public native int getPointBlankRange(boolean withPup = true);
 	
-	public int getIdealRange(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return idealRange + (idealRange * powerupObject.getPowerupStat("idealRange"));
-		
-		return idealRange;
-	}
+	public native int getIdealRange(boolean withPup = true);
 	
 	public void setIdealRange(int value) {
 		idealRange = value;
 	}
 	
-	public int getMaxRange(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return maxRange + (maxRange * powerupObject.getPowerupStat("maxRange"));
-		
-		return maxRange;
-	}
+	public native int getMaxRange(boolean withPup = true);
 	
 	public void setMaxRange(int value) {
 		maxRange = value;
 	}
 	
-	public int getIdealAccuracy(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup)  
-			return idealAccuracy + (idealAccuracy * powerupObject.getPowerupStat("idealAccuracy"));
-		
-		return idealAccuracy;
-	}
+	public native int getIdealAccuracy(boolean withPup = true);
 	
 	public void setIdealAccuracy(int value) {
 		idealAccuracy = value;
@@ -288,109 +262,55 @@ class WeaponObject extends TangibleObject {
 		return armorPiercing;
 	}
 	
-	public int getMaxRangeAccuracy(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return maxRangeAccuracy + (maxRangeAccuracy * powerupObject.getPowerupStat("maxRangeAccuracy"));
-		
-		return maxRangeAccuracy;
-	}
+	public native int getMaxRangeAccuracy(boolean withPup = true);
 	
 	public void setMaxRangeAccuracy(int value) {
 		maxRangeAccuracy = value;
 	}
 	
-	public float getAttackSpeed(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return attackSpeed - (attackSpeed * powerupObject.getPowerupStat("attackSpeed"));
-
-		return attackSpeed;
-	}
+	public native float getAttackSpeed(boolean withPup = true);
 	
 	public void setAttackSpeed(float value) {
 		attackSpeed = value;
 	}
 	
-	public float getMaxDamage(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return maxDamage + (maxDamage * powerupObject.getPowerupStat("maxDamage"));
-		
-		return maxDamage;
-	}
+	public native float getMaxDamage(boolean withPup = true);
 	
 	public void setMaxDamage(float value) {
 		maxDamage = value;
 	}
 	
-	public float getMinDamage(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return minDamage + (minDamage * powerupObject.getPowerupStat("minDamage"));
-		
-		return minDamage;
-	}
+	public native float getMinDamage(boolean withPup = true);
 	
 	public void setMinDamage(float value) {
 		minDamage = value;
 	}
 	
-	public float getWoundsRatio(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup)
-			return woundsRatio + (woundsRatio * powerupObject.getPowerupStat("woundsRatio"));
-	
-		return woundsRatio;
-	}
+	public native float getWoundsRatio(boolean withPup = true);
 	
 	public void setWoundsRatio(float value) {
 		woundsRatio = value;
 	}
 	
-	public float getDamageRadius(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup)
-			return damageRadius + (damageRadius * powerupObject.getPowerupStat("damageRadius"));
-	
-		return damageRadius;
-	}
+	public native float getDamageRadius(boolean withPup = true);
 	
 	public void setDamageRadius(float value) {
 		damageRadius = value;
 	}
 	
-	public int getHealthAttackCost(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup)
-			return healthAttackCost - (healthAttackCost * powerupObject.getPowerupStat("healthAttackCost"));
-
-		return healthAttackCost;
-	}
+	public native int getHealthAttackCost(boolean withPup = true);
 	
 	public void setHealthAttackCost(int value) {
 		healthAttackCost = value;
 	}
 	
-	public int getActionAttackCost(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return actionAttackCost - (actionAttackCost * powerupObject.getPowerupStat("actionAttackCost"));
-		
-		return actionAttackCost;
-	}
+	public native int getActionAttackCost(boolean withPup = true);
 	
 	public void setActionAttackCost(int value) {
 		actionAttackCost = value;
 	}
 	
-	public int getMindAttackCost(boolean withPup = true) {
-		
-		if(powerupObject != null && withPup) 
-			return mindAttackCost - (mindAttackCost * powerupObject.getPowerupStat("mindAttackCost"));
-		
-		return mindAttackCost;
-	}
+	public native int getMindAttackCost(boolean withPup = true);
 	
 	public void setMindAttackCost(int value) {
 		mindAttackCost = value;
@@ -477,7 +397,7 @@ class WeaponObject extends TangibleObject {
 			powerupObject = pup;
 			
 			if(pup.getParent() != null)
-				pup.getParent().removeObject(pup, null, true);
+				pup.destroyObjectFromWorld(true);
 		
 			sendAttributeListTo(player);
 		}
@@ -494,4 +414,6 @@ class WeaponObject extends TangibleObject {
 	
 	public native void decreasePowerupUses(CreatureObject player);
 
+	public native string repairAttempt(int repairChance);
+	
 }

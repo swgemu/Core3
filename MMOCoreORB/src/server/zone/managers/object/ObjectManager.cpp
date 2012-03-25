@@ -120,7 +120,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::SHIELDGENERATOR);
 
 	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::TOOL);
-	objectFactory.registerObject<ToolTangibleObject>(SceneObjectType::REPAIRTOOL);
+	objectFactory.registerObject<RepairTool>(SceneObjectType::REPAIRTOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObjectType::CRAFTINGTOOL);
 	objectFactory.registerObject<SurveyTool>(SceneObjectType::SURVEYTOOL);
 

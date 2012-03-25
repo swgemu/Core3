@@ -168,7 +168,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getKinetic() {
-		return kinetic;
+		return kinetic - getConditionReduction(kinetic);
 	}
 	
 	public void setKinetic(float value) {
@@ -176,7 +176,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getEnergy() {
-		return energy;
+		return energy - getConditionReduction(energy);
 	}
 	
 	public void setEnergy(float value) {
@@ -184,7 +184,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getElectricity() {
-		return electricity;
+		return electricity - getConditionReduction(electricity);
 	}
 	
 	public void setElectricity(float value) {
@@ -192,7 +192,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getStun() {
-		return stun;
+		return stun - getConditionReduction(stun);
 	}
 	
 	public void setStun(float value) {
@@ -200,7 +200,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getBlast() {
-		return blast;
+		return blast - getConditionReduction(blast);
 	}
 	
 	public void setBlast(float value) {
@@ -208,7 +208,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getHeat() {
-		return heat;
+		return heat - getConditionReduction(heat);
 	}
 	
 	public void setHeat(float value) {
@@ -216,7 +216,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getCold() {
-		return cold;
+		return cold - getConditionReduction(cold);
 	}
 	
 	public void setCold(float value) {
@@ -224,7 +224,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getAcid() {
-		return acid;
+		return acid - getConditionReduction(acid);
 	}
 	
 	public void setAcid(float value) {
@@ -232,7 +232,7 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getLightSaber() {
-		return lightSaber;
+		return lightSaber - getConditionReduction(lightSaber);
 	}
 	
 	public void setLightSaber(float value) {

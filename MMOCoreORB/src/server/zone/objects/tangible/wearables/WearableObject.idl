@@ -52,7 +52,6 @@ include server.zone.objects.tangible.attachment.Attachment;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 
 class WearableObject extends TangibleObject {	
 	protected int socketCount;
@@ -113,4 +112,6 @@ class WearableObject extends TangibleObject {
 	
 	private native void generateSockets(CraftingValues craftingValues);
 
+	public native string repairAttempt(int repairChance);
+	
 }

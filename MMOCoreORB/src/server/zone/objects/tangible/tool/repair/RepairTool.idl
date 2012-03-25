@@ -42,27 +42,49 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.wearables;
+package server.zone.objects.tangible.tool.repair;
 
-import server.zone.objects.tangible.wearables.WearableObject;
-import server.zone.objects.creature.CreatureObject;
-import engine.lua.LuaObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
 
-class ClothingObject extends WearableObject {
-	public ClothingObject() {		
-		Logger.setLoggingName("ClothingObject");
+class RepairTool extends TangibleObject {
+
+	protected float quality;
+	
+	public RepairTool() {
+		setLoggingName("RepairTool");
 	}
 	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-		
-		Logger.setLoggingName("ClothingObject");
-	}
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	@local
-	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		super.updateCraftingValues(values, firstUpdate);
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+	
+	public float getQuality() {
+		return quality;
 	}
 }
