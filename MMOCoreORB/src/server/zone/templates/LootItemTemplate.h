@@ -49,8 +49,12 @@ public:
 					String property = row.getStringAt(1);
 					float min = row.getFloatAt(2);
 					float max = row.getFloatAt(3);
+					float prec = 0;
 
-					craftingValues.addExperimentalProperty(property, property, min, max, 0, false);
+					if (row.getTableSize() > 3)
+						prec = row.getFloatAt(4);
+
+					craftingValues.addExperimentalProperty(property, property, min, max, prec, false);
 					craftingValues.setMaxPercentage(property, 1.0f);
 				}
 
