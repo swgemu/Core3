@@ -21,7 +21,7 @@ void DiceMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
 	if (diceTemplate == NULL) {
-		error("No DiceTemplate for: " + sceneObject->getServerObjectCRC());
+		error("No DiceTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
 
@@ -69,7 +69,7 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	/// Get Dice Template
 	Reference<DiceTemplate*> diceTemplate = cast<DiceTemplate*>(sceneObject->getObjectTemplate());
 	if (diceTemplate == NULL) {
-		error("No DiceTemplate for: " + sceneObject->getServerObjectCRC());
+		error("No DiceTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return 0;
 	}
 

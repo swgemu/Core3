@@ -784,25 +784,31 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 }
 
 bool TangibleObjectImplementation::canRepair(CreatureObject* player) {
-	if(player == NULL || !isASubChildOf(player))
+	if (player == NULL || !isASubChildOf(player))
 		return false;
 
 	SceneObject* inventory = player->getSlottedObject("inventory");
-	if(inventory == NULL)
+
+	if (inventory == NULL)
 		return false;
 
-	for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> item = inventory->getContainerObject(i);
 		if(item->isRepairTool()) {
 			Reference<RepairToolTemplate*> repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
+
 			if (repairTemplate == NULL) {
-				error("No RepairToolTemplate for: " + item->getServerObjectCRC());
+				error("No RepairToolTemplate for: " + String::valueOf(item->getServerObjectCRC()));
+
+				continue;
 			}
-			if(repairTemplate->getRepairType() & getGameObjectType()) {
+
+			if (repairTemplate->getRepairType() & getGameObjectType()) {
 				return true;
 			}
 		}
 	}
+
 	return false;
 }
 
@@ -836,7 +842,7 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 			repairTemplate = cast<RepairToolTemplate*>(item->getObjectTemplate());
 
 			if (repairTemplate == NULL) {
-				error("No RepairToolTemplate for: " + item->getServerObjectCRC());
+				error("No RepairToolTemplate for: " + String::valueOf(item->getServerObjectCRC()));
 				return;
 			}
 

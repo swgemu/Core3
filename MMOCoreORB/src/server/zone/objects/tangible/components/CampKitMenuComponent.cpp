@@ -50,12 +50,12 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(
 						sceneObject->getServerObjectCRC());
 		if (templateData == NULL) {
-			error("No template for: " + sceneObject->getServerObjectCRC());
+			error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
 		CampKitTemplate* campKitData = cast<CampKitTemplate*> (templateData);
 		if (campKitData == NULL) {
-			error("No CampKitTemplate for: " + sceneObject->getServerObjectCRC());
+			error("No CampKitTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
 

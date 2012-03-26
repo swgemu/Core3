@@ -28,14 +28,14 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 			TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
 
 	if(templateData == NULL) {
-		error("No template for: " + sceneObject->getServerObjectCRC());
+		error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
 
 	LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
 
 	if (schematicData == NULL) {
-		error("No LootSchematicTemplate for: " + sceneObject->getServerObjectCRC());
+		error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 		return;
 	}
 
@@ -63,14 +63,14 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
 
 		if(templateData == NULL) {
-			error("No template for: " + sceneObject->getServerObjectCRC());
+			error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
 
 		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
 
 		if (schematicData == NULL) {
-			error("No LootSchematicTemplate for: " + sceneObject->getServerObjectCRC());
+			error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
 

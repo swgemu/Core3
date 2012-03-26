@@ -80,7 +80,7 @@ int CreatureHabitatMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 		Reference<LiveSampleTemplate*> liveSampleTemplate = cast<LiveSampleTemplate*>(creatures->getObjectTemplate());
 		if (liveSampleTemplate == NULL) {
-			error("No LiveSampleTemplate for: " + creatures->getServerObjectCRC());
+			error("No LiveSampleTemplate for: " + String::valueOf(creatures->getServerObjectCRC()));
 			return 0;
 		}
 

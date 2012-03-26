@@ -110,13 +110,13 @@ public:
 					TemplateManager::instance()->getTemplate(
 							trap->getServerObjectCRC());
 			if (templateData == NULL) {
-				error("No template for: " + trap->getServerObjectCRC());
+				error("No template for: " + String::valueOf(trap->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
 			TrapTemplate* trapData = cast<TrapTemplate*> (templateData);
 			if (trapData == NULL) {
-				error("No TrapTemplate for: " + trap->getServerObjectCRC());
+				error("No TrapTemplate for: " + String::valueOf(trap->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 

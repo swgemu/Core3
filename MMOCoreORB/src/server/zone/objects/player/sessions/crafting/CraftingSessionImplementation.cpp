@@ -557,7 +557,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	SharedTangibleObjectTemplate* templateData =
 			cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
 	if (templateData == NULL) {
-		error("No template for: " + prototype->getServerObjectCRC());
+		error("No template for: " + String::valueOf(prototype->getServerObjectCRC()));
 		return;
 	}
 

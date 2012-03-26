@@ -120,13 +120,13 @@ public:
 					TemplateManager::instance()->getTemplate(
 							item->getServerObjectCRC());
 			if (templateData == NULL) {
-				error("No template for: " + item->getServerObjectCRC());
+				error("No template for: " + String::valueOf(item->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
 			CamoKitTemplate* camoKitData = cast<CamoKitTemplate*> (templateData);
 			if (camoKitData == NULL) {
-				error("No camoKitData for: " + camoKitData->getServerObjectCRC());
+				error("No camoKitData for: " + String::valueOf(camoKitData->getServerObjectCRC()));
 				return GENERALERROR;
 			}
 
