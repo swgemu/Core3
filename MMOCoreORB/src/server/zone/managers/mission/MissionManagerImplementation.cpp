@@ -255,7 +255,9 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 		itemNumber = (itemNumber + 1) % craftingMissionItems.size();
 	}
 
-	mission->setTemplateStrings(craftingMissionItems.get(itemNumber), craftingMissionItems.get(itemNumber).replaceFirst("draft_schematic/item/", "tangible/mission/"));
+	String itemTemplate = craftingMissionItems.get(itemNumber).replaceFirst("draft_schematic/item/", "tangible/mission/");
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/quest_item/attunement_grid.iff").hashCode()));
+	mission->setTemplateStrings(craftingMissionItems.get(itemNumber), itemTemplate);
 
 	ManagedReference<CraftingMissionObjective*> objective = new CraftingMissionObjective(mission);
 
@@ -987,6 +989,8 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 		fileName = "mission/mission_npc_crafting_neutral_easy";
 		break;
 	}
+
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/quest_item/attunement_grid.iff").hashCode()));
 
 	int missionNumber = System::random(maximumMissionNumber) + 1;
 	mission->setMissionTitle(fileName, "m" + String::valueOf(missionNumber) + "t");
