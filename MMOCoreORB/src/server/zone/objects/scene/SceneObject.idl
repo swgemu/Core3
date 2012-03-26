@@ -105,34 +105,21 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient AttributeListComponent attributeListComponent;
 	protected transient ContainerComponent containerComponent;
 	
+	protected transient SharedObjectTemplate templateObject;
+	
+	@dereferenced
+	protected ZoneReference zone;
+	
 	@dereferenced
 	protected DataObjectComponentReference dataObjectComponent; 
 	
 	protected transient Matrix4 transformForCollisionMatrix;
-	
-	@dereferenced
-	protected VectorMap<string, SceneObject> slottedObjects;
-
-	@dereferenced
-	protected VectorMap<unsigned long, SceneObject> containerObjects;
-	
+		
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	
 	@dereferenced
 	protected ContainerPermissions containerPermissions;
-
-	@dereferenced
-	protected ZoneReference zone;
-	
-	@weakReference
-	protected transient CityRegion cityRegion;
-	
-	@dereferenced
-	protected SortedVector<ActiveArea> activeAreas;
-	
-	@dereferenced
-	protected SortedVector<SceneObject> childObjects;
 
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
@@ -162,7 +149,21 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	protected unicode customName;
 	
-	protected transient SharedObjectTemplate templateObject;
+	@weakReference
+	protected transient CityRegion cityRegion;
+	
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> childObjects;
+	
+	@dereferenced
+	protected VectorMap<string, SceneObject> slottedObjects;
+
+	@dereferenced
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
+
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.

@@ -816,27 +816,19 @@ protected:
 
 	Reference<ContainerComponent* > containerComponent;
 
+	Reference<SharedObjectTemplate* > templateObject;
+
+	ZoneReference zone;
+
 	DataObjectComponentReference dataObjectComponent;
 
 	Reference<Matrix4* > transformForCollisionMatrix;
-
-	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
-
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
 	unsigned int containerType;
 
 	unsigned int containerVolumeLimit;
 
 	ContainerPermissions containerPermissions;
-
-	ZoneReference zone;
-
-	ManagedWeakReference<CityRegion* > cityRegion;
-
-	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-
-	SortedVector<ManagedReference<SceneObject* > > childObjects;
 
 	unsigned int serverObjectCRC;
 
@@ -866,7 +858,15 @@ protected:
 
 	UnicodeString customName;
 
-	Reference<SharedObjectTemplate* > templateObject;
+	ManagedWeakReference<CityRegion* > cityRegion;
+
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	SortedVector<ManagedReference<SceneObject* > > childObjects;
+
+	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
+
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
 public:
 	SceneObjectImplementation();
