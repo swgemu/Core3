@@ -388,10 +388,10 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 
 	if (zone != NULL) {
 		zone->transferObject(_this, -1, true);
-	} /* else if (parent != NULL && getParent()->isCellObject()) {
+	} else if (parent != NULL && getParent()->isCellObject()) {
 		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
 
-	} */
+	}
 }
 
 void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
