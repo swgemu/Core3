@@ -190,7 +190,7 @@ class SuiBankTransferBoxAdapter : public SuiBoxAdapter {
 public:
 	SuiBankTransferBoxAdapter(SuiBankTransferBox* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void addCash(int cash);
 

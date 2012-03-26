@@ -191,7 +191,7 @@ class TradeSessionAdapter : public FacadeAdapter {
 public:
 	TradeSessionAdapter(TradeSession* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool getAcceptedTrade();
 

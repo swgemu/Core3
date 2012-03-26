@@ -24,9 +24,11 @@ CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) 
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CityRegion");
 }
 
 CityRegion::CityRegion(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("CityRegion");
 }
 
 CityRegion::~CityRegion() {
@@ -1413,11 +1415,15 @@ void CityRegionImplementation::setCityHall(StructureObject* building) {
  *	CityRegionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CityRegionAdapter::CityRegionAdapter(CityRegion* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -1580,10 +1586,8 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setCityHall(static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CityRegionAdapter::initialize() {

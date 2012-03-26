@@ -16,9 +16,11 @@ SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oi
 	SuiListBoxMenuItemImplementation* _implementation = new SuiListBoxMenuItemImplementation(name, oid);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiListBoxMenuItem");
 }
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("SuiListBoxMenuItem");
 }
 
 SuiListBoxMenuItem::~SuiListBoxMenuItem() {
@@ -227,11 +229,15 @@ String SuiListBoxMenuItemImplementation::getOptionName() {
  *	SuiListBoxMenuItemAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiListBoxMenuItemAdapter::SuiListBoxMenuItemAdapter(SuiListBoxMenuItem* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETOBJECTID__:
@@ -241,10 +247,8 @@ Packet* SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertAscii(getOptionName());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 unsigned long long SuiListBoxMenuItemAdapter::getObjectID() {

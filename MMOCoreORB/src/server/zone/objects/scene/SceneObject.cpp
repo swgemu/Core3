@@ -40,9 +40,11 @@ SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SceneObject");
 }
 
 SceneObject::SceneObject(DummyConstructorParameter* param) : QuadTreeEntry(param) {
+	_setClassName("SceneObject");
 }
 
 SceneObject::~SceneObject() {
@@ -4714,11 +4716,15 @@ Matrix4* SceneObjectImplementation::getTransformForCollisionMatrix() {
  *	SceneObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SceneObjectAdapter::SceneObjectAdapter(SceneObject* obj) : QuadTreeEntryAdapter(obj) {
 }
 
-Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -5358,10 +5364,8 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertAscii(getDisplayedName());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SceneObjectAdapter::finalize() {

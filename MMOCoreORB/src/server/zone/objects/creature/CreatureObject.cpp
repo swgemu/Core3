@@ -46,9 +46,11 @@ CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::ins
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CreatureObject");
 }
 
 CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("CreatureObject");
 }
 
 CreatureObject::~CreatureObject() {
@@ -5540,11 +5542,15 @@ void CreatureObjectImplementation::setCurrentWind(byte value) {
  *	CreatureObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CreatureObjectAdapter::CreatureObjectAdapter(CreatureObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZEMEMBERS__:
@@ -6328,10 +6334,8 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCurrentWind(inv->getByteParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CreatureObjectAdapter::initializeMembers() {

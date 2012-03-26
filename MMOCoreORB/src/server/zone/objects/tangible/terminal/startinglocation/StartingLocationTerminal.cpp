@@ -20,9 +20,11 @@ StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructor
 	StartingLocationTerminalImplementation* _implementation = new StartingLocationTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StartingLocationTerminal");
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("StartingLocationTerminal");
 }
 
 StartingLocationTerminal::~StartingLocationTerminal() {
@@ -228,11 +230,15 @@ void StartingLocationTerminalImplementation::setAuthorizationState(bool state) {
  *	StartingLocationTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StartingLocationTerminalAdapter::StartingLocationTerminalAdapter(StartingLocationTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StartingLocationTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -245,10 +251,8 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		setAuthorizationState(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StartingLocationTerminalAdapter::initializeTransientMembers() {

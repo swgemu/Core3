@@ -287,7 +287,7 @@ class AttachmentAdapter : public TangibleObjectAdapter {
 public:
 	AttachmentAdapter(Attachment* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

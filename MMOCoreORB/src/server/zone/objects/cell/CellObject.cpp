@@ -18,9 +18,11 @@ CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CellObject");
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("CellObject");
 }
 
 CellObject::~CellObject() {
@@ -370,11 +372,15 @@ bool CellObjectImplementation::isCellObject() {
  *	CellObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CellObjectAdapter::CellObjectAdapter(CellObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYLOADFROMDATABASE__:
@@ -411,10 +417,8 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isCellObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CellObjectAdapter::notifyLoadFromDatabase() {

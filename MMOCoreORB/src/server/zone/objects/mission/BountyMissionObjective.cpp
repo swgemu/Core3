@@ -28,9 +28,11 @@ BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : Mission
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("BountyMissionObjective");
 }
 
 BountyMissionObjective::BountyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("BountyMissionObjective");
 }
 
 BountyMissionObjective::~BountyMissionObjective() {
@@ -522,11 +524,15 @@ void BountyMissionObjectiveImplementation::setArakydDroid(SceneObject* droid) {
  *	BountyMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 BountyMissionObjectiveAdapter::BountyMissionObjectiveAdapter(BountyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -578,10 +584,8 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		resp->insertAscii(getTargetZoneName());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void BountyMissionObjectiveAdapter::finalize() {

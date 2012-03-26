@@ -254,7 +254,7 @@ class DynamicSpawnAreaAdapter : public SpawnAreaAdapter {
 public:
 	DynamicSpawnAreaAdapter(DynamicSpawnArea* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void registerObservers();
 

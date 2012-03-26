@@ -16,9 +16,11 @@ TravelBuildingObject::TravelBuildingObject() : BuildingObject(DummyConstructorPa
 	TravelBuildingObjectImplementation* _implementation = new TravelBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TravelBuildingObject");
 }
 
 TravelBuildingObject::TravelBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
+	_setClassName("TravelBuildingObject");
 }
 
 TravelBuildingObject::~TravelBuildingObject() {
@@ -162,18 +164,20 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation() {
  *	TravelBuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TravelBuildingObjectAdapter::TravelBuildingObjectAdapter(TravelBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
-Packet* TravelBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TravelBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

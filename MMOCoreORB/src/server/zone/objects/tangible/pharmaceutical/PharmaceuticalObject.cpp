@@ -28,9 +28,11 @@ PharmaceuticalObject::PharmaceuticalObject() : TangibleObject(DummyConstructorPa
 	PharmaceuticalObjectImplementation* _implementation = new PharmaceuticalObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PharmaceuticalObject");
 }
 
 PharmaceuticalObject::PharmaceuticalObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("PharmaceuticalObject");
 }
 
 PharmaceuticalObject::~PharmaceuticalObject() {
@@ -406,11 +408,15 @@ bool PharmaceuticalObjectImplementation::isRevivePack() {
  *	PharmaceuticalObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PharmaceuticalObjectAdapter::PharmaceuticalObjectAdapter(PharmaceuticalObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETMEDICINEUSEREQUIRED__:
@@ -450,10 +456,8 @@ Packet* PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertBoolean(isRevivePack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int PharmaceuticalObjectAdapter::getMedicineUseRequired() {

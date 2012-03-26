@@ -22,9 +22,11 @@ DurationBuff::DurationBuff(CreatureObject* creo, unsigned int buffcrc, float dur
 	DurationBuffImplementation* _implementation = new DurationBuffImplementation(creo, buffcrc, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DurationBuff");
 }
 
 DurationBuff::DurationBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("DurationBuff");
 }
 
 DurationBuff::~DurationBuff() {
@@ -185,21 +187,23 @@ void DurationBuffImplementation::activate(bool applyModifiers) {
  *	DurationBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DurationBuffAdapter::DurationBuffAdapter(DurationBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DurationBuffAdapter::activate(bool applyModifiers) {

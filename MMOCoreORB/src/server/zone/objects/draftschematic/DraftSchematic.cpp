@@ -22,9 +22,11 @@ DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::i
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DraftSchematic");
 }
 
 DraftSchematic::DraftSchematic(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("DraftSchematic");
 }
 
 DraftSchematic::~DraftSchematic() {
@@ -532,11 +534,15 @@ String DraftSchematicImplementation::getTemplate(int i) {
  *	DraftSchematicAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DraftSchematicAdapter::DraftSchematicAdapter(DraftSchematic* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -606,10 +612,8 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DraftSchematicAdapter::initializeTransientMembers() {

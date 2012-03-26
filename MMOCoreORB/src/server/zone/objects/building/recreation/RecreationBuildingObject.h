@@ -137,7 +137,7 @@ class RecreationBuildingObjectAdapter : public BuildingObjectAdapter {
 public:
 	RecreationBuildingObjectAdapter(RecreationBuildingObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isRecreationalBuildingObject();
 

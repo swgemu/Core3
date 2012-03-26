@@ -73,7 +73,8 @@ public:
 				//We need to check how many characters this account has online already.
 				//We also need to store a reference to the Account object on the zoneSessionClient.
 
-				//ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
+				ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
+				System::out << "account found: " << account->getUsername();
 
 				//if (account == NULL)
 					//return;

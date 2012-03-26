@@ -26,9 +26,11 @@ TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance(
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TravelTerminal");
 }
 
 TravelTerminal::TravelTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("TravelTerminal");
 }
 
 TravelTerminal::~TravelTerminal() {
@@ -242,11 +244,15 @@ PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
  *	TravelTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TravelTerminalAdapter::TravelTerminalAdapter(TravelTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -259,10 +265,8 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TravelTerminalAdapter::initializeTransientMembers() {

@@ -238,7 +238,7 @@ class PersistentMessageAdapter : public ManagedObjectAdapter {
 public:
 	PersistentMessageAdapter(PersistentMessage* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendTo(CreatureObject* player, bool sendBody);
 

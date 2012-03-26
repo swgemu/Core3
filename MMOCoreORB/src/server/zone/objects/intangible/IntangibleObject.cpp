@@ -18,9 +18,11 @@ IntangibleObject::IntangibleObject() : SceneObject(DummyConstructorParameter::in
 	IntangibleObjectImplementation* _implementation = new IntangibleObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("IntangibleObject");
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("IntangibleObject");
 }
 
 IntangibleObject::~IntangibleObject() {
@@ -278,11 +280,15 @@ unsigned int IntangibleObjectImplementation::getStatus() {
  *	IntangibleObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 IntangibleObjectAdapter::IntangibleObjectAdapter(IntangibleObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -304,10 +310,8 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertInt(getStatus());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void IntangibleObjectAdapter::finalize() {

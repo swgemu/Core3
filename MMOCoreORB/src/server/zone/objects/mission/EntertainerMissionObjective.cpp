@@ -28,9 +28,11 @@ EntertainerMissionObjective::EntertainerMissionObjective(MissionObject* mission)
 	EntertainerMissionObjectiveImplementation* _implementation = new EntertainerMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("EntertainerMissionObjective");
 }
 
 EntertainerMissionObjective::EntertainerMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("EntertainerMissionObjective");
 }
 
 EntertainerMissionObjective::~EntertainerMissionObjective() {
@@ -339,11 +341,15 @@ void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
  *	EntertainerMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 EntertainerMissionObjectiveAdapter::EntertainerMissionObjectiveAdapter(EntertainerMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -371,10 +377,8 @@ Packet* EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distribu
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void EntertainerMissionObjectiveAdapter::finalize() {

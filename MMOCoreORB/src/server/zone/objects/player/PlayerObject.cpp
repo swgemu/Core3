@@ -48,9 +48,11 @@ PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::insta
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PlayerObject");
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("PlayerObject");
 }
 
 PlayerObject::~PlayerObject() {
@@ -4549,11 +4551,15 @@ bool PlayerObjectImplementation::isBountyLocked() {
  *	PlayerObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PlayerObjectAdapter::PlayerObjectAdapter(PlayerObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -5106,10 +5112,8 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isBountyLocked());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PlayerObjectAdapter::finalize() {

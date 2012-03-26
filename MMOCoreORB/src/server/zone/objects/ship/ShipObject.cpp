@@ -14,9 +14,11 @@ ShipObject::ShipObject() : TangibleObject(DummyConstructorParameter::instance())
 	ShipObjectImplementation* _implementation = new ShipObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ShipObject");
 }
 
 ShipObject::ShipObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("ShipObject");
 }
 
 ShipObject::~ShipObject() {
@@ -273,11 +275,15 @@ bool ShipObjectImplementation::isShipObject() {
  *	ShipObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ShipObjectAdapter::ShipObjectAdapter(ShipObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETUNIQUEID__:
@@ -299,10 +305,8 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isShipObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 unsigned short ShipObjectAdapter::getUniqueID() {

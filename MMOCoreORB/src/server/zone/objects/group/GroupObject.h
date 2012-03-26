@@ -253,7 +253,7 @@ class GroupObjectAdapter : public SceneObjectAdapter {
 public:
 	GroupObjectAdapter(GroupObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendBaselinesTo(SceneObject* player);
 

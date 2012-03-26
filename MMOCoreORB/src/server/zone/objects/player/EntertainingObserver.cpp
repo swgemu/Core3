@@ -16,9 +16,11 @@ EntertainingObserver::EntertainingObserver() : Observer(DummyConstructorParamete
 	EntertainingObserverImplementation* _implementation = new EntertainingObserverImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("EntertainingObserver");
 }
 
 EntertainingObserver::EntertainingObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("EntertainingObserver");
 }
 
 EntertainingObserver::~EntertainingObserver() {
@@ -192,21 +194,23 @@ int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventTy
  *	EntertainingObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 EntertainingObserverAdapter::EntertainingObserverAdapter(EntertainingObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void EntertainingObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int EntertainingObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

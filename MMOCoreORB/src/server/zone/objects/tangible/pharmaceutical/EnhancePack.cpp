@@ -36,9 +36,11 @@ EnhancePack::EnhancePack() : PharmaceuticalObject(DummyConstructorParameter::ins
 	EnhancePackImplementation* _implementation = new EnhancePackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("EnhancePack");
 }
 
 EnhancePack::EnhancePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("EnhancePack");
 }
 
 EnhancePack::~EnhancePack() {
@@ -449,11 +451,15 @@ bool EnhancePackImplementation::isEnhancePack() {
  *	EnhancePackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 EnhancePackAdapter::EnhancePackAdapter(EnhancePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -475,10 +481,8 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isEnhancePack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int EnhancePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

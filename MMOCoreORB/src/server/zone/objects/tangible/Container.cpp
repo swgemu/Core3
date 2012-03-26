@@ -24,9 +24,11 @@ Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
 	ContainerImplementation* _implementation = new ContainerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Container");
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Container");
 }
 
 Container::~Container() {
@@ -302,11 +304,15 @@ void ContainerImplementation::setLockedStatus(bool lock) {
  *	ContainerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ContainerAdapter::ContainerAdapter(Container* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -328,10 +334,8 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setLockedStatus(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ContainerAdapter::initializeTransientMembers() {

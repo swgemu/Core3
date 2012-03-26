@@ -18,9 +18,11 @@ ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ActiveArea");
 }
 
 ActiveArea::ActiveArea(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("ActiveArea");
 }
 
 ActiveArea::~ActiveArea() {
@@ -517,11 +519,15 @@ void ActiveAreaImplementation::setCellObjectID(unsigned long long celloid) {
  *	ActiveAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ActiveAreaAdapter::ActiveAreaAdapter(ActiveArea* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
@@ -576,10 +582,8 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setCellObjectID(inv->getUnsignedLongParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ActiveAreaAdapter::sendTo(SceneObject* player, bool doClose) {

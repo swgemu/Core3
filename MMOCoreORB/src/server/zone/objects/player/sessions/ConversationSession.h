@@ -143,7 +143,7 @@ class ConversationSessionAdapter : public FacadeAdapter {
 public:
 	ConversationSessionAdapter(ConversationSession* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	CreatureObject* getNPC();
 

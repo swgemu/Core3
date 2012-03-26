@@ -22,9 +22,11 @@ ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
 	ChatRoomImplementation* _implementation = new ChatRoomImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ChatRoom");
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("ChatRoom");
 }
 
 ChatRoom::~ChatRoom() {
@@ -1114,11 +1116,15 @@ int ChatRoomImplementation::compareTo(ChatRoom* obj) {
  *	ChatRoomAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ChatRoomAdapter::ChatRoomAdapter(ChatRoom* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_:
@@ -1233,10 +1239,8 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(compareTo(static_cast<ChatRoom*>(inv->getObjectParameter())));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ChatRoomAdapter::init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID) {

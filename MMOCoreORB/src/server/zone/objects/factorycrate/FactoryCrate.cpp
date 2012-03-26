@@ -26,9 +26,11 @@ FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instanc
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FactoryCrate");
 }
 
 FactoryCrate::FactoryCrate(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("FactoryCrate");
 }
 
 FactoryCrate::~FactoryCrate() {
@@ -416,11 +418,15 @@ void FactoryCrateImplementation::setMaxCapacity(int value) {
  *	FactoryCrateAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FactoryCrateAdapter::FactoryCrateAdapter(FactoryCrate* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -463,10 +469,8 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		split(inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FactoryCrateAdapter::initializeTransientMembers() {

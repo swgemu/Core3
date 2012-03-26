@@ -20,9 +20,11 @@ ForageManager::ForageManager() : Observer(DummyConstructorParameter::instance())
 	ForageManagerImplementation* _implementation = new ForageManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ForageManager");
 }
 
 ForageManager::ForageManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("ForageManager");
 }
 
 ForageManager::~ForageManager() {
@@ -271,11 +273,15 @@ void ForageManagerImplementation::deleteForageAreaCollection(String& playerName)
  *	ForageManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ForageManagerAdapter::ForageManagerAdapter(ForageManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_DELETEFORAGEAREACOLLECTION__STRING_:
@@ -294,10 +300,8 @@ Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(forageGiveResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_forageGiveResource__CreatureObject_float_float_String_String_), inv->getAsciiParameter(_param4_forageGiveResource__CreatureObject_float_float_String_String_)));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ForageManagerAdapter::deleteForageAreaCollection(String& playerName) {

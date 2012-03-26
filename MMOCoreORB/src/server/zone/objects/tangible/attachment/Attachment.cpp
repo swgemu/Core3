@@ -28,9 +28,11 @@ Attachment::Attachment() : TangibleObject(DummyConstructorParameter::instance())
 	AttachmentImplementation* _implementation = new AttachmentImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Attachment");
 }
 
 Attachment::Attachment(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Attachment");
 }
 
 Attachment::~Attachment() {
@@ -487,11 +489,15 @@ bool AttachmentImplementation::isClothingAttachment() {
  *	AttachmentAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AttachmentAdapter::AttachmentAdapter(Attachment* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -540,10 +546,8 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isClothingAttachment());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void AttachmentAdapter::initializeTransientMembers() {

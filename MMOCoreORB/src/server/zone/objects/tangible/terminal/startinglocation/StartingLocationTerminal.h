@@ -154,7 +154,7 @@ class StartingLocationTerminalAdapter : public TerminalAdapter {
 public:
 	StartingLocationTerminalAdapter(StartingLocationTerminal* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

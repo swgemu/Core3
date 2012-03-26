@@ -24,9 +24,11 @@ VehicleDeed::VehicleDeed() : Deed(DummyConstructorParameter::instance()) {
 	VehicleDeedImplementation* _implementation = new VehicleDeedImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VehicleDeed");
 }
 
 VehicleDeed::VehicleDeed(DummyConstructorParameter* param) : Deed(param) {
+	_setClassName("VehicleDeed");
 }
 
 VehicleDeed::~VehicleDeed() {
@@ -280,11 +282,15 @@ bool VehicleDeedImplementation::isVehicleDeedObject() {
  *	VehicleDeedAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VehicleDeedAdapter::VehicleDeedAdapter(VehicleDeed* obj) : DeedAdapter(obj) {
 }
 
-Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -297,10 +303,8 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isVehicleDeedObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void VehicleDeedAdapter::initializeTransientMembers() {

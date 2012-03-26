@@ -18,9 +18,11 @@ Drink::Drink() : Consumable(DummyConstructorParameter::instance()) {
 	DrinkImplementation* _implementation = new DrinkImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Drink");
 }
 
 Drink::Drink(DummyConstructorParameter* param) : Consumable(param) {
+	_setClassName("Drink");
 }
 
 Drink::~Drink() {
@@ -204,11 +206,15 @@ void DrinkImplementation::initializePrivateData() {
  *	DrinkAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DrinkAdapter::DrinkAdapter(Drink* obj) : ConsumableAdapter(obj) {
 }
 
-Packet* DrinkAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DrinkAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -218,10 +224,8 @@ Packet* DrinkAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializePrivateData();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DrinkAdapter::initializeTransientMembers() {

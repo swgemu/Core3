@@ -18,9 +18,11 @@ VehicleControlObserver::VehicleControlObserver(VehicleControlDevice* device) : O
 	VehicleControlObserverImplementation* _implementation = new VehicleControlObserverImplementation(device);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VehicleControlObserver");
 }
 
 VehicleControlObserver::VehicleControlObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("VehicleControlObserver");
 }
 
 VehicleControlObserver::~VehicleControlObserver() {
@@ -211,21 +213,23 @@ int VehicleControlObserverImplementation::notifyObserverEvent(unsigned int event
  *	VehicleControlObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VehicleControlObserverAdapter::VehicleControlObserverAdapter(VehicleControlObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* VehicleControlObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VehicleControlObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int VehicleControlObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

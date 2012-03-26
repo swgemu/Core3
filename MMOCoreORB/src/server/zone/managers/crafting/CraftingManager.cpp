@@ -22,9 +22,11 @@ CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::inst
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CraftingManager");
 }
 
 CraftingManager::CraftingManager(DummyConstructorParameter* param) : ZoneManager(param) {
+	_setClassName("CraftingManager");
 }
 
 CraftingManager::~CraftingManager() {
@@ -371,11 +373,15 @@ DraftSchematic* CraftingManagerImplementation::getSchematic(unsigned int schemat
  *	CraftingManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CraftingManagerAdapter::CraftingManagerAdapter(CraftingManager* obj) : ZoneManagerAdapter(obj) {
 }
 
-Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETSCHEMATIC__INT_:
@@ -412,10 +418,8 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertAscii(generateSerial());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int schematicID) {

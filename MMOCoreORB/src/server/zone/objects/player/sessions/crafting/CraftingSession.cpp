@@ -32,9 +32,11 @@ CraftingSession::CraftingSession(CreatureObject* creature) : Facade(DummyConstru
 	CraftingSessionImplementation* _implementation = new CraftingSessionImplementation(creature);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CraftingSession");
 }
 
 CraftingSession::CraftingSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("CraftingSession");
 }
 
 CraftingSession::~CraftingSession() {
@@ -360,11 +362,15 @@ CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* cre
  *	CraftingSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CraftingSessionAdapter::CraftingSessionAdapter(CraftingSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_:
@@ -404,10 +410,8 @@ Packet* CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		createManufactureSchematic(inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int CraftingSessionAdapter::initializeSession(CraftingTool* tool, CraftingStation* station) {

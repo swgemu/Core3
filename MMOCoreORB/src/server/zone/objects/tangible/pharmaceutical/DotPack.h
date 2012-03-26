@@ -293,7 +293,7 @@ class DotPackAdapter : public PharmaceuticalObjectAdapter {
 public:
 	DotPackAdapter(DotPack* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

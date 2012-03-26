@@ -18,9 +18,11 @@ ShipControlDevice::ShipControlDevice() : ControlDevice(DummyConstructorParameter
 	ShipControlDeviceImplementation* _implementation = new ShipControlDeviceImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ShipControlDevice");
 }
 
 ShipControlDevice::ShipControlDevice(DummyConstructorParameter* param) : ControlDevice(param) {
+	_setClassName("ShipControlDevice");
 }
 
 ShipControlDevice::~ShipControlDevice() {
@@ -263,11 +265,15 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
  *	ShipControlDeviceAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ShipControlDeviceAdapter::ShipControlDeviceAdapter(ShipControlDevice* obj) : ControlDeviceAdapter(obj) {
 }
 
-Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
@@ -280,10 +286,8 @@ Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ShipControlDeviceAdapter::storeObject(CreatureObject* player) {

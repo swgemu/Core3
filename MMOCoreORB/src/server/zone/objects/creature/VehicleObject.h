@@ -256,7 +256,7 @@ class VehicleObjectAdapter : public CreatureObjectAdapter {
 public:
 	VehicleObjectAdapter(VehicleObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool checkInRangeGarage();
 

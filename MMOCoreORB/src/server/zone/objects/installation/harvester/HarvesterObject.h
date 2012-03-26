@@ -139,7 +139,7 @@ class HarvesterObjectAdapter : public InstallationObjectAdapter {
 public:
 	HarvesterObjectAdapter(HarvesterObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

@@ -32,9 +32,11 @@ StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : Managed
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StructureManager");
 }
 
 StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("StructureManager");
 }
 
 StructureManager::~StructureManager() {
@@ -453,11 +455,15 @@ void StructureManagerImplementation::initialize() {
  *	StructureManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StructureManagerAdapter::StructureManagerAdapter(StructureManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -509,10 +515,8 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		payMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StructureManagerAdapter::initialize() {

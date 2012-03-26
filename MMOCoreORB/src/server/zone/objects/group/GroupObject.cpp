@@ -20,9 +20,11 @@ GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) 
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GroupObject");
 }
 
 GroupObject::GroupObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("GroupObject");
 }
 
 GroupObject::~GroupObject() {
@@ -608,11 +610,15 @@ bool GroupObjectImplementation::isGroupObject() {
  *	GroupObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GroupObjectAdapter::GroupObjectAdapter(GroupObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
@@ -691,10 +697,8 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		removeGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GroupObjectAdapter::sendBaselinesTo(SceneObject* player) {

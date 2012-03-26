@@ -28,9 +28,11 @@ SlicingTool::SlicingTool() : TangibleObject(DummyConstructorParameter::instance(
 	SlicingToolImplementation* _implementation = new SlicingToolImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SlicingTool");
 }
 
 SlicingTool::SlicingTool(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("SlicingTool");
 }
 
 SlicingTool::~SlicingTool() {
@@ -262,11 +264,15 @@ float SlicingToolImplementation::getEffectiveness() {
  *	SlicingToolAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SlicingToolAdapter::SlicingToolAdapter(SlicingTool* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -279,10 +285,8 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertFloat(getEffectiveness());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int SlicingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

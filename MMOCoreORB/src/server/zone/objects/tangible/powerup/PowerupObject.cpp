@@ -16,9 +16,11 @@ PowerupObject::PowerupObject() : TangibleObject(DummyConstructorParameter::insta
 	PowerupObjectImplementation* _implementation = new PowerupObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PowerupObject");
 }
 
 PowerupObject::PowerupObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("PowerupObject");
 }
 
 PowerupObject::~PowerupObject() {
@@ -352,11 +354,15 @@ int PowerupObjectImplementation::getUses() {
  *	PowerupObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PowerupObjectAdapter::PowerupObjectAdapter(PowerupObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* PowerupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PowerupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISRANGED__:
@@ -381,10 +387,8 @@ Packet* PowerupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertFloat(getPowerupStat(inv->getAsciiParameter(_param0_getPowerupStat__String_)));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool PowerupObjectAdapter::isRanged() {

@@ -36,9 +36,11 @@ ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedService(DummyC
 	ChatManagerImplementation* _implementation = new ChatManagerImplementation(serv, initsize);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ChatManager");
 }
 
 ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("ChatManager");
 }
 
 ChatManager::~ChatManager() {
@@ -848,11 +850,15 @@ ChatRoom* ChatManagerImplementation::getGroupRoom() {
  *	ChatManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ChatManagerAdapter::ChatManagerAdapter(ChatManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -961,10 +967,8 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getGroupRoom()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ChatManagerAdapter::finalize() {

@@ -20,9 +20,11 @@ SuiTransferBox::SuiTransferBox(CreatureObject* player, unsigned int windowType) 
 	SuiTransferBoxImplementation* _implementation = new SuiTransferBoxImplementation(player, windowType);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiTransferBox");
 }
 
 SuiTransferBox::SuiTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiTransferBox");
 }
 
 SuiTransferBox::~SuiTransferBox() {
@@ -333,11 +335,15 @@ bool SuiTransferBoxImplementation::isTransferBox() {
  *	SuiTransferBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiTransferBoxAdapter::SuiTransferBoxAdapter(SuiTransferBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
@@ -353,10 +359,8 @@ Packet* SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isTransferBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 BaseMessage* SuiTransferBoxAdapter::generateMessage() {

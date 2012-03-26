@@ -22,9 +22,11 @@ RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructo
 	RadialManagerImplementation* _implementation = new RadialManagerImplementation(server);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("RadialManager");
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("RadialManager");
 }
 
 RadialManager::~RadialManager() {
@@ -207,11 +209,15 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
  *	RadialManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RadialManagerAdapter::RadialManagerAdapter(RadialManager* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_LONG_:
@@ -221,10 +227,8 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		handleObjectMenuRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void RadialManagerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID) {

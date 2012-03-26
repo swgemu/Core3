@@ -28,9 +28,11 @@ CurePack::CurePack() : PharmaceuticalObject(DummyConstructorParameter::instance(
 	CurePackImplementation* _implementation = new CurePackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CurePack");
 }
 
 CurePack::CurePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("CurePack");
 }
 
 CurePack::~CurePack() {
@@ -466,11 +468,15 @@ bool CurePackImplementation::isCurePack() {
  *	CurePackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CurePackAdapter::CurePackAdapter(CurePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -495,10 +501,8 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isCurePack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int CurePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

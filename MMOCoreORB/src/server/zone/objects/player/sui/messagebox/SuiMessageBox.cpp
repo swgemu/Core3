@@ -20,9 +20,11 @@ SuiMessageBox::SuiMessageBox(CreatureObject* player, unsigned int windowType) : 
 	SuiMessageBoxImplementation* _implementation = new SuiMessageBoxImplementation(player, windowType);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiMessageBox");
 }
 
 SuiMessageBox::SuiMessageBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiMessageBox");
 }
 
 SuiMessageBox::~SuiMessageBox() {
@@ -196,11 +198,15 @@ bool SuiMessageBoxImplementation::isMessageBox() {
  *	SuiMessageBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiMessageBoxAdapter::SuiMessageBoxAdapter(SuiMessageBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
@@ -210,10 +216,8 @@ Packet* SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isMessageBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 BaseMessage* SuiMessageBoxAdapter::generateMessage() {

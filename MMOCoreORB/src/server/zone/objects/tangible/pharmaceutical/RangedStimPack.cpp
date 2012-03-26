@@ -32,9 +32,11 @@ RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance(
 	RangedStimPackImplementation* _implementation = new RangedStimPackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("RangedStimPack");
 }
 
 RangedStimPack::RangedStimPack(DummyConstructorParameter* param) : StimPack(param) {
+	_setClassName("RangedStimPack");
 }
 
 RangedStimPack::~RangedStimPack() {
@@ -492,11 +494,15 @@ bool RangedStimPackImplementation::isRangedStimPack() {
  *	RangedStimPackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RangedStimPackAdapter::RangedStimPackAdapter(RangedStimPack* obj) : StimPackAdapter(obj) {
 }
 
-Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -524,10 +530,8 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isRangedStimPack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int RangedStimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

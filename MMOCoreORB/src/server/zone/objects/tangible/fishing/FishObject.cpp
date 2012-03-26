@@ -26,9 +26,11 @@ FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance())
 	FishObjectImplementation* _implementation = new FishObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FishObject");
 }
 
 FishObject::FishObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("FishObject");
 }
 
 FishObject::~FishObject() {
@@ -333,11 +335,15 @@ void FishObjectImplementation::setAttributes(const String& playerName, const Str
  *	FishObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FishObjectAdapter::FishObjectAdapter(FishObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -359,10 +365,8 @@ Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		filet(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FishObjectAdapter::initializeTransientMembers() {

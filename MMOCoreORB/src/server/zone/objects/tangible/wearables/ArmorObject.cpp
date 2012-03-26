@@ -18,9 +18,11 @@ ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance(
 	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ArmorObject");
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
+	_setClassName("ArmorObject");
 }
 
 ArmorObject::~ArmorObject() {
@@ -992,11 +994,15 @@ void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
  *	ArmorObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ArmorObjectAdapter::ArmorObjectAdapter(ArmorObject* obj) : WearableObjectAdapter(obj) {
 }
 
-Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1093,10 +1099,8 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ArmorObjectAdapter::initializeTransientMembers() {

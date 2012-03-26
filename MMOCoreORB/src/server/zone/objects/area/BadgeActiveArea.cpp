@@ -20,9 +20,11 @@ BadgeActiveArea::BadgeActiveArea() : ActiveArea(DummyConstructorParameter::insta
 	BadgeActiveAreaImplementation* _implementation = new BadgeActiveAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("BadgeActiveArea");
 }
 
 BadgeActiveArea::BadgeActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("BadgeActiveArea");
 }
 
 BadgeActiveArea::~BadgeActiveArea() {
@@ -247,11 +249,15 @@ unsigned int BadgeActiveAreaImplementation::getBadge() {
  *	BadgeActiveAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 BadgeActiveAreaAdapter::BadgeActiveAreaAdapter(BadgeActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
@@ -264,10 +270,8 @@ Packet* BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertInt(getBadge());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void BadgeActiveAreaAdapter::notifyEnter(SceneObject* player) {

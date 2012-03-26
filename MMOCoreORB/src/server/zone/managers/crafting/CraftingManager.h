@@ -311,7 +311,7 @@ class CraftingManagerAdapter : public ZoneManagerAdapter {
 public:
 	CraftingManagerAdapter(CraftingManager* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	DraftSchematic* getSchematic(unsigned int schematicID);
 

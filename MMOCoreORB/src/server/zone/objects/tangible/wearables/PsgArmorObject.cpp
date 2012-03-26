@@ -16,9 +16,11 @@ PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::ins
 	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PsgArmorObject");
 }
 
 PsgArmorObject::PsgArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
+	_setClassName("PsgArmorObject");
 }
 
 PsgArmorObject::~PsgArmorObject() {
@@ -211,11 +213,15 @@ bool PsgArmorObjectImplementation::isPsgArmorObject() {
  *	PsgArmorObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObject* obj) : WearableObjectAdapter(obj) {
 }
 
-Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -225,10 +231,8 @@ Packet* PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isPsgArmorObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PsgArmorObjectAdapter::initializeTransientMembers() {

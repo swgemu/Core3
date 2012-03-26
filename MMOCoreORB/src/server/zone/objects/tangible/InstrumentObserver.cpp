@@ -18,9 +18,11 @@ InstrumentObserver::InstrumentObserver(Instrument* instr) : Observer(DummyConstr
 	InstrumentObserverImplementation* _implementation = new InstrumentObserverImplementation(instr);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("InstrumentObserver");
 }
 
 InstrumentObserver::InstrumentObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("InstrumentObserver");
 }
 
 InstrumentObserver::~InstrumentObserver() {
@@ -194,21 +196,23 @@ InstrumentObserverImplementation::InstrumentObserverImplementation(Instrument* i
  *	InstrumentObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 InstrumentObserverAdapter::InstrumentObserverAdapter(InstrumentObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void InstrumentObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int InstrumentObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

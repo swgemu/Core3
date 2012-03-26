@@ -16,9 +16,11 @@ PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter
 	PersistentMessageImplementation* _implementation = new PersistentMessageImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PersistentMessage");
 }
 
 PersistentMessage::PersistentMessage(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("PersistentMessage");
 }
 
 PersistentMessage::~PersistentMessage() {
@@ -636,11 +638,15 @@ bool PersistentMessageImplementation::isUnread() {
  *	PersistentMessageAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PersistentMessageAdapter::PersistentMessageAdapter(PersistentMessage* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SENDTO__CREATUREOBJECT_BOOL_:
@@ -698,10 +704,8 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertBoolean(isUnread());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PersistentMessageAdapter::sendTo(CreatureObject* player, bool sendBody) {

@@ -24,9 +24,11 @@ MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyC
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionObjective");
 }
 
 MissionObjective::MissionObjective(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("MissionObjective");
 }
 
 MissionObjective::~MissionObjective() {
@@ -513,11 +515,15 @@ unsigned int MissionObjectiveImplementation::getObjectiveType() {
  *	MissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionObjectiveAdapter::MissionObjectiveAdapter(MissionObjective* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_DESTROYOBJECTFROMDATABASE__:
@@ -572,10 +578,8 @@ Packet* MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		removeMissionFromPlayer();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void MissionObjectiveAdapter::destroyObjectFromDatabase() {

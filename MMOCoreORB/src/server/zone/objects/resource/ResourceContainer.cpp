@@ -20,9 +20,11 @@ ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParamete
 	ResourceContainerImplementation* _implementation = new ResourceContainerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ResourceContainer");
 }
 
 ResourceContainer::ResourceContainer(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("ResourceContainer");
 }
 
 ResourceContainer::~ResourceContainer() {
@@ -490,11 +492,15 @@ ResourceSpawn* ResourceContainerImplementation::getSpawnObject() {
  *	ResourceContainerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ResourceContainerAdapter::ResourceContainerAdapter(ResourceContainer* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -546,10 +552,8 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		combine(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ResourceContainerAdapter::initializeTransientMembers() {

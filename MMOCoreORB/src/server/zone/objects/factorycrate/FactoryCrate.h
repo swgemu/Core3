@@ -253,7 +253,7 @@ class FactoryCrateAdapter : public TangibleObjectAdapter {
 public:
 	FactoryCrateAdapter(FactoryCrate* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

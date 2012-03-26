@@ -24,9 +24,11 @@ ReconMissionObjective::ReconMissionObjective(MissionObject* mission) : MissionOb
 	ReconMissionObjectiveImplementation* _implementation = new ReconMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ReconMissionObjective");
 }
 
 ReconMissionObjective::ReconMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("ReconMissionObjective");
 }
 
 ReconMissionObjective::~ReconMissionObjective() {
@@ -247,11 +249,15 @@ void ReconMissionObjectiveImplementation::initializeTransientMembers() {
  *	ReconMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ReconMissionObjectiveAdapter::ReconMissionObjectiveAdapter(ReconMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -270,10 +276,8 @@ Packet* ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMet
 		complete();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ReconMissionObjectiveAdapter::finalize() {

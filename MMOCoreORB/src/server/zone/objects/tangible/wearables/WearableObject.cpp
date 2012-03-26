@@ -20,9 +20,11 @@ WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::ins
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("WearableObject");
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("WearableObject");
 }
 
 WearableObject::~WearableObject() {
@@ -389,11 +391,15 @@ void WearableObjectImplementation::setMaxSockets(int sockets) {
  *	WearableObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 WearableObjectAdapter::WearableObjectAdapter(WearableObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -427,10 +433,8 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void WearableObjectAdapter::initializeTransientMembers() {

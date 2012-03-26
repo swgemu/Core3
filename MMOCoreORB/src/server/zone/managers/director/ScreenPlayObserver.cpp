@@ -14,9 +14,11 @@ ScreenPlayObserver::ScreenPlayObserver() : Observer(DummyConstructorParameter::i
 	ScreenPlayObserverImplementation* _implementation = new ScreenPlayObserverImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ScreenPlayObserver");
 }
 
 ScreenPlayObserver::ScreenPlayObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("ScreenPlayObserver");
 }
 
 ScreenPlayObserver::~ScreenPlayObserver() {
@@ -279,11 +281,15 @@ String ScreenPlayObserverImplementation::getScreenKey() {
  *	ScreenPlayObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ScreenPlayObserverAdapter::ScreenPlayObserverAdapter(ScreenPlayObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
@@ -302,10 +308,8 @@ Packet* ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertAscii(getScreenKey());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int ScreenPlayObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

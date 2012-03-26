@@ -16,9 +16,11 @@ GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParamete
 	GeneratorObjectImplementation* _implementation = new GeneratorObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GeneratorObject");
 }
 
 GeneratorObject::GeneratorObject(DummyConstructorParameter* param) : InstallationObject(param) {
+	_setClassName("GeneratorObject");
 }
 
 GeneratorObject::~GeneratorObject() {
@@ -234,11 +236,15 @@ bool GeneratorObjectImplementation::isGeneratorObject() {
  *	GeneratorObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GeneratorObjectAdapter::GeneratorObjectAdapter(GeneratorObject* obj) : InstallationObjectAdapter(obj) {
 }
 
-Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -254,10 +260,8 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isGeneratorObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int GeneratorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

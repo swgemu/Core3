@@ -20,9 +20,11 @@ ZoneManager::ZoneManager(const String& name) : ManagedService(DummyConstructorPa
 	ZoneManagerImplementation* _implementation = new ZoneManagerImplementation(name);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ZoneManager");
 }
 
 ZoneManager::ZoneManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("ZoneManager");
 }
 
 ZoneManager::~ZoneManager() {
@@ -199,21 +201,23 @@ void ZoneManagerImplementation::setZoneProcessor(ZoneProcessServer* server) {
  *	ZoneManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ZoneManagerAdapter::ZoneManagerAdapter(ZoneManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_:
 		setZoneProcessor(static_cast<ZoneProcessServer*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ZoneManagerAdapter::setZoneProcessor(ZoneProcessServer* server) {

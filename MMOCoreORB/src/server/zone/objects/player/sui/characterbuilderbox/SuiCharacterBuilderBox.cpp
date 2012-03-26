@@ -18,9 +18,11 @@ SuiCharacterBuilderBox::SuiCharacterBuilderBox(CreatureObject* player, Character
 	SuiCharacterBuilderBoxImplementation* _implementation = new SuiCharacterBuilderBoxImplementation(player, root);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiCharacterBuilderBox");
 }
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(DummyConstructorParameter* param) : SuiListBox(param) {
+	_setClassName("SuiCharacterBuilderBox");
 }
 
 SuiCharacterBuilderBox::~SuiCharacterBuilderBox() {
@@ -221,11 +223,15 @@ bool SuiCharacterBuilderBoxImplementation::isCharacterBuilderBox() {
  *	SuiCharacterBuilderBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiCharacterBuilderBoxAdapter::SuiCharacterBuilderBoxAdapter(SuiCharacterBuilderBox* obj) : SuiListBoxAdapter(obj) {
 }
 
-Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
@@ -235,10 +241,8 @@ Packet* SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMe
 		resp->insertBoolean(isCharacterBuilderBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 BaseMessage* SuiCharacterBuilderBoxAdapter::generateMessage() {

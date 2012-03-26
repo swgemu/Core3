@@ -18,9 +18,11 @@ ArmorComponent::ArmorComponent() : Component(DummyConstructorParameter::instance
 	ArmorComponentImplementation* _implementation = new ArmorComponentImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ArmorComponent");
 }
 
 ArmorComponent::ArmorComponent(DummyConstructorParameter* param) : Component(param) {
+	_setClassName("ArmorComponent");
 }
 
 ArmorComponent::~ArmorComponent() {
@@ -201,21 +203,23 @@ ArmorComponentImplementation::ArmorComponentImplementation() {
  *	ArmorComponentAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ArmorComponentAdapter::ArmorComponentAdapter(ArmorComponent* obj) : ComponentAdapter(obj) {
 }
 
-Packet* ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ArmorComponentAdapter::initializeTransientMembers() {

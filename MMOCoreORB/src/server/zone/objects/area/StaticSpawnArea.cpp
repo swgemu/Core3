@@ -22,9 +22,11 @@ StaticSpawnArea::StaticSpawnArea() : SpawnArea(DummyConstructorParameter::instan
 	StaticSpawnAreaImplementation* _implementation = new StaticSpawnAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StaticSpawnArea");
 }
 
 StaticSpawnArea::StaticSpawnArea(DummyConstructorParameter* param) : SpawnArea(param) {
+	_setClassName("StaticSpawnArea");
 }
 
 StaticSpawnArea::~StaticSpawnArea() {
@@ -212,11 +214,15 @@ bool StaticSpawnAreaImplementation::isStaticArea() {
  *	StaticSpawnAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StaticSpawnAreaAdapter::StaticSpawnAreaAdapter(StaticSpawnArea* obj) : SpawnAreaAdapter(obj) {
 }
 
-Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SPAWNCREATURES__:
@@ -226,10 +232,8 @@ Packet* StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isStaticArea());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StaticSpawnAreaAdapter::spawnCreatures() {

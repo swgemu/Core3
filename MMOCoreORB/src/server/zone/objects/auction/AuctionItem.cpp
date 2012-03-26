@@ -18,9 +18,11 @@ AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConst
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("AuctionItem");
 }
 
 AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("AuctionItem");
 }
 
 AuctionItem::~AuctionItem() {
@@ -1311,11 +1313,15 @@ bool AuctionItemImplementation::isOwner() {
  *	AuctionItemAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AuctionItemAdapter::AuctionItemAdapter(AuctionItem* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_:
@@ -1448,10 +1454,8 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isOwner());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void AuctionItemAdapter::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {

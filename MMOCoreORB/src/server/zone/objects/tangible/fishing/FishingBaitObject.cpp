@@ -22,9 +22,11 @@ FishingBaitObject::FishingBaitObject() : TangibleObject(DummyConstructorParamete
 	FishingBaitObjectImplementation* _implementation = new FishingBaitObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FishingBaitObject");
 }
 
 FishingBaitObject::FishingBaitObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("FishingBaitObject");
 }
 
 FishingBaitObject::~FishingBaitObject() {
@@ -287,11 +289,15 @@ void FishingBaitObjectImplementation::lessFresh() {
  *	FishingBaitObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FishingBaitObjectAdapter::FishingBaitObjectAdapter(FishingBaitObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -313,10 +319,8 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FishingBaitObjectAdapter::initializeTransientMembers() {

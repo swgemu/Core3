@@ -18,9 +18,11 @@ SlicingSession::SlicingSession(CreatureObject* parent) : Facade(DummyConstructor
 	SlicingSessionImplementation* _implementation = new SlicingSessionImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SlicingSession");
 }
 
 SlicingSession::SlicingSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("SlicingSession");
 }
 
 SlicingSession::~SlicingSession() {
@@ -458,11 +460,15 @@ byte SlicingSessionImplementation::getProgress() {
  *	SlicingSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SlicingSessionAdapter::SlicingSessionAdapter(SlicingSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -493,10 +499,8 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		useClampFromInventory(static_cast<SlicingTool*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int SlicingSessionAdapter::initializeSession() {

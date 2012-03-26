@@ -14,9 +14,11 @@ PackGroup::PackGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	PackGroupImplementation* _implementation = new PackGroupImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PackGroup");
 }
 
 PackGroup::PackGroup(DummyConstructorParameter* param) : AiGroup(param) {
+	_setClassName("PackGroup");
 }
 
 PackGroup::~PackGroup() {
@@ -176,21 +178,23 @@ bool PackGroupImplementation::isPackGroup() {
  *	PackGroupAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PackGroupAdapter::PackGroupAdapter(PackGroup* obj) : AiGroupAdapter(obj) {
 }
 
-Packet* PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISPACKGROUP__:
 		resp->insertBoolean(isPackGroup());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool PackGroupAdapter::isPackGroup() {

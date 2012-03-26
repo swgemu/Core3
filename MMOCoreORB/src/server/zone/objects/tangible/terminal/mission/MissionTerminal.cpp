@@ -22,9 +22,11 @@ MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instanc
 	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionTerminal");
 }
 
 MissionTerminal::MissionTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("MissionTerminal");
 }
 
 MissionTerminal::~MissionTerminal() {
@@ -492,11 +494,15 @@ void MissionTerminalImplementation::removeSlicer(CreatureObject* slicer) {
  *	MissionTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionTerminalAdapter::MissionTerminalAdapter(MissionTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -545,10 +551,8 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		removeSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void MissionTerminalAdapter::initializeTransientMembers() {

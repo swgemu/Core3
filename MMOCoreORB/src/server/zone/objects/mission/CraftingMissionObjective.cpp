@@ -18,9 +18,11 @@ CraftingMissionObjective::CraftingMissionObjective(MissionObject* mission) : Del
 	CraftingMissionObjectiveImplementation* _implementation = new CraftingMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CraftingMissionObjective");
 }
 
 CraftingMissionObjective::CraftingMissionObjective(DummyConstructorParameter* param) : DeliverMissionObjective(param) {
+	_setClassName("CraftingMissionObjective");
 }
 
 CraftingMissionObjective::~CraftingMissionObjective() {
@@ -212,11 +214,15 @@ void CraftingMissionObjectiveImplementation::initializeTransientMembers() {
  *	CraftingMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CraftingMissionObjectiveAdapter::CraftingMissionObjectiveAdapter(CraftingMissionObjective* obj) : DeliverMissionObjectiveAdapter(obj) {
 }
 
-Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -232,10 +238,8 @@ Packet* CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 		abort();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CraftingMissionObjectiveAdapter::finalize() {

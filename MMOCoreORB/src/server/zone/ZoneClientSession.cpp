@@ -20,9 +20,11 @@ ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(D
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ZoneClientSession");
 }
 
 ZoneClientSession::ZoneClientSession(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("ZoneClientSession");
 }
 
 ZoneClientSession::~ZoneClientSession() {
@@ -691,11 +693,15 @@ void ZoneClientSessionImplementation::resetCharacters() {
  *	ZoneClientSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ZoneClientSessionAdapter::ZoneClientSessionAdapter(ZoneClientSession* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_DISCONNECT__:
@@ -768,10 +774,8 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resetCharacters();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ZoneClientSessionAdapter::disconnect() {

@@ -20,9 +20,11 @@ SpiceDownerBuff::SpiceDownerBuff(CreatureObject* creo, const String& name, unsig
 	SpiceDownerBuffImplementation* _implementation = new SpiceDownerBuffImplementation(creo, name, buffCRC, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SpiceDownerBuff");
 }
 
 SpiceDownerBuff::SpiceDownerBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("SpiceDownerBuff");
 }
 
 SpiceDownerBuff::~SpiceDownerBuff() {
@@ -228,11 +230,15 @@ void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
  *	SpiceDownerBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SpiceDownerBuffAdapter::SpiceDownerBuffAdapter(SpiceDownerBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
@@ -242,10 +248,8 @@ Packet* SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		deactivate(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SpiceDownerBuffAdapter::activate(bool applyModifiers) {

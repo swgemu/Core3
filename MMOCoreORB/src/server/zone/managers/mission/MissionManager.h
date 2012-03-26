@@ -496,7 +496,7 @@ class MissionManagerAdapter : public ObserverAdapter {
 public:
 	MissionManagerAdapter(MissionManager* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void loadLuaSettings();
 

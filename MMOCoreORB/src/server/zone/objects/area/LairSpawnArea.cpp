@@ -22,9 +22,11 @@ LairSpawnArea::LairSpawnArea() : SpawnArea(DummyConstructorParameter::instance()
 	LairSpawnAreaImplementation* _implementation = new LairSpawnAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LairSpawnArea");
 }
 
 LairSpawnArea::LairSpawnArea(DummyConstructorParameter* param) : SpawnArea(param) {
+	_setClassName("LairSpawnArea");
 }
 
 LairSpawnArea::~LairSpawnArea() {
@@ -351,11 +353,15 @@ void LairSpawnAreaImplementation::setSpawnGroup(LairSpawnGroup* group) {
  *	LairSpawnAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LairSpawnAreaAdapter::LairSpawnAreaAdapter(LairSpawnArea* obj) : SpawnAreaAdapter(obj) {
 }
 
-Packet* LairSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LairSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
@@ -377,10 +383,8 @@ Packet* LairSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isLairSpawnArea());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void LairSpawnAreaAdapter::notifyEnter(SceneObject* object) {

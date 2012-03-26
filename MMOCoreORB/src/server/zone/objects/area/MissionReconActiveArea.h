@@ -164,7 +164,7 @@ class MissionReconActiveAreaAdapter : public ActiveAreaAdapter {
 public:
 	MissionReconActiveAreaAdapter(MissionReconActiveArea* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void notifyEnter(SceneObject* player);
 

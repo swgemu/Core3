@@ -20,9 +20,11 @@ ImageDesignSession::ImageDesignSession(CreatureObject* parent) : Facade(DummyCon
 	ImageDesignSessionImplementation* _implementation = new ImageDesignSessionImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ImageDesignSession");
 }
 
 ImageDesignSession::ImageDesignSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("ImageDesignSession");
 }
 
 ImageDesignSession::~ImageDesignSession() {
@@ -412,11 +414,15 @@ void ImageDesignSessionImplementation::sessionTimeout() {
  *	ImageDesignSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ImageDesignSessionAdapter::ImageDesignSessionAdapter(ImageDesignSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -444,10 +450,8 @@ Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 		sessionTimeout();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ImageDesignSessionAdapter::initializeTransientMembers() {

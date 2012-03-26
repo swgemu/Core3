@@ -30,9 +30,11 @@ StimPack::StimPack() : PharmaceuticalObject(DummyConstructorParameter::instance(
 	StimPackImplementation* _implementation = new StimPackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StimPack");
 }
 
 StimPack::StimPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("StimPack");
 }
 
 StimPack::~StimPack() {
@@ -355,11 +357,15 @@ bool StimPackImplementation::isStimPack() {
  *	StimPackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StimPackAdapter::StimPackAdapter(StimPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
@@ -375,10 +381,8 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isStimPack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 unsigned int StimPackAdapter::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {

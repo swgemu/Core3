@@ -16,9 +16,11 @@ FindSession::FindSession(CreatureObject* pl) : Facade(DummyConstructorParameter:
 	FindSessionImplementation* _implementation = new FindSessionImplementation(pl);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FindSession");
 }
 
 FindSession::FindSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("FindSession");
 }
 
 FindSession::~FindSession() {
@@ -302,11 +304,15 @@ int FindSessionImplementation::clearSession() {
  *	FindSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FindSessionAdapter::FindSessionAdapter(FindSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -325,10 +331,8 @@ Packet* FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		clearWaypoint();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int FindSessionAdapter::initializeSession() {

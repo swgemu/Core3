@@ -26,9 +26,11 @@ EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyCons
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("EntertainingSession");
 }
 
 EntertainingSession::EntertainingSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("EntertainingSession");
 }
 
 EntertainingSession::~EntertainingSession() {
@@ -1037,11 +1039,15 @@ void EntertainingSessionImplementation::setTargetInstrument(bool var) {
  *	EntertainingSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 EntertainingSessionAdapter::EntertainingSessionAdapter(EntertainingSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_DOENTERTAINERPATRONEFFECTS__:
@@ -1165,10 +1171,8 @@ Packet* EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		updateEntertainerMissionStatus(inv->getBooleanParameter(), inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void EntertainingSessionAdapter::doEntertainerPatronEffects() {

@@ -30,9 +30,11 @@ DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : Missi
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DeliverMissionObjective");
 }
 
 DeliverMissionObjective::DeliverMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("DeliverMissionObjective");
 }
 
 DeliverMissionObjective::~DeliverMissionObjective() {
@@ -442,11 +444,15 @@ NpcSpawnPoint* DeliverMissionObjectiveImplementation::getDestinationSpawnPoint()
  *	DeliverMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DeliverMissionObjectiveAdapter::DeliverMissionObjectiveAdapter(DeliverMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -489,10 +495,8 @@ Packet* DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertLong(getDestinationSpawnPoint()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DeliverMissionObjectiveAdapter::finalize() {

@@ -26,9 +26,11 @@ GamblingManager::GamblingManager() : Observer(DummyConstructorParameter::instanc
 	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GamblingManager");
 }
 
 GamblingManager::GamblingManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("GamblingManager");
 }
 
 GamblingManager::~GamblingManager() {
@@ -977,11 +979,15 @@ bool GamblingManagerImplementation::isPlaying(CreatureObject* player) {
  *	GamblingManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GamblingManagerAdapter::GamblingManagerAdapter(GamblingManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESLOTTIMER__:
@@ -1072,10 +1078,8 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GamblingManagerAdapter::initializeSlotTimer() {

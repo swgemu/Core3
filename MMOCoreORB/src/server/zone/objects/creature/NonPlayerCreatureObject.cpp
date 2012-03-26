@@ -18,9 +18,11 @@ NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorPar
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("NonPlayerCreatureObject");
 }
 
 NonPlayerCreatureObject::NonPlayerCreatureObject(DummyConstructorParameter* param) : AiAgent(param) {
+	_setClassName("NonPlayerCreatureObject");
 }
 
 NonPlayerCreatureObject::~NonPlayerCreatureObject() {
@@ -218,11 +220,15 @@ bool NonPlayerCreatureObjectImplementation::isCamouflaged(CreatureObject* target
  *	NonPlayerCreatureObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 NonPlayerCreatureObjectAdapter::NonPlayerCreatureObjectAdapter(NonPlayerCreatureObject* obj) : AiAgentAdapter(obj) {
 }
 
-Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -235,10 +241,8 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void NonPlayerCreatureObjectAdapter::initializeTransientMembers() {

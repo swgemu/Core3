@@ -341,7 +341,7 @@ class CraftingSessionAdapter : public FacadeAdapter {
 public:
 	CraftingSessionAdapter(CraftingSession* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int initializeSession(CraftingTool* tool, CraftingStation* station);
 

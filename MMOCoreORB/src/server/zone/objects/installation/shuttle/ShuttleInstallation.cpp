@@ -32,9 +32,11 @@ ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructor
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ShuttleInstallation");
 }
 
 ShuttleInstallation::ShuttleInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
+	_setClassName("ShuttleInstallation");
 }
 
 ShuttleInstallation::~ShuttleInstallation() {
@@ -192,21 +194,23 @@ ShuttleInstallationImplementation::ShuttleInstallationImplementation() {
  *	ShuttleInstallationAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ShuttleInstallationAdapter::ShuttleInstallationAdapter(ShuttleInstallation* obj) : InstallationObjectAdapter(obj) {
 }
 
-Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
 		resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(CreatureObject* player) {

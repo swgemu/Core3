@@ -28,9 +28,11 @@ LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneS
 	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan, server);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LootManager");
 }
 
 LootManager::LootManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("LootManager");
 }
 
 LootManager::~LootManager() {
@@ -282,11 +284,15 @@ String LootManagerImplementation::getRandomLootableMod() {
  *	LootManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LootManagerAdapter::LootManagerAdapter(LootManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -305,10 +311,8 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_), inv->getSignedIntParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void LootManagerAdapter::initialize() {

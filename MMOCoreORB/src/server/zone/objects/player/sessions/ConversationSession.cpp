@@ -18,9 +18,11 @@ ConversationSession::ConversationSession(CreatureObject* conversingCreature) : F
 	ConversationSessionImplementation* _implementation = new ConversationSessionImplementation(conversingCreature);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ConversationSession");
 }
 
 ConversationSession::ConversationSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("ConversationSession");
 }
 
 ConversationSession::~ConversationSession() {
@@ -238,21 +240,23 @@ CreatureObject* ConversationSessionImplementation::getNPC() {
  *	ConversationSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ConversationSessionAdapter::ConversationSessionAdapter(ConversationSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETNPC__:
 		resp->insertLong(getNPC()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 CreatureObject* ConversationSessionAdapter::getNPC() {

@@ -40,9 +40,11 @@ InstallationObject::InstallationObject() : StructureObject(DummyConstructorParam
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("InstallationObject");
 }
 
 InstallationObject::InstallationObject(DummyConstructorParameter* param) : StructureObject(param) {
+	_setClassName("InstallationObject");
 }
 
 InstallationObject::~InstallationObject() {
@@ -862,11 +864,15 @@ bool InstallationObjectImplementation::isGeneratorObject() {
  *	InstallationObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 InstallationObjectAdapter::InstallationObjectAdapter(InstallationObject* obj) : StructureObjectAdapter(obj) {
 }
 
-Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -966,10 +972,8 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertBoolean(isGeneratorObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void InstallationObjectAdapter::initializeTransientMembers() {

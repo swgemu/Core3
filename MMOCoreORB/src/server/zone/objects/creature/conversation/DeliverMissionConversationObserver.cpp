@@ -12,9 +12,11 @@ DeliverMissionConversationObserver::DeliverMissionConversationObserver(Conversat
 	DeliverMissionConversationObserverImplementation* _implementation = new DeliverMissionConversationObserverImplementation(conversationTemplate);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DeliverMissionConversationObserver");
 }
 
 DeliverMissionConversationObserver::DeliverMissionConversationObserver(DummyConstructorParameter* param) : ConversationObserver(param) {
+	_setClassName("DeliverMissionConversationObserver");
 }
 
 DeliverMissionConversationObserver::~DeliverMissionConversationObserver() {
@@ -165,18 +167,20 @@ int DeliverMissionConversationObserverImplementation::writeObjectMembers(ObjectO
  *	DeliverMissionConversationObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DeliverMissionConversationObserverAdapter::DeliverMissionConversationObserverAdapter(DeliverMissionConversationObserver* obj) : ConversationObserverAdapter(obj) {
 }
 
-Packet* DeliverMissionConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DeliverMissionConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

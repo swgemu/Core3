@@ -20,9 +20,11 @@ SpawnArea::SpawnArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	SpawnAreaImplementation* _implementation = new SpawnAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SpawnArea");
 }
 
 SpawnArea::SpawnArea(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("SpawnArea");
 }
 
 SpawnArea::~SpawnArea() {
@@ -410,11 +412,15 @@ bool SpawnAreaImplementation::isLairSpawnArea() {
  *	SpawnAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SpawnAreaAdapter::SpawnAreaAdapter(SpawnArea* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_REGISTEROBSERVERS__:
@@ -445,10 +451,8 @@ Packet* SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isLairSpawnArea());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SpawnAreaAdapter::registerObservers() {

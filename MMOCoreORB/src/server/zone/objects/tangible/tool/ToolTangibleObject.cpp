@@ -18,9 +18,11 @@ ToolTangibleObject::ToolTangibleObject() : TangibleObject(DummyConstructorParame
 	ToolTangibleObjectImplementation* _implementation = new ToolTangibleObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ToolTangibleObject");
 }
 
 ToolTangibleObject::ToolTangibleObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("ToolTangibleObject");
 }
 
 ToolTangibleObject::~ToolTangibleObject() {
@@ -184,21 +186,23 @@ void ToolTangibleObjectImplementation::initializeTransientMembers() {
  *	ToolTangibleObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ToolTangibleObjectAdapter::ToolTangibleObjectAdapter(ToolTangibleObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ToolTangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ToolTangibleObjectAdapter::initializeTransientMembers() {

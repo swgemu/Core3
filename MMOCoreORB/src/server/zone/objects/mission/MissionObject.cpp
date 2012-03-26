@@ -28,9 +28,11 @@ MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::ins
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionObject");
 }
 
 MissionObject::MissionObject(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("MissionObject");
 }
 
 MissionObject::~MissionObject() {
@@ -1626,11 +1628,15 @@ int MissionObjectImplementation::getMissionLevel() {
  *	MissionObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionObjectAdapter::MissionObjectAdapter(MissionObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CREATEWAYPOINT__:
@@ -1808,10 +1814,8 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertSignedInt(getMissionLevel());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 WaypointObject* MissionObjectAdapter::createWaypoint() {

@@ -30,9 +30,11 @@ GuildManager::GuildManager(ZoneServer* serv, ZoneProcessServer* proc) : ManagedS
 	GuildManagerImplementation* _implementation = new GuildManagerImplementation(serv, proc);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GuildManager");
 }
 
 GuildManager::GuildManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("GuildManager");
 }
 
 GuildManager::~GuildManager() {
@@ -915,11 +917,15 @@ GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long pl
  *	GuildManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GuildManagerAdapter::GuildManagerAdapter(GuildManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETCHATMANAGER__CHATMANAGER_:
@@ -1043,10 +1049,8 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(createGuildChannels(static_cast<GuildObject*>(inv->getObjectParameter()))->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GuildManagerAdapter::setChatManager(ChatManager* chatmanager) {

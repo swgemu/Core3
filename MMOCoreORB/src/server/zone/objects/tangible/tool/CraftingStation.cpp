@@ -26,9 +26,11 @@ CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParamete
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CraftingStation");
 }
 
 CraftingStation::CraftingStation(DummyConstructorParameter* param) : ToolTangibleObject(param) {
+	_setClassName("CraftingStation");
 }
 
 CraftingStation::~CraftingStation() {
@@ -400,11 +402,15 @@ void CraftingStationImplementation::setComplexityLevel(int level) {
  *	CraftingStationAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CraftingStationAdapter::CraftingStationAdapter(CraftingStation* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
-Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -435,10 +441,8 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		createChildObjects();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CraftingStationAdapter::initializeTransientMembers() {

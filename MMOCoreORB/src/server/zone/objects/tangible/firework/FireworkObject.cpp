@@ -26,9 +26,11 @@ FireworkObject::FireworkObject() : TangibleObject(DummyConstructorParameter::ins
 	FireworkObjectImplementation* _implementation = new FireworkObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FireworkObject");
 }
 
 FireworkObject::FireworkObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("FireworkObject");
 }
 
 FireworkObject::~FireworkObject() {
@@ -264,11 +266,15 @@ void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
  *	FireworkObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FireworkObjectAdapter::FireworkObjectAdapter(FireworkObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -281,10 +287,8 @@ Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		launch(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FireworkObjectAdapter::initializeTransientMembers() {

@@ -24,9 +24,11 @@ CityRemoveMilitiaSession::CityRemoveMilitiaSession(CreatureObject* creature, Cit
 	CityRemoveMilitiaSessionImplementation* _implementation = new CityRemoveMilitiaSessionImplementation(creature, city, militiaid, terminal);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CityRemoveMilitiaSession");
 }
 
 CityRemoveMilitiaSession::CityRemoveMilitiaSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("CityRemoveMilitiaSession");
 }
 
 CityRemoveMilitiaSession::~CityRemoveMilitiaSession() {
@@ -301,11 +303,15 @@ int CityRemoveMilitiaSessionImplementation::clearSession() {
  *	CityRemoveMilitiaSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CityRemoveMilitiaSessionAdapter::CityRemoveMilitiaSessionAdapter(CityRemoveMilitiaSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* CityRemoveMilitiaSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CityRemoveMilitiaSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETMILITIAID__:
@@ -321,10 +327,8 @@ Packet* CityRemoveMilitiaSessionAdapter::invokeMethod(uint32 methid, Distributed
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 unsigned long long CityRemoveMilitiaSessionAdapter::getMilitiaID() {

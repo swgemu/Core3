@@ -138,7 +138,7 @@ class NonPlayerCreatureObjectAdapter : public AiAgentAdapter {
 public:
 	NonPlayerCreatureObjectAdapter(NonPlayerCreatureObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

@@ -16,9 +16,11 @@ LuaConversationObserver::LuaConversationObserver(ConversationTemplate* conversat
 	LuaConversationObserverImplementation* _implementation = new LuaConversationObserverImplementation(conversationTemplate);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LuaConversationObserver");
 }
 
 LuaConversationObserver::LuaConversationObserver(DummyConstructorParameter* param) : ConversationObserver(param) {
+	_setClassName("LuaConversationObserver");
 }
 
 LuaConversationObserver::~LuaConversationObserver() {
@@ -188,18 +190,20 @@ ConversationScreen* LuaConversationObserverImplementation::runScreenHandlers(Cre
  *	LuaConversationObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LuaConversationObserverAdapter::LuaConversationObserverAdapter(LuaConversationObserver* obj) : ConversationObserverAdapter(obj) {
 }
 
-Packet* LuaConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LuaConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

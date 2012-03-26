@@ -201,7 +201,7 @@ class CityTreasuryWithdrawalSessionAdapter : public FacadeAdapter {
 public:
 	CityTreasuryWithdrawalSessionAdapter(CityTreasuryWithdrawalSession* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void setReason(const String& r);
 

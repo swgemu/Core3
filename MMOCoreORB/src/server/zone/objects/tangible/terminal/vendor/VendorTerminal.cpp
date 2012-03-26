@@ -30,9 +30,11 @@ VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance(
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VendorTerminal");
 }
 
 VendorTerminal::VendorTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("VendorTerminal");
 }
 
 VendorTerminal::~VendorTerminal() {
@@ -345,11 +347,15 @@ CityRegion* VendorTerminalImplementation::getCityRegion() {
  *	VendorTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VendorTerminalAdapter::VendorTerminalAdapter(VendorTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -377,10 +383,8 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isVendorTerminal());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void VendorTerminalAdapter::initializeTransientMembers() {

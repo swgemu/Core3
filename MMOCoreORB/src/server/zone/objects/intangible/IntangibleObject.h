@@ -146,7 +146,7 @@ class IntangibleObjectAdapter : public SceneObjectAdapter {
 public:
 	IntangibleObjectAdapter(IntangibleObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void finalize();
 

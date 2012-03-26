@@ -20,9 +20,11 @@ SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance())
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SignObject");
 }
 
 SignObject::SignObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("SignObject");
 }
 
 SignObject::~SignObject() {
@@ -240,11 +242,15 @@ bool SignObjectImplementation::isSignObject() {
  *	SignObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SignObjectAdapter::SignObjectAdapter(SignObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -260,10 +266,8 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int SignObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

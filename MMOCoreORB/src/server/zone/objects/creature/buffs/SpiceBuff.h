@@ -185,7 +185,7 @@ class SpiceBuffAdapter : public BuffAdapter {
 public:
 	SpiceBuffAdapter(SpiceBuff* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void activate(bool applyModifiers);
 

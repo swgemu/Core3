@@ -20,9 +20,11 @@ StructureDeed::StructureDeed() : Deed(DummyConstructorParameter::instance()) {
 	StructureDeedImplementation* _implementation = new StructureDeedImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StructureDeed");
 }
 
 StructureDeed::StructureDeed(DummyConstructorParameter* param) : Deed(param) {
+	_setClassName("StructureDeed");
 }
 
 StructureDeed::~StructureDeed() {
@@ -490,11 +492,15 @@ bool StructureDeedImplementation::isStructureDeed() {
  *	StructureDeedAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StructureDeedAdapter::StructureDeedAdapter(StructureDeed* obj) : DeedAdapter(obj) {
 }
 
-Packet* StructureDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StructureDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -537,10 +543,8 @@ Packet* StructureDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isStructureDeed());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int StructureDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

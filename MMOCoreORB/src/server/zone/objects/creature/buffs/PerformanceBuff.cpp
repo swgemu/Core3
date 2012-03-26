@@ -20,9 +20,11 @@ PerformanceBuff::PerformanceBuff(CreatureObject* creo, unsigned int buffCRC, flo
 	PerformanceBuffImplementation* _implementation = new PerformanceBuffImplementation(creo, buffCRC, value, duration, typeOfBuff);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PerformanceBuff");
 }
 
 PerformanceBuff::PerformanceBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("PerformanceBuff");
 }
 
 PerformanceBuff::~PerformanceBuff() {
@@ -240,11 +242,15 @@ float PerformanceBuffImplementation::getBuffStrength() {
  *	PerformanceBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PerformanceBuffAdapter::PerformanceBuffAdapter(PerformanceBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* PerformanceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PerformanceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
@@ -257,10 +263,8 @@ Packet* PerformanceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		deactivate(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PerformanceBuffAdapter::activate(bool applyModifiers) {

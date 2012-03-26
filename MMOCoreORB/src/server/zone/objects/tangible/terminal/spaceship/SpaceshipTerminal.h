@@ -120,7 +120,7 @@ class SpaceshipTerminalAdapter : public TerminalAdapter {
 public:
 	SpaceshipTerminalAdapter(SpaceshipTerminal* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

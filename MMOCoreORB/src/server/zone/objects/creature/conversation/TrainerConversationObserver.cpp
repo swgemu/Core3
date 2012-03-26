@@ -14,9 +14,11 @@ TrainerConversationObserver::TrainerConversationObserver(ConversationTemplate* c
 	TrainerConversationObserverImplementation* _implementation = new TrainerConversationObserverImplementation(conversationTemplate);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TrainerConversationObserver");
 }
 
 TrainerConversationObserver::TrainerConversationObserver(DummyConstructorParameter* param) : ConversationObserver(param) {
+	_setClassName("TrainerConversationObserver");
 }
 
 TrainerConversationObserver::~TrainerConversationObserver() {
@@ -167,18 +169,20 @@ int TrainerConversationObserverImplementation::writeObjectMembers(ObjectOutputSt
  *	TrainerConversationObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TrainerConversationObserverAdapter::TrainerConversationObserverAdapter(TrainerConversationObserver* obj) : ConversationObserverAdapter(obj) {
 }
 
-Packet* TrainerConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TrainerConversationObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

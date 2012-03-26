@@ -20,9 +20,11 @@ CreateVendorSession::CreateVendorSession(CreatureObject* parent) : Facade(DummyC
 	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CreateVendorSession");
 }
 
 CreateVendorSession::CreateVendorSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("CreateVendorSession");
 }
 
 CreateVendorSession::~CreateVendorSession() {
@@ -357,11 +359,15 @@ int CreateVendorSessionImplementation::clearSession() {
  *	CreateVendorSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CreateVendorSessionAdapter::CreateVendorSessionAdapter(CreateVendorSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITALIZEWINDOW__CREATUREOBJECT_:
@@ -383,10 +389,8 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CreateVendorSessionAdapter::initalizeWindow(CreatureObject* pl) {

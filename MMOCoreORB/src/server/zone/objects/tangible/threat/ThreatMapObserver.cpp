@@ -16,9 +16,11 @@ ThreatMapObserver::ThreatMapObserver(TangibleObject* me) : Observer(DummyConstru
 	ThreatMapObserverImplementation* _implementation = new ThreatMapObserverImplementation(me);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ThreatMapObserver");
 }
 
 ThreatMapObserver::ThreatMapObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("ThreatMapObserver");
 }
 
 ThreatMapObserver::~ThreatMapObserver() {
@@ -192,21 +194,23 @@ ThreatMapObserverImplementation::ThreatMapObserverImplementation(TangibleObject*
  *	ThreatMapObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ThreatMapObserverAdapter::ThreatMapObserverAdapter(ThreatMapObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* ThreatMapObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ThreatMapObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int ThreatMapObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

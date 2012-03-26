@@ -22,9 +22,11 @@ WeatherManager::WeatherManager(Zone* planet) : ManagedService(DummyConstructorPa
 	WeatherManagerImplementation* _implementation = new WeatherManagerImplementation(planet);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("WeatherManager");
 }
 
 WeatherManager::WeatherManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("WeatherManager");
 }
 
 WeatherManager::~WeatherManager() {
@@ -302,11 +304,15 @@ void WeatherManagerImplementation::setWeatherEnabled(bool value) {
  *	WeatherManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 WeatherManagerAdapter::WeatherManagerAdapter(WeatherManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -337,10 +343,8 @@ Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		printInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void WeatherManagerAdapter::initialize() {

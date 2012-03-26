@@ -22,9 +22,11 @@ DestroyStructureSession::DestroyStructureSession(CreatureObject* creature, Struc
 	DestroyStructureSessionImplementation* _implementation = new DestroyStructureSessionImplementation(creature, structure);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DestroyStructureSession");
 }
 
 DestroyStructureSession::DestroyStructureSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("DestroyStructureSession");
 }
 
 DestroyStructureSession::~DestroyStructureSession() {
@@ -329,11 +331,15 @@ StructureObject* DestroyStructureSessionImplementation::getStructureObject() {
  *	DestroyStructureSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DestroyStructureSessionAdapter::DestroyStructureSessionAdapter(DestroyStructureSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISDESTROYCODE__INT_:
@@ -358,10 +364,8 @@ Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertLong(getStructureObject()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool DestroyStructureSessionAdapter::isDestroyCode(unsigned int code) {

@@ -20,9 +20,11 @@ FishingSession::FishingSession(CreatureObject* player, FishingEvent* event, Scen
 	FishingSessionImplementation* _implementation = new FishingSessionImplementation(player, event, marker, nextAction, fish, boxID, fishingState, mood);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FishingSession");
 }
 
 FishingSession::FishingSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("FishingSession");
 }
 
 FishingSession::~FishingSession() {
@@ -572,11 +574,15 @@ String FishingSessionImplementation::getMoodString() {
  *	FishingSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FishingSessionAdapter::FishingSessionAdapter(FishingSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* FishingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FishingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETMOOD__STRING_:
@@ -622,10 +628,8 @@ Packet* FishingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getMoodString());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FishingSessionAdapter::setMood(const String& m) {

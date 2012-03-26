@@ -204,7 +204,7 @@ class ElevatorTerminalAdapter : public TerminalAdapter {
 public:
 	ElevatorTerminalAdapter(ElevatorTerminal* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 

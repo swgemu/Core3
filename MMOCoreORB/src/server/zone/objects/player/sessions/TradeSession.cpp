@@ -18,9 +18,11 @@ TradeSession::TradeSession() : Facade(DummyConstructorParameter::instance()) {
 	TradeSessionImplementation* _implementation = new TradeSessionImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TradeSession");
 }
 
 TradeSession::TradeSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("TradeSession");
 }
 
 TradeSession::~TradeSession() {
@@ -473,11 +475,15 @@ void TradeSessionImplementation::setVerifiedTrade(bool val) {
  *	TradeSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TradeSessionAdapter::TradeSessionAdapter(TradeSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETACCEPTEDTRADE__:
@@ -517,10 +523,8 @@ Packet* TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		setVerifiedTrade(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool TradeSessionAdapter::getAcceptedTrade() {

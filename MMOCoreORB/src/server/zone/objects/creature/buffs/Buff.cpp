@@ -20,9 +20,11 @@ Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufft
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Buff");
 }
 
 Buff::Buff(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("Buff");
 }
 
 Buff::~Buff() {
@@ -1170,11 +1172,15 @@ bool BuffImplementation::isAttributeBuff() {
  *	BuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 BuffAdapter::BuffAdapter(Buff* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1298,10 +1304,8 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setEndFlyText(inv->getAsciiParameter(_param0_setEndFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_setEndFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void BuffAdapter::initializeTransientMembers() {

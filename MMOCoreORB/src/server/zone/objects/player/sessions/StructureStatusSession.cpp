@@ -14,9 +14,11 @@ StructureStatusSession::StructureStatusSession(StructureObject* structure) : Fac
 	StructureStatusSessionImplementation* _implementation = new StructureStatusSessionImplementation(structure);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StructureStatusSession");
 }
 
 StructureStatusSession::StructureStatusSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("StructureStatusSession");
 }
 
 StructureStatusSession::~StructureStatusSession() {
@@ -251,11 +253,15 @@ int StructureStatusSessionImplementation::clearSession() {
  *	StructureStatusSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StructureStatusSessionAdapter::StructureStatusSessionAdapter(StructureStatusSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* StructureStatusSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StructureStatusSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -271,10 +277,8 @@ Packet* StructureStatusSessionAdapter::invokeMethod(uint32 methid, DistributedMe
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int StructureStatusSessionAdapter::initializeSession() {

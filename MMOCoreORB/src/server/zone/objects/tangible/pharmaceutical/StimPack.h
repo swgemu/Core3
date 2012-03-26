@@ -241,7 +241,7 @@ class StimPackAdapter : public PharmaceuticalObjectAdapter {
 public:
 	StimPackAdapter(StimPack* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue);
 

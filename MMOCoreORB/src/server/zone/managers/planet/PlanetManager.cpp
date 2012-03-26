@@ -34,9 +34,11 @@ PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedServ
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PlanetManager");
 }
 
 PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("PlanetManager");
 }
 
 PlanetManager::~PlanetManager() {
@@ -818,11 +820,15 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
  *	PlanetManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PlanetManagerAdapter::PlanetManagerAdapter(PlanetManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -907,10 +913,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PlanetManagerAdapter::initializeTransientMembers() {

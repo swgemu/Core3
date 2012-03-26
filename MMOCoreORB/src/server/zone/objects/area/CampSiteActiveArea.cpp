@@ -28,9 +28,11 @@ CampSiteActiveArea::CampSiteActiveArea() : ActiveArea(DummyConstructorParameter:
 	CampSiteActiveAreaImplementation* _implementation = new CampSiteActiveAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CampSiteActiveArea");
 }
 
 CampSiteActiveArea::CampSiteActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("CampSiteActiveArea");
 }
 
 CampSiteActiveArea::~CampSiteActiveArea() {
@@ -635,11 +637,15 @@ CreatureObject* CampSiteActiveAreaImplementation::getOwner() {
  *	CampSiteActiveAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CampSiteActiveAreaAdapter::CampSiteActiveAreaAdapter(CampSiteActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -706,10 +712,8 @@ Packet* CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertLong(getOwner()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CampSiteActiveAreaAdapter::initializeTransientMembers() {

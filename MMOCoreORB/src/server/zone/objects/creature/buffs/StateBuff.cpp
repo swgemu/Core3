@@ -16,9 +16,11 @@ StateBuff::StateBuff(CreatureObject* creo, unsigned long long buffState, int dur
 	StateBuffImplementation* _implementation = new StateBuffImplementation(creo, buffState, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StateBuff");
 }
 
 StateBuff::StateBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("StateBuff");
 }
 
 StateBuff::~StateBuff() {
@@ -217,11 +219,15 @@ void StateBuffImplementation::deactivate(bool removeModifiers) {
  *	StateBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StateBuffAdapter::StateBuffAdapter(StateBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* StateBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StateBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
@@ -231,10 +237,8 @@ Packet* StateBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		deactivate(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StateBuffAdapter::activate(bool applyModifiers) {

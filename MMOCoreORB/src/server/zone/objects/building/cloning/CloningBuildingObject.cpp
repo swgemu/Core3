@@ -18,9 +18,11 @@ CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructor
 	CloningBuildingObjectImplementation* _implementation = new CloningBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CloningBuildingObject");
 }
 
 CloningBuildingObject::CloningBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
+	_setClassName("CloningBuildingObject");
 }
 
 CloningBuildingObject::~CloningBuildingObject() {
@@ -256,11 +258,15 @@ void CloningBuildingObjectImplementation::onExit(CreatureObject* player) {
  *	CloningBuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CloningBuildingObjectAdapter::CloningBuildingObjectAdapter(CloningBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
-Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISCLONINGBUILDINGOBJECT__:
@@ -273,10 +279,8 @@ Packet* CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool CloningBuildingObjectAdapter::isCloningBuildingObject() {

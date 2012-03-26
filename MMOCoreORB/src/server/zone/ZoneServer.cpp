@@ -64,9 +64,11 @@ ZoneServer::ZoneServer(ConfigManager* config) : ManagedService(DummyConstructorP
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(config);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ZoneServer");
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("ZoneServer");
 }
 
 ZoneServer::~ZoneServer() {
@@ -1485,11 +1487,15 @@ void ZoneServerImplementation::setServerState(int state) {
  *	ZoneServerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ZoneServerAdapter::ZoneServerAdapter(ZoneServer* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1673,10 +1679,8 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getLoginMessage());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ZoneServerAdapter::initializeTransientMembers() {

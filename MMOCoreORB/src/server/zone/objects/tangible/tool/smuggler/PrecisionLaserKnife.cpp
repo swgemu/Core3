@@ -30,9 +30,11 @@ PrecisionLaserKnife::PrecisionLaserKnife() : SlicingTool(DummyConstructorParamet
 	PrecisionLaserKnifeImplementation* _implementation = new PrecisionLaserKnifeImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PrecisionLaserKnife");
 }
 
 PrecisionLaserKnife::PrecisionLaserKnife(DummyConstructorParameter* param) : SlicingTool(param) {
+	_setClassName("PrecisionLaserKnife");
 }
 
 PrecisionLaserKnife::~PrecisionLaserKnife() {
@@ -291,11 +293,15 @@ int PrecisionLaserKnifeImplementation::getCharges() {
  *	PrecisionLaserKnifeAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PrecisionLaserKnifeAdapter::PrecisionLaserKnifeAdapter(PrecisionLaserKnife* obj) : SlicingToolAdapter(obj) {
 }
 
-Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -311,10 +317,8 @@ Packet* PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMetho
 		resp->insertSignedInt(getCharges());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int PrecisionLaserKnifeAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

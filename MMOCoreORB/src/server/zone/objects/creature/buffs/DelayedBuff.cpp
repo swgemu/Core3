@@ -20,9 +20,11 @@ DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duratio
 	DelayedBuffImplementation* _implementation = new DelayedBuffImplementation(creo, buffcrc, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DelayedBuff");
 }
 
 DelayedBuff::DelayedBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("DelayedBuff");
 }
 
 DelayedBuff::~DelayedBuff() {
@@ -258,11 +260,15 @@ void DelayedBuffImplementation::setUsesRemaining(int uses) {
  *	DelayedBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DelayedBuffAdapter::DelayedBuffAdapter(DelayedBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__:
@@ -278,10 +284,8 @@ Packet* DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setUsesRemaining(inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DelayedBuffAdapter::activate() {

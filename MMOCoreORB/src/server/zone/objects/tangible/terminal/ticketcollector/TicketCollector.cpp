@@ -22,9 +22,11 @@ TicketCollector::TicketCollector() : Terminal(DummyConstructorParameter::instanc
 	TicketCollectorImplementation* _implementation = new TicketCollectorImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TicketCollector");
 }
 
 TicketCollector::TicketCollector(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("TicketCollector");
 }
 
 TicketCollector::~TicketCollector() {
@@ -236,11 +238,15 @@ bool TicketCollectorImplementation::isTicketCollector() {
  *	TicketCollectorAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TicketCollectorAdapter::TicketCollectorAdapter(TicketCollector* obj) : TerminalAdapter(obj) {
 }
 
-Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -256,10 +262,8 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isTicketCollector());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TicketCollectorAdapter::initializeTransientMembers() {

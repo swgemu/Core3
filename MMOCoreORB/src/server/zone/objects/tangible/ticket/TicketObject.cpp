@@ -24,9 +24,11 @@ TicketObject::TicketObject() : TangibleObject(DummyConstructorParameter::instanc
 	TicketObjectImplementation* _implementation = new TicketObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TicketObject");
 }
 
 TicketObject::TicketObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("TicketObject");
 }
 
 TicketObject::~TicketObject() {
@@ -436,11 +438,15 @@ bool TicketObjectImplementation::isTicketObject() {
  *	TicketObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TicketObjectAdapter::TicketObjectAdapter(TicketObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -477,10 +483,8 @@ Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isTicketObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TicketObjectAdapter::initializeTransientMembers() {

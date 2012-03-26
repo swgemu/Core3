@@ -142,7 +142,7 @@ class ShipControlDeviceAdapter : public ControlDeviceAdapter {
 public:
 	ShipControlDeviceAdapter(ShipControlDevice* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void storeObject(CreatureObject* player);
 

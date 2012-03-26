@@ -36,9 +36,11 @@ TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instan
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TangibleObject");
 }
 
 TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("TangibleObject");
 }
 
 TangibleObject::~TangibleObject() {
@@ -1720,11 +1722,15 @@ float TangibleObjectImplementation::getConditionReduction(float value) {
  *	TangibleObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TangibleObjectAdapter::TangibleObjectAdapter(TangibleObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZEMEMBERS__:
@@ -1935,10 +1941,8 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getNearbyCraftingStation(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TangibleObjectAdapter::initializeMembers() {

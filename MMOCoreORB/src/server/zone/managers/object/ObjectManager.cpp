@@ -28,7 +28,7 @@
 
 using namespace engine::db;
 
-ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
+ObjectManager::ObjectManager() : DOBObjectManager(), Logger("ObjectManager") {
 	server = NULL;
 	objectUpdateInProcess = false;
 
@@ -841,50 +841,39 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 	return object;
 }
 
-
 ManagedObject* ObjectManager::createObject(const String& className, int persistenceLevel, const String& database, uint64 oid, bool initializeTransientMembers) {
 	ManagedObject* object = NULL;
 
 	Locker _locker(this);
 
-	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
+	DistributedObjectBroker* broker = DistributedObjectBroker::instance();
 
-	DistributedObjectClassHelper* helper = classMap->get(className);
+	object = cast<ManagedObject*>(broker->createObjectStub(className, ""));
+	DistributedObjectServant* servant = broker->createObjectServant(className, object);
 
-	if (helper != NULL) {
-		object = cast<ManagedObject*>( helper->instantiateObject());
-		DistributedObjectServant* servant = helper->instantiateServant();
+	loadTable(database, oid);
 
-		loadTable(database, oid);
+	if (oid == 0) {
+		oid = getNextObjectID(database);
+	}
 
-		if (oid == 0) {
-			oid = getNextObjectID(database);
-		}
+	object->_setObjectID(oid);
 
-		object->_setObjectID(oid);
-		object->_setImplementation(servant);
+	servant->_serializationHelperMethod();
 
-		servant->_setStub(object);
-		servant->_setClassHelper(helper);
-		servant->_serializationHelperMethod();
+	if (initializeTransientMembers)
+		object->initializeTransientMembers();
 
-		if (initializeTransientMembers)
-			object->initializeTransientMembers();
+	object->setPersistent(persistenceLevel);
 
-		object->setPersistent(persistenceLevel);
+	object->deploy();
 
-		object->deploy();
+	databaseManager->addTemporaryObject(object);
 
-		databaseManager->addTemporaryObject(object);
+	if (persistenceLevel > 0) {
+		updatePersistentObject(object);
 
-		if (persistenceLevel > 0) {
-			updatePersistentObject(object);
-
-			object->queueUpdateToDatabaseTask();
-		}
-
-	} else {
-		error("unknown className:" + className + " in classMap");
+		object->queueUpdateToDatabaseTask();
 	}
 
 	return object;

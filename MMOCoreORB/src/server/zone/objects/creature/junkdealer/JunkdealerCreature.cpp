@@ -18,9 +18,11 @@ JunkdealerCreature::JunkdealerCreature() : CreatureObject(DummyConstructorParame
 	JunkdealerCreatureImplementation* _implementation = new JunkdealerCreatureImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("JunkdealerCreature");
 }
 
 JunkdealerCreature::JunkdealerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
+	_setClassName("JunkdealerCreature");
 }
 
 JunkdealerCreature::~JunkdealerCreature() {
@@ -339,11 +341,15 @@ bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
  *	JunkdealerCreatureAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 JunkdealerCreatureAdapter::JunkdealerCreatureAdapter(JunkdealerCreature* obj) : CreatureObjectAdapter(obj) {
 }
 
-Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATERECOVERY__:
@@ -374,10 +380,8 @@ Packet* JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod
 		createSellJunkLootSelection(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void JunkdealerCreatureAdapter::activateRecovery() {

@@ -30,9 +30,11 @@ DestroyMissionObjective::DestroyMissionObjective(MissionObject* mission) : Missi
 	DestroyMissionObjectiveImplementation* _implementation = new DestroyMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DestroyMissionObjective");
 }
 
 DestroyMissionObjective::DestroyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("DestroyMissionObjective");
 }
 
 DestroyMissionObjective::~DestroyMissionObjective() {
@@ -389,11 +391,15 @@ void DestroyMissionObjectiveImplementation::setDifficulty(int min, int max) {
  *	DestroyMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DestroyMissionObjectiveAdapter::DestroyMissionObjectiveAdapter(DestroyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -424,10 +430,8 @@ Packet* DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedM
 		setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DestroyMissionObjectiveAdapter::finalize() {

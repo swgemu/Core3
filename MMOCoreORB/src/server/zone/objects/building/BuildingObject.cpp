@@ -26,9 +26,11 @@ BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::in
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("BuildingObject");
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : StructureObject(param) {
+	_setClassName("BuildingObject");
 }
 
 BuildingObject::~BuildingObject() {
@@ -1084,11 +1086,15 @@ bool BuildingObjectImplementation::togglePrivacy() {
  *	BuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 BuildingObjectAdapter::BuildingObjectAdapter(BuildingObject* obj) : StructureObjectAdapter(obj) {
 }
 
-Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CREATECELLOBJECTS__:
@@ -1227,10 +1233,8 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertInt(getMaximumNumberOfPlayerItems());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void BuildingObjectAdapter::createCellObjects() {

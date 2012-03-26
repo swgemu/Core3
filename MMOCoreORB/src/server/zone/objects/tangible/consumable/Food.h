@@ -131,7 +131,7 @@ class FoodAdapter : public ConsumableAdapter {
 public:
 	FoodAdapter(Food* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

@@ -34,9 +34,11 @@ MissionManager::MissionManager(ZoneServer* srv, ZoneProcessServer* impl) : Obser
 	MissionManagerImplementation* _implementation = new MissionManagerImplementation(srv, impl);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionManager");
 }
 
 MissionManager::MissionManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("MissionManager");
 }
 
 MissionManager::~MissionManager() {
@@ -1157,11 +1159,15 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* srv, Zone
  *	MissionManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionManagerAdapter::MissionManagerAdapter(MissionManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_LOADLUASETTINGS__:
@@ -1327,10 +1333,8 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		failPlayerBountyMission(inv->getUnsignedLongParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void MissionManagerAdapter::loadLuaSettings() {

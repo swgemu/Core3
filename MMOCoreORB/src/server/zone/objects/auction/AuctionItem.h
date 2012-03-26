@@ -377,7 +377,7 @@ class AuctionItemAdapter : public ManagedObjectAdapter {
 public:
 	AuctionItemAdapter(AuctionItem* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 

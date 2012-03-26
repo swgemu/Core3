@@ -34,9 +34,11 @@ CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorPar
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CreatureManager");
 }
 
 CreatureManager::CreatureManager(DummyConstructorParameter* param) : ZoneManager(param) {
+	_setClassName("CreatureManager");
 }
 
 CreatureManager::~CreatureManager() {
@@ -565,11 +567,15 @@ Vector<ManagedReference<SpawnArea* > >* CreatureManagerImplementation::getWorldS
  *	CreatureManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CreatureManagerAdapter::CreatureManagerAdapter(CreatureManager* obj) : ZoneManagerAdapter(obj) {
 }
 
-Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -627,10 +633,8 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertLong(getSpawnArea(inv->getAsciiParameter(_param0_getSpawnArea__String_))->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CreatureManagerAdapter::initialize() {

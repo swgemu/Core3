@@ -133,7 +133,7 @@ class ClothingObjectAdapter : public WearableObjectAdapter {
 public:
 	ClothingObjectAdapter(ClothingObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
 

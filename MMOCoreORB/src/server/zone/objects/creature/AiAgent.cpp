@@ -42,9 +42,11 @@ AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("AiAgent");
 }
 
 AiAgent::AiAgent(DummyConstructorParameter* param) : CreatureObject(param) {
+	_setClassName("AiAgent");
 }
 
 AiAgent::~AiAgent() {
@@ -1987,11 +1989,15 @@ void AiAgentImplementation::setShowNextPosition(bool val) {
  *	AiAgentAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AiAgentAdapter::AiAgentAdapter(AiAgent* obj) : CreatureObjectAdapter(obj) {
 }
 
-Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -2232,10 +2238,8 @@ Packet* AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setShowNextPosition(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void AiAgentAdapter::initializeTransientMembers() {

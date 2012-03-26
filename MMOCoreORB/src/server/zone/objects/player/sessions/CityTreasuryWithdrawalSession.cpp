@@ -24,9 +24,11 @@ CityTreasuryWithdrawalSession::CityTreasuryWithdrawalSession(CreatureObject* cre
 	CityTreasuryWithdrawalSessionImplementation* _implementation = new CityTreasuryWithdrawalSessionImplementation(creature, city, terminal);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CityTreasuryWithdrawalSession");
 }
 
 CityTreasuryWithdrawalSession::CityTreasuryWithdrawalSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("CityTreasuryWithdrawalSession");
 }
 
 CityTreasuryWithdrawalSession::~CityTreasuryWithdrawalSession() {
@@ -328,11 +330,15 @@ int CityTreasuryWithdrawalSessionImplementation::clearSession() {
  *	CityTreasuryWithdrawalSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CityTreasuryWithdrawalSessionAdapter::CityTreasuryWithdrawalSessionAdapter(CityTreasuryWithdrawalSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETREASON__STRING_:
@@ -354,10 +360,8 @@ Packet* CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, Distri
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CityTreasuryWithdrawalSessionAdapter::setReason(const String& r) {

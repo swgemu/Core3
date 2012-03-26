@@ -24,9 +24,11 @@ ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructor
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ManufactureSchematic");
 }
 
 ManufactureSchematic::ManufactureSchematic(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("ManufactureSchematic");
 }
 
 ManufactureSchematic::~ManufactureSchematic() {
@@ -934,11 +936,15 @@ BlueprintEntry* ManufactureSchematicImplementation::getBlueprintEntry(int i) {
  *	ManufactureSchematicAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ManufactureSchematicAdapter::ManufactureSchematicAdapter(ManufactureSchematic* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1044,10 +1050,8 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertSignedInt(getBlueprintSize());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ManufactureSchematicAdapter::initializeTransientMembers() {

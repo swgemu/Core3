@@ -18,9 +18,11 @@ GarageArea::GarageArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	GarageAreaImplementation* _implementation = new GarageAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GarageArea");
 }
 
 GarageArea::GarageArea(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("GarageArea");
 }
 
 GarageArea::~GarageArea() {
@@ -188,21 +190,23 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
  *	GarageAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GarageAreaAdapter::GarageAreaAdapter(GarageArea* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GarageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GarageAreaAdapter::notifyEnter(SceneObject* player) {

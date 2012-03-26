@@ -30,9 +30,11 @@ Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance())
 	InstrumentImplementation* _implementation = new InstrumentImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Instrument");
 }
 
 Instrument::Instrument(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Instrument");
 }
 
 Instrument::~Instrument() {
@@ -490,11 +492,15 @@ void InstrumentImplementation::setBeingUsed(bool val) {
  *	InstrumentAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 InstrumentAdapter::InstrumentAdapter(Instrument* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -534,10 +540,8 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setBeingUsed(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void InstrumentAdapter::initializeTransientMembers() {

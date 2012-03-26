@@ -28,9 +28,11 @@ GamblingTerminal::GamblingTerminal() : Terminal(DummyConstructorParameter::insta
 	GamblingTerminalImplementation* _implementation = new GamblingTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GamblingTerminal");
 }
 
 GamblingTerminal::GamblingTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("GamblingTerminal");
 }
 
 GamblingTerminal::~GamblingTerminal() {
@@ -1008,11 +1010,15 @@ bool GamblingTerminalImplementation::gameRunning() {
  *	GamblingTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GamblingTerminalAdapter::GamblingTerminalAdapter(GamblingTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1106,10 +1112,8 @@ Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		statusUpdate(inv->getSignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GamblingTerminalAdapter::initializeTransientMembers() {

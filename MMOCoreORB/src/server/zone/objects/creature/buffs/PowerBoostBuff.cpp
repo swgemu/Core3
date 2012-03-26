@@ -20,9 +20,11 @@ PowerBoostBuff::PowerBoostBuff(CreatureObject* creo, const String& name, unsigne
 	PowerBoostBuffImplementation* _implementation = new PowerBoostBuffImplementation(creo, name, buffCRC, value, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PowerBoostBuff");
 }
 
 PowerBoostBuff::PowerBoostBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("PowerBoostBuff");
 }
 
 PowerBoostBuff::~PowerBoostBuff() {
@@ -321,11 +323,15 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo,
  *	PowerBoostBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PowerBoostBuffAdapter::PowerBoostBuffAdapter(PowerBoostBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -347,10 +353,8 @@ Packet* PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		clearBuffEvent();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PowerBoostBuffAdapter::initializeTransientMembers() {

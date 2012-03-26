@@ -22,9 +22,11 @@ CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructor
 	CharacterBuilderTerminalImplementation* _implementation = new CharacterBuilderTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CharacterBuilderTerminal");
 }
 
 CharacterBuilderTerminal::CharacterBuilderTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("CharacterBuilderTerminal");
 }
 
 CharacterBuilderTerminal::~CharacterBuilderTerminal() {
@@ -247,11 +249,15 @@ CharacterBuilderTerminalImplementation::CharacterBuilderTerminalImplementation()
  *	CharacterBuilderTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CharacterBuilderTerminalAdapter::CharacterBuilderTerminalAdapter(CharacterBuilderTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -270,10 +276,8 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 		enhanceCharacter(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CharacterBuilderTerminalAdapter::initializeTransientMembers() {

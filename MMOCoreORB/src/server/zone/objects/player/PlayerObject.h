@@ -1416,7 +1416,7 @@ class PlayerObjectAdapter : public IntangibleObjectAdapter {
 public:
 	PlayerObjectAdapter(PlayerObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void finalize();
 

@@ -32,9 +32,11 @@ Consumable::Consumable() : TangibleObject(DummyConstructorParameter::instance())
 	ConsumableImplementation* _implementation = new ConsumableImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Consumable");
 }
 
 Consumable::Consumable(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Consumable");
 }
 
 Consumable::~Consumable() {
@@ -631,11 +633,15 @@ bool ConsumableImplementation::isSpice() {
  *	ConsumableAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ConsumableAdapter::ConsumableAdapter(Consumable* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -663,10 +669,8 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isSpice());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int ConsumableAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

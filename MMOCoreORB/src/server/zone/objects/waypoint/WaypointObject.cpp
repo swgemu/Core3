@@ -18,9 +18,11 @@ WaypointObject::WaypointObject() : IntangibleObject(DummyConstructorParameter::i
 	WaypointObjectImplementation* _implementation = new WaypointObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("WaypointObject");
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("WaypointObject");
 }
 
 WaypointObject::~WaypointObject() {
@@ -510,11 +512,15 @@ void WaypointObjectImplementation::setDetailedDescription(const String& desc) {
  *	WaypointObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 WaypointObjectAdapter::WaypointObjectAdapter(WaypointObject* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETCELLID__INT_:
@@ -557,10 +563,8 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setDetailedDescription(inv->getAsciiParameter(_param0_setDetailedDescription__String_));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void WaypointObjectAdapter::setCellID(unsigned int id) {

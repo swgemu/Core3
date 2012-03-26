@@ -24,9 +24,11 @@ LootkitObject::LootkitObject() : TangibleObject(DummyConstructorParameter::insta
 	LootkitObjectImplementation* _implementation = new LootkitObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LootkitObject");
 }
 
 LootkitObject::LootkitObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("LootkitObject");
 }
 
 LootkitObject::~LootkitObject() {
@@ -322,11 +324,15 @@ void LootkitObjectImplementation::initializeTransientMembers() {
  *	LootkitObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LootkitObjectAdapter::LootkitObjectAdapter(LootkitObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -345,10 +351,8 @@ Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void LootkitObjectAdapter::initializeTransientMembers() {

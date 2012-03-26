@@ -18,9 +18,11 @@ Food::Food() : Consumable(DummyConstructorParameter::instance()) {
 	FoodImplementation* _implementation = new FoodImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Food");
 }
 
 Food::Food(DummyConstructorParameter* param) : Consumable(param) {
+	_setClassName("Food");
 }
 
 Food::~Food() {
@@ -204,11 +206,15 @@ void FoodImplementation::initializePrivateData() {
  *	FoodAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FoodAdapter::FoodAdapter(Food* obj) : ConsumableAdapter(obj) {
 }
 
-Packet* FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -218,10 +224,8 @@ Packet* FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializePrivateData();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FoodAdapter::initializeTransientMembers() {

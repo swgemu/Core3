@@ -30,9 +30,11 @@ VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorPar
 	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VehicleControlDevice");
 }
 
 VehicleControlDevice::VehicleControlDevice(DummyConstructorParameter* param) : ControlDevice(param) {
+	_setClassName("VehicleControlDevice");
 }
 
 VehicleControlDevice::~VehicleControlDevice() {
@@ -338,11 +340,15 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
  *	VehicleControlDeviceAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VehicleControlDeviceAdapter::VehicleControlDeviceAdapter(VehicleControlDevice* obj) : ControlDeviceAdapter(obj) {
 }
 
-Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
@@ -367,10 +373,8 @@ Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void VehicleControlDeviceAdapter::storeObject(CreatureObject* player) {

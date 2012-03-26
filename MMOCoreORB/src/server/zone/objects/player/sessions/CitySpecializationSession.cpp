@@ -24,9 +24,11 @@ CitySpecializationSession::CitySpecializationSession(CreatureObject* creature, C
 	CitySpecializationSessionImplementation* _implementation = new CitySpecializationSessionImplementation(creature, city, terminal);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CitySpecializationSession");
 }
 
 CitySpecializationSession::CitySpecializationSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("CitySpecializationSession");
 }
 
 CitySpecializationSession::~CitySpecializationSession() {
@@ -308,11 +310,15 @@ int CitySpecializationSessionImplementation::clearSession() {
  *	CitySpecializationSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CitySpecializationSessionAdapter::CitySpecializationSessionAdapter(CitySpecializationSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* CitySpecializationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CitySpecializationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -331,10 +337,8 @@ Packet* CitySpecializationSessionAdapter::invokeMethod(uint32 methid, Distribute
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int CitySpecializationSessionAdapter::initializeSession() {

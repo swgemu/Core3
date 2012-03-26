@@ -20,9 +20,11 @@ MissionObserver::MissionObserver(MissionObjective* objective) : Observer(DummyCo
 	MissionObserverImplementation* _implementation = new MissionObserverImplementation(objective);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionObserver");
 }
 
 MissionObserver::MissionObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("MissionObserver");
 }
 
 MissionObserver::~MissionObserver() {
@@ -211,11 +213,15 @@ MissionObserverImplementation::MissionObserverImplementation(MissionObjective* o
  *	MissionObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionObserverAdapter::MissionObserverAdapter(MissionObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
@@ -225,10 +231,8 @@ Packet* MissionObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		destroyObjectFromDatabase();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int MissionObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

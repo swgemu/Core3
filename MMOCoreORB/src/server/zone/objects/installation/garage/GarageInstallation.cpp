@@ -16,9 +16,11 @@ GarageInstallation::GarageInstallation() : InstallationObject(DummyConstructorPa
 	GarageInstallationImplementation* _implementation = new GarageInstallationImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GarageInstallation");
 }
 
 GarageInstallation::GarageInstallation(DummyConstructorParameter* param) : InstallationObject(param) {
+	_setClassName("GarageInstallation");
 }
 
 GarageInstallation::~GarageInstallation() {
@@ -202,11 +204,15 @@ GarageInstallationImplementation::GarageInstallationImplementation() {
  *	GarageInstallationAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GarageInstallationAdapter::GarageInstallationAdapter(GarageInstallation* obj) : InstallationObjectAdapter(obj) {
 }
 
-Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CREATECHILDOBJECTS__:
@@ -216,10 +222,8 @@ Packet* GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GarageInstallationAdapter::createChildObjects() {

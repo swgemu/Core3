@@ -18,9 +18,11 @@ RecreationBuildingObject::RecreationBuildingObject() : BuildingObject(DummyConst
 	RecreationBuildingObjectImplementation* _implementation = new RecreationBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("RecreationBuildingObject");
 }
 
 RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
+	_setClassName("RecreationBuildingObject");
 }
 
 RecreationBuildingObject::~RecreationBuildingObject() {
@@ -242,11 +244,15 @@ void RecreationBuildingObjectImplementation::onExit(CreatureObject* player) {
  *	RecreationBuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RecreationBuildingObjectAdapter::RecreationBuildingObjectAdapter(RecreationBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
-Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISRECREATIONALBUILDINGOBJECT__:
@@ -259,10 +265,8 @@ Packet* RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, Distributed
 		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool RecreationBuildingObjectAdapter::isRecreationalBuildingObject() {

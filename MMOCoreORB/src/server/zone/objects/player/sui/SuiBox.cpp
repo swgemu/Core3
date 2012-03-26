@@ -22,9 +22,11 @@ SuiBox::SuiBox(CreatureObject* play, unsigned int windowtype, unsigned int boxty
 	SuiBoxImplementation* _implementation = new SuiBoxImplementation(play, windowtype, boxtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiBox");
 }
 
 SuiBox::SuiBox(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("SuiBox");
 }
 
 SuiBox::~SuiBox() {
@@ -1121,11 +1123,15 @@ SuiCallback* SuiBoxImplementation::getCallback() {
  *	SuiBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiBoxAdapter::SuiBoxAdapter(SuiBox* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -1240,10 +1246,8 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setUsingObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SuiBoxAdapter::initialize() {

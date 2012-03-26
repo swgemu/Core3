@@ -26,9 +26,11 @@ Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Creature");
 }
 
 Creature::Creature(DummyConstructorParameter* param) : AiAgent(param) {
+	_setClassName("Creature");
 }
 
 Creature::~Creature() {
@@ -538,11 +540,15 @@ float CreatureImplementation::getMeatMax() {
  *	CreatureAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CreatureAdapter::CreatureAdapter(Creature* obj) : AiAgentAdapter(obj) {
 }
 
-Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -606,10 +612,8 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertFloat(getMeatMax());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CreatureAdapter::initializeTransientMembers() {

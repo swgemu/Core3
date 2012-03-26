@@ -20,9 +20,11 @@ SuiKeypadBox::SuiKeypadBox(CreatureObject* player, unsigned int windowType) : Su
 	SuiKeypadBoxImplementation* _implementation = new SuiKeypadBoxImplementation(player, windowType);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiKeypadBox");
 }
 
 SuiKeypadBox::SuiKeypadBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiKeypadBox");
 }
 
 SuiKeypadBox::~SuiKeypadBox() {
@@ -195,11 +197,15 @@ bool SuiKeypadBoxImplementation::isKeypadBox() {
  *	SuiKeypadBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiKeypadBoxAdapter::SuiKeypadBoxAdapter(SuiKeypadBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiKeypadBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiKeypadBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
@@ -209,10 +215,8 @@ Packet* SuiKeypadBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isKeypadBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 BaseMessage* SuiKeypadBoxAdapter::generateMessage() {

@@ -16,9 +16,11 @@ TrainerConversationSession::TrainerConversationSession(CreatureObject* npc) : Co
 	TrainerConversationSessionImplementation* _implementation = new TrainerConversationSessionImplementation(npc);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TrainerConversationSession");
 }
 
 TrainerConversationSession::TrainerConversationSession(DummyConstructorParameter* param) : ConversationSession(param) {
+	_setClassName("TrainerConversationSession");
 }
 
 TrainerConversationSession::~TrainerConversationSession() {
@@ -428,11 +430,15 @@ void TrainerConversationSessionImplementation::setMasterSkill(String& skillName)
  *	TrainerConversationSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TrainerConversationSessionAdapter::TrainerConversationSessionAdapter(TrainerConversationSession* obj) : ConversationSessionAdapter(obj) {
 }
 
-Packet* TrainerConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TrainerConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CLEARTRAINABLESKILLS__:
@@ -472,10 +478,8 @@ Packet* TrainerConversationSessionAdapter::invokeMethod(uint32 methid, Distribut
 		setMasterSkill(inv->getAsciiParameter(_param0_setMasterSkill__String_));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TrainerConversationSessionAdapter::clearTrainableSkills() {

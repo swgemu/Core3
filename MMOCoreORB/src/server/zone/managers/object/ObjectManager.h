@@ -72,7 +72,7 @@ namespace zone {
 	namespace managers {
 	namespace object {
 
-	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager>, public Object {
+	class ObjectManager : public DOBObjectManager, public Logger, public Singleton<ObjectManager>, public Object {
 		ManagedReference<ZoneProcessServer*> server;
 
 		ObjectDatabaseManager* databaseManager;

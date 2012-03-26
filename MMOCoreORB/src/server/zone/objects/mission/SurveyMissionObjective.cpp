@@ -22,9 +22,11 @@ SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : Mission
 	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SurveyMissionObjective");
 }
 
 SurveyMissionObjective::SurveyMissionObjective(DummyConstructorParameter* param) : MissionObjective(param) {
+	_setClassName("SurveyMissionObjective");
 }
 
 SurveyMissionObjective::~SurveyMissionObjective() {
@@ -314,11 +316,15 @@ void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
  *	SurveyMissionObjectiveAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SurveyMissionObjectiveAdapter::SurveyMissionObjectiveAdapter(SurveyMissionObjective* obj) : MissionObjectiveAdapter(obj) {
 }
 
-Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -346,10 +352,8 @@ Packet* SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 		setEfficiency(inv->getUnsignedIntParameter());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SurveyMissionObjectiveAdapter::finalize() {

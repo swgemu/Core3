@@ -20,9 +20,11 @@ LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LairObserver");
 }
 
 LairObserver::LairObserver(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("LairObserver");
 }
 
 LairObserver::~LairObserver() {
@@ -346,11 +348,15 @@ bool LairObserverImplementation::isLairObserver() {
  *	LairObserverAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LairObserverAdapter::LairObserverAdapter(LairObserver* obj) : ObserverAdapter(obj) {
 }
 
-Packet* LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
@@ -375,10 +381,8 @@ Packet* LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(isLairObserver());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int LairObserverAdapter::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

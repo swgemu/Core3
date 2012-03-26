@@ -26,9 +26,11 @@ VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::ins
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VendorCreature");
 }
 
 VendorCreature::VendorCreature(DummyConstructorParameter* param) : CreatureObject(param) {
+	_setClassName("VendorCreature");
 }
 
 VendorCreature::~VendorCreature() {
@@ -370,11 +372,15 @@ bool VendorCreatureImplementation::isVendorCreature() {
  *	VendorCreatureAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VendorCreatureAdapter::VendorCreatureAdapter(VendorCreature* obj) : CreatureObjectAdapter(obj) {
 }
 
-Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -408,10 +414,8 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isVendorCreature());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void VendorCreatureAdapter::initializeTransientMembers() {

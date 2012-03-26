@@ -32,9 +32,11 @@ FishingManager::FishingManager() : Observer(DummyConstructorParameter::instance(
 	FishingManagerImplementation* _implementation = new FishingManagerImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FishingManager");
 }
 
 FishingManager::FishingManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("FishingManager");
 }
 
 FishingManager::~FishingManager() {
@@ -1162,11 +1164,15 @@ int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Ob
  *	FishingManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FishingManagerAdapter::FishingManagerAdapter(FishingManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZEBAITSTATUS__:
@@ -1305,10 +1311,8 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		stopFishingEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FishingManagerAdapter::initializeBaitStatus() {

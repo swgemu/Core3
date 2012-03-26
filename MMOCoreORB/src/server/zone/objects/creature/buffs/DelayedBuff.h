@@ -173,7 +173,7 @@ class DelayedBuffAdapter : public BuffAdapter {
 public:
 	DelayedBuffAdapter(DelayedBuff* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void activate();
 

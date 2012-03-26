@@ -20,9 +20,11 @@ GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) 
 	GuildObjectImplementation* _implementation = new GuildObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GuildObject");
 }
 
 GuildObject::GuildObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("GuildObject");
 }
 
 GuildObject::~GuildObject() {
@@ -849,11 +851,15 @@ bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
  *	GuildObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GuildObjectAdapter::GuildObjectAdapter(GuildObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
@@ -956,10 +962,8 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GuildObjectAdapter::sendBaselinesTo(SceneObject* player) {

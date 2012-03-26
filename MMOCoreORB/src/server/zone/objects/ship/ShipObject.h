@@ -126,7 +126,7 @@ class ShipObjectAdapter : public TangibleObjectAdapter {
 public:
 	ShipObjectAdapter(ShipObject* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	unsigned short getUniqueID();
 

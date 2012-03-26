@@ -20,9 +20,11 @@ SuiInputBox::SuiInputBox(CreatureObject* player, unsigned int windowType, int in
 	SuiInputBoxImplementation* _implementation = new SuiInputBoxImplementation(player, windowType, inputtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiInputBox");
 }
 
 SuiInputBox::SuiInputBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiInputBox");
 }
 
 SuiInputBox::~SuiInputBox() {
@@ -294,11 +296,15 @@ bool SuiInputBoxImplementation::isInputBox() {
  *	SuiInputBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiInputBoxAdapter::SuiInputBoxAdapter(SuiInputBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
@@ -317,10 +323,8 @@ Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isInputBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 BaseMessage* SuiInputBoxAdapter::generateMessage() {

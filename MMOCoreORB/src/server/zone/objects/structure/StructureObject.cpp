@@ -28,9 +28,11 @@ StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::i
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StructureObject");
 }
 
 StructureObject::StructureObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("StructureObject");
 }
 
 StructureObject::~StructureObject() {
@@ -1344,11 +1346,15 @@ bool StructureObjectImplementation::isRedeedable() {
  *	StructureObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StructureObjectAdapter::StructureObjectAdapter(StructureObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1526,10 +1532,8 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isRedeedable());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StructureObjectAdapter::initializeTransientMembers() {

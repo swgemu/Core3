@@ -28,9 +28,11 @@ PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, Structure
 	PlaceStructureSessionImplementation* _implementation = new PlaceStructureSessionImplementation(creature, deed);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PlaceStructureSession");
 }
 
 PlaceStructureSession::PlaceStructureSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("PlaceStructureSession");
 }
 
 PlaceStructureSession::~PlaceStructureSession() {
@@ -366,11 +368,15 @@ int PlaceStructureSessionImplementation::clearSession() {
  *	PlaceStructureSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PlaceStructureSessionAdapter::PlaceStructureSessionAdapter(PlaceStructureSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -389,10 +395,8 @@ Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 		resp->insertSignedInt(clearSession());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int PlaceStructureSessionAdapter::initializeSession() {

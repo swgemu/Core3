@@ -18,9 +18,11 @@ StaticObject::StaticObject() : SceneObject(DummyConstructorParameter::instance()
 	StaticObjectImplementation* _implementation = new StaticObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StaticObject");
 }
 
 StaticObject::StaticObject(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("StaticObject");
 }
 
 StaticObject::~StaticObject() {
@@ -196,21 +198,23 @@ void StaticObjectImplementation::loadTemplateData(SharedObjectTemplate* template
  *	StaticObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StaticObjectAdapter::StaticObjectAdapter(StaticObject* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StaticObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void StaticObjectAdapter::sendBaselinesTo(SceneObject* player) {

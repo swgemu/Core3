@@ -18,9 +18,11 @@ ClothingObject::ClothingObject() : WearableObject(DummyConstructorParameter::ins
 	ClothingObjectImplementation* _implementation = new ClothingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ClothingObject");
 }
 
 ClothingObject::ClothingObject(DummyConstructorParameter* param) : WearableObject(param) {
+	_setClassName("ClothingObject");
 }
 
 ClothingObject::~ClothingObject() {
@@ -198,21 +200,23 @@ void ClothingObjectImplementation::updateCraftingValues(CraftingValues* values, 
  *	ClothingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ClothingObjectAdapter::ClothingObjectAdapter(ClothingObject* obj) : WearableObjectAdapter(obj) {
 }
 
-Packet* ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ClothingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ClothingObjectAdapter::initializeTransientMembers() {

@@ -26,9 +26,11 @@ RepairTool::RepairTool() : TangibleObject(DummyConstructorParameter::instance())
 	RepairToolImplementation* _implementation = new RepairToolImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("RepairTool");
 }
 
 RepairTool::RepairTool(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("RepairTool");
 }
 
 RepairTool::~RepairTool() {
@@ -230,21 +232,23 @@ float RepairToolImplementation::getQuality() {
  *	RepairToolAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RepairToolAdapter::RepairToolAdapter(RepairTool* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* RepairToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RepairToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETQUALITY__:
 		resp->insertFloat(getQuality());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 float RepairToolAdapter::getQuality() {

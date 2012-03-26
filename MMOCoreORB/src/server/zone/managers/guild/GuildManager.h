@@ -387,7 +387,7 @@ class GuildManagerAdapter : public ManagedServiceAdapter {
 public:
 	GuildManagerAdapter(GuildManager* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void setChatManager(ChatManager* chatmanager);
 

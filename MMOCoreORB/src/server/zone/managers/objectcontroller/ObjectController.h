@@ -225,7 +225,7 @@ class ObjectControllerAdapter : public ManagedServiceAdapter {
 public:
 	ObjectControllerAdapter(ObjectController* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void finalize();
 

@@ -20,9 +20,11 @@ SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, CreatureObject* 
 	SuiBankTransferBoxImplementation* _implementation = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiBankTransferBox");
 }
 
 SuiBankTransferBox::SuiBankTransferBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiBankTransferBox");
 }
 
 SuiBankTransferBox::~SuiBankTransferBox() {
@@ -382,11 +384,15 @@ bool SuiBankTransferBoxImplementation::isBankTransferBox() {
  *	SuiBankTransferBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiBankTransferBoxAdapter::SuiBankTransferBoxAdapter(SuiBankTransferBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ADDCASH__INT_:
@@ -405,10 +411,8 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertBoolean(isBankTransferBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SuiBankTransferBoxAdapter::addCash(int cash) {

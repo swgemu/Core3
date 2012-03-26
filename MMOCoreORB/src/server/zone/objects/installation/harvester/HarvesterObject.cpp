@@ -16,9 +16,11 @@ HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParamete
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("HarvesterObject");
 }
 
 HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : InstallationObject(param) {
+	_setClassName("HarvesterObject");
 }
 
 HarvesterObject::~HarvesterObject() {
@@ -265,11 +267,15 @@ bool HarvesterObjectImplementation::isHarvesterObject() {
  *	HarvesterObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 HarvesterObjectAdapter::HarvesterObjectAdapter(HarvesterObject* obj) : InstallationObjectAdapter(obj) {
 }
 
-Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -288,10 +294,8 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(isHarvesterObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int HarvesterObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

@@ -24,9 +24,11 @@ AiGroup::AiGroup() : SceneObject(DummyConstructorParameter::instance()) {
 	AiGroupImplementation* _implementation = new AiGroupImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("AiGroup");
 }
 
 AiGroup::AiGroup(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("AiGroup");
 }
 
 AiGroup::~AiGroup() {
@@ -502,11 +504,15 @@ bool AiGroupImplementation::isLairGroup() {
  *	AiGroupAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AiGroupAdapter::AiGroupAdapter(AiGroup* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETPATROLPOINTS__:
@@ -528,10 +534,8 @@ Packet* AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isLairGroup());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void AiGroupAdapter::setPatrolPoints() {

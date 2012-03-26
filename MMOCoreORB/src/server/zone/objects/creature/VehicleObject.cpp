@@ -26,9 +26,11 @@ VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::insta
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("VehicleObject");
 }
 
 VehicleObject::VehicleObject(DummyConstructorParameter* param) : CreatureObject(param) {
+	_setClassName("VehicleObject");
 }
 
 VehicleObject::~VehicleObject() {
@@ -477,11 +479,15 @@ bool VehicleObjectImplementation::isVehicleObject() {
  *	VehicleObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 VehicleObjectAdapter::VehicleObjectAdapter(VehicleObject* obj) : CreatureObjectAdapter(obj) {
 }
 
-Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_CHECKINRANGEGARAGE__:
@@ -533,10 +539,8 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isVehicleObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool VehicleObjectAdapter::checkInRangeGarage() {

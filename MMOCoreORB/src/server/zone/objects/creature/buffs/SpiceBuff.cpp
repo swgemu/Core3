@@ -22,9 +22,11 @@ SpiceBuff::SpiceBuff(CreatureObject* creo, const String& name, unsigned int buff
 	SpiceBuffImplementation* _implementation = new SpiceBuffImplementation(creo, name, buffCRC, duration);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SpiceBuff");
 }
 
 SpiceBuff::SpiceBuff(DummyConstructorParameter* param) : Buff(param) {
+	_setClassName("SpiceBuff");
 }
 
 SpiceBuff::~SpiceBuff() {
@@ -220,11 +222,15 @@ void SpiceBuffImplementation::activate(bool applyModifiers) {
  *	SpiceBuffAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SpiceBuffAdapter::SpiceBuffAdapter(SpiceBuff* obj) : BuffAdapter(obj) {
 }
 
-Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
@@ -237,10 +243,8 @@ Packet* SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setDownerAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Buff*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SpiceBuffAdapter::activate(bool applyModifiers) {

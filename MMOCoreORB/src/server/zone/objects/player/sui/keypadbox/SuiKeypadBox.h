@@ -156,7 +156,7 @@ class SuiKeypadBoxAdapter : public SuiBoxAdapter {
 public:
 	SuiKeypadBoxAdapter(SuiKeypadBox* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	BaseMessage* generateMessage();
 

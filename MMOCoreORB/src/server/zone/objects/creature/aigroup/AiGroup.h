@@ -239,7 +239,7 @@ class AiGroupAdapter : public SceneObjectAdapter {
 public:
 	AiGroupAdapter(AiGroup* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void setPatrolPoints();
 

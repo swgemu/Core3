@@ -12,9 +12,11 @@ FighterShipObject::FighterShipObject() : ShipObject(DummyConstructorParameter::i
 	FighterShipObjectImplementation* _implementation = new FighterShipObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FighterShipObject");
 }
 
 FighterShipObject::FighterShipObject(DummyConstructorParameter* param) : ShipObject(param) {
+	_setClassName("FighterShipObject");
 }
 
 FighterShipObject::~FighterShipObject() {
@@ -158,18 +160,20 @@ FighterShipObjectImplementation::FighterShipObjectImplementation() {
  *	FighterShipObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FighterShipObjectAdapter::FighterShipObjectAdapter(FighterShipObject* obj) : ShipObjectAdapter(obj) {
 }
 
-Packet* FighterShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FighterShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

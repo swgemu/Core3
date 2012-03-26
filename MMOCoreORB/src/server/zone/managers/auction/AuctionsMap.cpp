@@ -16,9 +16,11 @@ AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("AuctionsMap");
 }
 
 AuctionsMap::AuctionsMap(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("AuctionsMap");
 }
 
 AuctionsMap::~AuctionsMap() {
@@ -660,11 +662,15 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMapImpl
  *	AuctionsMapAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AuctionsMapAdapter::AuctionsMapAdapter(AuctionsMap* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETVENDORITEMCOUNT__:
@@ -722,10 +728,8 @@ Packet* AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(checkInStockroom(inv->getUnsignedLongParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int AuctionsMapAdapter::getVendorItemCount() {

@@ -24,9 +24,11 @@ ElevatorTerminal::ElevatorTerminal() : Terminal(DummyConstructorParameter::insta
 	ElevatorTerminalImplementation* _implementation = new ElevatorTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ElevatorTerminal");
 }
 
 ElevatorTerminal::ElevatorTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("ElevatorTerminal");
 }
 
 ElevatorTerminal::~ElevatorTerminal() {
@@ -331,11 +333,15 @@ ElevatorTerminal* ElevatorTerminalImplementation::getElevatorDown() {
  *	ElevatorTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ElevatorTerminalAdapter::ElevatorTerminalAdapter(ElevatorTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
@@ -360,10 +366,8 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertLong(getElevatorDown()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

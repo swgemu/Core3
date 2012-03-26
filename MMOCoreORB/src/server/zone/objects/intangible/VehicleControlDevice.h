@@ -237,7 +237,7 @@ class VehicleControlDeviceAdapter : public ControlDeviceAdapter {
 public:
 	VehicleControlDeviceAdapter(VehicleControlDevice* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void storeObject(CreatureObject* player);
 

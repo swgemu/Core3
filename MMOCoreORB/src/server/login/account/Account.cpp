@@ -18,9 +18,11 @@ Account::Account(AccountManager* accManage, const String& usern, unsigned int ac
 	AccountImplementation* _implementation = new AccountImplementation(accManage, usern, accountid, stationid);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Account");
 }
 
 Account::Account(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("Account");
 }
 
 Account::~Account() {
@@ -539,11 +541,15 @@ unsigned int AccountImplementation::getTimeCreated() {
  *	AccountAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AccountAdapter::AccountAdapter(Account* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HASMAXONLINECHARACTERS__:
@@ -592,10 +598,8 @@ Packet* AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getTimeCreated());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool AccountAdapter::hasMaxOnlineCharacters() {

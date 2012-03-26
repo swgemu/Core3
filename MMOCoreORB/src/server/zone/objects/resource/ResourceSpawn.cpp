@@ -22,9 +22,11 @@ ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ResourceSpawn");
 }
 
 ResourceSpawn::ResourceSpawn(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("ResourceSpawn");
 }
 
 ResourceSpawn::~ResourceSpawn() {
@@ -1160,11 +1162,15 @@ int ResourceSpawnImplementation::getAttributeValue(int index) {
  *	ResourceSpawnAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ResourceSpawnAdapter::ResourceSpawnAdapter(ResourceSpawn* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -1276,10 +1282,8 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		addStatsToDeedListBox(static_cast<SuiListBox*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ResourceSpawnAdapter::finalize() {

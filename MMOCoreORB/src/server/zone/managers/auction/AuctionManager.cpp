@@ -32,9 +32,11 @@ AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstru
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("AuctionManager");
 }
 
 AuctionManager::AuctionManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("AuctionManager");
 }
 
 AuctionManager::~AuctionManager() {
@@ -482,11 +484,15 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
  *	AuctionManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 AuctionManagerAdapter::AuctionManagerAdapter(AuctionManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -526,10 +532,8 @@ Packet* AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getAuctionMap()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void AuctionManagerAdapter::initialize() {

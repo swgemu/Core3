@@ -40,9 +40,11 @@ PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : 
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PlayerManager");
 }
 
 PlayerManager::PlayerManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("PlayerManager");
 }
 
 PlayerManager::~PlayerManager() {
@@ -1044,11 +1046,15 @@ void PlayerManagerImplementation::addPlayer(CreatureObject* player) {
  *	PlayerManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PlayerManagerAdapter::PlayerManagerAdapter(PlayerManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_LOADNAMEMAP__:
@@ -1205,10 +1211,8 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertAscii(getBadgeKey(inv->getSignedIntParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PlayerManagerAdapter::loadNameMap() {

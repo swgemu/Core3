@@ -121,7 +121,7 @@ class GarageInstallationAdapter : public InstallationObjectAdapter {
 public:
 	GarageInstallationAdapter(GarageInstallation* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void createChildObjects();
 

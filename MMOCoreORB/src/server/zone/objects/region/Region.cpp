@@ -26,9 +26,11 @@ Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Region");
 }
 
 Region::Region(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("Region");
 }
 
 Region::~Region() {
@@ -359,11 +361,15 @@ bool RegionImplementation::isRegion() {
  *	RegionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RegionAdapter::RegionAdapter(Region* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETCITYREGION__CITYREGION_:
@@ -391,10 +397,8 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isRegion());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void RegionAdapter::setCityRegion(CityRegion* city) {

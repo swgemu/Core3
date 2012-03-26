@@ -32,9 +32,11 @@ CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::ins
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CraftingTool");
 }
 
 CraftingTool::CraftingTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
+	_setClassName("CraftingTool");
 }
 
 CraftingTool::~CraftingTool() {
@@ -569,11 +571,15 @@ ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
  *	CraftingToolAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CraftingToolAdapter::CraftingToolAdapter(CraftingTool* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
-Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -622,10 +628,8 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getManufactureSchematic()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CraftingToolAdapter::initializeTransientMembers() {

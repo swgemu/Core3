@@ -14,9 +14,11 @@ LairGroup::LairGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	LairGroupImplementation* _implementation = new LairGroupImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LairGroup");
 }
 
 LairGroup::LairGroup(DummyConstructorParameter* param) : AiGroup(param) {
+	_setClassName("LairGroup");
 }
 
 LairGroup::~LairGroup() {
@@ -176,21 +178,23 @@ bool LairGroupImplementation::isLairGroup() {
  *	LairGroupAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LairGroupAdapter::LairGroupAdapter(LairGroup* obj) : AiGroupAdapter(obj) {
 }
 
-Packet* LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISLAIRGROUP__:
 		resp->insertBoolean(isLairGroup());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool LairGroupAdapter::isLairGroup() {

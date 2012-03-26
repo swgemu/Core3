@@ -18,9 +18,11 @@ Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
 	TerminalImplementation* _implementation = new TerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Terminal");
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Terminal");
 }
 
 Terminal::~Terminal() {
@@ -338,11 +340,15 @@ void TerminalImplementation::initializeChildObject(SceneObject* controllerObject
  *	TerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TerminalAdapter::TerminalAdapter(Terminal* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -373,10 +379,8 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TerminalAdapter::initializeTransientMembers() {

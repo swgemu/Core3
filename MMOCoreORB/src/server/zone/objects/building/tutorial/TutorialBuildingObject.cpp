@@ -28,9 +28,11 @@ TutorialBuildingObject::TutorialBuildingObject() : CloningBuildingObject(DummyCo
 	TutorialBuildingObjectImplementation* _implementation = new TutorialBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("TutorialBuildingObject");
 }
 
 TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param) : CloningBuildingObject(param) {
+	_setClassName("TutorialBuildingObject");
 }
 
 TutorialBuildingObject::~TutorialBuildingObject() {
@@ -279,11 +281,15 @@ void TutorialBuildingObjectImplementation::dequeueUnloadEvent() {
  *	TutorialBuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 TutorialBuildingObjectAdapter::TutorialBuildingObjectAdapter(TutorialBuildingObject* obj) : CloningBuildingObjectAdapter(obj) {
 }
 
-Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYREMOVEFROMZONE__:
@@ -302,10 +308,8 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 		clearUnloadEvent();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void TutorialBuildingObjectAdapter::notifyRemoveFromZone() {

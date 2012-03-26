@@ -14,9 +14,11 @@ PlayerTeachSession::PlayerTeachSession(CreatureObject* creature) : Facade(DummyC
 	PlayerTeachSessionImplementation* _implementation = new PlayerTeachSessionImplementation(creature);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("PlayerTeachSession");
 }
 
 PlayerTeachSession::PlayerTeachSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("PlayerTeachSession");
 }
 
 PlayerTeachSession::~PlayerTeachSession() {
@@ -253,11 +255,15 @@ int PlayerTeachSessionImplementation::getTeachableSkillsSize() {
  *	PlayerTeachSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 PlayerTeachSessionAdapter::PlayerTeachSessionAdapter(PlayerTeachSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* PlayerTeachSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void PlayerTeachSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ADDTEACHABLESKILL__STRING_:
@@ -273,10 +279,8 @@ Packet* PlayerTeachSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertSignedInt(getTeachableSkillsSize());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void PlayerTeachSessionAdapter::addTeachableSkill(const String& skillbox) {

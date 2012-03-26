@@ -14,9 +14,11 @@ HerdGroup::HerdGroup() : AiGroup(DummyConstructorParameter::instance()) {
 	HerdGroupImplementation* _implementation = new HerdGroupImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("HerdGroup");
 }
 
 HerdGroup::HerdGroup(DummyConstructorParameter* param) : AiGroup(param) {
+	_setClassName("HerdGroup");
 }
 
 HerdGroup::~HerdGroup() {
@@ -176,21 +178,23 @@ bool HerdGroupImplementation::isHerdGroup() {
  *	HerdGroupAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 HerdGroupAdapter::HerdGroupAdapter(HerdGroup* obj) : AiGroupAdapter(obj) {
 }
 
-Packet* HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISHERDGROUP__:
 		resp->insertBoolean(isHerdGroup());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool HerdGroupAdapter::isHerdGroup() {

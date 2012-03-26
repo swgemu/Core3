@@ -22,9 +22,11 @@ Deed::Deed() : TangibleObject(DummyConstructorParameter::instance()) {
 	DeedImplementation* _implementation = new DeedImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Deed");
 }
 
 Deed::Deed(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Deed");
 }
 
 Deed::~Deed() {
@@ -297,11 +299,15 @@ bool DeedImplementation::isDeedObject() {
  *	DeedAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DeedAdapter::DeedAdapter(Deed* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -317,10 +323,8 @@ Packet* DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isDeedObject());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void DeedAdapter::initializeTransientMembers() {

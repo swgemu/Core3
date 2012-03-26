@@ -26,9 +26,11 @@ FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParamete
 	FishingPoleObjectImplementation* _implementation = new FishingPoleObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FishingPoleObject");
 }
 
 FishingPoleObject::FishingPoleObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("FishingPoleObject");
 }
 
 FishingPoleObject::~FishingPoleObject() {
@@ -351,11 +353,15 @@ void FishingPoleObjectImplementation::setQuality(int value) {
  *	FishingPoleObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FishingPoleObjectAdapter::FishingPoleObjectAdapter(FishingPoleObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -389,10 +395,8 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FishingPoleObjectAdapter::initializeTransientMembers() {

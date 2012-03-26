@@ -28,9 +28,11 @@ ObjectController::ObjectController(ZoneProcessServer* srv) : ManagedService(Dumm
 	ObjectControllerImplementation* _implementation = new ObjectControllerImplementation(srv);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ObjectController");
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("ObjectController");
 }
 
 ObjectController::~ObjectController() {
@@ -255,11 +257,15 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
  *	ObjectControllerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ObjectControllerAdapter::ObjectControllerAdapter(ObjectController* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_FINALIZE__:
@@ -275,10 +281,8 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertFloat(activateCommand(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ObjectControllerAdapter::finalize() {

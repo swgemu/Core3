@@ -44,9 +44,11 @@ ZoneProcessServer::ZoneProcessServer(ZoneServer* server) : ManagedService(DummyC
 	ZoneProcessServerImplementation* _implementation = new ZoneProcessServerImplementation(server);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ZoneProcessServer");
 }
 
 ZoneProcessServer::ZoneProcessServer(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("ZoneProcessServer");
 }
 
 ZoneProcessServer::~ZoneProcessServer() {
@@ -401,11 +403,15 @@ ForageManager* ZoneProcessServerImplementation::getForageManager() {
  *	ZoneProcessServerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ZoneProcessServerAdapter::ZoneProcessServerAdapter(ZoneProcessServer* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
@@ -433,10 +439,8 @@ Packet* ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		resp->insertLong(getForageManager()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ZoneProcessServerAdapter::initialize() {

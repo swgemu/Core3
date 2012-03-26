@@ -12,9 +12,11 @@ SpaceStationObject::SpaceStationObject() : ShipObject(DummyConstructorParameter:
 	SpaceStationObjectImplementation* _implementation = new SpaceStationObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SpaceStationObject");
 }
 
 SpaceStationObject::SpaceStationObject(DummyConstructorParameter* param) : ShipObject(param) {
+	_setClassName("SpaceStationObject");
 }
 
 SpaceStationObject::~SpaceStationObject() {
@@ -158,18 +160,20 @@ SpaceStationObjectImplementation::SpaceStationObjectImplementation() {
  *	SpaceStationObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SpaceStationObjectAdapter::SpaceStationObjectAdapter(SpaceStationObject* obj) : ShipObjectAdapter(obj) {
 }
 
-Packet* SpaceStationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SpaceStationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 /*

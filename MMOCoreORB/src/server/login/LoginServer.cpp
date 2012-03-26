@@ -30,9 +30,11 @@ LoginServer::LoginServer(ConfigManager* config) : ManagedService(DummyConstructo
 	LoginServerImplementation* _implementation = new LoginServerImplementation(config);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("LoginServer");
 }
 
 LoginServer::LoginServer(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("LoginServer");
 }
 
 LoginServer::~LoginServer() {
@@ -403,11 +405,15 @@ LoginClusterStatus* LoginServerImplementation::getLoginClusterStatusMessage() {
  *	LoginServerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 LoginServerAdapter::LoginServerAdapter(LoginServer* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -447,10 +453,8 @@ Packet* LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getLoginClusterStatusMessage()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void LoginServerAdapter::initializeTransientMembers() {

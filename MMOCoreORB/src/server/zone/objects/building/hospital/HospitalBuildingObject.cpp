@@ -18,9 +18,11 @@ HospitalBuildingObject::HospitalBuildingObject() : BuildingObject(DummyConstruct
 	HospitalBuildingObjectImplementation* _implementation = new HospitalBuildingObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("HospitalBuildingObject");
 }
 
 HospitalBuildingObject::HospitalBuildingObject(DummyConstructorParameter* param) : BuildingObject(param) {
+	_setClassName("HospitalBuildingObject");
 }
 
 HospitalBuildingObject::~HospitalBuildingObject() {
@@ -242,11 +244,15 @@ void HospitalBuildingObjectImplementation::onExit(CreatureObject* player) {
  *	HospitalBuildingObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 HospitalBuildingObjectAdapter::HospitalBuildingObjectAdapter(HospitalBuildingObject* obj) : BuildingObjectAdapter(obj) {
 }
 
-Packet* HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_ISHOSPITALBUILDINGOBJECT__:
@@ -259,10 +265,8 @@ Packet* HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 bool HospitalBuildingObjectAdapter::isHospitalBuildingObject() {

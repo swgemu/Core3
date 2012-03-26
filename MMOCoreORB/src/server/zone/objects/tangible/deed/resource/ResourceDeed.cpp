@@ -24,9 +24,11 @@ ResourceDeed::ResourceDeed() : Deed(DummyConstructorParameter::instance()) {
 	ResourceDeedImplementation* _implementation = new ResourceDeedImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ResourceDeed");
 }
 
 ResourceDeed::ResourceDeed(DummyConstructorParameter* param) : Deed(param) {
+	_setClassName("ResourceDeed");
 }
 
 ResourceDeed::~ResourceDeed() {
@@ -234,11 +236,15 @@ ResourceDeedImplementation::ResourceDeedImplementation() {
  *	ResourceDeedAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ResourceDeedAdapter::ResourceDeedAdapter(ResourceDeed* obj) : DeedAdapter(obj) {
 }
 
-Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -254,10 +260,8 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		destroyDeed();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ResourceDeedAdapter::initializeTransientMembers() {

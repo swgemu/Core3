@@ -20,9 +20,11 @@ SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instanc
 	SurveyToolImplementation* _implementation = new SurveyToolImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SurveyTool");
 }
 
 SurveyTool::SurveyTool(DummyConstructorParameter* param) : ToolTangibleObject(param) {
+	_setClassName("SurveyTool");
 }
 
 SurveyTool::~SurveyTool() {
@@ -705,11 +707,15 @@ bool SurveyToolImplementation::isInUse() {
  *	SurveyToolAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SurveyToolAdapter::SurveyToolAdapter(SurveyTool* obj) : ToolTangibleObjectAdapter(obj) {
 }
 
-Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -776,10 +782,8 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendSampleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendSampleTo__CreatureObject_String_));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SurveyToolAdapter::initializeTransientMembers() {

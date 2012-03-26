@@ -198,7 +198,7 @@ class RepairToolAdapter : public TangibleObjectAdapter {
 public:
 	RepairToolAdapter(RepairTool* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	float getQuality();
 

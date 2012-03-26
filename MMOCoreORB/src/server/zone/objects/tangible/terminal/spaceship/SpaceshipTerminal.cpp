@@ -16,9 +16,11 @@ SpaceshipTerminal::SpaceshipTerminal() : Terminal(DummyConstructorParameter::ins
 	SpaceshipTerminalImplementation* _implementation = new SpaceshipTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SpaceshipTerminal");
 }
 
 SpaceshipTerminal::SpaceshipTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("SpaceshipTerminal");
 }
 
 SpaceshipTerminal::~SpaceshipTerminal() {
@@ -177,21 +179,23 @@ SpaceshipTerminalImplementation::SpaceshipTerminalImplementation() {
  *	SpaceshipTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SpaceshipTerminalAdapter::SpaceshipTerminalAdapter(SpaceshipTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int SpaceshipTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

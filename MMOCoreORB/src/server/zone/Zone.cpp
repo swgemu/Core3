@@ -36,9 +36,11 @@ Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(D
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Zone");
 }
 
 Zone::Zone(DummyConstructorParameter* param) : SceneObject(param) {
+	_setClassName("Zone");
 }
 
 Zone::~Zone() {
@@ -715,11 +717,15 @@ unsigned int ZoneImplementation::getZoneCRC() {
  *	ZoneAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ZoneAdapter::ZoneAdapter(Zone* obj) : SceneObjectAdapter(obj) {
 }
 
-Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -807,10 +813,8 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getZoneCRC());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ZoneAdapter::initializeTransientMembers() {

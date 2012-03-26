@@ -335,7 +335,7 @@ class ChatRoomAdapter : public ManagedObjectAdapter {
 public:
 	ChatRoomAdapter(ChatRoom* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 

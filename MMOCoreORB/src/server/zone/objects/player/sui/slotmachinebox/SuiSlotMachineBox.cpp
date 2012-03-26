@@ -22,9 +22,11 @@ SuiSlotMachineBox::SuiSlotMachineBox(CreatureObject* player, unsigned int window
 	SuiSlotMachineBoxImplementation* _implementation = new SuiSlotMachineBoxImplementation(player, windowType, payoutBox, listBoxType);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiSlotMachineBox");
 }
 
 SuiSlotMachineBox::SuiSlotMachineBox(DummyConstructorParameter* param) : SuiListBox(param) {
+	_setClassName("SuiSlotMachineBox");
 }
 
 SuiSlotMachineBox::~SuiSlotMachineBox() {
@@ -199,21 +201,23 @@ unsigned int SuiSlotMachineBoxImplementation::getPayoutBoxID() {
  *	SuiSlotMachineBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiSlotMachineBoxAdapter::SuiSlotMachineBoxAdapter(SuiSlotMachineBox* obj) : SuiListBoxAdapter(obj) {
 }
 
-Packet* SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_GETPAYOUTBOXID__:
 		resp->insertInt(getPayoutBoxID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 unsigned int SuiSlotMachineBoxAdapter::getPayoutBoxID() {

@@ -24,9 +24,11 @@ GuildTerminal::GuildTerminal() : Terminal(DummyConstructorParameter::instance())
 	GuildTerminalImplementation* _implementation = new GuildTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("GuildTerminal");
 }
 
 GuildTerminal::GuildTerminal(DummyConstructorParameter* param) : Terminal(param) {
+	_setClassName("GuildTerminal");
 }
 
 GuildTerminal::~GuildTerminal() {
@@ -290,11 +292,15 @@ GuildObject* GuildTerminalImplementation::getGuildObject() {
  *	GuildTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 GuildTerminalAdapter::GuildTerminalAdapter(GuildTerminal* obj) : TerminalAdapter(obj) {
 }
 
-Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -316,10 +322,8 @@ Packet* GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getGuildObject()->_getObjectID());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void GuildTerminalAdapter::initializeTransientMembers() {

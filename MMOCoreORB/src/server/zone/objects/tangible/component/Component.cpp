@@ -24,9 +24,11 @@ Component::Component() : TangibleObject(DummyConstructorParameter::instance()) {
 	ComponentImplementation* _implementation = new ComponentImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("Component");
 }
 
 Component::Component(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("Component");
 }
 
 Component::~Component() {
@@ -497,11 +499,15 @@ bool ComponentImplementation::hasKey(const String& key) {
  *	ComponentAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ComponentAdapter::ComponentAdapter(Component* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -550,10 +556,8 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ComponentAdapter::initializeTransientMembers() {

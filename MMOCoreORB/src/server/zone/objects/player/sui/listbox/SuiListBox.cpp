@@ -20,9 +20,11 @@ SuiListBox::SuiListBox(CreatureObject* player, unsigned int windowType, unsigned
 	SuiListBoxImplementation* _implementation = new SuiListBoxImplementation(player, windowType, listBoxType);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("SuiListBox");
 }
 
 SuiListBox::SuiListBox(DummyConstructorParameter* param) : SuiBox(param) {
+	_setClassName("SuiListBox");
 }
 
 SuiListBox::~SuiListBox() {
@@ -445,11 +447,15 @@ bool SuiListBoxImplementation::isListBox() {
  *	SuiListBoxAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 SuiListBoxAdapter::SuiListBoxAdapter(SuiListBox* obj) : SuiBoxAdapter(obj) {
 }
 
-Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INIT__:
@@ -489,10 +495,8 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isListBox());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void SuiListBoxAdapter::init() {

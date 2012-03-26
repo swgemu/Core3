@@ -26,9 +26,11 @@ BazaarTerminal::BazaarTerminal() : VendorTerminal(DummyConstructorParameter::ins
 	BazaarTerminalImplementation* _implementation = new BazaarTerminalImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("BazaarTerminal");
 }
 
 BazaarTerminal::BazaarTerminal(DummyConstructorParameter* param) : VendorTerminal(param) {
+	_setClassName("BazaarTerminal");
 }
 
 BazaarTerminal::~BazaarTerminal() {
@@ -219,11 +221,15 @@ bool BazaarTerminalImplementation::isBazaarTerminal() {
  *	BazaarTerminalAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 BazaarTerminalAdapter::BazaarTerminalAdapter(BazaarTerminal* obj) : VendorTerminalAdapter(obj) {
 }
 
-Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -233,10 +239,8 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isBazaarTerminal());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int BazaarTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

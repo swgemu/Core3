@@ -28,9 +28,11 @@ WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instanc
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("WeaponObject");
 }
 
 WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(param) {
+	_setClassName("WeaponObject");
 }
 
 WeaponObject::~WeaponObject() {
@@ -1607,11 +1609,15 @@ PowerupObject* WeaponObjectImplementation::removePowerup() {
  *	WeaponObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 WeaponObjectAdapter::WeaponObjectAdapter(WeaponObject* obj) : TangibleObjectAdapter(obj) {
 }
 
-Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1786,10 +1792,8 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void WeaponObjectAdapter::initializeTransientMembers() {

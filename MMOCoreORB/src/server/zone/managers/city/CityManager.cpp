@@ -26,9 +26,11 @@ CityManager::CityManager(ZoneServer* zserv) : ManagedService(DummyConstructorPar
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zserv);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("CityManager");
 }
 
 CityManager::CityManager(DummyConstructorParameter* param) : ManagedService(param) {
+	_setClassName("CityManager");
 }
 
 CityManager::~CityManager() {
@@ -716,11 +718,15 @@ int CityManagerImplementation::getTotalCities() {
  *	CityManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 CityManagerAdapter::CityManagerAdapter(CityManager* obj) : ManagedServiceAdapter(obj) {
 }
 
-Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_LOADLUACONFIG__:
@@ -823,10 +829,8 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertSignedInt(getTotalCities());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void CityManagerAdapter::loadLuaConfig() {

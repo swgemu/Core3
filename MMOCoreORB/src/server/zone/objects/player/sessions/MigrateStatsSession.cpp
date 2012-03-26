@@ -18,9 +18,11 @@ MigrateStatsSession::MigrateStatsSession(CreatureObject* parent) : Facade(DummyC
 	MigrateStatsSessionImplementation* _implementation = new MigrateStatsSessionImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MigrateStatsSession");
 }
 
 MigrateStatsSession::MigrateStatsSession(DummyConstructorParameter* param) : Facade(param) {
+	_setClassName("MigrateStatsSession");
 }
 
 MigrateStatsSession::~MigrateStatsSession() {
@@ -341,11 +343,15 @@ i = i + 1) {
  *	MigrateStatsSessionAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MigrateStatsSessionAdapter::MigrateStatsSessionAdapter(MigrateStatsSession* obj) : FacadeAdapter(obj) {
 }
 
-Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
@@ -367,10 +373,8 @@ Packet* MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 		migrateStats();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int MigrateStatsSessionAdapter::initializeSession() {

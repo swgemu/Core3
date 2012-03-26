@@ -26,9 +26,11 @@ ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::ins
 	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ControlDevice");
 }
 
 ControlDevice::ControlDevice(DummyConstructorParameter* param) : IntangibleObject(param) {
+	_setClassName("ControlDevice");
 }
 
 ControlDevice::~ControlDevice() {
@@ -340,11 +342,15 @@ bool ControlDeviceImplementation::isControlDevice() {
  *	ControlDeviceAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ControlDeviceAdapter::ControlDeviceAdapter(ControlDevice* obj) : IntangibleObjectAdapter(obj) {
 }
 
-Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
@@ -369,10 +375,8 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isControlDevice());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ControlDeviceAdapter::updateToDatabaseAllObjects(bool startTask) {

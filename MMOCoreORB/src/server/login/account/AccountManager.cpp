@@ -160,6 +160,7 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 						return getAccount(accountID);
 					}
 
+					account->deploy("account_" + String::valueOf(accountID));
 				} else {
 					String banReason = result->getString(4);
 
@@ -234,6 +235,8 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 	Account* account = new Account(this, username, accountID, stationID);
 
 	addAccount(account);
+
+	account->deploy("account_" + String::valueOf(accountID));
 
 	return account;
 }

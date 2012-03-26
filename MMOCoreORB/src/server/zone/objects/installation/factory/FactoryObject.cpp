@@ -22,9 +22,11 @@ FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::i
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("FactoryObject");
 }
 
 FactoryObject::FactoryObject(DummyConstructorParameter* param) : InstallationObject(param) {
+	_setClassName("FactoryObject");
 }
 
 FactoryObject::~FactoryObject() {
@@ -430,11 +432,15 @@ bool FactoryObjectImplementation::isFactory() {
  *	FactoryObjectAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 FactoryObjectAdapter::FactoryObjectAdapter(FactoryObject* obj) : InstallationObjectAdapter(obj) {
 }
 
-Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -477,10 +483,8 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		createNewObject();
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void FactoryObjectAdapter::initializeTransientMembers() {

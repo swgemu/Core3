@@ -167,7 +167,7 @@ LIBS = $(SYSTEM_LIBS)  \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
-	-lptmalloc3 -lengine3 -lmysqlclient -llua -lz -ldb
+	-lengine3 -lmysqlclient -llua -lz -ldb
 
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
@@ -247,7 +247,7 @@ AM_CXXFLAGS = -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
 ENGINE3_PATH = ../../../../../MMOEngine
 INCLUDES = $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql \
+	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
 	   	-I/usr/local/BerkeleyDB.5.0/include
 
 core3client_SOURCES = \

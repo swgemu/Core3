@@ -1,46 +1,46 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
-This File is part of Core3.
+ This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 2 of the License,
+ or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
+ */
 
 #include "ServerCore.h"
 
@@ -71,7 +71,8 @@ ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
 
-ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) : Core("log/core3.log"), Logger("Core") {
+ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
+		Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
 
 	loginServer = NULL;
@@ -89,7 +90,7 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) : Cor
 	features = NULL;
 }
 
-class ZoneStatisticsTask : public Task {
+class ZoneStatisticsTask: public Task {
 	ManagedReference<ZoneServer*> zoneServer;
 
 public:
@@ -115,7 +116,8 @@ void ServerCore::initialize() {
 		mantisDatabase = new MantisDatabase(configManager);
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
-		orb = DistributedObjectBroker::initialize(orbaddr, 44459);
+		orb = DistributedObjectBroker::initialize(orbaddr,
+				DistributedObjectBroker::NAMING_DIRECTORY_PORT);
 
 		orb->setCustomObjectManager(objectManager);
 
@@ -147,24 +149,31 @@ void ServerCore::initialize() {
 
 		if (zoneServer != NULL) {
 			int zonePort = 44463;
-			int zoneAllowedConnections = configManager->getZoneAllowedConnections();
+			int zoneAllowedConnections =
+					configManager->getZoneAllowedConnections();
 
-			ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+			ObjectDatabaseManager* dbManager =
+					ObjectDatabaseManager::instance();
 			dbManager->loadDatabases(truncateDatabases());
 
 			int galaxyID = configManager->getZoneGalaxyID();
 
 			try {
-				String query = "SELECT port FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
-				Reference<ResultSet*> result = database->instance()->executeQuery(query);
+				String query = "SELECT port FROM galaxy WHERE galaxy_id = "
+						+ String::valueOf(galaxyID);
+				Reference<ResultSet*> result =
+						database->instance()->executeQuery(query);
 
 				if (result != NULL && result->next()) {
 					zonePort = result->getInt(0);
 				}
 
-				database->instance()->executeStatement("TRUNCATE TABLE sessions");
+				database->instance()->executeStatement(
+						"TRUNCATE TABLE sessions");
 
-				database->instance()->executeStatement("DELETE FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyID));
+				database->instance()->executeStatement(
+						"DELETE FROM characters_dirty WHERE galaxy_id = "
+								+ String::valueOf(galaxyID));
 			} catch (DatabaseException& e) {
 				error(e.getMessage());
 
@@ -176,7 +185,8 @@ void ServerCore::initialize() {
 
 		if (statusServer != NULL) {
 			int statusPort = configManager->getStatusPort();
-			int statusAllowedConnections = configManager->getStatusAllowedConnections();
+			int statusAllowedConnections =
+					configManager->getStatusAllowedConnections();
 
 			statusServer->start(statusPort);
 		}
@@ -187,24 +197,26 @@ void ServerCore::initialize() {
 
 		if (pingServer != NULL) {
 			int pingPort = configManager->getPingPort();
-			int pingAllowedConnections = configManager->getPingAllowedConnections();
+			int pingAllowedConnections =
+					configManager->getPingAllowedConnections();
 
 			pingServer->start(pingPort, pingAllowedConnections);
 		}
 
 		if (loginServer != NULL) {
 			int loginPort = configManager->getLoginPort();
-			int loginAllowedConnections = configManager->getLoginAllowedConnections();
+			int loginAllowedConnections =
+					configManager->getLoginAllowedConnections();
 
 			loginServer->start(loginPort, loginAllowedConnections);
 		}
 
-	#ifndef WITH_STM
+#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-	#else
+#else
 		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
 		statiscticsTask->schedulePeriodic(10000, 10000);
-	#endif
+#endif
 
 		info("initialized", true);
 	} catch (ServiceException& e) {
@@ -323,14 +335,15 @@ void ServerCore::handleCommands() {
 			if (command == "exit") {
 				if (zoneServer != NULL) {
 					ChatManager* chatManager = zoneServer->getChatManager();
-					chatManager->broadcastGalaxy(NULL, "Server is shutting down NOW!");
+					chatManager->broadcastGalaxy(NULL,
+							"Server is shutting down NOW!");
 				}
 
 				return;
 			} else if (command == "dumpmem") {
-				#ifdef DEBUG_MEMORY
-					DumpUnfreed(TRUE);
-				#endif
+#ifdef DEBUG_MEMORY
+				DumpUnfreed(TRUE);
+#endif
 			} else if (command == "logQuadTree") {
 				QuadTree::setLogging(!QuadTree::doLog());
 			} else if (command == "info") {
@@ -364,11 +377,13 @@ void ServerCore::handleCommands() {
 
 				zoneServer->fixScheduler();
 			} else if (command == "save") {
-				ObjectManager::instance()->updateModifiedObjectsToDatabase(true);
+				ObjectManager::instance()->updateModifiedObjectsToDatabase(
+						true);
 				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
 				System::out << "available commands:\n";
-				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
+				System::out
+						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
 			} else if (command == "about") {
 				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
 			} else if (command == "lookupcrc") {
@@ -380,7 +395,8 @@ void ServerCore::handleCommands() {
 				}
 
 				if (crc != 0) {
-					String file = TemplateManager::instance()->getTemplateFile(crc);
+					String file = TemplateManager::instance()->getTemplateFile(
+							crc);
 
 					System::out << "result: " << file << endl;
 				}
@@ -402,7 +418,7 @@ void ServerCore::handleCommands() {
 			TransactionalMemoryManager::commitPureTransaction(transaction);
 		} catch (const TransactionAbortedException& e) {
 		}
-	#endif
+#endif
 
 	}
 }
@@ -412,5 +428,5 @@ void ServerCore::processConfig() {
 		info("missing config file.. loading default values\n");
 
 	//if (!features->loadFeatures())
-		//info("Problem occurred trying to load features.lua");
+	//info("Problem occurred trying to load features.lua");
 }

@@ -16,9 +16,11 @@ ChatMessage::ChatMessage() : ManagedObject(DummyConstructorParameter::instance()
 	ChatMessageImplementation* _implementation = new ChatMessageImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ChatMessage");
 }
 
 ChatMessage::ChatMessage(DummyConstructorParameter* param) : ManagedObject(param) {
+	_setClassName("ChatMessage");
 }
 
 ChatMessage::~ChatMessage() {
@@ -213,11 +215,15 @@ String ChatMessageImplementation::toString() {
  *	ChatMessageAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ChatMessageAdapter::ChatMessageAdapter(ChatMessage* obj) : ManagedObjectAdapter(obj) {
 }
 
-Packet* ChatMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ChatMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_SETSTRING__STRING_:
@@ -227,10 +233,8 @@ Packet* ChatMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertAscii(toString());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ChatMessageAdapter::setString(const String& msg) {

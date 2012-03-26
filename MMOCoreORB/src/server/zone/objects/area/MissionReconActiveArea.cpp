@@ -22,9 +22,11 @@ MissionReconActiveArea::MissionReconActiveArea() : ActiveArea(DummyConstructorPa
 	MissionReconActiveAreaImplementation* _implementation = new MissionReconActiveAreaImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("MissionReconActiveArea");
 }
 
 MissionReconActiveArea::MissionReconActiveArea(DummyConstructorParameter* param) : ActiveArea(param) {
+	_setClassName("MissionReconActiveArea");
 }
 
 MissionReconActiveArea::~MissionReconActiveArea() {
@@ -317,11 +319,15 @@ void MissionReconActiveAreaImplementation::setMissionObjective(ReconMissionObjec
  *	MissionReconActiveAreaAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 MissionReconActiveAreaAdapter::MissionReconActiveAreaAdapter(MissionReconActiveArea* obj) : ActiveAreaAdapter(obj) {
 }
 
-Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
@@ -334,10 +340,8 @@ Packet* MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMe
 		setMissionObjective(static_cast<ReconMissionObjective*>(inv->getObjectParameter()));
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void MissionReconActiveAreaAdapter::notifyEnter(SceneObject* player) {

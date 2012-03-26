@@ -30,9 +30,11 @@ RevivePack::RevivePack() : PharmaceuticalObject(DummyConstructorParameter::insta
 	RevivePackImplementation* _implementation = new RevivePackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("RevivePack");
 }
 
 RevivePack::RevivePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("RevivePack");
 }
 
 RevivePack::~RevivePack() {
@@ -505,11 +507,15 @@ bool RevivePackImplementation::isRevivePack() {
  *	RevivePackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 RevivePackAdapter::RevivePackAdapter(RevivePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -537,10 +543,8 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isRevivePack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int RevivePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

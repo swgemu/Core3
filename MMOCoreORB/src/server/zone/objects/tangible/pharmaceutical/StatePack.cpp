@@ -30,9 +30,11 @@ StatePack::StatePack() : PharmaceuticalObject(DummyConstructorParameter::instanc
 	StatePackImplementation* _implementation = new StatePackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("StatePack");
 }
 
 StatePack::StatePack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("StatePack");
 }
 
 StatePack::~StatePack() {
@@ -335,11 +337,15 @@ bool StatePackImplementation::isStatePack() {
  *	StatePackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 StatePackAdapter::StatePackAdapter(StatePack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -352,10 +358,8 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(isStatePack());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int StatePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

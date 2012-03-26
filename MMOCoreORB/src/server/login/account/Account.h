@@ -197,7 +197,7 @@ class AccountAdapter : public ManagedObjectAdapter {
 public:
 	AccountAdapter(Account* impl);
 
-	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool hasMaxOnlineCharacters();
 

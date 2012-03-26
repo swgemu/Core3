@@ -32,9 +32,11 @@ WoundPack::WoundPack() : PharmaceuticalObject(DummyConstructorParameter::instanc
 	WoundPackImplementation* _implementation = new WoundPackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("WoundPack");
 }
 
 WoundPack::WoundPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("WoundPack");
 }
 
 WoundPack::~WoundPack() {
@@ -402,11 +404,15 @@ byte WoundPackImplementation::getAttribute() {
  *	WoundPackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 WoundPackAdapter::WoundPackAdapter(WoundPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -425,10 +431,8 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertByte(getAttribute());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int WoundPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

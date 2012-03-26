@@ -30,9 +30,11 @@ DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance())
 	DotPackImplementation* _implementation = new DotPackImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("DotPack");
 }
 
 DotPack::DotPack(DummyConstructorParameter* param) : PharmaceuticalObject(param) {
+	_setClassName("DotPack");
 }
 
 DotPack::~DotPack() {
@@ -680,11 +682,15 @@ unsigned int DotPackImplementation::getDotType() {
  *	DotPackAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 DotPackAdapter::DotPackAdapter(DotPack* obj) : PharmaceuticalObjectAdapter(obj) {
 }
 
-Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
@@ -727,10 +733,8 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getDotType());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 int DotPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

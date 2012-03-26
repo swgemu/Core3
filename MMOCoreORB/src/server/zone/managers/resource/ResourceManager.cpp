@@ -30,9 +30,11 @@ ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, Ob
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
 	_impl = _implementation;
 	_impl->_setStub(this);
+	_setClassName("ResourceManager");
 }
 
 ResourceManager::ResourceManager(DummyConstructorParameter* param) : Observer(param) {
+	_setClassName("ResourceManager");
 }
 
 ResourceManager::~ResourceManager() {
@@ -511,11 +513,15 @@ void ResourceManagerImplementation::addZone(Zone* zone) {
  *	ResourceManagerAdapter
  */
 
+
+#include "engine/orb/messages/InvokeMethodMessage.h"
+
+
 ResourceManagerAdapter::ResourceManagerAdapter(ResourceManager* obj) : ObserverAdapter(obj) {
 }
 
-Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
-	Packet* resp = new MethodReturnMessage(0);
+void ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
+	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
 	case RPC_STOP__:
@@ -576,10 +582,8 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertAscii(healthCheck());
 		break;
 	default:
-		return NULL;
+		throw Exception("Method does not exists");
 	}
-
-	return resp;
 }
 
 void ResourceManagerAdapter::stop() {
