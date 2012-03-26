@@ -461,8 +461,6 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 
-	addTemplateSkillMods(player);
-
 	int i = 0;
 
 	//If they are inside, and aren't allowed to be, then kick them out!
@@ -473,6 +471,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		if (isCondemned()) {
 			//Handle condemned messages.
 			CreatureObject* owner = getOwnerCreatureObject();
+
 			if (owner != NULL && owner->getFirstName() == player->getFirstName()) {
 				//Owner trying to enter building.
 				ManagedReference<Zone* >zone = getZone();
@@ -489,6 +488,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 			}
 		}
 	}
+
+	addTemplateSkillMods(player);
 
 	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
 }
