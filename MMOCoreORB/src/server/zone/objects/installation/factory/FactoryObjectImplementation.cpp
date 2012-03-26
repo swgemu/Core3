@@ -296,7 +296,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 	StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
 
-	if(schematic->getCustomObjectName().isEmpty())
+	if(schematic->getCustomObjectName().isEmpty() && getContainerObjectsSize() > 0)
 		message.setTT(schematic->getObjectNameStringIdFile(), getContainerObject(0)->getObjectNameStringIdName());
 	else
 		message.setTT(schematic->getCustomObjectName().toString());
