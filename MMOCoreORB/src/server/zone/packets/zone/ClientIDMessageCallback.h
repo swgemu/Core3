@@ -74,7 +74,7 @@ public:
 				//We also need to store a reference to the Account object on the zoneSessionClient.
 
 				ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
-				System::out << "account found: " << account->getUsername();
+				//System::out << "account found: " << account->getUsername();
 
 				//if (account == NULL)
 					//return;

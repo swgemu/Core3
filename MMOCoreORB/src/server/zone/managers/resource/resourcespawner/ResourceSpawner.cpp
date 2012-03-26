@@ -165,10 +165,7 @@ void ResourceSpawner::loadResourceSpawns() {
 
 	while (iterator.getNextKey(objectID)) {
 
-		ManagedReference<ResourceSpawn*>
-				resourceSpawn =
-						dynamic_cast<ResourceSpawn*> (Core::getObjectBroker()->lookUp(
-								objectID));
+		ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*> (Core::getObjectBroker()->lookUp(objectID));
 		//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if (resourceSpawn == NULL) {
