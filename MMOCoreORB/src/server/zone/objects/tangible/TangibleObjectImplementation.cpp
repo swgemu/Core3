@@ -877,7 +877,7 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	}
 
 	/// Subtract battle fatigue
-	repairChance -= player->getShockWounds();
+	repairChance -= (player->getShockWounds() / 2);
 
 
 	String result = repairAttempt(repairChance);

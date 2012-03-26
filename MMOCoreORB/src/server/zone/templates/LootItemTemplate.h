@@ -50,11 +50,15 @@ public:
 					float min = row.getFloatAt(2);
 					float max = row.getFloatAt(3);
 					float prec = 0;
+					bool hidden = false;
 
 					if (row.getTableSize() > 3)
 						prec = row.getFloatAt(4);
 
-					craftingValues.addExperimentalProperty(property, property, min, max, prec, false);
+					if (row.getTableSize() > 4)
+						hidden = row.getBooleanAt(5);
+
+					craftingValues.addExperimentalProperty(property, property, min, max, prec, hidden);
 					craftingValues.setMaxPercentage(property, 1.0f);
 				}
 

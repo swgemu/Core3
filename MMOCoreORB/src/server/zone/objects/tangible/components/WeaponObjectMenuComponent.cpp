@@ -30,7 +30,7 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		menuResponse->addRadialMenuItem(71, 3, "@powerup:mnu_remove_powerup"); // Remove Powerup
 	}
 
-	if(weapon->canRepair(player)) {
+	if(weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
 		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
 	}
 

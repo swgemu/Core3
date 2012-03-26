@@ -23,7 +23,7 @@ void WearableObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if(tano == NULL)
 		return;
 
-	if(tano->canRepair(player)) {
+	if(tano->getConditionDamage() > 0 && tano->canRepair(player)) {
 		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
 	}
 
