@@ -230,6 +230,8 @@ void StatePackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StatePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -242,7 +244,7 @@ int StatePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 StatePackImplementation::StatePackImplementation() {

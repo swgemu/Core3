@@ -1132,6 +1132,8 @@ void WeaponObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1312,7 +1314,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 22 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 22;
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation() {

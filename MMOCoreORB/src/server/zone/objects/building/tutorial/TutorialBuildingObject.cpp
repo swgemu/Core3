@@ -222,11 +222,13 @@ void TutorialBuildingObjectImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int TutorialBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = CloningBuildingObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + CloningBuildingObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {

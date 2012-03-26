@@ -238,6 +238,8 @@ void VehicleDeedImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = DeedImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -258,7 +260,7 @@ int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + DeedImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 VehicleDeedImplementation::VehicleDeedImplementation() {

@@ -4178,6 +4178,8 @@ void CreatureObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -4630,7 +4632,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 56 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 56;
 }
 
 CreatureObjectImplementation::CreatureObjectImplementation() {

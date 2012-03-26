@@ -186,6 +186,8 @@ void ConversationSessionImplementation::writeObject(ObjectOutputStream* stream) 
 }
 
 int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -206,7 +208,7 @@ int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 ConversationSessionImplementation::ConversationSessionImplementation(CreatureObject* conversingCreature) {

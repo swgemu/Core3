@@ -176,6 +176,8 @@ void StateBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StateBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -188,7 +190,7 @@ int StateBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 StateBuffImplementation::StateBuffImplementation(CreatureObject* creo, unsigned long long buffState, int duration) : BuffImplementation(creo, Long::hashCode(buffState), duration, BuffType::STATE) {

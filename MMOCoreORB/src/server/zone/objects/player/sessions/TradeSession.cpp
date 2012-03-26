@@ -341,6 +341,8 @@ void TradeSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -385,7 +387,7 @@ int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 TradeSessionImplementation::TradeSessionImplementation() {

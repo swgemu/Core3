@@ -171,11 +171,13 @@ void DrinkImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DrinkImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ConsumableImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ConsumableImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 DrinkImplementation::DrinkImplementation() {

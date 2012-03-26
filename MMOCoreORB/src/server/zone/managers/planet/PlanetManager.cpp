@@ -608,6 +608,8 @@ void PlanetManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -676,7 +678,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 8;
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {

@@ -311,6 +311,8 @@ void RevivePackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int RevivePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -363,7 +365,7 @@ int RevivePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 6;
 }
 
 RevivePackImplementation::RevivePackImplementation() {

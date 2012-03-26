@@ -793,6 +793,8 @@ void ResourceSpawnImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -941,7 +943,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 18 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 18;
 }
 
 ResourceSpawnImplementation::ResourceSpawnImplementation() {

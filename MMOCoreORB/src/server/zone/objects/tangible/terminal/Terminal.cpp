@@ -269,6 +269,8 @@ void TerminalImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int TerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -281,7 +283,7 @@ int TerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 TerminalImplementation::TerminalImplementation() {

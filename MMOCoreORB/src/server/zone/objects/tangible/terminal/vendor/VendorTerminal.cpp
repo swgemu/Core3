@@ -291,6 +291,8 @@ void VendorTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int VendorTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -303,7 +305,7 @@ int VendorTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + TerminalImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 VendorTerminalImplementation::VendorTerminalImplementation() {

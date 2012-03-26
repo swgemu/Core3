@@ -168,11 +168,13 @@ void StaticObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StaticObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 StaticObjectImplementation::StaticObjectImplementation() {

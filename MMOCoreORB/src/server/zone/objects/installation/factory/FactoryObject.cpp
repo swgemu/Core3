@@ -364,6 +364,8 @@ void FactoryObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -400,7 +402,7 @@ int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + InstallationObjectImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 FactoryObjectImplementation::FactoryObjectImplementation() {

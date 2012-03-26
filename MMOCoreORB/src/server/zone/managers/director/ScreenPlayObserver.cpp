@@ -224,6 +224,8 @@ void ScreenPlayObserverImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ScreenPlayObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -244,7 +246,7 @@ int ScreenPlayObserverImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 ScreenPlayObserverImplementation::ScreenPlayObserverImplementation() {

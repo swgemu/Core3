@@ -180,6 +180,8 @@ void StaticSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StaticSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -192,7 +194,7 @@ int StaticSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + SpawnAreaImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 StaticSpawnAreaImplementation::StaticSpawnAreaImplementation() {

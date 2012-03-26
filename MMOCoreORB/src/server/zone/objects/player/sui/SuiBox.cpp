@@ -758,6 +758,8 @@ void SuiBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -922,7 +924,7 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 20 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 20;
 }
 
 SuiBoxImplementation::SuiBoxImplementation(CreatureObject* play, unsigned int windowtype, unsigned int boxtype) {

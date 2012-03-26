@@ -698,6 +698,8 @@ void GamblingTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -798,7 +800,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 12 + TerminalImplementation::writeObjectMembers(stream);
+	return _count + 12;
 }
 
 GamblingTerminalImplementation::GamblingTerminalImplementation() {

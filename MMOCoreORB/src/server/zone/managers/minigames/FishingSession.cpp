@@ -395,6 +395,8 @@ void FishingSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -455,7 +457,7 @@ int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 FishingSessionImplementation::FishingSessionImplementation(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, const String& mood) {

@@ -349,11 +349,13 @@ void CraftingManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CraftingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ZoneManagerImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ZoneManagerImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 CraftingManagerImplementation::CraftingManagerImplementation() : ZoneManagerImplementation("CraftingManager") {

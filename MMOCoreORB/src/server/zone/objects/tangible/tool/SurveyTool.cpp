@@ -530,6 +530,8 @@ void SurveyToolImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SurveyToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -622,7 +624,7 @@ int SurveyToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 11 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 11;
 }
 
 SurveyToolImplementation::SurveyToolImplementation() {

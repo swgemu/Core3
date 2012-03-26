@@ -1423,6 +1423,8 @@ void AiAgentImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = CreatureObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1555,7 +1557,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 16 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return _count + 16;
 }
 
 AiAgentImplementation::AiAgentImplementation() {

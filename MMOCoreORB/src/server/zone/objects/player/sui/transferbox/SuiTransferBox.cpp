@@ -247,6 +247,8 @@ void SuiTransferBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -315,7 +317,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 8;
 }
 
 SuiTransferBoxImplementation::SuiTransferBoxImplementation(CreatureObject* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::TRANSFERBOX) {

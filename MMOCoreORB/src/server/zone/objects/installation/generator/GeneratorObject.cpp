@@ -210,11 +210,13 @@ void GeneratorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GeneratorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + InstallationObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 GeneratorObjectImplementation::GeneratorObjectImplementation() {

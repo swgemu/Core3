@@ -159,11 +159,13 @@ void GarageAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GarageAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 GarageAreaImplementation::GarageAreaImplementation() {

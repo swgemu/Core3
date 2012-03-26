@@ -254,6 +254,8 @@ void ControlDeviceImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -266,7 +268,7 @@ int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 ControlDeviceImplementation::ControlDeviceImplementation() {

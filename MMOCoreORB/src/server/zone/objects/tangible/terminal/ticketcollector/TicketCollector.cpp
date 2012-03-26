@@ -205,11 +205,13 @@ void TicketCollectorImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int TicketCollectorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + TerminalImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 TicketCollectorImplementation::TicketCollectorImplementation() {

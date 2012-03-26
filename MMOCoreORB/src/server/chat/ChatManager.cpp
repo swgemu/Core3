@@ -724,6 +724,8 @@ void ChatManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -784,7 +786,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {

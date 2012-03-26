@@ -173,11 +173,13 @@ void SuiKeypadBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiKeypadBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 SuiKeypadBoxImplementation::SuiKeypadBoxImplementation(CreatureObject* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::KEYPAD) {

@@ -167,11 +167,13 @@ void ClothingObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ClothingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = WearableObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + WearableObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ClothingObjectImplementation::ClothingObjectImplementation() {

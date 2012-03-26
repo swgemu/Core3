@@ -197,11 +197,13 @@ void ShipControlDeviceImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ShipControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ControlDeviceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ControlDeviceImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ShipControlDeviceImplementation::ShipControlDeviceImplementation() {

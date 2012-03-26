@@ -791,6 +791,8 @@ void GuildManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -827,7 +829,7 @@ int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 GuildManagerImplementation::GuildManagerImplementation(ZoneServer* serv, ZoneProcessServer* proc) {

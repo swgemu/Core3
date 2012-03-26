@@ -323,6 +323,8 @@ void SlicingSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -391,7 +393,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 8;
 }
 
 SlicingSessionImplementation::SlicingSessionImplementation(CreatureObject* parent) {

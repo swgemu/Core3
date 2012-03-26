@@ -330,6 +330,8 @@ void SuiListBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -366,7 +368,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 SuiListBoxImplementation::SuiListBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {

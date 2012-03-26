@@ -154,11 +154,13 @@ void HerdGroupImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int HerdGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = AiGroupImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + AiGroupImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 HerdGroupImplementation::HerdGroupImplementation() : AiGroupImplementation() {

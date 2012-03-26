@@ -186,6 +186,8 @@ void ConversationObserverImplementation::writeObject(ObjectOutputStream* stream)
 }
 
 int ConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -206,7 +208,7 @@ int ConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 ConversationScreen* ConversationObserverImplementation::getInitialScreen() {

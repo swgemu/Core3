@@ -206,6 +206,8 @@ void ReconMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream
 }
 
 int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -218,7 +220,7 @@ int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

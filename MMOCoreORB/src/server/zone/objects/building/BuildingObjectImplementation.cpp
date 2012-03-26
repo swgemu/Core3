@@ -66,6 +66,9 @@ void BuildingObjectImplementation::createContainerComponent() {
 
 void BuildingObjectImplementation::notifyLoadFromDatabase() {
 	StructureObjectImplementation::notifyLoadFromDatabase();
+
+	/*for (int i = 0; i < cel)
+	getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);*/
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
@@ -257,10 +260,14 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 				if (object->getCloseObjects() != NULL)
 					object->addInRangeObject(obj, false);
+				else
+					object->notifyInsert(obj);
 				//object->sendTo(obj, true);
 
 				if (obj->getCloseObjects() != NULL)
 					obj->addInRangeObject(object, false);
+				else
+					obj->notifyInsert(object);
 				//obj->sendTo(object, true);
 			}
 		}
@@ -301,14 +308,21 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 					if (child->getCloseObjects() != NULL)
 						child->addInRangeObject(obj, false);
+					else
+						child->notifyInsert(obj);
 
 					child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
 
 					if (scno->getCloseObjects() != NULL)
 						scno->addInRangeObject(child, false);
+					else
+						scno->notifyInsert(child);
 
 					if (scno->getParent() != NULL)
 						scno->sendTo(child, true);
+				} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
+					child->notifyInsert(obj);
+					obj->notifyInsert(child);
 				}
 			}
 		}
@@ -321,7 +335,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	//return;
 
 
-//	removeNotifiedSentObject(scno);
+	//	removeNotifiedSentObject(scno);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -558,14 +572,21 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 						if (child != object) {
 							//if (is)
 
-							if (child->getCloseObjects() != NULL && !child->getCloseObjects()->contains(object)) {
-								child->addInRangeObject(object, false);
-								object->sendTo(child, true);
-							}
+							if (child->getCloseObjects() != NULL) {
+								if (!child->getCloseObjects()->contains(object)) {
+									child->addInRangeObject(object, false);
+									object->sendTo(child, true);
+								}
+							} else
+								child->notifyInsert(object);
 
-							if (object->getCloseObjects() != NULL && !object->getCloseObjects()->contains(child)) {
-								object->addInRangeObject(child, false);
-								child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+							if (object->getCloseObjects() != NULL) {
+								if (!object->getCloseObjects()->contains(child)) {
+									object->addInRangeObject(child, false);
+									child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+								}
+							} else {
+								object->notifyInsert(child);
 							}
 
 						}
@@ -606,12 +627,12 @@ int BuildingObjectImplementation::notifyObjectRemovedFromChild(SceneObject* obje
 
     sceneObject->broadcastMessage(sceneObject->link((uint64)0, (uint32)0xFFFFFFFF), true, false);*/
 
-    //parent->removeObject(sceneObject, false);
+	//parent->removeObject(sceneObject, false);
 
 
-    remove(object);
+	remove(object);
 
-//    	building->removeNotifiedSentObject(sceneObject);
+	//    	building->removeNotifiedSentObject(sceneObject);
 
 
 	return 0;

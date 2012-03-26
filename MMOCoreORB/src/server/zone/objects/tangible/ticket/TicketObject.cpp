@@ -333,6 +333,8 @@ void TicketObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -369,7 +371,7 @@ int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 TicketObjectImplementation::TicketObjectImplementation() {

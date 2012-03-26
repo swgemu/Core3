@@ -911,6 +911,8 @@ void FishingManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -987,7 +989,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 9 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 9;
 }
 
 FishingManagerImplementation::FishingManagerImplementation() {

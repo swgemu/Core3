@@ -240,6 +240,8 @@ void DeedImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -260,7 +262,7 @@ int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 DeedImplementation::DeedImplementation() {

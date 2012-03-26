@@ -1143,6 +1143,8 @@ void ZoneServerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1323,7 +1325,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 22 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 22;
 }
 
 void ZoneServerImplementation::fixScheduler() {

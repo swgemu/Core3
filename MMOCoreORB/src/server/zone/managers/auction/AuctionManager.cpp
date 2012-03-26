@@ -436,6 +436,8 @@ void AuctionManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -456,7 +458,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 AuctionManagerImplementation::AuctionManagerImplementation(ZoneServer* server) {

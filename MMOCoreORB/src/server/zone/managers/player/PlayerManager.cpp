@@ -997,6 +997,8 @@ void PlayerManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1025,7 +1027,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 int PlayerManagerImplementation::getHighestBadgeIndex() {

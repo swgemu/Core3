@@ -255,6 +255,8 @@ void SurveyMissionObjectiveImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -275,7 +277,7 @@ int SurveyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

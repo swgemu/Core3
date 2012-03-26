@@ -380,6 +380,8 @@ void AccountImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AccountImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -432,7 +434,7 @@ int AccountImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 6;
 }
 
 AccountImplementation::AccountImplementation(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) {

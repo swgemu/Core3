@@ -185,11 +185,13 @@ void NonPlayerCreatureObjectImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int NonPlayerCreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = AiAgentImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + AiAgentImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {

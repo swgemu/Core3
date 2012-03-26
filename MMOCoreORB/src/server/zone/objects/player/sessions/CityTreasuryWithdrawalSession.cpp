@@ -252,6 +252,8 @@ void CityTreasuryWithdrawalSessionImplementation::writeObject(ObjectOutputStream
 }
 
 int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -288,7 +290,7 @@ int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutput
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 CityTreasuryWithdrawalSessionImplementation::CityTreasuryWithdrawalSessionImplementation(CreatureObject* creature, CityRegion* city, SceneObject* terminal) {

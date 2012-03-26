@@ -296,6 +296,8 @@ void CurePackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -332,7 +334,7 @@ int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 CurePackImplementation::CurePackImplementation() {

@@ -387,6 +387,8 @@ void ResourceContainerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -407,7 +409,7 @@ int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation() {

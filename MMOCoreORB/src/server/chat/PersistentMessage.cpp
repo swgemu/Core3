@@ -464,6 +464,8 @@ void PersistentMessageImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -532,7 +534,7 @@ int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 8;
 }
 
 PersistentMessageImplementation::PersistentMessageImplementation() {

@@ -3568,6 +3568,8 @@ void SceneObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = QuadTreeEntryImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -3748,7 +3750,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 22 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return _count + 22;
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {

@@ -288,6 +288,8 @@ void EnhancePackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -316,7 +318,7 @@ int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 EnhancePackImplementation::EnhancePackImplementation() {

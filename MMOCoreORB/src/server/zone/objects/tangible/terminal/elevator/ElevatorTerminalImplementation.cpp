@@ -71,6 +71,9 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(CreatureObject* playe
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
 
+	if (obj == _this)
+		return;
+
 	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
 
 	if (temp == NULL)

@@ -180,6 +180,8 @@ void SuiListBoxMenuItemImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -200,7 +202,7 @@ int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 SuiListBoxMenuItemImplementation::SuiListBoxMenuItemImplementation(const String& name, unsigned long long oid) {

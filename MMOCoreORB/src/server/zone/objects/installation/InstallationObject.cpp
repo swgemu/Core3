@@ -705,6 +705,8 @@ void InstallationObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = StructureObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -773,7 +775,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + StructureObjectImplementation::writeObjectMembers(stream);
+	return _count + 8;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {

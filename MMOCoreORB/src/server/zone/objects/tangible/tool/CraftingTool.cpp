@@ -428,6 +428,8 @@ void CraftingToolImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -472,7 +474,7 @@ int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 CraftingToolImplementation::CraftingToolImplementation() {

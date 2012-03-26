@@ -160,11 +160,13 @@ void EntertainingObserverImplementation::writeObject(ObjectOutputStream* stream)
 }
 
 int EntertainingObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 EntertainingObserverImplementation::EntertainingObserverImplementation() {

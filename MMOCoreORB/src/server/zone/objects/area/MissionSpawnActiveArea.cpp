@@ -182,6 +182,8 @@ void MissionSpawnActiveAreaImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int MissionSpawnActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -194,7 +196,7 @@ int MissionSpawnActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 MissionSpawnActiveAreaImplementation::MissionSpawnActiveAreaImplementation() {

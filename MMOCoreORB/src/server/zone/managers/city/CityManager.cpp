@@ -660,11 +660,13 @@ void CityManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CityManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 CityManagerImplementation::CityManagerImplementation(ZoneServer* zserv) {

@@ -272,6 +272,8 @@ void RegionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -292,7 +294,7 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {

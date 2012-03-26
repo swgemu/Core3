@@ -1009,6 +1009,8 @@ void StructureObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1101,7 +1103,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 11 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 11;
 }
 
 StructureObjectImplementation::StructureObjectImplementation() {

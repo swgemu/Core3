@@ -139,11 +139,13 @@ void FighterShipObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FighterShipObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ShipObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ShipObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 FighterShipObjectImplementation::FighterShipObjectImplementation() {

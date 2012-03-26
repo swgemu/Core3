@@ -144,6 +144,8 @@ void DeliverMissionConversationObserverImplementation::writeObject(ObjectOutputS
 }
 
 int DeliverMissionConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -156,7 +158,7 @@ int DeliverMissionConversationObserverImplementation::writeObjectMembers(ObjectO
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ConversationObserverImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 /*

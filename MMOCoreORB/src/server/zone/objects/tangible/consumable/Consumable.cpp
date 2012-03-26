@@ -384,6 +384,8 @@ void ConsumableImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -532,7 +534,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 18 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 18;
 }
 
 ConsumableImplementation::ConsumableImplementation() {

@@ -278,6 +278,8 @@ void LairSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -322,7 +324,7 @@ int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + SpawnAreaImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 LairSpawnAreaImplementation::LairSpawnAreaImplementation() : SpawnAreaImplementation() {

@@ -403,6 +403,8 @@ void AttachmentImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -431,7 +433,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 AttachmentImplementation::AttachmentImplementation() {

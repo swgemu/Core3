@@ -375,6 +375,8 @@ void WaypointObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -435,7 +437,7 @@ int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 WaypointObjectImplementation::WaypointObjectImplementation() {

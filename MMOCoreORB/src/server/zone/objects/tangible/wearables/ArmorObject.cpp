@@ -672,6 +672,8 @@ void ArmorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = WearableObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -804,7 +806,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 16 + WearableObjectImplementation::writeObjectMembers(stream);
+	return _count + 16;
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation() {

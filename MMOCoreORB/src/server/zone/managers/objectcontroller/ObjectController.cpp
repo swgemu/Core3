@@ -228,11 +228,13 @@ void ObjectControllerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ObjectControllerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer* srv) {

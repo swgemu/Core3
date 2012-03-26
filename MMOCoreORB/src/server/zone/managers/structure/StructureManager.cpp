@@ -409,6 +409,8 @@ void StructureManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -421,7 +423,7 @@ int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* strea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zne, ZoneProcessServer* proc) {

@@ -146,6 +146,8 @@ void TrainerConversationObserverImplementation::writeObject(ObjectOutputStream* 
 }
 
 int TrainerConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -158,7 +160,7 @@ int TrainerConversationObserverImplementation::writeObjectMembers(ObjectOutputSt
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ConversationObserverImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 /*

@@ -484,11 +484,13 @@ void DraftSchematicImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DraftSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 DraftSchematicImplementation::DraftSchematicImplementation() {

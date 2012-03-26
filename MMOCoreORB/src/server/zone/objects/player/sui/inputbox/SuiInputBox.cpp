@@ -229,6 +229,8 @@ void SuiInputBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -257,7 +259,7 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 SuiInputBoxImplementation::SuiInputBoxImplementation(CreatureObject* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {

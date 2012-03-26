@@ -256,6 +256,8 @@ void DestroyStructureSessionImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -284,7 +286,7 @@ int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 DestroyStructureSessionImplementation::DestroyStructureSessionImplementation(CreatureObject* creature, StructureObject* structure) {

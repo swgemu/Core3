@@ -329,6 +329,8 @@ void TrainerConversationSessionImplementation::writeObject(ObjectOutputStream* s
 }
 
 int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ConversationSessionImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -365,7 +367,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + ConversationSessionImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 TrainerConversationSessionImplementation::TrainerConversationSessionImplementation(CreatureObject* npc) : ConversationSessionImplementation(npc) {

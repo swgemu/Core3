@@ -335,11 +335,13 @@ void CraftingSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CraftingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* creature) {

@@ -316,6 +316,8 @@ void CellObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -336,7 +338,7 @@ int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 CellObjectImplementation::CellObjectImplementation() {

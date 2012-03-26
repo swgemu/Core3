@@ -270,6 +270,8 @@ void EntertainerMissionObjectiveImplementation::writeObject(ObjectOutputStream* 
 }
 
 int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -306,7 +308,7 @@ int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputSt
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 EntertainerMissionObjectiveImplementation::EntertainerMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

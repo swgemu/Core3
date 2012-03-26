@@ -298,6 +298,8 @@ void ImageDesignSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -334,7 +336,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObject* parent) {

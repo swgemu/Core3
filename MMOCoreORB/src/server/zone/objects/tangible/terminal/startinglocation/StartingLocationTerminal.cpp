@@ -194,6 +194,8 @@ void StartingLocationTerminalImplementation::writeObject(ObjectOutputStream* str
 }
 
 int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -206,7 +208,7 @@ int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStrea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + TerminalImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation() {

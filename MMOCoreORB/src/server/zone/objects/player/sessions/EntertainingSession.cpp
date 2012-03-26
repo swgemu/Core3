@@ -805,6 +805,8 @@ void EntertainingSessionImplementation::writeObject(ObjectOutputStream* stream) 
 }
 
 int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -921,7 +923,7 @@ int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 14 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 14;
 }
 
 EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObject* ent) {

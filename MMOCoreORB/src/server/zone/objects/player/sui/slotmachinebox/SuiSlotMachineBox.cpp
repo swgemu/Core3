@@ -167,6 +167,8 @@ void SuiSlotMachineBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiListBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -179,7 +181,7 @@ int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + SuiListBoxImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 SuiSlotMachineBoxImplementation::SuiSlotMachineBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, listBoxType) {

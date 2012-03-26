@@ -186,6 +186,8 @@ void RadialManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -198,7 +200,7 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 /*

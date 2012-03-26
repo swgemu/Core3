@@ -877,6 +877,8 @@ void BuildingObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = StructureObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -937,7 +939,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + StructureObjectImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {

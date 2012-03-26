@@ -236,11 +236,13 @@ void LootManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) {

@@ -173,11 +173,13 @@ void SuiMessageBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiMessageBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 SuiMessageBoxImplementation::SuiMessageBoxImplementation(CreatureObject* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::MESSAGEBOX) {

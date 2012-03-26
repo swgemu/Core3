@@ -401,6 +401,8 @@ void DotPackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -477,7 +479,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 9 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 9;
 }
 
 DotPackImplementation::DotPackImplementation() {

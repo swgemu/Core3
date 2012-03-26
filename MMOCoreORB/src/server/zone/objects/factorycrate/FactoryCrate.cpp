@@ -364,6 +364,8 @@ void FactoryCrateImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -376,7 +378,7 @@ int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 FactoryCrateImplementation::FactoryCrateImplementation() {

@@ -186,11 +186,13 @@ void HospitalBuildingObjectImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int HospitalBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuildingObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + BuildingObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 HospitalBuildingObjectImplementation::HospitalBuildingObjectImplementation() {

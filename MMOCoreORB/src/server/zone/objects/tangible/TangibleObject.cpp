@@ -1283,6 +1283,8 @@ void TangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1423,7 +1425,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 17 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 17;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation() {

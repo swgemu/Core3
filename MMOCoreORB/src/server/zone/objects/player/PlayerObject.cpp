@@ -3220,6 +3220,8 @@ void PlayerObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -3688,7 +3690,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 58 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 58;
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {

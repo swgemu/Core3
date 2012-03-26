@@ -306,6 +306,8 @@ void SpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -350,7 +352,7 @@ int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 SpawnAreaImplementation::SpawnAreaImplementation() {

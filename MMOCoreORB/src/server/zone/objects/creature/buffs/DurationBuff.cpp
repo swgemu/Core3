@@ -163,11 +163,13 @@ void DurationBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DurationBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 DurationBuffImplementation::DurationBuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration) : BuffImplementation(creo, buffcrc, duration, BuffType::FOOD) {

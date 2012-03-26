@@ -183,11 +183,13 @@ void CraftingMissionObjectiveImplementation::writeObject(ObjectOutputStream* str
 }
 
 int CraftingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = DeliverMissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + DeliverMissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 CraftingMissionObjectiveImplementation::CraftingMissionObjectiveImplementation(MissionObject* mission) : DeliverMissionObjectiveImplementation(mission) {

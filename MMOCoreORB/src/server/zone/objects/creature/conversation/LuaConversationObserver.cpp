@@ -161,11 +161,13 @@ void LuaConversationObserverImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int LuaConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ConversationObserverImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 LuaConversationObserverImplementation::LuaConversationObserverImplementation(ConversationTemplate* conversationTemplate) : ConversationObserverImplementation(conversationTemplate) {

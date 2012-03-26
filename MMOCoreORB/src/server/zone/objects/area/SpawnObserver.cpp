@@ -165,6 +165,8 @@ void SpawnObserverImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SpawnObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -177,7 +179,7 @@ int SpawnObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 SpawnObserverImplementation::SpawnObserverImplementation(SpawnArea* area) {

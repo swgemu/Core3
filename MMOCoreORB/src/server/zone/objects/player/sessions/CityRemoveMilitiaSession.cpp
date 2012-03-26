@@ -223,6 +223,8 @@ void CityRemoveMilitiaSessionImplementation::writeObject(ObjectOutputStream* str
 }
 
 int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -259,7 +261,7 @@ int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStrea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 CityRemoveMilitiaSessionImplementation::CityRemoveMilitiaSessionImplementation(CreatureObject* creature, CityRegion* city, unsigned long long militiaid, SceneObject* terminal) {

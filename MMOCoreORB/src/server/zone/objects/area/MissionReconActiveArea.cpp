@@ -201,6 +201,8 @@ void MissionReconActiveAreaImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -221,7 +223,7 @@ int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 MissionReconActiveAreaImplementation::MissionReconActiveAreaImplementation() {

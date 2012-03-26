@@ -161,11 +161,13 @@ void ZoneManagerImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ZoneManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ZoneManagerImplementation::ZoneManagerImplementation(const String& name) {

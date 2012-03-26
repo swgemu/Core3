@@ -438,6 +438,8 @@ void AuctionsMapImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -482,7 +484,7 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 AuctionsMapImplementation::AuctionsMapImplementation() {

@@ -421,6 +421,8 @@ void ComponentImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -465,7 +467,7 @@ int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 ComponentImplementation::ComponentImplementation() {

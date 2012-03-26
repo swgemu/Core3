@@ -206,6 +206,8 @@ void DelayedBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -218,7 +220,7 @@ int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 DelayedBuffImplementation::DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int duration) : BuffImplementation(creo, buffcrc, 1380, BuffType::FOOD) {

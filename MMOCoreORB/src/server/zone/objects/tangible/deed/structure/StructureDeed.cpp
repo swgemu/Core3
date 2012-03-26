@@ -366,6 +366,8 @@ void StructureDeedImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = DeedImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -402,7 +404,7 @@ int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + DeedImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 StructureDeedImplementation::StructureDeedImplementation() {

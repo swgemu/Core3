@@ -311,6 +311,8 @@ void RangedStimPackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int RangedStimPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = StimPackImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -339,7 +341,7 @@ int RangedStimPackImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + StimPackImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 RangedStimPackImplementation::RangedStimPackImplementation() {

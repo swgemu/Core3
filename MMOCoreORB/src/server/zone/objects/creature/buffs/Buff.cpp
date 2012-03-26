@@ -834,6 +834,8 @@ void BuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1030,7 +1032,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 24 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 24;
 }
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {

@@ -237,6 +237,8 @@ void CitySpecializationSessionImplementation::writeObject(ObjectOutputStream* st
 }
 
 int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -273,7 +275,7 @@ int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStre
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 CitySpecializationSessionImplementation::CitySpecializationSessionImplementation(CreatureObject* creature, CityRegion* city, SceneObject* terminal) {

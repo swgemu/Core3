@@ -202,6 +202,8 @@ void PlayerTeachSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PlayerTeachSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -214,7 +216,7 @@ int PlayerTeachSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 PlayerTeachSessionImplementation::PlayerTeachSessionImplementation(CreatureObject* creature) {

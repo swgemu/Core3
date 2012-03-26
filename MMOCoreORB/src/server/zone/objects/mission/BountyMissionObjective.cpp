@@ -414,6 +414,8 @@ void BountyMissionObjectiveImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -474,7 +476,7 @@ int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 BountyMissionObjectiveImplementation::BountyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

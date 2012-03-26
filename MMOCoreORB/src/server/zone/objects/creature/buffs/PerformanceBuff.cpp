@@ -198,6 +198,8 @@ void PerformanceBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PerformanceBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -218,7 +220,7 @@ int PerformanceBuffImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 PerformanceBuffImplementation::PerformanceBuffImplementation(CreatureObject* creo, unsigned int buffCRC, float value, int duration, int typeOfBuff) : BuffImplementation(creo, buffCRC, duration, BuffType::PERFORMANCE) {

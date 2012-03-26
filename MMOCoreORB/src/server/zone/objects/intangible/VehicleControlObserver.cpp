@@ -167,6 +167,8 @@ void VehicleControlObserverImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int VehicleControlObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ObserverImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -179,7 +181,7 @@ int VehicleControlObserverImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ObserverImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 VehicleControlObserverImplementation::VehicleControlObserverImplementation(VehicleControlDevice* device) {

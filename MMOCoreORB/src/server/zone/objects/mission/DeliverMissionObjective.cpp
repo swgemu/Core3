@@ -343,6 +343,8 @@ void DeliverMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -395,7 +397,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 6;
 }
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

@@ -1004,6 +1004,8 @@ void CityRegionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1136,7 +1138,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 16 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 16;
 }
 
 CityRegionImplementation::CityRegionImplementation() {

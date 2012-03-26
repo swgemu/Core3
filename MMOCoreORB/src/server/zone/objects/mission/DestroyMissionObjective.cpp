@@ -309,6 +309,8 @@ void DestroyMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -353,7 +355,7 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

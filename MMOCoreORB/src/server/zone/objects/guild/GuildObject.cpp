@@ -658,6 +658,8 @@ void GuildObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -718,7 +720,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 GuildObjectImplementation::GuildObjectImplementation() {

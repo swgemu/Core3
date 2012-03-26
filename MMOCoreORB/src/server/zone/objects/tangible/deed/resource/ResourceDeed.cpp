@@ -215,11 +215,13 @@ void ResourceDeedImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ResourceDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = DeedImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + DeedImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ResourceDeedImplementation::ResourceDeedImplementation() {

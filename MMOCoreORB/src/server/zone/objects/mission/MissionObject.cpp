@@ -1135,6 +1135,8 @@ void MissionObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -1363,7 +1365,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 28 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 28;
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {

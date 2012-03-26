@@ -192,11 +192,13 @@ void SpiceBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SpiceBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SPICE) {

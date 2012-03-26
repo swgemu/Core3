@@ -625,6 +625,8 @@ void ZoneImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -661,7 +663,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 4 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 4;
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {

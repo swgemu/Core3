@@ -224,6 +224,8 @@ void HuntingMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -236,7 +238,7 @@ int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + MissionObjectiveImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 HuntingMissionObjectiveImplementation::HuntingMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

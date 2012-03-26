@@ -285,6 +285,8 @@ void JunkdealerCreatureImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = CreatureObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -297,7 +299,7 @@ int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 JunkdealerCreatureImplementation::JunkdealerCreatureImplementation() {

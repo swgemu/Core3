@@ -158,11 +158,13 @@ void ToolTangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ToolTangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 ToolTangibleObjectImplementation::ToolTangibleObjectImplementation() {

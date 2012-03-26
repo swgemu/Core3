@@ -266,6 +266,8 @@ void WoundPackImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -286,7 +288,7 @@ int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + PharmaceuticalObjectImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 WoundPackImplementation::WoundPackImplementation() {

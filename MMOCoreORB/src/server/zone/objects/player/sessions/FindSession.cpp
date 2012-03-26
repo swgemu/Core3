@@ -239,6 +239,8 @@ void FindSessionImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -259,7 +261,7 @@ int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 FindSessionImplementation::FindSessionImplementation(CreatureObject* pl) {

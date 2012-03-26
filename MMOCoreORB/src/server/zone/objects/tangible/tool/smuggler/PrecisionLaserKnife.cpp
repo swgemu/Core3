@@ -236,6 +236,8 @@ void PrecisionLaserKnifeImplementation::writeObject(ObjectOutputStream* stream) 
 }
 
 int PrecisionLaserKnifeImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SlicingToolImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -248,7 +250,7 @@ int PrecisionLaserKnifeImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + SlicingToolImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 PrecisionLaserKnifeImplementation::PrecisionLaserKnifeImplementation() {

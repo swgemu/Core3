@@ -326,6 +326,8 @@ void CraftingStationImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -354,7 +356,7 @@ int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + ToolTangibleObjectImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 CraftingStationImplementation::CraftingStationImplementation() {

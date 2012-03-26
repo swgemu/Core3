@@ -176,6 +176,8 @@ void ChatMessageImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ChatMessageImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -188,7 +190,7 @@ int ChatMessageImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 ChatMessageImplementation::ChatMessageImplementation() {

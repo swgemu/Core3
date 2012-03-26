@@ -254,6 +254,8 @@ void PowerBoostBuffImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = BuffImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -298,7 +300,7 @@ int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 5 + BuffImplementation::writeObjectMembers(stream);
+	return _count + 5;
 }
 
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SKILL) {

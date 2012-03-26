@@ -521,6 +521,8 @@ void GroupObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -549,7 +551,7 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 3 + SceneObjectImplementation::writeObjectMembers(stream);
+	return _count + 3;
 }
 
 GroupObjectImplementation::GroupObjectImplementation() {

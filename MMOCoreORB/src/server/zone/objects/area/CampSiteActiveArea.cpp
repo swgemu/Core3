@@ -479,6 +479,8 @@ void CampSiteActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -539,7 +541,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + ActiveAreaImplementation::writeObjectMembers(stream);
+	return _count + 7;
 }
 
 CampSiteActiveAreaImplementation::CampSiteActiveAreaImplementation() {

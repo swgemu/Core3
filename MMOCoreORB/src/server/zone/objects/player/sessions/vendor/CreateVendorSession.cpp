@@ -258,6 +258,8 @@ void CreateVendorSessionImplementation::writeObject(ObjectOutputStream* stream) 
 }
 
 int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = FacadeImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -310,7 +312,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + FacadeImplementation::writeObjectMembers(stream);
+	return _count + 6;
 }
 
 CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObject* parent) {

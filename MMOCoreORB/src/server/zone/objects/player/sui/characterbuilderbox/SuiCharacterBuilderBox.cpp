@@ -189,11 +189,13 @@ void SuiCharacterBuilderBoxImplementation::writeObject(ObjectOutputStream* strea
 }
 
 int SuiCharacterBuilderBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiListBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + SuiListBoxImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(CreatureObject* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, SuiListBox::HANDLETHREEBUTTON) {

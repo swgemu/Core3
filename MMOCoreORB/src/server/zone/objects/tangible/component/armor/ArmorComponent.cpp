@@ -172,6 +172,8 @@ void ArmorComponentImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = ComponentImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -184,7 +186,7 @@ int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ComponentImplementation::writeObjectMembers(stream);
+	return _count + 1;
 }
 
 ArmorComponentImplementation::ArmorComponentImplementation() {

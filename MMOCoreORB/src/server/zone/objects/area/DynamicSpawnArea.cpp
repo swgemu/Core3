@@ -321,6 +321,8 @@ void DynamicSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -373,7 +375,7 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + SpawnAreaImplementation::writeObjectMembers(stream);
+	return _count + 6;
 }
 
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation() {

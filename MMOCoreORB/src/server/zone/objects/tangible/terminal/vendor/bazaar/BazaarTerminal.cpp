@@ -190,11 +190,13 @@ void BazaarTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int BazaarTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = VendorTerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
 
-	return 0 + VendorTerminalImplementation::writeObjectMembers(stream);
+	return _count + 0;
 }
 
 BazaarTerminalImplementation::BazaarTerminalImplementation() {

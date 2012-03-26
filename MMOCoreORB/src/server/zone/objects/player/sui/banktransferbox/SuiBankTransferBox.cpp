@@ -259,6 +259,8 @@ void SuiBankTransferBoxImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = SuiBoxImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -335,7 +337,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 9 + SuiBoxImplementation::writeObjectMembers(stream);
+	return _count + 9;
 }
 
 SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, CreatureObject* player, unsigned int windowtype) : SuiBoxImplementation(player, windowtype, SuiBoxImplementation::BANKTRANSFERBOX) {

@@ -81,6 +81,7 @@ which carries forward this exception.
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/templates/ChildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/scene/components/ZoneComponent.h"
@@ -387,9 +388,10 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 
 	if (zone != NULL) {
 		zone->transferObject(_this, -1, true);
-	} else if (parent != NULL && getParent()->isCellObject()) {
+	} /* else if (parent != NULL && getParent()->isCellObject()) {
 		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
-	}
+
+	} */
 }
 
 void SceneObjectImplementation::setObjectMenuComponent(const String& name) {

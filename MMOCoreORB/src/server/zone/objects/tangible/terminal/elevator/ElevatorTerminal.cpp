@@ -267,6 +267,8 @@ void ElevatorTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
+	int _count = TerminalImplementation::writeObjectMembers(stream);
+
 	String _name;
 	int _offset;
 	uint16 _totalSize;
@@ -287,7 +289,7 @@ int ElevatorTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 2 + TerminalImplementation::writeObjectMembers(stream);
+	return _count + 2;
 }
 
 ElevatorTerminalImplementation::ElevatorTerminalImplementation() {
