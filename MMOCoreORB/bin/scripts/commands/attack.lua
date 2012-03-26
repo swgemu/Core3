@@ -52,6 +52,7 @@ AttackCommand = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
+	forceCostMultiplier = 0,
 
 	--dotDuration = 60,
 	--dotType = CreatureState::POISONED,

@@ -1030,11 +1030,19 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
 	int action = (int) (weapon->getActionAttackCost() * data.getActionCostMultiplier());
 	int mind = (int) (weapon->getMindAttackCost() * data.getMindCostMultiplier());
-	int force = (int) (weapon->getForceCost() * data.getForceCostMultiplier());
+	int force = (int) ((weapon->getForceCost() / 4) * data.getForceCostMultiplier()); // Divide by 4 until sabers are correctly implemented.
 
-	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 50.f));
-	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 50.f));
-	mind = MAX(0, mind - (float(attacker->getHAM(CreatureAttribute::FOCUS)) / 50.f));
+	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
+	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));
+	mind = MAX(0, mind - (float(attacker->getHAM(CreatureAttribute::FOCUS)) / 10.f));
+
+	if (force > 0) { // Need Force check first otherwise it can be spammed.
+		ManagedReference<PlayerObject*> playerO = attacker->getPlayerObject();
+		if (playerO->getForcePower() <= force){
+			attacker->sendSystemMessage("@jedi_spam:no_force_power");
+			return false;
+		} else playerO->setForcePower(playerO->getForcePower() - force);
+	}
 
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;
@@ -1055,10 +1063,6 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 
 	if (mind > 0) {
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
-	}
-
-	if (force > 0) {
-		//TODO: add force withdrawal
 	}
 
 	return true;

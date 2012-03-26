@@ -1506,7 +1506,7 @@ void PlayerObjectImplementation::activateForceRegen() {
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
 
-	if (getForcePower() == getForcePowerMax())
+	if (getForcePower() >= getForcePowerMax())
 		return;
 
 	if (getForcePower() < 0)

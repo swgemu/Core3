@@ -46,12 +46,14 @@ which carries forward this exception.
 #define SABERPOLEARMDERVISH2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class SaberPolearmDervish2Command : public QueueCommand {
+class SaberPolearmDervish2Command : public  CombatQueueCommand {
 public:
 
 	SaberPolearmDervish2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		:  CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +65,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		// Check for Double Bladed Lightsaber after they are implemented.
+
+		return doCombatAction(creature, target);
 	}
 
 };
