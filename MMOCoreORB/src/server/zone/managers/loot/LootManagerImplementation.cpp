@@ -202,6 +202,9 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		float min = craftingValues.getMinValue(subtitle);
 		float max = craftingValues.getMaxValue(subtitle);
 
+		if(min == max)
+			continue;
+
 		float minMod = (max >= min) ? 2000.f : -2000.f;
 		float maxMod = (max >= min) ? 500.f : -500.f;
 
