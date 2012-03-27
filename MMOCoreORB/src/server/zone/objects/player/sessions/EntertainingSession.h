@@ -113,6 +113,8 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/Task.h"
 
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -209,6 +211,14 @@ public:
 
 	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
 
+	bool isInDenyServiceList(CreatureObject* target);
+
+	void addToDenyServiceList(CreatureObject* target);
+
+	void removeFromDenyServiceList(CreatureObject* target);
+
+	void increaseEntertainerBuff(CreatureObject* patron);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -244,6 +254,8 @@ protected:
 	EntertainingDataMap watchers;
 
 	EntertainingDataMap listeners;
+
+	SortedVector<ManagedReference<CreatureObject* > > denyServiceList;
 
 	Reference<EntertainingSessionTask* > tickTask;
 
@@ -359,6 +371,14 @@ public:
 	void setTargetInstrument(bool var);
 
 	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
+
+	bool isInDenyServiceList(CreatureObject* target);
+
+	void addToDenyServiceList(CreatureObject* target);
+
+	void removeFromDenyServiceList(CreatureObject* target);
+
+	void increaseEntertainerBuff(CreatureObject* patron);
 
 	WeakReference<EntertainingSession*> _this;
 
@@ -480,6 +500,14 @@ public:
 	void setTargetInstrument(bool var);
 
 	void updateEntertainerMissionStatus(bool entertaining, const int missionType);
+
+	bool isInDenyServiceList(CreatureObject* target);
+
+	void addToDenyServiceList(CreatureObject* target);
+
+	void removeFromDenyServiceList(CreatureObject* target);
+
+	void increaseEntertainerBuff(CreatureObject* patron);
 
 protected:
 	String _param0_startDancing__String_String_;

@@ -8,8 +8,6 @@
  *	TrainerConversationObserverStub
  */
 
-enum {};
-
 TrainerConversationObserver::TrainerConversationObserver(ConversationTemplate* conversationTemplate) : ConversationObserver(DummyConstructorParameter::instance()) {
 	TrainerConversationObserverImplementation* _implementation = new TrainerConversationObserverImplementation(conversationTemplate);
 	_impl = _implementation;

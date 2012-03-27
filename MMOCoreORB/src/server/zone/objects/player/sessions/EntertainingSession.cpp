@@ -20,7 +20,7 @@
  *	EntertainingSessionStub
  */
 
-enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_ADDHEALINGXPGROUP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_};
+enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_ADDHEALINGXPGROUP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_,RPC_ISINDENYSERVICELIST__CREATUREOBJECT_,RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_,RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_,RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_};
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
@@ -622,6 +622,62 @@ void EntertainingSession::updateEntertainerMissionStatus(bool entertaining, cons
 		_implementation->updateEntertainerMissionStatus(entertaining, missionType);
 }
 
+bool EntertainingSession::isInDenyServiceList(CreatureObject* target) {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISINDENYSERVICELIST__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isInDenyServiceList(target);
+}
+
+void EntertainingSession::addToDenyServiceList(CreatureObject* target) {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToDenyServiceList(target);
+}
+
+void EntertainingSession::removeFromDenyServiceList(CreatureObject* target) {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromDenyServiceList(target);
+}
+
+void EntertainingSession::increaseEntertainerBuff(CreatureObject* patron) {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_);
+		method.addObjectParameter(patron);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->increaseEntertainerBuff(patron);
+}
+
 DistributedObjectServant* EntertainingSession::_getImplementation() {
 
 	_updated = true;
@@ -745,6 +801,11 @@ bool EntertainingSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
+	if (_name == "EntertainingSession.denyServiceList") {
+		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&denyServiceList, stream);
+		return true;
+	}
+
 	if (_name == "EntertainingSession.nextTick") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextTick, stream);
 		return true;
@@ -844,6 +905,14 @@ int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "EntertainingSession.denyServiceList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&denyServiceList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "EntertainingSession.nextTick";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -925,7 +994,7 @@ int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeShort(_offset, _totalSize);
 
 
-	return _count + 14;
+	return _count + 15;
 }
 
 EntertainingSessionImplementation::EntertainingSessionImplementation(CreatureObject* ent) {
@@ -1033,6 +1102,21 @@ void EntertainingSessionImplementation::setDancing(bool val) {
 void EntertainingSessionImplementation::setTargetInstrument(bool var) {
 	// server/zone/objects/player/sessions/EntertainingSession.idl():  		targetInstrument = var;
 	targetInstrument = var;
+}
+
+bool EntertainingSessionImplementation::isInDenyServiceList(CreatureObject* target) {
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		return denyServiceList.contains(target);
+	return (&denyServiceList)->contains(target);
+}
+
+void EntertainingSessionImplementation::addToDenyServiceList(CreatureObject* target) {
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		denyServiceList.put(target);
+	(&denyServiceList)->put(target);
+}
+
+void EntertainingSessionImplementation::removeFromDenyServiceList(CreatureObject* target) {
+	// server/zone/objects/player/sessions/EntertainingSession.idl():  		denyServiceList.drop(target);
+	(&denyServiceList)->drop(target);
 }
 
 /*
@@ -1169,6 +1253,18 @@ void EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_:
 		updateEntertainerMissionStatus(inv->getBooleanParameter(), inv->getSignedIntParameter());
+		break;
+	case RPC_ISINDENYSERVICELIST__CREATUREOBJECT_:
+		resp->insertBoolean(isInDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_:
+		addToDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_:
+		removeFromDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_:
+		increaseEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1333,6 +1429,22 @@ void EntertainingSessionAdapter::setTargetInstrument(bool var) {
 
 void EntertainingSessionAdapter::updateEntertainerMissionStatus(bool entertaining, const int missionType) {
 	(static_cast<EntertainingSession*>(stub))->updateEntertainerMissionStatus(entertaining, missionType);
+}
+
+bool EntertainingSessionAdapter::isInDenyServiceList(CreatureObject* target) {
+	return (static_cast<EntertainingSession*>(stub))->isInDenyServiceList(target);
+}
+
+void EntertainingSessionAdapter::addToDenyServiceList(CreatureObject* target) {
+	(static_cast<EntertainingSession*>(stub))->addToDenyServiceList(target);
+}
+
+void EntertainingSessionAdapter::removeFromDenyServiceList(CreatureObject* target) {
+	(static_cast<EntertainingSession*>(stub))->removeFromDenyServiceList(target);
+}
+
+void EntertainingSessionAdapter::increaseEntertainerBuff(CreatureObject* patron) {
+	(static_cast<EntertainingSession*>(stub))->increaseEntertainerBuff(patron);
 }
 
 /*

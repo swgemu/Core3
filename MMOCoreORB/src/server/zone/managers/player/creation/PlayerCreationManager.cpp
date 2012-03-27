@@ -328,8 +328,7 @@ void PlayerCreationManager::loadLuaStartingItems(Lua* lua) {
 			commonStartingItems.add(commonStartingItemsLuaObject.getStringAt(itemNumber));
 		}
 		commonStartingItemsLuaObject.pop();
-	}
-	catch (Exception e) {
+	} catch (Exception& e) {
 		error("Failed to load starting items.");
 		error(e.getMessage());
 	}

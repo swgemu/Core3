@@ -51,6 +51,7 @@ import engine.core.ManagedReference;
 import engine.util.Facade;
 import system.lang.ref.Reference;
 import engine.core.Task;
+import system.util.SortedVector;
 include server.zone.objects.player.EntertainingData;
 include server.zone.objects.player.EntertainingDataMap;
 import server.zone.objects.creature.CreatureObject;
@@ -71,6 +72,9 @@ class EntertainingSession extends Facade {
 	
 	@dereferenced
 	protected EntertainingDataMap listeners;
+	
+	@dereferenced
+	protected SortedVector<CreatureObject> denyServiceList;
 	
 	protected transient EntertainingSessionTask tickTask;
 	
@@ -224,4 +228,18 @@ class EntertainingSession extends Facade {
 	}
 	
 	public native void updateEntertainerMissionStatus(boolean entertaining, final int missionType);
+	
+	public boolean isInDenyServiceList(CreatureObject target) {
+		return denyServiceList.contains(target);
+	}
+	
+	public void addToDenyServiceList(CreatureObject target) {
+		denyServiceList.put(target);
+	}
+	
+	public void removeFromDenyServiceList(CreatureObject target) {
+		denyServiceList.drop(target);
+	}
+	
+	public native void increaseEntertainerBuff(CreatureObject patron);
 }

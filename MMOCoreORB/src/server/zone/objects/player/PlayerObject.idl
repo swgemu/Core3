@@ -232,6 +232,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<string> permissionGroups;
 
+	protected unsigned long performanceBuffTarget;
+	
+	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -287,6 +290,8 @@ class PlayerObject extends IntangibleObject {
 		spawnedBlueFrog = false;
 		
 		setOffline();
+		
+		performanceBuffTarget = 0;
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1230,5 +1235,12 @@ class PlayerObject extends IntangibleObject {
 	
 	public boolean isBountyLocked() {
 		return bountyLockList.size() > 0;
+	}
+	
+	public unsigned long getPerformanceBuffTarget() {
+		return performanceBuffTarget;
+	}
+	public void setPerformanceBuffTarget(unsigned long target) {
+		performanceBuffTarget = target;
 	}
 }

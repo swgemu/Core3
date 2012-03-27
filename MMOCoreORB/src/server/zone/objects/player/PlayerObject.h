@@ -756,6 +756,10 @@ public:
 
 	bool isBountyLocked();
 
+	unsigned long long getPerformanceBuffTarget();
+
+	void setPerformanceBuffTarget(unsigned long long target);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -917,6 +921,8 @@ protected:
 	VectorMap<String, String> screenPlayData;
 
 	SortedVector<String> permissionGroups;
+
+	unsigned long long performanceBuffTarget;
 
 public:
 	static const int LFG = 1;
@@ -1377,6 +1383,10 @@ public:
 
 	bool isBountyLocked();
 
+	unsigned long long getPerformanceBuffTarget();
+
+	void setPerformanceBuffTarget(unsigned long long target);
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1783,6 +1793,10 @@ public:
 	void removeFromBountyLockList(CreatureObject* player);
 
 	bool isBountyLocked();
+
+	unsigned long long getPerformanceBuffTarget();
+
+	void setPerformanceBuffTarget(unsigned long long target);
 
 protected:
 	String _param0_addExperience__String_int_bool_;

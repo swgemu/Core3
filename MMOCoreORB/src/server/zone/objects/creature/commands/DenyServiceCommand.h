@@ -63,6 +63,47 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<CreatureObject*> targetObject = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+		if(targetObject == NULL)
+			return GENERALERROR;
+
+		if(targetObject == creature || !targetObject->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
+
+		if(session == NULL)
+			return GENERALERROR;
+
+		StringIdChatParameter selfMessage;
+		StringIdChatParameter otherMessage;
+
+		if(session->isInDenyServiceList(targetObject)) {
+			session->removeFromDenyServiceList(targetObject);
+
+			selfMessage.setStringId("performance", "deny_service_remove_self");
+			selfMessage.setTT(targetObject->getDisplayedName());
+
+			otherMessage.setStringId("performance", "deny_service_remove_other");
+			otherMessage.setTU(creature->getDisplayedName());
+
+			creature->sendSystemMessage(selfMessage);
+			targetObject->sendSystemMessage(otherMessage);
+		}
+		else {
+			session->addToDenyServiceList(targetObject);
+
+			selfMessage.setStringId("performance", "deny_service_add_self");
+			selfMessage.setTT(targetObject->getDisplayedName());
+
+			otherMessage.setStringId("performance", "deny_service_add_other");
+			otherMessage.setTU(creature->getDisplayedName());
+
+			creature->sendSystemMessage(selfMessage);
+			targetObject->sendSystemMessage(otherMessage);
+		}
+
 		return SUCCESS;
 	}
 

@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/events/EntertainingSessionTask.h"
 #include "server/zone/objects/player/EntertainingObserver.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/packets/object/Flourish.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
@@ -45,7 +46,6 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	float woundHealingSkill = 0.0f;
 	float shockHealingSkill = 0.0f;
 	int campModtemp = 100;
-	bool canHeal = false;
 
 	/*if (entertainer->isInCamp()) {
 			campModtemp = getCampModifier();
@@ -79,20 +79,12 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 		return;
 	}
 
-	//**DETERMINE IF THE ENT CAN HEAL.**
-	canHeal = canGiveEntertainBuff();
 	//**DETERMINE WOUND HEAL AMOUNTS.**
 	int woundHeal = ceil(performance->getHealMindWound() * (campModtemp / 100) * (woundHealingSkill / 100.0f));
 	int shockHeal = ceil(performance->getHealShockWound() * (campModtemp / 100) * (shockHealingSkill / 100.0f));
 
 	//**ENTERTAINER HEALS THEIR OWN MIND.**
-	if (canHeal && (entertainer->getWounds(CreatureAttribute::MIND) > 0
-			|| entertainer->getWounds(CreatureAttribute::FOCUS) > 0
-			|| entertainer->getWounds(CreatureAttribute::WILLPOWER) > 0
-			|| entertainer->getShockWounds() > 0)) {
-
-		healWounds(entertainer, woundHeal, shockHeal);
-	}
+	healWounds(entertainer, woundHeal*(flourishCount+1), shockHeal*(flourishCount+1));
 
 	//**APPLY EFFECTS TO PATRONS.**
 	if (patrons != NULL && patrons->size() > 0) {
@@ -101,45 +93,13 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 			ManagedReference<CreatureObject*> patron = patrons->elementAt(i).getKey();
 
 			try {
-				//**VERIFY THE PATRON IS IN RANGE OF THE ENT.
-				bool patronInRange = false;
+				//**VERIFY THE PATRON IS NOT ON THE DENY SERVICE LIST
 
 				if (entertainer->isInRange(patron, 10.0f)) {
-					patronInRange = true;
-				}
+					healWounds(patron, woundHeal*(flourishCount+1), shockHeal*(flourishCount+1));
+					increaseEntertainerBuff(patron);
 
-				if (patronInRange) {
-					if (canHeal && (patron->getWounds(CreatureAttribute::MIND) > 0
-							|| patron->getWounds(CreatureAttribute::FOCUS) > 0
-							|| patron->getWounds(CreatureAttribute::WILLPOWER) > 0
-							|| patron->getShockWounds() > 0)) {
-
-						Locker clocker(patron, entertainer);
-
-						//flourishCount + 1 because of base tick
-						healWounds(patron, woundHeal*(flourishCount+1), shockHeal*(flourishCount+1));
-					}
-
-					// Handle Passive Buff
-					if (canHeal && entertainer->getGroup() != NULL && (entertainer->getGroupID() == patron->getGroupID())) {
-						// Add 1 minute per tick
-						float dur = 1.0f;
-
-						// If T'ssolok is active, then increase the amount added per tick.
-						if (entertainer->hasBuff(BuffCRC::FOOD_ACCELERATE_ENTERTAINER_BUFF)) {
-							ManagedReference<Buff*> buff = entertainer->getBuff(BuffCRC::FOOD_ACCELERATE_ENTERTAINER_BUFF);
-
-							if (buff != NULL)
-								dur += (buff->getSkillModifierValue("accelerate_entertainer_buff") / 100.0f);
-						}
-
-						addEntertainerBuffDuration(patron, performance->getType(), dur);
-
-						//Buff % increased by healShockWound()% per tick
-						addEntertainerBuffStrength(patron, performance->getType(), performance->getHealShockWound());
-					}
-
-				} else { //patron is not in range
+				} else { //patron is not in range, force to stop listening
 					ManagedReference<PlayerManager*> playerManager = patron->getZoneServer()->getPlayerManager();
 
 					if (dancing) {
@@ -189,6 +149,14 @@ bool EntertainingSessionImplementation::isInEntertainingBuilding(CreatureObject*
 void EntertainingSessionImplementation::healWounds(CreatureObject* creature, float woundHeal, float shockHeal) {
 	float amountHealed = 0;
 
+	Locker clocker(creature, entertainer);
+
+	if(!canGiveEntertainBuff())
+		return;
+
+	if(isInDenyServiceList(creature))
+		return;
+
 	if(shockHeal > 0 && creature->getShockWounds() > 0) {
 		creature->addShockWounds(-shockHeal);
 		amountHealed += shockHeal;
@@ -216,7 +184,8 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 	for(int i=0;i<groupSize;i++) {
 		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
-		if(groupMember != NULL && groupMember->isEntertaining()) {
+		if(groupMember != NULL && groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
+				&& groupMember->hasSkill("social_entertainer_novice")) {
 			String healxptype("entertainer_healing");
 
 			if (playerManager != NULL)
@@ -520,56 +489,17 @@ bool EntertainingSessionImplementation::canGiveEntertainBuff() {
 void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 	// Watchers that are in our group for passive buff
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
-
-	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
-	Performance* performance = NULL;
-
-	ManagedReference<Instrument*> instrument = getInstrument(entertainer);
-
-	if (performanceName == "")
-		return;
-
 	if (dancing) {
-		patrons = &watchers;
-		performance = performanceManager->getDance(performanceName);
-	} else if (playingMusic && instrument != NULL) {
-		patrons = &listeners;
-		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
-	} else {
-		cancelSession();
-		return;
+			patrons = &watchers;
 	}
-
-	if (performance == NULL) { // shouldn't happen
-		StringBuffer msg;
-		msg << "Performance was null.  Please report to www.swgemu.com/bugs ! Name: " << performanceName << " and Type: " << dec << instrument->getInstrumentType();
-
-		entertainer->sendSystemMessage(msg.toString());
-		return;
+	else if (playingMusic) {
+			patrons = &listeners;
 	}
-
 	if (patrons != NULL) {
 		for (int i = 0; i < patrons->size(); ++i) {
-			ManagedReference<CreatureObject*> obj = patrons->elementAt(i).getKey();
+			ManagedReference<CreatureObject*> patron = patrons->elementAt(i).getKey();
 			try {
-				//Locker clocker(entertainer, obj);
-
-				// Passive Buff only to group members
-				if (entertainer->getGroupID() == 0
-						|| (entertainer->getGroupID() != obj->getGroupID())) {
-					continue;
-				}
-
-				bool patronInRange = false;
-
-				if (entertainer->isInRange(obj, 10.0f))
-					patronInRange = true;
-
-				if (patronInRange) {
-					addEntertainerBuffDuration(obj, performance->getType(), 1.0f);
-					addEntertainerBuffStrength(obj, performance->getType(), performance->getHealShockWound());
-				}
-
+				increaseEntertainerBuff(patron);
 			} catch (Exception& e) {
 				error("Unreported exception caught in EntertainingSessionImplementation::addEntertainerFlourishBuff()");
 			}
@@ -632,9 +562,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 		//check to see how many flourishes have occurred this tick
 		if(flourishCount < 5) {
 			// Add buff
-			if (canGiveEntertainBuff()){
-				addEntertainerFlourishBuff();
-			}
+			addEntertainerFlourishBuff();
 
 			// Grant Experience
 
@@ -848,6 +776,22 @@ void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* c
 
 void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* creature, int performanceType) {
 	try {
+		//Check if on Deny Service list
+		if(isInDenyServiceList(creature)) {
+			return;
+		}
+
+		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+		//Check if the patron is a valid buff target
+		//Whether it be passive(in the same group) or active (/setPerform target)
+		if ((!entertainer->isGrouped() || entertainer->getGroupID() != creature->getGroupID())
+				&& entPlayer->getPerformanceBuffTarget() != creature->getObjectID()) {
+			return;
+		}
+
+		if(!canGiveEntertainBuff())
+			return;
+
 		// Returns the Number of Minutes for the Buff Duration
 		float buffDuration = getEntertainerBuffDuration(creature, performanceType);
 
@@ -858,6 +802,7 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		//2 minute minimum listen/watch time
 		int timeElapsed = time(0) - getEntertainerBuffStartTime(creature, performanceType);
 		if(timeElapsed < 120) {
+			creature->sendSystemMessage("@performance:buff_time_failed");
 			return;
 		}
 
@@ -935,4 +880,45 @@ void EntertainingSessionImplementation::updateEntertainerMissionStatus(bool ente
 			}
 		}
 	}
+}
+
+void EntertainingSessionImplementation::increaseEntertainerBuff(CreatureObject* patron){
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+	Performance* performance = NULL;
+
+	ManagedReference<Instrument*> instrument = getInstrument(entertainer);
+
+	if (performanceName == "")
+		return;
+
+	if (dancing) {
+		performance = performanceManager->getDance(performanceName);
+	} else if (playingMusic && instrument != NULL) {
+		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
+	} else {
+		cancelSession();
+		return;
+	}
+
+	if(!canGiveEntertainBuff())
+		return;
+
+	if (performance == NULL) { // shouldn't happen
+		return;
+	}
+
+	ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+	//Check if the patron is a valid buff target
+	//Whether it be passive(in the same group) or active (/setPerform target)
+	if ((!entertainer->isGrouped() || entertainer->getGroupID() != patron->getGroupID())
+			&& entPlayer->getPerformanceBuffTarget() != patron->getObjectID()) {
+		return;
+	}
+
+	if(isInDenyServiceList(patron))
+		return;
+
+	addEntertainerBuffDuration(patron, performance->getType(), 1.0f);
+	addEntertainerBuffStrength(patron, performance->getType(), performance->getHealShockWound());
+
 }

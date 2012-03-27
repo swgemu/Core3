@@ -46,6 +46,7 @@ which carries forward this exception.
 #define SETPERFORMANCEBUFFTARGETCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 class SetPerformanceBuffTargetCommand : public QueueCommand {
 public:
@@ -63,6 +64,34 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if(!creature->isPlayerCreature())
+			return GENERALERROR
+					;
+		ManagedReference<PlayerObject*> playerObj = creature->getPlayerObject();
+
+		ManagedReference<CreatureObject*> targetObject = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+
+		if(targetObject == NULL) {
+			creature->sendSystemMessage("@performance:buff_invalid_target_self");
+			return GENERALERROR;
+		}
+
+		if(targetObject == creature || !targetObject->isPlayerCreature())
+			return GENERALERROR;
+
+
+		StringIdChatParameter selfMessage;
+		StringIdChatParameter otherMessage;
+		selfMessage.setStringId("performance", "buff_set_target_self");
+		selfMessage.setTT(targetObject->getDisplayedName());
+
+		otherMessage.setStringId("performance", "buff_set_target_other");
+		otherMessage.setTU(creature->getDisplayedName());
+		creature->sendSystemMessage(selfMessage);
+		targetObject->sendSystemMessage(otherMessage);
+
+		playerObj->setPerformanceBuffTarget(target);
 		return SUCCESS;
 	}
 

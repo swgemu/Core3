@@ -10,8 +10,6 @@
  *	LuaConversationObserverStub
  */
 
-enum {};
-
 LuaConversationObserver::LuaConversationObserver(ConversationTemplate* conversationTemplate) : ConversationObserver(DummyConstructorParameter::instance()) {
 	LuaConversationObserverImplementation* _implementation = new LuaConversationObserverImplementation(conversationTemplate);
 	_impl = _implementation;
