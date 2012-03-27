@@ -6,6 +6,13 @@ brackaset_plating_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_chitin_brackaset.iff",
 	craftingValues = {
+		{"armor_effectiveness",3,5,10},
+		{"armor_special_type",4,4,0},
+		{"armor_special_effectiveness",2,4,10},
+		{"armor_action_encumbrance",17,6},
+		{"armor_mind_encumbrance",20,5},
+		{"armor_health_encumbrance",0,0,0,0},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

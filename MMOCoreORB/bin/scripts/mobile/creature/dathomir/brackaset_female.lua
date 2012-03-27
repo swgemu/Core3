@@ -27,7 +27,14 @@ brackaset_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "brackaset_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	   },
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

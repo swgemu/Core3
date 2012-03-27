@@ -6,6 +6,14 @@ kimogila_bone_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_bone_kimogila.iff",
 	craftingValues = {
+		{"armor_effectiveness",7,13,10},
+		{"armor_special_type",96,96},
+		{"armor_special_effectiveness",6,13,10},
+		{"armor_integrity",700,1400},
+		{"armor_action_encumbrance",10,5},
+		{"armor_mind_encumbrance",5,-3},
+		{"armor_health_encumbrance",0,0,0,0},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

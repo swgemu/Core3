@@ -6,6 +6,13 @@ kimogila_scales = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_enhancement_kimogila.iff",
 	craftingValues = {
+		{"armor_special_type",96,96},
+		{"armor_special_effectiveness",4,7,10},
+		{"armor_action_encumbrance",4,-2},
+		{"armor_mind_encumbrance",4,-2},
+		{"armor_health_encumbrance",0,0,0,0},
+		{"armor_integrity",0,0,0,0},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

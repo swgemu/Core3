@@ -6,6 +6,14 @@ rancor_padded_armor_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_padded_rancor.iff",
 	craftingValues = {
+		{"armor_effectiveness",8,19,10},
+		{"armor_integrity",2500,5000},
+		{"armor_special_type",96,96},
+		{"armor_special_effectiveness",12,21,10},
+		{"armor_health_encumbrance",16,4},
+		{"armor_action_encumbrance",12,0},
+		{"armor_mind_encumbrance",16,4},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

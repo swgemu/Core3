@@ -9,6 +9,7 @@ geo_power_cube_yellow = {
 		{"mindamage",10,20},
 		{"maxdamage",10,20},
 		{"baseeffectiveness",3,3},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

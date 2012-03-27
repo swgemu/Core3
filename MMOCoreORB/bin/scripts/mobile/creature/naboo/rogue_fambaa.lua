@@ -27,7 +27,14 @@ rogue_fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "fambaa_common", chance = 3300000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

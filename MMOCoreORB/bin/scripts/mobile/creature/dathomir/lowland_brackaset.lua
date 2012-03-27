@@ -27,7 +27,14 @@ lowland_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "brackaset_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

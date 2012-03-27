@@ -27,7 +27,14 @@ slinking_voritor_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/slinking_voritor_hunter.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "voritor_lizard_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

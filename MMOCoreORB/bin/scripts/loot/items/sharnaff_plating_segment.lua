@@ -6,6 +6,14 @@ sharnaff_plating_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_chitin_sharnaff.iff",
 	craftingValues = {
+		{"armor_effectiveness",12,22,10},
+		{"armor_integrity",800,1500},
+		{"armor_special_type",224,224},
+		{"armor_special_effectiveness",4,13},
+		{"armor_action_encumbrance",22,18},
+		{"armor_mind_encumbrance",23,10},
+		{"armor_health_encumbrance",0,0,0,0},
+		{"useCount",1,10},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

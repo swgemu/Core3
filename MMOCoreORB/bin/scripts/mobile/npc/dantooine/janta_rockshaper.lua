@@ -27,7 +27,14 @@ janta_rockshaper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dantari_male.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "janta_common", chance = 5000000},
+			},
+			lootChance = 8500000
+		}
+	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

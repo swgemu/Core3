@@ -27,7 +27,14 @@ enraged_dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "kimogila_common", chance = 3300000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
