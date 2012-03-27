@@ -95,7 +95,7 @@ public:
 			if (object->isCreatureObject()) {
 				CreatureObject* creo = cast<CreatureObject*>(object);
 
-				if(!creo->isDead() && creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) {
+				if(!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 					creature->sendSystemMessage("@skl_use:sys_conceal_othersclose");
 					return GENERALERROR;
 				}

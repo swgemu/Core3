@@ -459,7 +459,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				Locker playerLocker(player);
 				playerManager->awardExperience(player, "camp", xp, true);
 
-				lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneName()));
+				lootFishObject->setCustomizationVariable("/private/index_color_1", color.get(zone->getZoneName()));
 
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 				ManagedReference<TangibleObject*> baitObject = cast<TangibleObject*>(zone->getZoneServer()->createObject(baitString.hashCode(), 2));

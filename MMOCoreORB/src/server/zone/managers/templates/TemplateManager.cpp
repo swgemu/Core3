@@ -97,6 +97,7 @@
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
 #include "server/zone/templates/footprint/StructureFootprint.h"
 #include "server/zone/templates/slots/SlotId.h"
+#include "server/zone/managers/customization/CustomizationIdManager.h"
 
 #include "tre3/TreeArchive.h"
 
@@ -197,6 +198,19 @@ void TemplateManager::loadAssetCustomizationManager() {
 	}
 
 	AssetCustomizationManagerTemplate::instance()->readObject(iffStream);
+
+	delete iffStream;
+
+	info("loading customization id manager", true);
+
+	iffStream = openIffFile("customization/customization_id_manager.iff");
+
+	if (iffStream == NULL) {
+		error("Customization Id manager data not found.");
+		return;
+	}
+
+	CustomizationIdManager::instance()->readObject(iffStream);
 
 	delete iffStream;
 }
