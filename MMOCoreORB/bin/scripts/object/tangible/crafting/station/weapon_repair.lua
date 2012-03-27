@@ -47,7 +47,7 @@ object_tangible_crafting_station_weapon_repair = object_tangible_crafting_statio
 
 	canRepairType = 131072, -- Weapon
 
-	boostSkill = "crafting_waeponsmith_master",
+	boostSkill = "crafting_weaponsmith_master",
 	boostSkillMod = "weapon_repair",
 
 	stationType = 7,
