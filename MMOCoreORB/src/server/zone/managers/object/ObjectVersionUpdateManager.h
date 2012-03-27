@@ -20,6 +20,8 @@ public:
 	void checkCurrentRevision();
 	void runScripts();
 
+	int updateToVersion2();
+
 	int run();
 };
 

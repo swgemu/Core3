@@ -107,6 +107,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	protected transient SharedObjectTemplate templateObject;
 	
+	protected boolean sendToClient;
+	
 	@dereferenced
 	protected ZoneReference zone;
 	
@@ -1695,5 +1697,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native boolean isInWater();
 
 	public native string getDisplayedName();
+	
+	public boolean doSendToClient() {
+		return sendToClient;
+	}
+	
+	public void setSendToClient(boolean val) {
+		sendToClient = val;
+	}
 }
 

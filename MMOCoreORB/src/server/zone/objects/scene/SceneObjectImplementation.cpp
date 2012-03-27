@@ -137,6 +137,8 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	parent = NULL;
 
+	sendToClient = true;
+
 	movementCounter = 0;
 
 	serverObjectCRC = 0;
@@ -341,14 +343,14 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isStaticObject())
+	if (isStaticObject() || !sendToClient)
 		return;
 
-	/*StringBuffer msg;
+	/*StringBuffer msgInfo;
 	if (parent != NULL)
-		msg << "with parent " << getParent()->getLoggingName() << " ";
-	msg << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
-	info(msg.toString(), true);*/
+		msgInfo << "with parent " << getParent()->getLoggingName() << " ";
+	msgInfo << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
+	info(msgInfo.toString(), true);*/
 
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);
 	player->sendMessage(msg);
@@ -369,7 +371,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* player) {
-	if (isStaticObject())
+	if (isStaticObject() || !sendToClient)
 		return;
 
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);

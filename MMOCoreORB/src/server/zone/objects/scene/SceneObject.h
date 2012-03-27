@@ -770,6 +770,10 @@ public:
 
 	String getDisplayedName();
 
+	bool doSendToClient();
+
+	void setSendToClient(bool val);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -817,6 +821,8 @@ protected:
 	Reference<ContainerComponent* > containerComponent;
 
 	Reference<SharedObjectTemplate* > templateObject;
+
+	bool sendToClient;
 
 	ZoneReference zone;
 
@@ -1391,6 +1397,10 @@ public:
 
 	String getDisplayedName();
 
+	bool doSendToClient();
+
+	void setSendToClient(bool val);
+
 	WeakReference<SceneObject*> _this;
 
 	operator const SceneObject*();
@@ -1855,6 +1865,10 @@ public:
 	bool isInWater();
 
 	String getDisplayedName();
+
+	bool doSendToClient();
+
+	void setSendToClient(bool val);
 
 protected:
 	String _param0_info__String_bool_;

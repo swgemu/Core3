@@ -73,6 +73,12 @@ public:
 		String fileName = recordPath.subString(pos+1, recordPath.length());
 
 		TreeDirectory* treeDir = nodeMap.get(dir);
+
+		size = 0;
+
+		if (treeDir == NULL)
+			return NULL;
+
 		int idx = treeDir->find(fileName);
 
 		if (idx == -1) {

@@ -652,6 +652,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		/// Add Components to crafted object
 		String craftingComponents = "object/tangible/crafting/crafting_components_container.iff";
 		ManagedReference<SceneObject*> craftingComponentContainer = crafter->getZoneServer()->createObject(craftingComponents.hashCode(), 1);
+		craftingComponentContainer->setSendToClient(false);
 
 		for(int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 			Reference<IngredientSlot*> slot = manufactureSchematic->getSlot(i);

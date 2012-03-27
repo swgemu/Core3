@@ -15,8 +15,78 @@ ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersion
 	luaInstance->init();
 }
 
+int ObjectVersionUpdateManager::updateToVersion2() {
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
+
+	ObjectDatabaseIterator iterator(database);
+
+	ObjectInputStream objectData(2000);
+	uint64 objectID = 0;
+
+	info("starting database update", true);
+
+	String craftingComponents = "object/tangible/crafting/crafting_components_container.iff";
+	uint32 hashCode = craftingComponents.hashCode();
+
+	bool newVar = false;
+	bool oldVar = false;
+
+	ObjectOutputStream newVarData;
+	TypeInfo<bool>::toBinaryStream(&newVar, &newVarData);
+
+	try {
+
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+			uint32 serverObjectCRC = 0;
+
+			try {
+				if (!Serializable::getVariable<uint32>("SceneObject.serverObjectCRC", &serverObjectCRC, &objectData)) {
+					objectData.clear();
+					serverObjectCRC = 0;
+					continue;
+				}
+			} catch (...) {
+				objectData.clear();
+				serverObjectCRC = 0;
+				continue;
+			}
+
+			if (serverObjectCRC == hashCode) {
+				info("adding variable to 0x" + String::hexvalueOf((int64)objectID), true);
+
+				ObjectOutputStream* updatedObjectData = Serializable::addVariable("SceneObject.sendToClient", &objectData, &newVarData);
+
+				/*info("old data", true);
+				info(objectData.toStringData(), true);
+				info("new data", true);
+				info(updatedObjectData->toStringData(), true);
+
+				delete updatedObjectData;*/
+
+				database->putData(objectID, updatedObjectData, NULL);
+			}
+
+
+			objectData.clear();
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+	ObjectDatabaseManager::instance()->updateCurrentVersion(2);
+
+	info("finished database update", true);
+
+	return 0;
+}
+
 int ObjectVersionUpdateManager::run() {
 	int version = ObjectDatabaseManager::instance()->getCurrentVersion();
+
+	if (version <= 1) {
+		return updateToVersion2();
+	}
 
 	if (version < 1)
 		info("updating database to version " + String::valueOf(++version), true);
@@ -41,11 +111,11 @@ int ObjectVersionUpdateManager::run() {
 
 			try {
 				if (!Serializable::getVariable<bool>("ActiveArea.municipalZone", &municipalZone, &objectData)) {
-					objectData.reset();
+					objectData.clear();
 					continue;
 				}
 			} catch (...) {
-				objectData.reset();
+				objectData.clear();
 				continue;
 			}
 
@@ -57,7 +127,7 @@ int ObjectVersionUpdateManager::run() {
 				info("deleting municipal zone 0x" + String::hexvalueOf((int64)objectID), true);
 			}
 
-			objectData.reset();
+			objectData.clear();
 		}
 	} catch (Exception& e) {
 		error(e.getMessage());
