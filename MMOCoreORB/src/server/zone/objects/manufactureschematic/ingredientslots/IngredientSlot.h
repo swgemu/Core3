@@ -211,11 +211,13 @@ public:
 
 
 	virtual Vector<uint64> getOIDVector() {
-		return NULL;
+		Vector<uint64> oid;
+		return oid;
 	}
 
 	virtual Vector<int> getQuantityVector() {
-		return NULL;
+		Vector<int> quantities;
+		return quantities;
 	}
 
 	virtual SceneObject* getFactoryIngredient() {
