@@ -2594,11 +2594,12 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	ManagedReference<CraftingStation*> station = NULL;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(512, 512);
-	zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 7, &closeObjects, true);
+	Locker locker(zone);
 
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* scno = cast<SceneObject*> (closeObjects.get(i).get());
+	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = player->getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
 
 		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
 
