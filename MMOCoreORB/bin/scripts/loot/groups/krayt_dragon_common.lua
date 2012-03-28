@@ -7,7 +7,8 @@ krayt_dragon_common = {
 	lootItems = {
 		{itemTemplate = "krayt_composite_segment", weight = 2500000},
 		{itemTemplate = "krayt_dragon_pearl", weight = 2500000},
-		{itemTemplate = "krayt_dragon_scales", weight = 2500000}
+		{itemTemplate = "krayt_dragon_scales", weight = 2500000},
+		{itemTemplate = "krayt_dragon_tissue", weight = 2500000}
 	}
 }
 
