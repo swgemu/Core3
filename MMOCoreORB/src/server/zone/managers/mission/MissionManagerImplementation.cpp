@@ -971,6 +971,11 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 	//Create a random neutral delivery mission that can be modified.
 	randomizeGenericDeliverMission(player, mission, faction);
 
+	if (mission->getTypeCRC() != MissionObject::DELIVER) {
+		//Failed to create mission.
+		return;
+	}
+
 	//Modify the delivery mission to be a crafting mission.
 	int maximumMissionNumber;
 	String fileName = "";
