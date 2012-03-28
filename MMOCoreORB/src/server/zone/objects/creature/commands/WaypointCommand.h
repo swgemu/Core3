@@ -70,6 +70,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return GENERALERROR;
+
 		int counter = 0;
 		String dummy;
 
@@ -78,7 +83,7 @@ public:
 		String waypointData = arguments.toString();
 
 		String waypointName = "New Waypoint";
-		String planet = creature->getZone()->getZoneName();
+		String planet = zone->getZoneName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
 		float z = 0.0f;
