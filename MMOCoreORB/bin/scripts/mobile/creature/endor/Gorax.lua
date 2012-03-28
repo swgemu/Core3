@@ -27,7 +27,14 @@ gorax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gorax.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "gorax_common", chance = 1000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,14 @@ giant_canyon_krayt_dragon = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "krayt_dragon_common", chance = 4000000}
+			},
+			lootChance = 8500000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
