@@ -42,7 +42,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	/// Get Ghost
 	PlayerObject* ghost = cast<PlayerObject*> (player->getSlottedObject("ghost"));
 	if (ghost == NULL) {
-		error("PlayerCreature has no ghost: " + player->getObjectID());
+		error("PlayerCreature has no ghost: " + String::valueOf(player->getObjectID()));
 		return;
 	}
 
@@ -219,7 +219,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 	/// Get Ghost
 	PlayerObject* ghost = cast<PlayerObject*> (player->getSlottedObject("ghost"));
 	if (ghost == NULL) {
-		error("PlayerCreature has no ghost in CampTerminalMenuComponent::showCampStatus: " + player->getObjectID());
+		error("PlayerCreature has no ghost in CampTerminalMenuComponent::showCampStatus: " + String::valueOf(player->getObjectID()));
 		return;
 	}
 

@@ -88,7 +88,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		/// Get Ghost
 		PlayerObject* ghost = cast<PlayerObject*> (player->getSlottedObject("ghost"));
 		if (ghost == NULL) {
-			error("PlayerCreature has no ghost: " + player->getObjectID());
+			error("PlayerCreature has no ghost: " + String::valueOf(player->getObjectID()));
 			return 0;
 		}
 

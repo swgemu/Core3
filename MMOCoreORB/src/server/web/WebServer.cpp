@@ -395,7 +395,7 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 		delete [] postDataBuffer;
 
 	} else if(length >= 1000) {
-		error("Post data length was too long" + length);
+		error("Post data length was too long: " + String::valueOf(length));
 	}
 
 	debug("Using session: " + session->getSessionId());
