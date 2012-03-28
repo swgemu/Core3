@@ -158,15 +158,15 @@ class EnhancePack extends PharmaceuticalObject {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue)
-			power = power - power * patient.calculateBFRatio();
+			power = power - (power * patient.calculateBFRatio());
 		
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();
 		
-		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);	
+		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100) + 1.0f;	
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
-		return power * modEnvironment * (100 + modSkill) / 10000;
+		return power * modEnvironment * ((100 + modSkill) / 100);
 	}
 	
 	public float getEffectiveness() {

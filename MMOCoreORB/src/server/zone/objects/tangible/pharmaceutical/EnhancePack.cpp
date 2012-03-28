@@ -413,18 +413,18 @@ unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, C
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float power = getEffectiveness();
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer 
-	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio());
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer zoneServer = super.getZoneServer();
 	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);
-	float modEnvironment = 1 + (healer->getSkillMod("private_medical_rating") / 100.0f);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100) + 1.0f;
+	float modEnvironment = (healer->getSkillMod("private_medical_rating") / 100) + 1.0f;
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * (100 + modSkill) / 10000;
-	return power * modEnvironment * (100 + modSkill) / 10000;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * ((100 + modSkill) / 100);
+	return power * modEnvironment * ((100 + modSkill) / 100);
 }
 
 float EnhancePackImplementation::getEffectiveness() {
