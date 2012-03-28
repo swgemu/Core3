@@ -24,15 +24,7 @@ void LootSchematicMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	uint32 gameObjectType = sceneObject->getGameObjectType();
 
-	SharedObjectTemplate* templateData =
-			TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
-
-	if(templateData == NULL) {
-		error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
-		return;
-	}
-
-	LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
+	LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(sceneObject->getObjectTemplate());
 
 	if (schematicData == NULL) {
 		error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
@@ -59,15 +51,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if(selectedID == 50) {
 		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
-		SharedObjectTemplate* templateData =
-				TemplateManager::instance()->getTemplate(sceneObject->getServerObjectCRC());
-
-		if(templateData == NULL) {
-			error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
-			return 0;
-		}
-
-		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(templateData);
+		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(sceneObject->getObjectTemplate());
 
 		if (schematicData == NULL) {
 			error("No LootSchematicTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));

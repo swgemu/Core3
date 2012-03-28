@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "../../tangible/tool/CraftingTool.h"
 #include "../../tangible/tool/CraftingStation.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
@@ -60,8 +62,11 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+		ManagedReference<ZoneServer*> zoneServer = creature->getZoneServer();
+		if(zoneServer == NULL)
+			return GENERALERROR;
 
-		ManagedReference<SceneObject* > object = creature->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject* > object = zoneServer->getObject(target);
 
 		if(object == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
@@ -136,7 +141,12 @@ public:
 			}
 
 			if(craftingStation == NULL) {
-				craftingStation = creature->getNearbyCraftingStation(craftingTool->getToolType());
+				ManagedReference<PlayerManager*> playerMan = zoneServer->getPlayerManager();
+
+				if(playerMan == NULL)
+					return GENERALERROR;
+
+				craftingStation = playerMan->getNearbyCraftingStation(creature, craftingTool->getToolType());
 			}
 
 			Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));

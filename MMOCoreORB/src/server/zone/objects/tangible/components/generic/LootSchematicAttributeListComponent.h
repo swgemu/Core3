@@ -21,17 +21,8 @@ public:
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* creature, SceneObject* object) {
-		SharedObjectTemplate* templateData =
-				TemplateManager::instance()->getTemplate(
-						object->getServerObjectCRC());
 
-		if (templateData == NULL) {
-			return;
-		}
-
-		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*> (
-				templateData);
-
+		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*> (object->getObjectTemplate());
 		if (schematicData == NULL) {
 			return;
 		}

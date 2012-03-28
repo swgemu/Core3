@@ -47,20 +47,14 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (selectedID == 20) {
 
 		/// Get Camp Kit Template
-		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(
-						sceneObject->getServerObjectCRC());
-		if (templateData == NULL) {
-			error("No template for: " + String::valueOf(sceneObject->getServerObjectCRC()));
-			return 0;
-		}
-		CampKitTemplate* campKitData = cast<CampKitTemplate*> (templateData);
+		CampKitTemplate* campKitData = cast<CampKitTemplate*> (sceneObject->getObjectTemplate());
 		if (campKitData == NULL) {
 			error("No CampKitTemplate for: " + String::valueOf(sceneObject->getServerObjectCRC()));
 			return 0;
 		}
 
 		/// Get Camp Template
-		templateData = TemplateManager::instance()->getTemplate(campKitData->getSpawnObjectTemplate().hashCode());
+		SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(campKitData->getSpawnObjectTemplate().hashCode());
 		CampStructureTemplate* campStructureData = cast<CampStructureTemplate*> (templateData);
 		if (campStructureData == NULL) {
 			error("No CampStructureTemplate for: " + campKitData->getSpawnObjectTemplate());

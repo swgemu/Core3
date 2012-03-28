@@ -78,6 +78,9 @@
 
 #include "server/zone/objects/player/sui/callbacks/CloningRequestSuiCallback.h"
 
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
@@ -2575,4 +2578,43 @@ String PlayerManagerImplementation::getBadgeKey(int idx) {
 	VectorMapEntry<int, String> entry = badgeMap.elementAt(idx);
 
 	return entry.getValue();
+}
+
+CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureObject* player, int type) {
+
+	ManagedReference<Zone*> zone = player->getZone();
+
+	if (zone == NULL)
+		return NULL;
+
+	ZoneServer* server = zone->getZoneServer();
+
+	if (server == NULL)
+		return NULL;
+
+	ManagedReference<CraftingStation*> station = NULL;
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(512, 512);
+	zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 7, &closeObjects, true);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* scno = cast<SceneObject*> (closeObjects.get(i).get());
+
+		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
+
+			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
+
+			if (station == NULL)
+				continue;
+
+			if (type == station->getStationType() || (type
+					== CraftingTool::JEDI && station->getStationType()
+					== CraftingTool::WEAPON)) {
+
+				return station;
+			}
+		}
+	}
+
+	return NULL;
 }

@@ -177,6 +177,22 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace tangible {
+namespace tool {
+
+class CraftingStation;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
 namespace threat {
 
 class ThreatMap;
@@ -341,6 +357,8 @@ public:
 	void addPlayer(CreatureObject* player);
 
 	String getBadgeKey(int idx);
+
+	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -518,6 +536,8 @@ public:
 
 	String getBadgeKey(int idx);
 
+	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -660,6 +680,8 @@ public:
 	void addPlayer(CreatureObject* player);
 
 	String getBadgeKey(int idx);
+
+	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
 
 protected:
 	String _param0_kickUser__String_String_;

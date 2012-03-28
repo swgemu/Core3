@@ -68,9 +68,7 @@ which carries forward this exception.
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
+#include "server/zone/managers/player/PlayerManager.h"
 
 
 void TangibleObjectImplementation::initializeTransientMembers() {
@@ -813,6 +811,10 @@ bool TangibleObjectImplementation::canRepair(CreatureObject* player) {
 }
 
 void TangibleObjectImplementation::repair(CreatureObject* player) {
+
+	if(player == NULL || player->getZoneServer() == NULL)
+		return;
+
 	if(!isASubChildOf(player))
 		return;
 
@@ -877,8 +879,10 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	quality += ((100.f - quality) / 2);
 	repairChance *= quality;
 
+	ManagedReference<PlayerManager*> playerMan = player->getZoneServer()->getPlayerManager();
+
 	/// Increase if near station
-	if(player->getNearbyCraftingStation(repairTemplate->getStationType()) != NULL) {
+	if(playerMan->getNearbyCraftingStation(player, repairTemplate->getStationType()) != NULL) {
 		repairChance += 10;
 	}
 
@@ -892,40 +896,4 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	player->sendSystemMessage(result);
 }
 
-CraftingStation* TangibleObjectImplementation::getNearbyCraftingStation(int type) {
 
-	ManagedReference<Zone*> zone = getZone();
-
-	if (zone == NULL)
-		return NULL;
-
-	ZoneServer* server = zone->getZoneServer();
-
-	if (server == NULL)
-		return NULL;
-
-	ManagedReference<CraftingStation*> station = NULL;
-
-	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = getCloseObjects();
-
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
-
-		if (scno->isCraftingStation() && isInRange(scno, 7.0f)) {
-
-			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
-
-			if (station == NULL)
-				continue;
-
-			if (type == station->getStationType() || (type
-					== CraftingTool::JEDI && station->getStationType()
-					== CraftingTool::WEAPON)) {
-
-				return station;
-			}
-		}
-	}
-
-	return NULL;
-}

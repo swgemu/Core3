@@ -67,7 +67,6 @@ include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
-import server.zone.objects.tangible.tool.CraftingStation;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -557,9 +556,6 @@ class TangibleObject extends SceneObject {
 			
 		return reductionPercent * value;
 	}
-	
-	public native CraftingStation getNearbyCraftingStation(int type);
-
 }
 
 

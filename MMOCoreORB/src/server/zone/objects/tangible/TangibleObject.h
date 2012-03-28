@@ -149,22 +149,6 @@ class WeaponObject;
 
 using namespace server::zone::objects::tangible::weapon;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace tool {
-
-class CraftingStation;
-
-} // namespace tool
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::tool;
-
 #include "server/zone/objects/tangible/variables/SkillModMap.h"
 
 #include "server/zone/objects/creature/CreatureFlag.h"
@@ -351,8 +335,6 @@ public:
 	String repairAttempt(int repairChance);
 
 	bool isBroken();
-
-	CraftingStation* getNearbyCraftingStation(int type);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -581,8 +563,6 @@ protected:
 	float getConditionReduction(float value);
 
 public:
-	CraftingStation* getNearbyCraftingStation(int type);
-
 	WeakReference<TangibleObject*> _this;
 
 	operator const TangibleObject*();
@@ -761,8 +741,6 @@ public:
 	String repairAttempt(int repairChance);
 
 	bool isBroken();
-
-	CraftingStation* getNearbyCraftingStation(int type);
 
 protected:
 	String _param0_addSkillMod__String_long_bool_;

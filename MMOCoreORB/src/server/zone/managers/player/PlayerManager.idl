@@ -64,6 +64,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.structure.StructureObject;
 import engine.util.u3d.Vector3;
 import server.zone.objects.creature.AiAgent;
+import server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
 include server.zone.objects.player.ValidatedPosition;
@@ -242,4 +243,7 @@ class PlayerManager extends Observer implements Logger {
 	}
 	
 	public native string getBadgeKey(int idx);
+	
+	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
+
 }
