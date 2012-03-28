@@ -955,6 +955,13 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native int notifyObjectKillObservers(TangibleObject killer);
 	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
 	public native void setFactionRank(int rank, boolean notifyClient = true);
 	
 	public native string getFirstName();

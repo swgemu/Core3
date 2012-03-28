@@ -514,6 +514,8 @@ public:
 
 	int notifyObjectKillObservers(TangibleObject* killer);
 
+	void notifyLoadFromDatabase();
+
 	void setFactionRank(int rank, bool notifyClient = true);
 
 	String getFirstName();
@@ -1261,6 +1263,8 @@ public:
 
 	int notifyObjectKillObservers(TangibleObject* killer);
 
+	void notifyLoadFromDatabase();
+
 	void setFactionRank(int rank, bool notifyClient = true);
 
 	String getFirstName();
@@ -1843,6 +1847,8 @@ public:
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
 	int notifyObjectKillObservers(TangibleObject* killer);
+
+	void notifyLoadFromDatabase();
 
 	void setFactionRank(int rank, bool notifyClient);
 

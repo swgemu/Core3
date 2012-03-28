@@ -1651,6 +1651,33 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
+void CreatureObjectImplementation::notifyLoadFromDatabase() {
+	TangibleObjectImplementation::notifyLoadFromDatabase();
+	/**
+	 * Here we are loading the schematics based on the skills that the
+	 * player has, we do this incase we change the items
+	 * in the schematic group.
+	 */
+	PlayerObject* ghost = getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	ZoneServer* zoneServer = server->getZoneServer();
+	SkillManager* skillManager = SkillManager::instance();
+
+	SkillList* playerSkillList = getSkillList();
+
+	for (int i = 0; i < playerSkillList->size(); ++i) {
+		Skill* skill = playerSkillList->get(i);
+		skillManager->awardDraftSchematics(skill, ghost, false);
+	}
+
+	ghost->getSchematics()->addRewardedSchematics(ghost);
+
+	skillManager->updateXpLimits(ghost);
+}
+
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	if (object->isWeaponObject())
 		setWeapon( cast<WeaponObject*> (object));

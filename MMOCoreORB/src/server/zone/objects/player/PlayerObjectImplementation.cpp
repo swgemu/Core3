@@ -118,30 +118,6 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerObject");
-
-	/**
-	 * Here we are loading the schematics based on the skills that the
-	 * player has, we do this incase we change the items
-	 * in the schematic group.
-	 */
-	ZoneServer* zoneServer = server->getZoneServer();
-	SkillManager* skillManager = SkillManager::instance();
-
-	if (parent == NULL || !getParent()->isCreatureObject())
-		return;
-
-	CreatureObject* creature = cast<CreatureObject*>( parent.get());
-
-	SkillList* playerSkillList = creature->getSkillList();
-
-	for(int i = 0; i < playerSkillList->size(); ++i) {
-		Skill* skill = playerSkillList->get(i);
-		skillManager->awardDraftSchematics(skill, _this, false);
-	}
-
-	schematicList.addRewardedSchematics(_this);
-
-	skillManager->updateXpLimits(_this);
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
