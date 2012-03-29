@@ -647,10 +647,11 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 	SceneObject* bicepl = defender->getSlottedObject("bicep_l");
 	SceneObject* bracerr = defender->getSlottedObject("bracer_upper_r");
 	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");
+	SceneObject* gloves = defender->getSlottedObject("gloves");
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	int rand = System::random(10);
+	int rand = System::random(11);
 	switch (rand) {
 	case 0:
 	case 1: // hit right bicep
@@ -670,6 +671,10 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 		if (bracerl != NULL && bracerl->isArmorObject())
 			armorToHit = cast<ArmorObject*>(bracerl);
 		break;
+	case 6: // hit gloves
+		if (gloves != NULL && gloves->isArmorObject())
+			armorToHit = cast<ArmorObject*>(gloves);
+		break;
 	default: // hit chest
 		if (chest != NULL && chest->isArmorObject())
 			armorToHit = cast<ArmorObject*>(chest);
@@ -680,19 +685,14 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	SceneObject* gloves = defender->getSlottedObject("gloves");
 	SceneObject* boots = defender->getSlottedObject("shoes");
 	SceneObject* pants = defender->getSlottedObject("pants1");
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	int rand = System::random(3);
+	int rand = System::random(2);
 	switch (rand) {
-	case 0: // hit gloves
-		if (gloves != NULL && gloves->isArmorObject())
-			armorToHit = cast<ArmorObject*>(gloves);
-		break;
-	case 1: // hit shoes
+	case 0: // hit shoes
 		if (boots != NULL && boots->isArmorObject())
 			armorToHit = cast<ArmorObject*>(boots);
 		break;
