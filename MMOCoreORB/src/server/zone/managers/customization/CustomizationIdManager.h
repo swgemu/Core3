@@ -9,39 +9,36 @@
 #define CUSTOMIZATIONIDMANAGER_H_
 
 #include "engine/engine.h"
+#include "PaletteData.h"
+#include "HairAssetData.h"
 
 class CustomizationIdManager : public Object, public Logger, public Singleton<CustomizationIdManager> {
 	HashTable<String, int> customizationIds;
+	HashTable<int, String> reverseIds;
+	HashTable<String, Reference<PaletteData*> > paletteColumns;
+	HashTable<String, Reference<HairAssetData*> > hairAssetSkillMods;
+
 public:
-	CustomizationIdManager() {
-		setLoggingName("CustomizationIdManager");
-	}
+	CustomizationIdManager();
 
-
-	void readObject(IffStream* iffStream) {
-		iffStream->openForm('CIDM');
-		iffStream->openForm('0001');
-
-		Chunk* data = iffStream->openChunk('DATA');
-
-		while (data->hasData()) {
-			int id = data->readShort();
-			String var;
-			data->readString(var);
-
-			customizationIds.put(var, id);
-		}
-
-		iffStream->closeChunk('DATA');
-
-		iffStream->closeForm('0001');
-		iffStream->closeForm('CIDM');
-
-		info("loaded " + String::valueOf(customizationIds.size()) + " customization ids", true);
-	}
+	void loadPaletteColumns(IffStream* iffStream);
+	void loadHairAssetsSkillMods(IffStream* iffStream);
+	void readObject(IffStream* iffStream);
 
 	int getCustomizationId(const String& var) {
 		return customizationIds.get(var);
+	}
+
+	String getCustomizationVariable(int id) {
+		return reverseIds.get(id);
+	}
+
+	PaletteData* getPaletteData(const String& palette) {
+		return paletteColumns.get(palette);
+	}
+
+	HairAssetData* getHairAssetData(const String& hairServerTemplate) {
+		return hairAssetSkillMods.get(hairServerTemplate);
 	}
 };
 

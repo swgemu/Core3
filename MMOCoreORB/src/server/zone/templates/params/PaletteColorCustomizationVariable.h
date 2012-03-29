@@ -19,7 +19,6 @@ class PaletteColorCustomizationVariable : public RangedIntCustomizationVariable 
 protected:
 	StringParam variableName;
 	StringParam palettePathName;
-	IntegerParam defaultPaletteIndex;
 
 public:
 	PaletteColorCustomizationVariable() {
@@ -35,7 +34,6 @@ public:
 	PaletteColorCustomizationVariable(const PaletteColorCustomizationVariable& p) : RangedIntCustomizationVariable() {
 		variableName = p.variableName;
 		palettePathName = p.palettePathName;
-		defaultPaletteIndex = p.defaultPaletteIndex;
 
 		setType(PALETTECOLORCUSTOMIZATION);
 	}
@@ -50,7 +48,6 @@ public:
 
 		variableName = p.variableName;
 		palettePathName = p.palettePathName;
-		defaultPaletteIndex = p.defaultPaletteIndex;
 
 		return *this;
 	}
@@ -64,7 +61,7 @@ public:
 		stream << "{";
 
 		stream << variableName.toString() << ", " << palettePathName.toString()
-				<< ", " << defaultPaletteIndex.toString();
+				<< ", " << defaultValue.toString();
 
 		stream << "}";
 
@@ -101,7 +98,7 @@ public:
 			} else if (varName == "palettePathName") {
 				palettePathName.parse(var);
 			} else if (varName == "defaultPaletteIndex") {
-				defaultPaletteIndex.parse(var);
+				defaultValue.parse(var);
 			}
 
 			iffStream->closeChunk('XXXX');

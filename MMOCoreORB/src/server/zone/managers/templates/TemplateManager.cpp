@@ -98,6 +98,7 @@
 #include "server/zone/templates/footprint/StructureFootprint.h"
 #include "server/zone/templates/slots/SlotId.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
 
 #include "tre3/TreeArchive.h"
 
@@ -211,6 +212,28 @@ void TemplateManager::loadAssetCustomizationManager() {
 	}
 
 	CustomizationIdManager::instance()->readObject(iffStream);
+
+	delete iffStream;
+
+	iffStream = openIffFile("datatables/customization/palette_columns.iff");
+
+	if (iffStream == NULL) {
+		error("Customization palette columns data not found.");
+		return;
+	}
+
+	CustomizationIdManager::instance()->loadPaletteColumns(iffStream);
+
+	delete iffStream;
+
+	iffStream = openIffFile("datatables/customization/hair_assets_skill_mods.iff");
+
+	if (iffStream == NULL) {
+		error("Hair assets data not found.");
+		return;
+	}
+
+	CustomizationIdManager::instance()->loadHairAssetsSkillMods(iffStream);
 
 	delete iffStream;
 }

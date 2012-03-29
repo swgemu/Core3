@@ -62,6 +62,10 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
+#include "server/zone/templates/customization/BasicRangedIntCustomizationVariable.h"
 
 PlayerCreationManager::PlayerCreationManager()
 		: Logger("PlayerCreationManager") {
@@ -417,7 +421,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		ghost->setStarterProfession(profession);
 	}
 
-	addCustomization(playerCreature, customization);
+	addCustomization(playerCreature, customization, playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
 	if (!doTutorial) {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate, false);
@@ -684,6 +688,23 @@ void PlayerCreationManager::addHair(CreatureObject* creature, const String& hair
 	if (hairInfo == NULL)
 		hairInfo = hairStyleInfo.get(0);
 
+	HairAssetData* hairAssetData = CustomizationIdManager::instance()->getHairAssetData(hairTemplate);
+
+	if (hairAssetData == NULL) {
+		error("no hair asset data detected for " + hairTemplate);
+		return;
+	}
+
+	if (hairAssetData->getServerPlayerTemplate() != creature->getObjectTemplate()->getFullTemplateString()) {
+		error("hair " + hairTemplate + " is not compatible with this creature player " + creature->getObjectTemplate()->getFullTemplateString());
+		return;
+	}
+
+	if (!hairAssetData->isAvailableAtCreation()) {
+		error("hair " + hairTemplate + " not available at creation");
+		return;
+	}
+
 	ManagedReference<SceneObject*> hair = zoneServer->createObject(hairTemplate.hashCode(), 1);
 
 	//TODO: Validate hairCustomization
@@ -691,15 +712,108 @@ void PlayerCreationManager::addHair(CreatureObject* creature, const String& hair
 		return;
 
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
-	tanoHair->setCustomizationString(hairCustomization);
+
+	String appearanceFilename = tanoHair->getObjectTemplate()->getAppearanceFilename();
+
+	CustomizationVariables data;
+
+	data.parseFromClientString(hairCustomization);
+
+	if (validateCreationCustomizationString(&data, appearanceFilename))
+		tanoHair->setCustomizationString(hairCustomization);
 
 	creature->transferObject(tanoHair, 4);
 }
 
-void PlayerCreationManager::addCustomization(CreatureObject* creature, const String& customizationString) {
+void PlayerCreationManager::addCustomization(CreatureObject* creature, const String& customizationString, const String& appearanceFilename) {
 	//TODO: Validate customizationString
+	CustomizationVariables data;
 
-	creature->setCustomizationString(customizationString);
+	data.parseFromClientString(customizationString);
+
+	if (validateCreationCustomizationString(&data, appearanceFilename))
+		creature->setCustomizationString(customizationString);
+}
+
+bool PlayerCreationManager::validateCreationCustomizationString(CustomizationVariables* data, const String& appearanceFilename) {
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
+	variables.setNullValue(NULL);
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+	if (variables.size() == 0) {
+		error("no customization data found for " + appearanceFilename);
+		return false;
+	}
+
+	for (int i = 0; i < data->size(); ++i) {
+		uint8 id = data->elementAt(i).getKey();
+		uint8 val = data->elementAt(i).getValue();
+
+		String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
+
+		CustomizationVariable* customizationVariable = variables.get(name).get();
+
+		if (customizationVariable == NULL) {
+			//error("customization variable id " + id + " not found in the appearance file " + appearanceFilename);
+
+			continue;
+		}
+
+		PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
+
+		if (palette != NULL) {
+			String paletteFileName = palette->getPaletteFileName();
+			int idx = paletteFileName.lastIndexOf("/");
+
+			if (idx != -1) {
+				String paletteName = paletteFileName.subString(idx + 1);
+				paletteName = paletteName.subString(0, paletteName.indexOf("."));
+
+				//info("palette name = " + paletteName, true);
+
+				PaletteData* data = CustomizationIdManager::instance()->getPaletteData(paletteName);
+
+				if (data == NULL) {
+					//error("could not find palette data for " + paletteName);
+				} else {
+					int maxIndex = data->getCreationIndexes();
+
+					if (val >= maxIndex) {
+						error("value for " + name + " value " + val + " outside bound " + String::valueOf(maxIndex));
+
+						return false;
+					} else {
+						//info(name + " value " + String::valueOf(val) + " inside bound " + String::valueOf(maxIndex) + " for " + name , true);
+					}
+				}
+			}
+
+		} else {
+			BasicRangedIntCustomizationVariable* range = dynamic_cast<BasicRangedIntCustomizationVariable*>(customizationVariable);
+
+			if (range == NULL) {
+				error("unkown customization variable type " + name);
+				return false;
+			} else {
+				int maxExcl = range->getMaxValueExclusive();
+				int minIncl = range->getMinValueInclusive();
+
+				if (val >= maxExcl || val < minIncl) {
+					error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
+
+					return false;
+				} else {
+					//info("variable " + name + " value " + String::valueOf(val) + " inside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")", true);
+				}
+
+			}
+		}
+
+
+		//info("setting variable:" + name + " to " + String::valueOf(val), true);
+	}
+
+	return true;
 }
 
 void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature, SceneObject* container) {
