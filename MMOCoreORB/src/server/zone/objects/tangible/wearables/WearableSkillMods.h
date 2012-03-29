@@ -423,9 +423,9 @@ public:
 			}
 			break;
 		case 95:
-			// Wohooo!  Jedi Mods!
+			// Jedi mods didn't exist, commenting out to keep for reference.
 			if (type == 1) {
-
+				/*
 				int randomjedimod = System::random(10) + 1;
 
 				switch (randomjedimod) {
@@ -460,7 +460,8 @@ public:
 					randomskill = "twohandlightsaber_accuracy";
 					break;
 				case 11:
-					randomskill = "twohandlightsaber_speed";
+					randomskill = "twohandlightsaber_speed";*/
+					randomskill = "instrument_assembly";
 					break;
 				}
 			} else {
