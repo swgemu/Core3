@@ -895,6 +895,11 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		if (weapon->isSliced()) conditionDamage *= 1.1;
 		if (weapon->hasPowerup()) conditionDamage *= 1.1;
 		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
+
+		if (conditionDamage / (float)weapon->getMaxCondition() < 0.25)
+			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
+		else if (conditionDamage / (float)weapon->getMaxCondition() < 0.50)
+			attacker->sendSystemMessage("@combat_effects:weapon_half");
 	}
 
 	damage += getDamageModifier(attacker, weapon);
@@ -1086,8 +1091,15 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 	}
 
-	if (weapon != attacker->getSlottedObject("default_weapon"))
-		weapon->inflictDamage(weapon, 0, (health + action + mind) / 100, false, true);
+	if (weapon != attacker->getSlottedObject("default_weapon")) {
+		float conditionDamage = (health + action + mind) / 100;
+		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
+
+		if (conditionDamage / (float)weapon->getMaxCondition() < 0.25)
+			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
+		else if (conditionDamage / (float)weapon->getMaxCondition() < 0.50)
+			attacker->sendSystemMessage("@combat_effects:weapon_half");
+	}
 
 	return true;
 }

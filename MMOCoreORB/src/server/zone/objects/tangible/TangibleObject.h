@@ -264,7 +264,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
 
-	float getConditionDamage();
+	int getConditionDamage();
 
 	int getVolume();
 
@@ -487,7 +487,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
 
-	float getConditionDamage();
+	int getConditionDamage();
 
 	int getVolume();
 
@@ -674,7 +674,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient);
 
-	float getConditionDamage();
+	int getConditionDamage();
 
 	int getVolume();
 

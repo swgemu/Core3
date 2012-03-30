@@ -387,8 +387,8 @@ class TangibleObject extends SceneObject {
 	
 	public native void setMaxCondition(int maxCond, boolean notifyClient = true);
 	
-	public float getConditionDamage() {
-		return conditionDamage;
+	public int getConditionDamage() {
+		return (int)conditionDamage;
 	}
 	
 	public int getVolume() {

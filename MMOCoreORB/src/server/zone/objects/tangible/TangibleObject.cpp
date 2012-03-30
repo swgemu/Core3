@@ -587,7 +587,7 @@ void TangibleObject::setMaxCondition(int maxCond, bool notifyClient) {
 		_implementation->setMaxCondition(maxCond, notifyClient);
 }
 
-float TangibleObject::getConditionDamage() {
+int TangibleObject::getConditionDamage() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -595,7 +595,7 @@ float TangibleObject::getConditionDamage() {
 
 		DistributedMethod method(this, RPC_GETCONDITIONDAMAGE__);
 
-		return method.executeWithFloatReturn();
+		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getConditionDamage();
 }
@@ -1516,9 +1516,9 @@ int TangibleObjectImplementation::getMaxCondition() {
 	return maxCondition;
 }
 
-float TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage;
-	return conditionDamage;
+int TangibleObjectImplementation::getConditionDamage() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return (int)conditionDamage;
+	return (int) conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
@@ -1820,7 +1820,7 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setMaxCondition(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_GETCONDITIONDAMAGE__:
-		resp->insertFloat(getConditionDamage());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case RPC_GETVOLUME__:
 		resp->insertSignedInt(getVolume());
@@ -2062,7 +2062,7 @@ void TangibleObjectAdapter::setMaxCondition(int maxCond, bool notifyClient) {
 	(static_cast<TangibleObject*>(stub))->setMaxCondition(maxCond, notifyClient);
 }
 
-float TangibleObjectAdapter::getConditionDamage() {
+int TangibleObjectAdapter::getConditionDamage() {
 	return (static_cast<TangibleObject*>(stub))->getConditionDamage();
 }
 
