@@ -876,7 +876,7 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	repairChance += player->getSkillMod("force_repair_bonus");
 
 	/// use tool quality to lower chances if bad tool
-	float quality = 1.f - (((100.f - quality) / 2) / 100.f);
+	float quality = 1.f - (((100.f - repairTool->getQuality()) / 2) / 100.f);
 	repairChance *= quality;
 
 	ManagedReference<PlayerManager*> playerMan = player->getZoneServer()->getPlayerManager();
