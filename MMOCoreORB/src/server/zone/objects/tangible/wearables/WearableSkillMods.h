@@ -346,6 +346,7 @@ public:
 			break;
 		case 59:
 		case 94:
+		case 95:
 			// Wohooo!  Crafting Mods!
 			if (type == 1) {
 				int randomcraftingmod = System::random(21) + 1;
@@ -422,10 +423,9 @@ public:
 				randomskill = "armor_repair";
 			}
 			break;
-		case 95:
+		/*case 95:
 			// Jedi mods didn't exist, commenting out to keep for reference.
 			if (type == 1) {
-				/*
 				int randomjedimod = System::random(10) + 1;
 
 				switch (randomjedimod) {
@@ -460,12 +460,12 @@ public:
 					randomskill = "twohandlightsaber_accuracy";
 					break;
 				case 11:
-					randomskill = "twohandlightsaber_speed";*/
+					randomskill = "twohandlightsaber_speed";
 					randomskill = "instrument_assembly";
 					break;
 			} else {
 				randomskill = "instrument_assembly";
-			}
+			}*/
 		}
 		return randomskill;
 	}
