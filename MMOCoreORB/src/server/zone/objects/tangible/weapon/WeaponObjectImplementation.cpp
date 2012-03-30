@@ -475,12 +475,13 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 		setConditionDamage(0, true);
 	} else if(repairChance < 50) {
 		message += "sys_repair_imperfect";
-		setMaxCondition(getMaxCondition() * .5f, true);
+		setMaxCondition(getMaxCondition() * .65f, true);
 		setConditionDamage(0, true);
 	} else if(repairChance < 75) {
-		setMaxCondition(getMaxCondition() * .75f, true);
+		setMaxCondition(getMaxCondition() * .80f, true);
 		setConditionDamage(0, true);
 	} else {
+		setMaxCondition(getMaxCondition() * .95f, true);
 		setConditionDamage(0, true);
 		message += "sys_repair_perfect";
 	}
