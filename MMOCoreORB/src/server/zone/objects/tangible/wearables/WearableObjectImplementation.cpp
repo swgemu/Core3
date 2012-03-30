@@ -143,10 +143,10 @@ String WearableObjectImplementation::repairAttempt(int repairChance) {
 		setMaxCondition(1, true);
 	} else if(repairChance < 50) {
 		message += "sys_repair_imperfect";
-		setConditionDamage(getMaxCondition() * .5f, true);
+		setConditionDamage(0, true);
 		setMaxCondition(getMaxCondition() * .5f, true);
 	} else if(repairChance < 75) {
-		setConditionDamage(getMaxCondition() * .75f, true);
+		setConditionDamage(0, true);
 		setMaxCondition(getMaxCondition() * .75f , true);
 	} else {
 		setConditionDamage(0, true);
