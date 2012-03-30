@@ -74,6 +74,9 @@ public:
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
 		ManagedReference<CraftingManager*> craftingManager = player->getZoneServer()->getCraftingManager();
+		if(craftingManager == NULL) {
+			return GENERALERROR;
+		}
 
 		try {
 
@@ -115,10 +118,12 @@ public:
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number
-			String name = "System Generated";
+			String name = "Generated with GenerateC Command";
 			prototype->setCraftersName(name);
 
-			prototype->setCustomObjectName(StringIdManager::instance()->getStringId(prototype->getDisplayedName().hashCode()), false);
+			StringBuffer customName;
+			customName << prototype->getDisplayedName()  <<  " (System Generated)";
+			prototype->setCustomObjectName(customName.toString(), false);
 
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);

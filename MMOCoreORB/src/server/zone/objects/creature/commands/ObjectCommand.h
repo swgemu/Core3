@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+
 
 class ObjectCommand : public QueueCommand {
 public:
@@ -81,6 +83,11 @@ public:
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
 
+				ManagedReference<CraftingManager*> craftingManager = creature->getZoneServer()->getCraftingManager();
+				if(craftingManager == NULL) {
+					return GENERALERROR;
+				}
+
 				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
 
 				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
@@ -101,6 +108,20 @@ public:
 					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
 					return INVALIDPARAMETERS;
 				}
+
+				object->createChildObjects();
+
+				// Set Crafter name and generate serial number
+				String name = "Generated with Object Command";
+				object->setCraftersName(name);
+
+				StringBuffer customName;
+				customName << object->getDisplayedName()  <<  " (System Generated)";
+
+				object->setCustomObjectName(customName.toString(), false);
+
+				String serial = craftingManager->generateSerial();
+				object->setSerialNumber(serial);
 
 				int quantity = 1;
 
