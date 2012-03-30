@@ -1702,6 +1702,6 @@ includeFile("npc/talus/rtp_leia_bothan_spy.lua")
 includeFile("npc/misc/eg6_power_droid.lua")
 includeFile("npc/misc/death_watch_miner.lua")
 includeFile("npc/misc/death_watch_scientist.lua")
-
+includeFile("npc/misc/mol_nimai.lua")
 
 includeFile("npc/event/stresstest_shuttleloc_barker.lua")

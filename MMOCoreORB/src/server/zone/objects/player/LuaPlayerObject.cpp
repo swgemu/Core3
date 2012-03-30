@@ -8,6 +8,7 @@
 #include "LuaPlayerObject.h"
 #include "engine/engine.h"
 #include "FactionStatus.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -22,6 +23,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
+		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic},
 		{ 0, 0 }
 };
 
@@ -125,4 +127,18 @@ int LuaPlayerObject::addWaypoint(lua_State* L) {
 	realObject->setWaypoint(waypoint, notifyClient);
 
 	return 0;
+}
+
+int LuaPlayerObject::addRewardedSchematic(lua_State* L){
+	String templateString = lua_tostring(L, -3);
+	int quantity = lua_tointeger(L, -2);
+	bool notifyClient = lua_toboolean(L, -1);
+
+	DraftSchematic* schematic = SchematicMap::instance()->get(templateString.hashCode());
+
+	if (schematic != NULL)
+		realObject->addRewardedSchematic(schematic, quantity, notifyClient);
+
+	return 0;
+
 }
