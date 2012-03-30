@@ -863,32 +863,41 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	/// + Station Mod - BF
 
 	/// Luck Roll
-	int repairChance = System::random(100);
+	int roll = System::random(100);
+	int repairChance = roll;
 
 	/// Profession Bonus
 	if(player->hasSkill(repairTemplate->getSkill()))
-		repairChance += 25;
+		repairChance += 35;
 
 	/// Get Skill mods
-	repairChance += player->getSkillMod(repairTemplate->getSkillMod()) / 2;
-	repairChance += player->getSkillMod("crafting_repair") / 2;
+	repairChance += player->getSkillMod(repairTemplate->getSkillMod());
+	repairChance += player->getSkillMod("crafting_repair");
 	repairChance += player->getSkillMod("force_repair_bonus");
 
 	/// use tool quality to lower chances if bad tool
-	float quality = (repairTool->getQuality() / 100.f);
-	quality += ((100.f - quality) / 2);
+	float quality = 1.f - (((100.f - quality) / 2) / 100.f);
 	repairChance *= quality;
 
 	ManagedReference<PlayerManager*> playerMan = player->getZoneServer()->getPlayerManager();
 
 	/// Increase if near station
 	if(playerMan->getNearbyCraftingStation(player, repairTemplate->getStationType()) != NULL) {
-		repairChance += 10;
+		repairChance += 15;
 	}
 
 	/// Subtract battle fatigue
 	repairChance -= (player->getShockWounds() / 2);
 
+	/// Subtract complexity
+	repairChance -= (getComplexity() / 3);
+
+	/// 5% random failure
+	if(getMaxCondition() < 20 || roll < 5)
+		repairChance = 0;
+
+	if(roll > 95)
+		repairChance = 100;
 
 	String result = repairAttempt(repairChance);
 	repairTool->destroyObjectFromWorld(true);
