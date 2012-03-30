@@ -308,7 +308,7 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	if (maxCondition > 0) {
 		StringBuffer cond;
-		cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;
 
 		alm->insertAttribute("condition", cond);
 	}
@@ -392,7 +392,7 @@ void TangibleObjectImplementation::setMaxCondition(int maxCond, bool notifyClien
 	broadcastMessage(dtano3, true);
 }
 
-void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notifyClient) {
+void TangibleObjectImplementation::setConditionDamage(float condDamage, bool notifyClient) {
 	if (conditionDamage == condDamage)
 		return;
 
@@ -408,8 +408,8 @@ void TangibleObjectImplementation::setConditionDamage(int condDamage, bool notif
 	broadcastMessage(dtano3, true);
 }
 
-int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
-	int newConditionDamage = conditionDamage + damage;
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+	float newConditionDamage = conditionDamage + damage;
 
 	if (!destroy && newConditionDamage >= maxCondition)
 		newConditionDamage = maxCondition - 1;
@@ -420,7 +420,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this)
-			threatMap->addDamage(player, damage);
+			threatMap->addDamage(player, (uint32)damage);
 	}
 
 	if (newConditionDamage >= maxCondition)
@@ -466,8 +466,8 @@ void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destruc
 		destructor->wlock(_this);
 }
 
-int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
-	int newConditionDamage = conditionDamage - damageToHeal;
+int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient) {
+	float newConditionDamage = conditionDamage - damageToHeal;
 
 	int returnValue = damageToHeal;
 

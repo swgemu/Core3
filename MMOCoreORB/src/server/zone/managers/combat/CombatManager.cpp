@@ -775,7 +775,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
 
 		float armorReduction = getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
-		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		return damage;
 	}
@@ -784,10 +784,18 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
 
 	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		damage *= getArmorPiercing(psg, weapon);
-
+		float originalDamage = damage;
+		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(attacker, psg);
-		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
+
+		damage *= armorPiercing;
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		// inflict condition damage
+		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
+		// it can be fixed by doing condition damage after all damage reductions
+		float conditionDamage = originalDamage * armorPiercing - damage;
+		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
 	// now apply the rest of the damage to the regular armor
@@ -802,10 +810,16 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
 		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		damage *= getArmorPiercing(armor, weapon);
+		float originalDamage = damage;
+		float armorPiercing = getArmorPiercing(armor, weapon);
+		float armorReduction = getArmorObjectReduction(attacker, armor);
 
-		float armorReduction =  getArmorObjectReduction(attacker, armor);
-		if (armorReduction > 0) damage *= (1.f - (armorReduction /= 100.f));
+		damage *= armorPiercing;
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		// inflict condition damage
+		float conditionDamage = originalDamage * armorPiercing - damage;
+		armor->inflictDamage(armor, 0, conditionDamage, false, true);
 	}
 
 	return damage;
@@ -875,6 +889,13 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
+
+	if (weapon != attacker->getSlottedObject("default_weapon")) {
+		float conditionDamage = damage / 100.f;
+		if (weapon->isSliced()) conditionDamage *= 1.1;
+		if (weapon->hasPowerup()) conditionDamage *= 1.1;
+		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
+	}
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");
@@ -1064,6 +1085,9 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	if (mind > 0) {
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 	}
+
+	if (weapon != attacker->getSlottedObject("default_weapon"))
+		weapon->inflictDamage(weapon, 0, (health + action + mind) / 100, false, true);
 
 	return true;
 }

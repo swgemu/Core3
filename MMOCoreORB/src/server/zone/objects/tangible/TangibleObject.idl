@@ -79,7 +79,7 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
 	
-	protected int conditionDamage;
+	protected float conditionDamage;
 	protected int maxCondition;
 	protected int useCount;
 	
@@ -321,7 +321,7 @@ class TangibleObject extends SceneObject {
 	 * @post { attacker, this object is locked }
 	 * @return unused for now
 	 */
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 	
 	/**
 	 * Heals damage
@@ -329,7 +329,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this, healer locked }
 	 * @return returns total health healed
 	 */
-	public native abstract int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
+	public native abstract int healDamage(TangibleObject healer, int damageType, float damageToHeal, boolean notifyClient = true);
 	
 	
 	/**
@@ -338,7 +338,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @param condDamage new condition damage
 	 */
-	public native void setConditionDamage(int condDamage, boolean notifyClient = true);
+	public native void setConditionDamage(float condDamage, boolean notifyClient = true);
 	
 	/**
 	 * Updates a customization variable
@@ -387,7 +387,7 @@ class TangibleObject extends SceneObject {
 	
 	public native void setMaxCondition(int maxCond, boolean notifyClient = true);
 	
-	public int getConditionDamage() {
+	public float getConditionDamage() {
 		return conditionDamage;
 	}
 	

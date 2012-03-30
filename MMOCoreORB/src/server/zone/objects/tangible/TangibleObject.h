@@ -230,11 +230,11 @@ public:
 
 	void sendPvpStatusTo(CreatureObject* player);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
-	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
+	int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
-	void setConditionDamage(int condDamage, bool notifyClient = true);
+	void setConditionDamage(float condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
@@ -264,7 +264,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
 
-	int getConditionDamage();
+	float getConditionDamage();
 
 	int getVolume();
 
@@ -376,7 +376,7 @@ protected:
 
 	CustomizationVariables customizationVariables;
 
-	int conditionDamage;
+	float conditionDamage;
 
 	int maxCondition;
 
@@ -453,11 +453,11 @@ public:
 
 	virtual void sendPvpStatusTo(CreatureObject* player);
 
-	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
-	virtual int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
+	virtual int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
-	void setConditionDamage(int condDamage, bool notifyClient = true);
+	void setConditionDamage(float condDamage, bool notifyClient = true);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
 
@@ -487,7 +487,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
 
-	int getConditionDamage();
+	float getConditionDamage();
 
 	int getVolume();
 
@@ -644,11 +644,11 @@ public:
 
 	void sendPvpStatusTo(CreatureObject* player);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
 
-	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
+	int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient);
 
-	void setConditionDamage(int condDamage, bool notifyClient);
+	void setConditionDamage(float condDamage, bool notifyClient);
 
 	void setCustomizationVariable(byte type, byte value, bool notifyClient);
 
@@ -674,7 +674,7 @@ public:
 
 	void setMaxCondition(int maxCond, bool notifyClient);
 
-	int getConditionDamage();
+	float getConditionDamage();
 
 	int getVolume();
 

@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -350,16 +350,16 @@ void TangibleObject::sendPvpStatusTo(CreatureObject* player) {
 		_implementation->sendPvpStatusTo(player);
 }
 
-int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
-		method.addSignedIntParameter(damage);
+		method.addFloatParameter(damage);
 		method.addBooleanParameter(destroy);
 		method.addBooleanParameter(notifyClient);
 
@@ -368,16 +368,16 @@ int TangibleObject::inflictDamage(TangibleObject* attacker, int damageType, int 
 		return _implementation->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
-int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+int TangibleObject::healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_);
+		DistributedMethod method(this, RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_);
 		method.addObjectParameter(healer);
 		method.addSignedIntParameter(damageType);
-		method.addSignedIntParameter(damageToHeal);
+		method.addFloatParameter(damageToHeal);
 		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithSignedIntReturn();
@@ -385,14 +385,14 @@ int TangibleObject::healDamage(TangibleObject* healer, int damageType, int damag
 		return _implementation->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
-void TangibleObject::setConditionDamage(int condDamage, bool notifyClient) {
+void TangibleObject::setConditionDamage(float condDamage, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCONDITIONDAMAGE__INT_BOOL_);
-		method.addSignedIntParameter(condDamage);
+		DistributedMethod method(this, RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_);
+		method.addFloatParameter(condDamage);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
@@ -587,7 +587,7 @@ void TangibleObject::setMaxCondition(int maxCond, bool notifyClient) {
 		_implementation->setMaxCondition(maxCond, notifyClient);
 }
 
-int TangibleObject::getConditionDamage() {
+float TangibleObject::getConditionDamage() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -595,7 +595,7 @@ int TangibleObject::getConditionDamage() {
 
 		DistributedMethod method(this, RPC_GETCONDITIONDAMAGE__);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getConditionDamage();
 }
@@ -1198,7 +1198,7 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "TangibleObject.conditionDamage") {
-		TypeInfo<int >::parseFromBinaryStream(&conditionDamage, stream);
+		TypeInfo<float >::parseFromBinaryStream(&conditionDamage, stream);
 		return true;
 	}
 
@@ -1318,7 +1318,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&conditionDamage, stream);
+	TypeInfo<float >::toBinaryStream(&conditionDamage, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1516,7 +1516,7 @@ int TangibleObjectImplementation::getMaxCondition() {
 	return maxCondition;
 }
 
-int TangibleObjectImplementation::getConditionDamage() {
+float TangibleObjectImplementation::getConditionDamage() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage;
 	return conditionDamage;
 }
@@ -1774,14 +1774,14 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SENDPVPSTATUSTO__CREATUREOBJECT_:
 		sendPvpStatusTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
-	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
+		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
-	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
-		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_:
+		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter()));
 		break;
-	case RPC_SETCONDITIONDAMAGE__INT_BOOL_:
-		setConditionDamage(inv->getSignedIntParameter(), inv->getBooleanParameter());
+	case RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_:
+		setConditionDamage(inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_:
 		setCustomizationVariable(inv->getByteParameter(), inv->getByteParameter(), inv->getBooleanParameter());
@@ -1820,7 +1820,7 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setMaxCondition(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_GETCONDITIONDAMAGE__:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertFloat(getConditionDamage());
 		break;
 	case RPC_GETVOLUME__:
 		resp->insertSignedInt(getVolume());
@@ -2002,15 +2002,15 @@ void TangibleObjectAdapter::sendPvpStatusTo(CreatureObject* player) {
 	(static_cast<TangibleObject*>(stub))->sendPvpStatusTo(player);
 }
 
-int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int TangibleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	return (static_cast<TangibleObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
-int TangibleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
+int TangibleObjectAdapter::healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient) {
 	return (static_cast<TangibleObject*>(stub))->healDamage(healer, damageType, damageToHeal, notifyClient);
 }
 
-void TangibleObjectAdapter::setConditionDamage(int condDamage, bool notifyClient) {
+void TangibleObjectAdapter::setConditionDamage(float condDamage, bool notifyClient) {
 	(static_cast<TangibleObject*>(stub))->setConditionDamage(condDamage, notifyClient);
 }
 
@@ -2062,7 +2062,7 @@ void TangibleObjectAdapter::setMaxCondition(int maxCond, bool notifyClient) {
 	(static_cast<TangibleObject*>(stub))->setMaxCondition(maxCond, notifyClient);
 }
 
-int TangibleObjectAdapter::getConditionDamage() {
+float TangibleObjectAdapter::getConditionDamage() {
 	return (static_cast<TangibleObject*>(stub))->getConditionDamage();
 }
 
