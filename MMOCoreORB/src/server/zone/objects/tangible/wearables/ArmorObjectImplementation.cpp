@@ -220,14 +220,6 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 	alm->insertAttribute("cat_armor_encumbrance.mind", getMindEncumbrance());
 
-	if (craftersName != "") {
-		alm->insertAttribute("crafter", craftersName);
-	}
-
-	if (objectSerial != "") {
-		alm->insertAttribute("serial_number", objectSerial);
-	}
-
 	if (sliced)
 		alm->insertAttribute("arm_attr", "@obj_attr_n:hacked");
 

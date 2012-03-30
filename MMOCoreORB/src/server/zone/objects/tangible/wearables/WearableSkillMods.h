@@ -463,11 +463,9 @@ public:
 					randomskill = "twohandlightsaber_speed";*/
 					randomskill = "instrument_assembly";
 					break;
-				}
 			} else {
 				randomskill = "instrument_assembly";
 			}
-			break;
 		}
 		return randomskill;
 	}

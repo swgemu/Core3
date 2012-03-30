@@ -122,8 +122,10 @@ public:
 			prototype->setCraftersName(name);
 
 			StringBuffer customName;
-			customName << prototype->getDisplayedName()  <<  " (System Generated)";
+			customName << StringIdManager::instance()->getStringId(prototype->getDisplayedName().hashCode()).toString()
+					<<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
+
 
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);
