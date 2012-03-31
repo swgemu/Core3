@@ -3816,6 +3816,11 @@ void SceneObjectImplementation::error(const String& msg) {
 	Logger::error(msg);
 }
 
+void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+	zoneComponent->destroyObjectFromWorld(_this, sendSelfDestroy);
+}
+
 int SceneObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
 	// server/zone/objects/scene/SceneObject.idl():  		return 0;
 	return 0;

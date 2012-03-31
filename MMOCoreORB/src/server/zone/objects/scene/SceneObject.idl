@@ -277,7 +277,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	/**
 	 * Destroys the object from the world
 	 */
-	public native abstract void destroyObjectFromWorld(boolean sendSelfDestroy);
+	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
+		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+	}
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject

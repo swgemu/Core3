@@ -329,6 +329,77 @@ void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
 	zone->removeObject(sceneObject);*/
 }
 
+void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
+	ManagedReference<SceneObject*> par = sceneObject->getParent();
+
+	sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
+
+	ManagedReference<Zone*> rootZone = sceneObject->getZone();
+	ManagedReference<Zone*> zone = sceneObject->getLocalZone();
+
+	if (par != NULL) {
+		uint64 parentID = sceneObject->getParentID();
+		par->removeObject(sceneObject, NULL, false);
+
+		if (par->isCellObject()) {
+			BuildingObject* build = cast<BuildingObject*>(par->getParent());
+
+			if (build != NULL) {
+				CreatureObject* creature = cast<CreatureObject*>(sceneObject);
+
+				if (creature != NULL)
+					build->onExit(creature, parentID);
+			}
+		}
+
+		sceneObject->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, sceneObject, 0);
+	} else if (zone != NULL) {
+		zone->removeObject(sceneObject, NULL, false);
+	}
+
+	if (rootZone != NULL) {
+		Locker locker(rootZone);
+
+		if (!sceneObject->isActiveArea())
+			rootZone->remove(sceneObject);
+
+		SortedVector<ManagedReference<QuadTreeEntry*> >* closeobjects = sceneObject->getCloseObjects();
+
+		if (closeobjects != NULL) {
+			while (closeobjects->size() > 0) {
+				ManagedReference<QuadTreeEntry*> obj = closeobjects->get(0);
+
+				if (obj != sceneObject && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(sceneObject);
+
+				sceneObject->removeInRangeObject((int) 0);
+			}
+		} else {
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+
+			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 512, &closeSceneObjects, false);
+
+			for (int i = 0; i < closeSceneObjects.size(); ++i) {
+				QuadTreeEntry* obj = closeSceneObjects.get(i);
+
+				if (obj != sceneObject && obj->getCloseObjects() != NULL)
+					obj->removeInRangeObject(sceneObject);
+			}
+		}
+
+		Vector<ManagedReference<ActiveArea*> >* activeAreas =  sceneObject->getActiveAreas();
+
+		while (activeAreas->size() > 0) {
+			ManagedReference<ActiveArea*> area = activeAreas->get(0);
+			area->enqueueExitEvent(sceneObject);
+
+			activeAreas->remove(0);
+		}
+
+		rootZone->dropSceneObject(sceneObject);
+	}
+}
+
 void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
 	sceneObject->notifySelfPositionUpdate();
 }

@@ -94,6 +94,7 @@ public:
 
 	void updateInRangeObjectsOnMount(SceneObject* sceneObject);
 
+	virtual void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy);
 
 };
 
