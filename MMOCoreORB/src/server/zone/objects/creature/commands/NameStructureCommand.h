@@ -65,8 +65,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		creature->sendSystemMessage("Temporarily disabled while being worked on.");
-		return GENERALERROR;
+		/*creature->sendSystemMessage("Temporarily disabled while being worked on.");
+		return GENERALERROR;*/
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 

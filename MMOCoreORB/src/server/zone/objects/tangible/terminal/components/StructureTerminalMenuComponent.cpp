@@ -119,7 +119,8 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		creature->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 		break;
 	case 50:
-		creature->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
+		structureManager->promptNameStructure(creature, structureObject, NULL);
+		//creature->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
 		break;
 	case 130:
 		structureObject->createVendor(creature);
