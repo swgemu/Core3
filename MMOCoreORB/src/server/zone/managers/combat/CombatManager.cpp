@@ -891,14 +891,14 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage = System::random(diff) + (int)minDamage;
 
 	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = damage / 100.f;
+		float conditionDamage = damage / 1000.f;
 		if (weapon->isSliced()) conditionDamage *= 1.1;
 		if (weapon->hasPowerup()) conditionDamage *= 1.1;
 		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
 
-		if (conditionDamage / (float)weapon->getMaxCondition() < 0.25)
+		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.75) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.75))
 			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
-		else if (conditionDamage / (float)weapon->getMaxCondition() < 0.50)
+		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.50) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.50))
 			attacker->sendSystemMessage("@combat_effects:weapon_half");
 	}
 
@@ -1095,12 +1095,12 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	}
 
 	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = (health + action + mind) / 100;
+		float conditionDamage = (health + action + mind) / 1000;
 		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
 
-		if (conditionDamage / (float)weapon->getMaxCondition() < 0.25)
+		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.75) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.75))
 			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
-		else if (conditionDamage / (float)weapon->getMaxCondition() < 0.50)
+		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.50) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.50))
 			attacker->sendSystemMessage("@combat_effects:weapon_half");
 	}
 
