@@ -1006,7 +1006,7 @@ void ZoneServerImplementation::readObject(ObjectInputStream* stream) {
 		String _name;
 		_name.parseFromBinaryStream(stream);
 
-		uint16 _varSize = stream->readShort();
+		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
@@ -1149,182 +1149,182 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 	String _name;
 	int _offset;
-	uint16 _totalSize;
+	uint32 _totalSize;
 	_name = "ZoneServer.zones";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Reference<VectorMap<String, ManagedReference<Zone* > >* > >::toBinaryStream(&zones, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.playerManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.chatManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatManager* > >::toBinaryStream(&chatManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.radialManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<RadialManager* > >::toBinaryStream(&radialManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.cityManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<CityManager* > >::toBinaryStream(&cityManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.resourceManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<ResourceManager* > >::toBinaryStream(&resourceManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.craftingManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<CraftingManager* > >::toBinaryStream(&craftingManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.lootManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<LootManager* > >::toBinaryStream(&lootManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.auctionManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<AuctionManager* > >::toBinaryStream(&auctionManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.missionManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<MissionManager* > >::toBinaryStream(&missionManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.guildManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<GuildManager* > >::toBinaryStream(&guildManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.totalSentPackets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&totalSentPackets, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.totalResentPackets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&totalResentPackets, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.currentPlayers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&currentPlayers, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.maximumPlayers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&maximumPlayers, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.totalPlayers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&totalPlayers, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.totalDeletedPlayers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&totalDeletedPlayers, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.serverState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&serverState, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.galaxyName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&galaxyName, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.loginMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&loginMessage, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.galaxyID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&galaxyID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "ZoneServer.startTimestamp";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&startTimestamp, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 
 	return _count + 22;

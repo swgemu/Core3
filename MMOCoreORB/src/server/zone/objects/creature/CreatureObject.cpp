@@ -40,7 +40,11 @@
  *	CreatureObjectStub
  */
 
+<<<<<<< HEAD
 enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_UPDATELOCOMOTION__,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETTURNSCALE__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_HEALWOUND__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_REMOVESTATEBUFF__LONG_,RPC_CLEARBUFFS__BOOL_,RPC_SENDBUFFSTO__CREATUREOBJECT_,RPC_GETBUFF__INT_,RPC_GETSKILLMODFROMBUFFS__STRING_,RPC_ADDDOTSTATE__LONG_LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBTRACTBANKCREDITS__INT_,RPC_SUBTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILL__STRING_BOOL_,RPC_REMOVESKILL__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_ADDWEARABLESKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISINBOUNTYMISSION__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYOBJECTKILLOBSERVERS__TANGIBLEOBJECT_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETFACTIONRANK__INT_BOOL_,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_ISONLINE__,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_GETPLAYEROBJECT__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATEPASSIVEWOUNDREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETLOCOMOTION__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTURNSCALE__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILL__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISNEXTACTIONPAST__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_GETCLIENT__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISIMMOBILIZED__,RPC_ISROOTED__,RPC_ISFROZEN__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISRUNNING__,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCREATURE__,RPC_ISPLAYERCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__,RPC_GETCURRENTCAMP__,RPC_GETCURRENTWEATHER__,RPC_SETCURRENTWEATHER__BYTE_,RPC_GETCURRENTWIND__,RPC_SETCURRENTWIND__BYTE_};
+=======
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_UPDATELOCOMOTION__,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETTURNSCALE__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_HEALWOUND__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_REMOVESTATEBUFF__LONG_,RPC_CLEARBUFFS__BOOL_,RPC_SENDBUFFSTO__CREATUREOBJECT_,RPC_GETBUFF__INT_,RPC_GETSKILLMODFROMBUFFS__STRING_,RPC_ADDDOTSTATE__LONG_LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBTRACTBANKCREDITS__INT_,RPC_SUBTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILL__STRING_BOOL_,RPC_REMOVESKILL__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISINBOUNTYMISSION__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYOBJECTKILLOBSERVERS__TANGIBLEOBJECT_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETFACTIONRANK__INT_BOOL_,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_ISONLINE__,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_GETPLAYEROBJECT__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATEPASSIVEWOUNDREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETLOCOMOTION__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTURNSCALE__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILL__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISNEXTACTIONPAST__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_GETCLIENT__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISIMMOBILIZED__,RPC_ISROOTED__,RPC_ISFROZEN__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISRUNNING__,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCREATURE__,RPC_ISPLAYERCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__,RPC_GETCURRENTCAMP__,RPC_GETCURRENTWEATHER__,RPC_SETCURRENTWEATHER__BYTE_,RPC_GETCURRENTWIND__,RPC_SETCURRENTWIND__BYTE_};
+>>>>>>> [fixed] loot/threat map
 
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
@@ -434,16 +438,16 @@ void CreatureObject::setHAM(int type, int value, bool notifyClient) {
 		_implementation->setHAM(type, value, notifyClient);
 }
 
-int CreatureObject::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int CreatureObject::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_);
+		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_);
 		method.addObjectParameter(attacker);
 		method.addSignedIntParameter(damageType);
-		method.addSignedIntParameter(damage);
+		method.addFloatParameter(damage);
 		method.addBooleanParameter(destroy);
 		method.addBooleanParameter(notifyClient);
 
@@ -3900,7 +3904,7 @@ void CreatureObjectImplementation::readObject(ObjectInputStream* stream) {
 		String _name;
 		_name.parseFromBinaryStream(stream);
 
-		uint16 _varSize = stream->readShort();
+		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
@@ -4213,454 +4217,461 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 	String _name;
 	int _offset;
-	uint16 _totalSize;
+	uint32 _totalSize;
 	_name = "CreatureObject.bankCredits";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&bankCredits, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.cashCredits";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&cashCredits, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.gender";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&gender, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.species";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&species, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.baseHAM";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&baseHAM, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.posture";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&posture, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.locomotion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&locomotion, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.factionRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&factionRank, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.linkedCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&linkedCreature, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.controlDevice";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<ControlDevice* > >::toBinaryStream(&controlDevice, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.shockWounds";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&shockWounds, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.wounds";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&wounds, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.stateBitmask";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&stateBitmask, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.encumbrances";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&encumbrances, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.accelerationMultiplierBase";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&accelerationMultiplierBase, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.accelerationMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&accelerationMultiplierMod, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.speedMultiplierBase";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&speedMultiplierBase, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.speedMultiplierModChanges";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<SpeedMultiplierModChanges >::toBinaryStream(&speedMultiplierModChanges, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.speedMultiplierMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&speedMultiplierMod, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.turnScale";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&turnScale, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.runSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&runSpeed, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.walkSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&walkSpeed, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.currentSpeed";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&currentSpeed, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.terrainNegotiation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&terrainNegotiation, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.runAcceleration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&runAcceleration, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.walkAcceleration";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&walkAcceleration, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.height";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&height, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.swimHeight";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&swimHeight, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.slopeModPercent";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&slopeModPercent, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.slopeModAngle";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&slopeModAngle, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.listenToID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&listenToID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.watchToID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&watchToID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.performanceAnimation";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&performanceAnimation, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.moodString";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&moodString, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.weapon";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<WeaponObject* > >::toBinaryStream(&weapon, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.group";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<GroupObject* > >::toBinaryStream(&group, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.groupInviterID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&groupInviterID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.groupInviteCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&groupInviteCounter, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.guild";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<ManagedReference<GuildObject* > >::toBinaryStream(&guild, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.targetID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&targetID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.moodID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&moodID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.performanceCounter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&performanceCounter, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.instrumentID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&instrumentID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.hamList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&hamList, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.maxHamList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&maxHamList, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.frozen";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&frozen, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.templateString";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&templateString, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.skillList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<SkillList >::toBinaryStream(&skillList, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.skillModList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
+<<<<<<< HEAD
 	stream->writeShort(0);
 	TypeInfo<SkillModList >::toBinaryStream(&skillModList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
+=======
+	stream->writeInt(0);
+	TypeInfo<DeltaVectorMap<String, long long> >::toBinaryStream(&skillModList, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+>>>>>>> [fixed] loot/threat map
 
 	_name = "CreatureObject.nextAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextAction, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.cooldownTimerMap";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Reference<CooldownTimerMap* > >::toBinaryStream(&cooldownTimerMap, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.creatureBuffs";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<BuffList >::toBinaryStream(&creatureBuffs, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.damageOverTimeList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<DamageOverTimeList >::toBinaryStream(&damageOverTimeList, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.lastSuccessfulCombatAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastSuccessfulCombatAction, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.timeOfDeath";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&timeOfDeath, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "CreatureObject.screenPlayStates";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<VectorMap<String, unsigned long long> >::toBinaryStream(&screenPlayStates, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 
 	return _count + 56;
@@ -5660,8 +5671,8 @@ void CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETHAM__INT_INT_BOOL_:
 		setHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
+		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case RPC_HASDAMAGE__INT_:
 		resp->insertBoolean(hasDamage(inv->getSignedIntParameter()));
@@ -6477,7 +6488,7 @@ void CreatureObjectAdapter::setHAM(int type, int value, bool notifyClient) {
 	(static_cast<CreatureObject*>(stub))->setHAM(type, value, notifyClient);
 }
 
-int CreatureObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int CreatureObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	return (static_cast<CreatureObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 

@@ -449,7 +449,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
-	public native int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 
 	public boolean hasDamage(int attribute) {
 		return maxHamList.get(attribute) - hamList.get(attribute); // should we include woundS?

@@ -202,7 +202,7 @@ void PowerBoostBuffImplementation::readObject(ObjectInputStream* stream) {
 		String _name;
 		_name.parseFromBinaryStream(stream);
 
-		uint16 _varSize = stream->readShort();
+		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
@@ -260,46 +260,46 @@ int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 	String _name;
 	int _offset;
-	uint16 _totalSize;
+	uint32 _totalSize;
 	_name = "PowerBoostBuff.pbBonus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pbBonus, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "PowerBoostBuff.pbTick";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pbTick, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "PowerBoostBuff.time";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&time, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "PowerBoostBuff.counter";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&counter, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "PowerBoostBuff.nextTickTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextTickTime, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 
 	return _count + 5;

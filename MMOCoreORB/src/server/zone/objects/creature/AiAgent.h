@@ -322,7 +322,7 @@ public:
 
 	void loadTemplateData(CreatureTemplate* templateData);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	void sendConversationStartTo(SceneObject* player);
 
@@ -602,7 +602,7 @@ public:
 
 	void loadTemplateData(CreatureTemplate* templateData);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	void sendConversationStartTo(SceneObject* player);
 
@@ -811,7 +811,7 @@ public:
 
 	void clearPatrolPoints();
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
 
 	void sendConversationStartTo(SceneObject* player);
 

@@ -839,7 +839,7 @@ void FishingManagerImplementation::readObject(ObjectInputStream* stream) {
 		String _name;
 		_name.parseFromBinaryStream(stream);
 
-		uint16 _varSize = stream->readShort();
+		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
@@ -917,78 +917,78 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 	String _name;
 	int _offset;
-	uint16 _totalSize;
+	uint32 _totalSize;
 	_name = "FishingManager.miscLoot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&miscLoot, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.rareLoot";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&rareLoot, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.color";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&color, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.fishLength";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&fishLength, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.fishType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&fishType, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.state";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&state, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.action";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&action, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.property";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&property, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 	_name = "FishingManager.baitStatus";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
-	stream->writeShort(0);
+	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&baitStatus, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
 
 	return _count + 9;

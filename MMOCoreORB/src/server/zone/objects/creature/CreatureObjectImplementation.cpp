@@ -795,7 +795,7 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 }
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
-		int damageType, int damage, bool destroy, bool notifyClient) {
+		int damageType, float damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error(
 				"incorrect damage type in CreatureObjectImplementation::inflictDamage");

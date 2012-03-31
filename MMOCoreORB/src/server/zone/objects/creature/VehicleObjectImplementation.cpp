@@ -142,7 +142,7 @@ int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	return repairCost;
 }
 
-int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 

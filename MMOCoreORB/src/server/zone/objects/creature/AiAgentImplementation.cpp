@@ -1191,7 +1191,7 @@ int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
 	return 1;
 }
 
-int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient) {
+int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {

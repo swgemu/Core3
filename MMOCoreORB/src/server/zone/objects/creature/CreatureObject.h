@@ -360,7 +360,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
@@ -1111,7 +1111,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient = true);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
@@ -1704,7 +1704,7 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
 
 	bool hasDamage(int attribute);
 

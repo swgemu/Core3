@@ -122,7 +122,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -191,7 +191,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -266,7 +266,7 @@ public:
 
 	void sendMessage(BasePacket* msg);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 
