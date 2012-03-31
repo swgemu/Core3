@@ -5,7 +5,7 @@ gurk_king_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "gurk_king_hide", weight = 4000000}
+		{itemTemplate = "gurk_king_hide", weight = 10000000}
 	}
 }
 

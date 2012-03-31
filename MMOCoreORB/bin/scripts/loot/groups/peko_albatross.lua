@@ -5,7 +5,7 @@ peko_albatross = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "peko_albatross_feather", weight = 5000000}
+		{itemTemplate = "peko_albatross_feather", weight = 10000000}
 	}
 }
 

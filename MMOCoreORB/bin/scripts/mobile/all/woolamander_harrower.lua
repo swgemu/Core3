@@ -27,7 +27,14 @@ woolamander_harrower = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/woolamander.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "harrower_bone", chance = 5000000}
+			},
+			lootChance = 9300000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
