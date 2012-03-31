@@ -45,6 +45,9 @@ function vardias_tyne_screenplay:spawnActiveAreas()
 end
 
 function vardias_tyne_screenplay:spawnMobiles()
+	 if (not isZoneEnabled("tatooine")) then
+ 	  	return 0
+ 	 end
 	local pVardias = spawnMobile("tatooine", "vardias_tyne", 1, 104, 0.1, -5382, -96, 0)
 end
 
