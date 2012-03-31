@@ -87,8 +87,8 @@ object_tangible_wearables_armor_ris_armor_ris_chest_plate = object_tangible_wear
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "expDurability", "expQuality", "expResistance", "expDurability", "expDurability", "expDurability", "null", "null", "expResistance", "null"},
 	experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-	experimentalMin = {0, 0, 0, 1000, 5, 30000, 131, 39, 9, 1, 1, 5, 0},
-	experimentalMax = {0, 0, 0, 1000, 50, 50000, 219, 66, 16, 1, 1, 70, 0},
+	experimentalMin = {0, 0, 0, 1000, 5, 30000, 219, 66, 16, 1, 1, 5, 0},
+	experimentalMax = {0, 0, 0, 1000, 50, 50000, 131, 39, 9, 1, 1, 70, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
