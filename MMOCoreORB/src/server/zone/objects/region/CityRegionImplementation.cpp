@@ -20,16 +20,29 @@
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
+}
+
+void CityRegionImplementation::notifyLoadFromDatabase() {
+	ManagedObjectImplementation::notifyLoadFromDatabase();
 
 	if (cityRank == CityManager::CLIENT)
 		return;
 
+	//if (zone !=)
+
+	Zone* zone = getZone();
+
+	if (zone != NULL)
+		zone->addCityRegionToUpdate(_this);
+
+	/*
 	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
 
 	if (seconds < 0) //If the update occurred in the past, force an immediate update.
 		seconds = 0;
 
 	rescheduleUpdateEvent(seconds);
+	*/
 }
 
 void CityRegionImplementation::initialize() {

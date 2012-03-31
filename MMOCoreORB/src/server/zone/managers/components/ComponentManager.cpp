@@ -52,7 +52,7 @@
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
 #include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
-
+#include "server/zone/objects/building/components/CityHallZoneComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -120,4 +120,5 @@ ComponentManager::ComponentManager() {
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
 
+	components.put("CityHallZoneComponent", new CityHallZoneComponent());
 }

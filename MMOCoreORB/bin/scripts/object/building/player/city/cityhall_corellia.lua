@@ -46,6 +46,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	baseMaintenanceRate = 0,
 	planetMapCategory = "cityhall",
 	allowedZones = {"corellia", "talus"},
+	zoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,
 	abilityRequired = "place_cityhall",
 	skillMods = {

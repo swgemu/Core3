@@ -26,11 +26,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 /*
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -255,6 +257,33 @@ void Zone::addSceneObject(SceneObject* object) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->addSceneObject(object);
+}
+
+void Zone::addCityRegionToUpdate(CityRegion* city) {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCITYREGIONTOUPDATE__CITYREGION_);
+		method.addObjectParameter(city);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCityRegionToUpdate(city);
+}
+
+void Zone::updateCityRegions() {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATECITYREGIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateCityRegions();
 }
 
 void Zone::sendMapLocationsTo(SceneObject* player) {
@@ -673,6 +702,12 @@ QuadTree* ZoneImplementation::getRegionTree() {
 	return (&regionTree)->get();
 }
 
+void ZoneImplementation::addCityRegionToUpdate(CityRegion* city) {
+	Locker _locker(_this);
+	// server/zone/Zone.idl():  		cityRegionUpdateVector.put(city);
+	(&cityRegionUpdateVector)->put(city);
+}
+
 PlanetManager* ZoneImplementation::getPlanetManager() {
 	// server/zone/Zone.idl():  		return planetManager;
 	return planetManager;
@@ -760,6 +795,12 @@ void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ADDSCENEOBJECT__SCENEOBJECT_:
 		addSceneObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ADDCITYREGIONTOUPDATE__CITYREGION_:
+		addCityRegionToUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
+		break;
+	case RPC_UPDATECITYREGIONS__:
+		updateCityRegions();
 		break;
 	case RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_:
 		sendMapLocationsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
@@ -859,6 +900,14 @@ float ZoneAdapter::getHeight(float x, float y) {
 
 void ZoneAdapter::addSceneObject(SceneObject* object) {
 	(static_cast<Zone*>(stub))->addSceneObject(object);
+}
+
+void ZoneAdapter::addCityRegionToUpdate(CityRegion* city) {
+	(static_cast<Zone*>(stub))->addCityRegionToUpdate(city);
+}
+
+void ZoneAdapter::updateCityRegions() {
+	(static_cast<Zone*>(stub))->updateCityRegions();
 }
 
 void ZoneAdapter::sendMapLocationsTo(SceneObject* player) {

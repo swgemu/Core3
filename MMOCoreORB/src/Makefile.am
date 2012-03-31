@@ -280,6 +280,7 @@ core3_IDLS =	server/zone/objects/player/sessions/TradeSession.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \

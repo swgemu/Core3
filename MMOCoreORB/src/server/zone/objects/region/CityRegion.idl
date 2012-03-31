@@ -77,6 +77,13 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void initialize();
 	public native void initializeTransientMembers();
 	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
@@ -115,6 +122,11 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 
 		return false;
+	}
+	
+	@local
+	public Time getNextUpdateTime() {
+		return nextUpdateTime;
 	}
 	
 	public void addCitizen(unsigned long citizenID) {

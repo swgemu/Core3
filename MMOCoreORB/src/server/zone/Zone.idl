@@ -74,6 +74,7 @@ import system.lang.System;
 import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.region.CityRegion;
 
 class Zone extends SceneObject {
 	private string zoneName;
@@ -89,6 +90,9 @@ class Zone extends SceneObject {
 	private transient StructureManager structureManager;
 	
 	private transient CreatureManager creatureManager;
+	
+	@dereferenced
+	private transient SortedVector<CityRegion> cityRegionUpdateVector;
 	
 	@weakReference
 	private transient ZoneServer server;
@@ -158,6 +162,12 @@ class Zone extends SceneObject {
 	public native float getHeight(float x, float y);
 
 	public native void addSceneObject(SceneObject object);
+	
+	public synchronized void addCityRegionToUpdate(CityRegion city) {
+		cityRegionUpdateVector.put(city);
+	}
+	
+	public native void updateCityRegions();
 	
 	public native void sendMapLocationsTo(SceneObject player);
 	

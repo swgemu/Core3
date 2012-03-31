@@ -114,6 +114,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -137,6 +139,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	Time* getNextUpdateTime();
 
 	void addCitizen(unsigned long long citizenID);
 
@@ -310,6 +314,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void notifyLoadFromDatabase();
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -333,6 +339,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	Time* getNextUpdateTime();
 
 	void addCitizen(unsigned long long citizenID);
 
@@ -468,6 +476,8 @@ public:
 	void initialize();
 
 	void initializeTransientMembers();
+
+	void notifyLoadFromDatabase();
 
 	void notifyEnter(SceneObject* object);
 

@@ -73,11 +73,19 @@ public:
 			return;
 		}
 
+		CityManager* cityManager = server->getCityManager();
+
+		/*SortedVector<ManagedReference<ActiveArea*> > activeAreas;
+		zone->getInRangeActiveAreas(x, y, activeAreas, true);
+
+		for (int i = 0; i < activeAreas.size(); ++i) {
+			Region*
+		}*/
+
 		StructureManager* structureManager = zone->getStructureManager();
 		int result = structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
 
 		if (result == 0) {
-			CityManager* cityManager = server->getCityManager();
 			cityManager->createCity(creature, cityName, x, y);
 		}
 	}

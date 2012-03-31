@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -60,6 +60,19 @@ void CityRegion::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
+}
+
+void CityRegion::notifyLoadFromDatabase() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
 }
 
 void CityRegion::notifyEnter(SceneObject* object) {
@@ -232,6 +245,15 @@ bool CityRegion::containsPoint(float x, float y) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->containsPoint(x, y);
+}
+
+Time* CityRegion::getNextUpdateTime() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNextUpdateTime();
 }
 
 void CityRegion::addCitizen(unsigned long long citizenID) {
@@ -1185,6 +1207,11 @@ bool CityRegionImplementation::containsPoint(float x, float y) {
 	return false;
 }
 
+Time* CityRegionImplementation::getNextUpdateTime() {
+	// server/zone/objects/region/CityRegion.idl():  		return nextUpdateTime;
+	return (&nextUpdateTime);
+}
+
 void CityRegionImplementation::addCitizen(unsigned long long citizenID) {
 	// server/zone/objects/region/CityRegion.idl():  		citizenList.put(citizenID);
 	(&citizenList)->put(citizenID);
@@ -1432,6 +1459,9 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		notifyLoadFromDatabase();
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -1596,6 +1626,10 @@ void CityRegionAdapter::initialize() {
 
 void CityRegionAdapter::initializeTransientMembers() {
 	(static_cast<CityRegion*>(stub))->initializeTransientMembers();
+}
+
+void CityRegionAdapter::notifyLoadFromDatabase() {
+	(static_cast<CityRegion*>(stub))->notifyLoadFromDatabase();
 }
 
 void CityRegionAdapter::notifyEnter(SceneObject* object) {

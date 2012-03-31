@@ -48,6 +48,7 @@ object_building_player_city_cityhall_tatooine = object_building_player_city_shar
 	length = 7,
 	width = 9,
 	planetMapCategory = "cityhall",
+	zoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,
 	abilityRequired = "place_cityhall",
 	skillMods = {

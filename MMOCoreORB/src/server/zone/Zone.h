@@ -163,6 +163,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/planet/HeightMap.h"
@@ -238,6 +252,10 @@ public:
 
 	void addSceneObject(SceneObject* object);
 
+	void addCityRegionToUpdate(CityRegion* city);
+
+	void updateCityRegions();
+
 	void sendMapLocationsTo(SceneObject* player);
 
 	void dropSceneObject(SceneObject* object);
@@ -311,6 +329,8 @@ class ZoneImplementation : public SceneObjectImplementation {
 
 	ManagedReference<CreatureManager* > creatureManager;
 
+	SortedVector<ManagedReference<CityRegion* > > cityRegionUpdateVector;
+
 	ManagedWeakReference<ZoneServer* > server;
 
 	QuadTreeReference regionTree;
@@ -367,6 +387,10 @@ public:
 	float getHeight(float x, float y);
 
 	void addSceneObject(SceneObject* object);
+
+	void addCityRegionToUpdate(CityRegion* city);
+
+	void updateCityRegions();
 
 	void sendMapLocationsTo(SceneObject* player);
 
@@ -466,6 +490,10 @@ public:
 	float getHeight(float x, float y);
 
 	void addSceneObject(SceneObject* object);
+
+	void addCityRegionToUpdate(CityRegion* city);
+
+	void updateCityRegions();
 
 	void sendMapLocationsTo(SceneObject* player);
 

@@ -86,6 +86,8 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	planetManager = NULL;
 	structureManager = NULL;
+
+	setLoggingName("Zone " + name);
 }
 
 void ZoneImplementation::createContainerComponent() {
@@ -127,6 +129,8 @@ void ZoneImplementation::startManagers() {
 	structureManager->initialize();
 
 	creatureManager->initialize();
+
+	updateCityRegions();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -469,6 +473,24 @@ float ZoneImplementation::getMinY() {
 
 float ZoneImplementation::getMaxY() {
 	return planetManager->getTerrainManager()->getMax();
+}
+
+void ZoneImplementation::updateCityRegions() {
+	info("updating " + String::valueOf(cityRegionUpdateVector.size()) + " cities", true);
+
+	for (int i = 0; i < cityRegionUpdateVector.size(); ++i) {
+		CityRegion* city = cityRegionUpdateVector.get(i);
+
+		Time* nextUpdateTime = city->getNextUpdateTime();
+		int seconds = -1 * round(nextUpdateTime->miliDifference() / 1000.f);
+
+		if (seconds < 0) //If the update occurred in the past, force an immediate update.
+			seconds = 0;
+
+		city->rescheduleUpdateEvent(seconds);
+	}
+
+	cityRegionUpdateVector.removeAll();
 }
 
 bool ZoneImplementation::isWithinBoundaries(const Vector3& position) {

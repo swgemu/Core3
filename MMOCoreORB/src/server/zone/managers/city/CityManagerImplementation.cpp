@@ -12,6 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -491,6 +492,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
+	Zone* zone = NULL;
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*>(obj.get());
@@ -502,13 +504,21 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_fail_subject", params, mayor->getFirstName(), NULL);
 	}
 
+	zone = city->getZone();
+
 	city->destroyActiveAreas();
 
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != NULL) {
-		cityhall->destroyObjectFromWorld(false);
-		cityhall->destroyObjectFromDatabase(true);
+		city->setCityHall(NULL);
+
+		if (zone == NULL)
+			cityhall->getZone();
+
+		if (zone != NULL) {
+			zone->getStructureManager()->destroyStructure(cityhall);
+		}
 	}
 
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
