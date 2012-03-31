@@ -1251,7 +1251,7 @@ void PlayerObjectImplementation::doRecovery() {
 	creature->activateHAMRegeneration();
 	creature->activateStateRecovery();
 
-	if (getForcePowerMax() > 0) // Prevents packet crashing client.
+	if (getForcePowerMax() > 0  && (getForcePowerMax() - getForcePower() > 0))
 	activateForceRegen();
 
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
@@ -1482,9 +1482,6 @@ void PlayerObjectImplementation::activateForceRegen() {
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
 
-	if (getForcePower() >= getForcePowerMax())
-		return;
-
 	if (getForcePower() < 0)
 		setForcePower(0);
 
@@ -1495,7 +1492,7 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	if (forceTick < 1)
 		forceTick = 1;
-
+		
 	setForcePower(getForcePower() + forceTick);
 }
 
