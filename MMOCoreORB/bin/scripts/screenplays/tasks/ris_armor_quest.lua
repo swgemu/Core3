@@ -23,6 +23,10 @@ function ris_armor_quest_screenplay:start()
 end
 
 function ris_armor_quest_screenplay:spawnMobiles()
+	if (not isZoneEnabled("dantooine")) then
+		return 0
+	end
+	
 	local pMolNimai = spawnMobile("dantooine", "mol_nimai", 1, -6805, 126, 6022, 179, 0)
 	local molNimai = LuaSceneObject(pMolNimai)
 	molNimai:setCustomObjectName("Mol Ni'mai")
