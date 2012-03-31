@@ -1063,11 +1063,14 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	mind = MAX(0, mind - (float(attacker->getHAM(CreatureAttribute::FOCUS)) / 10.f));
 
 	if (force > 0) { // Need Force check first otherwise it can be spammed.
-		ManagedReference<PlayerObject*> playerO = attacker->getPlayerObject();
-		if (playerO->getForcePower() <= force){
-			attacker->sendSystemMessage("@jedi_spam:no_force_power");
-			return false;
-		} else playerO->setForcePower(playerO->getForcePower() - force);
+		ManagedReference<PlayerObject*> playerObject = attacker->getPlayerObject();
+		if (playerObject != NULL) {
+			if (playerObject->getForcePower() <= force) {
+				attacker->sendSystemMessage("@jedi_spam:no_force_power");
+				return false;
+			} else
+				playerObject->setForcePower(playerObject->getForcePower() - force);
+		}
 	}
 
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
@@ -1413,8 +1416,8 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 	if (targetGhost->requestedDuelTo(player)) {
 		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
 				targetPlayer->getPvpStatusBitmask()
-						| CreatureFlag::ATTACKABLE
-						| CreatureFlag::AGGRESSIVE);
+				| CreatureFlag::ATTACKABLE
+				| CreatureFlag::AGGRESSIVE);
 		player->sendMessage(pvpstat);
 
 		StringIdChatParameter stringId("duel", "accept_self");
@@ -1423,7 +1426,7 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 
 		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player,
 				player->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE
-						| CreatureFlag::AGGRESSIVE);
+				| CreatureFlag::AGGRESSIVE);
 		targetPlayer->sendMessage(pvpstat2);
 
 		StringIdChatParameter stringId2("duel", "accept_target");
