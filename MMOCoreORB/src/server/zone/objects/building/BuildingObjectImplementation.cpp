@@ -559,8 +559,6 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 					broadcastObject(object, false);
 				}
 
-				if (object->isCreatureObject())
-					onEnter(cast<CreatureObject*>(object));
 				//notifyObjectInsertedToZone(object);
 			}
 

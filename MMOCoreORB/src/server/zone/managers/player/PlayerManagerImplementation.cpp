@@ -1018,16 +1018,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	ManagedReference<SceneObject*> parent = player->getParent();
 
-	if (parent != NULL) {
-		if (parent->isCellObject()) {
-			BuildingObject* build = cast<BuildingObject*>(parent->getParent());
-
-			if (build != NULL) {
-				build->onExit(player, 0);
-			}
-		}
-	}
-
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
 	CloningBuildingObject* preDesignatedFacility = (CloningBuildingObject*)ghost->getCloningFacility();

@@ -12,7 +12,7 @@
  *	CloningBuildingObjectStub
  */
 
-enum {RPC_ISCLONINGBUILDINGOBJECT__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_};
+enum {RPC_ISCLONINGBUILDINGOBJECT__,};
 
 CloningBuildingObject::CloningBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CloningBuildingObjectImplementation* _implementation = new CloningBuildingObjectImplementation();
@@ -59,34 +59,6 @@ CloneSpawnPoint* CloningBuildingObject::getRandomSpawnPoint() {
 
 	} else
 		return _implementation->getRandomSpawnPoint();
-}
-
-void CloningBuildingObject::onEnter(CreatureObject* player) {
-	CloningBuildingObjectImplementation* _implementation = static_cast<CloningBuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ONENTER__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->onEnter(player);
-}
-
-void CloningBuildingObject::onExit(CreatureObject* player) {
-	CloningBuildingObjectImplementation* _implementation = static_cast<CloningBuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ONEXIT__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->onExit(player);
 }
 
 DistributedObjectServant* CloningBuildingObject::_getImplementation() {
@@ -248,12 +220,6 @@ CloneSpawnPoint* CloningBuildingObjectImplementation::getRandomSpawnPoint() {
 }
 }
 
-void CloningBuildingObjectImplementation::onEnter(CreatureObject* player) {
-}
-
-void CloningBuildingObjectImplementation::onExit(CreatureObject* player) {
-}
-
 /*
  *	CloningBuildingObjectAdapter
  */
@@ -272,12 +238,6 @@ void CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_ISCLONINGBUILDINGOBJECT__:
 		resp->insertBoolean(isCloningBuildingObject());
 		break;
-	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ONEXIT__CREATUREOBJECT_:
-		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -285,14 +245,6 @@ void CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 bool CloningBuildingObjectAdapter::isCloningBuildingObject() {
 	return (static_cast<CloningBuildingObject*>(stub))->isCloningBuildingObject();
-}
-
-void CloningBuildingObjectAdapter::onEnter(CreatureObject* player) {
-	(static_cast<CloningBuildingObject*>(stub))->onEnter(player);
-}
-
-void CloningBuildingObjectAdapter::onExit(CreatureObject* player) {
-	(static_cast<CloningBuildingObject*>(stub))->onExit(player);
 }
 
 /*

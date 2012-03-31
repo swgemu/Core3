@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "RevisionInfoCommand.h"
 #include "ServerInfoCommand.h"
 #include "PlayerManagerCommand.h"
-
+#include "PlayerInfoCommand.h"
 #include "ServerCommandFactory.h"
 
 class ServerCommand : public QueueCommand {
@@ -68,6 +68,7 @@ public:
 		methodFactory.registerMethod<RevisionInfoCommand>("revision");
 		methodFactory.registerMethod<ServerInfoCommand>("info");
 		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
+		methodFactory.registerMethod<PlayerInfoCommand>("playerinfo");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -123,6 +123,8 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 	bool ret = false;
 
+	SceneObject* oldParent = object->getParent();
+
 	try {
 		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
 
@@ -130,6 +132,14 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 			zone->updateActiveAreas(object);
 	} catch (...) {
 
+	}
+
+	if (oldParent == NULL) {
+		BuildingObject* building = cast<BuildingObject*>(parent.get());
+		CreatureObject* creo = cast<CreatureObject*>(object);
+
+		if (building != NULL && creo != NULL)
+			building->onEnter(creo);
 	}
 
 	if (locker != NULL)

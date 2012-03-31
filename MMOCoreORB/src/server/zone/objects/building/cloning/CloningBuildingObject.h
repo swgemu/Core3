@@ -63,10 +63,6 @@ public:
 
 	CloneSpawnPoint* getRandomSpawnPoint();
 
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -105,10 +101,6 @@ public:
 	bool isCloningBuildingObject();
 
 	CloneSpawnPoint* getRandomSpawnPoint();
-
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
 
 	WeakReference<CloningBuildingObject*> _this;
 
@@ -154,10 +146,6 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isCloningBuildingObject();
-
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
 
 };
 
