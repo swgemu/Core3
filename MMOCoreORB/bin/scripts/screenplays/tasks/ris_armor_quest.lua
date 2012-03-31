@@ -19,6 +19,11 @@ registerScreenPlay("ris_armor_quest_screenplay", true)
 --   Initialize screenplay           -
 --------------------------------------
 function ris_armor_quest_screenplay:start()
+
+	if (not isZoneEnabled("dantooine")) then	
+		return 0
+	end
+
 	self:spawnMobiles()
 end
 

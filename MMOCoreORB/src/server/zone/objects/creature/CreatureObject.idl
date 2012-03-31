@@ -74,6 +74,7 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.creature.variables.CommandQueueActionVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillList;
+include server.zone.objects.creature.variables.SkillModList;
 include server.zone.objects.creature.variables.CommandQueueAction;
 include server.zone.objects.creature.CreaturePosture;
 include server.zone.objects.creature.CreatureState;
@@ -165,7 +166,7 @@ class CreatureObject extends TangibleObject {
 	protected SkillList skillList;
 		
 	@dereferenced
-	protected DeltaVectorMap<string, long> skillModList;
+	protected SkillModList skillModList;
 		
 	@transactional
 	protected transient CommandQueueActionVector commandQueue;
@@ -786,6 +787,17 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to subtract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/subtract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addWearableSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	
 	
 	/**
 	 * Removes skill mod from the list (same as setting to 0)

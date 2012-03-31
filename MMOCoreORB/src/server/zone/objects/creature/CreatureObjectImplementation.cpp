@@ -1131,6 +1131,8 @@ void CreatureObjectImplementation::removeSkillMod(const String& skillMod,
 	if (!skillModList.contains(skillMod))
 		return;
 
+	skillModList.dropWearableSkillMod(skillMod);
+
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* msg =
 				new CreatureObjectDeltaMessage4(_this);
@@ -1142,6 +1144,8 @@ void CreatureObjectImplementation::removeSkillMod(const String& skillMod,
 	} else {
 		skillModList.drop(skillMod);
 	}
+
+
 }
 
 void CreatureObjectImplementation::addSkillMod(const String& skillMod,
@@ -1149,7 +1153,37 @@ void CreatureObjectImplementation::addSkillMod(const String& skillMod,
 	if (skillModList.contains(skillMod)) {
 		value += skillModList.get(skillMod);
 
-		if (value <= 0) {
+		if (value == 0) {
+			removeSkillMod(skillMod, notifyClient);
+			return;
+		}
+	}
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* msg =
+				new CreatureObjectDeltaMessage4(_this);
+		msg->startUpdate(0x03);
+		skillModList.set(skillMod, value, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		skillModList.set(skillMod, value);
+	}
+}
+
+void CreatureObjectImplementation::addWearableSkillMod(const String& skillMod,
+		int64 value, bool notifyClient) {
+
+	int64 wearableDelta = skillModList.addWearableSkillMod(skillMod, value);
+
+	if(wearableDelta == 0)
+		return;
+
+	if (skillModList.contains(skillMod)) {
+		value = wearableDelta + skillModList.get(skillMod);
+
+		if (value == 0) {
 			removeSkillMod(skillMod, notifyClient);
 			return;
 		}

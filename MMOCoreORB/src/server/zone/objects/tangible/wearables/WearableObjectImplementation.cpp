@@ -119,9 +119,9 @@ void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
 		int value = wearableSkillModMap.getActiveSkillModValue(name);
 
 		if (!remove)
-			player->addSkillMod(name, value, true);
+			player->addWearableSkillMod(name, value, true);
 		else
-			player->addSkillMod(name, -value, true);
+			player->addWearableSkillMod(name, -value, true);
 	}
 }
 

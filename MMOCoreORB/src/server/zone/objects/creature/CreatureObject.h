@@ -241,6 +241,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/variables/SkillList.h"
 
+#include "server/zone/objects/creature/variables/SkillModList.h"
+
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -469,6 +471,8 @@ public:
 	void removeSkill(const String& skill, bool notifyClient = true);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
 
@@ -988,7 +992,7 @@ protected:
 
 	SkillList skillList;
 
-	DeltaVectorMap<String, long long> skillModList;
+	SkillModList skillModList;
 
 	Reference<CommandQueueActionVector* > commandQueue;
 
@@ -1218,6 +1222,8 @@ public:
 	void removeSkill(const String& skill, bool notifyClient = true);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
 
@@ -1804,6 +1810,8 @@ public:
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
 
+	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient);
+
 	void removeSkillMod(const String& skillMod, bool notifyCLient);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient);
@@ -2179,6 +2187,7 @@ protected:
 	String _param0_addSkill__String_bool_;
 	String _param0_removeSkill__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;
+	String _param0_addWearableSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
 	String _param0_setMoodString__String_bool_;
