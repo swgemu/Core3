@@ -74,7 +74,8 @@ bool SchematicList::decreaseSchematicUseCount(DraftSchematic* schematic) {
 					int newQuantity = rewardedSchematics.get(i) - 1;
 					rewardedSchematics.drop(schematic);
 					rewardedSchematics.put(schematic, newQuantity);
-				} else {
+					return true;
+				} else if(rewardedSchematics.get(i) == 1) {
 					removeRewardedSchematic(schematic);
 					return true;
 				}
