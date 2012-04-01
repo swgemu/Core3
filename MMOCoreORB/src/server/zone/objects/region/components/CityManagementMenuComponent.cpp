@@ -15,8 +15,10 @@
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
-	if (city == NULL)
+	if (city == NULL) {
+		sceneObject->error("city region null in CityManagementMenuComponent::fillObjectMenuResponse");
 		return;
+	}
 
 	menuResponse->addRadialMenuItem(211, 3, "@city/city:city_info"); //City Information
 	menuResponse->addRadialMenuItemToRadialID(211, 212, 3, "@city/city:city_status"); //Status Report

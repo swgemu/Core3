@@ -67,8 +67,17 @@ void BuildingObjectImplementation::createContainerComponent() {
 void BuildingObjectImplementation::notifyLoadFromDatabase() {
 	StructureObjectImplementation::notifyLoadFromDatabase();
 
-	/*for (int i = 0; i < cel)
-	getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);*/
+	if (zone != NULL) {
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject* cell = cells.get(i);
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				SceneObject* child = cell->getContainerObject(j);
+
+				zone->updateActiveAreas(child);
+			}
+		}
+	}
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {

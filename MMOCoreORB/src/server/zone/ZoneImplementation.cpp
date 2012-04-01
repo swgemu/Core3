@@ -213,17 +213,46 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 
 	bool readlock = readLockZone && !_this->isLockedByCurrentThread();
 
+	Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
+
 	_this->rlock(readlock);
 
 	try {
 		quadTree->inRange(x, y, range, *objects);
-	}catch (...) {
+
+		for (int i = 0; i < objects->size(); ++i) {
+			SceneObject* sceneObject = cast<SceneObject*>(objects->get(i).get());
+			BuildingObject* building = dynamic_cast<BuildingObject*>(sceneObject);
+
+			if (building != NULL) {
+				for (int j = 1; j <= building->getMapCellSize(); ++j) {
+					CellObject* cell = building->getCell(j);
+
+					if (cell != NULL) {
+						for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
+							SceneObject* obj = cell->getContainerObject(h);
+
+							buildingObjects.add(obj);
+						}
+					}
+				}
+			} else if (sceneObject != NULL && sceneObject->isVehicleObject()) {
+				SceneObject* rider = sceneObject->getSlottedObject("rider");
+
+				if (rider != NULL)
+					buildingObjects.add(rider);
+			}
+		}
+	} catch (...) {
 		_this->runlock(readlock);
 
 		throw;
 	}
 
 	_this->runlock(readlock);
+
+	for (int i = 0; i < buildingObjects.size(); ++i)
+		objects->put(buildingObjects.get(i));
 
 	return objects->size();
 }

@@ -923,8 +923,8 @@ uint64 ObjectManager::getNextFreeObjectID() {
 	Locker _locker(this);
 
 	uint64 val = ++nextObjectID;
-
-	databaseManager->updateLastUsedObjectID(val);
+//	its saved every 5min, that should be enough
+//	databaseManager->updateLastUsedObjectID(val);
 
 	return val;
 }

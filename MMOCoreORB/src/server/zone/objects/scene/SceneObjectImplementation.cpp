@@ -386,6 +386,10 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 }
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		activeAreas.get(i)->notifyExit(_this);
+	}
+
 	activeAreas.removeAll();
 
 	if (zone != NULL) {
@@ -394,6 +398,8 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
 
 	}*/
+
+	//for (int i = 0; i < )
 }
 
 void SceneObjectImplementation::setObjectMenuComponent(const String& name) {
