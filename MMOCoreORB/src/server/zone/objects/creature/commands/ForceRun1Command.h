@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef FORCERUN1COMMAND_H_
 #define FORCERUN1COMMAND_H_
@@ -52,7 +52,7 @@ class ForceRun1Command : public QueueCommand {
 public:
 
 	ForceRun1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -72,7 +72,7 @@ public:
 		uint32 buffcrc3 = BuffCRC::JEDI_FORCE_RUN_3;
 
 		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2) || creature->hasBuff(buffcrc3)) {
-			creature->sendSystemMessage("jedi_spam", "force_buff_present");
+			creature->sendSystemMessage("@jedi_spam:force_buff_present");
 			return GENERALERROR;
 		}
 
@@ -82,12 +82,12 @@ public:
 
 
 		//Check for and deduct Force cost.
-		
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		
-		
+
+
 		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("jedi_spam", "no_force_power"); //"You do not have enough Force Power to peform that action.
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
 
 			return GENERALERROR;
 		}
@@ -108,10 +108,10 @@ public:
 
 		creature->addBuff(buff);
 		creature->playEffect("clienteffect/pl_force_run_self.cef", "");
-		
-		int divider = creature->getSkillMod("private_damage_divider");
-		
-		creature->setSkillModifier("private_damage_divider", (divider / 4));
+
+		/*int divider = creature->getSkillMod("private_damage_divider");
+
+		creature->addSkillMod("private_damage_divider", (divider / 4));*/
 
 		return SUCCESS;
 	}

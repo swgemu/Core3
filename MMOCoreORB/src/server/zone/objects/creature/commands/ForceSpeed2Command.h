@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef FORCESPEED2COMMAND_H_
 #define FORCESPEED2COMMAND_H_
@@ -52,7 +52,7 @@ class ForceSpeed2Command : public QueueCommand {
 public:
 
 	ForceSpeed2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -69,7 +69,7 @@ public:
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_SPEED_2;
 
 		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2)) {
-			creature->sendSystemMessage("jedi_spam", "force_buff_present");
+			creature->sendSystemMessage("@jedi_spam:force_buff_present");
 			return GENERALERROR;
 		}
 
@@ -79,17 +79,17 @@ public:
 
 
 		//Check for and deduct Force cost.
-		
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		
-		
+
+
 		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("jedi_spam", "no_force_power"); //"You do not have enough Force Power to peform that action.
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
 
 			return GENERALERROR;
 		}
 
-		 playerObject->setForcePower(playerObject->->getForcePower() - forceCost);
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 
 		StringIdChatParameter startStringId("jedi_spam", "apply_forcespeed2");
 		StringIdChatParameter endStringId("jedi_spam", "remove_forcespeed2");

@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef FORCEMEDITATECOMMAND_H_
 #define FORCEMEDITATECOMMAND_H_
@@ -51,7 +51,7 @@ class ForceMeditateCommand : public QueueCommand {
 public:
 
 	ForceMeditateCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -64,30 +64,30 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
-					return GENERALERROR;
+			return GENERALERROR;
 
-				// Meditate
-				CreatureObject* player = (CreatureObject*) creature;
+		// Meditate
+		CreatureObject* player = (CreatureObject*) creature;
 
-				if (creature->isMeditating()) {
-					player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
-					return GENERALERROR;
-				}
+		if (creature->isMeditating()) {
+			player->sendSystemMessage("@jedi_spam:already_in_meditative_state");
+			return GENERALERROR;
+		}
 
-				// Increase Force Regen times 3.
+		// Increase Force Regen times 3.
 
-				// Force Meditate Task
-				ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-				creature->sendSystemMessage("teraskasi", "med_begin");
-				player->setMeditateState();
-				creature->playEffect("clienteffect/pl_force_meditate_self.cef", "");
+		// Force Meditate Task
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		creature->sendSystemMessage("@teraskasi:med_begin");
+		player->setMeditateState();
+		creature->playEffect("clienteffect/pl_force_meditate_self.cef", "");
 
-				PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
-				player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
+		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
+		player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
 
-				return SUCCESS;
+		return SUCCESS;
 
-			}
+	}
 
 };
 

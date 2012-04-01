@@ -1708,7 +1708,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 
 		// Check POSTERCHANGE on Force Meditate...
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("teraskasi", "med_end");
+			creature->sendSystemMessage("@teraskasi:med_end");
 			creature->setMood(creature->getMoodID(), true);
 			creature->clearState(CreatureState::ALERT, true);
 		}
