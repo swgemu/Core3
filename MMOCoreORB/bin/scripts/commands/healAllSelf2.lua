@@ -43,6 +43,7 @@
 
 HealAllSelf2Command = {
         name = "healallself2",
+        defaultTime = 6.0
 }
 
 AddCommand(HealAllSelf2Command)

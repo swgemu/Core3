@@ -53,7 +53,6 @@ public:
 	HealAllSelf1Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
-		defaultTime = 6.f;
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
@@ -78,7 +77,7 @@ public:
 			return false;
 		}
 
-		if (!(creature->hasDamage(CreatureAttribute::HEALTH) && creature->hasDamage(CreatureAttribute::ACTION) && creature->hasDamage(CreatureAttribute::MIND))) {
+		if (!(creature->hasDamage(CreatureAttribute::HEALTH) || creature->hasDamage(CreatureAttribute::ACTION) || creature->hasDamage(CreatureAttribute::MIND))) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
@@ -98,7 +97,7 @@ public:
 
 
 		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 380) {
+			if (playerObject->getForcePower() <= 340) {
 				creature->sendSystemMessage("@jedi_spam:no_force_power");
 				return GENERALERROR;
 			}
@@ -141,7 +140,7 @@ public:
 
 			// Play client effect, and deduct Force Power.
 
-			forceCost = MAX(340, ((healthHealed + actionHealed + mindHealed) / 4));
+			forceCost = MAX(((healthHealed + actionHealed + mindHealed) / 4), 340);
 
 			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
