@@ -29,6 +29,7 @@
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
@@ -60,6 +61,13 @@ void PlanetManagerImplementation::initialize() {
 	loadPerformanceLocations();
 
 	loadStaticTangibleObjects();
+
+	if (zone->getZoneName() == "dathomir") {
+		ActiveArea* area = dynamic_cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/fs_village_area.iff").hashCode(), 0));
+		area->setRadius(512.f);
+		area->initializePosition(5306, 0, -4145);
+		zone->transferObject(area, -1, true);
+	}
 
 	weatherManager == NULL;
 }

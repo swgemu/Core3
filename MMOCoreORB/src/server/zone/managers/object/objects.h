@@ -99,6 +99,7 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/area/FsVillageArea.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/area/GarageArea.h"
 #include "server/zone/objects/region/Region.h"

@@ -319,6 +319,7 @@ public:
 	const static int ACTIVEAREA = 0x2000007;
 	const static int LAIRSPAWNAREA = 0x2000008;
 	const static int CAMPAREA = 0x2000009;
+	const static int FSVILLAGEAREA = 0x200000A;
 
 	const static int AIGROUP = 0x4000000;
 	const static int HERDGROUP = 0x4000001;
