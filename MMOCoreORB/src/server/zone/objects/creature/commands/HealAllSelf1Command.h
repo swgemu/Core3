@@ -53,6 +53,37 @@ public:
 	HealAllSelf1Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
+		defaultTime = 6.f;
+	}
+
+	bool canPerformSkill(CreatureObject* creature) {
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot do that while meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+
+		if (!(creature->hasDamage(CreatureAttribute::HEALTH) && creature->hasDamage(CreatureAttribute::ACTION) && creature->hasDamage(CreatureAttribute::MIND))) {
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
+			return false;
+		}
+
+		return true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -63,7 +94,62 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+
+		if (playerObject != NULL) {
+			if (playerObject->getForcePower() <= 380) {
+				creature->sendSystemMessage("@jedi_spam:no_force_power");
+				return GENERALERROR;
+			}
+
+			// At this point, the player has enough Force... Can they perform skill?
+
+			if (!canPerformSkill(creature))
+				return GENERALERROR;
+
+
+			int forceCost = 0;
+
+			// Lets see how much healing they are doing.
+
+			uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, 500);
+			uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, 500);
+			uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 500);
+
+
+
+			// Send system message(s).
+
+
+			StringIdChatParameter message1("jedi_spam", "heal_self");
+			message1.setDI(healthHealed);
+			message1.setTO("@jedi_spam:health_damage");
+			creature->sendSystemMessage(message1);
+
+
+			StringIdChatParameter message2("jedi_spam", "heal_self");
+			message2.setDI(actionHealed);
+			message2.setTO("@jedi_spam:action_damage");
+			creature->sendSystemMessage(message2);
+
+			StringIdChatParameter message3("jedi_spam", "heal_self");
+			message3.setDI(mindHealed);
+			message3.setTO("@jedi_spam:mind_damage");
+			creature->sendSystemMessage(message3);
+
+
+			// Play client effect, and deduct Force Power.
+
+			forceCost = MAX(340, ((healthHealed + actionHealed + mindHealed) / 4));
+
+			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
 		return SUCCESS;
+		}
+
+		return GENERALERROR;
 	}
 
 };
