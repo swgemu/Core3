@@ -63,8 +63,31 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
-	}
+		if (!creature->isPlayerCreature())
+					return GENERALERROR;
+
+				// Meditate
+				CreatureObject* player = (CreatureObject*) creature;
+
+				if (creature->isMeditating()) {
+					player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+					return GENERALERROR;
+				}
+
+				// Increase Force Regen times 3.
+
+				// Force Meditate Task
+				ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+				creature->sendSystemMessage("teraskasi", "med_begin");
+				player->setMeditateState();
+				creature->playEffect("clienteffect/pl_force_meditate_self.cef", "");
+
+				PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
+				player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
+
+				return SUCCESS;
+
+			}
 
 };
 

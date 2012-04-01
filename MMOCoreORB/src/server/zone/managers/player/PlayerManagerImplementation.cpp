@@ -46,6 +46,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
+
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/events/MeditateTask.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
@@ -1703,6 +1704,13 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		Reference<LogoutTask*> logoutTask = (LogoutTask*) creature->getPendingTask("logout");
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
+		}
+
+		// Check POSTERCHANGE on Force Meditate...
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("teraskasi", "med_end");
+			creature->setMood(creature->getMoodID(), true);
+			creature->clearState(CreatureState::ALERT, true);
 		}
 	}
 

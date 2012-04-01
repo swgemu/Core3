@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FORCERUN3COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
 
 class ForceRun3Command : public QueueCommand {
 public:
@@ -62,6 +63,49 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+
+		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_RUN_1;
+		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_RUN_2;
+		uint32 buffcrc3 = BuffCRC::JEDI_FORCE_RUN_3;
+
+		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2) || creature->hasBuff(buffcrc3)) {
+			creature->sendSystemMessage("jedi_spam", "force_buff_present");
+			return GENERALERROR;
+		}
+
+
+		// Force cost of skill.
+		int forceCost = 600;
+
+
+		//Check for and deduct Force cost.
+		
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		
+		
+		if (playerObject->getForcePower() <= forceCost) {
+			creature->sendSystemMessage("jedi_spam", "no_force_power"); //"You do not have enough Force Power to peform that action.
+
+			return GENERALERROR;
+		}
+
+		 playerObject->setForcePower(playerObject->->getForcePower() - forceCost);
+
+		StringIdChatParameter startStringId("jedi_spam", "apply_forcerun3");
+		StringIdChatParameter endStringId("jedi_spam", "remove_forcerun3");
+
+		int duration = 120;
+
+		ManagedReference<Buff*> buff = new Buff(creature, buffcrc3, duration, BuffType::JEDI);
+		buff->setSpeedMultiplierMod(3.5f);
+		buff->setAccelerationMultiplierMod(3.5f);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+		buff->setSkillModifier("force_run", 3);
+
+		creature->addBuff(buff);
+		creature->playEffect("clienteffect/pl_force_run_self.cef", "");
 
 		return SUCCESS;
 	}
