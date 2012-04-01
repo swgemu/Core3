@@ -197,7 +197,7 @@ class StructureObject extends TangibleObject {
 	public boolean isOnEntryList(CreatureObject player) {
 		return structurePermissionList.isOnPermissionList("ENTRY", player.getFirstName())
 			|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
-			|| player.getPlayerObject().isPrivileged();
+			|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
 	}
 	
 	/**

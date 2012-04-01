@@ -1198,8 +1198,8 @@ bool StructureObjectImplementation::isOnAdminList(const String& firstName) {
 }
 
 bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
-	// server/zone/objects/structure/StructureObject.idl():  			|| player.getPlayerObject().isPrivileged();
-	return (&structurePermissionList)->isOnPermissionList("ENTRY", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
+	// server/zone/objects/structure/StructureObject.idl():  			|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	return (&structurePermissionList)->isOnPermissionList("ENTRY", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged());
 }
 
 bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
