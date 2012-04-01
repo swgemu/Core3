@@ -174,13 +174,6 @@ void FactoryObjectImplementation::sendInsertManuSui(CreatureObject* player){
 	player->sendMessage(schematics->generateMessage());
 }
 
-void FactoryObjectImplementation::updateInstallationWork() {
-	Time timeToWorkTill;
-	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
-
-	if(shutdownAfterWork)
-		stopFactory("", "", "", -1);
-}
 /*
  * Opens a SUI with all manufacturing schematics available for the player to insert into factory
  */
@@ -468,10 +461,31 @@ void FactoryObjectImplementation::createNewObject() {
 
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
-		stopFactory("manf_done", getDisplayedName(), "",
-				currentRunCount);
+		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
+		return;
+	}
 
-	} else if (pending != NULL)
+	/// Shutdown when out of power or maint
+	Time timeToWorkTill;
+	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
+
+	if(shutdownAfterWork) {
+
+		Time currentTime;
+
+		float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
+
+		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
+		if (energyAmount > surplusPower) {
+			stopFactory("manf_no_power", getDisplayedName(), "", -1);
+			return;
+		}
+
+		stopFactory("manf_done_sub", "", "", -1);
+		return;
+	}
+
+	if (pending != NULL)
 		pending->reschedule(timer * 1000);
 	else
 		stopFactory("manf_error", "", "", -1);

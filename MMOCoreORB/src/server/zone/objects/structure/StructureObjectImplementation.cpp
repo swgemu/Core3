@@ -121,7 +121,7 @@ String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 
 //Only gets called when maintenance has been changed by an outside source
 void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
-	if (getMaintenanceRate() == 0) {
+	if (getMaintenanceRate() <= 0) {
 		//No maintenance cost, structure maintenance cannot expire.
 		return;
 	}
@@ -144,7 +144,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
 
-	if(getBaseMaintenanceRate() == 0 && getBasePowerRate() == 0) {
+	if(getBaseMaintenanceRate() == 0) {
 		return;
 	}
 
@@ -205,9 +205,8 @@ void StructureObjectImplementation::updateStructureStatus() {
 	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
 
 	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
-	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
 
-	if (maintenanceDue > 0 || powerDue > 0) {
+	if (maintenanceDue > 0) {
 		//Only update last time if we actually progressed to get correct consumption.
 		lastUpdateTimestamp.updateToCurrentTime();
 	}
@@ -221,10 +220,6 @@ void StructureObjectImplementation::updateStructureStatus() {
 	} else {
 		setConditionDamage(0, true);
 	}
-
-	if (surplusPower > 0.f)
-		surplusPower -= powerDue;
-	//else if installation, shutdown.
 }
 
 bool StructureObjectImplementation::isDecayed() {

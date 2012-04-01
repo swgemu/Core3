@@ -93,8 +93,6 @@ public:
 
 	void createChildObjects();
 
-	void updateInstallationWork();
-
 	void sendInsertManuSui(CreatureObject* player);
 
 	void sendIngredientsNeededSui(CreatureObject* player);
@@ -163,8 +161,6 @@ public:
 	bool isFactory();
 
 	void createChildObjects();
-
-	void updateInstallationWork();
 
 	void sendInsertManuSui(CreatureObject* player);
 
@@ -250,8 +246,6 @@ public:
 	bool isFactory();
 
 	void createChildObjects();
-
-	void updateInstallationWork();
 
 	void sendInsertManuSui(CreatureObject* player);
 

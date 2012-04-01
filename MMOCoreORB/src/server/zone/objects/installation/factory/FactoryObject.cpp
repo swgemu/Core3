@@ -16,7 +16,7 @@
  *	FactoryObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
@@ -102,19 +102,6 @@ void FactoryObject::createChildObjects() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createChildObjects();
-}
-
-void FactoryObject::updateInstallationWork() {
-	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATEINSTALLATIONWORK__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateInstallationWork();
 }
 
 void FactoryObject::sendInsertManuSui(CreatureObject* player) {
@@ -455,9 +442,6 @@ void FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
-	case RPC_UPDATEINSTALLATIONWORK__:
-		updateInstallationWork();
-		break;
 	case RPC_SENDINSERTMANUSUI__CREATUREOBJECT_:
 		sendInsertManuSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		break;
@@ -501,10 +485,6 @@ bool FactoryObjectAdapter::isFactory() {
 
 void FactoryObjectAdapter::createChildObjects() {
 	(static_cast<FactoryObject*>(stub))->createChildObjects();
-}
-
-void FactoryObjectAdapter::updateInstallationWork() {
-	(static_cast<FactoryObject*>(stub))->updateInstallationWork();
 }
 
 void FactoryObjectAdapter::sendInsertManuSui(CreatureObject* player) {

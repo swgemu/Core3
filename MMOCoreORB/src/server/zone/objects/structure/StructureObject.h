@@ -222,13 +222,13 @@ public:
 
 	void setSurplusMaintenance(int surplus);
 
-	void addMaintenance(int add);
+	void addMaintenance(float add);
 
 	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
-	void addPower(int add);
+	void addPower(float add);
 
 	bool isDecaying();
 
@@ -400,13 +400,13 @@ public:
 
 	void setSurplusMaintenance(int surplus);
 
-	void addMaintenance(int add);
+	void addMaintenance(float add);
 
 	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
-	void addPower(int add);
+	void addPower(float add);
 
 	bool isDecaying();
 
@@ -559,13 +559,13 @@ public:
 
 	void setSurplusMaintenance(int surplus);
 
-	void addMaintenance(int add);
+	void addMaintenance(float add);
 
 	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
 
-	void addPower(int add);
+	void addPower(float add);
 
 	bool isDecaying();
 

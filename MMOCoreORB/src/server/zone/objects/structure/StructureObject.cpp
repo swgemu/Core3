@@ -22,7 +22,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_SCHEDULEMAINTENANCETASK__INT_,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNERCREATUREOBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_SETMAINTENANCEREDUCED__BOOL_,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_ISDECAYING__,RPC_ISDECAYED__,RPC_GETDECAYPERCENTAGE__,RPC_ISCONDEMNED__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISCAMPSTRUCTURE__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_SCHEDULEMAINTENANCETASK__INT_,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNERCREATUREOBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_SETMAINTENANCEREDUCED__BOOL_,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__FLOAT_,RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__FLOAT_,RPC_ISDECAYING__,RPC_ISDECAYED__,RPC_GETDECAYPERCENTAGE__,RPC_ISCONDEMNED__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISCAMPSTRUCTURE__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -669,14 +669,14 @@ void StructureObject::setSurplusMaintenance(int surplus) {
 		_implementation->setSurplusMaintenance(surplus);
 }
 
-void StructureObject::addMaintenance(int add) {
+void StructureObject::addMaintenance(float add) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDMAINTENANCE__INT_);
-		method.addSignedIntParameter(add);
+		DistributedMethod method(this, RPC_ADDMAINTENANCE__FLOAT_);
+		method.addFloatParameter(add);
 
 		method.executeWithVoidReturn();
 	} else
@@ -713,14 +713,14 @@ void StructureObject::setSurplusPower(int surplus) {
 		_implementation->setSurplusPower(surplus);
 }
 
-void StructureObject::addPower(int add) {
+void StructureObject::addPower(float add) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDPOWER__INT_);
-		method.addSignedIntParameter(add);
+		DistributedMethod method(this, RPC_ADDPOWER__FLOAT_);
+		method.addFloatParameter(add);
 
 		method.executeWithVoidReturn();
 	} else
@@ -1304,7 +1304,7 @@ void StructureObjectImplementation::setSurplusMaintenance(int surplus) {
 	surplusMaintenance = surplus;
 }
 
-void StructureObjectImplementation::addMaintenance(int add) {
+void StructureObjectImplementation::addMaintenance(float add) {
 	// server/zone/objects/structure/StructureObject.idl():  		surplusMaintenance += add;
 	surplusMaintenance += add;
 }
@@ -1314,7 +1314,7 @@ void StructureObjectImplementation::setSurplusPower(int surplus) {
 	surplusPower = surplus;
 }
 
-void StructureObjectImplementation::addPower(int add) {
+void StructureObjectImplementation::addPower(float add) {
 	// server/zone/objects/structure/StructureObject.idl():  		surplusPower += add;
 	surplusPower += add;
 }
@@ -1495,8 +1495,8 @@ void StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getSignedIntParameter());
 		break;
-	case RPC_ADDMAINTENANCE__INT_:
-		addMaintenance(inv->getSignedIntParameter());
+	case RPC_ADDMAINTENANCE__FLOAT_:
+		addMaintenance(inv->getFloatParameter());
 		break;
 	case RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_:
 		payMaintenance(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
@@ -1504,8 +1504,8 @@ void StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SETSURPLUSPOWER__INT_:
 		setSurplusPower(inv->getSignedIntParameter());
 		break;
-	case RPC_ADDPOWER__INT_:
-		addPower(inv->getSignedIntParameter());
+	case RPC_ADDPOWER__FLOAT_:
+		addPower(inv->getFloatParameter());
 		break;
 	case RPC_ISDECAYING__:
 		resp->insertBoolean(isDecaying());
@@ -1720,7 +1720,7 @@ void StructureObjectAdapter::setSurplusMaintenance(int surplus) {
 	(static_cast<StructureObject*>(stub))->setSurplusMaintenance(surplus);
 }
 
-void StructureObjectAdapter::addMaintenance(int add) {
+void StructureObjectAdapter::addMaintenance(float add) {
 	(static_cast<StructureObject*>(stub))->addMaintenance(add);
 }
 
@@ -1732,7 +1732,7 @@ void StructureObjectAdapter::setSurplusPower(int surplus) {
 	(static_cast<StructureObject*>(stub))->setSurplusPower(surplus);
 }
 
-void StructureObjectAdapter::addPower(int add) {
+void StructureObjectAdapter::addPower(float add) {
 	(static_cast<StructureObject*>(stub))->addPower(add);
 }
 

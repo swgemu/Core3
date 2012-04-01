@@ -57,8 +57,6 @@ class FactoryObject extends InstallationObject {
 	 */
 	public native void createChildObjects();
 
-	public native void updateInstallationWork();
-
 	/**
 	 * Handles sending the SUI full of manufacturing schematics
 	 * that will work in this station
