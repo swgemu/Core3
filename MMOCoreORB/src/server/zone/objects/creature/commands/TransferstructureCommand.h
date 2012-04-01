@@ -99,7 +99,7 @@ public:
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( targetObject.get());
 
-		if (structure->isOnBanList(targetCreature->getFirstName())) {
+		if (structure->isOnBanList(targetCreature)) {
 			creature->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banend player.
 			return GENERALERROR;
 		}

@@ -83,7 +83,7 @@ public:
 		try {
 			Locker clocker(inso, player);
 
-			if (inso->isOnAdminList(player->getFirstName()) && inso->isInRange(player, 20))
+			if (inso->isOnAdminList(player) && inso->isInRange(player, 20))
 				inso->setOperating(true);
 			else
 				player->sendSystemMessage("You are too far.");

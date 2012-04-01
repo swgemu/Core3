@@ -17,7 +17,7 @@ void FactoryObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	FactoryObject* factory = cast<FactoryObject*>(sceneObject);
 
-	if (!factory->isOnAdminList(player->getFirstName()))
+	if (!factory->isOnAdminList(player))
 		return;
 
 	InstallationObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -46,7 +46,7 @@ int FactoryObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	FactoryObject* factory = cast<FactoryObject*>(sceneObject);
 
-	if (!factory->isOnAdminList(player->getFirstName()))
+	if (!factory->isOnAdminList(player))
 		return 1;
 
 	switch (selectedID) {

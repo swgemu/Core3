@@ -141,17 +141,7 @@ class BuildingObject extends StructureObject {
 	 * @param firstName The name of the player.
 	 * @return Returns true if allowed to enter.
 	 */
-	public boolean isAllowedEntry(final string firstName) {
-		if (isOnBanList(firstName))
-			return false;
-		
-		if (isPrivateStructure() && !isOnEntryList(firstName))
-			return false;
-		
-		//TODO: Add AccessFee entry permissions.
-		
-		return true;
-	}
+	public native boolean isAllowedEntry(CreatureObject player);
 	
 	/**
 	 * Gets called when the structure has been created;

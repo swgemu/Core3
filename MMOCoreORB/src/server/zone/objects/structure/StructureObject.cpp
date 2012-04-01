@@ -22,7 +22,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_SCHEDULEMAINTENANCETASK__INT_,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNERCREATUREOBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_SETMAINTENANCEREDUCED__BOOL_,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__FLOAT_,RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__FLOAT_,RPC_ISDECAYING__,RPC_ISDECAYED__,RPC_GETDECAYPERCENTAGE__,RPC_ISCONDEMNED__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISCAMPSTRUCTURE__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_SCHEDULEMAINTENANCETASK__INT_,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__CREATUREOBJECT_,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__CREATUREOBJECT_,RPC_ISONBANLIST__CREATUREOBJECT_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__CREATUREOBJECT_,RPC_ISONPERMISSIONLIST__STRING_CREATUREOBJECT_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNERCREATUREOBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_SETMAINTENANCEREDUCED__BOOL_,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__FLOAT_,RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__FLOAT_,RPC_ISDECAYING__,RPC_ISDECAYED__,RPC_GETDECAYPERCENTAGE__,RPC_ISCONDEMNED__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISCAMPSTRUCTURE__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -172,75 +172,103 @@ void StructureObject::updateStructureStatus() {
 		_implementation->updateStructureStatus();
 }
 
-bool StructureObject::isOnAdminList(const String& playerName) {
+bool StructureObject::isOnAdminList(CreatureObject* player) {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISONADMINLIST__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOnAdminList(player);
+}
+
+bool StructureObject::isOnAdminList(const String& firstName) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_ISONADMINLIST__STRING_);
-		method.addAsciiParameter(playerName);
+		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOnAdminList(playerName);
+		return _implementation->isOnAdminList(firstName);
 }
 
-bool StructureObject::isOnEntryList(const String& playerName) {
+bool StructureObject::isOnEntryList(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISONENTRYLIST__STRING_);
-		method.addAsciiParameter(playerName);
+		DistributedMethod method(this, RPC_ISONENTRYLIST__CREATUREOBJECT_);
+		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOnEntryList(playerName);
+		return _implementation->isOnEntryList(player);
 }
 
-bool StructureObject::isOnBanList(const String& playerName) {
+bool StructureObject::isOnBanList(CreatureObject* player) {
+	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISONBANLIST__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOnBanList(player);
+}
+
+bool StructureObject::isOnBanList(const String& firstName) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_ISONBANLIST__STRING_);
-		method.addAsciiParameter(playerName);
+		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOnBanList(playerName);
+		return _implementation->isOnBanList(firstName);
 }
 
-bool StructureObject::isOnHopperList(const String& playerName) {
+bool StructureObject::isOnHopperList(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISONHOPPERLIST__STRING_);
-		method.addAsciiParameter(playerName);
+		DistributedMethod method(this, RPC_ISONHOPPERLIST__CREATUREOBJECT_);
+		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOnHopperList(playerName);
+		return _implementation->isOnHopperList(player);
 }
 
-bool StructureObject::isOnPermissionList(const String& listName, const String& playerName) {
+bool StructureObject::isOnPermissionList(const String& listName, CreatureObject* player) {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISONPERMISSIONLIST__STRING_STRING_);
+		DistributedMethod method(this, RPC_ISONPERMISSIONLIST__STRING_CREATUREOBJECT_);
 		method.addAsciiParameter(listName);
-		method.addAsciiParameter(playerName);
+		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOnPermissionList(listName, playerName);
+		return _implementation->isOnPermissionList(listName, player);
 }
 
 bool StructureObject::isOwnerOf(SceneObject* obj) {
@@ -1159,29 +1187,39 @@ bool StructureObjectImplementation::checkRequisitesForPlacement(CreatureObject* 
 	return true;
 }
 
-bool StructureObjectImplementation::isOnAdminList(const String& playerName) {
-	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList("ADMIN", playerName);
-	return (&structurePermissionList)->isOnPermissionList("ADMIN", playerName);
+bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
+	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
+	return (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
 }
 
-bool StructureObjectImplementation::isOnEntryList(const String& playerName) {
-	// server/zone/objects/structure/StructureObject.idl():  			|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
-	return (&structurePermissionList)->isOnPermissionList("ENTRY", playerName) || (&structurePermissionList)->isOnPermissionList("ADMIN", playerName);
+bool StructureObjectImplementation::isOnAdminList(const String& firstName) {
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList("ADMIN", firstName);
+	return (&structurePermissionList)->isOnPermissionList("ADMIN", firstName);
 }
 
-bool StructureObjectImplementation::isOnBanList(const String& playerName) {
-	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList("BAN", playerName);
-	return (&structurePermissionList)->isOnPermissionList("BAN", playerName);
+bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
+	// server/zone/objects/structure/StructureObject.idl():  			|| player.getPlayerObject().isPrivileged();
+	return (&structurePermissionList)->isOnPermissionList("ENTRY", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
 }
 
-bool StructureObjectImplementation::isOnHopperList(const String& playerName) {
-	// server/zone/objects/structure/StructureObject.idl():  		|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
-	return (&structurePermissionList)->isOnPermissionList("HOPPER", playerName) || (&structurePermissionList)->isOnPermissionList("ADMIN", playerName);
+bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
+	// server/zone/objects/structure/StructureObject.idl():  		&& !player.getPlayerObject().isPrivileged();
+	return (&structurePermissionList)->isOnPermissionList("BAN", player->getFirstName()) && !player->getPlayerObject()->isPrivileged();
 }
 
-bool StructureObjectImplementation::isOnPermissionList(const String& listName, const String& playerName) {
-	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList(listName, playerName);
-	return (&structurePermissionList)->isOnPermissionList(listName, playerName);
+bool StructureObjectImplementation::isOnBanList(const String& firstName) {
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList("BAN", firstName);
+	return (&structurePermissionList)->isOnPermissionList("BAN", firstName);
+}
+
+bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
+	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
+	return (&structurePermissionList)->isOnPermissionList("HOPPER", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
+}
+
+bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) {
+	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
+	return (&structurePermissionList)->isOnPermissionList(listName, player->getFirstName()) || player->getPlayerObject()->isPrivileged();
 }
 
 bool StructureObjectImplementation::isOnAccessList(SceneObject* obj) {
@@ -1387,20 +1425,26 @@ void StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_UPDATESTRUCTURESTATUS__:
 		updateStructureStatus();
 		break;
+	case RPC_ISONADMINLIST__CREATUREOBJECT_:
+		resp->insertBoolean(isOnAdminList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
 	case RPC_ISONADMINLIST__STRING_:
 		resp->insertBoolean(isOnAdminList(inv->getAsciiParameter(_param0_isOnAdminList__String_)));
 		break;
-	case RPC_ISONENTRYLIST__STRING_:
-		resp->insertBoolean(isOnEntryList(inv->getAsciiParameter(_param0_isOnEntryList__String_)));
+	case RPC_ISONENTRYLIST__CREATUREOBJECT_:
+		resp->insertBoolean(isOnEntryList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
+	case RPC_ISONBANLIST__CREATUREOBJECT_:
+		resp->insertBoolean(isOnBanList(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISONBANLIST__STRING_:
 		resp->insertBoolean(isOnBanList(inv->getAsciiParameter(_param0_isOnBanList__String_)));
 		break;
-	case RPC_ISONHOPPERLIST__STRING_:
-		resp->insertBoolean(isOnHopperList(inv->getAsciiParameter(_param0_isOnHopperList__String_)));
+	case RPC_ISONHOPPERLIST__CREATUREOBJECT_:
+		resp->insertBoolean(isOnHopperList(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
-	case RPC_ISONPERMISSIONLIST__STRING_STRING_:
-		resp->insertBoolean(isOnPermissionList(inv->getAsciiParameter(_param0_isOnPermissionList__String_String_), inv->getAsciiParameter(_param1_isOnPermissionList__String_String_)));
+	case RPC_ISONPERMISSIONLIST__STRING_CREATUREOBJECT_:
+		resp->insertBoolean(isOnPermissionList(inv->getAsciiParameter(_param0_isOnPermissionList__String_CreatureObject_), static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_ISOWNEROF__SCENEOBJECT_:
 		resp->insertBoolean(isOwnerOf(static_cast<SceneObject*>(inv->getObjectParameter())));
@@ -1576,24 +1620,32 @@ void StructureObjectAdapter::updateStructureStatus() {
 	(static_cast<StructureObject*>(stub))->updateStructureStatus();
 }
 
-bool StructureObjectAdapter::isOnAdminList(const String& playerName) {
-	return (static_cast<StructureObject*>(stub))->isOnAdminList(playerName);
+bool StructureObjectAdapter::isOnAdminList(CreatureObject* player) {
+	return (static_cast<StructureObject*>(stub))->isOnAdminList(player);
 }
 
-bool StructureObjectAdapter::isOnEntryList(const String& playerName) {
-	return (static_cast<StructureObject*>(stub))->isOnEntryList(playerName);
+bool StructureObjectAdapter::isOnAdminList(const String& firstName) {
+	return (static_cast<StructureObject*>(stub))->isOnAdminList(firstName);
 }
 
-bool StructureObjectAdapter::isOnBanList(const String& playerName) {
-	return (static_cast<StructureObject*>(stub))->isOnBanList(playerName);
+bool StructureObjectAdapter::isOnEntryList(CreatureObject* player) {
+	return (static_cast<StructureObject*>(stub))->isOnEntryList(player);
 }
 
-bool StructureObjectAdapter::isOnHopperList(const String& playerName) {
-	return (static_cast<StructureObject*>(stub))->isOnHopperList(playerName);
+bool StructureObjectAdapter::isOnBanList(CreatureObject* player) {
+	return (static_cast<StructureObject*>(stub))->isOnBanList(player);
 }
 
-bool StructureObjectAdapter::isOnPermissionList(const String& listName, const String& playerName) {
-	return (static_cast<StructureObject*>(stub))->isOnPermissionList(listName, playerName);
+bool StructureObjectAdapter::isOnBanList(const String& firstName) {
+	return (static_cast<StructureObject*>(stub))->isOnBanList(firstName);
+}
+
+bool StructureObjectAdapter::isOnHopperList(CreatureObject* player) {
+	return (static_cast<StructureObject*>(stub))->isOnHopperList(player);
+}
+
+bool StructureObjectAdapter::isOnPermissionList(const String& listName, CreatureObject* player) {
+	return (static_cast<StructureObject*>(stub))->isOnPermissionList(listName, player);
 }
 
 bool StructureObjectAdapter::isOwnerOf(SceneObject* obj) {

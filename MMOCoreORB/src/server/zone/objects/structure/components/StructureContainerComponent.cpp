@@ -12,9 +12,7 @@
 bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
 	StructureObject* building = dynamic_cast<StructureObject*>(sceneObject);
 
-	String firstName = creature->getFirstName();
-
-	if (building->isOwnerOf(creature) || building->isOnAdminList(firstName))
+	if (building->isOwnerOf(creature) || building->isOnAdminList(creature))
 		return true;
 
 	if (permission == ContainerPermissions::OPEN && building->isStaticObject())

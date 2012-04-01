@@ -72,7 +72,7 @@ void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
 
 	if(building != NULL && !isASubChildOf(player)) {
-		if(building->isOnAdminList(player->getFirstName()) && getSlottedObject("ingredient_hopper") != NULL) {
+		if(building->isOnAdminList(player) && getSlottedObject("ingredient_hopper") != NULL) {
 			menuResponse->addRadialMenuItem(68, 3, "@ui_radial:craft_hopper_input"); //Open
 		}
 	}
@@ -85,7 +85,7 @@ int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(getRootParent());
 
 		if(building != NULL && !isASubChildOf(player)) {
-			if(building->isOnAdminList(player->getFirstName()))
+			if(building->isOnAdminList(player))
 				sendInputHopper(player);
 		}
 	}

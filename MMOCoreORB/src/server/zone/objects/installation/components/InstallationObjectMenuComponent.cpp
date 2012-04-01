@@ -19,7 +19,7 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 
 	InstallationObject* installation = cast<InstallationObject*>(sceneObject);
 
-	if (!installation->isOnAdminList(player->getFirstName()))
+	if (!installation->isOnAdminList(player))
 		return;
 
 	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management");
@@ -48,7 +48,7 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 	if (zone == NULL)
 		return 1;
 
-	if (!installation->isOnAdminList(player->getFirstName()))
+	if (!installation->isOnAdminList(player))
 		return 1;
 
 	ManagedReference<StructureManager*> structureManager = zone->getStructureManager();

@@ -70,7 +70,7 @@ void FactoryObjectImplementation::createChildObjects() {
 void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationObjectImplementation::fillAttributeList(alm, object);
 
-	if (operating && isOnAdminList(object->getFirstName())) {
+	if (operating && isOnAdminList(object)) {
 
 		ManagedReference<ManufactureSchematic*> schematic =
 				dynamic_cast<ManufactureSchematic*>(getContainerObject(0));

@@ -54,7 +54,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	if (isOnAdminList(object->getFirstName())) {
+	if (isOnAdminList(object)) {
 
 		//Add the owner name to the examine window.
 		ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
@@ -86,7 +86,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 
 		CreatureObject* creo = cast<CreatureObject*>( scno.get());
 
-		if(isOnAdminList(creo->getFirstName()))
+		if(isOnAdminList(creo))
 			scno->sendMessage(message->clone());
 	}
 

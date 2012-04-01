@@ -174,8 +174,19 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for admin permission.
 	 * @return Returns true if the player name has admin permissions.
 	 */
-	public boolean isOnAdminList(final string playerName) {
-		return structurePermissionList.isOnPermissionList("ADMIN", playerName);
+	public boolean isOnAdminList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName()) 
+		|| player.getPlayerObject().isPrivileged();
+	}
+	
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
+	public boolean isOnAdminList(final string firstName) {
+		return structurePermissionList.isOnPermissionList("ADMIN", firstName);
 	}
 	
 	/**
@@ -183,9 +194,10 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for entry permission.
 	 * @return Returns true if the player name has entry permissions.
 	 */
-	public boolean isOnEntryList(final string playerName) {
-		return structurePermissionList.isOnPermissionList("ENTRY", playerName)
-			|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
+	public boolean isOnEntryList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("ENTRY", player.getFirstName())
+			|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
+			|| player.getPlayerObject().isPrivileged();
 	}
 	
 	/**
@@ -193,8 +205,19 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for ban permission.
 	 * @return Returns true if the player name has ban permissions.
 	 */
-	public boolean isOnBanList(final string playerName) {
-		return structurePermissionList.isOnPermissionList("BAN", playerName);
+	public boolean isOnBanList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("BAN", player.getFirstName())
+		&& !player.getPlayerObject().isPrivileged();
+	}
+	
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
+	public boolean isOnBanList(final string firstName) {
+		return structurePermissionList.isOnPermissionList("BAN", firstName);
 	}
 	
 	/**
@@ -202,9 +225,10 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for hopper permission.
 	 * @return Returns true if the player name has hopper permissions.
 	 */
-	public boolean isOnHopperList(final string playerName) {
-		return structurePermissionList.isOnPermissionList("HOPPER", playerName)
-		|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
+	public boolean isOnHopperList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("HOPPER", player.getFirstName())
+		|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
+		|| player.getPlayerObject().isPrivileged();
 	}
 	
 	/**
@@ -213,8 +237,9 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check.
 	 * @return Returns true if the player name was found on the list.
 	 */
-	public boolean isOnPermissionList(final string listName, final string playerName) {
-		return structurePermissionList.isOnPermissionList(listName, playerName);
+	public boolean isOnPermissionList(final string listName, CreatureObject player) {
+		return structurePermissionList.isOnPermissionList(listName, player.getFirstName())
+		|| player.getPlayerObject().isPrivileged();
 	}
 	
 	public native boolean isOwnerOf(SceneObject obj);

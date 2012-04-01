@@ -18,7 +18,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 
 void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!isOnAdminList(player->getFirstName()))
+	if (!isOnAdminList(player))
 		return;
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
@@ -27,7 +27,7 @@ void GeneratorObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)->getFirstName()) || getZone() == NULL)
+	if (!player->isPlayerCreature() || !isOnAdminList(cast<CreatureObject*>(player)) || getZone() == NULL)
 		return;
 
 	addOperator(cast<CreatureObject*>(player));
@@ -48,7 +48,7 @@ void GeneratorObjectImplementation::synchronizedUIStopListen(SceneObject* player
 }
 
 int GeneratorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (!isOnAdminList(player->getFirstName()))
+	if (!isOnAdminList(player))
 		return 1;
 
 	switch (selectedID) {

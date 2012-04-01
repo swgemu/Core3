@@ -61,7 +61,7 @@ void StructureDeedImplementation::fillAttributeList(AttributeListMessage* alm, C
 		alm->insertAttribute("examine_hoppersize", String::valueOf((int)hopperSizeMax));
 
 	if (extractionRate > 0)
-		alm->insertAttribute("examine_extractionrate", String::valueOf((int) extractionRate));
+		alm->insertAttribute("examine_extractionrate", String::valueOf(Math::getPrecision(extractionRate, 2)));
 
 	for (int i = 0; i < structureTemplate->getTotalAllowedZones(); ++i) {
 		String zoneName = structureTemplate->getAllowedZone(i);

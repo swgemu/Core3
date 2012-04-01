@@ -89,7 +89,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player->isCreatureObject() && parent != NULL && getParent()->isBuildingObject()) {
 		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>( player);
 
-		allowEntry = (cast<BuildingObject*>(parent.get()))->isAllowedEntry(creature->getFirstName());
+		allowEntry = (cast<BuildingObject*>(parent.get()))->isAllowedEntry(creature);
 	}
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);

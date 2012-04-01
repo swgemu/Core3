@@ -73,7 +73,7 @@ public:
 
 		Locker clocker(building, creature);
 
-		if (!building->isOnAdminList(creature->getFirstName())) {
+		if (!building->isOnAdminList(creature)) {
 			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
 			return INSUFFICIENTPERMISSION;
 		}

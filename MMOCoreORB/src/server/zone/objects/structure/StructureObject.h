@@ -150,15 +150,19 @@ public:
 
 	void updateStructureStatus();
 
-	bool isOnAdminList(const String& playerName);
+	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnEntryList(const String& playerName);
+	bool isOnAdminList(const String& firstName);
 
-	bool isOnBanList(const String& playerName);
+	bool isOnEntryList(CreatureObject* player);
 
-	bool isOnHopperList(const String& playerName);
+	bool isOnBanList(CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& playerName);
+	bool isOnBanList(const String& firstName);
+
+	bool isOnHopperList(CreatureObject* player);
+
+	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -328,15 +332,19 @@ public:
 
 	virtual void updateStructureStatus();
 
-	bool isOnAdminList(const String& playerName);
+	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnEntryList(const String& playerName);
+	bool isOnAdminList(const String& firstName);
 
-	bool isOnBanList(const String& playerName);
+	bool isOnEntryList(CreatureObject* player);
 
-	bool isOnHopperList(const String& playerName);
+	bool isOnBanList(CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& playerName);
+	bool isOnBanList(const String& firstName);
+
+	bool isOnHopperList(CreatureObject* player);
+
+	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -487,15 +495,19 @@ public:
 
 	void updateStructureStatus();
 
-	bool isOnAdminList(const String& playerName);
+	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnEntryList(const String& playerName);
+	bool isOnAdminList(const String& firstName);
 
-	bool isOnBanList(const String& playerName);
+	bool isOnEntryList(CreatureObject* player);
 
-	bool isOnHopperList(const String& playerName);
+	bool isOnBanList(CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& playerName);
+	bool isOnBanList(const String& firstName);
+
+	bool isOnHopperList(CreatureObject* player);
+
+	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -585,11 +597,8 @@ public:
 
 protected:
 	String _param0_isOnAdminList__String_;
-	String _param0_isOnEntryList__String_;
 	String _param0_isOnBanList__String_;
-	String _param0_isOnHopperList__String_;
-	String _param0_isOnPermissionList__String_String_;
-	String _param1_isOnPermissionList__String_String_;
+	String _param0_isOnPermissionList__String_CreatureObject_;
 	String _param1_sendPermissionListTo__CreatureObject_String_;
 	String _param0_hasPermissionList__String_;
 	String _param0_isPermissionListFull__String_;

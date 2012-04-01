@@ -246,6 +246,18 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 }
 
+bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
+	if (isOnBanList(player))
+		return false;
+
+	if (isPrivateStructure() && !isOnEntryList(player))
+		return false;
+
+	//TODO: Add AccessFee entry permissions.
+
+	return true;
+}
+
 void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone", true);
 
@@ -423,7 +435,7 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 }
 
 void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creature) {
-	bool allowEntry = isAllowedEntry(creature->getFirstName());
+	bool allowEntry = isAllowedEntry(creature);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
 	if (!allowEntry && creature->getRootParent() == _this) {
@@ -464,7 +476,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	int i = 0;
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!isStaticObject() && (!isAllowedEntry(player->getFirstName()) || isCondemned())) {
+	if (!isStaticObject() && (!isAllowedEntry(player) || isCondemned())) {
 		i = 1;
 		ejectObject(player);
 

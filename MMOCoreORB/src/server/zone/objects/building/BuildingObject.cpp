@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_ISHOSPITALBUILDINGOBJECT__,RPC_ISRECREATIONALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_ISHOSPITALBUILDINGOBJECT__,RPC_ISRECREATIONALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -170,18 +170,18 @@ void BuildingObject::broadcastCellPermissions() {
 		_implementation->broadcastCellPermissions();
 }
 
-bool BuildingObject::isAllowedEntry(const String& firstName) {
+bool BuildingObject::isAllowedEntry(CreatureObject* player) {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISALLOWEDENTRY__STRING_);
-		method.addAsciiParameter(firstName);
+		DistributedMethod method(this, RPC_ISALLOWEDENTRY__CREATUREOBJECT_);
+		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isAllowedEntry(firstName);
+		return _implementation->isAllowedEntry(player);
 }
 
 int BuildingObject::notifyStructurePlaced(CreatureObject* player) {
@@ -974,17 +974,6 @@ void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name
 	updateSignName(notifyClient);
 }
 
-bool BuildingObjectImplementation::isAllowedEntry(const String& firstName) {
-	// server/zone/objects/building/BuildingObject.idl():  		if 
-	if (isOnBanList(firstName))	// server/zone/objects/building/BuildingObject.idl():  			return false;
-	return false;
-	// server/zone/objects/building/BuildingObject.idl():  		return 
-	if (isPrivateStructure() && !isOnEntryList(firstName))	// server/zone/objects/building/BuildingObject.idl():  			return false;
-	return false;
-	// server/zone/objects/building/BuildingObject.idl():  		return true;
-	return true;
-}
-
 int BuildingObjectImplementation::notifyStructurePlaced(CreatureObject* player) {
 	// server/zone/objects/building/BuildingObject.idl():  		return 0;
 	return 0;
@@ -1124,8 +1113,8 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_BROADCASTCELLPERMISSIONS__:
 		broadcastCellPermissions();
 		break;
-	case RPC_ISALLOWEDENTRY__STRING_:
-		resp->insertBoolean(isAllowedEntry(inv->getAsciiParameter(_param0_isAllowedEntry__String_)));
+	case RPC_ISALLOWEDENTRY__CREATUREOBJECT_:
+		resp->insertBoolean(isAllowedEntry(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
 		resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -1273,8 +1262,8 @@ void BuildingObjectAdapter::broadcastCellPermissions() {
 	(static_cast<BuildingObject*>(stub))->broadcastCellPermissions();
 }
 
-bool BuildingObjectAdapter::isAllowedEntry(const String& firstName) {
-	return (static_cast<BuildingObject*>(stub))->isAllowedEntry(firstName);
+bool BuildingObjectAdapter::isAllowedEntry(CreatureObject* player) {
+	return (static_cast<BuildingObject*>(stub))->isAllowedEntry(player);
 }
 
 int BuildingObjectAdapter::notifyStructurePlaced(CreatureObject* player) {

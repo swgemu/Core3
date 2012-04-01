@@ -96,7 +96,7 @@ public:
 
 			BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
 
-			if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature->getFirstName())) {
+			if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature)) {
 				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
 				return GENERALERROR;
 			}

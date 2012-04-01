@@ -136,7 +136,7 @@ public:
 
 	void broadcastCellPermissions();
 
-	bool isAllowedEntry(const String& firstName);
+	bool isAllowedEntry(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
 
@@ -291,7 +291,7 @@ public:
 
 	void broadcastCellPermissions();
 
-	bool isAllowedEntry(const String& firstName);
+	bool isAllowedEntry(CreatureObject* player);
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
@@ -438,7 +438,7 @@ public:
 
 	void broadcastCellPermissions();
 
-	bool isAllowedEntry(const String& firstName);
+	bool isAllowedEntry(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
 
@@ -512,7 +512,6 @@ public:
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
-	String _param0_isAllowedEntry__String_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

@@ -28,7 +28,7 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 		structureObject = cast<StructureObject*>(sceneObject);
 	}
 
-	if (structureObject->isOnAdminList(creature->getFirstName())) {
+	if (structureObject->isOnAdminList(creature)) {
 		menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 		menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 		menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
@@ -74,7 +74,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 	if (zone == NULL)
 		return 1;
 
-	if (!structureObject->isOnAdminList(creature->getFirstName()))
+	if (!structureObject->isOnAdminList(creature))
 		return 1;
 
 	ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
