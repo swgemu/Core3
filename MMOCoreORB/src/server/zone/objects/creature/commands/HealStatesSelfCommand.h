@@ -55,6 +55,15 @@ public:
 
 	}
 
+	bool canPerformSkill(CreatureObject* creature) {
+
+		if (!(creature->hasState(CreatureState::STUNNED) || creature->hasState(CreatureState::DIZZY) || creature->hasState(CreatureState::INTIMIDATED) || creature->hasState(CreatureState::BLINDED))) {
+			return false;
+		}
+
+		return true;
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -63,7 +72,49 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+
+		if (playerObject != NULL) {
+			if (playerObject->getForcePower() <= 65) {
+				creature->sendSystemMessage("@jedi_spam:no_force_power");
+				return GENERALERROR;
+			}
+
+			// At this point, the player has enough Force... Can they perform skill?
+
+			if (!canPerformSkill(creature))
+				return GENERALERROR;
+
+
+			int forceCost = 65; // Static amount.
+
+			if (creature->hasState(CreatureState::STUNNED))
+			creature->removeStateBuff(CreatureState::STUNNED);
+
+			if (creature->hasState(CreatureState::DIZZY))
+			creature->removeStateBuff(CreatureState::DIZZY);
+
+			if (creature->hasState(CreatureState::BLINDED))
+			creature->removeStateBuff(CreatureState::BLINDED);
+
+			if (creature->hasState(CreatureState::INTIMIDATED))
+			creature->removeStateBuff(CreatureState::INTIMIDATED);
+
+			// Play client effect, and deduct Force Power.
+
+			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
 		return SUCCESS;
+		}
+
+		return GENERALERROR;
+	}
+
+
+	float getCommandDuration(CreatureObject* object) {
+		return defaultTime * 2.0;
 	}
 
 };

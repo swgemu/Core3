@@ -65,7 +65,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		// Check for Double Bladed Lightsaber after they are implemented.
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+
+		if (!weapon->isJediPolearmWeapon()) {
+			return INVALIDWEAPON;
+		}
 
 		return doCombatAction(creature, target);
 	}

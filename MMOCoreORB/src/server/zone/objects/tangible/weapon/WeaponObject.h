@@ -265,6 +265,10 @@ public:
 
 	int getForceCost();
 
+	int getBladeColor();
+
+	void setBladeColor(int value);
+
 	int getDamageType();
 
 	String getXpType();
@@ -296,6 +300,14 @@ public:
 	bool isTwoHandMeleeWeapon();
 
 	bool isMineWeapon();
+
+	bool isJediWeapon();
+
+	bool isJediOneHandedWeapon();
+
+	bool isJediTwoHandedWeapon();
+
+	bool isJediPolearmWeapon();
 
 	bool isWeaponObject();
 
@@ -381,6 +393,8 @@ protected:
 	int mindAttackCost;
 
 	int forceCost;
+
+	int bladeColor;
 
 	ManagedReference<PowerupObject* > powerupObject;
 
@@ -529,6 +543,10 @@ public:
 
 	int getForceCost();
 
+	int getBladeColor();
+
+	void setBladeColor(int value);
+
 	int getDamageType();
 
 	String getXpType();
@@ -560,6 +578,14 @@ public:
 	bool isTwoHandMeleeWeapon();
 
 	bool isMineWeapon();
+
+	bool isJediWeapon();
+
+	bool isJediOneHandedWeapon();
+
+	bool isJediTwoHandedWeapon();
+
+	bool isJediPolearmWeapon();
 
 	bool isWeaponObject();
 
@@ -686,6 +712,10 @@ public:
 
 	int getForceCost();
 
+	int getBladeColor();
+
+	void setBladeColor(int value);
+
 	int getDamageType();
 
 	String getXpType();
@@ -717,6 +747,14 @@ public:
 	bool isTwoHandMeleeWeapon();
 
 	bool isMineWeapon();
+
+	bool isJediWeapon();
+
+	bool isJediOneHandedWeapon();
+
+	bool isJediTwoHandedWeapon();
+
+	bool isJediPolearmWeapon();
 
 	bool isWeaponObject();
 

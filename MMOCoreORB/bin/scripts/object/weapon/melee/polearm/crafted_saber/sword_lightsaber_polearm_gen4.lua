@@ -77,7 +77,7 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen4 = object
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
 	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_polearmlightsaber",
+	xpType = "jedi_general",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_polearmlightsaber_gen4" },
@@ -98,6 +98,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen4 = object
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
+	gameObjectType = 131090,
+	
 	healthAttackCost = 60,
 	actionAttackCost = 95,
 	mindAttackCost = 45,
@@ -116,6 +118,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen4 = object
 	maxDamage = 305,
 
 	attackSpeed = 5.1,
+	
+	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},

@@ -329,6 +329,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.cpp \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
 		server/zone/objects/tangible/components/WeaponObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/LightsaberObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \

@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -615,6 +615,33 @@ int WeaponObject::getForceCost() {
 		return _implementation->getForceCost();
 }
 
+int WeaponObject::getBladeColor() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBLADECOLOR__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getBladeColor();
+}
+
+void WeaponObject::setBladeColor(int value) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBLADECOLOR__INT_);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBladeColor(value);
+}
+
 int WeaponObject::getDamageType() {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -822,6 +849,58 @@ bool WeaponObject::isMineWeapon() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isMineWeapon();
+}
+
+bool WeaponObject::isJediWeapon() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISJEDIWEAPON__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isJediWeapon();
+}
+
+bool WeaponObject::isJediOneHandedWeapon() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISJEDIONEHANDEDWEAPON__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isJediOneHandedWeapon();
+}
+
+bool WeaponObject::isJediTwoHandedWeapon() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISJEDITWOHANDEDWEAPON__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isJediTwoHandedWeapon();
+}
+
+bool WeaponObject::isJediPolearmWeapon() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISJEDIPOLEARMWEAPON__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isJediPolearmWeapon();
 }
 
 bool WeaponObject::isWeaponObject() {
@@ -1117,6 +1196,11 @@ bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "WeaponObject.bladeColor") {
+		TypeInfo<int >::parseFromBinaryStream(&bladeColor, stream);
+		return true;
+	}
+
 	if (_name == "WeaponObject.powerupObject") {
 		TypeInfo<ManagedReference<PowerupObject* > >::parseFromBinaryStream(&powerupObject, stream);
 		return true;
@@ -1307,6 +1391,14 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "WeaponObject.bladeColor";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&bladeColor, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "WeaponObject.powerupObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1316,7 +1408,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 22;
+	return _count + 23;
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation() {
@@ -1347,6 +1439,8 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	maxRangeAccuracy = 0;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageType = 0;
 	damageType = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		bladeColor = 0;
+	bladeColor = 0;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		minDamage = 1;
 	minDamage = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxDamage = 10;
@@ -1488,6 +1582,16 @@ int WeaponObjectImplementation::getForceCost() {
 	return forceCost;
 }
 
+int WeaponObjectImplementation::getBladeColor() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return bladeColor;
+	return bladeColor;
+}
+
+void WeaponObjectImplementation::setBladeColor(int value) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		bladeColor = value;
+	bladeColor = value;
+}
+
 int WeaponObjectImplementation::getDamageType() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return damageType;
 	return damageType;
@@ -1566,6 +1670,26 @@ bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
 bool WeaponObjectImplementation::isMineWeapon() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.MINE;
 	return TangibleObjectImplementation::gameObjectType == SceneObjectType::MINE;
+}
+
+bool WeaponObjectImplementation::isJediWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ONEHANDEDLIGHTSABER || TangibleObjectImplementation::gameObjectType == SceneObjectType::TWOHANDEDLIGHTSABER || TangibleObjectImplementation::gameObjectType == SceneObjectType::DOUBLEBLADEDLIGHTSABER;
+}
+
+bool WeaponObjectImplementation::isJediOneHandedWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ONEHANDEDLIGHTSABER;
+}
+
+bool WeaponObjectImplementation::isJediTwoHandedWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::TWOHANDEDLIGHTSABER;
+}
+
+bool WeaponObjectImplementation::isJediPolearmWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+	return TangibleObjectImplementation::gameObjectType == SceneObjectType::DOUBLEBLADEDLIGHTSABER;
 }
 
 bool WeaponObjectImplementation::isWeaponObject() {
@@ -1725,6 +1849,12 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETFORCECOST__:
 		resp->insertSignedInt(getForceCost());
 		break;
+	case RPC_GETBLADECOLOR__:
+		resp->insertSignedInt(getBladeColor());
+		break;
+	case RPC_SETBLADECOLOR__INT_:
+		setBladeColor(inv->getSignedIntParameter());
+		break;
 	case RPC_GETDAMAGETYPE__:
 		resp->insertSignedInt(getDamageType());
 		break;
@@ -1772,6 +1902,18 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISMINEWEAPON__:
 		resp->insertBoolean(isMineWeapon());
+		break;
+	case RPC_ISJEDIWEAPON__:
+		resp->insertBoolean(isJediWeapon());
+		break;
+	case RPC_ISJEDIONEHANDEDWEAPON__:
+		resp->insertBoolean(isJediOneHandedWeapon());
+		break;
+	case RPC_ISJEDITWOHANDEDWEAPON__:
+		resp->insertBoolean(isJediTwoHandedWeapon());
+		break;
+	case RPC_ISJEDIPOLEARMWEAPON__:
+		resp->insertBoolean(isJediPolearmWeapon());
 		break;
 	case RPC_ISWEAPONOBJECT__:
 		resp->insertBoolean(isWeaponObject());
@@ -1936,6 +2078,14 @@ int WeaponObjectAdapter::getForceCost() {
 	return (static_cast<WeaponObject*>(stub))->getForceCost();
 }
 
+int WeaponObjectAdapter::getBladeColor() {
+	return (static_cast<WeaponObject*>(stub))->getBladeColor();
+}
+
+void WeaponObjectAdapter::setBladeColor(int value) {
+	(static_cast<WeaponObject*>(stub))->setBladeColor(value);
+}
+
 int WeaponObjectAdapter::getDamageType() {
 	return (static_cast<WeaponObject*>(stub))->getDamageType();
 }
@@ -1998,6 +2148,22 @@ bool WeaponObjectAdapter::isTwoHandMeleeWeapon() {
 
 bool WeaponObjectAdapter::isMineWeapon() {
 	return (static_cast<WeaponObject*>(stub))->isMineWeapon();
+}
+
+bool WeaponObjectAdapter::isJediWeapon() {
+	return (static_cast<WeaponObject*>(stub))->isJediWeapon();
+}
+
+bool WeaponObjectAdapter::isJediOneHandedWeapon() {
+	return (static_cast<WeaponObject*>(stub))->isJediOneHandedWeapon();
+}
+
+bool WeaponObjectAdapter::isJediTwoHandedWeapon() {
+	return (static_cast<WeaponObject*>(stub))->isJediTwoHandedWeapon();
+}
+
+bool WeaponObjectAdapter::isJediPolearmWeapon() {
+	return (static_cast<WeaponObject*>(stub))->isJediPolearmWeapon();
 }
 
 bool WeaponObjectAdapter::isWeaponObject() {

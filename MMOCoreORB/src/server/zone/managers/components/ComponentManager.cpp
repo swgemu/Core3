@@ -32,6 +32,7 @@
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/LightsaberObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
@@ -110,7 +111,6 @@ ComponentManager::ComponentManager() {
 	components.put("AiCreatureComponent", new AiCreatureComponent());
 	components.put("AiNPCComponent", new AiNPCComponent());
 	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
-	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
 
 	components.put("ShellfishHarvesterMenuComponent", new ShellfishHarvesterMenuComponent());
 
@@ -121,4 +121,6 @@ ComponentManager::ComponentManager() {
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
 
 	components.put("CityHallZoneComponent", new CityHallZoneComponent());
+
+	components.put("LightsaberObjectMenuComponent", new LightsaberObjectMenuComponent());
 }

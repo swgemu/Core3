@@ -57,26 +57,6 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot do that while prone.");
-			return false;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
-
 		if (!(creature->hasDamage(CreatureAttribute::HEALTH) || creature->hasDamage(CreatureAttribute::ACTION) || creature->hasDamage(CreatureAttribute::MIND))) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
@@ -145,7 +125,7 @@ public:
 
 			// Play client effect, and deduct Force Power.
 
-			forceCost = MAX(((healthHealed + actionHealed + mindHealed) / 4), 340);
+			forceCost = MIN(((healthHealed + actionHealed + mindHealed) / 4), 340);
 
 			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
@@ -154,6 +134,11 @@ public:
 		}
 
 		return GENERALERROR;
+	}
+
+
+	float getCommandDuration(CreatureObject* object) {
+		return defaultTime * 3.0;
 	}
 
 };

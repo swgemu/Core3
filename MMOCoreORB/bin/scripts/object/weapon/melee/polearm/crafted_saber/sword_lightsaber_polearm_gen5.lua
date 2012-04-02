@@ -98,6 +98,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
+	gameObjectType = 131090,
+	
 	healthAttackCost = 0,
 	actionAttackCost = 0,
 	mindAttackCost = 0,

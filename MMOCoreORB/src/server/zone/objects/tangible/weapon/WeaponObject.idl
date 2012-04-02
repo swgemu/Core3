@@ -92,6 +92,8 @@ class WeaponObject extends TangibleObject {
 	protected int mindAttackCost;
 	protected int forceCost;
 	
+	protected int bladeColor;
+	
 	protected PowerupObject powerupObject;
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
@@ -142,6 +144,7 @@ class WeaponObject extends TangibleObject {
 		maxRangeAccuracy = 0;
 		
 		damageType = 0;
+		bladeColor = 0;
 		
 		minDamage = 1;
 		maxDamage = 10;
@@ -320,6 +323,14 @@ class WeaponObject extends TangibleObject {
 		return forceCost;
 	}
 	
+	public int getBladeColor() {
+		return bladeColor;
+	}
+	
+	public void setBladeColor(int value) {
+		bladeColor = value;
+	}
+	
 	public int getDamageType() {
 		return damageType;
 	}
@@ -382,6 +393,22 @@ class WeaponObject extends TangibleObject {
 	
 	public boolean isMineWeapon() {
 		return super.gameObjectType == SceneObjectType.MINE;
+	}
+	
+	public boolean isJediWeapon() {
+		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+	}
+	
+	public boolean isJediOneHandedWeapon() {
+		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER;
+	}
+	
+	public boolean isJediTwoHandedWeapon() {
+		return super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER;
+	}
+	
+	public boolean isJediPolearmWeapon() {
+		return super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
 	}
 	
 	public boolean isWeaponObject() {

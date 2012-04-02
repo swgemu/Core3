@@ -15,7 +15,7 @@
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 
@@ -236,6 +236,21 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
+
+	if (isJediWeapon()){
+	StringBuffer saberColor;
+
+	int color = getBladeColor();
+
+	if (color == 0){ // Initialized color (none).
+		color = 31;
+	}
+
+	saberColor << "@jedi_spam:saber_color_" << color;
+
+
+	alm->insertAttribute("color", saberColor);
+	}
 
 }
 

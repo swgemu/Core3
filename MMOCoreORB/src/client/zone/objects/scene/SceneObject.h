@@ -151,6 +151,10 @@ public:
 	const static int RIFLE = 0x2000C;
 	const static int GRENADE = 0x2000E;
 
+	const static int ONEHANDEDLIGHTSABER = 0x20010;
+	const static int TWOHANDEDLIGHTSABER = 0x20011;
+	const static int DOUBLEBLADEDLIGHTSABER = 0x20012;
+
 	const static int COMPONENT = 0x40000;
 	const static int ARMORCOMPONENT = 0x40001;
 	const static int CHEMISTRYCOMPONENT = 0x40002;

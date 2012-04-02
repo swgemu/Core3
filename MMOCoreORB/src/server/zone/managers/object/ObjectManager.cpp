@@ -202,6 +202,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::POLEARM);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::TWOHANDMELEEWEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::LIGHTNINGRIFLE);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::ONEHANDEDLIGHTSABER);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::TWOHANDEDLIGHTSABER);
+	objectFactory.registerObject<WeaponObject>(SceneObjectType::DOUBLEBLADEDLIGHTSABER);
 
 	objectFactory.registerObject<MissionObject>(SceneObjectType::MISSIONOBJECT);
 

@@ -215,6 +215,9 @@ public:
 
 	// Not in client **************
 	const static int LIGHTNINGRIFLE = 0x2000F;
+	const static int ONEHANDEDLIGHTSABER = 0x20010;
+	const static int TWOHANDEDLIGHTSABER = 0x20011;
+	const static int DOUBLEBLADEDLIGHTSABER = 0x20012;
 	// End Not in client *************
 
 	const static int COMPONENT = 0x40000;

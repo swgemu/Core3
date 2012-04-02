@@ -58,25 +58,6 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-	if (creature->isProne()) {
-		creature->sendSystemMessage("You cannot do that while prone.");
-		return false;
-	}
-
-	if (creature->isMeditating()) {
-		creature->sendSystemMessage("You cannot do that while meditating.");
-		return false;
-	}
-
-	if (creature->isRidingCreature()) {
-		creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-		return false;
-	}
-
-	if (creature->isMounted()) {
-		creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-		return false;
-	}
 
 	if (creature->getWounds(CreatureAttribute::HEALTH) <= 0) {
 		creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
@@ -98,7 +79,7 @@ int doQueueCommand(CreatureObject* creature, const uint64& target, const Unicode
 
 
 	if (playerObject != NULL) {
-		if (playerObject->getForcePower() <= 65) {
+		if (playerObject->getForcePower() <= 100) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power");
 			return GENERALERROR;
 		}
@@ -129,7 +110,7 @@ int doQueueCommand(CreatureObject* creature, const uint64& target, const Unicode
 
 		// Play client effect, and deduct Force Power.
 
-		forceCost = MAX((healthHealed / 7), 65);
+		forceCost = MIN((healthHealed / 7), 100);
 
 		creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
@@ -138,6 +119,10 @@ int doQueueCommand(CreatureObject* creature, const uint64& target, const Unicode
 	}
 
 	return GENERALERROR;
+}
+
+float getCommandDuration(CreatureObject* object) {
+	return defaultTime * 3.0;
 }
 
 };
