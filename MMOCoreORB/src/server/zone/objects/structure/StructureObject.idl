@@ -176,7 +176,7 @@ class StructureObject extends TangibleObject {
 	 */
 	public boolean isOnAdminList(CreatureObject player) {
 		return structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName()) 
-		|| player.getPlayerObject().isPrivileged();
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
 	}
 	
 	/**
@@ -207,7 +207,7 @@ class StructureObject extends TangibleObject {
 	 */
 	public boolean isOnBanList(CreatureObject player) {
 		return structurePermissionList.isOnPermissionList("BAN", player.getFirstName())
-		&& !player.getPlayerObject().isPrivileged();
+		&& (player.isPlayerCreature() && !player.getPlayerObject().isPrivileged());
 	}
 	
 	/**
@@ -228,7 +228,7 @@ class StructureObject extends TangibleObject {
 	public boolean isOnHopperList(CreatureObject player) {
 		return structurePermissionList.isOnPermissionList("HOPPER", player.getFirstName())
 		|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
-		|| player.getPlayerObject().isPrivileged();
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
 	}
 	
 	/**
@@ -239,7 +239,7 @@ class StructureObject extends TangibleObject {
 	 */
 	public boolean isOnPermissionList(final string listName, CreatureObject player) {
 		return structurePermissionList.isOnPermissionList(listName, player.getFirstName())
-		|| player.getPlayerObject().isPrivileged();
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
 	}
 	
 	public native boolean isOwnerOf(SceneObject obj);

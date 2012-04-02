@@ -1188,8 +1188,8 @@ bool StructureObjectImplementation::checkRequisitesForPlacement(CreatureObject* 
 }
 
 bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
-	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
-	return (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
+	// server/zone/objects/structure/StructureObject.idl():  		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	return (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged());
 }
 
 bool StructureObjectImplementation::isOnAdminList(const String& firstName) {
@@ -1203,8 +1203,8 @@ bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
 }
 
 bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
-	// server/zone/objects/structure/StructureObject.idl():  		&& !player.getPlayerObject().isPrivileged();
-	return (&structurePermissionList)->isOnPermissionList("BAN", player->getFirstName()) && !player->getPlayerObject()->isPrivileged();
+	// server/zone/objects/structure/StructureObject.idl():  		&& (player.isPlayerCreature() && !player.getPlayerObject().isPrivileged());
+	return (&structurePermissionList)->isOnPermissionList("BAN", player->getFirstName()) && (player->isPlayerCreature() && !player->getPlayerObject()->isPrivileged());
 }
 
 bool StructureObjectImplementation::isOnBanList(const String& firstName) {
@@ -1213,13 +1213,13 @@ bool StructureObjectImplementation::isOnBanList(const String& firstName) {
 }
 
 bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
-	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
-	return (&structurePermissionList)->isOnPermissionList("HOPPER", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || player->getPlayerObject()->isPrivileged();
+	// server/zone/objects/structure/StructureObject.idl():  		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	return (&structurePermissionList)->isOnPermissionList("HOPPER", player->getFirstName()) || (&structurePermissionList)->isOnPermissionList("ADMIN", player->getFirstName()) || (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged());
 }
 
 bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) {
-	// server/zone/objects/structure/StructureObject.idl():  		|| player.getPlayerObject().isPrivileged();
-	return (&structurePermissionList)->isOnPermissionList(listName, player->getFirstName()) || player->getPlayerObject()->isPrivileged();
+	// server/zone/objects/structure/StructureObject.idl():  		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	return (&structurePermissionList)->isOnPermissionList(listName, player->getFirstName()) || (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged());
 }
 
 bool StructureObjectImplementation::isOnAccessList(SceneObject* obj) {

@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GETSTATIONNAMECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/login/account/Account.h"
 
 class GetStationNameCommand : public QueueCommand {
 public:
@@ -71,13 +72,34 @@ public:
 		if(admin == NULL || !admin->isPrivileged())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject* > targetCreature =
-				cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+		ManagedReference<CreatureObject* > targetCreature = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if(args.hasMoreTokens()) {
+			String character;
+			args.getStringToken(character);
+
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+			targetCreature = playerManager->getPlayer(character);
+
+		} else {
+
+			targetCreature =
+					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+		}
 
 		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		/// Insert would be Account name lookup here
+		ManagedReference<Account*> account = server->getZoneServer()->getAccount(targetCreature->getPlayerObject()->getAccountID());
+		if(account == NULL) {
+			creature->sendSystemMessage("Account not found");
+			return SUCCESS;
+		}
+
+		creature->sendSystemMessage("Account name for " + targetCreature->getFirstName() +  ": " + account->getUsername());
 
 		return SUCCESS;
 	}

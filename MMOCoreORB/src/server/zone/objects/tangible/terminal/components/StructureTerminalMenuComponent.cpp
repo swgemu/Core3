@@ -11,22 +11,22 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
-	ManagedReference<StructureObject*> structureObject = NULL;
 
-	if (!sceneObject->isStructureObject()) {
-		ManagedReference<SceneObject*> parent = sceneObject->getRootParent();
+	if(!sceneObject->isTerminal())
+		return;
 
-		if (parent != NULL && parent->isStructureObject()) {
-			structureObject = cast<StructureObject*>(parent.get());
-		} else {
-			return;
-		}
-	} else {
-		structureObject = cast<StructureObject*>(sceneObject);
-	}
+	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
+	if(terminal == NULL)
+		return;
+
+	ManagedReference<StructureObject*> structureObject = cast<StructureObject*>(terminal->getControlledObject());
+
+	if (structureObject == NULL)
+		return;
 
 	if (structureObject->isOnAdminList(creature)) {
 		menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management

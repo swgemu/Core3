@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GETPLAYERIDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class GetPlayerIdCommand : public QueueCommand {
 public:
@@ -62,6 +63,35 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		PlayerObject* admin = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		if(admin == NULL || !admin->isPrivileged())
+			return INVALIDTARGET;
+
+		ManagedReference<CreatureObject* > targetCreature = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if(args.hasMoreTokens()) {
+			String character;
+			args.getStringToken(character);
+
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+			targetCreature = playerManager->getPlayer(character);
+
+		} else {
+
+			targetCreature =
+					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+		}
+
+		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		creature->sendSystemMessage("PlayerId for " + targetCreature->getFirstName()
+				+ ": " + String::valueOf(targetCreature->getObjectID()));
 
 		return SUCCESS;
 	}

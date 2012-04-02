@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GETACCOUNTINFOCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/login/account/Account.h"
 
 class GetAccountInfoCommand : public QueueCommand {
 public:
@@ -63,7 +64,68 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		PlayerObject* admin = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+		if(admin == NULL || !admin->isPrivileged())
+			return INVALIDTARGET;
+
+		ManagedReference<CreatureObject* > targetCreature = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if(args.hasMoreTokens()) {
+			String character;
+			args.getStringToken(character);
+
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+			targetCreature = playerManager->getPlayer(character);
+
+		} else {
+
+			targetCreature =
+					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+
+		}
+
+		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
+			return INVALIDTARGET;
+
+		ManagedReference<Account*> account = server->getZoneServer()->getAccount(targetCreature->getPlayerObject()->getAccountID());
+		if(account == NULL) {
+			creature->sendSystemMessage("Account not found");
+			return SUCCESS;
+		}
+
+		creature->sendSystemMessage("**** Account: " + account->getUsername() + " ****");
+		creature->sendSystemMessage("Account ID: " + String::valueOf(account->getAccountID()));
+		creature->sendSystemMessage("Station ID: " + String::valueOf(account->getStationID()));
+		creature->sendSystemMessage("Created: " + getTimeString(account->getTimeCreated()));
+		creature->sendSystemMessage("Admin Level: " + String::valueOf(account->getAdminLevel()));
+
 		return SUCCESS;
+	}
+
+	String getTimeString(uint32 timestamp) {
+		String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
+
+		int intervals[4] = {1, 60, 3600, 86400};
+		int values[4] = {0, 0, 0, 0};
+
+		StringBuffer str;
+
+		for (int i = 3; i > -1; --i) {
+			values[i] = floor((float)timestamp / intervals[i]);
+			timestamp -= values[i] * intervals[i];
+
+			if (values[i] > 0) {
+				if (str.length() > 0)
+					str << ",";
+
+				str << ((i == 0) ? " and " : " ") << values[i] << " " << abbrvs[i];
+			}
+		}
+
+		return str.toString();
 	}
 
 };
