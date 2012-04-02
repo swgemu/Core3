@@ -25,7 +25,7 @@ protected:
 
 public:
 	SharedStructureObjectTemplate() {
-
+		cityRankRequired = 0;
 	}
 
 	~SharedStructureObjectTemplate() {

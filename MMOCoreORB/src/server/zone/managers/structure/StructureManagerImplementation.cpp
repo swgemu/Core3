@@ -136,16 +136,54 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
+	String serverTemplatePath = deed->getGeneratedObjectTemplate();
+	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
+
+	//Check to see if this zone allows this structure.
+	if (serverTemplate == NULL || !serverTemplate->isAllowedZone(zone->getZoneName())) {
+		creature->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
+		return 1;
+	}
+
 	if (!planetManager->isBuildingPermittedAt(x, y, creature)) {
 		creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 		return 1;
 	}
 
-	ManagedReference<CityRegion*> city = creature->getCityRegion();
+	SortedVector<ManagedReference<ActiveArea* > > objects;
+	zone->getInRangeActiveAreas(x, y, &objects, true);
 
-	if (city != NULL && city->isZoningEnabled() && !city->hasZoningRights(creature->getObjectID())) {
-		creature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
-		return 1;
+	ManagedReference<CityRegion*> city;
+
+	for (int i = 0; i < objects.size(); ++i) {
+		ActiveArea* area = objects.get(i).get();
+
+		if (!area->isRegion())
+			continue;
+
+		city = dynamic_cast<Region*>(area)->getCityRegion();
+
+		if (city != NULL)
+			break;
+	}
+
+	if (city != NULL) {
+		if (city->isZoningEnabled() && !city->hasZoningRights(creature->getObjectID())) {
+			creature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
+			return 1;
+		}
+
+		int rankRequired = serverTemplate->getCityRankRequired();
+
+		if (rankRequired != 0 && city->getCityRank() < rankRequired) {
+			StringIdChatParameter param("city/city", "rank_req");
+			param.setDI(rankRequired);
+			param.setTO("city/city", "rank" + String::valueOf(rankRequired));
+
+			creature->sendSystemMessage(param);
+			return 1;
+		}
+
 	}
 
 	Locker _lock(deed, creature);
@@ -159,15 +197,6 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 	}
 
 	TemplateManager* templateManager = TemplateManager::instance();
-
-	String serverTemplatePath = deed->getGeneratedObjectTemplate();
-	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
-
-	//Check to see if this zone allows this structure.
-	if (serverTemplate == NULL || !serverTemplate->isAllowedZone(zone->getZoneName())) {
-		creature->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
-		return 1;
-	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
