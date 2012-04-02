@@ -121,7 +121,7 @@ public:
 			if (healthHealed > 0){
 				StringIdChatParameter message2("jedi_spam", "heal_self");
 				message2.setDI(healthHealed);
-				message2.setTO("@jedi_spam:action_damage");
+				message2.setTO("@jedi_spam:health_damage");
 				creature->sendSystemMessage(message2);
 			}
 

@@ -43,6 +43,7 @@
 
 HealBattleFatigueSelf2Command = {
         name = "healbattlefatigueself2",
+        defaultTime = 3.0
 }
 
 AddCommand(HealBattleFatigueSelf2Command)

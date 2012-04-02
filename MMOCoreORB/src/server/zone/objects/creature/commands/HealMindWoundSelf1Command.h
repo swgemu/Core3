@@ -55,6 +55,36 @@ public:
 
 	}
 
+	bool canPerformSkill(CreatureObject* creature) {
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot do that while meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+
+		if (creature->getWounds(CreatureAttribute::MIND) <= 0) {
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
+			return false;
+		}
+
+		return true;
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -63,7 +93,50 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+
+		if (playerObject != NULL) {
+			if (playerObject->getForcePower() <= 65) {
+				creature->sendSystemMessage("@jedi_spam:no_force_power");
+				return GENERALERROR;
+			}
+
+			// At this point, the player has enough Force... Can they perform skill?
+
+			if (!canPerformSkill(creature))
+				return GENERALERROR;
+
+
+			int forceCost = 0;
+
+			// Lets see how much healing they are doing.
+			uint32 mindHealed = creature->healWound(creature, CreatureAttribute::MIND, 250);
+
+
+
+			// Send system message(s).
+
+
+			if (mindHealed > 0){
+				StringIdChatParameter message2("jedi_spam", "heal_self");
+				message2.setDI(mindHealed);
+				message2.setTO("@jedi_spam:mind_wounds");
+				creature->sendSystemMessage(message2);
+			}
+
+
+			// Play client effect, and deduct Force Power.
+
+			forceCost = MAX((mindHealed / 15), 65);
+
+			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
 		return SUCCESS;
+		}
+
+		return GENERALERROR;
 	}
 
 };

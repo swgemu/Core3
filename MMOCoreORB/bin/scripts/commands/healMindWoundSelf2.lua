@@ -43,6 +43,7 @@
 
 HealMindWoundSelf2Command = {
         name = "healmindwoundself2",
+        defaultTime = 3.0
 }
 
 AddCommand(HealMindWoundSelf2Command)
