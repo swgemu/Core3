@@ -891,7 +891,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage = System::random(diff) + (int)minDamage;
 
 	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = damage / 1000.f;
+		float conditionDamage = damage / 10000.f;
 		if (weapon->isSliced()) conditionDamage *= 1.1;
 		if (weapon->hasPowerup()) conditionDamage *= 1.1;
 		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
@@ -1099,7 +1099,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	}
 
 	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = (health + action + mind) / 1000;
+		float conditionDamage = (health + action + mind) / 10000.f;
 		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
 
 		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.75) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.75))
