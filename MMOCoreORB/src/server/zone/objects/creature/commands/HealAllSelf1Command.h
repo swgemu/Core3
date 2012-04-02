@@ -120,22 +120,27 @@ public:
 
 			// Send system message(s).
 
+			if (healthHealed > 0){
+				StringIdChatParameter message1("jedi_spam", "heal_self");
+				message1.setDI(healthHealed);
+				message1.setTO("@jedi_spam:health_damage");
+				creature->sendSystemMessage(message1);
+			}
 
-			StringIdChatParameter message1("jedi_spam", "heal_self");
-			message1.setDI(healthHealed);
-			message1.setTO("@jedi_spam:health_damage");
-			creature->sendSystemMessage(message1);
 
+			if (actionHealed > 0){
+				StringIdChatParameter message2("jedi_spam", "heal_self");
+				message2.setDI(actionHealed);
+				message2.setTO("@jedi_spam:action_damage");
+				creature->sendSystemMessage(message2);
+			}
 
-			StringIdChatParameter message2("jedi_spam", "heal_self");
-			message2.setDI(actionHealed);
-			message2.setTO("@jedi_spam:action_damage");
-			creature->sendSystemMessage(message2);
-
-			StringIdChatParameter message3("jedi_spam", "heal_self");
-			message3.setDI(mindHealed);
-			message3.setTO("@jedi_spam:mind_damage");
-			creature->sendSystemMessage(message3);
+			if (mindHealed > 0){
+				StringIdChatParameter message3("jedi_spam", "heal_self");
+				message3.setDI(mindHealed);
+				message3.setTO("@jedi_spam:mind_damage");
+				creature->sendSystemMessage(message3);
+			}
 
 
 			// Play client effect, and deduct Force Power.

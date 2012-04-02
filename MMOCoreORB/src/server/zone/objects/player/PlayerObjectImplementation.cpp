@@ -1494,8 +1494,10 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	if (forceTick < 1)
 		forceTick = 1;
-		
-	setForcePower(getForcePower() + forceTick);
+
+	if (getForcePowerMax() - getForcePower() <= 10){   // If the player's Force Power is going to regen again and it's close to max,
+		setForcePower(getForcePowerMax());             // Set it to max, so it doesn't go over max.
+	} else setForcePower(getForcePower() + forceTick); // Otherwise regen normally.
 }
 
 void PlayerObjectImplementation::clearScreenPlayData(const String& screenPlay) {
