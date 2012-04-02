@@ -39,6 +39,8 @@ public:
 
 	void createChildObjects();
 
+	void notifyRemoveFromZone();
+
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	DistributedObjectServant* _getImplementation();
@@ -77,6 +79,8 @@ public:
 	GarageInstallationImplementation(DummyConstructorParameter* param);
 
 	void createChildObjects();
+
+	void notifyRemoveFromZone();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -124,6 +128,8 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void createChildObjects();
+
+	void notifyRemoveFromZone();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 

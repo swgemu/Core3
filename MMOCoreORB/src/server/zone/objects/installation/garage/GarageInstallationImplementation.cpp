@@ -33,6 +33,14 @@ void GarageInstallationImplementation::createChildObjects() {
 	garageArea = activeArea;
 }
 
+void GarageInstallationImplementation::notifyRemoveFromZone() {
+	InstallationObjectImplementation::notifyRemoveFromZone();
+
+	if (garageArea != NULL) {
+		garageArea->destroyObjectFromWorld(false);
+	}
+}
+
 void GarageInstallationImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	InstallationObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 

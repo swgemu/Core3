@@ -10,7 +10,7 @@
  *	GarageInstallationStub
  */
 
-enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
+enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
 
 GarageInstallation::GarageInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	GarageInstallationImplementation* _implementation = new GarageInstallationImplementation();
@@ -39,6 +39,19 @@ void GarageInstallation::createChildObjects() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createChildObjects();
+}
+
+void GarageInstallation::notifyRemoveFromZone() {
+	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyRemoveFromZone();
 }
 
 void GarageInstallation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -218,6 +231,9 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
 		break;
+	case RPC_NOTIFYREMOVEFROMZONE__:
+		notifyRemoveFromZone();
+		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
@@ -228,6 +244,10 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 void GarageInstallationAdapter::createChildObjects() {
 	(static_cast<GarageInstallation*>(stub))->createChildObjects();
+}
+
+void GarageInstallationAdapter::notifyRemoveFromZone() {
+	(static_cast<GarageInstallation*>(stub))->notifyRemoveFromZone();
 }
 
 void GarageInstallationAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {

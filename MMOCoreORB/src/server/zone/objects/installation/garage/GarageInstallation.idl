@@ -56,5 +56,7 @@ class GarageInstallation extends InstallationObject {
 	
 	public native void createChildObjects();
 	
+	public native void notifyRemoveFromZone();
+	
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 }
