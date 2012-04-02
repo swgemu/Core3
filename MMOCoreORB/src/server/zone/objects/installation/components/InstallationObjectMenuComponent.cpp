@@ -70,7 +70,8 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 		break;
 
 	case 50:
-		player->executeObjectControllerAction(0xC367B461, installation->getObjectID(), ""); //nameStructure
+		structureManager->promptNameStructure(player, installation, installation);
+		//player->executeObjectControllerAction(0xC367B461, installation->getObjectID(), ""); //nameStructure
 		break;
 
 	case 51:
