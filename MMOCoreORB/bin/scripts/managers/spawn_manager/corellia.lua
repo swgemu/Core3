@@ -248,7 +248,7 @@ corellia_static_spawns = {
 	{"trainer_tailor",0,3077,300,5251,0,0},
 	{"trainer_unarmed",0,-3570,86,3146,233,0},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2365801},
-	{"trainer_weaponsmith",0,47,0,-4442,180,0},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1855527},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,3075413},
 	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2955401},
 	{"trainer_weaponsmith",0,-5106,0,-2324,180,0},
