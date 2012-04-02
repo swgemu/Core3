@@ -920,9 +920,9 @@ uint64 ObjectManager::getNextObjectID(const String& database) {
 }
 
 uint64 ObjectManager::getNextFreeObjectID() {
-	Locker _locker(this);
+	//assert(DistributedObjectBroker::instance()->isRootBroker());
 
-	uint64 val = ++nextObjectID;
+	uint64 val = DOBObjectManager::getNextFreeObjectID();
 //	its saved every 5min, that should be enough
 //	databaseManager->updateLastUsedObjectID(val);
 
