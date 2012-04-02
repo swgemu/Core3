@@ -180,6 +180,10 @@ public:
 
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	bool containsCityName(const String& name);
+
+	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
@@ -314,6 +318,10 @@ public:
 
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	bool containsCityName(const String& name);
+
+	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
@@ -423,6 +431,10 @@ public:
 
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
+	bool containsCityName(const String& name);
+
+	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
+
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
@@ -432,6 +444,7 @@ protected:
 	String _param1_createCity__CreatureObject_String_float_float_;
 	String _param2_changeCitySpecialization__CityRegion_CreatureObject_String_;
 	String _param2_addMilitiaMember__CityRegion_CreatureObject_String_;
+	String _param0_containsCityName__String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

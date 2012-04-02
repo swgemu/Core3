@@ -79,6 +79,8 @@ class Region extends ActiveArea {
 		return cityRegion;
 	}
 	
+	public native void notifyLoadFromDatabase();
+	
 	public void notifyEnter(SceneObject object) {
 		super.notifyEnter(object);
 		

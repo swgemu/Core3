@@ -1625,14 +1625,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@local
-	public void setPlanetMapCategory(PlanetMapCategory pmc) 
-	{
-		planetMapCategory = pmc.getCrc();
+	public void setPlanetMapCategory(PlanetMapCategory pmc) {
+		if (pmc == null)
+			planetMapCategory = 0;
+		else
+			planetMapCategory = pmc.getCrc();
 	}
 	
 	@local
-	public void setPlanetMapSubCategory(PlanetMapCategory pmc) 
-	{
+	public void setPlanetMapSubCategory(PlanetMapCategory pmc)  {
 		planetMapSubCategory = pmc.getCrc();
 	}
 	

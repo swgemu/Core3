@@ -17,6 +17,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -32,8 +33,14 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 
 	Zone* zone = getZone();
 
-	if (zone != NULL)
-		zone->addCityRegionToUpdate(_this);
+	if (zone == NULL)
+		return;
+
+
+	zone->addCityRegionToUpdate(_this);
+
+	if (isRegistered())
+		zone->getPlanetManager()->addRegion(_this);
 
 	/*
 	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);

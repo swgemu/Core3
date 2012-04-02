@@ -4714,7 +4714,11 @@ int SceneObjectImplementation::getPlanetMapSubCategoryCRC() {
 }
 
 void SceneObjectImplementation::setPlanetMapCategory(PlanetMapCategory* pmc) {
-	// server/zone/objects/scene/SceneObject.idl():  		planetMapCategory = pmc.getCrc();
+	// server/zone/objects/scene/SceneObject.idl():  			planetMapCategory = pmc.getCrc();
+	if (pmc == NULL)	// server/zone/objects/scene/SceneObject.idl():  			planetMapCategory = 0;
+	planetMapCategory = 0;
+
+	else 	// server/zone/objects/scene/SceneObject.idl():  			planetMapCategory = pmc.getCrc();
 	planetMapCategory = pmc->getCrc();
 }
 

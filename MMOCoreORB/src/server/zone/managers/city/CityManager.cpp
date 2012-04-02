@@ -20,7 +20,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CONTAINSCITYNAME__STRING_,RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(ZoneServer* zserv) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zserv);
@@ -517,6 +517,37 @@ void CityManager::sendMaintenanceReport(CityRegion* city, CreatureObject* creatu
 		_implementation->sendMaintenanceReport(city, creature, terminal);
 }
 
+bool CityManager::containsCityName(const String& name) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CONTAINSCITYNAME__STRING_);
+		method.addAsciiParameter(name);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->containsCityName(name);
+}
+
+bool CityManager::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(zone);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->validateCityInRange(creature, zone, x, y);
+}
+
 void CityManager::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -689,6 +720,12 @@ CityManagerImplementation::CityManagerImplementation(ZoneServer* zserv) {
 	configLoaded = false;
 }
 
+bool CityManagerImplementation::containsCityName(const String& name) {
+	Locker _locker(_this);
+	// server/zone/managers/city/CityManager.idl():  		return cities.contains(name);
+	return (&cities)->contains(name);
+}
+
 void CityManagerImplementation::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
 	// server/zone/managers/city/CityManager.idl():  	}
 	if (city->isMayor(mayor->getObjectID())){
@@ -821,6 +858,12 @@ void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
 		sendMaintenanceReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_CONTAINSCITYNAME__STRING_:
+		resp->insertBoolean(containsCityName(inv->getAsciiParameter(_param0_containsCityName__String_)));
+		break;
+	case RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_:
+		resp->insertBoolean(validateCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
 		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -955,6 +998,14 @@ void CityManagerAdapter::promptAdjustTaxes(CityRegion* city, CreatureObject* may
 
 void CityManagerAdapter::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	(static_cast<CityManager*>(stub))->sendMaintenanceReport(city, creature, terminal);
+}
+
+bool CityManagerAdapter::containsCityName(const String& name) {
+	return (static_cast<CityManager*>(stub))->containsCityName(name);
+}
+
+bool CityManagerAdapter::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
+	return (static_cast<CityManager*>(stub))->validateCityInRange(creature, zone, x, y);
 }
 
 void CityManagerAdapter::toggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {

@@ -20,7 +20,7 @@
  *	RegionStub
  */
 
-enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
+enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -63,6 +63,19 @@ CityRegion* Region::getCityRegion() {
 		return static_cast<CityRegion*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getCityRegion();
+}
+
+void Region::notifyLoadFromDatabase() {
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
 }
 
 void Region::notifyEnter(SceneObject* object) {
@@ -378,6 +391,9 @@ void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETCITYREGION__:
 		resp->insertLong(getCityRegion()->_getObjectID());
 		break;
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		notifyLoadFromDatabase();
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -407,6 +423,10 @@ void RegionAdapter::setCityRegion(CityRegion* city) {
 
 CityRegion* RegionAdapter::getCityRegion() {
 	return (static_cast<Region*>(stub))->getCityRegion();
+}
+
+void RegionAdapter::notifyLoadFromDatabase() {
+	(static_cast<Region*>(stub))->notifyLoadFromDatabase();
 }
 
 void RegionAdapter::notifyEnter(SceneObject* object) {

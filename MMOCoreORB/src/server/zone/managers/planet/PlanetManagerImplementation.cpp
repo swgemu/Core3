@@ -19,6 +19,7 @@
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/datatables/DataTableCell.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 #include "server/zone/managers/planet/MapLocationType.h"
 
@@ -451,6 +452,27 @@ void PlanetManagerImplementation::loadClientRegions() {
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
+}
+
+bool PlanetManagerImplementation::validateRegionName(const String& name) {
+	String lowerCase = name.toLowerCase();
+	Locker locker(_this);
+
+	if (hasRegion(name) || hasRegion(lowerCase))
+		return false;
+
+	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
+		String regionName = regionMap.getRegion(i)->getRegionName();
+
+		if (regionName.beginsWith("@")) {
+			String fullName = StringIdManager::instance()->getStringId(regionName.hashCode()).toString().toLowerCase();
+
+			if ((!fullName.isEmpty()) && (lowerCase == fullName || fullName.contains(lowerCase) || lowerCase.contains(fullName)))
+				return false;
+		}
+	}
+
+	return true;
 }
 
 void PlanetManagerImplementation::initializeTransientMembers() {

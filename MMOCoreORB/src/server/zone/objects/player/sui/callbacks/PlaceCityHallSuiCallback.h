@@ -66,14 +66,18 @@ public:
 
 		//Check unique
 		PlanetManager* planetManager = zone->getPlanetManager();
+		CityManager* cityManager = server->getCityManager();
 
-		if (planetManager != NULL && planetManager->hasRegion(cityName)) {
+		Locker locker(cityManager);
+
+		if (!cityManager->validateCityInRange(creature, zone, x, y))
+			return;
+
+		if (!planetManager->validateRegionName(cityName) || !cityManager->validateCityName(cityName)) {
 			creature->sendSystemMessage("@player_structure:cityname_not_unique"); //Another city already has this name. Your city's name must be unique.
 			//Resend the sui.
 			return;
 		}
-
-		CityManager* cityManager = server->getCityManager();
 
 		/*SortedVector<ManagedReference<ActiveArea*> > activeAreas;
 		zone->getInRangeActiveAreas(x, y, activeAreas, true);

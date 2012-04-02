@@ -154,7 +154,8 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	city->setZone(mayor->getZone());
 	city->setCityRank(OUTPOST);
 	city->setMayorID(mayor->getObjectID());
-	city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
+	Region* region = city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
+
 	city->rescheduleUpdateEvent(newCityGracePeriod * 60); //Minutes
 
 	//TODO: Send email to mayor.
@@ -164,9 +165,40 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	return city;
 }
 
+bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
+	Vector3 testPosition(x, y, 0);
+
+	Locker locker(_this);
+
+	for (int i = 0; i < cities.size(); ++i) {
+		CityRegion* city = cities.get(i);
+		Zone* cityZone = city->getZone();
+
+		if (cityZone == zone) {
+			try {
+				Vector3 position(city->getPositionX(), city->getPositionY(), 0);
+
+				if (position.squaredDistanceTo(testPosition) < 1024 * 1024) {
+					StringIdChatParameter msg("player_structure", "city_too_close");
+					msg.setTO(city->getRegionName());
+
+					creature->sendSystemMessage(msg);
+
+					return false;
+				}
+			} catch (Exception& e) {
+				continue;
+			}
+		}
+	}
+
+	return true;
+}
 
 bool CityManagerImplementation::validateCityName(const String& name) {
-	if (cities.contains(name))
+	Locker locker(_this);
+
+	if (cities.contains(name) || cities.contains(name.toLowerCase()))
 		return false;
 
 	return true;
@@ -174,8 +206,8 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 
 void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	//if (city->getCityRank() < CityRegion::RANK_TOWNSHIP) {
-		//mayor->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
-		//return;
+	//mayor->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
+	//return;
 	//}
 
 	if (!mayor->checkCooldownRecovery("city_specialization")) {
@@ -326,8 +358,8 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 	}
 
 	//if (total > creature->getCashCredits()) {
-		//Player doesn't have that many credits
-		//return;
+	//Player doesn't have that many credits
+	//return;
 	//}
 
 	city->addToCityTreasury(total);
@@ -491,6 +523,8 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
+	Locker locker(_this);
+
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 	Zone* zone = NULL;
 
@@ -502,6 +536,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", "@city/city:new_city_fail_subject", params, mayor->getFirstName(), NULL);
+		unregisterCity(city, mayor);
 	}
 
 	zone = city->getZone();
@@ -522,6 +557,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	}
 
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
+
+	cities.drop(city->getRegionName());
 
 	//TODO: Destroy civic structures.
 }
@@ -777,7 +814,9 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 
 	ManagedReference<Region*> aa = city->getRegion(0);
 	aa->setPlanetMapCategory(cityCat);
+	aa->getZone()->getPlanetManager()->addRegion(city);
 	aa->getZone()->registerObjectWithPlanetaryMap(aa);
+
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
 
@@ -787,9 +826,12 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
 	city->setRegistered(false);
 
-	ManagedReference<Region*> aa = city->getRegion(0);
-	aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
-	aa->setPlanetMapCategory(NULL);
+	if (city->getRegionsCount() != 0) {
+		ManagedReference<Region*> aa = city->getRegion(0);
+		aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
+		aa->setPlanetMapCategory(NULL);
+		aa->getZone()->getPlanetManager()->dropRegion(city->getRegionName());
+	}
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 

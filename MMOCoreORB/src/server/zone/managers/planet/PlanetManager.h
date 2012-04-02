@@ -212,6 +212,8 @@ public:
 
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
+	bool validateRegionName(const String& name);
+
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
@@ -347,6 +349,8 @@ public:
 
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
+	bool validateRegionName(const String& name);
+
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
@@ -448,6 +452,8 @@ public:
 
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
+	bool validateRegionName(const String& name);
+
 	WeatherManager* getWeatherManager();
 
 	int getRegionCount();
@@ -487,6 +493,7 @@ protected:
 	String _param0_createTicket__String_String_String_;
 	String _param1_createTicket__String_String_String_;
 	String _param2_createTicket__String_String_String_;
+	String _param0_validateRegionName__String_;
 	String _param0_getRegion__String_;
 	String _param0_dropRegion__String_;
 	String _param0_hasRegion__String_;

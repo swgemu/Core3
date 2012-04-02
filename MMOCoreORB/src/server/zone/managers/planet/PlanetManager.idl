@@ -185,6 +185,8 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
 	 */
 	public native SceneObject createTicket(final string departurePoint, final string arrivalPlanet, final string arrivalPoint);
+	
+	public native boolean validateRegionName(final string name);
 
 	public WeatherManager getWeatherManager() {
 		return weatherManager;
@@ -219,11 +221,11 @@ class PlanetManager extends ManagedService implements Logger {
 		return regionMap.getRegionAt(x, y);
 	}
 	
-	public void addRegion(CityRegion region) {
+	public synchronized void addRegion(CityRegion region) {
 		regionMap.addRegion(region);
 	}
 	
-	public void dropRegion(final string region) {
+	public synchronized void dropRegion(final string region) {
 		regionMap.dropRegion(region);
 	}
 	

@@ -124,6 +124,8 @@ public:
 
 	CityRegion* getCityRegion();
 
+	void notifyLoadFromDatabase();
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -174,6 +176,8 @@ public:
 	void setCityRegion(CityRegion* city);
 
 	CityRegion* getCityRegion();
+
+	void notifyLoadFromDatabase();
 
 	void notifyEnter(SceneObject* object);
 
@@ -233,6 +237,8 @@ public:
 	void setCityRegion(CityRegion* city);
 
 	CityRegion* getCityRegion();
+
+	void notifyLoadFromDatabase();
 
 	void notifyEnter(SceneObject* object);
 
