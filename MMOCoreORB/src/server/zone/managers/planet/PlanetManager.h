@@ -167,6 +167,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/creature/CreaturePosture.h"
 
+#include "server/zone/managers/planet/ClientPoiDataTable.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -196,6 +198,8 @@ public:
 
 	void loadClientRegions();
 
+	void loadClientPoiData();
+
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -205,6 +209,8 @@ public:
 	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
+
+	bool isInRangeWithPoi(float x, float y, float range);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -304,6 +310,8 @@ protected:
 
 	Reference<MissionTargetMap* > performanceLocations;
 
+	static ClientPoiDataTable clientPoiDataTable;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
 
@@ -329,6 +337,8 @@ public:
 
 	void loadClientRegions();
 
+	void loadClientPoiData();
+
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -342,6 +352,8 @@ public:
 	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
+
+	bool isInRangeWithPoi(float x, float y, float range);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -440,11 +452,15 @@ public:
 
 	void loadClientRegions();
 
+	void loadClientPoiData();
+
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
+
+	bool isInRangeWithPoi(float x, float y, float range);
 
 	int getTravelFare(const String& destinationPlanet);
 

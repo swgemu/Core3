@@ -37,6 +37,8 @@
 
 #include "PlanetTravelPoint.h"
 
+ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
+
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
@@ -55,6 +57,7 @@ void PlanetManagerImplementation::initialize() {
 	planetTravelPointList->setZoneName(zone->getZoneName());
 
 	loadClientRegions();
+	loadClientPoiData();
 	loadLuaConfig();
 	loadTravelFares();
 
@@ -402,6 +405,27 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	//TODO: Deprecate this to load from lua files.
 }
 
+void PlanetManagerImplementation::loadClientPoiData() {
+	if (clientPoiDataTable.size() != 0)
+		return;
+
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/clientpoi/clientpoi.iff");
+
+	if (iffStream == NULL) {
+		error("ClientPoiData not found");
+		return;
+	}
+
+	DataTableIff data;
+	data.readObject(iffStream);
+
+	clientPoiDataTable.readObject(&data);
+
+	info("loaded " + String::valueOf(clientPoiDataTable.size()) + " client pois", true);
+
+	delete iffStream;
+}
+
 void PlanetManagerImplementation::loadClientRegions() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
@@ -519,6 +543,24 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 	}
 }
 
+bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range) {
+	String zoneName = zone->getZoneName();
+
+	if (!clientPoiDataTable.containsPlanet(zoneName))
+		return false;
+
+	Vector3 target(x, y, 0);
+
+	Vector<Reference<PoiData*> > pois = clientPoiDataTable.getPois(zoneName);
+
+	for (int i = 0; i < pois.size(); ++i) {
+		if (pois.get(i)->getPosition().squaredDistanceTo(target) <= range * range)
+			return true;
+	}
+
+	return false;
+}
+
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
@@ -557,6 +599,9 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 	if (isInWater(targetPos.getX(), targetPos.getY())) {
 		return false;
 	}
+
+	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 512))
+		return false;
 
 	return true;
 }

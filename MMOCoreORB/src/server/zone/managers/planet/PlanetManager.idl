@@ -71,6 +71,7 @@ include engine.lua.LuaObject;
 include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
 include server.zone.objects.creature.CreaturePosture;
+include server.zone.managers.planet.ClientPoiDataTable;
 import server.zone.objects.area.ActiveArea;
 
 class PlanetManager extends ManagedService implements Logger {
@@ -101,6 +102,9 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient TerrainManager terrainManager;
 	
 	protected transient MissionTargetMap performanceLocations;
+	
+	@dereferenced
+	protected static transient ClientPoiDataTable clientPoiDataTable;
 	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
@@ -141,6 +145,7 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public native void initialize();
 	public native void loadClientRegions();
+	public native void loadClientPoiData();
 	public native void loadBadgeAreas();
 	public native void loadPerformanceLocations();
 	protected native void loadStaticTangibleObjects();
@@ -164,6 +169,8 @@ class PlanetManager extends ManagedService implements Logger {
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
 	
 	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild = null);
+	
+	public native boolean isInRangeWithPoi(float x, float y, float range);
 	
 	/**
 	 * Gets the cost to travel via shuttleport/starport to the destination planet.
