@@ -28,6 +28,8 @@
 
 using namespace engine::db;
 
+//#define PRINT_OBJECT_COUNT
+
 ObjectManager::ObjectManager() : DOBObjectManager(), Logger("ObjectManager") {
 	server = NULL;
 	objectUpdateInProcess = false;
@@ -1131,7 +1133,14 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	Vector<DistributedObject*> objectsToDelete;
 	Vector<Reference<DistributedObject*> > objectsToDeleteFromRAM;
 
-	localObjectDirectory.getObjectsMarkedForUpdate(objectsToUpdate, objectsToDelete, objectsToDeleteFromRAM);
+#ifdef PRINT_OBJECT_COUNT
+	VectorMap<String, int> inRamClassCount;
+	inRamClassCount.setNullValue(0);
+
+	localObjectDirectory.getObjectsMarkedForUpdate(objectsToUpdate, objectsToDelete, objectsToDeleteFromRAM, &inRamClassCount);
+#else
+	localObjectDirectory.getObjectsMarkedForUpdate(objectsToUpdate, objectsToDelete, objectsToDeleteFromRAM, NULL);
+#endif
 
 	Time start;
 
@@ -1181,8 +1190,22 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	CommitMasterTransactionThread::instance()->startWatch(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask, galaxyId, resultSet);
 
-
 #ifndef WITH_STM
 	_locker.release();
+#endif
+
+#ifdef PRINT_OBJECT_COUNT
+	System::out << "printing object count in ram:\n";
+
+	VectorMap<int, String> orderedByCount(inRamClassCount.size(), 1);
+	orderedByCount.setAllowDuplicateInsertPlan();
+
+	for (int i = 0; i < inRamClassCount.size(); ++i) {
+		orderedByCount.put(inRamClassCount.elementAt(i).getValue(), inRamClassCount.elementAt(i).getKey());
+	}
+
+	for (int i = 0; i < orderedByCount.size(); ++i) {
+		System::out << orderedByCount.elementAt(i).getValue() + " " << orderedByCount.elementAt(i).getKey() << "\n";
+	}
 #endif
 }
