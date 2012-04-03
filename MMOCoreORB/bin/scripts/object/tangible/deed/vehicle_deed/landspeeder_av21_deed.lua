@@ -47,6 +47,15 @@ object_tangible_deed_vehicle_deed_landspeeder_av21_deed = object_tangible_deed_v
 
 	controlDeviceObjectTemplate = "object/intangible/vehicle/landspeeder_av21_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/landspeeder_av21.iff"
+
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points"},
+	experimentalMin = {0, 0, 1500},
+	experimentalMax = {0, 0, 3000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_landspeeder_av21_deed, "object/tangible/deed/vehicle_deed/landspeeder_av21_deed.iff")

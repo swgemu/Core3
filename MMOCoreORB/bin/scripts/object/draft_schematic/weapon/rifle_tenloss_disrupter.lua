@@ -56,7 +56,7 @@ object_draft_schematic_weapon_rifle_tenloss_disrupter = object_draft_schematic_w
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 
-   customizationSkill = "", 
+   customizationSkill = "weapon_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -74,6 +74,7 @@ object_draft_schematic_weapon_rifle_tenloss_disrupter = object_draft_schematic_w
    targetTemplate = "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff",
              }
 
 }

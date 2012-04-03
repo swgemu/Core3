@@ -98,8 +98,6 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen2 = object
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	gameObjectType = 131090,
-	
 	healthAttackCost = 47,
 	actionAttackCost = 55,
 	mindAttackCost = 25,
@@ -118,8 +116,6 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen2 = object
 	maxDamage = 215,
 
 	attackSpeed = 5.1,
-	
-	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
