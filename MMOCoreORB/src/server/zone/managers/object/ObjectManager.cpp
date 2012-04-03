@@ -925,11 +925,11 @@ uint64 ObjectManager::getNextObjectID(const String& database) {
 uint64 ObjectManager::getNextFreeObjectID() {
 	//assert(DistributedObjectBroker::instance()->isRootBroker());
 
-	uint64 val = DOBObjectManager::getNextFreeObjectID();
+	return DOBObjectManager::getNextFreeObjectID();
 //	its saved every 5min, that should be enough
 //	databaseManager->updateLastUsedObjectID(val);
 
-	return val;
+	//return nextObjectID;
 }
 
 ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID) {
@@ -1116,7 +1116,7 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	objectUpdateInProcess = true;
 
-	databaseManager->updateLastUsedObjectID(nextObjectID);
+	databaseManager->updateLastUsedObjectID(getNextFreeObjectID());
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
