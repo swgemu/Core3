@@ -1,46 +1,46 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
-This File is part of Core3.
+ This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 2 of the License,
+ or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
+ */
 
 #include "engine/engine.h"
 #include "server/zone/ZoneProcessServer.h"
@@ -51,7 +51,8 @@ which carries forward this exception.
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/objects/tangible/Instrument.h"
 
-PerformanceManager::PerformanceManager(): Logger("PerformanceManager") {
+PerformanceManager::PerformanceManager() :
+	Logger("PerformanceManager") {
 	loadPerformances();
 
 	danceMap.put("basic", "dance_1");
@@ -93,14 +94,13 @@ PerformanceManager::PerformanceManager(): Logger("PerformanceManager") {
 	instrumentIdMap.put("starwars4", 111);
 	instrumentIdMap.put("funk", 121);
 
-
-
 }
 
-int PerformanceManager::getInstrumentAnimation(int instrumentType, String& instrumentAnimation) {
+int PerformanceManager::getInstrumentAnimation(int instrumentType,
+		String& instrumentAnimation) {
 	int instrid = 0;
 
-	switch(instrumentType) {
+	switch (instrumentType) {
 	case Instrument::SLITHERHORN: //SLITHERHORN: yeah!
 		instrid += 0;
 		instrumentAnimation = "music_3";
@@ -204,7 +204,8 @@ PerformanceManager::~PerformanceManager() {
 
 void PerformanceManager::loadPerformances() {
 
-	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/performance/performance.iff");
+	IffStream* iffStream = TemplateManager::instance()->openIffFile(
+			"datatables/performance/performance.iff");
 
 	if (iffStream == NULL) {
 		error("Could not open performances datatable.");
@@ -216,7 +217,7 @@ void PerformanceManager::loadPerformances() {
 
 	delete iffStream;
 
-	performances = new Vector<Performance*>();
+	performances = new Vector<Performance*> ();
 	for (int i = 0; i < dtable.getTotalRows(); ++i) {
 		DataTableRow* row = dtable.getRow(i);
 
@@ -225,8 +226,39 @@ void PerformanceManager::loadPerformances() {
 		performances->add(performance);
 	}
 
-	info("Loaded " + String::valueOf(performances->size()) + " performances.", true);
+	info("Loaded " + String::valueOf(performances->size()) + " performances.",
+			true);
+}
 
+Vector<Performance*> PerformanceManager::getPerformanceListFromMod(
+		const String& requiredSkillMod, int playerSkillModValue, int instrument) {
+	String instrumentName = "";
+	if (instrument != 0)
+		instrumentName = getInstrument(instrument);
+
+	Vector<Performance*> performanceList;
+
+	if (performances != NULL) {
+
+		for (int i = 0; i < performances->size(); ++i) {
+			Performance* perform = performances->get(i);
+			if (perform->getRequiredSkillMod() == requiredSkillMod
+					&& perform->getRequiredSkillModValue()
+							<= playerSkillModValue) {
+				if (instrumentName != "") {
+					//Should be a music call, look only for performances with that instrument
+					if (instrumentName == perform->getRequiredInstrument())
+						performanceList.add(perform);
+				} else {
+					//Should be a dance call
+					performanceList.add(perform);
+				}
+			}
+		}
+
+	}
+
+	return performanceList;
 }
 
 Performance* PerformanceManager::getDance(const String& name) {
@@ -247,7 +279,8 @@ Performance* PerformanceManager::getSong(const String& name, int instrumentType)
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance* ret = performances->get(i);
 
-			if (ret->isMusic() && ret->getName() == name && ret->getInstrumentAudioId() == instrumentType)
+			if (ret->isMusic() && ret->getName() == name
+					&& ret->getInstrumentAudioId() == instrumentType)
 				return ret;
 		}
 	}
