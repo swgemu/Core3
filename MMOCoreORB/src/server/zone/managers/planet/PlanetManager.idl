@@ -194,6 +194,7 @@ class PlanetManager extends ManagedService implements Logger {
 	public native SceneObject createTicket(final string departurePoint, final string arrivalPlanet, final string arrivalPoint);
 	
 	public native boolean validateRegionName(final string name);
+	public native boolean validateClientCityInRange(CreatureObject creatureObject, float x, float y);
 
 	public WeatherManager getWeatherManager() {
 		return weatherManager;

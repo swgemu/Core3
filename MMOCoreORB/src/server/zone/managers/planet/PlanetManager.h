@@ -220,6 +220,8 @@ public:
 
 	bool validateRegionName(const String& name);
 
+	bool validateClientCityInRange(CreatureObject* creatureObject, float x, float y);
+
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
@@ -363,6 +365,8 @@ public:
 
 	bool validateRegionName(const String& name);
 
+	bool validateClientCityInRange(CreatureObject* creatureObject, float x, float y);
+
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
@@ -469,6 +473,8 @@ public:
 	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
+
+	bool validateClientCityInRange(CreatureObject* creatureObject, float x, float y);
 
 	WeatherManager* getWeatherManager();
 

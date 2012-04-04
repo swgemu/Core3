@@ -478,6 +478,38 @@ void PlanetManagerImplementation::loadClientRegions() {
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
 }
 
+bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {
+	Vector3 testPosition(x, y, 0);
+
+	Locker locker(_this);
+
+	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
+		CityRegion* region = regionMap.getRegion(i);
+
+		for (int j = 0; j < region->getRegionsCount(); ++j) {
+			Region* activeRegion = region->getRegion(j);
+			float radius = activeRegion->getRadius();
+
+			if (radius < 512)
+				radius = 512;
+
+			float range = radius * 2;
+
+			Vector3 position(activeRegion->getPositionX(), activeRegion->getPositionY(), 0);
+
+			if (position.squaredDistanceTo(testPosition) <= range * range) {
+				StringIdChatParameter msg("player_structure", "city_too_close");
+				msg.setTO(region->getRegionName());
+
+				creature->sendSystemMessage(msg);
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
 bool PlanetManagerImplementation::validateRegionName(const String& name) {
 	String lowerCase = name.toLowerCase();
 	Locker locker(_this);

@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -230,6 +230,22 @@ bool PlanetManager::validateRegionName(const String& name) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->validateRegionName(name);
+}
+
+bool PlanetManager::validateClientCityInRange(CreatureObject* creatureObject, float x, float y) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_);
+		method.addObjectParameter(creatureObject);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->validateClientCityInRange(creatureObject, x, y);
 }
 
 WeatherManager* PlanetManager::getWeatherManager() {
@@ -915,6 +931,9 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_VALIDATEREGIONNAME__STRING_:
 		resp->insertBoolean(validateRegionName(inv->getAsciiParameter(_param0_validateRegionName__String_)));
 		break;
+	case RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_:
+		resp->insertBoolean(validateClientCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		break;
 	case RPC_GETWEATHERMANAGER__:
 		resp->insertLong(getWeatherManager()->_getObjectID());
 		break;
@@ -1021,6 +1040,10 @@ SceneObject* PlanetManagerAdapter::createTicket(const String& departurePoint, co
 
 bool PlanetManagerAdapter::validateRegionName(const String& name) {
 	return (static_cast<PlanetManager*>(stub))->validateRegionName(name);
+}
+
+bool PlanetManagerAdapter::validateClientCityInRange(CreatureObject* creatureObject, float x, float y) {
+	return (static_cast<PlanetManager*>(stub))->validateClientCityInRange(creatureObject, x, y);
 }
 
 WeatherManager* PlanetManagerAdapter::getWeatherManager() {

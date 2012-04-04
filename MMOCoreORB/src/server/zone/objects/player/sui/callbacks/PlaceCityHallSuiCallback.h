@@ -70,7 +70,7 @@ public:
 
 		Locker locker(cityManager);
 
-		if (!cityManager->validateCityInRange(creature, zone, x, y))
+		if (!cityManager->validateCityInRange(creature, zone, x, y) || !planetManager->validateClientCityInRange(creature, x, y))
 			return;
 
 		if (!planetManager->validateRegionName(cityName) || !cityManager->validateCityName(cityName)) {
