@@ -200,6 +200,10 @@ void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
 	/// Slot Index
 	slotIndexes.insertToMessage(mcso7);
 
+	/// Ingredient Counter
+	mcso7->insertByte(getIngredientCounter());
+	// ************
+
 	/// Experimenting names
 	int titleCount = craftingValues->getVisibleExperimentalPropertyTitleSize();
 
@@ -277,10 +281,6 @@ void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
 	// Template List
 	mcso7->insertInt(0);
 	mcso7->insertInt(0);
-	// ************
-
-	/// Ingredient Counter
-	mcso7->insertByte(getIngredientCounter());
 	// ************
 
 	// Ready
