@@ -2025,6 +2025,16 @@ void CreatureObjectImplementation::clearBuffs(bool updateclient) {
 }
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
+	if (hasState(CreatureState::ALERT)){
+	// Following fixes beings 'stuck' in meditate after a server restart, by re-registering the observers if the player has the Alert (meditating) state.
+	SortedVector<ManagedReference<Observer* > >* observers = getObservers(ObserverEventType::POSITIONCHANGED);
+
+			if (observers == NULL) {
+				PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
+				registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
+			}
+	}
+
 	notifyObservers(ObserverEventType::POSTURECHANGED, NULL, newPosture);
 }
 

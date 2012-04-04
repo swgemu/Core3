@@ -57,7 +57,7 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if (!(creature->hasDamage(CreatureAttribute::HEALTH) || creature->hasDamage(CreatureAttribute::ACTION) || creature->hasDamage(CreatureAttribute::MIND))) {
+		if ((creature->getMaxHAM(CreatureAttribute::HEALTH) == creature->getHAM(CreatureAttribute::HEALTH)) || (creature->getMaxHAM(CreatureAttribute::ACTION) == creature->getHAM(CreatureAttribute::ACTION)) || (creature->getMaxHAM(CreatureAttribute::MIND) == creature->getHAM(CreatureAttribute::MIND))) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}

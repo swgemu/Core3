@@ -58,7 +58,7 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if (!(creature->hasDamage(CreatureAttribute::HEALTH))) {
+		if (creature->getMaxHAM(CreatureAttribute::ACTION) == creature->getHAM(CreatureAttribute::ACTION)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
@@ -109,7 +109,7 @@ public:
 
 			// Play client effect, and deduct Force Power.
 
-			forceCost = MAX((healthHealed / 7), 65);
+			forceCost = MIN((healthHealed / 7), 65);
 
 			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
@@ -122,7 +122,7 @@ public:
 
 
 	float getCommandDuration(CreatureObject* object) {
-		return defaultTime * 4.0;
+		return defaultTime * 3.0;
 	}
 };
 

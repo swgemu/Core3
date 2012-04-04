@@ -134,7 +134,7 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
-		if (creature->isKneeling() && weapon->isMeleeWeapon())
+		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
 
 		if (creature->isProne() && !weapon->isRangedWeapon())

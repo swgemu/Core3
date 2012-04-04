@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FORCEMEDITATECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/events/ForceMeditateTask.h"
 
 class ForceMeditateCommand : public QueueCommand {
 public:
@@ -79,8 +80,11 @@ public:
 		// Force Meditate Task
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		creature->sendSystemMessage("@teraskasi:med_begin");
+		Reference<ForceMeditateTask*> fmeditateTask = new ForceMeditateTask(player);
+		fmeditateTask->setMoodString(player->getMoodString());
+		player->addPendingTask("forcemeditate", fmeditateTask, 3500);
+
 		player->setMeditateState();
-		creature->playEffect("clienteffect/pl_force_meditate_self.cef", "");
 
 		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
 		player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);

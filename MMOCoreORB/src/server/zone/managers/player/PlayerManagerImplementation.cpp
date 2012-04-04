@@ -48,6 +48,7 @@
 
 
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
+#include "server/zone/objects/player/events/ForceMeditateTask.h"
 #include "server/zone/objects/player/events/MeditateTask.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
@@ -1685,34 +1686,42 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 }
 
 int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);
 
-		// Check POSTERCHANGE on Meditate...
-		Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
-		if (meditateTask != NULL) {
-			creature->removePendingTask("meditate");
+
+		if (creature->hasState(CreatureState::ALERT)){ // This can apply to TKA AND Jedi meditate since they share the same sysmsgs / moods.
 			creature->sendSystemMessage("@teraskasi:med_end");
 			creature->setMood(creature->getMoodID(), true);
 			creature->clearState(CreatureState::ALERT, true);
 
-			if (meditateTask->isScheduled())
-				meditateTask->cancel();
-		}
+				// Check POSTERCHANGE on Meditate...
+				Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
+					if (meditateTask != NULL) {
+							creature->removePendingTask("meditate");
+
+								if (meditateTask->isScheduled())
+										meditateTask->cancel();
+						}
+
+				// Check POSTERCHANGE on Force Meditate...
+				Reference<ForceMeditateTask*> fmeditateTask = cast<ForceMeditateTask*>( creature->getPendingTask("forcemeditate"));
+
+					if (fmeditateTask != NULL) {
+						creature->removePendingTask("forcemeditate");
+
+							if (fmeditateTask->isScheduled())
+								fmeditateTask->cancel();
+							}
+	}
 
 		// Check POSTURECHANGED disrupting Logout...
 		Reference<LogoutTask*> logoutTask = (LogoutTask*) creature->getPendingTask("logout");
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
 		}
-
-		// Check POSTERCHANGE on Force Meditate...
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("@teraskasi:med_end");
-			creature->setMood(creature->getMoodID(), true);
-			creature->clearState(CreatureState::ALERT, true);
 		}
-	}
 
 	return 1;
 }

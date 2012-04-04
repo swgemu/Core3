@@ -798,6 +798,38 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
+	// Next is Jedi Force Armor reduction.
+	int forceArmor = defender->getSkillMod("force_armor");
+	if (!defender->isAiAgent() && (forceArmor > 0) && (weapon->getAttackType() != WeaponObject::FORCEATTACK)) {
+		float originalDamage = damage;
+		float armorReduction = forceArmor;
+		float frsModsL = defender->getSkillMod("force_control_light");
+		float frsModsD = defender->getSkillMod("force_control_dark");
+
+		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+
+		// Client Effect upon hit.
+		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
+
+		if (frsModsL > 0){ // If they are in the Light FRS.
+			damage *= (1.f - ((armorReduction * (frsModsL / 1.5)) / 100.f));
+			int forceCost = originalDamage - damage;
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
+
+		else if (frsModsD > 0){ // If they are in the Dark FRS.
+			damage *= (1.f - ((armorReduction * (frsModsD / 1.5)) / 100.f));
+			int forceCost = originalDamage - damage;
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
+
+		else { // If they are in neither (padawan).
+			damage *= (1.f - (armorReduction / 100.f));
+			int forceCost = originalDamage - damage;
+			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
+	}
+
 	// now apply the rest of the damage to the regular armor
 	ManagedReference<ArmorObject*> armor = NULL;
 
