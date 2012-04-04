@@ -177,6 +177,78 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 	return true;
 }
 
+float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return 0.f;
+
+	float height = 0;
+
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+	//need to include exclude affectors in the terrain calcs
+	height = terrainManager->getHeight(x, y);
+
+	Vector3 rayStart(x, 16384.f, y);
+	Vector3 rayEnd(x, -16384.f, y);
+
+	Triangle* triangle = NULL;
+
+	if (testWater) {
+		float waterHeight;
+
+		if (terrainManager->getWaterHeight(x, y, waterHeight))
+			if (waterHeight > height)
+				height = waterHeight;
+	}
+
+	float intersectionDistance;
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		BuildingObject* building = dynamic_cast<BuildingObject*>(closeObjects.get(i).get());
+
+		if (building == NULL)
+			continue;
+
+		//building->getObjectTemplate()->get
+
+		SharedObjectTemplate* templateObject = building->getObjectTemplate();
+
+		if (templateObject == NULL)
+			continue;
+
+		PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+		if (portalLayout == NULL)
+			continue;
+
+		if (portalLayout->getFloorMeshNumber() == 0)
+			continue;
+
+		//find nearest entrance
+		FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
+		AABBTree* aabbTree = exteriorFloorMesh->getAABBTree();
+
+		if (aabbTree == NULL)
+			continue;
+
+		Ray ray = convertToModelSpace(rayStart, rayEnd, building);
+
+		if (aabbTree->intersects(ray, 16384 * 2, intersectionDistance, triangle, true)) {
+			float floorHeight = 16384 - intersectionDistance;
+
+			if (floorHeight > height)
+				height = floorHeight;
+		}
+	}
+
+	return height;
+}
+
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 

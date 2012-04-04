@@ -62,6 +62,8 @@ public:
 	static bool checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cell);
 	static float getRayOriginPoint(CreatureObject* creature);
 
+	static float getWorldFloorCollision(float x, float y, Zone* zone, bool testWater);
+
 	//static bool
 
 	static bool checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint);

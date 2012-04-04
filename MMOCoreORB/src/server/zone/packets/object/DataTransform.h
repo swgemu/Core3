@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
@@ -139,6 +140,10 @@ public:
 
 			return;
 		}
+
+		/*float floorHeight = CollisionManager::instance()->getWorldFloorCollision(positionX, positionY, object->getZone(), true);
+
+		printf("received height: %f calculated height: %f\n", positionZ, floorHeight); */
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 
