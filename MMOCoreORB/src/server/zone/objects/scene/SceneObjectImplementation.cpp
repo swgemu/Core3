@@ -460,18 +460,13 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//sending all objects by default
-	SortedVector<uint64> objects(getContainerObjectsSize(), getContainerObjectsSize());
-	objects.setNoDuplicateInsertPlan();
-
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
 
-		if (objects.put(containerObject->getObjectID()) != -1) {
-			if (containerObject->isInQuadTree()) {
-				notifyInsert(containerObject);
-			} else {
-				containerObject->sendTo(player, true);
-			}
+		if (containerObject->isInQuadTree()) {
+			notifyInsert(containerObject);
+		} else {
+			containerObject->sendTo(player, true);
 		}
 	}
 }
