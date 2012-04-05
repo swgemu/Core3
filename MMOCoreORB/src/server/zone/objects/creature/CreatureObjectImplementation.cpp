@@ -2304,7 +2304,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isInBountyLockList(object) || targetGhost->isInBountyLockList(_this))
 		return true;
 
-	if (isInBountyMission(_this, object))
+	if (isInBountyMission(object, _this))
 		return true;
 
 	return false;
@@ -2337,7 +2337,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (ghost->isInBountyLockList(object) || targetGhost->isInBountyLockList(_this))
 		return true;
 
-	if (isInBountyMission(_this, object))
+	if (isInBountyMission(object, _this))
 		return true;
 
 	return false;
