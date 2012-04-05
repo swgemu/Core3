@@ -56,15 +56,14 @@ void ThreatMap::registerObserver(CreatureObject* target) {
 }
 
 void ThreatMap::removeObservers() {
-	Locker locker(self);
-
 	for (int i = 0; i < size(); ++i) {
 		CreatureObject* creature = elementAt(i).getKey();
 
-		Locker clocker(creature, self);
+		if (creature != NULL && threatMapObserver != NULL) {
+			Locker clocker(creature);
 
-		if(creature != NULL && threatMapObserver != NULL)
 			creature->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+		}
 	}
 }
 
