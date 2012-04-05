@@ -822,7 +822,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
 						Buff* buff = cast<Buff*>(getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION));
 
 						if (buff != NULL){
-							buff->deactivate(true);
+							removeBuff(buff);
 						}
 					} else {
 						playerObject->setForcePower(playerObject->getForcePower() - forceCost);

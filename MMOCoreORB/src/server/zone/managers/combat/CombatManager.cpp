@@ -830,7 +830,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
 
 				if (buff != NULL)
-					buff->deactivate(true);
+					defender->removeBuff(buff);
 			}
 				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
@@ -842,7 +842,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
 
 				if (buff != NULL)
-					buff->deactivate(true);
+					defender->removeBuff(buff);
 			}
 				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
