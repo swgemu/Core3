@@ -55,6 +55,20 @@ public:
 
 	}
 
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (!creatureTarget->isBleeding()) {
+			if (creature == creatureTarget)
+				creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
+			else {
+				StringIdChatParameter stringId("healing_response", "healing_response_80");
+				stringId.setTT(creatureTarget->getObjectID());
+				creature->sendSystemMessage(stringId); //%NT is not bleeding.
+			}
+			return false;
+		}
+		return true;
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -63,7 +77,55 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+			if (object != NULL && !object->isCreatureObject()) {
+				return INVALIDTARGET;
+			} else if (object == NULL)
+				object = creature;
+
+			CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
+
+			Locker clocker(targetCreature, creature);
+
+			if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
+				targetCreature = creature;
+
+			int range = 32;
+
+			if (!creature->isInRange(targetCreature, range))
+				return TOOFAR;
+
+			PlayerObject* targetGhost = targetCreature->getPlayerObject();
+
+			if (targetGhost != NULL && targetCreature->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
+				return GENERALERROR;
+			}
+
+			if (!canPerformSkill(creature, targetCreature))
+				return GENERALERROR;
+
+
+				targetCreature->healDot(CreatureState::BLEEDING, 30);
+
+
+
+				ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+				playerObject->setForcePower(playerObject->getForcePower() - 65);
+
+				if (targetCreature == creature){
+					creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+				} else {
+					creature->doAnimation("force_healing_1");
+				}
+
 		return SUCCESS;
+	}
+
+	float getCommandDuration(CreatureObject* object) {
+		return defaultTime * 3.0;
 	}
 
 };
