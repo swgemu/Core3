@@ -78,6 +78,13 @@ public:
 		if (actionModifier > 3 || actionModifier < 1)
 			actionModifier = 3;
 
+		int actionCost = 30 * actionModifier;
+		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
+			creature->sendSystemMessage("@performance:effect_too_tired");
+			return GENERALERROR;
+		}
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
+
 		StringBuffer effect;
 		effect << "clienteffect/entertainer_distract_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");

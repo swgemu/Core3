@@ -63,7 +63,13 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isEntertaining()) {
+			creature->sendSystemMessage("@performance:effect_not_performing");
+			return GENERALERROR;
+		}
+
 		if (!creature->isPlayingMusic()) {
+			creature->sendSystemMessage("@performance:effect_not_performing_correct");
 			return GENERALERROR;
 		}
 
@@ -74,7 +80,26 @@ public:
 
 		StringBuffer effect;
 		effect << "clienteffect/entertainer_ventriloquism_level_" << dec << actionModifier << ".cef";
-		creature->playEffect(effect.toString(), "");
+
+		uint64 selectedTarget = creature->getTargetID();
+ 		ManagedReference<CreatureObject*> targetCreature = cast<CreatureObject*>(server->getZoneServer()->getObject(selectedTarget));
+
+ 		if(targetCreature == NULL) {
+			creature->sendSystemMessage("@performance:effect_need_target");
+			return GENERALERROR;
+		}
+		if(targetCreature == creature || !targetCreature->isPlayerCreature())
+			return GENERALERROR;
+
+
+		int actionCost = 30 * actionModifier;
+		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
+			creature->sendSystemMessage("@performance:effect_too_tired");
+			return GENERALERROR;
+		}
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
+
+		targetCreature->playEffect(effect.toString(), "");
 
 		creature->sendSystemMessage("@performance:effect_perform_ventriloquism");
 
