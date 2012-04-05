@@ -57,7 +57,7 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if (creature->getMaxHAM(CreatureAttribute::ACTION) == creature->getHAM(CreatureAttribute::ACTION)) {
+		if (!creature->hasDamage(CreatureAttribute::ACTION) && creature->getWounds(CreatureAttribute::ACTION) <= 0) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
@@ -103,15 +103,17 @@ public:
 				message2.setDI(actionHealed);
 				message2.setTO("@jedi_spam:action_damage");
 				creature->sendSystemMessage(message2);
+
+				// Play client effect, and deduct Force Power.
+
+				forceCost = MIN((actionHealed / 15), 100);
+
+				creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 			}
 
 
-			// Play client effect, and deduct Force Power.
 
-			forceCost = MIN((actionHealed / 15), 100);
-
-			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 
 		return SUCCESS;
 		}
