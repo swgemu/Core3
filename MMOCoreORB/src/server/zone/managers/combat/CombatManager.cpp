@@ -813,20 +813,38 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 		if (frsModsL > 0){ // If they are in the Light FRS.
 			damage *= (1.f - ((armorReduction * (frsModsL / 1.5)) / 100.f));
-			int forceCost = originalDamage - damage;
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
 
 		else if (frsModsD > 0){ // If they are in the Dark FRS.
 			damage *= (1.f - ((armorReduction * (frsModsD / 1.5)) / 100.f));
-			int forceCost = originalDamage - damage;
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
 
 		else { // If they are in neither (padawan).
 			damage *= (1.f - (armorReduction / 100.f));
-			int forceCost = originalDamage - damage;
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
+
+		if (forceArmor == 25){ // Force Armor 1
+			int forceCost = (originalDamage - damage) * 0.5;
+			int fP = playerObject->getForcePower();
+			if (fP <= forceCost){
+				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
+
+				if (buff != NULL)
+					buff->deactivate(true);
+			}
+				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
+
+		else if (forceArmor == 45){ // Force Armor 2
+			int forceCost = (originalDamage - damage) * 0.3;
+			int fP = playerObject->getForcePower();
+			if (fP <= forceCost){
+				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
+
+				if (buff != NULL)
+					buff->deactivate(true);
+			}
+				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
 	}
 

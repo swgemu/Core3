@@ -809,6 +809,28 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
 
 	int newValue = currentValue - damage;
 
+	int AI = getSkillMod("avoid_incapacitation");
+
+	// For Avoid Incap.
+
+		if (AI > 0 && newValue <= 0){
+			ManagedReference<PlayerObject*> playerObject = getPlayerObject();
+			if (playerObject != NULL){
+					float fP = (float)playerObject->getForcePower();
+					int forceCost = damage * 0.2;
+					if ((fP <= forceCost)) {
+						Buff* buff = cast<Buff*>(getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION));
+
+						if (buff != NULL){
+							buff->deactivate(true);
+						}
+					} else {
+						playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+						newValue = 1;
+					}
+			}
+	}
+
 	if (!destroy && newValue <= 0)
 		newValue = 1;
 

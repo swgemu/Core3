@@ -63,6 +63,70 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		uint32 buffcrc;
+
+		uint32 buffcrc1 = BuffCRC::JEDI_AVOID_INCAPACITATION;
+		uint32 buffcrc2 = BuffCRC::JEDI_AVOID_INCAPACITATION_1;
+		uint32 buffcrc3 = BuffCRC::JEDI_AVOID_INCAPACITATION_2;
+		uint32 buffcrc4 = BuffCRC::JEDI_AVOID_INCAPACITATION_3;
+		uint32 buffcrc5 = BuffCRC::JEDI_AVOID_INCAPACITATION_4;
+		uint32 buffcrc6 = BuffCRC::JEDI_AVOID_INCAPACITATION_5;
+
+		if(creature->hasBuff(buffcrc1)) {
+;			buffcrc = buffcrc2;
+		}
+
+		else if (creature->hasBuff(buffcrc2)) {
+			buffcrc = buffcrc3;
+		}
+
+
+		else if (creature->hasBuff(buffcrc3)) {
+			buffcrc = buffcrc4;
+		}
+
+		else if (creature->hasBuff(buffcrc4)) {
+			buffcrc = buffcrc5;
+		}
+
+		else if (creature->hasBuff(buffcrc5)) {
+			buffcrc = buffcrc6;
+		}
+
+		else buffcrc = buffcrc1;
+
+
+		// Force cost of skill.
+		int forceCost = 750;
+
+
+		//Check for and deduct Force cost.
+
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+
+		if (playerObject->getForcePower() <= forceCost) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
+
+			return GENERALERROR;
+		}
+
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+
+		StringIdChatParameter startStringId("jedi_spam", "apply_avoidincapacitation");
+		StringIdChatParameter endStringId("jedi_spam", "remove_avoidincapacitation");
+
+		int duration = 30;
+
+		ManagedReference<Buff*> buff = new Buff(creature, buffcrc, duration, BuffType::JEDI);
+		buff->setStartMessage(startStringId);
+		buff->setEndMessage(endStringId);
+		buff->setSkillModifier("avoid_incapacitation", 1);
+
+		creature->addBuff(buff);
+		creature->playEffect("clienteffect/pl_force_avoid_incap_self.cef", "");
+
+
 		return SUCCESS;
 	}
 

@@ -77,6 +77,11 @@ public:
 
 		// Increase Force Regen times 3.
 
+
+		// Play Client Effect once.
+
+		player->playEffect("clienteffect/pl_force_meditate_self.cef", "");
+
 		// Force Meditate Task
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		creature->sendSystemMessage("@teraskasi:med_begin");
