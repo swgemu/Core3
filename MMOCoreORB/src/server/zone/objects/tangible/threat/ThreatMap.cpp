@@ -49,16 +49,24 @@ void ThreatMap::registerObserver(CreatureObject* target) {
 		threatMapObserver->deploy();
 	}
 
+	Locker locker(self);
+	Locker clocker(target, self);
+
 	target->registerObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 }
 
 void ThreatMap::removeObservers() {
-		for (int i = 0; i < size(); ++i) {
-			CreatureObject* creature = elementAt(i).getKey();
-			if(creature != NULL && threatMapObserver != NULL)
-				creature->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
-		}
+	Locker locker(self);
+
+	for (int i = 0; i < size(); ++i) {
+		CreatureObject* creature = elementAt(i).getKey();
+
+		Locker clocker(creature, self);
+
+		if(creature != NULL && threatMapObserver != NULL)
+			creature->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 	}
+}
 
 void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
 	int idx = find(target);
@@ -81,10 +89,15 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
 }
 
 void ThreatMap::dropDamage(CreatureObject* target) {
+	Locker locker(self);
+
 	drop(target);
 
-	if (threatMapObserver != NULL)
+	if (threatMapObserver != NULL) {
+		Locker clocker(target, self);
+
 		target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
+	}
 }
 
 bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 duration, uint64 cooldown) {
@@ -149,7 +162,7 @@ void ThreatMap::clearThreatState(CreatureObject* target, uint64 state) {
 		entry->clearThreatState(state);
 
 #ifdef DEBUG
-	System::out << "Clearing threat state on "  << target->getObjectID() << ": " << state << endl;
+		System::out << "Clearing threat state on "  << target->getObjectID() << ": " << state << endl;
 #endif
 	}
 }

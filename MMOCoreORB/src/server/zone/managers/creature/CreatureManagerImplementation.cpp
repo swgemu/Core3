@@ -344,6 +344,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	// lets copy the damage map before we remove it all
 	ThreatMap* threatMap = destructedObject->getThreatMap();
 	ThreatMap copyThreatMap(*threatMap);
+
+	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
 
 	if (destructedObject != destructor)

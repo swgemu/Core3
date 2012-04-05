@@ -75,6 +75,7 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	ThreatMap* threatMap = lair->getThreatMap();
 
 	ThreatMap copyThreatMap(*threatMap);
+	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
 
 	if (lair->getZone() == NULL) {
