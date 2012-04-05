@@ -63,7 +63,13 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isEntertaining()) {
+			creature->sendSystemMessage("@performance:effect_not_performing");
+			return GENERALERROR;
+		}
+
 		if (!creature->isDancing()) {
+			creature->sendSystemMessage("@performance:effect_not_performing_correct");
 			return GENERALERROR;
 		}
 

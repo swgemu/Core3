@@ -107,14 +107,14 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 							playerManager->stopWatch(patron, entertainer->getObjectID(), true, false, false, true);
 
 						if (!patron->isListening())
-							sendEntertainmentUpdate(entertainer, 0, "", true);
+							sendEntertainmentUpdate(patron, 0, "", true);
 
 					} else if (playingMusic) {
 						if (playerManager != NULL)
 							playerManager->stopListen(patron, entertainer->getObjectID(), true, false, false, true);
 
 						if (!patron->isWatching())
-							sendEntertainmentUpdate(entertainer, 0, "", true);
+							sendEntertainmentUpdate(patron, 0, "", true);
 					}
 				}
 
@@ -799,9 +799,9 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 			return;
 		}
 
-		//2 minute minimum listen/watch time
+		//1 minute minimum listen/watch time
 		int timeElapsed = time(0) - getEntertainerBuffStartTime(creature, performanceType);
-		if(timeElapsed < 120) {
+		if(timeElapsed < 60) {
 			creature->sendSystemMessage("@performance:buff_time_failed");
 			return;
 		}

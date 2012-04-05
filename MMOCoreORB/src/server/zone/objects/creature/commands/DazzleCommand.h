@@ -64,6 +64,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isEntertaining()) {
+			creature->sendSystemMessage("@performance:effect_not_performing");
 			return GENERALERROR;
 		}
 

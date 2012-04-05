@@ -80,31 +80,34 @@ public:
 		session->startPlayingMusic(song, instrumentAnimation, intid);
 	}
 
-	static void sendAvailableSongs(CreatureObject* player, PlayerObject* ghost,
-			int instrumentID, uint32 suiType = SuiWindowType::MUSIC_START) {
+	static void sendAvailableSongs(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::MUSIC_START) {
+			Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
+			sui->setPromptTitle("@performance:available_songs");
+			sui->setPromptText("@performance:select_song");
 
-		ManagedReference<SuiListBox*> sui = new SuiListBox(player, suiType);
-		sui->setPromptTitle("@performance:available_songs");
-		sui->setPromptText("@performance:select_song");
+			AbilityList* list = ghost->getAbilityList();
 
-		PerformanceManager* performanceManager =
-				SkillManager::instance()->getPerformanceManager();
-		Vector<Performance*> performanceList =
-				performanceManager->getPerformanceListFromMod(
-						"healing_music_ability", player->getSkillMod(
-								"healing_music_ability"), instrumentID);
+			for (int i = 0; i < list->size(); ++i) {
+				Ability* ability = list->get(i);
 
-		for (int i = 0; i < performanceList.size(); i++) {
-			String performanceName = performanceList.get(i)->getName();
-			sui->addMenuItem(performanceName);
-		}
+				String abilityName = ability->getAbilityName();
 
-		if (ghost != NULL) {
+				if (abilityName.indexOf("startMusic") != -1) {
+					int args = abilityName.indexOf("+");
+
+					if (args != -1) {
+						String arg = abilityName.subString(args + 1);
+
+						sui->addMenuItem(arg);
+					}
+				}
+			}
+
 			ghost->addSuiBox(sui);
 			player->sendMessage(sui->generateMessage());
+
+			return;
 		}
-		return;
-	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target,
 			const UnicodeString& arguments) {
@@ -138,20 +141,13 @@ public:
 			}
 		}
 
-		PlayerObject
-				* ghost =
-						dynamic_cast<PlayerObject*> (creature->getSlottedObject(
-								"ghost"));
+		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
 
-		ManagedReference<Instrument*>
-				instrument =
-						dynamic_cast<Instrument*> (creature->getSlottedObject(
-								"hold_r"));
+		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (creature->getSlottedObject("hold_r"));
 		bool targetedInstrument = false;
 
 		if (instrument == NULL) {
-			ManagedReference<SceneObject*> nala =
-					server->getZoneServer()->getObject(target);
+			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
 
 			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
 				targetedInstrument = true;
@@ -206,7 +202,7 @@ public:
 		String args = arguments.toString();
 
 		if (args.length() < 2) {
-			sendAvailableSongs(player, ghost, instrument->getInstrumentType());
+			sendAvailableSongs(player, ghost);
 
 			return SUCCESS;
 		}
@@ -229,7 +225,6 @@ public:
 
 		if (instrument->isBeingUsed()) {
 			creature->sendSystemMessage("Someone else is using this instrument");
-
 			return GENERALERROR;
 		} else
 			instrument->setBeingUsed(true);

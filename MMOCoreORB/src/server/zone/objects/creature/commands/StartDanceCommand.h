@@ -74,26 +74,34 @@ public:
 		session->startDancing(dance, animation);
 	}
 
-	static void sendAvailableDances(CreatureObject* player,
-			PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
+	static void sendAvailableDances(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
 		ManagedReference<SuiListBox*> sui = new SuiListBox(player, suiType);
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");
-		PerformanceManager* performanceManager =
-				SkillManager::instance()->getPerformanceManager();
-		Vector<Performance*> performanceList =
-				performanceManager->getPerformanceListFromMod(
-						"healing_dance_ability", player->getSkillMod(
-								"healing_dance_ability"), 0);
 
-		for (int i = 0; i < performanceList.size(); i++) {
-			String performanceName = performanceList.get(i)->getName();
-			sui->addMenuItem(performanceName);
+		AbilityList* list = ghost->getAbilityList();
+
+		for (int i = 0; i < list->size(); ++i) {
+			Ability* ability = list->get(i);
+
+			String abilityName = ability->getAbilityName();
+
+			if (abilityName.indexOf("startDance") != -1) {
+				int args = abilityName.indexOf("+");
+
+				if (args != -1) {
+					String arg = abilityName.subString(args + 1);
+
+					sui->addMenuItem(arg);
+				}
+			}
 		}
+
 		if (ghost != NULL) {
 			ghost->addSuiBox(sui);
 			player->sendMessage(sui->generateMessage());
 		}
+
 		return;
 	}
 
@@ -130,9 +138,9 @@ public:
 		}
 
 		PlayerObject
-				* ghost =
-						dynamic_cast<PlayerObject*> (creature->getSlottedObject(
-								"ghost"));
+		* ghost =
+				dynamic_cast<PlayerObject*> (creature->getSlottedObject(
+						"ghost"));
 
 		String args = arguments.toString();
 

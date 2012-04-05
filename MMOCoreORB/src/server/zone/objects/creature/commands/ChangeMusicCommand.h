@@ -65,6 +65,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if(creature->getGroup() != NULL) {
+			creature->sendSystemMessage("@performance:music_must_match_band");
+			return GENERALERROR;
+		}
+
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
 
 		if (session == NULL) {
