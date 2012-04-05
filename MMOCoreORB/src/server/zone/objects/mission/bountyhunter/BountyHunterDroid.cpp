@@ -43,7 +43,8 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 }
 
 Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
-	if (mission->getMissionLevel() < 2) {
+	if (mission->getMissionLevel() < 2 ||
+			(mission->getMissionLevel() < 3 && track)) {
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		return NULL;
 	}

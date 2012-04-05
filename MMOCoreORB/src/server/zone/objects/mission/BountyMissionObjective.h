@@ -272,11 +272,29 @@ private:
 
 	void removeFromBountyLock();
 
-	void removeObservers();
+	void removePlayerTargetObservers();
+
+	void removeNpcTargetObservers();
 
 	void removeObserver(int observerNumber, unsigned int observerType, CreatureObject* creature);
 
 	void addObserverToCreature(unsigned int observerType, CreatureObject* creature);
+
+	bool addPlayerTargetObservers();
+
+	void startNpcTargetTask();
+
+	bool isPlayerTarget();
+
+	void handleNpcTargetKilled(ManagedObject* arg1);
+
+	int handleNpcTargetReceivesDamage(ManagedObject* arg1);
+
+	void handlePlayerKilled(ManagedObject* arg1);
+
+	void handleDefenderAdded(ManagedObject* arg1);
+
+	void handleDefenderDropped(ManagedObject* arg1);
 
 public:
 	WeakReference<BountyMissionObjective*> _this;

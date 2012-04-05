@@ -142,8 +142,20 @@ class BountyMissionObjective extends MissionObjective {
 	
 	private native void addToBountyLock();
 	private native void removeFromBountyLock();
-	
-	private native void removeObservers();
+
+	private native void removePlayerTargetObservers();
+	private native void removeNpcTargetObservers();
 	private native void removeObserver(int observerNumber, unsigned int observerType, CreatureObject creature);
 	private native void addObserverToCreature(unsigned int observerType, CreatureObject creature);
+	
+	private native boolean addPlayerTargetObservers();
+	private native void startNpcTargetTask();
+	
+	private native boolean isPlayerTarget();
+	
+	private native void handleNpcTargetKilled(ManagedObject arg1);
+	private native int handleNpcTargetReceivesDamage(ManagedObject arg1);
+	private native void handlePlayerKilled(ManagedObject arg1);
+	private native void handleDefenderAdded(ManagedObject arg1);
+	private native void handleDefenderDropped(ManagedObject arg1);
 }

@@ -31,45 +31,23 @@ void BountyMissionObjectiveImplementation::activate() {
 
 	activeDroid = NULL;
 
-	bool missionFailed = false;
+	bool failMission = false;
 
-	if (objectiveStatus != INITSTATUS) {
-		missionFailed = true;
-	}
-
-	if (mission->getTargetOptionalTemplate() == "") {
-		ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-
-		if (zoneServer == NULL) {
-			missionFailed = true;
+	//Start NPC task or add observers to player target.
+	if (getObserverCount() == 2) {
+		removeNpcTargetObservers();
+		startNpcTargetTask();
+	} else if (getObserverCount() != 6) {
+		if (isPlayerTarget()) {
+			failMission = !addPlayerTargetObservers();
 		} else {
-			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
-
-			if (target != NULL) {
-				addObserverToCreature(ObserverEventType::PLAYERKILLED, target);
-				addObserverToCreature(ObserverEventType::DEFENDERADDED, target);
-				addObserverToCreature(ObserverEventType::DEFENDERDROPPED, target);
-
-				CreatureObject* playerOwner = getPlayerOwner();
-				addObserverToCreature(ObserverEventType::PLAYERKILLED, playerOwner);
-				addObserverToCreature(ObserverEventType::DEFENDERADDED, playerOwner);
-				addObserverToCreature(ObserverEventType::DEFENDERDROPPED, playerOwner);
-
-				playerOwner->getZoneServer()->getMissionManager()->addBountyHunterToPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
-
-				//Update aggressive status on target for bh.
-				target->sendPvpStatusTo(playerOwner);
-			} else {
-				missionFailed = true;
-			}
+			startNpcTargetTask();
 		}
 	}
 
-	if (missionFailed) {
+	if (failMission) {
 		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
-
 		abort();
-
 		removeMissionFromPlayer();
 	}
 }
@@ -88,21 +66,10 @@ void BountyMissionObjectiveImplementation::abort() {
 
 	//Remove observers
 	if (hasObservers()) {
-		if (mission->getTargetOptionalTemplate() != "") {
-			if (npcTarget != NULL) {
-				ManagedReference<SceneObject*> npcHolder = npcTarget.get();
-				Locker locker(npcTarget);
-
-				removeObserver(1, ObserverEventType::DAMAGERECEIVED, npcTarget);
-				removeObserver(0, ObserverEventType::OBJECTDESTRUCTION, npcTarget);
-
-				npcTarget->destroyObjectFromDatabase();
-				npcTarget->destroyObjectFromWorld(true);
-
-				npcTarget = NULL;
-			}
+		if (isPlayerTarget()) {
+			removePlayerTargetObservers();
 		} else {
-			removeObservers();
+			removeNpcTargetObservers();
 		}
 	}
 }
@@ -119,7 +86,7 @@ void BountyMissionObjectiveImplementation::complete() {
 }
 
 void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
-	if ((npcTarget != NULL && npcTarget->isInQuadTree()) || mission->getTargetOptionalTemplate() == "") {
+	if ((npcTarget != NULL && npcTarget->isInQuadTree()) || isPlayerTarget()) {
 		return;
 	}
 
@@ -134,7 +101,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 
 		if (npcTarget != NULL) {
 			npcTarget->setCustomObjectName(mission->getTargetName(), true);
-
+			//TODO add observer to catch player kill and fail mission in that case.
 			addObserverToCreature(ObserverEventType::OBJECTDESTRUCTION, npcTarget);
 			addObserverToCreature(ObserverEventType::DAMAGERECEIVED, npcTarget);
 		}
@@ -143,106 +110,15 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 
 int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::OBJECTDESTRUCTION) {
-		CreatureObject* attacker = NULL;
-
-		try {
-			attacker = cast<CreatureObject*>(arg1);
-		} catch (Exception& e) { // ?? cast doesnt ever throw exceptions
-			//Killed in a strange way.
-			int randomNumber = System::random(4) + 1;
-			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:mission_incomplete_0" + String::valueOf(randomNumber));
-			abort();
-			return 1;
-		}
-
-		if (attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
-				attacker->isPlayerCreature()) {
-			//Target killed by player, complete mission.
-			complete();
-		} else {
-			//Target killed by other player, fail mission.
-			attacker->sendSystemMessage("@mission/mission_generic:failed");
-			abort();
-		}
-
-		return 1;
+		handleNpcTargetKilled(arg1);
 	} else if (eventType == ObserverEventType::DAMAGERECEIVED) {
-		CreatureObject* attacker = NULL;
-		try {
-			attacker = cast<CreatureObject*>(arg1);
-		}
-		catch (Exception& e) {
-			return 0;
-		}
-
-		if (getPlayerOwner() != NULL && attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
-				attacker->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
-			updateMissionStatus(mission->getMissionLevel());
-
-			String diffString = "easy";
-
-			if (mission->getMissionLevel() == 3) {
-				diffString = "hard";
-			} else if (mission->getMissionLevel() == 2) {
-				diffString = "medium";
-			}
-
-			attacker->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_" + diffString + ":m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
-			return 1;
-		}
+		return handleNpcTargetReceivesDamage(arg1);
 	} else if (eventType == ObserverEventType::PLAYERKILLED) {
-		CreatureObject* killer = NULL;
-		try {
-			killer = cast<CreatureObject*>(arg1);
-		}
-		catch (Exception& e) {
-			return 0;
-		}
-
-		if (getPlayerOwner() != NULL && killer != NULL) {
-			if (getPlayerOwner()->getObjectID() == killer->getObjectID()) {
-				//Target killed by player, complete mission.
-				complete();
-				return 1;
-			} else if (mission->getTargetObjectId() == killer->getObjectID() ||
-					(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
-				//Player killed by target, fail mission.
-				getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
-				killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
-				fail();
-				return 1;
-			}
-		}
+		handlePlayerKilled(arg1);
 	} else if (eventType == ObserverEventType::DEFENDERADDED) {
-		CreatureObject* defender = NULL;
-		try {
-			defender = cast<CreatureObject*>(arg1);
-		}
-		catch (Exception& e) {
-			return 0;
-		}
-
-		if (getPlayerOwner() != NULL && defender != NULL) {
-			if (getPlayerOwner()->getObjectID() == defender->getObjectID() ||
-					mission->getTargetObjectId() == defender->getObjectID()) {
-				addToBountyLock();
-			}
-		}
+		handleDefenderAdded(arg1);
 	} else if (eventType == ObserverEventType::DEFENDERDROPPED) {
-		CreatureObject* defender = NULL;
-		try {
-			defender = cast<CreatureObject*>(arg1);
-		}
-		catch (Exception& e) {
-			return 0;
-		}
-
-		if (getPlayerOwner() != NULL && defender != NULL) {
-			if (getPlayerOwner()->getObjectID() == defender->getObjectID() ||
-					mission->getTargetObjectId() == defender->getObjectID()) {
-				removeFromBountyLock();
-			}
-		}
+		handleDefenderDropped(arg1);
 	}
 
 	return 0;
@@ -256,10 +132,7 @@ void BountyMissionObjectiveImplementation::updateMissionStatus(int informantLeve
 	switch (objectiveStatus) {
 	case INITSTATUS:
 		if (mission->getTargetOptionalTemplate() != "") {
-			targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
-			if (targetTask != NULL && !targetTask->isScheduled()) {
-				targetTask->schedule(10 * 1000);
-			}
+			startNpcTargetTask();
 		}
 
 		if (informantLevel == 1) {
@@ -327,11 +200,7 @@ bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int ac
 }
 
 Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
-	if (mission->getTargetOptionalTemplate() != "") {
-		if (targetTask != NULL) {
-			return targetTask->getTargetPosition();
-		}
-	} else {
+	if (isPlayerTarget()) {
 		uint64 targetId = mission->getTargetObjectId();
 
 		ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
@@ -341,6 +210,10 @@ Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
 			if (creature != NULL) {
 				return creature->getWorldPosition();
 			}
+		}
+	} else {
+		if (targetTask != NULL) {
+			return targetTask->getTargetPosition();
 		}
 	}
 
@@ -366,11 +239,7 @@ void BountyMissionObjectiveImplementation::cancelAllTasks() {
 }
 
 String BountyMissionObjectiveImplementation::getTargetZoneName() {
-	if (mission->getTargetOptionalTemplate() != "") {
-		if (targetTask != NULL) {
-			return targetTask->getTargetZoneName();
-		}
-	} else {
+	if (isPlayerTarget()) {
 		uint64 targetId = mission->getTargetObjectId();
 
 		ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
@@ -380,6 +249,10 @@ String BountyMissionObjectiveImplementation::getTargetZoneName() {
 			if (creature != NULL && creature->getZone() != NULL) {
 				return creature->getZone()->getZoneName();
 			}
+		}
+	} else {
+		if (targetTask != NULL) {
+			return targetTask->getTargetZoneName();
 		}
 	}
 
@@ -451,7 +324,7 @@ void BountyMissionObjectiveImplementation::removeFromBountyLock() {
 	getPlayerOwner()->sendPvpStatusTo(creature);
 }
 
-void BountyMissionObjectiveImplementation::removeObservers() {
+void BountyMissionObjectiveImplementation::removePlayerTargetObservers() {
 	removeObserver(5, ObserverEventType::DEFENDERDROPPED, getPlayerOwner());
 	removeObserver(4, ObserverEventType::DEFENDERADDED, getPlayerOwner());
 	removeObserver(3, ObserverEventType::PLAYERKILLED, getPlayerOwner());
@@ -464,6 +337,25 @@ void BountyMissionObjectiveImplementation::removeObservers() {
 		removeObserver(2, ObserverEventType::DEFENDERDROPPED, target);
 		removeObserver(1, ObserverEventType::DEFENDERADDED, target);
 		removeObserver(0, ObserverEventType::PLAYERKILLED, target);
+	}
+}
+
+void BountyMissionObjectiveImplementation::removeNpcTargetObservers() {
+	if (npcTarget != NULL) {
+		ManagedReference<SceneObject*> npcHolder = npcTarget.get();
+		Locker locker(npcTarget);
+
+		removeObserver(1, ObserverEventType::DAMAGERECEIVED, npcTarget);
+		removeObserver(0, ObserverEventType::OBJECTDESTRUCTION, npcTarget);
+
+		npcTarget->destroyObjectFromDatabase();
+		npcTarget->destroyObjectFromWorld(true);
+
+		npcTarget = NULL;
+	} else {
+		// NPC not spawned, remove observers anyway.
+		dropObserver(getObserver(1), true);
+		dropObserver(getObserver(0), true);
 	}
 }
 
@@ -483,4 +375,129 @@ void BountyMissionObjectiveImplementation::addObserverToCreature(unsigned int ob
 	addObserver(observer, true);
 
 	creature->registerObserver(observerType, observer);
+}
+
+bool BountyMissionObjectiveImplementation::addPlayerTargetObservers() {
+	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+
+	if (zoneServer != NULL) {
+		ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+
+		if (target != NULL) {
+			addObserverToCreature(ObserverEventType::PLAYERKILLED, target);
+			addObserverToCreature(ObserverEventType::DEFENDERADDED, target);
+			addObserverToCreature(ObserverEventType::DEFENDERDROPPED, target);
+
+			CreatureObject* playerOwner = getPlayerOwner();
+			addObserverToCreature(ObserverEventType::PLAYERKILLED, playerOwner);
+			addObserverToCreature(ObserverEventType::DEFENDERADDED, playerOwner);
+			addObserverToCreature(ObserverEventType::DEFENDERDROPPED, playerOwner);
+
+			playerOwner->getZoneServer()->getMissionManager()->addBountyHunterToPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
+
+			//Update aggressive status on target for bh.
+			target->sendPvpStatusTo(playerOwner);
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void BountyMissionObjectiveImplementation::startNpcTargetTask() {
+	targetTask = new BountyHunterTargetTask(mission, getPlayerOwner(), mission->getEndPlanet());
+
+	if (targetTask != NULL && !targetTask->isScheduled()) {
+		targetTask->schedule(10 * 1000);
+	}
+}
+
+bool BountyMissionObjectiveImplementation::isPlayerTarget() {
+	return mission->getTargetOptionalTemplate() == "";
+}
+
+void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* arg1) {
+	CreatureObject* attacker = NULL;
+
+	attacker = cast<CreatureObject*>(arg1);
+
+	if (attacker != NULL && attacker->getFirstName() == getPlayerOwner()->getFirstName() &&
+			attacker->isPlayerCreature()) {
+		//Target killed by player, complete mission.
+		complete();
+	} else {
+		//Target killed by other player, fail mission.
+		attacker->sendSystemMessage("@mission/mission_generic:failed");
+		abort();
+		removeMissionFromPlayer();
+	}
+}
+
+int BountyMissionObjectiveImplementation::handleNpcTargetReceivesDamage(ManagedObject* arg1) {
+	CreatureObject* target = NULL;
+
+	target = cast<CreatureObject*>(arg1);
+
+	if (getPlayerOwner() != NULL && target != NULL && target->getFirstName() == getPlayerOwner()->getFirstName() &&
+			target->isPlayerCreature() && objectiveStatus == HASBIOSIGNATURESTATUS) {
+		updateMissionStatus(mission->getMissionLevel());
+
+		String diffString = "easy";
+		if (mission->getMissionLevel() == 3) {
+			diffString = "hard";
+		} else if (mission->getMissionLevel() == 2) {
+			diffString = "medium";
+		}
+
+		target->getZoneServer()->getChatManager()->broadcastMessage(npcTarget, "@mission/mission_bounty_neutral_" + diffString + ":m" + String::valueOf(mission->getMissionNumber()) + "v", 0, 0, 0);
+		return 1;
+	}
+
+	return 0;
+}
+
+void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg1) {
+	CreatureObject* killer = NULL;
+
+	killer = cast<CreatureObject*>(arg1);
+
+	if (getPlayerOwner() != NULL && killer != NULL) {
+		if (getPlayerOwner()->getObjectID() == killer->getObjectID()) {
+			//Target killed by player, complete mission.
+			complete();
+		} else if (mission->getTargetObjectId() == killer->getObjectID() ||
+				(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
+			//Player killed by target, fail mission.
+			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
+			killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
+			fail();
+		}
+	}
+}
+
+void BountyMissionObjectiveImplementation::handleDefenderAdded(ManagedObject* arg1) {
+	CreatureObject* defender = NULL;
+
+	defender = cast<CreatureObject*>(arg1);
+
+	if (getPlayerOwner() != NULL && defender != NULL) {
+		if (getPlayerOwner()->getObjectID() == defender->getObjectID() ||
+				mission->getTargetObjectId() == defender->getObjectID()) {
+			addToBountyLock();
+		}
+	}
+}
+
+void BountyMissionObjectiveImplementation::handleDefenderDropped(ManagedObject* arg1) {
+	CreatureObject* defender = NULL;
+
+	defender = cast<CreatureObject*>(arg1);
+
+	if (getPlayerOwner() != NULL && defender != NULL) {
+		if (getPlayerOwner()->getObjectID() == defender->getObjectID() ||
+				mission->getTargetObjectId() == defender->getObjectID()) {
+			removeFromBountyLock();
+		}
+	}
 }
