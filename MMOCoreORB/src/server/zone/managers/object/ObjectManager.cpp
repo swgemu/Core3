@@ -254,7 +254,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::BELT);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::BODYSUIT);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::CAPE);
-	objectFactory.registerObject<ClothingObject>(SceneObjectType::CLOAK);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::FOOTWEAR);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::HEADWEAR);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::EYEWEAR);
@@ -273,6 +272,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FishingBaitObject>(SceneObjectType::FISHINGBAIT);
 	objectFactory.registerObject<FishObject>(SceneObjectType::FISH);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TANGIBLE);
+	objectFactory.registerObject<RobeObject>(SceneObjectType::CLOAK);
 
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::TRAP);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMOKIT);

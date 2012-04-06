@@ -62,6 +62,10 @@ object_tangible_wearables_robe_robe_jedi_dark_s05 = object_tangible_wearables_ro
 				"object/creature/player/wookiee_female.iff",
 				"object/creature/player/zabrak_male.iff",
 				"object/creature/player/zabrak_female.iff" },
+				
+				templateType = ROBEOBJECT,
+				objectMenuComponent = {"cpp", "RobeObjectMenuComponent"},
+				skillRequired = "force_rank_dark_10",
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_dark_s05, "object/tangible/wearables/robe/robe_jedi_dark_s05.iff")

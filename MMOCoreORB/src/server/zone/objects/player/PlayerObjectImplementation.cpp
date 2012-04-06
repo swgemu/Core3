@@ -1467,7 +1467,7 @@ void PlayerObjectImplementation::setForcePowerMax(int fpm, bool notifyClient) {
 	if (notifyClient == true){
 		// Update the force power bar max.
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		dplay8->addIntUpdate(0x03, getForcePower());
+		dplay8->addIntUpdate(0x03, getForcePowerMax());
 		dplay8->close();
 
 		sendMessage(dplay8);

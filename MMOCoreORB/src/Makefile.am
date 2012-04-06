@@ -257,6 +257,7 @@ core3_IDLS =	server/zone/objects/area/FsVillageArea.cpp \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
 				server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.cpp \
+				server/zone/objects/tangible/wearables/RobeObject.cpp \
 				server/zone/objects/auction/AuctionItem.cpp \
 				server/zone/objects/auction/Vendor.cpp \
 				server/zone/objects/auction/events/VendorCheckTask.cpp \
@@ -330,6 +331,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ContainerObjectComponent.cpp \
 		server/zone/objects/tangible/components/WeaponObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/LightsaberObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/RobeObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.cpp \
 		server/zone/objects/scene/components/LuaObjectMenuComponent.cpp \
@@ -575,6 +577,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/PsgArmorObjectImplementation.cpp \
+		server/zone/objects/tangible/wearables/RobeObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \

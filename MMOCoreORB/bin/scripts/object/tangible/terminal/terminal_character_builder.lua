@@ -1289,26 +1289,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			},
 			"Clothes",
 			{
-				"Jedi Robes",
-				{
-						"Light Jedi Robes",
-						{
-							"Light Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_light_s01.iff",
-							"Light Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_light_s02.iff",
-							"Light Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_light_s03.iff",
-							"Light Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_light_s04.iff",
-							"Light Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_light_s05.iff"
-						},
-						
-						"Dark Jedi Robes",
-						{
-							"Dark Jedi Robe 1", "object/tangible/wearables/robe/robe_jedi_dark_s01.iff",
-							"Dark Jedi Robe 2", "object/tangible/wearables/robe/robe_jedi_dark_s02.iff",
-							"Dark Jedi Robe 3", "object/tangible/wearables/robe/robe_jedi_dark_s03.iff",
-							"Dark Jedi Robe 4", "object/tangible/wearables/robe/robe_jedi_dark_s04.iff",
-							"Dark Jedi Robe 5", "object/tangible/wearables/robe/robe_jedi_dark_s05.iff"
-						}
-				},
 				"Backpacks",
 				{
 					"Backpack 01", "object/tangible/wearables/backpack/backpack_s01.iff"

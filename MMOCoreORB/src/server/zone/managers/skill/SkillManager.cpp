@@ -243,7 +243,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 			//Update Force Power Bar.
 			if (entry->getKey() == "jedi_force_power_max")
-				ghost->setForcePowerMax(ghost->getForcePowerMax() + entry->getValue());
+				ghost->setForcePowerMax(ghost->getForcePowerMax() + entry->getValue(), true);
 		}
 
 		//Add abilities
@@ -316,8 +316,8 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 		//Update Force Power Bar.
 		if (entry->getKey() == "jedi_force_power_max" && ghost != NULL)
-			ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue());
-			ghost->setForcePower(ghost->getForcePower() - entry->getValue());
+			ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue(), true);
+			ghost->setForcePower(ghost->getForcePower() - entry->getValue(), true);
 	}
 
 	if (ghost != NULL) {
@@ -358,8 +358,8 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 			//Update Force Power Bar.
 			if (entry->getKey() == "jedi_force_power_max")
-				ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue());
-				ghost->setForcePower(ghost->getForcePower() - entry->getValue());
+				ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue(), true);
+				ghost->setForcePower(ghost->getForcePower() - entry->getValue(), true);
 		}
 
 		if (ghost != NULL) {

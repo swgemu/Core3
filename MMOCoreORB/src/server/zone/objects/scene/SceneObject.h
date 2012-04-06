@@ -606,6 +606,8 @@ public:
 
 	bool isArmorObject();
 
+	bool isRobeObject();
+
 	bool isPsgArmorObject();
 
 	bool isLairObject();
@@ -1233,6 +1235,8 @@ public:
 
 	virtual bool isArmorObject();
 
+	virtual bool isRobeObject();
+
 	virtual bool isPsgArmorObject();
 
 	virtual bool isLairObject();
@@ -1729,6 +1733,8 @@ public:
 	bool isWearableObject();
 
 	bool isArmorObject();
+
+	bool isRobeObject();
 
 	bool isPsgArmorObject();
 

@@ -30,6 +30,7 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LightsaberObjectMenuComponent.h"
@@ -123,4 +124,5 @@ ComponentManager::ComponentManager() {
 	components.put("CityHallZoneComponent", new CityHallZoneComponent());
 
 	components.put("LightsaberObjectMenuComponent", new LightsaberObjectMenuComponent());
+	components.put("RobeObjectMenuComponent", new RobeObjectMenuComponent());
 }

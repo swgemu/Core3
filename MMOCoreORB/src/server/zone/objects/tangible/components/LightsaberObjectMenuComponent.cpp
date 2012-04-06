@@ -7,7 +7,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "LightsaberObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
@@ -51,6 +50,8 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 			byte bvalue = (byte)color;
 			weapon->setCustomizationVariable("/private/index_color_blade", bvalue, true);
 	}
+
+	// TODO: Affect Visibility increase.
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

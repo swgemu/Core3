@@ -9,6 +9,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/wearables/RobeObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
 
@@ -57,6 +58,20 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		}
 	}
 
+	if (object->isRobeObject() && containmentType == 4) {
+		ManagedReference<RobeObject*> robe = cast<RobeObject*>( object);
+		String skillRequired = robe->getSkillRequired();
+
+		if (!creo->hasSkill(skillRequired)){
+			StringIdChatParameter params;
+			params.setStringId("@jedi_spam:must_be_higher_rank");
+			params.setTO("@skl_n:" + skillRequired);
+			errorDescription = "You are not eligible to wear this robe.";
+
+			return TransferErrorCode::PLAYERUSEMASKERROR;
+		}
+	}
+
 	return ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);
 }
 
@@ -78,6 +93,13 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	} else if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo);
+	}
+
+	if (object->isRobeObject()) {
+		PlayerObject* ghost = creo->getPlayerObject();
+		creo->addSkillMod("jedi_force_power_max", 250, true);
+		creo->addSkillMod("jedi_force_power_regen", 10, true);
+		ghost->setForcePowerMax(ghost->getForcePowerMax(), true);
 	}
 
 	if (object->isInstrument() && creo->isEntertaining())
@@ -104,6 +126,14 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	} else if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo, true);
+	}
+
+
+	if (object->isRobeObject()) {
+		PlayerObject* ghost = creo->getPlayerObject();
+		creo->addSkillMod("jedi_force_power_max", -250, true);
+		creo->addSkillMod("jedi_force_power_regen", -10, true);
+		ghost->setForcePowerMax(ghost->getForcePowerMax(), true);
 	}
 
 	if (object->isInstrument()) {
