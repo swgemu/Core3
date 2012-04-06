@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -400,15 +400,15 @@ void TangibleObject::setConditionDamage(float condDamage, bool notifyClient) {
 		_implementation->setConditionDamage(condDamage, notifyClient);
 }
 
-void TangibleObject::setCustomizationVariable(byte type, byte value, bool notifyClient) {
+void TangibleObject::setCustomizationVariable(byte type, short value, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_);
+		DistributedMethod method(this, RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_);
 		method.addByteParameter(type);
-		method.addByteParameter(value);
+		method.addSignedShortParameter(value);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
@@ -416,15 +416,15 @@ void TangibleObject::setCustomizationVariable(byte type, byte value, bool notify
 		_implementation->setCustomizationVariable(type, value, notifyClient);
 }
 
-void TangibleObject::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
+void TangibleObject::setCustomizationVariable(const String& type, short value, bool notifyClient) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_);
+		DistributedMethod method(this, RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_);
 		method.addAsciiParameter(type);
-		method.addByteParameter(value);
+		method.addSignedShortParameter(value);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
@@ -1783,11 +1783,11 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_:
 		setConditionDamage(inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_:
-		setCustomizationVariable(inv->getByteParameter(), inv->getByteParameter(), inv->getBooleanParameter());
+	case RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_:
+		setCustomizationVariable(inv->getByteParameter(), inv->getSignedShortParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_byte_bool_), inv->getByteParameter(), inv->getBooleanParameter());
+	case RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_:
+		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_short_bool_), inv->getSignedShortParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETOPTIONSBITMASK__INT_BOOL_:
 		setOptionsBitmask(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
@@ -2014,11 +2014,11 @@ void TangibleObjectAdapter::setConditionDamage(float condDamage, bool notifyClie
 	(static_cast<TangibleObject*>(stub))->setConditionDamage(condDamage, notifyClient);
 }
 
-void TangibleObjectAdapter::setCustomizationVariable(byte type, byte value, bool notifyClient) {
+void TangibleObjectAdapter::setCustomizationVariable(byte type, short value, bool notifyClient) {
 	(static_cast<TangibleObject*>(stub))->setCustomizationVariable(type, value, notifyClient);
 }
 
-void TangibleObjectAdapter::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
+void TangibleObjectAdapter::setCustomizationVariable(const String& type, short value, bool notifyClient) {
 	(static_cast<TangibleObject*>(stub))->setCustomizationVariable(type, value, notifyClient);
 }
 

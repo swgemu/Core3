@@ -288,6 +288,11 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "ImageDesignSession.hairObject") {
+		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&hairObject, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -337,8 +342,16 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ImageDesignSession.hairObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&hairObject, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 4;
+
+	return _count + 5;
 }
 
 ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObject* parent) {

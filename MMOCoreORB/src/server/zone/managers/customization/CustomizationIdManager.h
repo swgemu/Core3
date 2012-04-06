@@ -11,18 +11,21 @@
 #include "engine/engine.h"
 #include "PaletteData.h"
 #include "HairAssetData.h"
+#include "server/zone/managers/skill/imagedesign/CustomizationData.h"
 
 class CustomizationIdManager : public Object, public Logger, public Singleton<CustomizationIdManager> {
 	HashTable<String, int> customizationIds;
 	HashTable<int, String> reverseIds;
 	HashTable<String, Reference<PaletteData*> > paletteColumns;
 	HashTable<String, Reference<HairAssetData*> > hairAssetSkillMods;
+	HashTable<String, bool> allowBald;
 
 public:
 	CustomizationIdManager();
 
 	void loadPaletteColumns(IffStream* iffStream);
 	void loadHairAssetsSkillMods(IffStream* iffStream);
+	void loadAllowBald(IffStream* iffStream);
 	void readObject(IffStream* iffStream);
 
 	int getCustomizationId(const String& var) {
@@ -39,6 +42,10 @@ public:
 
 	HairAssetData* getHairAssetData(const String& hairServerTemplate) {
 		return hairAssetSkillMods.get(hairServerTemplate);
+	}
+
+	bool canBeBald(const String& speciesSubString) {
+		return allowBald.get(speciesSubString);
 	}
 };
 

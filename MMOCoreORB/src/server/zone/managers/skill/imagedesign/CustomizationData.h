@@ -12,6 +12,7 @@
 #include "server/zone/templates/datatables/DataTableRow.h"
 
 class CustomizationData : public Object {
+	String speciesGender;
 	String customizationGroup;
 	String type;
 	String customizationName;
@@ -97,6 +98,7 @@ public:
 
 	void parseRow(DataTableRow* row) {
 		try {
+			row->getValue(0, speciesGender);
 			row->getValue(1, customizationGroup);
 			row->getValue(2, type);
 			row->getValue(3, customizationName);

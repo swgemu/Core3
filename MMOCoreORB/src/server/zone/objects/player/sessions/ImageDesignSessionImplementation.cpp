@@ -100,25 +100,21 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 
 		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
-		if (bodyAttributes->size() == 0) {
-		// Fixes for hair template. With this they could be changing the color as well so leave it out.
-		String empty = "";
-		uint32 iempty = 0;
-		imageDesignManager->updateCustomization(empty, iempty, hairTemplate, targetCreature);
-		} else {
+		hairObject = imageDesignManager->createHairObject(designerCreature, targetCreature, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
 
-			for (int i = 0; i < bodyAttributes->size(); ++i) {
-				VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
-				imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
-				xpGranted += 25;
-			}
-
-			for (int i = 0; i < colorAttributes->size(); ++i) {
-				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-				imageDesignManager->updateCustomization(entry->getKey(), entry->getValue(), hairTemplate, targetCreature);
-				xpGranted += 25;
-			}
+		for (int i = 0; i < bodyAttributes->size(); ++i) {
+			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
+			imageDesignManager->updateCustomization(designerCreature, entry->getKey(), entry->getValue(), targetCreature);
+			xpGranted += 25;
 		}
+
+		for (int i = 0; i < colorAttributes->size(); ++i) {
+			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
+			imageDesignManager->updateColorCustomization(designerCreature, entry->getKey(), entry->getValue(), hairObject, targetCreature);
+			xpGranted += 25;
+		}
+
+		imageDesignManager->updateHairObject(targetCreature, hairObject);
 
 		// Drop the Session for both the designer and the targetCreature;
 		designerCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
@@ -127,7 +123,7 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 		// Award XP.
 		PlayerManager* playerManager = designerCreature->getZoneServer()->getPlayerManager();
 
-		if (playerManager != NULL)
+		if (playerManager != NULL && designerCreature != targetCreature)
 			playerManager->awardExperience(designerCreature, "imagedesigner", xpGranted, true);
 
 		if (idTimeoutEvent->isScheduled())
@@ -167,7 +163,7 @@ void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64
 	imageDesignData = data;
 
 	if (targetCreature == NULL || designerCreature == NULL)
-			return;
+		return;
 
 	Locker locker(designerCreature);
 	Locker clocker(targetCreature, designerCreature);
@@ -184,7 +180,7 @@ void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64
 	} else if(object == targetPlayer) {
 		message = new ImageDesignRejectMessage(designer,designer,targetPlayer,tent,type);
 	}
-	*/
+	 */
 
 	//TODO: Needs research.
 

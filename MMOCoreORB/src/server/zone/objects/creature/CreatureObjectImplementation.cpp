@@ -512,6 +512,22 @@ void CreatureObjectImplementation::setTargetID(uint64 targetID,
 	}
 }
 
+void CreatureObjectImplementation::setHeight(float height, bool notifyClient) {
+	if (this->height == height)
+		return;
+
+	this->height = height;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage3* msg = new CreatureObjectDeltaMessage3(_this);
+	msg->updateHeight();
+	msg->close();
+
+	broadcastMessage(msg, true);
+}
+
 void CreatureObjectImplementation::setShockWounds(int newShock,
 		bool notifyClient) {
 	if (shockWounds == newShock)

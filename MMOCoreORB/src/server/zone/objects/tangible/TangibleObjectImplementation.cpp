@@ -319,7 +319,7 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		alm->insertAttribute("quantity", useCount);
 }
 
-void TangibleObjectImplementation::setCustomizationVariable(byte type, byte value, bool notifyClient) {
+void TangibleObjectImplementation::setCustomizationVariable(byte type, int16 value, bool notifyClient) {
 	customizationVariables.setVariable(type, value);
 
 	if (!notifyClient)
@@ -332,8 +332,8 @@ void TangibleObjectImplementation::setCustomizationVariable(byte type, byte valu
 	broadcastMessage(dtano3, true);
 }
 
-void TangibleObjectImplementation::setCustomizationVariable(const String& type, byte value, bool notifyClient) {
-	customizationVariables.setVariable(type,value);
+void TangibleObjectImplementation::setCustomizationVariable(const String& type, int16 value, bool notifyClient) {
+	customizationVariables.setVariable(type, value);
 
 	if(!notifyClient)
 		return;

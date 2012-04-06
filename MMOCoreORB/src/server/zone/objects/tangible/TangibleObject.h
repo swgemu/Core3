@@ -236,9 +236,9 @@ public:
 
 	void setConditionDamage(float condDamage, bool notifyClient = true);
 
-	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
+	void setCustomizationVariable(byte type, short value, bool notifyClient = true);
 
-	void setCustomizationVariable(const String& type, byte value, bool notifyClient = true);
+	void setCustomizationVariable(const String& type, short value, bool notifyClient = true);
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
@@ -459,9 +459,9 @@ public:
 
 	void setConditionDamage(float condDamage, bool notifyClient = true);
 
-	void setCustomizationVariable(byte type, byte value, bool notifyClient = true);
+	void setCustomizationVariable(byte type, short value, bool notifyClient = true);
 
-	void setCustomizationVariable(const String& type, byte value, bool notifyClient = true);
+	void setCustomizationVariable(const String& type, short value, bool notifyClient = true);
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient = true);
 
@@ -650,9 +650,9 @@ public:
 
 	void setConditionDamage(float condDamage, bool notifyClient);
 
-	void setCustomizationVariable(byte type, byte value, bool notifyClient);
+	void setCustomizationVariable(byte type, short value, bool notifyClient);
 
-	void setCustomizationVariable(const String& type, byte value, bool notifyClient);
+	void setCustomizationVariable(const String& type, short value, bool notifyClient);
 
 	void setOptionsBitmask(unsigned int bitmask, bool notifyClient);
 
@@ -745,7 +745,7 @@ public:
 protected:
 	String _param0_addSkillMod__String_long_bool_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
-	String _param0_setCustomizationVariable__String_byte_bool_;
+	String _param0_setCustomizationVariable__String_short_bool_;
 	String _param0_getCustomizationString__String_;
 	String _param0_setCustomizationString__String_;
 	String _param0_setCraftersName__String_;

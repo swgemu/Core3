@@ -143,6 +143,8 @@ protected:
 
 	ImageDesignData imageDesignData;
 
+	ManagedWeakReference<TangibleObject* > hairObject;
+
 	Reference<ImageDesignTimeoutEvent* > idTimeoutEvent;
 
 public:

@@ -71,6 +71,9 @@ class ImageDesignSession extends Facade {
 	
 	@dereferenced
 	protected ImageDesignData imageDesignData;
+	
+	@weakReference
+	protected TangibleObject hairObject;
 
 	protected transient ImageDesignTimeoutEvent idTimeoutEvent;
 	

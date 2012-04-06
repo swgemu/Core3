@@ -44,6 +44,7 @@
 
 #include "ImageDesignManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/customization/CustomizationIdManager.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -51,12 +52,17 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/templates/customization/BasicRangedIntCustomizationVariable.h"
+
 
 ImageDesignManager::ImageDesignManager() {
+	setLoggingName("ImageDesignManager");
+
 	loadCustomizationData();
 }
 
-void ImageDesignManager::updateCustomization(const String& customizationName, float value, String& hairTemplate, CreatureObject* creo) {
+void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, CreatureObject* creo) {
 	if (creo == NULL)
 		return;
 
@@ -70,6 +76,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
 
 	CustomizationVariables hairCustomization;
+	CustomizationVariables playerCustomization;
 
 	String hairCustomizationString;
 
@@ -80,111 +87,145 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 
 	String variables = customData->getVariables();
 	String type = customData->getType();
+
+	String skillMod = customData->getImageDesignSkillMod();
+
+	if (imageDesigner->getSkillMod(skillMod) < customData->getSkillModValue())
+		return;
 	//int choices = customData->getMaxChoices();
 
-	if (type == "hslider") {
+	if (customData->getIsScale()) {
+		float minScale = customData->getMinScale();
+		float maxScale = customData->getMaxScale();
 
-		if (customizationName == "brow" ||
-			customizationName == "cheeks" ||
-			customizationName == "chest" ||
-			customizationName == "chin" ||
-			customizationName == "chin_length" ||
-			customizationName == "ear_shape" ||
-			customizationName == "ears" ||
-			customizationName == "eye_direction" ||
-			customizationName == "eye_shape" ||
-			customizationName == "eye_size" ||
-			customizationName == "gullet" ||
-			customizationName == "head" ||
-			customizationName == "head_shape" ||
-			customizationName == "head_size" ||
-			customizationName == "hump_size" ||
-			customizationName == "jaw" ||
-			customizationName == "jowl" ||
-			customizationName == "lip_fullness" ||
-			customizationName == "lip_width" ||
-			customizationName == "muscle" ||
-			customizationName == "nose_length" ||
-			customizationName == "nose_protrusion" ||
-			customizationName == "nose_width" ||
-			customizationName == "sensors" ||
-			customizationName == "trunk_height"	||
-			customizationName == "trunk_length" ||
-			customizationName == "trunk_size" ||
-			customizationName == "trunk_slope" ||
-			customizationName == "weight") {
+		float height = minScale + value * (maxScale - minScale);
 
-			String token_1 = "";
-			String token_2 = "";
+		creatureObject->setHeight(MAX(MIN(height, maxScale), minScale));
 
-			StringTokenizer tokenizer(variables.toCharArray());
-			tokenizer.setDelimeter(",");
+		return;
+	}
 
-			tokenizer.getStringToken(token_1);
-			if (tokenizer.hasMoreTokens())
-				tokenizer.getStringToken(token_2);
-			//System::out << token_1 << "   " << token_2 << endl;
-			if (token_2 == "") {
-				if (customData->getIsVarHairColor())
-					hairCustomization.setVariable(token_1, (value * 255));
-				else
-					creatureObject->setCustomizationVariable(token_1, (value * 255));
-			} else {
-				  if (value >= .5) {
-					creatureObject->setCustomizationVariable(token_1, (((value - .5f) / .5f) * 255));
-					creatureObject->setCustomizationVariable(token_2, 0);
-				} else { // value < .5
-					creatureObject->setCustomizationVariable(token_1, 0);
-					creatureObject->setCustomizationVariable(token_2, (((value - .5f) / .5f) * 255));
+	Vector<String> fullVariables;
+	StringTokenizer tokenizer(variables);
+	tokenizer.setDelimeter(",");
 
+	while (tokenizer.hasMoreTokens()) {
+		String var;
+		tokenizer.getStringToken(var);
+
+		fullVariables.add(var);
+	}
+
+	String appearanceFilename = creo->getObjectTemplate()->getAppearanceFilename();
+
+	VectorMap<String, Reference<CustomizationVariable*> > variableLimits;
+
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variableLimits, false);
+
+	for (int i = 0; i < fullVariables.size(); ++i) {
+		String var = fullVariables.get(i);
+
+		for (int j = 0; j < variableLimits.size(); ++j) {
+			String fullVariableNameLimit = variableLimits.elementAt(j).getKey();
+
+			if (fullVariableNameLimit.contains(var)) {
+				BasicRangedIntCustomizationVariable* ranged = dynamic_cast<BasicRangedIntCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
+
+				if (ranged == NULL) {
+					error("variable " + fullVariableNameLimit + " is not ranged");
+
+					continue;
 				}
 
+				int min = ranged->getMinValueInclusive();
+				int max = ranged->getMaxValueExclusive();
+
+				int count = max - min;
+
+				int setVal;
+
+				float currentValue = value;
+
+				if (fullVariables.size() > 1) {
+					// examples for var count = 2
+					// ex: received value 0 is for i == 0 -> 1.0, i == 1 -> 0.0
+					// ex: received value 0.5 is for i == 0 -> 0.0, i == 1 -> 0.0
+					// ex: received value 1 is for i == 0 -> 0.0, i == 1 -> 1.0
+
+					// pre: i Û [0, 1] && value Û [0, 1]
+					// post f Û [0, 1]
+					currentValue = MAX(0, ((value - 0.5) * 2) * (-1 + (i * 2)));
+				}
+
+				if (customData->getReverse()) {
+					setVal = float(max - 1) - currentValue * (float(count) - 1);
+				} else {
+					setVal = float(min) + currentValue * (float(count) - 1);
+				}
+
+				/*if (setVal < 0)
+					setVal = 255 + setVal;*/
+
+				creatureObject->setCustomizationVariable(fullVariableNameLimit, setVal, true);
+
+				//info("setting " + fullVariableNameLimit + " to " + String::valueOf(setVal), true);
 			}
-
-		} else if (customizationName == "height") {
-
-			float minScale = customData->getMinScale();
-			float maxScale = customData->getMaxScale();
-
-
-			creatureObject->setHeight(MAX(MIN(value, maxScale), minScale));
-
-		} else if (
-
-		customizationName == "age" ||
-		customizationName == "beard" ||
-		customizationName == "center_beard" ||
-		customizationName == "eyebrows"	||
-		customizationName == "eyeshadow" ||
-		customizationName == "freckles" ||
-		customizationName == "fur_pattern" ||
-		customizationName == "side_beard" ||
-		customizationName == "tattoo_style") {
-
-			StringTokenizer tokenizer(variables.toCharArray());
-			tokenizer.setDelimeter(",");
-
-			while (tokenizer.hasMoreTokens()) {
-				String attribute;
-				tokenizer.getStringToken(attribute);
-				creatureObject->setCustomizationVariable(attribute, value);
-			}
-
 		}
-		hairCustomization.getData(hairCustomizationString);
-		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+	}
 
-		updateCharacterAppearance(creatureObject);
 
-	} else
-
-		hairCustomization.getData(hairCustomizationString);
-		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
-
-		updateCharacterAppearance(creatureObject);
+	/*	hairCustomization.getData(hairCustomizationString);
+	updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+	 */
 }
 
-void ImageDesignManager::updateCustomization(const String& customizationName, uint32 value, String& hairTemplate, CreatureObject* creo) {
+void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano, int skillLevel) {
+	String appearanceFilename = tano->getObjectTemplate()->getAppearanceFilename();
+
+	VectorMap<String, Reference<CustomizationVariable*> > variableLimits;
+
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variableLimits, false);
+
+	for (int i = 0; i < fullVariables.size(); ++i) {
+		String var = fullVariables.get(i);
+
+		for (int j = 0; j < variableLimits.size(); ++j) {
+			String fullVariableNameLimit = variableLimits.elementAt(j).getKey();
+
+			//info("checking customization variable " + fullVariableNameLimit + " for " + var, true);
+
+			if (fullVariableNameLimit.contains(var)) {
+				BasicRangedIntCustomizationVariable* ranged = dynamic_cast<BasicRangedIntCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
+				PaletteColorCustomizationVariable* palette = NULL;
+				uint32 currentVal = value;
+
+				if (ranged != NULL) {
+					int min = ranged->getMinValueInclusive();
+					int max = ranged->getMaxValueExclusive();
+
+					if (value < min)
+						currentVal = min;
+
+					if (value >= max)
+						currentVal = max - 1;
+				} else {
+					palette = dynamic_cast<PaletteColorCustomizationVariable*>(variableLimits.elementAt(j).getValue().get());
+
+					if (palette != NULL) {
+						if (!validatePalette(palette, currentVal, skillLevel))
+							currentVal = palette->getDefaultValue();
+					}
+				}
+
+				tano->setCustomizationVariable(fullVariableNameLimit, currentVal, true);
+
+				//info("setting " + fullVariableNameLimit + " to " + String::valueOf(currentVal), true);
+			}
+		}
+	}
+}
+
+void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, CreatureObject* creo) {
 	if (value > 255 || creo == NULL)
 		return;
 
@@ -201,62 +242,64 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 		return;
 	}
 
-	String variables = customData->getVariables();
-	String type = customData->getType();
-		if (type == "color"){
-		if (
-			customizationName == "hair_color" ||
-			customizationName == "lekku_color" ||
-			customizationName == "horns_color" ||
-			customizationName == "hair_trim_color"){
-		StringTokenizer tokenizer(variables.toCharArray());
-		tokenizer.setDelimeter(",");
+	String skillMod = customData->getImageDesignSkillMod();
 
-		while (tokenizer.hasMoreTokens()) {
-			String attribute;
-			tokenizer.getStringToken(attribute);
-			hairCustomization.setVariable(attribute,value);
-		}
-
-		String hairCustomizationString;
-		hairCustomization.getData(hairCustomizationString);
-		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
-
-		updateCharacterAppearance(creatureObject);
-		}
-
-		else if(
-				customizationName == "eye_color" ||
-				customizationName == "eyebrows_color" ||
-				customizationName == "facial_hair_color" ||
-				customizationName == "fur_color_bothan" ||
-				customizationName == "skin_color" ||
-				customizationName == "fur_color_wookiee" ||
-				customizationName == "nose_color"){
-
-			StringTokenizer tokenizer(variables.toCharArray());
-			tokenizer.setDelimeter(",");
-
-			while (tokenizer.hasMoreTokens()) {
-				String attribute;
-				tokenizer.getStringToken(attribute);
-				creatureObject->setCustomizationVariable(attribute, value);
-			}
-
-		updateCharacterAppearance(creatureObject);
-		}
-
-	} else if (type == "hslider") {
-		updateCustomization(customizationName, (float) value, hairTemplate, creo);
+	if (imageDesigner->getSkillMod(skillMod) < customData->getSkillModValue())
 		return;
 
-	} else {
-		String hairCustomizationString;
-		hairCustomization.getData(hairCustomizationString);
-		updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
+	String variables = customData->getVariables();
+	String type = customData->getType();
 
-		updateCharacterAppearance(creatureObject);
+	String hairCustomizationString;
+
+	TangibleObject* objectToUpdate = creo;
+
+	if (customData->getIsVarHairColor()) {
+		//hairCustomization.getData(hairCustomizationString);
+		//TangibleObject* hair = updateHairObject(creo, hairTemplate, hairCustomizationString);
+
+		objectToUpdate = hairObject;
 	}
+
+	if (objectToUpdate == NULL)
+		return;
+
+	Vector<String> fullVariables;
+	StringTokenizer tokenizer(variables);
+	tokenizer.setDelimeter(",");
+
+	while (tokenizer.hasMoreTokens()) {
+		String var;
+		tokenizer.getStringToken(var);
+
+		fullVariables.add(var);
+	}
+
+	int skillLevel = getSkillLevel(imageDesigner);
+
+	updateColorVariable(fullVariables, value, objectToUpdate, skillLevel);
+}
+
+int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner) {
+	int hairMod = imageDesigner->getSkillMod("hair");
+
+	int skillLevel = -1;
+
+	if (hairMod >= 12) {
+		if (imageDesigner->hasSkill("social_imagedesigner_master")) {
+			skillLevel = 5;
+		} else
+			skillLevel = 4;
+	} else if (hairMod >= 10) {
+		skillLevel = 3;
+	} else if (hairMod >= 8) {
+		skillLevel = 2;
+	} else if (hairMod >= 6) {
+		skillLevel = 1;
+	} else if (hairMod >= 5)
+		skillLevel = 0;
+
+	return skillLevel;
 }
 
 void ImageDesignManager::loadCustomizationData() {
@@ -338,20 +381,54 @@ String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
 	return creo->getSpeciesName() + "_" + genderString;
 }
 
-void ImageDesignManager::updateCharacterAppearance(CreatureObject* creo) {
-	if (creo == NULL)
-		return;
+TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesigner, CreatureObject* targetObject, const String& hairTemplate, const String& hairCustomization) {
+	TangibleObject* oldHair = dynamic_cast<TangibleObject*>(targetObject->getSlottedObject("hair"));
 
-	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(creo);
-	dcreo3->updateCharacterAppearance();
-	dcreo3->updateHeight();
-	dcreo3->close();
-	creo->broadcastMessage(dcreo3, true);
+	HairAssetData* hairAssetData = CustomizationIdManager::instance()->getHairAssetData(hairTemplate);
+
+	if (hairTemplate.isEmpty()) {
+		if (!CustomizationIdManager::instance()->canBeBald(getSpeciesGenderString(targetObject)))
+			return oldHair;
+		else
+			return NULL;
+	}
+
+	if (hairAssetData == NULL)
+		return oldHair;
+
+	int skillMod = hairAssetData->getSkillModValue();
+
+	if (imageDesigner->getSkillMod("hair") < skillMod)
+		return oldHair;
+
+	if (hairAssetData->getServerPlayerTemplate() != targetObject->getObjectTemplate()->getFullTemplateString()) {
+		error("hair " + hairTemplate + " is not compatible with this creature player " + targetObject->getObjectTemplate()->getFullTemplateString());
+		return oldHair;
+	}
+
+	ManagedReference<SceneObject*> hair = imageDesigner->getZoneServer()->createObject(hairTemplate.hashCode(), 1);
+
+	//TODO: Validate hairCustomization
+	if (hair == NULL || !hair->isTangibleObject())
+		return oldHair;
+
+	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
+
+	String appearanceFilename = tanoHair->getObjectTemplate()->getAppearanceFilename();
+
+	CustomizationVariables data;
+
+	data.parseFromClientString(hairCustomization);
+
+	if (validateCustomizationString(&data, appearanceFilename, getSkillLevel(imageDesigner)))
+		tanoHair->setCustomizationString(hairCustomization);
+
+	return tanoHair;
 }
 
-void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObject, String& hairCustomization) {
+TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, TangibleObject* hairObject) {
 	if (creo == NULL)
-		return;
+		return NULL;
 
 	ManagedReference<TangibleObject*> hair = cast<TangibleObject*>( creo->getSlottedObject("hair"));
 
@@ -359,13 +436,129 @@ void ImageDesignManager::updateHairObject(CreatureObject* creo, String& hairObje
 		hair->destroyObjectFromWorld(true);
 	}
 
-	if (!hairObject.isEmpty()) {
-		ManagedReference<PlayerManager*> playerMgr = creo->getZoneServer()->getPlayerManager();
-		hair = playerMgr->createHairObject(hairObject, hairCustomization);
-		creo->transferObject(hair, 4);
-		creo->broadcastObject(hair, true);
+	if (hairObject == NULL)
+		return NULL;
 
+	creo->transferObject(hairObject, 4);
+	creo->broadcastObject(hairObject, true);
+
+	return hair;
+}
+
+bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* palette, int value, int skillLevel) {
+	String paletteFileName = palette->getPaletteFileName();
+	int idx = paletteFileName.lastIndexOf("/");
+
+	if (idx != -1) {
+		String paletteName = paletteFileName.subString(idx + 1);
+		paletteName = paletteName.subString(0, paletteName.indexOf("."));
+
+		//info("palette name = " + paletteName, true);
+
+		PaletteData* data = CustomizationIdManager::instance()->getPaletteData(paletteName);
+
+		if (data == NULL) {
+			//error("could not find palette data for " + paletteName);
+		} else {
+			int maxIndex;
+
+			switch (skillLevel) {
+			case -1:
+				maxIndex = data->getCreationIndexes();
+				break;
+			case 0:
+				maxIndex = data->getIdNoviceIndexes();
+				break;
+			case 1:
+				maxIndex = data->getIdLevel1Indexes();
+				break;
+			case 2:
+				maxIndex = data->getIdLevel2Indexes();
+				break;
+			case 3:
+				maxIndex = data->getIdLevel3Indexes();
+				break;
+			case 4:
+				maxIndex = data->getIdLevel4Indexes();
+				break;
+			case 5:
+				maxIndex = data->getIdMasterIndexes();
+				break;
+			default:
+				maxIndex = -1;
+				break;
+			}
+
+			if (value >= maxIndex) {
+				instance()->error("value for " + paletteFileName + " value " + value + " outside bound " + String::valueOf(maxIndex));
+
+				return false;
+			} else {
+				//info(name + " value " + String::valueOf(val) + " inside bound " + String::valueOf(maxIndex) + " for " + name , true);
+			}
+		}
 	}
+
+	return true;
+}
+
+bool ImageDesignManager::validateCustomizationString(CustomizationVariables* data, const String& appearanceFilename, int skillLevel) {
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
+	variables.setNullValue(NULL);
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+	if (variables.size() == 0) {
+		instance()->error("no customization data found for " + appearanceFilename);
+		return false;
+	}
+
+	for (int i = 0; i < data->size(); ++i) {
+		uint8 id = data->elementAt(i).getKey();
+		int16 val = data->elementAt(i).getValue();
+
+		String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
+
+		//instance()->info("validating " + name + " with value " + String::valueOf(val), true);
+
+		CustomizationVariable* customizationVariable = variables.get(name).get();
+
+		if (customizationVariable == NULL) {
+			instance()->error("customization variable id " + String::valueOf(id) + " not found in the appearance file " + appearanceFilename + " with value " + String::valueOf(val));
+
+			continue;
+		}
+
+		PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
+
+		if (palette != NULL) {
+			if (!validatePalette(palette, val, skillLevel))
+				return false;
+		} else {
+			BasicRangedIntCustomizationVariable* range = dynamic_cast<BasicRangedIntCustomizationVariable*>(customizationVariable);
+
+			if (range == NULL) {
+				instance()->error("unkown customization variable type " + name);
+				return false;
+			} else {
+				int maxExcl = range->getMaxValueExclusive();
+				int minIncl = range->getMinValueInclusive();
+
+				if (val >= maxExcl || val < minIncl) {
+					instance()->error("variable outside bounds " + name + " value " + val + " outside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")");
+
+					return false;
+				} else {
+					//instance()->info("variable " + name + " value " + String::valueOf(val) + " inside bounds [" + String::valueOf(minIncl) + "," + String::valueOf(maxExcl) + ")", true);
+				}
+
+			}
+		}
+
+
+		//info("setting variable:" + name + " to " + String::valueOf(val), true);
+	}
+
+	return true;
 }
 
 ImageDesignManager::~ImageDesignManager() {

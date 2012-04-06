@@ -68,8 +68,8 @@ void* AssetCustomizationManagerTemplate::getCustomizationVariablesFromMap(uint16
 				getRTYP(*((byte*)ucmpValue + 1), isPallette, rtypResult);
 
 				if (!isPallette) {
-					int min = *(int*)(irngTable + 8 * rtypResult - 8);
-					int max = *(int*)(irngTable + 8 * rtypResult - 4);
+					int min = *(uint32*)(irngTable + 8 * rtypResult - 8);
+					int max = *(uint32*)(irngTable + 8 * rtypResult - 4);
 
 					//Logger::console.info("MIN: " + String::valueOf(min), true);
 					//Logger::console.info("MAX: " + String::valueOf(max), true);

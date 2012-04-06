@@ -103,13 +103,17 @@ public:
 		statMigrationRequested = message->parseByte();
 
 		unk1 = message->parseInt();
+		//System::out << "unk1 " << unk1 << "\n";
 		unk2 = message->parseInt();
+		//System::out << "unk2 " << unk2 << "\n";
 		unk3 = message->parseInt();
+		//System::out << "unk3 " << unk3 << "\n";
 		unk4 = message->parseInt();
+		//System::out << "unk4 " << unk4 << "\n";
 
 		int size = message->parseInt();
 
-		// System::out << "body parts " << size << endl;
+		//System::out << "body parts " << size << "\n";
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
@@ -119,20 +123,20 @@ public:
 
 			bodyAttributes.put(attr, val);
 
-			System::out << attr << " " << val << endl;
+			//System::out << attr << " " << val << "\n";
 		}
 
 		size = message->parseInt();
 
-		System::out << "color parts " << size << endl;
+		//System::out << "color parts " << size << "\n";
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
 			message->parseAscii(attr);
 
 			uint32 val = message->parseInt();
-			//System::out << attr + String::valueOf(val) << endl;
-			System::out << attr << " " << val << endl;
+			////System::out << attr + String::valueOf(val) << "\n";
+			//System::out << attr << " " << val << "\n";
 
 			colorAttributes.put(attr, val);
 		}

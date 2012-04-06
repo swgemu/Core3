@@ -69,7 +69,7 @@ public:
 			return GENERALERROR;
 
 		//Disabled again for public use until bugs can be worked out.
-		return SUCCESS;
+		//return SUCCESS;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 		CreatureObject* playerTarget = NULL;

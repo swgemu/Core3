@@ -237,6 +237,17 @@ void TemplateManager::loadAssetCustomizationManager() {
 	CustomizationIdManager::instance()->loadHairAssetsSkillMods(iffStream);
 
 	delete iffStream;
+
+	iffStream = openIffFile("datatables/customization/allow_bald.iff");
+
+	if (iffStream == NULL) {
+		error("allow bald data not found");
+		return;
+	}
+
+	CustomizationIdManager::instance()->loadAllowBald(iffStream);
+
+	delete iffStream;
 }
 
 Reference<SlotDescriptor*> TemplateManager::getSlotDescriptor(const String& filename) {

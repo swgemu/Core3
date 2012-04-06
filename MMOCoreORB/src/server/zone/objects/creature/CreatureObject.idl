@@ -380,6 +380,8 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native abstract void updateLocomotion();
 	
+	public native void setHeight(float heigh, boolean notifyClient = true);
+	
 	/**
 	 * Updates the acceleration speed multiplier base
 	 * @pre { this object is locked }
@@ -1443,10 +1445,6 @@ class CreatureObject extends TangibleObject {
 	@local
 	public DeltaVectorMap<string, long> getSkillModList() {
 		return skillModList;
-	}
-	
-	public void setHeight(float heigh) {
-		height = heigh;
 	}
 	
 	public void setWatchToID(unsigned long id) {

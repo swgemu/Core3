@@ -29,8 +29,8 @@ class SlotDescriptor;
 class ArrangementDescriptor;
 
 namespace server {
- namespace zone {
-  namespace templates {
+namespace zone {
+namespace templates {
 
 
 class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
@@ -192,103 +192,103 @@ public:
 
 	static String getType(int type);
 
-    inline String getAppearanceFilename() const {
+	inline String getAppearanceFilename() const {
 		return appearanceFilename;
 	}
 
-    inline float getClearFloraRadius() const {
+	inline float getClearFloraRadius() const {
 		return clearFloraRadius;
 	}
 
-    inline String getClientDataFile() const {
+	inline String getClientDataFile() const {
 		return clientDataFile;
 	}
 
-    inline int getCollisionActionBlockFlags() const {
+	inline int getCollisionActionBlockFlags() const {
 		return collisionActionBlockFlags;
 	}
 
-    inline int getCollisionActionFlags() const {
+	inline int getCollisionActionFlags() const {
 		return collisionActionFlags;
 	}
 
-    inline int getCollisionActionPassFlags() const {
+	inline int getCollisionActionPassFlags() const {
 		return collisionActionPassFlags;
 	}
 
-    inline int getCollisionMaterialBlockFlags() const {
+	inline int getCollisionMaterialBlockFlags() const {
 		return collisionMaterialBlockFlags;
 	}
 
-    inline int getCollisionMaterialFlags() const {
+	inline int getCollisionMaterialFlags() const {
 		return collisionMaterialFlags;
 	}
 
-    inline int getCollisionMaterialPassFlags() const {
+	inline int getCollisionMaterialPassFlags() const {
 		return collisionMaterialPassFlags;
 	}
 
-    inline int getContainerType() const {
+	inline int getContainerType() const {
 		return containerType;
 	}
 
-    inline int getContainerVolumeLimit() const {
+	inline int getContainerVolumeLimit() const {
 		return containerVolumeLimit;
 	}
 
-    inline String getDetailedDescription() {
+	inline String getDetailedDescription() {
 		return detailedDescription.getFullString();
 	}
 
-    inline int getGameObjectType() const {
+	inline int getGameObjectType() const {
 		return gameObjectType;
 	}
 
-    inline int getClientGameObjectType() const {
-    	return clientGameObjectType;
-    }
+	inline int getClientGameObjectType() const {
+		return clientGameObjectType;
+	}
 
-    inline float getLocationReservationRadius() const {
+	inline float getLocationReservationRadius() const {
 		return locationReservationRadius;
 	}
 
-    inline String getLookAtText() const {
+	inline String getLookAtText() const {
 		return lookAtText.getFullString();
 	}
 
-    inline float getNoBuildRadius() const {
+	inline float getNoBuildRadius() const {
 		return noBuildRadius;
 	}
 
-    inline String getObjectName() const {
+	inline String getObjectName() const {
 		return objectName.getFullString();
 	}
 
-    inline bool getOnlyVisibleInTools() const {
+	inline bool getOnlyVisibleInTools() const {
 		return onlyVisibleInTools;
 	}
 
-    inline String getPortalLayoutFilename() const {
+	inline String getPortalLayoutFilename() const {
 		return portalLayoutFilename;
 	}
 
-    PortalLayout* getPortalLayout();
-    AppearanceTemplate* getAppearanceTemplate();
+	PortalLayout* getPortalLayout();
+	AppearanceTemplate* getAppearanceTemplate();
 
-    inline Vector<String>* getArrangementDescriptors() {
-    	if (arrangementDescriptors == NULL)
-    		return NULL;
-    	else
-    		return arrangementDescriptors->getArrangementSlots();
+	inline Vector<String>* getArrangementDescriptors() {
+		if (arrangementDescriptors == NULL)
+			return NULL;
+		else
+			return arrangementDescriptors->getArrangementSlots();
 	}
 
-    /*inline Vector<float>* getScale() {
+	/*inline Vector<float>* getScale() {
 		return &scale;
 	}*/
 
-    inline void addDerivedFile(const String& name) {
-    	loadedDerivedFiles.put(name);
-    }
+	inline void addDerivedFile(const String& name) {
+		loadedDerivedFiles.put(name);
+	}
 
 	inline float getMinScale() {
 		return scale.getMin();
@@ -298,76 +298,76 @@ public:
 		return scale.getMax();
 	}
 
-    inline float getScaleThresholdBeforeExtentTest() const {
+	inline float getScaleThresholdBeforeExtentTest() const {
 		return scaleThresholdBeforeExtentTest;
 	}
 
-    inline bool getSendToClient() const {
+	inline bool getSendToClient() const {
 		return sendToClient;
 	}
 
-    inline Vector<String>* getSlotDescriptors() {
-    	if (slotDescriptors == NULL)
-    		return NULL;
-    	else
-    		return slotDescriptors->getSlots();
+	inline Vector<String>* getSlotDescriptors() {
+		if (slotDescriptors == NULL)
+			return NULL;
+		else
+			return slotDescriptors->getSlots();
 	}
 
-    inline bool getSnapToTerrain() const {
+	inline bool getSnapToTerrain() const {
 		return snapToTerrain;
 	}
 
-    inline int getSurfaceType() const {
+	inline int getSurfaceType() const {
 		return surfaceType;
 	}
 
-    inline String getTintPallete() const {
+	inline String getTintPallete() const {
 		return tintPallete;
 	}
 
-    inline int getTotalCellNumber() const {
+	inline int getTotalCellNumber() const {
 		return totalCellNumber;
 	}
 
-    inline uint32 getClientObjectCRC() const {
+	inline uint32 getClientObjectCRC() const {
 		return clientTemplateFileName.hashCode();
 	}
 
-    inline String getClientTemplateFileName() {
-    	return clientTemplateFileName;
-    }
+	inline String getClientTemplateFileName() {
+		return clientTemplateFileName;
+	}
 
-    inline uint32 getServerObjectCRC() {
-    	return fullTemplateString.hashCode();
-    }
+	inline uint32 getServerObjectCRC() {
+		return fullTemplateString.hashCode();
+	}
 
-    inline String getFullTemplateString() {
+	inline String getFullTemplateString() {
 		return fullTemplateString;
 	}
 
-    inline String getDataObjectComponent() {
-    	return dataObjectComponent;
-    }
+	inline String getDataObjectComponent() {
+		return dataObjectComponent;
+	}
 
-    inline String getTemplateFileName() {
+	inline String getTemplateFileName() {
 		return templateFileName;
 	}
 
-    inline SceneObjectComponent* getContainerComponent() {
-    	return containerComponent;
-    }
+	inline SceneObjectComponent* getContainerComponent() {
+		return containerComponent;
+	}
 
-    inline String getZoneComponent() {
-    	return zoneComponent;
-    }
+	inline String getZoneComponent() {
+		return zoneComponent;
+	}
 
-    inline SceneObjectComponent* getObjectMenuComponent() {
-    	return objectMenuComponent;
-    }
+	inline SceneObjectComponent* getObjectMenuComponent() {
+		return objectMenuComponent;
+	}
 
-    inline String getAttributeListComponent() {
-    	return attributeListComponent;
-    }
+	inline String getAttributeListComponent() {
+		return attributeListComponent;
+	}
 
 	inline PlanetMapCategory* getPlanetMapCategory() const {
 		return planetMapCategory;
@@ -628,18 +628,17 @@ public:
 	}
 
 	virtual bool isRepairToolTemplate() {
-    	return false;
-    }
-    
-       virtual bool isRobeObjectTemplate() {
-               return false;
-       }
+		return false;
+	}
 
+	virtual bool isRobeObjectTemplate() {
+		return false;
+	}
 };
 
 
-  }
- }
+}
+}
 }
 
 using namespace server::zone::templates;

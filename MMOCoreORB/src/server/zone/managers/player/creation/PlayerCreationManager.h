@@ -138,7 +138,6 @@ class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Lo
 	void addRacialMods(CreatureObject* creature, const String& race, Vector<String>* startingSkills, Vector<String>* startingItems, bool equipmentOnly);
 	void addStartingItems(CreatureObject* creature, const String& clientTemplate, bool equipmentOnly);
 	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate, bool equipmentOnly);
-	bool validateCreationCustomizationString(CustomizationVariables* data, const String& appearanceFilename);
 	//void generateHologrindProfessions(CreatureObject* creature);
 
 public:

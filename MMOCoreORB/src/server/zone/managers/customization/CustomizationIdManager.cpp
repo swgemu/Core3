@@ -29,6 +29,25 @@ void CustomizationIdManager::loadHairAssetsSkillMods(IffStream* iffStream) {
 	info("loaded " + String::valueOf(paletteColumns.size()) + " hair assets", true);
 }
 
+void CustomizationIdManager::loadAllowBald(IffStream* iffStream) {
+	DataTableIff dataTable;
+	dataTable.readObject(iffStream);
+
+	for (int i = 0; i < dataTable.getTotalRows(); ++i) {
+		String species;
+		bool val;
+
+		DataTableRow* row = dataTable.getRow(i);
+
+		row->getValue(0, species);
+		row->getValue(1, val);
+
+		allowBald.put(species, val);
+	}
+
+	info("loaded " + String::valueOf(allowBald.size()) + " allow bald species data", true);
+}
+
 void CustomizationIdManager::loadPaletteColumns(IffStream* iffStream) {
 	DataTableIff dataTable;
 	dataTable.readObject(iffStream);

@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "server/ServerCore.h"
 
@@ -57,7 +57,6 @@ which carries forward this exception.
 
 int main(int argc, char* argv[]) {
 	try {
-
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
 			arguments.put(argv[i]);

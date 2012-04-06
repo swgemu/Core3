@@ -346,6 +346,8 @@ public:
 
 	void updateLocomotion();
 
+	void setHeight(float heigh, bool notifyClient = true);
+
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
 	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
@@ -758,8 +760,6 @@ public:
 
 	DeltaVectorMap<String, long long>* getSkillModList();
 
-	void setHeight(float heigh);
-
 	void setWatchToID(unsigned long long id);
 
 	bool isCreatureObject();
@@ -1096,6 +1096,8 @@ public:
 	virtual void setPosture(int newPosture, bool notifyClient = true);
 
 	virtual void updateLocomotion();
+
+	void setHeight(float heigh, bool notifyClient = true);
 
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
@@ -1509,8 +1511,6 @@ public:
 
 	DeltaVectorMap<String, long long>* getSkillModList();
 
-	void setHeight(float heigh);
-
 	void setWatchToID(unsigned long long id);
 
 	bool isCreatureObject();
@@ -1689,6 +1689,8 @@ public:
 	void setPosture(int newPosture, bool notifyClient);
 
 	void updateLocomotion();
+
+	void setHeight(float heigh, bool notifyClient);
 
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient);
 
@@ -2073,8 +2075,6 @@ public:
 	long long getSkillMod(const String& skillmod);
 
 	bool hasSkill(const String& skill);
-
-	void setHeight(float heigh);
 
 	void setWatchToID(unsigned long long id);
 

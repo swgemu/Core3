@@ -47,11 +47,8 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-class CustomizationVariables : public VectorMap<uint8, uint8> {
+class CustomizationVariables : public VectorMap<uint8, int16> {
 	uint8 unknown;
-	bool unknown2;
-
-	bool female;
 
 	Vector<uint8> keyIndex;
 
@@ -63,19 +60,19 @@ public:
 
 	CustomizationVariables& operator=(const String& custString);
 
-	void setVariable(uint8 type, uint8 value);
+	void setVariable(uint8 type, int16 value);
 
-	void setVariable(const String& type, uint8 value);
+	void setVariable(const String& type, int16 value);
 
-	uint8 getVariable(uint8 type) {
+	int16 getVariable(uint8 type) {
 		return get(type);
 	}
 
-	uint8 getVariable(int idx) {
+	int16 getVariable(int idx) {
 		return get(idx);
 	}
 
-	void getVariable(int idx, uint8& type, uint8& value);
+	void getVariable(int idx, uint8& type, int16& value);
 
 	int getSize() {
 		return size();
