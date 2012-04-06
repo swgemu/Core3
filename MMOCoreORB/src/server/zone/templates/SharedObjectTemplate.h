@@ -170,6 +170,7 @@ public:
 	const static int LIVESAMPLE = 0x4000031;
 	const static int CREATUREHABITAT = 0x4000032;
 	const static int REPAIRTOOL = 0x4000033;
+	const static int ROBEOBJECT = 0x4000034;
 
 public:
 	SharedObjectTemplate();
@@ -629,6 +630,10 @@ public:
 	virtual bool isRepairToolTemplate() {
     	return false;
     }
+    
+       virtual bool isRobeObjectTemplate() {
+               return false;
+       }
 
 };
 
