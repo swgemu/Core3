@@ -110,6 +110,9 @@ public:
 
 		Locker locker(playerRef);
 
+		if (objectiveRef->getPlayerOwner() == NULL)
+			return;
+
 		if (move) {
 			updatePosition(playerRef);
 		}
