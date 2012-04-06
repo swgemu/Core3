@@ -61,9 +61,15 @@ import server.zone.objects.tangible.terminal.ticketcollector.TicketCollector;
 import server.zone.objects.tangible.terminal.travel.TravelTerminal;
 
 class ShuttleInstallation extends InstallationObject {
+	
 	public ShuttleInstallation() {
 		setLoggingName("ShuttleInstallation");
 	}
 	
 	public native boolean checkRequisitesForPlacement(CreatureObject player);
+	
+		
+	public boolean isShuttleInstallation(){
+		return true;
+	}
 }

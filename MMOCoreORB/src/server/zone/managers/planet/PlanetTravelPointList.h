@@ -78,6 +78,22 @@ public:
 	inline void setZoneName(const String& name) {
 		zoneName = name;
 	}
+
+	void addPlayerCityTravelPoint(PlanetTravelPoint* planetTravelPoint){
+		wlock();
+
+		put(planetTravelPoint->getPointName(), planetTravelPoint);
+
+		unlock();
+	}
+
+	void removePlayerCityTravelPoint(const String& pointName){
+		wlock();
+
+		drop(pointName);
+
+		unlock();
+	}
 };
 
 #endif /* PLANETTRAVELPOINTLIST_H_ */

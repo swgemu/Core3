@@ -67,6 +67,7 @@
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h"
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -293,6 +294,43 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	zone->transferObject(structureObject, -1, true);
 	structureObject->createChildObjects();
 
+	//Code for player shuttle placement
+	if (structureObject->isInstallationObject()){
+		ManagedReference<InstallationObject*> installationObject = cast<InstallationObject*>(structureObject);
+
+		if (installationObject->isShuttleInstallation()){
+
+			String city;
+			ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion();
+
+			if (cityRegion != NULL)
+				city = cityRegion->getRegionName();
+
+			Vector3 arrivalVector(x, y, z);
+
+			String zoneName = zone->getZoneName();
+
+			SortedVector < ManagedReference<SceneObject*> > *childObjects
+							= structureObject->getChildObjects();
+
+			ManagedReference<CreatureObject*> shuttle = NULL;
+
+			for (int i = 0; i < childObjects->size(); ++i) {
+				if (!childObjects->get(i)->isTerminal()) {
+					shuttle = cast<CreatureObject*>(childObjects->get(i).get());
+					break;
+				}
+			}
+
+			ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, city, arrivalVector, arrivalVector, shuttle);
+			planetManager->addPlayerCityTravelPoint(planetTravelPoint);
+
+			if (shuttle != NULL)
+				planetManager->scheduleShuttle(shuttle);
+		}
+	}
+
 	structureObject->notifyStructurePlaced(creature);
 
 	return structureObject;
@@ -336,6 +374,36 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 		if (ghost != NULL && ghost->isPlayerObject()) {
 			PlayerObject* playerObject = cast<PlayerObject*>( ghost.get());
 			playerObject->removeOwnedStructure(structureObject);
+		}
+	}
+
+	//Code for destroying player shuttle port
+	if (structureObject->isInstallationObject()){
+		ManagedReference<InstallationObject*> installationObject = cast<InstallationObject*>(structureObject);
+
+		if (installationObject->isShuttleInstallation()){
+			ManagedReference<CityRegion*> cityRegion = structureObject->getCityRegion();
+
+			ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+			if (cityRegion != NULL)
+				planetManager->removePlayerCityTravelPoint(cityRegion->getRegionName());
+
+			SortedVector < ManagedReference<SceneObject*> > *childObjects
+										= structureObject->getChildObjects();
+
+			ManagedReference<CreatureObject*> shuttle = NULL;
+
+			for (int i = 0; i < childObjects->size(); ++i) {
+				if (!childObjects->get(i)->isTerminal()) {
+					shuttle = cast<CreatureObject*>(childObjects->get(i).get());
+					break;
+				}
+			}
+
+			if (shuttle != NULL)
+				planetManager->removeShuttle(shuttle);
+
 		}
 	}
 

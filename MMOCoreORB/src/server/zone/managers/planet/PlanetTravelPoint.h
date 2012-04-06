@@ -32,6 +32,15 @@ public:
 		shuttleObject = NULL;
 	}
 
+	PlanetTravelPoint(const String& zoneName, const String& cityName, Vector3 arrVector, Vector3 departVector, CreatureObject* shuttle) {
+			pointZone = zoneName;
+			pointName = cityName;
+			arrivalVector = arrVector;
+			departureVector = departVector;
+			interplanetaryTravelAllowed = false;
+			shuttleObject = shuttle;
+	}
+
 	PlanetTravelPoint(const PlanetTravelPoint& ptp) : Object() {
 		pointZone = ptp.pointZone;
 		pointName = ptp.pointName;

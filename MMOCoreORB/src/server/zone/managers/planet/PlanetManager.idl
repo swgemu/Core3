@@ -302,7 +302,18 @@ class PlanetManager extends ManagedService implements Logger {
 		shuttleMap.put(shuttle.getObjectID(), task);
 	}
 	
+	public void removeShuttle(CreatureObject shuttle){
+		
+		shuttleMap.drop(shuttle.getObjectID());
+		
+	}
+	
 	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);
 
 	public native boolean isInWater(float x, float y);
+	
+	@local
+	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);
+	
+	public native void removePlayerCityTravelPoint(final string cityName);
 }

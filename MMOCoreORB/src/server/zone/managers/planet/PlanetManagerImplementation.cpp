@@ -706,3 +706,17 @@ bool PlanetManagerImplementation::isInWater(float x, float y) {
 
 	return false;
 }
+
+void PlanetManagerImplementation::addPlayerCityTravelPoint(PlanetTravelPoint* planetTravelPoint){
+
+	planetTravelPointList->addPlayerCityTravelPoint(planetTravelPoint);
+
+}
+
+void PlanetManagerImplementation::removePlayerCityTravelPoint(const String& cityName){
+
+	planetTravelPointList->removePlayerCityTravelPoint(cityName);
+
+}
+
+

@@ -242,6 +242,10 @@ class InstallationObject extends StructureObject {
 		return false;
 	}
 	
+	public abstract boolean isShuttleInstallation(){
+		return false;
+	}
+	
 	@local
 	public native void setHopperSizeMax(float size);
 	
