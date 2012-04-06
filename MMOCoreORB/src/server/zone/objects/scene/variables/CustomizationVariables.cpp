@@ -184,7 +184,7 @@ void CustomizationVariables::parseFromClientString(const String& custString) {
 						setVariable(type, value1);
 					}
 				} else {
-					setVariable(type, 0);
+					setVariable(type, value1);
 				}
 			} else {
 				if (value1 == 0xFF) {
@@ -203,7 +203,8 @@ void CustomizationVariables::parseFromClientString(const String& custString) {
 		}
 	} catch (Exception& e) {
 		removeAll();
-		printf("Exception in CustomizationVariables& operator=(String& custString)\n");
+		StackTrace::printStackTrace();
+		Logger::console.error("Exception in CustomizationVariables& operator=(String& custString)\n");
 
 		const char* array = custString.toCharArray();
 
@@ -219,7 +220,7 @@ void CustomizationVariables::parseFromClientString(const String& custString) {
 				str << hex << byte  << " ";
 		}
 
-		printf("%s\n", str.toString().toCharArray());
+		Logger::console.error(str.toString());
 	}
 
 }
