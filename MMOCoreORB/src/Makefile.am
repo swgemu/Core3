@@ -580,7 +580,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/PsgArmorObjectImplementation.cpp \
-		server/zone/objects/tangible/wearables/RobeObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \

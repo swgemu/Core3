@@ -25,16 +25,6 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-namespace server {
-namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
 #include "server/zone/templates/tangible/RobeObjectTemplate.h"
 
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
@@ -54,8 +44,6 @@ public:
 	void initializeTransientMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
-
-	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	String getSkillRequired();
 
@@ -101,8 +89,6 @@ public:
 	void initializeTransientMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
-
-	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	String getSkillRequired();
 

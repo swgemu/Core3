@@ -62,7 +62,7 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		ManagedReference<RobeObject*> robe = cast<RobeObject*>( object);
 		String skillRequired = robe->getSkillRequired();
 
-		if (!creo->hasSkill(skillRequired)){
+		if (!creo->hasSkill(skillRequired) && skillRequired != ""){
 			StringIdChatParameter params;
 			params.setStringId("@jedi_spam:must_be_higher_rank");
 			params.setTO("@skl_n:" + skillRequired);

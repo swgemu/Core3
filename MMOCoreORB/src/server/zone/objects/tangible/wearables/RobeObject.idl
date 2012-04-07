@@ -47,7 +47,6 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.wearables.WearableObject;
 import server.zone.objects.creature.CreatureObject;
 import engine.lua.LuaObject;
-import server.zone.Zone;
 include server.zone.templates.tangible.RobeObjectTemplate;
 
 class RobeObject extends WearableObject {
@@ -81,17 +80,6 @@ class RobeObject extends WearableObject {
 		skillRequired = templ.getSkillRequired();
 
 	}
-	
-	
-	/**
-	 * Fills the attribute list message options that are sent to player creature
-	 * @pre { }
-	 * @post { }
-	 * @param msg attribute list message with the attributes
-	 * @param object player creature to which the message is sent
-	 */
-	@local
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public string getSkillRequired(){
 		return skillRequired;

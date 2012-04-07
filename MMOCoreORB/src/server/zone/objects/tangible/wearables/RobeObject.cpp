@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/Zone.h"
-
 /*
  *	RobeObjectStub
  */
@@ -50,15 +48,6 @@ void RobeObject::loadTemplateData(SharedObjectTemplate* templateData) {
 
 	} else
 		_implementation->loadTemplateData(templateData);
-}
-
-void RobeObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
-	RobeObjectImplementation* _implementation = static_cast<RobeObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->fillAttributeList(msg, object);
 }
 
 String RobeObject::getSkillRequired() {

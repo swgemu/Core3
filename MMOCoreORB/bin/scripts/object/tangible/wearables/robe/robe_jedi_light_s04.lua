@@ -66,6 +66,7 @@ object_tangible_wearables_robe_robe_jedi_light_s04 = object_tangible_wearables_r
 				templateType = ROBEOBJECT,
 				objectMenuComponent = {"cpp", "RobeObjectMenuComponent"},
 				skillRequired = "force_rank_light_rank_08",
+				attributeListComponent = "RobeObjectAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_light_s04, "object/tangible/wearables/robe/robe_jedi_light_s04.iff")

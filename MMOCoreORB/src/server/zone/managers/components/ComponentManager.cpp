@@ -35,6 +35,7 @@
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LightsaberObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/RobeObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
@@ -88,6 +89,8 @@ ComponentManager::ComponentManager() {
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
+
+	components.put("RobeObjectAttributeListComponent", new RobeObjectAttributeListComponent());
 
 	components.put("PlaceStructureComponent", new PlaceStructureComponent());
 	components.put("PlaceCityHallComponent", new PlaceCityHallComponent());
