@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "servlets/login/LoginServlet.h"
 #include "servlets/logs/LogsServlet.h"
 #include "servlets/main/MainServlet.h"
+#include "servlets/character/CharacterServlet.h"
+#include "servlets/account/AccountServlet.h"
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;
@@ -115,7 +117,8 @@ void WebServer::registerBaseContexts() {
 	addContext("login", new LoginServlet("login"));
 	addContext("main", new MainServlet("main"));
 	addContext("logs", new LogsServlet("logs"));
-
+	addContext("character", new CharacterServlet("character"));
+	addContext("accout", new AccountServlet("account"));
 }
 
 void WebServer::whitelistInit() {
@@ -447,7 +450,7 @@ void WebServer::displayLogin(StringBuffer* out) {
 
 bool WebServer::authorize(HttpSession* session) {
 
-	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL,
+	ManagedReference<Account*> account = loginServer->getAccountManager()->validateAccountCredentials(NULL,
 			session->getUserName(), session->getPassword());
 
 	/// Remove Password
