@@ -202,11 +202,9 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 }
 
 Account* AccountManager::getAccount(uint32 accountID) {
-	StringBuffer query;
-	query << "SELECT a.active, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
 	String passwordStored;
-	return getAccount(query.toString(), passwordStored);
+	return getAccount(accountID, passwordStored);
 }
 
 Account* AccountManager::getAccount(uint32 accountID, String& passwordStored) {
