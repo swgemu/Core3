@@ -294,6 +294,8 @@ public:
 
 	bool isGeneratorObject();
 
+	bool isShuttleInstallation();
+
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
@@ -421,6 +423,8 @@ public:
 
 	virtual bool isGeneratorObject();
 
+	virtual bool isShuttleInstallation();
+
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
@@ -531,6 +535,8 @@ public:
 	bool isHarvesterObject();
 
 	bool isGeneratorObject();
+
+	bool isShuttleInstallation();
 
 };
 

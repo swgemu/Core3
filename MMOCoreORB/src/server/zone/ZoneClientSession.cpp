@@ -4,8 +4,6 @@
 
 #include "ZoneClientSession.h"
 
-#include "server/login/account/Account.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/ZoneServer.h"
@@ -14,7 +12,7 @@
  *	ZoneClientSessionStub
  */
 
-enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNT__ACCOUNT_,RPC_SETACCOUNTID__INT_,RPC_GETCOMMANDCOUNT__,RPC_INCREASECOMMANDCOUNT__,RPC_RESETCOMMANDCOUNT__,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_GETACCOUNT__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNTID__INT_,RPC_GETCOMMANDCOUNT__,RPC_INCREASECOMMANDCOUNT__,RPC_RESETCOMMANDCOUNT__,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
 
 ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
@@ -185,20 +183,6 @@ void ZoneClientSession::setSessionID(unsigned int id) {
 		_implementation->setSessionID(id);
 }
 
-void ZoneClientSession::setAccount(Account* acc) {
-	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETACCOUNT__ACCOUNT_);
-		method.addObjectParameter(acc);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setAccount(acc);
-}
-
 void ZoneClientSession::setAccountID(unsigned int acc) {
 	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -307,19 +291,6 @@ unsigned int ZoneClientSession::getAccountID() {
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getAccountID();
-}
-
-Account* ZoneClientSession::getAccount() {
-	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETACCOUNT__);
-
-		return static_cast<Account*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getAccount();
 }
 
 bool ZoneClientSession::hasCharacter(unsigned long long cid) {
@@ -483,11 +454,6 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 		return true;
 	}
 
-	if (_name == "ZoneClientSession.account") {
-		TypeInfo<ManagedReference<Account* > >::parseFromBinaryStream(&account, stream);
-		return true;
-	}
-
 	if (_name == "ZoneClientSession.accountID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
 		return true;
@@ -549,14 +515,6 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.account";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<Account* > >::toBinaryStream(&account, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "ZoneClientSession.accountID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -590,7 +548,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 8;
+	return _count + 7;
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
@@ -621,11 +579,6 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 void ZoneClientSessionImplementation::setSessionID(unsigned int id) {
 	// server/zone/ZoneClientSession.idl():  		sessionID = id;
 	sessionID = id;
-}
-
-void ZoneClientSessionImplementation::setAccount(Account* acc) {
-	// server/zone/ZoneClientSession.idl():  		account = acc;
-	account = acc;
 }
 
 void ZoneClientSessionImplementation::setAccountID(unsigned int acc) {
@@ -667,11 +620,6 @@ unsigned int ZoneClientSessionImplementation::getAccountID() {
 	// server/zone/ZoneClientSession.idl():  		return accountID;
 	return accountID;
 	// server/zone/ZoneClientSession.idl():  		return accountID;;
-}
-
-Account* ZoneClientSessionImplementation::getAccount() {
-	// server/zone/ZoneClientSession.idl():  		return account;
-	return account;
 }
 
 bool ZoneClientSessionImplementation::hasCharacter(unsigned long long cid) {
@@ -737,9 +685,6 @@ void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETSESSIONID__INT_:
 		setSessionID(inv->getUnsignedIntParameter());
 		break;
-	case RPC_SETACCOUNT__ACCOUNT_:
-		setAccount(static_cast<Account*>(inv->getObjectParameter()));
-		break;
 	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
 		break;
@@ -760,9 +705,6 @@ void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_GETACCOUNTID__:
 		resp->insertInt(getAccountID());
-		break;
-	case RPC_GETACCOUNT__:
-		resp->insertLong(getAccount()->_getObjectID());
 		break;
 	case RPC_HASCHARACTER__LONG_:
 		resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter()));
@@ -822,10 +764,6 @@ void ZoneClientSessionAdapter::setSessionID(unsigned int id) {
 	(static_cast<ZoneClientSession*>(stub))->setSessionID(id);
 }
 
-void ZoneClientSessionAdapter::setAccount(Account* acc) {
-	(static_cast<ZoneClientSession*>(stub))->setAccount(acc);
-}
-
 void ZoneClientSessionAdapter::setAccountID(unsigned int acc) {
 	(static_cast<ZoneClientSession*>(stub))->setAccountID(acc);
 }
@@ -852,10 +790,6 @@ unsigned int ZoneClientSessionAdapter::getSessionID() {
 
 unsigned int ZoneClientSessionAdapter::getAccountID() {
 	return (static_cast<ZoneClientSession*>(stub))->getAccountID();
-}
-
-Account* ZoneClientSessionAdapter::getAccount() {
-	return (static_cast<ZoneClientSession*>(stub))->getAccount();
 }
 
 bool ZoneClientSessionAdapter::hasCharacter(unsigned long long cid) {

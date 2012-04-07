@@ -34,7 +34,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -532,6 +532,19 @@ bool InstallationObject::isGeneratorObject() {
 		return _implementation->isGeneratorObject();
 }
 
+bool InstallationObject::isShuttleInstallation() {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSHUTTLEINSTALLATION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isShuttleInstallation();
+}
+
 void InstallationObject::setHopperSizeMax(float size) {
 	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -860,6 +873,11 @@ bool InstallationObjectImplementation::isGeneratorObject() {
 	return false;
 }
 
+bool InstallationObjectImplementation::isShuttleInstallation() {
+	// server/zone/objects/installation/InstallationObject.idl():  		return false;
+	return false;
+}
+
 /*
  *	InstallationObjectAdapter
  */
@@ -970,6 +988,9 @@ void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_ISGENERATOROBJECT__:
 		resp->insertBoolean(isGeneratorObject());
+		break;
+	case RPC_ISSHUTTLEINSTALLATION__:
+		resp->insertBoolean(isShuttleInstallation());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1102,6 +1123,10 @@ bool InstallationObjectAdapter::isHarvesterObject() {
 
 bool InstallationObjectAdapter::isGeneratorObject() {
 	return (static_cast<InstallationObject*>(stub))->isGeneratorObject();
+}
+
+bool InstallationObjectAdapter::isShuttleInstallation() {
+	return (static_cast<InstallationObject*>(stub))->isShuttleInstallation();
 }
 
 /*

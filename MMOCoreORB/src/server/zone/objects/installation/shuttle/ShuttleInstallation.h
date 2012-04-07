@@ -163,6 +163,8 @@ public:
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
 
+	bool isShuttleInstallation();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -197,6 +199,8 @@ public:
 	ShuttleInstallationImplementation(DummyConstructorParameter* param);
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
+
+	bool isShuttleInstallation();
 
 	WeakReference<ShuttleInstallation*> _this;
 
@@ -242,6 +246,8 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
+
+	bool isShuttleInstallation();
 
 };
 

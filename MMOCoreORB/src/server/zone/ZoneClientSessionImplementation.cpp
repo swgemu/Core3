@@ -48,8 +48,6 @@ which carries forward this exception.
 
 #include "Zone.h"
 
-#include "server/login/account/Account.h"
-
 #include "objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/ClearClientEvent.h"
@@ -61,7 +59,6 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 
 	player = NULL;
 	sessionID = 0;
-	account = NULL;
 
 	accountID = 0;
 
@@ -156,9 +153,6 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	if (server != NULL) {
 		server->addTotalSentPacket(session->getSentPacketCount());
 		server->addTotalResentPacket(session->getResentPacketCount());
-
-		if (account != NULL)
-			account->removeZoneSession(sessionID);
 	}
 }
 

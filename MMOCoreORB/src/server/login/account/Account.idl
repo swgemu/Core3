@@ -7,56 +7,33 @@ import server.zone.ZoneClientSession;
 import system.util.VectorMap;
 import system.lang.Time;
 import system.lang.System;
+include server.login.objects.CharacterList;
+
 
 class Account extends ManagedObject implements Logger {
-	@dereferenced
-	protected VectorMap<unsigned int, ZoneClientSession> zoneSessions;
-	
+
 	protected transient AccountManager accountManager;
 	
-	protected string username;
+	protected transient boolean active;
 	
-	protected unsigned int accountID;
-	protected unsigned int stationID;
-	protected unsigned int adminLevel;
-	protected unsigned int created;
+	protected transient string username;
 	
-	public Account(AccountManager accManage, final string usern, unsigned int accountid, unsigned int stationid) {
-		username = usern;
-		accountID = accountid;
-		stationID = stationid;
+	protected transient string salt;
+	
+	protected transient unsigned int accountID;
+	protected transient unsigned int stationID;
+	protected transient unsigned int adminLevel;
+	protected transient unsigned int created;
+	
+	protected transient unsigned int banExpires;
+	protected transient string banReason;
+	
+	protected transient CharacterList characterList;
+	
+	public native Account(AccountManager accManage);
 		
-		accountManager = accManage;
-		
-		adminLevel = 0;
-		
-		created = System.getTime();
-		
-		zoneSessions.setInsertPlan(2); //NO_DUPLICATE
-		zoneSessions.setNullValue(null);
-	}
-	
-	public boolean hasMaxOnlineCharacters() {
-		return zoneSessions.size() + 1 > accountManager.getMaxOnlineCharacters();
-	}
-	
-	public ZoneClientSession getZoneSession(unsigned int sessionID) {
-		return zoneSessions.get(sessionID);
-	}
-	
-	public boolean containsZoneSession(unsigned int sessionID) {
-		return zoneSessions.contains(sessionID);
-	}
-	
-	public void addZoneSession(ZoneClientSession client) {
-		zoneSessions.put(client.getSessionID(), client);
-	}
-	
-	public void removeZoneSession(unsigned int sessionID) {
-		zoneSessions.drop(sessionID);
-		
-		if (zoneSessions.size() < 1)
-			accountManager.dropAccount(accountID);
+	public void setActive(boolean act) {
+		active = act;
 	}
 	
 	public void setAccountID(unsigned int accountid) {
@@ -75,8 +52,24 @@ class Account extends ManagedObject implements Logger {
 		username = usern;
 	}
 	
+	public void setBanExpires(unsigned int expires) {
+		banExpires = expires;
+	}
+	
+	public void setBanReason(final string reason) {
+		banReason = reason;
+	}
+	
+	public void setSalt(final string s) {
+		salt = s;
+	}
+	
 	public void setTimeCreated(unsigned int seconds) {
 		created = seconds;
+	}
+	
+	public boolean isActive() {
+		return active == true;
 	}
 	
 	public unsigned int getAccountID() {
@@ -94,8 +87,25 @@ class Account extends ManagedObject implements Logger {
 	public string getUsername() {
 		return username;
 	}
+	
+	public string getSalt() {
+		return salt;
+	}
 
 	public unsigned int getTimeCreated() {
 		return created;
 	}
+	
+	public unsigned int getBanExpires() {
+		return banExpires;
+	}
+	
+	public string getBanReason() {
+		return banReason;
+	}
+	
+	public native boolean isBanned();
+
+	@local
+	public native CharacterList getCharacterList();
 }

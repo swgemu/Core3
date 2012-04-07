@@ -26,8 +26,6 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 	requiredVersion = "";
 	maxOnlineCharacters = 1;
 
-	accountMap = new AccountMap();
-
 	setLogging(false);
 	setGlobalLogging(false);
 
@@ -45,10 +43,7 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 }
 
 AccountManager::~AccountManager() {
-	if (accountMap != NULL) {
-		delete accountMap;
-		accountMap = NULL;
-	}
+
 }
 
 void AccountManager::loginAccount(LoginClient* client, Message* packet) {
@@ -74,9 +69,9 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	Message* lct = new LoginClientToken(account, sessionID);
 	client->sendMessage(lct);
 
-	client->setAccount(account);
-
 	uint32 accountID = account->getAccountID();
+
+	client->setAccountID(accountID);
 
 	String ip = client->getSession()->getAddress().getIPAddress();
 
@@ -97,101 +92,71 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	client->sendMessage(loginServer->getLoginEnumClusterMessage());
 	client->sendMessage(loginServer->getLoginClusterStatusMessage());
 
-	CharacterList characters(account->getAccountID());
-
-	Message* eci = new EnumerateCharacterID(&characters);
+	Message* eci = new EnumerateCharacterID(account->getCharacterList());
 	client->sendMessage(eci);
 }
 
 
-Account* AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
-	Account* account = NULL;
+ManagedReference<Account*> AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
 
 	StringBuffer query;
-	query << "SELECT a.active, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, a.created, a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
+	query << "SELECT a.account_id, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	String passwordStored;
+	ManagedReference<Account*> account = getAccount(query.toString(), passwordStored);
 
-	if (result->next()) {
-		bool active = result->getBoolean(0);
+	if(account == NULL) {
 
-		//Check if the account has been disabled
-		if (active) {
-			//Check the password
-			String passwordStored = result->getString(1);
-			String salt = result->getString(2);
-
-			//Check hash version
-			String passwordHashed;
-			if(salt == "") {
-				passwordHashed = Crypto::SHA1Hash(password);
-			} else {
-				passwordHashed = Crypto::SHA256Hash(dbSecret + password + salt);
-			}
-
-			if (passwordStored == passwordHashed) {
-				//update hash if unsalted
-				if(salt == "")
-					updateHash(username, password);
-
-				//Check if they are banned
-				Time banExpires(result->getUnsignedInt(3));
-
-				if (banExpires.isPast()) {
-					uint32 accountID = result->getUnsignedInt(5);
-					uint32 stationID = result->getUnsignedInt(6);
-					uint32 created = result->getUnsignedInt(7);
-					uint32 adminLevel = result->getUnsignedInt(8);
-
-					//Check if the account is already in memory
-					account = getAccount(accountID);
-
-					//Create a new account object, if it's not already loaded
-					if (account == NULL)
-						account = new Account(this, username, accountID, stationID);
-
-					//Locker lock(this, account);
-
-					//Update the account's information
-					account->setTimeCreated(created);
-					account->setAdminLevel(adminLevel);
-
-					if (addAccount(account) == -1) {
-						return getAccount(accountID);
-					}
-
-					account->deploy("account_" + String::valueOf(accountID));
-				} else {
-					String banReason = result->getString(4);
-
-					StringBuffer reason;
-					reason << "Your account has been banned from the server by the administrators.\n\n";
-					reason << "Time remaining: " << round(banExpires.miliDifference() / 1000.0f * -1.0f) << "\n";
-					reason << "Reason: " << banReason;
-
-					if(client != NULL)
-						client->sendErrorMessage("Account Banned", reason.toString());
-				}
-			} else {
-				if(client != NULL)
-					client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
-			}
-		} else {
-			if(client != NULL)
-				client->sendErrorMessage("Account Disabled", "The server administrators have disabled your account.");
-		}
-	} else {
 		//The user name didn't exist, so we check if auto registration is enabled and create a new account
 		if (isAutoRegistrationEnabled() && client != NULL) {
 			account = createAccount(username, password);
 		} else {
 			if(client != NULL)
 				client->sendErrorMessage("Login Error", "Automatic registration is currently disabled. Please contact the administrators of the server in order to get an authorized account.");
+			return NULL;
 		}
 	}
 
-	delete result;
-	result = NULL;
+	if(!account->isActive()) {
+
+		if(client != NULL)
+			client->sendErrorMessage("Account Disabled", "The server administrators have disabled your account.");
+
+		return NULL;
+	}
+
+	//Check hash version
+	String passwordHashed;
+	if(account->getSalt() == "") {
+		passwordHashed = Crypto::SHA1Hash(password);
+	} else {
+		passwordHashed = Crypto::SHA256Hash(dbSecret + password + account->getSalt());
+	}
+
+	if (passwordStored != passwordHashed) {
+
+		if(client != NULL)
+			client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
+
+		return NULL;
+	}
+	//update hash if unsalted
+	if(account->getSalt() == "")
+		updateHash(username, password);
+
+	//Check if they are banned
+	if(account->isBanned()) {
+
+		StringBuffer reason;
+		reason << "Your account has been banned from the server by the administrators.\n\n";
+		reason << "Time remaining: " << round(((account->getBanExpires() - time(0)) / 60.0f) / 60.f) << " Minutes\n";
+		reason << "Reason: " << account->getBanReason();
+
+		if(client != NULL)
+			client->sendErrorMessage("Account Banned", reason.toString());
+
+		return NULL;
+	}
 
 	return account;
 }
@@ -212,7 +177,8 @@ void AccountManager::updateHash(const String& username, const String& password) 
 	}
 }
 
-Account* AccountManager::createAccount(const String& username, const String& password) {
+ManagedReference<Account*> AccountManager::createAccount(const String& username, const String& password) {
+
 	uint32 stationID = System::random();
 
 	String salt = Crypto::randomSalt();
@@ -232,11 +198,40 @@ Account* AccountManager::createAccount(const String& username, const String& pas
 
 	uint32 accountID = result->getLastAffectedRow();
 
-	Account* account = new Account(this, username, accountID, stationID);
+	return getAccount(accountID);
+}
 
-	addAccount(account);
+Account* AccountManager::getAccount(uint32 accountID) {
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
-	account->deploy("account_" + String::valueOf(accountID));
+	String passwordStored;
+	return getAccount(query.toString(), passwordStored);
+}
+
+Account* AccountManager::getAccount(String query, String& passwordStored) {
+
+	Account* account = new Account(this);
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	if (result->next()) {
+		account->setActive(result->getBoolean(0));
+		account->setUsername(result->getString(1));
+		passwordStored = result->getString(2);
+		account->setSalt(result->getString(3));
+
+		account->setBanExpires(result->getUnsignedInt(4));
+		account->setBanReason(result->getString(5));
+
+		account->setAccountID(result->getUnsignedInt(6));
+		account->setStationID(result->getUnsignedInt(7));
+
+		account->setTimeCreated(result->getUnsignedInt(8));
+		account->setAdminLevel(result->getInt(9));
+	}
+	delete result;
+	result = NULL;
 
 	return account;
 }

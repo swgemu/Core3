@@ -115,7 +115,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 		return;
 	}
 
-	uint32 accountId = client->getAccount()->getAccountID();
+	uint32 accountId = client->getAccountID();
 
 	uint32 ServerId = pack->parseInt();
 

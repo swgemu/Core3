@@ -33,6 +33,8 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+#include "server/login/objects/CharacterList.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -49,17 +51,9 @@ namespace account {
 
 class Account : public ManagedObject {
 public:
-	Account(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid);
+	Account(AccountManager* accManage);
 
-	bool hasMaxOnlineCharacters();
-
-	ZoneClientSession* getZoneSession(unsigned int sessionID);
-
-	bool containsZoneSession(unsigned int sessionID);
-
-	void addZoneSession(ZoneClientSession* client);
-
-	void removeZoneSession(unsigned int sessionID);
+	void setActive(bool act);
 
 	void setAccountID(unsigned int accountid);
 
@@ -69,7 +63,15 @@ public:
 
 	void setUsername(const String& usern);
 
+	void setBanExpires(unsigned int expires);
+
+	void setBanReason(const String& reason);
+
+	void setSalt(const String& s);
+
 	void setTimeCreated(unsigned int seconds);
+
+	bool isActive();
 
 	unsigned int getAccountID();
 
@@ -79,7 +81,17 @@ public:
 
 	String getUsername();
 
+	String getSalt();
+
 	unsigned int getTimeCreated();
+
+	unsigned int getBanExpires();
+
+	String getBanReason();
+
+	bool isBanned();
+
+	CharacterList* getCharacterList();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -90,6 +102,8 @@ protected:
 
 	virtual ~Account();
 
+	String _return_getBanReason;
+	String _return_getSalt;
 	String _return_getUsername;
 
 	friend class AccountHelper;
@@ -107,11 +121,13 @@ namespace account {
 
 class AccountImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > zoneSessions;
-
 	Reference<AccountManager* > accountManager;
 
+	bool active;
+
 	String username;
+
+	String salt;
 
 	unsigned int accountID;
 
@@ -121,20 +137,18 @@ protected:
 
 	unsigned int created;
 
+	unsigned int banExpires;
+
+	String banReason;
+
+	Reference<CharacterList* > characterList;
+
 public:
-	AccountImplementation(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid);
+	AccountImplementation(AccountManager* accManage);
 
 	AccountImplementation(DummyConstructorParameter* param);
 
-	bool hasMaxOnlineCharacters();
-
-	ZoneClientSession* getZoneSession(unsigned int sessionID);
-
-	bool containsZoneSession(unsigned int sessionID);
-
-	void addZoneSession(ZoneClientSession* client);
-
-	void removeZoneSession(unsigned int sessionID);
+	void setActive(bool act);
 
 	void setAccountID(unsigned int accountid);
 
@@ -144,7 +158,15 @@ public:
 
 	void setUsername(const String& usern);
 
+	void setBanExpires(unsigned int expires);
+
+	void setBanReason(const String& reason);
+
+	void setSalt(const String& s);
+
 	void setTimeCreated(unsigned int seconds);
+
+	bool isActive();
 
 	unsigned int getAccountID();
 
@@ -154,7 +176,17 @@ public:
 
 	String getUsername();
 
+	String getSalt();
+
 	unsigned int getTimeCreated();
+
+	unsigned int getBanExpires();
+
+	String getBanReason();
+
+	bool isBanned();
+
+	CharacterList* getCharacterList();
 
 	WeakReference<Account*> _this;
 
@@ -199,15 +231,7 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	bool hasMaxOnlineCharacters();
-
-	ZoneClientSession* getZoneSession(unsigned int sessionID);
-
-	bool containsZoneSession(unsigned int sessionID);
-
-	void addZoneSession(ZoneClientSession* client);
-
-	void removeZoneSession(unsigned int sessionID);
+	void setActive(bool act);
 
 	void setAccountID(unsigned int accountid);
 
@@ -217,7 +241,15 @@ public:
 
 	void setUsername(const String& usern);
 
+	void setBanExpires(unsigned int expires);
+
+	void setBanReason(const String& reason);
+
+	void setSalt(const String& s);
+
 	void setTimeCreated(unsigned int seconds);
+
+	bool isActive();
 
 	unsigned int getAccountID();
 
@@ -227,10 +259,20 @@ public:
 
 	String getUsername();
 
+	String getSalt();
+
 	unsigned int getTimeCreated();
+
+	unsigned int getBanExpires();
+
+	String getBanReason();
+
+	bool isBanned();
 
 protected:
 	String _param0_setUsername__String_;
+	String _param0_setBanReason__String_;
+	String _param0_setSalt__String_;
 };
 
 class AccountHelper : public DistributedObjectClassHelper, public Singleton<AccountHelper> {

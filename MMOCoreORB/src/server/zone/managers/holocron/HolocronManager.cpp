@@ -7,6 +7,7 @@
 
 #include "HolocronManager.h"
 #include "server/zone/ZoneClientSession.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/ui/CreateTicketResponseMessage.h"
 #include "server/zone/packets/ui/RequestCategoriesResponseMessage.h"
 #include "server/db/MantisDatabase.h"
@@ -94,7 +95,11 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 }
 
 uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
-	ManagedReference<Account*> account = client->getAccount();
+
+	if(processor->getZoneServer() == NULL)
+		return 0;
+
+	ManagedReference<Account*> account = processor->getZoneServer()->getAccount(client->getAccountID());
 
 	if (account == NULL)
 		return 0;

@@ -12,10 +12,10 @@
  *	AccountStub
  */
 
-enum {RPC_HASMAXONLINECHARACTERS__ = 6,RPC_GETZONESESSION__INT_,RPC_CONTAINSZONESESSION__INT_,RPC_ADDZONESESSION__ZONECLIENTSESSION_,RPC_REMOVEZONESESSION__INT_,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETTIMECREATED__INT_,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETTIMECREATED__};
+enum {RPC_SETACTIVE__BOOL_ = 6,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETBANEXPIRES__INT_,RPC_SETBANREASON__STRING_,RPC_SETSALT__STRING_,RPC_SETTIMECREATED__INT_,RPC_ISACTIVE__,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETSALT__,RPC_GETTIMECREATED__,RPC_GETBANEXPIRES__,RPC_GETBANREASON__,RPC_ISBANNED__,};
 
-Account::Account(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) : ManagedObject(DummyConstructorParameter::instance()) {
-	AccountImplementation* _implementation = new AccountImplementation(accManage, usern, accountid, stationid);
+Account::Account(AccountManager* accManage) : ManagedObject(DummyConstructorParameter::instance()) {
+	AccountImplementation* _implementation = new AccountImplementation(accManage);
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("Account");
@@ -30,73 +30,18 @@ Account::~Account() {
 
 
 
-bool Account::hasMaxOnlineCharacters() {
+void Account::setActive(bool act) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HASMAXONLINECHARACTERS__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->hasMaxOnlineCharacters();
-}
-
-ZoneClientSession* Account::getZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETZONESESSION__INT_);
-		method.addUnsignedIntParameter(sessionID);
-
-		return static_cast<ZoneClientSession*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getZoneSession(sessionID);
-}
-
-bool Account::containsZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CONTAINSZONESESSION__INT_);
-		method.addUnsignedIntParameter(sessionID);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->containsZoneSession(sessionID);
-}
-
-void Account::addZoneSession(ZoneClientSession* client) {
-	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDZONESESSION__ZONECLIENTSESSION_);
-		method.addObjectParameter(client);
+		DistributedMethod method(this, RPC_SETACTIVE__BOOL_);
+		method.addBooleanParameter(act);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addZoneSession(client);
-}
-
-void Account::removeZoneSession(unsigned int sessionID) {
-	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEZONESESSION__INT_);
-		method.addUnsignedIntParameter(sessionID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeZoneSession(sessionID);
+		_implementation->setActive(act);
 }
 
 void Account::setAccountID(unsigned int accountid) {
@@ -155,6 +100,48 @@ void Account::setUsername(const String& usern) {
 		_implementation->setUsername(usern);
 }
 
+void Account::setBanExpires(unsigned int expires) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBANEXPIRES__INT_);
+		method.addUnsignedIntParameter(expires);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBanExpires(expires);
+}
+
+void Account::setBanReason(const String& reason) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBANREASON__STRING_);
+		method.addAsciiParameter(reason);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBanReason(reason);
+}
+
+void Account::setSalt(const String& s) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSALT__STRING_);
+		method.addAsciiParameter(s);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSalt(s);
+}
+
 void Account::setTimeCreated(unsigned int seconds) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -167,6 +154,19 @@ void Account::setTimeCreated(unsigned int seconds) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setTimeCreated(seconds);
+}
+
+bool Account::isActive() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISACTIVE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isActive();
 }
 
 unsigned int Account::getAccountID() {
@@ -222,6 +222,20 @@ String Account::getUsername() {
 		return _implementation->getUsername();
 }
 
+String Account::getSalt() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSALT__);
+
+		method.executeWithAsciiReturn(_return_getSalt);
+		return _return_getSalt;
+	} else
+		return _implementation->getSalt();
+}
+
 unsigned int Account::getTimeCreated() {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -233,6 +247,55 @@ unsigned int Account::getTimeCreated() {
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getTimeCreated();
+}
+
+unsigned int Account::getBanExpires() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBANEXPIRES__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getBanExpires();
+}
+
+String Account::getBanReason() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBANREASON__);
+
+		method.executeWithAsciiReturn(_return_getBanReason);
+		return _return_getBanReason;
+	} else
+		return _implementation->getBanReason();
+}
+
+bool Account::isBanned() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBANNED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBanned();
+}
+
+CharacterList* Account::getCharacterList() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCharacterList();
 }
 
 DistributedObjectServant* Account::_getImplementation() {
@@ -340,36 +403,6 @@ bool AccountImplementation::readObjectMember(ObjectInputStream* stream, const St
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "Account.zoneSessions") {
-		TypeInfo<VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > >::parseFromBinaryStream(&zoneSessions, stream);
-		return true;
-	}
-
-	if (_name == "Account.username") {
-		TypeInfo<String >::parseFromBinaryStream(&username, stream);
-		return true;
-	}
-
-	if (_name == "Account.accountID") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
-		return true;
-	}
-
-	if (_name == "Account.stationID") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&stationID, stream);
-		return true;
-	}
-
-	if (_name == "Account.adminLevel") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&adminLevel, stream);
-		return true;
-	}
-
-	if (_name == "Account.created") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&created, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -387,104 +420,13 @@ int AccountImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Account.zoneSessions";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > >::toBinaryStream(&zoneSessions, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-	_name = "Account.username";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&username, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "Account.accountID";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "Account.stationID";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<unsigned int >::toBinaryStream(&stationID, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "Account.adminLevel";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<unsigned int >::toBinaryStream(&adminLevel, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "Account.created";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<unsigned int >::toBinaryStream(&created, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-
-	return _count + 6;
+	return _count + 0;
 }
 
-AccountImplementation::AccountImplementation(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) {
-	_initializeImplementation();
-	// server/login/account/Account.idl():  		username = usern;
-	username = usern;
-	// server/login/account/Account.idl():  		accountID = accountid;
-	accountID = accountid;
-	// server/login/account/Account.idl():  		stationID = stationid;
-	stationID = stationid;
-	// server/login/account/Account.idl():  		accountManager = accManage;
-	accountManager = accManage;
-	// server/login/account/Account.idl():  		adminLevel = 0;
-	adminLevel = 0;
-	// server/login/account/Account.idl():  		created = System.getTime();
-	created = System::getTime();
-	// server/login/account/Account.idl():  		zoneSessions.setInsertPlan(2);
-	(&zoneSessions)->setInsertPlan(2);
-	// server/login/account/Account.idl():  		zoneSessions.setNullValue(null);
-	(&zoneSessions)->setNullValue(NULL);
-}
-
-bool AccountImplementation::hasMaxOnlineCharacters() {
-	// server/login/account/Account.idl():  		return zoneSessions.size() + 1 > accountManager.getMaxOnlineCharacters();
-	return (&zoneSessions)->size() + 1 > accountManager->getMaxOnlineCharacters();
-}
-
-ZoneClientSession* AccountImplementation::getZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl():  		return zoneSessions.get(sessionID);
-	return (&zoneSessions)->get(sessionID);
-}
-
-bool AccountImplementation::containsZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl():  		return zoneSessions.contains(sessionID);
-	return (&zoneSessions)->contains(sessionID);
-}
-
-void AccountImplementation::addZoneSession(ZoneClientSession* client) {
-	// server/login/account/Account.idl():  		zoneSessions.put(client.getSessionID(), client);
-	(&zoneSessions)->put(client->getSessionID(), client);
-}
-
-void AccountImplementation::removeZoneSession(unsigned int sessionID) {
-	// server/login/account/Account.idl():  		zoneSessions.drop(sessionID);
-	(&zoneSessions)->drop(sessionID);
-	// server/login/account/Account.idl():  	}
-	if ((&zoneSessions)->size() < 1)	// server/login/account/Account.idl():  			accountManager.dropAccount(accountID);
-	accountManager->dropAccount(accountID);
+void AccountImplementation::setActive(bool act) {
+	// server/login/account/Account.idl():  		active = act;
+	active = act;
 }
 
 void AccountImplementation::setAccountID(unsigned int accountid) {
@@ -507,9 +449,29 @@ void AccountImplementation::setUsername(const String& usern) {
 	username = usern;
 }
 
+void AccountImplementation::setBanExpires(unsigned int expires) {
+	// server/login/account/Account.idl():  		banExpires = expires;
+	banExpires = expires;
+}
+
+void AccountImplementation::setBanReason(const String& reason) {
+	// server/login/account/Account.idl():  		banReason = reason;
+	banReason = reason;
+}
+
+void AccountImplementation::setSalt(const String& s) {
+	// server/login/account/Account.idl():  		salt = s;
+	salt = s;
+}
+
 void AccountImplementation::setTimeCreated(unsigned int seconds) {
 	// server/login/account/Account.idl():  		created = seconds;
 	created = seconds;
+}
+
+bool AccountImplementation::isActive() {
+	// server/login/account/Account.idl():  		return active == true;
+	return active == true;
 }
 
 unsigned int AccountImplementation::getAccountID() {
@@ -532,9 +494,24 @@ String AccountImplementation::getUsername() {
 	return username;
 }
 
+String AccountImplementation::getSalt() {
+	// server/login/account/Account.idl():  		return salt;
+	return salt;
+}
+
 unsigned int AccountImplementation::getTimeCreated() {
 	// server/login/account/Account.idl():  		return created;
 	return created;
+}
+
+unsigned int AccountImplementation::getBanExpires() {
+	// server/login/account/Account.idl():  		return banExpires;
+	return banExpires;
+}
+
+String AccountImplementation::getBanReason() {
+	// server/login/account/Account.idl():  		return banReason;
+	return banReason;
 }
 
 /*
@@ -552,20 +529,8 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_HASMAXONLINECHARACTERS__:
-		resp->insertBoolean(hasMaxOnlineCharacters());
-		break;
-	case RPC_GETZONESESSION__INT_:
-		resp->insertLong(getZoneSession(inv->getUnsignedIntParameter())->_getObjectID());
-		break;
-	case RPC_CONTAINSZONESESSION__INT_:
-		resp->insertBoolean(containsZoneSession(inv->getUnsignedIntParameter()));
-		break;
-	case RPC_ADDZONESESSION__ZONECLIENTSESSION_:
-		addZoneSession(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
-		break;
-	case RPC_REMOVEZONESESSION__INT_:
-		removeZoneSession(inv->getUnsignedIntParameter());
+	case RPC_SETACTIVE__BOOL_:
+		setActive(inv->getBooleanParameter());
 		break;
 	case RPC_SETACCOUNTID__INT_:
 		setAccountID(inv->getUnsignedIntParameter());
@@ -579,8 +544,20 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETUSERNAME__STRING_:
 		setUsername(inv->getAsciiParameter(_param0_setUsername__String_));
 		break;
+	case RPC_SETBANEXPIRES__INT_:
+		setBanExpires(inv->getUnsignedIntParameter());
+		break;
+	case RPC_SETBANREASON__STRING_:
+		setBanReason(inv->getAsciiParameter(_param0_setBanReason__String_));
+		break;
+	case RPC_SETSALT__STRING_:
+		setSalt(inv->getAsciiParameter(_param0_setSalt__String_));
+		break;
 	case RPC_SETTIMECREATED__INT_:
 		setTimeCreated(inv->getUnsignedIntParameter());
+		break;
+	case RPC_ISACTIVE__:
+		resp->insertBoolean(isActive());
 		break;
 	case RPC_GETACCOUNTID__:
 		resp->insertInt(getAccountID());
@@ -594,32 +571,28 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETUSERNAME__:
 		resp->insertAscii(getUsername());
 		break;
+	case RPC_GETSALT__:
+		resp->insertAscii(getSalt());
+		break;
 	case RPC_GETTIMECREATED__:
 		resp->insertInt(getTimeCreated());
+		break;
+	case RPC_GETBANEXPIRES__:
+		resp->insertInt(getBanExpires());
+		break;
+	case RPC_GETBANREASON__:
+		resp->insertAscii(getBanReason());
+		break;
+	case RPC_ISBANNED__:
+		resp->insertBoolean(isBanned());
 		break;
 	default:
 		throw Exception("Method does not exists");
 	}
 }
 
-bool AccountAdapter::hasMaxOnlineCharacters() {
-	return (static_cast<Account*>(stub))->hasMaxOnlineCharacters();
-}
-
-ZoneClientSession* AccountAdapter::getZoneSession(unsigned int sessionID) {
-	return (static_cast<Account*>(stub))->getZoneSession(sessionID);
-}
-
-bool AccountAdapter::containsZoneSession(unsigned int sessionID) {
-	return (static_cast<Account*>(stub))->containsZoneSession(sessionID);
-}
-
-void AccountAdapter::addZoneSession(ZoneClientSession* client) {
-	(static_cast<Account*>(stub))->addZoneSession(client);
-}
-
-void AccountAdapter::removeZoneSession(unsigned int sessionID) {
-	(static_cast<Account*>(stub))->removeZoneSession(sessionID);
+void AccountAdapter::setActive(bool act) {
+	(static_cast<Account*>(stub))->setActive(act);
 }
 
 void AccountAdapter::setAccountID(unsigned int accountid) {
@@ -638,8 +611,24 @@ void AccountAdapter::setUsername(const String& usern) {
 	(static_cast<Account*>(stub))->setUsername(usern);
 }
 
+void AccountAdapter::setBanExpires(unsigned int expires) {
+	(static_cast<Account*>(stub))->setBanExpires(expires);
+}
+
+void AccountAdapter::setBanReason(const String& reason) {
+	(static_cast<Account*>(stub))->setBanReason(reason);
+}
+
+void AccountAdapter::setSalt(const String& s) {
+	(static_cast<Account*>(stub))->setSalt(s);
+}
+
 void AccountAdapter::setTimeCreated(unsigned int seconds) {
 	(static_cast<Account*>(stub))->setTimeCreated(seconds);
+}
+
+bool AccountAdapter::isActive() {
+	return (static_cast<Account*>(stub))->isActive();
 }
 
 unsigned int AccountAdapter::getAccountID() {
@@ -658,8 +647,24 @@ String AccountAdapter::getUsername() {
 	return (static_cast<Account*>(stub))->getUsername();
 }
 
+String AccountAdapter::getSalt() {
+	return (static_cast<Account*>(stub))->getSalt();
+}
+
 unsigned int AccountAdapter::getTimeCreated() {
 	return (static_cast<Account*>(stub))->getTimeCreated();
+}
+
+unsigned int AccountAdapter::getBanExpires() {
+	return (static_cast<Account*>(stub))->getBanExpires();
+}
+
+String AccountAdapter::getBanReason() {
+	return (static_cast<Account*>(stub))->getBanReason();
+}
+
+bool AccountAdapter::isBanned() {
+	return (static_cast<Account*>(stub))->isBanned();
 }
 
 /*

@@ -345,6 +345,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = cast<ClientCreateCharacterCallback*>( data);
 	ZoneClientSession* client = data->getClient();
 
+	ManagedReference<Account*> account = zoneServer->getAccount(client->getAccountID());
+
 	PlayerManager* playerManager = zoneServer->getPlayerManager();
 
 	SkillManager* skillManager = SkillManager::instance();
@@ -354,7 +356,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	callback->getCharacterName(characterName);
 
 	//TODO: Replace this at some point?
-	if (!playerManager->checkPlayerName(callback))
+	if (account == NULL || !playerManager->checkPlayerName(callback))
 		return false;
 
 	String raceFile;
@@ -444,29 +446,21 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		if (!freeGodMode) {
 			try {
-				uint32 accID = client->getAccountID();
 
-				String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
+				String query = "SELECT access_level from mantis_user_table where username = '" + account->getUsername();
+				query += "'";
 
-				Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+				Reference<ResultSet*> res = MantisDatabase::instance()->executeQuery(query);
 
 				if (res->next()) {
-					String accountName = res->getString(0);
+					uint32 level = res->getUnsignedInt(0);
 
-					query = "SELECT access_level from mantis_user_table where username = '" + accountName;
-					query += "'";
-
-					res = MantisDatabase::instance()->executeQuery(query);
-
-					if (res->next()) {
-						uint32 level = res->getUnsignedInt(0);
-
-						if (level > 25) {
-							ghost->setAdminLevel(2);
-							skillManager->addAbility(ghost, "admin", false);
-						}
+					if (level > 25) {
+						ghost->setAdminLevel(2);
+						skillManager->addAbility(ghost, "admin", false);
 					}
 				}
+
 
 			} catch (Exception& e) {
 				error(e.getMessage());

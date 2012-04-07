@@ -386,11 +386,6 @@ AccountManager* LoginServerImplementation::getAccountManager() {
 	return accountManager;
 }
 
-Account* LoginServerImplementation::getAccount(unsigned int accountID) {
-	// server/login/LoginServer.idl():  		return accountManager.getAccount(accountID);
-	return accountManager->getAccount(accountID);
-}
-
 LoginEnumCluster* LoginServerImplementation::getLoginEnumClusterMessage() {
 	// server/login/LoginServer.idl():  		return (LoginEnumCluster) enumClusterMessage.clone();
 	return (LoginEnumCluster*) enumClusterMessage->clone();

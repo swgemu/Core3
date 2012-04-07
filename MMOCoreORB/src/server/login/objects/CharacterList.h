@@ -50,13 +50,20 @@ which carries forward this exception.
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/scene/variables/StringId.h"
 
-class CharacterList {
+class CharacterList : public Object {
 	ResultSet* characters;
 
 public:
 	CharacterList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM characters WHERE characters.account_id = " << accountid << " UNION SELECT * FROM characters_dirty WHERE characters_dirty.account_id = " << accountid;
+		query << "SELECT characters.character_oid, characters.account_id, characters.galaxy_id, characters.firstname, "
+			<< "characters.surname, characters.race, characters.gender, characters.template, UNIX_TIMESTAMP(characters.creation_date), "
+			<< "(select galaxy.name from galaxy where galaxy.galaxy_id = characters.galaxy_id) as galaxyname "
+			<< "FROM characters, galaxy WHERE characters.account_id = 1 "
+			<< "UNION SELECT characters_dirty.character_oid, characters_dirty.account_id, characters_dirty.galaxy_id, "
+			<< "characters_dirty.firstname, characters_dirty.surname, characters_dirty.race, characters_dirty.gender, characters_dirty.template, UNIX_TIMESTAMP(characters_dirty.creation_date), "
+			<< "(select galaxy.name from galaxy where galaxy.galaxy_id = characters_dirty.galaxy_id) as galaxyname "
+			<< "FROM characters_dirty WHERE characters_dirty.account_id = 1 ORDER BY galaxy_id;";
 
 		try {
 			characters = ServerDatabase::instance()->executeQuery(query);
@@ -85,6 +92,10 @@ public:
 		return (uint64) (characters->getInt(2));
 	}
 
+	String getGalaxyName() {
+		return (characters->getString(9));
+	}
+
 	void getCharacterName(UnicodeString& name) {
 		name.append(characters->getString(3));
 
@@ -100,6 +111,11 @@ public:
 		String temp = characters->getString(7);
 
 		return temp.hashCode();
+	}
+
+	String getCreationTime() {
+		Time createdTime(characters->getUnsignedInt(8));
+		return createdTime.getFormattedTime();
 	}
 
 	inline int size() {

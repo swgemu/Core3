@@ -96,38 +96,34 @@ public:
 			return SUCCESS;
 		}
 
-		creature->sendSystemMessage("**** Account: " + account->getUsername() + " ****");
+		Time createdTime(account->getTimeCreated());
+
+		CharacterList* characterList = account->getCharacterList();
+
+		creature->sendSystemMessage("****** Account Info ******");
+		creature->sendSystemMessage("Account Name: " + account->getUsername());
 		creature->sendSystemMessage("Account ID: " + String::valueOf(account->getAccountID()));
 		creature->sendSystemMessage("Station ID: " + String::valueOf(account->getStationID()));
-		creature->sendSystemMessage("Created: " + getTimeString(account->getTimeCreated()));
 		creature->sendSystemMessage("Admin Level: " + String::valueOf(account->getAdminLevel()));
+		creature->sendSystemMessage("Created: " + createdTime.getFormattedTime());
+
+		creature->sendSystemMessage("Characters:");
+
+
+		while(characterList->next()) {
+
+			UnicodeString name;
+			characterList->getCharacterName(name);
+
+			StringBuffer message;
+			message << "	" << characterList->getGalaxyName() << ": " << name.toString() << " - Created " << characterList->getCreationTime();
+			creature->sendSystemMessage(message.toString());
+		}
+
+		creature->sendSystemMessage("*********************");
 
 		return SUCCESS;
 	}
-
-	String getTimeString(uint32 timestamp) {
-		String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
-
-		int intervals[4] = {1, 60, 3600, 86400};
-		int values[4] = {0, 0, 0, 0};
-
-		StringBuffer str;
-
-		for (int i = 3; i > -1; --i) {
-			values[i] = floor((float)timestamp / intervals[i]);
-			timestamp -= values[i] * intervals[i];
-
-			if (values[i] > 0) {
-				if (str.length() > 0)
-					str << ",";
-
-				str << ((i == 0) ? " and " : " ") << values[i] << " " << abbrvs[i];
-			}
-		}
-
-		return str.toString();
-	}
-
 };
 
 #endif //GETACCOUNTINFOCOMMAND_H_

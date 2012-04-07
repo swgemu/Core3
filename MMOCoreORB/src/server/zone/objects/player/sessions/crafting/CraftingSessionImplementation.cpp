@@ -575,6 +575,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
 			new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic);
 	dMsco3->updateCraftingValues(manufactureSchematic);
+	dMsco3->updateComplexity(manufactureSchematic->getComplexity());
+
 	dMsco3->close();
 
 	crafter->sendMessage(dMsco3);

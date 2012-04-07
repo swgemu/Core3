@@ -51,7 +51,6 @@ import system.lang.ref.Reference;
 import system.net.SocketAddress;
 import system.net.Socket;
 
-import server.login.account.Account;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
@@ -75,9 +74,7 @@ class ZoneClientSession extends ManagedObject {
 	protected SceneObject player;
 
 	protected unsigned int sessionID;
-	
-	protected Account account;
-	
+
 	protected unsigned int accountID;
 	
 	boolean disconnecting;
@@ -131,11 +128,7 @@ class ZoneClientSession extends ManagedObject {
 	public void setSessionID(unsigned int id) {
 		sessionID = id;
 	}
-	
-	public void setAccount(Account acc) {
-		account = acc;
-	}
-	
+
 	public void setAccountID(unsigned int acc) {
 		accountID = acc;
 	}
@@ -171,11 +164,7 @@ class ZoneClientSession extends ManagedObject {
 	public unsigned int getAccountID() {
 		return accountID;;
 	}
-	
-	public native Account getAccount() {
-		return account;
-	}
-	
+
 	public boolean hasCharacter(unsigned long cid) {
 		return characters.contains(cid);
 	}

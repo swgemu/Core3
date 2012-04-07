@@ -240,3 +240,7 @@ void LoginServerImplementation::populateGalaxyList() {
 
     enumClusterMessage->finish();
 }
+
+Account* LoginServerImplementation::getAccount(unsigned int accountID) {
+	return accountManager->getAccount(accountID);
+}

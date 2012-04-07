@@ -12,18 +12,6 @@
 #include "engine/core/ManagedWeakReference.h"
 
 namespace server {
-namespace login {
-namespace account {
-
-class Account;
-
-} // namespace account
-} // namespace login
-} // namespace server
-
-using namespace server::login::account;
-
-namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
@@ -102,8 +90,6 @@ public:
 
 	void setSessionID(unsigned int id);
 
-	void setAccount(Account* acc);
-
 	void setAccountID(unsigned int acc);
 
 	int getCommandCount();
@@ -121,8 +107,6 @@ public:
 	unsigned int getSessionID();
 
 	unsigned int getAccountID();
-
-	Account* getAccount();
 
 	bool hasCharacter(unsigned long long cid);
 
@@ -162,8 +146,6 @@ protected:
 
 	unsigned int sessionID;
 
-	ManagedReference<Account* > account;
-
 	unsigned int accountID;
 
 private:
@@ -201,8 +183,6 @@ public:
 
 	void setSessionID(unsigned int id);
 
-	void setAccount(Account* acc);
-
 	void setAccountID(unsigned int acc);
 
 	int getCommandCount();
@@ -220,8 +200,6 @@ public:
 	unsigned int getSessionID();
 
 	unsigned int getAccountID();
-
-	Account* getAccount();
 
 	bool hasCharacter(unsigned long long cid);
 
@@ -294,8 +272,6 @@ public:
 
 	void setSessionID(unsigned int id);
 
-	void setAccount(Account* acc);
-
 	void setAccountID(unsigned int acc);
 
 	int getCommandCount();
@@ -309,8 +285,6 @@ public:
 	unsigned int getSessionID();
 
 	unsigned int getAccountID();
-
-	Account* getAccount();
 
 	bool hasCharacter(unsigned long long cid);
 

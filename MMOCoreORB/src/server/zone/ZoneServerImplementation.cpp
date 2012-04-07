@@ -730,5 +730,10 @@ void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 }
 
 Account* ZoneServerImplementation::getAccount(uint32 accountID) {
-	return Core::lookupObject<Account>("account_" + String::valueOf(accountID));
+
+	ManagedReference<LoginServer*> loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
+	if(loginServer == NULL)
+		return NULL;
+
+	return loginServer->getAccount(accountID);
 }

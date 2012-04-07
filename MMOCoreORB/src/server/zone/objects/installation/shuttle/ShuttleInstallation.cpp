@@ -26,7 +26,7 @@
  *	ShuttleInstallationStub
  */
 
-enum {RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_ = 6};
+enum {RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_ = 6,RPC_ISSHUTTLEINSTALLATION__};
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
@@ -56,6 +56,19 @@ bool ShuttleInstallation::checkRequisitesForPlacement(CreatureObject* player) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->checkRequisitesForPlacement(player);
+}
+
+bool ShuttleInstallation::isShuttleInstallation() {
+	ShuttleInstallationImplementation* _implementation = static_cast<ShuttleInstallationImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSHUTTLEINSTALLATION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isShuttleInstallation();
 }
 
 DistributedObjectServant* ShuttleInstallation::_getImplementation() {
@@ -190,6 +203,11 @@ ShuttleInstallationImplementation::ShuttleInstallationImplementation() {
 	setLoggingName("ShuttleInstallation");
 }
 
+bool ShuttleInstallationImplementation::isShuttleInstallation() {
+	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		return true;
+	return true;
+}
+
 /*
  *	ShuttleInstallationAdapter
  */
@@ -208,6 +226,9 @@ void ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
 		resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
+	case RPC_ISSHUTTLEINSTALLATION__:
+		resp->insertBoolean(isShuttleInstallation());
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -215,6 +236,10 @@ void ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(CreatureObject* player) {
 	return (static_cast<ShuttleInstallation*>(stub))->checkRequisitesForPlacement(player);
+}
+
+bool ShuttleInstallationAdapter::isShuttleInstallation() {
+	return (static_cast<ShuttleInstallation*>(stub))->isShuttleInstallation();
 }
 
 /*

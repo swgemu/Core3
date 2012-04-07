@@ -258,9 +258,15 @@ public:
 
 	void scheduleShuttle(CreatureObject* shuttle);
 
+	void removeShuttle(CreatureObject* shuttle);
+
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
+
+	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
+
+	void removePlayerCityTravelPoint(const String& cityName);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -403,9 +409,15 @@ public:
 
 	void scheduleShuttle(CreatureObject* shuttle);
 
+	void removeShuttle(CreatureObject* shuttle);
+
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
+
+	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
+
+	void removePlayerCityTravelPoint(const String& cityName);
 
 	WeakReference<PlanetManager*> _this;
 
@@ -506,9 +518,13 @@ public:
 
 	void scheduleShuttle(CreatureObject* shuttle);
 
+	void removeShuttle(CreatureObject* shuttle);
+
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
+
+	void removePlayerCityTravelPoint(const String& cityName);
 
 protected:
 	String _param0_getTravelFare__String_;
@@ -524,6 +540,7 @@ protected:
 	String _param0_isTravelToLocationPermitted__String_String_String_;
 	String _param1_isTravelToLocationPermitted__String_String_String_;
 	String _param2_isTravelToLocationPermitted__String_String_String_;
+	String _param0_removePlayerCityTravelPoint__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {
