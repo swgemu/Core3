@@ -83,7 +83,7 @@ public:
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		if (!ghost->isOwnedStructure(structure) || ghost->isPrivileged()) {
+		if (!ghost->isOwnedStructure(structure) && !ghost->isPrivileged()) {
 			creature->sendSystemMessage("@player_structure:destroy_must_be_owner"); //You must be the owner to destroy a structure.
 			return INVALIDTARGET;
 		}
