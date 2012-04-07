@@ -511,8 +511,17 @@ function chonar_container_component:transferObject(pChonar, pObject, slot)
 	local chonarOwnerID = vardias_tyne_screenplay:readObjectData(chonar:getObjectID(), "questOwnerID")
 	
 	local pPlayerInv = object:getParent()
+	
+	if (pPlayerInv == nil) then
+		return 0
+	end
+	
 	local playerInv = LuaSceneObject(pPlayerInv)
 	local pPlayerObj = playerInv:getParent()
+	
+	if (pPlayerObj == nil) then
+		return 0
+	end
 	
 	local playerCreo = LuaCreatureObject(pPlayerObj)
 	local playerSceo = LuaSceneObject(pPlayerObj)
@@ -525,7 +534,6 @@ function chonar_container_component:transferObject(pChonar, pObject, slot)
 		return 1
 	end
 	
-			
 	if (chonarOwnerID == playerID) then 
 		spatialChat(pChonar, "@static_npc/tatooine/vardias_tyne:npc_smuggle_2")
 		vardias_tyne_screenplay:deleteObjectData(object:getObjectID(), "Bantha Statue")
