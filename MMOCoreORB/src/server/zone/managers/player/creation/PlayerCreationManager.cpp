@@ -356,7 +356,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	callback->getCharacterName(characterName);
 
 	//TODO: Replace this at some point?
-	if (account == NULL || !playerManager->checkPlayerName(callback))
+	if (/*account == NULL || */!playerManager->checkPlayerName(callback))
 		return false;
 
 	String raceFile;
