@@ -95,6 +95,7 @@ core3_IDLS =	server/zone/objects/area/FsVillageArea.cpp \
 				server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
 				server/login/LoginServer.cpp \
 				server/login/account/Account.cpp \
+				server/login/account/AccountImplementation.cpp \
 				server/zone/ZoneServer.cpp \
 				server/zone/ZoneProcessServer.cpp \
 				server/zone/ZoneClientSession.cpp \
@@ -366,6 +367,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/web/servlets/resource/ResourceServlet.cpp \
 		server/web/servlets/login/LoginServlet.cpp \
 		server/web/servlets/logs/LogsServlet.cpp \
+		server/web/servlets/account/AccountServlet.cpp \
+		server/web/servlets/character/CharacterServlet.cpp \
 		server/web/mongoose/mongoose.c \
 		server/zone/ZoneReference.cpp \
 		server/zone/ZoneServerImplementation.cpp \
