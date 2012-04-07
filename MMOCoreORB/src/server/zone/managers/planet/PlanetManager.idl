@@ -293,7 +293,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
 	
-	public void scheduleShuttle(CreatureObject shuttle) {
+	public synchronized void scheduleShuttle(CreatureObject shuttle) {
 		shuttle.setPosture(CreaturePosture.UPRIGHT);
 		
 		ShuttleDepartureTask task = new ShuttleDepartureTask(shuttle);
@@ -302,10 +302,8 @@ class PlanetManager extends ManagedService implements Logger {
 		shuttleMap.put(shuttle.getObjectID(), task);
 	}
 	
-	public void removeShuttle(CreatureObject shuttle){
-		
+	public synchronized void removeShuttle(CreatureObject shuttle){
 		shuttleMap.drop(shuttle.getObjectID());
-		
 	}
 	
 	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);

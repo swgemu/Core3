@@ -659,6 +659,8 @@ SceneObject* PlanetManagerImplementation::createTicket(const String& departurePo
 }
 
 bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
+	Locker locker(_this);
+
 	Reference<ShuttleDepartureTask*> task = shuttleMap.get(shuttle->getObjectID());
 
 	if (task == NULL)
