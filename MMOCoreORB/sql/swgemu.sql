@@ -181,6 +181,7 @@ CREATE TABLE  `swgemu`.`characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -209,6 +210,7 @@ CREATE TABLE  `swgemu`.`characters_dirty` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`character_oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
