@@ -902,19 +902,8 @@ PlanetTravelPoint* PlanetManagerImplementation::getPlanetTravelPoint(const Strin
 	return planetTravelPointList->get(pointName);
 }
 
-void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
-	Reference<ShuttleDepartureTask*> _ref0;
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttle.setPosture(CreaturePosture.UPRIGHT);
-	shuttle->setPosture(CreaturePosture::UPRIGHT);
-	// server/zone/managers/planet/PlanetManager.idl():  		ShuttleDepartureTask task = new ShuttleDepartureTask(shuttle);
-	ShuttleDepartureTask* task = _ref0 = new ShuttleDepartureTask(shuttle);
-	// server/zone/managers/planet/PlanetManager.idl():  		task.schedule((ShuttleDepartureTask.LANDEDTIME + ShuttleDepartureTask.LANDINGTIME) * 1000);
-	task->schedule((ShuttleDepartureTask::LANDEDTIME + ShuttleDepartureTask::LANDINGTIME) * 1000);
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.put(shuttle.getObjectID(), task);
-	(&shuttleMap)->put(shuttle->getObjectID(), task);
-}
-
 void PlanetManagerImplementation::removeShuttle(CreatureObject* shuttle) {
+	Locker _locker(_this);
 	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.drop(shuttle.getObjectID());
 	(&shuttleMap)->drop(shuttle->getObjectID());
 }

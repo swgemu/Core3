@@ -62,7 +62,7 @@ void CommitMasterTransactionThread::commitData() {
 	ObjectDatabaseManager::instance()->commitTransaction(transaction);
 	ObjectDatabaseManager::instance()->checkpoint();
 
-	if (charactersSaved != NULL) {
+	if (charactersSaved != NULL && ServerCore::getZoneServer() != NULL) {
 		try {
 			StringBuffer query;
 			query << "INSERT INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";

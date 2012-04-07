@@ -721,4 +721,15 @@ void PlanetManagerImplementation::removePlayerCityTravelPoint(const String& city
 
 }
 
+void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
+	Locker locket(_this);
+
+	shuttle->setPosture(CreaturePosture::UPRIGHT);
+
+	ShuttleDepartureTask* task = new ShuttleDepartureTask(shuttle);
+	task->schedule((ShuttleDepartureTask::LANDEDTIME + ShuttleDepartureTask::LANDINGTIME) * 1000);
+
+	shuttleMap.put(shuttle->getObjectID(), task);
+}
+
 
