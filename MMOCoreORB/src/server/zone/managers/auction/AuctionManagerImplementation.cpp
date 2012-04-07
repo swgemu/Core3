@@ -493,19 +493,21 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 
 	} else {
-		// Setup the mail to the buyer
-		UnicodeString subject1("@auction:subject_instant_buyer");
-		StringIdChatParameter body1("@auction:buyer_success");
+
+		// Setup the mail to the seller
+		UnicodeString subject1("@auction:subject_instant_seller");
+		StringIdChatParameter body1("@auction:seller_success");
 		body1.setTO(item->getItemName());
 		body1.setTT(item->getBidderName());
 		body1.setDI(price1);
 
-		// Setup the mail to the seller
-		UnicodeString subject2("@auction:subject_instant_seller");
-		StringIdChatParameter body2("@auction:seller_success");
+		// Setup the mail to the buyer
+		UnicodeString subject2("@auction:subject_instant_buyer");
+		StringIdChatParameter body2("@auction:buyer_success");
 		body2.setTO(item->getItemName());
 		body2.setTT(item->getOwnerName());
 		body2.setDI(price1);
+
 
 		//Send the Mail
 		cman->sendMail(sender, subject1, body1, item->getOwnerName());
