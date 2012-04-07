@@ -39,9 +39,9 @@ namespace server {
 
 				void loginAccount(LoginClient* client, Message* packet);
 
-				ManagedReference<Account*> validateAccountCredentials(LoginClient* client, const String& username, const String& password);
+				Account* validateAccountCredentials(LoginClient* client, const String& username, const String& password);
 
-				ManagedReference<Account*> createAccount(const String& username, const String& password);
+				Account* createAccount(const String& username, const String& password, String& passwordStored);
 
 				void updateHash(const String& username, const String& password);
 
@@ -82,6 +82,9 @@ namespace server {
 				}
 
 				Account* getAccount(uint32 accountID);
+
+				Account* getAccount(uint32 accountID, String& passwordStored);
+
 			private:
 
 				Account* getAccount(String query, String& passwordStored);

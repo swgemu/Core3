@@ -97,19 +97,19 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 }
 
 
-ManagedReference<Account*> AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
+Account* AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
 
 	StringBuffer query;
 	query << "SELECT a.account_id, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
 
 	String passwordStored;
-	ManagedReference<Account*> account = getAccount(query.toString(), passwordStored);
+	Account* account = getAccount(query.toString(), passwordStored);
 
 	if(account == NULL) {
 
 		//The user name didn't exist, so we check if auto registration is enabled and create a new account
 		if (isAutoRegistrationEnabled() && client != NULL) {
-			account = createAccount(username, password);
+			account = createAccount(username, password, passwordStored);
 		} else {
 			if(client != NULL)
 				client->sendErrorMessage("Login Error", "Automatic registration is currently disabled. Please contact the administrators of the server in order to get an authorized account.");
@@ -177,7 +177,7 @@ void AccountManager::updateHash(const String& username, const String& password) 
 	}
 }
 
-ManagedReference<Account*> AccountManager::createAccount(const String& username, const String& password) {
+Account* AccountManager::createAccount(const String& username, const String& password, String& passwordStored) {
 
 	uint32 stationID = System::random();
 
@@ -198,7 +198,7 @@ ManagedReference<Account*> AccountManager::createAccount(const String& username,
 
 	uint32 accountID = result->getLastAffectedRow();
 
-	return getAccount(accountID);
+	return getAccount(accountID, passwordStored);
 }
 
 Account* AccountManager::getAccount(uint32 accountID) {
@@ -209,13 +209,23 @@ Account* AccountManager::getAccount(uint32 accountID) {
 	return getAccount(query.toString(), passwordStored);
 }
 
+Account* AccountManager::getAccount(uint32 accountID, String& passwordStored) {
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+
+	return getAccount(query.toString(), passwordStored);
+}
+
 Account* AccountManager::getAccount(String query, String& passwordStored) {
 
-	Account* account = new Account(this);
+	Account* account = NULL;
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 	if (result->next()) {
+
+		account = new Account(this);
+
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
 		passwordStored = result->getString(2);
