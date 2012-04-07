@@ -63,9 +63,6 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		String skillRequired = robe->getSkillRequired();
 
 		if (!creo->hasSkill(skillRequired) && skillRequired != ""){
-			StringIdChatParameter params;
-			params.setStringId("@jedi_spam:must_be_higher_rank");
-			params.setTO("@skl_n:" + skillRequired);
 			errorDescription = "You are not eligible to wear this robe.";
 
 			return TransferErrorCode::PLAYERUSEMASKERROR;
@@ -97,9 +94,11 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 
 	if (object->isRobeObject()) {
 		PlayerObject* ghost = creo->getPlayerObject();
-		creo->addSkillMod("jedi_force_power_max", 250, true);
-		creo->addSkillMod("jedi_force_power_regen", 10, true);
-		ghost->setForcePowerMax(ghost->getForcePowerMax(), true);
+		if (ghost != NULL && ghost->getForcePowerMax() > 0){
+				creo->addSkillMod("jedi_force_power_max", 250, true);
+				creo->addSkillMod("jedi_force_power_regen", 10, true);
+				ghost->setForcePowerMax(ghost->getForcePowerMax() + 250, true);
+		}
 	}
 
 	if (object->isInstrument() && creo->isEntertaining())
@@ -131,9 +130,11 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	if (object->isRobeObject()) {
 		PlayerObject* ghost = creo->getPlayerObject();
-		creo->addSkillMod("jedi_force_power_max", -250, true);
-		creo->addSkillMod("jedi_force_power_regen", -10, true);
-		ghost->setForcePowerMax(ghost->getForcePowerMax(), true);
+		if (ghost != NULL && ghost->getForcePowerMax() > 0){
+				creo->addSkillMod("jedi_force_power_max", -250, true);
+				creo->addSkillMod("jedi_force_power_regen", -10, true);
+				ghost->setForcePowerMax(ghost->getForcePowerMax() - 250, true);
+		}
 	}
 
 	if (object->isInstrument()) {
