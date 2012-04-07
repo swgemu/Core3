@@ -22,7 +22,7 @@
  *	EntertainerMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SETISENTERTAINING__BOOL_,RPC_CLEARLOCATIONACTIVEAREAANDOBSERVERS__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SETISENTERTAINING__BOOL_,RPC_CLEARLOCATIONACTIVEAREAANDOBSERVERS__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_STARTCOMPLETETASK__};
 
 EntertainerMissionObjective::EntertainerMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	EntertainerMissionObjectiveImplementation* _implementation = new EntertainerMissionObjectiveImplementation(mission);
@@ -135,6 +135,19 @@ int EntertainerMissionObjective::notifyObserverEvent(MissionObserver* observer, 
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void EntertainerMissionObjective::startCompleteTask() {
+	EntertainerMissionObjectiveImplementation* _implementation = static_cast<EntertainerMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_STARTCOMPLETETASK__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->startCompleteTask();
 }
 
 DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
@@ -376,6 +389,9 @@ void EntertainerMissionObjectiveAdapter::invokeMethod(uint32 methid, Distributed
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		break;
+	case RPC_STARTCOMPLETETASK__:
+		startCompleteTask();
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -411,6 +427,10 @@ void EntertainerMissionObjectiveAdapter::clearLocationActiveAreaAndObservers() {
 
 int EntertainerMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	return (static_cast<EntertainerMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
+}
+
+void EntertainerMissionObjectiveAdapter::startCompleteTask() {
+	(static_cast<EntertainerMissionObjective*>(stub))->startCompleteTask();
 }
 
 /*

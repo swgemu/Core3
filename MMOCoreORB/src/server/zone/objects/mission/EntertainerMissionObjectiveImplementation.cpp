@@ -112,6 +112,10 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 
 	isEntertaining = value;
 
+	startCompleteTask();
+}
+
+void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
 	if (isEntertaining && inMissionArea && getPlayerOwner()->getParentID() != 0) {
 		if (completeTask == NULL) {
@@ -148,6 +152,8 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 	} else {
 		inMissionArea = false;
 	}
+
+	startCompleteTask();
 
 	return 0;
 }

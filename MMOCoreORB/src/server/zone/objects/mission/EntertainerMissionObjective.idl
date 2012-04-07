@@ -96,4 +96,6 @@ class EntertainerMissionObjective extends MissionObjective {
 	public native void clearLocationActiveAreaAndObservers();
 
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	
+	public native void startCompleteTask();
 }

@@ -138,6 +138,8 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	void startCompleteTask();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -192,6 +194,8 @@ public:
 	void clearLocationActiveAreaAndObservers();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void startCompleteTask();
 
 	WeakReference<EntertainerMissionObjective*> _this;
 
@@ -249,6 +253,8 @@ public:
 	void clearLocationActiveAreaAndObservers();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	void startCompleteTask();
 
 };
 
