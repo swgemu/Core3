@@ -59,11 +59,11 @@ public:
 		query << "SELECT characters.character_oid, characters.account_id, characters.galaxy_id, characters.firstname, "
 			<< "characters.surname, characters.race, characters.gender, characters.template, UNIX_TIMESTAMP(characters.creation_date), "
 			<< "(select galaxy.name from galaxy where galaxy.galaxy_id = characters.galaxy_id) as galaxyname "
-			<< "FROM characters, galaxy WHERE characters.account_id = 1 "
+			<< "FROM characters, galaxy WHERE characters.account_id = " << accountid
 			<< "UNION SELECT characters_dirty.character_oid, characters_dirty.account_id, characters_dirty.galaxy_id, "
 			<< "characters_dirty.firstname, characters_dirty.surname, characters_dirty.race, characters_dirty.gender, characters_dirty.template, UNIX_TIMESTAMP(characters_dirty.creation_date), "
 			<< "(select galaxy.name from galaxy where galaxy.galaxy_id = characters_dirty.galaxy_id) as galaxyname "
-			<< "FROM characters_dirty WHERE characters_dirty.account_id = 1 ORDER BY galaxy_id;";
+			<< "FROM characters_dirty WHERE characters_dirty.account_id = " << accountid << " ORDER BY galaxy_id;";
 
 		try {
 			characters = ServerDatabase::instance()->executeQuery(query);
