@@ -184,6 +184,8 @@ public:
 
 	String healthCheck();
 
+	String dumpResources();
+
 	void addZone(Zone* zone);
 
 	DistributedObjectServant* _getImplementation();
@@ -196,6 +198,7 @@ protected:
 	virtual ~ResourceManager();
 
 	String _return_addParentNodeToListBox;
+	String _return_dumpResources;
 	String _return_healthCheck;
 
 	friend class ResourceManagerHelper;
@@ -283,6 +286,8 @@ public:
 
 	String healthCheck();
 
+	String dumpResources();
+
 	void addZone(Zone* zone);
 
 	WeakReference<ResourceManager*> _this;
@@ -365,6 +370,8 @@ public:
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
 	String healthCheck();
+
+	String dumpResources();
 
 protected:
 	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;

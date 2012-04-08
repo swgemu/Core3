@@ -100,6 +100,8 @@ bool ResourceManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
+	bool loadFromScript = lua->getGlobalInt("buildInitialResourcesFromScript");
+
 	shiftInterval = lua->getGlobalInt("averageShiftTime");
 
 	int aveduration = lua->getGlobalInt("aveduration");
@@ -107,7 +109,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 	int lowerGateOverride = lua->getGlobalInt("lowerGateOverride");
 	int maxSpawnQuantity = lua->getGlobalInt("maxSpawnQuantity");
 
-	resourceSpawner->setSpawningParameters(aveduration,
+	resourceSpawner->setSpawningParameters(loadFromScript, aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
 	String jtlResources = lua->getGlobalString("jtlresources");
@@ -155,7 +157,7 @@ void ResourceManagerImplementation::loadDefaultConfig() {
 	resourceSpawner->addZone("endor");
 
 	shiftInterval = 7200000;
-	resourceSpawner->setSpawningParameters(86400, 90, 1000, 0);
+	resourceSpawner->setSpawningParameters(1, 86400, 90, 1000, 0);
 }
 
 void ResourceManagerImplementation::stop() {
@@ -400,4 +402,9 @@ void ResourceManagerImplementation::listResourcesForPlanetOnScreen(CreatureObjec
 
 String ResourceManagerImplementation::healthCheck() {
 	return resourceSpawner->healthCheck();
+}
+
+String ResourceManagerImplementation::dumpResources() {
+	Locker locker(_this);
+	return resourceSpawner->dumpResources();
 }

@@ -219,6 +219,14 @@ class ResourceSpawn extends SceneObject {
     	}
     }
     
+    public string getStfClass(int index) {
+    	if(index < stfSpawnClasses.size()) {
+    		return stfSpawnClasses.get(index);
+    	} else {
+    		return "";
+    	}
+    }
+    
     public string getFinalClass() {
     	if(spawnClasses.size() > 1)
     		return spawnClasses.get(spawnClasses.size() - 1);

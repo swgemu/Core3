@@ -127,9 +127,10 @@ void ResourceSpawner::addJtlResource(const String& resourceName) {
 	jtlResources.add(resourceName);
 }
 
-void ResourceSpawner::setSpawningParameters(const int dur, const float throt,
+void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, const float throt,
 		const int override, const int spawnquantity) {
 
+	scriptLoading = loadFromScript;
 	shiftDuration = dur;
 	lowerGateOverride = override;
 	maxSpawnAmount = spawnquantity;
@@ -202,11 +203,159 @@ void ResourceSpawner::loadResourceSpawns() {
 		}
 	}
 
-	//ObjectDatabaseManager::instance()->commitLocalTransaction();
+	if(resourceMap->size() == 0 && scriptLoading) {
+
+		spawnScriptResources();
+
+	}
 
 	String built = "Resource Map Built with " + String::valueOf(
 			resourceMap->size()) + " resources";
-	info(built);
+	info(built, true);
+
+}
+
+void ResourceSpawner::spawnScriptResources() {
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	if (!lua->runFile("scripts/managers/resource_manager_spawns.lua")) {
+		error("Invalid script = 'scripts/managers/resource_manager_spawns.lua'");
+		delete lua;
+		return;
+	}
+
+	LuaObject luaObject = lua->getGlobalObject("resources");
+	if (!luaObject.isValidTable()) {
+		error("Invalid table = 'scripts/managers/resource_manager_spawns.lua'");
+		delete lua;
+		return;
+	}
+
+	for(int i = 1; i <= luaObject.getTableSize(); ++i) {
+
+		LuaObject resource = luaObject.getObjectAt(i);
+		if(!resource.isValidTable())
+			continue;
+
+		ResourceSpawn* newSpawn = dynamic_cast<ResourceSpawn*>
+			(objectManager->createObject(0xb2825c5a, 1, "resourcespawns"));
+
+		if (newSpawn == NULL) {
+			error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
+			continue;
+		}
+
+		newSpawn->setType(resource.getStringField("type"));
+		newSpawn->setName(resource.getStringField("name"));
+
+		LuaObject classes = resource.getObjectField("classes");
+
+		for (int j = 1; j <= classes.getTableSize(); ++j) {
+			LuaObject classesEntry = classes.getObjectAt(j);
+
+			newSpawn->addClass(classesEntry.getStringAt(1));
+			newSpawn->addStfClass(classesEntry.getStringAt(2));
+
+			classesEntry.pop();
+		}
+
+		resource.pop();
+
+		LuaObject attributes = resource.getObjectField("attributes");
+
+		for (int j = 1; j <= attributes.getTableSize(); ++j) {
+			LuaObject attributesEntry = attributes.getObjectAt(j);
+
+			newSpawn->addAttribute(attributesEntry.getStringAt(1), attributesEntry.getIntAt(2));
+
+			attributesEntry.pop();
+		}
+
+		resource.pop();
+
+		newSpawn->setDespawned(time(0));
+
+		newSpawn->setZoneRestriction(resource.getStringField("zoneRestriction"));
+		newSpawn->setSurveyToolType(resource.getIntField("surveyToolType"));
+		newSpawn->setContainerCRC(resource.getIntField("containerCRC"));
+
+		if (newSpawn->isType("energy") || newSpawn->isType("radioactive"))
+			newSpawn->setIsEnergy(true);
+
+		resourceMap->add(newSpawn->getName(), newSpawn);
+
+		luaObject.pop();
+	}
+
+	delete lua;
+}
+
+void ResourceSpawner::writeAllSpawnsToScript() {
+
+	if(!scriptLoading)
+		return;
+
+	try {
+
+		File* file = new File("scripts/managers/resource_manager_spawns.lua");
+		//if(!file->exists()) {
+		//	delete file;
+		//	return;
+		//}
+
+		FileWriter* writer = new FileWriter(file);
+
+		writer->writeLine("resources = {");
+
+		for(int i = 0; i < resourceMap->size(); ++i) {
+
+			ManagedReference<ResourceSpawn*> spawn = resourceMap->get(i);
+
+			writer->writeLine("	{");
+
+			writer->writeLine("		name = \"" + spawn->getName() + "\",");
+			writer->writeLine("		type = \"" + spawn->getType() + "\",");
+
+			writer->writeLine("		classes = {");
+			for(int i = 0; i < 8; ++i) {
+				String spawnClass = spawn->getClass(i);
+				if(spawnClass != "") {
+					String spawnClass2 = spawn->getStfClass(i);
+					writer->writeLine("			{\"" + spawnClass + "\", \"" + spawnClass2 + "\"},");
+				}
+			}
+			writer->writeLine("		},");
+
+			writer->writeLine("		attributes = {");
+			for(int i = 0; i < 12; ++i) {
+				String attribute = "";
+				int value = spawn->getAttributeAndValue(attribute, i);
+				if(attribute != "") {
+					writer->writeLine("			{\"" + attribute + "\", " + String::valueOf(value) + "},");
+				}
+			}
+
+			writer->writeLine("		},");
+
+			writer->writeLine("		zoneRestriction = \"" + spawn->getZoneRestriction() + "\",");
+			writer->writeLine("		surveyToolType = " + String::valueOf(spawn->getSurveyToolType()) + ",");
+			writer->writeLine("		containerCRC = " + String::valueOf(spawn->getContainerCRC()) + ",");
+
+			writer->writeLine("	},");
+			writer->writeLine("");
+		}
+
+		writer->writeLine("}");
+
+		writer->close();
+
+		delete file;
+		delete writer;
+	} catch (Exception& e) {
+
+	}
 }
 
 void ResourceSpawner::shiftResources() {
@@ -296,7 +445,6 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
 	//resourceEntry->toString();
 	//newSpawn->print();
-
 	return newSpawn;
 }
 

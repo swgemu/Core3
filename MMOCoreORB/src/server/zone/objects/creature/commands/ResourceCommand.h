@@ -77,6 +77,9 @@ public:
 			if(command == "health")
 				healthCheck(creature, &args);
 
+			if(command == "dump")
+				dumpResources(creature, &args);
+
 			else
 				throw Exception();
 
@@ -112,6 +115,15 @@ public:
 		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
 
 		creature->sendSystemMessage(resMan->healthCheck());
+	}
+
+	void dumpResources(CreatureObject* creature, StringTokenizer* args) {
+		if(creature->getZoneServer() == NULL)
+			return;
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+
+		creature->sendSystemMessage(resMan->dumpResources());
 	}
 
 };

@@ -16,7 +16,7 @@
  *	ResourceSpawnStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_ISRESOURCESPAWN__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_ISRESOURCESPAWN__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETSTFCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
@@ -265,6 +265,21 @@ String ResourceSpawn::getClass(int index) {
 		return _return_getClass;
 	} else
 		return _implementation->getClass(index);
+}
+
+String ResourceSpawn::getStfClass(int index) {
+	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTFCLASS__INT_);
+		method.addSignedIntParameter(index);
+
+		method.executeWithAsciiReturn(_return_getStfClass);
+		return _return_getStfClass;
+	} else
+		return _implementation->getStfClass(index);
 }
 
 String ResourceSpawn::getFinalClass() {
@@ -1089,6 +1104,19 @@ String ResourceSpawnImplementation::getClass(int index) {
 }
 }
 
+String ResourceSpawnImplementation::getStfClass(int index) {
+	// server/zone/objects/resource/ResourceSpawn.idl():   	}
+	if (index < (&stfSpawnClasses)->size()){
+	// server/zone/objects/resource/ResourceSpawn.idl():   		return stfSpawnClasses.get(index);
+	return (&stfSpawnClasses)->get(index);
+}
+
+	else {
+	// server/zone/objects/resource/ResourceSpawn.idl():   		return "";
+	return "";
+}
+}
+
 String ResourceSpawnImplementation::getFinalClass() {
 	// server/zone/objects/resource/ResourceSpawn.idl():   		return "";
 	if ((&spawnClasses)->size() > 1)	// server/zone/objects/resource/ResourceSpawn.idl():   		return spawnClasses.get(spawnClasses.size() - 1);
@@ -1224,6 +1252,9 @@ void ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETCLASS__INT_:
 		resp->insertAscii(getClass(inv->getSignedIntParameter()));
 		break;
+	case RPC_GETSTFCLASS__INT_:
+		resp->insertAscii(getStfClass(inv->getSignedIntParameter()));
+		break;
 	case RPC_GETFINALCLASS__:
 		resp->insertAscii(getFinalClass());
 		break;
@@ -1352,6 +1383,10 @@ String ResourceSpawnAdapter::getType() {
 
 String ResourceSpawnAdapter::getClass(int index) {
 	return (static_cast<ResourceSpawn*>(stub))->getClass(index);
+}
+
+String ResourceSpawnAdapter::getStfClass(int index) {
+	return (static_cast<ResourceSpawn*>(stub))->getStfClass(index);
 }
 
 String ResourceSpawnAdapter::getFinalClass() {

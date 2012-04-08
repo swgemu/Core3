@@ -40,6 +40,9 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+buildInitialResourcesFromScript = 1 -- Use a script to build resource database when empty
+  -- So that during wipes crafters can mantain spreadsheets with calculations
+
 averageShiftTime = 7200000 -- In milliseconds
   --  This is the time between each time the Resource Manager schedules
   --  itself to run again.

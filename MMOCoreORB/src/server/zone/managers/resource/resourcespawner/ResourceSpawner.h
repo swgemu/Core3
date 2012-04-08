@@ -108,6 +108,8 @@ private:
 	NativePool* nativePool;
 	ManualPool* manualPool;
 
+	bool scriptLoading;
+
 	int shiftDuration, lowerGateOverride, maxSpawnAmount;
 	float spawnThrottling;
 
@@ -127,8 +129,11 @@ public:
 
 	void addZone(const String& zoneName);
 	void addJtlResource(const String& resourceName);
-	void setSpawningParameters(const int dur, const float throt,
+	void setSpawningParameters(bool loadFromScript, const int dur, const float throt,
 			const int override, const int spawnquantity);
+
+	void spawnScriptResources();
+	void writeAllSpawnsToScript();
 
 	void start();
 	void shiftResources();
@@ -165,6 +170,11 @@ public:
 	void listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet);
 
 	String healthCheck();
+
+	String dumpResources() {
+		writeAllSpawnsToScript();
+		return "Resources Dumped";
+	}
 
 private:
 

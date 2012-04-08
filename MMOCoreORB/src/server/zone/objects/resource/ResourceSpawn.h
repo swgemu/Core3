@@ -130,6 +130,8 @@ public:
 
 	String getClass(int index);
 
+	String getStfClass(int index);
+
 	String getFinalClass();
 
 	String getFamilyName();
@@ -197,6 +199,7 @@ protected:
 	String _return_getName;
 	String _return_getPoolSlot;
 	String _return_getSpawnMapZone;
+	String _return_getStfClass;
 	String _return_getType;
 	String _return_getZoneRestriction;
 
@@ -293,6 +296,8 @@ public:
 	String getType();
 
 	String getClass(int index);
+
+	String getStfClass(int index);
 
 	String getFinalClass();
 
@@ -428,6 +433,8 @@ public:
 	String getType();
 
 	String getClass(int index);
+
+	String getStfClass(int index);
 
 	String getFinalClass();
 

@@ -228,8 +228,13 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	TangibleObjectImplementation::fillAttributeList(alm, player);
 
-	if (!isAttributeEffect() && !isSpiceEffect())
-		alm->insertAttribute("counter_uses_remaining", useCount);
+	if (!isAttributeEffect() && !isSpiceEffect()) {
+		if (useCount > 0)
+			alm->insertAttribute("counter_uses_remaining", useCount);
+	} else {
+		if (useCount > 0)
+			alm->insertAttribute("quantity", useCount);
+	}
 
 	if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
@@ -241,7 +246,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 	switch (effectType) {
 	case EFFECT_HEALING: {
-		alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
@@ -258,8 +262,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_ATTRIBUTE: {
-		if (useCount > 0)
-			alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
@@ -320,8 +322,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_SKILL: {
-		if (useCount > 0)
-			alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
@@ -355,7 +355,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_DURATION: {
-		alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
@@ -390,7 +389,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_DELAYED: {
-		alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
@@ -416,7 +414,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_INSTANT: {
-		alm->insertAttribute("quantity", useCount);
 
 		if (filling > 0) {
 			if (isFood())
