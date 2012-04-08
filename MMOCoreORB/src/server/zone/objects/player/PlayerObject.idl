@@ -269,6 +269,7 @@ class PlayerObject extends IntangibleObject {
 		
 		forcePower = 0;
 		forcePowerMax = 0;
+		jediState = 0;
 		
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
@@ -1027,6 +1028,11 @@ class PlayerObject extends IntangibleObject {
 	
 	public int getJediState() {
 		return jediState;
+	}
+	
+		
+	public void setJediState(int state) {
+		jediState = state;
 	}
 	
 	public byte getLanguageID() {

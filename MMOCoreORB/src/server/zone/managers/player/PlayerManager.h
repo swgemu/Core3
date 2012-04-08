@@ -360,6 +360,8 @@ public:
 
 	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
 
+	void finishHologrind(CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -538,6 +540,8 @@ public:
 
 	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
 
+	void finishHologrind(CreatureObject* player);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -682,6 +686,8 @@ public:
 	String getBadgeKey(int idx);
 
 	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
+
+	void finishHologrind(CreatureObject* player);
 
 protected:
 	String _param0_kickUser__String_String_;

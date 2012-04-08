@@ -245,5 +245,7 @@ class PlayerManager extends Observer implements Logger {
 	public native string getBadgeKey(int idx);
 	
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
+	
+	public native void finishHologrind(CreatureObject player);
 
 }

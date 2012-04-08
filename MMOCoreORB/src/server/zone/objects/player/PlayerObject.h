@@ -654,6 +654,8 @@ public:
 
 	int getJediState();
 
+	void setJediState(int state);
+
 	byte getLanguageID();
 
 	DeltaVector<String>* getFriendList();
@@ -1281,6 +1283,8 @@ public:
 
 	int getJediState();
 
+	void setJediState(int state);
+
 	byte getLanguageID();
 
 	DeltaVector<String>* getFriendList();
@@ -1701,6 +1705,8 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
+
+	void setJediState(int state);
 
 	byte getLanguageID();
 

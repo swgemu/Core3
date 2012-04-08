@@ -138,7 +138,7 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	drinkFilling = 0;
 	drinkFillingMax = 100;
 
-	jediState = 4;
+	jediState = getJediState();
 
 	languageID = 0;
 

@@ -1314,6 +1314,25 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 			break;
 		}
 	}
+
+	// For the Hologrind - Please uncomment to re-enable when ready.
+
+	/*Vector<byte>* profs = ghost->getHologrindProfessions();
+	byte prof = 0;
+
+	for (int i = 0; i < profs->size(); ++i) { // So that it only sends 1 popup...
+		prof = profs->elementAt(i);
+
+		int badgeIdx = 42 + prof;
+
+		if (!ghost->hasBadge(badgeIdx))
+			continue;
+
+		if (i == 6){
+				finishHologrind(player); // Method to send popup and grant Force Sensitive box.
+		}
+	}*/
+
 }
 
 void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier) {
@@ -2461,12 +2480,14 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 
 	uint32 holomask = 0;
 
-	uint8 totalProfsNeeded = System::random(7) + 5; //5-12 professions according to insider info.
+	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
 	for (int i = 0; i < totalProfsNeeded; ++i) {
 		uint8 prof = profs.remove(System::random(profs.size() - 1));
 		ghost->addHologrindProfession(prof);
 	}
+
+	// For their trainer.
 }
 
 void PlayerManagerImplementation::sendStartingLocationsTo(CreatureObject* player) {
@@ -2620,4 +2641,21 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	}
 
 	return NULL;
+}
+
+void PlayerManagerImplementation::finishHologrind(CreatureObject* player) {
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::NONE);
+	box->setPromptTitle("@quest/force_sensitive/intro:force_sensitive"); // You feel a tingle in the Force.
+	box->setPromptText("Perhaps you should meditate somewhere alone...");
+
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+
+	SkillManager::instance()->awardSkill("force_title_jedi_novice", player, true, false, true);
+
+	ghost->setJediState(1);
+
 }

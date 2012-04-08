@@ -42,7 +42,7 @@
 
 
 object_tangible_jedi_force_shrine_stone = object_tangible_jedi_shared_force_shrine_stone:new {
-
+	objectMenuComponent = {"cpp", "ForceShrineMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_force_shrine_stone, "object/tangible/jedi/force_shrine_stone.iff")
