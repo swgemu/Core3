@@ -439,8 +439,13 @@ int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 }
 
 void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destructor) {
+	if (defenderList.size() == 0)
+		return;
+
 	if (destructor != _this)
 		destructor->unlock();
+
+	Locker locker(_this);
 
 	try {
 		for (int i = 0; i < defenderList.size(); ++i) {

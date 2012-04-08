@@ -75,11 +75,6 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
 
-	CustomizationVariables hairCustomization;
-	CustomizationVariables playerCustomization;
-
-	String hairCustomizationString;
-
 	if (customData == NULL) {
 		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
 		return;
@@ -92,7 +87,6 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 
 	if (imageDesigner->getSkillMod(skillMod) < customData->getSkillModValue())
 		return;
-	//int choices = customData->getMaxChoices();
 
 	if (customData->getIsScale()) {
 		float minScale = customData->getMinScale();
@@ -163,9 +157,6 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 					setVal = float(min) + currentValue * (float(count) - 1);
 				}
 
-				/*if (setVal < 0)
-					setVal = 255 + setVal;*/
-
 				creatureObject->setCustomizationVariable(fullVariableNameLimit, setVal, true);
 
 				//info("setting " + fullVariableNameLimit + " to " + String::valueOf(setVal), true);
@@ -173,10 +164,6 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 		}
 	}
 
-
-	/*	hairCustomization.getData(hairCustomizationString);
-	updateHairObject(creatureObject, hairTemplate, hairCustomizationString);
-	 */
 }
 
 void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano, int skillLevel) {
@@ -235,8 +222,6 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 
 	CustomizationData* customData = getCustomizationData(speciesGender, customizationName);
 
-	CustomizationVariables hairCustomization;
-
 	if (customData == NULL) {
 		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
 		return;
@@ -250,14 +235,9 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	String variables = customData->getVariables();
 	String type = customData->getType();
 
-	String hairCustomizationString;
-
 	TangibleObject* objectToUpdate = creo;
 
 	if (customData->getIsVarHairColor()) {
-		//hairCustomization.getData(hairCustomizationString);
-		//TangibleObject* hair = updateHairObject(creo, hairTemplate, hairCustomizationString);
-
 		objectToUpdate = hairObject;
 	}
 
