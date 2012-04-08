@@ -133,7 +133,7 @@ public:
 			const int override, const int spawnquantity);
 
 	void spawnScriptResources();
-	void writeAllSpawnsToScript();
+	bool writeAllSpawnsToScript();
 
 	void start();
 	void shiftResources();
@@ -172,8 +172,10 @@ public:
 	String healthCheck();
 
 	String dumpResources() {
-		writeAllSpawnsToScript();
-		return "Resources Dumped";
+		if(writeAllSpawnsToScript())
+			return "Resources Dumped";
+
+		return "Error Dumping resources";
 	}
 
 private:

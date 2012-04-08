@@ -75,6 +75,57 @@ resources = {
 	},
 
 	{
+		name = "Ajizo",
+		type = "ore_siliclastic_fermionic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Fermionic Siliclastic Ore", "ore_siliclastic_fermionic"},
+		},
+		attributes = {
+			{"res_cold_resist", 716},
+			{"res_decay_resist", 170},
+			{"res_heat_resist", 505},
+			{"res_malleability", 308},
+			{"res_quality", 548},
+			{"res_shock_resistance", 173},
+			{"res_toughness", 347},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Akifa",
+		type = "iron_kammris",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Kammris Iron", "iron_kammris"},
+		},
+		attributes = {
+			{"res_cold_resist", 701},
+			{"res_conductivity", 438},
+			{"res_decay_resist", 929},
+			{"res_heat_resist", 953},
+			{"res_malleability", 535},
+			{"res_quality", 424},
+			{"res_shock_resistance", 951},
+			{"res_toughness", 947},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Alunecri",
 		type = "gas_reactive_sig",
 		classes = {
@@ -91,6 +142,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Ameybu",
+		type = "gas_inert_corthel",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Corthel Inert Gas", "gas_inert_corthel"},
+		},
+		attributes = {
+			{"res_decay_resist", 205},
+			{"res_quality", 401},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
 	},
 
 	{
@@ -137,6 +207,29 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Asoquikeh",
+		type = "vegetable_greens_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Vegetables", "vegetable"},
+			{"Greens", "vegetable_greens"},
+			{"Corellian Vegetable Greens", "vegetable_greens_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 557},
+			{"res_flavor", 54},
+			{"res_potential_energy", 146},
+			{"res_quality", 506},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 3634763584,
 	},
 
 	{
@@ -240,6 +333,31 @@ resources = {
 	},
 
 	{
+		name = "Awrid",
+		type = "crystalline_kerol_firegem",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Kerol Fire-Gem Crystalline Gemstone", "crystalline_kerol_firegem"},
+		},
+		attributes = {
+			{"entangle_resistance", 705},
+			{"res_cold_resist", 482},
+			{"res_decay_resist", 407},
+			{"res_heat_resist", 828},
+			{"res_malleability", 148},
+			{"res_quality", 52},
+			{"res_shock_resistance", 615},
+			{"res_toughness", 604},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Awuilium",
 		type = "water_vapor_tatooine",
 		classes = {
@@ -276,6 +394,56 @@ resources = {
 	},
 
 	{
+		name = "Azyilo",
+		type = "ore_sedimentary_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Unknown Sedimentary Ore", "ore_sedimentary_unknown"},
+		},
+		attributes = {
+			{"res_cold_resist", 310},
+			{"res_decay_resist", 241},
+			{"res_heat_resist", 621},
+			{"res_malleability", 537},
+			{"res_quality", 307},
+			{"res_shock_resistance", 348},
+			{"res_toughness", 447},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Basqezecle",
+		type = "copper_kelsh",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Kelsh Copper", "copper_kelsh"},
+		},
+		attributes = {
+			{"res_cold_resist", 465},
+			{"res_conductivity", 774},
+			{"res_decay_resist", 367},
+			{"res_heat_resist", 435},
+			{"res_malleability", 794},
+			{"res_quality", 123},
+			{"res_shock_resistance", 634},
+			{"res_toughness", 575},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Baudiwaru",
 		type = "ore_extrusive_keschel",
 		classes = {
@@ -298,6 +466,27 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Bauwuhunu",
+		type = "fiberplast_dantooine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Dantooine Fiberplast", "fiberplast_dantooine"},
+		},
+		attributes = {
+			{"res_decay_resist", 486},
+			{"res_malleability", 573},
+			{"res_quality", 38},
+			{"res_shock_resistance", 56},
+			{"res_toughness", 244},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -407,6 +596,24 @@ resources = {
 	},
 
 	{
+		name = "Blyironosine",
+		type = "energy_renewable_site_limited_hydron3_lok",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Lokian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_lok"},
+		},
+		attributes = {
+			{"res_potential_energy", 48},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Blyo",
 		type = "steel_neutronium",
 		classes = {
@@ -430,6 +637,23 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Bofororaqu",
+		type = "water_vapor_corellia",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Corellian Water Vapor", "water_vapor_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 389},
+			{"res_quality", 681},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 7,
+		containerCRC = 727105784,
 	},
 
 	{
@@ -458,6 +682,51 @@ resources = {
 	},
 
 	{
+		name = "Boymite",
+		type = "energy_renewable_unlimited_wind_naboo",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Nabooian Wind Renewable Energy", "energy_renewable_unlimited_wind_naboo"},
+		},
+		attributes = {
+			{"res_potential_energy", 374},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Bravo",
+		type = "copper_beyrllius",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Beyrllius Copper", "copper_beyrllius"},
+		},
+		attributes = {
+			{"res_cold_resist", 152},
+			{"res_conductivity", 620},
+			{"res_decay_resist", 240},
+			{"res_heat_resist", 301},
+			{"res_malleability", 603},
+			{"res_quality", 350},
+			{"res_shock_resistance", 408},
+			{"res_toughness", 474},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Bunu",
 		type = "fiberplast_dantooine",
 		classes = {
@@ -479,6 +748,29 @@ resources = {
 	},
 
 	{
+		name = "Buryiphy",
+		type = "oats_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Oats", "oats"},
+			{"Domesticated Oats", "oats_domesticated"},
+			{"Corellian Domesticated Oats", "oats_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 226},
+			{"res_flavor", 89},
+			{"res_potential_energy", 975},
+			{"res_quality", 370},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 822551481,
+	},
+
+	{
 		name = "Byabo",
 		type = "water_vapor_rori",
 		classes = {
@@ -493,6 +785,64 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 7,
 		containerCRC = 727105784,
+	},
+
+	{
+		name = "Byaflic",
+		type = "energy_renewable_site_limited_geothermal_yavin4",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Yavinian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_yavin4"},
+		},
+		attributes = {
+			{"res_potential_energy", 40},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Byuvai",
+		type = "petrochem_fuel_liquid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 7 Liquid Petro Fuel", "petrochem_fuel_liquid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 282},
+			{"res_potential_energy", 578},
+			{"res_quality", 484},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Carbajic",
+		type = "radioactive_type1",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 1 Radioactive", "radioactive_type1"},
+		},
+		attributes = {
+			{"res_decay_resist", 400},
+			{"res_potential_energy", 529},
+			{"res_quality", 20},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
 	},
 
 	{
@@ -522,6 +872,50 @@ resources = {
 	},
 
 	{
+		name = "Carbaque",
+		type = "armophous_vendusii",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Vendusii Crystal Amorphous Gemstone", "armophous_vendusii"},
+		},
+		attributes = {
+			{"entangle_resistance", 616},
+			{"res_cold_resist", 840},
+			{"res_decay_resist", 807},
+			{"res_heat_resist", 928},
+			{"res_malleability", 505},
+			{"res_quality", 142},
+			{"res_shock_resistance", 844},
+			{"res_toughness", 845},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Carbasmize",
+		type = "energy_renewable_unlimited_wind_rori",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Rori Wind Renewable Energy", "energy_renewable_unlimited_wind_rori"},
+		},
+		attributes = {
+			{"res_potential_energy", 79},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Carbasuha",
 		type = "energy_renewable_site_limited_tidal_talus",
 		classes = {
@@ -540,6 +934,26 @@ resources = {
 	},
 
 	{
+		name = "Carbedagur",
+		type = "radioactive_type5",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 5 Radioactive", "radioactive_type5"},
+		},
+		attributes = {
+			{"res_decay_resist", 633},
+			{"res_potential_energy", 788},
+			{"res_quality", 508},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
 		name = "Carbejay",
 		type = "energy_renewable_site_limited_tidal_yavin4",
 		classes = {
@@ -555,6 +969,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Carbiosqy",
+		type = "steel_bicorbantium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Crystallized Bicorbantium Steel", "steel_bicorbantium"},
+		},
+		attributes = {
+			{"res_cold_resist", 450},
+			{"res_conductivity", 534},
+			{"res_decay_resist", 508},
+			{"res_heat_resist", 561},
+			{"res_malleability", 503},
+			{"res_quality", 541},
+			{"res_shock_resistance", 146},
+			{"res_toughness", 176},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -607,6 +1047,31 @@ resources = {
 	},
 
 	{
+		name = "Carbiwutium",
+		type = "ore_siliclastic_malab",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Malab Siliclastic Ore", "ore_siliclastic_malab"},
+		},
+		attributes = {
+			{"res_cold_resist", 723},
+			{"res_decay_resist", 324},
+			{"res_heat_resist", 695},
+			{"res_malleability", 744},
+			{"res_quality", 126},
+			{"res_shock_resistance", 376},
+			{"res_toughness", 378},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Carboku",
 		type = "iron_colat",
 		classes = {
@@ -652,6 +1117,66 @@ resources = {
 	},
 
 	{
+		name = "Carbosco",
+		type = "water_vapor_corellia",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Corellian Water Vapor", "water_vapor_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 269},
+			{"res_quality", 648},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Carbozut",
+		type = "energy_renewable_site_limited_geothermal_endor",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Endorian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_endor"},
+		},
+		attributes = {
+			{"res_potential_energy", 38},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Carbufye",
+		type = "ore_siliclastic_malab",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Malab Siliclastic Ore", "ore_siliclastic_malab"},
+		},
+		attributes = {
+			{"res_cold_resist", 714},
+			{"res_decay_resist", 419},
+			{"res_heat_resist", 648},
+			{"res_malleability", 632},
+			{"res_quality", 385},
+			{"res_shock_resistance", 351},
+			{"res_toughness", 338},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Carbug",
 		type = "gas_reactive_irolunn",
 		classes = {
@@ -668,6 +1193,52 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Carbuycuke",
+		type = "radioactive_type4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 4 Radioactive", "radioactive_type4"},
+		},
+		attributes = {
+			{"res_decay_resist", 608},
+			{"res_potential_energy", 702},
+			{"res_quality", 517},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Carbyeklaxic",
+		type = "iron_bronzium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Bronzium Iron", "iron_bronzium"},
+		},
+		attributes = {
+			{"res_cold_resist", 282},
+			{"res_conductivity", 216},
+			{"res_decay_resist", 552},
+			{"res_heat_resist", 713},
+			{"res_malleability", 237},
+			{"res_quality", 473},
+			{"res_shock_resistance", 666},
+			{"res_toughness", 720},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -722,6 +1293,31 @@ resources = {
 	},
 
 	{
+		name = "Carbyupeecide",
+		type = "ore_carbonate_alantium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Alantium Carbonate Ore", "ore_carbonate_alantium"},
+		},
+		attributes = {
+			{"res_cold_resist", 356},
+			{"res_decay_resist", 1},
+			{"res_heat_resist", 456},
+			{"res_malleability", 335},
+			{"res_quality", 438},
+			{"res_shock_resistance", 14},
+			{"res_toughness", 252},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Cheoslu",
 		type = "ore_siliclastic_fermionic",
 		classes = {
@@ -747,6 +1343,68 @@ resources = {
 	},
 
 	{
+		name = "Chuhoqu",
+		type = "copper_borocarbitic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Conductive Borcarbitic Copper", "copper_borocarbitic"},
+		},
+		attributes = {
+			{"res_cold_resist", 38},
+			{"res_conductivity", 398},
+			{"res_decay_resist", 60},
+			{"res_heat_resist", 544},
+			{"res_malleability", 564},
+			{"res_quality", 531},
+			{"res_shock_resistance", 72},
+			{"res_toughness", 305},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Ciafe",
+		type = "water_vapor_dantooine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Dantooine Water Vapor", "water_vapor_dantooine"},
+		},
+		attributes = {
+			{"res_decay_resist", 237},
+			{"res_quality", 811},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Ciskic",
+		type = "petrochem_fuel_solid_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Unknown Solid Petrochem Fuel", "petrochem_fuel_solid_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 771},
+			{"res_potential_energy", 375},
+			{"res_quality", 528},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
 		name = "Crophiwifr",
 		type = "vegetable_greens_corellia",
 		classes = {
@@ -767,6 +1425,29 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = 3,
 		containerCRC = 3634763584,
+	},
+
+	{
+		name = "Cryobra",
+		type = "hide_scaley_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Hide", "hide"},
+			{"Scaley Hide", "hide_scaley"},
+			{"Corellian Scaley Hide", "hide_scaley_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 293},
+			{"res_malleability", 575},
+			{"res_quality", 228},
+			{"res_shock_resistance", 165},
+			{"res_toughness", 229},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 210849868,
 	},
 
 	{
@@ -809,6 +1490,31 @@ resources = {
 			{"res_quality", 190},
 			{"res_shock_resistance", 777},
 			{"res_toughness", 724},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Cuxeujavop",
+		type = "ore_intrusive_derillium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Derillium Intrusive Ore", "ore_intrusive_derillium"},
+		},
+		attributes = {
+			{"res_cold_resist", 450},
+			{"res_decay_resist", 617},
+			{"res_heat_resist", 795},
+			{"res_malleability", 219},
+			{"res_quality", 439},
+			{"res_shock_resistance", 658},
+			{"res_toughness", 599},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -903,6 +1609,32 @@ resources = {
 	},
 
 	{
+		name = "Daxo",
+		type = "copper_borocarbitic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Conductive Borcarbitic Copper", "copper_borocarbitic"},
+		},
+		attributes = {
+			{"res_cold_resist", 530},
+			{"res_conductivity", 137},
+			{"res_decay_resist", 101},
+			{"res_heat_resist", 355},
+			{"res_malleability", 172},
+			{"res_quality", 370},
+			{"res_shock_resistance", 480},
+			{"res_toughness", 213},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Dedraglir",
 		type = "energy_renewable_site_limited_geothermal_talus",
 		classes = {
@@ -957,6 +1689,76 @@ resources = {
 	},
 
 	{
+		name = "Dobodune",
+		type = "iron_colat",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Colat Iron", "iron_colat"},
+		},
+		attributes = {
+			{"res_cold_resist", 519},
+			{"res_conductivity", 244},
+			{"res_decay_resist", 639},
+			{"res_heat_resist", 731},
+			{"res_malleability", 320},
+			{"res_quality", 32},
+			{"res_shock_resistance", 695},
+			{"res_toughness", 748},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Dofeufo",
+		type = "energy_renewable_unlimited_solar_naboo",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Nabooian Solar Renewable Energy", "energy_renewable_unlimited_solar_naboo"},
+		},
+		attributes = {
+			{"res_potential_energy", 328},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Dohip",
+		type = "ore_extrusive_keschel",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Keschel Extrusive Ore", "ore_extrusive_keschel"},
+		},
+		attributes = {
+			{"res_cold_resist", 522},
+			{"res_decay_resist", 605},
+			{"res_heat_resist", 649},
+			{"res_malleability", 270},
+			{"res_quality", 149},
+			{"res_shock_resistance", 626},
+			{"res_toughness", 649},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Dollovy",
 		type = "armophous_rudic",
 		classes = {
@@ -979,6 +1781,55 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Dowhewide",
+		type = "iron_colat",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Colat Iron", "iron_colat"},
+		},
+		attributes = {
+			{"res_cold_resist", 386},
+			{"res_conductivity", 292},
+			{"res_decay_resist", 685},
+			{"res_heat_resist", 777},
+			{"res_malleability", 279},
+			{"res_quality", 395},
+			{"res_shock_resistance", 711},
+			{"res_toughness", 712},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Dowur",
+		type = "hide_leathery_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Hide", "hide"},
+			{"Leathery Hide", "hide_leathery"},
+			{"Corellian Leathery Hide", "hide_leathery_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 93},
+			{"res_malleability", 526},
+			{"res_quality", 383},
+			{"res_shock_resistance", 151},
+			{"res_toughness", 209},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 2158940026,
 	},
 
 	{
@@ -1049,6 +1900,48 @@ resources = {
 	},
 
 	{
+		name = "Druraghe",
+		type = "meat_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Domesticated Meat", "meat_domesticated"},
+			{"Corellian Domesticated Meat", "meat_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 517},
+			{"res_flavor", 689},
+			{"res_potential_energy", 230},
+			{"res_quality", 534},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Drusiyklo",
+		type = "petrochem_fuel_solid_type2",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 2 Solid Petro Fuel", "petrochem_fuel_solid_type2"},
+		},
+		attributes = {
+			{"res_decay_resist", 92},
+			{"res_potential_energy", 515},
+			{"res_quality", 57},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
 		name = "Dryehame",
 		type = "oats_domesticated_corellia",
 		classes = {
@@ -1116,6 +2009,28 @@ resources = {
 	},
 
 	{
+		name = "Dunivu",
+		type = "meat_avian_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Avian Meat", "meat_avian"},
+			{"Corellian Avian Meat", "meat_avian_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 144},
+			{"res_flavor", 457},
+			{"res_potential_energy", 990},
+			{"res_quality", 74},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
 		name = "Durafubramism",
 		type = "armophous_plexite",
 		classes = {
@@ -1138,6 +2053,23 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Durageaqu",
+		type = "water_vapor_naboo",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Nabooian Water Vapor", "water_vapor_naboo"},
+		},
+		attributes = {
+			{"res_decay_resist", 137},
+			{"res_quality", 790},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
 	},
 
 	{
@@ -1198,6 +2130,44 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Duranivide",
+		type = "gas_reactive_organometallic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Unstable Organometallic Reactive Gas", "gas_reactive_organometallic"},
+		},
+		attributes = {
+			{"res_decay_resist", 511},
+			{"res_quality", 447},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Durapri",
+		type = "petrochem_fuel_liquid_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Unknown Liquid Petrochem Fuel", "petrochem_fuel_liquid_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 555},
+			{"res_potential_energy", 442},
+			{"res_quality", 237},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
 	},
 
 	{
@@ -1287,6 +2257,76 @@ resources = {
 	},
 
 	{
+		name = "Durexoune",
+		type = "armophous_plexite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Plexite Amorphous Gemstone", "armophous_plexite"},
+		},
+		attributes = {
+			{"entangle_resistance", 234},
+			{"res_cold_resist", 368},
+			{"res_decay_resist", 344},
+			{"res_heat_resist", 746},
+			{"res_malleability", 200},
+			{"res_quality", 301},
+			{"res_shock_resistance", 430},
+			{"res_toughness", 338},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Durimaysian",
+		type = "petrochem_fuel_solid_type3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 3 Solid Petro Fuel", "petrochem_fuel_solid_type3"},
+		},
+		attributes = {
+			{"res_decay_resist", 287},
+			{"res_potential_energy", 528},
+			{"res_quality", 498},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Duriyge",
+		type = "ore_extrusive_kalonterium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Kalonterium Extrusive Ore", "ore_extrusive_kalonterium"},
+		},
+		attributes = {
+			{"res_cold_resist", 437},
+			{"res_decay_resist", 531},
+			{"res_heat_resist", 596},
+			{"res_malleability", 183},
+			{"res_quality", 387},
+			{"res_shock_resistance", 567},
+			{"res_toughness", 609},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Durolox",
 		type = "energy_renewable_site_limited_tidal_naboo",
 		classes = {
@@ -1320,6 +2360,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Durovesie",
+		type = "steel_arveshian",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Hardened Arveshium Steel", "steel_arveshian"},
+		},
+		attributes = {
+			{"res_cold_resist", 320},
+			{"res_conductivity", 211},
+			{"res_decay_resist", 575},
+			{"res_heat_resist", 371},
+			{"res_malleability", 487},
+			{"res_quality", 444},
+			{"res_shock_resistance", 121},
+			{"res_toughness", 178},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -1363,6 +2429,45 @@ resources = {
 	},
 
 	{
+		name = "Duruax",
+		type = "radioactive_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Unknown Radioactive", "radioactive_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 602},
+			{"res_potential_energy", 275},
+			{"res_quality", 369},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Durufy",
+		type = "petrochem_fuel_liquid_type5",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 5 Liquid Petro Fuel", "petrochem_fuel_liquid_type5"},
+		},
+		attributes = {
+			{"res_decay_resist", 198},
+			{"res_potential_energy", 191},
+			{"res_quality", 368},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
 		name = "Duruqueque",
 		type = "petrochem_inert_lubricating_oil",
 		classes = {
@@ -1381,6 +2486,25 @@ resources = {
 	},
 
 	{
+		name = "Duruquo",
+		type = "energy_renewable_unlimited_solar_lok",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Lokian Solar Renewable Energy", "energy_renewable_unlimited_solar_lok"},
+		},
+		attributes = {
+			{"res_potential_energy", 333},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Duruwrem",
 		type = "energy_renewable_unlimited_solar_yavin4",
 		classes = {
@@ -1392,6 +2516,159 @@ resources = {
 		},
 		attributes = {
 			{"res_potential_energy", 274},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Duruxe",
+		type = "steel_arveshian",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Hardened Arveshium Steel", "steel_arveshian"},
+		},
+		attributes = {
+			{"res_cold_resist", 182},
+			{"res_conductivity", 700},
+			{"res_decay_resist", 429},
+			{"res_heat_resist", 87},
+			{"res_malleability", 58},
+			{"res_quality", 225},
+			{"res_shock_resistance", 504},
+			{"res_toughness", 542},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Duryeloaby",
+		type = "radioactive_type3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 3 Radioactive", "radioactive_type3"},
+		},
+		attributes = {
+			{"res_decay_resist", 525},
+			{"res_potential_energy", 668},
+			{"res_quality", 358},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Duryex",
+		type = "energy_renewable_site_limited_hydron3_naboo",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Nabooian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_naboo"},
+		},
+		attributes = {
+			{"res_potential_energy", 442},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Duryiplizy",
+		type = "ore_siliclastic_malab",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Malab Siliclastic Ore", "ore_siliclastic_malab"},
+		},
+		attributes = {
+			{"res_cold_resist", 644},
+			{"res_decay_resist", 423},
+			{"res_heat_resist", 686},
+			{"res_malleability", 638},
+			{"res_quality", 106},
+			{"res_shock_resistance", 275},
+			{"res_toughness", 374},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Duryomeanide",
+		type = "energy_renewable_unlimited_wind_yavin4",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Yavinian Wind Renewable Energy", "energy_renewable_unlimited_wind_yavin4"},
+		},
+		attributes = {
+			{"res_potential_energy", 328},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Duryuquetine",
+		type = "steel_ditanium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Ditanium Steel", "steel_ditanium"},
+		},
+		attributes = {
+			{"res_cold_resist", 474},
+			{"res_conductivity", 397},
+			{"res_decay_resist", 812},
+			{"res_heat_resist", 845},
+			{"res_malleability", 235},
+			{"res_quality", 40},
+			{"res_shock_resistance", 801},
+			{"res_toughness", 766},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Eajio",
+		type = "energy_renewable_unlimited_solar_rori",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Rori Solar Renewable Energy", "energy_renewable_unlimited_solar_rori"},
+		},
+		attributes = {
+			{"res_potential_energy", 225},
 			{"res_quality", 500},
 		},
 		zoneRestriction = "",
@@ -1456,6 +2733,55 @@ resources = {
 	},
 
 	{
+		name = "Ecyuwra",
+		type = "softwood_evergreen_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Structural", "flora_structural"},
+			{"Wood", "wood"},
+			{"Soft Wood", "softwood"},
+			{"Evergreen Soft Wood", "softwood_evergreen"},
+			{"Corellia Evergreen Wood", "softwood_evergreen_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 149},
+			{"res_malleability", 832},
+			{"res_quality", 547},
+			{"res_shock_resistance", 199},
+			{"res_toughness", 150},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1001781097,
+	},
+
+	{
+		name = "Edaribaq",
+		type = "ore_extrusive_quadrenium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Quadrenium Extrusive Ore", "ore_extrusive_quadrenium"},
+		},
+		attributes = {
+			{"res_cold_resist", 824},
+			{"res_decay_resist", 853},
+			{"res_heat_resist", 866},
+			{"res_malleability", 506},
+			{"res_quality", 106},
+			{"res_shock_resistance", 888},
+			{"res_toughness", 901},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Eecaodraj",
 		type = "seafood_fish_corellia",
 		classes = {
@@ -1479,6 +2805,25 @@ resources = {
 	},
 
 	{
+		name = "Eglukevupi",
+		type = "gas_inert_kaylon",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Kaylon Inert Gas", "gas_inert_kaylon"},
+		},
+		attributes = {
+			{"res_decay_resist", 440},
+			{"res_quality", 218},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Eiquamism",
 		type = "energy_renewable_site_limited_tidal_dantooine",
 		classes = {
@@ -1494,6 +2839,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Eketsyocide",
+		type = "steel_carbonite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Carbonite Steel", "steel_carbonite"},
+		},
+		attributes = {
+			{"res_cold_resist", 690},
+			{"res_conductivity", 556},
+			{"res_decay_resist", 913},
+			{"res_heat_resist", 943},
+			{"res_malleability", 317},
+			{"res_quality", 340},
+			{"res_shock_resistance", 901},
+			{"res_toughness", 906},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -1586,6 +2957,25 @@ resources = {
 	},
 
 	{
+		name = "Eopeupride",
+		type = "gas_inert_mirth",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Mirth Inert Gas", "gas_inert_mirth"},
+		},
+		attributes = {
+			{"res_decay_resist", 598},
+			{"res_quality", 560},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Equexoza",
 		type = "gas_reactive_irolunn",
 		classes = {
@@ -1621,6 +3011,29 @@ resources = {
 			{"res_flavor", 410},
 			{"res_potential_energy", 171},
 			{"res_quality", 382},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Etye",
+		type = "seafood_fish_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Seafood", "seafood"},
+			{"Fish", "seafood_fish"},
+			{"Corellian Fish Meat", "seafood_fish_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 455},
+			{"res_flavor", 356},
+			{"res_potential_energy", 16},
+			{"res_quality", 581},
 		},
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
@@ -1697,6 +3110,56 @@ resources = {
 	},
 
 	{
+		name = "Ezumuytian",
+		type = "armophous_rudic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Rudic Amorphous Gemstone", "armophous_rudic"},
+		},
+		attributes = {
+			{"entangle_resistance", 324},
+			{"res_cold_resist", 418},
+			{"res_decay_resist", 500},
+			{"res_heat_resist", 757},
+			{"res_malleability", 229},
+			{"res_quality", 377},
+			{"res_shock_resistance", 410},
+			{"res_toughness", 402},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Ezutanufrian",
+		type = "ore_siliclastic_fermionic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Fermionic Siliclastic Ore", "ore_siliclastic_fermionic"},
+		},
+		attributes = {
+			{"res_cold_resist", 542},
+			{"res_decay_resist", 419},
+			{"res_heat_resist", 221},
+			{"res_malleability", 241},
+			{"res_quality", 684},
+			{"res_shock_resistance", 274},
+			{"res_toughness", 269},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Fakokidsis",
 		type = "petrochem_inert_polymer",
 		classes = {
@@ -1715,6 +3178,26 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 9343642,
+	},
+
+	{
+		name = "Feryufyegi",
+		type = "radioactive_polymetric",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"High Grade Polymetric Radioactive", "radioactive_polymetric"},
+		},
+		attributes = {
+			{"res_decay_resist", 127},
+			{"res_potential_energy", 175},
+			{"res_quality", 455},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
 	},
 
 	{
@@ -1737,6 +3220,57 @@ resources = {
 			{"res_quality", 513},
 			{"res_shock_resistance", 563},
 			{"res_toughness", 579},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Fifo",
+		type = "iron_doonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Doonium Iron", "iron_doonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 619},
+			{"res_conductivity", 407},
+			{"res_decay_resist", 853},
+			{"res_heat_resist", 895},
+			{"res_malleability", 443},
+			{"res_quality", 275},
+			{"res_shock_resistance", 893},
+			{"res_toughness", 866},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Fleholeiqu",
+		type = "ore_carbonate_varium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Varium Carbonate Ore", "ore_carbonate_varium"},
+		},
+		attributes = {
+			{"res_cold_resist", 874},
+			{"res_decay_resist", 570},
+			{"res_heat_resist", 847},
+			{"res_malleability", 807},
+			{"res_quality", 486},
+			{"res_shock_resistance", 533},
+			{"res_toughness", 817},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -1783,6 +3317,24 @@ resources = {
 	},
 
 	{
+		name = "Fliride",
+		type = "energy_renewable_site_limited_geothermal_rori",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Rori Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_rori"},
+		},
+		attributes = {
+			{"res_potential_energy", 292},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Flyepoydiy",
 		type = "fruit_berries_corellia",
 		classes = {
@@ -1806,6 +3358,70 @@ resources = {
 	},
 
 	{
+		name = "Fosutoli",
+		type = "fiberplast_corellia",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Corellia Fiberplast", "fiberplast_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 232},
+			{"res_malleability", 715},
+			{"res_quality", 256},
+			{"res_shock_resistance", 315},
+			{"res_toughness", 79},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Frifyofya",
+		type = "iron_doonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Doonium Iron", "iron_doonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 705},
+			{"res_conductivity", 395},
+			{"res_decay_resist", 849},
+			{"res_heat_resist", 907},
+			{"res_malleability", 446},
+			{"res_quality", 93},
+			{"res_shock_resistance", 844},
+			{"res_toughness", 866},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Frukiykeka",
+		type = "water_vapor_lok",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Lokian Water Vapor", "water_vapor_lok"},
+		},
+		attributes = {
+			{"res_decay_resist", 457},
+			{"res_quality", 813},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
 		name = "Fryigi",
 		type = "petrochem_fuel_solid_type2",
 		classes = {
@@ -1826,6 +3442,31 @@ resources = {
 	},
 
 	{
+		name = "Fryoliecl",
+		type = "armophous_ryll",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Ryll Amorphous Gemstone", "armophous_ryll"},
+		},
+		attributes = {
+			{"entangle_resistance", 445},
+			{"res_cold_resist", 548},
+			{"res_decay_resist", 566},
+			{"res_heat_resist", 795},
+			{"res_malleability", 306},
+			{"res_quality", 150},
+			{"res_shock_resistance", 562},
+			{"res_toughness", 582},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Fuilyi",
 		type = "gas_inert_rethin",
 		classes = {
@@ -1842,6 +3483,72 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Fyomus",
+		type = "energy_renewable_unlimited_wind_lok",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Lokian Wind Renewable Energy", "energy_renewable_unlimited_wind_lok"},
+		},
+		attributes = {
+			{"res_potential_energy", 1},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Fyuc",
+		type = "milk_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Milk", "milk"},
+			{"Wild Milk", "milk_wild"},
+			{"Corellian Wild Milk", "milk_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 192},
+			{"res_flavor", 473},
+			{"res_potential_energy", 275},
+			{"res_quality", 314},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 2928137621,
+	},
+
+	{
+		name = "Ganawho",
+		type = "armophous_bospridium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Bospridium Amorphous Gemstone", "armophous_bospridium"},
+		},
+		attributes = {
+			{"entangle_resistance", 2},
+			{"res_cold_resist", 55},
+			{"res_decay_resist", 43},
+			{"res_heat_resist", 612},
+			{"res_malleability", 11},
+			{"res_quality", 213},
+			{"res_shock_resistance", 8},
+			{"res_toughness", 2},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -1867,6 +3574,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Gewuahyipite",
+		type = "energy_renewable_unlimited_solar_dantooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Dantooine Solar Renewable Energy", "energy_renewable_unlimited_solar_dantooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 210},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -1936,6 +3662,31 @@ resources = {
 	},
 
 	{
+		name = "Gheudinu",
+		type = "crystalline_seafah_jewel",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Seafah Jewel Crystalline Gemstone", "crystalline_seafah_jewel"},
+		},
+		attributes = {
+			{"entangle_resistance", 743},
+			{"res_cold_resist", 473},
+			{"res_decay_resist", 487},
+			{"res_heat_resist", 873},
+			{"res_malleability", 200},
+			{"res_quality", 221},
+			{"res_shock_resistance", 675},
+			{"res_toughness", 764},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Giboride",
 		type = "iron_kammris",
 		classes = {
@@ -1981,6 +3732,50 @@ resources = {
 	},
 
 	{
+		name = "Gipa",
+		type = "energy_renewable_site_limited_hydron3_endor",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Endorian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_endor"},
+		},
+		attributes = {
+			{"res_potential_energy", 58},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Gipovyojo",
+		type = "steel_quadranium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Quadranium Steel", "steel_quadranium"},
+		},
+		attributes = {
+			{"res_cold_resist", 606},
+			{"res_conductivity", 470},
+			{"res_decay_resist", 865},
+			{"res_heat_resist", 884},
+			{"res_malleability", 298},
+			{"res_quality", 250},
+			{"res_shock_resistance", 874},
+			{"res_toughness", 857},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Giroq",
 		type = "radioactive_type4",
 		classes = {
@@ -2016,6 +3811,31 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 5,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Gizo",
+		type = "ore_carbonate_frasium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Frasium Carbonate Ore", "ore_carbonate_frasium"},
+		},
+		attributes = {
+			{"res_cold_resist", 624},
+			{"res_decay_resist", 278},
+			{"res_heat_resist", 683},
+			{"res_malleability", 674},
+			{"res_quality", 632},
+			{"res_shock_resistance", 279},
+			{"res_toughness", 495},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -2064,6 +3884,31 @@ resources = {
 	},
 
 	{
+		name = "Glyixuismism",
+		type = "ore_carbonate_zinsiam",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Zinsiam Carbonate Ore", "ore_carbonate_zinsiam"},
+		},
+		attributes = {
+			{"res_cold_resist", 989},
+			{"res_decay_resist", 648},
+			{"res_heat_resist", 951},
+			{"res_malleability", 900},
+			{"res_quality", 544},
+			{"res_shock_resistance", 629},
+			{"res_toughness", 896},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Glyuwyu",
 		type = "gas_inert_kaylon",
 		classes = {
@@ -2080,6 +3925,52 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Gojoujoxer",
+		type = "hide_bristley_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Hide", "hide"},
+			{"Bristley Hide", "hide_bristley"},
+			{"Corellian Bristley Hide", "hide_bristley_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 42},
+			{"res_malleability", 143},
+			{"res_quality", 248},
+			{"res_shock_resistance", 904},
+			{"res_toughness", 348},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1856171731,
+	},
+
+	{
+		name = "Gomeutsape",
+		type = "corn_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Corn", "corn"},
+			{"Domesticated Corn", "corn_domesticated"},
+			{"Corellian Domesticated Corn", "corn_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 384},
+			{"res_flavor", 691},
+			{"res_potential_energy", 425},
+			{"res_quality", 588},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 2868134971,
 	},
 
 	{
@@ -2176,6 +4067,101 @@ resources = {
 	},
 
 	{
+		name = "Guklia",
+		type = "fruit_flowers_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Fruit", "fruit"},
+			{"Flowers", "fruit_flowers"},
+			{"Corellia Flower Fruit", "fruit_flowers_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 446},
+			{"res_flavor", 81},
+			{"res_potential_energy", 249},
+			{"res_quality", 294},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Gulrsis",
+		type = "petrochem_fuel_solid_type1",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 1 Solid Petro Fuel", "petrochem_fuel_solid_type1"},
+		},
+		attributes = {
+			{"res_decay_resist", 23},
+			{"res_potential_energy", 363},
+			{"res_quality", 312},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Gyexi",
+		type = "aluminum_titanium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Titanium Aluminum", "aluminum_titanium"},
+		},
+		attributes = {
+			{"res_cold_resist", 45},
+			{"res_conductivity", 347},
+			{"res_decay_resist", 21},
+			{"res_heat_resist", 213},
+			{"res_malleability", 344},
+			{"res_quality", 868},
+			{"res_shock_resistance", 321},
+			{"res_toughness", 308},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Gyut",
+		type = "iron_plumbum",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Plumbum Iron", "iron_plumbum"},
+		},
+		attributes = {
+			{"res_cold_resist", 18},
+			{"res_conductivity", 26},
+			{"res_decay_resist", 329},
+			{"res_heat_resist", 518},
+			{"res_malleability", 60},
+			{"res_quality", 325},
+			{"res_shock_resistance", 458},
+			{"res_toughness", 403},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Hapa",
 		type = "fruit_fruits_corellia",
 		classes = {
@@ -2199,6 +4185,24 @@ resources = {
 	},
 
 	{
+		name = "Havyok",
+		type = "energy_renewable_site_limited_geothermal_dantooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dantooine Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_dantooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 107},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Heamite",
 		type = "energy_renewable_site_limited_hydron3_dathomir",
 		classes = {
@@ -2214,6 +4218,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Hefoz",
+		type = "gas_reactive_eleton",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Eleton Reactive Gas", "gas_reactive_eleton"},
+		},
+		attributes = {
+			{"res_decay_resist", 233},
+			{"res_quality", 465},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
 	},
 
 	{
@@ -2240,6 +4263,24 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Hephyovi",
+		type = "energy_renewable_site_limited_tidal_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Corellian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 227},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -2309,6 +4350,87 @@ resources = {
 	},
 
 	{
+		name = "Huglohedu",
+		type = "fiberplast_endor",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Endorian Fiberplast", "fiberplast_endor"},
+		},
+		attributes = {
+			{"res_decay_resist", 232},
+			{"res_malleability", 433},
+			{"res_quality", 247},
+			{"res_shock_resistance", 477},
+			{"res_toughness", 493},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Huhufi",
+		type = "petrochem_fuel_liquid_type4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 4 Liquid Petro Fuel", "petrochem_fuel_liquid_type4"},
+		},
+		attributes = {
+			{"res_decay_resist", 302},
+			{"res_potential_energy", 338},
+			{"res_quality", 666},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Hukuhi",
+		type = "radioactive_type3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 3 Radioactive", "radioactive_type3"},
+		},
+		attributes = {
+			{"res_decay_resist", 509},
+			{"res_potential_energy", 626},
+			{"res_quality", 282},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Hyilam",
+		type = "petrochem_fuel_solid_type4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 4 Solid Petro Fuel", "petrochem_fuel_solid_type4"},
+		},
+		attributes = {
+			{"res_decay_resist", 329},
+			{"res_potential_energy", 628},
+			{"res_quality", 864},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
 		name = "Hyitsite",
 		type = "energy_renewable_site_limited_geothermal_lok",
 		classes = {
@@ -2324,6 +4446,70 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 5,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Ibicecunu",
+		type = "gas_inert_obah",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Obah Inert Gas", "gas_inert_obah"},
+		},
+		attributes = {
+			{"res_decay_resist", 679},
+			{"res_quality", 180},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Ibilo",
+		type = "petrochem_fuel_liquid_type3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 3 Liquid Petro Fuel", "petrochem_fuel_liquid_type3"},
+		},
+		attributes = {
+			{"res_decay_resist", 217},
+			{"res_potential_energy", 475},
+			{"res_quality", 122},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Icaxir",
+		type = "ore_carbonate_chromite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Chromite Carbonate Ore", "ore_carbonate_chromite"},
+		},
+		attributes = {
+			{"res_cold_resist", 513},
+			{"res_decay_resist", 153},
+			{"res_heat_resist", 622},
+			{"res_malleability", 504},
+			{"res_quality", 135},
+			{"res_shock_resistance", 225},
+			{"res_toughness", 420},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -2396,6 +4582,104 @@ resources = {
 	},
 
 	{
+		name = "Ifedite",
+		type = "copper_platinite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Platinite Copper", "copper_platinite"},
+		},
+		attributes = {
+			{"res_cold_resist", 615},
+			{"res_conductivity", 915},
+			{"res_decay_resist", 594},
+			{"res_heat_resist", 573},
+			{"res_malleability", 892},
+			{"res_quality", 267},
+			{"res_shock_resistance", 696},
+			{"res_toughness", 723},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Igutyetok",
+		type = "fiberplast_talus",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Talusian Fiberplast", "fiberplast_talus"},
+		},
+		attributes = {
+			{"res_decay_resist", 229},
+			{"res_malleability", 595},
+			{"res_quality", 586},
+			{"res_shock_resistance", 285},
+			{"res_toughness", 406},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Ihux",
+		type = "copper_desh",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Desh Copper", "copper_desh"},
+		},
+		attributes = {
+			{"res_cold_resist", 9},
+			{"res_conductivity", 526},
+			{"res_decay_resist", 23},
+			{"res_heat_resist", 206},
+			{"res_malleability", 527},
+			{"res_quality", 481},
+			{"res_shock_resistance", 324},
+			{"res_toughness", 335},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Ihyuwyapa",
+		type = "ore_intrusive_ionite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Ionite Intrusive Ore", "ore_intrusive_ionite"},
+		},
+		attributes = {
+			{"res_cold_resist", 832},
+			{"res_decay_resist", 846},
+			{"res_heat_resist", 924},
+			{"res_malleability", 449},
+			{"res_quality", 170},
+			{"res_shock_resistance", 878},
+			{"res_toughness", 859},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Imeuphiki",
 		type = "energy_renewable_unlimited_solar_dathomir",
 		classes = {
@@ -2412,6 +4696,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Imoalide",
+		type = "steel_kiirium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Kiirium Steel", "steel_kiirium"},
+		},
+		attributes = {
+			{"res_cold_resist", 149},
+			{"res_conductivity", 102},
+			{"res_decay_resist", 556},
+			{"res_heat_resist", 643},
+			{"res_malleability", 65},
+			{"res_quality", 488},
+			{"res_shock_resistance", 578},
+			{"res_toughness", 490},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -2499,6 +4809,32 @@ resources = {
 	},
 
 	{
+		name = "Itsefsis",
+		type = "copper_polysteel",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Polysteel Copper", "copper_polysteel"},
+		},
+		attributes = {
+			{"res_cold_resist", 686},
+			{"res_conductivity", 951},
+			{"res_decay_resist", 615},
+			{"res_heat_resist", 608},
+			{"res_malleability", 953},
+			{"res_quality", 486},
+			{"res_shock_resistance", 753},
+			{"res_toughness", 737},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Ivyarye",
 		type = "wheat_domesticated_corellia",
 		classes = {
@@ -2569,6 +4905,53 @@ resources = {
 	},
 
 	{
+		name = "Izuxia",
+		type = "armophous_baradium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Baradium Amorphous Gemstone", "armophous_baradium"},
+		},
+		attributes = {
+			{"entangle_resistance", 78},
+			{"res_cold_resist", 140},
+			{"res_decay_resist", 188},
+			{"res_heat_resist", 642},
+			{"res_malleability", 55},
+			{"res_quality", 942},
+			{"res_shock_resistance", 101},
+			{"res_toughness", 141},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Jaryukain",
+		type = "meat_egg_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Egg", "meat_egg"},
+			{"Corellian Egg", "meat_egg_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 225},
+			{"res_flavor", 41},
+			{"res_potential_energy", 265},
+			{"res_quality", 427},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
 		name = "Jazouzyus",
 		type = "bone_avian_corellia",
 		classes = {
@@ -2615,6 +4998,23 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Jeetetedra",
+		type = "water_vapor_rori",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Rori Water Vapor", "water_vapor_rori"},
+		},
+		attributes = {
+			{"res_decay_resist", 576},
+			{"res_quality", 658},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
 	},
 
 	{
@@ -2683,6 +5083,52 @@ resources = {
 	},
 
 	{
+		name = "Jidixyez",
+		type = "ore_extrusive_lidium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Lidium Extrusive Ore", "ore_extrusive_lidium"},
+		},
+		attributes = {
+			{"res_cold_resist", 612},
+			{"res_decay_resist", 687},
+			{"res_heat_resist", 690},
+			{"res_malleability", 317},
+			{"res_quality", 168},
+			{"res_shock_resistance", 774},
+			{"res_toughness", 717},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Jifyugroty",
+		type = "fiberplast_rori",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Rori Fiberplast", "fiberplast_rori"},
+		},
+		attributes = {
+			{"res_decay_resist", 127},
+			{"res_malleability", 571},
+			{"res_quality", 944},
+			{"res_shock_resistance", 503},
+			{"res_toughness", 231},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
 		name = "Jiplium",
 		type = "petrochem_fuel_liquid_type6",
 		classes = {
@@ -2722,6 +5168,51 @@ resources = {
 	},
 
 	{
+		name = "Johyozura",
+		type = "copper_mythra",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Mythra Copper", "copper_mythra"},
+		},
+		attributes = {
+			{"res_cold_resist", 528},
+			{"res_conductivity", 831},
+			{"res_decay_resist", 454},
+			{"res_heat_resist", 506},
+			{"res_malleability", 864},
+			{"res_quality", 46},
+			{"res_shock_resistance", 638},
+			{"res_toughness", 639},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Jokobuxiy",
+		type = "energy_renewable_unlimited_solar_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Corellian Solar Renewable Energy", "energy_renewable_unlimited_solar_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 432},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Jozobrafsis",
 		type = "petrochem_fuel_liquid_type6",
 		classes = {
@@ -2739,6 +5230,51 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 27712471,
+	},
+
+	{
+		name = "Juranapoilite",
+		type = "petrochem_fuel_liquid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 7 Liquid Petro Fuel", "petrochem_fuel_liquid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 317},
+			{"res_potential_energy", 76},
+			{"res_quality", 286},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Katy",
+		type = "crystalline_vertex",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Vertex Crystalline Gemstone", "crystalline_vertex"},
+		},
+		attributes = {
+			{"entangle_resistance", 949},
+			{"res_cold_resist", 846},
+			{"res_decay_resist", 934},
+			{"res_heat_resist", 968},
+			{"res_malleability", 361},
+			{"res_quality", 656},
+			{"res_shock_resistance", 915},
+			{"res_toughness", 924},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -2785,6 +5321,80 @@ resources = {
 	},
 
 	{
+		name = "Keoj",
+		type = "energy_renewable_unlimited_wind_dantooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Dantooine Wind Renewable Energy", "energy_renewable_unlimited_wind_dantooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 100},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Kige",
+		type = "gas_inert_korfaise",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Korfaise Inert Gas", "gas_inert_korfaise"},
+		},
+		attributes = {
+			{"res_decay_resist", 499},
+			{"res_quality", 554},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Kimoho",
+		type = "energy_renewable_site_limited_geothermal_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Corellian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 281},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Kiplosecai",
+		type = "energy_renewable_site_limited_geothermal_talus",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Talusian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_talus"},
+		},
+		attributes = {
+			{"res_potential_energy", 387},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Kiwuzodes",
 		type = "hide_leathery_corellia",
 		classes = {
@@ -2808,6 +5418,48 @@ resources = {
 	},
 
 	{
+		name = "Klofuwhui",
+		type = "vegetable_fungi_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Vegetables", "vegetable"},
+			{"Fungi", "vegetable_fungi"},
+			{"Corellian Vegetable Fungus", "vegetable_fungi_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 208},
+			{"res_flavor", 191},
+			{"res_potential_energy", 831},
+			{"res_quality", 542},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 2175444040,
+	},
+
+	{
+		name = "Koci",
+		type = "energy_renewable_unlimited_solar_endor",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Endorian Solar Renewable Energy", "energy_renewable_unlimited_solar_endor"},
+		},
+		attributes = {
+			{"res_potential_energy", 384},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Kodi",
 		type = "iron_dolovite",
 		classes = {
@@ -2827,6 +5479,31 @@ resources = {
 			{"res_quality", 261},
 			{"res_shock_resistance", 819},
 			{"res_toughness", 799},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Konalite",
+		type = "ore_intrusive_oridium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Oridium Intrusive Ore", "ore_intrusive_oridium"},
+		},
+		attributes = {
+			{"res_cold_resist", 587},
+			{"res_decay_resist", 687},
+			{"res_heat_resist", 838},
+			{"res_malleability", 308},
+			{"res_quality", 887},
+			{"res_shock_resistance", 777},
+			{"res_toughness", 678},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -2878,6 +5555,32 @@ resources = {
 	},
 
 	{
+		name = "Krahy",
+		type = "aluminum_chromium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Chromium Aluminum", "aluminum_chromium"},
+		},
+		attributes = {
+			{"res_cold_resist", 236},
+			{"res_conductivity", 515},
+			{"res_decay_resist", 305},
+			{"res_heat_resist", 454},
+			{"res_malleability", 501},
+			{"res_quality", 51},
+			{"res_shock_resistance", 500},
+			{"res_toughness", 526},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Krifo",
 		type = "fiberplast_corellia",
 		classes = {
@@ -2918,6 +5621,71 @@ resources = {
 	},
 
 	{
+		name = "Kudi",
+		type = "energy_renewable_site_limited_geothermal_dathomir",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dathomirian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_dathomir"},
+		},
+		attributes = {
+			{"res_potential_energy", 110},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Kugunauqua",
+		type = "meat_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Wild Meat", "meat_wild"},
+			{"Corellian Wild Meat", "meat_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 151},
+			{"res_flavor", 155},
+			{"res_potential_energy", 527},
+			{"res_quality", 357},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Kyoleq",
+		type = "ore_intrusive_berubium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Berubium Intrusive Ore", "ore_intrusive_berubium"},
+		},
+		attributes = {
+			{"res_cold_resist", 225},
+			{"res_decay_resist", 345},
+			{"res_heat_resist", 700},
+			{"res_malleability", 15},
+			{"res_quality", 248},
+			{"res_shock_resistance", 508},
+			{"res_toughness", 429},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Lasogifa",
 		type = "crystalline_green_diamond",
 		classes = {
@@ -2940,6 +5708,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Ledofuf",
+		type = "petrochem_fuel_solid_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Unknown Solid Petrochem Fuel", "petrochem_fuel_solid_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 279},
+			{"res_potential_energy", 404},
+			{"res_quality", 231},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
 	},
 
 	{
@@ -3030,6 +5817,32 @@ resources = {
 	},
 
 	{
+		name = "Lominodrian",
+		type = "copper_codoan",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Codoan Copper", "copper_codoan"},
+		},
+		attributes = {
+			{"res_cold_resist", 282},
+			{"res_conductivity", 688},
+			{"res_decay_resist", 232},
+			{"res_heat_resist", 354},
+			{"res_malleability", 683},
+			{"res_quality", 868},
+			{"res_shock_resistance", 460},
+			{"res_toughness", 493},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Lripa",
 		type = "iron_plumbum",
 		classes = {
@@ -3056,6 +5869,25 @@ resources = {
 	},
 
 	{
+		name = "Lroifyumie",
+		type = "energy_renewable_unlimited_solar_yavin4",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Yavinian Solar Renewable Energy", "energy_renewable_unlimited_solar_yavin4"},
+		},
+		attributes = {
+			{"res_potential_energy", 229},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Lrowyoxo",
 		type = "energy_renewable_unlimited_wind_endor",
 		classes = {
@@ -3072,6 +5904,66 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 8,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Luanikide",
+		type = "energy_renewable_site_limited_tidal_lok",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Lokian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_lok"},
+		},
+		attributes = {
+			{"res_potential_energy", 48},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Luduk",
+		type = "gas_inert_methanagen",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Methanagen Inert Gas", "gas_inert_methanagen"},
+		},
+		attributes = {
+			{"res_decay_resist", 543},
+			{"res_quality", 455},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Luklaiji",
+		type = "seafood_crustacean_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Seafood", "seafood"},
+			{"Crustacean", "seafood_crustacean"},
+			{"Corellia Crustacean Meat", "seafood_crustacean_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 17},
+			{"res_flavor", 270},
+			{"res_potential_energy", 476},
+			{"res_quality", 445},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
 	},
 
 	{
@@ -3093,6 +5985,31 @@ resources = {
 	},
 
 	{
+		name = "Mabya",
+		type = "ore_siliclastic_robindun",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Robindun Siliclastic Ore", "ore_siliclastic_robindun"},
+		},
+		attributes = {
+			{"res_cold_resist", 842},
+			{"res_decay_resist", 456},
+			{"res_heat_resist", 734},
+			{"res_malleability", 755},
+			{"res_quality", 118},
+			{"res_shock_resistance", 528},
+			{"res_toughness", 512},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Meafifrapu",
 		type = "petrochem_fuel_liquid_type2",
 		classes = {
@@ -3110,6 +6027,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 27712471,
+	},
+
+	{
+		name = "Meazo",
+		type = "steel_thoranium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Thoranium Steel", "steel_thoranium"},
+		},
+		attributes = {
+			{"res_cold_resist", 270},
+			{"res_conductivity", 256},
+			{"res_decay_resist", 664},
+			{"res_heat_resist", 715},
+			{"res_malleability", 131},
+			{"res_quality", 541},
+			{"res_shock_resistance", 674},
+			{"res_toughness", 614},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -3187,6 +6130,29 @@ resources = {
 	},
 
 	{
+		name = "Mekiehip",
+		type = "corn_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Corn", "corn"},
+			{"Wild Corn", "corn_wild"},
+			{"Corellian Wild Corn", "corn_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 439},
+			{"res_flavor", 993},
+			{"res_potential_energy", 76},
+			{"res_quality", 114},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 2868134971,
+	},
+
+	{
 		name = "Meuw",
 		type = "ore_carbonate_ostrine",
 		classes = {
@@ -3209,6 +6175,45 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Mewiwe",
+		type = "fiberplast_dathomir",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Dathomirian Fiberplast", "fiberplast_dathomir"},
+		},
+		attributes = {
+			{"res_decay_resist", 432},
+			{"res_malleability", 19},
+			{"res_quality", 465},
+			{"res_shock_resistance", 318},
+			{"res_toughness", 6},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Mexoxu",
+		type = "petrochem_inert_lubricating_oil",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Inert Petrochemical", "petrochem_inert"},
+			{"Lubricating Oil", "petrochem_inert_lubricating_oil"},
+		},
+		attributes = {
+			{"res_decay_resist", 260},
+			{"res_quality", 471},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -3303,6 +6308,62 @@ resources = {
 	},
 
 	{
+		name = "Modou",
+		type = "water_vapor_lok",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Lokian Water Vapor", "water_vapor_lok"},
+		},
+		attributes = {
+			{"res_decay_resist", 518},
+			{"res_quality", 820},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Mozumiwama",
+		type = "petrochem_fuel_solid_type5",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 5 Solid Petro Fuel", "petrochem_fuel_solid_type5"},
+		},
+		attributes = {
+			{"res_decay_resist", 514},
+			{"res_potential_energy", 734},
+			{"res_quality", 265},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Munup",
+		type = "gas_inert_rethin",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Rethin Inert Gas", "gas_inert_rethin"},
+		},
+		attributes = {
+			{"res_decay_resist", 748},
+			{"res_quality", 368},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Muxo",
 		type = "steel_carbonite",
 		classes = {
@@ -3326,6 +6387,26 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Nado",
+		type = "petrochem_fuel_liquid_type3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 3 Liquid Petro Fuel", "petrochem_fuel_liquid_type3"},
+		},
+		attributes = {
+			{"res_decay_resist", 157},
+			{"res_potential_energy", 7},
+			{"res_quality", 37},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
 	},
 
 	{
@@ -3425,6 +6506,70 @@ resources = {
 	},
 
 	{
+		name = "Neepryavyi",
+		type = "energy_renewable_site_limited_geothermal_naboo",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Nabooian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_naboo"},
+		},
+		attributes = {
+			{"res_potential_energy", 252},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Negiba",
+		type = "radioactive_polymetric",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"High Grade Polymetric Radioactive", "radioactive_polymetric"},
+		},
+		attributes = {
+			{"res_decay_resist", 951},
+			{"res_potential_energy", 315},
+			{"res_quality", 596},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Negyod",
+		type = "aluminum_phrik",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Phrik Aluminum", "aluminum_phrik"},
+		},
+		attributes = {
+			{"res_cold_resist", 639},
+			{"res_conductivity", 718},
+			{"res_decay_resist", 681},
+			{"res_heat_resist", 712},
+			{"res_malleability", 892},
+			{"res_quality", 549},
+			{"res_shock_resistance", 791},
+			{"res_toughness", 855},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Neovauvojo",
 		type = "ore_intrusive_corintium",
 		classes = {
@@ -3447,6 +6592,92 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Neub",
+		type = "energy_renewable_unlimited_solar_tatooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Tatooinian Solar Renewable Energy", "energy_renewable_unlimited_solar_tatooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 285},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Nevevep",
+		type = "softwood_conifer_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Structural", "flora_structural"},
+			{"Wood", "wood"},
+			{"Soft Wood", "softwood"},
+			{"Corellian Conifer Wood", "softwood_conifer_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 202},
+			{"res_malleability", 741},
+			{"res_quality", 309},
+			{"res_shock_resistance", 399},
+			{"res_toughness", 285},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1001781097,
+	},
+
+	{
+		name = "Nima",
+		type = "ore_carbonate_ostrine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Ostrine Carbonate Ore", "ore_carbonate_ostrine"},
+		},
+		attributes = {
+			{"res_cold_resist", 713},
+			{"res_decay_resist", 443},
+			{"res_heat_resist", 815},
+			{"res_malleability", 747},
+			{"res_quality", 50},
+			{"res_shock_resistance", 447},
+			{"res_toughness", 702},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Nizelibihium",
+		type = "gas_reactive_methane",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Methane Reactive Gas", "gas_reactive_methane"},
+		},
+		attributes = {
+			{"res_decay_resist", 588},
+			{"res_quality", 433},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
 	},
 
 	{
@@ -3489,6 +6720,67 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Noovo",
+		type = "ore_siliclastic_ardanium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Ardanium Siliclastic Ore", "ore_siliclastic_ardanium"},
+		},
+		attributes = {
+			{"res_cold_resist", 314},
+			{"res_decay_resist", 14},
+			{"res_heat_resist", 380},
+			{"res_malleability", 370},
+			{"res_quality", 111},
+			{"res_shock_resistance", 75},
+			{"res_toughness", 35},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Notwusn",
+		type = "energy_renewable_site_limited_tidal_dantooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dantooine Tidal Renewable Energy", "energy_renewable_site_limited_tidal_dantooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 459},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Nozihopaca",
+		type = "petrochem_inert_lubricating_oil",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Inert Petrochemical", "petrochem_inert"},
+			{"Lubricating Oil", "petrochem_inert_lubricating_oil"},
+		},
+		attributes = {
+			{"res_decay_resist", 76},
+			{"res_quality", 456},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -3575,6 +6867,66 @@ resources = {
 	},
 
 	{
+		name = "Nukrihad",
+		type = "gas_reactive_sig",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Sig Reactive Gas", "gas_reactive_sig"},
+		},
+		attributes = {
+			{"res_decay_resist", 698},
+			{"res_quality", 468},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Nuse",
+		type = "energy_renewable_unlimited_solar_dathomir",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Dathomirian Solar Renewable Energy", "energy_renewable_unlimited_solar_dathomir"},
+		},
+		attributes = {
+			{"res_potential_energy", 316},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Nuysablucy",
+		type = "bone_horn_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Horn", "bone_horn"},
+			{"Corellian Horn", "bone_horn_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 368},
+			{"res_malleability", 183},
+			{"res_quality", 228},
+			{"res_shock_resistance", 446},
+			{"res_toughness", 156},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1001781097,
+	},
+
+	{
 		name = "Obradoneh",
 		type = "petrochem_fuel_liquid_type1",
 		classes = {
@@ -3592,6 +6944,57 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 27712471,
+	},
+
+	{
+		name = "Obunileka",
+		type = "ore_siliclastic_tertian",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Tertian Siliclastic Ore", "ore_siliclastic_tertian"},
+		},
+		attributes = {
+			{"res_cold_resist", 901},
+			{"res_decay_resist", 574},
+			{"res_heat_resist", 853},
+			{"res_malleability", 923},
+			{"res_quality", 176},
+			{"res_shock_resistance", 547},
+			{"res_toughness", 561},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Ocrekuy",
+		type = "iron_polonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Polonium Iron", "iron_polonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 148},
+			{"res_conductivity", 69},
+			{"res_decay_resist", 432},
+			{"res_heat_resist", 560},
+			{"res_malleability", 100},
+			{"res_quality", 303},
+			{"res_shock_resistance", 499},
+			{"res_toughness", 483},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -3696,6 +7099,24 @@ resources = {
 	},
 
 	{
+		name = "Omniby",
+		type = "energy_renewable_site_limited_hydron3_rori",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Rori Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_rori"},
+		},
+		attributes = {
+			{"res_potential_energy", 179},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Omnidauspium",
 		type = "ore_intrusive_dylinium",
 		classes = {
@@ -3718,6 +7139,126 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omnidugi",
+		type = "ore_carbonate_ostrine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Ostrine Carbonate Ore", "ore_carbonate_ostrine"},
+		},
+		attributes = {
+			{"res_cold_resist", 733},
+			{"res_decay_resist", 489},
+			{"res_heat_resist", 824},
+			{"res_malleability", 771},
+			{"res_quality", 981},
+			{"res_shock_resistance", 412},
+			{"res_toughness", 730},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omniefite",
+		type = "ore_extrusive_vintrium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Vintrium Extrusive Ore", "ore_extrusive_vintrium"},
+		},
+		attributes = {
+			{"res_cold_resist", 955},
+			{"res_decay_resist", 974},
+			{"res_heat_resist", 956},
+			{"res_malleability", 536},
+			{"res_quality", 113},
+			{"res_shock_resistance", 938},
+			{"res_toughness", 966},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omnifo",
+		type = "ore_igneous_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Unknown Igneous Ore", "ore_igneous_unknown"},
+		},
+		attributes = {
+			{"res_cold_resist", 200},
+			{"res_decay_resist", 565},
+			{"res_heat_resist", 476},
+			{"res_malleability", 225},
+			{"res_quality", 581},
+			{"res_shock_resistance", 584},
+			{"res_toughness", 461},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omniheturo",
+		type = "ore_intrusive_berubium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Berubium Intrusive Ore", "ore_intrusive_berubium"},
+		},
+		attributes = {
+			{"res_cold_resist", 234},
+			{"res_decay_resist", 312},
+			{"res_heat_resist", 708},
+			{"res_malleability", 26},
+			{"res_quality", 161},
+			{"res_shock_resistance", 502},
+			{"res_toughness", 423},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omnihog",
+		type = "fiberplast_gravitonic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Gravitonic Fiberplast", "fiberplast_gravitonic"},
+		},
+		attributes = {
+			{"res_decay_resist", 98},
+			{"res_malleability", 401},
+			{"res_quality", 158},
+			{"res_shock_resistance", 111},
+			{"res_toughness", 317},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -3766,6 +7307,31 @@ resources = {
 	},
 
 	{
+		name = "Omnimewhof",
+		type = "crystalline_gallinorian",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Gallinorian Rainbow Gem Crystalline Gemstone", "crystalline_gallinorian"},
+		},
+		attributes = {
+			{"entangle_resistance", 599},
+			{"res_cold_resist", 153},
+			{"res_decay_resist", 137},
+			{"res_heat_resist", 749},
+			{"res_malleability", 105},
+			{"res_quality", 296},
+			{"res_shock_resistance", 414},
+			{"res_toughness", 383},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Omnimezug",
 		type = "metal_nonferrous_unknown",
 		classes = {
@@ -3807,6 +7373,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Omninizugy",
+		type = "energy_renewable_unlimited_solar_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Corellian Solar Renewable Energy", "energy_renewable_unlimited_solar_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 313},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 1,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -3855,6 +7440,24 @@ resources = {
 	},
 
 	{
+		name = "Omniomoabsis",
+		type = "energy_renewable_site_limited_hydron3_talus",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Talusian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_talus"},
+		},
+		attributes = {
+			{"res_potential_energy", 26},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Omnioq",
 		type = "energy_renewable_site_limited_geothermal_tatooine",
 		classes = {
@@ -3888,6 +7491,30 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Omniquig",
+		type = "gemstone_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Unknown Gem Type", "gemstone_unknown"},
+		},
+		attributes = {
+			{"entangle_resistance", 474},
+			{"res_cold_resist", 10},
+			{"res_decay_resist", 243},
+			{"res_heat_resist", 705},
+			{"res_malleability", 2},
+			{"res_quality", 309},
+			{"res_shock_resistance", 469},
+			{"res_toughness", 588},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -3951,6 +7578,51 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Omnishulian",
+		type = "iron_dolovite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Dolovite Iron", "iron_dolovite"},
+		},
+		attributes = {
+			{"res_cold_resist", 617},
+			{"res_conductivity", 326},
+			{"res_decay_resist", 737},
+			{"res_heat_resist", 809},
+			{"res_malleability", 374},
+			{"res_quality", 295},
+			{"res_shock_resistance", 770},
+			{"res_toughness", 761},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omnistyic",
+		type = "gas_reactive_orveth",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Orveth Reactive Gas", "gas_reactive_orveth"},
+		},
+		attributes = {
+			{"res_decay_resist", 392},
+			{"res_quality", 141},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
 	},
 
 	{
@@ -4042,6 +7714,32 @@ resources = {
 			{"res_quality", 234},
 			{"res_shock_resistance", 456},
 			{"res_toughness", 484},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Omnixu",
+		type = "steel_rhodium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Rhodium Steel", "steel_rhodium"},
+		},
+		attributes = {
+			{"res_cold_resist", 63},
+			{"res_conductivity", 80},
+			{"res_decay_resist", 536},
+			{"res_heat_resist", 626},
+			{"res_malleability", 26},
+			{"res_quality", 691},
+			{"res_shock_resistance", 517},
+			{"res_toughness", 427},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -4154,6 +7852,70 @@ resources = {
 	},
 
 	{
+		name = "Oquoma",
+		type = "gas_reactive_tolium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Tolium Reactive Gas", "gas_reactive_tolium"},
+		},
+		attributes = {
+			{"res_decay_resist", 637},
+			{"res_quality", 346},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Oredian",
+		type = "iron_bronzium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Bronzium Iron", "iron_bronzium"},
+		},
+		attributes = {
+			{"res_cold_resist", 309},
+			{"res_conductivity", 211},
+			{"res_decay_resist", 601},
+			{"res_heat_resist", 688},
+			{"res_malleability", 247},
+			{"res_quality", 146},
+			{"res_shock_resistance", 613},
+			{"res_toughness", 674},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Orufujet",
+		type = "gas_inert_malium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Malium Inert Gas", "gas_inert_malium"},
+		},
+		attributes = {
+			{"res_decay_resist", 45},
+			{"res_quality", 689},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Oruvogy",
 		type = "ore_extrusive_pholokite",
 		classes = {
@@ -4204,6 +7966,24 @@ resources = {
 	},
 
 	{
+		name = "Otraiprewa",
+		type = "gas_inert_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Unknown Inert Gas", "gas_inert_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 459},
+			{"res_quality", 214},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Oubuwy",
 		type = "steel_thoranium",
 		classes = {
@@ -4249,6 +8029,80 @@ resources = {
 	},
 
 	{
+		name = "Ovyozyu",
+		type = "wood_deciduous_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Structural", "flora_structural"},
+			{"Wood", "wood"},
+			{"Hard Wood", "wood_deciduous"},
+			{"Corellian Deciduous Wood", "wood_deciduous_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 23},
+			{"res_malleability", 562},
+			{"res_quality", 736},
+			{"res_shock_resistance", 372},
+			{"res_toughness", 280},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1001781097,
+	},
+
+	{
+		name = "Oydox",
+		type = "copper_thallium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Thallium Copper", "copper_thallium"},
+		},
+		attributes = {
+			{"res_cold_resist", 99},
+			{"res_conductivity", 570},
+			{"res_decay_resist", 80},
+			{"res_heat_resist", 269},
+			{"res_malleability", 551},
+			{"res_quality", 566},
+			{"res_shock_resistance", 349},
+			{"res_toughness", 339},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Oyti",
+		type = "ore_extrusive_pholokite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Pholokite Extrusive Ore", "ore_extrusive_pholokite"},
+		},
+		attributes = {
+			{"res_cold_resist", 763},
+			{"res_decay_resist", 820},
+			{"res_heat_resist", 829},
+			{"res_malleability", 477},
+			{"res_quality", 355},
+			{"res_shock_resistance", 804},
+			{"res_toughness", 825},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Papaj",
 		type = "radioactive_polymetric",
 		classes = {
@@ -4266,6 +8120,300 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Pazayquewh",
+		type = "water_vapor_dathomir",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Dathomir Water Vapor", "water_vapor_dathomir"},
+		},
+		attributes = {
+			{"res_decay_resist", 426},
+			{"res_quality", 989},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Pazizorine",
+		type = "petrochem_fuel_liquid_type6",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 6 Liquid Petro Fuel", "petrochem_fuel_liquid_type6"},
+		},
+		attributes = {
+			{"res_decay_resist", 429},
+			{"res_potential_energy", 39},
+			{"res_quality", 295},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Pejaludu",
+		type = "ore_carbonate_lommite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Lommite Carbonate Ore", "ore_carbonate_lommite"},
+		},
+		attributes = {
+			{"res_cold_resist", 694},
+			{"res_decay_resist", 351},
+			{"res_heat_resist", 694},
+			{"res_malleability", 658},
+			{"res_quality", 21},
+			{"res_shock_resistance", 376},
+			{"res_toughness", 623},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Pejavium",
+		type = "ore_siliclastic_cortosis",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Cortosis Siliclastic Ore", "ore_siliclastic_cortosis"},
+		},
+		attributes = {
+			{"res_cold_resist", 483},
+			{"res_decay_resist", 132},
+			{"res_heat_resist", 461},
+			{"res_malleability", 475},
+			{"res_quality", 164},
+			{"res_shock_resistance", 110},
+			{"res_toughness", 170},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Pelacyidide",
+		type = "ore_extrusive_pholokite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Pholokite Extrusive Ore", "ore_extrusive_pholokite"},
+		},
+		attributes = {
+			{"res_cold_resist", 746},
+			{"res_decay_resist", 779},
+			{"res_heat_resist", 858},
+			{"res_malleability", 413},
+			{"res_quality", 224},
+			{"res_shock_resistance", 809},
+			{"res_toughness", 832},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Peozemubuk",
+		type = "ore_siliclastic_crism",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Siliclastic Ore", "ore_siliclastic"},
+			{"Crism Siliclastic Ore", "ore_siliclastic_crism"},
+		},
+		attributes = {
+			{"res_cold_resist", 507},
+			{"res_decay_resist", 214},
+			{"res_heat_resist", 587},
+			{"res_malleability", 544},
+			{"res_quality", 133},
+			{"res_shock_resistance", 286},
+			{"res_toughness", 269},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Peynaoby",
+		type = "ore_intrusive_katrium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Katrium Intrusive Ore", "ore_intrusive_katrium"},
+		},
+		attributes = {
+			{"res_cold_resist", 947},
+			{"res_decay_resist", 901},
+			{"res_heat_resist", 966},
+			{"res_malleability", 517},
+			{"res_quality", 98},
+			{"res_shock_resistance", 955},
+			{"res_toughness", 923},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Phoa",
+		type = "energy_renewable_unlimited_wind_dathomir",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Dathomirian Wind Renewable Energy", "energy_renewable_unlimited_wind_dathomir"},
+		},
+		attributes = {
+			{"res_potential_energy", 379},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Pilimat",
+		type = "fiberplast_naboo",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Nabooian Fiberplast", "fiberplast_naboo"},
+		},
+		attributes = {
+			{"res_decay_resist", 593},
+			{"res_malleability", 518},
+			{"res_quality", 26},
+			{"res_shock_resistance", 305},
+			{"res_toughness", 479},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Ploze",
+		type = "petrochem_fuel_liquid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 7 Liquid Petro Fuel", "petrochem_fuel_liquid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 161},
+			{"res_potential_energy", 77},
+			{"res_quality", 442},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Pocye",
+		type = "ore_carbonate_barthierium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Sedimentary Ore", "ore_sedimentary"},
+			{"Carbonate Ore", "ore_carbonate"},
+			{"Barthierium Carbonate Ore", "ore_carbonate_barthierium"},
+		},
+		attributes = {
+			{"res_cold_resist", 492},
+			{"res_decay_resist", 163},
+			{"res_heat_resist", 499},
+			{"res_malleability", 371},
+			{"res_quality", 895},
+			{"res_shock_resistance", 104},
+			{"res_toughness", 319},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Prahequosh",
+		type = "petrochem_inert_polymer",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Inert Petrochemical", "petrochem_inert"},
+			{"Polymer", "petrochem_inert_polymer"},
+		},
+		attributes = {
+			{"res_decay_resist", 238},
+			{"res_malleability", 95},
+			{"res_quality", 168},
+			{"res_shock_resistance", 176},
+			{"res_toughness", 330},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Pramaxyeri",
+		type = "iron_doonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Doonium Iron", "iron_doonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 725},
+			{"res_conductivity", 454},
+			{"res_decay_resist", 878},
+			{"res_heat_resist", 914},
+			{"res_malleability", 440},
+			{"res_quality", 254},
+			{"res_shock_resistance", 858},
+			{"res_toughness", 873},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -4305,6 +8453,83 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Protyuq",
+		type = "crystalline_sormahil_firegem",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Sormahil Fire Gem Crystalline Gemstone", "crystalline_sormahil_firegem"},
+		},
+		attributes = {
+			{"entangle_resistance", 845},
+			{"res_cold_resist", 598},
+			{"res_decay_resist", 614},
+			{"res_heat_resist", 882},
+			{"res_malleability", 281},
+			{"res_quality", 556},
+			{"res_shock_resistance", 772},
+			{"res_toughness", 773},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Prowiviti",
+		type = "iron_kammris",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Kammris Iron", "iron_kammris"},
+		},
+		attributes = {
+			{"res_cold_resist", 726},
+			{"res_conductivity", 428},
+			{"res_decay_resist", 924},
+			{"res_heat_resist", 929},
+			{"res_malleability", 507},
+			{"res_quality", 152},
+			{"res_shock_resistance", 919},
+			{"res_toughness", 904},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Pryefl",
+		type = "steel_bicorbantium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Crystallized Bicorbantium Steel", "steel_bicorbantium"},
+		},
+		attributes = {
+			{"res_cold_resist", 206},
+			{"res_conductivity", 225},
+			{"res_decay_resist", 22},
+			{"res_heat_resist", 220},
+			{"res_malleability", 592},
+			{"res_quality", 574},
+			{"res_shock_resistance", 571},
+			{"res_toughness", 290},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -4349,6 +8574,31 @@ resources = {
 			{"res_quality", 239},
 			{"res_shock_resistance", 106},
 			{"res_toughness", 187},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Punoineedo",
+		type = "armophous_baltaran",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Bal'ta'ran Crystal Amorphous Gemstone", "armophous_baltaran"},
+		},
+		attributes = {
+			{"entangle_resistance", 718},
+			{"res_cold_resist", 942},
+			{"res_decay_resist", 897},
+			{"res_heat_resist", 984},
+			{"res_malleability", 558},
+			{"res_quality", 90},
+			{"res_shock_resistance", 873},
+			{"res_toughness", 880},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -4499,6 +8749,23 @@ resources = {
 	},
 
 	{
+		name = "Quadavyo",
+		type = "water_vapor_yavin4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Yavinian Water Vapor", "water_vapor_yavin4"},
+		},
+		attributes = {
+			{"res_decay_resist", 33},
+			{"res_quality", 632},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
 		name = "Quadaxexic",
 		type = "gas_reactive_organometallic",
 		classes = {
@@ -4515,6 +8782,83 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Quadeaq",
+		type = "armophous_stygium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Stygium Amorphous Gemstone", "armophous_stygium"},
+		},
+		attributes = {
+			{"entangle_resistance", 605},
+			{"res_cold_resist", 727},
+			{"res_decay_resist", 830},
+			{"res_heat_resist", 896},
+			{"res_malleability", 438},
+			{"res_quality", 7},
+			{"res_shock_resistance", 738},
+			{"res_toughness", 709},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quadefi",
+		type = "copper_desh",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Desh Copper", "copper_desh"},
+		},
+		attributes = {
+			{"res_cold_resist", 31},
+			{"res_conductivity", 510},
+			{"res_decay_resist", 47},
+			{"res_heat_resist", 228},
+			{"res_malleability", 540},
+			{"res_quality", 414},
+			{"res_shock_resistance", 316},
+			{"res_toughness", 320},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quadeflul",
+		type = "copper_beyrllius",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Beyrllius Copper", "copper_beyrllius"},
+		},
+		attributes = {
+			{"res_cold_resist", 216},
+			{"res_conductivity", 607},
+			{"res_decay_resist", 144},
+			{"res_heat_resist", 328},
+			{"res_malleability", 618},
+			{"res_quality", 734},
+			{"res_shock_resistance", 473},
+			{"res_toughness", 401},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -4538,6 +8882,52 @@ resources = {
 	},
 
 	{
+		name = "Quadezo",
+		type = "crystalline_green_diamond",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Green Diamond Crystalline Gemstone", "crystalline_green_diamond"},
+		},
+		attributes = {
+			{"entangle_resistance", 618},
+			{"res_cold_resist", 267},
+			{"res_decay_resist", 266},
+			{"res_heat_resist", 769},
+			{"res_malleability", 94},
+			{"res_quality", 257},
+			{"res_shock_resistance", 495},
+			{"res_toughness", 504},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quaditr",
+		type = "fiberplast_gravitonic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Gravitonic Fiberplast", "fiberplast_gravitonic"},
+		},
+		attributes = {
+			{"res_decay_resist", 386},
+			{"res_malleability", 75},
+			{"res_quality", 970},
+			{"res_shock_resistance", 232},
+			{"res_toughness", 12},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
 		name = "Quadiymi",
 		type = "energy_renewable_unlimited_wind_corellia",
 		classes = {
@@ -4554,6 +8944,27 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = 8,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Quadoevu",
+		type = "fiberplast_lok",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Lokian Fiberplast", "fiberplast_lok"},
+		},
+		attributes = {
+			{"res_decay_resist", 534},
+			{"res_malleability", 535},
+			{"res_quality", 548},
+			{"res_shock_resistance", 579},
+			{"res_toughness", 156},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -4583,6 +8994,44 @@ resources = {
 	},
 
 	{
+		name = "Quadolian",
+		type = "energy_renewable_site_limited_tidal_talus",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Talusian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_talus"},
+		},
+		attributes = {
+			{"res_potential_energy", 77},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Quadotala",
+		type = "radioactive_type2",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 2 Radioactive", "radioactive_type2"},
+		},
+		attributes = {
+			{"res_decay_resist", 492},
+			{"res_potential_energy", 556},
+			{"res_quality", 571},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
 		name = "Quadrafo",
 		type = "armophous_sedrellium",
 		classes = {
@@ -4608,6 +9057,121 @@ resources = {
 	},
 
 	{
+		name = "Quadrimian",
+		type = "petrochem_fuel_solid_type1",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 1 Solid Petro Fuel", "petrochem_fuel_solid_type1"},
+		},
+		attributes = {
+			{"res_decay_resist", 47},
+			{"res_potential_energy", 352},
+			{"res_quality", 343},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Quadripiro",
+		type = "ore_intrusive_corintium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Corintium Intrusive Ore", "ore_intrusive_corintium"},
+		},
+		attributes = {
+			{"res_cold_resist", 425},
+			{"res_decay_resist", 487},
+			{"res_heat_resist", 785},
+			{"res_malleability", 124},
+			{"res_quality", 72},
+			{"res_shock_resistance", 645},
+			{"res_toughness", 524},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quadrufe",
+		type = "energy_renewable_site_limited_tidal_dathomir",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dathomirian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_dathomir"},
+		},
+		attributes = {
+			{"res_potential_energy", 182},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Quadruzician",
+		type = "energy_renewable_site_limited_hydron3_dathomir",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dathomirian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_dathomir"},
+		},
+		attributes = {
+			{"res_potential_energy", 53},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Quadryu",
+		type = "water_vapor_talus",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Talusian Water Vapor", "water_vapor_talus"},
+		},
+		attributes = {
+			{"res_decay_resist", 187},
+			{"res_quality", 949},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Quaduby",
+		type = "water_vapor_endor",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Endorian Water Vapor", "water_vapor_endor"},
+		},
+		attributes = {
+			{"res_decay_resist", 510},
+			{"res_quality", 709},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
 		name = "Quadupi",
 		type = "energy_renewable_site_limited_hydron3_corellia",
 		classes = {
@@ -4623,6 +9187,32 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Quadurian",
+		type = "iron_axidite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Axidite Iron", "iron_axidite"},
+		},
+		attributes = {
+			{"res_cold_resist", 185},
+			{"res_conductivity", 144},
+			{"res_decay_resist", 579},
+			{"res_heat_resist", 636},
+			{"res_malleability", 169},
+			{"res_quality", 159},
+			{"res_shock_resistance", 577},
+			{"res_toughness", 581},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -4661,6 +9251,32 @@ resources = {
 			{"res_quality", 88},
 			{"res_shock_resistance", 938},
 			{"res_toughness", 927},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quefy",
+		type = "steel_duralloy",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Duralloy Steel", "steel_duralloy"},
+		},
+		attributes = {
+			{"res_cold_resist", 704},
+			{"res_conductivity", 608},
+			{"res_decay_resist", 937},
+			{"res_heat_resist", 977},
+			{"res_malleability", 364},
+			{"res_quality", 206},
+			{"res_shock_resistance", 974},
+			{"res_toughness", 992},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -4732,6 +9348,75 @@ resources = {
 	},
 
 	{
+		name = "Quiqueni",
+		type = "ore_intrusive_hollinium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Hollinium Intrusive Ore", "ore_intrusive_hollinium"},
+		},
+		attributes = {
+			{"res_cold_resist", 809},
+			{"res_decay_resist", 769},
+			{"res_heat_resist", 920},
+			{"res_malleability", 424},
+			{"res_quality", 357},
+			{"res_shock_resistance", 833},
+			{"res_toughness", 799},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quirugrsis",
+		type = "iron_bronzium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Bronzium Iron", "iron_bronzium"},
+		},
+		attributes = {
+			{"res_cold_resist", 322},
+			{"res_conductivity", 187},
+			{"res_decay_resist", 611},
+			{"res_heat_resist", 688},
+			{"res_malleability", 237},
+			{"res_quality", 174},
+			{"res_shock_resistance", 622},
+			{"res_toughness", 655},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Quitu",
+		type = "energy_renewable_site_limited_hydron3_yavin4",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Yavinian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_yavin4"},
+		},
+		attributes = {
+			{"res_potential_energy", 180},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Quobro",
 		type = "water_vapor_dathomir",
 		classes = {
@@ -4746,6 +9431,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 7,
 		containerCRC = 727105784,
+	},
+
+	{
+		name = "Quohism",
+		type = "aluminum_perovskitic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Perovskitic Aluminum", "aluminum_perovskitic"},
+		},
+		attributes = {
+			{"res_cold_resist", 31},
+			{"res_conductivity", 244},
+			{"res_decay_resist", 357},
+			{"res_heat_resist", 275},
+			{"res_malleability", 211},
+			{"res_quality", 275},
+			{"res_shock_resistance", 197},
+			{"res_toughness", 493},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -4809,6 +9520,32 @@ resources = {
 	},
 
 	{
+		name = "Raduxoj",
+		type = "aluminum_perovskitic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Perovskitic Aluminum", "aluminum_perovskitic"},
+		},
+		attributes = {
+			{"res_cold_resist", 409},
+			{"res_conductivity", 376},
+			{"res_decay_resist", 361},
+			{"res_heat_resist", 593},
+			{"res_malleability", 589},
+			{"res_quality", 236},
+			{"res_shock_resistance", 35},
+			{"res_toughness", 348},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Reduk",
 		type = "meat_herbivore_corellia",
 		classes = {
@@ -4828,6 +9565,45 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
 		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Reet",
+		type = "petrochem_fuel_liquid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 7 Liquid Petro Fuel", "petrochem_fuel_liquid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 279},
+			{"res_potential_energy", 226},
+			{"res_quality", 382},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Rellinehism",
+		type = "gas_inert_dioxis",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Dioxis Inert Gas", "gas_inert_dioxis"},
+		},
+		attributes = {
+			{"res_decay_resist", 292},
+			{"res_quality", 575},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
 	},
 
 	{
@@ -4856,6 +9632,68 @@ resources = {
 	},
 
 	{
+		name = "Riomafi",
+		type = "meat_herbivore_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Herbivore Meat", "meat_herbivore"},
+			{"Corellian Herbivore Meat", "meat_herbivore_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 498},
+			{"res_flavor", 309},
+			{"res_potential_energy", 282},
+			{"res_quality", 487},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Rivofian",
+		type = "petrochem_fuel_liquid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 7 Liquid Petro Fuel", "petrochem_fuel_liquid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 438},
+			{"res_potential_energy", 217},
+			{"res_quality", 131},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Roaweah",
+		type = "radioactive_type6",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 6 Radioactive", "radioactive_type6"},
+		},
+		attributes = {
+			{"res_decay_resist", 704},
+			{"res_potential_energy", 871},
+			{"res_quality", 50},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
 		name = "Rolyazut",
 		type = "rice_domesticated_corellia",
 		classes = {
@@ -4879,6 +9717,25 @@ resources = {
 	},
 
 	{
+		name = "Rori",
+		type = "gas_reactive_tolium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Tolium Reactive Gas", "gas_reactive_tolium"},
+		},
+		attributes = {
+			{"res_decay_resist", 576},
+			{"res_quality", 533},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
 		name = "Rugloo",
 		type = "water_vapor_talus",
 		classes = {
@@ -4893,6 +9750,28 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 7,
 		containerCRC = 727105784,
+	},
+
+	{
+		name = "Rupryi",
+		type = "milk_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Milk", "milk"},
+			{"Domesticated Milk", "milk_domesticated"},
+			{"Corellian Domesticated Milk", "milk_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 111},
+			{"res_flavor", 177},
+			{"res_potential_energy", 312},
+			{"res_quality", 575},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 2928137621,
 	},
 
 	{
@@ -4914,6 +9793,32 @@ resources = {
 	},
 
 	{
+		name = "Ryefyu",
+		type = "aluminum_chromium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Chromium Aluminum", "aluminum_chromium"},
+		},
+		attributes = {
+			{"res_cold_resist", 311},
+			{"res_conductivity", 474},
+			{"res_decay_resist", 322},
+			{"res_heat_resist", 370},
+			{"res_malleability", 526},
+			{"res_quality", 408},
+			{"res_shock_resistance", 529},
+			{"res_toughness", 510},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Ryifexyu",
 		type = "gas_reactive_unknown",
 		classes = {
@@ -4929,6 +9834,29 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Ryojirigej",
+		type = "vegetable_tubers_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Vegetables", "vegetable"},
+			{"Tubers", "vegetable_tubers"},
+			{"Corellian Vegetable Tubers", "vegetable_tubers_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 229},
+			{"res_flavor", 152},
+			{"res_potential_energy", 487},
+			{"res_quality", 32},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 485919638,
 	},
 
 	{
@@ -4951,6 +9879,32 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
 		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Ryurovi",
+		type = "iron_kammris",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Kammris Iron", "iron_kammris"},
+		},
+		attributes = {
+			{"res_cold_resist", 717},
+			{"res_conductivity", 430},
+			{"res_decay_resist", 966},
+			{"res_heat_resist", 948},
+			{"res_malleability", 529},
+			{"res_quality", 205},
+			{"res_shock_resistance", 955},
+			{"res_toughness", 965},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -5022,6 +9976,32 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Simocya",
+		type = "aluminum_phrik",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Phrik Aluminum", "aluminum_phrik"},
+		},
+		attributes = {
+			{"res_cold_resist", 632},
+			{"res_conductivity", 696},
+			{"res_decay_resist", 630},
+			{"res_heat_resist", 707},
+			{"res_malleability", 973},
+			{"res_quality", 467},
+			{"res_shock_resistance", 879},
+			{"res_toughness", 811},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -5107,6 +10087,73 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Smun",
+		type = "ore_extrusive_vintrium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Vintrium Extrusive Ore", "ore_extrusive_vintrium"},
+		},
+		attributes = {
+			{"res_cold_resist", 911},
+			{"res_decay_resist", 928},
+			{"res_heat_resist", 949},
+			{"res_malleability", 543},
+			{"res_quality", 565},
+			{"res_shock_resistance", 959},
+			{"res_toughness", 922},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Snioquamex",
+		type = "energy_renewable_unlimited_solar_talus",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Solar Energy", "energy_renewable_unlimited_solar"},
+			{"Talusian Solar Renewable Energy", "energy_renewable_unlimited_solar_talus"},
+		},
+		attributes = {
+			{"res_potential_energy", 330},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Sosyit",
+		type = "wheat_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Wheat", "wheat"},
+			{"Wild Wheat", "wheat_wild"},
+			{"Corellian Wild Wheat", "wheat_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 168},
+			{"res_flavor", 462},
+			{"res_potential_energy", 365},
+			{"res_quality", 66},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1890507922,
 	},
 
 	{
@@ -5221,6 +10268,50 @@ resources = {
 	},
 
 	{
+		name = "Sqaxigat",
+		type = "ore_extrusive_bene",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Bene Extrusive Ore", "ore_extrusive_bene"},
+		},
+		attributes = {
+			{"res_cold_resist", 231},
+			{"res_decay_resist", 390},
+			{"res_heat_resist", 407},
+			{"res_malleability", 9},
+			{"res_quality", 14},
+			{"res_shock_resistance", 419},
+			{"res_toughness", 403},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Srusyo",
+		type = "gas_inert_hurlothrombic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Hurlothrombic Inert Gas", "gas_inert_hurlothrombic"},
+		},
+		attributes = {
+			{"res_decay_resist", 384},
+			{"res_quality", 183},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
 		name = "Ssethivsis",
 		type = "gas_reactive_tolium",
 		classes = {
@@ -5237,6 +10328,29 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Sucu",
+		type = "fruit_berries_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Fruit", "fruit"},
+			{"Berries", "fruit_berries"},
+			{"Corellia Berry Fruit", "fruit_berries_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 65},
+			{"res_flavor", 177},
+			{"res_potential_energy", 270},
+			{"res_quality", 336},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1349101341,
 	},
 
 	{
@@ -5306,6 +10420,29 @@ resources = {
 	},
 
 	{
+		name = "Tespixilyo",
+		type = "vegetable_beans_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Vegetables", "vegetable"},
+			{"Beans", "vegetable_beans"},
+			{"Corellian Vegetable Beans", "vegetable_beans_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 626},
+			{"res_flavor", 295},
+			{"res_potential_energy", 404},
+			{"res_quality", 311},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 2281434762,
+	},
+
+	{
 		name = "Tiflefin",
 		type = "ore_extrusive_ilimium",
 		classes = {
@@ -5348,6 +10485,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 27712471,
+	},
+
+	{
+		name = "Tioswuijic",
+		type = "gas_inert_rethin",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Rethin Inert Gas", "gas_inert_rethin"},
+		},
+		attributes = {
+			{"res_decay_resist", 759},
+			{"res_quality", 992},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
 	},
 
 	{
@@ -5449,6 +10605,52 @@ resources = {
 	},
 
 	{
+		name = "Tridatar",
+		type = "petrochem_fuel_liquid_type4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 4 Liquid Petro Fuel", "petrochem_fuel_liquid_type4"},
+		},
+		attributes = {
+			{"res_decay_resist", 98},
+			{"res_potential_energy", 214},
+			{"res_quality", 631},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Triechaopo",
+		type = "aluminum_linksteel",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Link-Steel Aluminum", "aluminum_linksteel"},
+		},
+		attributes = {
+			{"res_cold_resist", 620},
+			{"res_conductivity", 675},
+			{"res_decay_resist", 588},
+			{"res_heat_resist", 645},
+			{"res_malleability", 782},
+			{"res_quality", 264},
+			{"res_shock_resistance", 718},
+			{"res_toughness", 736},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Trifibineq",
 		type = "water_vapor_endor",
 		classes = {
@@ -5482,6 +10684,45 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Trikyug",
+		type = "gas_inert_bilal",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Bilal gas Inert Gas", "gas_inert_bilal"},
+		},
+		attributes = {
+			{"res_decay_resist", 139},
+			{"res_quality", 270},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Triloscoma",
+		type = "petrochem_fuel_solid_type4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 4 Solid Petro Fuel", "petrochem_fuel_solid_type4"},
+		},
+		attributes = {
+			{"res_decay_resist", 362},
+			{"res_potential_energy", 705},
+			{"res_quality", 872},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
 	},
 
 	{
@@ -5523,6 +10764,159 @@ resources = {
 	},
 
 	{
+		name = "Trinugailu",
+		type = "crystalline_laboi_mineral_crystal",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Laboi Mineral Crystal Crystalline Gemstone", "crystalline_laboi_mineral_crystal"},
+		},
+		attributes = {
+			{"entangle_resistance", 857},
+			{"res_cold_resist", 797},
+			{"res_decay_resist", 763},
+			{"res_heat_resist", 948},
+			{"res_malleability", 331},
+			{"res_quality", 563},
+			{"res_shock_resistance", 806},
+			{"res_toughness", 835},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Triolomob",
+		type = "water_vapor_tatooine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Tatooinian Water Vapor", "water_vapor_tatooine"},
+		},
+		attributes = {
+			{"res_decay_resist", 246},
+			{"res_quality", 949},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Triphibaz",
+		type = "ore_intrusive_chanlon",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Chanlon Intrusive Ore", "ore_intrusive_chanlon"},
+		},
+		attributes = {
+			{"res_cold_resist", 262},
+			{"res_decay_resist", 412},
+			{"res_heat_resist", 748},
+			{"res_malleability", 61},
+			{"res_quality", 40},
+			{"res_shock_resistance", 573},
+			{"res_toughness", 470},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Trirafibi",
+		type = "water_vapor_rori",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Rori Water Vapor", "water_vapor_rori"},
+		},
+		attributes = {
+			{"res_decay_resist", 564},
+			{"res_quality", 981},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Triryo",
+		type = "energy_renewable_site_limited_tidal_yavin4",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Yavinian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_yavin4"},
+		},
+		attributes = {
+			{"res_potential_energy", 176},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Triswo",
+		type = "armophous_regvis",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Regvis Amorphous Gemstone", "armophous_regvis"},
+		},
+		attributes = {
+			{"entangle_resistance", 150},
+			{"res_cold_resist", 197},
+			{"res_decay_resist", 199},
+			{"res_heat_resist", 714},
+			{"res_malleability", 160},
+			{"res_quality", 106},
+			{"res_shock_resistance", 184},
+			{"res_toughness", 253},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Trithy",
+		type = "iron_polonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Polonium Iron", "iron_polonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 111},
+			{"res_conductivity", 117},
+			{"res_decay_resist", 392},
+			{"res_heat_resist", 624},
+			{"res_malleability", 121},
+			{"res_quality", 595},
+			{"res_shock_resistance", 489},
+			{"res_toughness", 513},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Trityehemo",
 		type = "ore_carbonate_chromite",
 		classes = {
@@ -5541,6 +10935,51 @@ resources = {
 			{"res_quality", 26},
 			{"res_shock_resistance", 226},
 			{"res_toughness", 371},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Triwibici",
+		type = "petrochem_fuel_liquid_type2",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 2 Liquid Petro Fuel", "petrochem_fuel_liquid_type2"},
+		},
+		attributes = {
+			{"res_decay_resist", 72},
+			{"res_potential_energy", 808},
+			{"res_quality", 197},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Triwyo",
+		type = "metal_nonferrous_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Unknown Non-Ferrous Metal", "metal_nonferrous_unknown"},
+		},
+		attributes = {
+			{"res_cold_resist", 269},
+			{"res_conductivity", 569},
+			{"res_decay_resist", 694},
+			{"res_heat_resist", 308},
+			{"res_malleability", 592},
+			{"res_quality", 464},
+			{"res_shock_resistance", 691},
+			{"res_toughness", 498},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -5574,6 +11013,43 @@ resources = {
 	},
 
 	{
+		name = "Trixuhimide",
+		type = "petrochem_fuel_liquid_type1",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 1 Liquid Petro Fuel", "petrochem_fuel_liquid_type1"},
+		},
+		attributes = {
+			{"res_decay_resist", 19},
+			{"res_potential_energy", 657},
+			{"res_quality", 30},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Triydride",
+		type = "water_vapor_dathomir",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Dathomir Water Vapor", "water_vapor_dathomir"},
+		},
+		attributes = {
+			{"res_decay_resist", 584},
+			{"res_quality", 684},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
 		name = "Tsaloxovi",
 		type = "water_vapor_rori",
 		classes = {
@@ -5588,6 +11064,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 7,
 		containerCRC = 727105784,
+	},
+
+	{
+		name = "Tsege",
+		type = "gas_inert_hurlothrombic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Hurlothrombic Inert Gas", "gas_inert_hurlothrombic"},
+		},
+		attributes = {
+			{"res_decay_resist", 388},
+			{"res_quality", 286},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
 	},
 
 	{
@@ -5613,6 +11108,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Tubyuryamium",
+		type = "energy_renewable_unlimited_wind_tatooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Tatooinian Wind Renewable Energy", "energy_renewable_unlimited_wind_tatooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 38},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -5642,6 +11156,32 @@ resources = {
 	},
 
 	{
+		name = "Tuxanulu",
+		type = "iron_colat",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Colat Iron", "iron_colat"},
+		},
+		attributes = {
+			{"res_cold_resist", 418},
+			{"res_conductivity", 262},
+			{"res_decay_resist", 627},
+			{"res_heat_resist", 790},
+			{"res_malleability", 362},
+			{"res_quality", 130},
+			{"res_shock_resistance", 692},
+			{"res_toughness", 744},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Tyicuv",
 		type = "fiberplast_corellia",
 		classes = {
@@ -5660,6 +11200,102 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = 2,
 		containerCRC = 9343642,
+	},
+
+	{
+		name = "Ucamiozap",
+		type = "petrochem_fuel_liquid_type1",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Liquid Petrochem Fuel", "fuel_petrochem_liquid"},
+			{"Known Liquid Petrochem Fuel", "fuel_petrochem_liquid_known"},
+			{"Class 1 Liquid Petro Fuel", "petrochem_fuel_liquid_type1"},
+		},
+		attributes = {
+			{"res_decay_resist", 52},
+			{"res_potential_energy", 182},
+			{"res_quality", 200},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 27712471,
+	},
+
+	{
+		name = "Udaypism",
+		type = "gas_reactive_irolunn",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Irolunn Reactive Gas", "gas_reactive_irolunn"},
+		},
+		attributes = {
+			{"res_decay_resist", 430},
+			{"res_quality", 191},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Ufajium",
+		type = "radioactive_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Radioactive", "radioactive"},
+			{"Known Radioactive", "radioactive_known"},
+			{"Class 7 Radioactive", "radioactive_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 768},
+			{"res_potential_energy", 935},
+			{"res_quality", 303},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2450266056,
+	},
+
+	{
+		name = "Ufalreimian",
+		type = "energy_renewable_site_limited_tidal_rori",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Rori Tidal Renewable Energy", "energy_renewable_site_limited_tidal_rori"},
+		},
+		attributes = {
+			{"res_potential_energy", 109},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Ufomat",
+		type = "gas_inert_culsion",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Culsion Inert Gas", "gas_inert_culsion"},
+		},
+		attributes = {
+			{"res_decay_resist", 231},
+			{"res_quality", 498},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
 	},
 
 	{
@@ -5735,6 +11371,28 @@ resources = {
 	},
 
 	{
+		name = "Umoojobyor",
+		type = "meat_carnivore_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Carnivore Meat", "meat_carnivore"},
+			{"Corellian Carnivore Meat", "meat_carnivore_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 131},
+			{"res_flavor", 995},
+			{"res_potential_energy", 759},
+			{"res_quality", 341},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
 		name = "Umua",
 		type = "ore_extrusive_vintrium",
 		classes = {
@@ -5802,6 +11460,95 @@ resources = {
 	},
 
 	{
+		name = "Uquaposmu",
+		type = "wheat_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Wheat", "wheat"},
+			{"Domesticated Wheat", "wheat_domesticated"},
+			{"Corellian Domesticated Wheat", "wheat_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 393},
+			{"res_flavor", 377},
+			{"res_potential_energy", 505},
+			{"res_quality", 540},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1890507922,
+	},
+
+	{
+		name = "Utwuswigly",
+		type = "gas_inert_methanagen",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Methanagen Inert Gas", "gas_inert_methanagen"},
+		},
+		attributes = {
+			{"res_decay_resist", 587},
+			{"res_quality", 953},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Uwrya",
+		type = "meat_reptilian_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Reptillian Meat", "meat_reptillian"},
+			{"Corellian Reptillian Meat", "meat_reptilian_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 12},
+			{"res_flavor", 396},
+			{"res_potential_energy", 64},
+			{"res_quality", 563},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Uxol",
+		type = "armophous_sedrellium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Sedrellium Amorphous Gemstone", "armophous_sedrellium"},
+		},
+		attributes = {
+			{"entangle_resistance", 471},
+			{"res_cold_resist", 655},
+			{"res_decay_resist", 619},
+			{"res_heat_resist", 855},
+			{"res_malleability", 355},
+			{"res_quality", 495},
+			{"res_shock_resistance", 610},
+			{"res_toughness", 637},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Uxuhuyzu",
 		type = "ore_intrusive_oridium",
 		classes = {
@@ -5820,6 +11567,32 @@ resources = {
 			{"res_quality", 252},
 			{"res_shock_resistance", 739},
 			{"res_toughness", 648},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Uydomuba",
+		type = "iron_plumbum",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Plumbum Iron", "iron_plumbum"},
+		},
+		attributes = {
+			{"res_cold_resist", 17},
+			{"res_conductivity", 4},
+			{"res_decay_resist", 308},
+			{"res_heat_resist", 504},
+			{"res_malleability", 56},
+			{"res_quality", 105},
+			{"res_shock_resistance", 400},
+			{"res_toughness", 444},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -5853,6 +11626,48 @@ resources = {
 	},
 
 	{
+		name = "Uzyoculupide",
+		type = "water_vapor_dantooine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Dantooine Water Vapor", "water_vapor_dantooine"},
+		},
+		attributes = {
+			{"res_decay_resist", 93},
+			{"res_quality", 742},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Vacaghsis",
+		type = "metal_ferrous_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Unknown Ferrous Metal", "metal_ferrous_unknown"},
+		},
+		attributes = {
+			{"res_cold_resist", 127},
+			{"res_conductivity", 254},
+			{"res_decay_resist", 365},
+			{"res_heat_resist", 493},
+			{"res_malleability", 14},
+			{"res_quality", 353},
+			{"res_shock_resistance", 537},
+			{"res_toughness", 458},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Vahohucudo",
 		type = "corn_wild_corellia",
 		classes = {
@@ -5873,6 +11688,91 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = 3,
 		containerCRC = 2868134971,
+	},
+
+	{
+		name = "Vaolaky",
+		type = "aluminum_duralumin",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Duralumin Aluminum", "aluminum_duralumin"},
+		},
+		attributes = {
+			{"res_cold_resist", 429},
+			{"res_conductivity", 528},
+			{"res_decay_resist", 483},
+			{"res_heat_resist", 528},
+			{"res_malleability", 626},
+			{"res_quality", 256},
+			{"res_shock_resistance", 683},
+			{"res_toughness", 646},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Vesc",
+		type = "energy_renewable_site_limited_tidal_endor",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Endor Tidal Renewable Energy", "energy_renewable_site_limited_tidal_endor"},
+		},
+		attributes = {
+			{"res_potential_energy", 129},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Vifry",
+		type = "rice_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Rice", "rice"},
+			{"Wild Rice", "rice_wild"},
+			{"Corellian Wild Rice", "rice_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 474},
+			{"res_flavor", 434},
+			{"res_potential_energy", 392},
+			{"res_quality", 439},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 3425188405,
+	},
+
+	{
+		name = "Vikliziy",
+		type = "energy_renewable_site_limited_tidal_tatooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Tatooinian Tidal Renewable Energy", "energy_renewable_site_limited_tidal_tatooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 90},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -5902,6 +11802,43 @@ resources = {
 	},
 
 	{
+		name = "Vitumizine",
+		type = "energy_renewable_site_limited_hydron3_tatooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Tatooinian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_tatooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 9},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Vixiku",
+		type = "energy_renewable_unlimited_wind_talus",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Talusian Wind Renewable Energy", "energy_renewable_unlimited_wind_talus"},
+		},
+		attributes = {
+			{"res_potential_energy", 225},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Voxyokocian",
 		type = "gemstone_unknown",
 		classes = {
@@ -5923,6 +11860,28 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Voyfaxat",
+		type = "meat_insect_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Insect Meat", "meat_insect"},
+			{"Corellian Insect Meat", "meat_insect_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 575},
+			{"res_flavor", 6},
+			{"res_potential_energy", 444},
+			{"res_quality", 163},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
 	},
 
 	{
@@ -5968,6 +11927,27 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Vure",
+		type = "fiberplast_tatooine",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Tatooinian Fiberplast", "fiberplast_tatooine"},
+		},
+		attributes = {
+			{"res_decay_resist", 170},
+			{"res_malleability", 363},
+			{"res_quality", 426},
+			{"res_shock_resistance", 811},
+			{"res_toughness", 561},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
 	},
 
 	{
@@ -6017,6 +11997,43 @@ resources = {
 	},
 
 	{
+		name = "Vyilofite",
+		type = "gas_inert_hydron3",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Hydron-3 Inert Gas", "gas_inert_hydron3"},
+		},
+		attributes = {
+			{"res_decay_resist", 45},
+			{"res_quality", 476},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Wabaid",
+		type = "energy_renewable_site_limited_tidal_naboo",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Naboo Tidal Renewable Energy", "energy_renewable_site_limited_tidal_naboo"},
+		},
+		attributes = {
+			{"res_potential_energy", 259},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Wakriapaxine",
 		type = "iron_dolovite",
 		classes = {
@@ -6040,6 +12057,73 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Waqua",
+		type = "copper_beyrllius",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Beyrllius Copper", "copper_beyrllius"},
+		},
+		attributes = {
+			{"res_cold_resist", 192},
+			{"res_conductivity", 612},
+			{"res_decay_resist", 189},
+			{"res_heat_resist", 303},
+			{"res_malleability", 596},
+			{"res_quality", 266},
+			{"res_shock_resistance", 437},
+			{"res_toughness", 430},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Wario",
+		type = "energy_renewable_site_limited_hydron3_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Corellian Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 146},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Weat",
+		type = "rice_domesticated_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Rice", "rice"},
+			{"Domesticated Rice", "rice_domesticated"},
+			{"Corellian Domesticated Rice", "rice_domesticated_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 561},
+			{"res_flavor", 156},
+			{"res_potential_energy", 623},
+			{"res_quality", 184},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 3425188405,
 	},
 
 	{
@@ -6169,6 +12253,31 @@ resources = {
 	},
 
 	{
+		name = "Wiowic",
+		type = "crystalline_byrothsis",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Byrothsis Crystalline Gemstone", "crystalline_byrothsis"},
+		},
+		attributes = {
+			{"entangle_resistance", 525},
+			{"res_cold_resist", 59},
+			{"res_decay_resist", 41},
+			{"res_heat_resist", 742},
+			{"res_malleability", 27},
+			{"res_quality", 139},
+			{"res_shock_resistance", 357},
+			{"res_toughness", 368},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Wixyu",
 		type = "copper_borocarbitic",
 		classes = {
@@ -6195,6 +12304,57 @@ resources = {
 	},
 
 	{
+		name = "Wranucrixsis",
+		type = "steel_cubirian",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Cubirian Steel", "steel_cubirian"},
+		},
+		attributes = {
+			{"res_cold_resist", 213},
+			{"res_conductivity", 190},
+			{"res_decay_resist", 617},
+			{"res_heat_resist", 678},
+			{"res_malleability", 76},
+			{"res_quality", 662},
+			{"res_shock_resistance", 617},
+			{"res_toughness", 552},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Wuanubian",
+		type = "ore_extrusive_chronamite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Chronamite Extrusive Ore", "ore_extrusive_chronamite"},
+		},
+		attributes = {
+			{"res_cold_resist", 277},
+			{"res_decay_resist", 401},
+			{"res_heat_resist", 483},
+			{"res_malleability", 51},
+			{"res_quality", 501},
+			{"res_shock_resistance", 476},
+			{"res_toughness", 506},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Wubrite",
 		type = "energy_renewable_unlimited_wind_lok",
 		classes = {
@@ -6211,6 +12371,71 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 8,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Wuine",
+		type = "petrochem_fuel_solid_type6",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 6 Solid Petro Fuel", "petrochem_fuel_solid_type6"},
+		},
+		attributes = {
+			{"res_decay_resist", 566},
+			{"res_potential_energy", 778},
+			{"res_quality", 587},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Wusha",
+		type = "energy_renewable_unlimited_wind_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Corellian Wind Renewable Energy", "energy_renewable_unlimited_wind_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 8},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Wutaonena",
+		type = "iron_polonium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Polonium Iron", "iron_polonium"},
+		},
+		attributes = {
+			{"res_cold_resist", 131},
+			{"res_conductivity", 86},
+			{"res_decay_resist", 363},
+			{"res_heat_resist", 595},
+			{"res_malleability", 53},
+			{"res_quality", 347},
+			{"res_shock_resistance", 456},
+			{"res_toughness", 484},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -6233,6 +12458,32 @@ resources = {
 			{"res_quality", 324},
 			{"res_shock_resistance", 192},
 			{"res_toughness", 299},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Wyighoxa",
+		type = "steel_duranium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Duranium Steel", "steel_duranium"},
+		},
+		attributes = {
+			{"res_cold_resist", 461},
+			{"res_conductivity", 352},
+			{"res_decay_resist", 778},
+			{"res_heat_resist", 806},
+			{"res_malleability", 201},
+			{"res_quality", 576},
+			{"res_shock_resistance", 756},
+			{"res_toughness", 703},
 		},
 		zoneRestriction = "",
 		surveyToolType = 6,
@@ -6283,6 +12534,32 @@ resources = {
 	},
 
 	{
+		name = "Xadey",
+		type = "iron_axidite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Axidite Iron", "iron_axidite"},
+		},
+		attributes = {
+			{"res_cold_resist", 314},
+			{"res_conductivity", 108},
+			{"res_decay_resist", 563},
+			{"res_heat_resist", 650},
+			{"res_malleability", 149},
+			{"res_quality", 102},
+			{"res_shock_resistance", 586},
+			{"res_toughness", 557},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Xaovian",
 		type = "fiberplast_dathomir",
 		classes = {
@@ -6301,6 +12578,24 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 2,
 		containerCRC = 9343642,
+	},
+
+	{
+		name = "Xaruhyalsis",
+		type = "energy_renewable_site_limited_geothermal_lok",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Lokian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_lok"},
+		},
+		attributes = {
+			{"res_potential_energy", 161},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
 	},
 
 	{
@@ -6325,6 +12620,99 @@ resources = {
 	},
 
 	{
+		name = "Xazi",
+		type = "crystalline_green_diamond",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Crystalline Gemstone", "gemstone_crystalline"},
+			{"Green Diamond Crystalline Gemstone", "crystalline_green_diamond"},
+		},
+		attributes = {
+			{"entangle_resistance", 607},
+			{"res_cold_resist", 260},
+			{"res_decay_resist", 235},
+			{"res_heat_resist", 787},
+			{"res_malleability", 95},
+			{"res_quality", 195},
+			{"res_shock_resistance", 462},
+			{"res_toughness", 476},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Xesi",
+		type = "gas_inert_methanagen",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Methanagen Inert Gas", "gas_inert_methanagen"},
+		},
+		attributes = {
+			{"res_decay_resist", 608},
+			{"res_quality", 891},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Xeypism",
+		type = "aluminum_agrinium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Aluminum", "aluminum"},
+			{"Agrinium Aluminum", "aluminum_agrinium"},
+		},
+		attributes = {
+			{"res_cold_resist", 105},
+			{"res_conductivity", 408},
+			{"res_decay_resist", 172},
+			{"res_heat_resist", 347},
+			{"res_malleability", 433},
+			{"res_quality", 883},
+			{"res_shock_resistance", 423},
+			{"res_toughness", 375},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Xiaq",
+		type = "hide_wooly_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Hide", "hide"},
+			{"Wooly Hide", "hide_wooly"},
+			{"Corellian Wooly Hide", "hide_wooly_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 34},
+			{"res_malleability", 367},
+			{"res_quality", 90},
+			{"res_shock_resistance", 499},
+			{"res_toughness", 474},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 2316471601,
+	},
+
+	{
 		name = "Xoaquanana",
 		type = "meat_domesticated_corellia",
 		classes = {
@@ -6344,6 +12732,32 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
 		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Xoykyoxyecine",
+		type = "steel_neutronium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Neutronium Steel", "steel_neutronium"},
+		},
+		attributes = {
+			{"res_cold_resist", 301},
+			{"res_conductivity", 272},
+			{"res_decay_resist", 717},
+			{"res_heat_resist", 768},
+			{"res_malleability", 190},
+			{"res_quality", 136},
+			{"res_shock_resistance", 723},
+			{"res_toughness", 667},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -6385,6 +12799,116 @@ resources = {
 	},
 
 	{
+		name = "Xuphyubi",
+		type = "energy_renewable_unlimited_wind_corellia",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Corellian Wind Renewable Energy", "energy_renewable_unlimited_wind_corellia"},
+		},
+		attributes = {
+			{"res_potential_energy", 78},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Xussoewyo",
+		type = "energy_renewable_site_limited_hydron3_dantooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Dantooine Hydron-3 Renewable Energy", "energy_renewable_site_limited_hydron3_dantooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 219},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = -1,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Xuwyexa",
+		type = "ore_intrusive_chanlon",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Chanlon Intrusive Ore", "ore_intrusive_chanlon"},
+		},
+		attributes = {
+			{"res_cold_resist", 316},
+			{"res_decay_resist", 371},
+			{"res_heat_resist", 743},
+			{"res_malleability", 78},
+			{"res_quality", 223},
+			{"res_shock_resistance", 562},
+			{"res_toughness", 495},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Xyoduzaqui",
+		type = "oats_wild_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Cereal", "cereal"},
+			{"Oats", "oats"},
+			{"Wild Oats", "oats_wild"},
+			{"Corellian Wild Oats", "oats_wild_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 189},
+			{"res_flavor", 427},
+			{"res_potential_energy", 70},
+			{"res_quality", 254},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 822551481,
+	},
+
+	{
+		name = "Xyukye",
+		type = "ore_intrusive_dylinium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Intrusive Ore", "ore_intrusive"},
+			{"Dylinium Intrusive Ore", "ore_intrusive_dylinium"},
+		},
+		attributes = {
+			{"res_cold_resist", 725},
+			{"res_decay_resist", 721},
+			{"res_heat_resist", 879},
+			{"res_malleability", 357},
+			{"res_quality", 194},
+			{"res_shock_resistance", 847},
+			{"res_toughness", 731},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Xyuzarozium",
 		type = "iron_doonium",
 		classes = {
@@ -6408,6 +12932,28 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Yarekay",
+		type = "bone_mammal_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Bone", "bone"},
+			{"Corellian Animal Bones", "bone_mammal_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 574},
+			{"res_malleability", 63},
+			{"res_quality", 472},
+			{"res_shock_resistance", 605},
+			{"res_toughness", 802},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1001781097,
 	},
 
 	{
@@ -6460,6 +13006,25 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 6,
 		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Yenugequo",
+		type = "gas_reactive_skevon",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Skevon Reactive Gas", "gas_reactive_skevon"},
+		},
+		attributes = {
+			{"res_decay_resist", 553},
+			{"res_quality", 751},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
 	},
 
 	{
@@ -6532,6 +13097,72 @@ resources = {
 	},
 
 	{
+		name = "Yewr",
+		type = "gas_inert_culsion",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Inert Gas", "gas_inert"},
+			{"Known Inert Gas", "gas_inert_known"},
+			{"Culsion Inert Gas", "gas_inert_culsion"},
+		},
+		attributes = {
+			{"res_decay_resist", 258},
+			{"res_quality", 121},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Yewryexaizsis",
+		type = "fiberplast_yavin4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Yavinian Fiberplast", "fiberplast_yavin4"},
+		},
+		attributes = {
+			{"res_decay_resist", 101},
+			{"res_malleability", 392},
+			{"res_quality", 954},
+			{"res_shock_resistance", 41},
+			{"res_toughness", 712},
+		},
+		zoneRestriction = "",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Yigyome",
+		type = "copper_diatium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Non-Ferrous Metal", "metal_nonferrous"},
+			{"Copper", "copper"},
+			{"Diatium Copper", "copper_diatium"},
+		},
+		attributes = {
+			{"res_cold_resist", 419},
+			{"res_conductivity", 725},
+			{"res_decay_resist", 297},
+			{"res_heat_resist", 430},
+			{"res_malleability", 720},
+			{"res_quality", 446},
+			{"res_shock_resistance", 512},
+			{"res_toughness", 549},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Yijekui",
 		type = "gas_reactive_unknown",
 		classes = {
@@ -6547,6 +13178,54 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Yoreelanay",
+		type = "seafood_mollusk_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Food", "creature_food"},
+			{"Meat", "meat"},
+			{"Seafood", "seafood"},
+			{"Mollusk", "seafood_mollusk"},
+			{"Corellia Mollusk Meat", "seafood_mollusk_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 407},
+			{"res_flavor", 53},
+			{"res_potential_energy", 662},
+			{"res_quality", 579},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Yuhiwruzide",
+		type = "ore_extrusive_maranium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Maranium Extrusive Ore", "ore_extrusive_maranium"},
+		},
+		attributes = {
+			{"res_cold_resist", 691},
+			{"res_decay_resist", 766},
+			{"res_heat_resist", 779},
+			{"res_malleability", 398},
+			{"res_quality", 101},
+			{"res_shock_resistance", 750},
+			{"res_toughness", 751},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -6572,6 +13251,165 @@ resources = {
 	},
 
 	{
+		name = "Yushivuqu",
+		type = "fiberplast_corellia",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Chemical", "chemical"},
+			{"Fiberplast", "fiberplast"},
+			{"Corellia Fiberplast", "fiberplast_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 258},
+			{"res_malleability", 184},
+			{"res_quality", 704},
+			{"res_shock_resistance", 444},
+			{"res_toughness", 217},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 2,
+		containerCRC = 9343642,
+	},
+
+	{
+		name = "Yutatwi",
+		type = "bone_avian_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Creature Resources", "creature_resources"},
+			{"Creature Structural", "creature_structural"},
+			{"Bone", "bone"},
+			{"Avian bone", "bone_avian"},
+			{"Corellian Avian Bones", "bone_avian_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 132},
+			{"res_malleability", 209},
+			{"res_quality", 565},
+			{"res_shock_resistance", 258},
+			{"res_toughness", 244},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = -1,
+		containerCRC = 1001781097,
+	},
+
+	{
+		name = "Yute",
+		type = "energy_renewable_site_limited_geothermal_tatooine",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Site-Restricted Renewable Energy", "energy_renewable_site_limited"},
+			{"Tatooinian Geothermal Renewable Energy", "energy_renewable_site_limited_geothermal_tatooine"},
+		},
+		attributes = {
+			{"res_potential_energy", 291},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 5,
+		containerCRC = 10768890,
+	},
+
+	{
+		name = "Yuxuahine",
+		type = "iron_axidite",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Axidite Iron", "iron_axidite"},
+		},
+		attributes = {
+			{"res_cold_resist", 228},
+			{"res_conductivity", 163},
+			{"res_decay_resist", 562},
+			{"res_heat_resist", 659},
+			{"res_malleability", 183},
+			{"res_quality", 6},
+			{"res_shock_resistance", 574},
+			{"res_toughness", 618},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Yuzicoquonine",
+		type = "petrochem_fuel_solid_type7",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Solid Petrochem Fuel", "fuel_petrochem_solid"},
+			{"Known Solid Petrochem Fuel", "fuel_petrochem_solid_known"},
+			{"Class 7 Solid Petro Fuel", "petrochem_fuel_solid_type7"},
+		},
+		attributes = {
+			{"res_decay_resist", 726},
+			{"res_potential_energy", 881},
+			{"res_quality", 328},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 2431128978,
+	},
+
+	{
+		name = "Zacri",
+		type = "armophous_sedrellium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Gemstone", "gemstone"},
+			{"Amorphous Gemstone", "gemstone_armophous"},
+			{"Sedrellium Amorphous Gemstone", "armophous_sedrellium"},
+		},
+		attributes = {
+			{"entangle_resistance", 518},
+			{"res_cold_resist", 633},
+			{"res_decay_resist", 626},
+			{"res_heat_resist", 841},
+			{"res_malleability", 381},
+			{"res_quality", 374},
+			{"res_shock_resistance", 651},
+			{"res_toughness", 574},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
+		name = "Zaho",
+		type = "iron_bronzium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Iron", "iron"},
+			{"Bronzium Iron", "iron_bronzium"},
+		},
+		attributes = {
+			{"res_cold_resist", 273},
+			{"res_conductivity", 199},
+			{"res_decay_resist", 579},
+			{"res_heat_resist", 669},
+			{"res_malleability", 242},
+			{"res_quality", 373},
+			{"res_shock_resistance", 636},
+			{"res_toughness", 625},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
+	},
+
+	{
 		name = "Zaotism",
 		type = "energy_renewable_unlimited_solar_corellia",
 		classes = {
@@ -6588,6 +13426,29 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = 1,
 		containerCRC = 10768890,
+	},
+
+	{
+		name = "Zapoi",
+		type = "fruit_fruits_corellia",
+		classes = {
+			{"Organic", "organic"},
+			{"Flora Resources", "flora_resources"},
+			{"Flora Food", "flora_food"},
+			{"Seeds", "seeds"},
+			{"Fruit", "fruit"},
+			{"Fruits", "fruit_fruits"},
+			{"Corellian Fruit", "fruit_fruits_corellia"},
+		},
+		attributes = {
+			{"res_decay_resist", 570},
+			{"res_flavor", 504},
+			{"res_potential_energy", 108},
+			{"res_quality", 3},
+		},
+		zoneRestriction = "corellia",
+		surveyToolType = 3,
+		containerCRC = 1808675396,
 	},
 
 	{
@@ -6611,6 +13472,67 @@ resources = {
 		zoneRestriction = "corellia",
 		surveyToolType = -1,
 		containerCRC = 1349101341,
+	},
+
+	{
+		name = "Zeinexyif",
+		type = "gas_reactive_unknown",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Unknown Reactive Gas", "gas_reactive_unknown"},
+		},
+		attributes = {
+			{"res_decay_resist", 283},
+			{"res_quality", 560},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Zerearucod",
+		type = "water_vapor_yavin4",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Yavinian Water Vapor", "water_vapor_yavin4"},
+		},
+		attributes = {
+			{"res_decay_resist", 208},
+			{"res_quality", 625},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Zewh",
+		type = "steel_thoranium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Metal", "metal"},
+			{"Ferrous Metal", "metal_ferrous"},
+			{"Steel", "steel"},
+			{"Thoranium Steel", "steel_thoranium"},
+		},
+		attributes = {
+			{"res_cold_resist", 243},
+			{"res_conductivity", 217},
+			{"res_decay_resist", 681},
+			{"res_heat_resist", 728},
+			{"res_malleability", 112},
+			{"res_quality", 405},
+			{"res_shock_resistance", 643},
+			{"res_toughness", 622},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{
@@ -6659,6 +13581,25 @@ resources = {
 	},
 
 	{
+		name = "Zihamorine",
+		type = "energy_renewable_unlimited_wind_endor",
+		classes = {
+			{"Energy", "energy"},
+			{"Renewable energy", "energy_renewable"},
+			{"Non Site-Restricted Renewable Energy", "energy_renewable_unlimited"},
+			{"Wind Energy", "energy_renewable_unlimited_wind"},
+			{"Endorian Wind Renewable Energy", "energy_renewable_unlimited_wind_endor"},
+		},
+		attributes = {
+			{"res_potential_energy", 207},
+			{"res_quality", 500},
+		},
+		zoneRestriction = "",
+		surveyToolType = 8,
+		containerCRC = 10768890,
+	},
+
+	{
 		name = "Zique",
 		type = "water_vapor_yavin4",
 		classes = {
@@ -6686,6 +13627,23 @@ resources = {
 		attributes = {
 			{"res_decay_resist", 578},
 			{"res_quality", 750},
+		},
+		zoneRestriction = "",
+		surveyToolType = 7,
+		containerCRC = 727105784,
+	},
+
+	{
+		name = "Zixaw",
+		type = "water_vapor_lok",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Water", "water"},
+			{"Lokian Water Vapor", "water_vapor_lok"},
+		},
+		attributes = {
+			{"res_decay_resist", 554},
+			{"res_quality", 827},
 		},
 		zoneRestriction = "",
 		surveyToolType = 7,
@@ -6734,6 +13692,50 @@ resources = {
 		zoneRestriction = "",
 		surveyToolType = 4,
 		containerCRC = 2649493760,
+	},
+
+	{
+		name = "Zowamirufe",
+		type = "gas_reactive_organometallic",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Gas", "gas"},
+			{"Reactive Gas", "gas_reactive"},
+			{"Known Reactive Gas", "gas_reactive_known"},
+			{"Unstable Organometallic Reactive Gas", "gas_reactive_organometallic"},
+		},
+		attributes = {
+			{"res_decay_resist", 397},
+			{"res_quality", 239},
+		},
+		zoneRestriction = "",
+		surveyToolType = 4,
+		containerCRC = 3216766949,
+	},
+
+	{
+		name = "Zuydiren",
+		type = "ore_extrusive_ilimium",
+		classes = {
+			{"Inorganic", "inorganic"},
+			{"Mineral", "mineral"},
+			{"Low-Grade Ore", "ore"},
+			{"Igneous Ore", "ore_igneous"},
+			{"Extrusive Ore", "ore_extrusive"},
+			{"Ilimium Extrusive Ore", "ore_extrusive_ilimium"},
+		},
+		attributes = {
+			{"res_cold_resist", 372},
+			{"res_decay_resist", 423},
+			{"res_heat_resist", 539},
+			{"res_malleability", 108},
+			{"res_quality", 96},
+			{"res_shock_resistance", 506},
+			{"res_toughness", 519},
+		},
+		zoneRestriction = "",
+		surveyToolType = 6,
+		containerCRC = 3684838486,
 	},
 
 	{

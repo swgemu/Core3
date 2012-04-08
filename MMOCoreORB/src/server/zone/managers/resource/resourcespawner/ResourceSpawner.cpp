@@ -292,10 +292,10 @@ void ResourceSpawner::spawnScriptResources() {
 	delete lua;
 }
 
-void ResourceSpawner::writeAllSpawnsToScript() {
+bool ResourceSpawner::writeAllSpawnsToScript() {
 
 	if(!scriptLoading)
-		return;
+		return false;
 
 	try {
 
@@ -353,8 +353,11 @@ void ResourceSpawner::writeAllSpawnsToScript() {
 
 		delete file;
 		delete writer;
-	} catch (Exception& e) {
 
+		return true;
+	} catch (Exception& e) {
+		error("Error dumping resources");
+		return false;
 	}
 }
 
@@ -392,8 +395,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 					0xb2825c5a, 1, "resourcespawns"));
 
 	if (newSpawn == NULL) {
-		error(
-				"createResourceSpawn is trying to create a resourcespawn with the wrong type");
+		error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
 		return NULL;
 	}
 
