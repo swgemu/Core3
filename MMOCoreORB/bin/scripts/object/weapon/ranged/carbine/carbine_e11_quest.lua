@@ -118,6 +118,15 @@ object_weapon_ranged_carbine_carbine_e11_quest = object_weapon_ranged_carbine_sh
 	maxDamage = 84,
 
 	attackSpeed = 6.8
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expDurability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "roundsUsed", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
+	experimentalMin = {0, 0, 28, 67, 4.3, 7, 15, 750, -40, -80, 30, -5, 33, 42, 20},
+	experimentalMax = {0, 0, 52, 124, 3, 13, 45, 1500, -40, -80, 30, 5, 18, 22, 11},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_e11_quest, "object/weapon/ranged/carbine/carbine_e11_quest.iff")

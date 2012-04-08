@@ -74,6 +74,17 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
    targetTemplate = "object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s1_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s2_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s3_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s4_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s5_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s6_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s7_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s8_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s9_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s10_training.iff",
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_s11_training.iff",
              }
 
 }

@@ -119,6 +119,15 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	
 	attackSpeed = 2.7
 
+
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expDurability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "maxRange", "attackHealthCost", "attackActionCost", "attackMindCost"},
+	experimentalMin = {0, 0, 58, 178, 5.2, 12, 750, -22, -18, 3, -28, 6, 78, 48, 12},
+	experimentalMax = {0, 0, 112, 246, 3.8, 24, 1500, 8, 12, 3, 2, 6, 46, 32, 4},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff")

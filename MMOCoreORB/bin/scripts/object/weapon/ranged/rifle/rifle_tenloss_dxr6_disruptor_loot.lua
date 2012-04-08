@@ -124,9 +124,9 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expDurability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "roundsUsed", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
-	experimentalMin = {0, 0, 40, 80, 49, 10, 30, 500, -80, 10, 54, 45, 18, 19, 26},
-	experimentalMax = {0, 0, 150, 340, 95, 45, 65, 1250, -40, 30, 54, 70, 40, 46, 75},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 40, 80, 9.5, 10, 30, 500, -40, 30, 54, 45, 40, 46, 75},
+	experimentalMax = {0, 0, 150, 340, 4.9, 45, 65, 1250, -80, 10, 54, 70, 18, 19, 26},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot, "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff")

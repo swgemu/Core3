@@ -124,9 +124,9 @@ object_weapon_ranged_pistol_pistol_de_10 = object_weapon_ranged_pistol_shared_pi
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expDurability", "expRange", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
-	experimentalMin = {0, 0, 45, 116, 38, 10, 750, -5, -80, 20, -2, 18, 42, 18},
-	experimentalMax = {0, 0, 148, 236, 62, 20, 1500, 10, -80, 20, 18, 36, 68, 36},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 45, 116, 6.2, 10, 750, -5, -80, 20, -2, 36, 68, 36},
+	experimentalMax = {0, 0, 148, 236, 3.8, 20, 1500, 10, -80, 20, 18, 18, 42, 18},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_de_10, "object/weapon/ranged/pistol/pistol_de_10.iff")

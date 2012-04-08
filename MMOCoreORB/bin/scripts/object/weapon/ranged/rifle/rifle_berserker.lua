@@ -124,9 +124,9 @@ object_weapon_ranged_rifle_rifle_berserker = object_weapon_ranged_rifle_shared_r
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expDurability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "roundsUsed", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
-	experimentalMin = {0, 0, 65, 145, 52, 8, 30, 750, -20, -80, 25, 14, 7, 18, 26},
-	experimentalMax = {0, 0, 95, 245, 78, 25, 65, 1500, -20, -80, 25, 26, 13, 28, 46},
-	experimentalPrecision = {0, 0, 10, 10, 10, 10, 0, 10, 0, 0, 0, 10, 10, 10, 10},
+	experimentalMin = {0, 0, 65, 145, 7.8, 8, 30, 750, -20, -80, 25, 26, 13, 28, 46},
+	experimentalMax = {0, 0, 95, 245, 5.2, 25, 65, 1500, -20, -80, 25, 14, 7, 18, 26},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_berserker, "object/weapon/ranged/rifle/rifle_berserker.iff")

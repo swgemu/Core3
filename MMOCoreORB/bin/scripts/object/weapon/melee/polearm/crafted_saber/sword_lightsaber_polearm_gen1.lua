@@ -123,9 +123,9 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen1 = object
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
-	experimentalMin = {0, 0, 105, 195, 5.1, 10, 12, 35, 40, 20},
-	experimentalMax = {0, 0, 125, 235, 4.8, 20, 15, 25, 25, 15},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 105, 195, 5.1, 10, 15, 35, 40, 20},
+	experimentalMax = {0, 0, 125, 235, 4.8, 20, 12, 25, 25, 15},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen1, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen1.iff")

@@ -62,13 +62,13 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
-   ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits", "lightsaber_module_atkspd", "lightsaber_module_damage", "lightsaber_module_forcecost", "lightsaber_module_woundchance"},
-   ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
-   resourceTypes = {"steel", "gemstone", "copper", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"},
-   resourceQuantities = {10, 20, 6, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100},
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"module_housing", "ultrasonic_vibration_generator", "conductive_circuits"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"steel", "gemstone", "copper"},
+   resourceQuantities = {10, 20, 6},
+   combineTypes = {0, 0, 0},
+   contribution = {100, 100, 100},
 
 
    targetTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff",

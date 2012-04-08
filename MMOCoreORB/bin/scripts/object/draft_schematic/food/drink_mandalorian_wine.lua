@@ -43,6 +43,39 @@
 
 object_draft_schematic_food_drink_mandalorian_wine = object_draft_schematic_food_shared_drink_mandalorian_wine:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Mandalorian Wine",
+
+   craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
+   complexity = 15, 
+   size = 1, 
+
+   xpType = "crafting_food_general", 
+   xp = 120, 
+
+   assemblySkill = "food_assembly", 
+   experimentingSkill = "food_experimentation", 
+   customizationSkill = "", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
+   ingredientTitleNames = {"first_alcohol", "second_alcohol", "first_mash", "second_mash", "glass", "additive"},
+   ingredientSlotType = {1, 1, 0, 0, 1, 1},
+   resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff", "fruit_fruits", "rice_wild", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
+   resourceQuantities = {1, 1, 15, 15, 1, 1},
+   combineTypes = {1, 1, 0, 0, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/food/crafted/drink_mandalorian_wine.iff",
+
+   additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_mandalorian_wine.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_mandalorian_wine, "object/draft_schematic/food/drink_mandalorian_wine.iff")

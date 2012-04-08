@@ -70,8 +70,8 @@ object_tangible_food_crafted_drink_bespin_port = object_tangible_food_crafted_sh
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling", "null"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
-	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
-	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
+	experimentalMin = {0, 0, 1000, 0, 120, 100, 120, 1},
+	experimentalMax = {0, 0, 1000, 0, 75, 60, 80, 1},
 	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 0},
 }
 

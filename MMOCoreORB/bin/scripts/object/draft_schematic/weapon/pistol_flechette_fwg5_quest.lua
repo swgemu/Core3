@@ -43,6 +43,39 @@
 
 object_draft_schematic_weapon_pistol_flechette_fwg5_quest = object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Schematic: Featherweight FWG5 Pistol",
+
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_weapons_general", 
+   xp = 100, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "weapon_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "cartridge_feed_unit", "barrel", "scope"},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3},
+   resourceTypes = {"iron_axidite", "steel_ditanium", "aluminum_linksteel", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
+   resourceQuantities = {25, 10, 5, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",
+
+   additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_fwg5_quest.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_flechette_fwg5_quest, "object/draft_schematic/weapon/pistol_flechette_fwg5_quest.iff")

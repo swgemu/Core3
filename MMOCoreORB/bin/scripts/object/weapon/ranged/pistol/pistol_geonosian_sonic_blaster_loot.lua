@@ -123,9 +123,9 @@ object_weapon_ranged_pistol_pistol_geonosian_sonic_blaster_loot = object_weapon_
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expDurability", "expRange", "null", "null", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "roundsUsed", "hitPoints", "zeroRangeMod", "maxRangeMod", "midRange", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
-	experimentalMin = {0, 0, 33, 65, 33, 8, 15, 500, 18, -90, 15, 10, 14, 21, 8},
-	experimentalMax = {0, 0, 98, 191, 56, 16, 60, 1250, 18, -90, 15, 35, 36, 46, 22},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 33, 65, 5.6, 8, 15, 500, 18, -90, 15, 35, 36, 46, 22},
+	experimentalMax = {0, 0, 98, 191, 3.3, 16, 60, 1250, 18, -90, 15, 10, 14, 21, 8},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_geonosian_sonic_blaster_loot, "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff")
