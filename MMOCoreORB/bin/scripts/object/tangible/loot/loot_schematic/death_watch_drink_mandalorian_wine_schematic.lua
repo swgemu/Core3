@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_loot_schematic_death_watch_drink_mandalorian_wine_schematic = object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/food/drink_mandalorian_wine.iff",
+	targetUseCount = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/death_watch_drink_mandalorian_wine_schematic.iff")

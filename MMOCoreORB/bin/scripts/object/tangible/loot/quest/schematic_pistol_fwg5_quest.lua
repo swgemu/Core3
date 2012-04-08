@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_quest_schematic_pistol_fwg5_quest = object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/pistol_flechette_fwg5_quest.iff",
+	targetUseCount = 3
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_schematic_pistol_fwg5_quest, "object/tangible/loot/quest/schematic_pistol_fwg5_quest.iff")

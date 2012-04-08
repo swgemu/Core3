@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_quest_lance_nightsister_schematic = object_tangible_loot_quest_shared_lance_nightsister_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/lance_nightsister.iff",
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_lance_nightsister_schematic, "object/tangible/loot/quest/lance_nightsister_schematic.iff")

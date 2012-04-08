@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_loot_schematic_death_watch_pistol_de10_schematic = object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/pistol_de_10.iff",
+	targetUseCount = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/death_watch_pistol_de10_schematic.iff")

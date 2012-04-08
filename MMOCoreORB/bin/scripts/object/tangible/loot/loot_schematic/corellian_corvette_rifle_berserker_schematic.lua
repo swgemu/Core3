@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_loot_schematic_corellian_corvette_rifle_berserker_schematic = object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/rifle_berserker.iff",
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/corellian_corvette_rifle_berserker_schematic.iff")

@@ -42,7 +42,11 @@
 
 
 object_tangible_loot_loot_schematic_death_watch_executioners_hack_schematic = object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	targetDraftSchematic = "object/draft_schematic/weapon/executioners_hack.iff",
+	targetUseCount = 8
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/death_watch_executioners_hack_schematic.iff")
