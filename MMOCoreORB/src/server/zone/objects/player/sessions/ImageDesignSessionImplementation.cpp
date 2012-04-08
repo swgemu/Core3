@@ -110,10 +110,19 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
-		if (type == 1)
+		hairObject = dynamic_cast<TangibleObject*>(targetCreature->getSlottedObject("hair"));
+
+		if (type == 1) {
+			String oldCustomization;
+
+			if (hairObject != NULL)
+				hairObject->getCustomizationString(oldCustomization);
+
 			hairObject = imageDesignManager->createHairObject(designerCreature, targetCreature, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
-		else
-			hairObject = dynamic_cast<TangibleObject*>(targetCreature->getSlottedObject("hair"));
+
+			if (hairObject != NULL)
+				hairObject->setCustomizationString(oldCustomization);
+		}
 
 		for (int i = 0; i < bodyAttributes->size(); ++i) {
 			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
