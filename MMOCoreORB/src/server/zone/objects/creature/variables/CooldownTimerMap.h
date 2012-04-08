@@ -26,6 +26,12 @@ public:
 		timeStamp = obj.timeStamp;
 	}
 
+	CooldownTimer& operator=(const CooldownTimer& tim) {
+		timeStamp = tim.timeStamp;
+
+		return *this;
+	}
+
 	void operator=(Time obj) {
 		timeStamp = obj;
 	}
@@ -103,6 +109,15 @@ public:
 	}
 
 	~CooldownTimerMap() {
+	}
+
+	CooldownTimerMap& operator=(const CooldownTimerMap& map) {
+		if (this == &map)
+			return *this;
+
+		timers = map.timers;
+
+		return *this;
 	}
 
 	bool isPast(const String& cooldownName) {

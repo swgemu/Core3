@@ -18,23 +18,23 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 namespace server {
- namespace zone {
-  namespace objects {
-   namespace creature {
-    class CreatureObject;
-   }
-  }
- }
+namespace zone {
+namespace objects {
+namespace creature {
+class CreatureObject;
+}
+}
+}
 }
 
 using namespace server::zone::objects::creature;
 
 
 namespace server {
- namespace zone {
-  namespace objects {
-   namespace tangible {
-    namespace threat {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace threat {
 
 //#define DEBUG
 
@@ -127,6 +127,23 @@ public:
 		cooldownTimerMap = map.cooldownTimerMap;
 	}
 
+	ThreatMap& operator=(const ThreatMap& map) {
+		if (this == &map)
+			return *this;
+
+		setNoDuplicateInsertPlan();
+		self = map.self;
+		currentThreat = map.currentThreat;
+		threatMapObserver = map.threatMapObserver;
+		threatMatrix = map.threatMatrix;
+		cooldownTimerMap = map.cooldownTimerMap;
+
+		VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::operator =(map);
+
+		return *this;
+	}
+
+
 	~ThreatMap() {
 		removeAll();
 	}
@@ -163,10 +180,10 @@ private:
 
 };
 
-    }
-   }
-  }
- }
+}
+}
+}
+}
 }
 
 using namespace server::zone::objects::tangible::threat;

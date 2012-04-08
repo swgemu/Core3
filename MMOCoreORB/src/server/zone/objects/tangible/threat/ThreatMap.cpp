@@ -8,8 +8,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "ThreatMap.h"
-#include "../tasks/ClearThreatStateTask.h"
-#include "../tasks/RemoveAggroTask.h"
+#include "server/zone/objects/tangible/tasks/ClearThreatStateTask.h"
+#include "server/zone/objects/tangible/tasks/RemoveAggroTask.h"
+#include "ThreatMapClearObserversTask.h"
 
 void ThreatMapEntry::addDamage(WeaponObject* weapon, uint32 damage) {
 	int idx = find(weapon);
@@ -59,7 +60,11 @@ void ThreatMap::removeObservers() {
 	if (size() == 0)
 		return;
 
-	Locker locker(self);
+	Reference<ThreatMapClearObserversTask*> task = new ThreatMapClearObserversTask(*this, threatMapObserver);
+	task->execute();
+
+	//moved this to a task so it executes async in a different thread to avoid deadlocks
+	/*Locker locker(self);
 
 	for (int i = 0; i < size(); ++i) {
 		CreatureObject* creature = elementAt(i).getKey();
@@ -69,7 +74,7 @@ void ThreatMap::removeObservers() {
 
 			creature->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 		}
-	}
+	}*/
 }
 
 void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
