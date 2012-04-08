@@ -177,6 +177,7 @@ void SlicingSessionImplementation::handleMenuSelect(CreatureObject* pl, byte men
 		}
 		default:
 			cancelSession();
+			break;
 		}
 	} else {
 		if (hasPrecisionLaserKnife()) {
