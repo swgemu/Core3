@@ -86,19 +86,32 @@ public:
 
 	void parse(Message* message) {
 		message->parseAscii(hairTemplate);
+		//System::out << "hairTemplate " << hairTemplate << "\n";
 
 		String customizationString;
 		message->parseAscii(customizationString);
-		hairCustomizationVariables.parseFromString(customizationString);
+
+		//System::out << "parsing customization string size:" << customizationString.length() << "\n";
+
+		hairCustomizationVariables.parseFromClientString(customizationString);
+
+		sessionID = message->parseInt();
+		//System::out << "sessionID " << sessionID << "\n";
 
 		timestamp = message->parseInt();
-		sessionID = message->parseInt();
+		//System::out << "timestamp " << timestamp << "\n";
 
 		requiredPayment = message->parseInt();
+		//System::out << "requiredPayment " << requiredPayment << "\n";
+
 		offeredPayment = message->parseInt();
+		//System::out << "offeredPayment " << offeredPayment << "\n";
 
 		designerAccepted = message->parseByte();
+		//System::out << "designerAccepted " << designerAccepted << "\n";
+
 		targetAccepted = message->parseInt();
+		//System::out << "targetAccepted " << targetAccepted << "\n";
 
 		statMigrationRequested = message->parseByte();
 
@@ -123,7 +136,7 @@ public:
 
 			bodyAttributes.put(attr, val);
 
-			//System::out << attr << " " << val << "\n";
+			////System::out << attr << " " << val << "\n";
 		}
 
 		size = message->parseInt();
@@ -135,8 +148,8 @@ public:
 			message->parseAscii(attr);
 
 			uint32 val = message->parseInt();
-			////System::out << attr + String::valueOf(val) << "\n";
-			//System::out << attr << " " << val << "\n";
+			//////System::out << attr + String::valueOf(val) << "\n";
+			////System::out << attr << " " << val << "\n";
 
 			colorAttributes.put(attr, val);
 		}
@@ -151,8 +164,8 @@ public:
 		hairCustomizationVariables.getData(data);
 		message->insertAscii(data);
 
-		message->insertInt(timestamp);
 		message->insertInt(sessionID);
+		message->insertInt(timestamp);
 		message->insertInt(requiredPayment);
 		message->insertInt(offeredPayment);
 		message->insertByte(designerAccepted);
@@ -171,7 +184,7 @@ public:
 			VectorMapEntry<String, float>* entry = &bodyAttributes.elementAt(i);
 
 			message->insertAscii(entry->getKey());
-			message->insertInt(entry->getValue());
+			message->insertFloat(entry->getValue());
 		}
 
 		size = colorAttributes.size();
@@ -208,8 +221,8 @@ public:
 		return hairTemplate;
 	}
 
-	inline void setHairAttribute(String& attr, uint32 val) {
-		hairCustomizationVariables.setVariable(attr,val);
+	inline void setHairAttribute(const String& attr, int val) {
+		hairCustomizationVariables.setVariable(attr, val);
 	}
 
 	inline String getHairCustomizationString() {

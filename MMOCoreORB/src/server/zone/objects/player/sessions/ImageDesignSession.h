@@ -89,7 +89,7 @@ public:
 
 	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
-	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
+	void updateImageDesign(CreatureObject* updater, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
@@ -143,7 +143,7 @@ protected:
 
 	ImageDesignData imageDesignData;
 
-	ManagedWeakReference<TangibleObject* > hairObject;
+	ManagedReference<TangibleObject* > hairObject;
 
 	Reference<ImageDesignTimeoutEvent* > idTimeoutEvent;
 
@@ -156,7 +156,7 @@ public:
 
 	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
-	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
+	void updateImageDesign(CreatureObject* updater, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 

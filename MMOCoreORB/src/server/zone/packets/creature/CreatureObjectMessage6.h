@@ -76,63 +76,49 @@ public:
 
 		insertEquipmentList(creo);
 
-		/*
-		insertShort(0); //Customization String
-		insertInt(0x04); //Equipped
-		insertLong(creo->getObjectID() + 1); //Inventory ID
-		insertInt(0x2110791C); //CRC of Inventory
-
-
-		insertShort(0); //Customization String
-		insertInt(0x04); //Equipped
-		insertLong(creo->getWeaponID()); //Weapon ID
-		insertInt(0xC470AE12); //CRC of the weapon
-	*/
-
-
 		insertAscii("");//insertAscii(creo->getTemplateString());
 
-
 		insertByte(creo->getFrozen());
-
-
 
 		setSize();
 	}
 
-	inline void insertEquipmentList(CreatureObject* creo) {
-		/*VectorMap<String, SceneObject*> equipmentList;
-		creo->getContainmentObjects(equipmentList);
+	void insertEquipmentList(CreatureObject* creo) {
+		VectorMap<String, ManagedReference<SceneObject*> >* equipmentList = creo->getSlottedObjects();
 
-		StringBuffer msg;
-		msg << "size of equipment list " << equipmentList.size();
-		creo->info(msg.toString());
+		SortedVector<ManagedReference<SceneObject*> > uniqueObjects;
+		uniqueObjects.setNoDuplicateInsertPlan();
 
-		SortedVector<SceneObject*> uniqueObjects;
+		for (int i = 0; i < equipmentList->size(); ++i) {
+			SceneObject* object = equipmentList->get(i);
 
-		for (int i = 0; i < equipmentList.size(); ++i) {
-			SceneObject* object = equipmentList.get(i);
+			String arrangement = equipmentList->elementAt(i).getKey();
 
-			if (!uniqueObjects.contains(object))
-				uniqueObjects.put(object);
+			if (arrangement == "mission_bag" || arrangement == "ghost" || arrangement == "bank")
+				continue;
+
+			uniqueObjects.put(object);
 		}
 
 		int size = uniqueObjects.size();
 
-		StringBuffer msg2;
-		msg2 << "unique size :" << size;
-		creo->info(msg2.toString());*/
+		insertInt(size);
+		insertInt(size);
 
-		insertInt(0); //Equipment list
-		insertInt(0); //Equipment update count
-		/*for (int i = 0; i < size; ++i) {
+		for (int i = 0; i < size; ++i) {
 			SceneObject* object = uniqueObjects.get(i);
 
-			insertAscii("");
-			insertInt(0x04); //Equipped
-			insertLong(object->getObjectID()); //Weapon ID
-			insertInt(object->getObjectCRC()); //CRC of the weapon
-		}*/
+			String custString;
+
+			if (object->isTangibleObject()) {
+				cast<TangibleObject*>(object)->getCustomizationString(custString);
+			}
+
+			insertAscii(custString);
+			insertInt(object->getContainmentType()); //Equipped
+			insertLong(object->getObjectID()); //object id
+			insertInt(object->getClientObjectCRC()); //CRC of the object
+		}
 	}
 };
 

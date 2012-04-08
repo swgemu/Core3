@@ -75,6 +75,19 @@ CustomizationVariables& CustomizationVariables::operator=(const String& custStri
 	return *this;
 }
 
+CustomizationVariables& CustomizationVariables::operator=(const CustomizationVariables& var) {
+	if (this == &var)
+		return *this;
+
+	unknown = var.unknown;
+
+	keyIndex = var.keyIndex;
+
+	VectorMap<uint8, int16>::operator =(var);
+
+	return *this;
+}
+
 void CustomizationVariables::setVariable(uint8 type, int16 value) {
 	if (!contains(type))
 		keyIndex.add(type);
@@ -142,6 +155,23 @@ void CustomizationVariables::getData(String& ascii) {
 }
 
 void CustomizationVariables::parseFromClientString(const String& custString) {
+	/*const char* array = custString.toCharArray();
+
+	StringBuffer str;
+	str << "parsing CustomizationString [" << custString.length() << "] " << uppercase << hex;
+
+	for (int i = 0; i < custString.length(); ++i) {
+		unsigned int byte = ((unsigned int) array[i]) & 0xFF;
+
+		if ((byte & 0xF0) == 0)
+			str << "0" << hex << byte  << " ";
+		else
+			str << hex << byte  << " ";
+	}
+
+	Logger::console.info(str.toString(), true);
+
+*/
 	removeAll();
 	keyIndex.removeAll();
 

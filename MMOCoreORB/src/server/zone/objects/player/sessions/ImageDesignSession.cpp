@@ -54,13 +54,13 @@ void ImageDesignSession::startImageDesign(CreatureObject* designer, CreatureObje
 		_implementation->startImageDesign(designer, targetPlayer);
 }
 
-void ImageDesignSession::updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data) {
+void ImageDesignSession::updateImageDesign(CreatureObject* updater, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data) {
 	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->updateImageDesign(designer, targetPlayer, tent, type, data);
+		_implementation->updateImageDesign(updater, designer, targetPlayer, tent, type, data);
 }
 
 void ImageDesignSession::cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data) {
@@ -289,7 +289,7 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 	}
 
 	if (_name == "ImageDesignSession.hairObject") {
-		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&hairObject, stream);
+		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&hairObject, stream);
 		return true;
 	}
 
@@ -346,7 +346,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&hairObject, stream);
+	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&hairObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

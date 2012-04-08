@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/packets/creature/CreatureObjectMessage6.h"
 
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
@@ -104,6 +105,11 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	if (object->isInstrument() && creo->isEntertaining())
 		creo->stopEntertaining();
 
+	//this it to update the equipment list
+	//we need a DeltaVector with all the slotted objects it seems
+	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);
+
 	return ContainerComponent::notifyObjectInserted(sceneObject, object);
 }
 
@@ -141,6 +147,11 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		if (creo->isPlayingMusic())
 			creo->stopEntertaining();
 	}
+
+	//this it to update the equipment list
+	//we need a DeltaVector with all the slotted objects it seems
+	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);
 
 	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
 }

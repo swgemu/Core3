@@ -39,14 +39,18 @@ void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer
 
 	designer->addActiveSession(SessionFacadeType::IMAGEDESIGN, _this);
 
-	ImageDesignStartMessage* msg = new ImageDesignStartMessage(designer, designer, targetPlayer, tentID, 0);
+	String hairTemplate;
+
+	TangibleObject* targetHair = dynamic_cast<TangibleObject*>(targetPlayer->getSlottedObject("hair"));
+
+	ImageDesignStartMessage* msg = new ImageDesignStartMessage(designer, designer, targetPlayer, tentID, hairTemplate);
 	designer->sendMessage(msg);
 
 	if (designer != targetPlayer) {
 		targetPlayer->addActiveSession(SessionFacadeType::IMAGEDESIGN, _this);
 
-		ImageDesignStartMessage* msg = new ImageDesignStartMessage(targetPlayer, designer, targetPlayer, tentID, 0);
-		targetPlayer->sendMessage(msg);
+		ImageDesignStartMessage* msg2 = new ImageDesignStartMessage(targetPlayer, designer, targetPlayer, tentID, hairTemplate);
+		targetPlayer->sendMessage(msg2);
 	}
 
 	designerCreature = designer;
@@ -55,9 +59,7 @@ void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer
 	idTimeoutEvent = new ImageDesignTimeoutEvent(_this);
 }
 
-void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64 targetPlayer, uint64 tent, int type, const ImageDesignData& data) {
-	imageDesignData = data;
-
+void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater, uint64 designer, uint64 targetPlayer, uint64 tent, int type, const ImageDesignData& data) {
 	ManagedReference<SceneObject*> strongReferenceTarget = targetCreature.get();
 	ManagedReference<SceneObject*> strongReferenceDesigner = designerCreature.get();
 
@@ -67,7 +69,16 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 	Locker locker(designerCreature);
 	Locker clocker(targetCreature, designerCreature);
 
-	ImageDesignChangeMessage* message = new ImageDesignChangeMessage(targetPlayer, designer, targetPlayer, tent, type);
+	imageDesignData = data;
+
+	CreatureObject* targetObject = NULL;
+
+	if (updater == designerCreature)
+		targetObject = targetCreature;
+	else
+		targetObject = designerCreature;
+
+	ImageDesignChangeMessage* message = new ImageDesignChangeMessage(targetObject->getObjectID(), designer, targetPlayer, tent, type);
 
 	imageDesignData.insertToMessage(message);
 
@@ -86,7 +97,6 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 		}
 	}
 
-	String h = imageDesignData.getHairCustomizationString();
 	//System::out << h << endl;
 	if (commitChanges) {
 		//TODO: set XP Values
@@ -100,7 +110,10 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 
 		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
-		hairObject = imageDesignManager->createHairObject(designerCreature, targetCreature, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
+		if (type == 1)
+			hairObject = imageDesignManager->createHairObject(designerCreature, targetCreature, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
+		else
+			hairObject = dynamic_cast<TangibleObject*>(targetCreature->getSlottedObject("hair"));
 
 		for (int i = 0; i < bodyAttributes->size(); ++i) {
 			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
@@ -130,11 +143,7 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 			dequeueIdTimeoutEvent();
 	}
 
-	if (targetCreature->getObjectID() == targetPlayer) {
-		targetCreature->sendMessage(message);
-	} else {
-		designerCreature->sendMessage(message);
-	}
+	targetObject->sendMessage(message);
 }
 
 int ImageDesignSessionImplementation::doPayment() {
@@ -160,27 +169,22 @@ int ImageDesignSessionImplementation::doPayment() {
 }
 
 void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64 targetPlayer, uint64 tent, int type, const ImageDesignData& data) {
-	imageDesignData = data;
-
 	if (targetCreature == NULL || designerCreature == NULL)
 		return;
 
 	Locker locker(designerCreature);
 	Locker clocker(targetCreature, designerCreature);
 
-	ImageDesignRejectMessage* message = new ImageDesignRejectMessage(designer, targetPlayer,tent, type);
+	imageDesignData = data;
 
+	ImageDesignRejectMessage* message = new ImageDesignRejectMessage(targetCreature->getObjectID(), designer, targetPlayer,tent, type);
 	imageDesignData.insertToMessage(message);
-
 	targetCreature->sendMessage(message);
-	/*
-	if (designerCreature == targetCreature) {
-	} else if(object == designer) {
-		message = new ImageDesignRejectMessage(targetPlayer,designer,targetPlayer,tent,type);
-	} else if(object == targetPlayer) {
-		message = new ImageDesignRejectMessage(designer,designer,targetPlayer,tent,type);
-	}
-	 */
+
+	ImageDesignRejectMessage* msg2 = new ImageDesignRejectMessage(designerCreature->getObjectID(), designer, targetPlayer,tent, type);
+	imageDesignData.insertToMessage(msg2);
+	designerCreature->sendMessage(msg2);
+
 
 	//TODO: Needs research.
 

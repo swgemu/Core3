@@ -72,7 +72,6 @@ class ImageDesignSession extends Facade {
 	@dereferenced
 	protected ImageDesignData imageDesignData;
 	
-	@weakReference
 	protected TangibleObject hairObject;
 
 	protected transient ImageDesignTimeoutEvent idTimeoutEvent;
@@ -108,7 +107,7 @@ class ImageDesignSession extends Facade {
 	 * @param data The image design data associated with this update request.
 	 */
 	@local
-	public native void updateImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);
+	public native void updateImageDesign(CreatureObject updater, unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);
 	
 	@local
 	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);	
