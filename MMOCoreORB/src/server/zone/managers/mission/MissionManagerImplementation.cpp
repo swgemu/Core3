@@ -1293,9 +1293,9 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 		return;
 	}
 
-	if (player->getParentID() != 0) {
+	if (player->getParentID() != 0 || spawnTypes == "") {
 		//player->sendSystemMessage("Mission NPC spawns cannot be placed inside buildings.");
-		String text = player->getPosition().toString() + " cell id = " + String::valueOf(player->getParentID());
+		String text = "Player position = " + player->getPosition().toString() + ", direction = " + String::valueOf(player->getDirection()->getRadians()) + ", cell id = " + String::valueOf(player->getParentID());
 		player->sendSystemMessage(text);
 		return;
 	}
