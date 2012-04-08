@@ -21,15 +21,18 @@ public:
 	}
 
 	void run() {
-		for (int i = 0; i < threatMap.size(); ++i) {
-			CreatureObject* creature = threatMap.elementAt(i).getKey();
+		while (threatMap.size() > 0) {
+			CreatureObject* creature = threatMap.elementAt(0).getKey();
 
 			if (creature != NULL && threatMapObserver != NULL) {
 				Locker clocker(creature);
 
 				creature->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 			}
+
+			threatMap.remove(0);
 		}
+
 	}
 };
 
