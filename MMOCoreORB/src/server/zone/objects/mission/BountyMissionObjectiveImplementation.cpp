@@ -280,14 +280,7 @@ void BountyMissionObjectiveImplementation::addToBountyLock() {
 		return;
 	}
 
-	ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
-
-	if (targetGhost == NULL) {
-		return;
-	}
-
 	ghost->addToBountyLockList(creature);
-	targetGhost->addToBountyLockList(getPlayerOwner());
 	creature->sendPvpStatusTo(getPlayerOwner());
 	getPlayerOwner()->sendPvpStatusTo(creature);
 }
@@ -312,14 +305,7 @@ void BountyMissionObjectiveImplementation::removeFromBountyLock() {
 		return;
 	}
 
-	ManagedReference<PlayerObject*> targetGhost = creature->getPlayerObject();
-
-	if (targetGhost == NULL) {
-		return;
-	}
-
 	ghost->removeFromBountyLockList(creature);
-	targetGhost->removeFromBountyLockList(getPlayerOwner());
 	creature->sendPvpStatusTo(getPlayerOwner());
 	getPlayerOwner()->sendPvpStatusTo(creature);
 }
