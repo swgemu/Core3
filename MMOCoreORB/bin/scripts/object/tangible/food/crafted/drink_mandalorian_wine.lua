@@ -65,7 +65,7 @@ object_tangible_food_crafted_drink_mandalorian_wine = object_tangible_food_craft
 
 	buffName = "food.drink_vasarian_brandy",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
