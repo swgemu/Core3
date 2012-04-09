@@ -55,7 +55,7 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
    xp = 250, 
 
    assemblySkill = "weapon_assembly", 
-   experimentingSkill = "weapons_systems_experimentation", 
+   experimentingSkill = "weapon_experimentation", 
    customizationSkill = "weapon_customization", 
 
    customizationOptions = {},

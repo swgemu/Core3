@@ -124,9 +124,9 @@ object_weapon_ranged_pistol_pistol_republic_blaster_quest = object_weapon_ranged
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expDurability", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "minDamage", "maxDamage", "attackSpeed", "woundChance", "hitPoints", "midRangeMod", "attackHealthCost", "attackActionCost", "attackMindCost"},
-	experimentalMin = {0, 0, 21, 98, 3.1, 10, 750, -52, 10, 28, 10},
-	experimentalMax = {0, 0, 39, 182, 4.6, 20, 1500, -28, 20, 52, 20},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalMin = {0, 0, 21, 98, 4.6, 10, 750, -52, 20, 52, 20},
+	experimentalMax = {0, 0, 39, 182, 3.1, 20, 1500, -28, 10, 28, 10},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_republic_blaster_quest, "object/weapon/ranged/pistol/pistol_republic_blaster_quest.iff")

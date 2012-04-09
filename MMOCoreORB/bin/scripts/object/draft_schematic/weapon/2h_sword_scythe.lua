@@ -43,6 +43,38 @@
 
 object_draft_schematic_weapon_2h_sword_scythe = object_draft_schematic_weapon_shared_2h_sword_scythe:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Scythe Blade Schematic",
+
+   craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
+   complexity = 35, 
+   size = 1, 
+
+   xpType = "", 
+   xp = 250, 
+
+   assemblySkill = "weapon_assembly", 
+   experimentingSkill = "weapon_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"sword_core_jacket", "grip", "omnipotent_sword_core"},
+   ingredientSlotType = {0, 0, 1},
+   resourceTypes = {"steel_carbonite", "aluminum_phrik", "object/tangible/component/weapon/shared_geonosian_sword_core.iff"},
+   resourceQuantities = {60, 30, 2},
+   combineTypes = {0, 0, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/weapon/melee/2h_sword/2h_sword_scythe.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_2h_sword_scythe, "object/draft_schematic/weapon/2h_sword_scythe.iff")
