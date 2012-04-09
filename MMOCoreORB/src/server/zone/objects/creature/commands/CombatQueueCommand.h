@@ -134,7 +134,7 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
-		float forceCostCheck = forceCostMultiplier;
+		/*float forceCostCheck = forceCostMultiplier;
 
 		if (forceCostCheck > 0) { // Safe to assume this is a Jedi-skill...
 
@@ -153,7 +153,7 @@ public:
 					creature->sendSystemMessage("@jedi_spam:not_with_armor"); // 	You cannot use Force powers or lightsaber abilities while wearing armor.
 					return GENERALERROR;
 				}
-		}
+		}*/
 
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
