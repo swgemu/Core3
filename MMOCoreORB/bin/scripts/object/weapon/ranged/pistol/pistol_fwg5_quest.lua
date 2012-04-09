@@ -117,7 +117,7 @@ object_weapon_ranged_pistol_pistol_fwg5_quest = object_weapon_ranged_pistol_shar
 	minDamage = 14,
 	maxDamage = 70,
 
-	attackSpeed = 4.6
+	attackSpeed = 4.6,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

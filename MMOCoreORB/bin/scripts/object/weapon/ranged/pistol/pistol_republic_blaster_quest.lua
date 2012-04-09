@@ -117,7 +117,8 @@ object_weapon_ranged_pistol_pistol_republic_blaster_quest = object_weapon_ranged
 	minDamage = 21,
 	maxDamage = 98,
 
-	attackSpeed = 4.6
+	attackSpeed = 4.6,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
