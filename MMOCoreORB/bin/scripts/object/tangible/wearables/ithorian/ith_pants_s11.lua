@@ -43,7 +43,9 @@
 
 object_tangible_wearables_ithorian_ith_pants_s11 = object_tangible_wearables_ithorian_shared_ith_pants_s11:new {
 	playerRaces = { "object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff" },
+				"object/creature/player/ithorian_female.iff",
+				"object/mobile/vendor/ithorian_female.iff",
+				"object/mobile/vendor/ithorian_male.iff" },
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

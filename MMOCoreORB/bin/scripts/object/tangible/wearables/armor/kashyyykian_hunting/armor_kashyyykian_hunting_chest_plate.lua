@@ -45,7 +45,9 @@ object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_ch
 	templateType = ARMOROBJECT,
 
 	playerRaces = { "object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff" },
+				"object/creature/player/wookiee_female.iff",
+				"object/mobile/vendor/wookiee_female.iff",
+				"object/mobile/vendor/wookiee_male.iff" },
 
 	-- Damage types in WeaponObject
 	vunerability = STUN + LIGHTSABER,

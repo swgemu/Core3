@@ -49,7 +49,17 @@ object_tangible_wearables_hat_nightsister_hat_s01 = object_tangible_wearables_ha
 				"object/creature/player/sullustan_female.iff",
 				"object/creature/player/trandoshan_female.iff",
 				"object/creature/player/twilek_female.iff",
-				"object/creature/player/zabrak_female.iff" },
+				"object/creature/player/zabrak_female.iff",
+				"object/mobile/vendor/aqualish_female.iff",
+				"object/mobile/vendor/bith_female.iff",
+				"object/mobile/vendor/bothan_female.iff",
+				"object/mobile/vendor/human_female.iff",
+				"object/mobile/vendor/moncal_female.iff",
+				"object/mobile/vendor/rodian_female.iff",
+				"object/mobile/vendor/sullustan_female.iff",
+				"object/mobile/vendor/trandoshan_female.iff",
+				"object/mobile/vendor/twilek_female.iff",
+				"object/mobile/vendor/zabrak_female.iff" },
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_nightsister_hat_s01, "object/tangible/wearables/hat/nightsister_hat_s01.iff")

@@ -46,7 +46,9 @@ object_tangible_wearables_armor_ithorian_defender_ith_armor_s01_bracer_r = objec
 	templateType = ARMOROBJECT,
 
 	playerRaces = { "object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff" },
+				"object/creature/player/ithorian_female.iff",
+				"object/mobile/vendor/ithorian_female.iff",
+				"object/mobile/vendor/ithorian_male.iff" },
 
 	-- Damage types in WeaponObject
 	vunerability = HEAT + COLD + STUN + LIGHTSABER,

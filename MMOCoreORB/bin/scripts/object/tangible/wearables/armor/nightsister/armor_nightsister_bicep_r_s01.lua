@@ -51,7 +51,17 @@ object_tangible_wearables_armor_nightsister_armor_nightsister_bicep_r_s01 = obje
 				"object/creature/player/sullustan_female.iff",
 				"object/creature/player/trandoshan_female.iff",
 				"object/creature/player/twilek_female.iff",
-				"object/creature/player/zabrak_female.iff" },
+				"object/creature/player/zabrak_female.iff",
+				"object/mobile/vendor/aqualish_female.iff",
+				"object/mobile/vendor/bith_female.iff",
+				"object/mobile/vendor/bothan_female.iff",
+				"object/mobile/vendor/human_female.iff",
+				"object/mobile/vendor/moncal_female.iff",
+				"object/mobile/vendor/rodian_female.iff",
+				"object/mobile/vendor/sullustan_female.iff",
+				"object/mobile/vendor/trandoshan_female.iff",
+				"object/mobile/vendor/twilek_female.iff",
+				"object/mobile/vendor/zabrak_female.iff" },
 	
 	-- Damage types in WeaponObject
 	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
