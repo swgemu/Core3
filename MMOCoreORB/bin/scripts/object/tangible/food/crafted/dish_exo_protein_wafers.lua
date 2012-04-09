@@ -43,6 +43,29 @@
 
 object_tangible_food_crafted_dish_exo_protein_wafers = object_tangible_food_crafted_shared_dish_exo_protein_wafers:new {
 
+	templateType = CONSUMABLE,
+
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 3, -- Event Based Buff
+	eventTypes = {DAMAGERECEIVED},
+
+	fillingMin = 5,
+	fillingMax = 4,
+	flavorMin = 10,
+	flavorMax = 25,
+	nutritionMin = 10,
+	nutritionMax = 18,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "mitigate_damage", 0 },
+
+	buffName = "food.mitigate_damage",
+	buffCRC = 0,
+	speciesRestriction = "",
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},

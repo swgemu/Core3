@@ -16,6 +16,7 @@ class ConsumableTemplate : public SharedTangibleObjectTemplate {
 	int nutrition;
 
 	int effectType;
+	Vector<int> eventType;
 
 	int fillingMin;
 	int fillingMax;
@@ -52,6 +53,18 @@ public:
 		nutrition = templateData->getIntField("nutrition");
 
 		effectType = templateData->getIntField("effectType");
+
+		eventType.removeAll();
+
+		LuaObject eventTypes = templateData->getObjectField("eventTypes");
+
+		for (int i = 1; i <= eventTypes.getTableSize(); i += 2) {
+			float value = eventTypes.getFloatAt(i);
+
+			eventType.add(value);
+		}
+
+		eventTypes.pop();
 
 		fillingMin = templateData->getIntField("fillingMin");
 		fillingMax = templateData->getIntField("fillingMax");
@@ -130,6 +143,10 @@ public:
 
 	VectorMap<String, float>* getModifiers() {
 		return &modifiers;
+	}
+
+	Vector<int>* getEventTypes() {
+		return &eventType;
 	}
 
 	inline int getNutrition() const {

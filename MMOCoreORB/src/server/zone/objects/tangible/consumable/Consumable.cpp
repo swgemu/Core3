@@ -304,6 +304,11 @@ bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "Consumable.eventTypes") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&eventTypes, stream);
+		return true;
+	}
+
 	if (_name == "Consumable.fillingMin") {
 		TypeInfo<int >::parseFromBinaryStream(&fillingMin, stream);
 		return true;
@@ -423,6 +428,14 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "Consumable.eventTypes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&eventTypes, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "Consumable.fillingMin";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -536,7 +549,7 @@ int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 18;
+	return _count + 19;
 }
 
 ConsumableImplementation::ConsumableImplementation() {

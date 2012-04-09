@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,55 +38,18 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
 
-package server.zone.objects.creature.buffs;
+ */
 
-import engine.core.ManagedObject;
-import system.util.VectorMap;
-import system.lang.ref.Reference;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
-import system.lang.Time;
+#include "DelayedBuffObserver.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/DelayedBuff.h"
 
-include server.zone.ZoneProcessServer;
-import server.zone.objects.creature.buffs.BuffDurationEvent;
-import server.zone.objects.creature.buffs.Buff;
-include server.zone.objects.creature.buffs.BuffType;
-include server.chat.StringIdChatParameter;
-include server.zone.objects.scene.ObserverEventType;
 
-class SpiceDownerBuff extends Buff {
-	public SpiceDownerBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
-		super(creo, buffCRC, duration, BuffType.SPICE);
-		
-		super.buffName = name;
-	}
-	
-	public void activate(boolean applyModifiers) {
-		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_downer");
+int DelayedBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 
-		if (super.creature.hasBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME)) {
-			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
+	buff->useCharge();
+	return 0;
 
-			if (buff != null) {
-				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
-
-			} else {
-				
-			}
-			
-			super.activate(applyModifiers);
-		} else {
-			super.activate(applyModifiers);
-		}
-		
-		super.creature.notifyObservers(ObserverEventType.SPICEDOWNERACTIVATED, super.creature, 0);
-	}
-
-	public void deactivate(boolean applyModifiers) {
-		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_done");
-
-		super.deactivate(applyModifiers);
-	}
 }

@@ -61,6 +61,8 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "server/chat/StringIdChatParameter.h"
 
+#include "server/zone/objects/scene/ObserverEventType.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "system/util/VectorMap.h"

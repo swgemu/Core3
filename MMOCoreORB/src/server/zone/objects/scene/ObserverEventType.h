@@ -47,6 +47,13 @@ public:
 	const static int ENTEREDBUILDING = 35; // ManagedObject arg1 = player who entered the building, long arg2 = 1 if condemned or not allowed in
 	const static int EXITEDBUILDING = 36; // ManagedObject arg1 = player who left building
 	const static int PLAYERKILLED = 37; // ManagedObject arg1 = killer, long arg2 = 0
+	const static int PLAYERCLONED = 38; // ManagedObject arg1 = player, long arg2 = 0
+	const static int CRAFTINGASSEMBLY = 39; // ManagedObject arg1 = player, long arg2 = 0
+	const static int CRAFTINGEXPERIMENTATION = 40; // ManagedObject arg1 = player, long arg2 = 0
+	const static int ENHANCINGPERFORMED = 41; // ManagedObject arg1 = player, long arg2 = enhance amount
+	const static int WOUNDHEALINGPERFORMED = 42; // ManagedObject arg1 = player, long arg2 = wound heal amount
+	const static int XPAWARDED = 43; // ManagedObject arg1 = player, long arg2 = xp amount
+	const static int SPICEDOWNERACTIVATED = 44; // ManagedObject arg1 = player, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

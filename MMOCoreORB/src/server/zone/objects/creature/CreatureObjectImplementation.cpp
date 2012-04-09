@@ -862,7 +862,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
 }
 
 int CreatureObjectImplementation::healDamage(TangibleObject* healer,
-		int damageType, int damage, bool notifyClient) {
+		int damageType, int damage, bool notifyClient, bool notifyObservers) {
 	if (damage == 0)
 		return 0;
 
@@ -901,15 +901,15 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 
 	setHAM(damageType, newValue, notifyClient);
 
-	if(healer != NULL && healer != _this) {
-		notifyObservers(ObserverEventType::HEALINGPERFORMED, healer, returnValue);
+	if(healer != NULL && notifyObservers) {
+		_this->notifyObservers(ObserverEventType::HEALINGPERFORMED, healer, returnValue);
 	}
 
 	return returnValue;
 }
 
 int CreatureObjectImplementation::healWound(TangibleObject* healer,
-		int damageType, int damage, bool notifyClient) {
+		int damageType, int damage, bool notifyClient, bool notifyObservers) {
 	if (damage == 0)
 		return 0;
 
@@ -930,6 +930,10 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 	newValue = MAX(newValue, 0);
 
 	setWounds(damageType, newValue, notifyClient);
+
+	if(healer != NULL && notifyObservers) {
+		_this->notifyObservers(ObserverEventType::WOUNDHEALINGPERFORMED, healer, returnValue);
+	}
 
 	return returnValue;
 }

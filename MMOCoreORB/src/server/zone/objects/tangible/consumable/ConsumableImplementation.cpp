@@ -15,6 +15,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
+#include "DelayedBuffObserver.h"
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -29,6 +30,8 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	nutrition = consumable->getNutrition();
 
 	effectType = consumable->getEffectType();
+
+	eventTypes = *consumable->getEventTypes();
 
 	fillingMin = consumable->getFillingMin();
 	fillingMax = consumable->getFillingMax();
@@ -152,10 +155,13 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 	}
 
-	case EFFECT_DELAYED: {
+	case EFFECT_EVENT: {
 		buff = new DelayedBuff(player, buffName.hashCode(), duration);
 		setModifiers(buff, true);
-		//buff->parseSkillModifierString(generateModifierString());
+
+		DelayedBuff* delayedBuff = cast<DelayedBuff*>(buff.get());
+		delayedBuff->init(&eventTypes);
+
 		break;
 	}
 
@@ -388,7 +394,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 		break;
 	}
-	case EFFECT_DELAYED: {
+	case EFFECT_EVENT: {
 
 		if (filling > 0) {
 			if (isFood())

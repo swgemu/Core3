@@ -124,6 +124,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/InstrumentObserver.cpp \
 				server/zone/objects/tangible/consumable/Food.cpp \
 				server/zone/objects/tangible/consumable/Drink.cpp \
+				server/zone/objects/tangible/consumable/DelayedBuffObserver.cpp \
 				server/zone/objects/tangible/loot/LootkitObject.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/vendor/VendorCreature.cpp \
@@ -460,6 +461,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
+		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \

@@ -81,7 +81,7 @@ public:
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
 
-				buff->useCharge(creature);
+				buff->useCharge();
 			}
 		}
 
@@ -360,7 +360,7 @@ public:
 
 		uint32 woundPower = woundPack->calculatePower(creature, creatureTarget);
 
-		int woundHealed = creatureTarget->addWounds(attribute, -woundPower);
+		int woundHealed = creatureTarget->healWound(creature, attribute, woundPower);
 
 		woundHealed = abs(woundHealed);
 

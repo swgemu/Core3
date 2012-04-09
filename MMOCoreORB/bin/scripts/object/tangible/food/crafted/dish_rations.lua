@@ -43,6 +43,28 @@
 
 object_tangible_food_crafted_dish_rations = object_tangible_food_crafted_shared_dish_rations:new {
 
+	templateType = CONSUMABLE,
+
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 0,
+
+	fillingMin = 18,
+	fillingMax = 10,
+	flavorMin = 15,
+	flavorMax = 30,
+	nutritionMin = 20,
+	nutritionMax = 30,
+	quantityMin = 6,
+	quantityMax = 10,
+
+	modifiers = { "burst_run", 0 },
+
+	buffName = "",
+	buffCRC = 0,
+	speciesRestriction = "",
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},

@@ -151,7 +151,7 @@ public:
 
 	static const int EFFECT_DURATION = 0x02;
 
-	static const int EFFECT_DELAYED = 0x03;
+	static const int EFFECT_EVENT = 0x03;
 
 	static const int EFFECT_SKILL = 0x04;
 
@@ -223,6 +223,8 @@ protected:
 
 	int effectType;
 
+	Vector<int> eventTypes;
+
 	int fillingMin;
 
 	int fillingMax;
@@ -258,7 +260,7 @@ public:
 
 	static const int EFFECT_DURATION = 0x02;
 
-	static const int EFFECT_DELAYED = 0x03;
+	static const int EFFECT_EVENT = 0x03;
 
 	static const int EFFECT_SKILL = 0x04;
 

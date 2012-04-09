@@ -44,11 +44,12 @@
 object_tangible_food_crafted_dessert_cavaellin_creams = object_tangible_food_crafted_shared_dessert_cavaellin_creams:new {
 	templateType = CONSUMABLE,
 
-	duration = 45,
+	duration = 1,
 	filling = 10,
 	nutrition = 10,
 
-	effectType = 3,
+	effectType = 3, -- Event Based Buff
+	eventTypes = {OBJECTDESTRUCTION},
 
 	fillingMin = 29,
 	fillingMax = 19,

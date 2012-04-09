@@ -115,6 +115,9 @@ public:
 				return GENERALERROR;
 			}
 
+			prototype->setInitialCraftingValues(manuSchematic);
+			prototype->updateCraftingValues(manuSchematic->getCraftingValues(), true);
+
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number

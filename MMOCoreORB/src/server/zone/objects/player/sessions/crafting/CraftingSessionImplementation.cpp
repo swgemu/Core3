@@ -621,6 +621,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	crafter->sendMessage(objMsg);
 	// End Object Controller ******************************************
 
+	crafter->notifyObservers(ObserverEventType::CRAFTINGASSEMBLY, crafter, 0);
+
 	// Remove all resources - Not recovering them
 	if (assemblyResult == CraftingManager::CRITICALFAILURE) {
 
@@ -812,6 +814,9 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 	objMsg->insertByte(clientCounter);
 
 	crafter->sendMessage(objMsg);
+
+	crafter->notifyObservers(ObserverEventType::CRAFTINGEXPERIMENTATION, crafter, 0);
+
 }
 
 void CraftingSessionImplementation::customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString) {

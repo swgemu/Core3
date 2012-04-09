@@ -86,8 +86,6 @@ public:
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
-
-				buff->useCharge(creature);
 			}
 		}
 
@@ -474,7 +472,7 @@ public:
 		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
 
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
+		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);

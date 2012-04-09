@@ -366,9 +366,9 @@ public:
 
 	bool hasDamage(int attribute);
 
-	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
-	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -1117,9 +1117,9 @@ public:
 
 	bool hasDamage(int attribute);
 
-	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
-	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true);
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
@@ -1710,9 +1710,9 @@ public:
 
 	bool hasDamage(int attribute);
 
-	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient);
+	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient, bool notifyObservers);
 
-	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient);
+	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient, bool notifyObservers);
 
 	void setBaseHAM(int type, int value, bool notifyClient);
 

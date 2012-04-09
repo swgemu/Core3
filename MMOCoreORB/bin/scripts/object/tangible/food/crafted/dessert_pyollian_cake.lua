@@ -44,11 +44,12 @@
 object_tangible_food_crafted_dessert_pyollian_cake = object_tangible_food_crafted_shared_dessert_pyollian_cake:new {
 	templateType = CONSUMABLE,
 
-	duration = 0,
+	duration = 1,
 	filling = 10,
 	nutrition = 10,
 
-	effectType = 3,
+	effectType = 3, -- Event Based Buff
+	eventTypes = {CRAFTINGASSEMBLY},
 
 	fillingMin = 18,
 	fillingMax = 9,

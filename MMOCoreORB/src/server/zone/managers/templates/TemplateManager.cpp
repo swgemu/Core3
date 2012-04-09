@@ -556,6 +556,16 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
 	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
 
+	luaTemplatesInstance->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
+	luaTemplatesInstance->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
+	luaTemplatesInstance->setGlobalInt("PLAYERKILLED", ObserverEventType::PLAYERKILLED);
+	luaTemplatesInstance->setGlobalInt("PLAYERCLONED", ObserverEventType::PLAYERCLONED);
+	luaTemplatesInstance->setGlobalInt("CRAFTINGASSEMBLY", ObserverEventType::CRAFTINGASSEMBLY);
+	luaTemplatesInstance->setGlobalInt("CRAFTINGEXPERIMENTATION", ObserverEventType::CRAFTINGEXPERIMENTATION);
+	luaTemplatesInstance->setGlobalInt("HEALINGPERFORMED", ObserverEventType::HEALINGPERFORMED);
+	luaTemplatesInstance->setGlobalInt("XPAWARDED", ObserverEventType::XPAWARDED);
+	luaTemplatesInstance->setGlobalInt("SPICEDOWNERACTIVATED", ObserverEventType::SPICEDOWNERACTIVATED);
+
 	luaTemplatesInstance->setGlobalInt("SHOT", SharedObjectTemplate::SHOT);
 	luaTemplatesInstance->setGlobalInt("STOT", SharedObjectTemplate::STOT);
 	luaTemplatesInstance->setGlobalInt("SBMK", SharedObjectTemplate::SBMK);

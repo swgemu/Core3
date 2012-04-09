@@ -44,11 +44,12 @@
 object_tangible_food_crafted_dessert_smugglers_delight = object_tangible_food_crafted_shared_dessert_smugglers_delight:new {
 	templateType = CONSUMABLE,
 
-	duration = 45,
+	duration = 1,
 	filling = 10,
 	nutrition = 10,
 
-	effectType = 3,
+	effectType = 3, -- Event Based Buff
+	eventTypes = {SPICEDOWNERACTIVATED}, -- Event unneeded, buff removed on spice active
 
 	fillingMin = 29,
 	fillingMax = 19,

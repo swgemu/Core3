@@ -10,14 +10,16 @@
 
 #include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
 
+#include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
+
 /*
  *	DelayedBuffStub
  */
 
-enum {RPC_ACTIVATE__ = 6,RPC_DEACTIVATE__,RPC_USECHARGE__CREATUREOBJECT_,RPC_SETUSESREMAINING__INT_};
+enum {RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_USECHARGE__,RPC_SETUSESREMAINING__INT_,};
 
-DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration) : Buff(DummyConstructorParameter::instance()) {
-	DelayedBuffImplementation* _implementation = new DelayedBuffImplementation(creo, buffcrc, duration);
+DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int effectCount) : Buff(DummyConstructorParameter::instance()) {
+	DelayedBuffImplementation* _implementation = new DelayedBuffImplementation(creo, buffcrc, effectCount);
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("DelayedBuff");
@@ -31,6 +33,15 @@ DelayedBuff::~DelayedBuff() {
 }
 
 
+
+void DelayedBuff::init(Vector<int>* events) {
+	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->init(events);
+}
 
 void DelayedBuff::activate() {
 	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
@@ -58,18 +69,17 @@ void DelayedBuff::deactivate() {
 		_implementation->deactivate();
 }
 
-void DelayedBuff::useCharge(CreatureObject* creature) {
+void DelayedBuff::useCharge() {
 	DelayedBuffImplementation* _implementation = static_cast<DelayedBuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_USECHARGE__CREATUREOBJECT_);
-		method.addObjectParameter(creature);
+		DistributedMethod method(this, RPC_USECHARGE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->useCharge(creature);
+		_implementation->useCharge();
 }
 
 void DelayedBuff::setUsesRemaining(int uses) {
@@ -196,6 +206,21 @@ bool DelayedBuffImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "DelayedBuff.player") {
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
+		return true;
+	}
+
+	if (_name == "DelayedBuff.observer") {
+		TypeInfo<ManagedReference<DelayedBuffObserver* > >::parseFromBinaryStream(&observer, stream);
+		return true;
+	}
+
+	if (_name == "DelayedBuff.eventTypes") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&eventTypes, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -221,39 +246,114 @@ int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "DelayedBuff.player";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 1;
+	_name = "DelayedBuff.observer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<DelayedBuffObserver* > >::toBinaryStream(&observer, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "DelayedBuff.eventTypes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&eventTypes, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 4;
 }
 
-DelayedBuffImplementation::DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int duration) : BuffImplementation(creo, buffcrc, 1380, BuffType::FOOD) {
+DelayedBuffImplementation::DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int effectCount) : BuffImplementation(creo, buffcrc, 1380, BuffType::FOOD) {
 	_initializeImplementation();
-	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = duration;
-	usesRemaining = duration;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = effectCount;
+	usesRemaining = effectCount;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		player = creo;
+	player = creo;
+}
+
+void DelayedBuffImplementation::init(Vector<int>* events) {
+	ManagedReference<DelayedBuffObserver*> _ref0;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		observer = new DelayedBuffObserver(this);
+	observer = _ref0 = new DelayedBuffObserver(_this);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		}
+	for (	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		for(int i = 0;
+	int i = 0;
+	i < events->size();
+ ++i) {
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			eventTypes.add(events.get(i));
+	(&eventTypes)->add(events->get(i));
+}
 }
 
 void DelayedBuffImplementation::activate() {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.activate(false);
 	BuffImplementation::activate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		addObservers();
+	addObservers();
 }
 
 void DelayedBuffImplementation::deactivate() {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.deactivate(false);
 	BuffImplementation::deactivate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		dropObservers();
+	dropObservers();
 }
 
-void DelayedBuffImplementation::useCharge(CreatureObject* creature) {
+void DelayedBuffImplementation::useCharge() {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = usesRemaining - 1;
 	usesRemaining = usesRemaining - 1;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		player.sendAttributeListTo(player);
+	player->sendAttributeListTo(player);
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  	}
 	if (usesRemaining < 1){
-	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			creature.removeBuff(this);
-	creature->removeBuff(_this);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.removeBuff(this);
+	player->removeBuff(_this);
 }
 }
 
 void DelayedBuffImplementation::setUsesRemaining(int uses) {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		usesRemaining = uses;
 	usesRemaining = uses;
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		player.sendAttributeListTo(player);
+	player->sendAttributeListTo(player);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  	}
+	if (usesRemaining < 1){
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.removeBuff(this);
+	player->removeBuff(_this);
+}
+}
+
+void DelayedBuffImplementation::addObservers() {
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		}
+	for (	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		for(int i = 0;
+	int i = 0;
+	i < (&eventTypes)->size();
+ ++i) {
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.registerObserver(eventTypes.get(i), observer);
+	player->registerObserver((&eventTypes)->get(i), observer);
+}
+}
+
+void DelayedBuffImplementation::dropObservers() {
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		}
+	for (	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		for(int i = 0;
+	int i = 0;
+	i < (&eventTypes)->size();
+ ++i) {
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.dropObserver(eventTypes.get(i), observer);
+	player->dropObserver((&eventTypes)->get(i), observer);
+}
 }
 
 /*
@@ -277,8 +377,8 @@ void DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_DEACTIVATE__:
 		deactivate();
 		break;
-	case RPC_USECHARGE__CREATUREOBJECT_:
-		useCharge(static_cast<CreatureObject*>(inv->getObjectParameter()));
+	case RPC_USECHARGE__:
+		useCharge();
 		break;
 	case RPC_SETUSESREMAINING__INT_:
 		setUsesRemaining(inv->getSignedIntParameter());
@@ -296,8 +396,8 @@ void DelayedBuffAdapter::deactivate() {
 	(static_cast<DelayedBuff*>(stub))->deactivate();
 }
 
-void DelayedBuffAdapter::useCharge(CreatureObject* creature) {
-	(static_cast<DelayedBuff*>(stub))->useCharge(creature);
+void DelayedBuffAdapter::useCharge() {
+	(static_cast<DelayedBuff*>(stub))->useCharge();
 }
 
 void DelayedBuffAdapter::setUsesRemaining(int uses) {

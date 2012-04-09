@@ -1059,6 +1059,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(3 * 1000);
+
+	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 }
 
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
@@ -1351,6 +1353,8 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 
 	PlayerObject* playerObject = player->getPlayerObject();
 	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
+
+	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
 	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
@@ -1795,6 +1799,8 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	buff->setAttributeModifier(attribute, buffvalue);
 	buff->setFillAttributesOnBuff(true);
 	patient->addBuff(buff);
+
+	enhancer->notifyObservers(ObserverEventType::ENHANCINGPERFORMED, patient, buffdiff);
 
 	return buffdiff;
 }

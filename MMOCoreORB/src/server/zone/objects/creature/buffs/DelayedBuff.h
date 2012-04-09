@@ -55,6 +55,22 @@ class BuffDurationEvent;
 
 using namespace server::zone::objects::creature::buffs;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace consumable {
+
+class DelayedBuffObserver;
+
+} // namespace consumable
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::consumable;
+
 #include "server/zone/ZoneProcessServer.h"
 
 #include "server/zone/objects/creature/buffs/BuffType.h"
@@ -79,13 +95,15 @@ namespace buffs {
 
 class DelayedBuff : public Buff {
 public:
-	DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration);
+	DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int effectCount);
+
+	void init(Vector<int>* events);
 
 	void activate();
 
 	void deactivate();
 
-	void useCharge(CreatureObject* creature);
+	void useCharge();
 
 	void setUsesRemaining(int uses);
 
@@ -119,19 +137,33 @@ class DelayedBuffImplementation : public BuffImplementation {
 protected:
 	int usesRemaining;
 
+	ManagedReference<CreatureObject* > player;
+
+	ManagedReference<DelayedBuffObserver* > observer;
+
+	Vector<int> eventTypes;
+
 public:
-	DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int duration);
+	DelayedBuffImplementation(CreatureObject* creo, unsigned int buffcrc, int effectCount);
 
 	DelayedBuffImplementation(DummyConstructorParameter* param);
+
+	void init(Vector<int>* events);
 
 	void activate();
 
 	void deactivate();
 
-	void useCharge(CreatureObject* creature);
+	void useCharge();
 
 	void setUsesRemaining(int uses);
 
+private:
+	void addObservers();
+
+	void dropObservers();
+
+public:
 	WeakReference<DelayedBuff*> _this;
 
 	operator const DelayedBuff*();
@@ -179,7 +211,7 @@ public:
 
 	void deactivate();
 
-	void useCharge(CreatureObject* creature);
+	void useCharge();
 
 	void setUsesRemaining(int uses);
 

@@ -203,8 +203,6 @@ void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 	if (buff != NULL){
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 	BuffImplementation::buffDuration = BuffImplementation::buffDuration * (100.0 - buff->getSkillModifierValue("reduce_spice_downtime")) / 100.0;
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  				super.creature.removeBuff(buff);
-	BuffImplementation::creature.getForUpdate()->removeBuff(buff);
 }
 
 	else {
@@ -217,6 +215,8 @@ void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			super.activate(applyModifiers);
 	BuffImplementation::activate(applyModifiers);
 }
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.notifyObservers(ObserverEventType.SPICEDOWNERACTIVATED, super.creature, 0);
+	BuffImplementation::creature.getForUpdate()->notifyObservers(ObserverEventType::SPICEDOWNERACTIVATED, BuffImplementation::creature.getForUpdate(), 0);
 }
 
 void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
