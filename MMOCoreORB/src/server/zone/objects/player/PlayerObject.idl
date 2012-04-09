@@ -67,7 +67,8 @@ import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
-import server.zone.objects.player.sui.SuiBox;
+import server.zone.objects.player.events.BountyHunterTefRemovalTask;
+include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.player.ValidatedPosition;
 include server.zone.objects.player.variables.WaypointList;
 include server.zone.objects.creature.variables.Skill;
@@ -161,7 +162,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<CreatureObject> duelList;
 	
 	@dereferenced
-	protected SortedVector<CreatureObject> bountyLockList;
+	protected VectorMap<unsigned long, BountyHunterTefRemovalTask> bountyLockList;
 	
 	@weakReference
 	protected BuildingObject declaredResidence;
@@ -274,7 +275,6 @@ class PlayerObject extends IntangibleObject {
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
-		bountyLockList.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
 		
@@ -1227,21 +1227,19 @@ class PlayerObject extends IntangibleObject {
 		starterProfession = profession;
 	}
 
-	public void addToBountyLockList(CreatureObject player) {
-		bountyLockList.put(player);
+	public native void addToBountyLockList(unsigned long playerId);
+	
+	public boolean isInBountyLockList(unsigned long playerId) {
+		return bountyLockList.contains(playerId);
 	}
 	
-	public boolean isInBountyLockList(CreatureObject player) {
-		return bountyLockList.contains(player);
-	}
-	
-	public void removeFromBountyLockList(CreatureObject player) {
-		bountyLockList.drop(player);
-	}
+	public native void removeFromBountyLockList(unsigned long playerId, boolean immediately);
 	
 	public boolean isBountyLocked() {
 		return bountyLockList.size() > 0;
-	}
+	} 
+	
+	private native void updateBountyPvpStatus(unsigned long playerId);
 	
 	public unsigned long getPerformanceBuffTarget() {
 		return performanceBuffTarget;

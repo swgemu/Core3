@@ -141,7 +141,7 @@ class BountyMissionObjective extends MissionObjective {
 	public native string getTargetZoneName();
 	
 	private native void addToBountyLock();
-	private native void removeFromBountyLock();
+	private native void removeFromBountyLock(boolean immediately);
 
 	private native void removePlayerTargetObservers();
 	private native void removeNpcTargetObservers();

@@ -237,17 +237,19 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace player {
-namespace sui {
+namespace events {
 
-class SuiBox;
+class BountyHunterTefRemovalTask;
 
-} // namespace sui
+} // namespace events
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player::sui;
+using namespace server::zone::objects::player::events;
+
+#include "server/zone/objects/player/sui/SuiBox.h"
 
 #include "server/zone/objects/player/ValidatedPosition.h"
 
@@ -750,11 +752,11 @@ public:
 
 	void setStarterProfession(String& profession);
 
-	void addToBountyLockList(CreatureObject* player);
+	void addToBountyLockList(unsigned long long playerId);
 
-	bool isInBountyLockList(CreatureObject* player);
+	bool isInBountyLockList(unsigned long long playerId);
 
-	void removeFromBountyLockList(CreatureObject* player);
+	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
 
 	bool isBountyLocked();
 
@@ -868,7 +870,7 @@ protected:
 
 	SortedVector<ManagedReference<CreatureObject* > > duelList;
 
-	SortedVector<ManagedReference<CreatureObject* > > bountyLockList;
+	VectorMap<unsigned long long, BountyHunterTefRemovalTask*> bountyLockList;
 
 	ManagedWeakReference<BuildingObject* > declaredResidence;
 
@@ -1379,14 +1381,18 @@ public:
 
 	void setStarterProfession(String& profession);
 
-	void addToBountyLockList(CreatureObject* player);
+	void addToBountyLockList(unsigned long long playerId);
 
-	bool isInBountyLockList(CreatureObject* player);
+	bool isInBountyLockList(unsigned long long playerId);
 
-	void removeFromBountyLockList(CreatureObject* player);
+	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
 
 	bool isBountyLocked();
 
+private:
+	void updateBountyPvpStatus(unsigned long long playerId);
+
+public:
 	unsigned long long getPerformanceBuffTarget();
 
 	void setPerformanceBuffTarget(unsigned long long target);
@@ -1792,11 +1798,11 @@ public:
 
 	void setStarterProfession(String& profession);
 
-	void addToBountyLockList(CreatureObject* player);
+	void addToBountyLockList(unsigned long long playerId);
 
-	bool isInBountyLockList(CreatureObject* player);
+	bool isInBountyLockList(unsigned long long playerId);
 
-	void removeFromBountyLockList(CreatureObject* player);
+	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
 
 	bool isBountyLocked();
 

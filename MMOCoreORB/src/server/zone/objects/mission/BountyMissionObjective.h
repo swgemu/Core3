@@ -270,7 +270,7 @@ public:
 private:
 	void addToBountyLock();
 
-	void removeFromBountyLock();
+	void removeFromBountyLock(bool immediately);
 
 	void removePlayerTargetObservers();
 

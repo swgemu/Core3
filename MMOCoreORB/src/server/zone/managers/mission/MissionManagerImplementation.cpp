@@ -373,6 +373,18 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 		return;
 	}
 
+	if (player->isInCombat()) {
+		player->sendSystemMessage("You cannot abort a mission while in combat.");
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (mission->getTypeCRC() == MissionObject::BOUNTY && ghost != NULL && ghost->isBountyLocked()) {
+		player->sendSystemMessage("You cannot abort a bounty hunter mission this soon after being in combat with the mission target.");
+		return;
+	}
+
 	mission->abort();
 
 	removeMission(mission, player);

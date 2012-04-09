@@ -108,6 +108,7 @@ which carries forward this exception.
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
+#include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1505,4 +1506,59 @@ void PlayerObjectImplementation::clearScreenPlayData(const String& screenPlay) {
 		if (screenPlayData.elementAt(i).getKey().contains(screenPlay + "_"))
 			screenPlayData.drop(screenPlayData.elementAt(i).getKey());
 	}
+}
+
+void PlayerObjectImplementation::addToBountyLockList(uint64 playerId) {
+	if (bountyLockList.contains(playerId)) {
+		if (bountyLockList.get(playerId)->isScheduled()) {
+			bountyLockList.get(playerId)->cancel();
+		}
+	} else {
+		bountyLockList.put(playerId, new BountyHunterTefRemovalTask(_this, playerId));
+		updateBountyPvpStatus(playerId);
+	}
+}
+
+void PlayerObjectImplementation::removeFromBountyLockList(uint64 playerId, bool immediately) {
+	if (immediately) {
+		if (bountyLockList.contains(playerId)) {
+			if (bountyLockList.get(playerId)->isScheduled()) {
+				bountyLockList.get(playerId)->cancel();
+			}
+		}
+		bountyLockList.drop(playerId);
+		updateBountyPvpStatus(playerId);
+	} else {
+		if (bountyLockList.contains(playerId)) {
+			if (bountyLockList.get(playerId)->isScheduled()) {
+				//Reschedule for another 15 minutes tef.
+				bountyLockList.get(playerId)->reschedule(15 * 60 * 1000);
+			}
+		} else {
+			bountyLockList.put(playerId, new BountyHunterTefRemovalTask(_this, playerId));
+			bountyLockList.get(playerId)->schedule(15 * 60 * 1000);
+		}
+	}
+}
+
+void PlayerObjectImplementation::updateBountyPvpStatus(uint64 playerId) {
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(getParent());
+
+	if (creature == NULL) {
+		return;
+	}
+
+	ZoneServer* zoneServer = creature->getZoneServer();
+	if (zoneServer == NULL) {
+		return;
+	}
+
+	ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(playerId));
+
+	if (target == NULL) {
+		return;
+	}
+
+	creature->sendPvpStatusTo(target);
+	target->sendPvpStatusTo(creature);
 }

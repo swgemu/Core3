@@ -59,6 +59,8 @@ void BountyMissionObjectiveImplementation::abort() {
 
 	getPlayerOwner()->getZoneServer()->getMissionManager()->removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
 
+	removeFromBountyLock(true);
+
 	WaypointObject* waypoint = mission->getWaypointToMission();
 	if (waypoint != NULL && waypoint->isActive()) {
 		waypoint->setActive(false);
@@ -81,6 +83,8 @@ void BountyMissionObjectiveImplementation::complete() {
 	getPlayerOwner()->getZoneServer()->getPlayerManager()->awardExperience(getPlayerOwner(), "bountyhunter", mission->getRewardCredits() / 100, true, 1);
 
 	getPlayerOwner()->getZoneServer()->getMissionManager()->completePlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
+
+	removeFromBountyLock(true);
 
 	MissionObjectiveImplementation::complete();
 }
@@ -267,47 +271,17 @@ void BountyMissionObjectiveImplementation::addToBountyLock() {
 		return;
 	}
 
-	uint64 targetId = mission->getTargetObjectId();
-
-	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-	if (zoneServer == NULL) {
-		return;
-	}
-
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
-
-	if (creature == NULL) {
-		return;
-	}
-
-	ghost->addToBountyLockList(creature);
-	creature->sendPvpStatusTo(getPlayerOwner());
-	getPlayerOwner()->sendPvpStatusTo(creature);
+	ghost->addToBountyLockList(mission->getTargetObjectId());
 }
 
-void BountyMissionObjectiveImplementation::removeFromBountyLock() {
+void BountyMissionObjectiveImplementation::removeFromBountyLock(bool immediately) {
 	ManagedReference<PlayerObject*> ghost = getPlayerOwner()->getPlayerObject();
 
 	if (ghost == NULL) {
 		return;
 	}
 
-	uint64 targetId = mission->getTargetObjectId();
-
-	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-	if (zoneServer == NULL) {
-		return;
-	}
-
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
-
-	if (creature == NULL) {
-		return;
-	}
-
-	ghost->removeFromBountyLockList(creature);
-	creature->sendPvpStatusTo(getPlayerOwner());
-	getPlayerOwner()->sendPvpStatusTo(creature);
+	ghost->removeFromBountyLockList(mission->getTargetObjectId(), immediately);
 }
 
 void BountyMissionObjectiveImplementation::removePlayerTargetObservers() {
@@ -457,6 +431,7 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 			//Player killed by target, fail mission.
 			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 			killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
+			removeFromBountyLock(true);
 			fail();
 		}
 	}
@@ -483,7 +458,7 @@ void BountyMissionObjectiveImplementation::handleDefenderDropped(ManagedObject* 
 	if (getPlayerOwner() != NULL && defender != NULL) {
 		if (getPlayerOwner()->getObjectID() == defender->getObjectID() ||
 				mission->getTargetObjectId() == defender->getObjectID()) {
-			removeFromBountyLock();
+			removeFromBountyLock(false);
 		}
 	}
 }
