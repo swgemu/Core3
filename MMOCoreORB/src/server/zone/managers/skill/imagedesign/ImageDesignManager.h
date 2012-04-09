@@ -19,7 +19,7 @@
 class ImageDesignManager : public Singleton<ImageDesignManager>, public Object, public Logger {
 	void loadCustomizationData();
 	void updateColorVariable(const Vector<String>& fullVariables, uint32 value, TangibleObject* tano, int skillLevel);
-	int getSkillLevel(CreatureObject* imageDesigner);
+	int getSkillLevel(CreatureObject* imageDesigner, const String& skillMod);
 
 public:
 	ImageDesignManager();

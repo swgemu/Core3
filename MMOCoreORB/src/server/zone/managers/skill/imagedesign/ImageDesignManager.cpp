@@ -255,31 +255,48 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 		fullVariables.add(var);
 	}
 
-	int skillLevel = getSkillLevel(imageDesigner);
+	int skillLevel = getSkillLevel(imageDesigner, skillMod);
 
 	updateColorVariable(fullVariables, value, objectToUpdate, skillLevel);
 }
 
-int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner) {
-	int hairMod = imageDesigner->getSkillMod("hair");
+int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const String& skillMod) {
+	int hairMod = imageDesigner->getSkillMod(skillMod);
 
-	int skillLevel = -1;
+	if (imageDesigner->hasSkill("social_imagedesigner_master")) {
+		return 5;
+	}
 
-	if (hairMod >= 12) {
-		if (imageDesigner->hasSkill("social_imagedesigner_master")) {
-			skillLevel = 5;
-		} else
-			skillLevel = 4;
-	} else if (hairMod >= 10) {
-		skillLevel = 3;
-	} else if (hairMod >= 8) {
-		skillLevel = 2;
-	} else if (hairMod >= 6) {
-		skillLevel = 1;
-	} else if (hairMod >= 5)
-		skillLevel = 0;
+	String skillName = "social_imagedesigner_";
 
-	return skillLevel;
+	if (skillMod == "body")
+		skillName += "bodyform_0";
+	else if (skillMod == "face")
+		skillName += "exotic_0";
+	else if (skillMod == "hair")
+		skillName += "hairstyle_0";
+	else {
+		skillName += skillMod;
+		skillName += "_0";
+	}
+
+	//info("testing for " + skillName, true);
+
+	for (int i = 4; i >= 1; --i) {
+		String testName = skillName + String::valueOf(i);
+
+		//info("testing for " + testName, true);
+
+		if (imageDesigner->hasSkill(testName)) {
+			return i;
+		}
+	}
+
+	if (imageDesigner->hasSkill("social_imagedesigner_novice")) {
+		return 0;
+	}
+
+	return -1;
 }
 
 void ImageDesignManager::loadCustomizationData() {
@@ -400,7 +417,7 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 
 	data.parseFromClientString(hairCustomization);
 
-	if (validateCustomizationString(&data, appearanceFilename, getSkillLevel(imageDesigner)))
+	if (validateCustomizationString(&data, appearanceFilename, getSkillLevel(imageDesigner, "hair")))
 		tanoHair->setCustomizationString(hairCustomization);
 
 	return tanoHair;
