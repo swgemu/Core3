@@ -205,7 +205,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 		if (playerManager != NULL && designerCreature != targetCreature)
 			playerManager->awardExperience(designerCreature, "imagedesigner", xpGranted, true);
 
-		if (idTimeoutEvent->isScheduled())
+		if (idTimeoutEvent != NULL && idTimeoutEvent->isScheduled())
 			dequeueIdTimeoutEvent();
 	}
 
