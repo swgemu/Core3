@@ -134,6 +134,33 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
+		float forceCostCheck = forceCostMultiplier;
+
+		if (forceCostCheck > 0) { // Safe to assume this is a Jedi-skill...
+			ManagedReference<SceneObject*> chest = creature->getSlottedObject("chest2");
+			ManagedReference<SceneObject*> bicepr = creature->getSlottedObject("bicep_r");
+			ManagedReference<SceneObject*> bicepl = creature->getSlottedObject("bicep_l");
+			ManagedReference<SceneObject*> bracerr = creature->getSlottedObject("bracer_upper_r");
+			ManagedReference<SceneObject*> bracerl = creature->getSlottedObject("bracer_upper_l");
+			ManagedReference<SceneObject*> gloves = creature->getSlottedObject("gloves");
+			ManagedReference<SceneObject*> boots = creature->getSlottedObject("shoes");
+			ManagedReference<SceneObject*> pants = creature->getSlottedObject("pants1");
+			ManagedReference<SceneObject*> helmet = creature->getSlottedObject("hat");
+
+			if (( 		helmet != NULL && helmet->isArmorObject())
+					|| (pants != NULL && pants->isArmorObject())
+					|| (boots != NULL && boots->isArmorObject())
+					|| (gloves != NULL && gloves->isArmorObject())
+					|| (bracerl != NULL && bracerl->isArmorObject())
+					|| (bracerr != NULL && bracerr->isArmorObject())
+					|| (bicepl != NULL && bicepl->isArmorObject())
+					|| (bicepr != NULL && bicepr->isArmorObject())
+					|| (chest != NULL && chest->isArmorObject())){ // Check to see if player is wearing ANY armor pieces.
+					creature->sendSystemMessage("@jedi_spam:not_with_armor"); // 	You cannot use Force powers or lightsaber abilities while wearing armor.
+					return GENERALERROR;
+			}
+		}
+
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
 

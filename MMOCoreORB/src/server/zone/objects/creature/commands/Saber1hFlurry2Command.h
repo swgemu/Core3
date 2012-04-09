@@ -46,12 +46,14 @@ which carries forward this exception.
 #define SABER1HFLURRY2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class Saber1hFlurry2Command : public QueueCommand {
+class Saber1hFlurry2Command : public CombatQueueCommand {
 public:
 
 	Saber1hFlurry2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +65,13 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isJediOneHandedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

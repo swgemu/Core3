@@ -46,12 +46,14 @@ which carries forward this exception.
 #define FORCELIGHTNINGSINGLE2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class ForceLightningSingle2Command : public QueueCommand {
+class ForceLightningSingle2Command : public CombatQueueCommand {
 public:
 
 	ForceLightningSingle2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +65,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		return doCombatAction(creature, target);
 	}
 
 };

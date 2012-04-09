@@ -43,6 +43,31 @@
 
 ForceLightningSingle2Command = {
         name = "forcelightningsingle2",
+        
+                
+    damageMultiplier = 5.0,
+	speedMultiplier = 3.5,
+	forceCostMultiplier = 6.0,
+
+		stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
+
+	animationCRC = hashCode("force_lightning_1_particle_level_3_light"),
+
+	combatSpam = "forcelightningsingle2",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = 32
 }
 
 AddCommand(ForceLightningSingle2Command)

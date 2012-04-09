@@ -43,6 +43,51 @@
 
 Saber1hFlurry2Command = {
         name = "saber1hflurry2",
+        
+        
+    damageMultiplier = 4.5,
+	speedMultiplier = 1.5,
+	areaRange = 7,
+	areaAction = true,
+	forceCostMultiplier = 3.0,
+
+		stateEffects = {
+	   StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "dizzy_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  ),
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		30, 
+		100, 
+		10 
+	  )
+	},
+
+	animationCRC = hashCode("combo_jedi_4_light"),
+
+	combatSpam = "saber1hflurry2",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(Saber1hFlurry2Command)
