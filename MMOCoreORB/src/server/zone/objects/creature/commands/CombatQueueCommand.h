@@ -79,7 +79,9 @@ public:
 		healthCostMultiplier = 1;
 		actionCostMultiplier = 1;
 		mindCostMultiplier = 1;
-		forceCostMultiplier = 1;
+
+		// Force Power is only set in Jedi-skills.
+		forceCostMultiplier = 0;
 
 		poolsToDamage = CombatManager::RANDOM;
 
@@ -134,26 +136,20 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
-		/*float forceCostCheck = forceCostMultiplier;
+		float forceCostCheck = forceCostMultiplier;
 
 		if (forceCostCheck > 0) { // Safe to assume this is a Jedi-skill...
-
-			int armorEquipped = 0;
 
 			for (int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
 
 				SceneObject* item = creature->getSlottedObject(i);
 
 					if (item != NULL && item->isArmorObject()){
-						armorEquipped++;
+						creature->sendSystemMessage("@jedi_spam:not_with_armor"); // 	You cannot use Force powers or lightsaber abilities while wearing armor.
+						 return GENERALERROR;
 					}
-			}
-
-				if (armorEquipped > 0){
-					creature->sendSystemMessage("@jedi_spam:not_with_armor"); // 	You cannot use Force powers or lightsaber abilities while wearing armor.
-					return GENERALERROR;
 				}
-		}*/
+		}
 
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
