@@ -308,7 +308,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 		sendTo(_this, doClose);
 
 	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects
-			= getCloseObjects();
+	= getCloseObjects();
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* obj = cast<SceneObject*> (closeObjects->get(i).get());
@@ -379,7 +379,7 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 			if (player != _this && ((childArrangement == "bank")
 					|| (childArrangement == "inventory") || (childArrangement
-					== "datapad") || (childArrangement == "mission_bag"))) {
+							== "datapad") || (childArrangement == "mission_bag"))) {
 				sendWithoutContents = true;
 				break;
 			}
@@ -829,22 +829,22 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
 
 	// For Avoid Incap.
 
-		if (AI > 0 && newValue <= 0){
-			ManagedReference<PlayerObject*> playerObject = getPlayerObject();
-			if (playerObject != NULL){
-					float fP = (float)playerObject->getForcePower();
-					int forceCost = damage * 0.2;
-					if ((fP <= forceCost)) {
-						Buff* buff = cast<Buff*>(getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION));
+	if (AI > 0 && newValue <= 0){
+		ManagedReference<PlayerObject*> playerObject = getPlayerObject();
+		if (playerObject != NULL){
+			float fP = (float)playerObject->getForcePower();
+			int forceCost = damage * 0.2;
+			if ((fP <= forceCost)) {
+				Buff* buff = cast<Buff*>(getBuff(BuffCRC::JEDI_AVOID_INCAPACITATION));
 
-						if (buff != NULL){
-							removeBuff(buff);
-						}
-					} else {
-						playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-						newValue = 1;
-					}
+				if (buff != NULL){
+					removeBuff(buff);
+				}
+			} else {
+				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+				newValue = 1;
 			}
+		}
 	}
 
 	if (!destroy && newValue <= 0)
@@ -1277,7 +1277,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 					(uint8) newPosture), true);
 
 	setTurnScale(CreaturePosture::instance()->getTurnScale(
-					(uint8) newPosture), true);
+			(uint8) newPosture), true);
 
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
@@ -1752,6 +1752,26 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ghost->getSchematics()->addRewardedSchematics(ghost);
 
 	skillManager->updateXpLimits(ghost);
+
+	//update wearables vector, remove this after wipe
+	if (wearablesVector.size() == 0) {
+		SortedVector<ManagedReference<TangibleObject*> > uniqueObjects;
+		uniqueObjects.setNoDuplicateInsertPlan();
+
+		for (int i = 0; i < slottedObjects.size(); ++i) {
+			TangibleObject* object = dynamic_cast<TangibleObject*>(slottedObjects.get(i).get());
+
+			String arrangement = slottedObjects.elementAt(i).getKey();
+
+			if (object == NULL || arrangement == "mission_bag" || arrangement == "ghost" || arrangement == "bank")
+				continue;
+
+			uniqueObjects.put(object);
+		}
+
+		for (int i = 0; i < uniqueObjects.size(); ++i)
+			wearablesVector.add(uniqueObjects.get(i));
+	}
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
@@ -2068,13 +2088,13 @@ void CreatureObjectImplementation::clearBuffs(bool updateclient) {
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 	if (hasState(CreatureState::ALERT)){
-	// Following fixes beings 'stuck' in meditate after a server restart, by re-registering the observers if the player has the Alert (meditating) state.
-	SortedVector<ManagedReference<Observer* > >* observers = getObservers(ObserverEventType::POSITIONCHANGED);
+		// Following fixes beings 'stuck' in meditate after a server restart, by re-registering the observers if the player has the Alert (meditating) state.
+		SortedVector<ManagedReference<Observer* > >* observers = getObservers(ObserverEventType::POSITIONCHANGED);
 
-			if (observers == NULL) {
-				PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
-				registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
-			}
+		if (observers == NULL) {
+			PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
+			registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
+		}
 	}
 
 	notifyObservers(ObserverEventType::POSTURECHANGED, NULL, newPosture);
@@ -2137,7 +2157,7 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 	activatePassiveWoundRegeneration();
 
-	 /*//TODO: Refactor this with event handlers
+	/*//TODO: Refactor this with event handlers
 	 if (isMeditating()) {
 	 int meditateMod = getSkillMod("meditate");
 	 float meditateBonus = 1 + ((float)meditateMod / 100);
@@ -2434,6 +2454,42 @@ void CreatureObjectImplementation::createChildObjects() {
 		obj->initializeChildObject(_this);
 
 		transferObject(obj, child->getContainmentType());
+	}
+}
+
+void CreatureObjectImplementation::addWearableObject(TangibleObject* object, bool notifyClient) {
+	if (wearablesVector.contains(object))
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
+				_this);
+		msg->startUpdate(0x0F);
+		wearablesVector.add(object, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		wearablesVector.add(object);
+	}
+}
+
+void CreatureObjectImplementation::removeWearableObject(TangibleObject* object, bool notifyClient) {
+	int index = wearablesVector.find(object);
+
+	if (index == -1)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
+				_this);
+		msg->startUpdate(0x0F);
+		wearablesVector.remove(index, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		wearablesVector.remove(index);
 	}
 }
 

@@ -80,6 +80,7 @@ include server.zone.objects.creature.CreaturePosture;
 include server.zone.objects.creature.CreatureState;
 include server.zone.objects.creature.SpeedMultiplierModChanges;
 include server.zone.objects.creature.variables.Skill;
+include server.zone.objects.creature.variables.WearablesDeltaVector;
 import system.lang.Long;
 import engine.service.proto.BasePacket;
 
@@ -114,6 +115,9 @@ class CreatureObject extends TangibleObject {
 		
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
+	
+	@dereferenced
+	protected WearablesDeltaVector wearablesVector;
 	
 	protected float accelerationMultiplierBase;
 	protected float accelerationMultiplierMod;
@@ -631,6 +635,14 @@ class CreatureObject extends TangibleObject {
 	 * @param updateclient Should packets be sent to the player?
 	 */
 	public native void clearBuffs(boolean updateclient);
+	
+	public native void addWearableObject(TangibleObject object, boolean notifyClient = true);
+	public native void removeWearableObject(TangibleObject object, boolean notifyClient = true);
+	
+	@local
+	public WearablesDeltaVector getWearablesDeltaVector() {
+		return wearablesVector;
+	}
 	
 	public void sendBuffsTo(CreatureObject creature) {
 		creatureBuffs.sendTo(creature);

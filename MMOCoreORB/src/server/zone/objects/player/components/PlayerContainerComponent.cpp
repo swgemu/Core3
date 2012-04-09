@@ -107,8 +107,16 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 
 	//this it to update the equipment list
 	//we need a DeltaVector with all the slotted objects it seems
-	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);
+	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);*/
+
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0) {
+		String arrangement = object->getArrangementDescriptor(0);
+
+		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
+			creo->addWearableObject(cast<TangibleObject*>(object), true);
+		}
+	}
 
 	return ContainerComponent::notifyObjectInserted(sceneObject, object);
 }
@@ -150,8 +158,16 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	//this it to update the equipment list
 	//we need a DeltaVector with all the slotted objects it seems
-	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);
+	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
+	creo->broadcastMessage(msg6, true, true);*/
+
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0) {
+		String arrangement = object->getArrangementDescriptor(0);
+
+		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
+			creo->removeWearableObject(cast<TangibleObject*>(object), true);
+		}
+	}
 
 	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);
 }

@@ -253,6 +253,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/variables/Skill.h"
 
+#include "server/zone/objects/creature/variables/WearablesDeltaVector.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
@@ -415,6 +417,12 @@ public:
 	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
+
+	void addWearableObject(TangibleObject* object, bool notifyClient = true);
+
+	void removeWearableObject(TangibleObject* object, bool notifyClient = true);
+
+	WearablesDeltaVector* getWearablesDeltaVector();
 
 	void sendBuffsTo(CreatureObject* creature);
 
@@ -924,6 +932,8 @@ protected:
 
 	DeltaVector<int> encumbrances;
 
+	WearablesDeltaVector wearablesVector;
+
 	float accelerationMultiplierBase;
 
 	float accelerationMultiplierMod;
@@ -1166,6 +1176,12 @@ public:
 	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
+
+	void addWearableObject(TangibleObject* object, bool notifyClient = true);
+
+	void removeWearableObject(TangibleObject* object, bool notifyClient = true);
+
+	WearablesDeltaVector* getWearablesDeltaVector();
 
 	void sendBuffsTo(CreatureObject* creature);
 
@@ -1759,6 +1775,10 @@ public:
 	bool removeStateBuff(unsigned long long state);
 
 	void clearBuffs(bool updateclient);
+
+	void addWearableObject(TangibleObject* object, bool notifyClient);
+
+	void removeWearableObject(TangibleObject* object, bool notifyClient);
 
 	void sendBuffsTo(CreatureObject* creature);
 

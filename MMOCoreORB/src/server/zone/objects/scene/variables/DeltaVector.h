@@ -68,7 +68,7 @@ public:
 			message->insertShort(idx);
 
 			E& nonconst = const_cast<E&>(newValue);
-			TypeInfo<E>::toBinaryStream(&nonconst, message);
+			insertItemToMessage(&nonconst, message);
 		}
 
 		return object;
@@ -85,7 +85,7 @@ public:
 			message->insertShort(vector.size() - 1);
 
 			E& nonconst = const_cast<E&>(element);
-			TypeInfo<E>::toBinaryStream(&nonconst, message);
+			insertItemToMessage(&nonconst, message);
 		}
 
 		return val;
@@ -124,8 +124,12 @@ public:
 
 		for (int i = 0; i < size(); ++i) {
 			E& value = get(i);
-			TypeInfo<E>::toBinaryStream(&value, msg);
+			insertItemToMessage(&value, msg);
 		}
+	}
+
+	virtual void insertItemToMessage(E* item, BaseMessage* msg) {
+		TypeInfo<E>::toBinaryStream(item, msg);
 	}
 
 	virtual bool contains(const E& element) {
