@@ -261,8 +261,6 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 }
 
 int ImageDesignManager::getSkillLevel(CreatureObject* imageDesigner, const String& skillMod) {
-	int hairMod = imageDesigner->getSkillMod(skillMod);
-
 	if (imageDesigner->hasSkill("social_imagedesigner_master")) {
 		return 5;
 	}
@@ -486,7 +484,7 @@ bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* pale
 				break;
 			}
 
-			if (value >= maxIndex) {
+			if (value >= maxIndex || value < 0) {
 				instance()->error("value for " + paletteFileName + " value " + value + " outside bound " + String::valueOf(maxIndex));
 
 				return false;
