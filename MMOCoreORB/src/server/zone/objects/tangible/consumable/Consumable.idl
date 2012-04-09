@@ -91,7 +91,7 @@ class Consumable extends TangibleObject {
 	public static final int EFFECT_INSTANT = 0x00;
 	public static final int EFFECT_ATTRIBUTE = 0x01;
 	public static final int EFFECT_DURATION = 0x02;
-	public static final int EFFECT_EVENT = 0x03;
+	public static final int EFFECT_DELAYED = 0x03;
 	public static final int EFFECT_SKILL = 0x04;
 	public static final int EFFECT_SPICE = 0x05;
 	public static final int EFFECT_HEALING = 0x06;

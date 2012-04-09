@@ -155,7 +155,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 	}
 
-	case EFFECT_EVENT: {
+	case EFFECT_DELAYED: {
 		buff = new DelayedBuff(player, buffName.hashCode(), duration);
 		setModifiers(buff, true);
 
@@ -394,7 +394,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 		break;
 	}
-	case EFFECT_EVENT: {
+	case EFFECT_DELAYED: {
 
 		if (filling > 0) {
 			if (isFood())
