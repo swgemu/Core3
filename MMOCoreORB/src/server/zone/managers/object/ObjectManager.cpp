@@ -464,7 +464,7 @@ int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 		ManagedObject* managedObject = cast<ManagedObject*>(object);
 		ObjectOutputStream* objectData = new ObjectOutputStream(500);
 
-		(cast<ManagedObject*>(object))->writeObject(objectData);
+		managedObject->writeObject(objectData);
 
 		uint64 oid = object->_getObjectID();
 
@@ -727,8 +727,11 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			SceneObject* scene = cast<SceneObject*>(object);
 
 			String loggingName = scene->getLoggingName();
+			uint32 templateObjectType = scene->getGameObjectType();
 
 			deSerializeObject(scene, &objectData);
+
+			scene->setGameObjectType(templateObjectType); // we dont want this to be the old one
 
 			scene->setLoggingName(loggingName);
 
