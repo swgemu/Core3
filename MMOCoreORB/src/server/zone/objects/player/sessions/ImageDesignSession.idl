@@ -58,6 +58,7 @@ include server.zone.managers.skill.imagedesign.ImageDesignManager;
 import server.zone.objects.player.events.ImageDesignTimeoutEvent;
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.player.sessions.ImageDesignData;
+import server.zone.objects.player.sessions.ImageDesignPositionObserver;
 
 class ImageDesignSession extends Facade {
 	@weakReference
@@ -73,6 +74,8 @@ class ImageDesignSession extends Facade {
 	protected ImageDesignData imageDesignData;
 	
 	protected TangibleObject hairObject;
+	
+	protected ImageDesignPositionObserver positionObserver;
 
 	protected transient ImageDesignTimeoutEvent idTimeoutEvent;
 	
@@ -81,9 +84,7 @@ class ImageDesignSession extends Facade {
 		Logger.setLogging(true);
 		
 		initializeSession();
-
 	}
-	
 
 	public native void initializeTransientMembers();
 	
@@ -117,23 +118,14 @@ class ImageDesignSession extends Facade {
 		targetCreature = null;
 		imageDesignManager = null;
 		idTimeoutEvent = null;
+		positionObserver = null;
 
 		return 0;
 	}
 	
 	public native int doPayment();
 	
-	public int cancelSession() {
-		if (designerCreature != null)
-			designerCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
-
-		if (targetCreature != null)
-			targetCreature.dropActiveSession(SessionFacadeType.IMAGEDESIGN);
-
-		dequeueIdTimeoutEvent();
-
-		return 0;
-	}
+	public native int cancelSession();
 	
 	public int clearSession() {
 		return 0;
@@ -142,24 +134,26 @@ class ImageDesignSession extends Facade {
 	public void clearIdTimeoutEvent() {
 		idTimeoutEvent = null;
 	}
+	
+	public native void checkDequeueEvent();
+	
+	public void queueIdTimeoutEvent() {
+		if (idTimeoutEvent == null)
+			idTimeoutEvent = new ImageDesignTimeoutEvent(this);
+		
+		if (!idTimeoutEvent.isScheduled())
+			idTimeoutEvent.schedule(30000);
+	}
 
 	public void dequeueIdTimeoutEvent() {
 		if (idTimeoutEvent != null) {
-			idTimeoutEvent.cancel();
+			
+			if (idTimeoutEvent.isScheduled())
+				idTimeoutEvent.cancel();
+			
 			idTimeoutEvent = null;
 		}
 	}
 
-	public void sessionTimeout() {
-		if (designerCreature != null) {
-			designerCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
-			//cancelImageDesign(designerCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0, @dereference imageDesignData);
-		}
-		
-		if (targetCreature != null) {
-			targetCreature.sendSystemMessage("Image Design session has timed out. Changes aborted.");
-			//cancelImageDesign(targetCreature.getObjectID(), designerCreature.getObjectID(), targetCreature.getObjectID(), 0, 0, @dereference imageDesignData);
-		}
-		
-	}
+	public native void sessionTimeout();
 }

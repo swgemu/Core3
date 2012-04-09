@@ -209,6 +209,10 @@ public:
 		return (bool) targetAccepted;
 	}
 
+	inline bool isStatMigrationRequested() {
+		return (bool) statMigrationRequested;
+	}
+
 	inline uint32 getRequiredPayment() {
 		return requiredPayment;
 	}

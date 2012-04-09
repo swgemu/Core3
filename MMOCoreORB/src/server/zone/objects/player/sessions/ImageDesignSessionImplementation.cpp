@@ -15,27 +15,63 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
-
+#include "ImageDesignPositionObserver.h"
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
+#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();
+}
 
-	if (idTimeoutEvent == NULL) {
-		idTimeoutEvent = new ImageDesignTimeoutEvent(_this);
-		idTimeoutEvent->schedule(1000);
-	} else {
-		idTimeoutEvent->reschedule(1000);
+int ImageDesignSessionImplementation::cancelSession() {
+	if (designerCreature != NULL) {
+		designerCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
+
+		if (positionObserver != NULL)
+			designerCreature->dropObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
 	}
+
+	if (targetCreature != NULL) {
+		targetCreature->dropActiveSession(SessionFacadeType::IMAGEDESIGN);
+
+		if (positionObserver != NULL)
+			targetCreature->dropObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
+	}
+
+	dequeueIdTimeoutEvent();
+
+	return 0;
 }
 
 void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
-	uint64 tentID = 0; // Equals False, that controls if you can stat migrate or not (only in a Salon).
+	uint64 designerTentID = 0; // Equals False, that controls if you can stat migrate or not (only in a Salon).
+	uint64 targetTentID = 0;
 
 	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObjectType::SALONBUILDING);
 
 	if (obj != NULL) // If they are in a salon, enable the tickmark for stat migration.
-		tentID = obj->getObjectID();
+		designerTentID = obj->getObjectID();
+
+	if (designerTentID != 0) {
+		obj = targetPlayer->getParentRecursively(SceneObjectType::SALONBUILDING);
+
+		if (obj != NULL)
+			targetTentID = obj->getObjectID();
+
+		if (targetTentID != 0) {
+			positionObserver = new ImageDesignPositionObserver(_this);
+
+			designer->registerObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
+
+			if (targetPlayer != designer)
+				targetPlayer->registerObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
+		}
+	}
+
+	if (targetTentID == 0 || designerTentID == 0) {
+		targetTentID = 0;
+		designerTentID = 0;
+	}
 
 	designer->addActiveSession(SessionFacadeType::IMAGEDESIGN, _this);
 
@@ -43,13 +79,13 @@ void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer
 
 	TangibleObject* targetHair = dynamic_cast<TangibleObject*>(targetPlayer->getSlottedObject("hair"));
 
-	ImageDesignStartMessage* msg = new ImageDesignStartMessage(designer, designer, targetPlayer, tentID, hairTemplate);
+	ImageDesignStartMessage* msg = new ImageDesignStartMessage(designer, designer, targetPlayer, designerTentID, hairTemplate);
 	designer->sendMessage(msg);
 
 	if (designer != targetPlayer) {
 		targetPlayer->addActiveSession(SessionFacadeType::IMAGEDESIGN, _this);
 
-		ImageDesignStartMessage* msg2 = new ImageDesignStartMessage(targetPlayer, designer, targetPlayer, tentID, hairTemplate);
+		ImageDesignStartMessage* msg2 = new ImageDesignStartMessage(targetPlayer, designer, targetPlayer, targetTentID, hairTemplate);
 		targetPlayer->sendMessage(msg2);
 	}
 
@@ -78,6 +114,9 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 	else
 		targetObject = designerCreature;
 
+	//ManagedReference<SceneObject*> obj = targetObject->getParentRecursively(SceneObjectType::SALONBUILDING);
+	//tent = obj != NULL ? obj->getObjectID()
+
 	ImageDesignChangeMessage* message = new ImageDesignChangeMessage(targetObject->getObjectID(), designer, targetPlayer, tent, type);
 
 	imageDesignData.insertToMessage(message);
@@ -89,6 +128,9 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		if (designerCreature != targetCreature && !imageDesignData.isAcceptedByTarget()) {
 			commitChanges = false;
+
+			if (idTimeoutEvent == NULL)
+				idTimeoutEvent = new ImageDesignTimeoutEvent(_this);
 
 			if (!idTimeoutEvent->isScheduled())
 				idTimeoutEvent->schedule(120000); //2 minutes
@@ -103,7 +145,22 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		int xpGranted = 50; // Minimum Image Design XP granted (base amount).
 
+		//if (imageDesignData.mi)
+
 		String hairTemplate = imageDesignData.getHairTemplate();
+
+		bool statMig = imageDesignData.isStatMigrationRequested();
+
+		if (statMig && targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING)
+				&& designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) && designerCreature != targetCreature) {
+
+			ManagedReference<Facade*> facade = targetCreature->getActiveSession(SessionFacadeType::MIGRATESTATS);
+			ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
+
+			if (session != NULL) {
+				session->migrateStats();
+			}
+		}
 
 		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
 		VectorMap<String, uint32>* colorAttributes = imageDesignData.getColorAttributesMap();
@@ -177,7 +234,56 @@ int ImageDesignSessionImplementation::doPayment() {
 
 }
 
+void ImageDesignSessionImplementation::checkDequeueEvent() {
+	ManagedReference<SceneObject*> strongReferenceTarget = targetCreature.get();
+	ManagedReference<SceneObject*> strongReferenceDesigner = designerCreature.get();
+
+	if (targetCreature == NULL || designerCreature == NULL)
+		return;
+
+	Locker locker(designerCreature);
+	Locker clocker(targetCreature, designerCreature);
+
+	if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
+		return;
+
+	dequeueIdTimeoutEvent();
+}
+
+void ImageDesignSessionImplementation::sessionTimeout() {
+	ManagedReference<SceneObject*> strongReferenceTarget = targetCreature.get();
+	ManagedReference<SceneObject*> strongReferenceDesigner = designerCreature.get();
+
+	if (designerCreature != NULL) {
+		Locker locker(designerCreature);
+
+		if (designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
+			designerCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+
+			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);
+
+			return;
+		}
+	}
+
+	if (targetCreature != NULL) {
+		Locker locker(designerCreature);
+		Locker clocker(targetCreature, designerCreature);
+
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || imageDesignData.isAcceptedByDesigner()) {
+			targetCreature->sendSystemMessage("Image Design session has timed out. Changes aborted.");
+
+			cancelImageDesign(designerCreature->getObjectID(), targetCreature->getObjectID(), 0, 0, imageDesignData);
+
+			return;
+		}
+	}
+}
+
 void ImageDesignSessionImplementation::cancelImageDesign(uint64 designer, uint64 targetPlayer, uint64 tent, int type, const ImageDesignData& data) {
+	ManagedReference<SceneObject*> strongReferenceTarget = targetCreature.get();
+	ManagedReference<SceneObject*> strongReferenceDesigner = designerCreature.get();
+
 	if (targetCreature == NULL || designerCreature == NULL)
 		return;
 

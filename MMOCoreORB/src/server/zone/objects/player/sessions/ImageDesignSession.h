@@ -55,6 +55,22 @@ class ImageDesignTimeoutEvent;
 
 using namespace server::zone::objects::player::events;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sessions {
+
+class ImageDesignPositionObserver;
+
+} // namespace sessions
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sessions;
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -103,6 +119,10 @@ public:
 
 	void clearIdTimeoutEvent();
 
+	void checkDequeueEvent();
+
+	void queueIdTimeoutEvent();
+
 	void dequeueIdTimeoutEvent();
 
 	void sessionTimeout();
@@ -145,6 +165,8 @@ protected:
 
 	ManagedReference<TangibleObject* > hairObject;
 
+	ManagedReference<ImageDesignPositionObserver* > positionObserver;
+
 	Reference<ImageDesignTimeoutEvent* > idTimeoutEvent;
 
 public:
@@ -169,6 +191,10 @@ public:
 	int clearSession();
 
 	void clearIdTimeoutEvent();
+
+	void checkDequeueEvent();
+
+	void queueIdTimeoutEvent();
 
 	void dequeueIdTimeoutEvent();
 
@@ -228,6 +254,10 @@ public:
 	int clearSession();
 
 	void clearIdTimeoutEvent();
+
+	void checkDequeueEvent();
+
+	void queueIdTimeoutEvent();
 
 	void dequeueIdTimeoutEvent();
 

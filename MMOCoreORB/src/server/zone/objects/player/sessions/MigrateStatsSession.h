@@ -71,6 +71,8 @@ public:
 
 	int clearSession();
 
+	int getAttributeToModifyCount();
+
 	void setAttributeToModify(int attribute, int value);
 
 	int getAttribtueToModify(int attribute);
@@ -119,6 +121,8 @@ public:
 	int cancelSession();
 
 	int clearSession();
+
+	int getAttributeToModifyCount();
 
 	void setAttributeToModify(int attribute, int value);
 
@@ -174,6 +178,8 @@ public:
 	int cancelSession();
 
 	int clearSession();
+
+	int getAttributeToModifyCount();
 
 	void setAttributeToModify(int attribute, int value);
 

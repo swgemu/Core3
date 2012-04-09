@@ -94,6 +94,10 @@ class MigrateStatsSession extends Facade {
 		return 0;
 	}
 	
+	public int getAttributeToModifyCount() {
+		return attributesToModify.size();
+	}
+	
 	public void setAttributeToModify(int attribute, int value) {
 		attributesToModify.set(attribute, value);
 	}

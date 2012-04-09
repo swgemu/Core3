@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,56 +38,35 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef REQUESTSTATMIGRATIONDATACOMMAND_H_
-#define REQUESTSTATMIGRATIONDATACOMMAND_H_
-
+#include "ImageDesignPositionObserver.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sessions/MigrateStatsSession.h"
-#include "server/zone/packets/player/StatMigrationTargetsMessage.h"
+#include "ImageDesignSession.h"
 
-class RequestStatMigrationDataCommand : public QueueCommand {
-public:
+int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	ManagedReference<ImageDesignSession*> strongRef = session.get();
 
-	RequestStatMigrationDataCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	if (strongRef == NULL)
+		return 1;
 
+	if (eventType != ObserverEventType::POSITIONCHANGED)
+		return 1;
+
+	SceneObject* scene = dynamic_cast<SceneObject*>(observable);
+
+	if (scene == NULL)
+		return 1;
+
+	if (scene->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL) {
+		//queue the timeout
+		session->queueIdTimeoutEvent();
+	} else {
+		//cancel the timeout
+		session->checkDequeueEvent();
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
-		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
-
-		if (session == NULL) {
-			session = new MigrateStatsSession(creature);
-
-			DeltaVector<int>* baseHam = creature->getBaseHAM();
-
-			for (int i = 0; i < 9; ++i) {
-				session->setAttributeToModify(i, baseHam->get(i));
-			}
-
-			creature->addActiveSession(SessionFacadeType::MIGRATESTATS, session);
-
-			StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(creature);
-			creature->sendMessage(smtm);
-		} else {
-			StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(creature, session);
-			creature->sendMessage(smtm);
-		}
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //REQUESTSTATMIGRATIONDATACOMMAND_H_
+	return 0;
+}

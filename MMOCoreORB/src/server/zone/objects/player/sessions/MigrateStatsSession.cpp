@@ -12,7 +12,7 @@
  *	MigrateStatsSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SETATTRIBUTETOMODIFY__INT_INT_,RPC_GETATTRIBTUETOMODIFY__INT_,RPC_MIGRATESTATS__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETATTRIBUTETOMODIFYCOUNT__,RPC_SETATTRIBUTETOMODIFY__INT_INT_,RPC_GETATTRIBTUETOMODIFY__INT_,RPC_MIGRATESTATS__};
 
 MigrateStatsSession::MigrateStatsSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	MigrateStatsSessionImplementation* _implementation = new MigrateStatsSessionImplementation(parent);
@@ -67,6 +67,19 @@ int MigrateStatsSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
+}
+
+int MigrateStatsSession::getAttributeToModifyCount() {
+	MigrateStatsSessionImplementation* _implementation = static_cast<MigrateStatsSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETATTRIBUTETOMODIFYCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getAttributeToModifyCount();
 }
 
 void MigrateStatsSession::setAttributeToModify(int attribute, int value) {
@@ -308,6 +321,11 @@ int MigrateStatsSessionImplementation::clearSession() {
 	return 0;
 }
 
+int MigrateStatsSessionImplementation::getAttributeToModifyCount() {
+	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return attributesToModify.size();
+	return (&attributesToModify)->size();
+}
+
 void MigrateStatsSessionImplementation::setAttributeToModify(int attribute, int value) {
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		attributesToModify.set(attribute, value);
 	(&attributesToModify)->set(attribute, value);
@@ -363,6 +381,9 @@ void MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
 		break;
+	case RPC_GETATTRIBUTETOMODIFYCOUNT__:
+		resp->insertSignedInt(getAttributeToModifyCount());
+		break;
 	case RPC_SETATTRIBUTETOMODIFY__INT_INT_:
 		setAttributeToModify(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
@@ -387,6 +408,10 @@ int MigrateStatsSessionAdapter::cancelSession() {
 
 int MigrateStatsSessionAdapter::clearSession() {
 	return (static_cast<MigrateStatsSession*>(stub))->clearSession();
+}
+
+int MigrateStatsSessionAdapter::getAttributeToModifyCount() {
+	return (static_cast<MigrateStatsSession*>(stub))->getAttributeToModifyCount();
 }
 
 void MigrateStatsSessionAdapter::setAttributeToModify(int attribute, int value) {

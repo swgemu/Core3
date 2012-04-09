@@ -60,16 +60,27 @@ public:
 		for (int i = 0; i < 9; ++i) {
 			insertInt(baseHam->get(i));
 		}
-		/*insertInt(player->getMigrationHealth()); // Health Migration
-		insertInt(player->getMigrationStrength()); // Strength Migration
-		insertInt(player->getMigrationConstitution()); // Constitution Migration
-		insertInt(player->getMigrationAction()); // Action Migration
-		insertInt(player->getMigrationQuickness()); // Quickness Migration
-		insertInt(player->getMigrationStamina()); // Stamina Migration
-		insertInt(player->getMigrationMind()); // Mind Migration
-		insertInt(player->getMigrationFocus()); // Focus Migration
-		insertInt(player->getMigrationWillpower()); // Willpower Migration*/
+
 		insertInt(0); // Points Remaining
+
+		setCompression(true);
+	}
+
+	StatMigrationTargetsMessage(CreatureObject* creo, MigrateStatsSession* stats) {
+		insertShort(0x09);
+		insertInt(0xEFAC38C4);  // CRC
+
+		int totalLimit = PlayerCreationManager::instance()->getTotalAttributeLimit(creo->getSpeciesName());
+
+		for (int i = 0; i < 9; ++i) {
+			int val = stats->getAttribtueToModify(i);
+
+			totalLimit -= val;
+
+			insertInt(val);
+		}
+
+		insertInt(totalLimit);
 
 		setCompression(true);
 	}

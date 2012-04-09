@@ -42,6 +42,7 @@
 
 
 object_building_tatooine_salon_tatooine = object_building_tatooine_shared_salon_tatooine:new {
+	gameObjectType = 530,
 	planetMapCategory = "salon"
 }
 

@@ -62,7 +62,7 @@ namespace player {
 namespace events {
 
 class ImageDesignTimeoutEvent: public Task {
-	ManagedReference<ImageDesignSession*> idSession;
+	ManagedWeakReference<ImageDesignSession*> idSession;
 
 public:
 	ImageDesignTimeoutEvent(ImageDesignSession* session) {
@@ -70,8 +70,12 @@ public:
 	}
 
 	void run() {
-		idSession->sessionTimeout();
+		ManagedReference<ImageDesignSession*> session = idSession.get();
 
+		if (session == NULL)
+			return;
+
+		idSession->sessionTimeout();
 	}
 
 };

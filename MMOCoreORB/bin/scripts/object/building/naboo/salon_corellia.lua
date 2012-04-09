@@ -42,6 +42,7 @@
 
 
 object_building_naboo_salon_corellia = object_building_naboo_shared_salon_corellia:new {
+	gameObjectType = 530,
 	planetMapCategory = "salon"
 }
 
