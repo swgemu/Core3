@@ -80,8 +80,6 @@ public:
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
-
-				buff->useCharge();
 			}
 		}
 
