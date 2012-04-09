@@ -42,7 +42,8 @@
 
 
 object_building_poi_scout_camp_s1 = object_building_poi_shared_scout_camp_s1:new {
-templateType = CAMPSTRUCTURE,
+	-- Multiperson
+	templateType = CAMPSTRUCTURE,
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
@@ -53,7 +54,7 @@ templateType = CAMPSTRUCTURE,
 	duration = 3600,
 	radius = 15,
 	experience = 640,
-	skillRequired = 5,
+	skillRequired = 20,
 
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
