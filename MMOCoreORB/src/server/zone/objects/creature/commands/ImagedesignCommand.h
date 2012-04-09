@@ -139,6 +139,7 @@ public:
 
 		//Create Session
 		session = new ImageDesignSession(designer);
+		session->deploy();
 		session->startImageDesign(designer, playerTarget);
 
 		return SUCCESS;
