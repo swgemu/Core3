@@ -75,6 +75,8 @@ using namespace server::zone::objects::tangible::consumable;
 
 #include "server/zone/objects/creature/buffs/BuffType.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
+
 #include "server/chat/StringIdChatParameter.h"
 
 #include "engine/core/ManagedObject.h"

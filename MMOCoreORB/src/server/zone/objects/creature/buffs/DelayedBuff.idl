@@ -55,6 +55,7 @@ include server.zone.ZoneProcessServer;
 import server.zone.objects.creature.buffs.BuffDurationEvent;
 import server.zone.objects.creature.buffs.Buff;
 include server.zone.objects.creature.buffs.BuffType;
+include server.zone.managers.object.ObjectManager;
 include server.chat.StringIdChatParameter;
 import server.zone.objects.tangible.consumable.DelayedBuffObserver;
 
@@ -77,6 +78,7 @@ class DelayedBuff extends Buff {
 	@local
 	public void init(Vector<int> events) {
 		observer = new DelayedBuffObserver(this);
+		ObjectManager.instance().persistObject(observer, 1, "buffs");
 		
 		for(int i = 0; i < events.size(); ++i) {
 			eventTypes.add(events.get(i));

@@ -286,6 +286,8 @@ void DelayedBuffImplementation::init(Vector<int>* events) {
 	ManagedReference<DelayedBuffObserver*> _ref0;
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		observer = new DelayedBuffObserver(this);
 	observer = _ref0 = new DelayedBuffObserver(_this);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		ObjectManager.instance().persistObject(observer, 1, "buffs");
+	ObjectManager::instance()->persistObject(observer, 1, "buffs");
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		}
 	for (	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		for(int i = 0;
 	int i = 0;

@@ -154,6 +154,11 @@ bool DelayedBuffObserverImplementation::readObjectMember(ObjectInputStream* stre
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "DelayedBuffObserver.buff") {
+		TypeInfo<ManagedReference<DelayedBuff* > >::parseFromBinaryStream(&buff, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -171,8 +176,16 @@ int DelayedBuffObserverImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint32 _totalSize;
+	_name = "DelayedBuffObserver.buff";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<DelayedBuff* > >::toBinaryStream(&buff, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 0;
+
+	return _count + 1;
 }
 
 DelayedBuffObserverImplementation::DelayedBuffObserverImplementation(DelayedBuff* b) : ObserverImplementation() {

@@ -52,7 +52,7 @@ import server.zone.objects.creature.buffs.DelayedBuff;
 class DelayedBuffObserver extends Observer implements Logger {
 
 	@weakreference
-	protected transient DelayedBuff buff;
+	protected DelayedBuff buff;
 
 	public DelayedBuffObserver(DelayedBuff b) {
 		super();
