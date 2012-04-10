@@ -179,6 +179,7 @@ function vardias_tyne_screenplay:notifyEnteredArea2(pActiveArea, pMovingObject)
 		end
 	end
 	
+	return 0
 	
 end
 
