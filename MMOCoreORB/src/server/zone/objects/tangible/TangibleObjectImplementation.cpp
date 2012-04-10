@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "TangibleObject.h"
 #include "variables/SkillModMap.h"
@@ -64,6 +64,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/Zone.h"
+#include "tasks/ClearDefenderListsTask.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
@@ -272,7 +273,7 @@ void TangibleObjectImplementation::removeDefenders() {
 }
 
 void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
-		//info("trying to remove defender");
+	//info("trying to remove defender");
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defenderList.get(i) == defender) {
 			info("removing defender");
@@ -442,33 +443,10 @@ void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destruc
 	if (defenderList.size() == 0)
 		return;
 
-	if (destructor != _this)
-		destructor->unlock();
+	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, _this);
+	task->execute();
 
-	Locker locker(_this);
-
-	try {
-		for (int i = 0; i < defenderList.size(); ++i) {
-			SceneObject* defender = defenderList.get(i);
-
-			if (!defender->isTangibleObject())
-				continue;
-
-			Locker clocker(defender, _this);
-
-			(cast<TangibleObject*>(defender))->removeDefender(_this);
-		}
-
-		clearCombatState(true);
-	} catch (...) {
-		if (destructor != _this)
-			destructor->wlock(_this);
-
-		throw;
-	}
-
-	if (destructor != _this)
-		destructor->wlock(_this);
+	clearCombatState(true);
 }
 
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient) {
