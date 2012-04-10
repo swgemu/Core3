@@ -46,8 +46,6 @@ object_tangible_wearables_bikini_bikini_leggings_s01 = object_tangible_wearables
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
 				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
 				"object/creature/player/moncal_male.iff",
 				"object/creature/player/moncal_female.iff",
 				"object/creature/player/rodian_male.iff",

@@ -82,8 +82,6 @@ object_tangible_wearables_dress_dress_s12 = object_tangible_wearables_dress_shar
 				"object/mobile/vendor/twilek_female.iff",
 				"object/mobile/vendor/twilek_male.iff",
 				"object/mobile/vendor/weequay_male.iff",
-				"object/mobile/vendor/wookiee_female.iff",
-				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
 

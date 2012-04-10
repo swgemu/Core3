@@ -77,8 +77,6 @@ object_tangible_wearables_armor_bounty_hunter_armor_bounty_hunter_gloves = objec
 				"object/mobile/vendor/rodian_male.iff",
 				"object/mobile/vendor/sullustan_female.iff",
 				"object/mobile/vendor/sullustan_male.iff",
-				"object/mobile/vendor/trandoshan_female.iff",
-				"object/mobile/vendor/trandoshan_male.iff",
 				"object/mobile/vendor/twilek_female.iff",
 				"object/mobile/vendor/twilek_male.iff",
 				"object/mobile/vendor/weequay_male.iff",
