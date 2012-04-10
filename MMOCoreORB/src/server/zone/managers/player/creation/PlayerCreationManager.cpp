@@ -713,6 +713,8 @@ void PlayerCreationManager::addHair(CreatureObject* creature, const String& hair
 		return;
 
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
+	tanoHair->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+	tanoHair->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 
 	String appearanceFilename = tanoHair->getObjectTemplate()->getAppearanceFilename();
 
