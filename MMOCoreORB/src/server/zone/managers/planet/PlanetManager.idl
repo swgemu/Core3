@@ -72,6 +72,7 @@ include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
 include server.zone.objects.creature.CreaturePosture;
 include server.zone.managers.planet.ClientPoiDataTable;
+include server.zone.managers.planet.TravelFare;
 import server.zone.objects.area.ActiveArea;
 
 class PlanetManager extends ManagedService implements Logger {
@@ -85,7 +86,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient ShuttleMap shuttleMap;
 	
 	@dereferenced
-	protected VectorMap<string, int> travelFares;
+	protected TravelFare travelFares;
 	
 	protected PlanetTravelPointList planetTravelPointList;
 	
@@ -123,7 +124,6 @@ class PlanetManager extends ManagedService implements Logger {
 
 		weatherManager = null;
 		
-		travelFares.setNullValue(0);
 		travelFares.setNoDuplicateInsertPlan();
 		
 		planetTravelPointList = new PlanetTravelPointList();
@@ -178,9 +178,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @param destinationPlanet The planet that to which is being travelled. Can be the same planet.
 	 * @return The cost to travel to the destination planet.
 	 */
-	public int getTravelFare(final string destinationPlanet) {
-		return travelFares.get(destinationPlanet);
-	}
+	public native int getTravelFare(final string departurePlanet, final string arrivalPlanet);
 	
 	public native void sendPlanetTravelPointListResponse(CreatureObject player);
 	

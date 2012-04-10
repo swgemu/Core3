@@ -162,8 +162,7 @@ class EnhancePack extends PharmaceuticalObject {
 		
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();
-		
-		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100) + 1.0f;	
+		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100);	
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
 		return power * modEnvironment * ((100 + modSkill) / 100);

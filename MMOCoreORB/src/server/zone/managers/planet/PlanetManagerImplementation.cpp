@@ -211,26 +211,41 @@ void PlanetManagerImplementation::loadTravelFares() {
 
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
+	for(int i=0; i<dtiff.getTotalRows();i++) {
+		VectorMap<String, int> planetFares;
+		DataTableRow* row =  dtiff.getRow(i);
+		String departurePlanet = "";
+		row->getCell(0)->getValue(departurePlanet);
 
-	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getZoneName());
+		for(int j=1; j<dtiff.getTotalColumns(); j++) {
+			String arrivalPlanet = dtiff.getColumnNameByIndex(j);
+			int fare = 0;
+			row->getCell(j)->getValue(fare);
+			planetFares.put(arrivalPlanet, fare);
+			System::out << "Row: " << arrivalPlanet << " " << fare << endl;
+		}
 
-	if (rows.size() <= 0) {
-		warning("Travel fares could not be found.");
-		return;
+		travelFares.put(departurePlanet, planetFares);
 	}
 
-	DataTableRow* row = rows.get(0);
+	/*DataTableRow* row = rows.get(0);
 
 	//We want to skip the initial column.
 	for (int i = 1; i < dtiff.getTotalColumns(); ++i) {
 		String planetName = dtiff.getColumnNameByIndex(i);
+		VectorMap<String, int> planetMap;
 		int fare = 0;
 		row->getCell(i)->getValue(fare);
 
 		travelFares.put(planetName, fare);
-	}
+	}*/
 
 	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.");
+}
+
+int PlanetManagerImplementation::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
+	int fare = travelFares.get(departurePlanet).get(arrivalPlanet);
+	return fare;
 }
 
 SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {

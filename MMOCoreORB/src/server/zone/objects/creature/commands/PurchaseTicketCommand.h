@@ -113,10 +113,10 @@ public:
 		if (roundTrip && !pmArrival->isTravelToLocationPermitted(arrivalPoint, departurePlanet, departurePoint))
 			return GENERALERROR; //If they are doing a round trip, make sure they can travel back.
 
-		int fare = pmDeparture->getTravelFare(arrivalPlanet);
+		int fare = pmDeparture->getTravelFare(departurePlanet, arrivalPlanet);
 
 		if (roundTrip)
-			fare += pmArrival->getTravelFare(departurePlanet);
+			fare += pmArrival->getTravelFare(arrivalPlanet, departurePlanet);
 
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);

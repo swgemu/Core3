@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -174,18 +174,19 @@ bool PlanetManager::isInRangeWithPoi(float x, float y, float range) {
 		return _implementation->isInRangeWithPoi(x, y, range);
 }
 
-int PlanetManager::getTravelFare(const String& destinationPlanet) {
+int PlanetManager::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETTRAVELFARE__STRING_);
-		method.addAsciiParameter(destinationPlanet);
+		DistributedMethod method(this, RPC_GETTRAVELFARE__STRING_STRING_);
+		method.addAsciiParameter(departurePlanet);
+		method.addAsciiParameter(arrivalPlanet);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getTravelFare(destinationPlanet);
+		return _implementation->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
 void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
@@ -665,7 +666,7 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "PlanetManager.travelFares") {
-		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&travelFares, stream);
+		TypeInfo<TravelFare >::parseFromBinaryStream(&travelFares, stream);
 		return true;
 	}
 
@@ -731,7 +732,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<String, int> >::toBinaryStream(&travelFares, stream);
+	TypeInfo<TravelFare >::toBinaryStream(&travelFares, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -802,17 +803,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	shuttleTakeoffDelay = 90000;
 	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
 	weatherManager = NULL;
-	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNullValue(0);
-	(&travelFares)->setNullValue(0);
 	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNoDuplicateInsertPlan();
 	(&travelFares)->setNoDuplicateInsertPlan();
 	// server/zone/managers/planet/PlanetManager.idl():  		planetTravelPointList = new PlanetTravelPointList();
 	planetTravelPointList = _ref0 = new PlanetTravelPointList();
-}
-
-int PlanetManagerImplementation::getTravelFare(const String& destinationPlanet) {
-	// server/zone/managers/planet/PlanetManager.idl():  		return travelFares.get(destinationPlanet);
-	return (&travelFares)->get(destinationPlanet);
 }
 
 WeatherManager* PlanetManagerImplementation::getWeatherManager() {
@@ -950,8 +944,8 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_:
 		resp->insertBoolean(isInRangeWithPoi(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
-	case RPC_GETTRAVELFARE__STRING_:
-		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
+	case RPC_GETTRAVELFARE__STRING_STRING_:
+		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
 		break;
 	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_:
 		sendPlanetTravelPointListResponse(static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -1063,8 +1057,8 @@ bool PlanetManagerAdapter::isInRangeWithPoi(float x, float y, float range) {
 	return (static_cast<PlanetManager*>(stub))->isInRangeWithPoi(x, y, range);
 }
 
-int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
-	return (static_cast<PlanetManager*>(stub))->getTravelFare(destinationPlanet);
+int PlanetManagerAdapter::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
+	return (static_cast<PlanetManager*>(stub))->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(CreatureObject* player) {

@@ -169,6 +169,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/planet/ClientPoiDataTable.h"
 
+#include "server/zone/managers/planet/TravelFare.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -212,7 +214,7 @@ public:
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
-	int getTravelFare(const String& destinationPlanet);
+	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
@@ -300,7 +302,7 @@ protected:
 
 	ShuttleMap shuttleMap;
 
-	VectorMap<String, int> travelFares;
+	TravelFare travelFares;
 
 	Reference<PlanetTravelPointList* > planetTravelPointList;
 
@@ -363,7 +365,7 @@ public:
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
-	int getTravelFare(const String& destinationPlanet);
+	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
@@ -478,7 +480,7 @@ public:
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
-	int getTravelFare(const String& destinationPlanet);
+	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
@@ -527,7 +529,8 @@ public:
 	void removePlayerCityTravelPoint(const String& cityName);
 
 protected:
-	String _param0_getTravelFare__String_;
+	String _param0_getTravelFare__String_String_;
+	String _param1_getTravelFare__String_String_;
 	String _param0_createTicket__String_String_String_;
 	String _param1_createTicket__String_String_String_;
 	String _param2_createTicket__String_String_String_;
