@@ -77,6 +77,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 			if (object != NULL && !object->isCreatureObject()) {

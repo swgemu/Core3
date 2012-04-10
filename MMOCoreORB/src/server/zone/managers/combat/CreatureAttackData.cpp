@@ -35,6 +35,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	baseCommand = data.baseCommand;
 
 	damageMultiplier = data.damageMultiplier;
+	damageMax = data.damageMax;
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
 	poolsToDamage = data.poolsToDamage;
@@ -64,6 +65,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 void CreatureAttackData::fillFromBase() {
 	damageMultiplier = baseCommand->getDamageMultiplier();
+	damageMax = baseCommand->getDamageMax();
 	accuracyBonus = baseCommand->getAccuracyBonus();
 	speedMultiplier = baseCommand->getSpeedMultiplier();
 	healthCostMultiplier = baseCommand->getHealthCostMultiplier();

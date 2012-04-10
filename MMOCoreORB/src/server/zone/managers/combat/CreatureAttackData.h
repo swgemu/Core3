@@ -18,6 +18,7 @@ class CreatureAttackData {
 protected:
 	CombatQueueCommand* baseCommand;
 
+	float damageMax;
 	float damageMultiplier;
 	int accuracyBonus;
 	float speedMultiplier;
@@ -59,6 +60,10 @@ public:
 
     CombatQueueCommand* getCommand() const {
     	return baseCommand;
+    }
+
+    float getDamageMax() const {
+    	return damageMax;
     }
 
     int getAccuracyBonus() const {

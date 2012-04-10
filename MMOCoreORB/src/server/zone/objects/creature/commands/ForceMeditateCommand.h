@@ -67,6 +67,10 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
+
 		// Meditate
 		CreatureObject* player = (CreatureObject*) creature;
 

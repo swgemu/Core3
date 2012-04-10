@@ -47,13 +47,13 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "CombatQueueCommand.h"
+#include "ForcePowersQueueCommand.h"
 
-class ForceLightningSingle2Command : public CombatQueueCommand {
+class ForceLightningSingle2Command : public ForcePowersQueueCommand {
 public:
 
 	ForceLightningSingle2Command(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: ForcePowersQueueCommand(name, server) {
 
 	}
 
@@ -64,6 +64,10 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
 
 		return doCombatAction(creature, target);
 	}

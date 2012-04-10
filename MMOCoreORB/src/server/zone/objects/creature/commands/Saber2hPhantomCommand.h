@@ -65,6 +65,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
 

@@ -57,7 +57,7 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if (!creature->hasDamage(CreatureAttribute::ACTION) && creature->getWounds(CreatureAttribute::ACTION) <= 0) {
+		if (!creature->hasDamage(CreatureAttribute::ACTION)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}

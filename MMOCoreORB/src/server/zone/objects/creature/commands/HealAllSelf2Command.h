@@ -57,7 +57,7 @@ public:
 
 	bool canPerformSkill(CreatureObject* creature) {
 
-		if ((!creature->hasDamage(CreatureAttribute::HEALTH) && creature->getWounds(CreatureAttribute::HEALTH)  <= 0) || (!creature->hasDamage(CreatureAttribute::ACTION) && creature->getWounds(CreatureAttribute::ACTION)  <= 0) || (!creature->hasDamage(CreatureAttribute::MIND) && creature->getWounds(CreatureAttribute::MIND)  <= 0)) {
+		if ((!creature->hasDamage(CreatureAttribute::HEALTH)) || (!creature->hasDamage(CreatureAttribute::ACTION)) || (!creature->hasDamage(CreatureAttribute::MIND))) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}

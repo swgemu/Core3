@@ -63,6 +63,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
+
 
 		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_ARMOR_1;
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_ARMOR_2;

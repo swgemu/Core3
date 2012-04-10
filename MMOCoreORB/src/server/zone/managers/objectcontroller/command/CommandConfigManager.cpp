@@ -477,6 +477,10 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
+		else if (varName == "damageMax")
+			combatCommand->setDamageMax(Lua::getFloatParameter(L));
+		else if (varName == "speed")
+			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")
 			combatCommand->setPoolsToDamage(Lua::getIntParameter(L));
 		else if (varName == "healthCostMultiplier")
@@ -487,6 +491,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setMindCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "forceCostMultiplier")
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
+		else if (varName == "forceCost")
+			combatCommand->setForceCost(Lua::getFloatParameter(L));
 		else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
 		else if (varName == "accuracySkillMod")

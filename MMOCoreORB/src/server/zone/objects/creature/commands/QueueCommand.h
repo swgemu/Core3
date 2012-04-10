@@ -108,6 +108,7 @@ public:
 	const static int NOPRONE = 9;
 	const static int NOKNEELING = 10;
 	const static int INSUFFICIENTPERMISSION = 11;
+	const static int NOJEDIARMOR = 12;
 
 
 	virtual ~QueueCommand() {

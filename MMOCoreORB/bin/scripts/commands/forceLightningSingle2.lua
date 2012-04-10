@@ -44,16 +44,16 @@
 ForceLightningSingle2Command = {
         name = "forcelightningsingle2",
         
-                
-    damageMultiplier = 5.0,
-	speedMultiplier = 3.5,
-	forceCostMultiplier = 6.0,
+	damageMax = 2500,
+	speed = 4.0,
+	forceCost = 150,
+	accuracySkillMod = "forcelightning_accuracy";
 
-		stateEffects = {
+	stateEffects = {
 	  StateEffect( 
 		STUN_EFFECT, 
 		{}, 
-		{ "stun_defense", "resistance_states" }, 
+		{}, 
 		{ "jedi_state_defense" }, 
 		30, 
 		100, 

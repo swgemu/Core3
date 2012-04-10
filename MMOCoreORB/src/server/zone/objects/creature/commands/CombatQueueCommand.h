@@ -24,15 +24,18 @@
 
 class CombatQueueCommand : public QueueCommand {
 protected:
+	float damageMax;
 	float damageMultiplier;
 	int accuracyBonus;
 	float speedMultiplier;
+	float speed;
 	int poolsToDamage;
 
 	float healthCostMultiplier;
 	float actionCostMultiplier;
 	float mindCostMultiplier;
 	float forceCostMultiplier;
+	float forceCost;
 
 	int knockdownStateChance;
 	int postureDownStateChance;
@@ -73,15 +76,18 @@ public:
 
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
+		damageMax = 0;
 		damageMultiplier = 1;
 		accuracyBonus = 0;
 		speedMultiplier = 1;
+		speed = 0;
 		healthCostMultiplier = 1;
 		actionCostMultiplier = 1;
 		mindCostMultiplier = 1;
 
 		// Force Power is only set in Jedi-skills.
 		forceCostMultiplier = 0;
+		forceCost = 0;
 
 		poolsToDamage = CombatManager::RANDOM;
 
@@ -134,21 +140,6 @@ public:
 
 		if (checkRange == -1) {
 			checkRange = weapon->getMaxRange();
-		}
-
-		float forceCostCheck = forceCostMultiplier;
-
-		if (forceCostCheck > 0) { // Safe to assume this is a Jedi-skill...
-
-			for (int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
-
-				SceneObject* item = creature->getSlottedObject(i);
-
-					if (item != NULL && item->isArmorObject()){
-						creature->sendSystemMessage("@jedi_spam:not_with_armor"); // 	You cannot use Force powers or lightsaber abilities while wearing armor.
-						 return GENERALERROR;
-					}
-				}
 		}
 
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
@@ -272,6 +263,10 @@ public:
 		return speedMultiplier;
 	}
 
+	inline float getSpeed() const {
+		return speed;
+	}
+
 	inline int getStunChance() const {
 		return stunStateChance;
 	}
@@ -304,6 +299,10 @@ public:
 		return forceCostMultiplier;
 	}
 
+	inline float getForceCost() const {
+		return forceCost;
+	}
+
 	inline int getNextAttackDelayChance() const {
 		return nextAttackDelayChance;
 	}
@@ -334,6 +333,10 @@ public:
 
 	void setForceCostMultiplier(float f) {
 		this->forceCostMultiplier = f;
+	}
+
+	void setForceCost(float f) {
+		this->forceCost = f;
 	}
 
 	void setDizzyStateChance(int dizzyStateChance) {
@@ -412,6 +415,10 @@ public:
 		this->speedMultiplier = speedMultiplier;
 	}
 
+	void setSpeed(float speedd) {
+		this->speed = speedd;
+	}
+
 	void setStunStateChance(int stunStateChance) {
 		this->stunStateChance = stunStateChance;
 	}
@@ -466,6 +473,14 @@ public:
 
 	void setDotEffects(VectorMap<uint64, DotEffect> dotEffects) {
 		this->dotEffects = dotEffects;
+	}
+
+	inline float getDamageMax() const {
+		return damageMax;
+	}
+
+	void setDamageMax(float dm) {
+		this->damageMax = dm;
 	}
 
 	void addDotEffect(DotEffect dotEffect) {

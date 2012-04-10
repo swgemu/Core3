@@ -131,6 +131,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 			creature->clearQueueAction(actioncntr, 0, 4, 0);
 		break;
 
+	case NOJEDIARMOR:
+		creature->sendSystemMessage("@jedi_spam:not_with_armor"); // You cannot use Force powers or lightsaber abilities while wearing armor.
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+
+		break;
+
 	case NOPRONE:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr, 0, 1, 7);

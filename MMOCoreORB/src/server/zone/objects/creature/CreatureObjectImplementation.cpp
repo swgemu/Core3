@@ -2501,3 +2501,17 @@ CampSiteActiveArea* CreatureObjectImplementation::getCurrentCamp() {
 	}
 	return NULL;
 }
+
+bool CreatureObjectImplementation::isWearingArmor() {
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+
+		SceneObject* item = getSlottedObject(i);
+
+			if (item != NULL && item->isArmorObject()){
+				return true;
+			}
+	}
+
+	return false;
+}

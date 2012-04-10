@@ -64,6 +64,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->isWearingArmor()){
+			return NOJEDIARMOR;
+		}
+
 		// TODO: make sure force run commands modify the "private_damage_divider" skillmod when the buff is applied!
 
 

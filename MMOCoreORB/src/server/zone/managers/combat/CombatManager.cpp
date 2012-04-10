@@ -1,4 +1,4 @@
-/*
+ /*
  * CombatManager.cpp
  *
  *  Created on: 24/02/2010
@@ -252,11 +252,41 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int hitVal = 0;
 	float damageMultiplier = data.getDamageMultiplier();
 
+	float rawDamage = data.getDamageMax(); // For Force Powers.
+
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
 
-	if (damageMultiplier != 0)
+	if (damageMultiplier != 0 && rawDamage == 0)
 		damage = calculateDamage(attacker, defender) * damageMultiplier;
+
+	if (rawDamage != 0 && damageMultiplier == 0) { // IT IS A FORCE POWER ATTACK
+		damage = rawDamage - System::random(250);
+
+		// Force Powers Toughness
+		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
+
+		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+
+		// Force Shield 1
+		Buff* buff1 = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_1));
+
+		if (buff1 != NULL){
+			damage *= (1.f - (25 / 100.f));
+			playerObject->setForcePower(playerObject->getForcePower() - (damage * 0.5));
+		}
+
+		// Force Shield 2
+		Buff* buff2 = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_2));
+
+		if (buff2 != NULL){
+			damage *= (1.f - (45 / 100.f));
+			playerObject->setForcePower(playerObject->getForcePower() - (damage * 0.3));
+		}
+
+		if (attacker->isPlayerCreature() && defender->isPlayerCreature())
+			damage *= 0.25;
+	}
 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
