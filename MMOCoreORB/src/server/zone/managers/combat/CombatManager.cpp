@@ -301,6 +301,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		doBlock(attacker, defender, damage, combatSpam + "_block");
 		damageMultiplier = 0.5f;
 		break;
+	case LSBLOCK:
+		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
+		return 0;
+		break;
 	case DODGE:
 		doDodge(attacker, defender, damage, combatSpam + "_evade");
 		damageMultiplier = 0.0f;
@@ -842,11 +846,11 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
 
 		if (frsModsL > 0){ // If they are in the Light FRS.
-			damage *= (1.f - ((armorReduction * (frsModsL / 1.5)) / 100.f));
+			damage *= (1.f - ((armorReduction + (frsModsL / 3)) / 100.f));
 		}
 
 		else if (frsModsD > 0){ // If they are in the Dark FRS.
-			damage *= (1.f - ((armorReduction * (frsModsD / 1.5)) / 100.f));
+			damage *= (1.f - ((armorReduction + (frsModsD / 3)) / 100.f));
 		}
 
 		else { // If they are in neither (padawan).
@@ -854,7 +858,16 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		}
 
 		if (forceArmor == 25){ // Force Armor 1
-			int forceCost = (originalDamage - damage) * 0.5;
+			float frsMods; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
+			if (defender->hasSkill("force_rank_light_novice"))
+				frsMods = defender->getSkillMod("force_manipulation_light");
+
+			else if(defender->hasSkill("force_rank_light_novice"))
+				frsMods = defender->getSkillMod("force_manipulation_dark");
+
+			else frsMods = 0; // Padawan
+
+			int forceCost = ((originalDamage - damage) * 0.5 - (frsMods / 2));
 			int fP = playerObject->getForcePower();
 			if (fP <= forceCost){
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
@@ -866,7 +879,16 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		}
 
 		else if (forceArmor == 45){ // Force Armor 2
-			int forceCost = (originalDamage - damage) * 0.3;
+			float frsMods; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
+			if (defender->hasSkill("force_rank_light_novice"))
+				frsMods = defender->getSkillMod("force_manipulation_light");
+
+			else if(defender->hasSkill("force_rank_light_novice"))
+				frsMods = defender->getSkillMod("force_manipulation_dark");
+
+			else frsMods = 0; // Padawan
+
+			int forceCost = ((originalDamage - damage) * 0.3 - (frsMods / 2));
 			int fP = playerObject->getForcePower();
 			if (fP <= forceCost){
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
@@ -1053,6 +1075,24 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (System::random(100) > accTotal) // miss, just return MISS
 		return MISS;
 
+	// Maximum amount of block is 85. It's a static amount so should not factor in accuracy
+
+	if (targetCreature->isPlayerCreature()){ // Only Player Jedi can saber block.
+	float saberBlock = targetCreature->getSkillMod("saber_block");
+
+		if (saberBlock > 0){
+			ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+			ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+			if (targetWeapon->isJediWeapon() && weapon->getAttackType() == WeaponObject::RANGEDATTACK)
+				if (System::random(100) < saberBlock)
+					return LSBLOCK; // Blocked it.
+		}
+
+	}
+
+
+
 	// now we have a successful hit, so calculate secondary defenses if there is a damage component
 	if (damage > 0) {
 		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
@@ -1122,6 +1162,13 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, 
 	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
 	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+}
+
+void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+
+	creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }

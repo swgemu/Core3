@@ -25,6 +25,7 @@ public:
 	const static int DODGE = 2;
 	const static int COUNTER = 3;
 	const static int MISS = 4;
+	const static int LSBLOCK = 5;
 
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
@@ -171,6 +172,7 @@ protected:
 	void doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
+	void doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage);

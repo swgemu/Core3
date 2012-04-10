@@ -139,7 +139,6 @@ lootableStatMods = {
 	"rifle_hit_while_moving",
 	"rifle_prone",
 	"rifle_speed",
-	"saber_block",
 	"slope_move",
 	"steadyaim",
 	"stored_pets",

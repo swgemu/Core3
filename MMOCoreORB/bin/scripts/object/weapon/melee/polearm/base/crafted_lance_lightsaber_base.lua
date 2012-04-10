@@ -45,6 +45,7 @@ object_weapon_melee_polearm_base_crafted_lance_lightsaber_base = object_weapon_m
 
 	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 	gameObjectType = 131090,
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_crafted_lance_lightsaber_base, "object/weapon/melee/polearm/base/crafted_lance_lightsaber_base.iff")
