@@ -13,12 +13,14 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
+include server.zone.managers.planet.PlanetTravelPoint;
 include server.chat.StringIdChatParameter;
 include server.zone.ZoneReference;
 include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
+
 
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
@@ -45,7 +47,7 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected CitizenList bannedList;
-
+	
 	protected byte cityRank;
 	
 	protected int cityTreasury;
@@ -55,6 +57,10 @@ class CityRegion extends ManagedObject implements Logger {
 	protected boolean zoningEnabled;
 	
 	protected boolean registered;
+	
+	protected boolean hasShuttle;
+	
+	protected unsigned long shuttleID;
 	
 	@dereferenced
 	protected Time nextUpdateTime;
@@ -331,4 +337,18 @@ class CityRegion extends ManagedObject implements Logger {
 	public void setCityHall(StructureObject building) {
 		cityHall = building;
 	}
+	
+	public void removeShuttleInstallation(){
+		hasShuttle = false;
+		shuttleID = 0;
+	}
+	public boolean hasShuttleInstallation(){
+		return hasShuttle;
+	}
+	
+	public void setShuttleID(unsigned long id){
+		shuttleID = id;
+		hasShuttle = true;
+	}
+	
 }

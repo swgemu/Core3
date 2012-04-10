@@ -18,6 +18,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -50,6 +51,21 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 
 	rescheduleUpdateEvent(seconds);
 	*/
+
+	if (hasShuttle){
+		CreatureObject* shuttle = cast<CreatureObject*>( zone->getZoneServer()->getObject(shuttleID, false));
+
+		float x = shuttle->getWorldPositionX();
+		float y = shuttle->getWorldPositionY();
+		float z = shuttle->getWorldPositionZ();
+
+		Vector3 arrivalVector(x, y, z);
+		PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zone->getZoneName(), getRegionName(), arrivalVector, arrivalVector, shuttle);
+		zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
+
+		if (shuttle != NULL)
+			zone->getPlanetManager()->scheduleShuttle(shuttle);
+	}
 }
 
 void CityRegionImplementation::initialize() {
@@ -64,6 +80,10 @@ void CityRegionImplementation::initialize() {
 	cityHall = NULL;
 
 	mayorID = 0;
+
+	shuttleID = 0;
+
+	hasShuttle = false;
 
 	zone = NULL;
 
@@ -232,3 +252,6 @@ String CityRegionImplementation::getRegionName() {
 
 	return regionName.getFullPath();
 }
+
+
+

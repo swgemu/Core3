@@ -1175,7 +1175,7 @@ void SceneObjectImplementation::createChildObjects() {
 			continue;
 
 		Vector3 childPosition = child->getPosition();
-
+		childObjects.put(obj);
 		obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
 		obj->setDirection(child->getDirection());
 
@@ -1222,7 +1222,7 @@ void SceneObjectImplementation::createChildObjects() {
 			getZone()->transferObject(obj, -1, false);
 		}
 
-		childObjects.put(obj);
+		//childObjects.put(obj);
 		ContainerPermissions* permissions = obj->getContainerPermissions();
 		permissions->setOwner(getObjectID());
 		permissions->setInheritPermissionsFromParent(false);

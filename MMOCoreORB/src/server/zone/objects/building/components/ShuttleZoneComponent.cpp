@@ -20,13 +20,37 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 
 	CreatureObject* shuttle = cast<CreatureObject*>( sceneObject);
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	ManagedReference<CityRegion*> cityRegion = shuttle->getCityRegion();
 
-	Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(shuttle, 128.f);
+	if ((cityRegion != NULL) && (cityRegion->getMayorID() != 0)){
+		//cityRegion->setShuttleInstallation(structureObject);
+		float x = shuttle->getWorldPositionX();
+		float y = shuttle->getWorldPositionY();
+		float z = shuttle->getWorldPositionZ();
 
-	if (ptp != NULL) {
-		planetManager->scheduleShuttle(shuttle);
-		ptp->setShuttle(shuttle);
+		Vector3 arrivalVector(x, y, z);
+
+		String zoneName = zone->getZoneName();
+
+		if (shuttle != NULL){
+			//System::out << cityRegion->getRegionName() << "\n";
+			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, cityRegion->getRegionName(), arrivalVector, arrivalVector, shuttle);
+			zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
+			cityRegion->setShuttleID(shuttle->getObjectID());
+			zone->getPlanetManager()->scheduleShuttle(shuttle);
+		}
+	}
+
+	else{
+
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(shuttle, 128.f);
+
+		if (ptp != NULL) {
+			planetManager->scheduleShuttle(shuttle);
+			ptp->setShuttle(shuttle);
+		}
 	}
 }
 

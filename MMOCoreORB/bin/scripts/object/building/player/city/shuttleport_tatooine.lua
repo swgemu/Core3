@@ -50,6 +50,7 @@ object_building_player_city_shuttleport_tatooine = object_building_player_city_s
 	cityRankRequired = 4,
 	gameObjectType = 4103,
 	abilityRequired = "place_shuttleport",
+	zoneComponent = "ShuttleInstallationZoneComponent",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -8.5, z = 1.5, y = 14, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -7, z = 0.6, y = 13.5, ox = 0, oy = 0, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},

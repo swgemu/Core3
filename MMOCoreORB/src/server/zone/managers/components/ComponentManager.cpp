@@ -57,6 +57,7 @@
 #include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
 #include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
+#include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -129,5 +130,6 @@ ComponentManager::ComponentManager() {
 
 	components.put("LightsaberObjectMenuComponent", new LightsaberObjectMenuComponent());
 	components.put("RobeObjectMenuComponent", new RobeObjectMenuComponent());
+	components.put("ShuttleInstallationZoneComponent", new ShuttleInstallationZoneComponent());
 	components.put("ForceShrineMenuComponent", new ForceShrineMenuComponent());
 }

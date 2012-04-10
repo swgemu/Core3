@@ -55,7 +55,8 @@ object_building_player_city_shuttleport_naboo = object_building_player_city_shar
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -7, z = 0.6, y = 13.5, ox = 0, oy = 0, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/travel/ticket_collector/ticket_collector.iff", x = 8, z = 0.8, y = 13.5, ox = 0, oy = 0, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 		{templateFile = "object/creature/npc/theme_park/player_shuttle.iff", x = 0, z = 0.6, y = 0, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
-	}
+	},
+	zoneComponent = "ShuttleInstallationZoneComponent"
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shuttleport_naboo, "object/building/player/city/shuttleport_naboo.iff")
