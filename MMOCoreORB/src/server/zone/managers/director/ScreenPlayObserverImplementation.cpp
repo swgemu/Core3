@@ -54,6 +54,15 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 
 	lua->callFunction(&startScreenPlay);
 
+	if (lua_gettop(lua->getLuaState()) == 0) {
+		Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);
+
+		assert(0 && "no return value in  ScreenPlayObserverImplementation::notifyObserverEvent");
+
+		return 1;
+	}
+
+
 	int ret = lua->getIntParameter(lua->getLuaState());
 
 	//1 remove observer, 0 keep observer

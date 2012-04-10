@@ -77,6 +77,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
+
 #include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/ZoneReference.h"
@@ -230,6 +232,12 @@ public:
 
 	void setCityHall(StructureObject* building);
 
+	void removeShuttleInstallation();
+
+	bool hasShuttleInstallation();
+
+	void setShuttleID(unsigned long long id);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -286,6 +294,10 @@ protected:
 	bool zoningEnabled;
 
 	bool registered;
+
+	bool hasShuttle;
+
+	unsigned long long shuttleID;
 
 	Time nextUpdateTime;
 
@@ -429,6 +441,12 @@ public:
 	void setRadius(float rad);
 
 	void setCityHall(StructureObject* building);
+
+	void removeShuttleInstallation();
+
+	bool hasShuttleInstallation();
+
+	void setShuttleID(unsigned long long id);
 
 	WeakReference<CityRegion*> _this;
 
@@ -580,6 +598,12 @@ public:
 	void setRadius(float rad);
 
 	void setCityHall(StructureObject* building);
+
+	void removeShuttleInstallation();
+
+	bool hasShuttleInstallation();
+
+	void setShuttleID(unsigned long long id);
 
 protected:
 	String _param0_setCustomRegionName__String_;

@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -831,6 +831,46 @@ void CityRegion::setCityHall(StructureObject* building) {
 		_implementation->setCityHall(building);
 }
 
+void CityRegion::removeShuttleInstallation() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESHUTTLEINSTALLATION__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeShuttleInstallation();
+}
+
+bool CityRegion::hasShuttleInstallation() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSHUTTLEINSTALLATION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasShuttleInstallation();
+}
+
+void CityRegion::setShuttleID(unsigned long long id) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSHUTTLEID__LONG_);
+		method.addUnsignedLongParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setShuttleID(id);
+}
+
 DistributedObjectServant* CityRegion::_getImplementation() {
 
 	_updated = true;
@@ -1006,6 +1046,16 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "CityRegion.hasShuttle") {
+		TypeInfo<bool >::parseFromBinaryStream(&hasShuttle, stream);
+		return true;
+	}
+
+	if (_name == "CityRegion.shuttleID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&shuttleID, stream);
+		return true;
+	}
+
 	if (_name == "CityRegion.nextUpdateTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextUpdateTime, stream);
 		return true;
@@ -1145,6 +1195,22 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "CityRegion.hasShuttle";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&hasShuttle, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "CityRegion.shuttleID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&shuttleID, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "CityRegion.nextUpdateTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1162,7 +1228,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 16;
+	return _count + 18;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -1438,6 +1504,25 @@ void CityRegionImplementation::setCityHall(StructureObject* building) {
 	cityHall = building;
 }
 
+void CityRegionImplementation::removeShuttleInstallation() {
+	// server/zone/objects/region/CityRegion.idl():  		hasShuttle = false;
+	hasShuttle = false;
+	// server/zone/objects/region/CityRegion.idl():  		shuttleID = 0;
+	shuttleID = 0;
+}
+
+bool CityRegionImplementation::hasShuttleInstallation() {
+	// server/zone/objects/region/CityRegion.idl():  		return hasShuttle;
+	return hasShuttle;
+}
+
+void CityRegionImplementation::setShuttleID(unsigned long long id) {
+	// server/zone/objects/region/CityRegion.idl():  		shuttleID = id;
+	shuttleID = id;
+	// server/zone/objects/region/CityRegion.idl():  		hasShuttle = true;
+	hasShuttle = true;
+}
+
 /*
  *	CityRegionAdapter
  */
@@ -1614,6 +1699,15 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETCITYHALL__STRUCTUREOBJECT_:
 		setCityHall(static_cast<StructureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REMOVESHUTTLEINSTALLATION__:
+		removeShuttleInstallation();
+		break;
+	case RPC_HASSHUTTLEINSTALLATION__:
+		resp->insertBoolean(hasShuttleInstallation());
+		break;
+	case RPC_SETSHUTTLEID__LONG_:
+		setShuttleID(inv->getUnsignedLongParameter());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1834,6 +1928,18 @@ void CityRegionAdapter::setRadius(float rad) {
 
 void CityRegionAdapter::setCityHall(StructureObject* building) {
 	(static_cast<CityRegion*>(stub))->setCityHall(building);
+}
+
+void CityRegionAdapter::removeShuttleInstallation() {
+	(static_cast<CityRegion*>(stub))->removeShuttleInstallation();
+}
+
+bool CityRegionAdapter::hasShuttleInstallation() {
+	return (static_cast<CityRegion*>(stub))->hasShuttleInstallation();
+}
+
+void CityRegionAdapter::setShuttleID(unsigned long long id) {
+	(static_cast<CityRegion*>(stub))->setShuttleID(id);
 }
 
 /*

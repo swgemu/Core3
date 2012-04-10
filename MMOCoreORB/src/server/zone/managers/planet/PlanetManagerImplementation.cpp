@@ -211,18 +211,19 @@ void PlanetManagerImplementation::loadTravelFares() {
 
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
-	for(int i=0; i<dtiff.getTotalRows();i++) {
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		VectorMap<String, int> planetFares;
 		DataTableRow* row =  dtiff.getRow(i);
 		String departurePlanet = "";
 		row->getCell(0)->getValue(departurePlanet);
 
-		for(int j=1; j<dtiff.getTotalColumns(); j++) {
+		for (int j = 1; j < dtiff.getTotalColumns(); ++j) {
 			String arrivalPlanet = dtiff.getColumnNameByIndex(j);
 			int fare = 0;
 			row->getCell(j)->getValue(fare);
 			planetFares.put(arrivalPlanet, fare);
-			System::out << "Row: " << arrivalPlanet << " " << fare << endl;
+
+			//System::out << "Row: " << arrivalPlanet << " " << fare << endl;
 		}
 
 		travelFares.put(departurePlanet, planetFares);
