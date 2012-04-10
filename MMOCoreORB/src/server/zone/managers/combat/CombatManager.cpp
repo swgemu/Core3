@@ -862,7 +862,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 			if (defender->hasSkill("force_rank_light_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_light");
 
-			else if(defender->hasSkill("force_rank_light_novice"))
+			else if(defender->hasSkill("force_rank_dark_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_dark");
 
 			else frsMods = 0; // Padawan
@@ -883,7 +883,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 			if (defender->hasSkill("force_rank_light_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_light");
 
-			else if(defender->hasSkill("force_rank_light_novice"))
+			else if(defender->hasSkill("force_rank_dark_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_dark");
 
 			else frsMods = 0; // Padawan
