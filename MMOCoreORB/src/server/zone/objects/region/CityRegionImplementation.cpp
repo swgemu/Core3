@@ -55,6 +55,12 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	if (hasShuttle){
 		CreatureObject* shuttle = cast<CreatureObject*>( zone->getZoneServer()->getObject(shuttleID, false));
 
+		if (shuttle == NULL) {
+			hasShuttle = false;
+			shuttleID = 0;
+			return;
+		}
+
 		float x = shuttle->getWorldPositionX();
 		float y = shuttle->getWorldPositionY();
 		float z = shuttle->getWorldPositionZ();
