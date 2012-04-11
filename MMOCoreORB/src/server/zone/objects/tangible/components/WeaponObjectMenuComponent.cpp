@@ -43,60 +43,60 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	if(!sceneObject->isASubChildOf(player))
-		return 0;
-
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
 	if(weapon == NULL)
 		return 1;
 
-	if (selectedID == 69) {
-		if (weapon->isSliced()) {
-			player->sendSystemMessage("@slicing/slicing:already_sliced");
+	if(weapon->isASubChildOf(player)) {
+
+		if (selectedID == 69) {
+			if (weapon->isSliced()) {
+				player->sendSystemMessage("@slicing/slicing:already_sliced");
+				return 0;
+			}
+
+			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
+			ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+
+			if (session != NULL) {
+				player->sendSystemMessage("@slicing/slicing:already_slicing");
+				return 0;
+			}
+
+			//Create Session
+			session = new SlicingSession(player);
+			session->initalizeSlicingMenu(player, weapon);
+
 			return 0;
+
 		}
 
-		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
-		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+		if(selectedID == 70) {
 
-		if (session != NULL) {
-			player->sendSystemMessage("@slicing/slicing:already_slicing");
-			return 0;
+			weapon->repair(player);
+			return 1;
 		}
 
-		//Create Session
-		session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, weapon);
+		if(selectedID == 71) {
 
-		return 0;
+			ManagedReference<PowerupObject*> pup = weapon->removePowerup();
+			if(pup == NULL)
+				return 1;
 
-	}
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+			if(inventory == NULL)
+				return 1;
 
-	if(selectedID == 70) {
+			inventory->transferObject(pup, -1, false);
+			pup->sendTo(player, true);
 
-		weapon->repair(player);
-		return 1;
-	}
+			StringIdChatParameter message("powerup", "prose_remove_powerup"); //You detach your powerup from %TT.
+			message.setTT(weapon->getDisplayedName());
 
-	if(selectedID == 71) {
+			player->sendSystemMessage(message);
 
-		ManagedReference<PowerupObject*> pup = weapon->removePowerup();
-		if(pup == NULL)
 			return 1;
-
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		if(inventory == NULL)
-			return 1;
-
-		inventory->transferObject(pup, -1, false);
-		pup->sendTo(player, true);
-
-		StringIdChatParameter message("powerup", "prose_remove_powerup"); //You detach your powerup from %TT.
-		message.setTT(weapon->getDisplayedName());
-
-		player->sendSystemMessage(message);
-
-		return 1;
+		}
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
