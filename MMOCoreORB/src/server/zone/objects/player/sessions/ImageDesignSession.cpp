@@ -296,11 +296,6 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 	if (FacadeImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "ImageDesignSession.imageDesignManager") {
-		TypeInfo<Reference<ImageDesignManager* > >::parseFromBinaryStream(&imageDesignManager, stream);
-		return true;
-	}
-
 	if (_name == "ImageDesignSession.designerCreature") {
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&designerCreature, stream);
 		return true;
@@ -343,14 +338,6 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ImageDesignSession.imageDesignManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<Reference<ImageDesignManager* > >::toBinaryStream(&imageDesignManager, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "ImageDesignSession.designerCreature";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -392,7 +379,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 6;
+	return _count + 5;
 }
 
 ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObject* parent) {
@@ -410,8 +397,6 @@ int ImageDesignSessionImplementation::initializeSession() {
 	designerCreature = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		targetCreature = null;
 	targetCreature = NULL;
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		imageDesignManager = null;
-	imageDesignManager = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		idTimeoutEvent = null;
 	idTimeoutEvent = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		positionObserver = null;

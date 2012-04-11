@@ -177,37 +177,9 @@ public:
 		if (par != NULL && par->isShipObject())
 			return;
 
-		/*
-		float oldPosX = object->getPositionX(), oldPosY = object->getPositionY(), oldPosZ = object->getPositionZ();
-
-		float deltaX = positionX - oldPosX;
-		float deltaY = positionY - oldPosY;
-		float deltaZ = positionZ - oldPosZ;
-
-		uint32 stamp = object->getClientLastMovementStamp();
-
-		uint32 deltaTime = movementStamp - stamp;
-
-		float dist = sqrt((deltaX * deltaX) + (deltaY * deltaY));
-
-		float slope = deltaZ / dist;
-
-		float angle = atan(slope);
-
-		float deg = Math::rad2deg(angle);
-
-		float seconds = (float) deltaTime * 1000;
-
-		float speed = dist / (float) deltaTime;
-
-		StringBuffer slopeMsg;
-		slopeMsg << "dist:" << dist << " speed:" << speed * 1000.f << " deltaTime:" << deltaTime << " slope: " << slope << " angle:" << angle << " degrees:" << deg;
-		object->info(slopeMsg.toString(), true);
-
-		StringBuffer posMsg;
+		/*StringBuffer posMsg;
 		posMsg << "posX: " << positionX << " posZ: " << positionZ << " posY:" << positionY;
 		object->info(posMsg.toString(), true);*/
-
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
@@ -216,6 +188,15 @@ public:
 
 		ValidatedPosition pos;
 		pos.update(object);
+
+		if (object->isFrozen()) {
+			Vector3 teleportPoint = pos.getPosition();
+			uint64 teleportParentID = pos.getParent();
+
+			object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+
+			return;
+		}
 
 		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
 			return;

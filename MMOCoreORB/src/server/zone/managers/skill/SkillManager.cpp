@@ -61,7 +61,6 @@ SkillManager::SkillManager()
 	rootNode = new Skill();
 
 	performanceManager = new PerformanceManager();
-	imageDesignManager = new ImageDesignManager();
 
 	loadClientData();
 }

@@ -177,6 +177,50 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 	return true;
 }
 
+bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x, float z, float y, Zone* zone) {
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+
+	Vector3 rayStart(x, z + 0.25f, y);
+	Vector3 rayEnd(x + System::random(512), z + 0.3f, y + System::random(512));
+
+	SortedVector<IntersectionResult> results;
+	results.setAllowDuplicateInsertPlan();
+
+//	printf("starting test\n");
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
+
+		if (object == NULL)
+			continue;
+
+		AABBTree* tree = getAABBTree(object, -1);
+
+		if (tree == NULL)
+			continue;
+
+		Ray ray = convertToModelSpace(rayStart, rayEnd, object);
+
+		results.removeAll(10, 10);
+
+		//ordered by intersection distance
+		tree->intersects(ray, 16384, results);
+
+/*		for (int j = 0; j < results.size(); ++j) {
+			printf("intersection distance %f:\n", results.get(j).getIntersectionDistance());
+		}
+
+		*/
+
+		if (((results.size() % 2) == 1) && (results.get(0).getIntersectionDistance() > 0.25f))
+			return true;
+	}
+
+	//if ( crossings % 2 == 1 )
+	return false;
+}
+
 float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 	zone->getInRangeObjects(x, y, 128, &closeObjects, true);

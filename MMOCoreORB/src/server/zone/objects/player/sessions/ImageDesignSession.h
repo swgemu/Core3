@@ -154,8 +154,6 @@ namespace player {
 namespace sessions {
 
 class ImageDesignSessionImplementation : public FacadeImplementation {
-	Reference<ImageDesignManager* > imageDesignManager;
-
 protected:
 	ManagedWeakReference<CreatureObject* > designerCreature;
 

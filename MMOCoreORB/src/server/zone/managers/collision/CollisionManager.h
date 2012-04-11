@@ -60,6 +60,7 @@ public:
 	static bool checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building);
 	static bool checkLineOfSight(SceneObject* object1, SceneObject* object2);
 	static bool checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cell);
+	static bool checkMovementCollision(CreatureObject* creature, float x, float z, float y, Zone* zone);
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	static float getWorldFloorCollision(float x, float y, Zone* zone, bool testWater);

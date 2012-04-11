@@ -82,7 +82,6 @@ namespace skill {
 
 class SkillManager : public Singleton<SkillManager>, public Logger, public Object {
 	PerformanceManager* performanceManager;
-	ImageDesignManager* imageDesignManager;
 
 	HashTable<String, Reference<Ability*> > abilityMap;
 	HashTable<String, Reference<Skill*> > skillMap;
@@ -148,10 +147,6 @@ public:
 
 	PerformanceManager* getPerformanceManager() {
 		return performanceManager;
-	}
-
-	ImageDesignManager* getImageDesignManager() {
-		return imageDesignManager;
 	}
 };
 

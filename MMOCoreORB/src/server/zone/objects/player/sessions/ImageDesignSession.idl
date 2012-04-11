@@ -62,9 +62,6 @@ import server.zone.objects.player.sessions.ImageDesignPositionObserver;
 
 class ImageDesignSession extends Facade {
 	@weakReference
-	ImageDesignManager imageDesignManager;
-
-	@weakReference
 	protected CreatureObject designerCreature;
 
 	@weakReference
@@ -116,7 +113,6 @@ class ImageDesignSession extends Facade {
 	public int initializeSession() {
 		designerCreature = null;
 		targetCreature = null;
-		imageDesignManager = null;
 		idTimeoutEvent = null;
 		positionObserver = null;
 

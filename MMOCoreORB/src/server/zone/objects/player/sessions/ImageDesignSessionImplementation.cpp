@@ -165,7 +165,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
 		VectorMap<String, uint32>* colorAttributes = imageDesignData.getColorAttributesMap();
 
-		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
+		ImageDesignManager* imageDesignManager = ImageDesignManager::instance();
 
 		hairObject = dynamic_cast<TangibleObject*>(targetCreature->getSlottedObject("hair"));
 
