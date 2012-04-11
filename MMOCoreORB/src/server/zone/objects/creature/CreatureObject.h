@@ -610,8 +610,6 @@ public:
 
 	bool checkLastKnockdown();
 
-	bool isWearingArmor();
-
 	void updatePostureDownRecovery();
 
 	void updatePostureUpRecovery();
@@ -1371,8 +1369,6 @@ public:
 
 	bool checkLastKnockdown();
 
-	bool isWearingArmor();
-
 	void updatePostureDownRecovery();
 
 	void updatePostureUpRecovery();
@@ -1961,8 +1957,6 @@ public:
 	bool checkKnockdownRecovery();
 
 	bool checkLastKnockdown();
-
-	bool isWearingArmor();
 
 	void updatePostureDownRecovery();
 

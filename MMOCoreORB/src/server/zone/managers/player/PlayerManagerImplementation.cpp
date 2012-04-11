@@ -1709,37 +1709,37 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		CreatureObject* creature = cast<CreatureObject*>( observable);
 
 
-		if (creature->hasState(CreatureState::ALERT)){ // This can apply to TKA AND Jedi meditate since they share the same sysmsgs / moods.
+		if (creature->hasState(CreatureState::ALERT)) { // This can apply to TKA AND Jedi meditate since they share the same sysmsgs / moods.
 			creature->sendSystemMessage("@teraskasi:med_end");
 			creature->setMood(creature->getMoodID(), true);
 			creature->clearState(CreatureState::ALERT, true);
 
-				// Check POSTERCHANGE on Meditate...
-				Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
-					if (meditateTask != NULL) {
-							creature->removePendingTask("meditate");
+			// Check POSTERCHANGE on Meditate...
+			Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
+			if (meditateTask != NULL) {
+				creature->removePendingTask("meditate");
 
-								if (meditateTask->isScheduled())
-										meditateTask->cancel();
-						}
+				if (meditateTask->isScheduled())
+					meditateTask->cancel();
+			}
 
-				// Check POSTERCHANGE on Force Meditate...
-				Reference<ForceMeditateTask*> fmeditateTask = cast<ForceMeditateTask*>( creature->getPendingTask("forcemeditate"));
+			// Check POSTERCHANGE on Force Meditate...
+			Reference<ForceMeditateTask*> fmeditateTask = cast<ForceMeditateTask*>( creature->getPendingTask("forcemeditate"));
 
-					if (fmeditateTask != NULL) {
-						creature->removePendingTask("forcemeditate");
+			if (fmeditateTask != NULL) {
+				creature->removePendingTask("forcemeditate");
 
-							if (fmeditateTask->isScheduled())
-								fmeditateTask->cancel();
-							}
-	}
+				if (fmeditateTask->isScheduled())
+					fmeditateTask->cancel();
+			}
+		}
 
 		// Check POSTURECHANGED disrupting Logout...
 		Reference<LogoutTask*> logoutTask = (LogoutTask*) creature->getPendingTask("logout");
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
 		}
-		}
+	}
 
 	return 1;
 }

@@ -252,41 +252,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int hitVal = 0;
 	float damageMultiplier = data.getDamageMultiplier();
 
-	float rawDamage = data.getDamageMax(); // For Force Powers.
-
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
 
-	if (damageMultiplier != 0 && rawDamage == 0)
+	if (damageMultiplier != 0)
 		damage = calculateDamage(attacker, defender) * damageMultiplier;
-
-	if (rawDamage != 0 && damageMultiplier == 0) { // IT IS A FORCE POWER ATTACK
-		damage = rawDamage - System::random(250);
-
-		// Force Powers Toughness
-		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
-
-		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
-
-		// Force Shield 1
-		Buff* buff1 = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_1));
-
-		if (buff1 != NULL){
-			damage *= (1.f - (25 / 100.f));
-			playerObject->setForcePower(playerObject->getForcePower() - (damage * 0.5));
-		}
-
-		// Force Shield 2
-		Buff* buff2 = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_2));
-
-		if (buff2 != NULL){
-			damage *= (1.f - (45 / 100.f));
-			playerObject->setForcePower(playerObject->getForcePower() - (damage * 0.3));
-		}
-
-		if (attacker->isPlayerCreature() && defender->isPlayerCreature())
-			damage *= 0.25;
-	}
 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
@@ -303,7 +273,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		break;
 	case LSBLOCK:
 		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
-		return 0;
+		damageMultiplier = 0.0f; // TODO: what is the appropriate damage reduction from a lightsaber block? is it 100%?
 		break;
 	case DODGE:
 		doDodge(attacker, defender, damage, combatSpam + "_evade");
@@ -828,7 +798,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
-		float conditionDamage = originalDamage * armorPiercing - damage;
+		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
@@ -843,60 +813,50 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
 
 		// Client Effect upon hit.
+		// TODO: does this really need to be here? animations need to be fixed
 		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
 
-		if (frsModsL > 0){ // If they are in the Light FRS.
-			damage *= (1.f - ((armorReduction + (frsModsL / 3)) / 100.f));
-		}
+		// TODO: why is this done twice? these calculations don't seem correct, or are at least obfuscated
+		if (frsModsL > 0) // If they are in the Light FRS.
+			armorReduction += frsModsL / 3;
+		else if (frsModsD > 0) // If they are in the Dark FRS.
+			armorReduction += frsModsD / 3;
 
-		else if (frsModsD > 0){ // If they are in the Dark FRS.
-			damage *= (1.f - ((armorReduction + (frsModsD / 3)) / 100.f));
-		}
+		damage *= (1.f - (armorReduction / 100.f));
 
-		else { // If they are in neither (padawan).
-			damage *= (1.f - (armorReduction / 100.f));
-		}
-
-		if (forceArmor == 25){ // Force Armor 1
-			float frsMods; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
+		if (forceArmor == 25) { // Force Armor 1
+			float frsMods = 0; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
+			// FIXME: these ifchecks don't need to be here, do they? implement a global FRS skillmod getter, this is messy
 			if (defender->hasSkill("force_rank_light_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_light");
-
 			else if(defender->hasSkill("force_rank_dark_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_dark");
 
-			else frsMods = 0; // Padawan
-
 			int forceCost = ((originalDamage - damage) * 0.5 - (frsMods / 2));
 			int fP = playerObject->getForcePower();
-			if (fP <= forceCost){
+			if (fP <= forceCost) {
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
 
 				if (buff != NULL)
 					defender->removeBuff(buff);
-			}
-				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-		}
-
-		else if (forceArmor == 45){ // Force Armor 2
-			float frsMods; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
+			} else
+				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		} else if (forceArmor == 45) { // Force Armor 2
+			float frsMods = 0; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
 			if (defender->hasSkill("force_rank_light_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_light");
-
 			else if(defender->hasSkill("force_rank_dark_novice"))
 				frsMods = defender->getSkillMod("force_manipulation_dark");
 
-			else frsMods = 0; // Padawan
-
 			int forceCost = ((originalDamage - damage) * 0.3 - (frsMods / 2));
 			int fP = playerObject->getForcePower();
-			if (fP <= forceCost){
+			if (fP <= forceCost) {
 				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
 
 				if (buff != NULL)
 					defender->removeBuff(buff);
-			}
-				else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			} else
+				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
 	}
 
@@ -920,7 +880,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
-		float conditionDamage = originalDamage * armorPiercing - damage;
+		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
 		armor->inflictDamage(armor, 0, conditionDamage, false, true);
 	}
 
@@ -1075,24 +1035,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (System::random(100) > accTotal) // miss, just return MISS
 		return MISS;
 
-	// Maximum amount of block is 85. It's a static amount so should not factor in accuracy
-
-	if (targetCreature->isPlayerCreature()){ // Only Player Jedi can saber block.
-	float saberBlock = targetCreature->getSkillMod("saber_block");
-
-		if (saberBlock > 0){
-			ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
-			ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-			if (targetWeapon->isJediWeapon() && weapon->getAttackType() == WeaponObject::RANGEDATTACK)
-				if (System::random(100) < saberBlock)
-					return LSBLOCK; // Blocked it.
-		}
-
-	}
-
-
-
 	// now we have a successful hit, so calculate secondary defenses if there is a damage component
 	if (damage > 0) {
 		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
@@ -1167,6 +1109,7 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, 
 }
 
 void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+	// TODO: no fly text?
 
 	creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 

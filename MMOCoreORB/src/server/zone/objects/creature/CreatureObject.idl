@@ -1106,9 +1106,6 @@ class CreatureObject extends TangibleObject {
 	public boolean checkLastKnockdown() {
 		return cooldownTimerMap.isPast("lastKnockdown");
 	}
-	
-	// Check for armor wearing on creature (player).
-	public native boolean isWearingArmor();
 
 	public void updatePostureDownRecovery() {
 		cooldownTimerMap.updateToCurrentAndAddMili("postureDownRecovery", 30000);

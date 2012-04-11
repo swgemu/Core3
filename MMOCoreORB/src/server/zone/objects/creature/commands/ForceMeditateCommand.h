@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (creature->isWearingArmor()){
+		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}
 

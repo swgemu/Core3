@@ -64,7 +64,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isWearingArmor()){
+		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}
 
