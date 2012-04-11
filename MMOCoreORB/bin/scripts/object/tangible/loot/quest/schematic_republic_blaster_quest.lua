@@ -45,6 +45,7 @@ object_tangible_loot_quest_schematic_republic_blaster_quest = object_tangible_lo
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_weaponsmith_master",
 	targetDraftSchematic = "object/draft_schematic/weapon/pistol_republic_blaster_quest.iff",
 	targetUseCount = 3
 }

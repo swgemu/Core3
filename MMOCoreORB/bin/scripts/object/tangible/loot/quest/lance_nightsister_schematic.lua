@@ -45,6 +45,7 @@ object_tangible_loot_quest_lance_nightsister_schematic = object_tangible_loot_qu
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_weaponsmith_master",
 	targetDraftSchematic = "object/draft_schematic/weapon/lance_nightsister.iff",
 	targetUseCount = 5
 }

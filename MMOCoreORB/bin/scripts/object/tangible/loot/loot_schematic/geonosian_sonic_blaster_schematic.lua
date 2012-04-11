@@ -45,6 +45,7 @@ object_tangible_loot_loot_schematic_geonosian_sonic_blaster_schematic = object_t
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_weaponsmith_master",
 	targetDraftSchematic = "object/draft_schematic/weapon/pistol_geo_sonic_blaster.iff",
 	targetUseCount = 5
 }

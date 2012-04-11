@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_quest_2h_sword_scythe_schematic = object_tangible_loot_quest_shared_2h_sword_scythe_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_weaponsmith_master",
+	targetDraftSchematic = "object/draft_schematic/weapon/2h_sword_scythe.iff",
+	targetUseCount = 2
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_2h_sword_scythe_schematic, "object/tangible/loot/quest/2h_sword_scythe_schematic.iff")

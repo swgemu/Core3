@@ -45,6 +45,7 @@ object_tangible_loot_loot_schematic_corellian_corvette_landspeeder_av21_schemati
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_master",
 	targetDraftSchematic = "object/draft_schematic/vehicle/civilian/landspeeder_av21.iff",
 	targetUseCount = 10
 }

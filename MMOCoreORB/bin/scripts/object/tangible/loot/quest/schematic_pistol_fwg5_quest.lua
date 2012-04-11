@@ -45,6 +45,7 @@ object_tangible_loot_quest_schematic_pistol_fwg5_quest = object_tangible_loot_qu
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_weaponsmith_firearms_02",
 	targetDraftSchematic = "object/draft_schematic/weapon/pistol_flechette_fwg5_quest.iff",
 	targetUseCount = 3
 }
