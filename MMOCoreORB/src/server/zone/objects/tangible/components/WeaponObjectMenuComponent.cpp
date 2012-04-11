@@ -26,11 +26,14 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	if(weapon->hasPowerup() && weapon->isASubChildOf(player)) {
+	if(!weapon->isASubChildOf(player))
+		return;
+
+	if(weapon->hasPowerup()) {
 		menuResponse->addRadialMenuItem(71, 3, "@powerup:mnu_remove_powerup"); // Remove Powerup
 	}
 
-	if(weapon->isASubChildOf(player) && weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
+	if(weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
 		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
 	}
 
@@ -38,6 +41,9 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	if (!sceneObject->isTangibleObject())
+		return 0;
+
+	if(!sceneObject->isASubChildOf(player))
 		return 0;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
@@ -68,16 +74,11 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	if(selectedID == 70) {
 
-		if(weapon->isASubChildOf(player))
-			weapon->repair(player);
-
+		weapon->repair(player);
 		return 1;
 	}
 
 	if(selectedID == 71) {
-
-		if(!weapon->isASubChildOf(player))
-			return 1;
 
 		ManagedReference<PowerupObject*> pup = weapon->removePowerup();
 		if(pup == NULL)
