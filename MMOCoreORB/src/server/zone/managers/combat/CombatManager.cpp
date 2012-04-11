@@ -1047,13 +1047,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		String def = defenseAccMods->get(0);
 
 		if (def == "saber_block"){
-			if ((System::random(100)) < (targetCreature->getSkillMod(def))) {
-				if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
-					return LSBLOCK;
-				}
-
-			}
-			else return HIT;
+			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
+				return LSBLOCK;
+		else return HIT;
 		}
 
 		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
