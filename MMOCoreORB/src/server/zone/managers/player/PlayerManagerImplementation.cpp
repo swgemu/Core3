@@ -1103,7 +1103,11 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			playerWeaponXp += xpAmmount;
 
-			awardExperience(player, xpType, xpAmmount);
+			if (!weapon->isJediWeapon())
+				awardExperience(player, xpType, xpAmmount);
+
+			else // Grant Jedi general experience for lightsabers.
+				awardExperience(player, "jedi_general", xpAmmount / 4);
 		}
 
 		awardExperience(player, "combat_general", playerWeaponXp / 10);

@@ -251,12 +251,16 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int hitVal = 0;
 	float damageMultiplier = data.getDamageMultiplier();
+	int damageMax = data.getDamageMax();
 
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
 
 	if (damageMultiplier != 0)
-		damage = calculateDamage(attacker, defender) * damageMultiplier;
+		damage = calculateDamage(attacker, defender, data) * damageMultiplier;
+
+	if (damageMax != 0)
+		damage = calculateDamage(attacker, defender, data); // For Powers.
 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
@@ -942,10 +946,14 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 	return damage * 10;
 }
 
-float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender) {
+float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
+	int damageMax = data.getDamageMax();
+	int damageMaxDif = damageMax - System::random(500);
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
+
+
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
 
@@ -962,15 +970,19 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
 		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.50) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.50))
 			attacker->sendSystemMessage("@combat_effects:weapon_half");
-	}
 
-	damage += getDamageModifier(attacker, weapon);
-	damage += defender->getSkillMod("private_damage_susceptibility");
+	}
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
 			damage /= 5;
 	}
+
+	if (damageMax > 0)
+		damage = damageMaxDif;
+
+	damage += getDamageModifier(attacker, weapon);
+	damage += defender->getSkillMod("private_damage_susceptibility");
 
 	/*if (defender->isKneeling())
 		damage *= 1.5f;*/
@@ -984,6 +996,50 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	damage *= (1.f - (toughness /= 100.f));
 
 	if (weapon->getDamageType() != WeaponObject::LIGHTSABER) damage *= (1.f - (defender->getSkillMod("jedi_toughness") / 100.f));
+
+	if (damageMax > 0) {
+		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
+
+		int forceShield = defender->getSkillMod("force_shield");
+
+		if (defender->isPlayerCreature() && (forceShield > 0)) {
+			float originalDamage = damage;
+			float armorReduction = forceShield;
+
+			ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+
+			// Client Effect upon hit.
+			// TODO: does this really need to be here? animations need to be fixed
+			defender->playEffect("clienteffect/pl_force_shield_hit.cef", "");
+
+			damage *= (1.f - (armorReduction / 100.f));
+
+			if (forceShield == 25) { // Force Shield 1
+
+				int forceCost = ((originalDamage - damage) * 0.5);
+				int fP = playerObject->getForcePower();
+				if (fP <= forceCost) {
+					Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_1));
+
+					if (buff != NULL)
+						defender->removeBuff(buff);
+				} else
+					playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			} else if (forceShield == 45) { // Force Shield 2
+
+				int forceCost = ((originalDamage - damage) * 0.3);
+				int fP = playerObject->getForcePower();
+				if (fP <= forceCost) {
+					Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_2));
+
+					if (buff != NULL)
+						defender->removeBuff(buff);
+				} else
+					playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			}
+		}
+	}
+
 
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
 		damage *= 0.25;

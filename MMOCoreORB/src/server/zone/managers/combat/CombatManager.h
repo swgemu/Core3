@@ -164,7 +164,7 @@ protected:
 	int calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
-	float calculateDamage(CreatureObject* attacker, CreatureObject* defender);
+	float calculateDamage(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data);
 	float calculateDamage(CreatureObject* attacker, TangibleObject* defender);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 

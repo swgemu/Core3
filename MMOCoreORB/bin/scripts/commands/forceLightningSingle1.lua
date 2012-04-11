@@ -43,6 +43,19 @@
 
 ForceLightningSingle1Command = {
         name = "forcelightningsingle1",
+        
+	damageMax = 1500,
+	speed = 4.0,
+	forceCost = 75,
+	accuracySkillMod = "forcelightning_accuracy";
+
+	animationCRC = hashCode("force_lightning_1_particle_level_1_light"),
+
+	combatSpam = "forcelightningsingle1",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = 32
 }
 
 AddCommand(ForceLightningSingle1Command)
