@@ -88,7 +88,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s6_training = object_we
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "saber_block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "onehandlightsaber_speed" },

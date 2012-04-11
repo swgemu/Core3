@@ -88,7 +88,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_s7 = obje
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "saber_block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "twohandlightsaber_speed" },

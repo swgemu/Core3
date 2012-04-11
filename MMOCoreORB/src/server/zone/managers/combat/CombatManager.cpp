@@ -273,7 +273,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		break;
 	case LSBLOCK:
 		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
-		damageMultiplier = 0.0f; // TODO: what is the appropriate damage reduction from a lightsaber block? is it 100%?
+		damageMultiplier = 0.0f;
 		break;
 	case DODGE:
 		doDodge(attacker, defender, damage, combatSpam + "_evade");
@@ -1042,6 +1042,20 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		if (targetDefense <= 0)
 			return HIT; // no secondary defenses
 
+		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
+		String def = defenseAccMods->get(0);
+
+		if (def == "saber_block"){
+			if ((System::random(100)) < (targetCreature->getSkillMod(def))) {
+				if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
+					return LSBLOCK;
+				}
+
+			}
+			else return HIT;
+		}
+
 		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
 
 		if (accTotal > 100)
@@ -1050,14 +1064,10 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 			accTotal = 0;
 
 		if (System::random(100) > accTotal) { // successful secondary defense, return type of defense
-			ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
 
 			// this means use defensive acuity, which mean random 1, 2, or 3
 			if (targetWeapon == NULL)
 				return System::random(2) + 1;
-
-			Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
-			String def = defenseAccMods->get(0);
 
 			if (def == "block")
 				return BLOCK;
@@ -1109,7 +1119,7 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, 
 }
 
 void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
-	// TODO: no fly text?
+	// No Fly Text.
 
 	creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 
