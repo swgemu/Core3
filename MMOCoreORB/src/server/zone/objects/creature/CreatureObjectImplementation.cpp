@@ -913,7 +913,7 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 		_this->notifyObservers(ObserverEventType::WOUNDHEALINGPERFORMED, healer, returnValue);
 	}
 
-	return returnValue;
+	return damage;
 }
 
 void CreatureObjectImplementation::setBaseHAM(int type, int value,

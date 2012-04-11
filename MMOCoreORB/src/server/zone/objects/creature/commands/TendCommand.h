@@ -263,7 +263,7 @@ public:
 			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 
 			int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, healPower);
-			int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, healPower);
+			int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, healPower, true, false);
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -303,7 +303,7 @@ public:
 
 			//TODO: Battle Fatigue
 
-			int healedWounds = creatureTarget->addWounds(attribute, -healPower);
+			int healedWounds = creatureTarget->healWound(creature, attribute, healPower);
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
