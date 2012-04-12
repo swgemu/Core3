@@ -439,23 +439,25 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (selectedID == 112) {
 		int type = System::random(2);
 
-		switch (type) {
-		case 0:
-			restype = creature->getMeatType();
-			quantity = creature->getMeatMax();
-			break;
-		case 1:
-			restype = creature->getHideType();
-			quantity = creature->getHideMax();
-			break;
-		case 2:
-			restype = creature->getBoneType();
-			quantity = creature->getBoneMax();
-			break;
-		default:
-			restype = creature->getHideType();
-			quantity = creature->getHideMax();
-			break;
+		if (quantity == 0 || type == 0) {
+			if(creature->getHideMax() > 0) {
+				restype = creature->getHideType();
+				quantity = creature->getHideMax();
+			}
+		}
+
+		if (quantity == 0 || type == 1) {
+			if(creature->getMeatMax() > 0) {
+				restype = creature->getMeatType();
+				quantity = creature->getMeatMax();
+			}
+		}
+
+		if (quantity == 0 || type == 2) {
+			if(creature->getBoneMax() > 0) {
+				restype = creature->getBoneType();
+				quantity = creature->getBoneMax();
+			}
 		}
 	}
 
@@ -468,6 +470,11 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	} else if (selectedID == 236) {
 		restype = creature->getBoneType();
 		quantity = creature->getBoneMax();
+	}
+
+	if(quantity == 0 || restype.isEmpty()) {
+		player->sendSystemMessage("Tried to harvest something this creature didn't have, please report this error");
+		return;
 	}
 
 	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
