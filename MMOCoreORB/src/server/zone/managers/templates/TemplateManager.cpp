@@ -42,6 +42,7 @@
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
+#include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
 #include "server/zone/templates/tangible/LootSchematicTemplate.h"
 #include "server/zone/templates/tangible/GamblingTerminalTemplate.h"
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
@@ -495,6 +496,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<LiveSampleTemplate>(SharedObjectTemplate::LIVESAMPLE);
 	templateFactory.registerObject<CreatureHabitatTemplate>(SharedObjectTemplate::CREATUREHABITAT);
 	templateFactory.registerObject<RepairToolTemplate>(SharedObjectTemplate::REPAIRTOOL);
+	templateFactory.registerObject<LightsaberCrystalObjectTemplate>(SharedObjectTemplate::LIGHTSABERCRYSTAL);
 }
 
 void TemplateManager::registerFunctions() {
@@ -606,6 +608,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);
 	luaTemplatesInstance->setGlobalInt("ARMOROBJECT", SharedObjectTemplate::ARMOROBJECT);
 	luaTemplatesInstance->setGlobalInt("ROBEOBJECT", SharedObjectTemplate::ROBEOBJECT);
+	luaTemplatesInstance->setGlobalInt("LIGHTSABERCRYSTAL", SharedObjectTemplate::LIGHTSABERCRYSTAL);
 	luaTemplatesInstance->setGlobalInt("DEED", SharedObjectTemplate::DEED);
 	luaTemplatesInstance->setGlobalInt("STRUCTUREDEED", SharedObjectTemplate::STRUCTUREDEED);
 	luaTemplatesInstance->setGlobalInt("VEHICLEDEED", SharedObjectTemplate::VEHICLEDEED);

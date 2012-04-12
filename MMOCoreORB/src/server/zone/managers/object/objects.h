@@ -59,6 +59,7 @@
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
+#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"

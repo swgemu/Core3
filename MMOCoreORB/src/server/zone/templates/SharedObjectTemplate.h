@@ -171,6 +171,7 @@ public:
 	const static int CREATUREHABITAT = 0x4000032;
 	const static int REPAIRTOOL = 0x4000033;
 	const static int ROBEOBJECT = 0x4000034;
+	const static int LIGHTSABERCRYSTAL = 0x4000035;
 
 public:
 	SharedObjectTemplate();
@@ -632,6 +633,10 @@ public:
 	}
 
 	virtual bool isRobeObjectTemplate() {
+		return false;
+	}
+
+	virtual bool isLightsaberCrystalTemplate() {
 		return false;
 	}
 };

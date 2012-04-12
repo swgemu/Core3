@@ -42,7 +42,9 @@
 
 
 object_tangible_component_weapon_lightsaber_lightsaber_module_force_crystal = object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal:new {
-
+		templateType = LIGHTSABERCRYSTAL,
+		gameObjectType = 262156,
+		crystalType = "colorAndPower",
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_lightsaber_module_force_crystal, "object/tangible/component/weapon/lightsaber/lightsaber_module_force_crystal.iff")

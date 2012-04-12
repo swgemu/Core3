@@ -310,7 +310,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::DROIDCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::ELECTRONICSCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::GENETICCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObjectType::LIGHTSABERCRYSTAL);
+	objectFactory.registerObject<LightsaberCrystalComponent>(SceneObjectType::LIGHTSABERCRYSTAL);
 	objectFactory.registerObject<Component>(SceneObjectType::MELEEWEAPONCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::MUNITIONCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::RANGEDWEAPONCOMPONENT);

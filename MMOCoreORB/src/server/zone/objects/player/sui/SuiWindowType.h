@@ -196,6 +196,7 @@ public:
 	static const uint16 FINDSESSION = 1001;
 	static const uint16 GARAGE_REPAIR = 1002;
 	static const uint16 CAMP_STATUS = 1003;
+	static const uint16 TUNE_CRYSTAL = 1004;
 };
 
 #endif /*SuiWindowType_H_*/
