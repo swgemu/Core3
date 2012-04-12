@@ -45,7 +45,6 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	armorType = armorTemplate->getArmorType();
 
-System::out << armorType << endl;
 	setSliceable(true);
 }
 
