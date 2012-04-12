@@ -205,6 +205,8 @@ public:
 
 	int getAttackType();
 
+	void setAttackType(int a);
+
 	bool isCertified();
 
 	int getPointBlankAccuracy(bool withPup = true);
@@ -264,6 +266,8 @@ public:
 	void setMindAttackCost(int value);
 
 	int getForceCost();
+
+	void setForceCost(int value);
 
 	int getBladeColor();
 
@@ -483,6 +487,8 @@ public:
 
 	int getAttackType();
 
+	void setAttackType(int a);
+
 	bool isCertified();
 
 	int getPointBlankAccuracy(bool withPup = true);
@@ -542,6 +548,8 @@ public:
 	void setMindAttackCost(int value);
 
 	int getForceCost();
+
+	void setForceCost(int value);
 
 	int getBladeColor();
 
@@ -652,6 +660,8 @@ public:
 
 	int getAttackType();
 
+	void setAttackType(int a);
+
 	bool isCertified();
 
 	int getPointBlankAccuracy(bool withPup);
@@ -711,6 +721,8 @@ public:
 	void setMindAttackCost(int value);
 
 	int getForceCost();
+
+	void setForceCost(int value);
 
 	int getBladeColor();
 

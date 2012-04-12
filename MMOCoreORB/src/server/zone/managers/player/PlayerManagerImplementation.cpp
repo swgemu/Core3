@@ -45,7 +45,7 @@
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
-
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "server/zone/objects/player/events/PlayerIncapacitationRecoverTask.h"
 #include "server/zone/objects/player/events/ForceMeditateTask.h"
@@ -1103,14 +1103,15 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			playerWeaponXp += xpAmmount;
 
-			if (!weapon->isJediWeapon())
+			if (!weapon->isJediWeapon() && weapon->getAttackType() != WeaponObject::FORCEATTACK){
 				awardExperience(player, xpType, xpAmmount);
+				awardExperience(player, "combat_general", playerWeaponXp / 10);
+			}
 
-			else // Grant Jedi general experience for lightsabers.
+			else // Grant Jedi general experience for lightsabers AND Force powers.
 				awardExperience(player, "jedi_general", xpAmmount / 4);
-		}
 
-		awardExperience(player, "combat_general", playerWeaponXp / 10);
+		}
 
 		if (player->isGrouped()) {
 			ManagedReference<GroupObject*> group = player->getGroup();

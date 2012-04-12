@@ -231,6 +231,10 @@ class WeaponObject extends TangibleObject {
 		return attackType;
 	}
 	
+	public void setAttackType(int a) {
+		attackType = a;
+	}
+	
 	public boolean isCertified() {
 		return certified;
 	}
@@ -321,6 +325,10 @@ class WeaponObject extends TangibleObject {
 	
 	public int getForceCost() {
 		return forceCost;
+	}
+	
+	public void setForceCost(int value) {
+		forceCost = value;
 	}
 	
 	public int getBladeColor() {

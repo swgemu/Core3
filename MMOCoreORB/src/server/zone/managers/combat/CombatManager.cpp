@@ -953,6 +953,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
+	int damageTypeCur = weapon->getAttackType();
+	weapon->setAttackType(damageTypeCur);
+
 
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
@@ -998,6 +1001,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (weapon->getDamageType() != WeaponObject::LIGHTSABER) damage *= (1.f - (defender->getSkillMod("jedi_toughness") / 100.f));
 
 	if (damageMax > 0) {
+
+		weapon->setAttackType(WeaponObject::FORCEATTACK);
+
 		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
 
 		int forceShield = defender->getSkillMod("force_shield");

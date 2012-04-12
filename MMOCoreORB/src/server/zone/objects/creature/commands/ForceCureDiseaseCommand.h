@@ -56,13 +56,13 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (!creatureTarget->isPoisoned()) {
+		if (!creatureTarget->isDiseased()) {
 			if (creature == creatureTarget)
-				creature->sendSystemMessage("@healing_response:healing_response_82"); //You are not poisoned.
+				creature->sendSystemMessage("@healing_response:healing_response_90"); //You are not diseased.
 			else {
-				StringIdChatParameter stringId("healing_response", "healing_response_84");
+				StringIdChatParameter stringId("healing_response", "healing_response_92");
 				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); //%NT is not poisoned.
+				creature->sendSystemMessage(stringId); //%NT is not diseased.
 			}
 			return false;
 		}

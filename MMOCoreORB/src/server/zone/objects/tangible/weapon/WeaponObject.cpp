@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -196,6 +196,20 @@ int WeaponObject::getAttackType() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getAttackType();
+}
+
+void WeaponObject::setAttackType(int a) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETATTACKTYPE__INT_);
+		method.addSignedIntParameter(a);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAttackType(a);
 }
 
 bool WeaponObject::isCertified() {
@@ -613,6 +627,20 @@ int WeaponObject::getForceCost() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getForceCost();
+}
+
+void WeaponObject::setForceCost(int value) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETFORCECOST__INT_);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setForceCost(value);
 }
 
 int WeaponObject::getBladeColor() {
@@ -1502,6 +1530,11 @@ int WeaponObjectImplementation::getAttackType() {
 	return attackType;
 }
 
+void WeaponObjectImplementation::setAttackType(int a) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		attackType = a;
+	attackType = a;
+}
+
 bool WeaponObjectImplementation::isCertified() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return certified;
 	return certified;
@@ -1580,6 +1613,11 @@ void WeaponObjectImplementation::setMindAttackCost(int value) {
 int WeaponObjectImplementation::getForceCost() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return forceCost;
 	return forceCost;
+}
+
+void WeaponObjectImplementation::setForceCost(int value) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		forceCost = value;
+	forceCost = value;
 }
 
 int WeaponObjectImplementation::getBladeColor() {
@@ -1759,6 +1797,9 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETATTACKTYPE__:
 		resp->insertSignedInt(getAttackType());
 		break;
+	case RPC_SETATTACKTYPE__INT_:
+		setAttackType(inv->getSignedIntParameter());
+		break;
 	case RPC_ISCERTIFIED__:
 		resp->insertBoolean(isCertified());
 		break;
@@ -1848,6 +1889,9 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETFORCECOST__:
 		resp->insertSignedInt(getForceCost());
+		break;
+	case RPC_SETFORCECOST__INT_:
+		setForceCost(inv->getSignedIntParameter());
 		break;
 	case RPC_GETBLADECOLOR__:
 		resp->insertSignedInt(getBladeColor());
@@ -1956,6 +2000,10 @@ void WeaponObjectAdapter::setCertified(bool cert) {
 
 int WeaponObjectAdapter::getAttackType() {
 	return (static_cast<WeaponObject*>(stub))->getAttackType();
+}
+
+void WeaponObjectAdapter::setAttackType(int a) {
+	(static_cast<WeaponObject*>(stub))->setAttackType(a);
 }
 
 bool WeaponObjectAdapter::isCertified() {
@@ -2076,6 +2124,10 @@ void WeaponObjectAdapter::setMindAttackCost(int value) {
 
 int WeaponObjectAdapter::getForceCost() {
 	return (static_cast<WeaponObject*>(stub))->getForceCost();
+}
+
+void WeaponObjectAdapter::setForceCost(int value) {
+	(static_cast<WeaponObject*>(stub))->setForceCost(value);
 }
 
 int WeaponObjectAdapter::getBladeColor() {
