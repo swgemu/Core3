@@ -10,7 +10,6 @@
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "LightsaberCrystalComponent.h"
-#include "SaberColors.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
