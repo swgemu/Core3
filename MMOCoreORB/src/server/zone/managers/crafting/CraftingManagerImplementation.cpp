@@ -94,8 +94,8 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 	if(luckRoll > (95 - craftbonus))
 		return AMAZINGSUCCESS;
 
-	if(luckRoll < 5)
-		return CRITICALFAILURE;
+	//if(luckRoll < 5)
+	//	return CRITICALFAILURE;
 
 	luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 
@@ -187,8 +187,8 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	if(luckRoll > (95 - expbonus))
 		return AMAZINGSUCCESS;
 
-	if(luckRoll < 5)
-		return CRITICALFAILURE;
+	//if(luckRoll < 5)
+	//	return CRITICALFAILURE;
 
 	luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 
