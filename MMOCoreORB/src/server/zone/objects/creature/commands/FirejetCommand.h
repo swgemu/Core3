@@ -86,7 +86,7 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
 		StringBuffer effect;
-		effect << "clienteffect/entertainer_distract_level_" << dec << actionModifier << ".cef";
+		effect << "clienteffect/entertainer_fire_jets_level_" << dec << actionModifier << ".cef";
 		creature->playEffect(effect.toString(), "");
 
 		creature->sendSystemMessage("@performance:effect_perform_fire_jets");
