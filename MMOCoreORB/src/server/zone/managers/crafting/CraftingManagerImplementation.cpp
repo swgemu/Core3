@@ -78,11 +78,12 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 
 	//Pyollian Cake
 
+	float craftbonus = 0;
 	if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
 		Buff* buff = player->getBuff(BuffCRC::FOOD_CRAFT_BONUS);
 
 		if (buff != NULL) {
-			float craftbonus = buff->getSkillModifierValue("craft_bonus");
+			craftbonus = buff->getSkillModifierValue("craft_bonus");
 			toolModifier *= 1.0f + (craftbonus / 100.0f);
 		}
 	}
@@ -90,7 +91,7 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 
 	int luckRoll = System::random(100);
 
-	if(luckRoll > 95)
+	if(luckRoll > (95 - craftbonus))
 		return AMAZINGSUCCESS;
 
 	if(luckRoll < 5)
@@ -168,13 +169,14 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	// 0.85-1.15
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
-	//Pyollian Cake
+	//Bespin Port
 
+	float expbonus = 0;
 	if (player->hasBuff(BuffCRC::FOOD_EXPERIMENT_BONUS)) {
 		Buff* buff = player->getBuff(BuffCRC::FOOD_EXPERIMENT_BONUS);
 
 		if (buff != NULL) {
-			float expbonus = buff->getSkillModifierValue("experiment_bonus");
+			expbonus = buff->getSkillModifierValue("experiment_bonus");
 			toolModifier *= 1.0f + (expbonus / 100.0f);
 		}
 	}
@@ -182,7 +184,7 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	/// Range 0-100
 	int luckRoll = System::random(100);
 
-	if(luckRoll > 95)
+	if(luckRoll > (95 - expbonus))
 		return AMAZINGSUCCESS;
 
 	if(luckRoll < 5)
