@@ -181,13 +181,30 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
 
-	Vector3 rayStart(x, z + 0.25f, y);
-	Vector3 rayEnd(x + System::random(512), z + 0.3f, y + System::random(512));
+	//Vector3 rayStart(x, z + 0.25, y);
+	//Vector3 rayStart(creature->getWorldPositionX(), creature->getWorldPositionZ(), creature->getPos)
+	Vector3 rayStart = creature->getWorldPosition();
+	rayStart.set(rayStart.getX(), rayStart.getY(), rayStart.getZ() + 0.25f);
+	//Vector3 rayEnd(x + System::random(512), z + 0.3f, y + System::random(512));
+
+	/*Vector3 rayEnd;
+	rayEnd.set(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ());*/
+
+	Vector3 rayEnd(x, z + 0.25, y);
+
+	float maxDistance = rayEnd.distanceTo(rayStart);
+
+	if (maxDistance == 0)
+		return false;
+
+	printf("%f\n", maxDistance);
 
 	SortedVector<IntersectionResult> results;
 	results.setAllowDuplicateInsertPlan();
 
-//	printf("starting test\n");
+	printf("starting test\n");
+
+	Triangle* triangle;
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
@@ -195,29 +212,28 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 		if (object == NULL)
 			continue;
 
-		AABBTree* tree = getAABBTree(object, -1);
+		AABBTree* tree = getAABBTree(object, 255);
 
 		if (tree == NULL)
 			continue;
 
 		Ray ray = convertToModelSpace(rayStart, rayEnd, object);
 
-		results.removeAll(10, 10);
+		//results.removeAll(10, 10);
 
 		//ordered by intersection distance
-		tree->intersects(ray, 16384, results);
+		//tree->intersects(ray, maxDistance, results);
 
-/*		for (int j = 0; j < results.size(); ++j) {
-			printf("intersection distance %f:\n", results.get(j).getIntersectionDistance());
-		}
+		float intersectionDistance;
 
-		*/
+		if (tree->intersects(ray, maxDistance, intersectionDistance, triangle, true)) {
+			String str = object->getObjectTemplate()->getFullTemplateString();
 
-		if (((results.size() % 2) == 1) && (results.get(0).getIntersectionDistance() > 0.25f))
+			object->info("intersecting with me " + str, true);
 			return true;
+		}
 	}
 
-	//if ( crossings % 2 == 1 )
 	return false;
 }
 

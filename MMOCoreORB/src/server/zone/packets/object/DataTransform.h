@@ -158,6 +158,7 @@ public:
 		}
 
 		/*
+
 		if (CollisionManager::instance()->checkMovementCollision(object, positionX, positionZ, positionY, object->getZone())) {
 			Vector3 teleportPoint = pos.getPosition();
 			uint64 teleportParentID = pos.getParent();
@@ -168,7 +169,8 @@ public:
 				+ ", " + String::valueOf(positionZ) + ", " + String::valueOf(positionY) + "]", true);
 			return;
 		}
-*/
+
+		*/
 		uint32 objectMovementCounter = object->getMovementCounter();
 
 		/*if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter

@@ -444,7 +444,7 @@ void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destruc
 		return;
 
 	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, _this);
-	task->execute();
+	Core::getTaskManager()->executeTask(task);
 
 	clearCombatState(true);
 }

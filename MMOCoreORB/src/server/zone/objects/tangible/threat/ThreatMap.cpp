@@ -61,7 +61,7 @@ void ThreatMap::removeObservers() {
 		return;
 
 	Reference<ThreatMapClearObserversTask*> task = new ThreatMapClearObserversTask(*this, threatMapObserver);
-	task->execute();
+	Core::getTaskManager()->executeTask(task);
 
 	//moved this to a task so it executes async in a different thread to avoid deadlocks
 	/*Locker locker(self);
