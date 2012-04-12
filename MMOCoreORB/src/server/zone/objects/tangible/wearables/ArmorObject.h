@@ -13,6 +13,22 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -187,6 +203,10 @@ protected:
 
 	float specialBase;
 
+	float baseProtection;
+
+	float specialProtection;
+
 public:
 	static const int LIGHT = 0x1;
 
@@ -211,8 +231,6 @@ public:
 private:
 	void calculateSpecialProtection(CraftingValues* values);
 
-	void setProtection(CraftingValues* values, bool firstUpdate, int type, float base);
-
 	String getStringType(int type);
 
 	void setProtectionValue(int type, float value);
@@ -228,6 +246,10 @@ public:
 
 	int getRating();
 
+private:
+	float getTypeValue(int type);
+
+public:
 	float getKinetic();
 
 	void setKinetic(float value);

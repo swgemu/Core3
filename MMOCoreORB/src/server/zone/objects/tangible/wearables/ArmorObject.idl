@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.wearables.WearableObject;
+import server.zone.objects.tangible.weapon.WeaponObject;
 import engine.lua.LuaObject;
 import system.util.SortedVector;
 import server.zone.Zone;
@@ -73,6 +74,9 @@ class ArmorObject extends WearableObject {
 
 	protected float specialBase;
 	
+	protected float baseProtection;
+	protected float specialProtection;
+	
 	public static final int LIGHT = 0x1;
 	public static final int MEDIUM = 0x2;
 	public static final int HEAVY = 0x3;
@@ -95,11 +99,7 @@ class ArmorObject extends WearableObject {
 		lightSaber = 0;
 		
 		specialResists = 0;
-		
-		/*super.customizationVariables.setVariable(3, 0);
-		super.customizationVariables.setVariable(2, 0);
-		super.customizationVariables.setVariable(1, 0);*/
-		
+
 		Logger.setLoggingName("ArmorObject");
 	}
 	
@@ -139,11 +139,8 @@ class ArmorObject extends WearableObject {
 	
 	private native void calculateSpecialProtection(CraftingValues values);
 	
-	private native void setProtection(CraftingValues values, boolean firstUpdate, int type, float base);
-	
 	native string getStringType(int type);
 
-	
 	private native void setProtectionValue(int type, float value);
 	
 	public boolean isSpecial(int type) {
@@ -167,8 +164,21 @@ class ArmorObject extends WearableObject {
 		return rating;
 	}
 
+	private float getTypeValue(int type) {
+		
+		if(isVulnerable(type)) 
+			return 0;
+		
+		if(isSpecial(type)) 
+			return specialProtection;
+		
+		return baseProtection;
+		
+	}
+	
 	public float getKinetic() {
-		return kinetic - getConditionReduction(kinetic);
+		float value = kinetic + getTypeValue(WeaponObject.KINETIC);
+		return value - getConditionReduction(kinetic);
 	}
 	
 	public void setKinetic(float value) {
@@ -176,7 +186,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getEnergy() {
-		return energy - getConditionReduction(energy);
+		float value = energy + getTypeValue(WeaponObject.ENERGY);
+		return value - getConditionReduction(energy);
 	}
 	
 	public void setEnergy(float value) {
@@ -184,7 +195,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getElectricity() {
-		return electricity - getConditionReduction(electricity);
+		float value = electricity + getTypeValue(WeaponObject.ELECTRICITY);
+		return value - getConditionReduction(electricity);
 	}
 	
 	public void setElectricity(float value) {
@@ -192,7 +204,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getStun() {
-		return stun - getConditionReduction(stun);
+		float value = stun + getTypeValue(WeaponObject.STUN);
+		return value - getConditionReduction(stun);
 	}
 	
 	public void setStun(float value) {
@@ -200,7 +213,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getBlast() {
-		return blast - getConditionReduction(blast);
+		float value = blast + getTypeValue(WeaponObject.BLAST);
+		return value - getConditionReduction(blast);
 	}
 	
 	public void setBlast(float value) {
@@ -208,7 +222,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getHeat() {
-		return heat - getConditionReduction(heat);
+		float value = heat + getTypeValue(WeaponObject.HEAT);
+		return value - getConditionReduction(heat);
 	}
 	
 	public void setHeat(float value) {
@@ -216,7 +231,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getCold() {
-		return cold - getConditionReduction(cold);
+		float value = cold + getTypeValue(WeaponObject.COLD);
+		return value - getConditionReduction(cold);
 	}
 	
 	public void setCold(float value) {
@@ -224,7 +240,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getAcid() {
-		return acid - getConditionReduction(acid);
+		float value = acid + getTypeValue(WeaponObject.ACID);
+		return value - getConditionReduction(acid);
 	}
 	
 	public void setAcid(float value) {
@@ -232,7 +249,8 @@ class ArmorObject extends WearableObject {
 	}
 
 	public float getLightSaber() {
-		return lightSaber - getConditionReduction(lightSaber);
+		float value = lightSaber + getTypeValue(WeaponObject.LIGHTSABER);
+		return value - getConditionReduction(lightSaber);
 	}
 	
 	public void setLightSaber(float value) {

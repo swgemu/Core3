@@ -182,35 +182,35 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 	}
 
 	//Vulnerabilities
-	if (kinetic < 0.5)
+	if (getKinetic() < 0.5)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
 
-	if (energy < 0.5)
+	if (getEnergy() < 0.5)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
 
-	if (electricity < 0.5)
+	if (getElectricity() < 0.5)
 		alm->insertAttribute(
 				"cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
 
-	if (stun < 0.5)
+	if (getStun() < 0.5)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
 
-	if (blast < 0.5)
+	if (getBlast() < 0.5)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
 
-	if (heat < 0.5)
+	if (getHeat() < 0.5)
 		alm->insertAttribute(
 				"cat_armor_vulnerability.armor_eff_elemental_heat", "-");
 
-	if (cold < 0.5)
+	if (getCold() < 0.5)
 		alm->insertAttribute(
 				"cat_armor_vulnerability.armor_eff_elemental_cold", "-");
 
-	if (acid < 0.5)
+	if (getAcid() < 0.5)
 		alm->insertAttribute(
 				"cat_armor_vulnerability.armor_eff_elemental_acid", "-");
 
-	if (lightSaber < 0.5)
+	if (getLightSaber() < 0.5)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 
 	//Encumbrances
@@ -271,6 +271,17 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 	//craftingValues->toString();
 
 	if(firstUpdate) {
+
+		kinetic = 0;
+		energy = 0;
+		electricity = 0;
+		stun = 0;
+		blast = 0;
+		heat = 0;
+		cold = 0;
+		acid = 0;
+		lightSaber = 0;
+
 		calculateSpecialProtection(values);
 
 		setRating((int) values->getCurrentValue("armor_rating"));
@@ -287,76 +298,25 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 
 	setMaxCondition((int) values->getCurrentValue("armor_integrity"));
 
-	float base = values->getCurrentValue("armor_effectiveness");
-
-	setProtection(values, firstUpdate, WeaponObject::KINETIC, base);
-	setProtection(values, firstUpdate, WeaponObject::ENERGY, base);
-	setProtection(values, firstUpdate, WeaponObject::ELECTRICITY, base);
-	setProtection(values, firstUpdate, WeaponObject::STUN, base);
-	setProtection(values, firstUpdate, WeaponObject::BLAST, base);
-	setProtection(values, firstUpdate, WeaponObject::HEAT, base);
-	setProtection(values, firstUpdate, WeaponObject::COLD, base);
-	setProtection(values, firstUpdate, WeaponObject::ACID, base);
-	setProtection(values, firstUpdate, WeaponObject::LIGHTSABER, base);
+	baseProtection = values->getCurrentValue("armor_effectiveness");
+	specialProtection = values->getCurrentValue("armor_special_effectiveness");
 }
 
 void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {
-	float base = craftingValues->getCurrentValue("armor_effectiveness");
-	float value, min, max, currentValue;
-	String title = "exp_resistance";
-	String subtitle;
-	//float min = craftingValues->getMinValue("armor_effectiveness");
-	//float max = craftingValues->getMaxValue("armor_effectiveness");
-	float currentPercentage = craftingValues->getCurrentPercentage("armor_effectiveness");
-	float maxPercentage = craftingValues->getMaxPercentage("armor_effectiveness");
-	int precision = craftingValues->getPrecision("armor_effectiveness");
 
 	for (int i = 0; i <= 8; ++i) {
 
 		int type = pow((float)2,i);
 
-		subtitle = getStringType(type);
-		value = craftingValues->getCurrentValue(subtitle);
+		String subtitle = getStringType(type);
+		float value = craftingValues->getCurrentValue(subtitle);
 
 		if(value != CraftingValues::VALUENOTFOUND) {
 
 			specialResists = specialResists | type;
 
-			min = 2;
-			max = (value - min + (min * currentPercentage)) / currentPercentage;
-			currentValue = (currentPercentage * (max - min)) + min;
+			setProtectionValue(type, value);
 
-			craftingValues->addExperimentalProperty(title, subtitle, min, max,
-				precision, false);
-			craftingValues->setMaxPercentage(subtitle, maxPercentage);
-			craftingValues->setCurrentPercentage(subtitle, currentPercentage);
-			craftingValues->setCurrentValue(subtitle, currentValue);
-		}
-	}
-}
-
-void ArmorObjectImplementation::setProtection(CraftingValues* craftingValues, bool firstUpdate, int type, float base) {
-	float value = craftingValues->getCurrentValue(getStringType(type));
-
-	if (value == CraftingValues::VALUENOTFOUND
-			&& firstUpdate) {
-		craftingValues->lockValue(getStringType(type));
-	}
-
-	if (value == CraftingValues::VALUENOTFOUND) {
-		if (isVulnerable(type))
-			setProtectionValue(type, 0.0f);
-		else
-			setProtectionValue(type, base);
-	} else {
-		if(isVulnerable(type)){
-			if(firstUpdate) {
-				setProtectionValue(type, value);
-			}
-		} else if (value + base > 80.0f) {
-			setProtectionValue(type, 80.0f);
-		} else {
-			setProtectionValue(type, value + base);
 		}
 	}
 }
