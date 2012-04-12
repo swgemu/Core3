@@ -42,10 +42,34 @@
 
 
 object_tangible_food_crafted_drink_jawa_beer = object_tangible_food_crafted_shared_drink_jawa_beer:new {
+	templateType = CONSUMABLE,
+
+	duration = 10,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 4,
+
+	fillingMin = 24,
+	fillingMax = 14,
+
+	flavorMin = 720,
+	flavorMax = 1440,
+
+	nutritionMin = 7.5,
+	nutritionMax = 12,
+	quantityMin = 4,
+	quantityMax = 9,
+
+	modifiers = { "mask_scent", 0 },
+
+	buffName = "food.drink_jawa_beer",
+	buffCRC = 0,
+	speciesRestriction = "",
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ", "XX"},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},

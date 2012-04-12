@@ -51,7 +51,7 @@ object_tangible_food_crafted_drink_vayerbok = object_tangible_food_crafted_share
 	effectType = 4,
 
 	fillingMin = 24,
-	fillingMax = 13,
+	fillingMax = 13, -- 17 on http://swgemu.wikia.com/wiki/Category:Chef
 	flavorMin = 720,
 	flavorMax = 1440,
 	nutritionMin = 7.5,

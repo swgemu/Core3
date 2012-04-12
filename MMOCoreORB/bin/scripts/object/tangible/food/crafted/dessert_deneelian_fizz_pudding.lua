@@ -57,7 +57,7 @@ object_tangible_food_crafted_dessert_deneelian_fizz_pudding = object_tangible_fo
 	nutritionMin = 30,
 	nutritionMax = 45,
 	quantityMin = 1,
-	quantityMax = 4,
+	quantityMax = 4,-- 1 on http://swgemu.wikia.com/wiki/Category:Chef
 
 	modifiers = { "dodge_attack", 0 },
 

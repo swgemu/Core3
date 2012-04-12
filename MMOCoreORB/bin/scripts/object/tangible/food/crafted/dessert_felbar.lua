@@ -57,7 +57,7 @@ object_tangible_food_crafted_dessert_felbar = object_tangible_food_crafted_share
 	nutritionMin = 675,
 	nutritionMax = 1250,
 	quantityMin = 3,
-	quantityMax = 7,
+	quantityMax = 7, -- 4 on http://swgemu.wikia.com/wiki/Category:Chef 
 	speciesRestriction = "pets",
 
 	modifiers = { "mind", 0 },

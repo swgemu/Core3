@@ -52,13 +52,13 @@ object_tangible_food_crafted_dessert_gorrnar = object_tangible_food_crafted_shar
 	eventTypes = {PLAYERCLONED},
 
 	fillingMin = 30,
-	fillingMax = 19,
+	fillingMax = 25,
 	flavorMin = 960,
 	flavorMax = 1920,
-	nutritionMin = 14,
-	nutritionMax = 24,
-	quantityMin = 5,
-	quantityMax = 7,
+	nutritionMin = 11,
+	nutritionMax = 17,
+	quantityMin = 2,
+	quantityMax = 5,
 
 	modifiers = { "reduce_clone_wounds", 0 },
 

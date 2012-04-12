@@ -52,8 +52,8 @@ object_tangible_food_crafted_dessert_bofa_treat = object_tangible_food_crafted_s
 
 	fillingMin = 11,
 	fillingMax = 7,
-	flavorMin = 720,
-	flavorMax = 1440,
+	flavorMin = 1800,
+	flavorMax = 3600,
 	nutritionMin = 35,
 	nutritionMax = 60,
 	quantityMin = 6,

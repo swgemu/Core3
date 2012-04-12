@@ -58,7 +58,7 @@ object_tangible_food_crafted_drink_flameout = object_tangible_food_crafted_share
 	nutritionMin = 70,
 	nutritionMax = 100,
 	quantityMin = 2,
-	quantityMax = 5,
+	quantityMax = 5,-- 2 on http://swgemu.wikia.com/wiki/Category:Chef
 
 	modifiers = { "mitigate_damage", 0 },
 

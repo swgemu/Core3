@@ -58,7 +58,7 @@ object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shar
 	nutritionMin = 17,
 	nutritionMax = 31,
 	quantityMin = 4,
-	quantityMax = 7,
+	quantityMax = 7,-- 8 on http://swgemu.wikia.com/wiki/Category:Chef
 
 	modifiers = { "mitigate_damage", 0 },
 

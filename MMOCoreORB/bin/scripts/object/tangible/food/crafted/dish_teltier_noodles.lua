@@ -56,7 +56,7 @@ object_tangible_food_crafted_dish_teltier_noodles = object_tangible_food_crafted
 	flavorMin = 1800,
 	flavorMax = 3600,
 
-	nutritionMin = 30,
+	nutritionMin = 35,
 	nutritionMax = 60,
 	quantityMin = 6,
 	quantityMax = 10,

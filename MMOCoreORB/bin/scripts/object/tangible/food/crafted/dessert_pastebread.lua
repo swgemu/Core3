@@ -51,7 +51,7 @@ object_tangible_food_crafted_dessert_pastebread = object_tangible_food_crafted_s
 	effectType = 1,
 
 	fillingMin = 23,
-	fillingMax = 20,
+	fillingMax = 20, -- 18 on http://swgemu.wikia.com/wiki/Category:Chef
 	flavorMin = 1800,
 	flavorMax = 3600,
 	nutritionMin = 675,

@@ -42,6 +42,29 @@
 
 
 object_tangible_food_crafted_drink_starshine_surprise = object_tangible_food_crafted_shared_drink_starshine_surprise:new {
+	templateType = CONSUMABLE,
+
+	duration = 1,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 3, -- Event Based Buff
+	eventTypes = {OBJECTDESTRUCTION},
+
+	fillingMin = 36,
+	fillingMax = 21,
+	flavorMin = 1,
+	flavorMax = 1,
+	nutritionMin = 21,
+	nutritionMax = 36,
+	quantityMin = 1,
+	quantityMax = 6,
+
+	modifiers = { "incap_recovery", 0 },
+
+	buffName = "food.incap_recovery",
+	buffCRC = 0,
+	speciesRestriction = "",
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},

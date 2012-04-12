@@ -42,6 +42,29 @@
 
 
 object_tangible_food_crafted_drink_ruby_bliel = object_tangible_food_crafted_shared_drink_ruby_bliel:new {
+	templateType = CONSUMABLE,
+
+	duration = 17,
+	filling = 10,
+	nutrition = 10,
+
+	effectType = 3, -- Event Based Buff
+	eventTypes = {HEALINGPERFORMED, ENHANCINGPERFORMED, WOUNDHEALINGPERFORMED},
+
+	fillingMin = 22,
+	fillingMax = 18,
+	flavorMin = 12,
+	flavorMax = 22,
+	nutritionMin = 20,
+	nutritionMax = 35,
+	quantityMin = 4,
+	quantityMax = 5,
+
+	modifiers = { "heal_recovery", 0 },
+
+	buffName = "food.heal_recovery",
+	buffCRC = 0,
+	speciesRestriction = "",
 
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
