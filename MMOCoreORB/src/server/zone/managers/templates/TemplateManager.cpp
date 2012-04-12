@@ -536,6 +536,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("MEDIUM", WeaponObject::MEDIUM);
 	luaTemplatesInstance->setGlobalInt("HEAVY", WeaponObject::HEAVY);
 
+	luaTemplatesInstance->setGlobalInt("COMPOSITE", ArmorObject::COMPOSITE);
+
 	luaTemplatesInstance->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
 	luaTemplatesInstance->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
 	luaTemplatesInstance->setGlobalInt("OVERT", CreatureFlag::OVERT);

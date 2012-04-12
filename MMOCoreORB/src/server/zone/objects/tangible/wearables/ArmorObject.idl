@@ -72,14 +72,16 @@ class ArmorObject extends WearableObject {
 	protected int specialResists;
 	protected int vulnerabilites;
 
-	protected float specialBase;
-	
 	protected float baseProtection;
 	protected float specialProtection;
+	
+	protected int armorType;
 	
 	public static final int LIGHT = 0x1;
 	public static final int MEDIUM = 0x2;
 	public static final int HEAVY = 0x3;
+	
+	public static final int COMPOSITE = 0x1;
 	
 	public ArmorObject() {		
 		healthEncumbrance = 100;
@@ -97,6 +99,8 @@ class ArmorObject extends WearableObject {
 		cold = 0;
 		acid = 0;
 		lightSaber = 0;
+		
+		armorType = 0;
 		
 		specialResists = 0;
 

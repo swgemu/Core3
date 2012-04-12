@@ -659,11 +659,6 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "ArmorObject.specialBase") {
-		TypeInfo<float >::parseFromBinaryStream(&specialBase, stream);
-		return true;
-	}
-
 	if (_name == "ArmorObject.baseProtection") {
 		TypeInfo<float >::parseFromBinaryStream(&baseProtection, stream);
 		return true;
@@ -671,6 +666,11 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 
 	if (_name == "ArmorObject.specialProtection") {
 		TypeInfo<float >::parseFromBinaryStream(&specialProtection, stream);
+		return true;
+	}
+
+	if (_name == "ArmorObject.armorType") {
+		TypeInfo<int >::parseFromBinaryStream(&armorType, stream);
 		return true;
 	}
 
@@ -811,14 +811,6 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.specialBase";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&specialBase, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "ArmorObject.baseProtection";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -832,6 +824,14 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&specialProtection, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "ArmorObject.armorType";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&armorType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -867,6 +867,8 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	acid = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		lightSaber = 0;
 	lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		armorType = 0;
+	armorType = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		Logger.setLoggingName("ArmorObject");

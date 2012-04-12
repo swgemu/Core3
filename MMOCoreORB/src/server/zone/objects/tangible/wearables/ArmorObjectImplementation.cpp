@@ -43,8 +43,9 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	acid = armorTemplate->getAcid();
 	lightSaber = armorTemplate->getLightSaber();
 
-	specialBase = armorTemplate->getSpecialBase();
+	armorType = armorTemplate->getArmorType();
 
+System::out << armorType << endl;
 	setSliceable(true);
 }
 
@@ -299,7 +300,14 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 	setMaxCondition((int) values->getCurrentValue("armor_integrity"));
 
 	baseProtection = values->getCurrentValue("armor_effectiveness");
-	specialProtection = values->getCurrentValue("armor_special_effectiveness");
+
+	/// Because comp had to be stupid and not follow the rules
+	/// like everything else did
+	if(armorType == ArmorObject::COMPOSITE)
+		specialProtection = values->getCurrentValue("armor_effectiveness");
+	else
+		specialProtection = values->getCurrentValue("armor_special_effectiveness");
+
 }
 
 void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {

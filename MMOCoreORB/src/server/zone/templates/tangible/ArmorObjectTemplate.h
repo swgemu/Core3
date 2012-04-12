@@ -10,6 +10,7 @@
 
 
 #include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
 class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	int healthEncumbrance;
@@ -30,7 +31,7 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 
 	int vulnerabilites;
 
-	float specialBase;
+	int armorType;
 
 public:
 	ArmorObjectTemplate() {
@@ -62,7 +63,7 @@ public:
 		acid = templateData->getFloatField("acid");
 		lightSaber = templateData->getFloatField("lightSaber");
 
-		specialBase = templateData->getFloatField("specialBase");
+		armorType = templateData->getIntField("armorType");
 	}
 
 	inline float getAcid() const {
@@ -111,10 +112,6 @@ public:
 
 	inline int getRating() const {
 		return rating;
-	}
-
-	inline float getSpecialBase() const {
-		return specialBase;
 	}
 
 	float getStun() const {
@@ -173,16 +170,16 @@ public:
 		this->rating = rating;
 	}
 
-	void setSpecialBase(float specialBase) {
-		this->specialBase = specialBase;
-	}
-
 	void setStun(float stun) {
 		this->stun = stun;
 	}
 
 	bool isArmorObjectTemplate() {
 		return true;
+	}
+
+	int getArmorType() {
+		return armorType;
 	}
 };
 
