@@ -74,6 +74,9 @@ class ArmorObject extends WearableObject {
 
 	protected float baseProtection;
 	protected float specialProtection;
+
+	protected float effectivenessSlice;
+	protected float encumbranceSlice;
 	
 	protected int armorType;
 	
@@ -99,6 +102,8 @@ class ArmorObject extends WearableObject {
 		cold = 0;
 		acid = 0;
 		lightSaber = 0;
+		effectivenessSlice = 1;
+		encumbranceSlice = 1;
 		
 		armorType = 0;
 		
@@ -243,7 +248,7 @@ class ArmorObject extends WearableObject {
 	}
 	
 	public int getHealthEncumbrance() {
-		return healthEncumbrance;
+		return healthEncumbrance * encumbranceSlice;
 	}
 	
 	public void setHealthEncumbrance(int encumber) {
@@ -251,7 +256,7 @@ class ArmorObject extends WearableObject {
 	}
 	
 	public int getActionEncumbrance() {
-		return actionEncumbrance;
+		return actionEncumbrance * encumbranceSlice;
 	}
 	
 	public void setActionEncumbrance(int encumber) {
@@ -259,18 +264,22 @@ class ArmorObject extends WearableObject {
 	}
 	
 	public int getMindEncumbrance() {
-		return mindEncumbrance;
+		return mindEncumbrance * encumbranceSlice;
 	}
 	
 	public void setMindEncumbrance(int encumber) {
 		mindEncumbrance = encumber;
 	}
-	
-	public float getBaseProtection() {
-		return baseProtection;
+
+	public void setEffectivenessSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		effectivenessSlice = 1 + value;
 	}
-	
-	public void setBaseProtection(float value) {
-		baseProtection = value;
+
+	public void setEncumbranceSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		encumbranceSlice = 1 - value;
 	}
 }

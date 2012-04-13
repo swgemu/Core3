@@ -14,7 +14,7 @@
  *	ArmorObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_GETBASEPROTECTION__,RPC_SETBASEPROTECTION__FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_SETEFFECTIVENESSSLICE__FLOAT_,RPC_SETENCUMBRANCESLICE__FLOAT_};
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
@@ -479,31 +479,32 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 		_implementation->setMindEncumbrance(encumber);
 }
 
-float ArmorObject::getBaseProtection() {
+void ArmorObject::setEffectivenessSlice(float value) {
 	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETBASEPROTECTION__);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getBaseProtection();
-}
-
-void ArmorObject::setBaseProtection(float value) {
-	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETBASEPROTECTION__FLOAT_);
+		DistributedMethod method(this, RPC_SETEFFECTIVENESSSLICE__FLOAT_);
 		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setBaseProtection(value);
+		_implementation->setEffectivenessSlice(value);
+}
+
+void ArmorObject::setEncumbranceSlice(float value) {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETENCUMBRANCESLICE__FLOAT_);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setEncumbranceSlice(value);
 }
 
 DistributedObjectServant* ArmorObject::_getImplementation() {
@@ -696,6 +697,16 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "ArmorObject.effectivenessSlice") {
+		TypeInfo<float >::parseFromBinaryStream(&effectivenessSlice, stream);
+		return true;
+	}
+
+	if (_name == "ArmorObject.encumbranceSlice") {
+		TypeInfo<float >::parseFromBinaryStream(&encumbranceSlice, stream);
+		return true;
+	}
+
 	if (_name == "ArmorObject.armorType") {
 		TypeInfo<int >::parseFromBinaryStream(&armorType, stream);
 		return true;
@@ -854,6 +865,22 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ArmorObject.effectivenessSlice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&effectivenessSlice, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "ArmorObject.encumbranceSlice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&encumbranceSlice, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "ArmorObject.armorType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -863,7 +890,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 18;
+	return _count + 20;
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
@@ -894,6 +921,10 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	acid = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		lightSaber = 0;
 	lightSaber = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		effectivenessSlice = 1;
+	effectivenessSlice = 1;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice = 1;
+	encumbranceSlice = 1;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		armorType = 0;
 	armorType = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
@@ -1018,8 +1049,8 @@ void ArmorObjectImplementation::setLightSaber(float value) {
 }
 
 int ArmorObjectImplementation::getHealthEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return healthEncumbrance;
-	return healthEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return healthEncumbrance * encumbranceSlice;
+	return healthEncumbrance * encumbranceSlice;
 }
 
 void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
@@ -1028,8 +1059,8 @@ void ArmorObjectImplementation::setHealthEncumbrance(int encumber) {
 }
 
 int ArmorObjectImplementation::getActionEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return actionEncumbrance;
-	return actionEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return actionEncumbrance * encumbranceSlice;
+	return actionEncumbrance * encumbranceSlice;
 }
 
 void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
@@ -1038,8 +1069,8 @@ void ArmorObjectImplementation::setActionEncumbrance(int encumber) {
 }
 
 int ArmorObjectImplementation::getMindEncumbrance() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return mindEncumbrance;
-	return mindEncumbrance;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return mindEncumbrance * encumbranceSlice;
+	return mindEncumbrance * encumbranceSlice;
 }
 
 void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
@@ -1047,14 +1078,20 @@ void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
 	mindEncumbrance = encumber;
 }
 
-float ArmorObjectImplementation::getBaseProtection() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return baseProtection;
-	return baseProtection;
+void ArmorObjectImplementation::setEffectivenessSlice(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		effectivenessSlice 
+	if (value > 0.5f || value < 0)	// server/zone/objects/tangible/wearables/ArmorObject.idl():  			return;
+	return;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		effectivenessSlice = 1 + value;
+	effectivenessSlice = 1 + value;
 }
 
-void ArmorObjectImplementation::setBaseProtection(float value) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		baseProtection = value;
-	baseProtection = value;
+void ArmorObjectImplementation::setEncumbranceSlice(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice 
+	if (value > 0.5f || value < 0)	// server/zone/objects/tangible/wearables/ArmorObject.idl():  			return;
+	return;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice = 1 - value;
+	encumbranceSlice = 1 - value;
 }
 
 /*
@@ -1165,11 +1202,11 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETMINDENCUMBRANCE__INT_:
 		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
-	case RPC_GETBASEPROTECTION__:
-		resp->insertFloat(getBaseProtection());
+	case RPC_SETEFFECTIVENESSSLICE__FLOAT_:
+		setEffectivenessSlice(inv->getFloatParameter());
 		break;
-	case RPC_SETBASEPROTECTION__FLOAT_:
-		setBaseProtection(inv->getFloatParameter());
+	case RPC_SETENCUMBRANCESLICE__FLOAT_:
+		setEncumbranceSlice(inv->getFloatParameter());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1300,12 +1337,12 @@ void ArmorObjectAdapter::setMindEncumbrance(int encumber) {
 	(static_cast<ArmorObject*>(stub))->setMindEncumbrance(encumber);
 }
 
-float ArmorObjectAdapter::getBaseProtection() {
-	return (static_cast<ArmorObject*>(stub))->getBaseProtection();
+void ArmorObjectAdapter::setEffectivenessSlice(float value) {
+	(static_cast<ArmorObject*>(stub))->setEffectivenessSlice(value);
 }
 
-void ArmorObjectAdapter::setBaseProtection(float value) {
-	(static_cast<ArmorObject*>(stub))->setBaseProtection(value);
+void ArmorObjectAdapter::setEncumbranceSlice(float value) {
+	(static_cast<ArmorObject*>(stub))->setEncumbranceSlice(value);
 }
 
 /*

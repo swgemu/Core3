@@ -235,8 +235,11 @@ float ArmorObjectImplementation::getTypeValue(int type, float value) {
 	else if(isSpecial(type))
 		newValue = specialProtection + value;
 
-	else
+	else {
 		newValue = baseProtection + value;
+		newValue *= effectivenessSlice;
+	}
+
 
 	if(sliced) {
 		if(newValue > 90)
@@ -307,6 +310,8 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 		lightSaber = 0;
 		baseProtection = 0;
 		specialProtection = 0;
+		effectivenessSlice = 1;
+		encumbranceSlice = 1;
 
 		calculateSpecialProtection(values);
 

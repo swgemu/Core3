@@ -569,10 +569,7 @@ void SlicingSessionImplementation::handleSliceEncumbrance(uint8 percent) {
 
 	Locker locker(armor);
 
-	armor->setHealthEncumbrance(armor->getHealthEncumbrance() - (armor->getHealthEncumbrance() * percent / 100));
-	armor->setActionEncumbrance(armor->getActionEncumbrance() - (armor->getActionEncumbrance() * percent / 100));
-	armor->setMindEncumbrance(armor->getMindEncumbrance() - (armor->getMindEncumbrance() * percent / 100));
-
+	armor->setEncumbranceSlice(percent / 100.f);
 	armor->setSliced(true);
 
 	StringIdChatParameter params;
@@ -590,8 +587,7 @@ void SlicingSessionImplementation::handleSliceEffectiveness(uint8 percent) {
 
 	Locker locker(armor);
 
-	armor->setBaseProtection(armor->getBaseProtection() + (armor->getBaseProtection() * (percent / 100.f)));
-
+	armor->setEffectivenessSlice(percent / 100.f);
 	armor->setSliced(true);
 
 	StringIdChatParameter params;

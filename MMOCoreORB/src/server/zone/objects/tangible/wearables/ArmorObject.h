@@ -145,9 +145,9 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
-	float getBaseProtection();
+	void setEffectivenessSlice(float value);
 
-	void setBaseProtection(float value);
+	void setEncumbranceSlice(float value);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -210,6 +210,10 @@ protected:
 	float baseProtection;
 
 	float specialProtection;
+
+	float effectivenessSlice;
+
+	float encumbranceSlice;
 
 	int armorType;
 
@@ -306,9 +310,9 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
-	float getBaseProtection();
+	void setEffectivenessSlice(float value);
 
-	void setBaseProtection(float value);
+	void setEncumbranceSlice(float value);
 
 	WeakReference<ArmorObject*> _this;
 
@@ -415,9 +419,9 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
-	float getBaseProtection();
+	void setEffectivenessSlice(float value);
 
-	void setBaseProtection(float value);
+	void setEncumbranceSlice(float value);
 
 };
 
