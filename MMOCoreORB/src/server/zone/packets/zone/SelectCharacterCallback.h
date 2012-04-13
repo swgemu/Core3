@@ -38,7 +38,7 @@ public:
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Invalid Character ID", 0x0);
 			client->sendMessage(errMsg);
 
-			client->error("invalid character id " + String::valueOf(characterID) + " in account: " + client->getAccountID());
+			client->error("invalid character id " + String::valueOf(characterID) + " in account: " + String::valueOf(client->getAccountID()));
 			return;
 		}
 
