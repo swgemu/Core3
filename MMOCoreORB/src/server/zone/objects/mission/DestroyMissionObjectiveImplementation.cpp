@@ -88,22 +88,32 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 	float waterHeight;
 	TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();
 
-	float distance = 10;
+	float distance = 128;
 	int tries = 0;
 
 	position.set(newX, height, newY);
 
 	while ((!zone->isWithinBoundaries(position) ||
 			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
-			|| CollisionManager::checkSphereCollision(position, 25.f , zone)) && tries < 20) {
+			|| CollisionManager::checkSphereCollision(position, 25.f , zone)) && tries < 128) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
 		height = zone->getHeight(newX, newY);
 
 		position.set(newX, height, newY);
 
-		distance = distance * 2;
 		++tries;
+
+		//Increase distance every tenth try.
+		if (tries % 16 == 0) {
+			distance = distance * 2;
+		}
+	}
+
+	if (tries == 128) {
+		//Failed to find a spawn point for the lair, fail mission.
+		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
+		fail();
 	}
 
 	//info("found with tries " + String::valueOf(tries), true);

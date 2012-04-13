@@ -562,15 +562,23 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setMissionNumber(randTexts);
 
+	TerrainManager* terrain = player->getZone()->getPlanetManager()->getTerrainManager();
+
 	Vector3 startPos;
 
 	bool foundPosition = false;
 	int maximumNumberOfTries = 20;
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		foundPosition = true;
+
 		startPos = player->getWorldCoordinate(System::random(1000) + 1000, (float)System::random(360));
 
-		if (player->getZone()->isWithinBoundaries(startPos)) {
+		float height = player->getZone()->getHeight(startPos.getX(), startPos.getY());
+		float waterHeight = height * 2;
+		bool result = terrain->getWaterHeight(startPos.getX(), startPos.getY(), waterHeight);
+
+		if (player->getZone()->isWithinBoundaries(startPos) &&
+				(result && waterHeight <= height)) {
 			//Check that the position is outside cities.
 			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
@@ -579,6 +587,8 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 					foundPosition = false;
 				}
 			}
+		} else {
+			foundPosition = false;
 		}
 	}
 
