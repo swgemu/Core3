@@ -15,7 +15,7 @@
 
 class UpdateModifiedObjectsThread;
 
-class CommitMasterTransactionThread : public Thread, public Singleton<CommitMasterTransactionThread> {
+class CommitMasterTransactionThread : public Thread, public Singleton<CommitMasterTransactionThread>, public Object {
 	Mutex blockMutex;
 	Condition waitCondition;
 
