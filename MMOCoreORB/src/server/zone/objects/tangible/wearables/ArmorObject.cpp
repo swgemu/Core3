@@ -14,7 +14,7 @@
  *	ArmorObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_GETBASEPROTECTION__,RPC_SETBASEPROTECTION__FLOAT_};
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
@@ -479,6 +479,33 @@ void ArmorObject::setMindEncumbrance(int encumber) {
 		_implementation->setMindEncumbrance(encumber);
 }
 
+float ArmorObject::getBaseProtection() {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBASEPROTECTION__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getBaseProtection();
+}
+
+void ArmorObject::setBaseProtection(float value) {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBASEPROTECTION__FLOAT_);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBaseProtection(value);
+}
+
 DistributedObjectServant* ArmorObject::_getImplementation() {
 
 	_updated = true;
@@ -900,22 +927,9 @@ int ArmorObjectImplementation::getRating() {
 	return rating;
 }
 
-float ArmorObjectImplementation::getTypeValue(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		if(
-	if (isVulnerable(type))	// server/zone/objects/tangible/wearables/ArmorObject.idl():  			return 0;
-	return 0;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return 
-	if (isSpecial(type))	// server/zone/objects/tangible/wearables/ArmorObject.idl():  			return specialProtection;
-	return specialProtection;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return baseProtection;
-	return baseProtection;
-}
-
 float ArmorObjectImplementation::getKinetic() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = kinetic + getTypeValue(WeaponObject.KINETIC);
-	float value = kinetic + getTypeValue(WeaponObject::KINETIC);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(kinetic);
-	return value - getConditionReduction(kinetic);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.KINETIC, kinetic) - getConditionReduction(kinetic);
+	return getTypeValue(WeaponObject::KINETIC, kinetic) - getConditionReduction(kinetic);
 }
 
 void ArmorObjectImplementation::setKinetic(float value) {
@@ -924,10 +938,8 @@ void ArmorObjectImplementation::setKinetic(float value) {
 }
 
 float ArmorObjectImplementation::getEnergy() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = energy + getTypeValue(WeaponObject.ENERGY);
-	float value = energy + getTypeValue(WeaponObject::ENERGY);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(energy);
-	return value - getConditionReduction(energy);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.ENERGY, energy) - getConditionReduction(energy);
+	return getTypeValue(WeaponObject::ENERGY, energy) - getConditionReduction(energy);
 }
 
 void ArmorObjectImplementation::setEnergy(float value) {
@@ -936,10 +948,8 @@ void ArmorObjectImplementation::setEnergy(float value) {
 }
 
 float ArmorObjectImplementation::getElectricity() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = electricity + getTypeValue(WeaponObject.ELECTRICITY);
-	float value = electricity + getTypeValue(WeaponObject::ELECTRICITY);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(electricity);
-	return value - getConditionReduction(electricity);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.ELECTRICITY, electricity) - getConditionReduction(electricity);
+	return getTypeValue(WeaponObject::ELECTRICITY, electricity) - getConditionReduction(electricity);
 }
 
 void ArmorObjectImplementation::setElectricity(float value) {
@@ -948,10 +958,8 @@ void ArmorObjectImplementation::setElectricity(float value) {
 }
 
 float ArmorObjectImplementation::getStun() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = stun + getTypeValue(WeaponObject.STUN);
-	float value = stun + getTypeValue(WeaponObject::STUN);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(stun);
-	return value - getConditionReduction(stun);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.STUN, stun) - getConditionReduction(stun);
+	return getTypeValue(WeaponObject::STUN, stun) - getConditionReduction(stun);
 }
 
 void ArmorObjectImplementation::setStun(float value) {
@@ -960,10 +968,8 @@ void ArmorObjectImplementation::setStun(float value) {
 }
 
 float ArmorObjectImplementation::getBlast() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = blast + getTypeValue(WeaponObject.BLAST);
-	float value = blast + getTypeValue(WeaponObject::BLAST);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(blast);
-	return value - getConditionReduction(blast);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.BLAST, blast) - getConditionReduction(blast);
+	return getTypeValue(WeaponObject::BLAST, blast) - getConditionReduction(blast);
 }
 
 void ArmorObjectImplementation::setBlast(float value) {
@@ -972,10 +978,8 @@ void ArmorObjectImplementation::setBlast(float value) {
 }
 
 float ArmorObjectImplementation::getHeat() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = heat + getTypeValue(WeaponObject.HEAT);
-	float value = heat + getTypeValue(WeaponObject::HEAT);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(heat);
-	return value - getConditionReduction(heat);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.HEAT, heat) - getConditionReduction(heat);
+	return getTypeValue(WeaponObject::HEAT, heat) - getConditionReduction(heat);
 }
 
 void ArmorObjectImplementation::setHeat(float value) {
@@ -984,10 +988,8 @@ void ArmorObjectImplementation::setHeat(float value) {
 }
 
 float ArmorObjectImplementation::getCold() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = cold + getTypeValue(WeaponObject.COLD);
-	float value = cold + getTypeValue(WeaponObject::COLD);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(cold);
-	return value - getConditionReduction(cold);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.COLD, cold) - getConditionReduction(cold);
+	return getTypeValue(WeaponObject::COLD, cold) - getConditionReduction(cold);
 }
 
 void ArmorObjectImplementation::setCold(float value) {
@@ -996,10 +998,8 @@ void ArmorObjectImplementation::setCold(float value) {
 }
 
 float ArmorObjectImplementation::getAcid() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = acid + getTypeValue(WeaponObject.ACID);
-	float value = acid + getTypeValue(WeaponObject::ACID);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(acid);
-	return value - getConditionReduction(acid);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.ACID, acid) - getConditionReduction(acid);
+	return getTypeValue(WeaponObject::ACID, acid) - getConditionReduction(acid);
 }
 
 void ArmorObjectImplementation::setAcid(float value) {
@@ -1008,10 +1008,8 @@ void ArmorObjectImplementation::setAcid(float value) {
 }
 
 float ArmorObjectImplementation::getLightSaber() {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		float value = lightSaber + getTypeValue(WeaponObject.LIGHTSABER);
-	float value = lightSaber + getTypeValue(WeaponObject::LIGHTSABER);
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return value - getConditionReduction(lightSaber);
-	return value - getConditionReduction(lightSaber);
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return getTypeValue(WeaponObject.LIGHTSABER, lightSaber) - getConditionReduction(lightSaber);
+	return getTypeValue(WeaponObject::LIGHTSABER, lightSaber) - getConditionReduction(lightSaber);
 }
 
 void ArmorObjectImplementation::setLightSaber(float value) {
@@ -1047,6 +1045,16 @@ int ArmorObjectImplementation::getMindEncumbrance() {
 void ArmorObjectImplementation::setMindEncumbrance(int encumber) {
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		mindEncumbrance = encumber;
 	mindEncumbrance = encumber;
+}
+
+float ArmorObjectImplementation::getBaseProtection() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return baseProtection;
+	return baseProtection;
+}
+
+void ArmorObjectImplementation::setBaseProtection(float value) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		baseProtection = value;
+	baseProtection = value;
 }
 
 /*
@@ -1156,6 +1164,12 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETMINDENCUMBRANCE__INT_:
 		setMindEncumbrance(inv->getSignedIntParameter());
+		break;
+	case RPC_GETBASEPROTECTION__:
+		resp->insertFloat(getBaseProtection());
+		break;
+	case RPC_SETBASEPROTECTION__FLOAT_:
+		setBaseProtection(inv->getFloatParameter());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1284,6 +1298,14 @@ int ArmorObjectAdapter::getMindEncumbrance() {
 
 void ArmorObjectAdapter::setMindEncumbrance(int encumber) {
 	(static_cast<ArmorObject*>(stub))->setMindEncumbrance(encumber);
+}
+
+float ArmorObjectAdapter::getBaseProtection() {
+	return (static_cast<ArmorObject*>(stub))->getBaseProtection();
+}
+
+void ArmorObjectAdapter::setBaseProtection(float value) {
+	(static_cast<ArmorObject*>(stub))->setBaseProtection(value);
 }
 
 /*

@@ -225,6 +225,30 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 }
 
+float ArmorObjectImplementation::getTypeValue(int type, float value) {
+
+	int newValue = 0;
+
+	if(isVulnerable(type))
+		newValue = value;
+
+	else if(isSpecial(type))
+		newValue = specialProtection + value;
+
+	else
+		newValue = baseProtection + value;
+
+	if(sliced) {
+		if(newValue > 90)
+			newValue = 90;
+	} else {
+		if(newValue > 80)
+			newValue = 80;
+	}
+
+	return newValue;
+}
+
 int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 69) {
 		if (isSliced()) {
@@ -281,6 +305,8 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 		cold = 0;
 		acid = 0;
 		lightSaber = 0;
+		baseProtection = 0;
+		specialProtection = 0;
 
 		calculateSpecialProtection(values);
 

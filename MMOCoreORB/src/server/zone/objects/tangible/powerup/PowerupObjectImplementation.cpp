@@ -117,7 +117,7 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 
 			PowerupStat stat = pup->getRandomSecondaryAttribute();
 
-			if(System::random(2) == 1) {
+			if(System::random(3) == 1) {
 				for(int i = 0; i < modifiers.size(); ++i) {
 					if(stat == modifiers.get(i))  {
 						return;

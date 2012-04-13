@@ -590,54 +590,7 @@ void SlicingSessionImplementation::handleSliceEffectiveness(uint8 percent) {
 
 	Locker locker(armor);
 
-	if (!armor->isSpecial(WeaponObject::KINETIC)) {
-		armor->setKinetic(armor->getKinetic() + (armor->getKinetic() * percent / 100));
-		if (armor->getKinetic() > 90.0f)
-			armor->setKinetic(90.0f);
-	}
-
-	if (!armor->isSpecial(WeaponObject::ENERGY)) {
-			armor->setEnergy(armor->getEnergy() + (armor->getEnergy() * percent / 100));
-			if (armor->getEnergy() > 90.0f)
-				armor->setEnergy(90.0f);
-		}
-
-	if (!armor->isSpecial(WeaponObject::ELECTRICITY)) {
-		armor->setElectricity(armor->getElectricity() + (armor->getElectricity() * percent / 100));
-		if (armor->getElectricity() > 90.0f)
-			armor->setElectricity(90.0f);
-	}
-
-	if (!armor->isSpecial(WeaponObject::STUN)) {
-		armor->setStun(armor->getStun() + (armor->getStun() * percent / 100));
-		if (armor->getStun() > 90.0f)
-			armor->setStun(90.0f);
-	}
-	if (!armor->isSpecial(WeaponObject::BLAST)) {
-		armor->setBlast(armor->getBlast() + (armor->getBlast() * percent / 100));
-		if (armor->getBlast() > 90.0f)
-			armor->setBlast(90.0f);
-	}
-	if (!armor->isSpecial(WeaponObject::HEAT)) {
-		armor->setHeat(armor->getHeat() + (armor->getHeat() * percent / 100));
-		if (armor->getHeat() > 90.0f)
-			armor->setHeat(90.0f);
-	}
-	if (!armor->isSpecial(WeaponObject::COLD)) {
-		armor->setCold(armor->getCold() + (armor->getCold() * percent / 100));
-		if (armor->getCold() > 90.0f)
-			armor->setCold(90.0f);
-	}
-	if (!armor->isSpecial(WeaponObject::ACID)) {
-		armor->setAcid(armor->getAcid() + (armor->getAcid() * percent / 100));
-		if (armor->getAcid() > 90.0f)
-			armor->setAcid(90.0f);
-	}
-	if (!armor->isSpecial(WeaponObject::LIGHTSABER)) {
-		armor->setLightSaber(armor->getLightSaber() + (armor->getLightSaber() * percent / 100));
-		if (armor->getLightSaber() > 90.0f)
-			armor->setLightSaber(90.0f);
-	}
+	armor->setBaseProtection(armor->getBaseProtection() + (armor->getBaseProtection() * (percent / 100.f)));
 
 	armor->setSliced(true);
 
