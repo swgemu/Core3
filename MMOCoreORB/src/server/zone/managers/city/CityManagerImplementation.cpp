@@ -128,7 +128,7 @@ void CityManagerImplementation::loadCityRegions() {
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
 			CityRegion* object = dynamic_cast<CityRegion*>(Core::getObjectBroker()->lookUp(objectID));
 
-			if (object != NULL) {
+			if (object != NULL && object->getZone() != NULL) {
 				++i;
 				cities.put(object->getRegionName(), object);
 			} else {
@@ -559,6 +559,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
 	cities.drop(city->getRegionName());
+	city->setZone(NULL);
 
 	//TODO: Destroy civic structures.
 }
