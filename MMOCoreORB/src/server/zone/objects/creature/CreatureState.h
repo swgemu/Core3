@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 
-class CreatureState : public Singleton<CreatureState>, public Logger {
+class CreatureState : public Singleton<CreatureState>, public Logger, public Object {
 public:
 	HashTable<String, uint64> states;
 
