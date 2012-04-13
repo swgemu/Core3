@@ -194,7 +194,7 @@ void PlayerManagerImplementation::loadNameMap() {
 	info("loading character names");
 
 	try {
-		String query = "SELECT * FROM characters where character_oid > 16777216 order by character_oid asc";
+		String query = "SELECT * FROM characters where character_oid > 16777216 and galaxy_id = " << server->getGalaxyID() << " order by character_oid asc";
 
 		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
