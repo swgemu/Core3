@@ -211,35 +211,31 @@ void PlanetManagerImplementation::loadTravelFares() {
 
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+
+	//Initialize the rows so we can do a symmetric insert
+	for(int i = 0; i < dtiff.getTotalRows(); i++) {
 		VectorMap<String, int> planetFares;
 		DataTableRow* row =  dtiff.getRow(i);
 		String departurePlanet = "";
 		row->getCell(0)->getValue(departurePlanet);
-
-		for (int j = 1; j < dtiff.getTotalColumns(); ++j) {
-			String arrivalPlanet = dtiff.getColumnNameByIndex(j);
-			int fare = 0;
-			row->getCell(j)->getValue(fare);
-			planetFares.put(arrivalPlanet, fare);
-
-			//System::out << "Row: " << arrivalPlanet << " " << fare << endl;
-		}
-
 		travelFares.put(departurePlanet, planetFares);
 	}
 
-	/*DataTableRow* row = rows.get(0);
+	//Insert values
+	for(int i = 0; i < dtiff.getTotalRows(); i++) {
+		DataTableRow* row =  dtiff.getRow(i);
+		String departurePlanet = "";
+		row->getCell(0)->getValue(departurePlanet);
 
-	//We want to skip the initial column.
-	for (int i = 1; i < dtiff.getTotalColumns(); ++i) {
-		String planetName = dtiff.getColumnNameByIndex(i);
-		VectorMap<String, int> planetMap;
-		int fare = 0;
-		row->getCell(i)->getValue(fare);
-
-		travelFares.put(planetName, fare);
-	}*/
+		for(int j=i+1; j<dtiff.getTotalColumns(); j++) {
+			String arrivalPlanet = dtiff.getColumnNameByIndex(j);
+			int fare = 0;
+			row->getCell(j)->getValue(fare);
+			travelFares.get(departurePlanet).put(arrivalPlanet, fare);
+			if(arrivalPlanet != departurePlanet)
+				travelFares.get(arrivalPlanet).put(departurePlanet, fare);
+		}
+	}
 
 	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.");
 }
