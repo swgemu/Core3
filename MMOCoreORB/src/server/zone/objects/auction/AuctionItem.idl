@@ -62,6 +62,7 @@ class AuctionItem extends ManagedObject {
 	protected unsigned long ownerID;
 	protected string ownerName;
 	protected string bidderName;
+	protected unsigned long offerToID;
 
 	protected string planet;
 	protected string region;
@@ -98,6 +99,7 @@ class AuctionItem extends ManagedObject {
 		itemType = 0;
 		
 		ownerID = 0;
+		offerToID = 0;
 		
 		price = 0;
 		
@@ -148,6 +150,10 @@ class AuctionItem extends ManagedObject {
 	
 	public void setOwnerID(unsigned long ownerObjectID) {
 		ownerID = ownerObjectID;
+	}
+	
+	public void setOfferToID(unsigned long vendorOwnerID) {
+		offerToID = vendorOwnerID;
 	}
 	
 	public void setBidderName(final string name) {
@@ -239,6 +245,10 @@ class AuctionItem extends ManagedObject {
 	
 	public unsigned long getOwnerID() {
 		return ownerID;
+	}
+	
+	public unsigned long getOfferToID() {
+		return offerToID;
 	}
 	
 	public string getTerminalTitle() {

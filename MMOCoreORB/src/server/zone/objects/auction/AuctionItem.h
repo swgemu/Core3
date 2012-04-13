@@ -86,6 +86,8 @@ public:
 
 	void setOwnerID(unsigned long long ownerObjectID);
 
+	void setOfferToID(unsigned long long vendorOwnerID);
+
 	void setBidderName(const String& name);
 
 	void setPlanet(const String& planetid);
@@ -131,6 +133,8 @@ public:
 	unsigned long long getAuctionedItemObjectID();
 
 	unsigned long long getOwnerID();
+
+	unsigned long long getOfferToID();
 
 	String getTerminalTitle();
 
@@ -203,6 +207,8 @@ protected:
 
 	String bidderName;
 
+	unsigned long long offerToID;
+
 	String planet;
 
 	String region;
@@ -264,6 +270,8 @@ public:
 
 	void setOwnerID(unsigned long long ownerObjectID);
 
+	void setOfferToID(unsigned long long vendorOwnerID);
+
 	void setBidderName(const String& name);
 
 	void setPlanet(const String& planetid);
@@ -309,6 +317,8 @@ public:
 	unsigned long long getAuctionedItemObjectID();
 
 	unsigned long long getOwnerID();
+
+	unsigned long long getOfferToID();
 
 	String getTerminalTitle();
 
@@ -395,6 +405,8 @@ public:
 
 	void setOwnerID(unsigned long long ownerObjectID);
 
+	void setOfferToID(unsigned long long vendorOwnerID);
+
 	void setBidderName(const String& name);
 
 	void setOwnerName(const String& name);
@@ -438,6 +450,8 @@ public:
 	unsigned long long getAuctionedItemObjectID();
 
 	unsigned long long getOwnerID();
+
+	unsigned long long getOfferToID();
 
 	String getTerminalTitle();
 

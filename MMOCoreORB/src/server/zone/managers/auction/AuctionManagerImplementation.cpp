@@ -430,6 +430,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	if (vendorRef == NULL)
 		return;
 
+	Vendor* vendor = getVendorFromObject(vendorRef);
+
 	String playername = player->getFirstName().toLowerCase();
 
 	ChatManager* cman = zoneServer->getChatManager();
@@ -440,6 +442,9 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
+
+	if(item->isOfferToVendor() && vendor->isVendorOwner(player->getObjectID()))
+		return;
 
 	item->setSold(true);
 	item->setExpireTime(availableTime);
@@ -751,7 +756,7 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		return;
 	}
 
-	if (item->isOfferToVendor() && item->getOwnerID() != player->getObjectID()) {
+	if (item->isOfferToVendor() && item->getOwnerID() != player->getObjectID() && vendor->isVendorOwner(player->getObjectID())) {
 		item->setOfferToVendor(false);
 		item->setInStockroom(true);
 		item->setOwnerID(player->getObjectID());
@@ -841,8 +846,10 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	item->setBidderName("");
 
 	// Someone elses Vendor (making this sell item an offer)
-	if (vendor->getOwnershipRightsOf(player) == 1)
+	if (vendor->getOwnershipRightsOf(player) == 1) {
 		item->setOfferToVendor(true);
+		item->setOfferToID(vendor->getOwnerID());
+	}
 
 	if (vendor->isBazaarTerminal())
 		item->setOnBazaar(true);
@@ -927,7 +934,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 	case 6: // Offers to Vendor (owner)
 		for (int i = 0; i < items->size(); i++) {
 			AuctionItem* item = items->get(i);
-			if (!item->isSold() && !item->isRemovedByOwner() && item->isOfferToVendor())
+			if (!item->isSold() && !item->isRemovedByOwner() && item->isOfferToVendor() && item->getOfferToID() == player->getObjectID())
 				reply->addItemToList(items->get(i));
 		}
 		break;
