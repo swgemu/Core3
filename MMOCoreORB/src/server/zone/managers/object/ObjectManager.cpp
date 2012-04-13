@@ -972,13 +972,13 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 }
 
 int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
-	/*Locker _locker(this);
+	Locker _locker(this);
 
 	DistributedObject* obj = getObject(objectID);
 
 	if (obj != NULL)
 		obj->_setMarkedForDeletion(true);
-		*/
+
 
 	return 1;
 }
@@ -1087,8 +1087,6 @@ void ObjectManager::cancelUpdateModifiedObjectsTask() {
 }
 
 int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
-	return 1;
-	/*
 	ObjectDatabase* table = getTable(objectID);
 
 	if (table != NULL) {
@@ -1102,7 +1100,6 @@ int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
 	}
 
 	return 1;
-	*/
 }
 
 void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
