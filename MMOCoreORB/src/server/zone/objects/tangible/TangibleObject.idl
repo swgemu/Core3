@@ -247,6 +247,8 @@ class TangibleObject extends SceneObject {
 	 */
 	public native abstract void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 	
+	public native void setCountdownTimer(unsigned int newCount, boolean notifyClient = true);
+	
 	/**
 	 * Decreases use count, when reaches 0 destroys itself
 	 */

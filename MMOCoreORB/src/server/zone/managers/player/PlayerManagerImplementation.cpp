@@ -787,9 +787,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
-		TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(playerCreature);
-		dtano3->updateCountdownTimer(incapTime);
-		dtano3->close();
+		playerCreature->setCountdownTimer(incapTime, true);
 
 		Reference<Task*> oldTask = playerCreature->getPendingTask("incapacitationRecovery");
 

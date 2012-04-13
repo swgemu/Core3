@@ -216,6 +216,8 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
+	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
+
 	void decreaseUseCount(CreatureObject* player = NULL);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
@@ -439,6 +441,8 @@ public:
 
 	virtual void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
+	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
+
 	void decreaseUseCount(CreatureObject* player = NULL);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
@@ -631,6 +635,8 @@ public:
 	void setCombatState();
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient);
+
+	void setCountdownTimer(unsigned int newCount, bool notifyClient);
 
 	void decreaseUseCount(CreatureObject* player);
 

@@ -347,21 +347,11 @@ void TangibleObjectImplementation::setCustomizationVariable(const String& type, 
 
 }
 
-void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {
+void TangibleObjectImplementation::setCountdownTimer(unsigned int newCount, bool notifyClient) {
 	if (useCount == newUseCount)
 		return;
 
-	Locker locker(_this);
-
 	useCount = newUseCount;
-
-	if (useCount < 1 && !isCreatureObject()) {
-		destroyObjectFromWorld(true);
-
-		destroyObjectFromDatabase(true);
-
-		return;
-	}
 
 	if (!notifyClient)
 		return;
@@ -371,6 +361,21 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);
+}
+
+void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyClient) {
+	if (useCount == newUseCount)
+		return;
+
+	setCountdownTimer(newUseCount, notifyClient);
+
+	if (useCount < 1 && !isCreatureObject()) {
+		destroyObjectFromWorld(true);
+
+		destroyObjectFromDatabase(true);
+
+		return;
+	}
 }
 
 void TangibleObjectImplementation::decreaseUseCount(CreatureObject* player) {
