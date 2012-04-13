@@ -124,7 +124,7 @@ public:
 	}
 };
 
-class CreaturePosture : public Singleton<CreaturePosture>, public Logger {
+class CreaturePosture : public Singleton<CreaturePosture>, public Object, public Logger {
 public:
 	static const uint8 INVALID = 0xFF;
 	static const uint8 UPRIGHT = 0;
