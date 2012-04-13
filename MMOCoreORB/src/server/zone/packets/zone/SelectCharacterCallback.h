@@ -37,6 +37,8 @@ public:
 		if(!client->hasCharacter(characterID)) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Invalid Character ID", 0x0);
 			client->sendMessage(errMsg);
+
+			client->error("invalid character id " + String::valueOf(characterID) + " in account: " + client->getAccountID());
 			return;
 		}
 
@@ -127,6 +129,8 @@ public:
 
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
 
+		} else {
+			client->error("could not get from zone server character id " + String::valueOf(characterID));
 		}
 	}
 };

@@ -22,8 +22,11 @@ public:
 		names.put(player->getFirstName().toLowerCase(), player->getObjectID());
 	}
 
-	void put(const String& name, uint64 oid) {
-		names.put(name, oid);
+	bool put(const String& name, uint64 oid) {
+		if (names.put(name, oid) != names.getNullValue())
+			return false;
+
+		return true;
 	}
 
 	uint64& get(const String& name) {

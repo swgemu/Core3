@@ -202,7 +202,9 @@ void PlayerManagerImplementation::loadNameMap() {
 			uint64 oid = res->getUnsignedLong(0);
 			String firstName = res->getString(3);
 
-			nameMap->put(firstName.toLowerCase(), oid);
+			if (!nameMap->put(firstName.toLowerCase(), oid)) {
+				error("error coliding name:" + firstName.toLowerCase());
+			}
 		}
 
 	} catch (Exception& e) {
