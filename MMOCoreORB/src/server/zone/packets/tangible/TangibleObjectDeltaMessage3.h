@@ -82,7 +82,7 @@ public:
 		addUnicodeUpdate(2, name);
 	}
 
-	void updateCraftingTimer(int timer) {
+	void updateCountdownTimer(int timer) {
 		addIntUpdate(7, timer);
 	}
 

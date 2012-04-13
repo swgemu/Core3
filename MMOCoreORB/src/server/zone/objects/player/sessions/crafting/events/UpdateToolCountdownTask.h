@@ -64,7 +64,7 @@ public:
 	void run() {
 		try {
 			TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3(craftingTool);
-			dtano3->updateCraftingTimer(timeLeft);
+			dtano3->updateCountdownTimer(timeLeft);
 			dtano3->close();
 
 			crafter->sendMessage(dtano3);
