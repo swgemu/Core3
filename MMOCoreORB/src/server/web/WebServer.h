@@ -68,7 +68,7 @@ using namespace server::web::session;
 namespace server {
  namespace web {
 
-class WebServer : public Singleton<WebServer>, public Logger {
+class WebServer : public Singleton<WebServer>, public Logger, public Object {
 private:
 	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<LoginServer*> loginServer;
