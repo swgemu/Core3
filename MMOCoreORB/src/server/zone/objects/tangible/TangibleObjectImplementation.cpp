@@ -355,7 +355,7 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 
 	useCount = newUseCount;
 
-	if (useCount < 1) {
+	if (useCount < 1 && !isCreatureObject()) {
 		destroyObjectFromWorld(true);
 
 		destroyObjectFromDatabase(true);
