@@ -510,6 +510,8 @@ void CraftingToolImplementation::initializeTransientMembers() {
 	// server/zone/objects/tangible/tool/CraftingTool.idl():  			status = "@crafting:tool_status_finished";
 	status = "@crafting:tool_status_finished";
 }
+	// server/zone/objects/tangible/tool/CraftingTool.idl():  		setCountdownTimer(0, false);
+	setCountdownTimer(0, false);
 }
 
 bool CraftingToolImplementation::isCraftingTool() {

@@ -96,6 +96,7 @@ class CraftingTool extends ToolTangibleObject {
 		} else {
 			status = "@crafting:tool_status_finished";
 		}
+		setCountdownTimer(0, false);
 	}
 	
 	@local
