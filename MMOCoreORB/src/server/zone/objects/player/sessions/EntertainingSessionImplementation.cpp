@@ -918,7 +918,7 @@ void EntertainingSessionImplementation::increaseEntertainerBuff(CreatureObject* 
 	if(isInDenyServiceList(patron))
 		return;
 
-	addEntertainerBuffDuration(patron, performance->getType(), 1.0f);
+	addEntertainerBuffDuration(patron, performance->getType(), 2.0f);
 	addEntertainerBuffStrength(patron, performance->getType(), performance->getHealShockWound());
 
 }
