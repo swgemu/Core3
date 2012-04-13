@@ -443,9 +443,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
 
-	if(item->isOfferToVendor() && vendor->isVendorOwner(player->getObjectID()))
-		return;
-
 	item->setSold(true);
 	item->setExpireTime(availableTime);
 	item->setBuyerID(player->getObjectID());
