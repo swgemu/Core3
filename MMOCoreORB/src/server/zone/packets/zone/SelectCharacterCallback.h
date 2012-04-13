@@ -130,7 +130,10 @@ public:
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
 
 		} else {
-			client->error("could not get from zone server character id " + String::valueOf(characterID));
+			if (obj != NULL)
+				client->error("could get from zone server character id " + String::valueOf(characterID) + " but is not a player creature");
+			else
+				client->error("could get from zone server character id " + String::valueOf(characterID));
 		}
 	}
 };
