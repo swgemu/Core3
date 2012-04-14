@@ -27,7 +27,15 @@ borgle_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle.iff"},
-	lootGroups = {},
+	lootGroups = {
+        {
+	        groups = {
+				{group = "armor_attachments", chance = 5000000},
+				{group = "clothing_attachments", chance = 5000000}
+			},
+			lootChance = 6500000
+		}	
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

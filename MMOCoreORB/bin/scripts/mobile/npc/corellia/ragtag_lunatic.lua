@@ -27,11 +27,13 @@ ragtag_lunatic = Creature:new {
 
 	templates = {},
 	lootGroups = {
-		{
+			{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 5500000},
+				{group = "crystals", chance = 4000000},
+				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

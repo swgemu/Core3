@@ -30,10 +30,10 @@ dark_trooper = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "holocron_light", chance = 1000000},
-				{group = "holocron_dark", chance = 800000},
-				{group = "rifles", chance = 2800000},
-				{group = "pistols", chance = 3200000},
+				{group = "holocron_light", chance = 700000},
+				{group = "holocron_dark", chance = 500000},
+				{group = "rifles", chance = 3100000},
+				{group = "pistols", chance = 3500000},
 				{group = "clothing_attachments", chance = 1100000},
 				{group = "armor_attachments", chance = 1100000}
 			},

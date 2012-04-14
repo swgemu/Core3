@@ -27,7 +27,16 @@ corsec_investigator = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
-	lootGroups = {},
+	lootGroups = {
+	  {
+			groups = {
+				{group = "junk", chance = 5500000},
+				{group = "corsec_weapons", chance = 4000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

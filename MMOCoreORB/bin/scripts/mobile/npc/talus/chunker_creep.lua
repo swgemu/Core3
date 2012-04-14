@@ -26,7 +26,18 @@ chunker_creep = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_knife", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000}
+	    	},
+			lootChance = 9000000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

@@ -8,10 +8,10 @@ brackaset_plates = {
 	craftingValues = {
 		{"armor_special_type",4,4,0},
 		{"armor_special_effectiveness",2,3,10},
-		{"armor_health_encumbrance",4,0},
-		{"armor_action_encumbrance",4,0},
-		{"armor_mind_encumbrance",4,0},
-		{"useCount",1,10},
+		{"armor_health_encumbrance",4,0,0},
+		{"armor_action_encumbrance",4,0,0},
+		{"armor_mind_encumbrance",4,0,0},
+		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

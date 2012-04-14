@@ -9,10 +9,10 @@ brackaset_plating_segment = {
 		{"armor_effectiveness",3,5,10},
 		{"armor_special_type",4,4,0},
 		{"armor_special_effectiveness",2,4,10},
-		{"armor_action_encumbrance",17,6},
-		{"armor_mind_encumbrance",20,5},
+		{"armor_action_encumbrance",17,6,0},
+		{"armor_mind_encumbrance",20,5,0},
 		{"armor_health_encumbrance",0,0,0,0},
-		{"useCount",1,10},
+		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

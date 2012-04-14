@@ -28,7 +28,18 @@ chunker_swindler = Creature:new {
 	templates = {"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
 		"object/mobile/dressed_crook_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_knife", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000}
+	    	},
+			lootChance = 9000000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

@@ -26,7 +26,7 @@ visionary_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

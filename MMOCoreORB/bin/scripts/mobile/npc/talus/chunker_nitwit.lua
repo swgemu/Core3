@@ -38,7 +38,18 @@ chunker_nitwit = Creature:new {
 					"object/mobile/dressed_villain_trandoshan_male_01.iff",
 					"object/mobile/dressed_desperado_bith_male_01.iff",
 					"object/mobile/dressed_mugger.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_knife", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000}
+	    	},
+			lootChance = 9000000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}
 }

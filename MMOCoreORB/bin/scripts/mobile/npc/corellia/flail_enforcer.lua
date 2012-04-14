@@ -29,11 +29,13 @@ flail_enforcer = Creature:new {
 
 	templates = {},
 	lootGroups = {
-		{
+			{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 5500000},
+				{group = "rifles", chance = 4000000},
+				{group = "crystals", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

@@ -26,7 +26,7 @@ disciple_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/huma_male.iff"},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {
 		{
 			groups = {

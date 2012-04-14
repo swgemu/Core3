@@ -5,8 +5,8 @@ brackaset_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "brackaset_plates", weight = 2500000},
-		{itemTemplate = "brackaset_plating_segment", weight = 2500000}
+		{itemTemplate = "brackaset_plates", weight = 5000000},
+		{itemTemplate = "brackaset_plating_segment", weight = 5000000}
 	}
 }
 

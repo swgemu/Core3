@@ -27,7 +27,14 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/juvenile_canyon_krayt.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "krayt_tissue_common", chance = 10000000}
+			},
+			lootChance = 6000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

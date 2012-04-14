@@ -5,7 +5,7 @@ giant_dune_kimo_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "giant_dune_kimogila_scale", weight = 10000000},
+		{itemTemplate = "giant_dune_kimogila_scale", weight = 10000000}
 	}
 }
 

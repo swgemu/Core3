@@ -30,7 +30,7 @@ enraged_dune_kimogila = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "kimogila_common", chance = 3300000}
+				{group = "kimogila_common", chance = 10000000}
 			},
 			lootChance = 6500000
 		}

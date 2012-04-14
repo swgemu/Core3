@@ -5,7 +5,7 @@ gorax_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "gorax_bone_shards", weight = 1000000}
+		{itemTemplate = "gorax_bone_shards", weight = 10000000}
 	}
 }
 

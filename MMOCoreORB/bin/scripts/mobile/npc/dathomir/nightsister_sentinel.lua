@@ -30,7 +30,7 @@ nightsister_sentinel = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "nightsister_crystals_2", chance = 1000000},
+				{group = "crystals", chance = 1000000},
 				{group = "nightsister_common", chance = 6500000},
 				{group = "armor_attachments", chance = 550000},
 				{group = "clothing_attachments", chance = 550000},

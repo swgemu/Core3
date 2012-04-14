@@ -30,11 +30,11 @@ nightsister_rancor_tamer = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "nightsister_crystals_1", chance = 1000000},
+				{group = "crystals", chance = 1000000},
 				{group = "nightsister_common", chance = 6500000},
 				{group = "armor_attachments", chance = 550000},
 				{group = "clothing_attachments", chance = 550000},
-				{group = "pistols", chance = 750000},
+				{group = "melee_weapons", chance = 750000},
 				{group = "rifles", chance = 750000}
 			},
 			lootChance = 4900000

@@ -27,7 +27,18 @@ aakuan_sentinel = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff","object/mobile/dressed_aakuan_sentinal_rodian_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_knife", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000}
+	    	},
+			lootChance = 9000000
+		}	
+	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
 	attacks = {

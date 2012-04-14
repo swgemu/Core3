@@ -27,7 +27,16 @@ corsec_inspector_sergeant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_captain_human_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	  {
+			groups = {
+				{group = "junk", chance = 5500000},
+				{group = "corsec_weapons", chance = 4000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

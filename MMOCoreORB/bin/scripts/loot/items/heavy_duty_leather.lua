@@ -6,6 +6,7 @@ heavy_duty_leather = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/clothing/leather_heavy_duty.iff",
 	craftingValues = {
+		{"useCount",1,6,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

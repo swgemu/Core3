@@ -30,9 +30,9 @@ reclusive_gurk_king = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "gurk_king_common", chance = 3300000}
+				{group = "gurk_king_common", chance = 10000000}
 			},
-			lootChance = 8500000
+			lootChance = 7000000
 		}
 	},
 	weapons = {},

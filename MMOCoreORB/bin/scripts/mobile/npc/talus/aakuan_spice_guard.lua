@@ -28,7 +28,18 @@ aakuan_spice_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+		    groups = {
+				{group = "aakuan_common", chance = 4000000},
+				{group = "armor_attachments", chance = 2000000},
+				{group = "rifles", chance = 1300000},
+				{group = "carbines", chance = 1300000},
+				{group = "pistols", chance = 1400000}				
+			},
+		    lootChance = 7500000
+		}	
+	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
 	attacks = {

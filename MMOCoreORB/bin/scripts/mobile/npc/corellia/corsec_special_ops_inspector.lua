@@ -27,7 +27,17 @@ corsec_special_ops_inspector = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "clothing_attachments", chance = 2500000},
+				{group = "armor_attachments", chance = 2500000},
+				{group = "corsec_weapons", chance = 2500000},
+				{group = "crystals", chance = 2500000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

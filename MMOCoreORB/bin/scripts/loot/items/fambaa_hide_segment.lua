@@ -7,13 +7,13 @@ fambaa_hide_segment = {
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_padded_fambaa.iff",
 	craftingValues = {
 		{"armor_effectiveness",4,6,10},
-		{"armor_special_type",64,64},
+		{"armor_special_type",64,64,0},
 		{"armor_special_effectiveness",3,5,10},
-		{"armor_integrity",450,900},
-		{"armor_action_encumbrance",11,4},
-		{"armor_mind_encumbrance",13,4},
+		{"armor_integrity",450,900,0},
+		{"armor_action_encumbrance",11,4,0},
+		{"armor_mind_encumbrance",13,4,0},
 		{"armor_health_encumbrance",0,0,0,0},
-		{"useCount",1,10},
+		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
