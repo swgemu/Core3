@@ -1412,7 +1412,7 @@ DistributedObject* ChatRoomHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ChatRoomHelper::instantiateServant() {
-	return new ChatRoomImplementation(DummyConstructorParameter::instance());
+	return new ChatRoomImplementation();
 }
 
 DistributedObjectAdapter* ChatRoomHelper::createAdapter(DistributedObjectStub* obj) {

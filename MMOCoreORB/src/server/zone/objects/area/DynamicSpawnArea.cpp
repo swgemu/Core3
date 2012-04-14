@@ -508,7 +508,7 @@ DistributedObject* DynamicSpawnAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* DynamicSpawnAreaHelper::instantiateServant() {
-	return new DynamicSpawnAreaImplementation(DummyConstructorParameter::instance());
+	return new DynamicSpawnAreaImplementation();
 }
 
 DistributedObjectAdapter* DynamicSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {

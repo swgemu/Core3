@@ -307,7 +307,7 @@ DistributedObject* SignObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SignObjectHelper::instantiateServant() {
-	return new SignObjectImplementation(DummyConstructorParameter::instance());
+	return new SignObjectImplementation();
 }
 
 DistributedObjectAdapter* SignObjectHelper::createAdapter(DistributedObjectStub* obj) {

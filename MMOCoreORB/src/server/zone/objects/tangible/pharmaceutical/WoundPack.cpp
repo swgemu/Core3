@@ -476,7 +476,7 @@ DistributedObject* WoundPackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* WoundPackHelper::instantiateServant() {
-	return new WoundPackImplementation(DummyConstructorParameter::instance());
+	return new WoundPackImplementation();
 }
 
 DistributedObjectAdapter* WoundPackHelper::createAdapter(DistributedObjectStub* obj) {

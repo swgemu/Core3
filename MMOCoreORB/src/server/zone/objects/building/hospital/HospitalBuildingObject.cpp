@@ -302,7 +302,7 @@ DistributedObject* HospitalBuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* HospitalBuildingObjectHelper::instantiateServant() {
-	return new HospitalBuildingObjectImplementation(DummyConstructorParameter::instance());
+	return new HospitalBuildingObjectImplementation();
 }
 
 DistributedObjectAdapter* HospitalBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

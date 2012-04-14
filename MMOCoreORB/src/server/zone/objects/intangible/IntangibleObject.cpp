@@ -359,7 +359,7 @@ DistributedObject* IntangibleObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* IntangibleObjectHelper::instantiateServant() {
-	return new IntangibleObjectImplementation(DummyConstructorParameter::instance());
+	return new IntangibleObjectImplementation();
 }
 
 DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {

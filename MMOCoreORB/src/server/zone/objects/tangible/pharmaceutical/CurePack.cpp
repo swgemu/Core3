@@ -554,7 +554,7 @@ DistributedObject* CurePackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CurePackHelper::instantiateServant() {
-	return new CurePackImplementation(DummyConstructorParameter::instance());
+	return new CurePackImplementation();
 }
 
 DistributedObjectAdapter* CurePackHelper::createAdapter(DistributedObjectStub* obj) {

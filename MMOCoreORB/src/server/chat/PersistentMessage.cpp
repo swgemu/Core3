@@ -801,7 +801,7 @@ DistributedObject* PersistentMessageHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PersistentMessageHelper::instantiateServant() {
-	return new PersistentMessageImplementation(DummyConstructorParameter::instance());
+	return new PersistentMessageImplementation();
 }
 
 DistributedObjectAdapter* PersistentMessageHelper::createAdapter(DistributedObjectStub* obj) {

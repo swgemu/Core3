@@ -636,7 +636,7 @@ DistributedObject* MissionTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* MissionTerminalHelper::instantiateServant() {
-	return new MissionTerminalImplementation(DummyConstructorParameter::instance());
+	return new MissionTerminalImplementation();
 }
 
 DistributedObjectAdapter* MissionTerminalHelper::createAdapter(DistributedObjectStub* obj) {

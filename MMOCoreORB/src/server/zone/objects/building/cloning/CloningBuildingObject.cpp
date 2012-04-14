@@ -268,7 +268,7 @@ DistributedObject* CloningBuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CloningBuildingObjectHelper::instantiateServant() {
-	return new CloningBuildingObjectImplementation(DummyConstructorParameter::instance());
+	return new CloningBuildingObjectImplementation();
 }
 
 DistributedObjectAdapter* CloningBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

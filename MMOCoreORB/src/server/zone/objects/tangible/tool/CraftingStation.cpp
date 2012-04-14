@@ -502,7 +502,7 @@ DistributedObject* CraftingStationHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CraftingStationHelper::instantiateServant() {
-	return new CraftingStationImplementation(DummyConstructorParameter::instance());
+	return new CraftingStationImplementation();
 }
 
 DistributedObjectAdapter* CraftingStationHelper::createAdapter(DistributedObjectStub* obj) {

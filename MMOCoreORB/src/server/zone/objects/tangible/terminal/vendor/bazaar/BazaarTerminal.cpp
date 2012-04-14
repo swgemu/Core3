@@ -272,7 +272,7 @@ DistributedObject* BazaarTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* BazaarTerminalHelper::instantiateServant() {
-	return new BazaarTerminalImplementation(DummyConstructorParameter::instance());
+	return new BazaarTerminalImplementation();
 }
 
 DistributedObjectAdapter* BazaarTerminalHelper::createAdapter(DistributedObjectStub* obj) {

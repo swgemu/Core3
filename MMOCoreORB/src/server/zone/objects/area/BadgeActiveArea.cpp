@@ -307,7 +307,7 @@ DistributedObject* BadgeActiveAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* BadgeActiveAreaHelper::instantiateServant() {
-	return new BadgeActiveAreaImplementation(DummyConstructorParameter::instance());
+	return new BadgeActiveAreaImplementation();
 }
 
 DistributedObjectAdapter* BadgeActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {

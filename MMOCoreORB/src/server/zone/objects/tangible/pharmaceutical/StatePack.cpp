@@ -395,7 +395,7 @@ DistributedObject* StatePackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StatePackHelper::instantiateServant() {
-	return new StatePackImplementation(DummyConstructorParameter::instance());
+	return new StatePackImplementation();
 }
 
 DistributedObjectAdapter* StatePackHelper::createAdapter(DistributedObjectStub* obj) {

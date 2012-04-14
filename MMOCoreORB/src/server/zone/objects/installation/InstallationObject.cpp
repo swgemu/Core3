@@ -1150,7 +1150,7 @@ DistributedObject* InstallationObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* InstallationObjectHelper::instantiateServant() {
-	return new InstallationObjectImplementation(DummyConstructorParameter::instance());
+	return new InstallationObjectImplementation();
 }
 
 DistributedObjectAdapter* InstallationObjectHelper::createAdapter(DistributedObjectStub* obj) {

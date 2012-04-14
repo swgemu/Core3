@@ -288,7 +288,7 @@ DistributedObject* StartingLocationTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StartingLocationTerminalHelper::instantiateServant() {
-	return new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
+	return new StartingLocationTerminalImplementation();
 }
 
 DistributedObjectAdapter* StartingLocationTerminalHelper::createAdapter(DistributedObjectStub* obj) {

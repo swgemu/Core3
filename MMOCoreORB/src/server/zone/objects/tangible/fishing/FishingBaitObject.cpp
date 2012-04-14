@@ -368,7 +368,7 @@ DistributedObject* FishingBaitObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FishingBaitObjectHelper::instantiateServant() {
-	return new FishingBaitObjectImplementation(DummyConstructorParameter::instance());
+	return new FishingBaitObjectImplementation();
 }
 
 DistributedObjectAdapter* FishingBaitObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -628,7 +628,7 @@ DistributedObject* VehicleObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* VehicleObjectHelper::instantiateServant() {
-	return new VehicleObjectImplementation(DummyConstructorParameter::instance());
+	return new VehicleObjectImplementation();
 }
 
 DistributedObjectAdapter* VehicleObjectHelper::createAdapter(DistributedObjectStub* obj) {

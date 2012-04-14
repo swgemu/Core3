@@ -529,7 +529,7 @@ DistributedObject* PharmaceuticalObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PharmaceuticalObjectHelper::instantiateServant() {
-	return new PharmaceuticalObjectImplementation(DummyConstructorParameter::instance());
+	return new PharmaceuticalObjectImplementation();
 }
 
 DistributedObjectAdapter* PharmaceuticalObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -222,7 +222,7 @@ DistributedObject* LairGroupHelper::instantiateObject() {
 }
 
 DistributedObjectServant* LairGroupHelper::instantiateServant() {
-	return new LairGroupImplementation(DummyConstructorParameter::instance());
+	return new LairGroupImplementation();
 }
 
 DistributedObjectAdapter* LairGroupHelper::createAdapter(DistributedObjectStub* obj) {

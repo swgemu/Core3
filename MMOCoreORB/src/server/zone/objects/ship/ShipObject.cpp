@@ -354,7 +354,7 @@ DistributedObject* ShipObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ShipObjectHelper::instantiateServant() {
-	return new ShipObjectImplementation(DummyConstructorParameter::instance());
+	return new ShipObjectImplementation();
 }
 
 DistributedObjectAdapter* ShipObjectHelper::createAdapter(DistributedObjectStub* obj) {

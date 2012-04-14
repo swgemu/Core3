@@ -486,7 +486,7 @@ DistributedObject* CellObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CellObjectHelper::instantiateServant() {
-	return new CellObjectImplementation(DummyConstructorParameter::instance());
+	return new CellObjectImplementation();
 }
 
 DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -825,7 +825,7 @@ DistributedObject* AuctionsMapHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AuctionsMapHelper::instantiateServant() {
-	return new AuctionsMapImplementation(DummyConstructorParameter::instance());
+	return new AuctionsMapImplementation();
 }
 
 DistributedObjectAdapter* AuctionsMapHelper::createAdapter(DistributedObjectStub* obj) {

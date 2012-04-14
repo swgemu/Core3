@@ -540,7 +540,7 @@ DistributedObject* FactoryObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FactoryObjectHelper::instantiateServant() {
-	return new FactoryObjectImplementation(DummyConstructorParameter::instance());
+	return new FactoryObjectImplementation();
 }
 
 DistributedObjectAdapter* FactoryObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -301,7 +301,7 @@ DistributedObject* ResourceDeedHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ResourceDeedHelper::instantiateServant() {
-	return new ResourceDeedImplementation(DummyConstructorParameter::instance());
+	return new ResourceDeedImplementation();
 }
 
 DistributedObjectAdapter* ResourceDeedHelper::createAdapter(DistributedObjectStub* obj) {

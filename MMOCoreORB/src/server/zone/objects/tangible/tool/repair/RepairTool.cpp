@@ -276,7 +276,7 @@ DistributedObject* RepairToolHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RepairToolHelper::instantiateServant() {
-	return new RepairToolImplementation(DummyConstructorParameter::instance());
+	return new RepairToolImplementation();
 }
 
 DistributedObjectAdapter* RepairToolHelper::createAdapter(DistributedObjectStub* obj) {
