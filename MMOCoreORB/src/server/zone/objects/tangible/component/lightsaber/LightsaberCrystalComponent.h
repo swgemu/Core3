@@ -156,7 +156,7 @@ public:
 
 	void setWoundChance(float value);
 
-	bool isLightsaberCrystal();
+	bool isLightsaberCrystalObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -286,7 +286,7 @@ public:
 
 	void setWoundChance(float value);
 
-	bool isLightsaberCrystal();
+	bool isLightsaberCrystalObject();
 
 	WeakReference<LightsaberCrystalComponent*> _this;
 
@@ -389,7 +389,7 @@ public:
 
 	void setWoundChance(float value);
 
-	bool isLightsaberCrystal();
+	bool isLightsaberCrystalObject();
 
 protected:
 	String _param0_setCrystalType__String_;

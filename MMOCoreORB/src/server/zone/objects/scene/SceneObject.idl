@@ -1315,6 +1315,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	public abstract boolean isLightsaberCrystalObject() {
+		return false;
+	}
+	
+	@dirty
 	public abstract boolean isPsgArmorObject() {
 		return false;
 	}

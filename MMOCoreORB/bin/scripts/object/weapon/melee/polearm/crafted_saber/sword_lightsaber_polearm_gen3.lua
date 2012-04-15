@@ -116,6 +116,7 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen3 = object
 	maxDamage = 285,
 
 	attackSpeed = 5.1,
+	saberInventory = "object/tangible/inventory/lightsaber_inventory_3.iff",
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},

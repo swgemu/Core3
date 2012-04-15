@@ -57,6 +57,7 @@ include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.powerup.PowerupObject;
 import system.util.Vector;
+include server.zone.objects.tangible.Container;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;
@@ -93,6 +94,8 @@ class WeaponObject extends TangibleObject {
 	protected int forceCost;
 	
 	protected int bladeColor;
+	
+	protected string saberInventory;
 	
 	protected PowerupObject powerupObject;
 	
@@ -157,6 +160,8 @@ class WeaponObject extends TangibleObject {
 		
 		weaponTemplate = null;
 		
+		saberInventory = "";
+		
 		Logger.setLoggingName("WeaponObject");
 	}
 	
@@ -166,6 +171,8 @@ class WeaponObject extends TangibleObject {
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
+	
+	public native void sendContainerTo(CreatureObject player);
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -179,6 +186,11 @@ class WeaponObject extends TangibleObject {
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	/**
+	 * Handles creating the Saber inventory.
+	 */
+	public native void createChildObjects();
 	
 	/**
 	 * Returns true if the player has the required certifications for this weapon
@@ -225,6 +237,14 @@ class WeaponObject extends TangibleObject {
 	
 	public void setCertified(boolean cert) {
 		certified = cert;
+	}
+	
+	public string getSaberInventory() {
+		return saberInventory;
+	}
+	
+	public void setSaberInventory(string si) {
+		saberInventory = si;
 	}
 	
 	public int getAttackType() {

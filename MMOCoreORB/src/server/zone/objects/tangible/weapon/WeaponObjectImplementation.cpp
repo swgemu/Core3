@@ -19,6 +19,7 @@
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 
+
 void WeaponObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
@@ -74,6 +75,38 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 		attackSpeed = templateAttackSpeed;
 
 	setSliceable(true);
+
+	if (isJediWeapon()){
+		saberInventory = weaponTemplate->getSaberInventory();
+	}
+}
+
+void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
+
+	if (isJediWeapon()) {
+
+		ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
+
+		saberInv->sendDestroyTo(player);
+		saberInv->closeContainerTo(player, true);
+
+		saberInv->sendWithoutContainerObjectsTo(player);
+		saberInv->openContainerTo(player);
+
+	}
+}
+
+void WeaponObjectImplementation::createChildObjects() {
+	//Create the inventory.
+	ManagedReference<SceneObject*> lightsaberInventory = server->getZoneServer()->createObject(saberInventory.hashCode(), 1);
+
+	if (lightsaberInventory == NULL) {
+		error("could not create lightsaber inventory");
+		return;
+	}
+
+	transferObject(lightsaberInventory, 4);
+
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {

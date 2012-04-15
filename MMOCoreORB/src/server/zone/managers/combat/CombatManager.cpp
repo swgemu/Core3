@@ -1198,7 +1198,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
 	int action = (int) (weapon->getActionAttackCost() * data.getActionCostMultiplier());
 	int mind = (int) (weapon->getMindAttackCost() * data.getMindCostMultiplier());
-	int force = (int) ((weapon->getForceCost() / 4) * data.getForceCostMultiplier()); // Divide by 4 until sabers are correctly implemented.
+	int force = (int) ((weapon->getForceCost()) * data.getForceCostMultiplier());
 
 	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
 	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));

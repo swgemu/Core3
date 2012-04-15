@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/RobeObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
@@ -65,6 +66,17 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 
 		if (!creo->hasSkill(skillRequired) && skillRequired != ""){
 			errorDescription = "You are not eligible to wear this robe.";
+
+			return TransferErrorCode::PLAYERUSEMASKERROR;
+		}
+	}
+
+	if (object->isWeaponObject() && containmentType == 4) {
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
+		int bladeColor = weapon->getBladeColor();
+
+		if (weapon->isJediWeapon() && bladeColor == 31){
+			errorDescription = "@jedi_spam:lightsaber_no_color";
 
 			return TransferErrorCode::PLAYERUSEMASKERROR;
 		}

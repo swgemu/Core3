@@ -213,7 +213,7 @@ class LightsaberCrystalComponent extends Component {
 	}
 	
 	
-	public boolean isLightsaberCrystal() {
+	public boolean isLightsaberCrystalObject() {
 		return true; 
 	}
 }

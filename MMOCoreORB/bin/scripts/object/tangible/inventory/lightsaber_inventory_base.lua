@@ -42,7 +42,7 @@
 
 
 object_tangible_inventory_lightsaber_inventory_base = object_tangible_inventory_shared_lightsaber_inventory_base:new {
-
+	containerComponent = {"cpp", "SaberInventoryContainerComponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_lightsaber_inventory_base, "object/tangible/inventory/lightsaber_inventory_base.iff")

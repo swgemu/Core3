@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETSABERINVENTORY__,RPC_SETSABERINVENTORY__STRING_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -76,6 +76,20 @@ void WeaponObject::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
+void WeaponObject::sendContainerTo(CreatureObject* player) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCONTAINERTO__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendContainerTo(player);
+}
+
 void WeaponObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -92,6 +106,19 @@ void WeaponObject::updateCraftingValues(CraftingValues* values, bool firstUpdate
 
 	} else
 		_implementation->updateCraftingValues(values, firstUpdate);
+}
+
+void WeaponObject::createChildObjects() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createChildObjects();
 }
 
 bool WeaponObject::isCertifiedFor(CreatureObject* object) {
@@ -183,6 +210,34 @@ void WeaponObject::setCertified(bool cert) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setCertified(cert);
+}
+
+String WeaponObject::getSaberInventory() {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSABERINVENTORY__);
+
+		method.executeWithAsciiReturn(_return_getSaberInventory);
+		return _return_getSaberInventory;
+	} else
+		return _implementation->getSaberInventory();
+}
+
+void WeaponObject::setSaberInventory(String& si) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSABERINVENTORY__STRING_);
+		method.addAsciiParameter(si);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSaberInventory(si);
 }
 
 int WeaponObject::getAttackType() {
@@ -1229,6 +1284,11 @@ bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "WeaponObject.saberInventory") {
+		TypeInfo<String >::parseFromBinaryStream(&saberInventory, stream);
+		return true;
+	}
+
 	if (_name == "WeaponObject.powerupObject") {
 		TypeInfo<ManagedReference<PowerupObject* > >::parseFromBinaryStream(&powerupObject, stream);
 		return true;
@@ -1427,6 +1487,14 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "WeaponObject.saberInventory";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String >::toBinaryStream(&saberInventory, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "WeaponObject.powerupObject";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1436,7 +1504,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 23;
+	return _count + 24;
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation() {
@@ -1481,6 +1549,8 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	attackSpeed = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		weaponTemplate = null;
 	weaponTemplate = NULL;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		saberInventory = "";
+	saberInventory = "";
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 }
@@ -1523,6 +1593,16 @@ Vector<String>* WeaponObjectImplementation::getDefenderToughnessModifiers() {
 void WeaponObjectImplementation::setCertified(bool cert) {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		certified = cert;
 	certified = cert;
+}
+
+String WeaponObjectImplementation::getSaberInventory() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return saberInventory;
+	return saberInventory;
+}
+
+void WeaponObjectImplementation::setSaberInventory(String& si) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		saberInventory = si;
+	saberInventory = si;
 }
 
 int WeaponObjectImplementation::getAttackType() {
@@ -1788,11 +1868,23 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_SENDCONTAINERTO__CREATUREOBJECT_:
+		sendContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_CREATECHILDOBJECTS__:
+		createChildObjects();
+		break;
 	case RPC_ISCERTIFIEDFOR__CREATUREOBJECT_:
 		resp->insertBoolean(isCertifiedFor(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		break;
 	case RPC_SETCERTIFIED__BOOL_:
 		setCertified(inv->getBooleanParameter());
+		break;
+	case RPC_GETSABERINVENTORY__:
+		resp->insertAscii(getSaberInventory());
+		break;
+	case RPC_SETSABERINVENTORY__STRING_:
+		setSaberInventory(inv->getAsciiParameter(_param0_setSaberInventory__String_));
 		break;
 	case RPC_GETATTACKTYPE__:
 		resp->insertSignedInt(getAttackType());
@@ -1990,12 +2082,28 @@ void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	(static_cast<WeaponObject*>(stub))->sendBaselinesTo(player);
 }
 
+void WeaponObjectAdapter::sendContainerTo(CreatureObject* player) {
+	(static_cast<WeaponObject*>(stub))->sendContainerTo(player);
+}
+
+void WeaponObjectAdapter::createChildObjects() {
+	(static_cast<WeaponObject*>(stub))->createChildObjects();
+}
+
 bool WeaponObjectAdapter::isCertifiedFor(CreatureObject* object) {
 	return (static_cast<WeaponObject*>(stub))->isCertifiedFor(object);
 }
 
 void WeaponObjectAdapter::setCertified(bool cert) {
 	(static_cast<WeaponObject*>(stub))->setCertified(cert);
+}
+
+String WeaponObjectAdapter::getSaberInventory() {
+	return (static_cast<WeaponObject*>(stub))->getSaberInventory();
+}
+
+void WeaponObjectAdapter::setSaberInventory(String& si) {
+	(static_cast<WeaponObject*>(stub))->setSaberInventory(si);
 }
 
 int WeaponObjectAdapter::getAttackType() {

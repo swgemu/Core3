@@ -116,6 +116,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen3 = objec
 	maxDamage = 220,
 
 	attackSpeed = 4.5,
+	saberInventory = "object/tangible/inventory/lightsaber_inventory_3.iff",
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},

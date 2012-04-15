@@ -18,7 +18,7 @@
  *	LightsaberCrystalComponentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETCOLOR__,RPC_GETQUALITY__,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETCRYSTALTYPE__,RPC_GETOWNER__,RPC_SETCRYSTALTYPE__STRING_,RPC_SETOWNER__STRING_,RPC_SETCOLOR__INT_,RPC_SETQUALITY__INT_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__INT_,RPC_SETWOUNDCHANCE__FLOAT_,RPC_ISLIGHTSABERCRYSTAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETCOLOR__,RPC_GETQUALITY__,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETCRYSTALTYPE__,RPC_GETOWNER__,RPC_SETCRYSTALTYPE__STRING_,RPC_SETOWNER__STRING_,RPC_SETCOLOR__INT_,RPC_SETQUALITY__INT_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__INT_,RPC_SETWOUNDCHANCE__FLOAT_,RPC_ISLIGHTSABERCRYSTALOBJECT__};
 
 LightsaberCrystalComponent::LightsaberCrystalComponent() : Component(DummyConstructorParameter::instance()) {
 	LightsaberCrystalComponentImplementation* _implementation = new LightsaberCrystalComponentImplementation();
@@ -460,17 +460,17 @@ void LightsaberCrystalComponent::setWoundChance(float value) {
 		_implementation->setWoundChance(value);
 }
 
-bool LightsaberCrystalComponent::isLightsaberCrystal() {
+bool LightsaberCrystalComponent::isLightsaberCrystalObject() {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISLIGHTSABERCRYSTAL__);
+		DistributedMethod method(this, RPC_ISLIGHTSABERCRYSTALOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isLightsaberCrystal();
+		return _implementation->isLightsaberCrystalObject();
 }
 
 DistributedObjectServant* LightsaberCrystalComponent::_getImplementation() {
@@ -903,7 +903,7 @@ void LightsaberCrystalComponentImplementation::setWoundChance(float value) {
 	woundChance = value;
 }
 
-bool LightsaberCrystalComponentImplementation::isLightsaberCrystal() {
+bool LightsaberCrystalComponentImplementation::isLightsaberCrystalObject() {
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return true;
 	return true;
 }
@@ -1010,8 +1010,8 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_SETWOUNDCHANCE__FLOAT_:
 		setWoundChance(inv->getFloatParameter());
 		break;
-	case RPC_ISLIGHTSABERCRYSTAL__:
-		resp->insertBoolean(isLightsaberCrystal());
+	case RPC_ISLIGHTSABERCRYSTALOBJECT__:
+		resp->insertBoolean(isLightsaberCrystalObject());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1134,8 +1134,8 @@ void LightsaberCrystalComponentAdapter::setWoundChance(float value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setWoundChance(value);
 }
 
-bool LightsaberCrystalComponentAdapter::isLightsaberCrystal() {
-	return (static_cast<LightsaberCrystalComponent*>(stub))->isLightsaberCrystal();
+bool LightsaberCrystalComponentAdapter::isLightsaberCrystalObject() {
+	return (static_cast<LightsaberCrystalComponent*>(stub))->isLightsaberCrystalObject();
 }
 
 /*

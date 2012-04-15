@@ -27,7 +27,10 @@ void LightsaberObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	// TODO: Add Opening Lightsabers.
 
-	menuResponse->addRadialMenuItem(71, 3, "Randomize Blade Color"); // Randomize Color (until crystals are implemented.)
+	String text = "@jedi_spam:open_saber";
+	menuResponse->addRadialMenuItem(89, 3, text);
+
+	// menuResponse->addRadialMenuItem(71, 3, "Randomize Blade Color"); // Randomize Color (until crystals are implemented.)
 
 }
 
@@ -39,20 +42,25 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	if(weapon == NULL)
 		return 1;
 
-	// Handle opening sabers (TODO)
+	// Handle opening sabers
+
+	if(selectedID == 89) {
+		weapon->sendContainerTo(player);
+	}
 
 
-	// Handle blade color change:
+	/*// Handle blade color change:
 
 	if(selectedID == 71) {
 			int color = (System::random(29) + 1); // Randomize color until crystals are implemented.
 			weapon->setBladeColor(color);
 			byte bvalue = (byte)color;
 			weapon->setCustomizationVariable("/private/index_color_blade", bvalue, true);
-	}
+	}*/
+
 
 	// TODO: Affect Visibility increase.
 
+
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
-

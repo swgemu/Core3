@@ -116,6 +116,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_training = object_weapo
 	maxDamage = 130,
 
 	attackSpeed = 4.8,
+	
+	saberInventory = "object/tangible/inventory/lightsaber_inventory_training.iff",
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},

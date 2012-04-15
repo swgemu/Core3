@@ -114,6 +114,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen2 = ob
 
 	minDamage = 100,
 	maxDamage = 190,
+	saberInventory = "object/tangible/inventory/lightsaber_inventory_2.iff",
 
 	attackSpeed = 4.8,
 
