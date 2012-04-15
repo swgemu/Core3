@@ -53,25 +53,29 @@ void BountyMissionObjectiveImplementation::activate() {
 }
 
 void BountyMissionObjectiveImplementation::abort() {
+	ManagedReference<MissionObject*> strongRef = mission.get();
+
 	MissionObjectiveImplementation::abort();
 
 	cancelAllTasks();
 
-	getPlayerOwner()->getZoneServer()->getMissionManager()->removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
+	if (strongRef != NULL) {
+		getPlayerOwner()->getZoneServer()->getMissionManager()->removeBountyHunterFromPlayerBounty(mission->getTargetObjectId(), getPlayerOwner()->getObjectID());
 
-	removeFromBountyLock(true);
+		removeFromBountyLock(true);
 
-	WaypointObject* waypoint = mission->getWaypointToMission();
-	if (waypoint != NULL && waypoint->isActive()) {
-		waypoint->setActive(false);
-	}
+		WaypointObject* waypoint = mission->getWaypointToMission();
+		if (waypoint != NULL && waypoint->isActive()) {
+			waypoint->setActive(false);
+		}
 
-	//Remove observers
-	if (hasObservers()) {
-		if (isPlayerTarget()) {
-			removePlayerTargetObservers();
-		} else {
-			removeNpcTargetObservers();
+		//Remove observers
+		if (hasObservers()) {
+			if (isPlayerTarget()) {
+				removePlayerTargetObservers();
+			} else {
+				removeNpcTargetObservers();
+			}
 		}
 	}
 }
