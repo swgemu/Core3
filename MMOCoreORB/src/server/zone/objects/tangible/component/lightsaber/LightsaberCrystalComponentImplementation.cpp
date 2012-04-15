@@ -145,12 +145,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 
 	if (getCrystalType() == "color"){
 		setQuality(0);
-		int max = MAX(0, MIN(15, round(0.1f * level + 5)));
-		int min = MAX(0, MIN(15, round(0.075f * level - 1)));
-		int mod = System::random(max - min) + min;
-
-		if (level > 250)
-			mod += 15; // Special Color range.
+		int mod = System::random(11); // Regular Color range 0-11. Special range 12-30.
 
 		setColor(mod);
 		updateCrystal(mod);
@@ -158,7 +153,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 
 	if (getCrystalType() == "power") {
 		int max = MAX(0, MIN(6, round(0.1f * level + 5)));
-		int min = MAX(0, MIN(6, round(0.075f * level - 1)));
+		int min = MAX(0, MIN(6, round(0.075f * level)));
 		int mod = System::random(max - min) + min;
 
 		setQuality(mod);
@@ -176,7 +171,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (10 - System::random(5));
 		sacAction = (10 - System::random(5));
 		sacMind = (10 - System::random(5));
-		forceCost = (10 - System::random(5));
+		forceCost = (8 - System::random(5));
 		break;
 	case 1:
 		attackSpeed = (1 - System::random(1));
@@ -185,7 +180,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (9 - System::random(6));
 		sacAction = (9 - System::random(6));
 		sacMind = (9 - System::random(6));
-		forceCost = (9 - System::random(6));
+		forceCost = (7 - System::random(6));
 		break;
 	case 2:
 		attackSpeed = (1 - System::random(1));
@@ -194,7 +189,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (8 - System::random(7));
 		sacAction = (8 - System::random(7));
 		sacMind = (8 - System::random(7));
-		forceCost = (8 - System::random(7));
+		forceCost = (6 - System::random(7));
 		break;
 	case 3:
 		attackSpeed = (1 - System::random(1));
@@ -203,7 +198,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (7 - System::random(9));
 		sacAction = (7 - System::random(9));
 		sacMind = (7 - System::random(9));
-		forceCost = (7 - System::random(9));
+		forceCost = (5 - System::random(9));
 		break;
 	case 4:
 		attackSpeed = (1 - System::random(1));
@@ -212,7 +207,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (6 - System::random(10));
 		sacAction = (6 - System::random(10));
 		sacMind = (6 - System::random(10));
-		forceCost = (6 - System::random(10));
+		forceCost = (4 - System::random(10));
 		break;
 	case 5:
 		attackSpeed = (1 - System::random(1));
@@ -221,7 +216,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (5 - System::random(14));
 		sacAction = (5 - System::random(14));
 		sacMind = (5 - System::random(14));
-		forceCost = (5 - System::random(14));
+		forceCost = (3 - System::random(14));
 		break;
 	case 6:
 		attackSpeed = (1 - System::random(1));
@@ -230,7 +225,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		sacHealth = (5 - System::random(14));
 		sacAction = (5 - System::random(14));
 		sacMind = (5 - System::random(14));
-		forceCost = (5 - System::random(14));
+		forceCost = (2 - System::random(14));
 		break;
 	}
 
