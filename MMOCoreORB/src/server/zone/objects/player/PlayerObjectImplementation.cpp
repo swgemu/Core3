@@ -1520,25 +1520,29 @@ void PlayerObjectImplementation::addToBountyLockList(uint64 playerId) {
 }
 
 void PlayerObjectImplementation::removeFromBountyLockList(uint64 playerId, bool immediately) {
+	int tefTime = 15 * 60 * 1000;
 	if (immediately) {
-		if (bountyLockList.contains(playerId)) {
-			if (bountyLockList.get(playerId)->isScheduled()) {
-				bountyLockList.get(playerId)->cancel();
-			}
-		}
-		bountyLockList.drop(playerId);
-		updateBountyPvpStatus(playerId);
-	} else {
-		if (bountyLockList.contains(playerId)) {
-			if (bountyLockList.get(playerId)->isScheduled()) {
-				//Reschedule for another 15 minutes tef.
-				bountyLockList.get(playerId)->reschedule(15 * 60 * 1000);
-			}
+		//Schedule tef removal to happen soon but delay it enough for any bh mission to be dropped correctly.
+		tefTime = 100;
+	}
+	if (bountyLockList.contains(playerId)) {
+		if (bountyLockList.get(playerId)->isScheduled()) {
+			//Reschedule for another 15 minutes tef.
+			bountyLockList.get(playerId)->reschedule(tefTime);
 		} else {
-			bountyLockList.put(playerId, new BountyHunterTefRemovalTask(_this, playerId));
-			bountyLockList.get(playerId)->schedule(15 * 60 * 1000);
+			bountyLockList.get(playerId)->schedule(tefTime);
 		}
 	}
+}
+
+void PlayerObjectImplementation::removeFromBountyLockListDirectly(uint64 playerId) {
+	if (bountyLockList.contains(playerId)) {
+		if (bountyLockList.get(playerId)->isScheduled()) {
+			bountyLockList.get(playerId)->cancel();
+		}
+	}
+	bountyLockList.drop(playerId);
+	updateBountyPvpStatus(playerId);
 }
 
 void PlayerObjectImplementation::updateBountyPvpStatus(uint64 playerId) {
@@ -1561,4 +1565,12 @@ void PlayerObjectImplementation::updateBountyPvpStatus(uint64 playerId) {
 
 	creature->sendPvpStatusTo(target);
 	target->sendPvpStatusTo(creature);
+}
+
+bool PlayerObjectImplementation::isBountyLocked() {
+	return bountyLockList.size() > 0;
+}
+
+bool PlayerObjectImplementation::isInBountyLockList(uint64 playerId) {
+	return bountyLockList.contains(playerId);
 }

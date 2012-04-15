@@ -2319,11 +2319,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
-	if (ghost->isInBountyLockList(object->getObjectID()) || targetGhost->isInBountyLockList(_this->getObjectID()))
+	if (ghost->isInBountyLockList(object->getObjectID()) || targetGhost->isInBountyLockList(_this->getObjectID())) {
 		return true;
-
-	if (isInBountyMission(object, _this))
-		return true;
+	}
 
 	return false;
 }
@@ -2352,11 +2350,13 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 
-	if (ghost->isInBountyLockList(object->getObjectID()) || targetGhost->isInBountyLockList(_this->getObjectID()))
+	if (ghost->isInBountyLockList(object->getObjectID()) || targetGhost->isInBountyLockList(_this->getObjectID())) {
 		return true;
+	}
 
-	if (isInBountyMission(object, _this))
+	if (isInBountyMission(object, _this)) {
 		return true;
+	}
 
 	return false;
 }

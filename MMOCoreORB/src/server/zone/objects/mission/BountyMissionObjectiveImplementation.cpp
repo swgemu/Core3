@@ -431,7 +431,6 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 			//Player killed by target, fail mission.
 			getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
 			killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
-			removeFromBountyLock(true);
 			fail();
 		}
 	}

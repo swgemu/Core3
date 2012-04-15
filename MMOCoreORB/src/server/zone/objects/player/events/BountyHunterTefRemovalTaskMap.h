@@ -42,10 +42,10 @@
  which carries forward this exception.
  */
 
-#ifndef BOUNTYHUNTERTEFREMOVALTASK_H_
-#define BOUNTYHUNTERTEFREMOVALTASK_H_
+#ifndef BOUNTYHUNTERTEFREMOVALTASKMAP_H_
+#define BOUNTYHUNTERTEFREMOVALTASKMAP_H_
 
-#include "server/zone/objects/player/PlayerObject.h"
+#include "engine/core/Task.h"
 
 namespace server {
 namespace zone {
@@ -53,33 +53,8 @@ namespace objects {
 namespace player {
 namespace events {
 
-class BountyHunterTefRemovalTask: public Task {
-	ManagedReference<PlayerObject*> bountyHunter;
-	uint64 targetId;
+class BountyHunterTefRemovalTaskMap : public VectorMap<uint64, Reference<Task*> > {
 
-public:
-	BountyHunterTefRemovalTask(PlayerObject* bountyHunter, uint64 targetId) {
-		this->bountyHunter = bountyHunter;
-		this->targetId = targetId;
-	}
-
-	void run() {
-		ManagedReference<PlayerObject*> bountyHunterRef = bountyHunter.get();
-
-		if (bountyHunterRef == NULL) {
-			return;
-		}
-
-		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(bountyHunterRef->getParent());
-
-		if (creature == NULL) {
-			return;
-		}
-
-		Locker creatureLock(creature);
-
-		bountyHunterRef->removeFromBountyLockListDirectly(targetId);
-	}
 };
 
 }
@@ -90,4 +65,4 @@ public:
 
 using namespace server::zone::objects::player::events;
 
-#endif /* BOUNTYHUNTERTEFREMOVALTASK_H_ */
+#endif /* BOUNTYHUNTERTEFREMOVALTASKMAP_H_ */

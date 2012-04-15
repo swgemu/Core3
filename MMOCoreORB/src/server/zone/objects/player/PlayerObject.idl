@@ -67,7 +67,7 @@ import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
-import server.zone.objects.player.events.BountyHunterTefRemovalTask;
+include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
 include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.player.ValidatedPosition;
 include server.zone.objects.player.variables.WaypointList;
@@ -162,7 +162,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<CreatureObject> duelList;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, BountyHunterTefRemovalTask> bountyLockList;
+	protected BountyHunterTefRemovalTaskMap bountyLockList;
 	
 	@weakReference
 	protected BuildingObject declaredResidence;
@@ -1229,15 +1229,13 @@ class PlayerObject extends IntangibleObject {
 
 	public native void addToBountyLockList(unsigned long playerId);
 	
-	public boolean isInBountyLockList(unsigned long playerId) {
-		return bountyLockList.contains(playerId);
-	}
+	public native boolean isInBountyLockList(unsigned long playerId);
 	
 	public native void removeFromBountyLockList(unsigned long playerId, boolean immediately);
 	
-	public boolean isBountyLocked() {
-		return bountyLockList.size() > 0;
-	} 
+	public native void removeFromBountyLockListDirectly(unsigned long playerId);
+	
+	public native boolean isBountyLocked();
 	
 	private native void updateBountyPvpStatus(unsigned long playerId);
 	

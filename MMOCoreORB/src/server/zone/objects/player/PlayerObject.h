@@ -233,21 +233,7 @@ class PlayerRecoveryEvent;
 
 using namespace server::zone::objects::player::events;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace player {
-namespace events {
-
-class BountyHunterTefRemovalTask;
-
-} // namespace events
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player::events;
+#include "server/zone/objects/player/events/BountyHunterTefRemovalTaskMap.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
@@ -758,6 +744,8 @@ public:
 
 	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
 
+	void removeFromBountyLockListDirectly(unsigned long long playerId);
+
 	bool isBountyLocked();
 
 	unsigned long long getPerformanceBuffTarget();
@@ -870,7 +858,7 @@ protected:
 
 	SortedVector<ManagedReference<CreatureObject* > > duelList;
 
-	VectorMap<unsigned long long, BountyHunterTefRemovalTask*> bountyLockList;
+	BountyHunterTefRemovalTaskMap bountyLockList;
 
 	ManagedWeakReference<BuildingObject* > declaredResidence;
 
@@ -1387,6 +1375,8 @@ public:
 
 	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
 
+	void removeFromBountyLockListDirectly(unsigned long long playerId);
+
 	bool isBountyLocked();
 
 private:
@@ -1803,6 +1793,8 @@ public:
 	bool isInBountyLockList(unsigned long long playerId);
 
 	void removeFromBountyLockList(unsigned long long playerId, bool immediately);
+
+	void removeFromBountyLockListDirectly(unsigned long long playerId);
 
 	bool isBountyLocked();
 
