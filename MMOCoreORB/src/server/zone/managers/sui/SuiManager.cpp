@@ -310,7 +310,7 @@ void SuiManager::handleAddEnergy(CreatureObject* player, SuiBox* suiBox, uint32 
 	player->sendSystemMessage(stringId);
 
 	stringId.setStringId("player_structure", "reserve_report");
-	stringId.setDI(energy);
+	stringId.setDI(installation->getSurplusPower());
 
 	player->sendSystemMessage(stringId);
 

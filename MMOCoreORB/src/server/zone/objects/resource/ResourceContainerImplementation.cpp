@@ -82,7 +82,7 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 	setQuantity(newQuantity, notifyClient);
 }
 
-void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify) {
+void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax) {
 	Locker _locker(_this);
 	SceneObject* parent = getParent();
 	stackQuantity = quantity;
@@ -103,7 +103,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 	int newStackSize = 0;
 
-	if (stackQuantity > ResourceContainer::MAXSIZE) {
+	if (!ignoreMax && stackQuantity > ResourceContainer::MAXSIZE) {
 
 		newStackSize = stackQuantity - ResourceContainer::MAXSIZE;
 		stackQuantity = ResourceContainer::MAXSIZE;

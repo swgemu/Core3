@@ -55,10 +55,6 @@ public:
 
 	bool isRecreationalBuildingObject();
 
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -93,10 +89,6 @@ public:
 	RecreationBuildingObjectImplementation(DummyConstructorParameter* param);
 
 	bool isRecreationalBuildingObject();
-
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
 
 	WeakReference<RecreationBuildingObject*> _this;
 
@@ -142,10 +134,6 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	bool isRecreationalBuildingObject();
-
-	void onEnter(CreatureObject* player);
-
-	void onExit(CreatureObject* player);
 
 };
 

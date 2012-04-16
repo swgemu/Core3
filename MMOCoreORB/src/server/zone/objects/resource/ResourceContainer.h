@@ -84,7 +84,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(unsigned int newQuantity, bool notifyClient = true);
+	void setQuantity(unsigned int newQuantity, bool notifyClient = true, bool ignoreMax = false);
 
 	bool isResourceContainer();
 
@@ -158,7 +158,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(unsigned int newQuantity, bool notifyClient = true);
+	void setQuantity(unsigned int newQuantity, bool notifyClient = true, bool ignoreMax = false);
 
 	bool isResourceContainer();
 
@@ -233,7 +233,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(unsigned int newQuantity, bool notifyClient);
+	void setQuantity(unsigned int newQuantity, bool notifyClient, bool ignoreMax);
 
 	bool isResourceContainer();
 

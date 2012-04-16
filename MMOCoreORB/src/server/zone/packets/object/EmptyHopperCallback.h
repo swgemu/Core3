@@ -86,9 +86,17 @@ public:
 				return;
 			}
 
+			if (container->getQuantity() == 0) {
+				return;
+			}
+
 			if (byte1 == 0 && quantity > container->getQuantity()) {
 				player->error("too much splitting");
 				return;
+			}
+
+			if (byte1 == 0 && quantity > ResourceContainer::MAXSIZE) {
+				quantity = ResourceContainer::MAXSIZE;
 			}
 
 			if (byte1 == 1) {

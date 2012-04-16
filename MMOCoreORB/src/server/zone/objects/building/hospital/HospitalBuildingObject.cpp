@@ -12,7 +12,7 @@
  *	HospitalBuildingObjectStub
  */
 
-enum {RPC_ISHOSPITALBUILDINGOBJECT__ = 6,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_};
+enum {RPC_ISHOSPITALBUILDINGOBJECT__ = 6};
 
 HospitalBuildingObject::HospitalBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	HospitalBuildingObjectImplementation* _implementation = new HospitalBuildingObjectImplementation();
@@ -41,34 +41,6 @@ bool HospitalBuildingObject::isHospitalBuildingObject() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isHospitalBuildingObject();
-}
-
-void HospitalBuildingObject::onEnter(CreatureObject* player) {
-	HospitalBuildingObjectImplementation* _implementation = static_cast<HospitalBuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ONENTER__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->onEnter(player);
-}
-
-void HospitalBuildingObject::onExit(CreatureObject* player) {
-	HospitalBuildingObjectImplementation* _implementation = static_cast<HospitalBuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ONEXIT__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->onExit(player);
 }
 
 DistributedObjectServant* HospitalBuildingObject::_getImplementation() {
@@ -208,38 +180,6 @@ bool HospitalBuildingObjectImplementation::isHospitalBuildingObject() {
 	return true;
 }
 
-void HospitalBuildingObjectImplementation::onEnter(CreatureObject* player) {
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  		HospitalBuildingObjectTemplate hospitalTemplate = null;
-	HospitalBuildingObjectTemplate* hospitalTemplate = NULL;
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  	}
-	if (BuildingObjectImplementation::templateObject->isHospitalBuildingObjectTemplate()){
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			hospitalTemplate = (HospitalBuildingObjectTemplate) super.getObjectTemplate();
-	hospitalTemplate = (HospitalBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", hospitalTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", hospitalTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE,"private_med_wound_action", hospitalTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", hospitalTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE,"private_med_wound_mind", hospitalTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", hospitalTemplate->getMindWoundRegenRate(), false);
-}
-}
-
-void HospitalBuildingObjectImplementation::onExit(CreatureObject* player) {
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  		HospitalBuildingObjectTemplate hospitalTemplate = null;
-	HospitalBuildingObjectTemplate* hospitalTemplate = NULL;
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  	}
-	if (BuildingObjectImplementation::templateObject->isHospitalBuildingObjectTemplate()){
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			hospitalTemplate = (HospitalBuildingObjectTemplate) super.getObjectTemplate();
-	hospitalTemplate = (HospitalBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", -1 * hospitalTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", -1 * hospitalTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", -1 * hospitalTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", -1 * hospitalTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", -1 * hospitalTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", -1 * hospitalTemplate->getMindWoundRegenRate(), false);
-}
-}
-
 /*
  *	HospitalBuildingObjectAdapter
  */
@@ -258,12 +198,6 @@ void HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case RPC_ISHOSPITALBUILDINGOBJECT__:
 		resp->insertBoolean(isHospitalBuildingObject());
 		break;
-	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ONEXIT__CREATUREOBJECT_:
-		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -271,14 +205,6 @@ void HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 bool HospitalBuildingObjectAdapter::isHospitalBuildingObject() {
 	return (static_cast<HospitalBuildingObject*>(stub))->isHospitalBuildingObject();
-}
-
-void HospitalBuildingObjectAdapter::onEnter(CreatureObject* player) {
-	(static_cast<HospitalBuildingObject*>(stub))->onEnter(player);
-}
-
-void HospitalBuildingObjectAdapter::onExit(CreatureObject* player) {
-	(static_cast<HospitalBuildingObject*>(stub))->onExit(player);
 }
 
 /*

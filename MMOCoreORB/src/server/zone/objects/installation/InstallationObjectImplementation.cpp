@@ -548,7 +548,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	if (container->getQuantity() == newQuantity)
 		return;
 
-	container->setQuantity(newQuantity, false);
+	container->setQuantity(newQuantity, false, true);
 
 	if (!notifyClient)
 		return;
