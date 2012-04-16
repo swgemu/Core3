@@ -51,7 +51,7 @@ object_draft_schematic_weapon_2h_sword_scythe = object_draft_schematic_weapon_sh
    complexity = 35, 
    size = 1, 
 
-   xpType = "", 
+   xpType = "crafting_weapons_general", 
    xp = 250, 
 
    assemblySkill = "weapon_assembly", 

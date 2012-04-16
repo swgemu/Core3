@@ -1684,6 +1684,7 @@ schematics = {
 {path="object/draft_schematic/space/droid_interface/maintenance_reduction_kit_mk5.iff"},
 {path="object/draft_schematic/space/weapon/missile/wpn_launcher_spacebomb_mk2.iff"},
 {path="object/draft_schematic/space/weapon/missile/wpn_spacebomb_missile_mk2.iff"},
+{path="object/draft_schematic/armor/armor_segment_bone_acklay.iff"},
 {path="object/draft_schematic/armor/armor_segment_ris.iff"},
 {path="object/draft_schematic/armor/armor_segment_ris_acklay.iff"},
 {path="object/draft_schematic/armor/component/armor_layer_ris.iff"},
