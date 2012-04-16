@@ -50,7 +50,7 @@
 skillModLimits = {
 	{257, -255, 255}, --TEMPLATE - All mods from LUA skillMods
 	{258, -25, 25},  --WEARABLE
-	{259, -255, 255}, -- SKILLBOX
+	{259, -15000, 15000}, -- SKILLBOX
 	{4097, -100, 100}, -- ABILITYBONUSMOD
 	{4098, -100, 100}, -- STRUCTUREMOD
 	{4099, -100, 100}, -- BUFFMOD

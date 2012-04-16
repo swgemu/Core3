@@ -523,7 +523,6 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 	}
 
-	stopFactory("manf_error_7", "", "", -1);
 	return NULL;
 }
 
