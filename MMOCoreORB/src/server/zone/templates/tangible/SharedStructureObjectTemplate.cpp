@@ -29,6 +29,8 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 
 	cityRankRequired = templateData->getByteField("cityRankRequired");
 
+	limitToOnePerCity = templateData->getIntField("limitToOnePerCity");
+
 	constructionMarkerTemplate = templateData->getStringField("constructionMarker");
 
 	abilityRequired = templateData->getStringField("abilityRequired");

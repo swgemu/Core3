@@ -48,6 +48,12 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected CitizenList bannedList;
 	
+	@dereferenced 
+	protected Vector<unsigned int> limitedPlacementStructures;
+	
+	@dereferenced
+	protected VectorMap<byte, Vector<SceneObject> > cityStructureInventory;
+	
 	protected byte cityRank;
 	
 	protected int cityTreasury;
@@ -351,4 +357,16 @@ class CityRegion extends ManagedObject implements Logger {
 		hasShuttle = true;
 	}
 	
+	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
+	
+	public native void removeFromCityStructureInventory(SceneObject structure);
+	
+	public native boolean checkLimitedPlacementStucture(unsigned int id);
+	
+	public native boolean addLimitedPlacementStructure(unsigned int id);
+	
+	public native void removeLimitedPlacementStructure(unsigned int id);
+	
+	public native void destroyAllStructuresForRank(byte rank);
+		
 }

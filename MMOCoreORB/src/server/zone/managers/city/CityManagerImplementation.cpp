@@ -484,6 +484,7 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
+	city->destroyAllStructuresForRank(uint8(newRank + 1));
 }
 
 void CityManagerImplementation::expandCity(CityRegion* city) {

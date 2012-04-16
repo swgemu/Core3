@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/objects/scene/components/ZoneComponent.h"
+#include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
@@ -17,12 +18,12 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 void ShuttleInstallationZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
-	ZoneComponent::notifyInsertToZone(sceneObject, zone);
+	StructureZoneComponent::notifyInsertToZone(sceneObject, zone);
 
 }
 
 void ShuttleInstallationZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
-	ZoneComponent::notifyRemoveFromZone(sceneObject);
+	StructureZoneComponent::notifyRemoveFromZone(sceneObject);
 
 	if (sceneObject->isStructureObject()){
 

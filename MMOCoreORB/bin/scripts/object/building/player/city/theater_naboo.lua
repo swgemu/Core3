@@ -54,6 +54,8 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 		{"private_buff_mind", 100}
 	},
 	cityRankRequired = 4,
+	limitToOnePerCity = 0,
+	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address.iff", x = 11, z = 2, y = -14.95, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -7, z = 4.75, y = -14.2, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 1, containmentType = -1}

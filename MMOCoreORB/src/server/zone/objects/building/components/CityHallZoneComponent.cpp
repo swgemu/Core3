@@ -15,6 +15,10 @@
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
 	CityRegion* cityRegion = sceneObject->getCityRegion();
 
+	int i;
+	for ( i = cityRegion->getCityRank(); i > 0; i--)
+		cityRegion->destroyAllStructuresForRank(uint8(i));
+
 	if (cityRegion == NULL) {
 		//sceneObject->error("null city region for guild hall in destroyObjectFromWorld");
 

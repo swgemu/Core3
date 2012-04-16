@@ -98,6 +98,11 @@ void CityRegionImplementation::initialize() {
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
+	cityStructureInventory.put(uint8(1), new Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(2), new Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(3), new Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(4), new Vector<ManagedReference<SceneObject*> >());
+
 	setLoggingName("CityRegion");
 	setLogging(true);
 }
@@ -259,5 +264,75 @@ String CityRegionImplementation::getRegionName() {
 	return regionName.getFullPath();
 }
 
+void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, SceneObject* structure){
 
+	if(cityStructureInventory.contains(rankRequired)){
+		cityStructureInventory.get(rankRequired)->add(structure);
+
+	}
+
+
+}
+
+void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* structure){
+
+	if(cityStructureInventory.get(uint8(1))->contains(structure))
+		cityStructureInventory.get(uint8(1))->removeElement(structure);
+
+	else if(cityStructureInventory.get(uint8(2))->contains(structure))
+		cityStructureInventory.get(uint8(2))->removeElement(structure);
+
+	else if(cityStructureInventory.get(uint8(3))->contains(structure))
+			cityStructureInventory.get(uint8(3))->removeElement(structure);
+
+	else if(cityStructureInventory.get(uint8(4))->contains(structure))
+			cityStructureInventory.get(uint8(4))->removeElement(structure);
+
+
+}
+
+bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
+
+	if (limitedPlacementStructures.contains(id))
+		return true;
+
+	return false;
+}
+
+bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
+
+	if (!limitedPlacementStructures.contains(id)){
+		limitedPlacementStructures.add(id);
+		return true;
+	}
+
+	return false;
+}
+
+void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
+
+	limitedPlacementStructures.removeElement(id);
+
+}
+
+void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
+
+	Vector<ManagedReference<SceneObject*> >* sceneObjects = cityStructureInventory.get(rank);
+
+	int structureCount = sceneObjects->size();
+	int i;
+
+	if (structureCount > 0){
+
+		for(i = structureCount - 1; i >= 0; i--){
+
+			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
+			sceo->destroyObjectFromWorld(false);
+			sceo->destroyObjectFromDatabase(true);
+
+		}
+	}
+
+
+}
 

@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/components/SceneObjectComponent.h"
+#include "server/zone/objects/structure/components/StructureZoneComponent.h"
+
 
 namespace server {
 	namespace zone {
@@ -28,7 +30,7 @@ using namespace server::zone;
 
 #include "engine/util/u3d/QuadTreeEntry.h"
 
-class ShuttleInstallationZoneComponent : public ZoneComponent {
+class ShuttleInstallationZoneComponent : public StructureZoneComponent {
 
 public:
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);

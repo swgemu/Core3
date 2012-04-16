@@ -48,7 +48,9 @@ object_building_player_city_garden_corellia_sml_01 = object_building_player_city
 	length = 3,
 	width = 3,
 	cityRankRequired = 1,
+	limitToOnePerCity = 0,
 	abilityRequired = "place_small_garden",
+	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure_nosnap_mini.iff", x = 4, z = 1, y = -4, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
 	}

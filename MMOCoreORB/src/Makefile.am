@@ -288,6 +288,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
+		server/zone/objects/structure/components/StructureZoneComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \

@@ -51,7 +51,9 @@ object_building_player_city_bank_naboo = object_building_player_city_shared_bank
 	planetMapCategory = "bank",
 	gameObjectType = 4096,
 	cityRankRequired = 2,
+	limitToOnePerCity = 0,
 	abilityRequired = "place_bank",
+	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 0, z = 0, y = -1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_bank.iff", x = -1, z = 0, y = 0, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},

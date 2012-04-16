@@ -168,13 +168,28 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 			break;
 	}
 
+	int rankRequired = serverTemplate->getCityRankRequired();
+
+	if (city == NULL && rankRequired > 0){
+		creature->sendSystemMessage("@city/city:build_no_city");
+		return 1;
+	}
+
+
 	if (city != NULL) {
 		if (city->isZoningEnabled() && !city->hasZoningRights(creature->getObjectID())) {
 			creature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
 			return 1;
 		}
 
-		int rankRequired = serverTemplate->getCityRankRequired();
+		int limitToOne = (int) serverTemplate->getLimitToOnePerCity();
+
+		if (limitToOne == 1){
+			if (!city->addLimitedPlacementStructure(serverTemplate->getServerObjectCRC())){
+				creature->sendSystemMessage("@player_structure:cant_place_unique");
+				return 1;
+			}
+		}
 
 		if (rankRequired != 0 && city->getCityRank() < rankRequired) {
 			StringIdChatParameter param("city/city", "rank_req");
@@ -184,6 +199,8 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 			creature->sendSystemMessage(param);
 			return 1;
 		}
+
+
 
 	}
 
@@ -297,6 +314,12 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 
 
 	structureObject->notifyStructurePlaced(creature);
+
+	ManagedReference<CityRegion*> city = structureObject->getCityRegion();
+
+	if (city != NULL && serverTemplate->getCityRankRequired() > 0){
+		city->addToCityStructureInventory(serverTemplate->getCityRankRequired(), obj);
+	}
 
 	return structureObject;
 }

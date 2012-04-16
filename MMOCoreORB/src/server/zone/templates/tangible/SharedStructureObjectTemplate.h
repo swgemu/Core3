@@ -22,6 +22,7 @@ protected:
 
 	uint8 lotSize;
 	uint8 cityRankRequired;
+	uint8 limitToOnePerCity;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -64,6 +65,10 @@ public:
 
 	inline uint8 getCityRankRequired() {
 		return cityRankRequired;
+	}
+
+	inline uint8 getLimitToOnePerCity(){
+		return limitToOnePerCity;
 	}
 
 	inline String& getConstructionMarkerTemplate() {

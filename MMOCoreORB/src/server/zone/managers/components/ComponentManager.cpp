@@ -59,6 +59,7 @@
 #include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
+#include "server/zone/objects/structure/components/StructureZoneComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -67,6 +68,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("ZoneComponent", new ZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());
+	components.put("StructureZoneComponent", new StructureZoneComponent());
 	components.put("ShuttleZoneComponent", new ShuttleZoneComponent());
 
 	components.put("ObjectMenuComponent", new ObjectMenuComponent());

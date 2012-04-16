@@ -48,6 +48,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	allowedZones = {"corellia", "talus"},
 	zoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,
+	limitToOnePerCity = 0,
 	abilityRequired = "place_cityhall",
 	skillMods = {
 		{"private_buff_mind", 100}

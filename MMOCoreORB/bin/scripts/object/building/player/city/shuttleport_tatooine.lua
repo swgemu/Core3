@@ -48,6 +48,7 @@ object_building_player_city_shuttleport_tatooine = object_building_player_city_s
 	length = 5,
 	width = 5,
 	cityRankRequired = 4,
+	limitToOnePerCity = 1,
 	gameObjectType = 4103,
 	abilityRequired = "place_shuttleport",
 	zoneComponent = "ShuttleInstallationZoneComponent",

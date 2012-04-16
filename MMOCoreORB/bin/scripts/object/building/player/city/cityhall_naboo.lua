@@ -51,6 +51,7 @@ object_building_player_city_cityhall_naboo = object_building_player_city_shared_
 	cityRankRequired = 0,
 	zoneComponent = "CityHallZoneComponent",
 	abilityRequired = "place_cityhall",
+	limitToOnePerCity = 1,
 	skillMods = {
 		{"private_buff_mind", 100}
 	},
