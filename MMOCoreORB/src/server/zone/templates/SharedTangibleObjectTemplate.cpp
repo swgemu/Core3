@@ -133,7 +133,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 			LuaObject mod(state);
 
 			String modName = mod.getStringAt(1);
-			int64 modValue = mod.getLongAt(2);
+			int modValue = mod.getIntAt(2);
 
 			skillMods.put(modName, modValue);
 

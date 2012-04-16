@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,40 +38,108 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef LASTDITCHCOMMAND_H_
-#define LASTDITCHCOMMAND_H_
+#ifndef SKILLMODMANAGER_H_
+#define SKILLMODMANAGER_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "CombatQueueCommand.h"
+#include "engine/engine.h"
 
-class LastDitchCommand : public CombatQueueCommand {
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+	class CreatureObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+	class PlayerObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+	class TangibleObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace skill {
+
+class SkillModManager : public Singleton<SkillModManager>, public Logger, public Object {
+
 public:
+	///Permanent Mods
+	const static int PERMANENTMOD = 0x100;
+	const static int TEMPLATE = 0x101; /// From LUA templates
+	const static int WEARABLE = 0x102; /// From Wearable items
+	const static int SKILLBOX = 0x103; /// From Skills learned
 
-	LastDitchCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+	///Temporary Mods
+	const static int TEMPMOD = 0x1000;
+	const static int ABILITYBONUS = 0x1001; /// From CombatQueueCommands
+	const static int STRUCTURE = 0x1002; /// From Structures creature is in
+	const static int BUFF = 0x1003; /// From temporary buffs
+private:
+	VectorMap<uint32, int> skillModMax;
+	VectorMap<uint32, int> skillModMin;
+public:
+	SkillModManager();
+	~SkillModManager();
+
+private:
+
+	void init();
+
+	void setDefaults();
+
+	bool compareMods(VectorMap<String, int> mods, CreatureObject* creature, uint32 type);
+
+
+public:
+	void verifyWearableSkillMods(CreatureObject* creature);
+
+	void verifyStructureSkillMods(TangibleObject* tano);
+
+	void verifySkillBoxSkillMods(CreatureObject* creature);
+
+	void verifyBuffSkillMods(CreatureObject* creature);
+
+	inline int getMinSkill(const uint32 modType) {
+		return skillModMin.get(modType);
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isPistolWeapon()) {
-			return INVALIDWEAPON;
-		}
-
-		int dmg = doCombatAction(creature, target);
-
-		return dmg;
+	inline int getMaxSkill(const uint32 modType) {
+		return skillModMax.get(modType);
 	}
-
 };
 
-#endif //LASTDITCHCOMMAND_H_
+}
+}
+}
+}
+
+using namespace server::zone::managers::skill;
+
+#endif // SKILLMODMANAGER_H_

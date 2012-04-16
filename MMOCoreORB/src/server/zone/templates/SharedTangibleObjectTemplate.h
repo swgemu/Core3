@@ -44,7 +44,7 @@ protected:
 
 	int faction;
 
-	VectorMap<String, int64> skillMods;
+	VectorMap<String, int> skillMods;
 
 	Vector<short>* numberExperimentalProperties;
 	Vector<String>* experimentalProperties;
@@ -184,11 +184,11 @@ public:
     	return resourceWeights;
     }
 
-    VectorMap<String, int64>* getSkillMods() {
+    VectorMap<String, int>* getSkillMods() {
     	return &skillMods;
     }
 
-    int64 getSkillMod(const String& mod) {
+    int getSkillMod(const String& mod) {
     	return skillMods.get(mod);
     }
 

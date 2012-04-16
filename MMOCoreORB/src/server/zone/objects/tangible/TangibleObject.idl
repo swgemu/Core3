@@ -139,7 +139,11 @@ class TangibleObject extends SceneObject {
 	@local
 	public abstract native void addTemplateSkillMods(TangibleObject targetObject);
 	
-	public abstract void addSkillMod(final string skillMod, long value, boolean notifyClient = true) {
+	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
+		
+	}
+	
+	public abstract void removeSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
 		
 	}
 	
@@ -149,6 +153,9 @@ class TangibleObject extends SceneObject {
 	 */
 	@local
 	public abstract native void removeTemplateSkillMods(TangibleObject tangibleObject);
+	
+	@local
+	public native VectorMap<string, int> getTemplateSkillMods();
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject

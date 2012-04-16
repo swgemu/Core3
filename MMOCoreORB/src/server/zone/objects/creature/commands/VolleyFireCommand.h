@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "SquadLeaderCommand.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 
 class VolleyFireCommand : public SquadLeaderCommand {
 public:
@@ -98,14 +99,14 @@ public:
 			if (!weapon->getCreatureAccuracyModifiers()->isEmpty()) {
 				skillCRC = weapon->getCreatureAccuracyModifiers()->get(0);
 
-				player->addSkillMod(skillCRC, (int) skillMod * 2, false);
+				player->addSkillMod(SkillModManager::ABILITYBONUS, skillCRC, (int) skillMod * 2, false);
 			}
 		}
 
 		int ret = doCombatAction(player, (uint64)target);
 
 		if (!skillCRC.isEmpty())
-			player->addSkillMod(skillCRC, (int) skillMod * -2, false);
+			player->addSkillMod(SkillModManager::ABILITYBONUS, skillCRC, (int) skillMod * -2, false);
 
 		return ret == SUCCESS;
 	}

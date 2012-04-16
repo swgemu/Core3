@@ -502,7 +502,7 @@ public:
 
 	void setForcePower(int fp, bool notifyClient = true);
 
-	void setForcePowerMax(int fpm, bool notifyClient = true);
+	void setForcePowerMax(int newValue, bool notifyClient = true);
 
 	void activateForceRegen();
 
@@ -1133,7 +1133,7 @@ public:
 
 	void setForcePower(int fp, bool notifyClient = true);
 
-	void setForcePowerMax(int fpm, bool notifyClient = true);
+	void setForcePowerMax(int newValue, bool notifyClient = true);
 
 	void activateForceRegen();
 
@@ -1578,7 +1578,7 @@ public:
 
 	void setForcePower(int fp, bool notifyClient);
 
-	void setForcePowerMax(int fpm, bool notifyClient);
+	void setForcePowerMax(int newValue, bool notifyClient);
 
 	void activateForceRegen();
 

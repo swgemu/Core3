@@ -97,4 +97,6 @@ class FactoryObject extends InstallationObject {
 	private native boolean populateSchematicBlueprint(ManufactureSchematic schematic);
 
 	private native void collectMatchesInInputHopper(BlueprintEntry entry, SceneObject inputHopper);
+	
+	public native string getRedeedMessage();
 }

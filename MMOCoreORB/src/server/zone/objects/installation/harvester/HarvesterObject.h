@@ -51,6 +51,8 @@ public:
 
 	bool isHarvesterObject();
 
+	String getRedeedMessage();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -59,6 +61,8 @@ protected:
 	HarvesterObject(DummyConstructorParameter* param);
 
 	virtual ~HarvesterObject();
+
+	String _return_getRedeedMessage;
 
 	friend class HarvesterObjectHelper;
 };
@@ -97,6 +101,8 @@ public:
 	void updateOperators();
 
 	bool isHarvesterObject();
+
+	String getRedeedMessage();
 
 	WeakReference<HarvesterObject*> _this;
 
@@ -150,6 +156,8 @@ public:
 	void updateOperators();
 
 	bool isHarvesterObject();
+
+	String getRedeedMessage();
 
 };
 

@@ -80,7 +80,7 @@ public:
 		insertLong(wp->getObjectID());
 		insertByte(0x01); //Flag  1=Normal WP (light blue)  / 0 = White WP text  / 2 = green WP text
 		insertByte(0x01);
-	}
+	} */
 
 	void updateForcePower() {
 		addIntUpdate(0x02, play->getForcePower());
@@ -90,7 +90,7 @@ public:
 		addIntUpdate(0x03, play->getForcePowerMax());
 	}
 
-	void startExperienceUpdate(int typesOfExp) {
+	/*void startExperienceUpdate(int typesOfExp) {
 		startUpdate(0);
 		startList(typesOfExp, play->getNewExperienceListCount(typesOfExp));
 	}

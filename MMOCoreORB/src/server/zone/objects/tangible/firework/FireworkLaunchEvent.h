@@ -42,34 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FIREWORKEVENT_H_
-#define FIREWORKEVENT_H_
+#ifndef FIREWORKLAUNCHEVENT_H_
+#define FIREWORKLAUNCHEVENT_H_
 
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/staticobject/StaticObject.h"
+#include "server/zone/objects/tangible/firework/FireworkObject.h"
 #include "server/zone/ZoneServer.h"
 
-class FireworkEvent : public Task {
-	ManagedReference<StaticObject*> firework;
-	ManagedReference<CreatureObject*> player;
+class FireworkLaunchEvent : public Task {
+	ManagedWeakReference<FireworkObject*> firework;
+	ManagedWeakReference<CreatureObject*> player;
+	int removeDelay;
 
 public:
-	FireworkEvent(CreatureObject* player, StaticObject* firework) : Task(1000) {
-		this->player = player;
+	FireworkLaunchEvent(CreatureObject* player, FireworkObject* firework, int removeDelay) : Task(1000) {
 		this->firework = firework;
+		this->player = player;
+		this->removeDelay = removeDelay;
 	}
 
 	void run() {
-		if (firework == NULL)
+		if (firework == NULL || player == NULL)
 			return;
 
 		try {
 			Locker locker(firework);
 
-			firework->destroyObjectFromWorld(true);
+			firework->completeLaunch(player, removeDelay);
 		} catch (Exception& e) {
-			player->error("unreported exception on FireworkEvent::run()");
+			player->error("unreported exception on FireworkLaunchEvent::run()");
 		}
 
 		firework = NULL;
@@ -78,4 +80,4 @@ public:
 };
 
 
-#endif /* FIREWORKEVENT_H_ */
+#endif /* FIREWORKLAUNCHEVENT_H_ */

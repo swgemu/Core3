@@ -75,6 +75,7 @@ include server.zone.objects.creature.variables.CommandQueueActionVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillList;
 include server.zone.objects.creature.variables.SkillModList;
+include server.zone.objects.creature.variables.SkillModEntry;
 include server.zone.objects.creature.variables.CommandQueueAction;
 include server.zone.objects.creature.CreaturePosture;
 include server.zone.objects.creature.CreatureState;
@@ -648,6 +649,11 @@ class CreatureObject extends TangibleObject {
 		creatureBuffs.sendTo(creature);
 	}
 
+	@local
+	public BuffList getBuffList() {
+		return creatureBuffs;
+	}
+	
 	public Buff getBuff(unsigned int buffcrc) {
 		if (creatureBuffs.hasBuff(buffcrc))
 			return creatureBuffs.getBuffByCRC(buffcrc);
@@ -800,7 +806,7 @@ class CreatureObject extends TangibleObject {
 	 * @param value value to add/subtract
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	public native void addSkillMod(final int modType, final string skillMod, int value, boolean notifyClient = true);
 	
 	/**
 	 * Adds new value to the specified skillmod (add a negative number to subtract)
@@ -810,7 +816,7 @@ class CreatureObject extends TangibleObject {
 	 * @param value value to add/subtract
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void addWearableSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	//public native void addWearableSkillMod(final string skillMod, long value, boolean notifyClient = true);
 	
 	
 	/**
@@ -820,7 +826,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillMod skill mod to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void removeSkillMod(final string skillMod, boolean notifyCLient = true);
+	public native void removeSkillMod(final int modType, final string skillMod, int value, boolean notifyCLient = true);
 	
 	/**
 	 * Sets a new group inviter id
@@ -1446,16 +1452,14 @@ class CreatureObject extends TangibleObject {
 		return skillList;
 	}
 	
-	public long getSkillMod(final string skillmod) {
-		return skillModList.get(skillmod);
-	}
+	public native int getSkillMod(final string skillmod);
 	
 	public boolean hasSkill(final string skill) {
 		return skillList.containsSkill(skill);
 	}
 	
 	@local
-	public DeltaVectorMap<string, long> getSkillModList() {
+	public SkillModList getSkillModList() {
 		return skillModList;
 	}
 	

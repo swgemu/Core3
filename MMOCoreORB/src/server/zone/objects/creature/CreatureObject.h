@@ -243,6 +243,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/variables/SkillModList.h"
 
+#include "server/zone/objects/creature/variables/SkillModEntry.h"
+
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -426,6 +428,8 @@ public:
 
 	void sendBuffsTo(CreatureObject* creature);
 
+	BuffList* getBuffList();
+
 	Buff* getBuff(unsigned int buffcrc);
 
 	long long getSkillModFromBuffs(const String& skillMod);
@@ -480,11 +484,9 @@ public:
 
 	void removeSkill(const String& skill, bool notifyClient = true);
 
-	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
-	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient = true);
-
-	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient = true);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
@@ -762,11 +764,11 @@ public:
 
 	SkillList* getSkillList();
 
-	long long getSkillMod(const String& skillmod);
+	int getSkillMod(const String& skillmod);
 
 	bool hasSkill(const String& skill);
 
-	DeltaVectorMap<String, long long>* getSkillModList();
+	SkillModList* getSkillModList();
 
 	void setWatchToID(unsigned long long id);
 
@@ -1185,6 +1187,8 @@ public:
 
 	void sendBuffsTo(CreatureObject* creature);
 
+	BuffList* getBuffList();
+
 	Buff* getBuff(unsigned int buffcrc);
 
 	long long getSkillModFromBuffs(const String& skillMod);
@@ -1239,11 +1243,9 @@ public:
 
 	void removeSkill(const String& skill, bool notifyClient = true);
 
-	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
-	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient = true);
-
-	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient = true);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
@@ -1521,11 +1523,11 @@ public:
 
 	SkillList* getSkillList();
 
-	long long getSkillMod(const String& skillmod);
+	int getSkillMod(const String& skillmod);
 
 	bool hasSkill(const String& skill);
 
-	DeltaVectorMap<String, long long>* getSkillModList();
+	SkillModList* getSkillModList();
 
 	void setWatchToID(unsigned long long id);
 
@@ -1830,11 +1832,9 @@ public:
 
 	void removeSkill(const String& skill, bool notifyClient);
 
-	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
+	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient);
 
-	void addWearableSkillMod(const String& skillMod, long long value, bool notifyClient);
-
-	void removeSkillMod(const String& skillMod, bool notifyCLient);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient);
 
@@ -2092,7 +2092,7 @@ public:
 
 	int getGender();
 
-	long long getSkillMod(const String& skillmod);
+	int getSkillMod(const String& skillmod);
 
 	bool hasSkill(const String& skill);
 
@@ -2206,9 +2206,8 @@ protected:
 	String _param0_getSkillModFromBuffs__String_;
 	String _param0_addSkill__String_bool_;
 	String _param0_removeSkill__String_bool_;
-	String _param0_addSkillMod__String_long_bool_;
-	String _param0_addWearableSkillMod__String_long_bool_;
-	String _param0_removeSkillMod__String_bool_;
+	String _param1_addSkillMod__int_String_int_bool_;
+	String _param1_removeSkillMod__int_String_int_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
 	String _param0_setMoodString__String_bool_;
 	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;

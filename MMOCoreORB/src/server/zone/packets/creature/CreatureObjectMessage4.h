@@ -62,7 +62,7 @@ public:
 		encumbrances->insertToMessage(this);
 
 		// skill mods
-		DeltaVectorMap<String, int64>* skillMods = creo->getSkillModList();
+		SkillModList* skillMods = creo->getSkillModList();
 		skillMods->insertToMessage(this);
 
 		//

@@ -16,7 +16,7 @@
  *	FactoryObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,RPC_GETREDEEDMESSAGE__};
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
@@ -214,6 +214,20 @@ void FactoryObject::createNewObject() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createNewObject();
+}
+
+String FactoryObject::getRedeedMessage() {
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
+
+		method.executeWithAsciiReturn(_return_getRedeedMessage);
+		return _return_getRedeedMessage;
+	} else
+		return _implementation->getRedeedMessage();
 }
 
 DistributedObjectServant* FactoryObject::_getImplementation() {
@@ -466,6 +480,9 @@ void FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CREATENEWOBJECT__:
 		createNewObject();
 		break;
+	case RPC_GETREDEEDMESSAGE__:
+		resp->insertAscii(getRedeedMessage());
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -517,6 +534,10 @@ void FactoryObjectAdapter::handleOperateToggle(CreatureObject* player) {
 
 void FactoryObjectAdapter::createNewObject() {
 	(static_cast<FactoryObject*>(stub))->createNewObject();
+}
+
+String FactoryObjectAdapter::getRedeedMessage() {
+	return (static_cast<FactoryObject*>(stub))->getRedeedMessage();
 }
 
 /*

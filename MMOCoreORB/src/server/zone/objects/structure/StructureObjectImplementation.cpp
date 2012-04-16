@@ -285,3 +285,37 @@ void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObje
 bool StructureObjectImplementation::isCampStructure() {
 	return templateObject->isCampStructureTemplate();
 }
+
+void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) {
+	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tano == NULL)
+		return;
+
+	VectorMap<String, int>* mods = tano->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
+
+		targetObject->addSkillMod(SkillModManager::STRUCTURE, entry.getKey(), entry.getValue());
+	}
+
+	SkillModManager::instance()->verifyStructureSkillMods(targetObject);
+}
+
+void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) {
+	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tano == NULL)
+		return;
+
+	VectorMap<String, int>* mods = tano->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
+
+		targetObject->removeSkillMod(SkillModManager::STRUCTURE, entry.getKey(), entry.getValue());
+	}
+
+	SkillModManager::instance()->verifyStructureSkillMods(targetObject);
+}

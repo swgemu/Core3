@@ -252,6 +252,12 @@ public:
 
 	AABBTree* getAABBTree();
 
+	void addTemplateSkillMods(TangibleObject* targetObject);
+
+	void removeTemplateSkillMods(TangibleObject* tangibleObject);
+
+	String getRedeedMessage();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -262,6 +268,7 @@ protected:
 	virtual ~StructureObject();
 
 	String _return_getMaintenanceMods;
+	String _return_getRedeedMessage;
 	String _return_getTimeString;
 
 	friend class StructureObjectHelper;
@@ -434,6 +441,12 @@ public:
 
 	AABBTree* getAABBTree();
 
+	void addTemplateSkillMods(TangibleObject* targetObject);
+
+	void removeTemplateSkillMods(TangibleObject* tangibleObject);
+
+	virtual String getRedeedMessage();
+
 	WeakReference<StructureObject*> _this;
 
 	operator const StructureObject*();
@@ -594,6 +607,8 @@ public:
 	bool isCampStructure();
 
 	bool isRedeedable();
+
+	String getRedeedMessage();
 
 protected:
 	String _param0_isOnAdminList__String_;

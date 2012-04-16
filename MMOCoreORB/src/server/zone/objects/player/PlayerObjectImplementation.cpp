@@ -1446,36 +1446,42 @@ void PlayerObjectImplementation::activateMissions() {
 	}
 }
 
+void PlayerObjectImplementation::setForcePowerMax(int newValue, bool notifyClient) {
+	if(newValue == getForcePowerMax())
+		return;
+
+	forcePowerMax = newValue;
+
+	if(forcePower > forcePowerMax)
+		setForcePower(forcePowerMax, true);
+
+	if (notifyClient == true){
+		// Update the force power bar max.
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->updateForcePowerMax();
+		dplay8->close();
+
+		sendMessage(dplay8);
+	}
+}
+
 void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
+
+	if(fp == getForcePower())
+		return;
 
 	forcePower = fp;
 
 	if (notifyClient == true){
 		// Update the force power bar.
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		dplay8->addIntUpdate(0x02, getForcePower());
+		dplay8->updateForcePower();
 		dplay8->close();
 
 		sendMessage(dplay8);
 	}
 
 }
-
-void PlayerObjectImplementation::setForcePowerMax(int fpm, bool notifyClient) {
-
-	forcePowerMax = fpm;
-
-	if (notifyClient == true){
-		// Update the force power bar max.
-		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		dplay8->addIntUpdate(0x03, getForcePowerMax());
-		dplay8->close();
-
-		sendMessage(dplay8);
-	}
-
-}
-
 
 void PlayerObjectImplementation::activateForceRegen() {
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get());

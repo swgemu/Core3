@@ -10,7 +10,7 @@
  *	HarvesterObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__,RPC_GETREDEEDMESSAGE__};
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
@@ -115,6 +115,20 @@ bool HarvesterObject::isHarvesterObject() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isHarvesterObject();
+}
+
+String HarvesterObject::getRedeedMessage() {
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
+
+		method.executeWithAsciiReturn(_return_getRedeedMessage);
+		return _return_getRedeedMessage;
+	} else
+		return _implementation->getRedeedMessage();
 }
 
 DistributedObjectServant* HarvesterObject::_getImplementation() {
@@ -293,6 +307,9 @@ void HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_ISHARVESTEROBJECT__:
 		resp->insertBoolean(isHarvesterObject());
 		break;
+	case RPC_GETREDEEDMESSAGE__:
+		resp->insertAscii(getRedeedMessage());
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -316,6 +333,10 @@ void HarvesterObjectAdapter::updateOperators() {
 
 bool HarvesterObjectAdapter::isHarvesterObject() {
 	return (static_cast<HarvesterObject*>(stub))->isHarvesterObject();
+}
+
+String HarvesterObjectAdapter::getRedeedMessage() {
+	return (static_cast<HarvesterObject*>(stub))->getRedeedMessage();
 }
 
 /*

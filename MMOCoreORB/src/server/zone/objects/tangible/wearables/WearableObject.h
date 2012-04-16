@@ -95,6 +95,8 @@ public:
 
 	String repairAttempt(int repairChance);
 
+	WearableSkillModMap* getWearableSkillModMap();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -167,6 +169,8 @@ private:
 
 public:
 	String repairAttempt(int repairChance);
+
+	WearableSkillModMap* getWearableSkillModMap();
 
 	WeakReference<WearableObject*> _this;
 

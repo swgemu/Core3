@@ -1232,19 +1232,19 @@ void PlayerObject::setForcePower(int fp, bool notifyClient) {
 		_implementation->setForcePower(fp, notifyClient);
 }
 
-void PlayerObject::setForcePowerMax(int fpm, bool notifyClient) {
+void PlayerObject::setForcePowerMax(int newValue, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_SETFORCEPOWERMAX__INT_BOOL_);
-		method.addSignedIntParameter(fpm);
+		method.addSignedIntParameter(newValue);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setForcePowerMax(fpm, notifyClient);
+		_implementation->setForcePowerMax(newValue, notifyClient);
 }
 
 void PlayerObject::activateForceRegen() {
@@ -5492,8 +5492,8 @@ void PlayerObjectAdapter::setForcePower(int fp, bool notifyClient) {
 	(static_cast<PlayerObject*>(stub))->setForcePower(fp, notifyClient);
 }
 
-void PlayerObjectAdapter::setForcePowerMax(int fpm, bool notifyClient) {
-	(static_cast<PlayerObject*>(stub))->setForcePowerMax(fpm, notifyClient);
+void PlayerObjectAdapter::setForcePowerMax(int newValue, bool notifyClient) {
+	(static_cast<PlayerObject*>(stub))->setForcePowerMax(newValue, notifyClient);
 }
 
 void PlayerObjectAdapter::activateForceRegen() {

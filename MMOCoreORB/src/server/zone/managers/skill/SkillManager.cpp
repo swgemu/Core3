@@ -42,6 +42,7 @@ which carries forward this exception.
 */
 
 #include "SkillManager.h"
+#include "SkillModManager.h"
 #include "PerformanceManager.h"
 #include "imagedesign/ImageDesignManager.h"
 #include "server/zone/objects/creature/variables/Skill.h"
@@ -238,12 +239,11 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		for (int i = 0; i < skillModifiers->size(); ++i) {
 			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-			creature->addSkillMod(entry->getKey(), entry->getValue(), notifyClient);
+			creature->addSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
 
-			//Update Force Power Bar.
-			if (entry->getKey() == "jedi_force_power_max")
-				ghost->setForcePowerMax(ghost->getForcePowerMax() + entry->getValue(), true);
 		}
+
+		SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
 		//Add abilities
 		Vector<String>* abilityNames = skill->getAbilities();
@@ -255,6 +255,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Update maximum experience.
 		updateXpLimits(ghost);
+
+		ghost->setForcePowerMax(ghost->getForcePowerMax() + creature->getSkillMod("jedi_force_power_max"), true);
 
 		if (skillName.contains("master")) {
 			uint32 badge = Badge::getID(skillName);
@@ -311,13 +313,11 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	for (int i = 0; i < skillModifiers->size(); ++i) {
 		VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-		creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
+		creature->removeSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
 
-		//Update Force Power Bar.
-		if (entry->getKey() == "jedi_force_power_max" && ghost != NULL)
-			ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue(), true);
-			ghost->setForcePower(ghost->getForcePower() - entry->getValue(), true);
 	}
+
+	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
 	if (ghost != NULL) {
 		//Give the player the used skill points back.
@@ -333,6 +333,10 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 		//Update maximum experience.
 		updateXpLimits(ghost);
+
+		/// update force
+		ghost->setForcePowerMax(ghost->getForcePowerMax() + creature->getSkillMod("jedi_force_power_max"), true);
+
 	}
 
 	return true;
@@ -353,13 +357,11 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 		for (int i = 0; i < skillModifiers->size(); ++i) {
 			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-			creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
+			creature->addSkillMod(SkillModManager::SKILLBOX, entry->getKey(), -entry->getValue(), notifyClient);
 
-			//Update Force Power Bar.
-			if (entry->getKey() == "jedi_force_power_max")
-				ghost->setForcePowerMax(ghost->getForcePowerMax() - entry->getValue(), true);
-				ghost->setForcePower(ghost->getForcePower() - entry->getValue(), true);
 		}
+
+		SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
 		if (ghost != NULL) {
 			//Give the player the used skill points back.
@@ -372,6 +374,9 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 			//Remove draft schematic groups
 			Vector<String>* schematicsGranted = skill->getSchematicsGranted();
 			SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+
+			/// update force
+			ghost->setForcePowerMax(ghost->getForcePowerMax() + creature->getSkillMod("jedi_force_power_max"), true);
 		}
 	}
 }

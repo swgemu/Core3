@@ -37,6 +37,8 @@ using namespace server::zone::objects::cell;
 
 #include "server/zone/templates/tangible/HospitalBuildingObjectTemplate.h"
 
+#include "server/zone/managers/skill/SkillModManager.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"

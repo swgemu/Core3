@@ -71,3 +71,15 @@ int HarvesterObjectImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	return 0;
 }
+
+String HarvesterObjectImplementation::getRedeedMessage() {
+
+	if(operating)
+		return "destroy_deactivate_first";
+
+	if(resourceHopper.size() > 0)
+		return "destroy_empty_hopper";
+
+
+	return "";
+}

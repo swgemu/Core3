@@ -107,11 +107,17 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void launch(CreatureObject* player);
+	void launch(CreatureObject* player, int removeTime = 30);
+
+	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	void setDelay(int d);
+
+	int getDelay();
+
+	bool isFireworkObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -143,6 +149,8 @@ class FireworkObjectImplementation : public TangibleObjectImplementation {
 protected:
 	String fireworkObject;
 
+	int delay;
+
 public:
 	FireworkObjectImplementation();
 
@@ -150,11 +158,17 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void launch(CreatureObject* player);
+	void launch(CreatureObject* player, int removeTime = 30);
+
+	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	void setDelay(int d);
+
+	int getDelay();
+
+	bool isFireworkObject();
 
 	WeakReference<FireworkObject*> _this;
 
@@ -201,9 +215,15 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+	void launch(CreatureObject* player, int removeTime);
 
-	void launch(CreatureObject* player);
+	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	void setDelay(int d);
+
+	int getDelay();
+
+	bool isFireworkObject();
 
 };
 

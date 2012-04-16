@@ -428,7 +428,7 @@ void CreatureManagerImplementation::loadInformants() {
 void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* player, int selectedID) {
 	Zone* zone = creature->getZone();
 
-	if (zone == NULL)
+	if (zone == NULL || !creature->isCreature())
 		return;
 
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();

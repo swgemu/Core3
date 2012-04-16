@@ -1320,6 +1320,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	public abstract boolean isFireworkObject() {
+		return false;
+	}
+	
+	@dirty
 	public abstract boolean isPsgArmorObject() {
 		return false;
 	}

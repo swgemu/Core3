@@ -89,6 +89,8 @@ protected:
 
 	int defaultPriority;
 
+	VectorMap<String, int> skillMods;
+
 public:
 	QueueCommand(const String& skillname, ZoneProcessServer* serv);
 
@@ -301,6 +303,19 @@ public:
 		return false;
 	}
 
+	inline int getSkillModSize() {
+		return skillMods.size();
+	}
+
+	inline int getSkillMod(int index, String& skillMod) {
+		skillMod = skillMods.elementAt(index).getKey();
+		return skillMods.get(skillMod);
+	}
+
+	void addSkillMod(const String& skillMod, const int value) {
+		skillMods.put(skillMod, value);
+	}
+	
 	bool isWearingArmor(CreatureObject* creo) {
 		for (int i = 0; i < creo->getSlottedObjectsSize(); ++i) {
 			SceneObject* item = creo->getSlottedObject(i);

@@ -43,7 +43,8 @@
 
 object_tangible_firework_firework_s03 = object_tangible_firework_shared_firework_s03:new {
 	fireworkObject = "object/static/firework/fx_03.iff",
-	templateType = FIREWORK
+	templateType = FIREWORK,
+	objectMenuComponent = {"cpp", "FireworkMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_firework_s03, "object/tangible/firework/firework_s03.iff")

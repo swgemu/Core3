@@ -610,6 +610,8 @@ public:
 
 	bool isLightsaberCrystalObject();
 
+	bool isFireworkObject();
+
 	bool isPsgArmorObject();
 
 	bool isLairObject();
@@ -1241,6 +1243,8 @@ public:
 
 	virtual bool isLightsaberCrystalObject();
 
+	virtual bool isFireworkObject();
+
 	virtual bool isPsgArmorObject();
 
 	virtual bool isLairObject();
@@ -1741,6 +1745,8 @@ public:
 	bool isRobeObject();
 
 	bool isLightsaberCrystalObject();
+
+	bool isFireworkObject();
 
 	bool isPsgArmorObject();
 

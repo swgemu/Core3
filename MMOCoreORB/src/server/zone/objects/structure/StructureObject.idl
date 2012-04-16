@@ -409,4 +409,22 @@ class StructureObject extends TangibleObject {
 	
 	@local
 	public native AABBTree getAABBTree();
+	
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public native void addTemplateSkillMods(TangibleObject targetObject);
+
+	/*
+	 * Removes this object's skill mod map from the target object's skill mod map
+	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
+	
+	public abstract string getRedeedMessage() {
+		return "";
+	}
 }

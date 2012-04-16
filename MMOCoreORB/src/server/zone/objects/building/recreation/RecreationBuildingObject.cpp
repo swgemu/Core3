@@ -215,12 +215,12 @@ void RecreationBuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (BuildingObjectImplementation::templateObject->isRecreationBuildingObjectTemplate()){
 	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
 	recreationTemplate = (RecreationBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_health", recreationTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_action", recreationTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_mind", recreationTemplate->getMindWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", recreationTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", recreationTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", recreationTemplate->getMindWoundRegenRate(), false);
 }
 }
 
@@ -231,12 +231,12 @@ void RecreationBuildingObjectImplementation::onExit(CreatureObject* player) {
 	if (BuildingObjectImplementation::templateObject->isRecreationBuildingObjectTemplate()){
 	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
 	recreationTemplate = (RecreationBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_health", -1 * recreationTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_action", -1 * recreationTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_mind", -1 * recreationTemplate->getMindWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", -1 * recreationTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", -1 * recreationTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/recreation/RecreationBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", -1 * recreationTemplate->getMindWoundRegenRate(), false);
 }
 }
 

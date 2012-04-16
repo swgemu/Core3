@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/Buffs.h"
 #include "server/zone/packets/object/ShowFlyText.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 
 void BuffImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -280,7 +281,7 @@ void BuffImplementation::applySkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature->addSkillMod(key, value, true);
+		creature->addSkillMod(SkillModManager::BUFF, key, value, true);
 	}
 }
 
@@ -356,7 +357,7 @@ void BuffImplementation::removeSkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature->addSkillMod(key, -value, true);
+		creature->addSkillMod(SkillModManager::BUFF, key, -value, true);
 
 	}
 }

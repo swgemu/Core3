@@ -469,7 +469,17 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		slashCommand->setDefaultPriority(Lua::getStringParameter(L));
 	else if (varName == "defaultTime")
 		slashCommand->setDefaultTime(Lua::getFloatParameter(L));
-	else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
+	else if (varName == "skillMods") {
+		LuaObject skillMods(L);
+
+		for (int i = 1; i <= skillMods.getTableSize(); ++i) {
+			LuaObject skillEntry = skillMods.getObjectAt(i);
+			slashCommand->addSkillMod(skillEntry.getStringAt(1), skillEntry.getIntAt(2));
+			skillEntry.pop();
+		}
+		skillMods.pop();
+
+	} else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
 		CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(slashCommand);
 		if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));

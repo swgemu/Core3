@@ -113,10 +113,6 @@ public:
 		creature->addBuff(buff);
 		creature->playEffect("clienteffect/pl_force_run_self.cef", "");
 
-		/*int divider = creature->getSkillMod("private_damage_divider");
-
-		creature->addSkillMod("private_damage_divider", (divider / 4));*/
-
 		return SUCCESS;
 	}
 

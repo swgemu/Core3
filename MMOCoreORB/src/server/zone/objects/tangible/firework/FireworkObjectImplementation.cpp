@@ -6,7 +6,8 @@
  */
 
 #include "FireworkObject.h"
-#include "FireworkEvent.h"
+#include "FireworkRemoveEvent.h"
+#include "FireworkLaunchEvent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -15,21 +16,20 @@
 #include "system/util/VectorMap.h"
 #include "server/zone/Zone.h"
 
-int FireworkObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (player == NULL)
-		return 0;
-
-	if (selectedID == 20) {
-		launch(player);
-	}
-
-	return 0;
-}
-
-
-void FireworkObjectImplementation::launch(CreatureObject* player) {
+void FireworkObjectImplementation::launch(CreatureObject* player, int removeDelay) {
 	if (player == NULL)
 		return;
+
+	if(getDelay() == 0) {
+		completeLaunch(player, removeDelay);
+		return;
+	}
+
+	FireworkLaunchEvent* launchEvent = new FireworkLaunchEvent(player, _this, removeDelay);
+	launchEvent->schedule(delay * 1000);
+}
+
+void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int removeDelay) {
 
 	ManagedReference<StaticObject*> launcherObject = cast<StaticObject*>(server->getZoneServer()->createObject(fireworkObject.hashCode(), 0));
 
@@ -50,7 +50,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player) {
 
 	int x = player->getPositionX() + sin(angle) * (distance);
 	int y = player->getPositionY() + cos(angle) * (distance);
-	int z = player->getPositionZ();
+	int z = player->getZone()->getHeight(x, y);
 
 	launcherObject->initializePosition(x, z, y);
 	//launcherObject->insertToZone(player->getZone());
@@ -68,6 +68,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player) {
 			destroyObjectFromDatabase(true);
 	}
 
-	Reference<FireworkEvent*> fireworkEvent = new FireworkEvent(player, launcherObject);
-	fireworkEvent->schedule(30 * 1000);
+	Reference<FireworkRemoveEvent*> fireworkRemoveEvent = new FireworkRemoveEvent(player, launcherObject);
+	fireworkRemoveEvent->schedule(removeDelay * 1000);
+
 }

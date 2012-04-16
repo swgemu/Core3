@@ -10,6 +10,8 @@
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
 
+#include "server/zone/managers/skill/SkillModManager.h"
+
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -215,7 +217,22 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
+	/// Add Skillmods if any
+	for(int i = 0; i < queueCommand->getSkillModSize(); ++i) {
+		String skillMod;
+		int value = queueCommand->getSkillMod(i, skillMod);
+		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, value, false);
+	}
+
+
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
+
+	/// Remove Skillmods if any
+	for(int i = 0; i < queueCommand->getSkillModSize(); ++i) {
+		String skillMod;
+		int value = queueCommand->getSkillMod(i, skillMod);
+		object->addSkillMod(SkillModManager::ABILITYBONUS, skillMod, -value, false);
+	}
 
 	//onFail onComplete must clear the action from client queue
 	if (errorNumber != QueueCommand::SUCCESS)

@@ -316,4 +316,11 @@ class BuildingObject extends StructureObject {
 	 * @return Returns a uint32 number representing the max items that can be stored in this building.
 	 */
 	public abstract native unsigned int getMaximumNumberOfPlayerItems();
+	
+	public string getRedeedMessage() {
+		if(getCurrentNumberOfPlayerItems() > 0)
+			return "clear_building_for_delete";
+		
+		return "";
+	}
 }

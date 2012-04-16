@@ -438,7 +438,7 @@ void FactoryObjectImplementation::createNewObject() {
 		float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
 
 		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
-		if (energyAmount < surplusPower) {
+		if (energyAmount > surplusPower) {
 			stopFactory("manf_no_power", getDisplayedName(), "", -1);
 			return;
 		}
@@ -446,6 +446,8 @@ void FactoryObjectImplementation::createNewObject() {
 		stopFactory("manf_done_sub", "", "", -1);
 		return;
 	}
+
+
 
 	String type = "";
 	String displayedName = "";
@@ -468,7 +470,6 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	if (crate == NULL) {
-		stopFactory("manf_error_7", "", "", -1);
 		return;
 	}
 
@@ -500,6 +501,11 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 		return NULL;
 	}
 
+	if(outputHopper->isContainerFull()) {
+		stopFactory("manf_output_hopper_full", getDisplayedName(), "", -1);
+		return NULL;
+	}
+
 	for (int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {
 
 		ManagedReference<SceneObject* > object = outputHopper->getContainerObject(i);
@@ -516,6 +522,8 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 		}
 
 	}
+
+	stopFactory("manf_error_7", "", "", -1);
 	return NULL;
 }
 
@@ -593,4 +601,28 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 			}
 		}
 	}
+}
+
+String FactoryObjectImplementation::getRedeedMessage() {
+
+	if(operating)
+		return "deactivate_factory_for_delete";
+
+	if(getContainerObjectsSize() > 0)
+		return "remove_schematic_for_delete";
+
+
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+
+	if(inputHopper != NULL && inputHopper->getContainerObjectsSize() > 0) {
+		return "clear_input_hopper_for_delete";
+	}
+
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if(outputHopper != NULL && outputHopper->getContainerObjectsSize() > 0) {
+		return "clear_output_hopper_for_delete";
+	}
+
+	return "";
 }

@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "TangibleObject.h"
 #include "variables/SkillModMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
@@ -720,7 +721,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	crate->setMaxCapacity(tanoData->getFactoryCrateSize());
 
 	if (insertSelf) {
-		crate->transferObject(_this, -1, true);
+		crate->transferObject(_this, -1, false);
 	} else {
 
 		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this));
@@ -732,7 +733,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 		crate->transferObject(protoclone, -1, false);
 	}
 
-	crate->setObjectName(*getObjectName());
+	crate->setCustomObjectName(getCustomObjectName(), false);
 
 	crate->setUseCount(1);
 
@@ -745,12 +746,12 @@ void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetOb
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int64>* mods = tano->getSkillMods();
+	VectorMap<String, int>* mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int64> entry = mods->elementAt(i);
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
 
-		targetObject->addSkillMod(entry.getKey(), entry.getValue());
+		targetObject->addSkillMod(SkillModManager::TEMPLATE, entry.getKey(), entry.getValue());
 	}
 }
 
@@ -760,13 +761,22 @@ void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targe
 	if (tano == NULL)
 		return;
 
-	VectorMap<String, int64>* mods = tano->getSkillMods();
+	VectorMap<String, int>* mods = tano->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int64> entry = mods->elementAt(i);
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
 
-		targetObject->addSkillMod(entry.getKey(), entry.getValue() * -1);
+		targetObject->removeSkillMod(SkillModManager::TEMPLATE, entry.getKey(), entry.getValue());
 	}
+}
+
+VectorMap<String, int>* TangibleObjectImplementation::getTemplateSkillMods() {
+	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tano == NULL)
+		return NULL;
+
+	return tano->getSkillMods();
 }
 
 bool TangibleObjectImplementation::canRepair(CreatureObject* player) {

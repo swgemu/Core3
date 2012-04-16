@@ -11,6 +11,7 @@
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/tangible/attachment/Attachment.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -119,10 +120,12 @@ void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
 		int value = wearableSkillModMap.getActiveSkillModValue(name);
 
 		if (!remove)
-			player->addWearableSkillMod(name, value, true);
+			player->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 		else
-			player->addWearableSkillMod(name, -value, true);
+			player->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
+
+	SkillModManager::instance()->verifyWearableSkillMods(player);
 }
 
 bool WearableObjectImplementation::isEquipped() {

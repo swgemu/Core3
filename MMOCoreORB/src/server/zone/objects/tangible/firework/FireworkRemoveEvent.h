@@ -42,73 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.firework;
+#ifndef FIREWORKREMOVEEVENT_H_
+#define FIREWORKREMOVEEVENT_H_
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
-import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
-include server.zone.templates.tangible.FireworkObjectTemplate;
-include server.zone.templates.SharedObjectTemplate;
 
-class FireworkObject extends TangibleObject {	
-	protected string fireworkObject;
-	protected int delay;
-	
-	public FireworkObject() {
-		Logger.setLoggingName("FireworkObject");
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
+#include "server/zone/ZoneServer.h"
 
-		fireworkObject = "object/static/firework/fx_01.iff";
-		
-		delay = 0;
+class FireworkRemoveEvent : public Task {
+	ManagedReference<StaticObject*> firework;
+	ManagedReference<CreatureObject*> player;
+
+public:
+	FireworkRemoveEvent(CreatureObject* player, StaticObject* firework) : Task(1000) {
+		this->player = player;
+		this->firework = firework;
 	}
-	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-		
-		Logger.setLoggingName("FireworkObject");
-	}
-	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public void loadTemplateData(SharedObjectTemplate templateData) {
-		super.loadTemplateData(templateData);
-		
-		if (!templateData.isFireworkObjectTemplate()) {
-			error("critical error");
+
+	void run() {
+		if (firework == NULL)
 			return;
+
+		try {
+			Locker locker(firework);
+
+			firework->destroyObjectFromWorld(true);
+		} catch (Exception& e) {
+			player->error("unreported exception on FireworkEvent::run()");
 		}
-		
-		FireworkObjectTemplate templ = (FireworkObjectTemplate) templateData;
-		
-		if (templ == null)
-			return;
-		
-		fireworkObject = templ.getFireworkObject();
-	}
-	
-	public native void launch(CreatureObject player, int removeTime = 30);
-	 
-	public native void completeLaunch(CreatureObject player, int removeDelay);
 
-	public void setDelay(int d) {
-		delay = d;
+		firework = NULL;
+		player = NULL;
 	}
-	
-	public int getDelay() {
-		return delay;
-	}
-	
-	public boolean isFireworkObject() {
-		return true;
-	}
-}
+};
+
+
+#endif /* FIREWORKREMOVEEVENT_H_ */

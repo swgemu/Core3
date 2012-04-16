@@ -59,6 +59,8 @@
 #include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkMenuComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -70,6 +72,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());
 	components.put("StructureZoneComponent", new StructureZoneComponent());
 	components.put("ShuttleZoneComponent", new ShuttleZoneComponent());
+	components.put("ShuttleInstallationZoneComponent", new ShuttleInstallationZoneComponent());
 
 	components.put("ObjectMenuComponent", new ObjectMenuComponent());
 	components.put("TangibleObjectMenuComponent", new TangibleObjectMenuComponent());
@@ -133,8 +136,12 @@ ComponentManager::ComponentManager() {
 
 	components.put("LightsaberObjectMenuComponent", new LightsaberObjectMenuComponent());
 	components.put("RobeObjectMenuComponent", new RobeObjectMenuComponent());
-	components.put("ShuttleInstallationZoneComponent", new ShuttleInstallationZoneComponent());
 	components.put("ForceShrineMenuComponent", new ForceShrineMenuComponent());
-
 	components.put("SaberInventoryContainerComponent", new SaberInventoryContainerComponent());
+
+	components.put("FireworkMenuComponent", new FireworkMenuComponent());
+	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
+
+
+
 }

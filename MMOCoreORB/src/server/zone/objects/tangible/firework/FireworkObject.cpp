@@ -20,7 +20,7 @@
  *	FireworkObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_LAUNCH__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_LAUNCH__CREATUREOBJECT_INT_,RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_,RPC_SETDELAY__INT_,RPC_GETDELAY__,RPC_ISFIREWORKOBJECT__};
 
 FireworkObject::FireworkObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FireworkObjectImplementation* _implementation = new FireworkObjectImplementation();
@@ -51,21 +51,6 @@ void FireworkObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int FireworkObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->handleObjectMenuSelect(player, selectedID);
-}
-
 void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -75,18 +60,74 @@ void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void FireworkObject::launch(CreatureObject* player) {
+void FireworkObject::launch(CreatureObject* player, int removeTime) {
 	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LAUNCH__CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_LAUNCH__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
+		method.addSignedIntParameter(removeTime);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->launch(player);
+		_implementation->launch(player, removeTime);
+}
+
+void FireworkObject::completeLaunch(CreatureObject* player, int removeDelay) {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_);
+		method.addObjectParameter(player);
+		method.addSignedIntParameter(removeDelay);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->completeLaunch(player, removeDelay);
+}
+
+void FireworkObject::setDelay(int d) {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDELAY__INT_);
+		method.addSignedIntParameter(d);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDelay(d);
+}
+
+int FireworkObject::getDelay() {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDELAY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDelay();
+}
+
+bool FireworkObject::isFireworkObject() {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISFIREWORKOBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isFireworkObject();
 }
 
 DistributedObjectServant* FireworkObject::_getImplementation() {
@@ -199,6 +240,11 @@ bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "FireworkObject.delay") {
+		TypeInfo<int >::parseFromBinaryStream(&delay, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -224,8 +270,16 @@ int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "FireworkObject.delay";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&delay, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 1;
+
+	return _count + 2;
 }
 
 FireworkObjectImplementation::FireworkObjectImplementation() {
@@ -234,6 +288,8 @@ FireworkObjectImplementation::FireworkObjectImplementation() {
 	Logger::setLoggingName("FireworkObject");
 	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject = "object/static/firework/fx_01.iff";
 	fireworkObject = "object/static/firework/fx_01.iff";
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		delay = 0;
+	delay = 0;
 }
 
 void FireworkObjectImplementation::initializeTransientMembers() {
@@ -262,6 +318,21 @@ void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	fireworkObject = templ->getFireworkObject();
 }
 
+void FireworkObjectImplementation::setDelay(int d) {
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		delay = d;
+	delay = d;
+}
+
+int FireworkObjectImplementation::getDelay() {
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		return delay;
+	return delay;
+}
+
+bool FireworkObjectImplementation::isFireworkObject() {
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		return true;
+	return true;
+}
+
 /*
  *	FireworkObjectAdapter
  */
@@ -280,11 +351,20 @@ void FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+	case RPC_LAUNCH__CREATUREOBJECT_INT_:
+		launch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
-	case RPC_LAUNCH__CREATUREOBJECT_:
-		launch(static_cast<CreatureObject*>(inv->getObjectParameter()));
+	case RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_:
+		completeLaunch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		break;
+	case RPC_SETDELAY__INT_:
+		setDelay(inv->getSignedIntParameter());
+		break;
+	case RPC_GETDELAY__:
+		resp->insertSignedInt(getDelay());
+		break;
+	case RPC_ISFIREWORKOBJECT__:
+		resp->insertBoolean(isFireworkObject());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -295,12 +375,24 @@ void FireworkObjectAdapter::initializeTransientMembers() {
 	(static_cast<FireworkObject*>(stub))->initializeTransientMembers();
 }
 
-int FireworkObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<FireworkObject*>(stub))->handleObjectMenuSelect(player, selectedID);
+void FireworkObjectAdapter::launch(CreatureObject* player, int removeTime) {
+	(static_cast<FireworkObject*>(stub))->launch(player, removeTime);
 }
 
-void FireworkObjectAdapter::launch(CreatureObject* player) {
-	(static_cast<FireworkObject*>(stub))->launch(player);
+void FireworkObjectAdapter::completeLaunch(CreatureObject* player, int removeDelay) {
+	(static_cast<FireworkObject*>(stub))->completeLaunch(player, removeDelay);
+}
+
+void FireworkObjectAdapter::setDelay(int d) {
+	(static_cast<FireworkObject*>(stub))->setDelay(d);
+}
+
+int FireworkObjectAdapter::getDelay() {
+	return (static_cast<FireworkObject*>(stub))->getDelay();
+}
+
+bool FireworkObjectAdapter::isFireworkObject() {
+	return (static_cast<FireworkObject*>(stub))->isFireworkObject();
 }
 
 /*

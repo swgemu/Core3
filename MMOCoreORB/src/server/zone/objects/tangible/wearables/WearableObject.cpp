@@ -14,7 +14,7 @@
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,RPC_REPAIRATTEMPT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,RPC_REPAIRATTEMPT__INT_,};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -185,6 +185,15 @@ String WearableObject::repairAttempt(int repairChance) {
 		return _return_repairAttempt;
 	} else
 		return _implementation->repairAttempt(repairChance);
+}
+
+WearableSkillModMap* WearableObject::getWearableSkillModMap() {
+	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWearableSkillModMap();
 }
 
 DistributedObjectServant* WearableObject::_getImplementation() {
@@ -385,6 +394,11 @@ int WearableObjectImplementation::socketsLeft() {
 void WearableObjectImplementation::setMaxSockets(int sockets) {
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = sockets;
 	socketCount = sockets;
+}
+
+WearableSkillModMap* WearableObjectImplementation::getWearableSkillModMap() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillModMap;
+	return (&wearableSkillModMap);
 }
 
 /*

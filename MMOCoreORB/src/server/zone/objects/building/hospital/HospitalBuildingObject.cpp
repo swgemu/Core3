@@ -215,12 +215,12 @@ void HospitalBuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (BuildingObjectImplementation::templateObject->isHospitalBuildingObjectTemplate()){
 	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			hospitalTemplate = (HospitalBuildingObjectTemplate) super.getObjectTemplate();
 	hospitalTemplate = (HospitalBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", hospitalTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_health", hospitalTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", hospitalTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_action", hospitalTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", hospitalTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_mind", hospitalTemplate->getMindWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", hospitalTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", hospitalTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE,"private_med_wound_action", hospitalTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", hospitalTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE,"private_med_wound_mind", hospitalTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", hospitalTemplate->getMindWoundRegenRate(), false);
 }
 }
 
@@ -231,12 +231,12 @@ void HospitalBuildingObjectImplementation::onExit(CreatureObject* player) {
 	if (BuildingObjectImplementation::templateObject->isHospitalBuildingObjectTemplate()){
 	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			hospitalTemplate = (HospitalBuildingObjectTemplate) super.getObjectTemplate();
 	hospitalTemplate = (HospitalBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_health", -1 * hospitalTemplate.getHealthWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_health", -1 * hospitalTemplate->getHealthWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_action", -1 * hospitalTemplate.getActionWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_action", -1 * hospitalTemplate->getActionWoundRegenRate(), false);
-	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod("private_med_wound_mind", -1 * hospitalTemplate.getMindWoundRegenRate(), false);
-	player->addSkillMod("private_med_wound_mind", -1 * hospitalTemplate->getMindWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", -1 * hospitalTemplate.getHealthWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_health", -1 * hospitalTemplate->getHealthWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", -1 * hospitalTemplate.getActionWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_action", -1 * hospitalTemplate->getActionWoundRegenRate(), false);
+	// server/zone/objects/building/hospital/HospitalBuildingObject.idl():  			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", -1 * hospitalTemplate.getMindWoundRegenRate(), false);
+	player->addSkillMod(SkillModManager::STRUCTURE, "private_med_wound_mind", -1 * hospitalTemplate->getMindWoundRegenRate(), false);
 }
 }
 

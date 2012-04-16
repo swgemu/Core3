@@ -60,7 +60,7 @@ public:
 			target->inflictDamage(player, pool, damage, true);
 
 			//Not sure on exact xp value, estimate now and update later
-			int xp = target->getLevel() * 5;
+			int xp = target->getLevel() * 15;
 			ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 			if(playerManager != NULL)
 				playerManager->awardExperience(player, "trapping", xp, true);

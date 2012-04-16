@@ -49,6 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
 include server.zone.templates.tangible.RecreationBuildingObjectTemplate;
+include server.zone.managers.skill.SkillModManager;
 
 
 class RecreationBuildingObject extends BuildingObject {
@@ -76,9 +77,9 @@ class RecreationBuildingObject extends BuildingObject {
 		if (super.templateObject.isRecreationBuildingObjectTemplate()) {
 			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
 			
-			player.addSkillMod("private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);			
-			player.addSkillMod("private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);			
-			player.addSkillMod("private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", recreationTemplate.getHealthWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", recreationTemplate.getActionWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", recreationTemplate.getMindWoundRegenRate(), false);			
 		}
 	}
 	
@@ -96,9 +97,9 @@ class RecreationBuildingObject extends BuildingObject {
 		if (super.templateObject.isRecreationBuildingObjectTemplate()) {
 			recreationTemplate = (RecreationBuildingObjectTemplate) super.getObjectTemplate();
 			
-			player.addSkillMod("private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);			
-			player.addSkillMod("private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);			
-			player.addSkillMod("private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_health", -1 * recreationTemplate.getHealthWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_action", -1 * recreationTemplate.getActionWoundRegenRate(), false);			
+			player.addSkillMod(SkillModManager.STRUCTURE, "private_med_wound_mind", -1 * recreationTemplate.getMindWoundRegenRate(), false);			
 		}
 	}
 }

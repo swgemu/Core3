@@ -110,4 +110,5 @@ class HarvesterObject extends InstallationObject {
 		return true;
 	}
 	
+	public native string getRedeedMessage();
 }

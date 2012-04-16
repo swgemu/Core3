@@ -153,6 +153,15 @@ void Buff::deactivate() {
 		_implementation->deactivate();
 }
 
+VectorMap<String, int>* Buff::getSkillModifiers() {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSkillModifiers();
+}
+
 void Buff::applyAttributeModifiers() {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1082,6 +1091,11 @@ void BuffImplementation::activate() {
 void BuffImplementation::deactivate() {
 	// server/zone/objects/creature/buffs/Buff.idl():  		deactivate(true);
 	deactivate(true);
+}
+
+VectorMap<String, int>* BuffImplementation::getSkillModifiers() {
+	// server/zone/objects/creature/buffs/Buff.idl():  		return skillModifiers;
+	return (&skillModifiers);
 }
 
 void BuffImplementation::setAttributeModifier(byte attribute, int value) {

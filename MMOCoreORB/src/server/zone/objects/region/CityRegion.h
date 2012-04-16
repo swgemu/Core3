@@ -238,6 +238,18 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+
+	void removeFromCityStructureInventory(SceneObject* structure);
+
+	bool checkLimitedPlacementStucture(unsigned int id);
+
+	bool addLimitedPlacementStructure(unsigned int id);
+
+	void removeLimitedPlacementStructure(unsigned int id);
+
+	void destroyAllStructuresForRank(byte rank);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -284,6 +296,10 @@ protected:
 	CitizenList citizenList;
 
 	CitizenList bannedList;
+
+	Vector<unsigned int> limitedPlacementStructures;
+
+	VectorMap<byte, Vector<ManagedReference<SceneObject* > >*> cityStructureInventory;
 
 	byte cityRank;
 
@@ -448,6 +464,18 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+
+	void removeFromCityStructureInventory(SceneObject* structure);
+
+	bool checkLimitedPlacementStucture(unsigned int id);
+
+	bool addLimitedPlacementStructure(unsigned int id);
+
+	void removeLimitedPlacementStructure(unsigned int id);
+
+	void destroyAllStructuresForRank(byte rank);
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -604,6 +632,18 @@ public:
 	bool hasShuttleInstallation();
 
 	void setShuttleID(unsigned long long id);
+
+	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+
+	void removeFromCityStructureInventory(SceneObject* structure);
+
+	bool checkLimitedPlacementStucture(unsigned int id);
+
+	bool addLimitedPlacementStructure(unsigned int id);
+
+	void removeLimitedPlacementStructure(unsigned int id);
+
+	void destroyAllStructuresForRank(byte rank);
 
 protected:
 	String _param0_setCustomRegionName__String_;

@@ -188,9 +188,13 @@ public:
 
 	void addTemplateSkillMods(TangibleObject* targetObject);
 
-	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
+	void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	void removeTemplateSkillMods(TangibleObject* tangibleObject);
+
+	VectorMap<String, int>* getTemplateSkillMods();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -413,9 +417,13 @@ public:
 
 	virtual void addTemplateSkillMods(TangibleObject* targetObject);
 
-	virtual void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
+	virtual void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	virtual void removeTemplateSkillMods(TangibleObject* tangibleObject);
+
+	VectorMap<String, int>* getTemplateSkillMods();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -612,7 +620,9 @@ public:
 
 	void initializeMembers();
 
-	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
+
+	void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 	void initializeTransientMembers();
 
@@ -749,7 +759,8 @@ public:
 	bool isBroken();
 
 protected:
-	String _param0_addSkillMod__String_long_bool_;
+	String _param1_addSkillMod__int_String_int_bool_;
+	String _param1_removeSkillMod__int_String_int_bool_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_setCustomizationVariable__String_short_bool_;
 	String _param0_getCustomizationString__String_;

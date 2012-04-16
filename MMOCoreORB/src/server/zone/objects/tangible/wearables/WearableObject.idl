@@ -114,4 +114,9 @@ class WearableObject extends TangibleObject {
 
 	public native string repairAttempt(int repairChance);
 	
+	@local
+	public WearableSkillModMap getWearableSkillModMap() {
+		return wearableSkillModMap;
+	}
+	
 }

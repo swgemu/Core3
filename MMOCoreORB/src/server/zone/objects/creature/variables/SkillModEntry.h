@@ -42,73 +42,77 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.firework;
+#ifndef SKILLMODENTRY_H_
+#define SKILLMODENTRY_H_
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
-import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
-include server.zone.templates.tangible.FireworkObjectTemplate;
-include server.zone.templates.SharedObjectTemplate;
+#include "engine/engine.h"
 
-class FireworkObject extends TangibleObject {	
-	protected string fireworkObject;
-	protected int delay;
-	
-	public FireworkObject() {
-		Logger.setLoggingName("FireworkObject");
+class SkillModEntry : public virtual Object {
+private:
+	int skillMod;
+	int skillBonus;
 
-		fireworkObject = "object/static/firework/fx_01.iff";
-		
-		delay = 0;
-	}
-	
-	public void initializeTransientMembers() {
-		super.initializeTransientMembers();
-		
-		Logger.setLoggingName("FireworkObject");
-	}
-	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public void loadTemplateData(SharedObjectTemplate templateData) {
-		super.loadTemplateData(templateData);
-		
-		if (!templateData.isFireworkObjectTemplate()) {
-			error("critical error");
-			return;
-		}
-		
-		FireworkObjectTemplate templ = (FireworkObjectTemplate) templateData;
-		
-		if (templ == null)
-			return;
-		
-		fireworkObject = templ.getFireworkObject();
-	}
-	
-	public native void launch(CreatureObject player, int removeTime = 30);
-	 
-	public native void completeLaunch(CreatureObject player, int removeDelay);
+public:
+	SkillModEntry() : Object() {
+		skillMod = 0;
+		skillBonus = 0;
 
-	public void setDelay(int d) {
-		delay = d;
 	}
-	
-	public int getDelay() {
-		return delay;
+
+	SkillModEntry(const SkillModEntry& mod) : Object() {
+
+		skillMod = mod.skillMod;
+		skillBonus = mod.skillBonus;
 	}
-	
-	public boolean isFireworkObject() {
+
+	SkillModEntry& operator=(const SkillModEntry& mod) {
+		if (this == &mod)
+			return *this;
+
+		skillMod = mod.skillMod;
+		skillBonus = mod.skillBonus;
+
+		return *this;
+	}
+
+	bool operator==(SkillModEntry mod) {
+		return
+			skillMod == mod.skillMod &&
+			skillBonus == mod.skillBonus;
+	}
+
+	void setSkillMod(int mod) {
+		skillMod = mod;
+	}
+
+	int getSkillMod() {
+		return skillMod;
+	}
+
+	void setSkillBonus(int bonus) {
+		skillBonus = bonus;
+	}
+
+	int getSkillBonus() {
+		return skillBonus;
+	}
+
+	int getTotalSkill() {
+		return getSkillMod() + getSkillBonus();
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return TypeInfo<int >::toBinaryStream(&skillMod, stream) &&
+				TypeInfo<int >::toBinaryStream(&skillBonus, stream);
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+
+		TypeInfo<int >::parseFromBinaryStream(&skillMod, stream);
+		TypeInfo<int >::parseFromBinaryStream(&skillBonus, stream);
+
 		return true;
 	}
-}
+};
+
+#endif /*SKILLMODENTRY_H_*/

@@ -42,8 +42,11 @@
 
 
 object_tangible_firework_firework_one = object_tangible_firework_shared_firework_one:new {
-	fireworkObject = "object/static/firework/fx_01.iff",
+	
+
 	templateType = FIREWORK,
+	fireworkObject = "object/static/firework/fx_01.iff",
+	objectMenuComponent = {"cpp", "FireworkMenuComponent"},
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},

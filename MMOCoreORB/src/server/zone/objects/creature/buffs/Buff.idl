@@ -145,7 +145,12 @@ class Buff extends ManagedObject implements Logger {
 	public abstract void deactivate() {
 		deactivate(true);
 	}
-
+	
+	@local
+	public VectorMap<string, int> getSkillModifiers() {
+		return skillModifiers;
+	} 
+	
 	public native abstract void applyAttributeModifiers();
 	public native abstract void applySkillModifiers();
 	public native abstract void applyStates();

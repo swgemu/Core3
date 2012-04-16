@@ -109,6 +109,8 @@ public:
 
 	void createNewObject();
 
+	String getRedeedMessage();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -117,6 +119,8 @@ protected:
 	FactoryObject(DummyConstructorParameter* param);
 
 	virtual ~FactoryObject();
+
+	String _return_getRedeedMessage;
 
 	friend class FactoryObjectHelper;
 };
@@ -196,6 +200,8 @@ private:
 	void collectMatchesInInputHopper(BlueprintEntry* entry, SceneObject* inputHopper);
 
 public:
+	String getRedeedMessage();
+
 	WeakReference<FactoryObject*> _this;
 
 	operator const FactoryObject*();
@@ -262,6 +268,8 @@ public:
 	void handleOperateToggle(CreatureObject* player);
 
 	void createNewObject();
+
+	String getRedeedMessage();
 
 };
 

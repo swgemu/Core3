@@ -48,6 +48,7 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
@@ -120,8 +121,6 @@ float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
-	skillModList.setNullValue(0);
-
 	groupInviterID = 0;
 	groupInviteCounter = 0;
 	currentWeather = 0;
@@ -136,8 +135,6 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 void CreatureObjectImplementation::initializeMembers() {
 	linkedCreature = NULL;
 	controlDevice = NULL;
-
-	skillModList.setNullValue(0);
 
 	bankCredits = 0;
 	cashCredits = 0;
@@ -1146,80 +1143,49 @@ void CreatureObjectImplementation::removeSkill(const String& skill,
 	removeSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::removeSkillMod(const String& skillMod,
-		bool notifyClient) {
-	if (!skillModList.contains(skillMod))
+void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod,
+		int value, bool notifyClient) {
+
+	SkillModEntry oldMod;
+
+	if(skillModList.contains(skillMod)) {
+		oldMod = skillModList.get(skillMod);
+	}
+
+	skillModList.add(modType, skillMod, value);
+
+	SkillModEntry newMod = skillModList.getNewMod(skillMod);
+
+	if(newMod == oldMod)
 		return;
 
-	skillModList.dropWearableSkillMod(skillMod);
-
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* msg =
 				new CreatureObjectDeltaMessage4(_this);
 		msg->startUpdate(0x03);
-		skillModList.drop(skillMod, msg, 1);
+		if(newMod.getTotalSkill() != 0)
+			skillModList.set(skillMod, newMod, msg, 1);
+		else
+			skillModList.drop(skillMod, msg, 1);
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		skillModList.drop(skillMod);
-	}
-
-
-}
-
-void CreatureObjectImplementation::addSkillMod(const String& skillMod,
-		int64 value, bool notifyClient) {
-	if (skillModList.contains(skillMod)) {
-		value += skillModList.get(skillMod);
-
-		if (value == 0) {
-			removeSkillMod(skillMod, notifyClient);
-			return;
-		}
-	}
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(_this);
-		msg->startUpdate(0x03);
-		skillModList.set(skillMod, value, msg, 1);
-		msg->close();
-
-		sendMessage(msg);
-	} else {
-		skillModList.set(skillMod, value);
+		if(newMod.getTotalSkill() != 0)
+			skillModList.set(skillMod, newMod);
+		else
+			skillModList.drop(skillMod);
 	}
 }
 
-void CreatureObjectImplementation::addWearableSkillMod(const String& skillMod,
-		int64 value, bool notifyClient) {
+void CreatureObjectImplementation::removeSkillMod(const int modType, const String& skillMod,
+		int value, bool notifyClient) {
 
-	int64 wearableDelta = skillModList.addWearableSkillMod(skillMod, value);
+	addSkillMod(modType, skillMod, -value, notifyClient);
+}
 
-	if(wearableDelta == 0)
-		return;
-
-	if (skillModList.contains(skillMod)) {
-		value = wearableDelta + skillModList.get(skillMod);
-
-		if (value == 0) {
-			removeSkillMod(skillMod, notifyClient);
-			return;
-		}
-	}
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(_this);
-		msg->startUpdate(0x03);
-		skillModList.set(skillMod, value, msg, 1);
-		msg->close();
-
-		sendMessage(msg);
-	} else {
-		skillModList.set(skillMod, value);
-	}
+int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
+	return skillModList.get(skillmod).getTotalSkill();
 }
 
 void CreatureObjectImplementation::addSkill(const String& skill,

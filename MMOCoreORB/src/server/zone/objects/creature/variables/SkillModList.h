@@ -46,70 +46,92 @@ which carries forward this exception.
 #define SKILLMODLIST_H_
 
 #include "engine/engine.h"
+#include "SkillModEntry.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/managers/skill/SkillModManager.h"
 
-class SkillModList : public DeltaVectorMap<String, int64> {
+class SkillModGroup : public VectorMap<String, int> {
+public:
+	SkillModGroup() {
+		setAllowOverwriteInsertPlan();
+		setNullValue(0);
+	}
+};
+
+class SkillModList : public DeltaVectorMap<String, SkillModEntry> {
 protected:
 
-	const static int MAXSKILLMOD = 25;
-	VectorMap<String, int64> wearableMods;
+	VectorMap<uint32, SkillModGroup> mods;
 
 public:
 
 	SkillModList() {
-		wearableMods.setAllowOverwriteInsertPlan();
+		mods.setAllowOverwriteInsertPlan();
 		addSerializableVariables();
 	}
 
 	inline void addSerializableVariables() {
-		addSerializableVariable("wearableMods", &wearableMods);
+		addSerializableVariable("mods", &mods);
 	}
 
-	int64 addWearableSkillMod(const String& skillMod, int64 value) {
+	bool add(const uint32 modType, const String& skillMod, int value) {
 
-		int64 oldWearableSkill = 0;
-
-		if (wearableMods.contains(skillMod))
-			oldWearableSkill = wearableMods.get(skillMod);
-
-		int64 newWearableSkill = value + oldWearableSkill;
-
-		/// cumulative equipped mods
-		wearableMods.put(skillMod, newWearableSkill);
-
-		/// What it was, with MAXSKILLMOD cap
-		if(oldWearableSkill > 0)
-			oldWearableSkill = oldWearableSkill > MAXSKILLMOD ? MAXSKILLMOD : oldWearableSkill;
-		else
-			oldWearableSkill = oldWearableSkill < -MAXSKILLMOD ? -MAXSKILLMOD : oldWearableSkill;
-
-		/// What it is now, with MAXSKILLMOD cap
-		if(newWearableSkill > 0)
-			newWearableSkill = newWearableSkill > MAXSKILLMOD ? MAXSKILLMOD : newWearableSkill;
-		else
-			newWearableSkill = newWearableSkill < -MAXSKILLMOD ? -MAXSKILLMOD : newWearableSkill;
-
-		int64 delta = newWearableSkill - oldWearableSkill;
-
-		int64 availablePositivePoints = MAXSKILLMOD - oldWearableSkill;
-		int64 availableNegativePoints = -MAXSKILLMOD - oldWearableSkill;
-
-		if(delta > availablePositivePoints) {
-			delta = availablePositivePoints;
+		if(!mods.contains(modType)) {
+			SkillModGroup newgroup;
+			newgroup.put(skillMod, value);
+			mods.put(modType, newgroup);
+		} else {
+			SkillModGroup* group = &mods.get(modType);
+			int oldValue = group->get(skillMod);
+			group->put(skillMod, oldValue + value);
 		}
 
-		if(delta < availableNegativePoints) {
-			delta = availableNegativePoints;
+		return true;
+	}
+
+	SkillModEntry getNewMod(const String& skillMod) {
+
+		SkillModEntry newEntry;
+
+		for(int i = 0; i < mods.size(); ++i) {
+
+			uint32 modType = mods.elementAt(i).getKey();
+			SkillModGroup* group = &mods.elementAt(i).getValue();
+
+			if(group->contains(skillMod)) {
+				if(modType & SkillModManager::TEMPMOD) {
+					int newSkillBonus = newEntry.getSkillBonus() + group->get(skillMod);
+
+					if(newSkillBonus >= 0)
+						newSkillBonus = MIN(newSkillBonus, SkillModManager::instance()->getMaxSkill(modType));
+					else
+						newSkillBonus = MAX(newSkillBonus, SkillModManager::instance()->getMinSkill(modType));
+
+					newEntry.setSkillBonus(newSkillBonus);
+				} else {
+					int newSkillMod = newEntry.getSkillMod() + group->get(skillMod);
+
+					if(newSkillMod >= 0)
+						newSkillMod = MIN(newSkillMod, SkillModManager::instance()->getMaxSkill(modType));
+					else
+						newSkillMod = MAX(newSkillMod, SkillModManager::instance()->getMinSkill(modType));
+
+					newEntry.setSkillMod(newSkillMod);
+				}
+
+			}
+		}
+		return newEntry;
+	}
+
+	SkillModGroup* getSkillModGroup(const uint32 type) {
+		if(!mods.contains(type)) {
+			SkillModGroup group;
+			mods.put(type, group);
 		}
 
-		return delta;
+		return &mods.get(type);
 	}
-
-	void dropWearableSkillMod(const String& skillMod) {
-		if(wearableMods.contains(skillMod))
-			wearableMods.drop(skillMod);
-	}
-
 };
 
 #endif /*SKILLMODLIST_H_*/

@@ -45,8 +45,8 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 #ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
-#CC = clang
-#CXX = clang++
+##CC = clang
+##CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -196,6 +196,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
 				server/zone/managers/skill/SkillManager.cpp \
+				server/zone/managers/skill/SkillModManager.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
@@ -290,6 +291,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
+		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
+		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \

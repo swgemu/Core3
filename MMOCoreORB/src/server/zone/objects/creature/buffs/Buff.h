@@ -99,6 +99,8 @@ public:
 
 	void deactivate();
 
+	VectorMap<String, int>* getSkillModifiers();
+
 	void applyAttributeModifiers();
 
 	void applySkillModifiers();
@@ -269,6 +271,8 @@ public:
 	virtual void activate();
 
 	virtual void deactivate();
+
+	VectorMap<String, int>* getSkillModifiers();
 
 	virtual void applyAttributeModifiers();
 

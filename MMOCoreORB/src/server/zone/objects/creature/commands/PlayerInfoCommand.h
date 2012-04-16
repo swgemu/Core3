@@ -29,13 +29,14 @@ public:
 		StringBuffer msg;
 		msg << "SkillMods:\n";
 
-		DeltaVectorMap<String, long long>* skillModList = creature->getSkillModList();
+		SkillModList* skillModList = creature->getSkillModList();
 
 		for (int i = 0; i < skillModList->size(); ++i) {
 			String name = skillModList->getKeyAt(i);
-			int val = skillModList->getValueAt(i);
+			int skillMod = skillModList->getValueAt(i).getSkillMod();
+			int bonus = skillModList->getValueAt(i).getSkillBonus();
 
-			msg << name << ":" << val << endl;
+			msg << name << ":" << skillMod << " (" << bonus << ")" << endl;
 		}
 
 		box->setPromptText(msg.toString());

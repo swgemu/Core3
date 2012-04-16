@@ -105,15 +105,6 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		clothing->setAttachmentMods(creo);
 	}
 
-	if (object->isRobeObject()) {
-		PlayerObject* ghost = creo->getPlayerObject();
-		if (ghost != NULL && ghost->getForcePowerMax() > 0){
-				creo->addSkillMod("jedi_force_power_max", 250, true);
-				creo->addSkillMod("jedi_force_power_regen", 10, true);
-				ghost->setForcePowerMax(ghost->getForcePowerMax() + 250, true);
-		}
-	}
-
 	if (object->isInstrument() && creo->isEntertaining())
 		creo->stopEntertaining();
 
@@ -151,16 +142,6 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	} else if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo, true);
-	}
-
-
-	if (object->isRobeObject()) {
-		PlayerObject* ghost = creo->getPlayerObject();
-		if (ghost != NULL && ghost->getForcePowerMax() > 0){
-				creo->addSkillMod("jedi_force_power_max", -250, true);
-				creo->addSkillMod("jedi_force_power_regen", -10, true);
-				ghost->setForcePowerMax(ghost->getForcePowerMax() - 250, true);
-		}
 	}
 
 	if (object->isInstrument()) {

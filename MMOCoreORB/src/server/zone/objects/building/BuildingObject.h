@@ -222,6 +222,8 @@ public:
 
 	unsigned int getMaximumNumberOfPlayerItems();
 
+	String getRedeedMessage();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -230,6 +232,8 @@ protected:
 	BuildingObject(DummyConstructorParameter* param);
 
 	virtual ~BuildingObject();
+
+	String _return_getRedeedMessage;
 
 	friend class BuildingObjectHelper;
 };
@@ -377,6 +381,8 @@ public:
 
 	virtual unsigned int getMaximumNumberOfPlayerItems();
 
+	String getRedeedMessage();
+
 	WeakReference<BuildingObject*> _this;
 
 	operator const BuildingObject*();
@@ -509,6 +515,8 @@ public:
 	bool togglePrivacy();
 
 	unsigned int getMaximumNumberOfPlayerItems();
+
+	String getRedeedMessage();
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;

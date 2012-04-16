@@ -187,7 +187,7 @@ public:
 				if(state != 0)
 					buff->addState(state);
 
-				VectorMap<String, int64>* skillMods = trapData->getSkillMods();
+				VectorMap<String, int>* skillMods = trapData->getSkillMods();
 				for(int i = 0; i < skillMods->size(); ++i) {
 					buff->setSkillModifier(skillMods->elementAt(i).getKey(), skillMods->get(i));
 				}
