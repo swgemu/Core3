@@ -97,15 +97,17 @@ void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
 }
 
 void WeaponObjectImplementation::createChildObjects() {
-	//Create the inventory.
-	ManagedReference<SceneObject*> lightsaberInventory = server->getZoneServer()->createObject(saberInventory.hashCode(), 1);
+	//Create the inventory. this is wrong fix it
+	if (saberInventory.length() != 0) {
+		ManagedReference<SceneObject*> lightsaberInventory = server->getZoneServer()->createObject(saberInventory.hashCode(), 1);
 
-	if (lightsaberInventory == NULL) {
-		error("could not create lightsaber inventory");
-		return;
+		if (lightsaberInventory == NULL) {
+			error("could not create lightsaber inventory");
+			return;
+		}
+
+		transferObject(lightsaberInventory, 4);
 	}
-
-	transferObject(lightsaberInventory, 4);
 
 }
 
