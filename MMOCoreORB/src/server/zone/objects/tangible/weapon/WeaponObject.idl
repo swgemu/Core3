@@ -95,8 +95,6 @@ class WeaponObject extends TangibleObject {
 	
 	protected int bladeColor;
 	
-	protected string saberInventory;
-	
 	protected PowerupObject powerupObject;
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
@@ -159,8 +157,6 @@ class WeaponObject extends TangibleObject {
 		attackSpeed = 1;
 		
 		weaponTemplate = null;
-		
-		saberInventory = "";
 		
 		Logger.setLoggingName("WeaponObject");
 	}
@@ -237,14 +233,6 @@ class WeaponObject extends TangibleObject {
 	
 	public void setCertified(boolean cert) {
 		certified = cert;
-	}
-	
-	public string getSaberInventory() {
-		return saberInventory;
-	}
-	
-	public void setSaberInventory(string si) {
-		saberInventory = si;
 	}
 	
 	public int getAttackType() {

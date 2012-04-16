@@ -43,8 +43,6 @@ protected:
 
 	float attackSpeed;
 
-	String saberInventory;
-
 	Vector<String> damageModifiers;
 	Vector<String> speedModifiers;
 	Vector<String> creatureAccuracyModifiers;
@@ -139,14 +137,6 @@ public:
 
 	float getWoundsRatio() const {
 		return woundsRatio;
-	}
-
-	String getSaberInventory() const {
-		return saberInventory;
-	}
-
-	void setSaberInventory(String in) {
-		this->saberInventory = in;
 	}
 
 	void setActionAttackCost(int actionAttackCost) {

@@ -76,7 +76,6 @@ SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	attackSpeed = 1,
 	
 	xpType = "",
-	saberInventory = "",
 	
 	creatureAccuracyModifiers = { },
 	defenderDefenseModifiers = { },

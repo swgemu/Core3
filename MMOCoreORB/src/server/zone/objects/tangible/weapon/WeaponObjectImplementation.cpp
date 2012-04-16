@@ -17,6 +17,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/Zone.h"
 
 
 
@@ -75,10 +76,6 @@ void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 		attackSpeed = templateAttackSpeed;
 
 	setSliceable(true);
-
-	if (isJediWeapon()){
-		saberInventory = weaponTemplate->getSaberInventory();
-	}
 }
 
 void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
@@ -97,17 +94,34 @@ void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
 }
 
 void WeaponObjectImplementation::createChildObjects() {
-	//Create the inventory. this is wrong fix it
-	if (saberInventory.length() != 0) {
-		ManagedReference<SceneObject*> lightsaberInventory = server->getZoneServer()->createObject(saberInventory.hashCode(), 1);
+	// Create any child objects in a weapon.
 
-		if (lightsaberInventory == NULL) {
-			error("could not create lightsaber inventory");
-			return;
+	ZoneServer* zoneServer = server->getZoneServer();
+
+		for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
+			ChildObject* child = templateObject->getChildObject(i);
+
+			if (child == NULL)
+				continue;
+
+			ManagedReference<SceneObject*> obj = zoneServer->createObject(
+					child->getTemplateFile().hashCode(), 1);
+
+			if (obj == NULL)
+				continue;
+
+			ContainerPermissions* permissions = obj->getContainerPermissions();
+			permissions->setOwner(getObjectID());
+			permissions->setInheritPermissionsFromParent(true);
+			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+
+			childObjects.put(obj);
+
+			obj->initializeChildObject(_this);
+
+			transferObject(obj, child->getContainmentType());
 		}
-
-		transferObject(lightsaberInventory, 4);
-	}
 
 }
 

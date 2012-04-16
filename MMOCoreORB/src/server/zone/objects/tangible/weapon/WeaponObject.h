@@ -209,10 +209,6 @@ public:
 
 	void setCertified(bool cert);
 
-	String getSaberInventory();
-
-	void setSaberInventory(String& si);
-
 	int getAttackType();
 
 	void setAttackType(int a);
@@ -344,7 +340,6 @@ protected:
 
 	virtual ~WeaponObject();
 
-	String _return_getSaberInventory;
 	String _return_getXpType;
 	String _return_repairAttempt;
 
@@ -410,8 +405,6 @@ protected:
 	int forceCost;
 
 	int bladeColor;
-
-	String saberInventory;
 
 	ManagedReference<PowerupObject* > powerupObject;
 
@@ -501,10 +494,6 @@ public:
 	Vector<String>* getDefenderToughnessModifiers();
 
 	void setCertified(bool cert);
-
-	String getSaberInventory();
-
-	void setSaberInventory(String& si);
 
 	int getAttackType();
 
@@ -683,10 +672,6 @@ public:
 
 	void setCertified(bool cert);
 
-	String getSaberInventory();
-
-	void setSaberInventory(String& si);
-
 	int getAttackType();
 
 	void setAttackType(int a);
@@ -809,8 +794,6 @@ public:
 
 	String repairAttempt(int repairChance);
 
-protected:
-	String _param0_setSaberInventory__String_;
 };
 
 class WeaponObjectHelper : public DistributedObjectClassHelper, public Singleton<WeaponObjectHelper> {

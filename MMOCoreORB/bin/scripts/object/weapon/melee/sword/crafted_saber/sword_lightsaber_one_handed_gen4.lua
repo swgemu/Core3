@@ -113,7 +113,10 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen4 = objec
 	maxRangeAccuracy = 0,
 
 	attackSpeed = 0,
-	saberInventory = "object/tangible/inventory/lightsaber_inventory_4.iff",
+	
+	childObjects = {
+		{templateFile = "object/tangible/inventory/lightsaber_inventory_4.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
+	},
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},

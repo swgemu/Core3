@@ -233,6 +233,4 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	area = templateData->getIntField("area");
 
 	attackSpeed = templateData->getFloatField("attackSpeed");
-
-	saberInventory = templateData->getStringField("saberInventory");
 }
