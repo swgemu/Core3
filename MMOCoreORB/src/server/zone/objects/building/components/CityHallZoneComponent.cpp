@@ -15,23 +15,19 @@
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
 	CityRegion* cityRegion = sceneObject->getCityRegion();
 
-	int i;
-	for ( i = cityRegion->getCityRank(); i > 0; i--)
-		cityRegion->destroyAllStructuresForRank(uint8(i));
+	if (cityRegion != NULL ) {
+		int i;
+		for ( i = cityRegion->getCityRank(); i > 0; i--)
+			cityRegion->destroyAllStructuresForRank(uint8(i));
 
-	if (cityRegion == NULL) {
-		//sceneObject->error("null city region for guild hall in destroyObjectFromWorld");
+		if (cityRegion->getCityHall() == sceneObject) {
+			cityRegion->setCityHall(NULL);
+		}
 
-		ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
+		CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
 
-		return;
-	} else if (cityRegion->getCityHall() == sceneObject) {
-		cityRegion->setCityHall(NULL);
+		cityManager->destroyCity(cityRegion);
 	}
-
-	CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
-
-	cityManager->destroyCity(cityRegion);
 
 	ZoneComponent::destroyObjectFromWorld(sceneObject, sendSelfDestroy);
 }
