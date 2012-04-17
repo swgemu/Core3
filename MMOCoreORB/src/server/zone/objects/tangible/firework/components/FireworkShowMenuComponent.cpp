@@ -19,11 +19,11 @@ void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if (!sceneObject->isFireworkObject())
 		return;
 
-	menuResponse->addRadialMenuItem(68, 3, "@fireworks:mnu_show_data");
-	menuResponse->addRadialMenuItemToRadialID(69, 68, 3, "@fireworks:mnu_add_event");
-	menuResponse->addRadialMenuItemToRadialID(70, 68, 3, "@fireworks:mnu_remove_event");
-	menuResponse->addRadialMenuItemToRadialID(71, 68, 3, "@fireworks:mnu_modify_event");
-	menuResponse->addRadialMenuItemToRadialID(72, 68, 3, "@fireworks:mnu_reorder_show");
+	//menuResponse->addRadialMenuItem(68, 3, "@fireworks:mnu_show_data");
+	//menuResponse->addRadialMenuItemToRadialID(69, 68, 3, "@fireworks:mnu_add_event");
+	//menuResponse->addRadialMenuItemToRadialID(70, 68, 3, "@fireworks:mnu_remove_event");
+	//menuResponse->addRadialMenuItemToRadialID(71, 68, 3, "@fireworks:mnu_modify_event");
+	//menuResponse->addRadialMenuItemToRadialID(72, 68, 3, "@fireworks:mnu_reorder_show");
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject,
 			menuResponse, player);
