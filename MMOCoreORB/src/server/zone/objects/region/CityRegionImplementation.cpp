@@ -265,6 +265,7 @@ String CityRegionImplementation::getRegionName() {
 }
 
 void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, SceneObject* structure){
+	Locker locker(_this);
 
 	if(cityStructureInventory.contains(rankRequired)){
 		cityStructureInventory.get(rankRequired)->add(structure);
@@ -275,6 +276,7 @@ void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, S
 }
 
 void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* structure){
+	Locker locker(_this);
 
 	if(cityStructureInventory.get(uint8(1))->contains(structure))
 		cityStructureInventory.get(uint8(1))->removeElement(structure);
@@ -292,6 +294,7 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 }
 
 bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
+	Locker locker(_this);
 
 	if (limitedPlacementStructures.contains(id))
 		return true;
@@ -300,6 +303,7 @@ bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
 }
 
 bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
+	Locker locker(_this);
 
 	if (!limitedPlacementStructures.contains(id)){
 		limitedPlacementStructures.add(id);
@@ -310,12 +314,14 @@ bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
 }
 
 void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
+	Locker locker(_this);
 
 	limitedPlacementStructures.removeElement(id);
 
 }
 
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
+	Locker locker(_this);
 
 	Vector<ManagedReference<SceneObject*> >* sceneObjects = cityStructureInventory.get(rank);
 
@@ -327,6 +333,9 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 		for(i = structureCount - 1; i >= 0; i--){
 
 			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
+
+			Locker locker(sceo, _this);
+
 			sceo->destroyObjectFromWorld(false);
 			sceo->destroyObjectFromDatabase(true);
 
