@@ -22,7 +22,7 @@
  *	CampSiteActiveAreaStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETTERMINAL__TERMINAL_,RPC_SETOWNER__CREATUREOBJECT_,RPC_SETCAMP__STRUCTUREOBJECT_,RPC_GETMEDICALRATING__,RPC_GETHEALTHWOUNDREGENRATE__,RPC_GETACTIONWOUNDREGENRATE__,RPC_GETMINDWOUNDREGENRATE__,RPC_GETAGGROMOD__,RPC_ISCAMPAREA__,RPC_GETVISITORCOUNT__,RPC_GETUPTIME__,RPC_ISABANDONED__,RPC_NOTIFYHEALEVENT__LONG_,RPC_NOTIFYCOMBATEVENT__,RPC_ABANDONCAMP__,RPC_DESPAWNCAMP__,RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_,RPC_GETOWNER__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_SETTERMINAL__TERMINAL_,RPC_SETOWNER__CREATUREOBJECT_,RPC_SETCAMP__STRUCTUREOBJECT_,RPC_GETCAMP__,RPC_GETMEDICALRATING__,RPC_GETHEALTHWOUNDREGENRATE__,RPC_GETACTIONWOUNDREGENRATE__,RPC_GETMINDWOUNDREGENRATE__,RPC_GETAGGROMOD__,RPC_ISCAMPAREA__,RPC_GETVISITORCOUNT__,RPC_GETUPTIME__,RPC_ISABANDONED__,RPC_NOTIFYHEALEVENT__LONG_,RPC_NOTIFYCOMBATEVENT__,RPC_ABANDONCAMP__,RPC_DESPAWNCAMP__,RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_,RPC_GETOWNER__};
 
 CampSiteActiveArea::CampSiteActiveArea() : ActiveArea(DummyConstructorParameter::instance()) {
 	CampSiteActiveAreaImplementation* _implementation = new CampSiteActiveAreaImplementation();
@@ -130,6 +130,19 @@ void CampSiteActiveArea::setCamp(StructureObject* c) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setCamp(c);
+}
+
+StructureObject* CampSiteActiveArea::getCamp() {
+	CampSiteActiveAreaImplementation* _implementation = static_cast<CampSiteActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCAMP__);
+
+		return static_cast<StructureObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getCamp();
 }
 
 int CampSiteActiveArea::getMedicalRating() {
@@ -583,6 +596,11 @@ void CampSiteActiveAreaImplementation::setCamp(StructureObject* c) {
 	camp = c;
 }
 
+StructureObject* CampSiteActiveAreaImplementation::getCamp() {
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		return camp;
+	return camp;
+}
+
 int CampSiteActiveAreaImplementation::getMedicalRating() {
 	// server/zone/objects/area/CampSiteActiveArea.idl():  		return campStructureData.get().getMedicalRating();
 	return (&campStructureData)->get()->getMedicalRating();
@@ -666,6 +684,9 @@ void CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_SETCAMP__STRUCTUREOBJECT_:
 		setCamp(static_cast<StructureObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_GETCAMP__:
+		resp->insertLong(getCamp()->_getObjectID());
+		break;
 	case RPC_GETMEDICALRATING__:
 		resp->insertSignedInt(getMedicalRating());
 		break;
@@ -738,6 +759,10 @@ void CampSiteActiveAreaAdapter::setOwner(CreatureObject* player) {
 
 void CampSiteActiveAreaAdapter::setCamp(StructureObject* c) {
 	(static_cast<CampSiteActiveArea*>(stub))->setCamp(c);
+}
+
+StructureObject* CampSiteActiveAreaAdapter::getCamp() {
+	return (static_cast<CampSiteActiveArea*>(stub))->getCamp();
 }
 
 int CampSiteActiveAreaAdapter::getMedicalRating() {

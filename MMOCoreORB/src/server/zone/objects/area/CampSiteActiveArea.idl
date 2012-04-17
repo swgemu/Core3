@@ -120,6 +120,10 @@ class CampSiteActiveArea extends ActiveArea {
 	public void setCamp(StructureObject c) {
 		camp = c;
 	}
+	
+	public StructureObject getCamp() {
+		return camp;
+	}
 
 	public int getMedicalRating() {
 		return campStructureData.get().getMedicalRating();

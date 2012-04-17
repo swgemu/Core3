@@ -152,6 +152,8 @@ public:
 
 	void setCamp(StructureObject* c);
 
+	StructureObject* getCamp();
+
 	int getMedicalRating();
 
 	int getHealthWoundRegenRate();
@@ -257,6 +259,8 @@ public:
 
 	void setCamp(StructureObject* c);
 
+	StructureObject* getCamp();
+
 	int getMedicalRating();
 
 	int getHealthWoundRegenRate();
@@ -341,6 +345,8 @@ public:
 	void setOwner(CreatureObject* player);
 
 	void setCamp(StructureObject* c);
+
+	StructureObject* getCamp();
 
 	int getMedicalRating();
 

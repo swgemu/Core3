@@ -46,7 +46,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
-
+#include "server/zone/objects/area/CampSiteActiveArea.h"
 
 SkillModManager::SkillModManager()
 		: Logger("SkillModManager") {
@@ -173,7 +173,17 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
+	StringBuffer errors;
+	errors << "Creature Name: '" << creature->getFirstName() << "', is Player: " << String::valueOf(creature->isPlayerCreature()) << "\n";
+	errors << "Structure Mods:\n";
+
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
+	if(parent == NULL) {
+		if(creature->getCurrentCamp() != NULL) {
+			ManagedReference<CampSiteActiveArea*> campArea = creature->getCurrentCamp();
+			parent = campArea->getCamp();
+		}
+	}
 	if(parent != NULL && parent->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(parent.get());
 
@@ -191,6 +201,8 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 			mods.put(name, value);
 		}
 	}
+
+	errors << "\nPlayer Mods:\n";
 
 	if(!compareMods(mods, creature, STRUCTURE)) {
 		error("Structure mods don't match for " + creature->getFirstName());
