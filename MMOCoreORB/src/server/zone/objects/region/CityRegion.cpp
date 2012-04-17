@@ -1112,7 +1112,7 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 	}
 
 	if (_name == "CityRegion.cityStructureInventory") {
-		TypeInfo<VectorMap<byte, Vector<ManagedReference<SceneObject* > >*> >::parseFromBinaryStream(&cityStructureInventory, stream);
+		TypeInfo<CityStructureInventory >::parseFromBinaryStream(&cityStructureInventory, stream);
 		return true;
 	}
 
@@ -1262,7 +1262,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<byte, Vector<ManagedReference<SceneObject* > >*> >::toBinaryStream(&cityStructureInventory, stream);
+	TypeInfo<CityStructureInventory >::toBinaryStream(&cityStructureInventory, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

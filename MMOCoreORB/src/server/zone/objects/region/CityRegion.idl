@@ -20,7 +20,7 @@ include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
-
+include server.zone.objects.region.CityStructureInventory;
 
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
@@ -52,7 +52,7 @@ class CityRegion extends ManagedObject implements Logger {
 	protected Vector<unsigned int> limitedPlacementStructures;
 	
 	@dereferenced
-	protected VectorMap<byte, Vector<SceneObject> > cityStructureInventory;
+	protected CityStructureInventory cityStructureInventory;
 	
 	protected byte cityRank;
 	

@@ -65,7 +65,7 @@ void CommitMasterTransactionThread::commitData() {
 	if (charactersSaved != NULL && ServerCore::getZoneServer() != NULL) {
 		try {
 			StringBuffer query;
-			query << "INSERT INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";
+			query << "REPLACE INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";
 
 			StringBuffer deleteQuery;
 			deleteQuery << "DELETE FROM characters_dirty WHERE ";

@@ -91,6 +91,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/region/events/CityUpdateEvent.h"
 
+#include "server/zone/objects/region/CityStructureInventory.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -299,7 +301,7 @@ protected:
 
 	Vector<unsigned int> limitedPlacementStructures;
 
-	VectorMap<byte, Vector<ManagedReference<SceneObject* > >*> cityStructureInventory;
+	CityStructureInventory cityStructureInventory;
 
 	byte cityRank;
 

@@ -98,10 +98,10 @@ void CityRegionImplementation::initialize() {
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
-	cityStructureInventory.put(uint8(1), new Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(2), new Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(3), new Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(4), new Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(1), Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(2), Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(3), Vector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(4), Vector<ManagedReference<SceneObject*> >());
 
 	setLoggingName("CityRegion");
 	setLogging(true);
@@ -268,7 +268,7 @@ void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, S
 	Locker locker(_this);
 
 	if(cityStructureInventory.contains(rankRequired)){
-		cityStructureInventory.get(rankRequired)->add(structure);
+		cityStructureInventory.get(rankRequired).add(structure);
 
 	}
 
@@ -278,17 +278,17 @@ void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, S
 void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* structure){
 	Locker locker(_this);
 
-	if(cityStructureInventory.get(uint8(1))->contains(structure))
-		cityStructureInventory.get(uint8(1))->removeElement(structure);
+	if(cityStructureInventory.get(uint8(1)).contains(structure))
+		cityStructureInventory.get(uint8(1)).removeElement(structure);
 
-	else if(cityStructureInventory.get(uint8(2))->contains(structure))
-		cityStructureInventory.get(uint8(2))->removeElement(structure);
+	else if(cityStructureInventory.get(uint8(2)).contains(structure))
+		cityStructureInventory.get(uint8(2)).removeElement(structure);
 
-	else if(cityStructureInventory.get(uint8(3))->contains(structure))
-			cityStructureInventory.get(uint8(3))->removeElement(structure);
+	else if(cityStructureInventory.get(uint8(3)).contains(structure))
+			cityStructureInventory.get(uint8(3)).removeElement(structure);
 
-	else if(cityStructureInventory.get(uint8(4))->contains(structure))
-			cityStructureInventory.get(uint8(4))->removeElement(structure);
+	else if(cityStructureInventory.get(uint8(4)).contains(structure))
+			cityStructureInventory.get(uint8(4)).removeElement(structure);
 
 
 }
@@ -323,7 +323,7 @@ void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	Locker locker(_this);
 
-	Vector<ManagedReference<SceneObject*> >* sceneObjects = cityStructureInventory.get(rank);
+	Vector<ManagedReference<SceneObject*> >* sceneObjects = &cityStructureInventory.get(rank);
 
 	int structureCount = sceneObjects->size();
 	int i;
