@@ -287,6 +287,9 @@ bool StructureObjectImplementation::isCampStructure() {
 }
 
 void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) {
+	if(!targetObject->isPlayerCreature())
+		return;
+
 	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)
@@ -304,6 +307,9 @@ void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetO
 }
 
 void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) {
+	if(!targetObject->isPlayerCreature())
+		return;
+
 	SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tano == NULL)
