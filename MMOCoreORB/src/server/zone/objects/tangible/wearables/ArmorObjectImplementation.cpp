@@ -232,21 +232,21 @@ float ArmorObjectImplementation::getTypeValue(int type, float value) {
 	if(isVulnerable(type))
 		newValue = value;
 
-	else if(isSpecial(type))
+	else if(isSpecial(type)) {
 		newValue = specialProtection + value;
-
-	else {
-		newValue = baseProtection + value;
-		newValue *= effectivenessSlice;
-	}
-
-
-	if(sliced) {
-		if(newValue > 90)
-			newValue = 90;
-	} else {
 		if(newValue > 80)
 			newValue = 80;
+	} else {
+		newValue = baseProtection + value;
+		newValue *= effectivenessSlice;
+
+		if(sliced) {
+			if(newValue > 90)
+				newValue = 90;
+		} else {
+			if(newValue > 80)
+				newValue = 80;
+		}
 	}
 
 	return newValue;
