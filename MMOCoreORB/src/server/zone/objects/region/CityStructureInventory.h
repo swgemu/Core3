@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class CityStructureInventory : public VectorMap<byte, Vector<SceneObject> > {
+class CityStructureInventory : public VectorMap<byte, Vector<ManagedReference<SceneObject* > > > {
 
 };
 
