@@ -19,6 +19,7 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -328,6 +329,8 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	int structureCount = sceneObjects->size();
 	int i;
 
+	StructureManager* manager = zone->getStructureManager();
+
 	if (structureCount > 0){
 
 		for(i = structureCount - 1; i >= 0; i--){
@@ -336,9 +339,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 
 			Locker locker(sceo, _this);
 
-			sceo->destroyObjectFromWorld(false);
-			sceo->destroyObjectFromDatabase(true);
-
+			manager->destroyStructure(sceo);
 		}
 	}
 
