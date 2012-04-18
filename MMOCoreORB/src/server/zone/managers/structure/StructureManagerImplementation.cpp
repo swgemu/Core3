@@ -182,15 +182,6 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 			return 1;
 		}
 
-		int limitToOne = (int) serverTemplate->getLimitToOnePerCity();
-
-		if (limitToOne == 1){
-			if (!city->addLimitedPlacementStructure(serverTemplate->getServerObjectCRC())){
-				creature->sendSystemMessage("@player_structure:cant_place_unique");
-				return 1;
-			}
-		}
-
 		if (rankRequired != 0 && city->getCityRank() < rankRequired) {
 			StringIdChatParameter param("city/city", "rank_req");
 			param.setDI(rankRequired);
@@ -198,6 +189,15 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 
 			creature->sendSystemMessage(param);
 			return 1;
+		}
+
+		int limitToOne = (int) serverTemplate->getLimitToOnePerCity();
+
+		if (limitToOne == 1){
+			if (!city->addLimitedPlacementStructure(serverTemplate->getServerObjectCRC())){
+				creature->sendSystemMessage("@player_structure:cant_place_unique");
+				return 1;
+			}
 		}
 
 
