@@ -66,8 +66,6 @@ object_tangible_wearables_gloves_gloves_s13 = object_tangible_wearables_gloves_s
 				"object/mobile/vendor/human_female.iff",
 				"object/mobile/vendor/human_male.iff",
 				"object/mobile/vendor/ishi_tib_male.iff",
-				"object/mobile/vendor/ithorian_female.iff",
-				"object/mobile/vendor/ithorian_male.iff",
 				"object/mobile/vendor/moncal_female.iff",
 				"object/mobile/vendor/nikto_male.iff",
 				"object/mobile/vendor/quarren_male.iff",
@@ -78,8 +76,6 @@ object_tangible_wearables_gloves_gloves_s13 = object_tangible_wearables_gloves_s
 				"object/mobile/vendor/twilek_female.iff",
 				"object/mobile/vendor/twilek_male.iff",
 				"object/mobile/vendor/weequay_male.iff",
-				"object/mobile/vendor/wookiee_female.iff",
-				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
 
