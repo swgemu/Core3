@@ -367,6 +367,8 @@ void ResourceSpawner::shiftResources() {
 	nativePool->update();
 	minimumPool->update();
 	manualPool->update();
+
+	dumpResources();
 }
 
 ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
