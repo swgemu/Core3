@@ -478,7 +478,7 @@ void FactoryObjectImplementation::createNewObject() {
 
 	Reference<Task*> pending = getPendingTask("createFactoryObject");
 
-	if (schematic->getManufactureLimit() == 0) {
+	if (schematic->getManufactureLimit() < 1) {
 
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
