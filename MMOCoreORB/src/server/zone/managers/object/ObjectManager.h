@@ -72,27 +72,16 @@ namespace zone {
 	namespace managers {
 	namespace object {
 
-	class ObjectManager : public DOBObjectManager, public Logger, public Singleton<ObjectManager>, public Object {
+	class ObjectManager : public DOBObjectManager, public Singleton<ObjectManager>, public Object {
 		ManagedReference<ZoneProcessServer*> server;
-
-		ObjectDatabaseManager* databaseManager;
 
 		TemplateManager* templateManager;
 
-		Reference<Task*> updateModifiedObjectsTask;
-
-		Vector<UpdateModifiedObjectsThread*> updateModifiedObjectsThreads;
-
-		bool objectUpdateInProcess;
-
-		AtomicInteger totalUpdatedObjects;
+		int galaxyId;
+		Reference<ResultSet*> charactersSaved;
 
 	public:
 		SceneObjectFactory<SceneObject* (), uint32> objectFactory;
-
-		const static int UPDATETODATABASETIME = 300000;
-		const static int INITIALUPDATEMODIFIEDOBJECTSTHREADS = 10;
-		const static int MAXOBJECTSTOUPDATEPERTHREAD = 7000;
 
 	private:
 		/**
@@ -105,10 +94,6 @@ namespace zone {
 		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
 
 		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid, bool createComponents);
-
-		UpdateModifiedObjectsThread* createUpdateModifiedObjectsThread();
-
-		int deployUpdateThreads(Vector<DistributedObject*>* objectsToUpdate, Vector<DistributedObject*>* objectsToDelete, engine::db::berkley::Transaction* transaction);
 
 		//ManagedObject* cloneManagedObject(ManagedObject* object, bool makeTransient = false);
 
@@ -152,29 +137,17 @@ namespace zone {
 
 		uint64 getNextFreeObjectID();
 
+		void onUpdateModifiedObjectsToDatabase();
+
+		void onCommitData();
+
 		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);
-		ObjectDatabase* getTable(uint64 objectID);
-
-		void updateModifiedObjectsToDatabase(bool startTask);
-		void finishObjectUpdate(bool startNew);
-
-		inline void scheduleUpdateToDatabase() {
-			updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
-		}
 
 		void updateObjectVersion();
-
-		//used internally
-		int commitUpdatePersistentObjectToDB(DistributedObject* object);
-		int commitDestroyObjectToDB(uint64 objectID);
-
-		void cancelUpdateModifiedObjectsTask();
 
 		inline void setZoneProcessor(ZoneProcessServer* srv) {
 			server = srv;
 		}
-
-
 
 	};
 

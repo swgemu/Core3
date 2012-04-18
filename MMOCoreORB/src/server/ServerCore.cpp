@@ -377,8 +377,7 @@ void ServerCore::handleCommands() {
 
 				zoneServer->fixScheduler();
 			} else if (command == "save") {
-				ObjectManager::instance()->updateModifiedObjectsToDatabase(
-						true);
+				ObjectManager::instance()->createBackup();
 				//ObjectDatabaseManager::instance()->checkpoint();
 			} else if (command == "help") {
 				System::out << "available commands:\n";

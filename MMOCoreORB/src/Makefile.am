@@ -398,8 +398,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/object/ObjectVersionUpdateManager.cpp \
-		server/zone/managers/object/UpdateModifiedObjectsThread.cpp \
-		server/zone/managers/object/CommitMasterTransactionThread.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \
 		server/zone/managers/planet/MapLocationTable.cpp \
 		server/zone/managers/planet/MapLocationEntry.cpp \
