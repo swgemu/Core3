@@ -56,6 +56,24 @@ public:
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	void setKinetic(float value);
+
+	void setEnergy(float value);
+
+	void setElectricity(float value);
+
+	void setStun(float value);
+
+	void setBlast(float value);
+
+	void setHeat(float value);
+
+	void setCold(float value);
+
+	void setAcid(float value);
+
+	void setLightSaber(float value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -86,7 +104,23 @@ namespace armor {
 
 class ArmorComponentImplementation : public ComponentImplementation {
 protected:
-	int specialResists;
+	float kinetic;
+
+	float energy;
+
+	float electricity;
+
+	float stun;
+
+	float blast;
+
+	float heat;
+
+	float cold;
+
+	float acid;
+
+	float lightSaber;
 
 public:
 	ArmorComponentImplementation();
@@ -96,6 +130,32 @@ public:
 	void initializeTransientMembers();
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
+private:
+	void calculateSpecialProtection(CraftingValues* values);
+
+	String getStringType(int type);
+
+	void setProtectionValue(int type, float value);
+
+public:
+	void setKinetic(float value);
+
+	void setEnergy(float value);
+
+	void setElectricity(float value);
+
+	void setStun(float value);
+
+	void setBlast(float value);
+
+	void setHeat(float value);
+
+	void setCold(float value);
+
+	void setAcid(float value);
+
+	void setLightSaber(float value);
 
 	WeakReference<ArmorComponent*> _this;
 
@@ -141,6 +201,24 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void setKinetic(float value);
+
+	void setEnergy(float value);
+
+	void setElectricity(float value);
+
+	void setStun(float value);
+
+	void setBlast(float value);
+
+	void setHeat(float value);
+
+	void setCold(float value);
+
+	void setAcid(float value);
+
+	void setLightSaber(float value);
 
 };
 

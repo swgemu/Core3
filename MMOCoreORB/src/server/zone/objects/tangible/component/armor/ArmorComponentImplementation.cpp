@@ -55,34 +55,114 @@ void ArmorComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
 	if(firstUpdate) {
-
 		setPropertyToHidden("armor_special_effectiveness");
 
-		int special = values->getCurrentValue("armor_special_type");
-		specialResists = specialResists | special;
-		values->setCurrentValue("armor_special_type", specialResists);
+		kinetic = 0;
+		energy = 0;
+		electricity = 0;
+		stun = 0;
+		blast = 0;
+		heat = 0;
+		cold = 0;
+		acid = 0;
+		lightSaber = 0;
+
+		calculateSpecialProtection(values);
 	}
 
 	String expProp = "exp_resistance";
 	float specialbase = values->getCurrentValue("armor_special_effectiveness");
+	int specialResists = values->getCurrentValue("armor_special_type");
 
 	if (specialResists & WeaponObject::KINETIC)
-		addProperty("kineticeffectiveness", specialbase, 10, expProp);
+		addProperty("kineticeffectiveness", specialbase + kinetic, 10, expProp);
 	if (specialResists & WeaponObject::ENERGY)
-		addProperty("energyeffectiveness", specialbase, 10, expProp);
+		addProperty("energyeffectiveness", specialbase + energy, 10, expProp);
 	if (specialResists & WeaponObject::BLAST)
-		addProperty("blasteffectiveness", specialbase, 10, expProp);
+		addProperty("blasteffectiveness", specialbase + blast, 10, expProp);
 	if (specialResists & WeaponObject::STUN)
-		addProperty("stuneffectiveness", specialbase, 10, expProp);
+		addProperty("stuneffectiveness", specialbase + stun, 10, expProp);
 	if (specialResists & WeaponObject::LIGHTSABER)
-		addProperty("restraineffectiveness", specialbase, 10, expProp);
+		addProperty("restraineffectiveness", specialbase + lightSaber, 10, expProp);
 	if (specialResists & WeaponObject::HEAT)
-		addProperty("heateffectiveness", specialbase, 10, expProp);
+		addProperty("heateffectiveness", specialbase + heat, 10, expProp);
 	if (specialResists & WeaponObject::COLD)
-		addProperty("coldeffectiveness", specialbase, 10, expProp);
+		addProperty("coldeffectiveness", specialbase + cold, 10, expProp);
 	if (specialResists & WeaponObject::ACID)
-		addProperty("acideffectiveness", specialbase, 10, expProp);
+		addProperty("acideffectiveness", specialbase + acid, 10, expProp);
 	if (specialResists & WeaponObject::ELECTRICITY)
-		addProperty("electricaleffectiveness", specialbase, 10, expProp);
+		addProperty("electricaleffectiveness", specialbase + electricity, 10, expProp);
+}
 
+void ArmorComponentImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {
+
+	for (int i = 0; i <= 8; ++i) {
+
+		int type = pow((float)2,i);
+
+		String subtitle = getStringType(type);
+		float value = craftingValues->getCurrentValue(subtitle);
+
+		if(value != CraftingValues::VALUENOTFOUND) {
+
+			setProtectionValue(type, value);
+		}
+	}
+}
+
+String ArmorComponentImplementation::getStringType(int type) {
+
+	switch(type) {
+	case WeaponObject::KINETIC:
+		return "kineticeffectiveness";
+		break;
+	case WeaponObject::ENERGY:
+		return "energyeffectiveness";
+	break;
+	case WeaponObject::ELECTRICITY:
+		return "electricaleffectiveness";
+		break;
+	case WeaponObject::STUN:
+		return "stuneffectiveness";
+		break;
+	case WeaponObject::BLAST:
+		return "blasteffectiveness";
+		break;
+	case WeaponObject::HEAT:
+		return "heateffectiveness";
+		break;
+	case WeaponObject::COLD:
+		return "coldeffectiveness";
+		break;
+	case WeaponObject::ACID:
+		return "acideffectiveness";
+		break;
+	case WeaponObject::LIGHTSABER:
+		return "restraineffectiveness";
+		break;
+	default:
+		return "";
+	}
+}
+
+void ArmorComponentImplementation::setProtectionValue(int type, float value) {
+
+	if (type & WeaponObject::KINETIC)
+		setKinetic(value);
+	if (type & WeaponObject::ENERGY)
+		setEnergy(value);
+	if (type & WeaponObject::BLAST)
+		setBlast(value);
+	if (type & WeaponObject::STUN)
+		setStun(value);
+	if (type & WeaponObject::LIGHTSABER)
+		setLightSaber(value);
+	if (type & WeaponObject::HEAT)
+		setHeat(value);
+	if (type & WeaponObject::COLD)
+		setCold(value);
+	if (type & WeaponObject::ACID)
+		setAcid(value);
+	if (type & WeaponObject::ELECTRICITY)
+		setElectricity(value);
 }

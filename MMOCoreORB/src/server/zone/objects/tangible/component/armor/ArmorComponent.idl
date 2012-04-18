@@ -51,13 +51,28 @@ import server.zone.Zone;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
  
 class ArmorComponent extends Component {
-	
-	protected int specialResists;
-	
+
+	protected float kinetic;
+	protected float energy;
+	protected float electricity;
+	protected float stun;
+	protected float blast;
+	protected float heat;
+	protected float cold;
+	protected float acid;
+	protected float lightSaber;
+
 	public ArmorComponent() {
 		Logger.setLoggingName("ArmorComponent");
-		
-		specialResists = 0;
+		kinetic = 0;
+		energy = 0;
+		electricity = 0;
+		stun = 0;
+		blast = 0;
+		heat = 0;
+		cold = 0;
+		acid = 0;
+		lightSaber = 0;
 	}
 	
 	/**
@@ -69,4 +84,46 @@ class ArmorComponent extends Component {
 
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	private native void calculateSpecialProtection(CraftingValues values);
+	
+	private native string getStringType(int type);
+
+	private native void setProtectionValue(int type, float value);
+
+	public void setKinetic(float value) {
+		kinetic = value;
+	}
+
+	public void setEnergy(float value) {
+		energy = value;
+	}
+
+	public void setElectricity(float value) {
+		electricity = value;
+	}
+
+	public void setStun(float value) {
+		stun = value;
+	}
+
+	public void setBlast(float value) {
+		blast = value;
+	}
+
+	public void setHeat(float value) {
+		heat = value;
+	}
+
+	public void setCold(float value) {
+		cold = value;
+	}
+
+	public void setAcid(float value) {
+		acid = value;
+	}
+
+	public void setLightSaber(float value) {
+		lightSaber = value;
+	}
 }
