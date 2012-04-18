@@ -106,6 +106,10 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 		return false;
 	}
 
+	if(ghost->isPrivileged()) {
+		return true;
+	}
+
 	SortedVector<String>* groups = ghost->getPermissionGroups();
 
 	uint16 allowPermissions = 0, denyPermissions = 0;

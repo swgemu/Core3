@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef SNOOPCOMMAND_H_
 #define SNOOPCOMMAND_H_
@@ -51,7 +51,7 @@ class SnoopCommand : public QueueCommand {
 public:
 
 	SnoopCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -62,6 +62,48 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (!ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
+		StringTokenizer args(arguments.toString());
+		String targetName = "";
+		String container = "";
+
+		if(!args.hasMoreTokens())
+			return GENERALERROR;
+
+		args.getStringToken(targetName);
+
+		if(args.hasMoreTokens())
+			args.getStringToken(container);
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		ManagedReference<CreatureObject*> targetObj = playerManager->getPlayer(targetName);
+
+		if(targetObj == NULL) {
+			return INVALIDTARGET;
+		}
+		if(!targetObj->isCreatureObject()) {
+			return INVALIDTARGET;
+		}
+
+		if(container == "" || container == "inventory") {
+			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
+
+			if (creatureInventory == NULL)
+				return GENERALERROR;
+
+			creatureInventory->sendWithoutParentTo(creature);
+			creatureInventory->openContainerTo(creature);
+		}
+		else if (container == "equipment") {
+			targetObj->sendWithoutParentTo(creature);
+			targetObj->openContainerTo(creature);
+		}
+
+
 
 		return SUCCESS;
 	}
