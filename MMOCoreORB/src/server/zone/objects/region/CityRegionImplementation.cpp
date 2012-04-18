@@ -340,7 +340,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 			Locker locker(sceo, _this);
 
 			if (sceo->isStructureObject()) {
-				manager->destroyStructure(sceo);
+				manager->destroyStructure(cast<StructureObject*>(sceo.get()));
 			} else {
 				sceo->destroyObjectFromWorld(true);
 				sceo->destroyObjectFromDatabase(true);
