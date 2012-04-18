@@ -235,6 +235,7 @@ class PlayerObject extends IntangibleObject {
 
 	protected unsigned long performanceBuffTarget;
 	
+	protected boolean debugOutput;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -261,6 +262,8 @@ class PlayerObject extends IntangibleObject {
 		bankLocation = "";
 		
 		teleporting = false;
+		
+		debugOutput = false;
 		
 		suiBoxNextID = 0;
 		
@@ -1244,5 +1247,13 @@ class PlayerObject extends IntangibleObject {
 	}
 	public void setPerformanceBuffTarget(unsigned long target) {
 		performanceBuffTarget = target;
+	}
+	
+	public void setDebug(boolean value) {
+		debugOutput = value;
+	}
+	
+	public boolean getDebug() {
+		return debugOutput;
 	}
 }

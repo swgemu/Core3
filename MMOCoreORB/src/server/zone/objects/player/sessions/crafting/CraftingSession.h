@@ -211,6 +211,8 @@ class CraftingSessionImplementation : public FacadeImplementation {
 protected:
 	ManagedReference<CreatureObject* > crafter;
 
+	ManagedReference<PlayerObject* > crafterGhost;
+
 	ManagedReference<CraftingTool* > craftingTool;
 
 	ManagedReference<CraftingStation* > craftingStation;

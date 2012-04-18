@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "PlayerManagerCommand.h"
 #include "PlayerInfoCommand.h"
 #include "ServerCommandFactory.h"
+#include "DebugCommand.h"
 
 class ServerCommand : public QueueCommand {
 	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
@@ -69,7 +70,8 @@ public:
 		methodFactory.registerMethod<ServerInfoCommand>("info");
 		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
 		methodFactory.registerMethod<PlayerInfoCommand>("playerinfo");
-	}
+		methodFactory.registerMethod<DebugCommand>("debug");
+}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 		if (!checkStateMask(creature))

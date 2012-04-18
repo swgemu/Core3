@@ -34,6 +34,8 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 	crafter->addActiveSession(SessionFacadeType::CRAFTING, _this);
 	craftingTool->addActiveSession(SessionFacadeType::CRAFTING, _this);
 
+	crafterGhost = crafter->getPlayerObject();
+
 	craftingManager = crafter->getZoneServer()->getCraftingManager();
 
 	experimentationPointsTotal = 0;
@@ -44,7 +46,7 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 
 int CraftingSessionImplementation::startSession() {
 	// crafter and craftingTool locked already in initializeSession
-	if(crafter == NULL || craftingTool == NULL) {
+	if(crafter == NULL || craftingTool == NULL || crafterGhost == NULL) {
 		cancelSession();
 		return false;
 	}
@@ -125,6 +127,10 @@ int CraftingSessionImplementation::startSession() {
 	/// Reset session state
 	state = 1;
 
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("*** Starting new crafting session ***");
+	}
+
 	return true;
 }
 
@@ -142,6 +148,10 @@ int CraftingSessionImplementation::cancelSession() {
 		dplay9->close();
 		crafter->sendMessage(dplay9);
 		// *************************************
+	}
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("*** Canceling crafting session ***");
 	}
 
 	return clearSession();
@@ -182,6 +192,11 @@ int CraftingSessionImplementation::clearSession() {
 			prototype = NULL;
 		}
 	}
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("*** Clearing crafting session ***");
+	}
+
 	return 0;
 }
 
@@ -206,6 +221,10 @@ void CraftingSessionImplementation::closeCraftingWindow(int clientCounter) {
 	objMsg->insertByte(clientCounter);
 
 	crafter->sendMessage(objMsg);
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("*** Closing crafting window ***");
+	}
 }
 
 void CraftingSessionImplementation::sendSlotMessage(int counter, int message) {
@@ -246,6 +265,10 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 	}
 
 	clearSession();
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("Selected DraftSchematic: " + draftschematic->getCustomName());
+	}
 
 	state = 2;
 
@@ -297,6 +320,10 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 	craftingTool->transferObject(manufactureSchematic, 0x4, true);
 	//manufactureSchematic->sendTo(crafter, true);
 
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("ManufactureSchematic Created");
+	}
+
 	return true;
 }
 
@@ -321,6 +348,10 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 
 	craftingTool->transferObject(prototype, -1, false);
 	prototype->sendTo(crafter, true);
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("Prototype Created");
+	}
 
 	return true;
 }
@@ -366,6 +397,10 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 	objMsg->insertShort(0);
 
 	crafter->sendMessage(objMsg);
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("Sent UI Listen");
+	}
 }
 
 void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot, int clientCounter) {
@@ -406,6 +441,10 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 	int result = manufactureSchematic->addIngredientToSlot(crafter, tano, slot);
 
 	sendSlotMessage(clientCounter, result);
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("Adding ingredient: " + tano->getDisplayedName());
+	}
 
 }
 
@@ -449,6 +488,10 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 
 		crafter->sendMessage(objMsg);
 		// End Object Controller *****************************************
+	}
+
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage("Removing ingredient: " + tano->getDisplayedName());
 	}
 }
 
@@ -647,11 +690,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	} else {
 
-		PlayerObject* ghost = cast<PlayerObject*> (crafter->getSlottedObject("ghost"));
-		if (ghost == NULL)
-			return;
-
-		ghost->decreaseSchematicUseCount(draftSchematic);
+		crafterGhost->decreaseSchematicUseCount(draftSchematic);
 
 		/// Add Components to crafted object
 		String craftingComponents = "object/tangible/crafting/crafting_components_container.iff";
@@ -669,7 +708,10 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		}
 
 		prototype->transferObject(craftingComponentContainer, 4, false);
+	}
 
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage(craftingValues->toString());
 	}
 }
 
@@ -817,6 +859,9 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	crafter->notifyObservers(ObserverEventType::CRAFTINGEXPERIMENTATION, crafter, 0);
 
+	if(crafterGhost->getDebug()) {
+		crafter->sendSystemMessage(craftingValues->toString());
+	}
 }
 
 void CraftingSessionImplementation::customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString) {

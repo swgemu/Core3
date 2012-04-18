@@ -752,6 +752,10 @@ public:
 
 	void setPerformanceBuffTarget(unsigned long long target);
 
+	void setDebug(bool value);
+
+	bool getDebug();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -915,6 +919,8 @@ protected:
 	SortedVector<String> permissionGroups;
 
 	unsigned long long performanceBuffTarget;
+
+	bool debugOutput;
 
 public:
 	static const int LFG = 1;
@@ -1387,6 +1393,10 @@ public:
 
 	void setPerformanceBuffTarget(unsigned long long target);
 
+	void setDebug(bool value);
+
+	bool getDebug();
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1801,6 +1811,10 @@ public:
 	unsigned long long getPerformanceBuffTarget();
 
 	void setPerformanceBuffTarget(unsigned long long target);
+
+	void setDebug(bool value);
+
+	bool getDebug();
 
 protected:
 	String _param0_addExperience__String_int_bool_;

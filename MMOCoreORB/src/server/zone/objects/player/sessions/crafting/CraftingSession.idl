@@ -19,6 +19,9 @@ class CraftingSession extends Facade {
 	protected transient CreatureObject crafter;
 	
 	@weakreference
+	protected transient PlayerObject crafterGhost;
+	
+	@weakreference
 	protected transient CraftingTool craftingTool;
 	
 	@weakreference
