@@ -365,11 +365,19 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 		}
 	}
 
+	CityRegion* city = structureObject->getCityRegion();
 
+	if (city != NULL) {
+		city->removeFromCityStructureInventory(structureObject);
+
+		SharedStructureObjectTemplate* serverTemplate = cast<SharedStructureObjectTemplate*>(structureObject->getObjectTemplate());
+
+		if (serverTemplate->getLimitToOnePerCity() == 1)
+			city->removeLimitedPlacementStructure(serverTemplate->getServerObjectCRC());
+	}
 
 	structureObject->destroyObjectFromWorld(true);
 	structureObject->destroyObjectFromDatabase(true);
-
 
 	return 0;
 }

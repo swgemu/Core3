@@ -20,15 +20,5 @@ void StructureZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* 
 void StructureZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
 	ZoneComponent::notifyRemoveFromZone(sceneObject);
 
-	CityRegion* city = sceneObject->getCityRegion();
-
-	if (city != NULL){
-		city->removeFromCityStructureInventory(sceneObject);
-
-		SharedStructureObjectTemplate* serverTemplate = cast<SharedStructureObjectTemplate*>(sceneObject->getObjectTemplate());
-
-		if (serverTemplate->getLimitToOnePerCity() == 1)
-			city->removeLimitedPlacementStructure(serverTemplate->getServerObjectCRC());
-	}
-
+	//moved to StructureManager::destroyStructure
 }
