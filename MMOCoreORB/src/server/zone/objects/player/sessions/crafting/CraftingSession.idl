@@ -15,25 +15,25 @@ include server.zone.objects.scene.SessionFacadeType;
 include server.zone.templates.customization.CustomizationVariable;
 
 class CraftingSession extends Facade {
-	@weakreference
+	@weakReference
 	protected transient CreatureObject crafter;
 	
-	@weakreference
+	@weakReference
 	protected transient PlayerObject crafterGhost;
 	
-	@weakreference
+	@weakReference
 	protected transient CraftingTool craftingTool;
 	
-	@weakreference
+	@weakReference
 	protected transient CraftingStation craftingStation;
 
-	@weakreference
+	@weakReference
 	protected transient CraftingManager craftingManager;
 	
-	@weakreference
+	@weakReference
 	protected transient ManufactureSchematic manufactureSchematic;
 	
-	@weakreference
+	@weakReference
 	protected transient TangibleObject prototype;
 
 	protected transient int experimentationPointsTotal;
