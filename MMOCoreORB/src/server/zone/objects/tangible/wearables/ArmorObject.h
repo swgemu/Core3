@@ -73,8 +73,6 @@ public:
 
 	static const int HEAVY = 0x3;
 
-	static const int COMPOSITE = 0x1;
-
 	ArmorObject();
 
 	void initializeTransientMembers();
@@ -215,16 +213,12 @@ protected:
 
 	float encumbranceSlice;
 
-	int armorType;
-
 public:
 	static const int LIGHT = 0x1;
 
 	static const int MEDIUM = 0x2;
 
 	static const int HEAVY = 0x3;
-
-	static const int COMPOSITE = 0x1;
 
 	ArmorObjectImplementation();
 

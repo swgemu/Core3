@@ -31,8 +31,6 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 
 	int vulnerabilites;
 
-	int armorType;
-
 public:
 	ArmorObjectTemplate() {
 
@@ -62,8 +60,6 @@ public:
 		cold = templateData->getFloatField("cold");
 		acid = templateData->getFloatField("acid");
 		lightSaber = templateData->getFloatField("lightSaber");
-
-		armorType = templateData->getIntField("armorType");
 	}
 
 	inline float getAcid() const {
@@ -176,10 +172,6 @@ public:
 
 	bool isArmorObjectTemplate() {
 		return true;
-	}
-
-	int getArmorType() {
-		return armorType;
 	}
 };
 

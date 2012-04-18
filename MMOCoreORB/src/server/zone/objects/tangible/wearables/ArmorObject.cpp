@@ -707,11 +707,6 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "ArmorObject.armorType") {
-		TypeInfo<int >::parseFromBinaryStream(&armorType, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -881,16 +876,8 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.armorType";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&armorType, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-
-	return _count + 20;
+	return _count + 19;
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
@@ -925,8 +912,6 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	effectivenessSlice = 1;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice = 1;
 	encumbranceSlice = 1;
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		armorType = 0;
-	armorType = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		Logger.setLoggingName("ArmorObject");

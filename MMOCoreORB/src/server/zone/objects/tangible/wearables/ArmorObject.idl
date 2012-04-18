@@ -77,15 +77,11 @@ class ArmorObject extends WearableObject {
 
 	protected float effectivenessSlice;
 	protected float encumbranceSlice;
-	
-	protected int armorType;
-	
+
 	public static final int LIGHT = 0x1;
 	public static final int MEDIUM = 0x2;
 	public static final int HEAVY = 0x3;
-	
-	public static final int COMPOSITE = 0x1;
-	
+
 	public ArmorObject() {		
 		healthEncumbrance = 100;
 		actionEncumbrance = 100;
@@ -104,9 +100,7 @@ class ArmorObject extends WearableObject {
 		lightSaber = 0;
 		effectivenessSlice = 1;
 		encumbranceSlice = 1;
-		
-		armorType = 0;
-		
+
 		specialResists = 0;
 
 		Logger.setLoggingName("ArmorObject");
