@@ -11,7 +11,6 @@
 #include "../SharedTangibleObjectTemplate.h"
 
 class LightsaberCrystalObjectTemplate : public SharedTangibleObjectTemplate {
-	String crystalType;
 
 public:
 	LightsaberCrystalObjectTemplate() {
@@ -25,13 +24,8 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-		crystalType = templateData->getStringField("crystalType");
 
     }
-
-	inline String& getCrystalType() {
-		return crystalType;
-	}
 
 	bool isLightsaberCrystalTemplate() {
 		return true;

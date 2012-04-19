@@ -12,13 +12,11 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
-
 /*
  *	LightsaberCrystalComponentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETCOLOR__,RPC_GETQUALITY__,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETCRYSTALTYPE__,RPC_GETOWNER__,RPC_SETCRYSTALTYPE__STRING_,RPC_SETOWNER__STRING_,RPC_SETCOLOR__INT_,RPC_SETQUALITY__INT_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__FLOAT_,RPC_SETWOUNDCHANCE__FLOAT_,RPC_ISLIGHTSABERCRYSTALOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETOWNER__,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_GETCOLOR__,RPC_SETCOLOR__INT_,RPC_SETOWNER__STRING_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__FLOAT_,RPC_SETWOUNDCHANCE__INT_,RPC_ISLIGHTSABERCRYSTALOBJECT__};
 
 LightsaberCrystalComponent::LightsaberCrystalComponent() : Component(DummyConstructorParameter::instance()) {
 	LightsaberCrystalComponentImplementation* _implementation = new LightsaberCrystalComponentImplementation();
@@ -35,15 +33,6 @@ LightsaberCrystalComponent::~LightsaberCrystalComponent() {
 }
 
 
-
-void LightsaberCrystalComponent::loadTemplateData(SharedObjectTemplate* templateData) {
-	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->loadTemplateData(templateData);
-}
 
 void LightsaberCrystalComponent::initializeTransientMembers() {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
@@ -132,32 +121,6 @@ void LightsaberCrystalComponent::updateCrystal(int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->updateCrystal(value);
-}
-
-int LightsaberCrystalComponent::getColor() {
-	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCOLOR__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getColor();
-}
-
-int LightsaberCrystalComponent::getQuality() {
-	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETQUALITY__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getQuality();
 }
 
 int LightsaberCrystalComponent::getMinimumDamage() {
@@ -251,7 +214,7 @@ int LightsaberCrystalComponent::getSacMind() {
 		return _implementation->getSacMind();
 }
 
-float LightsaberCrystalComponent::getWoundChance() {
+int LightsaberCrystalComponent::getWoundChance() {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -259,23 +222,9 @@ float LightsaberCrystalComponent::getWoundChance() {
 
 		DistributedMethod method(this, RPC_GETWOUNDCHANCE__);
 
-		return method.executeWithFloatReturn();
+		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getWoundChance();
-}
-
-String LightsaberCrystalComponent::getCrystalType() {
-	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCRYSTALTYPE__);
-
-		method.executeWithAsciiReturn(_return_getCrystalType);
-		return _return_getCrystalType;
-	} else
-		return _implementation->getCrystalType();
 }
 
 String LightsaberCrystalComponent::getOwner() {
@@ -292,32 +241,44 @@ String LightsaberCrystalComponent::getOwner() {
 		return _implementation->getOwner();
 }
 
-void LightsaberCrystalComponent::setCrystalType(String& value) {
+int LightsaberCrystalComponent::getQuality() {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCRYSTALTYPE__STRING_);
-		method.addAsciiParameter(value);
+		DistributedMethod method(this, RPC_GETQUALITY__);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		_implementation->setCrystalType(value);
+		return _implementation->getQuality();
 }
 
-void LightsaberCrystalComponent::setOwner(String& value) {
+void LightsaberCrystalComponent::setQuality(int qual) {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETOWNER__STRING_);
-		method.addAsciiParameter(value);
+		DistributedMethod method(this, RPC_SETQUALITY__INT_);
+		method.addSignedIntParameter(qual);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setOwner(value);
+		_implementation->setQuality(qual);
+}
+
+int LightsaberCrystalComponent::getColor() {
+	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOLOR__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getColor();
 }
 
 void LightsaberCrystalComponent::setColor(int value) {
@@ -334,18 +295,18 @@ void LightsaberCrystalComponent::setColor(int value) {
 		_implementation->setColor(value);
 }
 
-void LightsaberCrystalComponent::setQuality(int value) {
+void LightsaberCrystalComponent::setOwner(String& value) {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETQUALITY__INT_);
-		method.addSignedIntParameter(value);
+		DistributedMethod method(this, RPC_SETOWNER__STRING_);
+		method.addAsciiParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setQuality(value);
+		_implementation->setOwner(value);
 }
 
 void LightsaberCrystalComponent::setMinimumDamage(int value) {
@@ -446,14 +407,14 @@ void LightsaberCrystalComponent::setAttackSpeed(float value) {
 		_implementation->setAttackSpeed(value);
 }
 
-void LightsaberCrystalComponent::setWoundChance(float value) {
+void LightsaberCrystalComponent::setWoundChance(int value) {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETWOUNDCHANCE__FLOAT_);
-		method.addFloatParameter(value);
+		DistributedMethod method(this, RPC_SETWOUNDCHANCE__INT_);
+		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
@@ -578,6 +539,16 @@ bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStrea
 	if (ComponentImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "LightsaberCrystalComponent.postTuneNameCrystal") {
+		TypeInfo<String >::parseFromBinaryStream(&postTuneNameCrystal, stream);
+		return true;
+	}
+
+	if (_name == "LightsaberCrystalComponent.postTuneNamePearl") {
+		TypeInfo<String >::parseFromBinaryStream(&postTuneNamePearl, stream);
+		return true;
+	}
+
 	if (_name == "LightsaberCrystalComponent.color") {
 		TypeInfo<int >::parseFromBinaryStream(&color, stream);
 		return true;
@@ -629,7 +600,7 @@ bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStrea
 	}
 
 	if (_name == "LightsaberCrystalComponent.woundChance") {
-		TypeInfo<float >::parseFromBinaryStream(&woundChance, stream);
+		TypeInfo<int >::parseFromBinaryStream(&woundChance, stream);
 		return true;
 	}
 
@@ -655,6 +626,22 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	String _name;
 	int _offset;
 	uint32 _totalSize;
+	_name = "LightsaberCrystalComponent.postTuneNameCrystal";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String >::toBinaryStream(&postTuneNameCrystal, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "LightsaberCrystalComponent.postTuneNamePearl";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String >::toBinaryStream(&postTuneNamePearl, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "LightsaberCrystalComponent.color";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -739,7 +726,7 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&woundChance, stream);
+	TypeInfo<int >::toBinaryStream(&woundChance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -752,17 +739,11 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 12;
+	return _count + 14;
 }
 
 LightsaberCrystalComponentImplementation::LightsaberCrystalComponentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		crystalType = "";
-	crystalType = "";
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		color = 0;
-	color = 0;
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = 0;
-	quality = 0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		attackSpeed = 0.0;
 	attackSpeed = 0.0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		minimumDamage = 0;
@@ -777,20 +758,18 @@ LightsaberCrystalComponentImplementation::LightsaberCrystalComponentImplementati
 	sacAction = 0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		sacMind = 0;
 	sacMind = 0;
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		woundChance = 0.0;
-	woundChance = 0.0;
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		woundChance = 0;
+	woundChance = 0;
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		color = 0;
+	color = 0;
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = 0;
+	quality = 0;
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		postTuneNameCrystal = "";
+	postTuneNameCrystal = "";
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		postTuneNamePearl = "";
+	postTuneNamePearl = "";
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		Logger.setLoggingName("LightsaberCrystal");
 	Logger::setLoggingName("LightsaberCrystal");
-}
-
-int LightsaberCrystalComponentImplementation::getColor() {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return color;
-	return color;
-}
-
-int LightsaberCrystalComponentImplementation::getQuality() {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return quality;
-	return quality;
 }
 
 int LightsaberCrystalComponentImplementation::getMinimumDamage() {
@@ -828,14 +807,9 @@ int LightsaberCrystalComponentImplementation::getSacMind() {
 	return sacMind;
 }
 
-float LightsaberCrystalComponentImplementation::getWoundChance() {
+int LightsaberCrystalComponentImplementation::getWoundChance() {
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return woundChance;
 	return woundChance;
-}
-
-String LightsaberCrystalComponentImplementation::getCrystalType() {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return crystalType;
-	return crystalType;
 }
 
 String LightsaberCrystalComponentImplementation::getOwner() {
@@ -843,14 +817,19 @@ String LightsaberCrystalComponentImplementation::getOwner() {
 	return owner;
 }
 
-void LightsaberCrystalComponentImplementation::setCrystalType(String& value) {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		crystalType = value;
-	crystalType = value;
+int LightsaberCrystalComponentImplementation::getQuality() {
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return quality;
+	return quality;
 }
 
-void LightsaberCrystalComponentImplementation::setOwner(String& value) {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		owner = value;
-	owner = value;
+void LightsaberCrystalComponentImplementation::setQuality(int qual) {
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = qual;
+	quality = qual;
+}
+
+int LightsaberCrystalComponentImplementation::getColor() {
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return color;
+	return color;
 }
 
 void LightsaberCrystalComponentImplementation::setColor(int value) {
@@ -858,9 +837,9 @@ void LightsaberCrystalComponentImplementation::setColor(int value) {
 	color = value;
 }
 
-void LightsaberCrystalComponentImplementation::setQuality(int value) {
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = value;
-	quality = value;
+void LightsaberCrystalComponentImplementation::setOwner(String& value) {
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		owner = value;
+	owner = value;
 }
 
 void LightsaberCrystalComponentImplementation::setMinimumDamage(int value) {
@@ -898,7 +877,7 @@ void LightsaberCrystalComponentImplementation::setAttackSpeed(float value) {
 	attackSpeed = value;
 }
 
-void LightsaberCrystalComponentImplementation::setWoundChance(float value) {
+void LightsaberCrystalComponentImplementation::setWoundChance(int value) {
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		woundChance = value;
 	woundChance = value;
 }
@@ -938,12 +917,6 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_UPDATECRYSTAL__INT_:
 		updateCrystal(inv->getSignedIntParameter());
 		break;
-	case RPC_GETCOLOR__:
-		resp->insertSignedInt(getColor());
-		break;
-	case RPC_GETQUALITY__:
-		resp->insertSignedInt(getQuality());
-		break;
 	case RPC_GETMINIMUMDAMAGE__:
 		resp->insertSignedInt(getMinimumDamage());
 		break;
@@ -966,25 +939,25 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertSignedInt(getSacMind());
 		break;
 	case RPC_GETWOUNDCHANCE__:
-		resp->insertFloat(getWoundChance());
-		break;
-	case RPC_GETCRYSTALTYPE__:
-		resp->insertAscii(getCrystalType());
+		resp->insertSignedInt(getWoundChance());
 		break;
 	case RPC_GETOWNER__:
 		resp->insertAscii(getOwner());
 		break;
-	case RPC_SETCRYSTALTYPE__STRING_:
-		setCrystalType(inv->getAsciiParameter(_param0_setCrystalType__String_));
+	case RPC_GETQUALITY__:
+		resp->insertSignedInt(getQuality());
 		break;
-	case RPC_SETOWNER__STRING_:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+	case RPC_SETQUALITY__INT_:
+		setQuality(inv->getSignedIntParameter());
+		break;
+	case RPC_GETCOLOR__:
+		resp->insertSignedInt(getColor());
 		break;
 	case RPC_SETCOLOR__INT_:
 		setColor(inv->getSignedIntParameter());
 		break;
-	case RPC_SETQUALITY__INT_:
-		setQuality(inv->getSignedIntParameter());
+	case RPC_SETOWNER__STRING_:
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case RPC_SETMINIMUMDAMAGE__INT_:
 		setMinimumDamage(inv->getSignedIntParameter());
@@ -1007,8 +980,8 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_SETATTACKSPEED__FLOAT_:
 		setAttackSpeed(inv->getFloatParameter());
 		break;
-	case RPC_SETWOUNDCHANCE__FLOAT_:
-		setWoundChance(inv->getFloatParameter());
+	case RPC_SETWOUNDCHANCE__INT_:
+		setWoundChance(inv->getSignedIntParameter());
 		break;
 	case RPC_ISLIGHTSABERCRYSTALOBJECT__:
 		resp->insertBoolean(isLightsaberCrystalObject());
@@ -1036,14 +1009,6 @@ void LightsaberCrystalComponentAdapter::tuneCrystal(CreatureObject* player) {
 
 void LightsaberCrystalComponentAdapter::updateCrystal(int value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->updateCrystal(value);
-}
-
-int LightsaberCrystalComponentAdapter::getColor() {
-	return (static_cast<LightsaberCrystalComponent*>(stub))->getColor();
-}
-
-int LightsaberCrystalComponentAdapter::getQuality() {
-	return (static_cast<LightsaberCrystalComponent*>(stub))->getQuality();
 }
 
 int LightsaberCrystalComponentAdapter::getMinimumDamage() {
@@ -1074,32 +1039,32 @@ int LightsaberCrystalComponentAdapter::getSacMind() {
 	return (static_cast<LightsaberCrystalComponent*>(stub))->getSacMind();
 }
 
-float LightsaberCrystalComponentAdapter::getWoundChance() {
+int LightsaberCrystalComponentAdapter::getWoundChance() {
 	return (static_cast<LightsaberCrystalComponent*>(stub))->getWoundChance();
-}
-
-String LightsaberCrystalComponentAdapter::getCrystalType() {
-	return (static_cast<LightsaberCrystalComponent*>(stub))->getCrystalType();
 }
 
 String LightsaberCrystalComponentAdapter::getOwner() {
 	return (static_cast<LightsaberCrystalComponent*>(stub))->getOwner();
 }
 
-void LightsaberCrystalComponentAdapter::setCrystalType(String& value) {
-	(static_cast<LightsaberCrystalComponent*>(stub))->setCrystalType(value);
+int LightsaberCrystalComponentAdapter::getQuality() {
+	return (static_cast<LightsaberCrystalComponent*>(stub))->getQuality();
 }
 
-void LightsaberCrystalComponentAdapter::setOwner(String& value) {
-	(static_cast<LightsaberCrystalComponent*>(stub))->setOwner(value);
+void LightsaberCrystalComponentAdapter::setQuality(int qual) {
+	(static_cast<LightsaberCrystalComponent*>(stub))->setQuality(qual);
+}
+
+int LightsaberCrystalComponentAdapter::getColor() {
+	return (static_cast<LightsaberCrystalComponent*>(stub))->getColor();
 }
 
 void LightsaberCrystalComponentAdapter::setColor(int value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setColor(value);
 }
 
-void LightsaberCrystalComponentAdapter::setQuality(int value) {
-	(static_cast<LightsaberCrystalComponent*>(stub))->setQuality(value);
+void LightsaberCrystalComponentAdapter::setOwner(String& value) {
+	(static_cast<LightsaberCrystalComponent*>(stub))->setOwner(value);
 }
 
 void LightsaberCrystalComponentAdapter::setMinimumDamage(int value) {
@@ -1130,7 +1095,7 @@ void LightsaberCrystalComponentAdapter::setAttackSpeed(float value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setAttackSpeed(value);
 }
 
-void LightsaberCrystalComponentAdapter::setWoundChance(float value) {
+void LightsaberCrystalComponentAdapter::setWoundChance(int value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setWoundChance(value);
 }
 

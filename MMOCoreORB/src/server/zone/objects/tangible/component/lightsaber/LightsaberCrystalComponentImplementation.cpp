@@ -19,24 +19,14 @@
 void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
 
-	lightsaberCrystalObjectTemplate = dynamic_cast<LightsaberCrystalObjectTemplate*>(TemplateManager::instance()->getTemplate(serverObjectCRC));
-
 	setLoggingName("LightsaberCrystalComponent");
-}
 
-
-void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	ComponentImplementation::loadTemplateData(templateData);
-
-	lightsaberCrystalObjectTemplate = dynamic_cast<LightsaberCrystalObjectTemplate*>(templateData);
-
-	crystalType = lightsaberCrystalObjectTemplate->getCrystalType();
-
-	setCrystalType(crystalType);
+	postTuneNameCrystal = "\\#00FF00 Crystal (tuned)";
+	postTuneNamePearl = "\\#00FF00 Krayt Dragon Pearl (tuned)";
 }
 
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	ComponentImplementation::fillAttributeList(alm, object);
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if (owner == ""){
 		StringBuffer str;
@@ -47,7 +37,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	}
 
 
-	if (getCrystalType() == "color"){
+	if (getColor() != 31){
 	StringBuffer str;
 	str << "@jedi_spam:saber_color_" << getColor();
 	alm->insertAttribute("color", str);
@@ -56,7 +46,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	PlayerObject* player = object->getPlayerObject();
 	if (player->getJediState() > 1){
 
-	if (getCrystalType() == "power"){
+	if (getColor() == 31){
 		if (owner != ""){
 		alm->insertAttribute("mindamage", minimumDamage);
 		alm->insertAttribute("maxdamage", maximumDamage);
@@ -117,16 +107,10 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 	UnicodeString oldName = getDisplayedName(); // Get the displayed name, which is in a string file format and change it to literal.
 
 	if (oldName == "@craft_weapon_ingredients_n:force_crystal")
-		setCustomObjectName("Crystal", false);
+		setCustomObjectName(postTuneNameCrystal, true);
 
 	if (oldName == "@craft_weapon_ingredients_n:krayt_dragon_pearl")
-		setCustomObjectName("Krayt Dragon Pearl", false);
-
-
-	StringBuffer newName;
-
-	newName << "\\#00FF00" << getCustomObjectName().toString() << " (tuned)";
-	setCustomObjectName(newName.toString(), true);
+		setCustomObjectName(postTuneNamePearl, true);
 
 	player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 
@@ -141,123 +125,24 @@ void LightsaberCrystalComponentImplementation::updateCrystal(int value){
 }
 
 void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	int level = values->getMaxValue("creatureLevel");
+	ComponentImplementation::updateCraftingValues(values, firstUpdate);
+
+	int color = values->getCurrentValue("color");
+	setColor(color);
 
 
-	int rand = System::random(1);
-
-	if (getCrystalType() == "colorAndPower"){
-		if (rand == 1)
-		{
-			crystalType = "power";
-		}
-		else if (rand == 0)
-		{
-			crystalType = "color";
-		}
+	if (color == 31){
+		setQuality(values->getCurrentValue("quality"));
+		setAttackSpeed(Math::getPrecision(values->getCurrentValue("attackspeed"), 2));
+		setMinimumDamage(values->getCurrentValue("mindamage"));
+		setMaximumDamage(values->getCurrentValue("maxdamage"));
+		setWoundChance(values->getCurrentValue("woundchance"));
+		setSacHealth(values->getCurrentValue("attackhealthcost"));
+		setSacAction(values->getCurrentValue("attackactioncost"));
+		setSacMind(values->getCurrentValue("attackmindcost"));
+		setForceCost(values->getCurrentValue("forcecost"));
 	}
 
-	setCrystalType(crystalType);
-
-	if (getCrystalType() == "color"){
-		int mod = System::random(11); // Regular Color range 0-11. Special range 12-30.
-
-		setColor(mod);
-		updateCrystal(mod);
-	}
-
-	if (getCrystalType() == "power") {
-		int max = MAX(0, MIN(6, round(0.1f * level + 5)));
-		int min = MAX(0, MIN(6, round(0.075f * level)));
-		int mod = System::random(max - min) + min;
-
-		setQuality(mod);
-		setColor(31);
-		updateCrystal(31);
-	}
-
-	// Seems about right according to posted screenshots...
-
-	switch (getQuality()){
-	case 0: // Poor
-		attackSpeed = (2.00 - System::random(1.25));
-		minimumDamage = (2 + System::random(4));
-		maximumDamage = (3 + System::random(4));
-		woundChance = (1 + System::random(2));
-		sacHealth = (0 - System::random(4));
-		sacAction = (0 - System::random(4));
-		sacMind = (0 - System::random(4));
-		forceCost = (0 - System::random(4));
-		break;
-	case 1: // Good
-		attackSpeed = (1.80 - System::random(1.25));
-		minimumDamage = (5 + System::random(5));
-		maximumDamage = (10 + System::random(10));
-		woundChance = (2 + System::random(2));
-		sacHealth = (0 - System::random(4));
-		sacAction = (0 - System::random(4));
-		sacMind = (0 - System::random(4));
-		forceCost = (0 - System::random(4));
-		break;
-	case 2: // Okay
-		attackSpeed = (1.60 - System::random(1.25));
-		minimumDamage = (10 + System::random(5));
-		maximumDamage = (15 + System::random(10));
-		woundChance = (2 + System::random(3));
-		sacHealth = (0 - System::random(5));
-		sacAction = (0 - System::random(5));
-		sacMind = (0 - System::random(5));
-		forceCost = (0 - System::random(5));
-		break;
-	case 3: // Quality
-		attackSpeed = (1.40 - System::random(1.25));
-		minimumDamage = (15 + System::random(5));
-		maximumDamage = (20 + System::random(10));
-		woundChance = (3 + System::random(3));
-		sacHealth = (0 - System::random(6));
-		sacAction = (0 - System::random(6));
-		sacMind = (0 - System::random(6));
-		forceCost = (0 - System::random(6));
-		break;
-	case 4: // Select
-		attackSpeed = (1.20 - System::random(1.25));
-		minimumDamage = (20 + System::random(5));
-		maximumDamage = (25 + System::random(10));
-		woundChance = (3 + System::random(4));
-		sacHealth = (0 - System::random(7));
-		sacAction = (0 - System::random(7));
-		sacMind = (0 - System::random(7));
-		forceCost = (0 - System::random(7));
-		break;
-	case 5: // Premium
-		attackSpeed = (1.00 - System::random(1.25));
-		minimumDamage = (30 + System::random(20));
-		maximumDamage = (35 + System::random(15));
-		woundChance = (4 + System::random(4));
-		sacHealth = (0 - System::random(8));
-		sacAction = (0 - System::random(8));
-		sacMind = (0 - System::random(8));
-		forceCost = (0 - System::random(8));
-		break;
-	case 6: // Flawless
-		attackSpeed = (0.80 - System::random(1.25));
-		minimumDamage = (40 + System::random(10));
-		maximumDamage = (45 + System::random(5));
-		woundChance = (4 + System::random(5));
-		sacHealth = (0 - System::random(9));
-		sacAction = (0 - System::random(9));
-		sacMind = (0 - System::random(9));
-		forceCost = (0 - System::random(9));
-		break;
-	}
-
-	setAttackSpeed(attackSpeed);
-	setMinimumDamage(minimumDamage);
-	setMaximumDamage(maximumDamage);
-	setWoundChance(woundChance);
-	setSacHealth(sacHealth);
-	setSacAction(sacAction);
-	setSacMind(sacMind);
-	setForceCost(forceCost);
+	updateCrystal(color);
 
 }

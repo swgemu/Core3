@@ -50,10 +50,11 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
-import server.zone.templates.SharedObjectTemplate;
-include server.zone.templates.tangible.LightsaberCrystalObjectTemplate;
 
 class LightsaberCrystalComponent extends Component {
+	protected string postTuneNameCrystal;
+	protected string postTuneNamePearl;
+	
 	protected int color;
 	protected int quality;
 	protected string owner;
@@ -64,17 +65,12 @@ class LightsaberCrystalComponent extends Component {
 	protected int sacHealth;
 	protected int sacAction;
 	protected int sacMind;
-	protected float woundChance;
+	protected int woundChance;
 	protected string crystalType;
 
 
-	protected transient LightsaberCrystalObjectTemplate lightsaberCrystalObjectTemplate;
-
 	public LightsaberCrystalComponent() {
 
-		crystalType = "";
-		color = 0;
-		quality = 0;
 		attackSpeed = 0.0;
 		minimumDamage = 0;	
 		maximumDamage = 0;
@@ -82,13 +78,14 @@ class LightsaberCrystalComponent extends Component {
 		sacHealth = 0;
 		sacAction = 0;
 		sacMind = 0;
-		woundChance = 0.0;
+		woundChance = 0;
+		color = 0;
+		quality = 0;
+		postTuneNameCrystal = "";
+		postTuneNamePearl = "";
 		
 		Logger.setLoggingName("LightsaberCrystal");
 	}
-	
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	public native void initializeTransientMembers();
 	
@@ -113,13 +110,6 @@ class LightsaberCrystalComponent extends Component {
 
 	public native void updateCrystal(int value);
 	
-	public int getColor() {
-		return color;
-	}
-	
-	public int getQuality() {
-		return quality;
-	}
 
 	public int getMinimumDamage() {
 		return minimumDamage;
@@ -152,32 +142,32 @@ class LightsaberCrystalComponent extends Component {
 	}
 
 	
-	public float getWoundChance() {
+	public int getWoundChance() {
 		return woundChance;
-	}
-	
-	public string getCrystalType() {
-		return crystalType;
 	}
 
 	public string getOwner() {
 		return owner;
 	}
-
-	public void setCrystalType(string value) {
-		crystalType = value;
+	
+	public int getQuality() {
+		return quality;
+	}
+	
+	public void setQuality(int qual) {
+		quality = qual;
+	}
+	
+	public int getColor() {
+		return color;
+	}
+	
+	public void setColor(int value) {
+		color = value;
 	}
 
 	public void setOwner(string value) {
 		owner = value;
-	}
-
-	public void setColor(int value) {
-		color = value;
-	}
-	
-	public void setQuality(int value) {
-		quality = value;
 	}
 
 	public void setMinimumDamage(int value) {
@@ -208,7 +198,7 @@ class LightsaberCrystalComponent extends Component {
 		attackSpeed = value;
 	}
 
-	public void setWoundChance(float value) {
+	public void setWoundChance(int value) {
 		woundChance = value;
 	}
 	

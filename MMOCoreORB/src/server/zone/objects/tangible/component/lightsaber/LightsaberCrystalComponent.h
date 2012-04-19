@@ -63,20 +63,6 @@ class ManufactureSchematic;
 
 using namespace server::zone::objects::manufactureschematic;
 
-namespace server {
-namespace zone {
-namespace templates {
-
-class SharedObjectTemplate;
-
-} // namespace templates
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::templates;
-
-#include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
-
 #include "server/zone/objects/tangible/component/Component.h"
 
 #include "engine/lua/LuaObject.h"
@@ -92,8 +78,6 @@ class LightsaberCrystalComponent : public Component {
 public:
 	LightsaberCrystalComponent();
 
-	void loadTemplateData(SharedObjectTemplate* templateData);
-
 	void initializeTransientMembers();
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
@@ -107,10 +91,6 @@ public:
 	void tuneCrystal(CreatureObject* player);
 
 	void updateCrystal(int value);
-
-	int getColor();
-
-	int getQuality();
 
 	int getMinimumDamage();
 
@@ -126,19 +106,19 @@ public:
 
 	int getSacMind();
 
-	float getWoundChance();
-
-	String getCrystalType();
+	int getWoundChance();
 
 	String getOwner();
 
-	void setCrystalType(String& value);
+	int getQuality();
 
-	void setOwner(String& value);
+	void setQuality(int qual);
+
+	int getColor();
 
 	void setColor(int value);
 
-	void setQuality(int value);
+	void setOwner(String& value);
 
 	void setMinimumDamage(int value);
 
@@ -154,7 +134,7 @@ public:
 
 	void setAttackSpeed(float value);
 
-	void setWoundChance(float value);
+	void setWoundChance(int value);
 
 	bool isLightsaberCrystalObject();
 
@@ -167,7 +147,6 @@ protected:
 
 	virtual ~LightsaberCrystalComponent();
 
-	String _return_getCrystalType;
 	String _return_getOwner;
 
 	friend class LightsaberCrystalComponentHelper;
@@ -191,6 +170,10 @@ namespace lightsaber {
 
 class LightsaberCrystalComponentImplementation : public ComponentImplementation {
 protected:
+	String postTuneNameCrystal;
+
+	String postTuneNamePearl;
+
 	int color;
 
 	int quality;
@@ -211,18 +194,14 @@ protected:
 
 	int sacMind;
 
-	float woundChance;
+	int woundChance;
 
 	String crystalType;
-
-	Reference<LightsaberCrystalObjectTemplate* > lightsaberCrystalObjectTemplate;
 
 public:
 	LightsaberCrystalComponentImplementation();
 
 	LightsaberCrystalComponentImplementation(DummyConstructorParameter* param);
-
-	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
@@ -238,10 +217,6 @@ public:
 
 	void updateCrystal(int value);
 
-	int getColor();
-
-	int getQuality();
-
 	int getMinimumDamage();
 
 	int getMaximumDamage();
@@ -256,19 +231,19 @@ public:
 
 	int getSacMind();
 
-	float getWoundChance();
-
-	String getCrystalType();
+	int getWoundChance();
 
 	String getOwner();
 
-	void setCrystalType(String& value);
+	int getQuality();
 
-	void setOwner(String& value);
+	void setQuality(int qual);
+
+	int getColor();
 
 	void setColor(int value);
 
-	void setQuality(int value);
+	void setOwner(String& value);
 
 	void setMinimumDamage(int value);
 
@@ -284,7 +259,7 @@ public:
 
 	void setAttackSpeed(float value);
 
-	void setWoundChance(float value);
+	void setWoundChance(int value);
 
 	bool isLightsaberCrystalObject();
 
@@ -341,10 +316,6 @@ public:
 
 	void updateCrystal(int value);
 
-	int getColor();
-
-	int getQuality();
-
 	int getMinimumDamage();
 
 	int getMaximumDamage();
@@ -359,19 +330,19 @@ public:
 
 	int getSacMind();
 
-	float getWoundChance();
-
-	String getCrystalType();
+	int getWoundChance();
 
 	String getOwner();
 
-	void setCrystalType(String& value);
+	int getQuality();
 
-	void setOwner(String& value);
+	void setQuality(int qual);
+
+	int getColor();
 
 	void setColor(int value);
 
-	void setQuality(int value);
+	void setOwner(String& value);
 
 	void setMinimumDamage(int value);
 
@@ -387,12 +358,11 @@ public:
 
 	void setAttackSpeed(float value);
 
-	void setWoundChance(float value);
+	void setWoundChance(int value);
 
 	bool isLightsaberCrystalObject();
 
 protected:
-	String _param0_setCrystalType__String_;
 	String _param0_setOwner__String_;
 };
 
