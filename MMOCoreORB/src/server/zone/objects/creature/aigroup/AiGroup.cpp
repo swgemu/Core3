@@ -583,7 +583,7 @@ DistributedObject* AiGroupHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AiGroupHelper::instantiateServant() {
-	return new AiGroupImplementation(DummyConstructorParameter::instance());
+	return new AiGroupImplementation();
 }
 
 DistributedObjectAdapter* AiGroupHelper::createAdapter(DistributedObjectStub* obj) {

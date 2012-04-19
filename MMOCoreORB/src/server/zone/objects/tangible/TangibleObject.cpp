@@ -2278,7 +2278,7 @@ DistributedObject* TangibleObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TangibleObjectHelper::instantiateServant() {
-	return new TangibleObjectImplementation(DummyConstructorParameter::instance());
+	return new TangibleObjectImplementation();
 }
 
 DistributedObjectAdapter* TangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {

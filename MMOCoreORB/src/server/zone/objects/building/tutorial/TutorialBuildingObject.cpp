@@ -353,7 +353,7 @@ DistributedObject* TutorialBuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TutorialBuildingObjectHelper::instantiateServant() {
-	return new TutorialBuildingObjectImplementation(DummyConstructorParameter::instance());
+	return new TutorialBuildingObjectImplementation();
 }
 
 DistributedObjectAdapter* TutorialBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

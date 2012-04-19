@@ -264,7 +264,7 @@ DistributedObject* PsgArmorObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PsgArmorObjectHelper::instantiateServant() {
-	return new PsgArmorObjectImplementation(DummyConstructorParameter::instance());
+	return new PsgArmorObjectImplementation();
 }
 
 DistributedObjectAdapter* PsgArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {

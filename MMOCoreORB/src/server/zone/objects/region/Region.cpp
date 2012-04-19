@@ -474,7 +474,7 @@ DistributedObject* RegionHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RegionHelper::instantiateServant() {
-	return new RegionImplementation(DummyConstructorParameter::instance());
+	return new RegionImplementation();
 }
 
 DistributedObjectAdapter* RegionHelper::createAdapter(DistributedObjectStub* obj) {

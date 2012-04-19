@@ -675,7 +675,7 @@ DistributedObject* ActiveAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ActiveAreaHelper::instantiateServant() {
-	return new ActiveAreaImplementation(DummyConstructorParameter::instance());
+	return new ActiveAreaImplementation();
 }
 
 DistributedObjectAdapter* ActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {

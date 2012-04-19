@@ -587,7 +587,7 @@ DistributedObject* RangedStimPackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RangedStimPackHelper::instantiateServant() {
-	return new RangedStimPackImplementation(DummyConstructorParameter::instance());
+	return new RangedStimPackImplementation();
 }
 
 DistributedObjectAdapter* RangedStimPackHelper::createAdapter(DistributedObjectStub* obj) {

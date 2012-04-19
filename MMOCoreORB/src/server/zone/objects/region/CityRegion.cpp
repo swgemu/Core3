@@ -2116,7 +2116,7 @@ DistributedObject* CityRegionHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CityRegionHelper::instantiateServant() {
-	return new CityRegionImplementation(DummyConstructorParameter::instance());
+	return new CityRegionImplementation();
 }
 
 DistributedObjectAdapter* CityRegionHelper::createAdapter(DistributedObjectStub* obj) {

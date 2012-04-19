@@ -642,7 +642,7 @@ DistributedObject* ResourceContainerHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ResourceContainerHelper::instantiateServant() {
-	return new ResourceContainerImplementation(DummyConstructorParameter::instance());
+	return new ResourceContainerImplementation();
 }
 
 DistributedObjectAdapter* ResourceContainerHelper::createAdapter(DistributedObjectStub* obj) {

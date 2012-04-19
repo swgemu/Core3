@@ -810,7 +810,7 @@ DistributedObject* DotPackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* DotPackHelper::instantiateServant() {
-	return new DotPackImplementation(DummyConstructorParameter::instance());
+	return new DotPackImplementation();
 }
 
 DistributedObjectAdapter* DotPackHelper::createAdapter(DistributedObjectStub* obj) {

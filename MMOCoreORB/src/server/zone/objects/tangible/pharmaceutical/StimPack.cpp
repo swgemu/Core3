@@ -422,7 +422,7 @@ DistributedObject* StimPackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StimPackHelper::instantiateServant() {
-	return new StimPackImplementation(DummyConstructorParameter::instance());
+	return new StimPackImplementation();
 }
 
 DistributedObjectAdapter* StimPackHelper::createAdapter(DistributedObjectStub* obj) {

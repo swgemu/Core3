@@ -746,7 +746,7 @@ DistributedObject* ConsumableHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ConsumableHelper::instantiateServant() {
-	return new ConsumableImplementation(DummyConstructorParameter::instance());
+	return new ConsumableImplementation();
 }
 
 DistributedObjectAdapter* ConsumableHelper::createAdapter(DistributedObjectStub* obj) {

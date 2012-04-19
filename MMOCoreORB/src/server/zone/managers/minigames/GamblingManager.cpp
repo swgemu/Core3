@@ -1219,7 +1219,7 @@ DistributedObject* GamblingManagerHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GamblingManagerHelper::instantiateServant() {
-	return new GamblingManagerImplementation(DummyConstructorParameter::instance());
+	return new GamblingManagerImplementation();
 }
 
 DistributedObjectAdapter* GamblingManagerHelper::createAdapter(DistributedObjectStub* obj) {

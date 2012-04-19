@@ -265,7 +265,7 @@ DistributedObject* StaticSpawnAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StaticSpawnAreaHelper::instantiateServant() {
-	return new StaticSpawnAreaImplementation(DummyConstructorParameter::instance());
+	return new StaticSpawnAreaImplementation();
 }
 
 DistributedObjectAdapter* StaticSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {

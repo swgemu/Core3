@@ -201,7 +201,7 @@ DistributedObject* TravelBuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TravelBuildingObjectHelper::instantiateServant() {
-	return new TravelBuildingObjectImplementation(DummyConstructorParameter::instance());
+	return new TravelBuildingObjectImplementation();
 }
 
 DistributedObjectAdapter* TravelBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

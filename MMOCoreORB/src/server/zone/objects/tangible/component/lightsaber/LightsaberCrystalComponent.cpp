@@ -1159,7 +1159,7 @@ DistributedObject* LightsaberCrystalComponentHelper::instantiateObject() {
 }
 
 DistributedObjectServant* LightsaberCrystalComponentHelper::instantiateServant() {
-	return new LightsaberCrystalComponentImplementation(DummyConstructorParameter::instance());
+	return new LightsaberCrystalComponentImplementation();
 }
 
 DistributedObjectAdapter* LightsaberCrystalComponentHelper::createAdapter(DistributedObjectStub* obj) {

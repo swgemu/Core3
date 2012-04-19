@@ -230,7 +230,7 @@ DistributedObject* ToolTangibleObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ToolTangibleObjectHelper::instantiateServant() {
-	return new ToolTangibleObjectImplementation(DummyConstructorParameter::instance());
+	return new ToolTangibleObjectImplementation();
 }
 
 DistributedObjectAdapter* ToolTangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {

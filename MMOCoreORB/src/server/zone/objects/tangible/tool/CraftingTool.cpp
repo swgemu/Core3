@@ -715,7 +715,7 @@ DistributedObject* CraftingToolHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CraftingToolHelper::instantiateServant() {
-	return new CraftingToolImplementation(DummyConstructorParameter::instance());
+	return new CraftingToolImplementation();
 }
 
 DistributedObjectAdapter* CraftingToolHelper::createAdapter(DistributedObjectStub* obj) {

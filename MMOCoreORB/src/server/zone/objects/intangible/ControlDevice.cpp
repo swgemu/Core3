@@ -428,7 +428,7 @@ DistributedObject* ControlDeviceHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ControlDeviceHelper::instantiateServant() {
-	return new ControlDeviceImplementation(DummyConstructorParameter::instance());
+	return new ControlDeviceImplementation();
 }
 
 DistributedObjectAdapter* ControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {

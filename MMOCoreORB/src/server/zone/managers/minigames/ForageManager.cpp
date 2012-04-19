@@ -345,7 +345,7 @@ DistributedObject* ForageManagerHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ForageManagerHelper::instantiateServant() {
-	return new ForageManagerImplementation(DummyConstructorParameter::instance());
+	return new ForageManagerImplementation();
 }
 
 DistributedObjectAdapter* ForageManagerHelper::createAdapter(DistributedObjectStub* obj) {

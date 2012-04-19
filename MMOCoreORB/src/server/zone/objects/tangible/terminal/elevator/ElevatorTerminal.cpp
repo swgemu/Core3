@@ -419,7 +419,7 @@ DistributedObject* ElevatorTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ElevatorTerminalHelper::instantiateServant() {
-	return new ElevatorTerminalImplementation(DummyConstructorParameter::instance());
+	return new ElevatorTerminalImplementation();
 }
 
 DistributedObjectAdapter* ElevatorTerminalHelper::createAdapter(DistributedObjectStub* obj) {

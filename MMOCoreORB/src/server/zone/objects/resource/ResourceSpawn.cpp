@@ -1486,7 +1486,7 @@ DistributedObject* ResourceSpawnHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ResourceSpawnHelper::instantiateServant() {
-	return new ResourceSpawnImplementation(DummyConstructorParameter::instance());
+	return new ResourceSpawnImplementation();
 }
 
 DistributedObjectAdapter* ResourceSpawnHelper::createAdapter(DistributedObjectStub* obj) {

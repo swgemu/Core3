@@ -364,7 +364,7 @@ DistributedObject* DeedHelper::instantiateObject() {
 }
 
 DistributedObjectServant* DeedHelper::instantiateServant() {
-	return new DeedImplementation(DummyConstructorParameter::instance());
+	return new DeedImplementation();
 }
 
 DistributedObjectAdapter* DeedHelper::createAdapter(DistributedObjectStub* obj) {

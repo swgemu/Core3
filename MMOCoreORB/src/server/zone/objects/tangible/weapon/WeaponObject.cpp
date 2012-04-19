@@ -2326,7 +2326,7 @@ DistributedObject* WeaponObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* WeaponObjectHelper::instantiateServant() {
-	return new WeaponObjectImplementation(DummyConstructorParameter::instance());
+	return new WeaponObjectImplementation();
 }
 
 DistributedObjectAdapter* WeaponObjectHelper::createAdapter(DistributedObjectStub* obj) {

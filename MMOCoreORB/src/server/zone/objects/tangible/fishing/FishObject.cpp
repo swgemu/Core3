@@ -414,7 +414,7 @@ DistributedObject* FishObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FishObjectHelper::instantiateServant() {
-	return new FishObjectImplementation(DummyConstructorParameter::instance());
+	return new FishObjectImplementation();
 }
 
 DistributedObjectAdapter* FishObjectHelper::createAdapter(DistributedObjectStub* obj) {

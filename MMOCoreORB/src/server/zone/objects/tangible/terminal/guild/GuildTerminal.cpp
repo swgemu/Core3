@@ -371,7 +371,7 @@ DistributedObject* GuildTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GuildTerminalHelper::instantiateServant() {
-	return new GuildTerminalImplementation(DummyConstructorParameter::instance());
+	return new GuildTerminalImplementation();
 }
 
 DistributedObjectAdapter* GuildTerminalHelper::createAdapter(DistributedObjectStub* obj) {

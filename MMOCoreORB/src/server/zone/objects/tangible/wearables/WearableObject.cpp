@@ -512,7 +512,7 @@ DistributedObject* WearableObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* WearableObjectHelper::instantiateServant() {
-	return new WearableObjectImplementation(DummyConstructorParameter::instance());
+	return new WearableObjectImplementation();
 }
 
 DistributedObjectAdapter* WearableObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -322,7 +322,7 @@ DistributedObject* SlicingToolHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SlicingToolHelper::instantiateServant() {
-	return new SlicingToolImplementation(DummyConstructorParameter::instance());
+	return new SlicingToolImplementation();
 }
 
 DistributedObjectAdapter* SlicingToolHelper::createAdapter(DistributedObjectStub* obj) {

@@ -487,7 +487,7 @@ DistributedObject* CraftingManagerHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CraftingManagerHelper::instantiateServant() {
-	return new CraftingManagerImplementation(DummyConstructorParameter::instance());
+	return new CraftingManagerImplementation();
 }
 
 DistributedObjectAdapter* CraftingManagerHelper::createAdapter(DistributedObjectStub* obj) {

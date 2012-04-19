@@ -242,7 +242,7 @@ DistributedObject* StaticObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StaticObjectHelper::instantiateServant() {
-	return new StaticObjectImplementation(DummyConstructorParameter::instance());
+	return new StaticObjectImplementation();
 }
 
 DistributedObjectAdapter* StaticObjectHelper::createAdapter(DistributedObjectStub* obj) {

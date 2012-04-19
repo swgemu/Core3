@@ -257,7 +257,7 @@ DistributedObject* DrinkHelper::instantiateObject() {
 }
 
 DistributedObjectServant* DrinkHelper::instantiateServant() {
-	return new DrinkImplementation(DummyConstructorParameter::instance());
+	return new DrinkImplementation();
 }
 
 DistributedObjectAdapter* DrinkHelper::createAdapter(DistributedObjectStub* obj) {

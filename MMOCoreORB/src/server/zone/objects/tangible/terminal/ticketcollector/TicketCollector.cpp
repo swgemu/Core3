@@ -303,7 +303,7 @@ DistributedObject* TicketCollectorHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TicketCollectorHelper::instantiateServant() {
-	return new TicketCollectorImplementation(DummyConstructorParameter::instance());
+	return new TicketCollectorImplementation();
 }
 
 DistributedObjectAdapter* TicketCollectorHelper::createAdapter(DistributedObjectStub* obj) {

@@ -266,7 +266,7 @@ DistributedObject* ChatMessageHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ChatMessageHelper::instantiateServant() {
-	return new ChatMessageImplementation(DummyConstructorParameter::instance());
+	return new ChatMessageImplementation();
 }
 
 DistributedObjectAdapter* ChatMessageHelper::createAdapter(DistributedObjectStub* obj) {

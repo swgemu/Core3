@@ -596,7 +596,7 @@ DistributedObject* TradeSessionHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TradeSessionHelper::instantiateServant() {
-	return new TradeSessionImplementation(DummyConstructorParameter::instance());
+	return new TradeSessionImplementation();
 }
 
 DistributedObjectAdapter* TradeSessionHelper::createAdapter(DistributedObjectStub* obj) {

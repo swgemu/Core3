@@ -353,7 +353,7 @@ DistributedObject* ScreenPlayObserverHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ScreenPlayObserverHelper::instantiateServant() {
-	return new ScreenPlayObserverImplementation(DummyConstructorParameter::instance());
+	return new ScreenPlayObserverImplementation();
 }
 
 DistributedObjectAdapter* ScreenPlayObserverHelper::createAdapter(DistributedObjectStub* obj) {

@@ -209,19 +209,19 @@ namespace sessions {
 
 class CraftingSessionImplementation : public FacadeImplementation {
 protected:
-	ManagedReference<CreatureObject* > crafter;
+	ManagedWeakReference<CreatureObject* > crafter;
 
-	ManagedReference<PlayerObject* > crafterGhost;
+	ManagedWeakReference<PlayerObject* > crafterGhost;
 
-	ManagedReference<CraftingTool* > craftingTool;
+	ManagedWeakReference<CraftingTool* > craftingTool;
 
-	ManagedReference<CraftingStation* > craftingStation;
+	ManagedWeakReference<CraftingStation* > craftingStation;
 
-	ManagedReference<CraftingManager* > craftingManager;
+	ManagedWeakReference<CraftingManager* > craftingManager;
 
-	ManagedReference<ManufactureSchematic* > manufactureSchematic;
+	ManagedWeakReference<ManufactureSchematic* > manufactureSchematic;
 
-	ManagedReference<TangibleObject* > prototype;
+	ManagedWeakReference<TangibleObject* > prototype;
 
 	int experimentationPointsTotal;
 

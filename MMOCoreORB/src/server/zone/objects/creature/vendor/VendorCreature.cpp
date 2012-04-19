@@ -479,7 +479,7 @@ DistributedObject* VendorCreatureHelper::instantiateObject() {
 }
 
 DistributedObjectServant* VendorCreatureHelper::instantiateServant() {
-	return new VendorCreatureImplementation(DummyConstructorParameter::instance());
+	return new VendorCreatureImplementation();
 }
 
 DistributedObjectAdapter* VendorCreatureHelper::createAdapter(DistributedObjectStub* obj) {

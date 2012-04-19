@@ -222,7 +222,7 @@ DistributedObject* HerdGroupHelper::instantiateObject() {
 }
 
 DistributedObjectServant* HerdGroupHelper::instantiateServant() {
-	return new HerdGroupImplementation(DummyConstructorParameter::instance());
+	return new HerdGroupImplementation();
 }
 
 DistributedObjectAdapter* HerdGroupHelper::createAdapter(DistributedObjectStub* obj) {
