@@ -235,7 +235,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	newCrate->setUseCount(newStackSize, false);
 	setUseCount(getUseCount() - newStackSize, true);
 
-	newCrate->setObjectName(*getObjectName());
+	newCrate->setCustomObjectName(getCustomObjectName(), false);
 
 	if (parent != NULL) {
 		getParent()->transferObject(newCrate, -1, true);
