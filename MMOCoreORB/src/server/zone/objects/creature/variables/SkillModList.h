@@ -56,6 +56,20 @@ public:
 		setAllowOverwriteInsertPlan();
 		setNullValue(0);
 	}
+
+	SkillModGroup(const SkillModGroup& m) : VectorMap<String, int>(m) {
+		setAllowOverwriteInsertPlan();
+		setNullValue(0);
+	}
+
+	SkillModGroup& operator=(const SkillModGroup& m) {
+		if (this == &m)
+			return *this;
+
+		VectorMap<String, int>::operator =(m);
+
+		return *this;
+	}
 };
 
 class SkillModList : public DeltaVectorMap<String, SkillModEntry> {
