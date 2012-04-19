@@ -82,22 +82,6 @@ public:
 			groupManager->inviteToGroup(creature, player);
 		}
 
-		/*if (object == NULL || (!object->isPlayer() &&
-						!(object->isNonPlayerCreature() && ((CreatureObject*)object)->isPet())) ||
-						object == player)
-					return false;
-
-				 	if (object->isPlayer()) {
-				 		Player* invitePlayer = cast<Player*>( object);
-				 		groupManager->inviteToGroup(player, invitePlayer);
-				 	}
-				 	if (object->isNonPlayerCreature()) {
-				 		CreatureObject* creo = cast<CreatureObject*>( object);
-				 		if (creo->isPet()) {
-				 			groupManager->invitePetToGroupcast<player,(CreaturePet*>(creo));
-				 		}
-				 	}*/
-
 		return SUCCESS;
 	}
 

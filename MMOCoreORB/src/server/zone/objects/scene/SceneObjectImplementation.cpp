@@ -194,7 +194,7 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 }
 
 void SceneObjectImplementation::createContainerComponent() {
-	containerComponent = (ContainerComponent*)templateObject->getContainerComponent();
+	containerComponent = cast<ContainerComponent*>(templateObject->getContainerComponent());
 }
 
 void SceneObjectImplementation::createComponents() {

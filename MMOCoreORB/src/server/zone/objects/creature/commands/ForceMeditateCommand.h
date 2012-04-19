@@ -72,7 +72,7 @@ public:
 		}
 
 		// Meditate
-		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* player = creature;
 
 		if (creature->isMeditating()) {
 			player->sendSystemMessage("@jedi_spam:already_in_meditative_state");

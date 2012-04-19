@@ -102,21 +102,6 @@ public:
 			return false;
 		}
 
-		/*if (creatureTarget->isPlayer() && creature->isPlayer()) {
-			Player * pt = (Player *) creatureTarget;
-			Player * p = cast<Player *>( creature);
-
-			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-
-			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-		}*/
-
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
 		if (group == NULL || !group->hasMember(creatureTarget)) {
@@ -125,7 +110,6 @@ public:
 
 				//At this point, we know that the creatureTarget is either a player or a creaturePet.
 				//TODO: Activate this switch once creature pet's are introduced.
-				//Player* consentOwner = cast<creatureTarget->isPlayer()) ? (Player*) creatureTarget : (CreaturePet*>( creatureTarget->getOwner());
 				CreatureObject* consentOwner = cast<CreatureObject*>( creatureTarget);
 
 				PlayerObject* ghost = consentOwner->getPlayerObject();
@@ -230,11 +214,6 @@ public:
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
-
-		/*if (!target->isPlayer() && !((CreatureObject*)target)->isPet()) {
-			creature->sendSystemMessage("@healing_response:healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
-			return 0;
-		}*/
 
 		if (!creatureTarget->isPlayerCreature()) {
 			creature->sendSystemMessage("@healing_response:healing_response_a2");	//You cannot apply resuscitation medication without a valid target!

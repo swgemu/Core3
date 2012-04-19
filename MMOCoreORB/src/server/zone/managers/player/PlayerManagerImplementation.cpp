@@ -892,7 +892,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
-	CloningBuildingObject* preDesignatedFacility = (CloningBuildingObject*)ghost->getCloningFacility();
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
 
 	if (closestCloning == NULL)//TODO: Add default location so people don't get stuck
 		return;
@@ -1019,7 +1019,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
-	CloningBuildingObject* preDesignatedFacility = (CloningBuildingObject*)ghost->getCloningFacility();
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
 		// bind removed
@@ -1740,7 +1740,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		}
 
 		// Check POSTURECHANGED disrupting Logout...
-		Reference<LogoutTask*> logoutTask = (LogoutTask*) creature->getPendingTask("logout");
+		Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(creature->getPendingTask("logout"));
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
 		}
