@@ -71,16 +71,24 @@ public:
 		String targetName = "";
 		String container = "";
 
-		if(!args.hasMoreTokens())
-			return GENERALERROR;
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		ManagedReference<CreatureObject*> targetObj = NULL;
 
-		args.getStringToken(targetName);
+		if(creature->getTargetID() != 0) {
+			targetObj = dynamic_cast<CreatureObject*>(server->getZoneServer()->getObject(creature->getTargetID()));
+		}
+		else {
+			if(!args.hasMoreTokens())
+				return GENERALERROR;
+
+			args.getStringToken(targetName);
+
+			targetObj = playerManager->getPlayer(targetName);
+		}
 
 		if(args.hasMoreTokens())
 			args.getStringToken(container);
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		ManagedReference<CreatureObject*> targetObj = playerManager->getPlayer(targetName);
 
 		if(targetObj == NULL) {
 			return INVALIDTARGET;
@@ -89,7 +97,12 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if(container == "" || container == "inventory") {
+
+		if (container == "equipment") {
+			targetObj->sendWithoutParentTo(creature);
+			targetObj->openContainerTo(creature);
+		}
+		else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
 			if (creatureInventory == NULL)
@@ -97,10 +110,6 @@ public:
 
 			creatureInventory->sendWithoutParentTo(creature);
 			creatureInventory->openContainerTo(creature);
-		}
-		else if (container == "equipment") {
-			targetObj->sendWithoutParentTo(creature);
-			targetObj->openContainerTo(creature);
 		}
 
 
