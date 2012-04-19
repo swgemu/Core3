@@ -120,7 +120,7 @@ public:
 
 	int getSacHealth();
 
-	int getAttackSpeed();
+	float getAttackSpeed();
 
 	int getSacAction();
 
@@ -152,7 +152,7 @@ public:
 
 	void setSacMind(int value);
 
-	void setAttackSpeed(int value);
+	void setAttackSpeed(float value);
 
 	void setWoundChance(float value);
 
@@ -197,7 +197,7 @@ protected:
 
 	String owner;
 
-	int attackSpeed;
+	float attackSpeed;
 
 	int minimumDamage;
 
@@ -250,7 +250,7 @@ public:
 
 	int getSacHealth();
 
-	int getAttackSpeed();
+	float getAttackSpeed();
 
 	int getSacAction();
 
@@ -282,7 +282,7 @@ public:
 
 	void setSacMind(int value);
 
-	void setAttackSpeed(int value);
+	void setAttackSpeed(float value);
 
 	void setWoundChance(float value);
 
@@ -353,7 +353,7 @@ public:
 
 	int getSacHealth();
 
-	int getAttackSpeed();
+	float getAttackSpeed();
 
 	int getSacAction();
 
@@ -385,7 +385,7 @@ public:
 
 	void setSacMind(int value);
 
-	void setAttackSpeed(int value);
+	void setAttackSpeed(float value);
 
 	void setWoundChance(float value);
 

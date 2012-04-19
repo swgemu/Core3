@@ -58,9 +58,10 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 
 	if (getCrystalType() == "power"){
 		if (owner != ""){
-		alm->insertAttribute("wpn_attack_speed", attackSpeed);
 		alm->insertAttribute("mindamage", minimumDamage);
 		alm->insertAttribute("maxdamage", maximumDamage);
+		alm->insertAttribute("wpn_attack_speed", attackSpeed);
+		alm->insertAttribute("wpn_wound_chance", woundChance);
 		alm->insertAttribute("wpn_attack_cost_health", sacHealth);
 		alm->insertAttribute("wpn_attack_cost_action", sacAction);
 		alm->insertAttribute("wpn_attack_cost_mind", sacMind);
@@ -112,6 +113,21 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 
 	setOwner(name);
 
+
+	UnicodeString oldName = _this->getDisplayedName(); // Get the displayed name, which is in a string file format and change it to literal.
+
+	if (oldName == "@craft_weapon_ingredients_n:force_crystal")
+		_this->setCustomObjectName("Crystal", false);
+
+	if (oldName == "@craft_weapon_ingredients_n:krayt_dragon_pearl")
+		_this->setCustomObjectName("Krayt Dragon Pearl", false);
+
+
+	StringBuffer newName;
+
+	newName << "\\#00FF00" << _this->getCustomObjectName().toString() << " (tuned)";
+	_this->setCustomObjectName(newName.toString(), true);
+
 	player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 
 }
@@ -144,7 +160,6 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 	setCrystalType(crystalType);
 
 	if (getCrystalType() == "color"){
-		setQuality(0);
 		int mod = System::random(11); // Regular Color range 0-11. Special range 12-30.
 
 		setColor(mod);
@@ -161,77 +176,85 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		updateCrystal(31);
 	}
 
-	// TODO: Need to get data on crystal gates.
+	// Seems about right according to posted screenshots...
 
 	switch (getQuality()){
-	case 0:
-		attackSpeed = (2 - System::random(1));
-		minimumDamage = (2 + System::random(5));
-		maximumDamage = (3 + System::random(5));
-		sacHealth = (10 - System::random(5));
-		sacAction = (10 - System::random(5));
-		sacMind = (10 - System::random(5));
-		forceCost = (8 - System::random(5));
+	case 0: // Poor
+		attackSpeed = (2.00 - System::random(1.25));
+		minimumDamage = (2 + System::random(4));
+		maximumDamage = (3 + System::random(4));
+		woundChance = (1 + System::random(2));
+		sacHealth = (0 - System::random(4));
+		sacAction = (0 - System::random(4));
+		sacMind = (0 - System::random(4));
+		forceCost = (0 - System::random(4));
 		break;
-	case 1:
-		attackSpeed = (1 - System::random(1));
+	case 1: // Good
+		attackSpeed = (1.80 - System::random(1.25));
 		minimumDamage = (5 + System::random(5));
 		maximumDamage = (10 + System::random(10));
-		sacHealth = (9 - System::random(6));
-		sacAction = (9 - System::random(6));
-		sacMind = (9 - System::random(6));
-		forceCost = (7 - System::random(6));
+		woundChance = (2 + System::random(2));
+		sacHealth = (0 - System::random(4));
+		sacAction = (0 - System::random(4));
+		sacMind = (0 - System::random(4));
+		forceCost = (0 - System::random(4));
 		break;
-	case 2:
-		attackSpeed = (1 - System::random(1));
+	case 2: // Okay
+		attackSpeed = (1.60 - System::random(1.25));
 		minimumDamage = (10 + System::random(5));
 		maximumDamage = (15 + System::random(10));
-		sacHealth = (8 - System::random(7));
-		sacAction = (8 - System::random(7));
-		sacMind = (8 - System::random(7));
-		forceCost = (6 - System::random(7));
+		woundChance = (2 + System::random(3));
+		sacHealth = (0 - System::random(5));
+		sacAction = (0 - System::random(5));
+		sacMind = (0 - System::random(5));
+		forceCost = (0 - System::random(5));
 		break;
-	case 3:
-		attackSpeed = (1 - System::random(1));
+	case 3: // Quality
+		attackSpeed = (1.40 - System::random(1.25));
 		minimumDamage = (15 + System::random(5));
 		maximumDamage = (20 + System::random(10));
-		sacHealth = (7 - System::random(9));
-		sacAction = (7 - System::random(9));
-		sacMind = (7 - System::random(9));
-		forceCost = (5 - System::random(9));
+		woundChance = (3 + System::random(3));
+		sacHealth = (0 - System::random(6));
+		sacAction = (0 - System::random(6));
+		sacMind = (0 - System::random(6));
+		forceCost = (0 - System::random(6));
 		break;
-	case 4:
-		attackSpeed = (1 - System::random(1));
+	case 4: // Select
+		attackSpeed = (1.20 - System::random(1.25));
 		minimumDamage = (20 + System::random(5));
 		maximumDamage = (25 + System::random(10));
-		sacHealth = (6 - System::random(10));
-		sacAction = (6 - System::random(10));
-		sacMind = (6 - System::random(10));
-		forceCost = (4 - System::random(10));
+		woundChance = (3 + System::random(4));
+		sacHealth = (0 - System::random(7));
+		sacAction = (0 - System::random(7));
+		sacMind = (0 - System::random(7));
+		forceCost = (0 - System::random(7));
 		break;
-	case 5:
-		attackSpeed = (1 - System::random(1));
+	case 5: // Premium
+		attackSpeed = (1.00 - System::random(1.25));
+		minimumDamage = (30 + System::random(20));
+		maximumDamage = (35 + System::random(15));
+		woundChance = (4 + System::random(4));
+		sacHealth = (0 - System::random(8));
+		sacAction = (0 - System::random(8));
+		sacMind = (0 - System::random(8));
+		forceCost = (0 - System::random(8));
+		break;
+	case 6: // Flawless
+		attackSpeed = (0.80 - System::random(1.25));
 		minimumDamage = (40 + System::random(10));
 		maximumDamage = (45 + System::random(5));
-		sacHealth = (5 - System::random(14));
-		sacAction = (5 - System::random(14));
-		sacMind = (5 - System::random(14));
-		forceCost = (3 - System::random(14));
-		break;
-	case 6:
-		attackSpeed = (1 - System::random(1));
-		minimumDamage = (40 + System::random(10));
-		maximumDamage = (45 + System::random(5));
-		sacHealth = (5 - System::random(14));
-		sacAction = (5 - System::random(14));
-		sacMind = (5 - System::random(14));
-		forceCost = (2 - System::random(14));
+		woundChance = (4 + System::random(5));
+		sacHealth = (0 - System::random(9));
+		sacAction = (0 - System::random(9));
+		sacMind = (0 - System::random(9));
+		forceCost = (0 - System::random(9));
 		break;
 	}
 
 	setAttackSpeed(attackSpeed);
 	setMinimumDamage(minimumDamage);
 	setMaximumDamage(maximumDamage);
+	setWoundChance(woundChance);
 	setSacHealth(sacHealth);
 	setSacAction(sacAction);
 	setSacMind(sacMind);

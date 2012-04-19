@@ -18,7 +18,7 @@
  *	LightsaberCrystalComponentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETCOLOR__,RPC_GETQUALITY__,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETCRYSTALTYPE__,RPC_GETOWNER__,RPC_SETCRYSTALTYPE__STRING_,RPC_SETOWNER__STRING_,RPC_SETCOLOR__INT_,RPC_SETQUALITY__INT_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__INT_,RPC_SETWOUNDCHANCE__FLOAT_,RPC_ISLIGHTSABERCRYSTALOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_TUNECRYSTAL__CREATUREOBJECT_,RPC_UPDATECRYSTAL__INT_,RPC_GETCOLOR__,RPC_GETQUALITY__,RPC_GETMINIMUMDAMAGE__,RPC_GETMAXIMUMDAMAGE__,RPC_GETFORCECOST__,RPC_GETSACHEALTH__,RPC_GETATTACKSPEED__,RPC_GETSACACTION__,RPC_GETSACMIND__,RPC_GETWOUNDCHANCE__,RPC_GETCRYSTALTYPE__,RPC_GETOWNER__,RPC_SETCRYSTALTYPE__STRING_,RPC_SETOWNER__STRING_,RPC_SETCOLOR__INT_,RPC_SETQUALITY__INT_,RPC_SETMINIMUMDAMAGE__INT_,RPC_SETMAXIMUMDAMAGE__INT_,RPC_SETFORCECOST__INT_,RPC_SETSACHEALTH__INT_,RPC_SETSACACTION__INT_,RPC_SETSACMIND__INT_,RPC_SETATTACKSPEED__FLOAT_,RPC_SETWOUNDCHANCE__FLOAT_,RPC_ISLIGHTSABERCRYSTALOBJECT__};
 
 LightsaberCrystalComponent::LightsaberCrystalComponent() : Component(DummyConstructorParameter::instance()) {
 	LightsaberCrystalComponentImplementation* _implementation = new LightsaberCrystalComponentImplementation();
@@ -212,7 +212,7 @@ int LightsaberCrystalComponent::getSacHealth() {
 		return _implementation->getSacHealth();
 }
 
-int LightsaberCrystalComponent::getAttackSpeed() {
+float LightsaberCrystalComponent::getAttackSpeed() {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -220,7 +220,7 @@ int LightsaberCrystalComponent::getAttackSpeed() {
 
 		DistributedMethod method(this, RPC_GETATTACKSPEED__);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getAttackSpeed();
 }
@@ -432,14 +432,14 @@ void LightsaberCrystalComponent::setSacMind(int value) {
 		_implementation->setSacMind(value);
 }
 
-void LightsaberCrystalComponent::setAttackSpeed(int value) {
+void LightsaberCrystalComponent::setAttackSpeed(float value) {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETATTACKSPEED__INT_);
-		method.addSignedIntParameter(value);
+		DistributedMethod method(this, RPC_SETATTACKSPEED__FLOAT_);
+		method.addFloatParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
@@ -594,7 +594,7 @@ bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStrea
 	}
 
 	if (_name == "LightsaberCrystalComponent.attackSpeed") {
-		TypeInfo<int >::parseFromBinaryStream(&attackSpeed, stream);
+		TypeInfo<float >::parseFromBinaryStream(&attackSpeed, stream);
 		return true;
 	}
 
@@ -683,7 +683,7 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&attackSpeed, stream);
+	TypeInfo<float >::toBinaryStream(&attackSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -763,8 +763,8 @@ LightsaberCrystalComponentImplementation::LightsaberCrystalComponentImplementati
 	color = 0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = 0;
 	quality = 0;
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		attackSpeed = 0;
-	attackSpeed = 0;
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		attackSpeed = 0.0;
+	attackSpeed = 0.0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		minimumDamage = 0;
 	minimumDamage = 0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		maximumDamage = 0;
@@ -813,7 +813,7 @@ int LightsaberCrystalComponentImplementation::getSacHealth() {
 	return sacHealth;
 }
 
-int LightsaberCrystalComponentImplementation::getAttackSpeed() {
+float LightsaberCrystalComponentImplementation::getAttackSpeed() {
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		return attackSpeed;
 	return attackSpeed;
 }
@@ -893,7 +893,7 @@ void LightsaberCrystalComponentImplementation::setSacMind(int value) {
 	sacMind = value;
 }
 
-void LightsaberCrystalComponentImplementation::setAttackSpeed(int value) {
+void LightsaberCrystalComponentImplementation::setAttackSpeed(float value) {
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		attackSpeed = value;
 	attackSpeed = value;
 }
@@ -957,7 +957,7 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 		resp->insertSignedInt(getSacHealth());
 		break;
 	case RPC_GETATTACKSPEED__:
-		resp->insertSignedInt(getAttackSpeed());
+		resp->insertFloat(getAttackSpeed());
 		break;
 	case RPC_GETSACACTION__:
 		resp->insertSignedInt(getSacAction());
@@ -1004,8 +1004,8 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_SETSACMIND__INT_:
 		setSacMind(inv->getSignedIntParameter());
 		break;
-	case RPC_SETATTACKSPEED__INT_:
-		setAttackSpeed(inv->getSignedIntParameter());
+	case RPC_SETATTACKSPEED__FLOAT_:
+		setAttackSpeed(inv->getFloatParameter());
 		break;
 	case RPC_SETWOUNDCHANCE__FLOAT_:
 		setWoundChance(inv->getFloatParameter());
@@ -1062,7 +1062,7 @@ int LightsaberCrystalComponentAdapter::getSacHealth() {
 	return (static_cast<LightsaberCrystalComponent*>(stub))->getSacHealth();
 }
 
-int LightsaberCrystalComponentAdapter::getAttackSpeed() {
+float LightsaberCrystalComponentAdapter::getAttackSpeed() {
 	return (static_cast<LightsaberCrystalComponent*>(stub))->getAttackSpeed();
 }
 
@@ -1126,7 +1126,7 @@ void LightsaberCrystalComponentAdapter::setSacMind(int value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setSacMind(value);
 }
 
-void LightsaberCrystalComponentAdapter::setAttackSpeed(int value) {
+void LightsaberCrystalComponentAdapter::setAttackSpeed(float value) {
 	(static_cast<LightsaberCrystalComponent*>(stub))->setAttackSpeed(value);
 }
 
