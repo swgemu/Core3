@@ -313,7 +313,7 @@ DistributedObject* RobeObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RobeObjectHelper::instantiateServant() {
-	return new RobeObjectImplementation();
+	return new RobeObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* RobeObjectHelper::createAdapter(DistributedObjectStub* obj) {

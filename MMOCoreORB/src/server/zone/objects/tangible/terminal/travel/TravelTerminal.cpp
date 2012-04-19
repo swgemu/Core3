@@ -302,7 +302,7 @@ DistributedObject* TravelTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TravelTerminalHelper::instantiateServant() {
-	return new TravelTerminalImplementation();
+	return new TravelTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* TravelTerminalHelper::createAdapter(DistributedObjectStub* obj) {

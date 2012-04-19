@@ -846,7 +846,7 @@ DistributedObject* CampSiteActiveAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CampSiteActiveAreaHelper::instantiateServant() {
-	return new CampSiteActiveAreaImplementation();
+	return new CampSiteActiveAreaImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* CampSiteActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {

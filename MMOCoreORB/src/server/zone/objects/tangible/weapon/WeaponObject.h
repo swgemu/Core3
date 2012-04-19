@@ -331,6 +331,8 @@ public:
 
 	String repairAttempt(int repairChance);
 
+	void decay(CreatureObject* user, float damage);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -617,6 +619,8 @@ public:
 
 	String repairAttempt(int repairChance);
 
+	void decay(CreatureObject* user, float damage);
+
 	WeakReference<WeaponObject*> _this;
 
 	operator const WeaponObject*();
@@ -793,6 +797,8 @@ public:
 	void decreasePowerupUses(CreatureObject* player);
 
 	String repairAttempt(int repairChance);
+
+	void decay(CreatureObject* user, float damage);
 
 };
 

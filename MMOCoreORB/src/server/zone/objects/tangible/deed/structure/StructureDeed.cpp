@@ -620,7 +620,7 @@ DistributedObject* StructureDeedHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StructureDeedHelper::instantiateServant() {
-	return new StructureDeedImplementation();
+	return new StructureDeedImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* StructureDeedHelper::createAdapter(DistributedObjectStub* obj) {

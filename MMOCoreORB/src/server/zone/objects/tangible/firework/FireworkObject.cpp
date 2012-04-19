@@ -416,7 +416,7 @@ DistributedObject* FireworkObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FireworkObjectHelper::instantiateServant() {
-	return new FireworkObjectImplementation();
+	return new FireworkObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FireworkObjectHelper::createAdapter(DistributedObjectStub* obj) {

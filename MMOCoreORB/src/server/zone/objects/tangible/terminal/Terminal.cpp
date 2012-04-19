@@ -440,7 +440,7 @@ DistributedObject* TerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TerminalHelper::instantiateServant() {
-	return new TerminalImplementation();
+	return new TerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* TerminalHelper::createAdapter(DistributedObjectStub* obj) {

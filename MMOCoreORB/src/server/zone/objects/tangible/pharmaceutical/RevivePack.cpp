@@ -600,7 +600,7 @@ DistributedObject* RevivePackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RevivePackHelper::instantiateServant() {
-	return new RevivePackImplementation();
+	return new RevivePackImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* RevivePackHelper::createAdapter(DistributedObjectStub* obj) {

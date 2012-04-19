@@ -197,7 +197,7 @@ DistributedObject* FighterShipObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FighterShipObjectHelper::instantiateServant() {
-	return new FighterShipObjectImplementation();
+	return new FighterShipObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FighterShipObjectHelper::createAdapter(DistributedObjectStub* obj) {

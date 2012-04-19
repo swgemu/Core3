@@ -891,7 +891,7 @@ DistributedObject* SurveyToolHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SurveyToolHelper::instantiateServant() {
-	return new SurveyToolImplementation();
+	return new SurveyToolImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SurveyToolHelper::createAdapter(DistributedObjectStub* obj) {

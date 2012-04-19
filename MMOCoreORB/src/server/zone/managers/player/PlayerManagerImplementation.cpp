@@ -1105,12 +1105,10 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			playerWeaponXp += xpAmmount;
 
-			if (!weapon->isJediWeapon() && weapon->getAttackType() != WeaponObject::FORCEATTACK){
+			if (!weapon->isJediWeapon() && weapon->getAttackType() != WeaponObject::FORCEATTACK) {
 				awardExperience(player, xpType, xpAmmount);
 				awardExperience(player, "combat_general", playerWeaponXp / 10);
-			}
-
-			else // Grant Jedi general experience for lightsabers AND Force powers.
+			} else // Grant Jedi general experience for lightsabers AND Force powers.
 				awardExperience(player, "jedi_general", xpAmmount / 4);
 
 		}

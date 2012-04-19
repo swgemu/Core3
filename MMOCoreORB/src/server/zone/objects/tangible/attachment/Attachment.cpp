@@ -631,7 +631,7 @@ DistributedObject* AttachmentHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AttachmentHelper::instantiateServant() {
-	return new AttachmentImplementation();
+	return new AttachmentImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* AttachmentHelper::createAdapter(DistributedObjectStub* obj) {

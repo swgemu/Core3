@@ -725,7 +725,7 @@ DistributedObject* DraftSchematicHelper::instantiateObject() {
 }
 
 DistributedObjectServant* DraftSchematicHelper::instantiateServant() {
-	return new DraftSchematicImplementation();
+	return new DraftSchematicImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* DraftSchematicHelper::createAdapter(DistributedObjectStub* obj) {

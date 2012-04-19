@@ -717,7 +717,7 @@ DistributedObject* CreatureHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CreatureHelper::instantiateServant() {
-	return new CreatureImplementation();
+	return new CreatureImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* CreatureHelper::createAdapter(DistributedObjectStub* obj) {

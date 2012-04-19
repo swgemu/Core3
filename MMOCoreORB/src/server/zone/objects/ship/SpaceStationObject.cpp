@@ -197,7 +197,7 @@ DistributedObject* SpaceStationObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SpaceStationObjectHelper::instantiateServant() {
-	return new SpaceStationObjectImplementation();
+	return new SpaceStationObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SpaceStationObjectHelper::createAdapter(DistributedObjectStub* obj) {

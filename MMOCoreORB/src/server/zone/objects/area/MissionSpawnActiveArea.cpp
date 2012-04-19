@@ -295,7 +295,7 @@ DistributedObject* MissionSpawnActiveAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* MissionSpawnActiveAreaHelper::instantiateServant() {
-	return new MissionSpawnActiveAreaImplementation();
+	return new MissionSpawnActiveAreaImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* MissionSpawnActiveAreaHelper::createAdapter(DistributedObjectStub* obj) {

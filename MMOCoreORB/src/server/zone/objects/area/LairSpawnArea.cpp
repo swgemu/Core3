@@ -432,7 +432,7 @@ DistributedObject* LairSpawnAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* LairSpawnAreaHelper::instantiateServant() {
-	return new LairSpawnAreaImplementation();
+	return new LairSpawnAreaImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* LairSpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {

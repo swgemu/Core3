@@ -641,7 +641,7 @@ DistributedObject* ComponentHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ComponentHelper::instantiateServant() {
-	return new ComponentImplementation();
+	return new ComponentImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ComponentHelper::createAdapter(DistributedObjectStub* obj) {

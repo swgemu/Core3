@@ -321,7 +321,7 @@ DistributedObject* CharacterBuilderTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* CharacterBuilderTerminalHelper::instantiateServant() {
-	return new CharacterBuilderTerminalImplementation();
+	return new CharacterBuilderTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* CharacterBuilderTerminalHelper::createAdapter(DistributedObjectStub* obj) {

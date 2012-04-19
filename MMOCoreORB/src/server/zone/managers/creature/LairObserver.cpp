@@ -434,7 +434,7 @@ DistributedObject* LairObserverHelper::instantiateObject() {
 }
 
 DistributedObjectServant* LairObserverHelper::instantiateServant() {
-	return new LairObserverImplementation();
+	return new LairObserverImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* LairObserverHelper::createAdapter(DistributedObjectStub* obj) {

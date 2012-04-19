@@ -1211,7 +1211,7 @@ DistributedObject* ManufactureSchematicHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ManufactureSchematicHelper::instantiateServant() {
-	return new ManufactureSchematicImplementation();
+	return new ManufactureSchematicImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ManufactureSchematicHelper::createAdapter(DistributedObjectStub* obj) {

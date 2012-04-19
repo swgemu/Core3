@@ -1257,7 +1257,7 @@ DistributedObject* GamblingTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GamblingTerminalHelper::instantiateServant() {
-	return new GamblingTerminalImplementation();
+	return new GamblingTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* GamblingTerminalHelper::createAdapter(DistributedObjectStub* obj) {

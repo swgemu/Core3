@@ -101,7 +101,7 @@ namespace consumable {
 
 class DelayedBuffObserverImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedReference<DelayedBuff* > buff;
+	ManagedWeakReference<DelayedBuff* > buff;
 
 public:
 	DelayedBuffObserverImplementation(DelayedBuff* b);

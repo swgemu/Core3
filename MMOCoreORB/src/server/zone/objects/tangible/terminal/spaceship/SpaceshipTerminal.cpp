@@ -223,7 +223,7 @@ DistributedObject* SpaceshipTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SpaceshipTerminalHelper::instantiateServant() {
-	return new SpaceshipTerminalImplementation();
+	return new SpaceshipTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SpaceshipTerminalHelper::createAdapter(DistributedObjectStub* obj) {

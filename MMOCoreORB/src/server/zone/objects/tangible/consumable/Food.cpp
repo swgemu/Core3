@@ -257,7 +257,7 @@ DistributedObject* FoodHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FoodHelper::instantiateServant() {
-	return new FoodImplementation();
+	return new FoodImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FoodHelper::createAdapter(DistributedObjectStub* obj) {

@@ -440,7 +440,7 @@ DistributedObject* PowerupObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PowerupObjectHelper::instantiateServant() {
-	return new PowerupObjectImplementation();
+	return new PowerupObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PowerupObjectHelper::createAdapter(DistributedObjectStub* obj) {

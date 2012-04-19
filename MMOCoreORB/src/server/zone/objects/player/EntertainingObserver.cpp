@@ -238,7 +238,7 @@ DistributedObject* EntertainingObserverHelper::instantiateObject() {
 }
 
 DistributedObjectServant* EntertainingObserverHelper::instantiateServant() {
-	return new EntertainingObserverImplementation();
+	return new EntertainingObserverImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* EntertainingObserverHelper::createAdapter(DistributedObjectStub* obj) {

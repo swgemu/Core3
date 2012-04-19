@@ -459,4 +459,6 @@ class WeaponObject extends TangibleObject {
 
 	public native string repairAttempt(int repairChance);
 	
+	public native void decay(CreatureObject user, float damage);
+	
 }

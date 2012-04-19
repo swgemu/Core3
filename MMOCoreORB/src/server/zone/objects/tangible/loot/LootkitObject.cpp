@@ -396,7 +396,7 @@ DistributedObject* LootkitObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* LootkitObjectHelper::instantiateServant() {
-	return new LootkitObjectImplementation();
+	return new LootkitObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* LootkitObjectHelper::createAdapter(DistributedObjectStub* obj) {

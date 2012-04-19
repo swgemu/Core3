@@ -1456,7 +1456,7 @@ DistributedObject* BuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* BuildingObjectHelper::instantiateServant() {
-	return new BuildingObjectImplementation();
+	return new BuildingObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -358,7 +358,7 @@ DistributedObject* PrecisionLaserKnifeHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PrecisionLaserKnifeHelper::instantiateServant() {
-	return new PrecisionLaserKnifeImplementation();
+	return new PrecisionLaserKnifeImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PrecisionLaserKnifeHelper::createAdapter(DistributedObjectStub* obj) {

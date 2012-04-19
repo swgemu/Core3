@@ -6027,7 +6027,7 @@ DistributedObject* PlayerObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PlayerObjectHelper::instantiateServant() {
-	return new PlayerObjectImplementation();
+	return new PlayerObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStub* obj) {

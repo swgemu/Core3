@@ -460,7 +460,7 @@ DistributedObject* FishingPoleObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FishingPoleObjectHelper::instantiateServant() {
-	return new FishingPoleObjectImplementation();
+	return new FishingPoleObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FishingPoleObjectHelper::createAdapter(DistributedObjectStub* obj) {

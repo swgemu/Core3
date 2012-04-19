@@ -222,7 +222,7 @@ DistributedObject* PackGroupHelper::instantiateObject() {
 }
 
 DistributedObjectServant* PackGroupHelper::instantiateServant() {
-	return new PackGroupImplementation();
+	return new PackGroupImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PackGroupHelper::createAdapter(DistributedObjectStub* obj) {

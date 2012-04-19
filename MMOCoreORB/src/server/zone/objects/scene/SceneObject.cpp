@@ -6385,7 +6385,7 @@ DistributedObject* SceneObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SceneObjectHelper::instantiateServant() {
-	return new SceneObjectImplementation();
+	return new SceneObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SceneObjectHelper::createAdapter(DistributedObjectStub* obj) {

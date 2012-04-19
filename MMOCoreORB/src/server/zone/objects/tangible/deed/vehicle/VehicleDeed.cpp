@@ -340,7 +340,7 @@ DistributedObject* VehicleDeedHelper::instantiateObject() {
 }
 
 DistributedObjectServant* VehicleDeedHelper::instantiateServant() {
-	return new VehicleDeedImplementation();
+	return new VehicleDeedImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* VehicleDeedHelper::createAdapter(DistributedObjectStub* obj) {

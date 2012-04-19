@@ -1119,7 +1119,7 @@ DistributedObject* GuildObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GuildObjectHelper::instantiateServant() {
-	return new GuildObjectImplementation();
+	return new GuildObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* GuildObjectHelper::createAdapter(DistributedObjectStub* obj) {

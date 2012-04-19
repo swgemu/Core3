@@ -546,7 +546,7 @@ DistributedObject* FactoryCrateHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FactoryCrateHelper::instantiateServant() {
-	return new FactoryCrateImplementation();
+	return new FactoryCrateImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FactoryCrateHelper::createAdapter(DistributedObjectStub* obj) {

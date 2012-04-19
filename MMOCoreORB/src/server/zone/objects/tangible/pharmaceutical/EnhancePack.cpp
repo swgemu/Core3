@@ -530,7 +530,7 @@ DistributedObject* EnhancePackHelper::instantiateObject() {
 }
 
 DistributedObjectServant* EnhancePackHelper::instantiateServant() {
-	return new EnhancePackImplementation();
+	return new EnhancePackImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* EnhancePackHelper::createAdapter(DistributedObjectStub* obj) {

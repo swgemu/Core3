@@ -383,7 +383,7 @@ DistributedObject* ContainerHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ContainerHelper::instantiateServant() {
-	return new ContainerImplementation();
+	return new ContainerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ContainerHelper::createAdapter(DistributedObjectStub* obj) {

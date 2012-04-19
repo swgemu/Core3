@@ -228,7 +228,7 @@ DistributedObject* RecreationBuildingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* RecreationBuildingObjectHelper::instantiateServant() {
-	return new RecreationBuildingObjectImplementation();
+	return new RecreationBuildingObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* RecreationBuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

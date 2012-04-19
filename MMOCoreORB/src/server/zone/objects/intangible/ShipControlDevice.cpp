@@ -323,7 +323,7 @@ DistributedObject* ShipControlDeviceHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ShipControlDeviceHelper::instantiateServant() {
-	return new ShipControlDeviceImplementation();
+	return new ShipControlDeviceImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ShipControlDeviceHelper::createAdapter(DistributedObjectStub* obj) {

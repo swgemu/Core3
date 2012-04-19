@@ -222,7 +222,7 @@ DistributedObject* FsVillageAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* FsVillageAreaHelper::instantiateServant() {
-	return new FsVillageAreaImplementation();
+	return new FsVillageAreaImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* FsVillageAreaHelper::createAdapter(DistributedObjectStub* obj) {

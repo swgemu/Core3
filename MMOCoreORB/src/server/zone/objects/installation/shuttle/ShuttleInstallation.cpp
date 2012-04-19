@@ -263,7 +263,7 @@ DistributedObject* ShuttleInstallationHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ShuttleInstallationHelper::instantiateServant() {
-	return new ShuttleInstallationImplementation();
+	return new ShuttleInstallationImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ShuttleInstallationHelper::createAdapter(DistributedObjectStub* obj) {

@@ -640,7 +640,7 @@ DistributedObject* WaypointObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* WaypointObjectHelper::instantiateServant() {
-	return new WaypointObjectImplementation();
+	return new WaypointObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectStub* obj) {

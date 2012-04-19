@@ -963,18 +963,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = damage / 10000.f;
-		if (weapon->isSliced()) conditionDamage *= 1.1;
-		if (weapon->hasPowerup()) conditionDamage *= 1.1;
-		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
-
-		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.75) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.75))
-			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
-		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.50) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.50))
-			attacker->sendSystemMessage("@combat_effects:weapon_half");
-
-	}
+	weapon->decay(attacker, damage);
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
@@ -1108,10 +1097,10 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
 		String def = defenseAccMods->get(0);
 
-		if (def == "saber_block"){
+		if (def == "saber_block") {
 			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
 				return LSBLOCK;
-		else return HIT;
+			else return HIT;
 		}
 
 		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
@@ -1236,15 +1225,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
 	}
 
-	if (weapon != attacker->getSlottedObject("default_weapon")) {
-		float conditionDamage = (health + action + mind) / 10000.f;
-		weapon->inflictDamage(weapon, 0, conditionDamage, false, true);
-
-		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.75) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.75))
-			attacker->sendSystemMessage("@combat_effects:weapon_quarter");
-		if (((float)weapon->getConditionDamage() - conditionDamage / (float)weapon->getMaxCondition() < 0.50) && ((float)weapon->getConditionDamage() / (float)weapon->getMaxCondition() > 0.50))
-			attacker->sendSystemMessage("@combat_effects:weapon_half");
-	}
+	weapon->decay(attacker, health + action + mind);
 
 	return true;
 }

@@ -440,7 +440,7 @@ DistributedObject* VendorTerminalHelper::instantiateObject() {
 }
 
 DistributedObjectServant* VendorTerminalHelper::instantiateServant() {
-	return new VendorTerminalImplementation();
+	return new VendorTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* VendorTerminalHelper::createAdapter(DistributedObjectStub* obj) {

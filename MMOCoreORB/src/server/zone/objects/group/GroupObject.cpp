@@ -822,7 +822,7 @@ DistributedObject* GroupObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GroupObjectHelper::instantiateServant() {
-	return new GroupObjectImplementation();
+	return new GroupObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* GroupObjectHelper::createAdapter(DistributedObjectStub* obj) {

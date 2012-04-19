@@ -2579,7 +2579,7 @@ DistributedObject* AiAgentHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AiAgentHelper::instantiateServant() {
-	return new AiAgentImplementation();
+	return new AiAgentImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* AiAgentHelper::createAdapter(DistributedObjectStub* obj) {

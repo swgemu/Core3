@@ -441,7 +441,7 @@ DistributedObject* JunkdealerCreatureHelper::instantiateObject() {
 }
 
 DistributedObjectServant* JunkdealerCreatureHelper::instantiateServant() {
-	return new JunkdealerCreatureImplementation();
+	return new JunkdealerCreatureImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* JunkdealerCreatureHelper::createAdapter(DistributedObjectStub* obj) {

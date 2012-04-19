@@ -1351,7 +1351,7 @@ DistributedObject* ArmorObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ArmorObjectHelper::instantiateServant() {
-	return new ArmorObjectImplementation();
+	return new ArmorObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {

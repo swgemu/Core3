@@ -244,7 +244,7 @@ DistributedObject* ClothingObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* ClothingObjectHelper::instantiateServant() {
-	return new ClothingObjectImplementation();
+	return new ClothingObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ClothingObjectHelper::createAdapter(DistributedObjectStub* obj) {

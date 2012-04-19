@@ -456,7 +456,7 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 	setMindAttackCost((int)values->getCurrentValue("attackmindcost"));
 
 	if (isJediWeapon())
-	setForceCost((int)values->getCurrentValue("forcecost"));
+		setForceCost((int)values->getCurrentValue("forcecost"));
 
 	value = values->getCurrentValue("woundchance");
 	if(value != CraftingValues::VALUENOTFOUND)
@@ -554,4 +554,18 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 	}
 
 	return message;
+}
+
+void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
+	if (_this != user->getSlottedObject("default_weapon")) {
+		damage = damage / 10000.f;
+		if (isSliced()) damage *= 1.1;
+		if (hasPowerup()) damage *= 1.1;
+		inflictDamage(_this, 0, damage, false, true);
+
+		if ((conditionDamage - damage / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
+			user->sendSystemMessage("@combat_effects:weapon_quarter");
+		if ((conditionDamage - damage / maxCondition < 0.50) && (conditionDamage / maxCondition > 0.50))
+			user->sendSystemMessage("@combat_effects:weapon_half");
+	}
 }

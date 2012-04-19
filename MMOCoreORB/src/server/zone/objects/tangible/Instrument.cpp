@@ -613,7 +613,7 @@ DistributedObject* InstrumentHelper::instantiateObject() {
 }
 
 DistributedObjectServant* InstrumentHelper::instantiateServant() {
-	return new InstrumentImplementation();
+	return new InstrumentImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* InstrumentHelper::createAdapter(DistributedObjectStub* obj) {

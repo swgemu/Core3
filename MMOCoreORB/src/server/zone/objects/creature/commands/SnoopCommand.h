@@ -74,10 +74,9 @@ public:
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		ManagedReference<CreatureObject*> targetObj = NULL;
 
-		if(creature->getTargetID() != 0) {
+		if (creature->getTargetID() != 0) {
 			targetObj = dynamic_cast<CreatureObject*>(server->getZoneServer()->getObject(creature->getTargetID()));
-		}
-		else {
+		} else {
 			if(!args.hasMoreTokens())
 				return GENERALERROR;
 
@@ -86,23 +85,19 @@ public:
 			targetObj = playerManager->getPlayer(targetName);
 		}
 
-		if(args.hasMoreTokens())
+		if (args.hasMoreTokens())
 			args.getStringToken(container);
 
-
-		if(targetObj == NULL) {
+		if (targetObj == NULL)
 			return INVALIDTARGET;
-		}
-		if(!targetObj->isCreatureObject()) {
-			return INVALIDTARGET;
-		}
 
+		if (!targetObj->isCreatureObject())
+			return INVALIDTARGET;
 
 		if (container == "equipment") {
 			targetObj->sendWithoutParentTo(creature);
 			targetObj->openContainerTo(creature);
-		}
-		else {
+		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
 			if (creatureInventory == NULL)

@@ -512,7 +512,7 @@ DistributedObject* SpawnAreaHelper::instantiateObject() {
 }
 
 DistributedObjectServant* SpawnAreaHelper::instantiateServant() {
-	return new SpawnAreaImplementation();
+	return new SpawnAreaImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SpawnAreaHelper::createAdapter(DistributedObjectStub* obj) {

@@ -275,7 +275,7 @@ DistributedObject* GarageInstallationHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GarageInstallationHelper::instantiateServant() {
-	return new GarageInstallationImplementation();
+	return new GarageInstallationImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* GarageInstallationHelper::createAdapter(DistributedObjectStub* obj) {

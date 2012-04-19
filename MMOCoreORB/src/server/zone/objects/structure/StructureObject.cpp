@@ -1885,7 +1885,7 @@ DistributedObject* StructureObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* StructureObjectHelper::instantiateServant() {
-	return new StructureObjectImplementation();
+	return new StructureObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* StructureObjectHelper::createAdapter(DistributedObjectStub* obj) {

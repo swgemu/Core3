@@ -278,7 +278,7 @@ DistributedObject* NonPlayerCreatureObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* NonPlayerCreatureObjectHelper::instantiateServant() {
-	return new NonPlayerCreatureObjectImplementation();
+	return new NonPlayerCreatureObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* NonPlayerCreatureObjectHelper::createAdapter(DistributedObjectStub* obj) {

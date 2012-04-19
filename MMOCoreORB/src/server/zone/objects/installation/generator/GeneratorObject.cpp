@@ -301,7 +301,7 @@ DistributedObject* GeneratorObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* GeneratorObjectHelper::instantiateServant() {
-	return new GeneratorObjectImplementation();
+	return new GeneratorObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* GeneratorObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -360,7 +360,7 @@ DistributedObject* HarvesterObjectHelper::instantiateObject() {
 }
 
 DistributedObjectServant* HarvesterObjectHelper::instantiateServant() {
-	return new HarvesterObjectImplementation();
+	return new HarvesterObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* HarvesterObjectHelper::createAdapter(DistributedObjectStub* obj) {
