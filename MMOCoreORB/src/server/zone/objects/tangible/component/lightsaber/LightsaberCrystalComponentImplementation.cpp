@@ -114,19 +114,19 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 	setOwner(name);
 
 
-	UnicodeString oldName = _this->getDisplayedName(); // Get the displayed name, which is in a string file format and change it to literal.
+	UnicodeString oldName = getDisplayedName(); // Get the displayed name, which is in a string file format and change it to literal.
 
 	if (oldName == "@craft_weapon_ingredients_n:force_crystal")
-		_this->setCustomObjectName("Crystal", false);
+		setCustomObjectName("Crystal", false);
 
 	if (oldName == "@craft_weapon_ingredients_n:krayt_dragon_pearl")
-		_this->setCustomObjectName("Krayt Dragon Pearl", false);
+		setCustomObjectName("Krayt Dragon Pearl", false);
 
 
 	StringBuffer newName;
 
-	newName << "\\#00FF00" << _this->getCustomObjectName().toString() << " (tuned)";
-	_this->setCustomObjectName(newName.toString(), true);
+	newName << "\\#00FF00" << getCustomObjectName().toString() << " (tuned)";
+	setCustomObjectName(newName.toString(), true);
 
 	player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 
@@ -136,7 +136,7 @@ void LightsaberCrystalComponentImplementation::updateCrystal(int value){
 
 	byte type = 0x02;
 
-	_this->setCustomizationVariable(type, value, true);
+	setCustomizationVariable(type, value, true);
 
 }
 
