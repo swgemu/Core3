@@ -256,7 +256,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		//Update maximum experience.
 		updateXpLimits(ghost);
 
-		ghost->setForcePowerMax(ghost->getForcePowerMax() + creature->getSkillMod("jedi_force_power_max"), true);
+		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 
 		if (skillName.contains("master")) {
 			uint32 badge = Badge::getID(skillName);
@@ -335,7 +335,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		updateXpLimits(ghost);
 
 		/// update force
-		ghost->setForcePowerMax(ghost->getForcePowerMax() + creature->getSkillMod("jedi_force_power_max"), true);
+		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 
 	}
 
