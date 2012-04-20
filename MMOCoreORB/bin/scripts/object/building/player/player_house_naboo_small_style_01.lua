@@ -48,7 +48,7 @@ object_building_player_player_house_naboo_small_style_01 = object_building_playe
 	publicStructure = 0,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 100}
+		{"private_med_battle_fatigue", 5}
 	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 1.55, z = 2, y = -8.36, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1},

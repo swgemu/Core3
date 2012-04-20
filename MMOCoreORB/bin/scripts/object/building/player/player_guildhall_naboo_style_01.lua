@@ -51,7 +51,7 @@ object_building_player_player_guildhall_naboo_style_01 = object_building_player_
 	width = 8,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 100}
+		{"private_med_battle_fatigue", 5}
 	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 4.34, z = 3.4, y = 18.40, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

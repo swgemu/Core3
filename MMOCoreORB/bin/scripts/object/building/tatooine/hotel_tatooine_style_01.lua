@@ -45,7 +45,7 @@ object_building_tatooine_hotel_tatooine_style_01 = object_building_tatooine_shar
 	gameObjectType = 523,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 100}
+		{"private_med_battle_fatigue", 5}
 	},
 	planetMapCategory = "hotel"
 }

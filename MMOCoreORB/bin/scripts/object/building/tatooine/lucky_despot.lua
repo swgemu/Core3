@@ -45,7 +45,7 @@ object_building_tatooine_lucky_despot = object_building_tatooine_shared_lucky_de
 	skillMods = {
 		{"private_med_wound_mind", 20},
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 100}
+		{"private_med_battle_fatigue", 5}
 	},
 }
 

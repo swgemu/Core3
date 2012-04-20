@@ -54,7 +54,7 @@ object_building_player_player_house_tatooine_medium_style_01 = object_building_p
 	publicStructure = 0,
 	skillMods = {
 		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 100}
+		{"private_med_battle_fatigue", 5}
 	},
 	width = 5
 }

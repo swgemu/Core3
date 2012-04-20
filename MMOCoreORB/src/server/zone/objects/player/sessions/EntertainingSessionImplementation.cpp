@@ -44,7 +44,8 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 
 	float enhancementSkill = 0.0f;
 	float woundHealingSkill = 0.0f;
-	float shockHealingSkill = 0.0f;
+	float playerShockHealingSkill = 0.0f;
+	float buildingShockHealingSkill = entertainer->getSkillMod("private_med_battle_fatigue");
 	int campModtemp = 100;
 
 	/*if (entertainer->isInCamp()) {
@@ -62,13 +63,13 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 		performance = performanceManager->getDance(performanceName);
 		enhancementSkill = (float) entertainer->getSkillMod("healing_dance_mind");
 		woundHealingSkill = (float) entertainer->getSkillMod("healing_dance_wound");
-		shockHealingSkill = (float) entertainer->getSkillMod("healing_dance_shock");
+		playerShockHealingSkill = (float) entertainer->getSkillMod("healing_dance_shock");
 	} else if (playingMusic && instrument != NULL) {
 		patrons = &listeners;
 		performance = performanceManager->getSong(performanceName, instrument->getInstrumentType());
 		enhancementSkill = (float) entertainer->getSkillMod("healing_music_mind");
 		woundHealingSkill = (float) entertainer->getSkillMod("healing_music_wound");
-		shockHealingSkill = (float) entertainer->getSkillMod("healing_music_shock");
+		playerShockHealingSkill = (float) entertainer->getSkillMod("healing_music_shock");
 
 	} else {
 		cancelSession();
@@ -80,8 +81,8 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	}
 
 	//**DETERMINE WOUND HEAL AMOUNTS.**
-	int woundHeal = ceil(performance->getHealMindWound() * (campModtemp / 100) * (woundHealingSkill / 100.0f));
-	int shockHeal = ceil(performance->getHealShockWound() * (campModtemp / 100) * (shockHealingSkill / 100.0f));
+	int woundHeal = ceil(performance->getHealMindWound() * (woundHealingSkill / 100.0f));
+	int shockHeal = ceil(performance->getHealShockWound() * ((playerShockHealingSkill + buildingShockHealingSkill) / 100.0f));
 
 	//**ENTERTAINER HEALS THEIR OWN MIND.**
 	healWounds(entertainer, woundHeal*(flourishCount+1), shockHeal*(flourishCount+1));
