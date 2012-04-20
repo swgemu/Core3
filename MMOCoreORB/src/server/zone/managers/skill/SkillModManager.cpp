@@ -173,10 +173,6 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	StringBuffer errors;
-	errors << "Creature Name: '" << creature->getFirstName() << "', is Player: " << String::valueOf(creature->isPlayerCreature()) << "\n";
-	errors << "Structure Mods:\n";
-
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
 	if(parent == NULL) {
 		if(creature->getCurrentCamp() != NULL) {
@@ -202,7 +198,6 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 		}
 	}
 
-	errors << "\nPlayer Mods:\n";
 
 	if(!compareMods(mods, creature, STRUCTURE)) {
 		error("Structure mods don't match for " + creature->getFirstName());
@@ -272,13 +267,17 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	SkillModList* skillModList = creature->getSkillModList();
 
-	if(skillModList == NULL)
+	if(skillModList == NULL) {
+		error("NULL SkillmodList for " + creature->getFirstName());
 		return false;
+	}
 
 	SkillModGroup* group = skillModList->getSkillModGroup(type);
 
-	if(group == NULL)
+	if(group == NULL){
+		error("NULL SkillModGroup for " + creature->getFirstName());
 		return false;
+	}
 
 	bool match = true;
 
