@@ -43,6 +43,7 @@ which carries forward this exception.
 
 #include "SkillModManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -281,12 +282,17 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	bool match = true;
 
+	StringBuffer compare;
+	compare << "	" << "SkillMod" << "  " << "Player" << "	" << "Computed" << endl;
+
 	for(int i = 0; i < group->size(); ++i) {
 		String key = group->elementAt(i).getKey();
 		int value = group->get(key);
 
 		int currentValue = mods.get(key);
 		mods.drop(key);
+
+		compare << "	" << key << "	" << value << "	" << currentValue << endl;
 
 		if(value != currentValue) {
 			if(currentValue == 0)
@@ -298,8 +304,16 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 		}
 	}
 
-	if(!mods.isEmpty())
+	if(!mods.isEmpty()) {
 		match = false;
+		error(compare.toString());
+
+		if(creature->getPlayerObject() != NULL) {
+			if(creature->getPlayerObject()->getDebug()) {
+				creature->sendSystemMessage(compare.toString());
+			}
+		}
+	}
 
 	return match;
 }

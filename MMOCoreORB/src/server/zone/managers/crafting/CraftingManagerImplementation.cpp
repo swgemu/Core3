@@ -127,16 +127,14 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 
 float CraftingManagerImplementation::calculateAssemblyValueModifier(int assemblyResult) {
 
-
 	if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
-			return 1.2f;
+		return 1.05f;
 
-	float result = assemblyResult * .1;
+	float result = 1.1f - (assemblyResult * .1f);
 
-	return 1.1f - result;
+	return result;
 
-	/*if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
-		return 1.2f;
+	/*
 	else
 		return 1.0f;*/
 }

@@ -465,7 +465,7 @@ void CraftingValues::resetValue(const String& attribute) {
 }
 
 void CraftingValues::setCurrentPercentage(
-		const String& subtitle, const float value) {
+		const String& subtitle, float value) {
 
 	float max = 0.0f;
 
@@ -494,7 +494,7 @@ void CraftingValues::setCurrentPercentage(
 }
 
 void CraftingValues::setCurrentPercentage(const String& subtitle,
-		const float value, const float min, const float max) {
+		 float value, float min, float max) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -607,7 +607,9 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
+		if (values->getMinValue() != values->getMaxValue() &&
+				values->getMaxPercentage() <= 1.0f &&
+				!values->isFiller()) {
 
 			float item = values->getPercentage();
 			if (item > 0) {
@@ -621,7 +623,7 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 }
 
 void CraftingValues::setMaxPercentage(
-		const String& attribute, const float value) {
+		const String& attribute, float value) {
 
 	float max;
 

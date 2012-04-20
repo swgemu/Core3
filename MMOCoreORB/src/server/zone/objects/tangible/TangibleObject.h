@@ -328,7 +328,7 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
+	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
@@ -557,7 +557,7 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess = 1);
+	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 

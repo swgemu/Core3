@@ -58,8 +58,9 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 }
 
 int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID != 20)
-		return 1;
+	if (selectedID != 20) {
+		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+	}
 
 	if (speciesRestriction == "pets") {
 		player->sendSystemMessage("@error_message:pets_only"); //That food is only suitable for pets.

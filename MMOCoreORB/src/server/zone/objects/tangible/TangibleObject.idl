@@ -529,7 +529,7 @@ class TangibleObject extends SceneObject {
 	/*
 	 * Set the initial values for this object based on the schematic
 	 */
-	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess = 1);
+	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess);
 
 	/*
 	 * Add the subcomponent stats to this based on the items in the schematic

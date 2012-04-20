@@ -115,7 +115,7 @@ public:
 				return GENERALERROR;
 			}
 
-			prototype->setInitialCraftingValues(manuSchematic);
+			prototype->setInitialCraftingValues(manuSchematic, CraftingManager::GREATSUCCESS);
 			prototype->updateCraftingValues(manuSchematic->getCraftingValues(), true);
 
 			prototype->createChildObjects();

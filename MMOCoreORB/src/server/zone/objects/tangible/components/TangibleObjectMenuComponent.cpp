@@ -21,9 +21,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	TangibleObject* tano = cast<TangibleObject*>( sceneObject);
 
 	// Figure out what the object is and if its able to be Sliced.
-	if(!tano->isSliceable())
-		return;
-	else { // Check to see if the player has the correct skill level
+	if(tano->isSliceable()) { // Check to see if the player has the correct skill level
 		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
 			return;
 		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
@@ -34,7 +32,11 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			return;
 
 		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
+	}
 
+	if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+		/// Viewing components used to craft item, for admins
+		menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
 	}
 }
 
@@ -56,7 +58,35 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		session->initalizeSlicingMenu(player, tano);
 
 		return 0;
-	} else
+	} else if (selectedID == 79) { // See components (admin)
+		if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+
+			SceneObject* container = tano->getSlottedObject("crafted_components");
+			if(container != NULL) {
+
+				if(container->getContainerObjectsSize() > 0) {
+
+					SceneObject* satchel = container->getContainerObject(0);
+
+					if(satchel != NULL) {
+
+						satchel->sendWithoutContainerObjectsTo(player);
+						satchel->openContainerTo(player);
+
+						player->sendSystemMessage(String::valueOf(satchel->getContainerObjectsSize()));
+					} else {
+						player->sendSystemMessage("There is no satchel this container");
+					}
+				} else {
+					player->sendSystemMessage("There are no items in this container");
+				}
+			} else {
+				player->sendSystemMessage("There is no component container in this object");
+			}
+		}
+
+		return 0;
+	}else
 		return ObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 
 }

@@ -34,6 +34,8 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 	crafter->addActiveSession(SessionFacadeType::CRAFTING, _this);
 	craftingTool->addActiveSession(SessionFacadeType::CRAFTING, _this);
 
+	craftingTool->setCountdownTimer(0, true);
+
 	crafterGhost = crafter->getPlayerObject();
 
 	craftingManager = crafter->getZoneServer()->getCraftingManager();
@@ -580,7 +582,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	Locker locker(prototype);
 	//Set initial crafting percentages
-	prototype->setInitialCraftingValues(manufactureSchematic);
+	prototype->setInitialCraftingValues(manufactureSchematic, assemblyResult);
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->setManufactureSchematic(manufactureSchematic);
@@ -697,16 +699,23 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		ManagedReference<SceneObject*> craftingComponentContainer = crafter->getZoneServer()->createObject(craftingComponents.hashCode(), 1);
 		craftingComponentContainer->setSendToClient(false);
 
+		String craftingComponentsSatchel = "object/tangible/container/general/satchel.iff";
+		ManagedReference<SceneObject*> craftingComponentsSatchelContainer = crafter->getZoneServer()->createObject(craftingComponentsSatchel.hashCode(), 1);
+
 		for(int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
 			Reference<IngredientSlot*> slot = manufactureSchematic->getSlot(i);
 			ManagedReference<SceneObject*> scno = slot->getFactoryIngredient();
 
 			if(scno != NULL && scno->isTangibleObject()) {
 
-				craftingComponentContainer->transferObject(scno, -1, false);
+				craftingComponentsSatchelContainer->transferObject(scno, -1, false);
 			}
 		}
 
+		craftingComponentsSatchelContainer->setContainerInheritPermissionsFromParent(false);
+		craftingComponentsSatchelContainer->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN);
+
+		craftingComponentContainer->transferObject(craftingComponentsSatchelContainer, -1, false);
 		prototype->transferObject(craftingComponentContainer, 4, false);
 	}
 

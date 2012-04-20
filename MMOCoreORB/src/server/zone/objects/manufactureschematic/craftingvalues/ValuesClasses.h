@@ -151,8 +151,11 @@ public:
 		else
 			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));
 
-		if(newpercentage > 100 || newpercentage < 0)
-			return;
+		if(newpercentage > values.get("maxPercentage"))
+			newpercentage = values.get("maxPercentage");
+
+		if(newpercentage < 0)
+			newpercentage = 0;
 
 		if (values.contains("currentValue")) {
 			values.drop("currentValue");
@@ -188,12 +191,15 @@ public:
 		precision = value;
 	}
 
-	inline void setMaxPercentage(const float& value) {
+	inline void setMaxPercentage(float& value) {
 		if (locked)
 			return;
 
-		if(value > 100 || value < 0)
-			return;
+		if(value > 100)
+			value = 100;
+
+		if(value < 0)
+			value = 0;
 
 		if (values.contains("maxPercentage")) {
 			values.drop("maxPercentage");
@@ -202,13 +208,16 @@ public:
 		values.put("maxPercentage", value);
 	}
 
-	inline void setPercentage(const float& value) {
+	inline void setPercentage(float& value) {
 
 		if (locked)
 			return;
 
-		if(value > 100 || value < 0)
-			return;
+		if(value > values.get("maxPercentage"))
+			value = values.get("maxPercentage");
+
+		if(value < 0)
+			value = 0;
 
 		if (values.contains("currentPercentage")) {
 			values.drop("currentPercentage");
@@ -337,7 +346,7 @@ public:
 		return classTitle;
 	}
 
-	inline void setMaxPercentage(const String& subtitle, const float value) {
+	inline void setMaxPercentage(const String& subtitle, float value) {
 		Values* values = valueList.get(subtitle);
 		values->setMaxPercentage(value);
 
@@ -348,7 +357,7 @@ public:
 		values->setValue(value);
 	}
 
-	inline void setPercentage(const String& subtitle, const float value) {
+	inline void setPercentage(const String& subtitle, float value) {
 		Values* values = valueList.get(subtitle);
 		values->setPercentage(value);
 	}
