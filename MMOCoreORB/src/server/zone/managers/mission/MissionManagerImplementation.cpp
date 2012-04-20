@@ -578,7 +578,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		bool result = terrain->getWaterHeight(startPos.getX(), startPos.getY(), waterHeight);
 
 		if (player->getZone()->isWithinBoundaries(startPos) &&
-				(result && waterHeight <= height)) {
+				(!result || waterHeight <= height)) {
 			//Check that the position is outside cities.
 			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 			player->getZone()->getInRangeActiveAreas(startPos.getX(), startPos.getY(), &activeAreas, true);
@@ -609,6 +609,21 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionDifficulty(difficulty);
 
 	mission->setFaction(faction);
+
+	switch (faction) {
+	case MissionObject::FACTIONIMPERIAL:
+		mission->setRewardFactionPointsImperial(20);
+		mission->setRewardFactionPointsRebel(-10);
+		break;
+	case MissionObject::FACTIONREBEL:
+		mission->setRewardFactionPointsImperial(-10);
+		mission->setRewardFactionPointsRebel(20);
+		break;
+	default:
+		mission->setRewardFactionPointsImperial(0);
+		mission->setRewardFactionPointsRebel(0);
+		break;
+	}
 
 	String messageDifficulty;
 
