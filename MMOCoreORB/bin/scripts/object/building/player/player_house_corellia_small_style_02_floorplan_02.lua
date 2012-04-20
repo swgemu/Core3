@@ -47,7 +47,8 @@ object_building_player_player_house_corellia_small_style_02_floorplan_02 = objec
 	allowedZones = {"corellia", "talus"},
 	publicStructure = 0,
 	skillMods = {
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 100}
 	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = -1.91, z = 2, y = 8.35, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},

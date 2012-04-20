@@ -131,8 +131,10 @@ class EntertainingSession extends Facade {
 	public native boolean isInEntertainingBuilding(CreatureObject creature);
 	
 	public native void doFlourish(int flourishNumber);
-	
+
+	public native boolean canHealBattleFatigue();
 	public native boolean canGiveEntertainBuff();
+
 	
 	public void addFlourishXp(int xp) {
 		flourishXp = flourishXp + xp;

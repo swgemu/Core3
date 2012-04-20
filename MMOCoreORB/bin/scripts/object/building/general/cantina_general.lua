@@ -44,7 +44,8 @@
 object_building_general_cantina_general = object_building_general_shared_cantina_general:new {
 	skillMods = {
 		{"private_med_wound_mind", 100},
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 100}
 	},
 	planetMapCategory = "cantina"
 }

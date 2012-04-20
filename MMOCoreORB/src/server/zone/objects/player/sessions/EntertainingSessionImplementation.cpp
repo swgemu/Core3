@@ -157,7 +157,7 @@ void EntertainingSessionImplementation::healWounds(CreatureObject* creature, flo
 	if(isInDenyServiceList(creature))
 		return;
 
-	if(shockHeal > 0 && creature->getShockWounds() > 0) {
+	if(shockHeal > 0 && creature->getShockWounds() > 0 && canHealBattleFatigue()) {
 		creature->addShockWounds(-shockHeal);
 		amountHealed += shockHeal;
 	}
@@ -478,6 +478,13 @@ void EntertainingSessionImplementation::stopDancing() {
 	}
 }
 
+bool EntertainingSessionImplementation::canHealBattleFatigue() {
+	if(entertainer->getSkillMod("private_med_battle_fatigue") > 0)
+		return true;
+	else
+		return false;
+}
+
 bool EntertainingSessionImplementation::canGiveEntertainBuff() {
 	if(entertainer->getSkillMod("private_buff_mind") > 0)
 		return true;
@@ -565,8 +572,8 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 			addEntertainerFlourishBuff();
 
 			// Grant Experience
-
-			flourishXp += performance->getBaseXp() + performance->getFlourishXpMod();
+			if(flourishCount < 2)
+				flourishXp += performance->getBaseXp() + performance->getFlourishXpMod();
 
 			flourishCount++;
 		}

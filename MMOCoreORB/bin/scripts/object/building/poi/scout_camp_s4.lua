@@ -48,7 +48,7 @@ object_building_poi_scout_camp_s4 = object_building_poi_shared_scout_camp_s4:new
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
 
-	--skillMods = {{"private_medical_rating", 90}, {"private_med_wound_health", 80}, {"private_med_wound_action", 80}, {"private_aggro_mod", 75}},
+	--skillMods = {{"private_medical_rating", 90}, {"private_med_wound_health", 80}, {"private_med_wound_action", 80}, {"private_aggro_mod", 75}, {"private_buff_mind", 100}},
 
 	healthWoundRegenRate = 80,
 	actionWoundRegenRate = 80,

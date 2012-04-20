@@ -48,7 +48,7 @@ object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new
 	baseMaintenanceRate = 0,
 	basePowerRate = 0,
 	
-	skillMods = {{"private_medical_rating", 80}, {"private_med_wound_health", 60}, {"private_med_wound_action", 60}, {"private_aggro_mod", 50}},
+	skillMods = {{"private_medical_rating", 80}, {"private_med_wound_health", 60}, {"private_med_wound_action", 60}, {"private_aggro_mod", 50}, {"private_buff_mind", 100}},
 
 	aggroMod = 50,
 	

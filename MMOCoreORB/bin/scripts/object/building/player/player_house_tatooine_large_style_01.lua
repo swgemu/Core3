@@ -47,7 +47,8 @@ object_building_player_player_house_tatooine_large_style_01 = object_building_pl
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	publicStructure = 0,
 	skillMods = {
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 100}
 	},
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = -2.76, z = 2, y = 16.10, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},

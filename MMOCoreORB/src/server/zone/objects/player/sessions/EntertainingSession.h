@@ -143,6 +143,8 @@ public:
 
 	void doFlourish(int flourishNumber);
 
+	bool canHealBattleFatigue();
+
 	bool canGiveEntertainBuff();
 
 	void addFlourishXp(int xp);
@@ -304,6 +306,8 @@ public:
 
 	void doFlourish(int flourishNumber);
 
+	bool canHealBattleFatigue();
+
 	bool canGiveEntertainBuff();
 
 	void addFlourishXp(int xp);
@@ -440,6 +444,8 @@ public:
 	bool isInEntertainingBuilding(CreatureObject* creature);
 
 	void doFlourish(int flourishNumber);
+
+	bool canHealBattleFatigue();
 
 	bool canGiveEntertainBuff();
 
