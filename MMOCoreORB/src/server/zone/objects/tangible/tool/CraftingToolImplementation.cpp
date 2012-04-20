@@ -142,7 +142,7 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 	}
 
-	return 1;
+	return TangibleObjectImplementation::handleObjectMenuSelect(playerCreature, selectedID);
 }
 
 void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,

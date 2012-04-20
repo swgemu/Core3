@@ -114,7 +114,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 0;
 	}
 
-	return 1;
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 int SurveyToolImplementation::getRange(CreatureObject* player) {
