@@ -47,6 +47,15 @@ void LightsaberCrystalComponent::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
+void LightsaberCrystalComponent::loadTemplateData(SharedObjectTemplate* templateData) {
+	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->loadTemplateData(templateData);
+}
+
 void LightsaberCrystalComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	LightsaberCrystalComponentImplementation* _implementation = static_cast<LightsaberCrystalComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -539,13 +548,8 @@ bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStrea
 	if (ComponentImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "LightsaberCrystalComponent.postTuneNameCrystal") {
-		TypeInfo<String >::parseFromBinaryStream(&postTuneNameCrystal, stream);
-		return true;
-	}
-
-	if (_name == "LightsaberCrystalComponent.postTuneNamePearl") {
-		TypeInfo<String >::parseFromBinaryStream(&postTuneNamePearl, stream);
+	if (_name == "LightsaberCrystalComponent.postTuneName") {
+		TypeInfo<String >::parseFromBinaryStream(&postTuneName, stream);
 		return true;
 	}
 
@@ -626,19 +630,11 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "LightsaberCrystalComponent.postTuneNameCrystal";
+	_name = "LightsaberCrystalComponent.postTuneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&postTuneNameCrystal, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "LightsaberCrystalComponent.postTuneNamePearl";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&postTuneNamePearl, stream);
+	TypeInfo<String >::toBinaryStream(&postTuneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -739,7 +735,7 @@ int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStr
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 14;
+	return _count + 13;
 }
 
 LightsaberCrystalComponentImplementation::LightsaberCrystalComponentImplementation() {
@@ -764,10 +760,8 @@ LightsaberCrystalComponentImplementation::LightsaberCrystalComponentImplementati
 	color = 0;
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		quality = 0;
 	quality = 0;
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		postTuneNameCrystal = "";
-	postTuneNameCrystal = "";
-	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		postTuneNamePearl = "";
-	postTuneNamePearl = "";
+	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		postTuneName = "";
+	postTuneName = "";
 	// server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.idl():  		Logger.setLoggingName("LightsaberCrystal");
 	Logger::setLoggingName("LightsaberCrystal");
 }

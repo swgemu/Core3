@@ -50,10 +50,12 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.templates.tangible.LightsaberCrystalObjectTemplate;
 
 class LightsaberCrystalComponent extends Component {
-	protected string postTuneNameCrystal;
-	protected string postTuneNamePearl;
+	protected string postTuneName;
+	
+	protected transient LightsaberCrystalObjectTemplate lcoTemplate;
 	
 	protected int color;
 	protected int quality;
@@ -81,13 +83,21 @@ class LightsaberCrystalComponent extends Component {
 		woundChance = 0;
 		color = 0;
 		quality = 0;
-		postTuneNameCrystal = "";
-		postTuneNamePearl = "";
+		postTuneName = "";
 		
 		Logger.setLoggingName("LightsaberCrystal");
 	}
 	
 	public native void initializeTransientMembers();
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);

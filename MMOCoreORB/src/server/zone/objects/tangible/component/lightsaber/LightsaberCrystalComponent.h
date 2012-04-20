@@ -63,6 +63,8 @@ class ManufactureSchematic;
 
 using namespace server::zone::objects::manufactureschematic;
 
+#include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
+
 #include "server/zone/objects/tangible/component/Component.h"
 
 #include "engine/lua/LuaObject.h"
@@ -79,6 +81,8 @@ public:
 	LightsaberCrystalComponent();
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
@@ -170,9 +174,9 @@ namespace lightsaber {
 
 class LightsaberCrystalComponentImplementation : public ComponentImplementation {
 protected:
-	String postTuneNameCrystal;
+	String postTuneName;
 
-	String postTuneNamePearl;
+	Reference<LightsaberCrystalObjectTemplate* > lcoTemplate;
 
 	int color;
 
@@ -204,6 +208,8 @@ public:
 	LightsaberCrystalComponentImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 

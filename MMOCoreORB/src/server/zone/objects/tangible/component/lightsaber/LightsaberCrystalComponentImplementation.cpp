@@ -21,8 +21,14 @@ void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 
 	setLoggingName("LightsaberCrystalComponent");
 
-	postTuneNameCrystal = "\\#00FF00 Crystal (tuned)";
-	postTuneNamePearl = "\\#00FF00 Krayt Dragon Pearl (tuned)";
+}
+
+void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	lcoTemplate = dynamic_cast<LightsaberCrystalObjectTemplate*>(templateData);
+
+	postTuneName = lcoTemplate->getPostTunedName();
 }
 
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -103,14 +109,10 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 
 	setOwner(name);
 
+	// Color code is lime green.
+	String tuneName = "\\#00FF00" + postTuneName + " (tuned)";
 
-	UnicodeString oldName = getDisplayedName(); // Get the displayed name, which is in a string file format and change it to literal.
-
-	if (oldName == "@craft_weapon_ingredients_n:force_crystal")
-		setCustomObjectName(postTuneNameCrystal, true);
-
-	if (oldName == "@craft_weapon_ingredients_n:krayt_dragon_pearl")
-		setCustomObjectName(postTuneNamePearl, true);
+	setCustomObjectName(tuneName, true);
 
 	player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 

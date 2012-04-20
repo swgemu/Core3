@@ -11,6 +11,7 @@
 #include "../SharedTangibleObjectTemplate.h"
 
 class LightsaberCrystalObjectTemplate : public SharedTangibleObjectTemplate {
+	String postTunedName;
 
 public:
 	LightsaberCrystalObjectTemplate() {
@@ -24,11 +25,15 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-
+		postTunedName = templateData->getStringField("postTunedName");
     }
 
 	bool isLightsaberCrystalTemplate() {
 		return true;
+	}
+
+	inline String& getPostTunedName() {
+		return postTunedName;
 	}
 };
 
