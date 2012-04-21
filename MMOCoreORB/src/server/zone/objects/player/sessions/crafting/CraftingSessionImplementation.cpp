@@ -470,10 +470,10 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponents->setSendToClient(false);
 		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponents->setContainerDefaultAllowPermission(0);
-		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
-		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
-		craftingComponentsSatchel->setContainerAllowPermission("admin", 0);
+		craftingComponents->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerDenyPermission("admin", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerAllowPermission("owner", 0);
+		craftingComponents->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
 		String craftingComponentsSatchelPath = "object/tangible/container/general/satchel.iff";
