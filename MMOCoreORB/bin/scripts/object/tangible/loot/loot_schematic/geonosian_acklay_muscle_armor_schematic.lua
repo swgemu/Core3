@@ -46,7 +46,7 @@ object_tangible_loot_loot_schematic_geonosian_acklay_muscle_armor_schematic = ob
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	targetDraftSchematic = "object/draft_schematic/armor/armor_segment_ris_acklay.iff",
-	targetUseCount = 1
+	targetUseCount = 5
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/geonosian_acklay_muscle_armor_schematic.iff")
