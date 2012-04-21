@@ -165,7 +165,7 @@ int CraftingSessionImplementation::cancelSession() {
 		// *************************************
 	}
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("*** Canceling crafting session ***");
 	}
 
@@ -208,7 +208,7 @@ int CraftingSessionImplementation::clearSession() {
 		}
 	}
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("*** Clearing crafting session ***");
 	}
 
