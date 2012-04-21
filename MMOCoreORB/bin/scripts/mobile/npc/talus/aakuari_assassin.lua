@@ -37,7 +37,7 @@ aakuari_assassin = Creature:new {
 				{group = "carbines", chance = 1300000},
 				{group = "pistols", chance = 1400000}				
 			},
-		    lootChance = 7500000
+		    lootChance = 6000000
 		}	
 	},
 	weapons = {"melee_weapons"},

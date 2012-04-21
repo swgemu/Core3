@@ -1,8 +1,8 @@
 beldonnas_league_enforcer = Creature:new {
 	objectName = "@mob/creature_names:beldonnas_enforcer",
-	socialGroup = "Bel. League",
-	pvpFaction = "Bel. League",
-	faction = "",
+	socialGroup = "beldonnas_league",
+	pvpFaction = "beldonnas_league",
+	faction = "beldonnas_league",
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,
@@ -26,13 +26,28 @@ beldonnas_league_enforcer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-		{
+      	{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

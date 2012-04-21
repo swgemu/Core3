@@ -1,8 +1,8 @@
 flail_boss = Creature:new {
 	objectName = "@mob/creature_names:flail_boss",
-	socialGroup = "Flail",
-	pvpFaction = "Flail",
-	faction = "",
+	socialGroup = "flail",
+	pvpFaction = "flail",
+	faction = "flail",
 	level = 26,
 	chanceHit = 0.360000,
 	damageMin = 250,
@@ -25,13 +25,18 @@ flail_boss = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
 			{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "rifles", chance = 4000000},
-				{group = "crystals", chance = 500000}
+				{group = "color_crystals", chance = 500000}
 			},
 			lootChance = 4500000
 		}

@@ -1,8 +1,8 @@
 corsec_deserter = Creature:new {
 	objectName = "@mob/creature_names:corsec_deserter",
-	socialGroup = "Rogue Corsec",
-	pvpFaction = "Rogue Corsec",
-	faction = "",
+	socialGroup = "rogue_corsec",
+	pvpFaction = "rogue_corsec",
+	faction = "rogue_corsec",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,7 +26,8 @@ corsec_deserter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_detective_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	    {
 	 		groups = {

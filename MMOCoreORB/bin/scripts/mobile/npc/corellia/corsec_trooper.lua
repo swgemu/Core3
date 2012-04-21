@@ -1,8 +1,8 @@
 corsec_trooper = Creature:new {
 	objectName = "@mob/creature_names:corsec_trooper",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -26,7 +26,8 @@ corsec_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff",
+		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

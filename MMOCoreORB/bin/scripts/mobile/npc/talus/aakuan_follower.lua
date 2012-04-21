@@ -36,7 +36,7 @@ aakuan_follower = Creature:new {
 				{group = "pistols", chance = 2000000},
 				{group = "carbines", chance = 2000000}
 	    	},
-			lootChance = 9000000
+			lootChance = 6000000
 		}	
 	},
 	weapons = {"melee_weapons"},

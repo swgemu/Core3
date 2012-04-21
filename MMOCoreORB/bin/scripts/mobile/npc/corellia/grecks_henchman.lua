@@ -1,8 +1,8 @@
 grecks_henchman = Creature:new {
-	objectName = "@mob/creature_names:Greck's henchman",
-	socialGroup = "Olag Greck",
-	pvpFaction = "Olag Greck",
-	faction = "",
+	objectName = "@mob/creature_names:greck_henchman",
+	socialGroup = "olag_greck",
+	pvpFaction = "olag_greck",
+	faction = "olag_greck",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,
@@ -26,8 +26,30 @@ grecks_henchman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

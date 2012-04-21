@@ -1,6 +1,7 @@
 gilker_budz = Creature:new {
-	objectName = "@mob/creature_names:Gilker Budz",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Gilker Budz",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

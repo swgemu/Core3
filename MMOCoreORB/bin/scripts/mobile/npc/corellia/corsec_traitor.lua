@@ -1,8 +1,8 @@
 corsec_traitor = Creature:new {
 	objectName = "@mob/creature_names:corsec_traitor",
-	socialGroup = "Rogue Corsec",
-	pvpFaction = "Rogue Corsec",
-	faction = "",
+	socialGroup = "rogue_corsec",
+	pvpFaction = "rogue_corsec",
+	faction = "rogue_corsec",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,8 @@ corsec_traitor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

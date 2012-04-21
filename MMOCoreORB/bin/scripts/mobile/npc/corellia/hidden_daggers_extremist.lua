@@ -1,8 +1,8 @@
 hidden_daggers_extremist = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_extremist",
-	socialGroup = "Hidden Dagger",
-	pvpFaction = "Hidden Dagger",
-	faction = "",
+	socialGroup = "hidden_daggers",
+	pvpFaction = "hidden_daggers",
+	faction = "hidden_daggers",
 	level = 13,
 	chanceHit = 0.300000,
 	damageMin = 150,
@@ -25,13 +25,22 @@ hidden_daggers_extremist = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff",
+		"object/mobile/dressed_robber_human_female_01.iff",
+		"object/mobile/dressed_robber_human_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff",
+		"object/mobile/dressed_robber_twk_male_01.iff"},
 	lootGroups = {
-		{
+      	{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

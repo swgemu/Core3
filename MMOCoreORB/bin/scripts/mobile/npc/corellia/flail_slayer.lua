@@ -1,8 +1,8 @@
 flail_slayer = Creature:new {
 	objectName = "@mob/creature_names:flail_slayer",
-	socialGroup = "Flail",
-	pvpFaction = "Flail",
-	faction = "",
+	socialGroup = "flail",
+	pvpFaction = "flail",
+	faction = "flail",
 	level = 20,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -25,7 +25,12 @@ flail_slayer = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
 	 {
 			groups = {

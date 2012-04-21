@@ -1,8 +1,8 @@
 ragtag_kook = Creature:new {
 	objectName = "@mob/creature_names:ragtag_kook",
-	socialGroup = "Rgtg. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "ragtag",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,12 +25,21 @@ ragtag_kook = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "junk", chance = 5500000},
-				{group = "crystals", chance = 4000000},
+				{group = "crystals_poor", chance = 400000},
 				{group = "tailor_components", chance = 500000}
 			},
 			lootChance = 4500000

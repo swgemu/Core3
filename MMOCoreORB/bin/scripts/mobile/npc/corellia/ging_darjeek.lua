@@ -1,6 +1,7 @@
 ging_darjeek = Creature:new {
-	objectName = "@mob/creature_names:Ging Darjeek",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Ging Darjeek",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

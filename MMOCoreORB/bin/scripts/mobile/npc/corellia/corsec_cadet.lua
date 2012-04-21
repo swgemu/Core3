@@ -1,8 +1,8 @@
 corsec_cadet = Creature:new {
 	objectName = "@mob/creature_names:corsec_cadet",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -26,7 +26,8 @@ corsec_cadet = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff"},
+	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

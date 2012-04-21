@@ -6,11 +6,11 @@ acklay = {
 	maximumLevel = 0,
 	lootItems = {
 		{itemTemplate = "acklay_bone_armor_schematic", weight = 1500000},
-		{itemTemplate = "acklay_bones", weight = 2000000},
-		{itemTemplate = "acklay_bones_rare", weight = 1000000},
-		{itemTemplate = "acklay_hide", weight = 2000000},
+		{itemTemplate = "acklay_bones", weight = 2200000},
+		{itemTemplate = "acklay_bones_rare", weight = 400000},
+		{itemTemplate = "acklay_hide", weight = 2200000},
 		{itemTemplate = "acklay_ris_armor_schematic", weight = 1500000},
-		{itemTemplate = "acklay_venom", weight = 2000000}
+		{itemTemplate = "acklay_venom", weight = 2200000}
 	}
 }
 

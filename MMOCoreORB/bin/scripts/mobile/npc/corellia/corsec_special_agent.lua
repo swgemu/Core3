@@ -2,7 +2,7 @@ corsec_special_agent = Creature:new {
 	objectName = "@mob/creature_names:corsec_agent_aggro",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
-	faction = "",
+	faction = "corsec",
 	level = 105,
 	chanceHit = 1.75,
 	damageMin = 670,
@@ -26,14 +26,16 @@ corsec_special_agent = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
 				{group = "clothing_attachments", chance = 2500000},
 				{group = "armor_attachments", chance = 2500000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals", chance = 2500000}
+				{group = "crystals_quality", chance = 1250000},
+				{group = "color_crystals", chance = 1250000}
 			},
 			lootChance = 6500000
 		}

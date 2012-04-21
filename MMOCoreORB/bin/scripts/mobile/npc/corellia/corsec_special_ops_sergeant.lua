@@ -2,7 +2,7 @@ corsec_special_ops_sergeant = Creature:new {
 	objectName = "@mob/creature_names:corsec_sergeant_aggro",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
-	faction = "",
+	faction = "corsec",
 	level = 96,
 	chanceHit = 0.95,
 	damageMin = 620,
@@ -26,14 +26,16 @@ corsec_special_ops_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff",
+		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
 				{group = "clothing_attachments", chance = 2500000},
 				{group = "armor_attachments", chance = 2500000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals", chance = 2500000}
+				{group = "crystals_quality", chance = 1250000},
+				{group = "color_crystals", chance = 1250000}
 			},
 			lootChance = 6500000
 		}

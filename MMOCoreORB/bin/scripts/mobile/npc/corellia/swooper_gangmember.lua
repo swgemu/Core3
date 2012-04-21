@@ -1,8 +1,8 @@
 swooper_gangmember = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	socialGroup = "Swoop",
-	pvpFaction = "Cor. Sw.",
-	faction = "",
+	socialGroup = "swoop",
+	pvpFaction = "cor_swoop",
+	faction = "cor_swoop",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -27,7 +27,16 @@ swooper_gangmember = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
-	lootGroups = {},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

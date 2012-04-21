@@ -1,8 +1,8 @@
 herald_corellia_ren = Creature:new {
 	objectName = "",
-	customName = "Herald Correlia Ren",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+	customName = "Herald Corellia Ren",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -27,7 +27,7 @@ herald_corellia_ren = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_corellia_02.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

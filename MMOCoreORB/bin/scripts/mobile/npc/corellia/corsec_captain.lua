@@ -1,8 +1,8 @@
 corsec_captain = Creature:new {
 	objectName = "@mob/creature_names:corsec_captain",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -26,7 +26,8 @@ corsec_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff"},
+	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff",
+		"object/mobile/dressed_corsec_captain_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

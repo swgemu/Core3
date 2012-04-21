@@ -1,7 +1,7 @@
 hal_horn = Creature:new {
 	objectName = "",
-	costumName = "Hal Horn",
-	socialGroup = "Townperson",
+	customName = "Hal Horn",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

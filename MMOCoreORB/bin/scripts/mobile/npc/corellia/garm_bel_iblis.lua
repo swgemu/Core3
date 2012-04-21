@@ -1,6 +1,7 @@
 garm_bel_iblis = Creature:new {
-	objectName = "@mob/creature_names:Garm Bel Iblis",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Garm Bel Iblis",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

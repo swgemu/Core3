@@ -2,7 +2,7 @@ afarathu_brute = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_brute",
 	socialGroup = "Afarathu",
 	pvpFaction = "Afarathu",
-	faction = "",
+	faction = "afarathu",
 	level = 11,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,8 +26,28 @@ afarathu_brute = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_selonian_m_02.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_selonian_m_01.iff",
+		"object/mobile/dressed_selonian_m_02.iff",
+		"object/mobile/dressed_selonian_m_03.iff",
+		"object/mobile/dressed_selonian_m_04.iff",
+		"object/mobile/dressed_selonian_m_05.iff",
+		"object/mobile/dressed_selonian_m_06.iff",
+		"object/mobile/dressed_selonian_m_07.iff",
+		"object/mobile/dressed_selonian_m_08.iff",
+		"object/mobile/dressed_selonian_m_09.iff",
+		"object/mobile/dressed_selonian_m_10.iff",
+		"object/mobile/dressed_selonian_m_11.iff",
+		"object/mobile/dressed_selonian_m_12.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

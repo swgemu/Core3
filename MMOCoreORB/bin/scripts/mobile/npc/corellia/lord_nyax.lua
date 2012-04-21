@@ -2,7 +2,7 @@ lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 129,
 	chanceHit = 4.9,
 	damageMin = 775,
@@ -31,10 +31,10 @@ lord_nyax = Creature:new {
 		{
 			groups = {
 				{group = "nyax", chance = 1400000},
-				{group = "armor_attachments", chance = 4300000},
-				{group = "clothing_attachments", chance = 4300000}
+				{group = "melee_weapons", chance = 4300000},
+				{group = "rifles", chance = 4300000}
 			},
-			lootChance = 7000000
+			lootChance = 6000000
 		}
 	},
 	weapons = {"nyax's_weapons"},

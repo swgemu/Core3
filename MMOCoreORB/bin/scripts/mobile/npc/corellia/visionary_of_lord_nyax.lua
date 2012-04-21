@@ -2,7 +2,7 @@ visionary_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_visionary",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 31,
 	chanceHit = 0.38,
 	damageMin = 280,
@@ -26,7 +26,8 @@ visionary_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_patron_chiss_f_01.iff",
+		"object/mobile/dressed_patron_chiss_f_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

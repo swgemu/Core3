@@ -1,8 +1,8 @@
 corsec_investigator = Creature:new {
 	objectName = "@mob/creature_names:corsec_investigator",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,8 @@ corsec_investigator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
+	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	  {
 			groups = {

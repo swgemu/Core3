@@ -1,8 +1,8 @@
 meatlump_clod = Creature:new {
 	objectName = "@mob/creature_names:meatlump_clod",
-	socialGroup = "Meatlump",
-	pvpFaction = "Meatlump",
-	faction = "",
+	socialGroup = "meatlump",
+	pvpFaction = "meatlump",
+	faction = "meatlump",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -25,13 +25,24 @@ meatlump_clod = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "crystals", chance = 4000000},
-				{group = "tailor_components", chance = 500000}
+				{group = "junk", chance = 8000000},
+				{group = "color_crystals", chance = 1000000},
+				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 4500000
 		}

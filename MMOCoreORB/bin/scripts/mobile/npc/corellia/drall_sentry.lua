@@ -1,8 +1,8 @@
 drall_sentry = Creature:new {
 	objectName = "@mob/creature_names:drall_sentry",
-	socialGroup = "Drall",
-	pvpFaction = "Drall",
-	faction = "",
+	socialGroup = "drall",
+	pvpFaction = "drall",
+	faction = "drall",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -26,8 +26,18 @@ drall_sentry = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/drall_male.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/drall_male.iff",
+		"object/mobile/drall_female.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

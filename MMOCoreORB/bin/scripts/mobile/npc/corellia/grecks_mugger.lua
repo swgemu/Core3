@@ -1,8 +1,8 @@
 grecks_mugger = Creature:new {
-	objectName = "@mob/creature_names:Greck's mugger",
-	socialGroup = "Olag Greck",
-	pvpFaction = "Olag Greck",
-	faction = "",
+	objectName = "@mob/creature_names:greck_mugger",
+	socialGroup = "olag_greck",
+	pvpFaction = "olag_greck",
+	faction = "olag_greck",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,8 +26,17 @@ grecks_mugger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_mugger.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -2,7 +2,7 @@ smashball_thug = Creature:new {
 	objectName = "@mob/creature_names:smashball_thug",
 	socialGroup = "Smashball",
 	pvpFaction = "Smashball",
-	faction = "",
+	faction = "smashball",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,13 +25,30 @@ smashball_thug = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
-		{
+      	{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

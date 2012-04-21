@@ -1,8 +1,8 @@
 meatlump_loon = Creature:new {
 	objectName = "@mob/creature_names:meatlump_loon",
-	socialGroup = "Meatlump",
-	pvpFaction = "Meatlump",
-	faction = "",
+	socialGroup = "meatlump",
+	pvpFaction = "meatlump",
+	faction = "meatlump",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -25,13 +25,18 @@ meatlump_loon = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "crystals", chance = 4000000},
-				{group = "tailor_components", chance = 500000}
+			{group = "junk", chance = 8000000},
+				{group = "color_crystals", chance = 1000000},
+				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 4500000
 		}

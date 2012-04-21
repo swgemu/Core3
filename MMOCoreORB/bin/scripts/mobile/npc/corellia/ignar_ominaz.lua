@@ -1,7 +1,7 @@
 ignar_ominaz = Creature:new {
 	objectName = "",
 	customName = "Ignar Ominaz",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
@@ -27,7 +27,7 @@ ignar_ominaz = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ignar_ominaz.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

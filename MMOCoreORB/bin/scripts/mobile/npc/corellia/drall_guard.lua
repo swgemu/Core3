@@ -1,8 +1,8 @@
 drall_guard = Creature:new {
 	objectName = "@mob/creature_names:drall_guard",
-	socialGroup = "Drall",
-	pvpFaction = "Drall",
-	faction = "",
+	socialGroup = "drall",
+	pvpFaction = "drall",
+	faction = "drall",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -27,7 +27,16 @@ drall_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff"},
-	lootGroups = {},
+	lootGroups = {
+	      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

@@ -1,8 +1,8 @@
 grecks_assassin = Creature:new {
-	objectName = "@mob/creature_names:Greck's assassin",
-	socialGroup = "Olag Greck",
-	pvpFaction = "Olag Greck",
-	faction = "",
+	objectName = "@mob/creature_names:greck_assassin",
+	socialGroup = "olag_greck",
+	pvpFaction = "olag_greck",
+	faction = "olag_greck",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 140,
@@ -26,8 +26,28 @@ grecks_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
+		"object/mobile/dressed_desperado_bith_female_01.iff",
+		"object/mobile/dressed_desperado_bith_male_01.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

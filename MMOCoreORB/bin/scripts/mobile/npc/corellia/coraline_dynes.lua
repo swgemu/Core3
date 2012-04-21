@@ -1,6 +1,6 @@
 coraline_dynes = Creature:new {
 	objectName = "",
-	customName = "Coralline Dynes",
+	customName = "Coraline Dynes",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

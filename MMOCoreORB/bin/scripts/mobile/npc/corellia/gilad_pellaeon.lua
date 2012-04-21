@@ -1,6 +1,7 @@
 gilad_pellaeon = Creature:new {
-	objectName = "@mob/creature_names:Gilad Pellaeon",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Gilad Pellaeon",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

@@ -2,7 +2,7 @@ fiend_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_fiend",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 29,
 	chanceHit = 0.36,
 	damageMin = 305,
@@ -26,11 +26,11 @@ fiend_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "nyax", chance = 1000000},
+				{group = "junk", chance = 1000000},
 				{group = "pistols", chance = 4500000},
 				{group = "rifles", chance = 4500000}
 			},

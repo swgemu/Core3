@@ -1,8 +1,8 @@
 grecks_smuggler = Creature:new {
-	objectName = "@mob/creature_names:Greck's smuggler",
-	socialGroup = "Olag Greck",
-	pvpFaction = "Olag Greck",
-	faction = "",
+	objectName = "@mob/creature_names:greck_smuggler",
+	socialGroup = "olag_greck",
+	pvpFaction = "olag_greck",
+	faction = "olag_greck",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -26,8 +26,22 @@ grecks_smuggler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff",
+		"object/mobile/dressed_robber_human_female_01.iff",
+		"object/mobile/dressed_robber_human_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff",
+		"object/mobile/dressed_robber_twk_male_01.iff"},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}	
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

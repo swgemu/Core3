@@ -1,8 +1,8 @@
 corsec_detective = Creature:new {
 	objectName = "@mob/creature_names:corsec_detective",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,8 @@ corsec_detective = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff"},
+	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	  {
 			groups = {

@@ -1,8 +1,8 @@
 drall_chieftain = Creature:new {
 	objectName = "@mob/creature_names:drall_chieftain",
-	socialGroup = "Drall",
-	pvpFaction = "Drall",
-	faction = "",
+	socialGroup = "drall",
+	pvpFaction = "drall",
+	faction = "drall",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -27,7 +27,16 @@ drall_chieftain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff"},
-	lootGroups = {},
+	lootGroups = {
+	      	{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 4500000
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

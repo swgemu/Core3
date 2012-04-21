@@ -2,7 +2,7 @@ fanatic_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_fanatic",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,7 +26,7 @@ fanatic_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_dark_jedi_human_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {

@@ -2,7 +2,7 @@ disciple_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_disciple",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,7 @@ disciple_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_patron_nikto_01.iff"},
 	lootGroups = {
 		{
 			groups = {

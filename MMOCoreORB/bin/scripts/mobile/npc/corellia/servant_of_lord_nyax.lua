@@ -2,7 +2,7 @@ servant_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_servant",
 	socialGroup = "Lord Nyax",
 	pvpFaction = "Lord Nyax",
-	faction = "",
+	faction = "followers_of_lord_nyax",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -26,7 +26,8 @@ servant_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/dressed_criminal_organized_human_male_01.iff",
+		"object/mobile/dressed_emperors_hand_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

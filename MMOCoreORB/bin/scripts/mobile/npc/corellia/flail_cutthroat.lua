@@ -1,8 +1,8 @@
 flail_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:flail_cutthroat",
-	socialGroup = "Flail",
-	pvpFaction = "Flail",
-	faction = "",
+	socialGroup = "flail",
+	pvpFaction = "flail",
+	faction = "flail",
 	level = 15,
 	chanceHit = 0.310000,
 	damageMin = 160,
@@ -25,13 +25,23 @@ flail_cutthroat = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mugger.iff",
+		"object/mobile/dressed_goon_twk_female_01.iff",
+		"object/mobile/dressed_goon_twk_male_01.iff",
+		"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
 			{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "pistols", chance = 4000000},
-				{group = "crystals", chance = 500000}
+				{group = "color_crystals", chance = 500000}
 			},
 			lootChance = 4500000
 		}

@@ -1,6 +1,6 @@
 thale_dustrunner = Creature:new {
 	objectName = "",
-	customName = "Thale Dustrunner",
+	customName = "Thale Dustrunner (Corsec Captain)",
 	socialGroup = "Corsec",
 	pvpFaction = "",
 	faction = "",

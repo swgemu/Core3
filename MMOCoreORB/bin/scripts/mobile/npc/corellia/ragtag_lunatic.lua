@@ -1,8 +1,8 @@
 ragtag_lunatic = Creature:new {
 	objectName = "@mob/creature_names:ragtag_lunatic",
-	socialGroup = "Rgtg. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "ragtag",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,12 +25,19 @@ ragtag_lunatic = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
 			{
 			groups = {
 				{group = "junk", chance = 5500000},
-				{group = "crystals", chance = 4000000},
+				{group = "crystals_poor", chance = 400000},
 				{group = "tailor_components", chance = 500000}
 			},
 			lootChance = 4500000

@@ -1,8 +1,8 @@
 corsec_sergeant = Creature:new {
 	objectName = "@mob/creature_names:corsec_sergeant",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,8 @@ corsec_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
+	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff",
+		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

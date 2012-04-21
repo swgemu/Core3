@@ -1,6 +1,7 @@
 grobber = Creature:new {
-	objectName = "@mob/creature_names:Grobber",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Grobber",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
@@ -26,7 +27,7 @@ grobber = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_noble_old_twk_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

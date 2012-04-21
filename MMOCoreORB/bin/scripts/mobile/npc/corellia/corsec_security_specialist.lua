@@ -2,7 +2,7 @@ corsec_security_specialist = Creature:new {
 	objectName = "@mob/creature_names:corsec_detective_aggro",
 	socialGroup = "Corsec [aggro]",
 	pvpFaction = "Corsec [aggro]",
-	faction = "",
+	faction = "corsec",
 	level = 120,
 	chanceHit = 4,
 	damageMin = 745,
@@ -26,14 +26,16 @@ corsec_security_specialist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/object/mobile/shared_dressed_corellia_local_corsec_chief.iff.iff"},
+	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	  {
 			groups = {
 				{group = "clothing_attachments", chance = 2500000},
 				{group = "armor_attachments", chance = 2500000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals", chance = 2500000}
+				{group = "crystals_select", chance = 1250000},
+				{group = "color_crystals", chance = 1250000}
 			},
 			lootChance = 6500000
 		}

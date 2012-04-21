@@ -1,8 +1,8 @@
 ragtag_loon = Creature:new {
 	objectName = "@mob/creature_names:ragtag_loon",
-	socialGroup = "Rgtg. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "ragtag",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -25,12 +25,16 @@ ragtag_loon = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mugger.iff",
+		"object/mobile/dressed_goon_twk_female_01.iff",
+		"object/mobile/dressed_goon_twk_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_02.iff"},
 	lootGroups = {
 			{
 			groups = {
 				{group = "junk", chance = 5500000},
-				{group = "crystals", chance = 4000000},
+				{group = "crystals_poor", chance = 400000},
 				{group = "tailor_components", chance = 500000}
 			},
 			lootChance = 4500000

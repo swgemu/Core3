@@ -1,8 +1,8 @@
 beldonnas_league_scout = Creature:new {
 	objectName = "@mob/creature_names:beldonnas_scout",
-	socialGroup = "Bel. League",
-	pvpFaction = "Bel. League",
-	faction = "",
+	socialGroup = "beldonnas_league",
+	pvpFaction = "beldonnas_league",
+	faction = "beldonnas_league",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,13 +26,26 @@ beldonnas_league_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff",
+		"object/mobile/dressed_robber_human_female_01.iff",
+		"object/mobile/dressed_robber_human_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff",
+		"object/mobile/dressed_robber_twk_male_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-		{
+      	{
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 6000000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3300000
+			lootChance = 4500000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

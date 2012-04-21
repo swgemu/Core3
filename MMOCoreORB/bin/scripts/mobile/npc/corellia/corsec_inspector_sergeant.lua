@@ -1,8 +1,8 @@
 corsec_inspector_sergeant = Creature:new {
 	objectName = "@mob/creature_names:corsec_inspector_sergeant",
-	socialGroup = "Corsec",
-	pvpFaction = "Corsec",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,7 +26,8 @@ corsec_inspector_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_captain_human_male_01.iff"},
+	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	  {
 			groups = {
