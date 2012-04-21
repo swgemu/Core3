@@ -49,7 +49,8 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 		}
 	}
 
-	craftingTool->dropSlottedObject("crafted_components");
+	if(craftedComponents != NULL)
+		craftedComponents->destroyObjectFromWorld(true);
 
 	crafterGhost = crafter->getPlayerObject();
 
@@ -467,7 +468,12 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingTool->transferObject(craftingComponents, 4, true);
 
 		craftingComponents->setSendToClient(false);
-		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerDefaultAllowPermission(0);
+		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
+		craftingComponentsSatchel->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
 		String craftingComponentsSatchelPath = "object/tangible/container/general/satchel.iff";
@@ -475,6 +481,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
 		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerDefaultAllowPermission(0);
 		craftingComponentsSatchel->setContainerAllowPermission("admin", ContainerPermissions::OPEN);
 		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
