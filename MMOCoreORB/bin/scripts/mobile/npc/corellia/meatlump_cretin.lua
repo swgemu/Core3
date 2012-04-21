@@ -40,11 +40,11 @@ meatlump_cretin = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
-				{group = "junk", chance = 8000000},
-				{group = "color_crystals", chance = 1000000},
-				{group = "tailor_components", chance = 1000000}
+				{group = "junk", chance = 9000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "tailor_components", chance = 500000}
 			},
 			lootChance = 4500000
 		}

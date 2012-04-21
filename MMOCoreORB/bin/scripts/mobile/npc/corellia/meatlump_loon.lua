@@ -34,9 +34,9 @@ meatlump_loon = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-			{group = "junk", chance = 8000000},
-				{group = "color_crystals", chance = 1000000},
-				{group = "tailor_components", chance = 1000000}
+				{group = "junk", chance = 9000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "tailor_components", chance = 500000}
 			},
 			lootChance = 4500000
 		}
