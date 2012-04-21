@@ -10,7 +10,7 @@
 /*!40101 SET NAMES utf8 */;
 
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */de;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
@@ -238,6 +238,7 @@ CREATE TABLE  `swgemu`.`deleted_characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
+  `creation_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
