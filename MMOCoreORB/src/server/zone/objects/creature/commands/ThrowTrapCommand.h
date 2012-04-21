@@ -203,7 +203,9 @@ public:
 				damage = System::random(trapData->getMaxDamage() - trapData->getMinDamage()) + trapData->getMinDamage();
 
 			} else {
-				message.setStringId("trap/trap" , trapData->getFailMessage());
+				if(!trapData->getFailMessage().isEmpty()) {
+					message.setStringId("trap/trap" , trapData->getFailMessage());
+				}
 			}
 
 			message.setTT(targetCreature->getDisplayedName());
