@@ -36,8 +36,10 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 
 	craftingTool->setCountdownTimer(0, true);
 
-	if(craftingTool->getSlottedObject("crafted_components") != NULL) {
-		ManagedReference<SceneObject*> satchel = craftingTool->getSlottedObject("crafted_components")->getContainerObject(0);
+	ManagedReference<SceneObject*> craftedComponents = craftingTool->getSlottedObject("crafted_components");
+
+	if(craftedComponents != NULL && craftedComponents->getContainerObjectsSize() > 0) {
+		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
 		if(satchel != NULL && inventory != NULL) {
@@ -45,9 +47,9 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 				inventory->transferObject(satchel->getContainerObject(0), -1, true);
 			}
 		}
-
-		craftingTool->dropSlottedObject("crafted_components");
 	}
+
+	craftingTool->dropSlottedObject("crafted_components");
 
 	crafterGhost = crafter->getPlayerObject();
 
@@ -142,7 +144,7 @@ int CraftingSessionImplementation::startSession() {
 	/// Reset session state
 	state = 1;
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("*** Starting new crafting session ***");
 	}
 
@@ -194,6 +196,7 @@ int CraftingSessionImplementation::clearSession() {
 		craftingTool->getContainerObject(1)->destroyObjectFromWorld(true);
 	}
 
+	craftingTool->dropSlottedObject("crafted_components");
 
 	if (prototype != NULL) {
 
@@ -237,7 +240,7 @@ void CraftingSessionImplementation::closeCraftingWindow(int clientCounter) {
 
 	crafter->sendMessage(objMsg);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("*** Closing crafting window ***");
 	}
 }
@@ -281,7 +284,7 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	clearSession();
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Selected DraftSchematic: " + draftschematic->getCustomName());
 	}
 
@@ -335,7 +338,7 @@ bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* d
 	craftingTool->transferObject(manufactureSchematic, 0x4, true);
 	//manufactureSchematic->sendTo(crafter, true);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("ManufactureSchematic Created");
 	}
 
@@ -364,7 +367,7 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 	craftingTool->transferObject(prototype, -1, false);
 	prototype->sendTo(crafter, true);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Prototype Created");
 	}
 
@@ -413,7 +416,7 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 
 	crafter->sendMessage(objMsg);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Sent UI Listen");
 	}
 }
@@ -465,6 +468,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 		craftingComponents->setSendToClient(false);
 		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
 		String craftingComponentsSatchelPath = "object/tangible/container/general/satchel.iff";
 		craftingComponentsSatchel = crafter->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
@@ -472,6 +476,9 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
 		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponentsSatchel->setContainerAllowPermission("admin", ContainerPermissions::OPEN);
+		craftingComponentsSatchel->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
+		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 
 		craftingComponents->transferObject(craftingComponentsSatchel, -1, true);
 	} else {
@@ -482,7 +489,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 	sendSlotMessage(clientCounter, result);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Adding ingredient: " + tano->getDisplayedName());
 	}
 
@@ -530,7 +537,7 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 		// End Object Controller *****************************************
 	}
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Removing ingredient: " + tano->getDisplayedName());
 	}
 }
@@ -556,6 +563,14 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 
 	Locker locker(manufactureSchematic);
 
+	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
+
+	if(craftingComponents != NULL) {
+
+		/// Add Components to crafted object
+		prototype->transferObject(craftingComponents, 4, true);
+		craftingComponents->setSendToClient(false);
+	}
 	manufactureSchematic->setAssembled();
 
 	if (state == 2) {
@@ -732,17 +747,9 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 		crafterGhost->decreaseSchematicUseCount(draftSchematic);
 
-		ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
-
-		if(craftingComponents != NULL) {
-
-			/// Add Components to crafted object
-			prototype->transferObject(craftingComponents, 4, true);
-			craftingComponents->setSendToClient(false);
-		}
 	}
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage(craftingValues->toString());
 	}
 }
@@ -891,7 +898,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	crafter->notifyObservers(ObserverEventType::CRAFTINGEXPERIMENTATION, crafter, 0);
 
-	if(crafterGhost->getDebug()) {
+	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage(craftingValues->toString());
 	}
 }
