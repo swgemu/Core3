@@ -43,6 +43,31 @@
 
 SaberPolearmHit2Command = {
         name = "saberpolearmhit2",
+        
+                              
+    damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 2.0,
+	
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		20, 
+		100, 
+		10 
+	  )
+	},
+
+	animationCRC = hashCode("combo_3a_medium"),
+
+	combatSpam = "saberpolearmhit2",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(SaberPolearmHit2Command)

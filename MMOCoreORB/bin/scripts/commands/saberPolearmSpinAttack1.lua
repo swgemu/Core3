@@ -43,6 +43,20 @@
 
 SaberPolearmSpinAttack1Command = {
         name = "saberpolearmspinattack1",
+       
+    damageMultiplier = 1.5,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 1.5,
+	areaAction = true,
+	areaRange = 7,
+
+	animationCRC = hashCode("showoff_1_light"),
+
+	combatSpam = "saberpolearmspinattack1",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(SaberPolearmSpinAttack1Command)

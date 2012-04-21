@@ -42,7 +42,21 @@
 --true = 1, false = 0
 
 SaberThrow1Command = {
-        name = "saberthrow1",
+        name = "saberthrow1",                
+        
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.5,
+	coneAngle = 60,
+	coneAction = true,
+	forceCostMultiplier = 1.5,
+
+	animationCRC = hashCode("saberthrow_light"),
+
+	combatSpam = "saberthrow1",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = 32
 }
 
 AddCommand(SaberThrow1Command)

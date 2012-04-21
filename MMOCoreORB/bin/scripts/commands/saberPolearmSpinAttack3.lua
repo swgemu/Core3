@@ -43,6 +43,32 @@
 
 SaberPolearmSpinAttack3Command = {
         name = "saberpolearmspinattack3",
+    
+    damageMultiplier = 3.0,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 3.5,
+	areaAction = true,
+	areaRange = 7,
+	
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
+
+	animationCRC = hashCode("showoff_1_light"),
+
+	combatSpam = "saberpolearmspinattack3",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(SaberPolearmSpinAttack3Command)

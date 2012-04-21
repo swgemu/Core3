@@ -1035,9 +1035,17 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		}
 	}
 
+	// Intimidate.
+	if (attacker->isIntimidated())
+		damage *= 0.66; // 33% reduction.
 
+	// Stunned.
+	if (attacker->isStunned())
+		damage *= 0.90; // 10% reduction.
+
+	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
-		damage *= 0.25;
+		damage *= 0.15; //85% reduction from PvE damage.
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 

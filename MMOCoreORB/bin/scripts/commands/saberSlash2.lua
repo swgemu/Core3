@@ -42,7 +42,44 @@
 --true = 1, false = 0
 
 SaberSlash2Command = {
-        name = "saberslash2",
+        name = "saberslash2",	
+        
+    damageMultiplier = 2.5,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 2.0,
+	
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING, 
+		{ "resistance_bleeding" },
+		HEALTH,
+		true,
+		125,
+		100,
+		60, 
+		60
+	  )
+	},
+	
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		40, 
+		100, 
+		0 
+	  )
+	},
+
+	animationCRC = hashCode("combo_2d_light"),
+
+	combatSpam = "saberslash2",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(SaberSlash2Command)

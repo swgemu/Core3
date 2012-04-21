@@ -43,6 +43,30 @@
 
 SaberThrow2Command = {
         name = "saberthrow2",
+                       
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 2.0,
+
+	stateEffects = {
+	   StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "knockdown_defense" }, 
+		{}, 
+		30, 
+		100, 
+		0
+	  )
+	},
+
+	animationCRC = hashCode("saberthrow_light"),
+
+	combatSpam = "saberthrow2",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = 32
 }
 
 AddCommand(SaberThrow2Command)

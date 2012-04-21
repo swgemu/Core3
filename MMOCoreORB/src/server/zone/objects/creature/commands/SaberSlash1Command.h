@@ -46,12 +46,13 @@ which carries forward this exception.
 #define SABERSLASH1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class SaberSlash1Command : public QueueCommand {
+class SaberSlash1Command : public CombatQueueCommand {
 public:
 
 	SaberSlash1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
