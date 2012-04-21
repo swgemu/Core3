@@ -75,7 +75,7 @@ SaberSlash1Command = {
 
 	animationCRC = hashCode("combo_2d_light"),
 
-	combatSpam = "saberslash2",
+	combatSpam = "saberslash1",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
