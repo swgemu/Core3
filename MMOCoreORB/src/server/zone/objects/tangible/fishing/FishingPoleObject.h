@@ -111,6 +111,8 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
@@ -167,6 +169,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 

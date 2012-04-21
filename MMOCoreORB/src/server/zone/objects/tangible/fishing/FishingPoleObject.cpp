@@ -108,6 +108,15 @@ int FishingPoleObject::handleObjectMenuSelect(CreatureObject* player, byte selec
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
+void FishingPoleObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	FishingPoleObjectImplementation* _implementation = static_cast<FishingPoleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->updateCraftingValues(values, firstUpdate);
+}
+
 int FishingPoleObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	FishingPoleObjectImplementation* _implementation = static_cast<FishingPoleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

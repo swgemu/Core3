@@ -92,6 +92,9 @@ class FishingPoleObject extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+	
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);

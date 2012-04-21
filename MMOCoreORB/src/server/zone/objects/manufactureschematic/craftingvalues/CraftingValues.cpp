@@ -702,7 +702,9 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		if (values->getMaxPercentage() <= 1.0f && !values->isFiller()) {
+		if (values->getMinValue() != values->getMaxValue() &&
+				values->getMaxPercentage() <= 1.0f
+				&& !values->isFiller()) {
 
 			average += values->getMaxPercentage();
 			count++;
@@ -890,6 +892,7 @@ String CraftingValues::toString() {
 		str << "\n*************************" << endl;
 		str << "Subclass " << i << endl;
 		str << "Class: " << tempSubclasses->getClassTitle() << endl;
+		str << "Average %: " << getMaxPercentageAverage(i);
 		str << tempSubclasses->toString();
 		str << "**************************" << endl;
 	}

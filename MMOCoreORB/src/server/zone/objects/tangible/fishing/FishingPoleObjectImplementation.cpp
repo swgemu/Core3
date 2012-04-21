@@ -51,6 +51,14 @@ int FishingPoleObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 	return 0;
 }
 
+void FishingPoleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	/// useModifer is the quality
+
+	quality = values->getCurrentValue("usemodifier");
+
+	//craftingValues->toString();
+}
+
 void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
 	ManagedReference<FishingManager*> manager = server->getFishingManager();
 
