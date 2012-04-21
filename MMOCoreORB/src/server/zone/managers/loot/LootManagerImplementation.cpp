@@ -198,12 +198,9 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	float percentage = System::random(10000) / 10000.f; //Generate a base percentage. We will deviate slightly from this on each stat.
 
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
-		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
+		subtitle = craftingValues.getExperimentalPropertySubtitle(i).toLowerCase();
 
 		if (subtitle == "hitpoints")
-			continue;
-
-		if (subtitle == "useCount")
 			continue;
 
 		float min = craftingValues.getMinValue(subtitle);
@@ -212,22 +209,29 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		if(min == max)
 			continue;
 
-		float minMod = (max >= min) ? 2000.f : -2000.f;
-		float maxMod = (max >= min) ? 500.f : -500.f;
+		if (subtitle != "usecount" &&
+				subtitle != "quantity" &&
+				subtitle != "charges" &&
+				subtitle != "uses" &&
+				subtitle != "charge") {
 
-		min = (min * level / minMod) + min;
-		max = (max * level / maxMod) + max;
+			float minMod = (max >= min) ? 2000.f : -2000.f;
+			float maxMod = (max >= min) ? 500.f : -500.f;
 
-		if (max >= min) {
-			min *= excMod;
-			max *= excMod;
-		} else {
-			min /= excMod;
-			max /= excMod;
+			min = (min * level / minMod) + min;
+			max = (max * level / maxMod) + max;
+
+			if (max >= min) {
+				min *= excMod;
+				max *= excMod;
+			} else {
+				min /= excMod;
+				max /= excMod;
+			}
+
+			craftingValues.setMinValue(subtitle, min);
+			craftingValues.setMaxValue(subtitle, max);
 		}
-
-		craftingValues.setMinValue(subtitle, min);
-		craftingValues.setMaxValue(subtitle, max);
 
 		float deviation = (((float) System::random(400)) - 200) / 1000.f; //Deviate up to 2%
 
