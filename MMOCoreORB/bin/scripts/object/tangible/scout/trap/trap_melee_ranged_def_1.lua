@@ -66,7 +66,7 @@ object_tangible_scout_trap_trap_melee_ranged_def_1 = object_tangible_scout_trap_
 	defenseMod = "",
 
 	successMessage = "trap_melee_ranged_def_1_effect",
-	failMessage = "trap_melee_ranged_def_1_effect_no",
+	failMessage = "",
 
 	startSpam = "melee_ranged_def_1_on",
 	stopSpam = "melee_ranged_def_1_off",
