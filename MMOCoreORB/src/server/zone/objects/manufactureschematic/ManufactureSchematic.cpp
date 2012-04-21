@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_,RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_,RPC_GETDRAFTSCHEMATIC__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_GETSLOTCOUNT__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_,RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_,RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_,RPC_GETDRAFTSCHEMATIC__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_GETSLOTCOUNT__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -144,20 +144,21 @@ void ManufactureSchematic::setDraftSchematic(DraftSchematic* schematic) {
 		_implementation->setDraftSchematic(schematic);
 }
 
-int ManufactureSchematic::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+int ManufactureSchematic::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
 	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_);
+		DistributedMethod method(this, RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(player);
+		method.addObjectParameter(satchel);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->addIngredientToSlot(player, tano, slot);
+		return _implementation->addIngredientToSlot(player, satchel, tano, slot);
 }
 
 int ManufactureSchematic::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
@@ -968,8 +969,8 @@ void ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_:
 		setDraftSchematic(static_cast<DraftSchematic*>(inv->getObjectParameter()));
 		break;
-	case RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(addIngredientToSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+	case RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_:
+		resp->insertSignedInt(addIngredientToSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		break;
 	case RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(removeIngredientFromSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
@@ -1082,8 +1083,8 @@ void ManufactureSchematicAdapter::setDraftSchematic(DraftSchematic* schematic) {
 	(static_cast<ManufactureSchematic*>(stub))->setDraftSchematic(schematic);
 }
 
-int ManufactureSchematicAdapter::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
-	return (static_cast<ManufactureSchematic*>(stub))->addIngredientToSlot(player, tano, slot);
+int ManufactureSchematicAdapter::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
+	return (static_cast<ManufactureSchematic*>(stub))->addIngredientToSlot(player, satchel, tano, slot);
 }
 
 int ManufactureSchematicAdapter::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {

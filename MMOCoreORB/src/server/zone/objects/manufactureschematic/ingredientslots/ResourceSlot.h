@@ -78,7 +78,7 @@ public:
 		return new ResourceSlot(*this);
 	}
 
-	bool add(CreatureObject* player, ManagedReference<TangibleObject*> tano) {
+	bool add(CreatureObject* player, SceneObject* satchel, ManagedReference<TangibleObject*> tano) {
 
 		/// Must be a resource container to proceed, and
 		if (tano->isResourceContainer()) {
@@ -112,7 +112,7 @@ public:
 
 			} else {
 				quantity += incomingResource->getQuantity();
-				incomingResource->setQuantity(0);
+				incomingResource->setQuantity(0, true);
 				currentQuantity = incomingResource->getQuantity();
 			}
 

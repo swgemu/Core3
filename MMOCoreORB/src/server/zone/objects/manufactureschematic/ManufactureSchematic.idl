@@ -202,7 +202,7 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	private native void initializeIngredientSlots();
 
-	public native int addIngredientToSlot(CreatureObject player, TangibleObject tano, int slot);
+	public native int addIngredientToSlot(CreatureObject player, SceneObject satchel, TangibleObject tano, int slot);
 	
 	public native int removeIngredientFromSlot(CreatureObject player, TangibleObject tano, int slot);
 	

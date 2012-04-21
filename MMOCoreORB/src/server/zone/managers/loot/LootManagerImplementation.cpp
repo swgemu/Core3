@@ -141,6 +141,10 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 }
 
 TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
+
+	if(level > 300)
+		level = 300;
+
 	String directTemplateObject = templateObject->getDirectObjectTemplate();
 
 	ManagedReference<TangibleObject*> prototype = dynamic_cast<TangibleObject*> (zoneServer->createObject(directTemplateObject.hashCode(), 2));
@@ -197,6 +201,9 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
 		if (subtitle == "hitpoints")
+			continue;
+
+		if (subtitle == "useCount")
 			continue;
 
 		float min = craftingValues.getMinValue(subtitle);

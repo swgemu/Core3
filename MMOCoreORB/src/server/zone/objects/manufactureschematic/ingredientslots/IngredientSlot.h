@@ -162,7 +162,7 @@ public:
 		return requiredQuantity;
 	}
 
-	virtual bool add(CreatureObject* player, ManagedReference<TangibleObject*> tano) {
+	virtual bool add(CreatureObject* player, SceneObject* satchel, ManagedReference<TangibleObject*> tano) {
 		return false;
 	}
 

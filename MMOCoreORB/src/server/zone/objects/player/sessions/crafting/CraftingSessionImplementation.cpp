@@ -36,6 +36,19 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 
 	craftingTool->setCountdownTimer(0, true);
 
+	if(craftingTool->getSlottedObject("crafted_components") != NULL) {
+		ManagedReference<SceneObject*> satchel = craftingTool->getSlottedObject("crafted_components")->getContainerObject(0);
+		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
+
+		if(satchel != NULL && inventory != NULL) {
+			while(satchel->getContainerObjectsSize() > 0) {
+				inventory->transferObject(satchel->getContainerObject(0), -1, true);
+			}
+		}
+
+		craftingTool->dropSlottedObject("crafted_components");
+	}
+
 	crafterGhost = crafter->getPlayerObject();
 
 	craftingManager = crafter->getZoneServer()->getCraftingManager();
@@ -440,7 +453,32 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
-	int result = manufactureSchematic->addIngredientToSlot(crafter, tano, slot);
+	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
+	ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;
+
+	if(craftingComponents == NULL) {
+
+		/// Add Components to crafted object
+		String craftingComponentsPath = "object/tangible/crafting/crafting_components_container.iff";
+		craftingComponents = crafter->getZoneServer()->createObject(craftingComponentsPath.hashCode(), 1);
+		craftingTool->transferObject(craftingComponents, 4, true);
+
+		craftingComponents->setSendToClient(false);
+		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+
+		String craftingComponentsSatchelPath = "object/tangible/container/general/satchel.iff";
+		craftingComponentsSatchel = crafter->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
+
+		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
+		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
+		craftingComponentsSatchel->setContainerAllowPermission("admin", ContainerPermissions::OPEN);
+
+		craftingComponents->transferObject(craftingComponentsSatchel, -1, true);
+	} else {
+		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
+	}
+
+	int result = manufactureSchematic->addIngredientToSlot(crafter, craftingComponentsSatchel, tano, slot);
 
 	sendSlotMessage(clientCounter, result);
 
@@ -694,29 +732,14 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 		crafterGhost->decreaseSchematicUseCount(draftSchematic);
 
-		/// Add Components to crafted object
-		String craftingComponents = "object/tangible/crafting/crafting_components_container.iff";
-		ManagedReference<SceneObject*> craftingComponentContainer = crafter->getZoneServer()->createObject(craftingComponents.hashCode(), 1);
-		craftingComponentContainer->setSendToClient(false);
+		ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 
-		String craftingComponentsSatchel = "object/tangible/container/general/satchel.iff";
-		ManagedReference<SceneObject*> craftingComponentsSatchelContainer = crafter->getZoneServer()->createObject(craftingComponentsSatchel.hashCode(), 1);
+		if(craftingComponents != NULL) {
 
-		for(int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
-			Reference<IngredientSlot*> slot = manufactureSchematic->getSlot(i);
-			ManagedReference<SceneObject*> scno = slot->getFactoryIngredient();
-
-			if(scno != NULL && scno->isTangibleObject()) {
-
-				craftingComponentsSatchelContainer->transferObject(scno, -1, false);
-			}
+			/// Add Components to crafted object
+			prototype->transferObject(craftingComponents, 4, true);
+			craftingComponents->setSendToClient(false);
 		}
-
-		craftingComponentsSatchelContainer->setContainerInheritPermissionsFromParent(false);
-		craftingComponentsSatchelContainer->setContainerDenyPermission("admin", ContainerPermissions::MOVEIN);
-
-		craftingComponentContainer->transferObject(craftingComponentsSatchelContainer, -1, false);
-		prototype->transferObject(craftingComponentContainer, 4, false);
 	}
 
 	if(crafterGhost->getDebug()) {

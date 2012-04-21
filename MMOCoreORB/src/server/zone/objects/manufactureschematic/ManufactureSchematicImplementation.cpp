@@ -366,7 +366,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 	}
 }
 
-int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot) {
+int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
 
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
@@ -378,7 +378,7 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 	if(ingredientSlot->isEmpty())
 		wasEmpty = true;
 
-	if(!ingredientSlot->add(player, tano))
+	if(!ingredientSlot->add(player, satchel, tano))
 		return IngredientSlot::INVALIDINGREDIENT;
 
 

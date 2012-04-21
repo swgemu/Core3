@@ -24,8 +24,6 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if(weapon == NULL)
 		return;
 
-	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
-
 	if(!weapon->isASubChildOf(player))
 		return;
 
@@ -36,6 +34,8 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if(weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
 		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
 	}
+
+	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 }
 

@@ -198,8 +198,10 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(count, false);
 
-		if (parent != NULL)
+		if (parent != NULL) {
+			getParent()->broadcastObject(protoclone, true);
 			getParent()->transferObject(protoclone, -1, true);
+		}
 
 		setUseCount(getUseCount() - count, true);
 
@@ -238,7 +240,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	newCrate->setCustomObjectName(getCustomObjectName(), false);
 
 	if (parent != NULL) {
-		getParent()->transferObject(newCrate, -1, true);
+		getParent()->transferObject(newCrate, -1, false);
 		getParent()->broadcastObject(newCrate, true);
 	}
 }

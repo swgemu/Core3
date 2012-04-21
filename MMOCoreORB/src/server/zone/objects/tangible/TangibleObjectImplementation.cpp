@@ -729,6 +729,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 		if (protoclone == NULL)
 			return NULL;
 
+		protoclone->setUseCount(1, false);
 		protoclone->setParent(NULL);
 		crate->transferObject(protoclone, -1, false);
 	}

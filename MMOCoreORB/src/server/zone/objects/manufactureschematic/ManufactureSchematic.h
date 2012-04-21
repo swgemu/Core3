@@ -138,7 +138,7 @@ public:
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
-	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
+	int addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot);
 
 	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
 
@@ -301,7 +301,7 @@ private:
 	void initializeIngredientSlots();
 
 public:
-	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
+	int addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot);
 
 	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
 
@@ -426,7 +426,7 @@ public:
 
 	void setDraftSchematic(DraftSchematic* schematic);
 
-	int addIngredientToSlot(CreatureObject* player, TangibleObject* tano, int slot);
+	int addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot);
 
 	int removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot);
 

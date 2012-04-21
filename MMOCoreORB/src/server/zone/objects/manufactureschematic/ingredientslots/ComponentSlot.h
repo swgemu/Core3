@@ -77,7 +77,7 @@ public:
 		return new ComponentSlot(*this);
 	}
 
-	bool add(CreatureObject* player, ManagedReference<TangibleObject*> incomingTano) {
+	bool add(CreatureObject* player, SceneObject* satchel, ManagedReference<TangibleObject*> incomingTano) {
 
 		int currentQuantity = getSlotQuantity();
 		FactoryCrate* crate = NULL;
@@ -148,7 +148,6 @@ public:
 				incomingTano = crate->extractObject(crate->getUseCount());
 		}
 
-		incomingTano->sendTo(player, true);
 		incomingTano->sendAttributeListTo(player);
 
 		if(incomingTano == NULL) {
@@ -160,13 +159,13 @@ public:
 
 		if(incomingTano->getUseCount() <= slotNeeds) {
 
+			satchel->transferObject(incomingTano, -1, true);
 			contents.put(incomingTano, parent);
-			parent->removeObject(incomingTano.get(), NULL, true);
 
 		} else {
 
 			int newCount = incomingTano->getUseCount() - slotNeeds;
-			incomingTano->setUseCount(newCount, false);
+			incomingTano->setUseCount(newCount, true);
 			/// Hacks because the client doesn't display 0 while crafting
 			// Start DTANO3 ***********************************************************
 			// Updates the Complexity and the condition
@@ -180,12 +179,13 @@ public:
 			//incomingTano->setUseCount(newCount, true);
 
 			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
-			newTano->setUseCount(slotNeeds, true);
+			newTano->setUseCount(slotNeeds, false);
 			newTano->setParent(NULL);
 
 			contents.put(newTano, parent);
+			satchel->transferObject(newTano, -1, false);
+			satchel->broadcastObject(newTano, true);
 
-			newTano->sendTo(player, true);
 			newTano->sendAttributeListTo(player);
 
 		}

@@ -22,21 +22,31 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 	// Figure out what the object is and if its able to be Sliced.
 	if(tano->isSliceable()) { // Check to see if the player has the correct skill level
-		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
-			return;
-		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
-			return;
-		else if (sceneObject->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
-			return;
-		else if (sceneObject->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
-			return;
 
-		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
+		bool hasSkill = true;
+
+		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
+			hasSkill = false;
+		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
+			hasSkill = false;
+		else if (sceneObject->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
+			hasSkill = false;
+		else if (sceneObject->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
+			hasSkill = false;
+
+		if(hasSkill)
+			menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 	}
 
 	if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
 		/// Viewing components used to craft item, for admins
-		menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
+		SceneObject* container = tano->getSlottedObject("crafted_components");
+		if(container != NULL) {
+
+			if(container->getContainerObjectsSize() > 0) {
+				menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
+			}
+		}
 	}
 }
 
@@ -73,7 +83,6 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 						satchel->sendWithoutContainerObjectsTo(player);
 						satchel->openContainerTo(player);
 
-						player->sendSystemMessage(String::valueOf(satchel->getContainerObjectsSize()));
 					} else {
 						player->sendSystemMessage("There is no satchel this container");
 					}
