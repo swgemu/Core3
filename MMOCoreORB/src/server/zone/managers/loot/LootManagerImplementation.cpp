@@ -198,7 +198,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	float percentage = System::random(10000) / 10000.f; //Generate a base percentage. We will deviate slightly from this on each stat.
 
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
-		subtitle = craftingValues.getExperimentalPropertySubtitle(i).toLowerCase();
+		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
 		if (subtitle == "hitpoints")
 			continue;
@@ -209,7 +209,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		if(min == max)
 			continue;
 
-		if (subtitle != "usecount" &&
+		if (subtitle != "useCount" &&
 				subtitle != "quantity" &&
 				subtitle != "charges" &&
 				subtitle != "uses" &&
