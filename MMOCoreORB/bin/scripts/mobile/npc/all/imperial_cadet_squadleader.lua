@@ -2,7 +2,7 @@ imperial_cadet_squadleader = Creature:new {
 	objectName = "@mob/creature_names:imperial_cadet_squadleader",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -27,7 +27,19 @@ imperial_cadet_squadleader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_squad_leader_trainer_03.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -2,7 +2,7 @@ imperial_inquisitor = Creature:new {
 	objectName = "@mob/creature_names:imperial_inquisitor",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 120,
 	chanceHit = 4.000000,
 	damageMin = 745,
@@ -25,8 +25,20 @@ imperial_inquisitor = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff","object/mobile/dressed_imperial_inquisitor_human_male_01.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}				
+	},
 	weapons = {""},
 	attacks = {}
 }

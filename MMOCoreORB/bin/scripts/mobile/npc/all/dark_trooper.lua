@@ -2,7 +2,7 @@ dark_trooper = Creature:new {
 	objectName = "@mob/creature_names:dark_trooper",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 35,
 	chanceHit = 0.4,
 	damageMin = 305,
@@ -30,10 +30,9 @@ dark_trooper = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "holocron_light", chance = 700000},
-				{group = "holocron_dark", chance = 500000},
-				{group = "rifles", chance = 3100000},
-				{group = "pistols", chance = 3500000},
+				{group = "holocron_dark", chance = 100000},
+				{group = "rifles", chance = 3750000},
+				{group = "pistols", chance = 3750000},
 				{group = "clothing_attachments", chance = 1100000},
 				{group = "armor_attachments", chance = 1100000}
 			},

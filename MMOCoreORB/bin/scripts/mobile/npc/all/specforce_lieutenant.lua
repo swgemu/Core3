@@ -2,7 +2,7 @@ specforce_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:specforce_lieutenant",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 23,
 	chanceHit = 0.350000,
 	damageMin = 220,
@@ -25,8 +25,26 @@ specforce_lieutenant = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
+	},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = {}
 }

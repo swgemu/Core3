@@ -3,7 +3,7 @@ rebel_sympathizer_coa2 = Creature:new {
 	customName = "a Rebel Sympathizer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -28,7 +28,19 @@ rebel_sympathizer_coa2 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

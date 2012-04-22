@@ -2,7 +2,7 @@ rebel_commandant = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_commandant",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 151,
 	chanceHit = 8.5,
 	damageMin = 895,
@@ -27,7 +27,19 @@ rebel_commandant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_general_human_female_02.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

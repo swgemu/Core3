@@ -3,7 +3,7 @@ imperial_moff = Creature:new {
 	costumName = "Imperial Moff",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 28,
 	chanceHit = 0.37,
 	damageMin = 270,
@@ -27,8 +27,20 @@ imperial_moff = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_imperial_moff_m.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}					
+	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

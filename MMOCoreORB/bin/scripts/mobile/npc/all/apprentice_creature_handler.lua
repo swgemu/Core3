@@ -2,7 +2,7 @@ apprentice_creature_handler = Creature:new {
 	objectName = "@mob/creature_names:rebel_creature_handler_apprentice",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -27,7 +27,19 @@ apprentice_creature_handler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}		
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

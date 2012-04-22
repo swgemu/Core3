@@ -2,7 +2,7 @@ alliance_intelligence_case = Creature:new {
 	objectName = "@mob/creature_names:mission_alliance_intelligence_case_officer",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -27,7 +27,19 @@ alliance_intelligence_case = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}		
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -2,7 +2,7 @@ rebel_staff_corporal = Creature:new {
 	objectName = "@mob/creature_names:rebel_staff_corporal",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -27,7 +27,19 @@ rebel_staff_corporal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_recruiter_human_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

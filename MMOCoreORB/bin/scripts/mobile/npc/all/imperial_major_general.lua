@@ -2,7 +2,7 @@ imperial_major_general = Creature:new {
 	objectName = "@mob/creature_names:imperial_major_general",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 26,
 	chanceHit = 0.360000,
 	damageMin = 250,
@@ -25,8 +25,20 @@ imperial_major_general = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}				
+	},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = {}
 }

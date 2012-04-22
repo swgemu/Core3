@@ -2,7 +2,7 @@ rebel_second_lieuteneant = Creature:new {
 	objectName = "@mob/creature_names:rebel_second_lieutenant",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -27,7 +27,19 @@ rebel_second_lieuteneant = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

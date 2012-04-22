@@ -2,7 +2,7 @@ stormtrooper_sniper = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_sniper",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 25,
 	chanceHit = 0.360000,
 	damageMin = 250,
@@ -25,8 +25,20 @@ stormtrooper_sniper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_stormtrooper_sniper_m.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "armor_attachments", chance = 1100000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"st_sniper_weapons"},
 	attacks = {}
 }
