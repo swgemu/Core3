@@ -3,7 +3,7 @@
 damaged_datapad = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "",
+	customObjectName = "A Damaged Datapad",
 	directObjectTemplate = "object/tangible/loot/misc/damaged_datapad.iff",
 	craftingValues = {
 	},

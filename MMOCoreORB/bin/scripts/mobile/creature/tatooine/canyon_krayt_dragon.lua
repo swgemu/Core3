@@ -30,10 +30,10 @@ canyon_krayt_dragon = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "krayt_dragon_common2", chance = 5000000},
-				{group = "krayt_tissue_common", chance = 5000000}
+				{group = "krayt_dragon_common2", chance = 6000000},
+				{group = "krayt_tissue_common", chance = 4000000}
 			},
-			lootChance = 8500000
+			lootChance = 6500000
 		}
 	},
 	weapons = {},
