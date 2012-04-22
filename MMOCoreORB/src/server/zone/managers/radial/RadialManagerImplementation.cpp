@@ -59,6 +59,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 	try {
 
+		/*
 		/// Check container permissions to see if player can manipulate this object
 		ManagedReference<SceneObject*> parent = selectedObject->getParent();
 		if(parent != NULL) {
@@ -66,6 +67,7 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 			if(!parent->checkContainerPermission(player, ContainerPermissions::OPEN))
 				return;
 		}
+		*/
 
 		Locker locker(player);
 
