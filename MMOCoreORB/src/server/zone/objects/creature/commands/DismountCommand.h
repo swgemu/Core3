@@ -85,6 +85,9 @@ public:
 
 		zone->transferObject(creature, -1, false);
 
+		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
+		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
+
 		if (creature->hasBuff(String("burstrun").hashCode())
 				|| creature->hasBuff(String("retreat").hashCode())) {
 
