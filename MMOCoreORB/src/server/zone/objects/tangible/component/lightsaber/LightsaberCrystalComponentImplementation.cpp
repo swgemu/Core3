@@ -44,30 +44,30 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 
 
 	if (getColor() != 31){
-	StringBuffer str;
-	str << "@jedi_spam:saber_color_" << getColor();
-	alm->insertAttribute("color", str);
+		StringBuffer str;
+		str << "@jedi_spam:saber_color_" << getColor();
+		alm->insertAttribute("color", str);
 	}
 
 	PlayerObject* player = object->getPlayerObject();
 	if (player->getJediState() > 1){
 
-	if (getColor() == 31){
-		if (owner != ""){
-		alm->insertAttribute("mindamage", minimumDamage);
-		alm->insertAttribute("maxdamage", maximumDamage);
-		alm->insertAttribute("wpn_attack_speed", attackSpeed);
-		alm->insertAttribute("wpn_wound_chance", woundChance);
-		alm->insertAttribute("wpn_attack_cost_health", sacHealth);
-		alm->insertAttribute("wpn_attack_cost_action", sacAction);
-		alm->insertAttribute("wpn_attack_cost_mind", sacMind);
-		alm->insertAttribute("forcecost", forceCost);
-	} else {
-		StringBuffer str;
-		str << "@jedi_spam:crystal_quality_" << getQuality();
-		alm->insertAttribute("quality", str);
+		if (getColor() == 31){
+			if (owner != ""){
+				alm->insertAttribute("mindamage", minimumDamage);
+				alm->insertAttribute("maxdamage", maximumDamage);
+				alm->insertAttribute("wpn_attack_speed", attackSpeed);
+				alm->insertAttribute("wpn_wound_chance", woundChance);
+				alm->insertAttribute("wpn_attack_cost_health", sacHealth);
+				alm->insertAttribute("wpn_attack_cost_action", sacAction);
+				alm->insertAttribute("wpn_attack_cost_mind", sacMind);
+				alm->insertAttribute("forcecost", forceCost);
+			} else {
+				StringBuffer str;
+				str << "@jedi_spam:crystal_quality_" << getQuality();
+				alm->insertAttribute("quality", str);
+			}
 		}
-	}
 	}
 
 }
@@ -77,15 +77,15 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
-	String text = "@jedi_spam:tune_crystal";
-	menuResponse->addRadialMenuItem(128, 3, text);
+		String text = "@jedi_spam:tune_crystal";
+		menuResponse->addRadialMenuItem(128, 3, text);
 	}
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
 	if (selectedID == 128) {
-	
+
 		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
 
 		suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");

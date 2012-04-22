@@ -20,12 +20,22 @@ class CombatQueueCommand;
 class CombatManager : public Singleton<CombatManager>, public Logger, public Object {
 
 public:
-	const static int HIT = 0;
-	const static int BLOCK = 1;
-	const static int DODGE = 2;
-	const static int COUNTER = 3;
-	const static int MISS = 4;
-	const static int LSBLOCK = 5;
+	// hitstatus: 0x0-MISS 0x1-HIT 0x2-BLOCK 0x3-DODGE 0x5-COUNTER 0x7-RICOCHET 0x8-REFLECT 0x9-REFLECT_TO_TARGET
+	const static int MISS = 0x00;
+	const static int HIT = 0x01;
+	const static int BLOCK = 0x02;
+	const static int DODGE = 0x03;
+	const static int COUNTER = 0x05;
+	const static int RICOCHET = 0x07;
+	const static int REFLECT = 0x08;
+	const static int REFLECT_TO_TARGET = 0x09;
+
+	// trails bitmask: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
+	const static int LEFTFOOTTRAIL = 0x01;
+	const static int RIGHTFOOTTRAIL = 0x02;
+	const static int LEFTHANDTRAIL = 0x04;
+	const static int RIGHTHANDTRAIL = 0x08;
+	const static int WEAPONTRAIL = 0x10;
 
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
@@ -131,6 +141,7 @@ public:
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
+	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data, uint8 hit);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 

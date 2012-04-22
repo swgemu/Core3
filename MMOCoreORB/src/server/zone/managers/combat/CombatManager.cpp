@@ -179,39 +179,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	else
 		damage = doTargetCombatAction(attacker, defenderObject, data);
 
-	CombatAction* combatAction = NULL;
-
-	uint32 animationCRC = data.getAnimationCRC();
-
-	if (!attacker->isCreature() && animationCRC == 0)
-		animationCRC = getDefaultAttackAnimation(attacker);
-
-	// TODO: this might need a randomize like player CRCs
-	if (attacker->isCreature() && animationCRC == 0) {
-		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
-			animationCRC = String("fire_3_single_light").hashCode();
-		} else {
-			animationCRC = String("creature_attack_light").hashCode();
-		}
-
-	}
-
-	uint8 hit = damage != 0 ? 1 : 0;
-
-	if (defenderObject->isCreatureObject()) {
-		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit);
-	} else {
-		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit);
-	}
-
-	attacker->broadcastMessage(combatAction, true);
-
-	String effect = data.getCommand()->getEffectString();
-
-	if (!effect.isEmpty())
-		attacker->playEffect(effect);
-
-	if (hit == 1) {
+	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
 
 		Locker clocker(defenderObject, attacker);
@@ -239,6 +207,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 
 		damage = applyDamage(attacker, tano, damage, poolsToDamage);
 
+		broadcastCombatAction(attacker, tano, data, 0x01);
 		broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
 	}
 
@@ -264,20 +233,22 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
+
+	broadcastCombatAction(attacker, defender, data, hitVal);
 	String combatSpam = data.getCommand()->getCombatSpam();
 	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
 	switch (hitVal) {
+	case MISS:
+		doMiss(attacker, defender, damage, combatSpam + "_miss");
+		return 0;
+		break;
 	case HIT:
 		broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
 		break;
 	case BLOCK:
 		doBlock(attacker, defender, damage, combatSpam + "_block");
 		damageMultiplier = 0.5f;
-		break;
-	case LSBLOCK:
-		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
-		damageMultiplier = 0.0f;
 		break;
 	case DODGE:
 		doDodge(attacker, defender, damage, combatSpam + "_evade");
@@ -287,9 +258,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 		doCounterAttack(attacker, defender, damage, combatSpam + "_counter");
 		damageMultiplier = 0.0f;
 		break;
-	case MISS:
-		doMiss(attacker, defender, damage, combatSpam + "_miss");
-		return 0;
+	case RICOCHET:
+		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
+		damageMultiplier = 0.0f;
 		break;
 	default:
 		break;
@@ -1035,17 +1006,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		}
 	}
 
-	// Intimidate.
-	if (attacker->isIntimidated())
-		damage *= 0.66; // 33% reduction.
-
-	// Stunned.
-	if (attacker->isStunned())
-		damage *= 0.90; // 10% reduction.
-
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
-		damage *= 0.15; //85% reduction from PvE damage.
+		damage *= 0.25;
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 
@@ -1107,7 +1070,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		if (def == "saber_block") {
 			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
-				return LSBLOCK;
+				return RICOCHET;
 			else return HIT;
 		}
 
@@ -1160,7 +1123,7 @@ void CombatManager::doMiss(CreatureObject* attacker, CreatureObject* defender, i
 
 void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
@@ -1168,7 +1131,7 @@ void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* de
 void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
-	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
@@ -1176,7 +1139,7 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, 
 void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
 	// No Fly Text.
 
-	creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
+	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
@@ -1184,7 +1147,7 @@ void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
-	defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
 	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
 }
@@ -1521,6 +1484,37 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 	}
 }
 
+void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, const CreatureAttackData & data, uint8 hit) {
+	CombatAction* combatAction = NULL;
+
+	uint32 animationCRC = data.getAnimationCRC();
+
+	if (!attacker->isCreature() && animationCRC == 0)
+		animationCRC = getDefaultAttackAnimation(attacker);
+
+	// TODO: this might need a randomize like player CRCs
+	if (attacker->isCreature() && animationCRC == 0) {
+		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
+			animationCRC = String("fire_3_single_light").hashCode();
+		} else {
+			animationCRC = String("creature_attack_light").hashCode();
+		}
+
+	}
+
+	if (defenderObject->isCreatureObject())
+		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit);
+	else
+		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit);
+
+	attacker->broadcastMessage(combatAction, true);
+
+	// TODO: this might be in the CombatAction packet
+	String effect = data.getCommand()->getEffectString();
+
+	if (!effect.isEmpty())
+		attacker->playEffect(effect);
+}
 
 void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPlayer) {
 	/* Pre: player != targetPlayer and not NULL; player is locked

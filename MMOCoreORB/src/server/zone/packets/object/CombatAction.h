@@ -52,8 +52,9 @@ class CombatAction : public ObjectControllerMessage {
 
 
 public:
-	CombatAction(CreatureObject* attacker, CreatureObject* defender,
-			uint32 animcrc, uint8 hit) :
+	// set the new posture of attacker and defender BEFORE constructing a CombatAction
+	// TODO: set trails in the weapon scripts and pass them to the message
+	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, uint8 trails = 0x10) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);
@@ -61,21 +62,20 @@ public:
 		insertLong(attacker->getObjectID());
 		insertLong(attacker->getWeaponID());
 
-		insertByte(attacker->getPosture());
-		insertByte(0xFF);
-		insertByte(0xFF);
+		insertByte(attacker->getPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
+		insertByte(trails); // Trails: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
+		insertByte(0x00); // AttackerSpecialMoveEffect: disabled in the client
 
 		defenderSize = 1;
 
-		insertShort(1);
+		insertShort(1); // DefenderListSize: TODO: should this always be 1?
 		insertLong(defender->getObjectID());
-		insertByte(defender->getPosture());
-		insertByte(hit);
-		insertByte(0);
+		insertByte(defender->getPosture()); // DefenderEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
+		insertByte(hit); // HitType: 0x0-MISS 0x1-HIT 0x2-BLOCK 0x3-DODGE 0x5-COUNTER 0x7-RICOCHET 0x8-REFLECT 0x9-REFLECT_TO_TARGET
+		insertByte(0x00); // DefenderSpecialMoveEffect: disabled in the client
 	}
 
-	CombatAction(CreatureObject* attacker, TangibleObject* defender,
-			uint32 animcrc, uint8 hit) :
+	CombatAction(CreatureObject* attacker, TangibleObject* defender, uint32 animcrc, uint8 hit, uint8 trails = 0x10) :
 				ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);
@@ -84,8 +84,8 @@ public:
 		insertLong(attacker->getWeaponID());
 
 		insertByte(attacker->getPosture());
-		insertByte(0xFF);
-		insertByte(0xFF);
+		insertByte(trails);
+		insertByte(0x00);
 
 		defenderSize = 1;
 

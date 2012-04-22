@@ -230,6 +230,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			}
 			default: {
 				CRC = SCULPTURE;
+				break;
 			}
 		}
 

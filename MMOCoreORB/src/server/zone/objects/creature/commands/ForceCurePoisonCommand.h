@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef FORCECUREPOISONCOMMAND_H_
 #define FORCECUREPOISONCOMMAND_H_
@@ -51,22 +51,23 @@ class ForceCurePoisonCommand : public QueueCommand {
 public:
 
 	ForceCurePoisonCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (!creatureTarget->isPoisoned()) {
-			if (creature == creatureTarget)
-				creature->sendSystemMessage("@healing_response:healing_response_82"); //You are not poisoned.
-			else {
-				StringIdChatParameter stringId("healing_response", "healing_response_84");
-				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); //%NT is not poisoned.
-			}
-			return false;
+		if (creatureTarget->isPoisoned())
+			return true;
+
+		if (creature == creatureTarget)
+			creature->sendSystemMessage("@healing_response:healing_response_82"); //You are not poisoned.
+		else {
+			StringIdChatParameter stringId("healing_response", "healing_response_84");
+			stringId.setTT(creatureTarget->getObjectID());
+			creature->sendSystemMessage(stringId); //%NT is not poisoned.
 		}
-		return true;
+
+		return false;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -77,52 +78,46 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (isWearingArmor(creature)) {
+		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
-		}
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-			if (object != NULL && !object->isCreatureObject()) {
-				return INVALIDTARGET;
-			} else if (object == NULL)
-				object = creature;
+		if (object != NULL && !object->isCreatureObject())
+			return INVALIDTARGET;
+		else if (object == NULL)
+			object = creature;
 
-			CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-			Locker clocker(targetCreature, creature);
+		Locker clocker(targetCreature, creature);
 
-			if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
-				targetCreature = creature;
+		if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
+			targetCreature = creature;
 
-			int range = 32;
+		int range = 32;
 
-			if (!creature->isInRange(targetCreature, range))
-				return TOOFAR;
+		if (!creature->isInRange(targetCreature, range))
+			return TOOFAR;
 
-			PlayerObject* targetGhost = targetCreature->getPlayerObject();
+		PlayerObject* targetGhost = targetCreature->getPlayerObject();
 
-			if (targetGhost != NULL && targetCreature->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-				return GENERALERROR;
-			}
+		if (targetGhost != NULL && targetCreature->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE))
+			return GENERALERROR;
 
+		if (!canPerformSkill(creature, targetCreature))
+			return GENERALERROR;
 
-			if (!canPerformSkill(creature, targetCreature))
-				return GENERALERROR;
+		targetCreature->healDot(CreatureState::POISONED, 30);
 
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-				targetCreature->healDot(CreatureState::POISONED, 30);
+		playerObject->setForcePower(playerObject->getForcePower() - 65);
 
-
-				ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-				playerObject->setForcePower(playerObject->getForcePower() - 65);
-
-				if (targetCreature == creature){
-					creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-				} else {
-					creature->doAnimation("force_healing_1");
-				}
+		if (targetCreature == creature)
+			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+		else
+			creature->doAnimation("force_healing_1");
 
 		return SUCCESS;
 	}
