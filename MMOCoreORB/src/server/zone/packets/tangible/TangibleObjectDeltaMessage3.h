@@ -96,10 +96,6 @@ public:
 
 	void setQuantity(int quantity) {
 
-
-		if (quantity == 1)
-			quantity = 0;
-
 		addIntUpdate(7, quantity);
 	}
 

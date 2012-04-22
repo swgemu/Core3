@@ -106,13 +106,6 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 		return false;
 	}
 
-	if(ghost->isPrivileged()) {
-		if(permission != ContainerPermissions::OPEN && permissions->getDenyPermissions("admin") == ContainerPermissions::MOVEIN)
-			return false;
-		else
-			return true;
-	}
-
 	SortedVector<String>* groups = ghost->getPermissionGroups();
 
 	uint16 allowPermissions = 0, denyPermissions = 0;

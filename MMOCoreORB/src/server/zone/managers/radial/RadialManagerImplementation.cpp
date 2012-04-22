@@ -26,6 +26,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
 
 	if (menuObject != NULL) {
+
 		Locker clocker(menuObject, player);
 
 		//info("entering object menu request ");
@@ -57,6 +58,15 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	try {
+
+		/// Check container permissions to see if player can manipulate this object
+		ManagedReference<SceneObject*> parent = selectedObject->getParent();
+		if(parent != NULL) {
+
+			if(!parent->checkContainerPermission(player, ContainerPermissions::OPEN))
+				return;
+		}
+
 		Locker locker(player);
 
 		Locker clocker(selectedObject, player);

@@ -40,11 +40,16 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 	if(player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
 		/// Viewing components used to craft item, for admins
-		SceneObject* container = tano->getSlottedObject("crafted_components");
+		ManagedReference<SceneObject*> container = tano->getSlottedObject("crafted_components");
 		if(container != NULL) {
 
 			if(container->getContainerObjectsSize() > 0) {
-				menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
+
+				SceneObject* satchel = container->getContainerObject(0);
+
+				if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
+					menuResponse->addRadialMenuItem(79, 3, "@ui_radial:ship_manage_components"); // View Components
+				}
 			}
 		}
 	}

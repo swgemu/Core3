@@ -380,7 +380,7 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 }
 
 void TangibleObjectImplementation::decreaseUseCount(CreatureObject* player) {
-	setUseCount(useCount - 1);
+	setUseCount(useCount - 1, true);
 }
 
 void TangibleObjectImplementation::setMaxCondition(int maxCond, bool notifyClient) {
@@ -671,8 +671,8 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 				experimentalTitle = component->getAttributeTitle(property);
 
 				craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
-				craftingValues->setCurrentPercentage(property, .5f);
-				craftingValues->setMaxPercentage(property, 1.0f);
+				craftingValues->setCurrentPercentage(property, 0);
+				craftingValues->setMaxPercentage(property, 0);
 				craftingValues->setCurrentValue(property, currentvalue);
 			}
 		}

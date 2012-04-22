@@ -77,17 +77,15 @@ public:
 
 		if (inventory != NULL && !inventory->isContainerFull()) {
 
-			crafter->sendSystemMessage("@system_msg:prototype_transferred");
-
-			inventory->transferObject(prototype, -1, true);
-
-			craftingTool->setReady();
-
-		} else {
-
-			crafter->sendSystemMessage("@system_msg:prototype_not_transferred");
-			craftingTool->setFinished();
+			if(inventory->transferObject(prototype, -1, true)) {
+				crafter->sendSystemMessage("@system_msg:prototype_transferred");
+				craftingTool->setReady();
+				return;
+			}
 		}
+
+		crafter->sendSystemMessage("@system_msg:prototype_not_transferred");
+		craftingTool->setFinished();
 	}
 };
 

@@ -465,9 +465,9 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		/// Add Components to crafted object
 		String craftingComponentsPath = "object/tangible/crafting/crafting_components_container.iff";
 		craftingComponents = crafter->getZoneServer()->createObject(craftingComponentsPath.hashCode(), 1);
-		craftingTool->transferObject(craftingComponents, 4, true);
-
+		craftingTool->transferObject(craftingComponents, 4, false);
 		craftingComponents->setSendToClient(false);
+
 		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponents->setContainerDefaultAllowPermission(0);
 		craftingComponents->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
@@ -487,7 +487,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
 		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 
-		craftingComponents->transferObject(craftingComponentsSatchel, -1, true);
+		craftingComponents->transferObject(craftingComponentsSatchel, -1, false);
+		craftingComponentsSatchel->sendTo(crafter, true);
 	} else {
 		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
 	}
@@ -575,7 +576,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	if(craftingComponents != NULL) {
 
 		/// Add Components to crafted object
-		prototype->transferObject(craftingComponents, 4, true);
+		prototype->transferObject(craftingComponents, 4, false);
 		craftingComponents->setSendToClient(false);
 	}
 	manufactureSchematic->setAssembled();
