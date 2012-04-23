@@ -12,6 +12,8 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 #include "MissionObject.h"
 #include "MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -156,4 +158,15 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 	startCompleteTask();
 
 	return 0;
+}
+
+Vector3 EntertainerMissionObjectiveImplementation::getEndPosition() {
+	Vector3 missionEndPoint;
+
+	missionEndPoint.setX(mission->getStartPositionX());
+	missionEndPoint.setY(mission->getStartPositionY());
+	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+
+	return missionEndPoint;
 }

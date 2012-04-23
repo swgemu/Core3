@@ -78,4 +78,8 @@ class ReconMissionObjective extends MissionObjective {
 	public native void activate();
 	public native void abort();
 	public native void complete();
+	
+	@dereferenced
+	@local
+	public native Vector3 getEndPosition();
 }

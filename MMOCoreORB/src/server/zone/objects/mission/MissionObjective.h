@@ -93,6 +93,8 @@ using namespace server::zone::objects::mission::events;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -135,6 +137,10 @@ public:
 	void awardFactionPoints();
 
 	void removeMissionFromPlayer();
+
+	void awardReward();
+
+	Vector3 getEndPosition();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -210,6 +216,10 @@ public:
 	void awardFactionPoints();
 
 	void removeMissionFromPlayer();
+
+	void awardReward();
+
+	virtual Vector3 getEndPosition();
 
 	WeakReference<MissionObjective*> _this;
 
@@ -287,6 +297,8 @@ public:
 	void awardFactionPoints();
 
 	void removeMissionFromPlayer();
+
+	void awardReward();
 
 };
 

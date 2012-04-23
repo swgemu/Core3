@@ -104,6 +104,8 @@ public:
 
 	void complete();
 
+	Vector3 getEndPosition();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -146,6 +148,8 @@ public:
 	void abort();
 
 	void complete();
+
+	Vector3 getEndPosition();
 
 	WeakReference<ReconMissionObjective*> _this;
 

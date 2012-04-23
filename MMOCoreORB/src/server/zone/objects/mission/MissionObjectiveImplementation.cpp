@@ -10,8 +10,12 @@
 #include "MissionObjective.h"
 #include "MissionObserver.h"
 #include "MissionObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
@@ -51,18 +55,7 @@ void MissionObjectiveImplementation::complete() {
 	if (player == NULL)
 		return;
 
-	Locker locker(player);
-
-	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
-	player->sendMessage(pmm);
-
-	int missionReward = mission->getRewardCredits();
-
-	StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
-	stringId.setDI(missionReward);
-	player->sendSystemMessage(stringId);
-
-	player->addBankCredits(missionReward, true);
+	awardReward();
 
 	awardFactionPoints();
 
@@ -133,4 +126,53 @@ void MissionObjectiveImplementation::removeMissionFromPlayer() {
 void MissionObjectiveImplementation::fail() {
 	abort();
 	removeMissionFromPlayer();
+}
+
+void MissionObjectiveImplementation::awardReward() {
+	Vector<CreatureObject*> players;
+	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
+
+	Vector3 missionEndPoint = getEndPosition();
+
+	ManagedReference<GroupObject*> group = getPlayerOwner()->getGroup();
+	if (group != NULL) {
+		for(int i=0; i<group->getGroupSize(); i++) {
+			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+			if (groupMember != NULL) {
+				//Play mission complete sound.
+				groupMember->sendMessage(pmm);
+
+				if (groupMember->getWorldPosition().distanceTo(missionEndPoint) < 128) {
+					players.add(groupMember);
+				}
+			}
+		}
+	} else {
+		//Play mission complete sound.
+		getPlayerOwner()->sendMessage(pmm);
+		players.add(getPlayerOwner());
+	}
+
+	int dividedReward = mission->getRewardCredits() / players.size();
+
+	for (int i = 0; i < players.size(); i++) {
+		ManagedReference<CreatureObject*> player = players.get(i);
+		StringIdChatParameter stringId("mission/mission_generic", "success_w_amount");
+		stringId.setDI(dividedReward);
+		player->sendSystemMessage(stringId);
+
+		Locker locker(player);
+		player->addBankCredits(dividedReward, true);
+	}
+}
+
+Vector3 MissionObjectiveImplementation::getEndPosition() {
+	Vector3 missionEndPoint;
+
+	missionEndPoint.setX(mission->getEndPositionX());
+	missionEndPoint.setY(mission->getEndPositionY());
+	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+
+	return missionEndPoint;
 }

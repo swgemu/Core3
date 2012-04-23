@@ -67,6 +67,8 @@ class ResourceSpawn;
 
 using namespace server::zone::objects::resource;
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -97,6 +99,8 @@ public:
 	void setSpawnFamily(String& spf);
 
 	void setEfficiency(unsigned int eff);
+
+	Vector3 getEndPosition();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -148,6 +152,8 @@ public:
 	void setSpawnFamily(String& spf);
 
 	void setEfficiency(unsigned int eff);
+
+	Vector3 getEndPosition();
 
 	WeakReference<SurveyMissionObjective*> _this;
 

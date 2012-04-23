@@ -113,4 +113,8 @@ class DestroyMissionObjective extends MissionObjective {
 		minDifficulty = min;
 		maxDifficulty = max;
 	}
+	
+	@dereferenced
+	@local
+	public native Vector3 getEndPosition();
 }

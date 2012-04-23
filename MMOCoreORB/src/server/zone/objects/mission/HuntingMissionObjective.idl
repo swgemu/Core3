@@ -78,4 +78,8 @@ class HuntingMissionObjective extends MissionObjective {
 	public native void complete();
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	
+	@dereferenced
+	@local
+	public native Vector3 getEndPosition();
 }

@@ -140,6 +140,8 @@ public:
 
 	void startCompleteTask();
 
+	Vector3 getEndPosition();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -196,6 +198,8 @@ public:
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	void startCompleteTask();
+
+	Vector3 getEndPosition();
 
 	WeakReference<EntertainerMissionObjective*> _this;
 

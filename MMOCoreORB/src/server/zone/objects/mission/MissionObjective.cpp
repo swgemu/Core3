@@ -18,7 +18,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_,RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_,RPC_GETOBSERVERCOUNT__,RPC_REMOVEALLOBSERVERS__,RPC_GETOBSERVER__INT_,RPC_HASOBSERVERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__};
+enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_,RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_,RPC_GETOBSERVERCOUNT__,RPC_REMOVEALLOBSERVERS__,RPC_GETOBSERVER__INT_,RPC_HASOBSERVERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__,RPC_AWARDREWARD__,};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -265,6 +265,28 @@ void MissionObjective::removeMissionFromPlayer() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeMissionFromPlayer();
+}
+
+void MissionObjective::awardReward() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_AWARDREWARD__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->awardReward();
+}
+
+Vector3 MissionObjective::getEndPosition() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getEndPosition();
 }
 
 DistributedObjectServant* MissionObjective::_getImplementation() {
@@ -577,6 +599,9 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_REMOVEMISSIONFROMPLAYER__:
 		removeMissionFromPlayer();
 		break;
+	case RPC_AWARDREWARD__:
+		awardReward();
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -648,6 +673,10 @@ void MissionObjectiveAdapter::awardFactionPoints() {
 
 void MissionObjectiveAdapter::removeMissionFromPlayer() {
 	(static_cast<MissionObjective*>(stub))->removeMissionFromPlayer();
+}
+
+void MissionObjectiveAdapter::awardReward() {
+	(static_cast<MissionObjective*>(stub))->awardReward();
 }
 
 /*

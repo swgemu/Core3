@@ -16,7 +16,7 @@
  *	SurveyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWNFAMILY__STRING_,RPC_SETEFFICIENCY__INT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETSPAWNFAMILY__STRING_,RPC_SETEFFICIENCY__INT_,};
 
 SurveyMissionObjective::SurveyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	SurveyMissionObjectiveImplementation* _implementation = new SurveyMissionObjectiveImplementation(mission);
@@ -130,6 +130,15 @@ void SurveyMissionObjective::setEfficiency(unsigned int eff) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setEfficiency(eff);
+}
+
+Vector3 SurveyMissionObjective::getEndPosition() {
+	SurveyMissionObjectiveImplementation* _implementation = static_cast<SurveyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getEndPosition();
 }
 
 DistributedObjectServant* SurveyMissionObjective::_getImplementation() {
@@ -310,6 +319,11 @@ void SurveyMissionObjectiveImplementation::setSpawnFamily(String& spf) {
 void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
 	// server/zone/objects/mission/SurveyMissionObjective.idl():  		efficiency = eff;
 	efficiency = eff;
+}
+
+Vector3 SurveyMissionObjectiveImplementation::getEndPosition() {
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		return getPlayerOwner().getWorldPosition();
+	return getPlayerOwner()->getWorldPosition();
 }
 
 /*

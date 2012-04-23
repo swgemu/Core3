@@ -106,6 +106,8 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	Vector3 getEndPosition();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -149,6 +151,8 @@ public:
 	void complete();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
+
+	Vector3 getEndPosition();
 
 	WeakReference<HuntingMissionObjective*> _this;
 

@@ -266,6 +266,15 @@ String BountyMissionObjective::getTargetZoneName() {
 		return _implementation->getTargetZoneName();
 }
 
+Vector3 BountyMissionObjective::getEndPosition() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getEndPosition();
+}
+
 DistributedObjectServant* BountyMissionObjective::_getImplementation() {
 
 	_updated = true;
@@ -518,6 +527,11 @@ SceneObject* BountyMissionObjectiveImplementation::getArakydDroid() {
 void BountyMissionObjectiveImplementation::setArakydDroid(SceneObject* droid) {
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		activeDroid = droid;
 	activeDroid = droid;
+}
+
+Vector3 BountyMissionObjectiveImplementation::getEndPosition() {
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		return getTargetPosition();
+	return getTargetPosition();
 }
 
 /*

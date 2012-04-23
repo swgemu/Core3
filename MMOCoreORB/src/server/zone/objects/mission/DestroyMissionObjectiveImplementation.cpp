@@ -205,3 +205,14 @@ int DestroyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 
 	return 1;
 }
+
+Vector3 DestroyMissionObjectiveImplementation::getEndPosition() {
+	Vector3 missionEndPoint;
+
+	missionEndPoint.setX(mission->getStartPositionX());
+	missionEndPoint.setY(mission->getStartPositionY());
+	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+
+	return missionEndPoint;
+}

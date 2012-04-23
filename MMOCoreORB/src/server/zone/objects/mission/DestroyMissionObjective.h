@@ -154,6 +154,8 @@ public:
 
 	void setDifficulty(int min, int max);
 
+	Vector3 getEndPosition();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -217,6 +219,8 @@ public:
 	void setLairTemplateToSpawn(const String& sp);
 
 	void setDifficulty(int min, int max);
+
+	Vector3 getEndPosition();
 
 	WeakReference<DestroyMissionObjective*> _this;
 

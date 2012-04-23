@@ -52,6 +52,7 @@ import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.resource.ResourceSpawn;
 import engine.core.ManagedObject;
+include server.zone.objects.creature.CreatureObject;
 
 class SurveyMissionObjective extends MissionObjective {
 	protected string spawnFamily;
@@ -89,5 +90,11 @@ class SurveyMissionObjective extends MissionObjective {
 	
 	public void setEfficiency(unsigned int eff) {
 		efficiency = eff;
+	}
+	
+	@dereferenced
+	@local
+	public native Vector3 getEndPosition() {
+		return getPlayerOwner().getWorldPosition();
 	}
 }

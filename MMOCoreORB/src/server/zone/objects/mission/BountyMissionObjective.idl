@@ -158,4 +158,10 @@ class BountyMissionObjective extends MissionObjective {
 	private native void handlePlayerKilled(ManagedObject arg1);
 	private native void handleDefenderAdded(ManagedObject arg1);
 	private native void handleDefenderDropped(ManagedObject arg1);
+	
+	@dereferenced
+	@local
+	public Vector3 getEndPosition() {
+		return getTargetPosition();
+	}
 }

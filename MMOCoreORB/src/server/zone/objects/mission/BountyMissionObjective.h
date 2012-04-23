@@ -176,6 +176,8 @@ public:
 
 	String getTargetZoneName();
 
+	Vector3 getEndPosition();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -297,6 +299,8 @@ private:
 	void handleDefenderDropped(ManagedObject* arg1);
 
 public:
+	Vector3 getEndPosition();
+
 	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
