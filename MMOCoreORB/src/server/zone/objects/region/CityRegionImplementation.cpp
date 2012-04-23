@@ -20,6 +20,9 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -99,10 +102,17 @@ void CityRegionImplementation::initialize() {
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
-	cityStructureInventory.put(uint8(1), Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(2), Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(3), Vector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(4), Vector<ManagedReference<SceneObject*> >());
+	limitedPlacementStructures.setNoDuplicateInsertPlan();
+
+	cityStructureInventory.put(uint8(1), SortedVector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(2), SortedVector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(3), SortedVector<ManagedReference<SceneObject*> >());
+	cityStructureInventory.put(uint8(4), SortedVector<ManagedReference<SceneObject*> >());
+
+	cityStructureInventory.get(0).setNoDuplicateInsertPlan();
+	cityStructureInventory.get(1).setNoDuplicateInsertPlan();
+	cityStructureInventory.get(2).setNoDuplicateInsertPlan();
+	cityStructureInventory.get(3).setNoDuplicateInsertPlan();
 
 	setLoggingName("CityRegion");
 	setLogging(true);
@@ -160,24 +170,47 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (isClientRegion())
 		return;
 
-	if (!object->isCreatureObject())
-			return;
+	if (object->isCreatureObject()){
 
-	CreatureObject* creature = cast<CreatureObject*>(object);
 
-	StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
-	params.setTT(getRegionName());
+		CreatureObject* creature = cast<CreatureObject*>(object);
 
-	UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
+		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
+		params.setTT(getRegionName());
 
-	if (citySpecialization.isEmpty()) {
-		params.setTO(strRank);
-	} else {
-		UnicodeString citySpec = StringIdManager::instance()->getStringId(citySpecialization.hashCode());
-		params.setTO(strRank + ", " + citySpec);
+		UnicodeString strRank = StringIdManager::instance()->getStringId(String("@city/city:rank" + String::valueOf(cityRank)).hashCode());
+
+		if (citySpecialization.isEmpty()) {
+			params.setTO(strRank);
+		}
+		else {
+			UnicodeString citySpec = StringIdManager::instance()->getStringId(citySpecialization.hashCode());
+			params.setTO(strRank + ", " + citySpec);
+		}
+
+		creature->sendSystemMessage(params);
 	}
 
-	creature->sendSystemMessage(params);
+	if (object->isBuildingObject()){
+
+		//StructureObject* structure = cast<StructureObject*>(object);
+
+		BuildingObject* building = cast<BuildingObject*>(object);
+
+		CreatureObject* owner = building->getOwnerCreatureObject();
+
+		if (owner != NULL){
+
+			if (owner->getPlayerObject()->getDeclaredResidence() == building){
+
+				uint64 creatureID = owner->getObjectID();
+
+				if (!citizenList.contains(creatureID))
+					addCitizen(creatureID);
+
+			}
+		}
+	}
 
 	//Apply skillmods for specialization
 }
@@ -188,17 +221,43 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	if (isClientRegion())
 		return;
 
-	if (!object->isCreatureObject())
-		return;
+	if (object->isCreatureObject()){
 
-	CreatureObject* creature = cast<CreatureObject*>(object);
+		CreatureObject* creature = cast<CreatureObject*>(object);
 
-	StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
-	params.setTO(getRegionName());
+		StringIdChatParameter params("city/city", "city_leave_city"); //You have left %TO.
+		params.setTO(getRegionName());
 
-	creature->sendSystemMessage(params);
+		creature->sendSystemMessage(params);
 
-	//Remove skillmods for specialization
+		//Remove skillmods for specialization
+	}
+
+
+	if (object->isBuildingObject()){
+
+		float x = object->getWorldPositionX();
+		float y = object->getWorldPositionY();
+
+		//StructureObject* structure = cast<StructureObject*>(object);
+
+		BuildingObject* building = cast<BuildingObject*>(object);
+
+		CreatureObject* owner = building->getOwnerCreatureObject();
+
+		if (owner != NULL){
+
+			if (owner->getPlayerObject()->getDeclaredResidence() == building){
+
+				uint64 creatureID = owner->getObjectID();
+
+				if (citizenList.contains(creatureID))
+					removeCitizen(creatureID);
+			}
+
+		}
+
+	}
 }
 
 void CityRegionImplementation::setRegionName(const StringId& name) {
@@ -243,6 +302,8 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	zone->removeObject(aa, NULL, false);
 	zone->transferObject(aa, -1, false);
+
+
 }
 
 void CityRegionImplementation::destroyActiveAreas() {
@@ -269,7 +330,7 @@ void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, S
 	Locker locker(_this);
 
 	if(cityStructureInventory.contains(rankRequired)){
-		cityStructureInventory.get(rankRequired).add(structure);
+		cityStructureInventory.get(rankRequired).put(structure);
 
 	}
 
@@ -280,16 +341,16 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 	Locker locker(_this);
 
 	if(cityStructureInventory.get(uint8(1)).contains(structure))
-		cityStructureInventory.get(uint8(1)).removeElement(structure);
+		cityStructureInventory.get(uint8(1)).drop(structure);
 
 	else if(cityStructureInventory.get(uint8(2)).contains(structure))
-		cityStructureInventory.get(uint8(2)).removeElement(structure);
+		cityStructureInventory.get(uint8(2)).drop(structure);
 
 	else if(cityStructureInventory.get(uint8(3)).contains(structure))
-			cityStructureInventory.get(uint8(3)).removeElement(structure);
+			cityStructureInventory.get(uint8(3)).drop(structure);
 
 	else if(cityStructureInventory.get(uint8(4)).contains(structure))
-			cityStructureInventory.get(uint8(4)).removeElement(structure);
+			cityStructureInventory.get(uint8(4)).drop(structure);
 
 
 }
@@ -307,7 +368,7 @@ bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
 	Locker locker(_this);
 
 	if (!limitedPlacementStructures.contains(id)){
-		limitedPlacementStructures.add(id);
+		limitedPlacementStructures.put(id);
 		return true;
 	}
 
@@ -317,14 +378,14 @@ bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
 void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
 	Locker locker(_this);
 
-	limitedPlacementStructures.removeElement(id);
+	limitedPlacementStructures.drop(id);
 
 }
 
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	Locker locker(_this);
 
-	Vector<ManagedReference<SceneObject*> >* sceneObjects = &cityStructureInventory.get(rank);
+	SortedVector<ManagedReference<SceneObject*> >* sceneObjects = &cityStructureInventory.get(rank);
 
 	int structureCount = sceneObjects->size();
 	int i;
@@ -345,7 +406,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 				sceo->destroyObjectFromWorld(true);
 				sceo->destroyObjectFromDatabase(true);
 
-				sceneObjects->removeElement(sceo);
+				sceneObjects->drop(sceo);
 			}
 		}
 	}
@@ -353,3 +414,33 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 
 }
 
+void CityRegionImplementation::updateMilitia(){
+
+	Locker locker (_this);
+
+	uint64 objectID;
+
+	for (int i = militiaMembers.size() - 1;i >= 0; --i){
+
+		objectID = militiaMembers.get(i);
+
+		if (!isCitizen(objectID))
+			removeMilitiaMember(objectID);
+	}
+}
+
+void CityRegionImplementation::enqueueEnterEvent(SceneObject* obj) {
+
+	Locker locker(_this);
+
+	notifyEnter(obj);
+
+}
+
+void CityRegionImplementation::enqueueExitEvent(SceneObject* obj) {
+
+	Locker locker(_this);
+
+	notifyExit(obj);
+
+}

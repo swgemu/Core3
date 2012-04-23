@@ -82,8 +82,8 @@ class ActiveArea extends SceneObject {
 		
 	}
 	
-	public native void enqueueEnterEvent(SceneObject obj);
-	public native void enqueueExitEvent(SceneObject obj);
+	public native abstract void enqueueEnterEvent(SceneObject obj);
+	public native abstract void enqueueExitEvent(SceneObject obj);
 	
 	public native abstract void notifyEnter(SceneObject object);
 	public native abstract void notifyExit(SceneObject object);

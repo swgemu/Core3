@@ -441,6 +441,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		expandCity(city);
 	}
 
+	city->updateMilitia();
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
 	//TODO: Taxation
@@ -479,7 +480,6 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
 
-	//TODO: Destroy civic structures.
 	//TODO: Remove citizens outside city limits.
 
 	city->setCityRank(newRank);

@@ -22,6 +22,7 @@ include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.CityStructureInventory;
 
+
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
 	
@@ -49,7 +50,7 @@ class CityRegion extends ManagedObject implements Logger {
 	protected CitizenList bannedList;
 	
 	@dereferenced 
-	protected Vector<unsigned int> limitedPlacementStructures;
+	protected SortedVector<unsigned int> limitedPlacementStructures;
 	
 	@dereferenced
 	protected CityStructureInventory cityStructureInventory;
@@ -67,7 +68,7 @@ class CityRegion extends ManagedObject implements Logger {
 	protected boolean hasShuttle;
 	
 	protected unsigned long shuttleID;
-	
+		
 	@dereferenced
 	protected Time nextUpdateTime;
 	
@@ -357,6 +358,8 @@ class CityRegion extends ManagedObject implements Logger {
 		hasShuttle = true;
 	}
 	
+	public native void updateMilitia();
+	
 	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
 	
 	public native void removeFromCityStructureInventory(SceneObject structure);
@@ -368,5 +371,10 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void removeLimitedPlacementStructure(unsigned int id);
 	
 	public native void destroyAllStructuresForRank(byte rank);
+	
+	public native void enqueueEnterEvent(SceneObject obj);
+	
+	public native void enqueueExitEvent(SceneObject obj);
+	
 		
 }
