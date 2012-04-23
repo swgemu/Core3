@@ -101,6 +101,8 @@ public:
 
 	void activate(bool applyModifiers);
 
+	void deactivate(bool applyModifiers);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -135,6 +137,8 @@ public:
 	DurationBuffImplementation(DummyConstructorParameter* param);
 
 	void activate(bool applyModifiers);
+
+	void deactivate(bool applyModifiers);
 
 	WeakReference<DurationBuff*> _this;
 
@@ -180,6 +184,8 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void activate(bool applyModifiers);
+
+	void deactivate(bool applyModifiers);
 
 };
 

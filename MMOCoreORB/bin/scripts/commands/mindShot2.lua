@@ -59,7 +59,7 @@ MindShot2Command = {
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 
-		{ "resistance_bleeding" },
+		{ "resistance_bleeding", "bleed_resist" },
 		MIND,
 		true,
 		125,

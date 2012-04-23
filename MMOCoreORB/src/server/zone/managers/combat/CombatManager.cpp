@@ -1047,6 +1047,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isCreature())
 		accTotal += creature->getSkillMod("creature_hit_bonus");
 
+	accTotal -= targetCreature->getSkillMod("dodge_attack");
+
 	//info("Final hit chance is " + String::valueOf(accTotal), true);
 
 	if (accTotal > 100)

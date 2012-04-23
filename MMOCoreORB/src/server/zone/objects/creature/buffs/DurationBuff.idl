@@ -65,9 +65,12 @@ class DurationBuff extends Buff {
 		super(creo, buffcrc, duration, BuffType.FOOD);
 	}
 	
-	//Duration buffs don't apply the modifiers to the creature. They are referenced when used.
 	public void activate(boolean applyModifiers) {
-		super.activate(false);
+		super.activate(true);
+	}
+	
+	public void deactivate(boolean applyModifiers) {
+		super.deactivate(true);
 	}
 
 }

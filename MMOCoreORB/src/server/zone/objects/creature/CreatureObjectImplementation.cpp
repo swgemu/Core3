@@ -1157,7 +1157,7 @@ void CreatureObjectImplementation::addSkillMod(const int modType, const String& 
 
 	skillModList.add(modType, skillMod, value);
 
-	SkillModEntry newMod = skillModList.getNewMod(skillMod);
+	SkillModEntry newMod = skillModList.getVisibleSkillMod(skillMod);
 
 	if(newMod == oldMod)
 		return;
@@ -1188,7 +1188,7 @@ void CreatureObjectImplementation::removeSkillMod(const int modType, const Strin
 }
 
 int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
-	return skillModList.get(skillmod).getTotalSkill();
+	return skillModList.getSkillMod(skillmod);
 }
 
 void CreatureObjectImplementation::addSkill(const String& skill,

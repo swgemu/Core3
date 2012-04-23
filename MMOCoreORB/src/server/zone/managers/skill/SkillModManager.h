@@ -93,14 +93,18 @@ public:
 	///Permanent Mods
 	const static int PERMANENTMOD = 0x100;
 	const static int TEMPLATE = 0x101; /// From LUA templates
-	const static int WEARABLE = 0x102; /// From Wearable items
 	const static int SKILLBOX = 0x103; /// From Skills learned
 
-	///Temporary Mods
-	const static int TEMPMOD = 0x1000;
-	const static int ABILITYBONUS = 0x1001; /// From CombatQueueCommands
+	///Bonus Mods
+	const static int BONUSMOD = 0x1000;
+	const static int WEARABLE = 0x1001; /// From Wearable items
 	const static int STRUCTURE = 0x1002; /// From Structures creature is in
-	const static int BUFF = 0x1003; /// From temporary buffs
+
+	// Temp Mod
+	const static int TEMPORARYMOD = 0x10000;
+	const static int BUFF = 0x10001; /// From temporary buffs
+	const static int ABILITYBONUS = 0x10002; /// From CombatQueueCommands
+
 private:
 	VectorMap<uint32, int> skillModMax;
 	VectorMap<uint32, int> skillModMin;

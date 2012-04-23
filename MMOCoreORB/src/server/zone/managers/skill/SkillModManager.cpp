@@ -100,23 +100,18 @@ void SkillModManager::init() {
 }
 
 void SkillModManager::setDefaults() {
-	skillModMin.put(TEMPLATE, -255);
-	skillModMax.put(TEMPLATE, 255);
 
 	skillModMin.put(WEARABLE, -25);
 	skillModMax.put(WEARABLE, 25);
 
-	skillModMin.put(SKILLBOX, -255);
-	skillModMax.put(SKILLBOX, 255);
+	skillModMin.put(ABILITYBONUS, -125);
+	skillModMax.put(ABILITYBONUS, 125);
 
-	skillModMin.put(ABILITYBONUS, -100);
-	skillModMax.put(ABILITYBONUS, 100);
+	skillModMin.put(STRUCTURE, -125);
+	skillModMax.put(STRUCTURE, 125);
 
-	skillModMin.put(STRUCTURE, -100);
-	skillModMax.put(STRUCTURE, 100);
-
-	skillModMin.put(BUFF, -100);
-	skillModMax.put(BUFF, 100);
+	skillModMin.put(BUFF, -125);
+	skillModMax.put(BUFF, 125);
 }
 
 void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {

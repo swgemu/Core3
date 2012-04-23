@@ -16,7 +16,7 @@
  *	DurationBuffStub
  */
 
-enum {RPC_ACTIVATE__BOOL_ = 6};
+enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_};
 
 DurationBuff::DurationBuff(CreatureObject* creo, unsigned int buffcrc, float duration) : Buff(DummyConstructorParameter::instance()) {
 	DurationBuffImplementation* _implementation = new DurationBuffImplementation(creo, buffcrc, duration);
@@ -46,6 +46,20 @@ void DurationBuff::activate(bool applyModifiers) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate(applyModifiers);
+}
+
+void DurationBuff::deactivate(bool applyModifiers) {
+	DurationBuffImplementation* _implementation = static_cast<DurationBuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEACTIVATE__BOOL_);
+		method.addBooleanParameter(applyModifiers);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->deactivate(applyModifiers);
 }
 
 DistributedObjectServant* DurationBuff::_getImplementation() {
@@ -179,8 +193,13 @@ DurationBuffImplementation::DurationBuffImplementation(CreatureObject* creo, uns
 }
 
 void DurationBuffImplementation::activate(bool applyModifiers) {
-	// server/zone/objects/creature/buffs/DurationBuff.idl():  		super.activate(false);
-	BuffImplementation::activate(false);
+	// server/zone/objects/creature/buffs/DurationBuff.idl():  		super.activate(true);
+	BuffImplementation::activate(true);
+}
+
+void DurationBuffImplementation::deactivate(bool applyModifiers) {
+	// server/zone/objects/creature/buffs/DurationBuff.idl():  		super.deactivate(true);
+	BuffImplementation::deactivate(true);
 }
 
 /*
@@ -201,6 +220,9 @@ void DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
 		break;
+	case RPC_DEACTIVATE__BOOL_:
+		deactivate(inv->getBooleanParameter());
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -208,6 +230,10 @@ void DurationBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void DurationBuffAdapter::activate(bool applyModifiers) {
 	(static_cast<DurationBuff*>(stub))->activate(applyModifiers);
+}
+
+void DurationBuffAdapter::deactivate(bool applyModifiers) {
+	(static_cast<DurationBuff*>(stub))->deactivate(applyModifiers);
 }
 
 /*
