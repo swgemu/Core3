@@ -240,6 +240,8 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	void updateMilitia();
+
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
 
 	void removeFromCityStructureInventory(SceneObject* structure);
@@ -251,6 +253,10 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -299,7 +305,7 @@ protected:
 
 	CitizenList bannedList;
 
-	Vector<unsigned int> limitedPlacementStructures;
+	SortedVector<unsigned int> limitedPlacementStructures;
 
 	CityStructureInventory cityStructureInventory;
 
@@ -466,6 +472,8 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	void updateMilitia();
+
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
 
 	void removeFromCityStructureInventory(SceneObject* structure);
@@ -477,6 +485,10 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	WeakReference<CityRegion*> _this;
 
@@ -635,6 +647,8 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	void updateMilitia();
+
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
 
 	void removeFromCityStructureInventory(SceneObject* structure);
@@ -646,6 +660,10 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 protected:
 	String _param0_setCustomRegionName__String_;

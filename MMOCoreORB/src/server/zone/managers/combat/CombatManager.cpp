@@ -267,6 +267,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	}
 
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0)
 		damage = applyDamage(attacker, defender, damage, damageMultiplier, poolsToDamage);
 
@@ -449,7 +450,7 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 	return targetDefense;
 }
 
-int CombatManager::getDefenderToughnessModifier(CreatureObject* defender) {
+int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int damType) {
 	int toughness = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
@@ -458,6 +459,9 @@ int CombatManager::getDefenderToughnessModifier(CreatureObject* defender) {
 	for (int i = 0; i < defenseToughMods->size(); ++i) {
 		toughness += defender->getSkillMod(defenseToughMods->get(i));
 	}
+
+	if (damType != WeaponObject::LIGHTSABER)
+		toughness += defender->getSkillMod("jedi_toughness");
 
 	return toughness;
 }
@@ -487,45 +491,43 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 
 	// this is for damage mitigation
 	if (defenderGhost != NULL) {
-		StringBuffer mitString;
+		String mitString;
 		switch (attackType){
 		case WeaponObject::MELEEATTACK:
-			mitString << "melee_damage_mitigation_";
+			mitString = "melee_damage_mitigation_";
 			break;
 		case WeaponObject::RANGEDATTACK:
-			mitString << "ranged_damage_mitigation_";
+			mitString = "ranged_damage_mitigation_";
 			break;
 		default:
 			break;
 		}
 
-		for (int i = 3; i > 0; i--) {
-			mitString << i;
-			if (defenderGhost->hasAbility(mitString.toString())) {
-				damageMitigation = i;
-				break;
-			}
+		for (int i = 1; i <= 3; i++) {
+			if (defenderGhost->hasAbility(mitString + i))
+				continue;
+			else
+				damageMitigation = i - 1;
 		}
 
-		if (damageMitigation > 0) {
+		if (damageMitigation > 0)
 			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
-		}
 	}
 
-	int maxDamageMuliplier = attacker->getSkillMod("private_max_damage_multiplier");
+	int maxDamageMultiplier = attacker->getSkillMod("private_max_damage_multiplier");
 	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
+
+	if (maxDamageMultiplier != 0)
+		maxDamage *= maxDamageMultiplier;
+
+	if (maxDamageDivisor != 0)
+		maxDamage /= maxDamageDivisor;
 
 	float range = maxDamage - minDamage;
 
-	if (maxDamageMuliplier != 0)
-		range *= maxDamageMuliplier;
-
-	if (maxDamageDivisor != 0)
-		range /= maxDamageDivisor;
-
 	//info("attacker weapon damage mod is " + String::valueOf(maxDamage), true);
 
-	return (int)range;
+	return range < 0 ? 0 : (int)range;
 }
 
 int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* weapon) {
@@ -778,62 +780,6 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	}
 
 	// Next is Jedi Force Armor reduction.
-	int forceArmor = defender->getSkillMod("force_armor");
-	if (!defender->isAiAgent() && (forceArmor > 0) && (weapon->getAttackType() != WeaponObject::FORCEATTACK)) {
-		float originalDamage = damage;
-		float armorReduction = forceArmor;
-		float frsModsL = defender->getSkillMod("force_control_light");
-		float frsModsD = defender->getSkillMod("force_control_dark");
-
-		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
-
-		// Client Effect upon hit.
-		// TODO: does this really need to be here? animations need to be fixed
-		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
-
-		// TODO: why is this done twice? these calculations don't seem correct, or are at least obfuscated
-		if (frsModsL > 0) // If they are in the Light FRS.
-			armorReduction += frsModsL / 3;
-		else if (frsModsD > 0) // If they are in the Dark FRS.
-			armorReduction += frsModsD / 3;
-
-		damage *= (1.f - (armorReduction / 100.f));
-
-		if (forceArmor == 25) { // Force Armor 1
-			float frsMods = 0; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
-			// FIXME: these ifchecks don't need to be here, do they? implement a global FRS skillmod getter, this is messy
-			if (defender->hasSkill("force_rank_light_novice"))
-				frsMods = defender->getSkillMod("force_manipulation_light");
-			else if(defender->hasSkill("force_rank_dark_novice"))
-				frsMods = defender->getSkillMod("force_manipulation_dark");
-
-			int forceCost = ((originalDamage - damage) * 0.5 - (frsMods / 2));
-			int fP = playerObject->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else
-				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-		} else if (forceArmor == 45) { // Force Armor 2
-			float frsMods = 0; // Storage for the Force Rank Manipulation, which "Increases the efficiency of any Force ability."
-			if (defender->hasSkill("force_rank_light_novice"))
-				frsMods = defender->getSkillMod("force_manipulation_light");
-			else if(defender->hasSkill("force_rank_dark_novice"))
-				frsMods = defender->getSkillMod("force_manipulation_dark");
-
-			int forceCost = ((originalDamage - damage) * 0.3 - (frsMods / 2));
-			int fP = playerObject->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else
-				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-		}
-	}
 
 	// now apply the rest of the damage to the regular armor
 	ManagedReference<ArmorObject*> armor = NULL;
@@ -954,57 +900,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage *= 1.33f;
 
 	//Toughness
-	int toughness = getDefenderToughnessModifier(defender);
+	int toughness = getDefenderToughnessModifier(defender, weapon->getDamageType());
 
 	damage *= (1.f - (toughness /= 100.f));
-
-	if (weapon->getDamageType() != WeaponObject::LIGHTSABER) damage *= (1.f - (defender->getSkillMod("jedi_toughness") / 100.f));
-
-	if (damageMax > 0) {
-
-		weapon->setAttackType(WeaponObject::FORCEATTACK);
-
-		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
-
-		int forceShield = defender->getSkillMod("force_shield");
-
-		if (defender->isPlayerCreature() && (forceShield > 0)) {
-			float originalDamage = damage;
-			float armorReduction = forceShield;
-
-			ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
-
-			// Client Effect upon hit.
-			// TODO: does this really need to be here? animations need to be fixed
-			defender->playEffect("clienteffect/pl_force_shield_hit.cef", "");
-
-			damage *= (1.f - (armorReduction / 100.f));
-
-			if (forceShield == 25) { // Force Shield 1
-
-				int forceCost = ((originalDamage - damage) * 0.5);
-				int fP = playerObject->getForcePower();
-				if (fP <= forceCost) {
-					Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_1));
-
-					if (buff != NULL)
-						defender->removeBuff(buff);
-				} else
-					playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-			} else if (forceShield == 45) { // Force Shield 2
-
-				int forceCost = ((originalDamage - damage) * 0.3);
-				int fP = playerObject->getForcePower();
-				if (fP <= forceCost) {
-					Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_2));
-
-					if (buff != NULL)
-						defender->removeBuff(buff);
-				} else
-					playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-			}
-		}
-	}
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())

@@ -123,9 +123,9 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
-	void enqueueEnterEvent(SceneObject* obj);
+	virtual void enqueueEnterEvent(SceneObject* obj);
 
-	void enqueueExitEvent(SceneObject* obj);
+	virtual void enqueueExitEvent(SceneObject* obj);
 
 	virtual void notifyEnter(SceneObject* object);
 

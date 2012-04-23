@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -871,6 +871,19 @@ void CityRegion::setShuttleID(unsigned long long id) {
 		_implementation->setShuttleID(id);
 }
 
+void CityRegion::updateMilitia() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEMILITIA__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateMilitia();
+}
+
 void CityRegion::addToCityStructureInventory(byte rankRequired, SceneObject* structure) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -954,6 +967,34 @@ void CityRegion::destroyAllStructuresForRank(byte rank) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->destroyAllStructuresForRank(rank);
+}
+
+void CityRegion::enqueueEnterEvent(SceneObject* obj) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ENQUEUEENTEREVENT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->enqueueEnterEvent(obj);
+}
+
+void CityRegion::enqueueExitEvent(SceneObject* obj) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ENQUEUEEXITEVENT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->enqueueExitEvent(obj);
 }
 
 DistributedObjectServant* CityRegion::_getImplementation() {
@@ -1107,7 +1148,7 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 	}
 
 	if (_name == "CityRegion.limitedPlacementStructures") {
-		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&limitedPlacementStructures, stream);
+		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&limitedPlacementStructures, stream);
 		return true;
 	}
 
@@ -1254,7 +1295,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<Vector<unsigned int> >::toBinaryStream(&limitedPlacementStructures, stream);
+	TypeInfo<SortedVector<unsigned int> >::toBinaryStream(&limitedPlacementStructures, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1820,6 +1861,9 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETSHUTTLEID__LONG_:
 		setShuttleID(inv->getUnsignedLongParameter());
 		break;
+	case RPC_UPDATEMILITIA__:
+		updateMilitia();
+		break;
 	case RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_:
 		addToCityStructureInventory(inv->getByteParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -1837,6 +1881,12 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_:
 		destroyAllStructuresForRank(inv->getByteParameter());
+		break;
+	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
+		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
+		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -2071,6 +2121,10 @@ void CityRegionAdapter::setShuttleID(unsigned long long id) {
 	(static_cast<CityRegion*>(stub))->setShuttleID(id);
 }
 
+void CityRegionAdapter::updateMilitia() {
+	(static_cast<CityRegion*>(stub))->updateMilitia();
+}
+
 void CityRegionAdapter::addToCityStructureInventory(byte rankRequired, SceneObject* structure) {
 	(static_cast<CityRegion*>(stub))->addToCityStructureInventory(rankRequired, structure);
 }
@@ -2093,6 +2147,14 @@ void CityRegionAdapter::removeLimitedPlacementStructure(unsigned int id) {
 
 void CityRegionAdapter::destroyAllStructuresForRank(byte rank) {
 	(static_cast<CityRegion*>(stub))->destroyAllStructuresForRank(rank);
+}
+
+void CityRegionAdapter::enqueueEnterEvent(SceneObject* obj) {
+	(static_cast<CityRegion*>(stub))->enqueueEnterEvent(obj);
+}
+
+void CityRegionAdapter::enqueueExitEvent(SceneObject* obj) {
+	(static_cast<CityRegion*>(stub))->enqueueExitEvent(obj);
 }
 
 /*

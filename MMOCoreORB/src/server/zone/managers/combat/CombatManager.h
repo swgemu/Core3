@@ -171,7 +171,7 @@ protected:
 	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
-	int getDefenderToughnessModifier(CreatureObject* defender);
+	int getDefenderToughnessModifier(CreatureObject* defender, int damType);
 	int calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
