@@ -27,7 +27,16 @@ dim_u_abbot = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_dim_u_abbot.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kits", chance = 4500000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

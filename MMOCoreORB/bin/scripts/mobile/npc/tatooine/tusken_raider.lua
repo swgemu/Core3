@@ -30,12 +30,14 @@ tusken_raider = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "tusken", chance = 5500000},
-				{group = "rifles", chance = 2250000},
-				{group = "pistols", chance = 2250000}
+				{group = "tusken", chance = 5000000},
+				{group = "armor_attachments", chance = 2000000},
+				{group = "clothing_attachments", chance = 2000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_poor", chance = 500000}
 			},
 			lootChance = 4500000
-		}
+		}	
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

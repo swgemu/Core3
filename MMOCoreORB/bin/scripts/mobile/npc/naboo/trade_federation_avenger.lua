@@ -28,12 +28,14 @@ trade_federation_avenger = Creature:new {
 
 	templates = {"object/mobile/dressed_trade_federation_avenger.iff"},
 	lootGroups = {
-		{
+	    {
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kits", chance = 4000000}
 			},
-			lootChance = 3500000
-		}
+			lootChance = 4800000
+		}			
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

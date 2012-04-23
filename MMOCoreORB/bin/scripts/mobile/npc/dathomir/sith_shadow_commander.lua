@@ -27,7 +27,18 @@ sith_shadow_commander = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "color_crystals", chance = 1000000},
+				{group = "crystals_okay", chance = 1000000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}			
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

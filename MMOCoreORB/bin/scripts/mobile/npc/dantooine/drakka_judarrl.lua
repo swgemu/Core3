@@ -29,7 +29,7 @@ drakka_judarrl = Creature:new {
 
 	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 imperial_officer = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_officer",
-	socialGroup = "Warren imp.",
-	pvpFaction = "Warren imp.",
-	faction = "",
+	socialGroup = "warren_imperial",
+	pvpFaction = "warren_imperial",
+	faction = "warren_imperial",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,
@@ -26,7 +26,9 @@ imperial_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_imperial_officer_s01.iff",
+		"object/mobile/warren_imperial_officer_s02.iff",
+		"object/mobile/warren_imperial_officer_s03.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",

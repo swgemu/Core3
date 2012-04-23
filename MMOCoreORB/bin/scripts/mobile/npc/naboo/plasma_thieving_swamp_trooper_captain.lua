@@ -27,7 +27,16 @@ plasma_thieving_swamp_trooper_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kits", chance = 4000000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = {

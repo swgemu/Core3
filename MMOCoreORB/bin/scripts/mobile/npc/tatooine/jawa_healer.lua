@@ -27,7 +27,19 @@ jawa_healer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jawa_male.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "color_crystals", chance = 400000},
+				{group = "crystals_good", chance = 300000},
+				{group = "pistols", chance = 1600000},
+				{group = "rifles", chance = 1600000},
+				{group = "carbines", chance = 1100000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

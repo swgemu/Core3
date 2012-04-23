@@ -2,7 +2,7 @@ jan_dodonna = Creature:new {
 	objectName = "@mob/creature_names:jan_dodonna",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -25,7 +25,7 @@ jan_dodonna = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_jan_dodonna.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

@@ -27,7 +27,16 @@ naboo_nomad = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_nomad.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kits", chance = 4000000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

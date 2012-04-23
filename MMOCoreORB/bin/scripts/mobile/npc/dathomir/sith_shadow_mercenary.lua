@@ -8,7 +8,7 @@ sith_shadow_mercenary = Creature:new {
 	damageMin = 895,
 	damageMax = 1500,
 	baseXp = 3327,
-	baseHAM = 679000,
+	baseHAM = 67900,
 	baseHAMmax = 83000,
 	armor = 1,
 	resists = {80,90,85,85,70,85,85,85,-1},
@@ -27,7 +27,18 @@ sith_shadow_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sith_shadow_hum_m_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "color_crystals", chance = 1000000},
+				{group = "crystals_okay", chance = 1000000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

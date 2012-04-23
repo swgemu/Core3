@@ -1,8 +1,8 @@
 dantari_strategist = Creature:new {
 	objectName = "@mob/creature_names:dantari_raider_strategist",
-	socialGroup = "Dantari Raider",
-	pvpFaction = "Dantari Raider",
-	faction = "",
+	socialGroup = "dantari_raiders",
+	pvpFaction = "dantari_raiders",
+	faction = "dantari_raiders",
 	level = 29,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -26,7 +26,8 @@ dantari_strategist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_male.iff"},
+	templates = {"object/mobile/dantari_male.iff",
+		"object/mobile/dantari_female.iff"},
 	lootGroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

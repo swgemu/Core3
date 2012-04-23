@@ -27,7 +27,16 @@ neo_cobral_thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kits", chance = 4500000}
+			},
+			lootChance = 4800000
+		}					
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = {

@@ -1,6 +1,6 @@
-xaan_talmarori = Creature:new {
+xaan_talmaron = Creature:new {
 	objectName = "",
-	costumName = "Xaan Talmarori",
+	customName = "Xaan Talmaron",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -35,4 +35,4 @@ xaan_talmarori = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(xaan_talmarori, "xaan_talmarori")
+CreatureTemplates:addCreatureTemplate(xaan_talmaron, "xaan_talmaron")

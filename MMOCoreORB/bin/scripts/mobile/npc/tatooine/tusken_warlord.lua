@@ -30,12 +30,14 @@ tusken_warlord = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "tusken", chance = 6500000},
-				{group = "rifles", chance = 1750000},
-				{group = "pistols", chance = 1750000}
+				{group = "tusken", chance = 5000000},
+				{group = "armor_attachments", chance = 2000000},
+				{group = "clothing_attachments", chance = 2000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_good", chance = 500000}
 			},
-			lootChance = 6000000
-		}
+			lootChance = 4500000
+		}	
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",

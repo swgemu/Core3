@@ -1,6 +1,6 @@
 sg_567 = Creature:new {
 	objectName = "",
-	customName = "SG 567",
+	customName = "SG-567",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +27,7 @@ sg_567 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sg_567.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 teraud_loyalist_commander = Creature:new {
 	objectName = "@mob/creature_names:warren_teraud_loyalist_commander",
-	socialGroup = "Warren Teraud",
-	pvpFaction = "Warren Teraud",
-	faction = "",
+	socialGroup = "warren_teraud",
+	pvpFaction = "warren_teraud",
+	faction = "warren_teraud",
 	level = 44,
 	chanceHit = 0.47,
 	damageMin = 370,
@@ -26,8 +26,18 @@ teraud_loyalist_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_teraud_loyalist_s04.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/warren_loyalist_commander.iff"},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}		
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

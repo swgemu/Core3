@@ -1,8 +1,8 @@
 mokk_tribesman = Creature:new {
 	objectName = "@mob/creature_names:mokk_tribesman",
-	socialGroup = "Mokk Tribe",
-	pvpFaction = "Mokk Tribe",
-	faction = "",
+	socialGroup = "mokk_tribe",
+	pvpFaction = "mokk_tribe",
+	faction = "mokk_tribe",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,8 +26,19 @@ mokk_tribesman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_female.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dantari_female.iff",
+		"object/mobile/dantari_male.iff"},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 3500000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}		
+	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,20 @@ singing_mountain_clan_initiate = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_initiate.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "crystals_okay", chance = 500000},
+				{group = "color_crystals", chance = 500000},
+				{group = "melee_weapons", chance = 2500000},
+				{group = "armor_attachments", chance = 550000},
+				{group = "clothing_attachments", chance = 550000},
+				{group = "pistols", chance = 2750000},
+				{group = "rifles", chance = 2750000}
+			},
+			lootChance = 4800000
+		}			
+	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
 	attacks = {

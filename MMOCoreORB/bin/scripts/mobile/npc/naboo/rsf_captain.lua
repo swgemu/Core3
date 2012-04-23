@@ -27,7 +27,16 @@ rsf_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rsf_captain.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kits", chance = 4000000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {

@@ -27,7 +27,16 @@ narmle_militia_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_narmle_guard_rodian_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kits", chance = 4500000}
+			},
+			lootChance = 4800000
+		}					
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

@@ -1,8 +1,8 @@
 computer_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_insane_comp_sci",
-	socialGroup = "Warren Teraud",
-	pvpFaction = "Warren Teraud",
-	faction = "",
+	socialGroup = "warren_teraud",
+	pvpFaction = "warren_teraud",
+	faction = "warren_teraud",
 	level = 28,
 	chanceHit = 0.37,
 	damageMin = 270,
@@ -26,7 +26,7 @@ computer_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_scientist_s02.iff"},
+	templates = {"object/mobile/warren_insane_comp_sci.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

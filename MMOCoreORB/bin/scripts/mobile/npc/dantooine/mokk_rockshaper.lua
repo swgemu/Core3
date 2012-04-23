@@ -1,8 +1,8 @@
 mokk_rockshaper = Creature:new {
 	objectName = "@mob/creature_names:mokk_rockshaper",
-	socialGroup = "Mokk Tribe",
-	pvpFaction = "Mokk Tribe",
-	faction = "",
+	socialGroup = "mokk_tribe",
+	pvpFaction = "mokk_tribe",
+	faction = "mokk_tribe",
 	level = 71,
 	chanceHit = 0.65,
 	damageMin = 470,
@@ -26,8 +26,19 @@ mokk_rockshaper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_male.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dantari_male.iff",
+		"object/mobile/dantari_female.iff"},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 3500000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}		
+	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

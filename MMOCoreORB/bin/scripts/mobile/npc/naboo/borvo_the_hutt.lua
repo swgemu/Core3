@@ -27,7 +27,19 @@ borvo_the_hutt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/borvo.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kits", chance = 1500000},
+				{group = "rilfes", chance = 1750000},
+				{group = "carbines", chance = 1750000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {""},
 	conversationTemplate = "",
 	attacks = {

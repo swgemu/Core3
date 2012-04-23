@@ -27,7 +27,7 @@ stoos_olko = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stoos_olko.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -29,7 +29,16 @@ fed_dub_patrolman = Creature:new {
 	templates = {"object/mobile/dressed_fed_dub_patrol_man_human_male_01.iff",
 					"object/mobile/dressed_fed_dub_patrolman_human_female_01.iff"},
 				
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kits", chance = 4500000}
+			},
+			lootChance = 4800000
+		}				
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

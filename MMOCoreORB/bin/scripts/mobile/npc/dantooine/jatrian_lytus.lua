@@ -27,7 +27,7 @@ jatrian_lytus = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_jatrian_lytus.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -1,6 +1,6 @@
 lx_466 = Creature:new {
 	objectName = "",
-	customName = "LX 466",
+	customName = "LX-466",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

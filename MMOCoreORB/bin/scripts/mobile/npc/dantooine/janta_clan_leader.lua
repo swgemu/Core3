@@ -1,8 +1,8 @@
 janta_clan_leader = Creature:new {
 	objectName = "@mob/creature_names:janta_clan_leader",
-	socialGroup = "Janta Tribe",
-	pvpFaction = "Janta Tribe",
-	faction = "",
+	socialGroup = "janta_tribe",
+	pvpFaction = "janta_tribe",
+	faction = "janta_tribe",
 	level = 75,
 	chanceHit = 0.75,
 	damageMin = 520,
@@ -27,7 +27,15 @@ janta_clan_leader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dantari_male.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "janta_common", chance = 5000000},
+				{group = "loot_kits", chance = 5000000}
+			},
+			lootChance = 4800000
+		}	
+	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {

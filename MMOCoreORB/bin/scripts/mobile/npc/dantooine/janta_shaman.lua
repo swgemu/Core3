@@ -1,8 +1,8 @@
 janta_shaman = Creature:new {
 	objectName = "@mob/creature_names:janta_shaman",
-	socialGroup = "Janta Tribe",
-	pvpFaction = "Janta Tribe",
-	faction = "",
+	socialGroup = "janta_tribe",
+	pvpFaction = "janta_tribe",
+	faction = "janta_tribe",
 	level = 60,
 	chanceHit = 0.65,
 	damageMin = 470,
@@ -26,13 +26,15 @@ janta_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_male.iff"},
+	templates = {"object/mobile/dantari_male.iff",
+		"object/mobile/dantari_female.iff"},
 	lootGroups = {
 	    {
 			groups = {
 				{group = "janta_common", chance = 5000000},
+				{group = "loot_kits", chance = 5000000}
 			},
-			lootChance = 8500000
+			lootChance = 4800000
 		}
 	},
 	weapons = {"primitive_weapons"},

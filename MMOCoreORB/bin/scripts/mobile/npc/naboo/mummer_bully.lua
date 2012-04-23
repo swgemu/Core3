@@ -27,12 +27,14 @@ mummer_bully = Creature:new {
 
 	templates = {},
 	lootGroups = {
-		{
+	    {
 			groups = {
-				{group = "loot_kit_items", chance = 10000000}
+				{group = "junk", chance = 4000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kits", chance = 4000000}
 			},
-			lootChance = 3500000
-		}
+			lootChance = 4800000
+		}			
 	},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

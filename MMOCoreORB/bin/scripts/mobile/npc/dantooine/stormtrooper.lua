@@ -1,8 +1,8 @@
 stormtrooper = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper",
-	socialGroup = "Warren Imp.",
-	pvpFaction = "Warren Imp.",
-	faction = "",
+	objectName = "@mob/creature_names:warren_stormtrooper",
+	socialGroup = "warren_imperial",
+	pvpFaction = "warren_imperial",
+	faction = "warren_imperial",
 	level = 26,
 	chanceHit = 0.360000,
 	damageMin = 240,
@@ -25,7 +25,7 @@ stormtrooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/warren_stormtrooper.iff"},
 	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	attacks = {}

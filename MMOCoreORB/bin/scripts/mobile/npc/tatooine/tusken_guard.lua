@@ -27,7 +27,18 @@ tusken_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/tusken_raider.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "tusken", chance = 5000000},
+				{group = "armor_attachments", chance = 2000000},
+				{group = "clothing_attachments", chance = 2000000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_good", chance = 500000}
+			},
+			lootChance = 4500000
+		}		
+	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
 	attacks = {

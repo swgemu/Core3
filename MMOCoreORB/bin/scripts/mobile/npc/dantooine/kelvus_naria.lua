@@ -27,7 +27,7 @@ kelvus_naria = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kelvus_naria.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

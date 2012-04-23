@@ -1,8 +1,8 @@
 crazed_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_irradiated_worker",
-	socialGroup = "Warren Imp.",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "warren_imperial_worker",
+	pvpFaction = "warren_imperial_worker",
+	faction = "warren_imperial_worker",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,7 +26,9 @@ crazed_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_crazed_imperial.iff"},
+	templates = {"object/mobile/warren_irradiated_worker_s01.iff",
+		"object/mobile/warren_irradiated_worker_s02.iff",
+		"object/mobile/warren_irradiated_worker_s03.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 kunga_soothsayer = Creature:new {
 	objectName = "@mob/creature_names:kunga_soothsayer",
-	socialGroup = "Kunga Tribe",
-	pvpFaction = "Kunga Tribe",
-	faction = "",
+	socialGroup = "kunga_tribe",
+	pvpFaction = "kunga_tribe",
+	faction = "kunga_tribe",
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 270,
@@ -26,8 +26,19 @@ kunga_soothsayer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_male.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dantari_male.iff",
+		"object/mobile/dantari_female.iff"},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 3500000},
+				{group = "loot_kits", chance = 3500000},
+				{group = "armor_attachments", chance = 1500000},
+				{group = "clothing_attachments", chance = 1500000}
+			},
+			lootChance = 4800000
+		}		
+	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
 	attacks = {
