@@ -51,7 +51,7 @@ object_tangible_fishing_fishing_pole = object_tangible_fishing_shared_fishing_po
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
 	experimentalMin = {0, 0, 1000, 0},
 	experimentalMax = {0, 0, 1000, 100},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 10},
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fishing_pole, "object/tangible/fishing/fishing_pole.iff")

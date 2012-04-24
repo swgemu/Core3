@@ -62,13 +62,13 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
-   ingredientTitleNames = {"body_shell", "magnetic_grapple", "timed_dial", "fragmentation_sleeve", "warhead_assembly", "warhead_fusing"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 1},
-   resourceTypes = {"metal", "steel", "steel", "metal", "object/tangible/component/munition/shared_warhead_light.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff"},
-   resourceQuantities = {14, 4, 2, 5, 1, 1},
-   combineTypes = {0, 0, 0, 0, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100},
+   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+   ingredientTitleNames = {"body_shell", "magnetic_grapple", "timed_dial", "fragmentation_sleeve", "warhead_assembly", "warhead_fusing", "warhead_booster"},
+   ingredientSlotType = {0, 0, 0, 0, 1, 1, 3},
+   resourceTypes = {"metal", "steel", "steel", "metal", "object/tangible/component/munition/shared_warhead_light.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_charge_composition.iff"},
+   resourceQuantities = {14, 4, 2, 5, 1, 1, 1},
+   combineTypes = {0, 0, 0, 0, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
 
 
    targetTemplate = "object/weapon/ranged/grenade/grenade_fragmentation.iff",

@@ -44,14 +44,14 @@
 object_tangible_component_weapon_chemical_dispersion_mechanism = object_tangible_component_weapon_shared_chemical_dispersion_mechanism:new {
 
 
-	numberExperimentalProperties = {1, 1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "OQ", "OQ", "OQ"},
-	experimentalWeights = {1, 1, 1, 1, 1},
+	numberExperimentalProperties = {1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "HR", "OQ", "HR", "OQ", "HR", "OQ"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "exp_durability"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "hitpoints"},
 	experimentalMin = {0, 0, 1, 1, 10},
 	experimentalMax = {0, 0, 10, 10, 100},
-	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 10, 10, 10},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_chemical_dispersion_mechanism, "object/tangible/component/weapon/chemical_dispersion_mechanism.iff")

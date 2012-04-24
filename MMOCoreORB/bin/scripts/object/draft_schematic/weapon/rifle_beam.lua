@@ -62,13 +62,13 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
-   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "enhanced_cooling_mechanism", "powerhandler", "thermal_control_unit", "barrel", "stock"},
-   ingredientSlotType = {0, 0, 0, 0, 1, 0, 1, 1},
-   resourceTypes = {"steel", "iron", "metal", "crystalline_gallinorian", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate_alantium", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
-   resourceQuantities = {120, 60, 15, 15, 4, 30, 1, 1},
-   combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTitleNames = {"frame_assembly", "receiver_assembly", "grip_assembly", "powerhandler", "barrel", "stock", "scope"},
+   ingredientSlotType = {0, 0, 0, 1, 1, 3, 2},
+   resourceTypes = {"steel", "iron", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
+   resourceQuantities = {120, 60, 15, 4, 1, 1, 1},
+   combineTypes = {0, 0, 0, 1, 1, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
 
 
    targetTemplate = "object/weapon/ranged/rifle/rifle_beam.iff",
