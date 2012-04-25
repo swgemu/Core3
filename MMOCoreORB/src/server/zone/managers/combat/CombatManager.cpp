@@ -779,6 +779,8 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
+	// Next is Jedi Force Armor reduction.
+
 	// now apply the rest of the damage to the regular armor
 	ManagedReference<ArmorObject*> armor = NULL;
 
@@ -864,9 +866,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
 	int damageMax = data.getDamageMax();
-	int forceArmor = defender->getSkillMod("force_armor");
-	int forceShield = defender->getSkillMod("force_shield");
-	int rankModifiers = 0; // TODO: Force Ranking modifiers.
+	int damageMaxDif = damageMax - System::random(500);
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
@@ -877,119 +877,18 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
 
-	if (damageMax > 0)
-		damage = damageMax;
-
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-
-	if (damageMax <= 0)
-		weapon->decay(attacker, damage);
+	weapon->decay(attacker, damage);
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
 			damage /= 5;
 	}
 
-	if (damageMax > 0) {
-		damage *= (1.f - (defender->getSkillMod("force_toughness") / 100.f));
-		weapon->setAttackType(WeaponObject::FORCEATTACK);
-	}
-
-	int attackType = weapon->getAttackType();
-
-	if (forceArmor > 0 && attackType != WeaponObject::FORCEATTACK) {
-		// Client Effect upon hit, and deduct force power.
-		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
-
-		damage *= (1 - (forceArmor / 100));
-
-		if (rankModifiers > 0)
-			damage *= (rankModifiers / 100);
-
-		ManagedReference<PlayerObject*> defenderGhost = defender->getPlayerObject();
-
-		if (forceArmor == 25) { // Corresponding to Force Armor 1 skillmod.
-
-			int forceCost = damage * 0.5;
-
-			if (rankModifiers > 0)
-				forceCost *= rankModifiers / 100;
-
-			int fP = defenderGhost->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else defenderGhost->setForcePower(defenderGhost->getForcePower() - forceCost);
-
-		}
-
-		if (forceArmor == 45) { // Corresponding to Force Armor 2 skillmod.
-
-			int forceCost = damage * 0.3;
-
-			if (rankModifiers > 0)
-				forceCost *= rankModifiers / 100;
-
-			int fP = defenderGhost->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else defenderGhost->setForcePower(defenderGhost->getForcePower() - forceCost);
-
-		}
-
-	}
-
-	if (forceShield > 0 && attackType == WeaponObject::FORCEATTACK) {
-		// Client Effect upon hit, and deduct force power.
-		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
-
-		damage *= (1 - (forceShield / 100));
-
-		if (rankModifiers > 0)
-			damage *= (rankModifiers / 100);
-
-		ManagedReference<PlayerObject*> defenderGhost = defender->getPlayerObject();
-
-		if (forceShield == 25) { // Corresponding to Force Shield 1 skillmod.
-
-			int forceCost = damage * 0.5;
-
-			if (rankModifiers > 0)
-				forceCost *= rankModifiers / 100;
-
-			int fP = defenderGhost->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_1));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else defenderGhost->setForcePower(defenderGhost->getForcePower() - forceCost);
-
-		}
-
-		if (forceShield == 45) { // Corresponding to Force Shield 2 skillmod.
-
-			int forceCost = damage * 0.3;
-
-			if (rankModifiers > 0)
-				forceCost *= rankModifiers / 100;
-
-			int fP = defenderGhost->getForcePower();
-			if (fP <= forceCost) {
-				Buff* buff = cast<Buff*>( defender->getBuff(BuffCRC::JEDI_FORCE_SHIELD_2));
-
-				if (buff != NULL)
-					defender->removeBuff(buff);
-			} else defenderGhost->setForcePower(defenderGhost->getForcePower() - forceCost);
-		}
-	}
+	if (damageMax > 0)
+		damage = damageMaxDif;
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");
