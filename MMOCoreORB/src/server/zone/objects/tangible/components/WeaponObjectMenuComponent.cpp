@@ -24,15 +24,15 @@ void WeaponObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if(weapon == NULL)
 		return;
 
-	if(!weapon->isASubChildOf(player))
-		return;
+	if(weapon->isASubChildOf(player)) {
 
-	if(weapon->hasPowerup()) {
-		menuResponse->addRadialMenuItem(71, 3, "@powerup:mnu_remove_powerup"); // Remove Powerup
-	}
+		if(weapon->hasPowerup()) {
+			menuResponse->addRadialMenuItem(71, 3, "@powerup:mnu_remove_powerup"); // Remove Powerup
+		}
 
-	if(weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
-		menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
+		if(weapon->getConditionDamage() > 0 && weapon->canRepair(player)) {
+			menuResponse->addRadialMenuItem(70, 3, "@sui:repair"); // Slice
+		}
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
