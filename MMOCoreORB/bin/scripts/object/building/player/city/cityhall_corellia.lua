@@ -51,7 +51,8 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	limitToOnePerCity = 0,
 	abilityRequired = "place_cityhall",
 	skillMods = {
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
 	},
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -16.78, z = 2.0, y = 7.9, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 4, containmentType = -1},

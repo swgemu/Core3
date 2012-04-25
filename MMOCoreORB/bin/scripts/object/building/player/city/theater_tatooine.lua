@@ -51,7 +51,8 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	planetMapCategory = "theater",
 	abilityRequired = "place_theater",
 	skillMods = {
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
 	},
 	cityRankRequired = 4,
 	limitToOnePerCity = 0,
