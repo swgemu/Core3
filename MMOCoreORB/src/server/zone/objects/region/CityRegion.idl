@@ -61,6 +61,9 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected SortedVector<SceneObject> cityDecorations;
 	
+	@dereferenced
+	protected SortedVector<SceneObject> citySkillTrainers;
+	
 	protected byte cityRank;
 	
 	protected int cityTreasury;
@@ -364,6 +367,38 @@ class CityRegion extends ManagedObject implements Logger {
 		hasShuttle = true;
 	}
 	
+	public int getMissionTerminalCount(){
+		return cityMissionTerminals.size();
+	}
+	
+	public int getDecorationCount(){
+		return cityDecorations.size();
+	}
+	
+	public void addMissionTerminal(SceneObject mt){
+		cityMissionTerminals.put(mt);
+	}
+	
+	public void addDecoration(SceneObject deco){
+		cityDecorations.put(deco);
+	}
+	
+	public void addSkillTrainer(SceneObject trainer){
+		citySkillTrainers.put(trainer);
+	}
+	
+	public void removeMissionTerminal(SceneObject mt){
+		cityMissionTerminals.drop(mt);
+	}
+	
+	public void removeDecoration(SceneObject deco){
+		cityDecorations.drop(deco);
+	}
+	
+	public void removeSkillTrainers(SceneObject trainer){
+		citySkillTrainers.drop(trainer);
+	}
+	
 	public native void updateMilitia();
 	
 	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
@@ -382,5 +417,5 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void enqueueExitEvent(SceneObject obj);
 	
-		
+	
 }

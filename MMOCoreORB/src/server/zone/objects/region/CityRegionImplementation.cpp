@@ -116,9 +116,11 @@ void CityRegionImplementation::initialize() {
 
 	cityMissionTerminals.setNoDuplicateInsertPlan();
 	cityDecorations.setNoDuplicateInsertPlan();
+	citySkillTrainers.setNoDuplicateInsertPlan();
 
 	setLoggingName("CityRegion");
 	setLogging(true);
+
 }
 
 Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool persistent) {
