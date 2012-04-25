@@ -55,6 +55,12 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected CityStructureInventory cityStructureInventory;
 	
+	@dereferenced
+	protected SortedVector<SceneObject> cityMissionTerminals;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> cityDecorations;
+	
 	protected byte cityRank;
 	
 	protected int cityTreasury;

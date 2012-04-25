@@ -114,6 +114,9 @@ void CityRegionImplementation::initialize() {
 	cityStructureInventory.get(2).setNoDuplicateInsertPlan();
 	cityStructureInventory.get(3).setNoDuplicateInsertPlan();
 
+	cityMissionTerminals.setNoDuplicateInsertPlan();
+	cityDecorations.setNoDuplicateInsertPlan();
+
 	setLoggingName("CityRegion");
 	setLogging(true);
 }
