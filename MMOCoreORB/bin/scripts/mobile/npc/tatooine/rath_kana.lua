@@ -1,16 +1,16 @@
-drognuz = Creature:new {
+rath_kana = Creature:new {
 	objectName = "",
-	customName = "Drognuz",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
+	customName = "Rath Kana",
+	socialGroup = "rath_kana",
+	pvpFaction = "rath_kana",
 	faction = "",
-	level = 14,
+	level = 23,
 	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
-	baseXp = 650,
-	baseHAM = 2550,
-	baseHAMmax = 2700,
+	baseXp = 870,
+	baseHAM = 3200,
+	baseHAMmax = 3400,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -27,7 +27,7 @@ drognuz = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gamorrean.iff"},
+	templates = {"object/mobile/ig_assassin_droid.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ drognuz = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(drognuz, "drognuz")
+CreatureTemplates:addCreatureTemplate(rath_kana, "rath_kana")
