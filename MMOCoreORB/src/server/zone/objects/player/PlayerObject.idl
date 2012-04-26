@@ -237,6 +237,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected boolean debugOutput;
 	
+	protected float visibility;
+	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -296,6 +298,8 @@ class PlayerObject extends IntangibleObject {
 		setOffline();
 		
 		performanceBuffTarget = 0;
+		
+		visibility = 0;
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1255,5 +1259,13 @@ class PlayerObject extends IntangibleObject {
 	
 	public boolean getDebug() {
 		return debugOutput;
+	}
+	
+	public float getVisibility() {
+		return visibility;
+	}
+	
+	public void setVisibility(float value) {
+		visibility = value;
 	}
 }

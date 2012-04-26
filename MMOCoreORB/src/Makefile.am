@@ -398,6 +398,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/faction/FactionMap.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
+		server/zone/managers/visibility/VisibilityManager.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/object/ObjectVersionUpdateManager.cpp \
 		server/zone/managers/planet/PlanetManagerImplementation.cpp \

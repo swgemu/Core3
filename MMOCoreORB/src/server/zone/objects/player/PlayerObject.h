@@ -756,6 +756,10 @@ public:
 
 	bool getDebug();
 
+	float getVisibility();
+
+	void setVisibility(float value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -921,6 +925,8 @@ protected:
 	unsigned long long performanceBuffTarget;
 
 	bool debugOutput;
+
+	float visibility;
 
 public:
 	static const int LFG = 1;
@@ -1397,6 +1403,10 @@ public:
 
 	bool getDebug();
 
+	float getVisibility();
+
+	void setVisibility(float value);
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1815,6 +1825,10 @@ public:
 	void setDebug(bool value);
 
 	bool getDebug();
+
+	float getVisibility();
+
+	void setVisibility(float value);
 
 protected:
 	String _param0_addExperience__String_int_bool_;
