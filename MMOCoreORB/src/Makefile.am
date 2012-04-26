@@ -145,6 +145,8 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/buffs/DurationBuff.cpp \
 				server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
 				server/zone/objects/creature/buffs/PerformanceBuff.cpp \
+				server/zone/objects/creature/buffs/SingleUseBuff.cpp \
+				server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
@@ -500,6 +502,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
+		server/zone/objects/creature/buffs/SingleUseBuffObserverImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
 		server/zone/objects/creature/vendor/VendorContainerComponent.cpp \
