@@ -325,6 +325,10 @@ public:
 
 		return false;
 	}
+
+	virtual void dropBuff(int param) {
+
+	}
 };
 
 

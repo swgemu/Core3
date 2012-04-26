@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -871,6 +871,116 @@ void CityRegion::setShuttleID(unsigned long long id) {
 		_implementation->setShuttleID(id);
 }
 
+int CityRegion::getMissionTerminalCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMISSIONTERMINALCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMissionTerminalCount();
+}
+
+int CityRegion::getDecorationCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDECORATIONCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDecorationCount();
+}
+
+void CityRegion::addMissionTerminal(SceneObject* mt) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDMISSIONTERMINAL__SCENEOBJECT_);
+		method.addObjectParameter(mt);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addMissionTerminal(mt);
+}
+
+void CityRegion::addDecoration(SceneObject* deco) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDDECORATION__SCENEOBJECT_);
+		method.addObjectParameter(deco);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addDecoration(deco);
+}
+
+void CityRegion::addSkillTrainer(SceneObject* trainer) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSKILLTRAINER__SCENEOBJECT_);
+		method.addObjectParameter(trainer);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSkillTrainer(trainer);
+}
+
+void CityRegion::removeMissionTerminal(SceneObject* mt) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_);
+		method.addObjectParameter(mt);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeMissionTerminal(mt);
+}
+
+void CityRegion::removeDecoration(SceneObject* deco) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEDECORATION__SCENEOBJECT_);
+		method.addObjectParameter(deco);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeDecoration(deco);
+}
+
+void CityRegion::removeSkillTrainers(SceneObject* trainer) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESKILLTRAINERS__SCENEOBJECT_);
+		method.addObjectParameter(trainer);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSkillTrainers(trainer);
+}
+
 void CityRegion::updateMilitia() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1157,6 +1267,21 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "CityRegion.cityMissionTerminals") {
+		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityMissionTerminals, stream);
+		return true;
+	}
+
+	if (_name == "CityRegion.cityDecorations") {
+		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityDecorations, stream);
+		return true;
+	}
+
+	if (_name == "CityRegion.citySkillTrainers") {
+		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&citySkillTrainers, stream);
+		return true;
+	}
+
 	if (_name == "CityRegion.cityRank") {
 		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
 		return true;
@@ -1307,6 +1432,30 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "CityRegion.cityMissionTerminals";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityMissionTerminals, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "CityRegion.cityDecorations";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityDecorations, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "CityRegion.citySkillTrainers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&citySkillTrainers, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "CityRegion.cityRank";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1380,7 +1529,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 20;
+	return _count + 23;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -1675,6 +1824,46 @@ void CityRegionImplementation::setShuttleID(unsigned long long id) {
 	hasShuttle = true;
 }
 
+int CityRegionImplementation::getMissionTerminalCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return cityMissionTerminals.size();
+	return (&cityMissionTerminals)->size();
+}
+
+int CityRegionImplementation::getDecorationCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return cityDecorations.size();
+	return (&cityDecorations)->size();
+}
+
+void CityRegionImplementation::addMissionTerminal(SceneObject* mt) {
+	// server/zone/objects/region/CityRegion.idl():  		cityMissionTerminals.put(mt);
+	(&cityMissionTerminals)->put(mt);
+}
+
+void CityRegionImplementation::addDecoration(SceneObject* deco) {
+	// server/zone/objects/region/CityRegion.idl():  		cityDecorations.put(deco);
+	(&cityDecorations)->put(deco);
+}
+
+void CityRegionImplementation::addSkillTrainer(SceneObject* trainer) {
+	// server/zone/objects/region/CityRegion.idl():  		citySkillTrainers.put(trainer);
+	(&citySkillTrainers)->put(trainer);
+}
+
+void CityRegionImplementation::removeMissionTerminal(SceneObject* mt) {
+	// server/zone/objects/region/CityRegion.idl():  		cityMissionTerminals.drop(mt);
+	(&cityMissionTerminals)->drop(mt);
+}
+
+void CityRegionImplementation::removeDecoration(SceneObject* deco) {
+	// server/zone/objects/region/CityRegion.idl():  		cityDecorations.drop(deco);
+	(&cityDecorations)->drop(deco);
+}
+
+void CityRegionImplementation::removeSkillTrainers(SceneObject* trainer) {
+	// server/zone/objects/region/CityRegion.idl():  		citySkillTrainers.drop(trainer);
+	(&citySkillTrainers)->drop(trainer);
+}
+
 /*
  *	CityRegionAdapter
  */
@@ -1860,6 +2049,30 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETSHUTTLEID__LONG_:
 		setShuttleID(inv->getUnsignedLongParameter());
+		break;
+	case RPC_GETMISSIONTERMINALCOUNT__:
+		resp->insertSignedInt(getMissionTerminalCount());
+		break;
+	case RPC_GETDECORATIONCOUNT__:
+		resp->insertSignedInt(getDecorationCount());
+		break;
+	case RPC_ADDMISSIONTERMINAL__SCENEOBJECT_:
+		addMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ADDDECORATION__SCENEOBJECT_:
+		addDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ADDSKILLTRAINER__SCENEOBJECT_:
+		addSkillTrainer(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_:
+		removeMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REMOVEDECORATION__SCENEOBJECT_:
+		removeDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_REMOVESKILLTRAINERS__SCENEOBJECT_:
+		removeSkillTrainers(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	case RPC_UPDATEMILITIA__:
 		updateMilitia();
@@ -2119,6 +2332,38 @@ bool CityRegionAdapter::hasShuttleInstallation() {
 
 void CityRegionAdapter::setShuttleID(unsigned long long id) {
 	(static_cast<CityRegion*>(stub))->setShuttleID(id);
+}
+
+int CityRegionAdapter::getMissionTerminalCount() {
+	return (static_cast<CityRegion*>(stub))->getMissionTerminalCount();
+}
+
+int CityRegionAdapter::getDecorationCount() {
+	return (static_cast<CityRegion*>(stub))->getDecorationCount();
+}
+
+void CityRegionAdapter::addMissionTerminal(SceneObject* mt) {
+	(static_cast<CityRegion*>(stub))->addMissionTerminal(mt);
+}
+
+void CityRegionAdapter::addDecoration(SceneObject* deco) {
+	(static_cast<CityRegion*>(stub))->addDecoration(deco);
+}
+
+void CityRegionAdapter::addSkillTrainer(SceneObject* trainer) {
+	(static_cast<CityRegion*>(stub))->addSkillTrainer(trainer);
+}
+
+void CityRegionAdapter::removeMissionTerminal(SceneObject* mt) {
+	(static_cast<CityRegion*>(stub))->removeMissionTerminal(mt);
+}
+
+void CityRegionAdapter::removeDecoration(SceneObject* deco) {
+	(static_cast<CityRegion*>(stub))->removeDecoration(deco);
+}
+
+void CityRegionAdapter::removeSkillTrainers(SceneObject* trainer) {
+	(static_cast<CityRegion*>(stub))->removeSkillTrainers(trainer);
 }
 
 void CityRegionAdapter::updateMilitia() {

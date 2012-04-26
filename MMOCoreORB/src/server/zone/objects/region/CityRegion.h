@@ -240,6 +240,22 @@ public:
 
 	void setShuttleID(unsigned long long id);
 
+	int getMissionTerminalCount();
+
+	int getDecorationCount();
+
+	void addMissionTerminal(SceneObject* mt);
+
+	void addDecoration(SceneObject* deco);
+
+	void addSkillTrainer(SceneObject* trainer);
+
+	void removeMissionTerminal(SceneObject* mt);
+
+	void removeDecoration(SceneObject* deco);
+
+	void removeSkillTrainers(SceneObject* trainer);
+
 	void updateMilitia();
 
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
@@ -308,6 +324,12 @@ protected:
 	SortedVector<unsigned int> limitedPlacementStructures;
 
 	CityStructureInventory cityStructureInventory;
+
+	SortedVector<ManagedReference<SceneObject* > > cityMissionTerminals;
+
+	SortedVector<ManagedReference<SceneObject* > > cityDecorations;
+
+	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
 
 	byte cityRank;
 
@@ -471,6 +493,22 @@ public:
 	bool hasShuttleInstallation();
 
 	void setShuttleID(unsigned long long id);
+
+	int getMissionTerminalCount();
+
+	int getDecorationCount();
+
+	void addMissionTerminal(SceneObject* mt);
+
+	void addDecoration(SceneObject* deco);
+
+	void addSkillTrainer(SceneObject* trainer);
+
+	void removeMissionTerminal(SceneObject* mt);
+
+	void removeDecoration(SceneObject* deco);
+
+	void removeSkillTrainers(SceneObject* trainer);
 
 	void updateMilitia();
 
@@ -646,6 +684,22 @@ public:
 	bool hasShuttleInstallation();
 
 	void setShuttleID(unsigned long long id);
+
+	int getMissionTerminalCount();
+
+	int getDecorationCount();
+
+	void addMissionTerminal(SceneObject* mt);
+
+	void addDecoration(SceneObject* deco);
+
+	void addSkillTrainer(SceneObject* trainer);
+
+	void removeMissionTerminal(SceneObject* mt);
+
+	void removeDecoration(SceneObject* deco);
+
+	void removeSkillTrainers(SceneObject* trainer);
 
 	void updateMilitia();
 
