@@ -5,10 +5,9 @@ melee_polearm = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "polearm_lance", weight = 2500000},
-		{itemTemplate = "polearm_staff_janta", weight = 2500000},
-		{itemTemplate = "polearm_staff_metal", weight = 2500000},
-		{itemTemplate = "polearm_staff_wood_reinforced", weight = 2500000}
+		{itemTemplate = "polearm_lance", weight = 3333333},
+		{itemTemplate = "polearm_staff_metal", weight = 3333333},
+		{itemTemplate = "polearm_staff_wood_reinforced", weight = 3333334}
 	}
 }
 

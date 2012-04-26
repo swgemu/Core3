@@ -28,7 +28,14 @@ enhanced_gaping_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "fire_breathing_spider", chance = 10000000}
+			},
+			lootChance = 7500000
+		}	
+	},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
