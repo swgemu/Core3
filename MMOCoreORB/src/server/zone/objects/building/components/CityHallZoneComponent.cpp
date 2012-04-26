@@ -20,6 +20,8 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 		for ( i = cityRegion->getCityRank(); i > 0; i--)
 			cityRegion->destroyAllStructuresForRank(uint8(i));
 
+		cityRegion->removeAllTerminals();
+
 		if (cityRegion->getCityHall() == sceneObject) {
 			cityRegion->setCityHall(NULL);
 		}

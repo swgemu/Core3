@@ -88,6 +88,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
+#include "server/zone/objects/creature/commands/sui/InstallMissionTerminalSuiCallback.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"

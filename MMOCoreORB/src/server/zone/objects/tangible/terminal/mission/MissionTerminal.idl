@@ -98,8 +98,11 @@ class MissionTerminal extends Terminal {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+		
 	public boolean isMissionTerminal() {
 		return true;
 	}

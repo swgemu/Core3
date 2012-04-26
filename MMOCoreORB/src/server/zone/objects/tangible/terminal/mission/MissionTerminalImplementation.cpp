@@ -10,8 +10,20 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+
+void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+
+	CityRegion* city = player->getCityRegion();
+
+	if(city != NULL && city->isMayor(player->getObjectID())){
+
+		menuResponse->addRadialMenuItem(72, 3, "Remove");
+
+	}
+}
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 69) {
@@ -32,6 +44,21 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		return 0;
 
-	} else
+	}
+
+	else if (selectedID == 72) {
+
+		CityRegion* city = player->getCityRegion();
+
+		if (city != NULL)
+			city->removeMissionTerminal(_this);
+
+
+		_this->destroyObjectFromWorld(true);
+		_this->destroyObjectFromDatabase(false);
+
+	}
+
+	else
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define INSTALLMISSIONTERMINALCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/creature/commands/sui/InstallMissionTerminalSuiCallback.h"
 
 class InstallMissionTerminalCommand : public QueueCommand {
 public:
@@ -62,6 +64,32 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (!creature->hasSkill("social_politician_civic_01"))
+			return GENERALERROR;
+
+		ManagedReference<CityRegion*> city = creature->getCityRegion();
+
+		if (city == NULL)
+			return GENERALERROR;
+
+		if (!city->isMayor(creature->getObjectID()))
+			return GENERALERROR;
+
+		ManagedReference<SuiListBox*> suiTerminalType = new SuiListBox(creature, SuiWindowType::INSTALL_MISSION_TERMINAL, 0);
+		suiTerminalType->setCallback(new InstallMissionTerminalSuiCallback(server->getZoneServer()));
+
+		suiTerminalType->setPromptTitle("@city/city:job_n");
+		suiTerminalType->setPromptText("@city/city:job_d");
+
+		suiTerminalType->addMenuItem("@terminal_name:terminal_mission", 0);
+		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_artisan", 1);
+		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_bounty", 2);
+		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_entertainer", 3);
+		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_scout", 4);
+
+		creature->getPlayerObject()->addSuiBox(suiTerminalType);
+		creature->sendMessage(suiTerminalType->generateMessage());
 
 		return SUCCESS;
 	}

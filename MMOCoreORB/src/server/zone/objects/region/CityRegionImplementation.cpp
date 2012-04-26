@@ -434,6 +434,16 @@ void CityRegionImplementation::updateMilitia(){
 	}
 }
 
+void CityRegionImplementation::removeAllTerminals(){
+
+	for (int i = 0; i < cityMissionTerminals.size(); i++){
+
+		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
+		cityMissionTerminals.get(i)->destroyObjectFromDatabase(false);
+
+	}
+}
+
 void CityRegionImplementation::enqueueEnterEvent(SceneObject* obj) {
 
 	Locker locker(_this);

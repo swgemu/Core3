@@ -399,6 +399,8 @@ class CityRegion extends ManagedObject implements Logger {
 		citySkillTrainers.drop(trainer);
 	}
 	
+	public native void removeAllTerminals();
+	
 	public native void updateMilitia();
 	
 	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
