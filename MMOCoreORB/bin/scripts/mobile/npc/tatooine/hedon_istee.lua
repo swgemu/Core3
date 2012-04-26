@@ -24,13 +24,13 @@ hedon_istee = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_hedon_istee.iff"},
 	lootGroups = {},
 	weapons = {""},
-	conversationTemplate = "",
+	conversationTemplate = "hedon_istee_convotemplate",
 	attacks = {
 	}
 }
