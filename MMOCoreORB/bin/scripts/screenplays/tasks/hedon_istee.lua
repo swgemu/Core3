@@ -8,9 +8,10 @@ hedon_istee_screenplay = ScreenPlay:new {
 	},
 
 	loc = {
-		drog = {x = 1553, z = 15, y = 3488},
-		rath = {x = 1800, z = 7, y = 3128},
-		monk = {x = 1560, z = 7, y = 2970}
+		hedon = {x = 1390, z = 0, y = 3195},
+		drog  = {x = 1553, z = 15, y = 3488},
+		rath  = {x = 1800, z = 7, y = 3128},
+		monk  = {x = 1560, z = 7, y = 2970}
 	}
 }
 
@@ -25,189 +26,29 @@ function hedon_istee_screenplay:start()
 end
 
 function hedon_istee_screenplay:spawnActiveAreas()
-	local pActiveArea1 = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.drog.x, self.loc.drog.z, self.loc.drog.y, 0, 0, 0, 0, 0)
-	local pActiveArea2 = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.rath.x, self.loc.rath.z, self.loc.rath.y, 0, 0, 0, 0, 0)
-	--local pActiveArea3 = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.monk.x, self.loc.monk.z, self.loc.monk.y, 0, 0, 0, 0, 0)
+	local pSereneFloaterArea = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.monk.x, self.loc.monk.z, self.loc.monk.y, 0, 0, 0, 0, 0)
 
-	--Drognuz Active Area
-	if (pActiveArea1 ~= nil) then
-		local activeArea = LuaActiveArea(pActiveArea1)
+	if (pSereneFloaterArea ~= nil) then
+		local activeArea = LuaActiveArea(pSereneFloaterArea)
 		activeArea:setRadius(50)
 		activeArea:setNoBuildArea(true)
-		createObserver(ENTEREDAREA, "hedon_istee_screenplay", "notifyEnteredArea1", pActiveArea1)
-	end
-
-	--Bounty Hunter Active Area
-	if (pActiveArea2 ~= nil) then
-		local activeArea = LuaActiveArea(pActiveArea2)
-		activeArea:setRadius(50)
-		activeArea:setNoBuildArea(true)
-		createObserver(ENTEREDAREA, "hedon_istee_screenplay", "notifyEnteredArea2", pActiveArea2)
-	end
-
-	--Bomarr Monk Active Area
-	if (pActiveArea3 ~= nil) then
-		local activeArea = LuaActiveArea(pActiveArea3)
-		activeArea:setRadius(50)
-		activeArea:setNoBuildArea(true)
-		createObserver(ENTEREDAREA, "hedon_istee_screenplay", "notifyEnteredArea3", pActiveArea3)
+		createObserver(ENTEREDAREA, "hedon_istee_screenplay", "notifyEnteredSereneFloaterArea", pSereneFloaterArea)
 	end
 end
 
 function hedon_istee_screenplay:spawnMobiles()
-	spawnMobile("tatooine", "hedon_istee", 1, 1390, 0, 3195, 0, 0)
+	local pHedonIstee = spawnMobile("tatooine", "hedon_istee", 1, self.loc.hedon.x, self.loc.hedon.z, self.loc.hedon.y, 0, 0)
+	local pDrognuz = spawnMobile("tatooine", "drognuz", 10, self.loc.drog.x, self.loc.drog.z, self.loc.drog.y, 0, 0)
+	local pRathKana = spawnMobile("tatooine", "rath_kana", 60, self.loc.rath.x, self.loc.rath.z, self.loc.rath.y, 0, 0)
+	local pSereneFloater = spawnMobile("tatooine", "serene_floater", 60, self.loc.monk.x, self.loc.monk.z, self.loc.monk.y, 0, 0)
+	
+	createObserver(OBJECTDESTRUCTION, "hedon_istee_screenplay", "notifyDrognuzDefeated", pDrognuz)
 end
 
 ---
 --Observer Notifications
 ---
-function hedon_istee_screenplay:notifyEnteredArea1(pActiveArea, pMovingObject)
-	local movingObject = LuaSceneObject(pMovingObject)
-
-	if (movingObject:isCreatureObject()) then
-		local player = LuaCreatureObject(pMovingObject)
-		local objectID = player:getObjectID()
-
-		if (self:hasState(player, self.states.quest1.started)) and (not self:hasState(player, self.states.quest1.defeated)) then
-			if (not self:hasSpawned(objectID, "drognuz")) then
-				self:setSpawned(objectID, "drognuz")
-
-				--TODO: Randomize the spawn point
-				local pDrognuz = spawnMobile("tatooine", "drognuz", 0, self.loc.drog.x, self.loc.drog.z, self.loc.drog.y, 0, 0)
-				local drognuz = LuaSceneObject(pDrognuz)
-
-				self:writeObjectData(objectID, "drognuz", drognuz:getObjectID())
-				self:writeObjectData(drognuz:getObjectID(), "questOwnerID", objectID)
-
-				createObserver(OBJECTDESTRUCTION, "hedon_itsee_screenplay", "notifyDrognuzDefeated", pDrognuz)
-				createObserver(OBJECTINRANGEMOVED, "hedon_itsee_screenplay", "notifyDrognuzBark", pDrognuz)
-			end
-		end
-	end
-end
-
-function hedon_istee_screenplay:notifyDrognuzDefeated(pDrognuz, pAttacker)
-	local drognuz = LuaCreatureObject(pDrognuz)
-	local ownerID = self:readObjectData(victim:getObjectID(), "questOwnerID")
-	local pOwner = getCreatureObject(ownerID)
-
-	if (pOwner == nil) then
-		return 0;
-	end
-
-	local owner = LuaCreatureObject(pOwner)
-
-	self:setState(owner, self.states.quest1.defeated)
-
-	self:deleteObjectData(objectID, "drognuz")
-	self:deleteObjectData(drognuz:getObjectID(), "questOwnerID")
-
-	return 1
-end
-
-function hedon_istee_screenplay:notifyDrognuzBark(pDrognuz, pMovingObject)
-	local movingObject = LuaSceneObject(pMovingObject)
-
-	if (movingObject:isCreatureObject()) then
-		local drognuz = LuaCreatureObject(pDrognuz)
-		local distance = drognuz:getDistanceTo(pMovingObject)
-
-		if (distance == 0 or distance > 16) then
-			return 0
-		end
-
-		local player = LuaCreatureObject(pMovingObject)
-		local objectID = player:getObjectID()
-
-		if (self:hasState(player, self.states.quest1.started)) and (not self:hasState(player, self.states.quest1.defeated)) then
-			if (self:hasSpawned(objectID, "drognuz")) then
-				if (self:readObjectData(objectID, "drognuz_spoken") ~= 1) then
-					spatialChat(pPrisoner, "@static_npc/tatooine/hedon_istee:npc_breech_1") --Grunt!
-					self:writeObjectData(objectID, "drognuz_spoken", 1)
-
-					return 1
-				end
-			end
-		end
-	end
-
-	return 0
-end
-
-function hedon_istee_screenplay:notifyEnteredArea2(pActiveArea, pMovingObject)
-	local movingObject = LuaSceneObject(pMovingObject)
-
-	if (movingObject:isCreatureObject()) then
-		local player = LuaCreatureObject(pMovingObject)
-		local objectID = player:getObjectID()
-
-		if (self:hasState(player, self.states.quest2.started)) and (not self:hasState(player, self.states.quest2.defeated)) then
-			if (not self:hasSpawned(objectID, "rath")) then
-				self:setSpawned(objectID, "rath")
-
-				--TODO: Randomize the spawn point
-				local pRath = spawnMobile("tatooine", "rath_kana", 0, self.loc.rath.x, self.loc.rath.z, self.loc.rath.y, 0, 0)
-				local rath = LuaSceneObject(pRath)
-
-				self:writeObjectData(objectID, "rath", drognuz:getObjectID())
-				self:writeObjectData(rath:getObjectID(), "questOwnerID", objectID)
-
-				createObserver(OBJECTDESTRUCTION, "hedon_itsee_screenplay", "notifyRathDefeated", pRath)
-				createObserver(OBJECTINRANGEMOVED, "hedon_itsee_screenplay", "notifyRathBark", pRath)
-			end
-		end
-	end
-end
-
-function hedon_istee_screenplay:notifyRathDefeated(pRath, pAttacker)
-	local rath = LuaCreatureObject(pRath)
-	local ownerID = self:readObjectData(victim:getObjectID(), "questOwnerID")
-	local pOwner = getCreatureObject(ownerID)
-
-	if (pOwner == nil) then
-		return 0;
-	end
-
-	local owner = LuaCreatureObject(pOwner)
-
-	self:setState(owner, self.states.quest2.defeated)
-
-	self:deleteObjectData(objectID, "rath")
-	self:deleteObjectData(rath:getObjectID(), "questOwnerID")
-
-	return 1
-end
-
-function hedon_istee_screenplay:notifyRathBark(pRath, pMovingObject)
-	local movingObject = LuaSceneObject(pMovingObject)
-
-	if (movingObject:isCreatureObject()) then
-		local rath = LuaCreatureObject(pRath)
-		local distance = rath:getDistanceTo(pMovingObject)
-
-		if (distance == 0 or distance > 16) then
-			return 0
-		end
-
-		local player = LuaCreatureObject(pMovingObject)
-		local objectID = player:getObjectID()
-
-		if (self:hasState(player, self.states.quest2.started)) and (not self:hasState(player, self.states.quest2.defeated)) then
-			if (self:hasSpawned(objectID, "rath")) then
-				if (self:readObjectData(objectID, "rath_spoken") ~= 1) then
-					spatialChat(pPrisoner, "@static_npc/tatooine/hedon_istee:npc_breech_2") --All the B'omarr want is that sacred scroll. You're in my way and must be removed.
-					self:writeObjectData(objectID, "rath_spoken", 1)
-
-					return 1
-				end
-			end
-		end
-	end
-
-	return 0
-end
-
-function hedon_istee_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
+function hedon_istee_screenplay:notifyEnteredSereneFloaterArea(pActiveArea, pMovingObject)
 	local movingObject = LuaSceneObject(pMovingObject)
 
 	if (movingObject:isCreatureObject()) then
@@ -215,55 +56,22 @@ function hedon_istee_screenplay:notifyEnteredArea3(pActiveArea, pMovingObject)
 		local objectID = player:getObjectID()
 
 		if (self:hasState(player, self.states.quest3.started)) and (not self:hasState(player, self.states.quest3.defeated)) then
-			if (not self:hasSpawned(objectID, "monk")) then
-				self:setSpawned(objectID, "monk")
-
-				--TODO: Randomize the spawn point
-				local pMonk = spawnMobile("tatooine", "serene_floater", 0, self.loc.monk.x, self.loc.monk.z, self.loc.monk.y, 0, 0)
-				local monk = LuaSceneObject(pRath)
-
-				self:writeObjectData(objectID, "monk", monk:getObjectID())
-				self:writeObjectData(monk:getObjectID(), "questOwnerID", objectID)
-
-				createObserver(OBJECTINRANGEMOVED, "hedon_itsee_screenplay", "notifyMonkBark", pMonk)
-			end
 		end
 	end
 end
 
-function hedon_istee_screenplay:notifyMonkBark(pMonk, pMovingObject)
-	local movingObject = LuaSceneObject(pMovingObject)
-
-	if (movingObject:isCreatureObject()) then
-		local monk = LuaCreatureObject(pMonk)
-		local distance = monk:getDistanceTo(pMovingObject)
-
-		if (distance == 0 or distance > 16) then
-			return 0
-		end
-
-		local player = LuaCreatureObject(pMovingObject)
-		local objectID = player:getObjectID()
-
-		if (self:hasState(player, self.states.quest3.started)) and (not self:hasState(player, self.states.quest3.delivered)) then
-			if (self:hasSpawned(objectID, "monk")) then
-				if (self:readObjectData(objectID, "monk_spoken") ~= 1) then
-					--Check for the scroll
-					--Has Scroll
-					--spatialChat(pMonk, "@static_npc/tatooine/hedon_istee:npc_smuggle_3") --The scroll.  You have begun your travel down the path of enlightenment, sensualist.  We will watch from afar, but no longer through direct intervention.
-					--Doesn't have scroll
-					--spatialChat(pMonk, "@static_npc/tatooine/hedon_istee:dontknowyou_3") --Until that time has come, your life will be filled with false euphoria.
-					--Bark when close.
-					spatialChat(pMonk, "@static_npc/tatooine/hedon_istee:npc_breech_3") --May you come to know the serenity of emptiness, sensualist.
-					self:writeObjectData(objectID, "monk_spoken", 1)
-					return 1
-				end
-			end
-		end
+function hedon_istee_screenplay:notifyDrognuzDefeated(pDrognuz, pAttacker)
+	local drognuz = LuaCreatureObject(pDrognuz)
+	local attacker = LuaSceneObject(pAttacker)
+	
+	if (attacker:isCreatureObject()) then
+		local creature = LuaCreatureObject(pAttacker)
+		creature:sendSystemMessage("Killed drognuz")
 	end
 
-	return 0
+	return 1
 end
+
 
 --------------------------------------
 --   Common functions                -
