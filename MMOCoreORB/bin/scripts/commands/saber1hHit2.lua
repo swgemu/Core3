@@ -43,6 +43,30 @@
 
 Saber1hHit2Command = {
         name = "saber1hhit2",
+        
+    damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 2.0,
+
+	animationCRC = hashCode("combo_3a_medium"),
+
+	combatSpam = "saber1hhit2",
+	
+	stateEffects = {
+	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "blind_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		40, 
+		100, 
+		10 
+	  )
+	},
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(Saber1hHit2Command)

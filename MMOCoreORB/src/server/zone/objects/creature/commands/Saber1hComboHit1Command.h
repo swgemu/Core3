@@ -46,12 +46,13 @@ which carries forward this exception.
 #define SABER1HCOMBOHIT1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class Saber1hComboHit1Command : public QueueCommand {
+class Saber1hComboHit1Command : public CombatQueueCommand {
 public:
 
 	Saber1hComboHit1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isJediOneHandedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };
