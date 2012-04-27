@@ -55,7 +55,7 @@ object_tangible_food_crafted_drink_durindfire = object_tangible_food_crafted_sha
 	flavorMin = 720,
 	flavorMax = 1440,
 	nutritionMin = 7.5,
-	utritionMax = 12,
+	nutritionMax = 12,
 	quantityMin = 6,
 	quantityMax = 10,
 
