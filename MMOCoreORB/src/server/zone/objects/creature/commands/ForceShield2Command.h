@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FORCESHIELD2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
 class ForceShield2Command : public QueueCommand {
 public:
