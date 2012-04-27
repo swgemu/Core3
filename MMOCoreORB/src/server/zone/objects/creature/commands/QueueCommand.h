@@ -326,8 +326,7 @@ public:
 		return false;
 	}
 
-	virtual void dropBuff(int param) {
-
+	virtual void dropBuff(ManagedObject* object, int64 param) {
 	}
 };
 

@@ -24,7 +24,7 @@ int SingleUseBuffObserverImplementation::notifyObserverEvent(unsigned int eventT
 	unsigned int commandCRC = buff->getCommandCRC();
 	QueueCommand* queueCommand = objectController->getQueueCommand(commandCRC);
 
-	queueCommand->dropBuff((int)arg2);
+	queueCommand->dropBuff(arg1, (int)arg2);
 
 	player->removeBuff(buff);
 

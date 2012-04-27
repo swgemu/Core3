@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FORCEARMOR2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
 class ForceArmor2Command : public QueueCommand {
 public:
@@ -98,10 +99,14 @@ public:
 
 		int duration = 1800;
 
-		ManagedReference<Buff*> buff = new Buff(creature, buffcrc2, duration, BuffType::JEDI);
+		Vector<unsigned int> eventTypes;
+		eventTypes.add(ObserverEventType::NOFORCEPOWER);
+
+		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc2, duration, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_armor", 45);
+		buff->init(&eventTypes);
 
 		creature->addBuff(buff);
 		creature->playEffect("clienteffect/pl_force_armor_self.cef", "");
