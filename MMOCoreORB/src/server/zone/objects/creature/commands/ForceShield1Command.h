@@ -98,10 +98,14 @@ public:
 
 		int duration = 900;
 
-		ManagedReference<Buff*> buff = new Buff(creature, buffcrc1, duration, BuffType::JEDI);
+		Vector<unsigned int> eventTypes;
+		eventTypes.add(ObserverEventType::NOFORCEPOWER);
+
+		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_shield", 25);
+		buff->init(&eventTypes);
 
 		creature->addBuff(buff);
 		creature->playEffect("clienteffect/pl_force_shield_self.cef", "");
