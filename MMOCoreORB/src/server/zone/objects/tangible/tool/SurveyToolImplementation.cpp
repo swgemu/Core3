@@ -88,30 +88,32 @@ void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	PlayerObject* playerObject = player->getPlayerObject();
 
-	if (!playerObject->hasAbility("survey")) {
-		player->sendSystemMessage("@error_message:insufficient_skill");
-		return 0;
-	}
+	if(isASubChildOf(player)) {
+		if (!playerObject->hasAbility("survey")) {
+			player->sendSystemMessage("@error_message:insufficient_skill");
+			return 0;
+		}
 
-	if (selectedID == 20) { // use object
+		if (selectedID == 20) { // use object
 
-		playerObject->setSurveyTool(_this);
+			playerObject->setSurveyTool(_this);
 
-		if (getRange(player) > 0)
-			sendResourceListTo(player);
-		else
+			if (getRange(player) > 0)
+				sendResourceListTo(player);
+			else
+				sendRangeSui(player);
+
+			return 0;
+		}
+
+		if (selectedID == 133) { // Set Tool Range
+
+			playerObject->setSurveyTool(_this);
+
 			sendRangeSui(player);
 
-		return 0;
-	}
-
-	if (selectedID == 133) { // Set Tool Range
-
-		playerObject->setSurveyTool(_this);
-
-		sendRangeSui(player);
-
-		return 0;
+			return 0;
+		}
 	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
