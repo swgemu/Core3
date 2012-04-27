@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -981,6 +981,19 @@ void CityRegion::removeSkillTrainers(SceneObject* trainer) {
 		_implementation->removeSkillTrainers(trainer);
 }
 
+void CityRegion::removeAllTerminals() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEALLTERMINALS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeAllTerminals();
+}
+
 void CityRegion::updateMilitia() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1077,34 +1090,6 @@ void CityRegion::destroyAllStructuresForRank(byte rank) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->destroyAllStructuresForRank(rank);
-}
-
-void CityRegion::enqueueEnterEvent(SceneObject* obj) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ENQUEUEENTEREVENT__SCENEOBJECT_);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->enqueueEnterEvent(obj);
-}
-
-void CityRegion::enqueueExitEvent(SceneObject* obj) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ENQUEUEEXITEVENT__SCENEOBJECT_);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->enqueueExitEvent(obj);
 }
 
 DistributedObjectServant* CityRegion::_getImplementation() {
@@ -2074,6 +2059,9 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_REMOVESKILLTRAINERS__SCENEOBJECT_:
 		removeSkillTrainers(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
+	case RPC_REMOVEALLTERMINALS__:
+		removeAllTerminals();
+		break;
 	case RPC_UPDATEMILITIA__:
 		updateMilitia();
 		break;
@@ -2094,12 +2082,6 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_:
 		destroyAllStructuresForRank(inv->getByteParameter());
-		break;
-	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
-		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
-		break;
-	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
-		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -2366,6 +2348,10 @@ void CityRegionAdapter::removeSkillTrainers(SceneObject* trainer) {
 	(static_cast<CityRegion*>(stub))->removeSkillTrainers(trainer);
 }
 
+void CityRegionAdapter::removeAllTerminals() {
+	(static_cast<CityRegion*>(stub))->removeAllTerminals();
+}
+
 void CityRegionAdapter::updateMilitia() {
 	(static_cast<CityRegion*>(stub))->updateMilitia();
 }
@@ -2392,14 +2378,6 @@ void CityRegionAdapter::removeLimitedPlacementStructure(unsigned int id) {
 
 void CityRegionAdapter::destroyAllStructuresForRank(byte rank) {
 	(static_cast<CityRegion*>(stub))->destroyAllStructuresForRank(rank);
-}
-
-void CityRegionAdapter::enqueueEnterEvent(SceneObject* obj) {
-	(static_cast<CityRegion*>(stub))->enqueueEnterEvent(obj);
-}
-
-void CityRegionAdapter::enqueueExitEvent(SceneObject* obj) {
-	(static_cast<CityRegion*>(stub))->enqueueExitEvent(obj);
 }
 
 /*

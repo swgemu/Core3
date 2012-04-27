@@ -126,6 +126,10 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
+
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
@@ -178,6 +182,10 @@ public:
 	CityRegion* getCityRegion();
 
 	void notifyLoadFromDatabase();
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	void notifyEnter(SceneObject* object);
 
@@ -239,6 +247,10 @@ public:
 	CityRegion* getCityRegion();
 
 	void notifyLoadFromDatabase();
+
+	void enqueueEnterEvent(SceneObject* obj);
+
+	void enqueueExitEvent(SceneObject* obj);
 
 	void notifyEnter(SceneObject* object);
 

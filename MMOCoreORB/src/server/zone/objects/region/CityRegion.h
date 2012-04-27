@@ -256,6 +256,8 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
+	void removeAllTerminals();
+
 	void updateMilitia();
 
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
@@ -269,10 +271,6 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
-
-	void enqueueEnterEvent(SceneObject* obj);
-
-	void enqueueExitEvent(SceneObject* obj);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -510,6 +508,8 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
+	void removeAllTerminals();
+
 	void updateMilitia();
 
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
@@ -523,10 +523,6 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
-
-	void enqueueEnterEvent(SceneObject* obj);
-
-	void enqueueExitEvent(SceneObject* obj);
 
 	WeakReference<CityRegion*> _this;
 
@@ -701,6 +697,8 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
+	void removeAllTerminals();
+
 	void updateMilitia();
 
 	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
@@ -714,10 +712,6 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
-
-	void enqueueEnterEvent(SceneObject* obj);
-
-	void enqueueExitEvent(SceneObject* obj);
 
 protected:
 	String _param0_setCustomRegionName__String_;

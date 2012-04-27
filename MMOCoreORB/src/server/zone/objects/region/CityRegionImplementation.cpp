@@ -176,8 +176,6 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		return;
 
 	if (object->isCreatureObject()){
-
-
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
@@ -196,8 +194,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		creature->sendSystemMessage(params);
 	}
 
-	if (object->isBuildingObject()){
-
+	if (object->isBuildingObject()) {
 		//StructureObject* structure = cast<StructureObject*>(object);
 
 		BuildingObject* building = cast<BuildingObject*>(object);
@@ -435,27 +432,11 @@ void CityRegionImplementation::updateMilitia(){
 }
 
 void CityRegionImplementation::removeAllTerminals(){
-
 	for (int i = 0; i < cityMissionTerminals.size(); i++){
-
 		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
 		cityMissionTerminals.get(i)->destroyObjectFromDatabase(false);
-
 	}
+
+	cityMissionTerminals.removeAll();
 }
 
-void CityRegionImplementation::enqueueEnterEvent(SceneObject* obj) {
-
-	Locker locker(_this);
-
-	notifyEnter(obj);
-
-}
-
-void CityRegionImplementation::enqueueExitEvent(SceneObject* obj) {
-
-	Locker locker(_this);
-
-	notifyExit(obj);
-
-}

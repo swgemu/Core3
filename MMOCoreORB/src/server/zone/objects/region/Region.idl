@@ -81,13 +81,23 @@ class Region extends ActiveArea {
 	
 	public native void notifyLoadFromDatabase();
 	
+	public void enqueueEnterEvent(SceneObject obj) {
+		notifyEnter(obj);
+	}
+	
+	public void enqueueExitEvent(SceneObject obj) {
+		notifyExit(obj);
+	}
+	
 	public void notifyEnter(SceneObject object) {
 		super.notifyEnter(object);
 		
 		if (cityRegion == null)
 			return;
 		
-		cityRegion.notifyEnter(object);
+		synchronized (cityRegion) {
+			cityRegion.notifyEnter(object);
+		}
 	}
 	
 	public void notifyExit(SceneObject object) {
@@ -96,7 +106,9 @@ class Region extends ActiveArea {
 		if (cityRegion == null)
 			return;
 		
-		cityRegion.notifyExit(object);
+		synchronized (cityRegion) {
+			cityRegion.notifyExit(object);
+		}
 	}
 	
 	public void addBazaar(BazaarTerminal ter) {

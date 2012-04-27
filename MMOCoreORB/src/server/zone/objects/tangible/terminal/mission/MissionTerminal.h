@@ -84,6 +84,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isMissionTerminal();
@@ -154,6 +156,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -227,6 +231,8 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

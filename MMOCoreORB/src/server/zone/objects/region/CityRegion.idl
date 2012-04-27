@@ -415,9 +415,7 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void destroyAllStructuresForRank(byte rank);
 	
-	public native void enqueueEnterEvent(SceneObject obj);
 	
-	public native void enqueueExitEvent(SceneObject obj);
 	
 	
 }

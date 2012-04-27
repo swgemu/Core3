@@ -20,7 +20,7 @@
  *	RegionStub
  */
 
-enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
+enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -76,6 +76,34 @@ void Region::notifyLoadFromDatabase() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyLoadFromDatabase();
+}
+
+void Region::enqueueEnterEvent(SceneObject* obj) {
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ENQUEUEENTEREVENT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->enqueueEnterEvent(obj);
+}
+
+void Region::enqueueExitEvent(SceneObject* obj) {
+	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ENQUEUEEXITEVENT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->enqueueExitEvent(obj);
 }
 
 void Region::notifyEnter(SceneObject* object) {
@@ -330,24 +358,42 @@ CityRegion* RegionImplementation::getCityRegion() {
 	return cityRegion;
 }
 
+void RegionImplementation::enqueueEnterEvent(SceneObject* obj) {
+	// server/zone/objects/region/Region.idl():  		notifyEnter(obj);
+	notifyEnter(obj);
+}
+
+void RegionImplementation::enqueueExitEvent(SceneObject* obj) {
+	// server/zone/objects/region/Region.idl():  		notifyExit(obj);
+	notifyExit(obj);
+}
+
 void RegionImplementation::notifyEnter(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		super.notifyEnter(object);
 	ActiveAreaImplementation::notifyEnter(object);
-	// server/zone/objects/region/Region.idl():  		cityRegion.
+	// server/zone/objects/region/Region.idl():  		synchronized 
 	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;
-	// server/zone/objects/region/Region.idl():  		cityRegion.notifyEnter(object);
+	// server/zone/objects/region/Region.idl():  		}
+{
+	Locker _locker(cityRegion);
+	// server/zone/objects/region/Region.idl():  			cityRegion.notifyEnter(object);
 	cityRegion->notifyEnter(object);
+}
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		super.notifyExit(object);
 	ActiveAreaImplementation::notifyExit(object);
-	// server/zone/objects/region/Region.idl():  		cityRegion.
+	// server/zone/objects/region/Region.idl():  		synchronized 
 	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;
-	// server/zone/objects/region/Region.idl():  		cityRegion.notifyExit(object);
+	// server/zone/objects/region/Region.idl():  		}
+{
+	Locker _locker(cityRegion);
+	// server/zone/objects/region/Region.idl():  			cityRegion.notifyExit(object);
 	cityRegion->notifyExit(object);
+}
 }
 
 void RegionImplementation::addBazaar(BazaarTerminal* ter) {
@@ -394,6 +440,12 @@ void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
+	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
+		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
+	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
+		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
 		break;
@@ -427,6 +479,14 @@ CityRegion* RegionAdapter::getCityRegion() {
 
 void RegionAdapter::notifyLoadFromDatabase() {
 	(static_cast<Region*>(stub))->notifyLoadFromDatabase();
+}
+
+void RegionAdapter::enqueueEnterEvent(SceneObject* obj) {
+	(static_cast<Region*>(stub))->enqueueEnterEvent(obj);
+}
+
+void RegionAdapter::enqueueExitEvent(SceneObject* obj) {
+	(static_cast<Region*>(stub))->enqueueExitEvent(obj);
 }
 
 void RegionAdapter::notifyEnter(SceneObject* object) {

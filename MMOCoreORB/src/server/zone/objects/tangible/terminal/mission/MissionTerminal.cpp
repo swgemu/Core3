@@ -16,7 +16,7 @@
  *	MissionTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__CREATUREOBJECT_,RPC_ADDSLICER__CREATUREOBJECT_,RPC_REMOVESLICER__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__CREATUREOBJECT_,RPC_ADDSLICER__CREATUREOBJECT_,RPC_REMOVESLICER__CREATUREOBJECT_};
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
@@ -54,6 +54,21 @@ void MissionTerminal::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
+}
+
+void MissionTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
+		method.addObjectParameter(menuResponse);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 int MissionTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -508,6 +523,9 @@ void MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
@@ -557,6 +575,10 @@ void MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 void MissionTerminalAdapter::initializeTransientMembers() {
 	(static_cast<MissionTerminal*>(stub))->initializeTransientMembers();
+}
+
+void MissionTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	(static_cast<MissionTerminal*>(stub))->fillObjectMenuResponse(menuResponse, player);
 }
 
 int MissionTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
