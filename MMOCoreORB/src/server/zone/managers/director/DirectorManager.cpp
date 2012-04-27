@@ -121,6 +121,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "readScreenPlayData", readScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
+	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -235,6 +236,13 @@ int DirectorManager::createLoot(lua_State* L) {
 	lootManager->createLoot(container, lootGroup, level);
 
 	return 0;
+}
+
+int DirectorManager::getTimestamp(lua_State* L) {
+	Time now;
+	lua_pushinteger(L, now.getTime());
+
+	return 1;
 }
 
 int DirectorManager::readScreenPlayData(lua_State* L) {
