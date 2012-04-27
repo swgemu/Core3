@@ -10,7 +10,7 @@ serene_floater = Creature:new {
 	damageMax = 110,
 	baseXp = 870,
 	baseHAM = 1280,
-	baseHAMmax = 1000,
+	baseHAMmax = 1300,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -24,7 +24,7 @@ serene_floater = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bomarr_spider_monk_droid.iff"},
