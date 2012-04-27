@@ -46,7 +46,7 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	}
 
-	else if (selectedID == 72) {
+	if (selectedID == 72) {
 
 		CityRegion* city = player->getCityRegion();
 
@@ -57,8 +57,8 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		_this->destroyObjectFromWorld(true);
 		_this->destroyObjectFromDatabase(false);
 
+		return 0;
 	}
 
-	else
-		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
