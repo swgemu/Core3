@@ -779,32 +779,20 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
-	// Next is Jedi Force Armor and Shield reduction.
+	// Next is Jedi Force Armor and Shield (TODO: needs fixing) reduction.
 
 	int forceArmor = defender->getSkillMod("force_armor");
 
 	if (forceArmor > 0 && (weapon->getAttackType() != WeaponObject::FORCEATTACK) && defender->isPlayerCreature()){
-		// Client Effect upon hit (needed)
-		defender->playEffect("clienteffect/pl_force_armor_hit.cef", "");
-
 		float originalDamage = damage;
 		damage *= (1.f - (forceArmor / 100.f));
 
-		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+		int damageSent = originalDamage - damage;
 
-		if (playerObject != NULL) {
-			int fP = playerObject->getForcePower();
-			int forceCost = (originalDamage - damage) * 0.3;
-
-			if (fP <= forceCost){ // Remove buff if not enough force.
-				defender->notifyObservers(ObserverEventType::NOFORCEPOWER, defender, damage);
-			}
-
-			else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-		}
+		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
 	}
 
-	int forceShield = defender->getSkillMod("force_shield");
+	/* int forceShield = defender->getSkillMod("force_shield");
 
 	if (forceShield > 0 && (weapon->getAttackType() == WeaponObject::FORCEATTACK) && defender->isPlayerCreature()){
 		// Client Effect upon hit (needed)
@@ -825,7 +813,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 			else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 		}
-	}
+	}*/
 
 
 	// now apply the rest of the damage to the regular armor

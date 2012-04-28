@@ -24,9 +24,9 @@ int SingleUseBuffObserverImplementation::notifyObserverEvent(unsigned int eventT
 	unsigned int commandCRC = buff->getCommandCRC();
 	QueueCommand* queueCommand = objectController->getQueueCommand(commandCRC);
 
-	queueCommand->dropBuff(arg1, (int)arg2);
+	SceneObject* creature = cast<SceneObject*>( observable);
 
-	player->removeBuff(buff);
+	queueCommand->handleBuff(creature, arg1, (int)arg2);
 
 	return 0;
 }

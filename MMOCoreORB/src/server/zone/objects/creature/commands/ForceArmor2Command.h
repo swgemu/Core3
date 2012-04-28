@@ -100,7 +100,7 @@ public:
 		int duration = 1800;
 
 		Vector<unsigned int> eventTypes;
-		eventTypes.add(ObserverEventType::NOFORCEPOWER);
+		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc2, duration, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
@@ -112,6 +112,31 @@ public:
 		creature->playEffect("clienteffect/pl_force_armor_self.cef", "");
 
 		return SUCCESS;
+	}
+
+	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
+
+		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>( creature);
+
+		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
+
+		if (playerObject != NULL) { // TODO: Force Rank modifiers.
+
+			// Client Effect upon hit (needed)
+			creo->playEffect("clienteffect/pl_force_armor_hit.cef", "");
+
+			int fP = playerObject->getForcePower();
+			int forceCost = param * 0.3;
+
+			if (fP <= forceCost){ // Remove buff if not enough force.
+				SingleUseBuff* buff = cast<SingleUseBuff*>( creo->getBuff(BuffCRC::JEDI_FORCE_ARMOR_2));
+
+				if (buff != NULL)
+					creo->removeBuff(buff);
+			}
+
+			else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		}
 	}
 
 };

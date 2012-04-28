@@ -54,7 +54,7 @@ public:
 	const static int WOUNDHEALINGPERFORMED = 42; // ManagedObject arg1 = player, long arg2 = wound heal amount
 	const static int XPAWARDED = 43; // ManagedObject arg1 = player, long arg2 = xp amount
 	const static int SPICEDOWNERACTIVATED = 44; // ManagedObject arg1 = player, long arg2 = 0
-	const static int NOFORCEPOWER = 45; // ManagedObject arg1 = player, long arg2 = force power required
+	const static int FORCEBUFFHIT = 45; // ManagedObject arg1 = player, long arg2 = damage amount absorbed.
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

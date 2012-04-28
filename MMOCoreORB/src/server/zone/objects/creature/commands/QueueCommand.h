@@ -326,7 +326,7 @@ public:
 		return false;
 	}
 
-	virtual void dropBuff(ManagedObject* object, int64 param) {
+	virtual void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
 	}
 };
 

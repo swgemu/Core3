@@ -100,7 +100,7 @@ public:
 		int duration = 900;
 
 		Vector<unsigned int> eventTypes;
-		eventTypes.add(ObserverEventType::NOFORCEPOWER);
+		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
