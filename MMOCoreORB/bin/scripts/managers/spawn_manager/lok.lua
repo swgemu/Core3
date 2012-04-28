@@ -86,6 +86,7 @@ lok_static_spawns = {
 	{"imperial_recruiter",0,-1843.79,0,-3069,123,0},
 	{"informant_npc_lvl_3",0,369,0,5087,90,0},
 	{"informant_npc_lvl_3",0,540,0,5072,180,0},
+	{"junk_dealer",0,367,12,5202.8,-178,0},
 	{"kimogila",1800,-118,11.9,2653.5,-116,0},
 	{"kimogila",1800,-137.4,11.9,2656.9,-97,0},
 	{"reclusive_gurk_king",1800,-3763.4,62.5,-3477.2,160,0},

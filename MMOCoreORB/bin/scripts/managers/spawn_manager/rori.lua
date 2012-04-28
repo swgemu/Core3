@@ -117,6 +117,8 @@ rori_regions = {
 }
 
 rori_static_spawns = {
+	{"junk_dealer",0,-5428.2,80,-2244.2,10,0},
+	{"junk_dealer",0,5353.8,80,5665.9,178,0},
 	{"trainer_1hsword",0,-5219,80.6094,-2164,0,0},
 	{"trainer_2hsword",0,-5214,80.4173,-2167,0,0},
 	{"trainer_architect",0,11,1.133,-14.5,0,4635413},

@@ -93,6 +93,8 @@ talus_regions = {
 --Syntax: {creature template name, respawn in seconds, posX, posZ, posY, heading (orientation in degrees from -180 to 180), cellID}
 
 talus_static_spawns = {
+	{"junk_dealer",0,4541.9,2,5278.5,-64,0},
+	{"junk_dealer",0,183.6,6,-3065.1,87,0},
 	{"trainer_1hsword",1,548.007,6,-2865.16,171,0},
 	{"trainer_1hsword",1,5,0,-8,28,4265477},
 	{"trainer_2hsword",1,552,6,-2865,174,0},
