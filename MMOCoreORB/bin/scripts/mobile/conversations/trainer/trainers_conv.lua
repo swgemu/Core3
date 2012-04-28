@@ -133,7 +133,7 @@ function createTrainerConversationTemplate(trainer, masterskill, templatename)
 
 	trainer_convoscreennotenoughcredits = ConvoScreen:new {
 		id = "convoscreennotenoughcredits",
-		leftDialog = "@skill_teacher:prose_nfs", -- You lack the %DI credits required for training in %TO.
+		leftDialog = "@skill_teacher:prose_nsf", -- You lack the %DI credits required for training in %TO.
 		stopConversation = "false",
 		options = { 
 			{"@skill_teacher:back", "convoscreenstart" }
