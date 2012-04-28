@@ -72,9 +72,11 @@ namespace server {
 		bool deleteConnection(ServiceClient* session) {
 			Reference<LoginClient*> client = getClient(session);
 
-			client->disconnect();
+			if (client != NULL) {
+				client->disconnect();
 
-			clients.remove(client);
+				clients.remove(client);
+			}
 
 			return false;
 		}

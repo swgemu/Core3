@@ -359,6 +359,8 @@ bool ResourceSpawner::writeAllSpawnsToScript() {
 		error("Error dumping resources");
 		return false;
 	}
+
+	return true;
 }
 
 void ResourceSpawner::shiftResources() {

@@ -92,6 +92,7 @@ int FactoryCrateImplementation::handleObjectMenuSelect(CreatureObject* player, b
 
 	default:
 		TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+		break;
 	}
 
 	return 0;
