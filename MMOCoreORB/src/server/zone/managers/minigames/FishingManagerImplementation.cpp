@@ -552,7 +552,7 @@ uint32 FishingManagerImplementation::createWindow(CreatureObject* player, uint32
 			+ action.get( getNextAction(player) );
 
 	// create new window
-	ManagedReference<SuiListBox*> box = new SuiListBox(player, 90, 0);
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::FISHING, 0);
 
 	box->setPromptTitle("@fishing:sui_title");
 	box->setPromptText(prompt);

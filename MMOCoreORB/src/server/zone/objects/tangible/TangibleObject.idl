@@ -259,7 +259,7 @@ class TangibleObject extends SceneObject {
 	/**
 	 * Decreases use count, when reaches 0 destroys itself
 	 */
-	public native void decreaseUseCount(CreatureObject player = null);
+	public native void decreaseUseCount();
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -390,6 +390,13 @@ class TangibleObject extends SceneObject {
 		return useCount;
 	}
 	
+	public abstract int getDisplayedUseCount() {
+		if(useCount == 1)
+			return 0;
+		
+		return useCount;
+	}
+	
 	public int getMaxCondition() {
 		return maxCondition;
 	}
@@ -402,6 +409,10 @@ class TangibleObject extends SceneObject {
 	
 	public int getVolume() {
 		return volume;
+	}
+	
+	public void setComplexity(float value) {
+		complexity = value;
 	}
 	
 	public float getComplexity() {

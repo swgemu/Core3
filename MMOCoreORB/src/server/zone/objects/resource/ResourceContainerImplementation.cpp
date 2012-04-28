@@ -125,7 +125,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 	ResourceContainerObjectDeltaMessage3* rcnod3 =
 			new ResourceContainerObjectDeltaMessage3(_this);
 
-	rcnod3->setQuantity(stackQuantity);
+	rcnod3->updateQuantity();
 	rcnod3->close();
 
 	broadcastMessage(rcnod3, true);

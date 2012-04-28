@@ -46,6 +46,10 @@ object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	templateType = FIREWORK,
 	objectMenuComponent = {"cpp", "FireworkShowMenuComponent"},
 	fireworkObject = "object/static/firework/show_launcher.iff",
+	
+	childObjects = {
+		{templateFile = "object/tangible/container/base/base_container_volume.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1}
+	},
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
@@ -53,7 +57,7 @@ object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
 	experimentalMin = {0, 0, 1000, 2},
-	experimentalMax = {0, 0, 1000, 10},
+	experimentalMax = {0, 0, 1000, 20},
 	experimentalPrecision = {0, 0, 0, 0},
 }
 

@@ -222,7 +222,7 @@ public:
 
 	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
 
-	void decreaseUseCount(CreatureObject* player = NULL);
+	void decreaseUseCount();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
@@ -266,6 +266,8 @@ public:
 
 	int getUseCount();
 
+	int getDisplayedUseCount();
+
 	int getMaxCondition();
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
@@ -273,6 +275,8 @@ public:
 	int getConditionDamage();
 
 	int getVolume();
+
+	void setComplexity(float value);
 
 	float getComplexity();
 
@@ -451,7 +455,7 @@ public:
 
 	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
 
-	void decreaseUseCount(CreatureObject* player = NULL);
+	void decreaseUseCount();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
@@ -495,6 +499,8 @@ public:
 
 	virtual int getUseCount();
 
+	virtual int getDisplayedUseCount();
+
 	int getMaxCondition();
 
 	void setMaxCondition(int maxCond, bool notifyClient = true);
@@ -502,6 +508,8 @@ public:
 	int getConditionDamage();
 
 	int getVolume();
+
+	void setComplexity(float value);
 
 	float getComplexity();
 
@@ -648,7 +656,7 @@ public:
 
 	void setCountdownTimer(unsigned int newCount, bool notifyClient);
 
-	void decreaseUseCount(CreatureObject* player);
+	void decreaseUseCount();
 
 	void clearCombatState(bool clearDefenders);
 
@@ -686,6 +694,8 @@ public:
 
 	int getUseCount();
 
+	int getDisplayedUseCount();
+
 	int getMaxCondition();
 
 	void setMaxCondition(int maxCond, bool notifyClient);
@@ -693,6 +703,8 @@ public:
 	int getConditionDamage();
 
 	int getVolume();
+
+	void setComplexity(float value);
 
 	float getComplexity();
 

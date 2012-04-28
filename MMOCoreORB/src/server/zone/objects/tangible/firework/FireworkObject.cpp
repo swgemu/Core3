@@ -20,7 +20,7 @@
  *	FireworkObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_LAUNCH__CREATUREOBJECT_INT_,RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_,RPC_SETDELAY__INT_,RPC_GETDELAY__,RPC_ISFIREWORKOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_LAUNCH__CREATUREOBJECT_INT_,RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_,RPC_GETDISPLAYEDUSECOUNT__,RPC_SETDELAY__INT_,RPC_GETDELAY__,RPC_ISFIREWORKOBJECT__};
 
 FireworkObject::FireworkObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FireworkObjectImplementation* _implementation = new FireworkObjectImplementation();
@@ -60,6 +60,15 @@ void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
+void FireworkObject::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->updateCraftingValues(values, firstUpdate);
+}
+
 void FireworkObject::launch(CreatureObject* player, int removeTime) {
 	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -88,6 +97,19 @@ void FireworkObject::completeLaunch(CreatureObject* player, int removeDelay) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->completeLaunch(player, removeDelay);
+}
+
+int FireworkObject::getDisplayedUseCount() {
+	FireworkObjectImplementation* _implementation = static_cast<FireworkObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDISPLAYEDUSECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDisplayedUseCount();
 }
 
 void FireworkObject::setDelay(int d) {
@@ -245,6 +267,16 @@ bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "FireworkObject.isShow") {
+		TypeInfo<bool >::parseFromBinaryStream(&isShow, stream);
+		return true;
+	}
+
+	if (_name == "FireworkObject.capacity") {
+		TypeInfo<int >::parseFromBinaryStream(&capacity, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -278,8 +310,24 @@ int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "FireworkObject.isShow";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&isShow, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 2;
+	_name = "FireworkObject.capacity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&capacity, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 4;
 }
 
 FireworkObjectImplementation::FireworkObjectImplementation() {
@@ -290,6 +338,8 @@ FireworkObjectImplementation::FireworkObjectImplementation() {
 	fireworkObject = "object/static/firework/fx_01.iff";
 	// server/zone/objects/tangible/firework/FireworkObject.idl():  		delay = 0;
 	delay = 0;
+	// server/zone/objects/tangible/firework/FireworkObject.idl():  		isShow = false;
+	isShow = false;
 }
 
 void FireworkObjectImplementation::initializeTransientMembers() {
@@ -297,25 +347,6 @@ void FireworkObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/firework/FireworkObject.idl():  		Logger.setLoggingName("FireworkObject");
 	Logger::setLoggingName("FireworkObject");
-}
-
-void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  		super.loadTemplateData(templateData);
-	TangibleObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  		FireworkObjectTemplate 
-	if (!templateData->isFireworkObjectTemplate()){
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  			error("critical error");
-	error("critical error");
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  			return;
-	return;
-}
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  		FireworkObjectTemplate templ = (FireworkObjectTemplate) templateData;
-	FireworkObjectTemplate* templ = (FireworkObjectTemplate*) templateData;
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject 
-	if (templ == NULL)	// server/zone/objects/tangible/firework/FireworkObject.idl():  			return;
-	return;
-	// server/zone/objects/tangible/firework/FireworkObject.idl():  		fireworkObject = templ.getFireworkObject();
-	fireworkObject = templ->getFireworkObject();
 }
 
 void FireworkObjectImplementation::setDelay(int d) {
@@ -357,6 +388,9 @@ void FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_:
 		completeLaunch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		break;
+	case RPC_GETDISPLAYEDUSECOUNT__:
+		resp->insertSignedInt(getDisplayedUseCount());
+		break;
 	case RPC_SETDELAY__INT_:
 		setDelay(inv->getSignedIntParameter());
 		break;
@@ -381,6 +415,10 @@ void FireworkObjectAdapter::launch(CreatureObject* player, int removeTime) {
 
 void FireworkObjectAdapter::completeLaunch(CreatureObject* player, int removeDelay) {
 	(static_cast<FireworkObject*>(stub))->completeLaunch(player, removeDelay);
+}
+
+int FireworkObjectAdapter::getDisplayedUseCount() {
+	return (static_cast<FireworkObject*>(stub))->getDisplayedUseCount();
 }
 
 void FireworkObjectAdapter::setDelay(int d) {

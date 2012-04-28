@@ -103,43 +103,47 @@ TangibleObject* CraftingToolImplementation::getPrototype() {
 
 int CraftingToolImplementation::handleObjectMenuSelect(
 		CreatureObject* playerCreature, byte selectedID) {
-	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
-	if (selectedID == 20) { // use object
+	if(isASubChildOf(playerCreature)) {
 
-	}
+		PlayerObject* playerObject = playerCreature->getPlayerObject();
 
-	if (selectedID == 132) { // use object
+		if (selectedID == 20) { // use object
 
-		ManagedReference<TangibleObject *> prototype = getPrototype();
-		ManagedReference<SceneObject*> inventory =
-				playerCreature->getSlottedObject("inventory");
+		}
 
-		if (prototype == NULL) {
+		if (selectedID == 132) { // use object
 
-			while (getContainerObjectsSize() > 0) {
-				//removeObject(getContainerObject(0));
-				getContainerObject(0)->destroyObjectFromWorld(true);
+			ManagedReference<TangibleObject *> prototype = getPrototype();
+			ManagedReference<SceneObject*> inventory =
+					playerCreature->getSlottedObject("inventory");
+
+			if (prototype == NULL) {
+
+				while (getContainerObjectsSize() > 0) {
+					//removeObject(getContainerObject(0));
+					getContainerObject(0)->destroyObjectFromWorld(true);
+				}
+
+				playerCreature->sendSystemMessage(
+						"Tool does not have a valid prototype, resetting tool.  Contact Kyle if you see this message");
+				status = "@crafting:tool_status_ready";
+				return 1;
 			}
 
-			playerCreature->sendSystemMessage(
-					"Tool does not have a valid prototype, resetting tool.  Contact Kyle if you see this message");
-			status = "@crafting:tool_status_ready";
-			return 1;
+			if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
+
+				playerCreature->sendSystemMessage("@system_msg:prototype_transferred");
+				//removeObject(prototype);
+
+				inventory->transferObject(prototype, -1, true);
+
+				status = "@crafting:tool_status_ready";
+			} else {
+				playerCreature->sendSystemMessage("@system_msg:prototype_not_transferred");
+			}
+
 		}
-
-		if (inventory != NULL && inventory->getContainerObjectsSize() < 80) {
-
-			playerCreature->sendSystemMessage("@system_msg:prototype_transferred");
-			//removeObject(prototype);
-
-			inventory->transferObject(prototype, -1, true);
-
-			status = "@crafting:tool_status_ready";
-		} else {
-			playerCreature->sendSystemMessage("@system_msg:prototype_not_transferred");
-		}
-
 	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(playerCreature, selectedID);

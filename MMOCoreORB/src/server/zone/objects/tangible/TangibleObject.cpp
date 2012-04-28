@@ -28,7 +28,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETDISPLAYEDUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_SETCOMPLEXITY__FLOAT_,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -299,18 +299,17 @@ void TangibleObject::setCountdownTimer(unsigned int newCount, bool notifyClient)
 		_implementation->setCountdownTimer(newCount, notifyClient);
 }
 
-void TangibleObject::decreaseUseCount(CreatureObject* player) {
+void TangibleObject::decreaseUseCount() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DECREASEUSECOUNT__CREATUREOBJECT_);
-		method.addObjectParameter(player);
+		DistributedMethod method(this, RPC_DECREASEUSECOUNT__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->decreaseUseCount(player);
+		_implementation->decreaseUseCount();
 }
 
 void TangibleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -601,6 +600,19 @@ int TangibleObject::getUseCount() {
 		return _implementation->getUseCount();
 }
 
+int TangibleObject::getDisplayedUseCount() {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDISPLAYEDUSECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDisplayedUseCount();
+}
+
 int TangibleObject::getMaxCondition() {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -653,6 +665,20 @@ int TangibleObject::getVolume() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getVolume();
+}
+
+void TangibleObject::setComplexity(float value) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCOMPLEXITY__FLOAT_);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setComplexity(value);
 }
 
 float TangibleObject::getComplexity() {
@@ -1556,6 +1582,14 @@ int TangibleObjectImplementation::getUseCount() {
 	return useCount;
 }
 
+int TangibleObjectImplementation::getDisplayedUseCount() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return 
+	if (useCount == 1)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return useCount;
+	return useCount;
+}
+
 int TangibleObjectImplementation::getMaxCondition() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return maxCondition;
 	return maxCondition;
@@ -1569,6 +1603,11 @@ int TangibleObjectImplementation::getConditionDamage() {
 int TangibleObjectImplementation::getVolume() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return volume;
 	return volume;
+}
+
+void TangibleObjectImplementation::setComplexity(float value) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		complexity = value;
+	complexity = value;
 }
 
 float TangibleObjectImplementation::getComplexity() {
@@ -1807,8 +1846,8 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETCOUNTDOWNTIMER__INT_BOOL_:
 		setCountdownTimer(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_DECREASEUSECOUNT__CREATUREOBJECT_:
-		decreaseUseCount(static_cast<CreatureObject*>(inv->getObjectParameter()));
+	case RPC_DECREASEUSECOUNT__:
+		decreaseUseCount();
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
 		clearCombatState(inv->getBooleanParameter());
@@ -1864,6 +1903,9 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
+	case RPC_GETDISPLAYEDUSECOUNT__:
+		resp->insertSignedInt(getDisplayedUseCount());
+		break;
 	case RPC_GETMAXCONDITION__:
 		resp->insertSignedInt(getMaxCondition());
 		break;
@@ -1875,6 +1917,9 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_GETVOLUME__:
 		resp->insertSignedInt(getVolume());
+		break;
+	case RPC_SETCOMPLEXITY__FLOAT_:
+		setComplexity(inv->getFloatParameter());
 		break;
 	case RPC_GETCOMPLEXITY__:
 		resp->insertFloat(getComplexity());
@@ -2037,8 +2082,8 @@ void TangibleObjectAdapter::setCountdownTimer(unsigned int newCount, bool notify
 	(static_cast<TangibleObject*>(stub))->setCountdownTimer(newCount, notifyClient);
 }
 
-void TangibleObjectAdapter::decreaseUseCount(CreatureObject* player) {
-	(static_cast<TangibleObject*>(stub))->decreaseUseCount(player);
+void TangibleObjectAdapter::decreaseUseCount() {
+	(static_cast<TangibleObject*>(stub))->decreaseUseCount();
 }
 
 void TangibleObjectAdapter::clearCombatState(bool clearDefenders) {
@@ -2113,6 +2158,10 @@ int TangibleObjectAdapter::getUseCount() {
 	return (static_cast<TangibleObject*>(stub))->getUseCount();
 }
 
+int TangibleObjectAdapter::getDisplayedUseCount() {
+	return (static_cast<TangibleObject*>(stub))->getDisplayedUseCount();
+}
+
 int TangibleObjectAdapter::getMaxCondition() {
 	return (static_cast<TangibleObject*>(stub))->getMaxCondition();
 }
@@ -2127,6 +2176,10 @@ int TangibleObjectAdapter::getConditionDamage() {
 
 int TangibleObjectAdapter::getVolume() {
 	return (static_cast<TangibleObject*>(stub))->getVolume();
+}
+
+void TangibleObjectAdapter::setComplexity(float value) {
+	(static_cast<TangibleObject*>(stub))->setComplexity(value);
 }
 
 float TangibleObjectAdapter::getComplexity() {

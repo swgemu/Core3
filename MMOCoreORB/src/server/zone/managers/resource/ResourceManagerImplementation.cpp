@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "resourcespawner/SampleTask.h"
 #include "resourcespawner/SampleResultsTask.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
-#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void ResourceManagerImplementation::initialize() {
@@ -352,10 +352,10 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			uint32 consumedUnits = (uint64) power / modifier;
 			rcno->setQuantity(quantity - consumedUnits);
 
-			TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(rcno);
-			tanod3->setQuantity(rcno->getQuantity());
-			tanod3->close();
-			player->sendMessage(tanod3);
+			ResourceContainerObjectDeltaMessage3* drcno3 = new ResourceContainerObjectDeltaMessage3(rcno);
+			drcno3->updateQuantity();
+			drcno3->close();
+			player->sendMessage(drcno3);
 			return;
 		} else {
 			rcno->destroyObjectFromWorld(true);

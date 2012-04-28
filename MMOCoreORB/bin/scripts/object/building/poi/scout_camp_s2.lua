@@ -53,7 +53,7 @@ object_building_poi_scout_camp_s2 = object_building_poi_shared_scout_camp_s2:new
 	aggroMod = 20,
 	duration = 3600,
 	radius = 18,
-	experience = 920,
+	experience = 840,
 	skillRequired = 40,
 
 	childObjects = {

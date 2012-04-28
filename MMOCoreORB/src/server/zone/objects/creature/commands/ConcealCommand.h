@@ -165,7 +165,7 @@ public:
 
 		targetPlayer->addBuff(buff);
 
-		usableKit->decreaseUseCount(creature);
+		usableKit->decreaseUseCount();
 
 		return SUCCESS;
 	}

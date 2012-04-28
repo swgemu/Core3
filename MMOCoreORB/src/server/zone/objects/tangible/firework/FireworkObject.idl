@@ -59,12 +59,17 @@ class FireworkObject extends TangibleObject {
 	protected string fireworkObject;
 	protected int delay;
 	
+	protected boolean isShow;
+	protected int capacity;
+	
 	public FireworkObject() {
 		Logger.setLoggingName("FireworkObject");
 
 		fireworkObject = "object/static/firework/fx_01.iff";
 		
 		delay = 0;
+
+		isShow = false;
 	}
 	
 	public void initializeTransientMembers() {
@@ -80,26 +85,22 @@ class FireworkObject extends TangibleObject {
 	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
 	 */
 	@local
-	public void loadTemplateData(SharedObjectTemplate templateData) {
-		super.loadTemplateData(templateData);
-		
-		if (!templateData.isFireworkObjectTemplate()) {
-			error("critical error");
-			return;
-		}
-		
-		FireworkObjectTemplate templ = (FireworkObjectTemplate) templateData;
-		
-		if (templ == null)
-			return;
-		
-		fireworkObject = templ.getFireworkObject();
-	}
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	public native void launch(CreatureObject player, int removeTime = 30);
 	 
 	public native void completeLaunch(CreatureObject player, int removeDelay);
 
+	/*public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
+
+	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient);
+*/
+	
+	public native int getDisplayedUseCount();
+	
 	public void setDelay(int d) {
 		delay = d;
 	}

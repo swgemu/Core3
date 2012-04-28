@@ -14,7 +14,52 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "system/util/VectorMap.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/Zone.h"
+
+
+void FireworkObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	TangibleObjectImplementation::loadTemplateData(templateData);
+
+	if (!templateData->isFireworkObjectTemplate()) {
+		error("critical error");
+		return;
+	}
+
+	FireworkObjectTemplate* templ = cast<FireworkObjectTemplate*>(templateData);
+
+	if (templ == NULL)
+		return;
+
+	fireworkObject = templ->getFireworkObject();
+
+	if(templ->isShow()) {
+		isShow = true;
+	}
+}
+
+void FireworkObjectImplementation::updateCraftingValues(CraftingValues* values,
+		bool firstUpdate) {
+
+	if (values->hasProperty("charges")) {
+		if(isShow) {
+			capacity = values->getCurrentValue("charges");
+		} else {
+			setUseCount(values->getCurrentValue("charges"));
+		}
+	}
+}
+
+int FireworkObjectImplementation::getDisplayedUseCount() {
+
+	ManagedReference<SceneObject*> fireworkHopper = getContainerObject(0);
+
+	if(fireworkHopper == NULL) {
+		return 0;
+	}
+
+	return fireworkHopper->getContainerObjectsSize();
+}
 
 void FireworkObjectImplementation::launch(CreatureObject* player, int removeDelay) {
 	if (player == NULL)

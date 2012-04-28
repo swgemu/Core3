@@ -173,7 +173,7 @@ public:
 			creature->broadcastMessage(action, true);
 			creature->addCooldown("throwtrap", 1500);
 
-			trap->decreaseUseCount(creature);
+			trap->decreaseUseCount();
 
 			StringIdChatParameter message;
 			ManagedReference<Buff*> buff = NULL;

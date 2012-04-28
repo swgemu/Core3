@@ -12,6 +12,7 @@
 
 class FireworkObjectTemplate : public SharedTangibleObjectTemplate {
 	String fireworkObject;
+	bool show;
 
 public:
 	FireworkObjectTemplate() {
@@ -26,10 +27,15 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		fireworkObject = templateData->getStringField("fireworkObject");
-    }
+		show = templateData->getIntField("showPackage");
+	}
 
     inline String getFireworkObject() const {
        return fireworkObject;
+    }
+
+    inline bool isShow() {
+    	return show;
     }
 
 	bool isFireworkObjectTemplate() {

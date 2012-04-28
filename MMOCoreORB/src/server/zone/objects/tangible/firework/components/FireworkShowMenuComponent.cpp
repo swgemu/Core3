@@ -19,11 +19,11 @@ void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if (!sceneObject->isFireworkObject())
 		return;
 
-	//menuResponse->addRadialMenuItem(68, 3, "@fireworks:mnu_show_data");
-	//menuResponse->addRadialMenuItemToRadialID(69, 68, 3, "@fireworks:mnu_add_event");
-	//menuResponse->addRadialMenuItemToRadialID(70, 68, 3, "@fireworks:mnu_remove_event");
-	//menuResponse->addRadialMenuItemToRadialID(71, 68, 3, "@fireworks:mnu_modify_event");
-	//menuResponse->addRadialMenuItemToRadialID(72, 68, 3, "@fireworks:mnu_reorder_show");
+	menuResponse->addRadialMenuItem(68, 3, "@firework:mnu_show_data");
+	menuResponse->addRadialMenuItemToRadialID(68, 69, 3, "@firework:mnu_add_event");
+	menuResponse->addRadialMenuItemToRadialID(68, 70, 3, "@firework:mnu_remove_event");
+	menuResponse->addRadialMenuItemToRadialID(68, 71, 3, "@firework:mnu_modify_event");
+	menuResponse->addRadialMenuItemToRadialID(68, 72, 3, "@firework:mnu_reorder_show");
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject,
 			menuResponse, player);
@@ -81,8 +81,7 @@ void FireworkShowMenuComponent::startShow(CreatureObject* player, FireworkObject
 }
 
 void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject* firework) {
-
-	/*ManagedReference<SceneObject*> fireworkHopper = getSlottedObject("ingredient_hopper");
+	/*ManagedReference<SceneObject*> fireworkHopper = firework->getContainerObject(0);
 
 	if(fireworkHopper == NULL) {
 		return;

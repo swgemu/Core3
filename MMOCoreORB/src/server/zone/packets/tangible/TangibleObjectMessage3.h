@@ -80,10 +80,7 @@ public:
 
 		insertInt(tano->getOptionsBitmask());
 
-		int count = tano->getUseCount();
-
-		if (count <= 1)
-			count = 0;
+		int count = tano->getDisplayedUseCount();
 
 		insertInt(count); //item count
 

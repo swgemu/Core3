@@ -109,9 +109,13 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	void launch(CreatureObject* player, int removeTime = 30);
 
 	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	int getDisplayedUseCount();
 
 	void setDelay(int d);
 
@@ -151,6 +155,10 @@ protected:
 
 	int delay;
 
+	bool isShow;
+
+	int capacity;
+
 public:
 	FireworkObjectImplementation();
 
@@ -160,9 +168,13 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+
 	void launch(CreatureObject* player, int removeTime = 30);
 
 	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	int getDisplayedUseCount();
 
 	void setDelay(int d);
 
@@ -218,6 +230,8 @@ public:
 	void launch(CreatureObject* player, int removeTime);
 
 	void completeLaunch(CreatureObject* player, int removeDelay);
+
+	int getDisplayedUseCount();
 
 	void setDelay(int d);
 

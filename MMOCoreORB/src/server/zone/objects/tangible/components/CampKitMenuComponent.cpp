@@ -239,7 +239,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		/// Remove Camp
 		TangibleObject* tano = cast<TangibleObject*>(sceneObject);
 		if(tano != NULL)
-			tano->decreaseUseCount(player);
+			tano->decreaseUseCount();
 
 
 		return 0;

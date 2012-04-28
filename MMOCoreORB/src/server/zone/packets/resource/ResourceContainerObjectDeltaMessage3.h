@@ -49,10 +49,13 @@ which carries forward this exception.
 #include "../DeltaMessage.h"
 
 class ResourceContainerObjectDeltaMessage3 : public DeltaMessage {
+private:
+	ManagedReference<ResourceContainer*> container;
+
 public:
 	ResourceContainerObjectDeltaMessage3(ResourceContainer* rcno)
 			: DeltaMessage(rcno->getObjectID(), 0x52434E4F, 3) {
-
+		container = rcno;
 	}
 	/*
 	 * Need More Research.
@@ -69,8 +72,8 @@ public:
 	 * }
 	 */
 		
-	void setQuantity(int quantity) {
-		addIntUpdate(0x0B, quantity);
+	void updateQuantity() {
+		addIntUpdate(0x0B, container->getQuantity());
 	}
 	
 };

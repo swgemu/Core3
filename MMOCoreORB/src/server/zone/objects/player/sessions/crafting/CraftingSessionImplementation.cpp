@@ -676,6 +676,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		}
 	}
 
+	prototype->setComplexity(manufactureSchematic->getComplexity());
+
 	// Start DMSCO3 ***********************************************************
 	// Sends the updated values to the crafting screen
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
@@ -706,7 +708,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	// Updates the Complexity and the condition
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(
 			prototype);
-	dtano3->updateComplexity(manufactureSchematic->getComplexity());
+	dtano3->updateComplexity();
 	dtano3->updateMaxCondition();
 	dtano3->close();
 
@@ -841,6 +843,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 			lowestExpSuccess = experimentationResult;
 
 		manufactureSchematic->increaseComplexity();
+		prototype->setComplexity(manufactureSchematic->getComplexity());
 
 		// Do the experimenting - sets new percentages
 		craftingManager->experimentRow(craftingValues, rowEffected,
@@ -890,7 +893,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(
 			prototype);
-	dtano3->updateComplexity(float(manufactureSchematic->getComplexity()));
+	dtano3->updateComplexity();
 	dtano3->close();
 
 	crafter->sendMessage(dtano3);

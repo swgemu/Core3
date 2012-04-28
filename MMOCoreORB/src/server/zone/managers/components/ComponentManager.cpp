@@ -141,7 +141,4 @@ ComponentManager::ComponentManager() {
 
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
-
-
-
 }

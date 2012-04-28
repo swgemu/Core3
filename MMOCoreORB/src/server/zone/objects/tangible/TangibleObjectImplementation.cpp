@@ -358,7 +358,7 @@ void TangibleObjectImplementation::setCountdownTimer(unsigned int newUseCount, b
 		return;
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->setQuantity(useCount);
+	dtano3->updateCountdownTimer();
 	dtano3->close();
 
 	broadcastMessage(dtano3, true);
@@ -379,7 +379,7 @@ void TangibleObjectImplementation::setUseCount(uint32 newUseCount, bool notifyCl
 	}
 }
 
-void TangibleObjectImplementation::decreaseUseCount(CreatureObject* player) {
+void TangibleObjectImplementation::decreaseUseCount() {
 	setUseCount(useCount - 1, true);
 }
 

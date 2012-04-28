@@ -64,8 +64,8 @@ public:
 		addAsciiUpdate(4, app);
 	}
 
-	void updateComplexity(float complexity) {
-		addFloatUpdate(0, complexity);
+	void updateComplexity() {
+		addFloatUpdate(0, tano->getComplexity());
 	}
 
 	void updateName(const UnicodeString& name) {
@@ -82,8 +82,8 @@ public:
 		addUnicodeUpdate(2, name);
 	}
 
-	void updateCountdownTimer(int timer) {
-		addIntUpdate(7, timer);
+	void updateCountdownTimer() {
+		addIntUpdate(7, tano->getDisplayedUseCount());
 	}
 
 	void updateConditionDamage() {
@@ -92,11 +92,6 @@ public:
 
 	void updateMaxCondition() {
 		addIntUpdate(9, tano->getMaxCondition());
-	}
-
-	void setQuantity(int quantity) {
-
-		addIntUpdate(7, quantity);
 	}
 
 	void updateOptionsBitmask() {
