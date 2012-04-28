@@ -1,5 +1,5 @@
-singing_mountain_dan_huntress = Creature:new {
-	objectName = "@mob/creature_names:singing_mtn_clan_huntress",
+singing_mountain_clan_outcast = Creature:new {
+	objectName = "@mob/creature_names:singing_mtn_clan_outcast",
 	socialGroup = "Mtn. Clan",
 	pvpFaction = "Mtn. Clan",
 	faction = "",
@@ -11,7 +11,7 @@ singing_mountain_dan_huntress = Creature:new {
 	baseHAM = 12000,
 	baseHAMmax = 15000,
 	armor = 1,
-	resists = {35,35,75,-1,75,35,35,35,-1},
+	resists = {25,25,75,-1,75,25,25,25,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,12 +21,12 @@ singing_mountain_dan_huntress = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + KILLER + STALKER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_huntress.iff"},
+	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_outcast.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -47,4 +47,4 @@ singing_mountain_dan_huntress = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(singing_mountain_dan_huntress, "singing_mountain_dan_huntress")
+CreatureTemplates:addCreatureTemplate(singing_mountain_clan_outcast, "singing_mountain_clan_outcast")
