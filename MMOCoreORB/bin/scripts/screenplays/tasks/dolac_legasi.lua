@@ -23,6 +23,10 @@ registerScreenPlay("dolac_legasi_screenplay", true)
 --   Initialize screenplay           -
 --------------------------------------
 function dolac_legasi_screenplay:start()
+	if (not isZoneEnabled("dathomir")) then	
+		return
+	end
+	
 	self:spawnActiveAreas()
 	self:spawnMobiles()
 end

@@ -20,6 +20,10 @@ registerScreenPlay("vardias_tyne_screenplay", true)
 --   Initialize screenplay           -
 --------------------------------------
 function vardias_tyne_screenplay:start()
+	if (not isZoneEnabled("tatooine")) then	
+		return
+	end
+	
 	self:spawnActiveAreas()
 	self:spawnMobiles()
 end

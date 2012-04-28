@@ -95,6 +95,14 @@ public:
 		insertInt(0);
 		insertShort(0);
 	}*/
+
+	ClientOpenContainerMessage(uint64 oid, const String& ascii, int test) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(0xDCA57409);
+
+		insertLong(oid);
+		insertAscii(ascii);
+	}
 };
 
 #endif /*CLIENTOPENCONTAINERMESSAGE_H_*/

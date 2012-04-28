@@ -490,6 +490,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		ghost->setRaceID(raceID);
 	}
 
+	/*
 	//Add a ship
 	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1));
 	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
@@ -502,6 +503,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	SceneObject* datapad = playerCreature->getSlottedObject("datapad");
 	datapad->transferObject(shipControlDevice, -1);
+	*/
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(playerCreature->getObjectID());
 	playerCreature->sendMessage(msg);

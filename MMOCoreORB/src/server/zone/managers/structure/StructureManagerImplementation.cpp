@@ -111,6 +111,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			if (object != NULL) {
 				//object->info("loaded player structure into world");
 				++i;
+				printf("\r\tLoading player structures [%d] / [?]\t", i);
 			} else {
 				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
 			}

@@ -111,6 +111,8 @@
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
+AtomicInteger TemplateManager::loadedTemplatesCount;
+
 TemplateManager::TemplateManager() {
 	setLogging(false);
 	setGlobalLogging(true);
@@ -347,6 +349,7 @@ void TemplateManager::loadLuaTemplates() {
 		e.printStackTrace();
 	}
 
+	printf("\n");
 	info("Finished loading object templates", true);
 	info(String::valueOf(ComponentManager::instance()->size() - count) + " ObjectMenuComponents loaded", true);
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
@@ -911,7 +914,15 @@ int TemplateManager::addTemplateCRC(lua_State* L) {
 
 	TemplateManager::instance()->addTemplate(crc, ascii, &obj);
 
-	//System::out << ascii << endl;
+//	uint64 seconds = Logger::getElapsedTime();
+
+	int val = loadedTemplatesCount.increment();
+
+	if (val % 38 == 0)
+		//printf("\r(%llu s) Loaded templates: [%d] / [15998]:", seconds, val);
+		printf("\r\tLoading templates: [%d] / [15998]\t", val);
+
+	//System::out << str;
 
 	return 0;
 }

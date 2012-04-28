@@ -8,6 +8,8 @@
 #include "CreatureTemplateManager.h"
 #include "LairSpawnGroup.h"
 
+AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
+
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
 		setGlobalLogging(true);*/
@@ -63,6 +65,7 @@ void CreatureTemplateManager::loadTemplates() {
 		e.printStackTrace();
 	}
 
+	printf("\n");
 	info("done loading mobile templates", true);
 }
 
@@ -84,6 +87,8 @@ int CreatureTemplateManager::addTemplate(lua_State* L) {
 	newTemp->readObject(&obj);
 
 	CreatureTemplateManager::instance()->hashTable.put(crc, newTemp);
+
+	printf("\r\tLoading mobile templates: [%d] / [?]\t", loadedMobileTemplates.increment());
 
 	return 0;
 }

@@ -7,6 +7,7 @@
 
 #include "RadialManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/ZoneServer.h"
 
@@ -59,19 +60,18 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 	try {
 
-		/*
-		/// Check container permissions to see if player can manipulate this object
-		ManagedReference<SceneObject*> parent = selectedObject->getParent();
-		if(parent != NULL) {
-
-			if(!parent->checkContainerPermission(player, ContainerPermissions::OPEN))
-				return;
-		}
-		*/
-
 		Locker locker(player);
 
 		Locker clocker(selectedObject, player);
+
+		BuildingObject* rootParent = cast<BuildingObject*>(selectedObject->getRootParent());
+
+		if (rootParent != NULL && !rootParent->isAllowedEntry(player)) {
+			return;
+		}
+
+		/*if (!selectedObject->checkContainerPermission(player, ContainerPermissions::USE))
+			return;*/
 
 		selectedObject->info("entering radial call " + String::valueOf(selectID));
 		selectedObject->handleObjectMenuSelect(player, selectID);

@@ -253,6 +253,10 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 
 	SceneObject* object = zoneServer->getObject(objectID);
 
+	++totalObjects;
+
+	printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);
+
 	//Object already exists, exit.
 	if (object != NULL)
 		return NULL;
@@ -294,8 +298,6 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 
 	//object->createChildObjects();
 
-	++totalObjects;
-
 	return object;
 }
 
@@ -333,6 +335,7 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 
 	delete iffStream;
 
+	printf("\n");
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }
 

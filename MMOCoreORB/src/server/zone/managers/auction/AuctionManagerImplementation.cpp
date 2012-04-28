@@ -27,7 +27,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
-
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/ZoneServer.h"
@@ -1047,6 +1047,11 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 		error("null vendor in getData()");
 		return;
 	}
+
+	BuildingObject* rootParent = cast<BuildingObject*>(sceno->getRootParent());
+
+	if (rootParent != NULL && !rootParent->isAllowedEntry(player))
+		return;
 
 	Vendor* vendor = getVendorFromObject(sceno);
 

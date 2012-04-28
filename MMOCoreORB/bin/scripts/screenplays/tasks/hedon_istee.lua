@@ -21,6 +21,10 @@ registerScreenPlay("hedon_istee_screenplay", true)
 --Initialize Screenplay
 ---
 function hedon_istee_screenplay:start()
+	if (not isZoneEnabled("tatooine")) then	
+		return
+	end
+	
 	self:spawnMobiles()
 end
 

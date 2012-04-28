@@ -38,6 +38,7 @@ protected:
 	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
 	HashTable<String, Reference<PatrolPathTemplate*> > patrolPaths;
 	HashTable<String, Reference<MobileOutfitGroup*> > outfits;
+	static AtomicInteger loadedMobileTemplates;
 
 public:
 	CreatureTemplateManager();

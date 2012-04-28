@@ -64,6 +64,7 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 
 public:
 	static Lua* luaTemplatesInstance;
+	static AtomicInteger loadedTemplatesCount;
 
 protected:
 	//this is only to be used when loading client dervs

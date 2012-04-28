@@ -15,8 +15,15 @@ bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObj
 	if (building->isOwnerOf(creature) || building->isOnAdminList(creature))
 		return true;
 
-	if (permission == ContainerPermissions::OPEN && building->isStaticObject())
+	if ((permission == ContainerPermissions::OPEN)  && building->isStaticObject())
 		return true;
+
+	if (building->isBuildingObject()) {
+		BuildingObject* buio = cast<BuildingObject*>(building);
+
+		if (!buio->isAllowedEntry(creature))
+			return false;
+	}
 
 	return ContainerComponent::checkContainerPermission(sceneObject, creature, permission);
 }
