@@ -104,6 +104,10 @@ class VendorCreature extends CreatureObject {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	public boolean isAttackableBy(CreatureObject object) {
+		return false;
+	}
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
