@@ -341,6 +341,9 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	int availableCapacity = (int)(getHopperSizeMax() - getHopperSize());
 	harvestAmount = harvestAmount > availableCapacity ? availableCapacity : harvestAmount;
 
+	if(getHopperSize() + harvestAmount >= getHopperSizeMax())
+		shutdownAfterUpdate = true;
+
 	float currentQuantity = container->getQuantity();
 
 	if (harvestAmount > 0) {
@@ -605,6 +608,8 @@ void InstallationObjectImplementation::setHopperSizeMax(float size){
 
 void InstallationObjectImplementation::updateStructureStatus() {
 	StructureObjectImplementation::updateStructureStatus();
+
+	updateInstallationWork();
 
 	/*float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
 
