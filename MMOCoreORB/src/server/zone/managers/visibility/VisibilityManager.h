@@ -103,7 +103,19 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 */
 	float calculateVisibilityIncrease(CreatureObject* creature, float visibilityIncrease);
 
+	/**
+	 * Decrease visibility for a player. The player is removed from the visibility list
+	 * if visibility goes beneath the listing level.
+	 * @param creature the player to decrease the visibility for.
+	 */
+	void decreaseVisibility(CreatureObject* creature);
+
 public:
+
+	/**
+	 * Constructor.
+	 */
+	VisibilityManager();
 
 	/**
 	 * Login a player and add it to the visibility list if he/she still has visibility.
@@ -125,14 +137,6 @@ public:
 	 *                           32 m of the player
 	 */
 	void increaseVisibility(CreatureObject* creature, float visibilityIncrease);
-
-	/**
-	 * Decrease visibility for a player. The player is removed from the visibility list
-	 * if visibility goes beneath the listing level.
-	 * @param creature the player to decrease the visibility for.
-	 * @param visibilityDecrease the amount of visibility to decrease
-	 */
-	void decreaseVisibility(CreatureObject* creature, float visibilityDecrease);
 
 	/**
 	 * Clear the visibility for a player and remove him/her from the visibility

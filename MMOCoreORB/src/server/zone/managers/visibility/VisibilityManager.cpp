@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "VisibilityManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
 
 void VisibilityManager::addPlayerToBountyList(CreatureObject* creature, int reward) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
@@ -67,13 +68,37 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature, f
 	return visibilityIncrease; //Todo: Calculate correctly.
 }
 
+void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
+	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+
+	if (ghost != NULL) {
+		float visibilityDecrease = ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.f / 3600.f;
+		if (ghost->getVisibility() <= visibilityDecrease) {
+			clearVisibility(creature);
+		} else {
+			Locker locker(ghost);
+			ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
+			locker.release();
+
+			if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
+				removePlayerFromBountyList(creature);
+			}
+		}
+	}
+}
+
+VisibilityManager::VisibilityManager() {
+	Reference<Task*> decayTask = new VisibilityDecayTask();
+	decayTask->schedule(3600 * 1000);
+}
+
 void VisibilityManager::login(CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
-		Locker locker(&visibilityListLock);
+		decreaseVisibility(creature);
 
-		//Todo: calculate visibility decay for the offline time and subtract it from the player.
+		Locker locker(&visibilityListLock);
 
 		if ((ghost->getVisibility() > 0) && (!visibilityList.contains(creature->getObjectID()))) {
 			info("Adding player " + String::valueOf(creature->getObjectID()) + " to visibility list.", true);
@@ -104,28 +129,11 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature, float visib
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
+		decreaseVisibility(creature);
 		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature, visibilityIncrease));
 		locker.release();
 
 		login(creature);
-	}
-}
-
-void VisibilityManager::decreaseVisibility(CreatureObject* creature, float visibilityDecrease) {
-	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
-
-	if (ghost != NULL) {
-		if (ghost->getVisibility() <= visibilityDecrease) {
-			clearVisibility(creature);
-		} else {
-			Locker locker(ghost);
-			ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
-			locker.release();
-
-			if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
-				removePlayerFromBountyList(creature);
-			}
-		}
 	}
 }
 
@@ -148,7 +156,6 @@ void VisibilityManager::performVisiblityDecay() {
 
 	for (int i = 0; i < visibilityList.size(); i++) {
 		ManagedReference<CreatureObject*> creature = visibilityList.get(i);
-		//Todo: add time stamp for last visibility decay.
-		decreaseVisibility(creature, 1);
+		decreaseVisibility(creature);
 	}
 }

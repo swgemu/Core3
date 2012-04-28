@@ -239,6 +239,9 @@ class PlayerObject extends IntangibleObject {
 	
 	protected float visibility;
 	
+	@dereferenced
+	protected Time lastVisibilityUpdateTimestamp;
+	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
 	public static final int ROLEPLAYER = 4;
@@ -300,6 +303,7 @@ class PlayerObject extends IntangibleObject {
 		performanceBuffTarget = 0;
 		
 		visibility = 0;
+		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1267,5 +1271,10 @@ class PlayerObject extends IntangibleObject {
 	
 	public void setVisibility(float value) {
 		visibility = value;
+		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	}
+	
+	@dereferenced
+	@local
+	public native Time getLastVisibilityUpdateTimestamp();
 }

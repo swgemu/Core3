@@ -1580,3 +1580,7 @@ bool PlayerObjectImplementation::isBountyLocked() {
 bool PlayerObjectImplementation::isInBountyLockList(uint64 playerId) {
 	return bountyLockList.contains(playerId);
 }
+
+Time PlayerObjectImplementation::getLastVisibilityUpdateTimestamp() {
+	return lastVisibilityUpdateTimestamp;
+}

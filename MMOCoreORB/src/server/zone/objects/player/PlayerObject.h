@@ -760,6 +760,8 @@ public:
 
 	void setVisibility(float value);
 
+	Time getLastVisibilityUpdateTimestamp();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -927,6 +929,8 @@ protected:
 	bool debugOutput;
 
 	float visibility;
+
+	Time lastVisibilityUpdateTimestamp;
 
 public:
 	static const int LFG = 1;
@@ -1406,6 +1410,8 @@ public:
 	float getVisibility();
 
 	void setVisibility(float value);
+
+	Time getLastVisibilityUpdateTimestamp();
 
 	WeakReference<PlayerObject*> _this;
 
