@@ -179,8 +179,15 @@ SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
 float ZoneImplementation::getHeight(float x, float y) {
 	if (heightMap->isLoaded())
 		return heightMap->getHeight(x, y);
-	else
-		return planetManager->getTerrainManager()->getHeight(x, y);
+
+	if (planetManager != NULL) {
+		TerrainManager* manager = planetManager->getTerrainManager();
+
+		if (manager != NULL)
+			return manager->getHeight(x, y);
+	}
+
+	return 0;
 }
 
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
