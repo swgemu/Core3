@@ -37,7 +37,7 @@ ragtag_lunatic = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 5500000},
-				{group = "loot_kits", chance = 3500000
+				{group = "loot_kits", chance = 3500000},
 				{group = "crystals_poor", chance = 500000},
 				{group = "tailor_components", chance = 500000}
 			},
