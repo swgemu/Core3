@@ -18,7 +18,11 @@
 #include "system/util/Vector.h"
 #include "system/util/VectorMap.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
+#include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.h"
+#include "server/zone/objects/player/sui/callbacks/GamblingSlotSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/GamblingRouletteSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/GamblingSlotPayoutSuiCallback.h"
 #include "server/zone/managers/minigames/GamblingBet.h"
 #include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
@@ -71,6 +75,7 @@ uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, u
 		return 0;
 
 	ManagedReference<GamblingTerminal*> terminal = slotGames.get(player);
+	ZoneServer* server = player->getZoneServer();
 
 	if (terminal == NULL)
 		return 0;
@@ -86,11 +91,14 @@ uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, u
 		quit = false;
 	}
 
-
 	// create new window
-	ManagedReference<SuiSlotMachineBox*> box = new SuiSlotMachineBox(player, 121, payoutBoxID, 3);
+	ManagedReference<SuiSlotMachineBox*> box = new SuiSlotMachineBox(player, SuiWindowType::GAMBLING_SLOT, payoutBoxID, 3);
+
+	box->setUsingObject(terminal);
+
 	box->setPromptTitle("@gambling/game_n:slot_standard");
 	box->setPromptText(prompt);
+
 	box->addMenuItem("Current Bet: " + String::valueOf(amount), 0);
 	box->addMenuItem("Max Bet: " + String::valueOf(terminal->getMaxBet()), 1);
 	box->addMenuItem("Cash Balance: " + String::valueOf(player->getCashCredits()), 2);
@@ -104,10 +112,14 @@ uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, u
 
 	box->setOtherButton(true,"@ui:bet_one");
 	box->setOkButton(true, "@ui:bet_max");
-	player->getPlayerObject()->addSuiBox(box);
-	BaseMessage* test = box->generateMessage();
 
-	player->sendMessage(test);
+	box->setForceCloseDistance(32.f);
+	box->setCallback(new GamblingSlotSuiCallback(server));
+
+
+	player->getPlayerObject()->addSuiBox(box);
+
+	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
 }
@@ -127,11 +139,14 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 			+ "\n\nNOTE: If you leave the table after placing a bet, all of your outstanding bets will be forfeit.";
 
 	// create new window
-	ManagedReference<SuiListBox*> box = new SuiListBox(player, 120, 2);
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::GAMBLING_ROULETTE, 2);
 	box->setPromptTitle("@gambling/game_n:roulette");
 	box->setPromptText(prompt);
 
 	ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
+
+	box->setUsingObject(terminal);
+
 	if (terminal->getBets()->size() != 0) {
 		for (int i=0; i < terminal->getBets()->size(); ++i) {
 			if (terminal->getBets()->get(i)->getPlayer() == player) {
@@ -152,7 +167,15 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 	box->setCancelButton(true, "@ui:leave_game");
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:refresh");
+
+	box->setForceCloseDistance(32.f);
+
+	ZoneServer* server = player->getZoneServer();
+
+	box->setCallback(new GamblingRouletteSuiCallback(server));
+
 	player->getPlayerObject()->addSuiBox(box);
+
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
@@ -165,7 +188,7 @@ uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player)
 	String prompt = "The following is the payout schedule for this slot machine.\n \nLegend:\nXXX: denotes any 3 of the same number\n*X|Y|Z: denotes any combination of the 3 numbers";
 
 	// create new window
-	ManagedReference<SuiListBox*> box = new SuiListBox(player, 122, 1);
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::GAMBLING_SLOT_PAYOUT, 1);
 	box->setPromptTitle("PAYOUT SCHEDULE");
 	box->setPromptText(prompt);
 	box->addMenuItem("*1|2|3 -> base:2 max:6", 0);
@@ -180,6 +203,11 @@ uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player)
 	box->setCancelButton(false, "");
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:ok");
+
+	ZoneServer* server = player->getZoneServer();
+
+	box->setCallback(new GamblingSlotPayoutSuiCallback(server));
+
 	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
@@ -212,26 +240,22 @@ void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool canc
 	if (player == NULL)
 		return;
 
-
-
-	bool ok = (!cancel && !other);
-
 	ManagedReference<GamblingTerminal*> terminal = slotGames.get(player);
 
-	if (ok) {
-		if (terminal->getBets()->isEmpty()) {
-			bet(terminal, player, 3, 0);
-		} else {
-			bet(terminal, player, terminal->getMaxBet() - terminal->getBets()->get(0)->getAmount(), 0);
-		}
+	bool hasBets = !terminal->getBets()->isEmpty();
+
+	if (cancel) {
+		if (hasBets)
+			startGame(player, 1);
+		else
+			leaveTerminal(player, 1);
 	} else if (other) {
 		bet(terminal, player, 1, 0);
-	} else if (cancel) {
-		if (terminal->getBets()->isEmpty()) {
-			leaveTerminal(player, 1);
-		} else {
-			startGame(player, 1);
-		}
+	} else {
+		if (hasBets)
+			bet(terminal, player, terminal->getMaxBet() - terminal->getBets()->get(0)->getAmount(), 0);
+		else
+			bet(terminal, player, 3, 0);
 	}
 }
 
@@ -729,6 +753,7 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 
 				if (terminal->getPlayersWindows()->contains(player)) {
 					terminal->leaveTerminal(player);
+					slotGames.drop(player);
 				}
 
 				break;
@@ -741,6 +766,7 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 
 				if (terminal->getPlayersWindows()->contains(player)) {
 					terminal->leaveTerminal(player);
+					rouletteGames.drop(player);
 				}
 
 				break;

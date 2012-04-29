@@ -172,15 +172,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::FISHING:
 		handleFishingAction(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::GAMBLING_ROULETTE:
-		handleGamblingRoulette(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::GAMBLING_SLOT:
-		handleGamblingSlot(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::GAMBLING_SLOT_PAYOUT:
-		handleGamblingSlotPayout(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::CHARACTER_BUILDER_LIST:
 		handleCharacterBuilderSelectItem(player, suiBox, cancel, args);
 		break;
@@ -428,7 +419,7 @@ void SuiManager::handleSurveyConcentratedMinigame2(CreatureObject* player, SuiBo
 }
 
 
-
+/*
 void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
@@ -463,7 +454,7 @@ void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* s
 	TicketObject* ticket = cast<TicketObject*>( tano);
 	ticket->handleObjectMenuSelect(player, 20);
 }
-
+*/
 void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isBankTransferBox() || cancel != 0)
 		return;
@@ -492,32 +483,6 @@ void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint
 		player->setBankCredits(bank);
 	}
 
-}
-
-void SuiManager::handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	GamblingManager* manager = server->getGamblingManager();
-
-	if (cancel != 0)
-		manager->leaveTerminal(player, 0);
-	else
-		manager->refreshRouletteMenu(player);
-
-	//TODO: This might resend suis.
-}
-void SuiManager::handleGamblingSlot(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (args->size() < 1)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-
-	GamblingManager* manager = server->getGamblingManager();
-	manager->handleSlot(player, (bool) cancel, otherPressed);
-
-	//TODO: This might resend suis.
-}
-
-void SuiManager::handleGamblingSlotPayout(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	player->sendMessage(suiBox->generateCloseMessage());
 }
 
 void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

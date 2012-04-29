@@ -102,6 +102,8 @@ class MissionTerminal extends Terminal {
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	public native string getTerminalName();
 		
 	public boolean isMissionTerminal() {
 		return true;

@@ -14,6 +14,8 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
+
 
 uint64 MapLocationEntry::getObjectID() const {
 	return object->getObjectID();
@@ -77,6 +79,24 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 		if(ptp != NULL) {
 			newName = ptp->getPointName();
 		}
+	} else if(category->getIndex() == MapLocationType::TERMINAL && (object->getPlanetMapSubCategory() != NULL)) {
+		newName = object->getPlanetMapSubCategory()->getName();
+
+		if (newName == "terminal_bank") {
+			newName = "@map_loc_cat_n:terminal_bank";
+		} else if (newName == "terminal_bazaar") {
+			newName = "@map_loc_cat_n:terminal_bazaar";
+		} else if (newName == "terminal_mission") {
+			if (object->isMissionTerminal()) {
+				ManagedReference<MissionTerminal*> terminal = dynamic_cast<MissionTerminal*>(object.get());
+
+				if (terminal != NULL)
+					newName = terminal->getTerminalName();
+			}
+		} else {
+			newName = "@map_loc_cat_n:terminal";
+		}
+
 	} else { // Everything else is just named by the city it's in
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 

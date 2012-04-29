@@ -16,7 +16,7 @@
  *	MissionTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__CREATUREOBJECT_,RPC_ADDSLICER__CREATUREOBJECT_,RPC_REMOVESLICER__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETTERMINALNAME__,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__CREATUREOBJECT_,RPC_ADDSLICER__CREATUREOBJECT_,RPC_REMOVESLICER__CREATUREOBJECT_};
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
@@ -84,6 +84,20 @@ int MissionTerminal::handleObjectMenuSelect(CreatureObject* player, byte selecte
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+String MissionTerminal::getTerminalName() {
+	MissionTerminalImplementation* _implementation = static_cast<MissionTerminalImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTERMINALNAME__);
+
+		method.executeWithAsciiReturn(_return_getTerminalName);
+		return _return_getTerminalName;
+	} else
+		return _implementation->getTerminalName();
 }
 
 bool MissionTerminal::isMissionTerminal() {
@@ -529,6 +543,9 @@ void MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
+	case RPC_GETTERMINALNAME__:
+		resp->insertAscii(getTerminalName());
+		break;
 	case RPC_ISMISSIONTERMINAL__:
 		resp->insertBoolean(isMissionTerminal());
 		break;
@@ -583,6 +600,10 @@ void MissionTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 
 int MissionTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<MissionTerminal*>(stub))->handleObjectMenuSelect(player, selectedID);
+}
+
+String MissionTerminalAdapter::getTerminalName() {
+	return (static_cast<MissionTerminal*>(stub))->getTerminalName();
 }
 
 bool MissionTerminalAdapter::isMissionTerminal() {

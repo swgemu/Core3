@@ -61,3 +61,12 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
+
+String MissionTerminalImplementation::getTerminalName() {
+	String name = "@terminal_name:terminal_mission";
+
+	if (terminalType == "artisan" || terminalType == "entertainer" || terminalType == "bounty" || terminalType == "imperial" || terminalType == "rebel" || terminalType == "scout")
+		name = name + "_" + terminalType;
+
+	return name;
+}

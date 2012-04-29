@@ -88,6 +88,8 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	String getTerminalName();
+
 	bool isMissionTerminal();
 
 	bool isArtisanTerminal();
@@ -122,6 +124,8 @@ protected:
 	MissionTerminal(DummyConstructorParameter* param);
 
 	virtual ~MissionTerminal();
+
+	String _return_getTerminalName;
 
 	friend class MissionTerminalHelper;
 };
@@ -160,6 +164,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	String getTerminalName();
 
 	bool isMissionTerminal();
 
@@ -235,6 +241,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	String getTerminalName();
 
 	bool isMissionTerminal();
 
