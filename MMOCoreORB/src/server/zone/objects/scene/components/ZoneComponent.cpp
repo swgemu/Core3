@@ -389,6 +389,10 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			}
 		}
 
+		rootZone->dropSceneObject(sceneObject);
+
+		locker.release();
+
 		Vector<ManagedReference<ActiveArea*> >* activeAreas =  sceneObject->getActiveAreas();
 
 		while (activeAreas->size() > 0) {
@@ -397,8 +401,6 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 			activeAreas->remove(0);
 		}
-
-		rootZone->dropSceneObject(sceneObject);
 	}
 }
 
