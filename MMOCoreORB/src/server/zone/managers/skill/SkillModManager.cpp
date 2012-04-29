@@ -301,6 +301,9 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	if(!mods.isEmpty()) {
 		match = false;
+	}
+
+	if(match == false) {
 		error(compare.toString());
 
 		if(creature->getPlayerObject() != NULL) {
