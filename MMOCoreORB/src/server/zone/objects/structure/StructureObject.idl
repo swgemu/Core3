@@ -68,7 +68,7 @@ class StructureObject extends TangibleObject {
 	protected StructurePermissionList structurePermissionList;
 	
 	@dereferenced
-	protected Time lastUpdateTimestamp;
+	protected Time lastMaintenanceTime;
 	
 	@dereferenced
 	protected Time maintenanceExpires;

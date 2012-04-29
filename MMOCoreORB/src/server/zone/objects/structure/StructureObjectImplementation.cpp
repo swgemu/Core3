@@ -202,13 +202,12 @@ void StructureObjectImplementation::updateStructureStatus() {
 	 * When correct maintenance/power values are needed.
 	 * Any time the maintenance or power surplus is changed by a hand other than this method.
 	 */
-	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
-
+	float timeDiff = ((float) lastMaintenanceTime.miliDifference()) / 1000.f;
 	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
 
 	if (maintenanceDue > 0) {
 		//Only update last time if we actually progressed to get correct consumption.
-		lastUpdateTimestamp.updateToCurrentTime();
+		lastMaintenanceTime.updateToCurrentTime();
 	}
 
 	//Maintenance is used as decay as well so let it go below 0.

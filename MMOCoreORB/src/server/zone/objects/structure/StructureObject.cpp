@@ -1009,8 +1009,8 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
-	if (_name == "StructureObject.lastUpdateTimestamp") {
-		TypeInfo<Time >::parseFromBinaryStream(&lastUpdateTimestamp, stream);
+	if (_name == "StructureObject.lastMaintenanceTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastMaintenanceTime, stream);
 		return true;
 	}
 
@@ -1084,11 +1084,11 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.lastUpdateTimestamp";
+	_name = "StructureObject.lastMaintenanceTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<Time >::toBinaryStream(&lastUpdateTimestamp, stream);
+	TypeInfo<Time >::toBinaryStream(&lastMaintenanceTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

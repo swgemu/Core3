@@ -292,7 +292,7 @@ protected:
 
 	StructurePermissionList structurePermissionList;
 
-	Time lastUpdateTimestamp;
+	Time lastMaintenanceTime;
 
 	Time maintenanceExpires;
 

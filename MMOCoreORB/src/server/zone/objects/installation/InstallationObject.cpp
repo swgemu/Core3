@@ -688,11 +688,6 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
-	if (_name == "InstallationObject.lastMaintenanceTime") {
-		TypeInfo<Time >::parseFromBinaryStream(&lastMaintenanceTime, stream);
-		return true;
-	}
-
 	if (_name == "InstallationObject.resourceHopper") {
 		TypeInfo<HopperList >::parseFromBinaryStream(&resourceHopper, stream);
 		return true;
@@ -757,14 +752,6 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.lastMaintenanceTime";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<Time >::toBinaryStream(&lastMaintenanceTime, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "InstallationObject.resourceHopper";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -790,7 +777,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 8;
+	return _count + 7;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
