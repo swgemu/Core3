@@ -289,6 +289,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
