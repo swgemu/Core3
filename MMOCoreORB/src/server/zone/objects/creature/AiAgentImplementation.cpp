@@ -400,6 +400,9 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 }
 
 bool AiAgentImplementation::tryRetreat() {
+	return false;
+	//TODO: fix this
+
 	try {
 
 		if(homeLocation.isInRange(_this, 1.5))

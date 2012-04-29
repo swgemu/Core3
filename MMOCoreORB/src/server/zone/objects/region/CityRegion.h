@@ -244,6 +244,8 @@ public:
 
 	int getDecorationCount();
 
+	int getSkillTrainerCount();
+
 	void addMissionTerminal(SceneObject* mt);
 
 	void addDecoration(SceneObject* deco);
@@ -255,6 +257,8 @@ public:
 	void removeDecoration(SceneObject* deco);
 
 	void removeSkillTrainers(SceneObject* trainer);
+
+	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
 
@@ -496,6 +500,8 @@ public:
 
 	int getDecorationCount();
 
+	int getSkillTrainerCount();
+
 	void addMissionTerminal(SceneObject* mt);
 
 	void addDecoration(SceneObject* deco);
@@ -507,6 +513,8 @@ public:
 	void removeDecoration(SceneObject* deco);
 
 	void removeSkillTrainers(SceneObject* trainer);
+
+	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
 
@@ -685,6 +693,8 @@ public:
 
 	int getDecorationCount();
 
+	int getSkillTrainerCount();
+
 	void addMissionTerminal(SceneObject* mt);
 
 	void addDecoration(SceneObject* deco);
@@ -696,6 +706,8 @@ public:
 	void removeDecoration(SceneObject* deco);
 
 	void removeSkillTrainers(SceneObject* trainer);
+
+	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
 
