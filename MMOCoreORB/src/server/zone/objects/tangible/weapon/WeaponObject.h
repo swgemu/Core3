@@ -333,6 +333,10 @@ public:
 
 	void decay(CreatureObject* user, float damage);
 
+	void setDamageSlice(float value);
+
+	void setSpeedSlice(float value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -409,6 +413,10 @@ protected:
 	int bladeColor;
 
 	ManagedReference<PowerupObject* > powerupObject;
+
+	float damageSlice;
+
+	float speedSlice;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
@@ -621,6 +629,10 @@ public:
 
 	void decay(CreatureObject* user, float damage);
 
+	void setDamageSlice(float value);
+
+	void setSpeedSlice(float value);
+
 	WeakReference<WeaponObject*> _this;
 
 	operator const WeaponObject*();
@@ -799,6 +811,10 @@ public:
 	String repairAttempt(int repairChance);
 
 	void decay(CreatureObject* user, float damage);
+
+	void setDamageSlice(float value);
+
+	void setSpeedSlice(float value);
 
 };
 

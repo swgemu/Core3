@@ -297,6 +297,12 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	if (skill == NULL)
 		return false;
 
+	Locker locker(creature);
+
+	//If they already have the skill, then return true.
+	if (!creature->hasSkill(skillName))
+		return true;
+
 	SkillList* skillList = creature->getSkillList();
 
 	for (int i = 0; i < skillList->size(); ++i) {

@@ -354,36 +354,51 @@ int WeaponObjectImplementation::getMaxRangeAccuracy(bool withPup) {
 
 float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 
-	if(powerupObject != NULL && withPup)
-		return attackSpeed -
-				(abs(attackSpeed) *
-				powerupObject->getPowerupStat("attackSpeed")) -
-				getConditionReduction(attackSpeed);
+	float speed = attackSpeed;
 
-	return attackSpeed - getConditionReduction(attackSpeed);
+	if(sliced)
+		speed -= (speedSlice * attackSpeed);
+
+	if(powerupObject != NULL && withPup)
+		return speed -
+				(abs(attackSpeed) *
+				powerupObject->getPowerupStat("attackSpeed")) +
+				getConditionReduction(speed);
+
+	return speed + getConditionReduction(speed);
 }
 
 
 float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 
+	float damage = maxDamage;
+
+	if(sliced)
+		damage += (damageSlice * maxDamage);
+
 	if(powerupObject != NULL && withPup)
-		return maxDamage +
+		return damage +
 				(abs(maxDamage) *
 				powerupObject->getPowerupStat("maxDamage")) -
-				getConditionReduction(maxDamage);
+				getConditionReduction(damage);
 
-	return maxDamage - getConditionReduction(maxDamage);
+	return damage - getConditionReduction(damage);
 }
 
 float WeaponObjectImplementation::getMinDamage(bool withPup) {
 
+	float damage = minDamage;
+
+	if(sliced)
+		damage += (damageSlice * minDamage);
+
 	if(powerupObject != NULL && withPup)
-		return minDamage +
+		return damage +
 				(abs(minDamage) *
 				powerupObject->getPowerupStat("minDamage")) -
-				getConditionReduction(minDamage);
+				getConditionReduction(damage);
 
-	return minDamage - getConditionReduction(minDamage);
+	return damage - getConditionReduction(damage);
 }
 
 float WeaponObjectImplementation::getWoundsRatio(bool withPup) {

@@ -97,6 +97,9 @@ class WeaponObject extends TangibleObject {
 	
 	protected PowerupObject powerupObject;
 	
+	protected float damageSlice;
+	protected float speedSlice;
+	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
 	public static final int NONE = 0;
@@ -159,6 +162,9 @@ class WeaponObject extends TangibleObject {
 		weaponTemplate = null;
 		
 		Logger.setLoggingName("WeaponObject");
+		
+		damageSlice = 0;
+		speedSlice = 0;
 	}
 	
 	@local
@@ -460,5 +466,17 @@ class WeaponObject extends TangibleObject {
 	public native string repairAttempt(int repairChance);
 	
 	public native void decay(CreatureObject user, float damage);
+	
+	public void setDamageSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		damageSlice = 1 + value;
+	}
+
+	public void setSpeedSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		speedSlice = 1 - value;
+	}
 	
 }

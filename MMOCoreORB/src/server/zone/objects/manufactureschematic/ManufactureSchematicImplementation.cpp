@@ -559,7 +559,17 @@ void ManufactureSchematicImplementation::createFactoryBlueprint() {
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 		Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(i);
 
-		if (ingredientSlot == NULL || ingredientSlot->getFactoryIngredient() == NULL) {
+		if(ingredientSlot == NULL) {
+			error("NULL ingredient slot in createFactoryBlueprint: " + getDisplayedName());
+			continue;
+		}
+
+		if(ingredientSlot->isOptional()) {
+
+			if(ingredientSlot->getFactoryIngredient() == NULL)
+				continue;
+
+		} else if (ingredientSlot->getFactoryIngredient() == NULL) {
 			warning("NULL ingredient in createFactoryBlueprint");
 			continue;
 		}

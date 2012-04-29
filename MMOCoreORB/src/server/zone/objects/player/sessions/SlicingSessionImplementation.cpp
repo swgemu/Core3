@@ -488,9 +488,7 @@ void SlicingSessionImplementation::handleSliceDamage(uint8 percent) {
 
 	//TODO: Check for Weapon Powerups and Remove it before the Slice
 
-	weap->setMinDamage((weap->getMinDamage(false) * percent / 100) + weap->getMinDamage(false));
-	weap->setMaxDamage((weap->getMaxDamage(false) * percent / 100) + weap->getMaxDamage(false));
-
+	weap->setDamageSlice(percent / 100.f);
 	weap->setSliced(true);
 
 	StringIdChatParameter params;
@@ -511,11 +509,7 @@ void SlicingSessionImplementation::handleSliceSpeed(uint8 percent) {
 
 	//TODO: Check for Weapon Powerups and Remove it before the Slice
 
-	weap->setAttackSpeed(weap->getAttackSpeed(false) - (weap->getAttackSpeed(false) * percent / 100));
-
-	if (weap->getAttackSpeed(false) < 1)
-		weap->setAttackSpeed(1.0f);
-
+	weap->setSpeedSlice(percent / 100.f);
 	weap->setSliced(true);
 
 	StringIdChatParameter params;

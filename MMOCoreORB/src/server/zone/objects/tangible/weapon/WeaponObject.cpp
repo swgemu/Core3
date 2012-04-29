@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_,RPC_SETDAMAGESLICE__FLOAT_,RPC_SETSPEEDSLICE__FLOAT_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -1056,6 +1056,34 @@ void WeaponObject::decay(CreatureObject* user, float damage) {
 		_implementation->decay(user, damage);
 }
 
+void WeaponObject::setDamageSlice(float value) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDAMAGESLICE__FLOAT_);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDamageSlice(value);
+}
+
+void WeaponObject::setSpeedSlice(float value) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSPEEDSLICE__FLOAT_);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSpeedSlice(value);
+}
+
 DistributedObjectServant* WeaponObject::_getImplementation() {
 
 	_updated = true;
@@ -1276,6 +1304,16 @@ bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "WeaponObject.damageSlice") {
+		TypeInfo<float >::parseFromBinaryStream(&damageSlice, stream);
+		return true;
+	}
+
+	if (_name == "WeaponObject.speedSlice") {
+		TypeInfo<float >::parseFromBinaryStream(&speedSlice, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -1477,8 +1515,24 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "WeaponObject.damageSlice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&damageSlice, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 23;
+	_name = "WeaponObject.speedSlice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&speedSlice, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 25;
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation() {
@@ -1525,6 +1579,10 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	weaponTemplate = NULL;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice = 0;
+	damageSlice = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 0;
+	speedSlice = 0;
 }
 
 Vector<String>* WeaponObjectImplementation::getDamageModifiers() {
@@ -1809,6 +1867,22 @@ PowerupObject* WeaponObjectImplementation::removePowerup() {
 	return NULL;
 }
 
+void WeaponObjectImplementation::setDamageSlice(float value) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice 
+	if (value > 0.5f || value < 0)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return;
+	return;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice = 1 + value;
+	damageSlice = 1 + value;
+}
+
+void WeaponObjectImplementation::setSpeedSlice(float value) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice 
+	if (value > 0.5f || value < 0)	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return;
+	return;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 1 - value;
+	speedSlice = 1 - value;
+}
+
 /*
  *	WeaponObjectAdapter
  */
@@ -2027,6 +2101,12 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_DECAY__CREATUREOBJECT_FLOAT_:
 		decay(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter());
+		break;
+	case RPC_SETDAMAGESLICE__FLOAT_:
+		setDamageSlice(inv->getFloatParameter());
+		break;
+	case RPC_SETSPEEDSLICE__FLOAT_:
+		setSpeedSlice(inv->getFloatParameter());
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -2303,6 +2383,14 @@ String WeaponObjectAdapter::repairAttempt(int repairChance) {
 
 void WeaponObjectAdapter::decay(CreatureObject* user, float damage) {
 	(static_cast<WeaponObject*>(stub))->decay(user, damage);
+}
+
+void WeaponObjectAdapter::setDamageSlice(float value) {
+	(static_cast<WeaponObject*>(stub))->setDamageSlice(value);
+}
+
+void WeaponObjectAdapter::setSpeedSlice(float value) {
+	(static_cast<WeaponObject*>(stub))->setSpeedSlice(value);
 }
 
 /*
