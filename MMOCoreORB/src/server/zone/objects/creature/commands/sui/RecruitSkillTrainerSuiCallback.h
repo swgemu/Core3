@@ -29,6 +29,9 @@ public:
 		if (args->size() < 1)
 			return;
 
+		if (player->getParent() != NULL)
+			return;
+
 		CityRegion* city = player->getCityRegion();
 
 		if (city->getSkillTrainerCount() >= (int) city->getCityRank() * 3){

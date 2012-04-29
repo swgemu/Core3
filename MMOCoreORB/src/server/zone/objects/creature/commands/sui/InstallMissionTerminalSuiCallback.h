@@ -21,12 +21,14 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-
 		if (cancelPressed)
 			return;
 
 		if (args->size() < 1)
 			return;
+
+		if (player->getParent() != NULL)
+					return;
 
 		CityRegion* city = player->getCityRegion();
 
