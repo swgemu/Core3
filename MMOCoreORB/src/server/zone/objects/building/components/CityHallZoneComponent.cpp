@@ -21,6 +21,7 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 			cityRegion->destroyAllStructuresForRank(uint8(i));
 
 		cityRegion->removeAllTerminals();
+		cityRegion->removeAllSkillTrainers();
 
 		if (cityRegion->getCityHall() == sceneObject) {
 			cityRegion->setCityHall(NULL);

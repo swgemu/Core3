@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_image_designer_trainer_02 = object_mobile_shared_dressed_image_designer_trainer_02:new {
-
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_image_designer_trainer_02, "object/mobile/dressed_image_designer_trainer_02.iff")

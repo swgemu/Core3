@@ -375,6 +375,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return cityDecorations.size();
 	}
 	
+	public int getSkillTrainerCount(){
+		return citySkillTrainers.size();
+	}
+	
 	public void addMissionTerminal(SceneObject mt){
 		cityMissionTerminals.put(mt);
 	}
@@ -398,6 +402,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public void removeSkillTrainers(SceneObject trainer){
 		citySkillTrainers.drop(trainer);
 	}
+	
+	public native void removeAllSkillTrainers();
 	
 	public native void removeAllTerminals();
 	

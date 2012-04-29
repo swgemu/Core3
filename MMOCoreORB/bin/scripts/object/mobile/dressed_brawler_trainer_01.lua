@@ -42,7 +42,8 @@
 
 
 object_mobile_dressed_brawler_trainer_01 = object_mobile_shared_dressed_brawler_trainer_01:new {
-	planetMapCategory = "trainer_brawler"
+	planetMapCategory = "trainer_brawler",
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 	
 }
 

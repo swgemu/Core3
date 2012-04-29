@@ -194,9 +194,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		creature->sendSystemMessage(params);
 	}
 
-	if (object->isBuildingObject()) {
-		//StructureObject* structure = cast<StructureObject*>(object);
-
+	if (object->isBuildingObject()){
 		BuildingObject* building = cast<BuildingObject*>(object);
 
 		CreatureObject* owner = building->getOwnerCreatureObject();
@@ -436,7 +434,17 @@ void CityRegionImplementation::removeAllTerminals(){
 		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
 		cityMissionTerminals.get(i)->destroyObjectFromDatabase(false);
 	}
-
+	
 	cityMissionTerminals.removeAll();
+}
+
+void CityRegionImplementation::removeAllSkillTrainers(){
+
+	for (int i = 0; i < citySkillTrainers.size(); i++){
+		citySkillTrainers.get(i)->destroyObjectFromWorld(false);
+		citySkillTrainers.get(i)->destroyObjectFromDatabase(false);
+	}
+
+	citySkillTrainers.removeAll();
 }
 

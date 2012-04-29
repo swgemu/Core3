@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_bountyhunter_trainer_04 = object_mobile_shared_dressed_bountyhunter_trainer_04:new {
-
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_bountyhunter_trainer_04, "object/mobile/dressed_bountyhunter_trainer_04.iff")

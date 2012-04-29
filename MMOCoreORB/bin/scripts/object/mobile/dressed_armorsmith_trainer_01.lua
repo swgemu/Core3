@@ -43,6 +43,7 @@
 
 object_mobile_dressed_armorsmith_trainer_01 = object_mobile_shared_dressed_armorsmith_trainer_01:new {
 
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_armorsmith_trainer_01, "object/mobile/dressed_armorsmith_trainer_01.iff")

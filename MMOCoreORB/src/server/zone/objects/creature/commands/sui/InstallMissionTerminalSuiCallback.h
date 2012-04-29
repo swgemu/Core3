@@ -1,12 +1,12 @@
 /*
- * SurveyToolSetRangeSuiCallback.h
+ * InstallMissionTerminalSuiCallback.h
  *
- *  Created on: Nov 3, 2010
- *      Author: crush
+ *  Created on: Apr 25, 2012
+ *      Author: TragD
  */
 
-#ifndef SURVEYTOOLSETRANGECALLBACK_H_
-#define SURVEYTOOLSETRANGECALLBACK_H_
+#ifndef INSTALLMISSIONTERMINALCALLBACK_H_
+#define INSTALLMISSIONTERMINALCALLBACK_H_
 
 
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
@@ -66,7 +66,6 @@ public:
 
 			ManagedReference<SceneObject*> sceneObject = ObjectManager::instance()->createObject(terminalTemplatePath.hashCode(), 1, "sceneobjects");
 
-			//MissionTerminal* missionTerminal = cast<MissionTerminal*>(sceneObject);
 			sceneObject->initializePosition(player->getWorldPositionX(), player->getWorldPositionZ(),player->getWorldPositionY());
 			sceneObject->rotate(player->getDirectionAngle());
 			zone->transferObject(sceneObject, -1, true);
@@ -78,4 +77,4 @@ public:
 	}
 };
 
-#endif /* SURVEYTOOLSETRANGECALLBACK_H_ */
+#endif /* INSTALLMISSIONTERMINALCALLBACK_H_ */

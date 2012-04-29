@@ -184,7 +184,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiDefaultComponent*>("AiDefaultComponent"));
-	npcTemplate = NULL;
+
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {

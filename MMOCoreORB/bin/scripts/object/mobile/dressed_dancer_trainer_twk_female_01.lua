@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_dancer_trainer_twk_female_01 = object_mobile_shared_dressed_dancer_trainer_twk_female_01:new {
-
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_dancer_trainer_twk_female_01, "object/mobile/dressed_dancer_trainer_twk_female_01.iff")

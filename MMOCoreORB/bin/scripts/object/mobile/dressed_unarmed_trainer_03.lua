@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_unarmed_trainer_03 = object_mobile_shared_dressed_unarmed_trainer_03:new {
-
+	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_unarmed_trainer_03, "object/mobile/dressed_unarmed_trainer_03.iff")

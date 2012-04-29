@@ -53,7 +53,6 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		if (city != NULL)
 			city->removeMissionTerminal(_this);
 
-
 		_this->destroyObjectFromWorld(true);
 		_this->destroyObjectFromDatabase(false);
 
