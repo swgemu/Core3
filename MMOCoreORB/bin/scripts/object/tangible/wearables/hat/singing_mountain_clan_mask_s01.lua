@@ -42,22 +42,10 @@
 
 
 object_tangible_wearables_hat_singing_mountain_clan_mask_s01 = object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01:new {
-	playerRaces = { "object/creature/player/bothan_female.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_female.iff",
+	playerRaces = { "object/creature/player/human_female.iff",
 				"object/creature/player/twilek_female.iff",
 				"object/creature/player/zabrak_female.iff",
-				"object/mobile/vendor/aqualish_female.iff",
-				"object/mobile/vendor/bith_female.iff",
-				"object/mobile/vendor/bothan_female.iff",
 				"object/mobile/vendor/human_female.iff",
-				"object/mobile/vendor/moncal_female.iff",
-				"object/mobile/vendor/rodian_female.iff",
-				"object/mobile/vendor/sullustan_female.iff",
-				"object/mobile/vendor/trandoshan_female.iff",
 				"object/mobile/vendor/twilek_female.iff",
 				"object/mobile/vendor/zabrak_female.iff" },
 }
