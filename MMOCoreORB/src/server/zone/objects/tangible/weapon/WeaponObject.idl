@@ -163,8 +163,8 @@ class WeaponObject extends TangibleObject {
 		
 		Logger.setLoggingName("WeaponObject");
 		
-		damageSlice = 0;
-		speedSlice = 0;
+		damageSlice = 1;
+		speedSlice = 1;
 	}
 	
 	@local
