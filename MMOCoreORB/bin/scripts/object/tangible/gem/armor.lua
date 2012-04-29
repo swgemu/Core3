@@ -42,8 +42,9 @@
 
 
 object_tangible_gem_armor = object_tangible_gem_shared_armor:new {
-	gameObjectType = 8223
-
+	gameObjectType = 8223,
+	--clientGameObjectType = 8221 --8221 = Clothing attachment - mistake by SOE
+	clientGameObjectType = 8223
 }
 
 ObjectTemplates:addTemplate(object_tangible_gem_armor, "object/tangible/gem/armor.iff")
