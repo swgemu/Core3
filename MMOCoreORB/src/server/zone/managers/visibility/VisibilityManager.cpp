@@ -46,6 +46,12 @@ which carries forward this exception.
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/visibility/tasks/VisibilityDecayTask.h"
+#include "server/zone/Zone.h"
+
+const String VisibilityManager::factionStringRebel = "rebel";
+const String VisibilityManager::factionStringImperial = "imperial";
+const unsigned int VisibilityManager::factionRebel = factionStringRebel.hashCode();
+const unsigned int VisibilityManager::factionImperial = factionStringImperial.hashCode();
 
 void VisibilityManager::addPlayerToBountyList(CreatureObject* creature, int reward) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
@@ -63,9 +69,36 @@ int VisibilityManager::calculateReward(float visibility) {
 	return visibility * 1000 + System::random(5000);
 }
 
-float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature, float visibilityIncrease) {
+float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
+	ManagedReference<Zone*> zone = creature->getZone();
+
+	float visibilityIncrease = 0;
+
+	if (zone != NULL) {
+		SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+		zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 32, &closeObjects, true);
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+			if (obj->isCreatureObject()) {
+				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
+				if (c->isNonPlayerCreatureObject()) {
+					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
+						visibilityIncrease += 0.5;
+					} else {
+						if (creature->getFaction() == c->getFaction()) {
+							visibilityIncrease += 0.25;
+						} else {
+							visibilityIncrease += 1;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	info("Increasing visibility for player " + String::valueOf(creature->getObjectID()) + " with " + String::valueOf(visibilityIncrease), true);
-	return visibilityIncrease; //Todo: Calculate correctly.
+	return visibilityIncrease;
 }
 
 void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
@@ -124,13 +157,13 @@ void VisibilityManager::logout(CreatureObject* creature) {
 	}
 }
 
-void VisibilityManager::increaseVisibility(CreatureObject* creature, float visibilityIncrease) {
+void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
-		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature, visibilityIncrease));
+		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature));
 		locker.release();
 
 		login(creature);

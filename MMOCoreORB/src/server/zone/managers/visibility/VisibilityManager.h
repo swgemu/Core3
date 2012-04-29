@@ -62,7 +62,27 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * Any player with a visibility greater than or equal to this amount will be
 	 * available on the bounty hunter mission terminal as a player bounty.
 	 */
-	static const int TERMINALVISIBILITYLIMIT = 5;
+	static const int TERMINALVISIBILITYLIMIT = 20;
+
+	/**
+	 * Rebel faction string.
+	 */
+	static const String factionStringRebel;
+
+	/**
+	 * Imperial faction string.
+	 */
+	static const String factionStringImperial;
+
+	/**
+	 * Rebel faction value.
+	 */
+	static const unsigned int factionRebel;
+
+	/**
+	 * Imperial faction value.
+	 */
+	static const unsigned int factionImperial;
 
 	/**
 	 * Visibility list that contains all currently online players with visibility.
@@ -99,9 +119,8 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * of players and NPC's within 32 m.
 	 * @param creature the player.
 	 * @param visibilityIncrease base increase for the action.
-	 * @return calculated visibility increase.
 	 */
-	float calculateVisibilityIncrease(CreatureObject* creature, float visibilityIncrease);
+	float calculateVisibilityIncrease(CreatureObject* creature);
 
 	/**
 	 * Decrease visibility for a player. The player is removed from the visibility list
@@ -133,10 +152,8 @@ public:
 	 * Increase visibility for a player. The player is added to the visibility list
 	 * if not already in the list.
 	 * @param creature the player to increase the visibility for.
-	 * @param visibilityIncrease the amount of visibility to increase per NPC within
-	 *                           32 m of the player
 	 */
-	void increaseVisibility(CreatureObject* creature, float visibilityIncrease);
+	void increaseVisibility(CreatureObject* creature);
 
 	/**
 	 * Clear the visibility for a player and remove him/her from the visibility
