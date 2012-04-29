@@ -850,3 +850,27 @@ void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, Stri
 
 }
 
+void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, String title, String text, String okButton, String screenplay, String callback) {
+	if (usingObject == NULL)
+		return;
+
+	if (player == NULL || !player->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(player);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+		ManagedReference<SuiMessageBox*> messageBox = new SuiMessageBox(creature, 0x00);
+		messageBox->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
+		messageBox->setPromptTitle(title);
+		messageBox->setPromptText(text);
+		messageBox->setUsingObject(usingObject);
+		messageBox->setOkButton(true, okButton);
+		messageBox->setForceCloseDistance(32.f);
+
+		creature->sendMessage(messageBox->generateMessage());
+		playerObject->addSuiBox(messageBox);
+	}
+}

@@ -15,6 +15,7 @@ const char LuaSuiManager::className[] = "LuaSuiManager";
 Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendKeypadSui", &LuaSuiManager::sendKeypadSui },
 		{ "sendConfirmSui", &LuaSuiManager::sendConfirmSui },
+		{ "sendMessageBox", &LuaSuiManager::sendMessageBox },
 		{ 0, 0 }
 };
 
@@ -45,6 +46,20 @@ int LuaSuiManager::sendConfirmSui(lua_State* L) {
 	SceneObject* scno2 = (SceneObject*)lua_touserdata(L, -6);
 
 	realObject->sendConfirmSui(scno2, scno, play, callback, prompt, button);
+
+	return 0;
+}
+
+int LuaSuiManager::sendMessageBox(lua_State* L) {
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -7);
+	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -6);
+	String title = lua_tostring(L, -5);
+	String text = lua_tostring(L, -4);
+	String okButton = lua_tostring(L, -3);
+	String screenplay = lua_tostring(L, -2);
+	String callback = lua_tostring(L, -1);
+
+	realObject->sendMessageBox(usingObject, targetPlayer, title, text, okButton, screenplay, callback);
 
 	return 0;
 }

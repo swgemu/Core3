@@ -10,6 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
@@ -51,6 +52,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setContainerInheritPermissionsFromParent", &LuaSceneObject::setContainerInheritPermissionsFromParent},
 		{ "setContainerAllowPermission", &LuaSceneObject::setContainerAllowPermission},
 		{ "setContainerDenyPermission", &LuaSceneObject::setContainerDenyPermission},
+		{ "hasActiveArea", &LuaSceneObject::hasActiveArea},
 		{ 0, 0 }
 
 };
@@ -180,6 +182,16 @@ int LuaSceneObject::isInRange(lua_State* L) {
 	bool res = (static_cast<QuadTreeEntry*>(realObject))->isInRange(x, y, range);
 
 	lua_pushnumber(L, res);
+
+	return 1;
+}
+
+int LuaSceneObject::hasActiveArea(lua_State* L) {
+	uint64 objectid = lua_tointeger(L, -1);
+
+	bool res = realObject->hasActiveArea(objectid);
+
+	lua_pushboolean(L, res);
 
 	return 1;
 }

@@ -42,7 +42,8 @@
 
 
 object_tangible_container_drum_treasure_drum = object_tangible_container_drum_shared_treasure_drum:new {
-
+	templateType = CONTAINER,
+	gameObjectType = 8244,
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_treasure_drum, "object/tangible/container/drum/treasure_drum.iff")

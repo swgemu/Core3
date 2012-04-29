@@ -1,3 +1,4 @@
+includeFile("items/2h_sword_scythe_schematic.lua")
 includeFile("items/aakuan_belt.lua")
 includeFile("items/aakuan_ring.lua")
 includeFile("items/aakuan_robe.lua")

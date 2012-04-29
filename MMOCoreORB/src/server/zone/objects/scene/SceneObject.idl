@@ -820,6 +820,19 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return activeAreas.contains(area);
 	}
 	
+	@read
+	public boolean hasActiveArea(unsigned long objectid) {
+		for (int i = 0; i < activeAreas.size(); ++i) {
+			ActiveArea area = activeAreas.get(i);
+			
+			if (area.getObjectID() == objectid) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	@local
 	@read
 	public Vector<ActiveArea> getActiveAreas() {

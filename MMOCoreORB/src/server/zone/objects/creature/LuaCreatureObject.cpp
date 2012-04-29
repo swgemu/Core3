@@ -78,6 +78,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
 		{ "setPvpStatusBitmask", &LuaCreatureObject::setPvpStatusBitmask},
 		{ "addDotState", &LuaCreatureObject::addDotState},
+		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
 		{ 0, 0 }
 };
 

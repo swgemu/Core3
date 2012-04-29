@@ -151,6 +151,7 @@ namespace server {
 
 	  	void sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback);
 	  	void sendConfirmSui(SceneObject* terminal, SceneObject* player, String play, String callback, String prompt, String button);
+	  	void sendMessageBox(SceneObject* usingObject, SceneObject* player, String title, String text, String okButton, String screenplay, String callback);
 
 	  	void setZoneProcessServer(ZoneProcessServer* srv) {
 	  		server = srv;

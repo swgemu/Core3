@@ -42,7 +42,6 @@
 
 
 object_tangible_mission_quest_item_hedon_istee_q3_needed = object_tangible_mission_quest_item_shared_hedon_istee_q3_needed:new {
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_hedon_istee_q3_needed, "object/tangible/mission/quest_item/hedon_istee_q3_needed.iff")

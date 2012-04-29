@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_treasure_map_hedon = object_tangible_loot_quest_shared_treasure_map_hedon:new {
-
+	objectMenuComponent = {"Lua", "hedon_istee_holo_map_menucomponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_treasure_map_hedon, "object/tangible/loot/quest/treasure_map_hedon.iff")

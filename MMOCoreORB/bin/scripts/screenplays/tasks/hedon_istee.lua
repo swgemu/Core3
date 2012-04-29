@@ -8,11 +8,17 @@ hedon_istee_screenplay = ScreenPlay:new {
 	},
 
 	loc = {
-		hedon = {x = 1390, z = 0, y = 3195},
-		drog  = {x = 1553, z = 15, y = 3488},
-		rath  = {x = 1800, z = 7, y = 3128},
-		monk  = {x = 1560, z = 7, y = 2970}
-	}
+		hedon	= {x = 1390, z = 0, y = 3195},
+		drog	= {x = 1553, z = 15, y = 3488},
+		rath	= {x = 1800, z = 7, y = 3128},
+		monk	= {x = 1560, z = 7, y = 2970},
+		map		= {x = 6700, z = 20, y = 4240}
+	},
+	
+	bomarr_scroll = "object/tangible/mission/quest_item/hedon_istee_q3_needed.iff",
+	
+	--Time for the treasure to stay spawned before it is removed from the game in miliseconds.
+	treasure_life = 600000 --10 minutes
 }
 
 registerScreenPlay("hedon_istee_screenplay", true)
@@ -26,6 +32,7 @@ function hedon_istee_screenplay:start()
 	end
 	
 	self:spawnMobiles()
+	self:spawnActiveAreas()
 end
 
 function hedon_istee_screenplay:spawnMobiles()
@@ -49,6 +56,13 @@ function hedon_istee_screenplay:spawnMobiles()
 	createObserver(OBJECTDESTRUCTION, "hedon_istee_screenplay", "notifyDefeated", pRathKana)
 	createObserver(OBJECTINRANGEMOVED, "hedon_istee_screenplay", "notifyProximityBreeched", pRathKana)
 	createObserver(OBJECTINRANGEMOVED, "hedon_istee_screenplay", "notifyProximityBreeched", pSereneFloater)
+end
+
+function hedon_istee_screenplay:spawnActiveAreas()
+	local pActiveArea = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0, 0, 0, 0)
+	local area = LuaSceneObject(pActiveArea)
+	
+	writeData("hedon_istee:treasureAreaID", area:getObjectID())
 end
 
 function hedon_istee_screenplay:notifyDefeated(pVictim, pAttacker)
@@ -132,6 +146,17 @@ function hedon_istee_screenplay:giveReward(creatureObject, level)
 	
 	if (level == 3) then
 		--Add the ancient holo map.
+		local pInventory = creatureObject:getSlottedObject("inventory")
+		
+		if (pInventory ~= nil) then
+			local pMap = giveItem(pInventory, "object/tangible/loot/quest/treasure_map_hedon.iff", -1)
+			
+			if (pMap ~= nil) then
+				local map = LuaSceneObject(pMap)
+				map:sendTo(creatureObject:_getObject())
+			end
+		end
+		
 		self:setState(creatureObject, self.states.quest3.completed)
 	elseif (level == 2) then
 		creatureObject:addCashCredits(6000, true)
@@ -142,6 +167,78 @@ function hedon_istee_screenplay:giveReward(creatureObject, level)
 		--TODO: Should there be a system message?
 		self:setState(creatureObject, self.states.quest1.completed)
 	end
+end
+
+
+function hedon_istee_screenplay:handleTreasureMapCallback(pCreature, pSui, cancelPressed)
+	if (not cancelPressed) then
+		if (pCreature ~= nil) then
+			local creature = LuaCreatureObject(pCreature)
+			local pPlayerObject = creature:getPlayerObject()
+			
+			if (pPlayerObject ~= nil) then
+				local playerObject = LuaPlayerObject(pPlayerObject)
+				playerObject:addWaypoint("tatooine", "Ancient Treasure Location", "", hedon_istee_screenplay.loc.map.x, hedon_istee_screenplay.loc.map.y, WAYPOINTBLUE, true, true)
+			end
+		end
+	end
+end
+
+function hedon_istee_screenplay:spawnTreasure(pTreasureMap, pPlayer)
+	local creature = LuaCreatureObject(pPlayer)
+	creature:sendSystemMessage("@treasure_map/treasure_map:sys_found") --You successfully extract the treasure!
+	
+	local pChest = spawnSceneObject("tatooine", "object/tangible/container/drum/treasure_drum.iff", self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0, 0, 0, 0)
+	local pKrayt = spawnMobile("tatooine", "canyon_krayt_dragon", 0, self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0)
+	
+	createLoot(pChest, "hedon_istee_treasure", 10)
+	createEvent(self.treasure_life, "hedon_istee_screenplay", "removeTreasureChest", pChest)
+	
+	if (pTreasureMap ~= nil) then
+		local map = LuaSceneObject(pTreasureMap)
+		map:destroyObjectFromWorld()
+		map:destroyObjectFromDatabase()
+	end
+	
+	--Spawn event to remove chest after x time.
+end
+
+function hedon_istee_screenplay:removeTreasureChest(pChest)
+	if (pChest ~= nil) then
+		local chest = LuaSceneObject(pChest)
+		chest:destroyObjectFromWorld()
+		chest:destroyObjectFromDatabase(true)
+	end
+end
+
+hedon_istee_holo_map_menucomponent = { }
+
+
+function hedon_istee_holo_map_menucomponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+	
+	local player = LuaSceneObject(pPlayer)
+	
+	if (player:hasActiveArea(readData("hedon_istee:treasureAreaID"))) then
+		menuResponse:addRadialMenuItem(121, 3, "@treasure_map/treasure_map:extract_treasure") --Extract Treasure
+	else
+		menuResponse:addRadialMenuItem(120, 3, "@treasure_map/treasure_map:use") --Read
+	end
+end
+
+function hedon_istee_holo_map_menucomponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+	if (pPlayer == nil or pSceneObject == nil) then
+		return 0
+	end
+	
+	if (selectedID == 120) then
+		local suiManager = LuaSuiManager()
+		suiManager:sendMessageBox(pSceneObject, pPlayer, "@treasure_map/treasure_map:title_hedon1", "@treasure_map/treasure_map:text_hedon1", "@treasure_map/treasure_map:store_waypoint", "hedon_istee_screenplay", "handleTreasureMapCallback")
+	elseif (selectedID == 121) then
+		hedon_istee_screenplay:spawnTreasure(pSceneObject, pPlayer)
+	end
+			
+	return 0
 end
 
 
@@ -188,7 +285,7 @@ function hedon_istee_handler:runScreenHandlers(conversationTemplate, conversingP
 		self:beginQuest2(player)
 	elseif (screenID == "npc_2_3") then
 		self:beginQuest3(player)
-	elseif (screenID == "npc_reset") then
+	elseif (screenID == "npc_reset_1") or (screenID == "npc_reset_2") or (screenID == "npc_reset_3") then
 		self:resetQuest(player)
 	end
 
@@ -216,12 +313,30 @@ end
 function hedon_istee_handler:beginQuest3(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
+	
+	local pInventory = player:getSlottedObject("inventory")
 
 	playerObject:addWaypoint("tatooine", "Deliver the Scroll", "", hedon_istee_screenplay.loc.monk.x, hedon_istee_screenplay.loc.monk.y, WAYPOINTBLUE, true, true)
+	local pScroll = giveItem(pInventory, hedon_istee_screenplay.bomarr_scroll, -1)
+	
+	if (pScroll ~= nil) then
+		local scroll = LuaSceneObject(pScroll)
+		scroll:sendTo(player:_getObject())
+	end
+	
 	hedon_istee_screenplay:setState(player, hedon_istee_screenplay.states.quest3.started)
 end
 
 function hedon_istee_handler:resetQuest(player)
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest1.started, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest1.defeated, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest1.completed, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest2.started, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest2.defeated, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest2.completed, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest3.started, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest3.defeated, "hedon_istee")
+	player:removeScreenPlayState(hedon_istee_screenplay.states.quest3.completed, "hedon_istee")
 end
 
 function hedon_istee_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
@@ -238,9 +353,9 @@ function hedon_istee_handler:getInitialScreen(pPlayer, npc, pConversationTemplat
 	end
 
 	local playerObject = LuaPlayerObject(pPlayerObject)
-
+	
 	if (conversingPlayer:hasScreenPlayState(hedon_istee_screenplay.states.quest3.completed, "hedon_istee") == 1) then
-		return convoTemplate:getScreen("nextQuest")
+		return convoTemplate:getScreen("next")
 	end
 
 	if (conversingPlayer:hasScreenPlayState(hedon_istee_screenplay.states.quest3.delivered, "hedon_istee") == 1) then
@@ -287,6 +402,72 @@ function hedon_istee_handler:getInitialScreen(pPlayer, npc, pConversationTemplat
 end
 
 function hedon_istee_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+	local player = LuaCreatureObject(pPlayer)
+	local pConversationSession = player:getConversationSession()
+
+	local pLastConversationScreen = nil
+
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+
+	if (pLastConversationScreen ~= nil) then	
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+
+		return conversationTemplate:getScreen(optionLink)
+	end
+
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+end
+
+
+---
+--Serene Floater Conversation Handler
+---
+serene_floater_handler = Object:new {
+}
+
+function serene_floater_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return conversationScreen
+end
+
+function serene_floater_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	local conversingPlayer = LuaCreatureObject(pPlayer)
+	local pInventory = conversingPlayer:getSlottedObject("inventory")
+	local inventory = LuaSceneObject(pInventory)
+	
+	if (pInventory ~= nil) then
+		local pScroll = getContainerObjectByTemplate(pInventory, hedon_istee_screenplay.bomarr_scroll, true)
+		
+		if (pScroll ~= nil) then
+			local scroll = LuaSceneObject(pScroll)
+			scroll:destroyObjectFromWorld()
+			scroll:destroyObjectFromDatabase()
+			
+			conversingPlayer:setScreenPlayState(hedon_istee_screenplay.states.quest3.delivered, "hedon_istee")
+			
+			local pPlayerObject = conversingPlayer:getPlayerObject()
+			
+			if (pPlayerObject ~= nil) then
+				local playerObject = LuaPlayerObject(pPlayerObject)
+				playerObject:addWaypoint("tatooine", "Return to Hedon Istee", "", hedon_istee_screenplay.loc.hedon.x, hedon_istee_screenplay.loc.hedon.y, WAYPOINTBLUE, true, true)
+			end
+			
+			--They had the scroll
+			return convoTemplate:getScreen("npc_smuggle_3")
+		end
+	end
+	
+	--Don't know the person, they don't have the scroll.
+	return convoTemplate:getScreen("dontknowyou_3")
+end
+
+function serene_floater_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local player = LuaCreatureObject(pPlayer)
 	local pConversationSession = player:getConversationSession()
 

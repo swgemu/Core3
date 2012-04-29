@@ -46,7 +46,7 @@ MakeLogin = 1
 MakeZone = 1
 MakePing = 1
 MakeStatus = 1
-MakeWeb = 1
+MakeWeb = 0
 
 ORB = ""
 
@@ -55,7 +55,7 @@ DBPort = 3306
 DBName = "swgemu"
 DBUser = "swgemu"
 DBPass = "123456"
-DBSecret = "as23#@df7698kjh*&gqwd" -- Change this! This value should be unique and of reasonable length.
+DBSecret = "swgemus3cr37!" -- Change this! This value should be unique and of reasonable length.
 
 LoginPort = 44453
 LoginProcessingThreads = 1
@@ -88,7 +88,7 @@ ZonesEnabled = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	"corellia",
+	--"corellia",
 	--"creature_test",
 	--"dantooine",
 	--"dathomir",
@@ -103,7 +103,7 @@ ZonesEnabled = {
 	--"rivertest",
 	--"rori",
 	--"runtimerules",
-	--"simple"
+	--"simple",
 	--"space_09",
 	--"space_corellia",
 	--"space_corellia_2",
@@ -116,13 +116,13 @@ ZonesEnabled = {
 	--"space_light1",
 	--"space_lok",
 	--"space_naboo",
-	---"space_naboo_2",
+	--"space_naboo_2",
 	--"space_tatooine",
 	--"space_tatooine_2",
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	--"tatooine",
+	"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
@@ -132,7 +132,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/kyle/workspace/SWGEmu"
+TrePath = "/home/swgemu/Desktop/SWGEmu"
 
 TreFiles = {
 	"default_patch.tre",

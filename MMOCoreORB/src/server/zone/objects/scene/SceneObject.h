@@ -422,6 +422,8 @@ public:
 
 	bool hasActiveArea(ActiveArea* area);
 
+	bool hasActiveArea(unsigned long long objectid);
+
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
 	int getActiveAreasSize();
@@ -1055,6 +1057,8 @@ public:
 
 	bool hasActiveArea(ActiveArea* area);
 
+	bool hasActiveArea(unsigned long long objectid);
+
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
 	int getActiveAreasSize();
@@ -1589,6 +1593,8 @@ public:
 	void dropActiveArea(ActiveArea* area);
 
 	bool hasActiveArea(ActiveArea* area);
+
+	bool hasActiveArea(unsigned long long objectid);
 
 	int getActiveAreasSize();
 
