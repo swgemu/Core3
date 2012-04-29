@@ -56,7 +56,7 @@ object_draft_schematic_furniture_furniture_lamp_free_s01_on = object_draft_schem
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
-   customizationSkill = "", 
+   customizationSkill = "structure_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -65,8 +65,8 @@ object_draft_schematic_furniture_furniture_lamp_free_s01_on = object_draft_schem
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"lamp_body", "neck", "lamp_assembly", "shade"},
    ingredientSlotType = {0, 0, 0, 0},
-   resourceTypes = {"", "", "", ""},
-   resourceQuantities = {0, 0, 0, 0},
+   resourceTypes = {"metal", "metal", "metal", "mineral"},
+   resourceQuantities = {40, 50, 15, 20},
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 

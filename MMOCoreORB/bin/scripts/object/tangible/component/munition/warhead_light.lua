@@ -45,7 +45,7 @@ object_tangible_component_munition_warhead_light = object_tangible_component_mun
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
-	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX"},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "woundchance", "hitpoints"},

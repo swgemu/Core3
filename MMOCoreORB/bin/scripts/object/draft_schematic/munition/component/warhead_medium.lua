@@ -66,7 +66,7 @@ object_draft_schematic_munition_component_warhead_medium = object_draft_schemati
    ingredientTitleNames = {"warhead_module_casing", "casing_brackets", "fuse_coupling", "reaction_medium", "reaction_mass", "exploder_carriage"},
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "steel", "metal", "gas_reactive", "radioactive", "petrochem_inert_polymer"},
-   resourceQuantities = {15, 10, 5, 30, 10, 5},
+   resourceQuantities = {15, 20, 5, 30, 10, 5},
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 

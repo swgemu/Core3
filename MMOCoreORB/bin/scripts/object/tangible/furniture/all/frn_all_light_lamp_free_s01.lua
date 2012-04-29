@@ -44,9 +44,9 @@
 object_tangible_furniture_all_frn_all_light_lamp_free_s01 = object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01:new {
 
 
-	numberExperimentalProperties = {1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX"},
-	experimentalWeights = {1, 1, 1, 1},
+	numberExperimentalProperties = {1, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "lifespan"},
 	experimentalMin = {0, 0, 1000, 21},
