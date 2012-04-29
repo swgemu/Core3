@@ -896,16 +896,13 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 		return 0;
 	}
 
-	int returnValue = damage;
-
 	int currentValue = wounds.get(damageType);
 
 	int newValue = currentValue - damage;
 
-	if (newValue < 0)
-		returnValue = 0;
+	newValue = MAX(newValue, 0);
 
-	returnValue = newValue = MAX(newValue, 0);
+	int returnValue = currentValue - newValue; //How many wounds we had minus how many we now have = how much was healed.
 
 	setWounds(damageType, newValue, notifyClient);
 
