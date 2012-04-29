@@ -671,6 +671,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
 				ghost->addSuiBox(cbSui);
 				player->sendMessage(cbSui->generateMessage());
+
+				error("could not craete frog item: " + node->getDisplayName());
 				return;
 			}
 

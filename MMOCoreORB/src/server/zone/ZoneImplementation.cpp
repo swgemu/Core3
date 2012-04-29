@@ -302,7 +302,9 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
 
-	locker.release();
+	//locker.release();
+
+	_this->unlock();
 
 	try {
 
@@ -343,8 +345,12 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			}
 		}
 	} catch (...) {
+
+		_this->wlock();
 		throw;
 	}
+
+	_this->wlock();
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {

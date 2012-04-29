@@ -658,7 +658,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 
 	//getZone()->rlock(lockZone);
 
-	bool readlock = !zone->isLockedByCurrentThread();
+	bool readlock = lockZone && !zone->isLockedByCurrentThread();
 
 	zone->rlock(readlock);
 
