@@ -20,7 +20,7 @@
  *	VendorCreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -82,6 +82,20 @@ int VendorCreature::handleObjectMenuSelect(CreatureObject* player, byte selected
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+bool VendorCreature::isAttackableBy(CreatureObject* object) {
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAttackableBy(object);
 }
 
 void VendorCreature::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -348,6 +362,11 @@ VendorCreatureImplementation::VendorCreatureImplementation() {
 	permissions->clearDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 }
 
+bool VendorCreatureImplementation::isAttackableBy(CreatureObject* object) {
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		return false;
+	return false;
+}
+
 Vendor* VendorCreatureImplementation::getVendor() {
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		return vendor;
 	return (&vendor);
@@ -392,6 +411,9 @@ void VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
 		break;
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
+		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		break;
 	case RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_:
 		addClothingItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		break;
@@ -428,6 +450,10 @@ void VendorCreatureAdapter::finalize() {
 
 int VendorCreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return (static_cast<VendorCreature*>(stub))->handleObjectMenuSelect(player, selectedID);
+}
+
+bool VendorCreatureAdapter::isAttackableBy(CreatureObject* object) {
+	return (static_cast<VendorCreature*>(stub))->isAttackableBy(object);
 }
 
 void VendorCreatureAdapter::addClothingItem(CreatureObject* player, TangibleObject* clothing) {

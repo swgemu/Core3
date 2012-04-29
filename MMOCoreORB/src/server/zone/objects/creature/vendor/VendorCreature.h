@@ -125,6 +125,8 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	bool isAttackableBy(CreatureObject* object);
+
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void addClothingItem(CreatureObject* player, TangibleObject* clothing);
@@ -187,6 +189,8 @@ public:
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
@@ -252,6 +256,8 @@ public:
 	void finalize();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	void addClothingItem(CreatureObject* player, TangibleObject* clothing);
 

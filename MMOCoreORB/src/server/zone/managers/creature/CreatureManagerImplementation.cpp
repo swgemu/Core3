@@ -172,7 +172,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 	return creature;
 }
 
-CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID) {
+CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID, bool persistent) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 	if (creoTempl == NULL)
 		return spawnCreature(objectCRC, x, z, y, parentID);
@@ -195,7 +195,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 		}
 	}
 
-	creature = createCreature(objectCRC);
+	creature = createCreature(objectCRC, persistent);
 
 	if (creature != NULL && creature->isAiAgent()) {
 		AiAgent* npc = cast<AiAgent*>(creature);
@@ -207,8 +207,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	return creature;
 }
 
-CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC) {
-	ManagedReference<SceneObject*> object = zoneServer->createObject(templateCRC, 0);
+CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC, bool persistent) {
+	ManagedReference<SceneObject*> object = zoneServer->createObject(templateCRC, persistent);
 
 	if (object == NULL) {
 		StringBuffer errMsg;
@@ -279,11 +279,11 @@ SpawnArea* CreatureManagerImplementation::getSpawnArea(const String& areaname) {
 	return spawnAreaMap.get(areaname.hashCode());
 }
 
-bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {
+bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature, bool persistent) {
 	if (creature->hasSlotDescriptor("default_weapon")) {
 		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
 
-		SceneObject* defaultWeapon = zoneServer->createObject(defaultWeaponCRC, 0);
+		SceneObject* defaultWeapon = zoneServer->createObject(defaultWeaponCRC, persistent);
 
 		if (defaultWeapon == NULL) {
 			error("could not create creature default weapon");
@@ -297,7 +297,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	if (creature->hasSlotDescriptor("inventory")) {
 		//object/tangible/inventory/shared_creature_inventory.iff
 
-		SceneObject* creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), 0);
+		SceneObject* creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), persistent);
 
 		if (creatureInventory == NULL) {
 			error("could not create creature inventory");

@@ -28,7 +28,7 @@
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_CREATECREATURE__INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -115,37 +115,39 @@ CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, float x
 		return _implementation->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
-CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID) {
+CreatureObject* CreatureManager::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID, bool persistent) {
 	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_);
+		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_);
 		method.addUnsignedIntParameter(templateCRC);
 		method.addUnsignedIntParameter(objectCRC);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
 		method.addUnsignedLongParameter(parentID);
+		method.addBooleanParameter(persistent);
 
 		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
-		return _implementation->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
+		return _implementation->spawnCreature(templateCRC, objectCRC, x, z, y, parentID, persistent);
 }
 
-CreatureObject* CreatureManager::createCreature(unsigned int templateCRC) {
+CreatureObject* CreatureManager::createCreature(unsigned int templateCRC, bool persistent) {
 	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATECREATURE__INT_);
+		DistributedMethod method(this, RPC_CREATECREATURE__INT_BOOL_);
 		method.addUnsignedIntParameter(templateCRC);
+		method.addBooleanParameter(persistent);
 
 		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
 	} else
-		return _implementation->createCreature(templateCRC);
+		return _implementation->createCreature(templateCRC, persistent);
 }
 
 void CreatureManager::placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID) {
@@ -590,11 +592,11 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_:
 		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+	case RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_:
+		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
-	case RPC_CREATECREATURE__INT_:
-		resp->insertLong(createCreature(inv->getUnsignedIntParameter())->_getObjectID());
+	case RPC_CREATECREATURE__INT_BOOL_:
+		resp->insertLong(createCreature(inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_:
 		placeCreature(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
@@ -653,12 +655,12 @@ CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, 
 	return (static_cast<CreatureManager*>(stub))->spawnCreature(templateCRC, x, z, y, parentID);
 }
 
-CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID) {
-	return (static_cast<CreatureManager*>(stub))->spawnCreature(templateCRC, objectCRC, x, z, y, parentID);
+CreatureObject* CreatureManagerAdapter::spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID, bool persistent) {
+	return (static_cast<CreatureManager*>(stub))->spawnCreature(templateCRC, objectCRC, x, z, y, parentID, persistent);
 }
 
-CreatureObject* CreatureManagerAdapter::createCreature(unsigned int templateCRC) {
-	return (static_cast<CreatureManager*>(stub))->createCreature(templateCRC);
+CreatureObject* CreatureManagerAdapter::createCreature(unsigned int templateCRC, bool persistent) {
+	return (static_cast<CreatureManager*>(stub))->createCreature(templateCRC, persistent);
 }
 
 void CreatureManagerAdapter::placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID) {
