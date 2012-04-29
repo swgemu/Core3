@@ -905,15 +905,15 @@ int CreatureObjectImplementation::healWound(TangibleObject* healer,
 	if (newValue < 0)
 		returnValue = 0;
 
-	newValue = MAX(newValue, 0);
+	returnValue = newValue = MAX(newValue, 0);
 
 	setWounds(damageType, newValue, notifyClient);
 
-	if(healer != NULL && notifyObservers) {
+	if (healer != NULL && notifyObservers) {
 		_this->notifyObservers(ObserverEventType::WOUNDHEALINGPERFORMED, healer, returnValue);
 	}
 
-	return damage;
+	return returnValue;
 }
 
 void CreatureObjectImplementation::setBaseHAM(int type, int value,
