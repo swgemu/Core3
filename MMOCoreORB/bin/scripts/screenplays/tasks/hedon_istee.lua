@@ -37,7 +37,7 @@ end
 
 function hedon_istee_screenplay:spawnMobiles()
 	local pHedonIstee = spawnMobile("tatooine", "hedon_istee", 1, self.loc.hedon.x, self.loc.hedon.z, self.loc.hedon.y, 0, 0)
-	local pDrognuz = spawnMobile("tatooine", "drognuz", 10, self.loc.drog.x, self.loc.drog.z, self.loc.drog.y, 0, 0)
+	local pDrognuz = spawnMobile("tatooine", "drognuz", 60, self.loc.drog.x, self.loc.drog.z, self.loc.drog.y, 0, 0)
 	local pRathKana = spawnMobile("tatooine", "rath_kana", 60, self.loc.rath.x, self.loc.rath.z, self.loc.rath.y, 0, 0)
 	local pSereneFloater = spawnMobile("tatooine", "serene_floater", 60, self.loc.monk.x, self.loc.monk.z, self.loc.monk.y, 0, 0)
 	
@@ -60,9 +60,12 @@ end
 
 function hedon_istee_screenplay:spawnActiveAreas()
 	local pActiveArea = spawnSceneObject("tatooine", "object/active_area.iff", self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0, 0, 0, 0)
-	local area = LuaSceneObject(pActiveArea)
+	local scno = LuaSceneObject(pActiveArea)
+	local area = LuaActiveArea(pActiveArea)
+	area:setRadius(32)
+	area:setNoBuildArea(true)
 	
-	writeData("hedon_istee:treasureAreaID", area:getObjectID())
+	writeData("hedon_istee:treasureAreaID", scno:getObjectID())
 end
 
 function hedon_istee_screenplay:notifyDefeated(pVictim, pAttacker)
@@ -110,7 +113,7 @@ function hedon_istee_screenplay:notifyProximityBreeched(pMobile, pMovingObject)
 				local lastBark = readData("hedon_istee:drognuz_bark")
 				
 				--If he hasn't barked in 60 seconds, then let him bark...
-				if (lastBark + 60 <= currentTimestamp) then
+				if (lastBark + 30 <= currentTimestamp) then
 					spatialChat(pMobile, "@static_npc/tatooine/hedon_istee:npc_breech_1") --Grunt!
 					writeData("hedon_istee:drognuz_bark", getTimestamp())
 				end
@@ -119,7 +122,7 @@ function hedon_istee_screenplay:notifyProximityBreeched(pMobile, pMovingObject)
 			if (self:hasState(player, self.states.quest2.started) and (not self:hasState(player, self.states.quest2.defeated))) then
 				local lastBark = readData("hedon_istee:rath_bark")
 				
-				if (lastBark + 60 <= currentTimestamp) then
+				if (lastBark + 30 <= currentTimestamp) then
 					spatialChat(pMobile, "@static_npc/tatooine/hedon_istee:npc_breech_2") --All the B'omarr want is that sacred scroll. You're in my way and must be removed.
 					writeData("hedon_istee:rath_bark", getTimestamp())
 				end
@@ -128,7 +131,7 @@ function hedon_istee_screenplay:notifyProximityBreeched(pMobile, pMovingObject)
 			if (self:hasState(player, self.states.quest3.started) and (not self:hasState(player, self.states.quest3.defeated))) then
 				local lastBark = readData("hedon_istee:monk_bark")
 				
-				if (lastBark + 60 <= currentTimestamp) then
+				if (lastBark + 30 <= currentTimestamp) then
 					spatialChat(pMobile, "@static_npc/tatooine/hedon_istee:npc_breech_3") --May you come to know the serenity of emptiness, sensualist.
 					writeData("hedon_istee:monk_bark", getTimestamp())
 				end
