@@ -381,7 +381,7 @@ float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 	float damage = maxDamage;
 
 	if(sliced)
-		damage *= maxDamage;
+		damage *= damageSlice;
 
 	if(powerupObject != NULL && withPup)
 		return damage +
