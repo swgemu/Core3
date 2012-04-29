@@ -243,8 +243,6 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		}
 
-		SkillModManager::instance()->verifySkillBoxSkillMods(creature);
-
 		//Add abilities
 		Vector<String>* abilityNames = skill->getAbilities();
 		addAbilities(ghost, *abilityNames, notifyClient);
@@ -286,6 +284,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	msg4->close();
 	creature->sendMessage(msg4);
 
+	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
+
 	return true;
 }
 
@@ -317,8 +317,6 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	}
 
-	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
-
 	if (ghost != NULL) {
 		//Give the player the used skill points back.
 		ghost->addSkillPoints(skill->getSkillPointsRequired());
@@ -338,6 +336,8 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 
 	}
+
+	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
 	return true;
 }
