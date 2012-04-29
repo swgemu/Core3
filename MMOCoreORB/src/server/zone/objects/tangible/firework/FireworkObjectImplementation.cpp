@@ -53,7 +53,7 @@ void FireworkObjectImplementation::updateCraftingValues(CraftingValues* values,
 int FireworkObjectImplementation::getDisplayedUseCount() {
 
 	if(getContainerObjectsSize() < 1)
-		return 0;
+		return TangibleObjectImplementation::getDisplayedUseCount();
 
 	ManagedReference<SceneObject*> fireworkHopper = getContainerObject(0);
 

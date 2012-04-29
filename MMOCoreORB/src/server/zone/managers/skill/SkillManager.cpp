@@ -357,7 +357,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 		for (int i = 0; i < skillModifiers->size(); ++i) {
 			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-			creature->addSkillMod(SkillModManager::SKILLBOX, entry->getKey(), -entry->getValue(), notifyClient);
+			creature->removeSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
 
 		}
 

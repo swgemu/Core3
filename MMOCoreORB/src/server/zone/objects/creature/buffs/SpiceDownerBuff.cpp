@@ -195,26 +195,18 @@ SpiceDownerBuffImplementation::SpiceDownerBuffImplementation(CreatureObject* cre
 void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_downer");
 	BuffImplementation::creature.getForUpdate()->sendSystemMessage("@spice/spice:" + BuffImplementation::buffName + "_downer");
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		}
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.
 	if (BuffImplementation::creature.getForUpdate()->hasBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME)){
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			Buff buff = super.creature.getBuff(BuffCRC.FOOD_REDUCE_SPICE_DOWNTIME);
 	Buff* buff = BuffImplementation::creature.getForUpdate()->getBuff(BuffCRC::FOOD_REDUCE_SPICE_DOWNTIME);
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			}
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		}
 	if (buff != NULL){
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 	BuffImplementation::buffDuration = BuffImplementation::buffDuration * (100.0 - buff->getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 }
-
-	else {
 }
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			super.activate(applyModifiers);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.activate(applyModifiers);
 	BuffImplementation::activate(applyModifiers);
-}
-
-	else {
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  			super.activate(applyModifiers);
-	BuffImplementation::activate(applyModifiers);
-}
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.notifyObservers(ObserverEventType.SPICEDOWNERACTIVATED, super.creature, 0);
 	BuffImplementation::creature.getForUpdate()->notifyObservers(ObserverEventType::SPICEDOWNERACTIVATED, BuffImplementation::creature.getForUpdate(), 0);
 }

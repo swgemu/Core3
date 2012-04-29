@@ -74,15 +74,11 @@ class SpiceDownerBuff extends Buff {
 			if (buff != null) {
 				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
 
-			} else {
-				
-			}
+			} 
 			
-			super.activate(applyModifiers);
-		} else {
-			super.activate(applyModifiers);
 		}
 		
+		super.activate(applyModifiers);
 		super.creature.notifyObservers(ObserverEventType.SPICEDOWNERACTIVATED, super.creature, 0);
 	}
 
