@@ -80,6 +80,9 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		if (planet == "") {
 			// JOIN BANK
 			ghost->setBankLocation(creature->getZone()->getZoneName());
+			//creature->transferObject(bank, 4);
+			SceneObject* bank = creature->getSlottedObject("bank");
+			bank->sendTo(creature, true);
 			creature->sendSystemMessage("@system_msg:succesfully_joined_bank");
 		} else if (planet == creature->getZone()->getZoneName()) {
 			// Already joined this bank
@@ -102,16 +105,8 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		if (bank->getContainerObjectsSize() == 0) {
 
-			SceneObject* newBank = server->createObject(0xf5b8caa5, 1);
-
-			if (newBank == NULL) {
-				creature->sendSystemMessage("Error occured trying to quit bank. Please contact Support.");
-				return 0;
-			}
-
-			bank->destroyObjectFromWorld(true);
-
-			creature->transferObject(newBank, 4);
+			//creature->removeObject(bank, NULL, true);
+			bank->sendDestroyTo(creature);
 
 			// QUIT BANK
 			ghost->setBankLocation("");

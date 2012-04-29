@@ -302,11 +302,12 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (newParent != NULL && newParent->getZone() == NULL)
 		return;
 
+	if (newParent != NULL)
+		sceneObject->sendMessage(new GameSceneChangedMessage());
+
 	if (newPositionZ == 0) {
 		newPositionZ = newZone->getHeight(newPostionX, newPositionY);
 	}
-
-	sceneObject->sendMessage(new GameSceneChangedMessage());
 
 	sceneObject->destroyObjectFromWorld(false);
 
@@ -315,8 +316,9 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
 	if (newParent != NULL) {
-		if (newParent->transferObject(sceneObject, -1, false))
+		if (newParent->transferObject(sceneObject, -1, false)) {
 			sceneObject->sendToOwner(true);
+		}
 	} else {
 		newZone->transferObject(sceneObject, -1, true);
 	}
