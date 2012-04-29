@@ -31,13 +31,14 @@ ragtag_loon = Creature:new {
 		"object/mobile/dressed_gran_thug_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_02.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 5500000},
-				{group = "crystals_poor", chance = 400000},
+				{group = "loot_kits", chance = 3500000
+				{group = "crystals_poor", chance = 500000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 6500000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

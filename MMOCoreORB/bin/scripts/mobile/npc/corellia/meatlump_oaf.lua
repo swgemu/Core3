@@ -42,12 +42,12 @@ meatlump_oaf = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4500000},
-				{group = "loot_kits", chance = 4500000},
+				{group = "loot_kits", chance = 3000000},
+		    	{group = "junk", chance = 6000000},
 				{group = "color_crystals", chance = 500000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 6500000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

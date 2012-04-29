@@ -34,7 +34,7 @@ talus_liberation_party_reactionist = Creature:new {
 				{group = "tailor_components", chance = 500000},
 				{group = "loot_kits", chance = 4500000}
 			},
-			lootChance = 4800000
+			lootChance = 5500000
 		}				
 	},
 	weapons = {"ranged_weapons"},

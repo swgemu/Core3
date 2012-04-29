@@ -38,7 +38,7 @@ flail_slayer = Creature:new {
 				{group = "pistols", chance = 4000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 6000000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

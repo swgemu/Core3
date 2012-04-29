@@ -38,7 +38,7 @@ flail_boss = Creature:new {
 				{group = "rifles", chance = 4000000},
 				{group = "color_crystals", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 6000000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

@@ -35,7 +35,7 @@ lord_sloan_rusper = Creature:new {
 				{group = "tailor_components", chance = 500000},
 				{group = "loot_kits", chance = 4500000}
 			},
-			lootChance = 4800000
+			lootChance = 5500000
 		}					
 	},
 	weapons = {"rebel_weapons_light"},

@@ -37,7 +37,7 @@ jawa_thief = Creature:new {
 				{group = "rifles", chance = 1600000},
 				{group = "carbines", chance = 1100000}
 			},
-			lootChance = 4800000
+			lootChance = 5500000
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
