@@ -90,6 +90,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
 		if (outputHopper != NULL) {
+			alm->insertAttribute("manf_limit", schematic->getManufactureLimit());
 			alm->insertAttribute("manufacture_count", currentRunCount); //Manufactured Items:
 		}
 	}
@@ -266,6 +267,9 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 		message.setTT(schematic->getCustomObjectName().toString());
 
 	player->sendSystemMessage(message);
+
+	player->sendSystemMessage("This schematic limit is: " + String::valueOf(schematic->getManufactureLimit()));
+
 }
 
 void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* player) {
@@ -299,11 +303,20 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 
+	ManagedReference<ManufactureSchematic*> schematic = cast<ManufactureSchematic*>(getContainerObject(0));
+	if(schematic == NULL) {
+		player->sendSystemMessage("No schematic, unable to start");
+		return;
+	}
+
 	if(!operating) {
 		currentUserName = player->getFirstName();
 		currentRunCount = 0;
-		if(startFactory())
+		if(startFactory()) {
 			player->sendSystemMessage("@manf_station:activated"); //Station activated
+			player->sendSystemMessage("This schematic limit is: " + String::valueOf(schematic->getManufactureLimit()));
+
+		}
 	} else {
 
 		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
@@ -412,15 +425,18 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	ManagedReference<ManufactureSchematic*> schematic =
-			dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
+			cast<ManufactureSchematic*>(getContainerObject(0));
 
-	if (schematic == NULL) {
+	if (schematic == NULL || !schematic->isManufactureSchematic()) {
 		stopFactory("manf_error_4", "", "", -1);
 		return;
 	}
 
 	if (schematic->getManufactureLimit() < 1) {
-
+		ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(getZoneServer()->getObject(ownerObjectID));
+		if(owner != NULL && owner->isOnline()) {
+			owner->sendSystemMessage("Your schematic that just vanished useCount was: " + String::valueOf(schematic->getManufactureLimit()));
+		}
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
 		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
