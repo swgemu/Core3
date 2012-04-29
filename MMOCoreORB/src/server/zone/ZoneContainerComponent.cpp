@@ -221,6 +221,9 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			}
 		}
 
+		Zone* oldZone = zone;
+		zone = NULL;
+
 		oldZone->dropSceneObject(object);
 
 		zoneLocker.release();
@@ -244,10 +247,6 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			if (outdoorChild->isInQuadTree())
 				outdoorChild->destroyObjectFromWorld(true);
 		}
-
-		Zone* oldZone = zone;
-		zone = NULL;
-
 
 	} catch (Exception& e) {
 
