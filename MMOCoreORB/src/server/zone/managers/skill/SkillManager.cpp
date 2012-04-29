@@ -197,6 +197,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	if (skill == NULL)
 		return false;
 
+	Locker locker(creature);
+
 	//If they already have the skill, then return true.
 	if (creature->hasSkill(skillName))
 		return true;
