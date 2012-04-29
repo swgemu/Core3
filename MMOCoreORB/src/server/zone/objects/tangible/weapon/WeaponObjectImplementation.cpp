@@ -357,7 +357,7 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 	float speed = attackSpeed;
 
 	if(sliced)
-		speed -= (speedSlice * attackSpeed);
+		speed *= speedSlice;
 
 	if(powerupObject != NULL && withPup)
 		return speed -
@@ -374,7 +374,7 @@ float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 	float damage = maxDamage;
 
 	if(sliced)
-		damage += (damageSlice * maxDamage);
+		damage *= maxDamage;
 
 	if(powerupObject != NULL && withPup)
 		return damage +
@@ -390,7 +390,7 @@ float WeaponObjectImplementation::getMinDamage(bool withPup) {
 	float damage = minDamage;
 
 	if(sliced)
-		damage += (damageSlice * minDamage);
+		damage *= damageSlice;
 
 	if(powerupObject != NULL && withPup)
 		return damage +
