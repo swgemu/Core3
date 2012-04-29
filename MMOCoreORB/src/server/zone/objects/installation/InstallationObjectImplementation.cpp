@@ -607,7 +607,6 @@ void InstallationObjectImplementation::setHopperSizeMax(float size){
 }
 
 void InstallationObjectImplementation::updateStructureStatus() {
-	StructureObjectImplementation::updateStructureStatus();
 
 	updateInstallationWork();
 
