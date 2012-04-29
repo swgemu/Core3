@@ -92,16 +92,25 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 0;
 	} else if (selectedID == QUIT) {
 
-		ManagedReference<SceneObject*> bank = creature->getSlottedObject("bank");
+		SceneObject* bank = creature->getSlottedObject("bank");
+
+		ZoneServer* server = creature->getZoneServer();
 
 		/*It doens't check whether you're on your registered bank's planet
 		 * It probably doesn't matter though.
 		 * If anyone remembers you had to go to the correct planet for it we can change it */
 
 		if (bank->getContainerObjectsSize() == 0) {
-			// force close the bank window
-			bank->closeContainerTo(creature, true);
-			bank->notifyCloseContainer(creature);
+
+			bank->destroyObjectFromWorld(true);
+			bank = server->createObject(0xf5b8caa5, 1); //bank
+
+			if (bank == NULL) {
+				error("could not create bank");
+				return 0;
+			}
+
+			creature->transferObject(bank, 4);
 
 			// QUIT BANK
 			ghost->setBankLocation("");
