@@ -221,6 +221,10 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			}
 		}
 
+		oldZone->dropSceneObject(object);
+
+		zoneLocker.release();
+
 		while (activeAreas->size() > 0) {
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
 			area->enqueueExitEvent(object);
@@ -244,7 +248,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		Zone* oldZone = zone;
 		zone = NULL;
 
-		oldZone->dropSceneObject(object);
+
 	} catch (Exception& e) {
 
 	}
