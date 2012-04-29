@@ -140,13 +140,15 @@ void MissionObjectiveImplementation::awardReward() {
 			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
 			if (groupMember != NULL) {
 				//Play mission complete sound.
-				groupMember->sendMessage(pmm);
+				groupMember->sendMessage(pmm->clone());
 
 				if (groupMember->getWorldPosition().distanceTo(missionEndPoint) < 128) {
 					players.add(groupMember);
 				}
 			}
 		}
+
+		delete pmm;
 	} else {
 		//Play mission complete sound.
 		getPlayerOwner()->sendMessage(pmm);
