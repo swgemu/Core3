@@ -233,6 +233,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/scene/components/AiInterfaceComponent.h"
 
+#include "server/zone/objects/creature/variables/CreatureTemplateReference.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -505,7 +507,7 @@ protected:
 
 	Vector<ManagedReference<SceneObject* > > camouflagedObjects;
 
-	Reference<CreatureTemplate* > npcTemplate;
+	CreatureTemplateReference npcTemplate;
 
 	bool baby;
 

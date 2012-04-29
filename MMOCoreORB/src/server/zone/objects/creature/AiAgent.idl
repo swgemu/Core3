@@ -76,7 +76,7 @@ include server.zone.objects.player.FactionStatus;
 include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.objects.scene.components.AiInterfaceComponent;
-
+include server.zone.objects.creature.variables.CreatureTemplateReference;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -108,7 +108,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced 
 	protected Vector<SceneObject> camouflagedObjects;
 	
-	protected transient CreatureTemplate npcTemplate;
+	@dereferenced
+	protected CreatureTemplateReference npcTemplate;
 	
 	protected boolean baby;
 	
@@ -153,8 +154,6 @@ class AiAgent extends CreatureObject {
 		
 		despawnOnNoPlayerInRange = true;
 		numberOfPlayersInRange = 0;
-
-		npcTemplate = null;
 		
 		loadedOutfit = false;
 		
@@ -496,94 +495,94 @@ class AiAgent extends CreatureObject {
 	public native void clearDespawnEvent();
 	
 	public float getKinetic() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getKinetic();
+		return npcTemplate.get().getKinetic();
 	}
 	
 	public float getEnergy() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getEnergy();
+		return npcTemplate.get().getEnergy();
 	}
 	
 	public float getElectricity() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getElectricity();
+		return npcTemplate.get().getElectricity();
 	}
 	
 	public float getStun() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getStun();
+		return npcTemplate.get().getStun();
 	}
 	
 	public float getBlast() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getBlast();
+		return npcTemplate.get().getBlast();
 	}
 	
 	public float getHeat() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getHeat();
+		return npcTemplate.get().getHeat();
 	}
 	
 	public float getCold() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getCold();
+		return npcTemplate.get().getCold();
 	}
 	
 	public float getAcid() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getAcid();
+		return npcTemplate.get().getAcid();
 	}
 	
 	public float getLightSaber() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getLightSaber();
+		return npcTemplate.get().getLightSaber();
 	}
 	
 	public boolean isStalker() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return false;
 		
-		return npcTemplate.isStalker();
+		return npcTemplate.get().isStalker();
 	}
 	
 	public boolean isKiller() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return false;
 		
-		return npcTemplate.isKiller();
+		return npcTemplate.get().isKiller();
 	}
 	
 	public unsigned int getFerocity() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getFerocity();
+		return npcTemplate.get().getFerocity();
 	}
 	
 	public unsigned int getArmor() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getArmor();
+		return npcTemplate.get().getArmor();
 	}
 	
 	public boolean getDespawnOnNoPlayerInRange() {
@@ -595,68 +594,68 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public string getFactionString() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return "";
 		
-		return npcTemplate.getFaction();
+		return npcTemplate.get().getFaction();
 	}
 	
 	public string getSocialGroup() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return "";
 		
-		return npcTemplate.getSocialGroup();
+		return npcTemplate.get().getSocialGroup();
 	}
 	
 	public float getChanceHit() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return false;
 		
-		return npcTemplate.getChanceHit();
+		return npcTemplate.get().getChanceHit();
 	}
 	
 	public int getDamageMin() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getDamageMin();
+		return npcTemplate.get().getDamageMin();
 	}
 	
 	public int getDamageMax() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getDamageMax();
+		return npcTemplate.get().getDamageMax();
 	}
 	
 	public int getBaseXp() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getBaseXp();
+		return npcTemplate.get().getBaseXp();
 	}
 	
 	public unsigned int getDiet() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.getDiet();
+		return npcTemplate.get().getDiet();
 	}
 	
 	@local
 	public CreatureAttackMap getAttackMap() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return null;
 		
-		return npcTemplate.getAttacks();
+		return npcTemplate.get().getAttacks();
 	}
 	
 	@local
 	public LootGroupCollection getLootGroups() {
-		if (npcTemplate == null)
+		if (npcTemplate.get() == null)
 			return null;
 		
-		return npcTemplate.getLootGroups();
+		return npcTemplate.get().getLootGroups();
 	}
 	
 	public float getRespawnTimer() {
@@ -674,7 +673,7 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public CreatureTemplate getCreatureTemplate() {
-		return npcTemplate;
+		return npcTemplate.get();
 	}
 	
 	/*

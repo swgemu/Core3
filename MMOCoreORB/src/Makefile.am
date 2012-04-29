@@ -45,8 +45,8 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 #ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
-##CC = clang
-##CXX = clang++
+#CC = clang
+#CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -289,6 +289,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
