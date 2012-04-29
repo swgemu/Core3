@@ -102,15 +102,16 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		if (bank->getContainerObjectsSize() == 0) {
 
-			bank->destroyObjectFromWorld(true);
-			bank = server->createObject(0xf5b8caa5, 1); //bank
+			SceneObject* newBank = server->createObject(0xf5b8caa5, 1);
 
-			if (bank == NULL) {
-				error("could not create bank");
+			if (newBank == NULL) {
+				creature->sendSystemMessage("Error occured trying to quit bank. Please contact Support.");
 				return 0;
 			}
 
-			creature->transferObject(bank, 4);
+			bank->destroyObjectFromWorld(true);
+
+			creature->transferObject(newBank, 4);
 
 			// QUIT BANK
 			ghost->setBankLocation("");
