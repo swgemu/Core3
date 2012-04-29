@@ -28,6 +28,13 @@ void WeaponObjectImplementation::initializeTransientMembers() {
 
 	setLoggingName("WeaponObject");
 
+	if(damageSlice > 1.5 || damageSlice < 1) {
+		damageSlice = 1;
+	}
+
+	if(speedSlice > 1.0 || speedSlice < .5) {
+		speedSlice = 1;
+	}
 }
 
 void WeaponObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
