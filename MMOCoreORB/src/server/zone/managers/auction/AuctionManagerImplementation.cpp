@@ -604,6 +604,12 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
+	if (item->isSold()) {
+		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
+		player->sendMessage(msg);
+		return;
+	}
+
 	int res = checkBidAuction(player, item, price1, price2);
 
 	if (res != 0) {
