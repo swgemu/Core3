@@ -248,16 +248,15 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		CreatureObject* owner = building->getOwnerCreatureObject();
 
-		if (owner != NULL){
+		if (owner != NULL) {
+			PlayerObject* playerObject = owner->getPlayerObject();
 
-			if (owner->getPlayerObject()->getDeclaredResidence() == building){
-
+			if (playerObject != NULL && playerObject->getDeclaredResidence() == building){
 				uint64 creatureID = owner->getObjectID();
 
 				if (citizenList.contains(creatureID))
 					removeCitizen(creatureID);
 			}
-
 		}
 
 	}
