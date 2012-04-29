@@ -149,8 +149,10 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	ManagedReference<TangibleObject*> prototype = dynamic_cast<TangibleObject*> (zoneServer->createObject(directTemplateObject.hashCode(), 2));
 
-	if (prototype == NULL)
+	if (prototype == NULL) {
+		error("could not create loot object: " + directTemplateObject);
 		return NULL;
+	}
 
 	prototype->createChildObjects();
 
