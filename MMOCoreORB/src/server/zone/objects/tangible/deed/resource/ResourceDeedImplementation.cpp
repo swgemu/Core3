@@ -41,6 +41,9 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FREE_RESOURCE)) {
+		//ghost->closeSuiWindowType(SuiWindowType::FREE_RESOURCE);
+		ghost->removeSuiBoxType(SuiWindowType::FREE_RESOURCE);
+
 		return 0;
 	}
 

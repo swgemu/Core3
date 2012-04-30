@@ -1141,7 +1141,7 @@ void PlayerObjectImplementation::removeSuiBox(unsigned int boxID, bool closeWind
 void PlayerObjectImplementation::removeSuiBoxType(unsigned int windowType) {
 	SuiBox* sui = NULL;
 
-	if ((sui = getSuiBoxFromWindowType(windowType)) != NULL) {
+	while ((sui = getSuiBoxFromWindowType(windowType)) != NULL) {
 		removeSuiBox(sui->getBoxID(), true);
 	}
 }
