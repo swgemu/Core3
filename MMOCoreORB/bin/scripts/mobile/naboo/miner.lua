@@ -35,7 +35,7 @@ miner = Creature:new {
 				"object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff",
 				"object/mobile/dressed_commoner_tatooine_rodian_male_01.iff",
 				"object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff",
-				"object/mobile/dressed_commoner_naboo_moncal_male_02"},
+				"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
