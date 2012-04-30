@@ -1271,6 +1271,9 @@ class PlayerObject extends IntangibleObject {
 	
 	public void setVisibility(float value) {
 		visibility = value;
+		if (visibility > 504) {
+			visibility = 504;
+		}
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	}
 	

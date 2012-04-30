@@ -4737,6 +4737,11 @@ float PlayerObjectImplementation::getVisibility() {
 void PlayerObjectImplementation::setVisibility(float value) {
 	// server/zone/objects/player/PlayerObject.idl():  		visibility = value;
 	visibility = value;
+	// server/zone/objects/player/PlayerObject.idl():  		lastVisibilityUpdateTimestamp.
+	if (visibility > 504){
+	// server/zone/objects/player/PlayerObject.idl():  			visibility = 504;
+	visibility = 504;
+}
 	// server/zone/objects/player/PlayerObject.idl():  		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	(&lastVisibilityUpdateTimestamp)->updateToCurrentTime();
 }
