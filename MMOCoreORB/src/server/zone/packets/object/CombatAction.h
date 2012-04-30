@@ -53,8 +53,7 @@ class CombatAction : public ObjectControllerMessage {
 
 public:
 	// set the new posture of attacker and defender BEFORE constructing a CombatAction
-	// TODO: set trails in the weapon scripts and pass them to the message
-	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, uint8 trails = 0xFF) :
+	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, uint8 trails) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);
@@ -75,7 +74,7 @@ public:
 		insertByte(0x00); // DefenderSpecialMoveEffect: disabled in the client
 	}
 
-	CombatAction(CreatureObject* attacker, TangibleObject* defender, uint32 animcrc, uint8 hit, uint8 trails = 0xFF) :
+	CombatAction(CreatureObject* attacker, TangibleObject* defender, uint32 animcrc, uint8 hit, uint8 trails) :
 				ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);

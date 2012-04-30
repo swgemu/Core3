@@ -269,7 +269,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0)
-		damage = applyDamage(attacker, defender, damage, damageMultiplier, poolsToDamage);
+		damage = applyDamage(attacker, defender, damage, damageMultiplier, poolsToDamage, data);
 
 	if (defender->hasAttackDelay())
 		defender->removeAttackDelay();
@@ -747,7 +747,7 @@ int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defen
 	return (int)resist;
 }
 
-int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolToDamage) {
+int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data) {
 	if (poolToDamage == 0)
 		return 0;
 
@@ -785,7 +785,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 	int forceArmor = defender->getSkillMod("force_armor");
 
-	if (forceArmor > 0 && (weapon->getAttackType() != WeaponObject::FORCEATTACK) && defender->isPlayerCreature()){
+	if (forceArmor > 0 && (data.getAttackType() != CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
 		float originalDamage = damage;
 		damage *= (1.f - (forceArmor / 100.f));
 
@@ -1244,7 +1244,7 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
 	return poolsToDamage;
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage) {
+int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
@@ -1259,7 +1259,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	WeaponObject* weapon = attacker->getWeapon();
 
 	if (poolsToDamage & HEALTH) {
-		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH) * damageMultiplier;
+		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH, data) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::HEALTH + System::random(2), 1, true);
@@ -1268,7 +1268,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	}
 
 	if (poolsToDamage & ACTION) {
-		actionDamage = getArmorReduction(attacker, defender, damage, ACTION) * damageMultiplier;
+		actionDamage = getArmorReduction(attacker, defender, damage, ACTION, data) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::ACTION + System::random(2), 1, true);
@@ -1277,7 +1277,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	}
 
 	if (poolsToDamage & MIND) {
-		mindDamage = getArmorReduction(attacker, defender, damage, MIND) * damageMultiplier;
+		mindDamage = getArmorReduction(attacker, defender, damage, MIND, data) * damageMultiplier;
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::MIND + System::random(2), 1, true);

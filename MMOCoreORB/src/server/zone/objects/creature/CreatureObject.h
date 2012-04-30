@@ -634,7 +634,7 @@ public:
 
 	void doAnimation(const String& animation);
 
-	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit, byte trails);
 
 	void playEffect(const String& file, const String& aux);
 
@@ -1393,7 +1393,7 @@ public:
 
 	void doAnimation(const String& animation);
 
-	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit, byte trails);
 
 	void playEffect(const String& file, const String& aux);
 
@@ -1978,7 +1978,7 @@ public:
 
 	void doAnimation(const String& animation);
 
-	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit);
+	void doCombatAnimation(CreatureObject* defender, unsigned int animationCRC, byte hit, byte trails);
 
 	void playEffect(const String& file, const String& aux);
 

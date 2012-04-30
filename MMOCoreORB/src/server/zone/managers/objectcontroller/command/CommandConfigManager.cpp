@@ -416,6 +416,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
 
 	// trails
+	setGlobalInt("NOTRAIL", CombatManager::NOTRAIL);
 	setGlobalInt("LEFTFOOTTRAIL", CombatManager::LEFTFOOTTRAIL);
 	setGlobalInt("RIGHTFOOTTRAIL", CombatManager::RIGHTFOOTTRAIL);
 	setGlobalInt("LEFTHANDTRAIL", CombatManager::LEFTHANDTRAIL);

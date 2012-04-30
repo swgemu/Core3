@@ -61,6 +61,8 @@ AttackCommand = {
 	--dotPotency = 2,
 
 	range = -1,
+	
+	trails = NOTRAIL,
 
 	poolsToDamage = RANDOM_ATTRIBUTE
 }

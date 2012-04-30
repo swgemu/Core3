@@ -1563,8 +1563,8 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	maxRangeAccuracy = 0;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageType = 0;
 	damageType = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		bladeColor = 0;
-	bladeColor = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		bladeColor = 31;
+	bladeColor = 31;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		minDamage = 1;
 	minDamage = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxDamage = 10;
@@ -1579,10 +1579,10 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	weaponTemplate = NULL;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice = 0;
-	damageSlice = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 0;
-	speedSlice = 0;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice = 1;
+	damageSlice = 1;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 1;
+	speedSlice = 1;
 }
 
 Vector<String>* WeaponObjectImplementation::getDamageModifiers() {

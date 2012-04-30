@@ -1159,7 +1159,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native void doAnimation(final string animation);
-	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit);
+	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
 	
 	public native void playEffect(final string file, final string aux);
 	

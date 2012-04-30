@@ -56,6 +56,8 @@ ForceLightningCone1Command = {
 	combatSpam = "forcelightningcone1",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	attackType = FORCEATTACK,
 
 	range = 32
 }

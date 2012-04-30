@@ -54,6 +54,8 @@ ForceLightningSingle1Command = {
 	combatSpam = "forcelightningsingle1",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	attackType = FORCEATTACK,
 
 	range = 32
 }

@@ -1766,8 +1766,8 @@ void CreatureObjectImplementation::executeObjectControllerAction(
 }
 
 void CreatureObjectImplementation::doCombatAnimation(CreatureObject* defender,
-		uint32 animcrc, byte hit) {
-	CombatAction* action = new CombatAction(_this, defender, animcrc, hit);
+		uint32 animcrc, byte hit, byte trails) {
+	CombatAction* action = new CombatAction(_this, defender, animcrc, hit, trails);
 
 	broadcastMessage(action, true);
 }

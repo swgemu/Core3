@@ -298,9 +298,6 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	int color = getBladeColor();
 
-	if (color == 0){ // Initialized color (none).
-		color = 31;
-	}
 
 	saberColor << "@jedi_spam:saber_color_" << color;
 

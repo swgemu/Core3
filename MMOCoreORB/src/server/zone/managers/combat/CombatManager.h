@@ -30,7 +30,8 @@ public:
 	const static int REFLECT = 0x08;
 	const static int REFLECT_TO_TARGET = 0x09;
 
-	// trails bitmask: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
+	// trails bitmask
+	const static int NOTRAIL = 0x00;
 	const static int LEFTFOOTTRAIL = 0x01;
 	const static int RIGHTFOOTTRAIL = 0x02;
 	const static int LEFTHANDTRAIL = 0x04;
@@ -191,11 +192,11 @@ protected:
 	void doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
-	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage);
+	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
-	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolsToDamage);
+	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
 	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
 	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
