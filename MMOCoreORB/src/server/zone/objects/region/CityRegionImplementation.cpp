@@ -54,7 +54,7 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		seconds = 0;
 
 	rescheduleUpdateEvent(seconds);
-	*/
+	 */
 
 	if (hasShuttle){
 		CreatureObject* shuttle = cast<CreatureObject*>( zone->getZoneServer()->getObject(shuttleID, false));
@@ -347,10 +347,10 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 		cityStructureInventory.get(uint8(2)).drop(structure);
 
 	else if(cityStructureInventory.get(uint8(3)).contains(structure))
-			cityStructureInventory.get(uint8(3)).drop(structure);
+		cityStructureInventory.get(uint8(3)).drop(structure);
 
 	else if(cityStructureInventory.get(uint8(4)).contains(structure))
-			cityStructureInventory.get(uint8(4)).drop(structure);
+		cityStructureInventory.get(uint8(4)).drop(structure);
 
 
 }
@@ -390,28 +390,32 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	int structureCount = sceneObjects->size();
 	int i;
 
-	StructureManager* manager = zone->getStructureManager();
 
 	if (structureCount > 0){
-
-		for(i = structureCount - 1; i >= 0; i--){
-
+		for (i = structureCount - 1; i >= 0; i--){
 			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
 
 			Locker locker(sceo, _this);
 
-			if (sceo->isStructureObject()) {
-				manager->destroyStructure(cast<StructureObject*>(sceo.get()));
-			} else {
-				sceo->destroyObjectFromWorld(true);
-				sceo->destroyObjectFromDatabase(true);
+			Zone* zoneObject = sceo->getZone();
 
-				sceneObjects->drop(sceo);
+			if (zoneObject != NULL) {
+				StructureManager* manager = zoneObject->getStructureManager();
+
+				if (manager != NULL) {
+					if (sceo->isStructureObject()) {
+						manager->destroyStructure(cast<StructureObject*>(sceo.get()));
+					} else {
+						sceo->destroyObjectFromWorld(true);
+						sceo->destroyObjectFromDatabase(true);
+
+						sceneObjects->drop(sceo);
+					}
+				}
+
 			}
 		}
 	}
-
-
 }
 
 void CityRegionImplementation::updateMilitia(){
@@ -434,7 +438,7 @@ void CityRegionImplementation::removeAllTerminals(){
 		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
 		cityMissionTerminals.get(i)->destroyObjectFromDatabase(false);
 	}
-	
+
 	cityMissionTerminals.removeAll();
 }
 
