@@ -4,7 +4,7 @@ gong_structure_03 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/collectible/collectible_parts/gong_structure_03.if",
+	directObjectTemplate = "object/tangible/loot/collectible/collectible_parts/gong_structure_03.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
