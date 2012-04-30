@@ -1775,7 +1775,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Star Map", "object/tangible/painting/painting_starmap.iff",
 					"Tatooine 3", "object/tangible/painting/painting_tato_s03.iff",
 					"Tatooine 4", "object/tangible/painting/painting_tato_s04.iff",
-					"Teras Kasi", "object/tangible/painting/painting_teras kasi.iff",
+					"Teras Kasi", "object/tangible/painting/painting_teras_kasi.iff",
 					"Teras Kasi 2", "object/tangible/painting/painting_teras_kasi_2.iff",
 					"Trandoshan (male)", "object/tangible/painting/painting_trandoshan_m.iff",
 					"Trandoshan (male Style 1)", "object/tangible/painting/painting_trandoshan_m_01.iff",
