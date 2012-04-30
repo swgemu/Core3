@@ -211,8 +211,12 @@ Vector3 DestroyMissionObjectiveImplementation::getEndPosition() {
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
-	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+
+	Zone* zone = getPlayerOwner()->getZone();
+
+	if (zone != NULL) {
+		missionEndPoint.setZ(zone->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
+	}
 
 	return missionEndPoint;
 }
