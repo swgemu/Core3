@@ -129,15 +129,23 @@ void MissionObjectiveImplementation::fail() {
 }
 
 void MissionObjectiveImplementation::awardReward() {
-	Vector<CreatureObject*> players;
+	Vector<ManagedReference<CreatureObject*> > players;
 	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
 
 	Vector3 missionEndPoint = getEndPosition();
 
+	CreatureObject* owner = getPlayerOwner();
+
+	Locker locker(owner);
+
 	ManagedReference<GroupObject*> group = getPlayerOwner()->getGroup();
+
 	if (group != NULL) {
-		for(int i=0; i<group->getGroupSize(); i++) {
+		Locker lockerGroup(group, owner);
+
+		for(int i = 0; i < group->getGroupSize(); i++) {
 			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+
 			if (groupMember != NULL) {
 				//Play mission complete sound.
 				groupMember->sendMessage(pmm->clone());
@@ -151,8 +159,12 @@ void MissionObjectiveImplementation::awardReward() {
 		delete pmm;
 	} else {
 		//Play mission complete sound.
-		getPlayerOwner()->sendMessage(pmm);
-		players.add(getPlayerOwner());
+		owner->sendMessage(pmm);
+		players.add(owner);
+	}
+
+	if (players.size() == 0) {
+		players.add(owner);
 	}
 
 	int dividedReward = mission->getRewardCredits() / players.size();
@@ -163,7 +175,7 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
-		Locker locker(player);
+		Locker lockerPl(player, owner);
 		player->addBankCredits(dividedReward, true);
 	}
 }
