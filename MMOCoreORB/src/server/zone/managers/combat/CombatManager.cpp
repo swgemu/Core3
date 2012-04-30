@@ -463,6 +463,8 @@ int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int da
 	if (damType != WeaponObject::LIGHTSABER)
 		toughness += defender->getSkillMod("jedi_toughness");
 
+	toughness += defender->getSkillMod("mitigate_damage");
+
 	return toughness;
 }
 

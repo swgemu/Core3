@@ -58,7 +58,7 @@ public:
 	const static int GRENADE = 0x1000;
 	const static int LIGHTNINGRIFLE = 0x2000;
 
-	// does not need to be bitmasked, these are just used so we know if we use a weapon or not in a command (nota  bool for extensibility)
+	// does not need to be bitmasked, these are just used so we know if we use a weapon or not in a command (not a bool for extensibility)
 	const static int WEAPONATTACK = 0x0;
 	const static int FORCEATTACK = 0x1;
 
