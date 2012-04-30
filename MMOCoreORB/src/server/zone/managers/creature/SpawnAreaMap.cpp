@@ -91,9 +91,11 @@ void SpawnAreaMap::loadStaticSpawns() {
 			float z = obj.getFloatAt(4);
 			float y = obj.getFloatAt(5);
 			float heading = obj.getFloatAt(6);
-			lua_rawgeti(obj.getLuaState(), -1, 7);
-			uint64 parentID = (uint64)lua_tonumber(obj.getLuaState(), -1);
-			lua_pop(obj.getLuaState(), 1);
+			uint64 parentID = obj.getLongAt(7);
+			String moodString;
+
+			if (obj.getTableSize() > 7)
+				moodString = obj.getStringAt(8);
 
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
@@ -102,6 +104,9 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));
+
+				if (!moodString.isEmpty())
+					creatureObject->setMoodString(moodString);
 
 				if (creatureObject->isAiAgent()) {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
