@@ -103,15 +103,15 @@ public:
 		insertLong(objectID);
 
 		StringBuffer title;
-		title << planet << ".@";
+		title << planet << ".";
 		
 		int x = sceno->getWorldPositionX();
 		int y = sceno->getWorldPositionY();
 
 		if (!vendor->isBazaarTerminal())
-			title << "planet_n:" << planet <<  ".Vendor: " << vendorName; // VendorName
+			title << "@planet_n:" << planet <<  ".Vendor: " << vendorName; // VendorName
 		else
-			title << planet << "_region_names:" << header << ".@terminal_name:terminal_bazaar";
+			title << header << "." << sceno->getDisplayedName();
 		
 		title << "." << objectID << "#" << x << "," << y;
 		

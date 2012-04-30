@@ -11,12 +11,12 @@ void AuctionItemImplementation::setLocation(const String& planet, const String& 
 	location = header;
 
 	StringBuffer title;
-	title << planet << ".@";
+	title << planet << ".";
 
 	if (vendor)
-		title << "planet_n:" << planet <<  ".Vendor: " << header;
+		title << "@planet_n:" << planet <<  ".Vendor: " << header;
 	else
-		title << planet << "_region_names:" << header << ".@:";
+		title << header << ".@terminal_name:terminal_bazaar";
 
 	title << "." << vendorid << "#" << x << "," << z;
 	terminalTitle = title.toString();
