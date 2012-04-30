@@ -72,6 +72,9 @@ protected:
 	VectorMap<uint64, StateEffect> stateEffects;
 	VectorMap<uint64, DotEffect> dotEffects;
 
+	uint8 attackType;
+	uint8 trails;
+
 public:
 
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
@@ -122,6 +125,9 @@ public:
 
 		combatSpam = "";
 		animationCRC = 0;
+
+		attackType = CombatManager::WEAPONATTACK;
+		trails = CombatManager::DEFAULTTRAIL;
 	}
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
@@ -601,6 +607,22 @@ public:
 			break;
 		}
 		return;
+	}
+
+	uint8 getAttackType() const {
+		return attackType;
+	}
+
+	void setAttackType(uint8 attackType) {
+		this->attackType = attackType;
+	}
+
+	uint8 getTrails() const {
+		return trails;
+	}
+
+	void setTrails(uint8 trails) {
+		this->trails = trails;
 	}
 
 };

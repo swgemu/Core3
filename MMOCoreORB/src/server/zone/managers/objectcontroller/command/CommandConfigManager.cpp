@@ -414,6 +414,18 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("HEALTHDEGRADE_EFFECT", CommandEffect::HEALTHDEGRADE);
 	setGlobalInt("ACTIONDEGRADE_EFFECT", CommandEffect::ACTIONDEGRADE);
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
+
+	// trails
+	setGlobalInt("LEFTFOOTTRAIL", CombatManager::LEFTFOOTTRAIL);
+	setGlobalInt("RIGHTFOOTTRAIL", CombatManager::RIGHTFOOTTRAIL);
+	setGlobalInt("LEFTHANDTRAIL", CombatManager::LEFTHANDTRAIL);
+	setGlobalInt("RIGHTHANDTRAIL", CombatManager::RIGHTHANDTRAIL);
+	setGlobalInt("WEAPONTRAIL", CombatManager::WEAPONTRAIL);
+	setGlobalInt("DEFAULTTRAIL", CombatManager::DEFAULTTRAIL);
+
+	// attack types
+	setGlobalInt("WEAPONATTACK", CombatManager::WEAPONATTACK);
+	setGlobalInt("FORCEATTACK", CombatManager::FORCEATTACK);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -481,7 +493,9 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 
 	} else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
 		CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(slashCommand);
-		if (varName == "damageMultiplier")
+		if (varName == "attackType")
+			combatCommand->setAttackType(Lua::getIntParameter(L));
+		else if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "accuracyBonus")
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
@@ -523,6 +537,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
 		else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
+		else if (varName == "trails")
+			combatCommand->setTrails(Lua::getIntParameter(L));
 		else if (varName == "stateEffects") {
 			LuaObject states(L);
 

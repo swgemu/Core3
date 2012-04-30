@@ -47,6 +47,9 @@ protected:
     VectorMap<uint64, StateEffect>* stateEffects;
     VectorMap<uint64, DotEffect>* dotEffects;
 
+	uint8 attackType;
+	uint8 trails;
+
 public:
     CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
     CreatureAttackData(const CreatureAttackData& data);
@@ -152,6 +155,22 @@ public:
 
 	void setAnimationCRC(uint32 animationCRC) {
 		this->animationCRC = animationCRC;
+	}
+
+	uint8 getAttackType() const {
+		return attackType;
+	}
+
+	void setAttackType(uint8 attackType) {
+		this->attackType = attackType;
+	}
+
+	uint8 getTrails() const {
+		return trails;
+	}
+
+	void setTrails(uint8 trails) {
+		this->trails = trails;
 	}
 };
 

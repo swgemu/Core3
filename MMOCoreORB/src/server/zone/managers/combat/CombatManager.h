@@ -36,6 +36,7 @@ public:
 	const static int LEFTHANDTRAIL = 0x04;
 	const static int RIGHTHANDTRAIL = 0x08;
 	const static int WEAPONTRAIL = 0x10;
+	const static int DEFAULTTRAIL = 0xFF;
 
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
@@ -56,6 +57,10 @@ public:
 	const static int RIFLE = 0x800;
 	const static int GRENADE = 0x1000;
 	const static int LIGHTNINGRIFLE = 0x2000;
+
+	// does not need to be bitmasked, these are just used so we know if we use a weapon or not in a command (nota  bool for extensibility)
+	const static int WEAPONATTACK = 0x0;
+	const static int FORCEATTACK = 0x1;
 
 public:
 	CombatManager() {

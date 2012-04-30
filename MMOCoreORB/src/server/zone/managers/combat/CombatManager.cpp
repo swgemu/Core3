@@ -1427,10 +1427,10 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	if (!attacker->isCreature() && animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
-	// TODO: this might need a randomize like player CRCs
+	// TODO: this needs to be fixed.
 	if (attacker->isCreature() && animationCRC == 0) {
 		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
-			animationCRC = String("fire_3_single_light").hashCode();
+			animationCRC = String("droid_attack_light").hashCode();
 		} else {
 			animationCRC = String("creature_attack_light").hashCode();
 		}
@@ -1438,13 +1438,12 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	}
 
 	if (defenderObject->isCreatureObject())
-		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit);
+		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data.getTrails());
 	else
-		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit);
+		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails());
 
 	attacker->broadcastMessage(combatAction, true);
 
-	// TODO: this might be in the CombatAction packet
 	String effect = data.getCommand()->getEffectString();
 
 	if (!effect.isEmpty())
