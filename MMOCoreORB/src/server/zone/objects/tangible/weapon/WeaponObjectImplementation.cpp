@@ -7,6 +7,7 @@
 
 #include "WeaponObject.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage3.h"
+#include "server/zone/packets/tangible/WeaponObjectMessage6.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -137,6 +138,9 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
 	player->sendMessage(weao3);
+
+	BaseMessage* weao6 = new WeaponObjectMessage6(_this);
+	player->sendMessage(weao6);
 }
 
 void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

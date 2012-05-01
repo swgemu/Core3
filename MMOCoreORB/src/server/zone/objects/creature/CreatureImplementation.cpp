@@ -31,6 +31,9 @@ void CreatureImplementation::initializeTransientMembers() {
 }
 
 void CreatureImplementation::runAway(CreatureObject* target) {
+	return;
+
+
 	if (target == NULL)
 		return;
 
