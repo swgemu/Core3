@@ -27,7 +27,7 @@ indigo_siyan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_indigo_siyan.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

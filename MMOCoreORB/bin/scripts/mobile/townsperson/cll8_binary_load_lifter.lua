@@ -1,5 +1,5 @@
-artisan = Creature:new {
-	objectName = "@mob/creature_names:artisan",
+cll8_binary_load_lifter = Creature:new {
+	objectName = "@mob/creature_names:commoner",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -11,7 +11,7 @@ artisan = Creature:new {
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,13 @@ artisan = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
+	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
+	templates = {
+		"object/mobile/cll8_binary_load_lifter.iff"
+	},		
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -34,4 +36,4 @@ artisan = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(artisan, "artisan")
+CreatureTemplates:addCreatureTemplate(cll8_binary_load_lifter, "cll8_binary_load_lifter")

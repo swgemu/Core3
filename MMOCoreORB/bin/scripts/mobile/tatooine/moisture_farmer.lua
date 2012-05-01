@@ -25,7 +25,7 @@ moisture_farmer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff", "object/mobile/dressed_commoner_tatooine_bith_female_02.iff", "object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

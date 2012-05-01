@@ -1,7 +1,8 @@
-kahfr_oladi = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist04",
-	socialGroup = "Artist",
-	pvpFaction = "",
+jowir_arlensa = Creature:new {
+	objectName = "",
+	customName = "Jowir Ar'Lensa",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -26,7 +27,9 @@ kahfr_oladi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist04.iff"},
+	templates = {
+		"object/mobile/dressed_jowir_arlensa.iff"
+	},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
@@ -34,4 +37,4 @@ kahfr_oladi = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(kahfr_oladi, "kahfr_oladi")
+CreatureTemplates:addCreatureTemplate(jowir_arlensa, "jowir_arlensa")

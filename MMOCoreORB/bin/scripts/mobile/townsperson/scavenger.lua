@@ -1,7 +1,7 @@
-artisan = Creature:new {
-	objectName = "@mob/creature_names:artisan",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+scavenger = Creature:new {
+	objectName = "@mob/creature_names:scavenger",
+	socialGroup = "Townperson",
+	pvpFaction = "Townperson",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,
@@ -11,7 +11,7 @@ artisan = Creature:new {
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,1,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,11 @@ artisan = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
+	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
+	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ artisan = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(artisan, "artisan")
+CreatureTemplates:addCreatureTemplate(scavenger, "scavenger")

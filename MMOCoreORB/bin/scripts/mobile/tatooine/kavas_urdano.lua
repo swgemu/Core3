@@ -27,7 +27,7 @@ kavas_urdano = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kavas_urdano.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

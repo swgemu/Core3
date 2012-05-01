@@ -1,6 +1,6 @@
-rakir_banai = Creature:new {
-	objectName = "",
-	customName = "Rakir Banai",
+willhalm_skrim = Creature:new {
+	objectName = "@theme_park_name:willhalm_skrim",
+	customName = "Wilhalm Skrim",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +27,7 @@ rakir_banai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_rakir_banai.iff"},
+	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ rakir_banai = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(rakir_banai, "rakir_banai")
+CreatureTemplates:addCreatureTemplate(willhalm_skrim, "willhalm_skrim")

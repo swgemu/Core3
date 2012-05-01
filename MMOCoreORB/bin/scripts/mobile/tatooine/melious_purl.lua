@@ -1,4 +1,4 @@
-melios_purl = Creature:new {
+melious_purl = Creature:new {
 	objectName = "",
 	customName = "Melios Purl",
 	socialGroup = "Townsperson",
@@ -27,7 +27,7 @@ melios_purl = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_melious_purl.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ melios_purl = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(melios_purl, "melios_purl")
+CreatureTemplates:addCreatureTemplate(melious_purl, "melious_purl")

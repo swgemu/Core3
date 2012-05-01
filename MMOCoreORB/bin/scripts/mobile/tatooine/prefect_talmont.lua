@@ -1,6 +1,6 @@
-rakir_banai = Creature:new {
+prefect_talmont = Creature:new {
 	objectName = "",
-	customName = "Rakir Banai",
+	customName = "Phinea Shantee",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +27,7 @@ rakir_banai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_rakir_banai.iff"},
+	templates = {"object/mobile/prefect_talmont.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ rakir_banai = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(rakir_banai, "rakir_banai")
+CreatureTemplates:addCreatureTemplate(prefect_talmont, "prefect_talmont")

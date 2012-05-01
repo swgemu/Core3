@@ -1,6 +1,6 @@
-lesser_desert_romp_rat = Creature:new {
+lesser_desert_womprat = Creature:new {
 	objectName = "@mob/creature_names:lesser_desert_womprat",
-	socialGroup = "Les. Des. W'rat",
+	socialGroup = "lesser_desert_womprat",
 	pvpFaction = "",
 	faction = "",
 	level = 5,
@@ -26,7 +26,7 @@ lesser_desert_romp_rat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
+	templates = {"object/mobile/womp_rat_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ lesser_desert_romp_rat = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(lesser_desert_romp_rat, "lesser_desert_romp_rat")
+CreatureTemplates:addCreatureTemplate(lesser_desert_womprat, "lesser_desert_womprat")

@@ -1,14 +1,13 @@
-wilhalm_skrim = Creature:new {
-	objectName = "",
-	customName = "Wilhalm Skrim",
+theater_manager = Creature:new {
+	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
 	socialGroup = "Townsperson",
-	pvpFaction = "",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
-	baseXp = 356,
+	baseXp = 292,
 	baseHAM = 810,
 	baseHAMmax = 990,
 	armor = 0,
@@ -23,16 +22,19 @@ wilhalm_skrim = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
+	templates = {
+		"object/mobile/dressed_entertainer_trainer_twk_female_01.iff",
+		"object/mobile/dressed_entertainer_trainer_twk_male_01.iff"
+	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(wilhalm_skrim, "wilhalm_skrim")
+CreatureTemplates:addCreatureTemplate(theater_manager, "theater_manager")

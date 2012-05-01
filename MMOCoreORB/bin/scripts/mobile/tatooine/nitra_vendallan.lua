@@ -27,7 +27,7 @@ nitra_vendallan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_nitra_vendallan.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

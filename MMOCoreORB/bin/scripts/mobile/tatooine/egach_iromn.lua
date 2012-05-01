@@ -1,6 +1,6 @@
-rakir_banai = Creature:new {
+egach_iromn = Creature:new {
 	objectName = "",
-	customName = "Rakir Banai",
+	customName = "Egach Iromn",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -12,7 +12,7 @@ rakir_banai = Creature:new {
 	baseHAM = 810,
 	baseHAMmax = 990,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {0,0,0,0,10,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,13 +26,13 @@ rakir_banai = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-
-	templates = {"object/mobile/dressed_tatooine_rakir_banai.iff"},
+	
+	templates = {"object/mobile/dressed_bestine_capitol04.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(rakir_banai, "rakir_banai")
+CreatureTemplates:addCreatureTemplate(egach_iromn, "egach_iromn")

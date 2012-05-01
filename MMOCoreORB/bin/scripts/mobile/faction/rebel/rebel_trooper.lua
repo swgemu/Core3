@@ -26,7 +26,11 @@ rebel_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff","object/mobile/dressed_rebel_trooper_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff",
+		"object/mobile/dressed_rebel_trooper_human_male_01.iff",
+		"object/mobile/dressed_rebel_trooper_bith_m_01.iff"
+	},
 	lootGroups = {
 		{
 			groups = {

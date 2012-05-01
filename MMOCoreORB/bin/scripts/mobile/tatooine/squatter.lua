@@ -25,7 +25,12 @@ squatter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_commoner_fat_twilek_male_01.iff",
+		"object/mobile/dressed_commoner_fat_zabrak_male_02.iff",
+		"object/mobile/dressed_commoner_fat_twilek_female_01.iff",
+		"object/mobile/dressed_commoner_tatooine_rodian_female_03.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

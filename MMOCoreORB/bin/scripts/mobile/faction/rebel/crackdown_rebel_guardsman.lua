@@ -1,17 +1,17 @@
-crackdown_scout_trooper = Creature:new {
-	objectName = "@mob/creature_names:crackdown_scout_trooper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "imperial",
+crackdown_rebel_guardsman = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_guardsman",
+	socialGroup = "Rebel",
+	pvpFaction = "Rebel",
+	faction = "rebel",
 	level = 1,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 30,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 45,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
-	resists = {15,15,0,0,0,-1,0,-1,-1},
+	resists = {0,0,40,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,11 @@ crackdown_scout_trooper = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = NONE,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_scout_trooper_white_white.iff"},
+	templates = {"object/mobile/dressed_rebel_trooper_twk_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -40,10 +40,10 @@ crackdown_scout_trooper = Creature:new {
 			lootChance = 4000000
 		}		
 	},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_scout_trooper, "crackdown_scout_trooper")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_guardsman, "crackdown_rebel_guardsman")

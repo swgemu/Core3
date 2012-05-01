@@ -1,7 +1,7 @@
-settler = Creature:new {
-	objectName = "@mob/creature_names:settler",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
+patron_nikto = Creature:new {
+	objectName = "@mob/creature_names:patron_nikto",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 6,
 	chanceHit = 0.250000,
@@ -21,18 +21,16 @@ settler = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = NONE,
+	pvpBitmask = NONE,
+	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_commoner_naboo_twilek_female_01.iff",
-		"object/mobile/dressed_commoner_tatooine_bith_female_03.iff",
-		"object/mobile/dressed_commoner_old_human_male_02.iff"
+		"object/mobile/dressed_patron_nikto_01.iff"
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(settler, "settler")
+CreatureTemplates:addCreatureTemplate(patron_nikto, "patron_nikto")

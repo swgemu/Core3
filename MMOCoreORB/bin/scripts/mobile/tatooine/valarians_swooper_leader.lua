@@ -26,7 +26,12 @@ valarians_swooper_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
+	templates = {
+		"object/mobile/dressed_tatooine_valarian_swooper_leader.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_goon_twk_male_01.iff"
+	},
 	lootGroups = {
 	    {
 			groups = {

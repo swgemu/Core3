@@ -1,17 +1,17 @@
-crackdown_scout_trooper = Creature:new {
-	objectName = "@mob/creature_names:crackdown_scout_trooper",
+coa2_imperial_coordinator = Creature:new {
+	objectName = "@mob/creature_names:coa2_imperial_coordinator",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "imperial",
-	level = 1,
-	chanceHit = 0.35,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 30,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	level = 25,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 2443,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
-	resists = {15,15,0,0,0,-1,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,12 +21,12 @@ crackdown_scout_trooper = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_scout_trooper_white_white.iff"},
+	templates = {"object/mobile/dressed_imperial_officer_m_3.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -38,7 +38,7 @@ crackdown_scout_trooper = Creature:new {
 				{group = "armor_attachments", chance = 1100000}
 			},
 			lootChance = 4000000
-		}		
+		}			
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
@@ -46,4 +46,4 @@ crackdown_scout_trooper = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_scout_trooper, "crackdown_scout_trooper")
+CreatureTemplates:addCreatureTemplate(coa2_imperial_coordinator, "coa2_imperial_coordinator")
