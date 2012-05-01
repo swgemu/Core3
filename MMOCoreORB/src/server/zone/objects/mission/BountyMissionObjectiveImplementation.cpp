@@ -21,6 +21,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/mission/bountyhunter/BountyHunterDroid.h"
 #include "server/zone/objects/mission/bountyhunter/events/BountyHunterTargetTask.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 void BountyMissionObjectiveImplementation::setNpcTemplateToSpawn(SharedObjectTemplate* sp) {
 	npcTemplateToSpawn = sp;
@@ -433,6 +434,14 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 	if (getPlayerOwner() != NULL && killer != NULL) {
 		if (getPlayerOwner()->getObjectID() == killer->getObjectID()) {
 			//Target killed by player, complete mission.
+			ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+			if (zoneServer != NULL) {
+				ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+				if (target != NULL) {
+					VisibilityManager::instance()->clearVisibility(target);
+				}
+			}
+
 			complete();
 		} else if (mission->getTargetObjectId() == killer->getObjectID() ||
 				(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {

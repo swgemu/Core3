@@ -109,6 +109,7 @@ which carries forward this exception.
 #include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1016,6 +1017,9 @@ void PlayerObjectImplementation::notifyOnline() {
 			parent->sendMessage(notifyStatus);
 		}
 	}
+
+	//Login to visibility manager
+	VisibilityManager::instance()->login(playerCreature);
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1026,7 +1030,9 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	Vector<String>* reverseTable = friendList.getReverseTable();
 
-	String firstName = (cast<CreatureObject*>(parent.get()))->getFirstName();
+	ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(parent.get());
+
+	String firstName = playerCreature->getFirstName();
 	firstName = firstName.toLowerCase();
 
 	for (int i = 0; i < reverseTable->size(); ++i) {
@@ -1037,6 +1043,9 @@ void PlayerObjectImplementation::notifyOffline() {
 			player->sendMessage(notifyStatus);
 		}
 	}
+
+	//Logout from visibility manager
+	VisibilityManager::instance()->logout(playerCreature);
 }
 
 void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {

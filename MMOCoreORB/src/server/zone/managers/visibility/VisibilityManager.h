@@ -62,7 +62,7 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * Any player with a visibility greater than or equal to this amount will be
 	 * available on the bounty hunter mission terminal as a player bounty.
 	 */
-	static const int TERMINALVISIBILITYLIMIT = 20;
+	static const int TERMINALVISIBILITYLIMIT = 24;
 
 	/**
 	 * Rebel faction string.

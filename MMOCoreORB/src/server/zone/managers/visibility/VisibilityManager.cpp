@@ -56,13 +56,13 @@ const unsigned int VisibilityManager::factionImperial = factionStringImperial.ha
 void VisibilityManager::addPlayerToBountyList(CreatureObject* creature, int reward) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->addPlayerToBountyList(creature->getObjectID(), reward);
-	info("Adding player " + String::valueOf(creature->getObjectID()) + " to bounty hunter list.", true);
+	//info("Adding player " + String::valueOf(creature->getObjectID()) + " to bounty hunter list.", true);
 }
 
 void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
 	missionManager->removePlayerFromBountyList(creature->getObjectID());
-	info("Dropping player " + String::valueOf(creature->getObjectID()) + " from bounty hunter list.", true);
+	//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from bounty hunter list.", true);
 }
 
 int VisibilityManager::calculateReward(float visibility) {
@@ -97,7 +97,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 		}
 	}
 
-	info("Increasing visibility for player " + String::valueOf(creature->getObjectID()) + " with " + String::valueOf(visibilityIncrease), true);
+	//info("Increasing visibility for player " + String::valueOf(creature->getObjectID()) + " with " + String::valueOf(visibilityIncrease), true);
 	return visibilityIncrease;
 }
 
@@ -105,13 +105,12 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
+		Locker locker(ghost);
 		float visibilityDecrease = ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.f / 3600.f;
 		if (ghost->getVisibility() <= visibilityDecrease) {
 			clearVisibility(creature);
 		} else {
-			Locker locker(ghost);
 			ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
-			locker.release();
 
 			if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
 				removePlayerFromBountyList(creature);
@@ -126,6 +125,7 @@ VisibilityManager::VisibilityManager() {
 }
 
 void VisibilityManager::login(CreatureObject* creature) {
+	//info("Logging in " + creature->getFirstName(), true);
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
@@ -134,7 +134,7 @@ void VisibilityManager::login(CreatureObject* creature) {
 		Locker locker(&visibilityListLock);
 
 		if ((ghost->getVisibility() > 0) && (!visibilityList.contains(creature->getObjectID()))) {
-			info("Adding player " + String::valueOf(creature->getObjectID()) + " to visibility list.", true);
+			//info("Adding player " + String::valueOf(creature->getObjectID()) + " to visibility list.", true);
 			visibilityList.put(creature->getObjectID(), creature);
 		}
 
@@ -147,10 +147,11 @@ void VisibilityManager::login(CreatureObject* creature) {
 }
 
 void VisibilityManager::logout(CreatureObject* creature) {
+	//info("Logging out " + creature->getFirstName(), true);
 	Locker locker(&visibilityListLock);
 
 	if (visibilityList.contains(creature->getObjectID())) {
-		info("Dropping player " + String::valueOf(creature->getObjectID()) + " from visibility list.", true);
+		//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from visibility list.", true);
 		visibilityList.drop(creature->getObjectID());
 
 		removePlayerFromBountyList(creature);
@@ -158,12 +159,14 @@ void VisibilityManager::logout(CreatureObject* creature) {
 }
 
 void VisibilityManager::increaseVisibility(CreatureObject* creature) {
+	//info("Increasing visibility for " + creature->getFirstName(), true);
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
 		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature));
+		//info("New visibility for " + creature->getFirstName() + " is " + String::valueOf(ghost->getVisibility()), true);
 		locker.release();
 
 		login(creature);
@@ -174,7 +177,7 @@ void VisibilityManager::clearVisibility(CreatureObject* creature) {
 	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
 
 	if (ghost != NULL) {
-		info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
+		//info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
 
 		Locker locker(ghost);
 		ghost->setVisibility(0);
@@ -185,6 +188,7 @@ void VisibilityManager::clearVisibility(CreatureObject* creature) {
 }
 
 void VisibilityManager::performVisiblityDecay() {
+	//info("Performing visibility decay", true);
 	Locker locker(&visibilityListLock);
 
 	for (int i = 0; i < visibilityList.size(); i++) {
