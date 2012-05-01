@@ -14,32 +14,32 @@
 namespace server {
   namespace login {
 
-	class LoginSessionMap : public HashTable<uint64, LoginClient*>,
-			public HashTableIterator<uint64, LoginClient*> {
+	class LoginSessionMap : private HashTable<uint64, Reference<LoginClient*> >,
+			public HashTableIterator<uint64, Reference<LoginClient*> > {
 
 		int maxConnections;
 	public:
-		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, LoginClient*>((int) (maxconn * 1.25f)),
-				HashTableIterator<uint64, LoginClient*>(this) {
+		LoginSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<LoginClient*> >((int) (maxconn * 1.25f)),
+				HashTableIterator<uint64, Reference<LoginClient*> >(this) {
 			maxConnections = maxconn;
 		}
 
 		bool add(LoginClient* client) {
-			if (HashTable<uint64, LoginClient*>::put(client->getSession()->getNetworkID(), client) == NULL) {
-				client->acquire();
-
+			if (HashTable<uint64, Reference<LoginClient*> >::put(client->getSession()->getNetworkID(), client) == NULL) {
 				return true;
 			} else
 				return false;
 		}
 
 		bool remove(LoginClient* client) {
-			if (HashTable<uint64, LoginClient*>::remove(client->getSession()->getNetworkID()) != NULL) {
-				client->release();
-
+			if (HashTable<uint64, Reference<LoginClient*> >::remove(client->getSession()->getNetworkID()) != NULL) {
 				return true;
 			} else
 				return false;
+		}
+
+		LoginClient* get(uint64 id) {
+			return HashTable<uint64, Reference<LoginClient*> >::get(id);
 		}
 
 	};

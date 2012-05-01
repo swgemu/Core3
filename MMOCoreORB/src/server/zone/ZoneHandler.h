@@ -52,30 +52,26 @@ which carries forward this exception.
 namespace server {
   namespace zone {
 
-	class ZoneSessionMap : public HashTable<uint64, ZoneClientSession*>,
-			public HashTableIterator<uint64, ZoneClientSession*> {
+	class ZoneSessionMap : public HashTable<uint64, Reference<ZoneClientSession*> >,
+			public HashTableIterator<uint64, Reference<ZoneClientSession*> > {
 
 		int maxConnections;
 
 	public:
-		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, ZoneClientSession*>((int) (maxconn * 1.25f)),
-				HashTableIterator<uint64, ZoneClientSession*>(this) {
+		ZoneSessionMap(int maxconn = 10000) : HashTable<uint64, Reference<ZoneClientSession*> >((int) (maxconn * 1.25f)),
+				HashTableIterator<uint64, Reference<ZoneClientSession*> >(this) {
 			maxConnections = maxconn;
 		}
 
 		bool add(ZoneClientSession* client) {
-			if (HashTable<uint64, ZoneClientSession*>::put(client->getSession()->getNetworkID(), client) == NULL) {
-				client->acquire();
-
+			if (HashTable<uint64, Reference<ZoneClientSession*> >::put(client->getSession()->getNetworkID(), client) == NULL) {
 				return true;
 			} else
 				return false;
 		}
 
 		bool remove(ZoneClientSession* client) {
-			if (HashTable<uint64, ZoneClientSession*>::remove(client->getSession()->getNetworkID()) != NULL) {
-				client->release();
-
+			if (HashTable<uint64, Reference<ZoneClientSession*> >::remove(client->getSession()->getNetworkID()) != NULL) {
 				return true;
 			} else
 				return false;
