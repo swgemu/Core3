@@ -614,7 +614,7 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 		awarenessEvent->schedule(1000);
 
 #ifdef DEBUG
-	info("Scheduling new Awareness Event", true);
+		info("Scheduling new Awareness Event", true);
 #endif
 	}
 
@@ -623,7 +623,7 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 		awarenessEvent->schedule(1000);
 
 #ifdef DEBUG
-	info("Rescheduling awareness event", true);
+		info("Rescheduling awareness event", true);
 #endif
 	}
 }
@@ -906,16 +906,21 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (isDead() || (getZone() == NULL)) {
-		setFollowObject(NULL);
-		return;
-	}
-
 	ManagedReference<SceneObject*> storage = followObject.get();
 
 	if (currentSpeed != 0) {
 		updateCurrentPosition(&nextStepPosition);
 		nextStepPosition.setReached(true);
+	}
+
+	if (isDead() || (getZone() == NULL)) {
+		setFollowObject(NULL);
+		return;
+	}
+
+	if (!isStanding()) {
+		activateMovementEvent();
+		return;
 	}
 
 	float maxDistance = 5;
@@ -1001,11 +1006,6 @@ void AiAgentImplementation::doMovement() {
 			//info( + String::valueOf(maxDistance), true);
 			info(msg.toString(), true);
 		}*/
-	}
-
-	if (!isStanding()) {
-		activateMovementEvent();
-		return;
 	}
 
 	nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
@@ -1136,7 +1136,7 @@ void AiAgentImplementation::activateMovementEvent() {
 
 void AiAgentImplementation::activateWaitEvent() {
 	if (getZone() == NULL)
-			return;
+		return;
 
 	if (waitEvent == NULL) {
 		waitEvent = new AiWaitEvent(_this);
