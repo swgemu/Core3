@@ -1,6 +1,6 @@
-drakka_judarrl = Creature:new {
-	objectName = "",
-	customName = "Drakka Judarrl",
+juntah_herm = Creature:new {
+	objectName = "@npc_spawner_n:juntah_herm",
+	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,17 +22,17 @@ drakka_judarrl = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
+	templates = {"object/mobile/space_greeter_dantooine_imperial_pilot.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")
+CreatureTemplates:addCreatureTemplate(juntah_herm, "juntah_herm")

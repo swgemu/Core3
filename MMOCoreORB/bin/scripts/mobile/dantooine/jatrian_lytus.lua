@@ -1,6 +1,6 @@
 jatrian_lytus = Creature:new {
 	objectName = "",
-	customName = "Jatrian Lytus",
+	customName = "Cmdr. Jatrian Lytus",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

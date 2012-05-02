@@ -1,7 +1,7 @@
-pirate = Creature:new {
-	objectName = "@mob/creature_names:pirate",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
+insurgent = Creature:new {
+	objectName = "@npc_spawner_n:insurgent",
+	socialGroup = "insurgent",
+	pvpFaction = "insurgent",
 	faction = "",
 	level = 17,
 	chanceHit = 0.320000,
@@ -21,17 +21,14 @@ pirate = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_criminal_assassin_human_female_01.iff",
-		"object/mobile/dressed_criminal_smuggler_human_male_01.iff"
-	},
+	templates = {"object/mobile/space_imperial_tier4_corellia_nin_gursawe.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(pirate, "pirate")
+CreatureTemplates:addCreatureTemplate(insurgent, "insurgent")

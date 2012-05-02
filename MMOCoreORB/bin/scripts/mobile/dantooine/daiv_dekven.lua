@@ -1,6 +1,6 @@
-drakka_judarrl = Creature:new {
+daiv_dekven = Creature:new {
 	objectName = "",
-	customName = "Drakka Judarrl",
+	customName = "Daiv Dekven",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,12 +22,12 @@ drakka_judarrl = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
+	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
 	lootGroups = {},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ drakka_judarrl = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")
+CreatureTemplates:addCreatureTemplate(daiv_dekven, "daiv_dekven")

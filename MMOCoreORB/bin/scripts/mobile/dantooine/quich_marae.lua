@@ -1,6 +1,6 @@
-drakka_judarrl = Creature:new {
+quich_marae = Creature:new {
 	objectName = "",
-	customName = "Drakka Judarrl",
+	customName = "Quich Marae",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,12 +27,12 @@ drakka_judarrl = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
+	templates = {"object/mobile/junk_quich.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")
+CreatureTemplates:addCreatureTemplate(quich_marae, "quich_marae")

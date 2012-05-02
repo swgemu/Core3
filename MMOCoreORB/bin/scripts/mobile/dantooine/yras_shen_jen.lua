@@ -1,6 +1,6 @@
-drakka_judarrl = Creature:new {
-	objectName = "",
-	customName = "Drakka Judarrl",
+yras_shen_jen = Creature:new {
+	objectName = "@npc_spawner_n:yras_shen_jen",
+	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,12 +27,12 @@ drakka_judarrl = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
+	templates = {"object/mobile/space_greeter_dantooine_old_pilot.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")
+CreatureTemplates:addCreatureTemplate(yras_shen_jen, "yras_shen_jen")
