@@ -191,4 +191,6 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native Vector<unsigned int> getToolTabs();
 
+	
+	public native void disperseItems();
 }

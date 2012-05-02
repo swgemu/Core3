@@ -114,6 +114,9 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 
 		if (selectedID == 132) { // use object
 
+			if(!isFinished())
+				return 0;
+
 			ManagedReference<TangibleObject *> prototype = getPrototype();
 			ManagedReference<SceneObject*> inventory =
 					playerCreature->getSlottedObject("inventory");
@@ -166,6 +169,8 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 
 		alm->insertAttribute("serial_number", objectSerial);
 	}
+
+	disperseItems();
 }
 
 void CraftingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -192,4 +197,42 @@ void CraftingToolImplementation::sendToolStartFailure(CreatureObject* player, co
 	player->sendMessage(objMsg);
 
 	player->sendSystemMessage(message);
+}
+
+void CraftingToolImplementation::disperseItems() {
+
+	if(!isReady())
+		return;
+
+	ManagedReference<SceneObject*> craftedComponents = getSlottedObject("crafted_components");
+
+	if(craftedComponents == NULL) {
+
+		if(getContainerObjectsSize() == 0)
+			return;
+
+		ManagedReference<SceneObject*> prototype = getContainerObject(0);
+		craftedComponents = prototype->getSlottedObject("crafted_components");
+
+		if(craftedComponents == NULL) {
+			prototype->destroyObjectFromWorld(true);
+			return;
+		}
+	}
+
+	if(craftedComponents->getContainerObjectsSize() > 0) {
+		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
+		ManagedReference<SceneObject*> inventory = getParent();
+
+		if(satchel != NULL && inventory != NULL) {
+			while(satchel->getContainerObjectsSize() > 0) {
+				ManagedReference<SceneObject*> object = satchel->getContainerObject(0);
+				inventory->transferObject(object, -1, false);
+				inventory->broadcastObject(object, true);
+			}
+		}
+	}
+
+	if(craftedComponents != NULL)
+		craftedComponents->destroyObjectFromWorld(true);
 }

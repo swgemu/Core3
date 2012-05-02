@@ -14,6 +14,7 @@
 
 class StructurePermissionList : public Serializable {
 	VectorMap<String, SortedVector<String> > permissionLists;
+	String ownerName;
 
 	void addSerializableVariables();
 
@@ -21,6 +22,7 @@ public:
 	static const int LISTNOTFOUND = 0xFF;
 	static const int GRANTED = 0x00;
 	static const int REVOKED = 0x01;
+	static const int CANTCHANGEOWNER = 0x02;
 
 	static const int MAX_ENTRIES = 50;
 
@@ -46,6 +48,10 @@ public:
 	int grantPermission(const String& listName, const String& playerName);
 	int revokePermission(const String& listName, const String& playerName);
 	int revokeAllPermissions(const String& playerName);
+
+	void setOwnerName(const String& name) {
+		ownerName = name;
+	}
 
 	/**
 	 * Checks to see if the specified player name is on the specified permission list.

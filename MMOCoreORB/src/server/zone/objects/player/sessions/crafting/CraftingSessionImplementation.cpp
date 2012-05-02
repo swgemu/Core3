@@ -36,21 +36,7 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 
 	craftingTool->setCountdownTimer(0, true);
 
-	ManagedReference<SceneObject*> craftedComponents = craftingTool->getSlottedObject("crafted_components");
-
-	if(craftedComponents != NULL && craftedComponents->getContainerObjectsSize() > 0) {
-		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
-		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
-
-		if(satchel != NULL && inventory != NULL) {
-			while(satchel->getContainerObjectsSize() > 0) {
-				inventory->transferObject(satchel->getContainerObject(0), -1, true);
-			}
-		}
-	}
-
-	if(craftedComponents != NULL)
-		craftedComponents->destroyObjectFromWorld(true);
+	craftingTool->disperseItems();
 
 	crafterGhost = crafter->getPlayerObject();
 
@@ -465,8 +451,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		/// Add Components to crafted object
 		String craftingComponentsPath = "object/tangible/crafting/crafting_components_container.iff";
 		craftingComponents = crafter->getZoneServer()->createObject(craftingComponentsPath.hashCode(), 1);
-		craftingTool->transferObject(craftingComponents, 4, false);
 		craftingComponents->setSendToClient(false);
+		craftingTool->transferObject(craftingComponents, 4, false);
 
 		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponents->setContainerDefaultAllowPermission(0);
@@ -476,7 +462,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponents->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
-		String craftingComponentsSatchelPath = "object/tangible/container/general/satchel.iff";
+		String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
 		craftingComponentsSatchel = crafter->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
 
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
@@ -487,8 +473,9 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponentsSatchel->setContainerAllowPermission("owner", 0);
 		craftingComponentsSatchel->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 
-		craftingComponents->transferObject(craftingComponentsSatchel, -1, false);
 		craftingComponentsSatchel->sendTo(crafter, true);
+		craftingComponents->transferObject(craftingComponentsSatchel, -1, false);
+
 	} else {
 		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
 	}

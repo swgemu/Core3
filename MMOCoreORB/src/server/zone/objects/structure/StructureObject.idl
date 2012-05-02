@@ -281,6 +281,10 @@ class StructureObject extends TangibleObject {
 		return structurePermissionList.revokeAllPermissions(targetName);
 	}
 
+	public void setOwnerName(final string ownerName) {
+		structurePermissionList.setOwnerName(ownerName);
+	}
+	
 	public native void createVendor(CreatureObject player);
 	
 	/**

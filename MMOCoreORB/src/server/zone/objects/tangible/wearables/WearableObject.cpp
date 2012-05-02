@@ -14,7 +14,7 @@
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,RPC_REPAIRATTEMPT__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_REPAIRATTEMPT__INT_,};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -78,19 +78,20 @@ void WearableObject::applyAttachment(CreatureObject* player, Attachment* attachm
 		_implementation->applyAttachment(player, attachment);
 }
 
-void WearableObject::setAttachmentMods(CreatureObject* player, bool remove) {
+void WearableObject::setAttachmentMods(CreatureObject* player, bool remove, bool doCheck) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_);
+		DistributedMethod method(this, RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(remove);
+		method.addBooleanParameter(doCheck);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setAttachmentMods(player, remove);
+		_implementation->setAttachmentMods(player, remove, doCheck);
 }
 
 bool WearableObject::isWearableObject() {
@@ -158,20 +159,6 @@ int WearableObject::socketsLeft() {
 		return _implementation->socketsLeft();
 }
 
-void WearableObject::setMaxSockets(int sockets) {
-	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETMAXSOCKETS__INT_);
-		method.addSignedIntParameter(sockets);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setMaxSockets(sockets);
-}
-
 String WearableObject::repairAttempt(int repairChance) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -187,13 +174,13 @@ String WearableObject::repairAttempt(int repairChance) {
 		return _implementation->repairAttempt(repairChance);
 }
 
-WearableSkillModMap* WearableObject::getWearableSkillModMap() {
+VectorMap<String, int>* WearableObject::getWearableSkillMods() {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getWearableSkillModMap();
+		return _implementation->getWearableSkillMods();
 }
 
 DistributedObjectServant* WearableObject::_getImplementation() {
@@ -311,8 +298,8 @@ bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "WearableObject.wearableSkillModMap") {
-		TypeInfo<WearableSkillModMap >::parseFromBinaryStream(&wearableSkillModMap, stream);
+	if (_name == "WearableObject.wearableSkillMods") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
 		return true;
 	}
 
@@ -349,11 +336,11 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.wearableSkillModMap";
+	_name = "WearableObject.wearableSkillMods";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<WearableSkillModMap >::toBinaryStream(&wearableSkillModMap, stream);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -363,10 +350,10 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 WearableObjectImplementation::WearableObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = 0;
-	socketCount = 0;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketsGenerated = false;
 	socketsGenerated = false;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.setNoDuplicateInsertPlan();
+	(&wearableSkillMods)->setNoDuplicateInsertPlan();
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }
@@ -381,24 +368,14 @@ int WearableObjectImplementation::getMaxSockets() {
 	return socketCount;
 }
 
-int WearableObjectImplementation::socketsUsed() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillModMap.getUsedSocketCount();
-	return (&wearableSkillModMap)->getUsedSocketCount();
-}
-
 int WearableObjectImplementation::socketsLeft() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return socketCount - socketsUsed();
-	return socketCount - socketsUsed();
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return getMaxSockets() - socketsUsed();
+	return getMaxSockets() - socketsUsed();
 }
 
-void WearableObjectImplementation::setMaxSockets(int sockets) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = sockets;
-	socketCount = sockets;
-}
-
-WearableSkillModMap* WearableObjectImplementation::getWearableSkillModMap() {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillModMap;
-	return (&wearableSkillModMap);
+VectorMap<String, int>* WearableObjectImplementation::getWearableSkillMods() {
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillMods;
+	return (&wearableSkillMods);
 }
 
 /*
@@ -422,8 +399,8 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_:
 		applyAttachment(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Attachment*>(inv->getObjectParameter()));
 		break;
-	case RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_:
-		setAttachmentMods(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+	case RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_:
+		setAttachmentMods(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_ISWEARABLEOBJECT__:
 		resp->insertBoolean(isWearableObject());
@@ -439,9 +416,6 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_SOCKETSLEFT__:
 		resp->insertSignedInt(socketsLeft());
-		break;
-	case RPC_SETMAXSOCKETS__INT_:
-		setMaxSockets(inv->getSignedIntParameter());
 		break;
 	case RPC_REPAIRATTEMPT__INT_:
 		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
@@ -459,8 +433,8 @@ void WearableObjectAdapter::applyAttachment(CreatureObject* player, Attachment* 
 	(static_cast<WearableObject*>(stub))->applyAttachment(player, attachment);
 }
 
-void WearableObjectAdapter::setAttachmentMods(CreatureObject* player, bool remove) {
-	(static_cast<WearableObject*>(stub))->setAttachmentMods(player, remove);
+void WearableObjectAdapter::setAttachmentMods(CreatureObject* player, bool remove, bool doCheck) {
+	(static_cast<WearableObject*>(stub))->setAttachmentMods(player, remove, doCheck);
 }
 
 bool WearableObjectAdapter::isWearableObject() {
@@ -481,10 +455,6 @@ int WearableObjectAdapter::socketsUsed() {
 
 int WearableObjectAdapter::socketsLeft() {
 	return (static_cast<WearableObject*>(stub))->socketsLeft();
-}
-
-void WearableObjectAdapter::setMaxSockets(int sockets) {
-	(static_cast<WearableObject*>(stub))->setMaxSockets(sockets);
 }
 
 String WearableObjectAdapter::repairAttempt(int repairChance) {

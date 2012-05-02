@@ -61,6 +61,8 @@ public:
 
 	void run() {
 
+		craftingTool->setCountdownTimer(0, true);
+
 		ManagedReference<TangibleObject*> prototype = craftingTool->getPrototype();
 
 		if (prototype == NULL || practice) {

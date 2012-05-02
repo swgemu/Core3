@@ -204,6 +204,10 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 			ManagedReference<SceneObject*> targetObject = cast<SceneObject*>(Core::getObjectBroker()->lookUp(targetID));
 			if(targetObject != NULL) {
 				name = targetObject->getDisplayedName();
+				if(targetObject->isPlayerCreature())
+					name += "(Player)";
+				else
+					name += "(NPC)";
 			} else {
 				name = "(null)";
 			}

@@ -26,7 +26,7 @@
  *	CraftingToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_SETREADY__,RPC_ISBUSY__,RPC_SETBUSY__,RPC_ISFINISHED__,RPC_SETFINISHED__,RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_,RPC_GETTOOLTYPE__,RPC_GETEFFECTIVENESS__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_SETREADY__,RPC_ISBUSY__,RPC_SETBUSY__,RPC_ISFINISHED__,RPC_SETFINISHED__,RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_,RPC_GETTOOLTYPE__,RPC_GETEFFECTIVENESS__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_DISPERSEITEMS__};
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
@@ -286,6 +286,19 @@ Vector<unsigned int>* CraftingTool::getToolTabs() {
 
 	} else
 		return _implementation->getToolTabs();
+}
+
+void CraftingTool::disperseItems() {
+	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DISPERSEITEMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->disperseItems();
 }
 
 DistributedObjectServant* CraftingTool::_getImplementation() {
@@ -629,6 +642,9 @@ void CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETMANUFACTURESCHEMATIC__:
 		resp->insertLong(getManufactureSchematic()->_getObjectID());
 		break;
+	case RPC_DISPERSEITEMS__:
+		disperseItems();
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -692,6 +708,10 @@ TangibleObject* CraftingToolAdapter::getPrototype() {
 
 ManufactureSchematic* CraftingToolAdapter::getManufactureSchematic() {
 	return (static_cast<CraftingTool*>(stub))->getManufactureSchematic();
+}
+
+void CraftingToolAdapter::disperseItems() {
+	(static_cast<CraftingTool*>(stub))->disperseItems();
 }
 
 /*

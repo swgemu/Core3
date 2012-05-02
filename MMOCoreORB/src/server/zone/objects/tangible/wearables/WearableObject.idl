@@ -49,23 +49,22 @@ import server.zone.packets.scene.AttributeListMessage;
 import engine.lua.LuaObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.tangible.attachment.Attachment;
-include server.zone.objects.tangible.wearables.WearableSkillModMap;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
 
 class WearableObject extends TangibleObject {	
+
 	protected int socketCount;
 	protected boolean socketsGenerated;
 	
 	public static final int MAXSOCKETS = 4;
 	
 	@dereferenced
-	protected WearableSkillModMap wearableSkillModMap;
+	protected VectorMap<string, int> wearableSkillMods;
 	
 	public WearableObject() {
-		socketCount = 0;
 		socketsGenerated = false;
-		
+		wearableSkillMods.setNoDuplicateInsertPlan();
 		Logger.setLoggingName("WearableObject");
 	}
 	
@@ -86,7 +85,7 @@ class WearableObject extends TangibleObject {
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
 
-	public native void setAttachmentMods(CreatureObject player, boolean remove = false);
+	public native void setAttachmentMods(CreatureObject player, boolean remove = false, boolean doCheck = true);
 	
 	public boolean isWearableObject() {
 		return true;
@@ -98,25 +97,19 @@ class WearableObject extends TangibleObject {
 		return socketCount;
 	}
 	
-	public int socketsUsed() {
-		return wearableSkillModMap.getUsedSocketCount();
-	}
+	public native int socketsUsed();
 	
 	public int socketsLeft() {
-		return socketCount - socketsUsed();
+		return getMaxSockets() - socketsUsed();
 	}
-	
-	public void setMaxSockets(int sockets) {
-		socketCount = sockets;
-	}
-	
+
 	private native void generateSockets(CraftingValues craftingValues);
 
 	public native string repairAttempt(int repairChance);
 	
 	@local
-	public WearableSkillModMap getWearableSkillModMap() {
-		return wearableSkillModMap;
+	public VectorMap<string, int> getWearableSkillMods() {
+		return wearableSkillMods;
 	}
 	
 }

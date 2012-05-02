@@ -15,7 +15,6 @@
 
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
-
 	setLoggingName("WearableObject");
 }
 
@@ -34,8 +33,14 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertAttribute("serial_number", objectSerial);
 	}
 
-	wearableSkillModMap.insertStatMods(alm);
+	for(int i = 0; i < wearableSkillMods.size(); ++i) {
+		String key = wearableSkillMods.elementAt(i).getKey();
+		String statname = "cat_skill_mod_bonus.@stat_n:" + key;
+		int value = wearableSkillMods.get(key);
 
+		if (value > 0)
+			alm->insertAttribute(statname, value);
+	}
 }
 
 void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool initialUpdate) {
@@ -61,7 +66,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 
 			if (player != NULL || draftSchematic != NULL) {
 				String assemblySkill = draftSchematic->getAssemblySkill();
-				skill = player->getSkillMod(assemblySkill) * 2; // 0 to 250 max
+				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
 				luck = System::random(player->getSkillMod("luck")
 						+ player->getSkillMod("force_luck"));
 			}
@@ -79,45 +84,81 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	if (generatedCount < 0)
 		generatedCount = 0;
 
-	setMaxSockets(generatedCount);
+
+	socketCount = generatedCount;
 
 	socketsGenerated = true;
 }
 
+int WearableObjectImplementation::socketsUsed() {
+	return wearableSkillMods.size();
+}
+
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		Attachment* attachment) {
+
 	if (socketsLeft() > 0) {
-		AttachmentEntry entry;
 
-		if (attachment->removeAttachment(player)) {
+		if (isEquipped())
+			setAttachmentMods(player, true, false);
 
-			for (int i = 0; i < attachment->getSkillModCount(); ++i) {
-				String name = attachment->getSkillModName(i);
-				int value = attachment->getSkillModValue(i);
+		VectorMap<String, int>* mods = attachment->getSkillMods();
 
-				entry.add(name, value);
+		VectorMap<short, SortedVector<String> > reverseMods;
 
+		for(int i = 0; i < mods->size(); ++i) {
+
+			short value = mods->get(i);
+			if(!reverseMods.contains(value)) {
+				SortedVector<String> newSorted;
+				reverseMods.put(value, newSorted);
 			}
 
-			wearableSkillModMap.addAttachment(entry);
+			SortedVector<String>* stats = &reverseMods.get(value);
 
-			if (isEquipped())
-				setAttachmentMods(player);
-
+			stats->add(mods->elementAt(i).getKey());
 		}
+
+		for(int i = reverseMods.size() - 1; i >= 0; --i) {
+
+			SortedVector<String>* stats = &reverseMods.elementAt(i).getValue();
+			int value = reverseMods.elementAt(i).getKey();
+
+			String statName = "";
+
+			for(int j = 0; j < stats->size(); ++j) {
+
+				statName = stats->get(j);
+
+				if(!wearableSkillMods.contains(statName))
+					break;
+
+				statName = "";
+			}
+
+			if(!statName.isEmpty()) {
+				wearableSkillMods.put(statName, value);
+				break;
+			}
+		}
+
+		attachment->destroyObjectFromWorld(true);
+
+		if (isEquipped())
+			setAttachmentMods(player);
 
 	}
 
 }
 
 void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
-		bool remove) {
+		bool remove, bool doCheck) {
 	if (player == NULL)
 		return;
 
-	for (int i = 0; i < wearableSkillModMap.getActiveSkillModCount(); ++i) {
-		String name = wearableSkillModMap.getActiveSkillModKey(i);
-		int value = wearableSkillModMap.getActiveSkillModValue(name);
+	for (int i = 0; i < wearableSkillMods.size(); ++i) {
+		String name = wearableSkillMods.elementAt(i).getKey();
+		int value = wearableSkillMods.get(name);
 
 		if (!remove)
 			player->addSkillMod(SkillModManager::WEARABLE, name, value, true);
@@ -125,7 +166,8 @@ void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
 			player->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
-	SkillModManager::instance()->verifyWearableSkillMods(player);
+	if(doCheck)
+		SkillModManager::instance()->verifyWearableSkillMods(player);
 }
 
 bool WearableObjectImplementation::isEquipped() {

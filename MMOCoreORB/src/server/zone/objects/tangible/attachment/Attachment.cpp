@@ -10,8 +10,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -22,7 +20,7 @@
  *	AttachmentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__CREATUREOBJECT_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__,};
 
 Attachment::Attachment() : TangibleObject(DummyConstructorParameter::instance()) {
 	AttachmentImplementation* _implementation = new AttachmentImplementation();
@@ -93,147 +91,6 @@ void Attachment::fillAttributeList(AttributeListMessage* msg, CreatureObject* ob
 		_implementation->fillAttributeList(msg, object);
 }
 
-void Attachment::setSkillModCount(int modCount) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSKILLMODCOUNT__INT_);
-		method.addSignedIntParameter(modCount);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setSkillModCount(modCount);
-}
-
-int Attachment::getSkillModCount() {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSKILLMODCOUNT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getSkillModCount();
-}
-
-String Attachment::getSkillModName(int idx) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSKILLMODNAME__INT_);
-		method.addSignedIntParameter(idx);
-
-		method.executeWithAsciiReturn(_return_getSkillModName);
-		return _return_getSkillModName;
-	} else
-		return _implementation->getSkillModName(idx);
-}
-
-int Attachment::getSkillModValue(int idx) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSKILLMODVALUE__INT_);
-		method.addSignedIntParameter(idx);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getSkillModValue(idx);
-}
-
-int Attachment::getSkillModValue(String& name) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSKILLMODVALUE__STRING_);
-		method.addAsciiParameter(name);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getSkillModValue(name);
-}
-
-void Attachment::parseSkillModAttributeString(String& attr) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_PARSESKILLMODATTRIBUTESTRING__STRING_);
-		method.addAsciiParameter(attr);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->parseSkillModAttributeString(attr);
-}
-
-void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDSKILLMOD__STRING_INT_);
-		method.addAsciiParameter(skillModType);
-		method.addSignedIntParameter(skillModValue);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addSkillMod(skillModType, skillModValue);
-}
-
-bool Attachment::removeAttachment(CreatureObject* player) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEATTACHMENT__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->removeAttachment(player);
-}
-
-void Attachment::generateSkillMods() {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GENERATESKILLMODS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->generateSkillMods();
-}
-
-int Attachment::getRandomModValue(int luck, int creatureLevel) {
-	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETRANDOMMODVALUE__INT_INT_);
-		method.addSignedIntParameter(luck);
-		method.addSignedIntParameter(creatureLevel);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getRandomModValue(luck, creatureLevel);
-}
-
 bool Attachment::isAttachment() {
 	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -271,6 +128,15 @@ bool Attachment::isClothingAttachment() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isClothingAttachment();
+}
+
+VectorMap<String, int>* Attachment::getSkillMods() {
+	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSkillMods();
 }
 
 DistributedObjectServant* Attachment::_getImplementation() {
@@ -378,11 +244,6 @@ bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "Attachment.maxModifiers") {
-		TypeInfo<int >::parseFromBinaryStream(&maxModifiers, stream);
-		return true;
-	}
-
 	if (_name == "Attachment.attachmentType") {
 		TypeInfo<int >::parseFromBinaryStream(&attachmentType, stream);
 		return true;
@@ -410,14 +271,6 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Attachment.maxModifiers";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&maxModifiers, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "Attachment.attachmentType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -435,7 +288,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 3;
+	return _count + 2;
 }
 
 AttachmentImplementation::AttachmentImplementation() {
@@ -455,21 +308,6 @@ void AttachmentImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	initializeMembers();
 }
 
-void AttachmentImplementation::setSkillModCount(int modCount) {
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		maxModifiers = modCount;
-	maxModifiers = modCount;
-}
-
-int AttachmentImplementation::getSkillModCount() {
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		return skillModMap.size();
-	return (&skillModMap)->size();
-}
-
-int AttachmentImplementation::getSkillModValue(String& name) {
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		return skillModMap.get(name);
-	return (&skillModMap)->get(name);
-}
-
 bool AttachmentImplementation::isAttachment() {
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		return true;
 	return true;
@@ -483,6 +321,11 @@ bool AttachmentImplementation::isArmorAttachment() {
 bool AttachmentImplementation::isClothingAttachment() {
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
 	return TangibleObjectImplementation::gameObjectType == SceneObjectType::CLOTHINGATTACHMENT;
+}
+
+VectorMap<String, int>* AttachmentImplementation::getSkillMods() {
+	// server/zone/objects/tangible/attachment/Attachment.idl():  		return skillModMap;
+	return (&skillModMap);
 }
 
 /*
@@ -506,36 +349,6 @@ void AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZEMEMBERS__:
 		initializeMembers();
 		break;
-	case RPC_SETSKILLMODCOUNT__INT_:
-		setSkillModCount(inv->getSignedIntParameter());
-		break;
-	case RPC_GETSKILLMODCOUNT__:
-		resp->insertSignedInt(getSkillModCount());
-		break;
-	case RPC_GETSKILLMODNAME__INT_:
-		resp->insertAscii(getSkillModName(inv->getSignedIntParameter()));
-		break;
-	case RPC_GETSKILLMODVALUE__INT_:
-		resp->insertSignedInt(getSkillModValue(inv->getSignedIntParameter()));
-		break;
-	case RPC_GETSKILLMODVALUE__STRING_:
-		resp->insertSignedInt(getSkillModValue(inv->getAsciiParameter(_param0_getSkillModValue__String_)));
-		break;
-	case RPC_PARSESKILLMODATTRIBUTESTRING__STRING_:
-		parseSkillModAttributeString(inv->getAsciiParameter(_param0_parseSkillModAttributeString__String_));
-		break;
-	case RPC_ADDSKILLMOD__STRING_INT_:
-		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_), inv->getSignedIntParameter());
-		break;
-	case RPC_REMOVEATTACHMENT__CREATUREOBJECT_:
-		resp->insertBoolean(removeAttachment(static_cast<CreatureObject*>(inv->getObjectParameter())));
-		break;
-	case RPC_GENERATESKILLMODS__:
-		generateSkillMods();
-		break;
-	case RPC_GETRANDOMMODVALUE__INT_INT_:
-		resp->insertSignedInt(getRandomModValue(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
-		break;
 	case RPC_ISATTACHMENT__:
 		resp->insertBoolean(isAttachment());
 		break;
@@ -556,46 +369,6 @@ void AttachmentAdapter::initializeTransientMembers() {
 
 void AttachmentAdapter::initializeMembers() {
 	(static_cast<Attachment*>(stub))->initializeMembers();
-}
-
-void AttachmentAdapter::setSkillModCount(int modCount) {
-	(static_cast<Attachment*>(stub))->setSkillModCount(modCount);
-}
-
-int AttachmentAdapter::getSkillModCount() {
-	return (static_cast<Attachment*>(stub))->getSkillModCount();
-}
-
-String AttachmentAdapter::getSkillModName(int idx) {
-	return (static_cast<Attachment*>(stub))->getSkillModName(idx);
-}
-
-int AttachmentAdapter::getSkillModValue(int idx) {
-	return (static_cast<Attachment*>(stub))->getSkillModValue(idx);
-}
-
-int AttachmentAdapter::getSkillModValue(String& name) {
-	return (static_cast<Attachment*>(stub))->getSkillModValue(name);
-}
-
-void AttachmentAdapter::parseSkillModAttributeString(String& attr) {
-	(static_cast<Attachment*>(stub))->parseSkillModAttributeString(attr);
-}
-
-void AttachmentAdapter::addSkillMod(const String& skillModType, int skillModValue) {
-	(static_cast<Attachment*>(stub))->addSkillMod(skillModType, skillModValue);
-}
-
-bool AttachmentAdapter::removeAttachment(CreatureObject* player) {
-	return (static_cast<Attachment*>(stub))->removeAttachment(player);
-}
-
-void AttachmentAdapter::generateSkillMods() {
-	(static_cast<Attachment*>(stub))->generateSkillMods();
-}
-
-int AttachmentAdapter::getRandomModValue(int luck, int creatureLevel) {
-	return (static_cast<Attachment*>(stub))->getRandomModValue(luck, creatureLevel);
 }
 
 bool AttachmentAdapter::isAttachment() {

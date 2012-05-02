@@ -186,6 +186,8 @@ public:
 
 	int revokeAllPermissions(const String& targetName);
 
+	void setOwnerName(const String& ownerName);
+
 	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
@@ -375,6 +377,8 @@ public:
 
 	int revokeAllPermissions(const String& targetName);
 
+	void setOwnerName(const String& ownerName);
+
 	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
@@ -544,6 +548,8 @@ public:
 
 	int revokeAllPermissions(const String& targetName);
 
+	void setOwnerName(const String& ownerName);
+
 	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
@@ -624,6 +630,7 @@ protected:
 	String _param0_revokePermission__String_String_;
 	String _param1_revokePermission__String_String_;
 	String _param0_revokeAllPermissions__String_;
+	String _param0_setOwnerName__String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {

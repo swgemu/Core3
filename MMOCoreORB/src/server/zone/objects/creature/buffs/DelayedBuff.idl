@@ -87,12 +87,12 @@ class DelayedBuff extends Buff {
 	
 	//Duration buffs don't apply the modifiers to the creature. They are referenced when used.
 	public void activate() {
-		super.activate(false);
+		super.activate(true);
 		addObservers();
 	}
 	
 	public void deactivate() {
-		super.deactivate(false);
+		super.deactivate(true);
 		dropObservers();
 	}
 	

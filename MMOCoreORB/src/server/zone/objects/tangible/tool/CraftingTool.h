@@ -209,6 +209,8 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
+	void disperseItems();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -306,6 +308,8 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
+	void disperseItems();
+
 	WeakReference<CraftingTool*> _this;
 
 	operator const CraftingTool*();
@@ -378,6 +382,8 @@ public:
 	TangibleObject* getPrototype();
 
 	ManufactureSchematic* getManufactureSchematic();
+
+	void disperseItems();
 
 protected:
 	String _param1_sendToolStartFailure__CreatureObject_String_;

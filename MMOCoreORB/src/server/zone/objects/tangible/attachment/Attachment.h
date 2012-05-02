@@ -55,20 +55,6 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -105,12 +91,6 @@ using namespace server::zone;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
-#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
-
-#include "server/zone/objects/tangible/wearables/WearableSkillMods.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
 #include "server/zone/objects/scene/SceneObjectType.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -139,31 +119,13 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void setSkillModCount(int modCount);
-
-	int getSkillModCount();
-
-	String getSkillModName(int idx);
-
-	int getSkillModValue(int idx);
-
-	int getSkillModValue(String& name);
-
-	void parseSkillModAttributeString(String& attr);
-
-	void addSkillMod(const String& skillModType, int skillModValue);
-
-	bool removeAttachment(CreatureObject* player);
-
-	void generateSkillMods();
-
-	int getRandomModValue(int luck, int creatureLevel);
-
 	bool isAttachment();
 
 	bool isArmorAttachment();
 
 	bool isClothingAttachment();
+
+	VectorMap<String, int>* getSkillMods();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -173,8 +135,6 @@ protected:
 	Attachment(DummyConstructorParameter* param);
 
 	virtual ~Attachment();
-
-	String _return_getSkillModName;
 
 	friend class AttachmentHelper;
 };
@@ -195,8 +155,6 @@ namespace attachement {
 
 class AttachmentImplementation : public TangibleObjectImplementation {
 protected:
-	int maxModifiers;
-
 	int attachmentType;
 
 	VectorMap<String, int> skillModMap;
@@ -220,31 +178,13 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void setSkillModCount(int modCount);
-
-	int getSkillModCount();
-
-	String getSkillModName(int idx);
-
-	int getSkillModValue(int idx);
-
-	int getSkillModValue(String& name);
-
-	void parseSkillModAttributeString(String& attr);
-
-	void addSkillMod(const String& skillModType, int skillModValue);
-
-	bool removeAttachment(CreatureObject* player);
-
-	void generateSkillMods();
-
-	int getRandomModValue(int luck, int creatureLevel);
-
 	bool isAttachment();
 
 	bool isArmorAttachment();
 
 	bool isClothingAttachment();
+
+	VectorMap<String, int>* getSkillMods();
 
 	WeakReference<Attachment*> _this;
 
@@ -293,36 +233,12 @@ public:
 
 	void initializeMembers();
 
-	void setSkillModCount(int modCount);
-
-	int getSkillModCount();
-
-	String getSkillModName(int idx);
-
-	int getSkillModValue(int idx);
-
-	int getSkillModValue(String& name);
-
-	void parseSkillModAttributeString(String& attr);
-
-	void addSkillMod(const String& skillModType, int skillModValue);
-
-	bool removeAttachment(CreatureObject* player);
-
-	void generateSkillMods();
-
-	int getRandomModValue(int luck, int creatureLevel);
-
 	bool isAttachment();
 
 	bool isArmorAttachment();
 
 	bool isClothingAttachment();
 
-protected:
-	String _param0_getSkillModValue__String_;
-	String _param0_parseSkillModAttributeString__String_;
-	String _param0_addSkillMod__String_int_;
 };
 
 class AttachmentHelper : public DistributedObjectClassHelper, public Singleton<AttachmentHelper> {

@@ -53,8 +53,6 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 
-#include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
-
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -79,7 +77,7 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove = false);
+	void setAttachmentMods(CreatureObject* player, bool remove = false, bool doCheck = true);
 
 	bool isWearableObject();
 
@@ -91,11 +89,9 @@ public:
 
 	int socketsLeft();
 
-	void setMaxSockets(int sockets);
-
 	String repairAttempt(int repairChance);
 
-	WearableSkillModMap* getWearableSkillModMap();
+	VectorMap<String, int>* getWearableSkillMods();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -135,7 +131,7 @@ public:
 	static const int MAXSOCKETS = 4;
 
 protected:
-	WearableSkillModMap wearableSkillModMap;
+	VectorMap<String, int> wearableSkillMods;
 
 public:
 	WearableObjectImplementation();
@@ -150,7 +146,7 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove = false);
+	void setAttachmentMods(CreatureObject* player, bool remove = false, bool doCheck = true);
 
 	bool isWearableObject();
 
@@ -162,15 +158,13 @@ public:
 
 	int socketsLeft();
 
-	void setMaxSockets(int sockets);
-
 private:
 	void generateSockets(CraftingValues* craftingValues);
 
 public:
 	String repairAttempt(int repairChance);
 
-	WearableSkillModMap* getWearableSkillModMap();
+	VectorMap<String, int>* getWearableSkillMods();
 
 	WeakReference<WearableObject*> _this;
 
@@ -219,7 +213,7 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove);
+	void setAttachmentMods(CreatureObject* player, bool remove, bool doCheck);
 
 	bool isWearableObject();
 
@@ -230,8 +224,6 @@ public:
 	int socketsUsed();
 
 	int socketsLeft();
-
-	void setMaxSockets(int sockets);
 
 	String repairAttempt(int repairChance);
 

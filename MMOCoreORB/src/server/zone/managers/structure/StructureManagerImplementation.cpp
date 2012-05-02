@@ -301,6 +301,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	StructureObject* structureObject = cast<StructureObject*>( obj.get());
 	structureObject->setOwnerObjectID(creature->getObjectID());
 	structureObject->grantPermission("ADMIN", creature->getFirstName());
+	structureObject->setOwnerName(creature->getFirstName());
 
 	if (structureObject->isBuildingObject())
 		(cast<BuildingObject*>(structureObject)->createCellObjects());

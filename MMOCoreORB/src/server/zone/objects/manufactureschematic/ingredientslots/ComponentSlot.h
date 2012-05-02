@@ -183,8 +183,7 @@ public:
 			newTano->setParent(NULL);
 
 			contents.put(newTano, parent);
-			satchel->transferObject(newTano, -1, false);
-			satchel->broadcastObject(newTano, true);
+			satchel->transferObject(newTano, -1, true);
 
 			newTano->sendAttributeListTo(player);
 

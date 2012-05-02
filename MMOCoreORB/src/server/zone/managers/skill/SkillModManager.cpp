@@ -130,11 +130,11 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			WearableObject* wearable = cast<WearableObject*>(object.get());
 			if(wearable != NULL) {
 
-				WearableSkillModMap* wearableSkillModMap = wearable->getWearableSkillModMap();
+				VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
 
-				for (int i = 0; i < wearableSkillModMap->getActiveSkillModCount(); ++i) {
-					String name = wearableSkillModMap->getActiveSkillModKey(i);
-					int value = wearableSkillModMap->getActiveSkillModValue(name);
+				for (int i = 0; i < wearableSkillMods->size(); ++i) {
+					String name = wearableSkillMods->elementAt(i).getKey();
+					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {
 						value += mods.get(name);

@@ -50,19 +50,13 @@ import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
-include server.zone.objects.tangible.wearables.WearableSkillModMap;
-include server.zone.objects.tangible.wearables.WearableSkillMods;
-include server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.SceneObjectType;
 import server.zone.Zone;
 import system.util.VectorMap;
 
 class Attachment extends TangibleObject {
-
-	protected int maxModifiers;
 
 	protected int attachmentType;
 
@@ -111,81 +105,6 @@ class Attachment extends TangibleObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	/**
-	 * Sets the ammount of Skill Mods on the attachment
-	 * @pre { }
-	 * @post { }
-	 * @param modCount number of Skill Mods
-	 */
-	public void setSkillModCount(int modCount) {
-		maxModifiers = modCount;
-	}
-
-	/**
-	 * Returns the Count of Skill Mod
-	 * @pre { }
-	 * @post { }
-	 */
-	public int getSkillModCount() {
-		return skillModMap.size();
-	}
-
-	/**
-	 * Returns the Name of Skill Mod at a index
-	 * @pre { }
-	 * @post { }
-	 * @param idx index of the Skill Mod
-	 */
-	public native string getSkillModName(int idx);
-
-	/**
-	 * Returns the Value of Skill Mod at a index
-	 * @pre { }
-	 * @post { }
-	 * @param idx index of the Skill Mod
-	 */
-	public native int getSkillModValue(int idx);
-
-	public int getSkillModValue(string name) {
-		return skillModMap.get(name);
-	}
-
-	
-	public native void parseSkillModAttributeString(string attr);
-
-	/**
-	 * Adds a Skill Mod with a certain value
-	 * @pre { }
-	 * @post { }
-	 * @param skillModType name of the skill mod
-	 * @param skillModValue value of the skill mod
-	 */	
-	public native void addSkillMod(final string skillModType, int skillModValue);
-	
-	/**
-	 * Removes the attachment from the player's inventory
-	 * @pre { }
-	 * @post { }
-	 * @param player The player to remove the attachment from
-	 */
-	public native boolean removeAttachment(CreatureObject player);
-
-	/**
-	 * Generates random skill mods
-	 * @pre { }
-	 * @post { }
-	 */
-	public native void generateSkillMods();
-
-	/**
-	 * Generates random skill mods value based on on luck and creature level
-	 * @pre { }
-	 * @post { }
-	 * @param luck Players skill mod luck value
-	 * @param creatureLevel the level of the creature in which dropped this attachment
-	 */
-	public native int getRandomModValue(int luck, int creatureLevel);
-	
 	public boolean isAttachment() {
 		return true; 
 	}        
@@ -196,5 +115,11 @@ class Attachment extends TangibleObject {
 
 	public boolean isClothingAttachment() {
 		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
-	}                                                       
+	} 
+	
+	@local
+	public VectorMap<string, int> getSkillMods() {
+		return skillModMap;
+	}
+	
 }

@@ -50,6 +50,10 @@ void StructurePermissionList::sendTo(CreatureObject* creature, const String& lis
 }
 
 int StructurePermissionList::togglePermission(const String& listName, const String& playerName) {
+
+	if(playerName == ownerName)
+		return CANTCHANGEOWNER;
+
 	if (!permissionLists.contains(listName))
 		return LISTNOTFOUND;
 
@@ -68,6 +72,10 @@ int StructurePermissionList::togglePermission(const String& listName, const Stri
 }
 
 int StructurePermissionList::grantPermission(const String& listName, const String& playerName) {
+
+	if(playerName == ownerName)
+		return CANTCHANGEOWNER;
+
 	if (!permissionLists.contains(listName))
 		return LISTNOTFOUND;
 
@@ -78,6 +86,10 @@ int StructurePermissionList::grantPermission(const String& listName, const Strin
 }
 
 int StructurePermissionList::revokePermission(const String& listName, const String& playerName) {
+
+	if(playerName == ownerName)
+		return CANTCHANGEOWNER;
+
 	if (!permissionLists.contains(listName))
 		return LISTNOTFOUND;
 
@@ -88,6 +100,10 @@ int StructurePermissionList::revokePermission(const String& listName, const Stri
 }
 
 int StructurePermissionList::revokeAllPermissions(const String& playerName) {
+
+	if(playerName == ownerName)
+		return CANTCHANGEOWNER;
+
 	for (int i = 0; i < permissionLists.size(); ++i) {
 		SortedVector<String>* list = &permissionLists.get(i);
 

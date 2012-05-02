@@ -299,15 +299,15 @@ void DelayedBuffImplementation::init(Vector<int>* events) {
 }
 
 void DelayedBuffImplementation::activate() {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.activate(false);
-	BuffImplementation::activate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.activate(true);
+	BuffImplementation::activate(true);
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		addObservers();
 	addObservers();
 }
 
 void DelayedBuffImplementation::deactivate() {
-	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.deactivate(false);
-	BuffImplementation::deactivate(false);
+	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		super.deactivate(true);
+	BuffImplementation::deactivate(true);
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		dropObservers();
 	dropObservers();
 }
