@@ -133,6 +133,7 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	forcePower = getForcePower();
 	forcePowerMax = getForcePowerMax();
+	forcePowerRegen = getForcePowerRegen();
 
 	foodFilling = 0;
 	foodFillingMax = 100;
