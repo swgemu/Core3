@@ -21,6 +21,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 const uint32 CombatManager::defaultAttacks[9] = {
 		0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
@@ -1095,7 +1096,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
 	int action = (int) (weapon->getActionAttackCost() * data.getActionCostMultiplier());
 	int mind = (int) (weapon->getMindAttackCost() * data.getMindCostMultiplier());
-	int force = (int) ((weapon->getForceCost() / 2) * data.getForceCostMultiplier());
+	int force = (int) ((weapon->getForceCost()) * data.getForceCostMultiplier());
 
 	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
 	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));
@@ -1107,8 +1108,11 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 			if (playerObject->getForcePower() <= force) {
 				attacker->sendSystemMessage("@jedi_spam:no_force_power");
 				return false;
-			} else
+			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
+				// Increase visibilty for using a Force Power attack.
+				VisibilityManager::instance()->increaseVisibility(attacker);
+			}
 		}
 	}
 

@@ -98,6 +98,7 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int forcePower;
 	protected int forcePowerMax;
+	protected int forcePowerRegen;
 	
 	protected int foodFilling;
 	protected int foodFillingMax;
@@ -278,6 +279,7 @@ class PlayerObject extends IntangibleObject {
 		
 		forcePower = 0;
 		forcePowerMax = 0;
+		forcePowerRegen = 0;
 		jediState = 0;
 		
 		duelList.setNoDuplicateInsertPlan();
@@ -732,6 +734,14 @@ class PlayerObject extends IntangibleObject {
 	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
 
 	public native void activateForceRegen();
+	
+	public void setForcePowerRegen(int val) {
+		forcePowerRegen = val;
+	}
+	
+	public int getForcePowerRegen() {
+		return forcePowerRegen;
+	}
 
 
 	public unsigned long getSavedParentID() {

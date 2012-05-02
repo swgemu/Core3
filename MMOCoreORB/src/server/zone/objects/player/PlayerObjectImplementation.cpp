@@ -1506,7 +1506,7 @@ void PlayerObjectImplementation::activateForceRegen() {
 	if (creature->isMeditating())
 		modifier = 3.f;
 
-	uint32 forceTick = creature->getSkillMod("jedi_force_power_regen") / 5 * modifier;
+	uint32 forceTick = getForcePowerRegen() / 5 * modifier;
 
 	if (forceTick < 1)
 		forceTick = 1;

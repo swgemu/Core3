@@ -506,6 +506,10 @@ public:
 
 	void activateForceRegen();
 
+	void setForcePowerRegen(int val);
+
+	int getForcePowerRegen();
+
 	unsigned long long getSavedParentID();
 
 	unsigned int getNewSuiBoxID(unsigned int type);
@@ -815,6 +819,8 @@ protected:
 	int forcePower;
 
 	int forcePowerMax;
+
+	int forcePowerRegen;
 
 	int foodFilling;
 
@@ -1152,6 +1158,10 @@ public:
 	void setForcePowerMax(int newValue, bool notifyClient = true);
 
 	void activateForceRegen();
+
+	void setForcePowerRegen(int val);
+
+	int getForcePowerRegen();
 
 	unsigned long long getSavedParentID();
 
@@ -1607,6 +1617,10 @@ public:
 	void setForcePowerMax(int newValue, bool notifyClient);
 
 	void activateForceRegen();
+
+	void setForcePowerRegen(int val);
+
+	int getForcePowerRegen();
 
 	unsigned long long getSavedParentID();
 

@@ -14,6 +14,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	CreatureObject* creo = dynamic_cast<CreatureObject*>(sceneObject);
@@ -69,6 +70,8 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 
 			return TransferErrorCode::PLAYERUSEMASKERROR;
 		}
+
+
 	}
 
 	if (object->isWeaponObject() && containmentType == 4) {
@@ -103,6 +106,27 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	} else if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo);
+	}
+
+	if (object->isRobeObject()) {
+		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
+
+		if (playerObject->getForcePowerMax() > 0) {
+			playerObject->setForcePowerMax(playerObject->getForcePowerMax() + 250);
+			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() + 10);
+
+			// Increase visibilty for equipping Jedi Robe.
+			VisibilityManager::instance()->increaseVisibility(creo);
+		}
+	}
+
+	if (object->isWeaponObject()){
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
+
+		if (weapon->isJediWeapon()){
+			// Increase visibilty for equipping Lightsaber..
+			VisibilityManager::instance()->increaseVisibility(creo);
+		}
 	}
 
 	if (object->isInstrument() && creo->isEntertaining())
@@ -147,6 +171,27 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	if (object->isInstrument()) {
 		if (creo->isPlayingMusic())
 			creo->stopEntertaining();
+	}
+
+	if (object->isRobeObject()) {
+		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
+
+		if (playerObject->getForcePowerMax() > 0) {
+			playerObject->setForcePowerMax(playerObject->getForcePowerMax() - 250);
+			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() - 10);
+
+			// Increase visibilty for unequipping Jedi Robe.
+			VisibilityManager::instance()->increaseVisibility(creo);
+		}
+	}
+
+	if (object->isWeaponObject()){
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
+
+		if (weapon->isJediWeapon()){
+			// Increase visibilty for unequipping Lightsaber..
+			VisibilityManager::instance()->increaseVisibility(creo);
+		}
 	}
 
 	//this it to update the equipment list
