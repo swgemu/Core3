@@ -66,7 +66,9 @@ void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 }
 
 int VisibilityManager::calculateReward(float visibility) {
-	return visibility * 1000 + System::random(5000);
+	//Minimum reward = 25k TODO: FRS jedis should have 50 k as minimum reward.
+	//Maximum reward = 98k
+	return 25000 + (visibility - 24) * (100 + System::random(50)) + System::random(1000);
 }
 
 float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
