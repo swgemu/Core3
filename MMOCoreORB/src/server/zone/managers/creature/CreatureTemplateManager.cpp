@@ -86,6 +86,15 @@ int CreatureTemplateManager::addTemplate(lua_State* L) {
 	newTemp->setTemplateName(ascii);
 	newTemp->readObject(&obj);
 
+	if (instance()->hashTable.containsKey(crc)) {
+		luaL_where (L, 2);
+		String luaMethodName = lua_tostring(L, -1);
+
+		lua_pop(L, 1);
+
+		instance()->error("overwriting mobile " + ascii + " with " + luaMethodName);
+	}
+
 	CreatureTemplateManager::instance()->hashTable.put(crc, newTemp);
 
 	printf("\r\tLoading mobile templates: [%d] / [?]\t", loadedMobileTemplates.increment());

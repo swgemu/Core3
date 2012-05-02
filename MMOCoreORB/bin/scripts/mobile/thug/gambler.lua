@@ -26,7 +26,9 @@ gambler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff"},
+					"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff",
+					"object/mobile/dressed_commoner_naboo_twilek_female_01.iff"
+					},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

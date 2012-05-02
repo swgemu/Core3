@@ -21,13 +21,15 @@ corsec_major = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_captain_human_female_01.iff",
-		"object/mobile/dressed_corsec_captain_human_male_01.iff"},
+		"object/mobile/dressed_corsec_captain_human_male_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff"
+		},
 	lootGroups = {
 	    {
 			groups = {

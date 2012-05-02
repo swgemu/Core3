@@ -21,13 +21,16 @@ corsec_trooper = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff",
-		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
+		"object/mobile/dressed_corsec_officer_human_female_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff",
+		"object/mobile/dressed_corsec_pilot_human_female_01.iff"
+		},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

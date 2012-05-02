@@ -29,7 +29,16 @@ ragtag_loon = Creature:new {
 		"object/mobile/dressed_goon_twk_female_01.iff",
 		"object/mobile/dressed_goon_twk_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_01.iff",
-		"object/mobile/dressed_gran_thug_male_02.iff"},
+		"object/mobile/dressed_gran_thug_male_02.iff",
+		"object/mobile/dressed_commoner_old_human_male_01.iff",
+		"object/mobile/dressed_commoner_old_human_female_02.iff",
+		"object/mobile/dressed_commoner_naboo_twilek_male_02.iff",
+		"object/mobile/dressed_commoner_naboo_moncal_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_rodian_female_03.iff",
+		"object/mobile/dressed_commoner_old_human_female_01.iff",
+		"object/mobile/dressed_commoner_old_human_male_02.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff"
+		},
 	lootGroups = {
 		{
 			groups = {

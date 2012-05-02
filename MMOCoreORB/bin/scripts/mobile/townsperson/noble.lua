@@ -31,7 +31,11 @@ noble = Creature:new {
 					"object/mobile/dressed_noble_fat_zabrak_male_02.iff",
 					"object/mobile/dressed_noble_human_male_04.iff",
 					"object/mobile/dressed_noble_old_twk_female_01.iff",
-					"object/mobile/dressed_noble_rodian_female_01.iff"},
+					"object/mobile/dressed_noble_rodian_female_01.iff",
+					"object/mobile/dressed_noble_old_twk_female_02.iff",
+					"object/mobile/dressed_noble_bothan_male_01.iff",
+					"object/mobile/dressed_noble_human_female_01.iff"
+					},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

@@ -21,12 +21,14 @@ mercenary = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mercenary_weak_hum_m.iff"},
+	templates = {"object/mobile/dressed_mercenary_weak_hum_m.iff",
+				"object/mobile/dressed_mercenary_messanger_sullustan_m.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

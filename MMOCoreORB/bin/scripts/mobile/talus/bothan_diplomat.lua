@@ -27,7 +27,9 @@ bothan_diplomat = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bth_spynet_pilot_m_01.iff",
-					"object/mobile/dressed_eisley_officer_bothan_female_01.iff"},
+					"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
+					"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
+					},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

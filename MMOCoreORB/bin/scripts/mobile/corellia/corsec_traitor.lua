@@ -27,7 +27,11 @@ corsec_traitor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
-		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
+		"object/mobile/dressed_corsec_pilot_human_male_01.iff",
+		"object/mobile/dressed_mercenary_destroyer_nikto_m.iff",
+		"object/mobile/dressed_mercenary_elite_hum_m.iff",
+		"object/mobile/dressed_mercenary_destroyer_hum_m.iff"
+		},
 	lootGroups = {
 	    {
 			groups = {

@@ -656,6 +656,9 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
 	info("reached " + reachedPosition.toString(), true);*/
 
+	if (getZone() == NULL)
+		return;
+
 	if (cell != NULL && cell->getParent() != NULL)
 		updateZoneWithParent(cell, false, false);
 	else
@@ -688,9 +691,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	ManagedReference<SceneObject*> strongFollow = followObject.get();
 
-	float newSpeed = runSpeed;
-	if (followObject == NULL && !isFleeing() && !isRetreating() && !isInCombat()) // TODO: think about implementing a more generic "walk, don't run" criterion
-		newSpeed = walkSpeed;
+	float newSpeed = runSpeed * 1.5f;
+
+	/*if (followObject == NULL && !isFleeing() && !isRetreating() && !isInCombat()) // TODO: think about implementing a more generic "walk, don't run" criterion
+		newSpeed = walkSpeed;*/
 
 	if(hasState(CreatureState::IMMOBILIZED))
 		newSpeed = newSpeed / 2.f;

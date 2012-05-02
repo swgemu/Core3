@@ -32,6 +32,9 @@ explorer = Creature:new {
 					"object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff",
 					"object/mobile/dressed_commoner_naboo_moncal_female_01.iff",
 					"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
+					"object/mobile/dressed_commoner_naboo_bothan_male_01.iff",
+					"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
+					"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"
 					},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

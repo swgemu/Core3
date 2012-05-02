@@ -34,7 +34,13 @@ ragtag_kook = Creature:new {
 		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
 		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff",
+		"object/mobile/dressed_commoner_tatooine_rodian_male_04.iff",
+		"object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff",
+		"object/mobile/dressed_commoner_old_twilek_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff"
+		},
 	lootGroups = {
 		{
 			groups = {

@@ -26,7 +26,10 @@ artisan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
+	templates = {"object/mobile/dressed_artisan_trainer_03.iff",
+				"object/mobile/dressed_artisan_trainer_02.iff",
+				"object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

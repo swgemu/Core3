@@ -206,6 +206,15 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	delete iffStream;
 
+	/*printf("getting cust vars\n");
+	//uint32 appearanceFileCRC, VectorMap<String, Reference<CustomizationVariable*> >& variables, bool skipShared
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(String("appearance/wp_mle_sword_lightsaber_blade_anakin.lsb").hashCode(), variables, false);
+
+	for (int i = 0; i < variables.size(); ++i) {
+		printf("%s\n", variables.elementAt(i).getKey().toCharArray());
+	}*/
+
 	info("loading customization id manager", true);
 
 	iffStream = openIffFile("customization/customization_id_manager.iff");

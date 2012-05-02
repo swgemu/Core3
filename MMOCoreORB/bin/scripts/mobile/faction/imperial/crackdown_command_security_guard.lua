@@ -26,7 +26,9 @@ crackdown_command_security_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff",
+				"object/mobile/dressed_imperial_officer_m_2.iff"
+				},
 	lootGroups = {
 		{
 			groups = {

@@ -21,11 +21,11 @@ hunter = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_naboo_twilek_female_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

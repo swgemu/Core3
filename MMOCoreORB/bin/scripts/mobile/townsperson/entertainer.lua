@@ -21,12 +21,14 @@ entertainer = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_entertainer_trainer_human_female_01.iff"},
+	templates = {"object/mobile/dressed_entertainer_trainer_human_female_01.iff",
+				 "object/mobile/dressed_entertainer_trainer_twk_male_01.iff"
+				},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

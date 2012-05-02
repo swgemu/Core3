@@ -25,7 +25,9 @@ medic = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff"},
+	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff",
+				"object/mobile/dressed_doctor_trainer_moncal_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

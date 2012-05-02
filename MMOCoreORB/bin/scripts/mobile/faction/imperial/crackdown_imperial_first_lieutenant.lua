@@ -26,7 +26,10 @@ crackdown_imperial_first_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff",
+				"object/mobile/dressed_imperial_officer_m_3.iff",
+				"object/mobile/dressed_imperial_officer_m_5.iff"
+	},
 	lootGroups = {
 		{
 			groups = {

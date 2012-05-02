@@ -25,7 +25,9 @@ fringer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_tatooine_rodian_male_02.iff"},
+	templates = {"object/mobile/dressed_commoner_tatooine_rodian_male_02.iff",
+				"object/mobile/dressed_commoner_naboo_human_male_02.iff"
+	},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

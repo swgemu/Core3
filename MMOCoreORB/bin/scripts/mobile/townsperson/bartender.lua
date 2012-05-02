@@ -28,7 +28,8 @@ bartender = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff",
-					"object/mobile/dressed_commoner_naboo_human_female_05.iff"},
+					"object/mobile/dressed_commoner_naboo_human_female_05.iff",
+					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -21,13 +21,19 @@ bodyguard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff",
-					"object/mobile/dressed_mugger.iff"},
+	templates = {
+					"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff",
+					"object/mobile/dressed_mugger.iff",
+					"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
+					"object/mobile/dressed_robber_twk_male_01.iff",
+					"object/mobile/dressed_criminal_thug_human_female_01.iff",
+					"object/mobile/dressed_robber_twk_female_01.iff"
+				},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

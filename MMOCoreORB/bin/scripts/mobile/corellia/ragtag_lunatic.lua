@@ -32,7 +32,10 @@ ragtag_lunatic = Creature:new {
 		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
 		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
-		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
+		"object/mobile/dressed_villain_trandoshan_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_rodian_female_02.iff",
+		"object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff"
+		},
 	lootGroups = {
 		{
 			groups = {

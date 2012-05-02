@@ -26,7 +26,9 @@ crackdown_imperial_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m_5.iff"},
+	templates = {"object/mobile/dressed_imperial_officer_m_5.iff",
+				"object/mobile/dressed_imperial_officer_m_6.iff"
+				},
 	lootGroups = {
 		{
 			groups = {

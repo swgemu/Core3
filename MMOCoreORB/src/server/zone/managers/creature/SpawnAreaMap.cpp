@@ -93,9 +93,13 @@ void SpawnAreaMap::loadStaticSpawns() {
 			float heading = obj.getFloatAt(6);
 			uint64 parentID = obj.getLongAt(7);
 			String moodString;
+			UnicodeString customName;
 
 			if (obj.getTableSize() > 7)
 				moodString = obj.getStringAt(8);
+
+			if (obj.getTableSize() > 8)
+				customName = obj.getStringAt(9);
 
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
@@ -107,6 +111,9 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 				if (!moodString.isEmpty())
 					creatureObject->setMoodString(moodString);
+
+				if (!customName.isEmpty())
+					creatureObject->setCustomObjectName(customName, true);
 
 				if (creatureObject->isAiAgent()) {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
