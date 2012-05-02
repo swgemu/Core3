@@ -263,6 +263,53 @@ dantooine_static_spawns = {
 	{"untrained_wielder_of_the_dark_side",1800,22.4,-42.1,-64.1,38,8535484},
 	{"untrained_wielder_of_the_dark_side",1800,49.8,-48.5,-65.6,-51,8535484},
 	{"untrained_wielder_of_the_dark_side",1800,49.7,-48,-17.7,167,8535484},
+	
+	--Mining Outpost
+	{"kelvus_naria", 0, -618.741, 3, 2539.25, 57.3847, 0, "calm", "Kelvus Naria"},  --@npc_name:gran_base_male full template: object/mobile/shared_dressed_kelvus_naria.iff
+	{"imperial_colonel", 0, -588.773, 3, 2499.09, 264.624, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_colonel full template: object/mobile/shared_dressed_imperial_colonel_m.iff
+	{"commoner", 0, -643.274, 3, 2449.17, 341.223, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_02.iff
+	{"commoner", 0, -600.968, 3, 2548.6, 16.3166, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_07.iff
+	{"commoner", 0, -580.478, 3, 2530.11, 29.5995, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_05.iff
+	{"commoner", 0, -611.019, 3, 2533.14, 209.391, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_male_01.iff
+	{"commoner", 0, -628.867, 3, 2509.38, 149.887, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_08.iff
+	{"commoner", 0, -615.606, 3, 2518.01, 76.1886, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
+	{"commoner", 0, -621.333, 3, 2500.8, 334.688, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_06.iff
+	{"commoner", 0, -641.029, 3, 2472.4, 264.777, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_01.iff
+	{"commoner", 0, -662.38, 3, 2482.07, 92.5194, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_07.iff
+	{"commoner", 0, -655.95, 3, 2461.93, 14.389, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_02.iff
+	{"commoner", 0, -631.376, 3, 2463.32, 302.398, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_male_02.iff
+	{"commoner", 0, -647.258, 3, 2449.17, 73.2871, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_moncal_male_02.iff
+	{"commoner", 0, -611.222, 3, 2488.13, 311.776, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_01.iff
+	{"commoner", 0, -602.673, 3, 2506.74, 285.056, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_03.iff
+	{"commoner", 0, -568.808, 3, 2511.52, 51.9085, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_02.iff
+	{"stranded_imperial_soldier", 0, -604.016, 3, 2538.15, 200.426, 0, "npc_imperial", "Lt Nilsson (a Planet record keeper)"},  --@mob/creature_names:stranded_imperial_soldier full template: object/mobile/shared_dressed_imperial_officer_m_2.iff
+	{"businessman", 0, -7.99398, 0.624999, -6.06077, 84.0805, 6205566, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_rodian_female_03.iff
+	{"adwan_turoldine", 0, -9.37871, 0.625, 2.98841, 82.9313, 6205565, "neutral", ""},  --@npc_spawner_n:adwan_turoldine full template: object/mobile/shared_space_privateer_tier4_corellia_adwan.iff
+	{"businessman", 0, -603.801, 3, 2485.05, 345.936, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_naboo_human_male_06.iff
+	{"businessman", 0, -647.671, 3, 2456.81, 181.8, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_06.iff
+	{"criminal", 0, -620.832, 3, 2450.5, 281.031, 0, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_robber_human_female_01.iff
+	{"businessman", 0, -636.026, 3, 2507.14, 155.172, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_naboo_human_male_07.iff
+	{"businessman", 0, -575.794, 3, 2503.31, 36.1798, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
+	{"businessman", 0, -627.488, 3, 2531.97, 81.9438, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_06.iff
+	{"kess_yarrow", 0, -623.484, 3, 2481.77, 149.192, 0, "neutral", ""},  --@npc_spawner_n:kess_yarrow full template: object/mobile/shared_space_greeter_dantooine_brother_rebel.iff
+	{"fern_yarrow", 0, -625.684, 3, 2481.19, 119.665, 0, "neutral", ""},  --@npc_spawner_n:fern_yarrow full template: object/mobile/shared_space_greeter_dantooine_brother_imperial.iff
+	{"rane_yarrow", 0, -625.457, 3, 2479.41, 86.8842, 0, "neutral", ""},  --@npc_spawner_n:rane_yarrow full template: object/mobile/shared_space_greeter_dantooine_brother_neutral.iff
+	{"r2", 0, -635.747, 3, 2503.81, 353.861, 0, "calm", "R2-H5"},  --@mob/creature_names:r2 full template: object/mobile/shared_r2.iff
+	{"r4", 0, -643.739, 3, 2506.86, 129.211, 0, "calm", "R4-Y9"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
+	{"r4", 0, -666.582, 3, 2494.33, 121.479, 0, "calm", "R4-A2"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
+	{"mercenary", 0, -665.552, 3, 2462.61, 261.775, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_m.iff
+	{"commando", 0, -616.905, 3, 2509.46, 314.85, 0, "calm", ""},  --@mob/creature_names:commando full template: object/mobile/shared_dressed_rebel_commando_zabrak_female_01.iff
+	{"mercenary", 0, -594.593, 3, 2500.3, 47.5953, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_sullustan_m.iff
+	{"mercenary", 0, -658.186, 3, 2480.4, 334.761, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_sullustan_m.iff
+	{"commando", 0, -562.046, 3, 2512.59, 108.638, 0, "calm", ""},  --@mob/creature_names:commando full template: object/mobile/shared_dressed_rebel_commando_rodian_male_01.iff
+	{"mercenary", 0, -665.821, 3, 2465.46, 120.952, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_rod_m.iff
+		
+	
+	
+	--Aggro Outpost
+	
+	
+	--Imperial Outpost
 }
 
 dantooine_badges = {
