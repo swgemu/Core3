@@ -36,6 +36,9 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 
 		int mod = System::random(max - min) + min;
 
+		if(mod == 0)
+			mod = 1;
+
 		String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod();
 
 		skillModMap.put(modName, mod);
