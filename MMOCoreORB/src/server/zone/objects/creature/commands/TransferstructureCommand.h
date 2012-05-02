@@ -160,6 +160,7 @@ public:
 
 		//Setup permissions.
 		structure->grantPermission("ADMIN", targetCreature->getFirstName());
+		structure->setOwnerName(targetCreature->getFirstName());
 		structure->revokePermission("ADMIN", creature->getFirstName());
 
 		//Update the cell permissions if the structure is private and a building.
