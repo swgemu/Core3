@@ -256,6 +256,10 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
+
+	if (_this->getOwnerCreatureObject() == player)
+		return true;
+
 	if (isOnBanList(player))
 		return false;
 
