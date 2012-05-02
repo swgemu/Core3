@@ -701,7 +701,7 @@ ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObjec
 ArmorObject* CombatManager::getPSGArmor(CreatureObject* attacker, CreatureObject* defender) {
 	SceneObject* psg = defender->getSlottedObject("utility_belt");
 
-	if (psg != NULL && psg->isArmorObject())
+	if (psg != NULL && psg->isPsgArmorObject())
 		return cast<ArmorObject*>(psg);
 
 	return NULL;
@@ -772,7 +772,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(attacker, psg);
 
-		damage *= armorPiercing;
+		if (armorPiercing > 1) damage *= armorPiercing;
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
