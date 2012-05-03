@@ -60,6 +60,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 
 void CraftingToolImplementation::loadTemplateData(
 		SharedObjectTemplate* templateData) {
@@ -170,7 +171,10 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 		alm->insertAttribute("serial_number", objectSerial);
 	}
 
-	disperseItems();
+	Reference<CraftingSession*> session = cast<CraftingSession*>(object->getActiveSession(SessionFacadeType::CRAFTING));
+	if(session == NULL) {
+		disperseItems();
+	}
 }
 
 void CraftingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -205,22 +209,20 @@ void CraftingToolImplementation::disperseItems() {
 		return;
 
 	ManagedReference<SceneObject*> craftedComponents = getSlottedObject("crafted_components");
+	ManagedReference<SceneObject*> prototype = NULL;
+
+	if(getContainerObjectsSize() > 0)
+		 prototype = getContainerObject(0);
 
 	if(craftedComponents == NULL) {
 
-		if(getContainerObjectsSize() == 0)
+		if(prototype == NULL)
 			return;
 
-		ManagedReference<SceneObject*> prototype = getContainerObject(0);
 		craftedComponents = prototype->getSlottedObject("crafted_components");
-
-		if(craftedComponents == NULL) {
-			prototype->destroyObjectFromWorld(true);
-			return;
-		}
 	}
 
-	if(craftedComponents->getContainerObjectsSize() > 0) {
+	if(craftedComponents != NULL  && craftedComponents->getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> satchel = craftedComponents->getContainerObject(0);
 		ManagedReference<SceneObject*> inventory = getParent();
 
@@ -235,4 +237,7 @@ void CraftingToolImplementation::disperseItems() {
 
 	if(craftedComponents != NULL)
 		craftedComponents->destroyObjectFromWorld(true);
+
+	if(prototype != NULL)
+		prototype->destroyObjectFromWorld(true);
 }

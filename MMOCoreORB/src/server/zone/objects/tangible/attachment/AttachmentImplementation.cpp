@@ -21,7 +21,7 @@ void AttachmentImplementation::initializeTransientMembers() {
 void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	int level = values->getMaxValue("creatureLevel");
 	int roll = System::random(100);
-	int modCount = 3;
+	int modCount = 1;
 
 	if(roll > 99)
 		modCount += 2;
