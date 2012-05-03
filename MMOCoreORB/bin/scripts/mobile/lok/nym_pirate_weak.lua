@@ -30,8 +30,7 @@ nym_pirate_weak = Creature:new {
 				"object/mobile/dressed_nym_pirate_weak_rod_m.iff",
 				"object/mobile/dressed_nym_pirate_weak_nikto_m.iff",
 				"object/mobile/dressed_nym_pirate_weak_hum_m.iff",
-				"object/mobile/dressed_nym_pirate_weak_rod_f.iff",
-				"object/mobile/dressed_nym_pirate_weak_wee_m.iff"},
+				"object/mobile/dressed_nym_pirate_weak_rod_f.iff"},
 	lootGroups = {
 	    {
 			groups = {
