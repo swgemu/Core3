@@ -1,6 +1,6 @@
 g_5po = Creature:new {
 	objectName = "",
-	customName = "G-5PO",
+	customName = "G-5P0",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

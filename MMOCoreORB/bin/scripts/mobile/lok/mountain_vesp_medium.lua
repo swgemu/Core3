@@ -1,4 +1,4 @@
-mountain_vesp = Creature:new {
+mountain_vesp_medium = Creature:new {
 	objectName = "@monster_name:vesp_mountain_medium",
 	socialGroup = "Vesp",
 	pvpFaction = "",
@@ -34,4 +34,4 @@ mountain_vesp = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(mountain_vesp, "mountain_vesp")
+CreatureTemplates:addCreatureTemplate(mountain_vesp_medium, "mountain_vesp_medium")

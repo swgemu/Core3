@@ -1,8 +1,7 @@
-bestine = Creature:new {
-	objectName = "",
-	customName = "Bestine",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+ephant_mon = Creature:new {
+	objectName = "@mob/creature_names:ephant_mon",
+	socialGroup = "Jabba",
+	pvpFaction = "Jabba",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -27,7 +26,7 @@ bestine = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_capitol02.iff"},
+	templates = {"object/mobile/ephant_mon.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
@@ -35,4 +34,4 @@ bestine = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(bestine, "bestine")
+CreatureTemplates:addCreatureTemplate(ephant_mon, "ephant_mon")
