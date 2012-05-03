@@ -27,7 +27,8 @@ drall_patriot = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/drall_male.iff",
-		"object/mobile/drall_female.iff"},
+		"object/mobile/drall_female.iff"
+		},
 	lootGroups = {
       	{
 			groups = {
