@@ -111,7 +111,7 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	if (object->isRobeObject()) {
 		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
 
-		if (playerObject->getForcePowerMax() > 0) {
+		if (playerObject != NULL && playerObject->getForcePowerMax() > 0) {
 			playerObject->setForcePowerMax(playerObject->getForcePowerMax() + 250);
 			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() + 10);
 
@@ -176,7 +176,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	if (object->isRobeObject()) {
 		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
 
-		if (playerObject->getForcePowerMax() > 0) {
+		if (playerObject != NULL && playerObject->getForcePowerMax() > 0) {
 			playerObject->setForcePowerMax(playerObject->getForcePowerMax() - 250);
 			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() - 10);
 

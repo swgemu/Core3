@@ -461,8 +461,10 @@ int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int da
 		toughness += defender->getSkillMod(defenseToughMods->get(i));
 	}
 
-	if (damType != WeaponObject::LIGHTSABER)
-		toughness += defender->getSkillMod("jedi_toughness");
+	// According to the Jedi FAQ, Jedi Toughness is multiplicative with LS toughness.
+	int jediToughness = defender->getSkillMod("jedi_toughness");
+	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
+		toughness += jediToughness;
 
 	toughness += defender->getSkillMod("mitigate_damage");
 
@@ -940,7 +942,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 	//Toughness
 	int toughness = getDefenderToughnessModifier(defender, weapon->getDamageType());
 
-	damage *= (1.f - (toughness /= 100.f));
+	damage *= (1.f - (toughness / 100.f));
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
