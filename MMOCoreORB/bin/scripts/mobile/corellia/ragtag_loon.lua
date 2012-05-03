@@ -21,7 +21,7 @@ ragtag_loon = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 

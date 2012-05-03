@@ -1,5 +1,5 @@
-ragtag_maniac = Creature:new {
-	objectName = "@mob/creature_names:ragtag_maniac",
+ragtag_thug = Creature:new {
+	objectName = "@mob/creature_names:ragtag_thug",
 	socialGroup = "ragtag",
 	pvpFaction = "thug",
 	faction = "thug",
@@ -25,14 +25,9 @@ ragtag_maniac = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_crook_zabrak_female_01.iff",
-		"object/mobile/dressed_crook_zabrak_male_01.iff",
-		"object/mobile/dressed_desperado_bith_female_01.iff",
-		"object/mobile/dressed_desperado_bith_male_01.iff",
-		"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
-		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
-		"object/mobile/dressed_hooligan_rodian_female_01.iff",
-		"object/mobile/dressed_hooligan_rodian_male_01.iff"},
+	templates = {"object/mobile/dressed_hooligan_rodian_female_01.iff",
+				"object/mobile/dressed_criminal_thug_human_female_01.iff"
+				},
 	lootGroups = {
 		{
 			groups = {
@@ -48,4 +43,4 @@ ragtag_maniac = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(ragtag_maniac, "ragtag_maniac")
+CreatureTemplates:addCreatureTemplate(ragtag_thug, "ragtag_thug")

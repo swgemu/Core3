@@ -1,7 +1,7 @@
-farmer_rancher = Creature:new {
-	objectName = "@mob/creature_names:farmer_rancher",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+vrak = Creature:new {
+	objectName = "@npc_spawner_n:vrak",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,
@@ -11,7 +11,7 @@ farmer_rancher = Creature:new {
 	baseHAM = 113,
 	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,10 +26,9 @@ farmer_rancher = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
-				"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
-				"object/mobile/dressed_commoner_tatooine_bith_female_06.iff"
-				},
+	templates = {
+		"object/mobile/dressed_nym_destroyer_rod_m.iff"
+	},		
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -37,4 +36,4 @@ farmer_rancher = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(farmer_rancher, "farmer_rancher")
+CreatureTemplates:addCreatureTemplate(vrak, "vrak")

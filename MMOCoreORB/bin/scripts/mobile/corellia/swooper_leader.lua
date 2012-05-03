@@ -21,12 +21,14 @@ swooper_leader = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
+	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff",
+				"object/mobile/dressed_criminal_swooper_zabrak_male_01.iff"
+				},
 	lootGroups = {
       	{
 			groups = {
