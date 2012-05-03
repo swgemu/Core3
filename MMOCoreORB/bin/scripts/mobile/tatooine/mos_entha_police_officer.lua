@@ -1,8 +1,8 @@
 mos_entha_police_officer = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
-	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "imperial",
+	socialGroup = "mos_entha",
+	pvpFaction = "mos_entha",
+	faction = "",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

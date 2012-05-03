@@ -1,7 +1,7 @@
-mos_eisley_police_officer = Creature:new {
-	objectName = "@mob/creature_names:mos_eisley_police_officer",
-	socialGroup = "mos_eisley",
-	pvpFaction = "mos_eisley",
+mos_espa_police_officer = Creature:new {
+	objectName = "@mob/creature_names:mos_espa_police_officer",
+	socialGroup = "mos_espa",
+	pvpFaction = "mos_espa",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,
@@ -26,7 +26,8 @@ mos_eisley_police_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_eisley_officer_aqualish_female_01.iff",
+	templates = {
+		"object/mobile/dressed_eisley_officer_aqualish_female_01.iff",
 		"object/mobile/dressed_eisley_officer_aqualish_male_01.iff",
 		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
 		"object/mobile/dressed_eisley_officer_bothan_male_01.iff",
@@ -40,7 +41,8 @@ mos_eisley_police_officer = Creature:new {
 		"object/mobile/dressed_eisley_officer_twilek_female_01.iff",
 		"object/mobile/dressed_eisley_officer_twilek_male_01.iff",
 		"object/mobile/dressed_eisley_officer_zabrak_female_01.iff",
-		"object/mobile/dressed_eisley_officer_zabrak_male_01.iff"},
+		"object/mobile/dressed_eisley_officer_zabrak_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
@@ -48,4 +50,4 @@ mos_eisley_police_officer = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(mos_eisley_police_officer, "mos_eisley_police_officer")
+CreatureTemplates:addCreatureTemplate(mos_espa_police_officer, "mos_espa_police_officer")
