@@ -26,7 +26,11 @@ valarian_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_valarian_thug.iff"},
+	templates = {
+		"object/mobile/dressed_tatooine_valarian_thug.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"
+	},
 	lootGroups = {
 	    {
 			groups = {

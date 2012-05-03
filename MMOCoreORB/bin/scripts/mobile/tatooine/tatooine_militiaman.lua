@@ -26,7 +26,7 @@ tatooine_militiaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_militiaman.iff"},
+	templates = {"object/mobile/dressed_tatooine_militiaman.iff", "object/mobile/dressed_eisley_officer_trandoshan_female_01.iff", "object/mobile/dressed_eisley_officer_aqualish_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

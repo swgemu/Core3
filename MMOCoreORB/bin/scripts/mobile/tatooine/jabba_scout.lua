@@ -26,7 +26,13 @@ jabba_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_jabba_scout.iff"},
+	templates = {
+		"object/mobile/dressed_tatooine_jabba_scout.iff",
+		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_mugger.iff"
+		
+	},
 	lootGroups = {
 	    {
 			groups = {
