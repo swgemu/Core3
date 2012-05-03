@@ -6,6 +6,7 @@ foraged_infection_amplifier = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/infection_amplifier.iff",
 	craftingValues = {
+		{"power",1,25,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

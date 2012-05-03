@@ -6,6 +6,7 @@ foraged_solid_delivery_shell = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
 	craftingValues = {
+		{"power",1,20,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

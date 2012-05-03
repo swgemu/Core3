@@ -6,6 +6,8 @@ foraged_biologic_effect_controller = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
 	craftingValues = {
+		{"power",1,5,0},
+		{"charges",1,5,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

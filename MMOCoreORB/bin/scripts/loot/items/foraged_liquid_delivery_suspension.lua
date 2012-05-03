@@ -6,6 +6,7 @@ foraged_liquid_delivery_suspension = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension.iff",
 	craftingValues = {
+		{"power",1,45,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

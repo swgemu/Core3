@@ -6,6 +6,9 @@ foraged_dispersal_mechanism = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
 	craftingValues = {
+		{"charges",1,10,0},
+		{"area",1,10,0},
+		{"range",1,10,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

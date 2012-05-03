@@ -6,6 +6,7 @@ foraged_release_mechanism_duration = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/chemistry/release_mechanism_duration.iff",
 	craftingValues = {
+		{"power",1,20,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
