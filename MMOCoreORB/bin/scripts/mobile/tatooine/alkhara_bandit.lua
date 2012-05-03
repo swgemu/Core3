@@ -1,8 +1,8 @@
 alkhara_bandit = Creature:new {
 	objectName = "@mob/creature_names:alkhara_bandit",
-	socialGroup = "Alkhara",
-	pvpFaction = "Alkhara",
-	faction = "",
+	socialGroup = "alkhara",
+	pvpFaction = "alkhara",
+	faction = "alkhara",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

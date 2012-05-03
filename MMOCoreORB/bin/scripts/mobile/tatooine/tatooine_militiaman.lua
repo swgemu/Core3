@@ -1,8 +1,8 @@
 tatooine_militiaman = Creature:new {
 	objectName = "@mob/creature_names:tatooine_militiaman",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

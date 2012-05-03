@@ -1,6 +1,5 @@
 ty_vila = Creature:new {
 	objectName = "@npc_spawner_n:ty_vila",
-	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

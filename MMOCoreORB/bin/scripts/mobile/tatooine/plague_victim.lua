@@ -25,7 +25,7 @@ plague_victim = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_plague_victim.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

@@ -27,7 +27,7 @@ romo_vax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_cobral_thief_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -25,7 +25,7 @@ insane_kitonak = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kitonak_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

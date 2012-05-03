@@ -1,8 +1,8 @@
 valarians_thief = Creature:new {
 	objectName = "@mob/creature_names:valarian_thief",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

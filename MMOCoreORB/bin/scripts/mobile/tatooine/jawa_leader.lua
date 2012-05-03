@@ -1,8 +1,8 @@
 jawa_leader = Creature:new {
 	objectName = "@mob/creature_names:jawa_leader",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

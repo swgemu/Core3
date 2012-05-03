@@ -27,7 +27,7 @@ pfilbee_jhorn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_pfilbee_jhorn.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

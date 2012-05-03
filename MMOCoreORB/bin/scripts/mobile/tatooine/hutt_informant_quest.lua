@@ -1,8 +1,8 @@
 hutt_informant_quest = Creature:new {
 	objectName = "",
 	customName = "Hutt Informant",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -27,7 +27,7 @@ hutt_informant_quest = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

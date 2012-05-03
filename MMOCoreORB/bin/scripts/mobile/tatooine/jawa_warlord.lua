@@ -1,8 +1,8 @@
 jawa_warlord = Creature:new {
 	objectName = "@mob/creature_names:jawa_warlord",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

@@ -1,8 +1,8 @@
 sirad_far = Creature:new {
 	objectName = "@mob/creature_names:sirad_far",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -25,7 +25,7 @@ sirad_far = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/sirad_far.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

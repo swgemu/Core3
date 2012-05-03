@@ -27,7 +27,7 @@ mat_rags = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_mat_rags.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 squatter = Creature:new {
 	objectName = "@mob/creature_names:squatter",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
@@ -25,12 +25,7 @@ squatter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_commoner_fat_twilek_male_01.iff",
-		"object/mobile/dressed_commoner_fat_zabrak_male_02.iff",
-		"object/mobile/dressed_commoner_fat_twilek_female_01.iff",
-		"object/mobile/dressed_commoner_tatooine_rodian_female_03.iff"
-	},
+	templates = {"object/mobile/dressed_tatooine_squatter.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

@@ -1,8 +1,8 @@
 tusken_raid_champion = Creature:new {
 	objectName = "@mob/creature_names:Tusken_raid_champion",
-	socialGroup = "Tusken Raider",
-	pvpFaction = "Tusken Raider",
-	faction = "",
+	socialGroup = "tusken_raider",
+	pvpFaction = "tusken_raider",
+	faction = "tusken_raider",
 	level = 62,
 	chanceHit = 0.62,
 	damageMin = 455,

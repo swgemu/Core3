@@ -1,8 +1,8 @@
 alkhara_champion = Creature:new {
 	objectName = "@mob/creature_names:alkhara_champion",
-	socialGroup = "Alkhara",
-	pvpFaction = "Alkhara",
-	faction = "",
+	socialGroup = "alkhara",
+	pvpFaction = "alkhara",
+	faction = "alkhara",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,

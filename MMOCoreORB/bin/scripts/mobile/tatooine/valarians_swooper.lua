@@ -1,8 +1,8 @@
 valarians_swooper = Creature:new {
 	objectName = "@mob/creature_names:valarian_swooper",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

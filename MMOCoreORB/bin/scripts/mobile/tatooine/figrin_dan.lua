@@ -1,6 +1,6 @@
 figrin_dan = Creature:new {
 	objectName = "",
-	customName = "Figrin Dan",
+	customName = "Figrin D'an",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",

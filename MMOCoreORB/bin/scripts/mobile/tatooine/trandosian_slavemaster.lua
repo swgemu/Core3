@@ -26,7 +26,7 @@ trandosian_slavemaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff"},
+	templates = {"object/mobile/dressed_tatooine_trandoshan_slavemaster.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

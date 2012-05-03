@@ -1,7 +1,7 @@
 imi_eficoaw = Creature:new {
 	objectName = "",
 	customName = "Imi Eficoaw",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

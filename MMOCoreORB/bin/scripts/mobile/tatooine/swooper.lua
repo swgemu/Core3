@@ -1,8 +1,8 @@
 swooper = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	socialGroup = "Swoop",
-	pvpFaction = "Swoop",
-	faction = "",
+	socialGroup = "swoop",
+	pvpFaction = "swoop",
+	faction = "swoop",
 	level = 2,
 	chanceHit = 0.21,
 	damageMin = 35,

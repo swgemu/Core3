@@ -26,7 +26,7 @@ boulo_siesi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist01.iff"},
+	templates = {"object/mobile/dressed_bestine_artist06.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

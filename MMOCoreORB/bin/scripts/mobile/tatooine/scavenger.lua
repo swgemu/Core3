@@ -1,8 +1,8 @@
 scavenger = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,7 +25,7 @@ scavenger = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_scavenger.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

@@ -1,6 +1,5 @@
 boshek = Creature:new {
-	objectName = "",
-	customName = "Boshek",
+	objectName = "@theme_park_name:boshek",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

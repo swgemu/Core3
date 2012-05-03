@@ -1,6 +1,5 @@
 phinea_shantee = Creature:new {
-	objectName = "",
-	customName = "Phinea Shantee",
+	objectName = "@theme_park_name:phinea_shantee",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +26,7 @@ phinea_shantee = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_phinea_shantee.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

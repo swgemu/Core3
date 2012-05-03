@@ -1,8 +1,8 @@
 valarians_scout = Creature:new {
 	objectName = "@mob/creature_names:valarian_scout",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

@@ -1,6 +1,5 @@
 prefect_talmont = Creature:new {
-	objectName = "",
-	customName = "Phinea Shantee",
+	objectName = "@theme_park_name:phinea_shantee",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

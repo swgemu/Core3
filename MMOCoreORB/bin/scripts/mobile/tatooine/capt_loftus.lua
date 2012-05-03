@@ -1,6 +1,6 @@
 capt_loftus = Creature:new {
 	objectName = "",
-	customName = "Capt. Loftus",
+	customName = "Captain Hantor Loftus",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

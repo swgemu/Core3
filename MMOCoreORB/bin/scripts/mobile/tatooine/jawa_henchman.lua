@@ -1,8 +1,8 @@
 jawa_henchman = Creature:new {
 	objectName = "@mob/creature_names:jawa_henchman",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,

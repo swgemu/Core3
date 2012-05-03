@@ -1,8 +1,8 @@
 jabba_enforcer = Creature:new {
 	objectName = "@mob/creature_names:jabba_enforcer",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

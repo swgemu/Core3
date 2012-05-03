@@ -1,5 +1,5 @@
 stella = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:mos_taike_cantina_owner",
 	customName = "Stella",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
@@ -22,12 +22,12 @@ stella = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mos_taike_cantina_owner.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
