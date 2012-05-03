@@ -302,6 +302,11 @@ void CommandConfigManager::registerSpecialCommands() {
 	if (slashCommand == NULL) {
 		error("Could not create command /logout");
 	}
+
+	createCommand(String("mildPoison").toLowerCase());
+	createCommand(String("strongPoison").toLowerCase());
+	createCommand(String("mildDisease").toLowerCase());
+	createCommand(String("strongDisease").toLowerCase());
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -966,6 +971,10 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<Intimidate1Command>(String("intimidate1").toLowerCase());
 	commandFactory.registerCommand<Intimidate2Command>(String("intimidate2").toLowerCase());
 	commandFactory.registerCommand<IntimidationAttackCommand>(String("intimidationAttack").toLowerCase());
+	commandFactory.registerCommand<MildPoisonCommand>(String("mildPoison").toLowerCase());
+	commandFactory.registerCommand<StrongPoisonCommand>(String("strongPoison").toLowerCase());
+	commandFactory.registerCommand<StrongDiseaseCommand>(String("strongDisease").toLowerCase());
+	commandFactory.registerCommand<MildDiseaseCommand>(String("mildDisease").toLowerCase());
 	commandFactory.registerCommand<InviteCommand>(String("invite").toLowerCase());
 	commandFactory.registerCommand<InvulnerableCommand>(String("invulnerable").toLowerCase());
 	commandFactory.registerCommand<ItemmovebackCommand>(String("itemmoveback").toLowerCase());
