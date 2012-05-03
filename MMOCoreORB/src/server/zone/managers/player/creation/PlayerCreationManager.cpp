@@ -537,6 +537,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	if (item != NULL && inventory != NULL) {
 		byte type = 0x02;
 		item->setCustomizationVariable(type, 0, true);
+		item->setCustomizationVariable("/private/index_color_2", 216, true);
 		inventory->transferObject(item, -1, true);
 	}
 
@@ -556,7 +557,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	if (item != NULL && inventory != NULL) {
 		byte type = 0x02;
-		item->setCustomizationVariable(type, 216, true);
+		item->setCustomizationVariable(type, 0, true);
 		inventory->transferObject(item, -1, true);
 	}
 
