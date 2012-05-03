@@ -58,8 +58,8 @@ TorsoShotCommand = {
 
 	dotEffects = {
 	  DotEffect( 
-		BLEEDING, 
-		{ "resistance_bleeding", "bleed_resist" },
+		ONFIRE, 
+		{ "resistance_fire", "fire_resist" },
 		HEALTH,
 		true,
 		125,
