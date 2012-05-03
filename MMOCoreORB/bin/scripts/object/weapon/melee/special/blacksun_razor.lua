@@ -80,7 +80,7 @@ object_weapon_melee_special_blacksun_razor = object_weapon_melee_special_shared_
 	xpType = "combat_meleespecialize_unarmed",
 	       
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_blacksun_razor" },
+	certificationsRequired = { "cert_vibroknuckler" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
 	
