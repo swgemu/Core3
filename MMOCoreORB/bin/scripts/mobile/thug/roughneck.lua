@@ -25,7 +25,11 @@ roughneck = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_criminal_slicer_human_male_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_female_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

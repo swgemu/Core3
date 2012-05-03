@@ -26,7 +26,10 @@ crackdown_rebel_guardsman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_trooper_twk_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_trooper_twk_male_01.iff",
+		"object/mobile/dressed_rebel_trooper_sullustan_male_01.iff"
+	},
 	lootGroups = {
 		{
 			groups = {

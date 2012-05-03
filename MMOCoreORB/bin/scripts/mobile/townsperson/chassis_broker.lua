@@ -26,7 +26,13 @@ chassis_broker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_chassis_broker_05.iff"},
+	templates = {
+		"object/mobile/space_chassis_broker_01.iff",
+		"object/mobile/space_chassis_broker_02.iff",
+		"object/mobile/space_chassis_broker_03.iff",
+		"object/mobile/space_chassis_broker_04.iff",
+		"object/mobile/space_chassis_broker_05.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

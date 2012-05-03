@@ -25,7 +25,9 @@ wastrel = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_commoner_old_zabrak_female_02.iff"
+	},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

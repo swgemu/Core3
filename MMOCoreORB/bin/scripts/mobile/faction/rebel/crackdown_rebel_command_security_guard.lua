@@ -1,15 +1,15 @@
-crackdown_stormtrooper_sniper = Creature:new {
-	objectName = "@mob/creature_names:crackdown_stormtrooper_sniper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "imperial",
+crackdown_rebel_command_security_guard = Creature:new {
+	objectName = "@mob/creature_names:crackdown_rebel_command_security_guard",
+	socialGroup = "Rebel",
+	pvpFaction = "Rebel",
+	faction = "rebel",
 	level = 1,
 	chanceHit = 0.36,
-	damageMin = 250,
-	damageMax = 260,
+	damageMin = 240,
+	damageMax = 250,
 	baseXp = 45,
-	baseHAM = 6800,
-	baseHAMmax = 8300,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
 	resists = {0,0,40,0,0,0,0,-1,-1},
 	meatType = "",
@@ -27,7 +27,10 @@ crackdown_stormtrooper_sniper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_stormtrooper_sniper_m.iff"
+		"object/mobile/dressed_rebel_crewman_human_male_04.iff",
+		"object/mobile/dressed_rebel_crewman_human_female_01.iff",
+		"object/mobile/dressed_rebel_crewman_human_female_02.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_03.iff"
 	},
 	lootGroups = {
 		{
@@ -40,12 +43,12 @@ crackdown_stormtrooper_sniper = Creature:new {
 				{group = "armor_attachments", chance = 1100000}
 			},
 			lootChance = 4000000
-		}			
+		}		
 	},
-	weapons = {"st_sniper_weapons"},
+	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_sniper, "crackdown_stormtrooper_sniper")
+CreatureTemplates:addCreatureTemplate(crackdown_rebel_command_security_guard, "crackdown_rebel_command_security_guard")
