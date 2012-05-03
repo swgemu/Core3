@@ -1795,7 +1795,7 @@ tatooine_static_spawns = {
 	{"desert_demon", 0, -2861.27, 5, 2393.34, 146.859, 0, "calm", ""},  --@mob/creature_names:desert_demon full template: object/mobile/shared_dressed_criminal_swooper_zabrak_female_01.iff
 	{"desert_demon", 0, -2823.03, 5, 2448.69, 64.4102, 0, "calm", ""},  --@mob/creature_names:desert_demon full template: object/mobile/shared_dressed_criminal_swooper_zabrak_female_01.iff
 	{"thug", 0, -2919.38, 5, 2143.08, 304.531, 0, "calm", ""},  --@mob/creature_names:thug full template: object/mobile/shared_dressed_criminal_thug_trandoshan_male_01.iff
-		
+
 	
 	--Wayfar
 	{"rebel_recruiter", 0, -5295.7, 75, -6527.99, 39.2298, 0, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/shared_dressed_rebel_recruiter_human_female_01.iff

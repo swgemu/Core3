@@ -169,6 +169,59 @@ dathomir_static_spawns = {
 	{"informant_npc_lvl_3",0,598,0,3025,180,0},
 	
 	{"mozo_bondog", 1, -6313.0, 128.0, 734.0, -91, 0}
+	
+	--Trade Outpost
+	{"singular_nak", 0, 571.41, 6.00339, 3091.62, 138.627, 0, "calm", "Singular Nak"},  --@npc_name:singular_nak full template: object/mobile/shared_dressed_singular_nak.iff
+	{"escaped_nightsister_slave", 0, 595.466, 6, 3045.35, 264.607, 0, "calm", ""},  --@mob/creature_names:escaped_nightsister_slave full template: object/mobile/shared_dressed_commoner_fat_twilek_male_01.iff
+	{"commoner", 0, 585.943, 6, 3051.56, 118.776, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_devaronian_male_02.iff
+	{"commoner", 0, 598.679, 6, 3046.85, 261.619, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_bothan_male_02.iff
+	{"commoner", 0, 577.196, 6, 3100.6, 52.588, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
+	{"commoner", 0, 585.757, 6, 3072.92, 217.734, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_moncal_female_02.iff
+	{"businessman", 0, 590.176, 6, 3058.45, 264.528, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_fat_human_male_01.iff
+	{"businessman", 0, 594.44, 6, 3087.13, 181.146, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_05.iff
+	{"commoner", 0, 611.089, 6, 3084.06, 359.767, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_moncal_male_02.iff
+	{"commoner", 0, 621.667, 6, 3092.75, 351.148, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_04.iff
+	{"commoner", 0, 605.584, 6, 3080.71, 149.629, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_male_01.iff
+	{"commoner", 0, 616.733, 6, 3056.95, 135.38, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_06.iff
+	{"commoner", 0, 618.605, 6, 3071.68, 172.714, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_08.iff
+	{"scientist", 0, 623.05, 6, 3037.98, 54.874, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_combatmedic_trainer_rodian_male_01.iff
+	{"businessman", 0, 614.681, 6, 3081.65, 80.4705, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_fat_twilek_female_02.iff
+	{"scientist", 0, 8.38532, 0.625, -5.44432, 228.681, 6955370, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_mercenary_medic_rodian_female_01.iff
+	{"businessman", 0, -8.09806, 0.625, 4.31086, 153.675, 6955368, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
+	{"wallaw_loowobbli", 0, 1.19457, 0.624999, 6.04704, 232.283, 6955367, "calm", "Wallaw Loowobbli"},  --@npc_name:wallaw_loowobbli full template: object/mobile/shared_dressed_wallaw_loowobbli.iff
+	{"businessman", 0, 6.94935, 0.624998, 2.6394, 198.079, 6955367, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_04.iff
+	{"nirame_sakute", 0, -2.1912, 0.624999, -6.92293, 24.0649, 6955369, "neutral", ""},  --@npc_spawner_n:nirame_sakute full template: object/mobile/shared_space_privateer_tier4_tatooine_nirame.iff
+	{"noble", 0, 3.00888, 0.125266, -2.92449, 279.334, 1392894, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/shared_dressed_noble_bothan_female_01.iff
+	{"r5", 0, 627.744, 6, 3086.77, 278.522, 0, "calm", "R5-O6"},  --@mob/creature_names:r5 full template: object/mobile/shared_r5.iff
+	{"r4", 0, 620.654, 6, 3085.98, 191.123, 0, "calm", "R4-W3"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
+	{"r4", 0, 619.822, 6, 3097.36, 339.758, 0, "calm", "R4-L1"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
+	{"mercenary", 0, 578.316, 6, 3092.44, 253.37, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_rod_m.iff
+	{"mercenary", 0, 566.589, 6, 3070.58, 284.249, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_hum_f.iff
+	{"mercenary", 0, 559.148, 6.05656, 3076.83, 297.739, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_m.iff
+	{"mercenary", 0, 584.255, 6, 3094.17, 253.409, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_m.iff
+	
+	--Science Outpost
+	{"shaki_hamachil", 0, -101.049, 18, -1542.62, 293.515, 0, "calm", "Shaki Hamachil"},  --@npc_name:shaki_hamachil full template: object/mobile/shared_dressed_shaki_hamachil.iff
+	{"scientist", 0, -136.034, 18, -1592.07, 62.5196, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_combatmedic_trainer_human_female_01.iff
+	{"arnecio_ulvaw_op", 0, 4.06465, 0.624999, 2.34456, 30.9406, 2835570, "neutral", ""},  --@npc_spawner_n:arnecio_ulvaw_op full template: object/mobile/shared_space_rebel_tier3_arnecio.iff
+	{"shibb_nisshil", 0, -71.1537, 18, -1639.84, 66.4233, 0, "", "Shibb Nisshil"},  --@npc_name:shibb_nisshil full template: object/mobile/shared_dressed_shibb_nisshil.iff
+	{"businessman", 0, -70.8878, 18, -1646.08, 315.408, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_human_male_01.iff
+	{"commoner", 0, -60.7253, 18, -1596.21, 88.2297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
+	{"commoner", 0, -37.0445, 18, -1587.75, 47.6817, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_05.iff
+	{"commoner", 0, -78.5124, 18, -1618.16, 179.85, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_female_02.iff
+	{"commoner", 0, -98.9262, 18, -1590.29, 239.412, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_02.iff
+	{"businessman", 0, -64.4958, 18, -1581.42, 63.9635, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_06.iff
+	{"businessman", 0, -79.6404, 18, -1585.09, 131.623, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
+	{"transport", 0, -75.9946, 25.086, -1586, 128.438, 0, "neutral", ""},  --@theme_park_name:transport full template: object/creature/npc/theme_park/shared_player_transport.iff
+	{"criminal", 0, -3.46893, 0.624996, -1.80359, 9.95605, 2835552, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_criminal_thug_human_female_02.iff
+	{"cll8_binary_load_lifter", 0, -107.307, 18, -1603.07, 275.094, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/shared_cll8_binary_load_lifter.iff
+	{"r3", 0, -78.3142, 18, -1629.93, 144.919, 0, "calm", "R3-O0"},  --@mob/creature_names:r3 full template: object/mobile/shared_r3.iff
+	{"r4", 0, -134.195, 18, -1599.14, 45.5678, 0, "calm", "R4-J5"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
+	{"mercenary", 0, -88.9323, 18, -1606.84, 350.084, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_sullustan_m.iff
+	{"mercenary", 0, -100.976, 18, -1573.64, 39.7721, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_rod_m.iff
+	{"mercenary", 0, -86.3374, 18, -1555.75, 219.418, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_rod_m.iff
+	{"mercenary", 0, -93.2763, 18, -1569.32, 343.205, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_messanger_hum_m.iff
+	{"mercenary", 0, -43.9919, 18, -1585.86, 220.77, 0, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_f.iff		
 }
 
 dathomir_badges = {
