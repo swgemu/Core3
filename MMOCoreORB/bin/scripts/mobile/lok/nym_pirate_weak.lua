@@ -1,15 +1,15 @@
-nyms_surveyor = Creature:new {
-	objectName = "@mob/creature_names:nym_surveyer",
+nym_pirate_weak = Creature:new {
+	objectName = "@mob/creature_names:nym_pirate_weak",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
-	level = 21,
-	chanceHit = 0.33,
-	damageMin = 190,
-	damageMax = 200,
-	baseXp = 2006,
-	baseHAM = 5000,
-	baseHAMmax = 6100,
+	level = 26,
+	chanceHit = 0.36,
+	damageMin = 250,
+	damageMax = 260,
+	baseXp = 2730,
+	baseHAM = 7700,
+	baseHAMmax = 9400,
 	armor = 0,
 	resists = {25,10,25,25,25,-1,-1,-1,-1},
 	meatType = "",
@@ -26,7 +26,12 @@ nyms_surveyor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_surveyer_rod_m.iff"},
+	templates = {"object/mobile/dressed_nym_pirate_weak_hum_f.iff", 
+				"object/mobile/dressed_nym_pirate_weak_rod_m.iff",
+				"object/mobile/dressed_nym_pirate_weak_nikto_m.iff",
+				"object/mobile/dressed_nym_pirate_weak_hum_m.iff",
+				"object/mobile/dressed_nym_pirate_weak_rod_f.iff",
+				"object/mobile/dressed_nym_pirate_weak_wee_m.iff"},
 	lootGroups = {
 	    {
 			groups = {
@@ -44,4 +49,4 @@ nyms_surveyor = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_surveyor, "nyms_surveyor")
+CreatureTemplates:addCreatureTemplate(nym_pirate_weak, "nym_pirate_weak")

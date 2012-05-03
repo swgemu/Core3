@@ -1,17 +1,17 @@
-nyms_elite_guard = Creature:new {
-	objectName = "@mob/creature_names:nym_guard_elite",
+nym_patrol_weak = Creature:new {
+	objectName = "@mob/creature_names:nym_patrol_weak",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
-	level = 38,
-	chanceHit = 0.43,
-	damageMin = 335,
-	damageMax = 380,
-	baseXp = 3824,
-	baseHAM = 9100,
-	baseHAMmax = 11100,
-	armor = 2,
-	resists = {15,15,15,15,60,-1,-1,-1,-1},
+	level = 33,
+	chanceHit = 0.4,
+	damageMin = 305,
+	damageMax = 320,
+	baseXp = 3370,
+	baseHAM = 8600,
+	baseHAMmax = 10500,
+	armor = 0,
+	resists = {35,40,25,25,40,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,13 +22,16 @@ nyms_elite_guard = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_pirate_elite_hum_m.iff"},
+	templates = {"object/mobile/dressed_nym_patrol_weak_hum_f.iff", 
+				"object/mobile/dressed_nym_patrol_weak_rod_m.iff",
+				"object/mobile/dressed_nym_patrol_weak_nikto_m.iff",
+				"object/mobile/dressed_nym_patrol_weak_hum_m.iff"},
 	lootGroups = {
-	 {
+	    {
 			groups = {
 				{group = "nyms_common", chance = 2500000},
 				{group = "rifles", chance = 2500000},
@@ -44,4 +47,4 @@ nyms_elite_guard = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_elite_guard, "nyms_elite_guard")
+CreatureTemplates:addCreatureTemplate(nym_patrol_weak, "nym_patrol_weak")

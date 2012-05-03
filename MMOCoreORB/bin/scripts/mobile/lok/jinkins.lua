@@ -25,7 +25,7 @@ jinkins = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/jinkins.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

@@ -1,5 +1,5 @@
-nyms_guard = Creature:new {
-	objectName = "Nym's guard",
+nym_guard_weak = Creature:new {
+	objectName = "@mob/creature_names:nym_guard_weak",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
@@ -25,7 +25,10 @@ nyms_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_nym_guard_weak_hum_f.iff", 
+				"object/mobile/dressed_nym_guard_weak_rod_m.iff",
+				"object/mobile/dressed_nym_guard_weak_nikto_m.iff",
+				"object/mobile/dressed_nym_guard_weak_hum_m.iff"},
 	lootGroups = {
 	    {
 			groups = {
@@ -41,4 +44,4 @@ nyms_guard = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_guard, "nyms_guard")
+CreatureTemplates:addCreatureTemplate(nym_guard_weak, "nym_guard_weak")

@@ -1,17 +1,17 @@
-nyms_pirate = Creature:new {
-	objectName = "@mob/creature_names:nym_pirate_strong",
+nym_pirate_elite = Creature:new {
+	objectName = "@mob/creature_names:nym_pirate_elite",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
-	level = 26,
-	chanceHit = 0.36,
-	damageMin = 250,
-	damageMax = 260,
-	baseXp = 2730,
-	baseHAM = 7700,
-	baseHAMmax = 9400,
-	armor = 0,
-	resists = {25,10,25,25,25,-1,-1,-1,-1},
+	level = 31,
+	chanceHit = 0.39,
+	damageMin = 290,
+	damageMax = 300,
+	baseXp = 3188,
+	baseHAM = 8600,
+	baseHAMmax = 10600,
+	armor = 1,
+	resists = {15,15,15,15,40,-1,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,13 +26,16 @@ nyms_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_pirate_weak_hum_f.iff"},
+	templates = {"object/mobile/dressed_nym_pirate_elite_rod_m.iff",
+				"object/mobile/dressed_nym_pirate_elite_nikto_m.iff",
+				"object/mobile/dressed_nym_pirate_elite_hum_m.iff",
+				"object/mobile/dressed_nym_pirate_elite_wee_m.iff"},
 	lootGroups = {
 	    {
 			groups = {
 				{group = "nyms_common", chance = 2500000},
+				{group = "pistols", chance = 2500000},
 				{group = "rifles", chance = 2500000},
-				{group = "carbines", chance = 2500000},
 				{group = "tailor_components", chance = 2500000}
 			},
 			lootChance = 6500000
@@ -44,4 +47,4 @@ nyms_pirate = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_pirate, "nyms_pirate")
+CreatureTemplates:addCreatureTemplate(nym_pirate_elite, "nym_pirate_elite")

@@ -1,4 +1,4 @@
-nyms_brawler = Creature:new {
+nym_brawler = Creature:new {
 	objectName = "@mob/creature_names:nym_brawler",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
@@ -26,7 +26,11 @@ nyms_brawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_brawler_hum_f.iff"},
+	templates = {"object/mobile/dressed_nym_brawler_hum_f.iff",
+				"object/mobile/dressed_nym_brawler_hum_m.iff",
+				"object/mobile/dressed_nym_brawler_nikto_m.iff",
+				"object/mobile/dressed_nym_brawler_rod_f.iff",
+				"object/mobile/dressed_nym_brawler_rod_m.iff"},
 	lootGroups = {
 	    {
 			groups = {
@@ -44,4 +48,4 @@ nyms_brawler = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_brawler, "nyms_brawler")
+CreatureTemplates:addCreatureTemplate(nym_brawler, "nym_brawler")

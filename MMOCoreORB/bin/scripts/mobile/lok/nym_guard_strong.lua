@@ -1,5 +1,5 @@
-nym_guard = Creature:new {
-	objectName = "@mob/creature_names:nym_guard",
+nym_guard_strong = Creature:new {
+	objectName = "@mob/creature_names:nym_guard_strong",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
 	faction = "",
@@ -26,7 +26,10 @@ nym_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff"},
+	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff", 
+				"object/mobile/dressed_nym_guard_strong_rod_m.iff",
+				"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
+				"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
@@ -34,4 +37,4 @@ nym_guard = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nym_guard, "nym_guard")
+CreatureTemplates:addCreatureTemplate(nym_guard_strong, "nym_guard_strong")

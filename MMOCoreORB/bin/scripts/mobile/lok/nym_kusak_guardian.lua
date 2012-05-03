@@ -1,4 +1,4 @@
-Nyms_kusak_guardian = Creature:new {
+nym_kusak_guardian = Creature:new {
 	objectName = "@mob/creature_names:nym_kusak_guardian",
 	socialGroup = "Nym",
 	pvpFaction = "",
@@ -36,4 +36,4 @@ Nyms_kusak_guardian = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(Nyms_kusak_guardian, "Nyms_kusak_guardian")
+CreatureTemplates:addCreatureTemplate(nym_kusak_guardian, "nym_kusak_guardian")

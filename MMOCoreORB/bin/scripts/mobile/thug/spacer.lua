@@ -21,11 +21,11 @@ spacer = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = {}

@@ -27,7 +27,8 @@ agriculturalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_quest_farmer.iff",
-					"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff"},
+					"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
+					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

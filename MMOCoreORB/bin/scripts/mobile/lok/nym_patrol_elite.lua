@@ -1,4 +1,4 @@
-nyms_elite_patrol = Creature:new {
+nym_patrol_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_patrol_elite",
 	socialGroup = "Nym",
 	pvpFaction = "Nym",
@@ -26,7 +26,9 @@ nyms_elite_patrol = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_guard_elite_rod_m.iff"},
+	templates = {"object/mobile/dressed_nym_patrol_elite_rod_m.iff",
+				"object/mobile/dressed_nym_patrol_elite_hum_m.iff",
+				"object/mobile/dressed_nym_patrol_elite_nikto_m.iff"},
 	lootGroups = {
 	    {
 			groups = {
@@ -44,4 +46,4 @@ nyms_elite_patrol = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(nyms_elite_patrol, "nyms_elite_patrol")
+CreatureTemplates:addCreatureTemplate(nym_patrol_elite, "nym_patrol_elite")
