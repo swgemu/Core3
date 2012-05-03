@@ -1139,7 +1139,7 @@ tatooine_static_spawns = {
 	{"rodian_clan_warchief", 0, 25.1612, 2.6, 16.6257, 360.011, 1153601, "conversation", ""},  --@mob/creature_names:rodian_clan_warchief full template: object/mobile/shared_dressed_hooligan_rodian_male_01.iff
 	{"farmer_rancher", 0, 25.1612, 2.6, 17.6257, 180.006, 1153601, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/shared_dressed_commoner_fat_twilek_female_01.iff
 	{"brawler", 0, 3.25667, 2.12878, 71.8841, 360.011, 1153603, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/shared_dressed_villain_trandoshan_female_01.iff
-	{"human_base_female", 0, 3.25667, 2.12878, 72.8841, 180.009, 1153603, "conversation", "Thivauwrai Aphereef"},  --@npc_name:human_base_female full template: object/mobile/shared_dressed_rebel_trooper_human_female_01.iff
+	{"thivauwrai_aphereef", 0, 3.25667, 2.12878, 72.8841, 180.009, 1153603, "conversation", "Thivauwrai Aphereef"},  --@npc_name:human_base_female full template: object/mobile/shared_dressed_rebel_trooper_human_female_01.iff
 	{"businessman", 0, 3.32, 1.13306, -8.49, 228.007, 1153565, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_02.iff
 	{"hunter", 0, -14.01, 1.13306, -8.53, 120.004, 1153566, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/shared_dressed_commoner_tatooine_devaronian_male_03.iff
 	{"surgical_droid_21b", 0, -25.52, 0.26, -3.48, 142.122, 1153586, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/shared_21b_surgical_droid.iff
@@ -1244,7 +1244,6 @@ tatooine_static_spawns = {
 	{"worrt", 0, 1742.08, 10.3631, 2819.34, 314.877, 0, "calm", ""},  --@mob/creature_names:worrt full template: object/mobile/shared_worrt_hue.iff
 	{"worrt", 0, 1763.95, 10.0345, 2821.82, 1.54764, 0, "calm", ""},  --@mob/creature_names:worrt full template: object/mobile/shared_worrt_hue.iff
 	{"mound_mite", 0, 1744.69, 10.1734, 2821.79, 25.7853, 0, "calm", ""},  --@mob/creature_names:mound_mite full template: object/mobile/shared_rock_mite_hue.iff
-	{"shuttle", 0, 1725.88, 7.6, 3204.61, 90.0028, 0, "neutral", ""},  --@theme_park_name:shuttle full template: object/creature/npc/theme_park/shared_player_shuttle.iff
 	{"rodian_clan_medic", 0, 30.4646, -0.255725, -0.43765, 360.011, 1153522, "conversation", ""},  --@mob/creature_names:rodian_clan_medic full template: object/mobile/shared_dressed_criminal_thug_rodian_male_01.iff
 	{"tatooine_militiaman", 0, 30.4646, -0.255725, 0.66235, 180, 1153522, "conversation", ""},  --@mob/creature_names:tatooine_militiaman full template: object/mobile/shared_dressed_eisley_officer_trandoshan_female_01.iff
 	{"scavenger", 0, 29.3646, -0.255725, 0.66235, 135.003, 1153522, "conversation", ""},  --@mob/creature_names:scavenger full template: object/mobile/shared_dressed_commoner_naboo_bothan_male_01.iff
@@ -1332,7 +1331,6 @@ tatooine_static_spawns = {
 	{"mos_entha_police_officer", 0, 1414.62, 33.9088, 2893.24, 167.156, 0, "npc_imperial", ""},  --@mob/creature_names:mos_entha_police_officer full template: object/mobile/shared_dressed_swamp_trooper_m.iff
 	{"r3", 0, 1242.26, 7, 3155.65, 78.1127, 0, "calm", "R3-Q5"},  --@mob/creature_names:r3 full template: object/mobile/shared_r3.iff
 	{"jawa", 0, 1566.49, 7, 3337.08, 73.205, 0, "calm", ""},  --@mob/creature_names:jawa full template: object/mobile/shared_jawa_male.iff
-	{"tatooine_entha_podracers_racedroid3", 0, 1702.92, 7, 3076.48, 201.549, 0, "calm", ""},  --@mob/creature_names:tatooine_entha_podracers_racedroid3 full template: object/mobile/shared_4lom.iff
 	{"crackdown_sand_trooper", 0, 1626.92, 7.34652, 3512.12, 27.1283, 0, "", ""},  --@mob/creature_names:crackdown_sand_trooper full template: object/mobile/shared_dressed_stormtrooper_sand_trooper_m.iff
 	{"crackdown_sand_trooper", 0, 1598.04, 11, 3188.15, 71.1795, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_sand_trooper full template: object/mobile/shared_dressed_stormtrooper_sand_trooper_m.iff
 	{"mos_entha_police_officer", 0, 1565.23, 11, 3234.47, 191.678, 0, "npc_imperial", ""},  --@mob/creature_names:mos_entha_police_officer full template: object/mobile/shared_dressed_swamp_trooper_m.iff
