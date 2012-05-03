@@ -1254,7 +1254,7 @@ tatooine_static_spawns = {
 	{"commoner", 0, 19.0124, 0.01, -5.51447, 255.935, 1153518, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_05.iff
 	{"commoner", 0, 17.0101, -0.255725, -6.00959, 76.4132, 1153518, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_02.iff
 	{"r2", 0, 19.01, 0.01, -5.51447, 152.108, 1153518, "calm", "R2-C6"},  --@mob/creature_names:r2 full template: object/mobile/shared_r2.iff
-	--{"rodian_base_male", 0, 7.19977, -0.255725, -8.84042, 0, 1153516, "conversation", "Giko"},  --@npc_name:rodian_base_male full template: object/mobile/shared_dressed_noble_rodian_male_01.iff
+	{"giko", 0, 7.19977, -0.255725, -8.84042, 0, 1153516, "conversation", "Giko"},  --@npc_name:rodian_base_male full template: object/mobile/shared_dressed_noble_rodian_male_01.iff
 	{"dim_u_preacher", 0, 7.19977, -0.255725, -7.74042, 180.007, 1153516, "conversation", ""},  --@mob/creature_names:dim_u_preacher full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_02.iff
 	{"rancher", 0, 6.09977, -0.255725, -7.74042, 135.004, 1153516, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_01.iff
 	{"tatooine_militiaman", 0, -11.7551, 0.0100002, -2.33478, 360.011, 1153512, "conversation", ""},  --@mob/creature_names:tatooine_militiaman full template: object/mobile/shared_dressed_eisley_officer_aqualish_male_01.iff
