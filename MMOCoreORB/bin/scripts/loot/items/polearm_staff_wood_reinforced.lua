@@ -15,6 +15,7 @@ polearm_staff_wood_reinforced = {
 		{"maxrangemod",7,17,0},
 		{"midrange",3,3,0},
 		{"midrangemod",7,17,0},
+		{"maxrange",7,7,0},		
 		{"attackhealthcost",20,14,0},
 		{"attackactioncost",38,27,0},
 		{"attackmindcost",15,11,0},

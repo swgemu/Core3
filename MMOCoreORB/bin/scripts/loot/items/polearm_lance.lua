@@ -15,6 +15,7 @@ polearm_lance = {
 		{"maxrangemod",5,15,0},
 		{"midrange",3,3,0},
 		{"midrangemod",5,15,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",26,14,0},
 		{"attackactioncost",59,32,0},
 		{"attackmindcost",29,15,0},

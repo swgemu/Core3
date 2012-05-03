@@ -15,6 +15,7 @@ polearm_lance_vibrolance = {
 		{"maxrangemod",-24,0,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-24,0,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",59,32,0},
 		{"attackactioncost",78,43,0},
 		{"attackmindcost",29,15,0},

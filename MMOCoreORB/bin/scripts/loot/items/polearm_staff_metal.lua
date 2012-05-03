@@ -15,6 +15,7 @@ polearm_staff_metal = {
 		{"maxrangemod",-5,5,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-5,5,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",9,4,0},
 		{"attackactioncost",66,36,0},
 		{"attackmindcost",39,21,0},
