@@ -2,7 +2,7 @@ rebel_obscureops_agent = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_rebel",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,10 @@ rebel_obscureops_agent = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_assassin_mission_giver_reb_01.iff",
+		"object/mobile/dressed_assassin_mission_giver_reb_02.iff",
+		"object/mobile/dressed_assassin_mission_giver_reb_03.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

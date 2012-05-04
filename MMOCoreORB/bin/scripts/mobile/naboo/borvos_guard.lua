@@ -1,9 +1,9 @@
 borvos_guard = Creature:new {
 	objectName = "",
 	customName = "Borvo's Guard",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

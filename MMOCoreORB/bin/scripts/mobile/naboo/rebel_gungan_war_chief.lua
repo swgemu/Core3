@@ -1,8 +1,8 @@
 rebel_gungan_war_chief = Creature:new {
 	objectName = "@mob/creature_names:gungan_war_chief",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,

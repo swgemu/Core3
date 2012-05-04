@@ -1,5 +1,6 @@
 ebenn_q3_baobab = Creature:new {
-	objectName = "@mob/creature_names:Ebenn_Q3_Baobab",
+	objectName = "",
+	customName = "Ebenn Q3 Baobab",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -26,7 +27,7 @@ ebenn_q3_baobab = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/huma_male.iff"},
+	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

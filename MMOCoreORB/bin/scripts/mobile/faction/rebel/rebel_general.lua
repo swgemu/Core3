@@ -26,7 +26,13 @@ rebel_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_general_human_female_02.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_general_fat_human_male_01.iff",
+		"object/mobile/dressed_rebel_general_human_female_01.iff",
+		"object/mobile/dressed_rebel_general_human_female_02.iff",
+		"object/mobile/dressed_rebel_general_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_general_twilek_male_01.iff",
+		"object/mobile/dressed_rebel_general_rodian_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {

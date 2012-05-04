@@ -1,9 +1,9 @@
 borvos_bruiser = Creature:new {
 	objectName = "",
 	customName = "Borvo's Bruiser",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

@@ -1,8 +1,8 @@
 skaak_tipper_prowler = Creature:new {
 	objectName = "@mob/creature_names:skaak_tipper_prowler",
-	socialGroup = "Sk.Tip. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "skaak_tipper_gang",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,7 +25,11 @@ skaak_tipper_prowler = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ravager_human_female_01.iff",
+		"object/mobile/dressed_ravager_human_male_01.iff",
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

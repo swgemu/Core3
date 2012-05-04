@@ -1,8 +1,8 @@
 blood_razor_weak_pirate = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_pirate_weak",
-	socialGroup = "Bloodrazor",
-	pvpFaction = "Bloodrazor",
-	faction = "",
+	socialGroup = "bloodrazor",
+	pvpFaction = "bloodrazor",
+	faction = "bloodrazor",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 230,
@@ -26,7 +26,14 @@ blood_razor_weak_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_weak_rod_m.iff"},
+	templates = {
+		"object/mobile/dressed_blood_razor_pirate_weak_hum_f.iff",
+		"object/mobile/dressed_blood_razor_pirate_weak_hum_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_weak_nikto_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_weak_rod_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_weak_wee_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_weak_zab_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 nym_guard_weak = Creature:new {
 	objectName = "@mob/creature_names:nym_guard_weak",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 36,
 	chanceHit = 0.410000,
 	damageMin = 315,

@@ -26,7 +26,12 @@ rebel_pilot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_pilot_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_pilot_human_female_01.iff",
+		"object/mobile/dressed_rebel_pilot_human_male_01.iff",
+		"object/mobile/dressed_rebel_pilot_human_male_02.iff",
+		"object/mobile/dressed_rebel_pilot_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_pilot_sullustan_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

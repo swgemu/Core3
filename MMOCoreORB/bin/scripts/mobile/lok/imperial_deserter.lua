@@ -1,8 +1,8 @@
 imperial_deserter = Creature:new {
 	objectName = "@mob/creature_names:imperial_deserter",
-	socialGroup = "Nym",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -26,7 +26,7 @@ imperial_deserter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_defector.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

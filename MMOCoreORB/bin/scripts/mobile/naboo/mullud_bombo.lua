@@ -27,7 +27,7 @@ mullud_bombo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mullud_bombo.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

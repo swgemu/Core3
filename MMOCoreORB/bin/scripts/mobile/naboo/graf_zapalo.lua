@@ -1,5 +1,6 @@
 graf_zapalo = Creature:new {
-	objectName = "@mob/creature_names:Graf Zapalo",
+	objectName = "",
+	customName = "Graf Zapalo",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

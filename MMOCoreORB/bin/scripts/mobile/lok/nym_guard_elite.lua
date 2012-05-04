@@ -1,8 +1,8 @@
 nym_guard_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_guard_elite",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 38,
 	chanceHit = 0.43,
 	damageMin = 335,

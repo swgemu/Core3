@@ -1,8 +1,8 @@
 lt_lance = Creature:new {
 	objectName = "",
-	costumName = "Lt. Lance",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	customName = "Lt. Lance",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 20,
 	chanceHit = 0.33,
@@ -27,7 +27,7 @@ lt_lance = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lieutenant_lance.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

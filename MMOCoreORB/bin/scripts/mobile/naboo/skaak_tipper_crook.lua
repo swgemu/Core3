@@ -1,8 +1,8 @@
 skaak_tipper_crook = Creature:new {
 	objectName = "@mob/creature_names:skaak_tipper_crook",
-	socialGroup = "Sk.Tip. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "skaak_tipper_gang",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -25,7 +25,9 @@ skaak_tipper_crook = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

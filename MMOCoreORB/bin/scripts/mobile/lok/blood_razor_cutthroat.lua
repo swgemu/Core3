@@ -1,8 +1,8 @@
 blood_razor_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_cutthroat",
-	socialGroup = "Bloodrazor",
-	pvpFaction = "Bloodrazor",
-	faction = "",
+	socialGroup = "bloodrazor",
+	pvpFaction = "bloodrazor",
+	faction = "bloodrazor",
 	level = 34,
 	chanceHit = 0.4,
 	damageMin = 335,
@@ -26,7 +26,13 @@ blood_razor_cutthroat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_cutthroat_hum_f.iff"},
+	templates = {
+		"object/mobile/dressed_blood_razor_pirate_cutthroat_hum_f.iff",
+		"object/mobile/dressed_blood_razor_pirate_cutthroat_hum_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_cutthroat_nikto_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_cutthroat_tran_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_cutthroat_wee_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

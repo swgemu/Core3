@@ -1,7 +1,7 @@
 smashball_degenerate = Creature:new {
 	objectName = "@mob/creature_names:smashball_degenerate",
-	socialGroup = "Smashball",
-	pvpFaction = "Smashball",
+	socialGroup = "smashball",
+	pvpFaction = "smashball",
 	faction = "smashball",
 	level = 9,
 	chanceHit = 0.270000,

@@ -1,8 +1,8 @@
 naboo_holy_man = Creature:new {
 	objectName = "@mob/creature_names:naboo_holy_man",
-	socialGroup = "Naboo",
-	pvpFaction = "Naboo",
-	faction = "",
+	socialGroup = "naboo",
+	pvpFaction = "naboo",
+	faction = "naboo",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,7 +25,7 @@ naboo_holy_man = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_holy_man.iff"},
 	lootGroups = {
 	    {
 			groups = {

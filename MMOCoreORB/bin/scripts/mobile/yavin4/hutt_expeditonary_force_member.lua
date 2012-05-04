@@ -1,8 +1,8 @@
 hutt_expeditonary_force_member = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_member",
-	socialGroup = "Hutt",
-	pvpFaction = "Hutt",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,7 @@ hutt_expeditonary_force_member = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 nym_brawler = Creature:new {
 	objectName = "@mob/creature_names:nym_brawler",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

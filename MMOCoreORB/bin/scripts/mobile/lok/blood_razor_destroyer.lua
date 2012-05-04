@@ -1,8 +1,8 @@
 blood_razor_destroyer = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_destroyer",
-	socialGroup = "Bloodrazor",
-	pvpFaction = "Bloodrazor",
-	faction = "",
+	socialGroup = "bloodrazor",
+	pvpFaction = "bloodrazor",
+	faction = "bloodrazor",
 	level = 38,
 	chanceHit = 0.42,
 	damageMin = 385,
@@ -26,7 +26,12 @@ blood_razor_destroyer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_destroyer_hum_f.iff"},
+	templates = {
+		"object/mobile/dressed_blood_razor_pirate_destroyer_hum_f.iff",
+		"object/mobile/dressed_blood_razor_pirate_destroyer_hum_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_destroyer_nikto_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_destroyer_tran_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

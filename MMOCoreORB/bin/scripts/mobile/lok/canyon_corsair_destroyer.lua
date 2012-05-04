@@ -1,8 +1,8 @@
 canyon_corsair_destroyer = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_destroyer",
-	socialGroup = "Corsair",
-	pvpFaction = "Corsair",
-	faction = "",
+	socialGroup = "canyon_corsair",
+	pvpFaction = "canyon_corsair",
+	faction = "canyon_corsair",
 	level = 40,
 	chanceHit = 0.43,
 	damageMin = 355,
@@ -26,7 +26,12 @@ canyon_corsair_destroyer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsair_destroyer_hum_m.iff"},
+	templates = {
+		"object/mobile/dressed_corsair_destroyer_hum_f.iff",
+		"object/mobile/dressed_corsair_destroyer_hum_m.iff",
+		"object/mobile/dressed_corsair_destroyer_wee_m.iff",
+		"object/mobile/dressed_corsair_destroyer_zab_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

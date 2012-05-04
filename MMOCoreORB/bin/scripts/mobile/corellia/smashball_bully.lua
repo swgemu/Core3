@@ -1,7 +1,7 @@
 smashball_bully = Creature:new {
 	objectName = "@mob/creature_names:smashball_bully",
-	socialGroup = "Smashball",
-	pvpFaction = "Smashball",
+	socialGroup = "smashball",
+	pvpFaction = "smashball",
 	faction = "smashball",
 	level = 7,
 	chanceHit = 0.260000,

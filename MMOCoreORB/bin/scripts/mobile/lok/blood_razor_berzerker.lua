@@ -1,8 +1,8 @@
 blood_razor_berzerker = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_berzerker",
-	socialGroup = "Bloodrazor",
-	pvpFaction = "Bloodrazor",
-	faction = "",
+	socialGroup = "bloodrazor",
+	pvpFaction = "bloodrazor",
+	faction = "bloodrazor",
 	level = 36,
 	chanceHit = 0.43,
 	damageMin = 395,
@@ -26,7 +26,12 @@ blood_razor_berzerker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_berzerker_rod_m.iff"},
+	templates = {
+		"object/mobile/dressed_blood_razor_pirate_berzerker_hum_f.iff",
+		"object/mobile/dressed_blood_razor_pirate_berzerker_hum_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_berzerker_rod_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_berzerker_tran_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

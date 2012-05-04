@@ -1,8 +1,8 @@
 borvos_mercenary = Creature:new {
 	objectName = "@mob/creature_names:borvos_mercenary",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

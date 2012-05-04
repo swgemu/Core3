@@ -1,8 +1,8 @@
 marooned_pirate = Creature:new {
 	objectName = "@mob/creature_names:marooned_pirate",
-	socialGroup = "Pirate of Lok",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "pirate",
+	pvpFaction = "pirate",
+	faction = "pirate",
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,
@@ -26,7 +26,15 @@ marooned_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_marooned_pirate_rod_m.iff"},
+	templates = {
+		"object/mobile/dressed_marooned_pirate_bith_m.iff",
+		"object/mobile/dressed_marooned_pirate_hum_f.iff",
+		"object/mobile/dressed_marooned_pirate_hum_m.iff",
+		"object/mobile/dressed_marooned_pirate_nikto_m.iff",
+		"object/mobile/dressed_marooned_pirate_rod_f.iff",
+		"object/mobile/dressed_marooned_pirate_rod_m.iff",
+		"object/mobile/dressed_marooned_pirate_tran_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

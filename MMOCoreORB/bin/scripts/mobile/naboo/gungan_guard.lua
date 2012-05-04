@@ -1,8 +1,8 @@
 gungan_guard = Creature:new {
 	objectName = "@mob/creature_names:gungan_guard",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

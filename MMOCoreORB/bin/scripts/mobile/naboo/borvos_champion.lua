@@ -1,8 +1,8 @@
 borvos_champion = Creature:new {
 	objectName = "@mob/creature_names:borvos_champion",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,

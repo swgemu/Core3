@@ -1,7 +1,7 @@
 monumenter_smuggler = Creature:new {
 	objectName = "@mob/creature_names:monumenter_smuggler",
-	socialGroup = "Monumenter",
-	pvpFaction = "Monumenter",
+	socialGroup = "monumenter",
+	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 12,
 	chanceHit = 0.290000,

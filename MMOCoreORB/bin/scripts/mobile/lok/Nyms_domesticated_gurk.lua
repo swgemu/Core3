@@ -1,8 +1,8 @@
 Nyms_domesticated_gurk = Creature:new {
 	objectName = "@mob/creature_names:nym_domesticated_gurk",
-	socialGroup = "Nym",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 240,

@@ -1,8 +1,8 @@
 jamilla_tabadi = Creature:new {
 	objectName = "@mob/creature_names:fs_intro_female",
-	socialGroup = "Force Sensitive villager",
-	pvpFaction = "Force Sensitive villager",
-	faction = "",
+	socialGroup = "fs_villager",
+	pvpFaction = "fs_villager",
+	faction = "fs_villager",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -26,7 +26,7 @@ jamilla_tabadi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fs_village_intro_woman.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

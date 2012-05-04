@@ -26,7 +26,7 @@ ithorian_male = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -27,7 +27,7 @@ thrown = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/naboo_npc/thrawn.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

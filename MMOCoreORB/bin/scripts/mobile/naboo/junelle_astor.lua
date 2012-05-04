@@ -27,7 +27,7 @@ junelle_astor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_junelle_astor.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

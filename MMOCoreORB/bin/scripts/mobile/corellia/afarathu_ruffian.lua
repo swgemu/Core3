@@ -1,7 +1,7 @@
 afarathu_ruffian = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_ruffian",
-	socialGroup = "Afarathu",
-	pvpFaction = "Afarathu",
+	socialGroup = "afarathu",
+	pvpFaction = "afarathu",
 	faction = "afarathu",
 	level = 5,
 	chanceHit = 0.25,

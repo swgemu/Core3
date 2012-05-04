@@ -1,8 +1,8 @@
 gungan_hermit = Creature:new {
 	objectName = "@mob/creature_names:gungan_hermit",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

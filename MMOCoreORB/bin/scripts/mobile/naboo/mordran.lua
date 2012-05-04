@@ -1,8 +1,8 @@
 mordran = Creature:new {
 	objectName = "@mob/creature_names:mordran",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 78,
 	chanceHit = 0.750000,
 	damageMin = 520,
@@ -25,9 +25,9 @@ mordran = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mordran.iff"},
 	lootGroups = {},
-	weapons = {"mordran's_weapons"},
+	weapons = {"mordran_weapons"},
 	attacks = {}
 }
 

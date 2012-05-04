@@ -1,8 +1,8 @@
 outcast_gungan = Creature:new {
 	objectName = "@mob/creature_names:mordran_gungan_outcast",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -26,7 +26,7 @@ outcast_gungan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_outcast.iff"},
 	lootGroups = {
 	    {
 			groups = {

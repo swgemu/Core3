@@ -1,8 +1,8 @@
 blood_razor_scout = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_scout",
-	socialGroup = "Bloodrazor",
-	pvpFaction = "Bloodrazor",
-	faction = "",
+	socialGroup = "bloodrazor",
+	pvpFaction = "bloodrazor",
+	faction = "bloodrazor",
 	level = 32,
 	chanceHit = 0.39,
 	damageMin = 310,
@@ -26,7 +26,12 @@ blood_razor_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_blood_razor_pirate_scout_tran_m.iff"},
+	templates = {
+		"object/mobile/dressed_blood_razor_pirate_scout_hum_f.iff",
+		"object/mobile/dressed_blood_razor_pirate_scout_hum_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_scout_rod_m.iff",
+		"object/mobile/dressed_blood_razor_pirate_scout_tran_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

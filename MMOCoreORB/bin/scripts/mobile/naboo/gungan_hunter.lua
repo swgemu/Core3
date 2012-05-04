@@ -1,8 +1,8 @@
 gungan_hunter = Creature:new {
 	objectName = "@mob/creature_names:gungan_hunter",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,7 @@ gungan_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gungan_male.iff"},
+	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

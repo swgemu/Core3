@@ -26,7 +26,13 @@ rebel_staff_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_recruiter_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_staff_corporal_bith_female_01.iff",
+		"object/mobile/dressed_rebel_staff_corporal_bothan_female_01.iff",
+		"object/mobile/dressed_rebel_staff_corporal_human_female_01.iff",
+		"object/mobile/dressed_rebel_staff_corporal_human_male_01.iff",
+		"object/mobile/dressed_rebel_staff_corporal_rodian_female_01.iff"},
+
 	lootGroups = {
 		{
 			groups = {

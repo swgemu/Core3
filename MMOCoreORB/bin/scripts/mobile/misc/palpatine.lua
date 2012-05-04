@@ -1,5 +1,5 @@
 palpatine = Creature:new {
-	objectName = "@mob/creature_names:palpatine",
+	objectName = "@theme_park_name:emperor_palpatine",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "",

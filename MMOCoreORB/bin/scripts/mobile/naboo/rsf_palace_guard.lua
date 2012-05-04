@@ -1,8 +1,8 @@
 rsf_palace_guard = Creature:new {
 	objectName = "@mob/creature_names:rsf_palace_guard",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

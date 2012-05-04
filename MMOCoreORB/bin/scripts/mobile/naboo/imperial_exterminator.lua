@@ -1,8 +1,8 @@
 imperial_exterminator = Creature:new {
 	objectName = "@mob/creature_names:imperial_exterminator",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 28,
 	chanceHit = 0.37,
 	damageMin = 270,

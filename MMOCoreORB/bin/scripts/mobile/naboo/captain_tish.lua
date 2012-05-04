@@ -1,9 +1,9 @@
 captain_tish = Creature:new {
 	objectName = "",
 	customName = "Captain Tish",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,

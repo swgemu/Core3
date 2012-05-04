@@ -25,7 +25,7 @@ mauler_lord = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mauler_lord.iff"},
 	lootGroups = {
 	    {
 			groups = {

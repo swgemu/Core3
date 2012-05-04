@@ -1,8 +1,8 @@
 mercenary_elite = Creature:new {
 	objectName = "@mob/creature_names:mercenary_elite",
-	socialGroup = "Lok Merc",
-	pvpFaction = "Lok Merc",
-	faction = "",
+	socialGroup = "lok_mercenaries",
+	pvpFaction = "lok_mercenaries",
+	faction = "lok_mercenaries",
 	level = 40,
 	chanceHit = 0.43,
 	damageMin = 335,
@@ -26,7 +26,13 @@ mercenary_elite = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_mercenary_elite_hum_f.iff",
+		"object/mobile/dressed_mercenary_elite_hum_m.iff",
+		"object/mobile/dressed_mercenary_elite_nikto_m.iff",
+		"object/mobile/dressed_mercenary_elite_rod_m.iff",
+		"object/mobile/dressed_mercenary_elite_wee_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

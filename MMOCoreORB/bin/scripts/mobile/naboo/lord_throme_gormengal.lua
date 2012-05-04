@@ -27,7 +27,7 @@ lord_throme_gormengal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_lord_throme_gormengal.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

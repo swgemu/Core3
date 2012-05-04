@@ -1,8 +1,8 @@
 hutt_expeditionary_force_surveyor = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_surveyer",
-	socialGroup = "Hutt",
-	pvpFaction = "Hutt",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,7 @@ hutt_expeditionary_force_surveyor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

@@ -1,9 +1,9 @@
 plasma_bantid = Creature:new {
 	objectName = "",
 	customName = "a Plasma Bandit",
-	socialGroup = "Plasma Thief",
-	pvpFaction = "Bandit",
-	faction = "",
+	socialGroup = "plasma_thief",
+	pvpFaction = "plasma_thief",
+	faction = "plasma_thief",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -27,7 +27,7 @@ plasma_bantid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_plasma_bandit.iff"},
 	lootGroups = {
 	    {
 			groups = {

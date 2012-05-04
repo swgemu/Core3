@@ -1,8 +1,8 @@
 gungan_priest = Creature:new {
 	objectName = "@mob/creature_names:gungan_priest",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

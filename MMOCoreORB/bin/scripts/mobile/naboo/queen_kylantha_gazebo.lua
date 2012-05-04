@@ -1,6 +1,6 @@
 queen_kylantha_gazebo = Creature:new {
 	objectName = "",
-	customName = "Queen Kylantha Gazebo",
+	customName = "Queen Kylantha",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -27,7 +27,7 @@ queen_kylantha_gazebo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_queen_kylantha_02.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 nomad_chief = Creature:new {
 	objectName = "@mob/creature_names:nomad_chief",
-	socialGroup = "Naboo Nomad",
+	socialGroup = "nomad",
 	pvpFaction = "",
-	faction = "",
+	faction = "naboo",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -25,7 +25,7 @@ nomad_chief = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_nomad.iff"},
 	lootGroups = {
 	    {
 			groups = {

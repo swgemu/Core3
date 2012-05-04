@@ -26,7 +26,7 @@ rebel_staff_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_sergeant_rodian_male_01.iff"},
+	templates = {"object/mobile/dressed_rebel_staff_sergeant_sullustan_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

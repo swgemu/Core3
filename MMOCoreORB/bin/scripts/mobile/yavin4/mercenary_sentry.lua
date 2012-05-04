@@ -26,7 +26,11 @@ mercenary_sentry = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mercenary_strong_hum_f.iff","object/mobile/dressed_mercenary_strong_hum_m.iff","object/mobile/dressed_mercenary_strong_rod_m.iff","object/mobile/dressed_mercenary_strong_tran_m.iff"},
+	templates = {
+		"object/mobile/dressed_mercenary_strong_hum_f.iff",
+		"object/mobile/dressed_mercenary_strong_hum_m.iff",
+		"object/mobile/dressed_mercenary_strong_rod_m.iff",
+		"object/mobile/dressed_mercenary_strong_tran_m.iff"},
 	lootGroups = {
 		{
 			groups = {

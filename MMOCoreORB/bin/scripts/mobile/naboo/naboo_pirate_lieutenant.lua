@@ -1,8 +1,8 @@
 naboo_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:naboo_pirate_lieutenant",
-	socialGroup = "Naboo Pirate",
-	pvpFaction = "Naboo Pirate",
-	faction = "",
+	socialGroup = "naboo_pirate",
+	pvpFaction = "naboo_pirate",
+	faction = "naboo_pirate",
 	level = 15,
 	chanceHit = 0.310000,
 	damageMin = 160,

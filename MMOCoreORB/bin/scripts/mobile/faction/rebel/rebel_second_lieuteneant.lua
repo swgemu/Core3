@@ -26,7 +26,13 @@ rebel_second_lieuteneant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_trandoshan_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_twk_female_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_twk_male_01.iff",
+		"object/mobile/dressed_rebel_second_lieutenant_zabrak_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {

@@ -1,6 +1,6 @@
 cx_425 = Creature:new {
 	objectName = "",
-	customName = "CX 425",
+	customName = "CX-425",
 	socialGroup = "Imperial",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ cx_425 = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

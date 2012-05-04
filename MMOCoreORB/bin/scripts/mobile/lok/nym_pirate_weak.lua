@@ -1,8 +1,8 @@
 nym_pirate_weak = Creature:new {
 	objectName = "@mob/creature_names:nym_pirate_weak",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

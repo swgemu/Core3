@@ -2,7 +2,7 @@ rebel_scout = Creature:new {
 	objectName = "@mob/creature_names:rebel_scout",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 15,
 	chanceHit = 0.310000,
 	damageMin = 160,
@@ -25,7 +25,13 @@ rebel_scout = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_rebel_scout_bothan_male_01.iff",
+		"object/mobile/dressed_rebel_scout_human_female_01.iff",
+		"object/mobile/dressed_rebel_scout_human_female_02.iff",
+		"object/mobile/dressed_rebel_scout_human_male_01.iff",
+		"object/mobile/dressed_rebel_scout_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_scout_zabrak_female_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

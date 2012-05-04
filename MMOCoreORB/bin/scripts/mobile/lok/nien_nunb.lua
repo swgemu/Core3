@@ -25,7 +25,7 @@ nien_nunb = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_patron_sullustan_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

@@ -1,8 +1,8 @@
 naboo_police_chief = Creature:new {
 	objectName = "@mob/creature_names:naboo_police_chief",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

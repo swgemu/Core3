@@ -1,7 +1,7 @@
 monumenter_bandit = Creature:new {
 	objectName = "@mob/creature_names:monumenter_bandit",
-	socialGroup = "Monumenter",
-	pvpFaction = "Monumenter",
+	socialGroup = "monumenter",
+	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 11,
 	chanceHit = 0.290000,

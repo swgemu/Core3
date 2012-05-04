@@ -1,8 +1,8 @@
 rsf_commando = Creature:new {
 	objectName = "@mob/creature_names:rsf_commando",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,

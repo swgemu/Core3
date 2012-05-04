@@ -1,8 +1,8 @@
 Gungan_falumpaset = Creature:new {
 	objectName = "@mob/creature_names:gungan_falumpaset",
-	socialGroup = "Gungan",
+	socialGroup = "gungan",
 	pvpFaction = "",
-	faction = "",
+	faction = "gungan",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

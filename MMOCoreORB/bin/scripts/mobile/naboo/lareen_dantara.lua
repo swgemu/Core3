@@ -27,7 +27,7 @@ lareen_dantara = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_noble_old_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

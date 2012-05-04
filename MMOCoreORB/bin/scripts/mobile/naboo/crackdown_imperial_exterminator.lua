@@ -1,8 +1,8 @@
 crackdown_imperial_exterminator = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_exterminator",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 1,
 	chanceHit = 0.37,
 	damageMin = 290,

@@ -1,9 +1,9 @@
 borvos_thief = Creature:new {
 	objectName = "",
 	customName = "Borvo's Thief",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

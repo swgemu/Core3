@@ -1,8 +1,8 @@
 canyon_corsair_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_cutthroat",
-	socialGroup = "Corsair",
-	pvpFaction = "Corsair",
-	faction = "",
+	socialGroup = "canyon_corsair",
+	pvpFaction = "canyon_corsair",
+	faction = "canyon_corsair",
 	level = 35,
 	chanceHit = 0.4,
 	damageMin = 320,
@@ -26,7 +26,12 @@ canyon_corsair_cutthroat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsair_cutthroat_zab_m.iff"},
+	templates = {
+		"object/mobile/dressed_corsair_cutthroat_hum_f.iff",
+		"object/mobile/dressed_corsair_cutthroat_hum_m.iff",
+		"object/mobile/dressed_corsair_cutthroat_wee_m.iff",
+		"object/mobile/dressed_corsair_cutthroat_zab_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

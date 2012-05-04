@@ -1,8 +1,8 @@
 nym_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:nym_bodyguard",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 28,
 	chanceHit = 0.37,
 	damageMin = 260,

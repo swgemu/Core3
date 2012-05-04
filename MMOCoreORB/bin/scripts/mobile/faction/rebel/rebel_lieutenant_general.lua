@@ -26,7 +26,13 @@ rebel_lieutenant_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_lieutenant_general_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_lieutenant_general_human_male_01.iff",
+		"object/mobile/dressed_rebel_lieutenant_general_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_lieutenant_general_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_lieutenant_general_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_lieutenant_general_twilek_female_01.iff",
+		"object/mobile/dressed_rebel_lieutenant_general_twilek_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

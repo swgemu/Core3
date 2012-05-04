@@ -1,8 +1,8 @@
 tusk_cat_rider = Creature:new {
 	objectName = "@mob/creature_names:tusk_cat_rider",
-	socialGroup = "Naboo",
-	pvpFaction = "Naboo",
-	faction = "",
+	socialGroup = "naboo",
+	pvpFaction = "naboo",
+	faction = "naboo",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,7 @@ tusk_cat_rider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tusk_cat_rider.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

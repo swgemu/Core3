@@ -27,7 +27,7 @@ isshala_daprovan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_isshala_daprovan.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

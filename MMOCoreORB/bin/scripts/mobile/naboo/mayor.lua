@@ -2,7 +2,7 @@ mayor = Creature:new {
 	objectName = "@mob/creature_names:mayor",
 	socialGroup = "naboo",
 	pvpFaction = "naboo",
-	faction = "",
+	faction = "naboo",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,7 +25,7 @@ mayor = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mayor.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}

@@ -1,8 +1,8 @@
 trade_federation_loyalist = Creature:new {
 	objectName = "@mob/creature_names:trade_federation_loyalist",
-	socialGroup = "Trade Federat.",
-	pvpFaction = "Trade Federat.",
-	faction = "",
+	socialGroup = "trade_federation",
+	pvpFaction = "trade_federation",
+	faction = "trade_federation",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

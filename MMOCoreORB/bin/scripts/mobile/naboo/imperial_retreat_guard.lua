@@ -1,8 +1,8 @@
 imperial_retreat_guard = Creature:new {
 	objectName = "@mob/creature_names:imperial_retreat_guard",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 72,
 	chanceHit = 0.750000,
 	damageMin = 520,
@@ -25,7 +25,7 @@ imperial_retreat_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/emperor_royal_guard.iff"},
 	lootGroups = {
 	    {
 			groups = {

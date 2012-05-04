@@ -1,5 +1,6 @@
 gerrio_coronis = Creature:new {
-	objectName = "@mob/creature_names:Gerrio Coronis",
+	objectName = "",
+	customName = "Gerrio Coronis",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

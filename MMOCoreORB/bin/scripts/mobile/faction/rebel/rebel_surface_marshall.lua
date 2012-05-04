@@ -26,7 +26,13 @@ rebel_surface_marshall = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_surface_marshal_moncal_female_01.iff","object/mobile/dressed_rebel_surface_marshal_rodian_male_01.iff","object/mobile/dressed_rebel_surface_marshal_human_male_01.iff","object/mobile/dressed_rebel_surface_marshal_rodian_female_01.iff","object/mobile/dressed_rebel_surface_marshal_twk_male_fat_011.iff","object/mobile/dressed_rebel_surface_marshal_zabrak_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_surface_marshal_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_surface_marshal_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_surface_marshal_human_male_01.iff",
+		"object/mobile/dressed_rebel_surface_marshal_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_surface_marshal_twk_male_fat_011.iff",
+		"object/mobile/dressed_rebel_surface_marshal_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

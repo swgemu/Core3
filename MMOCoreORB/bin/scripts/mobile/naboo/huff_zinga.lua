@@ -1,6 +1,6 @@
 huff_zinga = Creature:new {
 	objectName = "",
-	costumName = "Huff Zinga",
+	customName = "Huff Zinga",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",
@@ -27,7 +27,7 @@ huff_zinga = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_huff_zinga.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

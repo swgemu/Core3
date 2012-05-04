@@ -1,8 +1,8 @@
 plasma_thief = Creature:new {
 	objectName = "@mob/creature_names:plasma_thief",
-	socialGroup = "Plasma Thief",
-	pvpFaction = "Plasma Thief",
-	faction = "",
+	socialGroup = "plasma_thief",
+	pvpFaction = "plasma_thief",
+	faction = "plasma_thief",
 	level = 3,
 	chanceHit = 0.230000,
 	damageMin = 35,
@@ -25,7 +25,7 @@ plasma_thief = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_plasma_thief.iff"},
 	lootGroups = {
 	    {
 			groups = {

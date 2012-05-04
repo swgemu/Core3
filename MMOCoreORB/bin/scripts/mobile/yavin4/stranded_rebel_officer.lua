@@ -1,8 +1,8 @@
 stranded_rebel_officer = Creature:new {
 	objectName = "@mob/creature_names:stranded_rebel_officer",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,

@@ -26,7 +26,10 @@ rebel_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_medic3_moncal_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_medic3_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_medic2_21b_01.iff",
+		"object/mobile/dressed_rebel_medic1_bothan_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

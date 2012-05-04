@@ -1,8 +1,8 @@
 govenor = Creature:new {
 	objectName = "@mob/creature_names:govenor",
-	socialGroup = "Naboo",
-	pvpFaction = "Naboo",
-	faction = "",
+	socialGroup = "naboo",
+	pvpFaction = "naboo",
+	faction = "naboo",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 675,

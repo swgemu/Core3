@@ -1,8 +1,8 @@
 nym_patrol_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_patrol_elite",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 41,
 	chanceHit = 0.44,
 	damageMin = 345,

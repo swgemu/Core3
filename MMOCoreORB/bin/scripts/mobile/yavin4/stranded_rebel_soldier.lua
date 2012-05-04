@@ -1,8 +1,8 @@
 stranded_rebel_soldier = Creature:new {
 	objectName = "@mob/creature_names:stranded_rebel_soldier",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 24,
 	chanceHit = 0.25,
 	damageMin = 230,
@@ -26,7 +26,7 @@ stranded_rebel_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stranded_rebel_soldier.iff","object/mobile/dressed_stranded_rebel_soldier.iff"},
+	templates = {"object/mobile/dressed_stranded_rebel_soldier.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

@@ -26,7 +26,11 @@ light_jedi_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_jedi_trainer_old_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_jedi_trainer_old_human_male_01.iff",
+		"object/mobile/dressed_jedi_trainer_chiss_male_01.iff",
+		"object/mobile/dressed_jedi_trainer_nikto_male_01.iff",
+		"object/mobile/dressed_jedi_trainer_twilek_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -35,7 +39,7 @@ light_jedi_sentinel = Creature:new {
 			lootChance = 500000
 		}
 	},
-	weapons = {"dark_jedi_weapons"},
+	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 jazeen_thurmm = Creature:new {
 	objectName = "",
-	customName = "Jazzen Thurmm",
+	customName = "Jazeen Thurmm",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,12 +22,12 @@ jazeen_thurmm = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_jazeen_thurmm.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

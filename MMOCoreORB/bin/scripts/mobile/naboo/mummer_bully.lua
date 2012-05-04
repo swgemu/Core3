@@ -1,8 +1,8 @@
 mummer_bully = Creature:new {
 	objectName = "@mob/creature_names:mummer_bully",
-	socialGroup = "Mumm. Gang",
+	socialGroup = "mummer",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -25,7 +25,15 @@ mummer_bully = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff",
+		"object/mobile/dressed_desperado_bith_female_01.iff",
+		"object/mobile/dressed_desperado_bith_male_01.iff",
+		"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
+		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
+		"object/mobile/dressed_hooligan_rodian_female_01.iff",
+		"object/mobile/dressed_hooligan_rodian_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

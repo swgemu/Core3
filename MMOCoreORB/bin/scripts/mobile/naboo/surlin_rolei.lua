@@ -1,9 +1,9 @@
 surlin_rolei = Creature:new {
 	objectName = "",
 	customName = "Surlin Rolei",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -27,7 +27,7 @@ surlin_rolei = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_surlin_rolei.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

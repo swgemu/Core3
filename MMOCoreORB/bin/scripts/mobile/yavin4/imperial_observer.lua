@@ -2,7 +2,7 @@ imperial_observer = Creature:new {
 	objectName = "@mob/creature_names:geonosian_imperial_observer",
 	socialGroup = "self",
 	pvpFaction = "self",
-	faction = "",
+	faction = "imperial",
 	level = 53,
 	chanceHit = 0.54,
 	damageMin = 415,
@@ -26,7 +26,13 @@ imperial_observer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m.iff", "object/mobile/dressed_imperial_officer_m_2.iff", "object/mobile/dressed_imperial_officer_m_3.iff", "object/mobile/dressed_imperial_officer_m_4.iff", "object/mobile/dressed_imperial_officer_m_5.iff", "object/mobile/dressed_imperial_officer_m_6.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,8 +1,9 @@
 gungan_reject = Creature:new {
-	objectName = "@mob/creature_names:gungan reject",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	objectName = "",
+	customName = "a Gungan reject",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,
@@ -26,7 +27,7 @@ gungan_reject = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gungan_male.iff"},
+	templates = {"object/mobile/gungan_s03_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

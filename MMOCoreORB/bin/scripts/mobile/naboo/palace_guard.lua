@@ -1,8 +1,8 @@
 palace_guard = Creature:new {
 	objectName = "@mob/creature_names:palace_guard",
-	socialGroup = "RSF",
-	pvpFaction = "RSF",
-	faction = "",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.310000,
 	damageMin = 170,
@@ -25,7 +25,7 @@ palace_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_palace_guard.iff"},
 	lootGroups = {
 	    {
 			groups = {

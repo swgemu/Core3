@@ -25,7 +25,7 @@ naboo_gunrunner = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_gunrunner.iff"},
 	lootGroups = {
 	    {
 			groups = {

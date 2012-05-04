@@ -1,8 +1,8 @@
 mercenary_commander = Creature:new {
 	objectName = "@mob/creature_names:mercenary_commander",
-	socialGroup = "Lok Merc",
-	pvpFaction = "Lok Merc",
-	faction = "",
+	socialGroup = "lok_mercenaries",
+	pvpFaction = "lok_mercenaries",
+	faction = "lok_mercenaries",
 	level = 42,
 	chanceHit = 0.44,
 	damageMin = 345,
@@ -26,7 +26,12 @@ mercenary_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_mercenary_commander_hum_m.iff",
+		"object/mobile/dressed_mercenary_commander_nikto_m.iff",
+		"object/mobile/dressed_mercenary_commander_wee_m.iff",
+		"object/mobile/dressed_mercenary_commander_zab_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

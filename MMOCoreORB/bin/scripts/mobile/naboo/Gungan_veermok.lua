@@ -1,8 +1,8 @@
 Gungan_veermok = Creature:new {
 	objectName = "@mob/creature_names:gungan_veermok",
-	socialGroup = "Gungan",
+	socialGroup = "gungan",
 	pvpFaction = "",
-	faction = "",
+	faction = "gungan",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,

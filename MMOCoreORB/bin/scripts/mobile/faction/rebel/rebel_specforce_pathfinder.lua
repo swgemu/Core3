@@ -26,7 +26,13 @@ rebel_specforce_pathfinder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_specforce_pathfinder_zabrak_female_fat_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_specforce_pathfinder_human_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_twk_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_twk_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_pathfinder_zabrak_female_fat_01.iff"},
 	lootGroups = {
 		{
 			groups = {

@@ -25,7 +25,11 @@ rebel_recruiter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_recruiter_human_female_01.iff", "object/mobile/dressed_rebel_recruiter_human_female_02.iff", "object/mobile/dressed_rebel_recruiter_moncal_male_01.iff", "object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_recruiter_human_female_01.iff",
+		"object/mobile/dressed_rebel_recruiter_human_female_02.iff",
+		"object/mobile/dressed_rebel_recruiter_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {},

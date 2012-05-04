@@ -26,7 +26,11 @@ rebel_specforce_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_specforce_general_bothan_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_general_sullustan_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_general_twk_female_01.iff"},
+
 	lootGroups = {
 		{
 			groups = {

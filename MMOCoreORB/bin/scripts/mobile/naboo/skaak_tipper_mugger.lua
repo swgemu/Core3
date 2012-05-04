@@ -1,8 +1,8 @@
 skaak_tipper_mugger = Creature:new {
 	objectName = "@mob/creature_names:skaak_tipper_mugger",
-	socialGroup = "Sk.Tip. Gang",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "skaak_tipper_gang",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -25,7 +25,7 @@ skaak_tipper_mugger = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
 	    {
 			groups = {

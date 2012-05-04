@@ -1,8 +1,8 @@
 gungan_kaadu_rider = Creature:new {
 	objectName = "@mob/creature_names:gungan_kaadu_rider",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,7 @@ gungan_kaadu_rider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gungan_male.iff"},
+	templates = {"object/mobile/gungan_s02_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

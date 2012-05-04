@@ -1,8 +1,8 @@
 nyms_droideka = Creature:new {
 	objectName = "@mob/creature_names:nym_droideka_strong",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 360,

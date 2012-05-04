@@ -26,7 +26,13 @@ rebel_crewman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_crewman_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_crewman_human_female_01.iff",
+		"object/mobile/dressed_rebel_crewman_human_female_02.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_01.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_02.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_03.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_04.iff"},
 	lootGroups = {
 		{
 			groups = {

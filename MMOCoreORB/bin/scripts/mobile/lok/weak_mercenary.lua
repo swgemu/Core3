@@ -1,8 +1,8 @@
 weak_mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary_weak",
-	socialGroup = "Lok Merc",
-	pvpFaction = "Lok Merc",
-	faction = "",
+	socialGroup = "lok_mercenaries",
+	pvpFaction = "lok_mercenaries",
+	faction = "lok_mercenaries",
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 315,
@@ -26,7 +26,11 @@ weak_mercenary = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
+	templates = {
+			"object/mobile/dressed_mercenary_weak_hum_m.iff",
+			"object/mobile/dressed_mercenary_weak_hum_f.iff",
+			"object/mobile/dressed_mercenary_weak_rod_m.iff"
+			},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

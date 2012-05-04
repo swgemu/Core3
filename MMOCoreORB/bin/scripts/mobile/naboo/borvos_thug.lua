@@ -1,8 +1,8 @@
 borvos_thug = Creature:new {
 	objectName = "@mob/creature_names:borvos_thug",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

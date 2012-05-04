@@ -1,6 +1,6 @@
 zogor_storm = Creature:new {
 	objectName = "",
-	customName = "Zogor Storm",
+	customName = "Zogor Sturm",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

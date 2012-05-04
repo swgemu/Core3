@@ -1,7 +1,7 @@
 rebel_army_captain = Creature:new {
 	objectName = "@mob/creature_names:rebel_army_captain",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 21,
 	chanceHit = 0.34,
@@ -26,7 +26,13 @@ rebel_army_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_army_captain_twk_male.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_army_captain_bothan_male.iff",
+		"object/mobile/dressed_rebel_army_captain_human_male_01.iff",
+		"object/mobile/dressed_rebel_army_captain_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_army_captain_trandoshan_female.iff",
+		"object/mobile/dressed_rebel_army_captain_twk_male.iff",
+		"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
 	lootGroups = {
 		{
 			groups = {

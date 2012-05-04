@@ -1,8 +1,8 @@
 philosopher = Creature:new {
 	objectName = "@mob/creature_names:philosopher",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
@@ -25,7 +25,7 @@ philosopher = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_philosopher.iff"},
 	lootGroups = {
 	    {
 			groups = {

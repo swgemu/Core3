@@ -1,8 +1,8 @@
 mercenary_messenger = Creature:new {
 	objectName = "@mob/creature_names:mercenary_messanger",
-	socialGroup = "Lok Merc",
-	pvpFaction = "Lok Merc",
-	faction = "",
+	socialGroup = "lok_mercenaries",
+	pvpFaction = "lok_mercenaries",
+	faction = "lok_mercenaries",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,12 @@ mercenary_messenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_mercenary_messanger_hum_f.iff",
+		"object/mobile/dressed_mercenary_messanger_hum_m.iff",
+		"object/mobile/dressed_mercenary_messanger_rod_m.iff",
+		"object/mobile/dressed_mercenary_messanger_sullustan_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

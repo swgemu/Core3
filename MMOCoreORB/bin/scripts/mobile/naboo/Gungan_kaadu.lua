@@ -1,8 +1,8 @@
 Gungan_kaadu = Creature:new {
 	objectName = "@mob/creature_names:gungan_kaadu",
-	socialGroup = "Gungan",
+	socialGroup = "gungan",
 	pvpFaction = "",
-	faction = "",
+	faction = "gungan",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

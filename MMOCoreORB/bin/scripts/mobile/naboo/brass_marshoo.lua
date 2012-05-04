@@ -27,7 +27,7 @@ brass_marshoo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

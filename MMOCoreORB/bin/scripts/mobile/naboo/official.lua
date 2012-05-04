@@ -2,7 +2,7 @@ official = Creature:new {
 	objectName = "@mob/creature_names:official",
 	socialGroup = "naboo",
 	pvpFaction = "naboo",
-	faction = "",
+	faction = "naboo",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,7 +25,7 @@ official = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_official.iff"},
 	lootGroups = {
 	    {
 			groups = {

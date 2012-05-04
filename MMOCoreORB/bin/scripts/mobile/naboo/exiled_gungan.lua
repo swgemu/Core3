@@ -1,8 +1,8 @@
 exiled_gungan = Creature:new {
 	objectName = "@mob/creature_names:mordran_gungan_exile",
-	socialGroup = "Borvo",
-	pvpFaction = "Borvo",
-	faction = "",
+	socialGroup = "borvo",
+	pvpFaction = "borvo",
+	faction = "borvo",
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,

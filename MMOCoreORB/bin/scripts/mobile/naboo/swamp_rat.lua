@@ -25,7 +25,7 @@ swamp_rat = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_swamp_rat.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}

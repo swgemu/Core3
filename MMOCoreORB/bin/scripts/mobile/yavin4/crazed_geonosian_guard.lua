@@ -26,7 +26,10 @@ crazed_geonosian_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_geonosian_warrior_01.iff","object/mobile/dressed_geonosian_warrior_02.iff","object/mobile/dressed_geonosian_warrior_03.iff"},
+	templates = {
+		"object/mobile/dressed_geonosian_warrior_01.iff",
+		"object/mobile/dressed_geonosian_warrior_02.iff",
+		"object/mobile/dressed_geonosian_warrior_03.iff"},
 	lootGroups = {
 		{
 			groups = {

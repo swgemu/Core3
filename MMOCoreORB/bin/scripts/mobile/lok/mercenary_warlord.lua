@@ -1,8 +1,8 @@
 mercenary_warlord = Creature:new {
 	objectName = "@mob/creature_names:mercenary_warlord",
-	socialGroup = "Lok Merc",
-	pvpFaction = "Lok Merc",
-	faction = "",
+	socialGroup = "lok_mercenaries",
+	pvpFaction = "lok_mercenaries",
+	faction = "lok_mercenaries",
 	level = 44,
 	chanceHit = 0.47,
 	damageMin = 370,
@@ -26,7 +26,11 @@ mercenary_warlord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_mercenary_warlord_hum_m.iff",
+		"object/mobile/dressed_mercenary_warlord_nikto_m.iff",
+		"object/mobile/dressed_mercenary_warlord_wee_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

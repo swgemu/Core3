@@ -1,8 +1,8 @@
 king_terak = Creature:new {
 	objectName = "@mob/creature_names:king_terak",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -25,7 +25,7 @@ king_terak = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/king_terak.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

@@ -1,8 +1,8 @@
 naboo_dissident = Creature:new {
 	objectName = "@mob/creature_names:naboo_dissident",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,7 +25,7 @@ naboo_dissident = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_dissident.iff"},
 	lootGroups = {
 	    {
 			groups = {

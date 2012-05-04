@@ -1,8 +1,8 @@
 mummer_ruffian = Creature:new {
 	objectName = "@mob/creature_names:mummer_ruffian",
-	socialGroup = "Mumm. Gang",
+	socialGroup = "mummer",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,
@@ -25,7 +25,14 @@ mummer_ruffian = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_mugger.iff",
+		"object/mobile/dressed_goon_twk_female_01.iff",
+		"object/mobile/dressed_goon_twk_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_01.iff",
+		"object/mobile/dressed_gran_thug_male_02.iff",
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

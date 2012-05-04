@@ -26,7 +26,13 @@ rebel_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_corporal_sullustan_male_01.iff","object/mobile/dressed_rebel_commando_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_corporal_bith_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_bothan_male_01.iff",
+		"object/mobile/dressed_rebel_corporal_human_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_corporal_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_sullustan_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

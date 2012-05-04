@@ -1,8 +1,8 @@
 mummer_thug = Creature:new {
 	objectName = "@mob/creature_names:mummer_thug",
-	socialGroup = "Mumm. Gang",
+	socialGroup = "mummer",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,7 +25,21 @@ mummer_thug = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

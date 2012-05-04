@@ -26,7 +26,13 @@ rebel_colonel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_colonel_sullustan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_colonel_bothan_male.iff",
+		"object/mobile/dressed_rebel_colonel_fat_zabrak_male.iff",
+		"object/mobile/dressed_rebel_colonel_moncal_female.iff",
+		"object/mobile/dressed_rebel_colonel_old_human_female.iff",
+		"object/mobile/dressed_rebel_colonel_sullustan_male_01.iff",
+		"object/mobile/dressed_rebel_colonel_twk_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

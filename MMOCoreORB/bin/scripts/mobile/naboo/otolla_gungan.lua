@@ -1,8 +1,8 @@
 otolla_gungan = Creature:new {
 	objectName = "@mob/creature_names:otolla_gungan",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -25,7 +25,7 @@ otolla_gungan = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,7 +1,7 @@
 afarathu_brute = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_brute",
-	socialGroup = "Afarathu",
-	pvpFaction = "Afarathu",
+	socialGroup = "afarathu",
+	pvpFaction = "afarathu",
 	faction = "afarathu",
 	level = 11,
 	chanceHit = 0.28,

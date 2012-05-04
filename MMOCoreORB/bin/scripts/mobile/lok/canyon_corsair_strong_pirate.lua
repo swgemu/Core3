@@ -1,8 +1,8 @@
 canyon_corsair_strong_pirate = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_pirate_strong",
-	socialGroup = "Corsair",
-	pvpFaction = "Corsair",
-	faction = "",
+	socialGroup = "canyon_corsair",
+	pvpFaction = "canyon_corsair",
+	faction = "canyon_corsair",
 	level = 36,
 	chanceHit = 0.41,
 	damageMin = 320,
@@ -26,7 +26,12 @@ canyon_corsair_strong_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsair_pirate_strong_hum_f.iff"},
+	templates = {
+		"object/mobile/dressed_corsair_pirate_strong_hum_f.iff",
+		"object/mobile/dressed_corsair_pirate_strong_hum_m.iff",
+		"object/mobile/dressed_corsair_pirate_strong_nikto_m.iff",
+		"object/mobile/dressed_corsair_pirate_strong_zab_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

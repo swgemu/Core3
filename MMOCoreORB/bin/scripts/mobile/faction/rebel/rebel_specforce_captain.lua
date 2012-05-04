@@ -26,7 +26,13 @@ rebel_specforce_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_specforce_captain_zabrak_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_rebel_specforce_captain_human_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_captain_human_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_captain_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_captain_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_captain_trandoshan_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_captain_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

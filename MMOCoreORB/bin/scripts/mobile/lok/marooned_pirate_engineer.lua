@@ -1,8 +1,8 @@
 marooned_pirate_engineer = Creature:new {
 	objectName = "@mob/creature_names:marooned_pirate_engineer",
-	socialGroup = "Pirate of Lok",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "pirate",
+	pvpFaction = "pirate",
+	faction = "pirate",
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,
@@ -26,7 +26,16 @@ marooned_pirate_engineer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_marooned_pirate_captain_wee_m.iff"},
+	templates = {
+		"object/mobile/dressed_marooned_pirate_engr_bith_m.iff",
+		"object/mobile/dressed_marooned_pirate_engr_hum_f.iff",
+		"object/mobile/dressed_marooned_pirate_engr_hum_m.iff",
+		"object/mobile/dressed_marooned_pirate_engr_sull_m.iff",
+		"object/mobile/dressed_marooned_pirate_engr1_bith_m.iff",
+		"object/mobile/dressed_marooned_pirate_engr1_hum_f.iff",
+		"object/mobile/dressed_marooned_pirate_engr1_hum_m.iff",
+		"object/mobile/dressed_marooned_pirate_engr1_sull_m.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

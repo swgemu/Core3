@@ -27,7 +27,7 @@ pooja_naberrie = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_pooja_naberrie.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
