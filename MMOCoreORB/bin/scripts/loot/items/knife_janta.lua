@@ -15,6 +15,7 @@ knife_janta = {
 		{"maxrangemod",17,33,0},
 		{"midrange",3,3,0},
 		{"midrangemod",17,33,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",8,4,0},
 		{"attackactioncost",38,20,0},
 		{"attackmindcost",8,4,0},

@@ -15,6 +15,7 @@ nyax_sword = {
 		{"maxrangemod",-20,-10,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-20,-10,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",51,27,0},
 		{"attackactioncost",39,21,0},
 		{"attackmindcost",33,18,0},

@@ -15,7 +15,7 @@ baton_gaderiffi = {
 		{"maxrangemod",-15,5,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-15,5,0},
-		{"maxrange",4,4,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",58,30,0},
 		{"attackactioncost",31,15,0},
 		{"attackmindcost",10,4,0},

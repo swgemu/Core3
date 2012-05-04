@@ -15,7 +15,7 @@ axe_vibroaxe = {
 		{"maxrangemod",-26,-14,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-26,-14,0},
-		{"maxrange",4,4,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",85,46,0},
 		{"attackactioncost",52,28,0},
 		{"attackmindcost",20,11,0},

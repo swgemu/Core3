@@ -15,6 +15,7 @@ knife_survival = {
 		{"maxrangemod",21,39,0},
 		{"midrange",3,3,0},
 		{"midrangemod",21,39,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",9,5,0},
 		{"attackactioncost",29,15,0},
 		{"attackmindcost",7,4,0},

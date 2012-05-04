@@ -15,7 +15,7 @@ two_handed_sword_battleaxe = {
 		{"maxrangemod",0,10,0},
 		{"midrange",3,3,0},
 		{"midrangemod",0,10,0},
-		{"maxrange",4,4,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",52,26,0},
 		{"attackactioncost",17,8,0},
 		{"attackmindcost",10,4,0},

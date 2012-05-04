@@ -15,7 +15,7 @@ two_handed_sword_katana = {
 		{"maxrangemod",-4,6,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-4,6,0},
-		{"maxrange",4,4,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",27,15,0},
 		{"attackactioncosrt",65,35,0},
 		{"attackmindcost",33,18,0},

@@ -15,7 +15,7 @@ two_handed_sword_cleaver = {
 		{"maxrangemod",-20,-10,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-20,-10,0},
-		{"maxrange",4,4,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",49,27,0},
 		{"attackactioncost",46,25,0},
 		{"attackmindcost",26,14,0},
