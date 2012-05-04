@@ -9,6 +9,7 @@ rancor_bile = {
 		{"area",1,10,0},
 		{"charges",20,200,0},
 		{"range",1,10,0},
+		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

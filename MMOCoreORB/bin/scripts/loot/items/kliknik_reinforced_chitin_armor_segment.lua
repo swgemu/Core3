@@ -6,6 +6,7 @@ kliknik_reinforced_chitin_armor_segment = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/armor/armor_segment_chitin_kliknick_adv.iff",
 	craftingValues = {
+		{"armor_special_type",0,0,0},
 		{"armor_effectiveness",9,16,10},
 		{"armor_integrity",5500,8900,0},
 		{"armor_health_encumbrance",-8,-17,0},
