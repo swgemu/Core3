@@ -831,12 +831,12 @@ corellia_static_spawns = {
 	{"ragtag_kook", 0, -213.219, 28, -4926.08, 204.867, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
 	{"ragtag_kook", 0, -225.238, 28, -4931.01, 254.658, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
 	{"ragtag_kook", 0, -212.993, 28, -4922.77, 38.0909, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	--{"smuggler_patrol_thief_5", 0, -471, 28, -4534.03, 89.4099, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"smuggler_patrol_thief_5", 0, -471, 28, -4534.03, 89.4099, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"corsec_trooper", 0, -324.144, 28, -4442.29, 277.786, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
 	{"ragtag_kook", 0, -712.063, 5.13106, -4304.96, 315.72, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
 	{"ragtag_kook", 0, -719.18, 4.19027, -4309.55, 164.033, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
 	{"crackdown_stormtrooper", 0, -533.6, 28, -4626.5, 196.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	--{"smuggler_patrol_thief_5", 0, -526.15, 28, -4558.69, 359.712, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"smuggler_patrol_thief_5", 0, -526.15, 28, -4558.69, 359.712, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"ragtag_loon", 0, 181.412, 28, -4413.68, 12.8953, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
 	{"ragtag_loon", 0, 184.412, 28, -4413.68, 346.368, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
 	{"ragtag_loon", 0, 183.412, 28, -4407.68, 224.105, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_fat_human_female_02.iff
@@ -1010,7 +1010,7 @@ corellia_static_spawns = {
 	{"entertainer", 0, -16.9034, 1.6, 11.8646, 180.006, 3005672, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
 	{"commoner", 0, -24, 1.6, -4, 124.701, 3005676, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
 	--{"corellia_jaylon_geissler", 0, -3323.82, 101, 3410.51, 258.908, 0, "calm", ""},  --@mob/creature_names:corellia_jaylon_geissler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
-	--{"smuggler_patrol_thief_5", 0, -3296.83, 86, 3294.86, 193.382, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	{"smuggler_patrol_thief_5", 0, -3296.83, 86, 3294.86, 193.382, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	{"corsec_lieutenant", 0, -3177.78, 31, 2889.93, 360.011, 0, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
 	{"corsec_sergeant", 0, -3177.78, 31, 2891.03, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
 	{"bodyguard", 0, -3162.17, 31, 2902.28, 0, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_human_male_01.iff
@@ -1081,7 +1081,7 @@ corellia_static_spawns = {
 	{"stormtrooper", 0, -3395.16, 86, 3023.07, 57.428, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"stormtrooper", 0, -3344.8, 80.6241, 3240.26, 200.272, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"stormtrooper", 0, -3343.2, 81.762, 3240.54, 177.569, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	--{"smuggler_patrol_thief_5", 0, -3296.89, 86, 3295.02, 160.669, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"smuggler_patrol_thief_5", 0, -3296.89, 86, 3295.02, 160.669, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"stormtrooper", 0, -3767.99, 86, 3180.85, 154.813, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"stormtrooper", 0, -3761.11, 86, 3190.17, 63.2948, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"gambler", 0, 0.68378, 0.639421, 61.0666, 268.449, 4255423, "calm", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_rodian_male_03.iff
@@ -1252,8 +1252,8 @@ corellia_static_spawns = {
 	{"corsec_deserter", 0, -5467.56, 21, -2791.59, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
 	{"corellia_times_investigator", 0, -5491.88, 30.0036, -2809.63, 0, 0, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
 	{"corsec_investigator", 0, -5491.88, 30.0036, -2808.63, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	--{"smuggler_patrol_thief_5", 0, -5412.55, 21, -2766.71, 213.391, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	--{"smuggler_patrol_thief_5", 0, -5451.86, 21, -2787.47, 228.946, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	{"smuggler_patrol_thief_5", 0, -5412.55, 21, -2766.71, 213.391, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"smuggler_patrol_thief_5", 0, -5451.86, 21, -2787.47, 228.946, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	{"noble", 0, 28.93, 2.12878, 58.19, 222.007, 2365435, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_02.iff
 	{"noble", 0, 19.26, 2.12847, 56.13, 266.008, 2365436, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_trandoshan_male_01.iff
 	--{"quest_crowd_pleaser_theater_manager", 0, 21.99, 2.12804, 64.05, 4.00007, 2365436, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
@@ -1461,8 +1461,8 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper", 0, -5112.07, 21, -2248.89, 97.4325, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_stormtrooper_rifleman", 0, -5097.16, 21, -2271.05, 130.264, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
 	{"crackdown_stormtrooper_bombardier", 0, -5086.49, 21, -2255.77, 216.35, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_bombardier full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	--{"smuggler_patrol_thief_5", 0, -5482.24, 21, -2705.49, 262.782, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	--{"smuggler_patrol_thief_5", 0, -5482.24, 21, -2705.49, 262.753, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"smuggler_patrol_thief_5", 0, -5482.24, 21, -2705.49, 262.782, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	{"smuggler_patrol_thief_5", 0, -5482.24, 21, -2705.49, 262.753, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"crackdown_stormtrooper", 0, -5044.7, 21, -2303, 200.405, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_command_security_guard", 0, -5048.7, 21, -2299.5, 256.201, 0, "", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_6.iff
 	{"crackdown_stormtrooper_rifleman", 0, -5123, 21, -2425.3, 67.002, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
@@ -1495,6 +1495,181 @@ corellia_static_spawns = {
 	{"ragtag_loon", 0, -4865.73, 10.5102, -2521.71, 326.643, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_nikto_male_04.iff
 	{"crackdown_stormtrooper", 0, 48.13, 0.105, 2.47, 248.001, 2625353, "neutral", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	
+	--doaba
+	{"bounty_hunter", 0, 17.1745, 1.28309, -13.1361, 0, 3075367, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_03.iff
+	{"corsec_investigator", 0, 17.1745, 1.28309, -12.0361, 179.995, 3075367, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"corsec_rogue", 0, 7.8197, 1.00001, -7.0104, 0, 3075366, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_messanger_hum_m.iff
+	{"corsec_commissioner", 0, 7.8197, 1.00001, -5.9104, 180.001, 3075366, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+	{"medic", 0, -4.31306, 0.999965, 5.16959, 0, 3075366, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
+	{"corellia_times_investigator", 0, -4.31306, 0.999956, 6.26959, 180, 3075366, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_old_human_male_02.iff
+	{"corsec_deserter", 0, -5.41306, 0.999953, 6.26959, 134.998, 3075366, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_officer_human_female_01.iff
+	{"zo_ssa", 0, -1.1331, 0.999991, 1.50214, 21.773, 3075366, "neutral", ""},  --@npc_spawner_n:zo_ssa full template: object/mobile/dressed_rebel_army_captain_zabrak_female.iff
+	{"willham_burke", 0, 0.861081, 0.999995, 2.33215, 346.259, 3075366, "neutral", ""},  --@npc_spawner_n:willham_burke full template: object/mobile/dressed_rebel_army_captain_human_male_01.iff
+	{"commoner", 0, -24, 1.6, -4, 246.374, 3075372, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
+	{"commoner", 0, 3139.88, 300, 5247.41, 171.321, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
+	{"commoner", 0, 3179.26, 300, 5213.19, 233.367, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
+	{"commoner", 0, 3117.25, 300, 5194.73, 153.311, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
+	{"commoner", 0, 3108.26, 300, 5229.01, 219.942, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
+	{"commoner", 0, 3162.05, 290, 4966.73, 255.989, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
+	{"commoner", 0, 3190.76, 300, 5269.61, 131.093, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
+	{"commoner", 0, 3103.05, 300, 5164.17, 50.255, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
+	{"commoner", 0, 3192.45, 302.606, 5113.34, 189.527, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
+	{"smuggler_patrol_thief_5", 0, 3048.33, 300, 5196.77, 276.85, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"corsec_sergeant", 0, 3154.04, 300, 5172.07, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
+	{"corsec_chief", 0, 3154.04, 300, 5173.07, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+	{"gambler", 0, 3184.22, 300, 5162.04, 0, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
+	{"gambler", 0, 3184.22, 300, 5163.04, 180.005, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
+	{"farmer_rancher", 0, 3196.61, 295.033, 5073.8, 350.188, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff
+	{"farmer_rancher", 0, 3196.61, 295.206, 5074.8, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
+	{"farmer", 0, 3145.1, 289.991, 4994.55, 359.489, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
+	{"hunter", 0, 3145.1, 290, 4995.55, 180.005, 0, "conversation", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_human_male_05.iff
+	{"noble", 0, 3158.95, 300, 5352.24, 80.7765, 0, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_zabrak_male_02.iff
+	{"commoner", 0, 3159.78, 300, 5397.22, 81.297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_08.iff
+	{"commoner", 0, 3199.22, 300, 5449.92, 146.634, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_03.iff
+	{"pilot", 0, 3202.28, 290, 4988.06, 0, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_messanger_rod_m.iff
+	{"bothan_information_broker", 0, 3202.28, 290, 4989.06, 180.005, 0, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
+	{"smuggler_patrol_thief_5", 0, 3120.48, 300, 5138.5, 189.369, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	{"smuggler_patrol_thief_5", 0, 3103.26, 300, 5141.58, 280.149, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	{"corellia_lilith_laughlin", 0, 3084.07, 279.996, 4979.36, 2.6099, 0, "calm", ""},  --@mob/creature_names:corellia_lilith_laughlin full template: object/mobile/dressed_robber_human_female_01.iff
+	{"commoner", 0, 3277.95, 300, 5438.73, 232.081, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
+	{"commoner", 0, 3240.99, 300, 5415.5, 249.458, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
+	{"commoner", 0, 3204.19, 290, 5003.32, 222.69, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
+	{"commoner", 0, 3202.3, 290, 5034.41, 29.3152, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
+	{"commoner", 0, 3296.88, 324, 5760.95, 196.788, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
+	{"bartender", 0, -4.00542, -0.894992, -2.41, 166.23, 3075429, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
+	{"bounty_hunter", 0, -42.098, 0.105009, -24.1786, 0, 3075441, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_01.iff
+	{"bothan_diplomat", 0, -42.098, 0.105009, -23.0786, 180.012, 3075441, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
+	{"commoner", 0, -24.3937, -0.519991, 10.5457, 47.741, 3075439, "calm", "Coraline Dynes"},  --@npc_name:human_base_female full template: object/mobile/dressed_coraline_dynes.iff
+	{"commoner", 0, 5.6169, -0.894992, 20.9629, 256.55, 3075433, "calm", "Zakarisz Ghent"},  --@obj_n:unknown_creature full template: object/mobile/dressed_ghent.iff
+	{"commoner", 0, 9.77643, -0.894992, -14.4836, 262.46, 3075432, "calm", "Jadam Questrel"},  --@npc_name:human_base_male full template: object/mobile/dressed_jadam_questrel.iff
+	{"corsec_commissioner", 0, 21.878, -0.894997, -15.7126, 0, 3075430, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+	{"entertainer", 0, 21.878, -0.894997, -14.6126, 179.999, 3075430, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
+	{"corsec_investigator", 0, 40.8822, 0.104999, 2.22818, 0, 3075427, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	{"slicer", 0, 40.8822, 0.104999, 3.32819, 180.003, 3075427, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
+	{"commoner", 0, -2.80228, 2.5, 12.1046, 152.839, 3075353, "calm", "Corran Horn"},  --@npc_name:human_base_male full template: object/mobile/dressed_corran_horn.iff
+	{"commoner", 0, 3300.28, 308, 5495.49, 0, 0, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
+	{"corsec_master_sergeant", 0, 3300.28, 308, 5496.49, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
+	{"bothan_information_broker", 0, -3.23192, 0.184067, -5.20004, 360.011, 4345354, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
+	{"corsec_sergeant", 0, -3.23192, 0.184067, -4.20004, 180.012, 4345354, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
+	{"corsec_sergeant", 0, 8.35364, -0.894992, 6.38149, 360.011, 3075429, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
+	{"farmer_rancher", 0, 8.35364, -0.894992, 7.38149, 179.999, 3075429, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
+	{"disappear_angela", 0, 3166.38, 290, 4989.97, 86.9172, 0, "calm", ""},  --@mob/creature_names:disappear_angela full template: object/mobile/dressed_noble_human_female_03.iff
+	{"miner", 0, 3.29, 1.13306, -9.58, 249.007, 3055771, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
+	--{"crafting_contractor", 0, -3.69, 1.13306, -6, 11.0003, 3055767, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_02.iff
+	{"commoner", 0, 3347.39, 308, 5490.74, 251.277, 0, "calm", "Scolex Grath"},  --@npc_name:human_base_male full template: object/mobile/dressed_scolex_grath.iff
+	{"commoner", 0, 3316.17, 308, 5496.71, 3.31657, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
+	{"commoner", 0, 3308.36, 300, 5396.79, 274.041, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
+	{"commoner", 0, 3320.73, 324, 5709.36, 340.725, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
+	{"commoner", 0, 3307.64, 308.031, 5618.18, 225.888, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_07.iff
+	{"commoner", 0, 3357.46, 308, 5639.47, 212.301, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_07.iff
+	{"commoner", 0, 3385.33, 308, 5699.29, 242.976, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
+	{"commoner", 0, 3322.09, 308, 5484.42, 146.419, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
+	{"commoner", 0, 3303.05, 300, 5351.87, 319.052, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
+	{"noble", 0, 47.5747, 0.974633, 22.0108, 238.024, 9665365, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_twilek_male_01.iff
+	{"businessman", 0, 52.3124, 0.639417, 48.2148, 107.997, 9665359, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
+	{"farmer", 0, 36.7068, 0.639417, 39.346, 0, 9665359, "", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_naboo_human_male_01.iff
+	{"bothan_diplomat", 0, 36.7068, 0.639417, 40.446, 180.001, 9665359, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
+	{"chassis_broker", 0, -56.6993, 0.974563, 8.57384, 27.5028, 9665366, "neutral", ""},  --@npc_spawner_n:chassis_broker full template: object/mobile/space_chassis_broker_04.iff
+	{"corsec_commissioner", 0, -4.68154, 0.639424, 59.8856, 360.011, 9665356, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+	{"brawler", 0, -4.68154, 0.639424, 60.9856, 180.005, 9665356, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
+	{"drall_abbot", 0, -5.78154, 0.639424, 60.9856, 135.005, 9665356, "conversation", ""},  --@mob/creature_names:drall_abbot full template: object/mobile/drall_male.iff
+	{"corellia_ragtag_cudgel", 0, 3218.73, 292.197, 4926.53, 179.165, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
+	{"corellia_captain_baize", 0, 3178.36, 300, 5371.88, 251.25, 0, "calm", ""},  --@mob/creature_names:corellia_captain_baize full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+	{"corellia_ragtag_ventil_tamplin", 0, 3244.74, 290.107, 4941.27, 323.827, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_ventil_tamplin full template: object/mobile/dressed_blood_razor_pirate_captain_nikto_m.iff
+	{"corellia_ragtag_cudgel", 0, 3258.27, 290, 4963.72, 206.924, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
+	{"corellia_ragtag_cudgel", 0, 3242.42, 290, 4952.31, 112.744, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
+	{"corellia_pendretronics_security", 0, 31.9043, -12, 0.806641, 271.806, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
+	{"corellia_ragtag_cudgel", 0, 3257.43, 290, 4977.08, 150.441, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
+	{"corellia_pendretronics_security", 0, 35.1619, -12, 72.5952, 359.971, 18180187270352583977, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
+	{"slicer", 0, 1.28595, 0.639421, 66.8733, 0, 9665356, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_assassin_human_female_01.iff
+	{"drall_monk", 0, 1.28595, 0.639422, 67.8733, 180.008, 9665356, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_male.iff
+	{"farmer", 0, -62.5737, 2.63942, 40.0043, 360.011, 9665364, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_naboo_bothan_female_02.iff
+	{"explorer", 0, -62.5737, 2.63942, 41.0043, 180.004, 9665364, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
+	{"commoner", 0, 3411.89, 308, 5515.19, 208.425, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
+	{"commoner", 0, 3414.81, 308, 5624.67, 237.948, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
+	{"commoner", 0, 3431.28, 308, 5563.41, 159.884, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
+	{"hunter", 0, -21.8263, 2.12878, 73.7963, 0, 4395404, "conversation", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_human_female_03.iff
+	{"fringer", 0, -21.8263, 2.12878, 74.8963, 179.999, 4395404, "conversation", ""},  --@mob/creature_names:fringer full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
+	{"mercenary", 0, -22.9263, 2.12878, 74.8963, 134.998, 4395404, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
+	{"noble", 0, 15.2654, 2.47978, 23.7759, 5.24424, 4395401, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_zabrak_female_01.iff
+	{"entertainer", 0, 15.2654, 2.37968, 24.8667, 180.002, 4395401, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
+	{"mercenary", 0, -0.629707, 2.6, 2.33132, 360.011, 4395401, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_weak_hum_f.iff
+	{"artisan", 0, -0.629707, 2.6, 3.43132, 180.013, 4395401, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_01.iff
+	{"farmer", 0, -17.5346, 0.765493, 42.402, 354.765, 4395401, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
+	{"farmer", 0, -17.5346, 0.665389, 43.4928, 180.009, 4395401, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
+	{"artisan", 0, -1.72179, 0.6, -4.05766, 360.011, 4395396, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_01.iff
+	{"bothan_information_broker", 0, -1.72179, 0.6, -2.95766, 180.016, 4395396, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
+	{"corsec_trooper", 0, 3112.45, 281.347, 4982.51, 91.063, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
+	{"businessman", 0, 3.32, 1.13306, -8.49, 228.007, 3075360, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
+	{"hunter", 0, -14.01, 1.13306, -8.53, 120.004, 3075361, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
+	{"surgical_droid_21b", 0, -1.19, 0.184067, -1.89, 230.753, 4345354, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/21b_surgical_droid.iff
+	{"corellia_pendretronics_employee", 0, -49.8345, -20, 67.874, 43.8552, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_female_01.iff
+	{"corellia_pendretronics_employee", 0, -72.2534, -20, 66.0405, 318.19, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+	{"corellia_pendretronics_employee", 0, 12.5409, -20, 123.224, 264.249, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
+	{"corellia_pendretronics_employee", 0, -54.2774, -20, 38.1062, 53.8814, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
+	--[[
+	{"corellia_shobbo_durron", 0, 4.68399, 0.25, -5.09207, 344.591, 18180187269693384899, "calm", ""},  --@mob/creature_names:corellia_shobbo_durron full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
+{"corellia_gwhirrye_baric", 0, 3276.87, 300, 5384.97, 136.31, 0, "calm", ""},  --@mob/creature_names:corellia_gwhirrye_baric full template: object/mobile/dressed_villain_trandoshan_male_01.iff
+{"corellia_pendretronics_employee", 0, 21.2752, -12, 44.3927, 34.6872, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 3.57837, -12, 40.6914, 337.881, 18180187269325663823, "", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
+{"corellia_pendretronics_employee", 0, 56.6726, -12, 78.3945, 41.9137, 18180187268981920450, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corellia_pendretronics_employee", 0, -3.66089, 0.25, -0.92627, 260.754, 18180187270192132818, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corellia_pendretronics_employee", 0, -15.7938, -20, 101.034, 127.388, 18180187270326677024, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_mercenary_elite_medic_human_male_01.iff
+{"corellia_pendretronics_employee", 0, 61.6907, -12, 5.45313, 92.401, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corellia_pendretronics_employee", 0, -28.9434, -20, 106.429, 310.367, 18180187270326677024, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 61.4431, -12, 16.2007, 90.7462, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 37.9663, -20, 125.491, 267.175, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 0.302067, -12, 59.7502, 345.272, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 49.345, -12, 87.7388, 170.714, 18180187268981920450, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
+{"corellia_pendretronics_employee", 0, 26.7037, -12, 25.9924, 341.17, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corellia_pendretronics_employee", 0, -63.8616, -20, 12.3726, 85.9093, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, -64.2497, -20, 76.9509, 151.648, 18180187268732898264, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 23.4046, -20, 134.284, 318.68, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, 35.8025, -20, 136.87, 176.622, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
+{"corellia_pendretronics_employee", 0, -52.9017, -20, 15.4671, 106.359, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
+{"corellia_pendretronics_employee", 0, -57.0833, -20, 83.585, 267.321, 18180187268732898264, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corellia_pendretronics_employee", 0, 46.8232, -12, 63.9019, 307.247, 18180187268857888443, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
+{"corellia_pendretronics_employee", 0, -3.20093, -12, 46.9316, 87.6688, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
+{"corellia_pendretronics_employee", 0, 46.6401, -12, 54.5313, 212.58, 18180187268857888443, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
+{"corsec_master_sergeant", 0, -14.8394, 2.41844, 24.4443, 5.24424, 4395401, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
+{"info_broker", 0, -14.8394, 2.32744, 25.4359, 180.013, 4395401, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
+{"farmer_agriculturalist", 0, 25.4426, 0.746078, 42.666, 5.24364, 4395401, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
+{"commoner", 0, 25.4426, 0.655075, 43.6577, 180.006, 4395401, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
+{"corsec_trooper", 0, 3.96145, 2.12878, 75.4149, 0, 4395403, "conversation", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
+{"farmer", 0, 3.96145, 2.12878, 76.4149, 180.002, 4395403, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
+{"bothan_information_broker", 0, -23.9134, 0.6, -4.15254, 360.011, 4395397, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
+{"farmer_rancher", 0, -23.9134, 0.6, -3.15254, 179.996, 4395397, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
+{"bodyguard", 0, -20.4229, 2.12878, 64.9439, 0, 4395404, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_villain_trandoshan_male_01.iff
+{"artisan", 0, -20.4229, 2.12878, 65.9439, 180.013, 4395404, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_commoner_artisan_bith_male_01.iff
+{"crackdown_elite_dark_trooper", 0, 3170.4, 301.801, 5100.6, 279.081, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_dark_trooper full template: object/mobile/dark_trooper.iff
+{"crackdown_stormtrooper_squad_leader", 0, 3198.2, 290.356, 5047.05, 167.76, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
+{"crackdown_stormtrooper_rifleman", 0, 3199.99, 290, 4992.48, 160.986, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
+{"corsec_chief", 0, 3112.43, 280.843, 4981.38, 252.823, 0, "calm", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
+{"crackdown_stormtrooper", 0, 3169.44, 301.774, 5102.07, 66.9422, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
+{"crackdown_dark_trooper", 0, 3200.02, 290, 5032.75, 357.888, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
+{"crackdown_elite_sand_trooper", 0, 3193.15, 290.013, 5040.79, 176.21, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
+{"noble", 0, 28.93, 2.12878, 58.19, 222.007, 4395402, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_human_female_02.iff
+{"noble", 0, 19.26, 2.12847, 56.13, 266.008, 4395403, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_human_male_02.iff
+{"quest_crowd_pleaser_theater_manager", 0, 21.99, 2.12804, 64.05, 4.00007, 4395403, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
+{"crackdown_stormtrooper", 0, 3197.73, 290.877, 5049.23, 167.763, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
+{"crackdown_storm_commando", 0, 3191.1, 290, 5021.3, 165.578, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
+{"crackdown_imperial_noncom", 0, 3297.95, 308, 5563.09, 123.034, 0, "", ""},  --@mob/creature_names:crackdown_imperial_noncom full template: object/mobile/dressed_imperial_officer_m.iff
+{"crackdown_stormtrooper", 0, -8.45502, 0.184067, -12.51, nan, 4345355, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
+{"corellia_pendretronics_employee", 0, -60.1056, -20, 36.3912, 207.324, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_female_01.iff
+{"corellia_pendretronics_employee", 0, -51.6172, -20, 15.6407, 49.0721, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_mercenary_medic_rodian_female_01.iff
+{"corellia_ragtag_cudgel", 0, 3263.11, 290, 4965.73, 183.912, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
+{"corellia_ragtag_cudgel", 0, 3260.62, 290, 4987.67, 308.247, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
+{"corellia_ragtag_cudgel", 0, 3245.42, 290, 4956.73, 39.1131, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
+{"corellia_ragtag_cudgel", 0, 3219.78, 290, 4932.78, 52.1092, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
+{"corellia_pendretronics_security", 0, 3.31958, -12, 33.9385, 134.191, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
+{"corellia_chirq_kazic_pendre", 0, -10.7, -20, 8.8, 215.006, 18180187269665795997, "calm", ""},  --@mob/creature_names:corellia_chirq_kazic_pendre full template: object/mobile/dressed_corran_horn.iff
+{"crackdown_elite_sand_trooper", 0, 3362.39, 308, 5513.99, 113.751, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
+{"crackdown_comm_operator", 0, 3361.35, 308, 5483.26, 95.5634, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_comm_operator full template: object/mobile/dressed_imperial_officer_m_6.iff
+{"crackdown_imperial_corporal", 0, 3367.38, 308, 5495.93, 241.976, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_6.iff
+{"smuggler_patrol_thief_5", 0, 3048.86, 300, 5196.51, 286.342, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+{"speederbike_swoop", 0, 3329.76, 308, 5524.46, 0, 0, "", ""},  --@monster_name:speederbike_swoop full template: object/mobile/vehicle/speederbike_swoop.iff
+{"speederbike_swoop", 0, 3203.26, 300, 5294.35, 0, 0, "", ""},  --@monster_name:speederbike_swoop full template: object/mobile/vehicle/speederbike_swoop.iff
+]]	
 }
 
 corellia_badges = {

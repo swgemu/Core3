@@ -57,6 +57,7 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.mission.bountyhunter.BountyHunterDroid;
 import server.zone.objects.mission.bountyhunter.events.BountyHunterTargetTask;
 include server.zone.objects.mission.bountyhunter.events.FindTargetTaskList;
+import system.thread.Mutex;
 
 class BountyMissionObjective extends MissionObjective {
 	@dereferenced
@@ -74,6 +75,9 @@ class BountyMissionObjective extends MissionObjective {
 	protected FindTargetTaskList droidTasks;
 	
 	protected BountyHunterTargetTask targetTask;
+	
+	@dereferenced
+	protected transient Mutex syncMutex;
 	
 	public static final int INITSTATUS = 0;
 	public static final int HASBIOSIGNATURESTATUS = 1;

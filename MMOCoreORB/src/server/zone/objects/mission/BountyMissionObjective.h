@@ -125,6 +125,8 @@ using namespace server::zone::objects::mission::bountyhunter::events;
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -219,6 +221,8 @@ protected:
 	FindTargetTaskList droidTasks;
 
 	Reference<BountyHunterTargetTask* > targetTask;
+
+	Mutex syncMutex;
 
 public:
 	static const int INITSTATUS = 0;

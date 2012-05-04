@@ -165,4 +165,8 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	attackList.pop();
 
 	outfit = templateData->getStringField("outfit");
+
+	if ((pvpBitmask & CreatureFlag::ATTACKABLE) && attacks->size() == 0) {
+		System::out << "ERROR " << templateName << " is attackable but has no skills\n";
+	}
 }
