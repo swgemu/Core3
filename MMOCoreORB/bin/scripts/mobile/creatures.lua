@@ -24,6 +24,7 @@ Creature = {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = 0,
+	scale = 1.0,
 
 	templates = {},
 	lootGroups = {},

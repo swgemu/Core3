@@ -122,6 +122,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	setCustomObjectName(templateData->getCustomName(), false);
 
+	setHeight(templateData->getScale(), false);
+
 	String currentLogName = getLoggingName();
 
 	if (!currentLogName.contains(npcTemplate->getTemplateName())) {

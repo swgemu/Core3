@@ -60,6 +60,8 @@ protected:
 	int damageMax;
 	int range;
 
+	float scale;
+
 	int baseXp;
 	int baseHAM;
 	int baseHAMmax;
@@ -216,6 +218,10 @@ public:
 
 	inline float getChanceHit() {
 		return chanceHit;
+	}
+
+	inline float getScale() {
+		return scale;
 	}
 
 	inline int getDamageMin() {

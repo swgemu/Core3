@@ -19,6 +19,8 @@ CreatureTemplate::CreatureTemplate() {
 	acid = 0;
 	lightSaber = 0;
 
+	scale = 1.f;
+
 	meatType = "";
 	boneType = "";
 	hideType = "";
@@ -98,6 +100,8 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	diet = templateData->getIntField("diet");
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
+
+	scale = templateData->getFloatField("scale");
 
 	LuaObject res = templateData->getObjectField("resists");
 	if (res.getTableSize() == 9) {
