@@ -56,6 +56,7 @@ void ArmorComponentImplementation::updateCraftingValues(CraftingValues* values, 
 
 	if(firstUpdate) {
 		setPropertyToHidden("armor_special_effectiveness");
+		setPropertyToHidden("armor_special_type");
 
 		kinetic = 0;
 		energy = 0;
