@@ -181,6 +181,11 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
 	if (player->isPlayerCreature()){
 	// server/zone/objects/area/GarageArea.idl():  			CreatureObject playerCreature = (CreatureObject) player;
 	CreatureObject* playerCreature = (CreatureObject*) player;
+	// server/zone/objects/area/GarageArea.idl():  			SceneObject rootParent = playerCreature.getRootParent();
+	SceneObject* rootParent = playerCreature->getRootParent();
+	// server/zone/objects/area/GarageArea.idl():  			playerCreature.
+	if (rootParent == NULL || !rootParent->isVehicleObject())	// server/zone/objects/area/GarageArea.idl():  				return;
+	return;
 	// server/zone/objects/area/GarageArea.idl():  			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity");
 	playerCreature->sendSystemMessage("@pet/pet_menu:garage_proximity");
 }

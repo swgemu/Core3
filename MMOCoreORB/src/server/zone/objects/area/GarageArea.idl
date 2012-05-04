@@ -57,6 +57,12 @@ class GarageArea extends ActiveArea {
 	public void notifyEnter(SceneObject player) {
 		if (player.isPlayerCreature()) {
 			CreatureObject playerCreature = (CreatureObject) player;
+			
+			SceneObject rootParent = playerCreature.getRootParent();
+			
+			if (rootParent == null || !rootParent.isVehicleObject())
+				return;
+			
 			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity"); //You have entered into the proximity of a vehicle garage.
 		}
 	}
