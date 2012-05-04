@@ -212,7 +212,6 @@ dathomir_static_spawns = {
 	{"commoner", 0, -98.9262, 18, -1590.29, 239.412, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_02.iff
 	{"businessman", 0, -64.4958, 18, -1581.42, 63.9635, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_06.iff
 	{"businessman", 0, -79.6404, 18, -1585.09, 131.623, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
-	{"transport", 0, -75.9946, 25.086, -1586, 128.438, 0, "neutral", ""},  --@theme_park_name:transport full template: object/creature/npc/theme_park/shared_player_transport.iff
 	{"criminal", 0, -3.46893, 0.624996, -1.80359, 9.95605, 2835552, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_criminal_thug_human_female_02.iff
 	{"cll8_binary_load_lifter", 0, -107.307, 18, -1603.07, 275.094, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/shared_cll8_binary_load_lifter.iff
 	{"r3", 0, -78.3142, 18, -1629.93, 144.919, 0, "calm", "R3-O0"},  --@mob/creature_names:r3 full template: object/mobile/shared_r3.iff

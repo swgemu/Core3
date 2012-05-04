@@ -27,7 +27,7 @@ singular_nak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/shared_dressed_singular_nak.iff"},
+	templates = {"object/mobile/dressed_singular_nak.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
