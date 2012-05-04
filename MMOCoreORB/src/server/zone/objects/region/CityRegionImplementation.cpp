@@ -391,8 +391,8 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	int i;
 
 
-	if (structureCount > 0){
-		for (i = structureCount - 1; i >= 0; i--){
+	if (structureCount > 0) {
+		for (i = structureCount - 1; i >= 0; i--) {
 			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
 
 			Locker locker(sceo, _this);
@@ -408,12 +408,12 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 					} else {
 						sceo->destroyObjectFromWorld(true);
 						sceo->destroyObjectFromDatabase(true);
-
-						sceneObjects->drop(sceo);
 					}
 				}
 
 			}
+
+			sceneObjects->drop(sceo);
 		}
 	}
 }

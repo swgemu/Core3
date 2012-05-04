@@ -66,9 +66,8 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 		BuildingObject* rootParent = cast<BuildingObject*>(selectedObject->getRootParent());
 
-		if (rootParent != NULL && !rootParent->isAllowedEntry(player)) {
+		if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent()))
 			return;
-		}
 
 		/*if (!selectedObject->checkContainerPermission(player, ContainerPermissions::USE))
 			return;*/

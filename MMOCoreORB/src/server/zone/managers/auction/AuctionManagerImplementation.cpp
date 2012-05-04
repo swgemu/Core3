@@ -1056,7 +1056,7 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 
 	BuildingObject* rootParent = cast<BuildingObject*>(sceno->getRootParent());
 
-	if (rootParent != NULL && !rootParent->isAllowedEntry(player))
+	if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent()))
 		return;
 
 	Vendor* vendor = getVendorFromObject(sceno);
