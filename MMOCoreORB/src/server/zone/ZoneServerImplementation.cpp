@@ -287,7 +287,7 @@ void ZoneServerImplementation::start(int p, int mconn) {
 
 void ZoneServerImplementation::stop() {
 	datagramService->stop();
-	datagramService->setHandler(NULL);
+	//datagramService->setHandler(NULL);
 }
 
 void ZoneServerImplementation::shutdown() {

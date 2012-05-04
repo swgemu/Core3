@@ -245,14 +245,13 @@ void ServerCore::shutdown() {
 	if (statusServer != NULL) {
 		statusServer->stop();
 
-		delete statusServer;
+		//delete statusServer;
 		statusServer = NULL;
 	}
 
 	if (webServer != NULL) {
 		webServer->stop();
 
-		delete webServer;
 		webServer = NULL;
 	}
 
@@ -268,13 +267,13 @@ void ServerCore::shutdown() {
 	if (loginServer != NULL) {
 		loginServer->stop();
 
-		loginServer = NULL;
+		//loginServer = NULL;
 	}
 
 	if (pingServer != NULL) {
 		pingServer->stop();
 
-		delete pingServer;
+		//delete pingServer;
 		pingServer = NULL;
 	}
 
@@ -293,7 +292,7 @@ void ServerCore::shutdown() {
 		mantisDatabase = NULL;
 	}
 
-	zoneServerRef = NULL;
+	//zoneServerRef = NULL;
 
 	info("server closed");
 
