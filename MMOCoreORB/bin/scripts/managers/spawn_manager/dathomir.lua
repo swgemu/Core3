@@ -172,7 +172,7 @@ dathomir_static_spawns = {
 	
 	--Trade Outpost
 	{"singular_nak", 0, 571.41, 6.00339, 3091.62, 138.627, 0, "calm", "Singular Nak"},  --@npc_name:singular_nak full template: object/mobile/shared_dressed_singular_nak.iff
-	{"escaped_nightsister_slave", 0, 595.466, 6, 3045.35, 264.607, 0, "calm", ""},  --@mob/creature_names:escaped_nightsister_slave full template: object/mobile/shared_dressed_commoner_fat_twilek_male_01.iff
+	--{"escaped_nightsister_slave", 0, 595.466, 6, 3045.35, 264.607, 0, "calm", ""},  --@mob/creature_names:escaped_nightsister_slave full template: object/mobile/shared_dressed_commoner_fat_twilek_male_01.iff
 	{"commoner", 0, 585.943, 6, 3051.56, 118.776, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_devaronian_male_02.iff
 	{"commoner", 0, 598.679, 6, 3046.85, 261.619, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_bothan_male_02.iff
 	{"commoner", 0, 577.196, 6, 3100.6, 52.588, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
@@ -188,9 +188,9 @@ dathomir_static_spawns = {
 	{"businessman", 0, 614.681, 6, 3081.65, 80.4705, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_fat_twilek_female_02.iff
 	{"scientist", 0, 8.38532, 0.625, -5.44432, 228.681, 6955370, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_mercenary_medic_rodian_female_01.iff
 	{"businessman", 0, -8.09806, 0.625, 4.31086, 153.675, 6955368, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
-	{"wallaw_loowobbli", 0, 1.19457, 0.624999, 6.04704, 232.283, 6955367, "calm", "Wallaw Loowobbli"},  --@npc_name:wallaw_loowobbli full template: object/mobile/shared_dressed_wallaw_loowobbli.iff
+	--{"wallaw_loowobbli", 0, 1.19457, 0.624999, 6.04704, 232.283, 6955367, "calm", "Wallaw Loowobbli"},  --@npc_name:wallaw_loowobbli full template: object/mobile/shared_dressed_wallaw_loowobbli.iff
 	{"businessman", 0, 6.94935, 0.624998, 2.6394, 198.079, 6955367, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_04.iff
-	{"nirame_sakute", 0, -2.1912, 0.624999, -6.92293, 24.0649, 6955369, "neutral", ""},  --@npc_spawner_n:nirame_sakute full template: object/mobile/shared_space_privateer_tier4_tatooine_nirame.iff
+	--{"nirame_sakute", 0, -2.1912, 0.624999, -6.92293, 24.0649, 6955369, "neutral", ""},  --@npc_spawner_n:nirame_sakute full template: object/mobile/shared_space_privateer_tier4_tatooine_nirame.iff
 	{"noble", 0, 3.00888, 0.125266, -2.92449, 279.334, 1392894, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/shared_dressed_noble_bothan_female_01.iff
 	{"r5", 0, 627.744, 6, 3086.77, 278.522, 0, "calm", "R5-O6"},  --@mob/creature_names:r5 full template: object/mobile/shared_r5.iff
 	{"r4", 0, 620.654, 6, 3085.98, 191.123, 0, "calm", "R4-W3"},  --@mob/creature_names:r4 full template: object/mobile/shared_r4.iff
@@ -203,7 +203,7 @@ dathomir_static_spawns = {
 	--Science Outpost
 	{"shaki_hamachil", 0, -101.049, 18, -1542.62, 293.515, 0, "calm", "Shaki Hamachil"},  --@npc_name:shaki_hamachil full template: object/mobile/shared_dressed_shaki_hamachil.iff
 	{"scientist", 0, -136.034, 18, -1592.07, 62.5196, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_combatmedic_trainer_human_female_01.iff
-	{"arnecio_ulvaw_op", 0, 4.06465, 0.624999, 2.34456, 30.9406, 2835570, "neutral", ""},  --@npc_spawner_n:arnecio_ulvaw_op full template: object/mobile/shared_space_rebel_tier3_arnecio.iff
+	--{"arnecio_ulvaw_op", 0, 4.06465, 0.624999, 2.34456, 30.9406, 2835570, "neutral", ""},  --@npc_spawner_n:arnecio_ulvaw_op full template: object/mobile/shared_space_rebel_tier3_arnecio.iff
 	{"shibb_nisshil", 0, -71.1537, 18, -1639.84, 66.4233, 0, "", "Shibb Nisshil"},  --@npc_name:shibb_nisshil full template: object/mobile/shared_dressed_shibb_nisshil.iff
 	{"businessman", 0, -70.8878, 18, -1646.08, 315.408, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_human_male_01.iff
 	{"commoner", 0, -60.7253, 18, -1596.21, 88.2297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
