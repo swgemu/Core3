@@ -59,7 +59,7 @@ public:
 		insertInt(animcrc);
 
 		insertLong(attacker->getObjectID());
-		insertLong(defender->getWeaponID());
+		insertLong(attacker->getWeaponID());
 
 		insertByte(attacker->getPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
 		insertByte(trails); // Trails: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
