@@ -959,8 +959,9 @@ void AiAgentImplementation::doMovement() {
 
 			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
 			// stop in weapons range
-			if (weapon != NULL )
-				maxDistance = weapon->getIdealRange();
+			if (weapon != NULL ) {
+				maxDistance = MAX(0.5, weapon->getIdealRange() - 1);
+			}
 
 			if (follow != NULL && !CollisionManager::checkLineOfSight(_this, follow)) {
 				maxDistance = 0.5;
