@@ -78,6 +78,9 @@ void SpawnAreaMap::loadStaticSpawns() {
 		return;
 	}
 
+	int count = 0;
+	int max = obj.getTableSize();
+
 	for (int i = 1; i <= obj.getTableSize(); ++i) {
 		lua_rawgeti(obj.getLuaState(), -1, i);
 		LuaObject spawn(obj.getLuaState());
@@ -127,6 +130,8 @@ void SpawnAreaMap::loadStaticSpawns() {
 		}
 
 		spawn.pop();
+
+		printf("\r\tLoading static spawns: [%d] / [%d]\t", ++count, max);
 	}
 
 	obj.pop();
