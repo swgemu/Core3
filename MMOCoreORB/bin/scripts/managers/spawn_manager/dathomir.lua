@@ -168,7 +168,7 @@ dathomir_static_spawns = {
 	{"informant_npc_lvl_3",0,590,0,3091,0,0},
 	{"informant_npc_lvl_3",0,598,0,3025,180,0},
 	
-	{"mozo_bondog", 1, -6313.0, 128.0, 734.0, -91, 0}
+	{"mozo_bondog", 1, -6313.0, 128.0, 734.0, -91, 0},
 	
 	--Trade Outpost
 	{"singular_nak", 0, 571.41, 6.00339, 3091.62, 138.627, 0, "calm", "Singular Nak"},  --@npc_name:singular_nak full template: object/mobile/shared_dressed_singular_nak.iff
