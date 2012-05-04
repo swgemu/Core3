@@ -452,24 +452,27 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 }
 
 int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int damType) {
-	int toughness = 1;
+	int toughness = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
 
 	for (int i = 0; i < defenseToughMods->size(); ++i) {
 		int toughMod = defender->getSkillMod(defenseToughMods->get(i));
-		if (toughMod > 0) toughness *= toughMod;
+		if (toughness == 0) toughness += toughMod;
+		else if (toughMod > 0) toughness *= toughMod;
 	}
 
 	// According to the Jedi FAQ, Jedi Toughness is multiplicative with LS toughness.
 	int jediToughness = defender->getSkillMod("jedi_toughness");
-	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0) toughness *= jediToughness;
+	if (damType != WeaponObject::LIGHTSABER && toughness == 0) toughness += jediToughness;
+	else if (damType != WeaponObject::LIGHTSABER && jediToughness > 0) toughness *= jediToughness;
 
 	int foodBonus = defender->getSkillMod("mitigate_damage");
-	if (foodBonus > 0) toughness *= foodBonus;
+	if (toughness == 0) toughness += foodBonus;
+	else if (foodBonus > 0) toughness *= foodBonus;
 
-	return toughness == 1 ? 0 : toughness;
+	return toughness;
 }
 
 
