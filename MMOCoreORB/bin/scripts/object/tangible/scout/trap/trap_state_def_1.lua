@@ -66,7 +66,7 @@ object_tangible_scout_trap_trap_state_def_1 = object_tangible_scout_trap_shared_
 	defenseMod = "dizzy_defense",
 
 	successMessage = "trap_state_def_1_effect",
-	failMessage = "",
+	failMessage = "sys_miss",
 
 	startSpam = "state_def_1_on",
 	stopSpam = "state_def_1_off",

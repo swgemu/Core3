@@ -66,7 +66,7 @@ object_tangible_scout_trap_trap_sonic_pulse = object_tangible_scout_trap_shared_
 	defenseMod = "dizzy_defense",
 
 	successMessage = "trap_sonic_pulse_effect",
-	failMessage = "",
+	failMessage = "sys_miss",
 
 	startSpam = "",
 	stopSpam = "",
