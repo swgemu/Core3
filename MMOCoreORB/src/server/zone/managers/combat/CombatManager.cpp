@@ -452,7 +452,7 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 }
 
 int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int damType) {
-	int toughness = 0;
+	int toughness = 1;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
@@ -469,7 +469,7 @@ int CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int da
 	int foodBonus = defender->getSkillMod("mitigate_damage");
 	if (foodBonus > 0) toughness *= foodBonus;
 
-	return toughness;
+	return toughness == 1 ? 0 : toughness;
 }
 
 
