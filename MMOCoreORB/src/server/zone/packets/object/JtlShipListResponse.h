@@ -22,12 +22,16 @@ public:
 	JtlShipListResponse(CreatureObject* creo, SceneObject* terminal)
 		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x41D) {
 
+		insertInt(0); // size
+
+
 		SceneObject* datapad = creo->getSlottedObject("datapad");
 
-		int offs = getOffset();
+		//int offs = getOffset();
 
-		insertInt(2);
-		insertLong(terminal->getObjectID());
+		//insertInt(2);
+
+		//insertLong(terminal->getObjectID());
 
 		/* TODO: Better method of this.
 		ManagedReference<ActiveArea*> region = terminal->getActiveRegion();
@@ -38,6 +42,7 @@ public:
 			insertAscii(terminal->getZone()->getZoneName());
 		*/
 
+		/*
 		insertAscii("cRush Rocks");
 
 		VectorMap<uint64, ManagedReference<SceneObject*> >* datapadObjects = datapad->getContainerObjects();
@@ -48,7 +53,7 @@ public:
 			if (datapadObject->getGameObjectType() == SceneObjectType::SHIPCONTROLDEVICE) {
 				ManagedReference<ShipControlDevice*> shipControlDevice = cast<ShipControlDevice*>( datapadObject.get());
 
-				if (shipControlDevice->getControlledObject() != NULL /*&& shipControlDevice->getControlledObject()->isShipObject()*/) {
+				if (shipControlDevice->getControlledObject() != NULL) {
 					ManagedReference<ShipObject*> ship = cast<ShipObject*>( shipControlDevice->getControlledObject());
 
 					insertLong(ship->getObjectID());
@@ -56,6 +61,7 @@ public:
 				}
 			}
 		}
+		*/
 	}
 };
 
