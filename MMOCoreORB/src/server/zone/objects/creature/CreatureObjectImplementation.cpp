@@ -83,6 +83,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
@@ -2325,6 +2326,36 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	return false;
+}
+
+bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
+	PlayerObject* ghost = getPlayerObject();
+	PlayerObject* targetGhost = object->getPlayerObject();
+
+	if (ghost == NULL)
+		return false;
+
+	if (ghost->isBountyLocked())
+		return false;
+
+	//if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
+
+	if (targetGhost == NULL)
+		return true;
+
+	uint32 targetFactionStatus = targetGhost->getFactionStatus();
+	uint32 currentFactionStatus = ghost->getFactionStatus();
+
+	if (getFaction() != object->getFaction() && !(currentFactionStatus & FactionStatus::ONLEAVE))
+		return false;
+
+	if ((targetFactionStatus & FactionStatus::OVERT) && !(currentFactionStatus & FactionStatus::OVERT))
+		return false;
+
+	if ((targetFactionStatus & FactionStatus::COVERT) && (currentFactionStatus & FactionStatus::ONLEAVE))
+		return false;
+
+	return true;
 }
 
 bool CreatureObjectImplementation::isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target) {

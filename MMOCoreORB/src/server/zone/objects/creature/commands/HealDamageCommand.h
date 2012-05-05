@@ -225,20 +225,10 @@ public:
 			return false;
 		}
 
-		/*if (creatureTarget->isPlayerCreature() && creature->isPlayerCreature()) {
-			Player * pt = cast<Player *>( creatureTarget);
-			Player * p = cast<Player *>( creature);
-
-			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-
-			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-		}*/
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
 
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			if (creatureTarget == creature) {

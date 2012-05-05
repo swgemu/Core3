@@ -234,6 +234,8 @@ public:
 
 	bool isAggressiveTo(CreatureObject* object);
 
+	bool isHealableBy(CreatureObject* object);
+
 	void sendPvpStatusTo(CreatureObject* player);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
@@ -467,6 +469,8 @@ public:
 
 	virtual bool isAggressiveTo(CreatureObject* object);
 
+	virtual bool isHealableBy(CreatureObject* object);
+
 	virtual void sendPvpStatusTo(CreatureObject* player);
 
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
@@ -665,6 +669,8 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(CreatureObject* object);
+
+	bool isHealableBy(CreatureObject* object);
 
 	void sendPvpStatusTo(CreatureObject* player);
 

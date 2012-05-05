@@ -177,10 +177,8 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
-
-		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-			creature->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
 			return GENERALERROR;
 		}
 

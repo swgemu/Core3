@@ -317,6 +317,10 @@ class TangibleObject extends SceneObject {
 		return false;
 	}
 	
+	public abstract boolean isHealableBy(CreatureObject object) {
+		return false;
+	}
+	
 	/**
 	 * Sends the pvp options bitmask
 	 * @pre { this object is locked}

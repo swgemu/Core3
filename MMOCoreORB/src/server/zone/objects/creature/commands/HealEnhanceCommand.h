@@ -170,20 +170,10 @@ public:
 			return false;
 		}
 
-		/*if (patient->isPlayerCreature() && enhancer->isPlayerCreature()) {
-			CreatureObject* pt = cast<CreatureObject*>( patient);
-			CreatureObject* p = cast<CreatureObject*>( enhancer);
-
-			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
-				p->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-
-			if ((pt->isOvert() && !p->isOvert()) || (pt->isCovert() && p->isOnLeave())) {
-				p->sendSystemMessage("@healing_response:unwise_to_help"); //It would be unwise to help such a patient.
-				return false;
-			}
-		}*/
+		if (!patient->isHealableBy(enhancer)) {
+			enhancer->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
 
 		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {
 			enhancer->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
