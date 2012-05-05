@@ -235,6 +235,11 @@ public:
 
 		if (!canPerformSkill(creature, creatureTarget))
 			return GENERALERROR;
+
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
 		
 
 		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, heal, true);

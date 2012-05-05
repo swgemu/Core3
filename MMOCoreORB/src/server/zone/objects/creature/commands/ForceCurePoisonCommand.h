@@ -193,9 +193,11 @@ public:
 
 		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
 
-		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
 			return GENERALERROR;
 		}
+
 
 		if (!canPerformSkill(creature, creatureTarget))
 			return GENERALERROR;

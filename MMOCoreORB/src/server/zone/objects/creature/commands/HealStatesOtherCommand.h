@@ -193,6 +193,11 @@ public:
 		if (!canPerformSkill(creature, creatureTarget))
 			return GENERALERROR;
 
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
+
 
 		if (creatureTarget->hasState(CreatureState::STUNNED))
 		creatureTarget->removeStateBuff(CreatureState::STUNNED);

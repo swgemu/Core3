@@ -113,31 +113,6 @@ public:
 			return false;
 		}
 
-		if (!creature->canTreatConditions()) {
-			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
-			return false;
-		}
-
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Force Stop Bleed while prone.");
-			return false;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Force Stop Bleed while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
-
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
 		if (playerObject->getForcePower() <= 75) {
@@ -198,12 +173,13 @@ public:
 
 		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
 
-		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-			return GENERALERROR;
-		}
-
 		if (!canPerformSkill(creature, creatureTarget))
 			return GENERALERROR;
+
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
 
 
 		creatureTarget->healDot(CreatureState::BLEEDING, 30);

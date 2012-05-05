@@ -223,6 +223,13 @@ public:
 			return GENERALERROR;
 		
 		
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");
+			return GENERALERROR;
+		}
+
+
+
 		uint32 healedHealthWound = creatureTarget->healWound(creature, CreatureAttribute::HEALTH, heal, true);
 		uint32 healedStrengthWound = creatureTarget->healWound(creature, CreatureAttribute::STRENGTH, heal, true);
 		uint32 healedConstitutionWound = creatureTarget->healWound(creature, CreatureAttribute::CONSTITUTION, heal, true);
