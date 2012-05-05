@@ -148,7 +148,6 @@ class WeaponObject extends TangibleObject {
 		maxRangeAccuracy = 0;
 		
 		damageType = 0;
-		bladeColor = 31;
 		
 		minDamage = 1;
 		maxDamage = 10;

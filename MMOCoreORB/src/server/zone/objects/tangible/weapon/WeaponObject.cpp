@@ -1563,8 +1563,6 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	maxRangeAccuracy = 0;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageType = 0;
 	damageType = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		bladeColor = 31;
-	bladeColor = 31;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		minDamage = 1;
 	minDamage = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		maxDamage = 10;

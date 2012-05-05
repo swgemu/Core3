@@ -39,12 +39,19 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 0;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
-	if(weapon == NULL)
+	if (weapon == NULL)
 		return 1;
 
 	// Handle opening sabers
 
-	if(selectedID == 89) {
+	if (selectedID == 89) {
+
+		ManagedReference<SceneObject*> parent = weapon->getParent();
+		if (parent != NULL && parent->isPlayerCreature()){
+			player->sendSystemMessage("@jedi_spam:saber_not_while_equpped");
+			return 0;
+		}
+
 		weapon->sendContainerTo(player);
 	}
 
@@ -57,9 +64,6 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 			byte bvalue = (byte)color;
 			weapon->setCustomizationVariable("/private/index_color_blade", bvalue, true);
 	}*/
-
-
-	// TODO: Affect Visibility increase.
 
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);

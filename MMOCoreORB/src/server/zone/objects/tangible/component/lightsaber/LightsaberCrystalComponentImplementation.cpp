@@ -139,10 +139,13 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		setMinimumDamage(values->getCurrentValue("mindamage"));
 		setMaximumDamage(values->getCurrentValue("maxdamage"));
 		setWoundChance(values->getCurrentValue("woundchance"));
-		setSacHealth(values->getCurrentValue("attackhealthcost"));
-		setSacAction(values->getCurrentValue("attackactioncost"));
-		setSacMind(values->getCurrentValue("attackmindcost"));
-		setForceCost(values->getCurrentValue("forcecost"));
+
+		// Following are incoming positive values in script (Due to loot modifier.)
+		// Switch to negative number.
+		setSacHealth(values->getCurrentValue("attackhealthcost") * -1);
+		setSacAction(values->getCurrentValue("attackactioncost") * -1);
+		setSacMind(values->getCurrentValue("attackmindcost") * -1);
+		setForceCost(values->getCurrentValue("forcecost") * -1);
 	}
 
 	updateCrystal(color);
