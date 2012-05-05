@@ -40,21 +40,154 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef HEALALLOTHER2COMMAND_H_
 #define HEALALLOTHER2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/CombatAction.h"
+#include "QueueCommand.h"
 
 class HealAllOther2Command : public QueueCommand {
-public:
+protected:
+	int forceCost;
 
+	int healthHealed;
+	int actionHealed;
+	int mindHealed;
+	
+	int heal;	
+
+	float speed;
+	float range;
+	String effectName;
+public:
 	HealAllOther2Command(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		forceCost = 0;
 
+		range = 32;
+
+		healthHealed = 0;
+		actionHealed = 0;
+		mindHealed = 0;
+		
+		heal = 1500;		
+
+		speed = 3.0;
+	}
+	
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (creatureTarget == creature)
+			creature->playEffect("clienteffect/pl_force_healing.cef", "");
+		 else 
+			creature->doAnimation("force_healing_1"); // TODO: Fix animation
 	}
 
+	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+
+		if (!creatureTarget->isPlayerCreature()) {
+			return false;
+		}
+
+		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH)) {
+			return false;
+		}
+
+		if (!creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
+			return false;
+		}
+
+		if (!creatureTarget->hasDamage(CreatureAttribute::MIND)) {
+			return false;
+		}
+		
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
+			return false;
+		}
+
+		return true;
+	}
+	
+	
+	void sendHealMessage(CreatureObject* object, CreatureObject* target, int healthDamage, int actionDamage, int mindDamage) {
+		if (!object->isPlayerCreature()) 
+			return;
+			
+		if (!target->isPlayerCreature())
+			return;
+
+		CreatureObject* creature = cast<CreatureObject*>( object);
+		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
+
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
+
+		if (healthDamage > 0 && actionDamage > 0 && mindDamage > 0) {
+			msgBody << healthDamage << " health, " << actionDamage << " action, and "  << mindDamage << " mind";
+		} else if (healthDamage > 0) {
+			msgBody << healthDamage << " health";
+		} else if (actionDamage > 0) {
+			msgBody << actionDamage << " action";
+		} else if (mindDamage > 0) {
+			msgBody << mindDamage << " mind";
+		} else {
+			StringIdChatParameter stringId("@healing_response:healing_response_63");
+			stringId.setTT(creatureTarget->getObjectID());
+			creature->sendSystemMessage(stringId); //%NT has no dmg of that type to heal.	
+			return; //No damage to heal.
+		}
+
+		msgTail << " damage.";
+
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
+			msgTarget << creature->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
+
+			creature->sendSystemMessage(msgPlayer.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+
+	}	
+	
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
+			StringIdChatParameter stringId("@healing_response:healing_response_63");
+			stringId.setTT(creatureTarget->getObjectID());
+			creature->sendSystemMessage(stringId); //%NT has no wounds of that type to heal.
+			return false;
+		}
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot Force Heal All Other while prone.");
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot Force Heal All Other while Meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+		
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}		
+
+		return true;
+	}	
+	
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -63,9 +196,70 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+		
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else
+					return INVALIDTARGET;
+			}
+		} else
+			object = creature;
+
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
+
+		Locker clocker(creatureTarget, creature);
+
+		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+			creatureTarget = creature;
+
+
+		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
+
+		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
+			return GENERALERROR;
+		}
+		
+		if (creatureTarget == creature) {
+			return GENERALERROR;
+		}		
+
+		if (!canPerformSkill(creature, creatureTarget))
+			return GENERALERROR;
+		
+
+		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, heal, true);
+		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, heal, true);
+		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, heal, true);
+
+		
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		
+		if (playerObject->getForcePower() <= 340) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
+			return false;
+		}
+		
+		forceCost = MIN(((healedHealth + healedAction + healedMind) / 9.5), 470);
+		
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost); // Deduct force.	
+
+		sendHealMessage(creature, creatureTarget, healedHealth, healedAction, healedMind);
+		
+		doAnimations(creature, creatureTarget);	
+			
 		return SUCCESS;
 	}
 
 };
 
-#endif //HEALALLOTHER2COMMAND_H_
+#endif /* HEALALLOTHER2COMMAND_H_ */

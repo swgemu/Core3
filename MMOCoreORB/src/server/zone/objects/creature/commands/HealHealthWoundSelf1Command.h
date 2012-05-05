@@ -56,12 +56,11 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
-
-		if (creature->getWounds(CreatureAttribute::HEALTH) <= 0) {
-			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
+		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION)) {
+			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
 			return false;
 		}
-
+		
 		return true;
 	}
 
@@ -73,6 +72,50 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		// At this point, the player has enough Force... Can they perform skill?
+
+		if (!canPerformSkill(creature))
+				return GENERALERROR;
+
+
+
+		// Lets see how much healing they are doing.
+
+		int healthHealed = creature->healWound(creature, CreatureAttribute::HEALTH, 250);
+		int strengthHealed = creature->healWound(creature, CreatureAttribute::STRENGTH, 250);
+		int constitutionHealed = creature->healWound(creature, CreatureAttribute::CONSTITUTION, 250);
+
+			
+		// Send system message(s).
+
+		if (healthHealed > 0){
+			StringIdChatParameter message1("jedi_spam", "heal_self");
+			message1.setDI(healthHealed);
+			message1.setTO("@jedi_spam:health_wounds");
+			creature->sendSystemMessage(message1);
+		}
+			 
+			
+		if (strengthHealed > 0){
+			StringIdChatParameter message2("jedi_spam", "heal_self");
+			message2.setDI(strengthHealed);
+			message2.setTO("@jedi_spam:strength_wounds");
+			creature->sendSystemMessage(message2);
+		}
+
+		if (constitutionHealed > 0){
+			StringIdChatParameter message3("jedi_spam", "heal_self");
+			message3.setDI(constitutionHealed);
+			message3.setTO("@jedi_spam:constitution_wounds");
+			creature->sendSystemMessage(message3);			
+		}
+		
+		int forceCost = 0;
+		
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
@@ -82,37 +125,15 @@ public:
 				return GENERALERROR;
 			}
 
-			// At this point, the player has enough Force... Can they perform skill?
+		forceCost = MIN(((healthHealed + strengthHealed + constitutionHealed) / 7), 65);
 
-			if (!canPerformSkill(creature))
-				return GENERALERROR;
-
-
-			int forceCost = 0;
-
-			// Lets see how much healing they are doing.
-			uint32 healthHealed = creature->healWound(creature, CreatureAttribute::HEALTH, 250);
+			
+		// Play client effect, and deduct Force Power.
 
 
-
-			// Send system message(s).
-
-
-			if (healthHealed > 0){
-				StringIdChatParameter message2("jedi_spam", "heal_self");
-				message2.setDI(healthHealed);
-				message2.setTO("@jedi_spam:health_wounds");
-				creature->sendSystemMessage(message2);
-			}
-
-
-			// Play client effect, and deduct Force Power.
-
-			forceCost = MIN((healthHealed / 7), 65);
-
-			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
+		creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			
 		return SUCCESS;
 		}
 

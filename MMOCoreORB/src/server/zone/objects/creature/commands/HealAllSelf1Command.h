@@ -56,12 +56,31 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
-
-		if (!(creature->hasDamage(CreatureAttribute::HEALTH)) && (creature->hasDamage(CreatureAttribute::ACTION)) && (creature->hasDamage(CreatureAttribute::MIND))) {
+		if ((!creature->hasDamage(CreatureAttribute::HEALTH)) && (!creature->hasDamage(CreatureAttribute::ACTION)) && (!creature->hasDamage(CreatureAttribute::MIND))) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
+				
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot use Force Heal All Self while prone.");
+			return false;
+		}
 
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot use Force Heal All Self while Meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+		
 		return true;
 	}
 
@@ -73,6 +92,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
@@ -82,55 +105,55 @@ public:
 				return GENERALERROR;
 			}
 
-			// At this point, the player has enough Force... Can they perform skill?
+		// At this point, the player has enough Force... Can they perform skill?
 
-			if (!canPerformSkill(creature))
+		if (!canPerformSkill(creature))
 				return GENERALERROR;
 
 
-			int forceCost = 0;
+		int forceCost = 0;
 
-			// Lets see how much healing they are doing.
+		// Lets see how much healing they are doing.
 
-			uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, 500);
-			uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, 500);
-			uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 500);
+		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, 500);
+		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, 500);
+		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 500);
 
+			
+		forceCost = MIN(((healthHealed + actionHealed + mindHealed) / 4), 340);
 
-			forceCost = MIN(((healthHealed + actionHealed + mindHealed) / 4), 340);
+			
+		// Send system message(s).
 
-
-			// Send system message(s).
-
-			if (healthHealed > 0){
-				StringIdChatParameter message1("jedi_spam", "heal_self");
-				message1.setDI(healthHealed);
-				message1.setTO("@jedi_spam:health_damage");
-				creature->sendSystemMessage(message1);
-			}
-
-
-			if (actionHealed > 0){
-				StringIdChatParameter message2("jedi_spam", "heal_self");
-				message2.setDI(actionHealed);
-				message2.setTO("@jedi_spam:action_damage");
-				creature->sendSystemMessage(message2);
-			}
-
-			if (mindHealed > 0){
-				StringIdChatParameter message3("jedi_spam", "heal_self");
-				message3.setDI(mindHealed);
-				message3.setTO("@jedi_spam:mind_damage");
-				creature->sendSystemMessage(message3);
-			}
+		if (healthHealed > 0){
+			StringIdChatParameter message1("jedi_spam", "heal_self");
+			message1.setDI(healthHealed);
+			message1.setTO("@jedi_spam:health_damage");
+			creature->sendSystemMessage(message1);
+		}
 
 
-			// Play client effect, and deduct Force Power.
+		if (actionHealed > 0){
+			StringIdChatParameter message2("jedi_spam", "heal_self");
+			message2.setDI(actionHealed);
+			message2.setTO("@jedi_spam:action_damage");
+			creature->sendSystemMessage(message2);
+		}
+
+		if (mindHealed > 0){
+			StringIdChatParameter message3("jedi_spam", "heal_self");
+			message3.setDI(mindHealed);
+			message3.setTO("@jedi_spam:mind_damage");
+			creature->sendSystemMessage(message3);			
+		}
+
+			
+		// Play client effect, and deduct Force Power.
 
 
-			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
+		creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
+		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+			
 		return SUCCESS;
 		}
 

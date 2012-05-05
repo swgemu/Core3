@@ -46,6 +46,8 @@ which carries forward this exception.
 #define STOPBLEEDINGCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/CombatAction.h"
+#include "QueueCommand.h"
 
 class StopBleedingCommand : public QueueCommand {
 public:
@@ -54,7 +56,51 @@ public:
 		: QueueCommand(name, server) {
 
 	}
+	
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (creatureTarget == creature)
+			creature->playEffect("clienteffect/pl_force_healing.cef", "");
+		 else 
+			creature->doAnimation("force_healing_1");
+	}		
+	
+	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
+		if (!object->isPlayerCreature())
+			return;
 
+		if (!target->isPlayerCreature())
+			return;
+
+		CreatureObject* creature = cast<CreatureObject*>( object);
+		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
+		StringBuffer msgTarget, msgPlayer;
+			msgPlayer << creatureTarget->getFirstName() << " bleeding has slightly decreased.";
+			msgTarget << creature->getFirstName() << " uses the Force to heal your bleeding.";
+
+		if (creature != creatureTarget) 
+			creature->sendSystemMessage(msgPlayer.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+	}	
+	
+	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+		// TODO: Pet Check
+		if (!creatureTarget->isPlayerCreature()) {
+			return false;
+		}
+
+		if (!creatureTarget->isBleeding()) {
+			return false;
+		}
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
+			return false;
+		}
+
+		return true;
+	}
+	
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->isBleeding()) {
 			if (creature == creatureTarget)
@@ -66,9 +112,51 @@ public:
 			}
 			return false;
 		}
-		return true;
-	}
 
+		if (!creature->canTreatConditions()) {
+			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
+			return false;
+		}
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot Force Stop Bleed while prone.");
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot Force Stop Bleed while Meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		
+		if (playerObject->getForcePower() <= 75) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
+			return false;
+		}
+		
+		playerObject->setForcePower(playerObject->getForcePower() - 75); // Static amount.
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}
+
+		return true;
+	}	
+	
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -77,55 +165,54 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+		
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-			if (object != NULL && !object->isCreatureObject()) {
-				return INVALIDTARGET;
-			} else if (object == NULL)
-				object = creature;
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-			CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
-
-			Locker clocker(targetCreature, creature);
-
-			if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
-				targetCreature = creature;
-
-			int range = 32;
-
-			if (!creature->isInRange(targetCreature, range))
-				return TOOFAR;
-
-			PlayerObject* targetGhost = targetCreature->getPlayerObject();
-
-			if (targetGhost != NULL && targetCreature->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-				return GENERALERROR;
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else
+					return INVALIDTARGET;
 			}
+		} else
+			object = creature;
 
-			if (!canPerformSkill(creature, targetCreature))
-				return GENERALERROR;
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
+
+		Locker clocker(creatureTarget, creature);
+
+		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+			creatureTarget = creature;
+
+		int range = 32;
+
+		if (!creature->isInRange(creatureTarget, range))
+			return TOOFAR;
+
+		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
+
+		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
+			return GENERALERROR;
+		}
+
+		if (!canPerformSkill(creature, creatureTarget))
+			return GENERALERROR;
 
 
-				targetCreature->healDot(CreatureState::BLEEDING, 30);
+		creatureTarget->healDot(CreatureState::BLEEDING, 30);
 
-
-
-				ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-				playerObject->setForcePower(playerObject->getForcePower() - 65);
-
-				if (targetCreature == creature){
-					creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-				} else {
-					creature->doAnimation("force_healing_1");
-				}
-
+		sendCureMessage(creature, creatureTarget);
+		
+		doAnimations(creature, creatureTarget);	
+			
 		return SUCCESS;
-	}
-
-	float getCommandDuration(CreatureObject* object) {
-		return defaultTime * 3.0;
 	}
 
 };

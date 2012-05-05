@@ -56,8 +56,8 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
-
-		if (!(creature->hasState(CreatureState::STUNNED) || creature->hasState(CreatureState::DIZZY) || creature->hasState(CreatureState::INTIMIDATED) || creature->hasState(CreatureState::BLINDED))) {
+		if (!creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
+			creature->sendSystemMessage("@healing_response:healing_response_72"); // You have no states of that type.		
 			return false;
 		}
 
@@ -72,11 +72,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
 		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 65) {
+			if (playerObject->getForcePower() <= 50) {
 				creature->sendSystemMessage("@jedi_spam:no_force_power");
 				return GENERALERROR;
 			}
@@ -87,7 +91,7 @@ public:
 				return GENERALERROR;
 
 
-			int forceCost = 65; // Static amount.
+			int forceCost = 50; // Static amount.
 
 			if (creature->hasState(CreatureState::STUNNED))
 			creature->removeStateBuff(CreatureState::STUNNED);

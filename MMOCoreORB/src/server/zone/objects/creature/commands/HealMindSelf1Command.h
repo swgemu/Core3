@@ -73,6 +73,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
@@ -105,7 +109,6 @@ public:
 				creature->sendSystemMessage(message2);
 
 
-
 				// Play client effect, and deduct Force Power.
 
 				forceCost = MIN((mindHealed / 7), 65);
@@ -114,7 +117,7 @@ public:
 				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 			}
 
-
+			
 		return SUCCESS;
 		}
 

@@ -85,6 +85,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
@@ -120,7 +124,7 @@ public:
 
 			// Play client effect, and deduct Force Power.
 
-			forceCost = MAX((bfHealed / 2), 75);
+			forceCost = MIN((bfHealed / 2), 75);
 
 			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
@@ -130,7 +134,6 @@ public:
 
 		return GENERALERROR;
 	}
-
 
 	float getCommandDuration(CreatureObject* object) {
 		return defaultTime * 3.0;

@@ -56,7 +56,6 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
-
 		if (!creature->hasDamage(CreatureAttribute::HEALTH)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
@@ -72,6 +71,10 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
@@ -113,6 +116,7 @@ public:
 				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 			}
 
+			
 		return SUCCESS;
 		}
 

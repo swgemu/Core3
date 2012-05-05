@@ -55,7 +55,6 @@ public:
 
 	}
 
-
 	bool canPerformSkill(CreatureObject* creature) {
 
 		if (!creature->hasDamage(CreatureAttribute::MIND)) {
@@ -73,6 +72,10 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
@@ -104,7 +107,6 @@ public:
 				message2.setDI(mindHealed);
 				message2.setTO("@jedi_spam:mind_damage");
 				creature->sendSystemMessage(message2);
-
 
 
 				// Play client effect, and deduct Force Power.

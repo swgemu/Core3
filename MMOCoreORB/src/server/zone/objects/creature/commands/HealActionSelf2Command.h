@@ -56,7 +56,6 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature) {
-
 		if (!creature->hasDamage(CreatureAttribute::ACTION)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
@@ -72,6 +71,10 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
@@ -104,6 +107,7 @@ public:
 				message2.setTO("@jedi_spam:action_damage");
 				creature->sendSystemMessage(message2);
 
+				
 				// Play client effect, and deduct Force Power.
 
 				forceCost = MIN((actionHealed / 15), 100);
@@ -112,15 +116,14 @@ public:
 				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 			}
 
-
-
-
+			
 		return SUCCESS;
 		}
 
 		return GENERALERROR;
 	}
 
+	
 	float getCommandDuration(CreatureObject* object) {
 		return defaultTime * 3.0;
 	}
