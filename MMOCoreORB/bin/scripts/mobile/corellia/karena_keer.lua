@@ -1,5 +1,5 @@
 karena_keer = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:zabrak_base_female",
 	customName = "Karena Keer",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -27,7 +27,7 @@ karena_keer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_noble_old_human_female_01.iff"},
+	templates = {"object/mobile/dressed_noble_zabrak_female_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -1,5 +1,6 @@
 corellia_deel_draav = Creature:new {
-	objectName = "@mob/creature_names:corellia_deel_draav",
+	objectName = "@npc_name:human_base_male",
+	customName = "Deel Draav",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

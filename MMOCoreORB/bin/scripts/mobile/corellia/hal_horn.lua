@@ -1,5 +1,5 @@
 hal_horn = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Hal Horn",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

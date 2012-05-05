@@ -1,5 +1,5 @@
 oohiani = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:rodian_base_male",
 	customName = "Oohiani",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,5 +1,6 @@
 corellia_major_walden = Creature:new {
-	objectName = "@mob/creature_names:corellia_major_walden",
+	objectName = "@npc_name:human_base_female",
+	customName = "Major Alana Walden",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

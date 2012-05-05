@@ -1,5 +1,5 @@
 giko = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:rodian_base_male",
 	customName = "Giko",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,6 +1,6 @@
 gil_burtin = Creature:new {
 	objectName = "@npc_spawner_n:gil_burtin",
-	socialGroup = "gil_burtin",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

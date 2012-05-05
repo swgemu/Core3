@@ -1,5 +1,5 @@
 yondalla = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:zabrak_base_female",
 	customName = "Yondalla",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

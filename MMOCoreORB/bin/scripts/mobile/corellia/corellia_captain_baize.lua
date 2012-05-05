@@ -1,5 +1,6 @@
 corellia_captain_baize = Creature:new {
-	objectName = "@mob/creature_names:corellia_captain_baize",
+	objectName = "@npc_name:human_base_female",
+	customName = "Captain Baize",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

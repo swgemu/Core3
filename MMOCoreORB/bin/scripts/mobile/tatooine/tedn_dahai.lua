@@ -1,7 +1,7 @@
 tedn_dahai = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bith_base_male",
 	customName = "Tedn Dahai",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,
@@ -27,7 +27,7 @@ tedn_dahai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/tatooine_npc/figrin_dan.iff"},
+	templates = {"object/mobile/dressed_tatooine_figrin_dan.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

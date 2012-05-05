@@ -1,5 +1,6 @@
 corellia_coronet_armor_thief = Creature:new {
 	objectName = "@mob/creature_names:corellia_coronet_armor_thief",
+	customName = "an armor thief",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 skinkner = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Skinkner",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

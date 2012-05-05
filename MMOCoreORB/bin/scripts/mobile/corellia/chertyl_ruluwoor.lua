@@ -1,5 +1,5 @@
 chertyl_ruluwoor = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Chertyl Ruluwoor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -27,7 +27,7 @@ chertyl_ruluwoor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_selonian_f_06.iff"},
+	templates = {"object/mobile/dressed_noble_old_human_female_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

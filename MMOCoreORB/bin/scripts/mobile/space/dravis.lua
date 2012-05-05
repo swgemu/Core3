@@ -1,6 +1,6 @@
 dravis = Creature:new {
 	objectName = "@npc_spawner_n:dravis",
-	socialGroup = "dravis",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

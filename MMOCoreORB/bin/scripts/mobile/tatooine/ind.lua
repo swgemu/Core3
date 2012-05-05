@@ -1,5 +1,5 @@
 ind = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:gran_base_male",
 	customName = "Ind",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",

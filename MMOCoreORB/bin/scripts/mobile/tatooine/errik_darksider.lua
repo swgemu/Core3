@@ -1,6 +1,5 @@
 errik_darksider = Creature:new {
 	objectName = "@npc_name:tatooine_herald_01",
-	customName = "Errik Darksider",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

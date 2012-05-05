@@ -1,5 +1,5 @@
 blerx_tango = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bith_base_male",
 	customName = "Blerx Tango",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

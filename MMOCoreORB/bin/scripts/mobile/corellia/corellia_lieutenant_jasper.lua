@@ -1,5 +1,6 @@
 corellia_lieutenant_jasper = Creature:new {
-	objectName = "@mob/creature_names:corellia_lieutenant_jasper",
+	objectName = "@npc_name:human_base_male",
+	customName = "Lt. Mack Jasper",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

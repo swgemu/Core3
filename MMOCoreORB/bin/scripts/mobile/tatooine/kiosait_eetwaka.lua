@@ -1,5 +1,5 @@
 kiosait_eetwaka = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:zabrak_base_male",
 	customName = "Kiosait Eetwaka",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

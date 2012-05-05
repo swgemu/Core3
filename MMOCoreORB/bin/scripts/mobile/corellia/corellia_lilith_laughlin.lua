@@ -1,5 +1,6 @@
 corellia_lilith_laughlin = Creature:new {
 	objectName = "@mob/creature_names:corellia_lilith_laughlin",
+	customName = "Lilith Laughlin",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

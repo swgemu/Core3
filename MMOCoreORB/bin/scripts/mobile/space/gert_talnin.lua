@@ -1,6 +1,6 @@
 gert_talnin = Creature:new {
 	objectName = "@npc_spawner_n:gert_talnin",
-	socialGroup = "gert_talnin",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

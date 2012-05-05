@@ -1,9 +1,9 @@
 pashna = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:moncal_base_male",
 	customName = "Pashna Starkiller",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

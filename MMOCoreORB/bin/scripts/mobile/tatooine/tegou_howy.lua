@@ -1,5 +1,5 @@
 tegou_howy = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:moncal_base_female",
 	customName = "Tegou Howy",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

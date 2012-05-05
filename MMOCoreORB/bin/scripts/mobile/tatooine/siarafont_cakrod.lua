@@ -1,5 +1,5 @@
 siarafont_cakrod = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Siarafont Cakrod",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",

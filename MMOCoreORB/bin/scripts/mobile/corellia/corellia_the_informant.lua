@@ -1,5 +1,6 @@
 corellia_the_informant = Creature:new {
-	objectName = "@mob/creature_names:corellia_the_informant",
+	objectName = "@npc_name:human_base_male",
+	customName = "Corellia Times informant",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

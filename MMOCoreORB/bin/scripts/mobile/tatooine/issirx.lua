@@ -1,5 +1,5 @@
 issirx = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:trandoshan_base_female",
 	customName = "Issirx",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

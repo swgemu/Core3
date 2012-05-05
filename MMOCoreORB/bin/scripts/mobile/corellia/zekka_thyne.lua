@@ -1,5 +1,5 @@
 zekka_thyne = Creature:new {
-	objectName = "",
+	objectName = "-@npc_name:bothan_base_male",
 	customName = "Zekka Thyne",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

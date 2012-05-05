@@ -1,6 +1,6 @@
 ral_mundi = Creature:new {
 	objectName = "@npc_spawner_n:ral_mundi",
-	socialGroup = "ral_mundi",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

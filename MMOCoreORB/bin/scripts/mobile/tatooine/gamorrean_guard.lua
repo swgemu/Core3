@@ -1,8 +1,8 @@
 gamorrean_guard = Creature:new {
 	objectName = "@mob/creature_names:gamorrean_guard",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

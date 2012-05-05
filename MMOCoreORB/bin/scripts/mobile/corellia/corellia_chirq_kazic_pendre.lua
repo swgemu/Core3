@@ -1,5 +1,6 @@
 corellia_chirq_kazic_pendre = Creature:new {
 	objectName = "@mob/creature_names:corellia_chirq_kazic_pendre",
+	customName = "Chirq Kazic Pendre",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

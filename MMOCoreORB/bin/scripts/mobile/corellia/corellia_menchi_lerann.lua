@@ -1,5 +1,6 @@
 corellia_menchi_lerann = Creature:new {
-	objectName = "@mob/creature_names:corellia_menchi_lerann",
+	objectName = "@npc_name:human_base_male",
+	customName = "Menchi Lerann",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

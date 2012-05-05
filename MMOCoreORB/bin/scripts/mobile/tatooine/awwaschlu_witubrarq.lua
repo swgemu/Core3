@@ -1,5 +1,5 @@
 awwaschlu_witubrarq = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_male",
 	customName = "Awwaschlu Witubrarq",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

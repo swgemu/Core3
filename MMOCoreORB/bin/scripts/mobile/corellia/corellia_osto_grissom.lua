@@ -1,5 +1,6 @@
 corellia_osto_grissom = Creature:new {
-	objectName = "@mob/creature_names:corellia_osto_grissom",
+	objectName = "@npc_name:human_base_male",
+	customName = "Osto Grissom",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 dooho = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:rodian_base_male",
 	customName = "Dooho",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

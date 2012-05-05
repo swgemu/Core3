@@ -1,5 +1,5 @@
 ollobo = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:quarren_base_male",
 	customName = "Ollobo",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

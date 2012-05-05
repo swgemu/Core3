@@ -1,6 +1,6 @@
 wlinc_tchrr = Creature:new {
 	objectName = "@npc_spawner_n:wlinc_tchrr",
-	socialGroup = "akal_colzet",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

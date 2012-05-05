@@ -1,8 +1,8 @@
 mos_eisley_police_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_lieutenant",
-	socialGroup = "mos_eisley",
-	pvpFaction = "mos_eisley",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

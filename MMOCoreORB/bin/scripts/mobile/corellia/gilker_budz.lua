@@ -1,5 +1,5 @@
 gilker_budz = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Gilker Budz",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

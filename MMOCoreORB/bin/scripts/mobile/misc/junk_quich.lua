@@ -1,5 +1,5 @@
 junk_quich = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Quich",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

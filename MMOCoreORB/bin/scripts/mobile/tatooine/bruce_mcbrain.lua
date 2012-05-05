@@ -1,5 +1,5 @@
 bruce_mcbrain = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:aqualish_base_male",
 	customName = "Bruce McBrain",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

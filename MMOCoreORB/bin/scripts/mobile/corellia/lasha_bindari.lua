@@ -1,5 +1,5 @@
 lasha_bindari = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Lasha Bindari",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

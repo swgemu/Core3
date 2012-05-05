@@ -1,6 +1,6 @@
 palu = Creature:new {
-	objectName = "",
-	customName = "Palu",
+	objectName = "@npc_name:human_base_female",
+	customName = "Palu Zerk",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

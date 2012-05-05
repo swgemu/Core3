@@ -1,5 +1,5 @@
 mat_rags = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Mat Rags",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,5 +1,5 @@
 osweri_hepa = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_female",
 	customName = "Osweri Hepa",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

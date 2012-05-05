@@ -1,6 +1,6 @@
 akal_colzet = Creature:new {
 	objectName = "@npc_spawner_n:akal_colzet",
-	socialGroup = "akal_colzet",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

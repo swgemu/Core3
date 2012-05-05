@@ -1,6 +1,6 @@
 gadget_specialist = Creature:new {
 	objectName = "@mob/creature_names:quest_gadget_specialist",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,
@@ -26,7 +26,7 @@ gadget_specialist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

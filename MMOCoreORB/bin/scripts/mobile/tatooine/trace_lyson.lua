@@ -1,5 +1,5 @@
 trace_lyson = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Trace Lyson",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

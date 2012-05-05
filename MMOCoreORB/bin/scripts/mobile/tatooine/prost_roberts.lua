@@ -1,6 +1,5 @@
 prost_roberts = Creature:new {
 	objectName = "@npc_spawner_n:prost_roberts",
-	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,9 +1,8 @@
 willhalm_skrim = Creature:new {
 	objectName = "@theme_park_name:willhalm_skrim",
-	customName = "Wilhalm Skrim",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

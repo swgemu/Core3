@@ -1,5 +1,6 @@
 watto_leg_syndil = Creature:new {
 	objectName = "@mob/creature_names:watto_leg_syndil",
+	customName = "Syndil",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

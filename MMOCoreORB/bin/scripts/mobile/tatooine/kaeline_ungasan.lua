@@ -1,5 +1,5 @@
 kaeline_ungasan = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Kaeline Ungasan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

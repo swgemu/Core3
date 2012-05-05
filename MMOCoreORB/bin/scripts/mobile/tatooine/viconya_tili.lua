@@ -1,6 +1,5 @@
 viconya_tili = Creature:new {
 	objectName = "@npc_name:tatooine_herald_02",
-	customName = "Vi`conya T`ili",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

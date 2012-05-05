@@ -1,9 +1,9 @@
-coraline_dynes = Creature:new {
-	objectName = "@npc_name:human_base_female",
-	customName = "Coraline Dynes",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+acun_solari = Creature:new {
+	objectName = "@npc_name:bothan_base_male",
+	customName = "Acun Solari",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +27,7 @@ coraline_dynes = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_coraline_dynes.iff"},
+	templates = {" object/mobile/dressed_rebel_army_captain_bothan_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -35,4 +35,4 @@ coraline_dynes = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(coraline_dynes, "coraline_dynes")
+CreatureTemplates:addCreatureTemplate(acun_solari, "acun_solari")

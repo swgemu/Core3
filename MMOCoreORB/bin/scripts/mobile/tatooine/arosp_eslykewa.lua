@@ -1,5 +1,5 @@
 arosp_eslykewa = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:moncal_base_female",
 	customName = "Arosp Eslykewa",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

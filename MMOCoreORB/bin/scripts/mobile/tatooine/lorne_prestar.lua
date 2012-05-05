@@ -1,5 +1,5 @@
 lorne_prestar = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:mos_taike_guard_old",
 	customName = "Lorne Prestar",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

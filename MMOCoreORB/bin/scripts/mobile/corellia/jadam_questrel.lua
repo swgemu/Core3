@@ -1,5 +1,5 @@
 jadam_questrel = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Jadam Questrel",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

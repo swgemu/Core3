@@ -1,5 +1,5 @@
 poki_wirqi = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_female",
 	customName = "Poki Wirqi",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

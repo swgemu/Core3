@@ -1,8 +1,8 @@
 mos_espa_police_officer = Creature:new {
 	objectName = "@mob/creature_names:mos_espa_police_officer",
-	socialGroup = "mos_espa",
-	pvpFaction = "mos_espa",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

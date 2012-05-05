@@ -1,6 +1,6 @@
 tarth_jaxx = Creature:new {
 	objectName = "@npc_spawner_n:tarth_jaxx",
-	socialGroup = "tarth_jaxx",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

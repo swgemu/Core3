@@ -1,5 +1,5 @@
 sol_windtide = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Sol Windtide",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

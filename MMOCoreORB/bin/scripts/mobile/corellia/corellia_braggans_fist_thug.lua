@@ -1,5 +1,6 @@
 corellia_braggans_fist_thug = Creature:new {
-	objectName = "@mob/creature_names:corellia_braggans_fist_thug",
+	objectName = "@npc_name:human_base_female",
+	customName = "a Braggan's Fist thug",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

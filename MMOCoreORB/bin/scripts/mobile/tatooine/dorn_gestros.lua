@@ -1,5 +1,5 @@
 dorn_gestros = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Dorn Gestros",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,5 +1,5 @@
 coris_mao = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bith_base_female",
 	customName = "Coris Mao",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,5 +1,5 @@
 quajjifek_coge = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_male",
 	customName = "Quajjif-Ek Coge",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

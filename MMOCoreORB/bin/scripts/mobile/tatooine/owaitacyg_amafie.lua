@@ -1,5 +1,5 @@
 owaitacyg_amafie = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:zabrak_base_male",
 	customName = "Owaitacyg Amafie",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

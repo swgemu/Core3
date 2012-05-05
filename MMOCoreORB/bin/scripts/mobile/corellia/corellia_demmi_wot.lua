@@ -1,5 +1,6 @@
 corellia_demmi_wot = Creature:new {
-	objectName = "@mob/creature_names:corellia_demmi_wot",
+	objectName = "@npc_name:human_base_male",
+	customName = "Demmi Wot",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

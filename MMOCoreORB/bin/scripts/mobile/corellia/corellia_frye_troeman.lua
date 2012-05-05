@@ -1,5 +1,6 @@
 corellia_frye_troeman = Creature:new {
-	objectName = "@mob/creature_names:corellia_frye_troeman",
+	objectName = "@npc_name:human_base_male",
+	customName = "Frye Troeman",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

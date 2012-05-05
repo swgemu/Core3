@@ -1,6 +1,6 @@
 rikkh = Creature:new {
 	objectName = "@npc_spawner_n:rikkh",
-	socialGroup = "rikkh",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

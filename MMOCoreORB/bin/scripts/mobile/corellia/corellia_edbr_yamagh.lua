@@ -1,5 +1,6 @@
 corellia_edbr_yamagh = Creature:new {
-	objectName = "@mob/creature_names:corellia_edbr_yamagh",
+	objectName = "@npc_name:human_base_male",
+	customName = "Edbr Yamagh",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

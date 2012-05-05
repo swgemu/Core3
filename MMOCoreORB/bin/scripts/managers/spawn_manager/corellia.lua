@@ -553,7 +553,7 @@ corellia_static_spawns = {
 	{"zealot_of_lord_nyax",900,-4.3,-13.8,11.5,170,6036002},
 	
 	--Coronet
-	--{"zabrak_base_male", 0, -451.472, 28, -4572.05, 218.458, 0, "calm", "Dannik Malaan"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_noble_fat_zabrak_male_01.iff
+	{"dannik_malaan", 0, -451.472, 28, -4572.05, 218.458, 0, "calm", "Dannik Malaan"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_noble_fat_zabrak_male_01.iff
 	{"businessman", 0, -306.34, 28, -4620.82, 67.4368, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_bith_male_05.iff
 	{"businessman", 0, -312.404, 28, -4646.51, 242.881, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff
 	{"commoner", 0, -306.539, 28, -4546.52, 95.6639, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
@@ -606,8 +606,8 @@ corellia_static_spawns = {
 	{"corsec_agent", 0, -0.332123, 0.3, -2.90219, 134.998, 1855463, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
 	{"medic", 0, -0.332123, 0.3, -4.00219, 45.0054, 1855463, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
 	{"thale_dustrunner", 0, -0.052739, 3.0782, -10.9388, 187.319, 1855463, "calm", ""},  --@mob/creature_names:thale_dustrunner full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"zekka_thyne", 0, -22.3764, 1.6, -15.0418, 86.3112, 1855554, "calm", "Zekka Thyne"},  --@npc_name:bothan_base_male full template: object/mobile/dressed_noble_bothan_male_01.iff
-	{"grobber", 0, -15.4768, 1, -8.20706, 245.925, 1855551, "calm", "Grobber"},  --@npc_name:twilek_base_male full template: object/mobile/dressed_noble_old_twk_male_02.iff
+	{"zekka_thyne", 0, -22.3764, 1.6, -15.0418, 86.3112, 1855554, "calm", ""},  --@npc_name:bothan_base_male full template: object/mobile/dressed_noble_bothan_male_01.iff
+	{"grobber", 0, -15.4768, 1, -8.20706, 245.925, 1855551, "calm", ""},  --@npc_name:twilek_base_male full template: object/mobile/dressed_noble_old_twk_male_02.iff
 	{"corsec_sergeant", 0, 24.3471, 1.28309, 8.93357, 360.011, 1855549, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_female_01.iff
 	{"bodyguard", 0, 24.3471, 1.28309, 10.0336, 180.007, 1855549, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_robber_twk_female_01.iff
 	{"corellia_times_investigator", 0, 7.44572, 1.00001, -8.00652, 0, 1855548, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
@@ -657,8 +657,7 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper", 0, -215.7, 29.185, -4509.8, 1.00017, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_stormtrooper", 0, -204.7, 29.185, -4509.8, 1.00017, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"corsec_renegade", 0, -662.805, 9.26289, -4182.05, 196.426, 0, "calm", ""},  --@mob/creature_names:corsec_renegade full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-
-	--{"quest_gadget_specialist", 0, 19.7425, 28, -4775.49, 27.4957, 0, "calm", ""},  --@mob/creature_names:quest_gadget_specialist full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
+	{"gadget_specialist", 0, 19.7425, 28, -4775.49, 27.4957, 0, "calm", ""},  --@mob/creature_names:quest_gadget_specialist full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
 	{"coa2_rebel_coordinator", 0, 94.8749, 28, -4519.08, 121.279, 0, "calm", ""},  --@mob/creature_names:coa2_rebel_coordinator full template: object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff
 	{"businessman", 0, -135.995, 28, -4745.63, 251.824, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_fat_human_male_02.iff
 	{"commoner", 0, -163.792, 28, -4606.3, 8.06951, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
@@ -691,7 +690,7 @@ corellia_static_spawns = {
 	{"commoner", 0, 10.3286, 28, -4633.8, 159.984, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
 	{"commoner", 0, 88.4953, 28, -4727.94, 340.398, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
 	{"commoner", 0, 55.6269, 28, -4782.24, 123.611, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"karin_featherlight", 0, -185.082, 28, -4460.71, 86.3314, 0, "calm", "Karin Featherlight"},  --@npc_name:corellia_herald_02 full template: object/mobile/dressed_herald_corellia_02.iff
+	{"karin_featherlight", 0, -185.082, 28, -4460.71, 86.3314, 0, "calm", ""},  --@npc_name:corellia_herald_02 full template: object/mobile/dressed_herald_corellia_02.iff
 	{"explorer", 0, 26.5189, 2.12846, 71.9319, 0, 2365399, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff
 	{"slicer", 0, 26.5189, 2.12858, 73.0319, 180.005, 2365399, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
 	{"businessman", 0, -6.12488, 2.6, 13.0431, 0, 2365397, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
@@ -893,7 +892,7 @@ corellia_static_spawns = {
 	{"medic", 0, -3591.74, 86, 3179.01, 0, 0, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
 	{"businessman", 0, -3591.74, 86, 3180.01, 180.005, 0, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
 	{"corellia_deel_draav", 0, 8.89271, 0.625, -4.32354, 272.897, 18187224143116836370, "calm", ""},  --@mob/creature_names:corellia_deel_draav full template: object/mobile/dressed_mayor.iff
-	--{"human_base_male", 0, -3414.11, 74, 3336.52, 28.1393, 0, "calm", "Denell Kel'Vannon"},  --@npc_name:human_base_male full template: object/mobile/dressed_denell_kelvannon.iff
+	{"denell_kelvannon", 0, -3414.11, 74, 3336.52, 28.1393, 0, "calm", "Denell Kel'Vannon"},  --@npc_name:human_base_male full template: object/mobile/dressed_denell_kelvannon.iff
 	{"commoner", 0, -3447.57, 78, 3219.08, 208.852, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
 	{"commoner", 0, -3455.84, 78, 3343.36, 116.625, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
 	{"commoner", 0, -3427.62, 86, 3029.21, 72.4859, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
@@ -909,7 +908,7 @@ corellia_static_spawns = {
 	{"commoner", 0, -3461.07, 86, 3156, 54.5013, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_08.iff
 	{"commoner", 0, -3421.3, 86, 3104.47, 296.197, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
 	{"bartender", 0, 6.4346, -0.894992, -2.33458, 156.803, 3005399, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	--{"human_base_male", 0, 8.84694, -0.894992, 21.4389, 103.785, 3005403, "calm", "Skinkner"},  --@npc_name:human_base_male full template: object/mobile/dressed_skinkner.iff
+	{"skinkner", 0, 8.84694, -0.894992, 21.4389, 103.785, 3005403, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_skinkner.iff
 	{"slicer", 0, 10.9405, -0.894992, -15.0189, 360.011, 3005402, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
 	{"farmer", 0, 10.9405, -0.894992, -13.9189, 180.013, 3005402, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
 	{"brawler", 0, 22.6067, -0.894992, 19.6263, 0, 3005401, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_villain_trandoshan_male_01.iff
@@ -917,8 +916,8 @@ corellia_static_spawns = {
 	{"commoner", 0, 21.5067, -0.894992, 20.7263, 135.005, 3005401, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
 	{"artisan", 0, 34.3598, 0.104999, -8.03626, 0, 3005398, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_03.iff
 	{"mercenary", 0, 34.3598, 0.104999, -6.93626, 180.005, 3005398, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	--{"human_base_male", 0, 39.0615, 0.104999, 0.934001, 189.839, 3005397, "calm", "Lasha Bindari"},  --@npc_name:human_base_male full template: object/mobile/dressed_lasha_bindari.iff
-	--{"twilek_base_female", 0, -3404.73, 86, 3092.64, 323.239, 0, "calm", "Master Sergeant Crowley"},  --@npc_name:twilek_base_female full template: object/mobile/dressed_corvette_rebel_crowley.iff
+	{"lasha_bindari", 0, 39.0615, 0.104999, 0.934001, 189.839, 3005397, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_lasha_bindari.iff
+	{"crowley", 0, -3404.73, 86, 3092.64, 323.239, 0, "calm", ""},  --@npc_name:twilek_base_female full template: object/mobile/dressed_corvette_rebel_crowley.iff
 	{"gambler", 0, -3408.26, 86, 3048.35, 0, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_female_02.iff
 	{"corsec_detective", 0, -3408.26, 86, 3049.35, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"slicer", 0, -3450.64, 78, 3030.31, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
@@ -939,7 +938,7 @@ corellia_static_spawns = {
 	{"crackdown_imperial_master_sergeant", 0, -10.0845, 0.184067, -12.51, 272.234, 0, "", ""},  --@mob/creature_names:crackdown_imperial_master_sergeant full template: object/mobile/dressed_imperial_officer_m_5.iff
 	{"miner", 0, 3.29, 1.13306, -9.58, 249.007, 2955416, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
 	--{"crafting_contractor", 0, -3.69, 1.13306, -6, 11.0003, 2955412, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_03.iff
-	--{"human_base_male", 0, -3336.21, 72.4231, 2926.19, 277.144, 0, "calm", "Gilker Budz"},  --@npc_name:human_base_male full template: object/mobile/dressed_giker_budz.iff
+	{"gilker_budz", 0, -3336.21, 72.4231, 2926.19, 277.144, 0, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_giker_budz.iff
 	{"commoner", 0, -3361.13, 86, 3217.26, 124.012, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
 	{"commoner", 0, -3324.59, 86, 3261.86, 293.486, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
 	{"commoner", 0, -3322.1, 86, 3230.47, 113.222, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
@@ -994,18 +993,18 @@ corellia_static_spawns = {
 	{"slicer", 0, -3384.54, 86, 3007.15, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
 	{"pilot", 0, -3384.54, 86, 3008.15, 180.005, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_weak_rod_m.iff
 	{"cll8_binary_load_lifter", 0, -3654.48, 86, 3081.81, 26.971, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"crackdown_imperial_warrant_officer_ii", 0, -3787.12, 86, 3147.97, nan, 0, "", ""},  --@mob/creature_names:crackdown_imperial_warrant_officer_ii full template: object/mobile/dressed_imperial_officer_m.iff
+	{"crackdown_imperial_warrant_officer_ii", 0, -3787.12, 86, 3147.97, 0, 0, "", ""},  --@mob/creature_names:crackdown_imperial_warrant_officer_ii full template: object/mobile/dressed_imperial_officer_m.iff
 	{"commoner", 0, -3296.84, 66.0938, 2877.86, 186.227, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
 	{"commoner", 0, -3225.11, 32.2567, 2816.51, 354.534, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
 	{"commoner", 0, -3276.7, 86, 3089.82, 195.888, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_male_01.iff
 	{"commoner", 0, -3256, 86, 3124.3, 90.73, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
 	{"commoner", 0, -3272.53, 86, 3071.96, 247.995, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_09.iff
-	--{"human_base_female", 0, -8.54047, 1.6, -11.59, 98.7988, 3005674, "calm", "Chertyl Ruluwoor"},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_old_human_female_02.iff
+	{"chertyl_ruluwoor", 0, -8.54047, 1.6, -11.59, 98.7988, 3005674, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_old_human_female_02.iff
 	{"miner", 0, 21.6158, 1.28309, 8.94, 0, 3005671, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_bith_female_02.iff
 	{"farmer_rancher", 0, 21.6158, 1.28309, 10.04, 180.005, 3005671, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_sullustan_male_05.iff
 	{"commoner", 0, 20.5158, 1.28309, 10.04, 135.006, 3005671, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	--{"ta_667", 0, -0.521681, 0.999963, 6.38795, 13.7514, 3005670, "npc_imperial", ""},  --@npc_spawner_n:ta_667 full template: object/mobile/dark_trooper.iff
-	--{"zhanks", 0, 1.25263, 0.999968, 6.92433, 340.53, 3005670, "npc_imperial", ""},  --@npc_spawner_n:zhanks full template: object/mobile/dressed_imperial_lieutenant_m.iff
+	{"ta_667", 0, -0.521681, 0.999963, 6.38795, 13.7514, 3005670, "npc_imperial", ""},  --@npc_spawner_n:ta_667 full template: object/mobile/dark_trooper.iff
+	{"zhanks", 0, 1.25263, 0.999968, 6.92433, 340.53, 3005670, "npc_imperial", ""},  --@npc_spawner_n:zhanks full template: object/mobile/dressed_imperial_lieutenant_m.iff
 	{"drall_monk", 0, -16.9034, 1.6, 10.7646, 0, 3005672, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_female.iff
 	{"entertainer", 0, -16.9034, 1.6, 11.8646, 180.006, 3005672, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
 	{"commoner", 0, -24, 1.6, -4, 124.701, 3005676, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
@@ -1095,10 +1094,10 @@ corellia_static_spawns = {
 	{"stormtrooper", 0, -3416.53, 74, 3346.57, 326.897, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"stormtrooper", 0, -3157.47, 31, 2797.69, 352.434, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"stormtrooper", 0, -3155.56, 31, 2792.15, 348.853, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	--{"zabrak_base_male", 0, -3073.63, 31, 2824.36, 145.468, 0, "calm", "Eesiapia Ipeelasxae"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_criminal_swooper_zabrak_male_01.iff
-	--{"zabrak_base_female", 0, -3075.63, 31, 2819.36, 192.304, 0, "calm", "Wofie Iamatiew"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
-	--{"human_base_female", 0, -3072.63, 31, 2822.36, 135.613, 0, "calm", "Iesi Salphe"},  --@npc_name:human_base_female full template: object/mobile/dressed_criminal_swooper_human_female_01.iff
-	--{"zabrak_base_female", 0, -3074.63, 31, 2825.36, 11.9332, 0, "calm", "Liko Aehien"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
+	--{"swooper", 0, -3073.63, 31, 2824.36, 145.468, 0, "calm", "Eesiapia Ipeelasxae"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_criminal_swooper_zabrak_male_01.iff
+	--{"swooper", 0, -3075.63, 31, 2819.36, 192.304, 0, "calm", "Wofie Iamatiew"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
+	--{"swooper", 0, -3072.63, 31, 2822.36, 135.613, 0, "calm", "Iesi Salphe"},  --@npc_name:human_base_female full template: object/mobile/dressed_criminal_swooper_human_female_01.iff
+	--{"swooper", 0, -3074.63, 31, 2825.36, 11.9332, 0, "calm", "Liko Aehien"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
 	{"ragtag_kook", 0, -3420.17, 86, 3117.69, 178.443, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
 	{"ragtag_kook", 0, -3414.17, 86, 3120.69, 230.88, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
 	{"ragtag_kook", 0, -3420.17, 86, 3120.69, 112.674, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
@@ -1166,14 +1165,14 @@ corellia_static_spawns = {
 	{"medic", 0, 11.2683, 1.75, -6.35457, 360.011, 1935476, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
 	{"farmer_rancher", 0, 11.2683, 1.75, -5.25457, 180.017, 1935476, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
 	{"farmer", 0, 10.1683, 1.75, -5.25457, 135.008, 1935476, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_nikto_male_04.iff
-	--{"human_base_male", 0, -15.0532, 2.25, 11.1395, 133.195, 1935472, "calm", "Hal Horn"},  --@npc_name:human_base_male full template: object/mobile/dressed_corellia_hal_horn.iff
+	{"hal_horn", 0, -15.0532, 2.25, 11.1395, 133.195, 1935472, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_corellia_hal_horn.iff
 	{"slicer", 0, -18.0229, 9, 13.2195, 360.011, 1935472, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
 	{"corsec_detective", 0, -18.0229, 9, 14.3195, 180.008, 1935472, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"corsec_deserter", 0, -19.1229, 9, 14.3195, 135.007, 1935472, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"commoner", 0, -15.1386, 2.25, 17.5614, 270.01, 1935472, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
 	{"commoner", 0, -17.1386, 2.25, 17.5614, 90.0005, 1935472, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff
 	{"r3", 0, -16.1386, 2.25, 18.5614, 173.343, 1935472, "calm", "R3-X8"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	--{"human_base_female", 0, -8.43192, 1.6, -11.42, 69.197, 1935530, "calm", "Didina Lippinoss"},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_human_female_03.iff
+	{"didina_lippinoss", 0, -8.43192, 1.6, -11.42, 69.197, 1935530, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_human_female_03.iff
 	{"businessman", 0, 17.3056, 1.28309, -7.47174, 0, 1935527, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_devaronian_male_01.iff
 	{"corsec_investigator", 0, 17.3056, 1.28309, -6.37174, 180.003, 1935527, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"commoner", 0, -16.9721, 1, -4.12621, 360.011, 1935528, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
@@ -1218,7 +1217,7 @@ corellia_static_spawns = {
 	{"gubbur", 0, -5454.02, 8.85189, -2484.05, 319.757, 0, "calm", ""},  --@mob/creature_names:gubbur full template: object/mobile/gubbur_hue.iff
 	{"coa3_information_rebel", 0, 14.1936, 1.13306, -8.97227, 335.228, 1935453, "calm", ""},  --@mob/creature_names:coa3_information_rebel full template: object/mobile/dressed_rebel_brigadier_general_rodian_female_01.iff
 	{"coa3_tactical_rebel", 0, 9.53575, 1.13306, 0.330446, 310.824, 1935441, "calm", ""},  --@mob/creature_names:coa3_tactical_rebel full template: object/mobile/dressed_rebel_brigadier_general_moncal_female.iff
-	--{"human_base_male", 0, -5448.03, 21, -2674.92, 253.163, 0, "calm", "Adar Tallon"},  --@npc_name:human_base_male full template: object/mobile/dressed_corvette_rebel_adar.iff
+	{"adar", 0, -5448.03, 21, -2674.92, 253.163, 0, "calm", "Adar Tallon"},  --@npc_name:human_base_male full template: object/mobile/dressed_corvette_rebel_adar.iff
 	{"corsec_trooper", 0, -5527.51, 22, -2588.06, 86.7137, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
 	{"crackdown_stormtrooper", 0, -4944.3, 21, -2387.8, 257.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_stormtrooper", 0, -4945.7, 21, -2383.1, 249.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
@@ -1270,7 +1269,7 @@ corellia_static_spawns = {
 	{"corsec_trooper", 0, -5626.49, 21, -2812.58, 261.279, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"crackdown_imperial_corporal", 0, -5590.48, 20.3776, -2854.51, 311.192, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_4.iff
 	{"r3", 0, -5312.13, 25.7208, -2570.41, 64.2735, 0, "calm", "R3-X5"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	--{"human_base_male", 0, -5203.33, 21, -2488.13, 176.643, 0, "calm", "Noren Krast"},  --@npc_name:human_base_male full template: object/mobile/dressed_noble_old_human_male_01.iff
+	{"noren_krast", 0, -5203.33, 21, -2488.13, 176.643, 0, "calm", "Noren Krast"},  --@npc_name:human_base_male full template: object/mobile/dressed_noble_old_human_male_01.iff
 	{"commoner", 0, -5291.55, 21, -2479.74, 323.878, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_03.iff
 	{"commoner", 0, -5274.74, 21, -2574.04, 268.911, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
 	{"commoner", 0, -5259.48, 21, -2446.51, 34.7297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
@@ -1286,11 +1285,11 @@ corellia_static_spawns = {
 	{"bartender", 0, 7.85884, -0.894992, 0.356158, 343.793, 2625355, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_old_human_male_02.iff
 	{"mercenary", 0, -32.0578, 0.10501, -21.5764, 262.741, 2625366, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
 	{"corellia_times_investigator", 0, -32.0578, 0.10501, -20.4764, 246.868, 2625366, "calm", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	--{"zabrak_base_female", 0, -7.91182, -0.895002, 18.5763, 115.51, 2625361, "calm", "Karena Keer"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_noble_zabrak_female_01.iff
+	{"karena_keer", 0, -7.91182, -0.895002, 18.5763, 115.51, 2625361, "calm", "Karena Keer"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_noble_zabrak_female_01.iff
 	{"artisan", 0, -8.04223, -0.894908, -17.7225, 360.011, 2625360, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_03.iff
 	{"corsec_agent", 0, -8.04223, -0.894941, -16.6225, 180.002, 2625360, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	--{"human_base_male", 0, 45.2285, 0.104999, 0.017077, 135.448, 2625353, "calm", "Crev Bombaasa"},  --@npc_name:human_base_male full template: object/mobile/dressed_crev_bombaasa.iff
-	--{"hutt_base_female", 0, -19.2041, -0.894989, 22.0094, 239.061, 2625364, "calm", "Shalera the Hutt"},  --@npc_name:hutt_base_female full template: object/mobile/shalera.iff
+	{"crev_bombaasa", 0, 45.2285, 0.104999, 0.017077, 135.448, 2625353, "calm", "Crev Bombaasa"},  --@npc_name:human_base_male full template: object/mobile/dressed_crev_bombaasa.iff
+	{"shalera_the_hutt", 0, -19.2041, -0.894989, 22.0094, 239.061, 2625364, "calm", "Shalera the Hutt"},  --@npc_name:hutt_base_female full template: object/mobile/shalera.iff
 	{"vrak", 0, -26.3961, -0.894991, 23.1611, 0, 2625364, "nervous", ""},  --@npc_spawner_n:vrak full template: object/mobile/dressed_nym_destroyer_rod_m.iff
 	--{"rebel_recruiter", 0, -28.6171, -0.894984, 0.197908, 11.8642, 2625363, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_01.iff
 	{"corsec_commissioner", 0, -26.4983, -0.519991, 9.85428, 360.011, 2625365, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
@@ -1401,8 +1400,8 @@ corellia_static_spawns = {
 	{"corsec_cadet", 0, -4945.07, 21, -2489.35, 89.6921, 0, "calm", ""},  --@mob/creature_names:corsec_cadet full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"r2", 0, -4954.63, 21, -2376.82, 26.4361, 0, "calm", "R2-E3"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
 	{"corellia_braggans_fist_thug", 0, -5263.87, 21, -2423.61, 209.091, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	--{"human_base_male", 0, -5520, 21.3, -2630.99, 0, 0, "calm", "Jom Irimore"},  --@npc_name:human_base_male full template: object/mobile/dressed_rebel_army_captain_human_male_01.iff
-	--{"bothan_base_male", 0, 19.8219, -0.894996, -19.5533, 0, 2625356, "calm", "Acun Solari"},  --@npc_name:bothan_base_male full template: object/mobile/dressed_rebel_army_captain_bothan_male.iff
+	{"jom_irimore", 0, -5520, 21.3, -2630.99, 0, 0, "calm", "Jom Irimore"},  --@npc_name:human_base_male full template: object/mobile/dressed_rebel_army_captain_human_male_01.iff
+	{"acun_solari", 0, 19.8219, -0.894996, -19.5533, 0, 2625356, "calm", "Acun Solari"},  --@npc_name:bothan_base_male full template: object/mobile/dressed_rebel_army_captain_bothan_male.iff
 	{"commoner", 0, 15.2091, 0.639422, 56.8933, 284.328, 1935687, "calm", "Amarent Loren"},  --@mob/creature_names:commoner_human_male full template: object/mobile/dressed_commoner_old_human_male_02.iff
 	{"corellia_braggans_fist_thug", 0, -5229.72, 21, -2376.2, 262.849, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
 	{"corellia_braggans_fist_thug", 0, -5229.08, 21, -2378.99, 332.95, 0, "", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
@@ -1539,14 +1538,14 @@ corellia_static_spawns = {
 	{"bartender", 0, -4.00542, -0.894992, -2.41, 166.23, 3075429, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
 	{"bounty_hunter", 0, -42.098, 0.105009, -24.1786, 0, 3075441, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_01.iff
 	{"bothan_diplomat", 0, -42.098, 0.105009, -23.0786, 180.012, 3075441, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"commoner", 0, -24.3937, -0.519991, 10.5457, 47.741, 3075439, "calm", "Coraline Dynes"},  --@npc_name:human_base_female full template: object/mobile/dressed_coraline_dynes.iff
+	{"coraline_dynes", 0, -24.3937, -0.519991, 10.5457, 47.741, 3075439, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_coraline_dynes.iff
 	{"commoner", 0, 5.6169, -0.894992, 20.9629, 256.55, 3075433, "calm", "Zakarisz Ghent"},  --@obj_n:unknown_creature full template: object/mobile/dressed_ghent.iff
-	{"commoner", 0, 9.77643, -0.894992, -14.4836, 262.46, 3075432, "calm", "Jadam Questrel"},  --@npc_name:human_base_male full template: object/mobile/dressed_jadam_questrel.iff
+	{"jadam_questrel", 0, 9.77643, -0.894992, -14.4836, 262.46, 3075432, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_jadam_questrel.iff
 	{"corsec_commissioner", 0, 21.878, -0.894997, -15.7126, 0, 3075430, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
 	{"entertainer", 0, 21.878, -0.894997, -14.6126, 179.999, 3075430, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
 	{"corsec_investigator", 0, 40.8822, 0.104999, 2.22818, 0, 3075427, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"slicer", 0, 40.8822, 0.104999, 3.32819, 180.003, 3075427, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"commoner", 0, -2.80228, 2.5, 12.1046, 152.839, 3075353, "calm", "Corran Horn"},  --@npc_name:human_base_male full template: object/mobile/dressed_corran_horn.iff
+	{"corran_horn", 0, -2.80228, 2.5, 12.1046, 152.839, 3075353, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_corran_horn.iff
 	{"commoner", 0, 3300.28, 308, 5495.49, 0, 0, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
 	{"corsec_master_sergeant", 0, 3300.28, 308, 5496.49, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"bothan_information_broker", 0, -3.23192, 0.184067, -5.20004, 360.011, 4345354, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
@@ -1556,7 +1555,7 @@ corellia_static_spawns = {
 	{"disappear_angela", 0, 3166.38, 290, 4989.97, 86.9172, 0, "calm", ""},  --@mob/creature_names:disappear_angela full template: object/mobile/dressed_noble_human_female_03.iff
 	{"miner", 0, 3.29, 1.13306, -9.58, 249.007, 3055771, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
 	--{"crafting_contractor", 0, -3.69, 1.13306, -6, 11.0003, 3055767, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_02.iff
-	{"commoner", 0, 3347.39, 308, 5490.74, 251.277, 0, "calm", "Scolex Grath"},  --@npc_name:human_base_male full template: object/mobile/dressed_scolex_grath.iff
+	{"scolex_grath", 0, 3347.39, 308, 5490.74, 251.277, 0, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_scolex_grath.iff
 	{"commoner", 0, 3316.17, 308, 5496.71, 3.31657, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
 	{"commoner", 0, 3308.36, 300, 5396.79, 274.041, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
 	{"commoner", 0, 3320.73, 324, 5709.36, 340.725, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
@@ -1684,7 +1683,7 @@ corellia_static_spawns = {
 	{"commoner", 0, -5488.87, 23.8964, -6242.6, 304.866, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_02.iff
 	{"scientist", 0, -5557.29, 23.4, -6203.08, 226.081, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
 	{"noble", 0, -24.96, 1.6, -4.79578, 14.5444, 2775419, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_male_03.iff
-	{"commoner", 0, -6.11988, 1.6, -7.43599, 219.682, 2775417, "calm", "Karrek Flim"},  --@npc_name:karrek_film full template: object/mobile/dressed_karrek_film.iff
+	{"karrek_flim", 0, -6.11988, 1.6, -7.43599, 219.682, 2775417, "calm", ""},  --@npc_name:karrek_film full template: object/mobile/dressed_karrek_film.iff
 	{"corsec_inspector_sergeant", 0, 24.9055, 1.28309, 5.31569, 360.011, 2775414, "conversation", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"corsec_master_sergeant", 0, 24.9055, 1.28309, 6.41569, 180.019, 2775414, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"gambler", 0, -22.5017, 1.59973, 3.53494, 359.971, 2775415, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_male_03.iff
@@ -1728,16 +1727,16 @@ corellia_static_spawns = {
 	{"comm_operator", 0, -42.3991, 0.105009, -24.3411, 360.011, 3375367, "conversation", ""},  --@mob/creature_names:comm_operator full template: object/mobile/dressed_imperial_officer_m_5.iff
 	{"commoner", 0, -42.3991, 0.105009, -23.2411, 180.016, 3375367, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
 	{"medic", 0, -43.4991, 0.105009, -23.2411, 135.007, 3375367, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
-	{"ging_darjeek", 0, -24.6629, -0.519991, 7.12104, 148.001, 3375365, "calm", "Ging Darjeek"},  --@npc_name:ging_darjeek full template: object/mobile/dressed_ging_darjeek.iff
+	{"ging_darjeek", 0, -24.6629, -0.519991, 7.12104, 148.001, 3375365, "calm", ""},  --@npc_name:ging_darjeek full template: object/mobile/dressed_ging_darjeek.iff
 	{"miner", 0, -5.46842, -0.894998, 20.8012, 0, 3375361, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
 	{"bothan_information_broker", 0, -5.46842, -0.894996, 21.9012, 180.003, 3375361, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
 	{"businessman", 0, -6.56842, -0.894996, 21.9012, 135.001, 3375361, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_old_twilek_male_02.iff
-	{"palejo_reshad", 0, 1.05969, -0.894992, 21.2156, 111.145, 3375359, "calm", "Palejo Reshad"},  --@npc_name:palejo_reshad full template: object/mobile/dressed_palejo_reshad.iff
+	{"palejo_reshad", 0, 1.05969, -0.894992, 21.2156, 111.145, 3375359, "calm", ""},  --@npc_name:palejo_reshad full template: object/mobile/dressed_palejo_reshad.iff
 	{"bounty_hunter", 0, 21.6023, -0.894996, -18.5913, 360.011, 3375356, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_04.iff
 	{"info_broker", 0, 21.6023, -0.894996, -17.4913, 180.012, 3375356, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
 	{"businessman", 0, -10.2935, -0.895782, 7.13264, 339.313, 3375355, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
 	{"noble", 0, 5.80982, -0.894992, -5.41349, 248.205, 3375355, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_02.iff
-	{"commoner", 0, 6772.57, 315, -5697.8, 245.284, 0, "calm", "Pashna Starkiller"},  --@npc_name:moncal_base_male full template: object/mobile/dressed_corvette_rebel_pashna.iff
+	{"pashna", 0, 6772.57, 315, -5697.8, 245.284, 0, "calm", ""},  --@npc_name:moncal_base_male full template: object/mobile/dressed_corvette_rebel_pashna.iff
 	{"corsec_trooper", 0, 6846.25, 317.5, -5789.3, 147.046, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"corsec_trooper", 0, 6735, 315, -5806.36, 33.2145, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
 	{"corsec_trooper", 0, 6735, 315, -5806.36, 5.30953, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
@@ -1751,7 +1750,7 @@ corellia_static_spawns = {
 	{"crackdown_dark_trooper", 0, 6749.3, 315, -5684, 231.007, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
 	{"crackdown_stormtrooper", 0, 6748.9, 315, -5665.2, 279.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_stormtrooper", 0, 6855, 315, -5609.3, 280.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"commoner", 0, 6838.16, 315, -5767.67, 266.732, 0, "calm", "Grondorn Muse"},  --@npc_name:grondorn_muse full template: object/mobile/dressed_grondorn_muse.iff
+	{"grondom_muse", 0, 6838.16, 315, -5767.67, 266.732, 0, "calm", ""},  --@npc_name:grondorn_muse full template: object/mobile/dressed_grondorn_muse.iff
 	{"commoner", 0, 6832.06, 315, -5606.82, 252.9, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_04.iff
 	{"commoner", 0, 6847.34, 315, -5617.89, 54.6527, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_06.iff
 	{"commoner", 0, 6829.04, 315, -5626.01, 119.354, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff

@@ -1,5 +1,5 @@
 imi_eficoaw = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Imi Eficoaw",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

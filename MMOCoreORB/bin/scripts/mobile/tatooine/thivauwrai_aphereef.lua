@@ -1,9 +1,9 @@
 thivauwrai_aphereef = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Thivauwrai Aphereef",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

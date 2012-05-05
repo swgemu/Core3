@@ -1,6 +1,6 @@
 rhea = Creature:new {
 	objectName = "@npc_spawner_n:rhea",
-	socialGroup = "rhea",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

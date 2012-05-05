@@ -1,5 +1,5 @@
 jilljoo_jab = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_female",
 	customName = "Jilljoo Jab",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

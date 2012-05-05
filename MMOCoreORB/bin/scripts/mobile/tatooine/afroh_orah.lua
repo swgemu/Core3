@@ -1,5 +1,5 @@
 afroh_orah = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Afroh Orah",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

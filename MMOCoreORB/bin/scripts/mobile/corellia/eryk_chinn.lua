@@ -1,8 +1,8 @@
 eryk_chinn = Creature:new {
 	objectName = "@mob/creature_names:eryk_chinn",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 210,

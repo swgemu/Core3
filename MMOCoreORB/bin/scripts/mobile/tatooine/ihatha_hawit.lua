@@ -1,5 +1,5 @@
 ihatha_hawit = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:rodian_base_female",
 	customName = "Ihatha Hawit",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

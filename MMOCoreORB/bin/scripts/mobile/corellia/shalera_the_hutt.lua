@@ -1,5 +1,5 @@
 shalera_the_hutt = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:hutt_base_female",
 	customName = "Shalera the Hutt",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

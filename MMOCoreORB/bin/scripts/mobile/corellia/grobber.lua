@@ -1,5 +1,5 @@
 grobber = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_male",
 	customName = "Grobber",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,6 +1,5 @@
 zo_ssa = Creature:new {
 	objectName = "@npc_spawner_n:zo_ssa",
-	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

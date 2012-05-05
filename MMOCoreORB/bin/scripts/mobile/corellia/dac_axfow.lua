@@ -1,5 +1,5 @@
 dac_axfow = Creature:new {
-	objectName = "@mob/creature_names:dac_axfow",
+	objectName = "@npc_spawner_n:dac_axfow",
 	socialGroup = "Thug",
 	pvpFaction = "Thug",
 	faction = "",

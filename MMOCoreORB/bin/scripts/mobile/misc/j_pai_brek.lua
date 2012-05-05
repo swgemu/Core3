@@ -1,9 +1,8 @@
 j_pai_brek = Creature:new {
 	objectName = "@npc_spawner_n:j_pai_brek",
-	customName = "",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -1,6 +1,6 @@
 ramna = Creature:new {
 	objectName = "@npc_spawner_n:ramna",
-	socialGroup = "ramna",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

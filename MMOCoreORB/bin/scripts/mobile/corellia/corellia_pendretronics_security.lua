@@ -1,5 +1,6 @@
 corellia_pendretronics_security = Creature:new {
 	objectName = "@mob/creature_names:corellia_pendretronics_security",
+	customName = "Pendretronics security",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

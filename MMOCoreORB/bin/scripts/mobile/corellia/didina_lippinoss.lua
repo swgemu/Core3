@@ -1,5 +1,5 @@
 didina_lippinoss = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Didina Lippinoss",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

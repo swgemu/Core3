@@ -1,5 +1,5 @@
 dannik_malaan = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:zabrak_base_male",
 	customName = "Dannik Malaan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

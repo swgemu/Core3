@@ -26,8 +26,15 @@ junk_dealer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/junk_nathan.iff","object/mobile/junk_dender.iff","object/mobile/junk_lila.iff","object/mobile/junk_malik.iff","object/mobile/junk_nado.iff",
-	"object/mobile/junk_reggi.iff","object/mobile/junk_sheani.iff","object/mobile/junk_sneg.iff"},
+	templates = {
+			"object/mobile/junk_nathan.iff",
+			"object/mobile/junk_dender.iff",
+			"object/mobile/junk_lila.iff",
+			"object/mobile/junk_malik.iff",
+			"object/mobile/junk_nado.iff",
+			"object/mobile/junk_reggi.iff",
+			"object/mobile/junk_sheani.iff",
+			"object/mobile/junk_sneg.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,6 +1,6 @@
 grondom_muse = Creature:new {
 	objectName = "",
-	customName = "Grondom Muse",
+	customName = "Grondorn Muse",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

@@ -1,6 +1,6 @@
 io_tsomcren = Creature:new {
 	objectName = "@npc_spawner_n:io_tsomcren",
-	socialGroup = "io_tsomcren",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

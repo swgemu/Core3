@@ -1,5 +1,5 @@
 stanic_wavingstar = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_male",
 	customName = "Stanic Wavingstar",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

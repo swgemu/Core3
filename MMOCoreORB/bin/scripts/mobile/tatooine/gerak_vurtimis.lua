@@ -1,5 +1,5 @@
 gerak_vurtimis = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Gerak Vurtimis",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

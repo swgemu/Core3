@@ -1,5 +1,5 @@
 noren_krast = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Noren Krast",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

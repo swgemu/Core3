@@ -1,5 +1,5 @@
 dede_chesmi = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Dede Chesmi",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

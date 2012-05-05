@@ -1,5 +1,5 @@
 mebi_axane = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:gran_base_male",
 	customName = "Mebi Axane",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

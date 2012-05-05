@@ -1,5 +1,5 @@
 scolex_grath = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Scolex Grath",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

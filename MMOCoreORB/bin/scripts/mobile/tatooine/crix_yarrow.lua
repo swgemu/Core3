@@ -1,5 +1,5 @@
 crix_yarrow = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_male",
 	customName = "Crix Yarrow",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

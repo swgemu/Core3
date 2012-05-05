@@ -1,5 +1,5 @@
 crev_bombaasa = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Crev Bombaasa",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,5 +1,6 @@
 corellia_shobbo_durron = Creature:new {
-	objectName = "@mob/creature_names:corellia_shobbo_durron",
+	objectName = "@npc_name:human_base_female",
+	customName = "Shobbo Durron",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

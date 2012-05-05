@@ -1,5 +1,5 @@
 junk_dender = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Dender",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

@@ -1,5 +1,5 @@
 junk_jawa = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Jawa",
 	socialGroup = "Jawa",
 	pvpFaction = "Jawa",

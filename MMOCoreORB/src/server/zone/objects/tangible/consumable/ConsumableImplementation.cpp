@@ -69,7 +69,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	String raceName = Races::getSpecies(ghost->getRaceID());
+	String raceName = player->getSpeciesName();
 
 	if ((speciesRestriction == "2" && raceName != "trandoshan") || (speciesRestriction == "4" && raceName != "wookiee")) {
 		player->sendSystemMessage("@error_message:race_restriction"); //That food isn't edible by your species.

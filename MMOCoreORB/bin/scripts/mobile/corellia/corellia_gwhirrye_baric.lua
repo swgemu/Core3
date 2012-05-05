@@ -1,5 +1,6 @@
 corellia_gwhirrye_baric = Creature:new {
 	objectName = "@mob/creature_names:corellia_gwhirrye_baric",
+	customName = "Gwhirrye Baric",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

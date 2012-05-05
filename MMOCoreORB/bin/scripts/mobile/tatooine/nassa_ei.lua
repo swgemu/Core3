@@ -1,5 +1,5 @@
 nassa_ei = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:twilek_base_female",
 	customName = "Nassa E'i",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

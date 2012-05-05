@@ -1,9 +1,8 @@
-coraline_dynes = Creature:new {
-	objectName = "@npc_name:human_base_female",
-	customName = "Coraline Dynes",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+ta_667 = Creature:new {
+	objectName = "@npc_spawner_n:ta_667",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +26,7 @@ coraline_dynes = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_coraline_dynes.iff"},
+	templates = {"object/mobile/dark_trooper.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
@@ -35,4 +34,4 @@ coraline_dynes = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(coraline_dynes, "coraline_dynes")
+CreatureTemplates:addCreatureTemplate(ta_667, "ta_667")

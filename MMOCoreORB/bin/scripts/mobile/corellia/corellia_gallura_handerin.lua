@@ -1,5 +1,6 @@
 corellia_gallura_handerin = Creature:new {
-	objectName = "@mob/creature_names:corellia_gallura_handerin",
+	objectName = "@npc_name:human_base_female",
+	customName = "Gallura Handerin",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",

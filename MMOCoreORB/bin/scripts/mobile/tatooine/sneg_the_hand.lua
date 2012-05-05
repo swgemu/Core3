@@ -1,5 +1,5 @@
 sneg_the_hand = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:devaronian_base_male",
 	customName = "Sneg the Hand",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

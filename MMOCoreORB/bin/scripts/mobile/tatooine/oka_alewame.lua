@@ -1,5 +1,5 @@
 oka_alewame = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:moncal_base_male",
 	customName = "Oka Alewame",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
