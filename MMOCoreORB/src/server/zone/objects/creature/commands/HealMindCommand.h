@@ -143,6 +143,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!creatureTarget->isPlayerCreature())
+			return GENERALERROR;
+
 		if (creatureTarget->isDead())
 			return GENERALERROR;
 
