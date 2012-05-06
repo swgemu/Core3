@@ -167,8 +167,8 @@ public:
 		this->banExpiration = banExpiration;
 	}
 
-	Time getBanExpiration() const {
-		return banExpiration;
+	uint32 getBanExpiration() {
+		return banExpiration.getTime();
 	}
 
 	void setBanAdmin(uint32 banAdmin) {

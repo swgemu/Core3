@@ -2872,6 +2872,9 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 
 String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* account, const String& name, uint32 seconds, const String& reason) {
 
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
+
 	if(account == NULL)
 		return "Account Not Found";
 
@@ -2903,6 +2906,9 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 }
 
 String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account* account, const String& name,  const String& reason) {
+
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
 
 	if(account == NULL)
 		return "Account Not Found";

@@ -313,14 +313,24 @@ void PlayerManagementSessionImplementation::showUnbanSummary() {
 
 	StringBuffer summary;
 	summary << "Unbanning ";
-	if(banMode == ACCOUNT && targetAccount != NULL)
+	if(banMode == ACCOUNT && targetAccount != NULL) {
 		summary << " Account: " << targetAccount->getUsername() <<  endl;
-	else if(banMode == GALAXY && !galaxy.isEmpty())
+		banExpiration = targetAccount->getBanExpires();
+	} else if(banMode == GALAXY && !galaxy.isEmpty()) {
+		GalaxyBanEntry* galaxyBan = targetAccount->getGalaxyBan(galaxy);
+		if(galaxyBan != NULL) {
+			banExpiration = galaxyBan->getBanExpiration();
+		}
 		summary << " From " << galaxy << " Galaxy" <<  endl;
-	else if(banMode == CHARACTER && !targetName.isEmpty())
+	} else if(banMode == CHARACTER && !targetName.isEmpty()) {
 		summary << " Character: " << targetName <<  endl;
+		CharacterListEntry* entry = targetAccount->getCharacterBan(targetName);
+		if(entry != NULL) {
+			banExpiration = entry->getBanExpiration();
+		}
+	}
 
-	summary << getBanDuration(banExpiration - time(0)) << endl;
+	summary << getBanDuration(banExpiration) << endl;
 	summary << "Unban Reason: "<< banReason << endl;
 
 	unbanSummaryBox->setPromptText(summary.toString());
