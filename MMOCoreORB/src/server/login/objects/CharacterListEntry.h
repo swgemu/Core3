@@ -66,7 +66,7 @@ public:
 
 	}
 
-	CharacterListEntry(const CharacterListEntry& e) {
+	CharacterListEntry(const CharacterListEntry& e) : Object() {
 		objectID = e.objectID;
 		accountID = e.accountID;
 		galaxyID = e.galaxyID;

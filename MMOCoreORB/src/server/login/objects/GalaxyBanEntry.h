@@ -59,7 +59,7 @@ public:
 
 	}
 
-	GalaxyBanEntry(const GalaxyBanEntry& e) {
+	GalaxyBanEntry(const GalaxyBanEntry& e) : Object() {
 		accountID = e.accountID;
 		creationDate = e.creationDate;
 		galaxyID = e.galaxyID;
