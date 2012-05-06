@@ -211,7 +211,7 @@ public:
 			message.setTT(targetCreature->getDisplayedName());
 
 
-			ThrowTrapTask* trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage, hit);
+			Reference<ThrowTrapTask*> trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage, hit);
 			creature->addPendingTask("throwtrap", trapTask, 2300);
 
 			creature->inflictDamage(creature, CreatureAttribute::HEALTH, trapData->getHealthCost(), false);

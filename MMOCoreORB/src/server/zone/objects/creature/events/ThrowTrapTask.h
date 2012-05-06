@@ -51,7 +51,7 @@ public:
 		player->sendSystemMessage(message);
 
 		if(hit) {
-			Locker locker(target);
+			Locker locker(target, player);
 
 			if(buff != NULL) {
 				target->addBuff(buff);
