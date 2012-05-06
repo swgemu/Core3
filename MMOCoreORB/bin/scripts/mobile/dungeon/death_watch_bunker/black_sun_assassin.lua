@@ -21,13 +21,24 @@ black_sun_assassin = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
-	lootGroups = {},
+	lootGroups = {
+        {
+			groups = {
+				{group = "pistols", chance =   3100000},
+				{group = "rifles", chance = 3100000},
+				{group = "carbines", chance =  3100000},
+				{group = "bounty_hunter_armor_looted",chance = 500000},
+				{group = "jetpack_base", chance = 200000},
+			},
+			lootChance = 3500000
+		}	
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
