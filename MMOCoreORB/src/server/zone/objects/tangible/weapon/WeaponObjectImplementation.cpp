@@ -575,7 +575,7 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 }
 
 void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
-	if (_this != user->getSlottedObject("default_weapon")) {
+	if (_this != user->getSlottedObject("default_weapon") && !user->isAiAgent()) {
 		damage = damage / 10000.f;
 		if (isSliced()) damage *= 1.1;
 		if (hasPowerup()) damage *= 1.1;
