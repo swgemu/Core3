@@ -59,7 +59,7 @@ CREATE TABLE  `swgemu`.`character_bans` (
   `expires` int(10) unsigned NOT NULL DEFAULT '0',
   `reason` tinytext NOT NULL,
   PRIMARY KEY (`ban_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Definition of table `swgemu`.`galaxy_bans`
@@ -75,7 +75,7 @@ CREATE TABLE  `swgemu`.`galaxy_bans` (
   `expires` int(10) unsigned NOT NULL DEFAULT '0',
   `reason` tinytext NOT NULL,
   PRIMARY KEY (`ban_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 
 --
