@@ -43,6 +43,15 @@
 
 CreatureAreaKnockdownCommand = {
 	name = "creatureareaknockdown",
+	damageMultiplier = 0.5,
+	speedMultiplier = 1,
+	
+	combatSpam = "attack",
+	animationCRC = 0,
+
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 
 	stateEffects = {
 	  StateEffect( 
@@ -57,6 +66,7 @@ CreatureAreaKnockdownCommand = {
 	},
 
 	areaRange = 25,
+	poolsToDamage = RANDOM_ATTRIBUTE,
 	areaAction = true
 }
 

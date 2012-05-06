@@ -98,6 +98,9 @@ public:
 		if (!scno->isCreatureObject() && !cast<CreatureObject*>(scno)->isCreature())
 			return;
 
+		if (target->getDistanceTo(scno) >= 128.f)
+			return;
+
 		Reference<Creature*> ai = cast<Creature*>(scno);
 
 #ifdef DEBUG
@@ -131,38 +134,41 @@ public:
 		// set frightened or threatened
 		// TODO: weight this by ferocity/level difference
 		Reference<SceneObject*> followObject = ai->getFollowObject();
-		if (ai->isStalker() && ai->isAggressiveTo(target)) {
-			if (followObject == NULL)
-				ai->setStalkObject(target);
-			else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed()))
+
+		if (!ai->isInCombat()) {
+			if (ai->isStalker() && ai->isAggressiveTo(target)) {
+				if (followObject == NULL)
+					ai->setStalkObject(target);
+				else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed()))
+					ai->addDefender(target);
+			} else if (ai->isAggressiveTo(target))
 				ai->addDefender(target);
-		} else if (ai->isAggressiveTo(target))
-			ai->addDefender(target);
-		else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
-			ai->setOblivious();
-		} else if (followObject == NULL) {
-			ai->setWatchObject(target);
-			ai->showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
-		} else if (followObject->isCreatureObject() && target == followObject) {
-			ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(followObject.get());
-			// determine if frightened or threatened
-			if (creo->isAiAgent()) {
-				AiAgent* aio = cast<AiAgent*>(creo.get());
-				if (ai->getFerocity() > aio->getFerocity() && ai->getLevel() >= aio->getLevel())
-					ai->addDefender(aio);
-				else if (ai->getLevel() < aio->getLevel()) {
-					if (!ai->tryRetreat())
-						ai->runAway(target);
-				} else
-					ai->setOblivious();
-			} else if (creo->isPlayerCreature()) {
-				CreatureObject* play = cast<CreatureObject*>(creo.get());
-				// TODO: tweak this formula based on feedback
-				if ((ai->getFerocity() * ai->getLevel() / 4) < play->getLevel()) {
-					if (!ai->tryRetreat())
-						ai->runAway(target);
-				} else
-					ai->addDefender(play);
+			else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) {
+				ai->setOblivious();
+			} else if (followObject == NULL) {
+				ai->setWatchObject(target);
+				ai->showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
+			} else if (followObject->isCreatureObject() && target == followObject) {
+				ManagedReference<CreatureObject*> creo = dynamic_cast<CreatureObject*>(followObject.get());
+				// determine if frightened or threatened
+				if (creo->isAiAgent()) {
+					AiAgent* aio = cast<AiAgent*>(creo.get());
+					if (ai->getFerocity() > aio->getFerocity() && ai->getLevel() >= aio->getLevel())
+						ai->addDefender(aio);
+					else if (ai->getLevel() < aio->getLevel()) {
+						if (!ai->tryRetreat())
+							ai->runAway(target);
+					} else
+						ai->setOblivious();
+				} else if (creo->isPlayerCreature()) {
+					CreatureObject* play = cast<CreatureObject*>(creo.get());
+					// TODO: tweak this formula based on feedback
+					if ((ai->getFerocity() * ai->getLevel() / 4) < play->getLevel()) {
+						if (!ai->tryRetreat())
+							ai->runAway(target);
+					} else
+						ai->addDefender(play);
+				}
 			}
 		}
 

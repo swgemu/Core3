@@ -1068,6 +1068,9 @@ void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, 
 }
 
 bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const CreatureAttackData& data) {
+	if (attacker->isAiAgent())
+		return true;
+
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
 	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());

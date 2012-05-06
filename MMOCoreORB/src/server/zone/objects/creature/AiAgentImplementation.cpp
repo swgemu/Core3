@@ -81,6 +81,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				if (weao != NULL) {
 					weao->setMinDamage((weao->getMinDamage() / 2) + minDmg);
 					weao->setMaxDamage((weao->getMaxDamage() / 2) + maxDmg);
+					weao->setAttackSpeed(1.f);
 					weapons.add(weao);
 
 					if (i == 0)
@@ -100,6 +101,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	// set the damage of the default weapon
 	getWeapon()->setMinDamage(minDmg);
 	getWeapon()->setMaxDamage(maxDmg);
+	getWeapon()->setAttackSpeed(1.f);
 
 	int ham;
 	baseHAM.removeAll();
@@ -256,6 +258,7 @@ void AiAgentImplementation::doAttack() {
 	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
 		//Locker clocker(target, _this);
 		CombatManager::instance()->forcePeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
+		removeDefender(target);
 		activateRecovery();
 		return;
 	}
@@ -288,7 +291,7 @@ void AiAgentImplementation::doAttack() {
 				unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
 				enqueueCommand(actionCRC, 0, target->getObjectID(), args);
 
-				if (System::random(4) == 0) {
+				//if (System::random(4) == 0) {
 					// queue second special attack (rudimentary combo)
 					int secondAttackNum = attackMap->getRandomAttackNumber();
 					args = attackMap->getArguments(secondAttackNum);
@@ -296,11 +299,13 @@ void AiAgentImplementation::doAttack() {
 					if (validateStateAttack(target, args) && secondAttackNum != attackNum) {
 						actionCRC = attackMap->getCommand(attackNum).hashCode();
 						enqueueCommand(actionCRC, 0, target->getObjectID(), args);
+					} else {
+						enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
 					}
-				}
+				//}
 			}
 		}
-	} else
+	} else if (npcTemplate == NULL)
 		enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
 }
 

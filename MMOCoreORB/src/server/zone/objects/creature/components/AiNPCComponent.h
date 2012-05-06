@@ -97,6 +97,9 @@ public:
 		if (!scno->isCreatureObject() && !cast<CreatureObject*>(scno)->isAiAgent())
 			return;
 
+		if (target->getDistanceTo(scno) >= 128.f)
+			return;
+
 		Reference<AiAgent*> ai = cast<AiAgent*>(scno);
 
 #ifdef DEBUG
@@ -120,8 +123,9 @@ public:
 		info("Passed LOS check", true);
 #endif
 
+		if (!ai->isInCombat())
 		// TODO: another formula that needs tweaking (after player levels get looked at)
-		ai->addDefender(target);
+			ai->addDefender(target);
 
 		ai->activateRecovery();
 		ai->activateMovementEvent();
