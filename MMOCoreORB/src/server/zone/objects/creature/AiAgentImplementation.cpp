@@ -240,7 +240,7 @@ void AiAgentImplementation::doAttack() {
 			if (tarObj->isCreatureObject()) {
 				CreatureObject* targetCreature = cast<CreatureObject*>(tarObj);
 
-				if (!targetCreature->isDead() && !target->isIncapacitated() && targetCreature->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this)) {
+				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(_this) < 128.f && targetCreature->isAttackableBy(_this)) {
 					target = targetCreature;
 
 					break;
