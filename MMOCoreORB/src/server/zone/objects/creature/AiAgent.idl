@@ -188,6 +188,8 @@ class AiAgent extends CreatureObject {
 	
 	public native void doRecovery();
 	
+	public native void doAttack();
+	
 	public native void doMovement();
 	
 	public abstract native boolean isCamouflaged(CreatureObject target) {

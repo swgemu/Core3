@@ -290,6 +290,8 @@ public:
 
 	void doRecovery();
 
+	void doAttack();
+
 	void doMovement();
 
 	bool isCamouflaged(CreatureObject* target);
@@ -566,6 +568,8 @@ public:
 
 	void doRecovery();
 
+	void doAttack();
+
 	void doMovement();
 
 	virtual bool isCamouflaged(CreatureObject* target);
@@ -792,6 +796,8 @@ public:
 	bool tryRetreat();
 
 	void doRecovery();
+
+	void doAttack();
 
 	void doMovement();
 

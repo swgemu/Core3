@@ -622,7 +622,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 		break;
 	}
 
-	return (int)resist;
+	return MAX(0, (int)resist);
 
 }
 

@@ -220,6 +220,12 @@ void AiAgentImplementation::doRecovery() {
 		damageOverTimeList.activateDots(_this);
 	}
 
+	doAttack();
+
+	activateRecovery();
+}
+
+void AiAgentImplementation::doAttack() {
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()))
@@ -296,8 +302,6 @@ void AiAgentImplementation::doRecovery() {
 		}
 	} else
 		enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
-
-	activateRecovery();
 }
 
 int AiAgentImplementation::notifyAttack(Observable* observable) {
@@ -931,6 +935,8 @@ void AiAgentImplementation::doMovement() {
 		activateMovementEvent();
 		return;
 	}
+
+	doAttack();
 
 	float maxDistance = 5;
 
