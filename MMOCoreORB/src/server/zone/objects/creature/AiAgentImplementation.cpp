@@ -65,6 +65,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
+	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
+	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
+
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
 		for (int i = 0; i < wepgroups.size(); ++i) {
@@ -76,8 +79,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
 
 				if (weao != NULL) {
-					weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
-					weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
+					weao->setMinDamage((weao->getMinDamage() / 2) + minDmg);
+					weao->setMaxDamage((weao->getMaxDamage() / 2) + maxDmg);
 					weapons.add(weao);
 
 					if (i == 0)
@@ -95,8 +98,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 
 	// set the damage of the default weapon
-	getWeapon()->setMinDamage(npcTemplate->getDamageMin());
-	getWeapon()->setMaxDamage(npcTemplate->getDamageMax());
+	getWeapon()->setMinDamage(minDmg);
+	getWeapon()->setMaxDamage(maxDmg);
 
 	int ham;
 	baseHAM.removeAll();
@@ -261,7 +264,7 @@ void AiAgentImplementation::doRecovery() {
 
 	selectWeapon();
 
-	if (System::random(2) == 0 && npcTemplate != NULL && commandQueue->size() < 3) {
+	if (npcTemplate != NULL && commandQueue->size() < 3) {
 		// do special attack
 		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 		int attackNum = attackMap->getRandomAttackNumber();
@@ -962,7 +965,7 @@ void AiAgentImplementation::doMovement() {
 			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
 			// stop in weapons range
 			if (weapon != NULL ) {
-				maxDistance = MAX(0.5, weapon->getIdealRange() - 1);
+				maxDistance = MAX(0.5, weapon->getIdealRange() - 2);
 			}
 
 			if (follow != NULL && !CollisionManager::checkLineOfSight(_this, follow)) {

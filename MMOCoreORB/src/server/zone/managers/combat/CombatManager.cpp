@@ -1308,6 +1308,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 
 	defender->inflictDamage(attacker, 0, damage, true);
 
+	WeaponObject* weapon = attacker->getWeapon();
+	weapon->decreasePowerupUses(attacker);
+
 	return damage;
 }
 
