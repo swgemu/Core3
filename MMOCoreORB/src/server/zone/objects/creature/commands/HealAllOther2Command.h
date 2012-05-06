@@ -82,7 +82,7 @@ public:
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		 else 
-			creature->doAnimation("force_healing_1"); // TODO: Fix animation
+			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -224,10 +224,6 @@ public:
 
 
 		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
-
-		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-			return GENERALERROR;
-		}
 		
 		if (creatureTarget == creature) {
 			return GENERALERROR;

@@ -82,7 +82,7 @@ public:
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		 else 
-			 creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
+			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -157,26 +157,6 @@ public:
 			creature->sendSystemMessage(stringId); //%NT has no wounds of that type to heal.
 			return false;
 		}
-
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Force Heal All Other while prone.");
-			return false;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Force Heal All Other while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
 		
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -224,13 +204,8 @@ public:
 
 
 		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
-
-		if (targetGhost != NULL && creatureTarget->getFaction() != creature->getFaction() && !(targetGhost->getFactionStatus() & FactionStatus::ONLEAVE)) {
-			return GENERALERROR;
-		}
 		
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("You cannot use Force Heal All Other on yourself.");
 			return GENERALERROR;
 		}		
 
