@@ -230,7 +230,7 @@ void AiAgentImplementation::doRecovery() {
 void AiAgentImplementation::doAttack() {
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
-	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f)
+	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this))
 		addDefender(target);
 
 	if (target == NULL && defenderList.size() > 0) {
@@ -240,7 +240,7 @@ void AiAgentImplementation::doAttack() {
 			if (tarObj->isCreatureObject()) {
 				CreatureObject* targetCreature = cast<CreatureObject*>(tarObj);
 
-				if (!targetCreature->isDead() && targetCreature->getDistanceTo(_this) < 128.f) {
+				if (!targetCreature->isDead() && !target->isIncapacitated() && targetCreature->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this)) {
 					target = targetCreature;
 
 					break;
@@ -255,7 +255,7 @@ void AiAgentImplementation::doAttack() {
 		return;
 	}
 
-	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
+	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this) || target->isDead() || target->isIncapacitated())) {
 		//Locker clocker(target, _this);
 		/*if (defenderList.size() == 1 && defenderList.contains(target)) {
 			CombatManager::instance()->forcePeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
