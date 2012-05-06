@@ -108,7 +108,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 		player = cast<CreatureObject*>( sceneObject);
 	}
 
-	if (player != NULL && sceneObject->getParent() != NULL) {
+	if (player != NULL && sceneObject->getParent() != NULL && parentID != 0) {
 		SceneObject* par = sceneObject->getParent();
 
 		if (par->isVehicleObject()) {

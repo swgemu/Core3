@@ -103,6 +103,8 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 			sceneObject->updateZoneWithParent(newParent, false, false);
 		}
 
+		//sceneObject->info("sending data transform with parent", true);
+
 		DataTransformWithParent* pack = new DataTransformWithParent(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
 	} else {
@@ -110,6 +112,8 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 			sceneObject->setPosition(newPositionX, newPositionZ, newPositionY);
 			sceneObject->updateZone(false, false);
 		}
+
+		//sceneObject->info("sending data transform", true);
 
 		DataTransform* pack = new DataTransform(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
@@ -176,7 +180,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone = parent->getRootParent()->getZone();
 
 	if (parent != NULL && parent->isVehicleObject())
-		sceneObject->updateVehiclePosition();
+		sceneObject->updateVehiclePosition(sendPackets);
 
 	Locker _locker(zone);
 

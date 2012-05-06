@@ -410,7 +410,7 @@ public:
 
 	float getDistanceTo(Coordinate* coordinate);
 
-	void updateVehiclePosition();
+	void updateVehiclePosition(bool sendPackets);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -1045,7 +1045,7 @@ public:
 
 	float getDistanceTo(Coordinate* coordinate);
 
-	void updateVehiclePosition();
+	void updateVehiclePosition(bool sendPackets);
 
 	virtual int notifyObjectInserted(SceneObject* object);
 
@@ -1582,7 +1582,7 @@ public:
 
 	float getDistanceTo(SceneObject* object);
 
-	void updateVehiclePosition();
+	void updateVehiclePosition(bool sendPackets);
 
 	int notifyObjectInserted(SceneObject* object);
 

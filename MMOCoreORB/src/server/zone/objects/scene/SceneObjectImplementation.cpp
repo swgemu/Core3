@@ -841,7 +841,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 	delete msg;
 }
 
-void SceneObjectImplementation::updateVehiclePosition() {
+void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	SceneObject* parent = getParent();
 
 	if (parent == NULL || !parent->isVehicleObject())
@@ -854,7 +854,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 
 	parent->incrementMovementCounter();
 
-	parent->updateZone(false);
+	parent->updateZone(false, sendPackets);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
