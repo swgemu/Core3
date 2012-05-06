@@ -74,23 +74,64 @@ public:
 		if(index != -1) {
 			SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
-			String playername = listBox->getMenuItemName(index);
-			while(playername.contains("\t")) {
-				playername = playername.replaceFirst("\t", "");
+			String listString = listBox->getMenuItemName(index);
+			while(listString.contains("\t")) {
+				listString = listString.replaceFirst("\t", "");
 				tablevel++;
 			}
-			playername = playername.trim();
-			StringTokenizer tokenizer(playername);
-			tokenizer.getStringToken(firstName);
+
+			listString = listString.trim();
+			StringTokenizer tokenizer(listString);
+			tokenizer.getStringToken(listString);
+
+			String playerName = "";
+			String galaxyName = "";
+
+			if(tablevel == 1) {
+				galaxyName = listString;
+			}
+
+			if(tablevel == 2) {
+				galaxyName = getPlayerGalaxyName(listBox, index);
+				playerName = listString;
+			}
+
+
 
 			if (otherPressed) {
 
-				session->ban(tablevel, firstName);
+				session->ban(tablevel, galaxyName, playerName);
 				return;
 			}
 		}
 
 		session->getPlayerInfo(tablevel, firstName);
+	}
+
+	String getPlayerGalaxyName(SuiListBox* listBox, int index) {
+
+		while(index > 0) {
+			index--;
+
+			int tablevel = 0;
+
+			String listString = listBox->getMenuItemName(index);
+			while(listString.contains("\t")) {
+				listString = listString.replaceFirst("\t", "");
+				tablevel++;
+			}
+
+			listString = listString.trim();
+			StringTokenizer tokenizer(listString);
+			tokenizer.getStringToken(listString);
+
+			if(tablevel == 1)
+				return listString;
+
+		}
+
+		return "";
+
 	}
 
 	void runDurationCallback(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

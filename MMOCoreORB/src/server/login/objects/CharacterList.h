@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/variables/StringId.h"
 #include "CharacterListEntry.h"
 
-class CharacterList : public VectorMap<String, CharacterListEntry> {
+class CharacterList : public Vector<CharacterListEntry> {
 
 	uint32 accountid;
 
@@ -116,7 +116,7 @@ public:
 			newEntry.setBanExpiration(expireTime);
 			newEntry.setBanAdmin(characters->getUnsignedInt(12));
 
-			put(newEntry.getFirstName(), newEntry);
+			add(newEntry);
 		}
 
 		delete characters;

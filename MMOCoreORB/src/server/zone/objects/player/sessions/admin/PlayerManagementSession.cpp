@@ -18,7 +18,7 @@
  *	PlayerManagementSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ADDACCOUNTSUI__SUILISTBOX_,RPC_BAN__INT_STRING_,RPC_GETPLAYERINFO__INT_STRING_,RPC_SENDACCOUNTINFO__,RPC_SENDBANDURATION__,RPC_PARSEBANDURATION__STRING_,RPC_SENDBANREASON__BOOL_,RPC_SETBANREASON__STRING_,RPC_SHOWBANSUMMARY__,RPC_SHOWUNBANSUMMARY__,RPC_COMPLETEBAN__,RPC_GETBANDURATION__INT_};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ADDACCOUNTSUI__SUILISTBOX_,RPC_BAN__INT_STRING_STRING_,RPC_GETPLAYERINFO__INT_STRING_,RPC_SENDACCOUNTINFO__,RPC_SENDBANDURATION__,RPC_PARSEBANDURATION__STRING_,RPC_SENDBANREASON__BOOL_,RPC_SETBANREASON__STRING_,RPC_SHOWBANSUMMARY__,RPC_SHOWUNBANSUMMARY__,RPC_COMPLETEBAN__,RPC_GETBANDURATION__INT_};
 
 PlayerManagementSession::PlayerManagementSession(Account* account, CreatureObject* adm) : Facade(DummyConstructorParameter::instance()) {
 	PlayerManagementSessionImplementation* _implementation = new PlayerManagementSessionImplementation(account, adm);
@@ -89,19 +89,20 @@ void PlayerManagementSession::addAccountSui(SuiListBox* box) {
 		_implementation->addAccountSui(box);
 }
 
-void PlayerManagementSession::ban(const int tablevel, const String& name) {
+void PlayerManagementSession::ban(const int tablevel, const String& galaxy, const String& name) {
 	PlayerManagementSessionImplementation* _implementation = static_cast<PlayerManagementSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BAN__INT_STRING_);
+		DistributedMethod method(this, RPC_BAN__INT_STRING_STRING_);
 		method.addSignedIntParameter(tablevel);
+		method.addAsciiParameter(galaxy);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->ban(tablevel, name);
+		_implementation->ban(tablevel, galaxy, name);
 }
 
 void PlayerManagementSession::getPlayerInfo(const int tablevel, const String& firstName) {
@@ -626,8 +627,8 @@ void PlayerManagementSessionAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_ADDACCOUNTSUI__SUILISTBOX_:
 		addAccountSui(static_cast<SuiListBox*>(inv->getObjectParameter()));
 		break;
-	case RPC_BAN__INT_STRING_:
-		ban(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_ban__int_String_));
+	case RPC_BAN__INT_STRING_STRING_:
+		ban(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_ban__int_String_String_), inv->getAsciiParameter(_param2_ban__int_String_String_));
 		break;
 	case RPC_GETPLAYERINFO__INT_STRING_:
 		getPlayerInfo(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_getPlayerInfo__int_String_));
@@ -680,8 +681,8 @@ void PlayerManagementSessionAdapter::addAccountSui(SuiListBox* box) {
 	(static_cast<PlayerManagementSession*>(stub))->addAccountSui(box);
 }
 
-void PlayerManagementSessionAdapter::ban(const int tablevel, const String& name) {
-	(static_cast<PlayerManagementSession*>(stub))->ban(tablevel, name);
+void PlayerManagementSessionAdapter::ban(const int tablevel, const String& galaxy, const String& name) {
+	(static_cast<PlayerManagementSession*>(stub))->ban(tablevel, galaxy, name);
 }
 
 void PlayerManagementSessionAdapter::getPlayerInfo(const int tablevel, const String& firstName) {

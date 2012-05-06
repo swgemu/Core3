@@ -116,7 +116,7 @@ public:
 			return GENERALERROR;
 		}
 
-		CharacterListEntry* entry = account->getCharacterBan(targetCreature->getFirstName());
+		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyName(), targetCreature->getFirstName());
 
 		StringBuffer reason;
 		reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << banReason.toString();

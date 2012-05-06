@@ -142,7 +142,7 @@ class PlayerManagementSession extends Facade {
 		accountBox = box;
 	}
 	
-	public native void ban(final int tablevel, final string name);
+	public native void ban(final int tablevel, final string galaxy, final string name);
 
 	public native void getPlayerInfo(final int tablevel, final string firstName);
 

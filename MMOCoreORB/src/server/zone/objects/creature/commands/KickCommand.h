@@ -86,7 +86,7 @@ public:
 			}
 
 			if (player == NULL) {
-				creature->sendSystemMessage("invalid arguments for setExperience command. usage: setExperience <firstName> <experienceType> <amount>");
+				creature->sendSystemMessage("Usage: /kick <firstName> <reason>");
 				return GENERALERROR;
 			}
 

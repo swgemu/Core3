@@ -111,7 +111,7 @@ public:
 
 	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
 
-	CharacterListEntry* getCharacterBan(const String& name);
+	CharacterListEntry* getCharacterBan(const String& galaxy, const String& name);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -224,7 +224,7 @@ public:
 
 	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
 
-	CharacterListEntry* getCharacterBan(const String& name);
+	CharacterListEntry* getCharacterBan(const String& galaxy, const String& name);
 
 	WeakReference<Account*> _this;
 

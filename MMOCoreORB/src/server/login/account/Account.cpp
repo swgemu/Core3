@@ -386,13 +386,13 @@ GalaxyBanEntry* Account::getGalaxyBan(const String& galaxy) {
 		return _implementation->getGalaxyBan(galaxy);
 }
 
-CharacterListEntry* Account::getCharacterBan(const String& name) {
+CharacterListEntry* Account::getCharacterBan(const String& galaxy, const String& name) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getCharacterBan(name);
+		return _implementation->getCharacterBan(galaxy, name);
 }
 
 DistributedObjectServant* Account::_getImplementation() {

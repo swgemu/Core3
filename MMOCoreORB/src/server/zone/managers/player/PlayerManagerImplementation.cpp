@@ -2752,9 +2752,12 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << time(0) + seconds << ", '" << reason << "');";
+		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2795,9 +2798,12 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "UPDATE account_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "'  WHERE account_id = " << account->getAccountID() << " and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE account_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "'  WHERE account_id = " << account->getAccountID() << " and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2815,9 +2821,12 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << time(0) + seconds << ", '" << reason << "');";
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2858,9 +2867,12 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2878,9 +2890,12 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << name << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << reason << "');";
+		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << name << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2913,9 +2928,12 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	if(account == NULL)
 		return "Account Not Found";
 
+	String escapedReason = reason;
+	Database::escapeString(escapedReason);
+
 	try {
 		StringBuffer query;
-		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << name << "' and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << name << "' and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {

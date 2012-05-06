@@ -127,15 +127,16 @@ GalaxyBanEntry* AccountImplementation::getGalaxyBan(const String& galaxy) {
 	return NULL;
 }
 
-CharacterListEntry* AccountImplementation::getCharacterBan(const String& name) {
+CharacterListEntry* AccountImplementation::getCharacterBan(const String& galaxy, const String& name) {
 
-	if(!characterList->contains(name))
-		return NULL;
+	for(int i = 0; i < characterList->size(); ++i) {
+		CharacterListEntry* entry = &characterList->get(i);
 
-	CharacterListEntry* entry = &characterList->get(name);
-
-	if(entry->isBanned())
-		return entry;
+		if(entry->getFirstName() == name &&
+				entry->getGalaxyName() == galaxy &&
+				entry->isBanned())
+			return entry;
+	}
 
 	return NULL;
 }
