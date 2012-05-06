@@ -42,7 +42,9 @@
 --true = 1, false = 0
 
 StunAttackCommand = {
-        name = "stunattack",
+	name = "stunattack",
+	combatSpam = "attack",
+        
 	stateEffects = {
 	  StateEffect( 
 		STUN_EFFECT, 

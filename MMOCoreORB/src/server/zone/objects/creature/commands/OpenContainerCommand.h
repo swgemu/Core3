@@ -108,6 +108,9 @@ public:
 			objectToOpen->openContainerTo(creature);
 
 			objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
+		} else {
+			//You do not have permission to access this container.
+			creature->sendSystemMessage("@error_message:perm_no_open");
 		}
 
 		return SUCCESS;
