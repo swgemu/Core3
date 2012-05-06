@@ -67,7 +67,7 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
    ingredientSlotType = {0, 0, 1, 3},
    resourceTypes = {"gas_reactive", "rice", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {15, 15, 1, 1},
-   combineTypes = {0, 0, 1, 1},
+   combineTypes = {0, 0, 2, 1},
    contribution = {100, 100, 100, 100},
 
 

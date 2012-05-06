@@ -66,7 +66,7 @@ object_tangible_food_crafted_dish_scrimpi = object_tangible_food_crafted_shared_
 	speciesRestriction = "",
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
-	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "OQ", "DR", "PE", "DR", "OQ"},
+	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},

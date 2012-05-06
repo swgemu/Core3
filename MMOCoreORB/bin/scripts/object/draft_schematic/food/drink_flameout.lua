@@ -67,7 +67,7 @@ object_draft_schematic_food_drink_flameout = object_draft_schematic_food_shared_
    ingredientSlotType = {2, 0, 0, 1, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "gas_reactive", "vegetable_tubers", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {4, 15, 15, 1, 1},
-   combineTypes = {1, 0, 0, 1, 1},
+   combineTypes = {1, 0, 0, 2, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,7 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    ingredientSlotType = {2, 0, 0, 0, 1, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "fruit_fruits_tatooine", "vegetable_tubers_tatooine", "fruit_berries_tatooine", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {3, 25, 25, 20, 1, 1},
-   combineTypes = {1, 0, 0, 0, 1, 1},
+   combineTypes = {1, 0, 0, 0, 2, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 
