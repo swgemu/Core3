@@ -627,65 +627,43 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
+	Vector<ArmorObject*> healthArmor;
 	SceneObject* chest = defender->getSlottedObject("chest2");
 	SceneObject* bicepr = defender->getSlottedObject("bicep_r");
 	SceneObject* bicepl = defender->getSlottedObject("bicep_l");
 	SceneObject* bracerr = defender->getSlottedObject("bracer_upper_r");
 	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");
 	SceneObject* gloves = defender->getSlottedObject("gloves");
+	if (bicepr != NULL && bicepr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepr));
+	if (bicepl != NULL && bicepl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepl));
+	if (bracerr != NULL && bracerr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerr));
+	if (bracerl != NULL && bracerl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerl));
+	if (gloves != NULL && gloves->isArmorObject()) healthArmor.add(cast<ArmorObject*>(gloves));
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	int rand = System::random(11);
-	switch (rand) {
-	case 0:
-	case 1: // hit right bicep
-		if (bicepr != NULL && bicepr->isArmorObject())
-			armorToHit = cast<ArmorObject*>(bicepr);
-		break;
-	case 2:
-	case 3: // hit left bicep
-		if (bicepl != NULL && bicepl->isArmorObject())
-			armorToHit = cast<ArmorObject*>(bicepl);
-		break;
-	case 4: // hit right bracer
-		if (bracerr != NULL && bracerr->isArmorObject())
-			armorToHit = cast<ArmorObject*>(bracerr);
-		break;
-	case 5: // hit left bracer
-		if (bracerl != NULL && bracerl->isArmorObject())
-			armorToHit = cast<ArmorObject*>(bracerl);
-		break;
-	case 6: // hit gloves
-		if (gloves != NULL && gloves->isArmorObject())
-			armorToHit = cast<ArmorObject*>(gloves);
-		break;
-	default: // hit chest
+	if (System::random(1) == 0) {
 		if (chest != NULL && chest->isArmorObject())
 			armorToHit = cast<ArmorObject*>(chest);
-		break;
+	} else {
+		if (!healthArmor.isEmpty())
+			armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
 	}
 
 	return armorToHit;
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
+	Vector<ArmorObject*> actionArmor;
 	SceneObject* boots = defender->getSlottedObject("shoes");
 	SceneObject* pants = defender->getSlottedObject("pants1");
+	if (boots != NULL && boots->isArmorObject()) actionArmor.add(cast<ArmorObject*>(boots));
+	if (pants != NULL && pants->isArmorObject()) actionArmor.add(cast<ArmorObject*>(pants));
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	int rand = System::random(2);
-	switch (rand) {
-	case 0: // hit shoes
-		if (boots != NULL && boots->isArmorObject())
-			armorToHit = cast<ArmorObject*>(boots);
-		break;
-	default: // hit pants
-		if (pants != NULL && pants->isArmorObject())
-			armorToHit = cast<ArmorObject*>(pants);
-		break;
-	}
+	if (!actionArmor.isEmpty())
+		armorToHit = actionArmor.get(System::random(actionArmor.size() - 1));
 
 	return armorToHit;
 }
