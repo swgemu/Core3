@@ -565,7 +565,7 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public boolean isBroken() {
-		return maxCondition < 2;
+		return maxCondition < 2 || getConditionDamage() >= getMaxCondition();
 	}
 	
 	protected float getConditionReduction(float value) {

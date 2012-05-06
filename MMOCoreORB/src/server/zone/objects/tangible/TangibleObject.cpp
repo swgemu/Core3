@@ -1786,8 +1786,8 @@ String TangibleObjectImplementation::repairAttempt(int repairChance) {
 }
 
 bool TangibleObjectImplementation::isBroken() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return maxCondition < 2;
-	return maxCondition < 2;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return maxCondition < 2 || getConditionDamage() >= getMaxCondition();
+	return maxCondition < 2 || getConditionDamage() >= getMaxCondition();
 }
 
 float TangibleObjectImplementation::getConditionReduction(float value) {
