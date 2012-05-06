@@ -35,6 +35,10 @@ using namespace server::zone;
 
 #include "server/login/objects/CharacterList.h"
 
+#include "server/login/objects/CharacterListEntry.h"
+
+#include "server/login/objects/GalaxyBanEntry.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -51,7 +55,7 @@ namespace account {
 
 class Account : public ManagedObject {
 public:
-	Account(AccountManager* accManage);
+	Account();
 
 	void setActive(bool act);
 
@@ -69,6 +73,10 @@ public:
 
 	void setSalt(const String& s);
 
+	void setBanAdmin(unsigned int value);
+
+	unsigned int getBanAdmin();
+
 	void setTimeCreated(unsigned int seconds);
 
 	bool isActive();
@@ -85,6 +93,14 @@ public:
 
 	unsigned int getTimeCreated();
 
+	void updateFromDatabase();
+
+	void updateAccount();
+
+	void updateCharacters();
+
+	void updateGalaxyBans();
+
 	unsigned int getBanExpires();
 
 	String getBanReason();
@@ -92,6 +108,10 @@ public:
 	bool isBanned();
 
 	CharacterList* getCharacterList();
+
+	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
+
+	CharacterListEntry* getCharacterBan(const String& name);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -121,8 +141,6 @@ namespace account {
 
 class AccountImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	Reference<AccountManager* > accountManager;
-
 	bool active;
 
 	String username;
@@ -137,14 +155,18 @@ protected:
 
 	unsigned int created;
 
+	Reference<CharacterList* > characterList;
+
+	VectorMap<String, Reference<GalaxyBanEntry*> > galaxyBans;
+
 	unsigned int banExpires;
 
 	String banReason;
 
-	Reference<CharacterList* > characterList;
+	unsigned int banAdmin;
 
 public:
-	AccountImplementation(AccountManager* accManage);
+	AccountImplementation();
 
 	AccountImplementation(DummyConstructorParameter* param);
 
@@ -164,6 +186,10 @@ public:
 
 	void setSalt(const String& s);
 
+	void setBanAdmin(unsigned int value);
+
+	unsigned int getBanAdmin();
+
 	void setTimeCreated(unsigned int seconds);
 
 	bool isActive();
@@ -180,6 +206,14 @@ public:
 
 	unsigned int getTimeCreated();
 
+	void updateFromDatabase();
+
+	void updateAccount();
+
+	void updateCharacters();
+
+	void updateGalaxyBans();
+
 	unsigned int getBanExpires();
 
 	String getBanReason();
@@ -187,6 +221,10 @@ public:
 	bool isBanned();
 
 	CharacterList* getCharacterList();
+
+	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
+
+	CharacterListEntry* getCharacterBan(const String& name);
 
 	WeakReference<Account*> _this;
 
@@ -247,6 +285,10 @@ public:
 
 	void setSalt(const String& s);
 
+	void setBanAdmin(unsigned int value);
+
+	unsigned int getBanAdmin();
+
 	void setTimeCreated(unsigned int seconds);
 
 	bool isActive();
@@ -262,6 +304,14 @@ public:
 	String getSalt();
 
 	unsigned int getTimeCreated();
+
+	void updateFromDatabase();
+
+	void updateAccount();
+
+	void updateCharacters();
+
+	void updateGalaxyBans();
 
 	unsigned int getBanExpires();
 

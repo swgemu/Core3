@@ -63,15 +63,6 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 		CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	if (craftersName != "") {
-		alm->insertAttribute("crafter", craftersName);
-	}
-
-	if (objectSerial != "") {
-		if (gameObjectType != SceneObjectType::LIGHTSABERCRYSTAL)
-			alm->insertAttribute("serial_number", objectSerial);
-	}
-
 	String attribute;
 
 	float value;

@@ -498,8 +498,6 @@ public:
 
 	AuctionManager* getAuctionManager();
 
-	Account* getAccount(unsigned int accountID);
-
 	SkillManager* getSkillManager();
 
 	Time* getStartTimestamp();
@@ -734,8 +732,6 @@ public:
 
 	AuctionManager* getAuctionManager();
 
-	Account* getAccount(unsigned int accountID);
-
 	SkillManager* getSkillManager();
 
 	Time* getStartTimestamp();
@@ -894,8 +890,6 @@ public:
 	LootManager* getLootManager();
 
 	AuctionManager* getAuctionManager();
-
-	Account* getAccount(unsigned int accountID);
 
 	void setGalaxyID(int galaxyid);
 

@@ -87,6 +87,9 @@
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 
+#include "server/login/account/Account.h"
+
+
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
 	server = zoneServer;
@@ -233,7 +236,7 @@ bool PlayerManagerImplementation::existsName(const String& name) {
 }
 
 
-bool PlayerManagerImplementation::kickUser(const String& name, const String& admin) {
+bool PlayerManagerImplementation::kickUser(const String& name, const String& admin, String& reason, bool doBan) {
 	ManagedReference<ChatManager*> chatManager = server->getChatManager();
 
 	if (chatManager == NULL)
@@ -244,7 +247,22 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 	if (player == NULL)
 		return false;
 
+	ManagedReference<CreatureObject*> adminplayer = chatManager->getPlayer(admin);
+
+	if (adminplayer == NULL)
+		return false;
+
 	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+
+
+	PlayerObject* adminghost = cast<PlayerObject*>(adminplayer->getSlottedObject("ghost"));
+
+	if(adminghost == NULL)
+		return false;
+
+	StringBuffer kickMessage;
+	kickMessage << "You have been kicked by " << admin << " for '" << reason << "'";
+	player->sendSystemMessage(kickMessage.toString());
 
 	if(ghost != NULL)
 		ghost->setLoggingOut();
@@ -258,6 +276,12 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 
 	if(session != NULL)
 		session->disconnect(true);
+
+	/// 10 min ban
+	if(doBan) {
+		String banMessage = banAccount(adminghost, getAccount(ghost->getAccountID()), 60 * 10, reason);
+		adminplayer->sendSystemMessage(banMessage);
+	}
 
 	return true;
 }
@@ -2635,7 +2659,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
 
-		if (scno->isCraftingStation() && player->isInRange(scno, 7.0f)) {
+		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 1.0f) && player->isInRange(scno, 7.0f)) {
 
 			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
 
@@ -2669,4 +2693,228 @@ void PlayerManagerImplementation::finishHologrind(CreatureObject* player) {
 
 	ghost->setJediState(1);
 
+}
+
+Account* PlayerManagerImplementation::getAccount(const String& username) {
+
+	String name = username;
+
+	Database::escapeString(name);
+
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << name << "' LIMIT 1;";
+
+	return queryForAccount(query.toString());
+}
+
+Account* PlayerManagerImplementation::getAccount(uint32 accountID) {
+
+	StringBuffer query;
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+
+	return queryForAccount(query.toString());
+}
+
+Account* PlayerManagerImplementation::queryForAccount(const String& query) {
+
+
+	Account* account = NULL;
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	if (result->next()) {
+
+		account = new Account();
+
+		account->setActive(result->getBoolean(0));
+		account->setUsername(result->getString(1));
+
+		account->setAccountID(result->getUnsignedInt(4));
+		account->setStationID(result->getUnsignedInt(5));
+
+		account->setTimeCreated(result->getUnsignedInt(6));
+		account->setAdminLevel(result->getInt(7));
+
+		account->updateFromDatabase();
+	}
+
+	delete result;
+	result = NULL;
+
+	return account;
+}
+
+String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* account, uint32 seconds, const String& reason) {
+
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << time(0) + seconds << ", '" << reason << "');";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception banning account: " + e.getMessage();
+	}
+
+	try {
+
+		CharacterList* characters = account->getCharacterList();
+		for(int i = 0; i < characters->size(); ++i) {
+			CharacterListEntry* entry = &characters->get(i);
+			if(entry->getGalaxyID() == server->getGalaxyID()) {
+
+				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
+				if(player != NULL && player->isOnline()) {
+
+					player->sendMessage(new LogoutMessage());
+
+					ZoneClientSession* session = player->getClient();
+
+					if(session != NULL)
+						session->disconnect(true);
+				}
+			}
+		}
+	} catch(Exception& e) {
+		return "Account Successfully Banned, but error kicking characters. " + e.getMessage();
+	}
+
+	return "Account Successfully Banned";
+}
+
+String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* account, const String& reason) {
+
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "UPDATE account_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "'  WHERE account_id = " << account->getAccountID() << " and expires > UNIX_TIMESTAMP();";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception unbanning account: " + e.getMessage();
+	}
+
+	return "Account Successfully Unbanned";
+}
+
+String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, uint32 seconds, const String& reason) {
+
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << time(0) + seconds << ", '" << reason << "');";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception banning from galaxy: " + e.getMessage();
+	}
+
+	try {
+
+		CharacterList* characters = account->getCharacterList();
+		for(int i = 0; i < characters->size(); ++i) {
+			CharacterListEntry* entry = &characters->get(i);
+			if(entry->getGalaxyID() == server->getGalaxyID()) {
+
+				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
+				if(player != NULL && player->isOnline()) {
+
+					player->sendMessage(new LogoutMessage());
+
+					ZoneClientSession* session = player->getClient();
+
+					if(session != NULL)
+						session->disconnect(true);
+				}
+			}
+		}
+	} catch(Exception& e) {
+		return "Successfully Banned from Galaxy, but error kicking characters. " + e.getMessage();
+	}
+
+	return "Successfully Banned from Galaxy";
+}
+
+String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason) {
+
+	if(admin == NULL || !admin->isPrivileged())
+		return "";
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception unbanning from galaxy: " + e.getMessage();
+	}
+
+	return "Successfully Unbanned from Galaxy";
+}
+
+String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* account, const String& name, uint32 seconds, const String& reason) {
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << name << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << reason << "');";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception banning character: " + e.getMessage();
+	}
+
+	try {
+		ManagedReference<CreatureObject*> player = getPlayer(name);
+		if(player != NULL && player->isOnline()) {
+
+			player->sendMessage(new LogoutMessage());
+
+			ZoneClientSession* session = player->getClient();
+
+			if(session != NULL)
+				session->disconnect(true);
+		}
+	} catch(Exception& e) {
+		return "Character Successfully Banned, but error kicking Character. " + e.getMessage();
+	}
+
+	return "Character Successfully Banned";
+}
+
+String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account* account, const String& name,  const String& reason) {
+
+	if(account == NULL)
+		return "Account Not Found";
+
+	try {
+		StringBuffer query;
+		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << reason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << name << "' and expires > UNIX_TIMESTAMP();";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch(Exception& e) {
+		return "Exception banning character: " + e.getMessage();
+	}
+
+	return "Character Successfully Unbanned";
 }

@@ -205,6 +205,18 @@ class ThreatMap;
 
 using namespace server::zone::objects::tangible::threat;
 
+namespace server {
+namespace login {
+namespace account {
+
+class Account;
+
+} // namespace account
+} // namespace login
+} // namespace server
+
+using namespace server::login::account;
+
 #include "server/zone/managers/player/StartingLocationList.h"
 
 #include "server/zone/managers/player/StartingLocation.h"
@@ -252,7 +264,7 @@ public:
 
 	StartingLocation* getStartingLocation(const String& city);
 
-	bool kickUser(const String& name, const String& admin);
+	bool kickUser(const String& name, const String& admin, String& reason, bool doBan = true);
 
 	bool createPlayer(MessageCallback* callback);
 
@@ -362,6 +374,22 @@ public:
 
 	void finishHologrind(CreatureObject* player);
 
+	Account* getAccount(const String& username);
+
+	Account* getAccount(unsigned int accountID);
+
+	String banAccount(PlayerObject* admin, Account* account, unsigned int seconds, const String& reason);
+
+	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
+
+	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -371,7 +399,13 @@ protected:
 
 	virtual ~PlayerManager();
 
+	String _return_banAccount;
+	String _return_banCharacter;
+	String _return_banFromGalaxy;
 	String _return_getBadgeKey;
+	String _return_unbanAccount;
+	String _return_unbanCharacter;
+	String _return_unbanFromGalaxy;
 
 	friend class PlayerManagerHelper;
 };
@@ -432,7 +466,7 @@ public:
 
 	StartingLocation* getStartingLocation(const String& city);
 
-	bool kickUser(const String& name, const String& admin);
+	bool kickUser(const String& name, const String& admin, String& reason, bool doBan = true);
 
 	bool createPlayer(MessageCallback* callback);
 
@@ -542,6 +576,26 @@ public:
 
 	void finishHologrind(CreatureObject* player);
 
+	Account* getAccount(const String& username);
+
+	Account* getAccount(unsigned int accountID);
+
+private:
+	Account* queryForAccount(const String& query);
+
+public:
+	String banAccount(PlayerObject* admin, Account* account, unsigned int seconds, const String& reason);
+
+	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
+
+	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -589,7 +643,7 @@ public:
 
 	void finalize();
 
-	bool kickUser(const String& name, const String& admin);
+	bool kickUser(const String& name, const String& admin, String& reason, bool doBan);
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -689,9 +743,26 @@ public:
 
 	void finishHologrind(CreatureObject* player);
 
+	Account* getAccount(const String& username);
+
+	Account* getAccount(unsigned int accountID);
+
+	String banAccount(PlayerObject* admin, Account* account, unsigned int seconds, const String& reason);
+
+	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
+
+	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+
 protected:
-	String _param0_kickUser__String_String_;
-	String _param1_kickUser__String_String_;
+	String _param0_kickUser__String_String_String_bool_;
+	String _param1_kickUser__String_String_String_bool_;
+	String _param2_kickUser__String_String_String_bool_;
 	String _param1_awardExperience__CreatureObject_String_int_bool_float_;
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
@@ -702,6 +773,17 @@ protected:
 	String _param0_getObjectID__String_;
 	String _param0_getPlayer__String_;
 	String _param1_updateAdminLevel__CreatureObject_String_int_;
+	String _param0_getAccount__String_;
+	String _param3_banAccount__PlayerObject_Account_int_String_;
+	String _param2_unbanAccount__PlayerObject_Account_String_;
+	String _param2_banFromGalaxy__PlayerObject_Account_String_int_String_;
+	String _param4_banFromGalaxy__PlayerObject_Account_String_int_String_;
+	String _param2_unbanFromGalaxy__PlayerObject_Account_String_String_;
+	String _param3_unbanFromGalaxy__PlayerObject_Account_String_String_;
+	String _param2_banCharacter__PlayerObject_Account_String_int_String_;
+	String _param4_banCharacter__PlayerObject_Account_String_int_String_;
+	String _param2_unbanCharacter__PlayerObject_Account_String_String_;
+	String _param3_unbanCharacter__PlayerObject_Account_String_String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

@@ -54,15 +54,6 @@ void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 	if (gameObjType != SceneObjectType::MOLECULARCLAMP)
 		msg->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
-
-	if (craftersName != "") {
-		msg->insertAttribute("crafter", craftersName);
-
-	}
-	if (objectSerial != "") {
-		msg->insertAttribute("serial_number", objectSerial);
-
-	}
 }
 
 void SlicingToolImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {

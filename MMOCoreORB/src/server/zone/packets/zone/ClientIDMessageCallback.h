@@ -13,6 +13,7 @@
 #include "../../../login/packets/ErrorMessage.h"
 #include "server/login/account/Account.h"
 #include "server/login/objects/CharacterList.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "ClientPermissionsMessage.h"
 
@@ -76,19 +77,25 @@ public:
 				/*ManagedReference<Account*> account = server->getZoneServer()->getAccount(accountID);
 				System::out << "account found: " << account->getUsername() << endl;*/
 
-				//if (account == NULL)
-					//return;
+
 
 				//if (!account->hasMaxOnlineCharacters()) {
 					//client->setAccount(account);
 					//account->addZoneSession(client);
 
-					CharacterList characters(accountID);
+					ManagedReference<Account*> account = server->getPlayerManager()->getAccount(accountID);
+					if (account == NULL)
+						return;
 
 					client->resetCharacters();
 
-					while(characters.next()) {
-						client->addCharacter(characters.getObjectID());
+					CharacterList* characters = account->getCharacterList();
+
+					for(int i = 0; i < characters->size(); ++i) {
+						CharacterListEntry* entry = &characters->get(i);
+						GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyName());
+						if(!entry->isBanned() && galaxyBan == NULL)
+							client->addCharacter(entry->getObjectID());
 					}
 
 					BaseMessage* cpm = new ClientPermissionsMessage();

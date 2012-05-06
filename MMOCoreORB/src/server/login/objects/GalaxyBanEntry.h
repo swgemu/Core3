@@ -42,43 +42,75 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ENUMERATECHARACTERID_H_
-#define ENUMERATECHARACTERID_H_
+#ifndef GALAXYBANENTRY_H_
+#define GALAXYBANENTRY_H_
 
-#include "engine/engine.h"
-#include "../account/Account.h"
-#include "../objects/CharacterList.h"
+class GalaxyBanEntry : public Object {
+private:
+	uint32 accountID;
+	Time creationDate;
+	int galaxyID;
+	String banReason;
+	uint32 banAdmin;
+	Time banExpiration;
 
-class EnumerateCharacterID : public BaseMessage {
 public:
-	 EnumerateCharacterID(Account* account) : BaseMessage(100) {
-		insertShort(0x02);
-		insertInt(0x65EA4574);
+	GalaxyBanEntry() {
 
-		CharacterList* characters = account->getCharacterList();
-
-	    insertInt(characters->size()); //Character List Count
-	    for (int i = 0; i < characters->size(); ++i) {
-	    	CharacterListEntry* entry = &characters->get(i);
-			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyName());
-	    	String name = entry->getFullName();
-	    	if(galaxyBan != NULL)
-	    		name += " \\#FF0000(GALAXY BAN)";
-	    	else if(entry->isBanned())
-	    		name += " \\#FF0000(BANNED)";
-	    	insertUnicode(name);
-
-	    	insertInt(entry->getRace()); //Player Race CRC
-	    	insertLong(entry->getObjectID()); //Player ID
-
-	    	insertInt(entry->getGalaxyID()); //Server ID That Character Is On
-	    	insertInt(0x00000001); // server status?
-	    }
 	}
 
-	static void parse(Packet* pack) {
-		uint16 ackSequence = pack->parseShort();
+	~GalaxyBanEntry() {
+
 	}
 
+	uint32 getAccountID() const {
+		return accountID;
+	}
+
+	Time getCreationDate() const {
+		return creationDate;
+	}
+
+	uint32 getGalaxyID() const {
+		return galaxyID;
+	}
+
+	void setAccountID(uint32 accountID) {
+		this->accountID = accountID;
+	}
+
+	void setCreationDate(Time creationDate) {
+		this->creationDate = creationDate;
+	}
+
+	void setGalaxyID(uint32 galaxyID) {
+		this->galaxyID = galaxyID;
+	}
+
+	void setBanReason(String banReason) {
+		this->banReason = banReason;
+	}
+
+	String getBanReason() const {
+		return banReason;
+	}
+
+	void setBanExpiration(Time banExpiration) {
+		this->banExpiration = banExpiration;
+	}
+
+	Time getBanExpiration() const {
+		return banExpiration;
+	}
+
+	void setBanAdmin(uint32 banAdmin) {
+		this->banAdmin = banAdmin;
+	}
+
+	uint32 getBanAdmin() const {
+		return banAdmin;
+	}
 };
-#endif /*ENUMERATECHARACTERID_H_*/
+
+
+#endif /*GALAXYBANENTRY_H_*/

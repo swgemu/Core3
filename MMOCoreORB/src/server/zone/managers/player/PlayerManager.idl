@@ -73,6 +73,7 @@ import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
+import server.login.account.Account;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -117,7 +118,7 @@ class PlayerManager extends Observer implements Logger {
 	 * Kicks a user
 	 *
 	 */
-	public native boolean kickUser(final string name, final string admin);
+	public native boolean kickUser(final string name, final string admin, string reason, boolean doBan = true);
 	
 	@local
 	public native boolean createPlayer(MessageCallback callback);
@@ -247,5 +248,23 @@ class PlayerManager extends Observer implements Logger {
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
 	
 	public native void finishHologrind(CreatureObject player);
+
+	public native Account getAccount(final string username);
+	
+	public native Account getAccount(unsigned int accountID);
+
+	private native Account queryForAccount(final string query);
+	
+	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);
+	
+	public native string unbanAccount(PlayerObject admin, Account account, final string reason);
+	
+	public native string banFromGalaxy(PlayerObject admin, Account account, final string galaxy, unsigned int seconds, final string reason);
+	
+	public native string unbanFromGalaxy(PlayerObject admin, Account account, final string galaxy, final string reason);
+	
+	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int seconds, final string reason);
+
+	public native string unbanCharacter(PlayerObject admin, Account account, final string name, final string reason);
 
 }

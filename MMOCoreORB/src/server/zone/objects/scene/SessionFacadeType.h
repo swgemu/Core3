@@ -25,8 +25,9 @@ public:
 	const static int FISHING = 13;
 	const static int TRADE = 14;
 	const static int PLAYERTEACH = 15;
+	const static int CRAFTING = 16;
+	const static int PLAYERMANAGEMENT = 17;
 
-	const static int CRAFTING = 50;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

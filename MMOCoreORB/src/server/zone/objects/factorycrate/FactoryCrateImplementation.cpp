@@ -46,21 +46,13 @@ void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
 
 void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
-	alm->insertAttribute("volume", volume);
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		object->sendSystemMessage("This crate is broken, please contact Kyle if you get this message");
 		return;
-	}
-
-	if (prototype->getCraftersName() != "") {
-		alm->insertAttribute("crafter", prototype->getCraftersName());
-	}
-
-	if (prototype->getSerialNumber() != "") {
-		alm->insertAttribute("serial_number", prototype->getSerialNumber());
 	}
 
 	alm->insertAttribute("factory_count", getUseCount());

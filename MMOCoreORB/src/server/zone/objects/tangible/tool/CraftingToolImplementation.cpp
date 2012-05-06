@@ -162,14 +162,6 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 
 	alm->insertAttribute("craft_tool_status", status);
 
-	if (craftersName != "") {
-
-		alm->insertAttribute("crafter", craftersName);
-	}
-	if (objectSerial != "") {
-
-		alm->insertAttribute("serial_number", objectSerial);
-	}
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(object->getActiveSession(SessionFacadeType::CRAFTING));
 	if(session == NULL) {

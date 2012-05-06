@@ -352,6 +352,10 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 		updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
 		//container->setQuantity(currentQuantity + harvestAmount);
 	}
+
+	if(spawnExpireTimestamp.compareTo(currentTime) > 0)
+		shutdownAfterUpdate = true;
+
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
 

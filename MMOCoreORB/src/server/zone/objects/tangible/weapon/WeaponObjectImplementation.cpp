@@ -283,14 +283,6 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	/*if (getDotCount() > 0)
 		generateDotAttributes(alm);*/
 
-	if (craftersName != "") {
-		alm->insertAttribute("crafter", craftersName);
-	}
-
-	if (objectSerial != "") {
-		alm->insertAttribute("serial_number", objectSerial);
-	}
-
 	if(hasPowerup())
 		powerupObject->fillWeaponAttributeList(alm, _this);
 

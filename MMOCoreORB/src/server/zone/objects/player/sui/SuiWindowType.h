@@ -145,6 +145,10 @@ public:
 	static const uint16 ADMIN_PLAYERINFO = 174;
 	static const uint16 ADMIN_GUILDLIST = 175;
 	static const uint16 ADMIN_DESTROY_CONFIRM = 176;
+	static const uint16 ADMIN_BAN_DURATION = 177;
+	static const uint16 ADMIN_BAN_REASON = 178;
+	static const uint16 ADMIN_BAN_SUMMARY = 179;
+	static const uint16 ADMIN_UNBAN_SUMMARY = 180;
 
 	//Teach 221 - 230
 	static const uint16 TEACH_SKILL = 221;

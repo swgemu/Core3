@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/login/account/Account.h"
+#include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
+
 
 class GetAccountInfoCommand : public QueueCommand {
 public:
@@ -69,60 +71,173 @@ public:
 		if(admin == NULL || !admin->isPrivileged())
 			return INVALIDTARGET;
 
+		ManagedReference<PlayerManagementSession*> session = NULL;
 		ManagedReference<CreatureObject* > targetCreature = NULL;
+		ManagedReference<PlayerObject* > ghost = NULL;
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		ManagedReference<Account*> account = NULL;
+
+		session = cast<PlayerManagementSession*>(creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT));
+
+		if(session != NULL) {
+			creature->sendSystemMessage("You are already viewing an account");
+			return GENERALERROR;
+		}
 
 		StringTokenizer args(arguments.toString());
 
 		if(args.hasMoreTokens()) {
-			String character;
-			args.getStringToken(character);
 
-			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-			targetCreature = playerManager->getPlayer(character);
+			String type;
+			args.getStringToken(type);
+
+			if(!args.hasMoreTokens()) {
+				sendUsage(creature);
+				return GENERALERROR;
+			}
+
+			String name;
+			args.getStringToken(name);
+
+			if(type.toLowerCase() == "-c") {
+				targetCreature = playerManager->getPlayer(name);
+				account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
+			} else if(type.toLowerCase() == "-a") {
+				account = playerManager->getAccount(name);
+
+				if(account == NULL) {
+					try {
+						account = playerManager->getAccount(Long::valueOf(name));
+					} catch(Exception& e) {
+
+					}
+				}
+			}  else if(type.toLowerCase() == "-b") {
+				creature->sendSystemMessage("Coming soon");
+				return GENERALERROR;
+			} else {
+				sendUsage(creature);
+				return GENERALERROR;
+			}
 
 		} else {
-
-			targetCreature =
-					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
-
+			sendUsage(creature);
+			return GENERALERROR;
 		}
 
-		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
-			return INVALIDTARGET;
-
-		ManagedReference<Account*> account = server->getZoneServer()->getAccount(targetCreature->getPlayerObject()->getAccountID());
 		if(account == NULL) {
 			creature->sendSystemMessage("Account not found");
 			return SUCCESS;
 		}
 
+		if(targetCreature != NULL)
+			ghost = targetCreature->getPlayerObject();
+
 		Time createdTime(account->getTimeCreated());
 
 		CharacterList* characterList = account->getCharacterList();
 
-		creature->sendSystemMessage("****** Account Info ******");
-		creature->sendSystemMessage("Account Name: " + account->getUsername());
-		creature->sendSystemMessage("Account ID: " + String::valueOf(account->getAccountID()));
-		creature->sendSystemMessage("Station ID: " + String::valueOf(account->getStationID()));
-		creature->sendSystemMessage("Admin Level: " + String::valueOf(account->getAdminLevel()));
-		creature->sendSystemMessage("Created: " + createdTime.getFormattedTime());
+		ManagedReference<SuiListBox*> box = new SuiListBox(creature, SuiWindowType::ADMIN_ACCOUNTINFO, SuiListBox::HANDLETHREEBUTTON);
+		box->setPromptTitle("Account Info");
 
-		creature->sendSystemMessage("Characters:");
+		session = new PlayerManagementSession(account, creature);
 
+		creature->addActiveSession(SessionFacadeType::PLAYERMANAGEMENT, session);
 
-		while(characterList->next()) {
+		session->addAccountSui(box);
 
-			UnicodeString name;
-			characterList->getCharacterName(name);
+		StringBuffer header;
+		header << "Account Name: " << account->getUsername() << endl;
+		header << "Account ID: " << String::valueOf(account->getAccountID()) << endl;
+		header << "Station ID: " << String::valueOf(account->getStationID()) << endl;
+		header << "Admin Level: " << String::valueOf(account->getAdminLevel()) << endl;
+		header << "Created: " << createdTime.getFormattedTime() << endl;
+		if(account->isBanned()) {
+			header << "\\#FF0000 (BANNED)\\#FFFFFF " << endl;
+			header << session->getBanDuration(account->getBanExpires());
+			header << "Reason: "  << account->getBanReason() << endl;
 
-			StringBuffer message;
-			message << "	" << characterList->getGalaxyName() << ": " << name.toString() << " - Created " << characterList->getCreationTime();
-			creature->sendSystemMessage(message.toString());
+			ManagedReference<Account*> adminAccount = playerManager->getAccount(account->getBanAdmin());
+
+			if(adminAccount != NULL)
+				header << "Banned by: " << adminAccount->getUsername() << endl;
 		}
 
-		creature->sendSystemMessage("*********************");
+		box->setOtherButton(true, "@data Ban/Unban");
+
+		box->setPromptText(header.toString());
+
+		box->setOkButton(true, "@command_info");
+		box->setCancelButton(true, "@cancel");
+		box->setCallback(new PlayerManagementSessionSuiCallback(creature->getZoneServer()));
+		box->setUsingObject(creature);
+		admin->addSuiBox(box);
+
+		String username = account->getUsername();
+		if(account->isBanned())
+			username += " \\#FF0000(BANNED)\\#FFFFFF ";
+		box->addMenuItem(username, 0);
+
+		VectorMap<String, Vector<String> > characters;
+
+		for(int i = 0; i < characterList->size(); ++i) {
+
+			CharacterListEntry* entry = &characterList->get(i);
+
+			targetCreature = playerManager->getPlayer(entry->getFirstName());
+			if(targetCreature == NULL || !targetCreature->isPlayerCreature())
+				continue;
+
+			ghost = targetCreature->getPlayerObject();
+
+			if(!characters.contains(entry->getGalaxyName()))
+				characters.put(entry->getGalaxyName(), Vector<String>());
+
+			Vector<String>* galaxy = &characters.get(entry->getGalaxyName());
+
+			StringBuffer line;
+			line << "\t\t" << entry->getFullName();
+
+			if(ghost->isLinkDead())
+				line << " \\#EE7600(LD)\\#FFFFFF ";
+			else if(ghost->isOnline())
+				line << " \\#00FF00(ONLINE)\\#FFFFFF ";
+			else
+				line << " \\#AAAAAA(OFFLINE)\\#FFFFFF ";
+
+			if(entry->isBanned()) {
+				line << " \\#FF0000(BANNED)\\#FFFFFF " << entry->getBanReason();
+			}
+
+			galaxy->add(line.toString());
+		}
+
+		for(int i = 0; i < characters.size(); ++i) {
+			Vector<String>* galaxy = &characters.get(i);
+
+			String galaxyName = characters.elementAt(i).getKey();
+
+			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyName);
+			if(galaxyBan != NULL)
+				galaxyName += " \\#FF0000(BANNED)\\#FFFFFF" + galaxyBan->getBanReason();
+
+			box->addMenuItem("\t" + galaxyName, 0);
+
+			for(int j = 0; j < galaxy->size(); ++j) {
+				box->addMenuItem(galaxy->get(j), 0);
+			}
+		}
+
+		creature->sendMessage(box->generateMessage());
 
 		return SUCCESS;
+	}
+
+	void sendUsage(CreatureObject* creature) {
+		creature->sendSystemMessage("Usage /getAccountInfo [-a|-b|-c] [args]");
+		creature->sendSystemMessage("	ex: /getAccountInfo -a <accountname>");
+		creature->sendSystemMessage("	ex: /getAccountInfo -b -- Lists bans");
+		creature->sendSystemMessage("	ex: /getAccountInfo -c <character first name>");
 	}
 };
 

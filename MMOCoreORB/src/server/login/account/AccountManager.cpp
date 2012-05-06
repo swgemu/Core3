@@ -92,7 +92,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	client->sendMessage(loginServer->getLoginEnumClusterMessage());
 	client->sendMessage(loginServer->getLoginClusterStatusMessage());
 
-	Message* eci = new EnumerateCharacterID(account->getCharacterList());
+	Message* eci = new EnumerateCharacterID(account);
 	client->sendMessage(eci);
 }
 
@@ -100,7 +100,7 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 Account* AccountManager::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
 
 	StringBuffer query;
-	query << "SELECT a.account_id, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
+	query << "SELECT a.account_id, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.username = '" << username << "' LIMIT 1;";
 
 	String passwordStored;
 	Account* account = getAccount(query.toString(), passwordStored);
@@ -149,7 +149,31 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 
 		StringBuffer reason;
 		reason << "Your account has been banned from the server by the administrators.\n\n";
-		reason << "Time remaining: " << round(((account->getBanExpires() - time(0)) / 60.0f) / 60.f) << " Minutes\n";
+		int totalBan = account->getBanExpires() - time(0);
+
+		int daysBanned = floor((float)totalBan / 60.f / 60.f / 24.f);
+		totalBan -= (daysBanned * 60 * 60 * 24);
+
+		int hoursBanned = floor(((float)totalBan / 60.0f) / 60.f);
+		totalBan -= (hoursBanned * 60 * 60);
+
+		int minutesBanned = floor((float)totalBan / 60.0f);
+		totalBan -= (minutesBanned * 60);
+
+
+		reason << "Time remaining: ";
+
+		if(daysBanned > 0)
+			reason << daysBanned << " Days ";
+
+		if(hoursBanned > 0)
+			reason << hoursBanned << " Hours ";
+
+		if(minutesBanned > 0)
+			reason << minutesBanned << " Minutes ";
+
+		reason << totalBan << " Seconds\n";
+
 		reason << "Reason: " << account->getBanReason();
 
 		if(client != NULL)
@@ -209,7 +233,7 @@ Account* AccountManager::getAccount(uint32 accountID) {
 
 Account* AccountManager::getAccount(uint32 accountID, String& passwordStored) {
 	StringBuffer query;
-	query << "SELECT a.active, a.username, a.password, a.salt, IFNULL((SELECT b.expires FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), IFNULL((SELECT b.reason FROM account_bans b WHERE b.account_id = a.account_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
+	query << "SELECT a.active, a.username, a.password, a.salt, a.account_id, a.station_id, UNIX_TIMESTAMP(a.created), a.admin_level FROM accounts a WHERE a.account_id = '" << accountID << "' LIMIT 1;";
 
 	return getAccount(query.toString(), passwordStored);
 }
@@ -222,21 +246,20 @@ Account* AccountManager::getAccount(String query, String& passwordStored) {
 
 	if (result->next()) {
 
-		account = new Account(this);
+		account = new Account();
 
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
 		passwordStored = result->getString(2);
 		account->setSalt(result->getString(3));
 
-		account->setBanExpires(result->getUnsignedInt(4));
-		account->setBanReason(result->getString(5));
+		account->setAccountID(result->getUnsignedInt(4));
+		account->setStationID(result->getUnsignedInt(5));
 
-		account->setAccountID(result->getUnsignedInt(6));
-		account->setStationID(result->getUnsignedInt(7));
+		account->setTimeCreated(result->getUnsignedInt(6));
+		account->setAdminLevel(result->getInt(7));
 
-		account->setTimeCreated(result->getUnsignedInt(8));
-		account->setAdminLevel(result->getInt(9));
+		account->updateFromDatabase();
 	}
 	delete result;
 	result = NULL;

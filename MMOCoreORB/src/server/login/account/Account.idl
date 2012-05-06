@@ -8,12 +8,12 @@ import system.util.VectorMap;
 import system.lang.Time;
 import system.lang.System;
 include server.login.objects.CharacterList;
+include server.login.objects.CharacterListEntry;
+include server.login.objects.GalaxyBanEntry;
 
 
 class Account extends ManagedObject implements Logger {
 
-	protected transient AccountManager accountManager;
-	
 	protected transient boolean active;
 	
 	protected transient string username;
@@ -25,12 +25,16 @@ class Account extends ManagedObject implements Logger {
 	protected transient unsigned int adminLevel;
 	protected transient unsigned int created;
 	
-	protected transient unsigned int banExpires;
-	protected transient string banReason;
-	
 	protected transient CharacterList characterList;
 	
-	public native Account(AccountManager accManage);
+	@dereferenced
+	protected transient VectorMap<string, Reference<GalaxyBanEntry> > galaxyBans;
+	
+	protected transient unsigned int banExpires;
+	protected transient string banReason;
+	protected transient unsigned int banAdmin;
+	
+	public native Account();
 		
 	public void setActive(boolean act) {
 		active = act;
@@ -62,6 +66,14 @@ class Account extends ManagedObject implements Logger {
 	
 	public void setSalt(final string s) {
 		salt = s;
+	}
+	
+	public void setBanAdmin(unsigned int value) {
+		banAdmin = value;
+	}
+	
+	public unsigned int getBanAdmin() {
+		return banAdmin;
 	}
 	
 	public void setTimeCreated(unsigned int seconds) {
@@ -96,6 +108,14 @@ class Account extends ManagedObject implements Logger {
 		return created;
 	}
 	
+	public native void updateFromDatabase();
+	
+	public native void updateAccount();
+
+	public native void updateCharacters();
+
+	public native void updateGalaxyBans();
+	
 	public unsigned int getBanExpires() {
 		return banExpires;
 	}
@@ -108,4 +128,10 @@ class Account extends ManagedObject implements Logger {
 
 	@local
 	public native CharacterList getCharacterList();
+	
+	@local
+	public native GalaxyBanEntry getGalaxyBan(final string galaxy);
+	
+	@local
+	public native CharacterListEntry getCharacterBan(final string name);
 }

@@ -317,6 +317,15 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	alm->insertAttribute("volume", volume);
 
+	if (craftersName != "") {
+
+		alm->insertAttribute("crafter", craftersName);
+	}
+	if (objectSerial != "") {
+
+		alm->insertAttribute("serial_number", objectSerial);
+	}
+
 	if(useCount > 1)
 		alm->insertAttribute("quantity", useCount);
 }

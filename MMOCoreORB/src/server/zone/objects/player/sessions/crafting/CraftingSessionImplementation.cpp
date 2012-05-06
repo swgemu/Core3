@@ -938,6 +938,9 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 		}
 	}
 
+	if(schematicCount < 0 || schematicCount > 1000)
+		schematicCount = 1000;
+
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
 	StringTokenizer tokenizer(customizationString);

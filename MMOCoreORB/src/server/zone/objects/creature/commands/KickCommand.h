@@ -90,8 +90,22 @@ public:
 				return GENERALERROR;
 			}
 
+			StringBuffer banReason;
+
+			while (args.hasMoreTokens()) {
+				String reason;
+				args.getStringToken(reason);
+				banReason << reason << " ";
+			}
+
+			if(banReason.toString().isEmpty()) {
+				creature->sendSystemMessage("You must provide a reason for kicking");
+				return GENERALERROR;
+			}
+
 			ManagedReference<PlayerManager*> playerManager = server->getZoneServer()->getPlayerManager();
-			playerManager->kickUser(player->getFirstName(), creature->getCustomObjectName().toString());
+			String reason = banReason.toString();
+			playerManager->kickUser(player->getFirstName(), creature->getCustomObjectName().toString(), reason);
 
 			creature->sendSystemMessage(player->getFirstName() + " kicked.");
 

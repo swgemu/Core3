@@ -729,11 +729,11 @@ void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 	loginMessage = finalMOTD;
 }
 
-Account* ZoneServerImplementation::getAccount(uint32 accountID) {
+/*Account* ZoneServerImplementation::getAccount(uint32 accountID) {
 
 	ManagedReference<LoginServer*> loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
 	if(loginServer == NULL)
 		return NULL;
 
 	return loginServer->getAccount(accountID);
-}
+}*/

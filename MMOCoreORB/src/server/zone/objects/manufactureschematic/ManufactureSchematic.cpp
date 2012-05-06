@@ -788,6 +788,8 @@ ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	craftingValues = _ref0 = new CraftingValues();
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		prototype = null;
 	prototype = NULL;
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		manufactureLimit = 1000;
+	manufactureLimit = 1000;
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 	IntangibleObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		ContainerPermissions permissions = super.getContainerPermissions();

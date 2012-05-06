@@ -12,6 +12,7 @@
 #include "server/zone/packets/ui/RequestCategoriesResponseMessage.h"
 #include "server/db/MantisDatabase.h"
 #include "server/login/account/Account.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "BugCategory.h"
 
 void HolocronManager::loadBugCategories() {
@@ -99,7 +100,7 @@ uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 	if(processor->getZoneServer() == NULL)
 		return 0;
 
-	ManagedReference<Account*> account = processor->getZoneServer()->getAccount(client->getAccountID());
+	ManagedReference<Account*> account = processor->getPlayerManager()->getAccount(client->getAccountID());
 
 	if (account == NULL)
 		return 0;

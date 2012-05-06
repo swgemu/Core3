@@ -35,12 +35,19 @@ public:
 	void run() {
 
 		if(!client->hasCharacter(characterID)) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Invalid Character ID", 0x0);
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "This character is banned\n\nIf you feel this is an error please close your client, and try again.", 0x0);
 			client->sendMessage(errMsg);
 
 			client->error("invalid character id " + String::valueOf(characterID) + " in account: " + String::valueOf(client->getAccountID()));
 			return;
 		}
+
+		/*if(ghost->isBanned()) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "This Character is Banned", 0x0);
+			client->sendMessage(errMsg);
+			client->disconnect();
+			return;
+		}*/
 
 		ZoneServer* zoneServer = server->getZoneServer();
 		//ObjectManager* objectManager = zoneServer->getObjectManager();

@@ -233,7 +233,15 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 }
 
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
-	TangibleObjectImplementation::fillAttributeList(alm, player);
+
+	if (maxCondition > 0) {
+		StringBuffer cond;
+		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;
+
+		alm->insertAttribute("condition", cond);
+	}
+
+	alm->insertAttribute("volume", volume);
 
 	if (!isAttributeEffect() && !isSpiceEffect()) {
 		if (useCount > 0)

@@ -25,14 +25,6 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 	if (socketsLeft() > 0)
 		alm->insertAttribute("sockets", socketsLeft());
 
-	if (craftersName != "") {
-		alm->insertAttribute("crafter", craftersName);
-	}
-
-	if (objectSerial != "") {
-		alm->insertAttribute("serial_number", objectSerial);
-	}
-
 	for(int i = 0; i < wearableSkillMods.size(); ++i) {
 		String key = wearableSkillMods.elementAt(i).getKey();
 		String statname = "cat_skill_mod_bonus.@stat_n:" + key;

@@ -73,6 +73,7 @@ public:
 			return INVALIDTARGET;
 
 		ManagedReference<CreatureObject* > targetCreature = NULL;
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		StringTokenizer args(arguments.toString());
 
@@ -80,20 +81,18 @@ public:
 			String character;
 			args.getStringToken(character);
 
-			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 			targetCreature = playerManager->getPlayer(character);
 
 		} else {
 
 			targetCreature =
 					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
-
 		}
 
 		if(targetCreature == NULL || !targetCreature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<Account*> account = server->getZoneServer()->getAccount(targetCreature->getPlayerObject()->getAccountID());
+		ManagedReference<Account*> account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
 		if(account == NULL) {
 			creature->sendSystemMessage("Account not found");
 			return SUCCESS;

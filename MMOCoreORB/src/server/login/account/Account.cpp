@@ -12,10 +12,10 @@
  *	AccountStub
  */
 
-enum {RPC_SETACTIVE__BOOL_ = 6,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETBANEXPIRES__INT_,RPC_SETBANREASON__STRING_,RPC_SETSALT__STRING_,RPC_SETTIMECREATED__INT_,RPC_ISACTIVE__,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETSALT__,RPC_GETTIMECREATED__,RPC_GETBANEXPIRES__,RPC_GETBANREASON__,RPC_ISBANNED__,};
+enum {RPC_SETACTIVE__BOOL_ = 6,RPC_SETACCOUNTID__INT_,RPC_SETSTATIONID__INT_,RPC_SETADMINLEVEL__INT_,RPC_SETUSERNAME__STRING_,RPC_SETBANEXPIRES__INT_,RPC_SETBANREASON__STRING_,RPC_SETSALT__STRING_,RPC_SETBANADMIN__INT_,RPC_GETBANADMIN__,RPC_SETTIMECREATED__INT_,RPC_ISACTIVE__,RPC_GETACCOUNTID__,RPC_GETSTATIONID__,RPC_GETADMINLEVEL__,RPC_GETUSERNAME__,RPC_GETSALT__,RPC_GETTIMECREATED__,RPC_UPDATEFROMDATABASE__,RPC_UPDATEACCOUNT__,RPC_UPDATECHARACTERS__,RPC_UPDATEGALAXYBANS__,RPC_GETBANEXPIRES__,RPC_GETBANREASON__,RPC_ISBANNED__,};
 
-Account::Account(AccountManager* accManage) : ManagedObject(DummyConstructorParameter::instance()) {
-	AccountImplementation* _implementation = new AccountImplementation(accManage);
+Account::Account() : ManagedObject(DummyConstructorParameter::instance()) {
+	AccountImplementation* _implementation = new AccountImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("Account");
@@ -142,6 +142,33 @@ void Account::setSalt(const String& s) {
 		_implementation->setSalt(s);
 }
 
+void Account::setBanAdmin(unsigned int value) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBANADMIN__INT_);
+		method.addUnsignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBanAdmin(value);
+}
+
+unsigned int Account::getBanAdmin() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBANADMIN__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getBanAdmin();
+}
+
 void Account::setTimeCreated(unsigned int seconds) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -249,6 +276,58 @@ unsigned int Account::getTimeCreated() {
 		return _implementation->getTimeCreated();
 }
 
+void Account::updateFromDatabase() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateFromDatabase();
+}
+
+void Account::updateAccount() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEACCOUNT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateAccount();
+}
+
+void Account::updateCharacters() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATECHARACTERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateCharacters();
+}
+
+void Account::updateGalaxyBans() {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEGALAXYBANS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateGalaxyBans();
+}
+
 unsigned int Account::getBanExpires() {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -296,6 +375,24 @@ CharacterList* Account::getCharacterList() {
 
 	} else
 		return _implementation->getCharacterList();
+}
+
+GalaxyBanEntry* Account::getGalaxyBan(const String& galaxy) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getGalaxyBan(galaxy);
+}
+
+CharacterListEntry* Account::getCharacterBan(const String& name) {
+	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCharacterBan(name);
 }
 
 DistributedObjectServant* Account::_getImplementation() {
@@ -464,6 +561,16 @@ void AccountImplementation::setSalt(const String& s) {
 	salt = s;
 }
 
+void AccountImplementation::setBanAdmin(unsigned int value) {
+	// server/login/account/Account.idl():  		banAdmin = value;
+	banAdmin = value;
+}
+
+unsigned int AccountImplementation::getBanAdmin() {
+	// server/login/account/Account.idl():  		return banAdmin;
+	return banAdmin;
+}
+
 void AccountImplementation::setTimeCreated(unsigned int seconds) {
 	// server/login/account/Account.idl():  		created = seconds;
 	created = seconds;
@@ -553,6 +660,12 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETSALT__STRING_:
 		setSalt(inv->getAsciiParameter(_param0_setSalt__String_));
 		break;
+	case RPC_SETBANADMIN__INT_:
+		setBanAdmin(inv->getUnsignedIntParameter());
+		break;
+	case RPC_GETBANADMIN__:
+		resp->insertInt(getBanAdmin());
+		break;
 	case RPC_SETTIMECREATED__INT_:
 		setTimeCreated(inv->getUnsignedIntParameter());
 		break;
@@ -576,6 +689,18 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETTIMECREATED__:
 		resp->insertInt(getTimeCreated());
+		break;
+	case RPC_UPDATEFROMDATABASE__:
+		updateFromDatabase();
+		break;
+	case RPC_UPDATEACCOUNT__:
+		updateAccount();
+		break;
+	case RPC_UPDATECHARACTERS__:
+		updateCharacters();
+		break;
+	case RPC_UPDATEGALAXYBANS__:
+		updateGalaxyBans();
 		break;
 	case RPC_GETBANEXPIRES__:
 		resp->insertInt(getBanExpires());
@@ -623,6 +748,14 @@ void AccountAdapter::setSalt(const String& s) {
 	(static_cast<Account*>(stub))->setSalt(s);
 }
 
+void AccountAdapter::setBanAdmin(unsigned int value) {
+	(static_cast<Account*>(stub))->setBanAdmin(value);
+}
+
+unsigned int AccountAdapter::getBanAdmin() {
+	return (static_cast<Account*>(stub))->getBanAdmin();
+}
+
 void AccountAdapter::setTimeCreated(unsigned int seconds) {
 	(static_cast<Account*>(stub))->setTimeCreated(seconds);
 }
@@ -653,6 +786,22 @@ String AccountAdapter::getSalt() {
 
 unsigned int AccountAdapter::getTimeCreated() {
 	return (static_cast<Account*>(stub))->getTimeCreated();
+}
+
+void AccountAdapter::updateFromDatabase() {
+	(static_cast<Account*>(stub))->updateFromDatabase();
+}
+
+void AccountAdapter::updateAccount() {
+	(static_cast<Account*>(stub))->updateAccount();
+}
+
+void AccountAdapter::updateCharacters() {
+	(static_cast<Account*>(stub))->updateCharacters();
+}
+
+void AccountAdapter::updateGalaxyBans() {
+	(static_cast<Account*>(stub))->updateGalaxyBans();
 }
 
 unsigned int AccountAdapter::getBanExpires() {
@@ -688,7 +837,7 @@ DistributedObject* AccountHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AccountHelper::instantiateServant() {
-	return new AccountImplementation(DummyConstructorParameter::instance());
+	return new AccountImplementation();
 }
 
 DistributedObjectAdapter* AccountHelper::createAdapter(DistributedObjectStub* obj) {

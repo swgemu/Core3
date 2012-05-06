@@ -377,7 +377,7 @@ class ZoneServer extends ManagedService implements Logger {
 		return auctionManager;
 	}
 	
-	public native Account getAccount(unsigned int accountID);
+	//public native Account getAccount(unsigned int accountID);
 	
 	@local
 	@dirty
