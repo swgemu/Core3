@@ -66,6 +66,43 @@ public:
 
 	}
 
+	CharacterListEntry(const CharacterListEntry& e) {
+		objectID = e.objectID;
+		accountID = e.accountID;
+		galaxyID = e.galaxyID;
+		firstName = e.firstName;
+		surName = e.surName;
+		race = e.race;
+		gender = e.gender;
+		creationDate = e.creationDate;
+
+		galaxyName = e.galaxyName;
+		banReason = e.banReason;
+		banAdmin = e.banAdmin;
+		banExpiration = e.banExpiration;
+	}
+
+	CharacterListEntry& operator=(const CharacterListEntry& e) {
+		if (this == &e)
+			return *this;
+
+		objectID = e.objectID;
+		accountID = e.accountID;
+		galaxyID = e.galaxyID;
+		firstName = e.firstName;
+		surName = e.surName;
+		race = e.race;
+		gender = e.gender;
+		creationDate = e.creationDate;
+
+		galaxyName = e.galaxyName;
+		banReason = e.banReason;
+		banAdmin = e.banAdmin;
+		banExpiration = e.banExpiration;
+
+		return *this;
+	}
+
 	~CharacterListEntry() {
 
 	}

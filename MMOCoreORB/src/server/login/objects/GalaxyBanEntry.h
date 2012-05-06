@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef GALAXYBANENTRY_H_
 #define GALAXYBANENTRY_H_
@@ -57,6 +57,29 @@ private:
 public:
 	GalaxyBanEntry() {
 
+	}
+
+	GalaxyBanEntry(const GalaxyBanEntry& e) {
+		accountID = e.accountID;
+		creationDate = e.creationDate;
+		galaxyID = e.galaxyID;
+		banReason = e.banReason;
+		banAdmin = e.banAdmin;
+		banExpiration = e.banExpiration;
+	}
+
+	GalaxyBanEntry& operator=(const GalaxyBanEntry& e) {
+		if (this == &e)
+			return *this;
+
+		accountID = e.accountID;
+		creationDate = e.creationDate;
+		galaxyID = e.galaxyID;
+		banReason = e.banReason;
+		banAdmin = e.banAdmin;
+		banExpiration = e.banExpiration;
+
+		return *this;
 	}
 
 	~GalaxyBanEntry() {
