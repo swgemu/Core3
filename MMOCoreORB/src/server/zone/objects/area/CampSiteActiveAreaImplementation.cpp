@@ -110,8 +110,12 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 	}
 
 
-	if(!abandoned && abandonTask != NULL) {
-		abandonTask->schedule(CampSiteActiveArea::ABANDONTIME);
+	if(!abandoned && abandonTask != NULL && !abandonTask->isScheduled()) {
+		try {
+			abandonTask->schedule(CampSiteActiveArea::ABANDONTIME);
+		} catch (Exception& e) {
+
+		}
 	}
 }
 
