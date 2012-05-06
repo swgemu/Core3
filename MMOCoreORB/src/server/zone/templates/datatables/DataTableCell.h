@@ -27,31 +27,31 @@ public:
 	}*/
 
 	virtual void getValue(Vector<String>& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(SortedVector<String>& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(String& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(int& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(uint32& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(float& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 	virtual void getValue(bool& out) {
-		throw Exception("No valid type specified.");
+		throw Exception(String("No valid type specified. Correct type is ").concat((char)getType()));
 	}
 
 

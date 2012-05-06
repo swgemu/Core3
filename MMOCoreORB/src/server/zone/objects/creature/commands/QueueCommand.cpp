@@ -17,6 +17,8 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : L
 
 	maxRangeToTarget = 0;
 
+	commandGroup = 0;
+
 	stateMask = 0;
 	targetType = 0;
 	disabled = false;

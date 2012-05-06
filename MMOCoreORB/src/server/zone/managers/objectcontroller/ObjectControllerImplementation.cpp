@@ -178,6 +178,19 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		}
 	}
 
+	uint32 commandGroup = queueCommand->getCommandGroup();
+
+	if (commandGroup != 0) {
+		if (commandGroup == 0xe1c9a54a && queueCommand->getQueueCommandName() != "attack") {
+			if (!object->isAiAgent()) {
+				object->clearQueueAction(actionCount, 0, 2);
+
+				return 0.f;
+			}
+		}
+	}
+
+
 	if(queueCommand->requiresAdmin()) {
 
 		try {

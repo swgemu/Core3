@@ -269,6 +269,11 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 			row->getValue(CommandConfigManager::BLOCKING, position);
 			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::BLOCKING);
 
+			uint32 group;
+			row->getValue(CommandConfigManager::COMMANDGROUP, group);
+
+			slashCommand->setCommandGroup(group);
+
 			num++;
 		}
 	}
@@ -303,10 +308,14 @@ void CommandConfigManager::registerSpecialCommands() {
 		error("Could not create command /logout");
 	}
 
-	createCommand(String("mildPoison").toLowerCase());
-	createCommand(String("strongPoison").toLowerCase());
-	createCommand(String("mildDisease").toLowerCase());
-	createCommand(String("strongDisease").toLowerCase());
+	createCommand(String("mildPoison").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("strongPoison").toLowerCase())->setCommandGroup(0xe1c9a54a);
+
+	createCommand(String("mediumPoison").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("mediumDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
+
+	createCommand(String("mildDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("strongDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -972,6 +981,8 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<Intimidate2Command>(String("intimidate2").toLowerCase());
 	commandFactory.registerCommand<IntimidationAttackCommand>(String("intimidationAttack").toLowerCase());
 	commandFactory.registerCommand<MildPoisonCommand>(String("mildPoison").toLowerCase());
+	commandFactory.registerCommand<MediumPoisonCommand>(String("mediumPoison").toLowerCase());
+	commandFactory.registerCommand<MediumDiseaseCommand>(String("mediumDisease").toLowerCase());
 	commandFactory.registerCommand<StrongPoisonCommand>(String("strongPoison").toLowerCase());
 	commandFactory.registerCommand<StrongDiseaseCommand>(String("strongDisease").toLowerCase());
 	commandFactory.registerCommand<MildDiseaseCommand>(String("mildDisease").toLowerCase());

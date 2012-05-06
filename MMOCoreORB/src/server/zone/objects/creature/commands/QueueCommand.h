@@ -91,6 +91,8 @@ protected:
 
 	VectorMap<String, int> skillMods;
 
+	int commandGroup;
+
 public:
 	QueueCommand(const String& skillname, ZoneProcessServer* serv);
 
@@ -215,6 +217,10 @@ public:
 			addToQueue = true;
 	}
 
+	inline void setCommandGroup(int val) {
+		commandGroup = val;
+	}
+
 	inline void setMaxRange(float r) {
 		maxRangeToTarget = (int)r;
 	}
@@ -310,6 +316,10 @@ public:
 	inline int getSkillMod(int index, String& skillMod) {
 		skillMod = skillMods.elementAt(index).getKey();
 		return skillMods.get(skillMod);
+	}
+
+	inline int getCommandGroup() {
+		return commandGroup;
 	}
 
 	void addSkillMod(const String& skillMod, const int value) {
