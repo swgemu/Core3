@@ -54,6 +54,7 @@ CreatureAreaAttackCommand = {
 	mindCostMultiplier = 0,
 
 	range = -1,
+	areaRange = 25,
 
 	poolsToDamage = RANDOM_ATTRIBUTE
 }

@@ -24,7 +24,7 @@ public:
 		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			targetObject = creature;
 
-		PlayerObject* ghost = creature->getPlayerObject();
+		PlayerObject* ghost = targetObject->getPlayerObject();
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 
@@ -34,14 +34,14 @@ public:
 		StringBuffer msg;
 		msg << "SkillMods:\n";
 
-		SkillModList* skillModList = creature->getSkillModList();
+		SkillModList* skillModList = targetObject->getSkillModList();
 
 		StringBuffer promptText;
 		promptText << "SkillMods:" << endl;
 		promptText << skillModList->getPrintableSkillModList() << endl;
 
 		promptText << "Skills:" << endl;
-		SkillList* list = creature->getSkillList();
+		SkillList* list = targetObject->getSkillList();
 
 		int totalSkillPointsWasted = 0;
 
