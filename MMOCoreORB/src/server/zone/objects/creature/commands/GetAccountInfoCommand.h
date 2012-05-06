@@ -101,7 +101,9 @@ public:
 
 			if(type.toLowerCase() == "-c") {
 				targetCreature = playerManager->getPlayer(name);
-				account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
+
+				if (targetCreature != NULL)
+					account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
 			} else if(type.toLowerCase() == "-a") {
 				account = playerManager->getAccount(name);
 
