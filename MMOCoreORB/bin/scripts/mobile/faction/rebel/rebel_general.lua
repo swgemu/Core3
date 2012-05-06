@@ -31,7 +31,7 @@ rebel_general = Creature:new {
 		"object/mobile/dressed_rebel_general_human_female_01.iff",
 		"object/mobile/dressed_rebel_general_human_female_02.iff",
 		"object/mobile/dressed_rebel_general_moncal_male_01.iff",
-		"object/mobile/dressed_rebel_general_twilek_male_01.iff",
+		"object/mobile/dressed_rebel_general_old_twilek_male_01.iff",
 		"object/mobile/dressed_rebel_general_rodian_female_01.iff"},
 	lootGroups = {
 		{
