@@ -16,10 +16,15 @@
 class PlayerInfoCommand {
 public:
 	static int executeCommand(CreatureObject* creature, uint64 target, const UnicodeString& arguments) {
-		PlayerObject* ghost = creature->getPlayerObject();
-
-		if (!ghost->isPrivileged())
+		if (!creature->getPlayerObject()->isPrivileged())
 			return 1;
+
+		CreatureObject* targetObject = cast<CreatureObject*>(creature->getZoneServer()->getObject(creature->getTargetID()));
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature())
+			targetObject = creature;
+
+		PlayerObject* ghost = creature->getPlayerObject();
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 
@@ -31,15 +36,27 @@ public:
 
 		SkillModList* skillModList = creature->getSkillModList();
 
-		box->setPromptText(skillModList->getPrintableSkillModList());
+		StringBuffer promptText;
+		promptText << "SkillMods:" << endl;
+		promptText << skillModList->getPrintableSkillModList() << endl;
+
+		promptText << "Skills:" << endl;
+		SkillList* list = creature->getSkillList();
+
+		int totalSkillPointsWasted = 0;
+
+		for (int i = 0; i < list->size(); ++i) {
+			Skill* skill = list->get(i);
+			promptText << skill->getSkillName() << " point cost:" << skill->getSkillPointsRequired() << endl;
+
+			totalSkillPointsWasted += skill->getSkillPointsRequired();
+		}
+
+		promptText << "totalSkillPointsWasted = " << totalSkillPointsWasted;
+
+		box->setPromptText(promptText.toString());
 
 		creature->sendMessage(box->generateMessage());
-
-
-
-
-
-
 
 		/*ManagedReference<PlayerManagementSession*> session =
 				cast<PlayerManagementSession*>(creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT));
