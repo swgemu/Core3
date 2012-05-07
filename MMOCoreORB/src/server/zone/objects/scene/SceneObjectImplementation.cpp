@@ -1071,7 +1071,7 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 
 	SceneObject* root = getRootParent();
 
-	if (!root->isBuildingObject())
+	if (root == NULL || !root->isBuildingObject())
 		return getPosition();
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
@@ -1114,7 +1114,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 
 	SceneObject* root = getRootParent();
 
-	if (!root->isBuildingObject())
+	if (root == NULL || !root->isBuildingObject())
 		return getPositionX();
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
@@ -1129,7 +1129,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 
 	SceneObject* root = getRootParent();
 
-	if (!root->isBuildingObject())
+	if (root == NULL || !root->isBuildingObject())
 		return getPositionY();
 
 	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
@@ -1144,7 +1144,7 @@ float SceneObjectImplementation::getWorldPositionZ() {
 
 	SceneObject* root = getRootParent();
 
-	if (!root->isBuildingObject())
+	if (root == NULL || !root->isBuildingObject())
 		return getPositionZ();
 
 	return root->getPositionZ() + getPositionZ();
