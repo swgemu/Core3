@@ -433,10 +433,7 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	if (schematic->getManufactureLimit() < 1) {
-		ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(getZoneServer()->getObject(ownerObjectID));
-		if(owner != NULL && owner->isOnline()) {
-			owner->sendSystemMessage("Your schematic that just vanished useCount was: " + String::valueOf(schematic->getManufactureLimit()));
-		}
+
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
 		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
@@ -515,11 +512,6 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 		return NULL;
 	}
 
-	if(outputHopper->isContainerFull()) {
-		stopFactory("manf_output_hopper_full", getDisplayedName(), "", -1);
-		return NULL;
-	}
-
 	for (int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {
 
 		ManagedReference<SceneObject* > object = outputHopper->getContainerObject(i);
@@ -553,6 +545,11 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	if(outputHopper == NULL) {
 		stopFactory("manf_error_6", "", "", -1);
+		return NULL;
+	}
+
+	if(outputHopper->isContainerFull()) {
+		stopFactory("manf_output_hopper_full", getDisplayedName(), "", -1);
 		return NULL;
 	}
 
