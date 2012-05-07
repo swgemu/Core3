@@ -115,19 +115,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			info("Weather Disabled", true);
 		}
 
-		bool resourcesEnabled = luaObject.getIntField("resourcesEnabled");
-		if(resourcesEnabled) {
-			ManagedReference<ResourceManager*> resourceMan = zone->getZoneServer()->getResourceManager();
-			if(resourceMan != NULL) {
-				resourceMan->addZone(zone);
-				info("Resources Enabled", true);
-			} else {
-				error("ResourceManager Missing");
-			}
-		} else {
-			info("Resources Disabled", true);
-		}
-
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();

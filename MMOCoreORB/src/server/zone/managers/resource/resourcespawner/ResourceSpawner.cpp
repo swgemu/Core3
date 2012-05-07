@@ -121,6 +121,12 @@ void ResourceSpawner::initializeNativePool(const String& includes,
 
 void ResourceSpawner::addZone(const String& zoneName) {
 	activeResourceZones.add(zoneName);
+	nativePool->addZone(zoneName);
+}
+
+void ResourceSpawner::removeZone(const String& zoneName) {
+	activeResourceZones.removeElement(zoneName);
+	nativePool->removeZone(zoneName);
 }
 
 void ResourceSpawner::addJtlResource(const String& resourceName) {

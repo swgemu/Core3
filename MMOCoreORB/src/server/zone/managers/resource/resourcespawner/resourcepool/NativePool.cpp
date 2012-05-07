@@ -61,20 +61,37 @@ NativePool::~NativePool() {
 
 void NativePool::initialize(const String& includes, const String& excludes) {
 
-	activeResourceZones = resourceSpawner->getActiveResourceZones();
-
 	ResourcePool::initialize(includes, excludes);
 
 	for(int i = 0; i < activeResourceZones.size(); ++i) {
-		VectorMap<String, ManagedReference<ResourceSpawn*> > spawnZone;
-
-		for(int j = 0; j < includedResources.size(); ++j) {
-			String resource = includedResources.elementAt(j).getKey() + "_" + activeResourceZones.get(i);
-			spawnZone.put(resource, NULL);
-		}
-
-		spawnsPerZone.put(activeResourceZones.get(i), spawnZone);
+		addZoneMap(activeResourceZones.get(i));
 	}
+
+}
+
+void NativePool::addZone(const String& zoneName) {
+
+	activeResourceZones.add(zoneName);
+
+	if(includedResources.size() != 0) {
+		addZoneMap(zoneName);
+	}
+}
+
+void NativePool::addZoneMap(const String& zoneName) {
+	VectorMap<String, ManagedReference<ResourceSpawn*> > spawnZone;
+
+	for(int j = 0; j < includedResources.size(); ++j) {
+		String resource = includedResources.elementAt(j).getKey() + "_" + zoneName;
+		spawnZone.put(resource, NULL);
+	}
+
+	spawnsPerZone.put(zoneName, spawnZone);
+}
+
+void NativePool::removeZone(const String& zoneName) {
+	activeResourceZones.removeElement(zoneName);
+	spawnsPerZone.drop(zoneName);
 }
 
 void NativePool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {

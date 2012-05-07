@@ -159,7 +159,10 @@ public:
 
 		if(incomingTano->getUseCount() <= slotNeeds) {
 
-			satchel->transferObject(incomingTano, -1, true);
+			if(!satchel->transferObject(incomingTano, -1, true)) {
+				error("cant transfer crafting component");
+				return false;
+			}
 			contents.put(incomingTano, parent);
 
 		} else {
@@ -182,8 +185,11 @@ public:
 			newTano->setUseCount(slotNeeds, false);
 			newTano->setParent(NULL);
 
+			if(!satchel->transferObject(newTano, -1, true)) {
+				error("cant transfer crafting component");
+				return false;
+			}
 			contents.put(newTano, parent);
-			satchel->transferObject(newTano, -1, true);
 
 			newTano->sendAttributeListTo(player);
 

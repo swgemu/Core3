@@ -89,6 +89,12 @@ public:
 	void initialize(const String& includes, const String& excludes);
 
 
+	void addZone(const String& zoneName);
+
+	void addZoneMap(const String& zoneName);
+
+	void removeZone(const String& zoneName);
+
 	String healthCheck();
 
 	/**

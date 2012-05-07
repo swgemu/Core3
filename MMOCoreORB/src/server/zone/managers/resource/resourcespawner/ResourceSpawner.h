@@ -128,6 +128,7 @@ public:
 	void initializeNativePool(const String& includes, const String& excludes);
 
 	void addZone(const String& zoneName);
+	void removeZone(const String& zoneName);
 	void addJtlResource(const String& resourceName);
 	void setSpawningParameters(bool loadFromScript, const int dur, const float throt,
 			const int override, const int spawnquantity);

@@ -45,7 +45,6 @@
 corellia = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Coronet Shuttle B", x = -329.76605, z = 28, y = -4641.23, interplanetaryTravelAllowed = 0},
@@ -74,7 +73,6 @@ corellia = {
 dantooine = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Dantooine Mining Outpost", x = -635.96887, z = 3, y = 2507.0115, interplanetaryTravelAllowed = 1},
@@ -91,7 +89,6 @@ dantooine = {
 dathomir = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Trade Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravelAllowed = 1},
@@ -107,7 +104,6 @@ dathomir = {
 endor = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Smuggler Outpost", x = -950.59241, z = 73, y = 1553.4125, interplanetaryTravelAllowed = 1},
@@ -123,7 +119,6 @@ endor = {
 lok = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Nym's Stronghold", x = 478.92676, z = 9, y = 5511.9565, interplanetaryTravelAllowed = 1}
@@ -137,7 +132,6 @@ lok = {
 naboo = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Keren Starport", x = 1371.5938, z = 13, y = 2747.9043, interplanetaryTravelAllowed = 1},
@@ -166,7 +160,6 @@ naboo = {
 rori = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Restuss Starport", x = 5394.64, z = 80, y = 5770.13, interplanetaryTravelAllowed = 1},
@@ -186,7 +179,6 @@ rori = {
 talus = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Dearic Starport", x = 263.58401, z = 6, y = -2952.1284, interplanetaryTravelAllowed = 1},
@@ -205,8 +197,6 @@ talus = {
 tatooine = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
-
 	planetTravelPoints = {
 		{name = "Mos Eisley Shuttleport", x = 3416.6914, z = 5, y = -4648.1411, interplanetaryTravelAllowed = 0},
 		{name = "Mos Eisley Starport", x = 3599.894, z = 5, y = -4780.4487, interplanetaryTravelAllowed = 1},
@@ -233,7 +223,6 @@ tatooine = {
 yavin4 = {
 
 	weatherEnabled = 1,
-	resourcesEnabled = 1,
 
 	planetTravelPoints = {
 		{name = "Yavin IV Labor Outpost", x = -6921.6733, z = 73, y = -5726.5161, interplanetaryTravelAllowed = 1},
@@ -250,8 +239,6 @@ yavin4 = {
 space_corellia = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
-
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_rebel.iff", x = -7132.79, z = 2340.4, y = 2013.98, ow = 0.641545, ox = -0.0633626, oy = 0.76035, oz = 0.079203, parentid = 0},
 		{templateFile = "object/ship/spacestation_neutral.iff", x = -6345.5, z = -5274.5, y = -3957.25, ow = 0.640802, ox = 0.015822, oy = 0.76738, oz = -0.0158223, parentid = 0},
@@ -263,7 +250,6 @@ space_corellia = {
 space_dantooine = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -2629.72, z = 3585.8, y = 3269.39, ow = 0.103184, ox = 0.031749, oy = 0.936596, oz = -0.333365, parentid = 0},
@@ -278,7 +264,6 @@ space_dantooine = {
 space_dathomir = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 4842.19, z = -5316.32, y = -4222.79, ow = 0.849126, ox = -0.277752, oy = -0.428531, oz = -0.134908, parentid = 0},
@@ -291,7 +276,6 @@ space_dathomir = {
 space_endor = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 5773.37, z = -6359.57, y = 6976.04, ow = 0.197218, ox = -0.0157777, oy = 0.978199, oz = 0.0631097, parentid = 0},
@@ -304,7 +288,6 @@ space_endor = {
 space_lok = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -1798.64, z = 2649.25, y = 400.89, ow = -0.031722, ox = 0.0158608, oy = 0.999245, oz = 0.0158608, parentid = 0},
@@ -316,7 +299,6 @@ space_lok = {
 space_naboo = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 3511.83, z = 1774.71, y = 944.36, ow = -0.670707, ox = 0, oy = 0.741723, oz = 0, parentid = 0},
@@ -328,7 +310,6 @@ space_naboo = {
 space_tatooine = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_neutral.iff", x = 2311.89, z = -5872.72, y = 1865.29, ow = 0.324318, ox = 0.0734025, oy = 0.94172, oz = -0.0509326, parentid = 0}
@@ -338,7 +319,6 @@ space_tatooine = {
 space_yavin4 = {
 
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -6798.55, z = 4998.69, y = 4760.4, ow = 0.577296, ox = 0.0316324, oy = 0.814541, oz = -0.0474491, parentid = 0},
@@ -350,10 +330,7 @@ space_yavin4 = {
 
 tutorial = {
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
-}
 
 dungeon1 = {
 	weatherEnabled = 0,
-	resourcesEnabled = 0,
 }

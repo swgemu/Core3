@@ -188,8 +188,6 @@ public:
 
 	String despawnResource(String& resourceName);
 
-	void addZone(Zone* zone);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -292,8 +290,6 @@ public:
 	String dumpResources();
 
 	String despawnResource(String& resourceName);
-
-	void addZone(Zone* zone);
 
 	WeakReference<ResourceManager*> _this;
 

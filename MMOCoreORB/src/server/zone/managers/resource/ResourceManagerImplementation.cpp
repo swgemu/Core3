@@ -102,6 +102,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 
 	bool loadFromScript = lua->getGlobalInt("buildInitialResourcesFromScript");
 
+	String zonesString = lua->getGlobalString("activeZones");
+
+	StringTokenizer zonesTokens(zonesString);
+	zonesTokens.setDelimeter(",");
+
+	while(zonesTokens.hasMoreTokens()) {
+		String zoneName;
+		zonesTokens.getStringToken(zoneName);
+		resourceSpawner->addZone(zoneName);
+	}
+
 	shiftInterval = lua->getGlobalInt("averageShiftTime");
 
 	int aveduration = lua->getGlobalInt("aveduration");
@@ -369,7 +380,7 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 	ManagedReference<ResourceSpawn* > spawn = getResourceSpawn(restype);
 
 	if(spawn == NULL) {
-		playerCreature->sendSystemMessage("Selected spawn does not exist, make sure to capitalize the first letter");
+		playerCreature->sendSystemMessage("Selected spawn does not exist.");
 		return;
 	}
 
