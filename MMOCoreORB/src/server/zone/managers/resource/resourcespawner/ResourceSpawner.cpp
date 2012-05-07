@@ -486,7 +486,7 @@ String ResourceSpawner::makeResourceName(bool isOrganic) {
 	while (true) {
 		randname = nameManager->makeResourceName(isOrganic);
 
-		if (!resourceMap->contains(randname))
+		if (!resourceMap->contains(randname.toLowerCase()))
 			break;
 	}
 
@@ -592,7 +592,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 
-	if (surveyTool == NULL || !resourceMap->contains(resname) || player == NULL
+	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player == NULL
 			|| player->getZone() == NULL)
 		return;
 
@@ -676,7 +676,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	PlayerObject* ghost = player->getPlayerObject();
 	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 
-	if (surveyTool == NULL || !resourceMap->contains(resname) || player == NULL
+	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player == NULL
 			|| player->getZone() == NULL)
 		return;
 
@@ -935,7 +935,7 @@ void ResourceSpawner::addNodeToListBox(SuiListBox* sui, const String& nodeName) 
 	//If we couldn't find a node
 	if (node == NULL) {
 
-		if (resourceMap->containsType(nodeName)) {
+		if (resourceMap->containsType(nodeName.toLowerCase())) {
 			resourceMap->addToSuiListBox(sui, nodeName);
 			return;
 		}
@@ -951,7 +951,7 @@ String ResourceSpawner::addParentNodeToListBox(SuiListBox* sui, const String& cu
 	ResourceTreeNode* baseNode = resourceTree->getBaseNode();
 
 	//If is resource name
-	if (resourceMap->contains(currentNode)) {
+	if (resourceMap->contains(currentNode.toLowerCase())) {
 		ManagedReference<ResourceSpawn*> spawn = resourceMap->get(currentNode.toLowerCase());
 		ResourceTreeEntry* entry = baseNode->find(spawn->getFinalClass());
 
