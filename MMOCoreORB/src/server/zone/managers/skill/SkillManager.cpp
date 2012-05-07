@@ -199,10 +199,6 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 	Locker locker(creature);
 
-	//If they already have the skill, then return true.
-	if (creature->hasSkill(skillName))
-		return true;
-
 	//Check for required skills.
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
@@ -222,6 +218,10 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	if (!canLearnSkill(skillName, creature, noXpRequired)) {
 		return false;
 	}
+
+	//If they already have the skill, then return true.
+	if (creature->hasSkill(skillName))
+		return true;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
