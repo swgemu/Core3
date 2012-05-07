@@ -65,7 +65,7 @@ public:
 		try {
 			Locker locker(crafter);
 
-			Locker locker(craftingTool, crafter);
+			Locker clocker(craftingTool, crafter);
 
 			craftingTool->setCountdownTimer(timeLeft, true);
 

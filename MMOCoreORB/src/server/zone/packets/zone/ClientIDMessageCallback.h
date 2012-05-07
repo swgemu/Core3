@@ -9,8 +9,8 @@
 #define CLIENTIDMESSAGECALLBACK_H_
 
 #include "../MessageCallback.h"
-#include "../../../db/ServerDatabase.h"
-#include "../../../login/packets/ErrorMessage.h"
+#include "server/db/ServerDatabase.h"
+#include "server/login/packets/ErrorMessage.h"
 #include "server/login/account/Account.h"
 #include "server/login/objects/CharacterList.h"
 #include "server/zone/managers/player/PlayerManager.h"

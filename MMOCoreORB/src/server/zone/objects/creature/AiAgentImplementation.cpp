@@ -79,8 +79,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
 
 				if (weao != NULL) {
-					weao->setMinDamage((weao->getMinDamage() / 2) + minDmg);
-					weao->setMaxDamage((weao->getMaxDamage() / 2) + maxDmg);
+					weao->setMinDamage(minDmg * 1.33);
+					weao->setMaxDamage(maxDmg * 1.33);
 					weao->setAttackSpeed(1.f);
 					weapons.add(weao);
 

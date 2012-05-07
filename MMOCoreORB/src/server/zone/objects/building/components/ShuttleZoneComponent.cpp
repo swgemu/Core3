@@ -50,6 +50,8 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 		if (ptp != NULL) {
 			planetManager->scheduleShuttle(shuttle);
 			ptp->setShuttle(shuttle);
+		} else {
+			sceneObject->error("PlanetTravelPoint not found in zone " + zone->getZoneName());
 		}
 	}
 }
