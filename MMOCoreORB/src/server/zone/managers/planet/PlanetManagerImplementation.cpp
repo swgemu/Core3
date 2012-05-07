@@ -40,19 +40,11 @@
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 
 void PlanetManagerImplementation::initialize() {
-	terrainManager = new TerrainManager(zone);
-
 	performanceLocations = new MissionTargetMap();
 
 	numberOfCities = 0;
 
 	info("Loading planet.");
-
-	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn")) {
-		info("Loaded terrain file successfully.");
-	} else {
-		error("Failed to load terrain file.");
-	}
 
 	planetTravelPointList->setZoneName(zone->getZoneName());
 

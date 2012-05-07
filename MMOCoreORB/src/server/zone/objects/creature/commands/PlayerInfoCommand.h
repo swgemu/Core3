@@ -52,7 +52,7 @@ public:
 			totalSkillPointsWasted += skill->getSkillPointsRequired();
 		}
 
-		promptText << "totalSkillPointsWasted = " << totalSkillPointsWasted;
+		promptText << "totalSkillPointsWasted = " << totalSkillPointsWasted << " skillPoints var:" << ghost->getSkillPoints();
 
 		box->setPromptText(promptText.toString());
 

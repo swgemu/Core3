@@ -822,7 +822,8 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
 	_initializeImplementation();
-	Reference<PlanetTravelPointList*> _ref0;
+	Reference<TerrainManager*> _ref0;
+	Reference<PlanetTravelPointList*> _ref1;
 	// server/zone/managers/planet/PlanetManager.idl():  		zone = planet;
 	zone = planet;
 	// server/zone/managers/planet/PlanetManager.idl():  		server = srv;
@@ -833,8 +834,18 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	Logger::setLogging(false);
 	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/planet/PlanetManager.idl():  		terrainManager = null;
-	terrainManager = NULL;
+	// server/zone/managers/planet/PlanetManager.idl():  		terrainManager = new TerrainManager(zone);
+	terrainManager = _ref0 = new TerrainManager(zone);
+	// server/zone/managers/planet/PlanetManager.idl():  		}
+	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn")){
+	// server/zone/managers/planet/PlanetManager.idl():  			Logger.info("Loaded terrain file successfully.");
+	Logger::info("Loaded terrain file successfully.");
+}
+
+	else {
+	// server/zone/managers/planet/PlanetManager.idl():  			Logger.error("Failed to load terrain file.");
+	Logger::error("Failed to load terrain file.");
+}
 	// server/zone/managers/planet/PlanetManager.idl():  		numberOfCities = 0;
 	numberOfCities = 0;
 	// server/zone/managers/planet/PlanetManager.idl():  		shuttleLandingDelay = 300000;
@@ -846,7 +857,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNoDuplicateInsertPlan();
 	(&travelFares)->setNoDuplicateInsertPlan();
 	// server/zone/managers/planet/PlanetManager.idl():  		planetTravelPointList = new PlanetTravelPointList();
-	planetTravelPointList = _ref0 = new PlanetTravelPointList();
+	planetTravelPointList = _ref1 = new PlanetTravelPointList();
 }
 
 WeatherManager* PlanetManagerImplementation::getWeatherManager() {
