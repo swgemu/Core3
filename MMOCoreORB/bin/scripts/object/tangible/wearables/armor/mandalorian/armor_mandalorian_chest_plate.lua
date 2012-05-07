@@ -90,22 +90,22 @@ object_tangible_wearables_armor_mandalorian_armor_mandalorian_chest_plate = obje
 	-- Damage types in WeaponObject
 	vunerability = COLD + ELECTRICITY + STUN + LIGHTSABER,
 
-	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	-- These are default Blue Frog stats, These are also used as temporary DWB crafting stats. Needs to be adjusted to random color and stats vary in between 40 - 60%
+	healthEncumbrance = 200,
+	actionEncumbrance = 45,
+	mindEncumbrance = 20,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 15,
-	energy = 15,
-	electricity = 15,
-	stun = 15,
-	blast = 15,
-	heat = 15,
-	cold = 15,
-	acid = 15,
+	kinetic = 55,
+	energy = 55,
+	electricity = 55,
+	stun = 40,
+	blast = 55,
+	heat = 55,
+	cold = 55,
+	acid = 55,
 	lightSaber = 0
 }
 
