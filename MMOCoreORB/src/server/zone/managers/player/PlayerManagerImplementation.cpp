@@ -2255,6 +2255,7 @@ void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const
 
 	Locker clocker(targetPlayer, player);
 
+
 	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();
 
 	if (ghost == NULL) {
@@ -2264,10 +2265,13 @@ void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const
 
 	SkillManager* skillManager = server->getSkillManager();
 
-	if (adminLevel == PlayerObject::NORMALPLAYER)
+	if (adminLevel == PlayerObject::NORMALPLAYER) {
 		skillManager->removeAbility(ghost, "admin");
-	else
+		warning(player->getFirstName() + " is removing admin rights from " + targetName);
+	} else {
 		skillManager->addAbility(ghost, "admin");
+		warning(player->getFirstName() + " is adding admin rights to " + targetName);
+	}
 
 	ghost->setAdminLevel(adminLevel);
 
