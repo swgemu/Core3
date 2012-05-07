@@ -24,7 +24,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__,RPC_DUMPRESOURCES__,};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__,RPC_DUMPRESOURCES__,RPC_DESPAWNRESOURCE__STRING_,};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -349,6 +349,21 @@ String ResourceManager::dumpResources() {
 		return _implementation->dumpResources();
 }
 
+String ResourceManager::despawnResource(String& resourceName) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESPAWNRESOURCE__STRING_);
+		method.addAsciiParameter(resourceName);
+
+		method.executeWithAsciiReturn(_return_despawnResource);
+		return _return_despawnResource;
+	} else
+		return _implementation->despawnResource(resourceName);
+}
+
 void ResourceManager::addZone(Zone* zone) {
 	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -598,6 +613,9 @@ void ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_DUMPRESOURCES__:
 		resp->insertAscii(dumpResources());
 		break;
+	case RPC_DESPAWNRESOURCE__STRING_:
+		resp->insertAscii(despawnResource(inv->getAsciiParameter(_param0_despawnResource__String_)));
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -681,6 +699,10 @@ String ResourceManagerAdapter::healthCheck() {
 
 String ResourceManagerAdapter::dumpResources() {
 	return (static_cast<ResourceManager*>(stub))->dumpResources();
+}
+
+String ResourceManagerAdapter::despawnResource(String& resourceName) {
+	return (static_cast<ResourceManager*>(stub))->despawnResource(resourceName);
 }
 
 /*

@@ -137,6 +137,8 @@ class ResourceManager extends Observer implements Logger {
 	
 	public native string dumpResources();
 	
+	public native string despawnResource(string resourceName);
+	
 	@local
 	public void addZone(Zone zone) {
 		resourceSpawner.addZone(zone.getZoneName());

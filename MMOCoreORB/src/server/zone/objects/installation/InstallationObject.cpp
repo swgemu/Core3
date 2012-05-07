@@ -703,6 +703,11 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.extractionRemainder") {
+		TypeInfo<float >::parseFromBinaryStream(&extractionRemainder, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -776,8 +781,16 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.extractionRemainder";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&extractionRemainder, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 7;
+
+	return _count + 8;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
@@ -788,6 +801,8 @@ InstallationObjectImplementation::InstallationObjectImplementation() {
 	operating = false;
 	// server/zone/objects/installation/InstallationObject.idl():  		installationType = 0;
 	installationType = 0;
+	// server/zone/objects/installation/InstallationObject.idl():  		extractionRemainder = 0;
+	extractionRemainder = 0;
 	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.setNoDuplicateInsertPlan();
 	(&operatorList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/installation/InstallationObject.idl():  		hopperSizeMax = 10000;

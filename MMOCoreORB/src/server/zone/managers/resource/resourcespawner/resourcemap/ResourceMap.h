@@ -167,7 +167,7 @@ public:
 	}
 
 	bool containsSpawn(const String& spawnName) {
-		return contains(spawnName);
+		return contains(spawnName.toLowerCase());
 	}
 	/**
 	 * Adds the resources in particular map to SUI for resource deed

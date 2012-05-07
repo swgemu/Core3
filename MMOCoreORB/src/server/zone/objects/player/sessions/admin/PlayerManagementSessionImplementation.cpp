@@ -362,7 +362,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 
 		if(targetAccount->isBanned()) {
 			StringBuffer reason;
-			reason << targetAccount->getBanAdmin() << "=" << targetAccount->getBanReason() << "|" << banReason;
+			reason << targetAccount->getBanAdmin() << "=" << targetAccount->getBanReason() << "|" << adminGhost->getAccountID() << "=" << banReason;
 			message = playerManager->unbanAccount(adminGhost, targetAccount, reason.toString());
 		} else
 			message = playerManager->banAccount(adminGhost, targetAccount, banExpiration - time(0), banReason);
@@ -384,7 +384,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 
 		if(galaxyBan != NULL) {
 			StringBuffer reason;
-			reason << galaxyBan->getBanAdmin() << "=" << galaxyBan->getBanReason() << "|" << banReason;
+			reason << galaxyBan->getBanAdmin() << "=" << galaxyBan->getBanReason() << "|" << adminGhost->getAccountID() << "=" << banReason;
 			message = playerManager->unbanFromGalaxy(adminGhost, targetAccount, galaxy, reason.toString());
 		} else
 			message = playerManager->banFromGalaxy(adminGhost, targetAccount, galaxy, banExpiration - time(0), banReason);
@@ -406,7 +406,7 @@ void PlayerManagementSessionImplementation::completeBan() {
 
 		if(entry != NULL) {
 			StringBuffer reason;
-			reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << banReason;
+			reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << adminGhost->getAccountID() << "=" << banReason;
 			message = playerManager->unbanCharacter(adminGhost, targetAccount, targetName, reason.toString());
 		} else
 			message = playerManager->banCharacter(adminGhost, targetAccount, targetName, banExpiration - time(0), banReason);

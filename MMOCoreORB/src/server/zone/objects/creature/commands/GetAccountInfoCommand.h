@@ -73,7 +73,6 @@ public:
 
 		ManagedReference<PlayerManagementSession*> session = NULL;
 		ManagedReference<CreatureObject* > targetCreature = NULL;
-		ManagedReference<PlayerObject* > ghost = NULL;
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		ManagedReference<Account*> account = NULL;
 
@@ -132,9 +131,6 @@ public:
 			return SUCCESS;
 		}
 
-		if(targetCreature != NULL)
-			ghost = targetCreature->getPlayerObject();
-
 		Time createdTime(account->getTimeCreated());
 
 		CharacterList* characterList = account->getCharacterList();
@@ -184,13 +180,16 @@ public:
 
 		for(int i = 0; i < characterList->size(); ++i) {
 
+			ManagedReference<PlayerObject* > ghost = NULL;
+
 			CharacterListEntry* entry = &characterList->get(i);
 
-			targetCreature = playerManager->getPlayer(entry->getFirstName());
-			if(targetCreature == NULL || !targetCreature->isPlayerCreature())
-				continue;
+			if(entry->getGalaxyID() == server->getZoneServer()->getGalaxyID()) {
+				targetCreature = playerManager->getPlayer(entry->getFirstName());
 
-			ghost = targetCreature->getPlayerObject();
+				if(targetCreature != NULL || targetCreature->isPlayerCreature())
+					ghost = targetCreature->getPlayerObject();
+			}
 
 			if(!characters.contains(entry->getGalaxyName()))
 				characters.put(entry->getGalaxyName(), Vector<String>());
@@ -200,12 +199,17 @@ public:
 			StringBuffer line;
 			line << "\t\t" << entry->getFullName();
 
-			if(ghost->isLinkDead())
-				line << " \\#EE7600(LD)\\#FFFFFF ";
-			else if(ghost->isOnline())
-				line << " \\#00FF00(ONLINE)\\#FFFFFF ";
-			else
-				line << " \\#AAAAAA(OFFLINE)\\#FFFFFF ";
+			if(ghost != NULL) {
+
+				if(ghost->isOnline())
+					line << " \\#00FF00(ONLINE)\\#FFFFFF ";
+				else
+					line << " \\#AAAAAA(OFFLINE)\\#FFFFFF ";
+				/// last seen
+				///ghost->getClientLastMovementStamp();
+			} else {
+				line << " \\#EE7600(n/a)\\#FFFFFF ";
+			}
 
 			if(entry->isBanned()) {
 				line << " \\#FF0000(BANNED)\\#FFFFFF " << entry->getBanReason();

@@ -238,7 +238,7 @@ ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spa
 	try {
 		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
 
-		spawn = resourceMap->get(spawnName);
+		spawn = resourceMap->get(spawnName.toLowerCase());
 	} catch (...) {
 		runlock();
 
@@ -407,4 +407,17 @@ String ResourceManagerImplementation::healthCheck() {
 String ResourceManagerImplementation::dumpResources() {
 	Locker locker(_this);
 	return resourceSpawner->dumpResources();
+}
+
+String ResourceManagerImplementation::despawnResource(String& resourceName) {
+
+	ManagedReference<ResourceSpawn*> spawn = getResourceSpawn(resourceName);
+	if(spawn == NULL) {
+		return "Spawn not Found";
+	}
+
+	spawn->setDespawned(time(0) - 1);
+	resourceSpawner->shiftResources();
+
+	return resourceName + " despawned.";
 }

@@ -90,11 +90,19 @@ public:
 					client->resetCharacters();
 
 					CharacterList* characters = account->getCharacterList();
+					GalaxyBanEntry* galaxyBan = account->getGalaxyBan(server->getZoneServer()->getGalaxyName());
+
+					if(galaxyBan != NULL) {
+						ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
+						client->sendMessage(errMsg);
+						return;
+					}
 
 					for(int i = 0; i < characters->size(); ++i) {
+
 						CharacterListEntry* entry = &characters->get(i);
-						GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyName());
-						if(!entry->isBanned() && galaxyBan == NULL)
+
+						if(!entry->isBanned())
 							client->addCharacter(entry->getObjectID());
 					}
 

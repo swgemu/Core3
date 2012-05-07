@@ -80,6 +80,9 @@ public:
 			if(command == "dump")
 				dumpResources(creature, &args);
 
+			if(command == "despawn")
+				despawnResource(creature, &args);
+
 			else
 				throw Exception();
 
@@ -124,6 +127,20 @@ public:
 		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
 
 		creature->sendSystemMessage(resMan->dumpResources());
+	}
+
+	void despawnResource(CreatureObject* creature, StringTokenizer* args) {
+		if(creature->getZoneServer() == NULL)
+			return;
+
+		String resourceName = "";
+		if(args->hasMoreTokens())
+			args->getStringToken(resourceName);
+
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+
+		creature->sendSystemMessage(resMan->despawnResource(resourceName));
 	}
 
 };

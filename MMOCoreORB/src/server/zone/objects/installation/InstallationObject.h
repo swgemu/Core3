@@ -342,6 +342,8 @@ protected:
 
 	float extractionRate;
 
+	float extractionRemainder;
+
 public:
 	InstallationObjectImplementation();
 

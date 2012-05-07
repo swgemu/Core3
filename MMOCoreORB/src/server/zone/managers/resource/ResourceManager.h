@@ -186,6 +186,8 @@ public:
 
 	String dumpResources();
 
+	String despawnResource(String& resourceName);
+
 	void addZone(Zone* zone);
 
 	DistributedObjectServant* _getImplementation();
@@ -198,6 +200,7 @@ protected:
 	virtual ~ResourceManager();
 
 	String _return_addParentNodeToListBox;
+	String _return_despawnResource;
 	String _return_dumpResources;
 	String _return_healthCheck;
 
@@ -288,6 +291,8 @@ public:
 
 	String dumpResources();
 
+	String despawnResource(String& resourceName);
+
 	void addZone(Zone* zone);
 
 	WeakReference<ResourceManager*> _this;
@@ -373,6 +378,8 @@ public:
 
 	String dumpResources();
 
+	String despawnResource(String& resourceName);
+
 protected:
 	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;
 	String _param1_sendSurvey__CreatureObject_String_;
@@ -387,6 +394,7 @@ protected:
 	String _param1_addNodeToListBox__SuiListBox_String_;
 	String _param1_addParentNodeToListBox__SuiListBox_String_;
 	String _param1_listResourcesForPlanetOnScreen__CreatureObject_String_;
+	String _param0_despawnResource__String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

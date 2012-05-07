@@ -952,7 +952,7 @@ String ResourceSpawner::addParentNodeToListBox(SuiListBox* sui, const String& cu
 
 	//If is resource name
 	if (resourceMap->contains(currentNode)) {
-		ManagedReference<ResourceSpawn*> spawn = resourceMap->get(currentNode);
+		ManagedReference<ResourceSpawn*> spawn = resourceMap->get(currentNode.toLowerCase());
 		ResourceTreeEntry* entry = baseNode->find(spawn->getFinalClass());
 
 		if (entry != NULL) {

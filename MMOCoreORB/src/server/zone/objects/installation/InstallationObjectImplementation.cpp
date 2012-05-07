@@ -119,6 +119,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 	}
 
 	operating = value;
+	extractionRemainder = 0;
 
 	if (operating) {
 		if (!(optionsBitmask & 1)) {
@@ -177,7 +178,11 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			inso7->startUpdate(0x0D);
 
 			resourceHopper.set(0, container, inso7, 2);
-			resourceHopper.set(i, oldEntry, inso7, 0);
+
+			if(oldEntry->getQuantity() > 0)
+				resourceHopper.set(i, oldEntry, inso7, 0);
+			else
+				resourceHopper.remove(i, inso7);
 
 			inso7->close();
 
@@ -319,14 +324,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	// the spawn expired before we updated hopper last - don't update the hopper
-	/*if (spawnExpireTimestamp.compareTo(resourceHopperTimestamp) > 0) { // if (t1 < t2) return 1;
-		StringBuffer msg;
-		msg << "HarvesterObjectImplementation::updateHopper(" << hex << activeResourceID << dec << ") resource expired!! (why do we have expired resources in the list?) spawnExpireTimestamp: " << dec << spawnExpireTimestamp.getTime() << "  resourceHopperTimestamp: " << resourceHopperTimestamp.getTime() << endl;
-		info(msg);
-		return;
-	}*/
-
 	Time currentTime = workingTime;
 
 	Time spawnExpireTimestamp(spawn->getDespawned());
@@ -341,8 +338,9 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	int availableCapacity = (int)(getHopperSizeMax() - getHopperSize());
 	harvestAmount = harvestAmount > availableCapacity ? availableCapacity : harvestAmount;
 
-	if(getHopperSize() + harvestAmount >= getHopperSizeMax())
-		shutdownAfterUpdate = true;
+	harvestAmount += extractionRemainder;
+	extractionRemainder = harvestAmount;
+	extractionRemainder -= (int) harvestAmount;
 
 	float currentQuantity = container->getQuantity();
 
@@ -353,11 +351,17 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 		//container->setQuantity(currentQuantity + harvestAmount);
 	}
 
-	if(spawnExpireTimestamp.compareTo(currentTime) > 0)
-		shutdownAfterUpdate = true;
 
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
+
+	if(getHopperSize() + harvestAmount >= getHopperSizeMax())
+		shutdownAfterUpdate = true;
+
+	if(spawnExpireTimestamp.compareTo(currentTime) > 0) {
+		shutdownAfterUpdate = true;
+
+	}
 
 	if (shutdownAfterUpdate)
 		setOperating(false);
@@ -443,6 +447,7 @@ void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* co
 	inso7->startUpdate(0x0D);
 
 	resourceHopper.add(container, inso7, 1);
+
 	inso7->close();
 
 	broadcastToOperators(inso7);
@@ -584,6 +589,9 @@ uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
 		return 0;
 	} else {
 		ResourceContainer* entry = resourceHopper.get(0);
+		ResourceSpawn* spawn = entry->getSpawnObject();
+		if(spawn->getDespawned() < time(0))
+			return 0;
 
 		return entry->getSpawnObject()->getObjectID();
 	}
