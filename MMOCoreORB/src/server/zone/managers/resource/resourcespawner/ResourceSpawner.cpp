@@ -664,7 +664,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	ChatSystemMessage* sysMessage = new ChatSystemMessage(message);
 	player->sendMessage(sysMessage);
 
-	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
 	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage, waypoint, maxDensity * 100, resourceSpawn);
 	player->addPendingTask("survey", surveyTask, 3000);
 }
@@ -809,7 +809,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 	player->sendSystemMessage(message);
 
 	// We need the spawn object to track extraction
-	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
 	resourceSpawn->extractResource(zoneName, unitsExtracted);
 
 	int xp = (int) (((float) unitsExtracted / (float) maxUnitsExtracted)
