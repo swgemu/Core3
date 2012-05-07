@@ -935,7 +935,7 @@ void ResourceSpawner::addNodeToListBox(SuiListBox* sui, const String& nodeName) 
 	//If we couldn't find a node
 	if (node == NULL) {
 
-		if (resourceMap->containsType(nodeName.toLowerCase())) {
+		if (resourceMap->containsType(nodeName)) {
 			resourceMap->addToSuiListBox(sui, nodeName);
 			return;
 		}
