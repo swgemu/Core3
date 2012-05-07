@@ -236,6 +236,8 @@ void ZoneServerImplementation::startZones() {
 		zones->put(zoneName, zone);
 	}
 
+	resourceManager->initialize();
+
 	for (int i = 0; i < zones->size(); ++i) {
 		Zone* zone = zones->get(i);
 
@@ -246,8 +248,6 @@ void ZoneServerImplementation::startZones() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
-
-	resourceManager->initialize();
 
 	auctionManager = new AuctionManager(_this);
 	auctionManager->deploy();

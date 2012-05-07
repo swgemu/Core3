@@ -194,6 +194,8 @@ class PlanetManager : public ManagedService {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
 
+	void loadShuttleTicketCollectors();
+
 	void initializeTransientMembers();
 
 	void initialize();
@@ -266,6 +268,8 @@ public:
 
 	bool isInWater(float x, float y);
 
+	void addShuttleToLoad(SceneObject* shuttle);
+
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
@@ -322,6 +326,8 @@ protected:
 
 	static ClientPoiDataTable clientPoiDataTable;
 
+	Vector<ManagedReference<SceneObject* > > shuttlesToLoad;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
 
@@ -334,6 +340,10 @@ private:
 
 	void loadTravelFares();
 
+public:
+	void loadShuttleTicketCollectors();
+
+private:
 	void loadPlanetObjects(LuaObject* lua);
 
 	void loadLuaConfig();
@@ -417,6 +427,8 @@ public:
 
 	bool isInWater(float x, float y);
 
+	void addShuttleToLoad(SceneObject* shuttle);
+
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
@@ -461,6 +473,8 @@ public:
 	PlanetManagerAdapter(PlanetManager* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void loadShuttleTicketCollectors();
 
 	void initializeTransientMembers();
 
@@ -525,6 +539,8 @@ public:
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
+
+	void addShuttleToLoad(SceneObject* shuttle);
 
 	void removePlayerCityTravelPoint(const String& cityName);
 

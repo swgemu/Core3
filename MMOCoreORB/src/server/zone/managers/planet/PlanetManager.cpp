@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_LOADSHUTTLETICKETCOLLECTORS__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_ADDSHUTTLETOLOAD__SCENEOBJECT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -45,6 +45,19 @@ PlanetManager::~PlanetManager() {
 }
 
 
+
+void PlanetManager::loadShuttleTicketCollectors() {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADSHUTTLETICKETCOLLECTORS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadShuttleTicketCollectors();
+}
 
 void PlanetManager::initializeTransientMembers() {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
@@ -529,6 +542,20 @@ bool PlanetManager::isInWater(float x, float y) {
 		return _implementation->isInWater(x, y);
 }
 
+void PlanetManager::addShuttleToLoad(SceneObject* shuttle) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSHUTTLETOLOAD__SCENEOBJECT_);
+		method.addObjectParameter(shuttle);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addShuttleToLoad(shuttle);
+}
+
 void PlanetManager::addPlayerCityTravelPoint(PlanetTravelPoint* ptp) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -695,6 +722,11 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "PlanetManager.shuttlesToLoad") {
+		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&shuttlesToLoad, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -776,8 +808,16 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "PlanetManager.shuttlesToLoad";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&shuttlesToLoad, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 8;
+
+	return _count + 9;
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -902,6 +942,11 @@ void PlanetManagerImplementation::removeShuttle(CreatureObject* shuttle) {
 	(&shuttleMap)->drop(shuttle->getObjectID());
 }
 
+void PlanetManagerImplementation::addShuttleToLoad(SceneObject* shuttle) {
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttlesToLoad.add(shuttle);
+	(&shuttlesToLoad)->add(shuttle);
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -917,6 +962,9 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_LOADSHUTTLETICKETCOLLECTORS__:
+		loadShuttleTicketCollectors();
+		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
@@ -1013,12 +1061,19 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISINWATER__FLOAT_FLOAT_:
 		resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
+	case RPC_ADDSHUTTLETOLOAD__SCENEOBJECT_:
+		addShuttleToLoad(static_cast<SceneObject*>(inv->getObjectParameter()));
+		break;
 	case RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_:
 		removePlayerCityTravelPoint(inv->getAsciiParameter(_param0_removePlayerCityTravelPoint__String_));
 		break;
 	default:
 		throw Exception("Method does not exists");
 	}
+}
+
+void PlanetManagerAdapter::loadShuttleTicketCollectors() {
+	(static_cast<PlanetManager*>(stub))->loadShuttleTicketCollectors();
 }
 
 void PlanetManagerAdapter::initializeTransientMembers() {
@@ -1147,6 +1202,10 @@ bool PlanetManagerAdapter::checkShuttleStatus(CreatureObject* creature, Creature
 
 bool PlanetManagerAdapter::isInWater(float x, float y) {
 	return (static_cast<PlanetManager*>(stub))->isInWater(x, y);
+}
+
+void PlanetManagerAdapter::addShuttleToLoad(SceneObject* shuttle) {
+	(static_cast<PlanetManager*>(stub))->addShuttleToLoad(shuttle);
 }
 
 void PlanetManagerAdapter::removePlayerCityTravelPoint(const String& cityName) {

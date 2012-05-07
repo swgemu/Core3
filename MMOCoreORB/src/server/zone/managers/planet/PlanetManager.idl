@@ -107,6 +107,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected static transient ClientPoiDataTable clientPoiDataTable;
 	
+	@dereferenced
+	protected Vector<SceneObject> shuttlesToLoad;
+	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
 		server = srv;
@@ -133,6 +136,8 @@ class PlanetManager extends ManagedService implements Logger {
 	private native SceneObject loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
+	
+	public native void loadShuttleTicketCollectors();
 	
 	@local
 	private native void loadPlanetObjects(LuaObject lua);
@@ -300,6 +305,10 @@ class PlanetManager extends ManagedService implements Logger {
 	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);
 
 	public native boolean isInWater(float x, float y);
+	
+	public void addShuttleToLoad(SceneObject shuttle) {
+		shuttlesToLoad.add(shuttle);
+	}
 	
 	@local
 	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);
