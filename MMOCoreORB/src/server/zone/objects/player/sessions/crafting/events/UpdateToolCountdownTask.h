@@ -63,7 +63,9 @@ public:
 
 	void run() {
 		try {
-			Locker locker(craftingTool);
+			Locker locker(crafter);
+
+			Locker locker(craftingTool, crafter);
 
 			craftingTool->setCountdownTimer(timeLeft, true);
 

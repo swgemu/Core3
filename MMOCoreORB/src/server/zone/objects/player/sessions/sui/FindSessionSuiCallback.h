@@ -42,6 +42,11 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
+		if (index == -1) {
+			session->cancelSession();
+			return;
+		}
+
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		String maploctype = listBox->getMenuItemName(index).subString(14);
