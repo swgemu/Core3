@@ -57,7 +57,7 @@ PolearmStun1Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		100, 
+		40, 
 		100, 
 		10 
 	  )

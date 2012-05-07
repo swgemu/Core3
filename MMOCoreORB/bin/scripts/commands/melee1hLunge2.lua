@@ -64,9 +64,9 @@ Melee1hLunge2Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
+		40, 
 		100, 
-		0, 
-		0 
+		10 
 	  )
 	}
 

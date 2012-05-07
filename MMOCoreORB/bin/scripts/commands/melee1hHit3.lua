@@ -44,8 +44,8 @@
 Melee1hHit3Command = {
         name = "melee1hhit3",
 
-	damageMultiplier = 5,
-	speedMultiplier = 2,
+	damageMultiplier = 4.0,
+	speedMultiplier = 2.0,
 
 	animationCRC = hashCode("combo_5a_light"),
 

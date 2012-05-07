@@ -44,8 +44,8 @@
 Melee1hScatterHit2Command = {
         name = "melee1hscatterhit2",
 
-	damageMultiplier = 4,
-	speedMultiplier = 2,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.0,
 
 	animationCRC = hashCode("combo_5b_light"),
 

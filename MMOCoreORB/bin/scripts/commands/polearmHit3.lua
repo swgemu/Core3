@@ -43,8 +43,8 @@
 
 PolearmHit3Command = {
         name = "polearmhit3",
-	damageMultiplier = 4,
-	speedMultiplier = 3,
+	damageMultiplier = 4.0,
+	speedMultiplier = 3.0,
 
 	stateEffects = {
 	  StateEffect( 

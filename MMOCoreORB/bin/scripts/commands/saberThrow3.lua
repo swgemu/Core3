@@ -58,9 +58,9 @@ SaberThrow3Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		30, 
+		40, 
 		100, 
-		0
+		10
 	  )
 	},
 

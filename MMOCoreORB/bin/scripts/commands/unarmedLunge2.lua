@@ -64,8 +64,8 @@ UnarmedLunge2Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
+		50, 
 		100, 
-		0, 
 		0 
 	  )
 	}
