@@ -90,6 +90,7 @@ namespace server {
 			int loginProcessingThreads;
 			int loginAllowedConnections;
 			bool autoReg;
+			bool progressMonitors;
 
 			int zoneProcessingThreads;
 			int zoneAllowedConnections;
@@ -151,6 +152,10 @@ namespace server {
 
 			inline String& getDBHost() {
 				return dBHost;
+			}
+
+			inline bool isProgressMonitorActivated() {
+				return progressMonitors;
 			}
 
 			inline uint16& getDBPort() {

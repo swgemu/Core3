@@ -7,6 +7,7 @@
 
 #include "CreatureTemplateManager.h"
 #include "LairSpawnGroup.h"
+#include "server/conf/ConfigManager.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 
@@ -97,7 +98,10 @@ int CreatureTemplateManager::addTemplate(lua_State* L) {
 
 	CreatureTemplateManager::instance()->hashTable.put(crc, newTemp);
 
-	printf("\r\tLoading mobile templates: [%d] / [?]\t", loadedMobileTemplates.increment());
+	int count = loadedMobileTemplates.increment();
+
+	if (ConfigManager::instance()->isProgressMonitorActivated())
+		printf("\r\tLoading mobile templates: [%d] / [?]\t", count);
 
 	return 0;
 }

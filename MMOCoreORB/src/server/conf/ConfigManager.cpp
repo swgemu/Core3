@@ -66,6 +66,8 @@ ConfigManager::ConfigManager() {
 	mantisUser = "root";
 	mantisPass = "Gemeni1";
 
+	progressMonitors = true;
+
 	statusPort = 44455;
 
 	pingPort = 44462;
@@ -150,6 +152,8 @@ bool ConfigManager::loadConfigData() {
 	webAccessLog = getGlobalString("WebAccessLog");
 	webErrorLog = getGlobalString("WebErrorLog");
 	webSessionTimeout = getGlobalInt("WebSessionTimeout");
+
+	progressMonitors = getGlobalBoolean("ProgressMonitors");
 
 	return true;
 }

@@ -81,7 +81,7 @@
 #include "server/zone/templates/tangible/CreatureHabitatTemplate.h"
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 
-
+#include "server/conf/ConfigManager.h"
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
@@ -927,9 +927,10 @@ int TemplateManager::addTemplateCRC(lua_State* L) {
 
 	int val = loadedTemplatesCount.increment();
 
-	if (val % 38 == 0)
-		//printf("\r(%llu s) Loaded templates: [%d] / [15998]:", seconds, val);
-		printf("\r\tLoading templates: [%d] / [15998]\t", val);
+	if (ConfigManager::instance()->isProgressMonitorActivated())
+		if (val % 38 == 0)
+			//printf("\r(%llu s) Loaded templates: [%d] / [15998]:", seconds, val);
+			printf("\r\tLoading templates: [%d] / [15998]\t", val);
 
 	//System::out << str;
 

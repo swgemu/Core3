@@ -71,6 +71,8 @@ MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 AutoReg = 1
 
+ProgressMonitors = "true"
+
 PingPort = 44462
 PingAllowedConnections = 3000
 

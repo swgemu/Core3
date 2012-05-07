@@ -35,6 +35,8 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
+#include "server/conf/ConfigManager.h"
+
 #include "PlanetTravelPoint.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
@@ -252,7 +254,8 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 
 	++totalObjects;
 
-	printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);
+	if (ConfigManager::instance()->isProgressMonitorActivated())
+		printf("\r\tLoading snapshot objects: [%d] / [?]\t", totalObjects);
 
 	//Object already exists, exit.
 	if (object != NULL)

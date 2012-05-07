@@ -9,6 +9,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/conf/ConfigManager.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;
@@ -131,7 +132,8 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 		spawn.pop();
 
-		printf("\r\tLoading static spawns: [%d] / [%d]\t", ++count, max);
+		if (ConfigManager::instance()->isProgressMonitorActivated())
+			printf("\r\tLoading static spawns: [%d] / [%d]\t", ++count, max);
 	}
 
 	obj.pop();

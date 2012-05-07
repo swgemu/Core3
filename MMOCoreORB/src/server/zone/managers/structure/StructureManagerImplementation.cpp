@@ -68,6 +68,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/conf/ConfigManager.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -111,7 +112,8 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			if (object != NULL) {
 				//object->info("loaded player structure into world");
 				++i;
-				printf("\r\tLoading player structures [%d] / [?]\t", i);
+				if (ConfigManager::instance()->isProgressMonitorActivated())
+					printf("\r\tLoading player structures [%d] / [?]\t", i);
 			} else {
 				error("Failed to deserialize structure with objectID: " + String::valueOf(objectID));
 			}
