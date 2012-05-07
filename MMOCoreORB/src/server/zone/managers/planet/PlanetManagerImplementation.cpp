@@ -65,7 +65,7 @@ void PlanetManagerImplementation::initialize() {
 		zone->transferObject(area, -1, true);
 	}
 
-	weatherManager == NULL;
+	weatherManager = NULL;
 }
 
 void PlanetManagerImplementation::loadShuttleTicketCollectors() {

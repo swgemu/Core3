@@ -330,6 +330,7 @@ space_yavin4 = {
 
 tutorial = {
 	weatherEnabled = 0,
+}
 
 dungeon1 = {
 	weatherEnabled = 0,
