@@ -32,7 +32,9 @@ bodyguard = Creature:new {
 					"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
 					"object/mobile/dressed_robber_twk_male_01.iff",
 					"object/mobile/dressed_criminal_thug_human_female_01.iff",
-					"object/mobile/dressed_robber_twk_female_01.iff"
+					"object/mobile/dressed_robber_twk_female_01.iff",
+					"object/mobile/dressed_crook_zabrak_male_01.iff",
+					"object/mobile/dressed_hooligan_rodian_female_01.iff"
 				},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

@@ -132,7 +132,7 @@ lok_static_spawns = {
 	{"commoner", 0, 31.1714, 7.25, 11.2841, 0, 2745874, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_06.iff
 	--{"twilek_base_female", 0, 31.1714, 7.25, 12.3841, 180.018, 2745874, "conversation", "Ciwi Mo-sregri"},  --@npc_name:twilek_base_female full template: object/mobile/shared_dressed_rebel_trooper_twk_female_01.iff
 	{"entertainer", 0, 30.0714, 7.25, 12.3841, 135.011, 2745874, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_male_01.iff
-	{"technician", 0, 0.856204, 7.26, -13.2226, 0, 2745872, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_02.iff
+	{"commoner_technician", 0, 0.856204, 7.26, -13.2226, 0, 2745872, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_02.iff
 	{"gambler", 0, 0.856204, 7.26, -12.1226, 180.015, 2745872, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_01.iff
 	{"bothan_information_broker", 0, -0.243796, 7.26, -12.1226, 135.01, 2745872, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/shared_dressed_eisley_officer_bothan_male_01.iff
 	{"smuggler", 0, 3.95102, 7.26, 8.48572, 360.011, 2745872, "conversation", ""},  --@mob/creature_names:smuggler full template: object/mobile/shared_dressed_criminal_pirate_human_female_01.iff

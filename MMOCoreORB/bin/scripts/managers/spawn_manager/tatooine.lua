@@ -440,7 +440,7 @@ tatooine_static_spawns = {
 	{"mercenary", 0, -162.748, 65, -5311.84, 180.005, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_f.iff
 	{"businessman", 0, -143.907, 65, -5335.05, 0, 0, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_naboo_human_male_06.iff
 	{"pilot", 0, -143.907, 65, -5334.05, 180.005, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/shared_dressed_mercenary_weak_hum_f.iff
-	{"technician", 0, -108.399, 65, -5298.05, 0, 0, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_03.iff
+	{"commoner_technician", 0, -108.399, 65, -5298.05, 0, 0, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_03.iff
 	{"scavenger", 0, -108.399, 65, -5297.05, 180.005, 0, "conversation", ""},  --@mob/creature_names:scavenger full template: object/mobile/shared_dressed_commoner_naboo_human_female_04.iff
 	{"commoner", 0, 83.9686, 52, -5390.23, 61.1388, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_04.iff
 	{"commoner", 0, 74.6127, 52, -5382.24, 106.067, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_02.iff
@@ -1593,9 +1593,9 @@ tatooine_static_spawns = {
 	{"commoner", 0, -2886.35, 5, 2377.12, 323.001, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_male_02.iff
 	{"commoner", 0, -2818.45, 5, 2407.94, 238.346, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_08.iff
 	{"commoner", 0, -2810.06, 5, 2318.02, 268.996, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"technician", 0, 7.41432, 1.00001, -6.90893, 0, 1261017, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_01.iff
+	{"commoner_technician", 0, 7.41432, 1.00001, -6.90893, 0, 1261017, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_01.iff
 	{"tatooine_militiaman", 0, 7.41432, 1.00001, -5.80893, 180.003, 1261017, "conversation", ""},  --@mob/creature_names:tatooine_militiaman full template: object/mobile/shared_dressed_eisley_officer_human_male_01.iff
-	{"technician", 0, 20.2715, 1.28309, -1.14578, 360.011, 1261018, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_01.iff
+	{"commoner_technician", 0, 20.2715, 1.28309, -1.14578, 360.011, 1261018, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_01.iff
 	{"noble", 0, 20.2715, 1.28309, -0.0457823, 179.998, 1261018, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/shared_dressed_noble_fat_human_female_02.iff
 	{"rodian_clan_medic", 0, 19.1715, 1.28309, -0.0457823, 134.998, 1261018, "conversation", ""},  --@mob/creature_names:rodian_clan_medic full template: object/mobile/shared_dressed_criminal_thug_rodian_male_01.iff
 	{"scientist", 0, 20.2668, 1.56616, 15.1105, 241.986, 1261018, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_hutt_medic2_twilek_male_01.iff
@@ -1825,7 +1825,7 @@ tatooine_static_spawns = {
 	{"criminal", 0, -7.85116, -3.96617, 6.43429, 272.53, 1499424, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_criminal_thug_aqualish_male_02.iff
 	{"entertainer", 0, 6.82411, 0.40827, -8.7422, 0, 1499419, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_female_01.iff
 	{"rodian_clan_warchief", 0, 6.82411, 0.408269, -7.6422, 180, 1499419, "conversation", ""},  --@mob/creature_names:rodian_clan_warchief full template: object/mobile/shared_dressed_hooligan_rodian_male_01.iff
-	{"technician", 0, 5.72411, 0.408269, -7.6422, 135.001, 1499419, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_02.iff
+	{"commoner_technician", 0, 5.72411, 0.408269, -7.6422, 135.001, 1499419, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_02.iff
 	{"gambler", 0, 14.8335, -3.99038, 4.51296, 0, 1718360, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/shared_dressed_commoner_old_twilek_male_01.iff
 	{"dim_u_priestess", 0, 14.8335, -3.99038, 5.61296, 180.016, 1718360, "conversation", ""},  --@mob/creature_names:dim_u_priestess full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_01.iff
 	{"businessman", 0, -20.9216, -3.99571, 2.67462, 119.091, 1718359, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_old_twilek_male_01.iff

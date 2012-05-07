@@ -1,4 +1,4 @@
-bounty_hunter = Creature:new {
+bounty_hunter_thug = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
 	socialGroup = "Mercenary",
 	pvpFaction = "",
@@ -32,4 +32,4 @@ bounty_hunter = Creature:new {
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(bounty_hunter, "bounty_hunter")
+CreatureTemplates:addCreatureTemplate(bounty_hunter_thug, "bounty_hunter_thug")

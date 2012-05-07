@@ -28,7 +28,8 @@ agriculturalist = Creature:new {
 
 	templates = {"object/mobile/dressed_quest_farmer.iff",
 					"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff"},
+					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
+					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

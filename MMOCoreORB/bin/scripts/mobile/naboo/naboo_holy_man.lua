@@ -25,7 +25,8 @@ naboo_holy_man = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_naboo_holy_man.iff"},
+	templates = {"object/mobile/dressed_naboo_holy_man.iff",
+				"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
 	lootGroups = {
 	    {
 			groups = {

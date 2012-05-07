@@ -28,7 +28,8 @@ vendor = Creature:new {
 
 	templates = {"object/mobile/twilek_female.iff",
 					"object/mobile/dressed_commoner_fat_twilek_female_02.iff",
-					"object/mobile/dressed_commoner_tatooine_bith_female_02.iff"},
+					"object/mobile/dressed_commoner_tatooine_bith_female_02.iff",
+					"object/mobile/dressed_commoner_tatooine_bith_female_04.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

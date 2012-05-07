@@ -26,7 +26,8 @@ medic = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff",
-				"object/mobile/dressed_doctor_trainer_moncal_male_01.iff"
+				"object/mobile/dressed_doctor_trainer_moncal_male_01.iff",
+				"object/mobile/dressed_mercenary_elite_medic_human_male_01.iff",
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

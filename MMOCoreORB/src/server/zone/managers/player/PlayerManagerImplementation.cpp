@@ -2757,7 +2757,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2826,7 +2826,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {

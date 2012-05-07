@@ -41,8 +41,10 @@ businessman = Creature:new {
 					"object/mobile/dressed_commoner_naboo_human_male_03.iff",
 					"object/mobile/dressed_commoner_tatooine_bith_male_02.iff",
 					"object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff",
-					"object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff",
-					"object/mobile/dressed_commoner_naboo_human_female_07.iff"
+					--"object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff", --WHY?!
+					"object/mobile/dressed_commoner_naboo_human_female_07.iff",
+					"object/mobile/dressed_commoner_tatooine_bith_male_01.iff",
+					"object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff"
 					},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

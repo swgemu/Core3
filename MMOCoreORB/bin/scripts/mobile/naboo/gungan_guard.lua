@@ -26,7 +26,8 @@ gungan_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gungan_male.iff"},
+	templates = {"object/mobile/gungan_male.iff",
+				"object/mobile/gungan_s02_male.iff"},
 	lootGroups = {
 	    {
 			groups = {
