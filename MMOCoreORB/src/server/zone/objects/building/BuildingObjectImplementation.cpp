@@ -409,6 +409,30 @@ void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) 
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(
 		bool destroyContainedObjects) {
+
+	float x = getPositionX();
+	float y = getPositionY();
+	float z = 0;
+
+	if (zone != NULL)
+		z = zone->getHeight(x, y);
+
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = cell->getContainerObjectsSize() - 1; j >= 0 ; --j) {
+			SceneObject* child = cell->getContainerObject(j);
+
+			if (child->isPlayerCreature()) {
+				child->teleport(x, z, y);
+
+				if (cell->hasObjectInContainer(child->getObjectID())) {
+					cell->removeObject(child, NULL, true);
+				}
+			}
+		}
+	}
+
 	StructureObjectImplementation::destroyObjectFromDatabase(
 			destroyContainedObjects);
 
