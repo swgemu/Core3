@@ -306,7 +306,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 		sendTo(_this, doClose);
 
 	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects
-			= getCloseObjects();
+	= getCloseObjects();
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* obj = cast<SceneObject*> (closeObjects->get(i).get());
@@ -377,7 +377,7 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 			if (player != _this && ((childArrangement == "bank")
 					|| (childArrangement == "inventory") || (childArrangement
-					== "datapad") || (childArrangement == "mission_bag"))) {
+							== "datapad") || (childArrangement == "mission_bag"))) {
 				sendWithoutContents = true;
 				break;
 			}
@@ -1222,7 +1222,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 					(uint8) newPosture), true);
 
 	setTurnScale(CreaturePosture::instance()->getTurnScale(
-					(uint8) newPosture), true);
+			(uint8) newPosture), true);
 
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
@@ -1680,6 +1680,11 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	 * in the schematic group.
 	 */
 	PlayerObject* ghost = getPlayerObject();
+
+	if (hasState(CreatureState::ALERT)) {
+		removeStateBuff(CreatureState::ALERT);
+		setMoodString("neutral");
+	}
 
 	if (ghost == NULL)
 		return;
