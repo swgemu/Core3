@@ -1682,7 +1682,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	PlayerObject* ghost = getPlayerObject();
 
 	if (hasState(CreatureState::ALERT)) {
-		removeStateBuff(CreatureState::ALERT);
+		clearState(CreatureState::ALERT);
 		setMoodString("neutral");
 	}
 
