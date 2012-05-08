@@ -286,6 +286,10 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	//info("deleting from database", true);
 
+	if (isPlayerCreature()) {
+		assert(0 && "attempting to delete a player creature from database");
+	}
+
 	ZoneServer* server = getZoneServer();
 
 	server->destroyObjectFromDatabase(getObjectID());
