@@ -112,8 +112,8 @@ public:
 
 			} else {
 				quantity += incomingResource->getQuantity();
-				incomingResource->setQuantity(0, true);
 				currentQuantity = incomingResource->getQuantity();
+				incomingResource->setQuantity(0, true);
 			}
 
 			VectorMapEntry<ManagedReference<SceneObject*>, int > entry(parent, currentQuantity);
@@ -159,7 +159,17 @@ public:
 			}
 
 			if(!found) {
-				parent->transferObject(currentSpawn->createResource(parents.get(i)), -1, true);
+				ManagedReference<ResourceContainer*> newContainer = currentSpawn->createResource(parents.get(i));
+				if(newContainer != NULL && newContainer->getQuantity() > 0) {
+					if(parent->transferObject(newContainer, -1, false)) {
+						parent->broadcastObject(newContainer, true);
+					} else {
+						error("Unable to return resource to parent, transfer failed");
+					}
+				} else {
+					error("Unable to return resource to parent, NULL container");
+				}
+
 			}
 		}
 
