@@ -1497,7 +1497,8 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 
 	tradeContainer->addTradeItem(inventoryObject);
 
-	inventoryObject->sendWithoutParentTo(receiver);
+	inventory->sendWithoutContainerObjectsTo(receiver);
+	inventoryObject->sendTo(receiver, true);
 
 	AddItemMessage* msg = new AddItemMessage(itemID);
 	receiver->sendMessage(msg);
