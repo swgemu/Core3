@@ -7,7 +7,7 @@
 
 #include "DeliverMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
-
+#include "server/ServerCore.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -165,7 +165,7 @@ void DeliverMissionObjectiveImplementation::complete() {
 }
 
 void DeliverMissionObjectiveImplementation::despawnNpcs() {
-	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
 	if (despawnMissionNpcsTask == NULL) {
