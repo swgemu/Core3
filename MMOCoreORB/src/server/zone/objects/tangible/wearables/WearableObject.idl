@@ -64,6 +64,7 @@ class WearableObject extends TangibleObject {
 	
 	public WearableObject() {
 		socketsGenerated = false;
+		socketCount = 0;
 		wearableSkillMods.setNoDuplicateInsertPlan();
 		Logger.setLoggingName("WearableObject");
 	}

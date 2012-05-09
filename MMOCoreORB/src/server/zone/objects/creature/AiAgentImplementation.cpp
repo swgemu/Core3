@@ -354,9 +354,13 @@ void AiAgentImplementation::selectWeapon() {
 	float diff = 1024.f;
 	WeaponObject* finalWeap = getWeapon();
 
+	Vector<WeaponObject*> selections(5, 5);
+
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weap = weapons.get(i);
+
 		float range = abs(weap->getIdealRange() - dist);
+
 		if (range < diff) {
 			diff = range;
 			finalWeap = weap;
