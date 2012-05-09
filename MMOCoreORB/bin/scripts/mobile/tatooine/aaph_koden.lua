@@ -31,7 +31,8 @@ aaph_koden = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(aaph_koden, "aaph_koden")

@@ -39,7 +39,8 @@ weequay_thug = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(weequay_thug, "weequay_thug")

@@ -37,9 +37,10 @@ evil_hermit = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(evil_hermit, "evil_hermit")

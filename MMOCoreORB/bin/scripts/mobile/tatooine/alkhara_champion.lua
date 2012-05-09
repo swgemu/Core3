@@ -1,8 +1,8 @@
 alkhara_champion = Creature:new {
 	objectName = "@mob/creature_names:alkhara_champion",
-	socialGroup = "Alkhara",
-	pvpFaction = "Alkhara",
-	faction = "",
+	socialGroup = "alkhara",
+	pvpFaction = "alkhara",
+	faction = "alkhara",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -39,7 +39,8 @@ alkhara_champion = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(alkhara_champion, "alkhara_champion")

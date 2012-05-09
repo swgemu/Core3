@@ -25,10 +25,10 @@ slaver = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_slaver.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
-	attacks = merge(brawlernovice,marksmannovice)
+	weapons = {"pirate_weapons_light"},
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(slaver, "slaver")

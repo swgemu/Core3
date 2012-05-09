@@ -1,8 +1,8 @@
 gamorrean_guard = Creature:new {
 	objectName = "@mob/creature_names:gamorrean_guard",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -21,7 +21,7 @@ gamorrean_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -30,7 +30,8 @@ gamorrean_guard = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gamorrean_guard, "gamorrean_guard")

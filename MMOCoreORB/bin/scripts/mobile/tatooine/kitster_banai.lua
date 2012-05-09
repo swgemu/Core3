@@ -27,7 +27,7 @@ kitster_banai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_kitster_banai.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 blerx_tango = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bith_base_male",
 	customName = "Blerx Tango",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -31,7 +31,8 @@ blerx_tango = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(blerx_tango, "blerx_tango")

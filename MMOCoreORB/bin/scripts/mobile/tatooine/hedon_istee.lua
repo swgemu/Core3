@@ -1,7 +1,7 @@
 hedon_istee = Creature:new {
 	objectName = "",
 	customName = "Hedon Istee",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

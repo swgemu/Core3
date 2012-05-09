@@ -55,16 +55,5 @@ function getCreatureTemplate(crc)
 	return CreatureTemplates[crc]
 end
 
-function merge(a, ...)
-        r = a
-        for j,k in ipairs(arg) do
-		table.foreach(k, function(i,v)table.insert(r,v) end )
-		end
-		
-      return r
-		
-end
-
-includeFile("creatureskills.lua")
 includeFile("conversation.lua")
 includeFile("serverobjects.lua")

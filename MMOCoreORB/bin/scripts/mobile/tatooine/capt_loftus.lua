@@ -1,6 +1,6 @@
 capt_loftus = Creature:new {
 	objectName = "",
-	customName = "Capt. Loftus",
+	customName = "Captain Hantor Loftus",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -31,7 +31,8 @@ capt_loftus = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(capt_loftus, "capt_loftus")

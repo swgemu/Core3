@@ -21,16 +21,17 @@ fawn_moonraiser = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(fawn_moonraiser, "fawn_moonraiser")

@@ -1,8 +1,8 @@
 moisture_farmer = Creature:new {
 	objectName = "@mob/creature_names:moisture_farmer",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
@@ -25,10 +25,10 @@ moisture_farmer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff", "object/mobile/dressed_commoner_tatooine_bith_female_02.iff", "object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff"},
+	templates = {"object/mobile/dressed_tatooine_moisture_farmer.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
-	attacks = merge(brawlernovice,marksmannovice)
+	weapons = {"rebel_weapons_light"},
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(moisture_farmer, "moisture_farmer")

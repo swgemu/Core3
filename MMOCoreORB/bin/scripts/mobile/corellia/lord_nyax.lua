@@ -37,7 +37,7 @@ lord_nyax = Creature:new {
 			lootChance = 6000000
 		}
 	},
-	weapons = {"nyaxs_weapons"},
+	weapons = {"nyax's_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

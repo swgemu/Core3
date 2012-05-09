@@ -1,8 +1,8 @@
 desert_demon_brawler = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_brawler",
-	socialGroup = "Desert Demon",
-	pvpFaction = "Desert Demon",
-	faction = "",
+	socialGroup = "desert_demon",
+	pvpFaction = "desert_demon",
+	faction = "desert_demon",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -39,7 +39,8 @@ desert_demon_brawler = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(desert_demon_brawler, "desert_demon_brawler")

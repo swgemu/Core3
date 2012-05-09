@@ -1,8 +1,8 @@
 jawa_smuggler = Creature:new {
 	objectName = "@mob/creature_names:jawa_smuggler",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,
@@ -40,9 +40,10 @@ jawa_smuggler = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_smuggler, "jawa_smuggler")

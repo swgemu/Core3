@@ -1,8 +1,8 @@
 desert_demon_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_bodyguard",
-	socialGroup = "Desert Demon",
-	pvpFaction = "Desert Demon",
-	faction = "",
+	socialGroup = "desert_demon",
+	pvpFaction = "desert_demon",
+	faction = "desert_demon",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -39,7 +39,8 @@ desert_demon_bodyguard = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(desert_demon_bodyguard, "desert_demon_bodyguard")

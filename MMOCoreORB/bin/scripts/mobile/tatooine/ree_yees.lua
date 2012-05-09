@@ -1,5 +1,5 @@
 ree_yees = Creature:new {
-	objectName = "@mob/creature_names:ree_yees",
+	objectName = "@theme_park_name:ree_yees",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

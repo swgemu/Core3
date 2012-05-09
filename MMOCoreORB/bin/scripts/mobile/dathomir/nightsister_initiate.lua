@@ -43,7 +43,8 @@ nightsister_initiate = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlerpole)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_initiate, "nightsister_initiate")

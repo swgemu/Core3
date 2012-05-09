@@ -39,7 +39,8 @@ dune_stalker_leader = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(dune_stalker_leader, "dune_stalker_leader")

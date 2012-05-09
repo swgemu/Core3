@@ -28,9 +28,10 @@ trandosian_slaver = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(trandosian_slaver, "trandosian_slaver")

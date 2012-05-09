@@ -1,5 +1,5 @@
 coris_mao = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bith_base_female",
 	customName = "Coris Mao",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -31,7 +31,8 @@ coris_mao = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(coris_mao, "coris_mao")

@@ -25,10 +25,10 @@ insane_kitonak = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/kitonak_male.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
-	attacks = merge(brawlernovice,marksmannovice)
+	weapons = {"rebel_weapons_light"},
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(insane_kitonak, "insane_kitonak")

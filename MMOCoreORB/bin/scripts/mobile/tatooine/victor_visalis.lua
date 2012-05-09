@@ -1,5 +1,5 @@
 victor_visalis = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Victor Visalis",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",

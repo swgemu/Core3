@@ -27,11 +27,12 @@ scrib_leras = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hutt_medic2_twilek_male_01.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(scrib_leras, "scrib_leras")

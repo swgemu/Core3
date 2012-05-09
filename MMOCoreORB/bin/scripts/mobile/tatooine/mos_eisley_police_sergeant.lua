@@ -1,8 +1,8 @@
 mos_eisley_police_sergeant = Creature:new {
 	objectName = "@mob/creature_names:mos_eisley_police_sergeant",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -28,9 +28,10 @@ mos_eisley_police_sergeant = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_sergeant.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(mos_eisley_police_sergeant, "mos_eisley_police_sergeant")

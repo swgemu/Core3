@@ -1,5 +1,5 @@
 bren_kingal = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:mos_taike_guard_young",
 	customName = "Bren Kingal",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
@@ -22,12 +22,12 @@ bren_kingal = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates = {"object/mobile/mos_taike_guard_young.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

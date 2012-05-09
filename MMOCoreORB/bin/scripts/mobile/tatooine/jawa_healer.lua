@@ -1,8 +1,8 @@
 jawa_healer = Creature:new {
 	objectName = "@mob/creature_names:jawa_healer",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -40,9 +40,10 @@ jawa_healer = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_healer, "jawa_healer")

@@ -1,8 +1,8 @@
 alkhara_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:alkhara_lieutenant",
-	socialGroup = "Alkhara",
-	pvpFaction = "Alkhara",
-	faction = "",
+	socialGroup = "alkhara",
+	pvpFaction = "alkhara",
+	faction = "alkhara",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -39,7 +39,8 @@ alkhara_lieutenant = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(alkhara_lieutenant, "alkhara_lieutenant")

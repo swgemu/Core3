@@ -1,8 +1,8 @@
 desert_swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:desert_swooper_leader",
-	socialGroup = "Swoop",
-	pvpFaction = "Swoop",
-	faction = "",
+	socialGroup = "swoop",
+	pvpFaction = "swoop",
+	faction = "swoop",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -37,9 +37,10 @@ desert_swooper_leader = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(desert_swooper_leader, "desert_swooper_leader")

@@ -1,8 +1,8 @@
 thief = Creature:new {
 	objectName = "@mob/creature_names:thief",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -37,9 +37,10 @@ thief = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(thief, "thief")

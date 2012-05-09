@@ -1,8 +1,8 @@
 jawa_avenger = Creature:new {
 	objectName = "@mob/creature_names:jawa_avenger",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -42,7 +42,8 @@ jawa_avenger = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_avenger, "jawa_avenger")

@@ -1,6 +1,6 @@
 keanna_likyna = Creature:new {
 	objectName = "",
-	customName = "Keanna Likyna",
+	customName = "Keanna Li'kyna",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",

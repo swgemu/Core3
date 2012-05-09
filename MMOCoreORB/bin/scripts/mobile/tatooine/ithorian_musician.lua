@@ -1,6 +1,6 @@
 ithorian_musician = Creature:new {
 	objectName = "",
-	customname = "Ithorian Musician",
+	customname = "Mellaw Doowan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,12 +22,12 @@ ithorian_musician = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

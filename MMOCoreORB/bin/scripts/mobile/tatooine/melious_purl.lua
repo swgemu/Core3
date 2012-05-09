@@ -1,6 +1,5 @@
 melious_purl = Creature:new {
-	objectName = "",
-	customName = "Melios Purl",
+	objectName = "@theme_park_name:melious_purl",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

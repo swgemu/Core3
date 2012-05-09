@@ -1,7 +1,7 @@
 ikka_gesul = Creature:new {
 	objectName = "",
 	customName = "Ikka Gesul",
-	socialGroup = "Townperson",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

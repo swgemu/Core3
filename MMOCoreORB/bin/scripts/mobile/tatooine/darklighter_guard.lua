@@ -28,9 +28,10 @@ darklighter_guard = Creature:new {
 
 	templates = {"object/mobile/darklight_guard.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(darklighter_guard, "darklighter_guard")

@@ -1,6 +1,7 @@
 gold_two = Creature:new {
-	objectName = "@mob/creature_names:Gold Two",
-	socialGroup = "Townperson",
+	objectName = "",
+	customName = "Gold Two",
+	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,
@@ -21,16 +22,17 @@ gold_two = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_gold_two.iff"},
 	lootGroups = {},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(gold_two, "gold_two")

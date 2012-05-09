@@ -26,7 +26,7 @@ farmers_wife = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_quest_farmer_wife.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

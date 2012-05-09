@@ -1,6 +1,6 @@
 lome_prestar = Creature:new {
-	objectName = "",
-	customName = "Lome Prestar",
+	objectName = "@mob/creature_names:mos_taike_guard_old",
+	customName = "Lorne Prestar",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -22,12 +22,12 @@ lome_prestar = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/mos_taike_guard_old.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
