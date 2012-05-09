@@ -176,25 +176,27 @@ int CraftingSessionImplementation::clearSession() {
 		manufactureSchematic = NULL;
 	}
 
-	Locker locker2(craftingTool);
+	if (craftingTool != NULL) {
+		Locker locker2(craftingTool);
 
-	// Remove all items that aren't the prototype
-	while (craftingTool->getContainerObjectsSize() > 1) {
-		craftingTool->getContainerObject(1)->destroyObjectFromWorld(true);
-	}
+		// Remove all items that aren't the prototype
+		while (craftingTool->getContainerObjectsSize() > 1) {
+			craftingTool->getContainerObject(1)->destroyObjectFromWorld(true);
+		}
 
-	craftingTool->dropSlottedObject("crafted_components");
+		craftingTool->dropSlottedObject("crafted_components");
 
-	if (prototype != NULL) {
+		if (prototype != NULL) {
 
-		Locker locker3(prototype);
+			Locker locker3(prototype);
 
-		if (craftingTool->isReady()) {
+			if (craftingTool->isReady()) {
 
-			if (prototype->getParent() == craftingTool) {
-				prototype->destroyObjectFromWorld(true);
+				if (prototype->getParent() == craftingTool) {
+					prototype->destroyObjectFromWorld(true);
+				}
+				prototype = NULL;
 			}
-			prototype = NULL;
 		}
 	}
 
