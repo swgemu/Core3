@@ -2829,9 +2829,12 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
+	String escapedGalaxy = galaxy;
+	Database::escapeString(escapedGalaxy);
+
 	try {
 		StringBuffer query;
-		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1), now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << escapedGalaxy << "' LIMIT 1), now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2875,9 +2878,12 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
+	String escapedGalaxy = galaxy;
+	Database::escapeString(escapedGalaxy);
+
 	try {
 		StringBuffer query;
-		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << galaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << escapedGalaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2898,9 +2904,12 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
+	String escapedName = name;
+	Database::escapeString(escapedName);
+
 	try {
 		StringBuffer query;
-		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << name << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2936,9 +2945,12 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
+	String escapedName = name;
+	Database::escapeString(escapedName);
+
 	try {
 		StringBuffer query;
-		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << name << "' and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << escapedName << "' and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
