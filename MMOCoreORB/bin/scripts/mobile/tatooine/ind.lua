@@ -1,5 +1,5 @@
 ind = Creature:new {
-	objectName = "@npc_name:gran_base_male",
+	objectName = "",
 	customName = "Ind",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",
@@ -27,7 +27,7 @@ ind = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ind.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

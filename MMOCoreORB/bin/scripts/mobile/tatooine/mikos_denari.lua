@@ -27,7 +27,7 @@ mikos_denari = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_mikos_denari.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

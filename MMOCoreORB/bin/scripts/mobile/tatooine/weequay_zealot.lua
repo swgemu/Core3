@@ -39,8 +39,7 @@ weequay_zealot = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(weequay_zealot, "weequay_zealot")

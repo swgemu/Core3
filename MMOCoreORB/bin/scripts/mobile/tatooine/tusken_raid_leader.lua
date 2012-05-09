@@ -1,8 +1,8 @@
 tusken_raid_leader = Creature:new {
 	objectName = "@mob/creature_names:tusken_raid_leader",
-	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
-	faction = "tusken_raider",
+	socialGroup = "Tusken Raider",
+	pvpFaction = "Tusken Raider",
+	faction = "",
 	level = 49,
 	chanceHit = 0.49,
 	damageMin = 390,

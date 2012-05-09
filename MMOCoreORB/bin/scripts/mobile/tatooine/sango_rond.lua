@@ -22,14 +22,14 @@ sango_rond = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_sango_rond.iff"},
+	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

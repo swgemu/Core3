@@ -1,8 +1,8 @@
 spice_fiend = Creature:new {
 	objectName = "@mob/creature_names:spice_fiend",
-	socialGroup = "thug",
-	pvpFaction = "thug",
-	faction = "thug",
+	socialGroup = "Thug",
+	pvpFaction = "Thug",
+	faction = "",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -25,10 +25,10 @@ spice_fiend = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_spice_fiend.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_fiend, "spice_fiend")

@@ -40,10 +40,9 @@ nightsister_elder = Creature:new {
 			lootChance = 7300000
 		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_elder, "nightsister_elder")

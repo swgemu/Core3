@@ -43,8 +43,7 @@ nightsister_sentinel = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_sentinel, "nightsister_sentinel")

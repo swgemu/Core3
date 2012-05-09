@@ -1,6 +1,6 @@
 g_5po = Creature:new {
-	objectName = "@droid_name:3po_base",
-	customName = "G-5P0",
+	objectName = "",
+	customName = "G-5PO",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

@@ -1,5 +1,6 @@
 lt_harburik = Creature:new {
-	objectName = "@npc_name:lt_harburik",
+	objectName = "",
+	customName = "Lt. Harburik",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

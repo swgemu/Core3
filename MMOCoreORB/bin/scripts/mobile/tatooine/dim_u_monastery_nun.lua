@@ -39,8 +39,7 @@ dim_u_monastery_nun = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlerua)
 }
 
 CreatureTemplates:addCreatureTemplate(dim_u_monastery_nun, "dim_u_monastery_nun")

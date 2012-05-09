@@ -1,5 +1,5 @@
 mat_rags = Creature:new {
-	objectName = "@npc_name:human_base_male",
+	objectName = "",
 	customName = "Mat Rags",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -27,7 +27,7 @@ mat_rags = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_mat_rags.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

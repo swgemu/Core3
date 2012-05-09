@@ -1,5 +1,5 @@
 kaeline_ungasan = Creature:new {
-	objectName = "@npc_name:human_base_male",
+	objectName = "",
 	customName = "Kaeline Ungasan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -27,7 +27,7 @@ kaeline_ungasan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_kaeline_ungasan.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

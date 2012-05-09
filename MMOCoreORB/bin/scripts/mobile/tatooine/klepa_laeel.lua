@@ -26,7 +26,7 @@ klepa_laeel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist05.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,9 +1,9 @@
 kormund_thrylle = Creature:new {
 	objectName = "",
 	customName = "Kormund Thrylle",
-	socialGroup = "rebel",
-	pvpFaction = "rebel",
-	faction = "rebel",
+	socialGroup = "Townsperson",
+	pvpFaction = "",
+	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

@@ -1,8 +1,8 @@
 tusken_bantha = Creature:new {
 	objectName = "@mob/creature_names:tusken_bantha",
-	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
-	faction = "tusken_raider",
+	socialGroup = "Tusken Raider",
+	pvpFaction = "",
+	faction = "",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 260,

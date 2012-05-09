@@ -1,8 +1,8 @@
 water_bug = Creature:new {
 	objectName = "@mob/creature_names:water_bug",
-	socialGroup = "thug",
-	pvpFaction = "thug",
-	faction = "thug",
+	socialGroup = "Thug",
+	pvpFaction = "Thug",
+	faction = "",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

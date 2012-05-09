@@ -29,10 +29,9 @@ huff_darklighter = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(huff_darklighter, "huff_darklighter")

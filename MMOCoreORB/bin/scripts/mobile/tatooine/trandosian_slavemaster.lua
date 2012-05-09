@@ -26,12 +26,11 @@ trandosian_slavemaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_trandoshan_slavemaster.iff"},
+	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(trandosian_slavemaster, "trandosian_slavemaster")

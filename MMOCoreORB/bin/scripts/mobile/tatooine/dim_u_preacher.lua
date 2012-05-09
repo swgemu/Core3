@@ -39,8 +39,7 @@ dim_u_preacher = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlerua)
 }
 
 CreatureTemplates:addCreatureTemplate(dim_u_preacher, "dim_u_preacher")

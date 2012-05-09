@@ -1,8 +1,8 @@
 tusken_chief = Creature:new {
 	objectName = "@mob/creature_names:tusken_chief",
-	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
-	faction = "tusken_raider",
+	socialGroup = "Tusken Raider",
+	pvpFaction = "Tusken Raider",
+	faction = "",
 	level = 43,
 	chanceHit = 0.46,
 	damageMin = 365,
@@ -41,8 +41,7 @@ tusken_chief = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_chief, "tusken_chief")

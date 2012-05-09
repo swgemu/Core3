@@ -1,8 +1,8 @@
 tusken_carnage_champion = Creature:new {
-	objectName = "@mob/creature_names:tusken_carnage_champion",
-	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
-	faction = "tusken_raider",
+	objectName = "@mob/creature_names:Tusken_carnage_champion",
+	socialGroup = "Tusken Raider",
+	pvpFaction = "Tusken Raider",
+	faction = "",
 	level = 116,
 	chanceHit = 3.85,
 	damageMin = 750,
@@ -41,8 +41,7 @@ tusken_carnage_champion = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,tkamaster,marksmanmaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_carnage_champion, "tusken_carnage_champion")

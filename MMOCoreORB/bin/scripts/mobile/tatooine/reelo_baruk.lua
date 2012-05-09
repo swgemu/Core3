@@ -1,5 +1,5 @@
 reelo_baruk = Creature:new {
-	objectName = "@theme_park_name:reelo_baruk",
+	objectName = "@mob/creature_names:reelo_baruk",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

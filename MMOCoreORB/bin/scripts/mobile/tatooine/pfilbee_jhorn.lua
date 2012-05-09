@@ -1,9 +1,9 @@
 pfilbee_jhorn = Creature:new {
 	objectName = "",
 	customName = "Pfilbee Jhorn",
-	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "imperial",
+	socialGroup = "Townsperson",
+	pvpFaction = "",
+	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -27,7 +27,7 @@ pfilbee_jhorn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_pfilbee_jhorn.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 tatooine_militiaman = Creature:new {
 	objectName = "@mob/creature_names:tatooine_militiaman",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
+	faction = "",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,
@@ -26,12 +26,11 @@ tatooine_militiaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_militiaman.iff", "object/mobile/dressed_eisley_officer_trandoshan_female_01.iff", "object/mobile/dressed_eisley_officer_aqualish_male_01.iff"},
+	templates = {"object/mobile/dressed_tatooine_militiaman.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(tatooine_militiaman, "tatooine_militiaman")

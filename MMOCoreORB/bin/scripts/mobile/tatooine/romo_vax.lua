@@ -1,5 +1,5 @@
 romo_vax = Creature:new {
-	objectName = "@npc_name:human_base_male",
+	objectName = "",
 	customName = "Romo Vax",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
@@ -27,7 +27,7 @@ romo_vax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_cobral_thief_human_male_01.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

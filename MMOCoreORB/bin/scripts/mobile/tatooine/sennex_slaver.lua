@@ -26,18 +26,7 @@ sennex_slaver = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_sennex_pirate_01.iff",
-		"object/mobile/dressed_sennex_pirate_02.iff",
-		"object/mobile/dressed_sennex_pirate_03.iff",
-		"object/mobile/dressed_sennex_pirate_04.iff",
-		"object/mobile/dressed_sennex_pirate_05.iff",
-		"object/mobile/dressed_sennex_pirate_06.iff",
-		"object/mobile/dressed_sennex_pirate_07.iff",
-		"object/mobile/dressed_sennex_pirate_08.iff",
-		"object/mobile/dressed_sennex_pirate_09.iff",
-		"object/mobile/dressed_sennex_pirate_10.iff",
-		"object/mobile/dressed_sennex_pirate_11.iff",
-		"object/mobile/dressed_sennex_pirate_12.iff"},
+	templates = {"object/mobile/dressed_sennex_pirate_05.iff"},
 	lootGroups = {
 	    {
 			groups = {
@@ -50,8 +39,7 @@ sennex_slaver = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(sennex_slaver, "sennex_slaver")

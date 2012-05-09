@@ -29,10 +29,9 @@ kwin_moonraiser = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(kwin_moonraiser, "kwin_moonraiser")

@@ -1,8 +1,8 @@
 mos_entha_police_officer = Creature:new {
 	objectName = "@mob/creature_names:mos_entha_police_officer",
-	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "imperial",
+	socialGroup = "Imperial",
+	pvpFaction = "Imperial",
+	faction = "",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -30,8 +30,7 @@ mos_entha_police_officer = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(mos_entha_police_officer, "mos_entha_police_officer")

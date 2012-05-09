@@ -1,5 +1,5 @@
 gerrik_lond = Creature:new {
-	objectName = "@mob/creature_names:gerrick_lond",
+	objectName = "@mob/creature_names:Gerrik Lond",
 	socialGroup = "Jabba",
 	pvpFaction = "Jabba",
 	faction = "",

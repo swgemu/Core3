@@ -1,7 +1,7 @@
 farious_gletch = Creature:new {
 	objectName = "",
 	customName = "Farious Gletch",
-	socialGroup = "Townsperson",
+	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

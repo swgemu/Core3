@@ -1,6 +1,6 @@
 lilas_dinhint = Creature:new {
 	objectName = "",
-	customName = "Lilas Dinhint (museum curator)",
+	customName = "Lilas Dinhint",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

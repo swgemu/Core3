@@ -1,5 +1,6 @@
 boshek = Creature:new {
-	objectName = "@theme_park_name:boshek",
+	objectName = "",
+	customName = "Boshek",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -30,8 +31,7 @@ boshek = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(boshek, "boshek")

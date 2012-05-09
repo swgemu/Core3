@@ -1,8 +1,8 @@
 moisture_thief = Creature:new {
 	objectName = "@mob/creature_names:moisture_thief",
-	socialGroup = "thug",
-	pvpFaction = "thug",
-	faction = "thug",
+	socialGroup = "Thug",
+	pvpFaction = "Thug",
+	faction = "",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -25,7 +25,7 @@ moisture_thief = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_moisture_thief.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = {}

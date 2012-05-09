@@ -1,8 +1,9 @@
 prefect_talmont = Creature:new {
-	objectName = "@mob/creature_names:prefect_talmont",
-	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "imperial",
+	objectName = "",
+	customName = "Phinea Shantee",
+	socialGroup = "Townsperson",
+	pvpFaction = "",
+	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

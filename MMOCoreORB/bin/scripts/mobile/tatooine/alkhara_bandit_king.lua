@@ -1,8 +1,8 @@
 alkhara_bandit_king = Creature:new {
 	objectName = "@mob/creature_names:alkhara_bandit_king",
-	socialGroup = "alkhara",
-	pvpFaction = "alkhara",
-	faction = "alkhara",
+	socialGroup = "Alkhara",
+	pvpFaction = "Alkhara",
+	faction = "",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -39,8 +39,7 @@ alkhara_bandit_king = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(alkhara_bandit_king, "alkhara_bandit_king")

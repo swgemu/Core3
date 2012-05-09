@@ -30,8 +30,7 @@ rodian_clan_warchief = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_clan_warchief, "rodian_clan_warchief")

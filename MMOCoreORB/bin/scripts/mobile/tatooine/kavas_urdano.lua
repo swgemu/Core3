@@ -1,5 +1,5 @@
 kavas_urdano = Creature:new {
-	objectName = "@npc_name:chiss_patron",
+	objectName = "",
 	customName = "Kavas Urdano",
 	socialGroup = "Valarian",
 	pvpFaction = "Valarian",

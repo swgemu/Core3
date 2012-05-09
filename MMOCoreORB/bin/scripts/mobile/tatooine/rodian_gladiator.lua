@@ -28,10 +28,9 @@ rodian_gladiator = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_rodian_gladiator.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_gladiator, "rodian_gladiator")

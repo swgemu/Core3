@@ -25,10 +25,10 @@ plague_victim = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_plague_victim.iff"},
+	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	weapons = {"novice_weapons"},
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(plague_victim, "plague_victim")

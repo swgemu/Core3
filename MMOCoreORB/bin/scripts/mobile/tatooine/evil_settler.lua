@@ -37,10 +37,9 @@ evil_settler = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(evil_settler, "evil_settler")

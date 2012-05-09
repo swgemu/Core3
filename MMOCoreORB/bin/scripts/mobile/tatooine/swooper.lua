@@ -1,8 +1,8 @@
 swooper = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	socialGroup = "swoop",
-	pvpFaction = "swoop",
-	faction = "swoop",
+	socialGroup = "Swoop",
+	pvpFaction = "Swoop",
+	faction = "",
 	level = 2,
 	chanceHit = 0.21,
 	damageMin = 35,
@@ -37,10 +37,9 @@ swooper = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(swooper, "swooper")

@@ -1,8 +1,8 @@
 jawa_engineer = Creature:new {
 	objectName = "@mob/creature_names:jawa_engineer",
-	socialGroup = "jawa",
-	pvpFaction = "jawa",
-	faction = "jawa",
+	socialGroup = "Jawa",
+	pvpFaction = "Jawa",
+	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -40,10 +40,9 @@ jawa_engineer = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_engineer, "jawa_engineer")

@@ -1,5 +1,5 @@
 jilljoo_jab = Creature:new {
-	objectName = "@npc_name:twilek_base_female",
+	objectName = "",
 	customName = "Jilljoo Jab",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -27,7 +27,7 @@ jilljoo_jab = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_jilljoo_jab.iff"},
+	templates = {},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

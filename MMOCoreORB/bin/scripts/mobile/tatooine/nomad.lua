@@ -1,8 +1,8 @@
 nomad = Creature:new {
 	objectName = "@mob/creature_names:nomad",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
+	faction = "",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,
@@ -25,10 +25,10 @@ nomad = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_nomad.iff"},
+	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	weapons = {"novice_weapons"},
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(nomad, "nomad")

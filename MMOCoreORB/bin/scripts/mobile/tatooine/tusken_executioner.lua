@@ -1,8 +1,8 @@
 tusken_executioner = Creature:new {
 	objectName = "@mob/creature_names:tusken_executioner",
-	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
-	faction = "tusken_raider",
+	socialGroup = "Tusken Raider",
+	pvpFaction = "Tusken Raider",
+	faction = "",
 	level = 263,
 	chanceHit = 23.5,
 	damageMin = 1645,

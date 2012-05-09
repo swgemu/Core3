@@ -28,10 +28,9 @@ fugitive = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_fugitive.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(fugitive, "fugitive")

@@ -1,8 +1,8 @@
 jawa_thief = Creature:new {
 	objectName = "@mob/creature_names:jawa_thief",
-	socialGroup = "jawa",
-	pvpFaction = "jawa",
-	faction = "jawa",
+	socialGroup = "Jawa",
+	pvpFaction = "Jawa",
+	faction = "",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -42,8 +42,7 @@ jawa_thief = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_thief, "jawa_thief")

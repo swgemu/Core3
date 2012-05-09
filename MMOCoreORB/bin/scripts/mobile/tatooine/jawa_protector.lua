@@ -1,8 +1,8 @@
 jawa_protector = Creature:new {
 	objectName = "@mob/creature_names:jawa_protector",
-	socialGroup = "jawa",
-	pvpFaction = "jawa",
-	faction = "jawa",
+	socialGroup = "Jawa",
+	pvpFaction = "Jawa",
+	faction = "",
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -42,8 +42,7 @@ jawa_protector = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_protector, "jawa_protector")
