@@ -41,10 +41,9 @@ nightsister_spell_weaver = Creature:new {
 			lootChance = 5700000
 		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_spell_weaver, "nightsister_spell_weaver")
