@@ -100,8 +100,7 @@ public:
 
 			ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-
-			if (playerObject->getForcePower() <= forceCost) {
+			if (playerObject != NULL && playerObject->getForcePower() <= forceCost) {
 				creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
 
 				return GENERALERROR;
@@ -119,8 +118,8 @@ public:
 					return GENERALERROR;
 				}
 
-
-				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+				if (playerObject != NULL)
+					playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 
 			} catch (Exception& e) {
 				error("unreported exception caught in ForcePowersQueueCommand::doCombatAction");
