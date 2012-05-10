@@ -519,7 +519,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			} catch (Exception& e) {
 				error(e.getMessage());
 			}
-		} else if (!freeGodMode) {
+		} else if (freeGodMode) {
 			ghost->setAdminLevel(2);
 			skillManager->addAbility(ghost, "admin", false);
 		}
