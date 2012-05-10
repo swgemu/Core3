@@ -216,7 +216,7 @@ public:
 
 			float err = fabs(val - positionZ);
 
-			printf("collision error %f\n value %f", err, val);
+			//printf("collision error %f\n value %f", err, val);
 
 			if (err < minErr) {
 				minErr = err;
