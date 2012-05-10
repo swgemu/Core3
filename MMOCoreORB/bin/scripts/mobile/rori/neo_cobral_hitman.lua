@@ -1,8 +1,8 @@
 neo_cobral_hitman = Creature:new {
 	objectName = "@mob/creature_names:cobral_hitman",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 220,
@@ -26,7 +26,10 @@ neo_cobral_hitman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_hitman_human_female_01.iff",
+		"object/mobile/dressed_cobral_hitman_human_male_01.iff"},
+
 	lootGroups = {
 	    {
 			groups = {

@@ -1,6 +1,6 @@
 oxil_sarban = Creature:new {
 	objectName = "",
-	costumName = "Oxil Sarban",
+	customName = "Oxil Sarban",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,12 +22,12 @@ oxil_sarban = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_oxil_sarban.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 garyns_mugger = Creature:new {
-	objectName = "@mob/creature_names:Garyn's mugger",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_mugger",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,9 @@ garyns_mugger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_mugger_twk_female_01.iff","object/mobile/dressed_garyn_mugger_twk_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_mugger_twk_female_01.iff",
+		"object/mobile/dressed_garyn_mugger_twk_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

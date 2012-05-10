@@ -1,8 +1,8 @@
 daktar_bloodmoon = Creature:new {
 	objectName = "@mob/creature_names:daktar_bloodmoon",
-	socialGroup = "Sith Shadow",
-	pvpFaction = "Sith Shadow",
-	faction = "",
+	socialGroup = "sith_shadow",
+	pvpFaction = "sith_shadow",
+	faction = "sith_shadow",
 	level = 115,
 	chanceHit = 1,
 	damageMin = 820,
@@ -26,7 +26,7 @@ daktar_bloodmoon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fs_village_enemies_daktar.iff"},
+	templates = {"object/mobile/dressed_fs_village_enemy_daktar.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -1,9 +1,9 @@
 shaki_hamachil = Creature:new {
 	objectName = "",
 	customName = "Shaki Hamachil",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

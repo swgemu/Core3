@@ -1,8 +1,8 @@
 kobola_pitboss = Creature:new {
 	objectName = "@mob/creature_names:kobola_pitboss",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 22,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,9 @@ kobola_pitboss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_pitboss_trandoshan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_pitboss_trandoshan_male_01.iff",
+		"object/mobile/dressed_kobola_pitboss_trandoshan_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

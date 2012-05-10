@@ -1,8 +1,8 @@
 axkva_min = Creature:new {
 	objectName = "@mob/creature_names:axkva_min",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 302,
 	chanceHit = 30,
 	damageMin = 1645,

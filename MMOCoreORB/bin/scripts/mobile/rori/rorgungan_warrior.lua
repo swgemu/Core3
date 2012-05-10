@@ -1,8 +1,8 @@
 rorgungan_warrior = Creature:new {
 	objectName = "@mob/creature_names:rorgungan_warrior",
-	socialGroup = "Rorgungan",
-	pvpFaction = "Rorgungan",
-	faction = "",
+	socialGroup = "rorgungan",
+	pvpFaction = "rorgungan",
+	faction = "rorgungan",
 	level = 17,
 	chanceHit = 0.310000,
 	damageMin = 170,
@@ -25,7 +25,7 @@ rorgungan_warrior = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

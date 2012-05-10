@@ -1,8 +1,8 @@
 singing_mountain_clan_councilwoman = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_councilwoman",
-	socialGroup = "Mtn. Clan",
-	pvpFaction = "Mtn. Clan",
-	faction = "",
+	socialGroup = "mtn_clan",
+	pvpFaction = "mtn_clan",
+	faction = "mtn_clan",
 	level = 253,
 	chanceHit = 23.5,
 	damageMin = 1395,

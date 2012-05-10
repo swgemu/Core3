@@ -1,8 +1,8 @@
 first_brigade_gunner = Creature:new {
 	objectName = "@mob/creature_names:brigade_gunner",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,7 +26,9 @@ first_brigade_gunner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_gunner_bith_male_01.iff",
+		"object/mobile/dressed_brigade_gunner_bith_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

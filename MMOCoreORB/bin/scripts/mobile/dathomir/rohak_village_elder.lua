@@ -1,8 +1,8 @@
 rohak_village_elder = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_elder",
-	socialGroup = "Force Sensitive villager",
-	pvpFaction = "Force Sensitive villager",
-	faction = "",
+	socialGroup = "fs_villager",
+	pvpFaction = "fs_villager",
+	faction = "fs_villager",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -26,7 +26,7 @@ rohak_village_elder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fs_village_elder.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

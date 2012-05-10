@@ -1,8 +1,8 @@
 nightsister_spell_weaver = Creature:new {
 	objectName = "@mob/creature_names:nightsister_spell_weaver",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 107,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ nightsister_spell_weaver = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dathomir_spider_nightsister_spellweaver.iff"},
+	templates = {"object/mobile/dressed_dathomir_nightsister_spellweaver.iff"},
 	lootGroups = {
 		{
 			groups = {

@@ -1,8 +1,8 @@
 kobola_guard = Creature:new {
 	objectName = "@mob/creature_names:kobola_guard",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -26,7 +26,9 @@ kobola_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff",
+		"object/mobile/dressed_kobola_guard_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

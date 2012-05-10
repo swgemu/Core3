@@ -1,8 +1,8 @@
 spiderclan_elder = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_elder",
-	socialGroup = "Sp. Nightsister",
-	pvpFaction = "Sp. Nightsister",
-	faction = "",
+	socialGroup = "spider_nightsister",
+	pvpFaction = "spider_nightsister",
+	faction = "spider_nightsister",
 	level = 277,
 	chanceHit = 27.25,
 	damageMin = 1520,

@@ -1,5 +1,5 @@
 mourno_draver = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Mourno Draver",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -22,12 +22,12 @@ mourno_draver = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mourno_draver.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

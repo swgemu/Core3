@@ -1,8 +1,8 @@
 narmle_militia_ensign = Creature:new {
 	objectName = "@mob/creature_names:narmle_ensign",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,
@@ -26,7 +26,9 @@ narmle_militia_ensign = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_ensign_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_ensign_human_male_01.iff",
+		"object/mobile/dressed_narmle_ensign_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,8 +1,8 @@
 first_brigade_scout = Creature:new {
 	objectName = "@mob/creature_names:brigade_scout",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -26,7 +26,9 @@ first_brigade_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_scout_trandoshan_male_01.iff",
+		"object/mobile/dressed_brigade_scout_trandoshan_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

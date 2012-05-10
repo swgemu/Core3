@@ -1,6 +1,6 @@
 insane_miner = Creature:new {
 	objectName = "",
-	costumName = "an Insane Miner",
+	customName = "an Insane Miner",
 	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +27,7 @@ insane_miner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kobala_miner_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

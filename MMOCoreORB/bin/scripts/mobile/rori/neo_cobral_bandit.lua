@@ -1,8 +1,8 @@
 neo_cobral_bandit = Creature:new {
 	objectName = "@mob/creature_names:cobral_bandit",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 200,
@@ -26,7 +26,9 @@ neo_cobral_bandit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_bandit_bith_female_01.iff",
+		"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

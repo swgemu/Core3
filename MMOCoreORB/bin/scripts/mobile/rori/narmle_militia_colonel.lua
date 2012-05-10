@@ -1,8 +1,8 @@
 narmle_militia_colonel = Creature:new {
 	objectName = "@mob/creature_names:narmle_colonel",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,
@@ -26,7 +26,9 @@ narmle_militia_colonel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_colonel_rodian_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_colonel_rodian_male_01.iff",
+		"object/mobile/dressed_narmle_colonel_rodian_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

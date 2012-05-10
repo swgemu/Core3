@@ -1,8 +1,8 @@
 first_brigade_sergeant = Creature:new {
 	objectName = "@mob/creature_names:brigade_sergeant",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,7 +26,9 @@ first_brigade_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_sergeant_zabrak_male_01.iff",
+		"object/mobile/dressed_brigade_sergeant_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

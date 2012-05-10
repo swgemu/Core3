@@ -1,8 +1,8 @@
 tough_thug_male_rodian = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,8 @@ tough_thug_male_rodian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff"},
+	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff",
+			"object/mobile/dressed_criminal_thug_rodian_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

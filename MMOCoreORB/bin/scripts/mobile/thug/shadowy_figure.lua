@@ -26,7 +26,10 @@ shadowy_figure = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_assassin_mission_giver_01.iff",
+		"object/mobile/dressed_assassin_mission_giver_02.iff",
+		"object/mobile/dressed_assassin_mission_giver_03.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

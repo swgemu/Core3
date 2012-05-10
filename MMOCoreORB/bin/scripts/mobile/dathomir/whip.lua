@@ -1,8 +1,8 @@
 whip = Creature:new {
 	objectName = "@mob/creature_names:whip",
-	socialGroup = "Force Sensitive villager",
-	pvpFaction = "Force Sensitive villager",
-	faction = "",
+	socialGroup = "fs_villager",
+	pvpFaction = "fs_villager",
+	faction = "fs_villager",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

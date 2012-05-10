@@ -1,8 +1,8 @@
 garyns_prowler = Creature:new {
-	objectName = "@mob/creature_names:Garyn's prowler",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_prowler",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -26,7 +26,9 @@ garyns_prowler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_prowler_trandoshan_female_01.iff","object/mobile/dressed_garyn_prowler_trandoshan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_prowler_trandoshan_female_01.iff",
+		"object/mobile/dressed_garyn_prowler_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

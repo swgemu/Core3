@@ -31,6 +31,7 @@ nalan_cheel = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "figrin_dan_band_outfit",
 	attacks = {
 	}
 }

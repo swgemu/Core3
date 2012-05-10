@@ -1,8 +1,8 @@
 male_zabrak_thug_low = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

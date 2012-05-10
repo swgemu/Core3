@@ -1,8 +1,8 @@
 nightsister_elder = Creature:new {
 	objectName = "@mob/creature_names:nightsister_elder",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 278,
 	chanceHit = 27.25,
 	damageMin = 1520,

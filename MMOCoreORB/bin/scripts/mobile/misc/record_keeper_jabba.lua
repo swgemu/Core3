@@ -1,9 +1,9 @@
 record_keeper_jabba = Creature:new {
 	objectName = "",
-	customName = "record_keeper_jabba",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	customName = "Jabba Record Keeper",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +27,7 @@ record_keeper_jabba = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/theme_park_record_keeper_jabba.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

@@ -28,7 +28,6 @@ junk_dealer = Creature:new {
 
 	templates = {
 			"object/mobile/junk_nathan.iff",
-			"object/mobile/junk_dender.iff",
 			"object/mobile/junk_lila.iff",
 			"object/mobile/junk_malik.iff",
 			"object/mobile/junk_nado.iff",

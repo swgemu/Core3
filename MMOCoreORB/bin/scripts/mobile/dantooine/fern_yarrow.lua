@@ -1,9 +1,8 @@
 fern_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:fern_yarrow",
-	customName = "",
 	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

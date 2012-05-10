@@ -1,8 +1,8 @@
 sergeant_ruwan_tokai = Creature:new {
 	objectName = "@mob/creature_names:sergeant_ruwan_tokai",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -21,11 +21,11 @@ sergeant_ruwan_tokai = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_ruwan_tokai.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

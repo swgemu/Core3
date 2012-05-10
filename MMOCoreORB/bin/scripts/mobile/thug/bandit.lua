@@ -1,8 +1,8 @@
 bandit = Creature:new {
 	objectName = "@mob/creature_names:bandit",
-	socialGroup = "Bandit",
-	pvpFaction = "Bandit",
-	faction = "",
+	socialGroup = "bandit",
+	pvpFaction = "bandit",
+	faction = "bandit",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,

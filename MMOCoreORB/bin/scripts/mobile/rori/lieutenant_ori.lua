@@ -1,8 +1,8 @@
 lieutenant_ori = Creature:new {
 	objectName = "@mob/creature_names:lieutenant_ori",
-	socialGroup = "Rorgungan",
-	pvpFaction = "Rorgungan",
-	faction = "",
+	socialGroup = "rorgungan",
+	pvpFaction = "rorgungan",
+	faction = "rorgungan",
 	level = 33,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -37,7 +37,7 @@ lieutenant_ori = Creature:new {
 			lootChance = 5500000
 		}					
 	},
-	weapons = {"lt._ori's_weapons"},
+	weapons = {"lt_ori_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,9 +1,9 @@
 cobral_mugger = Creature:new {
 	objectName = "",
-	costumName = "a Cobral Mugger",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	customName = "a Neo-Cobral Mugger",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -27,7 +27,9 @@ cobral_mugger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_cobral_mugger_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_cobral_mugger_human_male_01.iff",
+		"object/mobile/dressed_cobral_mugger_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

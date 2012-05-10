@@ -31,6 +31,7 @@ tech_mor = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "figrin_dan_band_outfit",
 	attacks = {
 	}
 }

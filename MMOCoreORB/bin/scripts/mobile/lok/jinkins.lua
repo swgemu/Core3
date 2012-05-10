@@ -1,8 +1,8 @@
 jinkins = Creature:new {
 	objectName = "@mob/creature_names:jinkins",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 22,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -21,7 +21,7 @@ jinkins = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 

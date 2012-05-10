@@ -1,5 +1,5 @@
 radlee_mathiss = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Radlee Mathiss",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -22,12 +22,12 @@ radlee_mathiss = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_radlee_mathiss.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

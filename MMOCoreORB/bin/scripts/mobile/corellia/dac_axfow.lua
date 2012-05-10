@@ -1,8 +1,8 @@
 dac_axfow = Creature:new {
 	objectName = "@npc_spawner_n:dac_axfow",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 210,

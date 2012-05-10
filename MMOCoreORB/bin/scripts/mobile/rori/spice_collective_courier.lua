@@ -1,8 +1,8 @@
 spice_collective_courier = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_courier",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -25,7 +25,7 @@ spice_collective_courier = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_spice_collective_courier_rodian_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

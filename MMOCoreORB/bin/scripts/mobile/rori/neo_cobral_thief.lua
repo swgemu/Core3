@@ -1,8 +1,8 @@
 neo_cobral_thief = Creature:new {
 	objectName = "@mob/creature_names:cobral_thief",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -26,7 +26,10 @@ neo_cobral_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_thief_human_female_01.iff",
+		"object/mobile/dressed_cobral_thief_human_male_01.iff"},
+
 	lootGroups = {
 	    {
 			groups = {

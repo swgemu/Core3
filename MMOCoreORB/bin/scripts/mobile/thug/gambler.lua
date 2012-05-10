@@ -1,8 +1,8 @@
 gambler = Creature:new {
 	objectName = "@mob/creature_names:gambler",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -21,7 +21,7 @@ gambler = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 

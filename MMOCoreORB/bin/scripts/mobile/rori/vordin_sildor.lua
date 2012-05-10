@@ -1,6 +1,6 @@
 vordin_sildor = Creature:new {
 	objectName = "",
-	costumName = "Vordin Sildor",
+	customName = "Vordin Sildor",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ vordin_sildor = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

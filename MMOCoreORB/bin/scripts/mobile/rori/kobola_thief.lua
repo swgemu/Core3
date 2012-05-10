@@ -1,8 +1,8 @@
 kobola_thief = Creature:new {
 	objectName = "@mob/creature_names:kobola_thief",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 90,
@@ -26,7 +26,9 @@ kobola_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_thief_rodian_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_thief_rodian_female_01.iff",
+		"object/mobile/dressed_kobola_thief_rodian_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

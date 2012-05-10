@@ -1,8 +1,8 @@
 nightsister_initiate = Creature:new {
 	objectName = "@mob/creature_names:nightsister_initiate",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 60,
 	chanceHit = 0.5,
 	damageMin = 445,

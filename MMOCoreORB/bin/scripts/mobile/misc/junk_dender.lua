@@ -27,10 +27,11 @@ junk_dender = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/junk_dender.iff"},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "junk_dender_outfit",
 	attacks = {
 	}
 }

@@ -1,6 +1,6 @@
 huff_darklighter = Creature:new {
 	objectName = "",
-	customName = "Hutt Darklighter",
+	customName = "Huff Darklighter",
 	socialGroup = "Darklighter",
 	pvpFaction = "",
 	faction = "",
@@ -22,15 +22,16 @@ huff_darklighter = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/huff_darklighter.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
+	outfit = "huff_darklighter_outfit",
 	attacks = {
 	}
 }

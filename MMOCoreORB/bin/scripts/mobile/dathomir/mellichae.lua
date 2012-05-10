@@ -1,8 +1,8 @@
 mellichae = Creature:new {
 	objectName = "@mob/creature_names:mellichae",
-	socialGroup = "Sith Shadow",
-	pvpFaction = "Sith Shadow",
-	faction = "",
+	socialGroup = "sith_shadow",
+	pvpFaction = "sith_shadow",
+	faction = "sith_shadow",
 	level = 140,
 	chanceHit = 4.750000,
 	damageMin = 945,
@@ -25,7 +25,7 @@ mellichae = Creature:new {
 	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fs_village_enemy_mellichae.iff"},
 	lootGroups = {},
 	weapons = {"dark_jedi_weapons"},
 	attacks = {}

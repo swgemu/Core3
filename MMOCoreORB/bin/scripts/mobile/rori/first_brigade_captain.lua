@@ -1,8 +1,8 @@
 first_brigade_captain = Creature:new {
 	objectName = "@mob/creature_names:brigade_captain",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 220,
@@ -26,7 +26,9 @@ first_brigade_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_marooned_pirate_first_mate_hum_f.iff"},
+	templates = {
+		"object/mobile/dressed_brigade_captain_human_male_01.iff",
+		"object/mobile/dressed_brigade_captain_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

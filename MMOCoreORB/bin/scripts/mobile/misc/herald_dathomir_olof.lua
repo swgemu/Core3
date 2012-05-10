@@ -1,8 +1,8 @@
 herald_dathomir_olof = Creature:new {
 	objectName = "",
 	customName = "Olof",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -27,7 +27,7 @@ herald_dathomir_olof = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_dathomir_nsister_cave_olof.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

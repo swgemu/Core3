@@ -26,7 +26,12 @@ tough_dathomir_prisoner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_dathomir_prisoner_05.iff",
+		"object/mobile/dressed_dathomir_prisoner_04.iff",
+		"object/mobile/dressed_dathomir_prisoner_03.iff",
+		"object/mobile/dressed_dathomir_prisoner_02.iff",
+		"object/mobile/dressed_dathomir_prisoner_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

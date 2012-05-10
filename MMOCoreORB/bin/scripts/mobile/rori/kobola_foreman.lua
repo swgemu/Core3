@@ -1,8 +1,8 @@
 kobola_foreman = Creature:new {
 	objectName = "@mob/creature_names:kobola_foreman",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,9 @@ kobola_foreman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff",
+		"object/mobile/dressed_kobola_guard_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

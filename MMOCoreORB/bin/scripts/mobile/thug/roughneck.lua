@@ -1,8 +1,8 @@
 roughneck = Creature:new {
 	objectName = "@mob/creature_names:roughneck",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,

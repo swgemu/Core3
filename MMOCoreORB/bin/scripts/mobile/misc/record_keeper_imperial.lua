@@ -3,7 +3,7 @@ record_keeper_imperial = Creature:new {
 	customName = "Lt. Nilsson (Planetary Record Keeper)",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
-	faction = "",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +27,7 @@ record_keeper_imperial = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/theme_park_record_keeper_imperial.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

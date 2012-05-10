@@ -1,9 +1,9 @@
 chertyl_ruluwoor = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Chertyl Ruluwoor",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

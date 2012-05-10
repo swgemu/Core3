@@ -1,8 +1,8 @@
 narmle_militia_guard = Creature:new {
 	objectName = "@mob/creature_names:narmle_guard",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -26,7 +26,9 @@ narmle_militia_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_guard_rodian_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_guard_rodian_male_01.iff",
+		"object/mobile/dressed_narmle_guard_rodian_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

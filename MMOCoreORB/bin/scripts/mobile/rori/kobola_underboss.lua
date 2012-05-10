@@ -1,8 +1,8 @@
 kobola_underboss = Creature:new {
 	objectName = "@mob/creature_names:kobola_underboss",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 210,
@@ -26,7 +26,9 @@ kobola_underboss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_underboss_bith_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_underboss_bith_female_01.iff",
+		"object/mobile/dressed_kobola_underboss_bith_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

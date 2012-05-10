@@ -1,6 +1,6 @@
 ajuva_vanasterin = Creature:new {
 	objectName = "",
-	costumName = "Ajuva Vanasterin",
+	customName = "Ajuva Vanasterin",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ ajuva_vanasterin = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

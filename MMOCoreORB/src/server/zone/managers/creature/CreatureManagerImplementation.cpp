@@ -179,12 +179,15 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 
 	CreatureObject* creature = NULL;
 
+	String templateToSpawn;
+
 	if (objectCRC == 0) {
 		Vector<String> objTemps = creoTempl->getTemplates();
 
 		if (objTemps.size() > 0) {
 			uint32 randomTemp = System::random(objTemps.size() - 1);
-			objectCRC = objTemps.get(randomTemp).hashCode();
+			templateToSpawn = objTemps.get(randomTemp);
+			objectCRC = templateToSpawn.hashCode();
 			//info("spawning " + objTemps.get(randomTemp), true);
 		} else {
 			StringBuffer errMsg;
@@ -200,6 +203,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	if (creature != NULL && creature->isAiAgent()) {
 		AiAgent* npc = cast<AiAgent*>(creature);
 		npc->loadTemplateData(creoTempl);
+	} else if (creature == NULL) {
+		error("could not spawn template " + templateToSpawn);
 	}
 
 	placeCreature(creature, x, z, y, parentID);

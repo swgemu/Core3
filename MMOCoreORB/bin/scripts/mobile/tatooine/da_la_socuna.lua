@@ -1,9 +1,8 @@
 da_la_socuna = Creature:new {
 	objectName = "@npc_spawner_n:da_la_socuna",
-	customName = "",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

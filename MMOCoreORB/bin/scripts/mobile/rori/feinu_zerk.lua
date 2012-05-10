@@ -1,6 +1,6 @@
 feinu_zerk = Creature:new {
 	objectName = "",
-	costumName = "Feinu Zerk",
+	customName = "Feinu Zerk",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

@@ -1,8 +1,8 @@
 gundark_desperado = Creature:new {
 	objectName = "@mob/creature_names:gundark_desperado",
-	socialGroup = "Gundk. Gang",
+	socialGroup = "gundark_gang",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,
 	damageMin = 70,
@@ -25,7 +25,9 @@ gundark_desperado = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_desperado_bith_female_01.iff",
+		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

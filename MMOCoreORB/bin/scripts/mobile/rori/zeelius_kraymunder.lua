@@ -1,6 +1,6 @@
 zeelius_kraymunder = Creature:new {
 	objectName = "",
-	costumName = "Zeelius Kraymunder",
+	customName = "Zeelius Kraymunder",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ zeelius_kraymunder = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

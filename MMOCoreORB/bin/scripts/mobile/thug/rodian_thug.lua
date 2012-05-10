@@ -1,8 +1,8 @@
 rodian_thug = Creature:new {
 	objectName = "@mob/creature_names:rodian_thug",
-	socialGroup = "Rodian",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 3,
 	chanceHit = 0.23,
 	damageMin = 35,

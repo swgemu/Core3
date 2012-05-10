@@ -1,8 +1,8 @@
 narmle_militia_major = Creature:new {
 	objectName = "@mob/creature_names:narmle_major",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,7 +26,9 @@ narmle_militia_major = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_major_twk_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_major_twk_male_01.iff",
+		"object/mobile/dressed_narmle_major_twk_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

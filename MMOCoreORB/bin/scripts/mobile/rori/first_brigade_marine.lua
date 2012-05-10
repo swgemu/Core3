@@ -1,8 +1,8 @@
 first_brigade_marine = Creature:new {
 	objectName = "@mob/creature_names:brigade_marine",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,9 @@ first_brigade_marine = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_marine_trandoshan_male_01.iff",
+		"object/mobile/dressed_brigade_marine_trandoshan_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

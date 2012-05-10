@@ -1,8 +1,8 @@
 rebel_battle_droid = Creature:new {
 	objectName = "@mob/creature_names:rebel_battle_droid",
-	socialGroup = "",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -21,14 +21,14 @@ rebel_battle_droid = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/battle_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"battle_droid"},
 	conversationTemplate = "",
 	attacks = {
 	}

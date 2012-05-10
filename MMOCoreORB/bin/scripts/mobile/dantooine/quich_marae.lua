@@ -1,5 +1,5 @@
 quich_marae = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:ishi_tib_base_male",
 	customName = "Quich Marae",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -22,7 +22,7 @@ quich_marae = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

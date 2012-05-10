@@ -1,8 +1,8 @@
 kais = Creature:new {
 	objectName = "@mob/creature_names:kais",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -21,11 +21,11 @@ kais = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_kais.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

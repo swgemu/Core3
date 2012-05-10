@@ -1,8 +1,8 @@
 neo_cobral_boss = Creature:new {
 	objectName = "@mob/creature_names:cobral_boss",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 30,
 	chanceHit = 0.38,
 	damageMin = 280,
@@ -26,7 +26,10 @@ neo_cobral_boss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_boss_twk_female_01.iff",
+		"object/mobile/dressed_cobral_boss_twk_male_01.iff"},
+	
 	lootGroups = {
 	    {
 			groups = {

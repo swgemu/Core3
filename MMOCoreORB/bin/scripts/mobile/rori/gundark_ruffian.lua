@@ -1,8 +1,8 @@
 gundark_ruffian = Creature:new {
 	objectName = "@mob/creature_names:gundark_ruffian",
-	socialGroup = "Gundk. Gang",
+	socialGroup = "gundark_gang",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,
@@ -25,7 +25,9 @@ gundark_ruffian = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
+		"object/mobile/dressed_ruffian_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

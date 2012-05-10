@@ -1,5 +1,5 @@
 daiv_dekven = Creature:new {
-	objectName = "",
+	objectName = "@mob/creature_names:patron_human_male_02",
 	customName = "Daiv Dekven",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

@@ -1,8 +1,8 @@
 nightsister_slave = Creature:new {
 	objectName = "@mob/creature_names:nightsister_slave",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

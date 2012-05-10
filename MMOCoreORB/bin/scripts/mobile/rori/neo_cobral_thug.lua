@@ -1,8 +1,8 @@
 neo_cobral_thug = Creature:new {
 	objectName = "@mob/creature_names:cobral_thug",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -26,7 +26,10 @@ neo_cobral_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_thug_rodian_female_01.iff",
+		"object/mobile/dressed_cobral_thug_rodian_male_01.iff"},
+
 	lootGroups = {
 	    {
 			groups = {

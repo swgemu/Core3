@@ -1,8 +1,8 @@
 quharek = Creature:new {
 	objectName = "@mob/creature_names:quharek",
-	socialGroup = "Force Sensitive villager",
-	pvpFaction = "Force Sensitive villager",
-	faction = "",
+	socialGroup = "fs_villager",
+	pvpFaction = "fs_villager",
+	faction = "fs_villager",
 	level = 12,
 	chanceHit = 0.290000,
 	damageMin = 130,
@@ -25,7 +25,7 @@ quharek = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_fs_village_quharek.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	attacks = {}

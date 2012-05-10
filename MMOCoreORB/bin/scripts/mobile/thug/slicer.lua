@@ -1,8 +1,8 @@
 slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -21,7 +21,7 @@ slicer = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 

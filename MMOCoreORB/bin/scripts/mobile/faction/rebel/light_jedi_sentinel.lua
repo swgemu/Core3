@@ -30,7 +30,9 @@ light_jedi_sentinel = Creature:new {
 		"object/mobile/dressed_jedi_trainer_old_human_male_01.iff",
 		"object/mobile/dressed_jedi_trainer_chiss_male_01.iff",
 		"object/mobile/dressed_jedi_trainer_nikto_male_01.iff",
-		"object/mobile/dressed_jedi_trainer_twilek_female_01.iff"},
+		"object/mobile/dressed_jedi_trainer_twilek_female_01.iff",
+		"object/mobile/dressed_tiberus_anderlock.iff",
+		"object/mobile/dressed_neja_bertolo.iff"},
 	lootGroups = {
 		{
 			groups = {

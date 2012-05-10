@@ -26,7 +26,7 @@ businessman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
+	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
 					"object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff",
 					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
 					"object/mobile/dressed_commoner_naboo_twilek_female_01.iff",
@@ -41,10 +41,21 @@ businessman = Creature:new {
 					"object/mobile/dressed_commoner_naboo_human_male_03.iff",
 					"object/mobile/dressed_commoner_tatooine_bith_male_02.iff",
 					"object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff",
-					--"object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff", --WHY?!
 					"object/mobile/dressed_commoner_naboo_human_female_07.iff",
 					"object/mobile/dressed_commoner_tatooine_bith_male_01.iff",
-					"object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff"
+					"object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff",
+					"object/mobile/dressed_diplomat_human_female_01.iff",
+					"object/mobile/dressed_diplomat_human_female_02.iff",
+					"object/mobile/dressed_diplomat_human_female_03.iff",
+					"object/mobile/dressed_diplomat_human_male_01.iff",
+					"object/mobile/dressed_diplomat_human_male_02.iff",
+					"object/mobile/dressed_diplomat_human_male_03.iff",
+					"object/mobile/dressed_diplomat_trando_female_01.iff",
+					"object/mobile/dressed_diplomat_trando_male_01.iff",
+					"object/mobile/dressed_diplomat_zabrak_female_01.iff",
+					"object/mobile/dressed_diplomat_zabrak_female_02.iff",
+					"object/mobile/dressed_diplomat_zabrak_male_01.iff",
+					"object/mobile/dressed_diplomat_zabrak_male_02.iff"
 					},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

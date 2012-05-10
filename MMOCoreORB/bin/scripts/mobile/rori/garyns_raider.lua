@@ -1,8 +1,8 @@
 garyns_raider = Creature:new {
-	objectName = "@mob/creature_names:Garyn's raider",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_raider",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,9 @@ garyns_raider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_raider_twk_female_01.iff","object/mobile/dressed_garyn_raider_twk_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_raider_twk_female_01.iff",
+		"object/mobile/dressed_garyn_raider_twk_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

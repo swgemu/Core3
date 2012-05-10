@@ -1,8 +1,8 @@
 bodyguard_zabrak_female = Creature:new {
 	objectName = "@mob/creature_names:bodyguard",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

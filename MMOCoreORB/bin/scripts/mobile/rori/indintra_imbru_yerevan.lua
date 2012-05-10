@@ -1,6 +1,6 @@
 indintra_imbru_yerevan = Creature:new {
 	objectName = "",
-	costumName = "Indintra Imbru Yerevan",
+	customName = "Indintra Imbru Yerevan",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,12 +22,12 @@ indintra_imbru_yerevan = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_indintra_imbru_yerevan.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 gundarkcrook = Creature:new {
-	objectName = "@mob/creature_names:Gundarkcrook",
-	socialGroup = "Gundk. Gang",
+	objectName = "@mob/creature_names:gundark_crook",
+	socialGroup = "gundark_gang",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,
@@ -26,7 +26,9 @@ gundarkcrook = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

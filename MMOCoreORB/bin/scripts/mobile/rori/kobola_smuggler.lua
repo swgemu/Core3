@@ -1,8 +1,8 @@
 kobola_smuggler = Creature:new {
 	objectName = "@mob/creature_names:kobola_smuggler",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,7 +26,9 @@ kobola_smuggler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_smuggler_trandoshan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_smuggler_trandoshan_male_01.iff",
+		"object/mobile/dressed_kobola_smuggler_trandoshan_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,8 +1,8 @@
 first_brigade_general = Creature:new {
 	objectName = "@mob/creature_names:brigade_general",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -26,7 +26,9 @@ first_brigade_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_general_human_male_01.iff",
+		"object/mobile/dressed_brigade_general_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

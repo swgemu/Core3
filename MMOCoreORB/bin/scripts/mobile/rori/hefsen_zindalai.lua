@@ -1,6 +1,6 @@
 hefsen_zindalai = Creature:new {
 	objectName = "",
-	costumName = "Hefsen Zindalai",
+	customName = "Hefsen Zindalai",
 	socialGroup = "Townperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ hefsen_zindalai = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

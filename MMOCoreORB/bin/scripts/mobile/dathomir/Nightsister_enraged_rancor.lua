@@ -1,8 +1,8 @@
 Nightsister_enraged_rancor = Creature:new {
 	objectName = "@mob/creature_names:nightsister_enraged_rancor",
-	socialGroup = "Nightsister",
+	socialGroup = "nightsister",
 	pvpFaction = "",
-	faction = "",
+	faction = "nightsister",
 	level = 80,
 	chanceHit = 0.75,
 	damageMin = 570,

@@ -25,7 +25,7 @@ morag = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/morag.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

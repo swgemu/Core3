@@ -1,8 +1,8 @@
 garyns_vigo = Creature:new {
-	objectName = "@mob/creature_names:Garyn's vigo",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_vigo",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 32,
 	chanceHit = 0.4,
 	damageMin = 305,
@@ -26,7 +26,9 @@ garyns_vigo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_vigo_bith_male_01.iff","object/mobile/dressed_garyn_vigo_bith_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_vigo_bith_male_01.iff",
+		"object/mobile/dressed_garyn_vigo_bith_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

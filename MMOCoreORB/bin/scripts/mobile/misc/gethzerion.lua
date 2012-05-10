@@ -1,8 +1,8 @@
 gethzerion = Creature:new {
 	objectName = "@mob/creature_names:gethzerion",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

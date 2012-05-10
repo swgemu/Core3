@@ -1,8 +1,8 @@
 spacer = Creature:new {
 	objectName = "@mob/creature_names:spacer",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -21,7 +21,7 @@ spacer = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 

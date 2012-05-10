@@ -1,9 +1,9 @@
 herald_dathomir_leandra = Creature:new {
 	objectName = "",
 	customName = "Spell Weaver Leandra",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +27,7 @@ herald_dathomir_leandra = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_dathomir_nsister_cave_leandra.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

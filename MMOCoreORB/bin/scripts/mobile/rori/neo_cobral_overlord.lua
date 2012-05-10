@@ -1,8 +1,8 @@
 neo_cobral_overlord = Creature:new {
 	objectName = "@mob/creature_names:cobral_overlord",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 33,
 	chanceHit = 0.4,
 	damageMin = 310,
@@ -26,7 +26,10 @@ neo_cobral_overlord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_overlord_human_female_01.iff",
+		"object/mobile/dressed_cobral_overlord_human_male_01.iff"},
+
 	lootGroups = {
 	    {
 			groups = {

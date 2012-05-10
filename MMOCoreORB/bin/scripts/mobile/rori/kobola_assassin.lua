@@ -1,8 +1,8 @@
 kobola_assassin = Creature:new {
 	objectName = "@mob/creature_names:kobola_assassin",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 200,
@@ -26,7 +26,9 @@ kobola_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_assassin_zabrak_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_assassin_zabrak_male_01.iff",
+		"object/mobile/dressed_kobola_assassin_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

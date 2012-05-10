@@ -26,7 +26,7 @@ wookiee_brawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/wookiee_male.iff"},
+	templates = {"object/mobile/wookiee_male.iff","object/mobile/wookiee_female.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 thief = Creature:new {
 	objectName = "@mob/creature_names:thief",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 12,
 	chanceHit = 0.290000,
 	damageMin = 130,
@@ -25,7 +25,11 @@ thief = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_kobola_thief_rodian_male_01.iff",
+		"object/mobile/dressed_kobola_thief_rodian_female_01.iff",
+		"object/mobile/dressed_binayre_thief_twk_male_01.iff",
+		"object/mobile/dressed_binayre_thief_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = {}

@@ -1,8 +1,8 @@
 garyns_marauder = Creature:new {
-	objectName = "@mob/creature_names:Garyn's marauder",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_marauder",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,
@@ -26,7 +26,9 @@ garyns_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_marauder_zabrak_male_01.iff","object/mobile/dressed_garyn_marauder_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_marauder_zabrak_male_01.iff",
+		"object/mobile/dressed_garyn_marauder_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,9 +1,9 @@
 sabol = Creature:new {
 	objectName = "",
 	customName = "Lt. Sabol",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,7 +27,7 @@ sabol = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

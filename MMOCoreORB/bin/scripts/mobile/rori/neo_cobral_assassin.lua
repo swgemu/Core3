@@ -1,8 +1,8 @@
 neo_cobral_assassin = Creature:new {
 	objectName = "@mob/creature_names:cobral_assassin",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 300,
@@ -26,7 +26,9 @@ neo_cobral_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_assassin_twk_female_01.iff",
+		"object/mobile/dressed_cobral_assassin_twk_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

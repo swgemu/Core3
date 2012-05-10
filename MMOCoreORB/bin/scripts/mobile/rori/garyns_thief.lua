@@ -1,8 +1,8 @@
 garyns_thief = Creature:new {
-	objectName = "@mob/creature_names:Garyn's thief",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_thief",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,9 @@ garyns_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_theif_zabrak_male_01.iff","object/mobile/dressed_garyn_theif_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_theif_zabrak_male_01.iff",
+		"object/mobile/dressed_garyn_theif_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -31,6 +31,7 @@ tedn_dahai = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "figrin_dan_band_outfit",
 	attacks = {
 	}
 }

@@ -1,8 +1,8 @@
 garyns_lieutenant = Creature:new {
-	objectName = "@mob/creature_names:Garyn's lieutenant",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_lieutenant",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -26,7 +26,9 @@ garyns_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_lieutenant_zabrak_male_01.iff","object/mobile/dressed_garyn_lieutenant_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_lieutenant_zabrak_male_01.iff",
+		"object/mobile/dressed_garyn_lieutenant_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

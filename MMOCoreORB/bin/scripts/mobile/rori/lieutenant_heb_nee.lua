@@ -1,8 +1,8 @@
 lieutenant_heb_nee = Creature:new {
 	objectName = "@mob/creature_names:lieutenant_heb_nee",
-	socialGroup = "Rorgungan",
-	pvpFaction = "Rorgungan",
-	faction = "",
+	socialGroup = "rorgungan",
+	pvpFaction = "rorgungan",
+	faction = "rorgungan",
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 395,
@@ -37,7 +37,7 @@ lieutenant_heb_nee = Creature:new {
 			lootChance = 5500000
 		}					
 	},
-	weapons = {"lt._heb_nee's_weapons"},
+	weapons = {"lt_heb_nee_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

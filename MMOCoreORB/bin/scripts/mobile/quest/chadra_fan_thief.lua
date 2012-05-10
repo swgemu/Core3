@@ -26,7 +26,15 @@ chadra_fan_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/chadra_fan_female.iff"},
+	templates = {
+		"object/mobile/chadra_fan_female.iff",
+		"object/mobile/dressed_chadra_fan_f_01.iff",
+		"object/mobile/dressed_chadra_fan_f_02.iff",
+		"object/mobile/dressed_chadra_fan_f_03.iff",
+		"object/mobile/chadra_fan_male.iff",
+		"object/mobile/dressed_chadra_fan_m_01.iff",
+		"object/mobile/dressed_chadra_fan_m_02.iff",
+		"object/mobile/dressed_chadra_fan_m_03.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

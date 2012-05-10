@@ -1,9 +1,9 @@
 governor_grayed_wintozzen = Creature:new {
 	objectName = "",
 	customName = "Governor Grayed Wintozzen",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 5,
 	chanceHit = 0.250000,
 	damageMin = 45,

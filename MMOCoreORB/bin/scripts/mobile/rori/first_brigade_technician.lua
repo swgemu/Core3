@@ -1,8 +1,8 @@
 first_brigade_technician = Creature:new {
 	objectName = "@mob/creature_names:brigade_technician",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -26,7 +26,9 @@ first_brigade_technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_technician_human_male_01.iff",
+		"object/mobile/dressed_brigade_technician_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,5 +1,5 @@
 ytzosh = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:trandoshan_base_male",
 	customName = "Ytzosh",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

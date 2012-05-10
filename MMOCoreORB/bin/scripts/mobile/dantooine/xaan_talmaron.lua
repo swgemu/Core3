@@ -1,5 +1,5 @@
 xaan_talmaron = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Xaan Talmaron",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
@@ -22,7 +22,7 @@ xaan_talmaron = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

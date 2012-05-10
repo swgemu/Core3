@@ -1,5 +1,6 @@
 goru_rainstealer = Creature:new {
-	objectName = "@mob/creature_names:Goru Rainstealer",
+	objectName = "",
+	customName = "Goru Rainstealer",
 	socialGroup = "Townperson",
 	pvpFaction = "Townperson",
 	faction = "",

@@ -1,6 +1,5 @@
 yras_shen_jen = Creature:new {
 	objectName = "@npc_spawner_n:yras_shen_jen",
-	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +21,7 @@ yras_shen_jen = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

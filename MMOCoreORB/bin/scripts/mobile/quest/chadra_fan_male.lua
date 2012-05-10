@@ -21,12 +21,16 @@ chadra_fan_male = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/chadra_fan_female.iff"},
+	templates = {
+		"object/mobile/chadra_fan_male.iff",
+		"object/mobile/dressed_chadra_fan_m_01.iff",
+		"object/mobile/dressed_chadra_fan_m_02.iff",
+		"object/mobile/dressed_chadra_fan_m_03.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

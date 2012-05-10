@@ -1,8 +1,8 @@
 narmle_militia_captain = Creature:new {
 	objectName = "@mob/creature_names:narmle_captain",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,9 @@ narmle_militia_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_captain_bith_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_captain_bith_female_01.iff",
+		"object/mobile/dressed_narmle_captain_bith_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

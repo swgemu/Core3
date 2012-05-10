@@ -1,6 +1,6 @@
 jowir_arlensa = Creature:new {
 	objectName = "",
-	costumName = "Jowir Arlensa",
+	customName = "Jowir Ar'Lensa",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -27,7 +27,7 @@ jowir_arlensa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

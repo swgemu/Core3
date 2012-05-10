@@ -3,7 +3,7 @@ rebel_vacca_coa3 = Creature:new {
 	customName = "Vacca",
 	socialGroup = "Rebel",
 	pvpFaction = "Rebel",
-	faction = "",
+	faction = "rebel",
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,
@@ -27,7 +27,7 @@ rebel_vacca_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_dr_vacca.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

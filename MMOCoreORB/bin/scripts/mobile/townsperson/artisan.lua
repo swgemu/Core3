@@ -2,7 +2,7 @@ artisan = Creature:new {
 	objectName = "@mob/creature_names:artisan",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
-	faction = "",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -26,9 +26,13 @@ artisan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_artisan_trainer_03.iff",
-				"object/mobile/dressed_artisan_trainer_02.iff",
-				"object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff"
+	templates = {
+		"object/mobile/dressed_artisan_trainer_03.iff",
+		"object/mobile/dressed_artisan_trainer_02.iff",
+		"object/mobile/dressed_artisan_trainer_01.iff",
+		"object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff",
+		"object/mobile/dressed_commoner_artisan_sullustan_male_01.iff",
+		"object/mobile/dressed_commoner_artisan_bith_male_01.iff"
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

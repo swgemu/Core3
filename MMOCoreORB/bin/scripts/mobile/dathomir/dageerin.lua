@@ -1,8 +1,8 @@
 dageerin = Creature:new {
 	objectName = "@mob/creature_names:fs_villager_sad1",
-	socialGroup = "Force Sensitive villager",
-	pvpFaction = "Force Sensitive villager",
-	faction = "",
+	socialGroup = "fs_villager",
+	pvpFaction = "fs_villager",
+	faction = "fs_villager",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -26,7 +26,7 @@ dageerin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_force_sensitive_renegade.iff"},
+	templates = {"object/mobile/dressed_fs_village_sad.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

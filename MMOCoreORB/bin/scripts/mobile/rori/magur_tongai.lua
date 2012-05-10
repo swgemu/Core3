@@ -1,6 +1,6 @@
 magur_tongai = Creature:new {
 	objectName = "",
-	costumName = "Magur Tongai",
+	customName = "Magur Tongai",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",
@@ -22,7 +22,7 @@ magur_tongai = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,

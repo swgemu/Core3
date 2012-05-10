@@ -1,8 +1,8 @@
 spice_collective_miner = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_miner",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 9,
 	chanceHit = 0.270000,
 	damageMin = 80,
@@ -25,7 +25,9 @@ spice_collective_miner = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_spice_collective_miner_human_female_01.iff",
+		"object/mobile/dressed_spice_collective_miner_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

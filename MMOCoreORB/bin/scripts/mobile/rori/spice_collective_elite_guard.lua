@@ -1,8 +1,8 @@
 spice_collective_elite_guard = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_eliteguard",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 25,
 	chanceHit = 0.35,
 	damageMin = 230,
@@ -26,7 +26,9 @@ spice_collective_elite_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_spice_collective_eliteguard_zabrak_female_01.iff",
+		"object/mobile/dressed_spice_collective_eliteguard_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

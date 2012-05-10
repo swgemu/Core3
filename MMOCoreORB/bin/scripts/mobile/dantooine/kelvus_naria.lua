@@ -1,5 +1,5 @@
 kelvus_naria = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:gran_base_male",
 	customName = "Kelvus Naria",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

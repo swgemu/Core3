@@ -1,5 +1,5 @@
 ussox = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:trandoshan_base_male",
 	customName = "Ussox",
 	socialGroup = "Townsperson",
 	pvpFaction = "",

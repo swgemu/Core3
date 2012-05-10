@@ -1,6 +1,5 @@
 rane_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:rane_yarrow",
-	customName = "",
 	socialGroup = "Townsperson",
 	pvpFaction = "",
 	faction = "",

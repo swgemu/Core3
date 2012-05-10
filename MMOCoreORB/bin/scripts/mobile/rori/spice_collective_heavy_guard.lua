@@ -1,8 +1,8 @@
 spice_collective_heavy_guard = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_heavyguard",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 22,
 	chanceHit = 0.34,
 	damageMin = 200,
@@ -26,7 +26,9 @@ spice_collective_heavy_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_spice_collective_heavyguard_zabrak_female_01.iff",
+		"object/mobile/dressed_spice_collective_heavyguard_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

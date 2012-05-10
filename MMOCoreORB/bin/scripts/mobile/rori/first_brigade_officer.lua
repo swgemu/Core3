@@ -1,8 +1,8 @@
 first_brigade_officer = Creature:new {
 	objectName = "@mob/creature_names:brigade_officer",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,9 @@ first_brigade_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_officer_rodian_male_01.iff",
+		"object/mobile/dressed_brigade_officer_rodian_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

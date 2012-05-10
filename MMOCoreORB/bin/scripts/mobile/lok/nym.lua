@@ -1,8 +1,8 @@
 nym = Creature:new {
 	objectName = "@mob/creature_names:nym",
-	socialGroup = "Nym",
-	pvpFaction = "Nym",
-	faction = "",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

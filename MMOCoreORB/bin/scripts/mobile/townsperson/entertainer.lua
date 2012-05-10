@@ -2,7 +2,7 @@ entertainer = Creature:new {
 	objectName = "@mob/creature_names:entertainer",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
-	faction = "",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -26,8 +26,10 @@ entertainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_entertainer_trainer_human_female_01.iff",
-				 "object/mobile/dressed_entertainer_trainer_twk_male_01.iff"
+	templates = {
+		"object/mobile/dressed_entertainer_trainer_human_female_01.iff",
+		"object/mobile/dressed_entertainer_trainer_twk_male_01.iff",
+		"object/mobile/dressed_diva_human_female_01.iff"
 				},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

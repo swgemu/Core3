@@ -1,8 +1,8 @@
 nightsister_sentry = Creature:new {
 	objectName = "@mob/creature_names:nightsister_sentry",
-	socialGroup = "Nightsister",
-	pvpFaction = "Nightsister",
-	faction = "",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 240,
@@ -26,7 +26,7 @@ nightsister_sentry = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dathomir_nightsister_stalker.iff"},
+	templates = {"object/mobile/dressed_dathomir_nightsister_guardian.iff"},
 	lootGroups = {
 		{
 			groups = {

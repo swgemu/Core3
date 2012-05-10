@@ -1,6 +1,6 @@
 palu_zerk = Creature:new {
 	objectName = "",
-	costumName = "Palu Zerk",
+	customName = "Palu Zerk",
 	socialGroup = "Townsperson",
 	pvpFaction = "Townsperson",
 	faction = "",
@@ -27,7 +27,7 @@ palu_zerk = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_palu_zerk.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

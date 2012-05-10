@@ -1,8 +1,8 @@
 lyda_thug_coa2 = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	socialGroup = "Thug",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

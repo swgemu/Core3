@@ -1,7 +1,7 @@
 Imperial_veermok = Creature:new {
 	objectName = "@mob/creature_names:imperial_veermok",
 	socialGroup = "imperial",
-	pvpFaction = "",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 27,
 	chanceHit = 0.36,

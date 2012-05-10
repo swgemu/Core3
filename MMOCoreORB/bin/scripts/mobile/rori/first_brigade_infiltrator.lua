@@ -1,8 +1,8 @@
 first_brigade_infiltrator = Creature:new {
 	objectName = "@mob/creature_names:brigade_infiltrator",
-	socialGroup = "Restuss",
-	pvpFaction = "Restuss",
-	faction = "",
+	socialGroup = "restuss",
+	pvpFaction = "restuss",
+	faction = "restuss",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -26,7 +26,9 @@ first_brigade_infiltrator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_infiltrator_human_male_01.iff",
+		"object/mobile/dressed_brigade_infiltrator_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

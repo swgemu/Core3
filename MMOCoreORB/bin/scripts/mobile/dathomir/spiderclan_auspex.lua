@@ -1,8 +1,8 @@
 spiderclan_auspex = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_spell_weaver",
-	socialGroup = "Sp. Nightsister",
-	pvpFaction = "Sp. Nightsister",
-	faction = "",
+	socialGroup = "spider_nightsister",
+	pvpFaction = "spider_nightsister",
+	faction = "spider_nightsister",
 	level = 107,
 	chanceHit = 1,
 	damageMin = 645,

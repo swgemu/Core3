@@ -1,8 +1,8 @@
 narmle_militia_rifleman = Creature:new {
 	objectName = "@mob/creature_names:narmle_rifleman",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -26,7 +26,9 @@ narmle_militia_rifleman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_rifleman_rodian_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_rifleman_rodian_male_01.iff",
+		"object/mobile/dressed_narmle_rifleman_rodian_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

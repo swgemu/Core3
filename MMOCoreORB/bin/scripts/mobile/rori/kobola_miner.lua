@@ -1,8 +1,8 @@
 kobola_miner = Creature:new {
 	objectName = "@mob/creature_names:kobola_miner",
-	socialGroup = "Kobola",
-	pvpFaction = "Kobola",
-	faction = "",
+	socialGroup = "kobola",
+	pvpFaction = "kobola",
+	faction = "kobola",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -26,7 +26,9 @@ kobola_miner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kobola_miner_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_miner_human_male_01.iff",
+		"object/mobile/dressed_kobola_miner_human_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

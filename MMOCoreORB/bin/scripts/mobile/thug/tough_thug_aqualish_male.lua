@@ -1,8 +1,8 @@
 tough_thug_aqualish_male = Creature:new {
 	objectName = "@mob/creature_names:thug",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
-	faction = "",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 16,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,11 @@ tough_thug_aqualish_male = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

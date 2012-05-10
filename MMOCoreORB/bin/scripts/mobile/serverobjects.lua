@@ -121,3 +121,8 @@ includeFile("all/wild_bladeblack_boar.lua")
 -- Outfits
 includeFile("outfits/testoutfit.lua")
 includeFile("outfits/vardias_tyne_outfit.lua")
+includeFile("outfits/figrin_dan_band_outfit.lua")
+includeFile("outfits/huff_darklighter_2_outfit.lua")
+includeFile("outfits/huff_darklighter_outfit.lua")
+includeFile("outfits/junk_dender_outfit.lua")
+includeFile("outfits/reelo_baruk_outfit.lua")

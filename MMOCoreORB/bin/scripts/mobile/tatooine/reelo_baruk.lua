@@ -29,6 +29,7 @@ reelo_baruk = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "reelo_baruk_convotemplate",
+	outfit = "reelo_baruk_outfit",
 	attacks = {},
 	optionsBitmask = 264
 }

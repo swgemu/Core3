@@ -1,8 +1,8 @@
 singing_mountain_clan_scout = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_scout",
-	socialGroup = "Mtn. Clan",
-	pvpFaction = "Mtn. Clan",
-	faction = "",
+	socialGroup = "mtn_clan",
+	pvpFaction = "mtn_clan",
+	faction = "mtn_clan",
 	level = 75,
 	chanceHit = 0.75,
 	damageMin = 520,

@@ -1,9 +1,9 @@
 cobral_hooligan = Creature:new {
 	objectName = "",
-	costumName = "a Cobral Hooligan",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	customName = "a Neo-Cobral Hooligan",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -27,7 +27,9 @@ cobral_hooligan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_cobral_hooligan_bith_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_cobral_hooligan_bith_male_01.iff",
+		"object/mobile/dressed_cobral_hooligan_bith_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

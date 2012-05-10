@@ -93,28 +93,28 @@ lok_static_spawns = {
 	{"trainer_doctor",0,22.1279,0.26,-6.11676,91,2745866},
 	{"trainer_doctor",0,-25.366,0.26,-4.25289,84,2745870},
 	{"trainer_medic",0,-16.0068,0.26,-2.42861,117,2745870},
-	{"commoner", 0, 280.329, 11.9265, 5027.91, 218.008, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_02.iff
-	{"commoner", 0, 285.432, 11.9758, 5117.33, 85.567, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_04.iff
-	{"lok_herald_02", 0, 221.864, 17.0919, 5154.99, 342.34, 0, "calm", "Andria E`liyha"},  --@npc_name:lok_herald_02 full template: object/mobile/shared_dressed_herald_lok_02.iff
+	{"commoner_tatooine", 0, 280.329, 11.9265, 5027.91, 218.008, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_02.iff
+	{"commoner_tatooine", 0, 285.432, 11.9758, 5117.33, 85.567, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_04.iff
+	{"lok_herald_02", 0, 221.864, 17.0919, 5154.99, 342.34, 0, "calm", ""},  --@npc_name:lok_herald_02 full template: object/mobile/shared_dressed_herald_lok_02.iff
 	{"criminal", 0, 226.672, 12.0826, 4954.08, 267.001, 0, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_hoodlum_zabrak_female_01.iff
 	{"criminal", 0, 221.718, 11.9626, 4987.57, 135.742, 0, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_criminal_thug_aqualish_male_01.iff
-	{"commoner", 0, 332.33, 12.0215, 5159.29, 135.281, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"commoner", 0, 356.668, 12.0208, 4918.65, 342.78, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"commoner", 0, 360.315, 11.9448, 4966.58, 287.085, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_female_02.iff
-	{"commoner", 0, 342.313, 11.9993, 5024.26, 97.0775, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_09.iff
+	{"commoner_tatooine", 0, 332.33, 12.0215, 5159.29, 135.281, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
+	{"commoner_tatooine", 0, 356.668, 12.0208, 4918.65, 342.78, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
+	{"commoner_naboo", 0, 360.315, 11.9448, 4966.58, 287.085, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_female_02.iff
+	{"commoner_tatooine", 0, 342.313, 11.9993, 5024.26, 97.0775, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_09.iff
 	{"scientist", 0, 363.384, 11.8774, 5104.73, 315.983, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_doctor_trainer_moncal_male_01.iff
-	{"commoner", 0, 371.229, 12.06, 5167.84, 53.0347, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_02.iff
-	{"lok_herald_01", 0, 371.717, 11.8618, 5179.1, 286.408, 0, "calm", "Talia v`laenya"},  --@npc_name:lok_herald_01 full template: object/mobile/shared_dressed_herald_lok_01.iff
+	{"commoner_naboo", 0, 371.229, 12.06, 5167.84, 53.0347, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_02.iff
+	{"lok_herald_01", 0, 371.717, 11.8618, 5179.1, 286.408, 0, "calm", ""},  --@npc_name:lok_herald_01 full template: object/mobile/shared_dressed_herald_lok_01.iff
 	--{"nym_fuel_tech", 0, 374.599, 11.9876, 4986.77, 31.5798, 0, "neutral", ""},  --@npc_spawner_n:nym_fuel_tech full template: object/mobile/shared_dressed_nym_technician_2.iff
 	{"businessman", 0, 372.58, 12.0976, 5003.43, 336.419, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_02.iff
 	{"spacer", 0, 391.143, 12, 5056.74, 0, 0, "conversation", ""},  --@mob/creature_names:spacer full template: object/mobile/shared_dressed_criminal_slicer_human_male_01.iff
 	{"farmer", 0, 391.143, 12, 5057.74, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 0, 535.709, 11.9925, 5135.86, 230.158, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_female_02.iff
+	{"commoner_old", 0, 535.709, 11.9925, 5135.86, 230.158, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_female_02.iff
 	{"businessman", 0, 514.113, 11.4851, 5196.38, 105.024, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_02.iff
 	{"criminal", 0, 525.319, 11.8584, 5156.53, 159.79, 0, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/shared_dressed_crook_zabrak_male_01.iff
-	{"commoner", 0, 562.914, 11.8302, 5171.75, 43.747, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_01.iff
-	{"commoner", 0, 522.568, 11.8075, 4964.65, 304.378, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
-	{"commoner", 0, 545.596, 11.959, 5081.45, 126.924, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_male_04.iff
+	{"commoner_fat", 0, 562.914, 11.8302, 5171.75, 43.747, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_01.iff
+	{"commoner_old", 0, 522.568, 11.8075, 4964.65, 304.378, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
+	{"commoner_naboo", 0, 545.596, 11.959, 5081.45, 126.924, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_male_04.iff
 	{"miner", 0, 4.19353, 13.5019, 7.65925, 360.011, 2745876, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_04.iff
 	{"brawler", 0, 4.19353, 13.5019, 8.75924, 180, 2745876, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/shared_zabrak_male.iff
 	{"vendor", 0, 29.5658, 13.25, 9.61881, 360.011, 2745876, "conversation", ""},  --@mob/creature_names:vendor full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
@@ -130,7 +130,7 @@ lok_static_spawns = {
 	{"melo", 0, 32.2502, 7.25, -2.56477, 360.011, 2745874, "conversation", "Melo"},  --@npc_name:rodian_base_female full template: object/mobile/shared_rodian_female.iff
 	{"vendor", 0, 32.2502, 7.25, -1.46477, 179.999, 2745874, "conversation", ""},  --@mob/creature_names:vendor full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_03.iff
 	{"commoner", 0, 31.1714, 7.25, 11.2841, 0, 2745874, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_06.iff
-	--{"twilek_base_female", 0, 31.1714, 7.25, 12.3841, 180.018, 2745874, "conversation", "Ciwi Mo-sregri"},  --@npc_name:twilek_base_female full template: object/mobile/shared_dressed_rebel_trooper_twk_female_01.iff
+	{"ciwi_mosregri", 0, 31.1714, 7.25, 12.3841, 180.018, 2745874, "conversation", "Ciwi Mo-sregri"},  --@npc_name:twilek_base_female full template: object/mobile/shared_dressed_rebel_trooper_twk_female_01.iff
 	{"entertainer", 0, 30.0714, 7.25, 12.3841, 135.011, 2745874, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_male_01.iff
 	{"commoner_technician", 0, 0.856204, 7.26, -13.2226, 0, 2745872, "conversation", ""},  --@mob/creature_names:technician full template: object/mobile/shared_dressed_artisan_trainer_02.iff
 	{"gambler", 0, 0.856204, 7.26, -12.1226, 180.015, 2745872, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_01.iff
@@ -162,25 +162,25 @@ lok_static_spawns = {
 	{"commoner", 0, 618.591, 11.8421, 5013.77, 225.688, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_female_01.iff
 	{"protocol_droid_3po", 0, 630, 12.7003, 5055, 150.762, 0, "calm", "Race Coordinator"},  --@mob/creature_names:protocol_droid_3po full template: object/mobile/shared_3po_protocol_droid.iff
 	{"nym_guard_elite", 0, 437.698, 12.5279, 5025.38, 67.746, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
-	{"nym_guard_elite", 0, 381.62, 11.9928, 5013.95, 231.929, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
-	{"nym_guard_weak", 0, 405.535, 12.5279, 5032.45, 52.8701, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
+	{"nym_guard_elite", 0, 381.62, 12, 5013.95, 350, 0, "conversation", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
+	{"nym_guard_weak", 0, 400.5, 12.5, 5047.2, 90, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
 	{"surgical_droid_21b", 0, -25.52, 0.26, -3.48, 159.753, 2745870, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/shared_21b_surgical_droid.iff
-	{"nym_guard_elite", 0, 381.4, 11.9939, 5015.13, 231.93, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
-	{"nym_guard_strong", 0, 406.16, 12.5279, 5031.63, 52.8847, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
-	{"nym_guard_weak", 0, 538.921, 12.0463, 5125.2, 348.106, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_rod_m.iff
+	{"nym_guard_elite", 0, 381.4, 12, 5015.13, 170, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
+	{"nym_guard_strong", 0, 405.3, 12.5, 5030, 349, 0, "conversation", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
+	{"nym_guard_weak", 0, 520.4, 12, 5128.8, 180, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_rod_m.iff
 	{"nym_guard_strong", 0, 537.325, 11.9367, 5112.7, 98.1838, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
-	{"commoner", 0, 462.534, 11.8294, 5148.35, 23.6115, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 0, 462.685, 11.9861, 5192.39, 127.19, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_04.iff
-	{"commoner", 0, 429.839, 13, 5136.92, 340.915, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"commoner", 0, 449.967, 12, 5141.31, 112.766, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
+	{"commoner_tatooine", 0, 462.534, 11.8294, 5148.35, 23.6115, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_03.iff
+	{"commoner_tatooine", 0, 462.685, 11.9861, 5192.39, 127.19, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_04.iff
+	{"commoner_tatooine", 0, 429.839, 13, 5136.92, 340.915, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
+	{"commoner_naboo", 0, 449.967, 12, 5141.31, 112.766, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
 	{"reggi_tirver", 0, 443.925, 12, 4879.41, 69.9891, 0, "calm", "Reggi Tirver"},  --@npc_name:gran_base_male full template: object/mobile/shared_junk_reggi.iff
 	{"han_solo", 0, -30.2, -0.519991, 7.24, 45.0013, 8145388, "neutral", ""},  --@mob/creature_names:han_solo full template: object/mobile/shared_han_solo.iff
 	{"chewbacca", 0, -28.48, -0.519991, 5.87, 12.0003, 8145388, "neutral", ""},  --@mob/creature_names:chewbacca full template: object/mobile/shared_chewbacca.iff
-	--{"nien_nunb", 0, -12.12, -0.894992, 23.08, 80.0024, 8145384, "npc_sitting_chair", "Nien Nunb"},  --@mob/creature_names:nien_nunb full template: object/mobile/shared_dressed_patron_sullustan_01.iff
-	{"vixur_webb", 0, -13.19, -0.894991, -20.28, 12.0003, 8145383, "npc_sitting_chair", "Vixur Webb (a musician)"},  --@npc_name:human_base_male full template: object/mobile/shared_dressed_noble_old_human_male_01.iff
-	{"commoner", 0, 12.82, -0.894992, 21.49, 89.0026, 8145380, "npc_sitting_chair", "Berema"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_02.iff
-	{"commoner", 0, -36.21, 0.10501, -13.93, 87.0026, 8145389, "neutral", "Sergeant Moore (Retired)"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
-	{"commoner", 0, 11.63, -0.894992, -16.56, 277.008, 8145381, "neutral", "Choster (Retired Engineer)"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_female_01.iff
+	{"nien_nunb", 0, -12.12, -0.894992, 23.08, 80.0024, 8145384, "npc_sitting_chair", "Nien Nunb"},  --@mob/creature_names:nien_nunb full template: object/mobile/shared_dressed_patron_sullustan_01.iff
+	{"vixur_webb", 0, -13.2, -0.9, -20.2, 22, 8145383, "npc_sitting_chair", "Vixur Webb (a musician)"},  --@npc_name:human_base_male full template: object/mobile/shared_dressed_noble_old_human_male_01.iff
+	{"commoner_tatooine", 0, 14.3, -0.9, 23.3, 181, 8145380, "npc_sitting_chair", "Berema"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_02.iff
+	{"commoner_old", 0, -36.21, 0.10501, -13.93, 87.0026, 8145389, "neutral", "Sergeant Moore (Retired)"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
+	{"commoner_fat", 0, 11.63, -0.894992, -16.56, 277.008, 8145381, "neutral", "Choster (Retired Engineer)"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_female_01.iff
 	{"bartender", 0, -11.2794, -0.894992, 1.36624, 33.4279, 8145378, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_09.iff
 	{"scoundrel", 0, -24.251, -0.894991, 22.5325, 360.011, 8145387, "conversation", ""},  --@mob/creature_names:scoundrel full template: object/mobile/shared_dressed_villain_trandoshan_male_01.iff
 	{"artisan", 0, -24.251, -0.894991, 23.6325, 180, 8145387, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/shared_dressed_commoner_artisan_sullustan_male_01.iff
@@ -204,18 +204,18 @@ lok_static_spawns = {
 	{"rorha_wahe", 0, 7.54821, -0.894991, -8.57564, 0, 8145378, "conversation", "Rorha Wahe"},  --@npc_name:human_base_female full template: object/mobile/shared_dressed_noble_human_female_02.iff
 	{"agriculturalist", 0, 7.54821, -0.894991, -7.47564, 180.006, 8145378, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_07.iff
 	{"artisan", 0, 6.44821, -0.894991, -7.47564, 135.005, 8145378, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/shared_dressed_commoner_artisan_trandoshan_male_01.iff
-	{"commoner", 0, 6.44821, -0.894991, -8.57564, 45.0004, 8145378, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_01.iff
+	{"commoner_fat", 0, 6.44821, -0.894991, -8.57564, 45.0004, 8145378, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_01.iff
 	{"gambler", 0, 43.6314, 0.104999, 0.264886, 0.0791317, 8145376, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_02.iff
-	{"commoner", 0, 43.6331, 0.104999, 1.36432, 180.09, 8145376, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_female_02.iff
+	{"commoner_old", 0, 43.6331, 0.104999, 1.36432, 180.09, 8145376, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_female_02.iff
 	{"spacer", 0, -5.72977, -0.894996, 21.8507, 0, 8145384, "conversation", ""},  --@mob/creature_names:spacer full template: object/mobile/shared_dressed_criminal_slicer_human_male_01.iff
 	{"entertainer", 0, -5.72977, -0.894994, 22.9507, 180.008, 8145384, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_female_01.iff
 	{"entertainer", 0, -6.82977, -0.894994, 22.9507, 135.007, 8145384, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_male_01.iff
 	{"pilot", 0, 18.2791, -0.894996, -14.4794, 0, 8145379, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/shared_dressed_mercenary_messanger_hum_m.iff
 	{"entertainer", 0, 18.2791, -0.894996, -13.3794, 180.008, 8145379, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/shared_dressed_entertainer_trainer_twk_female_01.iff
 	{"ramna", 0, 19.5548, -0.894995, -20.1381, 20.176, 8145379, "neutral", ""},  --@npc_spawner_n:ramna full template: object/mobile/shared_space_privateer_tier3_ramna.iff
-	{"nym", 0, -0.06, 3.27819, -22.9, 356.011, 6595511, "npc_sitting_chair", "Nym"},  --@mob/creature_names:nym full template: object/mobile/shared_nym.iff
-	{"kole", 0, -1.83002, 3.33806, -19.11, 154.971, 6595511, "neutral", "Kole"},  --@mob/creature_names:kole full template: object/mobile/shared_kole.iff
-	{"jinkins", 0, 3.07003, 3.29302, -21.31, 114.292, 6595511, "neutral", "Jinkins"},  --@mob/creature_names:jinkins full template: object/mobile/shared_jinkins.iff
+	{"nym", 0, 0, 3.27819, -22.9, 0, 6595511, "npc_sitting_chair", ""},  --@mob/creature_names:nym full template: object/mobile/shared_nym.iff
+	{"kole", 0, -3.0, 3.4, -19.6, 0, 6595511, "neutral", ""},  --@mob/creature_names:kole full template: object/mobile/shared_kole.iff
+	{"jinkins", 0, 3.07003, 3.29302, -21.31, 0, 6595511, "neutral", ""},  --@mob/creature_names:jinkins full template: object/mobile/shared_jinkins.iff
 	{"nym_kusak_guardian", 0, -3.62, 3.27819, -25.44, 39.0011, 6595511, "calm", "Scourge"},  --@mob/creature_names:nym_kusak_guardian full template: object/mobile/shared_kusak_hue.iff
 	{"nym_kusak_guardian", 0, 3.62, 3.27819, -25.44, 325.01, 6595511, "bored", "Razor"},  --@mob/creature_names:nym_kusak_guardian full template: object/mobile/shared_kusak_hue.iff
 	{"viopa", 0, -2.2483, 4.0782, -10.4691, 138.087, 6595511, "neutral", ""},  --@npc_spawner_n:viopa full template: object/mobile/shared_space_privateer_tier4_naboo_diness.iff
@@ -234,7 +234,7 @@ lok_static_spawns = {
 	{"brawler", 0, 5.37638, 1, -8.18525, 360.011, 8145356, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/shared_dressed_criminal_thug_aqualish_female_01.iff
 	{"scientist", 0, 5.37638, 1.00001, -7.08525, 180.006, 8145356, "conversation", ""},  --@mob/creature_names:scientist full template: object/mobile/shared_dressed_hutt_medic1_zabrak_female_01.iff
 	{"bodyguard", 0, 4.27638, 1.00001, -7.08525, 134.999, 8145356, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_criminal_thug_human_male_01.iff
-	{"commoner", 0, -2.27845, 0.999959, 6.45641, 0, 8145356, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_05.iff
+	{"commoner_tatooine", 0, -2.27845, 0.999959, 6.45641, 0, 8145356, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_05.iff
 	{"farmer", 0, -2.27845, 0.999949, 7.55641, 180.005, 8145356, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/shared_dressed_commoner_naboo_human_female_05.iff
 	{"bodyguard", 0, -3.37845, 0.999947, 7.55641, 135, 8145356, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_criminal_thug_bothan_male_01.iff
 	{"spacer", 0, -3.37845, 0.999956, 6.45641, 44.9954, 8145356, "conversation", ""},  --@mob/creature_names:spacer full template: object/mobile/shared_dressed_criminal_assassin_human_male_01.iff
@@ -252,40 +252,40 @@ lok_static_spawns = {
 	{"mercenary", 0, 432.639, 12, 5218.48, 0, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/shared_dressed_mercenary_weak_hum_m.iff
 	{"comm_operator", 0, 432.639, 12, 5219.48, 180.005, 0, "conversation", ""},  --@mob/creature_names:comm_operator full template: object/mobile/shared_dressed_imperial_officer_m_4.iff
 	{"nym_guard_strong", 0, 540.129, 12.073, 5124.46, 348.152, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
-	{"nym_guard_strong", 0, 539.299, 11.9604, 5112.16, 314.994, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
-	{"nym_guard_elite", 0, 3.12, 4.0782, -9.55, 359.01, 6595511, "", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
+	{"nym_guard_strong", 0, 538.5, 11.9, 5102.6, 45, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_hum_m.iff
+	{"nym_guard_elite", 0, 3.12, 4.0782, -9.55, 359.01, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
 	{"nym_guard_elite", 0, -3.1239, 4.0782, -9.55698, 359.01, 6595511, "", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
-	{"nym_guard_elite", 0, 1.98, 8.9, -30.5, 0, 6595511, "", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
-	{"nym_guard_elite", 0, -1.91, 8.9, -30.5, 360.011, 6595511, "", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
-	{"nym_guard_strong", 0, -18.91, 2.29916, 9.74, 178.005, 6595511, "", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_nikto_m.iff
-	{"nym_guard_weak", 0, 18.98, 2.29948, 10.51, 181.005, 6595511, "", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_m.iff
-	{"nym_guard_weak", 0, -20.26, 2.29947, -18.62, 3.00005, 6595511, "", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_f.iff
-	{"nym_bodyguard", 0, -28.92, 2.29545, 0.72999, 20.5376, 6595515, "", ""},  --@mob/creature_names:nym_bodyguard full template: object/mobile/shared_dressed_nym_bodyguard_hum_f.iff
-	{"nym_pirate_elite", 0, 37.49, 2.29422, -1.17, 88.0026, 6595518, "neutral", ""},  --@mob/creature_names:nym_pirate_elite full template: object/mobile/shared_dressed_nym_pirate_elite_rod_m.iff
-	{"nym_pirate_elite", 0, 36.71, 2.29422, -2.92, 88.0026, 6595518, "neutral", ""},  --@mob/creature_names:nym_pirate_elite full template: object/mobile/shared_dressed_nym_pirate_elite_hum_m.iff
-	{"nym_pirate_weak", 0, 33.5, 2.29422, -2.2, 88.0026, 6595518, "npc_sitting_chair", ""},  --@mob/creature_names:nym_pirate_weak full template: object/mobile/shared_dressed_nym_pirate_weak_hum_f.iff
-	{"nym_pirate_weak", 0, 33.65, 2.29422, -3.4, 88.0026, 6595518, "npc_sitting_chair", ""},  --@mob/creature_names:nym_pirate_weak full template: object/mobile/shared_dressed_nym_pirate_weak_nikto_m.iff
-	{"nym_pirate_strong", 0, 34.79, 2.29422, -5.1, 62.0018, 6595518, "neutral", ""},  --@mob/creature_names:nym_pirate_strong full template: object/mobile/shared_dressed_nym_pirate_strong_nikto_m.iff
+	{"nym_guard_elite", 0, 1.98, 8.9, -30.5, 0, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
+	{"nym_guard_elite", 0, -1.91, 8.9, -30.5, 360.011, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
+	{"nym_guard_strong", 0, -18.91, 2.29916, 9.74, 178.005, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_nikto_m.iff
+	{"nym_guard_weak", 0, 18.98, 2.29948, 10.51, 181.005, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_m.iff
+	{"nym_guard_weak", 0, -20.26, 2.29947, -18.62, 3.00005, 6595511, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_f.iff
+	{"nym_bodyguard", 0, -29.1, 2.3, 1.5, 200, 6595515, "calm", ""},  --@mob/creature_names:nym_bodyguard full template: object/mobile/shared_dressed_nym_bodyguard_hum_f.iff
+	{"nym_pirate_elite", 0, 37.49, 2.29422, -1.17, 88.0026, 6595518, "bored", ""},  --@mob/creature_names:nym_pirate_elite full template: object/mobile/shared_dressed_nym_pirate_elite_rod_m.iff
+	{"nym_pirate_elite", 0, 36.71, 2.29422, -2.92, 88.0026, 6595518, "npc_use_terminal_high", ""},  --@mob/creature_names:nym_pirate_elite full template: object/mobile/shared_dressed_nym_pirate_elite_hum_m.iff
+	{"nym_pirate_weak", 0, 34.2, 2.3, -2.2, 89, 6595518, "npc_sitting_chair", ""},  --@mob/creature_names:nym_pirate_weak full template: object/mobile/shared_dressed_nym_pirate_weak_hum_f.iff
+	{"nym_pirate_weak", 0, 34.2, 2.3, -3.4, 89, 6595518, "npc_sitting_chair", ""},  --@mob/creature_names:nym_pirate_weak full template: object/mobile/shared_dressed_nym_pirate_weak_nikto_m.iff
+	{"nym_pirate_strong", 0, 35, 2.3, -4.6, 45, 6595518, "npc_sitting_chair", ""},  --@mob/creature_names:nym_pirate_strong full template: object/mobile/shared_dressed_nym_pirate_strong_nikto_m.iff
 	{"nym_brawler", 0, -8.11, 1.3, -1.06, 177.005, 6595511, "neutral", ""},  --@mob/creature_names:nym_brawler full template: object/mobile/shared_dressed_nym_brawler_hum_f.iff
 	{"nym_surveyer", 0, -8.05, 1.3, -2.3, 7.00022, 6595511, "neutral", ""},  --@mob/creature_names:nym_surveyer full template: object/mobile/shared_dressed_nym_surveyer_rod_f.iff
 	{"nym_brawler", 0, 4.17, 1.3, -5.62, 33.001, 6595511, "neutral", ""},  --@mob/creature_names:nym_brawler full template: object/mobile/shared_dressed_nym_brawler_rod_m.iff
 	{"nym_bodyguard", 0, 5.86, 1.3, -5.04, 283.008, 6595511, "neutral", ""},  --@mob/creature_names:nym_bodyguard full template: object/mobile/shared_dressed_nym_bodyguard_hum_m.iff
 	{"nym_surveyer", 0, 4.39, 1.3, -3.87, 149.004, 6595511, "neutral", ""},  --@mob/creature_names:nym_surveyer full template: object/mobile/shared_dressed_nym_surveyer_hum_m.iff
 	{"nym_bodyguard", 0, -3.58, 1.3, 4.01, 89.0026, 6595511, "neutral", ""},  --@mob/creature_names:nym_bodyguard full template: object/mobile/shared_dressed_nym_bodyguard_hum_f.iff
-	{"nym_destroyer", 0, -1.79, 1.3, 3.94, 267.008, 6595511, "neutral", ""},  --@mob/creature_names:nym_destroyer full template: object/mobile/shared_dressed_nym_destroyer_rod_m.iff
+	{"nym_destroyer", 0, -1.79, 1.3, 3.94, 267.008, 6595511, "conversation", ""},  --@mob/creature_names:nym_destroyer full template: object/mobile/shared_dressed_nym_destroyer_rod_m.iff
 	{"nym_guard_elite", 0, 384.094, 11.9992, 4996.7, 286.256, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
 	{"nym_guard_elite", 0, 550.517, 11.7979, 5167.25, 10.2375, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
-	{"nym_guard_elite", 0, 537.297, 11.9374, 5112.7, 99.9221, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
-	{"nym_guard_elite", 0, 405.535, 12.5279, 5032.45, 332.893, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
+	{"nym_guard_elite", 0, 518.4, 12, 5100.5, 300, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_hum_m.iff
+	{"nym_guard_elite", 0, 405, 12.5, 5032, 230, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
 	{"nym_guard_elite", 0, 435.932, 12.5279, 5024.65, 247.747, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
 	{"nym_guard_strong", 0, 406.311, 11.8705, 4991.53, 286.282, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_rod_m.iff
-	{"nym_guard_weak", 0, 550.868, 11.8339, 5164.56, 20.9274, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_m.iff
-	{"nym_guard_weak", 0, 537.641, 11.9565, 5110.93, 252.343, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
-	{"nym_guard_elite", 0, 393.078, 12.5279, 5032.98, 281.109, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
-	{"nym_guard_elite", 0, 438.415, 12.5279, 5024.61, 67.7437, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
+	{"nym_guard_weak", 0, 551.4, 12, 5169.8, 200, 0, "conversation", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_m.iff
+	{"nym_guard_weak", 0, 535.7, 11.9, 5105.3, 90, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
+	{"nym_guard_elite", 0, 389.1, 12, 5034.2, 260, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff
+	{"nym_guard_elite", 0, 441, 12.5, 5025, 90, 0, "calm", ""},  --@mob/creature_names:nym_guard_elite full template: object/mobile/shared_dressed_nym_guard_elite_rod_m.iff
 	{"nym_guard_strong", 0, 334.572, 11.9605, 4892.89, 349.707, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_nikto_m.iff
 	{"nym_guard_weak", 0, 331.611, 11.9777, 4898.94, 14.0896, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_hum_m.iff
-	{"nym_guard_weak", 0, 324.077, 12.0596, 5051.55, 107.869, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
+	{"nym_guard_weak", 0, 322.8, 12.1, 5050, 216, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
 	{"nym_guard_strong", 0, 350.446, 12.0004, 4975.94, 216.027, 0, "calm", ""},  --@mob/creature_names:nym_guard_strong full template: object/mobile/shared_dressed_nym_guard_strong_rod_m.iff
 	{"nym_guard_weak", 0, 343.53, 12.5909, 4902.71, 356.744, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_nikto_m.iff
 	{"nym_guard_weak", 0, 348.219, 12.1248, 4940.84, 19.7209, 0, "calm", ""},  --@mob/creature_names:nym_guard_weak full template: object/mobile/shared_dressed_nym_guard_weak_rod_m.iff

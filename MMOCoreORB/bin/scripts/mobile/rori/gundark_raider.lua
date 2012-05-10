@@ -1,8 +1,8 @@
 gundark_raider = Creature:new {
 	objectName = "@mob/creature_names:gundark_raider",
-	socialGroup = "Gundk. Gang",
+	socialGroup = "gundark_gang",
 	pvpFaction = "thug",
-	faction = "",
+	faction = "thug",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,7 +26,9 @@ gundark_raider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_raider_trandoshan_female_01.iff",
+		"object/mobile/dressed_raider_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

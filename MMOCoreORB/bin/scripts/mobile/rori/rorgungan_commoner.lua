@@ -1,8 +1,8 @@
 rorgungan_commoner = Creature:new {
 	objectName = "@mob/creature_names:rorgungan_commoner",
-	socialGroup = "Rorgungan",
-	pvpFaction = "Rorgungan",
-	faction = "",
+	socialGroup = "rorgungan",
+	pvpFaction = "rorgungan",
+	faction = "rorgungan",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -26,7 +26,7 @@ rorgungan_commoner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {
 	    {
 			groups = {

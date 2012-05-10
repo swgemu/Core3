@@ -1,8 +1,8 @@
 neo_cobral_runner = Creature:new {
 	objectName = "@mob/creature_names:cobral_runner",
-	socialGroup = "Cobral",
-	pvpFaction = "Cobral",
-	faction = "",
+	socialGroup = "cobral",
+	pvpFaction = "cobral",
+	faction = "cobral",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,10 @@ neo_cobral_runner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_cobral_runner_trandoshan_female_01.iff",
+		"object/mobile/dressed_cobral_runner_trandoshan_male_01.iff"},
+
 	lootGroups = {
 	    {
 			groups = {

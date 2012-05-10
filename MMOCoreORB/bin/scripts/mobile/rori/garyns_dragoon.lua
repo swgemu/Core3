@@ -1,8 +1,8 @@
 garyns_dragoon = Creature:new {
-	objectName = "@mob/creature_names:Garyn's dragoon",
-	socialGroup = "Garyn",
-	pvpFaction = "Garyn",
-	faction = "",
+	objectName = "@mob/creature_names:garyn_dragoon",
+	socialGroup = "garyn",
+	pvpFaction = "garyn",
+	faction = "garyn",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -26,7 +26,9 @@ garyns_dragoon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garyn_dragoon_bith_male_01.iff","object/mobile/dressed_garyn_dragoon_bith_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_garyn_dragoon_bith_male_01.iff",
+		"object/mobile/dressed_garyn_dragoon_bith_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

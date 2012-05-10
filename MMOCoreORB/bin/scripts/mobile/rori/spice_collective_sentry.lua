@@ -1,8 +1,8 @@
 spice_collective_sentry = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_sentry",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 14,
 	chanceHit = 0.300000,
 	damageMin = 150,
@@ -25,7 +25,9 @@ spice_collective_sentry = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_spice_collective_sentry_twk_female_01.iff",
+		"object/mobile/dressed_spice_collective_sentry_twk_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

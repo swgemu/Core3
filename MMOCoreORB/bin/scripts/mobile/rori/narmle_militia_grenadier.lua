@@ -1,8 +1,8 @@
 narmle_militia_grenadier = Creature:new {
 	objectName = "@mob/creature_names:narmle_grenadier",
-	socialGroup = "Narmle",
-	pvpFaction = "Narmle",
-	faction = "",
+	socialGroup = "narmle",
+	pvpFaction = "narmle",
+	faction = "narmle",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -26,7 +26,9 @@ narmle_militia_grenadier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_narmle_grenadier_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_narmle_grenadier_zabrak_female_01.iff",
+		"object/mobile/dressed_narmle_grenadier_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

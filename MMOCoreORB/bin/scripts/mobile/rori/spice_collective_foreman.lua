@@ -1,8 +1,8 @@
 spice_collective_foreman = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_foreman",
-	socialGroup = "Spice Collect.",
-	pvpFaction = "Spice Collect.",
-	faction = "",
+	socialGroup = "spice_collective",
+	pvpFaction = "spice_collective",
+	faction = "spice_collective",
 	level = 18,
 	chanceHit = 0.320000,
 	damageMin = 170,
@@ -25,7 +25,9 @@ spice_collective_foreman = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_spice_collective_foreman_trandoshan_female_01.iff",
+		"object/mobile/dressed_spice_collective_foreman_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
