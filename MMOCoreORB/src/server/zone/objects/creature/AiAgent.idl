@@ -403,6 +403,9 @@ class AiAgent extends CreatureObject {
 		if (this.isDead())
 			return false;
 		
+		if (object.isAiAgent())
+			return false;
+		
 		unsigned int targetFaction = object.getFaction();
 		
 		if (targetFaction != 0 && super.getFaction() != 0) {

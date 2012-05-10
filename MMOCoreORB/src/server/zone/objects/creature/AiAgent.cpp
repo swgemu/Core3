@@ -1683,8 +1683,11 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
-	// server/zone/objects/creature/AiAgent.idl():  		unsigned 
+	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if (_this->isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/AiAgent.idl():  		unsigned 
+	if (object->isAiAgent())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		unsigned int targetFaction = object.getFaction();
 	unsigned int targetFaction = object->getFaction();
