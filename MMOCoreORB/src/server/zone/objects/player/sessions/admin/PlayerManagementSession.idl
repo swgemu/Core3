@@ -92,7 +92,8 @@ class PlayerManagementSession extends Facade {
 	
 	protected Account targetAccount;
 	
-	protected string galaxy;
+	protected unsigned int galaxyID;
+	protected string galaxyName;
 	
 	protected unsigned int banExpiration;
 	
@@ -116,7 +117,8 @@ class PlayerManagementSession extends Facade {
 		adminGhost = admin.getPlayerObject();
 		
 		banMode = NONE;
-		galaxy = "";
+		galaxyID = 0;
+		galaxyName = "";
 		
 		accountBox = null;
 		
@@ -142,7 +144,7 @@ class PlayerManagementSession extends Facade {
 		accountBox = box;
 	}
 	
-	public native void ban(final int tablevel, final string galaxy, final string name);
+	public native void ban(final int tablevel, final unsigned int galaxy, final string gname, final string name);
 
 	public native void getPlayerInfo(final int tablevel, final string firstName);
 

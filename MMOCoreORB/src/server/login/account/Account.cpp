@@ -377,7 +377,7 @@ CharacterList* Account::getCharacterList() {
 		return _implementation->getCharacterList();
 }
 
-GalaxyBanEntry* Account::getGalaxyBan(const String& galaxy) {
+GalaxyBanEntry* Account::getGalaxyBan(unsigned const int galaxy) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -386,7 +386,7 @@ GalaxyBanEntry* Account::getGalaxyBan(const String& galaxy) {
 		return _implementation->getGalaxyBan(galaxy);
 }
 
-CharacterListEntry* Account::getCharacterBan(const String& galaxy, const String& name) {
+CharacterListEntry* Account::getCharacterBan(unsigned const int galaxy, const String& name) {
 	AccountImplementation* _implementation = static_cast<AccountImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

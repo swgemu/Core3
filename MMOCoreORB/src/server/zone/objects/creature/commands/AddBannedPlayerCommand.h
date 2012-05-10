@@ -123,7 +123,7 @@ public:
 		ManagedReference<Account*> account = playerManager->getAccount(ghost->getAccountID());
 
 		String reason = banReason.toString();
-		playerManager->banCharacter(adminGhost, account, targetCreature->getFirstName(), duration, reason);
+		playerManager->banCharacter(adminGhost, account, targetCreature->getFirstName(), server->getZoneServer()->getGalaxyID(), duration, reason);
 		creature->sendSystemMessage(targetCreature->getFirstName() + " is banned");
 
 		return SUCCESS;

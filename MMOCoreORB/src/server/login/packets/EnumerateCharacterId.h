@@ -60,7 +60,7 @@ public:
 	    insertInt(characters->size()); //Character List Count
 	    for (int i = 0; i < characters->size(); ++i) {
 	    	CharacterListEntry* entry = &characters->get(i);
-			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyName());
+			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyID());
 	    	String name = entry->getFullName();
 	    	if(galaxyBan != NULL)
 	    		name += " \\#FF0000(GALAXY BAN)";

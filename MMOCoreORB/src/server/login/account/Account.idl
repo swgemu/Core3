@@ -28,7 +28,7 @@ class Account extends ManagedObject implements Logger {
 	protected transient CharacterList characterList;
 	
 	@dereferenced
-	protected transient VectorMap<string, Reference<GalaxyBanEntry> > galaxyBans;
+	protected transient VectorMap<unsigned int, Reference<GalaxyBanEntry> > galaxyBans;
 	
 	protected transient unsigned int banExpires;
 	protected transient string banReason;
@@ -130,8 +130,8 @@ class Account extends ManagedObject implements Logger {
 	public native CharacterList getCharacterList();
 	
 	@local
-	public native GalaxyBanEntry getGalaxyBan(final string galaxy);
+	public native GalaxyBanEntry getGalaxyBan(final unsigned int galaxy);
 	
 	@local
-	public native CharacterListEntry getCharacterBan(final string galaxy, final string name);
+	public native CharacterListEntry getCharacterBan(final unsigned int  galaxy, final string name);
 }

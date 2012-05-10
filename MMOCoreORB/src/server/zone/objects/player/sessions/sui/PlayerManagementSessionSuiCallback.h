@@ -79,28 +79,38 @@ public:
 				listString = listString.replaceFirst("\t", "");
 				tablevel++;
 			}
-
 			listString = listString.trim();
-			StringTokenizer tokenizer(listString);
-			tokenizer.getStringToken(listString);
 
 			String playerName = "";
+			uint32 galaxyID = 0;
 			String galaxyName = "";
 
 			if(tablevel == 1) {
-				galaxyName = listString;
+
+				StringTokenizer tokenizer(listString);
+
+				galaxyID = tokenizer.getIntToken();
+
+				tokenizer.getStringToken(galaxyName);
+				tokenizer.getStringToken(galaxyName);
+
 			}
 
 			if(tablevel == 2) {
-				galaxyName = getPlayerGalaxyName(listBox, index);
-				playerName = listString;
+
+				String firstName;
+				StringTokenizer tokenizer(listString);
+				tokenizer.getStringToken(firstName);
+
+				galaxyID = getPlayerGalaxyID(listBox, index, galaxyName);
+				playerName = firstName;
 			}
 
 
 
 			if (otherPressed) {
 
-				session->ban(tablevel, galaxyName, playerName);
+				session->ban(tablevel, galaxyID, galaxyName, playerName);
 				return;
 			}
 		}
@@ -108,7 +118,7 @@ public:
 		session->getPlayerInfo(tablevel, firstName);
 	}
 
-	String getPlayerGalaxyName(SuiListBox* listBox, int index) {
+	uint32 getPlayerGalaxyID(SuiListBox* listBox, int index, String& galaxyName) {
 
 		while(index > 0) {
 			index--;
@@ -123,14 +133,18 @@ public:
 
 			listString = listString.trim();
 			StringTokenizer tokenizer(listString);
-			tokenizer.getStringToken(listString);
+
+			uint32 galaxyID = tokenizer.getIntToken();
+
+			tokenizer.getStringToken(galaxyName);
+			tokenizer.getStringToken(galaxyName);
 
 			if(tablevel == 1)
-				return listString;
+				return galaxyID;
 
 		}
 
-		return "";
+		return 0;
 
 	}
 

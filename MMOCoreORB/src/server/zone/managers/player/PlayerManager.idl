@@ -259,12 +259,12 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native string unbanAccount(PlayerObject admin, Account account, final string reason);
 	
-	public native string banFromGalaxy(PlayerObject admin, Account account, final string galaxy, unsigned int seconds, final string reason);
+	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);
 	
-	public native string unbanFromGalaxy(PlayerObject admin, Account account, final string galaxy, final string reason);
+	public native string unbanFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, final string reason);
 	
-	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int seconds, final string reason);
+	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, unsigned int seconds, final string reason);
 
-	public native string unbanCharacter(PlayerObject admin, Account account, final string name, final string reason);
+	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
 
 }

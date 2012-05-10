@@ -116,12 +116,12 @@ public:
 			return GENERALERROR;
 		}
 
-		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyName(), targetCreature->getFirstName());
+		CharacterListEntry* entry = account->getCharacterBan(server->getZoneServer()->getGalaxyID(), targetCreature->getFirstName());
 
 		StringBuffer reason;
 		reason << entry->getBanAdmin() << "=" << entry->getBanReason() << "|" << banReason.toString();
 
-		playerManager->unbanCharacter(adminGhost, account, targetCreature->getFirstName(), banReason.toString());
+		playerManager->unbanCharacter(adminGhost, account, targetCreature->getFirstName(), entry->getGalaxyID(), banReason.toString());
 		creature->sendSystemMessage(targetCreature->getFirstName() + " is unbanned");
 
 		return SUCCESS;

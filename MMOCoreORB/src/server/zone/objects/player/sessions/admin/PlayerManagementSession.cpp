@@ -18,7 +18,7 @@
  *	PlayerManagementSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ADDACCOUNTSUI__SUILISTBOX_,RPC_BAN__INT_STRING_STRING_,RPC_GETPLAYERINFO__INT_STRING_,RPC_SENDACCOUNTINFO__,RPC_SENDBANDURATION__,RPC_PARSEBANDURATION__STRING_,RPC_SENDBANREASON__BOOL_,RPC_SETBANREASON__STRING_,RPC_SHOWBANSUMMARY__,RPC_SHOWUNBANSUMMARY__,RPC_COMPLETEBAN__,RPC_GETBANDURATION__INT_};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ADDACCOUNTSUI__SUILISTBOX_,RPC_BAN__INT_INT_STRING_STRING_,RPC_GETPLAYERINFO__INT_STRING_,RPC_SENDACCOUNTINFO__,RPC_SENDBANDURATION__,RPC_PARSEBANDURATION__STRING_,RPC_SENDBANREASON__BOOL_,RPC_SETBANREASON__STRING_,RPC_SHOWBANSUMMARY__,RPC_SHOWUNBANSUMMARY__,RPC_COMPLETEBAN__,RPC_GETBANDURATION__INT_};
 
 PlayerManagementSession::PlayerManagementSession(Account* account, CreatureObject* adm) : Facade(DummyConstructorParameter::instance()) {
 	PlayerManagementSessionImplementation* _implementation = new PlayerManagementSessionImplementation(account, adm);
@@ -89,20 +89,21 @@ void PlayerManagementSession::addAccountSui(SuiListBox* box) {
 		_implementation->addAccountSui(box);
 }
 
-void PlayerManagementSession::ban(const int tablevel, const String& galaxy, const String& name) {
+void PlayerManagementSession::ban(const int tablevel, unsigned const int galaxy, const String& gname, const String& name) {
 	PlayerManagementSessionImplementation* _implementation = static_cast<PlayerManagementSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BAN__INT_STRING_STRING_);
+		DistributedMethod method(this, RPC_BAN__INT_INT_STRING_STRING_);
 		method.addSignedIntParameter(tablevel);
-		method.addAsciiParameter(galaxy);
+		method.addUnsignedIntParameter(galaxy);
+		method.addAsciiParameter(gname);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->ban(tablevel, galaxy, name);
+		_implementation->ban(tablevel, galaxy, gname, name);
 }
 
 void PlayerManagementSession::getPlayerInfo(const int tablevel, const String& firstName) {
@@ -402,8 +403,13 @@ bool PlayerManagementSessionImplementation::readObjectMember(ObjectInputStream* 
 		return true;
 	}
 
-	if (_name == "PlayerManagementSession.galaxy") {
-		TypeInfo<String >::parseFromBinaryStream(&galaxy, stream);
+	if (_name == "PlayerManagementSession.galaxyID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&galaxyID, stream);
+		return true;
+	}
+
+	if (_name == "PlayerManagementSession.galaxyName") {
+		TypeInfo<String >::parseFromBinaryStream(&galaxyName, stream);
 		return true;
 	}
 
@@ -527,11 +533,19 @@ int PlayerManagementSessionImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.galaxy";
+	_name = "PlayerManagementSession.galaxyID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&galaxy, stream);
+	TypeInfo<unsigned int >::toBinaryStream(&galaxyID, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "PlayerManagementSession.galaxyName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String >::toBinaryStream(&galaxyName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -560,7 +574,7 @@ int PlayerManagementSessionImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 15;
+	return _count + 16;
 }
 
 PlayerManagementSessionImplementation::PlayerManagementSessionImplementation(Account* account, CreatureObject* adm) {
@@ -573,8 +587,10 @@ PlayerManagementSessionImplementation::PlayerManagementSessionImplementation(Acc
 	adminGhost = admin->getPlayerObject();
 	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		banMode = NONE;
 	banMode = NONE;
-	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		galaxy = "";
-	galaxy = "";
+	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		galaxyID = 0;
+	galaxyID = 0;
+	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		galaxyName = "";
+	galaxyName = "";
 	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		accountBox = null;
 	accountBox = NULL;
 	// server/zone/objects/player/sessions/admin/PlayerManagementSession.idl():  		Logger.setLoggingName("PlayerManagementSession");
@@ -627,8 +643,8 @@ void PlayerManagementSessionAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_ADDACCOUNTSUI__SUILISTBOX_:
 		addAccountSui(static_cast<SuiListBox*>(inv->getObjectParameter()));
 		break;
-	case RPC_BAN__INT_STRING_STRING_:
-		ban(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_ban__int_String_String_), inv->getAsciiParameter(_param2_ban__int_String_String_));
+	case RPC_BAN__INT_INT_STRING_STRING_:
+		ban(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_ban__int_int_String_String_), inv->getAsciiParameter(_param3_ban__int_int_String_String_));
 		break;
 	case RPC_GETPLAYERINFO__INT_STRING_:
 		getPlayerInfo(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_getPlayerInfo__int_String_));
@@ -681,8 +697,8 @@ void PlayerManagementSessionAdapter::addAccountSui(SuiListBox* box) {
 	(static_cast<PlayerManagementSession*>(stub))->addAccountSui(box);
 }
 
-void PlayerManagementSessionAdapter::ban(const int tablevel, const String& galaxy, const String& name) {
-	(static_cast<PlayerManagementSession*>(stub))->ban(tablevel, galaxy, name);
+void PlayerManagementSessionAdapter::ban(const int tablevel, unsigned const int galaxy, const String& gname, const String& name) {
+	(static_cast<PlayerManagementSession*>(stub))->ban(tablevel, galaxy, gname, name);
 }
 
 void PlayerManagementSessionAdapter::getPlayerInfo(const int tablevel, const String& firstName) {

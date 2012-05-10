@@ -109,9 +109,9 @@ public:
 
 	CharacterList* getCharacterList();
 
-	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
+	GalaxyBanEntry* getGalaxyBan(unsigned const int galaxy);
 
-	CharacterListEntry* getCharacterBan(const String& galaxy, const String& name);
+	CharacterListEntry* getCharacterBan(unsigned const int galaxy, const String& name);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -157,7 +157,7 @@ protected:
 
 	Reference<CharacterList* > characterList;
 
-	VectorMap<String, Reference<GalaxyBanEntry*> > galaxyBans;
+	VectorMap<unsigned int, Reference<GalaxyBanEntry*> > galaxyBans;
 
 	unsigned int banExpires;
 
@@ -222,9 +222,9 @@ public:
 
 	CharacterList* getCharacterList();
 
-	GalaxyBanEntry* getGalaxyBan(const String& galaxy);
+	GalaxyBanEntry* getGalaxyBan(unsigned const int galaxy);
 
-	CharacterListEntry* getCharacterBan(const String& galaxy, const String& name);
+	CharacterListEntry* getCharacterBan(unsigned const int galaxy, const String& name);
 
 	WeakReference<Account*> _this;
 

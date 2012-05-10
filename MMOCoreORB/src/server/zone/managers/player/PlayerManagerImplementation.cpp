@@ -2818,7 +2818,7 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	return "Account Successfully Unbanned";
 }
 
-String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, uint32 seconds, const String& reason) {
+String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, uint32 seconds, const String& reason) {
 
 	if(admin == NULL || !admin->isPrivileged())
 		return "";
@@ -2829,12 +2829,9 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
-	String escapedGalaxy = galaxy;
-	Database::escapeString(escapedGalaxy);
-
 	try {
 		StringBuffer query;
-		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", (SELECT galaxy_id FROM galaxy WHERE name = '" << escapedGalaxy << "' LIMIT 1), now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO galaxy_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << "," << galaxy << ", now()," << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2867,7 +2864,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 	return "Successfully Banned from Galaxy";
 }
 
-String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason) {
+String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, const String& reason) {
 
 	if(admin == NULL || !admin->isPrivileged())
 		return "";
@@ -2878,12 +2875,10 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
-	String escapedGalaxy = galaxy;
-	Database::escapeString(escapedGalaxy);
-
 	try {
 		StringBuffer query;
-		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = (SELECT galaxy_id FROM galaxy WHERE name = '" << escapedGalaxy << "' LIMIT 1) and expires > UNIX_TIMESTAMP();";
+
+		query << "UPDATE galaxy_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and galaxy_id = " << galaxy << " and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2893,7 +2888,7 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 	return "Successfully Unbanned from Galaxy";
 }
 
-String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* account, const String& name, uint32 seconds, const String& reason) {
+String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* account, const String& name, const uint32 galaxyID, uint32 seconds, const String& reason) {
 
 	if(admin == NULL || !admin->isPrivileged())
 		return "";
@@ -2909,7 +2904,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 
 	try {
 		StringBuffer query;
-		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " <<admin->getAccountID() << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
+		query << "INSERT INTO character_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", " << galaxyID << ", '" << escapedName << "', " <<  "now(), UNIX_TIMESTAMP() + " << seconds << ", '" << escapedReason << "');";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {
@@ -2934,7 +2929,7 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	return "Character Successfully Banned";
 }
 
-String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account* account, const String& name,  const String& reason) {
+String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account* account, const String& name, const uint32 galaxyID, const String& reason) {
 
 	if(admin == NULL || !admin->isPrivileged())
 		return "";
@@ -2950,7 +2945,7 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 
 	try {
 		StringBuffer query;
-		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " and name =  '" << escapedName << "' and expires > UNIX_TIMESTAMP();";
+		query << "UPDATE character_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "' WHERE account_id = " <<  account->getAccountID() << " AND galaxy_id = " << galaxyID << " and name =  '" << escapedName << "' and expires > UNIX_TIMESTAMP();";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(Exception& e) {

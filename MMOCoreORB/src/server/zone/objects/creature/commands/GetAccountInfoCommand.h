@@ -79,8 +79,12 @@ public:
 		session = cast<PlayerManagementSession*>(creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT));
 
 		if(session != NULL) {
-			creature->sendSystemMessage("You are already viewing an account");
-			return GENERALERROR;
+			if(!admin->hasSuiBoxWindowType(SuiWindowType::ADMIN_ACCOUNTINFO))
+				creature->dropActiveSession(SessionFacadeType::PLAYERMANAGEMENT);
+			else {
+				creature->sendSystemMessage("You are already viewing an account");
+				return GENERALERROR;
+			}
 		}
 
 		StringTokenizer args(arguments.toString());
@@ -190,11 +194,13 @@ public:
 				if(targetCreature != NULL || targetCreature->isPlayerCreature())
 					ghost = targetCreature->getPlayerObject();
 			}
+			StringBuffer gname;
+			gname << entry->getGalaxyID() << " : " << entry->getGalaxyName();
 
-			if(!characters.contains(entry->getGalaxyName()))
-				characters.put(entry->getGalaxyName(), Vector<String>());
+			if(!characters.contains(gname.toString()))
+				characters.put(gname.toString(), Vector<String>());
 
-			Vector<String>* galaxy = &characters.get(entry->getGalaxyName());
+			Vector<String>* galaxy = &characters.get(gname.toString());
 
 			StringBuffer line;
 			line << "\t\t" << entry->getFullName();
@@ -223,7 +229,11 @@ public:
 
 			String galaxyName = characters.elementAt(i).getKey();
 
-			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyName);
+			StringTokenizer tokenizer(galaxyName);
+
+			uint32 galaxyID = tokenizer.getIntToken();
+
+			GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyID);
 			if(galaxyBan != NULL)
 				galaxyName += " \\#FF0000(BANNED)\\#FFFFFF" + galaxyBan->getBanReason();
 

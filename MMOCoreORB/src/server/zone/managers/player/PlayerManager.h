@@ -382,13 +382,13 @@ public:
 
 	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
 
-	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+	String banFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, unsigned int seconds, const String& reason);
 
-	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, const String& reason);
 
-	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
-	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -588,13 +588,13 @@ public:
 
 	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
 
-	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+	String banFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, unsigned int seconds, const String& reason);
 
-	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, const String& reason);
 
-	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
-	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
 	WeakReference<PlayerManager*> _this;
 
@@ -751,13 +751,13 @@ public:
 
 	String unbanAccount(PlayerObject* admin, Account* account, const String& reason);
 
-	String banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason);
+	String banFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, unsigned int seconds, const String& reason);
 
-	String unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason);
+	String unbanFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, const String& reason);
 
-	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason);
+	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
-	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason);
+	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
 protected:
 	String _param0_kickUser__String_String_String_bool_;
@@ -776,14 +776,12 @@ protected:
 	String _param0_getAccount__String_;
 	String _param3_banAccount__PlayerObject_Account_int_String_;
 	String _param2_unbanAccount__PlayerObject_Account_String_;
-	String _param2_banFromGalaxy__PlayerObject_Account_String_int_String_;
-	String _param4_banFromGalaxy__PlayerObject_Account_String_int_String_;
-	String _param2_unbanFromGalaxy__PlayerObject_Account_String_String_;
-	String _param3_unbanFromGalaxy__PlayerObject_Account_String_String_;
-	String _param2_banCharacter__PlayerObject_Account_String_int_String_;
-	String _param4_banCharacter__PlayerObject_Account_String_int_String_;
-	String _param2_unbanCharacter__PlayerObject_Account_String_String_;
-	String _param3_unbanCharacter__PlayerObject_Account_String_String_;
+	String _param4_banFromGalaxy__PlayerObject_Account_int_int_String_;
+	String _param3_unbanFromGalaxy__PlayerObject_Account_int_String_;
+	String _param2_banCharacter__PlayerObject_Account_String_int_int_String_;
+	String _param5_banCharacter__PlayerObject_Account_String_int_int_String_;
+	String _param2_unbanCharacter__PlayerObject_Account_String_int_String_;
+	String _param4_unbanCharacter__PlayerObject_Account_String_int_String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

@@ -116,7 +116,7 @@ public:
 
 	void addAccountSui(SuiListBox* box);
 
-	void ban(const int tablevel, const String& galaxy, const String& name);
+	void ban(const int tablevel, unsigned const int galaxy, const String& gname, const String& name);
 
 	void getPlayerInfo(const int tablevel, const String& firstName);
 
@@ -192,7 +192,9 @@ protected:
 
 	ManagedReference<Account* > targetAccount;
 
-	String galaxy;
+	unsigned int galaxyID;
+
+	String galaxyName;
 
 	unsigned int banExpiration;
 
@@ -225,7 +227,7 @@ public:
 
 	void addAccountSui(SuiListBox* box);
 
-	void ban(const int tablevel, const String& galaxy, const String& name);
+	void ban(const int tablevel, unsigned const int galaxy, const String& gname, const String& name);
 
 	void getPlayerInfo(const int tablevel, const String& firstName);
 
@@ -298,7 +300,7 @@ public:
 
 	void addAccountSui(SuiListBox* box);
 
-	void ban(const int tablevel, const String& galaxy, const String& name);
+	void ban(const int tablevel, unsigned const int galaxy, const String& gname, const String& name);
 
 	void getPlayerInfo(const int tablevel, const String& firstName);
 
@@ -321,8 +323,8 @@ public:
 	String getBanDuration(unsigned int timestamp);
 
 protected:
-	String _param1_ban__int_String_String_;
-	String _param2_ban__int_String_String_;
+	String _param2_ban__int_int_String_String_;
+	String _param3_ban__int_int_String_String_;
 	String _param1_getPlayerInfo__int_String_;
 	String _param0_parseBanDuration__String_;
 	String _param0_setBanReason__String_;

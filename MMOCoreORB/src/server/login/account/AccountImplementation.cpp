@@ -89,7 +89,7 @@ void AccountImplementation::updateCharacters() {
 
 void AccountImplementation::updateGalaxyBans() {
 	StringBuffer query;
-	query << "SELECT *, (SELECT g.name FROM galaxy as g WHERE g.galaxy_id = gb.galaxy_id LIMIT 1) FROM galaxy_bans as gb WHERE account_id=" << getAccountID() << " and expires > UNIX_TIMESTAMP()";
+	query << "SELECT * FROM galaxy_bans as gb WHERE account_id=" << getAccountID() << " and expires > UNIX_TIMESTAMP()";
 
 	ResultSet* results = ServerDatabase::instance()->executeQuery(query);
 
@@ -108,9 +108,8 @@ void AccountImplementation::updateGalaxyBans() {
 		entry->setBanExpiration(banexpires);
 
 		entry->setBanReason(results->getString(6));
-		String name = results->getString(7);
 
-		galaxyBans.put(name, entry);
+		galaxyBans.put(entry->getGalaxyID(), entry);
 	}
 
 	delete results;
@@ -120,20 +119,20 @@ bool AccountImplementation::isBanned() {
 	return banExpires > time(0);
 }
 
-GalaxyBanEntry* AccountImplementation::getGalaxyBan(const String& galaxy) {
+GalaxyBanEntry* AccountImplementation::getGalaxyBan(const uint32 galaxy) {
 	if(galaxyBans.contains(galaxy))
 		return galaxyBans.get(galaxy);
 
 	return NULL;
 }
 
-CharacterListEntry* AccountImplementation::getCharacterBan(const String& galaxy, const String& name) {
+CharacterListEntry* AccountImplementation::getCharacterBan(const uint32 galaxy, const String& name) {
 
 	for(int i = 0; i < characterList->size(); ++i) {
 		CharacterListEntry* entry = &characterList->get(i);
 
 		if(entry->getFirstName() == name &&
-				entry->getGalaxyName() == galaxy &&
+				entry->getGalaxyID() == galaxy &&
 				entry->isBanned())
 			return entry;
 	}

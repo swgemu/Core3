@@ -38,7 +38,7 @@
  *	PlayerManagerStub
  */
 
-enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_STRING_BOOL_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_AIAGENT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_GETBADGEKEY__INT_,RPC_GETNEARBYCRAFTINGSTATION__CREATUREOBJECT_INT_,RPC_FINISHHOLOGRIND__CREATUREOBJECT_,RPC_GETACCOUNT__STRING_,RPC_GETACCOUNT__INT_,RPC_BANACCOUNT__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_,RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_,RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_STRING_,RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_,RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_STRING_};
+enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_STRING_BOOL_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_AIAGENT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_GETBADGEKEY__INT_,RPC_GETNEARBYCRAFTINGSTATION__CREATUREOBJECT_INT_,RPC_FINISHHOLOGRIND__CREATUREOBJECT_,RPC_GETACCOUNT__STRING_,RPC_GETACCOUNT__INT_,RPC_BANACCOUNT__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_,RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_,RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_,RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_};
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
@@ -967,16 +967,16 @@ String PlayerManager::unbanAccount(PlayerObject* admin, Account* account, const 
 		return _implementation->unbanAccount(admin, account, reason);
 }
 
-String PlayerManager::banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason) {
+String PlayerManager::banFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, unsigned int seconds, const String& reason) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_);
+		DistributedMethod method(this, RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_);
 		method.addObjectParameter(admin);
 		method.addObjectParameter(account);
-		method.addAsciiParameter(galaxy);
+		method.addUnsignedIntParameter(galaxy);
 		method.addUnsignedIntParameter(seconds);
 		method.addAsciiParameter(reason);
 
@@ -986,16 +986,16 @@ String PlayerManager::banFromGalaxy(PlayerObject* admin, Account* account, const
 		return _implementation->banFromGalaxy(admin, account, galaxy, seconds, reason);
 }
 
-String PlayerManager::unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason) {
+String PlayerManager::unbanFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, const String& reason) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_STRING_);
+		DistributedMethod method(this, RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_);
 		method.addObjectParameter(admin);
 		method.addObjectParameter(account);
-		method.addAsciiParameter(galaxy);
+		method.addUnsignedIntParameter(galaxy);
 		method.addAsciiParameter(reason);
 
 		method.executeWithAsciiReturn(_return_unbanFromGalaxy);
@@ -1004,41 +1004,43 @@ String PlayerManager::unbanFromGalaxy(PlayerObject* admin, Account* account, con
 		return _implementation->unbanFromGalaxy(admin, account, galaxy, reason);
 }
 
-String PlayerManager::banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason) {
+String PlayerManager::banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_);
+		DistributedMethod method(this, RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_);
 		method.addObjectParameter(admin);
 		method.addObjectParameter(account);
 		method.addAsciiParameter(name);
+		method.addUnsignedIntParameter(galaxyID);
 		method.addUnsignedIntParameter(seconds);
 		method.addAsciiParameter(reason);
 
 		method.executeWithAsciiReturn(_return_banCharacter);
 		return _return_banCharacter;
 	} else
-		return _implementation->banCharacter(admin, account, name, seconds, reason);
+		return _implementation->banCharacter(admin, account, name, galaxyID, seconds, reason);
 }
 
-String PlayerManager::unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason) {
+String PlayerManager::unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_STRING_);
+		DistributedMethod method(this, RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_);
 		method.addObjectParameter(admin);
 		method.addObjectParameter(account);
 		method.addAsciiParameter(name);
+		method.addUnsignedIntParameter(galaxyID);
 		method.addAsciiParameter(reason);
 
 		method.executeWithAsciiReturn(_return_unbanCharacter);
 		return _return_unbanCharacter;
 	} else
-		return _implementation->unbanCharacter(admin, account, name, reason);
+		return _implementation->unbanCharacter(admin, account, name, galaxyID, reason);
 }
 
 DistributedObjectServant* PlayerManager::_getImplementation() {
@@ -1400,17 +1402,17 @@ void PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_:
 		resp->insertAscii(unbanAccount(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanAccount__PlayerObject_Account_String_)));
 		break;
-	case RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_:
-		resp->insertAscii(banFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_banFromGalaxy__PlayerObject_Account_String_int_String_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_banFromGalaxy__PlayerObject_Account_String_int_String_)));
+	case RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_:
+		resp->insertAscii(banFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_banFromGalaxy__PlayerObject_Account_int_int_String_)));
 		break;
-	case RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_STRING_STRING_:
-		resp->insertAscii(unbanFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanFromGalaxy__PlayerObject_Account_String_String_), inv->getAsciiParameter(_param3_unbanFromGalaxy__PlayerObject_Account_String_String_)));
+	case RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_:
+		resp->insertAscii(unbanFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_unbanFromGalaxy__PlayerObject_Account_int_String_)));
 		break;
-	case RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_:
-		resp->insertAscii(banCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_banCharacter__PlayerObject_Account_String_int_String_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_banCharacter__PlayerObject_Account_String_int_String_)));
+	case RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_:
+		resp->insertAscii(banCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_banCharacter__PlayerObject_Account_String_int_int_String_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param5_banCharacter__PlayerObject_Account_String_int_int_String_)));
 		break;
-	case RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_STRING_:
-		resp->insertAscii(unbanCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanCharacter__PlayerObject_Account_String_String_), inv->getAsciiParameter(_param3_unbanCharacter__PlayerObject_Account_String_String_)));
+	case RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_:
+		resp->insertAscii(unbanCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanCharacter__PlayerObject_Account_String_int_String_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_unbanCharacter__PlayerObject_Account_String_int_String_)));
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -1645,20 +1647,20 @@ String PlayerManagerAdapter::unbanAccount(PlayerObject* admin, Account* account,
 	return (static_cast<PlayerManager*>(stub))->unbanAccount(admin, account, reason);
 }
 
-String PlayerManagerAdapter::banFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, unsigned int seconds, const String& reason) {
+String PlayerManagerAdapter::banFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, unsigned int seconds, const String& reason) {
 	return (static_cast<PlayerManager*>(stub))->banFromGalaxy(admin, account, galaxy, seconds, reason);
 }
 
-String PlayerManagerAdapter::unbanFromGalaxy(PlayerObject* admin, Account* account, const String& galaxy, const String& reason) {
+String PlayerManagerAdapter::unbanFromGalaxy(PlayerObject* admin, Account* account, unsigned const int galaxy, const String& reason) {
 	return (static_cast<PlayerManager*>(stub))->unbanFromGalaxy(admin, account, galaxy, reason);
 }
 
-String PlayerManagerAdapter::banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int seconds, const String& reason) {
-	return (static_cast<PlayerManager*>(stub))->banCharacter(admin, account, name, seconds, reason);
+String PlayerManagerAdapter::banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason) {
+	return (static_cast<PlayerManager*>(stub))->banCharacter(admin, account, name, galaxyID, seconds, reason);
 }
 
-String PlayerManagerAdapter::unbanCharacter(PlayerObject* admin, Account* account, const String& name, const String& reason) {
-	return (static_cast<PlayerManager*>(stub))->unbanCharacter(admin, account, name, reason);
+String PlayerManagerAdapter::unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason) {
+	return (static_cast<PlayerManager*>(stub))->unbanCharacter(admin, account, name, galaxyID, reason);
 }
 
 /*
