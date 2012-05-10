@@ -485,7 +485,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		ghost->setAccountID(client->getAccountID());
 
-		if (!freeGodMode) {
+		if (!freeGodMode && MantisDatabase::instance() != NULL) {
 			try {
 				uint32 accID = client->getAccountID();
 
