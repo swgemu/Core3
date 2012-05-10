@@ -57,6 +57,9 @@ public:
 	}
 
 	inline static Database* instance() {
+		if (databases->size() == 0)
+			return NULL;
+
 		int i = currentDB.get() % databases->size();
 
 		currentDB.increment();
