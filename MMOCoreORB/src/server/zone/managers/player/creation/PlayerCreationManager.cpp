@@ -506,7 +506,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 					res = MantisDatabase::instance()->executeQuery(query);
 
-					if (res->next()) {
+					if (res != NULL && res->next()) {
 						uint32 level = res->getUnsignedInt(0);
 
 						if (level > 25) {
