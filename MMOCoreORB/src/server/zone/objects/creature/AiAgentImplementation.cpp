@@ -98,10 +98,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	// set the damage of the default weapon
-	getWeapon()->setMinDamage(minDmg);
-	getWeapon()->setMaxDamage(maxDmg);
-	getWeapon()->setAttackSpeed(1.f);
+	if (getWeapon() != NULL) {
+		// set the damage of the default weapon
+		getWeapon()->setMinDamage(minDmg);
+		getWeapon()->setMaxDamage(maxDmg);
+		getWeapon()->setAttackSpeed(1.f);
+	}
 
 	int ham;
 	baseHAM.removeAll();
