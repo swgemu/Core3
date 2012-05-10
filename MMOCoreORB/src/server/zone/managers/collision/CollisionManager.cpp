@@ -237,6 +237,60 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 	return false;
 }
 
+Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObject* cellObject) {
+	Vector<float>* collisions = NULL;
+
+	SceneObject* rootObject = cellObject->getRootParent();
+
+	if (rootObject == NULL)
+		return NULL;
+
+	SharedObjectTemplate* templateObject = rootObject->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
+	PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return NULL;
+
+	FloorMesh* mesh = portalLayout->getFloorMesh(cellObject->getCellNumber());
+
+	if (mesh == NULL)
+		return NULL;
+
+	AABBTree* tree = mesh->getAABBTree();
+
+	if (tree == NULL)
+		return NULL;
+
+	Vector3 rayStart(x, 16384.f, y);
+	Vector3 rayEnd(x, -16384.f, y);
+
+	Vector3 norm = rayEnd - rayStart;
+	norm.normalize();
+
+	Ray ray(rayStart, norm);
+
+	SortedVector<IntersectionResult> results(3, 2);
+
+	tree->intersects(ray, 16384 * 2, results);
+
+	if (results.size() == 0)
+		return NULL;
+
+	collisions = new Vector<float>(results.size(), 1);
+
+	for (int i = 0; i < results.size(); ++i) {
+		float floorHeight = 16384 - results.get(i).getIntersectionDistance();
+
+		collisions->add(floorHeight);
+	}
+
+	return collisions;
+}
+
 float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, bool testWater) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 	zone->getInRangeObjects(x, y, 128, &closeObjects, true);

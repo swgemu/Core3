@@ -64,6 +64,7 @@ public:
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	static float getWorldFloorCollision(float x, float y, Zone* zone, bool testWater);
+	static Vector<float>* getCellFloorCollision(float x, float y, CellObject* cellObject);
 
 	//static bool
 

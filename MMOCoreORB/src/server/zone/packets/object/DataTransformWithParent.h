@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 
 class DataTransformWithParent : public ObjectControllerMessage {
@@ -114,6 +115,13 @@ public:
 		parsedSpeed = message->parseFloat();
 
 		//info("datatransform with parent", true);
+	}
+
+	void bounceBack(SceneObject* object, ValidatedPosition& pos) {
+		Vector3 teleportPoint = pos.getPosition();
+		uint64 teleportParentID = pos.getParent();
+
+		object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 	}
 
 	void run() {
@@ -190,10 +198,33 @@ public:
 		pos.update(object);
 
 		if (object->isFrozen()) {
-			Vector3 teleportPoint = pos.getPosition();
-			uint64 teleportParentID = pos.getParent();
+			bounceBack(object, pos);
+			return;
+		}
 
-			object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+		Reference<Vector<float>* > collisionPoints = CollisionManager::getCellFloorCollision(positionX, positionY, cast<CellObject*>(newParent.get()));
+
+		if (collisionPoints == NULL) {
+			bounceBack(object, pos);
+			return;
+		}
+
+		float minErr = 16384;
+
+		for (int i = 0; i < collisionPoints->size(); ++i) {
+			float val = collisionPoints->get(i);
+
+			float err = fabs(val - positionZ);
+
+			printf("collision error %f\n value %f", err, val);
+
+			if (err < minErr) {
+				minErr = err;
+			}
+		}
+
+		if (minErr > 0.25) {
+			bounceBack(object, pos);
 
 			return;
 		}
