@@ -372,6 +372,14 @@ void AiAgentImplementation::selectWeapon() {
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
 	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(getSlottedObject("default_weapon"));
 
+	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
+		float range = fabs(defaultWeapon->getIdealRange() - dist);
+
+		if (range < diff) {
+			finalWeap = defaultWeapon;
+		}
+	}
+
 	if (currentWeapon != finalWeap) {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
 			currentWeapon->destroyObjectFromWorld(false);
