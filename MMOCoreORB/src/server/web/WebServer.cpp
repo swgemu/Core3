@@ -219,6 +219,7 @@ void WebServer::mongooseMgrInit() {
 bool WebServer::addContext(String context, Servlet* servlet) {
 	if(!contexts.contains(context)) {
 		contexts.put(context, servlet);
+		servlet->setZoneServer(zoneServer);
 		return true;
 	}
 	error("addContext - Context already exists: " + context);

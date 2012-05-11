@@ -9,12 +9,14 @@
 #define SERVLET_H_
 
 #include "engine/engine.h"
+#include "server/zone/ZoneServer.h"
 #include "../HttpRequest.h"
 #include "../HttpResponse.h"
 
 class Servlet : Logger {
 private:
 	String context;
+	ManagedReference<ZoneServer*> server;
 
 public:
 	Servlet(String context);
@@ -25,6 +27,10 @@ public:
 	virtual void handlePost(HttpRequest* request, HttpResponse* response) = 0;
 
 	void handleRequest(struct mg_connection *conn, HttpRequest* request, HttpResponse* response);
+
+	void setZoneServer(ZoneServer* serv) {
+		server = serv;
+	}
 
 	String getContext() {
 		return context;
