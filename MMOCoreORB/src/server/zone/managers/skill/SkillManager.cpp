@@ -349,6 +349,17 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	}
 
+	/// Update client with new values for things like Terrain Negotiation
+	CreatureObjectDeltaMessage4* msg4 = new CreatureObjectDeltaMessage4(creature);
+	msg4->updateAccelerationMultiplierBase();
+	msg4->updateAccelerationMultiplierMod();
+	msg4->updateSpeedMultiplierBase();
+	msg4->updateSpeedMultiplierMod();
+	msg4->updateRunSpeed();
+	msg4->updateTerrainNegotiation();
+	msg4->close();
+	creature->sendMessage(msg4);
+
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
 	return true;
