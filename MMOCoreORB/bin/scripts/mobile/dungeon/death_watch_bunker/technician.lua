@@ -1,7 +1,7 @@
 technician = Creature:new {
 	objectName = "@mob/creature_names:technician",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 34,
 	chanceHit = 0.41,

@@ -1,6 +1,6 @@
 swift_charging_bol = Creature:new {
 	objectName = "@mob/creature_names:bol_swift_charger",
-	socialGroup = "Bol",
+	socialGroup = "bol",
 	pvpFaction = "",
 	faction = "",
 	level = 34,

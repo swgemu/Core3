@@ -1,8 +1,8 @@
 patron_chiss = Creature:new {
 	objectName = "@mob/creature_names:patron_chiss_male",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -30,7 +30,7 @@ patron_chiss = Creature:new {
 		"object/mobile/dressed_patron_chiss_f_01.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

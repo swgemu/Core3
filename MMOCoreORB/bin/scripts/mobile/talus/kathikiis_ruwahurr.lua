@@ -1,8 +1,8 @@
 kathikiis_ruwahurr = Creature:new {
 	objectName = "@mob/creature_names:kathikiis_ruwahurr",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -21,13 +21,13 @@ kathikiis_ruwahurr = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

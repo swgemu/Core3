@@ -1,8 +1,8 @@
 emperors_hand = Creature:new {
 	objectName = "@mob/creature_names:emperors_hand",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 252,
 	chanceHit = 23.5,
 	damageMin = 1395,
@@ -26,7 +26,11 @@ emperors_hand = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_emperors_hand_zabrak_male_01.iff","object/mobile/dressed_emperors_hand_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_emperors_hand_human_male_01.iff",
+		"object/mobile/dressed_emperors_hand_human_male_02.iff",
+		"object/mobile/dressed_emperors_hand_human_female_01.iff",
+		"object/mobile/dressed_emperors_hand_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

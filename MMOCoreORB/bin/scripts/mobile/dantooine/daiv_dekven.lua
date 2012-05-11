@@ -1,9 +1,9 @@
 daiv_dekven = Creature:new {
 	objectName = "@mob/creature_names:patron_human_male_02",
 	customName = "Daiv Dekven",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ daiv_dekven = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

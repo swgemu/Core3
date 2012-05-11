@@ -1,9 +1,9 @@
 sindra_lintikoor = Creature:new {
 	objectName = "",
 	customName = "Sindra Lintikoor",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ sindra_lintikoor = Creature:new {
 
 	templates = {"object/mobile/dressed_sindra_lintikoor.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

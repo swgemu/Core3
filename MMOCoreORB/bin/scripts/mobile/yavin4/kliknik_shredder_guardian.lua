@@ -1,6 +1,6 @@
 kliknik_shredder_guardian = Creature:new {
 	objectName = "@mob/creature_names:kliknik_shredder_guardian",
-	socialGroup = "Kliknik",
+	socialGroup = "kliknik",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

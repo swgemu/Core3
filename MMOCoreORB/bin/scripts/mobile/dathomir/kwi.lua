@@ -1,6 +1,6 @@
 kwi = Creature:new {
 	objectName = "@mob/creature_names:kwi",
-	socialGroup = "Kwi",
+	socialGroup = "kwi",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

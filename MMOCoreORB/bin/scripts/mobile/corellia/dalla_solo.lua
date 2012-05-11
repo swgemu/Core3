@@ -1,9 +1,9 @@
 dalla_solo = Creature:new {
 	objectName = "",
 	customName = "Dalla Solo",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ dalla_solo = Creature:new {
 
 	templates = {"object/mobile/dressed_dalla_solo.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

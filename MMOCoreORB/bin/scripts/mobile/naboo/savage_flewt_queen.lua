@@ -1,6 +1,6 @@
 savage_flewt_queen = Creature:new {
 	objectName = "@mob/creature_names:savage_flewt_queen",
-	socialGroup = "Flewt",
+	socialGroup = "flewt",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

@@ -1,6 +1,6 @@
 giant_spined_puc = Creature:new {
 	objectName = "@mob/creature_names:giant_spined_puc",
-	socialGroup = "Spined Puc",
+	socialGroup = "spined_puc",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

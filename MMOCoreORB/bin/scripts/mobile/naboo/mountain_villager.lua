@@ -1,6 +1,6 @@
 mountain_villager = Creature:new {
 	objectName = "@mob/creature_names:mountain_villager",
-	socialGroup = "Mtn. Villager",
+	socialGroup = "villager",
 	pvpFaction = "",
 	faction = "",
 	level = 4,

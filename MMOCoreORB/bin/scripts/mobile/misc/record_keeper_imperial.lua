@@ -1,8 +1,8 @@
 record_keeper_imperial = Creature:new {
 	objectName = "",
 	customName = "Lt. Nilsson (Planetary Record Keeper)",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

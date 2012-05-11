@@ -1,6 +1,6 @@
 shear_mite_broodling = Creature:new {
 	objectName = "@mob/creature_names:shear_mite_broodling",
-	socialGroup = "Shearmite",
+	socialGroup = "shear_mite",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

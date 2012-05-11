@@ -1,9 +1,9 @@
 skinkner = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Skinkner",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ skinkner = Creature:new {
 
 	templates = {"object/mobile/dressed_skinkner.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 judge = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_judge",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

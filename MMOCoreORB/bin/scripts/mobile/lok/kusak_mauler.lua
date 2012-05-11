@@ -1,6 +1,6 @@
 kusak_mauler = Creature:new {
 	objectName = "@mob/creature_names:kusak_mauler",
-	socialGroup = "Kusak",
+	socialGroup = "kusak",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

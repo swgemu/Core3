@@ -1,6 +1,6 @@
 putrid_decay_mite_hatchling = Creature:new {
 	objectName = "@mob/creature_names:putrid_decay_mite_hatchling",
-	socialGroup = "Decay Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

@@ -1,7 +1,7 @@
 rebel_first_mate = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_mate",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 86,
 	chanceHit = 0.85,

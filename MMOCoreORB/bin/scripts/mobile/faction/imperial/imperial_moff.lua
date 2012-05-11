@@ -1,8 +1,8 @@
 imperial_moff = Creature:new {
 	objectName = "",
 	costumName = "Imperial Moff",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 28,
 	chanceHit = 0.37,

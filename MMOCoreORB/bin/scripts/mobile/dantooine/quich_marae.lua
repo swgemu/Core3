@@ -1,9 +1,9 @@
 quich_marae = Creature:new {
 	objectName = "@npc_name:ishi_tib_base_male",
 	customName = "Quich Marae",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ quich_marae = Creature:new {
 
 	templates = {"object/mobile/junk_quich.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

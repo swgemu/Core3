@@ -1,6 +1,6 @@
 juntah_herm = Creature:new {
 	objectName = "@npc_spawner_n:juntah_herm",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -28,7 +28,7 @@ juntah_herm = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_imperial_pilot.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

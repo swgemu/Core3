@@ -1,6 +1,6 @@
 kess_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:kess_yarrow",
-	socialGroup = "Townsperson",
+	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
@@ -28,7 +28,7 @@ kess_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_rebel.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

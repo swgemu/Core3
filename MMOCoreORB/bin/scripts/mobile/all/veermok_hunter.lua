@@ -1,6 +1,6 @@
 veermok_hunter = Creature:new {
 	objectName = "@mob/creature_names:veermok_hunter",
-	socialGroup = "Veermok",
+	socialGroup = "veermok",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

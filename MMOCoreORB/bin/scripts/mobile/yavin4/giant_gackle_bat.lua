@@ -1,6 +1,6 @@
 giant_gackle_bat = Creature:new {
 	objectName = "@mob/creature_names:giant_gackle_bat",
-	socialGroup = "Gacklebat",
+	socialGroup = "gacklebat",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

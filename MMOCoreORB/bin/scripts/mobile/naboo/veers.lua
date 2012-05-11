@@ -1,9 +1,9 @@
 veers = Creature:new {
 	objectName = "",
 	customName = "Veers",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,
@@ -29,7 +29,7 @@ veers = Creature:new {
 
 	templates = {"object/mobile/naboo_npc/veers.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

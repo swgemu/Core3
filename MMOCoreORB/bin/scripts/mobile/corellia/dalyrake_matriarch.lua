@@ -1,6 +1,6 @@
 dalyrake_matriarch = Creature:new {
 	objectName = "@mob/creature_names:dalyrake_matriarch",
-	socialGroup = "Dalyrake",
+	socialGroup = "dalyrake",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

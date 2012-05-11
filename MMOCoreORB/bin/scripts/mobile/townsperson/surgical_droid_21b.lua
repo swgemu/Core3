@@ -1,8 +1,8 @@
 surgical_droid_21b = Creature:new {
 	objectName = "@mob/creature_names:surgical_droid_21b",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -30,7 +30,7 @@ surgical_droid_21b = Creature:new {
 		"object/mobile/21b_surgical_droid.iff"
 	},		
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

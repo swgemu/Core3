@@ -1,6 +1,6 @@
 vrobal_sow = Creature:new {
 	objectName = "@mob/creature_names:vrobal_sow",
-	socialGroup = "Vrobal",
+	socialGroup = "vrobal",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

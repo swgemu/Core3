@@ -25,7 +25,8 @@ meatlump_loon = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
+	templates = {
+		"object/mobile/dressed_gran_thug_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_02.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",

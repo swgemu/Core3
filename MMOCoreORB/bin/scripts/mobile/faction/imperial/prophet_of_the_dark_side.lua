@@ -1,8 +1,8 @@
 prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:prophet_of_the_dark_side",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 126,
 	chanceHit = 4.000000,
 	damageMin = 745,
@@ -25,7 +25,9 @@ prophet_of_the_dark_side = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_dark_jedi_human_male_01.iff",
+		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

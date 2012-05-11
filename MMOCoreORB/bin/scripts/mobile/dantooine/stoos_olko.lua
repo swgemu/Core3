@@ -1,9 +1,9 @@
 stoos_olko = Creature:new {
 	objectName = "",
 	customName = "Stoos Olko",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ stoos_olko = Creature:new {
 
 	templates = {"object/mobile/dressed_stoos_olko.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

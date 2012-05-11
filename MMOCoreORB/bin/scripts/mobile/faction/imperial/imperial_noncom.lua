@@ -1,7 +1,7 @@
 imperial_noncom = Creature:new {
 	objectName = "@mob/creature_names:imperial_noncom",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 14,
 	chanceHit = 0.300000,
@@ -25,7 +25,9 @@ imperial_noncom = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_medic1_human_male_01.iff",
+		"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

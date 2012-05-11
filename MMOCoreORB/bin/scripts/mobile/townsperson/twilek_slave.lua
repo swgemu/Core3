@@ -1,8 +1,8 @@
 twilek_slave = Creature:new {
 	objectName = "@mob/creature_names:slave_twilek_female",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,
@@ -28,7 +28,7 @@ twilek_slave = Creature:new {
 
 	templates = {"object/mobile/twilek_female.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

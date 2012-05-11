@@ -1,7 +1,7 @@
 imperial_recruiter = Creature:new {
 	objectName = "@mob/creature_names:imperial_recruiter",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.390000,
@@ -25,7 +25,14 @@ imperial_recruiter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m_2.iff","object/mobile/dressed_imperial_officer_m_3.iff","object/mobile/dressed_imperial_officer_m_4.iff","object/mobile/dressed_imperial_officer_m_5.iff","object/mobile/dressed_imperial_officer_m_6.iff","object/mobile/dressed_imperial_officer_f.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_f.iff",
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},

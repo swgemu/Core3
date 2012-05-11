@@ -1,6 +1,6 @@
 woolamander_harvester = Creature:new {
 	objectName = "@mob/creature_names:woolamander_harvester",
-	socialGroup = "Woolamander",
+	socialGroup = "woolamander",
 	pvpFaction = "",
 	faction = "",
 	level = 38,

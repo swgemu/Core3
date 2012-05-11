@@ -1,8 +1,8 @@
 detention_security_guard = Creature:new {
 	objectName = "@mob/creature_names:detention_security_guard",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

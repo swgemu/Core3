@@ -1,9 +1,9 @@
 afroh_orah = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Afroh Orah",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ afroh_orah = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor03.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 sentry_hermit_spider = Creature:new {
 	objectName = "@mob/creature_names:sentry_hermit_spider",
-	socialGroup = "Hermit Spider",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

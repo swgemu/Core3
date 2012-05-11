@@ -1,6 +1,6 @@
 swamp_stalker = Creature:new {
 	objectName = "@mob/creature_names:swamp_stalker",
-	socialGroup = "Swamp Tusk Cat",
+	socialGroup = "tusk_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 32,

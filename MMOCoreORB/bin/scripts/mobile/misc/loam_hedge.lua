@@ -1,9 +1,9 @@
 loam_hedge = Creature:new {
 	objectName = "@mob/creature_names:loam_redge",
 	customName = "Inquisitor Loam Redge",--according to ZAM that's the name
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -31,6 +31,7 @@ loam_hedge = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "loam_redge_outfit",
 	attacks = {
 	}
 }

@@ -1,6 +1,6 @@
 hermit_spider_guard = Creature:new {
 	objectName = "@mob/creature_names:hermit_spider_guard",
-	socialGroup = "Hermit Spider",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

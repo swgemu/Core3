@@ -1,6 +1,6 @@
 kima = Creature:new {
 	objectName = "@mob/creature_names:kima",
-	socialGroup = "Kima",
+	socialGroup = "kima",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

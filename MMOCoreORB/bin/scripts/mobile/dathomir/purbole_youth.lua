@@ -1,6 +1,6 @@
 purbole_youth = Creature:new {
 	objectName = "@mob/creature_names:purbole_youth",
-	socialGroup = "Purbole",
+	socialGroup = "purbole",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

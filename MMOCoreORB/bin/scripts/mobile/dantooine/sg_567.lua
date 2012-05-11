@@ -1,7 +1,7 @@
 sg_567 = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "SG-567",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -29,7 +29,7 @@ sg_567 = Creature:new {
 
 	templates = {"object/mobile/dressed_sg_567.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

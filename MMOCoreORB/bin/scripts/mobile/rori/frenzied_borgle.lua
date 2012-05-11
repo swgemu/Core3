@@ -1,6 +1,6 @@
 frenzied_borgle = Creature:new {
 	objectName = "@mob/creature_names:fierce_borgle",
-	socialGroup = "Borgle",
+	socialGroup = "borgle",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

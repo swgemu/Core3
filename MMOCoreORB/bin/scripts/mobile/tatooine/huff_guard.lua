@@ -1,6 +1,6 @@
 huff_guard = Creature:new {
 	objectName = "@mob/creature_names:darklighter_guard",
-	socialGroup = "Darklighter",
+	socialGroup = "darklighter",
 	pvpFaction = "",
 	faction = "",
 	level = 99,
@@ -26,7 +26,7 @@ huff_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/darklight_guard.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

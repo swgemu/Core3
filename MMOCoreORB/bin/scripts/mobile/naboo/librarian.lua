@@ -1,8 +1,8 @@
 librarian = Creature:new {
 	objectName = "@mob/creature_names:trivia_librarian",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,
@@ -28,7 +28,7 @@ librarian = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 high_colonel = Creature:new {
 	objectName = "@mob/creature_names:high_colonel",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 230,
@@ -26,7 +26,7 @@ high_colonel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

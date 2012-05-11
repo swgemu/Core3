@@ -1,6 +1,6 @@
 kamurith_snapper = Creature:new {
 	objectName = "@mob/creature_names:kamurith_snapper",
-	socialGroup = "Kamurith",
+	socialGroup = "kamurith",
 	pvpFaction = "",
 	faction = "",
 	level = 44,

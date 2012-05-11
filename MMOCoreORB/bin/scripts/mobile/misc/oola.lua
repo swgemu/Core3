@@ -1,8 +1,8 @@
 oola = Creature:new {
 	objectName = "@mob/creature_names:oola",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

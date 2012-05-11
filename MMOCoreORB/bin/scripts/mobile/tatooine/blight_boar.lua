@@ -1,6 +1,6 @@
 blight_boar = Creature:new {
 	objectName = "@mob/creature_names:zucca_boar_blight",
-	socialGroup = "Zucca Boar",
+	socialGroup = "boar",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

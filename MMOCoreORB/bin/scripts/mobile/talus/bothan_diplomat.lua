@@ -1,6 +1,6 @@
 bothan_diplomat = Creature:new {
 	objectName = "@mob/creature_names:bothan_diplomat",
-	socialGroup = "Spynet",
+	socialGroup = "spynet",
 	pvpFaction = "",
 	faction = "",
 	level = 3,
@@ -26,12 +26,13 @@ bothan_diplomat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bth_spynet_pilot_m_01.iff",
-					"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
-					"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
+	templates = {
+			"object/mobile/dressed_bth_spynet_pilot_m_01.iff",
+			"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
+			"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
 					},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

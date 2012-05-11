@@ -1,6 +1,6 @@
 fierce_piket_protector = Creature:new {
 	objectName = "@mob/creature_names:fierce_piket_protector",
-	socialGroup = "Piket",
+	socialGroup = "piket",
 	pvpFaction = "",
 	faction = "",
 	level = 45,

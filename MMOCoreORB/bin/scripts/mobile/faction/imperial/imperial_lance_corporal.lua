@@ -1,7 +1,7 @@
 imperial_lance_corporal = Creature:new {
 	objectName = "@mob/creature_names:imperial_lance_corporal",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,

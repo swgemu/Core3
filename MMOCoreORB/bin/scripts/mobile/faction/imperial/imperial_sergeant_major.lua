@@ -1,7 +1,7 @@
 imperial_sergeant_major = Creature:new {
 	objectName = "@mob/creature_names:imperial_sergeant_major",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 19,
 	chanceHit = 0.330000,
@@ -25,7 +25,14 @@ imperial_sergeant_major = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_f.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_f.iff",
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {
 		{
 			groups = {

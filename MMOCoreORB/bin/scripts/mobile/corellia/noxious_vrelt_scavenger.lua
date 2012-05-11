@@ -1,6 +1,6 @@
 noxious_vrelt_scavenger = Creature:new {
 	objectName = "@mob/creature_names:noxious_vrelt_scavenger",
-	socialGroup = "Vrelt",
+	socialGroup = "vrelt",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

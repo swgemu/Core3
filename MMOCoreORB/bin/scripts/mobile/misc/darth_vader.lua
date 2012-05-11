@@ -1,8 +1,8 @@
 darth_vader = Creature:new {
 	objectName = "@mob/creature_names:darth_vader",
-	socialGroup = "Imperial",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 300,
 	chanceHit = 30,
 	damageMin = 1645,

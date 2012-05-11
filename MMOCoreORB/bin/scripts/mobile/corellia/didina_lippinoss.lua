@@ -1,9 +1,9 @@
 didina_lippinoss = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Didina Lippinoss",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ didina_lippinoss = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_female_03.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

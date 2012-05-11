@@ -1,6 +1,6 @@
 nightspider_poison_spitter = Creature:new {
 	objectName = "@mob/creature_names:nightspider_poison_spitter",
-	socialGroup = "Nightspider",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

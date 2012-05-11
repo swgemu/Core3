@@ -1,7 +1,7 @@
 death_watch_s_battle_droid_alt = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_super_battle_droid",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 200,
 	chanceHit = 18,
@@ -26,7 +26,10 @@ death_watch_s_battle_droid_alt = Creature:new {
 	optionsBitmask = 128,
 	diet = NONE,
 
-	templates = {"object/mobile/death_watch_s_battle_droid.iff"},
+	templates = {
+		"object/mobile/death_watch_s_battle_droid.iff",
+		"object/mobile/death_watch_s_battle_droid_02.iff",
+		"object/mobile/death_watch_s_battle_droid_03.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

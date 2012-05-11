@@ -1,5 +1,6 @@
 ragtag_mercenary = Creature:new {
-	objectName = "@mob/creature_names:ragtag_mercenary",
+	objectName = "",
+	customName = "a Ragtag mercenary",
 	socialGroup = "ragtag",
 	pvpFaction = "thug",
 	faction = "thug",
@@ -25,7 +26,8 @@ ragtag_mercenary = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
+	templates = {
+				"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
 				"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
 				"object/mobile/dressed_villain_trandoshan_male_01.iff",
 				"object/mobile/dressed_criminal_thug_rodian_male_01.iff"

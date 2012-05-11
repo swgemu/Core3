@@ -1,6 +1,6 @@
 giant_decay_mite_harvester = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_harvester",
-	socialGroup = "Decay Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

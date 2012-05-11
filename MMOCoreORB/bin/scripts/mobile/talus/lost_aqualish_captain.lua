@@ -1,8 +1,8 @@
 lost_aqualish_captain = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_captain",
-	socialGroup = "Lost Aql. Reg.",
-	pvpFaction = "Lost Aql. Reg.",
-	faction = "",
+	socialGroup = "lost_aqualish",
+	pvpFaction = "lost_aqualish",
+	faction = "lost_aqualish",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,9 @@ lost_aqualish_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lost_aqualish_captain_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_lost_aqualish_captain_female_01.iff",
+		"object/mobile/dressed_lost_aqualish_captain_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

@@ -1,6 +1,6 @@
 choku_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_choku",
-	socialGroup = "Choku",
+	socialGroup = "choku",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

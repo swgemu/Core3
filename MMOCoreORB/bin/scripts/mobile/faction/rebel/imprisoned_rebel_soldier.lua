@@ -1,7 +1,7 @@
 imprisoned_rebel_soldier = Creature:new {
 	objectName = "@mob/creature_names:imprisoned_rebel",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,

@@ -1,8 +1,8 @@
 barada = Creature:new {
 	objectName = "@mob/creature_names:barada",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -28,7 +28,7 @@ barada = Creature:new {
 
 	templates = {"object/mobile/barada.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

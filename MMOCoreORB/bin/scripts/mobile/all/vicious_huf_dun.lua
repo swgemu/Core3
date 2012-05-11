@@ -1,6 +1,6 @@
 vicious_huf_dun = Creature:new {
 	objectName = "@mob/creature_names:vicious_huf_dun",
-	socialGroup = "Huf Dun",
+	socialGroup = "huf_dun",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

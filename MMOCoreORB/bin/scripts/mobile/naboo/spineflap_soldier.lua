@@ -1,6 +1,6 @@
 spineflap_soldier = Creature:new {
 	objectName = "@mob/creature_names:spineflap_soldier",
-	socialGroup = "Cap. Spineflap",
+	socialGroup = "spineflap",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

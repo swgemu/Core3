@@ -1,6 +1,6 @@
 fern_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:fern_yarrow",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -28,7 +28,7 @@ fern_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_imperial.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

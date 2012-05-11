@@ -1,9 +1,8 @@
 herald_naboo_vaikanna = Creature:new {
-	objectName = "",
-	customName = "Vaikanna",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:naboo_herald_01",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -1,6 +1,6 @@
 drooling_nuna = Creature:new {
 	objectName = "@mob/creature_names:dwarf_nuna_drooling",
-	socialGroup = "Dwarf Nuna",
+	socialGroup = "nuna",
 	pvpFaction = "",
 	faction = "",
 	level = 6,
@@ -26,7 +26,7 @@ drooling_nuna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/nuna.iff"},
+	templates = {"object/mobile/dwarf_nuna.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

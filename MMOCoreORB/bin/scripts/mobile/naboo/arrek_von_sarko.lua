@@ -1,9 +1,9 @@
 arrek_von_sarko = Creature:new {
 	objectName = "",
 	customName = "Arrek Von Sarko",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

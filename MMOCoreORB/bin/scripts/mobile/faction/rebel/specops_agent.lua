@@ -1,8 +1,8 @@
 specops_agent = Creature:new {
 	objectName = "@mob/creature_names:specops_agent",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 24,
 	chanceHit = 0.350000,
 	damageMin = 230,

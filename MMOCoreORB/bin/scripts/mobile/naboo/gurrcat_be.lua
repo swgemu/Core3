@@ -1,6 +1,6 @@
 gurrcat_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_tusk_cat",
-	socialGroup = "Tusk Cat",
+	socialGroup = "tusk_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

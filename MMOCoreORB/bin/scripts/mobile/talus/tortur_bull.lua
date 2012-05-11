@@ -1,6 +1,6 @@
 tortur_bull = Creature:new {
 	objectName = "@mob/creature_names:tortur_bull",
-	socialGroup = "Tortur",
+	socialGroup = "tortur",
 	pvpFaction = "",
 	faction = "",
 	level = 25,

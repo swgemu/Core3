@@ -1,7 +1,7 @@
 senior_specforce_wilderness_scout = Creature:new {
 	objectName = "@mob/creature_names:mission_senior_specforce_wilderness_trooper",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 20,
 	chanceHit = 0.33,

@@ -36,7 +36,7 @@ official = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"rebel_weapons_medium"},
+	weapons = {""},
 	attacks = {}
 }
 

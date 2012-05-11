@@ -1,9 +1,9 @@
 thale_dustrunner = Creature:new {
 	objectName = "",
 	customName = "Thale Dustrunner (Corsec Captain)",
-	socialGroup = "Corsec",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ thale_dustrunner = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

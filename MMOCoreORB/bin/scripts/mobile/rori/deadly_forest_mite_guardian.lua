@@ -1,6 +1,6 @@
 deadly_forest_mite_guardian = Creature:new {
 	objectName = "@mob/creature_names:deadly_forest_mite_guardian",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

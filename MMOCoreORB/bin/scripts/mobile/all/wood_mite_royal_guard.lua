@@ -1,6 +1,6 @@
 wood_mite_royal_guard = Creature:new {
 	objectName = "@mob/creature_names:wood_mite_royal_guard",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

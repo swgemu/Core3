@@ -1,6 +1,6 @@
 chuba = Creature:new {
 	objectName = "@mob/creature_names:chuba",
-	socialGroup = "Chuba",
+	socialGroup = "chuba",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

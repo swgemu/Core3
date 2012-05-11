@@ -1,8 +1,8 @@
 fed_dub_constable = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_constable",
-	socialGroup = "Fed Dub",
-	pvpFaction = "Fed Dub",
-	faction = "",
+	socialGroup = "fed_dub",
+	pvpFaction = "fed_dub",
+	faction = "fed_dub",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,
@@ -26,8 +26,9 @@ fed_dub_constable = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_constable_twk_male_01.iff",
-					"object/mobile/dressed_fed_dub_constable_twk_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_fed_dub_constable_twk_male_01.iff",
+		"object/mobile/dressed_fed_dub_constable_twk_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

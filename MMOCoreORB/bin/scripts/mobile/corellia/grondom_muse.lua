@@ -1,9 +1,9 @@
 grondom_muse = Creature:new {
 	objectName = "",
 	customName = "Grondorn Muse",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ grondom_muse = Creature:new {
 
 	templates = {"object/mobile/dressed_grondorn_muse.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

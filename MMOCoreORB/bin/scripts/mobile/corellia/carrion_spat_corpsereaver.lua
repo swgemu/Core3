@@ -1,6 +1,6 @@
 carrion_spat_corpsereaver = Creature:new {
 	objectName = "@mob/creature_names:carrion_spat_corpsereaver",
-	socialGroup = "Carrion Spat",
+	socialGroup = "carrion_spat",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

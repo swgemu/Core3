@@ -1,6 +1,6 @@
 gorg_glutton = Creature:new {
 	objectName = "@mob/creature_names:gorg_glutton",
-	socialGroup = "Gorg",
+	socialGroup = "gorg",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

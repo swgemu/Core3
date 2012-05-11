@@ -1,6 +1,6 @@
 ronto_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_ronto",
-	socialGroup = "Ronto",
+	socialGroup = "ronto",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

@@ -1,7 +1,7 @@
 crackdown_imperial_first_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_first_lieutenant",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.33,

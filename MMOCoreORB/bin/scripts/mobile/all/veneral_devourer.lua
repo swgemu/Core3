@@ -1,6 +1,6 @@
 veneral_devourer = Creature:new {
 	objectName = "@mob/creature_names:pugoriss_venerable_devourer",
-	socialGroup = "Pugoriss",
+	socialGroup = "pugoriss",
 	pvpFaction = "",
 	faction = "",
 	level = 20,

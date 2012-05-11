@@ -1,6 +1,6 @@
 razor_cat_eviscerator = Creature:new {
 	objectName = "@mob/creature_names:razor_cat_eviscerator",
-	socialGroup = "Sand Panther",
+	socialGroup = "panther",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

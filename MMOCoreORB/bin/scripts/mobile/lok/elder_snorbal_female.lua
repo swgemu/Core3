@@ -1,6 +1,6 @@
 elder_snorbal_female = Creature:new {
 	objectName = "@mob/creature_names:elder_snorbal_female",
-	socialGroup = "Snorbal",
+	socialGroup = "snorbal",
 	pvpFaction = "",
 	faction = "",
 	level = 34,

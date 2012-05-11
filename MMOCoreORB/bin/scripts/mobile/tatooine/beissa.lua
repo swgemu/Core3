@@ -1,8 +1,8 @@
 beissa = Creature:new {
 	objectName = "@npc_spawner_n:beissa",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -28,7 +28,7 @@ beissa = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier3_beissa.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

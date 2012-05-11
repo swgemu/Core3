@@ -1,6 +1,6 @@
 giant_decay_mite_protector = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_protector",
-	socialGroup = "Decay Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

@@ -1,6 +1,6 @@
 kai_tok_prowler = Creature:new {
 	objectName = "@mob/creature_names:kai_tok_prowler",
-	socialGroup = "Kai Tok",
+	socialGroup = "kai_tok",
 	pvpFaction = "",
 	faction = "",
 	level = 26,

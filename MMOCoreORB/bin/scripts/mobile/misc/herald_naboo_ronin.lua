@@ -1,9 +1,8 @@
 herald_naboo_ronin = Creature:new {
-	objectName = "",
-	customName = "Ronin",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:naboo_herald_02",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

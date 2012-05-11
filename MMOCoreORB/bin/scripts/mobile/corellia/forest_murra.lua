@@ -1,6 +1,6 @@
 forest_murra = Creature:new {
 	objectName = "@mob/creature_names:forest_murra",
-	socialGroup = "self",
+	socialGroup = "murra",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

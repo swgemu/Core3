@@ -1,6 +1,6 @@
 mauler_lord = Creature:new {
 	objectName = "@mob/creature_names:mauler_lord",
-	socialGroup = "Mauler",
+	socialGroup = "mauler",
 	pvpFaction = "",
 	faction = "",
 	level = 27,

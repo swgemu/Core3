@@ -1,9 +1,9 @@
 crev_bombaasa = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Crev Bombaasa",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ crev_bombaasa = Creature:new {
 
 	templates = {"object/mobile/dressed_crev_bombaasa.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

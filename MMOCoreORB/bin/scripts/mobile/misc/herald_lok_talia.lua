@@ -1,9 +1,8 @@
 herald_lok_talia = Creature:new {
-	objectName = "",
-	customName = "Talia",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:lok_herald_01",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -1,8 +1,8 @@
 karin_featherlight = Creature:new {
 	objectName = "@npc_name:corellia_herald_02",
-	socialGroup = "Corellia Times",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,11 +26,9 @@ karin_featherlight = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-				 "object/mobile/dressed_herald_corellia_02.iff"
-				},
+	templates = {"object/mobile/dressed_herald_corellia_02.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

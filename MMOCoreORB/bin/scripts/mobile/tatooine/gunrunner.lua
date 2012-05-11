@@ -1,6 +1,6 @@
 gunrunner = Creature:new {
 	objectName = "@mob/creature_names:gunrunner",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

@@ -1,7 +1,7 @@
 alert_droideka = Creature:new {
 	objectName = "@mob/creature_names:geonosian_droideka_crazed",
-	socialGroup = "Geonosian",
-	pvpFaction = "Geonosian",
+	socialGroup = "geonosian",
+	pvpFaction = "geonosian",
 	faction = "",
 	level = 39,
 	chanceHit = 0.56,

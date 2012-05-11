@@ -1,8 +1,8 @@
 specops_trooper = Creature:new {
 	objectName = "@mob/creature_names:specops_trooper",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 17,
 	chanceHit = 0.320000,
 	damageMin = 160,

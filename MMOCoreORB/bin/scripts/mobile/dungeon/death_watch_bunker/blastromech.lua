@@ -1,6 +1,6 @@
 blastromech = Creature:new {
 	objectName = "@mob/creature_names:blastromech",
-	socialGroup = "",
+	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
 	level = 0,
@@ -28,7 +28,7 @@ blastromech = Creature:new {
 
 	templates = {"object/mobile/blastromech.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"droid_astromech_ranged"},
 	conversationTemplate = "",
 	attacks = {
 	}

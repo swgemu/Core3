@@ -36,7 +36,7 @@ philosopher = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

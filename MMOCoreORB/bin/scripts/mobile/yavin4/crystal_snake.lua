@@ -1,6 +1,6 @@
 crystal_snake = Creature:new {
 	objectName = "@mob/creature_names:crystal_snake",
-	socialGroup = "Crystal Snake",
+	socialGroup = "snake",
 	pvpFaction = "",
 	faction = "",
 	level = 25,

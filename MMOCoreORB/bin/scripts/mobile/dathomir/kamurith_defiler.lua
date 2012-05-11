@@ -1,6 +1,6 @@
 kamurith_defiler = Creature:new {
 	objectName = "@mob/creature_names:kamurith_defiler",
-	socialGroup = "Kamurith",
+	socialGroup = "kamurith",
 	pvpFaction = "",
 	faction = "",
 	level = 50,

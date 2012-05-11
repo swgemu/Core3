@@ -1,6 +1,6 @@
 kahmurra_bio_engineer = Creature:new {
 	objectName = "@mob/creature_names:kahmurra_bio_engineer",
-	socialGroup = "Kahmurra",
+	socialGroup = "kahmurra",
 	pvpFaction = "",
 	faction = "",
 	level = 5,
@@ -27,7 +27,7 @@ kahmurra_bio_engineer = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	attacks = {}
 }
 

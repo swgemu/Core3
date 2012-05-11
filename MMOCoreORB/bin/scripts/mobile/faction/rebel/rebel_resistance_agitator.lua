@@ -1,8 +1,8 @@
 rebel_resistance_agitator = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_agitator",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,

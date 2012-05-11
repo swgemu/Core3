@@ -1,8 +1,8 @@
 lost_aqualish_lookout = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_lookout",
-	socialGroup = "Lost Aql. Reg.",
-	pvpFaction = "Lost Aql. Reg.",
-	faction = "",
+	socialGroup = "lost_aqualish",
+	pvpFaction = "lost_aqualish",
+	faction = "lost_aqualish",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,7 +26,9 @@ lost_aqualish_lookout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lost_aqualish_lookout_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_lost_aqualish_lookout_female_01.iff",
+		"object/mobile/dressed_lost_aqualish_lookout_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

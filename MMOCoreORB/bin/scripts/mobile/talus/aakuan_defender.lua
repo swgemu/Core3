@@ -1,8 +1,8 @@
 aakuan_defender = Creature:new {
 	objectName = "@mob/creature_names:aakuan_defender",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,9 @@ aakuan_defender = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff","object/mobile/dressed_aakuan_defender_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_defender_human_male_01.iff",
+		"object/mobile/dressed_aakuan_defender_human_female_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

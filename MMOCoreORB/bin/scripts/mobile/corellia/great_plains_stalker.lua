@@ -1,6 +1,6 @@
 great_plains_stalker = Creature:new {
 	objectName = "@mob/creature_names:great_plains_stalker",
-	socialGroup = "Sand Panther",
+	socialGroup = "panther",
 	pvpFaction = "",
 	faction = "",
 	level = 51,

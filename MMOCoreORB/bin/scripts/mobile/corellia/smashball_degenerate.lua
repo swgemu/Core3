@@ -25,7 +25,8 @@ smashball_degenerate = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mugger.iff",
+	templates = {
+		"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_ravager_human_female_01.iff",
 		"object/mobile/dressed_ravager_human_male_01.iff",
 		"object/mobile/dressed_raider_trandoshan_female_01.iff",

@@ -1,7 +1,7 @@
 imperial_cadet = Creature:new {
 	objectName = "@mob/creature_names:imperial_cadet",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 9,
 	chanceHit = 0.27,
@@ -26,7 +26,7 @@ imperial_cadet = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_soldier_m.iff","object/mobile/dressed_imperial_soldier_m.iff"},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{
 			groups = {

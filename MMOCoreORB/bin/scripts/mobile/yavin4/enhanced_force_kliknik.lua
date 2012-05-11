@@ -1,8 +1,8 @@
 enhanced_force_kliknik = Creature:new {
 	objectName = "",
 	customName = "Force Kliknik",
-	socialGroup = "Geon. Monster",
-	pvpFaction = "",
+	socialGroup = "geonosian_creature",
+	pvpFaction = "geonosian_creature",
 	faction = "",
 	level = 109,
 	chanceHit = 2.2,

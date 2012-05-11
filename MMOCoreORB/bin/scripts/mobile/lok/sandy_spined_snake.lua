@@ -1,6 +1,6 @@
 sandy_spined_snake = Creature:new {
 	objectName = "@mob/creature_names:sandy_spined_snake",
-	socialGroup = "Spinesnake",
+	socialGroup = "spine_snake",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

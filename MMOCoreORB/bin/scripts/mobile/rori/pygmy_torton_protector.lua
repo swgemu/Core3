@@ -1,6 +1,6 @@
 pygmy_torton_protector = Creature:new {
 	objectName = "@mob/creature_names:torton_pygmy_protector",
-	socialGroup = "Torton",
+	socialGroup = "torton",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

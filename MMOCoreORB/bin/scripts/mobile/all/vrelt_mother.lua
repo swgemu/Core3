@@ -1,6 +1,6 @@
 vrelt_mother = Creature:new {
 	objectName = "@mob/creature_names:startled_vrelt_mother",
-	socialGroup = "Vrelt",
+	socialGroup = "vrelt",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

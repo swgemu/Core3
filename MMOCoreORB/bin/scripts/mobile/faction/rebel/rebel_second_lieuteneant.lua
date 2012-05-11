@@ -1,7 +1,7 @@
 rebel_second_lieuteneant = Creature:new {
 	objectName = "@mob/creature_names:rebel_second_lieutenant",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 19,
 	chanceHit = 0.33,

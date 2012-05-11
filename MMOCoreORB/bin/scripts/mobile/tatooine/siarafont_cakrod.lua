@@ -1,9 +1,9 @@
 siarafont_cakrod = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Siarafont Cakrod",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,

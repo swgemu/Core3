@@ -1,9 +1,9 @@
 commander_dkrn = Creature:new {
 	objectName = "",
-	customName = "Commander D`krn",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	customName = "Commander D'krn",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ commander_dkrn = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 plasma_thieving_swamp_trooper_captain = Creature:new {
 	objectName = "@mob/creature_names:swamp_trooper_captain_anti_gungan",
-	socialGroup = "Plasma Thief",
-	pvpFaction = "Plasma Thief",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -26,7 +26,7 @@ plasma_thieving_swamp_trooper_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_swamp_trooper.iff"},
 	lootGroups = {
 	    {
 			groups = {

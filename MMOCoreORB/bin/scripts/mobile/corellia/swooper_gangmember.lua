@@ -1,6 +1,6 @@
 swooper_gangmember = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	socialGroup = "swoop",
+	socialGroup = "cor_swoop",
 	pvpFaction = "cor_swoop",
 	faction = "cor_swoop",
 	level = 9,

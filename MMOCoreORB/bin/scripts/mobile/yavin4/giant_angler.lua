@@ -1,6 +1,6 @@
 giant_angler = Creature:new {
 	objectName = "@mob/creature_names:giant_angler",
-	socialGroup = "Angler",
+	socialGroup = "angler",
 	pvpFaction = "",
 	faction = "",
 	level = 35,

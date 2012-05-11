@@ -1,8 +1,8 @@
 chunker_bruiser = Creature:new {
 	objectName = "@mob/creature_names:chunker_bruiser",
-	socialGroup = "Chunker Gang",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "chunker",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 11,
 	chanceHit = 0.290000,
 	damageMin = 120,

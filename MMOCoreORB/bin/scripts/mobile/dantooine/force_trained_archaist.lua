@@ -1,6 +1,6 @@
 force_trained_archaist = Creature:new {
 	objectName = "@mob/creature_names:force_trained_archaist",
-	socialGroup = "Force Regen.",
+	socialGroup = "force",
 	pvpFaction = "",
 	faction = "",
 	level = 90,

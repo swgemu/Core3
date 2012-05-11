@@ -1,9 +1,9 @@
 haleen_snowline = Creature:new {
 	objectName = "",
 	customName = "Haleen Snowline",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ haleen_snowline = Creature:new {
 
 	templates = {"object/mobile/dressed_haline_snowline.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

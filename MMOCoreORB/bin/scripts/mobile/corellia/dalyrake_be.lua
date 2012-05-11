@@ -1,6 +1,6 @@
 dalyrake_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_dalyrake",
-	socialGroup = "Dalyrake",
+	socialGroup = "dalyrake",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

@@ -1,6 +1,6 @@
 swamp_humbab = Creature:new {
 	objectName = "@mob/creature_names:swamp_humbaba",
-	socialGroup = "self",
+	socialGroup = "humbaba",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

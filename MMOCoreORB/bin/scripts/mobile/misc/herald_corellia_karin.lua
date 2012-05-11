@@ -1,9 +1,8 @@
 herald_corellia_karin = Creature:new {
-	objectName = "",
-	customName = "Karin",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:corellia_herald_02",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

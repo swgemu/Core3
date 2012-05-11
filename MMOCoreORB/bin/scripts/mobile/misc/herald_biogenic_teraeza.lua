@@ -1,9 +1,9 @@
 herald_biogenic_teraeza = Creature:new {
 	objectName = "",
 	customName = "Teraeza",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

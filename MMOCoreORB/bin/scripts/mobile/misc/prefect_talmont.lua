@@ -1,8 +1,8 @@
 prefect_talmont = Creature:new {
 	objectName = "@mob/creature_names:prefect_talmont",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -25,7 +25,7 @@ prefect_talmont = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/prefect_talmont.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

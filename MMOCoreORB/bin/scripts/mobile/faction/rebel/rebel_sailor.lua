@@ -1,8 +1,8 @@
 rebel_sailor = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_sailor",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 96,
 	chanceHit = 0.95,
 	damageMin = 620,

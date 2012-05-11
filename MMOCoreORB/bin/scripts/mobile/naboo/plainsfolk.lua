@@ -27,7 +27,7 @@ plainsfolk = Creature:new {
 
 	templates = {"object/mobile/dressed_plainsfolk.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

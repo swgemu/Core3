@@ -1,7 +1,7 @@
 death_watch_battle_droid = Creature:new {
-	objectName = "@mob/creature_names:battle_droid",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	objectName = "@mob/creature_names:mand_bunker_battle_droid",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 134,
 	chanceHit = 5.5,
@@ -26,9 +26,10 @@ death_watch_battle_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/death_watch_battle_droid.iff",
-	"object/mobile/death_watch_battle_droid_02.iff",
-	"object/mobile/death_watch_battle_droid_03.iff"},
+	templates = {
+		"object/mobile/death_watch_battle_droid.iff",
+		"object/mobile/death_watch_battle_droid_02.iff",
+		"object/mobile/death_watch_battle_droid_03.iff"},
 	lootGroups = {
 		{
 			groups = {

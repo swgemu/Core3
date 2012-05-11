@@ -1,9 +1,9 @@
 herald_biogenic_gardo = Creature:new {
 	objectName = "",
 	customName = "Gardo",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

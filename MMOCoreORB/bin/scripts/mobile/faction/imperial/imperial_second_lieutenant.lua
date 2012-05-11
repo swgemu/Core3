@@ -1,7 +1,7 @@
 imperial_second_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:imperial_second_lieutenant",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.330000,
@@ -25,7 +25,7 @@ imperial_second_lieutenant = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_major_m.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {
 		{
 			groups = {

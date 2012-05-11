@@ -1,9 +1,9 @@
 gilad_pellaeon = Creature:new {
 	objectName = "",
-	customName = "Gilad Pellaeon",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	customName = "Captain Gilad Pellaeon",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ gilad_pellaeon = Creature:new {
 
 	templates = {"object/mobile/dressed_captain_gilad_pellaeon.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

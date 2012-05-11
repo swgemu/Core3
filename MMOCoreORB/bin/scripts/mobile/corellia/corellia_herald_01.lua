@@ -1,8 +1,8 @@
 corellia_herald_01 = Creature:new {
 	objectName = "@mob/creature_names:corellia_herald_01",
-	socialGroup = "Corellia Times",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -26,10 +26,9 @@ corellia_herald_01 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_herald_corellia_01.iff"
-				},
+	templates = {"object/mobile/dressed_herald_corellia_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 kahmurra = Creature:new {
 	objectName = "@mob/creature_names:kahmurra",
-	socialGroup = "Kahmurra",
+	socialGroup = "kahmurra",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

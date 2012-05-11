@@ -1,6 +1,6 @@
 volatile_syck = Creature:new {
 	objectName = "@mob/creature_names:scyk_volatile",
-	socialGroup = "Scyk",
+	socialGroup = "scyk",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

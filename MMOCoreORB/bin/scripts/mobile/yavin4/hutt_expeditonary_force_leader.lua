@@ -1,8 +1,8 @@
 hutt_expeditonary_force_leader = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_leader",
-	socialGroup = "jabba",
-	pvpFaction = "jabba",
-	faction = "jabba",
+	socialGroup = "hutt",
+	pvpFaction = "hutt",
+	faction = "hutt",
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 200,

@@ -1,7 +1,7 @@
 luthik_uwyr = Creature:new {
 	objectName = "",
 	customName = "Luthik Uwyr",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -29,7 +29,7 @@ luthik_uwyr = Creature:new {
 
 	templates = {"object/mobile/dressed_luthik_uwyr.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

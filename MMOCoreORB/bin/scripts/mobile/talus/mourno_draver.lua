@@ -1,9 +1,9 @@
 mourno_draver = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Mourno Draver",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ mourno_draver = Creature:new {
 
 	templates = {"object/mobile/dressed_mourno_draver.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

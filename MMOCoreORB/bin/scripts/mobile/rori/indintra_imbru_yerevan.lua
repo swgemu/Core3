@@ -1,9 +1,9 @@
 indintra_imbru_yerevan = Creature:new {
 	objectName = "",
 	customName = "Indintra Imbru Yerevan",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ indintra_imbru_yerevan = Creature:new {
 
 	templates = {"object/mobile/dressed_indintra_imbru_yerevan.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

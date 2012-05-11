@@ -1,9 +1,9 @@
 aakuan_anarchist = Creature:new {
 	objectName = "",
-	customName = "Aa'kuan Anarchist",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	customName = "an Aa'kuan Anarchist",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 30,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -27,7 +27,9 @@ aakuan_anarchist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff",
+		"object/mobile/dressed_aakuan_follower_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 		    groups = {

@@ -1,6 +1,6 @@
 willham_burke = Creature:new {
 	objectName = "@npc_spawner_n:willham_burke",
-	socialGroup = "Townsperson",
+	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
@@ -28,7 +28,7 @@ willham_burke = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_army_captain_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,7 +1,7 @@
 specforce_technician = Creature:new {
 	objectName = "@mob/creature_names:specforce_technician",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 18,
 	chanceHit = 0.320000,

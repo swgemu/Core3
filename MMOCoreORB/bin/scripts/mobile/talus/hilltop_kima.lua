@@ -1,6 +1,6 @@
 hilltop_kima = Creature:new {
 	objectName = "@mob/creature_names:hilltop_kima",
-	socialGroup = "self",
+	socialGroup = "kima",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

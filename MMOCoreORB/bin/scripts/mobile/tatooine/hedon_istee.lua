@@ -1,9 +1,9 @@
 hedon_istee = Creature:new {
 	objectName = "",
 	customName = "Hedon Istee",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

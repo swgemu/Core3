@@ -1,9 +1,9 @@
 scrib_leras = Creature:new {
 	objectName = "",
 	customName = "Scrib Leras",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -22,14 +22,14 @@ scrib_leras = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_medic2_twilek_male_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

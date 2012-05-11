@@ -1,9 +1,9 @@
 aakuari_assassin = Creature:new {
 	objectName = "",
-	customName = "Aa'kuan Assassin",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	customName = "an Aa'kuan Assassin",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 31,
 	chanceHit = 0.37,
 	damageMin = 270,
@@ -27,7 +27,9 @@ aakuari_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff",
+		"object/mobile/dressed_aakuan_follower_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 		    groups = {

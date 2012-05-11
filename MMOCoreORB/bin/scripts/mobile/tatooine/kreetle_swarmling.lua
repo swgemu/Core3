@@ -1,6 +1,6 @@
 kreetle_swarmling = Creature:new {
 	objectName = "@mob/creature_names:kreetle_swarming",
-	socialGroup = "Uber Kreetle",
+	socialGroup = "kreetle",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

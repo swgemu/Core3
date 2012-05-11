@@ -1,9 +1,9 @@
 queen_kylantha_gazebo = Creature:new {
 	objectName = "",
 	customName = "Queen Kylantha",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

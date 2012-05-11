@@ -1,6 +1,6 @@
 selonian_warlord = Creature:new {
 	objectName = "@mob/creature_names:selonian_warlord",
-	socialGroup = "Selonian",
+	socialGroup = "selonian",
 	pvpFaction = "",
 	faction = "",
 	level = 20,
@@ -26,7 +26,8 @@ selonian_warlord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_selonian_f_01.iff",
+	templates = {
+		"object/mobile/dressed_selonian_f_01.iff",
 		"object/mobile/dressed_selonian_f_02.iff",
 		"object/mobile/dressed_selonian_f_03.iff",
 		"object/mobile/dressed_selonian_f_04.iff",

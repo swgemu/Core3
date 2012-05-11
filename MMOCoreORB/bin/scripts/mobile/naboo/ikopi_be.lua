@@ -1,6 +1,6 @@
 ikopi_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_ikopi",
-	socialGroup = "Ikopi",
+	socialGroup = "ikopi",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

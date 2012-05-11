@@ -1,6 +1,6 @@
 terrible_quenker = Creature:new {
 	objectName = "@mob/creature_names:quenker_terrible",
-	socialGroup = "Quenker",
+	socialGroup = "quenker",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

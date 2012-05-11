@@ -1,6 +1,6 @@
 razor_cat_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_sand_panther",
-	socialGroup = "Sand Panther",
+	socialGroup = "panther",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

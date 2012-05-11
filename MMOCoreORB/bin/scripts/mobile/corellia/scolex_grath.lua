@@ -1,9 +1,9 @@
 scolex_grath = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Scolex Grath",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ scolex_grath = Creature:new {
 
 	templates = {"object/mobile/dressed_scolex_grath.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

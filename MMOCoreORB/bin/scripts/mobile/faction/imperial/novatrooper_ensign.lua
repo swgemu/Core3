@@ -1,7 +1,7 @@
 novatrooper_ensign = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_novatrooper_ensign",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 87,
 	chanceHit = 0.85,

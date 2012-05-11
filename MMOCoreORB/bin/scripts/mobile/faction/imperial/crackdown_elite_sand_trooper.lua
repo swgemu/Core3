@@ -1,7 +1,7 @@
 crackdown_elite_sand_trooper = Creature:new {
 	objectName = "@mob/creature_names:crackdown_elite_sand_trooper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.38,

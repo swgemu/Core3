@@ -1,7 +1,7 @@
 crackdown_command_security_guard = Creature:new {
 	objectName = "@mob/creature_names:crackdown_command_security_guard",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.31,

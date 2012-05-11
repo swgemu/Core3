@@ -1,8 +1,8 @@
 hand_of_solitude = Creature:new {
 	objectName = "@mob/creature_names:hand_of_solitude",
-	socialGroup = "Solitude",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "solitude",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 15,
 	chanceHit = 0.310000,
 	damageMin = 160,

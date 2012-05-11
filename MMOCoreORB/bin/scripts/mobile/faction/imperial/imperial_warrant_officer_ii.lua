@@ -1,7 +1,7 @@
 imperial_warrant_officer_ii = Creature:new {
 	objectName = "@mob/creature_names:imperial_warrant_officer_ii",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 18,
 	chanceHit = 0.32,
@@ -26,7 +26,14 @@ imperial_warrant_officer_ii = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m_2.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_officer_f.iff",
+		"object/mobile/dressed_imperial_officer_m.iff",
+		"object/mobile/dressed_imperial_officer_m_2.iff",
+		"object/mobile/dressed_imperial_officer_m_3.iff",
+		"object/mobile/dressed_imperial_officer_m_4.iff",
+		"object/mobile/dressed_imperial_officer_m_5.iff",
+		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {
 		{
 			groups = {

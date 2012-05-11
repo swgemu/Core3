@@ -1,6 +1,6 @@
 stunted_huf_dun = Creature:new {
 	objectName = "@mob/creature_names:stunted_huf_dun",
-	socialGroup = "Huf Dun",
+	socialGroup = "huf_dun",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

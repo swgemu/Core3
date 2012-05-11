@@ -1,6 +1,6 @@
 stunted_woolamander = Creature:new {
 	objectName = "@mob/creature_names:stunted_woolamander",
-	socialGroup = "Woolamander",
+	socialGroup = "woolamander",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

@@ -1,8 +1,8 @@
 cll8_binary_load_lifter = Creature:new {
 	objectName = "@mob/creature_names:cll8_binary_load_lifter",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -30,7 +30,7 @@ cll8_binary_load_lifter = Creature:new {
 		"object/mobile/cll8_binary_load_lifter.iff"
 	},		
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

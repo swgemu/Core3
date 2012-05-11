@@ -1,8 +1,8 @@
 mand_bunker_crazed_miner = Creature:new {
 	objectName = "",
 	customName = "Haldo",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

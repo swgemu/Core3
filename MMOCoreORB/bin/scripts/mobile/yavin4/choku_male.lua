@@ -1,6 +1,6 @@
 choku_male = Creature:new {
 	objectName = "@mob/creature_names:choku_male",
-	socialGroup = "Choku",
+	socialGroup = "choku",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

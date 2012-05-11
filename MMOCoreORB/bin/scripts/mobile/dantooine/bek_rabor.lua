@@ -28,7 +28,7 @@ bek_rabor = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_imperial_officer.iff"},
 	lootGroups = {},
-	weapons = {"light_jedi_weapons"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

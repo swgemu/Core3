@@ -1,6 +1,6 @@
 gronda_juggernaut = Creature:new {
 	objectName = "@mob/creature_names:gronda_juggernaut",
-	socialGroup = "Gronda",
+	socialGroup = "gronda",
 	pvpFaction = "",
 	faction = "",
 	level = 70,

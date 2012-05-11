@@ -26,7 +26,8 @@ visionary_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_patron_chiss_f_01.iff",
+	templates = {
+		"object/mobile/dressed_patron_chiss_f_01.iff",
 		"object/mobile/dressed_patron_chiss_f_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},

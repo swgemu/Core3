@@ -1,6 +1,6 @@
 bile_drenched_quenker = Creature:new {
 	objectName = "@mob/creature_names:bile_drenched_quenker",
-	socialGroup = "Quenker",
+	socialGroup = "quenker",
 	pvpFaction = "",
 	faction = "",
 	level = 34,

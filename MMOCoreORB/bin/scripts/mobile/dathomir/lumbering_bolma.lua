@@ -1,6 +1,6 @@
 lumbering_bolma = Creature:new {
 	objectName = "@mob/creature_names:lumbering_bolma",
-	socialGroup = "Bolma",
+	socialGroup = "bolma",
 	pvpFaction = "",
 	faction = "",
 	level = 25,

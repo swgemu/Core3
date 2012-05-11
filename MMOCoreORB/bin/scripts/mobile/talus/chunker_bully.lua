@@ -1,8 +1,8 @@
 chunker_bully = Creature:new {
 	objectName = "@mob/creature_names:chunker_bully",
-	socialGroup = "Chunker Gang",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "chunker",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

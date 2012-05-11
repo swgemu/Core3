@@ -1,6 +1,6 @@
 dune_beetle = Creature:new {
 	objectName = "@mob/creature_names:dune_beetle",
-	socialGroup = "Gt. Sand Beet.",
+	socialGroup = "beetle",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

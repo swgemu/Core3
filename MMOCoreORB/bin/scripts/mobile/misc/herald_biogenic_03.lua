@@ -1,9 +1,9 @@
 herald_biogenic_03 = Creature:new {
-	objectName = "@npc_name:herald_biogenic_03",
+	objectName = "",
 	customName = "",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

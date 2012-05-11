@@ -1,9 +1,9 @@
 imperial_research_guard_coa3 = Creature:new {
 	objectName = "",
 	customName = "Imperial Research Guard",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "rebel",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

@@ -1,7 +1,7 @@
 imperial_observer = Creature:new {
 	objectName = "@mob/creature_names:geonosian_imperial_observer",
-	socialGroup = "self",
-	pvpFaction = "self",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 53,
 	chanceHit = 0.54,

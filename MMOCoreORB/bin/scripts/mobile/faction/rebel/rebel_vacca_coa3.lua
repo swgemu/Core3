@@ -1,8 +1,8 @@
 rebel_vacca_coa3 = Creature:new {
 	objectName = "",
 	customName = "Vacca",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 35,
 	chanceHit = 0.41,
@@ -29,7 +29,7 @@ rebel_vacca_coa3 = Creature:new {
 
 	templates = {"object/mobile/dressed_dr_vacca.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

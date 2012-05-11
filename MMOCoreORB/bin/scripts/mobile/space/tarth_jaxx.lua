@@ -1,8 +1,8 @@
 tarth_jaxx = Creature:new {
 	objectName = "@npc_spawner_n:tarth_jaxx",
 	socialGroup = "townsperson",
-	pvpFaction = "",
-	faction = "",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

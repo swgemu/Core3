@@ -1,8 +1,8 @@
 the_mos_taike_mayor = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_mayor",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -37,7 +37,7 @@ the_mos_taike_mayor = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

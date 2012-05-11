@@ -1,8 +1,8 @@
 agriculturalist = Creature:new {
 	objectName = "@mob/creature_names:farmer_agriculturalist",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -31,7 +31,7 @@ agriculturalist = Creature:new {
 					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
 					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 hirsch_sif = Creature:new {
 	objectName = "@mob/creature_names:hirsch_sif",
-	socialGroup = "Sif",
-	pvpFaction = "Sif",
-	faction = "",
+	socialGroup = "sif",
+	pvpFaction = "sif",
+	faction = "sif",
 	level = 57,
 	chanceHit = 0.570000,
 	damageMin = 430,
@@ -25,7 +25,7 @@ hirsch_sif = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_hirsch_sif.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	attacks = {}

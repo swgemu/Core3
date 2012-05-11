@@ -1,7 +1,7 @@
 noble = Creature:new {
 	objectName = "@mob/creature_names:noble",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
@@ -74,7 +74,7 @@ noble = Creature:new {
 				"object/mobile/dressed_noble_zabrak_male_01.iff", 
 					},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	attacks = {}
 }
 

@@ -1,6 +1,6 @@
 mamien_youth = Creature:new {
 	objectName = "@mob/creature_names:mamien_youth",
-	socialGroup = "Mamien",
+	socialGroup = "mamien",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

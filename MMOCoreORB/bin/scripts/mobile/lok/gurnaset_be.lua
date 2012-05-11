@@ -1,6 +1,6 @@
 gurnaset_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_gurnaset",
-	socialGroup = "Gumaset",
+	socialGroup = "gurnaset",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

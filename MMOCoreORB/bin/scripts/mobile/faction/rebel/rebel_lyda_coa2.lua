@@ -1,8 +1,8 @@
 rebel_lyda_coa2 = Creature:new {
 	objectName = "",
 	costumName = "Lyda",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

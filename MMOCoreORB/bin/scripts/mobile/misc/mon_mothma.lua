@@ -1,8 +1,8 @@
 mon_mothma = Creature:new {
 	objectName = "@mob/creature_names:mon_mothma",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ mon_mothma = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dantari_male.iff"},
+	templates = {"object/mobile/mon_mothma.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

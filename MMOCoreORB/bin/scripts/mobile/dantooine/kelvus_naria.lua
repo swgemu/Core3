@@ -1,9 +1,9 @@
 kelvus_naria = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Kelvus Naria",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ kelvus_naria = Creature:new {
 
 	templates = {"object/mobile/dressed_kelvus_naria.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

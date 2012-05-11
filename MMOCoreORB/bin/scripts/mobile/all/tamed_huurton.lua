@@ -1,8 +1,8 @@
 tamed_huurton = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_huurton",
-	socialGroup = "Rebel",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

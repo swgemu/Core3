@@ -1,6 +1,6 @@
 relentless_purbole = Creature:new {
 	objectName = "@mob/creature_names:purbole_relentless",
-	socialGroup = "Purbole",
+	socialGroup = "purbole",
 	pvpFaction = "",
 	faction = "",
 	level = 21,

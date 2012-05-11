@@ -1,6 +1,6 @@
 giant_dalyrake = Creature:new {
 	objectName = "@mob/creature_names:giant_dalyrake",
-	socialGroup = "Dalyrake",
+	socialGroup = "dalyrake",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

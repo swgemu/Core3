@@ -1,9 +1,9 @@
 ging_darjeek = Creature:new {
 	objectName = "",
 	customName = "Ging Darjeek",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ ging_darjeek = Creature:new {
 
 	templates = {"object/mobile/dressed_ging_darjeek.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 malkloc_bull = Creature:new {
 	objectName = "@mob/creature_names:malkloc_bull",
-	socialGroup = "Malkloc",
+	socialGroup = "malkloc",
 	pvpFaction = "",
 	faction = "",
 	level = 28,

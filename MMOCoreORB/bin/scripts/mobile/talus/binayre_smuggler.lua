@@ -1,8 +1,8 @@
 binayre_smuggler = Creature:new {
 	objectName = "@mob/creature_names:binayre_smuggler",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,
@@ -26,7 +26,9 @@ binayre_smuggler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_smuggler_trandoshan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_smuggler_trandoshan_female_01.iff",
+		"object/mobile/dressed_binayre_smuggler_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

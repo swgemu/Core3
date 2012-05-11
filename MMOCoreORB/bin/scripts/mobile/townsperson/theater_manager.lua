@@ -1,8 +1,8 @@
 theater_manager = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -31,7 +31,7 @@ theater_manager = Creature:new {
 		"object/mobile/dressed_entertainer_trainer_twk_male_01.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 plains_hunter = Creature:new {
 	objectName = "@mob/creature_names:plains_hunter",
-	socialGroup = "Tusk Cat",
+	socialGroup = "tusk_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 31,

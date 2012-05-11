@@ -1,9 +1,9 @@
 igbi_freemo = Creature:new {
 	objectName = "",
 	customName = "Igbi Freemo",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ igbi_freemo = Creature:new {
 
 	templates = {"object/mobile/dressed_igbi_freemo.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

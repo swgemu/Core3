@@ -1,6 +1,6 @@
 rhoa_kwi_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:rhoa_kwi_pack_leader",
-	socialGroup = "Rhoa Kwi",
+	socialGroup = "kwi",
 	pvpFaction = "",
 	faction = "",
 	level = 50,

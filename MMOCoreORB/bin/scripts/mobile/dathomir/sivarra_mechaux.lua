@@ -28,7 +28,7 @@ sivarra_mechaux = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_medic.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 dreaded_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:dreaded_vir_vir",
-	socialGroup = "Vir Vur",
+	socialGroup = "vir_vur",
 	pvpFaction = "",
 	faction = "",
 	level = 38,

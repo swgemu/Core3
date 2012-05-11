@@ -1,8 +1,8 @@
 rtp_leia_bothan_spy = Creature:new {
 	objectName = "@mob/creature_names:rtp_leia_bothan_spy",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

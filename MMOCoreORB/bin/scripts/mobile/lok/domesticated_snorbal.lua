@@ -1,6 +1,6 @@
 domesticated_snorbal = Creature:new {
 	objectName = "@mob/creature_names:domesticated_snorbal",
-	socialGroup = "Domestic Snor.",
+	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
 	level = 31,

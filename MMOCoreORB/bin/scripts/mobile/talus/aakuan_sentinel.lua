@@ -1,8 +1,8 @@
 aakuan_sentinel = Creature:new {
 	objectName = "@mob/creature_names:aakuan_sentinal",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 170,
@@ -26,7 +26,9 @@ aakuan_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff","object/mobile/dressed_aakuan_sentinal_rodian_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff",
+		"object/mobile/dressed_aakuan_sentinal_rodian_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

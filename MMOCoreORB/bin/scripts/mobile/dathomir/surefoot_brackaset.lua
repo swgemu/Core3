@@ -1,6 +1,6 @@
 surefoot_brackaset = Creature:new {
 	objectName = "@mob/creature_names:surefoot_brackaset",
-	socialGroup = "Brackaset",
+	socialGroup = "brackaset",
 	pvpFaction = "",
 	faction = "",
 	level = 46,

@@ -1,7 +1,7 @@
 crackdown_stormtrooper_rifleman = Creature:new {
 	objectName = "@mob/creature_names:crackdown_stormtrooper_rifleman",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.36,

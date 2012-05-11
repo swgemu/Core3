@@ -1,7 +1,7 @@
 specforce_procurement_specialist = Creature:new {
 	objectName = "@mob/creature_names:specforce_procurement_specialist",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 13,
 	chanceHit = 0.300000,

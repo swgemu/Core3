@@ -1,6 +1,6 @@
 reptilian_life_stealer = Creature:new {
 	objectName = "@mob/creature_names:reptilian_life_stealer",
-	socialGroup = "Reptilian Flier",
+	socialGroup = "reptilian_flier",
 	pvpFaction = "",
 	faction = "",
 	level = 125,

@@ -1,9 +1,9 @@
 shalera_the_hutt = Creature:new {
 	objectName = "@npc_name:hutt_base_female",
 	customName = "Shalera the Hutt",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ shalera_the_hutt = Creature:new {
 
 	templates = {"object/mobile/shalera.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

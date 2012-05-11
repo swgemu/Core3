@@ -1,6 +1,6 @@
 enraged_tybis = Creature:new {
 	objectName = "@mob/creature_names:enraged_tybis",
-	socialGroup = "Tybis",
+	socialGroup = "tybis",
 	pvpFaction = "",
 	faction = "",
 	level = 26,

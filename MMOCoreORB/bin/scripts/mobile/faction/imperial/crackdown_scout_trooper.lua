@@ -1,7 +1,7 @@
 crackdown_scout_trooper = Creature:new {
 	objectName = "@mob/creature_names:crackdown_scout_trooper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.35,

@@ -1,8 +1,8 @@
 area_coordinator = Creature:new {
 	objectName = "@mob/creature_names:area_coordinator",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

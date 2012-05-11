@@ -1,8 +1,8 @@
 larek_tatham = Creature:new {
 	objectName = "@npc_spawner_n:larek_tatham",
-	socialGroup = "",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

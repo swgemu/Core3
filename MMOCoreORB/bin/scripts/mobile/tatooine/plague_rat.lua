@@ -1,6 +1,6 @@
 plague_rat = Creature:new {
 	objectName = "@mob/creature_names:plague_rat",
-	socialGroup = "Womprat",
+	socialGroup = "rat",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

@@ -1,6 +1,6 @@
 glutted_fynock_queen = Creature:new {
 	objectName = "@mob/creature_names:glutted_fynock_queen",
-	socialGroup = "Fynock",
+	socialGroup = "fynock",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

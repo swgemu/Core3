@@ -1,9 +1,9 @@
 indigo_siyan = Creature:new {
 	objectName = "",
 	customName = "Indigo Siyan",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -1,9 +1,9 @@
 xolox_guul = Creature:new {
 	objectName = "",
-	customName = "Xolox Guul",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	customName = "Xalox Guul",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -22,14 +22,14 @@ xolox_guul = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commander_xalox_guul.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

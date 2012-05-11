@@ -1,6 +1,6 @@
 brackaset_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_brackaset",
-	socialGroup = "Brackaset",
+	socialGroup = "brackaset",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

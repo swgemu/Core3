@@ -1,9 +1,9 @@
 wallow_loowobbli = Creature:new {
 	objectName = "",
 	customName = "Wallaw Loowobbli",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ wallow_loowobbli = Creature:new {
 
 	templates = {"object/mobile/dressed_wallaw_loowobbli.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

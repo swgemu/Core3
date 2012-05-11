@@ -1,9 +1,9 @@
 egach_iromn = Creature:new {
 	objectName = "",
 	customName = "Egach Iromn",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ egach_iromn = Creature:new {
 	
 	templates = {"object/mobile/dressed_bestine_capitol04.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

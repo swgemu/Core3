@@ -1,7 +1,7 @@
 specforce_wilderness_operative = Creature:new {
 	objectName = "@mob/creature_names:specforce_wilderness_operative",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 18,
 	chanceHit = 0.32,

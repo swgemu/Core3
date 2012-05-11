@@ -1,7 +1,7 @@
 captain_hassk = Creature:new {
 	objectName = "@mob/creature_names:captain_hassk",
-	socialGroup = "Rorgungan",
-	pvpFaction = "Rorgungan",
+	socialGroup = "rorgungan",
+	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 73,
 	chanceHit = 0.7,
@@ -28,7 +28,7 @@ captain_hassk = Creature:new {
 
 	templates = {"object/mobile/captain_hassk.iff"},
 	lootGroups = {},
-	weapons = {"captain_hassk's_weapons"},
+	weapons = {"captain_hassk_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

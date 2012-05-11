@@ -1,6 +1,6 @@
 bark_mite_hatchling = Creature:new {
 	objectName = "@mob/creature_names:bark_mite_hatchling",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

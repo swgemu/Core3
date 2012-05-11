@@ -1,9 +1,9 @@
 rebel_research_guard_coa3 = Creature:new {
 	objectName = "",
 	customName = "a Rebel Research Guard",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,

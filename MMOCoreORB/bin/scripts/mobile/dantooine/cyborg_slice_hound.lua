@@ -1,8 +1,8 @@
 cyborg_slice_hound = Creature:new {
 	objectName = "@mob/creature_names:warren_cyborg_slicehound",
-	socialGroup = "Warren Cyborg",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "warren_huurton",
+	pvpFaction = "warren_huurton",
+	faction = "warren_huurton",
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 315,

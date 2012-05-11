@@ -1,9 +1,9 @@
 magur_tongai = Creature:new {
 	objectName = "",
 	customName = "Magur Tongai",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ magur_tongai = Creature:new {
 
 	templates = {"object/mobile/dressed_magur_torigai.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

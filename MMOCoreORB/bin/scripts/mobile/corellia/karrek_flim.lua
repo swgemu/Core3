@@ -1,9 +1,9 @@
 karrek_flim = Creature:new {
 	objectName = "",
 	customName = "Karrek Flim",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ karrek_flim = Creature:new {
 
 	templates = {"object/mobile/dressed_karrek_film.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 falumpaset = Creature:new {
 	objectName = "@mob/creature_names:falumpaset",
-	socialGroup = "Falumpaset",
+	socialGroup = "falumpaset",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

@@ -1,6 +1,6 @@
 dappled_gualama = Creature:new {
 	objectName = "@mob/creature_names:dappled_gualama",
-	socialGroup = "Gualama",
+	socialGroup = "gualama",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

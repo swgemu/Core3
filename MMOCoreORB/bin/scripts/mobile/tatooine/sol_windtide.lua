@@ -1,9 +1,9 @@
 sol_windtide = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Sol Windtide",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 190,

@@ -1,8 +1,8 @@
 sennex_slaver = Creature:new {
 	objectName = "@mob/creature_names:sennex_slaver",
-	socialGroup = "Sennex",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "sennex",
+	pvpFaction = "pirate",
+	faction = "pirate",
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,

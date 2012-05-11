@@ -1,8 +1,8 @@
 binayre_pirate = Creature:new {
 	objectName = "@mob/creature_names:binayre_pirate",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,7 +26,9 @@ binayre_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_pirate_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_pirate_zabrak_female_01.iff",
+		"object/mobile/dressed_binayre_pirate_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

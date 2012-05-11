@@ -1,8 +1,8 @@
 general_otto = Creature:new {
 	objectName = "@mob/creature_names:general_otto",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 25,
 	chanceHit = 0.360000,
 	damageMin = 240,

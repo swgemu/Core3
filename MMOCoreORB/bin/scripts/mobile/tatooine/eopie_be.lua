@@ -1,6 +1,6 @@
 eopie_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_eopie",
-	socialGroup = "Eopie",
+	socialGroup = "eopie",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

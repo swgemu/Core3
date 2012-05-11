@@ -1,8 +1,8 @@
 mos_taike_cantina_owner = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_cantina_owner",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -28,7 +28,7 @@ mos_taike_cantina_owner = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

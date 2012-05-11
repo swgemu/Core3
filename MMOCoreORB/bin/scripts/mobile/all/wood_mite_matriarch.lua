@@ -1,6 +1,6 @@
 wood_mite_matriarch = Creature:new {
 	objectName = "@mob/creature_names:wood_mite_matriarch",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

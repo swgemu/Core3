@@ -1,7 +1,7 @@
 rebel_medic = Creature:new {
 	objectName = "@mob/creature_names:rebel_medic",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,

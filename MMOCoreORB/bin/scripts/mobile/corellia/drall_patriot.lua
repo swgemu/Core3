@@ -26,7 +26,8 @@ drall_patriot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/drall_male.iff",
+	templates = {
+		"object/mobile/drall_male.iff",
 		"object/mobile/drall_female.iff"
 		},
 	lootGroups = {

@@ -1,9 +1,9 @@
 denell_kelvannon = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Denell Kel'Vannon",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ denell_kelvannon = Creature:new {
 
 	templates = {"object/mobile/dressed_denell_kelvannon.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

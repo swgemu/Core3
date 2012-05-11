@@ -1,6 +1,6 @@
 horned_krevol = Creature:new {
 	objectName = "@mob/creature_names:horned_krevol",
-	socialGroup = "Horned Krevol",
+	socialGroup = "krevol",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

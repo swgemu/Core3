@@ -29,7 +29,7 @@ vhaunda = Creature:new {
 
 	templates = {"object/mobile/dressed_vhaunda.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

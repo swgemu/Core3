@@ -1,6 +1,6 @@
 wild_dune_boar = Creature:new {
 	objectName = "@mob/creature_names:wild_dune_boar",
-	socialGroup = "Zucca Boar",
+	socialGroup = "boar",
 	pvpFaction = "",
 	faction = "",
 	level = 50,

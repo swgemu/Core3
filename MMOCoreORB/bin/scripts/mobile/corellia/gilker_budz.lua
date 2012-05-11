@@ -1,9 +1,9 @@
 gilker_budz = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "Gilker Budz",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	customName = "Gilken Budz",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ gilker_budz = Creature:new {
 
 	templates = {"object/mobile/dressed_giker_budz.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

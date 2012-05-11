@@ -1,6 +1,6 @@
 gualama_patriarch = Creature:new {
 	objectName = "@mob/creature_names:gualama_patriarch",
-	socialGroup = "Gualama",
+	socialGroup = "gualama",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

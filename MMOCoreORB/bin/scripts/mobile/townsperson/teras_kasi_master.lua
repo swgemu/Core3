@@ -1,8 +1,8 @@
 teras_kasi_master = Creature:new {
 	objectName = "@mob/creature_names:teras_kasi_master",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 210,

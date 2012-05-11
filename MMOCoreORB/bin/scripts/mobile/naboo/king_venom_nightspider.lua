@@ -1,6 +1,6 @@
 king_venom_nightspider = Creature:new {
 	objectName = "@mob/creature_names:king_venom_nightspider",
-	socialGroup = "Nightspider",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

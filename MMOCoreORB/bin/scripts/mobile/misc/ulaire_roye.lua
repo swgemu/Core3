@@ -1,8 +1,8 @@
 ulaire_roye = Creature:new {
 	objectName = "@npc_spawner_n:ulaire_roye",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

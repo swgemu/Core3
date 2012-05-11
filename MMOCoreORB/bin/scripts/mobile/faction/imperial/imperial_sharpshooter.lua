@@ -1,7 +1,7 @@
 imperial_sharpshooter = Creature:new {
 	objectName = "@mob/creature_names:imperial_sharpshooter",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 17,
 	chanceHit = 0.32,
@@ -26,7 +26,7 @@ imperial_sharpshooter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_sniper_m.iff"},
+	templates = {"object/mobile/dressed_imperial_gunner_m.iff"},
 	lootGroups = {
 		{
 			groups = {

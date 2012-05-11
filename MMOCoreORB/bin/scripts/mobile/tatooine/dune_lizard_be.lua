@@ -1,6 +1,6 @@
 dune_lizard_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_dune_lizard",
-	socialGroup = "Dune Lizard",
+	socialGroup = "lizard",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

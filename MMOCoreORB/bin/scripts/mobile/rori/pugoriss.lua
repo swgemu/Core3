@@ -1,6 +1,6 @@
 pugoriss = Creature:new {
 	objectName = "@mob/creature_names:pugoriss",
-	socialGroup = "Pugoriss",
+	socialGroup = "pugoriss",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

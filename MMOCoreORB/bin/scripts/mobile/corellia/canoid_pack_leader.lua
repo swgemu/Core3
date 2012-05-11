@@ -1,6 +1,6 @@
 canoid_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:canoid_pack_leader",
-	socialGroup = "Canoid",
+	socialGroup = "canoid",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

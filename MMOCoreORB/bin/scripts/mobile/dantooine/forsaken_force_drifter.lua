@@ -1,6 +1,6 @@
 forsaken_force_drifter = Creature:new {
 	objectName = "@mob/creature_names:forsaken_force_drifter",
-	socialGroup = "Force Regen.",
+	socialGroup = "force",
 	pvpFaction = "",
 	faction = "",
 	level = 80,

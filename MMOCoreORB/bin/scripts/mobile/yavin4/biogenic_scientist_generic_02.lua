@@ -26,7 +26,9 @@ biogenic_scientist_generic_02 = Creature:new {
 	optionsBitmask = 392,
 	diet = HERBIVORE,
 	
-	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
+	templates = {
+		"object/mobile/dressed_geonosian_scientist_01.iff",
+		"object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

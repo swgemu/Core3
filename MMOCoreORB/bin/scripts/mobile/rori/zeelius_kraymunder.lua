@@ -1,9 +1,9 @@
 zeelius_kraymunder = Creature:new {
 	objectName = "",
 	customName = "Zeelius Kraymunder",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ zeelius_kraymunder = Creature:new {
 
 	templates = {"object/mobile/dressed_zeelius_kraymunder.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

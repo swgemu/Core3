@@ -1,9 +1,9 @@
 raxa_binn = Creature:new {
 	objectName = "",
 	customName = "Raxa Binn",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ raxa_binn = Creature:new {
 
 	templates = {"object/mobile/dressed_raxa_binn.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

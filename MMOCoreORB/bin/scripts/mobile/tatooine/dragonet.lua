@@ -1,6 +1,6 @@
 dragonet = Creature:new {
 	objectName = "@mob/creature_names:dragonet",
-	socialGroup = "Dragonet",
+	socialGroup = "lizard",
 	pvpFaction = "",
 	faction = "",
 	level = 29,

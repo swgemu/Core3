@@ -1,6 +1,6 @@
 paralope = Creature:new {
 	objectName = "@mob/creature_names:paralope",
-	socialGroup = "Paralope",
+	socialGroup = "paralope",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

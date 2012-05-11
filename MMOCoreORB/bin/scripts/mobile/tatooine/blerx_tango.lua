@@ -1,9 +1,9 @@
 blerx_tango = Creature:new {
 	objectName = "@npc_name:bith_base_male",
 	customName = "Blerx Tango",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ blerx_tango = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_blerx_tango.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

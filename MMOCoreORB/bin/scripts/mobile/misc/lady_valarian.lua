@@ -1,8 +1,8 @@
 lady_valarian = Creature:new {
 	objectName = "@mob/creature_names:lady_valarian",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

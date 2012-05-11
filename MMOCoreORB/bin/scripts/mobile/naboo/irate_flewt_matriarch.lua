@@ -1,6 +1,6 @@
 irate_flewt_matriarch = Creature:new {
 	objectName = "@mob/creature_names:irate_flewt_matriarch",
-	socialGroup = "Flewt",
+	socialGroup = "flewt",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

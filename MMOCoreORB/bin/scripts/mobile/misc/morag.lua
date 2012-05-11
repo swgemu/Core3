@@ -1,8 +1,8 @@
 morag = Creature:new {
 	objectName = "@mob/creature_names:morag",
-	socialGroup = "self",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

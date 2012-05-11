@@ -1,9 +1,9 @@
 goru_rainstealer = Creature:new {
 	objectName = "",
 	customName = "Goru Rainstealer",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

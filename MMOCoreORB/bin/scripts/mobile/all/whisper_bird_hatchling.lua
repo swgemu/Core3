@@ -1,6 +1,6 @@
 whisper_bird_hatchling = Creature:new {
 	objectName = "@mob/creature_names:whisper_bird_hatchling",
-	socialGroup = "Whisperbird",
+	socialGroup = "whisperbird",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

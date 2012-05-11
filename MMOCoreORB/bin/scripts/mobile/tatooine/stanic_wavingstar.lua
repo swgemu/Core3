@@ -1,9 +1,9 @@
 stanic_wavingstar = Creature:new {
 	objectName = "@npc_name:twilek_base_male",
 	customName = "Stanic Wavingstar",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ stanic_wavingstar = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_twilek_male_02.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

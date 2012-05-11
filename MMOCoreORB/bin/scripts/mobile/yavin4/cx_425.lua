@@ -1,9 +1,9 @@
 cx_425 = Creature:new {
 	objectName = "",
 	customName = "CX-425",
-	socialGroup = "Imperial",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ cx_425 = Creature:new {
 
 	templates = {"object/mobile/dressed_cx_425.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,9 +1,9 @@
 junk_quich = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Quich",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

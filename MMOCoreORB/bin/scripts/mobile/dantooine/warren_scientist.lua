@@ -25,7 +25,8 @@ warren_scientist = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_scientist_s01.iff",
+	templates = {
+		"object/mobile/warren_scientist_s01.iff",
 		"object/mobile/warren_scientist_s02.iff",
 		"object/mobile/warren_scientist_s03.iff"},
 	lootGroups = {

@@ -29,7 +29,7 @@ captain_tish = Creature:new {
 
 	templates = {"object/mobile/dressed_captain_tish.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 female_swamp_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:female_swamp_tusk_cat",
-	socialGroup = "Swamp Tusk Cat",
+	socialGroup = "tusk_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

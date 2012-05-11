@@ -1,9 +1,9 @@
 kiosait_eetwaka = Creature:new {
 	objectName = "@npc_name:zabrak_base_male",
 	customName = "Kiosait Eetwaka",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

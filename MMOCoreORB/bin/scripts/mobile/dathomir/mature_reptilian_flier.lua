@@ -1,6 +1,6 @@
 mature_reptilian_flier = Creature:new {
 	objectName = "@mob/creature_names:mature_reptilian_flier",
-	socialGroup = "Repilian Flier",
+	socialGroup = "repilian_flier",
 	pvpFaction = "",
 	faction = "",
 	level = 20,

@@ -1,6 +1,6 @@
 mountain_torton = Creature:new {
 	objectName = "@mob/creature_names:mountain_torton",
-	socialGroup = "Torton",
+	socialGroup = "torton",
 	pvpFaction = "",
 	faction = "",
 	level = 34,

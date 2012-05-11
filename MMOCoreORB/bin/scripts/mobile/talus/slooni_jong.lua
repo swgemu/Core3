@@ -1,9 +1,9 @@
 slooni_jong = Creature:new {
 	objectName = "",
 	customName = "Slooni Jong",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ slooni_jong = Creature:new {
 
 	templates = {"object/mobile/dressed_slooni_long.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

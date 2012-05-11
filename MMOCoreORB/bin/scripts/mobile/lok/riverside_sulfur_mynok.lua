@@ -1,6 +1,6 @@
 riverside_sulfur_mynok = Creature:new {
 	objectName = "@mob/creature_names:riverside_sulfur_mynock",
-	socialGroup = "Mynock",
+	socialGroup = "mynock",
 	pvpFaction = "",
 	faction = "",
 	level = 33,

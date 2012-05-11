@@ -1,6 +1,6 @@
 ferocious_kusak = Creature:new {
 	objectName = "@mob/creature_names:ferocious_kusak",
-	socialGroup = "Kusak",
+	socialGroup = "kusak",
 	pvpFaction = "",
 	faction = "",
 	level = 21,

@@ -1,6 +1,6 @@
 selonian_separatist_recruit = Creature:new {
 	objectName = "@mob/creature_names:selonian_separatist_recruit",
-	socialGroup = "Selonian",
+	socialGroup = "selonian",
 	pvpFaction = "",
 	faction = "",
 	level = 6,
@@ -26,7 +26,8 @@ selonian_separatist_recruit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_selonian_f_01.iff",
+	templates = {
+		"object/mobile/dressed_selonian_f_01.iff",
 		"object/mobile/dressed_selonian_f_02.iff",
 		"object/mobile/dressed_selonian_f_03.iff",
 		"object/mobile/dressed_selonian_f_04.iff",

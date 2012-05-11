@@ -1,8 +1,8 @@
 klaatu = Creature:new {
 	objectName = "@mob/creature_names:klaatu",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ klaatu = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/klaatu.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

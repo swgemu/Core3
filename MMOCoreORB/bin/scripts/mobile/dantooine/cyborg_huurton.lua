@@ -1,8 +1,8 @@
 cyborg_huurton = Creature:new {
 	objectName = "@mob/creature_names:warren_cyborg_huurton",
-	socialGroup = "Warren Cyborg",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "warren_huurton",
+	pvpFaction = "warren_huurton",
+	faction = "warren_huurton",
 	level = 32,
 	chanceHit = 0.4,
 	damageMin = 305,

@@ -1,6 +1,6 @@
 purbole_scout = Creature:new {
 	objectName = "@mob/creature_names:purbole_scout",
-	socialGroup = "Purbole",
+	socialGroup = "purbole",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

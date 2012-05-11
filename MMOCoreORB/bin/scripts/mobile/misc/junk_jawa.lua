@@ -1,9 +1,9 @@
 junk_jawa = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Jawa",
-	socialGroup = "Jawa",
-	pvpFaction = "Jawa",
-	faction = "",
+	socialGroup = "jawa",
+	pvpFaction = "jawa",
+	faction = "jawa",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

@@ -1,6 +1,6 @@
 bearded_jax = Creature:new {
 	objectName = "@mob/creature_names:bearded_jax",
-	socialGroup = "Jax",
+	socialGroup = "jax",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

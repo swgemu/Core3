@@ -1,8 +1,8 @@
 trandoshan_sif_02 = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_sif",
-	socialGroup = "Sif",
-	pvpFaction = "Sif",
-	faction = "",
+	socialGroup = "sif",
+	pvpFaction = "sif",
+	faction = "sif",
 	level = 43,
 	chanceHit = 0.46,
 	damageMin = 360,
@@ -26,7 +26,7 @@ trandoshan_sif_02 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_02.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 qualdo_herm = Creature:new {
 	objectName = "@mob/creature_names:qualdo_herm",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,
@@ -25,7 +25,7 @@ qualdo_herm = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_qualdo_herm.iff"},
 	lootGroups = {},
 	weapons = {""},
 	attacks = {}

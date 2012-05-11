@@ -1,6 +1,6 @@
 baz_nitch = Creature:new {
 	objectName = "@mob/creature_names:baz_nitch",
-	socialGroup = "Baz Nitch",
+	socialGroup = "baz_nitch",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

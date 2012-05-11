@@ -1,6 +1,6 @@
 grizzled_bark_mite = Creature:new {
 	objectName = "@mob/creature_names:grizzled_bark_mite",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

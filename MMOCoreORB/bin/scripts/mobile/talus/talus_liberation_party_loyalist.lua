@@ -1,8 +1,8 @@
 talus_liberation_party_loyalist = Creature:new {
 	objectName = "@mob/creature_names:liberation_loyalist",
-	socialGroup = "Liberat. Party",
-	pvpFaction = "Liberat. Party",
-	faction = "",
+	socialGroup = "liberation_party",
+	pvpFaction = "liberation_party",
+	faction = "liberation_party",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

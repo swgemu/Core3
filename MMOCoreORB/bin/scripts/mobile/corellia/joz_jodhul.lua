@@ -1,9 +1,9 @@
 joz_jodhul = Creature:new {
 	objectName = "",
 	customName = "Joz Jodhul",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ joz_jodhul = Creature:new {
 
 	templates = {"object/mobile/dressed_joz_jodhul.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

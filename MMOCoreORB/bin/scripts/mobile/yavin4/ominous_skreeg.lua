@@ -1,6 +1,6 @@
 ominous_skreeg = Creature:new {
 	objectName = "@mob/creature_names:skreeg_ominous",
-	socialGroup = "Skreeg",
+	socialGroup = "skreeg",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

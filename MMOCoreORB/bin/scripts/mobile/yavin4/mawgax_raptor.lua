@@ -1,6 +1,6 @@
 mawgax_raptor = Creature:new {
 	objectName = "@mob/creature_names:mawgax_raptor",
-	socialGroup = "Mawgax",
+	socialGroup = "mawgax",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

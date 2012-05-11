@@ -1,6 +1,6 @@
 graul_marauder = Creature:new {
 	objectName = "@mob/creature_names:graul_marauder",
-	socialGroup = "Graul",
+	socialGroup = "graul",
 	pvpFaction = "",
 	faction = "",
 	level = 173,

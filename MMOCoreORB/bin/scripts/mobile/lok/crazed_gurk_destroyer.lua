@@ -1,6 +1,6 @@
 crazed_gurk_destroyer = Creature:new {
 	objectName = "@mob/creature_names:crazed_gurk_destroyer",
-	socialGroup = "Gurk",
+	socialGroup = "gurk",
 	pvpFaction = "",
 	faction = "",
 	level = 43,

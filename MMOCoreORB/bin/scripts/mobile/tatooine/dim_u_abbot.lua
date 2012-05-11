@@ -1,6 +1,6 @@
 dim_u_abbot = Creature:new {
 	objectName = "@mob/creature_names:dim_u_abbot",
-	socialGroup = "Dim-U",
+	socialGroup = "dim_u",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

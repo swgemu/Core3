@@ -1,6 +1,6 @@
 sharnaff_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_sharnaff",
-	socialGroup = "Sharnaff",
+	socialGroup = "sharnaff",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

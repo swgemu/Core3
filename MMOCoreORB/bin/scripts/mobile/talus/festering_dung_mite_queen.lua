@@ -1,6 +1,6 @@
 festering_dung_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:festering_dung_queen",
-	socialGroup = "Decay Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

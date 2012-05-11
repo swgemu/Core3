@@ -1,6 +1,6 @@
 death_kreetle = Creature:new {
 	objectName = "@mob/creature_names:kreetle_death",
-	socialGroup = "Uber Kreetle",
+	socialGroup = "kreetle",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

@@ -1,9 +1,9 @@
 capt_loftus = Creature:new {
 	objectName = "",
 	customName = "Captain Hantor Loftus",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 120,
@@ -29,7 +29,7 @@ capt_loftus = Creature:new {
 
 	templates = {"object/mobile/capt_loftus.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

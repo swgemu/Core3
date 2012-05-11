@@ -1,6 +1,6 @@
 rock_beetle = Creature:new {
 	objectName = "@mob/creature_names:rock_beetle",
-	socialGroup = "Rock Beetle",
+	socialGroup = "beetle",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

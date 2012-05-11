@@ -1,6 +1,6 @@
 mott_calf = Creature:new {
 	objectName = "@mob/creature_names:mott_calf",
-	socialGroup = "Mott",
+	socialGroup = "mott",
 	pvpFaction = "",
 	faction = "",
 	level = 4,

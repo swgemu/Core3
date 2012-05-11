@@ -1,9 +1,9 @@
 ris_inventor = Creature:new {
 	objectName = "",
 	customName = "an R.I.S. Inventor",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

@@ -1,9 +1,9 @@
 garm_bel_iblis = Creature:new {
 	objectName = "",
 	customName = "Garm Bel Iblis",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ garm_bel_iblis = Creature:new {
 
 	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

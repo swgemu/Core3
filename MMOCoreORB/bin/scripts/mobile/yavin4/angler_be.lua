@@ -1,6 +1,6 @@
 angler_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_angler",
-	socialGroup = "Angler",
+	socialGroup = "angler",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

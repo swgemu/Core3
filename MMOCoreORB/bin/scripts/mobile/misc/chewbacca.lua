@@ -1,8 +1,8 @@
 chewbacca = Creature:new {
 	objectName = "@mob/creature_names:chewbacca",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ chewbacca = Creature:new {
 
 	templates = {"object/mobile/chewbacca.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"chewbacca_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

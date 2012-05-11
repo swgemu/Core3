@@ -1,8 +1,8 @@
 imperial_slicer_gang_coa2 = Creature:new {
 	objectName = "@mob/creature_names:slicer",
-	socialGroup = "Rebel",
-	pvpFaction = "rebel",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

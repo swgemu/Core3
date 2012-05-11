@@ -1,9 +1,9 @@
 drognuz = Creature:new {
 	objectName = "",
 	customName = "Drognuz",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 14,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ drognuz = Creature:new {
 
 	templates = {"object/mobile/gamorrean.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

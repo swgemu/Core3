@@ -1,6 +1,6 @@
 greater_shaupaut = Creature:new {
 	objectName = "@mob/creature_names:greater_shaupaut",
-	socialGroup = "Shaupaut",
+	socialGroup = "shaupaut",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

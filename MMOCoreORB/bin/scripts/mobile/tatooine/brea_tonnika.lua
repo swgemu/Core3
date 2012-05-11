@@ -1,9 +1,9 @@
 brea_tonnika = Creature:new {
 	objectName = "",
 	customName = "Brea Tonnika",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ brea_tonnika = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_brea_tonnika.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

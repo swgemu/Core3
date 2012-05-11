@@ -1,6 +1,6 @@
 narglatch_cub = Creature:new {
 	objectName = "@mob/creature_names:narglatch_cub",
-	socialGroup = "Narglatch",
+	socialGroup = "narglatch",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

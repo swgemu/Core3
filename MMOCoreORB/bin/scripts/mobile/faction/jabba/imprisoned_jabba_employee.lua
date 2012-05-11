@@ -1,8 +1,8 @@
 imprisoned_jabba_employee = Creature:new {
 	objectName = "@mob/creature_names:imprisoned_jabba_employee",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

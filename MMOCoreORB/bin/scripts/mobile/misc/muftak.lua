@@ -1,8 +1,8 @@
 muftak = Creature:new {
 	objectName = "@mob/creature_names:muftak",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

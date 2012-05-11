@@ -1,9 +1,8 @@
 rel_keteris = Creature:new {
 	objectName = "@npc_spawner_n:rel_keteris",
-	customName = "",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +28,7 @@ rel_keteris = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_swooper_leader.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,9 +1,9 @@
 durgur_pyne = Creature:new {
 	objectName = "",
 	customName = "Durgur Pyne",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ durgur_pyne = Creature:new {
 
 	templates = {"object/mobile/dressed_durgur_pyne.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

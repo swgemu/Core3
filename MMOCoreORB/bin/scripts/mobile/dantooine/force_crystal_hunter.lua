@@ -1,6 +1,6 @@
 force_crystal_hunter = Creature:new {
 	objectName = "@mob/creature_names:dark_force_crystal_hunter",
-	socialGroup = "Remn. Of Kun",
+	socialGroup = "kun",
 	pvpFaction = "",
 	faction = "",
 	level = 115,

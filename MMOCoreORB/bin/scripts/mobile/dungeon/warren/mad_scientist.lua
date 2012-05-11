@@ -1,9 +1,9 @@
 mad_scientist = Creature:new {
 	objectName = "",
 	customName = "a Mad Scientist",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "warren_scientist",
+	pvpFaction = "warren_scientist",
+	faction = "warren_scientist",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

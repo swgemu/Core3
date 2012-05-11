@@ -1,6 +1,6 @@
 giant_gaping_spider_recluse = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_recluse_giant",
-	socialGroup = "Gaping Recluse",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 115,

@@ -1,6 +1,6 @@
 fawn_moonraiser = Creature:new {
 	objectName = "@mob/creature_names:fawn_moonraiser",
-	socialGroup = "Darklighter",
+	socialGroup = "darklighter",
 	pvpFaction = "",
 	faction = "",
 	level = 99,
@@ -28,7 +28,7 @@ fawn_moonraiser = Creature:new {
 
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

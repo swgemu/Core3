@@ -1,8 +1,8 @@
 liar_one = Creature:new {
 	objectName = "@mob/creature_names:liar one",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -28,7 +28,7 @@ liar_one = Creature:new {
 
 	templates = {"object/mobile/dressed_quest_liar_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

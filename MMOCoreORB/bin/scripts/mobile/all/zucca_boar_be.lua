@@ -1,6 +1,6 @@
 zucca_boar_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_zucca_boar",
-	socialGroup = "Zucca Boar",
+	socialGroup = "boar",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

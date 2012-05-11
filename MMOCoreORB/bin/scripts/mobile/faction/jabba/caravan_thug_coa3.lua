@@ -1,9 +1,9 @@
 caravan_thug_coa3 = Creature:new {
 	objectName = "",
 	customName = "Caravan Thug",
-	socialGroup = "Caravan",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "caravan",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

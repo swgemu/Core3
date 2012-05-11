@@ -1,6 +1,6 @@
 frenzied_kahmurra = Creature:new {
 	objectName = "@mob/creature_names:frenzied_kahmurra",
-	socialGroup = "Kahmurra",
+	socialGroup = "kahmurra",
 	pvpFaction = "",
 	faction = "",
 	level = 33,

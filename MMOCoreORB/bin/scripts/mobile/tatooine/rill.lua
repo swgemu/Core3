@@ -1,6 +1,6 @@
 rill = Creature:new {
 	objectName = "@mob/creature_names:rill",
-	socialGroup = "Rill",
+	socialGroup = "rill",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

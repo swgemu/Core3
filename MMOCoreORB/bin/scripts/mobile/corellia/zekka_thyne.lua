@@ -1,9 +1,9 @@
 zekka_thyne = Creature:new {
-	objectName = "-@npc_name:bothan_base_male",
+	objectName = "@npc_name:bothan_base_male",
 	customName = "Zekka Thyne",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ zekka_thyne = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_bothan_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

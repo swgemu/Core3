@@ -1,6 +1,6 @@
 swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:swooper_leader",
-	socialGroup = "swoop",
+	socialGroup = "cor_swoop",
 	pvpFaction = "cor_swoop",
 	faction = "cor_swoop",
 	level = 12,

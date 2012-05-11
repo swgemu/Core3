@@ -1,9 +1,9 @@
 bith_musician = Creature:new {
 	objectName = "@npc_name:bith_base_male",
-	customName = "Bith Musician",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	customName = "a Bith Musician",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

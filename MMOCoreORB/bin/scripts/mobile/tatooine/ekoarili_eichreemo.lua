@@ -1,9 +1,9 @@
 ekoarili_eichreemo = Creature:new {
 	objectName = "",
 	customName = "Ek'oarili Eichreemo",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ ekoarili_eichreemo = Creature:new {
 	
 	templates = {"object/mobile/dressed_bestine_capitol01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

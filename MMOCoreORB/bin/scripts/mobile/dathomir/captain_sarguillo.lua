@@ -28,7 +28,7 @@ captain_sarguillo = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_captain.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

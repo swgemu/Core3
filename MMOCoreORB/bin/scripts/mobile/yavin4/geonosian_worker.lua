@@ -1,7 +1,7 @@
 geonosian_worker = Creature:new {
 	objectName = "@mob/creature_names:geonosian_worker",
-	socialGroup = "Geonosian",
-	pvpFaction = "Geonosian",
+	socialGroup = "geonosian",
+	pvpFaction = "geonosian",
 	faction = "",
 	level = 44,
 	chanceHit = 0.46,

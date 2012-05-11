@@ -1,7 +1,7 @@
 imperial_medic = Creature:new {
 	objectName = "@mob/creature_names:imperial_medic",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 16,
 	chanceHit = 0.31,
@@ -26,7 +26,10 @@ imperial_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_imperial_medic1_human_male_01.iff",
+		"object/mobile/dressed_imperial_medic2_21b_01.iff",
+		"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

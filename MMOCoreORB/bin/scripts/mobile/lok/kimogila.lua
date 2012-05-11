@@ -1,6 +1,6 @@
 kimogila = Creature:new {
 	objectName = "@mob/creature_names:kimogila",
-	socialGroup = "Kimogila",
+	socialGroup = "kimogila",
 	pvpFaction = "",
 	faction = "",
 	level = 95,

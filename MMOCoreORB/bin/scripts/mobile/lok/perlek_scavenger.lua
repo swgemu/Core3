@@ -1,6 +1,6 @@
 perlek_scavenger = Creature:new {
 	objectName = "@mob/creature_names:perlek_scavanger",
-	socialGroup = "Perlek",
+	socialGroup = "perlek",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

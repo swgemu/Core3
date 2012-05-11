@@ -1,8 +1,8 @@
 ev_9d9 = Creature:new {
 	objectName = "@mob/creature_names:ev_9d9",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

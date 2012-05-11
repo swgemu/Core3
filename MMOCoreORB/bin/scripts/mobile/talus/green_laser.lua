@@ -1,8 +1,8 @@
 green_laser = Creature:new {
 	objectName = "@mob/creature_names:Green Laser",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ green_laser = Creature:new {
 
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

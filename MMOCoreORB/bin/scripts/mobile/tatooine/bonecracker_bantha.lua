@@ -1,6 +1,6 @@
 bonecracker_bantha = Creature:new {
 	objectName = "@mob/creature_names:bantha_bonecracker",
-	socialGroup = "Bantha",
+	socialGroup = "bantha",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

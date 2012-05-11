@@ -1,6 +1,6 @@
 kliknik_queen_harvester = Creature:new {
 	objectName = "@mob/creature_names:kliknik_queen_harvester",
-	socialGroup = "Kliknik",
+	socialGroup = "kliknik",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

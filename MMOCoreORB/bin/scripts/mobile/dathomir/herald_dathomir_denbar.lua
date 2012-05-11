@@ -1,9 +1,9 @@
 herald_dathomir_denbar = Creature:new {
 	objectName = "",
 	customName = "Denbar",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townperson",
+	pvpFaction = "townperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

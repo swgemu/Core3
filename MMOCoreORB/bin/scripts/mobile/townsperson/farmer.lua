@@ -1,8 +1,8 @@
 farmer = Creature:new {
 	objectName = "@mob/creature_names:farmer",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -26,7 +26,8 @@ farmer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_quest_farmer.iff",
+	templates = {
+					"object/mobile/dressed_quest_farmer.iff",
 					"object/mobile/dressed_commoner_naboo_zabrak_male_02.iff",
 					"object/mobile/dressed_commoner_tatooine_rodian_female_03.iff",
 					"object/mobile/dressed_commoner_naboo_human_male_02.iff",
@@ -37,7 +38,7 @@ farmer = Creature:new {
 					"object/mobile/dressed_commoner_fat_human_male_01.iff"
 					},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

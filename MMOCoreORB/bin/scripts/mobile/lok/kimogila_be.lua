@@ -1,6 +1,6 @@
 kimogila_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_kimogila",
-	socialGroup = "Kimogila",
+	socialGroup = "kimogila",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

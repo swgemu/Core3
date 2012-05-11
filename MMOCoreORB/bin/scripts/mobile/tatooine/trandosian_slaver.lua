@@ -1,6 +1,6 @@
 trandosian_slaver = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_slaver",
-	socialGroup = "Slaver",
+	socialGroup = "slaver",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

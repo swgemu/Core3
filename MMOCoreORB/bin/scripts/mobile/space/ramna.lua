@@ -1,8 +1,8 @@
 ramna = Creature:new {
 	objectName = "@npc_spawner_n:ramna",
 	socialGroup = "townsperson",
-	pvpFaction = "",
-	faction = "",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

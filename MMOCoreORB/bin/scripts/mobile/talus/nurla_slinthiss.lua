@@ -1,9 +1,9 @@
 nurla_slinthiss = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Nurla Slinthiss",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ nurla_slinthiss = Creature:new {
 
 	templates = {"object/mobile/dressed_nurla_slinthiss.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

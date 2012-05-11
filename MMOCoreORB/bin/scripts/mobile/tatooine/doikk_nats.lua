@@ -1,9 +1,9 @@
 doikk_nats = Creature:new {
 	objectName = "@npc_name:bith_base_male",
 	customName = "Doikk Na'ts",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -31,6 +31,7 @@ doikk_nats = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
+	outfit = "figrin_dan_band_outfit",
 	attacks = {
 	}
 }

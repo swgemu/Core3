@@ -1,6 +1,6 @@
 lethargic_behemoth = Creature:new {
 	objectName = "@mob/creature_names:flit_lethargic_behemoth",
-	socialGroup = "Flit",
+	socialGroup = "flit",
 	pvpFaction = "",
 	faction = "",
 	level = 23,

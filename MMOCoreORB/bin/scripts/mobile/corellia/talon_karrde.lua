@@ -1,8 +1,8 @@
 talon_karrde = Creature:new {
-	objectName = "@mob/creature_names:talon_karrde",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	objectName = "@npc_spawner_n:talon_karrde",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ talon_karrde = Creature:new {
 
 	templates = {"object/mobile/dressed_talon_karrde.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

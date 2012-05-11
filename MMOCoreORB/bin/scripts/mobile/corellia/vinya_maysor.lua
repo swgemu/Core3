@@ -1,9 +1,9 @@
 vinya_maysor = Creature:new {
 	objectName = "",
 	customName = "Vinya Maysor",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ vinya_maysor = Creature:new {
 
 	templates = {"object/mobile/dressed_vinya_maysor.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

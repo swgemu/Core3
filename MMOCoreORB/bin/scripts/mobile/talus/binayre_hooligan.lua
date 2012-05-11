@@ -1,8 +1,8 @@
 binayre_hooligan = Creature:new {
 	objectName = "@mob/creature_names:binayre_hooligan",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,7 +26,9 @@ binayre_hooligan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_hooligan_zabrak_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_hooligan_zabrak_female_01.iff",
+		"object/mobile/dressed_binayre_hooligan_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

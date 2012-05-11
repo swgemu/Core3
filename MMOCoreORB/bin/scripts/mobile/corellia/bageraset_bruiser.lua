@@ -1,6 +1,6 @@
 bageraset_bruiser = Creature:new {
 	objectName = "@mob/creature_names:bageraset_bruiser",
-	socialGroup = "Bageraset",
+	socialGroup = "bageraset",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

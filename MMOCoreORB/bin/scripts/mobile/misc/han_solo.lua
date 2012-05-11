@@ -1,8 +1,8 @@
 han_solo = Creature:new {
 	objectName = "@mob/creature_names:han_solo",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ han_solo = Creature:new {
 
 	templates = {"object/mobile/han_solo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"han_solo_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

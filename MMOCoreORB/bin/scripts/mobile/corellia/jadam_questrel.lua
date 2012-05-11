@@ -1,9 +1,9 @@
 jadam_questrel = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Jadam Questrel",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ jadam_questrel = Creature:new {
 
 	templates = {"object/mobile/dressed_jadam_questrel.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

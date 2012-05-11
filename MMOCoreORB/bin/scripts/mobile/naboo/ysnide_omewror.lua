@@ -1,9 +1,9 @@
 ysnide_omewror = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Ysnide Omewror",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -28,9 +28,9 @@ ysnide_omewror = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_fat_twilek_female_01.iff"},
-	lootGroups = { },
+	lootGroups = {},
 	conversationTemplate = "",
-	attacks = {	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(ysnide_omewror, "ysnide_omewror")

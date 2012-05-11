@@ -1,8 +1,8 @@
 quest_gadget_specialist = Creature:new {
 	objectName = "@mob/creature_names:quest_gadget_specialist",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -28,7 +28,7 @@ quest_gadget_specialist = Creature:new {
 
 	templates = {"object/mobile/dressed_doctor_trainer_moncal_female_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

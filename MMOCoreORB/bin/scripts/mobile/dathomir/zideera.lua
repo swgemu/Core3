@@ -29,7 +29,7 @@ zideera = Creature:new {
 
 	templates = {"object/mobile/dressed_zideera.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

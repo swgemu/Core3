@@ -1,6 +1,6 @@
 mine_rat = Creature:new {
 	objectName = "@mob/creature_names:death_watch_quenker",
-	socialGroup = "Death Watch",
+	socialGroup = "quenker",
 	pvpFaction = "",
 	faction = "",
 	level = 102,

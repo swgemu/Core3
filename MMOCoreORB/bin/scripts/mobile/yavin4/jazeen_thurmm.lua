@@ -1,9 +1,9 @@
 jazeen_thurmm = Creature:new {
 	objectName = "",
 	customName = "Jazeen Thurmm",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ jazeen_thurmm = Creature:new {
 
 	templates = {"object/mobile/dressed_jazeen_thurmm.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

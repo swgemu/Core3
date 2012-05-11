@@ -1,6 +1,6 @@
 poacher = Creature:new {
 	objectName = "@mob/creature_names:poacher_talus",
-	socialGroup = "talus Poacher",
+	socialGroup = "poacher",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

@@ -1,8 +1,8 @@
 tamed_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_razor_cat",
-	socialGroup = "Rebel",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 140,

@@ -1,8 +1,8 @@
 stormtrooper_black_hole_squad_leader = Creature:new {
 	objectName = "",
 	customName = "a Black Hole Stormtrooper Squad Leader",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 3.08,

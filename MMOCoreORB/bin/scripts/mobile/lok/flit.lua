@@ -1,6 +1,6 @@
 flit = Creature:new {
 	objectName = "@mob/creature_names:flit",
-	socialGroup = "Flit",
+	socialGroup = "flit",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

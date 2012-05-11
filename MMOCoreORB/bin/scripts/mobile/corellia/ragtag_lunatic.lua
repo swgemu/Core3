@@ -25,7 +25,8 @@ ragtag_lunatic = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
+	templates = {
+		"object/mobile/dressed_ravager_human_female_01.iff",
 		"object/mobile/dressed_ravager_human_male_01.iff",
 		"object/mobile/dressed_raider_trandoshan_female_01.iff",
 		"object/mobile/dressed_raider_trandoshan_male_01.iff",

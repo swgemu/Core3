@@ -1,7 +1,7 @@
 coa3_information_imperial = Creature:new {
 	objectName = "@mob/creature_names:coa3_information_imperial",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

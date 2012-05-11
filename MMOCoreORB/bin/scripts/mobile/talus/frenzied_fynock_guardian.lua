@@ -1,6 +1,6 @@
 frenzied_fynock_guardian = Creature:new {
 	objectName = "@mob/creature_names:frenzied_fynock_guardian",
-	socialGroup = "Fynock",
+	socialGroup = "fynock",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

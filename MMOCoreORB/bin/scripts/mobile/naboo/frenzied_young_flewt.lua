@@ -1,6 +1,6 @@
 frenzied_young_flewt = Creature:new {
 	objectName = "@mob/creature_names:frightened_young_flewt",
-	socialGroup = "Flewt",
+	socialGroup = "flewt",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

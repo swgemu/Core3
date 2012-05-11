@@ -1,9 +1,9 @@
 rodian_sif = Creature:new {
 	objectName = "",
 	customName = "a rodian Sif",
-	socialGroup = "Sif",
-	pvpFaction = "Sif",
-	faction = "",
+	socialGroup = "sif",
+	pvpFaction = "sif",
+	faction = "sif",
 	level = 37,
 	chanceHit = 0.42,
 	damageMin = 330,
@@ -27,7 +27,7 @@ rodian_sif = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_02.iff"},
+	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",

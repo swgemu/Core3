@@ -1,6 +1,6 @@
 kahmurra_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_murra",
-	socialGroup = "Murra",
+	socialGroup = "murra",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

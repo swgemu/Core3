@@ -1,9 +1,9 @@
 binna_jode = Creature:new {
 	objectName = "",
 	customName = "Binna Jode",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ binna_jode = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_binna.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

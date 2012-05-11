@@ -1,6 +1,6 @@
 midnight_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:midnight_vir_vur",
-	socialGroup = "Vir Vur",
+	socialGroup = "vir_vur",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

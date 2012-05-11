@@ -1,6 +1,6 @@
 war_gronda = Creature:new {
 	objectName = "@mob/creature_names:war_gronda",
-	socialGroup = "Gronda",
+	socialGroup = "gronda",
 	pvpFaction = "",
 	faction = "",
 	level = 32,

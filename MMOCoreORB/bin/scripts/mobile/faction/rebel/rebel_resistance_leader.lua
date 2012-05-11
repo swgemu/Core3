@@ -1,8 +1,8 @@
 rebel_resistance_leader = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_leader",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 10,
 	chanceHit = 0.280000,
 	damageMin = 90,

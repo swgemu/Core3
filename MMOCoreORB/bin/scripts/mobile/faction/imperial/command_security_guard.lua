@@ -1,7 +1,7 @@
 command_security_guard = Creature:new {
 	objectName = "@mob/creature_names:command_security_guard",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,

@@ -1,8 +1,8 @@
 patron_nikto = Creature:new {
 	objectName = "@mob/creature_names:patron_nikto",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -29,7 +29,7 @@ patron_nikto = Creature:new {
 		"object/mobile/dressed_patron_nikto_01.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

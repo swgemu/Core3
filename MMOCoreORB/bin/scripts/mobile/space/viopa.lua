@@ -1,6 +1,6 @@
 viopa = Creature:new {
 	objectName = "@npc_spawner_n:viopa",
-	socialGroup = "townsperson",
+	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,

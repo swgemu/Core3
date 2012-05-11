@@ -1,9 +1,9 @@
 herald_naboo_hanna = Creature:new {
 	objectName = "",
 	customName = "Hanna",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

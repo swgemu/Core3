@@ -1,8 +1,8 @@
 ackbar = Creature:new {
 	objectName = "@theme_park_name:ackbar",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

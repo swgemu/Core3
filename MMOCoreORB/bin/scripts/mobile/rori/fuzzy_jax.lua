@@ -1,6 +1,6 @@
 fuzzy_jax = Creature:new {
 	objectName = "@mob/creature_names:fuzzy_jax",
-	socialGroup = "Jax",
+	socialGroup = "jax",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

@@ -1,7 +1,7 @@
 crackdown_specialist_noncom = Creature:new {
 	objectName = "@mob/creature_names:crackdown_specialist_noncom",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.300000,

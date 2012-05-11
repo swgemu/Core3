@@ -1,6 +1,6 @@
 voracious_rasp = Creature:new {
 	objectName = "@mob/creature_names:voracious_rasp",
-	socialGroup = "Voracious Rasp",
+	socialGroup = "rasp",
 	pvpFaction = "",
 	faction = "",
 	level = 40,

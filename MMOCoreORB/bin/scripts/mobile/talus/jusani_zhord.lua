@@ -1,9 +1,9 @@
 jusani_zhord = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Jusani Zhord",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ jusani_zhord = Creature:new {
 
 	templates = {"object/mobile/dressed_jusani_zhord.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 sulfer_pool_mynock = Creature:new {
 	objectName = "@mob/creature_names:sulfur_pool_mynock",
-	socialGroup = "Mynock",
+	socialGroup = "mynock",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

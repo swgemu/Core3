@@ -1,6 +1,6 @@
 slinking_voritor_hunter = Creature:new {
 	objectName = "@mob/creature_names:slinking_voritor_hunter",
-	socialGroup = "Voritor Lizard",
+	socialGroup = "voritor",
 	pvpFaction = "",
 	faction = "",
 	level = 57,

@@ -1,6 +1,6 @@
 bull_ronto = Creature:new {
 	objectName = "@mob/creature_names:ronto_male",
-	socialGroup = "Ronto",
+	socialGroup = "ronto",
 	pvpFaction = "",
 	faction = "",
 	level = 23,

@@ -1,9 +1,9 @@
 trace_lyson = Creature:new {
 	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Trace Lyson",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ trace_lyson = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_human_male_05.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

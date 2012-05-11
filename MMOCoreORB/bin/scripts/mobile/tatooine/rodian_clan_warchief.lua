@@ -1,6 +1,6 @@
 rodian_clan_warchief = Creature:new {
 	objectName = "@mob/creature_names:rodian_clan_warchief",
-	socialGroup = "Rodian",
+	socialGroup = "rodian",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

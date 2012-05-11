@@ -1,6 +1,6 @@
 eopie_herdmaster = Creature:new {
 	objectName = "@mob/creature_names:eopie_herdmaster",
-	socialGroup = "Eopie",
+	socialGroup = "eopie",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

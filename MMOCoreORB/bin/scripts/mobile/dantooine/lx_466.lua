@@ -1,7 +1,7 @@
 lx_466 = Creature:new {
 	objectName = "",
 	customName = "LX-466",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -29,7 +29,7 @@ lx_466 = Creature:new {
 
 	templates = {"object/mobile/dressed_lx_466.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

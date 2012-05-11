@@ -1,6 +1,6 @@
 enraged_defender = Creature:new {
 	objectName = "@mob/creature_names:piket_enraged_defender",
-	socialGroup = "Piket",
+	socialGroup = "piket",
 	pvpFaction = "",
 	faction = "",
 	level = 49,

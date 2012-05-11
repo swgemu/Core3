@@ -28,7 +28,7 @@ rohak_village_elder = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_elder.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

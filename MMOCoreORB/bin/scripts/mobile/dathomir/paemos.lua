@@ -28,7 +28,7 @@ paemos = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_converter.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

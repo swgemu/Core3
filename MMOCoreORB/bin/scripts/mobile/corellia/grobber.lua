@@ -1,9 +1,9 @@
 grobber = Creature:new {
 	objectName = "@npc_name:twilek_base_male",
 	customName = "Grobber",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ grobber = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_twk_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

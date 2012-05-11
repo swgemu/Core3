@@ -1,6 +1,6 @@
 arnecio_ulvaw_op = Creature:new {
 	objectName = "@npc_spawner_n:arnecio_ulvaw_op",
-	socialGroup = "townsperson",
+	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,

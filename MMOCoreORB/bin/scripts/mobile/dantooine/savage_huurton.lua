@@ -1,8 +1,8 @@
 savage_huurton = Creature:new {
 	objectName = "@mob/creature_names:warren_huurton_savage",
-	socialGroup = "Warren Huurton",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "warren_huurton",
+	pvpFaction = "warren_huurton",
+	faction = "warren_huurton",
 	level = 26,
 	chanceHit = 0.35,
 	damageMin = 230,

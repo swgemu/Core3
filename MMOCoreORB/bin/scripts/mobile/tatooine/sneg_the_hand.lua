@@ -1,9 +1,9 @@
 sneg_the_hand = Creature:new {
 	objectName = "@npc_name:devaronian_base_male",
 	customName = "Sneg the Hand",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -29,7 +29,7 @@ sneg_the_hand = Creature:new {
 
 	templates = {"object/mobile/junk_sneg.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

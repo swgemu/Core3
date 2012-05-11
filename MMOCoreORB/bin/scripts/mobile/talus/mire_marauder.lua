@@ -1,6 +1,6 @@
 mire_marauder = Creature:new {
 	objectName = "@mob/creature_names:mire_marauder",
-	socialGroup = "Sludge Panth.",
+	socialGroup = "panther",
 	pvpFaction = "",
 	faction = "",
 	level = 56,

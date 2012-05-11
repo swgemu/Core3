@@ -29,7 +29,7 @@ vurlene = Creature:new {
 
 	templates = {"object/mobile/dressed_vurlene.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

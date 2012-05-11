@@ -1,8 +1,8 @@
 tamed_gurrcat = Creature:new {
 	objectName = "@mob/creature_names:rebel_tamed_gurrcat",
-	socialGroup = "Rebel",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 7,
 	chanceHit = 0.26,
 	damageMin = 55,

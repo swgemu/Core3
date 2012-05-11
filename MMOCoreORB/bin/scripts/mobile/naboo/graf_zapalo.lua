@@ -1,9 +1,9 @@
 graf_zapalo = Creature:new {
 	objectName = "",
 	customName = "Graf Zapalo",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

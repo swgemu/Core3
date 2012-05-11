@@ -1,9 +1,9 @@
 bren_kingal = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_guard_young",
 	customName = "Bren Kingal",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -29,8 +29,9 @@ bren_kingal = Creature:new {
 
 	templates = {"object/mobile/mos_taike_guard_young.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
+	outfit = "mos_taike_guard_outfit",
 	attacks = {
 	}
 }

@@ -1,6 +1,6 @@
 gaping_spider_broodling = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_broodling",
-	socialGroup = "Gaping",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

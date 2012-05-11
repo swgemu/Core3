@@ -26,7 +26,8 @@ hidden_daggers_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_criminal_thug_human_female_01.iff",
+	templates = {
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
 		"object/mobile/dressed_criminal_thug_human_female_02.iff",
 		"object/mobile/dressed_criminal_thug_human_male_01.iff",
 		"object/mobile/dressed_criminal_thug_human_male_02.iff",

@@ -1,9 +1,9 @@
 jyr_koble = Creature:new {
 	objectName = "",
 	customName = "Jyr Koble",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

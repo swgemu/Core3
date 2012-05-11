@@ -1,8 +1,8 @@
 special_missions_engineer = Creature:new {
 	objectName = "@mob/creature_names:special_missions_engineer",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 16,
 	chanceHit = 0.310000,
 	damageMin = 170,

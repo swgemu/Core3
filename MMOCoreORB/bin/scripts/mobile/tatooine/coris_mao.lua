@@ -1,9 +1,9 @@
 coris_mao = Creature:new {
 	objectName = "@npc_name:bith_base_female",
 	customName = "Coris Mao",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ coris_mao = Creature:new {
 
 	templates = {"object/mobile/dressed_brigade_gunner_bith_female_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

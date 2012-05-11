@@ -1,6 +1,6 @@
 gurnaset_hatchling = Creature:new {
 	objectName = "@mob/creature_names:gurnaset_hatchling",
-	socialGroup = "Gurnaset",
+	socialGroup = "gurnaset",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

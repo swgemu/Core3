@@ -1,6 +1,6 @@
 mawgax_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_mawgax",
-	socialGroup = "Mawgax",
+	socialGroup = "mawgax",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

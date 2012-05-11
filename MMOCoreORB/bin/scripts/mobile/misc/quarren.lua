@@ -1,8 +1,8 @@
 quarren = Creature:new {
 	objectName = "@mob/creature_names:patron_quarren",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ quarren = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/quarren_male.iff"},
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",

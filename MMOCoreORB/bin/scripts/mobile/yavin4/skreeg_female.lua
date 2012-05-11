@@ -1,6 +1,6 @@
 skreeg_female = Creature:new {
 	objectName = "@mob/creature_names:skreeg_female",
-	socialGroup = "Skreeg",
+	socialGroup = "skreeg",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

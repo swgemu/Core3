@@ -1,8 +1,8 @@
 rebel_resistance_dissident = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_dissident",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

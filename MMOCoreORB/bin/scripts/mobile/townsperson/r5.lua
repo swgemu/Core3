@@ -1,8 +1,8 @@
 r5 = Creature:new {
 	objectName = "@mob/creature_names:r5",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -30,7 +30,7 @@ r5 = Creature:new {
 		"object/mobile/r5.iff"
 	},		
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

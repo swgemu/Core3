@@ -1,9 +1,9 @@
 ind = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Ind",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

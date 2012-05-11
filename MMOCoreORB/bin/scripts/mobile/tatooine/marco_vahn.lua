@@ -1,9 +1,9 @@
 marco_vahn = Creature:new {
 	objectName = "",
 	customName = "Marco Vahn (a booking agent)",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ marco_vahn = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

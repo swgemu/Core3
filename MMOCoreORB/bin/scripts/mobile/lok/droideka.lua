@@ -1,6 +1,6 @@
 droideka = Creature:new {
 	objectName = "@mob/creature_names:droideka",
-	socialGroup = "Droideka",
+	socialGroup = "droideka",
 	pvpFaction = "",
 	faction = "",
 	level = 45,
@@ -28,7 +28,7 @@ droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"droid_droideka_ranged"},
 	conversationTemplate = "",
 	attacks = {
 	}

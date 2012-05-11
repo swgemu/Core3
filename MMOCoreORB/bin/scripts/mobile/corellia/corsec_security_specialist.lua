@@ -1,7 +1,7 @@
 corsec_security_specialist = Creature:new {
 	objectName = "@mob/creature_names:corsec_detective_aggro",
-	socialGroup = "Corsec [aggro]",
-	pvpFaction = "Corsec [aggro]",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 120,
 	chanceHit = 4,
@@ -26,7 +26,8 @@ corsec_security_specialist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+	templates = {
+		"object/mobile/dressed_corsec_detective_human_male_01.iff",
 		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	  {

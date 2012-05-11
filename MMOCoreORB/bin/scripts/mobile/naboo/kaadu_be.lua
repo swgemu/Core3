@@ -1,6 +1,6 @@
 kaadu_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_kaadu",
-	socialGroup = "Kaadu",
+	socialGroup = "kaadu",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

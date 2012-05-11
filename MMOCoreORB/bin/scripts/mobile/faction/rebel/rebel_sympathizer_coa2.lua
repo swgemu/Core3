@@ -1,8 +1,8 @@
 rebel_sympathizer_coa2 = Creature:new {
 	objectName = "",
 	customName = "a Rebel Sympathizer",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 15,
 	chanceHit = 0.31,

@@ -1,8 +1,8 @@
 vrak = Creature:new {
 	objectName = "@npc_spawner_n:vrak",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -30,7 +30,7 @@ vrak = Creature:new {
 		"object/mobile/dressed_nym_destroyer_rod_m.iff"
 	},		
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

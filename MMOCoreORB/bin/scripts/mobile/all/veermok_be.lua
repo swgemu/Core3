@@ -1,6 +1,6 @@
 veermok_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_veermok",
-	socialGroup = "Veermok",
+	socialGroup = "veermok",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

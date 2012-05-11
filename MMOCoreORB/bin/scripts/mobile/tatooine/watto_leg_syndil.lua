@@ -1,9 +1,9 @@
 watto_leg_syndil = Creature:new {
 	objectName = "@mob/creature_names:watto_leg_syndil",
 	customName = "Syndil",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ watto_leg_syndil = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_intro_woman.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

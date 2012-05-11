@@ -1,8 +1,8 @@
 chadra_fan_male = Creature:new {
 	objectName = "@mob/creature_names:chadra_fan_male",
-	socialGroup = "Chadra Fan",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.25,
 	damageMin = 50,
@@ -32,7 +32,7 @@ chadra_fan_male = Creature:new {
 		"object/mobile/dressed_chadra_fan_m_02.iff",
 		"object/mobile/dressed_chadra_fan_m_03.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

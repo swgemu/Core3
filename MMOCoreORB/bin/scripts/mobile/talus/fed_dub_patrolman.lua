@@ -1,8 +1,8 @@
 fed_dub_patrolman = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_patrolman",
-	socialGroup = "Fed Dub",
-	pvpFaction = "Fed Dub",
-	faction = "",
+	socialGroup = "fed_dub",
+	pvpFaction = "fed_dub",
+	faction = "fed_dub",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,
@@ -26,8 +26,10 @@ fed_dub_patrolman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_patrol_man_human_male_01.iff",
-					"object/mobile/dressed_fed_dub_patrolman_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_fed_dub_patrol_man_human_male_01.iff",
+		"object/mobile/dressed_fed_dub_patrolman_human_female_01.iff",
+		"object/mobile/dressed_fed_dub_patrolman_human_male_01.iff"},
 				
 	lootGroups = {
 	    {

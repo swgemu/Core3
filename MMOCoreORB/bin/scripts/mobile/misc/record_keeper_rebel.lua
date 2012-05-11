@@ -1,8 +1,8 @@
 record_keeper_rebel = Creature:new {
 	objectName = "",
 	customName = "Lt. Ogo (Planetary Record Keeper)",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

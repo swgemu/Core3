@@ -1,6 +1,6 @@
 vesp = Creature:new {
 	objectName = "@mob/creature_names:vesp",
-	socialGroup = "Vesp",
+	socialGroup = "vesp",
 	pvpFaction = "",
 	faction = "",
 	level = 25,

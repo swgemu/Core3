@@ -1,7 +1,7 @@
 rebel_surface_marshall = Creature:new {
 	objectName = "@mob/creature_names:rebel_surface_marshal",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 21,
 	chanceHit = 0.33,

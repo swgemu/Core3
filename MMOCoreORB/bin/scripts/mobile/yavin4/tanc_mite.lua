@@ -1,6 +1,6 @@
 tanc_mite = Creature:new {
 	objectName = "@mob/creature_names:tanc_mite",
-	socialGroup = "Tancmite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

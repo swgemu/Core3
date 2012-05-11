@@ -1,9 +1,9 @@
 palu = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Palu Zerk",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ palu = Creature:new {
 
 	templates = {"object/mobile/dressed_palu_zerk.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,9 +1,8 @@
 herald_lok_andria = Creature:new {
-	objectName = "",
-	customName = "Andria",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:lok_herald_02",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

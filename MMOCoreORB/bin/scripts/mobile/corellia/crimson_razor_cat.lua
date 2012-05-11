@@ -1,6 +1,6 @@
 crimson_razor_cat = Creature:new {
 	objectName = "@mob/creature_names:crimson_sand_panther",
-	socialGroup = "Sand Panther",
+	socialGroup = "panther",
 	pvpFaction = "",
 	faction = "",
 	level = 29,

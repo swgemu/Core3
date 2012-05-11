@@ -1,8 +1,8 @@
 droopy_mccool = Creature:new {
 	objectName = "@mob/creature_names:droopy_mccool",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

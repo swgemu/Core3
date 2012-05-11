@@ -1,6 +1,6 @@
 tormented_bocatt = Creature:new {
 	objectName = "@mob/creature_names:bocatt_tormented",
-	socialGroup = "Bocatt",
+	socialGroup = "bocatt",
 	pvpFaction = "",
 	faction = "",
 	level = 26,

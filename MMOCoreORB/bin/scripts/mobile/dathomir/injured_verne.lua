@@ -1,6 +1,6 @@
 injured_verne = Creature:new {
 	objectName = "@mob/creature_names:injured_verne",
-	socialGroup = "Verne",
+	socialGroup = "verne",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

@@ -28,7 +28,7 @@ whip = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_whip.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

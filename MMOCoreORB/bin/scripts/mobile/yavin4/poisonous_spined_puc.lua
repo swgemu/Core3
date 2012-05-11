@@ -1,6 +1,6 @@
 poisonous_spined_puc = Creature:new {
 	objectName = "@mob/creature_names:spined_puc_poison",
-	socialGroup = "Spined Puc",
+	socialGroup = "spined_puc",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

@@ -1,6 +1,6 @@
 elder_pugoriss = Creature:new {
 	objectName = "@mob/creature_names:elder_pugoriss",
-	socialGroup = "Pugoriss",
+	socialGroup = "pugoriss",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

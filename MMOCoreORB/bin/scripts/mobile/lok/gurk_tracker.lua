@@ -1,6 +1,6 @@
 gurk_tracker = Creature:new {
 	objectName = "@mob/creature_names:gurk_tracker",
-	socialGroup = "Gurk",
+	socialGroup = "gurk",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

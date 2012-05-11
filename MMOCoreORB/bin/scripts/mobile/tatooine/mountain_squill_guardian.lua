@@ -1,6 +1,6 @@
 mountain_squill_guardian = Creature:new {
 	objectName = "@mob/creature_names:mountain_squill_guardian",
-	socialGroup = "Mtn. Squill",
+	socialGroup = "squill",
 	pvpFaction = "",
 	faction = "",
 	level = 40,

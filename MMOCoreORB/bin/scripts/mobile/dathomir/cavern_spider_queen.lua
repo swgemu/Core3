@@ -1,6 +1,6 @@
 cavern_spider_queen = Creature:new {
 	objectName = "@mob/creature_names:gaping_spider_queen",
-	socialGroup = "Sp. Nightsister",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 46,

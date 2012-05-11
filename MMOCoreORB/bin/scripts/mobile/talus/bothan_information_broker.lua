@@ -1,6 +1,6 @@
 bothan_information_broker = Creature:new {
 	objectName = "@mob/creature_names:bothan_information_broker",
-	socialGroup = "Spynet",
+	socialGroup = "spynet",
 	pvpFaction = "",
 	faction = "",
 	level = 3,
@@ -26,12 +26,13 @@ bothan_information_broker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_hutt_informant_quest.iff",
-					"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
-					"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
+	templates = {
+		"object/mobile/dressed_hutt_informant_quest.iff",
+		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
+		"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
 					},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

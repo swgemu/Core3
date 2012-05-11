@@ -1,8 +1,8 @@
 binayre_swindler = Creature:new {
 	objectName = "@mob/creature_names:binayre_swindler",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,7 +26,9 @@ binayre_swindler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_swindler_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_swindler_zabrak_female_01.iff",
+		"object/mobile/dressed_binayre_swindler_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

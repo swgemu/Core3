@@ -1,7 +1,7 @@
 geonosian_scientist = Creature:new {
 	objectName = "@mob/creature_names:geonosian_scientist",
-	socialGroup = "Geonosian",
-	pvpFaction = "Geonosian",
+	socialGroup = "geonosian",
+	pvpFaction = "geonosian",
 	faction = "",
 	level = 48,
 	chanceHit = 0.49,
@@ -26,7 +26,9 @@ geonosian_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
+	templates = {
+		"object/mobile/dressed_geonosian_scientist_01.iff",
+		"object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootGroups = {
 	},
 	weapons = {"geonosian_weapons"},

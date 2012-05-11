@@ -1,6 +1,6 @@
 feral_orphan = Creature:new {
 	objectName = "@mob/creature_names:dire_cat_feral_orphan",
-	socialGroup = "Dire Cat",
+	socialGroup = "dire_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

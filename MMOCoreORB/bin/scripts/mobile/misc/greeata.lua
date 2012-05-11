@@ -1,8 +1,8 @@
 greeata = Creature:new {
-	objectName = "@mob/creature_names:Greeata",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	objectName = "@theme_park_name:greeata",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

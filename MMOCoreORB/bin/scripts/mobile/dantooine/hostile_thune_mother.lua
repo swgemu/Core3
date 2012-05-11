@@ -1,6 +1,6 @@
 hostile_thune_mother = Creature:new {
 	objectName = "@mob/creature_names:hostile_thune_mother",
-	socialGroup = "Thune",
+	socialGroup = "thune",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

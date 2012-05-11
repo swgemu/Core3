@@ -1,8 +1,8 @@
 leia_organa = Creature:new {
 	objectName = "@mob/creature_names:leia_organa",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

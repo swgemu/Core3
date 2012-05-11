@@ -1,6 +1,6 @@
 choku_packmaster = Creature:new {
 	objectName = "@mob/creature_names:choku_packmaster",
-	socialGroup = "Choku",
+	socialGroup = "choku",
 	pvpFaction = "",
 	faction = "",
 	level = 21,

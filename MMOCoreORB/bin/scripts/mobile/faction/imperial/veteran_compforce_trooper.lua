@@ -1,8 +1,8 @@
 veteran_compforce_trooper = Creature:new {
 	objectName = "@mob/creature_names:veteran_compforce_trooper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 25,
 	chanceHit = 0.350000,
 	damageMin = 230,

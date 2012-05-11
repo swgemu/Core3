@@ -1,6 +1,6 @@
 piket_longhorn = Creature:new {
 	objectName = "@mob/creature_names:piket_longhorn",
-	socialGroup = "Picket",
+	socialGroup = "picket",
 	pvpFaction = "",
 	faction = "",
 	level = 37,

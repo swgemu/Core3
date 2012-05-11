@@ -1,6 +1,6 @@
 feral_mutant_gackle_stalker = Creature:new {
 	objectName = "@mob/creature_names:feral_mutant_gackle_stalker",
-	socialGroup = "Gacklebat",
+	socialGroup = "gacklebat",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

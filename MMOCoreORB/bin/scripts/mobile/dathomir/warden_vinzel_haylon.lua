@@ -1,9 +1,9 @@
 warden_vinzel_haylon = Creature:new {
 	objectName = "",
 	customName = "Warden Vinzel Hayon",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ warden_vinzel_haylon = Creature:new {
 
 	templates = {"object/mobile/dressed_vinzel_haylon.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

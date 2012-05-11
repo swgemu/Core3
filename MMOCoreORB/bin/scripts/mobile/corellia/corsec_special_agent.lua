@@ -1,7 +1,7 @@
 corsec_special_agent = Creature:new {
 	objectName = "@mob/creature_names:corsec_agent_aggro",
-	socialGroup = "Corsec [aggro]",
-	pvpFaction = "Corsec [aggro]",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 105,
 	chanceHit = 1.75,
@@ -26,7 +26,8 @@ corsec_special_agent = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_pilot_human_female_01.iff",
+	templates = {
+		"object/mobile/dressed_corsec_pilot_human_female_01.iff",
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	    {

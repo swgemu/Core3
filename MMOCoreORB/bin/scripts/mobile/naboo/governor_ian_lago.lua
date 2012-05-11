@@ -1,9 +1,9 @@
 governor_ian_lago = Creature:new {
 	objectName = "",
 	customName = "Governor Ian Lago",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ governor_ian_lago = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_govenor_ian_lago.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

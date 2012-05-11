@@ -1,8 +1,8 @@
 sean_questn_university = Creature:new {
 	objectName = "@mob/creature_names:Sean Questn University",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

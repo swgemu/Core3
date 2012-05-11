@@ -1,9 +1,9 @@
 warehouse_captain_coa3 = Creature:new {
 	objectName = "",
 	customName = "a Warehouse Captain",
-	socialGroup = "Warehouse",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "warehouse",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 320,

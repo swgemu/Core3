@@ -1,9 +1,9 @@
 daclif_gallamby = Creature:new {
 	objectName = "",
 	customName = "Daclif Gallamby",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ daclif_gallamby = Creature:new {
 
 	templates = {"object/mobile/dressed_daclif_gallamby.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

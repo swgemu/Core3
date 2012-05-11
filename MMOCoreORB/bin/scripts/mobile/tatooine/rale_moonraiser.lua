@@ -1,7 +1,7 @@
 rale_moonraiser = Creature:new {
 	objectName = "",
 	customName = "Rale Moonraiser",
-	socialGroup = "Darklighter",
+	socialGroup = "darklighter",
 	pvpFaction = "",
 	faction = "",
 	level = 99,
@@ -22,14 +22,14 @@ rale_moonraiser = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 feral_bantha = Creature:new {
 	objectName = "@mob/creature_names:feral_bantha",
-	socialGroup = "Bantha",
+	socialGroup = "bantha",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

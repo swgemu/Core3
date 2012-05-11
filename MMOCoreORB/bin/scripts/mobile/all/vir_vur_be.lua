@@ -1,6 +1,6 @@
 vir_vur_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_vir_vur",
-	socialGroup = "Vir Vur",
+	socialGroup = "vir_vur",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

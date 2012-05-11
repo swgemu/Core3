@@ -1,8 +1,8 @@
 gins_darone = Creature:new {
 	objectName = "@mob/creature_names:gins_darone",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

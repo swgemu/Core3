@@ -1,9 +1,9 @@
 shibb_nisshil = Creature:new {
 	objectName = "",
 	customName = "Shibb Nisshil",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ shibb_nisshil = Creature:new {
 
 	templates = {"object/mobile/dressed_shibb_nisshil.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 mottled_wrix = Creature:new {
 	objectName = "@mob/creature_names:mottled_wrix",
-	socialGroup = "Wrix",
+	socialGroup = "wrix",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

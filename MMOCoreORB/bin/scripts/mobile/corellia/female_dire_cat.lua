@@ -1,6 +1,6 @@
 female_dire_cat = Creature:new {
 	objectName = "@mob/creature_names:female_dire_cat",
-	socialGroup = "Dire Cat",
+	socialGroup = "dire_cat",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

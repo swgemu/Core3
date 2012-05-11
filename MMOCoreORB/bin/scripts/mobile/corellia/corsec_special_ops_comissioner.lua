@@ -1,7 +1,7 @@
 corsec_special_ops_comissioner = Creature:new {
 	objectName = "@mob/creature_names:corsec_commissioner_aggro",
-	socialGroup = "Corsec [aggro]",
-	pvpFaction = "Corsec [aggro]",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 226,
 	chanceHit = 19.75,
@@ -26,7 +26,8 @@ corsec_special_ops_comissioner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_detective_human_male_01.iff",
+	templates = {
+		"object/mobile/dressed_corsec_detective_human_male_01.iff",
 		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
 	    {

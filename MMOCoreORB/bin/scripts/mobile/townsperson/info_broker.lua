@@ -1,6 +1,6 @@
 info_broker = Creature:new {
 	objectName = "@mob/creature_names:info_broker",
-	socialGroup = "Talus Poacher",
+	socialGroup = "poacher",
 	pvpFaction = "",
 	faction = "",
 	level = 16,
@@ -29,7 +29,7 @@ info_broker = Creature:new {
 				 "object/mobile/dressed_criminal_smuggler_human_male_01.iff"
 				 },
 	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {""},
 	attacks = {}
 }
 

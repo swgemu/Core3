@@ -1,9 +1,9 @@
 mozo_bondog = Creature:new {
 	objectName = "",
 	customName = "Mozo Bondog",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ mozo_bondog = Creature:new {
 
 	templates = {"object/mobile/dressed_mozo_bondog.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "mozo_bondog_convotemplate",
 	attacks = {
 	}

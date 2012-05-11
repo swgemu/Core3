@@ -1,6 +1,6 @@
 young_hanadak_rock_crusher = Creature:new {
 	objectName = "@mob/creature_names:young_hanadak_rock_crusher",
-	socialGroup = "Hanadak",
+	socialGroup = "hanadak",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

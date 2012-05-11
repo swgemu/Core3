@@ -1,9 +1,9 @@
 stella = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_cantina_owner",
 	customName = "Stella",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -29,7 +29,7 @@ stella = Creature:new {
 
 	templates = {"object/mobile/mos_taike_cantina_owner.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

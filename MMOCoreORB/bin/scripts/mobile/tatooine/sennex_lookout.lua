@@ -1,8 +1,8 @@
 sennex_lookout = Creature:new {
 	objectName = "@mob/creature_names:sennex_lookout",
-	socialGroup = "Sennex",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "sennex",
+	pvpFaction = "pirate",
+	faction = "pirate",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 160,

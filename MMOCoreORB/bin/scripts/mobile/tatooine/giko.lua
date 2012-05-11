@@ -1,9 +1,9 @@
 giko = Creature:new {
 	objectName = "@npc_name:rodian_base_male",
 	customName = "Giko",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ giko = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_rodian_male_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

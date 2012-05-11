@@ -30,6 +30,7 @@ kaja_orzee = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "imperial_retreat_kaja_orzee_convotemplate",
+	outfit = "kaja_orzee_outfit",
 	attacks = {
 	}
 }

@@ -1,9 +1,9 @@
 corellia_jonset = Creature:new {
 	objectName = "@mob/creature_names:corellia_jonset",
 	customName = "Jonset",
-	socialGroup = "Corellia Times",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ corellia_jonset = Creature:new {
 
 	templates = {"object/mobile/dressed_assassin_mission_giver_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 gravin_attal = Creature:new {
 	objectName = "@mob/creature_names:Gravin Attal",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ gravin_attal = Creature:new {
 
 	templates = {"object/mobile/dressed_gravin_attal.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

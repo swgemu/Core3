@@ -1,6 +1,6 @@
 tabage_scavenger = Creature:new {
 	objectName = "@mob/creature_names:tabage_scavenger",
-	socialGroup = "",
+	socialGroup = "tabage",
 	pvpFaction = "",
 	faction = "",
 	level = 14,

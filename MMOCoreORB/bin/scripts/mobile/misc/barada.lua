@@ -1,8 +1,8 @@
 barada = Creature:new {
 	objectName = "@mob/creature_names:barada",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,

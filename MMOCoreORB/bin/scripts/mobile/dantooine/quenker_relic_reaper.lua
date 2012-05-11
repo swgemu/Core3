@@ -1,6 +1,6 @@
 quenker_relic_reaper = Creature:new {
 	objectName = "@mob/creature_names:quenker_relic_reaper",
-	socialGroup = "Quenker",
+	socialGroup = "quenker",
 	pvpFaction = "",
 	faction = "",
 	level = 45,

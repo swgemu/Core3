@@ -1,8 +1,8 @@
 sulfur_lake_pirate = Creature:new {
 	objectName = "@mob/creature_names:slp_pirate",
-	socialGroup = "Pirate",
-	pvpFaction = "Pirate",
-	faction = "",
+	socialGroup = "pirate",
+	pvpFaction = "pirate",
+	faction = "pirate",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

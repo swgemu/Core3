@@ -1,9 +1,9 @@
 ecoospoo = Creature:new {
 	objectName = "",
 	customName = "Ecoospoo",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ ecoospoo = Creature:new {
 
 	templates = {"object/mobile/dressed_mercenary_messanger_rod_m.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

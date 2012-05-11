@@ -1,8 +1,8 @@
 eye_of_solitude = Creature:new {
 	objectName = "@mob/creature_names:eye_of_solitude",
-	socialGroup = "Solitude",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "solitude",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,
 	damageMin = 130,

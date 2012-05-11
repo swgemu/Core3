@@ -1,6 +1,6 @@
 canoid = Creature:new {
 	objectName = "@mob/creature_names:canoid",
-	socialGroup = "Canoid",
+	socialGroup = "canoid",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

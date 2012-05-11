@@ -26,7 +26,8 @@ imperial_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_imperial_worker_s01.iff",
+	templates = {
+		"object/mobile/warren_imperial_worker_s01.iff",
 		"object/mobile/warren_imperial_worker_s02.iff",
 		"object/mobile/warren_imperial_worker_s03.iff",
 		"object/mobile/warren_imperial_worker_s04.iff",

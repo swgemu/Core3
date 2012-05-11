@@ -1,6 +1,6 @@
 deadly_hooded_rawl = Creature:new {
 	objectName = "@mob/creature_names:rawl_deadly_hooded",
-	socialGroup = "Fanned Rawl",
+	socialGroup = "rawl",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

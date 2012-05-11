@@ -1,6 +1,6 @@
 dune_stalker_marksman = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_marksman",
-	socialGroup = "Dune Stalker",
+	socialGroup = "dune_stalker",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

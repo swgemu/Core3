@@ -1,8 +1,8 @@
 fed_dub_supporter = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_supporter",
-	socialGroup = "Fed Dub",
-	pvpFaction = "Fed Dub",
-	faction = "",
+	socialGroup = "fed_dub",
+	pvpFaction = "fed_dub",
+	faction = "fed_dub",
 	level = 8,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -26,7 +26,9 @@ fed_dub_supporter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_supporter_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_fed_dub_supporter_human_female_01.iff",
+		"object/mobile/dressed_fed_dub_supporter_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

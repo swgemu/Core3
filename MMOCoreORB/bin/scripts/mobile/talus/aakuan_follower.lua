@@ -1,8 +1,8 @@
 aakuan_follower = Creature:new {
 	objectName = "@mob/creature_names:aakuan_follower",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -26,7 +26,9 @@ aakuan_follower = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff",
+		"object/mobile/dressed_aakuan_follower_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

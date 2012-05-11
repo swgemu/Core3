@@ -1,6 +1,6 @@
 cas_vankoo = Creature:new {
 	objectName = "@mob/creature_names:cas_vankoo",
-	socialGroup = "Kimogila",
+	socialGroup = "kimogila",
 	pvpFaction = "bandit",
 	faction = "bandit",
 	level = 117,
@@ -28,7 +28,7 @@ cas_vankoo = Creature:new {
 
 	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
 	lootGroups = {},
-	weapons = {"cas_vankoo's_weapons"},
+	weapons = {"cas_vankoo_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

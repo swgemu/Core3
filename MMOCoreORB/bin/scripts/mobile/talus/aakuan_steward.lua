@@ -1,8 +1,8 @@
 aakuan_steward = Creature:new {
 	objectName = "@mob/creature_names:aakuan_steward",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -26,7 +26,9 @@ aakuan_steward = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_steward_human_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_steward_human_female_01.iff",
+		"object/mobile/dressed_aakuan_steward_human_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

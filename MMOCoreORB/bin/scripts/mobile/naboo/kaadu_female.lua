@@ -1,6 +1,6 @@
 kaadu_female = Creature:new {
 	objectName = "@mob/creature_names:kaadu_female",
-	socialGroup = "Kaadu",
+	socialGroup = "kaadu",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

@@ -1,6 +1,6 @@
 untrained_wielder_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:untrained_wielder_of_the_dark_side",
-	socialGroup = "Remn. Of Kun",
+	socialGroup = "kun",
 	pvpFaction = "",
 	faction = "",
 	level = 65,

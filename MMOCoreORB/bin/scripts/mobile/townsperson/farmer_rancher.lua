@@ -1,8 +1,8 @@
 farmer_rancher = Creature:new {
 	objectName = "@mob/creature_names:farmer_rancher",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -31,7 +31,7 @@ farmer_rancher = Creature:new {
 				"object/mobile/dressed_commoner_tatooine_bith_female_06.iff"
 				},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

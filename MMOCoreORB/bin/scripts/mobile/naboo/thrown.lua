@@ -1,9 +1,9 @@
 thrown = Creature:new {
 	objectName = "",
 	customName = "Captain Thrawn",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -29,7 +29,7 @@ thrown = Creature:new {
 
 	templates = {"object/mobile/naboo_npc/thrawn.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 patron_ithorian = Creature:new {
 	objectName = "@mob/creature_names:patron_ithorian_male",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -29,7 +29,7 @@ patron_ithorian = Creature:new {
 		"object/mobile/ithorian_male.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

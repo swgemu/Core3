@@ -1,8 +1,8 @@
 lt_harburik = Creature:new {
 	objectName = "@npc_name:lt_harburik",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

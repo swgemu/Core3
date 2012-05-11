@@ -1,6 +1,6 @@
 tattered_torton = Creature:new {
 	objectName = "@mob/creature_names:tattered_torton",
-	socialGroup = "Torton",
+	socialGroup = "torton",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

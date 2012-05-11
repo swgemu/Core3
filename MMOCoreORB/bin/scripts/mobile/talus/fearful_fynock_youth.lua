@@ -1,6 +1,6 @@
 fearful_fynock_youth = Creature:new {
 	objectName = "@mob/creature_names:fearful_fynock_youth",
-	socialGroup = "Fynock",
+	socialGroup = "fynock",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

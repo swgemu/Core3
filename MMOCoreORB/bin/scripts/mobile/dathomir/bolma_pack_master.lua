@@ -1,6 +1,6 @@
 bolma_pack_master = Creature:new {
 	objectName = "@mob/creature_names:bolma_pack_master",
-	socialGroup = "Bolma",
+	socialGroup = "bolma",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

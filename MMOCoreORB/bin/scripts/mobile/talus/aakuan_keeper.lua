@@ -1,8 +1,8 @@
 aakuan_keeper = Creature:new {
 	objectName = "@mob/creature_names:aakuan_keeper",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -26,7 +26,9 @@ aakuan_keeper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_keeper_zabrak_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_keeper_zabrak_female_01.iff",
+		"object/mobile/dressed_aakuan_keeper_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

@@ -1,6 +1,6 @@
 dwarf_bantha = Creature:new {
 	objectName = "@mob/creature_names:dwarf_bantha",
-	socialGroup = "Bantha",
+	socialGroup = "bantha",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

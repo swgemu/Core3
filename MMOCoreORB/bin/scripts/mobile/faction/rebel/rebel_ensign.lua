@@ -1,7 +1,7 @@
 rebel_ensign = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_ensign",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 72,
 	chanceHit = 0.7,

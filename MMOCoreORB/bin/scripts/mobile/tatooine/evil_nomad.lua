@@ -1,6 +1,6 @@
 evil_nomad = Creature:new {
 	objectName = "@mob/creature_names:evil_nomad",
-	socialGroup = "Evil",
+	socialGroup = "evil",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

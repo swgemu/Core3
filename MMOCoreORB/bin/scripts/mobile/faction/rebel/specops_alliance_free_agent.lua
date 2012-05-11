@@ -1,8 +1,8 @@
 specops_alliance_free_agent = Creature:new {
 	objectName = "@mob/creature_names:specops_alliance_free_agent",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,

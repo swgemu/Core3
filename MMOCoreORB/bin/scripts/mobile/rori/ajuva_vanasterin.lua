@@ -1,9 +1,9 @@
 ajuva_vanasterin = Creature:new {
 	objectName = "",
 	customName = "Ajuva Vanasterin",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ ajuva_vanasterin = Creature:new {
 
 	templates = {"object/mobile/dressed_ajuva_vanasterin.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

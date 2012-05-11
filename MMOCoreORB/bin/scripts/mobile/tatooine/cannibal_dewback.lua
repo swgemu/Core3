@@ -1,6 +1,6 @@
 cannibal_dewback = Creature:new {
 	objectName = "@mob/creature_names:dewback_cannibal",
-	socialGroup = "Dewback",
+	socialGroup = "dewback",
 	pvpFaction = "",
 	faction = "",
 	level = 21,

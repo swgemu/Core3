@@ -1,8 +1,8 @@
 lost_aqualish_infiltrator = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_infiltrator",
-	socialGroup = "Lost Aql. Reg.",
-	pvpFaction = "Lost Aql. Reg.",
-	faction = "",
+	socialGroup = "lost_aqualish",
+	pvpFaction = "lost_aqualish",
+	faction = "lost_aqualish",
 	level = 18,
 	chanceHit = 0.32,
 	damageMin = 170,
@@ -26,7 +26,9 @@ lost_aqualish_infiltrator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lost_aqualish_infiltrator_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_lost_aqualish_infiltrator_female_01.iff",
+		"object/mobile/dressed_lost_aqualish_infiltrator_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

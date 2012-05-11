@@ -1,6 +1,6 @@
 kreetle = Creature:new {
 	objectName = "@mob/creature_names:kreetle",
-	socialGroup = "self",
+	socialGroup = "kreetle",
 	pvpFaction = "",
 	faction = "",
 	level = 3,

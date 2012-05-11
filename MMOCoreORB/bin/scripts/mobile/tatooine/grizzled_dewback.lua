@@ -1,6 +1,6 @@
 grizzled_dewback = Creature:new {
 	objectName = "@mob/creature_names:grizzled_dewback",
-	socialGroup = "Dewback",
+	socialGroup = "dewback",
 	pvpFaction = "",
 	faction = "",
 	level = 27,

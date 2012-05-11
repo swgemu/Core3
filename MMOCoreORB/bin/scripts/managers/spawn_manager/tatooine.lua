@@ -1018,15 +1018,17 @@ tatooine_static_spawns = {
 	{"crackdown_elite_sand_trooper", 0, 3496.81, 5.52789, -4923.13, 352.589, 0, "neutral", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/shared_dressed_stormtrooper_sand_trooper_m.iff
 	{"crackdown_sand_trooper", 0, 3516.17, 5, -4879.7, 153.846, 0, "neutral", ""},  --@mob/creature_names:crackdown_sand_trooper full template: object/mobile/shared_dressed_stormtrooper_sand_trooper_m.iff
 	{"mos_eisley_police_officer", 0, 3538.04, 5.12541, -4806.46, 286.91, 0, "calm", ""},  --@mob/creature_names:mos_eisley_police_officer full template: object/mobile/shared_dressed_eisley_officer_bothan_female_01.iff
-	{"businessman", 0, 3422.6, 5, -4847, 203, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"businessman", 0, 3377.1, 5, -4864.9, 7, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"commoner_tatooine", 0, 3271.6, 5, -4863.7, 231, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"commoner_tatooine", 0, 3268.3, 5, -4854, 290, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"commoner_tatooine", 0, 3268.7, 5, -4851.2, 194, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"scavenger", 0, 3356.9, 5, -4780, 56, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"smuggler", 0, 3358.7, 5, -4779.7, 256, 0, "npc_sitting_chair", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"patron", 0, -2.2, -0.9, 11.8, 97, 1082877, "npc_sitting_chair", ""},  --@mob/creature_names:patron_human_male_03 full template: object/mobile/shared_dressed_noble_human_male_03.iff
-	{"patron", 0, 0.6, -0.9, 11.9, 269, 1082877, "npc_sitting_chair", ""},  --@mob/creature_names:patron_human_male_03 full template: object/mobile/shared_dressed_noble_human_male_03.iff
+	{"businessman", 0, 3422.6, 5, -4847, 203, 0, "npc_sitting_chair", ""},
+	{"businessman", 0, 3377.1, 5, -4864.9, 7, 0, "npc_sitting_chair", ""},
+	{"commoner_tatooine", 0, 3271.6, 5, -4863.7, 231, 0, "npc_sitting_chair", ""},
+	{"commoner_tatooine", 0, 3268.3, 5, -4854, 290, 0, "npc_sitting_chair", ""},
+	{"commoner_tatooine", 0, 3268.7, 5, -4851.2, 194, 0, "npc_sitting_chair", ""},
+	{"scavenger", 0, 3356.9, 5, -4780, 56, 0, "npc_sitting_chair", ""},
+	{"smuggler", 0, 3358.7, 5, -4779.7, 256, 0, "npc_sitting_chair", ""},
+	{"patron", 0, -2.2, -0.9, 11.8, 97, 1082877, "npc_sitting_chair", ""},
+	{"patron", 0, 0.6, -0.9, 11.9, 269, 1082877, "npc_sitting_chair", ""},
+	{"businessman", 0, 3414.1, 5, -4629.9, 155, 0, "npc_sitting_chair", ""},
+	{"commoner", 0, 3415.9, 5, -4630.2, 60, 0, "npc_use_terminal_high", ""},
 	
 
 	--Mos Entha

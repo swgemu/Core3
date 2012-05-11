@@ -1,6 +1,6 @@
 naboo_gunrunner = Creature:new {
 	objectName = "@mob/creature_names:naboo_gunrunner",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

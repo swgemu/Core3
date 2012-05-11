@@ -1,6 +1,6 @@
 gurk_gatherer = Creature:new {
 	objectName = "@mob/creature_names:gurk_gatherer",
-	socialGroup = "Gurk",
+	socialGroup = "gurk",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

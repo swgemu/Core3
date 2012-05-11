@@ -1,7 +1,7 @@
 imperial_high_general = Creature:new {
 	objectName = "@mob/creature_names:imperial_high_general",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 0.38,
@@ -26,7 +26,7 @@ imperial_high_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_major_m.iff"},
+	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {
 		{
 			groups = {

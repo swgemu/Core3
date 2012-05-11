@@ -1,5 +1,5 @@
 probot = Creature:new {
-	objectName = "@item_n:probot_droid",
+	objectName = "@droid_name:imperial_probot_base",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
@@ -26,7 +26,7 @@ probot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/creature/npc/droid/crafted/imperial_probot.iff"},
+	templates = {"object/mobile/probot.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

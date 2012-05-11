@@ -1,9 +1,9 @@
 lord_sloan_rusper = Creature:new {
 	objectName = "",
 	customName = "Lord Sloan Rusper",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -38,7 +38,7 @@ lord_sloan_rusper = Creature:new {
 			lootChance = 5500000
 		}					
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

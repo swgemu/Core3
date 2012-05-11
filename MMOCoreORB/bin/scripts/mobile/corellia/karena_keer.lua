@@ -1,9 +1,9 @@
 karena_keer = Creature:new {
 	objectName = "@npc_name:zabrak_base_female",
 	customName = "Karena Keer",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ karena_keer = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_zabrak_female_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,6 +1,6 @@
 mountain_vesp_medium = Creature:new {
 	objectName = "@monster_name:vesp_mountain_medium",
-	socialGroup = "Vesp",
+	socialGroup = "vesp",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

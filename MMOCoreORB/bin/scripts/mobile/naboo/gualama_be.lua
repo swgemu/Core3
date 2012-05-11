@@ -1,6 +1,6 @@
 gualama_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_gualama",
-	socialGroup = "Gualama",
+	socialGroup = "gualama",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

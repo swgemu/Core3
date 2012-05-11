@@ -1,6 +1,6 @@
 slice_hound = Creature:new {
 	objectName = "@mob/creature_names:slice_hound",
-	socialGroup = "Slice Hound",
+	socialGroup = "slice_hound",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

@@ -1,6 +1,6 @@
 crescent_rasp = Creature:new {
 	objectName = "@mob/creature_names:crescent_rasp",
-	socialGroup = "Rasp",
+	socialGroup = "rasp",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

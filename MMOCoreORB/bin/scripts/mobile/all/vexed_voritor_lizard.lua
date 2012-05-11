@@ -1,6 +1,6 @@
 vexed_voritor_lizard = Creature:new {
 	objectName = "@mob/creature_names:vexed_voritor_lizard",
-	socialGroup = "Voritor Lizard",
+	socialGroup = "voritor",
 	pvpFaction = "",
 	faction = "",
 	level = 52,

@@ -1,6 +1,6 @@
 domesticated_mott = Creature:new {
 	objectName = "@mob/creature_names:domesticated_mott",
-	socialGroup = "Naboo",
+	socialGroup = "naboo",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

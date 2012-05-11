@@ -1,9 +1,9 @@
 rebel_research_captain_coa3 = Creature:new {
 	objectName = "",
 	customName = "a Rebel Research Captain",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 220,

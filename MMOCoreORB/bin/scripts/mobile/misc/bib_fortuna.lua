@@ -1,8 +1,8 @@
 bib_fortuna = Creature:new {
 	objectName = "@mob/creature_names:bib_fortuna",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

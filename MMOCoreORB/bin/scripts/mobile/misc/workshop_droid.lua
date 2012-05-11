@@ -1,5 +1,5 @@
 workshop_droid = Creature:new {
-	objectName = "",
+	objectName = "@droid_name:wed_treadwell_base",
 	customName = "WED15-I643 (a workshop droid)",
 	socialGroup = "",
 	pvpFaction = "",

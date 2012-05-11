@@ -1,9 +1,9 @@
 eight_lom = Creature:new {
 	objectName = "@theme_park_name:4lom",
 	customName = "8-LOM",
-	socialGroup = "Jabba",
-	pvpFaction = "Jabba",
-	faction = "",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 210,

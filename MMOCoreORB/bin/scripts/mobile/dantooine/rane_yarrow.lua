@@ -1,8 +1,8 @@
 rane_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:rane_yarrow",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -28,7 +28,7 @@ rane_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_neutral.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

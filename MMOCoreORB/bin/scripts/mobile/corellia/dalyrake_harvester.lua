@@ -1,6 +1,6 @@
 dalyrake_harvester = Creature:new {
 	objectName = "@mob/creature_names:dalyrake_harvester",
-	socialGroup = "Dalyrake",
+	socialGroup = "dalyrake",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

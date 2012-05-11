@@ -1,8 +1,9 @@
 vixur_webb = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	customName = "Vixur Webb",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -27,7 +28,7 @@ vixur_webb = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

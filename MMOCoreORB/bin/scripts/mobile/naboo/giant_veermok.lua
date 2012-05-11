@@ -1,6 +1,6 @@
 giant_veermok = Creature:new {
 	objectName = "@mob/creature_names:giant_veermok",
-	socialGroup = "Veermok",
+	socialGroup = "veermok",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

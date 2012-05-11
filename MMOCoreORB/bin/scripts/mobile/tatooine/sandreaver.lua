@@ -1,6 +1,6 @@
 sandreaver = Creature:new {
 	objectName = "@mob/creature_names:dewback_sandreaver",
-	socialGroup = "Dewback",
+	socialGroup = "dewback",
 	pvpFaction = "",
 	faction = "",
 	level = 26,

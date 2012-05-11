@@ -1,6 +1,6 @@
 elder_gualama = Creature:new {
 	objectName = "@mob/creature_names:elder_gualama",
-	socialGroup = "Gualama",
+	socialGroup = "gualama",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

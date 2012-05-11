@@ -1,7 +1,7 @@
 commoner = Creature:new {
 	objectName = "@mob/creature_names:commoner",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
@@ -148,7 +148,7 @@ commoner = Creature:new {
 					},
 				
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,9 +1,9 @@
 drakka_judarrl = Creature:new {
 	objectName = "",
 	customName = "Drakka Judarrl",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

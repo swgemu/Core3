@@ -1,8 +1,8 @@
 spacer = Creature:new {
 	objectName = "@mob/creature_names:spacer",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
@@ -29,7 +29,7 @@ spacer = Creature:new {
 		"object/mobile/dressed_criminal_pirate_human_female_01.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

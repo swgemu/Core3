@@ -1,6 +1,6 @@
 giant_carrion_spat = Creature:new {
 	objectName = "@mob/creature_names:giant_carrion_spat",
-	socialGroup = "Carrion Spat",
+	socialGroup = "carrion_spat",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

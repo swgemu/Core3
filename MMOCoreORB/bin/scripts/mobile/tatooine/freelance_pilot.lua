@@ -1,9 +1,8 @@
 freelance_pilot = Creature:new {
 	objectName = "@npc_spawner_n:freelance_pilot",
-	customName = "",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

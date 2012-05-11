@@ -1,8 +1,8 @@
 nien_nunb = Creature:new {
 	objectName = "@mob/creature_names:nien_nunb",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1.000000,
 	damageMin = 645,

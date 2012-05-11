@@ -1,9 +1,9 @@
 lt_oron_wintree = Creature:new {
 	objectName = "",
 	customName = "Lt. Oron Wintree",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

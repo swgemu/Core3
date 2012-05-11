@@ -1,8 +1,8 @@
 rhea = Creature:new {
 	objectName = "@npc_spawner_n:rhea",
 	socialGroup = "townsperson",
-	pvpFaction = "",
-	faction = "",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,

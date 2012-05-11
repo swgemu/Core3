@@ -27,7 +27,7 @@ quharek = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_quharek.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {""},
 	attacks = {}
 }
 

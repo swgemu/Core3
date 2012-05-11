@@ -1,6 +1,6 @@
 male_snorbal_calf = Creature:new {
 	objectName = "@mob/creature_names:male_snorbal_calf",
-	socialGroup = "Snorbal",
+	socialGroup = "snorbal",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

@@ -1,8 +1,8 @@
 fed_dub_commander = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_commander",
-	socialGroup = "Fed Dub",
-	pvpFaction = "Fed Dub",
-	faction = "",
+	socialGroup = "fed_dub",
+	pvpFaction = "fed_dub",
+	faction = "fed_dub",
 	level = 23,
 	chanceHit = 0.34,
 	damageMin = 200,
@@ -26,7 +26,9 @@ fed_dub_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_commander_bith_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_fed_dub_commander_bith_female_01.iff",
+		"object/mobile/dressed_fed_dub_commander_bith_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

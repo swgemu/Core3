@@ -1,6 +1,6 @@
 fanned_rawl = Creature:new {
 	objectName = "@mob/creature_names:fanned_rawl",
-	socialGroup = "Fanned Rawl",
+	socialGroup = "rawl",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

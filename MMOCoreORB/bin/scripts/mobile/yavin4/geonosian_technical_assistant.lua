@@ -1,7 +1,7 @@
 geonosian_technical_assistant = Creature:new {
 	objectName = "@mob/creature_names:geonosian_tech_assistant",
-	socialGroup = "Geonosian",
-	pvpFaction = "Geonosian",
+	socialGroup = "geonosian",
+	pvpFaction = "geonosian",
 	faction = "",
 	level = 48,
 	chanceHit = 0.49,
@@ -26,7 +26,9 @@ geonosian_technical_assistant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_geonosian_noble_01.iff","object/mobile/dressed_geonosian_noble_02.iff"},
+	templates = {
+		"object/mobile/dressed_geonosian_noble_01.iff",
+		"object/mobile/dressed_geonosian_noble_02.iff"},
 	lootGroups = {},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",

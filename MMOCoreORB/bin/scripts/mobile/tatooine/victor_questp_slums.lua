@@ -1,8 +1,8 @@
 victor_questp_slums = Creature:new {
 	objectName = "@mob/creature_names:Victor_Questp_Slums",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

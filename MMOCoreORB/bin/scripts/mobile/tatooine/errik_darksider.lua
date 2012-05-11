@@ -1,8 +1,8 @@
 errik_darksider = Creature:new {
 	objectName = "@npc_name:tatooine_herald_01",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -28,7 +28,7 @@ errik_darksider = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_tatooine_01.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

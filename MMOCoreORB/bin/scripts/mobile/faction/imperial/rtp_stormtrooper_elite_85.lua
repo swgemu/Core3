@@ -1,7 +1,7 @@
 rtp_stormtrooper_elite_85 = Creature:new {
 	objectName = "@mob/creature_names:rtp_stormtrooper_elite_85",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.38,

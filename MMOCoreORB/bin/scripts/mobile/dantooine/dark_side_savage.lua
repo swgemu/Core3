@@ -1,6 +1,6 @@
 dark_side_savage = Creature:new {
 	objectName = "@mob/creature_names:dark_side_savage",
-	socialGroup = "Remri. Of Kun",
+	socialGroup = "kun",
 	pvpFaction = "",
 	faction = "",
 	level = 75,

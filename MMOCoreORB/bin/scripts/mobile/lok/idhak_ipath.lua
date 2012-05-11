@@ -1,8 +1,8 @@
 idhak_ipath = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,

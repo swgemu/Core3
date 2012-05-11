@@ -1,6 +1,6 @@
 foul_desecrator = Creature:new {
 	objectName = "@mob/creature_names:kamurith_foul_desecrator",
-	socialGroup = "Kamurith",
+	socialGroup = "kamurith",
 	pvpFaction = "",
 	faction = "",
 	level = 60,

@@ -1,9 +1,9 @@
 hal_horn = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Hal Horn",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ hal_horn = Creature:new {
 
 	templates = {"object/mobile/dressed_corellia_hal_horn.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

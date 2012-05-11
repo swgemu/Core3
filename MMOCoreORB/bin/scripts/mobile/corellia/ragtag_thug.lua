@@ -1,5 +1,6 @@
 ragtag_thug = Creature:new {
-	objectName = "@mob/creature_names:ragtag_thug",
+	objectName = "",
+	customName = "a Ragtag thug",
 	socialGroup = "ragtag",
 	pvpFaction = "thug",
 	faction = "thug",
@@ -25,7 +26,8 @@ ragtag_thug = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_hooligan_rodian_female_01.iff",
+	templates = {
+				"object/mobile/dressed_hooligan_rodian_female_01.iff",
 				"object/mobile/dressed_criminal_thug_human_female_01.iff"
 				},
 	lootGroups = {

@@ -1,8 +1,8 @@
 nomad = Creature:new {
 	objectName = "@mob/creature_names:nomad",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,
 	damageMin = 50,
@@ -27,7 +27,7 @@ nomad = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_nomad.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

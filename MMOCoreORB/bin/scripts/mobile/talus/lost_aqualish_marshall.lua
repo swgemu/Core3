@@ -1,8 +1,8 @@
 lost_aqualish_marshall = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_marshal",
-	socialGroup = "Lost Aql. Reg.",
-	pvpFaction = "Lost Aql. Reg.",
-	faction = "",
+	socialGroup = "lost_aqualish",
+	pvpFaction = "lost_aqualish",
+	faction = "lost_aqualish",
 	level = 25,
 	chanceHit = 0.35,
 	damageMin = 230,
@@ -26,7 +26,9 @@ lost_aqualish_marshall = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lost_aqualish_marshal_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_lost_aqualish_marshal_female_01.iff",
+		"object/mobile/dressed_lost_aqualish_marshal_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

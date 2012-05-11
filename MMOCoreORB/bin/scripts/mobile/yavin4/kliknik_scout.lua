@@ -1,6 +1,6 @@
 kliknik_scout = Creature:new {
 	objectName = "@mob/creature_names:kliknik_scout",
-	socialGroup = "Kliknik",
+	socialGroup = "kliknik",
 	pvpFaction = "",
 	faction = "",
 	level = 27,

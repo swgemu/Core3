@@ -29,7 +29,7 @@ coraline_dynes = Creature:new {
 
 	templates = {"object/mobile/dressed_coraline_dynes.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

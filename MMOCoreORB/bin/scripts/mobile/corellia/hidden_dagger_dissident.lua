@@ -26,7 +26,8 @@ hidden_dagger_dissident = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_mugger.iff",
+	templates = {
+		"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_goon_twk_female_01.iff",
 		"object/mobile/dressed_goon_twk_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_01.iff",

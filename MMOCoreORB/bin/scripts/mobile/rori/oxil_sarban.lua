@@ -1,9 +1,9 @@
 oxil_sarban = Creature:new {
 	objectName = "",
 	customName = "Oxil Sarban",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ oxil_sarban = Creature:new {
 
 	templates = {"object/mobile/dressed_oxil_sarban.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

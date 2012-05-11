@@ -1,6 +1,5 @@
 seeker = Creature:new {
-	objectName = "@item_n/seeker_droid",
-	customName = "@item_n/seeker_droid",
+	objectName = "@droid_name:probe_droid",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
@@ -27,7 +26,7 @@ seeker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/creature/npc/droid/crafted/probe_droid.iff"},
+	templates = {"object/mobile/shared_darth_maul_probe_droid.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

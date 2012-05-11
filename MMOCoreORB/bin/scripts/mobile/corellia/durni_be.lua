@@ -1,6 +1,6 @@
 durni_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_durni",
-	socialGroup = "Durni",
+	socialGroup = "durni",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

@@ -1,9 +1,9 @@
 mebi_axane = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Mebi Axane",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -29,7 +29,7 @@ mebi_axane = Creature:new {
 
 	templates = {"object/mobile/gran_male.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

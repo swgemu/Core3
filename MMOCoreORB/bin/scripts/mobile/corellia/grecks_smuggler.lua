@@ -26,7 +26,8 @@ grecks_smuggler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_crook_zabrak_female_01.iff",
+	templates = {
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
 		"object/mobile/dressed_crook_zabrak_male_01.iff",
 		"object/mobile/dressed_robber_human_female_01.iff",
 		"object/mobile/dressed_robber_human_male_01.iff",

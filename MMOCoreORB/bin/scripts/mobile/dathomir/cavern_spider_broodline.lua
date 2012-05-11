@@ -1,6 +1,6 @@
 cavern_spider_broodline = Creature:new {
 	objectName = "@mob/creature_names:cave_gaping_spider_broodling",
-	socialGroup = "Sp. Nightsister",
+	socialGroup = "spider",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

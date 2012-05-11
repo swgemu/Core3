@@ -1,6 +1,6 @@
 wasteland_cu_pa = Creature:new {
 	objectName = "@mob/creature_names:wasteland_cu_pa",
-	socialGroup = "Cu Pa",
+	socialGroup = "cu_pa",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

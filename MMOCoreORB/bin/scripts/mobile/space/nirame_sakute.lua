@@ -1,8 +1,8 @@
 nirame_sakute = Creature:new {
 	objectName = "@npc_spawner_n:nirame_sakute",
 	socialGroup = "townsperson",
-	pvpFaction = "",
-	faction = "",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

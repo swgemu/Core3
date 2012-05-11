@@ -1,8 +1,8 @@
 civil_patrol_captain = Creature:new {
 	objectName = "@mob/creature_names:imperial_civil_patrol_captain",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 80,

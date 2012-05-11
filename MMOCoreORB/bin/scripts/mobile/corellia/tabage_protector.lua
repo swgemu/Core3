@@ -1,6 +1,6 @@
 tabage_protector = Creature:new {
 	objectName = "@mob/creature_names:tabage_protector",
-	socialGroup = "Tabage",
+	socialGroup = "tabage",
 	pvpFaction = "",
 	faction = "",
 	level = 18,

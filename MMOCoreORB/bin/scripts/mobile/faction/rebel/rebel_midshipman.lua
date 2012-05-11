@@ -1,8 +1,8 @@
 rebel_midshipman = Creature:new {
 	objectName = "@mob/creature_names:corvet_rebel_midshipman",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 136,
 	chanceHit = 6.25,
 	damageMin = 820,

@@ -1,8 +1,8 @@
 tactical_officer = Creature:new {
 	objectName = "@mob/creature_names:coa3_tactical_rebel",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 25,
 	chanceHit = 0.36,
 	damageMin = 240,

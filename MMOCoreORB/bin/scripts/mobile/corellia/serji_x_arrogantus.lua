@@ -1,9 +1,9 @@
 serji_x_arrogantus = Creature:new {
 	objectName = "",
 	customName = "Serji X Arrogantus",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ serji_x_arrogantus = Creature:new {
 
 	templates = {"object/mobile/dressed_serjix_arrogantus.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

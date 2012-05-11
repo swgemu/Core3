@@ -1,8 +1,8 @@
 medic = Creature:new {
 	objectName = "@mob/creature_names:medic",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -25,12 +25,13 @@ medic = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_doctor_trainer_human_female_01.iff",
+	templates = {
+				"object/mobile/dressed_doctor_trainer_human_female_01.iff",
 				"object/mobile/dressed_doctor_trainer_moncal_male_01.iff",
 				"object/mobile/dressed_mercenary_elite_medic_human_male_01.iff",
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

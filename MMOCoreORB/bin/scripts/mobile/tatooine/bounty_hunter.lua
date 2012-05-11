@@ -1,8 +1,8 @@
 bounty_hunter = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 99,
 	chanceHit = 1,
 	damageMin = 645,

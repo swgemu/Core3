@@ -1,9 +1,9 @@
 lt_porro_dolphe = Creature:new {
 	objectName = "",
 	customName = "Lt. Porro Dolphe",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

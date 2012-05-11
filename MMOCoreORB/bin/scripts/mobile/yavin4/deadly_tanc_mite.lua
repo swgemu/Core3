@@ -1,6 +1,6 @@
 deadly_tanc_mite = Creature:new {
 	objectName = "@mob/creature_names:tanc_mite_eviscerator",
-	socialGroup = "Tancmite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

@@ -1,9 +1,9 @@
 kavas_urdano = Creature:new {
 	objectName = "@npc_name:chiss_patron",
 	customName = "Kavas Urdano",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

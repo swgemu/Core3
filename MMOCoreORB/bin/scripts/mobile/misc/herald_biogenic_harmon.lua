@@ -1,9 +1,9 @@
 herald_biogenic_harmon = Creature:new {
 	objectName = "",
 	customName = "Harmon",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

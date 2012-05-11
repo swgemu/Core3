@@ -1,7 +1,7 @@
 entertainer = Creature:new {
 	objectName = "@mob/creature_names:entertainer",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
@@ -32,7 +32,7 @@ entertainer = Creature:new {
 		"object/mobile/dressed_diva_human_female_01.iff"
 				},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

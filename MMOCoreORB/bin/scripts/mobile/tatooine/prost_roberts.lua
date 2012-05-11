@@ -1,8 +1,8 @@
 prost_roberts = Creature:new {
 	objectName = "@npc_spawner_n:prost_roberts",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -28,7 +28,7 @@ prost_roberts = Creature:new {
 
 	templates = {"object/mobile/space_greeter_mos_espa_young_pilot.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

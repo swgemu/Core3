@@ -1,6 +1,6 @@
 clipped_fynock = Creature:new {
 	objectName = "@mob/creature_names:clipped_fynock",
-	socialGroup = "Fynock",
+	socialGroup = "fynock",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

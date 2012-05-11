@@ -26,7 +26,8 @@ rogue_corsec_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff",
+	templates = {
+		"object/mobile/dressed_corsec_officer_human_male_01.iff",
 		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {
 	    {

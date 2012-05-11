@@ -1,9 +1,9 @@
 gerak_vurtimis = Creature:new {
 	objectName = "@mob/creature_names:commoner_human_male",
 	customName = "Gerak Vurtimis",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 210,

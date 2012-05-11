@@ -1,7 +1,7 @@
 artisan = Creature:new {
 	objectName = "@mob/creature_names:artisan",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,
@@ -35,7 +35,7 @@ artisan = Creature:new {
 		"object/mobile/dressed_commoner_artisan_bith_male_01.iff"
 	},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -1,8 +1,8 @@
 binayre_chief = Creature:new {
 	objectName = "@mob/creature_names:binayre_chief",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 22,
 	chanceHit = 0.34,
 	damageMin = 200,
@@ -26,7 +26,9 @@ binayre_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_chief_human_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_chief_human_female_01.iff",
+		"object/mobile/dressed_binayre_chief_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

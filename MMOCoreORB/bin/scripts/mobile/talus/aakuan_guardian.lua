@@ -1,8 +1,8 @@
 aakuan_guardian = Creature:new {
 	objectName = "@mob/creature_names:aakuan_guardian",
-	socialGroup = "Aa'kuan",
-	pvpFaction = "Aa'kuan",
-	faction = "",
+	socialGroup = "aakuans",
+	pvpFaction = "aakuans",
+	faction = "aakuans",
 	level = 25,
 	chanceHit = 0.35,
 	damageMin = 220,
@@ -26,7 +26,9 @@ aakuan_guardian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_guardian_trandoshan_male_01.iff","object/mobile/dressed_aakuan_defender_human_female_01.iff","object/mobile/dressed_aakuan_guardian_trandoshan_male_01.iff"},
+	templates = {
+		"object/mobile/dressed_aakuan_guardian_trandoshan_female_01.iff",
+		"object/mobile/dressed_aakuan_guardian_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {

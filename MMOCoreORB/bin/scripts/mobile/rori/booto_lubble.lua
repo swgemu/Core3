@@ -1,9 +1,9 @@
 booto_lubble = Creature:new {
 	objectName = "",
 	customName = "Booto Luble",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ booto_lubble = Creature:new {
 
 	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

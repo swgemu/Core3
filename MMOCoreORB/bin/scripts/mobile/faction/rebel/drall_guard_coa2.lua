@@ -1,8 +1,8 @@
 drall_guard_coa2 = Creature:new {
 	objectName = "@mob/creature_names:drall_guard",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,

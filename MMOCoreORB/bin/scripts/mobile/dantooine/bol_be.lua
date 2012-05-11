@@ -1,6 +1,6 @@
 bol_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_bol",
-	socialGroup = "Bol",
+	socialGroup = "bol",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

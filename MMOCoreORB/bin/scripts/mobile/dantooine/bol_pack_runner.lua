@@ -1,6 +1,6 @@
 bol_pack_runner = Creature:new {
 	objectName = "@mob/creature_names:bol_pack_runner",
-	socialGroup = "Bol",
+	socialGroup = "bol",
 	pvpFaction = "",
 	faction = "",
 	level = 26,

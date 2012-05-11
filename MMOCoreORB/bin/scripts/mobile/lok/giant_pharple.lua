@@ -1,6 +1,6 @@
 giant_pharple = Creature:new {
 	objectName = "@mob/creature_names:giant_pharple",
-	socialGroup = "Pharple",
+	socialGroup = "pharple",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

@@ -1,6 +1,6 @@
 aggrivated_kaadu_trampler = Creature:new {
 	objectName = "@mob/creature_names:kaadu_aggrivated_trampler",
-	socialGroup = "Kaadu",
+	socialGroup = "kaadu",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

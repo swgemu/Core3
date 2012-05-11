@@ -1,6 +1,6 @@
 giant_worrt = Creature:new {
 	objectName = "@mob/creature_names:giant_worrt",
-	socialGroup = "Worrt",
+	socialGroup = "worrt",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

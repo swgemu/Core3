@@ -1,7 +1,7 @@
 huff_darklighter = Creature:new {
 	objectName = "",
 	customName = "Huff Darklighter",
-	socialGroup = "Darklighter",
+	socialGroup = "darklighter",
 	pvpFaction = "",
 	faction = "",
 	level = 99,
@@ -29,7 +29,7 @@ huff_darklighter = Creature:new {
 
 	templates = {"object/mobile/huff_darklighter.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	outfit = "huff_darklighter_outfit",
 	attacks = {

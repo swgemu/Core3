@@ -1,8 +1,8 @@
 rebel_rear_admiral = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_rear_admiral",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 200,
 	chanceHit = 16,
 	damageMin = 1145,

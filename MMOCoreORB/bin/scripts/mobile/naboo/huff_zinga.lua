@@ -1,9 +1,9 @@
 huff_zinga = Creature:new {
 	objectName = "",
 	customName = "Huff Zinga",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

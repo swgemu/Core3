@@ -1,9 +1,9 @@
 dannik_malaan = Creature:new {
 	objectName = "@npc_name:zabrak_base_male",
 	customName = "Dannik Malaan",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ dannik_malaan = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_fat_zabrak_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

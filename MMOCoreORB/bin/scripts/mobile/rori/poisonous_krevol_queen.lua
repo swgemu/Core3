@@ -1,6 +1,6 @@
 poisonous_krevol_queen = Creature:new {
 	objectName = "@mob/creature_names:poisonous_krevol_queen",
-	socialGroup = "Krevol",
+	socialGroup = "krevol",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

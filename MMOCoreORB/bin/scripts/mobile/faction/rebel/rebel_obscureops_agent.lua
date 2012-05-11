@@ -1,7 +1,7 @@
 rebel_obscureops_agent = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_rebel",
-	socialGroup = "Rebel",
-	pvpFaction = "Rebel",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,

@@ -1,9 +1,9 @@
 junk_sneg = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Sneg",
-	socialGroup = "Valarian",
-	pvpFaction = "Valarian",
-	faction = "",
+	socialGroup = "valarian",
+	pvpFaction = "valarian",
+	faction = "valarian",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

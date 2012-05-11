@@ -1,6 +1,6 @@
 lesser_desert_womprat = Creature:new {
 	objectName = "@mob/creature_names:lesser_desert_womprat",
-	socialGroup = "lesser_desert_womprat",
+	socialGroup = "rat",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

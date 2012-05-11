@@ -1,6 +1,6 @@
 frenzied_choku = Creature:new {
 	objectName = "@mob/creature_names:frenzied_choku",
-	socialGroup = "Choku",
+	socialGroup = "choku",
 	pvpFaction = "",
 	faction = "",
 	level = 21,

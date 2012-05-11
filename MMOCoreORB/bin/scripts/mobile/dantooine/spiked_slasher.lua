@@ -1,6 +1,6 @@
 spiked_slasher = Creature:new {
 	objectName = "@mob/creature_names:voritor_spiked_slasher",
-	socialGroup = "Voritor Lizard",
+	socialGroup = "voritor",
 	pvpFaction = "",
 	faction = "",
 	level = 58,

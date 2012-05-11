@@ -1,8 +1,8 @@
 slave = Creature:new {
 	objectName = "@mob/creature_names:slave",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,
 	damageMin = 40,
@@ -27,7 +27,7 @@ slave = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	attacks = {}
 }
 

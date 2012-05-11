@@ -1,9 +1,9 @@
 coa2_drall_scientist = Creature:new {
 	objectName = "",
 	customName = "a Drall Scientist",
-	socialGroup = "Drall",
-	pvpFaction = "Rebel",
-	faction = "",
+	socialGroup = "drall",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 230,

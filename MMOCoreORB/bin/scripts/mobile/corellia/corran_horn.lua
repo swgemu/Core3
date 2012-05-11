@@ -29,7 +29,7 @@ corran_horn = Creature:new {
 
 	templates = {"object/mobile/dressed_corran_horn.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

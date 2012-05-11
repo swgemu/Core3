@@ -1,6 +1,6 @@
 stintaril_ravager = Creature:new {
 	objectName = "@mob/creature_names:stintaril_ravager",
-	socialGroup = "Stinaril",
+	socialGroup = "stinaril",
 	pvpFaction = "",
 	faction = "",
 	level = 16,

@@ -1,8 +1,8 @@
 imperial_informant_coa2 = Creature:new {
 	objectName = "",
 	customName = "Imperial Informant",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,
@@ -27,7 +27,7 @@ imperial_informant_coa2 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff","object/mobile/dressed_imperial_officer_m_3.iff"},
+	templates = {"object/mobile/dressed_imperial_officer_m_3.iff"},
 	lootGroups = {
 		{
 			groups = {

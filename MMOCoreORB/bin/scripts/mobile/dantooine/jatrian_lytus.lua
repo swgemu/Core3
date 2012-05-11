@@ -1,7 +1,7 @@
 jatrian_lytus = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Cmdr. Jatrian Lytus",
-	socialGroup = "Townsperson",
+	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -29,7 +29,7 @@ jatrian_lytus = Creature:new {
 
 	templates = {"object/mobile/dressed_jatrian_lytus.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

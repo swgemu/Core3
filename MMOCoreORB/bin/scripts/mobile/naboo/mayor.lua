@@ -21,13 +21,13 @@ mayor = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mayor.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	attacks = {}
 }
 

@@ -1,6 +1,6 @@
 brackaset_female = Creature:new {
 	objectName = "@mob/creature_names:brackaset_female",
-	socialGroup = "Brackaset",
+	socialGroup = "brackaset",
 	pvpFaction = "",
 	faction = "",
 	level = 29,

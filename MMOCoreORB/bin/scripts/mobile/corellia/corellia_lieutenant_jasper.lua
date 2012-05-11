@@ -1,9 +1,9 @@
 corellia_lieutenant_jasper = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Lt. Mack Jasper",
-	socialGroup = "Corellia Times",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "corsec",
+	pvpFaction = "corsec",
+	faction = "corsec",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -27,8 +27,7 @@ corellia_lieutenant_jasper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff"
-				},
+	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",

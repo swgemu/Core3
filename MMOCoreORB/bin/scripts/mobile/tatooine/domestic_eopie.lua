@@ -1,6 +1,6 @@
 domestic_eopie = Creature:new {
 	objectName = "@mob/creature_names:domestic_eopie",
-	socialGroup = "Eopie",
+	socialGroup = "eopie",
 	pvpFaction = "",
 	faction = "",
 	level = 4,

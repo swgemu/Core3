@@ -1,8 +1,8 @@
 binayre_scalawag = Creature:new {
 	objectName = "@mob/creature_names:binayre_scalawag",
-	socialGroup = "Binayre",
-	pvpFaction = "Binayre",
-	faction = "",
+	socialGroup = "binayre",
+	pvpFaction = "binayre",
+	faction = "pirate",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,
@@ -26,7 +26,9 @@ binayre_scalawag = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_binayre_scalawag_twk_female_01.iff"},
+	templates = {
+		"object/mobile/dressed_binayre_scalawag_twk_female_01.iff",
+		"object/mobile/dressed_binayre_scalawag_twk_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {

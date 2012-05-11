@@ -1,6 +1,6 @@
 slaver = Creature:new {
 	objectName = "@mob/creature_names:slaver",
-	socialGroup = "Slaver",
+	socialGroup = "slaver",
 	pvpFaction = "",
 	faction = "",
 	level = 4,

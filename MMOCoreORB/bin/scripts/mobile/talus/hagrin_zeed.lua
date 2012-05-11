@@ -1,9 +1,9 @@
 hagrin_zeed = Creature:new {
 	objectName = "",
 	customName = "Hagrin Zeed",
-	socialGroup = "Townperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ hagrin_zeed = Creature:new {
 
 	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

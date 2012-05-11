@@ -1,6 +1,6 @@
 tabage = Creature:new {
 	objectName = "@mob/creature_names:tabage",
-	socialGroup = "Tabage",
+	socialGroup = "tabage",
 	pvpFaction = "",
 	faction = "",
 	level = 11,

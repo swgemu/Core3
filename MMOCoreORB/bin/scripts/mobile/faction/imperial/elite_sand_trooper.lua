@@ -1,7 +1,7 @@
 elite_sand_trooper = Creature:new {
 	objectName = "@mob/creature_names:elite_sand_trooper",
-	socialGroup = "Imperial.",
-	pvpFaction = "Imperial.",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 44,
 	chanceHit = 0.47,

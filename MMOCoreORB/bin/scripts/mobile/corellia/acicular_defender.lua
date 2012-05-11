@@ -1,6 +1,6 @@
 acicular_defender = Creature:new {
 	objectName = "@mob/creature_names:paralope_acicular_defender",
-	socialGroup = "Paralope",
+	socialGroup = "paralope",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

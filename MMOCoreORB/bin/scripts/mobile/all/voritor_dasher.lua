@@ -1,6 +1,6 @@
 voritor_dasher = Creature:new {
 	objectName = "@mob/creature_names:voritor_dasher",
-	socialGroup = "Voritor Lizard",
+	socialGroup = "voritor",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

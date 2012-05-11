@@ -1,6 +1,6 @@
 evil_hermit = Creature:new {
 	objectName = "@mob/creature_names:evil_hermit",
-	socialGroup = "Evil",
+	socialGroup = "evil",
 	pvpFaction = "",
 	faction = "",
 	level = 6,

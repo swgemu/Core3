@@ -1,8 +1,8 @@
 boss_nass = Creature:new {
 	objectName = "@mob/creature_names:boss_nass",
-	socialGroup = "Gungan",
-	pvpFaction = "Gungan",
-	faction = "",
+	socialGroup = "gungan",
+	pvpFaction = "gungan",
+	faction = "gungan",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

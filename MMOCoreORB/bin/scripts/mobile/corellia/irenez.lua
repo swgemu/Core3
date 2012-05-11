@@ -1,9 +1,9 @@
 irenez = Creature:new {
 	objectName = "",
 	customName = "Irenez",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -29,7 +29,7 @@ irenez = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_human_female_02.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

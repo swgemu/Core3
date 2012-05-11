@@ -1,6 +1,6 @@
 angler = Creature:new {
 	objectName = "@mob/creature_names:angler",
-	socialGroup = "Angler",
+	socialGroup = "angler",
 	pvpFaction = "",
 	faction = "",
 	level = 22,

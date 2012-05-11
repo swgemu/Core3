@@ -1,8 +1,8 @@
 mand_bunker_technician = Creature:new {
 	objectName = "",
 	customName = "Labsoll Renuffi (a technican)",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

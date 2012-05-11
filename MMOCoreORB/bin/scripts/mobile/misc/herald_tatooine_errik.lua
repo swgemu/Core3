@@ -1,9 +1,8 @@
 herald_tatooine_errik = Creature:new {
-	objectName = "",
-	customName = "Errik",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
-	faction = "",
+	objectName = "@npc_name:tatooine_herald_01",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
