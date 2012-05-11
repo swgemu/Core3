@@ -74,7 +74,7 @@ UnarmedKnockdown2Command = {
 
 	animationCRC = hashCode("attack_special_hammerfist_light"),
 
-	combatSpam = "melee",
+	combatSpam = "chargingwampa",
 
 	range = -1
 }

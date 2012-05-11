@@ -54,7 +54,7 @@ UnarmedStun1Command = {
 
 	animationCRC = hashCode("combo_4c_light"),
 
-	combatSpam = "unarmed_stun",
+	combatSpam = "screamingsquill",
 
 	stateEffects = {
 	  StateEffect( 

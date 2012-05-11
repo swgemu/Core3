@@ -54,7 +54,7 @@ UnarmedHit1Command = {
 
 	animationCRC = hashCode("combo_2d_light"),
 
-	combatSpam = "unarmed_dam1",
+	combatSpam = "steelhands",
 
 	range = -1
 }

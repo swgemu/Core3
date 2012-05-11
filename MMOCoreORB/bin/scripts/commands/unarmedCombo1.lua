@@ -55,7 +55,7 @@ UnarmedCombo1Command = {
 
 	animationCRC = hashCode("combo_4b_medium"),
 
-	combatSpam = "melee",
+	combatSpam = "shenbitbonecrusher",
 
 	range = -1
 

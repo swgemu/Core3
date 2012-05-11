@@ -54,7 +54,7 @@ Melee1hDizzyHit1Command = {
 
 	animationCRC = hashCode("combo_2b_medium"),
 
-	combatSpam = "sword1_dizzy",
+	combatSpam = "skullstab",
 
 	stateEffects = {
 	  StateEffect( 

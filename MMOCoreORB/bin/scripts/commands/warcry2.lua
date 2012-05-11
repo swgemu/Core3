@@ -53,12 +53,12 @@ Warcry2Command = {
 	stateEffects = {
 	  StateEffect( 
 		NEXTATTACKDELAY_EFFECT, 
-		{}, 
+		{ "nextAttackDelayRecovery" }, 
 		{ "warcry_defense" }, 
 		{}, 
 		100, 
-		100, 
-		120 
+		0, 
+		20 
 	  )
 	},
 
