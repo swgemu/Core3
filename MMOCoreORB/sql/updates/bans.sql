@@ -1,4 +1,4 @@
-CREATE TABLE  `swgemu2`.`character_bans` (
+CREATE TABLE  `swgemu`.`character_bans` (
   `ban_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `account_id` int(10) unsigned NOT NULL,
   `issuer_id` int(10) unsigned NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE  `swgemu2`.`character_bans` (
   PRIMARY KEY (`ban_id`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
-CREATE TABLE  `swgemu2`.`galaxy_bans` (
+CREATE TABLE  `swgemu`.`galaxy_bans` (
   `ban_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `account_id` int(10) unsigned NOT NULL,
   `issuer_id` int(10) unsigned NOT NULL,
