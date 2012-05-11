@@ -31,8 +31,7 @@ bruce_mcbrain = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bruce_mcbrain, "bruce_mcbrain")

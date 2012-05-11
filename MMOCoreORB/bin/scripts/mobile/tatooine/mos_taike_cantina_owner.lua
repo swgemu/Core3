@@ -30,8 +30,7 @@ mos_taike_cantina_owner = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mos_taike_cantina_owner, "mos_taike_cantina_owner")

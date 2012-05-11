@@ -30,8 +30,7 @@ mos_taike_veteran_guard = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mos_taike_veteran_guard, "mos_taike_veteran_guard")

@@ -39,8 +39,7 @@ desert_demon_bodyguard = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(desert_demon_bodyguard, "desert_demon_bodyguard")

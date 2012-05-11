@@ -41,8 +41,7 @@ tusken_blood_champion = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmanmaster,brawlernmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_blood_champion, "tusken_blood_champion")

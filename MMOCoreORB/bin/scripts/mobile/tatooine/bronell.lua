@@ -29,7 +29,7 @@ bronell = Creature:new {
 
 	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {""},
 	conversationTemplate = "",
 	attacks = {
 	}

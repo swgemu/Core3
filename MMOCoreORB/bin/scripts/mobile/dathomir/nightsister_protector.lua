@@ -41,9 +41,9 @@ nightsister_protector = Creature:new {
 			lootChance = 5900000
 		}
 	},
-	weapons = {""},
+	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(tkamaster)
+	attacks = merge(tkamaster,brawlermaster,fencermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_protector, "nightsister_protector")

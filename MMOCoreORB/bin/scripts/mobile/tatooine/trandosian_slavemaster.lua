@@ -30,8 +30,7 @@ trandosian_slavemaster = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(trandosian_slavemaster, "trandosian_slavemaster")

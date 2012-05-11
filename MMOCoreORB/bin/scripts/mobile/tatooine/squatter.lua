@@ -28,7 +28,7 @@ squatter = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_squatter.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(squatter, "squatter")

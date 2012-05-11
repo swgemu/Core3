@@ -30,8 +30,7 @@ mos_eisley_police_lieutenant = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(mos_eisley_police_lieutenant, "mos_eisley_police_lieutenant")

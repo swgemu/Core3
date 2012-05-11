@@ -30,8 +30,7 @@ nightsister_slave = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_slave, "nightsister_slave")

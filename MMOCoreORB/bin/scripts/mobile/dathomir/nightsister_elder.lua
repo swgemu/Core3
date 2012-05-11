@@ -42,7 +42,7 @@ nightsister_elder = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = merge(tkamaster)
+	attacks = merge(tkamaster,brawlermaster,forcepowermaster,fencermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_elder, "nightsister_elder")

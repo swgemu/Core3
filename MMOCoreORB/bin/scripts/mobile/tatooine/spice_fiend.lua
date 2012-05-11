@@ -28,7 +28,7 @@ spice_fiend = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_spice_fiend.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_fiend, "spice_fiend")

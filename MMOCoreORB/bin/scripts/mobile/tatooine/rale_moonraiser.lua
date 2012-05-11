@@ -31,8 +31,7 @@ rale_moonraiser = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pitoleermaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rale_moonraiser, "rale_moonraiser")

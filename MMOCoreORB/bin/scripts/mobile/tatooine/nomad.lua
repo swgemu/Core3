@@ -28,7 +28,7 @@ nomad = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_nomad.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(nomad, "nomad")

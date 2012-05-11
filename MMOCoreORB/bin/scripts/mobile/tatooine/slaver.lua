@@ -28,7 +28,7 @@ slaver = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_slaver.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(slaver, "slaver")

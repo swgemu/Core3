@@ -41,10 +41,7 @@ tusken_witch_doctor = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = {
-		{"strongpoison",""},
-		{"stunattack","stunChance=50"}
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_witch_doctor, "tusken_witch_doctor")

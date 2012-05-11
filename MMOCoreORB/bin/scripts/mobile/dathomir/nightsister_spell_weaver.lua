@@ -43,7 +43,7 @@ nightsister_spell_weaver = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = merge(tkamaster)
+	attacks = merge(tkamaster,brawlermaster,pikemanmaster,brawlermaster,fencermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_spell_weaver, "nightsister_spell_weaver")

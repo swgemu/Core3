@@ -39,8 +39,7 @@ alkhara_bandit_king = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(alkhara_bandit_king, "alkhara_bandit_king")

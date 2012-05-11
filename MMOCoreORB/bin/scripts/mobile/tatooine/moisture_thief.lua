@@ -28,7 +28,7 @@ moisture_thief = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_moisture_thief.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(moisture_thief, "moisture_thief")

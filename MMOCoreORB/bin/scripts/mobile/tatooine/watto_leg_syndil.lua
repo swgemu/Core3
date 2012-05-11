@@ -31,8 +31,7 @@ watto_leg_syndil = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(watto_leg_syndil, "watto_leg_syndil")

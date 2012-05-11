@@ -67,7 +67,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
 	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
-	float speed = 2.5f - ((float)level / 100);
+	float speed = 2.5f - ((float)level / 100.f);
 
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();

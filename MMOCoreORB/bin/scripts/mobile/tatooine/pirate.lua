@@ -28,7 +28,7 @@ pirate = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(pirate, "pirate")

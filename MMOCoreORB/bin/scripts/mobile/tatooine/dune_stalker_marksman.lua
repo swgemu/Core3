@@ -39,8 +39,7 @@ dune_stalker_marksman = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dune_stalker_marksman, "dune_stalker_marksman")

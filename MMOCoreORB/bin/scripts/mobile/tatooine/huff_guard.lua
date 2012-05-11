@@ -30,8 +30,7 @@ huff_guard = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,fencermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(huff_guard, "huff_guard")

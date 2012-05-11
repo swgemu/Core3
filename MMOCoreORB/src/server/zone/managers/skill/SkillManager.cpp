@@ -95,7 +95,11 @@ void SkillManager::loadClientData() {
 
 		parent->addChild(skill);
 
-		skillMap.put(skill->getSkillName(), skill);
+		if (skillMap.put(skill->getSkillName(), skill) != NULL) {
+			error("overwriting skill name");
+
+			assert(0 && "skill name hashcode error");
+		}
 
 		//Load the abilities of the skill into the ability map.
 		Vector<String> commands = skill->commands;

@@ -14,13 +14,23 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
 bool SkillList::containsSkill(const String& skillBox) {
+	String low = skillBox.toLowerCase();
+
 	for (int i = 0; i < vector.size(); ++i) {
 		Reference<Skill*> skill = vector.get(i);
 
-		String& name = skill->getSkillName();
+		String name = skill->getSkillName().toLowerCase();
 
-		if (name == skillBox)
+		if (name == low)
 			return true;
+	}
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	Reference<Skill*> box = skillManager->getSkill(skillBox);
+
+	if (box != NULL) {
+		return find(box) != -1;
 	}
 
 	return false;
@@ -58,6 +68,8 @@ bool SkillList::parseFromBinaryStream(ObjectInputStream* stream) {
 }
 
 void SkillList::loadFromNames(Vector<String>& skillBoxes) {
+	vector.removeAll();
+
 	SkillManager* skillManager = SkillManager::instance();
 
 	for (int i = 0; i < skillBoxes.size(); ++i) {

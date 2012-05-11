@@ -31,8 +31,7 @@ gerak_vurtimis = Creature:new {
 	lootGroups = {},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlerua)
 }
 
 CreatureTemplates:addCreatureTemplate(gerak_vurtimis, "gerak_vurtimis")

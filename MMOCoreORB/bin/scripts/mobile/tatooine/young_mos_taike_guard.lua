@@ -39,8 +39,7 @@ young_mos_taike_guard = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(young_mos_taike_guard, "young_mos_taike_guard")

@@ -28,10 +28,9 @@ cannibal = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_cannibal.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlerua)
 }
 
 CreatureTemplates:addCreatureTemplate(cannibal, "cannibal")
