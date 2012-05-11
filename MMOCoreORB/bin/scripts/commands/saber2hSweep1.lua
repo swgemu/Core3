@@ -43,6 +43,30 @@
 
 Saber2hSweep1Command = {
         name = "saber2hsweep1",
+        
+    damageMultiplier = 1.25,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 3.0, -- Not correct
+
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		15, 
+		100, 
+		0 
+	  )
+	},
+
+	animationCRC = hashCode("combo_2a_light"),
+
+	combatSpam = "saber2hsweep1",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(Saber2hSweep1Command)

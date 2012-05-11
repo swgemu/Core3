@@ -43,6 +43,18 @@
 
 Saber2hBodyHit1Command = {
         name = "saber2hbodyhit1",
+        
+    damageMultiplier = 1.25,
+	speedMultiplier = 1.5,
+	forceCostMultiplier = 1.5, -- Not correct
+
+	animationCRC = hashCode("combo_3a_medium"),
+
+	combatSpam = "saber2hbodyhit1",
+	
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(Saber2hBodyHit1Command)

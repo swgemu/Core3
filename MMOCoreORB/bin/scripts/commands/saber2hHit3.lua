@@ -43,6 +43,18 @@
 
 Saber2hHit3Command = {
         name = "saber2hhit3",
+        
+    damageMultiplier = 2.5,
+	speedMultiplier = 3.0,
+	forceCostMultiplier = 3.0,
+
+	animationCRC = hashCode("combo_4a_medium"),
+
+	combatSpam = "saber2hhit3",
+	
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(Saber2hHit3Command)
