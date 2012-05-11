@@ -23,17 +23,23 @@ Servlet::~Servlet() {
 
 void Servlet::handleRequest(struct mg_connection *conn, HttpRequest* request, HttpResponse* response) {
 
-	if(request->getRequestMethod() == "GET") {
+	try {
 
-		handleGet(request, response);
+		if(request->getRequestMethod() == "GET") {
 
-	} else if (request->getRequestMethod() == "POST") {
+			handleGet(request, response);
 
-		handlePost(request, response);
+		} else if (request->getRequestMethod() == "POST") {
 
-	} else {
+			handlePost(request, response);
 
-		error("Error: Webserver doesn't handle request type:" + request->getRequestMethod());
+		} else {
+
+			response->println("Webserver doesn't handle request type:" + request->getRequestMethod());
+			error("Webserver doesn't handle request type:" + request->getRequestMethod());
+		}
+	} catch(Exception& e) {
+		error("Unhandled Exception:" + e.getMessage());
 	}
 
 	outputResponse(conn, response);
