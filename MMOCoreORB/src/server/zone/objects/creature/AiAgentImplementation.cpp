@@ -67,6 +67,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
 	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
+	float speed = 2.5f - ((float)level / 100);
 
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
@@ -81,7 +82,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				if (weao != NULL) {
 					weao->setMinDamage(minDmg * 1.33);
 					weao->setMaxDamage(maxDmg * 1.33);
-					weao->setAttackSpeed(1.f);
+					weao->setAttackSpeed(speed);
 					weapons.add(weao);
 
 					if (i == 0)
@@ -102,7 +103,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		// set the damage of the default weapon
 		getWeapon()->setMinDamage(minDmg);
 		getWeapon()->setMaxDamage(maxDmg);
-		getWeapon()->setAttackSpeed(1.f);
+		getWeapon()->setAttackSpeed(speed);
 	}
 
 	int ham;
