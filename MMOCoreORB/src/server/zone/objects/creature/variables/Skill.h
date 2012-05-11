@@ -8,7 +8,7 @@ namespace server {
 namespace zone {
 namespace managers {
 namespace skill {
-	class SkillManager;
+class SkillManager;
 }
 }
 }
@@ -105,6 +105,97 @@ public:
 		row->getValue(23, schematicsGranted);
 		row->getValue(24, schematicsRevoked);
 		row->getValue(25, searchable);
+	}
+
+	void parseLuaObject(LuaObject* templateData) {
+
+		if (!templateData->isValidTable())
+			return;
+
+		skillName = templateData->getStringField("skillName");
+		parentName = templateData->getStringField("parentName");
+		graphType = templateData->getIntField("graphType");
+		godOnly = templateData->getIntField("godOnly");
+		title = templateData->getIntField("title");
+		profession = templateData->getIntField("profession");
+		hidden = templateData->getIntField("hidden");
+		moneyRequired = templateData->getIntField("moneyRequired");
+		pointsRequired = templateData->getIntField("pointsRequired");
+		skillsRequiredCount = templateData->getIntField("skillsRequiredCount");
+
+		LuaObject skillsRequiredTable = templateData->getObjectField("skillsRequired");
+		for(int i = 1; i <= skillsRequiredTable.getTableSize(); i++) {
+			skillsRequired.add(skillsRequiredTable.getStringAt(i));
+		}
+		skillsRequiredTable.pop();
+
+		LuaObject preclusionSkillsTable = templateData->getObjectField("preclusionSkills");
+		for(int i = 1; i <= preclusionSkillsTable.getTableSize(); i++) {
+			preclusionSkills.add(preclusionSkillsTable.getStringAt(i));
+		}
+		preclusionSkillsTable.pop();
+
+		xpType = templateData->getStringField("xpType");
+		xpCost = templateData->getIntField("xpCost");
+		xpCap = templateData->getIntField("xpCap");
+
+		LuaObject missionsRequiredTable = templateData->getObjectField("missionsRequired");
+		for(int i = 1; i <= missionsRequiredTable.getTableSize(); i++) {
+			missionsRequired.add(missionsRequiredTable.getStringAt(i));
+		}
+		missionsRequiredTable.pop();
+
+		apprenticeshipsRequired = templateData->getIntField("apprenticeshipsRequired");
+
+		LuaObject statsRequiredTable = templateData->getObjectField("statsRequired");
+		for(int i = 1; i <= statsRequiredTable.getTableSize(); i++) {
+			statsRequired.add(statsRequiredTable.getStringAt(i));
+		}
+		statsRequiredTable.pop();
+
+		LuaObject speciesRequiredTable = templateData->getObjectField("speciesRequired");
+		for(int i = 1; i <= statsRequiredTable.getTableSize(); i++) {
+			speciesRequired.add(statsRequiredTable.getStringAt(i));
+		}
+		speciesRequiredTable.pop();
+
+		jediStateRequired = templateData->getIntField("jediStateRequired");
+
+		LuaObject skillAbilityTable = templateData->getObjectField("skillAbility");
+		for(int i = 1; i <= skillAbilityTable.getTableSize(); i++) {
+			skillAbility.add(skillAbilityTable.getStringAt(i));
+		}
+		skillAbilityTable.pop();
+
+		LuaObject commandsTable = templateData->getObjectField("commands");
+		for(int i = 1; i <= commandsTable.getTableSize(); i++) {
+			commands.add(commandsTable.getStringAt(i));
+		}
+		commandsTable.pop();
+
+		LuaObject skillModifiersTable = templateData->getObjectField("skillModifiers");
+		for(int i = 1; i <= skillModifiersTable.getTableSize(); i++) {
+			LuaObject skillMod = skillModifiersTable.getObjectAt(i);
+			String skillModName = skillMod.getStringAt(1);
+			int skillModValue = skillMod.getIntAt(2);
+			skillModifiers.put(skillModName, skillModValue);
+		}
+		skillModifiersTable.pop();
+
+		LuaObject schematicsGrantedTable = templateData->getObjectField("schematicsGranted");
+		for(int i = 1; i <= schematicsGrantedTable.getTableSize(); i++) {
+			schematicsGranted.add(schematicsGrantedTable.getStringAt(i));
+		}
+		schematicsGrantedTable.pop();
+
+		LuaObject schematicsRevokedTable = templateData->getObjectField("schematicsRevoked");
+		for(int i = 1; i <= schematicsRevokedTable.getTableSize(); i++) {
+			schematicsRevoked.add(schematicsRevokedTable.getStringAt(i));
+		}
+		schematicsRevokedTable.pop();
+
+		searchable = templateData->getIntField("searchable");
+
 	}
 
 	inline String& getSkillName() {

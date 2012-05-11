@@ -105,6 +105,7 @@ Logger("PlayerManager") {
 	loadStartingItems();
 	loadStartingLocations();
 	loadBadgeMap();
+	loadPermissionLevels();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -183,6 +184,19 @@ void PlayerManagerImplementation::loadBadgeMap() {
 	}
 
 	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);
+}
+
+void PlayerManagerImplementation::loadPermissionLevels() {
+	try {
+		permissionLevelList = PermissionLevelList::instance();
+		permissionLevelList->loadLevels();
+	}
+	catch(Exception& e) {
+		error("Couldn't load permission levels.");
+		error(e.getMessage());
+	}
+
+
 }
 
 void PlayerManagerImplementation::finalize() {
@@ -2246,47 +2260,67 @@ StructureObject* PlayerManagerImplementation::getInRangeOwnedStructure(CreatureO
 	return closestStructure;
 }
 
-void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {
-	ManagedReference<CreatureObject*> targetPlayer = getPlayer(targetName);
+void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPlayer, int permissionLevel) {
 
 	if (targetPlayer == NULL) {
-		player->sendSystemMessage("That player does not exist.");
 		return;
 	}
 
-	Locker clocker(targetPlayer, player);
-
-
+	//Locker clocker(targetPlayer, player);
+	Locker locker(targetPlayer);
 	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();
 
 	if (ghost == NULL) {
-		player->sendSystemMessage("That player did not have a PlayerObject.");
 		return;
 	}
 
 	SkillManager* skillManager = server->getSkillManager();
 
-	if (adminLevel == PlayerObject::NORMALPLAYER) {
+	int currentPermissionLevel = ghost->getAdminLevel();
+
+	/*Temporarily removed so that we can update admin levels immediately
+	if(currentPermissionLevel == permissionLevel)
+		return;*/
+
+	if (currentPermissionLevel != 0) {
 		skillManager->removeAbility(ghost, "admin");
-		warning(player->getFirstName() + " is removing admin rights from " + targetName);
-	} else {
-		skillManager->addAbility(ghost, "admin");
-		warning(player->getFirstName() + " is adding admin rights to " + targetName);
+		Vector<String>* skillsToBeRemoved = permissionLevelList->getPermissionSkills(currentPermissionLevel);
+		if(skillsToBeRemoved != NULL) {
+			for(int i = 0; i < skillsToBeRemoved->size(); i++) {
+				skillManager->surrenderSkill(skillsToBeRemoved->get(i), targetPlayer, true);
+			}
+		}
 	}
 
-	ghost->setAdminLevel(adminLevel);
+	if(permissionLevel != 0) {
+		skillManager->addAbility(ghost, "admin");
+		Vector<String>* skillsToBeAdded = permissionLevelList->getPermissionSkills(permissionLevel);
+		if(skillsToBeAdded != NULL) {
+			for(int i = 0; i < skillsToBeAdded->size(); i++) {
+				skillManager->awardSkill(skillsToBeAdded->get(i), targetPlayer, false, true, true);
+			}
+		}
+	}
 
+	ghost->setAdminLevel(permissionLevel);
+	updatePermissionName(targetPlayer, permissionLevel);
+
+}
+
+void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, int permissionLevel) {
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	//Send deltas
-	if (targetPlayer->isOnline()) {
-		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(targetPlayer);
-		tanod3->updateName(targetPlayer->getDisplayedName());
+	if (player->isOnline()) {
+		UnicodeString tag = permissionLevelList->getPermissionTag(permissionLevel);
+		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(player);
+		tanod3->updateName(player->getDisplayedName(), tag);
 		tanod3->close();
-		targetPlayer->broadcastMessage(tanod3, true);
+		player->broadcastMessage(tanod3, true);
 
-		PlayerObjectDeltaMessage6* playd6 = new PlayerObjectDeltaMessage6(ghost);
-		playd6->setAdminLevel(adminLevel);
-		playd6->close();
-		targetPlayer->broadcastMessage(playd6, true);
+		/*PlayerObjectDeltaMessage6* playd6 = new PlayerObjectDeltaMessage6(ghost);
+			playd6->setAdminLevel(adminLevel);
+			playd6->close();
+			player->broadcastMessage(playd6, true);*/
 	}
 }
 

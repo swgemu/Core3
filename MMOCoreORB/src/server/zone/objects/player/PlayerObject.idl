@@ -979,7 +979,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public boolean isPrivileged() {
-		return adminLevel > 0;
+		return (adminLevel > 0 && hasAbility("admin"));
 	}
 	
 	public void setCharacterBitmask(unsigned int bitmask) {

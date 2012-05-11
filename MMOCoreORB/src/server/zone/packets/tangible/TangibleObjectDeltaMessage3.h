@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef TANGIBLEOBJECTDELTAMESSAGE3_H_
 #define TANGIBLEOBJECTDELTAMESSAGE3_H_
@@ -54,7 +54,7 @@ class TangibleObjectDeltaMessage3 : public DeltaMessage {
 
 public:
 	TangibleObjectDeltaMessage3(TangibleObject* ta, uint32 objType = 0x54414E4F)
-			: DeltaMessage(ta->getObjectID(), objType, 3) {
+	: DeltaMessage(ta->getObjectID(), objType, 3) {
 		tano = ta;
 	}
 
@@ -68,12 +68,26 @@ public:
 		addFloatUpdate(0, tano->getComplexity());
 	}
 
-	void updateName(const UnicodeString& name) {
+	/*void updateName(const UnicodeString& name) {
 		if (tano->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( tano);
 
 			if (player->getPlayerObject()->isPrivileged()) {
 				String customName = name.toString() + " \\#ffff00[SWGEmu-Staff]\\#.";
+				addUnicodeUpdate(2, customName);
+				return;
+			}
+		}
+
+		addUnicodeUpdate(2, name);
+	}*/
+
+	void updateName(const UnicodeString& name, const UnicodeString& tag = "") {
+		if (tano->isPlayerCreature()) {
+			CreatureObject* player = cast<CreatureObject*>( tano);
+
+			if (player->getPlayerObject()->isPrivileged()) {
+				UnicodeString customName = name + " \\#ffff00[" + tag + "]\\#.";
 				addUnicodeUpdate(2, customName);
 				return;
 			}

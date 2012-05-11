@@ -62,11 +62,24 @@ SkillManager::SkillManager()
 	rootNode = new Skill();
 
 	performanceManager = new PerformanceManager();
-
-	loadClientData();
 }
 
 SkillManager::~SkillManager() {
+}
+
+int SkillManager::includeFile(lua_State* L) {
+	String filename = Lua::getStringParameter(L);
+	Lua::runFile("scripts/staff/" + filename, L);
+
+	return 0;
+}
+
+int SkillManager::addSkill(lua_State* L) {
+	LuaObject obj(L);
+	SkillManager::instance()->loadSkill(&obj);
+	obj.pop();
+
+	return 0;
 }
 
 void SkillManager::loadClientData() {
@@ -113,6 +126,8 @@ void SkillManager::loadClientData() {
 		}
 	}
 
+	loadAdminCommands();
+
 	//If the admin ability isn't in the ability map, then we want to add it manually.
 	if (!abilityMap.containsKey("admin"))
 		abilityMap.put("admin", new Ability("admin"));
@@ -120,6 +135,41 @@ void SkillManager::loadClientData() {
 	loadXpLimits();
 
 	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
+}
+
+void SkillManager::loadAdminCommands() {
+	Lua* lua = new Lua();
+	lua->init();
+	lua_register(lua->getLuaState(), "includeFile", &includeFile);
+	lua_register(lua->getLuaState(), "addSkill", &addSkill);
+
+	lua->runFile("scripts/staff/skills/serverobjects.lua");
+
+	delete lua;
+}
+
+void SkillManager::loadSkill(LuaObject* luaSkill) {
+	Reference<Skill*> skill = new Skill();
+	skill->parseLuaObject(luaSkill);
+	Skill* parent = skillMap.get(skill->getParentName());
+
+	if(parent == NULL) {
+		parent = rootNode;
+	}
+
+	parent->addChild(skill);
+	skillMap.put(skill->getSkillName(), skill);
+
+	Vector<String> commands = skill->commands;
+
+	for(int i = 0; i < commands.size(); ++i) {
+		String command = commands.get(i);
+
+		if(!abilityMap.containsKey(command)) {
+			abilityMap.put(command, new Ability(command));
+		}
+	}
+
 }
 
 void SkillManager::loadXpLimits() {

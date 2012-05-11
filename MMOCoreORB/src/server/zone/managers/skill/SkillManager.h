@@ -94,7 +94,12 @@ public:
 	SkillManager();
 	~SkillManager();
 
+	static int includeFile(lua_State* L);
+	static int addSkill(lua_State* L);
+
 	void loadClientData();
+	void loadAdminCommands();
+	void loadSkill(LuaObject* skill);
 	void loadXpLimits();
 
 	void addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);

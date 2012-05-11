@@ -13,9 +13,10 @@
 #include "../HttpRequest.h"
 #include "../HttpResponse.h"
 
-class Servlet : Logger {
+class Servlet : protected Logger {
 private:
 	String context;
+protected:
 	ManagedReference<ZoneServer*> server;
 
 public:

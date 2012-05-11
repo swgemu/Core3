@@ -4462,8 +4462,8 @@ bool PlayerObjectImplementation::isCSR() {
 }
 
 bool PlayerObjectImplementation::isPrivileged() {
-	// server/zone/objects/player/PlayerObject.idl():  		return adminLevel > 0;
-	return adminLevel > 0;
+	// server/zone/objects/player/PlayerObject.idl():  		return (adminLevel > 0 && hasAbility("admin"));
+	return (adminLevel > 0 && hasAbility("admin"));
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {

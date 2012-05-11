@@ -231,6 +231,8 @@ using namespace server::login::account;
 
 #include "server/zone/managers/player/CharacterNameMap.h"
 
+#include "server/zone/managers/player/PermissionLevelList.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -362,7 +364,9 @@ public:
 
 	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel = 1);
+	void updatePermissionLevel(CreatureObject* player, int adminLevel = 1);
+
+	void updatePermissionName(CreatureObject* player, int adminLevel);
 
 	void generateHologrindSkills(CreatureObject* player);
 
@@ -437,10 +441,10 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 
 	float globalExpMultiplier;
 
-public:
 	Reference<StartingItemList* > startingItemList;
 
-private:
+	Reference<PermissionLevelList* > permissionLevelList;
+
 	StartingLocationList startingLocationList;
 
 public:
@@ -456,6 +460,8 @@ private:
 	void loadStartingLocations();
 
 	void loadBadgeMap();
+
+	void loadPermissionLevels();
 
 public:
 	int getHighestBadgeIndex();
@@ -564,7 +570,9 @@ public:
 
 	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel = 1);
+	void updatePermissionLevel(CreatureObject* player, int adminLevel = 1);
+
+	void updatePermissionName(CreatureObject* player, int adminLevel);
 
 	void generateHologrindSkills(CreatureObject* player);
 
@@ -731,7 +739,9 @@ public:
 
 	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel);
+	void updatePermissionLevel(CreatureObject* player, int adminLevel);
+
+	void updatePermissionName(CreatureObject* player, int adminLevel);
 
 	void generateHologrindSkills(CreatureObject* player);
 
@@ -772,7 +782,6 @@ protected:
 	String _param0_existsName__String_;
 	String _param0_getObjectID__String_;
 	String _param0_getPlayer__String_;
-	String _param1_updateAdminLevel__CreatureObject_String_int_;
 	String _param0_getAccount__String_;
 	String _param3_banAccount__PlayerObject_Account_int_String_;
 	String _param2_unbanAccount__PlayerObject_Account_String_;

@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../objects/scene/variables/StringId.h"
 #include "../../objects/player/PlayerObject.h"
 #include "../../objects/creature/CreatureObject.h"
-
+#include "../../managers/player/PermissionLevelList.h"
 
 class TangibleObjectMessage3 : public BaseLineMessage {
 public:
@@ -64,8 +64,10 @@ public:
 		insertStringId(stringId);
 
 		if (tano->isPlayerCreature() && (cast<CreatureObject*>(tano))->getPlayerObject() != NULL && (cast<CreatureObject*>(tano))->getPlayerObject()->isPrivileged()) {
+			ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(tano))->getPlayerObject();
 			UnicodeString name = tano->getCustomObjectName();
-			insertUnicode(name + " \\#ffff00[SWGEmu-Staff]\\#.");
+			UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
+			insertUnicode(name + " \\#ffff00[" + tag + "]\\#.");
 		} else
 			insertUnicode(tano->getCustomObjectName());
 

@@ -73,6 +73,7 @@ import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
+include server.zone.managers.player.PermissionLevelList;
 import server.login.account.Account;
 
 class PlayerManager extends Observer implements Logger {
@@ -96,6 +97,7 @@ class PlayerManager extends Observer implements Logger {
 	private native void loadStartingItems();
 	private native void loadStartingLocations();
 	private native void loadBadgeMap();
+	private native void loadPermissionLevels();
 	
 	public int getHighestBadgeIndex() {
 		return highestBadgeIndex;
@@ -103,7 +105,9 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void finalize();
 	
-	public transient StartingItemList startingItemList;
+	private transient StartingItemList startingItemList;
+	
+	private transient PermissionLevelList permissionLevelList;
 	
 	@dereferenced
 	private transient StartingLocationList startingLocationList;
@@ -231,7 +235,8 @@ class PlayerManager extends Observer implements Logger {
 	public native unsigned long getObjectID(final string name);
 	public native CreatureObject getPlayer(final string name);
 	
-	public native void updateAdminLevel(CreatureObject player, final string targetName, int adminLevel = 1);
+	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);
+	public native void updatePermissionName(CreatureObject player, int adminLevel);
 	
 	/**
 	 * Generates 5 random hologrind professions for the player.

@@ -40,19 +40,21 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef SETGODMODECOMMAND_H_
 #define SETGODMODECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
 
 
 class SetGodModeCommand : public QueueCommand {
 public:
 
 	SetGodModeCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 
 	}
 
@@ -64,27 +66,57 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		PermissionLevelList* permissionLevelList = PermissionLevelList::instance();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == NULL || !ghost->isPrivileged()) {
-			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+		if (ghost == NULL) {
+			return INSUFFICIENTPERMISSION;
+		}
+		int ghostPermissionLevel = ghost->getAdminLevel();
+		if (ghostPermissionLevel == 0) {
 			return INSUFFICIENTPERMISSION;
 		}
 
-		int adminLevel = 0;
 		String targetName;
+		String param;
 
 		try {
 			UnicodeTokenizer args(arguments);
 			args.getStringToken(targetName);
-			adminLevel = args.getIntToken();
+			args.getStringToken(param);
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /setGodMode <name> <admin level: 0=Player, 1=CSR, 2=Developer>.");
+			creature->sendSystemMessage("SYNTAX: /setGodMode <name> [admin level | on | off].");
 			return INVALIDPARAMETERS;
 		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-		playerManager->updateAdminLevel(creature, targetName, adminLevel);
+		SkillManager* skillManager = server->getSkillManager();
+		ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
+
+		if(targetPlayer == NULL)
+			return GENERALERROR;
+
+		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
+		if(targetGhost != NULL) {
+			int targetPermissionLevel = targetGhost->getAdminLevel();
+			if(param == "on" && targetGhost->getAdminLevel() > 0) {
+				skillManager->addAbility(targetGhost, "admin");
+				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
+			} else if(param == "off" && targetGhost->getAdminLevel() > 0) {
+				skillManager->removeAbility(targetGhost, "admin");
+				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
+			} else  {
+				if(ghostPermissionLevel < permissionLevelList->getLevelNumber("admin")) {
+					return INSUFFICIENTPERMISSION;
+				}
+				if(permissionLevelList->containsLevel(param)) {
+					int permissionLevel = permissionLevelList->getLevelNumber(param);
+					playerManager->updatePermissionLevel(targetPlayer, permissionLevel);
+				}
+				else
+					error("Invalid parameter for setGodMode");
+			}
+		}
 
 		return SUCCESS;
 	}

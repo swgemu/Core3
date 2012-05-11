@@ -1,45 +1,45 @@
 /*
- Copyright (C) 2007 <SWGEmu>
- This File is part of Core3.
- This program is free software; you can redistribute
- it and/or modify it under the terms of the GNU Lesser
- General Public License as published by the Free Software
- Foundation; either version 2 of the License,
- or (at your option) any later version.
+Copyright (C) 2007 <SWGEmu>
+This File is part of Core3.
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU Lesser General Public License for
- more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
 
- You should have received a copy of the GNU Lesser General
- Public License along with this program; if not, write to
- the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
- Linking Engine3 statically or dynamically with other modules
- is making a combined work based on Engine3.
- Thus, the terms and conditions of the GNU Lesser General Public License
- cover the whole combination.
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
 
- In addition, as a special exception, the copyright holders of Engine3
- give you permission to combine Engine3 program with free software
- programs or libraries that are released under the GNU LGPL and with
- code included in the standard release of Core3 under the GNU LGPL
- license (or modified versions of such code, with unchanged license).
- You may copy and distribute such a system following the terms of the
- GNU LGPL for Engine3 and the licenses of the other code concerned,
- provided that you include the source code of that other code when
- and as the GNU LGPL requires distribution of source code.
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
 
- Note that people who make modified versions of Engine3 are not obligated
- to grant this special exception for their modified versions;
- it is their choice whether to do so. The GNU Lesser General Public License
- gives permission to release a modified version without this exception;
- this exception also makes it possible to release a modified version
- which carries forward this exception.
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
 
- */
+*/
 
 #include "server/db/ServerDatabase.h"
 #include "server/db/MantisDatabase.h"
@@ -402,6 +402,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	int raceID = playerTemplate->getRace();
 
+
 	String fileName = playerTemplate->getTemplateFileName();
 	String clientTemplate = templateManager->getTemplateFile(
 			playerTemplate->getClientObjectCRC());
@@ -459,8 +460,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	addCustomization(playerCreature, customization,
 			playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
-
-
 	if (!doTutorial) {
 		addProfessionStartingItems(playerCreature, profession, clientTemplate,
 				false);
@@ -485,43 +484,24 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		ghost->setAccountID(client->getAccountID());
 
-		if (!freeGodMode && MantisDatabase::instance() != NULL) {
+
+		if (!freeGodMode) {
 			try {
 				uint32 accID = client->getAccountID();
 
-				String query =
-						"SELECT username FROM accounts WHERE account_id = "
-								+ String::valueOf(accID);
-
-				Reference<ResultSet*> res =
-						ServerDatabase::instance()->executeQuery(query);
-
-				if (res->next()) {
-					String accountName = res->getString(0);
-
-					query =
-							"SELECT access_level from mantis_user_table where username = '"
-									+ accountName;
-					query += "'";
-
-					res = MantisDatabase::instance()->executeQuery(query);
-
-					if (res != NULL && res->next()) {
-						uint32 level = res->getUnsignedInt(0);
-
-						if (level > 25) {
-							ghost->setAdminLevel(2);
-							skillManager->addAbility(ghost, "admin", false);
-						}
-					}
+				ManagedReference<Account*> playerAccount = playerManager->getAccount(accID);
+				int accountPermissionLevel = playerAccount->getAdminLevel();
+				String accountName = playerAccount->getUsername();
+				if(accountPermissionLevel > 0) {
+					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
 				}
 
 			} catch (Exception& e) {
 				error(e.getMessage());
 			}
 		} else if (freeGodMode) {
-			ghost->setAdminLevel(2);
-			skillManager->addAbility(ghost, "admin", false);
+			playerManager->updatePermissionLevel(playerCreature,
+					PermissionLevelList::instance()->getLevelNumber("admin"));
 		}
 
 		if (doTutorial)
@@ -540,19 +520,19 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	}
 
 	/*
-	 //Add a ship
-	 ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1));
-	 //ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
-	 ShipObject* ship = cast<ShipObject*>( zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
+	//Add a ship
+	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1));
+	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
+	ShipObject* ship = cast<ShipObject*>( zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
 
-	 shipControlDevice->setControlledObject(ship);
+	shipControlDevice->setControlledObject(ship);
 
-	 if (!shipControlDevice->transferObject(ship, 4))
-	 error("Adding of ship to device failed");
+	if (!shipControlDevice->transferObject(ship, 4))
+		error("Adding of ship to device failed");
 
-	 SceneObject* datapad = playerCreature->getSlottedObject("datapad");
-	 datapad->transferObject(shipControlDevice, -1);
-	 */
+	SceneObject* datapad = playerCreature->getSlottedObject("datapad");
+	datapad->transferObject(shipControlDevice, -1);
+	*/
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(
 			playerCreature->getObjectID());
@@ -693,6 +673,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 		professionData = professionDefaultsInfo.get(0);
 
 	Reference<Skill*> startingSkill = professionData->getSkill();
+	//Reference<Skill*> startingSkill = SkillManager::instance()->getSkill("crafting_artisan_novice");
 
 	//Starting skill.
 	SkillManager::instance()->awardSkill(startingSkill->getSkillName(),
@@ -882,6 +863,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 		}
 	}
 
+
 	//Add race specific items.
 	Vector < String > *startingItems = playerTemplate->getStartingItems();
 
@@ -926,6 +908,7 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 	if (professionData == NULL)
 		professionData = professionDefaultsInfo.get(0);
 
+
 	//Add common starting items.
 	for (int itemNumber = 0; itemNumber < commonStartingItems.size();
 			itemNumber++) {
@@ -936,6 +919,7 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 			container->transferObject(item, -1, true);
 		}
 	}
+
 
 	//Add profession specific items.
 	for (int itemNumber = 0;
@@ -949,6 +933,7 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 			container->transferObject(item, -1, true);
 		}
 	}
+
 
 	//Add race specific items.
 	Vector < String > *startingItems = playerTemplate->getStartingItems();
