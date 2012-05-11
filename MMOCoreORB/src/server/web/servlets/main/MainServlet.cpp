@@ -29,7 +29,7 @@ void MainServlet::handleGet(HttpRequest* request, HttpResponse* response) {
 	response->println("<body>");
 	response->println("<h3>Menu</h3>");
 	response->println("<a href='/logs'>Log Viewer</a><br/>");
-	response->println("<a href='/account'>Set Account Permissions</a>");
+	response->println("<a href='/permissions'>Set Account Permissions</a>");
 	response->println("</body>");
 	response->println("</html>");
 }
