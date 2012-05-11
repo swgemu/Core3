@@ -377,7 +377,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/status/StatusServer.cpp \
 		server/ServerCore.cpp \
 		server/web/WebServer.cpp \
-		server/web/permissions/PermissionsServlet.cpp \
+		server/web/servlets/permissions/PermissionsServlet.cpp \
 		server/web/HttpRequest.cpp \
 		server/web/HttpResponse.cpp \
 		server/web/session/HttpSession.cpp \
