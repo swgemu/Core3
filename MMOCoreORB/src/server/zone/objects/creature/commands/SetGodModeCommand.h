@@ -96,6 +96,8 @@ public:
 		if(targetPlayer == NULL)
 			return GENERALERROR;
 
+		Locker clocker(targetPlayer, creature);
+
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
 		if(targetGhost != NULL) {
 			int targetPermissionLevel = targetGhost->getAdminLevel();
