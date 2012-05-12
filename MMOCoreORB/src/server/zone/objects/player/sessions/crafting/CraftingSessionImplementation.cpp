@@ -279,28 +279,30 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	state = 2;
 
-	Locker locker(craftingTool);
+	if (craftingTool != NULL) {
+		Locker locker(craftingTool);
 
-	if (createSessionObjects(draftschematic)) {
+		if (createSessionObjects(draftschematic)) {
 
-		if (prototype == NULL) {
-			crafter->sendSystemMessage("@ui_craft:err_no_prototype");
-			return;
+			if (prototype == NULL) {
+				crafter->sendSystemMessage("@ui_craft:err_no_prototype");
+				return;
+			}
+
+			// Dplay9 ********************************************************
+			// Sets the Crafting state to 2, which is the Resource screen
+			PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
+					crafter->getPlayerObject());
+			dplay9->setExperimentationPoints(0xFFFFFFFF);
+			dplay9->setCraftingState(2);
+			dplay9->close();
+
+			crafter->sendMessage(dplay9);
+			// End Dplay9 *****************************************************
+
+		} else {
+			crafter->sendSystemMessage("This type of object has not yet been implemented");
 		}
-
-		// Dplay9 ********************************************************
-		// Sets the Crafting state to 2, which is the Resource screen
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
-				crafter->getPlayerObject());
-		dplay9->setExperimentationPoints(0xFFFFFFFF);
-		dplay9->setCraftingState(2);
-		dplay9->close();
-
-		crafter->sendMessage(dplay9);
-		// End Dplay9 *****************************************************
-
-	} else {
-		crafter->sendSystemMessage("This type of object has not yet been implemented");
 	}
 }
 
