@@ -55,8 +55,14 @@ function getCreatureTemplate(crc)
 	return CreatureTemplates[crc]
 end
 
+function deepcopy(t)
+  local u = { }
+  for k, v in pairs(t) do u[k] = v end
+  return setmetatable(u, getmetatable(t))
+end
+
 function merge(a, ...)
-        r = a
+      local r = deepcopy(a)
         for j,k in ipairs(arg) do
 		table.foreach(k, function(i,v)table.insert(r,v) end )
 		end
