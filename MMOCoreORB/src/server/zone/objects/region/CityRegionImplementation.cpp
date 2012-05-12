@@ -197,18 +197,17 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (object->isBuildingObject()){
 		BuildingObject* building = cast<BuildingObject*>(object);
 
-		CreatureObject* owner = building->getOwnerCreatureObject();
+		uint64 creatureID = building->getOwnerObjectID();
 
-		if (owner != NULL) {
-			PlayerObject* playerObject = owner->getPlayerObject();
+		if (!citizenList.contains(creatureID)) {
+			CreatureObject* owner = building->getOwnerCreatureObject();
 
-			if (playerObject != NULL && playerObject->getDeclaredResidence() == building) {
+			if (owner != NULL) {
+				PlayerObject* playerObject = owner->getPlayerObject();
 
-				uint64 creatureID = owner->getObjectID();
-
-				if (!citizenList.contains(creatureID))
+				if (playerObject != NULL && playerObject->getDeclaredResidence() == building) {
 					addCitizen(creatureID);
-
+				}
 			}
 		}
 	}
@@ -244,16 +243,17 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		BuildingObject* building = cast<BuildingObject*>(object);
 
-		CreatureObject* owner = building->getOwnerCreatureObject();
+		uint64 creatureID = building->getOwnerObjectID();
 
-		if (owner != NULL) {
-			PlayerObject* playerObject = owner->getPlayerObject();
+		if (citizenList.contains(creatureID)) {
+			CreatureObject* owner = building->getOwnerCreatureObject();
 
-			if (playerObject != NULL && playerObject->getDeclaredResidence() == building){
-				uint64 creatureID = owner->getObjectID();
+			if (owner != NULL) {
+				PlayerObject* playerObject = owner->getPlayerObject();
 
-				if (citizenList.contains(creatureID))
+				if (playerObject != NULL && playerObject->getDeclaredResidence() == building){
 					removeCitizen(creatureID);
+				}
 			}
 		}
 
