@@ -131,8 +131,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	if (sceneObject == object)
 		return false;
 
-	Locker contLocker(sceneObject->getContainerLock());
-
 	ManagedReference<SceneObject*> objParent = object->getParent();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
 
@@ -162,6 +160,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	//if (containerType == 1 || containerType == 5) {
 	if (containmentType == 4 || containmentType == 5) {
+		Locker contLocker(sceneObject->getContainerLock());
+
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -176,6 +176,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			slottedObjects->put(object->getArrangementDescriptor(i), object);
 		}
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
+		Locker contLocker(sceneObject->getContainerLock());
+
 		if (containerObjects->size() >= sceneObject->getContainerVolumeLimit())
 			return false;
 
@@ -215,8 +217,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 }
 
 bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
-	Locker contLocker(sceneObject->getContainerLock());
-
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
@@ -224,6 +224,8 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	if (object->getParent() != sceneObject && object->getParent() != NULL) {
 		ManagedReference<SceneObject*> objParent = object->getParent();
+
+		Locker contLocker(sceneObject->getContainerLock());
 
 		containerObjects->drop(object->getObjectID());
 
@@ -241,6 +243,8 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
 
 	if (containedType == 4 || containedType == 5) {
+		Locker contLocker(sceneObject->getContainerLock());
+
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -255,6 +259,8 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		for (int i = 0; i < arrangementSize; ++i)
 			slottedObjects->drop(object->getArrangementDescriptor(i));
 	} else if (containedType == -1/*containerType == 2 || containerType == 3*/) {
+		Locker contLocker(sceneObject->getContainerLock());
+
 		if (!containerObjects->contains(object->getObjectID())) {
 			//info("containerObjects doesnt contain specified object", true);
 			return false;
