@@ -76,7 +76,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 				if (defender->isCreatureObject()) {
 					CreatureObject* creature = cast<CreatureObject*>(defender);
 
-					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
+					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
 						attacker->removeDefender(defender);
 						defender->removeDefender(attacker);
 					}

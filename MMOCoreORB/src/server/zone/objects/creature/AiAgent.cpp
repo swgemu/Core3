@@ -1994,22 +1994,22 @@ int AiAgentImplementation::getDamageMin() {
 	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		getWeapon(
+	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if (getWeapon() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		getWeapon().getMinDamage();
-	getWeapon()->getMinDamage();
+	// server/zone/objects/creature/AiAgent.idl():  		return getWeapon().getMinDamage();
+	return getWeapon()->getMinDamage();
 }
 
 int AiAgentImplementation::getDamageMax() {
 	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		getWeapon(
+	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if (getWeapon() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		getWeapon().getMaxDamage();
-	getWeapon()->getMaxDamage();
+	// server/zone/objects/creature/AiAgent.idl():  		return getWeapon().getMaxDamage();
+	return getWeapon()->getMaxDamage();
 }
 
 int AiAgentImplementation::getBaseXp() {
