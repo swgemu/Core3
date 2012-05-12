@@ -96,6 +96,7 @@ include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
+import system.thread.ReadWriteLock;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -162,6 +163,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
+	
+	@dereferenced
+	protected transient ReadWriteLock containerLock;
 
 	@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
@@ -1004,9 +1008,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
-	public SceneObject getSlottedObject(final string slot) {
-		return slottedObjects.get(slot);
-	}
+	public native SceneObject getSlottedObject(final string slot);
 
 	@read
 	public int getSlotDescriptorSize() {
@@ -1017,17 +1019,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
-	public SceneObject getSlottedObject(int idx) {
-		return slottedObjects.get(idx);
-	}
+	public native SceneObject getSlottedObject(int idx);
 	
-	public void dropSlottedObject(final string arrengementDescriptor) {
-		slottedObjects.drop(arrengementDescriptor);
-	}
+	public native void dropSlottedObject(final string arrengementDescriptor);
 	
-	public void removeSlottedObject(int index) {
-		slottedObjects.remove(index);
-	}
+	public native void removeSlottedObject(int index);
 	
 	@read
 	public int getContainerObjectsSize() {
@@ -1072,7 +1068,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 			return false;
 		}
 		
-		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		SceneObject obj = null;
+		
+		synchronized (containerLock) {
+			obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		}
 		
 		if (object == obj) {
 			return true;
@@ -1207,6 +1207,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public native boolean isASubChildOf(SceneObject object);
+	
+	public native ReadWriteLock getContainerLock() {
+		return containerLock;
+	}
 	
 	@read
 	public unicode getCustomObjectName() {

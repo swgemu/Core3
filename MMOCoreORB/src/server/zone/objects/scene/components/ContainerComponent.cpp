@@ -54,6 +54,8 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		return TransferErrorCode::CANTADDTOITSELF;
 	}
 
+	Locker contLocker(sceneObject->getContainerLock());
+
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
@@ -128,6 +130,8 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
 	if (sceneObject == object)
 		return false;
+
+	Locker contLocker(sceneObject->getContainerLock());
 
 	ManagedReference<SceneObject*> objParent = object->getParent();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
@@ -211,6 +215,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 }
 
 bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) {
+	Locker contLocker(sceneObject->getContainerLock());
+
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 

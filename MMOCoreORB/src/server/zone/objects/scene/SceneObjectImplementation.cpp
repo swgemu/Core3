@@ -1259,7 +1259,66 @@ void SceneObjectImplementation::faceObject(SceneObject* obj) {
 }
 
 void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
+	bool lock = !containerLock.isLockedByCurrentThread();
+
+	containerLock.rlock(lock);
+
 	objects = slottedObjects;
+
+	containerLock.runlock(lock);
+}
+
+SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
+	SceneObject* obj = NULL;
+
+	bool lock = !containerLock.isLockedByCurrentThread();
+
+	containerLock.rlock(lock);
+
+	try {
+		obj = slottedObjects.get(slot);
+	} catch (...) {
+		containerLock.runlock(lock);
+
+		throw;
+	}
+
+	containerLock.runlock(lock);
+
+	return obj;
+}
+
+
+SceneObject* SceneObjectImplementation::getSlottedObject(int idx) {
+	SceneObject* obj = NULL;
+
+	bool lock = !containerLock.isLockedByCurrentThread();
+
+	containerLock.rlock(lock);
+
+	try {
+		obj = slottedObjects.get(idx);
+	} catch (...) {
+		containerLock.runlock(lock);
+
+		throw;
+	}
+
+	containerLock.runlock(lock);
+
+	return obj;
+}
+
+void SceneObjectImplementation::dropSlottedObject(const String& arrengementDescriptor) {
+	Locker locker(&containerLock);
+
+	slottedObjects.drop(arrengementDescriptor);
+}
+
+void SceneObjectImplementation::removeSlottedObject(int index) {
+	Locker locker(&containerLock);
+
+	slottedObjects.remove(index);
 }
 
 void SceneObjectImplementation::setZone(Zone* zone) {

@@ -251,6 +251,8 @@ using namespace server::zone::objects::creature;
 
 #include "engine/util/u3d/Matrix4.h"
 
+#include "system/thread/ReadWriteLock.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -561,6 +563,8 @@ public:
 	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
+
+	ReadWriteLock* getContainerLock();
 
 	UnicodeString getCustomObjectName();
 
@@ -880,6 +884,8 @@ protected:
 
 	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
 
+	ReadWriteLock containerLock;
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
 public:
@@ -1196,6 +1202,8 @@ public:
 	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
+
+	ReadWriteLock* getContainerLock();
 
 	UnicodeString getCustomObjectName();
 
@@ -1711,6 +1719,8 @@ public:
 	SceneObject* getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
+
+	ReadWriteLock* getContainerLock();
 
 	UnicodeString getCustomObjectName();
 
