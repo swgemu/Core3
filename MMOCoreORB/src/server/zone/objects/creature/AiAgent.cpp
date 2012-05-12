@@ -1991,19 +1991,25 @@ float AiAgentImplementation::getChanceHit() {
 }
 
 int AiAgentImplementation::getDamageMin() {
-	// server/zone/objects/creature/AiAgent.idl():  		return 
+	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		return calculateAttackMinDamage(super.getLevel());
-	return calculateAttackMinDamage(CreatureObjectImplementation::getLevel());
+	// server/zone/objects/creature/AiAgent.idl():  		getWeapon(
+	if (getWeapon() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/AiAgent.idl():  		getWeapon().getMinDamage();
+	getWeapon()->getMinDamage();
 }
 
 int AiAgentImplementation::getDamageMax() {
-	// server/zone/objects/creature/AiAgent.idl():  		return 
+	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		return calculateAttackMaxDamage(super.getLevel());
-	return calculateAttackMaxDamage(CreatureObjectImplementation::getLevel());
+	// server/zone/objects/creature/AiAgent.idl():  		getWeapon(
+	if (getWeapon() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/AiAgent.idl():  		getWeapon().getMaxDamage();
+	getWeapon()->getMaxDamage();
 }
 
 int AiAgentImplementation::getBaseXp() {
