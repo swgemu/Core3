@@ -133,9 +133,6 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		/*if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
-			creatureTarget = creature;*/
-
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (creatureTarget == creature) {
@@ -143,34 +140,13 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creatureTarget->isPlayerCreature())
-			return GENERALERROR;
-
-		if (creatureTarget->isDead())
-			return GENERALERROR;
-
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Heal Mind while prone.");
+		if (creatureTarget->isAiAgent()) {
+			creature->sendSystemMessage("@healing:heal_mind_invalid_target");
 			return GENERALERROR;
 		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Heal Mind while Meditating.");
-			return GENERALERROR;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return GENERALERROR;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return GENERALERROR;
-		}
+			
 
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
-			creature->sendSystemMessage("You cannot Heal the Mind of your Target in their current state.");
 			return GENERALERROR;
 		}
 
