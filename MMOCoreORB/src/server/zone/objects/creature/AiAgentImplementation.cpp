@@ -342,8 +342,10 @@ void AiAgentImplementation::doAttack() {
 		}
 	}
 
-	if (isDead() && target != NULL) {
-		removeDefender(target);
+	if (isDead()) {
+		if (target)
+			removeDefender(target);
+
 		return;
 	}
 
