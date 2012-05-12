@@ -129,8 +129,18 @@ void LightsaberCrystalComponentImplementation::updateCrystal(int value){
 void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	int color = MIN(values->getCurrentValue("color"), 11); // Insures it will not go beyond the 'regular' color range.
-	setColor(color);
+	int colorMax = values->getMaxValue("color");
+	int color = values->getCurrentValue("color"); 
+	
+	if (colorMax != 31) {
+		int finalColor = MIN(color, 11);
+		setColor(finalColor);
+		updateCrystal(finalColor);
+	} 	
+	else {
+		setColor(31);
+		updateCrystal(31);
+	}
 
 
 	if (color == 31){
@@ -147,7 +157,5 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		setSacMind(MIN(values->getCurrentValue("attackmindcost"), 9) * -1);
 		setForceCost(MIN(values->getCurrentValue("forcecost"), 9) * -1);
 	}
-
-	updateCrystal(color);
 
 }
