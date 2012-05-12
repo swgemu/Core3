@@ -2241,11 +2241,13 @@ void CreatureObjectImplementation::stopEntertaining() {
 }
 
 void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
-	if (owner == NULL) {
+	ManagedReference<ZoneClientSession*> ownerClient = owner.get();
+
+	if (ownerClient == NULL) {
 		delete msg;
 		return;
 	} else {
-		owner->sendMessage(msg);
+		ownerClient->sendMessage(msg);
 	}
 }
 
