@@ -129,23 +129,23 @@ void LightsaberCrystalComponentImplementation::updateCrystal(int value){
 void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-	int color = values->getCurrentValue("color");
+	int color = MIN(values->getCurrentValue("color"), 11); // Insures it will not go beyond the 'regular' color range.
 	setColor(color);
 
 
 	if (color == 31){
 		setQuality(values->getCurrentValue("quality"));
 		setAttackSpeed(Math::getPrecision(values->getCurrentValue("attackspeed"), 2));
-		setMinimumDamage(values->getCurrentValue("mindamage"));
-		setMaximumDamage(values->getCurrentValue("maxdamage"));
+		setMinimumDamage(MIN(values->getCurrentValue("mindamage"), 50));
+		setMaximumDamage(MIN(values->getCurrentValue("maxdamage"), 50));
 		setWoundChance(values->getCurrentValue("woundchance"));
 
 		// Following are incoming positive values in script (Due to loot modifier.)
 		// Switch to negative number.
-		setSacHealth(values->getCurrentValue("attackhealthcost") * -1);
-		setSacAction(values->getCurrentValue("attackactioncost") * -1);
-		setSacMind(values->getCurrentValue("attackmindcost") * -1);
-		setForceCost(values->getCurrentValue("forcecost") * -1);
+		setSacHealth(MIN(values->getCurrentValue("attackhealthcost"), 9) * -1);
+		setSacAction(MIN(values->getCurrentValue("attackactioncost"), 9) * -1);
+		setSacMind(MIN(values->getCurrentValue("attackmindcost"), 9) * -1);
+		setForceCost(MIN(values->getCurrentValue("forcecost"), 9) * -1);
 	}
 
 	updateCrystal(color);

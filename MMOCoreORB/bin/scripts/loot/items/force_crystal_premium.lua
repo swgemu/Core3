@@ -6,8 +6,8 @@ force_crystal_premium = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_module_force_crystal.iff",
 	craftingValues = {
-		{"mindamage",15,30,0},
-		{"maxdamage",20,30,0},
+		{"mindamage",30,45,0},
+		{"maxdamage",45,50,0},
 		{"attackspeed",1,-1,5},
 		{"woundchance",4,8,5},
 		{"hitpoints",800,1200,0},
