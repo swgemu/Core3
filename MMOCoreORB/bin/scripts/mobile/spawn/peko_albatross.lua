@@ -3,16 +3,16 @@ peko_albatross = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 2048,
+	maxSpawnLimit = 5,
 
 	lairSpawns = {
 		{
 			lairTemplateName = "peko_albatross_lair",
 			spawnLimit = -1,
-			minDifficulty = 115,
-			maxDifficulty = 115,
+			minDifficulty = 155,
+			maxDifficulty = 155,
 			numberToSpawn = 0,
-			weighting = 3,
+			weighting = 15,
 			size = 25
 		}
 	}
