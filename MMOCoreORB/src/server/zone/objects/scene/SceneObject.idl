@@ -1208,6 +1208,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@read
 	public native boolean isASubChildOf(SceneObject object);
 	
+	@local
 	public native ReadWriteLock getContainerLock() {
 		return containerLock;
 	}
