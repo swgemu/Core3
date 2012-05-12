@@ -37,7 +37,7 @@ naboo_dissident = Creature:new {
 		}				
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_dissident, "naboo_dissident")

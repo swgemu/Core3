@@ -37,7 +37,7 @@ plasma_thief = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(plasma_thief, "plasma_thief")

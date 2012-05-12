@@ -30,8 +30,7 @@ crackdown_swamp_trooper = Creature:new {
 	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_swamp_trooper, "crackdown_swamp_trooper")

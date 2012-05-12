@@ -39,8 +39,7 @@ rebel_gungan_war_chief = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_gungan_war_chief, "rebel_gungan_war_chief")

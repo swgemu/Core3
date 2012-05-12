@@ -37,7 +37,7 @@ plasma_thief_leader = Creature:new {
 		}				
 	},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(plasma_thief_leader, "plasma_thief_leader")

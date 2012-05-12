@@ -28,7 +28,7 @@ mountain_villager = Creature:new {
 	templates = {"object/mobile/dressed_mountain_villager.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(mountain_villager, "mountain_villager")

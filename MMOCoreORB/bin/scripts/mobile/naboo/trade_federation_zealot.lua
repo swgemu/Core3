@@ -39,8 +39,7 @@ trade_federation_zealot = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(trade_federation_zealot, "trade_federation_zealot")

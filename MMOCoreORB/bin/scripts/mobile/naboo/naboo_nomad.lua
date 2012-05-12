@@ -40,8 +40,7 @@ naboo_nomad = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_nomad, "naboo_nomad")

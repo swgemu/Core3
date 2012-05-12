@@ -39,8 +39,7 @@ gungan_mercenary = Creature:new {
 	},
 	weapons = {""},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_mercenary, "gungan_mercenary")

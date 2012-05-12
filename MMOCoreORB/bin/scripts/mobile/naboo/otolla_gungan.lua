@@ -37,7 +37,7 @@ otolla_gungan = Creature:new {
 		}				
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(otolla_gungan, "otolla_gungan")

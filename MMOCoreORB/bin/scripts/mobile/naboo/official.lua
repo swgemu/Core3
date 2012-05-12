@@ -37,7 +37,7 @@ official = Creature:new {
 		}				
 	},
 	weapons = {""},
-	attacks = {}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(official, "official")

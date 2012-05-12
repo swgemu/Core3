@@ -28,7 +28,7 @@ mordran = Creature:new {
 	templates = {"object/mobile/mordran.iff"},
 	lootGroups = {},
 	weapons = {"mordran_weapons"},
-	attacks = {}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mordran, "mordran")

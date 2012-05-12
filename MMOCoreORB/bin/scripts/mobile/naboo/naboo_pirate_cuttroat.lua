@@ -39,8 +39,7 @@ naboo_pirate_cuttroat = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_pirate_cuttroat, "naboo_pirate_cuttroat")

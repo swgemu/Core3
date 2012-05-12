@@ -37,7 +37,7 @@ nomad_chief = Creature:new {
 		}				
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(nomad_chief, "nomad_chief")

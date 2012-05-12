@@ -38,7 +38,7 @@ naboo_holy_man = Creature:new {
 		}				
 	},
 	weapons = {""},
-	attacks = {}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_holy_man, "naboo_holy_man")

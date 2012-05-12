@@ -37,7 +37,7 @@ mauler = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mauler, "mauler")

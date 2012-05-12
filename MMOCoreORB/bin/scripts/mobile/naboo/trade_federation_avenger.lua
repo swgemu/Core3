@@ -39,8 +39,7 @@ trade_federation_avenger = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(trade_federation_avenger, "trade_federation_avenger")

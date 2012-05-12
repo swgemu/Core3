@@ -28,7 +28,7 @@ swamp_rat = Creature:new {
 	templates = {"object/mobile/dressed_swamp_rat.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(swamp_rat, "swamp_rat")

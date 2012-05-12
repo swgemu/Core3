@@ -37,7 +37,7 @@ palace_guard = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(palace_guard, "palace_guard")

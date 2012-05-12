@@ -1,4 +1,4 @@
-mottbull = Creature:new {
+ mottbull = Creature:new {
 	objectName = "@mob/creature_names:mott_bull",
 	socialGroup = "mott",
 	pvpFaction = "",

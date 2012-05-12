@@ -2,21 +2,21 @@
 --to modify this for hybrids you can create a name for your hybrid tree and insert it at the bottom of the list
 --in the Sever Administrator NPC Skill section
 brawlerua = { {"intimidate1",""},{"beserk1",""},{"unarmedlunge1",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedstun1",""},{"unarmedspinattack1",""},{"unarmedblind1",""} }
-brawler1hand = { {"intimidate1",""},{"beserk1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""} }
-brawler2hand = { {"intimidate1",""},{"beserk1",""},{"melee2hhit1",""},{"melee2hlunge1",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""} }
-brawlerpole = { {"intimidate1",""},{"beserk1",""},{"polearmlunge1",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
+brawler1hand = { {"intimidate1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""} }
+brawler2hand = { {"intimidate1",""},{"melee2hhit1",""},{"melee2hlunge1",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""} }
+brawlerpole = { {"intimidate1",""},{"polearmlunge1",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
 brawlermaster = { {"intimidate2",""},{"unarmedlunge2",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedstun1",""},{"unarmedspinattack1",""},{"unarmedblind1",""},{"melee1hspinattack1",""},{"melee1hlunge2",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""},{"melee2hhit1",""},{"melee2hlunge2",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""},{"polearmlunge2",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
-brawlernovice = { {"intimidate1",""},{"beserk1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee2hlunge1",""},{"polearmlunge1",""},{"unarmedlunge1",""} }
+brawlernovice = { {"intimidate1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee2hlunge1",""},{"polearmlunge1",""},{"unarmedlunge1",""} }
 marksmanpistol = { {"overchargeshot1",""},{"pointblanksingle1",""},{"diveshot",""},{"kipupshot",""},{"rollshot",""},{"bodyshot2",""},{"healthshot1",""} }
 marksmancarbine = { {"overchargeshot1",""},{"pointblanksingle1",""},{"legshot2",""},{"fullautosingle1",""},{"actionshot1",""} }
 marksmanrifle = { {"overchargeshot1",""},{"pointblanksingle1",""},{"headshot2",""},{"mindshot1",""} }
 marksmanmaster = { {"overchargeshot2",""},{"pointblanksingle1",""},{"diveshot",""},{"kipupshot",""},{"rollshot",""},{"bodyshot2",""},{"healthshot1",""},{"legshot2",""},{"fullautosingle1",""},{"actionshot1",""},{"headshot2",""},{"mindshot1",""} }
 marksmannovice = { {"overchargeshot1",""},{"pointblanksingle1",""} }
-carbineerassault = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scayyershot2",""} }
+carbineerassault = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scattershot2",""} }
 carbineermarksman = { {"actionshot2",""},{"fullautosingle1",""},{"legshot3",""},{"cripplingshot",""} }
 carbineertactics = { {"actionshot2",""},{"fullautosingle2",""},{"burstshot2",""},{"suppresionfire2",""} }
 carbineerspecial = { {"actionshot2",""},{"fullautosingle2",""},{"fullautoarea2",""},{"chargeshot2",""} }
-carbineermaster = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scayyershot2",""},{"legshot3",""},{"cripplingshot",""},{"burstshot2",""},{"suppresionfire2",""} }
+carbineermaster = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scattershot2",""},{"legshot3",""},{"cripplingshot",""},{"burstshot2",""},{"suppresionfire2",""} }
 pistoleerhold = { {"healthshot2",""},{"pointblanksingle2",""},{"bodyshot3",""} }
 pistoleertech = { {"healthshot2",""},{"disarmingshot1",""},{"doubletap",""},{"stoppingshot",""},{"fanshot",""} }
 pistoleerstance = { {"healthshot2",""},{"pistolmeleedefense2",""} }

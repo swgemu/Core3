@@ -37,7 +37,7 @@ naboo_pirate_armsman = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_pirate_armsman, "naboo_pirate_armsman")

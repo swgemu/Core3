@@ -39,7 +39,7 @@ skaak_tipper_crook = Creature:new {
 		}			
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(skaak_tipper_crook, "skaak_tipper_crook")

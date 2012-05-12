@@ -39,8 +39,7 @@ rsf_palace_guard = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rsf_palace_guard, "rsf_palace_guard")

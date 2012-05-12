@@ -37,7 +37,7 @@ imperial_retreat_guard = Creature:new {
 		}				
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_retreat_guard, "imperial_retreat_guard")
