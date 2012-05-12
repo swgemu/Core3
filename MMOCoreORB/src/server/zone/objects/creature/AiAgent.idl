@@ -194,6 +194,10 @@ class AiAgent extends CreatureObject {
 	
 	public native void setLevel(int lvl);
 	
+	public native int calculateAttackMinDamage(int level);
+	public native int calculateAttackMaxDamage(int level);
+	public native float calculateAttackSpeed(int level);
+	
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return false;
 	}
@@ -625,14 +629,16 @@ class AiAgent extends CreatureObject {
 		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.get().getDamageMin();
+		//return npcTemplate.get().getDamageMin();
+		return calculateAttackMinDamage(super.getLevel());
 	}
 	
 	public int getDamageMax() {
 		if (npcTemplate.get() == null)
 			return 0;
 		
-		return npcTemplate.get().getDamageMax();
+		//return npcTemplate.get().getDamageMax();
+		return calculateAttackMaxDamage(super.getLevel());
 	}
 	
 	public int getBaseXp() {

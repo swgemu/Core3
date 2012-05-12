@@ -60,13 +60,13 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
 	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
-	for (int i = 0; i < defenderList->size(); ++i) {
+	for (int i = defenderList->size() - 1; i >= 0; --i) {
 		ManagedReference<SceneObject*> object = defenderList->get(i);
 
-		if (!object->isTangibleObject())
-			continue;
-
 		TangibleObject* defender = cast<TangibleObject*>( object.get());
+
+		if (defender == NULL)
+			continue;
 
 		try {
 			Locker clocker(defender, attacker);
@@ -79,18 +79,13 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead()) {
 						attacker->removeDefender(defender);
 						defender->removeDefender(attacker);
-
-						--i;
 					}
 				} else {
 					attacker->removeDefender(defender);
 					defender->removeDefender(attacker);
-
-					--i;
 				}
 			} else {
 				attacker->removeDefender(defender);
-				--i;
 			}
 
 			clocker.release();

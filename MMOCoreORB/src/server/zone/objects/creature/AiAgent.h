@@ -296,6 +296,12 @@ public:
 
 	void setLevel(int lvl);
 
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
+
 	bool isCamouflaged(CreatureObject* target);
 
 	bool isScentMasked(CreatureObject* target);
@@ -576,6 +582,12 @@ public:
 
 	void setLevel(int lvl);
 
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
+
 	virtual bool isCamouflaged(CreatureObject* target);
 
 	bool isScentMasked(CreatureObject* target);
@@ -806,6 +818,12 @@ public:
 	void doMovement();
 
 	void setLevel(int lvl);
+
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
 
 	bool isCamouflaged(CreatureObject* target);
 

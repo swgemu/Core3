@@ -56,6 +56,24 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 	CreatureObjectImplementation::loadTemplateData(templateData);
 }
 
+int AiAgentImplementation::calculateAttackMinDamage(int level) {
+	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
+
+	return minDmg;
+}
+
+int AiAgentImplementation::calculateAttackMaxDamage(int level) {
+	int dmg = MAX(npcTemplate->getDamageMax(), calculateAttackMinDamage(level) * 2);
+
+	return dmg;
+}
+
+float AiAgentImplementation::calculateAttackSpeed(int level) {
+	float speed = 3.5f - ((float)level / 100.f);
+
+	return speed;
+}
+
 void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	npcTemplate = templateData;
 
@@ -65,9 +83,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
-	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
-	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
-	float speed = 2.5f - ((float)level / 100.f);
+	float minDmg = calculateAttackMinDamage(level);
+	float maxDmg = calculateAttackMaxDamage(level);
+	float speed = calculateAttackSpeed(level);
 
 	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
 
@@ -209,9 +227,9 @@ void AiAgentImplementation::setLevel(int lvl) {
 	if (baseLevel == lvl)
 		return;
 
-	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
-	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
-	float speed = 2.5f - ((float)level / 100.f);
+	float minDmg = calculateAttackMinDamage(baseLevel);
+	float maxDmg = calculateAttackMaxDamage(baseLevel);
+	float speed = calculateAttackSpeed(baseLevel);
 
 	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
 
@@ -219,7 +237,12 @@ void AiAgentImplementation::setLevel(int lvl) {
 
 	minDmg *= ratio;
 	maxDmg *= ratio;
-	speed *= ratio;
+
+	if (ratio != 0) {
+		float newSpeed = speed / ratio;
+
+		speed = MAX(4, newSpeed);
+	}
 
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weao = weapons.get(i);
@@ -319,13 +342,19 @@ void AiAgentImplementation::doAttack() {
 		}
 	}
 
+	if (isDead() && target != NULL) {
+		removeDefender(target);
+		return;
+	}
+
 	if (!isInCombat() || defenderList.size() <= 0 || target == NULL) {
 		tryRetreat();
 		activateRecovery();
 		return;
 	}
 
-	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this) || target->isDead() || target->isIncapacitated())) {
+	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this) || target->isDead() || target->isIncapacitated()
+			|| (target->hasState(CreatureState::PEACE) && (System::random(level) == 1)))) {
 		//Locker clocker(target, _this);
 		/*if (defenderList.size() == 1 && defenderList.contains(target)) {
 			CombatManager::instance()->forcePeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task

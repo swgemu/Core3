@@ -36,7 +36,7 @@
  *	AiAgentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOATTACK__,RPC_DOMOVEMENT__,RPC_SETLEVEL__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOATTACK__,RPC_DOMOVEMENT__,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_};
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
@@ -184,6 +184,48 @@ void AiAgent::setLevel(int lvl) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setLevel(lvl);
+}
+
+int AiAgent::calculateAttackMinDamage(int level) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKMINDAMAGE__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateAttackMinDamage(level);
+}
+
+int AiAgent::calculateAttackMaxDamage(int level) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKMAXDAMAGE__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateAttackMaxDamage(level);
+}
+
+float AiAgent::calculateAttackSpeed(int level) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKSPEED__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->calculateAttackSpeed(level);
 }
 
 bool AiAgent::isCamouflaged(CreatureObject* target) {
@@ -1952,16 +1994,16 @@ int AiAgentImplementation::getDamageMin() {
 	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.get().getDamageMin();
-	return (&npcTemplate)->get()->getDamageMin();
+	// server/zone/objects/creature/AiAgent.idl():  		return calculateAttackMinDamage(super.getLevel());
+	return calculateAttackMinDamage(CreatureObjectImplementation::getLevel());
 }
 
 int AiAgentImplementation::getDamageMax() {
 	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return 0;
 	return 0;
-	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.get().getDamageMax();
-	return (&npcTemplate)->get()->getDamageMax();
+	// server/zone/objects/creature/AiAgent.idl():  		return calculateAttackMaxDamage(super.getLevel());
+	return calculateAttackMaxDamage(CreatureObjectImplementation::getLevel());
 }
 
 int AiAgentImplementation::getBaseXp() {
@@ -2073,6 +2115,15 @@ void AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_SETLEVEL__INT_:
 		setLevel(inv->getSignedIntParameter());
+		break;
+	case RPC_CALCULATEATTACKMINDAMAGE__INT_:
+		resp->insertSignedInt(calculateAttackMinDamage(inv->getSignedIntParameter()));
+		break;
+	case RPC_CALCULATEATTACKMAXDAMAGE__INT_:
+		resp->insertSignedInt(calculateAttackMaxDamage(inv->getSignedIntParameter()));
+		break;
+	case RPC_CALCULATEATTACKSPEED__INT_:
+		resp->insertFloat(calculateAttackSpeed(inv->getSignedIntParameter()));
 		break;
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
 		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -2331,6 +2382,18 @@ void AiAgentAdapter::doMovement() {
 
 void AiAgentAdapter::setLevel(int lvl) {
 	(static_cast<AiAgent*>(stub))->setLevel(lvl);
+}
+
+int AiAgentAdapter::calculateAttackMinDamage(int level) {
+	return (static_cast<AiAgent*>(stub))->calculateAttackMinDamage(level);
+}
+
+int AiAgentAdapter::calculateAttackMaxDamage(int level) {
+	return (static_cast<AiAgent*>(stub))->calculateAttackMaxDamage(level);
+}
+
+float AiAgentAdapter::calculateAttackSpeed(int level) {
+	return (static_cast<AiAgent*>(stub))->calculateAttackSpeed(level);
 }
 
 bool AiAgentAdapter::isCamouflaged(CreatureObject* target) {

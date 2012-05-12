@@ -134,6 +134,7 @@ void CommandConfigManager::loadCommandData(const String& filename) {
 
 			if (!tableName.contains("space"))
 				row->getValue(CommandConfigManager::ADDTOCOMBATQUEUE, combat);
+
 			slashCommand->setAddToCombatQueue(combat);
 
 			row->getValue(CommandConfigManager::TARGETTYPE, targetType);

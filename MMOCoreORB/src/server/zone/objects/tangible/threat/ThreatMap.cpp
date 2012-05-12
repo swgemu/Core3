@@ -102,6 +102,9 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 
 	drop(target);
 
+	if (currentThreat == target)
+		currentThreat = NULL;
+
 	if (threatMapObserver != NULL) {
 		Locker clocker(target, self);
 

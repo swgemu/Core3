@@ -168,7 +168,7 @@ public:
 		info("Loading commands...");
 		loadCommandData("datatables/command/command_tables_shared.iff");
 		loadCommandData("datatables/command/command_tables_shared_ground.iff");
-		loadCommandData("datatables/command/command_tables_shared_space.iff");
+		//loadCommandData("datatables/command/command_tables_shared_space.iff"); disabled cause taunt is conflicting
 
 		return runFile("scripts/commands/commands.lua");
 	}
