@@ -2,11 +2,11 @@
 peko_peko_lair = Lair:new {
 	mobiles = {{"peko_peko", 14}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/peko_peko/lair_peko_peko.iff"},
-	buildingsEasy = {"object/tangible/lair/peko_peko/lair_peko_peko.iff"},
-	buildingsMedium = {"object/tangible/lair/peko_peko/lair_peko_peko.iff"},
-	buildingsHard = {"object/tangible/lair/peko_peko/lair_peko_peko.iff"},
-	buildingsVeryHard = {"object/tangible/lair/peko_peko/lair_peko_peko.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/cave_small_light.iff"},
+	buildingsEasy = {"object/tangible/lair/base/cave_small_light.iff"},
+	buildingsMedium = {"object/tangible/lair/base/cave_small_light.iff"},
+	buildingsHard = {"object/tangible/lair/base/cave_small_light.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/cave_small_light.iff"}
 }
 
 addLairTemplate("peko_peko_lair", peko_peko_lair)
