@@ -241,7 +241,7 @@ void AiAgentImplementation::setLevel(int lvl) {
 	if (ratio != 0) {
 		float newSpeed = speed / ratio;
 
-		speed = MAX(4, newSpeed);
+		speed = MIN(4, newSpeed);
 	}
 
 	for (int i = 0; i < weapons.size(); ++i) {
