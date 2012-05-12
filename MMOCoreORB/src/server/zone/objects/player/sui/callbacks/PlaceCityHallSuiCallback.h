@@ -58,7 +58,7 @@ public:
 
 		NameManager* nameManager = NameManager::instance();
 
-		if (nameManager->isProfane(cityName)) {
+		if (nameManager->isProfane(cityName) || cityName.contains("\\") || cityName.contains("#")) {
 			//Resend the sui.
 			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
 			return;
