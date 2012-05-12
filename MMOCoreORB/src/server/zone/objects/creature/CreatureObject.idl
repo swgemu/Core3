@@ -689,6 +689,8 @@ class CreatureObject extends TangibleObject {
 	public native void notifySelfPositionUpdate();
 	public native void notifyPostureChange(int newPosture);
 	
+	public native void setLevel(int level);
+	
 	public native void updateToDatabaseAllObjects(boolean startTask);
 
 	public native boolean isResuscitable();

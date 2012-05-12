@@ -106,6 +106,11 @@ public:
 		insertAscii(pAnimation);
 	}
 
+	void updateLevel(uint16 value) {
+		startUpdate(0x02);
+		insertShort(value);
+	}
+
 	/*
 
 	void updateInviterId() {
@@ -143,10 +148,6 @@ public:
 			insertByte(0);
 		}
 	}
-
-	void updateLevel(uint16 value) {
-		startUpdate(0x02);
-		insertShort(value);
 	}*/
 };
 

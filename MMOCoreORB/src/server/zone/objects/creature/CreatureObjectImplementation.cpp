@@ -479,6 +479,20 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 	}
 }
 
+void CreatureObjectImplementation::setLevel(int level) {
+	TangibleObjectImplementation::setLevel(level);
+
+	if (this->level == level)
+		return;
+
+	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
+			_this);
+	msg->updateLevel(level);
+	msg->close();
+
+	broadcastMessage(msg, true);
+}
+
 void CreatureObjectImplementation::setInstrumentID(int instrumentid,
 		bool notifyClient) {
 	if (instrumentid == instrumentID)

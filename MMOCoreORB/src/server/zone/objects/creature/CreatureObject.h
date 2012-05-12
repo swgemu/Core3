@@ -448,6 +448,8 @@ public:
 
 	void notifyPostureChange(int newPosture);
 
+	void setLevel(int level);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isResuscitable();
@@ -1209,6 +1211,8 @@ public:
 
 	void notifyPostureChange(int newPosture);
 
+	void setLevel(int level);
+
 	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isResuscitable();
@@ -1803,6 +1807,8 @@ public:
 	void notifySelfPositionUpdate();
 
 	void notifyPostureChange(int newPosture);
+
+	void setLevel(int level);
 
 	void updateToDatabaseAllObjects(bool startTask);
 

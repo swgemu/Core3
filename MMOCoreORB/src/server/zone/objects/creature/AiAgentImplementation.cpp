@@ -196,6 +196,8 @@ void AiAgentImplementation::setLevel(int lvl) {
 	if (lvl == 0)
 		return;
 
+	CreatureObjectImplementation::setLevel(lvl);
+
 	level = lvl;
 
 	if (npcTemplate == NULL) {
