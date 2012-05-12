@@ -69,6 +69,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
 	float speed = 2.5f - ((float)level / 100.f);
 
+	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
 		for (int i = 0; i < wepgroups.size(); ++i) {
@@ -95,15 +97,15 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 		// add the default weapon for creatures
 		if (isCreature()) {
-			weapons.add(getWeapon());
+			weapons.add(defaultWeapon);
 		}
 	}
 
-	if (getWeapon() != NULL) {
+	if (defaultWeapon != NULL) {
 		// set the damage of the default weapon
-		getWeapon()->setMinDamage(minDmg);
-		getWeapon()->setMaxDamage(maxDmg);
-		getWeapon()->setAttackSpeed(speed);
+		defaultWeapon->setMinDamage(minDmg);
+		defaultWeapon->setMaxDamage(maxDmg);
+		defaultWeapon->setAttackSpeed(speed);
 	}
 
 	int ham;
@@ -187,6 +189,69 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				error("null outfit group " + outfit);
 			}
 		}
+	}
+}
+
+void AiAgentImplementation::setLevel(int lvl) {
+	if (lvl == 0)
+		return;
+
+	level = lvl;
+
+	if (npcTemplate == NULL) {
+		return;
+	}
+
+	int baseLevel = npcTemplate->getLevel();
+
+	if (baseLevel == lvl)
+		return;
+
+	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
+	int maxDmg = MAX(npcTemplate->getDamageMax(), minDmg * 2);
+	float speed = 2.5f - ((float)level / 100.f);
+
+	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+
+	float ratio = ((float)lvl) / (float)baseLevel;
+
+	minDmg *= ratio;
+	maxDmg *= ratio;
+	speed *= ratio;
+
+	for (int i = 0; i < weapons.size(); ++i) {
+		WeaponObject* weao = weapons.get(i);
+
+		weao->setMinDamage(minDmg * 1.33);
+		weao->setMaxDamage(maxDmg * 1.33);
+		weao->setAttackSpeed(speed);
+	}
+
+	if (defaultWeapon != NULL) {
+		defaultWeapon->setMinDamage(minDmg);
+		defaultWeapon->setMaxDamage(maxDmg);
+		defaultWeapon->setAttackSpeed(speed);
+	}
+
+	int baseHamMax = ((float)npcTemplate->getBaseHAMmax()) * ratio;
+	int baseHam = ((float)npcTemplate->getBaseHAM()) * ratio;
+
+	int ham;
+
+	for (int i = 0; i < 9; ++i) {
+		if (i % 3 == 0) {
+			ham = System::random(baseHamMax - baseHam) + baseHam;
+			setBaseHAM(i, ham);
+		} else
+			setBaseHAM(i, ham / 100);
+	}
+
+	for (int i = 0; i < 9; ++i) {
+		setHAM(i, baseHAM.get(i));
+	}
+
+	for (int i = 0; i < 9; ++i) {
+		setMaxHAM(i, baseHAM.get(i));
 	}
 }
 
@@ -580,8 +645,14 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	if (npcTemplate == NULL)
 		return;
 
+	int oldLevel = level;
+
 	loadTemplateData(templateObject);
 	loadTemplateData(npcTemplate);
+
+	if (oldLevel != level)
+		setLevel(level);
+
 	stateBitmask = 0;
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;

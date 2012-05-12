@@ -283,6 +283,8 @@ public:
 
 	String getXpType();
 
+	String getWeaponType();
+
 	bool isUnarmedWeapon();
 
 	bool isMeleeWeapon();
@@ -346,6 +348,7 @@ protected:
 
 	virtual ~WeaponObject();
 
+	String _return_getWeaponType;
 	String _return_getXpType;
 	String _return_repairAttempt;
 
@@ -579,6 +582,8 @@ public:
 
 	String getXpType();
 
+	String getWeaponType();
+
 	bool isUnarmedWeapon();
 
 	bool isMeleeWeapon();
@@ -761,6 +766,8 @@ public:
 	int getDamageType();
 
 	String getXpType();
+
+	String getWeaponType();
 
 	bool isUnarmedWeapon();
 

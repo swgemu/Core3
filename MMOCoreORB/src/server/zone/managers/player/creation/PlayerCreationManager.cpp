@@ -499,9 +499,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			} catch (Exception& e) {
 				error(e.getMessage());
 			}
-		} else if (freeGodMode) {
-			playerManager->updatePermissionLevel(playerCreature,
-					PermissionLevelList::instance()->getLevelNumber("admin"));
+		} else {
+			playerManager->updatePermissionLevel(playerCreature, PermissionLevelList::instance()->getLevelNumber("admin"));
 		}
 
 		if (doTutorial)

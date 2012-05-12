@@ -360,6 +360,8 @@ class WeaponObject extends TangibleObject {
 		return weaponTemplate.getXpType();
 	}
 	
+	public native string getWeaponType();
+	
 	public boolean isUnarmedWeapon() {
 		return super.gameObjectType == SceneObjectType.WEAPON || super.gameObjectType == SceneObjectType.MELEEWEAPON;
 	}

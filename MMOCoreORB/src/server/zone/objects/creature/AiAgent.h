@@ -294,6 +294,8 @@ public:
 
 	void doMovement();
 
+	void setLevel(int lvl);
+
 	bool isCamouflaged(CreatureObject* target);
 
 	bool isScentMasked(CreatureObject* target);
@@ -572,6 +574,8 @@ public:
 
 	void doMovement();
 
+	void setLevel(int lvl);
+
 	virtual bool isCamouflaged(CreatureObject* target);
 
 	bool isScentMasked(CreatureObject* target);
@@ -800,6 +804,8 @@ public:
 	void doAttack();
 
 	void doMovement();
+
+	void setLevel(int lvl);
 
 	bool isCamouflaged(CreatureObject* target);
 

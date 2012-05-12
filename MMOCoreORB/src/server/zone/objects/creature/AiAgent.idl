@@ -192,6 +192,8 @@ class AiAgent extends CreatureObject {
 	
 	public native void doMovement();
 	
+	public native void setLevel(int lvl);
+	
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return false;
 	}

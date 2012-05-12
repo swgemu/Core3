@@ -2640,35 +2640,14 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 		return 0;
 	}
 
-	String xpType = weapon->getXpType();
+	String weaponType = weapon->getWeaponType();
 
-	SkillList* skillList = player->getSkillList();
+	int level = player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100;
 
-	int level = 0;
-	int finalLevel = 0;
+	if (level < 3)
+		level = 3;
 
-	for (int j = 0; j < 2; ++j) {
-		level = 0;
-
-		for (int i = 0; i < skillList->size(); ++i) {
-			Skill* skill = skillList->get(i);
-
-			if (skill->getXpType() == xpType)
-				++level;
-		}
-
-		if (level > finalLevel)
-			finalLevel = level;
-
-		xpType = "medical";
-	}
-
-	if (finalLevel < 5)
-		finalLevel = 5;
-	else if (finalLevel > 25)
-		finalLevel = 25;
-
-	return finalLevel;
+	return level;
 }
 
 String PlayerManagerImplementation::getBadgeKey(int idx) {

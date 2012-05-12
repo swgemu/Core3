@@ -143,6 +143,54 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(weao6);
 }
 
+String WeaponObjectImplementation::getWeaponType() {
+	int weaponObjectType = getGameObjectType();
+
+	String weaponType;
+
+	switch (weaponObjectType) {
+	case SceneObjectType::ONEHANDMELEEWEAPON:
+		weaponType = "onehandmelee";
+		break;
+	case SceneObjectType::TWOHANDMELEEWEAPON:
+		weaponType = "twohandmelee";
+		break;
+	case SceneObjectType::WEAPON:
+	case SceneObjectType::MELEEWEAPON:
+		weaponType = "unarmed";
+		break;
+	case SceneObjectType::RIFLE:
+		weaponType = "rifle";
+		break;
+	case SceneObjectType::PISTOL:
+		weaponType = "pistol";
+		break;
+	case SceneObjectType::CARBINE:
+		weaponType = "carbine";
+		break;
+	case SceneObjectType::POLEARM:
+		weaponType = "polearm";
+		break;
+	case SceneObjectType::HEAVYWEAPON:
+		weaponType = "heavyweapon";
+		break;
+	case SceneObjectType::ONEHANDEDLIGHTSABER:
+		weaponType = "onehandlightsaber";
+		break;
+	case SceneObjectType::TWOHANDEDLIGHTSABER:
+		weaponType = "twohandlightsaber";
+		break;
+	case SceneObjectType::DOUBLEBLADEDLIGHTSABER:
+		weaponType = "polearmlightsaber";
+		break;
+	default:
+		weaponType = "unarmed";
+		break;
+	}
+
+	return weaponType;
+}
+
 void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 

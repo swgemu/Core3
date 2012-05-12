@@ -563,7 +563,7 @@ public:
 
 	void setSerialNumber(const String& serial);
 
-	void setLevel(int lev);
+	virtual void setLevel(int lev);
 
 	virtual String getSerialNumber();
 
