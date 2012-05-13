@@ -359,215 +359,215 @@ naboo_static_spawns = {
 	{"coa2_imperial_coordinator", 0, -5431.8, 6, 4168.58, 145.531, 0, "npc_imperial", ""},
 	
 	--Random NPCs
-	{"stormtrooper", 0, -5206.32, 6, 4182.8, 329.254, 0, ""},
-	{"stormtrooper_rifleman", 0, -5160.99, 6.52214, 4159.54, 216.801, 0, ""},
-	{"stormtrooper_rifleman", 0, -4845.17, 6.43094, 4167.68, 222.445, 0, ""},
-	{"stormtrooper_groupleader", 0, -4857.84, 6.43289, 4178.31, 222.445, 0, ""},
-	{"stormtrooper_groupleader", 0, -5969.83, 6, 4246.76, 173.432, 0, "", "VK-481"},
-	{"stormtrooper", 0, -4788.57, 6, 4111.12, 121.097, 0, ""},
-	{"stormtrooper", 0, -5126.48, 6.52214, 4130.79, 184.164, 0, ""},
-	{"stormtrooper", 0, -5132.44, 6, 4087.27, 158.596, 0, ""},
-	{"stormtrooper", 0, -5016.16, 6, 4107, 226.021, 0, ""},
-	{"stormtrooper", 0, -4848.1, 6.55806, 4172.25, 222.445, 0, ""},
-	{"stormtrooper", 0, -4933.43, 6, 4233.84, 32.6463, 0, ""},
-	{"bodyguard", 0, 11.7898, 1.75, -1.89849, 180.002, 1305892, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_hooligan_rodian_female_01.iff
-	{"bodyguard", 0, -5258.93, 6, 4187.17, 180.005, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_criminal_thug_human_female_01.iff
-	{"bodyguard", 0, -29.8622, 7.9418, 10.8957, 180.008, 1692104, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_crook_zabrak_male_01.iff
-	{"bodyguard", 0, -37.5788, 7.9418, 22.3791, 0, 1692104, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_mugger.iff
-	{"commoner", 0, -17.0001, 2.25, 17.4832, 270.003, 1305888, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_01.iff
-	{"commoner", 0, -19.0001, 2.25, 17.4832, 90.0053, 1305888, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_male_02.iff
-	{"commoner", 0, -24, 1.6, -4, 77.8869, 1697383, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_02.iff	
-	{"commoner", 0, -5394.06, 6, 4519.32, 169.904, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_01.iff
-	{"commoner", 0, -5384.95, 6, 4283.38, 71.1905, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_female_02.iff
-	{"commoner", 0, -5256.72, 6, 4254.43, 243.769, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_04.iff
-	{"commoner", 0, -5319.27, 6, 4365.19, 286.546, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_01.iff
-	{"commoner", 0, -5320.16, 6, 4236.39, 175.933, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_female_04.iff
-	{"commoner", 0, -5327.58, 6, 4267.42, 170.655, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_male_01.iff
-	{"commoner", 0, -5281.75, 6, 4325.98, 47.2066, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
-	{"commoner", 0, -5140.78, 6, 4404.92, 212.214, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_03.iff	
-	{"commoner", 0, -6036.18, 6, 4286.85, 147.238, 0, "calm", ""},
-	{"commoner", 0, -6055.49, 6, 4319.64, 186.501, 0, "calm", ""},
-	{"commoner", 0, -6040.72, 6, 4260.46, 325.963, 0, "calm", ""},
-	{"commoner", 0, -6012.09, 6, 4241.61, 83.2023, 0, "calm", ""},
-	{"commoner", 0, -5291.01, 6, 4428.53, 322.605, 0, "calm", ""},
-	{"commoner", 0, -5282.92, 6, 4405.65, 279.205, 0, "calm", ""},
-	{"commoner", 0, -5280.52, 6, 4372.79, 226.645, 0, "calm", ""},
-	{"commoner", 0, -5306.24, 6, 4357.56, 77.2615, 0, "calm", ""},
-	{"commoner", 0, -5326.21, 6, 4292.88, 155.604, 0, "calm", ""},
-	{"commoner", 0, -5309.23, 6, 4307.01, 78.4133, 0, "calm", ""},
-	{"commoner", 0, -5371.2, 6, 4337.4, 57.5394, 0, "calm", ""},
-	{"commoner", 0, -5392.94, 6, 4361.06, 74.0902, 0, "calm", ""},
-	{"commoner", 0, -5370.57, 6, 4384.5, 150.505, 0, "calm", ""},
-	{"commoner", 0, -5399.67, 6, 4424.78, 313.827, 0, "calm", ""},
-	{"commoner", 0, -5380.45, 6, 4628.71, 65.0141, 0, "calm", ""},
-	{"commoner", 0, -5396.24, 6, 4492.81, 306.733, 0, "calm", ""},
-	{"commoner", 0, -6023.52, 6, 4213.29, 308.957, 0, "calm", ""},
-	{"commoner", 0, -5219.06, 6, 4291.75, 225.099, 0, "calm"},
-	{"commoner", 0, -5194.95, 6, 4189.82, 3.74494, 0, "calm"},
-	{"commoner", 0, -5135.69, 6, 4219.76, 3.98419, 0, "calm"},
-	{"commoner", 0, -5124.32, 6, 4230.7, 188.301, 0, "calm"},
-	{"commoner", 0, -5165.37, 6, 4173.32, 44.4267, 0, "calm"},
-	{"commoner", 0, -5171.36, 6, 4148.39, 89.3505, 0, "calm"},
-	{"commoner", 0, -5123.13, 6, 4201.32, 268.516, 0, "calm"},
-	{"commoner", 0, -5101.22, 6, 4246.47, 39.2932, 0, "calm"},
-	{"commoner", 0, -5106.97, 6, 4296.89, 278.927, 0, "calm"},
-	{"commoner", 0, -5069.74, 6, 4262.45, 304.456, 0, "calm"},
-	{"commoner", 0, -5075.93, 6, 4204.5, 258.103, 0, "calm"},
-	{"commoner", 0, -5053.71, 6, 4151.61, 236.952, 0, "calm"},
-	{"commoner", 0, -5090.67, 6, 4173.27, 324.898, 0, "calm"},
-	{"commoner", 0, -5088.5, 6, 4152.21, 228.099, 0, "calm"},
-	{"commoner", 0, -5076.56, 6, 4162.09, 47.5912, 0, "calm"},
-	{"commoner", 0, -5032.44, 6, 4131.62, 179.986, 0, "calm"},
-	{"commoner", 0, -5019.1, 6, 4125.83, 354.895, 0, "calm"},
-	{"commoner", 0, -5023.92, 6, 4040.07, 112.362, 0, "calm"},
-	{"commoner", 0, -5004.8, 6, 4067.54, 285.879, 0, "calm"},
-	{"commoner", 0, -5037.78, 6, 4078.71, 14.5782, 0, "calm"},
-	{"commoner", 0, -5007.98, 6, 4111.83, 156.739, 0, "calm"},
-	{"commoner", 0, -5021.05, 6, 4230.04, 13.8244, 0, "calm"},
-	{"commoner", 0, -4866.72, 6, 4160.45, 346.733, 0, "calm"},
-	{"commoner", 0, -4991.86, 6, 4125.22, 355.866, 0, "calm"},
-	{"commoner", 0, -4970.37, 6, 4069.78, 230.918, 0, "calm"},
-	{"commoner", 0, -4924.84, 6, 4034.9, 112.799, 0, "calm"},
-	{"commoner", 0, -4892.24, 6, 4083, 131.075, 0, "calm"},
-	{"commoner", 0, -4902.73, 6, 4106.81, 350.732, 0, "calm"},
-	{"commoner", 0, -4933.63, 6, 4090.17, 355.935, 0, "calm"},
-	{"commoner", 0, -4921.08, 6, 4061.48, 324.756, 0, "calm"},
-	{"commoner", 0, -4896.15, 6, 4167.85, 352.84, 0, "calm"},
-	{"commoner", 0, -4897.7, 6, 4193.27, 70.95, 0, "calm"},
-	{"commoner", 0, -4978.62, 6, 4119.77, 158.522, 0, "calm"},
-	{"commoner", 0, -4941.05, 6, 4184.26, 54.3125, 0, "calm"},
-	{"commoner", 0, -4968.55, 6, 4158.78, 56.9517, 0, "calm"},
-	{"commoner", 0, -4978.84, 6, 4263.64, 225.699, 0, "calm"},
-	{"commoner", 0, -4973.93, 6, 4220.31, 28.5203, 0, "calm"},
-	{"commoner", 0, -4981.69, 6, 4244.41, 37.6517, 0, "calm"},
-	{"commoner", 0, -4985.97, 6, 4212.75, 54.7999, 0, "calm"},
-	{"commoner", 0, -4974.13, 6, 4196.91, 163.185, 0, "calm"},
-	{"commoner", 0, -4973.2, 6, 4175.16, 163.034, 0, "calm"},
-	{"commoner", 0, -4956.42, 6, 4205.06, 106.528, 0, "calm"},
-	{"commoner", 0, 2.04307, 0.999959, 21.6541, 270.005, 1697375, "calm"},
-	{"commoner", 0, 0.043072, 0.999959, 21.6541, 89.9998, 1697375, "calm"},
-	{"commoner", 0, -21.2681, 1.59776, 11.3505, 270.004, 1697379, "calm"},
-	{"commoner", 0, -23.2681, 1.6, 11.3505, 90.0019, 1697379, "calm"},
+	{"stormtrooper", 60, -5206.32, 6, 4182.8, 329.254, 0, ""},
+	{"stormtrooper_rifleman", 60, -5160.99, 6.52214, 4159.54, 216.801, 0, ""},
+	{"stormtrooper_rifleman", 60, -4845.17, 6.43094, 4167.68, 222.445, 0, ""},
+	{"stormtrooper_groupleader", 60, -4857.84, 6.43289, 4178.31, 222.445, 0, ""},
+	{"stormtrooper_groupleader", 60, -5969.83, 6, 4246.76, 173.432, 0, "", "VK-481"},
+	{"stormtrooper", 60, -4788.57, 6, 4111.12, 121.097, 0, ""},
+	{"stormtrooper", 60, -5126.48, 6.52214, 4130.79, 184.164, 0, ""},
+	{"stormtrooper", 60, -5132.44, 6, 4087.27, 158.596, 0, ""},
+	{"stormtrooper", 60, -5016.16, 6, 4107, 226.021, 0, ""},
+	{"stormtrooper", 60, -4848.1, 6.55806, 4172.25, 222.445, 0, ""},
+	{"stormtrooper", 60, -4933.43, 6, 4233.84, 32.6463, 0, ""},
+	{"bodyguard", 60, 11.7898, 1.75, -1.89849, 180.002, 1305892, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_hooligan_rodian_female_01.iff
+	{"bodyguard", 60, -5258.93, 6, 4187.17, 180.005, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_criminal_thug_human_female_01.iff
+	{"bodyguard", 60, -29.8622, 7.9418, 10.8957, 180.008, 1692104, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_crook_zabrak_male_01.iff
+	{"bodyguard", 60, -37.5788, 7.9418, 22.3791, 0, 1692104, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/shared_dressed_mugger.iff
+	{"commoner", 60, -17.0001, 2.25, 17.4832, 270.003, 1305888, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_01.iff
+	{"commoner", 60, -19.0001, 2.25, 17.4832, 90.0053, 1305888, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_human_male_02.iff
+	{"commoner", 60, -24, 1.6, -4, 77.8869, 1697383, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_02.iff	
+	{"commoner", 60, -5394.06, 6, 4519.32, 169.904, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_01.iff
+	{"commoner", 60, -5384.95, 6, 4283.38, 71.1905, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_female_02.iff
+	{"commoner", 60, -5256.72, 6, 4254.43, 243.769, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_04.iff
+	{"commoner", 60, -5319.27, 6, 4365.19, 286.546, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_01.iff
+	{"commoner", 60, -5320.16, 6, 4236.39, 175.933, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_female_04.iff
+	{"commoner", 60, -5327.58, 6, 4267.42, 170.655, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_male_01.iff
+	{"commoner", 60, -5281.75, 6, 4325.98, 47.2066, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
+	{"commoner", 60, -5140.78, 6, 4404.92, 212.214, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_03.iff	
+	{"commoner", 60, -6036.18, 6, 4286.85, 147.238, 0, "calm", ""},
+	{"commoner", 60, -6055.49, 6, 4319.64, 186.501, 0, "calm", ""},
+	{"commoner", 60, -6040.72, 6, 4260.46, 325.963, 0, "calm", ""},
+	{"commoner", 60, -6012.09, 6, 4241.61, 83.2023, 0, "calm", ""},
+	{"commoner", 60, -5291.01, 6, 4428.53, 322.605, 0, "calm", ""},
+	{"commoner", 60, -5282.92, 6, 4405.65, 279.205, 0, "calm", ""},
+	{"commoner", 60, -5280.52, 6, 4372.79, 226.645, 0, "calm", ""},
+	{"commoner", 60, -5306.24, 6, 4357.56, 77.2615, 0, "calm", ""},
+	{"commoner", 60, -5326.21, 6, 4292.88, 155.604, 0, "calm", ""},
+	{"commoner", 60, -5309.23, 6, 4307.01, 78.4133, 0, "calm", ""},
+	{"commoner", 60, -5371.2, 6, 4337.4, 57.5394, 0, "calm", ""},
+	{"commoner", 60, -5392.94, 6, 4361.06, 74.0902, 0, "calm", ""},
+	{"commoner", 60, -5370.57, 6, 4384.5, 150.505, 0, "calm", ""},
+	{"commoner", 60, -5399.67, 6, 4424.78, 313.827, 0, "calm", ""},
+	{"commoner", 60, -5380.45, 6, 4628.71, 65.0141, 0, "calm", ""},
+	{"commoner", 60, -5396.24, 6, 4492.81, 306.733, 0, "calm", ""},
+	{"commoner", 60, -6023.52, 6, 4213.29, 308.957, 0, "calm", ""},
+	{"commoner", 60, -5219.06, 6, 4291.75, 225.099, 0, "calm"},
+	{"commoner", 60, -5194.95, 6, 4189.82, 3.74494, 0, "calm"},
+	{"commoner", 60, -5135.69, 6, 4219.76, 3.98419, 0, "calm"},
+	{"commoner", 60, -5124.32, 6, 4230.7, 188.301, 0, "calm"},
+	{"commoner", 60, -5165.37, 6, 4173.32, 44.4267, 0, "calm"},
+	{"commoner", 60, -5171.36, 6, 4148.39, 89.3505, 0, "calm"},
+	{"commoner", 60, -5123.13, 6, 4201.32, 268.516, 0, "calm"},
+	{"commoner", 60, -5101.22, 6, 4246.47, 39.2932, 0, "calm"},
+	{"commoner", 60, -5106.97, 6, 4296.89, 278.927, 0, "calm"},
+	{"commoner", 60, -5069.74, 6, 4262.45, 304.456, 0, "calm"},
+	{"commoner", 60, -5075.93, 6, 4204.5, 258.103, 0, "calm"},
+	{"commoner", 60, -5053.71, 6, 4151.61, 236.952, 0, "calm"},
+	{"commoner", 60, -5090.67, 6, 4173.27, 324.898, 0, "calm"},
+	{"commoner", 60, -5088.5, 6, 4152.21, 228.099, 0, "calm"},
+	{"commoner", 60, -5076.56, 6, 4162.09, 47.5912, 0, "calm"},
+	{"commoner", 60, -5032.44, 6, 4131.62, 179.986, 0, "calm"},
+	{"commoner", 60, -5019.1, 6, 4125.83, 354.895, 0, "calm"},
+	{"commoner", 60, -5023.92, 6, 4040.07, 112.362, 0, "calm"},
+	{"commoner", 60, -5004.8, 6, 4067.54, 285.879, 0, "calm"},
+	{"commoner", 60, -5037.78, 6, 4078.71, 14.5782, 0, "calm"},
+	{"commoner", 60, -5007.98, 6, 4111.83, 156.739, 0, "calm"},
+	{"commoner", 60, -5021.05, 6, 4230.04, 13.8244, 0, "calm"},
+	{"commoner", 60, -4866.72, 6, 4160.45, 346.733, 0, "calm"},
+	{"commoner", 60, -4991.86, 6, 4125.22, 355.866, 0, "calm"},
+	{"commoner", 60, -4970.37, 6, 4069.78, 230.918, 0, "calm"},
+	{"commoner", 60, -4924.84, 6, 4034.9, 112.799, 0, "calm"},
+	{"commoner", 60, -4892.24, 6, 4083, 131.075, 0, "calm"},
+	{"commoner", 60, -4902.73, 6, 4106.81, 350.732, 0, "calm"},
+	{"commoner", 60, -4933.63, 6, 4090.17, 355.935, 0, "calm"},
+	{"commoner", 60, -4921.08, 6, 4061.48, 324.756, 0, "calm"},
+	{"commoner", 60, -4896.15, 6, 4167.85, 352.84, 0, "calm"},
+	{"commoner", 60, -4897.7, 6, 4193.27, 70.95, 0, "calm"},
+	{"commoner", 60, -4978.62, 6, 4119.77, 158.522, 0, "calm"},
+	{"commoner", 60, -4941.05, 6, 4184.26, 54.3125, 0, "calm"},
+	{"commoner", 60, -4968.55, 6, 4158.78, 56.9517, 0, "calm"},
+	{"commoner", 60, -4978.84, 6, 4263.64, 225.699, 0, "calm"},
+	{"commoner", 60, -4973.93, 6, 4220.31, 28.5203, 0, "calm"},
+	{"commoner", 60, -4981.69, 6, 4244.41, 37.6517, 0, "calm"},
+	{"commoner", 60, -4985.97, 6, 4212.75, 54.7999, 0, "calm"},
+	{"commoner", 60, -4974.13, 6, 4196.91, 163.185, 0, "calm"},
+	{"commoner", 60, -4973.2, 6, 4175.16, 163.034, 0, "calm"},
+	{"commoner", 60, -4956.42, 6, 4205.06, 106.528, 0, "calm"},
+	{"commoner", 60, 2.04307, 0.999959, 21.6541, 270.005, 1697375, "calm"},
+	{"commoner", 60, 0.043072, 0.999959, 21.6541, 89.9998, 1697375, "calm"},
+	{"commoner", 60, -21.2681, 1.59776, 11.3505, 270.004, 1697379, "calm"},
+	{"commoner", 60, -23.2681, 1.6, 11.3505, 90.0019, 1697379, "calm"},
 	
-	{"commoner", 0, -5054.68, 6, 4228.23, 0, 0, "calm"},
-	{"commoner", 0, -5041.71, 6, 4192.84, 0, 0, "calm"},
-	{"commoner_technician", 0, -5041.71, 6, 4193.94, 180.005, 0, ""},
-	{"commoner_technician", 0, -1.60874, 0.999962, 6.25947, 360.011, 1697377, ""},
-	{"rsf_security_guard", 0, -5032.08, 6, 4091.71, 67.385, 0, ""},
-	{"explorer", 0, -23.0798, 1.59166, 3.00121, 180.006, 1697379, ""},
-	{"explorer", 0, -5127.71, 6, 4336.34, 0, 0, ""},
-	{"explorer", 0, -21.5772, 1.6, -14.1795, 180.023, 1697383, ""},
-	{"explorer", 0, -4870.86, 6, 4179.63, 0, 0, ""},
-	{"explorer", 0, -7.0383, 1.6, -12.1532, 360.011, 1697381, ""},
-	{"miner", 0, -7.0383, 1.6, -11.0532, 179.988, 1697381, ""},
-	{"miner", 0, -4965.4, 6, 4194.15, 180.005, 0, ""},
-	{"naboo_monk", 0, 18.9004, 1.28309, -6.40631, 0, 1697378, ""},
-	{"plainsfolk", 0, 22.9832, 1.28309, -0.081854, 180.007, 1697378, ""},
-	{"plainsfolk", 0, 25.5911, 1.28309, 6.40904, 180.004, 1697378, ""},
-	{"naboo_police", 0, -5138.49, 6, 4228.36, 0, 0, ""},
-	{"naboo_police", 0, -4911.53, 6, 4089.7, 127.784, 0, ""},
-	{"j1_po", 0, -4856.56, 6, 4158.12, 237.016, 0, ""},
-	{"bounty_hunter", 0, -5082.41, 6, 4261.15, 180.005, 0},
-	{"comm_operator", 0, -33.7329, 0.259996, 14.005, 288.183, 1697365},
-	{"gungan_hermit", 0, -1.60874, 0.999952, 7.35947, 180, 1697377},
-	{"gungan_hunter", 0, -5138.49, 6, 4229.36, 180.005, 0},
+	{"commoner", 60, -5054.68, 6, 4228.23, 0, 0, "calm"},
+	{"commoner", 60, -5041.71, 6, 4192.84, 0, 0, "calm"},
+	{"commoner_technician", 60, -5041.71, 6, 4193.94, 180.005, 0, ""},
+	{"commoner_technician", 60, -1.60874, 0.999962, 6.25947, 360.011, 1697377, ""},
+	{"rsf_security_guard", 60, -5032.08, 6, 4091.71, 67.385, 0, ""},
+	{"explorer", 60, -23.0798, 1.59166, 3.00121, 180.006, 1697379, ""},
+	{"explorer", 60, -5127.71, 6, 4336.34, 0, 0, ""},
+	{"explorer", 60, -21.5772, 1.6, -14.1795, 180.023, 1697383, ""},
+	{"explorer", 60, -4870.86, 6, 4179.63, 0, 0, ""},
+	{"explorer", 60, -7.0383, 1.6, -12.1532, 360.011, 1697381, ""},
+	{"miner", 60, -7.0383, 1.6, -11.0532, 179.988, 1697381, ""},
+	{"miner", 60, -4965.4, 6, 4194.15, 180.005, 0, ""},
+	{"naboo_monk", 60, 18.9004, 1.28309, -6.40631, 0, 1697378, ""},
+	{"plainsfolk", 60, 22.9832, 1.28309, -0.081854, 180.007, 1697378, ""},
+	{"plainsfolk", 60, 25.5911, 1.28309, 6.40904, 180.004, 1697378, ""},
+	{"naboo_police", 60, -5138.49, 6, 4228.36, 0, 0, ""},
+	{"naboo_police", 60, -4911.53, 6, 4089.7, 127.784, 0, ""},
+	{"j1_po", 60, -4856.56, 6, 4158.12, 237.016, 0, ""},
+	{"bounty_hunter", 60, -5082.41, 6, 4261.15, 180.005, 0},
+	{"comm_operator", 60, -33.7329, 0.259996, 14.005, 288.183, 1697365},
+	{"gungan_hermit", 60, -1.60874, 0.999952, 7.35947, 180, 1697377},
+	{"gungan_hunter", 60, -5138.49, 6, 4229.36, 180.005, 0},
 	{"gungan_outcast", 60, -5827.81, 6, 4172.98, 0, 0, "conversation", ""},
-	{"otolla_gungan", 0, 7.0973, 1.00001, 8.95992, 0, 1697377},
-	{"otolla_gungan", 0, -24.1798, 1.5815, 3.00112, 135.006, 1697379},
-	{"fringer", 0, 3.05224, 2.12878, 71.4469, 0, 5475487, "conversation", ""},
-	{"explorer", 0, 3.05224, 2.12878, 72.5469, 180.005, 5475487, "conversation", ""},
-	{"rsf_pilot", 0, -16.4118, 1.12919, 38.4929, 5.24439, 5475485, "conversation", ""},
-	{"noble", 0, -16.4118, 1.02908, 39.5837, 179.999, 5475485, "conversation", ""},
-	{"brawler", 0, 19.6394, 0.764492, 42.4583, 354.768, 5475485, "conversation", ""},
-	{"entertainer", 0, 19.6394, 0.664388, 43.5491, 180.018, 5475485, "conversation", ""},
-	{"rsf_palace_guard", 0, 18.5394, 0.664266, 43.5491, 134.79, 5475485, "conversation", ""},
-	{"gungan_guard", 0, 12.4716, 2.41226, 24.5116, 5.24304, 5475485, "conversation", ""},
-	{"etheli_drenel", 0, 12.4716, 2.31216, 25.6024, 180.001, 5475485, "conversation", ""},
-	{"mercenary", 0, -6.34119, 0.6, -9.37965, 360.011, 5475480, "conversation", ""},
-	{"rsf_palace_guard", 0, -6.34119, 0.6, -8.27965, 180.012, 5475480, "conversation", ""},
-	{"commoner", 0, -5803.39, 6, 4101.34, 219.092, 0, "calm", ""},  
-	{"commoner", 0, -5858.79, 6, 4147.3, 177.298, 0, "calm", ""},  
-	{"commoner", 0, -5941.62, 6, 4339.4, 156.272, 0, "calm", ""},  
-	{"commoner", 0, -5996.82, 6, 4309.73, 327.452, 0, "calm", ""}, 
-	{"commoner", 0, -5968.83, 6, 4287.92, 169.112, 0, "calm", ""}, 
-	{"commoner", 0, -5996.87, 6, 4269.75, 70.6282, 0, "calm", ""}, 
-	{"commoner", 0, -5928.72, 6, 4217.24, 56.7839, 0, "calm", ""}, 
-	{"commoner", 0, -5889.07, 6, 4235.87, 170.679, 0, "calm", ""}, 
-	{"commoner", 0, -5727.93, 6, 4316.95, 342.377, 0, "calm", ""}, 
-	{"commoner", 0, -5741.57, 6, 4304.91, 133.504, 0, "calm", ""}, 
-	{"commoner", 0, -5757.67, 6, 4411.04, 296.772, 0, "calm", ""}, 
-	{"commoner", 0, -5818.26, 6, 4407.8, 25.7365, 0, "calm", ""},  
-	{"commoner", 0, -5751.98, 6, 4147.86, 61.2467, 0, "calm", ""}, 
-	{"commoner", 0, -5729.03, 6, 4120.76, 304.577, 0, "calm", ""}, 
-	{"commoner", 0, -5709.29, 6, 4134.09, 24.3295, 0, "calm", ""},
-	{"commoner", 0, -5675.02, 6, 4238.39, 193.294, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_02.iff
-	{"commoner", 0, -5686.06, 6, 4307.41, 304.1, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_02.iff
-	{"commoner", 0, -5663.64, 6, 4136.03, 34.2804, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_01.iff
-	{"commoner", 0, -5690.65, 6, 4124.1, 313.987, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"commoner", 0, -5632.25, 6, 4137.72, 121.318, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
-	{"commoner", 0, -5592.68, 6, 4154.97, 125.654, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_female_01.iff
-	{"commoner", 0, -5600.12, 6, 4053.65, 55.2097, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
-	{"commoner", 0, -5418.26, 6, 4347.1, 173.931, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
-	{"commoner", 0, -5409.46, 6, 4386.55, 51.6472, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_01.iff
-	{"commoner", 0, -5425.82, 6, 4371.62, 158.964, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
-	{"commoner", 0, -5416.72, 6, 4413.87, 130.124, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_02.iff
-	{"commoner", 0, -5428.98, 6, 4447.99, 285.357, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_03.iff
-	{"commoner", 0, -5449.78, 6, 4428.75, 8.98008, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_male_02.iff
-	{"commoner", 0, -5457.38, 6, 4469.32, 299.901, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_male_02.iff
-	{"commoner", 0, -5468.87, 6, 4432.8, 25.9495, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_bothan_female_02.iff
-	{"commoner", 0, -5458.78, 6, 4343.19, 264.89, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_02.iff
-	{"commoner", 0, -5485.31, 6, 4373.11, 251.552, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_04.iff
-	{"commoner", 0, -5492.21, 6, 4337.69, 94.7447, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_male_02.iff
-	{"commoner", 0, -5507.67, 6, 4309.38, 330.512, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"commoner", 0, -5520.11, 6, 4349.32, 243.736, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_01.iff
-	{"commoner", 0, -5489.16, 6, 4404.33, 229.081, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_02.iff
-	{"commoner", 0, -5525.24, 6, 4430.28, 32.9667, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 0, -5537.28, 6, 4411.34, 252.902, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
-	{"commoner", 0, -5545.73, 6, 4466.12, 324.904, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_01.iff
-	{"commoner", 0, -5586.88, 6, 4495.26, 212.866, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_devaronian_male_02.iff
-	{"commoner", 0, -5565.53, 6, 4469.02, 122.256, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_03.iff
-	{"commoner", 0, -5541.82, 6, 4394.46, 238.528, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
-	{"commoner", 0, -5547.21, 6, 4383.24, 155.163, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_04.iff
-	{"commoner", 0, -5554.8, 6, 4319.26, 256.528, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_02.iff
-	{"commoner", 0, -5541.38, 6, 4302.99, 60.5745, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_female_03.iff
-	{"commoner", 0, -5555.25, 6, 4241.44, 63.404, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
-	{"commoner", 0, -5544.22, 6, 4232.32, 267.981, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
-	{"commoner", 0, -5558.64, 6, 4283.8, 12.7491, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_07.iff
-	{"commoner", 0, -5599.43, 6, 4261.62, 241.361, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
-	{"commoner", 0, -5583.5, 6, 4237.52, 344.261, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"commoner", 0, -5562.58, 6, 4208.34, 326.3, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_01.iff
-	{"commoner", 0, -5507.69, 6, 4195.83, 129.185, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_03.iff
-	{"commoner", 0, -5487.23, 6, 4193.99, 298.896, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
-	{"commoner", 0, -5453.08, 6, 4198.55, 346.123, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_male_01.iff
-	{"commoner", 0, -5457.43, 6, 4156.44, 21.7515, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
-	{"commoner", 0, -5497.13, 6, 4148.57, 166.606, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_male_04.iff
-	{"commoner", 0, -5404.2, 6, 4199.59, 80.6257, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_06.iff
-	{"commoner", 0, -5437.58, 6, 4301.41, 199.461, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"naboo_holy_man", 0, -22.6115, 1.6, -11.4739, 0, 1677400, "conversation", ""},
-	{"gungan_hermit", 0, -22.6115, 1.6, -10.3739, 179.996, 1677400, "conversation", ""},
-	{"naboo_nomad", 0, 16.6641, 1.28309, -3.47071, 360.011, 1677395, "conversation", ""},
-	{"scout_trooper", 0, 16.6641, 1.28309, -2.37071, 180.007, 1677395, "", ""},
-	{"businessman", 0, 15.5641, 1.28309, -2.37071, 135.005, 1677395, "conversation", ""},
-	{"gambler", 0, 4.2931, 1, -7.62435, 360.011, 1677394, "conversation", ""},
-	{"ysnide_omewror", 0, 4.2931, 1.00001, -6.52435, 180.012, 1677394, "conversation", ""},
-	{"commoner", 0, -5778.43, 6, 4397.54, 180.005, 0, "conversation", ""},
-	{"agriculturalist", 0, -5827.81, 6, 4173.98, 180.005, 0, "conversation", ""},
+	{"otolla_gungan", 60, 7.0973, 1.00001, 8.95992, 0, 1697377},
+	{"otolla_gungan", 60, -24.1798, 1.5815, 3.00112, 135.006, 1697379},
+	{"fringer", 60, 3.05224, 2.12878, 71.4469, 0, 5475487, "conversation", ""},
+	{"explorer", 60, 3.05224, 2.12878, 72.5469, 180.005, 5475487, "conversation", ""},
+	{"rsf_pilot", 60, -16.4118, 1.12919, 38.4929, 5.24439, 5475485, "conversation", ""},
+	{"noble", 60, -16.4118, 1.02908, 39.5837, 179.999, 5475485, "conversation", ""},
+	{"brawler", 60, 19.6394, 0.764492, 42.4583, 354.768, 5475485, "conversation", ""},
+	{"entertainer", 60, 19.6394, 0.664388, 43.5491, 180.018, 5475485, "conversation", ""},
+	{"rsf_palace_guard", 60, 18.5394, 0.664266, 43.5491, 134.79, 5475485, "conversation", ""},
+	{"gungan_guard", 60, 12.4716, 2.41226, 24.5116, 5.24304, 5475485, "conversation", ""},
+	{"etheli_drenel", 60, 12.4716, 2.31216, 25.6024, 180.001, 5475485, "conversation", ""},
+	{"mercenary", 60, -6.34119, 0.6, -9.37965, 360.011, 5475480, "conversation", ""},
+	{"rsf_palace_guard", 60, -6.34119, 0.6, -8.27965, 180.012, 5475480, "conversation", ""},
+	{"commoner", 60, -5803.39, 6, 4101.34, 219.092, 0, "calm", ""},  
+	{"commoner", 60, -5858.79, 6, 4147.3, 177.298, 0, "calm", ""},  
+	{"commoner", 60, -5941.62, 6, 4339.4, 156.272, 0, "calm", ""},  
+	{"commoner", 60, -5996.82, 6, 4309.73, 327.452, 0, "calm", ""}, 
+	{"commoner", 60, -5968.83, 6, 4287.92, 169.112, 0, "calm", ""}, 
+	{"commoner", 60, -5996.87, 6, 4269.75, 70.6282, 0, "calm", ""}, 
+	{"commoner", 60, -5928.72, 6, 4217.24, 56.7839, 0, "calm", ""}, 
+	{"commoner", 60, -5889.07, 6, 4235.87, 170.679, 0, "calm", ""}, 
+	{"commoner", 60, -5727.93, 6, 4316.95, 342.377, 0, "calm", ""}, 
+	{"commoner", 60, -5741.57, 6, 4304.91, 133.504, 0, "calm", ""}, 
+	{"commoner", 60, -5757.67, 6, 4411.04, 296.772, 0, "calm", ""}, 
+	{"commoner", 60, -5818.26, 6, 4407.8, 25.7365, 0, "calm", ""},  
+	{"commoner", 60, -5751.98, 6, 4147.86, 61.2467, 0, "calm", ""}, 
+	{"commoner", 60, -5729.03, 6, 4120.76, 304.577, 0, "calm", ""}, 
+	{"commoner", 60, -5709.29, 6, 4134.09, 24.3295, 0, "calm", ""},
+	{"commoner", 60, -5675.02, 6, 4238.39, 193.294, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_human_male_02.iff
+	{"commoner", 60, -5686.06, 6, 4307.41, 304.1, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_02.iff
+	{"commoner", 60, -5663.64, 6, 4136.03, 34.2804, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_ishitib_male_01.iff
+	{"commoner", 60, -5690.65, 6, 4124.1, 313.987, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_03.iff
+	{"commoner", 60, -5632.25, 6, 4137.72, 121.318, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
+	{"commoner", 60, -5592.68, 6, 4154.97, 125.654, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_female_01.iff
+	{"commoner", 60, -5600.12, 6, 4053.65, 55.2097, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_female_02.iff
+	{"commoner", 60, -5418.26, 6, 4347.1, 173.931, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
+	{"commoner", 60, -5409.46, 6, 4386.55, 51.6472, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_01.iff
+	{"commoner", 60, -5425.82, 6, 4371.62, 158.964, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
+	{"commoner", 60, -5416.72, 6, 4413.87, 130.124, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_02.iff
+	{"commoner", 60, -5428.98, 6, 4447.99, 285.357, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_male_03.iff
+	{"commoner", 60, -5449.78, 6, 4428.75, 8.98008, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_twilek_male_02.iff
+	{"commoner", 60, -5457.38, 6, 4469.32, 299.901, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_male_02.iff
+	{"commoner", 60, -5468.87, 6, 4432.8, 25.9495, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_bothan_female_02.iff
+	{"commoner", 60, -5458.78, 6, 4343.19, 264.89, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_02.iff
+	{"commoner", 60, -5485.31, 6, 4373.11, 251.552, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_04.iff
+	{"commoner", 60, -5492.21, 6, 4337.69, 94.7447, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_twilek_male_02.iff
+	{"commoner", 60, -5507.67, 6, 4309.38, 330.512, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
+	{"commoner", 60, -5520.11, 6, 4349.32, 243.736, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_fat_zabrak_male_01.iff
+	{"commoner", 60, -5489.16, 6, 4404.33, 229.081, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_male_02.iff
+	{"commoner", 60, -5525.24, 6, 4430.28, 32.9667, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_03.iff
+	{"commoner", 60, -5537.28, 6, 4411.34, 252.902, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_01.iff
+	{"commoner", 60, -5545.73, 6, 4466.12, 324.904, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_01.iff
+	{"commoner", 60, -5586.88, 6, 4495.26, 212.866, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_devaronian_male_02.iff
+	{"commoner", 60, -5565.53, 6, 4469.02, 122.256, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_03.iff
+	{"commoner", 60, -5541.82, 6, 4394.46, 238.528, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
+	{"commoner", 60, -5547.21, 6, 4383.24, 155.163, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_04.iff
+	{"commoner", 60, -5554.8, 6, 4319.26, 256.528, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_02.iff
+	{"commoner", 60, -5541.38, 6, 4302.99, 60.5745, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_rodian_female_03.iff
+	{"commoner", 60, -5555.25, 6, 4241.44, 63.404, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_twilek_female_01.iff
+	{"commoner", 60, -5544.22, 6, 4232.32, 267.981, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_old_zabrak_female_02.iff
+	{"commoner", 60, -5558.64, 6, 4283.8, 12.7491, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_07.iff
+	{"commoner", 60, -5599.43, 6, 4261.62, 241.361, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_female_04.iff
+	{"commoner", 60, -5583.5, 6, 4237.52, 344.261, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_03.iff
+	{"commoner", 60, -5562.58, 6, 4208.34, 326.3, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_female_01.iff
+	{"commoner", 60, -5507.69, 6, 4195.83, 129.185, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_03.iff
+	{"commoner", 60, -5487.23, 6, 4193.99, 298.896, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_bith_male_06.iff
+	{"commoner", 60, -5453.08, 6, 4198.55, 346.123, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_zabrak_male_01.iff
+	{"commoner", 60, -5457.43, 6, 4156.44, 21.7515, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_sullustan_male_05.iff
+	{"commoner", 60, -5497.13, 6, 4148.57, 166.606, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_naboo_human_male_04.iff
+	{"commoner", 60, -5404.2, 6, 4199.59, 80.6257, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_nikto_male_06.iff
+	{"commoner", 60, -5437.58, 6, 4301.41, 199.461, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/shared_dressed_commoner_tatooine_trandoshan_female_02.iff
+	{"naboo_holy_man", 60, -22.6115, 1.6, -11.4739, 0, 1677400, "conversation", ""},
+	{"gungan_hermit", 60, -22.6115, 1.6, -10.3739, 179.996, 1677400, "conversation", ""},
+	{"naboo_nomad", 60, 16.6641, 1.28309, -3.47071, 360.011, 1677395, "conversation", ""},
+	{"scout_trooper", 60, 16.6641, 1.28309, -2.37071, 180.007, 1677395, "", ""},
+	{"businessman", 60, 15.5641, 1.28309, -2.37071, 135.005, 1677395, "conversation", ""},
+	{"gambler", 60, 4.2931, 1, -7.62435, 360.011, 1677394, "conversation", ""},
+	{"ysnide_omewror", 60, 4.2931, 1.00001, -6.52435, 180.012, 1677394, "conversation", ""},
+	{"commoner", 60, -5778.43, 6, 4397.54, 180.005, 0, "conversation", ""},
+	{"agriculturalist", 60, -5827.81, 6, 4173.98, 180.005, 0, "conversation", ""},
 	{"official", 60, -5886.59, 6, 4368.23, 0, 0, "conversation", ""},
-	{"miner", 0, -5886.59, 6, 4369.23, 180.005, 0, "conversation", ""},
-	{"scoundrel", 0, -4.2087, 0.999986, 1.15452, 0, 1677394, "conversation", ""},
-	{"businessman", 0, -4.2087, 0.999986, 2.15452, 179.993, 1677394, "conversation", ""},
-	{"gambler", 0, -11.7266, 1.6, -16.4722, 0, 1677399, "conversation", ""},
+	{"miner", 60, -5886.59, 6, 4369.23, 180.005, 0, "conversation", ""},
+	{"scoundrel", 60, -4.2087, 0.999986, 1.15452, 0, 1677394, "conversation", ""},
+	{"businessman", 60, -4.2087, 0.999986, 2.15452, 179.993, 1677394, "conversation", ""},
+	{"gambler", 60, -11.7266, 1.6, -16.4722, 0, 1677399, "conversation", ""},
 	{"philosopher", 60, -11.7266, 1.6, -15.4722, 180.001, 1677399, "conversation", ""},
-	{"commoner_technician", 0, -22.5486, 1.61223, 33.2294, 354.768, 5475485, "conversation", ""},
-	{"rsf_pilot", 0, -22.5486, 1.52122, 34.221, 180.016, 5475485, "conversation", ""},
-	{"medic", 0, -11.5446, 2.12878, 75.9709, 0, 5475487, "conversation", ""},
-	{"vendor", 0, -11.5446, 2.12878, 76.8966, 179.996, 5475487, "conversation", ""},
-	{"rsf_security_guard", 0, -5429.73, 6, 4271.9, 0, 0, "conversation", ""},
-	{"rsf_security_officer", 0, -5429.73, 6, 4273, 180.005, 0, "conversation", ""},
-	{"patron", 0, -5538, 6, 4365.1, 103.215, 0, "calm", ""},
+	{"commoner_technician", 60, -22.5486, 1.61223, 33.2294, 354.768, 5475485, "conversation", ""},
+	{"rsf_pilot", 60, -22.5486, 1.52122, 34.221, 180.016, 5475485, "conversation", ""},
+	{"medic", 60, -11.5446, 2.12878, 75.9709, 0, 5475487, "conversation", ""},
+	{"vendor", 60, -11.5446, 2.12878, 76.8966, 179.996, 5475487, "conversation", ""},
+	{"rsf_security_guard", 60, -5429.73, 6, 4271.9, 0, 0, "conversation", ""},
+	{"rsf_security_officer", 60, -5429.73, 6, 4273, 180.005, 0, "conversation", ""},
+	{"patron", 60, -5538, 6, 4365.1, 103.215, 0, "calm", ""},
 	
 	--Loc makes no sense
-	--{"artisan", 0, -5430.83, 6, 4273, 135.004, 0, "conversation", ""},
+	--{"artisan", 60, -5430.83, 6, 4273, 135.004, 0, "conversation", ""},
 	
 }
 
