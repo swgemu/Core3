@@ -153,9 +153,6 @@ protected:
 
 	virtual ~FactoryCrate();
 
-	String _return_getCraftersName;
-	String _return_getSerialNumber;
-
 	friend class FactoryCrateHelper;
 };
 

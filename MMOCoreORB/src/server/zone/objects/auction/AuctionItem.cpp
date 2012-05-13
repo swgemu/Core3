@@ -487,6 +487,7 @@ String AuctionItem::getTerminalTitle() {
 
 		DistributedMethod method(this, RPC_GETTERMINALTITLE__);
 
+		String _return_getTerminalTitle;
 		method.executeWithAsciiReturn(_return_getTerminalTitle);
 		return _return_getTerminalTitle;
 	} else
@@ -501,6 +502,7 @@ String AuctionItem::getOwnerName() {
 
 		DistributedMethod method(this, RPC_GETOWNERNAME__);
 
+		String _return_getOwnerName;
 		method.executeWithAsciiReturn(_return_getOwnerName);
 		return _return_getOwnerName;
 	} else
@@ -515,6 +517,7 @@ String AuctionItem::getItemName() {
 
 		DistributedMethod method(this, RPC_GETITEMNAME__);
 
+		String _return_getItemName;
 		method.executeWithAsciiReturn(_return_getItemName);
 		return _return_getItemName;
 	} else
@@ -581,6 +584,7 @@ String AuctionItem::getBidderName() {
 
 		DistributedMethod method(this, RPC_GETBIDDERNAME__);
 
+		String _return_getBidderName;
 		method.executeWithAsciiReturn(_return_getBidderName);
 		return _return_getBidderName;
 	} else
@@ -595,6 +599,7 @@ String AuctionItem::getItemDescription() {
 
 		DistributedMethod method(this, RPC_GETITEMDESCRIPTION__);
 
+		String _return_getItemDescription;
 		method.executeWithAsciiReturn(_return_getItemDescription);
 		return _return_getItemDescription;
 	} else
@@ -609,6 +614,7 @@ String AuctionItem::getLocation() {
 
 		DistributedMethod method(this, RPC_GETLOCATION__);
 
+		String _return_getLocation;
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
@@ -1377,139 +1383,234 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_:
-		setLocation(inv->getAsciiParameter(_param0_setLocation__String_String_long_int_int_bool_), inv->getAsciiParameter(_param1_setLocation__String_String_long_int_int_bool_), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			String planet; String header; 
+			setLocation(inv->getAsciiParameter(planet), inv->getAsciiParameter(header), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETVENDORID__LONG_:
-		setVendorID(inv->getUnsignedLongParameter());
+		{
+			setVendorID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETITEMNAME__STRING_:
-		setItemName(inv->getAsciiParameter(_param0_setItemName__String_));
+		{
+			String name; 
+			setItemName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETITEMDESCRIPTION__STRING_:
-		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__String_));
+		{
+			String descr; 
+			setItemDescription(inv->getAsciiParameter(descr));
+		}
 		break;
 	case RPC_SETPRICE__INT_:
-		setPrice(inv->getSignedIntParameter());
+		{
+			setPrice(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETAUCTIONEDITEMOBJECTID__LONG_:
-		setAuctionedItemObjectID(inv->getUnsignedLongParameter());
+		{
+			setAuctionedItemObjectID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETITEMTYPE__INT_:
-		setItemType(inv->getSignedIntParameter());
+		{
+			setItemType(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETOWNERID__LONG_:
-		setOwnerID(inv->getUnsignedLongParameter());
+		{
+			setOwnerID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETOFFERTOID__LONG_:
-		setOfferToID(inv->getUnsignedLongParameter());
+		{
+			setOfferToID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETBIDDERNAME__STRING_:
-		setBidderName(inv->getAsciiParameter(_param0_setBidderName__String_));
+		{
+			String name; 
+			setBidderName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETOWNERNAME__STRING_:
-		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__String_));
+		{
+			String name; 
+			setOwnerName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETAUCTION__BOOL_:
-		setAuction(inv->getBooleanParameter());
+		{
+			setAuction(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSOLD__BOOL_:
-		setSold(inv->getBooleanParameter());
+		{
+			setSold(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETREMOVEDBYOWNER__BOOL_:
-		setRemovedByOwner(inv->getBooleanParameter());
+		{
+			setRemovedByOwner(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETAUCTIONPREMIUM__:
-		setAuctionPremium();
+		{
+			setAuctionPremium();
+		}
 		break;
 	case RPC_SETAUCTIONWITHDRAW__:
-		setAuctionWithdraw();
+		{
+			setAuctionWithdraw();
+		}
 		break;
 	case RPC_CLEARAUCTIONWITHDRAW__:
-		clearAuctionWithdraw();
+		{
+			clearAuctionWithdraw();
+		}
 		break;
 	case RPC_SETINSTOCKROOM__BOOL_:
-		setInStockroom(inv->getBooleanParameter());
+		{
+			setInStockroom(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETOFFERTOVENDOR__BOOL_:
-		setOfferToVendor(inv->getBooleanParameter());
+		{
+			setOfferToVendor(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETONBAZAAR__BOOL_:
-		setOnBazaar(inv->getBooleanParameter());
+		{
+			setOnBazaar(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETEXPIRETIME__INT_:
-		setExpireTime(inv->getSignedIntParameter());
+		{
+			setExpireTime(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETBUYERID__LONG_:
-		setBuyerID(inv->getUnsignedLongParameter());
+		{
+			setBuyerID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISONBAZAAR__:
-		resp->insertBoolean(isOnBazaar());
+		{
+			resp->insertBoolean(isOnBazaar());
+		}
 		break;
 	case RPC_ISSOLD__:
-		resp->insertBoolean(isSold());
+		{
+			resp->insertBoolean(isSold());
+		}
 		break;
 	case RPC_ISAUCTION__:
-		resp->insertBoolean(isAuction());
+		{
+			resp->insertBoolean(isAuction());
+		}
 		break;
 	case RPC_ISREMOVEDBYOWNER__:
-		resp->insertBoolean(isRemovedByOwner());
+		{
+			resp->insertBoolean(isRemovedByOwner());
+		}
 		break;
 	case RPC_ISINSTOCKROOM__:
-		resp->insertBoolean(isInStockroom());
+		{
+			resp->insertBoolean(isInStockroom());
+		}
 		break;
 	case RPC_ISOFFERTOVENDOR__:
-		resp->insertBoolean(isOfferToVendor());
+		{
+			resp->insertBoolean(isOfferToVendor());
+		}
 		break;
 	case RPC_GETVENDORID__:
-		resp->insertLong(getVendorID());
+		{
+			resp->insertLong(getVendorID());
+		}
 		break;
 	case RPC_GETAUCTIONEDITEMOBJECTID__:
-		resp->insertLong(getAuctionedItemObjectID());
+		{
+			resp->insertLong(getAuctionedItemObjectID());
+		}
 		break;
 	case RPC_GETOWNERID__:
-		resp->insertLong(getOwnerID());
+		{
+			resp->insertLong(getOwnerID());
+		}
 		break;
 	case RPC_GETOFFERTOID__:
-		resp->insertLong(getOfferToID());
+		{
+			resp->insertLong(getOfferToID());
+		}
 		break;
 	case RPC_GETTERMINALTITLE__:
-		resp->insertAscii(getTerminalTitle());
+		{
+			resp->insertAscii(getTerminalTitle());
+		}
 		break;
 	case RPC_GETOWNERNAME__:
-		resp->insertAscii(getOwnerName());
+		{
+			resp->insertAscii(getOwnerName());
+		}
 		break;
 	case RPC_GETITEMNAME__:
-		resp->insertAscii(getItemName());
+		{
+			resp->insertAscii(getItemName());
+		}
 		break;
 	case RPC_GETEXPIRETIME__:
-		resp->insertSignedInt(getExpireTime());
+		{
+			resp->insertSignedInt(getExpireTime());
+		}
 		break;
 	case RPC_GETPRICE__:
-		resp->insertSignedInt(getPrice());
+		{
+			resp->insertSignedInt(getPrice());
+		}
 		break;
 	case RPC_GETITEMTYPE__:
-		resp->insertSignedInt(getItemType());
+		{
+			resp->insertSignedInt(getItemType());
+		}
 		break;
 	case RPC_GETBUYERID__:
-		resp->insertLong(getBuyerID());
+		{
+			resp->insertLong(getBuyerID());
+		}
 		break;
 	case RPC_GETBIDDERNAME__:
-		resp->insertAscii(getBidderName());
+		{
+			resp->insertAscii(getBidderName());
+		}
 		break;
 	case RPC_GETITEMDESCRIPTION__:
-		resp->insertAscii(getItemDescription());
+		{
+			resp->insertAscii(getItemDescription());
+		}
 		break;
 	case RPC_GETLOCATION__:
-		resp->insertAscii(getLocation());
+		{
+			resp->insertAscii(getLocation());
+		}
 		break;
 	case RPC_GETAUCTIONOPTIONS__:
-		resp->insertSignedInt(getAuctionOptions());
+		{
+			resp->insertSignedInt(getAuctionOptions());
+		}
 		break;
 	case RPC_ISPREMIUMAUCTION__:
-		resp->insertBoolean(isPremiumAuction());
+		{
+			resp->insertBoolean(isPremiumAuction());
+		}
 		break;
 	case RPC_ISOWNER__:
-		resp->insertBoolean(isOwner());
+		{
+			resp->insertBoolean(isOwner());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

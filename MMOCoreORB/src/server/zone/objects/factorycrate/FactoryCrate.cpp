@@ -183,6 +183,7 @@ String FactoryCrate::getCraftersName() {
 
 		DistributedMethod method(this, RPC_GETCRAFTERSNAME__);
 
+		String _return_getCraftersName;
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
 	} else
@@ -197,6 +198,7 @@ String FactoryCrate::getSerialNumber() {
 
 		DistributedMethod method(this, RPC_GETSERIALNUMBER__);
 
+		String _return_getSerialNumber;
 		method.executeWithAsciiReturn(_return_getSerialNumber);
 		return _return_getSerialNumber;
 	} else
@@ -430,43 +432,69 @@ void FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISFACTORYCRATE__:
-		resp->insertBoolean(isFactoryCrate());
+		{
+			resp->insertBoolean(isFactoryCrate());
+		}
 		break;
 	case RPC_GETMAXCAPACITY__:
-		resp->insertSignedInt(getMaxCapacity());
+		{
+			resp->insertSignedInt(getMaxCapacity());
+		}
 		break;
 	case RPC_SETMAXCAPACITY__INT_:
-		setMaxCapacity(inv->getSignedIntParameter());
+		{
+			setMaxCapacity(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETUSECOUNT__INT_BOOL_:
-		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETPROTOTYPE__:
-		resp->insertLong(getPrototype()->_getObjectID());
+		{
+			resp->insertLong(getPrototype()->_getObjectID());
+		}
 		break;
 	case RPC_GETCRAFTERSNAME__:
-		resp->insertAscii(getCraftersName());
+		{
+			resp->insertAscii(getCraftersName());
+		}
 		break;
 	case RPC_GETSERIALNUMBER__:
-		resp->insertAscii(getSerialNumber());
+		{
+			resp->insertAscii(getSerialNumber());
+		}
 		break;
 	case RPC_EXTRACTOBJECTTOPARENT__:
-		resp->insertBoolean(extractObjectToParent());
+		{
+			resp->insertBoolean(extractObjectToParent());
+		}
 		break;
 	case RPC_EXTRACTOBJECT__INT_:
-		resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(extractObject(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SPLIT__INT_:
-		split(inv->getSignedIntParameter());
+		{
+			split(inv->getSignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

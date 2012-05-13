@@ -719,67 +719,111 @@ void SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SETRANGE__INT_:
-		setRange(inv->getSignedIntParameter());
+		{
+			setRange(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETRANGE__CREATUREOBJECT_:
-		resp->insertSignedInt(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETPOINTS__:
-		resp->insertSignedInt(getPoints());
+		{
+			resp->insertSignedInt(getPoints());
+		}
 		break;
 	case RPC_CANSAMPLERADIOACTIVE__:
-		resp->insertBoolean(canSampleRadioactive());
+		{
+			resp->insertBoolean(canSampleRadioactive());
+		}
 		break;
 	case RPC_TRYGAMBLE__:
-		resp->insertBoolean(tryGamble());
+		{
+			resp->insertBoolean(tryGamble());
+		}
 		break;
 	case RPC_CLEARGAMBLE__:
-		clearGamble();
+		{
+			clearGamble();
+		}
 		break;
 	case RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_:
-		consentRadioactiveSample(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			consentRadioactiveSample(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_:
-		sendRadioactiveWarning(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendRadioactiveWarning(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDRANGESUI__CREATUREOBJECT_:
-		sendRangeSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendRangeSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_:
-		surveyCnodeMinigameSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			surveyCnodeMinigameSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_:
-		surveyCnodeMinigame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			surveyCnodeMinigame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CLEARRICHSAMPLELOCATION__:
-		clearRichSampleLocation();
+		{
+			clearRichSampleLocation();
+		}
 		break;
 	case RPC_SETINUSE__BOOL_:
-		setInUse(inv->getBooleanParameter());
+		{
+			setInUse(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISINUSE__:
-		resp->insertBoolean(isInUse());
+		{
+			resp->insertBoolean(isInUse());
+		}
 		break;
 	case RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_:
-		surveyGnodeMinigameSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			surveyGnodeMinigameSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_:
-		surveyGnodeMinigame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			surveyGnodeMinigame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SENDRESOURCELISTTO__CREATUREOBJECT_:
-		sendResourceListTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendResourceListTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_:
-		sendSurveyTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendSurveyTo__CreatureObject_String_));
+		{
+			String resname; 
+			sendSurveyTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(resname));
+		}
 		break;
 	case RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_:
-		sendSampleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendSampleTo__CreatureObject_String_));
+		{
+			String resname; 
+			sendSampleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(resname));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

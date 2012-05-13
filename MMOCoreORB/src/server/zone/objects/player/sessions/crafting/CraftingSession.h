@@ -369,10 +369,6 @@ public:
 
 	void createManufactureSchematic(int clientCounter);
 
-protected:
-	String _param1_experiment__int_String_int_;
-	String _param0_customization__String_byte_int_String_;
-	String _param3_customization__String_byte_int_String_;
 };
 
 class CraftingSessionHelper : public DistributedObjectClassHelper, public Singleton<CraftingSessionHelper> {

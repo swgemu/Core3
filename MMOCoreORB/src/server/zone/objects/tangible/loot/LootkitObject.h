@@ -223,8 +223,6 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-protected:
-	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class LootkitObjectHelper : public DistributedObjectClassHelper, public Singleton<LootkitObjectHelper> {

@@ -342,28 +342,45 @@ void SurveyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_COMPLETE__:
-		complete();
+		{
+			complete();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_SETSPAWNFAMILY__STRING_:
-		setSpawnFamily(inv->getAsciiParameter(_param0_setSpawnFamily__String_));
+		{
+			String spf; 
+			setSpawnFamily(inv->getAsciiParameter(spf));
+		}
 		break;
 	case RPC_SETEFFICIENCY__INT_:
-		setEfficiency(inv->getUnsignedIntParameter());
+		{
+			setEfficiency(inv->getUnsignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -277,13 +277,19 @@ void ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
-		storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
-		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

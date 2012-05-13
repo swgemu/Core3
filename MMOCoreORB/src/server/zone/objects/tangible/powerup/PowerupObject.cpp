@@ -366,25 +366,40 @@ void PowerupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ISRANGED__:
-		resp->insertBoolean(isRanged());
+		{
+			resp->insertBoolean(isRanged());
+		}
 		break;
 	case RPC_ISMELEE__:
-		resp->insertBoolean(isMelee());
+		{
+			resp->insertBoolean(isMelee());
+		}
 		break;
 	case RPC_ISTHROWN__:
-		resp->insertBoolean(isThrown());
+		{
+			resp->insertBoolean(isThrown());
+		}
 		break;
 	case RPC_ISMINE__:
-		resp->insertBoolean(isMine());
+		{
+			resp->insertBoolean(isMine());
+		}
 		break;
 	case RPC_DECREASEUSES__:
-		decreaseUses();
+		{
+			decreaseUses();
+		}
 		break;
 	case RPC_GETUSES__:
-		resp->insertSignedInt(getUses());
+		{
+			resp->insertSignedInt(getUses());
+		}
 		break;
 	case RPC_GETPOWERUPSTAT__STRING_:
-		resp->insertFloat(getPowerupStat(inv->getAsciiParameter(_param0_getPowerupStat__String_)));
+		{
+			String stat; 
+			resp->insertFloat(getPowerupStat(inv->getAsciiParameter(stat)));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

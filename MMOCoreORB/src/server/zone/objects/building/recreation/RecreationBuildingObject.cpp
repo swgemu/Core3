@@ -196,7 +196,9 @@ void RecreationBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMet
 
 	switch (methid) {
 	case RPC_ISRECREATIONALBUILDINGOBJECT__:
-		resp->insertBoolean(isRecreationalBuildingObject());
+		{
+			resp->insertBoolean(isRecreationalBuildingObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

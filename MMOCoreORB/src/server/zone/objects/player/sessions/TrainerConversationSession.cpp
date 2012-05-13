@@ -64,6 +64,7 @@ String TrainerConversationSession::getTrainableSkills(int selectedOption) {
 		DistributedMethod method(this, RPC_GETTRAINABLESKILLS__INT_);
 		method.addSignedIntParameter(selectedOption);
 
+		String _return_getTrainableSkills;
 		method.executeWithAsciiReturn(_return_getTrainableSkills);
 		return _return_getTrainableSkills;
 	} else
@@ -119,6 +120,7 @@ String TrainerConversationSession::getNextSkill(int selectedOption) {
 		DistributedMethod method(this, RPC_GETNEXTSKILL__INT_);
 		method.addSignedIntParameter(selectedOption);
 
+		String _return_getNextSkill;
 		method.executeWithAsciiReturn(_return_getNextSkill);
 		return _return_getNextSkill;
 	} else
@@ -160,6 +162,7 @@ String TrainerConversationSession::getSelectedSkill() {
 
 		DistributedMethod method(this, RPC_GETSELECTEDSKILL__);
 
+		String _return_getSelectedSkill;
 		method.executeWithAsciiReturn(_return_getSelectedSkill);
 		return _return_getSelectedSkill;
 	} else
@@ -174,6 +177,7 @@ String TrainerConversationSession::getMasterSkill() {
 
 		DistributedMethod method(this, RPC_GETMASTERSKILL__);
 
+		String _return_getMasterSkill;
 		method.executeWithAsciiReturn(_return_getMasterSkill);
 		return _return_getMasterSkill;
 	} else
@@ -442,40 +446,68 @@ void TrainerConversationSessionAdapter::invokeMethod(uint32 methid, DistributedM
 
 	switch (methid) {
 	case RPC_CLEARTRAINABLESKILLS__:
-		clearTrainableSkills();
+		{
+			clearTrainableSkills();
+		}
 		break;
 	case RPC_ADDTRAINABLESKILL__STRING_:
-		addTrainableSkill(inv->getAsciiParameter(_param0_addTrainableSkill__String_));
+		{
+			String skillName; 
+			addTrainableSkill(inv->getAsciiParameter(skillName));
+		}
 		break;
 	case RPC_GETTRAINABLESKILLS__INT_:
-		resp->insertAscii(getTrainableSkills(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getTrainableSkills(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETTRAINABLESKILLSCOUNT__:
-		resp->insertSignedInt(getTrainableSkillsCount());
+		{
+			resp->insertSignedInt(getTrainableSkillsCount());
+		}
 		break;
 	case RPC_CLEARNEXTSKILLS__:
-		clearNextSkills();
+		{
+			clearNextSkills();
+		}
 		break;
 	case RPC_ADDNEXTSKILL__STRING_:
-		addNextSkill(inv->getAsciiParameter(_param0_addNextSkill__String_));
+		{
+			String skillName; 
+			addNextSkill(inv->getAsciiParameter(skillName));
+		}
 		break;
 	case RPC_GETNEXTSKILL__INT_:
-		resp->insertAscii(getNextSkill(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getNextSkill(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETNEXTSKILLSCOUNT__:
-		resp->insertSignedInt(getNextSkillsCount());
+		{
+			resp->insertSignedInt(getNextSkillsCount());
+		}
 		break;
 	case RPC_SETSELECTEDSKILL__STRING_:
-		setSelectedSkill(inv->getAsciiParameter(_param0_setSelectedSkill__String_));
+		{
+			String skillName; 
+			setSelectedSkill(inv->getAsciiParameter(skillName));
+		}
 		break;
 	case RPC_GETSELECTEDSKILL__:
-		resp->insertAscii(getSelectedSkill());
+		{
+			resp->insertAscii(getSelectedSkill());
+		}
 		break;
 	case RPC_GETMASTERSKILL__:
-		resp->insertAscii(getMasterSkill());
+		{
+			resp->insertAscii(getMasterSkill());
+		}
 		break;
 	case RPC_SETMASTERSKILL__STRING_:
-		setMasterSkill(inv->getAsciiParameter(_param0_setMasterSkill__String_));
+		{
+			String skillName; 
+			setMasterSkill(inv->getAsciiParameter(skillName));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -452,34 +452,54 @@ void ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_DOPAYMENT__:
-		resp->insertSignedInt(doPayment());
+		{
+			resp->insertSignedInt(doPayment());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_CLEARIDTIMEOUTEVENT__:
-		clearIdTimeoutEvent();
+		{
+			clearIdTimeoutEvent();
+		}
 		break;
 	case RPC_CHECKDEQUEUEEVENT__:
-		checkDequeueEvent();
+		{
+			checkDequeueEvent();
+		}
 		break;
 	case RPC_QUEUEIDTIMEOUTEVENT__:
-		queueIdTimeoutEvent();
+		{
+			queueIdTimeoutEvent();
+		}
 		break;
 	case RPC_DEQUEUEIDTIMEOUTEVENT__:
-		dequeueIdTimeoutEvent();
+		{
+			dequeueIdTimeoutEvent();
+		}
 		break;
 	case RPC_SESSIONTIMEOUT__:
-		sessionTimeout();
+		{
+			sessionTimeout();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

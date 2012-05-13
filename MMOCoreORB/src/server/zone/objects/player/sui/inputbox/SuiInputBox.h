@@ -194,8 +194,6 @@ public:
 
 	bool isInputBox();
 
-protected:
-	String _param0_setDefaultInput__String_;
 };
 
 class SuiInputBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiInputBoxHelper> {

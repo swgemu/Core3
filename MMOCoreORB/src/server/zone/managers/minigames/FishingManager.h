@@ -323,8 +323,6 @@ protected:
 
 	virtual ~FishingManager();
 
-	String _return_getTime;
-
 	friend class FishingManagerHelper;
 };
 
@@ -652,10 +650,6 @@ public:
 
 	void stopFishingEvent(CreatureObject* player);
 
-protected:
-	String _param7_fishingProceed__CreatureObject_int_SceneObject_int_int_int_bool_String_;
-	String _param0_mishapEvent__String_CreatureObject_int_bool_String_;
-	String _param4_mishapEvent__String_CreatureObject_int_bool_String_;
 };
 
 class FishingManagerHelper : public DistributedObjectClassHelper, public Singleton<FishingManagerHelper> {

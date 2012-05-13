@@ -244,6 +244,7 @@ String LightsaberCrystalComponent::getOwner() {
 
 		DistributedMethod method(this, RPC_GETOWNER__);
 
+		String _return_getOwner;
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
 	} else
@@ -897,88 +898,145 @@ void LightsaberCrystalComponentAdapter::invokeMethod(uint32 methid, DistributedM
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_TUNECRYSTAL__CREATUREOBJECT_:
-		tuneCrystal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			tuneCrystal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATECRYSTAL__INT_:
-		updateCrystal(inv->getSignedIntParameter());
+		{
+			updateCrystal(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMINIMUMDAMAGE__:
-		resp->insertSignedInt(getMinimumDamage());
+		{
+			resp->insertSignedInt(getMinimumDamage());
+		}
 		break;
 	case RPC_GETMAXIMUMDAMAGE__:
-		resp->insertSignedInt(getMaximumDamage());
+		{
+			resp->insertSignedInt(getMaximumDamage());
+		}
 		break;
 	case RPC_GETFORCECOST__:
-		resp->insertSignedInt(getForceCost());
+		{
+			resp->insertSignedInt(getForceCost());
+		}
 		break;
 	case RPC_GETSACHEALTH__:
-		resp->insertSignedInt(getSacHealth());
+		{
+			resp->insertSignedInt(getSacHealth());
+		}
 		break;
 	case RPC_GETATTACKSPEED__:
-		resp->insertFloat(getAttackSpeed());
+		{
+			resp->insertFloat(getAttackSpeed());
+		}
 		break;
 	case RPC_GETSACACTION__:
-		resp->insertSignedInt(getSacAction());
+		{
+			resp->insertSignedInt(getSacAction());
+		}
 		break;
 	case RPC_GETSACMIND__:
-		resp->insertSignedInt(getSacMind());
+		{
+			resp->insertSignedInt(getSacMind());
+		}
 		break;
 	case RPC_GETWOUNDCHANCE__:
-		resp->insertSignedInt(getWoundChance());
+		{
+			resp->insertSignedInt(getWoundChance());
+		}
 		break;
 	case RPC_GETOWNER__:
-		resp->insertAscii(getOwner());
+		{
+			resp->insertAscii(getOwner());
+		}
 		break;
 	case RPC_GETQUALITY__:
-		resp->insertSignedInt(getQuality());
+		{
+			resp->insertSignedInt(getQuality());
+		}
 		break;
 	case RPC_SETQUALITY__INT_:
-		setQuality(inv->getSignedIntParameter());
+		{
+			setQuality(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETCOLOR__:
-		resp->insertSignedInt(getColor());
+		{
+			resp->insertSignedInt(getColor());
+		}
 		break;
 	case RPC_SETCOLOR__INT_:
-		setColor(inv->getSignedIntParameter());
+		{
+			setColor(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETOWNER__STRING_:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+		{
+			String value; 
+			setOwner(inv->getAsciiParameter(value));
+		}
 		break;
 	case RPC_SETMINIMUMDAMAGE__INT_:
-		setMinimumDamage(inv->getSignedIntParameter());
+		{
+			setMinimumDamage(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETMAXIMUMDAMAGE__INT_:
-		setMaximumDamage(inv->getSignedIntParameter());
+		{
+			setMaximumDamage(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETFORCECOST__INT_:
-		setForceCost(inv->getSignedIntParameter());
+		{
+			setForceCost(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSACHEALTH__INT_:
-		setSacHealth(inv->getSignedIntParameter());
+		{
+			setSacHealth(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSACACTION__INT_:
-		setSacAction(inv->getSignedIntParameter());
+		{
+			setSacAction(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSACMIND__INT_:
-		setSacMind(inv->getSignedIntParameter());
+		{
+			setSacMind(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETATTACKSPEED__FLOAT_:
-		setAttackSpeed(inv->getFloatParameter());
+		{
+			setAttackSpeed(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETWOUNDCHANCE__INT_:
-		setWoundChance(inv->getSignedIntParameter());
+		{
+			setWoundChance(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISLIGHTSABERCRYSTALOBJECT__:
-		resp->insertBoolean(isLightsaberCrystalObject());
+		{
+			resp->insertBoolean(isLightsaberCrystalObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

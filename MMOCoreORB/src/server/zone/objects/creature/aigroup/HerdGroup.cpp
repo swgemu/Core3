@@ -190,7 +190,9 @@ void HerdGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ISHERDGROUP__:
-		resp->insertBoolean(isHerdGroup());
+		{
+			resp->insertBoolean(isHerdGroup());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

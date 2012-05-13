@@ -371,6 +371,7 @@ String ChatRoom::getName() {
 
 		DistributedMethod method(this, RPC_GETNAME__);
 
+		String _return_getName;
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
 	} else
@@ -385,6 +386,7 @@ String ChatRoom::getFullPath() {
 
 		DistributedMethod method(this, RPC_GETFULLPATH__);
 
+		String _return_getFullPath;
 		method.executeWithAsciiReturn(_return_getFullPath);
 		return _return_getFullPath;
 	} else
@@ -399,6 +401,7 @@ String ChatRoom::getOwner() {
 
 		DistributedMethod method(this, RPC_GETOWNER__);
 
+		String _return_getOwner;
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
 	} else
@@ -413,6 +416,7 @@ String ChatRoom::getCreator() {
 
 		DistributedMethod method(this, RPC_GETCREATOR__);
 
+		String _return_getCreator;
 		method.executeWithAsciiReturn(_return_getCreator);
 		return _return_getCreator;
 	} else
@@ -427,6 +431,7 @@ UnicodeString ChatRoom::getTitle() {
 
 		DistributedMethod method(this, RPC_GETTITLE__);
 
+		UnicodeString _return_getTitle;
 		method.executeWithUnicodeReturn(_return_getTitle);
 		return _return_getTitle;
 	} else
@@ -441,6 +446,7 @@ String ChatRoom::getGalaxyName() {
 
 		DistributedMethod method(this, RPC_GETGALAXYNAME__);
 
+		String _return_getGalaxyName;
 		method.executeWithAsciiReturn(_return_getGalaxyName);
 		return _return_getGalaxyName;
 	} else
@@ -1128,115 +1134,197 @@ void ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_:
-		init(static_cast<ZoneServer*>(inv->getObjectParameter()), static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_init__ZoneServer_ChatRoom_String_int_), inv->getUnsignedIntParameter());
+		{
+			String roomName; 
+			init(static_cast<ZoneServer*>(inv->getObjectParameter()), static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(roomName), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SENDTO__CREATUREOBJECT_:
-		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
-		sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDSUBROOM__CHATROOM_:
-		addSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			addSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESUBROOM__CHATROOM_:
-		removeSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			removeSubRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETSUBROOM__INT_:
-		resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETSUBROOM__STRING_:
-		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
+		{
+			String name; 
+			resp->insertLong(getSubRoom(inv->getAsciiParameter(name))->_getObjectID());
+		}
 		break;
 	case RPC_ADDPLAYER__CREATUREOBJECT_BOOL_:
-		addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVEPLAYER__CREATUREOBJECT_BOOL_:
-		removePlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			removePlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVEPLAYER__STRING_:
-		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
+		{
+			String player; 
+			removePlayer(inv->getAsciiParameter(player));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		{
+			broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HASPLAYER__CREATUREOBJECT_:
-		resp->insertBoolean(hasPlayer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(hasPlayer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASPLAYER__STRING_:
-		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
+		{
+			String name; 
+			resp->insertBoolean(hasPlayer(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_REMOVEALLPLAYERS__:
-		removeAllPlayers();
+		{
+			removeAllPlayers();
+		}
 		break;
 	case RPC_SETPRIVATE__:
-		setPrivate();
+		{
+			setPrivate();
+		}
 		break;
 	case RPC_SETPUBLIC__:
-		setPublic();
+		{
+			setPublic();
+		}
 		break;
 	case RPC_ISPUBLIC__:
-		resp->insertBoolean(isPublic());
+		{
+			resp->insertBoolean(isPublic());
+		}
 		break;
 	case RPC_ISPRIVATE__:
-		resp->insertBoolean(isPrivate());
+		{
+			resp->insertBoolean(isPrivate());
+		}
 		break;
 	case RPC_ISMODERATED__:
-		resp->insertBoolean(isModerated());
+		{
+			resp->insertBoolean(isModerated());
+		}
 		break;
 	case RPC_SETMODERATED__BOOL_:
-		setModerated(inv->getBooleanParameter());
+		{
+			setModerated(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETPLAYER__INT_:
-		resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETPLAYERSIZE__:
-		resp->insertSignedInt(getPlayerSize());
+		{
+			resp->insertSignedInt(getPlayerSize());
+		}
 		break;
 	case RPC_SETNAME__STRING_:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
+		{
+			String Name; 
+			setName(inv->getAsciiParameter(Name));
+		}
 		break;
 	case RPC_GETNAME__:
-		resp->insertAscii(getName());
+		{
+			resp->insertAscii(getName());
+		}
 		break;
 	case RPC_GETFULLPATH__:
-		resp->insertAscii(getFullPath());
+		{
+			resp->insertAscii(getFullPath());
+		}
 		break;
 	case RPC_GETOWNER__:
-		resp->insertAscii(getOwner());
+		{
+			resp->insertAscii(getOwner());
+		}
 		break;
 	case RPC_GETCREATOR__:
-		resp->insertAscii(getCreator());
+		{
+			resp->insertAscii(getCreator());
+		}
 		break;
 	case RPC_GETTITLE__:
-		resp->insertUnicode(getTitle());
+		{
+			resp->insertUnicode(getTitle());
+		}
 		break;
 	case RPC_GETGALAXYNAME__:
-		resp->insertAscii(getGalaxyName());
+		{
+			resp->insertAscii(getGalaxyName());
+		}
 		break;
 	case RPC_SETOWNER__STRING_:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+		{
+			String Owner; 
+			setOwner(inv->getAsciiParameter(Owner));
+		}
 		break;
 	case RPC_SETCREATOR__STRING_:
-		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
+		{
+			String Creator; 
+			setCreator(inv->getAsciiParameter(Creator));
+		}
 		break;
 	case RPC_SETTITLE__STRING_:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		{
+			String Title; 
+			setTitle(inv->getAsciiParameter(Title));
+		}
 		break;
 	case RPC_SETROOMID__INT_:
-		setRoomID(inv->getSignedIntParameter());
+		{
+			setRoomID(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETROOMID__:
-		resp->insertInt(getRoomID());
+		{
+			resp->insertInt(getRoomID());
+		}
 		break;
 	case RPC_GETSUBROOMSSIZE__:
-		resp->insertSignedInt(getSubRoomsSize());
+		{
+			resp->insertSignedInt(getSubRoomsSize());
+		}
 		break;
 	case RPC_GETPARENT__:
-		resp->insertLong(getParent()->_getObjectID());
+		{
+			resp->insertLong(getParent()->_getObjectID());
+		}
 		break;
 	case RPC_COMPARETO__CHATROOM_:
-		resp->insertSignedInt(compareTo(static_cast<ChatRoom*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(compareTo(static_cast<ChatRoom*>(inv->getObjectParameter())));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

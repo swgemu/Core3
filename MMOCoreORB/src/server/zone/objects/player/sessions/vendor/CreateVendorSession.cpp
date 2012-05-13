@@ -371,22 +371,35 @@ void CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_INITALIZEWINDOW__CREATUREOBJECT_:
-		initalizeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			initalizeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEMENUSELECT__BYTE_:
-		handleMenuSelect(inv->getByteParameter());
+		{
+			handleMenuSelect(inv->getByteParameter());
+		}
 		break;
 	case RPC_CREATEVENDOR__STRING_:
-		createVendor(inv->getAsciiParameter(_param0_createVendor__String_));
+		{
+			String name; 
+			createVendor(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

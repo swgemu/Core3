@@ -235,8 +235,6 @@ public:
 
 	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
-protected:
-	UnicodeString _param4_activateCommand__CreatureObject_int_int_long_UnicodeString_;
 };
 
 class ObjectControllerHelper : public DistributedObjectClassHelper, public Singleton<ObjectControllerHelper> {

@@ -380,19 +380,29 @@ void PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_:
-		resp->insertSignedInt(constructStructure(inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(constructStructure(inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_COMPLETESESSION__:
-		resp->insertSignedInt(completeSession());
+		{
+			resp->insertSignedInt(completeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -95,6 +95,7 @@ String PersistentMessage::getSenderName() {
 
 		DistributedMethod method(this, RPC_GETSENDERNAME__);
 
+		String _return_getSenderName;
 		method.executeWithAsciiReturn(_return_getSenderName);
 		return _return_getSenderName;
 	} else
@@ -148,6 +149,7 @@ UnicodeString PersistentMessage::getBody() {
 
 		DistributedMethod method(this, RPC_GETBODY__);
 
+		UnicodeString _return_getBody;
 		method.executeWithUnicodeReturn(_return_getBody);
 		return _return_getBody;
 	} else
@@ -162,6 +164,7 @@ UnicodeString PersistentMessage::getSubject() {
 
 		DistributedMethod method(this, RPC_GETSUBJECT__);
 
+		UnicodeString _return_getSubject;
 		method.executeWithUnicodeReturn(_return_getSubject);
 		return _return_getSubject;
 	} else
@@ -650,58 +653,97 @@ void PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_SENDTO__CREATUREOBJECT_BOOL_:
-		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETMAILID__:
-		resp->insertSignedInt(getMailID());
+		{
+			resp->insertSignedInt(getMailID());
+		}
 		break;
 	case RPC_GETOBJECTID__:
-		resp->insertLong(getObjectID());
+		{
+			resp->insertLong(getObjectID());
+		}
 		break;
 	case RPC_GETSENDERNAME__:
-		resp->insertAscii(getSenderName());
+		{
+			resp->insertAscii(getSenderName());
+		}
 		break;
 	case RPC_GETRECEIVEROBJECTID__:
-		resp->insertLong(getReceiverObjectID());
+		{
+			resp->insertLong(getReceiverObjectID());
+		}
 		break;
 	case RPC_GETSTATUS__:
-		resp->insertByte(getStatus());
+		{
+			resp->insertByte(getStatus());
+		}
 		break;
 	case RPC_GETTIMESTAMP__:
-		resp->insertSignedInt(getTimeStamp());
+		{
+			resp->insertSignedInt(getTimeStamp());
+		}
 		break;
 	case RPC_GETBODY__:
-		resp->insertUnicode(getBody());
+		{
+			resp->insertUnicode(getBody());
+		}
 		break;
 	case RPC_GETSUBJECT__:
-		resp->insertUnicode(getSubject());
+		{
+			resp->insertUnicode(getSubject());
+		}
 		break;
 	case RPC_SETSENDERNAME__STRING_:
-		setSenderName(inv->getAsciiParameter(_param0_setSenderName__String_));
+		{
+			String name; 
+			setSenderName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETRECEIVEROBJECTID__LONG_:
-		setReceiverObjectID(inv->getUnsignedLongParameter());
+		{
+			setReceiverObjectID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETSTATUS__BYTE_:
-		setStatus(inv->getByteParameter());
+		{
+			setStatus(inv->getByteParameter());
+		}
 		break;
 	case RPC_SETTIMESTAMP__INT_:
-		setTimeStamp(inv->getSignedIntParameter());
+		{
+			setTimeStamp(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETBODY__UNICODESTRING_:
-		setBody(inv->getUnicodeParameter(_param0_setBody__UnicodeString_));
+		{
+			UnicodeString message; 
+			setBody(inv->getUnicodeParameter(message));
+		}
 		break;
 	case RPC_SETSUBJECT__UNICODESTRING_:
-		setSubject(inv->getUnicodeParameter(_param0_setSubject__UnicodeString_));
+		{
+			UnicodeString subj; 
+			setSubject(inv->getUnicodeParameter(subj));
+		}
 		break;
 	case RPC_ISNEW__:
-		resp->insertBoolean(isNew());
+		{
+			resp->insertBoolean(isNew());
+		}
 		break;
 	case RPC_ISREAD__:
-		resp->insertBoolean(isRead());
+		{
+			resp->insertBoolean(isRead());
+		}
 		break;
 	case RPC_ISUNREAD__:
-		resp->insertBoolean(isUnread());
+		{
+			resp->insertBoolean(isUnread());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

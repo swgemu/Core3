@@ -225,10 +225,14 @@ void PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISPSGARMOROBJECT__:
-		resp->insertBoolean(isPsgArmorObject());
+		{
+			resp->insertBoolean(isPsgArmorObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

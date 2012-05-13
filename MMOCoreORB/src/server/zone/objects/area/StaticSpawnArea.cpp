@@ -226,10 +226,14 @@ void StaticSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_SPAWNCREATURES__:
-		spawnCreatures();
+		{
+			spawnCreatures();
+		}
 		break;
 	case RPC_ISSTATICAREA__:
-		resp->insertBoolean(isStaticArea());
+		{
+			resp->insertBoolean(isStaticArea());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

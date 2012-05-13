@@ -316,19 +316,30 @@ void FindSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_ADDWAYPOINT__FLOAT_FLOAT_STRING_:
-		addWaypoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_addWaypoint__float_float_String_));
+		{
+			String name; 
+			addWaypoint(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_CLEARWAYPOINT__:
-		clearWaypoint();
+		{
+			clearWaypoint();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

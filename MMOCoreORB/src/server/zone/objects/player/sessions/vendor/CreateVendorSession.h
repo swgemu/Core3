@@ -213,8 +213,6 @@ public:
 
 	int clearSession();
 
-protected:
-	String _param0_createVendor__String_;
 };
 
 class CreateVendorSessionHelper : public DistributedObjectClassHelper, public Singleton<CreateVendorSessionHelper> {

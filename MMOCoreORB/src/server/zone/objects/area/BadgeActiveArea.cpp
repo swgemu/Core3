@@ -261,13 +261,19 @@ void BadgeActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETBADGE__INT_:
-		setBadge(inv->getUnsignedIntParameter());
+		{
+			setBadge(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETBADGE__:
-		resp->insertInt(getBadge());
+		{
+			resp->insertInt(getBadge());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

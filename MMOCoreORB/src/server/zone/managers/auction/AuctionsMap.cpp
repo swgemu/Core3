@@ -674,58 +674,94 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GETVENDORITEMCOUNT__:
-		resp->insertSignedInt(getVendorItemCount());
+		{
+			resp->insertSignedInt(getVendorItemCount());
+		}
 		break;
 	case RPC_CONTAINSVENDORITEM__LONG_:
-		resp->insertBoolean(containsVendorItem(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(containsVendorItem(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ADDVENDORITEM__LONG_AUCTIONITEM_:
-		addVendorItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
+		{
+			addVendorItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETPLAYERVENDORITEMCOUNT__LONG_:
-		resp->insertSignedInt(getPlayerVendorItemCount(inv->getUnsignedLongParameter()));
+		{
+			resp->insertSignedInt(getPlayerVendorItemCount(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_DROPVENDORITEM__LONG_:
-		dropVendorItem(inv->getUnsignedLongParameter());
+		{
+			dropVendorItem(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETVENDORITEM__LONG_:
-		resp->insertLong(getVendorItem(inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(getVendorItem(inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETVENDORITEM__INT_:
-		resp->insertLong(getVendorItem(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getVendorItem(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_INCREASEPLAYERVENDORCOUNT__LONG_:
-		increasePlayerVendorCount(inv->getUnsignedLongParameter());
+		{
+			increasePlayerVendorCount(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_DECREASEPLAYERVENDORCOUNT__LONG_:
-		decreasePlayerVendorCount(inv->getUnsignedLongParameter());
+		{
+			decreasePlayerVendorCount(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETPLAYERVENDORCOUNT__LONG_:
-		resp->insertSignedInt(getPlayerVendorCount(inv->getUnsignedLongParameter()));
+		{
+			resp->insertSignedInt(getPlayerVendorCount(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETAUCTIONCOUNT__:
-		resp->insertSignedInt(getAuctionCount());
+		{
+			resp->insertSignedInt(getAuctionCount());
+		}
 		break;
 	case RPC_CONTAINSAUCTION__LONG_:
-		resp->insertBoolean(containsAuction(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(containsAuction(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ADDBAZAARITEM__LONG_AUCTIONITEM_:
-		addBazaarItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
+		{
+			addBazaarItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETPLAYERAUCTIONCOUNT__LONG_:
-		resp->insertSignedInt(getPlayerAuctionCount(inv->getUnsignedLongParameter()));
+		{
+			resp->insertSignedInt(getPlayerAuctionCount(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_DROPBAZAARITEM__LONG_:
-		dropBazaarItem(inv->getUnsignedLongParameter());
+		{
+			dropBazaarItem(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETBAZAARITEM__LONG_:
-		resp->insertLong(getBazaarItem(inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(getBazaarItem(inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETBAZAARITEM__INT_:
-		resp->insertLong(getBazaarItem(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getBazaarItem(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_CHECKINSTOCKROOM__LONG_:
-		resp->insertBoolean(checkInStockroom(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(checkInStockroom(inv->getUnsignedLongParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

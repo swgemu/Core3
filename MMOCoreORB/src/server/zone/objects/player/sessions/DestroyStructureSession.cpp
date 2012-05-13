@@ -343,25 +343,39 @@ void DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case RPC_ISDESTROYCODE__INT_:
-		resp->insertBoolean(isDestroyCode(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(isDestroyCode(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_SENDDESTROYCODE__:
-		resp->insertSignedInt(sendDestroyCode());
+		{
+			resp->insertSignedInt(sendDestroyCode());
+		}
 		break;
 	case RPC_DESTROYSTRUCTURE__:
-		resp->insertSignedInt(destroyStructure());
+		{
+			resp->insertSignedInt(destroyStructure());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_GETSTRUCTUREOBJECT__:
-		resp->insertLong(getStructureObject()->_getObjectID());
+		{
+			resp->insertLong(getStructureObject()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

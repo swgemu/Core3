@@ -280,6 +280,7 @@ String GuildObject::getGuildAbbrev() {
 
 		DistributedMethod method(this, RPC_GETGUILDABBREV__);
 
+		String _return_getGuildAbbrev;
 		method.executeWithAsciiReturn(_return_getGuildAbbrev);
 		return _return_getGuildAbbrev;
 	} else
@@ -363,6 +364,7 @@ String GuildObject::getGuildName() {
 
 		DistributedMethod method(this, RPC_GETGUILDNAME__);
 
+		String _return_getGuildName;
 		method.executeWithAsciiReturn(_return_getGuildName);
 		return _return_getGuildName;
 	} else
@@ -377,6 +379,7 @@ String GuildObject::getGuildKey() {
 
 		DistributedMethod method(this, RPC_GETGUILDKEY__);
 
+		String _return_getGuildKey;
 		method.executeWithAsciiReturn(_return_getGuildKey);
 		return _return_getGuildKey;
 	} else
@@ -863,103 +866,171 @@ void GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		{
+			broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_:
-		broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BaseMessage*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BaseMessage*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDMEMBER__LONG_:
-		addMember(inv->getUnsignedLongParameter());
+		{
+			addMember(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVEMEMBER__LONG_:
-		removeMember(inv->getUnsignedLongParameter());
+		{
+			removeMember(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HASMEMBER__LONG_:
-		resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETMEMBER__INT_:
-		resp->insertLong(getMember(inv->getSignedIntParameter()));
+		{
+			resp->insertLong(getMember(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ADDSPONSOREDPLAYER__LONG_:
-		addSponsoredPlayer(inv->getUnsignedLongParameter());
+		{
+			addSponsoredPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVESPONSOREDPLAYER__LONG_:
-		removeSponsoredPlayer(inv->getUnsignedLongParameter());
+		{
+			removeSponsoredPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HASSPONSOREDPLAYER__LONG_:
-		resp->insertBoolean(hasSponsoredPlayer(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasSponsoredPlayer(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETSPONSOREDPLAYER__INT_:
-		resp->insertLong(getSponsoredPlayer(inv->getSignedIntParameter()));
+		{
+			resp->insertLong(getSponsoredPlayer(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETSPONSOREDPLAYERCOUNT__:
-		resp->insertSignedInt(getSponsoredPlayerCount());
+		{
+			resp->insertSignedInt(getSponsoredPlayerCount());
+		}
 		break;
 	case RPC_SETCHATROOM__CHATROOM_:
-		setChatRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			setChatRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCHATROOM__:
-		resp->insertLong(getChatRoom()->_getObjectID());
+		{
+			resp->insertLong(getChatRoom()->_getObjectID());
+		}
 		break;
 	case RPC_GETTOTALMEMBERS__:
-		resp->insertSignedInt(getTotalMembers());
+		{
+			resp->insertSignedInt(getTotalMembers());
+		}
 		break;
 	case RPC_GETGUILDLEADERID__:
-		resp->insertLong(getGuildLeaderID());
+		{
+			resp->insertLong(getGuildLeaderID());
+		}
 		break;
 	case RPC_GETGUILDABBREV__:
-		resp->insertAscii(getGuildAbbrev());
+		{
+			resp->insertAscii(getGuildAbbrev());
+		}
 		break;
 	case RPC_SETGUILDABBREV__STRING_:
-		setGuildAbbrev(inv->getAsciiParameter(_param0_setGuildAbbrev__String_));
+		{
+			String abbrev; 
+			setGuildAbbrev(inv->getAsciiParameter(abbrev));
+		}
 		break;
 	case RPC_SETGUILDLEADERID__LONG_:
-		setGuildLeaderID(inv->getUnsignedLongParameter());
+		{
+			setGuildLeaderID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETGUILDID__INT_:
-		setGuildID(inv->getUnsignedIntParameter());
+		{
+			setGuildID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETGUILDID__:
-		resp->insertInt(getGuildID());
+		{
+			resp->insertInt(getGuildID());
+		}
 		break;
 	case RPC_SETGUILDNAME__STRING_:
-		setGuildName(inv->getAsciiParameter(_param0_setGuildName__String_));
+		{
+			String gname; 
+			setGuildName(inv->getAsciiParameter(gname));
+		}
 		break;
 	case RPC_GETGUILDNAME__:
-		resp->insertAscii(getGuildName());
+		{
+			resp->insertAscii(getGuildName());
+		}
 		break;
 	case RPC_GETGUILDKEY__:
-		resp->insertAscii(getGuildKey());
+		{
+			resp->insertAscii(getGuildKey());
+		}
 		break;
 	case RPC_ISGUILDOBJECT__:
-		resp->insertBoolean(isGuildObject());
+		{
+			resp->insertBoolean(isGuildObject());
+		}
 		break;
 	case RPC_ISGUILDLEADER__CREATUREOBJECT_:
-		resp->insertBoolean(isGuildLeader(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isGuildLeader(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASMAILPERMISSION__LONG_:
-		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASSPONSORPERMISSION__LONG_:
-		resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasSponsorPermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASACCEPTPERMISSION__LONG_:
-		resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasAcceptPermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASDISBANDPERMISSION__LONG_:
-		resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasDisbandPermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASKICKPERMISSION__LONG_:
-		resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasKickPermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASNAMEPERMISSION__LONG_:
-		resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasNamePermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASTITLEPERMISSION__LONG_:
-		resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

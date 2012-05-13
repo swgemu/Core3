@@ -267,6 +267,7 @@ String ZoneServer::getInfo() {
 
 		DistributedMethod method(this, RPC_GETINFO__);
 
+		String _return_getInfo;
 		method.executeWithAsciiReturn(_return_getInfo);
 		return _return_getInfo;
 	} else
@@ -502,6 +503,7 @@ String ZoneServer::getGalaxyName() {
 
 		DistributedMethod method(this, RPC_GETGALAXYNAME__);
 
+		String _return_getGalaxyName;
 		method.executeWithAsciiReturn(_return_getGalaxyName);
 		return _return_getGalaxyName;
 	} else
@@ -926,6 +928,7 @@ String ZoneServer::getLoginMessage() {
 
 		DistributedMethod method(this, RPC_GETLOGINMESSAGE__);
 
+		String _return_getLoginMessage;
 		method.executeWithAsciiReturn(_return_getLoginMessage);
 		return _return_getLoginMessage;
 	} else
@@ -1485,181 +1488,302 @@ void ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_SHUTDOWN__:
-		shutdown();
+		{
+			shutdown();
+		}
 		break;
 	case RPC_STARTMANAGERS__:
-		startManagers();
+		{
+			startManagers();
+		}
 		break;
 	case RPC_STARTZONES__:
-		startZones();
+		{
+			startZones();
+		}
 		break;
 	case RPC_STOPMANAGERS__:
-		stopManagers();
+		{
+			stopManagers();
+		}
 		break;
 	case RPC_START__INT_INT_:
-		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STOP__:
-		stop();
+		{
+			stop();
+		}
 		break;
 	case RPC_ADDTOTALSENTPACKET__INT_:
-		addTotalSentPacket(inv->getSignedIntParameter());
+		{
+			addTotalSentPacket(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDTOTALRESENTPACKET__INT_:
-		addTotalResentPacket(inv->getSignedIntParameter());
+		{
+			addTotalResentPacket(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_PRINTINFO__:
-		printInfo();
+		{
+			printInfo();
+		}
 		break;
 	case RPC_GETINFO__:
-		resp->insertAscii(getInfo());
+		{
+			resp->insertAscii(getInfo());
+		}
 		break;
 	case RPC_PRINTEVENTS__:
-		printEvents();
+		{
+			printEvents();
+		}
 		break;
 	case RPC_GETOBJECT__LONG_BOOL_:
-		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_CREATEOBJECT__INT_INT_LONG_:
-		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_CREATECLIENTOBJECT__INT_LONG_:
-		resp->insertLong(createClientObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(createClientObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_:
-		updateObjectToDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			updateObjectToDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_:
-		updateObjectToStaticDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			updateObjectToStaticDatabase(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__LONG_:
-		destroyObjectFromDatabase(inv->getUnsignedLongParameter());
+		{
+			destroyObjectFromDatabase(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_LOCK__BOOL_:
-		lock(inv->getBooleanParameter());
+		{
+			lock(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UNLOCK__BOOL_:
-		unlock(inv->getBooleanParameter());
+		{
+			unlock(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_FIXSCHEDULER__:
-		fixScheduler();
+		{
+			fixScheduler();
+		}
 		break;
 	case RPC_CHANGEUSERCAP__INT_:
-		changeUserCap(inv->getSignedIntParameter());
+		{
+			changeUserCap(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETCONNECTIONCOUNT__:
-		resp->insertSignedInt(getConnectionCount());
+		{
+			resp->insertSignedInt(getConnectionCount());
+		}
 		break;
 	case RPC_INCREASEONLINEPLAYERS__:
-		increaseOnlinePlayers();
+		{
+			increaseOnlinePlayers();
+		}
 		break;
 	case RPC_DECREASEONLINEPLAYERS__:
-		decreaseOnlinePlayers();
+		{
+			decreaseOnlinePlayers();
+		}
 		break;
 	case RPC_INCREASETOTALDELETEDPLAYERS__:
-		increaseTotalDeletedPlayers();
+		{
+			increaseTotalDeletedPlayers();
+		}
 		break;
 	case RPC_GETGALAXYID__:
-		resp->insertSignedInt(getGalaxyID());
+		{
+			resp->insertSignedInt(getGalaxyID());
+		}
 		break;
 	case RPC_GETGALAXYNAME__:
-		resp->insertAscii(getGalaxyName());
+		{
+			resp->insertAscii(getGalaxyName());
+		}
 		break;
 	case RPC_SETGALAXYNAME__STRING_:
-		setGalaxyName(inv->getAsciiParameter(_param0_setGalaxyName__String_));
+		{
+			String name; 
+			setGalaxyName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_ISSERVERLOCKED__:
-		resp->insertBoolean(isServerLocked());
+		{
+			resp->insertBoolean(isServerLocked());
+		}
 		break;
 	case RPC_ISSERVERONLINE__:
-		resp->insertBoolean(isServerOnline());
+		{
+			resp->insertBoolean(isServerOnline());
+		}
 		break;
 	case RPC_ISSERVEROFFLINE__:
-		resp->insertBoolean(isServerOffline());
+		{
+			resp->insertBoolean(isServerOffline());
+		}
 		break;
 	case RPC_ISSERVERLOADING__:
-		resp->insertBoolean(isServerLoading());
+		{
+			resp->insertBoolean(isServerLoading());
+		}
 		break;
 	case RPC_GETSERVERSTATE__:
-		resp->insertSignedInt(getServerState());
+		{
+			resp->insertSignedInt(getServerState());
+		}
 		break;
 	case RPC_GETZONE__STRING_:
-		resp->insertLong(getZone(inv->getAsciiParameter(_param0_getZone__String_))->_getObjectID());
+		{
+			String terrainName; 
+			resp->insertLong(getZone(inv->getAsciiParameter(terrainName))->_getObjectID());
+		}
 		break;
 	case RPC_GETZONE__INT_:
-		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETZONECOUNT__:
-		resp->insertSignedInt(getZoneCount());
+		{
+			resp->insertSignedInt(getZoneCount());
+		}
 		break;
 	case RPC_GETMAXPLAYERS__:
-		resp->insertSignedInt(getMaxPlayers());
+		{
+			resp->insertSignedInt(getMaxPlayers());
+		}
 		break;
 	case RPC_GETTOTALPLAYERS__:
-		resp->insertSignedInt(getTotalPlayers());
+		{
+			resp->insertSignedInt(getTotalPlayers());
+		}
 		break;
 	case RPC_GETDELETEDPLAYERS__:
-		resp->insertSignedInt(getDeletedPlayers());
+		{
+			resp->insertSignedInt(getDeletedPlayers());
+		}
 		break;
 	case RPC_GETPLAYERMANAGER__:
-		resp->insertLong(getPlayerManager()->_getObjectID());
+		{
+			resp->insertLong(getPlayerManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETCHATMANAGER__:
-		resp->insertLong(getChatManager()->_getObjectID());
+		{
+			resp->insertLong(getChatManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETCITYMANAGER__:
-		resp->insertLong(getCityManager()->_getObjectID());
+		{
+			resp->insertLong(getCityManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETOBJECTCONTROLLER__:
-		resp->insertLong(getObjectController()->_getObjectID());
+		{
+			resp->insertLong(getObjectController()->_getObjectID());
+		}
 		break;
 	case RPC_GETMISSIONMANAGER__:
-		resp->insertLong(getMissionManager()->_getObjectID());
+		{
+			resp->insertLong(getMissionManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETRADIALMANAGER__:
-		resp->insertLong(getRadialManager()->_getObjectID());
+		{
+			resp->insertLong(getRadialManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETGUILDMANAGER__:
-		resp->insertLong(getGuildManager()->_getObjectID());
+		{
+			resp->insertLong(getGuildManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETRESOURCEMANAGER__:
-		resp->insertLong(getResourceManager()->_getObjectID());
+		{
+			resp->insertLong(getResourceManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETCRAFTINGMANAGER__:
-		resp->insertLong(getCraftingManager()->_getObjectID());
+		{
+			resp->insertLong(getCraftingManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETLOOTMANAGER__:
-		resp->insertLong(getLootManager()->_getObjectID());
+		{
+			resp->insertLong(getLootManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETAUCTIONMANAGER__:
-		resp->insertLong(getAuctionManager()->_getObjectID());
+		{
+			resp->insertLong(getAuctionManager()->_getObjectID());
+		}
 		break;
 	case RPC_SETGALAXYID__INT_:
-		setGalaxyID(inv->getSignedIntParameter());
+		{
+			setGalaxyID(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSERVERSTATE__INT_:
-		setServerState(inv->getSignedIntParameter());
+		{
+			setServerState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSERVERSTATELOCKED__:
-		setServerStateLocked();
+		{
+			setServerStateLocked();
+		}
 		break;
 	case RPC_SETSERVERSTATEONLINE__:
-		setServerStateOnline();
+		{
+			setServerStateOnline();
+		}
 		break;
 	case RPC_LOADLOGINMESSAGE__:
-		loadLoginMessage();
+		{
+			loadLoginMessage();
+		}
 		break;
 	case RPC_CHANGELOGINMESSAGE__STRING_:
-		changeLoginMessage(inv->getAsciiParameter(_param0_changeLoginMessage__String_));
+		{
+			String motd; 
+			changeLoginMessage(inv->getAsciiParameter(motd));
+		}
 		break;
 	case RPC_GETLOGINMESSAGE__:
-		resp->insertAscii(getLoginMessage());
+		{
+			resp->insertAscii(getLoginMessage());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

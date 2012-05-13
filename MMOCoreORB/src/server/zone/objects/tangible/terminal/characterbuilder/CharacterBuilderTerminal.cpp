@@ -261,19 +261,29 @@ void CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, DistributedMet
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
-		sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GIVELANGUAGES__CREATUREOBJECT_:
-		giveLanguages(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			giveLanguages(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ENHANCECHARACTER__CREATUREOBJECT_:
-		enhanceCharacter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			enhanceCharacter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

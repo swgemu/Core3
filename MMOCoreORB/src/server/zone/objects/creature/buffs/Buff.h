@@ -176,10 +176,6 @@ protected:
 
 	virtual ~Buff();
 
-	String _return_getAttributeModifierString;
-	String _return_getBuffName;
-	String _return_getSkillModifierString;
-
 	friend class BuffHelper;
 };
 
@@ -463,15 +459,6 @@ public:
 
 	void setEndFlyText(const String& file, const String& aux, byte red, byte green, byte blue);
 
-protected:
-	String _param0_parseAttributeModifierString__String_;
-	String _param0_parseSkillModifierString__String_;
-	String _param0_setSkillModifier__String_int_;
-	String _param0_getSkillModifierValue__String_;
-	String _param0_setStartFlyText__String_String_byte_byte_byte_;
-	String _param1_setStartFlyText__String_String_byte_byte_byte_;
-	String _param0_setEndFlyText__String_String_byte_byte_byte_;
-	String _param1_setEndFlyText__String_String_byte_byte_byte_;
 };
 
 class BuffHelper : public DistributedObjectClassHelper, public Singleton<BuffHelper> {

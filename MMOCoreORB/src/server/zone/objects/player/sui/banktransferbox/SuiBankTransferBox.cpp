@@ -396,19 +396,29 @@ void SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_ADDCASH__INT_:
-		addCash(inv->getSignedIntParameter());
+		{
+			addCash(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDBANK__INT_:
-		addBank(inv->getSignedIntParameter());
+		{
+			addBank(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETBANK__:
-		resp->insertLong(getBank()->_getObjectID());
+		{
+			resp->insertLong(getBank()->_getObjectID());
+		}
 		break;
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ISBANKTRANSFERBOX__:
-		resp->insertBoolean(isBankTransferBox());
+		{
+			resp->insertBoolean(isBankTransferBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

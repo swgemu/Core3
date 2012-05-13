@@ -718,6 +718,7 @@ String WeaponObject::getXpType() {
 
 		DistributedMethod method(this, RPC_GETXPTYPE__);
 
+		String _return_getXpType;
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
 	} else
@@ -732,6 +733,7 @@ String WeaponObject::getWeaponType() {
 
 		DistributedMethod method(this, RPC_GETWEAPONTYPE__);
 
+		String _return_getWeaponType;
 		method.executeWithAsciiReturn(_return_getWeaponType);
 		return _return_getWeaponType;
 	} else
@@ -1049,6 +1051,7 @@ String WeaponObject::repairAttempt(int repairChance) {
 		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
 		method.addSignedIntParameter(repairChance);
 
+		String _return_repairAttempt;
 		method.executeWithAsciiReturn(_return_repairAttempt);
 		return _return_repairAttempt;
 	} else
@@ -1911,217 +1914,359 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDCONTAINERTO__CREATUREOBJECT_:
-		sendContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_ISCERTIFIEDFOR__CREATUREOBJECT_:
-		resp->insertBoolean(isCertifiedFor(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isCertifiedFor(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETCERTIFIED__BOOL_:
-		setCertified(inv->getBooleanParameter());
+		{
+			setCertified(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETATTACKTYPE__:
-		resp->insertSignedInt(getAttackType());
+		{
+			resp->insertSignedInt(getAttackType());
+		}
 		break;
 	case RPC_SETATTACKTYPE__INT_:
-		setAttackType(inv->getSignedIntParameter());
+		{
+			setAttackType(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISCERTIFIED__:
-		resp->insertBoolean(isCertified());
+		{
+			resp->insertBoolean(isCertified());
+		}
 		break;
 	case RPC_GETPOINTBLANKACCURACY__BOOL_:
-		resp->insertSignedInt(getPointBlankAccuracy(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getPointBlankAccuracy(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETPOINTBLANKACCURACY__INT_:
-		setPointBlankAccuracy(inv->getSignedIntParameter());
+		{
+			setPointBlankAccuracy(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETPOINTBLANKRANGE__BOOL_:
-		resp->insertSignedInt(getPointBlankRange(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getPointBlankRange(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_GETIDEALRANGE__BOOL_:
-		resp->insertSignedInt(getIdealRange(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getIdealRange(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETIDEALRANGE__INT_:
-		setIdealRange(inv->getSignedIntParameter());
+		{
+			setIdealRange(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMAXRANGE__BOOL_:
-		resp->insertSignedInt(getMaxRange(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getMaxRange(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMAXRANGE__INT_:
-		setMaxRange(inv->getSignedIntParameter());
+		{
+			setMaxRange(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETIDEALACCURACY__BOOL_:
-		resp->insertSignedInt(getIdealAccuracy(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getIdealAccuracy(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETIDEALACCURACY__INT_:
-		setIdealAccuracy(inv->getSignedIntParameter());
+		{
+			setIdealAccuracy(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETARMORPIERCING__:
-		resp->insertSignedInt(getArmorPiercing());
+		{
+			resp->insertSignedInt(getArmorPiercing());
+		}
 		break;
 	case RPC_GETMAXRANGEACCURACY__BOOL_:
-		resp->insertSignedInt(getMaxRangeAccuracy(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getMaxRangeAccuracy(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMAXRANGEACCURACY__INT_:
-		setMaxRangeAccuracy(inv->getSignedIntParameter());
+		{
+			setMaxRangeAccuracy(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETATTACKSPEED__BOOL_:
-		resp->insertFloat(getAttackSpeed(inv->getBooleanParameter()));
+		{
+			resp->insertFloat(getAttackSpeed(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETATTACKSPEED__FLOAT_:
-		setAttackSpeed(inv->getFloatParameter());
+		{
+			setAttackSpeed(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETMAXDAMAGE__BOOL_:
-		resp->insertFloat(getMaxDamage(inv->getBooleanParameter()));
+		{
+			resp->insertFloat(getMaxDamage(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMAXDAMAGE__FLOAT_:
-		setMaxDamage(inv->getFloatParameter());
+		{
+			setMaxDamage(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETMINDAMAGE__BOOL_:
-		resp->insertFloat(getMinDamage(inv->getBooleanParameter()));
+		{
+			resp->insertFloat(getMinDamage(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMINDAMAGE__FLOAT_:
-		setMinDamage(inv->getFloatParameter());
+		{
+			setMinDamage(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETWOUNDSRATIO__BOOL_:
-		resp->insertFloat(getWoundsRatio(inv->getBooleanParameter()));
+		{
+			resp->insertFloat(getWoundsRatio(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETWOUNDSRATIO__FLOAT_:
-		setWoundsRatio(inv->getFloatParameter());
+		{
+			setWoundsRatio(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETDAMAGERADIUS__BOOL_:
-		resp->insertFloat(getDamageRadius(inv->getBooleanParameter()));
+		{
+			resp->insertFloat(getDamageRadius(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETDAMAGERADIUS__FLOAT_:
-		setDamageRadius(inv->getFloatParameter());
+		{
+			setDamageRadius(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETHEALTHATTACKCOST__BOOL_:
-		resp->insertSignedInt(getHealthAttackCost(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getHealthAttackCost(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETHEALTHATTACKCOST__INT_:
-		setHealthAttackCost(inv->getSignedIntParameter());
+		{
+			setHealthAttackCost(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETACTIONATTACKCOST__BOOL_:
-		resp->insertSignedInt(getActionAttackCost(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getActionAttackCost(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETACTIONATTACKCOST__INT_:
-		setActionAttackCost(inv->getSignedIntParameter());
+		{
+			setActionAttackCost(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMINDATTACKCOST__BOOL_:
-		resp->insertSignedInt(getMindAttackCost(inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(getMindAttackCost(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMINDATTACKCOST__INT_:
-		setMindAttackCost(inv->getSignedIntParameter());
+		{
+			setMindAttackCost(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETFORCECOST__:
-		resp->insertSignedInt(getForceCost());
+		{
+			resp->insertSignedInt(getForceCost());
+		}
 		break;
 	case RPC_SETFORCECOST__INT_:
-		setForceCost(inv->getSignedIntParameter());
+		{
+			setForceCost(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETBLADECOLOR__:
-		resp->insertSignedInt(getBladeColor());
+		{
+			resp->insertSignedInt(getBladeColor());
+		}
 		break;
 	case RPC_SETBLADECOLOR__INT_:
-		setBladeColor(inv->getSignedIntParameter());
+		{
+			setBladeColor(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETDAMAGETYPE__:
-		resp->insertSignedInt(getDamageType());
+		{
+			resp->insertSignedInt(getDamageType());
+		}
 		break;
 	case RPC_GETXPTYPE__:
-		resp->insertAscii(getXpType());
+		{
+			resp->insertAscii(getXpType());
+		}
 		break;
 	case RPC_GETWEAPONTYPE__:
-		resp->insertAscii(getWeaponType());
+		{
+			resp->insertAscii(getWeaponType());
+		}
 		break;
 	case RPC_ISUNARMEDWEAPON__:
-		resp->insertBoolean(isUnarmedWeapon());
+		{
+			resp->insertBoolean(isUnarmedWeapon());
+		}
 		break;
 	case RPC_ISMELEEWEAPON__:
-		resp->insertBoolean(isMeleeWeapon());
+		{
+			resp->insertBoolean(isMeleeWeapon());
+		}
 		break;
 	case RPC_ISRANGEDWEAPON__:
-		resp->insertBoolean(isRangedWeapon());
+		{
+			resp->insertBoolean(isRangedWeapon());
+		}
 		break;
 	case RPC_ISRIFLEWEAPON__:
-		resp->insertBoolean(isRifleWeapon());
+		{
+			resp->insertBoolean(isRifleWeapon());
+		}
 		break;
 	case RPC_ISTHROWNWEAPON__:
-		resp->insertBoolean(isThrownWeapon());
+		{
+			resp->insertBoolean(isThrownWeapon());
+		}
 		break;
 	case RPC_ISHEAVYWEAPON__:
-		resp->insertBoolean(isHeavyWeapon());
+		{
+			resp->insertBoolean(isHeavyWeapon());
+		}
 		break;
 	case RPC_ISSPECIALHEAVYWEAPON__:
-		resp->insertBoolean(isSpecialHeavyWeapon());
+		{
+			resp->insertBoolean(isSpecialHeavyWeapon());
+		}
 		break;
 	case RPC_ISLIGHTNINGRIFLE__:
-		resp->insertBoolean(isLightningRifle());
+		{
+			resp->insertBoolean(isLightningRifle());
+		}
 		break;
 	case RPC_ISCARBINEWEAPON__:
-		resp->insertBoolean(isCarbineWeapon());
+		{
+			resp->insertBoolean(isCarbineWeapon());
+		}
 		break;
 	case RPC_ISPISTOLWEAPON__:
-		resp->insertBoolean(isPistolWeapon());
+		{
+			resp->insertBoolean(isPistolWeapon());
+		}
 		break;
 	case RPC_ISONEHANDMELEEWEAPON__:
-		resp->insertBoolean(isOneHandMeleeWeapon());
+		{
+			resp->insertBoolean(isOneHandMeleeWeapon());
+		}
 		break;
 	case RPC_ISPOLEARMWEAPONOBJECT__:
-		resp->insertBoolean(isPolearmWeaponObject());
+		{
+			resp->insertBoolean(isPolearmWeaponObject());
+		}
 		break;
 	case RPC_ISTWOHANDMELEEWEAPON__:
-		resp->insertBoolean(isTwoHandMeleeWeapon());
+		{
+			resp->insertBoolean(isTwoHandMeleeWeapon());
+		}
 		break;
 	case RPC_ISMINEWEAPON__:
-		resp->insertBoolean(isMineWeapon());
+		{
+			resp->insertBoolean(isMineWeapon());
+		}
 		break;
 	case RPC_ISJEDIWEAPON__:
-		resp->insertBoolean(isJediWeapon());
+		{
+			resp->insertBoolean(isJediWeapon());
+		}
 		break;
 	case RPC_ISJEDIONEHANDEDWEAPON__:
-		resp->insertBoolean(isJediOneHandedWeapon());
+		{
+			resp->insertBoolean(isJediOneHandedWeapon());
+		}
 		break;
 	case RPC_ISJEDITWOHANDEDWEAPON__:
-		resp->insertBoolean(isJediTwoHandedWeapon());
+		{
+			resp->insertBoolean(isJediTwoHandedWeapon());
+		}
 		break;
 	case RPC_ISJEDIPOLEARMWEAPON__:
-		resp->insertBoolean(isJediPolearmWeapon());
+		{
+			resp->insertBoolean(isJediPolearmWeapon());
+		}
 		break;
 	case RPC_ISWEAPONOBJECT__:
-		resp->insertBoolean(isWeaponObject());
+		{
+			resp->insertBoolean(isWeaponObject());
+		}
 		break;
 	case RPC_HASPOWERUP__:
-		resp->insertBoolean(hasPowerup());
+		{
+			resp->insertBoolean(hasPowerup());
+		}
 		break;
 	case RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_:
-		applyPowerup(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<PowerupObject*>(inv->getObjectParameter()));
+		{
+			applyPowerup(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<PowerupObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEPOWERUP__:
-		resp->insertLong(removePowerup()->_getObjectID());
+		{
+			resp->insertLong(removePowerup()->_getObjectID());
+		}
 		break;
 	case RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_:
-		decreasePowerupUses(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			decreasePowerupUses(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REPAIRATTEMPT__INT_:
-		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_DECAY__CREATUREOBJECT_FLOAT_:
-		decay(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter());
+		{
+			decay(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETDAMAGESLICE__FLOAT_:
-		setDamageSlice(inv->getFloatParameter());
+		{
+			setDamageSlice(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETSPEEDSLICE__FLOAT_:
-		setSpeedSlice(inv->getFloatParameter());
+		{
+			setSpeedSlice(inv->getFloatParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

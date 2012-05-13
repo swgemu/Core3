@@ -58,8 +58,6 @@ protected:
 
 	virtual ~RobeObject();
 
-	String _return_getSkillRequired;
-
 	friend class RobeObjectHelper;
 };
 

@@ -124,11 +124,6 @@ protected:
 
 	virtual ~TicketObject();
 
-	String _return_getArrivalPlanet;
-	String _return_getArrivalPoint;
-	String _return_getDeparturePlanet;
-	String _return_getDeparturePoint;
-
 	friend class TicketObjectHelper;
 };
 
@@ -250,11 +245,6 @@ public:
 
 	bool isTicketObject();
 
-protected:
-	String _param0_setDeparturePlanet__String_;
-	String _param0_setDeparturePoint__String_;
-	String _param0_setArrivalPlanet__String_;
-	String _param0_setArrivalPoint__String_;
 };
 
 class TicketObjectHelper : public DistributedObjectClassHelper, public Singleton<TicketObjectHelper> {

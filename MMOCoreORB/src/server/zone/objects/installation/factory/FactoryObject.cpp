@@ -224,6 +224,7 @@ String FactoryObject::getRedeedMessage() {
 
 		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
 
+		String _return_getRedeedMessage;
 		method.executeWithAsciiReturn(_return_getRedeedMessage);
 		return _return_getRedeedMessage;
 	} else
@@ -445,43 +446,69 @@ void FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_ISFACTORY__:
-		resp->insertBoolean(isFactory());
+		{
+			resp->insertBoolean(isFactory());
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_SENDINSERTMANUSUI__CREATUREOBJECT_:
-		sendInsertManuSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendInsertManuSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_:
-		sendIngredientsNeededSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendIngredientsNeededSui(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_:
-		sendIngredientHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendIngredientHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_:
-		sendOutputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendOutputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_:
-		handleInsertFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
+		{
+			handleInsertFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_:
-		handleRemoveFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleRemoveFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_:
-		handleOperateToggle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleOperateToggle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATENEWOBJECT__:
-		createNewObject();
+		{
+			createNewObject();
+		}
 		break;
 	case RPC_GETREDEEDMESSAGE__:
-		resp->insertAscii(getRedeedMessage());
+		{
+			resp->insertAscii(getRedeedMessage());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

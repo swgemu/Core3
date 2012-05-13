@@ -775,20 +775,6 @@ protected:
 
 	virtual ~PlayerObject();
 
-	String _return_getBankLocation;
-	String _return_getCommandMessageString;
-	String _return_getConsentName;
-	String _return_getFactionRank;
-	String _return_getLastNpcConvMessStr;
-	String _return_getLastNpcConvOption;
-	String _return_getLastNpcConvStr;
-	String _return_getSavedTerrainName;
-	String _return_getScreenPlayData;
-	String _return_getStarterProfession;
-	String _return_getTitle;
-
-	UnicodeString _return_getBiography;
-
 	friend class PlayerObjectHelper;
 };
 
@@ -1850,41 +1836,6 @@ public:
 
 	void setVisibility(float value);
 
-protected:
-	String _param0_addExperience__String_int_bool_;
-	String _param0_removeExperience__String_bool_;
-	String _param0_addFriend__String_bool_;
-	String _param0_removeFriend__String_bool_;
-	String _param0_addIgnore__String_bool_;
-	String _param0_removeIgnore__String_bool_;
-	String _param0_setTitle__String_bool_;
-	String _param0_increaseFactionStanding__String_float_;
-	String _param0_decreaseFactionStanding__String_float_;
-	String _param0_getFactionStanding__String_;
-	String _param0_setScreenPlayData__String_String_String_;
-	String _param1_setScreenPlayData__String_String_String_;
-	String _param2_setScreenPlayData__String_String_String_;
-	String _param0_getScreenPlayData__String_String_;
-	String _param1_getScreenPlayData__String_String_;
-	String _param0_clearScreenPlayData__String_;
-	String _param0_setLastNpcConvStr__String_;
-	String _param0_setLastNpcConvMessStr__String_;
-	String _param0_addLastNpcConvOptions__String_;
-	String _param0_addToConsentList__String_;
-	String _param0_hasInConsentList__String_;
-	String _param0_removeFromConsentList__String_;
-	String _param1_setCommandMessageString__int_String_;
-	String _param0_setSavedTerrainName__String_;
-	String _param0_addPermissionGroup__String_;
-	String _param0_removePermissionGroup__String_;
-	String _param0_hasFriend__String_;
-	String _param0_isIgnoring__String_;
-	String _param0_addReverseFriend__String_;
-	String _param0_removeReverseFriend__String_;
-	UnicodeString _param0_setBiography__UnicodeString_;
-	String _param0_setBankLocation__String_;
-	String _param0_getExperience__String_;
-	String _param0_setStarterProfession__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

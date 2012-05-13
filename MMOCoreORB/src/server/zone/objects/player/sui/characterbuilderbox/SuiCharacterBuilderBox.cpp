@@ -235,10 +235,14 @@ void SuiCharacterBuilderBoxAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ISCHARACTERBUILDERBOX__:
-		resp->insertBoolean(isCharacterBuilderBox());
+		{
+			resp->insertBoolean(isCharacterBuilderBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

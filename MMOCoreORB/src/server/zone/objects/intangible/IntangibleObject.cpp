@@ -292,22 +292,34 @@ void IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISINTANGIBLEOBJECT__:
-		resp->insertBoolean(isIntangibleObject());
+		{
+			resp->insertBoolean(isIntangibleObject());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATESTATUS__INT_BOOL_:
-		updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			updateStatus(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETSTATUS__:
-		resp->insertInt(getStatus());
+		{
+			resp->insertInt(getStatus());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

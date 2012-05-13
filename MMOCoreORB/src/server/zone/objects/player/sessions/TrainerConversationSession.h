@@ -74,11 +74,6 @@ protected:
 
 	virtual ~TrainerConversationSession();
 
-	String _return_getMasterSkill;
-	String _return_getNextSkill;
-	String _return_getSelectedSkill;
-	String _return_getTrainableSkills;
-
 	friend class TrainerConversationSessionHelper;
 };
 
@@ -201,11 +196,6 @@ public:
 
 	void setMasterSkill(String& skillName);
 
-protected:
-	String _param0_addTrainableSkill__String_;
-	String _param0_addNextSkill__String_;
-	String _param0_setSelectedSkill__String_;
-	String _param0_setMasterSkill__String_;
 };
 
 class TrainerConversationSessionHelper : public DistributedObjectClassHelper, public Singleton<TrainerConversationSessionHelper> {

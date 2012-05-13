@@ -190,7 +190,9 @@ void FsVillageAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

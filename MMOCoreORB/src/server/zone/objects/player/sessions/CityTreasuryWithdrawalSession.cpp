@@ -342,22 +342,36 @@ void CityTreasuryWithdrawalSessionAdapter::invokeMethod(uint32 methid, Distribut
 
 	switch (methid) {
 	case RPC_SETREASON__STRING_:
-		setReason(inv->getAsciiParameter(_param0_setReason__String_));
+		{
+			String r; 
+			setReason(inv->getAsciiParameter(r));
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_SENDTRANSFERBOX__STRING_:
-		resp->insertSignedInt(sendTransferBox(inv->getAsciiParameter(_param0_sendTransferBox__String_)));
+		{
+			String reason; 
+			resp->insertSignedInt(sendTransferBox(inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_WITHDRAWCREDITS__INT_:
-		resp->insertSignedInt(withdrawCredits(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(withdrawCredits(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

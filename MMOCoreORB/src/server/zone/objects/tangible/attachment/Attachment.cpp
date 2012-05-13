@@ -344,19 +344,29 @@ void AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_INITIALIZEMEMBERS__:
-		initializeMembers();
+		{
+			initializeMembers();
+		}
 		break;
 	case RPC_ISATTACHMENT__:
-		resp->insertBoolean(isAttachment());
+		{
+			resp->insertBoolean(isAttachment());
+		}
 		break;
 	case RPC_ISARMORATTACHMENT__:
-		resp->insertBoolean(isArmorAttachment());
+		{
+			resp->insertBoolean(isArmorAttachment());
+		}
 		break;
 	case RPC_ISCLOTHINGATTACHMENT__:
-		resp->insertBoolean(isClothingAttachment());
+		{
+			resp->insertBoolean(isClothingAttachment());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

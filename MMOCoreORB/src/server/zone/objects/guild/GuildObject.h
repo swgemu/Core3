@@ -175,10 +175,6 @@ protected:
 
 	virtual ~GuildObject();
 
-	String _return_getGuildAbbrev;
-	String _return_getGuildKey;
-	String _return_getGuildName;
-
 	friend class GuildObjectHelper;
 };
 
@@ -414,9 +410,6 @@ public:
 
 	bool hasTitlePermission(unsigned long long playerID);
 
-protected:
-	String _param0_setGuildAbbrev__String_;
-	String _param0_setGuildName__String_;
 };
 
 class GuildObjectHelper : public DistributedObjectClassHelper, public Singleton<GuildObjectHelper> {

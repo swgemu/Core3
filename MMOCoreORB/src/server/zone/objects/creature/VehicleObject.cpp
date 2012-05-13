@@ -491,52 +491,84 @@ void VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_CHECKINRANGEGARAGE__:
-		resp->insertBoolean(checkInRangeGarage());
+		{
+			resp->insertBoolean(checkInRangeGarage());
+		}
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETPOSTURE__INT_BOOL_:
-		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		{
+			sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
-		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_ADDDEFENDER__SCENEOBJECT_:
-		addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
-		removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETDEFENDER__SCENEOBJECT_:
-		setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_REPAIRVEHICLE__CREATUREOBJECT_:
-		repairVehicle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			repairVehicle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_:
-		resp->insertSignedInt(calculateRepairCost(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(calculateRepairCost(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_:
-		sendRepairConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendRepairConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISVEHICLEOBJECT__:
-		resp->insertBoolean(isVehicleObject());
+		{
+			resp->insertBoolean(isVehicleObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

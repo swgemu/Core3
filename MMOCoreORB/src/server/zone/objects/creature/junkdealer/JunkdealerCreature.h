@@ -100,8 +100,6 @@ protected:
 
 	virtual ~JunkdealerCreature();
 
-	String _return_getLocation;
-
 	friend class JunkdealerCreatureHelper;
 };
 
@@ -219,8 +217,6 @@ public:
 
 	void createSellJunkLootSelection(CreatureObject* player);
 
-protected:
-	String _param0_setLocation__String_;
 };
 
 class JunkdealerCreatureHelper : public DistributedObjectClassHelper, public Singleton<JunkdealerCreatureHelper> {

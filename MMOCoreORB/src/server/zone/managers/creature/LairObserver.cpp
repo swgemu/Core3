@@ -360,25 +360,39 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_:
-		notifyDestruction(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			notifyDestruction(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_:
-		checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_:
-		healLair(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			healLair(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_:
-		checkForHeal(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			checkForHeal(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETDIFFICULTY__INT_INT_:
-		setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISLAIROBSERVER__:
-		resp->insertBoolean(isLairObserver());
+		{
+			resp->insertBoolean(isLairObserver());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

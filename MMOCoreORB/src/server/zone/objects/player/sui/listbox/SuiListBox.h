@@ -115,8 +115,6 @@ protected:
 
 	virtual ~SuiListBox();
 
-	String _return_getMenuItemName;
-
 	friend class SuiListBoxHelper;
 };
 
@@ -251,8 +249,6 @@ public:
 
 	bool isListBox();
 
-protected:
-	String _param0_addMenuItem__String_long_;
 };
 
 class SuiListBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiListBoxHelper> {

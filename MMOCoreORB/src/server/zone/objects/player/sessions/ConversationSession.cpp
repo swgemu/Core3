@@ -252,7 +252,9 @@ void ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_GETNPC__:
-		resp->insertLong(getNPC()->_getObjectID());
+		{
+			resp->insertLong(getNPC()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

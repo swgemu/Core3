@@ -370,8 +370,6 @@ public:
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
-protected:
-	String _param0_getSpawnArea__String_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

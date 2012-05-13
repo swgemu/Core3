@@ -50,6 +50,7 @@ String ChatMessage::toString() {
 
 		DistributedMethod method(this, RPC_TOSTRING__);
 
+		String _return_toString;
 		method.executeWithAsciiReturn(_return_toString);
 		return _return_toString;
 	} else
@@ -227,10 +228,15 @@ void ChatMessageAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETSTRING__STRING_:
-		setString(inv->getAsciiParameter(_param0_setString__String_));
+		{
+			String msg; 
+			setString(inv->getAsciiParameter(msg));
+		}
 		break;
 	case RPC_TOSTRING__:
-		resp->insertAscii(toString());
+		{
+			resp->insertAscii(toString());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

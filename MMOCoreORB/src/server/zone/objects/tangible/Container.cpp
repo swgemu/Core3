@@ -316,22 +316,35 @@ void ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		{
+			String errorDescription; 
+			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
+		}
 		break;
 	case RPC_ISCONTAINEROBJECT__:
-		resp->insertBoolean(isContainerObject());
+		{
+			resp->insertBoolean(isContainerObject());
+		}
 		break;
 	case RPC_ISCONTAINERLOCKED__:
-		resp->insertBoolean(isContainerLocked());
+		{
+			resp->insertBoolean(isContainerLocked());
+		}
 		break;
 	case RPC_SETLOCKEDSTATUS__BOOL_:
-		setLockedStatus(inv->getBooleanParameter());
+		{
+			setLockedStatus(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

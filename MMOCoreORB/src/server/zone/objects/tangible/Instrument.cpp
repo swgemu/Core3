@@ -504,40 +504,64 @@ void InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_:
-		spawnInForeignCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			spawnInForeignCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SPAWNINADMINCELL__CREATUREOBJECT_:
-		spawnInAdminCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			spawnInAdminCell(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SPAWNOUTSIDE__CREATUREOBJECT_:
-		spawnOutside(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			spawnOutside(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CANDROPINSTRUMENT__:
-		resp->insertBoolean(canDropInstrument());
+		{
+			resp->insertBoolean(canDropInstrument());
+		}
 		break;
 	case RPC_GETINSTRUMENTTYPE__:
-		resp->insertSignedInt(getInstrumentType());
+		{
+			resp->insertSignedInt(getInstrumentType());
+		}
 		break;
 	case RPC_GETSPAWNERPLAYER__:
-		resp->insertLong(getSpawnerPlayer()->_getObjectID());
+		{
+			resp->insertLong(getSpawnerPlayer()->_getObjectID());
+		}
 		break;
 	case RPC_SETSPAWNERPLAYER__CREATUREOBJECT_:
-		setSpawnerPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			setSpawnerPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISBEINGUSED__:
-		resp->insertBoolean(isBeingUsed());
+		{
+			resp->insertBoolean(isBeingUsed());
+		}
 		break;
 	case RPC_SETBEINGUSED__BOOL_:
-		setBeingUsed(inv->getBooleanParameter());
+		{
+			setBeingUsed(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

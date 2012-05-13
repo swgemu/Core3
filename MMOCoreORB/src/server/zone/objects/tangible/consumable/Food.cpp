@@ -218,10 +218,14 @@ void FoodAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_INITIALIZEPRIVATEDATA__:
-		initializePrivateData();
+		{
+			initializePrivateData();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

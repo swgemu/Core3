@@ -228,6 +228,7 @@ String CraftingManager::generateSerial() {
 
 		DistributedMethod method(this, RPC_GENERATESERIAL__);
 
+		String _return_generateSerial;
 		method.executeWithAsciiReturn(_return_generateSerial);
 		return _return_generateSerial;
 	} else
@@ -385,37 +386,59 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_GETSCHEMATIC__INT_:
-		resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_:
-		sendDraftSlotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			sendDraftSlotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_:
-		sendResourceWeightsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			sendResourceWeightsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateAssemblySuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		{
+			resp->insertSignedInt(calculateAssemblySuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_:
-		resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
+		{
+			resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETASSEMBLYPERCENTAGE__FLOAT_:
-		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
+		{
+			resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
+		}
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_:
-		resp->insertSignedInt(calculateExperimentationFailureRate(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(calculateExperimentationFailureRate(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateExperimentationSuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		{
+			resp->insertSignedInt(calculateExperimentationSuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_:
-		resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_:
-		resp->insertFloat(getWeightedValue(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertFloat(getWeightedValue(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GENERATESERIAL__:
-		resp->insertAscii(generateSerial());
+		{
+			resp->insertAscii(generateSerial());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

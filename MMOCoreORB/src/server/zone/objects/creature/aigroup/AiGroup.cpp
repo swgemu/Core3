@@ -516,22 +516,34 @@ void AiGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETPATROLPOINTS__:
-		setPatrolPoints();
+		{
+			setPatrolPoints();
+		}
 		break;
 	case RPC_SETPATROLPOINT__AIAGENT_:
-		setPatrolPoint(static_cast<AiAgent*>(inv->getObjectParameter()));
+		{
+			setPatrolPoint(static_cast<AiAgent*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_ISHERDGROUP__:
-		resp->insertBoolean(isHerdGroup());
+		{
+			resp->insertBoolean(isHerdGroup());
+		}
 		break;
 	case RPC_ISPACKGROUP__:
-		resp->insertBoolean(isPackGroup());
+		{
+			resp->insertBoolean(isPackGroup());
+		}
 		break;
 	case RPC_ISLAIRGROUP__:
-		resp->insertBoolean(isLairGroup());
+		{
+			resp->insertBoolean(isLairGroup());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

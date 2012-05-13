@@ -667,70 +667,114 @@ void CampSiteActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETTERMINAL__TERMINAL_:
-		setTerminal(static_cast<Terminal*>(inv->getObjectParameter()));
+		{
+			setTerminal(static_cast<Terminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETOWNER__CREATUREOBJECT_:
-		setOwner(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			setOwner(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCAMP__STRUCTUREOBJECT_:
-		setCamp(static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			setCamp(static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCAMP__:
-		resp->insertLong(getCamp()->_getObjectID());
+		{
+			resp->insertLong(getCamp()->_getObjectID());
+		}
 		break;
 	case RPC_GETMEDICALRATING__:
-		resp->insertSignedInt(getMedicalRating());
+		{
+			resp->insertSignedInt(getMedicalRating());
+		}
 		break;
 	case RPC_GETHEALTHWOUNDREGENRATE__:
-		resp->insertSignedInt(getHealthWoundRegenRate());
+		{
+			resp->insertSignedInt(getHealthWoundRegenRate());
+		}
 		break;
 	case RPC_GETACTIONWOUNDREGENRATE__:
-		resp->insertSignedInt(getActionWoundRegenRate());
+		{
+			resp->insertSignedInt(getActionWoundRegenRate());
+		}
 		break;
 	case RPC_GETMINDWOUNDREGENRATE__:
-		resp->insertSignedInt(getMindWoundRegenRate());
+		{
+			resp->insertSignedInt(getMindWoundRegenRate());
+		}
 		break;
 	case RPC_GETAGGROMOD__:
-		resp->insertFloat(getAggroMod());
+		{
+			resp->insertFloat(getAggroMod());
+		}
 		break;
 	case RPC_ISCAMPAREA__:
-		resp->insertBoolean(isCampArea());
+		{
+			resp->insertBoolean(isCampArea());
+		}
 		break;
 	case RPC_GETVISITORCOUNT__:
-		resp->insertSignedInt(getVisitorCount());
+		{
+			resp->insertSignedInt(getVisitorCount());
+		}
 		break;
 	case RPC_GETUPTIME__:
-		resp->insertInt(getUptime());
+		{
+			resp->insertInt(getUptime());
+		}
 		break;
 	case RPC_ISABANDONED__:
-		resp->insertBoolean(isAbandoned());
+		{
+			resp->insertBoolean(isAbandoned());
+		}
 		break;
 	case RPC_NOTIFYHEALEVENT__LONG_:
-		resp->insertSignedInt(notifyHealEvent(inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyHealEvent(inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_NOTIFYCOMBATEVENT__:
-		resp->insertSignedInt(notifyCombatEvent());
+		{
+			resp->insertSignedInt(notifyCombatEvent());
+		}
 		break;
 	case RPC_ABANDONCAMP__:
-		abandonCamp();
+		{
+			abandonCamp();
+		}
 		break;
 	case RPC_DESPAWNCAMP__:
-		resp->insertBoolean(despawnCamp());
+		{
+			resp->insertBoolean(despawnCamp());
+		}
 		break;
 	case RPC_ASSUMEOWNERSHIP__CREATUREOBJECT_:
-		assumeOwnership(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			assumeOwnership(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETOWNER__:
-		resp->insertLong(getOwner()->_getObjectID());
+		{
+			resp->insertLong(getOwner()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

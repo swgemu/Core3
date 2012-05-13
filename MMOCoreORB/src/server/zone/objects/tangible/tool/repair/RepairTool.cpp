@@ -244,7 +244,9 @@ void RepairToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GETQUALITY__:
-		resp->insertFloat(getQuality());
+		{
+			resp->insertFloat(getQuality());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

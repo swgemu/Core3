@@ -335,22 +335,34 @@ void PowerBoostBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ACTIVATE__BOOL_:
-		activate(inv->getBooleanParameter());
+		{
+			activate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DEACTIVATE__BOOL_:
-		deactivate(inv->getBooleanParameter());
+		{
+			deactivate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DOHEALTHANDACTIONTICK__BOOL_:
-		doHealthAndActionTick(inv->getBooleanParameter());
+		{
+			doHealthAndActionTick(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DOMINDTICK__BOOL_:
-		doMindTick(inv->getBooleanParameter());
+		{
+			doMindTick(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CLEARBUFFEVENT__:
-		clearBuffEvent();
+		{
+			clearBuffEvent();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

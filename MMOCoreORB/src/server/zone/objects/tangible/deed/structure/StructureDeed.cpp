@@ -504,43 +504,69 @@ void StructureDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_PLACESTRUCTURE__CREATUREOBJECT_FLOAT_FLOAT_INT_:
-		resp->insertSignedInt(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_STRUCTUREOBJECT_:
-		resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
-		setSurplusMaintenance(inv->getUnsignedIntParameter());
+		{
+			setSurplusMaintenance(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETSURPLUSPOWER__INT_:
-		setSurplusPower(inv->getUnsignedIntParameter());
+		{
+			setSurplusPower(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETEXTRACTIONRATE__FLOAT_:
-		setExtractionRate(inv->getFloatParameter());
+		{
+			setExtractionRate(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETHOPPERSIZE__FLOAT_:
-		setHopperSize(inv->getFloatParameter());
+		{
+			setHopperSize(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETSURPLUSMAINTENANCE__:
-		resp->insertInt(getSurplusMaintenance());
+		{
+			resp->insertInt(getSurplusMaintenance());
+		}
 		break;
 	case RPC_GETSURPLUSPOWER__:
-		resp->insertInt(getSurplusPower());
+		{
+			resp->insertInt(getSurplusPower());
+		}
 		break;
 	case RPC_GETEXTRACTIONRATE__:
-		resp->insertFloat(getExtractionRate());
+		{
+			resp->insertFloat(getExtractionRate());
+		}
 		break;
 	case RPC_GETHOPPERSIZE__:
-		resp->insertFloat(getHopperSize());
+		{
+			resp->insertFloat(getHopperSize());
+		}
 		break;
 	case RPC_ISSTRUCTUREDEED__:
-		resp->insertBoolean(isStructureDeed());
+		{
+			resp->insertBoolean(isStructureDeed());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

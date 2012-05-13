@@ -233,8 +233,6 @@ protected:
 
 	virtual ~BuildingObject();
 
-	String _return_getRedeedMessage;
-
 	friend class BuildingObjectHelper;
 };
 
@@ -518,8 +516,6 @@ public:
 
 	String getRedeedMessage();
 
-protected:
-	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

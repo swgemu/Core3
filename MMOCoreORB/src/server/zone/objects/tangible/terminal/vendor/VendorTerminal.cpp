@@ -359,28 +359,44 @@ void VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDVENDORTOMAP__:
-		addVendorToMap();
+		{
+			addVendorToMap();
+		}
 		break;
 	case RPC_SETOWNERID__LONG_:
-		setOwnerID(inv->getUnsignedLongParameter());
+		{
+			setOwnerID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISVENDOR__:
-		resp->insertBoolean(isVendor());
+		{
+			resp->insertBoolean(isVendor());
+		}
 		break;
 	case RPC_ISVENDORTERMINAL__:
-		resp->insertBoolean(isVendorTerminal());
+		{
+			resp->insertBoolean(isVendorTerminal());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -61,8 +61,6 @@ protected:
 
 	virtual ~ChatMessage();
 
-	String _return_toString;
-
 	friend class ChatMessageHelper;
 };
 
@@ -134,8 +132,6 @@ public:
 
 	String toString();
 
-protected:
-	String _param0_setString__String_;
 };
 
 class ChatMessageHelper : public DistributedObjectClassHelper, public Singleton<ChatMessageHelper> {

@@ -305,8 +305,6 @@ public:
 
 	void removeGroupModifiers(CreatureObject* player);
 
-protected:
-	String _param0_sendSystemMessage__String_;
 };
 
 class GroupObjectHelper : public DistributedObjectClassHelper, public Singleton<GroupObjectHelper> {

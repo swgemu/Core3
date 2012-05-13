@@ -502,6 +502,7 @@ String Zone::getZoneName() {
 
 		DistributedMethod method(this, RPC_GETZONENAME__);
 
+		String _return_getZoneName;
 		method.executeWithAsciiReturn(_return_getZoneName);
 		return _return_getZoneName;
 	} else
@@ -764,94 +765,155 @@ void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_:
-		resp->insertLong(getNearestCloningBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getNearestCloningBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_:
-		resp->insertLong(getNearestPlanetaryObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_getNearestPlanetaryObject__SceneObject_String_))->_getObjectID());
+		{
+			String mapObjectLocationType; 
+			resp->insertLong(getNearestPlanetaryObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(mapObjectLocationType))->_getObjectID());
+		}
 		break;
 	case RPC_INITIALIZEPRIVATEDATA__:
-		initializePrivateData();
+		{
+			initializePrivateData();
+		}
 		break;
 	case RPC_CREATECONTAINERCOMPONENT__:
-		createContainerComponent();
+		{
+			createContainerComponent();
+		}
 		break;
 	case RPC_UPDATEACTIVEAREAS__SCENEOBJECT_:
-		updateActiveAreas(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			updateActiveAreas(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_STARTMANAGERS__:
-		startManagers();
+		{
+			startManagers();
+		}
 		break;
 	case RPC_STOPMANAGERS__:
-		stopManagers();
+		{
+			stopManagers();
+		}
 		break;
 	case RPC_GETHEIGHT__FLOAT_FLOAT_:
-		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_ADDSCENEOBJECT__SCENEOBJECT_:
-		addSceneObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addSceneObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDCITYREGIONTOUPDATE__CITYREGION_:
-		addCityRegionToUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			addCityRegionToUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATECITYREGIONS__:
-		updateCityRegions();
+		{
+			updateCityRegions();
+		}
 		break;
 	case RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_:
-		sendMapLocationsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendMapLocationsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DROPSCENEOBJECT__SCENEOBJECT_:
-		dropSceneObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			dropSceneObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETPLANETMANAGER__:
-		resp->insertLong(getPlanetManager()->_getObjectID());
+		{
+			resp->insertLong(getPlanetManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETSTRUCTUREMANAGER__:
-		resp->insertLong(getStructureManager()->_getObjectID());
+		{
+			resp->insertLong(getStructureManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETZONESERVER__:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		{
+			resp->insertLong(getZoneServer()->_getObjectID());
+		}
 		break;
 	case RPC_GETCREATUREMANAGER__:
-		resp->insertLong(getCreatureManager()->_getObjectID());
+		{
+			resp->insertLong(getCreatureManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETGALACTICTIME__:
-		resp->insertLong(getGalacticTime());
+		{
+			resp->insertLong(getGalacticTime());
+		}
 		break;
 	case RPC_HASMANAGERSSTARTED__:
-		resp->insertBoolean(hasManagersStarted());
+		{
+			resp->insertBoolean(hasManagersStarted());
+		}
 		break;
 	case RPC_GETMINX__:
-		resp->insertFloat(getMinX());
+		{
+			resp->insertFloat(getMinX());
+		}
 		break;
 	case RPC_GETMAXX__:
-		resp->insertFloat(getMaxX());
+		{
+			resp->insertFloat(getMaxX());
+		}
 		break;
 	case RPC_GETMINY__:
-		resp->insertFloat(getMinY());
+		{
+			resp->insertFloat(getMinY());
+		}
 		break;
 	case RPC_GETMAXY__:
-		resp->insertFloat(getMaxY());
+		{
+			resp->insertFloat(getMaxY());
+		}
 		break;
 	case RPC_GETBOUNDINGRADIUS__:
-		resp->insertFloat(getBoundingRadius());
+		{
+			resp->insertFloat(getBoundingRadius());
+		}
 		break;
 	case RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_:
-		registerObjectWithPlanetaryMap(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			registerObjectWithPlanetaryMap(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_:
-		unregisterObjectWithPlanetaryMap(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			unregisterObjectWithPlanetaryMap(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETZONENAME__:
-		resp->insertAscii(getZoneName());
+		{
+			resp->insertAscii(getZoneName());
+		}
 		break;
 	case RPC_GETZONECRC__:
-		resp->insertInt(getZoneCRC());
+		{
+			resp->insertInt(getZoneCRC());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -196,8 +196,6 @@ public:
 
 	bool isCellObject();
 
-protected:
-	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {

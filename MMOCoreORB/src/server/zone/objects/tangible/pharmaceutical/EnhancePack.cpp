@@ -463,22 +463,34 @@ void EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		{
+			resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	case RPC_GETATTRIBUTE__:
-		resp->insertByte(getAttribute());
+		{
+			resp->insertByte(getAttribute());
+		}
 		break;
 	case RPC_GETDURATION__:
-		resp->insertFloat(getDuration());
+		{
+			resp->insertFloat(getDuration());
+		}
 		break;
 	case RPC_ISENHANCEPACK__:
-		resp->insertBoolean(isEnhancePack());
+		{
+			resp->insertBoolean(isEnhancePack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

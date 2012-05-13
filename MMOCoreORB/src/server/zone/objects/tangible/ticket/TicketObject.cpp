@@ -137,6 +137,7 @@ String TicketObject::getDeparturePlanet() {
 
 		DistributedMethod method(this, RPC_GETDEPARTUREPLANET__);
 
+		String _return_getDeparturePlanet;
 		method.executeWithAsciiReturn(_return_getDeparturePlanet);
 		return _return_getDeparturePlanet;
 	} else
@@ -151,6 +152,7 @@ String TicketObject::getDeparturePoint() {
 
 		DistributedMethod method(this, RPC_GETDEPARTUREPOINT__);
 
+		String _return_getDeparturePoint;
 		method.executeWithAsciiReturn(_return_getDeparturePoint);
 		return _return_getDeparturePoint;
 	} else
@@ -165,6 +167,7 @@ String TicketObject::getArrivalPlanet() {
 
 		DistributedMethod method(this, RPC_GETARRIVALPLANET__);
 
+		String _return_getArrivalPlanet;
 		method.executeWithAsciiReturn(_return_getArrivalPlanet);
 		return _return_getArrivalPlanet;
 	} else
@@ -179,6 +182,7 @@ String TicketObject::getArrivalPoint() {
 
 		DistributedMethod method(this, RPC_GETARRIVALPOINT__);
 
+		String _return_getArrivalPoint;
 		method.executeWithAsciiReturn(_return_getArrivalPoint);
 		return _return_getArrivalPoint;
 	} else
@@ -450,37 +454,63 @@ void TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SETDEPARTUREPLANET__STRING_:
-		setDeparturePlanet(inv->getAsciiParameter(_param0_setDeparturePlanet__String_));
+		{
+			String departureplanet; 
+			setDeparturePlanet(inv->getAsciiParameter(departureplanet));
+		}
 		break;
 	case RPC_SETDEPARTUREPOINT__STRING_:
-		setDeparturePoint(inv->getAsciiParameter(_param0_setDeparturePoint__String_));
+		{
+			String departurepoint; 
+			setDeparturePoint(inv->getAsciiParameter(departurepoint));
+		}
 		break;
 	case RPC_SETARRIVALPLANET__STRING_:
-		setArrivalPlanet(inv->getAsciiParameter(_param0_setArrivalPlanet__String_));
+		{
+			String arrival; 
+			setArrivalPlanet(inv->getAsciiParameter(arrival));
+		}
 		break;
 	case RPC_SETARRIVALPOINT__STRING_:
-		setArrivalPoint(inv->getAsciiParameter(_param0_setArrivalPoint__String_));
+		{
+			String arrival; 
+			setArrivalPoint(inv->getAsciiParameter(arrival));
+		}
 		break;
 	case RPC_GETDEPARTUREPLANET__:
-		resp->insertAscii(getDeparturePlanet());
+		{
+			resp->insertAscii(getDeparturePlanet());
+		}
 		break;
 	case RPC_GETDEPARTUREPOINT__:
-		resp->insertAscii(getDeparturePoint());
+		{
+			resp->insertAscii(getDeparturePoint());
+		}
 		break;
 	case RPC_GETARRIVALPLANET__:
-		resp->insertAscii(getArrivalPlanet());
+		{
+			resp->insertAscii(getArrivalPlanet());
+		}
 		break;
 	case RPC_GETARRIVALPOINT__:
-		resp->insertAscii(getArrivalPoint());
+		{
+			resp->insertAscii(getArrivalPoint());
+		}
 		break;
 	case RPC_ISTICKETOBJECT__:
-		resp->insertBoolean(isTicketObject());
+		{
+			resp->insertBoolean(isTicketObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

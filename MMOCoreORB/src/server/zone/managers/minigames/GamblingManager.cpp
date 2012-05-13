@@ -991,91 +991,149 @@ void GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZESLOTTIMER__:
-		initializeSlotTimer();
+		{
+			initializeSlotTimer();
+		}
 		break;
 	case RPC_INITIALIZEROULETTETIMER__:
-		initializeRouletteTimer();
+		{
+			initializeRouletteTimer();
+		}
 		break;
 	case RPC_INITIALIZESLOTS__:
-		initializeSlots();
+		{
+			initializeSlots();
+		}
 		break;
 	case RPC_INITIALIZEROULETTERED__:
-		initializeRouletteRed();
+		{
+			initializeRouletteRed();
+		}
 		break;
 	case RPC_INITIALIZEROULETTE__:
-		initializeRoulette();
+		{
+			initializeRoulette();
+		}
 		break;
 	case RPC_NOTIFY__SCENEOBJECT_:
-		resp->insertSignedInt(notify(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notify(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISHIGH__INT_:
-		resp->insertBoolean(isHigh(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isHigh(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISLOW__INT_:
-		resp->insertBoolean(isLow(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isLow(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISEVEN__INT_:
-		resp->insertBoolean(isEven(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isEven(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISODD__INT_:
-		resp->insertBoolean(isOdd(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isOdd(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISBLACK__INT_:
-		resp->insertBoolean(isBlack(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isBlack(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISRED__INT_:
-		resp->insertBoolean(isRed(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isRed(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_:
-		handleSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			handleSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BET__CREATUREOBJECT_INT_INT_INT_:
-		bet(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			bet(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_:
-		bet(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			bet(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STARTGAME__CREATUREOBJECT_INT_:
-		startGame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			startGame(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STARTGAME__GAMBLINGTERMINAL_:
-		startGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		{
+			startGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_LEAVETERMINAL__CREATUREOBJECT_INT_:
-		leaveTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			leaveTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_:
-		registerPlayer(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			registerPlayer(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REFRESHROULETTEMENU__CREATUREOBJECT_:
-		refreshRouletteMenu(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			refreshRouletteMenu(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CONTINUEGAME__GAMBLINGTERMINAL_:
-		continueGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		{
+			continueGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_:
-		stopGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			stopGame(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_:
-		calculateOutcome(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		{
+			calculateOutcome(static_cast<GamblingTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_:
-		resp->insertInt(createWindow(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertInt(createWindow(static_cast<GamblingTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_:
-		resp->insertInt(createPayoutWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertInt(createPayoutWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_:
-		resp->insertInt(createSlotWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter()));
+		{
+			resp->insertInt(createSlotWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_:
-		resp->insertInt(createRouletteWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertInt(createRouletteWindow(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_:
-		createEvent(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			createEvent(static_cast<GamblingTerminal*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISPLAYING__CREATUREOBJECT_:
-		resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

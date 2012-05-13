@@ -193,16 +193,6 @@ protected:
 
 	virtual ~ResourceSpawn();
 
-	String _return_getClass;
-	String _return_getFamilyName;
-	String _return_getFinalClass;
-	String _return_getName;
-	String _return_getPoolSlot;
-	String _return_getSpawnMapZone;
-	String _return_getStfClass;
-	String _return_getType;
-	String _return_getZoneRestriction;
-
 	friend class ResourceSpawnHelper;
 };
 
@@ -474,16 +464,6 @@ public:
 
 	void addStatsToDeedListBox(SuiListBox* suil);
 
-protected:
-	String _param0_setName__String_;
-	String _param0_setType__String_;
-	String _param1_setSpawnPool__int_String_;
-	String _param0_setZoneRestriction__String_;
-	String _param0_addClass__String_;
-	String _param0_addStfClass__String_;
-	String _param0_addAttribute__String_int_;
-	String _param0_isType__String_;
-	String _param0_extractResource__String_int_;
 };
 
 class ResourceSpawnHelper : public DistributedObjectClassHelper, public Singleton<ResourceSpawnHelper> {

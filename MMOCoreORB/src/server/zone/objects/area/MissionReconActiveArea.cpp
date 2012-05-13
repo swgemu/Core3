@@ -331,13 +331,19 @@ void MissionReconActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMISSIONOBJECTIVE__RECONMISSIONOBJECTIVE_:
-		setMissionObjective(static_cast<ReconMissionObjective*>(inv->getObjectParameter()));
+		{
+			setMissionObjective(static_cast<ReconMissionObjective*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -239,6 +239,7 @@ String FishingSession::getMoodString() {
 
 		DistributedMethod method(this, RPC_GETMOODSTRING__);
 
+		String _return_getMoodString;
 		method.executeWithAsciiReturn(_return_getMoodString);
 		return _return_getMoodString;
 	} else
@@ -586,46 +587,75 @@ void FishingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_SETMOOD__STRING_:
-		setMood(inv->getAsciiParameter(_param0_setMood__String_));
+		{
+			String m; 
+			setMood(inv->getAsciiParameter(m));
+		}
 		break;
 	case RPC_SETNEXTACTION__INT_:
-		setNextAction(inv->getSignedIntParameter());
+		{
+			setNextAction(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETNEXTACTION__:
-		resp->insertSignedInt(getNextAction());
+		{
+			resp->insertSignedInt(getNextAction());
+		}
 		break;
 	case RPC_SETFISHBOXID__INT_:
-		setFishBoxID(inv->getUnsignedIntParameter());
+		{
+			setFishBoxID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETFISHBOXID__:
-		resp->insertInt(getFishBoxID());
+		{
+			resp->insertInt(getFishBoxID());
+		}
 		break;
 	case RPC_GETMARKER__:
-		resp->insertLong(getMarker()->_getObjectID());
+		{
+			resp->insertLong(getMarker()->_getObjectID());
+		}
 		break;
 	case RPC_SETMARKER__SCENEOBJECT_:
-		setMarker(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setMarker(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETFISH__:
-		resp->insertSignedInt(getFish());
+		{
+			resp->insertSignedInt(getFish());
+		}
 		break;
 	case RPC_SETFISH__INT_:
-		setFish(inv->getSignedIntParameter());
+		{
+			setFish(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETFISHINGSTATE__:
-		resp->insertSignedInt(getFishingState());
+		{
+			resp->insertSignedInt(getFishingState());
+		}
 		break;
 	case RPC_SETFISHINGSTATE__INT_:
-		setFishingState(inv->getSignedIntParameter());
+		{
+			setFishingState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETPLAYER__CREATUREOBJECT_:
-		setPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			setPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATE__INT_SCENEOBJECT_INT_INT_INT_:
-		update(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		{
+			update(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMOODSTRING__:
-		resp->insertAscii(getMoodString());
+		{
+			resp->insertAscii(getMoodString());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

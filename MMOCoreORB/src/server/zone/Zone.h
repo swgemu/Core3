@@ -301,8 +301,6 @@ protected:
 
 	virtual ~Zone();
 
-	String _return_getZoneName;
-
 	friend class ZoneHelper;
 };
 
@@ -529,8 +527,6 @@ public:
 
 	unsigned int getZoneCRC();
 
-protected:
-	String _param1_getNearestPlanetaryObject__SceneObject_String_;
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {

@@ -347,16 +347,26 @@ void SuiTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ADDFROM__STRING_STRING_STRING_STRING_:
-		addFrom(inv->getAsciiParameter(_param0_addFrom__String_String_String_String_), inv->getAsciiParameter(_param1_addFrom__String_String_String_String_), inv->getAsciiParameter(_param2_addFrom__String_String_String_String_), inv->getAsciiParameter(_param3_addFrom__String_String_String_String_));
+		{
+			String from; String startingFrom; String inputFrom; String rFrom; 
+			addFrom(inv->getAsciiParameter(from), inv->getAsciiParameter(startingFrom), inv->getAsciiParameter(inputFrom), inv->getAsciiParameter(rFrom));
+		}
 		break;
 	case RPC_ADDTO__STRING_STRING_STRING_STRING_:
-		addTo(inv->getAsciiParameter(_param0_addTo__String_String_String_String_), inv->getAsciiParameter(_param1_addTo__String_String_String_String_), inv->getAsciiParameter(_param2_addTo__String_String_String_String_), inv->getAsciiParameter(_param3_addTo__String_String_String_String_));
+		{
+			String to; String startingTo; String inputTo; String rTo; 
+			addTo(inv->getAsciiParameter(to), inv->getAsciiParameter(startingTo), inv->getAsciiParameter(inputTo), inv->getAsciiParameter(rTo));
+		}
 		break;
 	case RPC_ISTRANSFERBOX__:
-		resp->insertBoolean(isTransferBox());
+		{
+			resp->insertBoolean(isTransferBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

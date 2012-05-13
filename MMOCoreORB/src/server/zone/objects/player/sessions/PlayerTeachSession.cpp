@@ -63,6 +63,7 @@ String PlayerTeachSession::getTeachableSkill(int skillbox) {
 		DistributedMethod method(this, RPC_GETTEACHABLESKILL__INT_);
 		method.addSignedIntParameter(skillbox);
 
+		String _return_getTeachableSkill;
 		method.executeWithAsciiReturn(_return_getTeachableSkill);
 		return _return_getTeachableSkill;
 	} else
@@ -267,16 +268,26 @@ void PlayerTeachSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_ADDTEACHABLESKILL__STRING_:
-		addTeachableSkill(inv->getAsciiParameter(_param0_addTeachableSkill__String_));
+		{
+			String skillbox; 
+			addTeachableSkill(inv->getAsciiParameter(skillbox));
+		}
 		break;
 	case RPC_DROPTEACHABLESKILL__STRING_:
-		dropTeachableSkill(inv->getAsciiParameter(_param0_dropTeachableSkill__String_));
+		{
+			String skillbox; 
+			dropTeachableSkill(inv->getAsciiParameter(skillbox));
+		}
 		break;
 	case RPC_GETTEACHABLESKILL__INT_:
-		resp->insertAscii(getTeachableSkill(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getTeachableSkill(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETTEACHABLESKILLSSIZE__:
-		resp->insertSignedInt(getTeachableSkillsSize());
+		{
+			resp->insertSignedInt(getTeachableSkillsSize());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

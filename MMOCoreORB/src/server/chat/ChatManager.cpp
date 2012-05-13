@@ -862,109 +862,193 @@ void ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIATEROOMS__:
-		initiateRooms();
+		{
+			initiateRooms();
+		}
 		break;
 	case RPC_DESTROYROOMS__:
-		destroyRooms();
+		{
+			destroyRooms();
+		}
 		break;
 	case RPC_CREATEROOM__STRING_CHATROOM_:
-		resp->insertLong(createRoom(inv->getAsciiParameter(_param0_createRoom__String_ChatRoom_), static_cast<ChatRoom*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			String roomName; 
+			resp->insertLong(createRoom(inv->getAsciiParameter(roomName), static_cast<ChatRoom*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_ADDROOM__CHATROOM_:
-		addRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			addRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEROOM__CHATROOM_:
-		removeRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			removeRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_POPULATEROOMLISTMESSAGE__CHATROOM_CHATROOMLIST_:
-		populateRoomListMessage(static_cast<ChatRoom*>(inv->getObjectParameter()), static_cast<ChatRoomList*>(inv->getObjectParameter()));
+		{
+			populateRoomListMessage(static_cast<ChatRoom*>(inv->getObjectParameter()), static_cast<ChatRoomList*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDROOMLIST__CREATUREOBJECT_:
-		sendRoomList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendRoomList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDPLAYER__CREATUREOBJECT_:
-		addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETPLAYER__STRING_:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		{
+			String name; 
+			resp->insertLong(getPlayer(inv->getAsciiParameter(name))->_getObjectID());
+		}
 		break;
 	case RPC_REMOVEPLAYER__STRING_:
-		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
+		{
+			String name; 
+			resp->insertLong(removePlayer(inv->getAsciiParameter(name))->_getObjectID());
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		{
+			broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_UNICODESTRING_LONG_INT_INT_:
-		broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		{
+			UnicodeString message; 
+			broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(message), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_HANDLESPATIALCHATINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_:
-		handleSpatialChatInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__CreatureObject_UnicodeString_));
+		{
+			UnicodeString args; 
+			handleSpatialChatInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(args));
+		}
 		break;
 	case RPC_HANDLEGROUPCHAT__CREATUREOBJECT_UNICODESTRING_:
-		handleGroupChat(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleGroupChat__CreatureObject_UnicodeString_));
+		{
+			UnicodeString message; 
+			handleGroupChat(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(message));
+		}
 		break;
 	case RPC_CREATEROOMBYFULLPATH__STRING_:
-		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__String_))->_getObjectID());
+		{
+			String path; 
+			resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(path))->_getObjectID());
+		}
 		break;
 	case RPC_GETCHATROOMBYFULLPATH__STRING_:
-		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__String_))->_getObjectID());
+		{
+			String path; 
+			resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(path))->_getObjectID());
+		}
 		break;
 	case RPC_GETCHATROOMBYGAMEPATH__CHATROOM_STRING_:
-		resp->insertLong(getChatRoomByGamePath(static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
+		{
+			String path; 
+			resp->insertLong(getChatRoomByGamePath(static_cast<ChatRoom*>(inv->getObjectParameter()), inv->getAsciiParameter(path))->_getObjectID());
+		}
 		break;
 	case RPC_HANDLECHATROOMMESSAGE__CREATUREOBJECT_UNICODESTRING_INT_INT_:
-		handleChatRoomMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleChatRoomMessage__CreatureObject_UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		{
+			UnicodeString message; 
+			handleChatRoomMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(message), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_HANDLECHATENTERROOMBYID__CREATUREOBJECT_INT_INT_:
-		handleChatEnterRoomById(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		{
+			handleChatEnterRoomById(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_HANDLESOCIALINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_:
-		handleSocialInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(_param1_handleSocialInternalMessage__CreatureObject_UnicodeString_));
+		{
+			UnicodeString arguments; 
+			handleSocialInternalMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnicodeParameter(arguments));
+		}
 		break;
 	case RPC_DESTROYROOM__CHATROOM_:
-		destroyRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		{
+			destroyRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEGROUPROOM__LONG_CREATUREOBJECT_:
-		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_LOADMAIL__CREATUREOBJECT_:
-		loadMail(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			loadMail(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDMAIL__STRING_UNICODESTRING_UNICODESTRING_STRING_:
-		sendMail(inv->getAsciiParameter(_param0_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param1_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param2_sendMail__String_UnicodeString_UnicodeString_String_), inv->getAsciiParameter(_param3_sendMail__String_UnicodeString_UnicodeString_String_));
+		{
+			String sendername; UnicodeString header; UnicodeString body; String name; 
+			sendMail(inv->getAsciiParameter(sendername), inv->getUnicodeParameter(header), inv->getUnicodeParameter(body), inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_HANDLEREQUESTPERSISTENTMSG__CREATUREOBJECT_INT_:
-		handleRequestPersistentMsg(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			handleRequestPersistentMsg(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_DELETEPERSISTENTMESSAGE__CREATUREOBJECT_INT_:
-		deletePersistentMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			deletePersistentMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_BROADCASTGALAXY__CREATUREOBJECT_STRING_:
-		broadcastGalaxy(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_broadcastGalaxy__CreatureObject_String_));
+		{
+			String message; 
+			broadcastGalaxy(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(message));
+		}
 		break;
 	case RPC_SETPLAYERMANAGER__PLAYERMANAGER_:
-		setPlayerManager(static_cast<PlayerManager*>(inv->getObjectParameter()));
+		{
+			setPlayerManager(static_cast<PlayerManager*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCHATROOM__INT_:
-		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETGAMEROOM__STRING_:
-		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__String_))->_getObjectID());
+		{
+			String game; 
+			resp->insertLong(getGameRoom(inv->getAsciiParameter(game))->_getObjectID());
+		}
 		break;
 	case RPC_GETNEXTROOMID__:
-		resp->insertInt(getNextRoomID());
+		{
+			resp->insertInt(getNextRoomID());
+		}
 		break;
 	case RPC_GETPLAYERCOUNT__:
-		resp->insertSignedInt(getPlayerCount());
+		{
+			resp->insertSignedInt(getPlayerCount());
+		}
 		break;
 	case RPC_GETGUILDROOM__:
-		resp->insertLong(getGuildRoom()->_getObjectID());
+		{
+			resp->insertLong(getGuildRoom()->_getObjectID());
+		}
 		break;
 	case RPC_GETGROUPROOM__:
-		resp->insertLong(getGroupRoom()->_getObjectID());
+		{
+			resp->insertLong(getGroupRoom()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

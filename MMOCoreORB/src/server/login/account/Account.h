@@ -122,10 +122,6 @@ protected:
 
 	virtual ~Account();
 
-	String _return_getBanReason;
-	String _return_getSalt;
-	String _return_getUsername;
-
 	friend class AccountHelper;
 };
 
@@ -319,10 +315,6 @@ public:
 
 	bool isBanned();
 
-protected:
-	String _param0_setUsername__String_;
-	String _param0_setBanReason__String_;
-	String _param0_setSalt__String_;
 };
 
 class AccountHelper : public DistributedObjectClassHelper, public Singleton<AccountHelper> {

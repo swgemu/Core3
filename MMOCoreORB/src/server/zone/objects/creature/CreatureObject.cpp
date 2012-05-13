@@ -1701,6 +1701,7 @@ String CreatureObject::getFirstName() {
 
 		DistributedMethod method(this, RPC_GETFIRSTNAME__);
 
+		String _return_getFirstName;
 		method.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
 	} else
@@ -1715,6 +1716,7 @@ String CreatureObject::getLastName() {
 
 		DistributedMethod method(this, RPC_GETLASTNAME__);
 
+		String _return_getLastName;
 		method.executeWithAsciiReturn(_return_getLastName);
 		return _return_getLastName;
 	} else
@@ -2440,6 +2442,7 @@ UnicodeString CreatureObject::getCreatureName() {
 
 		DistributedMethod method(this, RPC_GETCREATURENAME__);
 
+		UnicodeString _return_getCreatureName;
 		method.executeWithUnicodeReturn(_return_getCreatureName);
 		return _return_getCreatureName;
 	} else
@@ -2891,6 +2894,7 @@ String CreatureObject::getPerformanceAnimation() {
 
 		DistributedMethod method(this, RPC_GETPERFORMANCEANIMATION__);
 
+		String _return_getPerformanceAnimation;
 		method.executeWithAsciiReturn(_return_getPerformanceAnimation);
 		return _return_getPerformanceAnimation;
 	} else
@@ -2905,6 +2909,7 @@ String CreatureObject::getMoodString() {
 
 		DistributedMethod method(this, RPC_GETMOODSTRING__);
 
+		String _return_getMoodString;
 		method.executeWithAsciiReturn(_return_getMoodString);
 		return _return_getMoodString;
 	} else
@@ -3154,6 +3159,7 @@ String CreatureObject::getSpeciesName() {
 
 		DistributedMethod method(this, RPC_GETSPECIESNAME__);
 
+		String _return_getSpeciesName;
 		method.executeWithAsciiReturn(_return_getSpeciesName);
 		return _return_getSpeciesName;
 	} else
@@ -5663,799 +5669,1354 @@ void CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZEMEMBERS__:
-		initializeMembers();
+		{
+			initializeMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_:
-		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		{
+			clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDTOOWNER__BOOL_:
-		sendToOwner(inv->getBooleanParameter());
+		{
+			sendToOwner(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDSYSTEMMESSAGE__STRING_:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
+		{
+			String message; 
+			sendSystemMessage(inv->getAsciiParameter(message));
+		}
 		break;
 	case RPC_PLAYMUSICMESSAGE__STRING_:
-		playMusicMessage(inv->getAsciiParameter(_param0_playMusicMessage__String_));
+		{
+			String file; 
+			playMusicMessage(inv->getAsciiParameter(file));
+		}
 		break;
 	case RPC_SENDNEWBIETUTORIALREQUEST__STRING_:
-		sendNewbieTutorialRequest(inv->getAsciiParameter(_param0_sendNewbieTutorialRequest__String_));
+		{
+			String request; 
+			sendNewbieTutorialRequest(inv->getAsciiParameter(request));
+		}
 		break;
 	case RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_:
-		sendNewbieTutorialEnableHudElement(inv->getAsciiParameter(_param0_sendNewbieTutorialEnableHudElement__String_bool_), inv->getBooleanParameter());
+		{
+			String ui; 
+			sendNewbieTutorialEnableHudElement(inv->getAsciiParameter(ui), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__:
-		sendOpenHolocronToPageMessage();
+		{
+			sendOpenHolocronToPageMessage();
+		}
 		break;
 	case RPC_SENDSYSTEMMESSAGE__UNICODESTRING_:
-		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__UnicodeString_));
+		{
+			UnicodeString message; 
+			sendSystemMessage(inv->getUnicodeParameter(message));
+		}
 		break;
 	case RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_:
-		sendSlottedObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendSlottedObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCOMBATSTATE__:
-		setCombatState();
+		{
+			setCombatState();
+		}
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
-		clearCombatState(inv->getBooleanParameter());
+		{
+			clearCombatState(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETPOSTURE__INT_BOOL_:
-		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATELOCOMOTION__:
-		updateLocomotion();
+		{
+			updateLocomotion();
+		}
 		break;
 	case RPC_SETHEIGHT__FLOAT_BOOL_:
-		setHeight(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setHeight(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_:
-		setAccelerationMultiplierBase(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setAccelerationMultiplierBase(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_:
-		setAccelerationMultiplierMod(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setAccelerationMultiplierMod(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_:
-		setSpeedMultiplierBase(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setSpeedMultiplierBase(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_:
-		setSpeedMultiplierMod(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setSpeedMultiplierMod(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETTURNSCALE__FLOAT_BOOL_:
-		setTurnScale(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setTurnScale(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETRUNSPEED__FLOAT_BOOL_:
-		setRunSpeed(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setRunSpeed(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETHAM__INT_INT_BOOL_:
-		setHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_HASDAMAGE__INT_:
-		resp->insertBoolean(hasDamage(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(hasDamage(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_HEALWOUND__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
-		resp->insertSignedInt(healWound(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(healWound(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETBASEHAM__INT_INT_BOOL_:
-		setBaseHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setBaseHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETWOUNDS__INT_INT_BOOL_:
-		setWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDWOUNDS__INT_INT_BOOL_:
-		resp->insertSignedInt(addWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(addWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETMAXHAM__INT_INT_BOOL_:
-		setMaxHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setMaxHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDMAXHAM__INT_INT_BOOL_:
-		addMaxHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			addMaxHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETENCUMBRANCE__INT_INT_BOOL_:
-		setEncumbrance(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setEncumbrance(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDENCUMBRANCE__INT_INT_BOOL_:
-		addEncumbrance(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			addEncumbrance(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETWEAPON__WEAPONOBJECT_BOOL_:
-		setWeapon(static_cast<WeaponObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			setWeapon(static_cast<WeaponObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectRemoved(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectRemoved(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETINSTRUMENTID__INT_BOOL_:
-		setInstrumentID(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setInstrumentID(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETLISTENTOID__LONG_BOOL_:
-		setListenToID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		{
+			setListenToID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETPERFORMANCECOUNTER__INT_BOOL_:
-		setPerformanceCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setPerformanceCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETPERFORMANCEANIMATION__STRING_BOOL_:
-		setPerformanceAnimation(inv->getAsciiParameter(_param0_setPerformanceAnimation__String_bool_), inv->getBooleanParameter());
+		{
+			String animation; 
+			setPerformanceAnimation(inv->getAsciiParameter(animation), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSHOCKWOUNDS__INT_BOOL_:
-		setShockWounds(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setShockWounds(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDSHOCKWOUNDS__INT_BOOL_:
-		addShockWounds(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			addShockWounds(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETTARGETID__LONG_BOOL_:
-		setTargetID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		{
+			setTargetID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETBANKCREDITS__INT_BOOL_:
-		setBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDBUFF__BUFF_:
-		addBuff(static_cast<Buff*>(inv->getObjectParameter()));
+		{
+			addBuff(static_cast<Buff*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEBUFF__INT_:
-		resp->insertBoolean(removeBuff(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(removeBuff(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_REMOVEBUFF__BUFF_:
-		removeBuff(static_cast<Buff*>(inv->getObjectParameter()));
+		{
+			removeBuff(static_cast<Buff*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESTATEBUFF__LONG_:
-		resp->insertBoolean(removeStateBuff(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(removeStateBuff(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_CLEARBUFFS__BOOL_:
-		clearBuffs(inv->getBooleanParameter());
+		{
+			clearBuffs(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDWEARABLEOBJECT__TANGIBLEOBJECT_BOOL_:
-		addWearableObject(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			addWearableObject(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVEWEARABLEOBJECT__TANGIBLEOBJECT_BOOL_:
-		removeWearableObject(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			removeWearableObject(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBUFFSTO__CREATUREOBJECT_:
-		sendBuffsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendBuffsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETBUFF__INT_:
-		resp->insertLong(getBuff(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getBuff(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETSKILLMODFROMBUFFS__STRING_:
-		resp->insertSignedLong(getSkillModFromBuffs(inv->getAsciiParameter(_param0_getSkillModFromBuffs__String_)));
+		{
+			String skillMod; 
+			resp->insertSignedLong(getSkillModFromBuffs(inv->getAsciiParameter(skillMod)));
+		}
 		break;
 	case RPC_ADDDOTSTATE__LONG_LONG_INT_BYTE_INT_FLOAT_INT_:
-		resp->insertSignedInt(addDotState(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getByteParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter()));
+		{
+			resp->insertSignedInt(addDotState(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getByteParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_HEALDOT__LONG_INT_:
-		resp->insertBoolean(healDot(inv->getUnsignedLongParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(healDot(inv->getUnsignedLongParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CLEARDOTS__:
-		clearDots();
+		{
+			clearDots();
+		}
 		break;
 	case RPC_HASBUFF__INT_:
-		resp->insertBoolean(hasBuff(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(hasBuff(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_NOTIFYSELFPOSITIONUPDATE__:
-		notifySelfPositionUpdate();
+		{
+			notifySelfPositionUpdate();
+		}
 		break;
 	case RPC_NOTIFYPOSTURECHANGE__INT_:
-		notifyPostureChange(inv->getSignedIntParameter());
+		{
+			notifyPostureChange(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETLEVEL__INT_:
-		setLevel(inv->getSignedIntParameter());
+		{
+			setLevel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		{
+			updateToDatabaseAllObjects(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISRESUSCITABLE__:
-		resp->insertBoolean(isResuscitable());
+		{
+			resp->insertBoolean(isResuscitable());
+		}
 		break;
 	case RPC_ADDBANKCREDITS__INT_BOOL_:
-		addBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			addBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDCASHCREDITS__INT_BOOL_:
-		addCashCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			addCashCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SUBTRACTBANKCREDITS__INT_:
-		subtractBankCredits(inv->getSignedIntParameter());
+		{
+			subtractBankCredits(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SUBTRACTCASHCREDITS__INT_:
-		subtractCashCredits(inv->getSignedIntParameter());
+		{
+			subtractCashCredits(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_VERIFYCASHCREDITS__INT_:
-		resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(verifyCashCredits(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_VERIFYBANKCREDITS__INT_:
-		resp->insertBoolean(verifyBankCredits(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(verifyBankCredits(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISDANCING__:
-		resp->insertBoolean(isDancing());
+		{
+			resp->insertBoolean(isDancing());
+		}
 		break;
 	case RPC_ISPLAYINGMUSIC__:
-		resp->insertBoolean(isPlayingMusic());
+		{
+			resp->insertBoolean(isPlayingMusic());
+		}
 		break;
 	case RPC_STOPENTERTAINING__:
-		stopEntertaining();
+		{
+			stopEntertaining();
+		}
 		break;
 	case RPC_ISENTERTAINING__:
-		resp->insertBoolean(isEntertaining());
+		{
+			resp->insertBoolean(isEntertaining());
+		}
 		break;
 	case RPC_SETCASHCREDITS__INT_BOOL_:
-		setCashCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setCashCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_:
-		setTerrainNegotiation(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setTerrainNegotiation(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDSKILL__STRING_BOOL_:
-		addSkill(inv->getAsciiParameter(_param0_addSkill__String_bool_), inv->getBooleanParameter());
+		{
+			String skill; 
+			addSkill(inv->getAsciiParameter(skill), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVESKILL__STRING_BOOL_:
-		removeSkill(inv->getAsciiParameter(_param0_removeSkill__String_bool_), inv->getBooleanParameter());
+		{
+			String skill; 
+			removeSkill(inv->getAsciiParameter(skill), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
-		addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_addSkillMod__int_String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_:
-		removeSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_removeSkillMod__int_String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			String skillMod; 
+			removeSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATEGROUPINVITERID__LONG_BOOL_:
-		updateGroupInviterID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		{
+			updateGroupInviterID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATEGROUP__GROUPOBJECT_BOOL_:
-		updateGroup(static_cast<GroupObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			updateGroup(static_cast<GroupObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_:
-		enqueueCommand(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_enqueueCommand__int_int_long_UnicodeString_int_), inv->getSignedIntParameter());
+		{
+			UnicodeString arguments; 
+			enqueueCommand(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(arguments), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETMOOD__BYTE_BOOL_:
-		setMood(inv->getByteParameter(), inv->getBooleanParameter());
+		{
+			setMood(inv->getByteParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMOODSTRING__STRING_BOOL_:
-		setMoodString(inv->getAsciiParameter(_param0_setMoodString__String_bool_), inv->getBooleanParameter());
+		{
+			String animation; 
+			setMoodString(inv->getAsciiParameter(animation), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DELETEQUEUEACTION__INT_:
-		deleteQueueAction(inv->getUnsignedIntParameter());
+		{
+			deleteQueueAction(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETSTATE__LONG_BOOL_:
-		resp->insertBoolean(setState(inv->getUnsignedLongParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(setState(inv->getUnsignedLongParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_CLEARSTATE__LONG_BOOL_:
-		resp->insertBoolean(clearState(inv->getUnsignedLongParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(clearState(inv->getUnsignedLongParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETCONTROLDEVICE__CONTROLDEVICE_:
-		setControlDevice(static_cast<ControlDevice*>(inv->getObjectParameter()));
+		{
+			setControlDevice(static_cast<ControlDevice*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_:
-		setCreatureLink(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			setCreatureLink(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_EXECUTEOBJECTCONTROLLERACTION__INT_:
-		executeObjectControllerAction(inv->getUnsignedIntParameter());
+		{
+			executeObjectControllerAction(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_:
-		executeObjectControllerAction(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param2_executeObjectControllerAction__int_long_UnicodeString_));
+		{
+			UnicodeString args; 
+			executeObjectControllerAction(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(args));
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISHEALABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isHealableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isHealableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISINBOUNTYMISSION__CREATUREOBJECT_CREATUREOBJECT_:
-		resp->insertBoolean(isInBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isInBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
-		sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
-		selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		{
+			sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDEXECUTECONSOLECOMMAND__STRING_:
-		sendExecuteConsoleCommand(inv->getAsciiParameter(_param0_sendExecuteConsoleCommand__String_));
+		{
+			String command; 
+			sendExecuteConsoleCommand(inv->getAsciiParameter(command));
+		}
 		break;
 	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
-		resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBJECTKILLOBSERVERS__TANGIBLEOBJECT_:
-		resp->insertSignedInt(notifyObjectKillObservers(static_cast<TangibleObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectKillObservers(static_cast<TangibleObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_SETFACTIONRANK__INT_BOOL_:
-		setFactionRank(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setFactionRank(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETFIRSTNAME__:
-		resp->insertAscii(getFirstName());
+		{
+			resp->insertAscii(getFirstName());
+		}
 		break;
 	case RPC_GETLASTNAME__:
-		resp->insertAscii(getLastName());
+		{
+			resp->insertAscii(getLastName());
+		}
 		break;
 	case RPC_ISONLINE__:
-		resp->insertBoolean(isOnline());
+		{
+			resp->insertBoolean(isOnline());
+		}
 		break;
 	case RPC_CANTREATINJURIES__:
-		resp->insertBoolean(canTreatInjuries());
+		{
+			resp->insertBoolean(canTreatInjuries());
+		}
 		break;
 	case RPC_CANTREATSTATES__:
-		resp->insertBoolean(canTreatStates());
+		{
+			resp->insertBoolean(canTreatStates());
+		}
 		break;
 	case RPC_CANTREATWOUNDS__:
-		resp->insertBoolean(canTreatWounds());
+		{
+			resp->insertBoolean(canTreatWounds());
+		}
 		break;
 	case RPC_CANTREATCONDITIONS__:
-		resp->insertBoolean(canTreatConditions());
+		{
+			resp->insertBoolean(canTreatConditions());
+		}
 		break;
 	case RPC_GETPLAYEROBJECT__:
-		resp->insertLong(getPlayerObject()->_getObjectID());
+		{
+			resp->insertLong(getPlayerObject()->_getObjectID());
+		}
 		break;
 	case RPC_ISLISTENING__:
-		resp->insertBoolean(isListening());
+		{
+			resp->insertBoolean(isListening());
+		}
 		break;
 	case RPC_ISWATCHING__:
-		resp->insertBoolean(isWatching());
+		{
+			resp->insertBoolean(isWatching());
+		}
 		break;
 	case RPC_SETCLIENT__ZONECLIENTSESSION_:
-		setClient(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
+		{
+			setClient(static_cast<ZoneClientSession*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DISMOUNT__:
-		dismount();
+		{
+			dismount();
+		}
 		break;
 	case RPC_CALCULATEBFRATIO__:
-		resp->insertFloat(calculateBFRatio());
+		{
+			resp->insertFloat(calculateBFRatio());
+		}
 		break;
 	case RPC_SETDIZZIEDSTATE__INT_:
-		setDizziedState(inv->getSignedIntParameter());
+		{
+			setDizziedState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETRALLIEDSTATE__INT_:
-		setRalliedState(inv->getSignedIntParameter());
+		{
+			setRalliedState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETAIMINGSTATE__INT_:
-		setAimingState(inv->getSignedIntParameter());
+		{
+			setAimingState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETCOVERSTATE__INT_:
-		setCoverState(inv->getSignedIntParameter());
+		{
+			setCoverState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETBERSERKEDSTATE__INT_:
-		setBerserkedState(inv->getUnsignedIntParameter());
+		{
+			setBerserkedState(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETSTUNNEDSTATE__INT_:
-		setStunnedState(inv->getSignedIntParameter());
+		{
+			setStunnedState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETBLINDEDSTATE__INT_:
-		setBlindedState(inv->getSignedIntParameter());
+		{
+			setBlindedState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETINTIMIDATEDSTATE__INT_INT_:
-		setIntimidatedState(inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		{
+			setIntimidatedState(inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSNAREDSTATE__INT_:
-		setSnaredState(inv->getSignedIntParameter());
+		{
+			setSnaredState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETROOTEDSTATE__INT_:
-		setRootedState(inv->getSignedIntParameter());
+		{
+			setRootedState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETNEXTATTACKDELAY__INT_INT_:
-		resp->insertBoolean(setNextAttackDelay(inv->getUnsignedIntParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(setNextAttackDelay(inv->getUnsignedIntParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_SETMEDITATESTATE__:
-		setMeditateState();
+		{
+			setMeditateState();
+		}
 		break;
 	case RPC_ACTIVATEHAMREGENERATION__:
-		activateHAMRegeneration();
+		{
+			activateHAMRegeneration();
+		}
 		break;
 	case RPC_ACTIVATEPASSIVEWOUNDREGENERATION__:
-		activatePassiveWoundRegeneration();
+		{
+			activatePassiveWoundRegeneration();
+		}
 		break;
 	case RPC_ACTIVATESTATERECOVERY__:
-		activateStateRecovery();
+		{
+			activateStateRecovery();
+		}
 		break;
 	case RPC_UPDATETIMEOFDEATH__:
-		updateTimeOfDeath();
+		{
+			updateTimeOfDeath();
+		}
 		break;
 	case RPC_HASATTACKDELAY__:
-		resp->insertBoolean(hasAttackDelay());
+		{
+			resp->insertBoolean(hasAttackDelay());
+		}
 		break;
 	case RPC_REMOVEATTACKDELAY__:
-		removeAttackDelay();
+		{
+			removeAttackDelay();
+		}
 		break;
 	case RPC_HASSPICE__:
-		resp->insertBoolean(hasSpice());
+		{
+			resp->insertBoolean(hasSpice());
+		}
 		break;
 	case RPC_UPDATELASTSUCCESSFULCOMBATACTION__:
-		updateLastSuccessfulCombatAction();
+		{
+			updateLastSuccessfulCombatAction();
+		}
 		break;
 	case RPC_UPDATEKNOCKDOWNRECOVERY__:
-		updateKnockdownRecovery();
+		{
+			updateKnockdownRecovery();
+		}
 		break;
 	case RPC_QUEUEDIZZYFALLEVENT__:
-		queueDizzyFallEvent();
+		{
+			queueDizzyFallEvent();
+		}
 		break;
 	case RPC_UPDATELASTKNOCKDOWN__:
-		updateLastKnockdown();
+		{
+			updateLastKnockdown();
+		}
 		break;
 	case RPC_CHECKKNOCKDOWNRECOVERY__:
-		resp->insertBoolean(checkKnockdownRecovery());
+		{
+			resp->insertBoolean(checkKnockdownRecovery());
+		}
 		break;
 	case RPC_CHECKLASTKNOCKDOWN__:
-		resp->insertBoolean(checkLastKnockdown());
+		{
+			resp->insertBoolean(checkLastKnockdown());
+		}
 		break;
 	case RPC_UPDATEPOSTUREDOWNRECOVERY__:
-		updatePostureDownRecovery();
+		{
+			updatePostureDownRecovery();
+		}
 		break;
 	case RPC_UPDATEPOSTUREUPRECOVERY__:
-		updatePostureUpRecovery();
+		{
+			updatePostureUpRecovery();
+		}
 		break;
 	case RPC_CHECKPOSTUREDOWNRECOVERY__:
-		resp->insertBoolean(checkPostureDownRecovery());
+		{
+			resp->insertBoolean(checkPostureDownRecovery());
+		}
 		break;
 	case RPC_GETSCREENPLAYSTATE__STRING_:
-		resp->insertLong(getScreenPlayState(inv->getAsciiParameter(_param0_getScreenPlayState__String_)));
+		{
+			String screenPlay; 
+			resp->insertLong(getScreenPlayState(inv->getAsciiParameter(screenPlay)));
+		}
 		break;
 	case RPC_SETSCREENPLAYSTATE__STRING_LONG_:
-		setScreenPlayState(inv->getAsciiParameter(_param0_setScreenPlayState__String_long_), inv->getUnsignedLongParameter());
+		{
+			String screenPlay; 
+			setScreenPlayState(inv->getAsciiParameter(screenPlay), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_CHECKPOSTUREUPRECOVERY__:
-		resp->insertBoolean(checkPostureUpRecovery());
+		{
+			resp->insertBoolean(checkPostureUpRecovery());
+		}
 		break;
 	case RPC_UPDATECOOLDOWNTIMER__STRING_INT_:
-		updateCooldownTimer(inv->getAsciiParameter(_param0_updateCooldownTimer__String_int_), inv->getUnsignedIntParameter());
+		{
+			String coooldownTimer; 
+			updateCooldownTimer(inv->getAsciiParameter(coooldownTimer), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_CHECKCOOLDOWNRECOVERY__STRING_:
-		resp->insertBoolean(checkCooldownRecovery(inv->getAsciiParameter(_param0_checkCooldownRecovery__String_)));
+		{
+			String cooldown; 
+			resp->insertBoolean(checkCooldownRecovery(inv->getAsciiParameter(cooldown)));
+		}
 		break;
 	case RPC_ADDCOOLDOWN__STRING_INT_:
-		addCooldown(inv->getAsciiParameter(_param0_addCooldown__String_int_), inv->getUnsignedIntParameter());
+		{
+			String name; 
+			addCooldown(inv->getAsciiParameter(name), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_DOANIMATION__STRING_:
-		doAnimation(inv->getAsciiParameter(_param0_doAnimation__String_));
+		{
+			String animation; 
+			doAnimation(inv->getAsciiParameter(animation));
+		}
 		break;
 	case RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_BYTE_:
-		doCombatAnimation(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getByteParameter(), inv->getByteParameter());
+		{
+			doCombatAnimation(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getByteParameter(), inv->getByteParameter());
+		}
 		break;
 	case RPC_PLAYEFFECT__STRING_STRING_:
-		playEffect(inv->getAsciiParameter(_param0_playEffect__String_String_), inv->getAsciiParameter(_param1_playEffect__String_String_));
+		{
+			String file; String aux; 
+			playEffect(inv->getAsciiParameter(file), inv->getAsciiParameter(aux));
+		}
 		break;
 	case RPC_PLAYEFFECT__STRING_:
-		playEffect(inv->getAsciiParameter(_param0_playEffect__String_));
+		{
+			String file; 
+			playEffect(inv->getAsciiParameter(file));
+		}
 		break;
 	case RPC_ACTIVATEQUEUEACTION__:
-		activateQueueAction();
+		{
+			activateQueueAction();
+		}
 		break;
 	case RPC_ACTIVATEIMMEDIATEACTION__:
-		activateImmediateAction();
+		{
+			activateImmediateAction();
+		}
 		break;
 	case RPC_GETCREATURENAME__:
-		resp->insertUnicode(getCreatureName());
+		{
+			resp->insertUnicode(getCreatureName());
+		}
 		break;
 	case RPC_ISGROUPED__:
-		resp->insertBoolean(isGrouped());
+		{
+			resp->insertBoolean(isGrouped());
+		}
 		break;
 	case RPC_GETBANKCREDITS__:
-		resp->insertSignedInt(getBankCredits());
+		{
+			resp->insertSignedInt(getBankCredits());
+		}
 		break;
 	case RPC_GETCASHCREDITS__:
-		resp->insertSignedInt(getCashCredits());
+		{
+			resp->insertSignedInt(getCashCredits());
+		}
 		break;
 	case RPC_GETBASEHAM__INT_:
-		resp->insertSignedInt(getBaseHAM(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getBaseHAM(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETWOUNDS__INT_:
-		resp->insertSignedInt(getWounds(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getWounds(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETHAM__INT_:
-		resp->insertSignedInt(getHAM(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getHAM(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETMAXHAM__INT_:
-		resp->insertSignedInt(getMaxHAM(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getMaxHAM(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETENCUMBRANCE__INT_:
-		resp->insertSignedInt(getEncumbrance(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getEncumbrance(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETPOSTURE__:
-		resp->insertByte(getPosture());
+		{
+			resp->insertByte(getPosture());
+		}
 		break;
 	case RPC_GETLOCOMOTION__:
-		resp->insertByte(getLocomotion());
+		{
+			resp->insertByte(getLocomotion());
+		}
 		break;
 	case RPC_GETFACTIONRANK__:
-		resp->insertByte(getFactionRank());
+		{
+			resp->insertByte(getFactionRank());
+		}
 		break;
 	case RPC_GETLINKEDCREATURE__:
-		resp->insertLong(getLinkedCreature()->_getObjectID());
+		{
+			resp->insertLong(getLinkedCreature()->_getObjectID());
+		}
 		break;
 	case RPC_GETCREATURELINKID__:
-		resp->insertLong(getCreatureLinkID());
+		{
+			resp->insertLong(getCreatureLinkID());
+		}
 		break;
 	case RPC_GETSHOCKWOUNDS__:
-		resp->insertFloat(getShockWounds());
+		{
+			resp->insertFloat(getShockWounds());
+		}
 		break;
 	case RPC_GETWATCHTOID__:
-		resp->insertLong(getWatchToID());
+		{
+			resp->insertLong(getWatchToID());
+		}
 		break;
 	case RPC_GETSTATEBITMASK__:
-		resp->insertLong(getStateBitmask());
+		{
+			resp->insertLong(getStateBitmask());
+		}
 		break;
 	case RPC_HASSTATE__LONG_:
-		resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasState(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASSTATES__:
-		resp->insertBoolean(hasStates());
+		{
+			resp->insertBoolean(hasStates());
+		}
 		break;
 	case RPC_GETLISTENID__:
-		resp->insertLong(getListenID());
+		{
+			resp->insertLong(getListenID());
+		}
 		break;
 	case RPC_GETACCELERATIONMULTIPLIERBASE__:
-		resp->insertFloat(getAccelerationMultiplierBase());
+		{
+			resp->insertFloat(getAccelerationMultiplierBase());
+		}
 		break;
 	case RPC_GETACCELERATIONMULTIPLIERMOD__:
-		resp->insertFloat(getAccelerationMultiplierMod());
+		{
+			resp->insertFloat(getAccelerationMultiplierMod());
+		}
 		break;
 	case RPC_GETSPEEDMULTIPLIERBASE__:
-		resp->insertFloat(getSpeedMultiplierBase());
+		{
+			resp->insertFloat(getSpeedMultiplierBase());
+		}
 		break;
 	case RPC_GETSPEEDMULTIPLIERMOD__:
-		resp->insertFloat(getSpeedMultiplierMod());
+		{
+			resp->insertFloat(getSpeedMultiplierMod());
+		}
 		break;
 	case RPC_GETRUNSPEED__:
-		resp->insertFloat(getRunSpeed());
+		{
+			resp->insertFloat(getRunSpeed());
+		}
 		break;
 	case RPC_GETWALKSPEED__:
-		resp->insertFloat(getWalkSpeed());
+		{
+			resp->insertFloat(getWalkSpeed());
+		}
 		break;
 	case RPC_GETTURNSCALE__:
-		resp->insertFloat(getTurnScale());
+		{
+			resp->insertFloat(getTurnScale());
+		}
 		break;
 	case RPC_GETTERRAINNEGOTIATION__:
-		resp->insertFloat(getTerrainNegotiation());
+		{
+			resp->insertFloat(getTerrainNegotiation());
+		}
 		break;
 	case RPC_GETRUNACCELERATION__:
-		resp->insertFloat(getRunAcceleration());
+		{
+			resp->insertFloat(getRunAcceleration());
+		}
 		break;
 	case RPC_GETWALKACCELERATION__:
-		resp->insertFloat(getWalkAcceleration());
+		{
+			resp->insertFloat(getWalkAcceleration());
+		}
 		break;
 	case RPC_GETPERFORMANCEANIMATION__:
-		resp->insertAscii(getPerformanceAnimation());
+		{
+			resp->insertAscii(getPerformanceAnimation());
+		}
 		break;
 	case RPC_GETMOODSTRING__:
-		resp->insertAscii(getMoodString());
+		{
+			resp->insertAscii(getMoodString());
+		}
 		break;
 	case RPC_GETWEAPONID__:
-		resp->insertLong(getWeaponID());
+		{
+			resp->insertLong(getWeaponID());
+		}
 		break;
 	case RPC_GETWEAPON__:
-		resp->insertLong(getWeapon()->_getObjectID());
+		{
+			resp->insertLong(getWeapon()->_getObjectID());
+		}
 		break;
 	case RPC_GETGUILDOBJECT__:
-		resp->insertLong(getGuildObject()->_getObjectID());
+		{
+			resp->insertLong(getGuildObject()->_getObjectID());
+		}
 		break;
 	case RPC_GETGUILDID__:
-		resp->insertSignedInt(getGuildID());
+		{
+			resp->insertSignedInt(getGuildID());
+		}
 		break;
 	case RPC_ISINGUILD__:
-		resp->insertBoolean(isInGuild());
+		{
+			resp->insertBoolean(isInGuild());
+		}
 		break;
 	case RPC_SETGUILDOBJECT__GUILDOBJECT_:
-		setGuildObject(static_cast<GuildObject*>(inv->getObjectParameter()));
+		{
+			setGuildObject(static_cast<GuildObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETGROUPID__:
-		resp->insertLong(getGroupID());
+		{
+			resp->insertLong(getGroupID());
+		}
 		break;
 	case RPC_GETGROUPINVITERID__:
-		resp->insertLong(getGroupInviterID());
+		{
+			resp->insertLong(getGroupInviterID());
+		}
 		break;
 	case RPC_GETGROUP__:
-		resp->insertLong(getGroup()->_getObjectID());
+		{
+			resp->insertLong(getGroup()->_getObjectID());
+		}
 		break;
 	case RPC_GETGROUPINVITECOUNTER__:
-		resp->insertLong(getGroupInviteCounter());
+		{
+			resp->insertLong(getGroupInviteCounter());
+		}
 		break;
 	case RPC_GETTARGETID__:
-		resp->insertLong(getTargetID());
+		{
+			resp->insertLong(getTargetID());
+		}
 		break;
 	case RPC_GETMOODID__:
-		resp->insertByte(getMoodID());
+		{
+			resp->insertByte(getMoodID());
+		}
 		break;
 	case RPC_GETSLOPEMODPERCENT__:
-		resp->insertFloat(getSlopeModPercent());
+		{
+			resp->insertFloat(getSlopeModPercent());
+		}
 		break;
 	case RPC_GETPERFORMANCECOUNTER__:
-		resp->insertSignedInt(getPerformanceCounter());
+		{
+			resp->insertSignedInt(getPerformanceCounter());
+		}
 		break;
 	case RPC_GETINSTRUMENTID__:
-		resp->insertSignedInt(getInstrumentID());
+		{
+			resp->insertSignedInt(getInstrumentID());
+		}
 		break;
 	case RPC_GETFROZEN__:
-		resp->insertByte(getFrozen());
+		{
+			resp->insertByte(getFrozen());
+		}
 		break;
 	case RPC_GETHEIGHT__:
-		resp->insertFloat(getHeight());
+		{
+			resp->insertFloat(getHeight());
+		}
 		break;
 	case RPC_GETSPECIES__:
-		resp->insertSignedInt(getSpecies());
+		{
+			resp->insertSignedInt(getSpecies());
+		}
 		break;
 	case RPC_GETSPECIESNAME__:
-		resp->insertAscii(getSpeciesName());
+		{
+			resp->insertAscii(getSpeciesName());
+		}
 		break;
 	case RPC_GETGENDER__:
-		resp->insertSignedInt(getGender());
+		{
+			resp->insertSignedInt(getGender());
+		}
 		break;
 	case RPC_GETSKILLMOD__STRING_:
-		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__String_)));
+		{
+			String skillmod; 
+			resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(skillmod)));
+		}
 		break;
 	case RPC_HASSKILL__STRING_:
-		resp->insertBoolean(hasSkill(inv->getAsciiParameter(_param0_hasSkill__String_)));
+		{
+			String skill; 
+			resp->insertBoolean(hasSkill(inv->getAsciiParameter(skill)));
+		}
 		break;
 	case RPC_SETWATCHTOID__LONG_:
-		setWatchToID(inv->getUnsignedLongParameter());
+		{
+			setWatchToID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISCREATUREOBJECT__:
-		resp->insertBoolean(isCreatureObject());
+		{
+			resp->insertBoolean(isCreatureObject());
+		}
 		break;
 	case RPC_ISNEXTACTIONPAST__:
-		resp->insertBoolean(isNextActionPast());
+		{
+			resp->insertBoolean(isNextActionPast());
+		}
 		break;
 	case RPC_ISTRAINERCREATURE__:
-		resp->insertBoolean(isTrainerCreature());
+		{
+			resp->insertBoolean(isTrainerCreature());
+		}
 		break;
 	case RPC_ISSWIMMING__:
-		resp->insertBoolean(isSwimming());
+		{
+			resp->insertBoolean(isSwimming());
+		}
 		break;
 	case RPC_GETCLIENT__:
-		resp->insertLong(getClient()->_getObjectID());
+		{
+			resp->insertLong(getClient()->_getObjectID());
+		}
 		break;
 	case RPC_ISRIDINGMOUNT__:
-		resp->insertBoolean(isRidingMount());
+		{
+			resp->insertBoolean(isRidingMount());
+		}
 		break;
 	case RPC_GETCONTROLDEVICE__:
-		resp->insertLong(getControlDevice()->_getObjectID());
+		{
+			resp->insertLong(getControlDevice()->_getObjectID());
+		}
 		break;
 	case RPC_GETSWIMHEIGHT__:
-		resp->insertFloat(getSwimHeight());
+		{
+			resp->insertFloat(getSwimHeight());
+		}
 		break;
 	case RPC_ISINCAPACITATED__:
-		resp->insertBoolean(isIncapacitated());
+		{
+			resp->insertBoolean(isIncapacitated());
+		}
 		break;
 	case RPC_ISDEAD__:
-		resp->insertBoolean(isDead());
+		{
+			resp->insertBoolean(isDead());
+		}
 		break;
 	case RPC_ISKNOCKEDDOWN__:
-		resp->insertBoolean(isKnockedDown());
+		{
+			resp->insertBoolean(isKnockedDown());
+		}
 		break;
 	case RPC_ISKNEELING__:
-		resp->insertBoolean(isKneeling());
+		{
+			resp->insertBoolean(isKneeling());
+		}
 		break;
 	case RPC_ISPRONE__:
-		resp->insertBoolean(isProne());
+		{
+			resp->insertBoolean(isProne());
+		}
 		break;
 	case RPC_ISSTANDING__:
-		resp->insertBoolean(isStanding());
+		{
+			resp->insertBoolean(isStanding());
+		}
 		break;
 	case RPC_ISSITTING__:
-		resp->insertBoolean(isSitting());
+		{
+			resp->insertBoolean(isSitting());
+		}
 		break;
 	case RPC_ISSKILLANIMATING__:
-		resp->insertBoolean(isSkillAnimating());
+		{
+			resp->insertBoolean(isSkillAnimating());
+		}
 		break;
 	case RPC_ISRALLIED__:
-		resp->insertBoolean(isRallied());
+		{
+			resp->insertBoolean(isRallied());
+		}
 		break;
 	case RPC_ISINCOMBAT__:
-		resp->insertBoolean(isInCombat());
+		{
+			resp->insertBoolean(isInCombat());
+		}
 		break;
 	case RPC_ISDIZZIED__:
-		resp->insertBoolean(isDizzied());
+		{
+			resp->insertBoolean(isDizzied());
+		}
 		break;
 	case RPC_ISBERSERKED__:
-		resp->insertBoolean(isBerserked());
+		{
+			resp->insertBoolean(isBerserked());
+		}
 		break;
 	case RPC_ISSTUNNED__:
-		resp->insertBoolean(isStunned());
+		{
+			resp->insertBoolean(isStunned());
+		}
 		break;
 	case RPC_ISBLINDED__:
-		resp->insertBoolean(isBlinded());
+		{
+			resp->insertBoolean(isBlinded());
+		}
 		break;
 	case RPC_ISINTIMIDATED__:
-		resp->insertBoolean(isIntimidated());
+		{
+			resp->insertBoolean(isIntimidated());
+		}
 		break;
 	case RPC_ISSNARED__:
-		resp->insertBoolean(isSnared());
+		{
+			resp->insertBoolean(isSnared());
+		}
 		break;
 	case RPC_ISIMMOBILIZED__:
-		resp->insertBoolean(isImmobilized());
+		{
+			resp->insertBoolean(isImmobilized());
+		}
 		break;
 	case RPC_ISROOTED__:
-		resp->insertBoolean(isRooted());
+		{
+			resp->insertBoolean(isRooted());
+		}
 		break;
 	case RPC_ISFROZEN__:
-		resp->insertBoolean(isFrozen());
+		{
+			resp->insertBoolean(isFrozen());
+		}
 		break;
 	case RPC_ISDISEASED__:
-		resp->insertBoolean(isDiseased());
+		{
+			resp->insertBoolean(isDiseased());
+		}
 		break;
 	case RPC_ISPOISONED__:
-		resp->insertBoolean(isPoisoned());
+		{
+			resp->insertBoolean(isPoisoned());
+		}
 		break;
 	case RPC_ISBLEEDING__:
-		resp->insertBoolean(isBleeding());
+		{
+			resp->insertBoolean(isBleeding());
+		}
 		break;
 	case RPC_ISONFIRE__:
-		resp->insertBoolean(isOnFire());
+		{
+			resp->insertBoolean(isOnFire());
+		}
 		break;
 	case RPC_ISMOUNTED__:
-		resp->insertBoolean(isMounted());
+		{
+			resp->insertBoolean(isMounted());
+		}
 		break;
 	case RPC_ISRIDINGCREATURE__:
-		resp->insertBoolean(isRidingCreature());
+		{
+			resp->insertBoolean(isRidingCreature());
+		}
 		break;
 	case RPC_ISPEACED__:
-		resp->insertBoolean(isPeaced());
+		{
+			resp->insertBoolean(isPeaced());
+		}
 		break;
 	case RPC_ISMEDITATING__:
-		resp->insertBoolean(isMeditating());
+		{
+			resp->insertBoolean(isMeditating());
+		}
 		break;
 	case RPC_ISAIMING__:
-		resp->insertBoolean(isAiming());
+		{
+			resp->insertBoolean(isAiming());
+		}
 		break;
 	case RPC_ISINCOVER__:
-		resp->insertBoolean(isInCover());
+		{
+			resp->insertBoolean(isInCover());
+		}
 		break;
 	case RPC_ISRUNNING__:
-		resp->insertBoolean(isRunning());
+		{
+			resp->insertBoolean(isRunning());
+		}
 		break;
 	case RPC_ISNONPLAYERCREATUREOBJECT__:
-		resp->insertBoolean(isNonPlayerCreatureObject());
+		{
+			resp->insertBoolean(isNonPlayerCreatureObject());
+		}
 		break;
 	case RPC_ISCREATURE__:
-		resp->insertBoolean(isCreature());
+		{
+			resp->insertBoolean(isCreature());
+		}
 		break;
 	case RPC_ISPLAYERCREATURE__:
-		resp->insertBoolean(isPlayerCreature());
+		{
+			resp->insertBoolean(isPlayerCreature());
+		}
 		break;
 	case RPC_ISAIAGENT__:
-		resp->insertBoolean(isAiAgent());
+		{
+			resp->insertBoolean(isAiAgent());
+		}
 		break;
 	case RPC_ISINFORMANTCREATURE__:
-		resp->insertBoolean(isInformantCreature());
+		{
+			resp->insertBoolean(isInformantCreature());
+		}
 		break;
 	case RPC_ISVENDORCREATURE__:
-		resp->insertBoolean(isVendorCreature());
+		{
+			resp->insertBoolean(isVendorCreature());
+		}
 		break;
 	case RPC_GETCURRENTCAMP__:
-		resp->insertLong(getCurrentCamp()->_getObjectID());
+		{
+			resp->insertLong(getCurrentCamp()->_getObjectID());
+		}
 		break;
 	case RPC_GETCURRENTWEATHER__:
-		resp->insertByte(getCurrentWeather());
+		{
+			resp->insertByte(getCurrentWeather());
+		}
 		break;
 	case RPC_SETCURRENTWEATHER__BYTE_:
-		setCurrentWeather(inv->getByteParameter());
+		{
+			setCurrentWeather(inv->getByteParameter());
+		}
 		break;
 	case RPC_GETCURRENTWIND__:
-		resp->insertByte(getCurrentWind());
+		{
+			resp->insertByte(getCurrentWind());
+		}
 		break;
 	case RPC_SETCURRENTWIND__BYTE_:
-		setCurrentWind(inv->getByteParameter());
+		{
+			setCurrentWind(inv->getByteParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

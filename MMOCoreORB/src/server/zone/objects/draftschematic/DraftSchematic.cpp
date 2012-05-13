@@ -143,6 +143,7 @@ String DraftSchematic::getGroupName() {
 
 		DistributedMethod method(this, RPC_GETGROUPNAME__);
 
+		String _return_getGroupName;
 		method.executeWithAsciiReturn(_return_getGroupName);
 		return _return_getGroupName;
 	} else
@@ -253,6 +254,7 @@ String DraftSchematic::getXpType() {
 
 		DistributedMethod method(this, RPC_GETXPTYPE__);
 
+		String _return_getXpType;
 		method.executeWithAsciiReturn(_return_getXpType);
 		return _return_getXpType;
 	} else
@@ -280,6 +282,7 @@ String DraftSchematic::getAssemblySkill() {
 
 		DistributedMethod method(this, RPC_GETASSEMBLYSKILL__);
 
+		String _return_getAssemblySkill;
 		method.executeWithAsciiReturn(_return_getAssemblySkill);
 		return _return_getAssemblySkill;
 	} else
@@ -294,6 +297,7 @@ String DraftSchematic::getExperimentationSkill() {
 
 		DistributedMethod method(this, RPC_GETEXPERIMENTATIONSKILL__);
 
+		String _return_getExperimentationSkill;
 		method.executeWithAsciiReturn(_return_getExperimentationSkill);
 		return _return_getExperimentationSkill;
 	} else
@@ -308,6 +312,7 @@ String DraftSchematic::getCustomizationSkill() {
 
 		DistributedMethod method(this, RPC_GETCUSTOMIZATIONSKILL__);
 
+		String _return_getCustomizationSkill;
 		method.executeWithAsciiReturn(_return_getCustomizationSkill);
 		return _return_getCustomizationSkill;
 	} else
@@ -322,6 +327,7 @@ String DraftSchematic::getCustomName() {
 
 		DistributedMethod method(this, RPC_GETCUSTOMNAME__);
 
+		String _return_getCustomName;
 		method.executeWithAsciiReturn(_return_getCustomName);
 		return _return_getCustomName;
 	} else
@@ -363,6 +369,7 @@ String DraftSchematic::getTemplate(int i) {
 		DistributedMethod method(this, RPC_GETTEMPLATE__INT_);
 		method.addSignedIntParameter(i);
 
+		String _return_getTemplate;
 		method.executeWithAsciiReturn(_return_getTemplate);
 		return _return_getTemplate;
 	} else
@@ -546,70 +553,115 @@ void DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_:
-		sendDraftSlotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendDraftSlotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_:
-		sendResourceWeightsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendResourceWeightsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_:
-		resp->insertLong(createManufactureSchematic(static_cast<SceneObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(createManufactureSchematic(static_cast<SceneObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_SETGROUPNAME__STRING_:
-		setGroupName(inv->getAsciiParameter(_param0_setGroupName__String_));
+		{
+			String name; 
+			setGroupName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_GETGROUPNAME__:
-		resp->insertAscii(getGroupName());
+		{
+			resp->insertAscii(getGroupName());
+		}
 		break;
 	case RPC_GETDRAFTSLOTCOUNT__:
-		resp->insertSignedInt(getDraftSlotCount());
+		{
+			resp->insertSignedInt(getDraftSlotCount());
+		}
 		break;
 	case RPC_ISVALIDDRAFTSCHEMATIC__:
-		resp->insertBoolean(isValidDraftSchematic());
+		{
+			resp->insertBoolean(isValidDraftSchematic());
+		}
 		break;
 	case RPC_GETRESOURCEWEIGHTCOUNT__:
-		resp->insertSignedInt(getResourceWeightCount());
+		{
+			resp->insertSignedInt(getResourceWeightCount());
+		}
 		break;
 	case RPC_GETCOMPLEXITY__:
-		resp->insertFloat(getComplexity());
+		{
+			resp->insertFloat(getComplexity());
+		}
 		break;
 	case RPC_GETTOOLTAB__:
-		resp->insertInt(getToolTab());
+		{
+			resp->insertInt(getToolTab());
+		}
 		break;
 	case RPC_GETSIZE__:
-		resp->insertFloat(getSize());
+		{
+			resp->insertFloat(getSize());
+		}
 		break;
 	case RPC_GETXPTYPE__:
-		resp->insertAscii(getXpType());
+		{
+			resp->insertAscii(getXpType());
+		}
 		break;
 	case RPC_GETXPAMOUNT__:
-		resp->insertSignedInt(getXpAmount());
+		{
+			resp->insertSignedInt(getXpAmount());
+		}
 		break;
 	case RPC_GETASSEMBLYSKILL__:
-		resp->insertAscii(getAssemblySkill());
+		{
+			resp->insertAscii(getAssemblySkill());
+		}
 		break;
 	case RPC_GETEXPERIMENTATIONSKILL__:
-		resp->insertAscii(getExperimentationSkill());
+		{
+			resp->insertAscii(getExperimentationSkill());
+		}
 		break;
 	case RPC_GETCUSTOMIZATIONSKILL__:
-		resp->insertAscii(getCustomizationSkill());
+		{
+			resp->insertAscii(getCustomizationSkill());
+		}
 		break;
 	case RPC_GETCUSTOMNAME__:
-		resp->insertAscii(getCustomName());
+		{
+			resp->insertAscii(getCustomName());
+		}
 		break;
 	case RPC_GETTANOCRC__:
-		resp->insertInt(getTanoCRC());
+		{
+			resp->insertInt(getTanoCRC());
+		}
 		break;
 	case RPC_GETTEMPLATELISTSIZE__:
-		resp->insertSignedInt(getTemplateListSize());
+		{
+			resp->insertSignedInt(getTemplateListSize());
+		}
 		break;
 	case RPC_GETTEMPLATE__INT_:
-		resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

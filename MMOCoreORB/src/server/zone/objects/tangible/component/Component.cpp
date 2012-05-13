@@ -187,6 +187,7 @@ String Component::getAttributeTitle(String& attributeName) {
 		DistributedMethod method(this, RPC_GETATTRIBUTETITLE__STRING_);
 		method.addAsciiParameter(attributeName);
 
+		String _return_getAttributeTitle;
 		method.executeWithAsciiReturn(_return_getAttributeTitle);
 		return _return_getAttributeTitle;
 	} else
@@ -260,6 +261,7 @@ String Component::getProperty(const int j) {
 		DistributedMethod method(this, RPC_GETPROPERTY__INT_);
 		method.addSignedIntParameter(j);
 
+		String _return_getProperty;
 		method.executeWithAsciiReturn(_return_getProperty);
 		return _return_getProperty;
 	} else
@@ -511,49 +513,89 @@ void ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISCOMPONENT__:
-		resp->insertBoolean(isComponent());
+		{
+			resp->insertBoolean(isComponent());
+		}
 		break;
 	case RPC_GENERATELOOTSTATS__STRING_INT_:
-		generateLootStats(inv->getAsciiParameter(_param0_generateLootStats__String_int_), inv->getSignedIntParameter());
+		{
+			String lootstring; 
+			generateLootStats(inv->getAsciiParameter(lootstring), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_COMPARE__COMPONENT_:
-		resp->insertBoolean(compare(static_cast<Component*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(compare(static_cast<Component*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASKEY__STRING_:
-		resp->insertBoolean(hasKey(inv->getAsciiParameter(_param0_hasKey__String_)));
+		{
+			String key; 
+			resp->insertBoolean(hasKey(inv->getAsciiParameter(key)));
+		}
 		break;
 	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_BOOL_:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_bool_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_bool_), inv->getBooleanParameter());
+		{
+			String attributeName; String craftingTitle; 
+			addProperty(inv->getAsciiParameter(attributeName), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(craftingTitle), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETATTRIBUTEVALUE__STRING_:
-		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
+		{
+			String attributeName; 
+			resp->insertFloat(getAttributeValue(inv->getAsciiParameter(attributeName)));
+		}
 		break;
 	case RPC_GETATTRIBUTEPRECISION__STRING_:
-		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
+		{
+			String attributeName; 
+			resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(attributeName)));
+		}
 		break;
 	case RPC_GETATTRIBUTETITLE__STRING_:
-		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
+		{
+			String attributeName; 
+			resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(attributeName)));
+		}
 		break;
 	case RPC_GETATTRIBUTEHIDDEN__STRING_:
-		resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(_param0_getAttributeHidden__String_)));
+		{
+			String attributeName; 
+			resp->insertBoolean(getAttributeHidden(inv->getAsciiParameter(attributeName)));
+		}
 		break;
 	case RPC_SETPROPERTYTOHIDDEN__STRING_:
-		setPropertyToHidden(inv->getAsciiParameter(_param0_setPropertyToHidden__String_));
+		{
+			String property; 
+			setPropertyToHidden(inv->getAsciiParameter(property));
+		}
 		break;
 	case RPC_ADDPROPERTY__STRING_FLOAT_INT_STRING_:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
+		{
+			String attribute; String title; 
+			addProperty(inv->getAsciiParameter(attribute), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(title));
+		}
 		break;
 	case RPC_GETPROPERTYCOUNT__:
-		resp->insertSignedInt(getPropertyCount());
+		{
+			resp->insertSignedInt(getPropertyCount());
+		}
 		break;
 	case RPC_GETPROPERTY__INT_:
-		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CHANGEATTRIBUTEVALUE__STRING_FLOAT_:
-		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
+		{
+			String property; 
+			resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(property), inv->getFloatParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

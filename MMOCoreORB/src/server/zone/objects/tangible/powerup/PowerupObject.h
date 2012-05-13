@@ -182,8 +182,6 @@ public:
 
 	float getPowerupStat(const String& stat);
 
-protected:
-	String _param0_getPowerupStat__String_;
 };
 
 class PowerupObjectHelper : public DistributedObjectClassHelper, public Singleton<PowerupObjectHelper> {

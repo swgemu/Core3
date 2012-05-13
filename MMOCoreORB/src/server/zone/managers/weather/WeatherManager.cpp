@@ -316,31 +316,49 @@ void WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_CREATENEWWEATHERPATTERN__:
-		createNewWeatherPattern();
+		{
+			createNewWeatherPattern();
+		}
 		break;
 	case RPC_SENDWEATHERTO__CREATUREOBJECT_:
-		sendWeatherTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendWeatherTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ENABLEWEATHER__CREATUREOBJECT_:
-		enableWeather(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			enableWeather(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DISABLEWEATHER__CREATUREOBJECT_:
-		disableWeather(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			disableWeather(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHANGEWEATHER__CREATUREOBJECT_INT_:
-		changeWeather(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			changeWeather(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISWEATHERENABLED__:
-		resp->insertBoolean(isWeatherEnabled());
+		{
+			resp->insertBoolean(isWeatherEnabled());
+		}
 		break;
 	case RPC_SETWEATHERENABLED__BOOL_:
-		setWeatherEnabled(inv->getBooleanParameter());
+		{
+			setWeatherEnabled(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_PRINTINFO__CREATUREOBJECT_:
-		printInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			printInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

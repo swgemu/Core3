@@ -102,8 +102,6 @@ protected:
 
 	virtual ~WearableObject();
 
-	String _return_repairAttempt;
-
 	friend class WearableObjectHelper;
 };
 

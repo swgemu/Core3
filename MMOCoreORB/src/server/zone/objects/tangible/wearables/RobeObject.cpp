@@ -58,6 +58,7 @@ String RobeObject::getSkillRequired() {
 
 		DistributedMethod method(this, RPC_GETSKILLREQUIRED__);
 
+		String _return_getSkillRequired;
 		method.executeWithAsciiReturn(_return_getSkillRequired);
 		return _return_getSkillRequired;
 	} else
@@ -267,13 +268,19 @@ void RobeObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_GETSKILLREQUIRED__:
-		resp->insertAscii(getSkillRequired());
+		{
+			resp->insertAscii(getSkillRequired());
+		}
 		break;
 	case RPC_ISROBEOBJECT__:
-		resp->insertBoolean(isRobeObject());
+		{
+			resp->insertBoolean(isRobeObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

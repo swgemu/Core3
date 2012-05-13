@@ -974,109 +974,189 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_LOADSHUTTLETICKETCOLLECTORS__:
-		loadShuttleTicketCollectors();
+		{
+			loadShuttleTicketCollectors();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_LOADCLIENTREGIONS__:
-		loadClientRegions();
+		{
+			loadClientRegions();
+		}
 		break;
 	case RPC_LOADCLIENTPOIDATA__:
-		loadClientPoiData();
+		{
+			loadClientPoiData();
+		}
 		break;
 	case RPC_LOADBADGEAREAS__:
-		loadBadgeAreas();
+		{
+			loadBadgeAreas();
+		}
 		break;
 	case RPC_LOADPERFORMANCELOCATIONS__:
-		loadPerformanceLocations();
+		{
+			loadPerformanceLocations();
+		}
 		break;
 	case RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_:
-		resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_:
-		resp->insertBoolean(isInRangeWithPoi(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(isInRangeWithPoi(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_GETTRAVELFARE__STRING_STRING_:
-		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
+		{
+			String departurePlanet; String arrivalPlanet; 
+			resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(departurePlanet), inv->getAsciiParameter(arrivalPlanet)));
+		}
 		break;
 	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_:
-		sendPlanetTravelPointListResponse(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendPlanetTravelPointListResponse(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATETICKET__STRING_STRING_STRING_:
-		resp->insertLong(createTicket(inv->getAsciiParameter(_param0_createTicket__String_String_String_), inv->getAsciiParameter(_param1_createTicket__String_String_String_), inv->getAsciiParameter(_param2_createTicket__String_String_String_))->_getObjectID());
+		{
+			String departurePoint; String arrivalPlanet; String arrivalPoint; 
+			resp->insertLong(createTicket(inv->getAsciiParameter(departurePoint), inv->getAsciiParameter(arrivalPlanet), inv->getAsciiParameter(arrivalPoint))->_getObjectID());
+		}
 		break;
 	case RPC_VALIDATEREGIONNAME__STRING_:
-		resp->insertBoolean(validateRegionName(inv->getAsciiParameter(_param0_validateRegionName__String_)));
+		{
+			String name; 
+			resp->insertBoolean(validateRegionName(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_:
-		resp->insertBoolean(validateClientCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(validateClientCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_GETWEATHERMANAGER__:
-		resp->insertLong(getWeatherManager()->_getObjectID());
+		{
+			resp->insertLong(getWeatherManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETREGIONCOUNT__:
-		resp->insertSignedInt(getRegionCount());
+		{
+			resp->insertSignedInt(getRegionCount());
+		}
 		break;
 	case RPC_GETNUMBEROFCITIES__:
-		resp->insertSignedInt(getNumberOfCities());
+		{
+			resp->insertSignedInt(getNumberOfCities());
+		}
 		break;
 	case RPC_INCREASENUMBEROFCITIES__:
-		increaseNumberOfCities();
+		{
+			increaseNumberOfCities();
+		}
 		break;
 	case RPC_GETREGION__INT_:
-		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETREGION__STRING_:
-		resp->insertLong(getRegion(inv->getAsciiParameter(_param0_getRegion__String_))->_getObjectID());
+		{
+			String region; 
+			resp->insertLong(getRegion(inv->getAsciiParameter(region))->_getObjectID());
+		}
 		break;
 	case RPC_GETREGIONAT__FLOAT_FLOAT_:
-		resp->insertLong(getRegionAt(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		{
+			resp->insertLong(getRegionAt(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		}
 		break;
 	case RPC_ADDREGION__CITYREGION_:
-		addRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			addRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DROPREGION__STRING_:
-		dropRegion(inv->getAsciiParameter(_param0_dropRegion__String_));
+		{
+			String region; 
+			dropRegion(inv->getAsciiParameter(region));
+		}
 		break;
 	case RPC_HASREGION__STRING_:
-		resp->insertBoolean(hasRegion(inv->getAsciiParameter(_param0_hasRegion__String_)));
+		{
+			String name; 
+			resp->insertBoolean(hasRegion(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_:
-		addPerformanceLocation(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addPerformanceLocation(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_:
-		resp->insertBoolean(isExistingPlanetTravelPoint(inv->getAsciiParameter(_param0_isExistingPlanetTravelPoint__String_)));
+		{
+			String pointName; 
+			resp->insertBoolean(isExistingPlanetTravelPoint(inv->getAsciiParameter(pointName)));
+		}
 		break;
 	case RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_:
-		resp->insertBoolean(isInterplanetaryTravelAllowed(inv->getAsciiParameter(_param0_isInterplanetaryTravelAllowed__String_)));
+		{
+			String pointName; 
+			resp->insertBoolean(isInterplanetaryTravelAllowed(inv->getAsciiParameter(pointName)));
+		}
 		break;
 	case RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_:
-		resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(_param0_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param1_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param2_isTravelToLocationPermitted__String_String_String_)));
+		{
+			String destinationPoint; String arrivalPlanet; String arrivalPoint; 
+			resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(destinationPoint), inv->getAsciiParameter(arrivalPlanet), inv->getAsciiParameter(arrivalPoint)));
+		}
 		break;
 	case RPC_SCHEDULESHUTTLE__CREATUREOBJECT_:
-		scheduleShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			scheduleShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESHUTTLE__CREATUREOBJECT_:
-		removeShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_:
-		resp->insertBoolean(checkShuttleStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkShuttleStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISINWATER__FLOAT_FLOAT_:
-		resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_ADDSHUTTLETOLOAD__SCENEOBJECT_:
-		addShuttleToLoad(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addShuttleToLoad(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_:
-		removePlayerCityTravelPoint(inv->getAsciiParameter(_param0_removePlayerCityTravelPoint__String_));
+		{
+			String cityName; 
+			removePlayerCityTravelPoint(inv->getAsciiParameter(cityName));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

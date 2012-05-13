@@ -213,7 +213,9 @@ void ZoneManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETZONEPROCESSOR__ZONEPROCESSSERVER_:
-		setZoneProcessor(static_cast<ZoneProcessServer*>(inv->getObjectParameter()));
+		{
+			setZoneProcessor(static_cast<ZoneProcessServer*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

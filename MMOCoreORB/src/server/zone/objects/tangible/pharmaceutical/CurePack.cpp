@@ -480,25 +480,39 @@ void CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
-		resp->insertSignedInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISAREA__:
-		resp->insertBoolean(isArea());
+		{
+			resp->insertBoolean(isArea());
+		}
 		break;
 	case RPC_GETAREA__:
-		resp->insertFloat(getArea());
+		{
+			resp->insertFloat(getArea());
+		}
 		break;
 	case RPC_GETSTATE__:
-		resp->insertLong(getState());
+		{
+			resp->insertLong(getState());
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	case RPC_ISCUREPACK__:
-		resp->insertBoolean(isCurePack());
+		{
+			resp->insertBoolean(isCurePack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

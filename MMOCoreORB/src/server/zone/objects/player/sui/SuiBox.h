@@ -192,8 +192,6 @@ protected:
 
 	virtual ~SuiBox();
 
-	String _return_getPromptTitle;
-
 	friend class SuiBoxHelper;
 };
 
@@ -469,19 +467,6 @@ public:
 
 	void setUsingObject(SceneObject* object);
 
-protected:
-	String _param0_addSetting__String_String_String_String_;
-	String _param1_addSetting__String_String_String_String_;
-	String _param2_addSetting__String_String_String_String_;
-	String _param3_addSetting__String_String_String_String_;
-	String _param0_addHeader__String_String_;
-	String _param1_addHeader__String_String_;
-	String _param0_setPromptTitle__String_;
-	String _param0_setPromptText__String_;
-	String _param0_setHandlerText__String_;
-	String _param1_setCancelButton__bool_String_;
-	String _param1_setOtherButton__bool_String_;
-	String _param1_setOkButton__bool_String_;
 };
 
 class SuiBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBoxHelper> {

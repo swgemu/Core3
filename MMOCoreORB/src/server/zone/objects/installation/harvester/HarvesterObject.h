@@ -62,8 +62,6 @@ protected:
 
 	virtual ~HarvesterObject();
 
-	String _return_getRedeedMessage;
-
 	friend class HarvesterObjectHelper;
 };
 

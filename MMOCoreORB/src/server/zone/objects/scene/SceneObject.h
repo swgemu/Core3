@@ -795,16 +795,6 @@ protected:
 
 	virtual ~SceneObject();
 
-	String _return_getArrangementDescriptor;
-	String _return_getDetailedDescription;
-	String _return_getDisplayedName;
-	String _return_getLoggingName;
-	String _return_getObjectNameStringIdFile;
-	String _return_getObjectNameStringIdName;
-	String _return_getSlotDescriptor;
-
-	UnicodeString _return_getCustomObjectName;
-
 	friend class SceneObjectHelper;
 };
 
@@ -1720,8 +1710,6 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
-	ReadWriteLock* getContainerLock();
-
 	UnicodeString getCustomObjectName();
 
 	String getLoggingName();
@@ -1904,22 +1892,6 @@ public:
 
 	void setSendToClient(bool val);
 
-protected:
-	String _param0_info__String_bool_;
-	String _param0_error__String_;
-	String _param2_canAddObject__SceneObject_int_String_;
-	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
-	String _param0_switchZone__String_float_float_float_long_;
-	String _param0_containsPendingTask__String_;
-	String _param0_showFlyText__String_String_byte_byte_byte_;
-	String _param1_showFlyText__String_String_byte_byte_byte_;
-	String _param0_setDetailedDescription__String_;
-	String _param0_hasSlotDescriptor__String_;
-	String _param0_getSlottedObject__String_;
-	String _param0_dropSlottedObject__String_;
-	String _param0_setContainerAllowPermission__String_short_;
-	String _param0_setContainerDenyPermission__String_short_;
-	String _param0_setLoggingName__String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

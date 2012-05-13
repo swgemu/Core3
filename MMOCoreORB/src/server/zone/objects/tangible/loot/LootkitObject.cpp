@@ -336,19 +336,30 @@ void LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		{
+			String errorDescription; 
+			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETPLAYER__:
-		resp->insertLong(getPlayer()->_getObjectID());
+		{
+			resp->insertLong(getPlayer()->_getObjectID());
+		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -174,6 +174,7 @@ String ResourceContainer::getSpawnName() {
 
 		DistributedMethod method(this, RPC_GETSPAWNNAME__);
 
+		String _return_getSpawnName;
 		method.executeWithAsciiReturn(_return_getSpawnName);
 		return _return_getSpawnName;
 	} else
@@ -188,6 +189,7 @@ String ResourceContainer::getSpawnType() {
 
 		DistributedMethod method(this, RPC_GETSPAWNTYPE__);
 
+		String _return_getSpawnType;
 		method.executeWithAsciiReturn(_return_getSpawnType);
 		return _return_getSpawnType;
 	} else
@@ -505,52 +507,84 @@ void ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETQUANTITY__INT_BOOL_BOOL_:
-		setQuantity(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			setQuantity(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISRESOURCECONTAINER__:
-		resp->insertBoolean(isResourceContainer());
+		{
+			resp->insertBoolean(isResourceContainer());
+		}
 		break;
 	case RPC_GETQUANTITY__:
-		resp->insertSignedInt(getQuantity());
+		{
+			resp->insertSignedInt(getQuantity());
+		}
 		break;
 	case RPC_GETUSECOUNT__:
-		resp->insertSignedInt(getUseCount());
+		{
+			resp->insertSignedInt(getUseCount());
+		}
 		break;
 	case RPC_SETUSECOUNT__INT_BOOL_:
-		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSPAWNOBJECT__RESOURCESPAWN_:
-		setSpawnObject(static_cast<ResourceSpawn*>(inv->getObjectParameter()));
+		{
+			setSpawnObject(static_cast<ResourceSpawn*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETSPAWNNAME__:
-		resp->insertAscii(getSpawnName());
+		{
+			resp->insertAscii(getSpawnName());
+		}
 		break;
 	case RPC_GETSPAWNTYPE__:
-		resp->insertAscii(getSpawnType());
+		{
+			resp->insertAscii(getSpawnType());
+		}
 		break;
 	case RPC_GETSPAWNID__:
-		resp->insertLong(getSpawnID());
+		{
+			resp->insertLong(getSpawnID());
+		}
 		break;
 	case RPC_GETSPAWNOBJECT__:
-		resp->insertLong(getSpawnObject()->_getObjectID());
+		{
+			resp->insertLong(getSpawnObject()->_getObjectID());
+		}
 		break;
 	case RPC_SPLIT__INT_:
-		split(inv->getSignedIntParameter());
+		{
+			split(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SPLIT__INT_CREATUREOBJECT_:
-		split(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			split(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_COMBINE__RESOURCECONTAINER_:
-		combine(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		{
+			combine(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

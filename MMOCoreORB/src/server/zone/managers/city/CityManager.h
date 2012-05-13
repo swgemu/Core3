@@ -439,12 +439,6 @@ public:
 
 	int getTotalCities();
 
-protected:
-	String _param0_validateCityName__String_;
-	String _param1_createCity__CreatureObject_String_float_float_;
-	String _param2_changeCitySpecialization__CityRegion_CreatureObject_String_;
-	String _param2_addMilitiaMember__CityRegion_CreatureObject_String_;
-	String _param0_containsCityName__String_;
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

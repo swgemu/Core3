@@ -107,12 +107,6 @@ protected:
 
 	virtual ~PersistentMessage();
 
-	String _return_getSenderName;
-
-	UnicodeString _return_getBody;
-
-	UnicodeString _return_getSubject;
-
 	friend class PersistentMessageHelper;
 };
 
@@ -276,10 +270,6 @@ public:
 
 	bool isUnread();
 
-protected:
-	String _param0_setSenderName__String_;
-	UnicodeString _param0_setBody__UnicodeString_;
-	UnicodeString _param0_setSubject__UnicodeString_;
 };
 
 class PersistentMessageHelper : public DistributedObjectClassHelper, public Singleton<PersistentMessageHelper> {

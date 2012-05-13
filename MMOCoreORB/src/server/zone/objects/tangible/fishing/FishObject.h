@@ -221,10 +221,6 @@ public:
 
 	void filet(CreatureObject* player);
 
-protected:
-	String _param0_setAttributes__String_String_String_float_;
-	String _param1_setAttributes__String_String_String_float_;
-	String _param2_setAttributes__String_String_String_float_;
 };
 
 class FishObjectHelper : public DistributedObjectClassHelper, public Singleton<FishObjectHelper> {

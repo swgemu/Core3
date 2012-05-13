@@ -315,16 +315,24 @@ void CityRemoveMilitiaSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 
 	switch (methid) {
 	case RPC_GETMILITIAID__:
-		resp->insertLong(getMilitiaID());
+		{
+			resp->insertLong(getMilitiaID());
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

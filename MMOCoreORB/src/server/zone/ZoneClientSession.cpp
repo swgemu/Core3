@@ -149,6 +149,7 @@ String ZoneClientSession::getAddress() {
 
 		DistributedMethod method(this, RPC_GETADDRESS__);
 
+		String _return_getAddress;
 		method.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
 	} else
@@ -653,67 +654,111 @@ void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_DISCONNECT__:
-		disconnect();
+		{
+			disconnect();
+		}
 		break;
 	case RPC_DISCONNECT__BOOL_:
-		disconnect(inv->getBooleanParameter());
+		{
+			disconnect(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		{
+			sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BALANCEPACKETCHECKUPTIME__:
-		balancePacketCheckupTime();
+		{
+			balancePacketCheckupTime();
+		}
 		break;
 	case RPC_RESETPACKETCHECKUPTIME__:
-		resetPacketCheckupTime();
+		{
+			resetPacketCheckupTime();
+		}
 		break;
 	case RPC_CLOSECONNECTION__BOOL_BOOL_:
-		closeConnection(inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			closeConnection(inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_INFO__STRING_BOOL_:
-		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
+		{
+			String msg; 
+			info(inv->getAsciiParameter(msg), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ERROR__STRING_:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		{
+			String msg; 
+			error(inv->getAsciiParameter(msg));
+		}
 		break;
 	case RPC_GETADDRESS__:
-		resp->insertAscii(getAddress());
+		{
+			resp->insertAscii(getAddress());
+		}
 		break;
 	case RPC_SETPLAYER__SCENEOBJECT_:
-		setPlayer(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setPlayer(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETSESSIONID__INT_:
-		setSessionID(inv->getUnsignedIntParameter());
+		{
+			setSessionID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETACCOUNTID__INT_:
-		setAccountID(inv->getUnsignedIntParameter());
+		{
+			setAccountID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETCOMMANDCOUNT__:
-		resp->insertSignedInt(getCommandCount());
+		{
+			resp->insertSignedInt(getCommandCount());
+		}
 		break;
 	case RPC_INCREASECOMMANDCOUNT__:
-		increaseCommandCount();
+		{
+			increaseCommandCount();
+		}
 		break;
 	case RPC_RESETCOMMANDCOUNT__:
-		resetCommandCount();
+		{
+			resetCommandCount();
+		}
 		break;
 	case RPC_GETPLAYER__:
-		resp->insertLong(getPlayer()->_getObjectID());
+		{
+			resp->insertLong(getPlayer()->_getObjectID());
+		}
 		break;
 	case RPC_GETSESSIONID__:
-		resp->insertInt(getSessionID());
+		{
+			resp->insertInt(getSessionID());
+		}
 		break;
 	case RPC_GETACCOUNTID__:
-		resp->insertInt(getAccountID());
+		{
+			resp->insertInt(getAccountID());
+		}
 		break;
 	case RPC_HASCHARACTER__LONG_:
-		resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ADDCHARACTER__LONG_:
-		addCharacter(inv->getUnsignedLongParameter());
+		{
+			addCharacter(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_RESETCHARACTERS__:
-		resetCharacters();
+		{
+			resetCharacters();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -212,8 +212,6 @@ public:
 
 	void setEfficiency(unsigned int eff);
 
-protected:
-	String _param0_setSpawnFamily__String_;
 };
 
 class SurveyMissionObjectiveHelper : public DistributedObjectClassHelper, public Singleton<SurveyMissionObjectiveHelper> {

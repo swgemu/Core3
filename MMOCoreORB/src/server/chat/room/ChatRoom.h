@@ -164,14 +164,6 @@ protected:
 
 	virtual ~ChatRoom();
 
-	String _return_getCreator;
-	String _return_getFullPath;
-	String _return_getGalaxyName;
-	String _return_getName;
-	String _return_getOwner;
-
-	UnicodeString _return_getTitle;
-
 	friend class ChatRoomHelper;
 };
 
@@ -411,15 +403,6 @@ public:
 
 	int compareTo(ChatRoom* obj);
 
-protected:
-	String _param2_init__ZoneServer_ChatRoom_String_int_;
-	String _param0_getSubRoom__String_;
-	String _param0_removePlayer__String_;
-	String _param0_hasPlayer__String_;
-	String _param0_setName__String_;
-	String _param0_setOwner__String_;
-	String _param0_setCreator__String_;
-	String _param0_setTitle__String_;
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {

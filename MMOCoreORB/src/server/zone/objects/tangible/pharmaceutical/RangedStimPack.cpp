@@ -506,28 +506,44 @@ void RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
-		resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		{
+			resp->insertInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_GETRANGE__CREATUREOBJECT_:
-		resp->insertFloat(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertFloat(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	case RPC_GETAREA__:
-		resp->insertFloat(getArea());
+		{
+			resp->insertFloat(getArea());
+		}
 		break;
 	case RPC_ISAREA__:
-		resp->insertBoolean(isArea());
+		{
+			resp->insertBoolean(isArea());
+		}
 		break;
 	case RPC_GETRANGEMOD__:
-		resp->insertFloat(getRangeMod());
+		{
+			resp->insertFloat(getRangeMod());
+		}
 		break;
 	case RPC_ISRANGEDSTIMPACK__:
-		resp->insertBoolean(isRangedStimPack());
+		{
+			resp->insertBoolean(isRangedStimPack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

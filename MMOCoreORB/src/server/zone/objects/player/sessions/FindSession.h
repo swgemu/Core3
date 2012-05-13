@@ -169,8 +169,6 @@ public:
 
 	void clearWaypoint();
 
-protected:
-	String _param2_addWaypoint__float_float_String_;
 };
 
 class FindSessionHelper : public DistributedObjectClassHelper, public Singleton<FindSessionHelper> {

@@ -232,13 +232,19 @@ void NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISNONPLAYERCREATUREOBJECT__:
-		resp->insertBoolean(isNonPlayerCreatureObject());
+		{
+			resp->insertBoolean(isNonPlayerCreatureObject());
+		}
 		break;
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
-		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

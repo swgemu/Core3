@@ -353,9 +353,6 @@ public:
 
 	void sendSampleTo(CreatureObject* player, const String& resname);
 
-protected:
-	String _param1_sendSurveyTo__CreatureObject_String_;
-	String _param1_sendSampleTo__CreatureObject_String_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {

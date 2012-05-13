@@ -519,28 +519,44 @@ void RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_GETHEALTHWOUNDHEALED__:
-		resp->insertFloat(getHealthWoundHealed());
+		{
+			resp->insertFloat(getHealthWoundHealed());
+		}
 		break;
 	case RPC_GETHEALTHHEALED__:
-		resp->insertFloat(getHealthHealed());
+		{
+			resp->insertFloat(getHealthHealed());
+		}
 		break;
 	case RPC_GETACTIONWOUNDHEALED__:
-		resp->insertFloat(getActionWoundHealed());
+		{
+			resp->insertFloat(getActionWoundHealed());
+		}
 		break;
 	case RPC_GETACTIONHEALED__:
-		resp->insertFloat(getActionHealed());
+		{
+			resp->insertFloat(getActionHealed());
+		}
 		break;
 	case RPC_GETMINDWOUNDHEALED__:
-		resp->insertFloat(getMindWoundHealed());
+		{
+			resp->insertFloat(getMindWoundHealed());
+		}
 		break;
 	case RPC_GETMINDHEALED__:
-		resp->insertFloat(getMindHealed());
+		{
+			resp->insertFloat(getMindHealed());
+		}
 		break;
 	case RPC_ISREVIVEPACK__:
-		resp->insertBoolean(isRevivePack());
+		{
+			resp->insertBoolean(isRevivePack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

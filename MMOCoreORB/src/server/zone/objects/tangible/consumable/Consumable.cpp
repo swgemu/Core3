@@ -665,28 +665,44 @@ void ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SETMODIFIERS__BUFF_BOOL_:
-		setModifiers(static_cast<Buff*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			setModifiers(static_cast<Buff*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISSPICEEFFECT__:
-		resp->insertBoolean(isSpiceEffect());
+		{
+			resp->insertBoolean(isSpiceEffect());
+		}
 		break;
 	case RPC_ISATTRIBUTEEFFECT__:
-		resp->insertBoolean(isAttributeEffect());
+		{
+			resp->insertBoolean(isAttributeEffect());
+		}
 		break;
 	case RPC_ISDRINK__:
-		resp->insertBoolean(isDrink());
+		{
+			resp->insertBoolean(isDrink());
+		}
 		break;
 	case RPC_ISFOOD__:
-		resp->insertBoolean(isFood());
+		{
+			resp->insertBoolean(isFood());
+		}
 		break;
 	case RPC_ISFORAGEDFOOD__:
-		resp->insertBoolean(isForagedFood());
+		{
+			resp->insertBoolean(isForagedFood());
+		}
 		break;
 	case RPC_ISSPICE__:
-		resp->insertBoolean(isSpice());
+		{
+			resp->insertBoolean(isSpice());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

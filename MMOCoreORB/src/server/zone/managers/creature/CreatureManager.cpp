@@ -581,58 +581,95 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_:
-		resp->insertLong(spawnLair(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		{
+			resp->insertLong(spawnLair(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_:
-		resp->insertLong(spawnCreatureWithLevel(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(spawnCreatureWithLevel(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_CREATECREATURE__INT_BOOL_:
-		resp->insertLong(createCreature(inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(createCreature(inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_:
-		placeCreature(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		{
+			placeCreature(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_LOADSPAWNAREAS__:
-		loadSpawnAreas();
+		{
+			loadSpawnAreas();
+		}
 		break;
 	case RPC_LOADSINGLESPAWNS__:
-		loadSingleSpawns();
+		{
+			loadSingleSpawns();
+		}
 		break;
 	case RPC_LOADTRAINERS__:
-		loadTrainers();
+		{
+			loadTrainers();
+		}
 		break;
 	case RPC_LOADMISSIONSPAWNS__:
-		loadMissionSpawns();
+		{
+			loadMissionSpawns();
+		}
 		break;
 	case RPC_LOADINFORMANTS__:
-		loadInformants();
+		{
+			loadInformants();
+		}
 		break;
 	case RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_:
-		spawnRandomCreaturesAround(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			spawnRandomCreaturesAround(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_:
-		spawnRandomCreature(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		{
+			spawnRandomCreature(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_:
-		harvest(static_cast<Creature*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			harvest(static_cast<Creature*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDTORESERVEPOOL__AIAGENT_:
-		addToReservePool(static_cast<AiAgent*>(inv->getObjectParameter()));
+		{
+			addToReservePool(static_cast<AiAgent*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETSPAWNEDRANDOMCREATURES__:
-		resp->insertSignedInt(getSpawnedRandomCreatures());
+		{
+			resp->insertSignedInt(getSpawnedRandomCreatures());
+		}
 		break;
 	case RPC_GETSPAWNAREA__STRING_:
-		resp->insertLong(getSpawnArea(inv->getAsciiParameter(_param0_getSpawnArea__String_))->_getObjectID());
+		{
+			String areaname; 
+			resp->insertLong(getSpawnArea(inv->getAsciiParameter(areaname))->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

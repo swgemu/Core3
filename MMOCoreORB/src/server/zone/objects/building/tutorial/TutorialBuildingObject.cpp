@@ -293,19 +293,29 @@ void TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_NOTIFYREMOVEFROMZONE__:
-		notifyRemoveFromZone();
+		{
+			notifyRemoveFromZone();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ONEXIT__CREATUREOBJECT_:
-		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			onExit(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CLEARUNLOADEVENT__:
-		clearUnloadEvent();
+		{
+			clearUnloadEvent();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

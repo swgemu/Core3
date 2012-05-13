@@ -349,13 +349,19 @@ void StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_GETSTATE__:
-		resp->insertLong(getState());
+		{
+			resp->insertLong(getState());
+		}
 		break;
 	case RPC_ISSTATEPACK__:
-		resp->insertBoolean(isStatePack());
+		{
+			resp->insertBoolean(isStatePack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

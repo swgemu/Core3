@@ -237,6 +237,7 @@ String PlayerManagementSession::getBanDuration(unsigned int timestamp) {
 		DistributedMethod method(this, RPC_GETBANDURATION__INT_);
 		method.addUnsignedIntParameter(timestamp);
 
+		String _return_getBanDuration;
 		method.executeWithAsciiReturn(_return_getBanDuration);
 		return _return_getBanDuration;
 	} else
@@ -632,49 +633,83 @@ void PlayerManagementSessionAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_ADDACCOUNTSUI__SUILISTBOX_:
-		addAccountSui(static_cast<SuiListBox*>(inv->getObjectParameter()));
+		{
+			addAccountSui(static_cast<SuiListBox*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BAN__INT_INT_STRING_STRING_:
-		ban(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_ban__int_int_String_String_), inv->getAsciiParameter(_param3_ban__int_int_String_String_));
+		{
+			String gname; String name; 
+			ban(inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(gname), inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_GETPLAYERINFO__INT_STRING_:
-		getPlayerInfo(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_getPlayerInfo__int_String_));
+		{
+			String firstName; 
+			getPlayerInfo(inv->getSignedIntParameter(), inv->getAsciiParameter(firstName));
+		}
 		break;
 	case RPC_SENDACCOUNTINFO__:
-		sendAccountInfo();
+		{
+			sendAccountInfo();
+		}
 		break;
 	case RPC_SENDBANDURATION__:
-		sendBanDuration();
+		{
+			sendBanDuration();
+		}
 		break;
 	case RPC_PARSEBANDURATION__STRING_:
-		parseBanDuration(inv->getAsciiParameter(_param0_parseBanDuration__String_));
+		{
+			String duration; 
+			parseBanDuration(inv->getAsciiParameter(duration));
+		}
 		break;
 	case RPC_SENDBANREASON__BOOL_:
-		sendBanReason(inv->getBooleanParameter());
+		{
+			sendBanReason(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETBANREASON__STRING_:
-		setBanReason(inv->getAsciiParameter(_param0_setBanReason__String_));
+		{
+			String reason; 
+			setBanReason(inv->getAsciiParameter(reason));
+		}
 		break;
 	case RPC_SHOWBANSUMMARY__:
-		showBanSummary();
+		{
+			showBanSummary();
+		}
 		break;
 	case RPC_SHOWUNBANSUMMARY__:
-		showUnbanSummary();
+		{
+			showUnbanSummary();
+		}
 		break;
 	case RPC_COMPLETEBAN__:
-		completeBan();
+		{
+			completeBan();
+		}
 		break;
 	case RPC_GETBANDURATION__INT_:
-		resp->insertAscii(getBanDuration(inv->getUnsignedIntParameter()));
+		{
+			resp->insertAscii(getBanDuration(inv->getUnsignedIntParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -515,24 +515,6 @@ public:
 
 	ChatRoom* getGroupRoom();
 
-protected:
-	String _param0_createRoom__String_ChatRoom_;
-	String _param0_getPlayer__String_;
-	String _param0_removePlayer__String_;
-	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
-	UnicodeString _param1_handleSpatialChatInternalMessage__CreatureObject_UnicodeString_;
-	UnicodeString _param1_handleGroupChat__CreatureObject_UnicodeString_;
-	String _param0_createRoomByFullPath__String_;
-	String _param0_getChatRoomByFullPath__String_;
-	String _param1_getChatRoomByGamePath__ChatRoom_String_;
-	UnicodeString _param1_handleChatRoomMessage__CreatureObject_UnicodeString_int_int_;
-	UnicodeString _param1_handleSocialInternalMessage__CreatureObject_UnicodeString_;
-	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
-	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
-	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
-	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
-	String _param1_broadcastGalaxy__CreatureObject_String_;
-	String _param0_getGameRoom__String_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

@@ -374,40 +374,66 @@ void CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_:
-		resp->insertSignedInt(initializeSession(static_cast<CraftingTool*>(inv->getObjectParameter()), static_cast<CraftingStation*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(initializeSession(static_cast<CraftingTool*>(inv->getObjectParameter()), static_cast<CraftingStation*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_SELECTDRAFTSCHEMATIC__INT_:
-		selectDraftSchematic(inv->getSignedIntParameter());
+		{
+			selectDraftSchematic(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SENDINGREDIENTFORUILISTEN__:
-		sendIngredientForUIListen();
+		{
+			sendIngredientForUIListen();
+		}
 		break;
 	case RPC_ADDINGREDIENT__TANGIBLEOBJECT_INT_INT_:
-		addIngredient(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			addIngredient(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_REMOVEINGREDIENT__TANGIBLEOBJECT_INT_INT_:
-		removeIngredient(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			removeIngredient(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_NEXTCRAFTINGSTAGE__INT_:
-		nextCraftingStage(inv->getSignedIntParameter());
+		{
+			nextCraftingStage(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_EXPERIMENT__INT_STRING_INT_:
-		experiment(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_experiment__int_String_int_), inv->getSignedIntParameter());
+		{
+			String expAttempt; 
+			experiment(inv->getSignedIntParameter(), inv->getAsciiParameter(expAttempt), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CUSTOMIZATION__STRING_BYTE_INT_STRING_:
-		customization(inv->getAsciiParameter(_param0_customization__String_byte_int_String_), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__String_byte_int_String_));
+		{
+			String name; String customizationString; 
+			customization(inv->getAsciiParameter(name), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(customizationString));
+		}
 		break;
 	case RPC_CREATEPROTOTYPE__INT_BOOL_:
-		createPrototype(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			createPrototype(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CREATEMANUFACTURESCHEMATIC__INT_:
-		createManufactureSchematic(inv->getSignedIntParameter());
+		{
+			createManufactureSchematic(inv->getSignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

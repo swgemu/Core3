@@ -259,10 +259,6 @@ protected:
 
 	virtual ~GamblingTerminal();
 
-	String _return_getGamblingRegion;
-	String _return_getMachineTypeText;
-	String _return_getText;
-
 	friend class GamblingTerminalHelper;
 };
 
@@ -544,8 +540,6 @@ public:
 
 	void statusUpdate(int event);
 
-protected:
-	String _param0_setGamblingRegion__String_;
 };
 
 class GamblingTerminalHelper : public DistributedObjectClassHelper, public Singleton<GamblingTerminalHelper> {

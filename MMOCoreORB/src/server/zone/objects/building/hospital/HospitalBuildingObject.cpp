@@ -196,7 +196,9 @@ void HospitalBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_ISHOSPITALBUILDINGOBJECT__:
-		resp->insertBoolean(isHospitalBuildingObject());
+		{
+			resp->insertBoolean(isHospitalBuildingObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

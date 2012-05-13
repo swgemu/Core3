@@ -190,15 +190,6 @@ public:
 
 	bool isTransferBox();
 
-protected:
-	String _param0_addFrom__String_String_String_String_;
-	String _param1_addFrom__String_String_String_String_;
-	String _param2_addFrom__String_String_String_String_;
-	String _param3_addFrom__String_String_String_String_;
-	String _param0_addTo__String_String_String_String_;
-	String _param1_addTo__String_String_String_String_;
-	String _param2_addTo__String_String_String_String_;
-	String _param3_addTo__String_String_String_String_;
 };
 
 class SuiTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiTransferBoxHelper> {

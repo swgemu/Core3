@@ -243,6 +243,7 @@ String Account::getUsername() {
 
 		DistributedMethod method(this, RPC_GETUSERNAME__);
 
+		String _return_getUsername;
 		method.executeWithAsciiReturn(_return_getUsername);
 		return _return_getUsername;
 	} else
@@ -257,6 +258,7 @@ String Account::getSalt() {
 
 		DistributedMethod method(this, RPC_GETSALT__);
 
+		String _return_getSalt;
 		method.executeWithAsciiReturn(_return_getSalt);
 		return _return_getSalt;
 	} else
@@ -349,6 +351,7 @@ String Account::getBanReason() {
 
 		DistributedMethod method(this, RPC_GETBANREASON__);
 
+		String _return_getBanReason;
 		method.executeWithAsciiReturn(_return_getBanReason);
 		return _return_getBanReason;
 	} else
@@ -637,79 +640,132 @@ void AccountAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETACTIVE__BOOL_:
-		setActive(inv->getBooleanParameter());
+		{
+			setActive(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETACCOUNTID__INT_:
-		setAccountID(inv->getUnsignedIntParameter());
+		{
+			setAccountID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETSTATIONID__INT_:
-		setStationID(inv->getUnsignedIntParameter());
+		{
+			setStationID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETADMINLEVEL__INT_:
-		setAdminLevel(inv->getUnsignedIntParameter());
+		{
+			setAdminLevel(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETUSERNAME__STRING_:
-		setUsername(inv->getAsciiParameter(_param0_setUsername__String_));
+		{
+			String usern; 
+			setUsername(inv->getAsciiParameter(usern));
+		}
 		break;
 	case RPC_SETBANEXPIRES__INT_:
-		setBanExpires(inv->getUnsignedIntParameter());
+		{
+			setBanExpires(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETBANREASON__STRING_:
-		setBanReason(inv->getAsciiParameter(_param0_setBanReason__String_));
+		{
+			String reason; 
+			setBanReason(inv->getAsciiParameter(reason));
+		}
 		break;
 	case RPC_SETSALT__STRING_:
-		setSalt(inv->getAsciiParameter(_param0_setSalt__String_));
+		{
+			String s; 
+			setSalt(inv->getAsciiParameter(s));
+		}
 		break;
 	case RPC_SETBANADMIN__INT_:
-		setBanAdmin(inv->getUnsignedIntParameter());
+		{
+			setBanAdmin(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETBANADMIN__:
-		resp->insertInt(getBanAdmin());
+		{
+			resp->insertInt(getBanAdmin());
+		}
 		break;
 	case RPC_SETTIMECREATED__INT_:
-		setTimeCreated(inv->getUnsignedIntParameter());
+		{
+			setTimeCreated(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_ISACTIVE__:
-		resp->insertBoolean(isActive());
+		{
+			resp->insertBoolean(isActive());
+		}
 		break;
 	case RPC_GETACCOUNTID__:
-		resp->insertInt(getAccountID());
+		{
+			resp->insertInt(getAccountID());
+		}
 		break;
 	case RPC_GETSTATIONID__:
-		resp->insertInt(getStationID());
+		{
+			resp->insertInt(getStationID());
+		}
 		break;
 	case RPC_GETADMINLEVEL__:
-		resp->insertInt(getAdminLevel());
+		{
+			resp->insertInt(getAdminLevel());
+		}
 		break;
 	case RPC_GETUSERNAME__:
-		resp->insertAscii(getUsername());
+		{
+			resp->insertAscii(getUsername());
+		}
 		break;
 	case RPC_GETSALT__:
-		resp->insertAscii(getSalt());
+		{
+			resp->insertAscii(getSalt());
+		}
 		break;
 	case RPC_GETTIMECREATED__:
-		resp->insertInt(getTimeCreated());
+		{
+			resp->insertInt(getTimeCreated());
+		}
 		break;
 	case RPC_UPDATEFROMDATABASE__:
-		updateFromDatabase();
+		{
+			updateFromDatabase();
+		}
 		break;
 	case RPC_UPDATEACCOUNT__:
-		updateAccount();
+		{
+			updateAccount();
+		}
 		break;
 	case RPC_UPDATECHARACTERS__:
-		updateCharacters();
+		{
+			updateCharacters();
+		}
 		break;
 	case RPC_UPDATEGALAXYBANS__:
-		updateGalaxyBans();
+		{
+			updateGalaxyBans();
+		}
 		break;
 	case RPC_GETBANEXPIRES__:
-		resp->insertInt(getBanExpires());
+		{
+			resp->insertInt(getBanExpires());
+		}
 		break;
 	case RPC_GETBANREASON__:
-		resp->insertAscii(getBanReason());
+		{
+			resp->insertAscii(getBanReason());
+		}
 		break;
 	case RPC_ISBANNED__:
-		resp->insertBoolean(isBanned());
+		{
+			resp->insertBoolean(isBanned());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

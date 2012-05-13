@@ -420,40 +420,64 @@ void PharmaceuticalObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case RPC_GETMEDICINEUSEREQUIRED__:
-		resp->insertSignedInt(getMedicineUseRequired());
+		{
+			resp->insertSignedInt(getMedicineUseRequired());
+		}
 		break;
 	case RPC_GETRANGE__CREATUREOBJECT_:
-		resp->insertFloat(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertFloat(getRange(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISAREA__:
-		resp->insertBoolean(isArea());
+		{
+			resp->insertBoolean(isArea());
+		}
 		break;
 	case RPC_GETAREA__:
-		resp->insertFloat(getArea());
+		{
+			resp->insertFloat(getArea());
+		}
 		break;
 	case RPC_ISPHARMACEUTICALOBJECT__:
-		resp->insertBoolean(isPharmaceuticalObject());
+		{
+			resp->insertBoolean(isPharmaceuticalObject());
+		}
 		break;
 	case RPC_ISSTIMPACK__:
-		resp->insertBoolean(isStimPack());
+		{
+			resp->insertBoolean(isStimPack());
+		}
 		break;
 	case RPC_ISRANGEDSTIMPACK__:
-		resp->insertBoolean(isRangedStimPack());
+		{
+			resp->insertBoolean(isRangedStimPack());
+		}
 		break;
 	case RPC_ISENHANCEPACK__:
-		resp->insertBoolean(isEnhancePack());
+		{
+			resp->insertBoolean(isEnhancePack());
+		}
 		break;
 	case RPC_ISWOUNDPACK__:
-		resp->insertBoolean(isWoundPack());
+		{
+			resp->insertBoolean(isWoundPack());
+		}
 		break;
 	case RPC_ISCUREPACK__:
-		resp->insertBoolean(isCurePack());
+		{
+			resp->insertBoolean(isCurePack());
+		}
 		break;
 	case RPC_ISSTATEPACK__:
-		resp->insertBoolean(isStatePack());
+		{
+			resp->insertBoolean(isStatePack());
+		}
 		break;
 	case RPC_ISREVIVEPACK__:
-		resp->insertBoolean(isRevivePack());
+		{
+			resp->insertBoolean(isRevivePack());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

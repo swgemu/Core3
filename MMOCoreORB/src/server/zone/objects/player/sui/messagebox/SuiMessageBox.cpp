@@ -210,10 +210,14 @@ void SuiMessageBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ISMESSAGEBOX__:
-		resp->insertBoolean(isMessageBox());
+		{
+			resp->insertBoolean(isMessageBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

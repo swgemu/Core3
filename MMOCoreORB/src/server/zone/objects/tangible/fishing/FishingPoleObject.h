@@ -132,8 +132,6 @@ protected:
 
 	virtual ~FishingPoleObject();
 
-	String _return_getText;
-
 	friend class FishingPoleObjectHelper;
 };
 
@@ -245,8 +243,6 @@ public:
 
 	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient);
 
-protected:
-	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class FishingPoleObjectHelper : public DistributedObjectClassHelper, public Singleton<FishingPoleObjectHelper> {

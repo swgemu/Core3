@@ -739,6 +739,7 @@ String MissionManager::getDeliveryMissionFileName(const int faction) {
 		DistributedMethod method(this, RPC_GETDELIVERYMISSIONFILENAME__INT_);
 		method.addSignedIntParameter(faction);
 
+		String _return_getDeliveryMissionFileName;
 		method.executeWithAsciiReturn(_return_getDeliveryMissionFileName);
 		return _return_getDeliveryMissionFileName;
 	} else
@@ -1171,166 +1172,275 @@ void MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_LOADLUASETTINGS__:
-		loadLuaSettings();
+		{
+			loadLuaSettings();
+		}
 		break;
 	case RPC_HANDLEMISSIONLISTREQUEST__MISSIONTERMINAL_CREATUREOBJECT_INT_:
-		handleMissionListRequest(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			handleMissionListRequest(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_HANDLEMISSIONACCEPT__MISSIONTERMINAL_MISSIONOBJECT_CREATUREOBJECT_:
-		handleMissionAccept(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleMissionAccept(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEMISSIONABORT__MISSIONOBJECT_CREATUREOBJECT_:
-		handleMissionAbort(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleMissionAbort(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEMISSION__MISSIONOBJECT_CREATUREOBJECT_:
-		removeMission(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeMission(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_POPULATEMISSIONLIST__MISSIONTERMINAL_CREATUREOBJECT_INT_:
-		populateMissionList(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			populateMissionList(static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_BOOL_INT_:
-		resp->insertBoolean(randomGenericDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(randomGenericDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEGENERICBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICENTERTAINERMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_INT_:
-		randomizeGenericEntertainerMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			randomizeGenericEntertainerMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericHuntingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericHuntingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZEGENERICSURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_INT_:
-		randomizeGenericSurveyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			randomizeGenericSurveyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RANDOMIZESURVEYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeSurveyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeSurveyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEBOUNTYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeBountyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZECRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEHUNTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeHuntingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeHuntingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZERECONMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEIMPERIALDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeImperialDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeImperialDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEIMPERIALDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeImperialDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeImperialDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEIMPERIALCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeImperialCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeImperialCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEIMPERIALRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeImperialReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeImperialReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEREBELDESTROYMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeRebelDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeRebelDestroyMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEREBELDELIVERMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeRebelDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeRebelDeliverMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEREBELCRAFTINGMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeRebelCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeRebelCraftingMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RANDOMIZEREBELRECONMISSION__CREATUREOBJECT_MISSIONOBJECT_:
-		randomizeRebelReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		{
+			randomizeRebelReconMission(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<MissionObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATESURVEYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createSurveyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createSurveyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEDESTROYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createDestroyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createDestroyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEDELIVERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createDeliverMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createDeliverMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEENTERTAINERMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createEntertainerMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createEntertainerMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEHUNTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createHuntingMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createHuntingMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATERECONMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createReconMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createReconMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEBOUNTYMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createBountyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createBountyMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATECRAFTINGMISSIONOBJECTIVES__MISSIONOBJECT_MISSIONTERMINAL_CREATUREOBJECT_:
-		createCraftingMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createCraftingMissionObjectives(static_cast<MissionObject*>(inv->getObjectParameter()), static_cast<MissionTerminal*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETRANDOMFREENPCSPAWNPOINT__INT_FLOAT_FLOAT_INT_:
-		resp->insertLong(getRandomFreeNpcSpawnPoint(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getRandomFreeNpcSpawnPoint(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_RETURNSPAWNPOINT__NPCSPAWNPOINT_:
-		returnSpawnPoint(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		{
+			returnSpawnPoint(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATESPAWNPOINT__CREATUREOBJECT_STRING_:
-		createSpawnPoint(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createSpawnPoint__CreatureObject_String_));
+		{
+			String spawnTypes; 
+			createSpawnPoint(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(spawnTypes));
+		}
 		break;
 	case RPC_GETBOUNTYHUNTERMISSION__CREATUREOBJECT_:
-		resp->insertLong(getBountyHunterMission(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getBountyHunterMission(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_GETDELIVERYMISSIONFILENAME__INT_:
-		resp->insertAscii(getDeliveryMissionFileName(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getDeliveryMissionFileName(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETDELIVERMISSIONNUMBEROFMISSIONS__INT_:
-		resp->insertSignedInt(getDeliverMissionNumberOfMissions(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getDeliverMissionNumberOfMissions(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETDELIVERMISSIONSPAWNTYPE__INT_:
-		resp->insertSignedInt(getDeliverMissionSpawnType(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getDeliverMissionSpawnType(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ADDPLAYERTOBOUNTYLIST__LONG_INT_:
-		addPlayerToBountyList(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		{
+			addPlayerToBountyList(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_REMOVEPLAYERFROMBOUNTYLIST__LONG_:
-		removePlayerFromBountyList(inv->getUnsignedLongParameter());
+		{
+			removePlayerFromBountyList(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_UPDATEPLAYERBOUNTYREWARD__LONG_INT_:
-		updatePlayerBountyReward(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		{
+			updatePlayerBountyReward(inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDBOUNTYHUNTERTOPLAYERBOUNTY__LONG_LONG_:
-		addBountyHunterToPlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		{
+			addBountyHunterToPlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVEBOUNTYHUNTERFROMPLAYERBOUNTY__LONG_LONG_:
-		removeBountyHunterFromPlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		{
+			removeBountyHunterFromPlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETRANDOMPLAYERBOUNTY__CREATUREOBJECT_:
-		resp->insertLong(getRandomPlayerBounty(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getRandomPlayerBounty(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_COMPLETEPLAYERBOUNTY__LONG_LONG_:
-		completePlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		{
+			completePlayerBounty(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_FAILPLAYERBOUNTYMISSION__LONG_:
-		failPlayerBountyMission(inv->getUnsignedLongParameter());
+		{
+			failPlayerBountyMission(inv->getUnsignedLongParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

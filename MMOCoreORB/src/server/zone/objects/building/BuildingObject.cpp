@@ -735,6 +735,7 @@ String BuildingObject::getRedeedMessage() {
 
 		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
 
+		String _return_getRedeedMessage;
 		method.executeWithAsciiReturn(_return_getRedeedMessage);
 		return _return_getRedeedMessage;
 	} else
@@ -1109,142 +1110,235 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_CREATECELLOBJECTS__:
-		createCellObjects();
+		{
+			createCellObjects();
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_CREATECONTAINERCOMPONENT__:
-		createContainerComponent();
+		{
+			createContainerComponent();
+		}
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
-		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
+		{
+			UnicodeString name; 
+			setCustomObjectName(inv->getUnicodeParameter(name), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATESIGNNAME__BOOL_:
-		updateSignName(inv->getBooleanParameter());
+		{
+			updateSignName(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_:
-		updateCellPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			updateCellPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTCELLPERMISSIONS__:
-		broadcastCellPermissions();
+		{
+			broadcastCellPermissions();
+		}
 		break;
 	case RPC_ISALLOWEDENTRY__CREATUREOBJECT_:
-		resp->insertBoolean(isAllowedEntry(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAllowedEntry(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
-		resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_EJECTOBJECT__SCENEOBJECT_:
-		ejectObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			ejectObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
-		notifyRemoveFromZone();
+		{
+			notifyRemoveFromZone();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_:
-		notifyObjectInsertedToZone(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyObjectInsertedToZone(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
-		sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDCELL__CELLOBJECT_INT_:
-		addCell(static_cast<CellObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			addCell(static_cast<CellObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_ISSTATICBUILDING__:
-		resp->insertBoolean(isStaticBuilding());
+		{
+			resp->insertBoolean(isStaticBuilding());
+		}
 		break;
 	case RPC_GETCELL__INT_:
-		resp->insertLong(getCell(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getCell(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETTOTALCELLNUMBER__:
-		resp->insertSignedInt(getTotalCellNumber());
+		{
+			resp->insertSignedInt(getTotalCellNumber());
+		}
 		break;
 	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
-		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		{
+			resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		}
 		break;
 	case RPC_DESTROYALLPLAYERITEMS__:
-		destroyAllPlayerItems();
+		{
+			destroyAllPlayerItems();
+		}
 		break;
 	case RPC_ONENTER__CREATUREOBJECT_:
-		onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			onEnter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ONEXIT__CREATUREOBJECT_LONG_:
-		onExit(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			onExit(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISBUILDINGOBJECT__:
-		resp->insertBoolean(isBuildingObject());
+		{
+			resp->insertBoolean(isBuildingObject());
+		}
 		break;
 	case RPC_ISHOSPITALBUILDINGOBJECT__:
-		resp->insertBoolean(isHospitalBuildingObject());
+		{
+			resp->insertBoolean(isHospitalBuildingObject());
+		}
 		break;
 	case RPC_ISRECREATIONALBUILDINGOBJECT__:
-		resp->insertBoolean(isRecreationalBuildingObject());
+		{
+			resp->insertBoolean(isRecreationalBuildingObject());
+		}
 		break;
 	case RPC_SETSIGNOBJECT__SIGNOBJECT_:
-		setSignObject(static_cast<SignObject*>(inv->getObjectParameter()));
+		{
+			setSignObject(static_cast<SignObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETSIGNOBJECT__:
-		resp->insertLong(getSignObject()->_getObjectID());
+		{
+			resp->insertLong(getSignObject()->_getObjectID());
+		}
 		break;
 	case RPC_ISCITYHALLBUILDING__:
-		resp->insertBoolean(isCityHallBuilding());
+		{
+			resp->insertBoolean(isCityHallBuilding());
+		}
 		break;
 	case RPC_SETACCESSFEE__INT_:
-		setAccessFee(inv->getSignedIntParameter());
+		{
+			setAccessFee(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETACCESSFEE__:
-		resp->insertSignedInt(getAccessFee());
+		{
+			resp->insertSignedInt(getAccessFee());
+		}
 		break;
 	case RPC_ISPUBLICSTRUCTURE__:
-		resp->insertBoolean(isPublicStructure());
+		{
+			resp->insertBoolean(isPublicStructure());
+		}
 		break;
 	case RPC_ISPRIVATESTRUCTURE__:
-		resp->insertBoolean(isPrivateStructure());
+		{
+			resp->insertBoolean(isPrivateStructure());
+		}
 		break;
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
-		setPublicStructure(inv->getBooleanParameter());
+		{
+			setPublicStructure(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISCONDEMNED__:
-		resp->insertBoolean(isCondemned());
+		{
+			resp->insertBoolean(isCondemned());
+		}
 		break;
 	case RPC_GETMAPCELLSIZE__:
-		resp->insertSignedInt(getMapCellSize());
+		{
+			resp->insertSignedInt(getMapCellSize());
+		}
 		break;
 	case RPC_TOGGLEPRIVACY__:
-		resp->insertBoolean(togglePrivacy());
+		{
+			resp->insertBoolean(togglePrivacy());
+		}
 		break;
 	case RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__:
-		resp->insertInt(getMaximumNumberOfPlayerItems());
+		{
+			resp->insertInt(getMaximumNumberOfPlayerItems());
+		}
 		break;
 	case RPC_GETREDEEDMESSAGE__:
-		resp->insertAscii(getRedeedMessage());
+		{
+			resp->insertAscii(getRedeedMessage());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

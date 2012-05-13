@@ -117,6 +117,7 @@ String JunkdealerCreature::getLocation() {
 
 		DistributedMethod method(this, RPC_GETLOCATION__);
 
+		String _return_getLocation;
 		method.executeWithAsciiReturn(_return_getLocation);
 		return _return_getLocation;
 	} else
@@ -353,31 +354,50 @@ void JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_ACTIVATERECOVERY__:
-		activateRecovery();
+		{
+			activateRecovery();
+		}
 		break;
 	case RPC_SENDINITIALMESSAGE__CREATUREOBJECT_:
-		sendInitialMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendInitialMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
-		sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendInitialChoices(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
-		sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
-		selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETLOCATION__:
-		resp->insertAscii(getLocation());
+		{
+			resp->insertAscii(getLocation());
+		}
 		break;
 	case RPC_SETLOCATION__STRING_:
-		setLocation(inv->getAsciiParameter(_param0_setLocation__String_));
+		{
+			String loc; 
+			setLocation(inv->getAsciiParameter(loc));
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_:
-		createSellJunkLootSelection(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createSellJunkLootSelection(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

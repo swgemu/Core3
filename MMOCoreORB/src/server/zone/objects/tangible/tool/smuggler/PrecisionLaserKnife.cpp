@@ -305,16 +305,24 @@ void PrecisionLaserKnifeAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_UPDATECHARGES__INT_:
-		updateCharges(inv->getSignedIntParameter());
+		{
+			updateCharges(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_USECHARGE__CREATUREOBJECT_:
-		useCharge(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			useCharge(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCHARGES__:
-		resp->insertSignedInt(getCharges());
+		{
+			resp->insertSignedInt(getCharges());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

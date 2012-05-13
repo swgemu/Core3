@@ -61,6 +61,7 @@ String LootManager::getRandomLootableMod() {
 
 		DistributedMethod method(this, RPC_GETRANDOMLOOTABLEMOD__);
 
+		String _return_getRandomLootableMod;
 		method.executeWithAsciiReturn(_return_getRandomLootableMod);
 		return _return_getRandomLootableMod;
 	} else
@@ -296,19 +297,30 @@ void LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_GETRANDOMLOOTABLEMOD__:
-		resp->insertAscii(getRandomLootableMod());
+		{
+			resp->insertAscii(getRandomLootableMod());
+		}
 		break;
 	case RPC_CALCULATELOOTCREDITS__INT_:
-		resp->insertSignedInt(calculateLootCredits(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(calculateLootCredits(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_AIAGENT_:
-		resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATELOOT__SCENEOBJECT_STRING_INT_:
-		resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_int_), inv->getSignedIntParameter()));
+		{
+			String lootGroup; 
+			resp->insertBoolean(createLoot(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(lootGroup), inv->getSignedIntParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -487,40 +487,64 @@ void TradeSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GETACCEPTEDTRADE__:
-		resp->insertBoolean(getAcceptedTrade());
+		{
+			resp->insertBoolean(getAcceptedTrade());
+		}
 		break;
 	case RPC_ADDTRADEITEM__SCENEOBJECT_:
-		addTradeItem(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addTradeItem(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETTRADEITEM__INT_:
-		resp->insertLong(getTradeItem(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getTradeItem(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETTRADESIZE__:
-		resp->insertSignedInt(getTradeSize());
+		{
+			resp->insertSignedInt(getTradeSize());
+		}
 		break;
 	case RPC_GETMONEYTOTRADE__:
-		resp->insertSignedInt(getMoneyToTrade());
+		{
+			resp->insertSignedInt(getMoneyToTrade());
+		}
 		break;
 	case RPC_GETTRADETARGETPLAYER__:
-		resp->insertLong(getTradeTargetPlayer());
+		{
+			resp->insertLong(getTradeTargetPlayer());
+		}
 		break;
 	case RPC_ISTRYINGTOTRADE__:
-		resp->insertBoolean(isTryingToTrade());
+		{
+			resp->insertBoolean(isTryingToTrade());
+		}
 		break;
 	case RPC_HASVERIFIEDTRADE__:
-		resp->insertBoolean(hasVerifiedTrade());
+		{
+			resp->insertBoolean(hasVerifiedTrade());
+		}
 		break;
 	case RPC_SETACCEPTEDTRADE__BOOL_:
-		setAcceptedTrade(inv->getBooleanParameter());
+		{
+			setAcceptedTrade(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMONEYTOTRADE__INT_:
-		setMoneyToTrade(inv->getSignedIntParameter());
+		{
+			setMoneyToTrade(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETTRADETARGETPLAYER__LONG_:
-		setTradeTargetPlayer(inv->getUnsignedLongParameter());
+		{
+			setTradeTargetPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETVERIFIEDTRADE__BOOL_:
-		setVerifiedTrade(inv->getBooleanParameter());
+		{
+			setVerifiedTrade(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

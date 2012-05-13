@@ -189,8 +189,6 @@ protected:
 
 	virtual ~BountyMissionObjective();
 
-	String _return_getTargetZoneName;
-
 	friend class BountyMissionObjectiveHelper;
 };
 
@@ -378,8 +376,6 @@ public:
 
 	String getTargetZoneName();
 
-protected:
-	String _param0_spawnTarget__String_;
 };
 
 class BountyMissionObjectiveHelper : public DistributedObjectClassHelper, public Singleton<BountyMissionObjectiveHelper> {

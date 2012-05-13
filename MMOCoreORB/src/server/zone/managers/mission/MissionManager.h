@@ -293,8 +293,6 @@ protected:
 
 	virtual ~MissionManager();
 
-	String _return_getDeliveryMissionFileName;
-
 	friend class MissionManagerHelper;
 };
 
@@ -606,8 +604,6 @@ public:
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
-protected:
-	String _param1_createSpawnPoint__CreatureObject_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

@@ -270,19 +270,29 @@ void ReconMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_COMPLETE__:
-		complete();
+		{
+			complete();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

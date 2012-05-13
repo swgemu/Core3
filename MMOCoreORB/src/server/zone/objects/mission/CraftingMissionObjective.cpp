@@ -226,16 +226,24 @@ void CraftingMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMet
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_:
-		updateMissionStatus(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			updateMissionStatus(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

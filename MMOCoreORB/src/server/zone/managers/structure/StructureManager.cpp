@@ -145,6 +145,7 @@ String StructureManager::getTimeString(unsigned int timestamp) {
 		DistributedMethod method(this, RPC_GETTIMESTRING__INT_);
 		method.addUnsignedIntParameter(timestamp);
 
+		String _return_getTimeString;
 		method.executeWithAsciiReturn(_return_getTimeString);
 		return _return_getTimeString;
 	} else
@@ -467,52 +468,85 @@ void StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_STRUCTUREDEED_FLOAT_FLOAT_INT_:
-		resp->insertSignedInt(placeStructureFromDeed(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureDeed*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(placeStructureFromDeed(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureDeed*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_:
-		resp->insertLong(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_placeStructure__CreatureObject_String_float_float_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
+		{
+			String structureTemplatePath; 
+			resp->insertLong(placeStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(structureTemplatePath), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_:
-		resp->insertSignedInt(destroyStructure(static_cast<StructureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(destroyStructure(static_cast<StructureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_REDEEDSTRUCTURE__CREATUREOBJECT_:
-		resp->insertSignedInt(redeedStructure(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(redeedStructure(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_:
-		resp->insertSignedInt(declareResidence(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(declareResidence(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETTIMESTRING__INT_:
-		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
+		{
+			resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_:
-		resp->insertLong(getInRangeParkingGarage(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getInRangeParkingGarage(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_:
-		reportStructureStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			reportStructureStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_TANGIBLEOBJECT_:
-		promptNameStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			promptNameStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
-		promptDeleteAllItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			promptDeleteAllItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
-		promptFindLostItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			promptFindLostItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_:
-		moveFirstItemTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			moveFirstItemTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTPAYUNCONDEMNMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_:
-		promptPayUncondemnMaintenance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			promptPayUncondemnMaintenance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTPAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_SCENEOBJECT_:
-		promptPayMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptPayMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PAYMAINTENANCE__STRUCTUREOBJECT_CREATUREOBJECT_INT_:
-		payMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			payMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

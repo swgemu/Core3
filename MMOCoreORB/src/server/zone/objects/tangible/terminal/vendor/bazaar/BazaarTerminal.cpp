@@ -233,10 +233,14 @@ void BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISBAZAARTERMINAL__:
-		resp->insertBoolean(isBazaarTerminal());
+		{
+			resp->insertBoolean(isBazaarTerminal());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

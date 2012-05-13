@@ -993,6 +993,7 @@ String TangibleObject::getCraftersName() {
 
 		DistributedMethod method(this, RPC_GETCRAFTERSNAME__);
 
+		String _return_getCraftersName;
 		method.executeWithAsciiReturn(_return_getCraftersName);
 		return _return_getCraftersName;
 	} else
@@ -1035,6 +1036,7 @@ String TangibleObject::getSerialNumber() {
 
 		DistributedMethod method(this, RPC_GETSERIALNUMBER__);
 
+		String _return_getSerialNumber;
 		method.executeWithAsciiReturn(_return_getSerialNumber);
 		return _return_getSerialNumber;
 	} else
@@ -1130,6 +1132,7 @@ String TangibleObject::repairAttempt(int repairChance) {
 		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
 		method.addSignedIntParameter(repairChance);
 
+		String _return_repairAttempt;
 		method.executeWithAsciiReturn(_return_repairAttempt);
 		return _return_repairAttempt;
 	} else
@@ -1821,223 +1824,377 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZEMEMBERS__:
-		initializeMembers();
+		{
+			initializeMembers();
+		}
 		break;
 	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
-		addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_addSkillMod__int_String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_:
-		removeSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_removeSkillMod__int_String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			String skillMod; 
+			removeSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
-		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
+		{
+			UnicodeString name; 
+			setCustomObjectName(inv->getUnicodeParameter(name), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETDEFENDER__SCENEOBJECT_:
-		setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDDEFENDER__SCENEOBJECT_:
-		addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
-		removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEDEFENDERS__:
-		removeDefenders();
+		{
+			removeDefenders();
+		}
 		break;
 	case RPC_SETCOMBATSTATE__:
-		setCombatState();
+		{
+			setCombatState();
+		}
 		break;
 	case RPC_SETUSECOUNT__INT_BOOL_:
-		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCOUNTDOWNTIMER__INT_BOOL_:
-		setCountdownTimer(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setCountdownTimer(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DECREASEUSECOUNT__:
-		decreaseUseCount();
+		{
+			decreaseUseCount();
+		}
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
-		clearCombatState(inv->getBooleanParameter());
+		{
+			clearCombatState(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_HASDEFENDER__SCENEOBJECT_:
-		resp->insertBoolean(hasDefender(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(hasDefender(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
-		resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISHEALABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isHealableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isHealableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SENDPVPSTATUSTO__CREATUREOBJECT_:
-		sendPvpStatusTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendPvpStatusTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_:
-		resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_:
-		setConditionDamage(inv->getFloatParameter(), inv->getBooleanParameter());
+		{
+			setConditionDamage(inv->getFloatParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_:
-		setCustomizationVariable(inv->getByteParameter(), inv->getSignedShortParameter(), inv->getBooleanParameter());
+		{
+			setCustomizationVariable(inv->getByteParameter(), inv->getSignedShortParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_short_bool_), inv->getSignedShortParameter(), inv->getBooleanParameter());
+		{
+			String type; 
+			setCustomizationVariable(inv->getAsciiParameter(type), inv->getSignedShortParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETOPTIONSBITMASK__INT_BOOL_:
-		setOptionsBitmask(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setOptionsBitmask(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_:
-		dropFromDefenderLists(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			dropFromDefenderLists(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETUNKNOWNBYTE__:
-		resp->insertByte(getUnknownByte());
+		{
+			resp->insertByte(getUnknownByte());
+		}
 		break;
 	case RPC_ISKILLER__:
-		resp->insertBoolean(isKiller());
+		{
+			resp->insertBoolean(isKiller());
+		}
 		break;
 	case RPC_ISTICKETCOLLECTOR__:
-		resp->insertBoolean(isTicketCollector());
+		{
+			resp->insertBoolean(isTicketCollector());
+		}
 		break;
 	case RPC_ISTICKETOBJECT__:
-		resp->insertBoolean(isTicketObject());
+		{
+			resp->insertBoolean(isTicketObject());
+		}
 		break;
 	case RPC_GETUSECOUNT__:
-		resp->insertSignedInt(getUseCount());
+		{
+			resp->insertSignedInt(getUseCount());
+		}
 		break;
 	case RPC_GETDISPLAYEDUSECOUNT__:
-		resp->insertSignedInt(getDisplayedUseCount());
+		{
+			resp->insertSignedInt(getDisplayedUseCount());
+		}
 		break;
 	case RPC_GETMAXCONDITION__:
-		resp->insertSignedInt(getMaxCondition());
+		{
+			resp->insertSignedInt(getMaxCondition());
+		}
 		break;
 	case RPC_SETMAXCONDITION__INT_BOOL_:
-		setMaxCondition(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setMaxCondition(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETCONDITIONDAMAGE__:
-		resp->insertSignedInt(getConditionDamage());
+		{
+			resp->insertSignedInt(getConditionDamage());
+		}
 		break;
 	case RPC_GETVOLUME__:
-		resp->insertSignedInt(getVolume());
+		{
+			resp->insertSignedInt(getVolume());
+		}
 		break;
 	case RPC_SETCOMPLEXITY__FLOAT_:
-		setComplexity(inv->getFloatParameter());
+		{
+			setComplexity(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETCOMPLEXITY__:
-		resp->insertFloat(getComplexity());
+		{
+			resp->insertFloat(getComplexity());
+		}
 		break;
 	case RPC_GETOPTIONSBITMASK__:
-		resp->insertInt(getOptionsBitmask());
+		{
+			resp->insertInt(getOptionsBitmask());
+		}
 		break;
 	case RPC_GETLEVEL__:
-		resp->insertSignedInt(getLevel());
+		{
+			resp->insertSignedInt(getLevel());
+		}
 		break;
 	case RPC_GETPVPSTATUSBITMASK__:
-		resp->insertInt(getPvpStatusBitmask());
+		{
+			resp->insertInt(getPvpStatusBitmask());
+		}
 		break;
 	case RPC_ISTANGIBLEOBJECT__:
-		resp->insertBoolean(isTangibleObject());
+		{
+			resp->insertBoolean(isTangibleObject());
+		}
 		break;
 	case RPC_GETCUSTOMIZATIONSTRING__STRING_:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		{
+			String variables; 
+			getCustomizationString(inv->getAsciiParameter(variables));
+		}
 		break;
 	case RPC_GETMAINDEFENDER__:
-		resp->insertLong(getMainDefender()->_getObjectID());
+		{
+			resp->insertLong(getMainDefender()->_getObjectID());
+		}
 		break;
 	case RPC_ISDESTROYED__:
-		resp->insertBoolean(isDestroyed());
+		{
+			resp->insertBoolean(isDestroyed());
+		}
 		break;
 	case RPC_SETFACTION__INT_:
-		setFaction(inv->getUnsignedIntParameter());
+		{
+			setFaction(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETFACTION__:
-		resp->insertInt(getFaction());
+		{
+			resp->insertInt(getFaction());
+		}
 		break;
 	case RPC_ISREBEL__:
-		resp->insertBoolean(isRebel());
+		{
+			resp->insertBoolean(isRebel());
+		}
 		break;
 	case RPC_ISIMPERIAL__:
-		resp->insertBoolean(isImperial());
+		{
+			resp->insertBoolean(isImperial());
+		}
 		break;
 	case RPC_ISNEUTRAL__:
-		resp->insertBoolean(isNeutral());
+		{
+			resp->insertBoolean(isNeutral());
+		}
 		break;
 	case RPC_ISSLICEABLE__:
-		resp->insertBoolean(isSliceable());
+		{
+			resp->insertBoolean(isSliceable());
+		}
 		break;
 	case RPC_ISSLICED__:
-		resp->insertBoolean(isSliced());
+		{
+			resp->insertBoolean(isSliced());
+		}
 		break;
 	case RPC_SETSLICEABLE__BOOL_:
-		setSliceable(inv->getBooleanParameter());
+		{
+			setSliceable(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSLICED__BOOL_:
-		setSliced(inv->getBooleanParameter());
+		{
+			setSliced(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISPHARMACEUTICALOBJECT__:
-		resp->insertBoolean(isPharmaceuticalObject());
+		{
+			resp->insertBoolean(isPharmaceuticalObject());
+		}
 		break;
 	case RPC_SETCUSTOMIZATIONSTRING__STRING_:
-		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
+		{
+			String vars; 
+			setCustomizationString(inv->getAsciiParameter(vars));
+		}
 		break;
 	case RPC_SETPVPSTATUSBITMASK__INT_BOOL_:
-		setPvpStatusBitmask(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setPvpStatusBitmask(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCRAFTERSNAME__STRING_:
-		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
+		{
+			String name; 
+			setCraftersName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_GETCRAFTERSNAME__:
-		resp->insertAscii(getCraftersName());
+		{
+			resp->insertAscii(getCraftersName());
+		}
 		break;
 	case RPC_SETSERIALNUMBER__STRING_:
-		setSerialNumber(inv->getAsciiParameter(_param0_setSerialNumber__String_));
+		{
+			String serial; 
+			setSerialNumber(inv->getAsciiParameter(serial));
+		}
 		break;
 	case RPC_SETLEVEL__INT_:
-		setLevel(inv->getSignedIntParameter());
+		{
+			setLevel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETSERIALNUMBER__:
-		resp->insertAscii(getSerialNumber());
+		{
+			resp->insertAscii(getSerialNumber());
+		}
 		break;
 	case RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_:
-		setInitialCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			setInitialCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_:
-		resp->insertBoolean(applyComponentStats(static_cast<ManufactureSchematic*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(applyComponentStats(static_cast<ManufactureSchematic*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATEFACTORYCRATE__BOOL_:
-		resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_CANREPAIR__CREATUREOBJECT_:
-		resp->insertBoolean(canRepair(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(canRepair(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_REPAIR__CREATUREOBJECT_:
-		repair(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			repair(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REPAIRATTEMPT__INT_:
-		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISBROKEN__:
-		resp->insertBoolean(isBroken());
+		{
+			resp->insertBoolean(isBroken());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

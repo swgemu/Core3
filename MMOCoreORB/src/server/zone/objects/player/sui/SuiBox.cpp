@@ -237,6 +237,7 @@ String SuiBox::getPromptTitle() {
 
 		DistributedMethod method(this, RPC_GETPROMPTTITLE__);
 
+		String _return_getPromptTitle;
 		method.executeWithAsciiReturn(_return_getPromptTitle);
 		return _return_getPromptTitle;
 	} else
@@ -1135,115 +1136,197 @@ void SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_:
-		generateHeader(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()));
+		{
+			generateHeader(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_:
-		generateBody(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()));
+		{
+			generateBody(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_:
-		generateFooter(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			generateFooter(static_cast<SuiCreatePageMessage*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_GENERATECLOSEMESSAGE__:
-		resp->insertLong(generateCloseMessage()->_getObjectID());
+		{
+			resp->insertLong(generateCloseMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ADDSETTING__STRING_STRING_STRING_STRING_:
-		addSetting(inv->getAsciiParameter(_param0_addSetting__String_String_String_String_), inv->getAsciiParameter(_param1_addSetting__String_String_String_String_), inv->getAsciiParameter(_param2_addSetting__String_String_String_String_), inv->getAsciiParameter(_param3_addSetting__String_String_String_String_));
+		{
+			String optType; String variable; String setting; String value; 
+			addSetting(inv->getAsciiParameter(optType), inv->getAsciiParameter(variable), inv->getAsciiParameter(setting), inv->getAsciiParameter(value));
+		}
 		break;
 	case RPC_ADDHEADER__STRING_STRING_:
-		addHeader(inv->getAsciiParameter(_param0_addHeader__String_String_), inv->getAsciiParameter(_param1_addHeader__String_String_));
+		{
+			String variable; String type; 
+			addHeader(inv->getAsciiParameter(variable), inv->getAsciiParameter(type));
+		}
 		break;
 	case RPC_CLEAROPTIONS__:
-		clearOptions();
+		{
+			clearOptions();
+		}
 		break;
 	case RPC_COMPARETO__SUIBOX_:
-		resp->insertSignedInt(compareTo(static_cast<SuiBox*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(compareTo(static_cast<SuiBox*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASGENERATEDMESSAGE__:
-		resp->insertBoolean(hasGeneratedMessage());
+		{
+			resp->insertBoolean(hasGeneratedMessage());
+		}
 		break;
 	case RPC_SETPROMPTTITLE__STRING_:
-		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__String_));
+		{
+			String name; 
+			setPromptTitle(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETPROMPTTEXT__STRING_:
-		setPromptText(inv->getAsciiParameter(_param0_setPromptText__String_));
+		{
+			String name; 
+			setPromptText(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_GETPROMPTTITLE__:
-		resp->insertAscii(getPromptTitle());
+		{
+			resp->insertAscii(getPromptTitle());
+		}
 		break;
 	case RPC_SETHANDLERTEXT__STRING_:
-		setHandlerText(inv->getAsciiParameter(_param0_setHandlerText__String_));
+		{
+			String text; 
+			setHandlerText(inv->getAsciiParameter(text));
+		}
 		break;
 	case RPC_SETWINDOWTYPE__INT_:
-		setWindowType(inv->getUnsignedIntParameter());
+		{
+			setWindowType(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETBOXTYPE__INT_:
-		setBoxType(inv->getSignedIntParameter());
+		{
+			setBoxType(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISINPUTBOX__:
-		resp->insertBoolean(isInputBox());
+		{
+			resp->insertBoolean(isInputBox());
+		}
 		break;
 	case RPC_ISLISTBOX__:
-		resp->insertBoolean(isListBox());
+		{
+			resp->insertBoolean(isListBox());
+		}
 		break;
 	case RPC_ISMESSAGEBOX__:
-		resp->insertBoolean(isMessageBox());
+		{
+			resp->insertBoolean(isMessageBox());
+		}
 		break;
 	case RPC_ISTRANSFERBOX__:
-		resp->insertBoolean(isTransferBox());
+		{
+			resp->insertBoolean(isTransferBox());
+		}
 		break;
 	case RPC_ISBANKTRANSFERBOX__:
-		resp->insertBoolean(isBankTransferBox());
+		{
+			resp->insertBoolean(isBankTransferBox());
+		}
 		break;
 	case RPC_ISSLICINGBOX__:
-		resp->insertBoolean(isSlicingBox());
+		{
+			resp->insertBoolean(isSlicingBox());
+		}
 		break;
 	case RPC_ISCHARACTERBUILDERBOX__:
-		resp->insertBoolean(isCharacterBuilderBox());
+		{
+			resp->insertBoolean(isCharacterBuilderBox());
+		}
 		break;
 	case RPC_ISCOLORPICKER__:
-		resp->insertBoolean(isColorPicker());
+		{
+			resp->insertBoolean(isColorPicker());
+		}
 		break;
 	case RPC_SETCANCELBUTTON__BOOL_STRING_:
-		setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setCancelButton__bool_String_));
+		{
+			String cancelText; 
+			setCancelButton(inv->getBooleanParameter(), inv->getAsciiParameter(cancelText));
+		}
 		break;
 	case RPC_SETOTHERBUTTON__BOOL_STRING_:
-		setOtherButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOtherButton__bool_String_));
+		{
+			String backText; 
+			setOtherButton(inv->getBooleanParameter(), inv->getAsciiParameter(backText));
+		}
 		break;
 	case RPC_SETOKBUTTON__BOOL_STRING_:
-		setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(_param1_setOkButton__bool_String_));
+		{
+			String okText; 
+			setOkButton(inv->getBooleanParameter(), inv->getAsciiParameter(okText));
+		}
 		break;
 	case RPC_SETFORCECLOSEDISTANCE__FLOAT_:
-		setForceCloseDistance(inv->getFloatParameter());
+		{
+			setForceCloseDistance(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETFORCECLOSEDISABLED__:
-		setForceCloseDisabled();
+		{
+			setForceCloseDisabled();
+		}
 		break;
 	case RPC_GETPLAYER__:
-		resp->insertLong(getPlayer()->_getObjectID());
+		{
+			resp->insertLong(getPlayer()->_getObjectID());
+		}
 		break;
 	case RPC_GETBOXID__:
-		resp->insertInt(getBoxID());
+		{
+			resp->insertInt(getBoxID());
+		}
 		break;
 	case RPC_GETWINDOWTYPE__:
-		resp->insertSignedInt(getWindowType());
+		{
+			resp->insertSignedInt(getWindowType());
+		}
 		break;
 	case RPC_GETUSINGOBJECT__:
-		resp->insertLong(getUsingObject()->_getObjectID());
+		{
+			resp->insertLong(getUsingObject()->_getObjectID());
+		}
 		break;
 	case RPC_SETUSINGOBJECT__SCENEOBJECT_:
-		setUsingObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setUsingObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

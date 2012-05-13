@@ -883,14 +883,6 @@ protected:
 
 	virtual ~CreatureObject();
 
-	String _return_getFirstName;
-	String _return_getLastName;
-	String _return_getMoodString;
-	String _return_getPerformanceAnimation;
-	String _return_getSpeciesName;
-
-	UnicodeString _return_getCreatureName;
-
 	friend class CreatureObjectHelper;
 };
 
@@ -2208,33 +2200,6 @@ public:
 
 	void setCurrentWind(byte value);
 
-protected:
-	String _param0_sendSystemMessage__String_;
-	String _param0_playMusicMessage__String_;
-	String _param0_sendNewbieTutorialRequest__String_;
-	String _param0_sendNewbieTutorialEnableHudElement__String_bool_;
-	UnicodeString _param0_sendSystemMessage__UnicodeString_;
-	String _param0_setPerformanceAnimation__String_bool_;
-	String _param0_getSkillModFromBuffs__String_;
-	String _param0_addSkill__String_bool_;
-	String _param0_removeSkill__String_bool_;
-	String _param1_addSkillMod__int_String_int_bool_;
-	String _param1_removeSkillMod__int_String_int_bool_;
-	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
-	String _param0_setMoodString__String_bool_;
-	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
-	String _param0_sendExecuteConsoleCommand__String_;
-	String _param0_getScreenPlayState__String_;
-	String _param0_setScreenPlayState__String_long_;
-	String _param0_updateCooldownTimer__String_int_;
-	String _param0_checkCooldownRecovery__String_;
-	String _param0_addCooldown__String_int_;
-	String _param0_doAnimation__String_;
-	String _param0_playEffect__String_String_;
-	String _param1_playEffect__String_String_;
-	String _param0_playEffect__String_;
-	String _param0_getSkillMod__String_;
-	String _param0_hasSkill__String_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

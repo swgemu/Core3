@@ -117,8 +117,6 @@ protected:
 
 	virtual ~FishingSession();
 
-	String _return_getMoodString;
-
 	friend class FishingSessionHelper;
 };
 
@@ -260,8 +258,6 @@ public:
 
 	String getMoodString();
 
-protected:
-	String _param0_setMood__String_;
 };
 
 class FishingSessionHelper : public DistributedObjectClassHelper, public Singleton<FishingSessionHelper> {

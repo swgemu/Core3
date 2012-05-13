@@ -159,10 +159,6 @@ protected:
 
 	virtual ~Creature();
 
-	String _return_getBoneType;
-	String _return_getHideType;
-	String _return_getMeatType;
-
 	friend class CreatureHelper;
 };
 

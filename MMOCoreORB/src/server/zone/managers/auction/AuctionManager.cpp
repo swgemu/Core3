@@ -496,40 +496,64 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_CHECKVENDORITEMS__:
-		checkVendorItems();
+		{
+			checkVendorItems();
+		}
 		break;
 	case RPC_CHECKAUCTIONS__:
-		checkAuctions();
+		{
+			checkAuctions();
+		}
 		break;
 	case RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_:
-		getItemAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			getItemAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_:
-		getData(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			getData(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_:
-		retrieveItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		{
+			retrieveItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_:
-		buyItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			buyItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_:
-		doAuctionBid(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			doAuctionBid(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_:
-		doInstantBuy(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			doInstantBuy(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_:
-		resp->insertSignedInt(checkBidAuction(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(checkBidAuction(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CANCELITEM__CREATUREOBJECT_LONG_:
-		cancelItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			cancelItem(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETAUCTIONMAP__:
-		resp->insertLong(getAuctionMap()->_getObjectID());
+		{
+			resp->insertLong(getAuctionMap()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

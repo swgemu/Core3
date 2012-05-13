@@ -125,8 +125,6 @@ protected:
 
 	virtual ~MissionTerminal();
 
-	String _return_getTerminalName;
-
 	friend class MissionTerminalHelper;
 };
 

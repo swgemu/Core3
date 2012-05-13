@@ -215,9 +215,6 @@ public:
 
 	int clearSession();
 
-protected:
-	String _param0_setReason__String_;
-	String _param0_sendTransferBox__String_;
 };
 
 class CityTreasuryWithdrawalSessionHelper : public DistributedObjectClassHelper, public Singleton<CityTreasuryWithdrawalSessionHelper> {

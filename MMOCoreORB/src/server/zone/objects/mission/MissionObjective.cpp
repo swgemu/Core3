@@ -549,58 +549,94 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_DESTROYOBJECTFROMDATABASE__:
-		destroyObjectFromDatabase();
+		{
+			destroyObjectFromDatabase();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_:
-		addObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			addObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_:
-		dropObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			dropObserver(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETOBSERVERCOUNT__:
-		resp->insertSignedInt(getObserverCount());
+		{
+			resp->insertSignedInt(getObserverCount());
+		}
 		break;
 	case RPC_REMOVEALLOBSERVERS__:
-		removeAllObservers();
+		{
+			removeAllObservers();
+		}
 		break;
 	case RPC_GETOBSERVER__INT_:
-		resp->insertLong(getObserver(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getObserver(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_HASOBSERVERS__:
-		resp->insertBoolean(hasObservers());
+		{
+			resp->insertBoolean(hasObservers());
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_COMPLETE__:
-		complete();
+		{
+			complete();
+		}
 		break;
 	case RPC_FAIL__:
-		fail();
+		{
+			fail();
+		}
 		break;
 	case RPC_GETMISSIONOBJECT__:
-		resp->insertLong(getMissionObject()->_getObjectID());
+		{
+			resp->insertLong(getMissionObject()->_getObjectID());
+		}
 		break;
 	case RPC_GETOBJECTIVETYPE__:
-		resp->insertInt(getObjectiveType());
+		{
+			resp->insertInt(getObjectiveType());
+		}
 		break;
 	case RPC_GETPLAYEROWNER__:
-		resp->insertLong(getPlayerOwner()->_getObjectID());
+		{
+			resp->insertLong(getPlayerOwner()->_getObjectID());
+		}
 		break;
 	case RPC_AWARDFACTIONPOINTS__:
-		awardFactionPoints();
+		{
+			awardFactionPoints();
+		}
 		break;
 	case RPC_REMOVEMISSIONFROMPLAYER__:
-		removeMissionFromPlayer();
+		{
+			removeMissionFromPlayer();
+		}
 		break;
 	case RPC_AWARDREWARD__:
-		awardReward();
+		{
+			awardReward();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

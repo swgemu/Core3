@@ -506,34 +506,54 @@ void ArmorComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SETKINETIC__FLOAT_:
-		setKinetic(inv->getFloatParameter());
+		{
+			setKinetic(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETENERGY__FLOAT_:
-		setEnergy(inv->getFloatParameter());
+		{
+			setEnergy(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETELECTRICITY__FLOAT_:
-		setElectricity(inv->getFloatParameter());
+		{
+			setElectricity(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETSTUN__FLOAT_:
-		setStun(inv->getFloatParameter());
+		{
+			setStun(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETBLAST__FLOAT_:
-		setBlast(inv->getFloatParameter());
+		{
+			setBlast(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETHEAT__FLOAT_:
-		setHeat(inv->getFloatParameter());
+		{
+			setHeat(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETCOLD__FLOAT_:
-		setCold(inv->getFloatParameter());
+		{
+			setCold(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETACID__FLOAT_:
-		setAcid(inv->getFloatParameter());
+		{
+			setAcid(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETLIGHTSABER__FLOAT_:
-		setLightSaber(inv->getFloatParameter());
+		{
+			setLightSaber(inv->getFloatParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

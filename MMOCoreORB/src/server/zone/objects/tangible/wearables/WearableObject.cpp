@@ -168,6 +168,7 @@ String WearableObject::repairAttempt(int repairChance) {
 		DistributedMethod method(this, RPC_REPAIRATTEMPT__INT_);
 		method.addSignedIntParameter(repairChance);
 
+		String _return_repairAttempt;
 		method.executeWithAsciiReturn(_return_repairAttempt);
 		return _return_repairAttempt;
 	} else
@@ -396,31 +397,49 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_:
-		applyAttachment(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Attachment*>(inv->getObjectParameter()));
+		{
+			applyAttachment(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Attachment*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_:
-		setAttachmentMods(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			setAttachmentMods(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISWEARABLEOBJECT__:
-		resp->insertBoolean(isWearableObject());
+		{
+			resp->insertBoolean(isWearableObject());
+		}
 		break;
 	case RPC_ISEQUIPPED__:
-		resp->insertBoolean(isEquipped());
+		{
+			resp->insertBoolean(isEquipped());
+		}
 		break;
 	case RPC_GETMAXSOCKETS__:
-		resp->insertSignedInt(getMaxSockets());
+		{
+			resp->insertSignedInt(getMaxSockets());
+		}
 		break;
 	case RPC_SOCKETSUSED__:
-		resp->insertSignedInt(socketsUsed());
+		{
+			resp->insertSignedInt(socketsUsed());
+		}
 		break;
 	case RPC_SOCKETSLEFT__:
-		resp->insertSignedInt(socketsLeft());
+		{
+			resp->insertSignedInt(socketsLeft());
+		}
 		break;
 	case RPC_REPAIRATTEMPT__INT_:
-		resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

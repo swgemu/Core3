@@ -951,106 +951,175 @@ void ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISMANUFACTURESCHEMATIC__:
-		resp->insertBoolean(isManufactureSchematic());
+		{
+			resp->insertBoolean(isManufactureSchematic());
+		}
 		break;
 	case RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_:
-		setDraftSchematic(static_cast<DraftSchematic*>(inv->getObjectParameter()));
+		{
+			setDraftSchematic(static_cast<DraftSchematic*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(addIngredientToSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(addIngredientToSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(removeIngredientFromSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(removeIngredientFromSlot(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_:
-		cleanupIngredientSlots(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			cleanupIngredientSlots(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETDRAFTSCHEMATIC__:
-		resp->insertLong(getDraftSchematic()->_getObjectID());
+		{
+			resp->insertLong(getDraftSchematic()->_getObjectID());
+		}
 		break;
 	case RPC_INCREASECOMPLEXITY__:
-		increaseComplexity();
+		{
+			increaseComplexity();
+		}
 		break;
 	case RPC_DECREASECOMPLEXITY__:
-		decreaseComplexity();
+		{
+			decreaseComplexity();
+		}
 		break;
 	case RPC_GETCOMPLEXITY__:
-		resp->insertFloat(getComplexity());
+		{
+			resp->insertFloat(getComplexity());
+		}
 		break;
 	case RPC_ISREADYFORASSEMBLY__:
-		resp->insertBoolean(isReadyForAssembly());
+		{
+			resp->insertBoolean(isReadyForAssembly());
+		}
 		break;
 	case RPC_SETASSEMBLED__:
-		setAssembled();
+		{
+			setAssembled();
+		}
 		break;
 	case RPC_ISASSEMBLED__:
-		resp->insertBoolean(isAssembled());
+		{
+			resp->insertBoolean(isAssembled());
+		}
 		break;
 	case RPC_SETCOMPLETED__:
-		setCompleted();
+		{
+			setCompleted();
+		}
 		break;
 	case RPC_ISCOMPLETED__:
-		resp->insertBoolean(isCompleted());
+		{
+			resp->insertBoolean(isCompleted());
+		}
 		break;
 	case RPC_GETSLOTCOUNT__:
-		resp->insertSignedInt(getSlotCount());
+		{
+			resp->insertSignedInt(getSlotCount());
+		}
 		break;
 	case RPC_SETCRAFTER__CREATUREOBJECT_:
-		setCrafter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			setCrafter(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCRAFTER__:
-		resp->insertLong(getCrafter()->_getObjectID());
+		{
+			resp->insertLong(getCrafter()->_getObjectID());
+		}
 		break;
 	case RPC_SETEXPERIMENTINGCOUNTER__INT_:
-		setExperimentingCounter(inv->getSignedIntParameter());
+		{
+			setExperimentingCounter(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETEXPERIMENTINGCOUNTER__:
-		resp->insertSignedInt(getExperimentingCounter());
+		{
+			resp->insertSignedInt(getExperimentingCounter());
+		}
 		break;
 	case RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__:
-		resp->insertSignedInt(getExperimentingCounterPrevious());
+		{
+			resp->insertSignedInt(getExperimentingCounterPrevious());
+		}
 		break;
 	case RPC_GETINGREDIENTCOUNTER__:
-		resp->insertSignedInt(getIngredientCounter());
+		{
+			resp->insertSignedInt(getIngredientCounter());
+		}
 		break;
 	case RPC_SETMANUFACTURELIMIT__INT_:
-		setManufactureLimit(inv->getSignedIntParameter());
+		{
+			setManufactureLimit(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMANUFACTURELIMIT__:
-		resp->insertSignedInt(getManufactureLimit());
+		{
+			resp->insertSignedInt(getManufactureLimit());
+		}
 		break;
 	case RPC_SETPROTOTYPE__TANGIBLEOBJECT_:
-		setPrototype(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			setPrototype(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETPROTOTYPE__:
-		resp->insertLong(getPrototype()->_getObjectID());
+		{
+			resp->insertLong(getPrototype()->_getObjectID());
+		}
 		break;
 	case RPC_CANMANUFACTUREITEM__STRING_STRING_:
-		canManufactureItem(inv->getAsciiParameter(_param0_canManufactureItem__String_String_), inv->getAsciiParameter(_param1_canManufactureItem__String_String_));
+		{
+			String type; String displayedName; 
+			canManufactureItem(inv->getAsciiParameter(type), inv->getAsciiParameter(displayedName));
+		}
 		break;
 	case RPC_MANUFACTUREITEM__:
-		manufactureItem();
+		{
+			manufactureItem();
+		}
 		break;
 	case RPC_CREATEFACTORYBLUEPRINT__:
-		createFactoryBlueprint();
+		{
+			createFactoryBlueprint();
+		}
 		break;
 	case RPC_GETBLUEPRINTSIZE__:
-		resp->insertSignedInt(getBlueprintSize());
+		{
+			resp->insertSignedInt(getBlueprintSize());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

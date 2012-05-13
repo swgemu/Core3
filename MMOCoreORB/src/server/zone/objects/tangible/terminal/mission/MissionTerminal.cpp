@@ -94,6 +94,7 @@ String MissionTerminal::getTerminalName() {
 
 		DistributedMethod method(this, RPC_GETTERMINALNAME__);
 
+		String _return_getTerminalName;
 		method.executeWithAsciiReturn(_return_getTerminalName);
 		return _return_getTerminalName;
 	} else
@@ -535,55 +536,89 @@ void MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_GETTERMINALNAME__:
-		resp->insertAscii(getTerminalName());
+		{
+			resp->insertAscii(getTerminalName());
+		}
 		break;
 	case RPC_ISMISSIONTERMINAL__:
-		resp->insertBoolean(isMissionTerminal());
+		{
+			resp->insertBoolean(isMissionTerminal());
+		}
 		break;
 	case RPC_ISARTISANTERMINAL__:
-		resp->insertBoolean(isArtisanTerminal());
+		{
+			resp->insertBoolean(isArtisanTerminal());
+		}
 		break;
 	case RPC_ISGENERALTERMINAL__:
-		resp->insertBoolean(isGeneralTerminal());
+		{
+			resp->insertBoolean(isGeneralTerminal());
+		}
 		break;
 	case RPC_ISBOUNTYTERMINAL__:
-		resp->insertBoolean(isBountyTerminal());
+		{
+			resp->insertBoolean(isBountyTerminal());
+		}
 		break;
 	case RPC_ISENTERTAINERTERMINAL__:
-		resp->insertBoolean(isEntertainerTerminal());
+		{
+			resp->insertBoolean(isEntertainerTerminal());
+		}
 		break;
 	case RPC_ISIMPERIALTERMINAL__:
-		resp->insertBoolean(isImperialTerminal());
+		{
+			resp->insertBoolean(isImperialTerminal());
+		}
 		break;
 	case RPC_ISNEWBIETERMINAL__:
-		resp->insertBoolean(isNewbieTerminal());
+		{
+			resp->insertBoolean(isNewbieTerminal());
+		}
 		break;
 	case RPC_ISREBELTERMINAL__:
-		resp->insertBoolean(isRebelTerminal());
+		{
+			resp->insertBoolean(isRebelTerminal());
+		}
 		break;
 	case RPC_ISSCOUTTERMINAL__:
-		resp->insertBoolean(isScoutTerminal());
+		{
+			resp->insertBoolean(isScoutTerminal());
+		}
 		break;
 	case RPC_ISSTATUETERMINAL__:
-		resp->insertBoolean(isStatueTerminal());
+		{
+			resp->insertBoolean(isStatueTerminal());
+		}
 		break;
 	case RPC_ISSLICER__CREATUREOBJECT_:
-		resp->insertBoolean(isSlicer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isSlicer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ADDSLICER__CREATUREOBJECT_:
-		addSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESLICER__CREATUREOBJECT_:
-		removeSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeSlicer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -69,6 +69,7 @@ String SuiListBox::getMenuItemName(int index) {
 		DistributedMethod method(this, RPC_GETMENUITEMNAME__INT_);
 		method.addSignedIntParameter(index);
 
+		String _return_getMenuItemName;
 		method.executeWithAsciiReturn(_return_getMenuItemName);
 		return _return_getMenuItemName;
 	} else
@@ -459,40 +460,65 @@ void SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INIT__:
-		init();
+		{
+			init();
+		}
 		break;
 	case RPC_ADDMENUITEM__STRING_LONG_:
-		addMenuItem(inv->getAsciiParameter(_param0_addMenuItem__String_long_), inv->getUnsignedLongParameter());
+		{
+			String name; 
+			addMenuItem(inv->getAsciiParameter(name), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETMENUITEMNAME__INT_:
-		resp->insertAscii(getMenuItemName(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getMenuItemName(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_REMOVEALLMENUITEMS__:
-		removeAllMenuItems();
+		{
+			removeAllMenuItems();
+		}
 		break;
 	case RPC_GETMENUOBJECTID__INT_:
-		resp->insertLong(getMenuObjectID(inv->getUnsignedIntParameter()));
+		{
+			resp->insertLong(getMenuObjectID(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_GETMENUSIZE__:
-		resp->insertSignedInt(getMenuSize());
+		{
+			resp->insertSignedInt(getMenuSize());
+		}
 		break;
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_SETNEXTBOX__INT_:
-		setNextBox(inv->getUnsignedIntParameter());
+		{
+			setNextBox(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETPREVIOUSBOX__INT_:
-		setPreviousBox(inv->getUnsignedIntParameter());
+		{
+			setPreviousBox(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETNEXTBOX__:
-		resp->insertLong(getNextBox());
+		{
+			resp->insertLong(getNextBox());
+		}
 		break;
 	case RPC_GETPREVIOUSBOX__:
-		resp->insertLong(getPreviousBox());
+		{
+			resp->insertLong(getPreviousBox());
+		}
 		break;
 	case RPC_ISLISTBOX__:
-		resp->insertBoolean(isListBox());
+		{
+			resp->insertBoolean(isListBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

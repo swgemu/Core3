@@ -472,31 +472,49 @@ void SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_ENDSLICING__:
-		endSlicing();
+		{
+			endSlicing();
+		}
 		break;
 	case RPC_GETSLICINGSKILL__CREATUREOBJECT_:
-		resp->insertSignedInt(getSlicingSkill(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getSlicingSkill(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASPRECISIONLASERKNIFE__BOOL_:
-		resp->insertBoolean(hasPrecisionLaserKnife(inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(hasPrecisionLaserKnife(inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_HASWEAPONUPGRADEKIT__:
-		resp->insertBoolean(hasWeaponUpgradeKit());
+		{
+			resp->insertBoolean(hasWeaponUpgradeKit());
+		}
 		break;
 	case RPC_HASARMORUPGRADEKIT__:
-		resp->insertBoolean(hasArmorUpgradeKit());
+		{
+			resp->insertBoolean(hasArmorUpgradeKit());
+		}
 		break;
 	case RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_:
-		useClampFromInventory(static_cast<SlicingTool*>(inv->getObjectParameter()));
+		{
+			useClampFromInventory(static_cast<SlicingTool*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -209,8 +209,6 @@ public:
 
 	int clearSession();
 
-protected:
-	String _param0_sendConfirmationBox__String_;
 };
 
 class CitySpecializationSessionHelper : public DistributedObjectClassHelper, public Singleton<CitySpecializationSessionHelper> {

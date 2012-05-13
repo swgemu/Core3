@@ -767,109 +767,184 @@ void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_LOADLUACONFIG__:
-		loadLuaConfig();
+		{
+			loadLuaConfig();
+		}
 		break;
 	case RPC_LOADCITYREGIONS__:
-		loadCityRegions();
+		{
+			loadCityRegions();
+		}
 		break;
 	case RPC_VALIDATECITYNAME__STRING_:
-		resp->insertBoolean(validateCityName(inv->getAsciiParameter(_param0_validateCityName__String_)));
+		{
+			String name; 
+			resp->insertBoolean(validateCityName(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_:
-		resp->insertBoolean(isCityInRange(static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(isCityInRange(static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_:
-		resp->insertLong(createCity(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createCity__CreatureObject_String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		{
+			String cityName; 
+			resp->insertLong(createCity(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(cityName), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		}
 		break;
 	case RPC_PROCESSCITYUPDATE__CITYREGION_:
-		processCityUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			processCityUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CONTRACTCITY__CITYREGION_:
-		contractCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			contractCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_EXPANDCITY__CITYREGION_:
-		expandCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			expandCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DESTROYCITY__CITYREGION_:
-		destroyCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			destroyCity(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendStatusReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendStatusReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_:
-		changeCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_changeCitySpecialization__CityRegion_CreatureObject_String_));
+		{
+			String spec; 
+			changeCitySpecialization(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(spec));
+		}
 		break;
 	case RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptWithdrawCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptWithdrawCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptDepositCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptDepositCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_:
-		withdrawFromCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			withdrawFromCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_:
-		depositToCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			depositToCityTreasury(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendTreasuryReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendTreasuryReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendCitizenshipReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendCitizenshipReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_:
-		registerCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			registerCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_:
-		unregisterCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			unregisterCitizen(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendManageMilitia(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendManageMilitia(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptAddMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptAddMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_:
-		addMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_addMilitiaMember__CityRegion_CreatureObject_String_));
+		{
+			String playerName; 
+			addMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(playerName));
+		}
 		break;
 	case RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_:
-		removeMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			removeMilitiaMember(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendCityAdvancement(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendCityAdvancement(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptRegisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptRegisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptUnregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptUnregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_:
-		registerCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			registerCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_:
-		unregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			unregisterCity(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		promptAdjustTaxes(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			promptAdjustTaxes(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
-		sendMaintenanceReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendMaintenanceReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CONTAINSCITYNAME__STRING_:
-		resp->insertBoolean(containsCityName(inv->getAsciiParameter(_param0_containsCityName__String_)));
+		{
+			String name; 
+			resp->insertBoolean(containsCityName(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_:
-		resp->insertBoolean(validateCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(validateCityInRange(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Zone*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_:
-		toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			toggleZoningEnabled(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETTOTALCITIES__:
-		resp->insertSignedInt(getTotalCities());
+		{
+			resp->insertSignedInt(getTotalCities());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -285,19 +285,33 @@ void ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_DELETEFORAGEAREACOLLECTION__STRING_:
-		deleteForageAreaCollection(inv->getAsciiParameter(_param0_deleteForageAreaCollection__String_));
+		{
+			String playerName; 
+			deleteForageAreaCollection(inv->getAsciiParameter(playerName));
+		}
 		break;
 	case RPC_STARTFORAGING__CREATUREOBJECT_INT_:
-		startForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			startForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_FINISHFORAGING__CREATUREOBJECT_INT_FLOAT_FLOAT_STRING_:
-		finishForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_finishForaging__CreatureObject_int_float_float_String_));
+		{
+			String planet; 
+			finishForaging(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(planet));
+		}
 		break;
 	case RPC_FORAGEGIVEITEMS__CREATUREOBJECT_INT_FLOAT_FLOAT_STRING_:
-		resp->insertBoolean(forageGiveItems(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_forageGiveItems__CreatureObject_int_float_float_String_)));
+		{
+			String planet; 
+			resp->insertBoolean(forageGiveItems(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(planet)));
+		}
 		break;
 	case RPC_FORAGEGIVERESOURCE__CREATUREOBJECT_FLOAT_FLOAT_STRING_STRING_:
-		resp->insertBoolean(forageGiveResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_forageGiveResource__CreatureObject_float_float_String_String_), inv->getAsciiParameter(_param4_forageGiveResource__CreatureObject_float_float_String_String_)));
+		{
+			String planet; String resType; 
+			resp->insertBoolean(forageGiveResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(planet), inv->getAsciiParameter(resType)));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

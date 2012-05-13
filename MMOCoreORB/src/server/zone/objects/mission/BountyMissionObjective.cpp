@@ -260,6 +260,7 @@ String BountyMissionObjective::getTargetZoneName() {
 
 		DistributedMethod method(this, RPC_GETTARGETZONENAME__);
 
+		String _return_getTargetZoneName;
 		method.executeWithAsciiReturn(_return_getTargetZoneName);
 		return _return_getTargetZoneName;
 	} else
@@ -550,52 +551,85 @@ void BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_COMPLETE__:
-		complete();
+		{
+			complete();
+		}
 		break;
 	case RPC_SPAWNTARGET__STRING_:
-		spawnTarget(inv->getAsciiParameter(_param0_spawnTarget__String_));
+		{
+			String zoneName; 
+			spawnTarget(inv->getAsciiParameter(zoneName));
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_UPDATEMISSIONSTATUS__INT_:
-		updateMissionStatus(inv->getSignedIntParameter());
+		{
+			updateMissionStatus(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETOBJECTIVESTATUS__:
-		resp->insertSignedInt(getObjectiveStatus());
+		{
+			resp->insertSignedInt(getObjectiveStatus());
+		}
 		break;
 	case RPC_GETARAKYDDROID__:
-		resp->insertLong(getArakydDroid()->_getObjectID());
+		{
+			resp->insertLong(getArakydDroid()->_getObjectID());
+		}
 		break;
 	case RPC_SETARAKYDDROID__SCENEOBJECT_:
-		setArakydDroid(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setArakydDroid(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_:
-		performDroidAction(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			performDroidAction(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_:
-		resp->insertBoolean(playerHasMissionOfCorrectLevel(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(playerHasMissionOfCorrectLevel(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_UPDATEWAYPOINT__:
-		updateWaypoint();
+		{
+			updateWaypoint();
+		}
 		break;
 	case RPC_CANCELALLTASKS__:
-		cancelAllTasks();
+		{
+			cancelAllTasks();
+		}
 		break;
 	case RPC_GETTARGETZONENAME__:
-		resp->insertAscii(getTargetZoneName());
+		{
+			resp->insertAscii(getTargetZoneName());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

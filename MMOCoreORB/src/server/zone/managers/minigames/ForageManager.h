@@ -189,12 +189,6 @@ public:
 
 	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
-protected:
-	String _param0_deleteForageAreaCollection__String_;
-	String _param4_finishForaging__CreatureObject_int_float_float_String_;
-	String _param4_forageGiveItems__CreatureObject_int_float_float_String_;
-	String _param3_forageGiveResource__CreatureObject_float_float_String_String_;
-	String _param4_forageGiveResource__CreatureObject_float_float_String_String_;
 };
 
 class ForageManagerHelper : public DistributedObjectClassHelper, public Singleton<ForageManagerHelper> {

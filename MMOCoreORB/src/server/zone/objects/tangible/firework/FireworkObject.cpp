@@ -380,25 +380,39 @@ void FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_LAUNCH__CREATUREOBJECT_INT_:
-		launch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			launch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_COMPLETELAUNCH__CREATUREOBJECT_INT_:
-		completeLaunch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			completeLaunch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETDISPLAYEDUSECOUNT__:
-		resp->insertSignedInt(getDisplayedUseCount());
+		{
+			resp->insertSignedInt(getDisplayedUseCount());
+		}
 		break;
 	case RPC_SETDELAY__INT_:
-		setDelay(inv->getSignedIntParameter());
+		{
+			setDelay(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETDELAY__:
-		resp->insertSignedInt(getDelay());
+		{
+			resp->insertSignedInt(getDelay());
+		}
 		break;
 	case RPC_ISFIREWORKOBJECT__:
-		resp->insertBoolean(isFireworkObject());
+		{
+			resp->insertBoolean(isFireworkObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

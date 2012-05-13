@@ -250,16 +250,24 @@ void TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_USETICKET__CREATUREOBJECT_TICKETOBJECT_:
-		useTicket(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TicketObject*>(inv->getObjectParameter()));
+		{
+			useTicket(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TicketObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISTICKETCOLLECTOR__:
-		resp->insertBoolean(isTicketCollector());
+		{
+			resp->insertBoolean(isTicketCollector());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

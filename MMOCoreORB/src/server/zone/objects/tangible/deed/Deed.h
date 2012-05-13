@@ -100,8 +100,6 @@ protected:
 
 	virtual ~Deed();
 
-	String _return_getGeneratedObjectTemplate;
-
 	friend class DeedHelper;
 };
 
@@ -195,8 +193,6 @@ public:
 
 	bool isDeedObject();
 
-protected:
-	String _param0_setGeneratedObjectTemplate__String_;
 };
 
 class DeedHelper : public DistributedObjectClassHelper, public Singleton<DeedHelper> {

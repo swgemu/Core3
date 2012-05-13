@@ -694,43 +694,69 @@ void DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
-		resp->insertSignedInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(calculatePower(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISPOISONDELIVERYUNIT__:
-		resp->insertBoolean(isPoisonDeliveryUnit());
+		{
+			resp->insertBoolean(isPoisonDeliveryUnit());
+		}
 		break;
 	case RPC_ISDISEASEDELIVERYUNIT__:
-		resp->insertBoolean(isDiseaseDeliveryUnit());
+		{
+			resp->insertBoolean(isDiseaseDeliveryUnit());
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	case RPC_GETRANGE__:
-		resp->insertFloat(getRange());
+		{
+			resp->insertFloat(getRange());
+		}
 		break;
 	case RPC_GETAREA__:
-		resp->insertFloat(getArea());
+		{
+			resp->insertFloat(getArea());
+		}
 		break;
 	case RPC_GETRANGEMOD__:
-		resp->insertFloat(getRangeMod());
+		{
+			resp->insertFloat(getRangeMod());
+		}
 		break;
 	case RPC_GETPOTENCY__:
-		resp->insertFloat(getPotency());
+		{
+			resp->insertFloat(getPotency());
+		}
 		break;
 	case RPC_GETDURATION__:
-		resp->insertInt(getDuration());
+		{
+			resp->insertInt(getDuration());
+		}
 		break;
 	case RPC_ISAREA__:
-		resp->insertBoolean(isArea());
+		{
+			resp->insertBoolean(isArea());
+		}
 		break;
 	case RPC_GETPOOL__:
-		resp->insertInt(getPool());
+		{
+			resp->insertInt(getPool());
+		}
 		break;
 	case RPC_GETDOTTYPE__:
-		resp->insertInt(getDotType());
+		{
+			resp->insertInt(getDotType());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -109,6 +109,7 @@ String GuildManager::getPendingGuildName(unsigned long long playerID) {
 		DistributedMethod method(this, RPC_GETPENDINGGUILDNAME__LONG_);
 		method.addUnsignedLongParameter(playerID);
 
+		String _return_getPendingGuildName;
 		method.executeWithAsciiReturn(_return_getPendingGuildName);
 		return _return_getPendingGuildName;
 	} else
@@ -929,124 +930,213 @@ void GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETCHATMANAGER__CHATMANAGER_:
-		setChatManager(static_cast<ChatManager*>(inv->getObjectParameter()));
+		{
+			setChatManager(static_cast<ChatManager*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_:
-		sendGuildListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendGuildListTo__CreatureObject_String_));
+		{
+			String guildFilter; 
+			sendGuildListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(guildFilter));
+		}
 		break;
 	case RPC_ADDPENDINGGUILD__LONG_STRING_:
-		addPendingGuild(inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param1_addPendingGuild__long_String_));
+		{
+			String guildName; 
+			addPendingGuild(inv->getUnsignedLongParameter(), inv->getAsciiParameter(guildName));
+		}
 		break;
 	case RPC_REMOVEPENDINGGUILD__LONG_:
-		removePendingGuild(inv->getUnsignedLongParameter());
+		{
+			removePendingGuild(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETPENDINGGUILDNAME__LONG_:
-		resp->insertAscii(getPendingGuildName(inv->getUnsignedLongParameter()));
+		{
+			resp->insertAscii(getPendingGuildName(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_:
-		addSponsoredPlayer(inv->getUnsignedLongParameter(), static_cast<GuildObject*>(inv->getObjectParameter()));
+		{
+			addSponsoredPlayer(inv->getUnsignedLongParameter(), static_cast<GuildObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESPONSOREDPLAYER__LONG_:
-		removeSponsoredPlayer(inv->getUnsignedLongParameter());
+		{
+			removeSponsoredPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISCREATINGGUILD__LONG_:
-		resp->insertBoolean(isCreatingGuild(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isCreatingGuild(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ISSPONSOREDPLAYER__LONG_:
-		resp->insertBoolean(isSponsoredPlayer(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isSponsoredPlayer(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETSPONSOREDGUILD__LONG_:
-		resp->insertLong(getSponsoredGuild(inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(getSponsoredGuild(inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SENDBASELINESTO__CREATUREOBJECT_:
-		sendBaselinesTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_LOADGUILDS__:
-		loadGuilds();
+		{
+			loadGuilds();
+		}
 		break;
 	case RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_:
-		sendGuildCreateNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildCreateNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_:
-		sendGuildCreateAbbrevTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildCreateAbbrevTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildInformationTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildInformationTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildMemberListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildMemberListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_:
-		sendGuildMemberOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildMemberOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildDisbandConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildDisbandConfirmTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildSponsoredListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildSponsoredListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_:
-		sendGuildSponsoredOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildSponsoredOptionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
-		sendGuildSponsorTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendGuildSponsorTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildSponsorVerifyTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendGuildSponsorVerifyTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildKickPromptTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendGuildKickPromptTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_:
-		sendGuildSetTitleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendGuildSetTitleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_:
-		sendMemberPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			sendMemberPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_:
-		resp->insertBoolean(validateGuildName(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_validateGuildName__CreatureObject_String_)));
+		{
+			String guildName; 
+			resp->insertBoolean(validateGuildName(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(guildName)));
+		}
 		break;
 	case RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_:
-		resp->insertBoolean(validateGuildAbbrev(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_validateGuildAbbrev__CreatureObject_String_)));
+		{
+			String guildAbbrev; 
+			resp->insertBoolean(validateGuildAbbrev(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(guildAbbrev)));
+		}
 		break;
 	case RPC_GUILDNAMEEXISTS__STRING_:
-		resp->insertBoolean(guildNameExists(inv->getAsciiParameter(_param0_guildNameExists__String_)));
+		{
+			String guildName; 
+			resp->insertBoolean(guildNameExists(inv->getAsciiParameter(guildName)));
+		}
 		break;
 	case RPC_GUILDABBREVEXISTS__STRING_:
-		resp->insertBoolean(guildAbbrevExists(inv->getAsciiParameter(_param0_guildAbbrevExists__String_)));
+		{
+			String guildAbbrev; 
+			resp->insertBoolean(guildAbbrevExists(inv->getAsciiParameter(guildAbbrev)));
+		}
 		break;
 	case RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_:
-		resp->insertLong(createGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_createGuild__CreatureObject_GuildTerminal_String_String_), inv->getAsciiParameter(_param3_createGuild__CreatureObject_GuildTerminal_String_String_))->_getObjectID());
+		{
+			String guildName; String guildAbbrev; 
+			resp->insertLong(createGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(guildName), inv->getAsciiParameter(guildAbbrev))->_getObjectID());
+		}
 		break;
 	case RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_:
-		resp->insertBoolean(disbandGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(disbandGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_:
-		sponsorPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_sponsorPlayer__CreatureObject_GuildTerminal_String_));
+		{
+			String playerName; 
+			sponsorPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()), inv->getAsciiParameter(playerName));
+		}
 		break;
 	case RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_:
-		acceptSponsorshipRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			acceptSponsorshipRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_:
-		acceptSponsoredPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			acceptSponsoredPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_:
-		kickMember(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			kickMember(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_:
-		leaveGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()));
+		{
+			leaveGuild(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_:
-		setMemberTitle(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_setMemberTitle__CreatureObject_CreatureObject_String_));
+		{
+			String title; 
+			setMemberTitle(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(title));
+		}
 		break;
 	case RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_:
-		setAllegianceTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			setAllegianceTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_:
-		toggleGuildPermission(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		{
+			toggleGuildPermission(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEGUILDCHANNELS__GUILDOBJECT_:
-		resp->insertLong(createGuildChannels(static_cast<GuildObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(createGuildChannels(static_cast<GuildObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

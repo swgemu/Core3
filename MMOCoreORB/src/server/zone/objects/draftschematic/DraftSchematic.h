@@ -149,14 +149,6 @@ protected:
 
 	virtual ~DraftSchematic();
 
-	String _return_getAssemblySkill;
-	String _return_getCustomName;
-	String _return_getCustomizationSkill;
-	String _return_getExperimentationSkill;
-	String _return_getGroupName;
-	String _return_getTemplate;
-	String _return_getXpType;
-
 	friend class DraftSchematicHelper;
 };
 
@@ -325,8 +317,6 @@ public:
 
 	String getTemplate(int i);
 
-protected:
-	String _param0_setGroupName__String_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

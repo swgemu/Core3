@@ -305,6 +305,7 @@ String GamblingTerminal::getMachineTypeText() {
 
 		DistributedMethod method(this, RPC_GETMACHINETYPETEXT__);
 
+		String _return_getMachineTypeText;
 		method.executeWithAsciiReturn(_return_getMachineTypeText);
 		return _return_getMachineTypeText;
 	} else
@@ -329,6 +330,7 @@ String GamblingTerminal::getText(CreatureObject* player) {
 		DistributedMethod method(this, RPC_GETTEXT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
+		String _return_getText;
 		method.executeWithAsciiReturn(_return_getText);
 		return _return_getText;
 	} else
@@ -387,6 +389,7 @@ String GamblingTerminal::getGamblingRegion() {
 
 		DistributedMethod method(this, RPC_GETGAMBLINGREGION__);
 
+		String _return_getGamblingRegion;
 		method.executeWithAsciiReturn(_return_getGamblingRegion);
 		return _return_getGamblingRegion;
 	} else
@@ -1022,94 +1025,155 @@ void GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_RESET__:
-		reset();
+		{
+			reset();
+		}
 		break;
 	case RPC_GETFIRST__:
-		resp->insertSignedInt(getFirst());
+		{
+			resp->insertSignedInt(getFirst());
+		}
 		break;
 	case RPC_GETSECOND__:
-		resp->insertSignedInt(getSecond());
+		{
+			resp->insertSignedInt(getSecond());
+		}
 		break;
 	case RPC_GETTHIRD__:
-		resp->insertSignedInt(getThird());
+		{
+			resp->insertSignedInt(getThird());
+		}
 		break;
 	case RPC_SETFIRST__INT_:
-		setFirst(inv->getSignedIntParameter());
+		{
+			setFirst(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSECOND__INT_:
-		setSecond(inv->getSignedIntParameter());
+		{
+			setSecond(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETTHIRD__INT_:
-		setThird(inv->getSignedIntParameter());
+		{
+			setThird(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMINBET__:
-		resp->insertSignedInt(getMinBet());
+		{
+			resp->insertSignedInt(getMinBet());
+		}
 		break;
 	case RPC_GETMAXBET__:
-		resp->insertSignedInt(getMaxBet());
+		{
+			resp->insertSignedInt(getMaxBet());
+		}
 		break;
 	case RPC_GETSTATE__:
-		resp->insertSignedInt(getState());
+		{
+			resp->insertSignedInt(getState());
+		}
 		break;
 	case RPC_SETSTATE__INT_:
-		setState(inv->getSignedIntParameter());
+		{
+			setState(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMACHINETYPE__:
-		resp->insertSignedInt(getMachineType());
+		{
+			resp->insertSignedInt(getMachineType());
+		}
 		break;
 	case RPC_INCGAMECOUNT__:
-		incGameCount();
+		{
+			incGameCount();
+		}
 		break;
 	case RPC_GETGAMECOUNT__:
-		resp->insertSignedInt(getGameCount());
+		{
+			resp->insertSignedInt(getGameCount());
+		}
 		break;
 	case RPC_ISGONEEMPTY__:
-		resp->insertBoolean(isGoneEmpty());
+		{
+			resp->insertBoolean(isGoneEmpty());
+		}
 		break;
 	case RPC_GETMACHINETYPETEXT__:
-		resp->insertAscii(getMachineTypeText());
+		{
+			resp->insertAscii(getMachineTypeText());
+		}
 		break;
 	case RPC_GETTEXT__CREATUREOBJECT_:
-		resp->insertAscii(getText(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertAscii(getText(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SETGAMBLINGREGION__STRING_:
-		setGamblingRegion(inv->getAsciiParameter(_param0_setGamblingRegion__String_));
+		{
+			String region; 
+			setGamblingRegion(inv->getAsciiParameter(region));
+		}
 		break;
 	case RPC_GETGAMBLINGREGION__:
-		resp->insertAscii(getGamblingRegion());
+		{
+			resp->insertAscii(getGamblingRegion());
+		}
 		break;
 	case RPC_GAMERUNNING__:
-		resp->insertBoolean(gameRunning());
+		{
+			resp->insertBoolean(gameRunning());
+		}
 		break;
 	case RPC_CHECKJOIN__CREATUREOBJECT_:
-		resp->insertBoolean(checkJoin(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkJoin(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_JOINTERMINAL__CREATUREOBJECT_:
-		joinTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			joinTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_LEAVETERMINAL__CREATUREOBJECT_:
-		leaveTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			leaveTerminal(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CLOSEMENU__CREATUREOBJECT_BOOL_:
-		closeMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			closeMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CLOSEALLMENUS__:
-		closeAllMenus();
+		{
+			closeAllMenus();
+		}
 		break;
 	case RPC_STATUSUPDATE__CREATUREOBJECT_INT_:
-		statusUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			statusUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STATUSUPDATE__INT_:
-		statusUpdate(inv->getSignedIntParameter());
+		{
+			statusUpdate(inv->getSignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

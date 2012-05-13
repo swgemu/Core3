@@ -213,7 +213,9 @@ void SuiSlotMachineBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_GETPAYOUTBOXID__:
-		resp->insertInt(getPayoutBoxID());
+		{
+			resp->insertInt(getPayoutBoxID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -1125,6 +1125,7 @@ String AiAgent::getFactionString() {
 
 		DistributedMethod method(this, RPC_GETFACTIONSTRING__);
 
+		String _return_getFactionString;
 		method.executeWithAsciiReturn(_return_getFactionString);
 		return _return_getFactionString;
 	} else
@@ -1139,6 +1140,7 @@ String AiAgent::getSocialGroup() {
 
 		DistributedMethod method(this, RPC_GETSOCIALGROUP__);
 
+		String _return_getSocialGroup;
 		method.executeWithAsciiReturn(_return_getSocialGroup);
 		return _return_getSocialGroup;
 	} else
@@ -2090,256 +2092,425 @@ void AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_ACTIVATERECOVERY__:
-		activateRecovery();
+		{
+			activateRecovery();
+		}
 		break;
 	case RPC_ACTIVATEMOVEMENTEVENT__:
-		activateMovementEvent();
+		{
+			activateMovementEvent();
+		}
 		break;
 	case RPC_ACTIVATEWAITEVENT__:
-		activateWaitEvent();
+		{
+			activateWaitEvent();
+		}
 		break;
 	case RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_:
-		activateAwarenessEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			activateAwarenessEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_TRYRETREAT__:
-		resp->insertBoolean(tryRetreat());
+		{
+			resp->insertBoolean(tryRetreat());
+		}
 		break;
 	case RPC_DORECOVERY__:
-		doRecovery();
+		{
+			doRecovery();
+		}
 		break;
 	case RPC_DOATTACK__:
-		doAttack();
+		{
+			doAttack();
+		}
 		break;
 	case RPC_DOMOVEMENT__:
-		doMovement();
+		{
+			doMovement();
+		}
 		break;
 	case RPC_SETLEVEL__INT_:
-		setLevel(inv->getSignedIntParameter());
+		{
+			setLevel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CALCULATEATTACKMINDAMAGE__INT_:
-		resp->insertSignedInt(calculateAttackMinDamage(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(calculateAttackMinDamage(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CALCULATEATTACKMAXDAMAGE__INT_:
-		resp->insertSignedInt(calculateAttackMaxDamage(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(calculateAttackMaxDamage(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CALCULATEATTACKSPEED__INT_:
-		resp->insertFloat(calculateAttackSpeed(inv->getSignedIntParameter()));
+		{
+			resp->insertFloat(calculateAttackSpeed(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
-		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISSCENTMASKED__CREATUREOBJECT_:
-		resp->insertBoolean(isScentMasked(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isScentMasked(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISCONCEALED__CREATUREOBJECT_:
-		resp->insertBoolean(isConcealed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isConcealed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CHECKNEWANGLE__:
-		checkNewAngle();
+		{
+			checkNewAngle();
+		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_:
-		setNextPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setNextPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
-		notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		{
+			notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CLEARPATROLPOINTS__:
-		clearPatrolPoints();
+		{
+			clearPatrolPoints();
+		}
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_:
-		resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
-		sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_:
-		sendDefaultConversationTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendDefaultConversationTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
-		selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(notifyObjectDestructionObservers(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_:
-		resp->insertSignedInt(notifyConverseObservers(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyConverseObservers(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYATTACK__OBSERVABLE_:
-		resp->insertSignedInt(notifyAttack(static_cast<Observable*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyAttack(static_cast<Observable*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_:
-		resp->insertSignedInt(notifyCallForHelp(static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyCallForHelp(static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMWORLD__BOOL_:
-		destroyObjectFromWorld(inv->getBooleanParameter());
+		{
+			destroyObjectFromWorld(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ACTIVATEPOSTURERECOVERY__:
-		activatePostureRecovery();
+		{
+			activatePostureRecovery();
+		}
 		break;
 	case RPC_QUEUEDIZZYFALLEVENT__:
-		queueDizzyFallEvent();
+		{
+			queueDizzyFallEvent();
+		}
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
-		clearCombatState(inv->getBooleanParameter());
+		{
+			clearCombatState(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETDEFENDER__SCENEOBJECT_:
-		setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDDEFENDER__SCENEOBJECT_:
-		addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
-		removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_:
-		setDespawnOnNoPlayerInRange(inv->getBooleanParameter());
+		{
+			setDespawnOnNoPlayerInRange(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_NOTIFYDESPAWN__ZONE_:
-		notifyDespawn(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyDespawn(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SCHEDULEDESPAWN__:
-		scheduleDespawn();
+		{
+			scheduleDespawn();
+		}
 		break;
 	case RPC_SCHEDULEDESPAWN__INT_:
-		scheduleDespawn(inv->getSignedIntParameter());
+		{
+			scheduleDespawn(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_RESPAWN__ZONE_INT_:
-		respawn(static_cast<Zone*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			respawn(static_cast<Zone*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_:
-		setHomeLocation(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setHomeLocation(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETRESPAWNTIMER__FLOAT_:
-		setRespawnTimer(inv->getFloatParameter());
+		{
+			setRespawnTimer(inv->getFloatParameter());
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
-		resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETOBLIVIOUS__:
-		setOblivious();
+		{
+			setOblivious();
+		}
 		break;
 	case RPC_SETWATCHOBJECT__SCENEOBJECT_:
-		setWatchObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setWatchObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETSTALKOBJECT__SCENEOBJECT_:
-		setStalkObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setStalkObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETFOLLOWOBJECT__SCENEOBJECT_:
-		setFollowObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setFollowObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETTARGETOBJECT__SCENEOBJECT_:
-		setTargetObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setTargetObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETFOLLOWOBJECT__:
-		resp->insertLong(getFollowObject()->_getObjectID());
+		{
+			resp->insertLong(getFollowObject()->_getObjectID());
+		}
 		break;
 	case RPC_SELECTWEAPON__:
-		selectWeapon();
+		{
+			selectWeapon();
+		}
 		break;
 	case RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_:
-		resp->insertBoolean(validateStateAttack(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_validateStateAttack__CreatureObject_String_)));
+		{
+			String args; 
+			resp->insertBoolean(validateStateAttack(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(args)));
+		}
 		break;
 	case RPC_ISRETREATING__:
-		resp->insertBoolean(isRetreating());
+		{
+			resp->insertBoolean(isRetreating());
+		}
 		break;
 	case RPC_ISFLEEING__:
-		resp->insertBoolean(isFleeing());
+		{
+			resp->insertBoolean(isFleeing());
+		}
 		break;
 	case RPC_CLEARDESPAWNEVENT__:
-		clearDespawnEvent();
+		{
+			clearDespawnEvent();
+		}
 		break;
 	case RPC_GETKINETIC__:
-		resp->insertFloat(getKinetic());
+		{
+			resp->insertFloat(getKinetic());
+		}
 		break;
 	case RPC_GETENERGY__:
-		resp->insertFloat(getEnergy());
+		{
+			resp->insertFloat(getEnergy());
+		}
 		break;
 	case RPC_GETELECTRICITY__:
-		resp->insertFloat(getElectricity());
+		{
+			resp->insertFloat(getElectricity());
+		}
 		break;
 	case RPC_GETSTUN__:
-		resp->insertFloat(getStun());
+		{
+			resp->insertFloat(getStun());
+		}
 		break;
 	case RPC_GETBLAST__:
-		resp->insertFloat(getBlast());
+		{
+			resp->insertFloat(getBlast());
+		}
 		break;
 	case RPC_GETHEAT__:
-		resp->insertFloat(getHeat());
+		{
+			resp->insertFloat(getHeat());
+		}
 		break;
 	case RPC_GETCOLD__:
-		resp->insertFloat(getCold());
+		{
+			resp->insertFloat(getCold());
+		}
 		break;
 	case RPC_GETACID__:
-		resp->insertFloat(getAcid());
+		{
+			resp->insertFloat(getAcid());
+		}
 		break;
 	case RPC_GETLIGHTSABER__:
-		resp->insertFloat(getLightSaber());
+		{
+			resp->insertFloat(getLightSaber());
+		}
 		break;
 	case RPC_ISSTALKER__:
-		resp->insertBoolean(isStalker());
+		{
+			resp->insertBoolean(isStalker());
+		}
 		break;
 	case RPC_ISKILLER__:
-		resp->insertBoolean(isKiller());
+		{
+			resp->insertBoolean(isKiller());
+		}
 		break;
 	case RPC_GETFEROCITY__:
-		resp->insertInt(getFerocity());
+		{
+			resp->insertInt(getFerocity());
+		}
 		break;
 	case RPC_GETARMOR__:
-		resp->insertInt(getArmor());
+		{
+			resp->insertInt(getArmor());
+		}
 		break;
 	case RPC_GETDESPAWNONNOPLAYERINRANGE__:
-		resp->insertBoolean(getDespawnOnNoPlayerInRange());
+		{
+			resp->insertBoolean(getDespawnOnNoPlayerInRange());
+		}
 		break;
 	case RPC_GETNUMBEROFPLAYERSINRANGE__:
-		resp->insertSignedInt(getNumberOfPlayersInRange());
+		{
+			resp->insertSignedInt(getNumberOfPlayersInRange());
+		}
 		break;
 	case RPC_GETFACTIONSTRING__:
-		resp->insertAscii(getFactionString());
+		{
+			resp->insertAscii(getFactionString());
+		}
 		break;
 	case RPC_GETSOCIALGROUP__:
-		resp->insertAscii(getSocialGroup());
+		{
+			resp->insertAscii(getSocialGroup());
+		}
 		break;
 	case RPC_GETCHANCEHIT__:
-		resp->insertFloat(getChanceHit());
+		{
+			resp->insertFloat(getChanceHit());
+		}
 		break;
 	case RPC_GETDAMAGEMIN__:
-		resp->insertSignedInt(getDamageMin());
+		{
+			resp->insertSignedInt(getDamageMin());
+		}
 		break;
 	case RPC_GETDAMAGEMAX__:
-		resp->insertSignedInt(getDamageMax());
+		{
+			resp->insertSignedInt(getDamageMax());
+		}
 		break;
 	case RPC_GETBASEXP__:
-		resp->insertSignedInt(getBaseXp());
+		{
+			resp->insertSignedInt(getBaseXp());
+		}
 		break;
 	case RPC_GETDIET__:
-		resp->insertInt(getDiet());
+		{
+			resp->insertInt(getDiet());
+		}
 		break;
 	case RPC_GETRESPAWNTIMER__:
-		resp->insertFloat(getRespawnTimer());
+		{
+			resp->insertFloat(getRespawnTimer());
+		}
 		break;
 	case RPC_ISAIAGENT__:
-		resp->insertBoolean(isAiAgent());
+		{
+			resp->insertBoolean(isAiAgent());
+		}
 		break;
 	case RPC_HASLOOT__:
-		resp->insertBoolean(hasLoot());
+		{
+			resp->insertBoolean(hasLoot());
+		}
 		break;
 	case RPC_SETSHOWNEXTPOSITION__BOOL_:
-		setShowNextPosition(inv->getBooleanParameter());
+		{
+			setShowNextPosition(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

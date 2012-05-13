@@ -49,6 +49,7 @@ String SuiListBoxMenuItem::getOptionName() {
 
 		DistributedMethod method(this, RPC_GETOPTIONNAME__);
 
+		String _return_getOptionName;
 		method.executeWithAsciiReturn(_return_getOptionName);
 		return _return_getOptionName;
 	} else
@@ -241,10 +242,14 @@ void SuiListBoxMenuItemAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_GETOBJECTID__:
-		resp->insertLong(getObjectID());
+		{
+			resp->insertLong(getObjectID());
+		}
 		break;
 	case RPC_GETOPTIONNAME__:
-		resp->insertAscii(getOptionName());
+		{
+			resp->insertAscii(getOptionName());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

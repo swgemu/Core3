@@ -45,9 +45,6 @@ protected:
 
 	virtual ~ScreenPlayObserver();
 
-	String _return_getScreenKey;
-	String _return_getScreenPlay;
-
 	friend class ScreenPlayObserverHelper;
 };
 
@@ -137,9 +134,6 @@ public:
 
 	String getScreenKey();
 
-protected:
-	String _param0_setScreenPlay__String_;
-	String _param0_setScreenKey__String_;
 };
 
 class ScreenPlayObserverHelper : public DistributedObjectClassHelper, public Singleton<ScreenPlayObserverHelper> {

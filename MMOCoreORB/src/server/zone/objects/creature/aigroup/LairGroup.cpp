@@ -190,7 +190,9 @@ void LairGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ISLAIRGROUP__:
-		resp->insertBoolean(isLairGroup());
+		{
+			resp->insertBoolean(isLairGroup());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

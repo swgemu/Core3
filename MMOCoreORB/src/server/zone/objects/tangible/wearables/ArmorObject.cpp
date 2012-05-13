@@ -1095,103 +1095,169 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISSPECIAL__INT_:
-		resp->insertBoolean(isSpecial(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isSpecial(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISVULNERABLE__INT_:
-		resp->insertBoolean(isVulnerable(inv->getSignedIntParameter()));
+		{
+			resp->insertBoolean(isVulnerable(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ISARMOROBJECT__:
-		resp->insertBoolean(isArmorObject());
+		{
+			resp->insertBoolean(isArmorObject());
+		}
 		break;
 	case RPC_SETRATING__INT_:
-		setRating(inv->getSignedIntParameter());
+		{
+			setRating(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETRATING__:
-		resp->insertSignedInt(getRating());
+		{
+			resp->insertSignedInt(getRating());
+		}
 		break;
 	case RPC_GETKINETIC__:
-		resp->insertFloat(getKinetic());
+		{
+			resp->insertFloat(getKinetic());
+		}
 		break;
 	case RPC_SETKINETIC__FLOAT_:
-		setKinetic(inv->getFloatParameter());
+		{
+			setKinetic(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETENERGY__:
-		resp->insertFloat(getEnergy());
+		{
+			resp->insertFloat(getEnergy());
+		}
 		break;
 	case RPC_SETENERGY__FLOAT_:
-		setEnergy(inv->getFloatParameter());
+		{
+			setEnergy(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETELECTRICITY__:
-		resp->insertFloat(getElectricity());
+		{
+			resp->insertFloat(getElectricity());
+		}
 		break;
 	case RPC_SETELECTRICITY__FLOAT_:
-		setElectricity(inv->getFloatParameter());
+		{
+			setElectricity(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETSTUN__:
-		resp->insertFloat(getStun());
+		{
+			resp->insertFloat(getStun());
+		}
 		break;
 	case RPC_SETSTUN__FLOAT_:
-		setStun(inv->getFloatParameter());
+		{
+			setStun(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETBLAST__:
-		resp->insertFloat(getBlast());
+		{
+			resp->insertFloat(getBlast());
+		}
 		break;
 	case RPC_SETBLAST__FLOAT_:
-		setBlast(inv->getFloatParameter());
+		{
+			setBlast(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETHEAT__:
-		resp->insertFloat(getHeat());
+		{
+			resp->insertFloat(getHeat());
+		}
 		break;
 	case RPC_SETHEAT__FLOAT_:
-		setHeat(inv->getFloatParameter());
+		{
+			setHeat(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETCOLD__:
-		resp->insertFloat(getCold());
+		{
+			resp->insertFloat(getCold());
+		}
 		break;
 	case RPC_SETCOLD__FLOAT_:
-		setCold(inv->getFloatParameter());
+		{
+			setCold(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETACID__:
-		resp->insertFloat(getAcid());
+		{
+			resp->insertFloat(getAcid());
+		}
 		break;
 	case RPC_SETACID__FLOAT_:
-		setAcid(inv->getFloatParameter());
+		{
+			setAcid(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETLIGHTSABER__:
-		resp->insertFloat(getLightSaber());
+		{
+			resp->insertFloat(getLightSaber());
+		}
 		break;
 	case RPC_SETLIGHTSABER__FLOAT_:
-		setLightSaber(inv->getFloatParameter());
+		{
+			setLightSaber(inv->getFloatParameter());
+		}
 		break;
 	case RPC_GETHEALTHENCUMBRANCE__:
-		resp->insertSignedInt(getHealthEncumbrance());
+		{
+			resp->insertSignedInt(getHealthEncumbrance());
+		}
 		break;
 	case RPC_SETHEALTHENCUMBRANCE__INT_:
-		setHealthEncumbrance(inv->getSignedIntParameter());
+		{
+			setHealthEncumbrance(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETACTIONENCUMBRANCE__:
-		resp->insertSignedInt(getActionEncumbrance());
+		{
+			resp->insertSignedInt(getActionEncumbrance());
+		}
 		break;
 	case RPC_SETACTIONENCUMBRANCE__INT_:
-		setActionEncumbrance(inv->getSignedIntParameter());
+		{
+			setActionEncumbrance(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMINDENCUMBRANCE__:
-		resp->insertSignedInt(getMindEncumbrance());
+		{
+			resp->insertSignedInt(getMindEncumbrance());
+		}
 		break;
 	case RPC_SETMINDENCUMBRANCE__INT_:
-		setMindEncumbrance(inv->getSignedIntParameter());
+		{
+			setMindEncumbrance(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETEFFECTIVENESSSLICE__FLOAT_:
-		setEffectivenessSlice(inv->getFloatParameter());
+		{
+			setEffectivenessSlice(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETENCUMBRANCESLICE__FLOAT_:
-		setEncumbranceSlice(inv->getFloatParameter());
+		{
+			setEncumbranceSlice(inv->getFloatParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

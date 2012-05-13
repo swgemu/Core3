@@ -285,9 +285,6 @@ protected:
 
 	virtual ~CityRegion();
 
-	String _return_getCitySpecialization;
-	String _return_getRegionName;
-
 	friend class CityRegionHelper;
 };
 
@@ -725,10 +722,6 @@ public:
 
 	void destroyAllStructuresForRank(byte rank);
 
-protected:
-	String _param0_setCustomRegionName__String_;
-	String _param0_setCitySpecialization__String_;
-	String _param0_setRegionName__String_;
 };
 
 class CityRegionHelper : public DistributedObjectClassHelper, public Singleton<CityRegionHelper> {

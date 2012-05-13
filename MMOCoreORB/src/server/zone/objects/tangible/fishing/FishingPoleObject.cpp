@@ -171,6 +171,7 @@ String FishingPoleObject::getText(CreatureObject* player) {
 		DistributedMethod method(this, RPC_GETTEXT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
+		String _return_getText;
 		method.executeWithAsciiReturn(_return_getText);
 		return _return_getText;
 	} else
@@ -374,34 +375,55 @@ void FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_GETQUALITY__:
-		resp->insertSignedInt(getQuality());
+		{
+			resp->insertSignedInt(getQuality());
+		}
 		break;
 	case RPC_SETQUALITY__INT_:
-		setQuality(inv->getSignedIntParameter());
+		{
+			setQuality(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		{
+			String errorDescription; 
+			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
+		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DOFISHING__CREATUREOBJECT_:
-		doFishing(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			doFishing(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETTEXT__CREATUREOBJECT_:
-		resp->insertAscii(getText(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertAscii(getText(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_:
-		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

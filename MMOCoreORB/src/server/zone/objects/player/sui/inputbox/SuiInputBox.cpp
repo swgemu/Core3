@@ -308,19 +308,30 @@ void SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_SETMAXINPUTSIZE__INT_:
-		setMaxInputSize(inv->getSignedIntParameter());
+		{
+			setMaxInputSize(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETDEFAULTINPUT__STRING_:
-		setDefaultInput(inv->getAsciiParameter(_param0_setDefaultInput__String_));
+		{
+			String text; 
+			setDefaultInput(inv->getAsciiParameter(text));
+		}
 		break;
 	case RPC_ISFILTERBOX__:
-		resp->insertBoolean(isFilterBox());
+		{
+			resp->insertBoolean(isFilterBox());
+		}
 		break;
 	case RPC_ISINPUTBOX__:
-		resp->insertBoolean(isInputBox());
+		{
+			resp->insertBoolean(isInputBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

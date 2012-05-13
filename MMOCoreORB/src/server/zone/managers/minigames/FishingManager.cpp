@@ -272,6 +272,7 @@ String FishingManager::getTime() {
 
 		DistributedMethod method(this, RPC_GETTIME__);
 
+		String _return_getTime;
 		method.executeWithAsciiReturn(_return_getTime);
 		return _return_getTime;
 	} else
@@ -1176,139 +1177,231 @@ void FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZEBAITSTATUS__:
-		initializeBaitStatus();
+		{
+			initializeBaitStatus();
+		}
 		break;
 	case RPC_INITIALIZEPROPERTY__:
-		initializeProperty();
+		{
+			initializeProperty();
+		}
 		break;
 	case RPC_INITIALIZEACTION__:
-		initializeAction();
+		{
+			initializeAction();
+		}
 		break;
 	case RPC_INITIALIZESTATE__:
-		initializeState();
+		{
+			initializeState();
+		}
 		break;
 	case RPC_INITIALIZEFISHTYPE__:
-		initializeFishType();
+		{
+			initializeFishType();
+		}
 		break;
 	case RPC_INITIALIZEFISHLENGTH__:
-		initializeFishLength();
+		{
+			initializeFishLength();
+		}
 		break;
 	case RPC_INITIALIZELOOT__:
-		initializeLoot();
+		{
+			initializeLoot();
+		}
 		break;
 	case RPC_INITIALIZECOLOR__:
-		initializeColor();
+		{
+			initializeColor();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_:
-		checkFishingOnPositionUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			checkFishingOnPositionUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_:
-		resp->insertSignedInt(notifyCloseContainer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyCloseContainer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_STARTFISHING__CREATUREOBJECT_:
-		resp->insertSignedInt(startFishing(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(startFishing(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_:
-		stopFishing(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			stopFishing(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_FISHINGSTEP__CREATUREOBJECT_:
-		fishingStep(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fishingStep(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_:
-		success(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			success(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETTIME__:
-		resp->insertAscii(getTime());
+		{
+			resp->insertAscii(getTime());
+		}
 		break;
 	case RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_:
-		sendReward(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendReward(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEWINDOW__CREATUREOBJECT_INT_:
-		resp->insertInt(createWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter()));
+		{
+			resp->insertInt(createWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_CLOSEMENU__CREATUREOBJECT_INT_:
-		closeMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			closeMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_VEGETATION__SCENEOBJECT_:
-		resp->insertSignedInt(vegetation(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(vegetation(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_DENSITY__SCENEOBJECT_:
-		resp->insertSignedInt(density(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(density(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETFISH__CREATUREOBJECT_:
-		resp->insertSignedInt(getFish(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getFish(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETNEXTACTION__CREATUREOBJECT_:
-		resp->insertSignedInt(getNextAction(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getNextAction(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETNEXTACTION__CREATUREOBJECT_INT_:
-		setNextAction(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			setNextAction(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETPOLE__CREATUREOBJECT_:
-		resp->insertLong(getPole(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getPole(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_GETBAIT__CREATUREOBJECT_:
-		resp->insertLong(getBait(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getBait(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_GETFISHBOXID__CREATUREOBJECT_:
-		resp->insertInt(getFishBoxID(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertInt(getFishBoxID(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETFISHBOXID__CREATUREOBJECT_INT_:
-		setFishBoxID(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			setFishBoxID(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETFISHINGSTATE__CREATUREOBJECT_:
-		resp->insertSignedInt(getFishingState(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getFishingState(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_:
-		setFishingState(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			setFishingState(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETFISHMARKER__CREATUREOBJECT_:
-		resp->insertLong(getFishMarker(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getFishMarker(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_:
-		setFishMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setFishMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_FREEBAIT__CREATUREOBJECT_:
-		freeBait(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			freeBait(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_:
-		fishingProceed(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param7_fishingProceed__CreatureObject_int_SceneObject_int_int_int_bool_String_));
+		{
+			String moodString; 
+			fishingProceed(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(moodString));
+		}
 		break;
 	case RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_:
-		mishapEvent(inv->getAsciiParameter(_param0_mishapEvent__String_CreatureObject_int_bool_String_), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param4_mishapEvent__String_CreatureObject_int_bool_String_));
+		{
+			String text; String moodString; 
+			mishapEvent(inv->getAsciiParameter(text), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(moodString));
+		}
 		break;
 	case RPC_LOSEBAIT__CREATUREOBJECT_:
-		resp->insertBoolean(loseBait(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(loseBait(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ANIMATE__CREATUREOBJECT_INT_:
-		animate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			animate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_:
-		resp->insertLong(createMarker(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<Zone*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(createMarker(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<Zone*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_:
-		createSplash(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<Zone*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createSplash(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<Zone*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISPLAYING__CREATUREOBJECT_:
-		resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isPlaying(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_:
-		resp->insertLong(updateMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(updateMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_:
-		removeMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeMarker(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESPLASH__SCENEOBJECT_:
-		removeSplash(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeSplash(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_SCENEOBJECT_:
-		createFishingSplashEvent(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			createFishingSplashEvent(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_STOPFISHINGEVENT__CREATUREOBJECT_:
-		stopFishingEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			stopFishingEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

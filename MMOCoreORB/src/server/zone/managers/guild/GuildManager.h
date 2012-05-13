@@ -223,8 +223,6 @@ protected:
 
 	virtual ~GuildManager();
 
-	String _return_getPendingGuildName;
-
 	friend class GuildManagerHelper;
 };
 
@@ -469,17 +467,6 @@ public:
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
 
-protected:
-	String _param1_sendGuildListTo__CreatureObject_String_;
-	String _param1_addPendingGuild__long_String_;
-	String _param1_validateGuildName__CreatureObject_String_;
-	String _param1_validateGuildAbbrev__CreatureObject_String_;
-	String _param0_guildNameExists__String_;
-	String _param0_guildAbbrevExists__String_;
-	String _param2_createGuild__CreatureObject_GuildTerminal_String_String_;
-	String _param3_createGuild__CreatureObject_GuildTerminal_String_String_;
-	String _param2_sponsorPlayer__CreatureObject_GuildTerminal_String_;
-	String _param2_setMemberTitle__CreatureObject_CreatureObject_String_;
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {

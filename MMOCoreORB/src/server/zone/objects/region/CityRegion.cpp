@@ -440,6 +440,7 @@ String CityRegion::getRegionName() {
 
 		DistributedMethod method(this, RPC_GETREGIONNAME__);
 
+		String _return_getRegionName;
 		method.executeWithAsciiReturn(_return_getRegionName);
 		return _return_getRegionName;
 	} else
@@ -546,6 +547,7 @@ String CityRegion::getCitySpecialization() {
 
 		DistributedMethod method(this, RPC_GETCITYSPECIALIZATION__);
 
+		String _return_getCitySpecialization;
 		method.executeWithAsciiReturn(_return_getCitySpecialization);
 		return _return_getCitySpecialization;
 	} else
@@ -1896,229 +1898,382 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_:
-		resp->insertLong(addRegion(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		{
+			resp->insertLong(addRegion(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		}
 		break;
 	case RPC_RESCHEDULEUPDATEEVENT__INT_:
-		rescheduleUpdateEvent(inv->getUnsignedIntParameter());
+		{
+			rescheduleUpdateEvent(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_DESTROYACTIVEAREAS__:
-		destroyActiveAreas();
+		{
+			destroyActiveAreas();
+		}
 		break;
 	case RPC_ADDMILITIAMEMBER__LONG_:
-		addMilitiaMember(inv->getUnsignedLongParameter());
+		{
+			addMilitiaMember(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVEMILITIAMEMBER__LONG_:
-		removeMilitiaMember(inv->getUnsignedLongParameter());
+		{
+			removeMilitiaMember(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISMILITIAMEMBER__LONG_:
-		resp->insertBoolean(isMilitiaMember(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isMilitiaMember(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ADDZONINGRIGHTS__LONG_INT_:
-		addZoningRights(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		{
+			addZoningRights(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_REMOVEZONINGRIGHTS__LONG_:
-		removeZoningRights(inv->getUnsignedLongParameter());
+		{
+			removeZoningRights(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HASZONINGRIGHTS__LONG_:
-		resp->insertBoolean(hasZoningRights(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasZoningRights(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_ADDCITIZEN__LONG_:
-		addCitizen(inv->getUnsignedLongParameter());
+		{
+			addCitizen(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVECITIZEN__LONG_:
-		removeCitizen(inv->getUnsignedLongParameter());
+		{
+			removeCitizen(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ADDBANNEDPLAYER__LONG_:
-		addBannedPlayer(inv->getUnsignedLongParameter());
+		{
+			addBannedPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVEBANNEDPLAYER__LONG_:
-		removeBannedPlayer(inv->getUnsignedLongParameter());
+		{
+			removeBannedPlayer(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISCITIZEN__LONG_:
-		resp->insertBoolean(isCitizen(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isCitizen(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETTIMETOUPDATE__:
-		resp->insertSignedInt(getTimeToUpdate());
+		{
+			resp->insertSignedInt(getTimeToUpdate());
+		}
 		break;
 	case RPC_GETCITIZENCOUNT__:
-		resp->insertSignedInt(getCitizenCount());
+		{
+			resp->insertSignedInt(getCitizenCount());
+		}
 		break;
 	case RPC_GETCITYRANK__:
-		resp->insertByte(getCityRank());
+		{
+			resp->insertByte(getCityRank());
+		}
 		break;
 	case RPC_ISBANNED__LONG_:
-		resp->insertBoolean(isBanned(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isBanned(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ISREGISTERED__:
-		resp->insertBoolean(isRegistered());
+		{
+			resp->insertBoolean(isRegistered());
+		}
 		break;
 	case RPC_GETZONE__:
-		resp->insertLong(getZone()->_getObjectID());
+		{
+			resp->insertLong(getZone()->_getObjectID());
+		}
 		break;
 	case RPC_GETREGIONNAME__:
-		resp->insertAscii(getRegionName());
+		{
+			resp->insertAscii(getRegionName());
+		}
 		break;
 	case RPC_GETMAYORID__:
-		resp->insertLong(getMayorID());
+		{
+			resp->insertLong(getMayorID());
+		}
 		break;
 	case RPC_GETPOSITIONX__:
-		resp->insertFloat(getPositionX());
+		{
+			resp->insertFloat(getPositionX());
+		}
 		break;
 	case RPC_GETPOSITIONY__:
-		resp->insertFloat(getPositionY());
+		{
+			resp->insertFloat(getPositionY());
+		}
 		break;
 	case RPC_GETRADIUS__:
-		resp->insertFloat(getRadius());
+		{
+			resp->insertFloat(getRadius());
+		}
 		break;
 	case RPC_GETREGION__INT_:
-		resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getRegion(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETREGIONSCOUNT__:
-		resp->insertSignedInt(getRegionsCount());
+		{
+			resp->insertSignedInt(getRegionsCount());
+		}
 		break;
 	case RPC_GETSTRUCTURESCOUNT__:
-		resp->insertSignedInt(getStructuresCount());
+		{
+			resp->insertSignedInt(getStructuresCount());
+		}
 		break;
 	case RPC_GETCITYSPECIALIZATION__:
-		resp->insertAscii(getCitySpecialization());
+		{
+			resp->insertAscii(getCitySpecialization());
+		}
 		break;
 	case RPC_GETCITYTREASURY__:
-		resp->insertSignedInt(getCityTreasury());
+		{
+			resp->insertSignedInt(getCityTreasury());
+		}
 		break;
 	case RPC_ISMAYOR__LONG_:
-		resp->insertBoolean(isMayor(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isMayor(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ISZONINGENABLED__:
-		resp->insertBoolean(isZoningEnabled());
+		{
+			resp->insertBoolean(isZoningEnabled());
+		}
 		break;
 	case RPC_ISCLIENTREGION__:
-		resp->insertBoolean(isClientRegion());
+		{
+			resp->insertBoolean(isClientRegion());
+		}
 		break;
 	case RPC_GETCITYHALL__:
-		resp->insertLong(getCityHall()->_getObjectID());
+		{
+			resp->insertLong(getCityHall()->_getObjectID());
+		}
 		break;
 	case RPC_SETZONE__ZONE_:
-		setZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			setZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCUSTOMREGIONNAME__STRING_:
-		setCustomRegionName(inv->getAsciiParameter(_param0_setCustomRegionName__String_));
+		{
+			String name; 
+			setCustomRegionName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETCITYSPECIALIZATION__STRING_:
-		setCitySpecialization(inv->getAsciiParameter(_param0_setCitySpecialization__String_));
+		{
+			String spec; 
+			setCitySpecialization(inv->getAsciiParameter(spec));
+		}
 		break;
 	case RPC_SETREGIONNAME__STRING_:
-		setRegionName(inv->getAsciiParameter(_param0_setRegionName__String_));
+		{
+			String fullPath; 
+			setRegionName(inv->getAsciiParameter(fullPath));
+		}
 		break;
 	case RPC_SETCITYTREASURY__INT_:
-		setCityTreasury(inv->getSignedIntParameter());
+		{
+			setCityTreasury(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDTOCITYTREASURY__INT_:
-		resp->insertSignedInt(addToCityTreasury(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(addToCityTreasury(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_SUBTRACTFROMCITYTREASURY__INT_:
-		resp->insertSignedInt(subtractFromCityTreasury(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(subtractFromCityTreasury(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETMAXWITHDRAWAL__:
-		resp->insertSignedInt(getMaxWithdrawal());
+		{
+			resp->insertSignedInt(getMaxWithdrawal());
+		}
 		break;
 	case RPC_SETCITYRANK__BYTE_:
-		setCityRank(inv->getByteParameter());
+		{
+			setCityRank(inv->getByteParameter());
+		}
 		break;
 	case RPC_SETMAYORID__LONG_:
-		setMayorID(inv->getUnsignedLongParameter());
+		{
+			setMayorID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETREGISTERED__BOOL_:
-		setRegistered(inv->getBooleanParameter());
+		{
+			setRegistered(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETZONINGENABLED__BOOL_:
-		setZoningEnabled(inv->getBooleanParameter());
+		{
+			setZoningEnabled(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETRADIUS__FLOAT_:
-		setRadius(inv->getFloatParameter());
+		{
+			setRadius(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETCITYHALL__STRUCTUREOBJECT_:
-		setCityHall(static_cast<StructureObject*>(inv->getObjectParameter()));
+		{
+			setCityHall(static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESHUTTLEINSTALLATION__:
-		removeShuttleInstallation();
+		{
+			removeShuttleInstallation();
+		}
 		break;
 	case RPC_HASSHUTTLEINSTALLATION__:
-		resp->insertBoolean(hasShuttleInstallation());
+		{
+			resp->insertBoolean(hasShuttleInstallation());
+		}
 		break;
 	case RPC_SETSHUTTLEID__LONG_:
-		setShuttleID(inv->getUnsignedLongParameter());
+		{
+			setShuttleID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETMISSIONTERMINALCOUNT__:
-		resp->insertSignedInt(getMissionTerminalCount());
+		{
+			resp->insertSignedInt(getMissionTerminalCount());
+		}
 		break;
 	case RPC_GETDECORATIONCOUNT__:
-		resp->insertSignedInt(getDecorationCount());
+		{
+			resp->insertSignedInt(getDecorationCount());
+		}
 		break;
 	case RPC_GETSKILLTRAINERCOUNT__:
-		resp->insertSignedInt(getSkillTrainerCount());
+		{
+			resp->insertSignedInt(getSkillTrainerCount());
+		}
 		break;
 	case RPC_ADDMISSIONTERMINAL__SCENEOBJECT_:
-		addMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDDECORATION__SCENEOBJECT_:
-		addDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDSKILLTRAINER__SCENEOBJECT_:
-		addSkillTrainer(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addSkillTrainer(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_:
-		removeMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeMissionTerminal(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEDECORATION__SCENEOBJECT_:
-		removeDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeDecoration(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVESKILLTRAINERS__SCENEOBJECT_:
-		removeSkillTrainers(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeSkillTrainers(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEALLSKILLTRAINERS__:
-		removeAllSkillTrainers();
+		{
+			removeAllSkillTrainers();
+		}
 		break;
 	case RPC_REMOVEALLTERMINALS__:
-		removeAllTerminals();
+		{
+			removeAllTerminals();
+		}
 		break;
 	case RPC_UPDATEMILITIA__:
-		updateMilitia();
+		{
+			updateMilitia();
+		}
 		break;
 	case RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_:
-		addToCityStructureInventory(inv->getByteParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addToCityStructureInventory(inv->getByteParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_:
-		removeFromCityStructureInventory(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeFromCityStructureInventory(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_:
-		resp->insertBoolean(checkLimitedPlacementStucture(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(checkLimitedPlacementStucture(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_:
-		resp->insertBoolean(addLimitedPlacementStructure(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(addLimitedPlacementStructure(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_:
-		removeLimitedPlacementStructure(inv->getUnsignedIntParameter());
+		{
+			removeLimitedPlacementStructure(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_:
-		destroyAllStructuresForRank(inv->getByteParameter());
+		{
+			destroyAllStructuresForRank(inv->getByteParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

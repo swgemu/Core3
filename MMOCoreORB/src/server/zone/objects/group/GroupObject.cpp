@@ -622,79 +622,130 @@ void GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
-		broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		{
+			broadcastMessage(static_cast<BaseMessage*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_:
-		broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BaseMessage*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BaseMessage*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDSYSTEMMESSAGE__STRING_:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
+		{
+			String fullPath; 
+			sendSystemMessage(inv->getAsciiParameter(fullPath));
+		}
 		break;
 	case RPC_ADDMEMBER__SCENEOBJECT_:
-		addMember(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			addMember(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEMEMBER__SCENEOBJECT_:
-		removeMember(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			removeMember(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DISBAND__:
-		disband();
+		{
+			disband();
+		}
 		break;
 	case RPC_MAKELEADER__SCENEOBJECT_:
-		makeLeader(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			makeLeader(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HASMEMBER__SCENEOBJECT_:
-		resp->insertBoolean(hasMember(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(hasMember(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASMEMBER__LONG_:
-		resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasMember(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_STARTCHATROOM__:
-		startChatRoom();
+		{
+			startChatRoom();
+		}
 		break;
 	case RPC_DESTROYCHATROOM__:
-		destroyChatRoom();
+		{
+			destroyChatRoom();
+		}
 		break;
 	case RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_:
-		resp->insertFloat(getGroupHarvestModifier(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertFloat(getGroupHarvestModifier(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETGROUPLEVEL__:
-		resp->insertSignedInt(getGroupLevel());
+		{
+			resp->insertSignedInt(getGroupLevel());
+		}
 		break;
 	case RPC_GETGROUPCHANNEL__:
-		resp->insertLong(getGroupChannel()->_getObjectID());
+		{
+			resp->insertLong(getGroupChannel()->_getObjectID());
+		}
 		break;
 	case RPC_GETGROUPSIZE__:
-		resp->insertSignedInt(getGroupSize());
+		{
+			resp->insertSignedInt(getGroupSize());
+		}
 		break;
 	case RPC_GETGROUPMEMBER__INT_:
-		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_INITIALIZELEADER__SCENEOBJECT_:
-		initializeLeader(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			initializeLeader(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETLEADER__:
-		resp->insertLong(getLeader()->_getObjectID());
+		{
+			resp->insertLong(getLeader()->_getObjectID());
+		}
 		break;
 	case RPC_ISGROUPOBJECT__:
-		resp->insertBoolean(isGroupObject());
+		{
+			resp->insertBoolean(isGroupObject());
+		}
 		break;
 	case RPC_HASSQUADLEADER__:
-		resp->insertBoolean(hasSquadLeader());
+		{
+			resp->insertBoolean(hasSquadLeader());
+		}
 		break;
 	case RPC_ADDGROUPMODIFIERS__:
-		addGroupModifiers();
+		{
+			addGroupModifiers();
+		}
 		break;
 	case RPC_REMOVEGROUPMODIFIERS__:
-		removeGroupModifiers();
+		{
+			removeGroupModifiers();
+		}
 		break;
 	case RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_:
-		addGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_:
-		removeGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

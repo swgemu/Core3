@@ -365,22 +365,34 @@ void LairSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
-		notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		{
+			notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_TRYSPAWNLAIR__SCENEOBJECT_:
-		resp->insertSignedInt(trySpawnLair(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(trySpawnLair(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_ISLAIRSPAWNAREA__:
-		resp->insertBoolean(isLairSpawnArea());
+		{
+			resp->insertBoolean(isLairSpawnArea());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -147,8 +147,6 @@ protected:
 
 	virtual ~PlayerManagementSession();
 
-	String _return_getBanDuration;
-
 	friend class PlayerManagementSessionHelper;
 };
 
@@ -322,12 +320,6 @@ public:
 
 	String getBanDuration(unsigned int timestamp);
 
-protected:
-	String _param2_ban__int_int_String_String_;
-	String _param3_ban__int_int_String_String_;
-	String _param1_getPlayerInfo__int_String_;
-	String _param0_parseBanDuration__String_;
-	String _param0_setBanReason__String_;
 };
 
 class PlayerManagementSessionHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagementSessionHelper> {

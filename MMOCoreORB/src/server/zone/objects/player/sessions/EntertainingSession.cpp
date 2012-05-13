@@ -1148,139 +1148,234 @@ void EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_DOENTERTAINERPATRONEFFECTS__:
-		doEntertainerPatronEffects();
+		{
+			doEntertainerPatronEffects();
+		}
 		break;
 	case RPC_DOPERFORMANCEACTION__:
-		doPerformanceAction();
+		{
+			doPerformanceAction();
+		}
 		break;
 	case RPC_ADDENTERTAINERFLOURISHBUFF__:
-		addEntertainerFlourishBuff();
+		{
+			addEntertainerFlourishBuff();
+		}
 		break;
 	case RPC_STARTDANCING__STRING_STRING_:
-		startDancing(inv->getAsciiParameter(_param0_startDancing__String_String_), inv->getAsciiParameter(_param1_startDancing__String_String_));
+		{
+			String dance; String animation; 
+			startDancing(inv->getAsciiParameter(dance), inv->getAsciiParameter(animation));
+		}
 		break;
 	case RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_:
-		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__String_String_int_), inv->getAsciiParameter(_param1_startPlayingMusic__String_String_int_), inv->getSignedIntParameter());
+		{
+			String song; String instrumentAnimation; 
+			startPlayingMusic(inv->getAsciiParameter(song), inv->getAsciiParameter(instrumentAnimation), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STARTENTERTAINING__:
-		startEntertaining();
+		{
+			startEntertaining();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_:
-		healWounds(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter());
+		{
+			healWounds(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter());
+		}
 		break;
 	case RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_:
-		resp->insertBoolean(isInEntertainingBuilding(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isInEntertainingBuilding(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_DOFLOURISH__INT_:
-		doFlourish(inv->getSignedIntParameter());
+		{
+			doFlourish(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CANHEALBATTLEFATIGUE__:
-		resp->insertBoolean(canHealBattleFatigue());
+		{
+			resp->insertBoolean(canHealBattleFatigue());
+		}
 		break;
 	case RPC_CANGIVEENTERTAINBUFF__:
-		resp->insertBoolean(canGiveEntertainBuff());
+		{
+			resp->insertBoolean(canGiveEntertainBuff());
+		}
 		break;
 	case RPC_ADDFLOURISHXP__INT_:
-		addFlourishXp(inv->getSignedIntParameter());
+		{
+			addFlourishXp(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDHEALINGXP__INT_:
-		addHealingXp(inv->getSignedIntParameter());
+		{
+			addHealingXp(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDHEALINGXPGROUP__INT_:
-		addHealingXpGroup(inv->getSignedIntParameter());
+		{
+			addHealingXpGroup(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_STOPPLAYINGMUSIC__:
-		stopPlayingMusic();
+		{
+			stopPlayingMusic();
+		}
 		break;
 	case RPC_STOPDANCING__:
-		stopDancing();
+		{
+			stopDancing();
+		}
 		break;
 	case RPC_ACTIVATEACTION__:
-		activateAction();
+		{
+			activateAction();
+		}
 		break;
 	case RPC_STARTTICKTASK__:
-		startTickTask();
+		{
+			startTickTask();
+		}
 		break;
 	case RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_:
-		resp->insertSignedInt(getEntertainerBuffStrength(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getEntertainerBuffStrength(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_:
-		resp->insertSignedInt(getEntertainerBuffDuration(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getEntertainerBuffDuration(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_:
-		resp->insertSignedInt(getEntertainerBuffStartTime(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getEntertainerBuffStartTime(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_:
-		sendEntertainingUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getAsciiParameter(_param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		{
+			String performance; 
+			sendEntertainingUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getAsciiParameter(performance), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_:
-		sendEntertainmentUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_), inv->getBooleanParameter());
+		{
+			String mood; 
+			sendEntertainmentUpdate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getAsciiParameter(mood), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_:
-		activateEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			activateEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETINSTRUMENT__CREATUREOBJECT_:
-		resp->insertLong(getInstrument(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getInstrument(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_ADDWATCHER__CREATUREOBJECT_:
-		addWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDLISTENER__CREATUREOBJECT_:
-		addListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISDANCING__:
-		resp->insertBoolean(isDancing());
+		{
+			resp->insertBoolean(isDancing());
+		}
 		break;
 	case RPC_ISPLAYINGMUSIC__:
-		resp->insertBoolean(isPlayingMusic());
+		{
+			resp->insertBoolean(isPlayingMusic());
+		}
 		break;
 	case RPC_ISACCEPTINGBANDFLOURISHES__:
-		resp->insertBoolean(isAcceptingBandFlourishes());
+		{
+			resp->insertBoolean(isAcceptingBandFlourishes());
+		}
 		break;
 	case RPC_SETACCEPTINGBANDFLOURISHES__BOOL_:
-		setAcceptingBandFlourishes(inv->getBooleanParameter());
+		{
+			setAcceptingBandFlourishes(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_REMOVEWATCHER__CREATUREOBJECT_:
-		removeWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeWatcher(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVELISTENER__CREATUREOBJECT_:
-		removeListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeListener(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETPERFORMANCENAME__STRING_:
-		setPerformanceName(inv->getAsciiParameter(_param0_setPerformanceName__String_));
+		{
+			String name; 
+			setPerformanceName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETDANCING__BOOL_:
-		setDancing(inv->getBooleanParameter());
+		{
+			setDancing(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETTARGETINSTRUMENT__BOOL_:
-		setTargetInstrument(inv->getBooleanParameter());
+		{
+			setTargetInstrument(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_:
-		updateEntertainerMissionStatus(inv->getBooleanParameter(), inv->getSignedIntParameter());
+		{
+			updateEntertainerMissionStatus(inv->getBooleanParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISINDENYSERVICELIST__CREATUREOBJECT_:
-		resp->insertBoolean(isInDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isInDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_:
-		addToDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addToDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_:
-		removeFromDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeFromDenyServiceList(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_:
-		increaseEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			increaseEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

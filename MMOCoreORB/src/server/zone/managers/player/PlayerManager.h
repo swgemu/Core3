@@ -403,14 +403,6 @@ protected:
 
 	virtual ~PlayerManager();
 
-	String _return_banAccount;
-	String _return_banCharacter;
-	String _return_banFromGalaxy;
-	String _return_getBadgeKey;
-	String _return_unbanAccount;
-	String _return_unbanCharacter;
-	String _return_unbanFromGalaxy;
-
 	friend class PlayerManagerHelper;
 };
 
@@ -769,28 +761,6 @@ public:
 
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
-protected:
-	String _param0_kickUser__String_String_String_bool_;
-	String _param1_kickUser__String_String_String_bool_;
-	String _param2_kickUser__String_String_String_bool_;
-	String _param1_awardExperience__CreatureObject_String_int_bool_float_;
-	String _param0_checkExistentNameInDatabase__String_;
-	String _param0_createHairObject__String_String_;
-	String _param1_createHairObject__String_String_;
-	String _param1_createDefaultPlayerItems__CreatureObject_String_String_;
-	String _param2_createDefaultPlayerItems__CreatureObject_String_String_;
-	String _param0_existsName__String_;
-	String _param0_getObjectID__String_;
-	String _param0_getPlayer__String_;
-	String _param0_getAccount__String_;
-	String _param3_banAccount__PlayerObject_Account_int_String_;
-	String _param2_unbanAccount__PlayerObject_Account_String_;
-	String _param4_banFromGalaxy__PlayerObject_Account_int_int_String_;
-	String _param3_unbanFromGalaxy__PlayerObject_Account_int_String_;
-	String _param2_banCharacter__PlayerObject_Account_String_int_int_String_;
-	String _param5_banCharacter__PlayerObject_Account_String_int_int_String_;
-	String _param2_unbanCharacter__PlayerObject_Account_String_int_String_;
-	String _param4_unbanCharacter__PlayerObject_Account_String_int_String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

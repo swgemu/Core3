@@ -475,9 +475,6 @@ protected:
 
 	virtual ~AiAgent();
 
-	String _return_getFactionString;
-	String _return_getSocialGroup;
-
 	friend class AiAgentHelper;
 };
 
@@ -965,8 +962,6 @@ public:
 
 	void setShowNextPosition(bool val);
 
-protected:
-	String _param1_validateStateAttack__CreatureObject_String_;
 };
 
 class AiAgentHelper : public DistributedObjectClassHelper, public Singleton<AiAgentHelper> {

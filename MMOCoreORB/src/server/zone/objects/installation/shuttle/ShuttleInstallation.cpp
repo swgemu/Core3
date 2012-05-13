@@ -224,10 +224,14 @@ void ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
-		resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISSHUTTLEINSTALLATION__:
-		resp->insertBoolean(isShuttleInstallation());
+		{
+			resp->insertBoolean(isShuttleInstallation());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

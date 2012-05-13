@@ -54,8 +54,6 @@ protected:
 
 	virtual ~PlayerTeachSession();
 
-	String _return_getTeachableSkill;
-
 	friend class PlayerTeachSessionHelper;
 };
 
@@ -141,9 +139,6 @@ public:
 
 	int getTeachableSkillsSize();
 
-protected:
-	String _param0_addTeachableSkill__String_;
-	String _param0_dropTeachableSkill__String_;
 };
 
 class PlayerTeachSessionHelper : public DistributedObjectClassHelper, public Singleton<PlayerTeachSessionHelper> {

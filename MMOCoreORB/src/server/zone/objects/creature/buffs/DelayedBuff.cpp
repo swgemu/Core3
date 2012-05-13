@@ -374,16 +374,24 @@ void DelayedBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_DEACTIVATE__:
-		deactivate();
+		{
+			deactivate();
+		}
 		break;
 	case RPC_USECHARGE__:
-		useCharge();
+		{
+			useCharge();
+		}
 		break;
 	case RPC_SETUSESREMAINING__INT_:
-		setUsesRemaining(inv->getSignedIntParameter());
+		{
+			setUsesRemaining(inv->getSignedIntParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

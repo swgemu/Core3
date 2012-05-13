@@ -322,19 +322,30 @@ void CitySpecializationSessionAdapter::invokeMethod(uint32 methid, DistributedMe
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_SENDCONFIRMATIONBOX__STRING_:
-		resp->insertSignedInt(sendConfirmationBox(inv->getAsciiParameter(_param0_sendConfirmationBox__String_)));
+		{
+			String choice; 
+			resp->insertSignedInt(sendConfirmationBox(inv->getAsciiParameter(choice)));
+		}
 		break;
 	case RPC_ACCEPTCHOICE__:
-		resp->insertSignedInt(acceptChoice());
+		{
+			resp->insertSignedInt(acceptChoice());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

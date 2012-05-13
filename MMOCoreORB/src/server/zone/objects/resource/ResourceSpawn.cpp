@@ -232,6 +232,7 @@ String ResourceSpawn::getName() {
 
 		DistributedMethod method(this, RPC_GETNAME__);
 
+		String _return_getName;
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
 	} else
@@ -246,6 +247,7 @@ String ResourceSpawn::getType() {
 
 		DistributedMethod method(this, RPC_GETTYPE__);
 
+		String _return_getType;
 		method.executeWithAsciiReturn(_return_getType);
 		return _return_getType;
 	} else
@@ -261,6 +263,7 @@ String ResourceSpawn::getClass(int index) {
 		DistributedMethod method(this, RPC_GETCLASS__INT_);
 		method.addSignedIntParameter(index);
 
+		String _return_getClass;
 		method.executeWithAsciiReturn(_return_getClass);
 		return _return_getClass;
 	} else
@@ -276,6 +279,7 @@ String ResourceSpawn::getStfClass(int index) {
 		DistributedMethod method(this, RPC_GETSTFCLASS__INT_);
 		method.addSignedIntParameter(index);
 
+		String _return_getStfClass;
 		method.executeWithAsciiReturn(_return_getStfClass);
 		return _return_getStfClass;
 	} else
@@ -290,6 +294,7 @@ String ResourceSpawn::getFinalClass() {
 
 		DistributedMethod method(this, RPC_GETFINALCLASS__);
 
+		String _return_getFinalClass;
 		method.executeWithAsciiReturn(_return_getFinalClass);
 		return _return_getFinalClass;
 	} else
@@ -304,6 +309,7 @@ String ResourceSpawn::getFamilyName() {
 
 		DistributedMethod method(this, RPC_GETFAMILYNAME__);
 
+		String _return_getFamilyName;
 		method.executeWithAsciiReturn(_return_getFamilyName);
 		return _return_getFamilyName;
 	} else
@@ -399,6 +405,7 @@ String ResourceSpawn::getPoolSlot() {
 
 		DistributedMethod method(this, RPC_GETPOOLSLOT__);
 
+		String _return_getPoolSlot;
 		method.executeWithAsciiReturn(_return_getPoolSlot);
 		return _return_getPoolSlot;
 	} else
@@ -426,6 +433,7 @@ String ResourceSpawn::getZoneRestriction() {
 
 		DistributedMethod method(this, RPC_GETZONERESTRICTION__);
 
+		String _return_getZoneRestriction;
 		method.executeWithAsciiReturn(_return_getZoneRestriction);
 		return _return_getZoneRestriction;
 	} else
@@ -1202,115 +1210,198 @@ void ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_DECREASECONTAINERREFERENCECOUNT__:
-		decreaseContainerReferenceCount();
+		{
+			decreaseContainerReferenceCount();
+		}
 		break;
 	case RPC_ISRESOURCESPAWN__:
-		resp->insertBoolean(isResourceSpawn());
+		{
+			resp->insertBoolean(isResourceSpawn());
+		}
 		break;
 	case RPC_SETNAME__STRING_:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
+		{
+			String name; 
+			setName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETTYPE__STRING_:
-		setType(inv->getAsciiParameter(_param0_setType__String_));
+		{
+			String type; 
+			setType(inv->getAsciiParameter(type));
+		}
 		break;
 	case RPC_SETSPAWNPOOL__INT_STRING_:
-		setSpawnPool(inv->getSignedIntParameter(), inv->getAsciiParameter(_param1_setSpawnPool__int_String_));
+		{
+			String slot; 
+			setSpawnPool(inv->getSignedIntParameter(), inv->getAsciiParameter(slot));
+		}
 		break;
 	case RPC_SETZONERESTRICTION__STRING_:
-		setZoneRestriction(inv->getAsciiParameter(_param0_setZoneRestriction__String_));
+		{
+			String zoneName; 
+			setZoneRestriction(inv->getAsciiParameter(zoneName));
+		}
 		break;
 	case RPC_ADDCLASS__STRING_:
-		addClass(inv->getAsciiParameter(_param0_addClass__String_));
+		{
+			String newclass; 
+			addClass(inv->getAsciiParameter(newclass));
+		}
 		break;
 	case RPC_ADDSTFCLASS__STRING_:
-		addStfClass(inv->getAsciiParameter(_param0_addStfClass__String_));
+		{
+			String newclass; 
+			addStfClass(inv->getAsciiParameter(newclass));
+		}
 		break;
 	case RPC_ADDATTRIBUTE__STRING_INT_:
-		addAttribute(inv->getAsciiParameter(_param0_addAttribute__String_int_), inv->getSignedIntParameter());
+		{
+			String attribute; 
+			addAttribute(inv->getAsciiParameter(attribute), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISTYPE__STRING_:
-		resp->insertBoolean(isType(inv->getAsciiParameter(_param0_isType__String_)));
+		{
+			String type; 
+			resp->insertBoolean(isType(inv->getAsciiParameter(type)));
+		}
 		break;
 	case RPC_SETSURVEYTOOLTYPE__INT_:
-		setSurveyToolType(inv->getSignedIntParameter());
+		{
+			setSurveyToolType(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETISENERGY__BOOL_:
-		setIsEnergy(inv->getBooleanParameter());
+		{
+			setIsEnergy(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETNAME__:
-		resp->insertAscii(getName());
+		{
+			resp->insertAscii(getName());
+		}
 		break;
 	case RPC_GETTYPE__:
-		resp->insertAscii(getType());
+		{
+			resp->insertAscii(getType());
+		}
 		break;
 	case RPC_GETCLASS__INT_:
-		resp->insertAscii(getClass(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getClass(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETSTFCLASS__INT_:
-		resp->insertAscii(getStfClass(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getStfClass(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETFINALCLASS__:
-		resp->insertAscii(getFinalClass());
+		{
+			resp->insertAscii(getFinalClass());
+		}
 		break;
 	case RPC_GETFAMILYNAME__:
-		resp->insertAscii(getFamilyName());
+		{
+			resp->insertAscii(getFamilyName());
+		}
 		break;
 	case RPC_SETSPAWNED__LONG_:
-		setSpawned(inv->getUnsignedLongParameter());
+		{
+			setSpawned(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETDESPAWNED__LONG_:
-		setDespawned(inv->getUnsignedLongParameter());
+		{
+			setDespawned(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_GETDESPAWNED__:
-		resp->insertLong(getDespawned());
+		{
+			resp->insertLong(getDespawned());
+		}
 		break;
 	case RPC_SETCONTAINERCRC__INT_:
-		setContainerCRC(inv->getUnsignedIntParameter());
+		{
+			setContainerCRC(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETCONTAINERCRC__:
-		resp->insertInt(getContainerCRC());
+		{
+			resp->insertInt(getContainerCRC());
+		}
 		break;
 	case RPC_GETSPAWNPOOL__:
-		resp->insertSignedInt(getSpawnPool());
+		{
+			resp->insertSignedInt(getSpawnPool());
+		}
 		break;
 	case RPC_GETPOOLSLOT__:
-		resp->insertAscii(getPoolSlot());
+		{
+			resp->insertAscii(getPoolSlot());
+		}
 		break;
 	case RPC_ISENERGY__:
-		resp->insertBoolean(isEnergy());
+		{
+			resp->insertBoolean(isEnergy());
+		}
 		break;
 	case RPC_GETZONERESTRICTION__:
-		resp->insertAscii(getZoneRestriction());
+		{
+			resp->insertAscii(getZoneRestriction());
+		}
 		break;
 	case RPC_GETSURVEYTOOLTYPE__:
-		resp->insertSignedInt(getSurveyToolType());
+		{
+			resp->insertSignedInt(getSurveyToolType());
+		}
 		break;
 	case RPC_GETSPAWNMAPSIZE__:
-		resp->insertSignedInt(getSpawnMapSize());
+		{
+			resp->insertSignedInt(getSpawnMapSize());
+		}
 		break;
 	case RPC_EXTRACTRESOURCE__STRING_INT_:
-		extractResource(inv->getAsciiParameter(_param0_extractResource__String_int_), inv->getSignedIntParameter());
+		{
+			String zoneName; 
+			extractResource(inv->getAsciiParameter(zoneName), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CREATERESOURCE__INT_:
-		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETPLANETCRC__:
-		resp->insertInt(getPlanetCRC());
+		{
+			resp->insertInt(getPlanetCRC());
+		}
 		break;
 	case RPC_GETATTRIBUTEVALUE__INT_:
-		resp->insertSignedInt(getAttributeValue(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getAttributeValue(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETVALUEOF__INT_:
-		resp->insertSignedInt(getValueOf(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getValueOf(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_:
-		addStatsToDeedListBox(static_cast<SuiListBox*>(inv->getObjectParameter()));
+		{
+			addStatsToDeedListBox(static_cast<SuiListBox*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

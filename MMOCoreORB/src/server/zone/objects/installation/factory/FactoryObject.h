@@ -120,8 +120,6 @@ protected:
 
 	virtual ~FactoryObject();
 
-	String _return_getRedeedMessage;
-
 	friend class FactoryObjectHelper;
 };
 

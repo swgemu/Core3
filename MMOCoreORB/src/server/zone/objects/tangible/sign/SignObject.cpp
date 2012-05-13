@@ -254,16 +254,24 @@ void SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SENDSIGNNAMETO__CREATUREOBJECT_:
-		sendSignNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendSignNameTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISSIGNOBJECT__:
-		resp->insertBoolean(isSignObject());
+		{
+			resp->insertBoolean(isSignObject());
+		}
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

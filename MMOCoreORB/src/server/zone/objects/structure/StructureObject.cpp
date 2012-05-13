@@ -126,6 +126,7 @@ String StructureObject::getTimeString(unsigned int timestamp) {
 		DistributedMethod method(this, RPC_GETTIMESTRING__INT_);
 		method.addUnsignedIntParameter(timestamp);
 
+		String _return_getTimeString;
 		method.executeWithAsciiReturn(_return_getTimeString);
 		return _return_getTimeString;
 	} else
@@ -557,6 +558,7 @@ String StructureObject::getMaintenanceMods() {
 
 		DistributedMethod method(this, RPC_GETMAINTENANCEMODS__);
 
+		String _return_getMaintenanceMods;
 		method.executeWithAsciiReturn(_return_getMaintenanceMods);
 		return _return_getMaintenanceMods;
 	} else
@@ -909,6 +911,7 @@ String StructureObject::getRedeedMessage() {
 
 		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
 
+		String _return_getRedeedMessage;
 		method.executeWithAsciiReturn(_return_getRedeedMessage);
 		return _return_getRedeedMessage;
 	} else
@@ -1452,190 +1455,325 @@ void StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
-		resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyStructurePlaced(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
-		resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkRequisitesForPlacement(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETTIMESTRING__INT_:
-		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
+		{
+			resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__:
-		scheduleMaintenanceExpirationEvent();
+		{
+			scheduleMaintenanceExpirationEvent();
+		}
 		break;
 	case RPC_SCHEDULEMAINTENANCETASK__INT_:
-		scheduleMaintenanceTask(inv->getSignedIntParameter());
+		{
+			scheduleMaintenanceTask(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_UPDATESTRUCTURESTATUS__:
-		updateStructureStatus();
+		{
+			updateStructureStatus();
+		}
 		break;
 	case RPC_ISONADMINLIST__CREATUREOBJECT_:
-		resp->insertBoolean(isOnAdminList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOnAdminList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISONADMINLIST__STRING_:
-		resp->insertBoolean(isOnAdminList(inv->getAsciiParameter(_param0_isOnAdminList__String_)));
+		{
+			String firstName; 
+			resp->insertBoolean(isOnAdminList(inv->getAsciiParameter(firstName)));
+		}
 		break;
 	case RPC_ISONENTRYLIST__CREATUREOBJECT_:
-		resp->insertBoolean(isOnEntryList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOnEntryList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISONBANLIST__CREATUREOBJECT_:
-		resp->insertBoolean(isOnBanList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOnBanList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISONBANLIST__STRING_:
-		resp->insertBoolean(isOnBanList(inv->getAsciiParameter(_param0_isOnBanList__String_)));
+		{
+			String firstName; 
+			resp->insertBoolean(isOnBanList(inv->getAsciiParameter(firstName)));
+		}
 		break;
 	case RPC_ISONHOPPERLIST__CREATUREOBJECT_:
-		resp->insertBoolean(isOnHopperList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOnHopperList(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISONPERMISSIONLIST__STRING_CREATUREOBJECT_:
-		resp->insertBoolean(isOnPermissionList(inv->getAsciiParameter(_param0_isOnPermissionList__String_CreatureObject_), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			String listName; 
+			resp->insertBoolean(isOnPermissionList(inv->getAsciiParameter(listName), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISOWNEROF__SCENEOBJECT_:
-		resp->insertBoolean(isOwnerOf(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOwnerOf(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISOWNEROF__LONG_:
-		resp->insertBoolean(isOwnerOf(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isOwnerOf(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_ISONACCESSLIST__SCENEOBJECT_:
-		resp->insertBoolean(isOnAccessList(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isOnAccessList(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ISONACCESSLIST__LONG_:
-		resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_:
-		sendPermissionListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendPermissionListTo__CreatureObject_String_));
+		{
+			String listName; 
+			sendPermissionListTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(listName));
+		}
 		break;
 	case RPC_HASPERMISSIONLIST__STRING_:
-		resp->insertBoolean(hasPermissionList(inv->getAsciiParameter(_param0_hasPermissionList__String_)));
+		{
+			String listName; 
+			resp->insertBoolean(hasPermissionList(inv->getAsciiParameter(listName)));
+		}
 		break;
 	case RPC_ISPERMISSIONLISTFULL__STRING_:
-		resp->insertBoolean(isPermissionListFull(inv->getAsciiParameter(_param0_isPermissionListFull__String_)));
+		{
+			String listName; 
+			resp->insertBoolean(isPermissionListFull(inv->getAsciiParameter(listName)));
+		}
 		break;
 	case RPC_TOGGLEPERMISSION__STRING_STRING_:
-		resp->insertSignedInt(togglePermission(inv->getAsciiParameter(_param0_togglePermission__String_String_), inv->getAsciiParameter(_param1_togglePermission__String_String_)));
+		{
+			String listName; String targetName; 
+			resp->insertSignedInt(togglePermission(inv->getAsciiParameter(listName), inv->getAsciiParameter(targetName)));
+		}
 		break;
 	case RPC_GRANTPERMISSION__STRING_STRING_:
-		resp->insertSignedInt(grantPermission(inv->getAsciiParameter(_param0_grantPermission__String_String_), inv->getAsciiParameter(_param1_grantPermission__String_String_)));
+		{
+			String listName; String targetName; 
+			resp->insertSignedInt(grantPermission(inv->getAsciiParameter(listName), inv->getAsciiParameter(targetName)));
+		}
 		break;
 	case RPC_REVOKEPERMISSION__STRING_STRING_:
-		resp->insertSignedInt(revokePermission(inv->getAsciiParameter(_param0_revokePermission__String_String_), inv->getAsciiParameter(_param1_revokePermission__String_String_)));
+		{
+			String listName; String targetName; 
+			resp->insertSignedInt(revokePermission(inv->getAsciiParameter(listName), inv->getAsciiParameter(targetName)));
+		}
 		break;
 	case RPC_REVOKEALLPERMISSIONS__STRING_:
-		resp->insertSignedInt(revokeAllPermissions(inv->getAsciiParameter(_param0_revokeAllPermissions__String_)));
+		{
+			String targetName; 
+			resp->insertSignedInt(revokeAllPermissions(inv->getAsciiParameter(targetName)));
+		}
 		break;
 	case RPC_SETOWNERNAME__STRING_:
-		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__String_));
+		{
+			String ownerName; 
+			setOwnerName(inv->getAsciiParameter(ownerName));
+		}
 		break;
 	case RPC_CREATEVENDOR__CREATUREOBJECT_:
-		createVendor(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createVendor(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETREDEEDCOST__:
-		resp->insertSignedInt(getRedeedCost());
+		{
+			resp->insertSignedInt(getRedeedCost());
+		}
 		break;
 	case RPC_GETOWNERCREATUREOBJECT__:
-		resp->insertLong(getOwnerCreatureObject()->_getObjectID());
+		{
+			resp->insertLong(getOwnerCreatureObject()->_getObjectID());
+		}
 		break;
 	case RPC_GETOWNEROBJECTID__:
-		resp->insertLong(getOwnerObjectID());
+		{
+			resp->insertLong(getOwnerObjectID());
+		}
 		break;
 	case RPC_GETDEEDOBJECTID__:
-		resp->insertLong(getDeedObjectID());
+		{
+			resp->insertLong(getDeedObjectID());
+		}
 		break;
 	case RPC_GETLOTSIZE__:
-		resp->insertSignedInt(getLotSize());
+		{
+			resp->insertSignedInt(getLotSize());
+		}
 		break;
 	case RPC_SETMAINTENANCEREDUCED__BOOL_:
-		setMaintenanceReduced(inv->getBooleanParameter());
+		{
+			setMaintenanceReduced(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETMAINTENANCERATE__:
-		resp->insertFloat(getMaintenanceRate());
+		{
+			resp->insertFloat(getMaintenanceRate());
+		}
 		break;
 	case RPC_GETMAINTENANCEMODS__:
-		resp->insertAscii(getMaintenanceMods());
+		{
+			resp->insertAscii(getMaintenanceMods());
+		}
 		break;
 	case RPC_GETBASEMAINTENANCERATE__:
-		resp->insertSignedInt(getBaseMaintenanceRate());
+		{
+			resp->insertSignedInt(getBaseMaintenanceRate());
+		}
 		break;
 	case RPC_GETBASEPOWERRATE__:
-		resp->insertSignedInt(getBasePowerRate());
+		{
+			resp->insertSignedInt(getBasePowerRate());
+		}
 		break;
 	case RPC_GETSURPLUSMAINTENANCE__:
-		resp->insertSignedInt(getSurplusMaintenance());
+		{
+			resp->insertSignedInt(getSurplusMaintenance());
+		}
 		break;
 	case RPC_GETSURPLUSPOWER__:
-		resp->insertSignedInt(getSurplusPower());
+		{
+			resp->insertSignedInt(getSurplusPower());
+		}
 		break;
 	case RPC_ISPUBLICSTRUCTURE__:
-		resp->insertBoolean(isPublicStructure());
+		{
+			resp->insertBoolean(isPublicStructure());
+		}
 		break;
 	case RPC_ISPRIVATESTRUCTURE__:
-		resp->insertBoolean(isPrivateStructure());
+		{
+			resp->insertBoolean(isPrivateStructure());
+		}
 		break;
 	case RPC_SETOWNEROBJECTID__LONG_:
-		setOwnerObjectID(inv->getUnsignedLongParameter());
+		{
+			setOwnerObjectID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETDEEDOBJECTID__LONG_:
-		setDeedObjectID(inv->getUnsignedLongParameter());
+		{
+			setDeedObjectID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETBASEMAINTENANCERATE__INT_:
-		setBaseMaintenanceRate(inv->getSignedIntParameter());
+		{
+			setBaseMaintenanceRate(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETBASEPOWERRATE__INT_:
-		setBasePowerRate(inv->getSignedIntParameter());
+		{
+			setBasePowerRate(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
-		setSurplusMaintenance(inv->getSignedIntParameter());
+		{
+			setSurplusMaintenance(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDMAINTENANCE__FLOAT_:
-		addMaintenance(inv->getFloatParameter());
+		{
+			addMaintenance(inv->getFloatParameter());
+		}
 		break;
 	case RPC_PAYMAINTENANCE__INT_CREATUREOBJECT_BOOL_:
-		payMaintenance(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			payMaintenance(inv->getSignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSURPLUSPOWER__INT_:
-		setSurplusPower(inv->getSignedIntParameter());
+		{
+			setSurplusPower(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDPOWER__FLOAT_:
-		addPower(inv->getFloatParameter());
+		{
+			addPower(inv->getFloatParameter());
+		}
 		break;
 	case RPC_ISDECAYING__:
-		resp->insertBoolean(isDecaying());
+		{
+			resp->insertBoolean(isDecaying());
+		}
 		break;
 	case RPC_ISDECAYED__:
-		resp->insertBoolean(isDecayed());
+		{
+			resp->insertBoolean(isDecayed());
+		}
 		break;
 	case RPC_GETDECAYPERCENTAGE__:
-		resp->insertSignedInt(getDecayPercentage());
+		{
+			resp->insertSignedInt(getDecayPercentage());
+		}
 		break;
 	case RPC_ISCONDEMNED__:
-		resp->insertBoolean(isCondemned());
+		{
+			resp->insertBoolean(isCondemned());
+		}
 		break;
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
-		setPublicStructure(inv->getBooleanParameter());
+		{
+			setPublicStructure(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ISSTRUCTUREOBJECT__:
-		resp->insertBoolean(isStructureObject());
+		{
+			resp->insertBoolean(isStructureObject());
+		}
 		break;
 	case RPC_ISCAMPSTRUCTURE__:
-		resp->insertBoolean(isCampStructure());
+		{
+			resp->insertBoolean(isCampStructure());
+		}
 		break;
 	case RPC_ISREDEEDABLE__:
-		resp->insertBoolean(isRedeedable());
+		{
+			resp->insertBoolean(isRedeedable());
+		}
 		break;
 	case RPC_GETREDEEDMESSAGE__:
-		resp->insertAscii(getRedeedMessage());
+		{
+			resp->insertAscii(getRedeedMessage());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

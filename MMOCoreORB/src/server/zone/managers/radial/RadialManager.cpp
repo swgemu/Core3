@@ -221,10 +221,14 @@ void RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_LONG_:
-		handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter(), inv->getUnsignedLongParameter());
+		{
+			handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUREQUEST__CREATUREOBJECT_OBJECTMENURESPONSE_LONG_:
-		handleObjectMenuRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			handleObjectMenuRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

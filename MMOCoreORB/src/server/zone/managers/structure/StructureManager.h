@@ -201,8 +201,6 @@ protected:
 
 	virtual ~StructureManager();
 
-	String _return_getTimeString;
-
 	friend class StructureManagerHelper;
 };
 
@@ -341,8 +339,6 @@ public:
 
 	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
-protected:
-	String _param1_placeStructure__CreatureObject_String_float_float_int_;
 };
 
 class StructureManagerHelper : public DistributedObjectClassHelper, public Singleton<StructureManagerHelper> {

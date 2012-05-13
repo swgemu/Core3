@@ -229,13 +229,19 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
-		notifyRemoveFromZone();
+		{
+			notifyRemoveFromZone();
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -354,25 +354,39 @@ void ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		{
+			updateToDatabaseAllObjects(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
-		storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
-		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CALLOBJECT__CREATUREOBJECT_:
-		callObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			callObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_:
-		setControlledObject(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			setControlledObject(static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCONTROLLEDOBJECT__:
-		resp->insertLong(getControlledObject()->_getObjectID());
+		{
+			resp->insertLong(getControlledObject()->_getObjectID());
+		}
 		break;
 	case RPC_ISCONTROLDEVICE__:
-		resp->insertBoolean(isControlDevice());
+		{
+			resp->insertBoolean(isControlDevice());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

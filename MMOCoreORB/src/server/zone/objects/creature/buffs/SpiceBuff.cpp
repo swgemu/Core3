@@ -234,13 +234,19 @@ void SpiceBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
-		activate(inv->getBooleanParameter());
+		{
+			activate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DEACTIVATE__BOOL_:
-		deactivate(inv->getBooleanParameter());
+		{
+			deactivate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETDOWNERATTRIBUTES__CREATUREOBJECT_BUFF_:
-		setDownerAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Buff*>(inv->getObjectParameter()));
+		{
+			setDownerAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Buff*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

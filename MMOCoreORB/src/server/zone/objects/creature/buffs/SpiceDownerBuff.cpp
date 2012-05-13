@@ -234,10 +234,14 @@ void SpiceDownerBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_ACTIVATE__BOOL_:
-		activate(inv->getBooleanParameter());
+		{
+			activate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DEACTIVATE__BOOL_:
-		deactivate(inv->getBooleanParameter());
+		{
+			deactivate(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

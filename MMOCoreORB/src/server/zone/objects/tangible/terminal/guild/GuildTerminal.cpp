@@ -304,22 +304,34 @@ void GuildTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISGUILDTERMINAL__:
-		resp->insertBoolean(isGuildTerminal());
+		{
+			resp->insertBoolean(isGuildTerminal());
+		}
 		break;
 	case RPC_SETGUILDOBJECT__GUILDOBJECT_:
-		setGuildObject(static_cast<GuildObject*>(inv->getObjectParameter()));
+		{
+			setGuildObject(static_cast<GuildObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETGUILDOBJECT__:
-		resp->insertLong(getGuildObject()->_getObjectID());
+		{
+			resp->insertLong(getGuildObject()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

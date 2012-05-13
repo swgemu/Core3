@@ -531,55 +531,89 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
-		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
-		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISACTIVEAREA__:
-		resp->insertBoolean(isActiveArea());
+		{
+			resp->insertBoolean(isActiveArea());
+		}
 		break;
 	case RPC_ISREGION__:
-		resp->insertBoolean(isRegion());
+		{
+			resp->insertBoolean(isRegion());
+		}
 		break;
 	case RPC_ISNOBUILDAREA__:
-		resp->insertBoolean(isNoBuildArea());
+		{
+			resp->insertBoolean(isNoBuildArea());
+		}
 		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
-		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_GETRADIUS2__:
-		resp->insertFloat(getRadius2());
+		{
+			resp->insertFloat(getRadius2());
+		}
 		break;
 	case RPC_SETNOBUILDAREA__BOOL_:
-		setNoBuildArea(inv->getBooleanParameter());
+		{
+			setNoBuildArea(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMUNICIPALZONE__BOOL_:
-		setMunicipalZone(inv->getBooleanParameter());
+		{
+			setMunicipalZone(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETRADIUS__FLOAT_:
-		setRadius(inv->getFloatParameter());
+		{
+			setRadius(inv->getFloatParameter());
+		}
 		break;
 	case RPC_ISCAMPAREA__:
-		resp->insertBoolean(isCampArea());
+		{
+			resp->insertBoolean(isCampArea());
+		}
 		break;
 	case RPC_ISMUNICIPALZONE__:
-		resp->insertBoolean(isMunicipalZone());
+		{
+			resp->insertBoolean(isMunicipalZone());
+		}
 		break;
 	case RPC_GETCELLOBJECTID__:
-		resp->insertLong(getCellObjectID());
+		{
+			resp->insertLong(getCellObjectID());
+		}
 		break;
 	case RPC_SETCELLOBJECTID__LONG_:
-		setCellObjectID(inv->getUnsignedLongParameter());
+		{
+			setCellObjectID(inv->getUnsignedLongParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

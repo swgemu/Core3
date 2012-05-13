@@ -384,37 +384,60 @@ void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		{
+			String errorDescription; 
+			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
+		}
 		break;
 	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
-		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		{
+			resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		}
 		break;
 	case RPC_DESTROYALLPLAYERITEMS__:
-		destroyAllPlayerItems();
+		{
+			destroyAllPlayerItems();
+		}
 		break;
 	case RPC_GETCELLNUMBER__:
-		resp->insertSignedInt(getCellNumber());
+		{
+			resp->insertSignedInt(getCellNumber());
+		}
 		break;
 	case RPC_SETCELLNUMBER__INT_:
-		setCellNumber(inv->getSignedIntParameter());
+		{
+			setCellNumber(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISCELLOBJECT__:
-		resp->insertBoolean(isCellObject());
+		{
+			resp->insertBoolean(isCellObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

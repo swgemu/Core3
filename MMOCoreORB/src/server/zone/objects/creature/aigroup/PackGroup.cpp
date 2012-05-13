@@ -190,7 +190,9 @@ void PackGroupAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_ISPACKGROUP__:
-		resp->insertBoolean(isPackGroup());
+		{
+			resp->insertBoolean(isPackGroup());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

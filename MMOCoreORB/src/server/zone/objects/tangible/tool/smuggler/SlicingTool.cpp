@@ -276,13 +276,19 @@ void SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_CALCULATESUCCESSRATE__:
-		resp->insertBoolean(calculateSuccessRate());
+		{
+			resp->insertBoolean(calculateSuccessRate());
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

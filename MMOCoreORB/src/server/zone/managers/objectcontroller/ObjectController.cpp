@@ -269,16 +269,25 @@ void ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_LOADCOMMANDS__:
-		loadCommands();
+		{
+			loadCommands();
+		}
 		break;
 	case RPC_TRANSFEROBJECT__SCENEOBJECT_SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_ACTIVATECOMMAND__CREATUREOBJECT_INT_INT_LONG_UNICODESTRING_:
-		resp->insertFloat(activateCommand(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
+		{
+			UnicodeString arguments; 
+			resp->insertFloat(activateCommand(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(arguments)));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

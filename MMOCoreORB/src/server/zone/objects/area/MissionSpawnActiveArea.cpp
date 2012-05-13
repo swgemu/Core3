@@ -256,10 +256,14 @@ void MissionSpawnActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMetho
 
 	switch (methid) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMISSIONOBJECTIVE__DESTROYMISSIONOBJECTIVE_:
-		setMissionObjective(static_cast<DestroyMissionObjective*>(inv->getObjectParameter()));
+		{
+			setMissionObjective(static_cast<DestroyMissionObjective*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

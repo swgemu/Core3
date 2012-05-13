@@ -414,31 +414,49 @@ void CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SENDINPUTHOPPER__CREATUREOBJECT_:
-		sendInputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendInputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISCRAFTINGSTATION__:
-		resp->insertBoolean(isCraftingStation());
+		{
+			resp->insertBoolean(isCraftingStation());
+		}
 		break;
 	case RPC_GETCOMPLEXITYLEVEL__:
-		resp->insertSignedInt(getComplexityLevel());
+		{
+			resp->insertSignedInt(getComplexityLevel());
+		}
 		break;
 	case RPC_GETSTATIONTYPE__:
-		resp->insertSignedInt(getStationType());
+		{
+			resp->insertSignedInt(getStationType());
+		}
 		break;
 	case RPC_SETCOMPLEXITYLEVEL__INT_:
-		setComplexityLevel(inv->getSignedIntParameter());
+		{
+			setComplexityLevel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_:
-		resp->insertLong(findCraftingTool(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(findCraftingTool(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

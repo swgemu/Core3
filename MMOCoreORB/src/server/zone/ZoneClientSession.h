@@ -123,8 +123,6 @@ protected:
 
 	virtual ~ZoneClientSession();
 
-	String _return_getAddress;
-
 	friend class ZoneClientSessionHelper;
 };
 
@@ -292,9 +290,6 @@ public:
 
 	void resetCharacters();
 
-protected:
-	String _param0_info__String_bool_;
-	String _param0_error__String_;
 };
 
 class ZoneClientSessionHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientSessionHelper> {

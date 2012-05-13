@@ -515,14 +515,6 @@ public:
 
 	void increaseEntertainerBuff(CreatureObject* patron);
 
-protected:
-	String _param0_startDancing__String_String_;
-	String _param1_startDancing__String_String_;
-	String _param0_startPlayingMusic__String_String_int_;
-	String _param1_startPlayingMusic__String_String_int_;
-	String _param2_sendEntertainingUpdate__CreatureObject_float_String_int_int_;
-	String _param2_sendEntertainmentUpdate__CreatureObject_long_String_bool_;
-	String _param0_setPerformanceName__String_;
 };
 
 class EntertainingSessionHelper : public DistributedObjectClassHelper, public Singleton<EntertainingSessionHelper> {

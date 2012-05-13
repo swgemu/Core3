@@ -287,15 +287,6 @@ protected:
 
 	virtual ~MissionObject();
 
-	String _return_getEndPlanet;
-	String _return_getStartPlanet;
-	String _return_getTargetName;
-	String _return_getTargetOptionalTemplate;
-	String _return_getTemplateString1;
-	String _return_getTemplateString2;
-
-	UnicodeString _return_getCreatorName;
-
 	friend class MissionObjectHelper;
 };
 
@@ -687,20 +678,6 @@ public:
 
 	int getMissionLevel();
 
-protected:
-	String _param0_setMissionDescription__String_String_bool_;
-	String _param1_setMissionDescription__String_String_bool_;
-	String _param0_setMissionTitle__String_String_bool_;
-	String _param1_setMissionTitle__String_String_bool_;
-	String _param0_setMissionTargetName__String_bool_;
-	String _param2_setStartPosition__float_float_String_bool_;
-	String _param2_setEndPosition__float_float_String_bool_;
-	String _param0_setCreatorName__String_bool_;
-	String _param0_setStartPlanet__String_;
-	String _param0_setEndPlanet__String_;
-	String _param0_setTargetOptionalTemplate__String_;
-	String _param0_setTemplateStrings__String_String_;
-	String _param1_setTemplateStrings__String_String_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

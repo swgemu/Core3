@@ -345,25 +345,39 @@ void ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
-		fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillObjectMenuResponse(static_cast<ObjectMenuResponse*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISELEVATORTERMINAL__:
-		resp->insertBoolean(isElevatorTerminal());
+		{
+			resp->insertBoolean(isElevatorTerminal());
+		}
 		break;
 	case RPC_SETELEVATORUP__ELEVATORTERMINAL_:
-		setElevatorUp(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
+		{
+			setElevatorUp(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETELEVATORDOWN__ELEVATORTERMINAL_:
-		setElevatorDown(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
+		{
+			setElevatorDown(static_cast<ElevatorTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETELEVATORUP__:
-		resp->insertLong(getElevatorUp()->_getObjectID());
+		{
+			resp->insertLong(getElevatorUp()->_getObjectID());
+		}
 		break;
 	case RPC_GETELEVATORDOWN__:
-		resp->insertLong(getElevatorDown()->_getObjectID());
+		{
+			resp->insertLong(getElevatorDown()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

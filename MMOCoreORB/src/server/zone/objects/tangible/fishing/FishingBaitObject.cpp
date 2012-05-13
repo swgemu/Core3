@@ -301,22 +301,34 @@ void FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_GETFRESHNESS__:
-		resp->insertSignedInt(getFreshness());
+		{
+			resp->insertSignedInt(getFreshness());
+		}
 		break;
 	case RPC_SETFRESHNESS__INT_:
-		setFreshness(inv->getSignedIntParameter());
+		{
+			setFreshness(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_LESSFRESH__:
-		lessFresh();
+		{
+			lessFresh();
+		}
 		break;
 	case RPC_GETUSECOUNT__:
-		resp->insertSignedInt(getUseCount());
+		{
+			resp->insertSignedInt(getUseCount());
+		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

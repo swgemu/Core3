@@ -357,10 +357,6 @@ protected:
 
 	virtual ~TangibleObject();
 
-	String _return_getCraftersName;
-	String _return_getSerialNumber;
-	String _return_repairAttempt;
-
 	friend class TangibleObjectHelper;
 };
 
@@ -776,15 +772,6 @@ public:
 
 	bool isBroken();
 
-protected:
-	String _param1_addSkillMod__int_String_int_bool_;
-	String _param1_removeSkillMod__int_String_int_bool_;
-	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
-	String _param0_setCustomizationVariable__String_short_bool_;
-	String _param0_getCustomizationString__String_;
-	String _param0_setCustomizationString__String_;
-	String _param0_setCraftersName__String_;
-	String _param0_setSerialNumber__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {

@@ -248,16 +248,24 @@ void ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_USEOBJECT__CREATUREOBJECT_:
-		resp->insertSignedInt(useObject(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(useObject(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_DESTROYDEED__:
-		destroyDeed();
+		{
+			destroyDeed();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -424,31 +424,49 @@ void SpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_REGISTEROBSERVERS__:
-		registerObservers();
+		{
+			registerObservers();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_ADDTEMPLATE__INT_:
-		addTemplate(inv->getUnsignedIntParameter());
+		{
+			addTemplate(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETTIER__INT_:
-		setTier(inv->getSignedIntParameter());
+		{
+			setTier(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSPAWNCONSTANT__INT_:
-		setSpawnConstant(inv->getSignedIntParameter());
+		{
+			setSpawnConstant(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDNOSPAWNAREA__SPAWNAREA_:
-		addNoSpawnArea(static_cast<SpawnArea*>(inv->getObjectParameter()));
+		{
+			addNoSpawnArea(static_cast<SpawnArea*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISSTATICAREA__:
-		resp->insertBoolean(isStaticArea());
+		{
+			resp->insertBoolean(isStaticArea());
+		}
 		break;
 	case RPC_ISDYNAMICAREA__:
-		resp->insertBoolean(isDynamicArea());
+		{
+			resp->insertBoolean(isDynamicArea());
+		}
 		break;
 	case RPC_ISLAIRSPAWNAREA__:
-		resp->insertBoolean(isLairSpawnArea());
+		{
+			resp->insertBoolean(isLairSpawnArea());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

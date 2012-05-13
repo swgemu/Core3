@@ -352,25 +352,39 @@ void VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case RPC_STOREOBJECT__CREATUREOBJECT_:
-		storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			storeObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
-		generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			generateObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SPAWNOBJECT__CREATUREOBJECT_:
-		spawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			spawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_:
-		cancelSpawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			cancelSpawnObject(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CANBEDESTROYED__CREATUREOBJECT_:
-		resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -115,8 +115,6 @@ protected:
 
 	virtual ~WaypointObject();
 
-	String _return_getDetailedDescription;
-
 	friend class WaypointObjectHelper;
 };
 
@@ -276,8 +274,6 @@ public:
 
 	void setDetailedDescription(const String& desc);
 
-protected:
-	String _param0_setDetailedDescription__String_;
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {

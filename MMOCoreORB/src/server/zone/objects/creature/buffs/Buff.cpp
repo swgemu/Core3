@@ -315,6 +315,7 @@ String Buff::getAttributeModifierString() {
 
 		DistributedMethod method(this, RPC_GETATTRIBUTEMODIFIERSTRING__);
 
+		String _return_getAttributeModifierString;
 		method.executeWithAsciiReturn(_return_getAttributeModifierString);
 		return _return_getAttributeModifierString;
 	} else
@@ -329,6 +330,7 @@ String Buff::getSkillModifierString() {
 
 		DistributedMethod method(this, RPC_GETSKILLMODIFIERSTRING__);
 
+		String _return_getSkillModifierString;
 		method.executeWithAsciiReturn(_return_getSkillModifierString);
 		return _return_getSkillModifierString;
 	} else
@@ -442,6 +444,7 @@ String Buff::getBuffName() {
 
 		DistributedMethod method(this, RPC_GETBUFFNAME__);
 
+		String _return_getBuffName;
 		method.executeWithAsciiReturn(_return_getBuffName);
 		return _return_getBuffName;
 	} else
@@ -1198,124 +1201,210 @@ void BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_INIT__:
-		init();
+		{
+			init();
+		}
 		break;
 	case RPC_SENDTO__CREATUREOBJECT_:
-		sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
-		sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendDestroyTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ACTIVATE__BOOL_:
-		activate(inv->getBooleanParameter());
+		{
+			activate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DEACTIVATE__BOOL_:
-		deactivate(inv->getBooleanParameter());
+		{
+			deactivate(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_DEACTIVATE__:
-		deactivate();
+		{
+			deactivate();
+		}
 		break;
 	case RPC_APPLYATTRIBUTEMODIFIERS__:
-		applyAttributeModifiers();
+		{
+			applyAttributeModifiers();
+		}
 		break;
 	case RPC_APPLYSKILLMODIFIERS__:
-		applySkillModifiers();
+		{
+			applySkillModifiers();
+		}
 		break;
 	case RPC_APPLYSTATES__:
-		applyStates();
+		{
+			applyStates();
+		}
 		break;
 	case RPC_REMOVEATTRIBUTEMODIFIERS__:
-		removeAttributeModifiers();
+		{
+			removeAttributeModifiers();
+		}
 		break;
 	case RPC_REMOVESKILLMODIFIERS__:
-		removeSkillModifiers();
+		{
+			removeSkillModifiers();
+		}
 		break;
 	case RPC_REMOVESTATES__:
-		removeStates();
+		{
+			removeStates();
+		}
 		break;
 	case RPC_CLEARBUFFEVENT__:
-		clearBuffEvent();
+		{
+			clearBuffEvent();
+		}
 		break;
 	case RPC_SETBUFFEVENTNULL__:
-		setBuffEventNull();
+		{
+			setBuffEventNull();
+		}
 		break;
 	case RPC_SCHEDULEBUFFEVENT__:
-		scheduleBuffEvent();
+		{
+			scheduleBuffEvent();
+		}
 		break;
 	case RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_:
-		parseAttributeModifierString(inv->getAsciiParameter(_param0_parseAttributeModifierString__String_));
+		{
+			String modifierstring; 
+			parseAttributeModifierString(inv->getAsciiParameter(modifierstring));
+		}
 		break;
 	case RPC_PARSESKILLMODIFIERSTRING__STRING_:
-		parseSkillModifierString(inv->getAsciiParameter(_param0_parseSkillModifierString__String_));
+		{
+			String modifierstring; 
+			parseSkillModifierString(inv->getAsciiParameter(modifierstring));
+		}
 		break;
 	case RPC_GETATTRIBUTEMODIFIERSTRING__:
-		resp->insertAscii(getAttributeModifierString());
+		{
+			resp->insertAscii(getAttributeModifierString());
+		}
 		break;
 	case RPC_GETSKILLMODIFIERSTRING__:
-		resp->insertAscii(getSkillModifierString());
+		{
+			resp->insertAscii(getSkillModifierString());
+		}
 		break;
 	case RPC_GETTIMELEFT__:
-		resp->insertFloat(getTimeLeft());
+		{
+			resp->insertFloat(getTimeLeft());
+		}
 		break;
 	case RPC_SETATTRIBUTEMODIFIER__BYTE_INT_:
-		setAttributeModifier(inv->getByteParameter(), inv->getSignedIntParameter());
+		{
+			setAttributeModifier(inv->getByteParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETSKILLMODIFIER__STRING_INT_:
-		setSkillModifier(inv->getAsciiParameter(_param0_setSkillModifier__String_int_), inv->getSignedIntParameter());
+		{
+			String modname; 
+			setSkillModifier(inv->getAsciiParameter(modname), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ADDSTATE__LONG_:
-		addState(inv->getUnsignedLongParameter());
+		{
+			addState(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETSPEEDMULTIPLIERMOD__FLOAT_:
-		setSpeedMultiplierMod(inv->getFloatParameter());
+		{
+			setSpeedMultiplierMod(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_:
-		setAccelerationMultiplierMod(inv->getFloatParameter());
+		{
+			setAccelerationMultiplierMod(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETFILLATTRIBUTESONBUFF__BOOL_:
-		setFillAttributesOnBuff(inv->getBooleanParameter());
+		{
+			setFillAttributesOnBuff(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETBUFFNAME__:
-		resp->insertAscii(getBuffName());
+		{
+			resp->insertAscii(getBuffName());
+		}
 		break;
 	case RPC_GETBUFFCRC__:
-		resp->insertSignedInt(getBuffCRC());
+		{
+			resp->insertSignedInt(getBuffCRC());
+		}
 		break;
 	case RPC_GETBUFFDURATION__:
-		resp->insertFloat(getBuffDuration());
+		{
+			resp->insertFloat(getBuffDuration());
+		}
 		break;
 	case RPC_GETBUFFTYPE__:
-		resp->insertSignedInt(getBuffType());
+		{
+			resp->insertSignedInt(getBuffType());
+		}
 		break;
 	case RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_:
-		resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
+		{
+			resp->insertSignedInt(getAttributeModifierValue(inv->getByteParameter()));
+		}
 		break;
 	case RPC_GETSKILLMODIFIERVALUE__STRING_:
-		resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(_param0_getSkillModifierValue__String_)));
+		{
+			String modname; 
+			resp->insertSignedInt(getSkillModifierValue(inv->getAsciiParameter(modname)));
+		}
 		break;
 	case RPC_ISACTIVE__:
-		resp->insertBoolean(isActive());
+		{
+			resp->insertBoolean(isActive());
+		}
 		break;
 	case RPC_ISSPICEBUFF__:
-		resp->insertBoolean(isSpiceBuff());
+		{
+			resp->insertBoolean(isSpiceBuff());
+		}
 		break;
 	case RPC_ISATTRIBUTEBUFF__:
-		resp->insertBoolean(isAttributeBuff());
+		{
+			resp->insertBoolean(isAttributeBuff());
+		}
 		break;
 	case RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_:
-		setStartFlyText(inv->getAsciiParameter(_param0_setStartFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_setStartFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		{
+			String file; String aux; 
+			setStartFlyText(inv->getAsciiParameter(file), inv->getAsciiParameter(aux), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		}
 		break;
 	case RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_:
-		setEndFlyText(inv->getAsciiParameter(_param0_setEndFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_setEndFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		{
+			String file; String aux; 
+			setEndFlyText(inv->getAsciiParameter(file), inv->getAsciiParameter(aux), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

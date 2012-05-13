@@ -205,6 +205,7 @@ String WaypointObject::getDetailedDescription() {
 
 		DistributedMethod method(this, RPC_GETDETAILEDDESCRIPTION__);
 
+		String _return_getDetailedDescription;
 		method.executeWithAsciiReturn(_return_getDetailedDescription);
 		return _return_getDetailedDescription;
 	} else
@@ -524,43 +525,70 @@ void WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_SETCELLID__INT_:
-		setCellID(inv->getUnsignedIntParameter());
+		{
+			setCellID(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETPLANETCRC__INT_:
-		setPlanetCRC(inv->getUnsignedIntParameter());
+		{
+			setPlanetCRC(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_GETPLANETCRC__:
-		resp->insertInt(getPlanetCRC());
+		{
+			resp->insertInt(getPlanetCRC());
+		}
 		break;
 	case RPC_SETCOLOR__BYTE_:
-		setColor(inv->getByteParameter());
+		{
+			setColor(inv->getByteParameter());
+		}
 		break;
 	case RPC_SETACTIVE__BYTE_:
-		setActive(inv->getByteParameter());
+		{
+			setActive(inv->getByteParameter());
+		}
 		break;
 	case RPC_SETUNKNOWN__LONG_:
-		setUnknown(inv->getUnsignedLongParameter());
+		{
+			setUnknown(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETSPECIALTYPEID__INT_:
-		setSpecialTypeID(inv->getSignedIntParameter());
+		{
+			setSpecialTypeID(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETSPECIALTYPEID__:
-		resp->insertSignedInt(getSpecialTypeID());
+		{
+			resp->insertSignedInt(getSpecialTypeID());
+		}
 		break;
 	case RPC_TOGGLESTATUS__:
-		toggleStatus();
+		{
+			toggleStatus();
+		}
 		break;
 	case RPC_ISACTIVE__:
-		resp->insertBoolean(isActive());
+		{
+			resp->insertBoolean(isActive());
+		}
 		break;
 	case RPC_GETCOLOR__:
-		resp->insertByte(getColor());
+		{
+			resp->insertByte(getColor());
+		}
 		break;
 	case RPC_GETDETAILEDDESCRIPTION__:
-		resp->insertAscii(getDetailedDescription());
+		{
+			resp->insertAscii(getDetailedDescription());
+		}
 		break;
 	case RPC_SETDETAILEDDESCRIPTION__STRING_:
-		setDetailedDescription(inv->getAsciiParameter(_param0_setDetailedDescription__String_));
+		{
+			String desc; 
+			setDetailedDescription(inv->getAsciiParameter(desc));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

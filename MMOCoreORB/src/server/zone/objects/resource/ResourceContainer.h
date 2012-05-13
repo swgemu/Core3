@@ -119,9 +119,6 @@ protected:
 
 	virtual ~ResourceContainer();
 
-	String _return_getSpawnName;
-	String _return_getSpawnType;
-
 	friend class ResourceContainerHelper;
 };
 

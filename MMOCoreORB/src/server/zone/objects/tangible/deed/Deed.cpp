@@ -96,6 +96,7 @@ String Deed::getGeneratedObjectTemplate() {
 
 		DistributedMethod method(this, RPC_GETGENERATEDOBJECTTEMPLATE__);
 
+		String _return_getGeneratedObjectTemplate;
 		method.executeWithAsciiReturn(_return_getGeneratedObjectTemplate);
 		return _return_getGeneratedObjectTemplate;
 	} else
@@ -311,16 +312,25 @@ void DeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SETGENERATEDOBJECTTEMPLATE__STRING_:
-		setGeneratedObjectTemplate(inv->getAsciiParameter(_param0_setGeneratedObjectTemplate__String_));
+		{
+			String templ; 
+			setGeneratedObjectTemplate(inv->getAsciiParameter(templ));
+		}
 		break;
 	case RPC_GETGENERATEDOBJECTTEMPLATE__:
-		resp->insertAscii(getGeneratedObjectTemplate());
+		{
+			resp->insertAscii(getGeneratedObjectTemplate());
+		}
 		break;
 	case RPC_ISDEEDOBJECT__:
-		resp->insertBoolean(isDeedObject());
+		{
+			resp->insertBoolean(isDeedObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

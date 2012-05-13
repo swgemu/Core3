@@ -544,22 +544,6 @@ public:
 
 	void removePlayerCityTravelPoint(const String& cityName);
 
-protected:
-	String _param0_getTravelFare__String_String_;
-	String _param1_getTravelFare__String_String_;
-	String _param0_createTicket__String_String_String_;
-	String _param1_createTicket__String_String_String_;
-	String _param2_createTicket__String_String_String_;
-	String _param0_validateRegionName__String_;
-	String _param0_getRegion__String_;
-	String _param0_dropRegion__String_;
-	String _param0_hasRegion__String_;
-	String _param0_isExistingPlanetTravelPoint__String_;
-	String _param0_isInterplanetaryTravelAllowed__String_;
-	String _param0_isTravelToLocationPermitted__String_String_String_;
-	String _param1_isTravelToLocationPermitted__String_String_String_;
-	String _param2_isTravelToLocationPermitted__String_String_String_;
-	String _param0_removePlayerCityTravelPoint__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

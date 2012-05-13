@@ -233,6 +233,7 @@ String Creature::getMeatType() {
 
 		DistributedMethod method(this, RPC_GETMEATTYPE__);
 
+		String _return_getMeatType;
 		method.executeWithAsciiReturn(_return_getMeatType);
 		return _return_getMeatType;
 	} else
@@ -247,6 +248,7 @@ String Creature::getBoneType() {
 
 		DistributedMethod method(this, RPC_GETBONETYPE__);
 
+		String _return_getBoneType;
 		method.executeWithAsciiReturn(_return_getBoneType);
 		return _return_getBoneType;
 	} else
@@ -261,6 +263,7 @@ String Creature::getHideType() {
 
 		DistributedMethod method(this, RPC_GETHIDETYPE__);
 
+		String _return_getHideType;
 		method.executeWithAsciiReturn(_return_getHideType);
 		return _return_getHideType;
 	} else
@@ -552,64 +555,104 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISCREATURE__:
-		resp->insertBoolean(isCreature());
+		{
+			resp->insertBoolean(isCreature());
+		}
 		break;
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
-		resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_RUNAWAY__CREATUREOBJECT_:
-		runAway(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			runAway(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
-		fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SCHEDULEDESPAWN__:
-		scheduleDespawn();
+		{
+			scheduleDespawn();
+		}
 		break;
 	case RPC_HASORGANICS__:
-		resp->insertBoolean(hasOrganics());
+		{
+			resp->insertBoolean(hasOrganics());
+		}
 		break;
 	case RPC_CANHARVESTME__CREATUREOBJECT_:
-		resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ADDALREADYHARVESTED__CREATUREOBJECT_:
-		addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYDESPAWN__ZONE_:
-		notifyDespawn(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyDespawn(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISBABY__:
-		resp->insertBoolean(isBaby());
+		{
+			resp->insertBoolean(isBaby());
+		}
 		break;
 	case RPC_GETTAME__:
-		resp->insertFloat(getTame());
+		{
+			resp->insertFloat(getTame());
+		}
 		break;
 	case RPC_GETMEATTYPE__:
-		resp->insertAscii(getMeatType());
+		{
+			resp->insertAscii(getMeatType());
+		}
 		break;
 	case RPC_GETBONETYPE__:
-		resp->insertAscii(getBoneType());
+		{
+			resp->insertAscii(getBoneType());
+		}
 		break;
 	case RPC_GETHIDETYPE__:
-		resp->insertAscii(getHideType());
+		{
+			resp->insertAscii(getHideType());
+		}
 		break;
 	case RPC_GETMILK__:
-		resp->insertFloat(getMilk());
+		{
+			resp->insertFloat(getMilk());
+		}
 		break;
 	case RPC_GETHIDEMAX__:
-		resp->insertFloat(getHideMax());
+		{
+			resp->insertFloat(getHideMax());
+		}
 		break;
 	case RPC_GETBONEMAX__:
-		resp->insertFloat(getBoneMax());
+		{
+			resp->insertFloat(getBoneMax());
+		}
 		break;
 	case RPC_GETMEATMAX__:
-		resp->insertFloat(getMeatMax());
+		{
+			resp->insertFloat(getMeatMax());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

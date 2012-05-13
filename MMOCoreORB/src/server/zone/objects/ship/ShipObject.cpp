@@ -287,22 +287,34 @@ void ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GETUNIQUEID__:
-		resp->insertShort(getUniqueID());
+		{
+			resp->insertShort(getUniqueID());
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETTOTALMASS__:
-		resp->insertFloat(getTotalMass());
+		{
+			resp->insertFloat(getTotalMass());
+		}
 		break;
 	case RPC_ISSHIPOBJECT__:
-		resp->insertBoolean(isShipObject());
+		{
+			resp->insertBoolean(isShipObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

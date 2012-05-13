@@ -147,8 +147,6 @@ protected:
 
 	virtual ~LootManager();
 
-	String _return_getRandomLootableMod;
-
 	friend class LootManagerHelper;
 };
 
@@ -269,8 +267,6 @@ public:
 
 	bool createLoot(SceneObject* container, const String& lootGroup, int level);
 
-protected:
-	String _param1_createLoot__SceneObject_String_int_;
 };
 
 class LootManagerHelper : public DistributedObjectClassHelper, public Singleton<LootManagerHelper> {

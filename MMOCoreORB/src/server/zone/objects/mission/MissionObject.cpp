@@ -553,6 +553,7 @@ String MissionObject::getTargetOptionalTemplate() {
 
 		DistributedMethod method(this, RPC_GETTARGETOPTIONALTEMPLATE__);
 
+		String _return_getTargetOptionalTemplate;
 		method.executeWithAsciiReturn(_return_getTargetOptionalTemplate);
 		return _return_getTargetOptionalTemplate;
 	} else
@@ -567,6 +568,7 @@ String MissionObject::getStartPlanet() {
 
 		DistributedMethod method(this, RPC_GETSTARTPLANET__);
 
+		String _return_getStartPlanet;
 		method.executeWithAsciiReturn(_return_getStartPlanet);
 		return _return_getStartPlanet;
 	} else
@@ -607,6 +609,7 @@ String MissionObject::getEndPlanet() {
 
 		DistributedMethod method(this, RPC_GETENDPLANET__);
 
+		String _return_getEndPlanet;
 		method.executeWithAsciiReturn(_return_getEndPlanet);
 		return _return_getEndPlanet;
 	} else
@@ -686,6 +689,7 @@ UnicodeString MissionObject::getCreatorName() {
 
 		DistributedMethod method(this, RPC_GETCREATORNAME__);
 
+		UnicodeString _return_getCreatorName;
 		method.executeWithUnicodeReturn(_return_getCreatorName);
 		return _return_getCreatorName;
 	} else
@@ -731,6 +735,7 @@ String MissionObject::getTargetName() {
 
 		DistributedMethod method(this, RPC_GETTARGETNAME__);
 
+		String _return_getTargetName;
 		method.executeWithAsciiReturn(_return_getTargetName);
 		return _return_getTargetName;
 	} else
@@ -806,6 +811,7 @@ String MissionObject::getTemplateString1() {
 
 		DistributedMethod method(this, RPC_GETTEMPLATESTRING1__);
 
+		String _return_getTemplateString1;
 		method.executeWithAsciiReturn(_return_getTemplateString1);
 		return _return_getTemplateString1;
 	} else
@@ -820,6 +826,7 @@ String MissionObject::getTemplateString2() {
 
 		DistributedMethod method(this, RPC_GETTEMPLATESTRING2__);
 
+		String _return_getTemplateString2;
 		method.executeWithAsciiReturn(_return_getTemplateString2);
 		return _return_getTemplateString2;
 	} else
@@ -1640,178 +1647,304 @@ void MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_CREATEWAYPOINT__:
-		resp->insertLong(createWaypoint()->_getObjectID());
+		{
+			resp->insertLong(createWaypoint()->_getObjectID());
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		{
+			updateToDatabaseAllObjects(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETREFRESHCOUNTER__INT_BOOL_:
-		setRefreshCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setRefreshCounter(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETTYPECRC__INT_BOOL_:
-		setTypeCRC(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		{
+			setTypeCRC(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_:
-		setMissionDescription(inv->getAsciiParameter(_param0_setMissionDescription__String_String_bool_), inv->getAsciiParameter(_param1_setMissionDescription__String_String_bool_), inv->getBooleanParameter());
+		{
+			String file; String id; 
+			setMissionDescription(inv->getAsciiParameter(file), inv->getAsciiParameter(id), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMISSIONTITLE__STRING_STRING_BOOL_:
-		setMissionTitle(inv->getAsciiParameter(_param0_setMissionTitle__String_String_bool_), inv->getAsciiParameter(_param1_setMissionTitle__String_String_bool_), inv->getBooleanParameter());
+		{
+			String file; String id; 
+			setMissionTitle(inv->getAsciiParameter(file), inv->getAsciiParameter(id), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMISSIONTARGETNAME__STRING_BOOL_:
-		setMissionTargetName(inv->getAsciiParameter(_param0_setMissionTargetName__String_bool_), inv->getBooleanParameter());
+		{
+			String target; 
+			setMissionTargetName(inv->getAsciiParameter(target), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETMISSIONDIFFICULTY__INT_BOOL_:
-		setMissionDifficulty(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setMissionDifficulty(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETREWARDCREDITS__INT_BOOL_:
-		setRewardCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			setRewardCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_:
-		setStartPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_setStartPosition__float_float_String_bool_), inv->getBooleanParameter());
+		{
+			String planet; 
+			setStartPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(planet), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_:
-		setEndPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param2_setEndPosition__float_float_String_bool_), inv->getBooleanParameter());
+		{
+			String planet; 
+			setEndPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(planet), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCREATORNAME__STRING_BOOL_:
-		setCreatorName(inv->getAsciiParameter(_param0_setCreatorName__String_bool_), inv->getBooleanParameter());
+		{
+			String name; 
+			setCreatorName(inv->getAsciiParameter(name), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETSTARTPLANETCRC__:
-		resp->insertInt(getStartPlanetCRC());
+		{
+			resp->insertInt(getStartPlanetCRC());
+		}
 		break;
 	case RPC_UPDATEMISSIONLOCATION__:
-		updateMissionLocation();
+		{
+			updateMissionLocation();
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_SETFACTION__INT_:
-		setFaction(inv->getSignedIntParameter());
+		{
+			setFaction(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_:
-		setMissionObjective(static_cast<MissionObjective*>(inv->getObjectParameter()));
+		{
+			setMissionObjective(static_cast<MissionObjective*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETSTARTPLANET__STRING_:
-		setStartPlanet(inv->getAsciiParameter(_param0_setStartPlanet__String_));
+		{
+			String planet; 
+			setStartPlanet(inv->getAsciiParameter(planet));
+		}
 		break;
 	case RPC_SETREWARDFACTIONPOINTSREBEL__INT_:
-		setRewardFactionPointsRebel(inv->getSignedIntParameter());
+		{
+			setRewardFactionPointsRebel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETREWARDFACTIONPOINTSIMPERIAL__INT_:
-		setRewardFactionPointsImperial(inv->getSignedIntParameter());
+		{
+			setRewardFactionPointsImperial(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETENDPLANET__STRING_:
-		setEndPlanet(inv->getAsciiParameter(_param0_setEndPlanet__String_));
+		{
+			String planetName; 
+			setEndPlanet(inv->getAsciiParameter(planetName));
+		}
 		break;
 	case RPC_SETMISSIONTARGET__NPCSPAWNPOINT_:
-		setMissionTarget(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		{
+			setMissionTarget(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_:
-		setMissionTargetDest(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		{
+			setMissionTargetDest(static_cast<NpcSpawnPoint*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETMISSIONNUMBER__INT_:
-		setMissionNumber(inv->getSignedIntParameter());
+		{
+			setMissionNumber(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETTARGETOPTIONALTEMPLATE__STRING_:
-		setTargetOptionalTemplate(inv->getAsciiParameter(_param0_setTargetOptionalTemplate__String_));
+		{
+			String tml; 
+			setTargetOptionalTemplate(inv->getAsciiParameter(tml));
+		}
 		break;
 	case RPC_SETTEMPLATESTRINGS__STRING_STRING_:
-		setTemplateStrings(inv->getAsciiParameter(_param0_setTemplateStrings__String_String_), inv->getAsciiParameter(_param1_setTemplateStrings__String_String_));
+		{
+			String temp1; String temp2; 
+			setTemplateStrings(inv->getAsciiParameter(temp1), inv->getAsciiParameter(temp2));
+		}
 		break;
 	case RPC_GETMISSIONOBJECTIVE__:
-		resp->insertLong(getMissionObjective()->_getObjectID());
+		{
+			resp->insertLong(getMissionObjective()->_getObjectID());
+		}
 		break;
 	case RPC_GETFACTION__:
-		resp->insertSignedInt(getFaction());
+		{
+			resp->insertSignedInt(getFaction());
+		}
 		break;
 	case RPC_GETREWARDFACTIONPOINTSREBEL__:
-		resp->insertSignedInt(getRewardFactionPointsRebel());
+		{
+			resp->insertSignedInt(getRewardFactionPointsRebel());
+		}
 		break;
 	case RPC_GETREWARDFACTIONPOINTSIMPERIAL__:
-		resp->insertSignedInt(getRewardFactionPointsImperial());
+		{
+			resp->insertSignedInt(getRewardFactionPointsImperial());
+		}
 		break;
 	case RPC_GETSTARTPOSITIONX__:
-		resp->insertFloat(getStartPositionX());
+		{
+			resp->insertFloat(getStartPositionX());
+		}
 		break;
 	case RPC_GETSTARTPOSITIONY__:
-		resp->insertFloat(getStartPositionY());
+		{
+			resp->insertFloat(getStartPositionY());
+		}
 		break;
 	case RPC_GETTARGETOPTIONALTEMPLATE__:
-		resp->insertAscii(getTargetOptionalTemplate());
+		{
+			resp->insertAscii(getTargetOptionalTemplate());
+		}
 		break;
 	case RPC_GETSTARTPLANET__:
-		resp->insertAscii(getStartPlanet());
+		{
+			resp->insertAscii(getStartPlanet());
+		}
 		break;
 	case RPC_GETENDPOSITIONX__:
-		resp->insertFloat(getEndPositionX());
+		{
+			resp->insertFloat(getEndPositionX());
+		}
 		break;
 	case RPC_GETENDPOSITIONY__:
-		resp->insertFloat(getEndPositionY());
+		{
+			resp->insertFloat(getEndPositionY());
+		}
 		break;
 	case RPC_GETENDPLANET__:
-		resp->insertAscii(getEndPlanet());
+		{
+			resp->insertAscii(getEndPlanet());
+		}
 		break;
 	case RPC_GETWAYPOINTTOMISSION__:
-		resp->insertLong(getWaypointToMission()->_getObjectID());
+		{
+			resp->insertLong(getWaypointToMission()->_getObjectID());
+		}
 		break;
 	case RPC_GETMISSIONTARGET__:
-		resp->insertLong(getMissionTarget()->_getObjectID());
+		{
+			resp->insertLong(getMissionTarget()->_getObjectID());
+		}
 		break;
 	case RPC_GETMISSIONTARGETDEST__:
-		resp->insertLong(getMissionTargetDest()->_getObjectID());
+		{
+			resp->insertLong(getMissionTargetDest()->_getObjectID());
+		}
 		break;
 	case RPC_GETTYPECRC__:
-		resp->insertInt(getTypeCRC());
+		{
+			resp->insertInt(getTypeCRC());
+		}
 		break;
 	case RPC_GETREWARDCREDITS__:
-		resp->insertSignedInt(getRewardCredits());
+		{
+			resp->insertSignedInt(getRewardCredits());
+		}
 		break;
 	case RPC_GETCREATORNAME__:
-		resp->insertUnicode(getCreatorName());
+		{
+			resp->insertUnicode(getCreatorName());
+		}
 		break;
 	case RPC_GETDIFFICULTYLEVEL__:
-		resp->insertSignedInt(getDifficultyLevel());
+		{
+			resp->insertSignedInt(getDifficultyLevel());
+		}
 		break;
 	case RPC_GETTARGETNAME__:
-		resp->insertAscii(getTargetName());
+		{
+			resp->insertAscii(getTargetName());
+		}
 		break;
 	case RPC_GETREFRESHCOUNTER__:
-		resp->insertSignedInt(getRefreshCounter());
+		{
+			resp->insertSignedInt(getRefreshCounter());
+		}
 		break;
 	case RPC_GETMISSIONNUMBER__:
-		resp->insertSignedInt(getMissionNumber());
+		{
+			resp->insertSignedInt(getMissionNumber());
+		}
 		break;
 	case RPC_ISSURVEYMISSION__:
-		resp->insertBoolean(isSurveyMission());
+		{
+			resp->insertBoolean(isSurveyMission());
+		}
 		break;
 	case RPC_ISMISSIONOBJECT__:
-		resp->insertBoolean(isMissionObject());
+		{
+			resp->insertBoolean(isMissionObject());
+		}
 		break;
 	case RPC_GETTEMPLATESTRING1__:
-		resp->insertAscii(getTemplateString1());
+		{
+			resp->insertAscii(getTemplateString1());
+		}
 		break;
 	case RPC_GETTEMPLATESTRING2__:
-		resp->insertAscii(getTemplateString2());
+		{
+			resp->insertAscii(getTemplateString2());
+		}
 		break;
 	case RPC_GETTARGETOBJECTID__:
-		resp->insertLong(getTargetObjectId());
+		{
+			resp->insertLong(getTargetObjectId());
+		}
 		break;
 	case RPC_SETTARGETOBJECTID__LONG_:
-		setTargetObjectId(inv->getUnsignedLongParameter());
+		{
+			setTargetObjectId(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETMISSIONLEVEL__INT_:
-		setMissionLevel(inv->getSignedIntParameter());
+		{
+			setMissionLevel(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETMISSIONLEVEL__:
-		resp->insertSignedInt(getMissionLevel());
+		{
+			resp->insertSignedInt(getMissionLevel());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

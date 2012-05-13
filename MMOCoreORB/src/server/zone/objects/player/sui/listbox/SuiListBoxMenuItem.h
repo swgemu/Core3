@@ -53,8 +53,6 @@ protected:
 
 	virtual ~SuiListBoxMenuItem();
 
-	String _return_getOptionName;
-
 	friend class SuiListBoxMenuItemHelper;
 };
 

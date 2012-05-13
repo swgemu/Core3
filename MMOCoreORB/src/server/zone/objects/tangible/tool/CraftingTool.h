@@ -385,8 +385,6 @@ public:
 
 	void disperseItems();
 
-protected:
-	String _param1_sendToolStartFailure__CreatureObject_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

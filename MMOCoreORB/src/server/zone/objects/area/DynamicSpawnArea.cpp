@@ -420,31 +420,49 @@ void DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case RPC_REGISTEROBSERVERS__:
-		registerObservers();
+		{
+			registerObservers();
+		}
 		break;
 	case RPC_SPAWNCREATURE__INT_CREATUREOBJECT_:
-		spawnCreature(inv->getUnsignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			spawnCreature(inv->getUnsignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DOSPAWNEVENT__CREATUREOBJECT_:
-		doSpawnEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			doSpawnEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DODESPAWNEVENT__:
-		doDespawnEvent();
+		{
+			doDespawnEvent();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_SETMAXCREATURESTOSPAWN__INT_:
-		setMaxCreaturesToSpawn(inv->getSignedIntParameter());
+		{
+			setMaxCreaturesToSpawn(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISDYNAMICAREA__:
-		resp->insertBoolean(isDynamicArea());
+		{
+			resp->insertBoolean(isDynamicArea());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

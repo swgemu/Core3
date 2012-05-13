@@ -403,37 +403,59 @@ void VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
-		resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_:
-		addClothingItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			addClothingItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_ADDVENDORTOMAP__:
-		addVendorToMap();
+		{
+			addVendorToMap();
+		}
 		break;
 	case RPC_SETOWNERID__LONG_:
-		setOwnerID(inv->getUnsignedLongParameter());
+		{
+			setOwnerID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ISVENDOR__:
-		resp->insertBoolean(isVendor());
+		{
+			resp->insertBoolean(isVendor());
+		}
 		break;
 	case RPC_ISVENDORCREATURE__:
-		resp->insertBoolean(isVendorCreature());
+		{
+			resp->insertBoolean(isVendorCreature());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

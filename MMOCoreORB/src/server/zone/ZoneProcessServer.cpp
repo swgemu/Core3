@@ -415,28 +415,44 @@ void ZoneProcessServerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_GETZONESERVER__:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		{
+			resp->insertLong(getZoneServer()->_getObjectID());
+		}
 		break;
 	case RPC_GETPLAYERMANAGER__:
-		resp->insertLong(getPlayerManager()->_getObjectID());
+		{
+			resp->insertLong(getPlayerManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETCHATMANAGER__:
-		resp->insertLong(getChatManager()->_getObjectID());
+		{
+			resp->insertLong(getChatManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETFISHINGMANAGER__:
-		resp->insertLong(getFishingManager()->_getObjectID());
+		{
+			resp->insertLong(getFishingManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETGAMBLINGMANAGER__:
-		resp->insertLong(getGamblingManager()->_getObjectID());
+		{
+			resp->insertLong(getGamblingManager()->_getObjectID());
+		}
 		break;
 	case RPC_GETFORAGEMANAGER__:
-		resp->insertLong(getForageManager()->_getObjectID());
+		{
+			resp->insertLong(getForageManager()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

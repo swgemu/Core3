@@ -883,6 +883,7 @@ String PlayerManager::getBadgeKey(int idx) {
 		DistributedMethod method(this, RPC_GETBADGEKEY__INT_);
 		method.addSignedIntParameter(idx);
 
+		String _return_getBadgeKey;
 		method.executeWithAsciiReturn(_return_getBadgeKey);
 		return _return_getBadgeKey;
 	} else
@@ -958,6 +959,7 @@ String PlayerManager::banAccount(PlayerObject* admin, Account* account, unsigned
 		method.addUnsignedIntParameter(seconds);
 		method.addAsciiParameter(reason);
 
+		String _return_banAccount;
 		method.executeWithAsciiReturn(_return_banAccount);
 		return _return_banAccount;
 	} else
@@ -975,6 +977,7 @@ String PlayerManager::unbanAccount(PlayerObject* admin, Account* account, const 
 		method.addObjectParameter(account);
 		method.addAsciiParameter(reason);
 
+		String _return_unbanAccount;
 		method.executeWithAsciiReturn(_return_unbanAccount);
 		return _return_unbanAccount;
 	} else
@@ -994,6 +997,7 @@ String PlayerManager::banFromGalaxy(PlayerObject* admin, Account* account, unsig
 		method.addUnsignedIntParameter(seconds);
 		method.addAsciiParameter(reason);
 
+		String _return_banFromGalaxy;
 		method.executeWithAsciiReturn(_return_banFromGalaxy);
 		return _return_banFromGalaxy;
 	} else
@@ -1012,6 +1016,7 @@ String PlayerManager::unbanFromGalaxy(PlayerObject* admin, Account* account, uns
 		method.addUnsignedIntParameter(galaxy);
 		method.addAsciiParameter(reason);
 
+		String _return_unbanFromGalaxy;
 		method.executeWithAsciiReturn(_return_unbanFromGalaxy);
 		return _return_unbanFromGalaxy;
 	} else
@@ -1032,6 +1037,7 @@ String PlayerManager::banCharacter(PlayerObject* admin, Account* account, const 
 		method.addUnsignedIntParameter(seconds);
 		method.addAsciiParameter(reason);
 
+		String _return_banCharacter;
 		method.executeWithAsciiReturn(_return_banCharacter);
 		return _return_banCharacter;
 	} else
@@ -1051,6 +1057,7 @@ String PlayerManager::unbanCharacter(PlayerObject* admin, Account* account, cons
 		method.addUnsignedIntParameter(galaxyID);
 		method.addAsciiParameter(reason);
 
+		String _return_unbanCharacter;
 		method.executeWithAsciiReturn(_return_unbanCharacter);
 		return _return_unbanCharacter;
 	} else
@@ -1246,190 +1253,329 @@ void PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_LOADNAMEMAP__:
-		loadNameMap();
+		{
+			loadNameMap();
+		}
 		break;
 	case RPC_GETHIGHESTBADGEINDEX__:
-		resp->insertSignedInt(getHighestBadgeIndex());
+		{
+			resp->insertSignedInt(getHighestBadgeIndex());
+		}
 		break;
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_KICKUSER__STRING_STRING_STRING_BOOL_:
-		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__String_String_String_bool_), inv->getAsciiParameter(_param1_kickUser__String_String_String_bool_), inv->getAsciiParameter(_param2_kickUser__String_String_String_bool_), inv->getBooleanParameter()));
+		{
+			String name; String admin; String reason; 
+			resp->insertBoolean(kickUser(inv->getAsciiParameter(name), inv->getAsciiParameter(admin), inv->getAsciiParameter(reason), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_:
-		resp->insertSignedInt(notifyDestruction(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(notifyDestruction(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_:
-		killPlayer(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			killPlayer(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_:
-		resp->insertByte(calculateIncapacitationTimer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		{
+			resp->insertByte(calculateIncapacitationTimer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
-		resp->insertBoolean(checkEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
-		applyEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter()));
+		{
+			applyEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
-		removeEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter()));
+		{
+			removeEncumbrancies(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ArmorObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_AWARDBADGE__PLAYEROBJECT_INT_:
-		awardBadge(static_cast<PlayerObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			awardBadge(static_cast<PlayerObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETEXPERIENCEMULTIPLIER__FLOAT_:
-		setExperienceMultiplier(inv->getFloatParameter());
+		{
+			setExperienceMultiplier(inv->getFloatParameter());
+		}
 		break;
 	case RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_:
-		awardExperience(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_awardExperience__CreatureObject_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
+		{
+			String xpType; 
+			awardExperience(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(xpType), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
+		}
 		break;
 	case RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_:
-		handleAbortTradeMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleAbortTradeMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_:
-		handleAddItemToTradeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			handleAddItemToTradeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_:
-		handleGiveMoneyMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			handleGiveMoneyMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_:
-		handleAcceptTransactionMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleAcceptTransactionMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_:
-		handleUnAcceptTransactionMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleUnAcceptTransactionMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_:
-		handleVerifyTradeMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleVerifyTradeMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_:
-		resp->insertBoolean(checkTradeItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(checkTradeItems(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_:
-		resp->insertLong(getInRangeStructureWithAdminRights(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(getInRangeStructureWithAdminRights(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_:
-		resp->insertLong(getInRangeOwnedStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter())->_getObjectID());
+		{
+			resp->insertLong(getInRangeOwnedStructure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_:
-		sendBattleFatigueMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendBattleFatigueMessage(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_:
-		stopWatch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			stopWatch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_:
-		stopListen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			stopListen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_STARTWATCH__CREATUREOBJECT_LONG_:
-		startWatch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			startWatch(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_STARTLISTEN__CREATUREOBJECT_LONG_:
-		startListen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			startListen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_LOOTALL__CREATUREOBJECT_AIAGENT_:
-		lootAll(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter()));
+		{
+			lootAll(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AiAgent*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_:
-		resp->insertSignedInt(healEnhance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
+		{
+			resp->insertSignedInt(healEnhance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_:
-		resp->insertBoolean(squadLeaderCheck(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GroupObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(squadLeaderCheck(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GroupObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_:
-		resp->insertSignedInt(calculatePlayerLevel(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(calculatePlayerLevel(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_:
-		awardSquadLeaderExperience(static_cast<GroupObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		{
+			awardSquadLeaderExperience(static_cast<GroupObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDLOGINMESSAGE__CREATUREOBJECT_:
-		sendLoginMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendLoginMessage(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_RESENDLOGINMESSAGETOALL__:
-		resendLoginMessageToAll();
+		{
+			resendLoginMessageToAll();
+		}
 		break;
 	case RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_:
-		sendActivateCloneRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			sendActivateCloneRequest(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_:
-		sendPlayerToCloner(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		{
+			sendPlayerToCloner(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_CHECKEXISTENTNAMEINDATABASE__STRING_:
-		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
+		{
+			String firstName; 
+			resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(firstName)));
+		}
 		break;
 	case RPC_CREATEHAIROBJECT__STRING_STRING_:
-		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		{
+			String hairObjectFile; String hairCustomization; 
+			resp->insertLong(createHairObject(inv->getAsciiParameter(hairObjectFile), inv->getAsciiParameter(hairCustomization))->_getObjectID());
+		}
 		break;
 	case RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_:
-		resp->insertBoolean(createAllPlayerObjects(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(createAllPlayerObjects(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_:
-		createDefaultPlayerItems(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createDefaultPlayerItems__CreatureObject_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__CreatureObject_String_String_));
+		{
+			String profession; String templateFile; 
+			createDefaultPlayerItems(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(profession), inv->getAsciiParameter(templateFile));
+		}
 		break;
 	case RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_:
-		createTutorialBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createTutorialBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_:
-		createSkippedTutorialBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			createSkippedTutorialBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_:
-		resp->insertSignedInt(checkSpeedHackSecondTest(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(checkSpeedHackSecondTest(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_EXISTSNAME__STRING_:
-		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
+		{
+			String name; 
+			resp->insertBoolean(existsName(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_GETOBJECTID__STRING_:
-		resp->insertLong(getObjectID(inv->getAsciiParameter(_param0_getObjectID__String_)));
+		{
+			String name; 
+			resp->insertLong(getObjectID(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_GETPLAYER__STRING_:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		{
+			String name; 
+			resp->insertLong(getPlayer(inv->getAsciiParameter(name))->_getObjectID());
+		}
 		break;
 	case RPC_UPDATEPERMISSIONLEVEL__CREATUREOBJECT_INT_:
-		updatePermissionLevel(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			updatePermissionLevel(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_UPDATEPERMISSIONNAME__CREATUREOBJECT_INT_:
-		updatePermissionName(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			updatePermissionName(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_:
-		generateHologrindSkills(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			generateHologrindSkills(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDPLAYER__CREATUREOBJECT_:
-		addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETBADGEKEY__INT_:
-		resp->insertAscii(getBadgeKey(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getBadgeKey(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETNEARBYCRAFTINGSTATION__CREATUREOBJECT_INT_:
-		resp->insertLong(getNearbyCraftingStation(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getNearbyCraftingStation(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_FINISHHOLOGRIND__CREATUREOBJECT_:
-		finishHologrind(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			finishHologrind(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETACCOUNT__STRING_:
-		resp->insertLong(getAccount(inv->getAsciiParameter(_param0_getAccount__String_))->_getObjectID());
+		{
+			String username; 
+			resp->insertLong(getAccount(inv->getAsciiParameter(username))->_getObjectID());
+		}
 		break;
 	case RPC_GETACCOUNT__INT_:
-		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_BANACCOUNT__PLAYEROBJECT_ACCOUNT_INT_STRING_:
-		resp->insertAscii(banAccount(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_banAccount__PlayerObject_Account_int_String_)));
+		{
+			String reason; 
+			resp->insertAscii(banAccount(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_:
-		resp->insertAscii(unbanAccount(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanAccount__PlayerObject_Account_String_)));
+		{
+			String reason; 
+			resp->insertAscii(unbanAccount(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_:
-		resp->insertAscii(banFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_banFromGalaxy__PlayerObject_Account_int_int_String_)));
+		{
+			String reason; 
+			resp->insertAscii(banFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_:
-		resp->insertAscii(unbanFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_unbanFromGalaxy__PlayerObject_Account_int_String_)));
+		{
+			String reason; 
+			resp->insertAscii(unbanFromGalaxy(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_:
-		resp->insertAscii(banCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_banCharacter__PlayerObject_Account_String_int_int_String_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param5_banCharacter__PlayerObject_Account_String_int_int_String_)));
+		{
+			String name; String reason; 
+			resp->insertAscii(banCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(name), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(reason)));
+		}
 		break;
 	case RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_:
-		resp->insertAscii(unbanCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(_param2_unbanCharacter__PlayerObject_Account_String_int_String_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_unbanCharacter__PlayerObject_Account_String_int_String_)));
+		{
+			String name; String reason; 
+			resp->insertAscii(unbanCharacter(static_cast<PlayerObject*>(inv->getObjectParameter()), static_cast<Account*>(inv->getObjectParameter()), inv->getAsciiParameter(name), inv->getUnsignedIntParameter(), inv->getAsciiParameter(reason)));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

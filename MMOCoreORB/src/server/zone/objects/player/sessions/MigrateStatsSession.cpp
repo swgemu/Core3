@@ -373,25 +373,39 @@ void MigrateStatsSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case RPC_INITIALIZESESSION__:
-		resp->insertSignedInt(initializeSession());
+		{
+			resp->insertSignedInt(initializeSession());
+		}
 		break;
 	case RPC_CANCELSESSION__:
-		resp->insertSignedInt(cancelSession());
+		{
+			resp->insertSignedInt(cancelSession());
+		}
 		break;
 	case RPC_CLEARSESSION__:
-		resp->insertSignedInt(clearSession());
+		{
+			resp->insertSignedInt(clearSession());
+		}
 		break;
 	case RPC_GETATTRIBUTETOMODIFYCOUNT__:
-		resp->insertSignedInt(getAttributeToModifyCount());
+		{
+			resp->insertSignedInt(getAttributeToModifyCount());
+		}
 		break;
 	case RPC_SETATTRIBUTETOMODIFY__INT_INT_:
-		setAttributeToModify(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			setAttributeToModify(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETATTRIBTUETOMODIFY__INT_:
-		resp->insertSignedInt(getAttribtueToModify(inv->getSignedIntParameter()));
+		{
+			resp->insertSignedInt(getAttribtueToModify(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_MIGRATESTATS__:
-		migrateStats();
+		{
+			migrateStats();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

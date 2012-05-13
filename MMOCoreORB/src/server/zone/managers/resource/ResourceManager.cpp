@@ -300,6 +300,7 @@ String ResourceManager::addParentNodeToListBox(SuiListBox* sui, const String& cu
 		method.addObjectParameter(sui);
 		method.addAsciiParameter(currentNode);
 
+		String _return_addParentNodeToListBox;
 		method.executeWithAsciiReturn(_return_addParentNodeToListBox);
 		return _return_addParentNodeToListBox;
 	} else
@@ -329,6 +330,7 @@ String ResourceManager::healthCheck() {
 
 		DistributedMethod method(this, RPC_HEALTHCHECK__);
 
+		String _return_healthCheck;
 		method.executeWithAsciiReturn(_return_healthCheck);
 		return _return_healthCheck;
 	} else
@@ -343,6 +345,7 @@ String ResourceManager::dumpResources() {
 
 		DistributedMethod method(this, RPC_DUMPRESOURCES__);
 
+		String _return_dumpResources;
 		method.executeWithAsciiReturn(_return_dumpResources);
 		return _return_dumpResources;
 	} else
@@ -358,6 +361,7 @@ String ResourceManager::despawnResource(String& resourceName) {
 		DistributedMethod method(this, RPC_DESPAWNRESOURCE__STRING_);
 		method.addAsciiParameter(resourceName);
 
+		String _return_despawnResource;
 		method.executeWithAsciiReturn(_return_despawnResource);
 		return _return_despawnResource;
 	} else
@@ -540,67 +544,121 @@ void ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_STOP__:
-		stop();
+		{
+			stop();
+		}
 		break;
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_SHIFTRESOURCES__:
-		shiftResources();
+		{
+			shiftResources();
+		}
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_:
-		sendResourceListForSurvey(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__CreatureObject_int_String_));
+		{
+			String surveyType; 
+			sendResourceListForSurvey(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(surveyType));
+		}
 		break;
 	case RPC_SENDSURVEY__CREATUREOBJECT_STRING_:
-		sendSurvey(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendSurvey__CreatureObject_String_));
+		{
+			String resname; 
+			sendSurvey(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(resname));
+		}
 		break;
 	case RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_:
-		sendSample(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendSample__CreatureObject_String_String_), inv->getAsciiParameter(_param2_sendSample__CreatureObject_String_String_));
+		{
+			String resname; String sampleAnimation; 
+			sendSample(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(resname), inv->getAsciiParameter(sampleAnimation));
+		}
 		break;
 	case RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_:
-		resp->insertLong(harvestResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_harvestResource__CreatureObject_String_int_), inv->getSignedIntParameter())->_getObjectID());
+		{
+			String type; 
+			resp->insertLong(harvestResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(type), inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_:
-		harvestResourceToPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ResourceSpawn*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			harvestResourceToPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ResourceSpawn*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_:
-		resp->insertInt(getAvailablePowerFromPlayer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertInt(getAvailablePowerFromPlayer(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_:
-		removePowerFromPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		{
+			removePowerFromPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_:
-		createResourceSpawn(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_createResourceSpawn__CreatureObject_String_));
+		{
+			String restype; 
+			createResourceSpawn(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(restype));
+		}
 		break;
 	case RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_:
-		givePlayerResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_givePlayerResource__CreatureObject_String_int_), inv->getSignedIntParameter());
+		{
+			String restype; 
+			givePlayerResource(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(restype), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETCURRENTSPAWN__STRING_STRING_:
-		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_String_), inv->getAsciiParameter(_param1_getCurrentSpawn__String_String_))->_getObjectID());
+		{
+			String restype; String zoneName; 
+			resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(restype), inv->getAsciiParameter(zoneName))->_getObjectID());
+		}
 		break;
 	case RPC_GETRESOURCESPAWN__STRING_:
-		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
+		{
+			String spawnName; 
+			resp->insertLong(getResourceSpawn(inv->getAsciiParameter(spawnName))->_getObjectID());
+		}
 		break;
 	case RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_:
-		addNodeToListBox(static_cast<SuiListBox*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_addNodeToListBox__SuiListBox_String_));
+		{
+			String nodeName; 
+			addNodeToListBox(static_cast<SuiListBox*>(inv->getObjectParameter()), inv->getAsciiParameter(nodeName));
+		}
 		break;
 	case RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_:
-		resp->insertAscii(addParentNodeToListBox(static_cast<SuiListBox*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_addParentNodeToListBox__SuiListBox_String_)));
+		{
+			String currentNode; 
+			resp->insertAscii(addParentNodeToListBox(static_cast<SuiListBox*>(inv->getObjectParameter()), inv->getAsciiParameter(currentNode)));
+		}
 		break;
 	case RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_:
-		listResourcesForPlanetOnScreen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_listResourcesForPlanetOnScreen__CreatureObject_String_));
+		{
+			String planet; 
+			listResourcesForPlanetOnScreen(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(planet));
+		}
 		break;
 	case RPC_HEALTHCHECK__:
-		resp->insertAscii(healthCheck());
+		{
+			resp->insertAscii(healthCheck());
+		}
 		break;
 	case RPC_DUMPRESOURCES__:
-		resp->insertAscii(dumpResources());
+		{
+			resp->insertAscii(dumpResources());
+		}
 		break;
 	case RPC_DESPAWNRESOURCE__STRING_:
-		resp->insertAscii(despawnResource(inv->getAsciiParameter(_param0_despawnResource__String_)));
+		{
+			String resourceName; 
+			resp->insertAscii(despawnResource(inv->getAsciiParameter(resourceName)));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -456,43 +456,69 @@ void DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_GETITEM__:
-		resp->insertLong(getItem()->_getObjectID());
+		{
+			resp->insertLong(getItem()->_getObjectID());
+		}
 		break;
 	case RPC_GETOBJECTIVESTATUS__:
-		resp->insertSignedInt(getObjectiveStatus());
+		{
+			resp->insertSignedInt(getObjectiveStatus());
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_ACTIVATEWITHRESULT__:
-		resp->insertBoolean(activateWithResult());
+		{
+			resp->insertBoolean(activateWithResult());
+		}
 		break;
 	case RPC_ABORT__:
-		abort();
+		{
+			abort();
+		}
 		break;
 	case RPC_COMPLETE__:
-		complete();
+		{
+			complete();
+		}
 		break;
 	case RPC_DESPAWNNPCS__:
-		despawnNpcs();
+		{
+			despawnNpcs();
+		}
 		break;
 	case RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_:
-		updateMissionStatus(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			updateMissionStatus(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_:
-		resp->insertBoolean(updateMissionTarget(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(updateMissionTarget(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETTARGETSPAWNPOINT__:
-		resp->insertLong(getTargetSpawnPoint()->_getObjectID());
+		{
+			resp->insertLong(getTargetSpawnPoint()->_getObjectID());
+		}
 		break;
 	case RPC_GETDESTINATIONSPAWNPOINT__:
-		resp->insertLong(getDestinationSpawnPoint()->_getObjectID());
+		{
+			resp->insertLong(getDestinationSpawnPoint()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

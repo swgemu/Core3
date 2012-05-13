@@ -525,10 +525,6 @@ protected:
 
 	virtual ~ZoneServer();
 
-	String _return_getGalaxyName;
-	String _return_getInfo;
-	String _return_getLoginMessage;
-
 	friend class ZoneServerHelper;
 };
 
@@ -905,10 +901,6 @@ public:
 
 	String getLoginMessage();
 
-protected:
-	String _param0_setGalaxyName__String_;
-	String _param0_getZone__String_;
-	String _param0_changeLoginMessage__String_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

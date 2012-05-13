@@ -209,10 +209,14 @@ void SuiKeypadBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GENERATEMESSAGE__:
-		resp->insertLong(generateMessage()->_getObjectID());
+		{
+			resp->insertLong(generateMessage()->_getObjectID());
+		}
 		break;
 	case RPC_ISKEYPADBOX__:
-		resp->insertBoolean(isKeypadBox());
+		{
+			resp->insertBoolean(isKeypadBox());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

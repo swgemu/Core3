@@ -598,52 +598,85 @@ void CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_ISCRAFTINGTOOL__:
-		resp->insertBoolean(isCraftingTool());
+		{
+			resp->insertBoolean(isCraftingTool());
+		}
 		break;
 	case RPC_ISREADY__:
-		resp->insertBoolean(isReady());
+		{
+			resp->insertBoolean(isReady());
+		}
 		break;
 	case RPC_SETREADY__:
-		setReady();
+		{
+			setReady();
+		}
 		break;
 	case RPC_ISBUSY__:
-		resp->insertBoolean(isBusy());
+		{
+			resp->insertBoolean(isBusy());
+		}
 		break;
 	case RPC_SETBUSY__:
-		setBusy();
+		{
+			setBusy();
+		}
 		break;
 	case RPC_ISFINISHED__:
-		resp->insertBoolean(isFinished());
+		{
+			resp->insertBoolean(isFinished());
+		}
 		break;
 	case RPC_SETFINISHED__:
-		setFinished();
+		{
+			setFinished();
+		}
 		break;
 	case RPC_SENDTOOLSTARTFAILURE__CREATUREOBJECT_STRING_:
-		sendToolStartFailure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(_param1_sendToolStartFailure__CreatureObject_String_));
+		{
+			String message; 
+			sendToolStartFailure(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(message));
+		}
 		break;
 	case RPC_GETTOOLTYPE__:
-		resp->insertSignedInt(getToolType());
+		{
+			resp->insertSignedInt(getToolType());
+		}
 		break;
 	case RPC_GETEFFECTIVENESS__:
-		resp->insertFloat(getEffectiveness());
+		{
+			resp->insertFloat(getEffectiveness());
+		}
 		break;
 	case RPC_GETCOMPLEXITYLEVEL__:
-		resp->insertFloat(getComplexityLevel());
+		{
+			resp->insertFloat(getComplexityLevel());
+		}
 		break;
 	case RPC_GETPROTOTYPE__:
-		resp->insertLong(getPrototype()->_getObjectID());
+		{
+			resp->insertLong(getPrototype()->_getObjectID());
+		}
 		break;
 	case RPC_GETMANUFACTURESCHEMATIC__:
-		resp->insertLong(getManufactureSchematic()->_getObjectID());
+		{
+			resp->insertLong(getManufactureSchematic()->_getObjectID());
+		}
 		break;
 	case RPC_DISPERSEITEMS__:
-		disperseItems();
+		{
+			disperseItems();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -348,10 +348,6 @@ protected:
 
 	virtual ~WeaponObject();
 
-	String _return_getWeaponType;
-	String _return_getXpType;
-	String _return_repairAttempt;
-
 	friend class WeaponObjectHelper;
 };
 

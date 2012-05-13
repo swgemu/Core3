@@ -412,40 +412,64 @@ void LoginServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_INITIALIZE__:
-		initialize();
+		{
+			initialize();
+		}
 		break;
 	case RPC_SHUTDOWN__:
-		shutdown();
+		{
+			shutdown();
+		}
 		break;
 	case RPC_STARTMANAGERS__:
-		startManagers();
+		{
+			startManagers();
+		}
 		break;
 	case RPC_STOPMANAGERS__:
-		stopManagers();
+		{
+			stopManagers();
+		}
 		break;
 	case RPC_START__INT_INT_:
-		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		{
+			start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_STOP__:
-		stop();
+		{
+			stop();
+		}
 		break;
 	case RPC_PRINTINFO__:
-		printInfo();
+		{
+			printInfo();
+		}
 		break;
 	case RPC_POPULATEGALAXYLIST__:
-		populateGalaxyList();
+		{
+			populateGalaxyList();
+		}
 		break;
 	case RPC_GETACCOUNT__INT_:
-		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETLOGINENUMCLUSTERMESSAGE__:
-		resp->insertLong(getLoginEnumClusterMessage()->_getObjectID());
+		{
+			resp->insertLong(getLoginEnumClusterMessage()->_getObjectID());
+		}
 		break;
 	case RPC_GETLOGINCLUSTERSTATUSMESSAGE__:
-		resp->insertLong(getLoginClusterStatusMessage()->_getObjectID());
+		{
+			resp->insertLong(getLoginClusterStatusMessage()->_getObjectID());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -171,8 +171,6 @@ protected:
 
 	virtual ~CraftingManager();
 
-	String _return_generateSerial;
-
 	friend class CraftingManagerHelper;
 };
 

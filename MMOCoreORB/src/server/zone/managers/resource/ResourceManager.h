@@ -197,11 +197,6 @@ protected:
 
 	virtual ~ResourceManager();
 
-	String _return_addParentNodeToListBox;
-	String _return_despawnResource;
-	String _return_dumpResources;
-	String _return_healthCheck;
-
 	friend class ResourceManagerHelper;
 };
 
@@ -376,21 +371,6 @@ public:
 
 	String despawnResource(String& resourceName);
 
-protected:
-	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;
-	String _param1_sendSurvey__CreatureObject_String_;
-	String _param1_sendSample__CreatureObject_String_String_;
-	String _param2_sendSample__CreatureObject_String_String_;
-	String _param1_harvestResource__CreatureObject_String_int_;
-	String _param1_createResourceSpawn__CreatureObject_String_;
-	String _param1_givePlayerResource__CreatureObject_String_int_;
-	String _param0_getCurrentSpawn__String_String_;
-	String _param1_getCurrentSpawn__String_String_;
-	String _param0_getResourceSpawn__String_;
-	String _param1_addNodeToListBox__SuiListBox_String_;
-	String _param1_addParentNodeToListBox__SuiListBox_String_;
-	String _param1_listResourcesForPlanetOnScreen__CreatureObject_String_;
-	String _param0_despawnResource__String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

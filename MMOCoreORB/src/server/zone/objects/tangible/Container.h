@@ -208,8 +208,6 @@ public:
 
 	void setLockedStatus(bool lock);
 
-protected:
-	String _param2_canAddObject__SceneObject_int_String_;
 };
 
 class ContainerHelper : public DistributedObjectClassHelper, public Singleton<ContainerHelper> {

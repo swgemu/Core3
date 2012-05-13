@@ -357,16 +357,24 @@ void SingleUseBuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_GETCOMMANDCRC__:
-		resp->insertInt(getCommandCRC());
+		{
+			resp->insertInt(getCommandCRC());
+		}
 		break;
 	case RPC_GETPLAYER__:
-		resp->insertLong(getPlayer()->_getObjectID());
+		{
+			resp->insertLong(getPlayer()->_getObjectID());
+		}
 		break;
 	case RPC_ACTIVATE__:
-		activate();
+		{
+			activate();
+		}
 		break;
 	case RPC_DEACTIVATE__:
-		deactivate();
+		{
+			deactivate();
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

@@ -352,31 +352,49 @@ void TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_ISTERMINAL__:
-		resp->insertBoolean(isTerminal());
+		{
+			resp->insertBoolean(isTerminal());
+		}
 		break;
 	case RPC_ISGUILDTERMINAL__:
-		resp->insertBoolean(isGuildTerminal());
+		{
+			resp->insertBoolean(isGuildTerminal());
+		}
 		break;
 	case RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_:
-		setControlledObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			setControlledObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCONTROLLEDOBJECT__:
-		resp->insertLong(getControlledObject()->_getObjectID());
+		{
+			resp->insertLong(getControlledObject()->_getObjectID());
+		}
 		break;
 	case RPC_ISELEVATORTERMINAL__:
-		resp->insertBoolean(isElevatorTerminal());
+		{
+			resp->insertBoolean(isElevatorTerminal());
+		}
 		break;
 	case RPC_ISVENDORTERMINAL__:
-		resp->insertBoolean(isVendorTerminal());
+		{
+			resp->insertBoolean(isVendorTerminal());
+		}
 		break;
 	case RPC_ISBAZAARTERMINAL__:
-		resp->insertBoolean(isBazaarTerminal());
+		{
+			resp->insertBoolean(isBazaarTerminal());
+		}
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

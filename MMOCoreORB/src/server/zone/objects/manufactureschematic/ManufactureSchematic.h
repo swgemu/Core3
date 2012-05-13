@@ -480,9 +480,6 @@ public:
 
 	int getBlueprintSize();
 
-protected:
-	String _param0_canManufactureItem__String_String_;
-	String _param1_canManufactureItem__String_String_;
 };
 
 class ManufactureSchematicHelper : public DistributedObjectClassHelper, public Singleton<ManufactureSchematicHelper> {

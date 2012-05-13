@@ -144,9 +144,6 @@ protected:
 
 	virtual ~Component();
 
-	String _return_getAttributeTitle;
-	String _return_getProperty;
-
 	friend class ComponentHelper;
 };
 
@@ -290,19 +287,6 @@ public:
 
 	bool changeAttributeValue(String& property, float value);
 
-protected:
-	String _param0_generateLootStats__String_int_;
-	String _param0_hasKey__String_;
-	String _param0_addProperty__String_float_int_String_bool_;
-	String _param3_addProperty__String_float_int_String_bool_;
-	String _param0_getAttributeValue__String_;
-	String _param0_getAttributePrecision__String_;
-	String _param0_getAttributeTitle__String_;
-	String _param0_getAttributeHidden__String_;
-	String _param0_setPropertyToHidden__String_;
-	String _param0_addProperty__String_float_int_String_;
-	String _param3_addProperty__String_float_int_String_;
-	String _param0_changeAttributeValue__String_float_;
 };
 
 class ComponentHelper : public DistributedObjectClassHelper, public Singleton<ComponentHelper> {

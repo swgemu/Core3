@@ -236,7 +236,9 @@ void CloningBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case RPC_ISCLONINGBUILDINGOBJECT__:
-		resp->insertBoolean(isCloningBuildingObject());
+		{
+			resp->insertBoolean(isCloningBuildingObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

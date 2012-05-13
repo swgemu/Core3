@@ -896,103 +896,169 @@ void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_:
-		broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_:
-		updateResourceContainerQuantity(static_cast<ResourceContainer*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		{
+			updateResourceContainerQuantity(static_cast<ResourceContainer*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETOPERATING__BOOL_BOOL_:
-		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ACTIVATEUISYNC__:
-		activateUiSync();
+		{
+			activateUiSync();
+		}
 		break;
 	case RPC_UPDATEOPERATORS__:
-		updateOperators();
+		{
+			updateOperators();
+		}
 		break;
 	case RPC_VERIFYOPERATORS__:
-		verifyOperators();
+		{
+			verifyOperators();
+		}
 		break;
 	case RPC_UPDATEINSTALLATIONWORK__:
-		updateInstallationWork();
+		{
+			updateInstallationWork();
+		}
 		break;
 	case RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_:
-		handleStructureAddEnergy(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			handleStructureAddEnergy(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETACTIVERESOURCE__RESOURCECONTAINER_:
-		setActiveResource(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		{
+			setActiveResource(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CHANGEACTIVERESOURCEID__LONG_:
-		changeActiveResourceID(inv->getUnsignedLongParameter());
+		{
+			changeActiveResourceID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_:
-		addResourceToHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		{
+			addResourceToHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_:
-		removeResourceFromHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		{
+			removeResourceFromHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CLEARRESOURCEHOPPER__:
-		clearResourceHopper();
+		{
+			clearResourceHopper();
+		}
 		break;
 	case RPC_GETHOPPERSIZE__:
-		resp->insertFloat(getHopperSize());
+		{
+			resp->insertFloat(getHopperSize());
+		}
 		break;
 	case RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_:
-		resp->insertSignedInt(getHopperItemQuantity(static_cast<ResourceSpawn*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(getHopperItemQuantity(static_cast<ResourceSpawn*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_:
-		resp->insertLong(getContainerFromHopper(static_cast<ResourceSpawn*>(inv->getObjectParameter()))->_getObjectID());
+		{
+			resp->insertLong(getContainerFromHopper(static_cast<ResourceSpawn*>(inv->getObjectParameter()))->_getObjectID());
+		}
 		break;
 	case RPC_GETACTIVERESOURCESPAWNID__:
-		resp->insertLong(getActiveResourceSpawnID());
+		{
+			resp->insertLong(getActiveResourceSpawnID());
+		}
 		break;
 	case RPC_GETACTUALRATE__:
-		resp->insertFloat(getActualRate());
+		{
+			resp->insertFloat(getActualRate());
+		}
 		break;
 	case RPC_BROADCASTTOOPERATORS__BASEPACKET_:
-		broadcastToOperators(static_cast<BasePacket*>(inv->getObjectParameter()));
+		{
+			broadcastToOperators(static_cast<BasePacket*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDOPERATOR__CREATUREOBJECT_:
-		addOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			addOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_REMOVEOPERATOR__CREATUREOBJECT_:
-		removeOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			removeOperator(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISINSTALLATIONOBJECT__:
-		resp->insertBoolean(isInstallationObject());
+		{
+			resp->insertBoolean(isInstallationObject());
+		}
 		break;
 	case RPC_ISOPERATING__:
-		resp->insertBoolean(isOperating());
+		{
+			resp->insertBoolean(isOperating());
+		}
 		break;
 	case RPC_GETINSTALLATIONTYPE__:
-		resp->insertSignedInt(getInstallationType());
+		{
+			resp->insertSignedInt(getInstallationType());
+		}
 		break;
 	case RPC_GETEXTRACTIONRATE__:
-		resp->insertFloat(getExtractionRate());
+		{
+			resp->insertFloat(getExtractionRate());
+		}
 		break;
 	case RPC_GETHOPPERSIZEMAX__:
-		resp->insertFloat(getHopperSizeMax());
+		{
+			resp->insertFloat(getHopperSizeMax());
+		}
 		break;
 	case RPC_UPDATESTRUCTURESTATUS__:
-		updateStructureStatus();
+		{
+			updateStructureStatus();
+		}
 		break;
 	case RPC_ISHARVESTEROBJECT__:
-		resp->insertBoolean(isHarvesterObject());
+		{
+			resp->insertBoolean(isHarvesterObject());
+		}
 		break;
 	case RPC_ISGENERATOROBJECT__:
-		resp->insertBoolean(isGeneratorObject());
+		{
+			resp->insertBoolean(isGeneratorObject());
+		}
 		break;
 	case RPC_ISSHUTTLEINSTALLATION__:
-		resp->insertBoolean(isShuttleInstallation());
+		{
+			resp->insertBoolean(isShuttleInstallation());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

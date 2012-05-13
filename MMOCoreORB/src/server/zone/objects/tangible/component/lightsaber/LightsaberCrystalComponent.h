@@ -151,8 +151,6 @@ protected:
 
 	virtual ~LightsaberCrystalComponent();
 
-	String _return_getOwner;
-
 	friend class LightsaberCrystalComponentHelper;
 };
 
@@ -368,8 +366,6 @@ public:
 
 	bool isLightsaberCrystalObject();
 
-protected:
-	String _param0_setOwner__String_;
 };
 
 class LightsaberCrystalComponentHelper : public DistributedObjectClassHelper, public Singleton<LightsaberCrystalComponentHelper> {

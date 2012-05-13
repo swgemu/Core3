@@ -79,6 +79,7 @@ String ScreenPlayObserver::getScreenPlay() {
 
 		DistributedMethod method(this, RPC_GETSCREENPLAY__);
 
+		String _return_getScreenPlay;
 		method.executeWithAsciiReturn(_return_getScreenPlay);
 		return _return_getScreenPlay;
 	} else
@@ -93,6 +94,7 @@ String ScreenPlayObserver::getScreenKey() {
 
 		DistributedMethod method(this, RPC_GETSCREENKEY__);
 
+		String _return_getScreenKey;
 		method.executeWithAsciiReturn(_return_getScreenKey);
 		return _return_getScreenKey;
 	} else
@@ -293,19 +295,31 @@ void ScreenPlayObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
-		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		{
+			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
+		}
 		break;
 	case RPC_SETSCREENPLAY__STRING_:
-		setScreenPlay(inv->getAsciiParameter(_param0_setScreenPlay__String_));
+		{
+			String screen; 
+			setScreenPlay(inv->getAsciiParameter(screen));
+		}
 		break;
 	case RPC_SETSCREENKEY__STRING_:
-		setScreenKey(inv->getAsciiParameter(_param0_setScreenKey__String_));
+		{
+			String screenKey; 
+			setScreenKey(inv->getAsciiParameter(screenKey));
+		}
 		break;
 	case RPC_GETSCREENPLAY__:
-		resp->insertAscii(getScreenPlay());
+		{
+			resp->insertAscii(getScreenPlay());
+		}
 		break;
 	case RPC_GETSCREENKEY__:
-		resp->insertAscii(getScreenKey());
+		{
+			resp->insertAscii(getScreenKey());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

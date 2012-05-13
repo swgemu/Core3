@@ -269,10 +269,6 @@ protected:
 
 	virtual ~StructureObject();
 
-	String _return_getMaintenanceMods;
-	String _return_getRedeedMessage;
-	String _return_getTimeString;
-
 	friend class StructureObjectHelper;
 };
 
@@ -616,21 +612,6 @@ public:
 
 	String getRedeedMessage();
 
-protected:
-	String _param0_isOnAdminList__String_;
-	String _param0_isOnBanList__String_;
-	String _param0_isOnPermissionList__String_CreatureObject_;
-	String _param1_sendPermissionListTo__CreatureObject_String_;
-	String _param0_hasPermissionList__String_;
-	String _param0_isPermissionListFull__String_;
-	String _param0_togglePermission__String_String_;
-	String _param1_togglePermission__String_String_;
-	String _param0_grantPermission__String_String_;
-	String _param1_grantPermission__String_String_;
-	String _param0_revokePermission__String_String_;
-	String _param1_revokePermission__String_String_;
-	String _param0_revokeAllPermissions__String_;
-	String _param0_setOwnerName__String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {

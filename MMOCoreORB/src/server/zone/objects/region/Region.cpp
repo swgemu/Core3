@@ -432,37 +432,59 @@ void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_SETCITYREGION__CITYREGION_:
-		setCityRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		{
+			setCityRegion(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETCITYREGION__:
-		resp->insertLong(getCityRegion()->_getObjectID());
+		{
+			resp->insertLong(getCityRegion()->_getObjectID());
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_ENQUEUEENTEREVENT__SCENEOBJECT_:
-		enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			enqueueEnterEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ENQUEUEEXITEVENT__SCENEOBJECT_:
-		enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			enqueueExitEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
-		notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyEnter(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
-		notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ADDBAZAAR__BAZAARTERMINAL_:
-		addBazaar(static_cast<BazaarTerminal*>(inv->getObjectParameter()));
+		{
+			addBazaar(static_cast<BazaarTerminal*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETBAZAAR__INT_:
-		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_GETBAZAARCOUNT__:
-		resp->insertSignedInt(getBazaarCount());
+		{
+			resp->insertSignedInt(getBazaarCount());
+		}
 		break;
 	case RPC_ISREGION__:
-		resp->insertBoolean(isRegion());
+		{
+			resp->insertBoolean(isRegion());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");

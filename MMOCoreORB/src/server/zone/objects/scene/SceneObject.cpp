@@ -34,7 +34,7 @@
  *	SceneObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_UPDATEDIRECTION__FLOAT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTMESSAGEPRIVATE__BASEPACKET_SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECTPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROYPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__LONG_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETZONE__,RPC_GETLOCALZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_SETDETAILEDDESCRIPTION__STRING_,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCONTAINERLOCK__,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISROBEOBJECT__,RPC_ISLIGHTSABERCRYSTALOBJECT__,RPC_ISFIREWORKOBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISLAIROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISRESOURCESPAWN__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISLIVESAMPLE__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISTRAPOBJECT__,RPC_ISREPAIRTOOL__,RPC_ISCAMOKIT__,RPC_ISATTACHMENT__,RPC_ISDICEOBJECT__,RPC_ISCREATUREHABITAT__,RPC_ISCAMPKIT__,RPC_ISCAMPSTRUCTURE__,RPC_SETCONTAINERDEFAULTALLOWPERMISSION__SHORT_,RPC_SETCONTAINERDEFAULTDENYPERMISSION__SHORT_,RPC_SETCONTAINERINHERITPERMISSIONSFROMPARENT__BOOL_,RPC_SETCONTAINEROWNERID__LONG_,RPC_SETCONTAINERALLOWPERMISSION__STRING_SHORT_,RPC_SETCONTAINERDENYPERMISSION__STRING_SHORT_,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_,RPC_ISINWATER__,RPC_GETDISPLAYEDNAME__,RPC_DOSENDTOCLIENT__,RPC_SETSENDTOCLIENT__BOOL_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_UPDATEDIRECTION__FLOAT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTMESSAGEPRIVATE__BASEPACKET_SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECTPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROYPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__LONG_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETZONE__,RPC_GETLOCALZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_SETDETAILEDDESCRIPTION__STRING_,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISROBEOBJECT__,RPC_ISLIGHTSABERCRYSTALOBJECT__,RPC_ISFIREWORKOBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISLAIROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISRESOURCESPAWN__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISLIVESAMPLE__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISTRAPOBJECT__,RPC_ISREPAIRTOOL__,RPC_ISCAMOKIT__,RPC_ISATTACHMENT__,RPC_ISDICEOBJECT__,RPC_ISCREATUREHABITAT__,RPC_ISCAMPKIT__,RPC_ISCAMPSTRUCTURE__,RPC_SETCONTAINERDEFAULTALLOWPERMISSION__SHORT_,RPC_SETCONTAINERDEFAULTDENYPERMISSION__SHORT_,RPC_SETCONTAINERINHERITPERMISSIONSFROMPARENT__BOOL_,RPC_SETCONTAINEROWNERID__LONG_,RPC_SETCONTAINERALLOWPERMISSION__STRING_SHORT_,RPC_SETCONTAINERDENYPERMISSION__STRING_SHORT_,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_,RPC_ISINWATER__,RPC_GETDISPLAYEDNAME__,RPC_DOSENDTOCLIENT__,RPC_SETSENDTOCLIENT__BOOL_};
 
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
@@ -1440,6 +1440,7 @@ String SceneObject::getObjectNameStringIdFile() {
 
 		DistributedMethod method(this, RPC_GETOBJECTNAMESTRINGIDFILE__);
 
+		String _return_getObjectNameStringIdFile;
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdFile);
 		return _return_getObjectNameStringIdFile;
 	} else
@@ -1454,6 +1455,7 @@ String SceneObject::getObjectNameStringIdName() {
 
 		DistributedMethod method(this, RPC_GETOBJECTNAMESTRINGIDNAME__);
 
+		String _return_getObjectNameStringIdName;
 		method.executeWithAsciiReturn(_return_getObjectNameStringIdName);
 		return _return_getObjectNameStringIdName;
 	} else
@@ -1505,6 +1507,7 @@ String SceneObject::getArrangementDescriptor(int idx) {
 		DistributedMethod method(this, RPC_GETARRANGEMENTDESCRIPTOR__INT_);
 		method.addSignedIntParameter(idx);
 
+		String _return_getArrangementDescriptor;
 		method.executeWithAsciiReturn(_return_getArrangementDescriptor);
 		return _return_getArrangementDescriptor;
 	} else
@@ -1520,6 +1523,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 		DistributedMethod method(this, RPC_GETSLOTDESCRIPTOR__INT_);
 		method.addSignedIntParameter(idx);
 
+		String _return_getSlotDescriptor;
 		method.executeWithAsciiReturn(_return_getSlotDescriptor);
 		return _return_getSlotDescriptor;
 	} else
@@ -2048,12 +2052,8 @@ bool SceneObject::isASubChildOf(SceneObject* object) {
 ReadWriteLock* SceneObject::getContainerLock() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETCONTAINERLOCK__);
-
-		return static_cast<ReadWriteLock*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getContainerLock();
 }
@@ -2066,6 +2066,7 @@ UnicodeString SceneObject::getCustomObjectName() {
 
 		DistributedMethod method(this, RPC_GETCUSTOMOBJECTNAME__);
 
+		UnicodeString _return_getCustomObjectName;
 		method.executeWithUnicodeReturn(_return_getCustomObjectName);
 		return _return_getCustomObjectName;
 	} else
@@ -2080,6 +2081,7 @@ String SceneObject::getLoggingName() {
 
 		DistributedMethod method(this, RPC_GETLOGGINGNAME__);
 
+		String _return_getLoggingName;
 		method.executeWithAsciiReturn(_return_getLoggingName);
 		return _return_getLoggingName;
 	} else
@@ -3406,6 +3408,7 @@ String SceneObject::getDisplayedName() {
 
 		DistributedMethod method(this, RPC_GETDISPLAYEDNAME__);
 
+		String _return_getDisplayedName;
 		method.executeWithAsciiReturn(_return_getDisplayedName);
 		return _return_getDisplayedName;
 	} else
@@ -4878,661 +4881,1108 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case RPC_FINALIZE__:
-		finalize();
+		{
+			finalize();
+		}
 		break;
 	case RPC_INITIALIZEPRIVATEDATA__:
-		initializePrivateData();
+		{
+			initializePrivateData();
+		}
 		break;
 	case RPC_CREATECOMPONENTS__:
-		createComponents();
+		{
+			createComponents();
+		}
 		break;
 	case RPC_CREATECONTAINERCOMPONENT__:
-		createContainerComponent();
+		{
+			createContainerComponent();
+		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		initializeTransientMembers();
+		{
+			initializeTransientMembers();
+		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
-		notifyLoadFromDatabase();
+		{
+			notifyLoadFromDatabase();
+		}
 		break;
 	case RPC_INFO__STRING_BOOL_:
-		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
+		{
+			String msg; 
+			info(inv->getAsciiParameter(msg), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_ERROR__STRING_:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		{
+			String msg; 
+			error(inv->getAsciiParameter(msg));
+		}
 		break;
 	case RPC_INRANGEOBJECTS__INT_FLOAT_:
-		resp->insertSignedInt(inRangeObjects(inv->getUnsignedIntParameter(), inv->getFloatParameter()));
+		{
+			resp->insertSignedInt(inRangeObjects(inv->getUnsignedIntParameter(), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_ISINRANGE__SCENEOBJECT_FLOAT_:
-		resp->insertBoolean(isInRange(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		{
+			resp->insertBoolean(isInRange(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getFloatParameter()));
+		}
 		break;
 	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
-		resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_:
-		resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		{
+			resp->insertBoolean(removeObject(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMWORLD__BOOL_:
-		destroyObjectFromWorld(inv->getBooleanParameter());
+		{
+			destroyObjectFromWorld(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
+		{
+			String errorDescription; 
+			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectInsertedToChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectRemovedFromChild(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_UPDATETODATABASE__:
-		updateToDatabase();
+		{
+			updateToDatabase();
+		}
 		break;
 	case RPC_UPDATETODATABASEWITHOUTCHILDREN__:
-		updateToDatabaseWithoutChildren();
+		{
+			updateToDatabaseWithoutChildren();
+		}
 		break;
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
+		{
+			updateToDatabaseAllObjects(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		destroyObjectFromDatabase(inv->getBooleanParameter());
+		{
+			destroyObjectFromDatabase(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_CANBEDESTROYED__CREATUREOBJECT_:
-		resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(canBeDestroyed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_LINK__LONG_INT_:
-		resp->insertLong(link(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(link(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
-		sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			sendTo(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_:
-		sendWithoutParentTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendWithoutParentTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendWithoutContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendWithoutContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
-		sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendDestroyTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
-		sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendBaselinesTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
-		sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_:
-		sendSlottedObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			sendSlottedObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDTOOWNER__BOOL_:
-		sendToOwner(inv->getBooleanParameter());
+		{
+			sendToOwner(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_:
-		sendAttributeListTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			sendAttributeListTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
-		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
+		{
+			UnicodeString name; 
+			setCustomObjectName(inv->getUnicodeParameter(name), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_OPENCONTAINERTO__CREATUREOBJECT_:
-		openContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			openContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_:
-		closeContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			closeContainerTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_NOTIFYINSERTTOZONE__ZONE_:
-		notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			notifyInsertToZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_:
-		switchZone(inv->getAsciiParameter(_param0_switchZone__String_float_float_float_long_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		{
+			String newTerrainName; 
+			switchZone(inv->getAsciiParameter(newTerrainName), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_:
-		teleport(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		{
+			teleport(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_:
-		updateDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		{
+			updateDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		}
 		break;
 	case RPC_UPDATEDIRECTION__FLOAT_:
-		updateDirection(inv->getFloatParameter());
+		{
+			updateDirection(inv->getFloatParameter());
+		}
 		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
-		notifyRemoveFromZone();
+		{
+			notifyRemoveFromZone();
+		}
 		break;
 	case RPC_UPDATEZONE__BOOL_BOOL_:
-		updateZone(inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			updateZone(inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_:
-		updateZoneWithParent(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			updateZoneWithParent(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_:
-		broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		{
+			broadcastMessage(static_cast<BasePacket*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTMESSAGEPRIVATE__BASEPACKET_SCENEOBJECT_BOOL_:
-		broadcastMessagePrivate(static_cast<BasePacket*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastMessagePrivate(static_cast<BasePacket*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_:
-		broadcastObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTOBJECTPRIVATE__SCENEOBJECT_SCENEOBJECT_:
-		broadcastObjectPrivate(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			broadcastObjectPrivate(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_:
-		broadcastDestroy(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		{
+			broadcastDestroy(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
 		break;
 	case RPC_BROADCASTDESTROYPRIVATE__SCENEOBJECT_SCENEOBJECT_:
-		broadcastDestroyPrivate(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			broadcastDestroyPrivate(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SENDMESSAGE__BASEPACKET_:
-		sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		{
+			sendMessage(static_cast<BasePacket*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_COMPARETO__SCENEOBJECT_:
-		resp->insertSignedInt(compareTo(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(compareTo(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETPARENTID__:
-		resp->insertLong(getParentID());
+		{
+			resp->insertLong(getParentID());
+		}
 		break;
 	case RPC_CONTAINSPENDINGTASK__STRING_:
-		resp->insertBoolean(containsPendingTask(inv->getAsciiParameter(_param0_containsPendingTask__String_)));
+		{
+			String name; 
+			resp->insertBoolean(containsPendingTask(inv->getAsciiParameter(name)));
+		}
 		break;
 	case RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_:
-		showFlyText(inv->getAsciiParameter(_param0_showFlyText__String_String_byte_byte_byte_), inv->getAsciiParameter(_param1_showFlyText__String_String_byte_byte_byte_), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		{
+			String file; String uax; 
+			showFlyText(inv->getAsciiParameter(file), inv->getAsciiParameter(uax), inv->getByteParameter(), inv->getByteParameter(), inv->getByteParameter());
+		}
 		break;
 	case RPC_GETACTIVESESSION__INT_:
-		resp->insertLong(getActiveSession(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getActiveSession(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_ADDACTIVESESSION__INT_FACADE_:
-		addActiveSession(inv->getUnsignedIntParameter(), static_cast<Facade*>(inv->getObjectParameter()));
+		{
+			addActiveSession(inv->getUnsignedIntParameter(), static_cast<Facade*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_CONTAINSACTIVESESSION__INT_:
-		resp->insertBoolean(containsActiveSession(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(containsActiveSession(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_DROPACTIVESESSION__INT_:
-		resp->insertBoolean(dropActiveSession(inv->getUnsignedIntParameter()));
+		{
+			resp->insertBoolean(dropActiveSession(inv->getUnsignedIntParameter()));
+		}
 		break;
 	case RPC_GETACTIVESESSIONSCOUNT__:
-		resp->insertSignedInt(getActiveSessionsCount());
+		{
+			resp->insertSignedInt(getActiveSessionsCount());
+		}
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_GETDISTANCETO__SCENEOBJECT_:
-		resp->insertFloat(getDistanceTo(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertFloat(getDistanceTo(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_UPDATEVEHICLEPOSITION__BOOL_:
-		updateVehiclePosition(inv->getBooleanParameter());
+		{
+			updateVehiclePosition(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectInserted(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_:
-		resp->insertSignedInt(notifyObjectRemoved(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertSignedInt(notifyObjectRemoved(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_ADDACTIVEAREA__ACTIVEAREA_:
-		addActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
+		{
+			addActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_DROPACTIVEAREA__ACTIVEAREA_:
-		dropActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
+		{
+			dropActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_HASACTIVEAREA__ACTIVEAREA_:
-		resp->insertBoolean(hasActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(hasActiveArea(static_cast<ActiveArea*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_HASACTIVEAREA__LONG_:
-		resp->insertBoolean(hasActiveArea(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasActiveArea(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_GETACTIVEAREASSIZE__:
-		resp->insertSignedInt(getActiveAreasSize());
+		{
+			resp->insertSignedInt(getActiveAreasSize());
+		}
 		break;
 	case RPC_GETACTIVEREGION__:
-		resp->insertLong(getActiveRegion()->_getObjectID());
+		{
+			resp->insertLong(getActiveRegion()->_getObjectID());
+		}
 		break;
 	case RPC_GETZONE__:
-		resp->insertLong(getZone()->_getObjectID());
+		{
+			resp->insertLong(getZone()->_getObjectID());
+		}
 		break;
 	case RPC_GETLOCALZONE__:
-		resp->insertLong(getLocalZone()->_getObjectID());
+		{
+			resp->insertLong(getLocalZone()->_getObjectID());
+		}
 		break;
 	case RPC_GETOBJECTID__:
-		resp->insertLong(getObjectID());
+		{
+			resp->insertLong(getObjectID());
+		}
 		break;
 	case RPC_GETWORLDPOSITIONX__:
-		resp->insertFloat(getWorldPositionX());
+		{
+			resp->insertFloat(getWorldPositionX());
+		}
 		break;
 	case RPC_GETWORLDPOSITIONY__:
-		resp->insertFloat(getWorldPositionY());
+		{
+			resp->insertFloat(getWorldPositionY());
+		}
 		break;
 	case RPC_GETWORLDPOSITIONZ__:
-		resp->insertFloat(getWorldPositionZ());
+		{
+			resp->insertFloat(getWorldPositionZ());
+		}
 		break;
 	case RPC_GETDIRECTIONX__:
-		resp->insertFloat(getDirectionX());
+		{
+			resp->insertFloat(getDirectionX());
+		}
 		break;
 	case RPC_GETDIRECTIONZ__:
-		resp->insertFloat(getDirectionZ());
+		{
+			resp->insertFloat(getDirectionZ());
+		}
 		break;
 	case RPC_GETDIRECTIONY__:
-		resp->insertFloat(getDirectionY());
+		{
+			resp->insertFloat(getDirectionY());
+		}
 		break;
 	case RPC_GETDIRECTIONW__:
-		resp->insertFloat(getDirectionW());
+		{
+			resp->insertFloat(getDirectionW());
+		}
 		break;
 	case RPC_GETCLIENTOBJECTCRC__:
-		resp->insertInt(getClientObjectCRC());
+		{
+			resp->insertInt(getClientObjectCRC());
+		}
 		break;
 	case RPC_GETSERVEROBJECTCRC__:
-		resp->insertInt(getServerObjectCRC());
+		{
+			resp->insertInt(getServerObjectCRC());
+		}
 		break;
 	case RPC_ISWAYPOINTOBJECT__:
-		resp->insertBoolean(isWaypointObject());
+		{
+			resp->insertBoolean(isWaypointObject());
+		}
 		break;
 	case RPC_GETOBJECTNAMESTRINGIDFILE__:
-		resp->insertAscii(getObjectNameStringIdFile());
+		{
+			resp->insertAscii(getObjectNameStringIdFile());
+		}
 		break;
 	case RPC_GETOBJECTNAMESTRINGIDNAME__:
-		resp->insertAscii(getObjectNameStringIdName());
+		{
+			resp->insertAscii(getObjectNameStringIdName());
+		}
 		break;
 	case RPC_SETDETAILEDDESCRIPTION__STRING_:
-		setDetailedDescription(inv->getAsciiParameter(_param0_setDetailedDescription__String_));
+		{
+			String detail; 
+			setDetailedDescription(inv->getAsciiParameter(detail));
+		}
 		break;
 	case RPC_GETARRANGEMENTDESCRIPTORSIZE__:
-		resp->insertSignedInt(getArrangementDescriptorSize());
+		{
+			resp->insertSignedInt(getArrangementDescriptorSize());
+		}
 		break;
 	case RPC_GETARRANGEMENTDESCRIPTOR__INT_:
-		resp->insertAscii(getArrangementDescriptor(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getArrangementDescriptor(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_GETSLOTDESCRIPTOR__INT_:
-		resp->insertAscii(getSlotDescriptor(inv->getSignedIntParameter()));
+		{
+			resp->insertAscii(getSlotDescriptor(inv->getSignedIntParameter()));
+		}
 		break;
 	case RPC_HASSLOTDESCRIPTOR__STRING_:
-		resp->insertBoolean(hasSlotDescriptor(inv->getAsciiParameter(_param0_hasSlotDescriptor__String_)));
+		{
+			String descr; 
+			resp->insertBoolean(hasSlotDescriptor(inv->getAsciiParameter(descr)));
+		}
 		break;
 	case RPC_GETSLOTTEDOBJECT__STRING_:
-		resp->insertLong(getSlottedObject(inv->getAsciiParameter(_param0_getSlottedObject__String_))->_getObjectID());
+		{
+			String slot; 
+			resp->insertLong(getSlottedObject(inv->getAsciiParameter(slot))->_getObjectID());
+		}
 		break;
 	case RPC_GETSLOTDESCRIPTORSIZE__:
-		resp->insertSignedInt(getSlotDescriptorSize());
+		{
+			resp->insertSignedInt(getSlotDescriptorSize());
+		}
 		break;
 	case RPC_GETSLOTTEDOBJECT__INT_:
-		resp->insertLong(getSlottedObject(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getSlottedObject(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_DROPSLOTTEDOBJECT__STRING_:
-		dropSlottedObject(inv->getAsciiParameter(_param0_dropSlottedObject__String_));
+		{
+			String arrengementDescriptor; 
+			dropSlottedObject(inv->getAsciiParameter(arrengementDescriptor));
+		}
 		break;
 	case RPC_REMOVESLOTTEDOBJECT__INT_:
-		removeSlottedObject(inv->getSignedIntParameter());
+		{
+			removeSlottedObject(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETCONTAINEROBJECTSSIZE__:
-		resp->insertSignedInt(getContainerObjectsSize());
+		{
+			resp->insertSignedInt(getContainerObjectsSize());
+		}
 		break;
 	case RPC_GETSLOTTEDOBJECTSSIZE__:
-		resp->insertSignedInt(getSlottedObjectsSize());
+		{
+			resp->insertSignedInt(getSlottedObjectsSize());
+		}
 		break;
 	case RPC_HASFULLCONTAINEROBJECTS__:
-		resp->insertBoolean(hasFullContainerObjects());
+		{
+			resp->insertBoolean(hasFullContainerObjects());
+		}
 		break;
 	case RPC_GETCONTAINERVOLUMELIMIT__:
-		resp->insertInt(getContainerVolumeLimit());
+		{
+			resp->insertInt(getContainerVolumeLimit());
+		}
 		break;
 	case RPC_GETCONTAINEROBJECT__INT_:
-		resp->insertLong(getContainerObject(inv->getSignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getContainerObject(inv->getSignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_HASOBJECTINCONTAINER__LONG_:
-		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
+		{
+			resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
+		}
 		break;
 	case RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_:
-		resp->insertBoolean(hasObjectInSlottedContainer(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(hasObjectInSlottedContainer(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETCONTAINEROBJECT__LONG_:
-		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
+		{
+			resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
+		}
 		break;
 	case RPC_REMOVEALLCONTAINEROBJECTS__:
-		removeAllContainerObjects();
+		{
+			removeAllContainerObjects();
+		}
 		break;
 	case RPC_PUTINCONTAINER__SCENEOBJECT_LONG_:
-		putInContainer(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		{
+			putInContainer(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_REMOVEFROMCONTAINEROBJECTS__INT_:
-		removeFromContainerObjects(inv->getSignedIntParameter());
+		{
+			removeFromContainerObjects(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETCONTAINERVOLUMELIMIT__INT_:
-		setContainerVolumeLimit(inv->getSignedIntParameter());
+		{
+			setContainerVolumeLimit(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SETCONTAINERTYPE__INT_:
-		setContainerType(inv->getSignedIntParameter());
+		{
+			setContainerType(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_GETCONTAINERTYPE__:
-		resp->insertInt(getContainerType());
+		{
+			resp->insertInt(getContainerType());
+		}
 		break;
 	case RPC_GETCLIENT__:
-		resp->insertLong(getClient()->_getObjectID());
+		{
+			resp->insertLong(getClient()->_getObjectID());
+		}
 		break;
 	case RPC_GETGAMEOBJECTTYPE__:
-		resp->insertInt(getGameObjectType());
+		{
+			resp->insertInt(getGameObjectType());
+		}
 		break;
 	case RPC_GETCLIENTGAMEOBJECTTYPE__:
-		resp->insertInt(getClientGameObjectType());
+		{
+			resp->insertInt(getClientGameObjectType());
+		}
 		break;
 	case RPC_GETCONTAINMENTTYPE__:
-		resp->insertInt(getContainmentType());
+		{
+			resp->insertInt(getContainmentType());
+		}
 		break;
 	case RPC_GETDIRECTIONANGLE__:
-		resp->insertFloat(getDirectionAngle());
+		{
+			resp->insertFloat(getDirectionAngle());
+		}
 		break;
 	case RPC_GETSPECIALDIRECTIONANGLE__:
-		resp->insertFloat(getSpecialDirectionAngle());
+		{
+			resp->insertFloat(getSpecialDirectionAngle());
+		}
 		break;
 	case RPC_ROTATE__INT_:
-		rotate(inv->getSignedIntParameter());
+		{
+			rotate(inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_FACEOBJECT__SCENEOBJECT_:
-		faceObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			faceObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYSELFPOSITIONUPDATE__:
-		notifySelfPositionUpdate();
+		{
+			notifySelfPositionUpdate();
+		}
 		break;
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
-		notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		{
+			notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_:
-		notifyCloseContainer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		{
+			notifyCloseContainer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_GETMOVEMENTCOUNTER__:
-		resp->insertInt(getMovementCounter());
+		{
+			resp->insertInt(getMovementCounter());
+		}
 		break;
 	case RPC_GETPARENT__:
-		resp->insertLong(getParent()->_getObjectID());
+		{
+			resp->insertLong(getParent()->_getObjectID());
+		}
 		break;
 	case RPC_GETZONESERVER__:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		{
+			resp->insertLong(getZoneServer()->_getObjectID());
+		}
 		break;
 	case RPC_GETROOTPARENT__:
-		resp->insertLong(getRootParent()->_getObjectID());
+		{
+			resp->insertLong(getRootParent()->_getObjectID());
+		}
 		break;
 	case RPC_GETPARENTRECURSIVELY__INT_:
-		resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter())->_getObjectID());
+		{
+			resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter())->_getObjectID());
+		}
 		break;
 	case RPC_ISASUBCHILDOF__SCENEOBJECT_:
-		resp->insertBoolean(isASubChildOf(static_cast<SceneObject*>(inv->getObjectParameter())));
-		break;
-	case RPC_GETCONTAINERLOCK__:
-		resp->insertLong(getContainerLock()->_getObjectID());
+		{
+			resp->insertBoolean(isASubChildOf(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_GETCUSTOMOBJECTNAME__:
-		resp->insertUnicode(getCustomObjectName());
+		{
+			resp->insertUnicode(getCustomObjectName());
+		}
 		break;
 	case RPC_GETLOGGINGNAME__:
-		resp->insertAscii(getLoggingName());
+		{
+			resp->insertAscii(getLoggingName());
+		}
 		break;
 	case RPC_ISPLAYERCREATURE__:
-		resp->insertBoolean(isPlayerCreature());
+		{
+			resp->insertBoolean(isPlayerCreature());
+		}
 		break;
 	case RPC_ISVENDOR__:
-		resp->insertBoolean(isVendor());
+		{
+			resp->insertBoolean(isVendor());
+		}
 		break;
 	case RPC_ISCONTAINERFULL__:
-		resp->insertBoolean(isContainerFull());
+		{
+			resp->insertBoolean(isContainerFull());
+		}
 		break;
 	case RPC_ISSHUTTLEINSTALLATION__:
-		resp->insertBoolean(isShuttleInstallation());
+		{
+			resp->insertBoolean(isShuttleInstallation());
+		}
 		break;
 	case RPC_ISPLAYEROBJECT__:
-		resp->insertBoolean(isPlayerObject());
+		{
+			resp->insertBoolean(isPlayerObject());
+		}
 		break;
 	case RPC_ISACTIVEAREA__:
-		resp->insertBoolean(isActiveArea());
+		{
+			resp->insertBoolean(isActiveArea());
+		}
 		break;
 	case RPC_ISREGION__:
-		resp->insertBoolean(isRegion());
+		{
+			resp->insertBoolean(isRegion());
+		}
 		break;
 	case RPC_ISCREATUREOBJECT__:
-		resp->insertBoolean(isCreatureObject());
+		{
+			resp->insertBoolean(isCreatureObject());
+		}
 		break;
 	case RPC_ISSHIPOBJECT__:
-		resp->insertBoolean(isShipObject());
+		{
+			resp->insertBoolean(isShipObject());
+		}
 		break;
 	case RPC_ISVEHICLEOBJECT__:
-		resp->insertBoolean(isVehicleObject());
+		{
+			resp->insertBoolean(isVehicleObject());
+		}
 		break;
 	case RPC_ISBUILDINGOBJECT__:
-		resp->insertBoolean(isBuildingObject());
+		{
+			resp->insertBoolean(isBuildingObject());
+		}
 		break;
 	case RPC_ISCLONINGBUILDINGOBJECT__:
-		resp->insertBoolean(isCloningBuildingObject());
+		{
+			resp->insertBoolean(isCloningBuildingObject());
+		}
 		break;
 	case RPC_ISGARAGE__:
-		resp->insertBoolean(isGarage());
+		{
+			resp->insertBoolean(isGarage());
+		}
 		break;
 	case RPC_ISWEAPONOBJECT__:
-		resp->insertBoolean(isWeaponObject());
+		{
+			resp->insertBoolean(isWeaponObject());
+		}
 		break;
 	case RPC_ISWEARABLEOBJECT__:
-		resp->insertBoolean(isWearableObject());
+		{
+			resp->insertBoolean(isWearableObject());
+		}
 		break;
 	case RPC_ISARMOROBJECT__:
-		resp->insertBoolean(isArmorObject());
+		{
+			resp->insertBoolean(isArmorObject());
+		}
 		break;
 	case RPC_ISROBEOBJECT__:
-		resp->insertBoolean(isRobeObject());
+		{
+			resp->insertBoolean(isRobeObject());
+		}
 		break;
 	case RPC_ISLIGHTSABERCRYSTALOBJECT__:
-		resp->insertBoolean(isLightsaberCrystalObject());
+		{
+			resp->insertBoolean(isLightsaberCrystalObject());
+		}
 		break;
 	case RPC_ISFIREWORKOBJECT__:
-		resp->insertBoolean(isFireworkObject());
+		{
+			resp->insertBoolean(isFireworkObject());
+		}
 		break;
 	case RPC_ISPSGARMOROBJECT__:
-		resp->insertBoolean(isPsgArmorObject());
+		{
+			resp->insertBoolean(isPsgArmorObject());
+		}
 		break;
 	case RPC_ISLAIROBJECT__:
-		resp->insertBoolean(isLairObject());
+		{
+			resp->insertBoolean(isLairObject());
+		}
 		break;
 	case RPC_ISCELLOBJECT__:
-		resp->insertBoolean(isCellObject());
+		{
+			resp->insertBoolean(isCellObject());
+		}
 		break;
 	case RPC_ISTANGIBLEOBJECT__:
-		resp->insertBoolean(isTangibleObject());
+		{
+			resp->insertBoolean(isTangibleObject());
+		}
 		break;
 	case RPC_ISRESOURCECONTAINER__:
-		resp->insertBoolean(isResourceContainer());
+		{
+			resp->insertBoolean(isResourceContainer());
+		}
 		break;
 	case RPC_ISRESOURCESPAWN__:
-		resp->insertBoolean(isResourceSpawn());
+		{
+			resp->insertBoolean(isResourceSpawn());
+		}
 		break;
 	case RPC_ISCOMPONENT__:
-		resp->insertBoolean(isComponent());
+		{
+			resp->insertBoolean(isComponent());
+		}
 		break;
 	case RPC_ISINTANGIBLEOBJECT__:
-		resp->insertBoolean(isIntangibleObject());
+		{
+			resp->insertBoolean(isIntangibleObject());
+		}
 		break;
 	case RPC_ISINSTRUMENT__:
-		resp->insertBoolean(isInstrument());
+		{
+			resp->insertBoolean(isInstrument());
+		}
 		break;
 	case RPC_ISLIVESAMPLE__:
-		resp->insertBoolean(isLiveSample());
+		{
+			resp->insertBoolean(isLiveSample());
+		}
 		break;
 	case RPC_ISINSTALLATIONOBJECT__:
-		resp->insertBoolean(isInstallationObject());
+		{
+			resp->insertBoolean(isInstallationObject());
+		}
 		break;
 	case RPC_ISGENERATOROBJECT__:
-		resp->insertBoolean(isGeneratorObject());
+		{
+			resp->insertBoolean(isGeneratorObject());
+		}
 		break;
 	case RPC_ISCITYTERMINAL__:
-		resp->insertBoolean(isCityTerminal());
+		{
+			resp->insertBoolean(isCityTerminal());
+		}
 		break;
 	case RPC_ISCITYVOTETERMINAL__:
-		resp->insertBoolean(isCityVoteTerminal());
+		{
+			resp->insertBoolean(isCityVoteTerminal());
+		}
 		break;
 	case RPC_ISFACTORY__:
-		resp->insertBoolean(isFactory());
+		{
+			resp->insertBoolean(isFactory());
+		}
 		break;
 	case RPC_ISFACTORYCRATE__:
-		resp->insertBoolean(isFactoryCrate());
+		{
+			resp->insertBoolean(isFactoryCrate());
+		}
 		break;
 	case RPC_ISFISHINGPOLEOBJECT__:
-		resp->insertBoolean(isFishingPoleObject());
+		{
+			resp->insertBoolean(isFishingPoleObject());
+		}
 		break;
 	case RPC_ISDEEDOBJECT__:
-		resp->insertBoolean(isDeedObject());
+		{
+			resp->insertBoolean(isDeedObject());
+		}
 		break;
 	case RPC_ISVEHICLEDEEDOBJECT__:
-		resp->insertBoolean(isVehicleDeedObject());
+		{
+			resp->insertBoolean(isVehicleDeedObject());
+		}
 		break;
 	case RPC_ISBUILDINGDEED__:
-		resp->insertBoolean(isBuildingDeed());
+		{
+			resp->insertBoolean(isBuildingDeed());
+		}
 		break;
 	case RPC_ISSIGNOBJECT__:
-		resp->insertBoolean(isSignObject());
+		{
+			resp->insertBoolean(isSignObject());
+		}
 		break;
 	case RPC_ISINSTALLATIONDEED__:
-		resp->insertBoolean(isInstallationDeed());
+		{
+			resp->insertBoolean(isInstallationDeed());
+		}
 		break;
 	case RPC_ISCRAFTINGTOOL__:
-		resp->insertBoolean(isCraftingTool());
+		{
+			resp->insertBoolean(isCraftingTool());
+		}
 		break;
 	case RPC_ISCRAFTINGSTATION__:
-		resp->insertBoolean(isCraftingStation());
+		{
+			resp->insertBoolean(isCraftingStation());
+		}
 		break;
 	case RPC_ISMANUFACTURESCHEMATIC__:
-		resp->insertBoolean(isManufactureSchematic());
+		{
+			resp->insertBoolean(isManufactureSchematic());
+		}
 		break;
 	case RPC_ISSTRUCTUREOBJECT__:
-		resp->insertBoolean(isStructureObject());
+		{
+			resp->insertBoolean(isStructureObject());
+		}
 		break;
 	case RPC_ISFISHINGBAIT__:
-		resp->insertBoolean(isFishingBait());
+		{
+			resp->insertBoolean(isFishingBait());
+		}
 		break;
 	case RPC_ISTRAPOBJECT__:
-		resp->insertBoolean(isTrapObject());
+		{
+			resp->insertBoolean(isTrapObject());
+		}
 		break;
 	case RPC_ISREPAIRTOOL__:
-		resp->insertBoolean(isRepairTool());
+		{
+			resp->insertBoolean(isRepairTool());
+		}
 		break;
 	case RPC_ISCAMOKIT__:
-		resp->insertBoolean(isCamoKit());
+		{
+			resp->insertBoolean(isCamoKit());
+		}
 		break;
 	case RPC_ISATTACHMENT__:
-		resp->insertBoolean(isAttachment());
+		{
+			resp->insertBoolean(isAttachment());
+		}
 		break;
 	case RPC_ISDICEOBJECT__:
-		resp->insertBoolean(isDiceObject());
+		{
+			resp->insertBoolean(isDiceObject());
+		}
 		break;
 	case RPC_ISCREATUREHABITAT__:
-		resp->insertBoolean(isCreatureHabitat());
+		{
+			resp->insertBoolean(isCreatureHabitat());
+		}
 		break;
 	case RPC_ISCAMPKIT__:
-		resp->insertBoolean(isCampKit());
+		{
+			resp->insertBoolean(isCampKit());
+		}
 		break;
 	case RPC_ISCAMPSTRUCTURE__:
-		resp->insertBoolean(isCampStructure());
+		{
+			resp->insertBoolean(isCampStructure());
+		}
 		break;
 	case RPC_SETCONTAINERDEFAULTALLOWPERMISSION__SHORT_:
-		setContainerDefaultAllowPermission(inv->getUnsignedShortParameter());
+		{
+			setContainerDefaultAllowPermission(inv->getUnsignedShortParameter());
+		}
 		break;
 	case RPC_SETCONTAINERDEFAULTDENYPERMISSION__SHORT_:
-		setContainerDefaultDenyPermission(inv->getUnsignedShortParameter());
+		{
+			setContainerDefaultDenyPermission(inv->getUnsignedShortParameter());
+		}
 		break;
 	case RPC_SETCONTAINERINHERITPERMISSIONSFROMPARENT__BOOL_:
-		setContainerInheritPermissionsFromParent(inv->getBooleanParameter());
+		{
+			setContainerInheritPermissionsFromParent(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_SETCONTAINEROWNERID__LONG_:
-		setContainerOwnerID(inv->getUnsignedLongParameter());
+		{
+			setContainerOwnerID(inv->getUnsignedLongParameter());
+		}
 		break;
 	case RPC_SETCONTAINERALLOWPERMISSION__STRING_SHORT_:
-		setContainerAllowPermission(inv->getAsciiParameter(_param0_setContainerAllowPermission__String_short_), inv->getUnsignedShortParameter());
+		{
+			String group; 
+			setContainerAllowPermission(inv->getAsciiParameter(group), inv->getUnsignedShortParameter());
+		}
 		break;
 	case RPC_SETCONTAINERDENYPERMISSION__STRING_SHORT_:
-		setContainerDenyPermission(inv->getAsciiParameter(_param0_setContainerDenyPermission__String_short_), inv->getUnsignedShortParameter());
+		{
+			String group; 
+			setContainerDenyPermission(inv->getAsciiParameter(group), inv->getUnsignedShortParameter());
+		}
 		break;
 	case RPC_SETGAMEOBJECTTYPE__INT_:
-		setGameObjectType(inv->getUnsignedIntParameter());
+		{
+			setGameObjectType(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETCLIENTOBJECTCRC__INT_:
-		setClientObjectCRC(inv->getUnsignedIntParameter());
+		{
+			setClientObjectCRC(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETSERVEROBJECTCRC__INT_:
-		setServerObjectCRC(inv->getUnsignedIntParameter());
+		{
+			setServerObjectCRC(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETZONE__ZONE_:
-		setZone(static_cast<Zone*>(inv->getObjectParameter()));
+		{
+			setZone(static_cast<Zone*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_:
-		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		{
+			setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETDIRECTION__FLOAT_:
-		setDirection(inv->getFloatParameter());
+		{
+			setDirection(inv->getFloatParameter());
+		}
 		break;
 	case RPC_SETMOVEMENTCOUNTER__INT_:
-		setMovementCounter(inv->getUnsignedIntParameter());
+		{
+			setMovementCounter(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_INCREMENTMOVEMENTCOUNTER__:
-		incrementMovementCounter();
+		{
+			incrementMovementCounter();
+		}
 		break;
 	case RPC_SETCONTAINMENTTYPE__INT_:
-		setContainmentType(inv->getUnsignedIntParameter());
+		{
+			setContainmentType(inv->getUnsignedIntParameter());
+		}
 		break;
 	case RPC_SETLOGGINGNAME__STRING_:
-		setLoggingName(inv->getAsciiParameter(_param0_setLoggingName__String_));
+		{
+			String name; 
+			setLoggingName(inv->getAsciiParameter(name));
+		}
 		break;
 	case RPC_SETCLIENTOBJECT__BOOL_:
-		setClientObject(inv->getBooleanParameter());
+		{
+			setClientObject(inv->getBooleanParameter());
+		}
 		break;
 	case RPC_GETPLANETCRC__:
-		resp->insertInt(getPlanetCRC());
+		{
+			resp->insertInt(getPlanetCRC());
+		}
 		break;
 	case RPC_ISSTATICOBJECT__:
-		resp->insertBoolean(isStaticObject());
+		{
+			resp->insertBoolean(isStaticObject());
+		}
 		break;
 	case RPC_ISCONTAINEROBJECT__:
-		resp->insertBoolean(isContainerObject());
+		{
+			resp->insertBoolean(isContainerObject());
+		}
 		break;
 	case RPC_ISTERMINAL__:
-		resp->insertBoolean(isTerminal());
+		{
+			resp->insertBoolean(isTerminal());
+		}
 		break;
 	case RPC_ISGROUPOBJECT__:
-		resp->insertBoolean(isGroupObject());
+		{
+			resp->insertBoolean(isGroupObject());
+		}
 		break;
 	case RPC_ISGUILDOBJECT__:
-		resp->insertBoolean(isGuildObject());
+		{
+			resp->insertBoolean(isGuildObject());
+		}
 		break;
 	case RPC_ISCONTROLDEVICE__:
-		resp->insertBoolean(isControlDevice());
+		{
+			resp->insertBoolean(isControlDevice());
+		}
 		break;
 	case RPC_ISMISSIONTERMINAL__:
-		resp->insertBoolean(isMissionTerminal());
+		{
+			resp->insertBoolean(isMissionTerminal());
+		}
 		break;
 	case RPC_ISMISSIONOBJECT__:
-		resp->insertBoolean(isMissionObject());
+		{
+			resp->insertBoolean(isMissionObject());
+		}
 		break;
 	case RPC_GETPLANETMAPCATEGORYCRC__:
-		resp->insertSignedInt(getPlanetMapCategoryCRC());
+		{
+			resp->insertSignedInt(getPlanetMapCategoryCRC());
+		}
 		break;
 	case RPC_GETPLANETMAPSUBCATEGORYCRC__:
-		resp->insertSignedInt(getPlanetMapSubCategoryCRC());
+		{
+			resp->insertSignedInt(getPlanetMapSubCategoryCRC());
+		}
 		break;
 	case RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_:
-		resp->insertBoolean(containsChildObject(static_cast<SceneObject*>(inv->getObjectParameter())));
+		{
+			resp->insertBoolean(containsChildObject(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
 		break;
 	case RPC_CREATECHILDOBJECTS__:
-		createChildObjects();
+		{
+			createChildObjects();
+		}
 		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
-		initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		{
+			initializeChildObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
 		break;
 	case RPC_ISINWATER__:
-		resp->insertBoolean(isInWater());
+		{
+			resp->insertBoolean(isInWater());
+		}
 		break;
 	case RPC_GETDISPLAYEDNAME__:
-		resp->insertAscii(getDisplayedName());
+		{
+			resp->insertAscii(getDisplayedName());
+		}
 		break;
 	case RPC_DOSENDTOCLIENT__:
-		resp->insertBoolean(doSendToClient());
+		{
+			resp->insertBoolean(doSendToClient());
+		}
 		break;
 	case RPC_SETSENDTOCLIENT__BOOL_:
-		setSendToClient(inv->getBooleanParameter());
+		{
+			setSendToClient(inv->getBooleanParameter());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");
@@ -6045,10 +6495,6 @@ SceneObject* SceneObjectAdapter::getParentRecursively(unsigned int gameObjectTyp
 
 bool SceneObjectAdapter::isASubChildOf(SceneObject* object) {
 	return (static_cast<SceneObject*>(stub))->isASubChildOf(object);
-}
-
-ReadWriteLock* SceneObjectAdapter::getContainerLock() {
-	return (static_cast<SceneObject*>(stub))->getContainerLock();
 }
 
 UnicodeString SceneObjectAdapter::getCustomObjectName() {

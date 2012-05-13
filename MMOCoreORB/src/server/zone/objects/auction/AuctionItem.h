@@ -171,13 +171,6 @@ protected:
 
 	virtual ~AuctionItem();
 
-	String _return_getBidderName;
-	String _return_getItemDescription;
-	String _return_getItemName;
-	String _return_getLocation;
-	String _return_getOwnerName;
-	String _return_getTerminalTitle;
-
 	friend class AuctionItemHelper;
 };
 
@@ -479,13 +472,6 @@ public:
 
 	bool isOwner();
 
-protected:
-	String _param0_setLocation__String_String_long_int_int_bool_;
-	String _param1_setLocation__String_String_long_int_int_bool_;
-	String _param0_setItemName__String_;
-	String _param0_setItemDescription__String_;
-	String _param0_setBidderName__String_;
-	String _param0_setOwnerName__String_;
 };
 
 class AuctionItemHelper : public DistributedObjectClassHelper, public Singleton<AuctionItemHelper> {

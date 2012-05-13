@@ -248,16 +248,24 @@ void GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		{
+			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
+		}
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
-		synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
-		synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		{
+			synchronizedUIStopListen(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
 		break;
 	case RPC_ISGENERATOROBJECT__:
-		resp->insertBoolean(isGeneratorObject());
+		{
+			resp->insertBoolean(isGeneratorObject());
+		}
 		break;
 	default:
 		throw Exception("Method does not exists");
