@@ -74,7 +74,7 @@ public:
 		StringBuffer query;
 		query << "SELECT DISTINCT characters.character_oid, characters.account_id, characters.galaxy_id, characters.firstname, "
 			<< "characters.surname, characters.race, characters.gender, characters.template, UNIX_TIMESTAMP(characters.creation_date), "
-			<< "(select galaxy.name from galaxy where galaxy.galaxy_id = characters.galaxy_id LIMIT 1) as galaxyname, "
+			<< "IFNULL((select galaxy.name from galaxy where galaxy.galaxy_id = characters.galaxy_id LIMIT 1), ""), "
 			<< "IFNULL((SELECT b.reason FROM character_bans b WHERE b.account_id = characters.account_id AND characters.firstname = b.name AND characters.galaxy_id = b.galaxy_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), ''), "
 			<< "IFNULL((SELECT b.expires FROM character_bans b WHERE b.account_id = characters.account_id AND characters.firstname = b.name AND characters.galaxy_id = b.galaxy_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0), "
 			<< "IFNULL((SELECT b.issuer_id FROM character_bans b WHERE b.account_id = characters.account_id AND characters.firstname = b.name AND characters.galaxy_id = b.galaxy_id AND b.expires > UNIX_TIMESTAMP() ORDER BY b.expires DESC LIMIT 1), 0) "
