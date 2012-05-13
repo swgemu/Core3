@@ -66,7 +66,7 @@ object_tangible_food_crafted_drink_elshandruu_pica_thundercloud = object_tangibl
 	speciesRestriction = "",
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "FL", "OQ", "DR", "OQ", "DR", "OQ", "XX"},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "FL", "OQ", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 1, 3, 3, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},

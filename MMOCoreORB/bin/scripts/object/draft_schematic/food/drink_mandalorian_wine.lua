@@ -64,10 +64,10 @@ object_draft_schematic_food_drink_mandalorian_wine = object_draft_schematic_food
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"first_alcohol", "second_alcohol", "first_mash", "second_mash", "glass", "additive"},
-   ingredientSlotType = {1, 1, 0, 0, 1, 1},
+   ingredientSlotType = {1, 1, 0, 0, 2, 1},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff", "fruit_fruits", "rice_wild", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {1, 1, 15, 15, 1, 1},
-   combineTypes = {1, 1, 0, 0, 2, 1},
+   combineTypes = {1, 1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

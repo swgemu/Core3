@@ -49,8 +49,8 @@ object_tangible_component_food_container_large_glass = object_tangible_component
 	experimentalWeights = {1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null"},
 	experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
-	experimentalMin = {0, 0, 2},
-	experimentalMax = {0, 0, 2},
+	experimentalMin = {0, 0, 1.5},
+	experimentalMax = {0, 0, 1.5},
 	experimentalPrecision = {0, 0, 0},
 }
 

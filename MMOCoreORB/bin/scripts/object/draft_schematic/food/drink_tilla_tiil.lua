@@ -45,7 +45,7 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "T\\\'illa-T\\\'iil",
+   customObjectName = "T\'illa-T\'iil",
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
@@ -64,10 +64,10 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"alcohol", "first_carbonation", "second_carbonation", "third_carbonation", "glass", "additive"},
-   ingredientSlotType = {2, 0, 0, 0, 1, 3},
+   ingredientSlotType = {1, 0, 0, 0, 2, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "gas_inert_hurlothrombic", "gas_inert_methanagen", "gas_inert_hydron3", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {2, 30, 30, 30, 1, 1},
-   combineTypes = {1, 0, 0, 0, 2, 1},
+   combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

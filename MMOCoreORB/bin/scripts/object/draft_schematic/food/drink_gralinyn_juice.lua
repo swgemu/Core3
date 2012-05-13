@@ -64,10 +64,10 @@ object_draft_schematic_food_drink_gralinyn_juice = object_draft_schematic_food_s
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"fermented_fruit", "fermented_vegetables", "alcohol", "glass", "additive"},
-   ingredientSlotType = {0, 0, 1, 1, 3},
+   ingredientSlotType = {0, 0, 1, 2, 3},
    resourceTypes = {"fruit", "vegetable", "object/tangible/food/crafted/shared_drink_alcohol.iff", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {20, 15, 1, 1, 1},
-   combineTypes = {0, 0, 1, 2, 1},
+   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

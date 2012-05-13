@@ -57,7 +57,7 @@ object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
 	experimentalMin = {0, 0, 1000, 2},
-	experimentalMax = {0, 0, 1000, 20},
+	experimentalMax = {0, 0, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0},
 }
 
