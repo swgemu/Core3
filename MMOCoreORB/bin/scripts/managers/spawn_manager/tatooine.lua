@@ -229,7 +229,6 @@ tatooine_static_spawns = {
 	{"giant_canyon_krayt_dragon",1800,7417.3,7.7,4597.9,-128,0,""},
 	{"giant_canyon_krayt_dragon",1800,7345.2,15.2,4493.8,-116,0,""},
 	{"giant_canyon_krayt_dragon",1800,7140.4,57,4322.5,-86,0,""},
-	{"imperial_recruiter",0,-1275,0,-3594,-73,0,""},
 	{"imperial_recruiter",0,-1138,0,-3897,0,0,""},
 	{"imperial_recruiter",0,-0.86,0.4,-8,53,1280131,""},
 	{"informant_npc_lvl_1",0,1266,0,3184,225,0,""},
@@ -267,7 +266,6 @@ tatooine_static_spawns = {
 	{"junk_dealer",0,3905.3,33,2362.9,-90,0,""},
 	{"krayt_dragon_ancient",1800,6836.7,25.4,4321.8,-150,0,""},
 	{"krayt_dragon_ancient",1800,7491.3,8.4,4484.8,-150,0,""},
-	{"rebel_recruiter",0,-6.2,-4.0,-5.7,90,1213349,""},
 	{"trainer_1hsword",0,4.4,0.2,-7.8,36,9655496,""},
 	{"trainer_1hsword",0,-2964,5,2021,33,0,""},
 	{"trainer_2hsword",0,-2971,5,2032,174,0,""},
@@ -580,7 +578,7 @@ tatooine_static_spawns = {
 	{"bothan_information_broker", 60, -1.05454, 0.408271, -4.40312, 180.006, 1028491, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/shared_dressed_eisley_officer_bothan_female_01.iff
 	{"kormund_thrylle", 60, -1043.98, 10, -3530.5, 221.746, 0, "", "Kormund Thrylle"},  --@theme_park_name:kormund_thrylle full template: object/mobile/shared_dressed_tatooine_kormund_thrylle.iff
 	{"gerak_vurtimis", 60, -1252.5, 12, -3617.35, 278.1, 0, "calm", "Gerak Vurtimis"},  --@mob/creature_names:commoner_human_male full template: object/mobile/shared_dressed_commoner_fat_human_male_01.iff
-	{"imperial_recruiter", 60, -1275.75, 12, -3594.28, 0, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_recruiter full template: object/mobile/shared_dressed_imperial_officer_m.iff
+	{"imperial_recruiter", 60, -1275.75, 12, -3594.28, -73, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_recruiter full template: object/mobile/shared_dressed_imperial_officer_m.iff
 	{"sol_windtide", 60, -1203.12, 12, -3612.74, 236.494, 0, "calm", "Sol Windtide"},  --@npc_name:human_base_male full template: object/mobile/shared_dressed_noble_old_human_male_01.iff
 	{"businessman", 60, 3.32, 1.13306, -8.49, 228.007, 1028552, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/shared_dressed_commoner_tatooine_aqualish_male_02.iff
 	{"hunter", 60, -14.01, 1.13306, -8.53, 120.004, 1028553, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/shared_dressed_commoner_naboo_twilek_male_01.iff
