@@ -43,7 +43,49 @@
 
 MindBlast2Command = {
         name = "mindblast2",
-}
+
+    damageMax = 700, -- NOT CORRECT, Need data.
+	speed = 4.0,
+	forceCost = 160,
+	accuracySkillMod = "mindblast_accuracy";
+	coneAngle = 40,
+	coneAction = true,
+
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "jedi_state_defense" }, 
+		{}, 
+		65, 
+		100, 
+		10 
+	  )
+	},
+	
+	stateEffects = {
+	  StateEffect( 
+		DIZZY_EFFECT, 
+		{}, 
+		{ "jedi_state_defense" }, 
+		{}, 
+		65, 
+		100, 
+		10 
+	  )
+	},	
+	
+	
+	animationCRC = hashCode("force_mind_blast_1_particle_level_1_medium"),
+
+	combatSpam = "mindblast2",
+	
+	poolsToDamage = MIND_ATTRIBUTE,
+	
+	attackType = FORCEATTACK,
+
+	range = 32
+}	
 
 AddCommand(MindBlast2Command)
 

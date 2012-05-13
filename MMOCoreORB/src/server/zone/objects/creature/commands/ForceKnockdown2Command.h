@@ -46,12 +46,13 @@ which carries forward this exception.
 #define FORCEKNOCKDOWN2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForcePowersQueueCommand.h"
 
-class ForceKnockdown2Command : public QueueCommand {
+class ForceKnockdown2Command : public ForcePowersQueueCommand {
 public:
 
 	ForceKnockdown2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForcePowersQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		return doCombatAction(creature, target);
 	}
 
 };

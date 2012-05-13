@@ -43,7 +43,37 @@
 
 ForceKnockdown2Command = {
         name = "forceknockdown2",
-}
+
+    damageMax = 0,
+	speed = 4.0,
+	forceCost = 100,
+	accuracySkillMod = "forceknockdown_accuracy";
+	coneAngle = 40,
+	coneAction = true,
+
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "force_defense" }, 
+		{}, 
+		65, 
+		100, 
+		0 
+	  )
+	},
+	
+	
+	animationCRC = hashCode("force_knockdown_1_particle_level_1"),
+
+	combatSpam = "forceknockdown2",
+	
+	poolsToDamage = NONE,
+	
+	attackType = FORCEATTACK,
+
+	range = 32
+}				
 
 AddCommand(ForceKnockdown2Command)
 

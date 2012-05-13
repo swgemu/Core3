@@ -1,6 +1,6 @@
 giant_canyon_krayt_dragon = Creature:new {
 	objectName = "@mob/creature_names:giant_canyon_krayt_dragon",
-	socialGroup = "krayt",
+	socialGroup = "Krayt",
 	pvpFaction = "",
 	faction = "",
 	level = 300,
@@ -31,7 +31,8 @@ giant_canyon_krayt_dragon = Creature:new {
 	 {
 	        groups = {
 				{group = "krayt_dragon_common2", chance = 6000000},
-				{group = "krayt_tissue_uncommon", chance = 4000000}
+				{group = "krayt_tissue_uncommon", chance = 4000000},
+				{group = "pearls_premium", chance = 4000000}					
 			},
 			lootChance = 6500000
 		}

@@ -756,7 +756,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
-	// Next is Jedi Force Armor and Shield (TODO: needs fixing) reduction.
+	// Next is Jedi Force Armor and Shield reduction.
 
 	int forceArmor = defender->getSkillMod("force_armor");
 
@@ -769,28 +769,19 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
 	}
 
-	/* int forceShield = defender->getSkillMod("force_shield");
 
-	if (forceShield > 0 && (weapon->getAttackType() == WeaponObject::FORCEATTACK) && defender->isPlayerCreature()){
-		// Client Effect upon hit (needed)
-		defender->playEffect("clienteffect/pl_force_shield_hit.cef", "");
+	// Force Shield.
 
+	int forceShield = defender->getSkillMod("force_shield");
+
+	if (forceShield > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
 		float originalDamage = damage;
 		damage *= (1.f - (forceShield / 100.f));
 
-		ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+		int damageSent = originalDamage - damage;
 
-		if (playerObject != NULL) {
-			int fP = playerObject->getForcePower();
-			int forceCost = (originalDamage - damage) * 0.3;
-
-			if (fP <= forceCost){ // Remove buff if not enough force.
-				defender->notifyObservers(ObserverEventType::NOFORCEPOWER, defender, damage);
-			}
-
-			else playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-		}
-	}*/
+		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
+	}
 
 
 	// now apply the rest of the damage to the regular armor
@@ -882,6 +873,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
+	// Resets attack type back to normal if the last attack used was not a Force power.
 	int damageTypeCur = weapon->getAttackType();
 	weapon->setAttackType(damageTypeCur);
 
@@ -901,6 +893,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	if (damageMax > 0)
 		damage = damageMaxDif;
+
+	if (data.getAttackType() == CombatManager::FORCEATTACK) {
+		weapon->setAttackType(WeaponObject::FORCEATTACK); // For XP purposes.
+	}
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");

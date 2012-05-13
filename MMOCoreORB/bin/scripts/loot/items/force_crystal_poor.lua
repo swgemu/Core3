@@ -6,9 +6,9 @@ force_crystal_poor = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_module_force_crystal.iff",
 	craftingValues = {
-		{"attackspeed",2,0,5},
 		{"mindamage",2,5,0},
 		{"maxdamage",3,6,0},
+		{"attackspeed",2,0,5},		
 		{"woundchance",1,3,5},
 		{"hitpoints",600,700,0},
 		{"attackhealthcost",0,3,0},

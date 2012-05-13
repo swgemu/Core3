@@ -1,6 +1,6 @@
 krayt_dragon_ancient = Creature:new {
 	objectName = "@mob/creature_names:krayt_dragon_ancient",
-	socialGroup = "krayt",
+	socialGroup = "Krayt",
 	pvpFaction = "",
 	faction = "",
 	level = 336,
@@ -31,7 +31,8 @@ krayt_dragon_ancient = Creature:new {
 	 {
 	        groups = {
 				{group = "krayt_dragon_common", chance = 5000000},
-				{group = "krayt_tissue_rare", chance = 5000000}
+				{group = "krayt_tissue_rare", chance = 5000000},
+				{group = "pearls_flawless", chance = 5000000}				
 			},
 			lootChance = 6500000
 		}

@@ -43,7 +43,37 @@
 
 ForceKnockdown3Command = {
         name = "forceknockdown3",
-}
+
+    damageMax = 0,
+	speed = 4.0,
+	forceCost = 200,
+	accuracySkillMod = "forceknockdown_accuracy";
+	areaAction = true,
+	areaRange = 15,
+
+	stateEffects = {
+	  StateEffect( 
+		KNOCKDOWN_EFFECT, 
+		{ "knockdownRecovery", "lastKnockdown" }, 
+		{ "force_defense" }, 
+		{}, 
+		65, 
+		100, 
+		0 
+	  )
+	},
+	
+	
+	animationCRC = hashCode("force_knockdown_1_particle_level_1"),
+
+	combatSpam = "forceknockdown3",
+	
+	poolsToDamage = NONE,
+	
+	attackType = FORCEATTACK,
+
+	range = 32
+}				
 
 AddCommand(ForceKnockdown3Command)
 

@@ -1,6 +1,6 @@
 juvenile_canyon_krayt_dragon = Creature:new {
 	objectName = "@mob/creature_names:juvenile_canyon_krayt",
-	socialGroup = "krayt",
+	socialGroup = "Krayt",
 	pvpFaction = "",
 	faction = "",
 	level = 122,
@@ -30,7 +30,8 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "krayt_tissue_common", chance = 10000000}
+				{group = "krayt_tissue_common", chance = 10000000},
+				{group = "pearls_select", chance = 4000000}					
 			},
 			lootChance = 6000000
 		}
