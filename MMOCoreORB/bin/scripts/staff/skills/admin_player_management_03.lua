@@ -21,6 +21,7 @@ admin_player_management_03 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
+		"adjustLotCount",
 		"credits",
 		"editAppearance",
 		"editStats",
