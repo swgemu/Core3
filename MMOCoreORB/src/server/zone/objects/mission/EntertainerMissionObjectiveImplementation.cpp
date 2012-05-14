@@ -119,7 +119,9 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 
 void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
-	if (isEntertaining && inMissionArea && getPlayerOwner()->getParentID() != 0) {
+	CreatureObject* object = getPlayerOwner();
+
+	if (isEntertaining && inMissionArea && object != NULL && object->getParentID() != 0) {
 		if (completeTask == NULL) {
 			completeTask = new CompleteMissionAfterCertainTimeTask(_this);
 		}
