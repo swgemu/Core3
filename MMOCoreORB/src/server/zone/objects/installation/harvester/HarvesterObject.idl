@@ -61,9 +61,6 @@ class HarvesterObject extends InstallationObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
-		super.surplusPower = 1000;
-		super.basePowerRate = 100;
 	}
 	
 	/**
