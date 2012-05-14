@@ -10,7 +10,7 @@
  *	HarvesterObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__,RPC_GETREDEEDMESSAGE__};
+enum {RPC_NOTIFYLOADFROMDATABASE__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__,RPC_GETREDEEDMESSAGE__};
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
@@ -27,6 +27,19 @@ HarvesterObject::~HarvesterObject() {
 }
 
 
+
+void HarvesterObject::notifyLoadFromDatabase() {
+	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
+}
 
 void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	HarvesterObjectImplementation* _implementation = static_cast<HarvesterObjectImplementation*>(_getImplementation());
@@ -267,10 +280,6 @@ HarvesterObjectImplementation::HarvesterObjectImplementation() {
 void HarvesterObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.loadTemplateData(templateData);
 	InstallationObjectImplementation::loadTemplateData(templateData);
-	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.surplusPower = 1000;
-	InstallationObjectImplementation::surplusPower = 1000;
-	// server/zone/objects/installation/harvester/HarvesterObject.idl():  		super.basePowerRate = 100;
-	InstallationObjectImplementation::basePowerRate = 100;
 }
 
 bool HarvesterObjectImplementation::isHarvesterObject() {
@@ -293,6 +302,11 @@ void HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		{
+			notifyLoadFromDatabase();
+		}
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		{
 			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
@@ -326,6 +340,10 @@ void HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	default:
 		throw Exception("Method does not exists");
 	}
+}
+
+void HarvesterObjectAdapter::notifyLoadFromDatabase() {
+	(static_cast<HarvesterObject*>(stub))->notifyLoadFromDatabase();
 }
 
 int HarvesterObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

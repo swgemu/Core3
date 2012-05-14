@@ -37,6 +37,8 @@ class HarvesterObject : public InstallationObject {
 public:
 	HarvesterObject();
 
+	void notifyLoadFromDatabase();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
@@ -85,6 +87,8 @@ public:
 	HarvesterObjectImplementation();
 
 	HarvesterObjectImplementation(DummyConstructorParameter* param);
+
+	void notifyLoadFromDatabase();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -144,6 +148,8 @@ public:
 	HarvesterObjectAdapter(HarvesterObject* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void notifyLoadFromDatabase();
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
