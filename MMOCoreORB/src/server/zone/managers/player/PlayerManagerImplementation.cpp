@@ -1126,22 +1126,28 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		uint32 playerWeaponXp = 0;
 
 		for (int j = 0; j < entry->size(); ++j) {
-			String xpType = entry->elementAt(j).getKey();
+			ManagedReference<WeaponObject*> weapon = entry->elementAt(j).getKey();
+
+			if (weapon == NULL)
+				continue;
+
 			uint32 damage = entry->elementAt(j).getValue();
 
 			totalPlayerDamage += damage;
 
-			int xpAmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+			String xpType = weapon->getXpType();
 
-			//info("xpAmount: " + String::valueOf(xpAount), true);
+			int xpAmmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
 
-			playerWeaponXp += xpAmount;
+			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
 
-			if (xpType != "jedi_general") {
-				awardExperience(player, xpType, xpAmount);
+			playerWeaponXp += xpAmmount;
+
+			if (!weapon->isJediWeapon() && weapon->getAttackType() != WeaponObject::FORCEATTACK) {
+				awardExperience(player, xpType, xpAmmount);
 				awardExperience(player, "combat_general", playerWeaponXp / 10);
 			} else // Grant Jedi general experience for lightsabers AND Force powers.
-				awardExperience(player, "jedi_general", xpAmount / 4);
+				awardExperience(player, "jedi_general", xpAmmount / 4);
 
 		}
 

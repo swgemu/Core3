@@ -1361,24 +1361,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
-int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
-	activateRecovery();
-
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
-
-		if (damage > 0) {
-			threatMap->addDamage(player, damage, xp);
-
-			if (System::random(5) == 1) {
-				setDefender(player);
-			}
-		}
-	}
-
-	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
-}
-
 
 void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 
