@@ -26,6 +26,8 @@ public:
 
 		GamblingManager* manager = player->getZoneProcessServer()->getGamblingManager();
 
+		Locker locker(manager);
+
 		if (cancelPressed)
 			manager->leaveTerminal(player, 0);
 		else

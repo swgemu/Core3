@@ -30,6 +30,8 @@ public:
 		bool otherPressed = Bool::valueOf(args->get(0).toString());
 
 		GamblingManager* manager = player->getZoneProcessServer()->getGamblingManager();
+
+		Locker locker(manager);
 		manager->handleSlot(player, cancelPressed, otherPressed);
 
 	}
