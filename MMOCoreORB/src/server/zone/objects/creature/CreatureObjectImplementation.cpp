@@ -1699,6 +1699,9 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		setMoodString("neutral");
 	}
 
+	listenToID = 0;
+	watchToID = 0;
+
 	if (ghost == NULL)
 		return;
 
