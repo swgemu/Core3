@@ -18,6 +18,8 @@
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 void HarvesterObjectImplementation::notifyLoadFromDatabase() {
+	InstallationObjectImplementation::notifyLoadFromDatabase();
+
 	Reference<SharedStructureObjectTemplate*> ssot = cast<SharedStructureObjectTemplate*>(templateObject.get());
 
 	//Fix for the errored harvesters.
