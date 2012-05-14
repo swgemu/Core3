@@ -124,6 +124,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
+
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
 	void addDefender(SceneObject* defender);
@@ -192,6 +194,8 @@ public:
 	void sendMessage(BasePacket* msg);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
@@ -267,6 +271,8 @@ public:
 	void sendMessage(BasePacket* msg);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient);
 
