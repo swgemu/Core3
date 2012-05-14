@@ -749,11 +749,14 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 
 				ManagedReference<GamblingTerminal*> terminal = slotGames.get(player);
 
-				Locker locker(terminal);
+				if (terminal != NULL) {
 
-				if (terminal->getPlayersWindows()->contains(player)) {
-					terminal->leaveTerminal(player);
-					slotGames.drop(player);
+					Locker locker(terminal);
+
+					if (terminal->getPlayersWindows()->contains(player)) {
+						terminal->leaveTerminal(player);
+						slotGames.drop(player);
+					}
 				}
 
 				break;
@@ -762,11 +765,13 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 
 				ManagedReference<GamblingTerminal*> terminal = rouletteGames.get(player);
 
-				Locker locker(terminal);
+				if (terminal != NULL) {
+					Locker locker(terminal);
 
-				if (terminal->getPlayersWindows()->contains(player)) {
-					terminal->leaveTerminal(player);
-					rouletteGames.drop(player);
+					if (terminal->getPlayersWindows()->contains(player)) {
+						terminal->leaveTerminal(player);
+						rouletteGames.drop(player);
+					}
 				}
 
 				break;
