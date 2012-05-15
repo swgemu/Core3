@@ -146,6 +146,10 @@ int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int dam
 	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
+int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	return TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, xp, notifyClient);
+}
+
 int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient) {
 	return TangibleObjectImplementation::healDamage(healer, damageType, damage, notifyClient);
 }

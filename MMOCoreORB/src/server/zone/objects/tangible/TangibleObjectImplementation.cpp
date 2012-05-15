@@ -445,6 +445,27 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	return 0;
 }
 
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	float newConditionDamage = conditionDamage + damage;
+
+	if (!destroy && newConditionDamage >= maxCondition)
+		newConditionDamage = maxCondition - 1;
+
+	setConditionDamage(newConditionDamage, notifyClient);
+
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0 && attacker != _this)
+			threatMap->addDamage(player, (uint32)damage, xp);
+	}
+
+	if (newConditionDamage >= maxCondition)
+		notifyObjectDestructionObservers(attacker, newConditionDamage);
+
+	return 0;
+}
+
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
