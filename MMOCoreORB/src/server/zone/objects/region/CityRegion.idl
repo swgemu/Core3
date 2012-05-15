@@ -1,0 +1,427 @@
+/*
+ * CityRegion.h
+ *
+ *  Created on: Feb 9, 2012
+ *      Author: xyborn
+ */
+
+
+package server.zone.objects.region;
+
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.structure.StructureObject;
+import server.zone.Zone;
+include server.zone.managers.planet.PlanetTravelPoint;
+include server.chat.StringIdChatParameter;
+include server.zone.ZoneReference;
+include server.zone.objects.scene.variables.StringId;
+include system.lang.Time;
+include server.zone.objects.region.CitizenList;
+include server.zone.objects.region.events.CityUpdateEvent;
+include server.zone.objects.region.CityStructureInventory;
+
+
+class CityRegion extends ManagedObject implements Logger {
+	protected StructureObject cityHall;
+	
+	@dereferenced
+	protected StringId regionName;
+	
+	protected string customRegionName;
+
+	@dereferenced
+	protected ZoneReference zone;
+
+	@dereferenced
+	protected SortedVector<Region> regions;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned int> zoningRights;
+	
+	@dereferenced
+	protected CitizenList militiaMembers;
+	
+	@dereferenced
+	protected CitizenList citizenList;
+	
+	@dereferenced
+	protected CitizenList bannedList;
+	
+	@dereferenced 
+	protected SortedVector<unsigned int> limitedPlacementStructures;
+	
+	@dereferenced
+	protected CityStructureInventory cityStructureInventory;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> cityMissionTerminals;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> cityDecorations;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> citySkillTrainers;
+	
+	protected byte cityRank;
+	
+	protected int cityTreasury;
+	
+	protected unsigned long mayorID;
+	
+	protected boolean zoningEnabled;
+	
+	protected boolean registered;
+	
+	protected boolean hasShuttle;
+	
+	protected unsigned long shuttleID;
+		
+	@dereferenced
+	protected Time nextUpdateTime;
+	
+	protected transient CityUpdateEvent cityUpdateEvent;
+
+	protected string citySpecialization; //We want to implement this with skill mods.
+
+	public static final byte RANK_CLIENT = 0;
+	public static final byte RANK_OUTPOST = 1;
+	public static final byte RANK_VILLAGE = 2;
+	public static final byte RANK_TOWNSHIP = 3;
+	public static final byte RANK_CITY = 4;
+	public static final byte RANK_METROPOLIS = 5;
+	
+	public CityRegion() {
+		initialize();
+	}
+	
+	public native void initialize();
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	public native void notifyEnter(SceneObject object);
+	public native void notifyExit(SceneObject object);
+	
+	public native Region addRegion(float x, float y, float radius, boolean persistent);
+	
+	public native void rescheduleUpdateEvent(unsigned int seconds);
+	
+	public native void destroyActiveAreas();
+	
+	public void addMilitiaMember(unsigned long objectid) {
+		militiaMembers.put(objectid);
+	}
+	
+	public void removeMilitiaMember(unsigned long objectid) {
+		militiaMembers.drop(objectid);
+	}
+	
+	public boolean isMilitiaMember(unsigned long objectid) {
+		return (militiaMembers.contains(objectid) || mayorID == objectid);
+	}
+	
+	public native void addZoningRights(unsigned long objectid, unsigned int duration = 86400);
+	
+	public void removeZoningRights(unsigned long objectid) {
+		zoningRights.drop(objectid);
+	}
+	
+	public native boolean hasZoningRights(unsigned long objectid);
+
+	public boolean containsPoint(float x, float y) {
+		for (int i = 0; i < regions.size(); ++i) {
+			Region aa = regions.get(i);
+
+			if (aa.containsPoint(x, y))
+				return true;
+		}
+
+		return false;
+	}
+	
+	@local
+	public Time getNextUpdateTime() {
+		return nextUpdateTime;
+	}
+	
+	public void addCitizen(unsigned long citizenID) {
+		citizenList.put(citizenID);
+	}
+	
+	public void removeCitizen(unsigned long citizenID) {
+		citizenList.drop(citizenID);
+	}
+	
+	public void addBannedPlayer(unsigned long playerid) {
+		bannedList.put(playerid);
+	}
+	
+	public void removeBannedPlayer(unsigned long playerid) {
+		bannedList.drop(playerid);
+	}
+	
+	public boolean isCitizen(unsigned long citizenID) {
+		return citizenList.contains(citizenID);
+	}
+	
+	public native int getTimeToUpdate();
+	
+	public int getCitizenCount() {
+		return citizenList.size();
+	}
+
+	public byte getCityRank() {
+		return cityRank;
+	}
+	
+	public boolean isBanned(unsigned long playerID) {
+		return bannedList.contains(playerID);
+	}
+	
+	@local
+	public CitizenList getCitizenList() {
+		return citizenList;
+	}
+	
+	@local
+	public CitizenList getMilitiaMembers() {
+		return militiaMembers;
+	}
+	
+	@local
+	public CitizenList getBannedPlayers() {
+		return bannedList;
+	}
+	
+	public boolean isRegistered() {
+		return registered;
+	}
+	
+	public Zone getZone() {
+		return zone.get();
+	}
+
+	public native string getRegionName();
+	
+	public unsigned long getMayorID() {
+		return mayorID;
+	}
+	
+	public float getPositionX() {
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getPositionX();
+	}
+	
+	public float getPositionY() {
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getPositionY();
+	}
+	
+	public float getRadius() {
+		if (regions.size() == 0) {
+			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
+			
+			return 0.0;
+		}
+		
+		ActiveArea aa = regions.get(0);
+		
+		if (aa == null)
+			return 0.0;
+		
+		return aa.getRadius();
+	}
+	
+	public Region getRegion(int idx) {
+		return regions.get(idx);
+	}
+	
+	public int getRegionsCount() {
+		return regions.size();
+	}
+	
+	public int getStructuresCount() {
+		return 0;
+	}
+	
+	public string getCitySpecialization() {
+		return citySpecialization;
+	}
+	
+	public int getCityTreasury() {
+		return cityTreasury;
+	}
+	
+	public boolean isMayor(unsigned long objectid) {
+		return mayorID == objectid;
+	}
+	
+	public boolean isZoningEnabled() {
+		return zoningEnabled;
+	}
+	
+	public boolean isClientRegion() {
+		return cityRank == RANK_CLIENT;
+	}
+	
+	public StructureObject getCityHall() {
+		return cityHall;
+	}
+
+	//Setters
+	public native void setZone(Zone zne);
+	
+	public void setCustomRegionName(final string name) {
+		customRegionName = name;
+	}
+	
+	public void setCitySpecialization(final string spec) {
+		citySpecialization = spec;
+	}
+
+	public void setRegionName(final string fullPath) {
+		regionName.setStringId(fullPath);
+	}
+	
+	public void setCityTreasury(int val) {
+		cityTreasury = val;
+	}
+	
+	public int addToCityTreasury(int val) {
+		cityTreasury = cityTreasury + val;
+		
+		if (cityTreasury < 0) {
+			cityTreasury = 0;
+		}
+		
+		return cityTreasury;
+	}
+	
+	public int subtractFromCityTreasury(int val) {
+		cityTreasury = cityTreasury - val;
+		
+		if (cityTreasury < 0) {
+			cityTreasury = 0;
+		}
+		
+		return cityTreasury;
+	}
+	
+	public int getMaxWithdrawal() {
+		return 10000 * cityRank;
+	}
+	
+	@local
+	public native Vector<SceneObject> getVendorsInCity();
+
+	@local
+	public native void setRegionName(@dereferenced final StringId name);
+
+	public void setCityRank(byte rank) {
+		cityRank = rank;
+	}
+	
+	public void setMayorID(unsigned long id) {
+		mayorID = id;
+	}
+	
+	public void setRegistered(boolean val) {
+		registered = val;
+	}
+	
+	public void setZoningEnabled(boolean val) {
+		zoningEnabled = val;
+	}
+	
+	public native void setRadius(float rad);
+	
+	public void setCityHall(StructureObject building) {
+		cityHall = building;
+	}
+	
+	public void removeShuttleInstallation(){
+		hasShuttle = false;
+		shuttleID = 0;
+	}
+	public boolean hasShuttleInstallation(){
+		return hasShuttle;
+	}
+	
+	public void setShuttleID(unsigned long id){
+		shuttleID = id;
+		hasShuttle = true;
+	}
+	
+	public int getMissionTerminalCount(){
+		return cityMissionTerminals.size();
+	}
+	
+	public int getDecorationCount(){
+		return cityDecorations.size();
+	}
+	
+	public int getSkillTrainerCount(){
+		return citySkillTrainers.size();
+	}
+	
+	public void addMissionTerminal(SceneObject mt){
+		cityMissionTerminals.put(mt);
+	}
+	
+	public void addDecoration(SceneObject deco){
+		cityDecorations.put(deco);
+	}
+	
+	public void addSkillTrainer(SceneObject trainer){
+		citySkillTrainers.put(trainer);
+	}
+	
+	public void removeMissionTerminal(SceneObject mt){
+		cityMissionTerminals.drop(mt);
+	}
+	
+	public void removeDecoration(SceneObject deco){
+		cityDecorations.drop(deco);
+	}
+	
+	public void removeSkillTrainers(SceneObject trainer){
+		citySkillTrainers.drop(trainer);
+	}
+	
+	public native void removeAllSkillTrainers();
+	
+	public native void removeAllTerminals();
+	
+	public native void updateMilitia();
+	
+	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
+	
+	public native void removeFromCityStructureInventory(SceneObject structure);
+	
+	public native boolean checkLimitedPlacementStucture(unsigned int id);
+	
+	public native boolean addLimitedPlacementStructure(unsigned int id);
+	
+	public native void removeLimitedPlacementStructure(unsigned int id);
+	
+	public native void destroyAllStructuresForRank(byte rank);
+	
+	
+	
+	
+}

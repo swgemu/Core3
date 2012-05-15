@@ -1,0 +1,122 @@
+package server.zone.managers.creature;
+
+import server.zone.Zone;
+import server.zone.packets.MessageCallback;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.NonPlayerCreatureObject;
+import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.Creature;
+import server.zone.managers.ZoneManager;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.objects.area.SpawnArea;
+import system.util.Vector;
+include server.zone.managers.creature.CreatureMap;
+include server.zone.managers.creature.SpawnAreaMap;
+
+class CreatureManager extends ZoneManager {
+	@weakReference
+	protected Zone zone;
+	
+	/*@dereferenced
+	protected CreatureMap creatureMap;*/
+	
+	@dereferenced
+	protected SpawnAreaMap spawnAreaMap;
+	
+	protected transient CreatureTemplateManager creatureTemplateManager;
+	
+	@dereferenced
+	protected SortedVector<AiAgent> reservePool;
+	
+	protected int spawnedRandomCreatures;
+
+	public CreatureManager(Zone planet) {
+		super("CreatureManager");
+		
+		zone = planet;
+		
+		setCreatureTemplateManager();
+		
+		spawnedRandomCreatures = 0;
+		//reservePool.setAllowDuplicateInsertPlan();
+	}
+	
+	public void initialize() {
+		loadSpawnAreas();
+		loadTrainers();
+		loadSingleSpawns();
+		loadMissionSpawns();
+		loadInformants();
+	}
+	
+	public native TangibleObject spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	
+	/**
+	 * Spawns the specified creature into zone
+	 * @pre { this unlocked }
+	 * @post { creature is in zone }
+	 * @param templateCRC template string crc of the creature to spawn
+	 * @param x position x
+	 * @param y position y
+	 * @param parentID cell object id (optional)
+	 * @return returns creature object that has been spawned, NULL on error
+	 */
+	public native CreatureObject spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long parentID = 0);
+	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
+	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0, boolean persistent = false);
+	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false);
+	public native void placeCreature(CreatureObject creature, float x, float z, float y, unsigned long parentID);
+	
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	@local
+	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
+	
+	public native void loadSpawnAreas();
+	public native void loadSingleSpawns();
+	public native void loadTrainers();
+	public native void loadMissionSpawns();
+	public native void loadInformants();
+	
+	private native boolean createCreatureChildrenObjects(CreatureObject creature, boolean persistent = false);
+	
+	public native void spawnRandomCreaturesAround(SceneObject creature);
+	public native void spawnRandomCreature(int number, float x, float z, float y, unsigned long parentID = 0);
+	
+	/*public synchronized void addCreatureToMap(CreatureObject creature) {
+		creatureMap.put(creature.getObjectID(), creature);
+	}
+	
+	public synchronized void removeCreatureFromMap(unsigned long oid) {
+		creatureMap.remove(oid);
+	}*/
+	
+	private native void setCreatureTemplateManager();
+	
+	public native void harvest(Creature creature, CreatureObject player, int selectedID);
+	
+	public synchronized void addToReservePool(AiAgent agent) {
+		if (spawnedRandomCreatures > 0) {
+			spawnedRandomCreatures = spawnedRandomCreatures - 1;
+		} else {
+			
+		}
+		
+		reservePool.put(agent);
+	}
+	
+	public int getSpawnedRandomCreatures() {
+		return spawnedRandomCreatures;
+	}
+	
+	@local
+	public Vector<SpawnArea> getWorldSpawnAreas() {
+		return spawnAreaMap.getWorldSpawnAreas();
+	}
+	
+	public native SpawnArea getSpawnArea(final string areaname);
+}

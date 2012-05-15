@@ -1,0 +1,204 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.creature;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.intangible.VehicleControlDevice;
+import engine.core.ManagedObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import server.zone.Zone;
+include server.zone.objects.scene.SceneObjectType;
+import server.zone.templates.SharedObjectTemplate;
+
+class VehicleObject extends CreatureObject {
+	protected int vehicleType;
+	
+	public VehicleObject() {
+		vehicleType = SceneObjectType.HOVERVEHICLE;
+		
+		Logger.setLoggingName("VehicleObject");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+	}
+	
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		super.optionsBitmask = 0x1080;
+		super.pvpStatusBitmask = 0;
+	}
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	public native boolean checkInRangeGarage();
+	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public native void notifyInsertToZone(Zone zone);
+	
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public void setPosture(int newPosture, boolean notifyClient = true) {
+		//vehicles should not change posture
+		return;
+	}
+	
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
+	@dirty
+	public native void sendMessage(BasePacket msg);
+	
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 */
+	public native int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
+	
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
+	public void addDefender(SceneObject defender) {
+		
+	}
+	
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
+	public void removeDefender(SceneObject defender) {
+		
+	}
+	
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
+	public void setDefender(SceneObject defender) {
+		
+	}
+	
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
+	public boolean isAttackableBy(CreatureObject object) {
+		if (super.linkedCreature == null)
+			return false;
+			
+		return super.linkedCreature.isAttackableBy(object);
+	}
+	
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	/**
+	 * Attempts to see if the vehicle can be repaired. If tests are passed, then it sends the confirmation box to the player.
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player that is repairing the vehicle.
+	 */
+	public native void repairVehicle(CreatureObject player);
+	
+	public native int calculateRepairCost(CreatureObject player);
+	
+	public native void sendRepairConfirmTo(CreatureObject player);
+	
+	public boolean isVehicleObject() {
+		return true;
+	}
+}

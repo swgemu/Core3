@@ -1,0 +1,255 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.creature.buffs;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
+import system.lang.Time;
+import engine.log.Logger;
+include server.zone.ZoneProcessServer;
+import server.zone.objects.creature.buffs.BuffDurationEvent;
+include server.zone.objects.creature.buffs.BuffType;
+include server.chat.StringIdChatParameter;
+
+class Buff extends ManagedObject implements Logger {
+	@weakReference
+	protected CreatureObject creature;
+	
+	protected transient BuffDurationEvent buffEvent;
+
+	@dereferenced
+	protected VectorMap<byte, int> attributeModifiers;
+	
+	@dereferenced
+	protected VectorMap<string, int> skillModifiers;
+	
+	@dereferenced
+	protected Vector<unsigned long> states;
+
+	protected string buffName;
+	protected float buffDuration;
+	protected unsigned int buffCRC;
+	protected int buffType;
+	protected float speedMultiplierMod;
+	protected float accelerationMultiplierMod;
+	protected boolean fillAttributesOnBuff;
+	
+	@dereferenced
+	protected StringIdChatParameter startMessage;
+	@dereferenced
+	protected StringIdChatParameter endMessage;
+	
+	protected string startFlyFile;
+	protected string startFlyAux;
+	protected byte startFlyRed;
+	protected byte startFlyGreen;
+	protected byte startFlyBlue;
+	
+	protected string endFlyFile;
+	protected string endFlyAux;
+	protected byte endFlyRed;
+	protected byte endFlyGreen;
+	protected byte endFlyBlue;
+	
+	@dereferenced
+	protected Time nextExecutionTime; 
+
+	public Buff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype) {
+		creature = creo;
+		buffCRC = buffcrc;
+		buffDuration = duration;
+		buffType = bufftype;
+		speedMultiplierMod = -1.f;
+		accelerationMultiplierMod = -1.f;
+		fillAttributesOnBuff = false;
+		
+		startFlyFile = "";
+		endFlyFile = "";
+
+		Logger.setLoggingName("Buff");
+		
+		init();
+	}
+	
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	public void init() {
+		attributeModifiers.setNoDuplicateInsertPlan();
+		attributeModifiers.setNullValue(0);
+		skillModifiers.setNoDuplicateInsertPlan();
+		skillModifiers.setNullValue(0);
+	}
+	
+	public native abstract void sendTo(CreatureObject player);
+	public native abstract void sendDestroyTo(CreatureObject player);
+
+	public native abstract void activate(boolean applyModifiers);
+	public native abstract void deactivate(boolean removeModifiers);
+	
+	public abstract void activate() {
+		activate(true);
+	}
+	
+	public abstract void deactivate() {
+		deactivate(true);
+	}
+	
+	@local
+	public VectorMap<string, int> getSkillModifiers() {
+		return skillModifiers;
+	} 
+	
+	public native abstract void applyAttributeModifiers();
+	public native abstract void applySkillModifiers();
+	public native abstract void applyStates();
+
+	public native abstract void removeAttributeModifiers();
+	public native abstract void removeSkillModifiers();
+	public native abstract void removeStates();
+
+	public native void clearBuffEvent();
+
+	public native void setBuffEventNull();
+
+	public native void scheduleBuffEvent();
+
+	public native abstract void parseAttributeModifierString(final string modifierstring);
+	public native abstract void parseSkillModifierString(final string modifierstring);
+
+	public native abstract string getAttributeModifierString();
+	public native abstract string getSkillModifierString();
+
+	public native abstract float getTimeLeft();
+
+	public void setAttributeModifier(byte attribute, int value) {
+		if (attributeModifiers.contains(attribute))
+			attributeModifiers.get(attribute) = value;
+		else
+			attributeModifiers.put(attribute, value);
+	}
+
+	public void setSkillModifier(final string modname, int value) {
+		if (skillModifiers.contains(modname))
+			skillModifiers.get(modname) = value;
+		else
+			skillModifiers.put(modname, value);
+	}
+	
+	public void addState(unsigned long option) {
+		states.add(option);
+	}
+	
+	public void setSpeedMultiplierMod(float multiplier) {
+		speedMultiplierMod = multiplier;
+	}
+
+	public void setAccelerationMultiplierMod(float multiplier) {
+		accelerationMultiplierMod = multiplier;
+	}
+
+	public void setFillAttributesOnBuff(boolean val) {
+		fillAttributesOnBuff = val;
+	}
+
+	//Getters
+	public string getBuffName() {
+		return buffName;
+	}
+
+	public int getBuffCRC() {
+		return buffCRC;
+	}
+
+	public float getBuffDuration() {
+		return buffDuration;
+	}
+
+	public int getBuffType() {
+		return buffType;
+	}
+
+	public abstract int getAttributeModifierValue(byte attribute) {
+		if (attributeModifiers.contains(attribute))
+			return attributeModifiers.get(attribute);
+
+		return 0;
+	}
+
+	public abstract int getSkillModifierValue(final string modname) {
+		if (skillModifiers.contains(modname))
+			return skillModifiers.get(modname);
+
+		return 0;
+	}
+
+	public native boolean isActive();
+
+	public boolean isSpiceBuff() {
+		return (buffType == BuffType.SPICE);
+	}
+
+	public boolean isAttributeBuff() {
+		return (attributeModifiers.size() != 0);
+	}
+	
+	@local
+	public native void setStartMessage(@dereferenced StringIdChatParameter start);
+	@local
+	public native void setEndMessage(@dereferenced StringIdChatParameter end);
+	
+	public native void setStartFlyText(final string file, final string aux, byte red, byte green, byte blue);
+	
+	public native void setEndFlyText(final string file, final string aux, byte red, byte green, byte blue);
+}

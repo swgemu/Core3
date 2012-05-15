@@ -1,0 +1,326 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.building;
+
+import server.zone.objects.structure.StructureObject;
+import engine.lua.LuaObject;
+import engine.util.u3d.QuadTree;
+import engine.util.u3d.QuadTreeEntry;
+import system.util.SortedVector;
+import system.util.Vector;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.sign.SignObject;
+import server.zone.ZoneServer;
+import server.zone.Zone;
+import server.zone.templates.SharedObjectTemplate;
+import engine.util.u3d.Vector3;
+import system.lang.StackTrace;
+include server.zone.objects.cell.CellObject;
+
+class BuildingObject extends StructureObject {
+	@dereferenced
+	protected VectorMap<unsigned int, CellObject> cells;
+
+	protected int totalCellNumber;
+	
+	protected SignObject signObject;
+	
+	protected unsigned long deedObjectID;
+	
+	protected int accessFee;
+	
+	public boolean publicStructure;
+	
+	public static final int MAXPLAYERITEMS = 400;
+
+	protected unicode signName;
+	
+	public BuildingObject() {
+		Logger.setLoggingName("BuildingObject");
+		
+		super.closeobjects = new SortedVector<QuadTreeEntry>();
+		super.closeobjects.setNoDuplicateInsertPlan();
+
+		super.staticObject = false;
+						
+		totalCellNumber = 0;
+		
+		accessFee = 0;
+		
+		deedObjectID = 0;
+		
+		publicStructure = true;
+
+		signName = "";
+	}
+	
+	public native void createCellObjects();
+	
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+		
+	public native void initializeTransientMembers();
+	
+	public native void createContainerComponent();
+
+	public void setCustomObjectName(final unicode name, boolean notifyClient) {
+		signName = name;
+		updateSignName(notifyClient);
+	}
+
+	public native void updateSignName(boolean notifyClient);
+	
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	public native void sendContainerObjectsTo(SceneObject player);
+	
+	/**
+	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
+	 * @param creature The player to update cell permissions to.
+	 */
+	public native void updateCellPermissionsTo(CreatureObject creature);
+	
+	/**
+	 * Updates the cell permissions to the players in the area.
+	 * @pre Zone unlocked
+	 * @post Zone unlocked
+	 */
+	public native void broadcastCellPermissions();
+	
+	/**
+	 * Checks to see if the player with the name is allowed entry.
+	 * @param firstName The name of the player.
+	 * @return Returns true if allowed to enter.
+	 */
+	public native boolean isAllowedEntry(CreatureObject player);
+	
+	/**
+	 * Gets called when the structure has been created;
+	 */
+	public abstract int notifyStructurePlaced(CreatureObject player) {
+		return 0;
+	}
+	
+	@local
+	@dereferenced
+	public native Vector3 getEjectionPoint();
+	
+	/**
+	 * Ejects an object to this building's ejection point.
+	 * @param obj The object to eject.
+	 */
+	public native void ejectObject(SceneObject obj);
+	
+	public native void notifyRemoveFromZone();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	@local
+	public native void notifyInsert(QuadTreeEntry obj);
+	
+	public native void notifyInsertToZone(Zone zone);
+	
+	@local
+	public native void notifyDissapear(QuadTreeEntry obj);
+
+	public native void notifyObjectInsertedToZone(SceneObject object);
+	
+	@local
+	public native void insert(QuadTreeEntry obj);
+	
+	@local
+	public native void remove(QuadTreeEntry obj);
+	
+	@local
+	public native void update(QuadTreeEntry obj);
+	
+	@local
+	public native void inRange(QuadTreeEntry obj, float range);
+	
+	public native void sendTo(SceneObject player, boolean doClose);
+	public native void sendBaselinesTo(SceneObject player);
+	public native void sendDestroyTo(SceneObject player);
+	
+	public native void addCell(CellObject cell, unsigned int cellNumber);
+	
+	public boolean isStaticBuilding() {
+		return super.staticObject;
+	}
+	
+	/**
+	 * Returns cell based on the index.
+	 * Cells start index 1
+	 */
+	public CellObject getCell(unsigned int idx) {
+		if (idx == 0) {
+			super.error("trying to get Cell with id = 0");
+			
+			StackTrace.printStackTrace();
+		}
+			
+		return cells.get(idx);
+	}
+	
+	public int getTotalCellNumber() {
+		return totalCellNumber;
+	}
+	
+	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	
+	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
+	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
+	
+	public native int getCurrentNumberOfPlayerItems();
+	
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
+	public native void destroyAllPlayerItems();
+	
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from CreatureObject::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that entered the building
+	 */
+	public native abstract void onEnter(CreatureObject player);
+	
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from CreatureObject::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that exited the building
+	 */
+	public native abstract void onExit(CreatureObject player, unsigned long parentid);
+	
+	public boolean isBuildingObject() {
+		return true;
+	}
+	
+	public abstract boolean isHospitalBuildingObject() {
+		return false;
+	}
+	
+	public abstract boolean isRecreationalBuildingObject() {
+		return false;
+	}
+	
+	public void setSignObject(SignObject sign) {
+		signObject = sign;
+	}
+	
+	public SignObject getSignObject() {
+		return signObject;
+	}
+
+	public abstract boolean isCityHallBuilding() {
+		return false;
+	}
+	
+	public void setAccessFee(int fee) {
+		accessFee = fee;
+	}
+	
+	public int getAccessFee() {
+		return accessFee;
+	}
+	
+	public boolean isPublicStructure() {
+		return publicStructure;
+	}
+	
+	public boolean isPrivateStructure() {
+		return !publicStructure;
+	}
+	
+	public void setPublicStructure(boolean privacy) {
+		publicStructure = privacy;
+	}
+
+	public boolean isCondemned() {
+		return super.isDecayed();
+	}
+	
+	public int getMapCellSize() {
+		return cells.size();
+	}
+	
+	/**
+	 * Switches the state of this building's privacy. If it is public, it becomes private, and vice-versa.
+	 * @return Returns true if the structure is now public, or false if it is now private.
+	 */
+	public boolean togglePrivacy() {
+		return (publicStructure = !publicStructure);
+	}
+	
+	/**
+	 * Calculates the maximum number of items that can be stored by a player in this building.
+	 * @return Returns a uint32 number representing the max items that can be stored in this building.
+	 */
+	public abstract native unsigned int getMaximumNumberOfPlayerItems();
+	
+	public string getRedeedMessage() {
+		if(getCurrentNumberOfPlayerItems() > 0)
+			return "clear_building_for_delete";
+		
+		return "";
+	}
+}

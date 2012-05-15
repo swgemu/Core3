@@ -1,0 +1,207 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.managers.auction;
+
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import server.zone.objects.auction.AuctionItem;
+
+class AuctionsMap extends ManagedObject {
+	@dereferenced
+	protected VectorMap<unsigned long, AuctionItem> auctions;
+
+	@dereferenced 
+	protected VectorMap<unsigned long, AuctionItem> vendorItems;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> playerAuctionCount;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> playerVendorItemCount;
+
+	@dereferenced
+	protected VectorMap<unsigned long, int> playerVendorCount;
+	
+	public AuctionsMap() {
+		auctions.setNullValue(null);
+		auctions.setNoDuplicateInsertPlan();
+
+		vendorItems.setNullValue(null);
+		vendorItems.setNoDuplicateInsertPlan();
+		
+		playerAuctionCount.setNullValue(0);
+		playerAuctionCount.setAllowOverwriteInsertPlan();
+
+		playerVendorItemCount.setNullValue(0);
+		playerVendorItemCount.setAllowOverwriteInsertPlan();
+
+		playerVendorCount.setNullValue(0);
+		playerVendorCount.setAllowOverwriteInsertPlan();
+
+	}
+
+	public int getVendorItemCount() {
+		return vendorItems.size();
+	}
+
+	public boolean containsVendorItem(unsigned long objectID) {
+		return vendorItems.contains(objectID);
+	}
+
+	public void addVendorItem(unsigned long objectID, AuctionItem item) {
+		vendorItems.put(objectID, item);
+		playerVendorItemCount.put(item.getOwnerID(), playerVendorItemCount.get(item.getOwnerID()) + 1);
+	}
+	
+	public int getPlayerVendorItemCount(unsigned long objectID) {
+		return playerVendorItemCount.get(objectID);
+	}
+
+	public void dropVendorItem(unsigned long objectID) {
+		AuctionItem item = vendorItems.get(objectID);
+		
+		if (item == null)
+			return;
+		
+		int count = playerVendorItemCount.get(item.getOwnerID());
+		
+		count = count - 1;
+		
+		if (count < 1)
+			playerVendorItemCount.drop(item.getOwnerID());
+		else
+			playerVendorItemCount.put(item.getOwnerID(), count);
+		
+		vendorItems.drop(objectID);
+	}
+	
+	public AuctionItem getVendorItem(unsigned long objectID) {
+		return vendorItems.get(objectID);
+	}
+	
+	public AuctionItem getVendorItem(int index) {
+		return vendorItems.get(index);
+	}
+
+	public void increasePlayerVendorCount(unsigned long playerID) {
+		playerVendorCount.put(playerID, playerVendorCount.get(playerID) + 1);
+	}
+
+	public void decreasePlayerVendorCount(unsigned long playerID) {
+		int count = playerVendorCount.get(playerID) - 1;
+		if (count <= 0)
+			playerVendorCount.drop(playerID);
+
+		playerVendorCount.put(playerID, count);
+	}
+
+	public int getPlayerVendorCount(unsigned long playerID) {
+		return playerVendorCount.get(playerID);
+	}
+
+//=========================
+	
+	public int getAuctionCount() {
+		return auctions.size();
+	}
+	
+	public boolean containsAuction(unsigned long objectID) {
+		return auctions.contains(objectID);
+	}
+	
+	public void addBazaarItem(unsigned long objectID, AuctionItem item) {
+		auctions.put(objectID, item);
+		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
+	}
+	
+	public int getPlayerAuctionCount(unsigned long objectID) {
+		return playerAuctionCount.get(objectID);
+	}
+	
+	public void dropBazaarItem(unsigned long objectID) {
+		AuctionItem item = auctions.get(objectID);
+		
+		if (item == null)
+			return;
+		
+		int count = playerAuctionCount.get(item.getOwnerID());
+		
+		count = count - 1;
+		
+		if (count < 1)
+			playerAuctionCount.drop(item.getOwnerID());
+		else
+			playerAuctionCount.put(item.getOwnerID(), count);
+		
+		auctions.drop(objectID);
+	}
+	
+	public AuctionItem getBazaarItem(unsigned long objectID) {
+		return auctions.get(objectID);
+	}
+	
+	public AuctionItem getBazaarItem(int index) {
+		return auctions.get(index);
+	}
+
+	public boolean checkInStockroom(unsigned long objectID) {
+		AuctionItem item = vendorItems.get(objectID);
+		
+		if (item != null)
+			return item.isInStockroom();
+		else
+			return false;
+	}
+	
+	@local
+	public VectorMap<unsigned long, AuctionItem> getBazaarItems() {
+		return auctions;
+	}
+
+	@local
+	public VectorMap<unsigned long, AuctionItem> getVendorItems() {
+		return vendorItems;
+	}
+}

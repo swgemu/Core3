@@ -1,0 +1,1745 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.objects.scene;
+
+include engine.core.ManagedObject;
+
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import engine.util.u3d.Coordinate;
+import engine.util.u3d.QuadTreeEntry;
+import system.io.Serializable;
+import engine.lua.Lua;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.util.VectorMap;
+import engine.util.u3d.Quaternion;
+import engine.service.proto.BasePacket;
+import engine.service.proto.BaseMessage;
+import system.util.SortedVector;
+import system.lang.StackTrace;
+import server.zone.managers.objectcontroller.ObjectController;
+import system.lang.ref.Reference;
+import engine.core.Task;
+import engine.util.u3d.Vector3;
+include engine.util.Facade;
+import engine.util.Observable;
+include server.zone.objects.scene.ObserverEventType;
+include server.zone.ZoneReference;
+include server.zone.objects.scene.SceneObjectType;
+import server.zone.ZoneProcessServer;
+import server.zone.ZoneClientSession;
+import server.zone.Zone;
+import server.zone.ZoneServer;
+import server.zone.objects.building.BuildingObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import engine.util.Observer;
+include server.zone.objects.scene.variables.StringId;
+include server.zone.objects.scene.TransferErrorCode;
+include server.zone.objects.scene.variables.PendingTasksMap;
+include server.zone.objects.scene.SessionFacadeType;
+include server.zone.objects.scene.ObserverType;
+include server.zone.managers.templates.PlanetMapCategory;
+include server.zone.managers.templates.TemplateManager;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
+include server.zone.objects.scene.components.ZoneComponent;
+include server.zone.objects.scene.components.ObjectMenuComponent;
+include server.zone.objects.scene.components.ContainerComponent;
+include server.zone.objects.scene.components.AttributeListComponent;
+include server.zone.objects.scene.components.DataObjectComponentReference;
+include server.zone.objects.scene.variables.ContainerPermissions;
+import server.zone.objects.region.CityRegion;
+import server.zone.objects.creature.CreatureObject;
+import engine.util.u3d.Matrix4;
+import system.thread.ReadWriteLock;
+
+class SceneObject extends QuadTreeEntry implements Logger {
+	protected transient ZoneProcessServer server;
+	
+	protected transient ZoneComponent zoneComponent;
+	protected transient ObjectMenuComponent objectMenuComponent;
+	protected transient AttributeListComponent attributeListComponent;
+	protected transient ContainerComponent containerComponent;
+	
+	protected transient SharedObjectTemplate templateObject;
+	
+	protected boolean sendToClient;
+	
+	@dereferenced
+	protected ZoneReference zone;
+	
+	@dereferenced
+	protected DataObjectComponentReference dataObjectComponent; 
+	
+	protected transient Matrix4 transformForCollisionMatrix;
+		
+	protected unsigned int containerType;
+	protected unsigned int containerVolumeLimit;
+	
+	@dereferenced
+	protected ContainerPermissions containerPermissions;
+
+	protected unsigned int serverObjectCRC;
+	protected unsigned int clientObjectCRC;
+
+	@dereferenced
+	protected Quaternion direction;
+
+	protected unsigned int movementCounter;
+
+	@dereferenced
+	protected StringId objectName;
+		
+	@dereferenced
+	protected transient PendingTasksMap pendingTasks;
+	
+	protected boolean staticObject;
+		
+	@dereferenced
+	protected VectorMap<unsigned int, Facade> objectActiveSessions;
+
+	protected unsigned int gameObjectType;
+	protected unsigned int clientGameObjectType;
+	protected unsigned int containmentType;
+	
+	protected int planetMapCategory;
+	protected int planetMapSubCategory;
+	
+	protected unicode customName;
+	
+	@weakReference
+	protected transient CityRegion cityRegion;
+	
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> childObjects;
+	
+	@dereferenced
+	protected VectorMap<string, SceneObject> slottedObjects;
+	
+	@dereferenced
+	protected transient ReadWriteLock containerLock;
+
+	@dereferenced
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
+
+	
+	/**
+	 * SceneObject constructor, used to initialize the object.
+	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
+	 * @post { SceneObject is initialized } 
+	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
+	 */
+	public SceneObject() {
+		initializePrivateData();
+	}
+	
+	public void finalize() {
+		Logger.info("deleting object from memory", true);
+		//StackTrace.printStackTrace();
+	}
+	
+	public native void initializePrivateData();
+
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public abstract native void createComponents();
+	public abstract native void createContainerComponent();
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+
+	/**
+	 * Logs an info message
+	 * @pre {}
+	 * @post { message has been printed to console or file }
+	 * @param msg message to print
+	 * @param forced if true, always prints the message to console 
+	 */
+	@dirty
+	public void info(final string msg, boolean forced = false) {
+		Logger.info(msg, forced);
+	}
+
+	/**
+	 * Logs an error message
+	 * @pre {}
+	 * @post {error message has been printed to console and file }
+	 * @param msg error message to print
+	 */
+	@dirty
+	public void error(final string msg) {
+		Logger.error(msg);
+	}
+
+	/**
+	 * Returns number of specified game objects in range
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return number of objects in range
+	 */
+	public native int inRangeObjects(unsigned int gameObjectType, float range);
+
+	/**
+	 * Evaluates if the object is in range
+	 * @pre { this object is locked, obj is locked}
+	 * @post { thisobject is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
+	@read
+	public native boolean isInRange(SceneObject obj, float range);
+
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
+	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
+
+	/**
+	 * Tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param destination SceneObject that will be the new destination of the object.
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
+	 */
+	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
+	
+	/**
+	 * Destroys the object from the world
+	 */
+	public abstract void destroyObjectFromWorld(boolean sendSelfDestroy) {
+		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
+	}
+
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
+	@read
+	public native abstract int canAddObject(SceneObject object, int containmentType, string errorDescription);
+	
+	/**
+	 * 
+	 */
+	@dirty
+	public abstract int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent) {
+		return 0;
+	}
+	
+	@dirty
+	public abstract int notifyObjectRemovedFromChild(SceneObject object, SceneObject child) {
+		return 0;
+	}
+	
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
+	@dirty
+	public abstract void synchronizedUIListen(SceneObject player, int value) {
+		Logger.info("Unhandled synchronizedUIListen", true);
+	}
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
+	@dirty
+	public abstract void synchronizedUIStopListen(SceneObject player, int value) {
+		Logger.info("Unhandled synchronizedUIStopListen", true);
+	}
+	
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	@dirty
+	 public native void updateToDatabase();
+	 
+	 /**
+	  * Updates only this object to database without updating children
+	  * WARNING use only when necessary
+	  */
+	@dirty
+	 public native void updateToDatabaseWithoutChildren();
+
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	@dirty
+	public native void updateToDatabaseAllObjects(boolean startTask);
+	
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @param player Player that attempts to destroy this object
+	 * @returns 0 on succes, != 0 on error
+	 */
+	@dirty
+	public abstract int canBeDestroyed(CreatureObject player) {
+		return 0;
+	}
+
+	/**
+	 * Sends a SceneObjectCloseMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the close message }
+	 * @param client ZoneClientSession that will receive the message
+	 */
+	@dirty
+	protected native void close(SceneObject client);
+
+	/**
+	 * Sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the link message }
+	 * @param client ZoneClientSession that will receive the message
+	 * @param containmentType arrangement type?
+	 */
+	@dirty
+	protected native void link(SceneObject client, unsigned int containmentType = 4);
+
+	/**
+	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param objectID object id of object to link
+	 * @param containmentType arrangement type?
+	 * @return returns a new valid UpdateContainmentMessage
+	 */
+	@dirty
+	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
+
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	@read
+	public native abstract void sendTo(SceneObject player, boolean doClose);
+	
+	/**
+	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
+	 */
+	@read
+	public native abstract void sendWithoutParentTo(SceneObject player);
+	
+	@read
+	public native abstract void sendWithoutContainerObjectsTo(SceneObject player);
+
+	/**
+	 * Sends a SceneObjectDestroyMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the destroy message }
+	 * @param plaer SceneObject that will receive the message 
+	 */
+	@dirty
+	public native abstract void sendDestroyTo(SceneObject player);
+
+	/**
+	 * Sends the baseline messages of this object to the specified player, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	@dirty
+	public abstract void sendBaselinesTo(SceneObject player) {
+	}
+
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	@ready
+	public native abstract void sendContainerObjectsTo(SceneObject player);
+
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	@ready
+	public native abstract void sendSlottedObjectsTo(SceneObject player);
+
+	/**
+	 * Sends the necessary messages to owner client, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	@dirty
+	public abstract void sendToOwner(boolean doClose = true) {
+	}
+
+	/**
+	 * Sends an AttributeListMessage to specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, object received the attribute list message }
+	 * @param object SceneObject that will receive the message
+	 */
+	@read
+	public native abstract void sendAttributeListTo(CreatureObject object);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public abstract void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		
+	}
+	
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public abstract void setCustomObjectName(final unicode name, boolean notifyClient) {
+		customName = name;
+	}
+
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	@read
+	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	/**
+	 * Opens container contents to player
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to open the container to   
+	 */
+	@dirty
+	public abstract native void openContainerTo(CreatureObject player);
+	
+	@local
+	public abstract byte checkContainerPermission(CreatureObject player, unsigned short permission) {
+		return containerComponent.checkContainerPermission(this, player, permission);
+	}
+	
+	/**
+	 * Closes the container of a player
+	 */
+	@dirty
+	public abstract native void closeContainerTo(CreatureObject player, boolean notify = true);
+	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public native abstract void notifyInsertToZone(Zone zone);
+
+	/**
+	 * Switches zone and position of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, is in the new zone and in the new position }
+	 * @param newTerrainName Name of the new terrain where the player will be inserted.
+	 * @param newPositionX new position X
+	 * @param newPositionZ new position Z
+	 * @param newPositionY new position Y
+	 */
+	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	
+	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	
+	
+	/**
+	 * Updates the direction of this object, and braodcasts DataTransform with the update 
+	 */
+	public native void updateDirection(float fw, float fx, float fy, float fz);
+	
+	public native void updateDirection(float angleHeadingRadians);
+	
+	@dirty
+	@local
+	public void notifyInsert(QuadTreeEntry entry) {
+		zoneComponent.notifyInsert(this, entry);
+	}
+	
+	@dirty
+	@local
+	public void notifyDissapear(QuadTreeEntry entry) {
+		zoneComponent.notifyDissapear(this, entry);
+	}
+	
+	public native abstract void notifyRemoveFromZone();
+
+	/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	/**
+	 * Updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post {this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate, boolean sendPackets = true); 
+
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
+	@read
+	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone = true);
+	
+	@read
+	public native void broadcastMessagePrivate(BasePacket message, SceneObject selfObject, boolean lockZone);
+
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
+	@read
+	public native void broadcastObject(SceneObject object, boolean sendSelf);
+	
+	@read
+	public native void broadcastObjectPrivate(SceneObject object, SceneObject selfObject);
+
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
+	@read
+	public native void broadcastDestroy(SceneObject object, boolean sendSelf);
+	
+	@read
+	public native void broadcastDestroyPrivate(SceneObject object, SceneObject selfObject);
+
+
+	/**
+	 * Broadcasts a vector of messages to the in range objects
+	 * @pre {this object is locked }
+	 * @post { this object is locked, in range objects received the messages, messages are deleted and removed from the vector }
+	 * @param messages a vector containing the messages to be sent, it will be emptied when messages get sent
+	 * @param sendSelf if true the owner of this object receives the messages too
+	 */
+	@local
+	@read
+	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
+	
+	@local
+	@read
+	public native void broadcastMessagesPrivate(Vector<BasePacket> messages, SceneObject selfObject);
+
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
+	@dirty
+	public abstract native void sendMessage(BasePacket msg);
+
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
+	@read
+	public int compareTo(SceneObject obj) {
+		if (getObjectID() < obj.getObjectID())
+			return 1;
+		else if (getObjectID() > obj.getObjectID())
+			return -1;
+		else
+			return 0;
+	}
+
+	/**
+	 * Fills the specified vector with the containment objects of this object
+	 * @pre { this obejct is locked }
+	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
+	 * @param objects the vector map that will contain the objects and their occupied slots 
+	 */
+	@local
+	@read
+	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+
+	/**
+	 * Returns the object id of the parent of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
+	 */
+	@read
+	public unsigned long getParentID() {
+		if (super.parent != null) {
+			return super.parent.getObjectID();
+		} else
+			return 0;
+	}
+	
+	/**
+	 * Adds a pending task of this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked}
+	 * @param name Name of the task
+	 * @param task Task to add
+	 */
+	@local
+	public void addPendingTask(final string name, Task task, int miliseconds) {
+		pendingTasks.put(name, task);
+		task.schedule(miliseconds);
+	}
+	
+	/**
+	 * Removes a pending task from this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to drop
+	 */
+	@local
+	public void removePendingTask(final string name) {
+		pendingTasks.drop(name);
+	}
+	
+	/**
+	 * Looks up a specific pending tasks by the name
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to lookup
+	 */
+	@local
+	@read
+	public Task getPendingTask(final string name) {
+		return pendingTasks.get(name);
+	}
+	
+	@read
+	public boolean containsPendingTask(final string name) {
+		return pendingTasks.contains(name);
+	}
+	
+	@dirty
+	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
+	
+	/**
+	 * Returns a Facade session
+	 */
+	@read
+	public Facade getActiveSession(unsigned int type) {
+		return objectActiveSessions.get(type);
+	}
+	
+	public void addActiveSession(unsigned int type, Facade session) {
+		objectActiveSessions.put(type, session);
+	}
+	
+	@read
+	public boolean containsActiveSession(unsigned int type) {
+		return objectActiveSessions.contains(type);
+	}
+	
+	public boolean dropActiveSession(unsigned int type) {
+		return objectActiveSessions.drop(type);
+	}
+	
+	@read
+	public int getActiveSessionsCount() {
+		return objectActiveSessions.size();
+	}
+	
+	@local
+	@read
+	public VectorMap<unsigned int, Facade> getObjectActiveSessions() {
+		return objectActiveSessions;
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	@read
+	public native float getDistanceTo(SceneObject object);
+	
+	@local
+	@read
+	public native float getDistanceTo(Coordinate coordinate);
+	
+	public native void updateVehiclePosition(boolean sendPackets);
+	
+	
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
+	@dirty
+	public abstract int notifyObjectInserted(SceneObject object) {
+		return 0;
+	}
+	
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
+	@dirty
+	public abstract int notifyObjectRemoved(SceneObject object) {
+		return 0;
+	}
+	
+	public native void addActiveArea(ActiveArea area);
+	
+	public void dropActiveArea(ActiveArea area) {
+		activeAreas.drop(area);
+	}
+	
+	@read
+	public boolean hasActiveArea(ActiveArea area) {
+		return activeAreas.contains(area);
+	}
+	
+	@read
+	public boolean hasActiveArea(unsigned long objectid) {
+		for (int i = 0; i < activeAreas.size(); ++i) {
+			ActiveArea area = activeAreas.get(i);
+			
+			if (area.getObjectID() == objectid) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	@local
+	@read
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+	
+	@read
+	public int getActiveAreasSize() {
+		return activeAreas.size();
+	}
+	
+	@read
+	public ActiveArea getActiveRegion() {
+		for (int i = 0; i < activeAreas.size(); i++) {
+			ActiveArea region = activeAreas.get(i);
+			
+			if (region.isRegion()) {
+				return region;
+			}
+		}
+		
+		return null;
+	}
+	
+	@read
+	@local
+	public abstract CityRegion getCityRegion() {
+		return cityRegion;
+	}
+	
+	@local
+	public void setCityRegion(CityRegion region) {
+		cityRegion = region;
+	}
+	
+	@read
+	public Zone getZone() {
+		if (getParent() != null) {
+			return getRootParent().getZone();
+		} else {
+			return zone.get();
+		}
+	}
+	
+	@read 
+	public Zone getLocalZone() {
+		return zone.get();
+	}
+
+	@dirty
+	public native unsigned long getObjectID();
+	
+	@local
+	@dereferenced
+	public native Vector3 getCoordinate(float distance, float angleDegrees);
+	
+	@local
+	@dereferenced
+	public native Vector3 getWorldCoordinate(float distance, float angleDegrees);
+	
+	@read
+	public native float getWorldPositionX();
+	@read
+	public native float getWorldPositionY();
+	@read
+	public native float getWorldPositionZ();
+	
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getWorldPosition();
+
+	@read
+	public float getDirectionX() {
+		return direction.getX();
+	}
+
+	@read
+	public float getDirectionZ() {
+		return direction.getZ();
+	}
+
+	@read
+	public float getDirectionY() {
+		return direction.getY();
+	}
+
+	@read
+	public float getDirectionW() {
+		return direction.getW();
+	}
+	
+	@read
+	@local
+	public native Quaternion getDirection();
+
+	@read
+	public unsigned int getClientObjectCRC() {
+		return clientObjectCRC;
+	}
+
+	@read
+	public unsigned int getServerObjectCRC() {
+		return serverObjectCRC;
+	}
+	
+	@read
+	public boolean isWaypointObject() {
+		return gameObjectType == SceneObjectType.WAYPOINT;
+	}
+
+	@local
+	@read
+	public StringId getObjectName() {
+		return objectName;
+	}
+	
+	@read
+	public string getObjectNameStringIdFile() {
+		return objectName.getFile();
+	}
+	
+	@read
+	public string getObjectNameStringIdName() {
+		return objectName.getStringID();
+	}
+
+	@local
+	@read
+	public abstract string getDetailedDescription() {
+		return templateObject.getDetailedDescription();
+	}
+	
+	public abstract void setDetailedDescription(final string detail) {
+		return;
+	}
+
+	@read
+	public int getArrangementDescriptorSize() {
+		if (templateObject.getArrangementDescriptors() != null)
+			return templateObject.getArrangementDescriptors().size();
+		
+		return 0;
+	}
+
+	@read
+	public string getArrangementDescriptor(int idx) {
+		return templateObject.getArrangementDescriptors().get(idx);
+	}
+
+	@read
+	public string getSlotDescriptor(int idx) {
+		return templateObject.getSlotDescriptors().get(idx);
+	}
+	
+	@read
+	public boolean hasSlotDescriptor(final string descr) {
+		for (int i = 0; i < getSlotDescriptorSize(); ++i) {
+			if (getSlotDescriptor(i) == descr)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	@local
+	public VectorMap<string, SceneObject> getSlottedObjects() {
+		return slottedObjects;
+	}
+
+	@read
+	public native SceneObject getSlottedObject(final string slot);
+
+	@read
+	public int getSlotDescriptorSize() {
+		if (templateObject.getSlotDescriptors() != null)
+			return templateObject.getSlotDescriptors().size();
+		
+		return 0;
+	}
+
+	@read
+	public native SceneObject getSlottedObject(int idx);
+	
+	public native void dropSlottedObject(final string arrengementDescriptor);
+	
+	public native void removeSlottedObject(int index);
+	
+	@read
+	public int getContainerObjectsSize() {
+		return containerObjects.size();
+	}
+	
+	@read
+	public int getSlottedObjectsSize() {
+		return slottedObjects.size();
+	}
+	
+	@read
+	public boolean hasFullContainerObjects() {
+		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+	}
+	
+	@read
+	public unsigned int getContainerVolumeLimit() {
+		return containerVolumeLimit;
+	}
+
+	@read
+	public SceneObject getContainerObject(int idx) {
+		return containerObjects.get(idx);
+	}
+	
+	@local
+	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
+		return containerObjects;
+	}
+	
+	@read
+	public boolean hasObjectInContainer(unsigned long objectID) {
+		return containerObjects.contains(objectID);
+	}
+	
+	@read
+	public boolean hasObjectInSlottedContainer(SceneObject object) {
+		int arrangementSize = object.getArrangementDescriptorSize();
+		
+		if (arrangementSize == 0) {
+			return false;
+		}
+		
+		SceneObject obj = null;
+		
+		synchronized (containerLock) {
+			obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		}
+		
+		if (object == obj) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@read
+	public SceneObject getContainerObject(unsigned long objectID) {
+		return containerObjects.get(objectID);
+	}
+	
+	public void removeAllContainerObjects() {
+		containerObjects.removeAll();
+	}
+	
+	public void putInContainer(SceneObject obj, unsigned long key) {
+		containerObjects.put(key, obj);
+	}
+	
+	public void removeFromContainerObjects(int index) {
+		containerObjects.removeElementAt(index);
+	}
+	
+	public void setContainerVolumeLimit(int lim) {
+		containerVolumeLimit = lim;
+	}
+	
+	public void setContainerType(int type) {
+		containerType = type;
+	}
+	
+	@read
+	public unsigned int getContainerType() {
+		return containerType;
+	}
+
+	@dirty
+	public abstract ZoneClientSession getClient() {
+		return null;
+	}
+
+	@read
+	public unsigned int getGameObjectType() {
+		return gameObjectType;
+	}
+	
+	@read
+	public unsigned int getClientGameObjectType() {
+		return clientGameObjectType;
+	}
+
+	@read
+	public unsigned int getContainmentType() {
+		return containmentType;
+	}
+
+	@read
+	public float getDirectionAngle() {
+		return direction.getDegrees();
+	}
+	
+	@read
+	public float getSpecialDirectionAngle() {
+		return direction.getSpecialDegrees();
+	}
+	
+	
+	/**
+	 * Rotates an object by a specified number of degrees.
+	 * @param degrees How many degrees to rotate the object with 0 being North.
+	 * TODO: @param notifyClient
+	 */
+	public native void rotate(int degrees);
+	
+	/**
+	 * Sets this objects direction so that the object is facing the specified object.
+	 * @param obj The object to face.
+	 */
+	public native void faceObject(SceneObject obj);
+	
+	public native abstract void notifySelfPositionUpdate();
+	
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	
+	/**
+	 * @param player player that closed the container
+	 */
+	public native abstract void notifyCloseContainer(CreatureObject player);
+
+	@read
+	public unsigned int getMovementCounter() {
+		return movementCounter;
+	}
+
+	@read
+	public native SceneObject getParent();
+
+	@read
+	public ZoneServer getZoneServer() {
+		if (server != null)
+			return server.getZoneServer();
+		else
+			return null;
+	}
+
+	/**
+	 * Returns the parent of all children in the object tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns the parent of all children in the object tree
+	 */
+	@read
+	public native SceneObject getRootParent();
+	
+	/**
+	 * Returns the parent of object type in the tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return Returns the parent of object type in the tree
+	 */
+	@read
+	public native SceneObject getParentRecursively(unsigned int gameObjectType);
+
+
+	/**
+	 * Evaluates if this object is a child of the specified SceneObject
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if this object is a child of object
+	 */
+	@read
+	public native boolean isASubChildOf(SceneObject object);
+	
+	@local
+	public native ReadWriteLock getContainerLock() {
+		return containerLock;
+	}
+	
+	@read
+	public unicode getCustomObjectName() {
+		return customName;
+	}
+
+	@read
+	public string getLoggingName() {
+		return Logger.getLoggingName();
+	}
+
+	@dirty
+	public abstract boolean isPlayerCreature() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isVendor() {
+		return false;
+	}
+	
+	@local
+	@read
+	public ZoneComponent getZoneComponent() {
+		return zoneComponent;
+	}
+	
+	@local
+	@read
+	public ObjectMenuComponent getObjectMenuComponent() {
+		return objectMenuComponent;
+	}
+
+	@local
+	@read
+	public DataObjectComponentReference getDataObjectComponent() {
+		return dataObjectComponent;
+	}
+	
+	@local
+	public native void setObjectMenuComponent(final string name);
+	
+	@local
+	public native void setContainerComponent(final string name);
+	
+	@read
+	public boolean isContainerFull() {
+		return containerVolumeLimit <= containerObjects.size();
+	}
+	
+	@read
+	public boolean isShuttleInstallation() {
+		return gameObjectType == SceneObjectType.SHUTTLEINSTALLATION;
+	}
+	
+	@read
+	public boolean isPlayerObject() {
+		return gameObjectType == SceneObjectType.PLAYEROBJECT;
+	}
+	
+	@dirty
+	public abstract boolean isActiveArea() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isRegion() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isCreatureObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isShipObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isVehicleObject() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isBuildingObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCloningBuildingObject() {
+		return false;
+	}
+	
+	@read
+	public boolean isGarage() {
+		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
+	}
+
+	@dirty
+	public abstract boolean isWeaponObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isWearableObject() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isArmorObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isRobeObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isLightsaberCrystalObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isFireworkObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isPsgArmorObject() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isLairObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCellObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isTangibleObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isResourceContainer() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isResourceSpawn() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isComponent() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isIntangibleObject() {
+		return false;
+	}
+	
+	@read
+	public boolean isInstrument() {
+		return gameObjectType == SceneObjectType.INSTRUMENT;
+	}
+	
+	@read
+	public boolean isLiveSample() {
+		return gameObjectType == SceneObjectType.LIVESAMPLE;
+	}
+	
+	@dirty
+	public abstract boolean isInstallationObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isGeneratorObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCityTerminal() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isCityVoteTerminal() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isFactory() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isFactoryCrate() {
+		return false;
+	}
+	
+	@read
+	public boolean isFishingPoleObject() {
+		return gameObjectType == SceneObjectType.FISHINGPOLE;
+	}
+	
+	@dirty
+	public abstract boolean isDeedObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isVehicleDeedObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isBuildingDeed() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isSignObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isInstallationDeed() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCraftingTool() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isCraftingStation() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isManufactureSchematic() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isStructureObject() {
+		return false;
+	}
+
+	@read
+	public boolean isFishingBait() {
+		return gameObjectType == SceneObjectType.FISHINGBAIT;
+	}
+	
+	@read
+	public boolean isTrapObject() {
+		return gameObjectType == SceneObjectType.TRAP;
+	}
+	
+	@read
+	public boolean isRepairTool() {
+		return gameObjectType == SceneObjectType.REPAIRTOOL;
+	}
+	
+	@dirty
+	public boolean isCamoKit() {
+		return templateObject.isCamoKitTemplate();
+	}
+
+	@dirty
+	public abstract boolean isAttachment() {
+		return false;
+	}
+	
+	@dirty
+	public boolean isDiceObject() {
+		return templateObject.isDiceTemplate();
+	}
+	
+	@dirty
+	public boolean isCreatureHabitat() {
+		return templateObject.isCreatureHabitatTemplate();
+	}
+	
+	@read
+	public boolean isCampKit() {
+		return gameObjectType == SceneObjectType.CAMPKIT;
+	}
+	
+	@dirty
+	public abstract boolean isCampStructure() {
+		return false;
+	}
+	
+	@local
+	public ContainerPermissions getContainerPermissions() {
+		return containerPermissions;
+	}
+	
+	public void setContainerDefaultAllowPermission(unsigned short perm) {
+		containerPermissions.setDefaultAllowPermission(perm);
+	}
+	
+	public void setContainerDefaultDenyPermission(unsigned short perm) {
+		containerPermissions.setDefaultDenyPermission(perm);
+	}
+	
+	public void setContainerInheritPermissionsFromParent(boolean val) {
+		containerPermissions.setInheritPermissionsFromParent(val);
+	}
+	
+	public void setContainerOwnerID(unsigned long id) {
+		containerPermissions.setOwner(id);
+	}
+	
+	public void setContainerAllowPermission(final string group, unsigned short perm) {
+		containerPermissions.setAllowPermission(group, perm);
+	}
+	
+	public void setContainerDenyPermission(final string group, unsigned short perm) {
+		containerPermissions.setDenyPermission(group, perm);
+	}
+
+	public void setGameObjectType(unsigned int type) {
+		gameObjectType = type;
+	}
+
+	public void setClientObjectCRC(unsigned int objCRC) {
+		clientObjectCRC = objCRC;
+	}
+
+	public void setServerObjectCRC(unsigned int objCRC) {
+		serverObjectCRC = objCRC;
+	}
+
+	@local
+	public void setZoneProcessServer(ZoneProcessServer srv) {
+		server = srv;
+	}
+	
+	@local
+	public ZoneProcessServer getZoneProcessServer() {
+		return server;
+	}
+	
+	public native void setZone(Zone zone);
+	
+	@local
+	public native void setObjectName(@dereferenced StringId stringID);
+
+	public void setDirection(float fw, float fx, float fy, float fz) {
+		direction.set(fw, fx, fy, fz);
+	}
+	
+	public void setDirection(float headingAngleRadians) {
+		direction.setHeadingDirection(headingAngleRadians);
+	}
+	
+	@local
+	public native void setDirection(@dereferenced final Quaternion dir);
+
+	public void setMovementCounter(unsigned int count) {
+		movementCounter = count;
+	}
+	
+	public void incrementMovementCounter() {
+		movementCounter++;
+	}
+
+	public void setContainmentType(unsigned int type) {
+		containmentType = type;
+	}
+
+	public void setLoggingName(final string name) {
+		Logger.setLoggingName(name);
+	}
+	
+	public void setClientObject(boolean val) {
+		staticObject = val;
+	}
+	
+	@read
+	public abstract native unsigned int getPlanetCRC();
+	
+	@read
+	public boolean isStaticObject() {
+		return staticObject;
+	}
+	
+	@dirty
+	public abstract boolean isContainerObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isTerminal() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isGroupObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isGuildObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isControlDevice() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isMissionTerminal() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isMissionObject() {
+		return false;
+	}
+
+	@read
+	public int getPlanetMapCategoryCRC() {
+		return planetMapCategory;
+	}
+	
+	@read
+	public int getPlanetMapSubCategoryCRC() {
+		return planetMapSubCategory;
+	}
+	
+	@local
+	public void setPlanetMapCategory(PlanetMapCategory pmc) {
+		if (pmc == null)
+			planetMapCategory = 0;
+		else
+			planetMapCategory = pmc.getCrc();
+	}
+	
+	@local
+	public void setPlanetMapSubCategory(PlanetMapCategory pmc)  {
+		planetMapSubCategory = pmc.getCrc();
+	}
+	
+	@local
+	@read
+	public PlanetMapCategory getPlanetMapCategory() {
+		TemplateManager templateManager = TemplateManager.instance();
+		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
+	}
+	
+	@local
+	@read
+	public PlanetMapCategory getPlanetMapSubCategory() {
+		TemplateManager templateManager = TemplateManager.instance();
+		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
+	}
+	
+	@local
+	public SortedVector<SceneObject> getChildObjects() {
+		return childObjects;
+	}
+	
+	@read
+	public boolean containsChildObject(SceneObject obj) {
+		return childObjects.contains(obj);
+	}
+	
+	/*@local
+	public SortedVector<SceneObject> getNotifiedSentObjects() {
+		return notifiedSentObjects;
+	}*/
+	
+	@local
+	@read
+	public SharedObjectTemplate getObjectTemplate() {
+		return templateObject;
+	}
+	
+	/**
+	 * The returning value points directly to the internal vector, do not delete it or store it
+	 */
+	@local
+	public native SortedVector<Observer> getObservers(unsigned int eventType);
+	
+	public native abstract void createChildObjects();
+	
+	@local
+	public Matrix4 getTransformForCollisionMatrix() {
+		return transformForCollisionMatrix;
+	}
+	
+	@local
+	public native boolean setTransformForCollisionMatrixIfNull(Matrix4 mat);
+	
+	/**
+	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed
+	 * as an argument to the method.
+	 * NOTE: The controllerObject is not necessarily the "parent" of the child object. The childObject just happens
+	 * to be specified in the controllerObject's childObjects vector.
+	 * @param controllerObject The object that has this object specified as a "childObject".
+	 */
+	public native abstract void initializeChildObject(SceneObject controllerObject);
+	
+	public native boolean isInWater();
+
+	public native string getDisplayedName();
+	
+	public boolean doSendToClient() {
+		return sendToClient;
+	}
+	
+	public void setSendToClient(boolean val) {
+		sendToClient = val;
+	}
+}
+

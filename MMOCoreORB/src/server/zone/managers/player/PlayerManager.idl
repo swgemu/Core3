@@ -1,0 +1,275 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.managers.player;
+
+import engine.log.Logger;
+import engine.lua.Lua;
+import system.util.VectorMap;
+import system.util.SortedVector;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.group.GroupObject;
+import server.zone.ZoneProcessServer;
+import server.zone.managers.object.ObjectManager;
+import server.zone.packets.MessageCallback;
+import server.zone.objects.tangible.TangibleObject;
+import engine.core.ManagedObject;
+import server.zone.ZoneServer;
+import server.zone.objects.tangible.wearables.ArmorObject;
+import server.zone.objects.tangible.weapon.WeaponObject;
+import engine.util.Observer;
+import engine.util.Observable;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.structure.StructureObject;
+import engine.util.u3d.Vector3;
+import server.zone.objects.creature.AiAgent;
+import server.zone.objects.tangible.tool.CraftingStation;
+include server.zone.managers.player.StartingLocationList;
+include server.zone.managers.player.StartingLocation;
+include server.zone.objects.player.ValidatedPosition;
+include server.zone.managers.player.StartingItemList;
+import server.zone.objects.tangible.threat.ThreatMap;
+include server.zone.objects.creature.CreatureObject;
+include server.zone.managers.player.PlayerMap;
+include server.zone.managers.player.CharacterNameMap;
+include server.zone.managers.player.PermissionLevelList;
+import server.login.account.Account;
+
+class PlayerManager extends Observer implements Logger {
+	transient ZoneProcessServer processor;
+	
+	@dereferenced
+	private transient VectorMap<int, string> badgeMap;
+	
+	private int highestBadgeIndex;
+	
+	@weakReference
+	private ZoneServer server;
+	
+	transient PlayerMap playerMap;
+	transient CharacterNameMap nameMap;
+	private float globalExpMultiplier;
+	
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
+	public native void loadNameMap();
+	
+	private native void loadStartingItems();
+	private native void loadStartingLocations();
+	private native void loadBadgeMap();
+	private native void loadPermissionLevels();
+	
+	public int getHighestBadgeIndex() {
+		return highestBadgeIndex;
+	}
+	
+	public native void finalize();
+	
+	private transient StartingItemList startingItemList;
+	
+	private transient PermissionLevelList permissionLevelList;
+	
+	@dereferenced
+	private transient StartingLocationList startingLocationList;
+	
+	@local
+	public native void sendStartingLocationsTo(CreatureObject player);
+	
+	@local
+	public native StartingLocation getStartingLocation(final string city);
+	
+	/**
+	 * Kicks a user
+	 *
+	 */
+	public native boolean kickUser(final string name, final string admin, string reason, boolean doBan = true);
+	
+	@local
+	public native boolean createPlayer(MessageCallback callback);
+		
+	@local
+	public native boolean checkPlayerName(MessageCallback callback);
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+		
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition); 
+	
+	/**
+	 * @pre { attacker and player locked }
+	 * @post { attacker and player locked }
+	 */
+	public native void killPlayer(TangibleObject attacker, CreatureObject player, int typeofdeath = 0);
+	
+	/**
+	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
+	 * \return Returns the number of seconds until the player should recover from incapacitation.
+	 */
+	public native byte calculateIncapacitationTimer(CreatureObject player, int condition);
+	
+	/**
+	 * Check for enough encumbrances 
+	 */
+	public native boolean checkEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void applyEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void removeEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void awardBadge(PlayerObject ghost, unsigned int badge);
+	
+	public native void setExperienceMultiplier(float globalMultiplier);
+	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
+	
+	@local @dereferenced
+	public native SortedVector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
+	
+	public native void handleAbortTradeMessage(CreatureObject player);
+	public native void handleAddItemToTradeWindow(CreatureObject player, unsigned long itemID);
+	public native void handleGiveMoneyMessage(CreatureObject player, unsigned int value);
+	public native void handleAcceptTransactionMessage(CreatureObject player);
+	public native void handleUnAcceptTransactionMessage(CreatureObject player);
+	public native void handleVerifyTradeMessage(CreatureObject player);
+	public native boolean checkTradeItems(CreatureObject player, CreatureObject receiver);
+	
+	/**
+	 * Finds the closest structure in range with Administration priveleges.
+	 * This is primarily used for commands that require a building or installation.
+	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
+	 * @pre: creature locked, zone unlocked
+	 * @post: creature locked, zone unlocked
+	 * @param targetID The object id of the players target.
+	 */
+	public native SceneObject getInRangeStructureWithAdminRights(CreatureObject creature, unsigned long targetID = 0);
+	
+	public native StructureObject getInRangeOwnedStructure(CreatureObject creature, float range = 128);
+	
+	public native void sendBattleFatigueMessage(CreatureObject player, CreatureObject target);
+	
+	public native void stopWatch(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	public native void stopListen(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
+	public native void startWatch(CreatureObject creature, unsigned long entid);
+	public native void startListen(CreatureObject creature, unsigned long entid);
+	
+	public native void lootAll(CreatureObject player, AiAgent creature);
+	
+	/**
+	 * Enhances the patients attribute by a specified amount for a specified duration.
+	 * @param patient The patient to enhance.
+	 * @param attribute The attribute to enhance.
+	 * @param buffvalue The amount to enhance the attribute.
+	 * @param duration The duration in seconds the enhancement will last.
+	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
+	 */
+	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
+	
+	@local
+	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap);
+	
+	public native boolean squadLeaderCheck(CreatureObject player, GroupObject group);
+	
+	public native int calculatePlayerLevel(CreatureObject player);
+	
+	public native void awardSquadLeaderExperience(GroupObject group, int amount, TangibleObject source);
+	
+	public native void sendLoginMessage(CreatureObject player);
+	public native void resendLoginMessageToAll();
+	
+	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
+	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
+	
+	public native boolean checkExistentNameInDatabase(final string firstName);
+	
+	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
+	public native boolean createAllPlayerObjects(CreatureObject player);
+	public native void createDefaultPlayerItems(CreatureObject player, final string profession, final string templateFile);
+	
+	public native void createTutorialBuilding(CreatureObject player);
+	public native void createSkippedTutorialBuilding(CreatureObject player);
+	
+	@local
+	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
+	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
+	
+	public native boolean existsName(final string name);
+	public native unsigned long getObjectID(final string name);
+	public native CreatureObject getPlayer(final string name);
+	
+	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);
+	public native void updatePermissionName(CreatureObject player, int adminLevel);
+	
+	/**
+	 * Generates 5 random hologrind professions for the player.
+	 * @param player The player whose hologrind professions should be set.
+	 */
+	public native void generateHologrindSkills(CreatureObject player);
+	
+	public void addPlayer(CreatureObject player) {
+		nameMap.put(player);
+	}
+	
+	public native string getBadgeKey(int idx);
+	
+	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
+	
+	public native void finishHologrind(CreatureObject player);
+
+	public native Account getAccount(final string username);
+	
+	public native Account getAccount(unsigned int accountID);
+
+	private native Account queryForAccount(final string query);
+	
+	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);
+	
+	public native string unbanAccount(PlayerObject admin, Account account, final string reason);
+	
+	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);
+	
+	public native string unbanFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, final string reason);
+	
+	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, unsigned int seconds, final string reason);
+
+	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
+
+}

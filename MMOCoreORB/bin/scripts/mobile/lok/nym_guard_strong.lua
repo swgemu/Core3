@@ -1,0 +1,40 @@
+nym_guard_strong = Creature:new {
+	objectName = "@mob/creature_names:nym_guard_strong",
+	socialGroup = "nym",
+	pvpFaction = "nym",
+	faction = "nym",
+	level = 9,
+	chanceHit = 0.27,
+	damageMin = 80,
+	damageMax = 90,
+	baseXp = 356,
+	baseHAM = 675,
+	baseHAMmax = 825,
+	armor = 1,
+	resists = {15,15,15,15,40,-1,-1,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff", 
+				"object/mobile/dressed_nym_guard_strong_rod_m.iff",
+				"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
+				"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
+	lootGroups = {},
+	weapons = {"pirate_weapons_medium"},
+	conversationTemplate = "",
+	attacks = {
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(nym_guard_strong, "nym_guard_strong")

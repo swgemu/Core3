@@ -1,0 +1,122 @@
+body {
+	margin: 0;
+}
+
+div.conversationEditor {
+	font-size: 12px;
+	font-family: arial, tahoma, verdana, sans-serif;
+	overflow: hidden;
+}
+
+div.conversationEditorContainer {
+	padding: 20px;
+}
+
+div.conversationScreen {
+	float: left;
+	margin-left: 25px;
+}
+
+div.conversationScreen div.title {
+	padding: 5px 0;
+	font-weight: 700;
+	color: #333;
+}
+
+div.controls {
+	margin-top: 10px;
+	border-top: 2px solid #ddd;
+	padding-top: 10px;
+	clear: both;
+}
+
+div.conversationWindow {
+	float: left;
+	color: #ddffff;
+	font-weight: 700;
+	text-shadow: #004444 1px 1px 0px;
+}
+
+div.conversationDialog {
+	float: left;
+	border: 1px solid #33eeff;
+	background-color: #11aacc;
+	width: 250px;
+	padding: 20px;
+}
+
+div.divisor {
+	float: left;
+	width: 30px;
+	border: 3px dotted #33eeff;
+	height: 40px;
+}
+
+div.conversationOptions {
+	float: left;
+}
+
+div.conversationOptions div {
+	display: block;
+	border: 1px solid #33eeff;
+	background-color: #007799;
+	padding: 5px 10px;
+	width: 100%;
+	text-align: center;
+}
+
+div.conversationOptions div:hover {
+	border: 1px solid #007799;
+	background-color: #33eeff;
+	color: #007799;
+	text-shadow: none;
+}
+
+div.conversationStringSelectionDialog {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	font-size: 14px;
+	padding: 10px;
+}
+
+div.conversationStringPreview {
+	border: 1px solid #ddd;
+	background-color: #fff;
+	padding: 5px;
+	margin: 10px 0;
+}
+
+div.conversationScreenList {
+	float: left;
+}
+
+div.conversationScreenList select {
+	width: 200px;
+	height: 250px;
+}
+
+div.conversationScriptWindow {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+div.conversationScriptWindow pre {
+	border: 1px solid #ddd;
+	padding: 5px;
+	width: 350px;
+	height: 250px;
+	overflow: auto;
+	margin: 0;
+	margin-right: 25px;
+}
+
+div.conversationScriptName {
+	padding: 10px;
+	background-color: #eee;
+	border-bottom: 1px solid #ddd;
+}

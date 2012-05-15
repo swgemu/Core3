@@ -1,0 +1,434 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.structure;
+
+import server.zone.objects.tangible.TangibleObject;
+
+include server.zone.objects.structure.StructurePermissionList;
+import server.zone.objects.structure.events.StructureMaintenanceTask;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
+import engine.util.u3d.AABBTree;
+import engine.util.u3d.AABBNode;
+import engine.util.u3d.Vector3;
+import system.lang.Time;
+
+class StructureObject extends TangibleObject {
+	protected transient StructureMaintenanceTask structureMaintenanceTask;
+	//protected transient StructurePowerTask structurePowerTask;
+	
+	@dereferenced
+	protected StructurePermissionList structurePermissionList;
+	
+	@dereferenced
+	protected Time lastMaintenanceTime;
+	
+	@dereferenced
+	protected Time maintenanceExpires;
+	
+	@dereferenced
+	protected Time powerExpires;
+	
+	protected unsigned long ownerObjectID;
+	protected unsigned long deedObjectID;
+	
+	protected int baseMaintenanceRate;//TODO: Move to template
+	protected int basePowerRate; //TODO: Move to template
+	
+	protected float surplusMaintenance;
+	protected float surplusPower;
+
+	protected boolean maintenanceReduced;
+	
+	public StructureObject() {
+		Logger.setLoggingName("StructureObject");
+		
+		super.staticObject = false;
+		
+		ownerObjectID = 0;
+		
+		deedObjectID = 0;
+		
+		baseMaintenanceRate = 0;
+		
+		basePowerRate = 0;
+		
+		surplusMaintenance = 0;
+		
+		surplusPower = 0;
+		
+		structureMaintenanceTask = null;
+
+		maintenanceReduced = false;
+	}
+	
+	public native void initializeTransientMembers();
+	
+	public native void finalize();
+	
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	
+	public void notifyInsertToZone(Zone zone) {
+		super.notifyInsertToZone(zone);
+		
+		if (!super.staticObject) {
+			//Decay is 4 weeks.
+			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
+			
+			scheduleMaintenanceTask(10 * 60);
+		}			
+	}
+	
+	public void createChildObjects() {
+		super.createChildObjects();
+	}
+	
+	/**
+	 * Gets called when the structure has been created;
+	 */
+	public abstract int notifyStructurePlaced(CreatureObject creature) {
+		return 0;
+	}
+	
+	public abstract boolean checkRequisitesForPlacement(CreatureObject player) {
+		return true;
+	}
+
+	public native string getTimeString(unsigned int timestamp);
+
+	/**
+	 * Schedules the event that will be fired when maintenance is due to run out.
+	 * This method calls updateStructureStatus before running.
+	 */
+	public native void scheduleMaintenanceExpirationEvent();
+
+	/**
+	 * Schedules the maintenance task.
+	 * @param timeFromNow the time till the task should be run.
+	 */
+	public native void scheduleMaintenanceTask(int timeFromNow);
+	
+	/**
+	 * This method should be called anytime a method needs up to date information about
+	 * maintenance, power, and condition of the structure.
+	 */
+	public native abstract void updateStructureStatus();
+
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
+	public boolean isOnAdminList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName()) 
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	}
+	
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
+	public boolean isOnAdminList(final string firstName) {
+		return structurePermissionList.isOnPermissionList("ADMIN", firstName);
+	}
+	
+	/**
+	 * Checks if the playerName is on the entry list.
+	 * @param playerName The name of the player to check for entry permission.
+	 * @return Returns true if the player name has entry permissions.
+	 */
+	public boolean isOnEntryList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("ENTRY", player.getFirstName())
+			|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
+			|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	}
+	
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
+	public boolean isOnBanList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("BAN", player.getFirstName())
+		&& (player.isPlayerCreature() && !player.getPlayerObject().isPrivileged());
+	}
+	
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
+	public boolean isOnBanList(final string firstName) {
+		return structurePermissionList.isOnPermissionList("BAN", firstName);
+	}
+	
+	/**
+	 * Checks if the playerName is on the hopper list.
+	 * @param playerName The name of the player to check for hopper permission.
+	 * @return Returns true if the player name has hopper permissions.
+	 */
+	public boolean isOnHopperList(CreatureObject player) {
+		return structurePermissionList.isOnPermissionList("HOPPER", player.getFirstName())
+		|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	}
+	
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param playerName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
+	public boolean isOnPermissionList(final string listName, CreatureObject player) {
+		return structurePermissionList.isOnPermissionList(listName, player.getFirstName())
+		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
+	}
+	
+	public native boolean isOwnerOf(SceneObject obj);
+	public native boolean isOwnerOf(unsigned long oid);
+	
+	public boolean isOnAccessList(SceneObject obj) {
+		return false;
+	}
+	
+	public boolean isOnAccessList(unsigned long oid) {
+		return false;
+	}
+
+	public void sendPermissionListTo(CreatureObject creature, final string listName) {
+		structurePermissionList.sendTo(creature, listName);
+	}
+	
+	public boolean hasPermissionList(final string listName) {
+		return structurePermissionList.containsList(listName);
+	}
+	
+	public boolean isPermissionListFull(final string listName) {
+		return structurePermissionList.isListFull(listName);
+	}
+	
+	public int togglePermission(final string listName, final string targetName) {
+		return structurePermissionList.togglePermission(listName, targetName);
+	}
+	
+	public int grantPermission(final string listName, final string targetName) {
+		return structurePermissionList.grantPermission(listName, targetName);
+	}
+	
+	public int revokePermission(final string listName, final string targetName) {
+		return structurePermissionList.revokePermission(listName, targetName);
+	}
+	
+	public int revokeAllPermissions(final string targetName) {
+		return structurePermissionList.revokeAllPermissions(targetName);
+	}
+
+	public void setOwnerName(final string ownerName) {
+		structurePermissionList.setOwnerName(ownerName);
+	}
+	
+	public native void createVendor(CreatureObject player);
+	
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
+	public int getRedeedCost() {
+		return (baseMaintenanceRate * 50);
+	}
+
+	public native CreatureObject getOwnerCreatureObject(); 
+	
+	public unsigned long getOwnerObjectID() {
+		return ownerObjectID;
+	}
+	
+	public unsigned long getDeedObjectID() {
+		return deedObjectID;
+	}
+	
+	public native int getLotSize();
+
+	public void setMaintenanceReduced(boolean value) {
+		maintenanceReduced = value;
+	}
+
+	public native float getMaintenanceRate();
+
+	public native string getMaintenanceMods();
+	
+	public int getBaseMaintenanceRate() { //TODO: Move to template
+		return baseMaintenanceRate;
+	}
+	
+	public int getBasePowerRate() { //TODO: Move to template
+		return basePowerRate;
+	}
+	
+	public int getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	
+	public int getSurplusPower() {
+		return surplusPower;
+	}
+	
+	public abstract boolean isPublicStructure() {
+		return false;
+	}
+	
+	public abstract boolean isPrivateStructure() {
+		return false;
+	}
+	
+	public void setOwnerObjectID(unsigned long objectID) {
+		ownerObjectID = objectID;
+	}
+	
+	public void setDeedObjectID(unsigned long deedID) {
+		deedObjectID = deedID;
+	}
+	
+	public void setBaseMaintenanceRate(int rate) { //TODO: Move to template
+		baseMaintenanceRate = rate;
+	}
+	
+	public void setBasePowerRate(int rate) { //TODO: Move to template
+		basePowerRate = rate;
+	}
+	
+	public void setSurplusMaintenance(int surplus) {
+		surplusMaintenance = surplus;
+	}
+	
+	public void addMaintenance(float add) {
+		surplusMaintenance += add;
+	}
+
+	/**
+	 * Withdraws maintenance from payer and deposits it in the structure
+	 * maintenance pool. Updates maintenance modifier depending on skill
+	 * of payer.
+	 * @pre payer and structure objects are locked.
+	 * @post payer and structure objects are locked.
+	 * @param maintenance maintenance amount to deposit.
+	 * @param payer payer object.
+	 * @param cashFirst Indicates if the amount should be withdrawn from
+	 * the player's cash or bank account first.
+	 */
+	public native void payMaintenance(int maintenance, CreatureObject payer, boolean cashFirst);
+	
+	public void setSurplusPower(int surplus) {
+		surplusPower = surplus;
+	}
+	
+	public void addPower(float add) {
+		surplusPower += add;
+	}
+
+	public boolean isDecaying() {
+		return (surplusMaintenance < 0);
+	}
+
+	public native boolean isDecayed();
+
+	public native int getDecayPercentage();
+
+	public abstract boolean isCondemned() {
+		return false;
+	}
+	
+	public abstract void setPublicStructure(boolean privacy) {
+		
+	}
+	
+	public boolean isStructureObject() {
+		return true;
+	}
+	
+	public native boolean isCampStructure();
+	
+	//The + 1 is for a bug with IDL where <= throws an error...
+	public boolean isRedeedable() {
+		return (getRedeedCost() < (surplusMaintenance + 1));
+	}
+	
+	@local
+	public native AABBTree getAABBTree();
+	
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public native void addTemplateSkillMods(TangibleObject targetObject);
+
+	/*
+	 * Removes this object's skill mod map from the target object's skill mod map
+	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
+	 */
+	@local
+	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
+	
+	public abstract string getRedeedMessage() {
+		return "";
+	}
+}

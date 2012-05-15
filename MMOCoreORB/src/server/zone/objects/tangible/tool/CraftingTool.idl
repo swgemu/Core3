@@ -1,0 +1,196 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.tool;
+
+
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.tangible.tool.CraftingStation;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.area.ActiveArea;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+import system.util.Vector;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.scene.variables.ContainerPermissions;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+
+class CraftingTool extends ToolTangibleObject {
+	
+	protected string status;
+	protected int type;
+	protected float effectiveness;
+	
+	protected int complexityLevel;
+
+	@dereferenced
+	protected Vector<unsigned int> enabledTabs;
+
+	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
+	public static final int FOOD = 2; // Food and Chemical Crafting Tool
+	public static final int GENERIC = 3; // Generic Crafting Tool
+	public static final int JEDI = 4; // Lightsaber Crafting Tool
+	public static final int SPACE = 5; // Starship Crafting Tool
+	public static final int STRUCTURE = 6; // Structure and Furniture Crafting Tool
+	public static final int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
+	
+	public CraftingTool() {
+		Logger.setLoggingName("CraftingTool");
+		status = "@crafting:tool_status_ready";
+		effectiveness = -15;
+		
+		super.setContainerInheritPermissionsFromParent(false);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		if(getContainerObjectsSize() == 0) {
+			status = "@crafting:tool_status_ready";
+		} else {
+			status = "@crafting:tool_status_finished";
+		}
+		setCountdownTimer(0, false);
+	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+	
+	public boolean isCraftingTool() {
+		return true;
+	}
+	
+	/**
+	 * Crafting tool state is ready
+	 */
+	public boolean isReady() {
+		return status == "@crafting:tool_status_ready";
+	}
+	
+	public void setReady() {
+		status = "@crafting:tool_status_ready";
+	}
+	
+	/**
+	 * Crafting tool state is busy (crafting something)
+	 */
+	public boolean isBusy() {
+		return status == "@crafting:tool_status_working";
+	}
+	
+	public void setBusy() {
+		status = "@crafting:tool_status_working";
+	}
+	
+	/**
+	 * Crafting tool state is Finished (Something in hopper)
+	 */
+	public boolean isFinished() {
+		return status == "@crafting:tool_status_finished";
+	}
+	
+	public void setFinished() {
+		status = "@crafting:tool_status_finished";
+	}
+	
+	/**
+	 * Sends message to player if the tool is unable 
+	 * to start
+	 */
+	public native void sendToolStartFailure(CreatureObject player, final string message);
+	
+
+	public int getToolType() {
+		return type;
+	}
+	
+	public float getEffectiveness() {
+		return effectiveness;
+	}
+	
+	public float getComplexityLevel() {
+		return complexityLevel;
+	}
+
+	public native TangibleObject getPrototype();
+	
+	public ManufactureSchematic getManufactureSchematic() {
+		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	}
+	
+	@local
+	public native Vector<unsigned int> getToolTabs();
+
+	
+	public native void disperseItems();
+}

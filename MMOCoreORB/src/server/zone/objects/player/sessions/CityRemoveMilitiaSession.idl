@@ -1,0 +1,51 @@
+package server.zone.objects.player.sessions;
+
+import engine.util.Facade;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.region.CityRegion;
+import server.zone.objects.scene.SceneObject;
+
+import server.zone.objects.structure.StructureObject;
+import server.zone.managers.structure.StructureManager;
+include server.zone.objects.scene.SessionFacadeType;
+
+class CityRemoveMilitiaSession extends Facade {
+	@weakReference
+	protected CreatureObject creatureObject;
+	
+	@weakReference
+	protected CityRegion cityRegion;
+	
+	@weakReference
+	protected SceneObject terminalObject;
+	
+	protected unsigned long militiaID;
+	
+	public CityRemoveMilitiaSession(CreatureObject creature, CityRegion city, unsigned long militiaid, SceneObject terminal = null) {
+		Logger.setLoggingName("CityRemoveMilitiaSession");
+		Logger.setLogging(true);
+		
+		creatureObject = creature;
+		cityRegion = city;
+		terminalObject = terminal;
+		
+		militiaID = militiaid;
+		
+	}
+	
+	public unsigned long getMilitiaID() {
+		return militiaID;
+	}
+
+	public native int initializeSession();
+
+	public int cancelSession() {
+		creatureObject.dropActiveSession(SessionFacadeType.CITYMILITIA);
+		
+		return 0;
+	}
+	
+	public int clearSession() {
+		return 0;
+	}
+}

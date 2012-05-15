@@ -1,0 +1,184 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.pharmaceutical;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+class RevivePack extends PharmaceuticalObject {
+	protected float healthWoundHealed;
+	protected float healthHealed;
+	protected float actionWoundHealed;
+	protected float actionHealed;
+	protected float mindWoundHealed;
+	protected float mindHealed;
+	//protected float effectiveness;
+	
+	public RevivePack() {
+		setLoggingName("RevivePack");
+		
+		healthWoundHealed = 100;
+		healthHealed = 100;
+		actionWoundHealed = 100;
+		actionHealed = 100;
+		mindWoundHealed = 100;
+		mindHealed = 100;
+	}
+	
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		float effectiveness = values.getCurrentValue("power");
+		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		setUseCount(values.getCurrentValue("charges"));
+		
+		values.setHidden("power");
+		
+		float health = 2 * effectiveness;
+		healthWoundHealed = health;
+		healthHealed = 2 * effectiveness - health;
+		
+		float action = 2 * effectiveness;
+		action = System.random(action / 4);
+		action = action + effectiveness / 2;
+		
+		actionWoundHealed = action;
+		actionHealed = 2 * effectiveness - action;
+		
+		float mind = 1.5 * effectiveness;
+		mind = System.random(mind / 4);
+		mind = mind + effectiveness / 2;
+		
+		mindWoundHealed = mind;
+		mindHealed = 1.5 * effectiveness - mind;
+	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		super.fillAttributeList(msg, object);
+	
+		msg.insertAttribute("examine_heal_wound_health", Math.getPrecision(healthWoundHealed, 0));
+		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(healthHealed, 0));
+		
+		msg.insertAttribute("examine_heal_wound_mind", Math.getPrecision(mindWoundHealed, 0));
+		msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(mindHealed, 0));
+		
+		msg.insertAttribute("examine_heal_wound_action", Math.getPrecision(actionWoundHealed, 0));
+		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(actionHealed, 0));
+				
+		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
+		if (selectedID != 20)
+			return 1;
+
+		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
+			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
+			
+			return 0;
+		} else {
+			string command = "/reviveplayer ";
+			command = command + String.valueOf(super.getObjectID());
+			
+			player.sendExecuteConsoleCommand(command);
+			
+			return 0;
+		}
+
+	}
+	
+	public float getHealthWoundHealed() {
+		return healthWoundHealed;
+	}
+	
+	public float getHealthHealed() {
+		return healthHealed;
+	}
+	
+	public float getActionWoundHealed() {
+		return actionWoundHealed;
+	}
+	
+	public float getActionHealed() {
+		return actionHealed;
+	}
+	
+	public float getMindWoundHealed() {
+		return mindWoundHealed;
+	}
+	
+	public float getMindHealed() {
+		return mindHealed;
+	}
+	
+	public boolean isRevivePack() {
+		return true;
+	}
+
+}

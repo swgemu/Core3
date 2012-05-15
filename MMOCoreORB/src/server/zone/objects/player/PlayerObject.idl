@@ -1,0 +1,1293 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.player;
+
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.commands.QueueCommand;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.structure.StructureObject;
+import server.zone.ZoneClientSession;
+import server.zone.objects.waypoint.WaypointObject;
+import server.zone.Zone;
+import server.zone.templates.SharedObjectTemplate;
+import system.util.Vector;
+import system.util.VectorMap;
+import engine.service.proto.BasePacket;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.creature.CreatureObject;
+import server.chat.room.ChatRoom;
+import system.util.SortedVector;
+import server.zone.objects.building.BuildingObject;
+import server.zone.objects.tangible.tool.SurveyTool;
+import server.zone.objects.tangible.tool.CraftingTool;
+import server.zone.objects.player.events.PlayerDisconnectEvent;
+import server.zone.objects.player.events.PlayerRecoveryEvent;
+include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
+include server.zone.objects.player.sui.SuiBox;
+include server.zone.objects.player.ValidatedPosition;
+include server.zone.objects.player.variables.WaypointList;
+include server.zone.objects.creature.variables.Skill;
+include server.zone.objects.player.variables.Ability;
+include server.zone.objects.player.variables.AbilityList;
+include server.zone.objects.player.variables.FriendList;
+include server.zone.objects.player.variables.IgnoreList;
+include server.zone.objects.player.variables.SchematicList;
+include server.zone.objects.player.variables.FactionStandingList;
+include server.zone.objects.player.badges.Badges;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
+import system.util.Vector;
+import system.util.SortedVector;
+
+class PlayerObject extends IntangibleObject {	
+	protected unsigned int characterBitmask;
+	protected string title;
+	
+	protected string savedTerrainName;
+	protected unsigned long savedParentID;
+	
+	@dereferenced
+	protected Badges badges;
+	
+	protected int forcePower;
+	protected int forcePowerMax;
+	protected int forcePowerRegen;
+	
+	protected int foodFilling;
+	protected int foodFillingMax;
+	
+	protected int drinkFilling;
+	protected int drinkFillingMax;
+	
+	protected string starterProfession;
+	
+	protected string bankLocation;
+	
+	protected boolean teleporting;
+	
+	@dereferenced
+	protected SortedVector<StructureObject> ownedStructures;
+	
+	protected byte maximumLots;
+	
+	protected int jediState;
+	protected unsigned int adminLevel; //TODO: This should be derived from the connected account object.
+	
+	protected byte languageID;
+	
+	@dereferenced
+	protected VectorMap<string, int> xpTypeCapList;
+		
+	@dereferenced
+	protected VectorMap<unsigned int, string> commandMessageStrings;
+	
+	@dereferenced
+	protected DeltaVectorMap<string, int> experienceList;
+	
+	@dereferenced
+	protected WaypointList waypointList;
+	
+	@dereferenced
+	protected AbilityList abilityList;
+		
+	@dereferenced
+	protected FriendList friendList;
+	
+	@dereferenced
+	protected IgnoreList ignoreList;
+	
+	@dereferenced
+	protected FactionStandingList factionStandingList;
+	
+	@dereferenced
+	protected SchematicList schematicList;
+	
+	protected byte incapacitationCounter; //TODO: Convert this to a session!
+	
+	protected unsigned int suiBoxNextID;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, SuiBox> suiBoxes;
+	
+	@dereferenced
+	protected SortedVector<ChatRoom> chatRooms;
+		
+	@dereferenced
+	protected SortedVector<CreatureObject> duelList;
+	
+	@dereferenced
+	protected BountyHunterTefRemovalTaskMap bountyLockList;
+	
+	@weakReference
+	protected BuildingObject declaredResidence;
+	
+	@weakReference
+	protected BuildingObject cloningFacility;
+	
+	/// Reference to last used Survey Tool
+	@weakReference
+	protected SurveyTool surveyTool;
+
+	@dereferenced
+	protected SortedVector<unsigned long> persistentMessages;
+	
+	protected unicode biography; //char biography
+	
+	@dereferenced
+	protected SortedVector<string> consentList;
+	
+	//npc conversation
+	protected string lastNpcConvoMessage;
+	protected string lastNpcConvo;
+	@dereferenced
+	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
+	@weakReference
+	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	
+	
+	@dereferenced
+	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
+	
+	@dereferenced
+	protected transient Reference<PlayerRecoveryEvent> recoveryEvent;
+	
+	@dereferenced
+	protected Time logoutTimeStamp;
+	
+	protected int onlineStatus;
+	
+	protected int skillPoints; //TODO: This could be encapsulated in the skill list.
+		
+	protected int pvpRating;
+
+	protected int factionStatus;
+	
+	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
+	
+	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
+	
+	@dereferenced
+	protected Vector<byte> hologrindProfessions;
+	
+	protected unsigned int clientLastMovementStamp;
+	
+	@dereferenced
+	protected Time serverLastMovementStamp;
+	
+	@dereferenced
+	protected ValidatedPosition lastValidatedPosition;
+	
+	protected unsigned int accountID;
+	
+	protected byte raceID; //TODO: Deprecate. This should be referenced from the ObjectTemplate instead.
+	
+	@dereferenced
+	protected VectorMap<string, string> screenPlayData;
+	
+	@dereferenced
+	protected SortedVector<string> permissionGroups;
+
+	protected unsigned long performanceBuffTarget;
+	
+	protected boolean debugOutput;
+	
+	protected float visibility;
+	
+	@dereferenced
+	protected Time lastVisibilityUpdateTimestamp;
+	
+	public static final int LFG = 1;
+	public static final int NEWBIEHELPER = 2;
+	public static final int ROLEPLAYER = 4;
+	public static final int AFK = 0x80;
+	public static final int LD = 0x100;
+	public static final int FACTIONRANK = 0x200;
+	public static final int ANONYMOUS = 0x80000000;
+	
+	public static final int NORMALPLAYER = 0;
+	public static final int CSR = 1;
+	public static final int DEV = 2;
+	
+	public static final int ONLINE = 1;
+	public static final int OFFLINE = 2;
+	public static final int LINKDEAD = 3;
+	public static final int LOGGINGIN = 4;
+	public static final int LOGGINGOUT = 5;
+	public static final int LOADING = 6;
+	
+	public PlayerObject() {
+		commandMessageStrings.setNoDuplicateInsertPlan();
+		
+		bankLocation = "";
+		
+		teleporting = false;
+		
+		debugOutput = false;
+		
+		suiBoxNextID = 0;
+		
+		savedParentID = 0;
+		
+		skillPoints = 0;
+		
+		forcePower = 0;
+		forcePowerMax = 0;
+		forcePowerRegen = 0;
+		jediState = 0;
+		
+		duelList.setNoDuplicateInsertPlan();
+		persistentMessages.setNoDuplicateInsertPlan();
+		consentList.setNoDuplicateInsertPlan();
+
+		accountID = 0;		
+		
+		invisible = false;
+		
+		factionStatus = 0;
+		
+		raceID = 0;
+		
+		clientLastMovementStamp = 0;
+		
+		maximumLots = 10;
+		
+		spawnedBlueFrog = false;
+		
+		setOffline();
+		
+		performanceBuffTarget = 0;
+		
+		visibility = 0;
+		lastVisibilityUpdateTimestamp.updateToCurrentTime();
+		
+		Logger.setLoggingName("PlayerObject");
+	}
+	
+	public void finalize() {
+
+	}
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	public native void unload();
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	public native void initializeTransientMembers();
+	
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public native void sendMessage(BasePacket msg);
+	
+	public synchronized void addOwnedStructure(StructureObject obj) {
+		ownedStructures.put(obj);
+	}
+	
+	public synchronized void removeOwnedStructure(StructureObject obj) {
+		ownedStructures.drop(obj);
+	}
+	
+	public synchronized int getTotalOwnedStructureCount() {
+		return ownedStructures.size();
+	}
+	
+	public synchronized boolean isOwnedStructure(StructureObject obj) {
+		return ownedStructures.contains(obj);
+	}
+	
+	public synchronized StructureObject getOwnedStructure(int i) {
+		return ownedStructures.get(i);
+	}
+	
+	public synchronized int getLotsRemaining() {
+		int lotsRemaining = maximumLots;
+		
+		for (int i = 0; i < ownedStructures.size(); ++i) {
+			StructureObject structure = ownedStructures.get(i);
+			
+			lotsRemaining = lotsRemaining - structure.getLotSize();
+		}
+		
+		return lotsRemaining;
+	}
+	
+	public synchronized boolean hasLotsRemaining(int lots) {
+		return lots <= getLotsRemaining();
+	}
+	
+	public native void notifySceneReady();
+	
+	 /**
+	 * Adds experience of a type to the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to add.
+	 * @param xp The value of experience to add.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 * @return returns total experience awarded
+	 */
+	public native int addExperience(final string xpType, int xp, boolean notifyClient = true);
+
+    /**
+	 * Removes experience of a type from the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to remove.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
+	public native void removeExperience(final string xpType, boolean notifyClient = true);
+	
+	/**
+	 * Adds waypoint object to waypointList
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param waypoint waypoint object to add
+	 * @param checkName determines whether to remove existing Waypoint with equal customName
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void addWaypoint(WaypointObject waypoint, boolean checkName, boolean notifyClient = true);
+	public native void setWaypoint(WaypointObject waypoint, boolean notifyClient = true);
+	
+	/** 
+	 * Adds a new waypoint with the specified coordinates
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param planet planet where waypoint will be created
+	 * @param positionX waypoint position X
+	 * @param positionY waypoint position Y
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native WaypointObject addWaypoint(final string planet, float positionX, float positionY, boolean notifyClient = true);
+	
+	/**
+	 * Removes a waypoint from this player
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint list doesnt contain the specified waypoint }
+	 * @param waypointID waypoint object id to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true);
+	
+	/**
+	 * Adds new abilities commands to player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param abilities Vector of abilities to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void addAbilities(@dereferenced Vector<Ability> abilities, boolean notifyClient = true);
+	
+	@local
+	public native void addAbility(Ability ability, boolean notifyClient = true);
+
+	/**
+	 * Removes certifications from player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void removeAbilities(@dereferenced Vector<Ability> abilities, boolean notifyClient = true);
+
+	@local
+	public native void removeAbility(Ability ability, boolean notifyClient = true);
+	
+	
+	@local
+	public native boolean addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
+	
+	@local
+	public native void removeSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
+	
+	@local
+	public native boolean addRewardedSchematic(DraftSchematic schematic, int quantity = 1, boolean notifyClient = true);
+	
+	@local
+	public native void removeRewardedSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	@local
+	public native void decreaseSchematicUseCount(DraftSchematic schematic); 
+	
+	//@local
+	//public native void addSchematic(DraftSchematic schematic, boolean notifyClient = true);
+	
+	//@local
+	//public native void removeSchematic(DraftSchematic schematic, boolean notifyClient = true);
+
+	/**
+	 * Sets the specified language id
+	 * @pre { }
+	 * @post { }
+	 * @param language language id to set
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void setLanguageID(byte language, boolean notifyClient = true);
+	
+	/**
+	 * Adds a friend to the friend list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name friends name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void addFriend(final string name, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified friend from the friend list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name friend name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeFriend(final string name, boolean notifyClient = true);
+	
+	/**
+	 * Adds a player to the ignore list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name player name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void addIgnore(final string name, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified player from the ignore list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name player name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeIgnore(final string name, boolean notifyClient = true);
+	
+	public native void setTitle(final string characterTitle, boolean notifyClient = true);
+	
+	public native void setFoodFilling(int newValue, boolean notifyClient = true);
+	public native void setDrinkFilling(int newValue, boolean notifyClient = true);
+	
+	/**
+	 * Adds the amount of faction points to the faction point list.
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param factionName The string key for the faction the faction points are to be added.
+	 * @param amount The float amount of faction points to add. 
+	 */
+	public native void increaseFactionStanding(final string factionName, float amount);
+	public native void decreaseFactionStanding(final string factionName, float amount);
+	public native float getFactionStanding(final string factionName);
+	
+	/**
+	 * Returns the active SurveyWaypoint
+	 */
+	public native WaypointObject getSurveyWaypoint();
+	
+	public void setScreenPlayData(final string screenPlay, final string variable, final string data) {
+		screenPlayData.put(screenPlay + "_" + variable, data);
+	}
+	
+	public string getScreenPlayData(final string screenPlay, final string variable) {
+		return screenPlayData.get(screenPlay + "_" + variable);
+	}
+	
+	public native void clearScreenPlayData(final string screenPlay);
+	
+	public native void activateRecovery();
+	
+	public native void doRecovery();
+	
+	public native void disconnect(boolean closeClient, boolean doLock);
+	
+	public native void reload(ZoneClientSession client);
+	
+	public void setOffline() {
+		if (isLinkDead()) {
+			// clear LD flag
+		}
+		
+		onlineStatus = OFFLINE;
+	}
+	
+	public native void setLinkDead();
+	
+	public native void setOnline();
+	
+	public void setLoggingOut() {
+		onlineStatus = LOGGINGOUT;
+	}
+	
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to receive badges response message
+	 */
+	public native void sendBadgesResponseTo(CreatureObject player);
+	
+	public native void logout(boolean doLock);
+	
+	/**
+	 * Gets the faction point list.
+	 */
+	@local
+	public FactionStandingList getFactionStandingList() {
+		return factionStandingList;
+	}
+	
+	//NPC Conversation Methods
+	public void setLastNpcConvStr(final string conv) {
+		lastNpcConvo = conv;
+	}
+
+	public void setLastNpcConvMessStr(final string mess) {
+		lastNpcConvoMessage = mess;
+	}
+
+	public string getLastNpcConvStr() {
+		return lastNpcConvo;
+	}
+
+	public string getLastNpcConvMessStr() {
+		return lastNpcConvoMessage;
+	}
+
+	public string getLastNpcConvOption(int idx) {
+		return lastNpcConvoOptions.get(idx);
+	}
+
+	public void addLastNpcConvOptions(final string option) {
+		lastNpcConvoOptions.add(option);
+	}
+
+	public int countLastNpcConvOptions() {
+		return lastNpcConvoOptions.size();
+	}
+
+	public void clearLastNpcConvOptions() {
+		lastNpcConvoOptions.removeAll();
+	}
+	
+	public void setConversatingCreature(CreatureObject creature) {
+		conversatingCreature = creature;
+	}
+	
+	public CreatureObject getConversatingCreature() {
+		return conversatingCreature;
+	}
+	
+	@local
+	public SortedVector<unsigned long> getPersistentMessages() {
+		return persistentMessages;
+	}
+	
+	public void addPersistentMessage(unsigned long id) {
+		persistentMessages.put(id);
+	}
+	
+	public void dropPersistentMessage(unsigned long id) {
+		persistentMessages.drop(id);
+	}
+	
+	/**
+	 * Unloads all the spawned creatures from the datapad control devices
+	 */
+	public native void unloadSpawnedChildren();
+	
+	public void addToConsentList(final string name) {
+		consentList.put(name);
+	}
+	
+	public boolean hasInConsentList(final string name) {
+		return consentList.contains(name);
+	}
+	
+	public void removeFromConsentList(final string name) {
+		consentList.drop(name);
+	}
+	
+	public string getConsentName(int i) {
+		return consentList.get(i);
+	}
+	
+	public int getConsentListSize() {
+		return consentList.size();
+	}
+	
+	@local
+	public string getFactionRank() {
+		return factionStandingList.getFactionRank();
+	}
+	
+	@local
+	public void setFactionRank(final string rank) {
+		factionStandingList.setFactionRank(rank);
+	}
+	
+	public void setCommandMessageString(unsigned int actionCRC, string message) {
+		commandMessageStrings.put(actionCRC, message);
+	}
+	
+	public void removeCommandMessageString(unsigned int actionCRC) {
+		commandMessageStrings.drop(actionCRC);
+	}
+	
+	public BuildingObject getDeclaredResidence() {
+		return declaredResidence;
+	}
+	
+	public void setDeclaredResidence(BuildingObject residence) {
+		declaredResidence = residence;
+	}
+	
+	public void setCloningFacility(BuildingObject cloningfac) {
+		cloningFacility = cloningfac;
+	}
+	
+	public BuildingObject getCloningFacility() {
+		return cloningFacility;
+	}
+	
+	/**
+	 * Notifies all reverse friends online status
+	 * @pre { }
+	 * @post { }
+	 */
+	public native void notifyOnline();
+	
+	public native void doDigest();
+	
+	public boolean isDigesting() {
+		if (getDrinkFilling() > 0 || getFoodFilling() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public string getSavedTerrainName() {
+		return savedTerrainName;
+	}
+	
+	public void setSavedParentID(unsigned long id) {
+		savedParentID = id;
+	}
+	
+	public void setSavedTerrainName(final string name) {
+		savedTerrainName = name;
+	}
+
+	public native void setForcePower(int fp, boolean notifyClient = true);
+
+	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
+
+	public native void activateForceRegen();
+	
+	public void setForcePowerRegen(int val) {
+		forcePowerRegen = val;
+	}
+	
+	public int getForcePowerRegen() {
+		return forcePowerRegen;
+	}
+
+
+	public unsigned long getSavedParentID() {
+		return savedParentID;
+	}
+	
+	public native unsigned int getNewSuiBoxID(unsigned int type);
+	
+	public boolean hasSuiBox(unsigned int boxID) {
+		return suiBoxes.contains(boxID);
+	}
+	
+	public SuiBox getSuiBox(unsigned int boxID) {
+		return suiBoxes.get(boxID);
+	}
+	
+	/**
+	 * Removes the specified box id and optionally closes the client sui
+	 */
+	public native void removeSuiBox(unsigned int boxID, boolean closeWindowToClient = false);
+	
+	public native void removeSuiBoxType(unsigned int windowType);
+	
+	public boolean hasSuiBoxWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			type = sui.getWindowType();
+			
+			if (windowType == type)
+				return true;
+		}
+
+		return false;
+	}
+	
+	public void closeSuiWindowType(unsigned int windowType) {
+		if (hasSuiBoxWindowType(windowType)) {
+			SuiBox sui = getSuiBoxFromWindowType(windowType);
+			
+			if (sui != null) {
+				sendMessage(sui.generateCloseMessage());
+				removeSuiBox(sui.getBoxID());
+			}
+		}
+	}
+	
+	public unsigned SuiBox getSuiBoxFromWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			if (windowType == sui.getWindowType())
+				return sui;
+		}
+		
+		return null;
+	}
+	
+	public void addSuiBox(SuiBox sui) {
+		unsigned int key = sui.getBoxID();
+		suiBoxes.put(key, sui);
+	}
+	
+	public void addPermissionGroup(final string group) {
+		permissionGroups.put(group);
+	}
+	
+	public void removePermissionGroup(final string group) {
+		permissionGroups.drop(group);
+	}
+	
+	@local
+	public SortedVector<string> getPermissionGroups() {
+		return permissionGroups;
+	}
+	
+	public native boolean isFirstIncapacitationExpired();
+
+	public void resetIncapacitationCounter() {
+		incapacitationCounter = 0;
+	}
+
+	public native void resetFirstIncapacitationTime();
+
+	public void updateIncapacitationCounter() {
+		incapacitationCounter++;
+
+		if (isFirstIncapacitation() || isFirstIncapacitationExpired())
+			resetFirstIncapacitationTime();
+	}
+
+	public boolean isFirstIncapacitation() {
+		return incapacitationCounter == 1;
+	}
+
+	public byte getIncapacitationCounter() {
+		return incapacitationCounter;
+	}
+	
+	//Duel list manipulation methods
+	public void addToDuelList(CreatureObject targetPlayer) {
+		duelList.put(targetPlayer);
+	}
+
+	public void removeFromDuelList(CreatureObject targetPlayer) {
+		duelList.drop(targetPlayer);
+	}
+
+	public CreatureObject getDuelListObject(int index) {
+		return duelList.get(index);
+	}
+
+	public boolean requestedDuelTo(CreatureObject targetPlayer) {
+		return duelList.contains(targetPlayer);
+	}
+
+	public boolean isDuelListEmpty() {
+		return duelList.isEmpty();
+	}
+
+	public int getDuelListSize() {
+		return duelList.size();
+	}
+	
+	public unicode getBiography() {
+		return biography;
+	}
+	
+	/**
+	 * Notifies all reverse friends offline status
+	 * @pre { }
+	 * @post { }
+	 */
+	public native void notifyOffline();
+	
+	public void setBadge(unsigned int badge) {
+		badges.setBadge(badge);
+	}
+	
+	public native void awardBadge(unsigned int badge);
+	
+	/**
+	 * Set active survey tool, this is set whenever
+	 * a SurveyTool is used
+	 */
+	public void setSurveyTool(SurveyTool tool) {
+		surveyTool = tool;
+	}
+	
+	/**
+	 * Returns the active SurveyTool
+	 */
+	public SurveyTool getSurveyTool() {
+		return surveyTool;
+	}
+	
+	public void setTeleporting(boolean val) {
+		teleporting = val;
+	}
+	
+	public int getNumBadges() {
+		return badges.getNumBadges();
+	}
+	
+	public int getBadgeTypeCount(byte type) {
+		return badges.getTypeCount(type);
+	}
+	
+	public boolean hasFriend(final string name) {
+		return friendList.contains(name);
+	}
+	
+	public boolean isIgnoring(final string name) {
+		return ignoreList.contains(name);
+	}
+	
+	public void addReverseFriend(final string name) {
+		friendList.addReversePlayer(name);
+	}
+	
+	public void removeReverseFriend(final string name) {
+		friendList.removeReversePlayer(name);
+	}
+	
+	public native void sendFriendLists();
+	
+	public boolean hasWaypoint(unsigned long objectID) {
+		return waypointList.contains(objectID);
+	}
+	
+	/**
+	 * Checks to see if this player object has the specified ability.
+	 * @param ability The ability to search for.
+	 * @return True if the player has the ability.
+	 */
+	@local
+	public boolean hasAbility(final string ability) {
+		return abilityList.contains(ability);
+	}
+
+	public boolean hasCommandMessageString(unsigned int actionCRC) {
+		return commandMessageStrings.contains(actionCRC);
+	}
+	
+	public unsigned int getCharacterBitmask() {
+		return characterBitmask;
+	}
+	
+	public string getTitle() {
+		return title;
+	}
+	
+	public unsigned int getAdminLevel() {
+		return adminLevel;
+	}
+	
+	public void setAdminLevel(unsigned int adminlvl) {
+		adminLevel = adminlvl;
+	}
+	
+	public void setBiography(final unicode bio) {
+		biography = bio;
+	}
+	
+	public boolean isDeveloper() {
+		return adminLevel == DEV;
+	}
+	
+	public boolean isCSR() {
+		return adminLevel == CSR;
+	}
+	
+	public boolean isPrivileged() {
+		return (adminLevel > 0 && hasAbility("admin"));
+	}
+	
+	public void setCharacterBitmask(unsigned int bitmask) {
+		characterBitmask = bitmask;
+	}
+	
+	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native void toggleCharacterBit(unsigned int bit);
+	
+	@local 
+	public VectorMap<string, int> getXpTypeCapList() {
+	    return xpTypeCapList;
+	}
+	
+	@local
+	public DeltaVectorMap<string, int> getExperienceList() {
+		return experienceList;
+	}
+	
+	public int getForcePower() {
+		return forcePower;
+	}
+	
+	public int getForcePowerMax() {
+		return forcePowerMax;
+	}
+	
+	@local
+	public WaypointList getWaypointList() {
+		return waypointList;
+	}
+	
+	@local
+	public AbilityList getAbilityList() {
+		return abilityList;
+	}
+	
+	@local
+	public SchematicList getSchematics() {
+		return schematicList;
+	}
+	
+	public DraftSchematic getSchematic(int i) {
+		return schematicList.get(i);
+	}
+	
+	@local
+	@dereferenced
+	public native Vector<DraftSchematic> filterSchematicList(CreatureObject player, Vector<unsigned int> enabledTabs, int complexityLevel);
+	
+	public int getFoodFilling() {
+		return foodFilling;
+	}
+	
+	public int getFoodFillingMax() {
+		return foodFillingMax;
+	}
+	
+	public int getDrinkFilling() {
+		return drinkFilling;
+	}
+	
+	public int getDrinkFillingMax() {
+		return drinkFillingMax;
+	}
+	
+	public int getJediState() {
+		return jediState;
+	}
+	
+		
+	public void setJediState(int state) {
+		jediState = state;
+	}
+	
+	public byte getLanguageID() {
+		return languageID;
+	}
+	
+	@local
+	public DeltaVector<string> getFriendList() {
+		return friendList;
+	}
+	
+	public boolean isTeleporting() {
+		return teleporting;
+	}
+	
+	public void addChatRoom(ChatRoom room) {
+		chatRooms.put(room);
+	}
+
+	public void removeChatRoom(ChatRoom room) {
+		chatRooms.drop(room);
+	}
+	
+	public void setBankLocation(final string location) {
+		bankLocation = location;
+	}
+	
+	public string getBankLocation() {
+		return bankLocation;
+	}
+		
+	@local
+	public DeltaVector<string> getIgnoreList() {
+		return ignoreList;
+	}
+	
+	public int getExperience(final string xp) {
+		if (experienceList.contains(xp)) {
+			return experienceList.get(xp);
+		} else {
+			return 0;
+		}
+	}
+
+	/**
+	 * Maximizes all types of experience for the player.
+	 */
+	public native void maximizeExperience();
+	
+	public native void activateMissions();
+	
+	public string getCommandMessageString(unsigned int actionCRC) {
+		return commandMessageStrings.get(actionCRC);
+	}
+	
+	public boolean hasBadge(unsigned int badge) {
+		return badges.hasBadge(badge);
+	}
+	
+	public native void clearDisconnectEvent();
+	
+	public native void clearRecoveryEvent();
+	
+	public boolean isOnline() {
+		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	}
+	
+	public boolean isOffline() {
+		return onlineStatus == OFFLINE;
+	}
+	
+	public boolean isLoading() {
+		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+	}
+	
+	public boolean isLinkDead() {
+		return onlineStatus == LINKDEAD;
+	}
+	
+	public boolean isLoggingIn() {
+		return onlineStatus == LOGGINGIN;
+	}
+	
+	public boolean isLoggingOut() {
+		return onlineStatus == LOGGINGOUT;
+	}
+	
+	public void setSkillPoints(int points) {
+		skillPoints = points;
+	}	
+	
+	public void addSkillPoints(int points) {
+		skillPoints += points;
+	}
+	
+
+	public int getSkillPoints() {
+		return skillPoints;
+	}
+	
+	@local
+	public ValidatedPosition getLastValidatedPosition() {
+		return lastValidatedPosition;
+	}
+	
+	public void updateLastValidatedPosition() {
+		lastValidatedPosition.update(super.getParent());
+		serverLastMovementStamp.updateToCurrentTime();
+	}
+
+	public void setSpawnedBlueFrog() {
+		spawnedBlueFrog = true;
+	}
+	
+	public boolean hasSpawnedBlueFrog() {
+		return spawnedBlueFrog;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;
+	}
+
+	public unsigned long getServerMovementTimeDelta() {
+		return serverLastMovementStamp.miliDifference();
+	}
+	
+	@local
+	public Time getServerMovementTimeStamp() {
+		return serverLastMovementStamp;
+	}
+
+	public void setClientLastMovementStamp(unsigned int stamp) {
+		clientLastMovementStamp = stamp;
+	}
+	
+	public void updateServerLastMovementStamp() {
+		serverLastMovementStamp.updateToCurrentTime();
+	}
+	
+	public void setAccountID(unsigned int id) {
+		accountID = id;
+	}
+
+	public int getFactionStatus() {
+		return factionStatus;
+	}
+	
+	public native void setFactionStatus(int status);
+	
+	public unsigned int getClientLastMovementStamp() {
+		return clientLastMovementStamp;
+	}
+
+	public boolean isInvisible() {
+		return invisible;
+	}
+	
+	public void setInvisible(boolean invis) {
+		invisible = invis;
+	}
+	
+	public void addHologrindProfession(byte prof) {
+		hologrindProfessions.add(prof);
+	}
+	
+	@local
+	public Vector<byte> getHologrindProfessions() {
+		return hologrindProfessions;
+	}
+	
+	public byte getRaceID() {
+		return raceID;
+	}
+	
+	public void setRaceID(byte race) {
+		raceID = race;
+	}
+	
+	public void setMaximumLots(byte lots) {
+		maximumLots = lots;
+	}
+	
+	public byte getMaximumLots() {
+		return maximumLots;
+	}
+	
+	public string getStarterProfession() {
+		return starterProfession;
+	}
+	
+	public void setStarterProfession(string profession) {
+		starterProfession = profession;
+	}
+
+	public native void addToBountyLockList(unsigned long playerId);
+	
+	public native boolean isInBountyLockList(unsigned long playerId);
+	
+	public native void removeFromBountyLockList(unsigned long playerId, boolean immediately);
+	
+	public native void removeFromBountyLockListDirectly(unsigned long playerId);
+	
+	public native boolean isBountyLocked();
+	
+	private native void updateBountyPvpStatus(unsigned long playerId);
+	
+	public unsigned long getPerformanceBuffTarget() {
+		return performanceBuffTarget;
+	}
+	public void setPerformanceBuffTarget(unsigned long target) {
+		performanceBuffTarget = target;
+	}
+	
+	public void setDebug(boolean value) {
+		debugOutput = value;
+	}
+	
+	public boolean getDebug() {
+		return debugOutput;
+	}
+	
+	public float getVisibility() {
+		return visibility;
+	}
+	
+	public void setVisibility(float value) {
+		visibility = value;
+		if (visibility > 504) {
+			visibility = 504;
+		}
+		lastVisibilityUpdateTimestamp.updateToCurrentTime();
+	}
+	
+	@dereferenced
+	@local
+	public native Time getLastVisibilityUpdateTimestamp();
+}

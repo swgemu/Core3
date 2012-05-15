@@ -1,0 +1,483 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.weapon;
+
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.Zone;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.scene.SceneObjectType;
+import server.zone.templates.SharedObjectTemplate;
+include server.zone.templates.tangible.SharedWeaponObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.tangible.powerup.PowerupObject;
+import system.util.Vector;
+include server.zone.objects.tangible.Container;
+
+class WeaponObject extends TangibleObject {
+	protected int attackType;
+	protected string weaponEffect;
+	protected int weaponEffectIndex;
+	
+	protected boolean certified;
+	
+	protected int armorPiercing;
+	
+	protected int pointBlankAccuracy;
+	protected int pointBlankRange;
+
+	protected int idealRange;
+	protected int idealAccuracy;
+
+	protected int maxRange;
+	protected int maxRangeAccuracy;
+	
+	protected int damageType;
+	
+	protected float attackSpeed;
+	
+	protected float minDamage;
+	protected float maxDamage;
+	
+	protected float damageRadius;
+	
+	protected float woundsRatio;
+	
+	protected int healthAttackCost;
+	protected int actionAttackCost;
+	protected int mindAttackCost;
+	protected int forceCost;
+	
+	protected int bladeColor;
+	
+	protected PowerupObject powerupObject;
+	
+	protected float damageSlice;
+	protected float speedSlice;
+	
+	protected transient SharedWeaponObjectTemplate weaponTemplate;
+	
+	public static final int NONE = 0;
+	public static final int LIGHT = 1;
+	public static final int MEDIUM = 2;
+	public static final int HEAVY = 3;
+
+	public static final int KINETIC = 1;
+	public static final int ENERGY = 2;
+	public static final int BLAST = 4;
+	public static final int STUN = 8;
+	public static final int LIGHTSABER = 16;
+	public static final int HEAT = 32;
+	public static final int COLD = 64;
+	public static final int ACID = 128;
+	public static final int ELECTRICITY = 256;
+	public static final int FORCE = 512;
+
+	public static final int MELEEATTACK = 0;
+	public static final int RANGEDATTACK = 1;
+	public static final int FORCEATTACK = 2;
+	public static final int TRAPATTACK = 3;
+	public static final int GRENADEATTACK = 4;
+	public static final int HEAVYACIDBEAMATTACK = 14;
+	public static final int HEAVYLIGHTNINGBEAMATTACK = 15;
+	public static final int HEAVYPARTICLEBEAMATTACK = 17;
+	public static final int HEAVYROCKETLAUNCHERATTACK = 18;
+	public static final int HEAVYLAUNCHERATTACK = 19;
+		
+	public WeaponObject() {
+		certified = false;
+		armorPiercing = 0;
+		
+		healthAttackCost = 0;
+		actionAttackCost = 0;
+		mindAttackCost = 0;
+		forceCost = 0;
+		
+		pointBlankAccuracy = 0;
+		pointBlankRange = 0;
+		
+		idealRange = 0;
+		idealAccuracy = 0;
+		
+		maxRange = 5;
+		maxRangeAccuracy = 0;
+		
+		damageType = 0;
+		
+		minDamage = 1;
+		maxDamage = 10;
+		
+		woundsRatio = 0;
+		
+		damageRadius = 0;
+		
+		attackSpeed = 1;
+		
+		weaponTemplate = null;
+		
+		Logger.setLoggingName("WeaponObject");
+		
+		damageSlice = 1;
+		speedSlice = 1;
+	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public native void initializeTransientMembers();
+	
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public native void sendContainerTo(CreatureObject player);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	/**
+	 * Handles creating the Saber inventory.
+	 */
+	public native void createChildObjects();
+	
+	/**
+	 * Returns true if the player has the required certifications for this weapon
+	 * @pre { }
+	 * @post { }
+	 * @param object player object to check against
+	 */
+	public native boolean isCertifiedFor(CreatureObject object);
+	
+	@local
+	public Vector<string> getDamageModifiers() {
+		return weaponTemplate.getDamageModifiers();
+	}
+	
+	@local
+	public Vector<string> getSpeedModifiers() {
+		return weaponTemplate.getSpeedModifiers();
+	}
+	
+	@local
+	public Vector<string> getCreatureAccuracyModifiers() {
+		return weaponTemplate.getCreatureAccuracyModifiers();
+	}
+	
+	@local
+	public Vector<string> getCreatureAimModifiers() {
+		return weaponTemplate.getCreatureAimModifiers();
+	}
+	
+	@local
+	public Vector<string> getDefenderDefenseModifiers() {
+		return weaponTemplate.getDefenderDefenseModifiers();
+	}
+	
+	@local
+	public Vector<string> getDefenderSecondaryDefenseModifiers() {
+		return weaponTemplate.getDefenderSecondaryDefenseModifiers();
+	}
+	
+	@local
+	public Vector<string> getDefenderToughnessModifiers() {
+		return weaponTemplate.getDefenderToughnessModifiers();
+	}
+	
+	public void setCertified(boolean cert) {
+		certified = cert;
+	}
+	
+	public int getAttackType() {
+		return attackType;
+	}
+	
+	public void setAttackType(int a) {
+		attackType = a;
+	}
+	
+	public boolean isCertified() {
+		return certified;
+	}
+	
+	public native int getPointBlankAccuracy(boolean withPup = true);
+	
+	public void setPointBlankAccuracy(int value) {
+		pointBlankAccuracy = value;
+	}
+	
+	public native int getPointBlankRange(boolean withPup = true);
+	
+	public native int getIdealRange(boolean withPup = true);
+	
+	public void setIdealRange(int value) {
+		idealRange = value;
+	}
+	
+	public native int getMaxRange(boolean withPup = true);
+	
+	public void setMaxRange(int value) {
+		maxRange = value;
+	}
+	
+	public native int getIdealAccuracy(boolean withPup = true);
+	
+	public void setIdealAccuracy(int value) {
+		idealAccuracy = value;
+	}
+	
+	public int getArmorPiercing() {
+		return armorPiercing;
+	}
+	
+	public native int getMaxRangeAccuracy(boolean withPup = true);
+	
+	public void setMaxRangeAccuracy(int value) {
+		maxRangeAccuracy = value;
+	}
+	
+	public native float getAttackSpeed(boolean withPup = true);
+	
+	public void setAttackSpeed(float value) {
+		attackSpeed = value;
+	}
+	
+	public native float getMaxDamage(boolean withPup = true);
+	
+	public void setMaxDamage(float value) {
+		maxDamage = value;
+	}
+	
+	public native float getMinDamage(boolean withPup = true);
+	
+	public void setMinDamage(float value) {
+		minDamage = value;
+	}
+	
+	public native float getWoundsRatio(boolean withPup = true);
+	
+	public void setWoundsRatio(float value) {
+		woundsRatio = value;
+	}
+	
+	public native float getDamageRadius(boolean withPup = true);
+	
+	public void setDamageRadius(float value) {
+		damageRadius = value;
+	}
+	
+	public native int getHealthAttackCost(boolean withPup = true);
+	
+	public void setHealthAttackCost(int value) {
+		healthAttackCost = value;
+	}
+	
+	public native int getActionAttackCost(boolean withPup = true);
+	
+	public void setActionAttackCost(int value) {
+		actionAttackCost = value;
+	}
+	
+	public native int getMindAttackCost(boolean withPup = true);
+	
+	public void setMindAttackCost(int value) {
+		mindAttackCost = value;
+	}
+	
+	public int getForceCost() {
+		return forceCost;
+	}
+	
+	public void setForceCost(int value) {
+		forceCost = value;
+	}
+	
+	public int getBladeColor() {
+		return bladeColor;
+	}
+	
+	public void setBladeColor(int value) {
+		bladeColor = value;
+	}
+	
+	public int getDamageType() {
+		return damageType;
+	}
+	
+	public string getXpType() {
+		return weaponTemplate.getXpType();
+	}
+	
+	public native string getWeaponType();
+	
+	public boolean isUnarmedWeapon() {
+		return super.gameObjectType == SceneObjectType.WEAPON || super.gameObjectType == SceneObjectType.MELEEWEAPON;
+	}
+	
+	public boolean isMeleeWeapon() {
+		return attackType == MELEEATTACK;
+	}
+	
+	public boolean isRangedWeapon() {
+		return attackType == RANGEDATTACK;
+	}
+	
+	public boolean isRifleWeapon() {
+		return super.gameObjectType == SceneObjectType.RIFLE;
+	}
+
+	public boolean isThrownWeapon() {
+		return super.gameObjectType == SceneObjectType.THROWNWEAPON;
+	}
+	
+	public boolean isHeavyWeapon() {
+		return super.gameObjectType == SceneObjectType.HEAVYWEAPON;
+	}
+	
+	public boolean isSpecialHeavyWeapon() {
+		return super.gameObjectType == SceneObjectType.SPECIALHEAVYWEAPON;
+	}
+	
+	public boolean isLightningRifle() {
+		return super.gameObjectType == SceneObjectType.LIGHTNINGRIFLE;
+	}
+	
+	public boolean isCarbineWeapon() {
+		return super.gameObjectType == SceneObjectType.CARBINE;
+	}
+	
+	public boolean isPistolWeapon() {
+		return super.gameObjectType == SceneObjectType.PISTOL;
+	}
+	
+	public boolean isOneHandMeleeWeapon() {
+		return super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON;
+	}
+	
+	public boolean isPolearmWeaponObject() {
+		return super.gameObjectType == SceneObjectType.POLEARM;
+	}
+	
+	public boolean isTwoHandMeleeWeapon() {
+		return super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON;
+	}
+	
+	public boolean isMineWeapon() {
+		return super.gameObjectType == SceneObjectType.MINE;
+	}
+	
+	public boolean isJediWeapon() {
+		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+	}
+	
+	public boolean isJediOneHandedWeapon() {
+		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER;
+	}
+	
+	public boolean isJediTwoHandedWeapon() {
+		return super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER;
+	}
+	
+	public boolean isJediPolearmWeapon() {
+		return super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+	}
+	
+	public boolean isWeaponObject() {
+		return true;
+	}
+	
+	public boolean hasPowerup() {
+		return powerupObject != null;
+	}
+	
+	public void applyPowerup(CreatureObject player, PowerupObject pup) {
+		if(!hasPowerup()) {
+			powerupObject = pup;
+			
+			if(pup.getParent() != null)
+				pup.destroyObjectFromWorld(true);
+		
+			sendAttributeListTo(player);
+		}
+	}
+	
+	public PowerupObject removePowerup() {
+		if(hasPowerup()) {
+			PowerupObject pup = powerupObject;
+			powerupObject = null;
+			return pup;
+		}
+		return null;
+	}
+	
+	public native void decreasePowerupUses(CreatureObject player);
+
+	public native string repairAttempt(int repairChance);
+	
+	public native void decay(CreatureObject user, float damage);
+	
+	public void setDamageSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		damageSlice = 1 + value;
+	}
+
+	public void setSpeedSlice(float value) {
+		if(value > 0.5f || value < 0)
+			return;
+		speedSlice = 1 - value;
+	}
+	
+}

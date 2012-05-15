@@ -1,0 +1,38 @@
+tabage = Creature:new {
+	objectName = "@mob/creature_names:tabage",
+	socialGroup = "tabage",
+	pvpFaction = "",
+	faction = "",
+	level = 11,
+	chanceHit = 0.29,
+	damageMin = 120,
+	damageMax = 130,
+	baseXp = 356,
+	baseHAM = 1000,
+	baseHAMmax = 1200,
+	armor = 0,
+	resists = {0,0,0,10,0,0,0,-1,-1},
+	meatType = "meat_carnivore",
+	meatAmount = 18,
+	hideType = "hide_bristley",
+	hideAmount = 24,
+	boneType = "bone_mammal",
+	boneAmount = 7,
+	milk = 0,
+	tamingChance = 0.25,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = 128,
+	diet = CARNIVORE,
+
+	templates = {"object/mobile/tabage.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "",
+	attacks = {
+		{"posturedownattack","postureDownChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(tabage, "tabage")

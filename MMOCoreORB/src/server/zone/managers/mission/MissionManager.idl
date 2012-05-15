@@ -1,0 +1,186 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.managers.mission;
+
+import system.util.SortedVector;
+
+import server.zone.ZoneServer;
+import server.zone.ZoneProcessServer;
+import server.zone.objects.mission.MissionObject;
+import engine.util.Observer;
+import server.zone.objects.tangible.terminal.mission.MissionTerminal;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
+import server.zone.managers.stringid.StringIdManager;
+include server.zone.managers.mission.LairObjectsToSpawnMap;
+include server.zone.managers.mission.BountyTargetListElement;
+include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
+include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
+import server.zone.managers.creature.LairSpawn;
+import server.zone.templates.mobile.CreatureTemplate;
+import system.thread.Mutex;
+
+class MissionManager extends Observer implements Logger {
+	@weakReference
+	protected ZoneServer server;
+	transient ZoneProcessServer processor;
+		
+	@dereferenced
+	protected MissionNpcSpawnMap missionNpcSpawnMap;
+	
+	@dereferenced
+	protected Vector<string> craftingMissionItems;
+	
+	@dereferenced
+	protected Vector<string> bhTargetZones;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, Vector<string> > bhTargetsAtMissionLevel;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, BountyTargetListElement> playerBountyList;
+	
+	@dereferenced
+	protected transient Mutex playerBountyListMutex;
+	
+	protected boolean enableFactionalCraftingMissions;
+	
+	protected boolean enableFactionalReconMissions;
+	
+	protected boolean enableFactionalEntertainerMissions;
+	
+	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
+	
+	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
+		server = srv;
+		processor = impl;
+		
+		playerBountyList.setNoDuplicateInsertPlan();
+
+		enableFactionalCraftingMissions = false;
+		enableFactionalReconMissions = false;
+		enableFactionalEntertainerMissions = false;
+		
+		Logger.setLoggingName("MissionManager");
+		
+		missionNpcSpawnMap.loadSpawnPointsFromLua();
+		
+		loadLuaSettings();
+	}
+	
+	public native void loadLuaSettings();
+	
+	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);
+	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, CreatureObject player);
+	public native void handleMissionAbort(MissionObject mission, CreatureObject player);
+	
+	public native void removeMission(MissionObject mission, CreatureObject player);
+	
+	public native void populateMissionList(MissionTerminal missionTerminal, CreatureObject player, int counter);
+
+	public native boolean randomGenericDeliverMission(CreatureObject player, MissionObject mission, boolean inTownMission, final int faction);
+
+	public native void randomizeGenericBountyMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericCraftingMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericDeliverMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericDestroyMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericEntertainerMission(CreatureObject player, MissionObject mission, final int faction, final int missionType);
+	public native void randomizeGenericHuntingMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericReconMission(CreatureObject player, MissionObject mission, final int faction);
+	public native void randomizeGenericSurveyMission(CreatureObject player, MissionObject mission, final int faction);
+	
+	public native void randomizeSurveyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
+	
+	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialReconMission(CreatureObject player, MissionObject mission);
+	
+	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelReconMission(CreatureObject player, MissionObject mission);
+	
+	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+
+	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
+	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
+	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
+	
+	@local
+	public native LairSpawn getRandomLairSpawn(CreatureObject player);
+	@local
+	@dereferenced
+	public native Vector3 getRandomBountyTargetPosition(CreatureObject player);
+	public native MissionObject getBountyHunterMission(CreatureObject player);
+		
+	public native string getDeliveryMissionFileName(final int faction);
+	public native int getDeliverMissionNumberOfMissions(final int faction);
+	public native int getDeliverMissionSpawnType(final int faction);
+	
+	public native void addPlayerToBountyList(unsigned long targetId, int reward);
+	public native void removePlayerFromBountyList(unsigned long targetId);
+	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
+	public native void addBountyHunterToPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native void removeBountyHunterFromPlayerBounty(unsigned long targetId, unsigned long bountyHunterId);
+	public native BountyTargetListElement getRandomPlayerBounty(CreatureObject player);
+	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
+	public native void failPlayerBountyMission(unsigned long bountyHunter);
+}

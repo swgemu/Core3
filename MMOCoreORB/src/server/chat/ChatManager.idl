@@ -1,0 +1,238 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.chat;
+
+import engine.core.ManagedService;
+import server.zone.ZoneServer;
+import server.chat.room.ChatRoom;
+import server.chat.room.ChatRoomMap;
+import server.zone.objects.creature.CreatureObject;
+import engine.service.proto.BaseMessage;
+import server.zone.managers.player.PlayerMap;
+import server.zone.managers.player.PlayerManager;
+import system.util.VectorMap;
+import system.util.HashTable;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.chat.ChatRoomList;
+import server.zone.packets.chat.ChatInstantMessageToCharacter;
+import engine.log.Logger;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.waypoint.WaypointObject;
+include server.chat.StringIdChatParameter;
+include server.chat.WaypointChatParameter;
+include server.chat.StringIdChatParameterVector;
+include server.chat.WaypointChatParameterVector;
+
+class ChatManager extends ManagedService implements Logger {
+	@weakReference
+	ZoneServer server;
+
+	//UserManager userManager;
+
+	@weakReference
+	PlayerManager playerManager;
+	//GuildManager guildManager;
+
+	//GameCommandHandler * gameCommandHandler;
+
+	//ResourceManager* resourceManager;
+
+	transient PlayerMap playerMap;
+
+	@dereferenced 
+	private VectorMap<string, ChatRoom> gameRooms;
+
+	ChatRoom groupRoom;
+	ChatRoom guildRoom;
+	
+	transient ChatRoomMap roomMap;
+
+	unsigned int roomID;
+
+	boolean mute;
+	
+	public static final int IM_SUCCESS = 0x00;
+	public static final int IM_OFFLINE = 0x04;
+	public static final int IM_IGNORED = 0x09;
+	public static final int IM_TOOLONG = 0x16;
+	
+	public static final int IM_MAXSIZE = 255;
+	public static final int PM_MAXSIZE = 4000;
+	
+	public native ChatManager(ZoneServer serv, int initsize);
+	
+	public native void finalize();
+	
+	public native void initiateRooms();
+	public native void destroyRooms();
+	
+	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
+	
+	public synchronized void addRoom(ChatRoom channel) {
+		roomMap.put(channel.getRoomID(), channel);
+	}
+	
+	public synchronized void removeRoom(ChatRoom channel) {
+		roomMap.remove(channel.getRoomID());
+	}
+	
+	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
+	
+	public native void sendRoomList(CreatureObject player);
+	
+	public native void addPlayer(CreatureObject player);
+	public native CreatureObject getPlayer(final string name);
+	public native CreatureObject removePlayer(final string name);
+	
+	public native void broadcastMessage(BaseMessage message);
+	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	
+	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
+	public native void handleGroupChat(CreatureObject player, final unicode message);
+	
+	public native ChatRoom createRoomByFullPath(final string path);
+	
+	public native ChatRoom getChatRoomByFullPath(final string path);
+	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
+	
+	public native void handleChatRoomMessage(CreatureObject sender, final unicode message, unsigned int roomID, unsigned int counter);
+	public native void handleChatEnterRoomById(CreatureObject player, unsigned int counter, unsigned int roomID);
+	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
+
+	@local
+	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
+	
+	public native void destroyRoom(ChatRoom room);
+	
+	public native ChatRoom createGroupRoom(unsigned long groupID, CreatureObject creator);
+
+	public native void loadMail(CreatureObject player);
+	public native void sendMail(final string sendername, final unicode header, final unicode body, final string name);
+	
+	@local
+	public native int sendMail(final string sendername, final unicode subject, @dereferenced StringIdChatParameter body, final string recipientName, WaypointObject waypoint = null);
+	
+	@local
+	public native int sendMail(final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
+	
+	//@local
+	//public native int sendMail(CityRegion city, final string sendername, final unicode subject, final unicode body, final string recipientName, StringIdChatParameterVector stringIdParameters, WaypointChatParameterVector waypointParameters);
+
+	public native void handleRequestPersistentMsg(CreatureObject player, unsigned int mailID);
+	public native void deletePersistentMessage(CreatureObject player, unsigned int mailID);
+	
+	public native void broadcastGalaxy(CreatureObject player, final string message);
+	
+	/*public native void sendMailBody(CreatureObject receiver, unsigned int mailid);
+	public native void listMail(CreatureObject ply);
+	public native void deleteMail(unsigned int mailid);
+
+	public native void handleMessage(CreatureObject player, BaseMessage pack);
+	public native void handleEmote(CreatureObject player, BaseMessage pack);
+	public native void handleMood(CreatureObject player, BaseMessage pack);
+
+	public native void handleGameCommand(CreatureObject player, final string command);
+	public native void sendSystemMessage(CreatureObject player, unicode message);
+	public native void sendSystemMessage(CreatureObject player, @dereferenced StringId stringid);
+
+	public native void broadcastMessage(CreatureObject player, @dereferenced StringId stringid, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	public native void broadcastMessage(final string message);
+	public native void broadcastMessageRange(CreatureObject player, final string message, float range);
+
+	// ChatRooms
+	public native void initGuildChannel(CreatureObject creator, unsigned int gid);
+	
+	
+	public native void handleGuildChat(CreatureObject player, BaseMessage pack);
+
+	public native void handleCreateRoom(CreatureObject player, BaseMessage pack);
+	public native void handleChatDestroyRoom(CreatureObject player, BaseMessage pack);
+	public native void handleChatRemoveAvatarFromRoom(CreatureObject player, BaseMessage pack);
+
+
+	public native void sendGuildChat(CreatureObject player);
+
+	 */
+	
+	public void setPlayerManager(PlayerManager manager) {
+		playerManager = manager;
+	}
+	
+	public synchronized ChatRoom getChatRoom(unsigned int id) {
+		return roomMap.get(id);
+	}
+	
+	public synchronized ChatRoom getGameRoom(final string game) {
+		return gameRooms.get(game);
+	}
+	 
+	public synchronized unsigned int getNextRoomID() {
+		return ++roomID;
+	}
+	
+	public int getPlayerCount() {
+		return playerMap.size();
+	}
+
+	@local
+	public PlayerMap getPlayerMap() {
+		return playerMap;
+	}
+	
+	/**
+	 * Returns the parent room for guild chat rooms.
+	 */
+	public ChatRoom getGuildRoom() {
+		return guildRoom;
+	}
+	
+	/**
+	 * Returns the parent room for group chat rooms.
+	 */
+	public ChatRoom getGroupRoom() {
+		return groupRoom;
+	}
+}

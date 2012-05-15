@@ -1,0 +1,373 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.mission;
+
+import engine.lua.LuaObject;
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.objects.waypoint.WaypointObject;
+import server.zone.Zone;
+
+include server.zone.objects.scene.variables.StringId;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.mission.MissionObserver;
+import server.zone.objects.creature.CreatureObject;
+import system.util.SortedVector;
+import server.zone.objects.mission.MissionObjective;
+include server.zone.templates.TemplateReference;
+import server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
+
+class MissionObject extends IntangibleObject {
+	protected WaypointObject waypointToMission;
+	
+	protected MissionObjective missionObjective;
+	
+	protected unsigned int typeCRC;
+	protected int difficultyLevel;
+	protected unicode creatorName;
+	protected int rewardCredits;
+	protected int rewardFactionPointsRebel;
+	protected int rewardFactionPointsImperial;
+	protected int missionNumber;
+	protected int faction;
+	protected int missionLevel;
+	
+	protected float startPositionX;
+	protected float startPositionY;
+	protected string startPlanet;
+	
+	protected float endPositionX;
+	protected float endPositionY;
+	protected string endPlanet;
+	
+	protected unsigned long targetObjectId;
+	
+	@dereferenced
+	protected StringId missionDescription;
+	
+	@dereferenced
+	protected StringId missionTitle;
+	
+	protected unsigned int refreshCounter;
+	
+	protected string targetName;
+	protected NpcSpawnPoint missionTarget;
+	protected NpcSpawnPoint missionTargetDest;
+	
+	protected string templateString1;
+	protected string templateString2;
+	
+	//protected unsigned int targetTemplateCRC;
+	@dereferenced
+	protected TemplateReference<SharedObjectTemplate> targetTemplate;
+	
+	protected string targetOptionalTemplate;
+	
+	// mission type crc's ex: String("destroy").hashCode() = 0x74ef9be3
+	public static final unsigned int DESTROY = 0x74EF9BE3; // generic
+	public static final unsigned int BOUNTY = 0x2904F372; // bounty
+	public static final unsigned int DELIVER = 0xE5C27EC6; // generic
+	public static final unsigned int CRAFTING = 0xE5F6DC59; // artisan
+	public static final unsigned int ESCORT = 0x682B871E; // ???
+	public static final unsigned int ESCORT2ME = 0x58F59884; // ???
+	public static final unsigned int ESCORTTOCREATOR = 0x5E4C7163; // ???
+	public static final unsigned int HUNTING = 0x906999A2; // scout
+	public static final unsigned int MUSICIAN = 0x4AD93196; // entertainer
+	public static final unsigned int DANCER = 0xF067B37; // entertainer
+	public static final unsigned int RECON = 0x34F4C2E4; // scout
+	public static final unsigned int SURVEY = 0x19C9FAC1; // artisan
+	
+	//Faction types
+	public static final int FACTIONNEUTRAL = 0;
+	public static final int FACTIONIMPERIAL = 1;
+	public static final int FACTIONREBEL = 2;
+	
+	public MissionObject() {
+		typeCRC = SURVEY;
+		
+		refreshCounter = 0;
+		
+		//targetTemplateCRC = 2640304325;
+		//targetTemplate = null;
+		
+		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
+		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
+		targetName = "Testing target name";
+		difficultyLevel = 50;
+		
+		rewardCredits = 100;
+		rewardFactionPointsRebel = 0;
+		rewardFactionPointsImperial = 0;
+		
+		startPositionX = 0;
+		startPositionY = 0;
+
+		missionTarget = null;
+		missionTargetDest = null;
+		
+		targetObjectId = 0;
+		
+		faction = FACTIONNEUTRAL;
+		
+		Logger.setLoggingName("MissionObject");
+	}
+	
+	public native WaypointObject createWaypoint();
+	
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
+	public native void updateToDatabaseAllObjects(boolean startTask);
+	
+	public native void setRefreshCounter(int ctr, boolean notifyClient = true);
+	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
+	
+	public native void initializeTransientMembers();
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public native void setMissionDescription(final string file, final string id, boolean notifyClient = true);
+	public native void setMissionTitle(final string file, final string id, boolean notifyClient = true);
+	public native void setMissionTargetName(final string target, boolean notifyClient = true);
+	public native void setMissionDifficulty(int difficulty, boolean notifyClient = true);
+	public native void setRewardCredits(int creds, boolean notifyClient = true);
+	@local
+	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
+	public native void setStartPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+	public native void setEndPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+	public native void setCreatorName(final string name, boolean notifyClient = true);
+	
+	public native unsigned int getStartPlanetCRC();
+	
+	public native void updateMissionLocation();
+	
+	public void abort() {
+		if (missionObjective != null)
+			missionObjective.abort();
+	}
+	
+	public void setFaction(final int missionFaction) {
+		faction = missionFaction;
+	}
+	
+	public void setMissionObjective(MissionObjective obj) {
+		missionObjective = obj;
+	}
+	
+	public void setStartPlanet(final string planet) {
+		startPlanet = planet;
+	}
+	
+	public void setRewardFactionPointsRebel(int points) {
+		rewardFactionPointsRebel = points;
+	}
+	
+	public void setRewardFactionPointsImperial(int points) {
+		rewardFactionPointsImperial = points;
+	}
+	
+	public void setEndPlanet(string planetName) {
+		endPlanet = planetName;
+	}
+
+	public void setMissionTarget(NpcSpawnPoint target) {
+		missionTarget = target;
+	}
+
+	public void setMissionTargetDest(NpcSpawnPoint target) {
+		missionTargetDest = target;
+	}
+	
+	public void setMissionNumber(int num) {
+		missionNumber = num;
+	}
+	
+	public void setTargetOptionalTemplate(final string tml) {
+		targetOptionalTemplate = tml;
+	}
+	
+	public void setTemplateStrings(final string temp1, final string temp2) {
+		templateString1 = temp1;
+		templateString2 = temp2;
+	}
+	
+	public MissionObjective getMissionObjective() {
+		return missionObjective;
+	}
+	
+	public int getFaction() {
+		return faction;
+	}
+	
+	public int getRewardFactionPointsRebel() {
+		return rewardFactionPointsRebel;
+	}
+	
+	public int getRewardFactionPointsImperial() {
+		return rewardFactionPointsImperial;
+	}
+	
+	public float getStartPositionX() {
+		return startPositionX;
+	}
+	
+	public float getStartPositionY() {
+		return startPositionY;
+	}
+	
+	public string getTargetOptionalTemplate() {
+		return targetOptionalTemplate;
+	}
+	
+	public string getStartPlanet() {
+		return startPlanet;
+	}
+	
+	public float getEndPositionX() {
+		return endPositionX;
+	}
+	
+	public float getEndPositionY() {
+		return endPositionY;
+	}
+	
+	public string getEndPlanet() {
+		return endPlanet;
+	}
+	
+	public WaypointObject getWaypointToMission() {
+		return waypointToMission;
+	}
+	
+	public NpcSpawnPoint getMissionTarget() {
+		return missionTarget;
+	}
+	
+	public NpcSpawnPoint getMissionTargetDest() {
+		return missionTargetDest;
+	}
+	
+	public unsigned int getTypeCRC() {
+		return typeCRC;
+	}
+	
+	public int getRewardCredits() {
+		return rewardCredits;
+	}
+	
+	public unicode getCreatorName() {
+		return creatorName;
+	}
+	
+	public int getDifficultyLevel() {
+		return difficultyLevel;
+	}
+	
+	@local
+	public StringId getMissionDescription() {
+		return missionDescription;
+	}
+	
+	@local
+	public StringId getMissionTitle() {
+		return missionTitle;
+	}
+	
+	public string getTargetName() {
+		return targetName;
+	}
+	
+	public int getRefreshCounter() {
+		return refreshCounter;
+	}
+
+	public int getMissionNumber() {
+		return missionNumber;
+	}
+	
+	@local
+	public native SharedObjectTemplate getTargetTemplate();
+	
+	public boolean isSurveyMission() {
+		return typeCRC == SURVEY;
+	}
+	
+	public boolean isMissionObject() {
+		return true;
+	}
+	
+	public string getTemplateString1() {
+		return templateString1;
+	}
+	
+	public string getTemplateString2() {
+		return templateString2;
+	}
+	
+	public unsigned long getTargetObjectId() {
+		return targetObjectId;
+	}
+	
+	public void setTargetObjectId(unsigned long id) {
+		targetObjectId = id;
+	}
+	
+	public void setMissionLevel(int level) {
+		missionLevel = level;
+	} 
+	
+	public int getMissionLevel() {
+		return missionLevel;
+	}
+}
