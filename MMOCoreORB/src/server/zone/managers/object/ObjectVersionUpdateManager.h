@@ -21,6 +21,7 @@ public:
 	void runScripts();
 
 	int updateToVersion2();
+	int updateToVersion3();
 
 	int run();
 };
