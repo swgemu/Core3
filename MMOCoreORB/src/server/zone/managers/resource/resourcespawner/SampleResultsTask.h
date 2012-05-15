@@ -74,6 +74,8 @@ public:
 	}
 
 	void run() {
+		Locker locker(playerCreature);
+
 		resourceSpawner->sendSampleResults(playerCreature, density, resname);
 		playerCreature->removePendingTask("sampleresults");
 	}

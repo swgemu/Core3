@@ -721,15 +721,20 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 void ResourceSpawner::sendSampleResults(CreatureObject* player,
 		const float density, const String& resname) {
 
+	Locker playerLocker(player);
+
 	// Determine if survey tool is valid, and that resource actually exists
 	PlayerObject* ghost = player->getPlayerObject();
 	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 	if (surveyTool == NULL || player == NULL || player->getZone() == NULL)
 		return;
 
-	Locker playerLocker(player);
+	Zone* zne = player->getZone();
 
-	String zoneName = player->getZone()->getZoneName();
+	if (zone == NULL)
+		return;
+
+	String zoneName = zne->getZoneName();
 
 	// If density is too low, we can't obtain a sample
 	if (density < .10f) {
