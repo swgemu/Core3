@@ -731,7 +731,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	Zone* zne = player->getZone();
 
-	if (zone == NULL)
+	if (zne == NULL)
 		return;
 
 	String zoneName = zne->getZoneName();
