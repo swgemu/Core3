@@ -42,13 +42,15 @@
 --true = 1, false = 0
 
 Warcry2Command = {
-        name = "warcry2",
+	name = "warcry2",
 
 	damageMultiplier = 0,
 	speedMultiplier = 1,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
+	
+	accuracySkillMod = "warcry",
 
 	stateEffects = {
 	  StateEffect( 
