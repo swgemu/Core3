@@ -321,6 +321,14 @@ void AiAgentImplementation::doRecovery() {
 }
 
 void AiAgentImplementation::doAttack() {
+	if (isDead()) {
+		removeDefenders();
+
+		setFollowObject(NULL);
+
+		return;
+	}
+
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this) && lastDamageReceived.miliDifference() < 20000)
