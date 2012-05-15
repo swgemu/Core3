@@ -49,7 +49,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
 import system.lang.StringBuffer;
-
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 
 class AuctionItem extends ManagedObject {
@@ -123,6 +123,8 @@ class AuctionItem extends ManagedObject {
 	}
 	
 	public native void setLocation(final string planet, final string header, unsigned long vendorid, int x, int z, boolean vendor);
+	
+	public native void notifyLoadFromDatabase();
 		
 	public void setVendorID(unsigned long val) {
 		vendorID = val;
@@ -185,10 +187,6 @@ class AuctionItem extends ManagedObject {
 		auctionOptions = auctionOptions | OPTION_PREMIUM;
 	}
 
-	public void setAuctionWithdraw() {
-		auctionOptions = auctionOptions | OPTION_WITHDRAW;
-	}
-	
 	public native void clearAuctionWithdraw();
 
 	public void setInStockroom(boolean inStock) {
@@ -299,8 +297,8 @@ class AuctionItem extends ManagedObject {
 		return auctionOptions & OPTION_PREMIUM;
 	}
 
-	public boolean isOwner() {
-		return auctionOptions & OPTION_WITHDRAW;
+	public boolean isOwner(CreatureObject obj) {
+		return obj.getObjectID() == getOwnerID();
 	}
 
 }

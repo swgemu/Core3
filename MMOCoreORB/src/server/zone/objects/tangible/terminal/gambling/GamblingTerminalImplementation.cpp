@@ -55,6 +55,8 @@ which carries forward this exception.
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 int GamblingTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	return 0;
+
 	if (selectedID == 245 || selectedID == 20) {
 		if (playersWindows.contains(player)) {
 			leaveTerminal(player);

@@ -20,7 +20,7 @@
  *	VehicleObjectStub
  */
 
-enum {RPC_CHECKINRANGEGARAGE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_ISVEHICLEOBJECT__};
+enum {RPC_CHECKINRANGEGARAGE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_ISVEHICLEOBJECT__};
 
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
@@ -128,25 +128,6 @@ int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, float
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
-}
-
-int VehicleObject::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
-	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_);
-		method.addObjectParameter(attacker);
-		method.addSignedIntParameter(damageType);
-		method.addFloatParameter(damage);
-		method.addBooleanParameter(destroy);
-		method.addAsciiParameter(xp);
-		method.addBooleanParameter(notifyClient);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->inflictDamage(attacker, damageType, damage, destroy, xp, notifyClient);
 }
 
 int VehicleObject::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {
@@ -534,12 +515,6 @@ void VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		}
 		break;
-	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_:
-		{
-			String xp; 
-			resp->insertSignedInt(inflictDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(xp), inv->getBooleanParameter()));
-		}
-		break;
 	case RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_:
 		{
 			resp->insertSignedInt(healDamage(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
@@ -618,10 +593,6 @@ void VehicleObjectAdapter::sendMessage(BasePacket* msg) {
 
 int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	return (static_cast<VehicleObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, notifyClient);
-}
-
-int VehicleObjectAdapter::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
-	return (static_cast<VehicleObject*>(stub))->inflictDamage(attacker, damageType, damage, destroy, xp, notifyClient);
 }
 
 int VehicleObjectAdapter::healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient) {

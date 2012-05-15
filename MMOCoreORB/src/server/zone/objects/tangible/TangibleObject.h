@@ -240,8 +240,6 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
-	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
-
 	int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
 	void setConditionDamage(float condDamage, bool notifyClient = true);
@@ -473,8 +471,6 @@ public:
 
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
-	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
-
 	virtual int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
 	void setConditionDamage(float condDamage, bool notifyClient = true);
@@ -675,8 +671,6 @@ public:
 	void sendPvpStatusTo(CreatureObject* player);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
-
-	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient);
 
 	int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient);
 

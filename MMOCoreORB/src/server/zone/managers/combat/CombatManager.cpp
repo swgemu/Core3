@@ -201,7 +201,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-		damage = applyDamage(attacker, tano, damage, poolsToDamage, data);
+		damage = applyDamage(attacker, tano, damage, poolsToDamage);
 
 		broadcastCombatAction(attacker, tano, data, 0x01);
 		broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
@@ -873,6 +873,11 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
+	// Resets attack type back to normal if the last attack used was not a Force power.
+	int damageTypeCur = weapon->getAttackType();
+	weapon->setAttackType(damageTypeCur);
+
+
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
 
@@ -888,6 +893,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	if (damageMax > 0)
 		damage = damageMaxDif;
+
+	if (data.getAttackType() == CombatManager::FORCEATTACK) {
+		weapon->setAttackType(WeaponObject::FORCEATTACK); // For XP purposes.
+	}
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");
@@ -1137,7 +1146,6 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			// now roll to see if it gets applied
 			uint32 strength = effect.getStateStrength();
 			if (strength == 0) strength = getAttackerAccuracyModifier(creature, creature->getWeapon());
-			strength += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 			if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
 				failed = true;
 
@@ -1225,19 +1233,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	WeaponObject* weapon = attacker->getWeapon();
 
-	String xpType;
-	switch (data.getAttackType()) {
-	case CombatManager::FORCEATTACK:
-		xpType = "jedi_general";
-		break;
-	default:
-		xpType = weapon->getXpType();
-		break;
-	}
-
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::HEALTH + System::random(2), 1, true);
 			wounded = true;
@@ -1246,7 +1244,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	if (poolsToDamage & ACTION) {
 		actionDamage = getArmorReduction(attacker, defender, damage, ACTION, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::ACTION + System::random(2), 1, true);
 			wounded = true;
@@ -1255,7 +1253,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	if (poolsToDamage & MIND) {
 		mindDamage = getArmorReduction(attacker, defender, damage, MIND, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType);
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::MIND + System::random(2), 1, true);
 			wounded = true;
@@ -1270,7 +1268,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage) {
 	if (poolsToDamage == 0)
 		return 0;
 
@@ -1278,21 +1276,11 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 		return 0;
 	}
 
-	// TODO: take into account special attack data when calculating damage
 	int damage = calculateDamage(attacker, defender);
 
-	WeaponObject* weapon = attacker->getWeapon();
-	String xpType;
-	switch (data.getAttackType()) {
-	case CombatManager::FORCEATTACK:
-		xpType = "jedi_general";
-		break;
-	default:
-		xpType = weapon->getXpType();
-		break;
-	}
+	defender->inflictDamage(attacker, 0, damage, true);
 
-	defender->inflictDamage(attacker, 0, damage, true, xpType);
+	WeaponObject* weapon = attacker->getWeapon();
 	weapon->decreasePowerupUses(attacker);
 
 	return damage;

@@ -191,7 +191,7 @@ protected:
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
-	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
+	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 

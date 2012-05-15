@@ -30,26 +30,6 @@ using namespace server::zone::objects::tangible::terminal;
 namespace server {
 namespace zone {
 namespace objects {
-namespace tangible {
-namespace terminal {
-namespace vendor {
-namespace bazaar {
-
-class BazaarTerminal;
-
-} // namespace bazaar
-} // namespace vendor
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace region {
 
 class CityRegion;
@@ -134,12 +114,6 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void addBazaar(BazaarTerminal* ter);
-
-	BazaarTerminal* getBazaar(int idx);
-
-	int getBazaarCount();
-
 	bool isRegion();
 
 	DistributedObjectServant* _getImplementation();
@@ -168,8 +142,6 @@ namespace region {
 
 class RegionImplementation : public ActiveAreaImplementation {
 protected:
-	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
-
 	ManagedWeakReference<CityRegion* > cityRegion;
 
 public:
@@ -190,12 +162,6 @@ public:
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
-
-	void addBazaar(BazaarTerminal* ter);
-
-	BazaarTerminal* getBazaar(int idx);
-
-	int getBazaarCount();
 
 	bool isRegion();
 
@@ -255,12 +221,6 @@ public:
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
-
-	void addBazaar(BazaarTerminal* ter);
-
-	BazaarTerminal* getBazaar(int idx);
-
-	int getBazaarCount();
 
 	bool isRegion();
 

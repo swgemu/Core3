@@ -148,6 +148,9 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
+		if (creature->isDead())
+			return INVALIDLOCOMOTION;
+
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
 
