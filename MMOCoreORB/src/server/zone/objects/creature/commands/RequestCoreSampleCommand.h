@@ -84,6 +84,8 @@ public:
 				Time nextExecutionTime;
 				Core::getTaskManager()->getNextExecutionTime(sampletask, nextExecutionTime);
 				int seconds = (int) ((nextExecutionTime.getMiliTime() - Time().getMiliTime()) / 1000.0f);
+				if(seconds < 1)
+					seconds = 1;
 
 				StringIdChatParameter message("survey","tool_recharge_time");
 				message.setDI(seconds);
