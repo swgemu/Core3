@@ -2983,6 +2983,13 @@ bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher,
 	//We checked if they had the player object in slot with isPlayerCreature
 	CreatureObject* student = cast<CreatureObject*>(target);
 
+	if (teacher->getGroup() == NULL || student->getGroup() != teacher->getGroup()) {
+		StringIdChatParameter params("teaching", "not_in_same_group"); //You must be within the same group as %TT in order to teach.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
 	if (student->isDead()) {
 		StringIdChatParameter params("teaching", "student_dead"); //%TT does not feel like being taught right now.
 		params.setTT(student->getDisplayedName());
@@ -3083,6 +3090,13 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 }
 
 bool PlayerManagerImplementation::acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill) {
+	if (teacher->getGroup() == NULL || student->getGroup() != teacher->getGroup()) {
+		StringIdChatParameter params("teaching", "not_in_same_group"); //You must be within the same group as %TT in order to teach.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
 	//Check to see if the teacher still has the skill and the student can still learn the skill.
 	SkillManager* skillManager = SkillManager::instance();
 
@@ -3136,8 +3150,10 @@ SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObj
 	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* skill = skillList->get(i);
 
-		if (skillManager->canLearnSkill(skill->getSkillName(), student, false))
-			skills.put(skill->getSkillName());
+		String skillName = skill->getSkillName();
+
+		if (!skillName.contains("novice") && skillManager->canLearnSkill(skillName, student, false))
+			skills.put(skillName);
 	}
 
 	return skills;
