@@ -2349,7 +2349,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 			StringBuffer msg;
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
 			msg << " parsed " << parsedSpeed;
-			player->info(msg.toString(), true);
+			player->info(msg.toString());
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -2363,7 +2363,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 			StringBuffer msg;
 			msg << "max allowed speed should be " << maxAllowedSpeed * errorMultiplier;
 			msg << " parsed " << parsedSpeed;
-			player->info(msg.toString(), true);
+			player->info(msg.toString());
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -2390,7 +2390,7 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		msg << " parsed " << parsedSpeed;
 		msg << " changeBufferSize: " << changeBuffer->size();
 
-		player->info(msg.toString(), true);
+		player->info(msg.toString());
 
 		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 

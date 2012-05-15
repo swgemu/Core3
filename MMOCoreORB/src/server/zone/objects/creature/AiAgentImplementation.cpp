@@ -325,6 +325,8 @@ void AiAgentImplementation::doAttack() {
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this))
 		addDefender(target);
+	else if (target != NULL)
+		removeDefender(target);
 
 	if (target == NULL && defenderList.size() > 0) {
 		for (int i = 0; i < defenderList.size(); ++i) {
