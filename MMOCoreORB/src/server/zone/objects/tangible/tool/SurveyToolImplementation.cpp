@@ -372,7 +372,7 @@ void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String
 		setInUse(true);
 	}
 
-	if (!doGamble && richSampleLocation == NULL && System::random(20) == 7) {
+	if (!doGamble && richSampleLocation == NULL && System::random(50) == 7) {
 
 		if(System::random(1) == 1)
 			surveyCnodeMinigameSui(player);
