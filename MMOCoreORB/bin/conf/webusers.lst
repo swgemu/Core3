@@ -1,7 +1,0 @@
--- This is a list of accounts and their corresponding IP addresses
--- that can access the WebServer.  This is a whitelist.
--- Users can have multiple entries
---
--- ex.  kyle;123.234.234.234
-
-kyle;127.0.0.1

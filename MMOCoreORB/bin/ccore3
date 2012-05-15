@@ -1,2 +1,0 @@
-rm log.txt*
-valgrind --tool=callgrind ./core3

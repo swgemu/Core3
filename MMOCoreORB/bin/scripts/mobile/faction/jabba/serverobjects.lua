@@ -1,8 +1,0 @@
-includeFile("faction/jabba/caravan_leader_coa3.lua")
-includeFile("faction/jabba/caravan_thug_coa3.lua")
-includeFile("faction/jabba/imprisoned_jabba_employee.lua")
-includeFile("faction/jabba/lookout_coa3.lua")
-includeFile("faction/jabba/slicer_jabba.lua")
-includeFile("faction/jabba/warehouse_captain_coa3.lua")
-includeFile("faction/jabba/warehouse_guard_coa3.lua")
-includeFile("faction/jabba/warehouse_thug_coa3.lua")
