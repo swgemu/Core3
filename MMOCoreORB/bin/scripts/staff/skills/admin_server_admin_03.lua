@@ -1,5 +1,5 @@
-admin_server_admin_02 = {
-	skillName = "admin_server_admin_02",
+admin_server_admin_03 = {
+	skillName = "admin_server_admin_03",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -21,17 +21,10 @@ admin_server_admin_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"addAllowedPlayer",
-		"addBannedPlayer",
-		"emptyMailTarget",
-		"getAccountInfo",
-		"removeAllowedPlayer",
-		"removeBannedPlayer",
 		"resendLoginMessageToAll",
 		"setLoginMessage",
 		"setLoginTitle",
 		"setPlanetLimit",
-		"wipeItems"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
@@ -39,4 +32,4 @@ admin_server_admin_02 = {
 	searchable = 0
 }
 
-addSkill(admin_server_admin_02)
+addSkill(admin_server_admin_03)
