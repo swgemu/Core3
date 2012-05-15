@@ -70,6 +70,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		return SUCCESS;
+
 		if (creature->isPlayerCreature()) {
 
 			CreatureObject* player = cast<CreatureObject*>(creature);
