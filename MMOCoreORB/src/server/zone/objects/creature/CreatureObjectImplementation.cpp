@@ -1702,6 +1702,25 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	listenToID = 0;
 	watchToID = 0;
 
+	if (isIncapacitated()) {
+		int health = getHAM(CreatureAttribute::HEALTH);
+
+		if (health < 0)
+			setHAM(CreatureAttribute::HEALTH, 1);
+
+		int action = getHAM(CreatureAttribute::ACTION);
+
+		if (action < 0)
+			setHAM(CreatureAttribute::ACTION, 1);
+
+		int mind = getHAM(CreatureAttribute::MIND);
+
+		if (mind < 0)
+			setHAM(CreatureAttribute::MIND, 1);
+
+		setPosture(CreaturePosture::UPRIGHT);
+	}
+
 	if (ghost == NULL)
 		return;
 
@@ -1718,26 +1737,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ghost->getSchematics()->addRewardedSchematics(ghost);
 
 	skillManager->updateXpLimits(ghost);
-
-	//update wearables vector, remove this after wipe
-	if (wearablesVector.size() == 0) {
-		SortedVector<ManagedReference<TangibleObject*> > uniqueObjects;
-		uniqueObjects.setNoDuplicateInsertPlan();
-
-		for (int i = 0; i < slottedObjects.size(); ++i) {
-			TangibleObject* object = dynamic_cast<TangibleObject*>(slottedObjects.get(i).get());
-
-			String arrangement = slottedObjects.elementAt(i).getKey();
-
-			if (object == NULL || arrangement == "mission_bag" || arrangement == "ghost" || arrangement == "bank")
-				continue;
-
-			uniqueObjects.put(object);
-		}
-
-		for (int i = 0; i < uniqueObjects.size(); ++i)
-			wearablesVector.add(uniqueObjects.get(i));
-	}
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
