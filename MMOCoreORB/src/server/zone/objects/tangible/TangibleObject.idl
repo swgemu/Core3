@@ -335,6 +335,7 @@ class TangibleObject extends SceneObject {
 	 * @return unused for now
 	 */
 	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
 	/**
 	 * Heals damage

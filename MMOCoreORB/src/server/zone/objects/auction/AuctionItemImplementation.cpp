@@ -20,18 +20,9 @@ void AuctionItemImplementation::setLocation(const String& planet, const String& 
 
 	title << "." << vendorid << "#" << x << "," << z;
 	terminalTitle = title.toString();
-
-	//printf("terminal title:%s\n", title.toString().toCharArray());
 }
 
 void AuctionItemImplementation::clearAuctionWithdraw() {
 	if (auctionOptions & OPTION_WITHDRAW)
 		auctionOptions &= ~OPTION_WITHDRAW;
-}
-
-void AuctionItemImplementation::notifyLoadFromDatabase() {
-	/*if ((auctionOptions & OPTION_WITHDRAW)) {
-		auctionOptions |= 10;
-	}*/
-	clearAuctionWithdraw();
 }

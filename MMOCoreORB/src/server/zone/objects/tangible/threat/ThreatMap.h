@@ -38,7 +38,7 @@ namespace threat {
 
 //#define DEBUG
 
-class ThreatMapEntry : public VectorMap<ManagedReference<WeaponObject*>, uint32> {
+class ThreatMapEntry : public VectorMap<String, uint32> {
 
 	int aggroMod;
 	uint64 threatBitmask;
@@ -52,7 +52,7 @@ public:
 		healAmount = 0;
 	}
 
-	ThreatMapEntry(const ThreatMapEntry& e) : VectorMap<ManagedReference<WeaponObject*>, uint32>(e) {
+	ThreatMapEntry(const ThreatMapEntry& e) : VectorMap<String, uint32>(e) {
 		setNullValue(0);
 		aggroMod = e.aggroMod;
 		threatBitmask = e.threatBitmask;
@@ -60,7 +60,7 @@ public:
 	}
 
 	ThreatMapEntry& operator=(const ThreatMapEntry& e) {
-		VectorMap<ManagedReference<WeaponObject*>, uint32>::operator=(e);
+		VectorMap<String, uint32>::operator=(e);
 		aggroMod = e.aggroMod;
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
@@ -69,6 +69,7 @@ public:
 	}
 
 	void addDamage(WeaponObject* weapon, uint32 damage);
+	void addDamage(String xp, uint32 damage);
 
 	void setThreatState(uint64 state);
 	bool hasState(uint64 state);
@@ -155,7 +156,7 @@ public:
 
 	void removeObservers();
 
-	void addDamage(CreatureObject* target, uint32 damage);
+	void addDamage(CreatureObject* target, uint32 damage, String xp = "");
 	void dropDamage(CreatureObject* target);
 
 	bool setThreatState(CreatureObject* target, uint64 state, uint64 duration = 0, uint64 cooldown = 0);

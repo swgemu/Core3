@@ -336,6 +336,8 @@ public:
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
+
 	void sendConversationStartTo(SceneObject* player);
 
 	void sendDefaultConversationTo(SceneObject* player);
@@ -532,8 +534,6 @@ protected:
 
 	bool fleeing;
 
-	Time lastDamageReceived;
-
 	float respawnTimer;
 
 	int numberOfPlayersInRange;
@@ -624,6 +624,8 @@ public:
 	void loadTemplateData(CreatureTemplate* templateData);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	void sendConversationStartTo(SceneObject* player);
 
@@ -843,6 +845,8 @@ public:
 	void clearPatrolPoints();
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient);
 
 	void sendConversationStartTo(SceneObject* player);
 

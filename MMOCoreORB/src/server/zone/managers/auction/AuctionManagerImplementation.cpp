@@ -828,8 +828,6 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	if (name.length() < 2)
 		objectName->getFullPath(name);
 
-	//printf("planet:%s region:%s\n", planetStr.toCharArray(), region.toCharArray());
-
 	item->setLocation(planetStr, region, terminal->getObjectID(), (int)terminal->getWorldPositionX(), (int)terminal->getWorldPositionY(), !vendor->isBazaarTerminal());
 
 	if (premium)
@@ -865,7 +863,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 }
 
 AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem*> >* items, int screen, uint32 category, int count, int offset) {
-	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count, player);
+	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
 	int displaying = 0;
 	String pname = player->getFirstName().toLowerCase();
@@ -909,10 +907,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 			if ((items->get(i)->getOwnerID() == player->getObjectID()) && !items->get(i)->isSold()
 					&& !items->get(i)->isRemovedByOwner()) {
 				// if the player is the owner of the item. give them the withdraw option.
-				/*if (items->get(i)->getOwnerID() == player->getObjectID())
+				if (items->get(i)->getOwnerID() == player->getObjectID())
 					items->get(i)->setAuctionWithdraw();
 				else
-					items->get(i)->clearAuctionWithdraw();*/
+					items->get(i)->clearAuctionWithdraw();
 
 				reply->addItemToList(items->get(i));
 			}
@@ -952,7 +950,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 				if (!item->isSold() && !item->isRemovedByOwner() && !item->isOfferToVendor() && !item->isInStockroom()) {
 					// Make sure the item belogs to the owner before displaying
 					if (item->getOwnerID() == player->getObjectID()) {
-						//item->setAuctionWithdraw();
+						item->setAuctionWithdraw();
 
 						if (category & 255) { // Searching a sub category
 							if (item->getItemType() == category) {
@@ -991,10 +989,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 
 				// handles displaying other users items and the bazaar vendor search...
 				if (!item->isSold() && !item->isRemovedByOwner() && !item->isOfferToVendor() && !item->isInStockroom()) {
-					/*if (item->getOwnerID() == player->getObjectID())
+					if (item->getOwnerID() == player->getObjectID())
 						item->setAuctionWithdraw();
 					else
-						item->clearAuctionWithdraw();*/
+						item->clearAuctionWithdraw();
 
 					if (category & 255) { // Searching a sub category
 						if (item->getItemType() == category) {
@@ -1162,29 +1160,9 @@ void AuctionManagerImplementation::getPlanetData(CreatureObject* player, Vendor*
 			}
 		}
 
+
+
 		delete vendors;
-
-		try {
-			int count = regionObject->getBazaarCount();
-
-			for (int i = 0; i < count; ++i) {
-				BazaarTerminal* bazaar = regionObject->getBazaar(i);
-
-				Vendor* vendor = bazaar->getVendor();
-
-				if (vendor == NULL)
-					continue;
-
-				VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = vendor->getVendorItems();
-
-				for (int j = 0; j < regionItems->size(); ++j) {
-					items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
-				}
-				//vendors->add()
-			}
-		} catch (Exception& e) {
-
-		}
 	}
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
@@ -1235,28 +1213,6 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 	}
 
 	delete vendors;
-
-	try {
-		int count = cityRegion->getBazaarCount();
-
-		for (int i = 0; i < count; ++i) {
-			BazaarTerminal* bazaar = cityRegion->getBazaar(i);
-
-			Vendor* vendor = bazaar->getVendor();
-
-			if (vendor == NULL)
-				continue;
-
-			VectorMap<uint64, ManagedReference<AuctionItem*> >* regionItems = vendor->getVendorItems();
-
-			for (int j = 0; j < regionItems->size(); ++j) {
-				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
-			}
-			//vendors->add()
-		}
-	} catch (Exception& e) {
-
-	}
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
 	player->sendMessage(msg);

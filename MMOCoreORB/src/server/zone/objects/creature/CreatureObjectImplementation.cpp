@@ -821,8 +821,7 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 	}
 }
 
-int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
-		int damageType, float damage, bool destroy, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error(
 				"incorrect damage type in CreatureObjectImplementation::inflictDamage");
@@ -1702,25 +1701,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	listenToID = 0;
 	watchToID = 0;
 
-	if (isIncapacitated()) {
-		int health = getHAM(CreatureAttribute::HEALTH);
-
-		if (health < 0)
-			setHAM(CreatureAttribute::HEALTH, 1);
-
-		int action = getHAM(CreatureAttribute::ACTION);
-
-		if (action < 0)
-			setHAM(CreatureAttribute::ACTION, 1);
-
-		int mind = getHAM(CreatureAttribute::MIND);
-
-		if (mind < 0)
-			setHAM(CreatureAttribute::MIND, 1);
-
-		setPosture(CreaturePosture::UPRIGHT);
-	}
-
 	if (ghost == NULL)
 		return;
 
@@ -1737,6 +1717,26 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ghost->getSchematics()->addRewardedSchematics(ghost);
 
 	skillManager->updateXpLimits(ghost);
+
+	//update wearables vector, remove this after wipe
+	if (wearablesVector.size() == 0) {
+		SortedVector<ManagedReference<TangibleObject*> > uniqueObjects;
+		uniqueObjects.setNoDuplicateInsertPlan();
+
+		for (int i = 0; i < slottedObjects.size(); ++i) {
+			TangibleObject* object = dynamic_cast<TangibleObject*>(slottedObjects.get(i).get());
+
+			String arrangement = slottedObjects.elementAt(i).getKey();
+
+			if (object == NULL || arrangement == "mission_bag" || arrangement == "ghost" || arrangement == "bank")
+				continue;
+
+			uniqueObjects.put(object);
+		}
+
+		for (int i = 0; i < uniqueObjects.size(); ++i)
+			wearablesVector.add(uniqueObjects.get(i));
+	}
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
@@ -1973,7 +1973,7 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 
 bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
-		del += mod;
+		//del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 

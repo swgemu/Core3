@@ -49,20 +49,6 @@ class VendorTerminal;
 
 using namespace server::zone::objects::tangible::terminal::vendor;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "system/util/VectorMap.h"
@@ -85,8 +71,6 @@ public:
 	AuctionItem(unsigned long long objectid);
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
-
-	void notifyLoadFromDatabase();
 
 	void setVendorID(unsigned long long val);
 
@@ -117,6 +101,8 @@ public:
 	void setRemovedByOwner(bool isRemovedByOwner);
 
 	void setAuctionPremium();
+
+	void setAuctionWithdraw();
 
 	void clearAuctionWithdraw();
 
@@ -174,7 +160,7 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -263,8 +249,6 @@ public:
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
-	void notifyLoadFromDatabase();
-
 	void setVendorID(unsigned long long val);
 
 	void setItemName(const String& name);
@@ -294,6 +278,8 @@ public:
 	void setRemovedByOwner(bool isRemovedByOwner);
 
 	void setAuctionPremium();
+
+	void setAuctionWithdraw();
 
 	void clearAuctionWithdraw();
 
@@ -351,7 +337,7 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner();
 
 	WeakReference<AuctionItem*> _this;
 
@@ -398,8 +384,6 @@ public:
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
-	void notifyLoadFromDatabase();
-
 	void setVendorID(unsigned long long val);
 
 	void setItemName(const String& name);
@@ -427,6 +411,8 @@ public:
 	void setRemovedByOwner(bool isRemovedByOwner);
 
 	void setAuctionPremium();
+
+	void setAuctionWithdraw();
 
 	void clearAuctionWithdraw();
 
@@ -484,7 +470,7 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner();
 
 };
 

@@ -22,7 +22,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
+
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -118,9 +118,6 @@ void CityRegionImplementation::initialize() {
 	cityDecorations.setNoDuplicateInsertPlan();
 	citySkillTrainers.setNoDuplicateInsertPlan();
 
-	bazaars.setNoDuplicateInsertPlan();
-	bazaars.setNullValue(NULL);
-
 	setLoggingName("CityRegion");
 	setLogging(true);
 
@@ -175,12 +172,6 @@ int CityRegionImplementation::getTimeToUpdate() {
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this);
 
-	BazaarTerminal* term = cast<BazaarTerminal*>(object);
-
-	if (term != NULL) {
-		bazaars.put(term->getObjectID(), term);
-	}
-
 	if (isClientRegion())
 		return;
 
@@ -226,12 +217,6 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	object->setCityRegion(NULL);
-
-	BazaarTerminal* term = cast<BazaarTerminal*>(object);
-
-	if (term != NULL) {
-		bazaars.drop(term->getObjectID());
-	}
 
 	if (isClientRegion())
 		return;

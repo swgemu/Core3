@@ -55,10 +55,8 @@ class AuctionQueryHeadersResponseMessage : public BaseMessage {
 
 	SortedVector<String> locationList;
 
-	ManagedReference<CreatureObject*> player;
-
 public:
-	AuctionQueryHeadersResponseMessage(int screen, int counter, CreatureObject* player) : BaseMessage() {
+	AuctionQueryHeadersResponseMessage(int screen, int counter) : BaseMessage() {
 		insertShort(0x08);
 		insertInt(0xFA500E52);  // opcode
 
@@ -66,8 +64,6 @@ public:
 		insertInt(screen); // Vendor screen number
 
 		setCompression(true);
-
-		this->player = player;
 
 		locationList.setNoDuplicateInsertPlan();
 	}
@@ -139,15 +135,7 @@ public:
 
 	    	insertInt(il->getItemType());
 
-	    	//insertInt(il->getAuctionOptions()); // autionOptions 0x400 = Premium, 0x800 = withdraw
-	    	int additionalValues = 0;
-
-	    	if (il->getOwnerID() == player->getObjectID()) {
-	    		additionalValues |= 0x800;
-	    	}
-
-	    	insertInt(il->getAuctionOptions() | additionalValues);
-	    	//insertInt(10);
+	    	insertInt(il->getAuctionOptions()); // autionOptions 0x400 = Premium, 0x800 = withdraw
 
 	    	insertInt(0);  //TODO: Vendor entrance fee
 		}

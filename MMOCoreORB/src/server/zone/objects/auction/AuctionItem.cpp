@@ -8,13 +8,11 @@
 
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 /*
  *	AuctionItemStub
  */
 
-enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETINSTOCKROOM__BOOL_,RPC_SETOFFERTOVENDOR__BOOL_,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_ISONBAZAAR__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_ISINSTOCKROOM__,RPC_ISOFFERTOVENDOR__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_};
+enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_SETAUCTIONWITHDRAW__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETINSTOCKROOM__BOOL_,RPC_SETOFFERTOVENDOR__BOOL_,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_ISONBAZAAR__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_ISINSTOCKROOM__,RPC_ISOFFERTOVENDOR__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__};
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
@@ -49,19 +47,6 @@ void AuctionItem::setLocation(const String& planet, const String& header, unsign
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setLocation(planet, header, vendorid, x, z, vendor);
-}
-
-void AuctionItem::notifyLoadFromDatabase() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyLoadFromDatabase();
 }
 
 void AuctionItem::setVendorID(unsigned long long val) {
@@ -266,6 +251,19 @@ void AuctionItem::setAuctionPremium() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setAuctionPremium();
+}
+
+void AuctionItem::setAuctionWithdraw() {
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETAUCTIONWITHDRAW__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAuctionWithdraw();
 }
 
 void AuctionItem::clearAuctionWithdraw() {
@@ -649,18 +647,17 @@ bool AuctionItem::isPremiumAuction() {
 		return _implementation->isPremiumAuction();
 }
 
-bool AuctionItem::isOwner(CreatureObject* obj) {
+bool AuctionItem::isOwner() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISOWNER__CREATUREOBJECT_);
-		method.addObjectParameter(obj);
+		DistributedMethod method(this, RPC_ISOWNER__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isOwner(obj);
+		return _implementation->isOwner();
 }
 
 DistributedObjectServant* AuctionItem::_getImplementation() {
@@ -1225,6 +1222,11 @@ void AuctionItemImplementation::setAuctionPremium() {
 	auctionOptions = auctionOptions | OPTION_PREMIUM;
 }
 
+void AuctionItemImplementation::setAuctionWithdraw() {
+	// server/zone/objects/auction/AuctionItem.idl():  		auctionOptions = auctionOptions | OPTION_WITHDRAW;
+	auctionOptions = auctionOptions | OPTION_WITHDRAW;
+}
+
 void AuctionItemImplementation::setInStockroom(bool inStock) {
 	// server/zone/objects/auction/AuctionItem.idl():  		inStockroom = inStock;
 	inStockroom = inStock;
@@ -1360,9 +1362,9 @@ bool AuctionItemImplementation::isPremiumAuction() {
 	return auctionOptions & OPTION_PREMIUM;
 }
 
-bool AuctionItemImplementation::isOwner(CreatureObject* obj) {
-	// server/zone/objects/auction/AuctionItem.idl():  		return obj.getObjectID() == getOwnerID();
-	return obj->getObjectID() == getOwnerID();
+bool AuctionItemImplementation::isOwner() {
+	// server/zone/objects/auction/AuctionItem.idl():  		return auctionOptions & OPTION_WITHDRAW;
+	return auctionOptions & OPTION_WITHDRAW;
 }
 
 /*
@@ -1384,11 +1386,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		{
 			String planet; String header; 
 			setLocation(inv->getAsciiParameter(planet), inv->getAsciiParameter(header), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
-		}
-		break;
-	case RPC_NOTIFYLOADFROMDATABASE__:
-		{
-			notifyLoadFromDatabase();
 		}
 		break;
 	case RPC_SETVENDORID__LONG_:
@@ -1463,6 +1460,11 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETAUCTIONPREMIUM__:
 		{
 			setAuctionPremium();
+		}
+		break;
+	case RPC_SETAUCTIONWITHDRAW__:
+		{
+			setAuctionWithdraw();
 		}
 		break;
 	case RPC_CLEARAUCTIONWITHDRAW__:
@@ -1605,9 +1607,9 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isPremiumAuction());
 		}
 		break;
-	case RPC_ISOWNER__CREATUREOBJECT_:
+	case RPC_ISOWNER__:
 		{
-			resp->insertBoolean(isOwner(static_cast<CreatureObject*>(inv->getObjectParameter())));
+			resp->insertBoolean(isOwner());
 		}
 		break;
 	default:
@@ -1617,10 +1619,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void AuctionItemAdapter::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
 	(static_cast<AuctionItem*>(stub))->setLocation(planet, header, vendorid, x, z, vendor);
-}
-
-void AuctionItemAdapter::notifyLoadFromDatabase() {
-	(static_cast<AuctionItem*>(stub))->notifyLoadFromDatabase();
 }
 
 void AuctionItemAdapter::setVendorID(unsigned long long val) {
@@ -1677,6 +1675,10 @@ void AuctionItemAdapter::setRemovedByOwner(bool isRemovedByOwner) {
 
 void AuctionItemAdapter::setAuctionPremium() {
 	(static_cast<AuctionItem*>(stub))->setAuctionPremium();
+}
+
+void AuctionItemAdapter::setAuctionWithdraw() {
+	(static_cast<AuctionItem*>(stub))->setAuctionWithdraw();
 }
 
 void AuctionItemAdapter::clearAuctionWithdraw() {
@@ -1791,8 +1793,8 @@ bool AuctionItemAdapter::isPremiumAuction() {
 	return (static_cast<AuctionItem*>(stub))->isPremiumAuction();
 }
 
-bool AuctionItemAdapter::isOwner(CreatureObject* obj) {
-	return (static_cast<AuctionItem*>(stub))->isOwner(obj);
+bool AuctionItemAdapter::isOwner() {
+	return (static_cast<AuctionItem*>(stub))->isOwner();
 }
 
 /*
