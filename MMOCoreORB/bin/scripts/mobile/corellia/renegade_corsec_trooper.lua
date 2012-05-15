@@ -41,8 +41,7 @@ renegade_corsec_trooper = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(renegade_corsec_trooper, "renegade_corsec_trooper")

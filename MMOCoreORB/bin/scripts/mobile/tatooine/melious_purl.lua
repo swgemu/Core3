@@ -28,7 +28,7 @@ melious_purl = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_melious_purl.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

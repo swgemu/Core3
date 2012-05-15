@@ -28,7 +28,7 @@ liar_one = Creature:new {
 
 	templates = {"object/mobile/dressed_quest_liar_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ seasoned_jinda_warrior = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ larek_tatham = Creature:new {
 
 	templates = {"object/mobile/space_greeter_tyrena_pilot_friend.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

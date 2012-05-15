@@ -53,7 +53,7 @@ smashball_thug = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(smashball_thug, "smashball_thug")

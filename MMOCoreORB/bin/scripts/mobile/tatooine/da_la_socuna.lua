@@ -28,7 +28,7 @@ da_la_socuna = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier1_tatooine_socuna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

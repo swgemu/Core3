@@ -30,7 +30,7 @@ smuggler_patrol_thief_5 = Creature:new {
 		"object/mobile/dressed_corsec_detective_human_male_01.iff"
 	},		
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

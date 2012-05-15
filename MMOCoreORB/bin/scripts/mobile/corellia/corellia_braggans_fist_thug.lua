@@ -32,8 +32,7 @@ corellia_braggans_fist_thug = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_braggans_fist_thug, "corellia_braggans_fist_thug")

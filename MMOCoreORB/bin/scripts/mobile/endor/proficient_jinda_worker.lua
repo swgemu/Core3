@@ -28,7 +28,7 @@ proficient_jinda_worker = Creature:new {
 
 	templates = {"object/mobile/jinda_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

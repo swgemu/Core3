@@ -148,7 +148,7 @@ commoner = Creature:new {
 					},
 				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ haleen_snowline = Creature:new {
 
 	templates = {"object/mobile/dressed_haline_snowline.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ jowir_arlensa = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

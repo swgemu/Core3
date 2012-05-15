@@ -29,7 +29,7 @@ sidoras_bey = Creature:new {
 
 	templates = {"object/mobile/dressed_sidoras_bey.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

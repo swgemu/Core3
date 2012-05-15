@@ -28,7 +28,7 @@ sean_questp_house = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

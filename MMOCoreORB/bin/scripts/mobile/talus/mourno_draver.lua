@@ -29,7 +29,7 @@ mourno_draver = Creature:new {
 
 	templates = {"object/mobile/dressed_mourno_draver.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

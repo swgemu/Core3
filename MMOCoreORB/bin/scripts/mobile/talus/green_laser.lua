@@ -28,7 +28,7 @@ green_laser = Creature:new {
 
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

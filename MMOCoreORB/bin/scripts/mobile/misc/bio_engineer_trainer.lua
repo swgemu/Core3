@@ -28,7 +28,7 @@ bio_engineer_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_bioengineer_trainer_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

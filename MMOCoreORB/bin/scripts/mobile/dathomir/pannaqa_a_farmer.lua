@@ -28,7 +28,7 @@ pannaqa_a_farmer = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_farmer.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

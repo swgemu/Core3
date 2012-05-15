@@ -47,7 +47,7 @@ imprisoned_imperial_officer = Creature:new {
 			lootChance = 4000000
 		}			
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

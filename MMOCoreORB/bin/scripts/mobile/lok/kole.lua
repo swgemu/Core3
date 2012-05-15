@@ -28,7 +28,7 @@ kole = Creature:new {
 
 	templates = {"object/mobile/kole.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ cll_8 = Creature:new {
 
 	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

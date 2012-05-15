@@ -29,7 +29,7 @@ ind = Creature:new {
 
 	templates = {"object/mobile/dressed_ind.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

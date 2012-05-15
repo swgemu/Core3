@@ -32,8 +32,7 @@ corellia_chirq_kazic_pendre = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_chirq_kazic_pendre, "corellia_chirq_kazic_pendre")

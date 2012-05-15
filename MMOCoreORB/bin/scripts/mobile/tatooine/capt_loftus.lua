@@ -29,7 +29,7 @@ capt_loftus = Creature:new {
 
 	templates = {"object/mobile/capt_loftus.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

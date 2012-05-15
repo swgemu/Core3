@@ -28,7 +28,7 @@ scavenger = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

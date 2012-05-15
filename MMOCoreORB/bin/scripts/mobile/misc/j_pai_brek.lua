@@ -28,7 +28,7 @@ j_pai_brek = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier3_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ wallow_loowobbli = Creature:new {
 
 	templates = {"object/mobile/dressed_wallaw_loowobbli.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ frontiersman = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

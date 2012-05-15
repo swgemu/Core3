@@ -28,7 +28,7 @@ porcellus = Creature:new {
 
 	templates = {"object/mobile/dressed_porcellus.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

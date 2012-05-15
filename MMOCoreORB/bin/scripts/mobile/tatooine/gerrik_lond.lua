@@ -28,9 +28,9 @@ gerrik_lond = Creature:new {
 
 	templates = {"object/mobile/gerrick_lond.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlerua)
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gerrik_lond, "gerrik_lond")

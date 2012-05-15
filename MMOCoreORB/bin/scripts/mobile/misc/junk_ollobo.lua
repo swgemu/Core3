@@ -29,7 +29,7 @@ junk_ollobo = Creature:new {
 
 	templates = {"object/mobile/junk_ollobo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -38,7 +38,7 @@ lord_sloan_rusper = Creature:new {
 			lootChance = 5500000
 		}					
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

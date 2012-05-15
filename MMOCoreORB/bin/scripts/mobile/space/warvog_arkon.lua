@@ -28,7 +28,7 @@ warvog_arkon = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier4_warvog.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

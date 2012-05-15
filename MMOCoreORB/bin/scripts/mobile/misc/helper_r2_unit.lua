@@ -28,7 +28,7 @@ helper_r2_unit = Creature:new {
 
 	templates = {"object/mobile/nhelper_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

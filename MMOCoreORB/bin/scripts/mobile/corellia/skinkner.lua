@@ -29,7 +29,7 @@ skinkner = Creature:new {
 
 	templates = {"object/mobile/dressed_skinkner.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

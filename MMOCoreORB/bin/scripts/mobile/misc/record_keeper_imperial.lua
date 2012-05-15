@@ -29,7 +29,7 @@ record_keeper_imperial = Creature:new {
 
 	templates = {"object/mobile/theme_park_record_keeper_imperial.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

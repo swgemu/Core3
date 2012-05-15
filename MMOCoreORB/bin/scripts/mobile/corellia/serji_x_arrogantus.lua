@@ -29,7 +29,7 @@ serji_x_arrogantus = Creature:new {
 
 	templates = {"object/mobile/dressed_serjix_arrogantus.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

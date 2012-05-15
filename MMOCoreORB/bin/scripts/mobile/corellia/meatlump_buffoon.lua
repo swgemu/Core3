@@ -52,7 +52,7 @@ meatlump_buffoon = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(meatlump_buffoon, "meatlump_buffoon")

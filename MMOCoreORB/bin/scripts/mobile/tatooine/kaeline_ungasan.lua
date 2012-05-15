@@ -29,7 +29,7 @@ kaeline_ungasan = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_kaeline_ungasan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

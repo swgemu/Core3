@@ -43,10 +43,9 @@ corsec_traitor = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {"ranged_weapons"},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_traitor, "corsec_traitor")

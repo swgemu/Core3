@@ -29,7 +29,7 @@ gold_two = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_gold_two.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

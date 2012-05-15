@@ -62,8 +62,7 @@ afarathu_ruffian = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(afarathu_ruffian, "afarathu_ruffian")

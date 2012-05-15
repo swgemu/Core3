@@ -29,7 +29,7 @@ gerrio_coronis = Creature:new {
 
 	templates = {"object/mobile/dressed_gerrio_coronis.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ dr_dea_tore = Creature:new {
 
 	templates = {"object/mobile/dressed_dr_dea_tore.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

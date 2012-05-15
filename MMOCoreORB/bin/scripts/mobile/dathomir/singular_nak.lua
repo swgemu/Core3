@@ -29,7 +29,7 @@ singular_nak = Creature:new {
 
 	templates = {"object/mobile/dressed_singular_nak.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

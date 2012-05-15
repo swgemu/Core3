@@ -28,7 +28,7 @@ archeologist = Creature:new {
 
 	templates = {"object/mobile/dressed_eisley_officer_twilek_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

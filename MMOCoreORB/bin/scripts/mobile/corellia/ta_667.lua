@@ -28,7 +28,7 @@ ta_667 = Creature:new {
 
 	templates = {"object/mobile/dark_trooper.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ drognuz = Creature:new {
 
 	templates = {"object/mobile/gamorrean.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

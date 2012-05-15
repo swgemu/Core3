@@ -28,7 +28,7 @@ gifted_jinda_shaman = Creature:new {
 
 	templates = {"object/mobile/jinda_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -27,7 +27,7 @@ mayor = Creature:new {
 
 	templates = {"object/mobile/dressed_mayor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

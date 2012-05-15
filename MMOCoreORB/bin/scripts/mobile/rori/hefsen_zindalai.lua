@@ -29,7 +29,7 @@ hefsen_zindalai = Creature:new {
 
 	templates = {"object/mobile/dressed_hefsen_zindalai.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

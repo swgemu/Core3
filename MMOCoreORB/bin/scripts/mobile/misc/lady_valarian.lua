@@ -28,7 +28,7 @@ lady_valarian = Creature:new {
 
 	templates = {"object/mobile/lady_valarian.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

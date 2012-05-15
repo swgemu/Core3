@@ -40,9 +40,9 @@ jawa = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"rebel_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa, "jawa")

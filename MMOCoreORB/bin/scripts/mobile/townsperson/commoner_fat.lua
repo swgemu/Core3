@@ -41,7 +41,7 @@ commoner_fat = Creature:new {
 					},
 				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

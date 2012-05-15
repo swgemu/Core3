@@ -39,7 +39,7 @@ imperial_inquisitor = Creature:new {
 			lootChance = 4000000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

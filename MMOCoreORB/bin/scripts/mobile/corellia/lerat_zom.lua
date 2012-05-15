@@ -28,10 +28,9 @@ lerat_zom = Creature:new {
 
 	templates = {"object/mobile/lerat_zom.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(lerat_zom, "lerat_zom")

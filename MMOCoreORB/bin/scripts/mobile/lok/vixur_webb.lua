@@ -28,7 +28,7 @@ vixur_webb = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

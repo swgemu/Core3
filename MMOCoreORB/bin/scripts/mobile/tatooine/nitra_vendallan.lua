@@ -29,7 +29,7 @@ nitra_vendallan = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_nitra_vendallan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

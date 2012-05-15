@@ -39,7 +39,7 @@ naboo_monk = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster)
 }

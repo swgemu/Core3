@@ -29,7 +29,7 @@ luthik_uwyr = Creature:new {
 
 	templates = {"object/mobile/dressed_luthik_uwyr.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

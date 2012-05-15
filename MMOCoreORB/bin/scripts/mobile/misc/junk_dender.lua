@@ -29,7 +29,7 @@ junk_dender = Creature:new {
 
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "junk_dender_outfit",
 	attacks = {

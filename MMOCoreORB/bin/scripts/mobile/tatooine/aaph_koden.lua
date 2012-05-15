@@ -29,7 +29,7 @@ aaph_koden = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_aaph_koden.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

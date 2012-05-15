@@ -29,7 +29,7 @@ rhys_dallows = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

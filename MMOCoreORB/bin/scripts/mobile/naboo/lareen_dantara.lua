@@ -29,7 +29,7 @@ lareen_dantara = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_human_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

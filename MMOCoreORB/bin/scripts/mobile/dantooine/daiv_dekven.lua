@@ -29,7 +29,7 @@ daiv_dekven = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ charal = Creature:new {
 
 	templates = {"object/mobile/charal.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

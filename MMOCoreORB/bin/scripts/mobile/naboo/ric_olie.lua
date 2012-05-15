@@ -29,7 +29,7 @@ ric_olie = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

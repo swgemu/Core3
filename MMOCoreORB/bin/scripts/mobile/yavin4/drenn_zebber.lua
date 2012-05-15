@@ -29,7 +29,7 @@ drenn_zebber = Creature:new {
 
 	templates = {"object/mobile/dressed_drenn_zebber.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

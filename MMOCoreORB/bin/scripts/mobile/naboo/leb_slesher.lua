@@ -29,7 +29,7 @@ leb_slesher = Creature:new {
 
 	templates = {"object/mobile/dressed_leb_slesher.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

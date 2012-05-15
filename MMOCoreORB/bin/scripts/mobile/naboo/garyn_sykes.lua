@@ -29,7 +29,7 @@ garyn_sykes = Creature:new {
 
 	templates = {"object/mobile/dressed_gavyn_sykes.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

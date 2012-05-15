@@ -29,7 +29,7 @@ palejo_reshad = Creature:new {
 
 	templates = {"object/mobile/dressed_palejo_reshad.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

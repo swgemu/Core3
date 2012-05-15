@@ -29,7 +29,7 @@ patron_klaatu = Creature:new {
 		"object/mobile/dressed_patron_klaatu_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -29,7 +29,7 @@ igbi_freemo = Creature:new {
 
 	templates = {"object/mobile/dressed_igbi_freemo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

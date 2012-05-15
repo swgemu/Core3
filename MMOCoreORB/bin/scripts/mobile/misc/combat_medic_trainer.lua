@@ -28,7 +28,7 @@ combat_medic_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_medic_trainer_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

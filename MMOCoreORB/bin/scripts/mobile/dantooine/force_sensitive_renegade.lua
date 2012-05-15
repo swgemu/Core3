@@ -40,7 +40,7 @@ force_sensitive_renegade = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

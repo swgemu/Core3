@@ -32,7 +32,7 @@ entertainer = Creature:new {
 		"object/mobile/dressed_diva_human_female_01.iff"
 				},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

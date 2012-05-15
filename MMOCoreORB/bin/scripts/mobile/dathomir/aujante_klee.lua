@@ -28,7 +28,7 @@ aujante_klee = Creature:new {
 
 	templates = {"object/mobile/dressed_aujante_klee.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

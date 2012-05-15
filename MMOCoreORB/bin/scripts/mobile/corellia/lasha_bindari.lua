@@ -29,7 +29,7 @@ lasha_bindari = Creature:new {
 
 	templates = {"object/mobile/dressed_lasha_bindari.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

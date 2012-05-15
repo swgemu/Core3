@@ -29,7 +29,7 @@ durgur_pyne = Creature:new {
 
 	templates = {"object/mobile/dressed_durgur_pyne.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

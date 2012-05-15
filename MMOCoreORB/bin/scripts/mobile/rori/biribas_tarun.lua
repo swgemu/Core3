@@ -29,7 +29,7 @@ biribas_tarun = Creature:new {
 
 	templates = {"object/mobile/dressed_biribas_tarun.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

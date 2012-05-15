@@ -29,7 +29,7 @@ crider_trant = Creature:new {
 
 	templates = {"object/mobile/dressed_crider_trant.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

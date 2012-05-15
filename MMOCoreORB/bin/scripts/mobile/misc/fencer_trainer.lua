@@ -28,7 +28,7 @@ fencer_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_1handsword_trainer_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ magur_tongai = Creature:new {
 
 	templates = {"object/mobile/dressed_magur_torigai.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

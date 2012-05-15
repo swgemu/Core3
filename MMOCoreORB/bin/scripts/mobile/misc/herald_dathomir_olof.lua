@@ -29,7 +29,7 @@ herald_dathomir_olof = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_dathomir_nsister_cave_olof.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ mara_jade = Creature:new {
 
 	templates = {"object/mobile/mara_jade.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

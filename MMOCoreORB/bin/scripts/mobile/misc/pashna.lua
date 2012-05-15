@@ -29,7 +29,7 @@ pashna = Creature:new {
 
 	templates = {"object/mobile/dressed_corvette_rebel_pashna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ wise_jinda_rigualist = Creature:new {
 
 	templates = {"object/mobile/jinda_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

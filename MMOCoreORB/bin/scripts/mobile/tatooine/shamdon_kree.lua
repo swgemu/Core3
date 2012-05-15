@@ -28,7 +28,7 @@ shamdon_kree = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier2_shamdon.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

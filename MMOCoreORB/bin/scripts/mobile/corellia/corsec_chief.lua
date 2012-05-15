@@ -37,7 +37,7 @@ corsec_chief = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {"ranged_weapons"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

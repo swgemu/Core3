@@ -28,7 +28,7 @@ gins_darone = Creature:new {
 
 	templates = {"object/mobile/dressed_gins_darone.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

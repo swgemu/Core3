@@ -29,7 +29,7 @@ herald_corellia_lock = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

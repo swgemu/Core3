@@ -29,7 +29,7 @@ xolox_guul = Creature:new {
 
 	templates = {"object/mobile/dressed_commander_xalox_guul.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

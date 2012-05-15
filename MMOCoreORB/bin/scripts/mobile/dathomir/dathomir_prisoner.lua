@@ -33,7 +33,7 @@ dathomir_prisoner = Creature:new {
 		"object/mobile/dressed_dathomir_prisoner_02.iff",
 		"object/mobile/dressed_dathomir_prisoner_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

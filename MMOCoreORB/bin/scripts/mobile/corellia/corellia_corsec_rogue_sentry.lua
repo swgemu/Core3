@@ -40,8 +40,7 @@ corellia_corsec_rogue_sentry = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_corsec_rogue_sentry, "corellia_corsec_rogue_sentry")

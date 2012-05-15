@@ -28,7 +28,7 @@ ackbar = Creature:new {
 
 	templates = {"object/mobile/dressed_ackbar.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

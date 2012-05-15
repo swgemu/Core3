@@ -37,7 +37,7 @@ dim_u_abbot = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

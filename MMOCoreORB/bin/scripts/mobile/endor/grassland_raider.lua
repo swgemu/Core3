@@ -28,7 +28,7 @@ grassland_raider = Creature:new {
 
 	templates = {"object/mobile/dressed_grassland_blood_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

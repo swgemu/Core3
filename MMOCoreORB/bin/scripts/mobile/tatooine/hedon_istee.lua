@@ -29,7 +29,7 @@ hedon_istee = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_hedon_istee.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "hedon_istee_convotemplate",
 	attacks = {
 	}

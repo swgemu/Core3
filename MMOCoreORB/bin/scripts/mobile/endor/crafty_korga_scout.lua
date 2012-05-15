@@ -28,7 +28,7 @@ crafty_korga_scout = Creature:new {
 
 	templates = {"object/mobile/object/mobile/object/mobile/dulok_male.iff.iff.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

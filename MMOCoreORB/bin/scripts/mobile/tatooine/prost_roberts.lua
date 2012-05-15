@@ -28,7 +28,7 @@ prost_roberts = Creature:new {
 
 	templates = {"object/mobile/space_greeter_mos_espa_young_pilot.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

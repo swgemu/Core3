@@ -28,7 +28,7 @@ talon_karrde = Creature:new {
 
 	templates = {"object/mobile/dressed_talon_karrde.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ dac_axfow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_kor_vella_imperial_officer.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

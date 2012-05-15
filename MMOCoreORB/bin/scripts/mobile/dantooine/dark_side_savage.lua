@@ -40,7 +40,7 @@ dark_side_savage = Creature:new {
 			lootChance = 4800000
 		}		
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

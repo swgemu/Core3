@@ -31,7 +31,7 @@ farmer_rancher = Creature:new {
 				"object/mobile/dressed_commoner_tatooine_bith_female_06.iff"
 				},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

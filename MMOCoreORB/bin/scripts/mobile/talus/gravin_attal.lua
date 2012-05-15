@@ -28,7 +28,7 @@ gravin_attal = Creature:new {
 
 	templates = {"object/mobile/dressed_gravin_attal.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

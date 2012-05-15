@@ -29,7 +29,7 @@ thale_dustrunner = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

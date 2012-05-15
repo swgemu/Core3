@@ -34,7 +34,7 @@ commoner_technician = Creature:new {
 					},
 				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

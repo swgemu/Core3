@@ -29,7 +29,7 @@ vana_sage = Creature:new {
 
 	templates = {"object/mobile/dressed_lt_vana_sage.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ feinu_zerk = Creature:new {
 
 	templates = {"object/mobile/dressed_feinu_zerk.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

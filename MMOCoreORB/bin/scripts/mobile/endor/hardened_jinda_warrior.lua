@@ -28,7 +28,7 @@ hardened_jinda_warrior = Creature:new {
 
 	templates = {"object/mobile/jinda_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ coris_mao = Creature:new {
 
 	templates = {"object/mobile/dressed_brigade_gunner_bith_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

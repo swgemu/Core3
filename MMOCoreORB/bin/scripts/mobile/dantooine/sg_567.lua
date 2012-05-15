@@ -29,7 +29,7 @@ sg_567 = Creature:new {
 
 	templates = {"object/mobile/dressed_sg_567.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

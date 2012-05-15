@@ -27,7 +27,7 @@ ree_yees = Creature:new {
 
 	templates = {"object/mobile/gran_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

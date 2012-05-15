@@ -29,7 +29,7 @@ graf_zapalo = Creature:new {
 
 	templates = {"object/mobile/dressed_graf_zapalo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ dalla_solo = Creature:new {
 
 	templates = {"object/mobile/dressed_dalla_solo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

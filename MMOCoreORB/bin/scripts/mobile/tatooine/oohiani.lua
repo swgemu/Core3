@@ -29,7 +29,7 @@ oohiani = Creature:new {
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

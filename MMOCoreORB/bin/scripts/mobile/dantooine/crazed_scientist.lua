@@ -31,7 +31,7 @@ crazed_scientist = Creature:new {
 		"object/mobile/warren_irradiated_worker_s02.iff",
 		"object/mobile/warren_irradiated_worker_s03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

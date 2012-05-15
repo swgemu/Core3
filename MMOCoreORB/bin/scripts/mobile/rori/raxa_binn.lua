@@ -29,7 +29,7 @@ raxa_binn = Creature:new {
 
 	templates = {"object/mobile/dressed_raxa_binn.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

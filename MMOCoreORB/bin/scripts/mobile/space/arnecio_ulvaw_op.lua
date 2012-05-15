@@ -28,7 +28,7 @@ arnecio_ulvaw_op = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier3_arnecio.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

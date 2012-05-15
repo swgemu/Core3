@@ -29,7 +29,7 @@ scolex_grath = Creature:new {
 
 	templates = {"object/mobile/dressed_scolex_grath.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

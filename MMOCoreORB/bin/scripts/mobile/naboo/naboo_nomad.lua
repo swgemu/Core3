@@ -38,7 +38,7 @@ naboo_nomad = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
 }

@@ -29,7 +29,7 @@ junk_jawa = Creature:new {
 
 	templates = {"object/mobile/jawa_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

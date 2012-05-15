@@ -29,7 +29,7 @@ naboo_kidnapped_noble_01 = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

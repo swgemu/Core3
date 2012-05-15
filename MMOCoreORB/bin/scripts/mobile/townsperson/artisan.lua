@@ -35,7 +35,7 @@ artisan = Creature:new {
 		"object/mobile/dressed_commoner_artisan_bith_male_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

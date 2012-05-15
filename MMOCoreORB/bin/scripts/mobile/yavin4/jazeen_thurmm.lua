@@ -29,7 +29,7 @@ jazeen_thurmm = Creature:new {
 
 	templates = {"object/mobile/dressed_jazeen_thurmm.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

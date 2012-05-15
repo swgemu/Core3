@@ -29,7 +29,7 @@ kelvus_naria = Creature:new {
 
 	templates = {"object/mobile/dressed_kelvus_naria.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

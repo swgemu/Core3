@@ -29,7 +29,7 @@ stella = Creature:new {
 
 	templates = {"object/mobile/mos_taike_cantina_owner.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

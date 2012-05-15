@@ -29,7 +29,7 @@ sergeant_tarl = Creature:new {
 
 	templates = {"object/mobile/dressed_sargeant_tarl.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

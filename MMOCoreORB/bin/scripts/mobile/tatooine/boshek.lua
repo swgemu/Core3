@@ -28,7 +28,7 @@ boshek = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_boshek.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ xaan_talmaron = Creature:new {
 
 	templates = {"object/mobile/dressed_xaan_talmaron.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

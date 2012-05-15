@@ -29,9 +29,9 @@ gerak_vurtimis = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_fat_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlerua)
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gerak_vurtimis, "gerak_vurtimis")

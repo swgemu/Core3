@@ -62,8 +62,7 @@ afarathu_cult_follower = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(afarathu_cult_follower, "afarathu_cult_follower")

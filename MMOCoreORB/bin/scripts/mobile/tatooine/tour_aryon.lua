@@ -29,7 +29,7 @@ tour_aryon = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_tour_aryon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

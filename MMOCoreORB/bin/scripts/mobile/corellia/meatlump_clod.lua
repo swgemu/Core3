@@ -50,7 +50,7 @@ meatlump_clod = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(meatlump_clod, "meatlump_clod")

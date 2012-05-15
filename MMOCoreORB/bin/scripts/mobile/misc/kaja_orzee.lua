@@ -28,7 +28,7 @@ kaja_orzee = Creature:new {
 
 	templates = {"object/mobile/kaja_orzee.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "imperial_retreat_kaja_orzee_convotemplate",
 	outfit = "kaja_orzee_outfit",
 	attacks = {

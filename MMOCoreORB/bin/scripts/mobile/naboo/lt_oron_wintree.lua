@@ -29,7 +29,7 @@ lt_oron_wintree = Creature:new {
 
 	templates = {"object/mobile/dressed_lt_oron_wintree.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

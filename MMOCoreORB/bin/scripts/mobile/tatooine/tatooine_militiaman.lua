@@ -31,7 +31,7 @@ tatooine_militiaman = Creature:new {
 		"object/mobile/dressed_eisley_officer_trandoshan_female_01.iff",
 		"object/mobile/dressed_eisley_officer_aqualish_male_01.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

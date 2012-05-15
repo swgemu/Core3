@@ -49,7 +49,7 @@ flail_executioner = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_executioner, "flail_executioner")

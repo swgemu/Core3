@@ -29,7 +29,7 @@ oka_alewame = Creature:new {
 
 	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

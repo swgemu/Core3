@@ -50,7 +50,7 @@ smashball_degenerate = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(smashball_degenerate, "smashball_degenerate")

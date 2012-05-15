@@ -40,10 +40,9 @@ crackdown_sand_trooper_hard = Creature:new {
 			lootChance = 4000000
 		}		
 	},
-	weapons = {"stormtrooper_weapons"},
+	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_sand_trooper_hard, "crackdown_sand_trooper_hard")

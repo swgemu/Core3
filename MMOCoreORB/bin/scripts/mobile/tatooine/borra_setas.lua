@@ -29,7 +29,7 @@ borra_setas = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_tatooine_rodian_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

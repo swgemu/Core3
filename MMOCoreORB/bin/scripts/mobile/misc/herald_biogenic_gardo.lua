@@ -29,7 +29,7 @@ herald_biogenic_gardo = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

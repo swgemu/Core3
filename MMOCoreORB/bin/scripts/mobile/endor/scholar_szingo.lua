@@ -27,7 +27,7 @@ scholar_szingo = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

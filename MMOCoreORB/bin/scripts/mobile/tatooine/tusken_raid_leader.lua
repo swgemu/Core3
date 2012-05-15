@@ -30,7 +30,7 @@ tusken_raid_leader = Creature:new {
 	lootGroups = {},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlernmaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_raid_leader, "tusken_raid_leader")

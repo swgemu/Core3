@@ -29,7 +29,7 @@ corellia_jonset = Creature:new {
 
 	templates = {"object/mobile/dressed_assassin_mission_giver_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

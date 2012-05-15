@@ -29,7 +29,7 @@ booto_lubble = Creature:new {
 
 	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

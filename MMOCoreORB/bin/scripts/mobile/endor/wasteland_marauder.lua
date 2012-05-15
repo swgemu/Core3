@@ -28,7 +28,7 @@ wasteland_marauder = Creature:new {
 
 	templates = {"object/mobile/dressed_wandering_desert_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

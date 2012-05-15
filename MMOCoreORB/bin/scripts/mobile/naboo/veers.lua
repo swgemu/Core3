@@ -29,7 +29,7 @@ veers = Creature:new {
 
 	templates = {"object/mobile/naboo_npc/veers.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

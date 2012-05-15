@@ -39,8 +39,7 @@ lord_nyax = Creature:new {
 	},
 	weapons = {"nyaxs_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lord_nyax, "lord_nyax")

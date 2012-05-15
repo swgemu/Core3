@@ -29,7 +29,7 @@ patron_nikto = Creature:new {
 		"object/mobile/dressed_patron_nikto_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

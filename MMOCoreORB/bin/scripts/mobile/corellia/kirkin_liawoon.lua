@@ -29,7 +29,7 @@ kirkin_liawoon = Creature:new {
 
 	templates = {"object/mobile/selonian_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

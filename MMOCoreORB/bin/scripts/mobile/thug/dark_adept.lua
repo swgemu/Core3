@@ -42,10 +42,9 @@ dark_adept = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {""},
+	weapons = {"dark_jedi_weapons_gen2"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(lightsabermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dark_adept, "dark_adept")

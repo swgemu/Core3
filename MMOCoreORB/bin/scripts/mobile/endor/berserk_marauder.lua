@@ -28,7 +28,7 @@ berserk_marauder = Creature:new {
 
 	templates = {"object/mobile/dressed_feral_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

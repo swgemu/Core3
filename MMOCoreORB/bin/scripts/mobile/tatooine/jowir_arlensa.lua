@@ -29,7 +29,7 @@ jowir_arlensa = Creature:new {
 
 	templates = {"object/mobile/dressed_jowir_arlensa.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
 }

@@ -29,7 +29,7 @@ kavas_urdano = Creature:new {
 
 	templates = {"object/mobile/dressed_kavas_urdano.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

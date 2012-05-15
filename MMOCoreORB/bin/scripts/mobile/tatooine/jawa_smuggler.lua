@@ -40,9 +40,9 @@ jawa_smuggler = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_smuggler, "jawa_smuggler")

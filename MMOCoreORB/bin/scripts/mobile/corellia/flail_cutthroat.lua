@@ -47,7 +47,7 @@ flail_cutthroat = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_cutthroat, "flail_cutthroat")

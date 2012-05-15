@@ -29,7 +29,7 @@ karrek_flim = Creature:new {
 
 	templates = {"object/mobile/dressed_karrek_film.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

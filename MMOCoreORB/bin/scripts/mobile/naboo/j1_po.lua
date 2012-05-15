@@ -27,7 +27,7 @@ j1_po = Creature:new {
 
 	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
 	optionsBitmask = 128

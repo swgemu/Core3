@@ -28,7 +28,7 @@ fightmaster_jorak = Creature:new {
 
 	templates = {"object/mobile/dressed_fightmaster_jorak.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

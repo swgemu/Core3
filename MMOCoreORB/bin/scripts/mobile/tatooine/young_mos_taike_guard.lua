@@ -37,7 +37,7 @@ young_mos_taike_guard = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

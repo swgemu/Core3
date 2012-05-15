@@ -29,7 +29,7 @@ denell_kelvannon = Creature:new {
 
 	templates = {"object/mobile/dressed_denell_kelvannon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

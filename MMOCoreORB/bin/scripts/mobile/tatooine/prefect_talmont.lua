@@ -28,7 +28,7 @@ prefect_talmont = Creature:new {
 
 	templates = {"object/mobile/prefect_talmont.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

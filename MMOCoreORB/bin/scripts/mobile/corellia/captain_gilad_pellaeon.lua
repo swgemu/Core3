@@ -29,7 +29,7 @@ captain_gilad_pellaeon = Creature:new {
 
 	templates = {"object/mobile/dressed_captain_gilad_pellaeon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

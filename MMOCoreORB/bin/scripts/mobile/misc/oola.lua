@@ -27,7 +27,7 @@ oola = Creature:new {
 
 	templates = {"object/mobile/oola.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

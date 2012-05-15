@@ -29,7 +29,7 @@ lilas_dinhint = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_lilas_dinhint.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

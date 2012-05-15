@@ -44,7 +44,7 @@
 object_weapon_melee_2h_sword_base_crafted_lightsaber_base = object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base:new {
 	
 	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
-	gameObjectType = 131089,
+	--gameObjectType = 131089,
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 }
 

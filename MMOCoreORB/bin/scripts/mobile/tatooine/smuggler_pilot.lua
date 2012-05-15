@@ -28,7 +28,7 @@ smuggler_pilot = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_henchman.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

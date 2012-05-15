@@ -29,7 +29,7 @@ imi_eficoaw = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor05.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

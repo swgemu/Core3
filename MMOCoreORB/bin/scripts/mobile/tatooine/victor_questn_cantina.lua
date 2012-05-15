@@ -28,7 +28,7 @@ victor_questn_cantina = Creature:new {
 
 	templates = {"object/mobile/dressed_victor_questn_cantina.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

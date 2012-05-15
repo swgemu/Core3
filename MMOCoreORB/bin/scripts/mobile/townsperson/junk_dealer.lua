@@ -35,7 +35,7 @@ junk_dealer = Creature:new {
 			"object/mobile/junk_sheani.iff",
 			"object/mobile/junk_sneg.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

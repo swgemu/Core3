@@ -37,7 +37,7 @@ naboo_holy_man = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	attacks = merge(brawlermaster)
 }
 

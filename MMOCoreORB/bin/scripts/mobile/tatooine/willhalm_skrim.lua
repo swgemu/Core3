@@ -28,7 +28,7 @@ willhalm_skrim = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

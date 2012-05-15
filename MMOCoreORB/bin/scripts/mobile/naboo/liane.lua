@@ -29,7 +29,7 @@ liane = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_liane.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

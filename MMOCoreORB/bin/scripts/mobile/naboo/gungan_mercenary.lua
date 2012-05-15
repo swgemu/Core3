@@ -37,7 +37,7 @@ gungan_mercenary = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

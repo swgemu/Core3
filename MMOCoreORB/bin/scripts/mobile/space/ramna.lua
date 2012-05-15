@@ -28,7 +28,7 @@ ramna = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier3_ramna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ jinda_outcast = Creature:new {
 
 	templates = {"object/mobile/jinda_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

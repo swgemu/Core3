@@ -28,7 +28,7 @@ chef_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_chef_trainer_human_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

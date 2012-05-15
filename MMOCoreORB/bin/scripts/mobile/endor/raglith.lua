@@ -29,7 +29,7 @@ raglith = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

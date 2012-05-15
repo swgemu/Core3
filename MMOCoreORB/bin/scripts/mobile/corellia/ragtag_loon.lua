@@ -52,7 +52,7 @@ ragtag_loon = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(ragtag_loon, "ragtag_loon")

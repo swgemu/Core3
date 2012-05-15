@@ -28,7 +28,7 @@ hand_of_solitude = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(hand_of_solitude, "hand_of_solitude")

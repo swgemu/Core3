@@ -37,7 +37,7 @@ the_mos_taike_mayor = Creature:new {
 			lootChance = 4800000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

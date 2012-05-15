@@ -29,7 +29,7 @@ ekoarili_eichreemo = Creature:new {
 	
 	templates = {"object/mobile/dressed_bestine_capitol01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

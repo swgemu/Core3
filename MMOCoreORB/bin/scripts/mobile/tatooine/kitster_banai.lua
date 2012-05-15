@@ -29,7 +29,7 @@ kitster_banai = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_kitster_banai.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

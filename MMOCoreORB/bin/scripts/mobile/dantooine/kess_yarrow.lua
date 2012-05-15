@@ -28,7 +28,7 @@ kess_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_rebel.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

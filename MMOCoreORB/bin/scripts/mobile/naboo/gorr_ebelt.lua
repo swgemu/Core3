@@ -28,7 +28,7 @@ gorr_ebelt = Creature:new {
 
 	templates = {"object/mobile/gorr_ebelt.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

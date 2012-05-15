@@ -28,7 +28,7 @@ vanvi_hotne = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_artist01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

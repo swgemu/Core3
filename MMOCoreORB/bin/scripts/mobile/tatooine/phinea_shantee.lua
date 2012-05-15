@@ -28,7 +28,7 @@ phinea_shantee = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_phinea_shantee.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

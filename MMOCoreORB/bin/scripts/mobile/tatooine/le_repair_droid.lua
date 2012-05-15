@@ -28,7 +28,7 @@ le_repair_droid = Creature:new {
 
 	templates = {"object/mobile/le_repair_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

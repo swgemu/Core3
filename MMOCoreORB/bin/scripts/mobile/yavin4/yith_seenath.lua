@@ -29,7 +29,7 @@ yith_seenath = Creature:new {
 
 	templates = {"object/mobile/dressed_yith_seenath.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

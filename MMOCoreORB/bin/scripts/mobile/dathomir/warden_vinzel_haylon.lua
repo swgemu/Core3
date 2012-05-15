@@ -29,7 +29,7 @@ warden_vinzel_haylon = Creature:new {
 
 	templates = {"object/mobile/dressed_vinzel_haylon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

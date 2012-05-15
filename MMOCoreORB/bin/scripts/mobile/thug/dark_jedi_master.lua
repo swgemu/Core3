@@ -44,9 +44,9 @@ dark_jedi_master = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {"dark_jedi_weapons"},
+	weapons = {"dark_jedi_weapons_gen4"},
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster,forcepower3)
+	attacks = merge(lightsabermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dark_jedi_master, "dark_jedi_master")

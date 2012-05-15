@@ -28,7 +28,7 @@ dageerin = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_sad.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

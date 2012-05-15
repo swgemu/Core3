@@ -29,7 +29,7 @@ sigrix_slix = Creature:new {
 
 	templates = {"object/mobile/dressed_sigrix_slix.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -30,8 +30,7 @@ will_of_solitude = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(will_of_solitude, "will_of_solitude")

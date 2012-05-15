@@ -27,7 +27,7 @@ ra7_bug_droid = Creature:new {
 
 	templates = {"object/mobile/ra7_bug_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -28,7 +28,7 @@ klepa_laeel = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_artist05.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ oberhaur = Creature:new {
 
 	templates = {"object/mobile/space_imperial_tier2_tatooine_oberhaur.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

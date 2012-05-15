@@ -27,7 +27,7 @@ salacious_crumb = Creature:new {
 
 	templates = {"object/mobile/salacious_crumb.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

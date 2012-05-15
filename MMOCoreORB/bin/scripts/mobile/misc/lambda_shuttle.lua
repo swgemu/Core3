@@ -28,7 +28,7 @@ diet = HERBIVORE,
 
 templates = {"object/creature/npc/theme_park/lambda_shuttle.iff"},
 lootGroups = {},
-weapons = {""},
+weapons = {},
 conversationTemplate = "",
 attacks = {
 }

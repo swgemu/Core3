@@ -27,7 +27,7 @@ king_terak = Creature:new {
 
 	templates = {"object/mobile/king_terak.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

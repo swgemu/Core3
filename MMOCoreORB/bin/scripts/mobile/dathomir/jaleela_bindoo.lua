@@ -29,7 +29,7 @@ jaleela_bindoo = Creature:new {
 
 	templates = {"object/mobile/dressed_jaleela_bindoo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

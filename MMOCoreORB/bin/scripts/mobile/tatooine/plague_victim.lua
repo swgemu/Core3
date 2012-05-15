@@ -27,7 +27,7 @@ plague_victim = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_plague_victim.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

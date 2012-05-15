@@ -29,7 +29,7 @@ ihatha_hawit = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor12.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

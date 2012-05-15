@@ -28,7 +28,7 @@ fath_hray = Creature:new {
 
 	templates = {"object/mobile/dressed_fath_hray.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

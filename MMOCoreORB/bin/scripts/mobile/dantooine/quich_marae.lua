@@ -29,7 +29,7 @@ quich_marae = Creature:new {
 
 	templates = {"object/mobile/junk_quich.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

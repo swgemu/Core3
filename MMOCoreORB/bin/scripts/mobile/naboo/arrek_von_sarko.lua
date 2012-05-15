@@ -29,7 +29,7 @@ arrek_von_sarko = Creature:new {
 
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

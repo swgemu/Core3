@@ -30,7 +30,7 @@ cannibal = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlerua)
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(cannibal, "cannibal")

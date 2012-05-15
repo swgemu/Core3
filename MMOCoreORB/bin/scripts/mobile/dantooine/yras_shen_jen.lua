@@ -28,7 +28,7 @@ yras_shen_jen = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_old_pilot.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

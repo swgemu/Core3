@@ -30,7 +30,7 @@ vrak = Creature:new {
 		"object/mobile/dressed_nym_destroyer_rod_m.iff"
 	},		
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -40,7 +40,7 @@ monumenter_marauder = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_marauder, "monumenter_marauder")

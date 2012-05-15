@@ -27,7 +27,7 @@ nomad = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_nomad.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

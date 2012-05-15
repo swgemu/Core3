@@ -28,7 +28,7 @@ rikkh = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier2_corellia.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

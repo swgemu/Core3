@@ -29,7 +29,7 @@ zogor_storm = Creature:new {
 
 	templates = {"object/mobile/dressed_supervisor_zogor_sturm.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

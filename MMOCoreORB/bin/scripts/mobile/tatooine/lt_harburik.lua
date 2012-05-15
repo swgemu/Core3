@@ -28,7 +28,7 @@ lt_harburik = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_lt_harburik.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ g_5po = Creature:new {
 
 	templates = {"object/mobile/3po_protocol_droid_red.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

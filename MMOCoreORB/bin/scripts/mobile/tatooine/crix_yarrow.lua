@@ -29,7 +29,7 @@ crix_yarrow = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_fat_twilek_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

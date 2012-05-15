@@ -29,7 +29,7 @@ commander_dkrn = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

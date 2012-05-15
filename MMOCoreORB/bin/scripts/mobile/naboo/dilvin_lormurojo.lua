@@ -29,7 +29,7 @@ dilvin_lormurojo = Creature:new {
 
 	templates = {"object/mobile/dressed_human_noble_male_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -39,7 +39,7 @@ fed_dub_commander = Creature:new {
 			lootChance = 5500000
 		}				
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

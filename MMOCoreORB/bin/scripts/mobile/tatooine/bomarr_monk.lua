@@ -28,7 +28,7 @@ bomarr_monk = Creature:new {
 
 	templates = {"object/mobile/bomarr_monk_spider_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

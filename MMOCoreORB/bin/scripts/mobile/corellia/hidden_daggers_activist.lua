@@ -43,7 +43,7 @@ hidden_daggers_activist = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_activist, "hidden_daggers_activist")

@@ -29,7 +29,7 @@ patron_ithorian = Creature:new {
 		"object/mobile/ithorian_male.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -29,7 +29,7 @@ brennis_doore = Creature:new {
 
 	templates = {"object/mobile/dressed_brennis_doore.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

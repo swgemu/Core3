@@ -29,7 +29,7 @@ zekka_thyne = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_bothan_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

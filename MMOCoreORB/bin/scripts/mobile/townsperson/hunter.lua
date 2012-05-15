@@ -30,7 +30,7 @@ hunter = Creature:new {
 		"object/mobile/dressed_commoner_naboo_twilek_male_01.iff",
 		"object/mobile/dressed_commoner_naboo_moncal_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

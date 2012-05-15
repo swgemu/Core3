@@ -28,7 +28,7 @@ wedge_antilles = Creature:new {
 
 	templates = {"object/mobile/wedge_antilles.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

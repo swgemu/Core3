@@ -40,7 +40,7 @@ forsaken_force_drifter = Creature:new {
 			lootChance = 4800000	
 		}	
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

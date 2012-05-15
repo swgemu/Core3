@@ -29,7 +29,7 @@ brea_tonnika = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_brea_tonnika.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

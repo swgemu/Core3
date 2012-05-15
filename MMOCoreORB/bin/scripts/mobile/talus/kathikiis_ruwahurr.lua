@@ -27,7 +27,7 @@ kathikiis_ruwahurr = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

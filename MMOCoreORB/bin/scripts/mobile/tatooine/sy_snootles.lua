@@ -27,7 +27,7 @@ sy_snootles = Creature:new {
 
 	templates = {"object/mobile/sy_snootles.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

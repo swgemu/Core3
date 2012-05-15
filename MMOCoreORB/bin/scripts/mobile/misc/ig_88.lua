@@ -28,7 +28,7 @@ ig_88 = Creature:new {
 
 	templates = {"object/mobile/ig_88.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

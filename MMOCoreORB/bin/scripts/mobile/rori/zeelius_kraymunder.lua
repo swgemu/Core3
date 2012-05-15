@@ -29,7 +29,7 @@ zeelius_kraymunder = Creature:new {
 
 	templates = {"object/mobile/dressed_zeelius_kraymunder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

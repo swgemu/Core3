@@ -45,8 +45,7 @@ grecks_smuggler = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(grecks_smuggler, "grecks_smuggler")

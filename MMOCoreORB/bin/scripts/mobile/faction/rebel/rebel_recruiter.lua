@@ -31,7 +31,7 @@ rebel_recruiter = Creature:new {
 		"object/mobile/dressed_rebel_recruiter_moncal_male_01.iff",
 		"object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {},
 	conversationTemplate = "rebel_recruiter_convotemplate",
 	optionsBitmask = 264

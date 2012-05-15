@@ -29,7 +29,7 @@ indintra_imbru_yerevan = Creature:new {
 
 	templates = {"object/mobile/dressed_indintra_imbru_yerevan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

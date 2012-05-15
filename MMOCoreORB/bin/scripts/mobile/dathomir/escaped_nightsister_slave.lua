@@ -28,7 +28,7 @@ escaped_nightsister_slave = Creature:new {
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_escaped_slave.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

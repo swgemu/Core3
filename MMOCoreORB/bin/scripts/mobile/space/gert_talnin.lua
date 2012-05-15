@@ -28,7 +28,7 @@ gert_talnin = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

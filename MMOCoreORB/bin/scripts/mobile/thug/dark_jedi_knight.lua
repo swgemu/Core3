@@ -44,7 +44,7 @@ dark_jedi_knight = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {"dark_jedi_weapons"},
+	weapons = {"dark_jedi_weapons_gen3"},
 	conversationTemplate = "",
 	attacks = merge(lightsabermaster)
 }

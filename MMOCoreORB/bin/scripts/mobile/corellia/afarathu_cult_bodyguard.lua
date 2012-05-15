@@ -50,8 +50,7 @@ afarathu_cult_bodyguard = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(afarathu_cult_bodyguard, "afarathu_cult_bodyguard")

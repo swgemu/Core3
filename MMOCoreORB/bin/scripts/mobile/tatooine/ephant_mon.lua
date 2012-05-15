@@ -28,7 +28,7 @@ ephant_mon = Creature:new {
 
 	templates = {"object/mobile/ephant_mon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

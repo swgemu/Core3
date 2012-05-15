@@ -27,7 +27,7 @@ sirad_far = Creature:new {
 
 	templates = {"object/mobile/sirad_far.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

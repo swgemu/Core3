@@ -28,7 +28,7 @@ bib_fortuna = Creature:new {
 
 	templates = {"object/mobile/bib_fortuna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

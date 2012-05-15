@@ -33,7 +33,7 @@ corsec_trooper = Creature:new {
 		"object/mobile/dressed_corsec_pilot_human_female_01.iff"
 		},
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

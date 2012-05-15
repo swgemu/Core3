@@ -29,7 +29,7 @@ venthan_chassu = Creature:new {
 
 	templates = {"object/mobile/dressed_venthan_chassu.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

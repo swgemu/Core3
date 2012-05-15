@@ -28,7 +28,7 @@ dravis = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier1_tatooine.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

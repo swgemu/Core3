@@ -28,7 +28,7 @@ jamilla_tabadi = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_intro_woman.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

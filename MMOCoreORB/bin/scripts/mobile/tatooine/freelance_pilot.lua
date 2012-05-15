@@ -28,7 +28,7 @@ freelance_pilot = Creature:new {
 
 	templates = {"object/mobile/space_privateer_broker_retired_pilot.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

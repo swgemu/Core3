@@ -28,7 +28,7 @@ bewitching_donkuwah_shaman = Creature:new {
 
 	templates = {"object/mobile/dressed_ewok_m_11.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

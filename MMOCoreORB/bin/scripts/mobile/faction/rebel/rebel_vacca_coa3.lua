@@ -29,7 +29,7 @@ rebel_vacca_coa3 = Creature:new {
 
 	templates = {"object/mobile/dressed_dr_vacca.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

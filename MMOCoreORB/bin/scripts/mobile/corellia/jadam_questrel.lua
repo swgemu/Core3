@@ -29,7 +29,7 @@ jadam_questrel = Creature:new {
 
 	templates = {"object/mobile/dressed_jadam_questrel.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

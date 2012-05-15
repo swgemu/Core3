@@ -27,7 +27,7 @@ morag = Creature:new {
 
 	templates = {"object/mobile/morag.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

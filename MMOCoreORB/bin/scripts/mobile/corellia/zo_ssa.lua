@@ -28,7 +28,7 @@ zo_ssa = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

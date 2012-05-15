@@ -28,7 +28,7 @@ errik_darksider = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_tatooine_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

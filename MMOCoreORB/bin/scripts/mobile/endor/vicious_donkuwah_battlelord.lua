@@ -28,7 +28,7 @@ vicious_donkuwah_battlelord = Creature:new {
 
 	templates = {"object/mobile/dulok_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

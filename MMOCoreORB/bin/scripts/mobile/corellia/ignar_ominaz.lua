@@ -29,7 +29,7 @@ ignar_ominaz = Creature:new {
 
 	templates = {"object/mobile/dressed_ignar_ominaz.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

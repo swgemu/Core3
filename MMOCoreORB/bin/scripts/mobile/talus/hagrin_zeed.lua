@@ -29,7 +29,7 @@ hagrin_zeed = Creature:new {
 
 	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

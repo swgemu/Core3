@@ -29,10 +29,9 @@ acun_solari = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_army_captain_bothan_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(acun_solari, "acun_solari")

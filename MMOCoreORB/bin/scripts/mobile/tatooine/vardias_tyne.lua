@@ -29,7 +29,7 @@ vardias_tyne = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_vardias_tyne.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "vardias_tyne_convotemplate",
 	outfit = "vardias_tyne_outfit",
 	attacks = {

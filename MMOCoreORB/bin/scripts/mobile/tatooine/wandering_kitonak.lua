@@ -28,7 +28,7 @@ wandering_kitonak = Creature:new {
 
 	templates = {"object/mobile/kitonak_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

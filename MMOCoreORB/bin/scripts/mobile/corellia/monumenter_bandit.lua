@@ -37,7 +37,7 @@ monumenter_bandit = Creature:new {
 		"object/mobile/dressed_ruffian_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_bandit, "monumenter_bandit")

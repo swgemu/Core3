@@ -29,7 +29,7 @@ sean_trenwell = Creature:new {
 
 	templates = {"object/mobile/dressed_sean_trenwell.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

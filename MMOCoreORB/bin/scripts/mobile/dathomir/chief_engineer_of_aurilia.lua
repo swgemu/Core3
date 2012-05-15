@@ -28,7 +28,7 @@ chief_engineer_of_aurilia = Creature:new {
 
 	templates = {"object/mobile/dressed_nomad_chief.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}
