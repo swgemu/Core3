@@ -323,10 +323,12 @@ void AiAgentImplementation::doRecovery() {
 void AiAgentImplementation::doAttack() {
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
-	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this))
+	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this) && lastDamageReceived.miliDifference() < 20000)
 		addDefender(target);
-	else if (target != NULL)
+	else if (target != NULL) {
 		removeDefender(target);
+		target = NULL;
+	}
 
 	if (target == NULL && defenderList.size() > 0) {
 		for (int i = 0; i < defenderList.size(); ++i) {
@@ -1346,6 +1348,8 @@ int AiAgentImplementation::notifyConverseObservers(CreatureObject* converser) {
 }
 
 int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+	lastDamageReceived.updateToCurrentTime();
+
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {

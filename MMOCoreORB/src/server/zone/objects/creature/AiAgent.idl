@@ -128,6 +128,9 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean fleeing;
 	
+	@dereferenced
+	protected transient Time lastDamageReceived;
+	
 	protected float respawnTimer;
 	protected int numberOfPlayersInRange;
 	

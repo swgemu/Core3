@@ -532,6 +532,8 @@ protected:
 
 	bool fleeing;
 
+	Time lastDamageReceived;
+
 	float respawnTimer;
 
 	int numberOfPlayersInRange;
