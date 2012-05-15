@@ -1791,8 +1791,8 @@ bool WeaponObjectImplementation::isSpecialHeavyWeapon() {
 }
 
 bool WeaponObjectImplementation::isLightningRifle() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.LIGHTNINGRIFLE;
-	return TangibleObjectImplementation::gameObjectType == SceneObjectType::LIGHTNINGRIFLE;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.getServerObjectCRC() == 397924793;
+	return weaponTemplate->getServerObjectCRC() == 397924793;
 }
 
 bool WeaponObjectImplementation::isCarbineWeapon() {
@@ -1823,26 +1823,6 @@ bool WeaponObjectImplementation::isTwoHandMeleeWeapon() {
 bool WeaponObjectImplementation::isMineWeapon() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.MINE;
 	return TangibleObjectImplementation::gameObjectType == SceneObjectType::MINE;
-}
-
-bool WeaponObjectImplementation::isJediWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
-	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ONEHANDEDLIGHTSABER || TangibleObjectImplementation::gameObjectType == SceneObjectType::TWOHANDEDLIGHTSABER || TangibleObjectImplementation::gameObjectType == SceneObjectType::DOUBLEBLADEDLIGHTSABER;
-}
-
-bool WeaponObjectImplementation::isJediOneHandedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER;
-	return TangibleObjectImplementation::gameObjectType == SceneObjectType::ONEHANDEDLIGHTSABER;
-}
-
-bool WeaponObjectImplementation::isJediTwoHandedWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER;
-	return TangibleObjectImplementation::gameObjectType == SceneObjectType::TWOHANDEDLIGHTSABER;
-}
-
-bool WeaponObjectImplementation::isJediPolearmWeapon() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
-	return TangibleObjectImplementation::gameObjectType == SceneObjectType::DOUBLEBLADEDLIGHTSABER;
 }
 
 bool WeaponObjectImplementation::isWeaponObject() {

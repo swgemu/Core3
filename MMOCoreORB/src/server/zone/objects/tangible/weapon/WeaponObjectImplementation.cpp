@@ -171,22 +171,20 @@ String WeaponObjectImplementation::getWeaponType() {
 	case SceneObjectType::POLEARM:
 		weaponType = "polearm";
 		break;
+	case SceneObjectType::THROWNWEAPON:
+	case SceneObjectType::MINE:
+	case SceneObjectType::SPECIALHEAVYWEAPON:
 	case SceneObjectType::HEAVYWEAPON:
 		weaponType = "heavyweapon";
-		break;
-	case SceneObjectType::ONEHANDEDLIGHTSABER:
-		weaponType = "onehandlightsaber";
-		break;
-	case SceneObjectType::TWOHANDEDLIGHTSABER:
-		weaponType = "twohandlightsaber";
-		break;
-	case SceneObjectType::DOUBLEBLADEDLIGHTSABER:
-		weaponType = "polearmlightsaber";
 		break;
 	default:
 		weaponType = "unarmed";
 		break;
 	}
+
+	if (isJediOneHandedWeapon()) weaponType = "onehandlightsaber";
+	if (isJediTwoHandedWeapon()) weaponType = "twohandlightsaber";
+	if (isJediPolearmWeapon()) weaponType = "polearmlightsaber";
 
 	return weaponType;
 }
@@ -634,4 +632,20 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 		if ((conditionDamage - damage / maxCondition < 0.50) && (conditionDamage / maxCondition > 0.50))
 			user->sendSystemMessage("@combat_effects:weapon_half");
 	}
+}
+
+bool WeaponObjectImplementation::isJediWeapon() {
+	return weaponTemplate->getFullTemplateString().contains("crafted_saber");
+}
+
+bool WeaponObjectImplementation::isJediOneHandedWeapon() {
+	return weaponTemplate->getFullTemplateString().contains("sword/crafted_saber");
+}
+
+bool WeaponObjectImplementation::isJediTwoHandedWeapon() {
+	return weaponTemplate->getFullTemplateString().contains("2h_sword/crafted_saber");
+}
+
+bool WeaponObjectImplementation::isJediPolearmWeapon() {
+	return weaponTemplate->getFullTemplateString().contains("polearm/crafted_saber");
 }
