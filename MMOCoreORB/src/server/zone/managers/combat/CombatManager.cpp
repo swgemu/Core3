@@ -1137,6 +1137,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			// now roll to see if it gets applied
 			uint32 strength = effect.getStateStrength();
 			if (strength == 0) strength = getAttackerAccuracyModifier(creature, creature->getWeapon());
+			strength += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 			if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
 				failed = true;
 
