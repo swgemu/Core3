@@ -633,19 +633,3 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 			user->sendSystemMessage("@combat_effects:weapon_half");
 	}
 }
-
-bool WeaponObjectImplementation::isJediWeapon() {
-	return weaponTemplate->getFullTemplateString().contains("crafted_saber");
-}
-
-bool WeaponObjectImplementation::isJediOneHandedWeapon() {
-	return weaponTemplate->getFullTemplateString().contains("sword/crafted_saber");
-}
-
-bool WeaponObjectImplementation::isJediTwoHandedWeapon() {
-	return weaponTemplate->getFullTemplateString().contains("2h_sword/crafted_saber");
-}
-
-bool WeaponObjectImplementation::isJediPolearmWeapon() {
-	return weaponTemplate->getFullTemplateString().contains("polearm/crafted_saber");
-}

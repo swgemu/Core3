@@ -419,10 +419,21 @@ class WeaponObject extends TangibleObject {
 		return super.gameObjectType == SceneObjectType.MINE;
 	}
 	
-	public native boolean isJediWeapon();
-	public native boolean isJediOneHandedWeapon();
-	public native boolean isJediTwoHandedWeapon();
-	public native boolean isJediPolearmWeapon();
+	public boolean isJediWeapon() {
+		return isJediOneHandedWeapon() || isJediTwoHandedWeapon() || isJediPolearmWeapon();
+	}
+	
+	public boolean isJediOneHandedWeapon() {
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff");
+	}
+	
+	public boolean isJediTwoHandedWeapon() {
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff");
+	}
+	
+	public boolean isJediPolearmWeapon() {
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff");
+	}
 	
 	public boolean isWeaponObject() {
 		return true;

@@ -1825,6 +1825,26 @@ bool WeaponObjectImplementation::isMineWeapon() {
 	return TangibleObjectImplementation::gameObjectType == SceneObjectType::MINE;
 }
 
+bool WeaponObjectImplementation::isJediWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return isJediOneHandedWeapon() || isJediTwoHandedWeapon() || isJediPolearmWeapon();
+	return isJediOneHandedWeapon() || isJediTwoHandedWeapon() || isJediPolearmWeapon();
+}
+
+bool WeaponObjectImplementation::isJediOneHandedWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.isDerivedFrom("object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff");
+	return weaponTemplate->isDerivedFrom("object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff");
+}
+
+bool WeaponObjectImplementation::isJediTwoHandedWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.isDerivedFrom("object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff");
+	return weaponTemplate->isDerivedFrom("object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff");
+}
+
+bool WeaponObjectImplementation::isJediPolearmWeapon() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return weaponTemplate.isDerivedFrom("object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff");
+	return weaponTemplate->isDerivedFrom("object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff");
+}
+
 bool WeaponObjectImplementation::isWeaponObject() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return true;
 	return true;
