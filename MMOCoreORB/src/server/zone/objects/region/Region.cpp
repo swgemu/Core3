@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
-
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -20,7 +18,7 @@
  *	RegionStub
  */
 
-enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__};
+enum {RPC_SETCITYREGION__CITYREGION_ = 6,RPC_GETCITYREGION__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISREGION__};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -132,47 +130,6 @@ void Region::notifyExit(SceneObject* object) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyExit(object);
-}
-
-void Region::addBazaar(BazaarTerminal* ter) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDBAZAAR__BAZAARTERMINAL_);
-		method.addObjectParameter(ter);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addBazaar(ter);
-}
-
-BazaarTerminal* Region::getBazaar(int idx) {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETBAZAAR__INT_);
-		method.addSignedIntParameter(idx);
-
-		return static_cast<BazaarTerminal*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getBazaar(idx);
-}
-
-int Region::getBazaarCount() {
-	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETBAZAARCOUNT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getBazaarCount();
 }
 
 bool Region::isRegion() {
@@ -293,11 +250,6 @@ bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const Str
 	if (ActiveAreaImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "Region.bazaars") {
-		TypeInfo<VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > >::parseFromBinaryStream(&bazaars, stream);
-		return true;
-	}
-
 	if (_name == "Region.cityRegion") {
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
@@ -320,14 +272,6 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Region.bazaars";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > >::toBinaryStream(&bazaars, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "Region.cityRegion";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -337,15 +281,11 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 2;
+	return _count + 1;
 }
 
 RegionImplementation::RegionImplementation() : ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/region/Region.idl():  		bazaars.setNoDuplicateInsertPlan();
-	(&bazaars)->setNoDuplicateInsertPlan();
-	// server/zone/objects/region/Region.idl():  		bazaars.setNullValue(null);
-	(&bazaars)->setNullValue(NULL);
 }
 
 void RegionImplementation::setCityRegion(CityRegion* city) {
@@ -394,21 +334,6 @@ void RegionImplementation::notifyExit(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  			cityRegion.notifyExit(object);
 	cityRegion->notifyExit(object);
 }
-}
-
-void RegionImplementation::addBazaar(BazaarTerminal* ter) {
-	// server/zone/objects/region/Region.idl():  		bazaars.put(ter.getObjectID(), ter);
-	(&bazaars)->put(ter->getObjectID(), ter);
-}
-
-BazaarTerminal* RegionImplementation::getBazaar(int idx) {
-	// server/zone/objects/region/Region.idl():  		return bazaars.get(idx);
-	return (&bazaars)->get(idx);
-}
-
-int RegionImplementation::getBazaarCount() {
-	// server/zone/objects/region/Region.idl():  		return bazaars.size();
-	return (&bazaars)->size();
 }
 
 bool RegionImplementation::isRegion() {
@@ -466,21 +391,6 @@ void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_ADDBAZAAR__BAZAARTERMINAL_:
-		{
-			addBazaar(static_cast<BazaarTerminal*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_GETBAZAAR__INT_:
-		{
-			resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
-		}
-		break;
-	case RPC_GETBAZAARCOUNT__:
-		{
-			resp->insertSignedInt(getBazaarCount());
-		}
-		break;
 	case RPC_ISREGION__:
 		{
 			resp->insertBoolean(isRegion());
@@ -517,18 +427,6 @@ void RegionAdapter::notifyEnter(SceneObject* object) {
 
 void RegionAdapter::notifyExit(SceneObject* object) {
 	(static_cast<Region*>(stub))->notifyExit(object);
-}
-
-void RegionAdapter::addBazaar(BazaarTerminal* ter) {
-	(static_cast<Region*>(stub))->addBazaar(ter);
-}
-
-BazaarTerminal* RegionAdapter::getBazaar(int idx) {
-	return (static_cast<Region*>(stub))->getBazaar(idx);
-}
-
-int RegionAdapter::getBazaarCount() {
-	return (static_cast<Region*>(stub))->getBazaarCount();
 }
 
 bool RegionAdapter::isRegion() {

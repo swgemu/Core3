@@ -115,6 +115,8 @@ public:
 		
 		title << "." << objectID << "#" << x << "," << y;
 		
+		//printf("title: %s\n", title.toString().toCharArray());
+
 		insertAscii(title.toString());
 		
 		insertShort(0x64); // ?? 64

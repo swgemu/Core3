@@ -77,6 +77,26 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace terminal {
+namespace vendor {
+namespace bazaar {
+
+class BazaarTerminal;
+
+} // namespace bazaar
+} // namespace vendor
+} // namespace terminal
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
+
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 #include "server/chat/StringIdChatParameter.h"
@@ -258,6 +278,12 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
+	void addBazaar(BazaarTerminal* ter);
+
+	BazaarTerminal* getBazaar(int idx);
+
+	int getBazaarCount();
+
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
@@ -329,6 +355,8 @@ protected:
 	SortedVector<ManagedReference<SceneObject* > > cityDecorations;
 
 	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
+
+	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
 	byte cityRank;
 
@@ -510,6 +538,12 @@ public:
 	void removeDecoration(SceneObject* deco);
 
 	void removeSkillTrainers(SceneObject* trainer);
+
+	void addBazaar(BazaarTerminal* ter);
+
+	BazaarTerminal* getBazaar(int idx);
+
+	int getBazaarCount();
 
 	void removeAllSkillTrainers();
 
@@ -703,6 +737,12 @@ public:
 	void removeDecoration(SceneObject* deco);
 
 	void removeSkillTrainers(SceneObject* trainer);
+
+	void addBazaar(BazaarTerminal* ter);
+
+	BazaarTerminal* getBazaar(int idx);
+
+	int getBazaarCount();
 
 	void removeAllSkillTrainers();
 
