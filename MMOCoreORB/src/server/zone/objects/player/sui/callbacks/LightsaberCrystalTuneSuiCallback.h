@@ -9,7 +9,6 @@
 #define LIGHTSABERCRYSTALTUNESUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-#include "server/zone/objects/player/sessions/PlayerTeachSession.h"
 
 class LightsaberCrystalTuneSuiCallback: public SuiCallback {
 
@@ -29,8 +28,7 @@ public:
 			return;
 
 		if (!cancelPressed) {
-			ManagedReference<LightsaberCrystalComponent*> crystal =
-						cast<LightsaberCrystalComponent*>(sui->getUsingObject());
+			ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>(sui->getUsingObject());
 
 			crystal->tuneCrystal(creature);
 		}

@@ -42,7 +42,7 @@
 
 
 object_weapon_ranged_grenade_grenade_thermal_detonator = object_weapon_ranged_grenade_shared_grenade_thermal_detonator:new {
-
+	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	healthAttackCost = 75,
 	actionAttackCost = 75,

@@ -62,6 +62,8 @@ SkillManager::SkillManager()
 	rootNode = new Skill();
 
 	performanceManager = new PerformanceManager();
+
+	apprenticeshipEnabled = false;
 }
 
 SkillManager::~SkillManager() {
@@ -80,6 +82,18 @@ int SkillManager::addSkill(lua_State* L) {
 	obj.pop();
 
 	return 0;
+}
+
+void SkillManager::loadLuaConfig() {
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/skill_manager.lua");
+
+	apprenticeshipEnabled = lua->getGlobalByte("apprenticeshipEnabled");
+
+	delete lua;
+	lua = NULL;
 }
 
 void SkillManager::loadClientData() {
@@ -101,14 +115,14 @@ void SkillManager::loadClientData() {
 		Reference<Skill*> skill = new Skill();
 		skill->parseDataTableRow(row);
 
-		Skill* parent = skillMap.get(skill->getParentName());
+		Skill* parent = skillMap.get(skill->getParentName().hashCode());
 
 		if (parent == NULL)
 			parent = rootNode;
 
 		parent->addChild(skill);
 
-		if (skillMap.put(skill->getSkillName(), skill) != NULL) {
+		if (skillMap.put(skill->getSkillName().hashCode(), skill) != NULL) {
 			error("overwriting skill name");
 
 			assert(0 && "skill name hashcode error");
@@ -151,14 +165,14 @@ void SkillManager::loadAdminCommands() {
 void SkillManager::loadSkill(LuaObject* luaSkill) {
 	Reference<Skill*> skill = new Skill();
 	skill->parseLuaObject(luaSkill);
-	Skill* parent = skillMap.get(skill->getParentName());
+	Skill* parent = skillMap.get(skill->getParentName().hashCode());
 
 	if(parent == NULL) {
 		parent = rootNode;
 	}
 
 	parent->addChild(skill);
-	skillMap.put(skill->getSkillName(), skill);
+	skillMap.put(skill->getSkillName().hashCode(), skill);
 
 	Vector<String> commands = skill->commands;
 
@@ -246,7 +260,7 @@ void SkillManager::removeAbilities(PlayerObject* ghost, Vector<String>& abilityN
 }*/
 
 bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool awardRequiredSkills, bool noXpRequired) {
-	Skill* skill = skillMap.get(skillName);
+	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL)
 		return false;
@@ -257,7 +271,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
 		String requiredSkillName = requiredSkills->get(i);
-		Skill* requiredSkill = skillMap.get(requiredSkillName);
+		Skill* requiredSkill = skillMap.get(requiredSkillName.hashCode());
 
 		if (requiredSkill == NULL)
 			continue;
@@ -349,7 +363,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 }
 
 bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient) {
-	Skill* skill = skillMap.get(skillName);
+	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL)
 		return false;
@@ -513,7 +527,7 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 }
 
 bool SkillManager::canLearnSkill(const String& skillName, CreatureObject* creature, bool noXpRequired) {
-	Skill* skill = skillMap.get(skillName);
+	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL) {
 		return false;
@@ -555,7 +569,7 @@ bool SkillManager::fullfillsSkillPrerequisitesAndXp(const String& skillName, Cre
 		return false;
 	}
 
-	Skill* skill = skillMap.get(skillName);
+	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL) {
 		return false;
@@ -573,7 +587,7 @@ bool SkillManager::fullfillsSkillPrerequisitesAndXp(const String& skillName, Cre
 }
 
 bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, CreatureObject* creature) {
-	Skill* skill = skillMap.get(skillName);
+	Skill* skill = skillMap.get(skillName.hashCode());
 
 	if (skill == NULL) {
 		return false;
@@ -583,7 +597,7 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {
 		String requiredSkillName = requiredSkills->get(i);
-		Skill* requiredSkill = skillMap.get(requiredSkillName);
+		Skill* requiredSkill = skillMap.get(requiredSkillName.hashCode());
 
 		if (requiredSkill == NULL) {
 			continue;

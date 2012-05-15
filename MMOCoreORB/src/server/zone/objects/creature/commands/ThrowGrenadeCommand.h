@@ -63,6 +63,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		System::out << "Throwing grenade" << endl;
+
 		return SUCCESS;
 	}
 

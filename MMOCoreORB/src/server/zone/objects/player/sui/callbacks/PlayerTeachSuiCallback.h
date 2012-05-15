@@ -17,45 +17,33 @@ public:
 	PlayerTeachSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!sui->isListBox() || cancelPressed)
+	void run(CreatureObject* teacher, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+		if (!sui->isListBox() || cancelPressed || args->size() <= 0)
 			return;
 
-		SuiListBox* listBox = cast<SuiListBox*>( sui);
+		int index = Integer::valueOf(args->get(0).toString());
 
-		if (!creature->isPlayerCreature())
+		if (index == -1)
 			return;
 
-		if (!cancelPressed) {
-			// Send the player being trained a confirmation.
+		SuiListBox* listBox = cast<SuiListBox*>(sui);
 
-			int index = Integer::valueOf(args->get(0).toString());
+		if (listBox->getMenuSize() <= index || index < 0)
+			return;
 
-			String skillname = listBox->getMenuItemName(index);
+		ManagedReference<SceneObject*> usingObject = listBox->getUsingObject();
 
-			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sui->getUsingObject());
+		if (usingObject == NULL || !usingObject->isCreatureObject())
+			return;
 
-			ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::TEACH_PLAYER);
-			sui->setPromptTitle("@base_player:swg");
-			sui->setPromptText("Someone has offered you teaching in..."); // TODO: Get actual strings.
+		CreatureObject* student = cast<CreatureObject*>(usingObject.get());
 
-			sui->addMenuItem(skillname);
+		Locker _lock(student, teacher);
 
-			sui->setCancelButton(true, "Cancel");
-			sui->setUsingObject(creature);
+		Skill* skill = SkillManager::instance()->getSkill(listBox->getMenuObjectID(index));
 
-			sui->setForceCloseDistance(32);
-
-			sui->setCallback(new PlayerTeachConfirmSuiCallback(creature->getZoneServer(), skillname));
-
-			player->getPlayerObject()->addSuiBox(sui);
-			player->sendMessage(sui->generateMessage());
-
-			StringIdChatParameter params("teaching", "offer_given"); // You offer to teach %TT %TO.
-			params.setTT(player->getDisplayedName());
-			params.setTO(skillname);
-			creature->sendSystemMessage(params);
-		}
+		PlayerManager* playerManager = server->getPlayerManager();
+		playerManager->offerTeaching(teacher, student, skill);
 	}
 };
 

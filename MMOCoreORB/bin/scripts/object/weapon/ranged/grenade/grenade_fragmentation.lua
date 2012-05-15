@@ -42,7 +42,7 @@
 
 
 object_weapon_ranged_grenade_grenade_fragmentation = object_weapon_ranged_grenade_shared_grenade_fragmentation:new {
-
+	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	healthAttackCost = 80,
 	actionAttackCost = 80,

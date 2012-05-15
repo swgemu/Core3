@@ -42,7 +42,7 @@
 
 
 object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shared_grenade_cryoban:new {
-
+	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 	healthAttackCost = 40,
 	actionAttackCost = 100,
 	mindAttackCost = 15,

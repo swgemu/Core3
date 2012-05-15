@@ -154,6 +154,7 @@ public:
 	static const uint16 TEACH_SKILL = 221;
 	static const uint16 TEACH_PLAYER = 222;
 	static const uint16 TEACH_DENY = 223;
+	static const uint16 TEACH_OFFER = 224;
 
 	//Survey Tool 231 - 240
 	static const uint16 SURVEY_TOOL_RANGE = 231;

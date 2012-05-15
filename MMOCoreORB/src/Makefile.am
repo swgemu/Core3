@@ -172,7 +172,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				server/zone/objects/player/sessions/ConversationSession.cpp \
 				server/zone/objects/player/sessions/TrainerConversationSession.cpp \
-				server/zone/objects/player/sessions/PlayerTeachSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -296,6 +295,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
+		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
+		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \

@@ -89,6 +89,11 @@
 
 #include "server/login/account/Account.h"
 
+#include "server/zone/objects/player/sui/callbacks/PlayerTeachSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
@@ -2960,4 +2965,180 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	}
 
 	return "Character Successfully Unbanned";
+}
+
+bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher, SceneObject* target) {
+	if (target == NULL || !target->isPlayerCreature()) {
+		teacher->sendSystemMessage("@teaching:no_target"); //Whom do you want to teach?
+		return false;
+	}
+
+	if (target == teacher) {
+		teacher->sendSystemMessage("@teaching:no_teach_self"); //You cannot teach yourself.
+		return false;
+	}
+
+	Locker _lock(teacher, target);
+
+	//We checked if they had the player object in slot with isPlayerCreature
+	CreatureObject* student = cast<CreatureObject*>(target);
+
+	if (student->isDead()) {
+		StringIdChatParameter params("teaching", "student_dead"); //%TT does not feel like being taught right now.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	if (!student->isInRange(teacher, 32.f)) {
+		teacher->sendSystemMessage("@teaching:student_too_far"); // Your student must be nearby in order to teach.
+		return false;
+	}
+
+	ManagedReference<PlayerObject*> studentGhost = student->getPlayerObject();
+
+	//Do they have an outstanding teaching offer?
+	if (studentGhost->hasSuiBoxWindowType(SuiWindowType::TEACH_OFFER)) {
+		StringIdChatParameter params("teaching", "student_has_offer_to_learn"); //%TT already has an offer to learn.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	SortedVector<String> skills = getTeachableSkills(teacher, student);
+
+	if (skills.size() <= 0) {
+		StringIdChatParameter params("teaching", "no_skills_for_student"); //You have no skills that  %TT can currently learn."
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(teacher, SuiWindowType::TEACH_SKILL);
+	listbox->setUsingObject(student);
+	listbox->setForceCloseDistance(32.f);
+	listbox->setPromptTitle("SELECT SKILL");
+	listbox->setPromptText("Select a skill to teach.");
+	listbox->setCancelButton(true, "@cancel");
+
+	for (int i = 0; i < skills.size(); ++i) {
+		String skill = skills.get(i);
+		listbox->addMenuItem("@skl_n:" + skill, skill.hashCode());
+	}
+
+	listbox->setCallback(new PlayerTeachSuiCallback(server));
+
+	if (teacher->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> teacherGhost = teacher->getPlayerObject();
+
+		teacherGhost->addSuiBox(listbox);
+	}
+
+	teacher->sendMessage(listbox->generateMessage());
+
+	return true;
+}
+
+bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill) {
+	ManagedReference<PlayerObject*> studentGhost = student->getPlayerObject();
+
+	//Do they have an outstanding teaching offer?
+	if (studentGhost->hasSuiBoxWindowType(SuiWindowType::TEACH_OFFER)) {
+		StringIdChatParameter params("teaching", "student_has_offer_to_learn"); //%TT already has an offer to learn.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(teacher, SuiWindowType::TEACH_OFFER);
+	suibox->setUsingObject(teacher);
+	suibox->setForceCloseDistance(32.f);
+	suibox->setPromptTitle("@sui:swg"); //Star Wars Galaxies
+
+	StringIdManager* sidman = StringIdManager::instance();
+
+	String sklname = sidman->getStringId(String("@skl_n:" + skill->getSkillName()).hashCode()).toString();
+	String expname = sidman->getStringId(String("@exp_n:" + skill->getXpType()).hashCode()).toString();
+
+	StringBuffer prompt;
+	prompt << teacher->getDisplayedName()
+			<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+			<< " " << expname  << " experience cost).";
+
+	suibox->setPromptText(prompt.toString());
+	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
+
+	suibox->setOkButton(true, "@yes");
+	suibox->setCancelButton(true, "@no");
+
+	studentGhost->addSuiBox(suibox);
+	student->sendMessage(suibox->generateMessage());
+
+	StringIdChatParameter params("teaching", "offer_given"); //You offer to teach %TT %TO.
+	params.setTT(student->getDisplayedName());
+	params.setTO("@skl_n:" + skill->getSkillName());
+	teacher->sendSystemMessage(params);
+
+	return true;
+}
+
+bool PlayerManagerImplementation::acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill) {
+	//Check to see if the teacher still has the skill and the student can still learn the skill.
+	SkillManager* skillManager = SkillManager::instance();
+
+	if (!student->isInRange(teacher, 32.f)) {
+		StringIdChatParameter params("teaching", "teacher_too_far_target"); //You are too far away from %TT to learn.
+		params.setTT(teacher->getDisplayedName());
+		student->sendSystemMessage(params);
+
+		params.setStringId("teaching", "student_too_far_target");
+		params.setTT(student->getDisplayedName()); //You are too far away from %TT to teach.
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	if (teacher->hasSkill(skill->getSkillName()) && skillManager->awardSkill(skill->getSkillName(), student, true, false, false)) {
+		StringIdChatParameter params("teaching", "student_skill_learned"); //You learn %TO from %TT.
+		params.setTO("@skl_n:" + skill->getSkillName());
+		params.setTT(teacher->getDisplayedName());
+		student->sendSystemMessage(params);
+
+		params.setStringId("teaching", "teacher_skill_learned"); //%TT learns %TO from you.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+
+		if (skillManager->isApprenticeshipEnabled() && !skill->getSkillName().endsWith("novice")) {
+			int exp = 10 + (skill->getTotalChildren() * 10);
+
+			StringIdChatParameter params("teaching", "experience_received"); //You have received %DI Apprenticeship experience.
+			params.setDI(exp);
+			teacher->sendSystemMessage(params);
+
+			awardExperience(teacher, "apprenticeship", exp, false);
+		}
+	} else {
+		student->sendSystemMessage("@teaching:learning_failed"); //Learning failed.
+		teacher->sendSystemMessage("@teaching:teaching_failed"); //Teaching failed.
+		return false;
+	}
+
+	return true;
+}
+
+SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObject* teacher, CreatureObject* student) {
+	SortedVector<String> skills;
+	skills.setNoDuplicateInsertPlan();
+
+	SkillList* skillList = teacher->getSkillList();
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	for (int i = 0; i < skillList->size(); ++i) {
+		Skill* skill = skillList->get(i);
+
+		if (skillManager->canLearnSkill(skill->getSkillName(), student, false))
+			skills.put(skill->getSkillName());
+	}
+
+	return skills;
 }

@@ -63,6 +63,8 @@
 #include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/creature/components/TrainerMenuComponent.h"
+#include "server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.h"
+#include "server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -143,5 +145,9 @@ ComponentManager::ComponentManager() {
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
 	components.put("TrainerMenuComponent", new TrainerMenuComponent());
+
+	components.put("FireHeavyWeaponMenuComponent", new FireHeavyWeaponMenuComponent());
+	components.put("ThrowGrenadeMenuComponent", new TrainerMenuComponent());
+
 
 }

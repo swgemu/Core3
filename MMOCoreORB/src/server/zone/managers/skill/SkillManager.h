@@ -84,11 +84,13 @@ class SkillManager : public Singleton<SkillManager>, public Logger, public Objec
 	PerformanceManager* performanceManager;
 
 	HashTable<String, Reference<Ability*> > abilityMap;
-	HashTable<String, Reference<Skill*> > skillMap;
+	HashTable<uint32, Reference<Skill*> > skillMap;
 
 	Reference<Skill*> rootNode;
 
 	VectorMap<String, int> defaultXpLimits;
+
+	bool apprenticeshipEnabled;
 
 public:
 	SkillManager();
@@ -97,6 +99,7 @@ public:
 	static int includeFile(lua_State* L);
 	static int addSkill(lua_State* L);
 
+	void loadLuaConfig();
 	void loadClientData();
 	void loadAdminCommands();
 	void loadSkill(LuaObject* skill);
@@ -143,7 +146,11 @@ public:
 	void updateXpLimits(PlayerObject* ghost);
 
 	Skill* getSkill(const String& skillName) {
-		return skillMap.get(skillName);
+		return skillMap.get(skillName.hashCode());
+	}
+
+	Skill* getSkill(uint32 hashCode) {
+		return skillMap.get(hashCode);
 	}
 
 	Ability* getAbility(const String& abilityName) {
@@ -152,6 +159,10 @@ public:
 
 	PerformanceManager* getPerformanceManager() {
 		return performanceManager;
+	}
+
+	inline bool isApprenticeshipEnabled() {
+		return apprenticeshipEnabled;
 	}
 };
 

@@ -62,6 +62,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		System::out << "Firing heavy weapon" << endl;
+
 		return SUCCESS;
 	}
 
