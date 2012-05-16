@@ -274,7 +274,7 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	}
 
 	//If they already have the skill, then return true.
-	if (creature->hasSkill(skillName))
+	if (creature->hasSkill(skill->getSkillName()))
 		return true;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -356,10 +356,6 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	Locker locker(creature);
 
-	//If they already have the skill, then return true.
-	if (!creature->hasSkill(skillName))
-		return true;
-
 	SkillList* skillList = creature->getSkillList();
 
 	for (int i = 0; i < skillList->size(); ++i) {
@@ -368,6 +364,10 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		if (checkSkill->isRequiredSkillOf(skill))
 			return false;
 	}
+
+	//If they already have the skill, then return true.
+	if (!creature->hasSkill(skill->getSkillName()))
+		return true;
 
 	creature->removeSkill(skill, notifyClient);
 

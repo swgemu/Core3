@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "SpawnObserver.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "events/RemoveNoSpawnAreaTask.h"
+#include "server/ServerCore.h"
 
 void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
@@ -75,14 +77,27 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 	Locker locker(_this);
 
 	uint32 lairTemplate = lairTypes.remove(tano->getObjectID());
-	int currentSpawnCount = spawnedGroupsCount.get(lairTemplate) - 1;
 
-	if (currentSpawnCount < 1)
-		spawnedGroupsCount.remove(lairTemplate);
-	else
-		spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
+	if (lairTemplate != 0) {
+		int currentSpawnCount = spawnedGroupsCount.get(lairTemplate) - 1;
 
-	--currentlySpawnedLairs;
+		if (currentSpawnCount < 1)
+			spawnedGroupsCount.remove(lairTemplate);
+		else
+			spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
+
+		--currentlySpawnedLairs;
+
+		ManagedReference<ActiveArea*> area = cast<ActiveArea*>(ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+
+		area->setRadius(64);
+		area->setNoSpawnArea(true);
+
+		zone->transferObject(area, -1, true);
+
+		Reference<Task*> task = new RemoveNoSpawnAreaTask(area);
+		task->schedule(300000);
+	}
 
 	//info("removing spawned lair from here", true);
 
@@ -152,7 +167,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isRegion() || area->isMunicipalZone())
+		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea())
 			return 8;
 	}
 

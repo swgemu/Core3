@@ -335,6 +335,8 @@ LairSpawnAreaImplementation::LairSpawnAreaImplementation() : SpawnAreaImplementa
 	currentlySpawnedLairs = 0;
 	// server/zone/objects/area/LairSpawnArea.idl():  		exitObserver = null;
 	exitObserver = NULL;
+	// server/zone/objects/area/LairSpawnArea.idl():  		lairTypes.setNullValue(0);
+	(&lairTypes)->setNullValue(0);
 	// server/zone/objects/area/LairSpawnArea.idl():  		Logger.setLoggingName("LairSpawnArea");
 	Logger::setLoggingName("LairSpawnArea");
 }

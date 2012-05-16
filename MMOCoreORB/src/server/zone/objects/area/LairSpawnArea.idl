@@ -79,6 +79,8 @@ class LairSpawnArea extends SpawnArea {
 		
 		exitObserver = null;
 		
+		lairTypes.setNullValue(0);
+		
 		Logger.setLoggingName("LairSpawnArea");
 	}
 	

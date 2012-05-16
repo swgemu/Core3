@@ -76,6 +76,10 @@ public:
 
 	bool isCampArea();
 
+	void setNoSpawnArea(bool val);
+
+	bool isNoSpawnArea();
+
 	bool isMunicipalZone();
 
 	unsigned long long getCellObjectID();
@@ -116,6 +120,8 @@ protected:
 
 	unsigned long long cellObjectID;
 
+	bool noSpawnArea;
+
 public:
 	ActiveAreaImplementation();
 
@@ -148,6 +154,10 @@ public:
 	void setRadius(float r);
 
 	virtual bool isCampArea();
+
+	void setNoSpawnArea(bool val);
+
+	bool isNoSpawnArea();
 
 	bool isMunicipalZone();
 
@@ -225,6 +235,10 @@ public:
 	void setRadius(float r);
 
 	bool isCampArea();
+
+	void setNoSpawnArea(bool val);
+
+	bool isNoSpawnArea();
 
 	bool isMunicipalZone();
 

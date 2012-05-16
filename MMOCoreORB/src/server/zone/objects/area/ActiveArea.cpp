@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -223,6 +223,33 @@ bool ActiveArea::isCampArea() {
 		return _implementation->isCampArea();
 }
 
+void ActiveArea::setNoSpawnArea(bool val) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETNOSPAWNAREA__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setNoSpawnArea(val);
+}
+
+bool ActiveArea::isNoSpawnArea() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISNOSPAWNAREA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isNoSpawnArea();
+}
+
 bool ActiveArea::isMunicipalZone() {
 	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -388,6 +415,11 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "ActiveArea.noSpawnArea") {
+		TypeInfo<bool >::parseFromBinaryStream(&noSpawnArea, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -437,8 +469,16 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ActiveArea.noSpawnArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&noSpawnArea, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 4;
+
+	return _count + 5;
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
@@ -451,6 +491,8 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	noBuildArea = false;
 	// server/zone/objects/area/ActiveArea.idl():  		municipalZone = false;
 	municipalZone = false;
+	// server/zone/objects/area/ActiveArea.idl():  		noSpawnArea = false;
+	noSpawnArea = false;
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
@@ -498,6 +540,16 @@ void ActiveAreaImplementation::setRadius(float r) {
 bool ActiveAreaImplementation::isCampArea() {
 	// server/zone/objects/area/ActiveArea.idl():  		return false;
 	return false;
+}
+
+void ActiveAreaImplementation::setNoSpawnArea(bool val) {
+	// server/zone/objects/area/ActiveArea.idl():  		noSpawnArea = val;
+	noSpawnArea = val;
+}
+
+bool ActiveAreaImplementation::isNoSpawnArea() {
+	// server/zone/objects/area/ActiveArea.idl():  		return noSpawnArea;
+	return noSpawnArea;
 }
 
 bool ActiveAreaImplementation::isMunicipalZone() {
@@ -600,6 +652,16 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isCampArea());
 		}
 		break;
+	case RPC_SETNOSPAWNAREA__BOOL_:
+		{
+			setNoSpawnArea(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_ISNOSPAWNAREA__:
+		{
+			resp->insertBoolean(isNoSpawnArea());
+		}
+		break;
 	case RPC_ISMUNICIPALZONE__:
 		{
 			resp->insertBoolean(isMunicipalZone());
@@ -674,6 +736,14 @@ void ActiveAreaAdapter::setRadius(float r) {
 
 bool ActiveAreaAdapter::isCampArea() {
 	return (static_cast<ActiveArea*>(stub))->isCampArea();
+}
+
+void ActiveAreaAdapter::setNoSpawnArea(bool val) {
+	(static_cast<ActiveArea*>(stub))->setNoSpawnArea(val);
+}
+
+bool ActiveAreaAdapter::isNoSpawnArea() {
+	return (static_cast<ActiveArea*>(stub))->isNoSpawnArea();
 }
 
 bool ActiveAreaAdapter::isMunicipalZone() {
