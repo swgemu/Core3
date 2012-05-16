@@ -59,6 +59,8 @@ class ActiveArea extends SceneObject {
 	
 	protected unsigned long cellObjectID;
 	
+	protected boolean noSpawnArea;
+	
 	public ActiveArea() {
 		radius2 = 0;
 		
@@ -67,6 +69,8 @@ class ActiveArea extends SceneObject {
 		noBuildArea = false;
 		
 		municipalZone = false;
+		
+		noSpawnArea = false;
 		
 		Logger.setLoggingName("ActiveArea");
 	}
@@ -122,6 +126,14 @@ class ActiveArea extends SceneObject {
 	
 	public abstract boolean isCampArea() {
 		return false;
+	}
+	
+	public void setNoSpawnArea(boolean val) {
+		noSpawnArea = val;
+	}
+	
+	public boolean isNoSpawnArea() {
+		return noSpawnArea;
 	}
 	
 	public boolean isMunicipalZone() {
