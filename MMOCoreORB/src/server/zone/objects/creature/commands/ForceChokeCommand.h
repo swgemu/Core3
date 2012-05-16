@@ -81,7 +81,7 @@ public:
 
 			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creatureTarget);
 			creature->addPendingTask("forceChokeTickTask", fctTask, 6000);
-			creature->playEffect("clienteffect/pl_force_choke.cef", "");
+			creatureTarget->playEffect("clienteffect/pl_force_choke.cef", "");
 		}
 
 		return SUCCESS;
