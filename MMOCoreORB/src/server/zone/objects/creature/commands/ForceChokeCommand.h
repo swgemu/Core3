@@ -46,12 +46,14 @@ which carries forward this exception.
 #define FORCECHOKECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForcePowersQueueCommand.h"
+#include "server/zone/objects/player/events/ForceChokeTickTask.h"
 
-class ForceChokeCommand : public QueueCommand {
+class ForceChokeCommand : public ForcePowersQueueCommand {
 public:
 
 	ForceChokeCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForcePowersQueueCommand(name, server) {
 
 	}
 
@@ -62,6 +64,25 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		int res = doCombatAction(creature, target);
+
+		if (res == SUCCESS) {
+
+			// Setup task, if choke attack was successful (5 tick amount.)
+
+			SceneObject* object = server->getZoneServer()->getObject(target);
+			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+
+
+			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creatureTarget);
+			creature->addPendingTask("forceChokeTickTask", fctTask, 6000);
+			creature->playEffect("clienteffect/pl_force_choke.cef", "");
+		}
 
 		return SUCCESS;
 	}

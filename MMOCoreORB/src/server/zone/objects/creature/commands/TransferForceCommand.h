@@ -63,7 +63,32 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		// Fail if target is not a player...
+
+		SceneObject* object = server->getZoneServer()->getObject(target);
+		ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+		ManagedReference<PlayerObject*> targetPlayer = creatureTarget->getPlayerObject();
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (creatureTarget->isAiAgent() || !creatureTarget->isPlayerObject())
+			return GENERALERROR;
+
+		if (targetPlayer->getForcePower() > 0) {
+			targetPlayer->setForcePower(targetPlayer->getForcePower() + 200);
+			playerObject->setForcePower(targetPlayer->getForcePower() - 200);
+		}
+
+		creature->doCombatAnimation(creatureTarget,String("force_transfer_1").hashCode(),0,0xFF);
+
 		return SUCCESS;
+	}
+
+	float getCommandDuration(CreatureObject* object) {
+		return defaultTime * 3.0;
 	}
 
 };

@@ -42,7 +42,15 @@
 --true = 1, false = 0
 
 DrainForceCommand = {
-        name = "drainforce",
+    name = "drainforce",
+	
+	animationCRC = hashCode("force_drain_1"),
+
+	combatSpam = "drainforce",
+	
+	poolsToDamage = NONE,
+
+	range = 32
 }
 
 AddCommand(DrainForceCommand)
