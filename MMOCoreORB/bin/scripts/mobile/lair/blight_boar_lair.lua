@@ -2,11 +2,11 @@
 blight_boar_lair = Lair:new {
 	mobiles = {{"blight_boar", 12}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/zucca_boar/lair_zucca_boar.iff"},
-	buildingsEasy = {"object/tangible/lair/zucca_boar/lair_zucca_boar.iff"},
-	buildingsMedium = {"object/tangible/lair/zucca_boar/lair_zucca_boar.iff"},
-	buildingsHard = {"object/tangible/lair/zucca_boar/lair_zucca_boar.iff"},
-	buildingsVeryHard = {"object/tangible/lair/zucca_boar/lair_zucca_boar.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_rocks_small_fog_red.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_rocks_small_fog_red.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_rocks_small_fog_red.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_rocks_small_fog_red.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_rocks_small_fog_red.iff"}
 }
 
 addLairTemplate("blight_boar_lair", blight_boar_lair)

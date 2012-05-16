@@ -2,11 +2,11 @@
 cu_pa_medium = Lair:new {
 	mobiles = {{"cu_pa", 60}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/cu_pa/lair_cu_pa.iff"},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_small.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_small.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_brambles_small.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_brambles_small.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_brambles_small.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"}
 }
 
 addLairTemplate("cu_pa_medium", cu_pa_medium)

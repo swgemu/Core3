@@ -2,11 +2,11 @@
 bocatt_lair = Lair:new {
 	mobiles = {{"bocatt", 22}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/bocatt/lair_bocatt.iff"},
-	buildingsEasy = {"object/tangible/lair/bocatt/lair_bocatt.iff"},
-	buildingsMedium = {"object/tangible/lair/bocatt/lair_bocatt.iff"},
-	buildingsHard = {"object/tangible/lair/bocatt/lair_bocatt.iff"},
-	buildingsVeryHard = {"object/tangible/lair/bocatt/lair_bocatt.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"}
 }
 
 addLairTemplate("bocatt_lair", bocatt_lair)
