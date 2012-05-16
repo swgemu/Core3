@@ -2,11 +2,11 @@
 fambaa_lair = Lair:new {
 	mobiles = {{"fambaa", 34}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/fambaa/lair_fambaa.iff"},
-	buildingsEasy = {"object/tangible/lair/fambaa/lair_fambaa.iff"},
-	buildingsMedium = {"object/tangible/lair/fambaa/lair_fambaa.iff"},
-	buildingsHard = {"object/tangible/lair/fambaa/lair_fambaa.iff"},
-	buildingsVeryHard = {"object/tangible/lair/fambaa/lair_fambaa.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"}
 }
 
 addLairTemplate("fambaa_lair", fambaa_lair)
