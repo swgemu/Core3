@@ -601,7 +601,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName(templateObject->getObjectName());
+	mission->setMissionTargetName(lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
 
