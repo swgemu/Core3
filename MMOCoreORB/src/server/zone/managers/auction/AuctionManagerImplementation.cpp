@@ -253,7 +253,7 @@ void AuctionManagerImplementation::checkAuctions() {
 	task->schedule(CHECKEVERY * 60000);
 }
 
-int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price) {
+int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price, bool premium) {
 	if (player->getObjectID() == vendor->getOwnerID()) {
 		if (auctionMap->getPlayerVendorItemCount(player->getObjectID()) >= player->getSkillMod("vendor_item_limit") && !vendor->isBazaarTerminal())
 			return ItemSoldMessage::TOOMANYITEMS;
@@ -273,6 +273,9 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 		return ItemSoldMessage::INVALIDSALEPRICE;
 
 	if (player->getBankCredits() < SALESFEE && vendor->isBazaarTerminal())
+		return ItemSoldMessage::NOTENOUGHCREDITS;
+
+	if (premium && player->getBankCredits() < SALESFEE * 5 && vendor->isBazaarTerminal())
 		return ItemSoldMessage::NOTENOUGHCREDITS;
 
 	return 0;
@@ -346,7 +349,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	}
 
 
-	int res = checkSaleItem(player, objectToSell, vendor, price);
+	int res = checkSaleItem(player, objectToSell, vendor, price, premium);
 
 	if (res != 0) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, res);

@@ -4837,20 +4837,6 @@ void CreatureObjectImplementation::addCashCredits(int credits, bool notifyClient
 	setCashCredits(newCredits);
 }
 
-void CreatureObjectImplementation::subtractBankCredits(int credits) {
-	// server/zone/objects/creature/CreatureObject.idl():  		int newCredits = bankCredits - credits;
-	int newCredits = bankCredits - credits;
-	// server/zone/objects/creature/CreatureObject.idl():  		setBankCredits(newCredits);
-	setBankCredits(newCredits);
-}
-
-void CreatureObjectImplementation::subtractCashCredits(int credits) {
-	// server/zone/objects/creature/CreatureObject.idl():  		int newCredits = cashCredits - credits;
-	int newCredits = cashCredits - credits;
-	// server/zone/objects/creature/CreatureObject.idl():  		setCashCredits(newCredits);
-	setCashCredits(newCredits);
-}
-
 bool CreatureObjectImplementation::verifyCashCredits(int credits) {
 	// server/zone/objects/creature/CreatureObject.idl():  		if 
 	if (credits < 0)	// server/zone/objects/creature/CreatureObject.idl():  			return false;

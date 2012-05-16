@@ -176,7 +176,7 @@ public:
 
 	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price, bool premium);
 
 	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
@@ -261,7 +261,7 @@ public:
 
 	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price, bool premium);
 
 	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
