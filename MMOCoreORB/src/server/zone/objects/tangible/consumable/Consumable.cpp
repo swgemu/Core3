@@ -590,35 +590,6 @@ ConsumableImplementation::ConsumableImplementation() {
 	buffCRC = 0;
 }
 
-void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	// server/zone/objects/tangible/consumable/Consumable.idl():  		int cond = values.getCurrentValue("hitpoints");
-	int cond = values->getCurrentValue("hitpoints");
-	// server/zone/objects/tangible/consumable/Consumable.idl():  		super.maxCondition = cond;
-	TangibleObjectImplementation::maxCondition = cond;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  	}
-	if (!isSpice()){
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
-	if (values->hasProperty("filling"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				filling = (fillingMax - fillingMin) * values.getCurrentPercentage("filling") + fillingMin;
-	filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
-	if (values->hasProperty("quantity")){
-	// server/zone/objects/tangible/consumable/Consumable.idl():  				int quant = (quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin;
-	int quant = (quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  				super.
-	if (values->hasProperty("quantity_bonus"))	// server/zone/objects/tangible/consumable/Consumable.idl():  					quant += values.getCurrentValue("quantity_bonus");
-	quant += values->getCurrentValue("quantity_bonus");
-	// server/zone/objects/tangible/consumable/Consumable.idl():  				super.setUseCount(quant);
-	TangibleObjectImplementation::setUseCount(quant);
-}
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
-	if (values->hasProperty("flavor"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				duration = (flavorMax - flavorMin) * values.getCurrentPercentage("flavor") + flavorMin;
-	duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  		}
-	if (values->hasProperty("nutrition"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				nutrition = (nutritionMax - nutritionMin) * values.getCurrentPercentage("nutrition") + nutritionMin;
-	nutrition = (nutritionMax - nutritionMin) * values->getCurrentPercentage("nutrition") + nutritionMin;
-}
-}
-
 bool ConsumableImplementation::isSpiceEffect() {
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		return (effectType == EFFECT_SPICE);
 	return (effectType == EFFECT_SPICE);

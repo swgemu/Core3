@@ -54,6 +54,7 @@ protected:
 	Vector<float>* experimentalMin;
 	Vector<float>* experimentalMax;
 	Vector<short>* experimentalPrecision;
+	Vector<short>* experimentalCombineType;
 	Vector<uint32>* playerRaces;
 
 	Vector<Reference<ResourceWeight* > >* resourceWeights;

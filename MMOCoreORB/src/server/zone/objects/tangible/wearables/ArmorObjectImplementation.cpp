@@ -223,11 +223,15 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 }
 
+bool ArmorObjectImplementation::isVulnerable(int type) {
+	return (!isSpecial(type) && (vulnerabilites & type));
+}
+
 float ArmorObjectImplementation::getTypeValue(int type, float value) {
 
 	int newValue = 0;
 
-	if(isVulnerable(type))
+	if(vulnerabilites & type)
 		newValue = value;
 
 	else if(isSpecial(type)) {
@@ -348,8 +352,7 @@ void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craft
 
 		if(value != CraftingValues::VALUENOTFOUND) {
 
-			specialResists = specialResists | type;
-
+			specialResists |= type;
 			setProtectionValue(type, value);
 
 		}

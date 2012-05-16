@@ -923,11 +923,6 @@ bool ArmorObjectImplementation::isSpecial(int type) {
 	return specialResists & type;
 }
 
-bool ArmorObjectImplementation::isVulnerable(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return vulnerabilites & type;
-	return vulnerabilites & type;
-}
-
 bool ArmorObjectImplementation::isArmorObject() {
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return true;
 	return true;

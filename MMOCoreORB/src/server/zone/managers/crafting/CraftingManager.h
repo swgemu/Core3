@@ -86,11 +86,15 @@ namespace crafting {
 
 class CraftingManager : public ZoneManager {
 public:
-	static const short RESOURCE = 0x00;
+	static const short RESOURCECOMBINE = 0x00;
 
-	static const short COMPONENTLINEAR = 0x01;
+	static const short LINEARCOMBINE = 0x01;
 
-	static const short COMPONENTPERCENTAGE = 0x02;
+	static const short PERCENTAGECOMBINE = 0x02;
+
+	static const short BITSETCOMBINE = 0x03;
+
+	static const short OVERRIDECOMBINE = 0x04;
 
 	static const short CR = 1;
 
@@ -190,11 +194,15 @@ class CraftingManagerImplementation : public ZoneManagerImplementation {
 	Reference<SchematicMap* > schematicMap;
 
 public:
-	static const short RESOURCE = 0x00;
+	static const short RESOURCECOMBINE = 0x00;
 
-	static const short COMPONENTLINEAR = 0x01;
+	static const short LINEARCOMBINE = 0x01;
 
-	static const short COMPONENTPERCENTAGE = 0x02;
+	static const short PERCENTAGECOMBINE = 0x02;
+
+	static const short BITSETCOMBINE = 0x03;
+
+	static const short OVERRIDECOMBINE = 0x04;
 
 	static const short CR = 1;
 

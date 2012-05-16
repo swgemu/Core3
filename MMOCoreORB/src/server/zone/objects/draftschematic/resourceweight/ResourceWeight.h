@@ -62,6 +62,8 @@ private:
 
 	bool filler;
 
+	short combineType;
+
 public:
 	ResourceWeight() {
 		filler = true;
@@ -71,12 +73,13 @@ public:
 
 	}
 
-	void addProperties(const String& title, const String& name, float min, float max, int prec) {
+	void addProperties(const String& title, const String& name, float min, float max, int prec, short combine) {
 		experimentalTitle = title;
 		propertyName = name;
 		minValue = min;
 		maxValue = max;
 		precision = prec;
+		combineType = combine;
 
 	}
 
@@ -240,6 +243,11 @@ public:
 	bool isFiller() {
 		return filler == true;
 	}
+
+	short getCombineType() {
+		return combineType;
+	}
+
 };
 
 #endif /* RESOURCEWEIGHT_H_ */

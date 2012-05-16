@@ -116,7 +116,8 @@ public:
 
 	// Experimental Titles
 	void addExperimentalProperty(const String& title, const String& subtitle,
-			const float min, const float max, const int precision, const bool filler);
+			const float min, const float max, const int precision,
+			const bool filler, const int combine);
 
 	String& getExperimentalPropertyTitle(const String& subtitle);
 	String& getExperimentalPropertyTitle(const int i);
@@ -137,6 +138,8 @@ public:
 	bool isHidden(const String& attribute);
 	void setHidden(const String& attribute);
 	void unsetHidden(const String& attribute);
+
+	short getCombineType(const String& attribute);
 
 	void setCurrentValue(const String& attribute, const float value);
 	void setCurrentValue(const String& attribute, const float value, const float min, const float max);

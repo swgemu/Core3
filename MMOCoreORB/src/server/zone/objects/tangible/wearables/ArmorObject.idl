@@ -150,9 +150,7 @@ class ArmorObject extends WearableObject {
 		return specialResists & type;
 	}
 	
-	public boolean isVulnerable(int type) {
-		return vulnerabilites & type;
-	}
+	public native boolean isVulnerable(int type);
 	
 	public boolean isArmorObject() {
 		return true;

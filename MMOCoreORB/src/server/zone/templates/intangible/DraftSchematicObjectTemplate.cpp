@@ -15,7 +15,6 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 	ingredientSlotType = new Vector<short> ();
 	resourceTypes = new Vector<String> ();
 	resourceQuantities = new Vector<int> ();
-	combineTypes = new Vector<short> ();
 	contribution = new Vector<short> ();
 
 	draftSlots = new Vector<Reference<DraftSlot*> > ();
@@ -39,7 +38,6 @@ DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
 	delete ingredientSlotType;
 	delete resourceTypes;
 	delete resourceQuantities;
-	delete combineTypes;
 	delete contribution;
 
 	delete additionalTemplates;
@@ -98,12 +96,6 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	}
 	resourceQuantitiesList.pop();
 
-	LuaObject combineTypesList = templateData->getObjectField("combineTypes");
-	for (int i = 1; i <= combineTypesList.getTableSize(); ++i) {
-		combineTypes->add(combineTypesList.getIntAt(i));
-	}
-	combineTypesList.pop();
-
 	LuaObject contributionList = templateData->getObjectField("contribution");
 	for (int i = 1; i <= contributionList.getTableSize(); ++i) {
 		contribution->add(contributionList.getIntAt(i));
@@ -117,7 +109,6 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 		newSlot->setSlotType(ingredientSlotType->get(i));
 		newSlot->setResourceType(resourceTypes->get(i));
 		newSlot->setQuantity(resourceQuantities->get(i));
-		newSlot->setCombineType(combineTypes->get(i));
 		newSlot->setContribution(contribution->get(i));
 
 		addSlot(newSlot);

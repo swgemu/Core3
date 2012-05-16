@@ -135,31 +135,8 @@ class Consumable extends TangibleObject {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	@local
-	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		int cond = values.getCurrentValue("hitpoints");
-		super.maxCondition = cond;
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
-		if (!isSpice()) {
-			if(values.hasProperty("filling"))
-				filling = (fillingMax - fillingMin) * values.getCurrentPercentage("filling") + fillingMin;
-			
-			if(values.hasProperty("quantity")) {
-				int quant = (quantityMax - quantityMin) * values.getCurrentPercentage("quantity") + quantityMin;
-				
-				if(values.hasProperty("quantity_bonus"))
-					quant += values.getCurrentValue("quantity_bonus");
-
-				super.setUseCount(quant);
-			}
-			
-			if(values.hasProperty("flavor"))
-				duration = (flavorMax - flavorMin) * values.getCurrentPercentage("flavor") + flavorMin;
-			
-			if(values.hasProperty("nutrition"))
-				nutrition = (nutritionMax - nutritionMin) * values.getCurrentPercentage("nutrition") + nutritionMin;
-		}
-	}
-	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

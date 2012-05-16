@@ -298,7 +298,7 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 		int combineType = draftslot->getCombineType();
 
 		switch (combineType) {
-		case RESOURCE:
+		case RESOURCECOMBINE:
 			n = draftslot->getQuantity();
 			stat = spawn->getValueOf(type);
 
@@ -309,8 +309,10 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 
 			}
 			break;
-		case COMPONENTLINEAR:
-		case COMPONENTPERCENTAGE:
+		case LINEARCOMBINE:
+		case PERCENTAGECOMBINE:
+		case BITSETCOMBINE:
+		case OVERRIDECOMBINE:
 			break;
 
 		}

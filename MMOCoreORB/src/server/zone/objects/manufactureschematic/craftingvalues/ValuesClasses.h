@@ -57,12 +57,13 @@ class Values : public Object {
 	VectorMap<String, float> values;
 	String name;
 	float minValue, maxValue;
-	int precision;
+	short precision;
+	short combineType;
 	bool locked;
 	bool experimentalProperties;
 
 public:
-	Values(const String& n, const float& tempmin, const float& tempmax, const int& prec, const bool& filler) {
+	Values(const String& n, const float& tempmin, const float& tempmax, const int& prec, const bool& filler, const int& combine) {
 		name = n;
 
 		minValue = tempmin;
@@ -76,6 +77,7 @@ public:
 		values.put("currentValue", 0.0f);
 
 		experimentalProperties = filler;
+		combineType = combine;
 	}
 
 	Values(const Values& val) : Object() {
@@ -126,6 +128,10 @@ public:
 
 	inline String& getName() {
 		return name;
+	}
+
+	inline short getCombineType() {
+		return combineType;
 	}
 
 	inline void lockValue() {
@@ -248,13 +254,13 @@ class Subclasses : public Object {
 
 public:
 	Subclasses(const String& title, const String& subtitle, const float
-			min, const float max, const int precision, const bool filler) {
+			min, const float max, const int precision, const bool filler, const int combine) {
 
 		classTitle = title;
 
 		name = subtitle;
 
-		Values* values = new Values(subtitle ,min, max, precision, filler);
+		Values* values = new Values(subtitle ,min, max, precision, filler, combine);
 
 		valueList.setNullValue(NULL);
 		valueList.put(subtitle, values);
@@ -285,7 +291,7 @@ public:
 	~Subclasses(){
 	}
 
-	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler) {
+	void addSubtitle(const String& s, const float min, const float max, const int precision, const bool filler, const int combine) {
 
 		if (valueList.contains(s)) {
 			Values* value = valueList.get(s);
@@ -293,7 +299,7 @@ public:
 			valueList.drop(s);
 		}
 
-		Values* values = new Values(s, min, max, precision, filler);
+		Values* values = new Values(s, min, max, precision, filler, combine);
 		valueList.put(s, values);
 	}
 

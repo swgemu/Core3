@@ -61,9 +61,11 @@ class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;
 	
 	// Ingredient math types
-	public static final short RESOURCE = 0x00;
-	public static final short COMPONENTLINEAR = 0x01;
-	public static final short COMPONENTPERCENTAGE = 0x02;
+	public static final short RESOURCECOMBINE = 0x00;
+	public static final short LINEARCOMBINE = 0x01;
+	public static final short PERCENTAGECOMBINE = 0x02;
+	public static final short BITSETCOMBINE = 0x03;
+	public static final short OVERRIDECOMBINE = 0x04;
 	
 	public static final short CR = 1;
 	public static final short CD = 2;

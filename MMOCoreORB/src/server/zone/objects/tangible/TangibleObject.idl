@@ -551,7 +551,6 @@ class TangibleObject extends SceneObject {
 	 * Add the subcomponent stats to this based on the items in the schematic
 	 */
 	public native boolean applyComponentStats(ManufactureSchematic manufactureSchematic);
-
 	/*
 	 * Creates a factory crate for this object, can insert this object or a clone
 	 */
