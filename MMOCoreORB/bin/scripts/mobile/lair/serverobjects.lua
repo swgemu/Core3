@@ -1,3 +1,4 @@
+includeFile("lair/lair.lua")
 includeFile("lair/angler.lua")
 includeFile("lair/angler_jungle.lua")
 includeFile("lair/angler_swamp.lua")
