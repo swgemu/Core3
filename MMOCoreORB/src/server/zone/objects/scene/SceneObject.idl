@@ -182,7 +182,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public void finalize() {
-		Logger.info("deleting object from memory", true);
+		//Logger.info("deleting object from memory", true);
 		//StackTrace.printStackTrace();
 	}
 	

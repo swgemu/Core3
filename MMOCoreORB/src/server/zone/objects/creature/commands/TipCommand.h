@@ -146,7 +146,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<CreatureObject*> targetPlayer = NULL;
-		int amount;
+		int amount = 0;
 		bool isBank = false;
 
 		// Check arguments. /tip [playername] <amount> [bank]

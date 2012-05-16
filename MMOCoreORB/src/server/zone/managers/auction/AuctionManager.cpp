@@ -101,13 +101,13 @@ AuctionItem* AuctionManager::createVendorItem(CreatureObject* player, SceneObjec
 		return _implementation->createVendorItem(player, objectToSell, vendor, description, price, duration, auction, premium);
 }
 
-int AuctionManager::checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price) {
+int AuctionManager::checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price, bool premium) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->checkSaleItem(player, object, vendor, price);
+		return _implementation->checkSaleItem(player, object, vendor, price, premium);
 }
 
 void AuctionManager::getItemAttributes(CreatureObject* player, unsigned long long objectid) {

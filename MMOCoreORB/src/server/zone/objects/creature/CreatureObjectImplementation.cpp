@@ -1684,6 +1684,22 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 	}
 }
 
+void CreatureObjectImplementation::subtractBankCredits(int credits) {
+	int newCredits = bankCredits - credits;
+
+	assert(newCredits >= 0);
+
+	setBankCredits(newCredits);
+}
+
+void CreatureObjectImplementation::subtractCashCredits(int credits) {
+	int newCredits = cashCredits - credits;
+
+	assert(newCredits >= 0);
+
+	setCashCredits(newCredits);
+}
+
 void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 	/**
@@ -1700,6 +1716,12 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	listenToID = 0;
 	watchToID = 0;
+
+	if (cashCredits < 0)
+		cashCredits = 0;
+
+	if (bankCredits < 0)
+		bankCredits = 0;
 
 	if (isIncapacitated()) {
 		int health = getHAM(CreatureAttribute::HEALTH);

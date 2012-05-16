@@ -3872,8 +3872,6 @@ SceneObjectImplementation::SceneObjectImplementation() {
 }
 
 void SceneObjectImplementation::finalize() {
-	// server/zone/objects/scene/SceneObject.idl():  		Logger.info("deleting object from memory", true);
-	Logger::info("deleting object from memory", true);
 }
 
 void SceneObjectImplementation::info(const String& msg, bool forced) {

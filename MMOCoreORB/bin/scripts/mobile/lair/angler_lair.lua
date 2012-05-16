@@ -2,11 +2,11 @@
 angler_lair = Lair:new {
 	mobiles = {{"angler", 22}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/angler/lair_angler.iff"},
-	buildingsEasy = {"object/tangible/lair/angler/lair_angler.iff"},
-	buildingsMedium = {"object/tangible/lair/angler/lair_angler.iff"},
-	buildingsHard = {"object/tangible/lair/angler/lair_angler.iff"},
-	buildingsVeryHard = {"object/tangible/lair/angler/lair_angler.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_large_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_warren_large_fog_green.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_large_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_warren_large_fog_green.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_nest_large_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_bones_fog_green.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_nest_large_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_bones_fog_green.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_nest_large_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_bones_fog_green.iff"}
 }
 
 addLairTemplate("angler_lair", angler_lair)

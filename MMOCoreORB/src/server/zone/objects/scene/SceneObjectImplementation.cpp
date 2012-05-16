@@ -565,7 +565,9 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		if (selfObject == scno)
 			continue;
 
-		if (scno->isPlayerCreature() || scno->isVehicleObject()) {
+		ManagedReference<ZoneClientSession*> client = scno->getClient();
+
+		if (scno->isVehicleObject() || client != NULL) {
 			object->sendTo(scno, true);
 		}
 	}
@@ -628,7 +630,9 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 		if (selfObject == scno)
 			continue;
 
-		if (scno->isPlayerCreature() || scno->isVehicleObject()) {
+		ManagedReference<ZoneClientSession*> client = scno->getClient();
+
+		if (scno->isVehicleObject() || client != NULL) {
 			object->sendDestroyTo(scno);
 		}
 	}
@@ -699,7 +703,9 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		if (selfObject == scno)
 			continue;
 
-		if (scno->isPlayerCreature() || scno->isVehicleObject())
+		ManagedReference<ZoneClientSession*> client = scno->getClient();
+
+		if (scno->isVehicleObject() || client != NULL)
 			scno->sendMessage(message->clone());
 	}
 
@@ -775,7 +781,9 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 		if (selfObject == scno)
 			continue;
 
-		if (scno->isPlayerCreature() || scno->isVehicleObject()) {
+		ManagedReference<ZoneClientSession*> client = scno->getClient();
+
+		if (scno->isVehicleObject() || client != NULL) {
 			for (int j = 0; j < messages->size(); ++j) {
 				BasePacket* msg = messages->get(j);
 				scno->sendMessage(msg->clone());

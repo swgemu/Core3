@@ -2,11 +2,11 @@
 bantha_lair = Lair:new {
 	mobiles = {{"bantha", 15}},
 	spawnLimit = 10,
-	buildingsVeryEasy = {"object/tangible/lair/bantha/lair_bantha.iff"},
-	buildingsEasy = {"object/tangible/lair/bantha/lair_bantha.iff"},
-	buildingsMedium = {"object/tangible/lair/bantha/lair_bantha.iff"},
-	buildingsHard = {"object/tangible/lair/bantha/lair_bantha.iff"},
-	buildingsVeryHard = {"object/tangible/lair/bantha/lair_bantha.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff","object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff","object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff","object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff","object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff","object/tangible/lair/base/poi_all_lair_leaf_medium.iff"}
 }
 
 addLairTemplate("bantha_lair", bantha_lair)
