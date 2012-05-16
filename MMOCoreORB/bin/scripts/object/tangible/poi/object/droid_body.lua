@@ -51,6 +51,7 @@ object_tangible_poi_object_droid_body = object_tangible_poi_object_shared_droid_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_poi_object_droid_body, "object/tangible/poi/object/droid_body.iff")

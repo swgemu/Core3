@@ -82,5 +82,6 @@ object_tangible_crafting_station_food_tool = object_tangible_crafting_station_sh
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalCombineType = {0, 0, 1, 1},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_food_tool, "object/tangible/crafting/station/food_tool.iff")

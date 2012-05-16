@@ -52,6 +52,7 @@ object_tangible_component_droid_personality_module_geek = object_tangible_compon
 	experimentalMin = {0, 0, 5, 1000, -10, 30},
 	experimentalMax = {0, 0, 15, 1000, 15, 30},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_geek, "object/tangible/component/droid/personality_module_geek.iff")

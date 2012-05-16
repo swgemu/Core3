@@ -83,5 +83,6 @@ object_tangible_survey_tool_survey_tool_wind = object_tangible_survey_tool_share
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalCombineType = {0, 0, 1, 1},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_wind, "object/tangible/survey_tool/survey_tool_wind.iff")

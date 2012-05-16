@@ -52,6 +52,7 @@ object_tangible_component_droid_struct_maint_module_1 = object_tangible_componen
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 5},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_struct_maint_module_1, "object/tangible/component/droid/struct_maint_module_1.iff")
