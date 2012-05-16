@@ -73,6 +73,7 @@ object_tangible_food_crafted_dessert_almond_kwevvu_crisp_munchies = object_tangi
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_almond_kwevvu_crisp_munchies, "object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff")

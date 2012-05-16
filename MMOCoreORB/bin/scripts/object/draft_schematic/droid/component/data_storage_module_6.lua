@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_data_storage_module_6 = object_draft_sche
    ingredientSlotType = {0, 0, 0, 0, 1, 1},
    resourceTypes = {"copper_beyrllius", "gas_inert_dioxis", "ore", "fiberplast", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {25, 10, 12, 8, 1, 3},
-   combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

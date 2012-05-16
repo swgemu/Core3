@@ -131,6 +131,7 @@ object_weapon_melee_polearm_lance_nightsister = object_weapon_melee_polearm_shar
 	experimentalMin = {0, 0, 23, 213, 6.3, 11, 750, -5, -5, 6, -5, 6, 38, 78, 54},
 	experimentalMax = {0, 0, 35, 305, 4, 25, 1500, 10, 10, 6, 10, 6, 20, 42, 32},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_nightsister, "object/weapon/melee/polearm/lance_nightsister.iff")

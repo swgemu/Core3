@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"steel", "metal", "chemical", "metal", "chemical"},
    resourceQuantities = {120, 150, 240, 60, 120},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

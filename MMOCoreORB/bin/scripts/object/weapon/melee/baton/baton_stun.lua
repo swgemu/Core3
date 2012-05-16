@@ -131,6 +131,7 @@ object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_st
 	experimentalMin = {0, 0, 28, 53, 4.2, 1, 750, -5, -5, 2, -5, 4, 10, 45, 39},
 	experimentalMax = {0, 0, 52, 98, 2.9, 3, 1500, 5, 5, 2, 5, 4, 4, 24, 19},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_baton_stun, "object/weapon/melee/baton/baton_stun.iff")

@@ -52,6 +52,7 @@ object_tangible_ship_crafted_shields_shield_energy_saver_kit_mk4 = object_tangib
 	experimentalMin = {0, 0, -358, -358, -546},
 	experimentalMax = {0, 0, -265, -265, -404},
 	experimentalPrecision = {0, 0, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_shield_energy_saver_kit_mk4, "object/tangible/ship/crafted/shields/shield_energy_saver_kit_mk4.iff")

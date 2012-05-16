@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_cabinet_elegant = object_draft_schema
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal_nonferrous", "metal", "metal"},
    resourceQuantities = {200, 25, 150},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

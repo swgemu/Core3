@@ -52,6 +52,7 @@ object_tangible_ship_crafted_reactor_fusion_reactor_mk1 = object_tangible_ship_c
 	experimentalMin = {0, 0, 128, 1, 850, 64, 1, 0, 8925},
 	experimentalMax = {0, 0, 173, 1, 1150, 86, 1, 0, 12075},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_fusion_reactor_mk1, "object/tangible/ship/crafted/reactor/fusion_reactor_mk1.iff")

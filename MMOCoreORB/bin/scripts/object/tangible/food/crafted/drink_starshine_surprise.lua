@@ -75,6 +75,7 @@ object_tangible_food_crafted_drink_starshine_surprise = object_tangible_food_cra
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_starshine_surprise, "object/tangible/food/crafted/drink_starshine_surprise.iff")

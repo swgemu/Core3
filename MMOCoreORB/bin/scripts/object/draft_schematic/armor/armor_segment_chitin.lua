@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_chitin = object_draft_schematic_armor
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"bone", "metal_ferrous", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {15, 5, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_reactor_reactor_limiter_mk1 = object_draft_schemati
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

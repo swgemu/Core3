@@ -67,7 +67,6 @@ object_draft_schematic_armor_shield_generator_personal = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    resourceTypes = {"iron", "gemstone_crystalline", "steel", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff", "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff", "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff", "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff"},
    resourceQuantities = {35, 10, 10, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

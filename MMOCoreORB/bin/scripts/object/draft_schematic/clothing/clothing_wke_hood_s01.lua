@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "petrochem_inert_polymer"},
    resourceQuantities = {12, 6},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

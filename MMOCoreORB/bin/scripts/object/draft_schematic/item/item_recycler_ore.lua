@@ -67,7 +67,6 @@ object_draft_schematic_item_item_recycler_ore = object_draft_schematic_item_shar
    ingredientSlotType = {1, 2, 0, 0, 0},
    resourceTypes = {"object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff", "object/tangible/loot/simple_kit/shared_pulverizer.iff", "fiberplast", "steel", "iron"},
    resourceQuantities = {1, 8, 50, 40, 15},
-   combineTypes = {1, 1, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_armor_mass_reduction_kit_mk5 = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"aluminum", "aluminum_perovskitic"},
    resourceQuantities = {1750, 750},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

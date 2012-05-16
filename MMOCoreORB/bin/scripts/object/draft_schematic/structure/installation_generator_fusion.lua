@@ -67,7 +67,6 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
    ingredientSlotType = {0, 0, 1, 0, 0, 2, 0, 1, 1, 1},
    resourceTypes = {"steel", "metal", "object/tangible/component/structure/shared_ore_mining_unit.iff", "metal", "ore", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
    resourceQuantities = {300, 700, 1, 250, 250, 5, 300, 3, 4, 2},
-   combineTypes = {0, 0, 1, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

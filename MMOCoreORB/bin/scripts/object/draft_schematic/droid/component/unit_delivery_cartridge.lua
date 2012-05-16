@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"ore", "gemstone"},
    resourceQuantities = {10, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

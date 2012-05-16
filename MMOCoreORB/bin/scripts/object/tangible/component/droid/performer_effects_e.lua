@@ -52,6 +52,7 @@ object_tangible_component_droid_performer_effects_e = object_tangible_component_
 	experimentalMin = {0, 0, 5, 1000, -10, 10000},
 	experimentalMax = {0, 0, 15, 1000, 15, 10000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_performer_effects_e, "object/tangible/component/droid/performer_effects_e.iff")

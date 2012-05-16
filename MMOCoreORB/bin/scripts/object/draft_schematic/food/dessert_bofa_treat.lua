@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"organic", "cereal", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {3, 8, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

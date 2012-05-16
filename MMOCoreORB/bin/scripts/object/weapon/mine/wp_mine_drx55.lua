@@ -52,6 +52,7 @@ object_weapon_mine_wp_mine_drx55 = object_weapon_mine_shared_wp_mine_drx55:new {
 	experimentalMin = {0, 0, 35, 105, 5, 7, 1000},
 	experimentalMax = {0, 0, 65, 195, 3, 13, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_wp_mine_drx55, "object/weapon/mine/wp_mine_drx55.iff")

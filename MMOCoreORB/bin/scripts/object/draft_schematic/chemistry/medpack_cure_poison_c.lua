@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_cure_poison_c = object_draft_schematic_
    ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"fruit_flowers", "gas_inert", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {14, 14, 1, 1},
-   combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_boots_casual_15 = object_draft_schemati
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"hide", "petrochem_inert", "object/tangible/component/clothing/shared_shoe_sole.iff"},
    resourceQuantities = {30, 10, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

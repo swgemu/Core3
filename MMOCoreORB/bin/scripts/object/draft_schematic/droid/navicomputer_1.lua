@@ -67,7 +67,6 @@ object_draft_schematic_droid_navicomputer_1 = object_draft_schematic_droid_share
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "chemical", "metal", "metal", "metal"},
    resourceQuantities = {20, 15, 12, 15, 6},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

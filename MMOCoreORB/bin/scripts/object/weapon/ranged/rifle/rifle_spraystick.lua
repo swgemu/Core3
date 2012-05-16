@@ -129,6 +129,7 @@ object_weapon_ranged_rifle_rifle_spraystick = object_weapon_ranged_rifle_shared_
 	experimentalMin = {0, 0, 7, 77, 3, 12, 5, 750, -20, -60, 30, -5, 16, 47, 47},
 	experimentalMax = {0, 0, 13, 143, 2.1, 22, 20, 1500, -20, -60, 30, 5, 8, 25, 25},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_spraystick, "object/weapon/ranged/rifle/rifle_spraystick.iff")

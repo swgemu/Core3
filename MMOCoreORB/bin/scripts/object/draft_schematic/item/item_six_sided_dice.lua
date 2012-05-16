@@ -67,7 +67,6 @@ object_draft_schematic_item_item_six_sided_dice = object_draft_schematic_item_sh
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "chemical"},
    resourceQuantities = {4, 2},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

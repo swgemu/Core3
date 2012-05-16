@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_nonferrous", "copper"},
    resourceQuantities = {100, 75},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

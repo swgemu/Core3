@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"steel", "metal_nonferrous", "chemical", "ore", "object/tangible/component/structure/shared_generator_turbine.iff"},
    resourceQuantities = {150, 100, 100, 100, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

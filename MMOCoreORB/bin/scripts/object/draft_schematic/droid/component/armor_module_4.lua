@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_armor_module_4 = object_draft_schematic_d
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel_duralloy", "metal_ferrous", "metal_nonferrous", "fiberplast"},
    resourceQuantities = {55, 12, 15, 10},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

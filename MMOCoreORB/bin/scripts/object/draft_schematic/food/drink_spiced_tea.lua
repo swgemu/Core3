@@ -67,7 +67,6 @@ object_draft_schematic_food_drink_spiced_tea = object_draft_schematic_food_share
    ingredientSlotType = {0, 0, 2, 3},
    resourceTypes = {"water", "organic", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {5, 2, 1, 1},
-   combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

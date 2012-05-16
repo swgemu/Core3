@@ -51,6 +51,7 @@ object_tangible_loot_simple_kit_motor_small_red = object_tangible_loot_simple_ki
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_motor_small_red, "object/tangible/loot/simple_kit/motor_small_red.iff")

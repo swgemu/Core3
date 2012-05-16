@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk2 = object_tangible_
 	experimentalMin = {0, 0, 23, -5},
 	experimentalMax = {0, 0, 42, -3},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk2, "object/tangible/ship/crafted/weapon/speed_limiter_upgrade_mk2.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_quick_shot_upgrade_mk1 = object_draft_schema
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "ore_siliclastic_fermionic"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

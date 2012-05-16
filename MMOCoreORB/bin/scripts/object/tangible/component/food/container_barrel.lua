@@ -52,6 +52,7 @@ object_tangible_component_food_container_barrel = object_tangible_component_food
 	experimentalMin = {0, 0, 1},
 	experimentalMax = {0, 0, 1},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_container_barrel, "object/tangible/component/food/container_barrel.iff")

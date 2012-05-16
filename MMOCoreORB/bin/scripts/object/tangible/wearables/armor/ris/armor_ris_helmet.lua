@@ -109,6 +109,7 @@ object_tangible_wearables_armor_ris_armor_ris_helmet = object_tangible_wearables
 	experimentalMin = {0, 0, 0, 1000, 5, 30000, 22, 22, 188, 1, 1, 5, 0},
 	experimentalMax = {0, 0, 0, 1000, 50, 50000, 13, 13, 113, 1, 1, 70, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_armor_ris_helmet, "object/tangible/wearables/armor/ris/armor_ris_helmet.iff")

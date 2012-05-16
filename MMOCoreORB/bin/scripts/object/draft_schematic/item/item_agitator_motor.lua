@@ -67,7 +67,6 @@ object_draft_schematic_item_item_agitator_motor = object_draft_schematic_item_sh
    ingredientSlotType = {2, 1, 0},
    resourceTypes = {"object/tangible/loot/simple_kit/shared_wiring_red.iff", "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff", "metal_ferrous"},
    resourceQuantities = {2, 1, 40},
-   combineTypes = {1, 1, 0},
    contribution = {100, 100, 100},
 
 

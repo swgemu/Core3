@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_diagnostic_circuit_advanced = object_draf
    ingredientSlotType = {0, 0},
    resourceTypes = {"ore_siliclastic_malab", "copper_platinite"},
    resourceQuantities = {15, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

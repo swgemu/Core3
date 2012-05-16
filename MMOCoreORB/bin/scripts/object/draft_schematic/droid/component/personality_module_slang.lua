@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_personality_module_slang = object_draft_s
    ingredientSlotType = {0, 0, 1, 1, 1, 1},
    resourceTypes = {"copper", "ore_siliclastic", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/furniture/decorative/shared_corellian_flagpole.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {13, 6, 1, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

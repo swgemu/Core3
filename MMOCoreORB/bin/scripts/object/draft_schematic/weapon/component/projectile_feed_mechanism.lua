@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"steel", "metal", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"},
    resourceQuantities = {10, 7, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

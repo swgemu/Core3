@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_gambling = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "mineral"},
    resourceQuantities = {50, 20},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

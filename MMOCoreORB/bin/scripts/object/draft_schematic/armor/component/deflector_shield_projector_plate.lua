@@ -67,7 +67,6 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal_nonferrous", "ore", "copper"},
    resourceQuantities = {15, 10, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

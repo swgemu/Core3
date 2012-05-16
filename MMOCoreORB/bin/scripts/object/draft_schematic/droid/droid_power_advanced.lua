@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_power_advanced = object_draft_schematic_droid
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 1, 3, 3},
    resourceTypes = {"metal", "ore", "steel", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/item/shared_micro_sensor_suite.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {45, 40, 60, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

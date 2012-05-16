@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_bustier_casual_02 = object_draft_schema
    ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast", "hide"},
    resourceQuantities = {2, 20, 30},
-   combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
 

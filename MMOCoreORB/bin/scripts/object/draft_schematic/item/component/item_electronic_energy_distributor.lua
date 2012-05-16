@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "gas_inert", "steel", "metal", "petrochem_inert_polymer", "ore"},
    resourceQuantities = {12, 4, 4, 2, 2, 3},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

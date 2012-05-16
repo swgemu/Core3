@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
    ingredientSlotType = {0, 0},
    resourceTypes = {"wood", "metal"},
    resourceQuantities = {17, 4},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

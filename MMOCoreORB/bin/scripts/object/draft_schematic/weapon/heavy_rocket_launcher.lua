@@ -67,7 +67,6 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
    ingredientSlotType = {0, 0, 0, 1, 0, 1, 1, 1},
    resourceTypes = {"iron", "metal", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "steel", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/weapon/ranged/grenade/shared_grenade_proton.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {150, 40, 25, 4, 170, 8, 5, 2},
-   combineTypes = {0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

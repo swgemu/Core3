@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_reinforcement_core = object_draft_schema
    ingredientSlotType = {0},
    resourceTypes = {"metal"},
    resourceQuantities = {12},
-   combineTypes = {0},
    contribution = {100},
 
 

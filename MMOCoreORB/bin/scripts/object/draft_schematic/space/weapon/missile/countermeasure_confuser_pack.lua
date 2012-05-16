@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_confuser_pack = objec
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

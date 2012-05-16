@@ -52,6 +52,7 @@ object_tangible_component_clothing_metal_fasteners = object_tangible_component_c
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_metal_fasteners, "object/tangible/component/clothing/metal_fasteners.iff")

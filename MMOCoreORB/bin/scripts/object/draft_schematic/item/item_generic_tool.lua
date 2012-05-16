@@ -67,7 +67,6 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "mineral", "chemical"},
    resourceQuantities = {12, 4, 4},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

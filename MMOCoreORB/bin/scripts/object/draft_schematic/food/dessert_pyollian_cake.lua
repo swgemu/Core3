@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
    ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff", "oats", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 20, 10, 1},
-   combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

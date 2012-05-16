@@ -52,6 +52,7 @@ object_tangible_ship_crafted_reactor_reactor_limiter_mk1 = object_tangible_ship_
 	experimentalMin = {0, 0, -650, -260},
 	experimentalMax = {0, 0, -350, -140},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_reactor_limiter_mk1, "object/tangible/ship/crafted/reactor/reactor_limiter_mk1.iff")

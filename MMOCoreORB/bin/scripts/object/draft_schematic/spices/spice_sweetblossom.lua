@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_sweetblossom = object_draft_schematic_spices
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"fruit_flowers", "water", "metal"},
    resourceQuantities = {10, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

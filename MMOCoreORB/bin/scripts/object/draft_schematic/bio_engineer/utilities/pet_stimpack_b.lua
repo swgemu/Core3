@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_b = object_draft_sche
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"vegetable_fungi_talus", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 24, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

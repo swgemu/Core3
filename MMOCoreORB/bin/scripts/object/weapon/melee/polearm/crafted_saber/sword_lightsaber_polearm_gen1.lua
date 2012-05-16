@@ -130,6 +130,7 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen1 = object
 	experimentalMin = {0, 0, 105, 195, 5.1, 10, 15, 35, 40, 20},
 	experimentalMax = {0, 0, 125, 235, 4.8, 20, 12, 25, 25, 15},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen1, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen1.iff")

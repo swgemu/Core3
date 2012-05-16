@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_dress_casual_12 = object_draft_schemati
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"fiberplast", "hide", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {15, 5, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

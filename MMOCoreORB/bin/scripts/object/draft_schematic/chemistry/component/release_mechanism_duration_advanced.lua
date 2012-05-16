@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_release_mechanism_duration_advanced =
    ingredientSlotType = {0, 0},
    resourceTypes = {"meat_herbivore", "petrochem_fuel_liquid_type4"},
    resourceQuantities = {16, 16},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_helmet = object
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"bone", "hide_leathery", "hide_scaley", "metal_ferrous", "petrochem_inert_polymer", "hide_wooly", "object/tangible/component/armor/shared_armor_segment_chitin.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
    resourceQuantities = {30, 30, 30, 15, 15, 15, 3, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

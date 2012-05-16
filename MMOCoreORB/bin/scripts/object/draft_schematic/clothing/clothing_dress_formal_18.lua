@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_dress_formal_18 = object_draft_schemati
    ingredientSlotType = {0, 1, 1, 1, 1},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {15, 1, 1, 1, 1},
-   combineTypes = {0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

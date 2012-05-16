@@ -125,6 +125,7 @@ object_weapon_ranged_rifle_rifle_flame_thrower = object_weapon_ranged_rifle_shar
 	experimentalMin = {0, 0, 240, 690, 7.2, 8, 30, 750, 10, 50, -65, 84, 20, 20},
 	experimentalMax = {0, 0, 476, 826, 4.9, 16, 65, 1500, 20, 50, -35, 45, 10, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_flame_thrower, "object/weapon/ranged/rifle/rifle_flame_thrower.iff")

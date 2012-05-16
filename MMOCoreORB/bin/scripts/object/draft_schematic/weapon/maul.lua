@@ -67,7 +67,6 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron_kammris", "metal", "copper", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {75, 40, 24, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

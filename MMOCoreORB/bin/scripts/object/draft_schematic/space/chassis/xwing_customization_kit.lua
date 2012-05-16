@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_xwing_customization_kit = object_draft_sche
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "petrochem_inert"},
    resourceQuantities = {250, 300},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

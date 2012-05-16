@@ -67,7 +67,6 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    ingredientSlotType = {0, 0, 0, 0, 1, 1},
    resourceTypes = {"copper_polysteel", "steel", "metal", "crystalline_byrothsis", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {18, 18, 10, 6, 2, 1},
-   combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

@@ -62,6 +62,7 @@ object_tangible_crafting_station_armor_repair = object_tangible_crafting_station
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
 }
+	experimentalCombineType = {0, 0, 1, 1},
 ObjectTemplates:addTemplate(object_tangible_crafting_station_armor_repair, "object/tangible/crafting/station/armor_repair.iff")
 
 -- Items in previous file

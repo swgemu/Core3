@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bubble_tank = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"gemstone_crystalline", "petrochem_inert_polymer"},
    resourceQuantities = {35, 30},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

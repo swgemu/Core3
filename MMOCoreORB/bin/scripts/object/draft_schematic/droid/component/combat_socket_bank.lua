@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_combat_socket_bank = object_draft_schemat
    ingredientSlotType = {0, 1, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal", "object/tangible/component/droid/shared_droid_brain.iff", "metal", "metal", "chemical", "ore", "object/tangible/component/droid/shared_combat_module.iff", "object/tangible/component/droid/shared_combat_module.iff", "object/tangible/component/droid/shared_combat_module.iff"},
    resourceQuantities = {30, 1, 15, 7, 7, 7, 1, 1, 1},
-   combineTypes = {0, 1, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

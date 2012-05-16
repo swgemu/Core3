@@ -67,7 +67,6 @@ object_draft_schematic_item_quest_item_feedback_controller = object_draft_schema
    ingredientSlotType = {1, 1, 1},
    resourceTypes = {"object/tangible/component/item/quest_item/shared_loop_auditor.iff", "object/tangible/component/item/quest_item/shared_variance_throttle.iff", "object/tangible/component/item/quest_item/shared_corrective_inducer.iff"},
    resourceQuantities = {1, 1, 1},
-   combineTypes = {1, 1, 1},
    contribution = {100, 100, 100},
 
 

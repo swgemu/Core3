@@ -67,7 +67,6 @@ object_draft_schematic_space_shields_adv_deflector_shields = object_draft_schema
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "gas_reactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk4.iff", "aluminum", "ore_siliclastic"},
    resourceQuantities = {625, 625, 1, 625, 625},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

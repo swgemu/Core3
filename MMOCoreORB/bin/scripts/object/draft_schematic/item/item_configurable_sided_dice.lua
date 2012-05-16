@@ -67,7 +67,6 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "metal", "petrochem_inert_polymer", "petrochem_inert_polymer", "petrochem_inert_polymer", "metal_nonferrous"},
    resourceQuantities = {6, 5, 2, 2, 2, 1, 2},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

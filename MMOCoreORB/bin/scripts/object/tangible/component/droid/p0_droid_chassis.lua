@@ -52,6 +52,7 @@ object_tangible_component_droid_p0_droid_chassis = object_tangible_component_dro
 	experimentalMin = {0, 0, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 15, 800, 0, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_p0_droid_chassis, "object/tangible/component/droid/p0_droid_chassis.iff")

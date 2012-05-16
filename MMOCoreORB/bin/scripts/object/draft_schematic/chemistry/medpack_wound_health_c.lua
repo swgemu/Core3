@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_wound_health_c = object_draft_schematic
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"seeds", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 18, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

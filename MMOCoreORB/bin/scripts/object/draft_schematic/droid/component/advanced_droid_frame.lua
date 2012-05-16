@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast"},
    resourceQuantities = {150, 70},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_item_item_structure_tool = object_draft_schematic_item_sh
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "mineral", "chemical"},
    resourceQuantities = {16, 8, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

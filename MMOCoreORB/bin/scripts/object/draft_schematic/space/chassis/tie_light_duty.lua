@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_tie_light_duty = object_draft_schematic_spa
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel", "aluminum", "ore", "petrochem_inert"},
    resourceQuantities = {2000, 1000, 1000, 1000},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

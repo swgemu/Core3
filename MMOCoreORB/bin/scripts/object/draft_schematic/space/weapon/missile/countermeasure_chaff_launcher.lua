@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_launcher = obje
    ingredientSlotType = {0, 0},
    resourceTypes = {"radioactive", "steel"},
    resourceQuantities = {50, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

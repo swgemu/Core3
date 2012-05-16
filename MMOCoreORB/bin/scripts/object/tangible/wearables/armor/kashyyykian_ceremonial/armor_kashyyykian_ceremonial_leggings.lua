@@ -78,6 +78,7 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_armor_kashyyykian_ceremon
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 49, 110, 26, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 25, 25000, 33, 70, 19, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_armor_kashyyykian_ceremonial_leggings, "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff")

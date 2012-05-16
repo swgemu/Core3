@@ -67,7 +67,6 @@ object_draft_schematic_munition_component_warhead_light = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "petrochem_inert_polymer", "gas_reactive"},
    resourceQuantities = {6, 2, 1, 9},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

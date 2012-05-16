@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_talus = object_draft_schematic_scout_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_avian_talus", "hide_leathery_talus", "bone_avian_talus"},
    resourceQuantities = {25, 30, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

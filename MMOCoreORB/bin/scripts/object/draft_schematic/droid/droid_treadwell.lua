@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shar
    ingredientSlotType = {0, 0, 0, 0, 1, 1, 1, 3},
    resourceTypes = {"metal", "chemical", "steel", "metal", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"},
    resourceQuantities = {30, 20, 15, 15, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

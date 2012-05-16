@@ -56,6 +56,7 @@ object_tangible_medicine_crafted_crafted_stimpack_sm_s1_d = object_tangible_medi
 	experimentalMin = {0, 0, 150, 25, 45, 1000},
 	experimentalMax = {0, 0, 700, 50, 30, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_crafted_stimpack_sm_s1_d, "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff")

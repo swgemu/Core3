@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_resilience_compound = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"gas_reactive", "radioactive"},
    resourceQuantities = {12, 12},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_enhance_disease_a = object_draft_schema
    ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"organic", "organic", "inorganic", "inorganic", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {9, 9, 9, 9, 1, 1, 2},
-   combineTypes = {0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

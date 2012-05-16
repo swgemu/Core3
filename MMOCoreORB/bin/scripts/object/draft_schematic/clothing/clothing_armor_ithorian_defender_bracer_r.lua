@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_defender_bracer_r = obje
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"hide_leathery_lok", "hide_scaley", "fiberplast_corellia", "metal", "petrochem_inert_polymer", "hide_wooly", "object/tangible/component/armor/shared_armor_segment_padded.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
    resourceQuantities = {40, 40, 20, 25, 25, 30, 1, 2, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

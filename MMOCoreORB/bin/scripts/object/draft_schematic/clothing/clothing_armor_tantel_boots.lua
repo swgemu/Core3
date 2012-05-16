@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_tantel_boots = object_draft_schem
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"bone_avian", "hide", "hide_bristley", "aluminum", "petrochem_inert_polymer", "hide_bristley", "object/tangible/component/armor/shared_armor_segment.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
    resourceQuantities = {20, 20, 20, 10, 10, 10, 2, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

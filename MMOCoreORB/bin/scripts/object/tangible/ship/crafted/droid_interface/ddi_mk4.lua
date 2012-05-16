@@ -52,6 +52,7 @@ object_tangible_ship_crafted_droid_interface_ddi_mk4 = object_tangible_ship_craf
 	experimentalMin = {0, 0, 794, 1, 5304, 397, 1, 489, 16},
 	experimentalMax = {0, 0, 1075, 1, 7176, 537, 1, 661, 22},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 2},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_ddi_mk4, "object/tangible/ship/crafted/droid_interface/ddi_mk4.iff")

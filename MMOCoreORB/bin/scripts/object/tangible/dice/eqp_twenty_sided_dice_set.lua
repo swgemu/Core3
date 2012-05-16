@@ -63,6 +63,7 @@ object_tangible_dice_eqp_twenty_sided_dice_set = object_tangible_dice_shared_eqp
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_twenty_sided_dice_set, "object/tangible/dice/eqp_twenty_sided_dice_set.iff")

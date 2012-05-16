@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_bageraset_deed = object_tangible_deed_pet_deed_sha
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_bageraset_deed, "object/tangible/deed/pet_deed/bageraset_deed.iff")

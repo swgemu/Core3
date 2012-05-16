@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_armoire_modern = object_draft_schemat
    ingredientSlotType = {0},
    resourceTypes = {"metal"},
    resourceQuantities = {250},
-   combineTypes = {0},
    contribution = {100},
 
 

@@ -52,6 +52,7 @@ object_tangible_component_munition_warhead_fusing_mechanism = object_tangible_co
 	experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
 	experimentalMax = {0, 0, 20, 30, 0, 1, 1000, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_fusing_mechanism, "object/tangible/component/munition/warhead_fusing_mechanism.iff")

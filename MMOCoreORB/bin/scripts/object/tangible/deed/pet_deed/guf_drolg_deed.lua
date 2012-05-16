@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_guf_drolg_deed = object_tangible_deed_pet_deed_sha
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_guf_drolg_deed, "object/tangible/deed/pet_deed/guf_drolg_deed.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_dathomir = object_draft_schematic_scou
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_carnivore_dathomir", "hide_leathery_dathomir", "bone_mammal_dathomir"},
    resourceQuantities = {30, 40, 25},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

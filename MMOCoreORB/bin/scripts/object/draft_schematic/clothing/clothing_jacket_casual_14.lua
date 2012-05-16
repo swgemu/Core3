@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_jacket_casual_14 = object_draft_schemat
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"hide_wooly", "fiberplast", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {10, 40, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

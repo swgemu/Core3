@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draf
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel_neutronium", "fiberplast_rori"},
    resourceQuantities = {15, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

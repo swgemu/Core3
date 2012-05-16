@@ -67,7 +67,6 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal", "inorganic", "metal", "chemical"},
    resourceQuantities = {2, 2, 1, 1},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

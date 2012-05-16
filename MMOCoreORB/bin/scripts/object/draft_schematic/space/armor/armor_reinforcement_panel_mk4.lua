@@ -67,7 +67,6 @@ object_draft_schematic_space_armor_armor_reinforcement_panel_mk4 = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "steel_bicorbantium"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

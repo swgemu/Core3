@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_backpack_field_03 = object_draft_schema
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"fiberplast", "hide", "hide", "metal"},
    resourceQuantities = {20, 10, 10, 5},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

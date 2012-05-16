@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_c = object_draft_sche
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"meat_insect_dathomir", "fiberplast", "***BAD NAME***", "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
    resourceQuantities = {24, 24, 1, 1, 2},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_shields_shield_intensifier_mk1 = object_draft_schem
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast_gravitonic"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

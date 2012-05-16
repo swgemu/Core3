@@ -67,7 +67,6 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
    ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"steel", "metal_ferrous", "metal", "copper", "object/tangible/component/weapon/shared_vibro_unit.iff"},
    resourceQuantities = {18, 8, 9, 5, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

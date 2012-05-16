@@ -130,6 +130,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4 = ob
 	experimentalMin = {0, 0, 185, 265, 4.8, 25, 55, 95, 60, 45},
 	experimentalMax = {0, 0, 195, 305, 4.5, 50, 48, 65, 45, 40},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4, "object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen4.iff")

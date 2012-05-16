@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"fuel_petrochem_liquid", "petrochem_inert"},
    resourceQuantities = {12, 12},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

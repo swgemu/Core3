@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_loveseat_elegant = object_draft
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"aluminum", "hide_leathery_dathomir", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {350, 250, 8},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

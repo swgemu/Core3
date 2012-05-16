@@ -52,6 +52,7 @@ object_tangible_component_bio_bio_component_clothing_casual_medic_2 = object_tan
 	experimentalMin = {0, 0, 30, 1000, 102, 3, 103, 3},
 	experimentalMax = {0, 0, 50, 1000, 102, 20, 103, 20},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_casual_medic_2, "object/tangible/component/bio/bio_component_clothing_casual_medic_2.iff")

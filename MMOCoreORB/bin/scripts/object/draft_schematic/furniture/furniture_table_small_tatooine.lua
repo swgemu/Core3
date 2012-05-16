@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"mineral", "metal"},
    resourceQuantities = {40, 40},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

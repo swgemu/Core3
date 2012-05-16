@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"organic", "bone", "fruit_flowers"},
    resourceQuantities = {10, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

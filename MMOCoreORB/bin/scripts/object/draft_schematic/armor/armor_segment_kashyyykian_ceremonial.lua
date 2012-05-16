@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"hide_leathery", "wood", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {5, 20, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_flute_droopy = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {35, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

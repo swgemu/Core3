@@ -67,7 +67,6 @@ object_draft_schematic_item_item_recycler_flora = object_draft_schematic_item_sh
    ingredientSlotType = {1, 1, 0, 1, 2, 0},
    resourceTypes = {"object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "object/tangible/loot/simple_kit/shared_processor_attachments.iff", "object/tangible/loot/simple_kit/shared_spinning_blade.iff", "metal"},
    resourceQuantities = {1, 1, 50, 1, 4, 50},
-   combineTypes = {1, 1, 0, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

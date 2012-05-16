@@ -67,7 +67,6 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
    ingredientSlotType = {0, 0, 0, 1, 1, 3, 2},
    resourceTypes = {"steel", "iron", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {120, 60, 15, 4, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

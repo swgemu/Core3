@@ -67,7 +67,6 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"petrochem_inert", "metal_ferrous", "metal_nonferrous"},
    resourceQuantities = {20, 20, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spice
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"gemstone", "mineral", "fruit_fruits"},
    resourceQuantities = {15, 15, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

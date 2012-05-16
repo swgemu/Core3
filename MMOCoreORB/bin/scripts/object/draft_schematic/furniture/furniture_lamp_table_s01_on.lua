@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_lamp_table_s01_on = object_draft_sche
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "mineral"},
    resourceQuantities = {35, 15, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

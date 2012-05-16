@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_02 = object_draft_schemati
    ingredientSlotType = {1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_fiberplast_panel.iff", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {3, 20, 1},
-   combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
 

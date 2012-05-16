@@ -52,6 +52,7 @@ object_tangible_ship_crafted_engine_eng_mk3 = object_tangible_ship_crafted_engin
 	experimentalMin = {0, 0, 540, 1, 4250, 270, 1, 1403, 43, 43, 43, 49},
 	experimentalMax = {0, 0, 730, 1, 5750, 365, 1, 1898, 58, 58, 58, 67},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_eng_mk3, "object/tangible/ship/crafted/engine/eng_mk3.iff")

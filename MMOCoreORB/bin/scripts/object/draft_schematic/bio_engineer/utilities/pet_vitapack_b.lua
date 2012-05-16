@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_b = object_draft_sche
    ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"fruit_berries", "gas_reactive_known", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
    resourceQuantities = {28, 22, 2, 1},
-   combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

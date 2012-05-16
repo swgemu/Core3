@@ -51,6 +51,7 @@ object_tangible_furniture_decorative_tatooine_tapestry = object_tangible_furnitu
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 10},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_tatooine_tapestry, "object/tangible/furniture/decorative/tatooine_tapestry.iff")

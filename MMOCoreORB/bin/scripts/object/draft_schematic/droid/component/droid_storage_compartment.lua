@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "metal"},
    resourceQuantities = {12, 6, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -51,6 +51,7 @@ object_tangible_instrument_instrument_organ_max_rebo = object_tangible_instrumen
 	experimentalMin = {0, 0, 100, 1},
 	experimentalMax = {0, 0, 150, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_instrument_organ_max_rebo, "object/tangible/instrument/instrument_organ_max_rebo.iff")

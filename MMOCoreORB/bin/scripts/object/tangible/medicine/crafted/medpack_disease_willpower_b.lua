@@ -64,6 +64,7 @@ object_tangible_medicine_crafted_medpack_disease_willpower_b = object_tangible_m
 	experimentalMin = {0, 0, 10, 10, 15, 50, 25, 120, 1000},
 	experimentalMax = {0, 0, 40, 25, 30, 30, 100, 800, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_willpower_b, "object/tangible/medicine/crafted/medpack_disease_willpower_b.iff")

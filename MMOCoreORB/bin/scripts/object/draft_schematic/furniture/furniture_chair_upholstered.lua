@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "hide"},
    resourceQuantities = {90, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

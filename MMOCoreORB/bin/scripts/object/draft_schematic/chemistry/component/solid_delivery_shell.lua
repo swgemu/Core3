@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"organic", "metal"},
    resourceQuantities = {8, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -52,6 +52,7 @@ object_tangible_fishing_fishing_pole = object_tangible_fishing_shared_fishing_po
 	experimentalMin = {0, 0, 1000, 0},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 10},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fishing_pole, "object/tangible/fishing/fishing_pole.iff")

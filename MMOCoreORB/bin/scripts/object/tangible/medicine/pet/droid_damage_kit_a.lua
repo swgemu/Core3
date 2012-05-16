@@ -52,6 +52,7 @@ object_tangible_medicine_pet_droid_damage_kit_a = object_tangible_medicine_pet_s
 	experimentalMin = {0, 0, 150, 8, 1000},
 	experimentalMax = {0, 0, 750, 16, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_droid_damage_kit_a, "object/tangible/medicine/pet/droid_damage_kit_a.iff")

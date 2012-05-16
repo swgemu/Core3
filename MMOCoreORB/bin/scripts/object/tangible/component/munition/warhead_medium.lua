@@ -52,6 +52,7 @@ object_tangible_component_munition_warhead_medium = object_tangible_component_mu
 	experimentalMin = {0, 0, 10, 100, 0, 1000},
 	experimentalMax = {0, 0, 50, 200, 3, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_medium, "object/tangible/component/munition/warhead_medium.iff")

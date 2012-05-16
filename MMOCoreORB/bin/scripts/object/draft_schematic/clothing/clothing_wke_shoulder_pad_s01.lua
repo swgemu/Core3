@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s01 = object_draft_sch
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "bone"},
    resourceQuantities = {15, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

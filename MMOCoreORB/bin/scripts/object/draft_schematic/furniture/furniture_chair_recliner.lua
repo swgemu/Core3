@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "steel", "hide"},
    resourceQuantities = {80, 20, 120},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

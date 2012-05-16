@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_creature_creature_bolle_bol = object_draft_s
    ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "flora_food"},
    resourceQuantities = {1, 50, 65},
-   combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
 

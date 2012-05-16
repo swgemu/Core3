@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"ore", "metal"},
    resourceQuantities = {10, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

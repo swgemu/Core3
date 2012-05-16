@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_ferrous", "aluminum"},
    resourceQuantities = {150, 75},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

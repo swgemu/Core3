@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_sc
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"iron", "steel", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {15, 5, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

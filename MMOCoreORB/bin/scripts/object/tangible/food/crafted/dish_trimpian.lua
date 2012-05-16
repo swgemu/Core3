@@ -73,6 +73,7 @@ object_tangible_food_crafted_dish_trimpian = object_tangible_food_crafted_shared
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_trimpian, "object/tangible/food/crafted/dish_trimpian.iff")

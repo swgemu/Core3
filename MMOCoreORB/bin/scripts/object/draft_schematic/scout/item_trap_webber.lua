@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"bone", "metal", "petrochem_inert_polymer"},
    resourceQuantities = {15, 7, 13},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

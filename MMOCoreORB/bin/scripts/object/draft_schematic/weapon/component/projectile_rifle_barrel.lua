@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_projectile_rifle_barrel = object_draft_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {31, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

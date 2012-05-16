@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_tie_in = object_draft_schematic_space_chass
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast"},
    resourceQuantities = {9000, 3000, 3000, 3000, 3000, 3000, 3000, 3000},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

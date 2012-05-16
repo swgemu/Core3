@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_chitin_advanced = object_draft_schema
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"bone_mammal_dantooine", "iron_doonium", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {25, 8, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

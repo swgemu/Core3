@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_backpack_field_05 = object_draft_schema
    ingredientSlotType = {1, 1, 1, 0, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "hide", "metal", "steel_thoranium"},
    resourceQuantities = {1, 1, 1, 10, 5, 10},
-   combineTypes = {1, 1, 1, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

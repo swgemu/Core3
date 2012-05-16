@@ -52,6 +52,7 @@ object_tangible_component_droid_armor_module_4 = object_tangible_component_droid
 	experimentalMin = {0, 0, 5, 1000, -10, 400, 7},
 	experimentalMax = {0, 0, 15, 1000, 15, 900, 9},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_armor_module_4, "object/tangible/component/droid/armor_module_4.iff")

@@ -56,6 +56,7 @@ object_tangible_deed_factory_deed_factory_structure_deed = object_tangible_deed_
 	experimentalMin = {0, 0, 0, 5, 1500, 5000},
 	experimentalMax = {0, 0, 0, 12, 4000, 7000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_factory_structure_deed, "object/tangible/deed/factory_deed/factory_structure_deed.iff")

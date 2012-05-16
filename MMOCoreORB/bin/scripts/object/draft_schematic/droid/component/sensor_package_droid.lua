@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"steel", "copper", "ore", "chemical", "gas_inert", "metal"},
    resourceQuantities = {10, 4, 2, 5, 2, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

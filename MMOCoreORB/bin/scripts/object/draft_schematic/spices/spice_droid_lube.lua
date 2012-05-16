@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"chemical", "gas", "metal"},
    resourceQuantities = {10, 10, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

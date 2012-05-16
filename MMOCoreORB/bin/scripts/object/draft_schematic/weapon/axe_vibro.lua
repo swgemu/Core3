@@ -67,7 +67,6 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel_ditanium", "copper", "object/tangible/component/weapon/shared_vibro_unit.iff"},
    resourceQuantities = {38, 24, 2},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

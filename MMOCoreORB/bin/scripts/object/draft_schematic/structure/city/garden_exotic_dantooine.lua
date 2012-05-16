@@ -67,7 +67,6 @@ object_draft_schematic_structure_city_garden_exotic_dantooine = object_draft_sch
    ingredientSlotType = {0, 0, 2},
    resourceTypes = {"fruit_flowers_dantooine", "ore_extrusive", "object/tangible/component/structure/shared_wall_module.iff"},
    resourceQuantities = {3000, 1500, 13},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

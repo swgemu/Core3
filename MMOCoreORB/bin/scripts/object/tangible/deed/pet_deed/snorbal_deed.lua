@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_snorbal_deed = object_tangible_deed_pet_deed_share
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_snorbal_deed, "object/tangible/deed/pet_deed/snorbal_deed.iff")

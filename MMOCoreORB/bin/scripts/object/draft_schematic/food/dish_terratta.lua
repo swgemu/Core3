@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_terratta = object_draft_schematic_food_shared_d
    ingredientSlotType = {0, 0, 1, 0, 3},
    resourceTypes = {"hide_leathery", "meat_herbivore", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "milk", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {20, 20, 1, 20, 1},
-   combineTypes = {0, 0, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

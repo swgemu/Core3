@@ -52,6 +52,7 @@ object_tangible_food_crafted_dish_soypro = object_tangible_food_crafted_shared_d
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_soypro, "object/tangible/food/crafted/dish_soypro.iff")

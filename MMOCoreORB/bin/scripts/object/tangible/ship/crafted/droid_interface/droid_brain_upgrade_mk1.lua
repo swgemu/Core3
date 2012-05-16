@@ -52,6 +52,7 @@ object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk1 = object_ta
 	experimentalMin = {0, 0, -2, 39},
 	experimentalMax = {0, 0, -1, 61},
 	experimentalPrecision = {0, 0, 2, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/droid_brain_upgrade_mk1.iff")

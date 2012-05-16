@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"bone", "hide", "metal"},
    resourceQuantities = {7, 10, 3},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

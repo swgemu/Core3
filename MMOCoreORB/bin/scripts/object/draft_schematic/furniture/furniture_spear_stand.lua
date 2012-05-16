@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_spear_stand = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"iron", "wood"},
    resourceQuantities = {20, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

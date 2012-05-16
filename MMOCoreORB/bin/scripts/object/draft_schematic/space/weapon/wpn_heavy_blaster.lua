@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_wpn_heavy_blaster = object_draft_schematic_s
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk3.iff", "gas_inert", "ore_carbonate"},
    resourceQuantities = {250, 250, 1, 250, 250},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

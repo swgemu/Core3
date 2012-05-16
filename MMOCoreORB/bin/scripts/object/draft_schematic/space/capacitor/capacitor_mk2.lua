@@ -67,7 +67,6 @@ object_draft_schematic_space_capacitor_capacitor_mk2 = object_draft_schematic_sp
    ingredientSlotType = {0, 0, 0, 3, 0},
    resourceTypes = {"steel", "copper", "gas_inert", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "ore"},
    resourceQuantities = {125, 125, 125, 1, 125},
-   combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

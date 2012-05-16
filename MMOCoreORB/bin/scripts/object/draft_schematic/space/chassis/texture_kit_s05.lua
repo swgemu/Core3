@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_texture_kit_s05 = object_draft_schematic_sp
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "petrochem_inert"},
    resourceQuantities = {50, 125},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

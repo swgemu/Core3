@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_wpn_experimental_blaster_green = object_draf
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk5.iff", "gas_inert", "ore_carbonate"},
    resourceQuantities = {1250, 1250, 1, 1250, 1250},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

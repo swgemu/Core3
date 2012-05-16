@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_radio = object_draft_schematic_furnit
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {10, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

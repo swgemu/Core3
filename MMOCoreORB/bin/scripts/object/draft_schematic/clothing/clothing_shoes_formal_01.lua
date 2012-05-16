@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_shoes_formal_01 = object_draft_schemati
    ingredientSlotType = {0, 1, 0, 0},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_trim.iff", "hide", "petrochem_inert"},
    resourceQuantities = {25, 1, 10, 5},
-   combineTypes = {0, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

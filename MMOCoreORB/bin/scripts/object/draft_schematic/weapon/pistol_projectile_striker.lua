@@ -67,7 +67,6 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 1, 1, 3},
    resourceTypes = {"iron", "steel", "metal", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {30, 15, 6, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

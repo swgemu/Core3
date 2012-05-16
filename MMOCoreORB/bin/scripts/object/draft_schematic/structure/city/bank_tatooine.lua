@@ -67,7 +67,6 @@ object_draft_schematic_structure_city_bank_tatooine = object_draft_schematic_str
    ingredientSlotType = {0, 0, 0, 2, 1, 2},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
    resourceQuantities = {750, 1250, 300, 3, 1, 3},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

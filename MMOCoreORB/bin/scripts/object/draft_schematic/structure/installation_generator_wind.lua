@@ -67,7 +67,6 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
    resourceQuantities = {145, 45, 40, 20, 10},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

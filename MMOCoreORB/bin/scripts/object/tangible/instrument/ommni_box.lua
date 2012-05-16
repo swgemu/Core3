@@ -53,6 +53,7 @@ object_tangible_instrument_ommni_box = object_tangible_instrument_shared_ommni_b
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_ommni_box, "object/tangible/instrument/ommni_box.iff")

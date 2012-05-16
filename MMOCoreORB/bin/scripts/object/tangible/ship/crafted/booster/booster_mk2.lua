@@ -52,6 +52,7 @@ object_tangible_ship_crafted_booster_booster_mk2 = object_tangible_ship_crafted_
 	experimentalMin = {0, 0, 242, 1, 1225, 121, 1, 368, 770, 19, 77, 12, 15},
 	experimentalMax = {0, 0, 449, 1, 2275, 224, 1, 683, 1430, 36, 143, 22, 29},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_booster_mk2, "object/tangible/ship/crafted/booster/booster_mk2.iff")

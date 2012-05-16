@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
    ingredientSlotType = {1, 0, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "milk", "bone", "hide_leathery", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {4, 10, 20, 20, 1},
-   combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_hat_casual_10 = object_draft_schematic_
    ingredientSlotType = {1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {1, 25, 2},
-   combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
 

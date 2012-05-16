@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "steel"},
    resourceQuantities = {100, 45, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

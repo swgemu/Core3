@@ -52,6 +52,7 @@ object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk4 = object_tangib
 	experimentalMin = {0, 0, 373, -17},
 	experimentalMax = {0, 0, 692, -9},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk4, "object/tangible/ship/crafted/booster/extended_life_fuel_cell_mk4.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"fiberplast", "petrochem_inert", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"},
    resourceQuantities = {16, 4, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

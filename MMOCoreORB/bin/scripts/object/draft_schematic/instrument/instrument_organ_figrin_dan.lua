@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_organ_figrin_dan = object_draft_sch
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "wood"},
    resourceQuantities = {15, 30},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

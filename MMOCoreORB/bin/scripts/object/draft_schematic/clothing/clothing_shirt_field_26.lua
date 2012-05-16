@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_shirt_field_26 = object_draft_schematic
    ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "fiberplast", "metal"},
    resourceQuantities = {1, 20, 10},
-   combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
 

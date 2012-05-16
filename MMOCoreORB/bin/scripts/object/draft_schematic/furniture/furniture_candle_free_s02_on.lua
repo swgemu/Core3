@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_candle_free_s02_on = object_draft_sch
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"organic", "fiberplast", "metal"},
    resourceQuantities = {20, 15, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

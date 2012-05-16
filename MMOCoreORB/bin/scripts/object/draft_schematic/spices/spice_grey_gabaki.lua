@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_
    ingredientSlotType = {0, 0},
    resourceTypes = {"vegetable", "organic"},
    resourceQuantities = {15, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

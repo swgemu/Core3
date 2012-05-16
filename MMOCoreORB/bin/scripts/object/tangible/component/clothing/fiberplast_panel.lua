@@ -52,6 +52,7 @@ object_tangible_component_clothing_fiberplast_panel = object_tangible_component_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_fiberplast_panel, "object/tangible/component/clothing/fiberplast_panel.iff")

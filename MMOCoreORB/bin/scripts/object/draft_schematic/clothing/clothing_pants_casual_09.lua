@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_pants_casual_09 = object_draft_schemati
    ingredientSlotType = {0, 1, 0},
    resourceTypes = {"hide", "object/tangible/component/clothing/shared_metal_fasteners.iff", "hide"},
    resourceQuantities = {50, 2, 50},
-   combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 
 

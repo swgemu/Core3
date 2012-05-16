@@ -67,7 +67,6 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
    ingredientSlotType = {0, 0, 0, 2, 1},
    resourceTypes = {"metal", "hide", "ore", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
    resourceQuantities = {400, 600, 200, 20, 4},
-   combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

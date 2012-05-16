@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_utensils = object_draft_schematic_fur
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal_nonferrous", "metal_nonferrous", "petrochem_inert_polymer"},
    resourceQuantities = {45, 150, 50},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert", "metal", "gemstone", "copper"},
    resourceQuantities = {12, 6, 3, 4, 2},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

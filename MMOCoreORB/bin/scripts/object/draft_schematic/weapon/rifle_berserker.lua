@@ -67,7 +67,6 @@ object_draft_schematic_weapon_rifle_berserker = object_draft_schematic_weapon_sh
    ingredientSlotType = {0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal_ferrous", "iron", "metal", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff", "object/tangible/component/weapon/shared_corvette_rifle_barrel.iff"},
    resourceQuantities = {14, 35, 7, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

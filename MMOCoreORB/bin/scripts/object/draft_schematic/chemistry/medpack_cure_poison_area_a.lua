@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_cure_poison_area_a = object_draft_schem
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"creature_food", "gas", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {15, 15, 1, 2, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

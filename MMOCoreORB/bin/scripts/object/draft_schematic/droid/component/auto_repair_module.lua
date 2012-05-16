@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_auto_repair_module = object_draft_schemat
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "gas_inert", "aluminum"},
    resourceQuantities = {40, 20, 50},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

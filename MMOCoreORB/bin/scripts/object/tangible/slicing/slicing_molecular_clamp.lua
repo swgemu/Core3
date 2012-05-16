@@ -53,6 +53,7 @@ object_tangible_slicing_slicing_molecular_clamp = object_tangible_slicing_shared
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_molecular_clamp, "object/tangible/slicing/slicing_molecular_clamp.iff")

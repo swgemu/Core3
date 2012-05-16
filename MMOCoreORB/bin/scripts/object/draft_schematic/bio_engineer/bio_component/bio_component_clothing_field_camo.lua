@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_c
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"creature_food", "flora_structural", "fruit_flowers"},
    resourceQuantities = {20, 20, 25},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

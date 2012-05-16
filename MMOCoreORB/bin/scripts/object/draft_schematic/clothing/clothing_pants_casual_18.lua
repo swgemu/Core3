@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_pants_casual_18 = object_draft_schemati
    ingredientSlotType = {1, 0, 1, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {1, 40, 3, 2},
-   combineTypes = {1, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

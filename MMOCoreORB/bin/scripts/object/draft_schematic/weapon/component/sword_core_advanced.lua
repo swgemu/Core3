@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_sword_core_advanced = object_draft_schem
    ingredientSlotType = {0},
    resourceTypes = {"iron_dolovite"},
    resourceQuantities = {25},
-   combineTypes = {0},
    contribution = {100},
 
 

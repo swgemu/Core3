@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_fu
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "hide_wooly"},
    resourceQuantities = {150, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_dress_formal_35 = object_draft_schemati
    ingredientSlotType = {1, 1, 1, 0, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_jewelry_setting.iff", "metal", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide"},
    resourceQuantities = {3, 2, 2, 50, 3, 60},
-   combineTypes = {1, 1, 1, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

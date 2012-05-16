@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_speed_limiter_upgrade_mk5 = object_draft_sch
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "ore_siliclastic_fermionic"},
    resourceQuantities = {2000, 500},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -56,6 +56,7 @@ object_tangible_deed_player_house_deed_generic_house_small_floor_02_deed = objec
 	experimentalMin = {0, 0, 21000},
 	experimentalMax = {0, 0, 39000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_generic_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/generic_house_small_floor_02_deed.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_item_item_repairkit_armor = object_draft_schematic_item_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {10, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

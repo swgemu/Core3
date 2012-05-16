@@ -52,6 +52,7 @@ object_tangible_ship_crafted_capacitor_capacitor_mk4 = object_tangible_ship_craf
 	experimentalMin = {0, 0, 794, 1, 11934, 397, 1, 978, 566, 23},
 	experimentalMax = {0, 0, 1075, 1, 16146, 537, 1, 1323, 765, 31},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_capacitor_mk4, "object/tangible/ship/crafted/capacitor/capacitor_mk4.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_ris_acklay = object_draft_schematic_a
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 3, 3, 3, 1},
    resourceTypes = {"aluminum_titanium", "ore_intrusive_chanlon", "bone_mammal_yavin4", "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff", "object/tangible/component/armor/shared_hide_gurk_king.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff"},
    resourceQuantities = {160, 160, 75, 1, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

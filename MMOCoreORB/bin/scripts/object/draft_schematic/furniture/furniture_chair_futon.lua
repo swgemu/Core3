@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_
    ingredientSlotType = {0},
    resourceTypes = {"metal"},
    resourceQuantities = {175},
-   combineTypes = {0},
    contribution = {100},
 
 

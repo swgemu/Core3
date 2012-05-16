@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
    ingredientSlotType = {0, 0},
    resourceTypes = {"meat", "gas_reactive"},
    resourceQuantities = {10, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

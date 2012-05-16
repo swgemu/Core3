@@ -52,6 +52,7 @@ object_tangible_component_weapon_lightsaber_lightsaber_refined_crystal_pack = ob
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff")

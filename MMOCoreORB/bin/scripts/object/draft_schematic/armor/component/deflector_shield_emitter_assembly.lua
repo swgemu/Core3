@@ -67,7 +67,6 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal_nonferrous", "copper", "ore", "gemstone_crystalline"},
    resourceQuantities = {15, 10, 10, 5},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

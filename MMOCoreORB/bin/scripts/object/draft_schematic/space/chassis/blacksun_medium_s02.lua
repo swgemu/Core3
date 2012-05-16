@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_blacksun_medium_s02 = object_draft_schemati
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast"},
    resourceQuantities = {18000, 6000, 6000, 6000, 6000, 6000, 6000, 6000},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

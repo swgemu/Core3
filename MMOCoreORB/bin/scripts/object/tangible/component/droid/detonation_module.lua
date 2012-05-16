@@ -52,6 +52,7 @@ object_tangible_component_droid_detonation_module = object_tangible_component_dr
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_detonation_module, "object/tangible/component/droid/detonation_module.iff")

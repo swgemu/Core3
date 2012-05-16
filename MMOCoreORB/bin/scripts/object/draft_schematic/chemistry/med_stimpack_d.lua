@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"organic", "fiberplast", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 14, 1, 1, 2},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

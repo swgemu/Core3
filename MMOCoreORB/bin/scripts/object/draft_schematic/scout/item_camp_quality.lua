@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camp_quality = object_draft_schematic_scout_sh
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"hide", "bone", "metal"},
    resourceQuantities = {30, 15, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

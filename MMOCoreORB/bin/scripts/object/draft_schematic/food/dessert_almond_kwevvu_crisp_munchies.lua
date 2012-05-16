@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"cereal", "meat", "fruit", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {4, 2, 4, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

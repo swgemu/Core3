@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_couch_large = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "metal"},
    resourceQuantities = {150, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

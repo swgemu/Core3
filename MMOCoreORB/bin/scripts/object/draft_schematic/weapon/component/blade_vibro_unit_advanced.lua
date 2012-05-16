@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"copper_desh", "petrochem_fuel_solid_type3", "copper_platinite", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"},
    resourceQuantities = {25, 15, 13, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_storage_section = object_dr
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {50, 200},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

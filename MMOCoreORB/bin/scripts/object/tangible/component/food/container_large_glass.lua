@@ -52,6 +52,7 @@ object_tangible_component_food_container_large_glass = object_tangible_component
 	experimentalMin = {0, 0, 1.5},
 	experimentalMax = {0, 0, 1.5},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_container_large_glass, "object/tangible/component/food/container_large_glass.iff")

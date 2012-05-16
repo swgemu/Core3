@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"copper", "chemical", "metal"},
    resourceQuantities = {15, 15, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_zam_belt = object_draft_schematic
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"metal", "hide", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {15, 4, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

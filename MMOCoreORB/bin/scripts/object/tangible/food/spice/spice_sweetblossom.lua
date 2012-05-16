@@ -73,6 +73,7 @@ object_tangible_food_spice_spice_sweetblossom = object_tangible_food_spice_share
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_sweetblossom, "object/tangible/food/spice/spice_sweetblossom.iff")

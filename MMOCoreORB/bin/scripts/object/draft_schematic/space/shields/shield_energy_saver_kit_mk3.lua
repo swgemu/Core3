@@ -67,7 +67,6 @@ object_draft_schematic_space_shields_shield_energy_saver_kit_mk3 = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast_gravitonic"},
    resourceQuantities = {350, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

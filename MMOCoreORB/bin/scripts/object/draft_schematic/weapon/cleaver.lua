@@ -67,7 +67,6 @@ object_draft_schematic_weapon_cleaver = object_draft_schematic_weapon_shared_cle
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"iron_colat", "metal", "object/tangible/component/weapon/shared_sword_core.iff"},
    resourceQuantities = {42, 18, 2},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

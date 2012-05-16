@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_blacksun_light_s01_chassis_token = objec
 	experimentalMin = {0, 0, 1400, 39250},
 	experimentalMax = {0, 0, 1950, 40750},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_blacksun_light_s01_chassis_token, "object/tangible/ship/components/chassis/blacksun_light_s01_chassis_token.iff")

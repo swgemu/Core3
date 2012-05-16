@@ -67,7 +67,6 @@ object_draft_schematic_weapon_2h_sword_scythe = object_draft_schematic_weapon_sh
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel_carbonite", "aluminum_phrik", "object/tangible/component/weapon/shared_geonosian_sword_core.iff"},
    resourceQuantities = {60, 30, 2},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

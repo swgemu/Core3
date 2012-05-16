@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {5, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

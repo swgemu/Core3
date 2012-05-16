@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_corellia = object_draft_schematic_scou
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_insect_corellia", "hide_bristley_corellia", "bone_mammal_corellia"},
    resourceQuantities = {20, 30, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

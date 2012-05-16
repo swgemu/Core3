@@ -67,7 +67,6 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
    ingredientSlotType = {0, 3},
    resourceTypes = {"water", "object/tangible/component/bio/shared_bio_component_food_light.iff"},
    resourceQuantities = {10, 1},
-   combineTypes = {0, 1},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_microchaff_pack = obj
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {350, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

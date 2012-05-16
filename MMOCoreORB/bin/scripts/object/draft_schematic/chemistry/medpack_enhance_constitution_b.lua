@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_b = object_draft_s
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"meat_avian", "gas", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 18, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

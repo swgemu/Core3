@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_zam_helmet = object_draft_schemat
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1},
    resourceTypes = {"metal", "hide", "fiberplast", "metal", "petrochem_inert", "fiberplast", "object/tangible/component/armor/shared_armor_segment_zam.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {30, 30, 30, 20, 10, 20, 1, 2},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

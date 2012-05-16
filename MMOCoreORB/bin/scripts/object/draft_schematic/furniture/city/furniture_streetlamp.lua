@@ -67,7 +67,6 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    ingredientSlotType = {0, 0, 2},
    resourceTypes = {"metal", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {200, 100, 2},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

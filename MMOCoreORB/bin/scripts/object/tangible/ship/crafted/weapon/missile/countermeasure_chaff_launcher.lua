@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_launcher = obje
 	experimentalMin = {0, 0, 128, 850, 64, 1, 850, 0},
 	experimentalMax = {0, 0, 173, 1150, 86, 1, 1150, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_launcher.iff")

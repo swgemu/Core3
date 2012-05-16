@@ -52,6 +52,7 @@ object_tangible_ship_crafted_armor_experimental_armor = object_tangible_ship_cra
 	experimentalMin = {0, 0, 1247, 1, 26520, 1684, 0, 0},
 	experimentalMax = {0, 0, 1687, 1, 35880, 2278, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_experimental_armor, "object/tangible/ship/crafted/armor/experimental_armor.iff")

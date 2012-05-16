@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
    ingredientSlotType = {0, 0},
    resourceTypes = {"ore_intrusive_ionite", "armophous_baradium"},
    resourceQuantities = {15, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

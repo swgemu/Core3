@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
    ingredientSlotType = {0, 1, 0},
    resourceTypes = {"metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "metal"},
    resourceQuantities = {20, 1, 20},
-   combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 
 

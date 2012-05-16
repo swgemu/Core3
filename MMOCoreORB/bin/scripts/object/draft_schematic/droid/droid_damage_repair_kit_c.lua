@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_damage_repair_kit_c = object_draft_schematic_
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"aluminum", "fiberplast_dantooine", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff", "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"},
    resourceQuantities = {30, 25, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

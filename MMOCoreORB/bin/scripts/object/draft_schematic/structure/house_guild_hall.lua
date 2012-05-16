@@ -67,7 +67,6 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
    ingredientSlotType = {0, 0, 0, 2, 1, 1},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structural_module.iff"},
    resourceQuantities = {1250, 2250, 400, 15, 2, 8},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {40, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

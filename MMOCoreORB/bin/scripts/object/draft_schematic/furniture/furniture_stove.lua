@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_stove = object_draft_schematic_furnit
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"iron", "fuel_petrochem_liquid", "aluminum"},
    resourceQuantities = {35, 10, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

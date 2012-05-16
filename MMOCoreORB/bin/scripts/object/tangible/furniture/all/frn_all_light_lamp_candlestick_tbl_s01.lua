@@ -52,6 +52,7 @@ object_tangible_furniture_all_frn_all_light_lamp_candlestick_tbl_s01 = object_ta
 	experimentalMin = {0, 0, 1000, 7},
 	experimentalMax = {0, 0, 1000, 21},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_light_lamp_candlestick_tbl_s01, "object/tangible/furniture/all/frn_all_light_lamp_candlestick_tbl_s01.iff")

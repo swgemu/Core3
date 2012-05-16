@@ -52,6 +52,7 @@ object_tangible_ship_crafted_chassis_texture_kit_s03 = object_tangible_ship_craf
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_texture_kit_s03, "object/tangible/ship/crafted/chassis/texture_kit_s03.iff")

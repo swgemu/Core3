@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "chemical", "metal", "chemical"},
    resourceQuantities = {100, 150, 250, 50, 120},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_pistol_geo_sonic_blaster = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 3},
    resourceTypes = {"aluminum_chromium", "copper_mythra", "aluminum_chromium", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {142, 60, 28, 4, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

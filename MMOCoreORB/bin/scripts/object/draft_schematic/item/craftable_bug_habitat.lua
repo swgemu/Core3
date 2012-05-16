@@ -67,7 +67,6 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    ingredientSlotType = {0, 0, 2},
    resourceTypes = {"metal", "chemical", "object/tangible/bug_jar/shared_sample_bugs.iff"},
    resourceQuantities = {20, 10, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

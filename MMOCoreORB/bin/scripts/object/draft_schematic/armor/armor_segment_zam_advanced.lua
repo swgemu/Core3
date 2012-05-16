@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_zam_advanced = object_draft_schematic
    ingredientSlotType = {0, 0, 3},
    resourceTypes = {"iron_bronzium", "steel_ditanium", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {23, 6, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

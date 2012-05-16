@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "metal"},
    resourceQuantities = {8, 2},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

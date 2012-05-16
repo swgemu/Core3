@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
    ingredientSlotType = {1, 1, 1, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_berries", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {1, 1, 1, 10, 1},
-   combineTypes = {1, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

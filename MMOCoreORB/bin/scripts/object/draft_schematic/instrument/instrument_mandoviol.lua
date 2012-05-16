@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"softwood", "metal"},
    resourceQuantities = {45, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

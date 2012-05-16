@@ -67,7 +67,6 @@ object_draft_schematic_space_armor_durasteel_plating = object_draft_schematic_sp
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"aluminum", "steel", "object/tangible/ship/crafted/armor/shared_base_armor_subcomponent_mk2.iff", "ore", "petrochem_inert"},
    resourceQuantities = {125, 125, 1, 125, 125},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

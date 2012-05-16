@@ -45,7 +45,7 @@ object_draft_schematic_food_drink_tssolok = object_draft_schematic_food_shared_d
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "T\'ssolok",
+   customObjectName = "T\\\'ssolok",
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
@@ -67,7 +67,6 @@ object_draft_schematic_food_drink_tssolok = object_draft_schematic_food_shared_d
    ingredientSlotType = {1, 0, 2, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_drink_alcohol.iff", "organic", "object/tangible/component/food/base/shared_drink_container_base.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {3, 40, 1, 1},
-   combineTypes = {1, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

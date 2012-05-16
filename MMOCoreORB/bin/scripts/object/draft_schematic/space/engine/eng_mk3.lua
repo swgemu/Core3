@@ -67,7 +67,6 @@ object_draft_schematic_space_engine_eng_mk3 = object_draft_schematic_space_engin
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk3.iff", "iron", "aluminum"},
    resourceQuantities = {250, 250, 1, 250, 250},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

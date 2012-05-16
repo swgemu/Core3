@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_ottoman = object_draft_schemati
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "metal"},
    resourceQuantities = {150, 80},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

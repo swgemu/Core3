@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_tatooine_cafe = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {90, 60},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

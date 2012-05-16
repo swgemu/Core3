@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"metal", "gas_inert", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain.iff"},
    resourceQuantities = {5, 2, 35, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

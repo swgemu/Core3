@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_ris_chest_plate = object_draft_sc
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"armophous_vendusii", "fuel_petrochem_solid_known", "fiberplast_talus", "aluminum_chromium", "copper_platinite", "hide_wooly_rori", "object/tangible/component/armor/shared_armor_segment_ris.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/armor/shared_scale_giant_dune_kimogila.iff"},
    resourceQuantities = {300, 150, 120, 100, 80, 60, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

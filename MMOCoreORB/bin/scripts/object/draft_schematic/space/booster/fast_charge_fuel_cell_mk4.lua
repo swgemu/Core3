@@ -67,7 +67,6 @@ object_draft_schematic_space_booster_fast_charge_fuel_cell_mk4 = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "gas_reactive_organometallic"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_05 = object_draft_sche
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel", "gemstone_armophous", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
    resourceQuantities = {40, 60, 6},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

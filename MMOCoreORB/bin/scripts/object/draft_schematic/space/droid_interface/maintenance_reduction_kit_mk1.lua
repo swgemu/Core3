@@ -67,7 +67,6 @@ object_draft_schematic_space_droid_interface_maintenance_reduction_kit_mk1 = obj
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "copper_borocarbitic"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

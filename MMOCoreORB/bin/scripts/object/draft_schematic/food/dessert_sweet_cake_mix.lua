@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"wheat_domesticated", "fruit_berries", "fruit_fruits"},
    resourceQuantities = {15, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

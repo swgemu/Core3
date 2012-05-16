@@ -52,6 +52,7 @@ object_tangible_item_vehicle_customization = object_tangible_item_shared_vehicle
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_vehicle_customization, "object/tangible/item/vehicle_customization.iff")

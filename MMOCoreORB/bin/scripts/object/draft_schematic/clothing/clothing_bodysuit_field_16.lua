@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_bodysuit_field_16 = object_draft_schema
    ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "petrochem_inert"},
    resourceQuantities = {6, 40},
-   combineTypes = {1, 0},
    contribution = {100, 100},
 
 

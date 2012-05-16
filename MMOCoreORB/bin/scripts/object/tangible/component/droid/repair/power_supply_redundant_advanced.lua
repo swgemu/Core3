@@ -52,6 +52,7 @@ object_tangible_component_droid_repair_power_supply_redundant_advanced = object_
 	experimentalMin = {0, 0, 3, 1000},
 	experimentalMax = {0, 0, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_power_supply_redundant_advanced, "object/tangible/component/droid/repair/power_supply_redundant_advanced.iff")

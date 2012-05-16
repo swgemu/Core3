@@ -67,7 +67,6 @@ object_draft_schematic_space_droid_interface_droid_brain_upgrade_mk1 = object_dr
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "copper_borocarbitic"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

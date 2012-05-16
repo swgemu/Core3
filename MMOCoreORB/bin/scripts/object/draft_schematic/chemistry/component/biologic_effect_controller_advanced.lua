@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_biologic_effect_controller_advanced =
    ingredientSlotType = {0, 0},
    resourceTypes = {"wheat_wild_lok", "fiberplast_tatooine"},
    resourceQuantities = {18, 18},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

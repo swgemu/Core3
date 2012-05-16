@@ -52,6 +52,7 @@ object_tangible_ship_crafted_booster_fast_charge_fuel_cell_mk2 = object_tangible
 	experimentalMin = {0, 0, -572, 8},
 	experimentalMax = {0, 0, -308, 14},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_fast_charge_fuel_cell_mk2, "object/tangible/ship/crafted/booster/fast_charge_fuel_cell_mk2.iff")

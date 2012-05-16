@@ -67,7 +67,6 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "metal", "mineral"},
    resourceQuantities = {6, 4, 2, 2},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

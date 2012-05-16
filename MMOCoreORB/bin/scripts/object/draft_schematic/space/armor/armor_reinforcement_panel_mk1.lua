@@ -67,7 +67,6 @@ object_draft_schematic_space_armor_armor_reinforcement_panel_mk1 = object_draft_
    ingredientSlotType = {0},
    resourceTypes = {"steel"},
    resourceQuantities = {75},
-   combineTypes = {0},
    contribution = {100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron", "wood", "steel", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {35, 25, 8, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

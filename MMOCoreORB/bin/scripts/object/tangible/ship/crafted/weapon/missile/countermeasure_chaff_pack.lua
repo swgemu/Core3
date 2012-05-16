@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_pack = object_t
 	experimentalMin = {0, 0, 68, 43, 289, 12, 0},
 	experimentalMax = {0, 0, 92, 58, 391, 16, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_pack, "object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff")

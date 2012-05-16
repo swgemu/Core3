@@ -61,6 +61,7 @@ object_tangible_dice_eqp_configurable_group_dice = object_tangible_dice_shared_e
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_configurable_group_dice, "object/tangible/dice/eqp_configurable_group_dice.iff")

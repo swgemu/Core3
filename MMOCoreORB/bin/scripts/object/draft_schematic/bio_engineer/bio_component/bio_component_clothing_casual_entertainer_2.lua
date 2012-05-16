@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"creature_food", "flora_structural", "hide_scaley", "meat_egg"},
    resourceQuantities = {20, 25, 20, 15},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

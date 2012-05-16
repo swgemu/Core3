@@ -51,6 +51,7 @@ object_tangible_furniture_decorative_bubble_tank = object_tangible_furniture_dec
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_bubble_tank, "object/tangible/furniture/decorative/bubble_tank.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_basket_closed = object_draft_schemati
    ingredientSlotType = {0, 0},
    resourceTypes = {"softwood", "fiberplast"},
    resourceQuantities = {30, 20},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

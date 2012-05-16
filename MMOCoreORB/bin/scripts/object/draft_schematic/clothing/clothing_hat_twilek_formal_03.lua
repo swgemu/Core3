@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_03 = object_draft_sch
    ingredientSlotType = {1, 0, 1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "crystalline_green_diamond", "armophous_plexite"},
    resourceQuantities = {3, 20, 3, 10, 10},
-   combineTypes = {1, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

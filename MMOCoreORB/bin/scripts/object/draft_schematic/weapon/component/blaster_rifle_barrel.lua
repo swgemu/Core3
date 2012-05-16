@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_blaster_rifle_barrel = object_draft_sche
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "metal", "gemstone_crystalline", "metal"},
    resourceQuantities = {25, 12, 10, 5, 6},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bowl_plain = object_draft_schematic_f
    ingredientSlotType = {0},
    resourceTypes = {"wood"},
    resourceQuantities = {50},
-   combineTypes = {0},
    contribution = {100},
 
 

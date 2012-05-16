@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_enhance_disease_c = object_draft_schema
    ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"bone_mammal_lok", "corn_wild", "petrochem_inert_polymer", "armophous_regvis", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {12, 12, 12, 12, 1, 2, 4},
-   combineTypes = {0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

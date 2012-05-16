@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_slave_brazier = object_draft_schemati
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"iron", "metal", "fuel_petrochem_solid"},
    resourceQuantities = {80, 90, 25},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_item_item_shellfish_harvester = object_draft_schematic_it
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"aluminum", "copper", "gemstone_crystalline"},
    resourceQuantities = {40, 25, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

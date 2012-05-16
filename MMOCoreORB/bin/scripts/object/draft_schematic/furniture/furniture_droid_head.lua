@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_droid_head = object_draft_schematic_f
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "aluminum_titanium"},
    resourceQuantities = {90, 80},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

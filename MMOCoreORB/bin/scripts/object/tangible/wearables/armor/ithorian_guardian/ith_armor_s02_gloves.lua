@@ -78,6 +78,7 @@ object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_gloves = object_
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 13, 25, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 8, 15, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_gloves, "object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_gloves.iff")

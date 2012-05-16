@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chest_modern = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "steel"},
    resourceQuantities = {90, 120},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

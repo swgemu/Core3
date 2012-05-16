@@ -67,7 +67,6 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"steel_quadranium", "copper_polysteel", "metal", "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff"},
    resourceQuantities = {60, 30, 15, 2},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_crafting_module_structure = object_draft_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"aluminum", "gas_inert", "metal"},
    resourceQuantities = {30, 15, 40},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

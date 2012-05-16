@@ -55,6 +55,7 @@ object_tangible_scout_camokit_camokit_yavin = object_tangible_scout_camokit_shar
 	experimentalMin = {0, 0, 1000, 5},
 	experimentalMax = {0, 0, 1000, 20},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_camokit_yavin, "object/tangible/scout/camokit/camokit_yavin.iff")

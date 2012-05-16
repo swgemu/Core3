@@ -67,7 +67,6 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 1},
    resourceTypes = {"steel", "chemical", "ore_extrusive", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {30, 20, 25, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

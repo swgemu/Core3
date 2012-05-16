@@ -67,7 +67,6 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"inorganic", "metal", "chemical", "metal"},
    resourceQuantities = {7, 2, 4, 5},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

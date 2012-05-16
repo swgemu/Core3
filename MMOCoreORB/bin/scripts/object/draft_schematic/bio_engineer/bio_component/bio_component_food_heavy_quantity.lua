@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_quant
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"vegetable", "cereal", "meat_wild", "object/tangible/component/food/secrets/shared_secret_base.iff"},
    resourceQuantities = {25, 40, 30, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

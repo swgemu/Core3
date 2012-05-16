@@ -112,6 +112,7 @@ object_tangible_wearables_armor_composite_armor_composite_boots = object_tangibl
 	experimentalMin = {0, 0, 0, 1000, 1, 30000, 25, 44, 25, 1, 0, 0, 0},
 	experimentalMax = {0, 0, 0, 1000, 40, 50000, 15, 26, 15, 1, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_armor_composite_boots, "object/tangible/wearables/armor/composite/armor_composite_boots.iff")

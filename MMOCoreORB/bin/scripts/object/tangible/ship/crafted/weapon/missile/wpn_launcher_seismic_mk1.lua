@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_seismic_mk1 = object_ta
 	experimentalMin = {0, 0, 293, 2125, 147, 1, 893},
 	experimentalMax = {0, 0, 397, 2875, 198, 1, 1208},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_wpn_launcher_seismic_mk1, "object/tangible/ship/crafted/weapon/missile/wpn_launcher_seismic_mk1.iff")

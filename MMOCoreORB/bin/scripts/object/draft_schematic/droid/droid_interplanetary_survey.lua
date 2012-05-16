@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
    ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    resourceTypes = {"steel_carbonite", "chemical", "chemical", "crystalline_vertex", "radioactive_known", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {40, 20, 25, 30, 35, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

@@ -52,6 +52,7 @@ object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk2 = obj
 	experimentalMin = {0, 0, 1, -80},
 	experimentalMax = {0, 0, 2, -50},
 	experimentalPrecision = {0, 0, 2, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/maintenance_reduction_kit_mk2.iff")

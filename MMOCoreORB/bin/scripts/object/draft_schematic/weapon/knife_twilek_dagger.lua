@@ -67,7 +67,6 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "metal_ferrous", "petrochem_inert"},
    resourceQuantities = {9, 4, 7},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

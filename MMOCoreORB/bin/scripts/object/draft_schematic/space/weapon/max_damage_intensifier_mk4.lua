@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_max_damage_intensifier_mk4 = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "gas_reactive_organometallic"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

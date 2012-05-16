@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"gemstone_crystalline", "metal", "copper"},
    resourceQuantities = {15, 10, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

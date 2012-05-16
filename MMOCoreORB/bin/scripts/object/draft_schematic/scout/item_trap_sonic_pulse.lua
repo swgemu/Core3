@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_sonic_pulse = object_draft_schematic_scou
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"bone", "hide", "metal"},
    resourceQuantities = {15, 15, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

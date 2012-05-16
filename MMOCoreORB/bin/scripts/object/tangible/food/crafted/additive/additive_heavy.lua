@@ -52,6 +52,7 @@ object_tangible_food_crafted_additive_additive_heavy = object_tangible_food_craf
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_additive_heavy, "object/tangible/food/crafted/additive/additive_heavy.iff")

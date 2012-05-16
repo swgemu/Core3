@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "metal", "chemical", "ore"},
    resourceQuantities = {30, 10, 5, 5, 5},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

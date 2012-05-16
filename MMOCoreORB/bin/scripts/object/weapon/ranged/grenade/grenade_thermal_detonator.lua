@@ -73,6 +73,7 @@ object_weapon_ranged_grenade_grenade_thermal_detonator = object_weapon_ranged_gr
 	experimentalMin = {0, 0, 570, 1334, 5.4, 7, 1000, -16, -45, 0, 10, 64, 98, 98, 46},
 	experimentalMax = {0, 0, 870, 1690, 2.4, 13, 1000, 14, 15, 30, 30, 64, 53, 53, 25},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_thermal_detonator, "object/weapon/ranged/grenade/grenade_thermal_detonator.iff")

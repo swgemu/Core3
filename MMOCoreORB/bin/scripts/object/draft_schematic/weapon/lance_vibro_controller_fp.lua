@@ -67,7 +67,6 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
    ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"metal_ferrous", "metal", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/weapon/shared_vibro_unit.iff"},
    resourceQuantities = {17, 27, 1, 1},
-   combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

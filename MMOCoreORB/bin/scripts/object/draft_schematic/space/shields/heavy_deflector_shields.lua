@@ -67,7 +67,6 @@ object_draft_schematic_space_shields_heavy_deflector_shields = object_draft_sche
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "aluminum", "ore_siliclastic"},
    resourceQuantities = {250, 250, 1, 250, 250},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

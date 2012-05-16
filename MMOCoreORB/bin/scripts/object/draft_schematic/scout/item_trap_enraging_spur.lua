@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"bone", "hide", "bone"},
    resourceQuantities = {2, 4, 2},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

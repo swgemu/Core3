@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
    ingredientSlotType = {1, 1, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dish_protato.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "meat_carnivore", "vegetable", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {1, 1, 30, 40, 1},
-   combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

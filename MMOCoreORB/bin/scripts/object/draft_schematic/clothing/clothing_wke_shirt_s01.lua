@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_shirt_s01 = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "petrochem_inert_polymer"},
    resourceQuantities = {18, 2},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

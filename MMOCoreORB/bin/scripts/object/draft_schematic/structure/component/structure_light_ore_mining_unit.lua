@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "metal", "steel", "gas_inert"},
    resourceQuantities = {80, 72, 90, 65, 20},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

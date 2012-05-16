@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_sh
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"water", "radioactive", "metal"},
    resourceQuantities = {15, 15, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

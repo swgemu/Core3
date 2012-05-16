@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_wpn_advanced_ioncannon = object_tangible_shi
 	experimentalMin = {0, 0, 864, 1, 12987, 432, 1, 2128, 2277, 1472, 694, 231, 21, 315},
 	experimentalMax = {0, 0, 1005, 1, 15093, 502, 1, 2473, 2646, 1711, 806, 269, 24, 366},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_wpn_advanced_ioncannon, "object/tangible/ship/crafted/weapon/wpn_advanced_ioncannon.iff")

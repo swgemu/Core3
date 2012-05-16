@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
    ingredientSlotType = {0, 1, 0, 0},
    resourceTypes = {"meat", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "vegetable_beans", "hide_bristley"},
    resourceQuantities = {10, 1, 20, 10},
-   combineTypes = {0, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

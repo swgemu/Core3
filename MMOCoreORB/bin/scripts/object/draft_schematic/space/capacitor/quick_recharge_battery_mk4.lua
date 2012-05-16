@@ -67,7 +67,6 @@ object_draft_schematic_space_capacitor_quick_recharge_battery_mk4 = object_draft
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "copper_borocarbitic"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

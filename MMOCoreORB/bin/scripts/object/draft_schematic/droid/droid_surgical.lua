@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_surgical = object_draft_schematic_droid_share
    ingredientSlotType = {1, 0, 0, 0, 1, 1, 1, 3, 3, 3},
    resourceTypes = {"object/tangible/component/droid/shared_advanced_droid_frame.iff", "steel", "fiberplast", "metal_nonferrous", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff", "object/tangible/component/droid/shared_personality_module_base.iff"},
    resourceQuantities = {1, 60, 30, 30, 1, 1, 1, 1, 1, 1},
-   combineTypes = {1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

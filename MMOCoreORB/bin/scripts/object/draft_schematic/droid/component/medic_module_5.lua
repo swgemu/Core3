@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_medic_module_5 = object_draft_schematic_d
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"aluminum_duralumin", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff"},
    resourceQuantities = {20, 15, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

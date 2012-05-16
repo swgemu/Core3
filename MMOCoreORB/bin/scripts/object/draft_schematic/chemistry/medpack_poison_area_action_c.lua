@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_poison_area_action_c = object_draft_sch
    ingredientSlotType = {0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal_nonferrous", "vegetable_fungi", "fuel_petrochem_liquid", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
    resourceQuantities = {12, 20, 25, 2, 2, 2},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_decoy_pack = object_t
 	experimentalMin = {0, 0, 77, 51, 289, 12, 0},
 	experimentalMax = {0, 0, 104, 69, 391, 16, 0},
 	experimentalPrecision = {0, 0, 10, 10, 0, 10, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_decoy_pack, "object/tangible/ship/crafted/weapon/missile/countermeasure_decoy_pack.iff")

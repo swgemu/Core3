@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camp_multi = object_draft_schematic_scout_shar
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "bone"},
    resourceQuantities = {20, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_binary_load_lifter_advanced = object_draft_sc
    ingredientSlotType = {0, 0, 1, 1, 3, 3, 3, 3},
    resourceTypes = {"chemical", "chemical", "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_socket_bank.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {90, 190, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

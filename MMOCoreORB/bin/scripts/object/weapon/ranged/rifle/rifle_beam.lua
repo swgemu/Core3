@@ -129,6 +129,7 @@ object_weapon_ranged_rifle_rifle_beam = object_weapon_ranged_rifle_shared_rifle_
 	experimentalMin = {0, 0, 53, 95, 6.2, 19, 750, -10, 26, 58, 55},
 	experimentalMax = {0, 0, 98, 176, 4.3, 35, 1500, 10, 14, 32, 24},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_beam, "object/weapon/ranged/rifle/rifle_beam.iff")

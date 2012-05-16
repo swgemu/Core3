@@ -67,7 +67,6 @@ object_draft_schematic_space_booster_extended_life_fuel_cell_mk5 = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {2000, 500},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

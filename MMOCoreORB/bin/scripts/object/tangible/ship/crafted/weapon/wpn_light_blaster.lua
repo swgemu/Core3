@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_wpn_light_blaster = object_tangible_ship_cra
 	experimentalMin = {0, 0, 139, 1, 833, 69, 1, 1850, 361, 268, 463, 463, 16, 315},
 	experimentalMax = {0, 0, 161, 1, 968, 81, 1, 2150, 419, 312, 538, 538, 18, 366},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_wpn_light_blaster, "object/tangible/ship/crafted/weapon/wpn_light_blaster.iff")

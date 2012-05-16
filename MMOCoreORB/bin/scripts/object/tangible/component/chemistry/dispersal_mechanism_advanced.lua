@@ -52,6 +52,7 @@ object_tangible_component_chemistry_dispersal_mechanism_advanced = object_tangib
 	experimentalMin = {0, 0, 0, 5, 20, 5, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 30, 5, 25, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_dispersal_mechanism_advanced, "object/tangible/component/chemistry/dispersal_mechanism_advanced.iff")

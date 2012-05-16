@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_ris = object_draft_schematic_armor_sh
    ingredientSlotType = {0, 0, 0, 1, 1, 3, 3, 3, 3},
    resourceTypes = {"aluminum_titanium", "ore_intrusive_chanlon", "fiberplast_rori", "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff", "object/tangible/component/armor/shared_hide_gurk_king.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer_ris.iff"},
    resourceQuantities = {160, 160, 75, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

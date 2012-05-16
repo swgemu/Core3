@@ -67,7 +67,6 @@ object_draft_schematic_item_quest_item_attunement_grid = object_draft_schematic_
    ingredientSlotType = {1, 1, 1},
    resourceTypes = {"object/tangible/component/item/quest_item/shared_particle_sensor.iff", "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff", "object/tangible/component/item/quest_item/shared_momentum_compensator.iff"},
    resourceQuantities = {1, 1, 1},
-   combineTypes = {1, 1, 1},
    contribution = {100, 100, 100},
 
 

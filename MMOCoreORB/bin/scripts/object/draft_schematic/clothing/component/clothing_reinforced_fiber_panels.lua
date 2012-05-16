@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
    ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"fiberplast", "petrochem_inert", "fiberplast", "metal", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"},
    resourceQuantities = {5, 5, 15, 5, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 
