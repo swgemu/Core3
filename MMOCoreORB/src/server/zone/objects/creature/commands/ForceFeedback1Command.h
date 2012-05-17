@@ -68,8 +68,8 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_ABSORB_1;
-		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_ABSORB_2;
+		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_FEEDBACK_1;
+		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_FEEDBACK_2;
 
 		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2)) {
 			creature->sendSystemMessage("@jedi_spam:force_buff_present");
