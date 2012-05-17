@@ -217,14 +217,11 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
-	if (alreadyHarvested == NULL)
-		alreadyHarvested = new SortedVector<unsigned long long>();
-
-	alreadyHarvested->put(player->getObjectID());
+	alreadyHarvested.put(player->getObjectID());
 }
 
 void CreatureImplementation::notifyDespawn(Zone* zone) {
-	alreadyHarvested->removeAll();
+	alreadyHarvested.removeAll();
 
 	AiAgentImplementation::notifyDespawn(zone);
 }
@@ -236,7 +233,7 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 	if (player->getSkillMod("creature_harvesting") < 1)
 		return false;
 
-	if (alreadyHarvested != NULL && alreadyHarvested->contains(player->getObjectID()))
+	if (alreadyHarvested.contains(player->getObjectID()))
 		return false;
 
 	SceneObject* creatureInventory = getSlottedObject("inventory");

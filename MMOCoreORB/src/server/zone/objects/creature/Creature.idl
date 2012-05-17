@@ -57,13 +57,13 @@ import server.zone.Zone;
 
 class Creature extends AiAgent {
 	
+	@dereferenced
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
 	public Creature() {
 		Logger.setLoggingName("Creature");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		alreadyHarvested = null;
 	}
 	
 	/**
