@@ -526,6 +526,7 @@ corellia_static_spawns = {
 	{"trainer_musician",0,-5408,24.7288,-6260,50,0},
 	{"trainer_pistol",0,-5220,0,-2488,180,0},
 	{"trainer_polearm",0,-3412,86,3084,0,0},
+	{"trainer_politician",0,-218,0,-4500,0,0},
 	{"trainer_ranger",0,-505,0,-4633,180,0},
 	{"trainer_rifleman",0,-5234,21,-2488,176,0},
 	{"trainer_scout",0,-169.45,28,-4712.58,134,0},

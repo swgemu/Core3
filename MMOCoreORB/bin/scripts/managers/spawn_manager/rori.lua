@@ -180,6 +180,7 @@ rori_static_spawns = {
 	{"trainer_musician",0,21.5522,2.12797,63.5137,0,4635403},
 	{"trainer_pistol",0,-5240,0,-2454,180,0},
 	{"trainer_polearm",0,-5278,0,-2328,180,0},
+	{"trainer_politician",0,-5165,0,-2461,180,0},
 	{"trainer_ranger",0,-5167,0,-2535,180,0},
 	{"trainer_rifleman",0,-5215,80,-2373,182,0},
 	{"trainer_rifleman",0,3649,96,-6492,45,0},

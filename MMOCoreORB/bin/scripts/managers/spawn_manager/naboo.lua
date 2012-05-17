@@ -325,6 +325,7 @@ naboo_static_spawns = {
 	{"trainer_musician",0,21.7817,2.12808,63.5,1,4105618, ""},
 	{"trainer_pistol",0,1253,0,2686,180,0, ""},
 	{"trainer_polearm",0,-5375.06,6,4310.92,84,0, ""},
+	{"trainer_politician",0,4702,0,-1368,84,0, ""},
 	{"trainer_ranger",0,5279,0,6594,180,0, ""},
 	{"trainer_rifleman",0,1276,13,2685,73,0, ""},
 	{"trainer_scout",0,5192.38,-192,6614.09,5,0, ""},
