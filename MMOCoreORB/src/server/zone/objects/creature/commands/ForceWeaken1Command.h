@@ -46,12 +46,13 @@ which carries forward this exception.
 #define FORCEWEAKEN1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForcePowersQueueCommand.h"
 
-class ForceWeaken1Command : public QueueCommand {
+class ForceWeaken1Command : public ForcePowersQueueCommand {
 public:
 
 	ForceWeaken1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForcePowersQueueCommand(name, server) {
 
 	}
 
@@ -62,6 +63,26 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		int res = doCombatAction(creature, target);
+
+		if (res == SUCCESS) {
+
+			// Setup debuff.
+
+			SceneObject* object = server->getZoneServer()->getObject(target);
+			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+
+			ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 90, BuffType::JEDI);
+			buff->setAttributeModifier(System::random(2) * 3, -300);
+
+			creatureTarget->addBuff(buff);
+
+		}
 
 		return SUCCESS;
 	}

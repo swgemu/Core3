@@ -43,6 +43,20 @@
 
 ForceWeaken2Command = {
         name = "forceweaken2",
+        
+            damageMax = 0,
+	speed = 4.0,
+	forceCost = 400,
+	accuracySkillMod = "forceweaken_accuracy";
+	
+	
+	animationCRC = hashCode("force_weaken_1_particle_level_1_light"),
+
+	combatSpam = "forceweaken2",
+	
+	poolsToDamage = NONE,
+
+	range = 32
 }
 
 AddCommand(ForceWeaken2Command)

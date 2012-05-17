@@ -32,7 +32,7 @@ public:
 				damage *= 0.25; // Player reduction.
 
 
-			if (counter < amountOfTicks && !creature->isIncapacitated() && !creature->isDead()) {
+			if (counter < amountOfTicks && !creature->isIncapacitated() && !creature->isDead() && (creature->getPvpStatusBitmask() != CreatureFlag::NONE)) {
 
 				creature->inflictDamage(creature, CreatureAttribute::HEALTH, damage, true);
 				creature->inflictDamage(creature, CreatureAttribute::ACTION, damage, true);
