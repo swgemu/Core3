@@ -756,67 +756,36 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
-	// Next is Jedi Force Armor and Shield reduction.
-
-	int forceArmor = defender->getSkillMod("force_armor");
-
-	if (forceArmor > 0 && (data.getAttackType() != CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-		damage *= (1.f - (forceArmor / 100.f));
-
-		int damageSent = originalDamage - damage;
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
-	}
-
-
-	// Force Shield.
-
-	int forceShield = defender->getSkillMod("force_shield");
-
-	if (forceShield > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-		damage *= (1.f - (forceShield / 100.f));
-
-		int damageSent = originalDamage - damage;
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
-	}
-
-	// Next is Force Absorb and Force Feedback, only against force attack types.
-
-	int forceAbsorb = defender->getSkillMod("force_absorb");
-
-	if (forceAbsorb > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage);
-	}
-
-	// Feedback.
-
-	int forceFeedback = defender->getSkillMod("force_feedback");
-
-	if (forceFeedback > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-
-		int rand = System::random(2);
-
-		switch (rand) {
-		case 0:
-			defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (damage * (forceFeedback / 100.f)), true);
-			break;
-		case 1:
-			defender->inflictDamage(attacker, CreatureAttribute::ACTION, (damage * (forceFeedback / 100.f)), true);
-			break;
-		case 2:
-			defender->inflictDamage(attacker, CreatureAttribute::MIND, (damage * (forceFeedback / 100.f)), true);
-			break;
-		default:
-			break;
+	// Next is Jedi stuff
+	if (data.getAttackType() == CombatManager::FORCEATTACK) {
+		// Force Shield
+		int forceShield = defender->getSkillMod("force_shield");
+		if (forceShield > 0) {
+			float originalDamage = damage;
+			damage *= (1.f - (forceShield / 100.f));
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage - damage);
 		}
 
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage);
+		// Force Absorb
+		int forceAbsorb = defender->getSkillMod("force_absorb");
+		if (forceAbsorb > 0) {
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damage);
+		}
+
+		// Force Feedback
+		int forceFeedback = defender->getSkillMod("force_feedback");
+		if (forceFeedback > 0) {
+			defender->inflictDamage(attacker, System::random(2) * 3, (damage * (forceFeedback / 100.f)), true);
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damage);
+		}
+	} else {
+		// Force Armor
+		int forceArmor = defender->getSkillMod("force_armor");
+		if (forceArmor > 0) {
+			float originalDamage = damage;
+			damage *= (1.f - (forceArmor / 100.f));
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage - damage);
+		}
 	}
 
 	// now apply the rest of the damage to the regular armor

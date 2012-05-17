@@ -97,12 +97,10 @@ public:
 		StringIdChatParameter startStringId("jedi_spam", "apply_forceabsorb1");
 		StringIdChatParameter endStringId("jedi_spam", "remove_forceabsorb1");
 
-		int duration = 60;
-
 		Vector<unsigned int> eventTypes;
 		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
-		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
+		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, 60, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_absorb", 1);
@@ -115,21 +113,17 @@ public:
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
-
-		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>( creature);
+		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(creature);
+		if (creo == NULL)
+			return;
 
 		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
+		if (playerObject == NULL)
+			return;
 
-		if (playerObject != NULL) {
-
-			// Client Effect upon hit (needed)
-			creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
-
-			int fP = playerObject->getForcePower();
-			int forceBonus = param * 0.5;
-
-			playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
-		}
+		// Client Effect upon hit (needed)
+		creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
+		playerObject->setForcePower(playerObject->getForcePower() + (param * 0.5));
 	}
 
 };
