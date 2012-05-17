@@ -117,13 +117,8 @@ public:
 		if (creo == NULL)
 			return;
 
-		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
-		if (playerObject == NULL)
-			return;
-
 		// Client Effect upon hit (needed)
 		creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
-		playerObject->setForcePower(playerObject->getForcePower() + (param * 0.5));
 	}
 
 };

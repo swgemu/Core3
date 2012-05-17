@@ -115,21 +115,12 @@ public:
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
+		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(creature);
+		if (creo == NULL)
+			return;
 
-		ManagedReference<CreatureObject*> creo = cast<CreatureObject*>( creature);
-
-		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
-
-		if (playerObject != NULL) {
-
-			// Client Effect upon hit (needed)
-			creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
-
-			int fP = playerObject->getForcePower();
-			int forceBonus = param * 0.5;
-
-			playerObject->setForcePower(playerObject->getForcePower() + forceBonus);
-		}
+		// Client Effect upon hit (needed)
+		creo->playEffect("clienteffect/pl_force_absorb_hit.cef", "");
 	}
 
 };
