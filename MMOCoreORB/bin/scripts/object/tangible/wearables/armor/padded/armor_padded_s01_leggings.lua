@@ -116,7 +116,7 @@ object_tangible_wearables_armor_padded_armor_padded_s01_leggings = object_tangib
 	experimentalMin = {0, 0, 0, 1000, 1, 18750, 52, 175, 23, 1, 4, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 30, 31250, 31, 105, 14, 1, 4, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_armor_padded_s01_leggings, "object/tangible/wearables/armor/padded/armor_padded_s01_leggings.iff")

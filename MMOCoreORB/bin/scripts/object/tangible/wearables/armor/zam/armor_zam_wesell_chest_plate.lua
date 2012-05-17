@@ -116,7 +116,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate = object_tangib
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 75, 11, 6, 1, 32, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 45, 7, 3, 1, 32, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/armor_zam_wesell_chest_plate.iff")

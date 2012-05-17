@@ -78,7 +78,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_br
 	experimentalMin = {0, 0, 0, 1000, 1, 30000, 25, 22, 25, 1, 0, 0, 0},
 	experimentalMax = {0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_bracer_l, "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_l.iff")

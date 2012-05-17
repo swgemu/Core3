@@ -52,7 +52,7 @@ object_tangible_component_armor_armor_layer_kinetic = object_tangible_component_
 	experimentalMin = {0, 0, 1000, 1, 100, 20, 20, 20, 1, 1, 1, 20},
 	experimentalMax = {0, 0, 1000, 5, 1000, 0, 0, 0, 1, 1, 15, 50},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_layer_kinetic, "object/tangible/component/armor/armor_layer_kinetic.iff")

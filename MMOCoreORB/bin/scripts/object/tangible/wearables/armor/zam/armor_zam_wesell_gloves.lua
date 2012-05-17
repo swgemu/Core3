@@ -112,7 +112,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_gloves = object_tangible_we
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 8, 8, 6, 1, 32, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 5, 5, 3, 1, 32, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_armor_zam_wesell_gloves, "object/tangible/wearables/armor/zam/armor_zam_wesell_gloves.iff")

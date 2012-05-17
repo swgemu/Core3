@@ -79,7 +79,7 @@ object_tangible_wearables_armor_ithorian_defender_ith_armor_s01_bicep_r = object
 	experimentalMin = {0, 0, 0, 1000, 1, 18750, 17, 22, 23, 1, 4, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 30, 31250, 10, 13, 14, 1, 4, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_defender_ith_armor_s01_bicep_r, "object/tangible/wearables/armor/ithorian_defender/ith_armor_s01_bicep_r.iff")

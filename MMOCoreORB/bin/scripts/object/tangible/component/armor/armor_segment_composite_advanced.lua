@@ -52,7 +52,7 @@ object_tangible_component_armor_armor_segment_composite_advanced = object_tangib
 	experimentalMin = {0, 0, 1000, 1, 100, 13, 13, 16, 1, 256, 1, 100},
 	experimentalMax = {0, 0, 1000, 25, 1000, 1, 1, 1, 1, 256, 35, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_composite_advanced, "object/tangible/component/armor/armor_segment_composite_advanced.iff")

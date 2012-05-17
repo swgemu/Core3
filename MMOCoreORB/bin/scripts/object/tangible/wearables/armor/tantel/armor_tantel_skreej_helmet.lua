@@ -107,7 +107,7 @@ object_tangible_wearables_armor_tantel_armor_tantel_skreej_helmet = object_tangi
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 9, 11, 105, 1, 2, 5, 11250},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 6, 7, 63, 1, 2, 30, 18750},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_armor_tantel_skreej_helmet, "object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet.iff")
