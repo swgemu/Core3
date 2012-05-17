@@ -783,6 +783,41 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
 	}
 
+	// Next is Force Absorb and Force Feedback, only against force attack types.
+
+	int forceAbsorb = defender->getSkillMod("force_absorb");
+
+	if (forceAbsorb > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
+		float originalDamage = damage;
+
+		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage);
+	}
+
+	// Feedback.
+
+	int forceFeedback = defender->getSkillMod("force_feedback");
+
+	if (forceFeedback > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
+		float originalDamage = damage;
+
+		int rand = System::random(2);
+
+		switch (rand) {
+		case 0:
+			defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (damage * (forceFeedback / 100.f)), true);
+			break;
+		case 1:
+			defender->inflictDamage(attacker, CreatureAttribute::ACTION, (damage * (forceFeedback / 100.f)), true);
+			break;
+		case 2:
+			defender->inflictDamage(attacker, CreatureAttribute::MIND, (damage * (forceFeedback / 100.f)), true);
+			break;
+		default:
+			break;
+		}
+
+		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, originalDamage);
+	}
 
 	// now apply the rest of the damage to the regular armor
 	ManagedReference<ArmorObject*> armor = NULL;
