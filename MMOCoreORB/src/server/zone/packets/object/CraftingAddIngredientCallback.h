@@ -58,11 +58,6 @@ public:
 			return;
 		}
 
-		if (!object->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
-			player->sendSystemMessage("@error_message:perm_no_move");
-			return;
-		}
-
 		Locker locker(session);
 		TangibleObject* tano = cast<TangibleObject*>( object.get());
 		session->addIngredient(tano, slot, counter);
