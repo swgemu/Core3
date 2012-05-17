@@ -372,6 +372,9 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
 	bool wasEmpty = false;
 
+	if (ingredientSlot == NULL)
+		return IngredientSlot::INVALIDINGREDIENT;
+
 	if(ingredientSlot->isFull())
 		return IngredientSlot::FULL;
 
