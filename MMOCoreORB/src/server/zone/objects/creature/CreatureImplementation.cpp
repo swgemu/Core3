@@ -224,7 +224,7 @@ void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
 }
 
 void CreatureImplementation::notifyDespawn(Zone* zone) {
-	alreadyHarvested = NULL;
+	alreadyHarvested->removeAll();
 
 	AiAgentImplementation::notifyDespawn(zone);
 }
