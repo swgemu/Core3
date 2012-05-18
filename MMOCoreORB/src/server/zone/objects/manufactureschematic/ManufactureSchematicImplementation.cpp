@@ -155,6 +155,7 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 }
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
+	Locker (_this);
 
 	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
