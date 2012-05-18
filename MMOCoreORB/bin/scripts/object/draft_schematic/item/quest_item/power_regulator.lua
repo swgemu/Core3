@@ -43,6 +43,37 @@
 
 object_draft_schematic_item_quest_item_power_regulator = object_draft_schematic_item_quest_item_shared_power_regulator:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Power Regulator",
+
+   craftingToolTab = 2148007936, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "artisan_clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"voltage_inducer", "current_motivator", "tuning_cell"},
+   ingredientSlotType = {2, 2, 2},
+   resourceTypes = {"object/tangible/component/item/quest_item/shared_voltage_inducer.iff", "object/tangible/component/item/quest_item/shared_current_motivator.iff", "object/tangible/component/item/quest_item/shared_tuning_cell.iff"},
+   resourceQuantities = {1, 1, 1},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/mission/quest_item/power_regulator.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_power_regulator, "object/draft_schematic/item/quest_item/power_regulator.iff")

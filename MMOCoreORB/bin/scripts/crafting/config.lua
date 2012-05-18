@@ -1729,6 +1729,7 @@ schematics = {
 {path="object/draft_schematic/item/quest_item/current_alternator.iff"},
 {path="object/draft_schematic/item/quest_item/feedback_controller.iff"},
 {path="object/draft_schematic/item/quest_item/output_governor.iff"},
+{path="object/draft_schematic/item/quest_item/power_regulator.iff"},
 {path="object/draft_schematic/vehicle/civilian/landspeeder_av21.iff"},
 {path="object/draft_schematic/weapon/2h_sword_scythe.iff"},
 {path="object/draft_schematic/weapon/executioners_hack.iff"},
