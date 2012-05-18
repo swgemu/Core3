@@ -68,7 +68,7 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 
 			filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
 			if(values->hasProperty("add_filling"))
-				filling *= (1 -(values->hasProperty("add_filling") / 100.f));
+				filling *= (1 -(values->getCurrentValue("add_filling") / 100.f));
 
 		}
 
@@ -90,7 +90,7 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 
 
 			if(values->hasProperty("add_quantity"))
-				quant *= (1 + (values->hasProperty("add_quantity") / 100.f));
+				quant *= (1 + (values->getCurrentValue("add_quantity") / 100.f));
 
 			setUseCount(quant, true);
 		}
@@ -99,7 +99,7 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 			duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
 
 			if(values->hasProperty("add_duration"))
-				duration *= (1 + (values->hasProperty("add_duration") / 100.f));
+				duration *= (1 + (values->getCurrentValue("add_duration") / 100.f));
 
 		}
 
@@ -107,7 +107,7 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 			nutrition = (nutritionMax - nutritionMin) * values->getCurrentPercentage("nutrition") + nutritionMin;
 
 			if(values->hasProperty("add_nutrition"))
-				nutrition *= (1 + (values->hasProperty("add_nutrition") / 100.f));
+				nutrition *= (1 + (values->getCurrentValue("add_nutrition") / 100.f));
 		}
 	}
 }
