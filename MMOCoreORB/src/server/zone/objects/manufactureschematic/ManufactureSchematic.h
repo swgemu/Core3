@@ -258,6 +258,8 @@ protected:
 
 	bool completed;
 
+	bool initialized;
+
 	int ingredientCounter;
 
 	int experimentingCounter;

@@ -105,6 +105,7 @@ class ManufactureSchematic extends IntangibleObject {
 
 	protected transient boolean assembled;
 	protected transient boolean completed;
+	protected transient boolean initialized;
 	protected transient int ingredientCounter;
 	protected transient int experimentingCounter;
 	protected transient int experimentingCounterPrevious;
@@ -126,6 +127,20 @@ class ManufactureSchematic extends IntangibleObject {
 		craftingValues = new CraftingValues();
 		
 		prototype = null;
+		
+		draftSchematic = null;
+		dataSize = 0;
+		complexity = 0;
+		crafter = null;
+		
+		assembled = false;
+		completed = false;
+		initialized = false;
+		ingredientCounter = 0;
+		experimentingCounter = 0;
+		experimentingCounterPrevious = 0;
+		
+		possibleSyncIssue = false;
 		
 		manufactureLimit = 1000;
 		

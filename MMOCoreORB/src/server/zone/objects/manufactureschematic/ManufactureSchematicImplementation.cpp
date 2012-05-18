@@ -156,7 +156,7 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
 
-	if(!player->isPlayerCreature() || draftSchematic == NULL)
+	if(!player->isPlayerCreature() || draftSchematic == NULL || initialized)
 		return;
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
@@ -315,6 +315,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 	assembled = false;
 	completed = false;
+	initialized = true;
 	complexity = draftSchematic->getComplexity();
 	manufactureLimit = 0;
 	ingredientCounter = draftSchematic->getDraftSlotCount() * 4;
