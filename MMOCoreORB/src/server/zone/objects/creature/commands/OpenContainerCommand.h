@@ -69,7 +69,18 @@ public:
 
 		//creature->info("OpenContainerCommand", true);
 
-		ManagedReference<SceneObject*> objectToOpen = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> objectToOpen = NULL;
+
+		StringTokenizer args(arguments.toString());
+
+		if(args.hasMoreTokens()) {
+
+			uint64 oid = args.getLongToken();
+			objectToOpen = server->getZoneServer()->getObject(oid);
+
+		} else {
+			objectToOpen = server->getZoneServer()->getObject(target);
+		}
 
 		if (objectToOpen == NULL)
 			return GENERALERROR;
