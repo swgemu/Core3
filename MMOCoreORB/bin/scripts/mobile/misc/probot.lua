@@ -26,7 +26,7 @@ probot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/probot.iff"},
+	templates = {"object/creature/npc/droid/crafted/imperial_probot.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
