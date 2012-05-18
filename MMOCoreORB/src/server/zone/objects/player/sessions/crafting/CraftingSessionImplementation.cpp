@@ -251,12 +251,7 @@ void CraftingSessionImplementation::sendSlotMessage(int counter, int message) {
 void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	if (index >= currentSchematicList.size()) {
-		StringBuffer message;
-		message << "Selected draft schematic is out of range, index = "
-				<< index << " Schematic List size = "
-				<< currentSchematicList.size();
-		crafter->sendSystemMessage(message.toString());
-		error(message.toString());
+		crafter->sendSystemMessage("Invalid Schematic Index");
 		closeCraftingWindow(1);
 		cancelSession();
 		return;

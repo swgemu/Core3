@@ -75,7 +75,6 @@ public:
 		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
 		if(session == NULL) {
-			warning("Trying to move to next crafting stage when no session exists");
 			return GENERALERROR;
 		}
 

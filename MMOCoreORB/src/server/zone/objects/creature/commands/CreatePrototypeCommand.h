@@ -93,7 +93,6 @@ public:
 		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
 		if(session == NULL) {
-			warning("Trying to create manf schematic when no session exists");
 			return GENERALERROR;
 		}
 
