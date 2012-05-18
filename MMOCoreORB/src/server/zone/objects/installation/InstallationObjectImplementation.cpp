@@ -101,6 +101,16 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 
 	if (value) {
 
+		if(resourceHopper.size() == 0)
+			return;
+
+		ResourceContainer* container = resourceHopper.get(0);
+		ResourceSpawn* spawn = container->getSpawnObject();
+		if(spawn == NULL)
+			return;
+
+		spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+
 		if (basePowerRate != 0 && surplusPower <= 0) {
 			StringIdChatParameter stringId("player_structure", "power_deposit_incomplete");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
@@ -331,7 +341,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	Time harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp : currentTime;
 
 	float elapsedTime = (harvestUntil.getTime() - resourceHopperTimestamp.getTime());
-	float spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
 	float harvestAmount = (elapsedTime / 60.0) * (spawnDensity * getExtractionRate());
 
@@ -347,10 +356,11 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	float currentQuantity = container->getQuantity();
 
-	spawn->extractResource(getZone()->getZoneName(), (int) harvestAmount);
+	if (harvestAmount > 0) {
+		spawn->extractResource(getZone()->getZoneName(), harvestAmount);
 
-	updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
-
+		updateResourceContainerQuantity(container, (currentQuantity + harvestAmount), true);
+	}
 
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
@@ -607,7 +617,7 @@ float InstallationObjectImplementation::getActualRate() {
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	return extractionRate * (spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY()));
+	return extractionRate * spawnDensity;
 }
 
 void InstallationObjectImplementation::setExtractionRate(float rate){

@@ -88,6 +88,7 @@ class InstallationObject extends StructureObject {
 	protected float hopperSizeMax;
 	protected float extractionRate;
 	protected float extractionRemainder;
+	protected float spawnDensity;
 
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
