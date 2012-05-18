@@ -334,7 +334,7 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 	baseProtection = values->getCurrentValue("armor_effectiveness");
 
 	/// Because SOE had to be stupid and not make the rules consistant
-	if(values->getMaxValue("armor_special_effectiveness") < 1)
+	if(values->getMaxValue("armor_special_effectiveness") == values->getMinValue("armor_special_effectiveness"))
 		specialProtection = values->getCurrentValue("armor_effectiveness");
 	else
 		specialProtection = values->getCurrentValue("armor_special_effectiveness");
