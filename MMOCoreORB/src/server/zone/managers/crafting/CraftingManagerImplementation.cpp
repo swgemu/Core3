@@ -295,26 +295,13 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 			return 0.0f;
 		}
 
-		int combineType = draftslot->getCombineType();
+		n = draftslot->getQuantity();
+		stat = spawn->getValueOf(type);
 
-		switch (combineType) {
-		case RESOURCECOMBINE:
-			n = draftslot->getQuantity();
-			stat = spawn->getValueOf(type);
+		if (stat != 0) {
 
-			if (stat != 0) {
-
-				nsum += n;
-				weightedAverage += (stat * n);
-
-			}
-			break;
-		case LINEARCOMBINE:
-		case PERCENTAGECOMBINE:
-		case BITSETCOMBINE:
-		case OVERRIDECOMBINE:
-			break;
-
+			nsum += n;
+			weightedAverage += (stat * n);
 		}
 	}
 
