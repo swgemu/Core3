@@ -490,8 +490,14 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 				uint32 accID = client->getAccountID();
 
 				ManagedReference<Account*> playerAccount = playerManager->getAccount(accID);
+
+				if (playerAccount == NULL) {
+					return false;
+				}
+
 				int accountPermissionLevel = playerAccount->getAdminLevel();
 				String accountName = playerAccount->getUsername();
+
 				if(accountPermissionLevel > 0) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
 				}
