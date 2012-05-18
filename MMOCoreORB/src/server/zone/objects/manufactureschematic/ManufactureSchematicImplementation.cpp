@@ -155,7 +155,7 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 }
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
-	Locker (_this);
+	Locker clocker(_this);
 
 	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
@@ -172,7 +172,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	sendMsco7(player);
 
 	/// Send session packets for UI listen
-	Locker locker(session);
+	Locker locker(session, _this);
 	session->sendIngredientForUIListen();
 }
 
@@ -298,6 +298,7 @@ void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* p
 }
 
 void ManufactureSchematicImplementation::initializeIngredientSlots() {
+	Locker locker(_this);
 
 	if(draftSchematic == NULL)
 		return;
@@ -500,6 +501,7 @@ void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSl
 
 
 void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* player) {
+	Locker locker(_this);
 
 	while (ingredientSlots.size() > 0) {
 		Reference<IngredientSlot*>  slot = ingredientSlots.remove(0);
@@ -549,6 +551,8 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 	/// We clean up all the unnecessary objects here
 	/// This is where the schematic gets sent to the datapad, so wee need
 	/// To initialize all the values
+	Locker locker(_this);
+
 	prototype = tano;
 	crafter = NULL;
 	dataSize = draftSchematic->getSize();
