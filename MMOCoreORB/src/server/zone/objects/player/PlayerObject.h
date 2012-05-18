@@ -356,6 +356,8 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	bool hasCappedExperience(const String& xpType);
+
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
@@ -995,6 +997,8 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	bool hasCappedExperience(const String& xpType);
+
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
@@ -1481,6 +1485,8 @@ public:
 	int addExperience(const String& xpType, int xp, bool notifyClient);
 
 	void removeExperience(const String& xpType, bool notifyClient);
+
+	bool hasCappedExperience(const String& xpType);
 
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient);
 

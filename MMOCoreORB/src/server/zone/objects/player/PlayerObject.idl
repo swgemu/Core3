@@ -388,6 +388,13 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
 	 */
 	public native void removeExperience(final string xpType, boolean notifyClient = true);
+
+    /**
+	 * Checks if the player has capped the experience type.
+	 * @param xpType The string value for the type of experience to check.
+	 * @return true if experience is capped, false otherwise.
+	 */
+	public native boolean hasCappedExperience(final string xpType);
 	
 	/**
 	 * Adds waypoint object to waypointList

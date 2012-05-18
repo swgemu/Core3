@@ -1398,27 +1398,15 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
-	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
-		if (xp <= 0) {
-			if (amount > 0) {
-				VectorMap<String, int>* xpTypeCapList = playerObject->getXpTypeCapList();
-
-				int maxXp = xpTypeCapList->get(xpType);
-
-				if (maxXp > 0) {
-					//StringIdChatParameter message("error_message","prose_at_xp_limit");
-					StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
-					//message.setDI(maxXp);
-					message.setTO("exp_n", xpType);
-					player->sendSystemMessage(message);
-				}
-
-			}
-
-		} else {
+		if (xp > 0) {
 			StringIdChatParameter message("base_player","prose_grant_xp");
 			message.setDI(xp);
+			message.setTO("exp_n", xpType);
+			player->sendSystemMessage(message);
+		}
+		if (xp > 0 && playerObject->hasCappedExperience(xpType)) {
+			StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
 			message.setTO("exp_n", xpType);
 			player->sendSystemMessage(message);
 		}
