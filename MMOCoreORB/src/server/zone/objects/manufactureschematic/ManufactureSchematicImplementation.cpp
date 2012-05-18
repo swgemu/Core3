@@ -380,6 +380,9 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 	bool wasEmpty = false;
 
+	if (ingredientSlot == NULL)
+		return IngredientSlot::INVALIDINGREDIENT;
+
 	if(ingredientSlot->isFull())
 		return IngredientSlot::FULL;
 

@@ -498,7 +498,7 @@ bool MissionTerminalImplementation::isSlicer(CreatureObject* slicer) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		}
 	for (	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		for (int i = 0;
 	int i = 0;
-	(&slicers)->size();
+	i < (&slicers)->size();
  ++i) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			CreatureObject player = slicers.get(i);
 	CreatureObject* player = (&slicers)->get(i);

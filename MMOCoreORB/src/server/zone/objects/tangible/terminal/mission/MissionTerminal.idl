@@ -149,7 +149,7 @@ class MissionTerminal extends Terminal {
 		if (slicer == null)
 			return 0;
 
-		for (int i = 0; slicers.size(); ++i) {
+		for (int i = 0; i < slicers.size(); ++i) {
 			CreatureObject player = slicers.get(i);
 			if (player == slicer)
 				return true;
