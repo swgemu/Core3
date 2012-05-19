@@ -334,6 +334,11 @@ void CityRegionImplementation::destroyActiveAreas() {
 			regions.drop(aa);
 		}
 	}
+
+	if(noBuildArea != NULL) {
+		noBuildArea->destroyObjectFromWorld(false);
+		noBuildArea->destroyObjectFromDatabase(true);
+	}
 }
 
 String CityRegionImplementation::getRegionName() {
