@@ -38,7 +38,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	if (!player->isPlayerCreature())
+	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+
+	if (tano == NULL || !player->isPlayerCreature())
 		return 0;
 
 	if (player->getZone() == NULL)
@@ -143,6 +145,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
+		/// Check if player is elevated, on a building or porch
+
 		/// Check camps/lairs nearby
 		SortedVector<ManagedReference<QuadTreeEntry* > > nearbyObjects;
 		zone->getInRangeObjects(player->getPositionX(), player->getPositionY(),
@@ -156,8 +160,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				return 0;
 			}
 
-			if (scno != NULL && scno->isBuildingObject() && scno->getDistanceTo(
-					player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
+			if (scno != NULL && scno->isStructureObject() &&
+					scno->getDistanceTo(player) <= 100) {
 				player->sendSystemMessage("@camp:error_building_too_close");
 				return 0;
 			}
