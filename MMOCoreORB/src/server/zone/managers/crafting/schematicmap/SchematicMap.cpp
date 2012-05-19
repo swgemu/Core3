@@ -64,6 +64,7 @@ SchematicMap::SchematicMap() {
 	Lua::init();
 
 	iffGroupMap.setAllowDuplicateInsertPlan();
+	groupMap.setNullValue(NULL);
 }
 
 SchematicMap::~SchematicMap() {
