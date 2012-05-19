@@ -21,6 +21,7 @@
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/region/Region.h"
 
 void CampKitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -120,7 +121,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(planetManager->getRegionAt(player->getPositionX(), player->getPositionY()) != NULL) {
+		ManagedReference<CityRegion*> region = player->getCityRegion();
+		if(region != NULL) {
 			player->sendSystemMessage("@camp:error_muni_true");
 			return 0;
 		}

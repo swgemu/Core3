@@ -461,7 +461,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponents->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
-		String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
+		//String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
+		String craftingComponentsSatchelPath = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.iff";
 		craftingComponentsSatchel = crafter->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
 
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);

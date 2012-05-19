@@ -211,11 +211,10 @@ void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 		return;
 	}
 
-	inputHopper->sendDestroyTo(player);
-	inputHopper->closeContainerTo(player, true);
+	player->sendExecuteConsoleCommand("/opencontainer " + String::valueOf(inputHopper->getObjectID()));
 
-	inputHopper->sendWithoutContainerObjectsTo(player);
-	inputHopper->openContainerTo(player);
+	//inputHopper->sendWithoutContainerObjectsTo(player);
+	//inputHopper->openContainerTo(player);
 }
 
 void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
@@ -226,11 +225,10 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		return;
 	}
 
-	outputHopper->sendDestroyTo(player);
-	outputHopper->closeContainerTo(player, true);
+	//outputHopper->sendWithoutContainerObjectsTo(player);
+	//outputHopper->openContainerTo(player);
 
-	outputHopper->sendWithoutContainerObjectsTo(player);
-	outputHopper->openContainerTo(player);
+	player->sendExecuteConsoleCommand("/opencontainer " + String::valueOf(outputHopper->getObjectID()));
 }
 
 void FactoryObjectImplementation::handleInsertFactorySchem(
@@ -253,22 +251,28 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 		return;
 	}
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+	if(transferObject(schematic, -1, true)) {
 
-	//datapad->removeObject(schematic, true);
+		StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
 
-	transferObject(schematic, -1, true);
+		if(schematic->getCustomObjectName().isEmpty())
+			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
+		else
+			message.setTT(schematic->getCustomObjectName().toString());
 
-	StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
+		player->sendSystemMessage(message);
 
-	if(schematic->getCustomObjectName().isEmpty())
-		message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
-	else
-		message.setTT(schematic->getCustomObjectName().toString());
+		player->sendSystemMessage("This schematic limit is: " + String::valueOf(schematic->getManufactureLimit()));
+	} else {
+		StringIdChatParameter message("manf_station", "schematic_not_added"); //Schematic %TT was not added to the station
 
-	player->sendSystemMessage(message);
+		if(schematic->getCustomObjectName().isEmpty())
+			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
+		else
+			message.setTT(schematic->getCustomObjectName().toString());
 
-	player->sendSystemMessage("This schematic limit is: " + String::valueOf(schematic->getManufactureLimit()));
+		player->sendSystemMessage(message);
+	}
 
 }
 
@@ -288,17 +292,27 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 	if(!schematic->isManufactureSchematic())
 		return;
 
-	datapad->transferObject(schematic, -1, true);
-	datapad->broadcastObject(schematic, true);
+	if(datapad->transferObject(schematic, -1, false)) {
+		datapad->broadcastObject(schematic, true);
 
-	StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
+		StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
 
-	if(schematic->getCustomObjectName().isEmpty())
-		message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
-	else
-		message.setTT(schematic->getCustomObjectName().toString());
+		if(schematic->getCustomObjectName().isEmpty())
+			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
+		else
+			message.setTT(schematic->getCustomObjectName().toString());
 
-	player->sendSystemMessage(message);
+		player->sendSystemMessage(message);
+	} else {
+		StringIdChatParameter message("manf_station", "schematic_not_removed"); //Schematic %TT was not removed from the station and been placed in your datapad. Have a nice day!
+
+		if(schematic->getCustomObjectName().isEmpty())
+			message.setTT(schematic->getObjectNameStringIdFile(), schematic->getObjectNameStringIdName());
+		else
+			message.setTT(schematic->getCustomObjectName().toString());
+
+		player->sendSystemMessage(message);
+	}
 }
 
 void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
@@ -330,7 +344,7 @@ bool FactoryObjectImplementation::startFactory() {
 		return false;
 	}
 
-	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
+	ManagedReference<ManufactureSchematic* > schematic = cast<ManufactureSchematic*>(getContainerObject(0));
 
 	timer = ((int)schematic->getComplexity()) * 2;
 
@@ -436,12 +450,13 @@ void FactoryObjectImplementation::createNewObject() {
 
 		//removeObject(schematic);
 		schematic->destroyObjectFromWorld(true);
+		schematic->destroyObjectFromDatabase(true);
 		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
 		return;
 	}
 
 	ManagedReference<TangibleObject*> prototype =
-			dynamic_cast<TangibleObject*>(schematic->getPrototype());
+			cast<TangibleObject*>(schematic->getPrototype());
 
 	if (prototype == NULL) {
 		stopFactory("manf_error_2", "", "", -1);

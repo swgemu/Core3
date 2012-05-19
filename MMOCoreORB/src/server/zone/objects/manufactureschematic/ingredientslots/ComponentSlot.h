@@ -186,7 +186,7 @@ public:
 		while(itemsToAdd.size() > 0) {
 			ManagedReference<TangibleObject*> tano = itemsToAdd.remove(0);
 			if(!satchel->transferObject(tano, -1, true)) {
-				error("cant transfer crafting component");
+				error("cant transfer crafting component Has Items: " + String::valueOf(satchel->getContainerObjectsSize()));
 				return false;
 			}
 			VectorMapEntry<ManagedReference<TangibleObject*>, ManagedReference<SceneObject*> > entry(tano, parent);

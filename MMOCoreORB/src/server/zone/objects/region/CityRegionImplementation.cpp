@@ -121,6 +121,8 @@ void CityRegionImplementation::initialize() {
 	bazaars.setNoDuplicateInsertPlan();
 	bazaars.setNullValue(NULL);
 
+	noBuildArea = NULL;
+
 	setLoggingName("CityRegion");
 	setLogging(true);
 
@@ -318,7 +320,7 @@ void CityRegionImplementation::setRadius(float rad) {
 	zone->removeObject(aa, NULL, false);
 	zone->transferObject(aa, -1, false);
 
-
+	updateNoBuildArea(getPositionX(), getPositionY(), rad * 2);
 }
 
 void CityRegionImplementation::destroyActiveAreas() {
@@ -465,5 +467,19 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	}
 
 	citySkillTrainers.removeAll();
+}
+
+void CityRegionImplementation::updateNoBuildArea(float x, float y, float radius) {
+
+	if(noBuildArea != NULL)
+		zone->removeObject(noBuildArea, NULL, false);
+	else {
+		uint32 crc = String("object/active_area.iff").hashCode();
+		noBuildArea = cast<ActiveArea*>(zone->getZoneServer()->createObject(crc, 1));
+		noBuildArea->setNoBuildArea(true);
+	}
+	noBuildArea->initializePosition(x, 0, y);
+	noBuildArea->setRadius(radius);
+	zone->transferObject(noBuildArea, -1, false);
 }
 

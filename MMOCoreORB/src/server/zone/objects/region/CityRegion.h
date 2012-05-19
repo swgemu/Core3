@@ -284,6 +284,8 @@ public:
 
 	int getBazaarCount();
 
+	void updateNoBuildArea(float x, float y, float radius);
+
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
@@ -377,6 +379,8 @@ protected:
 	Reference<CityUpdateEvent* > cityUpdateEvent;
 
 	String citySpecialization;
+
+	ManagedReference<ActiveArea* > noBuildArea;
 
 public:
 	static const byte RANK_CLIENT = 0;
@@ -544,6 +548,8 @@ public:
 	BazaarTerminal* getBazaar(int idx);
 
 	int getBazaarCount();
+
+	void updateNoBuildArea(float x, float y, float radius);
 
 	void removeAllSkillTrainers();
 
@@ -743,6 +749,8 @@ public:
 	BazaarTerminal* getBazaar(int idx);
 
 	int getBazaarCount();
+
+	void updateNoBuildArea(float x, float y, float radius);
 
 	void removeAllSkillTrainers();
 
