@@ -722,7 +722,7 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 				experimentalTitle = component->getAttributeTitle(property);
 
 				craftingValues->addExperimentalProperty(experimentalTitle, property,
-						currentvalue, currentvalue, precision, false, CraftingManager::LINEARCOMBINE);
+						currentvalue, currentvalue, precision, component->getAttributeHidden(property), CraftingManager::LINEARCOMBINE);
 				craftingValues->setCurrentPercentage(property, 0);
 				craftingValues->setMaxPercentage(property, 0);
 				craftingValues->setCurrentValue(property, currentvalue);
