@@ -59,7 +59,7 @@ object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	experimentalMin = {0, 0, 1000, 2},
 	experimentalMax = {0, 0, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_show, "object/tangible/firework/show.iff")

@@ -52,7 +52,7 @@ object_tangible_parrot_cage_parrot_cage = object_tangible_parrot_cage_shared_par
 	experimentalMin = {0, 0, 100, -15},
 	experimentalMax = {0, 0, 150, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_parrot_cage_parrot_cage, "object/tangible/parrot_cage/parrot_cage.iff")

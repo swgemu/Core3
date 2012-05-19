@@ -52,7 +52,7 @@ object_tangible_furniture_tatooine_frn_tatt_cantina_droid_detector = object_tang
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_frn_tatt_cantina_droid_detector, "object/tangible/furniture/tatooine/frn_tatt_cantina_droid_detector.iff")

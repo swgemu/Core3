@@ -71,7 +71,7 @@ object_tangible_wearables_backpack_backpack_s06 = object_tangible_wearables_back
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_backpack_s06, "object/tangible/wearables/backpack/backpack_s06.iff")

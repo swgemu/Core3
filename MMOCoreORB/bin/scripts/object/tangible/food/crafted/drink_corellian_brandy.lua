@@ -73,7 +73,7 @@ object_tangible_food_crafted_drink_corellian_brandy = object_tangible_food_craft
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_corellian_brandy, "object/tangible/food/crafted/drink_corellian_brandy.iff")

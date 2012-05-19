@@ -128,7 +128,7 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 	experimentalMin = {0, 0, 833, 1500, 8.7, 19, 30, 750, 0, -125, 16, 20, 25, 78, 78, 20},
 	experimentalMax = {0, 0, 1057, 3700, 4.4, 35, 65, 1500, 10, -95, 16, 30, 50, 42, 42, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_acid_beam, "object/weapon/ranged/heavy/heavy_acid_beam.iff")

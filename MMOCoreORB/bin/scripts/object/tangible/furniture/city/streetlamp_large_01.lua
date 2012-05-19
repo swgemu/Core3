@@ -52,7 +52,7 @@ object_tangible_furniture_city_streetlamp_large_01 = object_tangible_furniture_c
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_streetlamp_large_01, "object/tangible/furniture/city/streetlamp_large_01.iff")

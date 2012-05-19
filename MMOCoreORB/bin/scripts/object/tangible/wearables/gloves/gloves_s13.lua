@@ -87,7 +87,7 @@ object_tangible_wearables_gloves_gloves_s13 = object_tangible_wearables_gloves_s
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_gloves_s13, "object/tangible/wearables/gloves/gloves_s13.iff")

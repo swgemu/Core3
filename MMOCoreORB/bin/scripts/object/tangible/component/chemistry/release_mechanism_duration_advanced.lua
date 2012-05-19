@@ -52,7 +52,7 @@ object_tangible_component_chemistry_release_mechanism_duration_advanced = object
 	experimentalMin = {0, 0, 10, 0, 1000},
 	experimentalMax = {0, 0, 75, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_release_mechanism_duration_advanced, "object/tangible/component/chemistry/release_mechanism_duration_advanced.iff")

@@ -73,7 +73,7 @@ object_tangible_food_crafted_dessert_sweet_cake_mix = object_tangible_food_craft
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_sweet_cake_mix, "object/tangible/food/crafted/dessert_sweet_cake_mix.iff")

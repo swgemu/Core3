@@ -74,7 +74,7 @@ object_tangible_food_crafted_dish_havla = object_tangible_food_crafted_shared_di
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_havla, "object/tangible/food/crafted/dish_havla.iff")

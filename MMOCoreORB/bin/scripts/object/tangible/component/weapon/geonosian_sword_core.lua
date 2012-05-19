@@ -51,7 +51,7 @@ object_tangible_component_weapon_geonosian_sword_core = object_tangible_componen
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
 	experimentalMax = {0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, -3, -3, -3},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_geonosian_sword_core, "object/tangible/component/weapon/geonosian_sword_core.iff")

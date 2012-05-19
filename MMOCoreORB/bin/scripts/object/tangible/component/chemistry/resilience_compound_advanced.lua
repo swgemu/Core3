@@ -52,7 +52,7 @@ object_tangible_component_chemistry_resilience_compound_advanced = object_tangib
 	experimentalMin = {0, 0, 0, 0, 0, 0, 10, 5, 1000},
 	experimentalMax = {0, 0, 0, 0, 0, 0, 100, 180, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_resilience_compound_advanced, "object/tangible/component/chemistry/resilience_compound_advanced.iff")

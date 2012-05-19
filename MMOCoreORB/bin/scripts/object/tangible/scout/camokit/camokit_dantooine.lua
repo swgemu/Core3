@@ -55,7 +55,7 @@ object_tangible_scout_camokit_camokit_dantooine = object_tangible_scout_camokit_
 	experimentalMin = {0, 0, 1000, 5},
 	experimentalMax = {0, 0, 1000, 20},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_camokit_dantooine, "object/tangible/scout/camokit/camokit_dantooine.iff")

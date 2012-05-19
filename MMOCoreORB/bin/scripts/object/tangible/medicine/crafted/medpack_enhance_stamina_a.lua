@@ -58,7 +58,7 @@ object_tangible_medicine_crafted_medpack_enhance_stamina_a = object_tangible_med
 	experimentalMin = {0, 0, 10, 5, 1200, 60, 1000},
 	experimentalMax = {0, 0, 100, 10, 3600, 50, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_stamina_a, "object/tangible/medicine/crafted/medpack_enhance_stamina_a.iff")

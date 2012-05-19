@@ -129,7 +129,7 @@ object_weapon_ranged_pistol_pistol_power5 = object_weapon_ranged_pistol_shared_p
 	experimentalMin = {0, 0, 18, 88, 4, 7, 10, 750, -12, -70, 10, -3, 18, 43, 17},
 	experimentalMax = {0, 0, 33, 163, 3, 13, 50, 1500, -12, -70, 10, 7, 10, 23, 9},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_power5, "object/weapon/ranged/pistol/pistol_power5.iff")

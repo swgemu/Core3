@@ -79,7 +79,7 @@ object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_leggings = objec
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 39, 100, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 23, 60, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_leggings, "object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_leggings.iff")

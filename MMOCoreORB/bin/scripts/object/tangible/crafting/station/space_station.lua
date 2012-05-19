@@ -79,7 +79,7 @@ object_tangible_crafting_station_space_station = object_tangible_crafting_statio
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {1, 1, 1, 1},
 }

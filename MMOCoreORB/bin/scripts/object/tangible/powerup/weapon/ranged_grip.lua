@@ -73,7 +73,7 @@ object_tangible_powerup_weapon_ranged_grip = object_tangible_powerup_weapon_shar
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_ranged_grip, "object/tangible/powerup/weapon/ranged_grip.iff")

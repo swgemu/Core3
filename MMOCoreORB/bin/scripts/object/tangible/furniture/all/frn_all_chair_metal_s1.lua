@@ -52,7 +52,7 @@ object_tangible_furniture_all_frn_all_chair_metal_s1 = object_tangible_furniture
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_chair_metal_s1, "object/tangible/furniture/all/frn_all_chair_metal_s1.iff")

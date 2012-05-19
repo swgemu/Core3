@@ -129,7 +129,7 @@ object_weapon_ranged_carbine_carbine_dh17_snubnose = object_weapon_ranged_carbin
 	experimentalMin = {0, 0, 28, 81, 4.5, 6, 30, 750, -25, -80, 25, -5, 29, 31, 16},
 	experimentalMax = {0, 0, 52, 150, 3.1, 12, 65, 1500, -25, -80, 25, 5, 15, 17, 8},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_dh17_snubnose, "object/weapon/ranged/carbine/carbine_dh17_snubnose.iff")

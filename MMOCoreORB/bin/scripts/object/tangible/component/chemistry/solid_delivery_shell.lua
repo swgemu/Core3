@@ -52,7 +52,7 @@ object_tangible_component_chemistry_solid_delivery_shell = object_tangible_compo
 	experimentalMin = {0, 0, 1, 0, 1000},
 	experimentalMax = {0, 0, 20, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_solid_delivery_shell, "object/tangible/component/chemistry/solid_delivery_shell.iff")

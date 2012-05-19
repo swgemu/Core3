@@ -52,7 +52,7 @@ object_tangible_component_weapon_reinforcement_core_advanced = object_tangible_c
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 15, 15, 15},
 	experimentalMax = {0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_reinforcement_core_advanced, "object/tangible/component/weapon/reinforcement_core_advanced.iff")

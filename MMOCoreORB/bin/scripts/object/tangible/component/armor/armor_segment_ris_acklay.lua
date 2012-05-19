@@ -52,7 +52,7 @@ object_tangible_component_armor_armor_segment_ris_acklay = object_tangible_compo
 	experimentalMin = {0, 0, 1000, 1, 100, 15, 15, 9, 1, 1, 1, 100},
 	experimentalMax = {0, 0, 1000, 25, 1000, 1, 1, 1, 1, 1, 35, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_ris_acklay, "object/tangible/component/armor/armor_segment_ris_acklay.iff")

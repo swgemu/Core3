@@ -129,7 +129,7 @@ object_weapon_melee_axe_axe_vibroaxe = object_weapon_melee_axe_shared_axe_vibroa
 	experimentalMin = {0, 0, 53, 123, 6.5, 6, 750, -26, -26, 3, -26, 4, 85, 52, 20},
 	experimentalMax = {0, 0, 98, 228, 4.5, 14, 1500, -14, -14, 3, -14, 4, 46, 28, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_axe_axe_vibroaxe, "object/weapon/melee/axe/axe_vibroaxe.iff")

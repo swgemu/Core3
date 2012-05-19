@@ -52,7 +52,7 @@ object_tangible_component_droid_crafting_module_space = object_tangible_componen
 	experimentalMin = {0, 0, 5, 1000, -10, 10000},
 	experimentalMax = {0, 0, 15, 1000, 15, 10000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_crafting_module_space, "object/tangible/component/droid/crafting_module_space.iff")

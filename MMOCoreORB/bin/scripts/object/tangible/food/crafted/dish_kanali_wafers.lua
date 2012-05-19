@@ -76,7 +76,7 @@ object_tangible_food_crafted_dish_kanali_wafers = object_tangible_food_crafted_s
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_kanali_wafers, "object/tangible/food/crafted/dish_kanali_wafers.iff")

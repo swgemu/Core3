@@ -52,7 +52,7 @@ object_tangible_component_item_electronic_energy_distributor = object_tangible_c
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronic_energy_distributor, "object/tangible/component/item/electronic_energy_distributor.iff")

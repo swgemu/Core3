@@ -52,7 +52,7 @@ object_tangible_component_weapon_stock = object_tangible_component_weapon_shared
 	experimentalMin = {0, 0, 1, 1, 1, 0, 10, 0, 25, 25, 25},
 	experimentalMax = {0, 0, 20, 20, 0, 5, 100, 20, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_stock, "object/tangible/component/weapon/stock.iff")

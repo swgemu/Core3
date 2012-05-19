@@ -101,7 +101,7 @@ object_tangible_wearables_ring_ring_s02 = object_tangible_wearables_ring_shared_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_ring_s02, "object/tangible/wearables/ring/ring_s02.iff")

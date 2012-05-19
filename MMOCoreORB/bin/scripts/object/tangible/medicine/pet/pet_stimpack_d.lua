@@ -52,7 +52,7 @@ object_tangible_medicine_pet_pet_stimpack_d = object_tangible_medicine_pet_share
 	experimentalMin = {0, 0, 350, 10, 15, 1000},
 	experimentalMax = {0, 0, 1500, 30, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_pet_stimpack_d, "object/tangible/medicine/pet/pet_stimpack_d.iff")

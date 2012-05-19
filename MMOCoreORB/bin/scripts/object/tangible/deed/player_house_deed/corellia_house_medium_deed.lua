@@ -56,7 +56,7 @@ object_tangible_deed_player_house_deed_corellia_house_medium_deed = object_tangi
 	experimentalMin = {0, 0, 35000},
 	experimentalMax = {0, 0, 75000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_corellia_house_medium_deed, "object/tangible/deed/player_house_deed/corellia_house_medium_deed.iff")

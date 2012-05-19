@@ -52,7 +52,7 @@ object_tangible_component_structure_turbo_fluidic_drilling_pumping_unit = object
 	experimentalMin = {0, 0, 1000, 2},
 	experimentalMax = {0, 0, 5000, 7},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_turbo_fluidic_drilling_pumping_unit, "object/tangible/component/structure/turbo_fluidic_drilling_pumping_unit.iff")

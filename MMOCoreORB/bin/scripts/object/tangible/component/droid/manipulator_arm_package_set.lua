@@ -52,7 +52,7 @@ object_tangible_component_droid_manipulator_arm_package_set = object_tangible_co
 	experimentalMin = {0, 0, 5, 1000, -10},
 	experimentalMax = {0, 0, 15, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_manipulator_arm_package_set, "object/tangible/component/droid/manipulator_arm_package_set.iff")

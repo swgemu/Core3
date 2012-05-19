@@ -93,7 +93,7 @@ object_tangible_wearables_bracelet_bracelet_s04_l = object_tangible_wearables_br
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_bracelet_s04_l, "object/tangible/wearables/bracelet/bracelet_s04_l.iff")

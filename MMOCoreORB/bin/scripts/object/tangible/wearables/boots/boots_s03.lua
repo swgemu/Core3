@@ -89,7 +89,7 @@ object_tangible_wearables_boots_boots_s03 = object_tangible_wearables_boots_shar
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_boots_s03, "object/tangible/wearables/boots/boots_s03.iff")

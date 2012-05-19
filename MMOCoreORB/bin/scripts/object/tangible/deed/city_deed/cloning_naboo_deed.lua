@@ -55,7 +55,7 @@ object_tangible_deed_city_deed_cloning_naboo_deed = object_tangible_deed_city_de
 	experimentalMin = {0, 0, 35000},
 	experimentalMax = {0, 0, 75000},
 	experimentalPrecision = {0, 0, 0},
-	experimentalCombineType = {0, 0, 1},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cloning_naboo_deed, "object/tangible/deed/city_deed/cloning_naboo_deed.iff")

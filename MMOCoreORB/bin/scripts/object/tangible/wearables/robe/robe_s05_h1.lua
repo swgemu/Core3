@@ -93,7 +93,7 @@ object_tangible_wearables_robe_robe_s05_h1 = object_tangible_wearables_robe_shar
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_s05_h1, "object/tangible/wearables/robe/robe_s05_h1.iff")

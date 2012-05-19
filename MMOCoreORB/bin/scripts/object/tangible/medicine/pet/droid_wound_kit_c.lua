@@ -52,7 +52,7 @@ object_tangible_medicine_pet_droid_wound_kit_c = object_tangible_medicine_pet_sh
 	experimentalMin = {0, 0, 60, 7, 1000},
 	experimentalMax = {0, 0, 300, 21, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_droid_wound_kit_c, "object/tangible/medicine/pet/droid_wound_kit_c.iff")
