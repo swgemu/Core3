@@ -6,6 +6,8 @@ import server.zone.objects.factorycrate.FactoryCrate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.installation.factory.FactoryHopperObserver;
+import engine.util.Observable;
+import engine.core.ManagedObject;
 include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
 
 class FactoryObject extends InstallationObject {
