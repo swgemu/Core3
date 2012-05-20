@@ -12,14 +12,14 @@
 
 enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISPSGARMOROBJECT__,};
 
-PsgArmorObject::PsgArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
+PsgArmorObject::PsgArmorObject() : ArmorObject(DummyConstructorParameter::instance()) {
 	PsgArmorObjectImplementation* _implementation = new PsgArmorObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("PsgArmorObject");
 }
 
-PsgArmorObject::PsgArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
+PsgArmorObject::PsgArmorObject(DummyConstructorParameter* param) : ArmorObject(param) {
 	_setClassName("PsgArmorObject");
 }
 
@@ -86,7 +86,7 @@ void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
  *	PsgArmorObjectImplementation
  */
 
-PsgArmorObjectImplementation::PsgArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
+PsgArmorObjectImplementation::PsgArmorObjectImplementation(DummyConstructorParameter* param) : ArmorObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -108,7 +108,7 @@ void PsgArmorObjectImplementation::_initializeImplementation() {
 
 void PsgArmorObjectImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = static_cast<PsgArmorObject*>(stub);
-	WearableObjectImplementation::_setStub(stub);
+	ArmorObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* PsgArmorObjectImplementation::_getStub() {
@@ -148,7 +148,7 @@ void PsgArmorObjectImplementation::runlock(bool doLock) {
 }
 
 void PsgArmorObjectImplementation::_serializationHelperMethod() {
-	WearableObjectImplementation::_serializationHelperMethod();
+	ArmorObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("PsgArmorObject");
 
@@ -174,7 +174,7 @@ void PsgArmorObjectImplementation::readObject(ObjectInputStream* stream) {
 }
 
 bool PsgArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (WearableObjectImplementation::readObjectMember(stream, _name))
+	if (ArmorObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
 
@@ -189,7 +189,7 @@ void PsgArmorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int PsgArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
-	int _count = WearableObjectImplementation::writeObjectMembers(stream);
+	int _count = ArmorObjectImplementation::writeObjectMembers(stream);
 
 	String _name;
 	int _offset;
@@ -217,7 +217,7 @@ bool PsgArmorObjectImplementation::isPsgArmorObject() {
 #include "engine/orb/messages/InvokeMethodMessage.h"
 
 
-PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObject* obj) : WearableObjectAdapter(obj) {
+PsgArmorObjectAdapter::PsgArmorObjectAdapter(PsgArmorObject* obj) : ArmorObjectAdapter(obj) {
 }
 
 void PsgArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {

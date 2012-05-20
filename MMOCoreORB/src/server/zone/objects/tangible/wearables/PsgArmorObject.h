@@ -23,7 +23,7 @@ using namespace server::zone;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
-#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -33,7 +33,7 @@ namespace objects {
 namespace tangible {
 namespace wearables {
 
-class PsgArmorObject : public WearableObject {
+class PsgArmorObject : public ArmorObject {
 public:
 	PsgArmorObject();
 
@@ -71,7 +71,7 @@ namespace objects {
 namespace tangible {
 namespace wearables {
 
-class PsgArmorObjectImplementation : public WearableObjectImplementation {
+class PsgArmorObjectImplementation : public ArmorObjectImplementation {
 
 public:
 	PsgArmorObjectImplementation();
@@ -123,7 +123,7 @@ protected:
 	friend class PsgArmorObject;
 };
 
-class PsgArmorObjectAdapter : public WearableObjectAdapter {
+class PsgArmorObjectAdapter : public ArmorObjectAdapter {
 public:
 	PsgArmorObjectAdapter(PsgArmorObject* impl);
 

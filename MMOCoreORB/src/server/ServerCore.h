@@ -99,11 +99,16 @@ class ServerCore : public Core, public Logger {
 
 	WebServer* webServer;
 
+	Mutex shutdownBlockMutex;
+	Condition waitCondition;
+
 	static SortedVector<String> arguments;
 
 	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
 
 	static bool truncateAllData;
+
+	static ServerCore* instance;
 
 public:
 	ServerCore(bool truncateDatabases, SortedVector<String>& args);
@@ -118,6 +123,8 @@ public:
 
 	void processConfig();
 
+	void signalShutdown();
+
 	// getters
 	static server::zone::ZoneServer* getZoneServer() {
 		return zoneServerRef.get();
@@ -125,6 +132,10 @@ public:
 
 	static bool truncateDatabases() {
 		return truncateAllData;
+	}
+
+	static ServerCore* getInstance() {
+		return instance;
 	}
 
 	static bool hasArgument(const String& arg) {

@@ -87,6 +87,7 @@ which carries forward this exception.
 #include "ZoneHandler.h"
 
 #include "ZoneLoadManagersTask.h"
+#include "ShutdownTask.h"
 
 ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
@@ -288,6 +289,16 @@ void ZoneServerImplementation::start(int p, int mconn) {
 void ZoneServerImplementation::stop() {
 	datagramService->stop();
 	//datagramService->setHandler(NULL);
+}
+
+void ZoneServerImplementation::timedShutdown(int minutes) {
+	Reference<Task*> task = new ShutdownTask(_this, minutes);
+	task->schedule(60 * 1000);
+
+	String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
+	Logger::console.info(str, true);
+
+	getChatManager()->broadcastGalaxy(NULL, str);
 }
 
 void ZoneServerImplementation::shutdown() {

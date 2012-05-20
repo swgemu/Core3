@@ -26,6 +26,8 @@ rorgungan_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_s04_male.iff"},
+	
+	lootGroups = {
 	    {
 			groups = {
 				{group = "junk", chance = 3000000},

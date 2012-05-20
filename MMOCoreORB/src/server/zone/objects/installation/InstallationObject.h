@@ -344,6 +344,8 @@ protected:
 
 	float extractionRemainder;
 
+	float spawnDensity;
+
 public:
 	InstallationObjectImplementation();
 
