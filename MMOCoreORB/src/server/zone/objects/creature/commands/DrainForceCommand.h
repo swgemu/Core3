@@ -70,33 +70,39 @@ public:
 
 		// Fail if target is not a player...
 
-		SceneObject* object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL)
+		if (object == NULL || !object->isCreatureObject())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (creatureTarget == NULL)
+		if (targetCreature == NULL)
 			return INVALIDTARGET;
 
-		ManagedReference<PlayerObject*> targetPlayer = creatureTarget->getPlayerObject();
+		Locker clocker(targetCreature, creature);
+
+		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-		if (creatureTarget->isAiAgent() || !creatureTarget->isPlayerObject())
+		if (targetGhost == NULL || playerObject == NULL)
 			return GENERALERROR;
 
-		if (targetPlayer != NULL && targetPlayer->getForcePower() < 0) {
+		if (targetCreature->isAiAgent())
+			return INVALIDTARGET;
+
+		if (targetGhost != NULL && targetGhost->getForcePower() < 0) {
 			creature->sendSystemMessage("@jedi_spam:target_no_force");
 			return GENERALERROR;
 		}
 
-		if (targetPlayer->getForcePower() > 0) {
-			targetPlayer->setForcePower(targetPlayer->getForcePower() - 100);
-			playerObject->setForcePower(targetPlayer->getForcePower() + 100);
+		if (targetGhost->getForcePower() > 0 && targetCreature->isAttackableBy(creature)) {
+			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
+			playerObject->setForcePower(playerObject->getForcePower() + 100);
+			return doCombatAction(creature, target);
 		}
 
-		return doCombatAction(creature, target);
+		return GENERALERROR;
 	}
 
 	float getCommandDuration(CreatureObject* object) {

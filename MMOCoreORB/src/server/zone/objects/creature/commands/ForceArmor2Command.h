@@ -121,7 +121,7 @@ public:
 			return;
 
 		// Client Effect upon hit (needed)
-		creo->playEffect("clienteffect/pl_force_shield_hit.cef", "");
+		creo->playEffect("clienteffect/pl_force_armor_hit.cef", "");
 
 		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
 		if (playerObject == NULL)

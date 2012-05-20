@@ -69,28 +69,32 @@ public:
 
 		// Fail if target is not a player...
 
-		SceneObject* object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL)
+		if (object == NULL || !object->isCreatureObject())
 			return INVALIDTARGET;
 
-		ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (creatureTarget == NULL)
+		if (targetCreature == NULL)
 			return INVALIDTARGET;
 
-		ManagedReference<PlayerObject*> targetPlayer = creatureTarget->getPlayerObject();
+		Locker clocker(targetCreature, creature);
+
+		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-		if (creatureTarget->isAiAgent() || !creatureTarget->isPlayerObject())
+		if (targetGhost == NULL || playerObject == NULL)
 			return GENERALERROR;
 
-		if (targetPlayer->getForcePower() > 0) {
-			targetPlayer->setForcePower(targetPlayer->getForcePower() + 200);
-			playerObject->setForcePower(targetPlayer->getForcePower() - 200);
-		}
+		if (targetCreature->isAiAgent())
+			return INVALIDTARGET;
 
-		creature->doCombatAnimation(creatureTarget,String("force_transfer_1").hashCode(),0,0xFF);
+		if (targetGhost->getForcePower() > 0  && targetCreature->isHealableBy(creature)) {
+			targetGhost->setForcePower(targetGhost->getForcePower() + 200);
+			playerObject->setForcePower(playerObject->getForcePower() - 200);
+			creature->doCombatAnimation(targetCreature,String("force_transfer_1").hashCode(),0,0xFF);
+		}
 
 		return SUCCESS;
 	}

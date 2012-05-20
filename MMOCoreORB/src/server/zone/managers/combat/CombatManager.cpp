@@ -778,7 +778,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		}
 
 		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
-	} else {
+	} else if (data.getAttackType() == CombatManager::WEAPONATTACK) {
 		// Force Armor
 		float rawDamage = damage;
 
