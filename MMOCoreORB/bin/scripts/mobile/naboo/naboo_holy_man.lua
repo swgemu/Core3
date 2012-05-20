@@ -30,11 +30,11 @@ naboo_holy_man = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "tailor_components", chance = 2000000},
-				{group = "loot_kits", chance = 4000000}
+				{group = "junk", chance = 3000000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kit_parts", chance = 500000}
 			},
-			lootChance = 4800000
+			lootChance = 3200000
 		}				
 	},
 	weapons = {},

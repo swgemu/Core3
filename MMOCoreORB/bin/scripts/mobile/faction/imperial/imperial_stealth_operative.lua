@@ -28,17 +28,7 @@ imperial_stealth_operative = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
-		{
-			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 2000000},
-				{group = "pistols", chance = 2000000},
-				{group = "clothing_attachments", chance = 1100000},
-				{group = "armor_attachments", chance = 1100000}
-			},
-			lootChance = 4000000
-		}			
+		{}			
 	},
 	weapons = {},
 	conversationTemplate = "",

@@ -33,7 +33,19 @@ imperial_officer = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_4.iff",
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 4000000
+		}			
+	},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
 	conversationTemplate = "",

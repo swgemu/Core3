@@ -32,10 +32,10 @@ janta_herbalist = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "janta_common", chance = 5000000},
-				{group = "loot_kits", chance = 5000000}
+				{group = "janta_common", chance = 1000000},
+				{group = "loot_kit_parts", chance = 3000000}
 			},
-			lootChance = 4800000
+			lootChance = 3500000
 		}	
 	},
 	weapons = {"primitive_weapons"},

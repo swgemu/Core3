@@ -31,13 +31,13 @@ corsec_detective = Creature:new {
 		"object/mobile/dressed_corsec_detective_human_female_01.iff"
 		},
 	lootGroups = {
-	  {
+	    {
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "corsec_weapons", chance = 4000000},
+				{group = "junk", chance = 4000000},
+				{group = "corsec_weapons", chance = 1500000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 4500000
 		}
 	},
 	weapons = {},

@@ -32,13 +32,13 @@ kunga_soothsayer = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3500000},
-				{group = "loot_kits", chance = 3500000},
-				{group = "armor_attachments", chance = 1500000},
-				{group = "clothing_attachments", chance = 1500000}
+				{group = "junk", chance = 3000000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000}
 			},
-			lootChance = 4800000
-		}		
+			lootChance = 3500000
+		}	
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",

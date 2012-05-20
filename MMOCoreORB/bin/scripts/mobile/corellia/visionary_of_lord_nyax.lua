@@ -29,7 +29,16 @@ visionary_of_lord_nyax = Creature:new {
 	templates = {
 		"object/mobile/dressed_patron_chiss_f_01.iff",
 		"object/mobile/dressed_patron_chiss_f_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 3000000},
+				{group = "pistols", chance = 1000000},
+				{group = "rifles", chance = 1000000}
+			},
+			lootChance = 3200000
+		}	
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)

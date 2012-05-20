@@ -29,14 +29,14 @@ chunker_bruiser = Creature:new {
 	lootGroups = {
 	    {
 	        groups = {
-				{group = "junk", chance = 2000000},
-				{group = "rifles", chance = 2000000},
-				{group = "melee_knife", chance = 2000000},
-				{group = "pistols", chance = 2000000},
-				{group = "carbines", chance = 2000000}
+				{group = "junk", chance = 3000000},
+				{group = "rifles", chance = 700000},
+				{group = "melee_knife", chance = 700000},
+				{group = "pistols", chance = 700000},
+				{group = "carbines", chance = 700000}
 	    	},
-			lootChance = 5000000
-		}	
+			lootChance = 3200000
+		}
 	},
 	weapons = {"ranged_weapons"},
 	attacks = {}

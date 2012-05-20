@@ -42,12 +42,12 @@ selonian_captain = Creature:new {
 	lootGroups = {
       	{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kits", chance = 3500000},
+				{group = "junk", chance = 3000000},
+				{group = "loot_kit_parts", chance = 500000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
-		}	
+			lootChance = 3200000
+		}		
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

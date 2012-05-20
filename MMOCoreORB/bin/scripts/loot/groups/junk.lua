@@ -6,7 +6,6 @@ junk = {
 	maximumLevel = 0,
 	lootItems = {
 		{itemTemplate = "broken_decryptor", weight = 384615},
-		{itemTemplate = "brown_rug", weight = 384615},
 		{itemTemplate = "camera", weight = 384615},
 		{itemTemplate = "corrupt_datadisk", weight = 384615},
 		{itemTemplate = "corsec_id_badge", weight = 384615},
@@ -25,7 +24,6 @@ junk = {
 		{itemTemplate = "loudspeaker", weight = 384615},
 		{itemTemplate = "palm_frond", weight = 284615},
 		{itemTemplate = "photographic_image", weight = 384615},
-		{itemTemplate = "rare_artifact", weight = 384615},
 		{itemTemplate = "recorded_image_1", weight = 384615},
 		{itemTemplate = "recording_rod", weight = 384615},
 		{itemTemplate = "slave_collar", weight = 384615},

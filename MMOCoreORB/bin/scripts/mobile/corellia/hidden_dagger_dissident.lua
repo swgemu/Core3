@@ -40,14 +40,14 @@ hidden_dagger_dissident = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-      	{
+       	{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kits", chance = 3500000},
+				{group = "junk", chance = 4000000},
+				{group = "loot_kit_parts", chance = 1000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
-		}
+			lootChance = 5000000
+		}	
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

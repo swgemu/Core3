@@ -30,9 +30,9 @@ tusken_commoner = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "tusken", chance = 9500000},
-				{group = "rifles", chance = 250000},
-				{group = "pistols", chance = 250000}
+				{group = "tusken", chance = 3500000},
+				{group = "rifles", chance = 100000},
+				{group = "pistols", chance = 100000}
 			},
 			lootChance = 3500000
 		}

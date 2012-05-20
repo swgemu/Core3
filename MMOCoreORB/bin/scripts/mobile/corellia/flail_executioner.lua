@@ -39,13 +39,13 @@ flail_executioner = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-		{
+			{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "carbines", chance = 4000000},
+				{group = "junk", chance = 4000000},
+				{group = "carbines", chance = 1000000},
 				{group = "color_crystals", chance = 500000}
 			},
-			lootChance = 6000000
+			lootChance = 5000000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

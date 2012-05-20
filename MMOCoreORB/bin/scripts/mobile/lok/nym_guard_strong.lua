@@ -30,7 +30,17 @@ nym_guard_strong = Creature:new {
 				"object/mobile/dressed_nym_guard_strong_rod_m.iff",
 				"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
 				"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "nyms_common", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 3500000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = {

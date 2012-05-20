@@ -27,7 +27,19 @@ imperial_deserter = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_defector.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 3600000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 4000000
+		}
+	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = {
