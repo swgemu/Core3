@@ -46,7 +46,7 @@ object_tangible_scout_trap_trap_noise_maker = object_tangible_scout_trap_shared_
 	templateType = TRAP,
 	objectMenuComponent = {"cpp", "TrapMenuComponent"},
 
-	useCount = 5,
+	useCount = 8,
 	skillRequired = 15,
 
 	skillMods = {},
