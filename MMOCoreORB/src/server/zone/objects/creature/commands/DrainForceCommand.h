@@ -72,6 +72,10 @@ public:
 
 		SceneObject* object = server->getZoneServer()->getObject(target);
 		ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+
+		if (creatureTarget == NULL)
+			return INVALIDTARGET;
+
 		ManagedReference<PlayerObject*> targetPlayer = creatureTarget->getPlayerObject();
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
