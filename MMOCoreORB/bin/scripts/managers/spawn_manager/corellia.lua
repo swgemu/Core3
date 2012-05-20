@@ -836,12 +836,12 @@ corellia_static_spawns = {
 	{"ragtag_kook", 60, -213.219, 28, -4926.08, 204.867, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
 	{"ragtag_kook", 60, -225.238, 28, -4931.01, 254.658, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
 	{"ragtag_kook", 60, -212.993, 28, -4922.77, 38.0909, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -471, 28, -4534.03, 89.4099, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, -471, 28, -4534.03, 89.4099, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"corsec_trooper", 60, -324.144, 28, -4442.29, 277.786, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
 	{"ragtag_kook", 60, -712.063, 5.13106, -4304.96, 315.72, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
 	{"ragtag_kook", 60, -719.18, 4.19027, -4309.55, 164.033, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
 	{"crackdown_stormtrooper", 60, -533.6, 28, -4626.5, 196.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"smuggler_patrol_thief_5", 60, -526.15, 28, -4558.69, 359.712, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, -526.15, 28, -4558.69, 359.712, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"ragtag_loon", 60, 181.412, 28, -4413.68, 12.8953, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
 	{"ragtag_loon", 60, 184.412, 28, -4413.68, 346.368, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
 	{"ragtag_loon", 60, 183.412, 28, -4407.68, 224.105, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_fat_human_female_02.iff
@@ -1015,7 +1015,7 @@ corellia_static_spawns = {
 	{"entertainer", 60, -16.9034, 1.6, 11.8646, 180.006, 3005672, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
 	{"commoner", 60, -24, 1.6, -4, 124.701, 3005676, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
 	--{"corellia_jaylon_geissler", 60, -3323.82, 101, 3410.51, 258.908, 0, "calm", ""},  --@mob/creature_names:corellia_jaylon_geissler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -3296.83, 86, 3294.86, 193.382, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -3296.83, 86, 3294.86, 193.382, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	{"corsec_lieutenant", 60, -3177.78, 31, 2889.93, 360.011, 0, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
 	{"corsec_sergeant", 60, -3177.78, 31, 2891.03, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
 	{"bodyguard", 60, -3162.17, 31, 2902.28, 0, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_human_male_01.iff
@@ -1257,8 +1257,8 @@ corellia_static_spawns = {
 	{"corsec_deserter", 60, -5467.56, 21, -2791.59, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
 	{"corellia_times_investigator", 60, -5491.88, 30.0036, -2809.63, 0, 0, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
 	{"corsec_investigator", 60, -5491.88, 30.0036, -2808.63, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -5412.55, 21, -2766.71, 213.391, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -5451.86, 21, -2787.47, 228.946, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5412.55, 21, -2766.71, 213.391, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5451.86, 21, -2787.47, 228.946, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	{"noble", 60, 28.93, 2.12878, 58.19, 222.007, 2365435, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_02.iff
 	{"noble", 60, 19.26, 2.12847, 56.13, 266.008, 2365436, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_trandoshan_male_01.iff
 	--{"quest_crowd_pleaser_theater_manager", 60, 21.99, 2.12804, 64.05, 4.00007, 2365436, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
@@ -1466,8 +1466,8 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper", 60, -5112.07, 21, -2248.89, 97.4325, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_stormtrooper_rifleman", 60, -5097.16, 21, -2271.05, 130.264, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
 	{"crackdown_stormtrooper_bombardier", 60, -5086.49, 21, -2255.77, 216.35, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_bombardier full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.782, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.753, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.782, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.753, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"crackdown_stormtrooper", 60, -5044.7, 21, -2303, 200.405, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
 	{"crackdown_command_security_guard", 60, -5048.7, 21, -2299.5, 256.201, 0, "calm", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_6.iff
 	{"crackdown_stormtrooper_rifleman", 60, -5123, 21, -2425.3, 67.002, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
@@ -1533,8 +1533,8 @@ corellia_static_spawns = {
 	{"commoner", 60, 3199.22, 300, 5449.92, 146.634, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_03.iff
 	{"pilot", 60, 3202.28, 290, 4988.06, 0, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_messanger_rod_m.iff
 	{"bothan_information_broker", 60, 3202.28, 290, 4989.06, 180.005, 0, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"smuggler_patrol_thief_5", 60, 3120.48, 300, 5138.5, 189.369, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, 3103.26, 300, 5141.58, 280.149, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, 3120.48, 300, 5138.5, 189.369, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, 3103.26, 300, 5141.58, 280.149, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	{"corellia_lilith_laughlin", 60, 3084.07, 279.996, 4979.36, 2.6099, 0, "calm", ""},  --@mob/creature_names:corellia_lilith_laughlin full template: object/mobile/dressed_robber_human_female_01.iff
 	{"commoner", 60, 3277.95, 300, 5438.73, 232.081, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
 	{"commoner", 60, 3240.99, 300, 5415.5, 249.458, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
@@ -1670,7 +1670,7 @@ corellia_static_spawns = {
 	{"crackdown_elite_sand_trooper", 60, 3362.39, 308, 5513.99, 113.751, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
 	{"crackdown_comm_operator", 60, 3361.35, 308, 5483.26, 95.5634, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_comm_operator full template: object/mobile/dressed_imperial_officer_m_6.iff
 	{"crackdown_imperial_corporal", 60, 3367.38, 308, 5495.93, 241.976, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"smuggler_patrol_thief_5", 60, 3048.86, 300, 5196.51, 286.342, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, 3048.86, 300, 5196.51, 286.342, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 
 	--vreni island
 	{"commoner", 60, -5708.22, 14.6, -6157.68, 63.8572, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
@@ -1709,8 +1709,8 @@ corellia_static_spawns = {
 	{"crackdown_rebel_soldier", 60, -5716.1, 14.6, -6153.1, 269.008, 0, "", ""},  --@mob/creature_names:crackdown_rebel_soldier full template: object/mobile/dressed_rebel_trooper_twk_male_01.iff
 	{"corsec_investigator", 60, 9.49578, 1.00001, 10.5511, 178.041, 2775413, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"commoner", 60, -5385.68, 24, -6239.93, 118.359, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"smuggler_patrol_thief_5", 60, -5530.12, 23.4, -6190.79, 40.3557, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5557.36, 23.4, -6213.31, 184.279, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5530.12, 23.4, -6190.79, 40.3557, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5557.36, 23.4, -6213.31, 184.279, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
 	{"cll8_binary_load_lifter", 60, -5692.65, 14.6, -6151.28, 140.406, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
 	{"r2", 60, -5528, 23.4, -6195.05, 84.2678, 0, "calm", "R2-P2"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
 	{"crackdown_rebel_cadet", 60, -5568.4, 23.4, -6199.11, 90.254, 0, "calm", ""},  --@mob/creature_names:crackdown_rebel_cadet full template: object/mobile/dressed_mercenary_weak_hum_f.iff
@@ -1718,8 +1718,8 @@ corellia_static_spawns = {
 	{"crackdown_rebel_comm_operator", 60, -5582.42, 23.4, -6199.06, 90.2331, 0, "calm", ""},  --@mob/creature_names:crackdown_rebel_comm_operator full template: object/mobile/dressed_rebel_scout_human_male_01.iff
 	--{"rebel_recruiter", 60, -5516.08, 23.4, -6186.7, 0, 0, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_twilek_female_01.iff
 	--{"rebel_recruiter", 60, -5546.87, 15.7063, -6065.24, 360.011, 0, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_02.iff
-	{"smuggler_patrol_thief_5", 60, -5536.02, 23.4, -6106.37, 97.1089, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5570.21, 23.4, -6102.1, 7.82476, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5536.02, 23.4, -6106.37, 97.1089, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
+	--{"smuggler_patrol_thief_5", 60, -5570.21, 23.4, -6102.1, 7.82476, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
 	
 	--bela vistal
 	--{"imperial_recruiter", 60, 6719.04, 315, -5805.21, 32.7923, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_recruiter full template: object/mobile/dressed_imperial_officer_m.iff
