@@ -1,6 +1,6 @@
 lt_harburik = Creature:new {
 	objectName = "@npc_name:it_harburik", --typo in string file
-	customName = "Lt. Harburik"
+	customName = "Lt. Harburik",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",

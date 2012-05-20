@@ -43,6 +43,5 @@ skilled_gondula_worker = Creature:new {
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)
 }
-}
 
 CreatureTemplates:addCreatureTemplate(skilled_gondula_worker, "skilled_gondula_worker")
