@@ -54,6 +54,7 @@ include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.installation.factory.FactoryObject;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
@@ -321,8 +322,8 @@ class ManufactureSchematic extends IntangibleObject {
 		factoryBlueprint.canManufactureItem(type, displayedName);
 	}
 	
-	public void manufactureItem() {
-		factoryBlueprint.manufactureItem();
+	public void manufactureItem(FactoryObject factory) {
+		factoryBlueprint.manufactureItem(factory);
 		setManufactureLimit(getManufactureLimit() - 1);
 	}
 	

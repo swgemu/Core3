@@ -7,6 +7,7 @@
 
 #include "FactoryBlueprint.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
 
 FactoryBlueprint::FactoryBlueprint() :  Serializable() {
 
@@ -121,12 +122,12 @@ void FactoryBlueprint::canManufactureItem(String &type, String &displayedName) {
 	}
 }
 
-void FactoryBlueprint::manufactureItem() {
+void FactoryBlueprint::manufactureItem(FactoryObject* factory) {
 
 	for(int i = 0; i < consolidatedEntries.size(); ++i) {
 		BlueprintEntry* entry = &consolidatedEntries.get(i);
 
-		entry->removeResources();
+		entry->removeResources(factory);
 	}
 }
 

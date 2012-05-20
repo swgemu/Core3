@@ -14,11 +14,13 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/installation/factory/FactoryObject.h"
+
 /*
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_,RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_,RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_,RPC_GETDRAFTSCHEMATIC__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_GETSLOTCOUNT__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__DRAFTSCHEMATIC_,RPC_ADDINGREDIENTTOSLOT__CREATUREOBJECT_SCENEOBJECT_TANGIBLEOBJECT_INT_,RPC_REMOVEINGREDIENTFROMSLOT__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_CLEANUPINGREDIENTSLOTS__CREATUREOBJECT_,RPC_GETDRAFTSCHEMATIC__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_GETSLOTCOUNT__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__FACTORYOBJECT_,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -488,17 +490,18 @@ void ManufactureSchematic::canManufactureItem(String& type, String& displayedNam
 		_implementation->canManufactureItem(type, displayedName);
 }
 
-void ManufactureSchematic::manufactureItem() {
+void ManufactureSchematic::manufactureItem(FactoryObject* factory) {
 	ManufactureSchematicImplementation* _implementation = static_cast<ManufactureSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_MANUFACTUREITEM__);
+		DistributedMethod method(this, RPC_MANUFACTUREITEM__FACTORYOBJECT_);
+		method.addObjectParameter(factory);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->manufactureItem();
+		_implementation->manufactureItem(factory);
 }
 
 void ManufactureSchematic::createFactoryBlueprint() {
@@ -940,9 +943,9 @@ void ManufactureSchematicImplementation::canManufactureItem(String& type, String
 	(&factoryBlueprint)->canManufactureItem(type, displayedName);
 }
 
-void ManufactureSchematicImplementation::manufactureItem() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		factoryBlueprint.manufactureItem();
-	(&factoryBlueprint)->manufactureItem();
+void ManufactureSchematicImplementation::manufactureItem(FactoryObject* factory) {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		factoryBlueprint.manufactureItem(factory);
+	(&factoryBlueprint)->manufactureItem(factory);
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		setManufactureLimit(getManufactureLimit() - 1);
 	setManufactureLimit(getManufactureLimit() - 1);
 }
@@ -1128,9 +1131,9 @@ void ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod*
 			canManufactureItem(inv->getAsciiParameter(type), inv->getAsciiParameter(displayedName));
 		}
 		break;
-	case RPC_MANUFACTUREITEM__:
+	case RPC_MANUFACTUREITEM__FACTORYOBJECT_:
 		{
-			manufactureItem();
+			manufactureItem(static_cast<FactoryObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_CREATEFACTORYBLUEPRINT__:
@@ -1272,8 +1275,8 @@ void ManufactureSchematicAdapter::canManufactureItem(String& type, String& displ
 	(static_cast<ManufactureSchematic*>(stub))->canManufactureItem(type, displayedName);
 }
 
-void ManufactureSchematicAdapter::manufactureItem() {
-	(static_cast<ManufactureSchematic*>(stub))->manufactureItem();
+void ManufactureSchematicAdapter::manufactureItem(FactoryObject* factory) {
+	(static_cast<ManufactureSchematic*>(stub))->manufactureItem(factory);
 }
 
 void ManufactureSchematicAdapter::createFactoryBlueprint() {

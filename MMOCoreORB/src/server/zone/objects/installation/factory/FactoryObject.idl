@@ -5,6 +5,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.installation.factory.FactoryHopperObserver;
 include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
 
 class FactoryObject extends InstallationObject {
@@ -15,9 +16,12 @@ class FactoryObject extends InstallationObject {
 	
 	protected string currentUserName;
 	protected int currentRunCount;
+
+	protected transient FactoryHopperObserver hopperObserver;
 	
 	public FactoryObject() {
 		Logger.setLoggingName("FactoryObject");
+		hopperObserver = null;
 	}
 	
 	@local
@@ -68,6 +72,10 @@ class FactoryObject extends InstallationObject {
 	public native void sendIngredientHopper(CreatureObject player);
 	
 	public native void sendOutputHopper(CreatureObject player);
+	
+	public native void openHopper(Observable observable, ManagedObject arg1);
+
+	public native void closeHopper(Observable observable, ManagedObject arg1);
 	/**
 	 * Handles inputting the schematic to the 
 	 * factory

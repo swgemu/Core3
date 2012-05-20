@@ -6,6 +6,7 @@
  */
 
 #include "FactoryObject.h"
+#include "FactoryHopperObserver.h"
 #include "tasks/CreateFactoryObjectTask.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -52,6 +53,21 @@ void FactoryObjectImplementation::initializeTransientMembers() {
 		startFactory();*/
 
 	setLoggingName("FactoryObject");
+
+
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if(inputHopper != NULL && outputHopper != NULL) {
+		hopperObserver = new FactoryHopperObserver(_this);
+		inputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
+		inputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+
+		outputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
+		outputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+	} else {
+		createChildObjects();
+	}
 }
 
 void FactoryObjectImplementation::createChildObjects() {
@@ -65,6 +81,14 @@ void FactoryObjectImplementation::createChildObjects() {
 	ManagedReference<SceneObject*> outputHopper = server->getZoneServer()->createObject(outputHopperName.hashCode(), 1);
 
 	transferObject(outputHopper, 4);
+
+	hopperObserver = new FactoryHopperObserver(_this);
+
+	ingredientHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
+	ingredientHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
+
+	outputHopper->registerObserver(ObserverEventType::OPENCONTAINER, hopperObserver);
+	outputHopper->registerObserver(ObserverEventType::CLOSECONTAINER, hopperObserver);
 }
 
 void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -229,6 +253,43 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 	//outputHopper->openContainerTo(player);
 
 	player->sendExecuteConsoleCommand("/opencontainer " + String::valueOf(outputHopper->getObjectID()));
+}
+
+void FactoryObjectImplementation::openHopper(Observable* observable, ManagedObject* arg1) {
+
+	if(!isOperating())
+		return;
+
+	ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(arg1);
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+
+	if(creo == NULL || outputHopper == NULL || !creo->isPlayerCreature())
+		return;
+
+	if(observable == outputHopper)
+		operatorList.add(creo);
+}
+
+void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObject* arg1) {
+
+	if(!isOperating())
+		return;
+
+	ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(arg1);
+	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
+	ManagedReference<SceneObject*> hopper = cast<SceneObject*>(observable);
+
+	if(creo == NULL || hopper != NULL || outputHopper == NULL || !creo->isPlayerCreature())
+		return;
+
+	if(observable == outputHopper)
+		operatorList.removeElement(creo);
+
+	for(int i = 0; i < outputHopper->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> item = outputHopper->getContainerObject(i);
+		item->sendDestroyTo(creo);
+	}
+
 }
 
 void FactoryObjectImplementation::handleInsertFactorySchem(
@@ -483,6 +544,8 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
+	verifyOperators();
+
 	String type = "";
 	String displayedName = "";
 
@@ -500,14 +563,20 @@ void FactoryObjectImplementation::createNewObject() {
 		crate = createNewFactoryCrate(prototype);
 	else {
 		Locker locker(crate);
-		crate->setUseCount(crate->getUseCount() + 1, true);
+		crate->setUseCount(crate->getUseCount() + 1, false);
+
+		FactoryCrateObjectDeltaMessage3* dfcty3 = new FactoryCrateObjectDeltaMessage3(crate);
+		dfcty3->setQuantity(crate->getUseCount());
+		dfcty3->close();
+
+		broadcastToOperators(dfcty3);
 	}
 
 	if (crate == NULL) {
 		return;
 	}
 
-	schematic->manufactureItem();
+	schematic->manufactureItem(_this);
 	currentRunCount++;
 
 	Reference<Task*> pending = getPendingTask("createFactoryObject");
@@ -568,7 +637,11 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return NULL;
 	}
 
-	outputHopper->transferObject(crate, -1, true);
+	outputHopper->transferObject(crate, -1, false);
+
+	for(int i = 0; i < operatorList.size(); ++i) {
+		crate->sendTo(operatorList.get(i), true);
+	}
 
 	return crate;
 }

@@ -67,6 +67,22 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace factory {
+
+class FactoryHopperObserver;
+
+} // namespace factory
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation::factory;
+
 #include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
 
 #include "server/zone/objects/installation/InstallationObject.h"
@@ -100,6 +116,10 @@ public:
 	void sendIngredientHopper(CreatureObject* player);
 
 	void sendOutputHopper(CreatureObject* player);
+
+	void openHopper(Observable* observable, ManagedObject* arg1);
+
+	void closeHopper(Observable* observable, ManagedObject* arg1);
 
 	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
@@ -147,6 +167,8 @@ protected:
 
 	int currentRunCount;
 
+	ManagedReference<FactoryHopperObserver* > hopperObserver;
+
 public:
 	FactoryObjectImplementation();
 
@@ -171,6 +193,10 @@ public:
 	void sendIngredientHopper(CreatureObject* player);
 
 	void sendOutputHopper(CreatureObject* player);
+
+	void openHopper(Observable* observable, ManagedObject* arg1);
+
+	void closeHopper(Observable* observable, ManagedObject* arg1);
 
 	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
@@ -258,6 +284,10 @@ public:
 	void sendIngredientHopper(CreatureObject* player);
 
 	void sendOutputHopper(CreatureObject* player);
+
+	void openHopper(Observable* observable, ManagedObject* arg1);
+
+	void closeHopper(Observable* observable, ManagedObject* arg1);
 
 	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
