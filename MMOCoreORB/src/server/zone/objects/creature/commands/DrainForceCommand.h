@@ -71,6 +71,10 @@ public:
 		// Fail if target is not a player...
 
 		SceneObject* object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL)
+			return INVALIDTARGET;
+
 		ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
 
 		if (creatureTarget == NULL)
