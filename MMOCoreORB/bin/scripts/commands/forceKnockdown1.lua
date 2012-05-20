@@ -48,8 +48,6 @@ ForceKnockdown1Command = {
 	speed = 4.0,
 	forceCost = 75,
 	accuracySkillMod = "forceknockdown_accuracy";
-	areaAction = true,
-	areaRange = 15,
 
 	stateEffects = {
 	  StateEffect( 

@@ -64,7 +64,7 @@ ForceKnockdown3Command = {
 	},
 	
 	
-	animationCRC = hashCode("force_knockdown_1_particle_level_1"),
+	animationCRC = hashCode("force_knockdown_1_arc_particle_level_1"),
 
 	combatSpam = "forceknockdown3",
 	
