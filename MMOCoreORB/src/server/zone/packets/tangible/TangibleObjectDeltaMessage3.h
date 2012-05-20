@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/tangible/TangibleObject.h"
 
+#include "../../objects/player/PlayerObject.h"
+
 class TangibleObjectDeltaMessage3 : public DeltaMessage {
 	TangibleObject* tano;
 
