@@ -155,8 +155,9 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 }
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
+	Locker clocker(_this);
 
-	if(!player->isPlayerCreature() || draftSchematic == NULL || initialized)
+	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
@@ -171,7 +172,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	sendMsco7(player);
 
 	/// Send session packets for UI listen
-	Locker locker(session);
+	Locker locker(session, _this);
 	session->sendIngredientForUIListen();
 }
 
@@ -297,7 +298,6 @@ void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* p
 }
 
 void ManufactureSchematicImplementation::initializeIngredientSlots() {
-
 	Locker locker(_this);
 
 	if(draftSchematic == NULL)
@@ -315,7 +315,6 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 	assembled = false;
 	completed = false;
-	initialized = true;
 	complexity = draftSchematic->getComplexity();
 	manufactureLimit = 0;
 	ingredientCounter = draftSchematic->getDraftSlotCount() * 4;
@@ -359,9 +358,6 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 			ingredientSlot->setOptional(true);
 			ingredientSlot->setIdentical(false);
 			break;
-		default:
-			error("Ingredient Slot script value bad: " + draftSchematic->getDisplayedName());
-			continue;
 		}
 
 		ingredientSlot->setContentType(draftSlot->getResourceType());
@@ -374,11 +370,8 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
 
+
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
-
-	if(ingredientSlot == NULL)
-		return IngredientSlot::INVALID;
-
 	bool wasEmpty = false;
 
 	if (ingredientSlot == NULL)
@@ -440,9 +433,6 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject* player, TangibleObject* tano, int slot) {
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
-
-	if(ingredientSlot == NULL)
-		return IngredientSlot::INVALID;
 
 	if(!ingredientSlot->removeAll(player))
 		return IngredientSlot::BADTARGETCONTAINER;
@@ -511,7 +501,6 @@ void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSl
 
 
 void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* player) {
-
 	Locker locker(_this);
 
 	while (ingredientSlots.size() > 0) {
@@ -562,7 +551,6 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 	/// We clean up all the unnecessary objects here
 	/// This is where the schematic gets sent to the datapad, so wee need
 	/// To initialize all the values
-
 	Locker locker(_this);
 
 	prototype = tano;
