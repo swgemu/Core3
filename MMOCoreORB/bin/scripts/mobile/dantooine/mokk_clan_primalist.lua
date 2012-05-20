@@ -42,8 +42,7 @@ mokk_clan_primalist = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_clan_primalist, "mokk_clan_primalist")

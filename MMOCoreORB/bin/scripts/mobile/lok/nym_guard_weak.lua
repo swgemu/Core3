@@ -41,7 +41,7 @@ nym_guard_weak = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nym_guard_weak, "nym_guard_weak")

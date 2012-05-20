@@ -28,7 +28,7 @@ insurgent = Creature:new {
 	templates = {"object/mobile/space_imperial_tier4_corellia_nin_gursawe.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(insurgent, "insurgent")

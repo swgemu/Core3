@@ -41,8 +41,7 @@ narmle_militia_grenadier = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_grenadier, "narmle_militia_grenadier")

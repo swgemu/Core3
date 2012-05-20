@@ -42,8 +42,7 @@ crackdown_comm_operator = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_comm_operator, "crackdown_comm_operator")

@@ -42,8 +42,7 @@ feral_force_wielder = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(feral_force_wielder, "feral_force_wielder")

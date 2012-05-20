@@ -42,8 +42,7 @@ senior_specforce_wilderness_fighter = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(senior_specforce_wilderness_fighter, "senior_specforce_wilderness_fighter")

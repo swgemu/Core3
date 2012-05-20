@@ -42,8 +42,7 @@ kunga_hunter = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_hunter, "kunga_hunter")

@@ -41,8 +41,7 @@ narmle_militia_colonel = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_colonel, "narmle_militia_colonel")

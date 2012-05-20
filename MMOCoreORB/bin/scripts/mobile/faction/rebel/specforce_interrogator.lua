@@ -46,7 +46,7 @@ specforce_interrogator = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_interrogator, "specforce_interrogator")

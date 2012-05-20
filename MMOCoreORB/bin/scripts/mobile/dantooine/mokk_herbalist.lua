@@ -42,8 +42,7 @@ mokk_herbalist = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_herbalist, "mokk_herbalist")

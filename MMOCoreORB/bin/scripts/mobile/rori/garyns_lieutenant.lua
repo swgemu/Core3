@@ -41,8 +41,7 @@ garyns_lieutenant = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(garyns_lieutenant, "garyns_lieutenant")

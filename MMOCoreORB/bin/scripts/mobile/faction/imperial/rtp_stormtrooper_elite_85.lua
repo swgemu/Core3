@@ -42,8 +42,7 @@ rtp_stormtrooper_elite_85 = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rtp_stormtrooper_elite_85, "rtp_stormtrooper_elite_85")

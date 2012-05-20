@@ -51,7 +51,7 @@ chunker_nitwit = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_nitwit, "chunker_nitwit")

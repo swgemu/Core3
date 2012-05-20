@@ -42,8 +42,7 @@ rtp_leia_stormtrooper_guard = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rtp_leia_stormtrooper_guard, "rtp_leia_stormtrooper_guard")

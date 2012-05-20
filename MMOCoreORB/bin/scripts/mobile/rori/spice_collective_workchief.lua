@@ -39,7 +39,7 @@ spice_collective_workchief = Creature:new {
 		}			
 	},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_workchief, "spice_collective_workchief")

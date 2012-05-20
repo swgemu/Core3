@@ -43,8 +43,7 @@ imperial_informant_coa2 = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_informant_coa2, "imperial_informant_coa2")

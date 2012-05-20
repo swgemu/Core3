@@ -42,8 +42,7 @@ novatrooper_cadet = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_cadet, "novatrooper_cadet")

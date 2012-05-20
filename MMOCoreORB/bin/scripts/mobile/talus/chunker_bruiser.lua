@@ -39,7 +39,7 @@ chunker_bruiser = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_bruiser, "chunker_bruiser")

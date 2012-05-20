@@ -30,8 +30,7 @@ hardened_gondula_warrior = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hardened_gondula_warrior, "hardened_gondula_warrior")

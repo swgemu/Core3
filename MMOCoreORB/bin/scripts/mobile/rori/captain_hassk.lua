@@ -30,8 +30,7 @@ captain_hassk = Creature:new {
 	lootGroups = {},
 	weapons = {"captain_hassk_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(captain_hassk, "captain_hassk")

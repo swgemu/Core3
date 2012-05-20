@@ -30,8 +30,7 @@ doak_sif = Creature:new {
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(doak_sif, "doak_sif")

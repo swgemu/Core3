@@ -31,8 +31,7 @@ rtp_leia_bothan_spy = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rtp_leia_bothan_spy, "rtp_leia_bothan_spy")

@@ -44,8 +44,7 @@ crackdown_rebel_liberator = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_rebel_liberator, "crackdown_rebel_liberator")

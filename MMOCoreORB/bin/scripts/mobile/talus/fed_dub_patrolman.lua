@@ -43,8 +43,7 @@ fed_dub_patrolman = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fed_dub_patrolman, "fed_dub_patrolman")

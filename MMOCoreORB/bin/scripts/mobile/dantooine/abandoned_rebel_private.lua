@@ -30,8 +30,7 @@ abandoned_rebel_private = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(abandoned_rebel_private, "abandoned_rebel_private")

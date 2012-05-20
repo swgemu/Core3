@@ -41,7 +41,7 @@ chunker_swindler = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_swindler, "chunker_swindler")

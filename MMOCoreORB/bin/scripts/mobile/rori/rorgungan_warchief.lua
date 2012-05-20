@@ -39,7 +39,7 @@ rorgungan_warchief = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_warchief, "rorgungan_warchief")

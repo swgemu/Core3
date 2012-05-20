@@ -28,7 +28,7 @@ sleemo_scamp = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sleemo_scamp, "sleemo_scamp")

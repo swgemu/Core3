@@ -42,8 +42,7 @@ crackdown_stormtrooper_medic = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_medic, "crackdown_stormtrooper_medic")

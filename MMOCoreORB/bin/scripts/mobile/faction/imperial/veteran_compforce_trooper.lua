@@ -28,7 +28,7 @@ veteran_compforce_trooper = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(veteran_compforce_trooper, "veteran_compforce_trooper")

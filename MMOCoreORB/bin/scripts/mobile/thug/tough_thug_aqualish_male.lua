@@ -34,8 +34,7 @@ tough_thug_aqualish_male = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tough_thug_aqualish_male, "tough_thug_aqualish_male")

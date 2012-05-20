@@ -42,7 +42,7 @@ crackdown_specialist_noncom = Creature:new {
 		}			
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_specialist_noncom, "crackdown_specialist_noncom")

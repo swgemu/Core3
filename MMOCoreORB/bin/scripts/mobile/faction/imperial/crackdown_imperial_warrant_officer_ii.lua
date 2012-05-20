@@ -42,8 +42,7 @@ crackdown_imperial_warrant_officer_ii = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_warrant_officer_ii, "crackdown_imperial_warrant_officer_ii")

@@ -43,8 +43,7 @@ spiderclan_sentry = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_sentry, "spiderclan_sentry")

@@ -41,8 +41,7 @@ lost_aqualish_commando = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_commando, "lost_aqualish_commando")

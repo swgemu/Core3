@@ -49,8 +49,7 @@ crackdown_command_security_guard = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_command_security_guard, "crackdown_command_security_guard")

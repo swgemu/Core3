@@ -40,8 +40,7 @@ janta_soothsayer = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(janta_soothsayer, "janta_soothsayer")

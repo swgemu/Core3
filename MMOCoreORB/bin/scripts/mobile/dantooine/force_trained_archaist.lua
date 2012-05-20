@@ -42,8 +42,7 @@ force_trained_archaist = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_trained_archaist, "force_trained_archaist")

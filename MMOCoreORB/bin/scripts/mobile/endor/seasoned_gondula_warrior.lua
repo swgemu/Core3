@@ -28,7 +28,7 @@ seasoned_gondula_warrior = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(seasoned_gondula_warrior, "seasoned_gondula_warrior")

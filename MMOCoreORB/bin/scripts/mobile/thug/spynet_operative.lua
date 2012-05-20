@@ -28,7 +28,7 @@ spynet_operative = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spynet_operative, "spynet_operative")

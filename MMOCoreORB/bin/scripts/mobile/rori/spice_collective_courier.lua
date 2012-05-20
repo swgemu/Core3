@@ -37,7 +37,7 @@ spice_collective_courier = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_courier, "spice_collective_courier")

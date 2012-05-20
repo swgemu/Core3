@@ -30,7 +30,7 @@ scoundrel = Creature:new {
 					"object/mobile/dressed_robber_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(scoundrel, "scoundrel")

@@ -46,7 +46,7 @@ specforce_marine = Creature:new {
 		}		
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_marine, "specforce_marine")

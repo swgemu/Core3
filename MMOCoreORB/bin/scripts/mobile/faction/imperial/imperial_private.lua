@@ -47,7 +47,7 @@ imperial_private = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_private, "imperial_private")

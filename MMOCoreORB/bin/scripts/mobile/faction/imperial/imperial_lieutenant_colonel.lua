@@ -42,8 +42,7 @@ imperial_lieutenant_colonel = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_lieutenant_colonel, "imperial_lieutenant_colonel")

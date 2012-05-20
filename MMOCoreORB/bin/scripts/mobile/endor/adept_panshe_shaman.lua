@@ -30,8 +30,7 @@ adept_panshe_shaman = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(adept_panshe_shaman, "adept_panshe_shaman")

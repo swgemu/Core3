@@ -43,8 +43,7 @@ rebel_sympathizer_coa2 = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_sympathizer_coa2, "rebel_sympathizer_coa2")

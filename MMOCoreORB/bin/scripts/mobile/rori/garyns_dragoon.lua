@@ -41,8 +41,7 @@ garyns_dragoon = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(garyns_dragoon, "garyns_dragoon")

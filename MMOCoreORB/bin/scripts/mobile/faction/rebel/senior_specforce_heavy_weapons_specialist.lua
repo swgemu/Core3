@@ -40,7 +40,7 @@ senior_specforce_heavy_weapons_specialist = Creature:new {
 		}			
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(senior_specforce_heavy_weapons_specialist, "senior_specforce_heavy_weapons_specialist")

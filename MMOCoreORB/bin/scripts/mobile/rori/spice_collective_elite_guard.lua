@@ -41,8 +41,7 @@ spice_collective_elite_guard = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_elite_guard, "spice_collective_elite_guard")

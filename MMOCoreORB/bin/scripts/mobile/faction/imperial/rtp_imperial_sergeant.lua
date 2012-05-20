@@ -44,8 +44,7 @@ rtp_imperial_sergeant = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rtp_imperial_sergeant, "rtp_imperial_sergeant")

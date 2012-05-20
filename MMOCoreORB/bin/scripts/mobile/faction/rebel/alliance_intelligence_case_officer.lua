@@ -42,8 +42,7 @@ alliance_intelligence_case_officer = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(alliance_intelligence_case_officer, "alliance_intelligence_case_officer")

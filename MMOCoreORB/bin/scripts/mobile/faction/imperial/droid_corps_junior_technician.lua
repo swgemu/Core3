@@ -30,8 +30,7 @@ droid_corps_junior_technician = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(droid_corps_junior_technician, "droid_corps_junior_technician")

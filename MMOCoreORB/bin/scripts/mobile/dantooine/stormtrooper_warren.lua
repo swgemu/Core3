@@ -28,7 +28,7 @@ stormtrooper_warren = Creature:new {
 	templates = {"object/mobile/warren_stormtrooper.iff"},
 	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_warren, "stormtrooper_warren")

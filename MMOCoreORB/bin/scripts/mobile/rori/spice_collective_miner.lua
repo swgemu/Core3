@@ -39,7 +39,7 @@ spice_collective_miner = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_miner, "spice_collective_miner")

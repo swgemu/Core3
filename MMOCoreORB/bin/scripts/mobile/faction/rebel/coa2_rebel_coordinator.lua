@@ -42,8 +42,7 @@ coa2_rebel_coordinator = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(coa2_rebel_coordinator, "coa2_rebel_coordinator")

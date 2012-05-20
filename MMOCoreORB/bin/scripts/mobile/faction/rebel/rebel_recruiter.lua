@@ -32,7 +32,7 @@ rebel_recruiter = Creature:new {
 		"object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	attacks = {},
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster),
 	conversationTemplate = "rebel_recruiter_convotemplate",
 	optionsBitmask = 264
 

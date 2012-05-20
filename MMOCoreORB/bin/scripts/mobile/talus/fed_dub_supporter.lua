@@ -41,8 +41,7 @@ fed_dub_supporter = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fed_dub_supporter, "fed_dub_supporter")

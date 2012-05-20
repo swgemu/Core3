@@ -29,7 +29,7 @@ bounty_hunter_thug = Creature:new {
 	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bounty_hunter_thug, "bounty_hunter_thug")

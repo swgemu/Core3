@@ -31,8 +31,7 @@ caravan_leader_coa3 = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(caravan_leader_coa3, "caravan_leader_coa3")

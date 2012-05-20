@@ -39,7 +39,7 @@ gundark_hooligan = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(gundark_hooligan, "gundark_hooligan")

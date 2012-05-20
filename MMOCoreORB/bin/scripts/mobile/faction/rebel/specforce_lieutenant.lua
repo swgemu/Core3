@@ -46,7 +46,7 @@ specforce_lieutenant = Creature:new {
 		}		
 	},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_lieutenant, "specforce_lieutenant")

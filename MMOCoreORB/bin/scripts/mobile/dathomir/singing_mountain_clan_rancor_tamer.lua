@@ -43,8 +43,7 @@ singing_mountain_clan_rancor_tamer = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(singing_mountain_clan_rancor_tamer, "singing_mountain_clan_rancor_tamer")

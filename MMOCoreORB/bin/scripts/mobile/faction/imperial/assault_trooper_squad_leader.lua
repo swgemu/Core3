@@ -42,8 +42,7 @@ assault_trooper_squad_leader = Creature:new {
 	},
 	weapons = {"st_assault_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(assault_trooper_squad_leader, "assault_trooper_squad_leader")

@@ -39,7 +39,7 @@ rorgungan_boss = Creature:new {
 		}					
 	},
 	weapons = {},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_boss, "rorgungan_boss")

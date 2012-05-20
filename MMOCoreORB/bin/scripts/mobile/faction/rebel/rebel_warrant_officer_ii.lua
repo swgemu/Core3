@@ -46,7 +46,7 @@ rebel_warrant_officer_ii = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_warrant_officer_ii, "rebel_warrant_officer_ii")

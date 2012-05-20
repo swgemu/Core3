@@ -42,8 +42,7 @@ neo_cobral_overlord = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_overlord, "neo_cobral_overlord")

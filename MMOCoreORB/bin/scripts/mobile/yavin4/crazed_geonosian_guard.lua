@@ -41,8 +41,7 @@ crazed_geonosian_guard = Creature:new {
 	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crazed_geonosian_guard, "crazed_geonosian_guard")

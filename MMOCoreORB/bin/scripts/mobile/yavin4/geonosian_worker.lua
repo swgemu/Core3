@@ -33,8 +33,7 @@ geonosian_worker = Creature:new {
 	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_worker, "geonosian_worker")

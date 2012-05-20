@@ -39,7 +39,7 @@ rorgungan_warrior = Creature:new {
 		}					
 	},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_warrior, "rorgungan_warrior")

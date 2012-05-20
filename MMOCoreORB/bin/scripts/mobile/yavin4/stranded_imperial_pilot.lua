@@ -30,8 +30,7 @@ stranded_imperial_pilot = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stranded_imperial_pilot, "stranded_imperial_pilot")

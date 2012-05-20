@@ -30,8 +30,7 @@ stranded_rebel_pilot = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stranded_rebel_pilot, "stranded_rebel_pilot")

@@ -44,8 +44,7 @@ crackdown_imperial_army_captain = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_imperial_army_captain, "crackdown_imperial_army_captain")

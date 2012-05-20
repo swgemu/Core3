@@ -42,7 +42,7 @@ crackdown_sand_trooper = Creature:new {
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster)
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_sand_trooper, "crackdown_sand_trooper")

@@ -38,8 +38,7 @@ janta_clan_leader = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(janta_clan_leader, "janta_clan_leader")

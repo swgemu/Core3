@@ -42,8 +42,7 @@ imperial_sharpshooter = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_sharpshooter, "imperial_sharpshooter")

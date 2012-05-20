@@ -30,8 +30,7 @@ ewok_outcast_raider = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(ewok_outcast_raider, "ewok_outcast_raider")

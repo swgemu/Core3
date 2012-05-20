@@ -100,8 +100,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
 
 				if (weao != NULL) {
-					weao->setMinDamage(minDmg * 1.33);
-					weao->setMaxDamage(maxDmg * 1.33);
+					weao->setMinDamage(minDmg * 0.5);
+					weao->setMaxDamage(maxDmg * 0.5);
 					weao->setAttackSpeed(speed);
 					weapons.add(weao);
 
@@ -247,8 +247,8 @@ void AiAgentImplementation::setLevel(int lvl) {
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weao = weapons.get(i);
 
-		weao->setMinDamage(minDmg * 1.33);
-		weao->setMaxDamage(maxDmg * 1.33);
+		weao->setMinDamage(minDmg * 0.5);
+		weao->setMaxDamage(maxDmg * 0.5);
 		weao->setAttackSpeed(speed);
 	}
 

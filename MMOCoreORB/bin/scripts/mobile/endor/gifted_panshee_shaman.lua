@@ -30,8 +30,7 @@ gifted_panshee_shaman = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gifted_panshee_shaman, "gifted_panshee_shaman")

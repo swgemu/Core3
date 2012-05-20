@@ -48,8 +48,7 @@ rebel_specforce_pathfinder = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_specforce_pathfinder, "rebel_specforce_pathfinder")

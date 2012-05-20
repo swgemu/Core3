@@ -46,7 +46,7 @@ specforce_procurement_specialist = Creature:new {
 		}			
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_procurement_specialist, "specforce_procurement_specialist")

@@ -30,8 +30,7 @@ competent_panshee_ritualist = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(competent_panshee_ritualist, "competent_panshee_ritualist")

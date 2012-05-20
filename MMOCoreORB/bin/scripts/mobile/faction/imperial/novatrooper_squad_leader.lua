@@ -42,8 +42,7 @@ novatrooper_squad_leader = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(novatrooper_squad_leader, "novatrooper_squad_leader")

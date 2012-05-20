@@ -39,7 +39,7 @@ gundark_desperado = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(gundark_desperado, "gundark_desperado")

@@ -28,7 +28,7 @@ seasoned_panshee_warrior = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(seasoned_panshee_warrior, "seasoned_panshee_warrior")

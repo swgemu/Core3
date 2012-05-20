@@ -30,8 +30,7 @@ wise_panshee_rigualist = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(wise_panshee_rigualist, "wise_panshee_rigualist")

@@ -39,8 +39,7 @@ talus_liberation_party_activist = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(talus_liberation_party_activist, "talus_liberation_party_activist")

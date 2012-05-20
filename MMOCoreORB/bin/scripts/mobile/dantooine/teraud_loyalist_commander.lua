@@ -40,8 +40,7 @@ teraud_loyalist_commander = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(teraud_loyalist_commander, "teraud_loyalist_commander")

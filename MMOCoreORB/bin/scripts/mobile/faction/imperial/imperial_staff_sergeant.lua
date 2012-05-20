@@ -40,7 +40,7 @@ imperial_staff_sergeant = Creature:new {
 		}					
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_staff_sergeant, "imperial_staff_sergeant")

@@ -40,8 +40,7 @@ kunga_clan_leader = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kunga_clan_leader, "kunga_clan_leader")

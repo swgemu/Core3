@@ -30,8 +30,7 @@ naive_condula_workling = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naive_condula_workling, "naive_condula_workling")

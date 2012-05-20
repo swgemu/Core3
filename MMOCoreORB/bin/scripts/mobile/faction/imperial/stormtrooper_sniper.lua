@@ -40,7 +40,7 @@ stormtrooper_sniper = Creature:new {
 		}					
 	},
 	weapons = {"st_sniper_weapons"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_sniper, "stormtrooper_sniper")
