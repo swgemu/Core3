@@ -1,8 +1,8 @@
 korga_ancient = Creature:new {
 	objectName = "@mob/creature_names:korga_ancient",
-	socialGroup = "Korga Tribe",
-	pvpFaction = "Korga Tribe",
-	faction = "",
+	socialGroup = "korga_tribe",
+	pvpFaction = "korga_tribe",
+	faction = "korga_tribe",
 	level = 47,
 	chanceHit = 0.48,
 	damageMin = 385,
@@ -26,7 +26,9 @@ korga_ancient = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

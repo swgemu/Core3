@@ -1,7 +1,7 @@
 gifted_jinda_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_jinda_shaman",
-	socialGroup = "Jinda Tribe",
-	pvpFaction = "Jinda Tribe",
+	socialGroup = "jinda_tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 27,
 	chanceHit = 0.36,
@@ -26,7 +26,11 @@ gifted_jinda_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/jinda_male.iff"},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_male_01.iff",
+			"object/mobile/jinda_female.iff",
+			"object/mobile/jinda_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

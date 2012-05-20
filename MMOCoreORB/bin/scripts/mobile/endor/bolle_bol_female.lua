@@ -1,6 +1,6 @@
 bolle_bol_female = Creature:new {
 	objectName = "@mob/creature_names:bolle_bol_female",
-	socialGroup = "Bolle Bol",
+	socialGroup = "bol",
 	pvpFaction = "",
 	faction = "",
 	level = 32,

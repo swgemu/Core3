@@ -1,6 +1,6 @@
 merek_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_merek",
-	socialGroup = "Merek",
+	socialGroup = "merek",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

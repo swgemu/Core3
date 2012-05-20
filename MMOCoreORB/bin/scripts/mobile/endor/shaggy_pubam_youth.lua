@@ -1,8 +1,8 @@
 shaggy_pubam_youth = Creature:new {
-	objectName = "@mob/creature_names:shaggy_ubam_youth",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	objectName = "@mob/creature_names:shaggy_pubam_youth",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 5,
 	chanceHit = 0.25,
 	damageMin = 45,
@@ -26,7 +26,9 @@ shaggy_pubam_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

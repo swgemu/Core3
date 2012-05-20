@@ -1,8 +1,8 @@
 panshee_matriarch = Creature:new {
 	objectName = "@mob/creature_names:panshee_matriarch",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 30,
 	chanceHit = 0.37,
 	damageMin = 270,
@@ -26,7 +26,8 @@ panshee_matriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_10.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_05.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

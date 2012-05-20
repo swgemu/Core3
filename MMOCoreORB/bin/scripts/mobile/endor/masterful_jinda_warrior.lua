@@ -1,7 +1,7 @@
 masterful_jinda_warrior = Creature:new {
 	objectName = "@mob/creature_names:masterful_jinda_warrior",
-	socialGroup = "Jinda Tribe",
-	pvpFaction = "Jinda Tribe",
+	socialGroup = "jinda_tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 42,
 	chanceHit = 0.44,
@@ -26,7 +26,11 @@ masterful_jinda_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_female.iff",
+			"object/mobile/jinda_male_01.iff",
+			"object/mobile/jinda_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

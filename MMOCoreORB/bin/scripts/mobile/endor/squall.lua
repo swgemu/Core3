@@ -1,6 +1,6 @@
 squall = Creature:new {
 	objectName = "@mob/creature_names:squall",
-	socialGroup = "Squall",
+	socialGroup = "squall",
 	pvpFaction = "",
 	faction = "",
 	level = 6,
@@ -13,7 +13,7 @@ squall = Creature:new {
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
-	meatAmount = 3,
+	meatAmount = 0,
 	hideType = "hide_bristley",
 	hideAmount = 12,
 	boneType = "bone_mammal",

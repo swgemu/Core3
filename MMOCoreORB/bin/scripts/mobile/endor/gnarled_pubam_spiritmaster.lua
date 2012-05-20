@@ -1,8 +1,8 @@
 gnarled_pubam_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:gnarled_pubam_spiritmaster",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 290,
@@ -26,7 +26,9 @@ gnarled_pubam_spiritmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

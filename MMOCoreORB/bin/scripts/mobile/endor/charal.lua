@@ -1,8 +1,8 @@
 charal = Creature:new {
 	objectName = "@mob/creature_names:charal",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,

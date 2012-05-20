@@ -1,6 +1,6 @@
 noxious_squill = Creature:new {
 	objectName = "@mob/creature_names:noxious_squill",
-	socialGroup = "Endor Squill",
+	socialGroup = "squill",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

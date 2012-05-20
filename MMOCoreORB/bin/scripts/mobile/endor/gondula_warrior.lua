@@ -1,8 +1,8 @@
 gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:gondula_warrior",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 23,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -26,7 +26,9 @@ gondula_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_12.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_06.iff",
+		"object/mobile/dressed_ewok_m_08.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

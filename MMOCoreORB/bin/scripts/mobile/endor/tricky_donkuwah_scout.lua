@@ -1,8 +1,8 @@
 tricky_donkuwah_scout = Creature:new {
 	objectName = "@mob/creature_names:tricky_donkuwah_scout",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 300,
@@ -26,7 +26,9 @@ tricky_donkuwah_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

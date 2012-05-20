@@ -1,8 +1,8 @@
 gondula_elder_worker = Creature:new {
 	objectName = "@mob/creature_names:gondula_elder_worker",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 19,
 	chanceHit = 0.32,
 	damageMin = 170,
@@ -26,7 +26,11 @@ gondula_elder_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_12.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_05.iff",
+		"object/mobile/dressed_ewok_m_04.iff",
+		"object/mobile/dressed_ewok_m_05.iff",
+		"object/mobile/dressed_ewok_m_08.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

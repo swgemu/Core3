@@ -31,6 +31,7 @@ stella = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	outfit = "stella_outfit",
 	attacks = {
 	}
 }

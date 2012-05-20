@@ -1,8 +1,8 @@
 tainted_pubam_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:tainted_pubam_dark_shaman",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 35,
 	chanceHit = 0.41,
 	damageMin = 355,
@@ -26,7 +26,9 @@ tainted_pubam_dark_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

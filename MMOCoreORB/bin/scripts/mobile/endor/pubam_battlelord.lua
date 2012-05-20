@@ -1,8 +1,8 @@
 pubam_battlelord = Creature:new {
 	objectName = "@mob/creature_names:pubam_battlelord",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 41,
 	chanceHit = 0.47,
 	damageMin = 410,
@@ -26,7 +26,9 @@ pubam_battlelord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

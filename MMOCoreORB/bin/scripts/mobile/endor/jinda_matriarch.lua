@@ -1,7 +1,7 @@
 jinda_matriarch = Creature:new {
 	objectName = "@mob/creature_names:jinda_matriarch",
-	socialGroup = "Jinda Tribe",
-	pvpFaction = "Jinda Tribe",
+	socialGroup = "jinda_tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 41,
 	chanceHit = 0.44,
@@ -26,7 +26,11 @@ jinda_matriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/jinda_male_01.iff"},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_male_01.iff",
+			"object/mobile/jinda_female.iff",
+			"object/mobile/jinda_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

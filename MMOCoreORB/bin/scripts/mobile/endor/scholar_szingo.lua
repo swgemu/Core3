@@ -1,8 +1,8 @@
 scholar_szingo = Creature:new {
 	objectName = "@mob/creature_names:scholar_szingo",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 21,
 	chanceHit = 0.330000,
 	damageMin = 210,
@@ -21,11 +21,11 @@ scholar_szingo = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_scholar_szingo.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {}

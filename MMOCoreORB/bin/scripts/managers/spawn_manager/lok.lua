@@ -213,6 +213,7 @@ lok_static_spawns = {
 	{"nym_brawler",60,-8.11,1.3,-1.06,177.005,6595511, "neutral", ""},
 	{"nym_brawler",60,4.17,1.3,-5.62,33.001,6595511, "neutral", ""},
 	{"nym_destroyer",60,-1.79,1.3,3.94,267.008,6595511, "conversation", ""},
+	{"nym_fuel_tech", 0, 374.599, 11.9876, 4986.77, 31.5798, 0, "neutral", ""},
 	{"nym_guard_elite",60,437.698,12.5279,5025.38,67.746,0, "calm", ""},
 	{"nym_guard_elite",60,381.62,12,5013.95,350,0, "conversation", ""},
 	{"nym_guard_elite",60,381.4,12,5015.13,170,0, "calm", ""},

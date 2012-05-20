@@ -1,8 +1,8 @@
 hardened_gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:hardened_gondula_warrior",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 53,
 	chanceHit = 0.53,
 	damageMin = 410,
@@ -26,7 +26,9 @@ hardened_gondula_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/ewok_male.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_06.iff",
+		"object/mobile/dressed_ewok_m_09.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

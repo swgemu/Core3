@@ -1,8 +1,8 @@
 seasoned_panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_panshee_warrior",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 42,
 	chanceHit = 0.440000,
 	damageMin = 345,
@@ -25,7 +25,9 @@ seasoned_panshee_warrior = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ewok_m_09.iff",
+		"object/mobile/dressed_ewok_m_10.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	attacks = merge(riflemanmaster)

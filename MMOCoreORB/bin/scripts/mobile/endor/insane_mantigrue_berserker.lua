@@ -1,6 +1,6 @@
 insane_mantigrue_berserker = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_insane_berserker",
-	socialGroup = "Mantigrue",
+	socialGroup = "mantigrue",
 	pvpFaction = "",
 	faction = "",
 	level = 50,

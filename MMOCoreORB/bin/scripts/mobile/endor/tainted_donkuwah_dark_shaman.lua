@@ -1,8 +1,8 @@
 tainted_donkuwah_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:tainted_donkuwah_dark_shaman",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 45,
 	chanceHit = 0.48,
 	damageMin = 375,
@@ -26,7 +26,9 @@ tainted_donkuwah_dark_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

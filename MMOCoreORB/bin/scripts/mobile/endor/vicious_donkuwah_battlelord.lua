@@ -1,8 +1,8 @@
 vicious_donkuwah_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_donkuwah_battlelord",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 51,
 	chanceHit = 0.51,
 	damageMin = 425,
@@ -26,7 +26,9 @@ vicious_donkuwah_battlelord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

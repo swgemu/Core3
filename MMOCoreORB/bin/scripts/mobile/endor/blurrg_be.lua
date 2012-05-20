@@ -1,6 +1,6 @@
 blurrg_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_blurrg",
-	socialGroup = "Blurrg",
+	socialGroup = "blurrg",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

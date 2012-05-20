@@ -1,6 +1,6 @@
 blurrg_pup = Creature:new {
 	objectName = "@mob/creature_names:blurrg_pup",
-	socialGroup = "Blurrg",
+	socialGroup = "blurrg",
 	pvpFaction = "",
 	faction = "",
 	level = 15,

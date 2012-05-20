@@ -1,8 +1,8 @@
 gifted_panshee_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_panshee_shaman",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 38,
 	chanceHit = 0.42,
 	damageMin = 330,
@@ -26,7 +26,9 @@ gifted_panshee_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/ewok_male.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_07.iff",
+		"object/mobile/dressed_ewok_m_11.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

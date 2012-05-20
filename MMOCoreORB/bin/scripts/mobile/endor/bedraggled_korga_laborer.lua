@@ -1,8 +1,8 @@
 bedraggled_korga_laborer = Creature:new {
 	objectName = "@mob/creature_names:bedraggled_korga_laborer",
-	socialGroup = "Korga Tribe",
-	pvpFaction = "Korga Tribe",
-	faction = "",
+	socialGroup = "korga_tribe",
+	pvpFaction = "korga_tribe",
+	faction = "korga_tribe",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 250,
@@ -26,7 +26,9 @@ bedraggled_korga_laborer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

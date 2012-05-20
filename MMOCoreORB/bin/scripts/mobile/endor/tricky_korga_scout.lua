@@ -1,8 +1,8 @@
 tricky_korga_scout = Creature:new {
 	objectName = "@mob/creature_names:tricky_korga_scout",
-	socialGroup = "Korga Tribe",
-	pvpFaction = "Korga Tribe",
-	faction = "",
+	socialGroup = "korga_tribe",
+	pvpFaction = "korga_tribe",
+	faction = "korga_tribe",
 	level = 41,
 	chanceHit = 0.45,
 	damageMin = 350,
@@ -26,7 +26,9 @@ tricky_korga_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

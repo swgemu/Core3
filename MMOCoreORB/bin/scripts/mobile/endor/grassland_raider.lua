@@ -1,8 +1,8 @@
 grassland_raider = Creature:new {
 	objectName = "@mob/creature_names:grassland_raider",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 40,
 	chanceHit = 0.44,
 	damageMin = 345,
@@ -26,7 +26,13 @@ grassland_raider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_grassland_blood_marauder.iff"},
+	templates = {
+			"object/mobile/dressed_grassland_blood_marauder.iff",
+			"object/mobile/dressed_marauder.iff",
+			"object/mobile/dressed_marauder_male.iff",
+			"object/mobile/dressed_marauder_male_02.iff",
+			"object/mobile/dressed_marauder_male_03.iff",
+			"object/mobile/dressed_marauder_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,8 +1,8 @@
 eerie_pubam_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_pubam_spiritmaster",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 130,
@@ -26,7 +26,9 @@ eerie_pubam_spiritmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

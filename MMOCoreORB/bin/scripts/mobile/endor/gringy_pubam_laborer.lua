@@ -1,8 +1,8 @@
-gringy_pubam_laborer = Creature:new {
-	objectName = "@mob/creature_names:gringy Pubam laborer",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+grungy_pubam_laborer = Creature:new {
+	objectName = "@mob/creature_names:grungy_pubam_laborer",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 45,
 	chanceHit = 0.47,
 	damageMin = 370,
@@ -26,7 +26,9 @@ gringy_pubam_laborer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +36,4 @@ gringy_pubam_laborer = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(gringy_pubam_laborer, "gringy_pubam_laborer")
+CreatureTemplates:addCreatureTemplate(grungy_pubam_laborer, "grungy_pubam_laborer")

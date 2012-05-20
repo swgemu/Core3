@@ -1,8 +1,8 @@
 spooky_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:spooky_korga_spiritmaster",
-	socialGroup = "Korga Tribe",
-	pvpFaction = "Korga Tribe",
-	faction = "",
+	socialGroup = "korga_tribe",
+	pvpFaction = "korga_tribe",
+	faction = "korga_tribe",
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 395,
@@ -26,7 +26,9 @@ spooky_korga_spiritmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

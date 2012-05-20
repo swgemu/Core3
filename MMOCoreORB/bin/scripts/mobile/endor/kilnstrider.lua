@@ -1,8 +1,8 @@
 kilnstrider = Creature:new {
 	objectName = "@npc_spawner_n:kilnstrider",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 178,
 	chanceHit = 12.25,
 	damageMin = 1020,

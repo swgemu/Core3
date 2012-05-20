@@ -1,6 +1,6 @@
 bordok_ancient = Creature:new {
 	objectName = "@mob/creature_names:bordok_ancient",
-	socialGroup = "Bordok",
+	socialGroup = "bordok",
 	pvpFaction = "",
 	faction = "",
 	level = 45,

@@ -1,6 +1,6 @@
 merek_deaths_head = Creature:new {
 	objectName = "@mob/creature_names:merek_deaths_head",
-	socialGroup = "Merek",
+	socialGroup = "merek",
 	pvpFaction = "",
 	faction = "",
 	level = 56,

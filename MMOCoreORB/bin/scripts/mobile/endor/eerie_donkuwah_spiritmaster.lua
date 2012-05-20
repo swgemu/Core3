@@ -1,8 +1,8 @@
 eerie_donkuwah_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_donkuwah_spiritmaster",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 39,
 	chanceHit = 0.44,
 	damageMin = 350,
@@ -26,7 +26,9 @@ eerie_donkuwah_spiritmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

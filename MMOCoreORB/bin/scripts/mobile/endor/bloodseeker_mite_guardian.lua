@@ -1,6 +1,6 @@
 bloodseeker_mite_guardian = Creature:new {
 	objectName = "@mob/creature_names:bloodseeker_mite_guardian",
-	socialGroup = "Bloodseeker",
+	socialGroup = "bloodseeker",
 	pvpFaction = "",
 	faction = "",
 	level = 38,

@@ -1,8 +1,8 @@
 spooky_donkuwah_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:spooky_donkuwah_spiritmaster",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 26,
 	chanceHit = 0.36,
 	damageMin = 260,
@@ -26,7 +26,9 @@ spooky_donkuwah_spiritmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

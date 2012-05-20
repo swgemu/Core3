@@ -1,8 +1,8 @@
 panshee_elder_worker = Creature:new {
 	objectName = "@mob/creature_names:panshee_elder_worker",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -26,7 +26,11 @@ panshee_elder_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_10.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_05.iff",
+		"object/mobile/dressed_ewok_m_04.iff",
+		"object/mobile/dressed_ewok_m_05.iff",
+		"object/mobile/dressed_ewok_m_08.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

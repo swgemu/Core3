@@ -1,6 +1,6 @@
 sanguin_bloodseeker_hierarch = Creature:new {
 	objectName = "@mob/creature_names:bloodseeker_mite_sanguine_hierarch",
-	socialGroup = "Bloodseeker",
+	socialGroup = "bloodseeker",
 	pvpFaction = "",
 	faction = "",
 	level = 23,

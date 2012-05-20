@@ -1,8 +1,8 @@
 masterful_ewok_warrior = Creature:new {
 	objectName = "@mob/creature_names:masterful_ewok_warrior",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 11,
 	chanceHit = 0.280000,
 	damageMin = 90,
@@ -25,7 +25,9 @@ masterful_ewok_warrior = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ewok_m_06.iff",
+		"object/mobile/dressed_ewok_m_08.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	attacks = merge(riflemanmaster)

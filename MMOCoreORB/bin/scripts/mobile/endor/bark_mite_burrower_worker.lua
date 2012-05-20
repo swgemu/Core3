@@ -1,6 +1,6 @@
 bark_mite_burrower_worker = Creature:new {
 	objectName = "@mob/creature_names:bark_mite_burrower_worker",
-	socialGroup = "Bark Mite",
+	socialGroup = "mite",
 	pvpFaction = "",
 	faction = "",
 	level = 45,

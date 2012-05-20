@@ -1,7 +1,7 @@
 naive_jinda_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_jinda_workling",
-	socialGroup = "Jinda Tribe",
-	pvpFaction = "Jinda Tribe",
+	socialGroup = "jinda_tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,
@@ -26,7 +26,11 @@ naive_jinda_workling = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_female.iff",
+			"object/mobile/jinda_male_01.iff",
+			"object/mobile/jinda_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

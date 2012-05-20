@@ -1,8 +1,8 @@
 blood_crazed_plains_marauder = Creature:new {
 	objectName = "@mob/creature_names:blood_crazed_plains_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 56,
 	chanceHit = 0.55,
 	damageMin = 445,

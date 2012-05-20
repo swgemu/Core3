@@ -1,8 +1,8 @@
 weathered_gondula_shaman = Creature:new {
 	objectName = "@mob/creature_names:weathered_gondula_shaman",
-	socialGroup = "Condula Tribe",
-	pvpFaction = "Condula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 43,
 	chanceHit = 0.45,
 	damageMin = 350,
@@ -26,7 +26,10 @@ weathered_gondula_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_04.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_03.iff",
+		"object/mobile/dressed_ewok_m_07.iff",
+		"object/mobile/dressed_ewok_m_11.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",

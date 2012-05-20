@@ -1,8 +1,8 @@
 panshee_tribesman = Creature:new {
 	objectName = "@mob/creature_names:panshee_tribesman",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 24,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -26,7 +26,12 @@ panshee_tribesman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_10.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_01.iff",
+		"object/mobile/dressed_ewok_f_07.iff",
+		"object/mobile/dressed_ewok_f_08.iff",
+		"object/mobile/dressed_ewok_f_09.iff",
+		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
