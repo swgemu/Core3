@@ -181,6 +181,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
 				server/zone/objects/installation/garage/GarageInstallation.cpp \
 				server/zone/objects/installation/factory/FactoryObject.cpp \
+				server/zone/objects/installation/factory/FactoryHopperObserver.cpp \
 				server/zone/objects/installation/generator/GeneratorObject.cpp \
 				server/zone/objects/installation/harvester/HarvesterObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
