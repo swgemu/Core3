@@ -106,13 +106,17 @@ public:
 			player->healDamage(creature, CreatureAttribute::ACTION, 5000);
 			player->healDamage(creature, CreatureAttribute::MIND, 5000);
 
+			for (int i = 0; i < 9; ++i) {
+				player->setWounds(i, 0);
+			}
+
+			player->setShockWounds(0);
+
 			player->setPosture(CreaturePosture::UPRIGHT);
 
-			player->addWounds(CreatureAttribute::HEALTH, -5000, true );
-			player->addWounds(CreatureAttribute::ACTION, -5000, true );
-			player->addWounds(CreatureAttribute::MIND, -5000, true );
+			player->sendSystemMessage("You have been restored.");
 
-			creature->sendSystemMessage(player->getFirstName() + " has been resurrected.");
+			creature->sendSystemMessage(player->getFirstName() + " has been restored.");
 		}
 
 		catch (Exception& e)
