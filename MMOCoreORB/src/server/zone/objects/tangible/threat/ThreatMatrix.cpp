@@ -35,6 +35,7 @@ void ThreatMatrix::clear() {
 
 	damageMap.removeAll();
 	aggroMap.removeAll();
+	healMap.removeAll();
 }
 
 void ThreatMatrix::add(CreatureObject* creature, ThreatMapEntry* entry) {

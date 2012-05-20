@@ -146,13 +146,9 @@ public:
 
 
 	~ThreatMap() {
-		removeAll();
 	}
 
-	void removeAll() {
-		removeObservers();
-		VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::removeAll();
-	}
+	void removeAll();
 
 	void removeObservers();
 

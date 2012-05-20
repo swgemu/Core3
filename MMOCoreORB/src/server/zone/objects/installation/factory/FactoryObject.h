@@ -87,6 +87,10 @@ using namespace server::zone::objects::installation::factory;
 
 #include "server/zone/objects/installation/InstallationObject.h"
 
+#include "engine/util/Observable.h"
+
+#include "engine/core/ManagedObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {

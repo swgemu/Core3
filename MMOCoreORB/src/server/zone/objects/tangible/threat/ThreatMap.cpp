@@ -106,6 +106,13 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 	}
 }
 
+void ThreatMap::removeAll() {
+	removeObservers();
+	VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::removeAll();
+	currentThreat = NULL;
+	threatMatrix.clear();
+}
+
 void ThreatMap::dropDamage(CreatureObject* target) {
 	Locker locker(self);
 
