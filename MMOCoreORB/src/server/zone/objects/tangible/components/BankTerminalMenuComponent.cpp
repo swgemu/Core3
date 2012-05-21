@@ -23,9 +23,10 @@ void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if (ghost == NULL)
 		return;
 
+	if (sceneObject->getZone() == NULL)
+		return;
+
 	String location = ghost->getBankLocation();
-
-
 
 	//if (location = "") {
 		// Join Bank
