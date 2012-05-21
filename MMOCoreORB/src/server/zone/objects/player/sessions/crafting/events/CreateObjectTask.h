@@ -60,6 +60,8 @@ public:
 	}
 
 	void run() {
+		Locker locker(crafter);
+		Locker clocker(craftingTool, crafter);
 
 		craftingTool->setCountdownTimer(0, true);
 
@@ -72,8 +74,6 @@ public:
 		}
 
 		prototype->setPersistent(1);
-
-		Locker locker(craftingTool);
 
 		ManagedReference<SceneObject*> inventory = crafter->getSlottedObject("inventory");
 
