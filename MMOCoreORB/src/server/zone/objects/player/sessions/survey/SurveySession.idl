@@ -1,0 +1,101 @@
+package server.zone.objects.player.sessions.survey;
+
+import engine.util.Facade;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.tangible.tool.SurveyTool;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.managers.resource.ResourceManager;
+import engine.util.u3d.Coordinate;
+include server.zone.objects.scene.SessionFacadeType;
+include server.zone.templates.customization.CustomizationVariable;
+
+class SurveySession extends Facade {
+	@weakReference
+	protected transient CreatureObject surveyer;
+	
+	@weakReference
+	protected transient PlayerObject surveyerGhost;
+	
+	@weakReference
+	protected transient SurveyTool activeSurveyTool;
+	
+	@weakReference
+	protected transient SurveyTool openSurveyTool;
+
+	@weakReference
+	protected transient ResourceManager resourceManager;
+	
+	protected transient Coordinate richSampleLocation;
+	
+	protected transient boolean doGamble;
+	
+	protected transient string lastResourceSampleName;
+
+	public SurveySession(CreatureObject creature) {
+		Logger.setLoggingName("CraftingSession");
+		Logger.setLogging(true);
+		
+		richSampleLocation = null;
+		doGamble = false;
+		lastResourceSampleName = "";
+		
+		surveyer = creature;
+	}
+
+	public native int initializeSession(SurveyTool tool);
+	
+	private native int startSession();
+	
+	public native int cancelSession();
+
+	public native int clearSession();	
+
+	public native void startSurvey(final string resname);
+	
+	public void reSample() {
+		startSample(lastResourceSampleName);
+	}
+	
+	public native void startSample(final string resname);
+
+	private native void surveyCnodeMinigameSui();
+	public native void surveyCnodeMinigame(int value);
+
+	private native void surveyGnodeMinigameSui();
+	public native void surveyGnodeMinigame(int value);
+
+	public SurveyTool getActiveSurveyTool() {
+		return activeSurveyTool;
+	}
+	
+	public void setActiveSurveyTool(SurveyTool tool) {
+		activeSurveyTool = tool;
+	}
+	
+	public SurveyTool getOpenSurveyTool() {
+		return openSurveyTool;
+	}
+	
+	public void setOpenSurveyTool(SurveyTool tool) {
+		openSurveyTool = tool;
+	}
+	
+	public boolean tryGamble() {
+		return doGamble == true;
+	}
+	
+	public void clearGamble() {
+		doGamble = false;
+	}
+	
+	@local
+	public Coordinate getRichSampleLocation() {
+		return richSampleLocation;
+	}
+	
+	public void clearRichSampleLocation() {
+		richSampleLocation = null;
+	}
+}
