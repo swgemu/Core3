@@ -7,6 +7,7 @@
 
 #include "FactoryObject.h"
 #include "FactoryHopperObserver.h"
+#include "sui/InsertSchematicSuiCallback.h"
 #include "tasks/CreateFactoryObjectTask.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -193,6 +194,8 @@ void FactoryObjectImplementation::sendInsertManuSui(CreatureObject* player){
 			schematics->addMenuItem(sendname, manSchem->getObjectID());
 		}
 	}
+
+	schematics->setCallback(new InsertSchematicSuiCallback(server->getZoneServer()));
 
 	schematics->setUsingObject(_this);
 	player->getPlayerObject()->addSuiBox(schematics);

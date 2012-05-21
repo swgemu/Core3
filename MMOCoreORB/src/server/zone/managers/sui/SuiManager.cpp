@@ -175,12 +175,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::STRUCTURE_ADD_ENERGY:
 		handleAddEnergy(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::FACTORY_SCHEMATIC2BUTTON:
-		handleInsertFactorySchem2(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
-		handleInsertFactorySchem3(player, suiBox, cancel, args);
-		break;
 	}
 }
 
@@ -647,59 +641,6 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 
 	String name = suiList->getMenuItemName(index);
 	UnconsentCommand::unconscent(player, name);
-}
-
-void SuiManager::handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isFactory())
-		return;
-
-	FactoryObject* factory = cast<FactoryObject*>( object.get());
-
-	Locker _lock(factory, player);
-
-	ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
-	factory->handleInsertFactorySchem(player, schematic);
-}
-
-void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-	int index = Integer::valueOf(args->get(1).toString());
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isFactory())
-		return;
-
-	FactoryObject* factory = cast<FactoryObject*>( object.get());
-
-	Locker _lock(factory, player);
-
-	factory->handleRemoveFactorySchem(player);
-
-	if (!otherPressed) {
-		ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
-		factory->handleInsertFactorySchem(player, schematic);
-	}
 }
 
 void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback) {
