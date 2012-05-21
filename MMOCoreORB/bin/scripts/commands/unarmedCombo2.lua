@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 UnarmedCombo2Command = {
-        name = "unarmedcombo2",
+	name = "unarmedcombo2",
 
 	damageMultiplier = 1.5,
 	speedMultiplier = 4.0,
@@ -51,7 +51,7 @@ UnarmedCombo2Command = {
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 2,
 
-	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 
 	animationCRC = hashCode("combo_4a_light"),
 
