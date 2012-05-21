@@ -28,7 +28,7 @@
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -188,6 +188,19 @@ void CreatureManager::loadSpawnAreas() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadSpawnAreas();
+}
+
+void CreatureManager::loadAiTemplates() {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADAITEMPLATES__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadAiTemplates();
 }
 
 void CreatureManager::loadSingleSpawns() {
@@ -531,6 +544,8 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl():  		loadSpawnAreas();
 	loadSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadAiTemplates();
+	loadAiTemplates();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadTrainers();
 	loadTrainers();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadSingleSpawns();
@@ -620,6 +635,11 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			loadSpawnAreas();
 		}
 		break;
+	case RPC_LOADAITEMPLATES__:
+		{
+			loadAiTemplates();
+		}
+		break;
 	case RPC_LOADSINGLESPAWNS__:
 		{
 			loadSingleSpawns();
@@ -706,6 +726,10 @@ void CreatureManagerAdapter::placeCreature(CreatureObject* creature, float x, fl
 
 void CreatureManagerAdapter::loadSpawnAreas() {
 	(static_cast<CreatureManager*>(stub))->loadSpawnAreas();
+}
+
+void CreatureManagerAdapter::loadAiTemplates() {
+	(static_cast<CreatureManager*>(stub))->loadAiTemplates();
 }
 
 void CreatureManagerAdapter::loadSingleSpawns() {

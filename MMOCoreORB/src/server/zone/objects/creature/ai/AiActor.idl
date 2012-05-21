@@ -1,0 +1,125 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.creature.ai;
+
+include server.zone.objects.creature.ai.components.AiStateComponent;
+import server.zone.objects.creature.CreatureObject;
+include engine.util.u3d.QuadTreeEntry;
+include server.zone.templates.AiTemplate;
+
+class AiActor extends Observable implements Logger {
+	public static final unsigned short FINISHED = 0;
+	public static final unsigned short UNFINISHED = 1;
+	public static final unsigned short ATTACKED = 2;
+	public static final unsigned short INTERESTED = 3;
+	public static final unsigned short DEAD = 4;
+	public static final unsigned short ALMOSTDEAD = 5;
+	public static final unsigned short SCARED = 6;
+	public static final unsigned short FORGOT = 7;
+	public static final unsigned short NONE = 0xFFFF;
+	
+	@dereferenced
+	protected transient VectorMap<string, string> transitions; // <"currentState:msg", "newState">
+	
+	protected transient AiStateComponent currentState;
+	@dereferenced
+	protected string currentStateName;
+	@dereferenced
+	protected string defaultStateName;
+	
+	protected transient AiTemplate aiTemplate;
+	
+	protected unsigned short currentMessage;
+	
+	protected CreatureObject host;
+	
+	public AiActor(AiTemplate ait) {
+		host = null;
+		
+		aiTemplate = ait;
+		
+		Logger.setLoggingName("AiActor");
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(false);
+	}
+	
+	public void setHost(CreatureObject creo) {
+		host = creo;
+		host.addObservableChild(this);
+	}
+	
+	public CreatureObject getHost() {
+		return host;
+	}
+	
+	/**
+	 * Initializes the transient members of ManagedObject, must call the inherited object method first.
+	 * @pre { transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Uses position updates to perform a think
+	 */
+	public native void notifyPositionUpdate(QuadTreeEntry entry) {
+		currentState.notifyPositionUpdate(this, entry);
+	}
+	
+	public native void setCurrentMessage(unsigned short msg) {
+		currentMessage = msg;
+	}
+	
+	/**
+	 * calculate next state based on initial state and message
+	 */
+	private native void next(unsigned short msg);
+	private native void next();
+
+	@local
+	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	
+	public native void addTransition(final string stateName, unsigned short msg, final string resultState);
+}

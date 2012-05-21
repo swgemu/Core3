@@ -14,6 +14,7 @@ import server.zone.objects.area.SpawnArea;
 import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
+include server.zone.managers.creature.AiMap;
 
 class CreatureManager extends ZoneManager {
 	@weakReference
@@ -24,6 +25,8 @@ class CreatureManager extends ZoneManager {
 	
 	@dereferenced
 	protected SpawnAreaMap spawnAreaMap;
+	
+	protected transient AiMap aiMap;
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
 	
@@ -45,6 +48,7 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		loadSpawnAreas();
+		loadAiTemplates();
 		loadTrainers();
 		loadSingleSpawns();
 		loadMissionSpawns();
@@ -77,6 +81,7 @@ class CreatureManager extends ZoneManager {
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
 	public native void loadSpawnAreas();
+	public native void loadAiTemplates();
 	public native void loadSingleSpawns();
 	public native void loadTrainers();
 	public native void loadMissionSpawns();

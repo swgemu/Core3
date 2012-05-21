@@ -9,6 +9,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
 #include "SpawnAreaMap.h"
+#include "AiMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/skill/SkillManager.h"
@@ -323,6 +324,14 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 void CreatureManagerImplementation::loadSpawnAreas() {
 	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
+}
+
+void CreatureManagerImplementation::loadAiTemplates() {
+	info("loading ai templates...", true);
+	aiMap = AiMap::instance();
+	aiMap->initialize();
+	String msg = String("loaded ") + String::valueOf(aiMap->getSize()) + String(" ai templates.");
+	info(msg, true);
 }
 
 void CreatureManagerImplementation::loadSingleSpawns() {
