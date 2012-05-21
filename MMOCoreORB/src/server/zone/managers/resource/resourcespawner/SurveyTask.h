@@ -75,13 +75,12 @@ public:
 	}
 
 	void run() {
+		Locker playerLocker(playerCreature);
 
 		// Send Survey Results
 		playerCreature->sendMessage(surveyMessage);
 
 		if (waypoint != NULL) {
-			Locker playerLocker(playerCreature);
-
 			playerCreature->getPlayerObject()->addWaypoint(waypoint, false, true);
 
 			// Send Waypoint System Message
