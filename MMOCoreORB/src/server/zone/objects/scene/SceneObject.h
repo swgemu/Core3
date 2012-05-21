@@ -488,6 +488,8 @@ public:
 
 	bool hasSlotDescriptor(const String& descr);
 
+	bool hasArrangementDescriptor(const String& descr);
+
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
 	SceneObject* getSlottedObject(const String& slot);
@@ -1117,6 +1119,8 @@ public:
 
 	bool hasSlotDescriptor(const String& descr);
 
+	bool hasArrangementDescriptor(const String& descr);
+
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
 	SceneObject* getSlottedObject(const String& slot);
@@ -1637,6 +1641,8 @@ public:
 	String getSlotDescriptor(int idx);
 
 	bool hasSlotDescriptor(const String& descr);
+
+	bool hasArrangementDescriptor(const String& descr);
 
 	SceneObject* getSlottedObject(const String& slot);
 

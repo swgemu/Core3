@@ -622,38 +622,21 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> healthArmor;
-	SceneObject* chest = defender->getSlottedObject("chest2");
-	SceneObject* bicepr = defender->getSlottedObject("bicep_r");
-	SceneObject* bicepl = defender->getSlottedObject("bicep_l");
-	SceneObject* bracerr = defender->getSlottedObject("bracer_upper_r");
-	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");
-	SceneObject* gloves = defender->getSlottedObject("gloves");
-	if (bicepr != NULL && bicepr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepr));
-	if (bicepl != NULL && bicepl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepl));
-	if (bracerr != NULL && bracerr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerr));
-	if (bracerl != NULL && bracerl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerl));
-	if (gloves != NULL && gloves->isArmorObject()) healthArmor.add(cast<ArmorObject*>(gloves));
+	Vector<ArmorObject*> healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+
+	if (System::random(1) == 0)
+		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	if (System::random(1) == 0) {
-		if (chest != NULL && chest->isArmorObject())
-			armorToHit = cast<ArmorObject*>(chest);
-	} else {
-		if (!healthArmor.isEmpty())
-			armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
-	}
+	if (!healthArmor.isEmpty())
+		armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
 
 	return armorToHit;
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> actionArmor;
-	SceneObject* boots = defender->getSlottedObject("shoes");
-	SceneObject* pants = defender->getSlottedObject("pants1");
-	if (boots != NULL && boots->isArmorObject()) actionArmor.add(cast<ArmorObject*>(boots));
-	if (pants != NULL && pants->isArmorObject()) actionArmor.add(cast<ArmorObject*>(pants));
+	Vector<ArmorObject*> actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -664,12 +647,14 @@ ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
-	SceneObject* helmet = defender->getSlottedObject("hat");
+	Vector<ArmorObject*> mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
 
-	if (helmet != NULL && helmet->isArmorObject())
-		return cast<ArmorObject*>(helmet);
+	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	return NULL;
+	if (!mindArmor.isEmpty())
+		armorToHit = mindArmor.get(System::random(mindArmor.size() - 1));
+
+	return armorToHit;
 }
 
 ArmorObject* CombatManager::getPSGArmor(CreatureObject* attacker, CreatureObject* defender) {

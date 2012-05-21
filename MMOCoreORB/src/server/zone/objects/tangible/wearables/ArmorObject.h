@@ -147,6 +147,10 @@ public:
 
 	void setEncumbranceSlice(float value);
 
+	byte getHitLocation();
+
+	void setHitLocation(byte h);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -204,6 +208,8 @@ protected:
 	int specialResists;
 
 	int vulnerabilites;
+
+	byte hitLocation;
 
 	float baseProtection;
 
@@ -307,6 +313,10 @@ public:
 	void setEffectivenessSlice(float value);
 
 	void setEncumbranceSlice(float value);
+
+	byte getHitLocation();
+
+	void setHitLocation(byte h);
 
 	WeakReference<ArmorObject*> _this;
 
@@ -416,6 +426,10 @@ public:
 	void setEffectivenessSlice(float value);
 
 	void setEncumbranceSlice(float value);
+
+	byte getHitLocation();
+
+	void setHitLocation(byte h);
 
 };
 

@@ -1002,6 +1002,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 	
+	@read
+	public boolean hasArrangementDescriptor(final string descr) {
+		return templateObject.hasArrangementDescriptor(descr);
+	}
+	
 	@local
 	public VectorMap<string, SceneObject> getSlottedObjects() {
 		return slottedObjects;

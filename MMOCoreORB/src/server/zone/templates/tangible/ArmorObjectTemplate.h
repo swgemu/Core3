@@ -11,6 +11,7 @@
 
 #include "../SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	int healthEncumbrance;
@@ -31,9 +32,11 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 
 	int vulnerabilites;
 
+	uint8 hitLocation;
+
 public:
 	ArmorObjectTemplate() {
-
+		hitLocation = CombatManager::NOLOCATION;
 	}
 
 	~ArmorObjectTemplate() {
@@ -60,6 +63,8 @@ public:
 		cold = templateData->getFloatField("cold");
 		acid = templateData->getFloatField("acid");
 		lightSaber = templateData->getFloatField("lightSaber");
+
+		hitLocation = templateData->getIntField("hitLocation");
 	}
 
 	inline float getAcid() const {
@@ -118,6 +123,10 @@ public:
 		return vulnerabilites;
 	}
 
+	int getHitLocation() const {
+		return hitLocation;
+	}
+
 	void setAcid(float acid) {
 		this->acid = acid;
 	}
@@ -168,6 +177,10 @@ public:
 
 	void setStun(float stun) {
 		this->stun = stun;
+	}
+
+	void setHitLocation(int hitLocation) {
+		this->hitLocation = hitLocation;
 	}
 
 	bool isArmorObjectTemplate() {

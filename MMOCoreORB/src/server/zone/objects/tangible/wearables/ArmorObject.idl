@@ -71,6 +71,8 @@ class ArmorObject extends WearableObject {
 
 	protected int specialResists;
 	protected int vulnerabilites;
+	
+	protected unsigned byte hitLocation;
 
 	protected float baseProtection;
 	protected float specialProtection;
@@ -102,6 +104,8 @@ class ArmorObject extends WearableObject {
 		encumbranceSlice = 1;
 
 		specialResists = 0;
+		
+		hitLocation = 0;
 
 		Logger.setLoggingName("ArmorObject");
 	}
@@ -273,5 +277,13 @@ class ArmorObject extends WearableObject {
 		if(value > 0.5f || value < 0)
 			return;
 		encumbranceSlice = 1 - value;
+	}
+	
+	public unsigned byte getHitLocation() {
+		return hitLocation;
+	}
+	
+	public void setHitLocation(unsigned byte h) {
+		hitLocation = h;
 	}
 }
