@@ -6,6 +6,7 @@
  */
 
 #include "InstallationObject.h"
+#include "sui/InsertPowerSuiCallback.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -221,6 +222,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(CreatureObject* 
 		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.toString(), ssTotalEnergy.toString(), "1");
 		energyBox->addTo("@player_structure:to_deposit", "0", "0", "1");
 
+		energyBox->setCallback(new InsertPowerSuiCallback(server->getZoneServer()));
 		player->getPlayerObject()->addSuiBox(energyBox);
 		player->sendMessage(energyBox->generateMessage());
 
