@@ -1226,15 +1226,11 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
 	}
 
-	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale(
-			(uint8) newPosture) + speedboost, true);
+	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8) newPosture) + speedboost, true);
 
-	setAccelerationMultiplierMod(
-			CreaturePosture::instance()->getAccelerationScale(
-					(uint8) newPosture), true);
+	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) newPosture), true);
 
-	setTurnScale(CreaturePosture::instance()->getTurnScale(
-			(uint8) newPosture), true);
+	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) newPosture), true);
 
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
@@ -1346,10 +1342,11 @@ void CreatureObjectImplementation::setAccelerationMultiplierBase(
 
 void CreatureObjectImplementation::setAccelerationMultiplierMod(
 		float newMultiplierMod, bool notifyClient) {
-	if (accelerationMultiplierMod == newMultiplierMod)
+	int buffMod = getSkillMod("private_acceleration_multiplier");
+	if (accelerationMultiplierMod == newMultiplierMod + buffMod)
 		return;
 
-	accelerationMultiplierMod = newMultiplierMod;
+	accelerationMultiplierMod = newMultiplierMod + buffMod;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
@@ -1413,10 +1410,12 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 void CreatureObjectImplementation::setSpeedMultiplierMod(
 		float newMultiplierMod, bool notifyClient) {
 
-	if (speedMultiplierMod == newMultiplierMod)
+	int buffMod = getSkillMod("private_speed_multiplier");
+
+	if (speedMultiplierMod == newMultiplierMod + buffMod)
 		return;
 
-	speedMultiplierMod = newMultiplierMod;
+	speedMultiplierMod = newMultiplierMod + buffMod;
 
 	int bufferSize = speedMultiplierModChanges.size();
 

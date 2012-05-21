@@ -213,10 +213,6 @@ protected:
 
 	int buffType;
 
-	float speedMultiplierMod;
-
-	float accelerationMultiplierMod;
-
 	bool fillAttributesOnBuff;
 
 	StringIdChatParameter startMessage;
