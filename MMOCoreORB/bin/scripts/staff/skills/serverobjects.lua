@@ -41,6 +41,7 @@
 --which carries forward this exception.
 --true = 1, false = 0
 
+includeFile("skills/admin_base.lua")
 includeFile("skills/admin_debug_01.lua")
 includeFile("skills/admin_debug_02.lua")
 includeFile("skills/admin_debug_03.lua")

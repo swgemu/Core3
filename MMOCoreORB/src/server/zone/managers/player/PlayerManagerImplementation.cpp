@@ -2270,28 +2270,29 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		return;*/
 
 	if (currentPermissionLevel != 0) {
-		skillManager->removeAbility(ghost, "admin");
 		Vector<String>* skillsToBeRemoved = permissionLevelList->getPermissionSkills(currentPermissionLevel);
 		if(skillsToBeRemoved != NULL) {
 			for(int i = 0; i < skillsToBeRemoved->size(); i++) {
-				skillManager->surrenderSkill(skillsToBeRemoved->get(i), targetPlayer, true);
+				String skill = skillsToBeRemoved->get(i);
+				targetPlayer->sendSystemMessage("Staff skill revoked: " + skill);
+				skillManager->surrenderSkill(skill, targetPlayer, true);
 			}
 		}
 	}
 
 	if(permissionLevel != 0) {
-		skillManager->addAbility(ghost, "admin");
 		Vector<String>* skillsToBeAdded = permissionLevelList->getPermissionSkills(permissionLevel);
 		if(skillsToBeAdded != NULL) {
-			for(int i = 0; i < skillsToBeAdded->size(); i++) {
-				skillManager->awardSkill(skillsToBeAdded->get(i), targetPlayer, false, true, true);
+			for(int i = 0; i < skillsToBeAdded->size(); ++i) {
+				String skill = skillsToBeAdded->get(i);
+				targetPlayer->sendSystemMessage("Staff skill granted: " + skill);
+				skillManager->awardSkill(skill, targetPlayer, false, true, true);
 			}
 		}
 	}
 
 	ghost->setAdminLevel(permissionLevel);
 	updatePermissionName(targetPlayer, permissionLevel);
-
 }
 
 void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, int permissionLevel) {
@@ -2299,6 +2300,7 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 	//Send deltas
 	if (player->isOnline()) {
 		UnicodeString tag = permissionLevelList->getPermissionTag(permissionLevel);
+
 		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(player);
 		tanod3->updateName(player->getDisplayedName(), tag);
 		tanod3->close();
@@ -3057,8 +3059,8 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-			<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
-			<< " " << expname  << " experience cost).";
+					<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+					<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());
 	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));

@@ -3,6 +3,7 @@ csr = {
 	name = "csr",
 	tag = "SWGEmu-CSR",
 	skills = {
+		"admin_base",
 		"admin_general_admin_01",
 		"admin_general_admin_02",
 		"admin_general_admin_03",

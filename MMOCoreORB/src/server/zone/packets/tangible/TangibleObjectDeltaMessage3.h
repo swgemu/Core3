@@ -88,7 +88,7 @@ public:
 		if (tano->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( tano);
 
-			if (player->getPlayerObject()->isPrivileged()) {
+			if (player->getPlayerObject()->isPrivileged() && tag != "") {
 				UnicodeString customName = name + " \\#ffff00[" + tag + "]\\#.";
 				addUnicodeUpdate(2, customName);
 				return;

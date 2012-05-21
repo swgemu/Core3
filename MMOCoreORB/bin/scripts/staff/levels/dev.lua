@@ -3,6 +3,7 @@ dev = {
 	name = "dev",
 	tag = "SWGEmu-Dev",
 	skills = {
+		"admin_base",
 		"admin_debug_01",
 		"admin_debug_02",
 		"admin_general_admin_01",
