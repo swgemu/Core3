@@ -65,16 +65,10 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			ManagedReference<CreatureObject*> playerCreature = creature;
-
-			PlayerObject* ghost = playerCreature->getPlayerObject();
-
-			ManagedReference<SurveyTool* > surveyTool = ghost->getSurveyTool();
-
-			if(surveyTool == NULL && playerCreature->getZone() != NULL)
-				//You must use a survey tool once from the Inventory before you can do this.
-				playerCreature->sendSystemMessage("@ui:survey_notool");
-
+			ManagedReference<SurveySession*> session = cast<SurveySession*>(creature->getActiveSession(SessionFacadeType::SURVEY));
+			if(session == NULL) {
+				creature->sendSystemMessage("@ui:survey_notool");
+			}
 		}
 
 		return SUCCESS;

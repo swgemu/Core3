@@ -27,6 +27,7 @@ public:
 	const static int PLAYERTEACH = 15;
 	const static int CRAFTING = 16;
 	const static int PLAYERMANAGEMENT = 17;
+	const static int SURVEY = 18;
 
 };
 

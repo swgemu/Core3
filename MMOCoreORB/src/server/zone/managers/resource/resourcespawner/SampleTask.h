@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
 
 class ResourceSpawner;
 
@@ -68,7 +69,7 @@ protected:
 	bool cancelled;
 
 public:
-	SampleTask(ManagedReference<CreatureObject*> play, ManagedReference<SurveyTool* > tool) {
+	SampleTask(CreatureObject* play, SurveyTool* tool) {
 		playerCreature = play;
 		surveyTool = tool;
 		cancelled = false;
@@ -80,23 +81,21 @@ public:
 		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
 			playerCreature->removePendingTask("sample");
 
-			PlayerObject* ghost = playerCreature->getPlayerObject();
-
-			ghost->setSurveyTool(surveyTool);
-
-			// Activate requestcoresample command
-			playerCreature->getZoneServer()->getObjectController()->activateCommand(playerCreature, 0x9223c634, 0, 0, "");
-
+			ManagedReference<SurveySession*> session = cast<SurveySession*>(playerCreature->getActiveSession(SessionFacadeType::SURVEY));
+			if(session != NULL) {
+				session->reSample();
+			}
 			return;
 		}
 
 		playerCreature->removePendingTask("sample");
+
 	}
 
 
 	void stopSampling() {
 		cancelled = true;
-		surveyTool->setInUse(false);
+
 	}
 
 	bool isCancelled() {

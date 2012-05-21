@@ -170,10 +170,6 @@ class PlayerObject extends IntangibleObject {
 	
 	@weakReference
 	protected BuildingObject cloningFacility;
-	
-	/// Reference to last used Survey Tool
-	@weakReference
-	protected SurveyTool surveyTool;
 
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
@@ -893,21 +889,6 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void awardBadge(unsigned int badge);
-	
-	/**
-	 * Set active survey tool, this is set whenever
-	 * a SurveyTool is used
-	 */
-	public void setSurveyTool(SurveyTool tool) {
-		surveyTool = tool;
-	}
-	
-	/**
-	 * Returns the active SurveyTool
-	 */
-	public SurveyTool getSurveyTool() {
-		return surveyTool;
-	}
 	
 	public void setTeleporting(boolean val) {
 		teleporting = val;

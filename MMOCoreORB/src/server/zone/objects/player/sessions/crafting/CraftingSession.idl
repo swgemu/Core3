@@ -1,4 +1,4 @@
-package server.zone.objects.player.sessions;
+package server.zone.objects.player.sessions.crafting;
 
 import engine.util.Facade;
 import server.zone.objects.creature.CreatureObject;

@@ -157,15 +157,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::BAND_CHANGE:
 		handleStartMusic(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM:
-		handleSampleRadioactiveConfirm(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME:
-		handleSurveyConcentratedMinigame(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2:
-		handleSurveyConcentratedMinigame2(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(player, suiBox, cancel, args);
 		break;
@@ -362,62 +353,6 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 	else
 		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
 }
-
-void SuiManager::handleSampleRadioactiveConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->consentRadioactiveSample(player);
-}
-
-void SuiManager::handleSurveyConcentratedMinigame(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int value = Integer::valueOf(args->get(0).toString());
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->surveyCnodeMinigame(player, value);
-}
-
-void SuiManager::handleSurveyConcentratedMinigame2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int value = Integer::valueOf(args->get(0).toString());
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->surveyGnodeMinigame(player, value);
-}
-
 
 /*
 void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

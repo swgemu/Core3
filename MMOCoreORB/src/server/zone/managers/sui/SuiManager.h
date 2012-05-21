@@ -95,9 +95,6 @@ namespace server {
 	  	void handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void handleSampleRadioactiveConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleSurveyConcentratedMinigame(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleSurveyConcentratedMinigame2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 /*
 	  	void handleRepairWeapon(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleRepairArmor(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);

@@ -570,10 +570,6 @@ public:
 
 	void awardBadge(unsigned int badge);
 
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
-
 	void setTeleporting(bool val);
 
 	int getNumBadges();
@@ -867,8 +863,6 @@ protected:
 	ManagedWeakReference<BuildingObject* > declaredResidence;
 
 	ManagedWeakReference<BuildingObject* > cloningFacility;
-
-	ManagedWeakReference<SurveyTool* > surveyTool;
 
 	SortedVector<unsigned long long> persistentMessages;
 
@@ -1210,10 +1204,6 @@ public:
 	void setBadge(unsigned int badge);
 
 	void awardBadge(unsigned int badge);
-
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
 
 	void setTeleporting(bool val);
 
@@ -1669,10 +1659,6 @@ public:
 	void setBadge(unsigned int badge);
 
 	void awardBadge(unsigned int badge);
-
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
 
 	void setTeleporting(bool val);
 

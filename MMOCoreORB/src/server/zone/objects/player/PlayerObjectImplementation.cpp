@@ -154,7 +154,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	IntangibleObjectImplementation::notifyLoadFromDatabase();
 
 	chatRooms.removeAll();
-	surveyTool = NULL;
 
 	serverLastMovementStamp.updateToCurrentTime();
 

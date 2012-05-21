@@ -84,6 +84,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
 				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
 				server/zone/objects/player/sessions/crafting/CraftingSession.cpp \
+				server/zone/objects/player/sessions/survey/SurveySession.cpp \
 				server/zone/objects/player/sessions/admin/PlayerManagementSession.cpp \
 				server/zone/objects/creature/buffs/StateBuff.cpp \
 				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
@@ -309,6 +310,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
 		server/zone/objects/player/sessions/CityRemoveMilitiaSessionImplementation.cpp \
 		server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp \
+		server/zone/objects/player/sessions/survey/SurveySessionImplementation.cpp \
 		server/zone/objects/player/sessions/admin/PlayerManagementSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \

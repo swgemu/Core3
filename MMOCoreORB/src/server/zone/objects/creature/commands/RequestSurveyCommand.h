@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "../../tangible/tool/SurveyTool.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
 
 class RequestSurveyCommand : public QueueCommand {
 public:
@@ -94,16 +95,15 @@ public:
 				}
 			}
 
+			ManagedReference<SurveySession*> session = cast<SurveySession*>(creature->getActiveSession(SessionFacadeType::SURVEY));
 
-			ManagedReference<CreatureObject*> playerCreature = creature;
+			if(session == NULL) {
+				creature->sendSystemMessage("@ui:survey_notool");
+				return GENERALERROR;
+			}
 
-			PlayerObject* ghost = playerCreature->getPlayerObject();
-
-			ManagedReference<SurveyTool* > surveyTool = ghost->getSurveyTool();
-
-			if(surveyTool != NULL && playerCreature->getZone() != NULL)
-				surveyTool->sendSurveyTo(playerCreature, arguments.toString());
-
+			session->setActiveSurveyTool(session->getOpenSurveyTool());
+			session->startSurvey(arguments.toString());
 		}
 
 		return SUCCESS;
