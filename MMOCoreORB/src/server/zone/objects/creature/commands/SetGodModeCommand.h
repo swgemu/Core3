@@ -72,8 +72,10 @@ public:
 		if (ghost == NULL) {
 			return INSUFFICIENTPERMISSION;
 		}
+
 		int ghostPermissionLevel = ghost->getAdminLevel();
-		if (ghostPermissionLevel == 0) {
+
+		if (!creature->hasSkill("admin_base")) {
 			return INSUFFICIENTPERMISSION;
 		}
 
@@ -109,14 +111,17 @@ public:
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
 			} else  {
 				if(ghostPermissionLevel < permissionLevelList->getLevelNumber("admin")) {
+					creature->sendSystemMessage("Must have \"admin\" level permission to set permissions.");
 					return INSUFFICIENTPERMISSION;
 				}
 				if(permissionLevelList->containsLevel(param)) {
 					int permissionLevel = permissionLevelList->getLevelNumber(param);
 					playerManager->updatePermissionLevel(targetPlayer, permissionLevel);
-				}
-				else
+				} else {
+					creature->sendSystemMessage("Invalid permission level: " + param);
 					error("Invalid parameter for setGodMode");
+					return INVALIDPARAMETERS;
+				}
 			}
 		}
 
