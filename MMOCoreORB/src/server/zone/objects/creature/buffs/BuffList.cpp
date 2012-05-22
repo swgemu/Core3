@@ -150,6 +150,9 @@ void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 
 		//Already null checked the buff.
 		buff->deactivate();
+
+		if (buff->isPersistent())
+			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
 	}
 }
 
@@ -169,6 +172,9 @@ void BuffList::clearBuffs(CreatureObject* creature, bool updateclient) {
 			buff->deactivate(false); // this wont create the downer
 		else
 			buff->deactivate();
+
+		if (buff->isPersistent())
+			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
 	}
 
 	spiceActive = false;
