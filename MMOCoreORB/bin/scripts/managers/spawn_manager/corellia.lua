@@ -355,7 +355,7 @@ corellia_static_spawns = {
 	{"rebel_medic",900,-16.2,1,15.9,-167,8555474},
 	{"rebel_medic",900,13.3,1,-3.9,-2,8555475},
 	{"rebel_medic",900,20.4,1,15,-164,8555473},
-	{"rebel_recruiter",0,-29,0.5,-0.89,74,8105504},
+	--{"rebel_recruiter",0,-29,0.5,-0.89,74,8105504},
 	{"rebel_recruiter",0,-29,0.5,-0.89,74,2625363},
 	{"rebel_staff_corporal",900,-6562,405,5923.9,176,0},
 	{"rebel_staff_corporal",900,-6528.1,405,5913.6,-169,0},
