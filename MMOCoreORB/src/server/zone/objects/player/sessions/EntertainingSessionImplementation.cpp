@@ -756,6 +756,20 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 }
 
 void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* creature, uint64 entid, const String& mood, bool updateEntValue) {
+	ManagedReference<SceneObject*> entObj = creature->getZoneServer()->getObject(entid);
+	if (entObj == NULL || creature->getDistanceTo(entObj) > 64) {
+		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+		if (playerManager != NULL) {
+			if (creature->isWatching() && creature->getWatchToID() == entid)
+				playerManager->stopWatch(creature, entid, true, (entObj == NULL), true, true);
+			if (creature->isListening() && creature->getListenID() == entid)
+				playerManager->stopListen(creature, entid, true, (entObj == NULL), true, true);
+		}
+
+		return;
+	}
+
 	creature->setListenToID(entid, true);
 
 	if (updateEntValue)
