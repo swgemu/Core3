@@ -55,11 +55,16 @@ public:
 	}
 
 	void run() {
+		ManagedReference<ZoneClientSession*> session = client.get();
+
+		if (session == NULL)
+			return;
+
 		ConnectionServerLagResponse* connectionServer = new ConnectionServerLagResponse();
-		client->sendMessage(connectionServer);
+		session->sendMessage(connectionServer);
 
 		GameServerLagResponse* gameServer = new GameServerLagResponse();
-		client->sendMessage(gameServer);
+		session->sendMessage(gameServer);
 	}
 };
 
