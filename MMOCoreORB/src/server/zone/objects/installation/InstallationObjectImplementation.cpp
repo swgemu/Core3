@@ -193,8 +193,10 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			if(oldEntry->getQuantity() > 0)
 				resourceHopper.set(i, oldEntry, inso7, 0);
 			else
-				resourceHopper.remove(i, inso7);
+				resourceHopper.remove(i, inso7, 0);
 
+			inso7->updateHopperSize(getHopperSize());
+			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
 
 			broadcastToOperators(inso7);
@@ -394,7 +396,6 @@ void InstallationObjectImplementation::clearResourceHopper() {
 		return;
 
 	//lets delete the containers from db
-
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* container = resourceHopper.get(i);
 
@@ -413,15 +414,9 @@ void InstallationObjectImplementation::clearResourceHopper() {
 
 	inso7->close();
 
-	broadcastToOperators(inso7);
-
-	/*while (resourceHopper.size() > 0) {
-		ResourceContainer* container = resourceHopper.get(0);
-
-		removeResourceFromHopper(container);
-	}*/
-
 	setOperating(false);
+
+	broadcastToOperators(inso7);
 }
 
 void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
@@ -430,13 +425,17 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 	if (index == -1)
 		return;
 
-	container->destroyObjectFromDatabase(true);
-
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
 	inso7->updateHopper();
 	inso7->startUpdate(0x0D);
 
-	resourceHopper.remove(index, inso7, 1);
+	if(isOperating() && index == 0) {
+		container->setQuantity(0, false, true);
+		resourceHopper.set(index, container, inso7, 1);
+	} else {
+		container->destroyObjectFromDatabase(true);
+		resourceHopper.remove(index, inso7, 1);
+	}
 
 	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
 	inso7->updateHopperSize(getHopperSize());
@@ -569,7 +568,7 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 }
 
 void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	if (container->getQuantity() == newQuantity)
+	if (container->getQuantity() == newQuantity && newQuantity != 0)
 		return;
 
 	container->setQuantity(newQuantity, false, true);
@@ -584,7 +583,10 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
 			inso7->updateHopper();
 			inso7->startUpdate(0x0D);
-			resourceHopper.set(i, container, inso7, 1);
+			if(container->getQuantity() == 0 && (!isOperating() || (isOperating() && i != 0)))
+				resourceHopper.remove(i, inso7, 1);
+			else
+				resourceHopper.set(i, container, inso7, 1);
 			inso7->updateHopperSize(getHopperSize());
 			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
@@ -592,6 +594,9 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			broadcastToOperators(inso7);
 		}
 	}
+
+	if(resourceHopper.size() == 0)
+		setOperating(false);
 
 	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this));
 }

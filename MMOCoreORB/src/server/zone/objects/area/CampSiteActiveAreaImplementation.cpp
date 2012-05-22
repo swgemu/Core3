@@ -207,9 +207,10 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		return false;
 	}
 
+	structureManager->destroyStructure(camp);
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
-	structureManager->destroyStructure(camp);
+
 
 	return true;
 }
