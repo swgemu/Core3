@@ -99,6 +99,8 @@ public:
 		StringIdChatParameter endStringId("jedi_spam", "remove_forcerun3");
 
 		int duration = 120;
+		int divider = creature->getSkillMod("private_damage_divider");
+		divider /= 4;
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffcrc3, duration, BuffType::JEDI);
 		buff->setSpeedMultiplierMod(3.5f);
@@ -106,6 +108,7 @@ public:
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_run", 3);
+		buff->setSkillModifier("private_damage_divisor", divider);
 
 		creature->addBuff(buff);
 		creature->playEffect("clienteffect/pl_force_run_self.cef", "");

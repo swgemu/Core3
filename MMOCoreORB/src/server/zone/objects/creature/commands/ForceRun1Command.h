@@ -68,8 +68,6 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		// TODO: make sure force run commands modify the "private_damage_divider" skillmod when the buff is applied!
-
 
 		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_RUN_1;
 		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_RUN_2;
