@@ -64,6 +64,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		//Check for and deduct HAM cost.
+		if (creature->getHAM(CreatureAttribute::ACTION) <= 100)
+			return INSUFFICIENTHAM;
+
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, 100, true);
+
 		creature->setPosture(CreaturePosture::PRONE, false);
 		Reference<CreatureObject*> defender = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
 		if (defender == NULL)

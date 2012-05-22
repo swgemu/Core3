@@ -4505,8 +4505,8 @@ bool SceneObjectImplementation::isFireworkObject() {
 }
 
 bool SceneObjectImplementation::isPsgArmorObject() {
-	// server/zone/objects/scene/SceneObject.idl():  		return false;
-	return false;
+	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == SceneObjectType.SHIELDGENERATOR;
+	return gameObjectType == SceneObjectType::SHIELDGENERATOR;
 }
 
 bool SceneObjectImplementation::isLairObject() {

@@ -1340,13 +1340,13 @@ void CreatureObjectImplementation::setAccelerationMultiplierBase(
 	}
 }
 
-void CreatureObjectImplementation::setAccelerationMultiplierMod(
-		float newMultiplierMod, bool notifyClient) {
-	int buffMod = getSkillMod("private_acceleration_multiplier");
-	if (accelerationMultiplierMod == newMultiplierMod + buffMod)
+void CreatureObjectImplementation::setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient) {
+	float buffMod = getSkillMod("private_acceleration_multiplier") > 0 ? (float)getSkillMod("private_acceleration_multiplier") / 100.f : 1.f;
+
+	if (accelerationMultiplierMod == newMultiplierMod * buffMod)
 		return;
 
-	accelerationMultiplierMod = newMultiplierMod + buffMod;
+	accelerationMultiplierMod = newMultiplierMod * buffMod;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
@@ -1407,15 +1407,14 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 	broadcastMessage(msg, true);
 }
 
-void CreatureObjectImplementation::setSpeedMultiplierMod(
-		float newMultiplierMod, bool notifyClient) {
+void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
 
-	int buffMod = getSkillMod("private_speed_multiplier");
+	float buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
 
-	if (speedMultiplierMod == newMultiplierMod + buffMod)
+	if (speedMultiplierMod == newMultiplierMod * buffMod)
 		return;
 
-	speedMultiplierMod = newMultiplierMod + buffMod;
+	speedMultiplierMod = newMultiplierMod * buffMod;
 
 	int bufferSize = speedMultiplierModChanges.size();
 

@@ -1251,7 +1251,7 @@ public:
 
 	virtual bool isFireworkObject();
 
-	virtual bool isPsgArmorObject();
+	bool isPsgArmorObject();
 
 	virtual bool isLairObject();
 

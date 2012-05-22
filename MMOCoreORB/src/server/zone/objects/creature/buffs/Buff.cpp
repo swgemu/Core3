@@ -1095,13 +1095,13 @@ void BuffImplementation::addState(unsigned long long option) {
 }
 
 void BuffImplementation::setSpeedMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_speed_multiplier", multiplier);
-	setSkillModifier("private_speed_multiplier", multiplier);
+	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_speed_multiplier", multiplier * 100);
+	setSkillModifier("private_speed_multiplier", multiplier * 100);
 }
 
 void BuffImplementation::setAccelerationMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_acceleration_multiplier", multiplier);
-	setSkillModifier("private_acceleration_multiplier", multiplier);
+	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_acceleration_multiplier", multiplier * 100);
+	setSkillModifier("private_acceleration_multiplier", multiplier * 100);
 }
 
 void BuffImplementation::setFillAttributesOnBuff(bool val) {
