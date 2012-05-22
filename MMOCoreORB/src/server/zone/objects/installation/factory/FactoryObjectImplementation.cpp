@@ -260,9 +260,6 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 
 void FactoryObjectImplementation::openHopper(Observable* observable, ManagedObject* arg1) {
 
-	if(!isOperating())
-		return;
-
 	ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(arg1);
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -274,9 +271,6 @@ void FactoryObjectImplementation::openHopper(Observable* observable, ManagedObje
 }
 
 void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObject* arg1) {
-
-	if(!isOperating())
-		return;
 
 	ManagedReference<CreatureObject*> creo = cast<CreatureObject*>(arg1);
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
