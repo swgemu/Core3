@@ -890,6 +890,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	String planetName = player->getZone()->getZoneName();
 
 	Vector3 playerPosition = player->getWorldPosition();
+	playerPosition.setZ(0);
 	Vector3* startPosition = &playerPosition;
 
 	//Lock spawn point map for the search.
