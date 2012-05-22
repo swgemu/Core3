@@ -66,6 +66,9 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		if (creature->getSpecies() != CreatureObject::ZABRAK)
+			return GENERALERROR;
+
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		// Check to see if "innate_vitalize" Cooldown isPast();
