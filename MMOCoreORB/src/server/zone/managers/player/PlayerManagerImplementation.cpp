@@ -2670,7 +2670,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
 
-		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 1.0f) && player->isInRange(scno, 7.0f)) {
+		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
 			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
 
