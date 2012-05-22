@@ -43,7 +43,7 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 }
 
 CreatureObject* LootkitObjectImplementation::getPlayer() {
-	return getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	return cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE));
 }
 
 int LootkitObjectImplementation::notifyObjectInserted(SceneObject* object) {
