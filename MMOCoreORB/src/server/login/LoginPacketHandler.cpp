@@ -124,11 +124,11 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     StringBuffer moveStatement;
     moveStatement << "INSERT INTO deleted_characters SELECT * FROM characters WHERE character_oid = " << charId;
-    moveStatement << " AND account_id = " << accountId;
+    moveStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId;
 
     StringBuffer deleteStatement;
     deleteStatement << "DELETE FROM characters WHERE character_oid = " << charId;
-    deleteStatement << " AND account_id = " << accountId;
+    deleteStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId;
 
     int dbDelete;
 
