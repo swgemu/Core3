@@ -490,6 +490,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 		ManagedReference<ActiveArea*> noBuild = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
 		noBuild->initializePosition(x, 0, y);
 		noBuild->setRadius(radius * 2);
+		noBuild->setNoBuildArea(true);
 		zone->transferObject(noBuild, -1, true);
 	}
 
