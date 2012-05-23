@@ -97,20 +97,6 @@ class BazaarTerminal;
 
 using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class CityRegionArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 #include "server/chat/StringIdChatParameter.h"
@@ -298,8 +284,6 @@ public:
 
 	int getBazaarCount();
 
-	void updateNoBuildArea(float x, float y, float radius);
-
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
@@ -393,8 +377,6 @@ protected:
 	Reference<CityUpdateEvent* > cityUpdateEvent;
 
 	String citySpecialization;
-
-	ManagedReference<CityRegionArea* > noBuildArea;
 
 public:
 	static const byte RANK_CLIENT = 0;
@@ -562,8 +544,6 @@ public:
 	BazaarTerminal* getBazaar(int idx);
 
 	int getBazaarCount();
-
-	void updateNoBuildArea(float x, float y, float radius);
 
 	void removeAllSkillTrainers();
 
@@ -763,8 +743,6 @@ public:
 	BazaarTerminal* getBazaar(int idx);
 
 	int getBazaarCount();
-
-	void updateNoBuildArea(float x, float y, float radius);
 
 	void removeAllSkillTrainers();
 

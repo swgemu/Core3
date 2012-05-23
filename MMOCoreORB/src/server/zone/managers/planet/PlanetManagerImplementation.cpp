@@ -29,7 +29,6 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
-#include "server/zone/objects/area/CityRegionArea.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
@@ -488,7 +487,10 @@ void PlanetManagerImplementation::loadClientRegions() {
 			region->setMunicipalZone(true);
 		}
 
-		cityRegion->addRegion(x, y, radius * 2, false);
+		ManagedReference<ActiveArea*> noBuild = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+		noBuild->initializePosition(x, 0, y);
+		noBuild->setRadius(radius * 2);
+		zone->transferObject(noBuild, -1, true);
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
@@ -621,7 +623,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isNoBuildArea() || (area->isCityRegion() && object != NULL && cast<CityRegionArea*>(area)->canBuild(object->getObjectID()))) {
+		if (area->isNoBuildArea()) {
 			return false;
 		}
 	}

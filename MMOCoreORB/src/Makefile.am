@@ -75,8 +75,7 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_IDLS =	server/zone/objects/area/CityRegionArea.cpp \
-				server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
+core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
 				server/zone/objects/player/sessions/TradeSession.cpp \
 				server/zone/objects/tangible/powerup/PowerupObject.cpp \
