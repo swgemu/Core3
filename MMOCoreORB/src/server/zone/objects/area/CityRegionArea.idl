@@ -54,11 +54,11 @@ class CityRegionArea extends ActiveArea {
 		cityRegion = null;
 	}
 	
-	public native void setCityRegion(CityRegion city) {
+	public void setCityRegion(CityRegion city) {
 		cityRegion = city;
 	}
 	
-	public native CityRegion getCityRegion() {
+	public CityRegion getCityRegion() {
 		return cityRegion;
 	}
 	
@@ -66,7 +66,7 @@ class CityRegionArea extends ActiveArea {
 		return true;
 	}
 	
-	public native boolean canBuild(unsigned long oid) {
+	public boolean canBuild(unsigned long oid) {
 		return cityRegion.isCitizen(oid);
 	}
 }
