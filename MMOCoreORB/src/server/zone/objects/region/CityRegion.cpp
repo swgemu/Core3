@@ -16,6 +16,8 @@
 
 #include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 
+#include "server/zone/objects/area/CityRegionArea.h"
+
 /*
  *	CityRegionStub
  */
@@ -1400,7 +1402,7 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 	}
 
 	if (_name == "CityRegion.noBuildArea") {
-		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&noBuildArea, stream);
+		TypeInfo<ManagedReference<CityRegionArea* > >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
 	}
 
@@ -1609,7 +1611,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&noBuildArea, stream);
+	TypeInfo<ManagedReference<CityRegionArea* > >::toBinaryStream(&noBuildArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

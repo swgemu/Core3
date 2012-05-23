@@ -97,6 +97,20 @@ class BazaarTerminal;
 
 using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+
+class CityRegionArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 #include "server/chat/StringIdChatParameter.h"
@@ -380,7 +394,7 @@ protected:
 
 	String citySpecialization;
 
-	ManagedReference<ActiveArea* > noBuildArea;
+	ManagedReference<CityRegionArea* > noBuildArea;
 
 public:
 	static const byte RANK_CLIENT = 0;

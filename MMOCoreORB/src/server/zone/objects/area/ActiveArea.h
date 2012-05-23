@@ -62,6 +62,8 @@ public:
 
 	bool isRegion();
 
+	bool isCityRegion();
+
 	bool isNoBuildArea();
 
 	bool containsPoint(float x, float y);
@@ -140,6 +142,8 @@ public:
 	bool isActiveArea();
 
 	virtual bool isRegion();
+
+	virtual bool isCityRegion();
 
 	bool isNoBuildArea();
 
@@ -221,6 +225,8 @@ public:
 	bool isActiveArea();
 
 	bool isRegion();
+
+	bool isCityRegion();
 
 	bool isNoBuildArea();
 

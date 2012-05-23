@@ -9,6 +9,7 @@
 #include "events/CityUpdateEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/area/CityRegionArea.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -480,7 +481,7 @@ void CityRegionImplementation::updateNoBuildArea(float x, float y, float radius)
 		zone->removeObject(noBuildArea, NULL, false);
 	else {
 		uint32 crc = String("object/active_area.iff").hashCode();
-		noBuildArea = cast<ActiveArea*>(zone->getZoneServer()->createObject(crc, 1));
+		noBuildArea = cast<CityRegionArea*>(zone->getZoneServer()->createObject(crc, 1));
 		noBuildArea->setNoBuildArea(true);
 	}
 	noBuildArea->initializePosition(x, 0, y);

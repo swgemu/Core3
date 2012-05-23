@@ -29,6 +29,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/objects/area/CityRegionArea.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
@@ -620,7 +621,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
 
-		if (area->isNoBuildArea()) {
+		if (area->isNoBuildArea() || (area->isCityRegion() && object != NULL && cast<CityRegionArea*>(area)->canBuild(object->getObjectID()))) {
 			return false;
 		}
 	}

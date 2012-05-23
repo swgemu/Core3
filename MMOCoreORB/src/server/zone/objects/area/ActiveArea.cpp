@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -125,6 +125,19 @@ bool ActiveArea::isRegion() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isRegion();
+}
+
+bool ActiveArea::isCityRegion() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCITYREGION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCityRegion();
 }
 
 bool ActiveArea::isNoBuildArea() {
@@ -510,6 +523,11 @@ bool ActiveAreaImplementation::isRegion() {
 	return false;
 }
 
+bool ActiveAreaImplementation::isCityRegion() {
+	// server/zone/objects/area/ActiveArea.idl():  		return false;
+	return false;
+}
+
 bool ActiveAreaImplementation::isNoBuildArea() {
 	// server/zone/objects/area/ActiveArea.idl():  		return noBuildArea;
 	return noBuildArea;
@@ -617,6 +635,11 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isRegion());
 		}
 		break;
+	case RPC_ISCITYREGION__:
+		{
+			resp->insertBoolean(isCityRegion());
+		}
+		break;
 	case RPC_ISNOBUILDAREA__:
 		{
 			resp->insertBoolean(isNoBuildArea());
@@ -708,6 +731,10 @@ bool ActiveAreaAdapter::isActiveArea() {
 
 bool ActiveAreaAdapter::isRegion() {
 	return (static_cast<ActiveArea*>(stub))->isRegion();
+}
+
+bool ActiveAreaAdapter::isCityRegion() {
+	return (static_cast<ActiveArea*>(stub))->isCityRegion();
 }
 
 bool ActiveAreaAdapter::isNoBuildArea() {

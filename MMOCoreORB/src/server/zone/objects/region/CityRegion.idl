@@ -22,6 +22,7 @@ include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.CityStructureInventory;
 import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
+import server.zone.objects.area.CityRegionArea;
 
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
@@ -88,7 +89,7 @@ class CityRegion extends ManagedObject implements Logger {
 
 	protected string citySpecialization; //We want to implement this with skill mods.
 
-	protected ActiveArea noBuildArea;
+	protected CityRegionArea noBuildArea;
 	
 	public static final byte RANK_CLIENT = 0;
 	public static final byte RANK_OUTPOST = 1;
