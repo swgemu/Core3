@@ -956,6 +956,8 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	specialResists = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		hitLocation = 0;
 	hitLocation = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		setSliceable(true);
+	setSliceable(true);
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
