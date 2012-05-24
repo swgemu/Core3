@@ -238,10 +238,9 @@ void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 		return;
 	}
 
-	player->sendExecuteConsoleCommand("/opencontainer " + String::valueOf(inputHopper->getObjectID()));
-
-	//inputHopper->sendWithoutContainerObjectsTo(player);
-	//inputHopper->openContainerTo(player);
+	inputHopper->sendWithoutContainerObjectsTo(player);
+	inputHopper->openContainerTo(player);
+	inputHopper->notifyObservers(ObserverEventType::OPENCONTAINER, player);
 }
 
 void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
@@ -252,10 +251,9 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		return;
 	}
 
-	//outputHopper->sendWithoutContainerObjectsTo(player);
-	//outputHopper->openContainerTo(player);
-
-	player->sendExecuteConsoleCommand("/opencontainer " + String::valueOf(outputHopper->getObjectID()));
+	outputHopper->sendWithoutContainerObjectsTo(player);
+	outputHopper->openContainerTo(player);
+	outputHopper->notifyObservers(ObserverEventType::OPENCONTAINER, player);
 }
 
 void FactoryObjectImplementation::openHopper(Observable* observable, ManagedObject* arg1) {
@@ -287,6 +285,7 @@ void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObj
 		item->sendDestroyTo(creo);
 	}
 
+	hopper->sendDestroyTo(creo);
 }
 
 void FactoryObjectImplementation::handleInsertFactorySchem(

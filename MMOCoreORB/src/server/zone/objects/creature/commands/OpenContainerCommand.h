@@ -73,14 +73,11 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		if(args.hasMoreTokens()) {
+		int counter = 0;
+		if(args.hasMoreTokens())
+			counter = args.getIntToken();
 
-			uint64 oid = args.getLongToken();
-			objectToOpen = server->getZoneServer()->getObject(oid);
-
-		} else {
-			objectToOpen = server->getZoneServer()->getObject(target);
-		}
+		objectToOpen = server->getZoneServer()->getObject(target);
 
 		if (objectToOpen == NULL)
 			return GENERALERROR;
