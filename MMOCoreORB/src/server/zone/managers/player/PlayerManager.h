@@ -324,7 +324,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -530,7 +530,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -711,7 +711,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 

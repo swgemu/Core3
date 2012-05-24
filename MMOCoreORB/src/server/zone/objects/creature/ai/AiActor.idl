@@ -46,8 +46,28 @@ package server.zone.objects.creature.ai;
 
 include server.zone.objects.creature.ai.components.AiStateComponent;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.events.AiThinkEvent;
+import server.zone.objects.creature.events.AiMoveEvent;
+import server.zone.objects.creature.events.AiWaitEvent;
+import server.zone.objects.creature.events.AiAwarenessEvent;
+import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
+include server.zone.objects.creature.PatrolPointsVector;
+include server.zone.objects.creature.PatrolPoint;
 include engine.util.u3d.QuadTreeEntry;
+include system.thread.Mutex;
 include server.zone.templates.AiTemplate;
+include server.zone.objects.creature.variables.CreatureTemplateReference;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.Zone;
+import system.lang.Time;
+import system.util.Vector;
+import system.lang.ref.Reference;
+import engine.core.ManagedObject;
+include system.thread.Mutex;
+import system.lang.Time;
 
 class AiActor extends Observable implements Logger {
 	public static final unsigned short FINISHED = 0;
@@ -71,14 +91,72 @@ class AiActor extends Observable implements Logger {
 	
 	protected transient AiTemplate aiTemplate;
 	
+	@dereferenced
+	protected CreatureTemplateReference npcTemplate;
+
+	@dereferenced
+	protected Vector<WeaponObject> weapons;
+
+	@dereferenced
+	protected Vector<SceneObject> camouflagedObjects;
+	
+	protected boolean loadedOutfit;
+	
+	protected boolean isCreature;
+	
 	protected unsigned short currentMessage;
 	
 	protected CreatureObject host;
+	
+	protected float respawnTimer;
+	protected boolean despawnOnNoPlayerInRange;
+	protected int numberOfPlayersInRange;
+
+	protected transient AiThinkEvent thinkEvent;
+	protected transient AiMoveEvent moveEvent;
+	protected transient AiWaitEvent waitEvent;
+	protected transient AiAwarenessEvent awarenessEvent;
+	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
+	
+	protected Vector<string> skillCommands;
+	
+	@dereferenced
+	protected PatrolPointsVector patrolPoints;
+	@dereferenced
+	protected PatrolPoint homeLocation;
+	@dereferenced
+	protected PatrolPoint nextStepPosition;
+	
+	protected boolean baby;
+	
+	protected SceneObject followObject;
+	
+	@dereferenced
+	protected transient Mutex targetMutex;
+	
+	@dereferenced
+	protected transient Time lastDamageReceived;
+	
+	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
+	
+	//DEBUG
+	protected boolean showNextMovementPosition;
+	protected Vector<SceneObject> movementMarkers;
 	
 	public AiActor(AiTemplate ait) {
 		host = null;
 		
 		aiTemplate = ait;
+
+		respawnTimer = 0;
+		
+		showNextMovementPosition = true;
+		
+		despawnOnNoPlayerInRange = true;
+		numberOfPlayersInRange = 0;
+		
+		loadedOutfit = false;
+		isCreature = true;
 		
 		Logger.setLoggingName("AiActor");
 		Logger.setLogging(false);
@@ -101,25 +179,407 @@ class AiActor extends Observable implements Logger {
 	 */
 	public native void initializeTransientMembers();
 	
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
 	/**
 	 * Uses position updates to perform a think
 	 */
-	public native void notifyPositionUpdate(QuadTreeEntry entry) {
-		currentState.notifyPositionUpdate(this, entry);
-	}
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
 	
-	public native void setCurrentMessage(unsigned short msg) {
+	public void setCurrentMessage(unsigned short msg) {
 		currentMessage = msg;
 	}
 	
 	/**
 	 * calculate next state based on initial state and message
 	 */
-	private native void next(unsigned short msg);
-	private native void next();
+	public native void next(unsigned short msg);
+	public native void next();
 
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
 	public native void addTransition(final string stateName, unsigned short msg, final string resultState);
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void loadTemplateData(CreatureTemplate templateData);
+
+	public native void setLevel(int lvl);
+	public native int calculateAttackMinDamage(int level);
+	public native int calculateAttackMaxDamage(int level);
+	public native float calculateAttackSpeed(int level);
+	
+	public native boolean isCamouflaged(CreatureObject target) {
+		return isScentMasked(target) || isConcealed(target);
+	}
+	
+	public native boolean isScentMasked(CreatureObject target);
+	public native boolean isConcealed(CreatureObject target);
+	
+	// events
+	public abstract native void activateRecovery();
+	public abstract native void activateMovementEvent();
+	public abstract native void activateWaitEvent();
+	public native void activateAwarenessEvent(CreatureObject target);
+	public native void activatePostureRecovery();
+	public native void queueDizzyFallEvent();
+
+	// movement and patrols
+	@local
+	public native void setNextPosition(@dereferenced PatrolPoint point);
+
+	public void setNextStepPosition(float x, float z, float y, SceneObject cell = null) {
+		synchronized (targetMutex) {
+			nextStepPosition.setPosition(x, z, y);
+			nextStepPosition.setCell(cell);
+		}
+	}
+	
+	@local
+	public PatrolPoint getNextStepPosition() {
+		return nextStepPosition;
+	}
+
+	public void setShowNextPosition(boolean val) {
+		showNextMovementPosition = val;
+	}
+	
+	public boolean isShowNextPosition() {
+		return showNextMovementPosition;
+	}
+	
+	@local
+	public Vector<SceneObject> getMovementMarkers() {
+		return movementMarkers;
+	}
+	
+	public int getMovementMarkersSize() {
+		return movementMarkers.size();
+	}
+	
+	public SceneObject getMovementMarker(int i) {
+		return movementMarkers.get(i);
+	}
+	
+	public void dropMovementMarker(SceneObject marker) {
+		movementMarkers.removeElement(marker);
+	}
+	
+	public void dropAllMovemementMarkers() {
+		movementMarkers.removeAll();
+	}
+	
+	public void addMovementMarker(SceneObject marker) {
+		movementMarkers.add(marker);
+	}
+	
+	public void clearPatrolPoints() {
+		synchronized (targetMutex) {
+			patrolPoints.removeAll();
+		}
+	}
+	
+	@local
+	public PatrolPointsVector getPatrolPoints() {
+		return patrolPoints;
+	}
+	
+	@local
+	public native void addPatrolPoint(@dereferenced PatrolPoint point);
+	
+	public void setHomeLocation(float x, float z, float y, SceneObject cell = null) {
+		homeLocation.setPosition(x, z, y);
+		homeLocation.setCell(cell);
+		homeLocation.setReached(true);
+	}
+	
+	@local
+	public PatrolPoint getHomeLocation() {
+		return homeLocation;
+	}
+	
+	// spawn/despawn
+	public native void setDespawnOnNoPlayerInRange(boolean val);
+	public native void notifyDespawn(Zone zone);
+	public native void scheduleDespawn(int timeToDespawn);
+	public native void respawn(Zone zone, int level);
+	
+	public void scheduleDespawn() {
+		//Despawn in 45 seconds.
+		scheduleDespawn(45);
+	}
+	
+	public void clearDespawnEvent() {
+		despawnEvent = null;
+	}
+
+	public void setRespawnTimer(float resp) {
+		respawnTimer = resp;
+	}
+	
+	public float getRespawnTimer() {
+		return respawnTimer;
+	}
+	
+	public boolean getDespawnOnNoPlayerInRange() {
+		return despawnOnNoPlayerInRange;
+	}
+
+	public int getNumberOfPlayersInRange() {
+		return numberOfPlayersInRange;
+	}
+	
+	// passed notifications
+	public native void notifyInsert(QuadTreeEntry entry);
+	public native void notifyDissapear(QuadTreeEntry entry);
+	public native int notifyConverseObservers(CreatureObject converser);
+	
+	// some AI data
+	public SceneObject getFollowObject() {
+		return followObject;
+	}
+	
+	public void setFollowObject(SceneObject targ) {
+		followObject = targ;
+	}
+	
+	public void setTargetObject(SceneObject obj) {
+		synchronized (targetMutex) {
+			if (followObject != obj) {
+				clearPatrolPoints();
+
+				followObject = obj;
+			}
+		}
+	}
+	public void setOblivious() {
+		setTargetObject(null);
+		next(FORGOT);
+	}
+	
+	public native void setDefender(SceneObject defender);
+	public native void addDefender(SceneObject defender);
+	public native void removeDefender(SceneObject defender);
+	
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
+	public boolean isAttackableBy(CreatureObject object) {
+		if (object == host)
+			return false;
+		
+		if (host.getPvpStatusBitmask() == 0)
+			return false;
+		
+		//if (this.isRetreating())
+			//return false;
+		
+		if (host.isDead())
+			return false;
+		
+		if (object.isAiActor())
+			return false;
+		
+		unsigned int targetFaction = object.getFaction();
+		
+		if (targetFaction != 0 && host.getFaction() != 0) {
+			PlayerObject ghost = object.getPlayerObject();
+			
+			if (targetFaction == host.getFaction())
+				return false;
+			
+			if (ghost != null && (targetFaction != host.getFaction()) && ghost.getFactionStatus() == FactionStatus.ONLEAVE)
+				return false;
+		} else if (targetFaction == 0 && host.getFaction() != 0)
+			return false;
+		
+		return true;
+	}
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public native boolean isAggressiveTo(CreatureObject object);
+	
+	public void updateLastDamageReceived() {
+		lastDamageReceived.updateToCurrentTime();
+	}
+	
+	public native void sendConversationStartTo(SceneObject player);
+	
+	// raw template getters
+	
+	public float getKinetic() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getKinetic();
+	}
+	
+	public float getEnergy() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getEnergy();
+	}
+	
+	public float getElectricity() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getElectricity();
+	}
+	
+	public float getStun() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getStun();
+	}
+	
+	public float getBlast() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getBlast();
+	}
+	
+	public float getHeat() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getHeat();
+	}
+	
+	public float getCold() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getCold();
+	}
+	
+	public float getAcid() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getAcid();
+	}
+	
+	public float getLightSaber() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getLightSaber();
+	}
+	
+	public boolean isStalker() {
+		if (npcTemplate.get() == null)
+			return false;
+		
+		return npcTemplate.get().isStalker();
+	}
+	
+	public boolean isKiller() {
+		if (npcTemplate.get() == null)
+			return false;
+		
+		return npcTemplate.get().isKiller();
+	}
+	
+	public unsigned int getFerocity() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getFerocity();
+	}
+	
+	public unsigned int getArmor() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getArmor();
+	}
+	
+	public string getFactionString() {
+		if (npcTemplate.get() == null)
+			return "";
+		
+		return npcTemplate.get().getFaction();
+	}
+	
+	public string getSocialGroup() {
+		if (npcTemplate.get() == null)
+			return "";
+		
+		return npcTemplate.get().getSocialGroup();
+	}
+	
+	public float getChanceHit() {
+		if (npcTemplate.get() == null)
+			return false;
+		
+		return npcTemplate.get().getChanceHit();
+	}
+	
+	public int getDamageMin() {
+		return host.getWeapon().getMinDamage();
+	}
+	
+	public int getDamageMax() {
+		return host.getWeapon().getMaxDamage();
+	}
+	
+	public int getBaseXp() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getBaseXp();
+	}
+	
+	public unsigned int getDiet() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getDiet();
+	}
+	
+	@local
+	public CreatureAttackMap getAttackMap() {
+		if (npcTemplate.get() == null)
+			return null;
+		
+		return npcTemplate.get().getAttacks();
+	}
+	
+	@local
+	public LootGroupCollection getLootGroups() {
+		if (npcTemplate.get() == null)
+			return null;
+		
+		return npcTemplate.get().getLootGroups();
+	}
+	
+	@local
+	public CreatureTemplate getCreatureTemplate() {
+		return npcTemplate.get();
+	}
+	
+	@local
+	@dereferenced
+	public native Vector<WeaponObject> getWeapons();
 }

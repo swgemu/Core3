@@ -117,6 +117,9 @@
 #include "system/lang/ref/Reference.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 
+#include "ai/AiActor.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -612,6 +615,8 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
+	if (isAiActor()) getGhostObject()->next(AiActor::FORGOT);
+
 	//info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
 		if (stateBitmask & CreatureState::PEACE)
@@ -821,6 +826,26 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 	}
 }
 
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0) {
+			threatMap->addDamage(player, damage, xp);
+
+			// TODO: put this logic (or something similar) in the attack state
+			if (System::random(5) == 1) {
+				if (isAiActor())
+					getGhostObject()->setDefender(player);
+				else
+					setDefender(player);
+			}
+		}
+	}
+
+	return inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error(
@@ -830,6 +855,12 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	if (this->isIncapacitated() || this->isDead())
 		return 0;
+
+	if (isAiActor()) {
+		ManagedReference<AiActor*> actor = getGhostObject();
+		actor->updateLastDamageReceived();
+		actor->next(AiActor::ATTACKED);
+	}
 
 	int currentValue = hamList.get(damageType);
 
@@ -2309,6 +2340,10 @@ PlayerObject* CreatureObjectImplementation::getPlayerObject() {
 	return dynamic_cast<PlayerObject*> (getSlottedObject("ghost"));
 }
 
+AiActor* CreatureObjectImplementation::getGhostObject() {
+	return dynamic_cast<AiActor*> (getSlottedObject("ghost"));
+}
+
 bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	/*if (duelList.contains(object) && object.requestedDuelTo(this))
 	 return true;*/
@@ -2435,6 +2470,15 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		playerManager->notifyDestruction(attacker, _this, condition);
 	}
 
+	AiActor* actor = getGhostObject();
+
+	if (actor != NULL) {
+		CreatureManager* creatureManager = getZone()->getCreatureManager();
+
+		// TODO: need to rewrite this for AiActor or CreatureObject
+		//creatureManager->notifyDestruction(attacker, host, condition);
+	}
+
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
@@ -2516,4 +2560,21 @@ CampSiteActiveArea* CreatureObjectImplementation::getCurrentCamp() {
 			return cast<CampSiteActiveArea*>(activeAreas.get(i).get());
 	}
 	return NULL;
+}
+
+int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (isDead() && isAiActor()) {
+		switch (selectedID) {
+		case 35:
+			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
+
+			return 0;
+		case 36:
+			getZoneServer()->getPlayerManager()->lootAll(player, _this);
+
+			return 0;
+		}
+	}
+
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }

@@ -40,13 +40,13 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual
+AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations
 
 #ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
-#CC = clang
-#CXX = clang++
+CC = clang
+CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -288,7 +288,8 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
 				server/zone/objects/tangible/ticket/TicketObject.cpp \
-				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
+				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
+				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/PermissionLevelList.cpp \
@@ -522,11 +523,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/LuaAiAgent.cpp \
+		server/zone/objects/creature/ai/components/AiStateComponent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
+		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \

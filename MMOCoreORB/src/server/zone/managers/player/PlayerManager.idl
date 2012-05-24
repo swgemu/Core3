@@ -192,7 +192,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void startWatch(CreatureObject creature, unsigned long entid);
 	public native void startListen(CreatureObject creature, unsigned long entid);
 	
-	public native void lootAll(CreatureObject player, AiAgent creature);
+	public native void lootAll(CreatureObject player, CreatureObject creature);
 	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.

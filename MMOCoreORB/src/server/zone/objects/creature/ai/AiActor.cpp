@@ -6,11 +6,31 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+
+#include "server/zone/objects/creature/events/AiMoveEvent.h"
+
+#include "server/zone/objects/creature/events/AiWaitEvent.h"
+
+#include "server/zone/objects/creature/events/AiAwarenessEvent.h"
+
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
+
+#include "server/zone/Zone.h"
+
 /*
  *	AiActorStub
  */
 
-enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_ADDTRANSITION__STRING_SHORT_STRING_};
+enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_NEXT__SHORT_,RPC_NEXT__,RPC_ADDTRANSITION__STRING_SHORT_STRING_,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISSHOWNEXTPOSITION__,RPC_GETMOVEMENTMARKERSSIZE__,RPC_GETMOVEMENTMARKER__INT_,RPC_DROPMOVEMENTMARKER__SCENEOBJECT_,RPC_DROPALLMOVEMEMENTMARKERS__,RPC_ADDMOVEMENTMARKER__SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SCHEDULEDESPAWN__,RPC_CLEARDESPAWNEVENT__,RPC_SETRESPAWNTIMER__FLOAT_,RPC_GETRESPAWNTIMER__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_NOTIFYINSERT__QUADTREEENTRY_,RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_UPDATELASTDAMAGERECEIVED__,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,};
 
 AiActor::AiActor(AiTemplate* ait) : Observable(DummyConstructorParameter::instance()) {
 	AiActorImplementation* _implementation = new AiActorImplementation(ait);
@@ -68,6 +88,21 @@ void AiActor::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
+void AiActor::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
+		method.addObjectParameter(msg);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->fillAttributeList(msg, object);
+}
+
 void AiActor::notifyPositionUpdate(QuadTreeEntry* entry) {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -96,6 +131,33 @@ void AiActor::setCurrentMessage(unsigned short msg) {
 		_implementation->setCurrentMessage(msg);
 }
 
+void AiActor::next(unsigned short msg) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NEXT__SHORT_);
+		method.addUnsignedShortParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->next(msg);
+}
+
+void AiActor::next() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NEXT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->next();
+}
+
 void AiActor::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -119,6 +181,1026 @@ void AiActor::addTransition(const String& stateName, unsigned short msg, const S
 		method.executeWithVoidReturn();
 	} else
 		_implementation->addTransition(stateName, msg, resultState);
+}
+
+void AiActor::loadTemplateData(SharedObjectTemplate* templateData) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->loadTemplateData(templateData);
+}
+
+void AiActor::loadTemplateData(CreatureTemplate* templateData) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->loadTemplateData(templateData);
+}
+
+void AiActor::setLevel(int lvl) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLEVEL__INT_);
+		method.addSignedIntParameter(lvl);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLevel(lvl);
+}
+
+int AiActor::calculateAttackMinDamage(int level) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKMINDAMAGE__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateAttackMinDamage(level);
+}
+
+int AiActor::calculateAttackMaxDamage(int level) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKMAXDAMAGE__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->calculateAttackMaxDamage(level);
+}
+
+float AiActor::calculateAttackSpeed(int level) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCULATEATTACKSPEED__INT_);
+		method.addSignedIntParameter(level);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->calculateAttackSpeed(level);
+}
+
+bool AiActor::isCamouflaged(CreatureObject* target) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMOUFLAGED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCamouflaged(target);
+}
+
+bool AiActor::isScentMasked(CreatureObject* target) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSCENTMASKED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isScentMasked(target);
+}
+
+bool AiActor::isConcealed(CreatureObject* target) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCONCEALED__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isConcealed(target);
+}
+
+void AiActor::activateRecovery() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activateRecovery();
+}
+
+void AiActor::activateMovementEvent() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATEMOVEMENTEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activateMovementEvent();
+}
+
+void AiActor::activateWaitEvent() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATEWAITEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activateWaitEvent();
+}
+
+void AiActor::activateAwarenessEvent(CreatureObject* target) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_);
+		method.addObjectParameter(target);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activateAwarenessEvent(target);
+}
+
+void AiActor::activatePostureRecovery() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATEPOSTURERECOVERY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activatePostureRecovery();
+}
+
+void AiActor::queueDizzyFallEvent() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_QUEUEDIZZYFALLEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->queueDizzyFallEvent();
+}
+
+void AiActor::setNextPosition(PatrolPoint& point) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setNextPosition(point);
+}
+
+void AiActor::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addObjectParameter(cell);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setNextStepPosition(x, z, y, cell);
+}
+
+PatrolPoint* AiActor::getNextStepPosition() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNextStepPosition();
+}
+
+void AiActor::setShowNextPosition(bool val) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSHOWNEXTPOSITION__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setShowNextPosition(val);
+}
+
+bool AiActor::isShowNextPosition() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSHOWNEXTPOSITION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isShowNextPosition();
+}
+
+Vector<ManagedReference<SceneObject* > >* AiActor::getMovementMarkers() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getMovementMarkers();
+}
+
+int AiActor::getMovementMarkersSize() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMOVEMENTMARKERSSIZE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getMovementMarkersSize();
+}
+
+SceneObject* AiActor::getMovementMarker(int i) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMOVEMENTMARKER__INT_);
+		method.addSignedIntParameter(i);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getMovementMarker(i);
+}
+
+void AiActor::dropMovementMarker(SceneObject* marker) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPMOVEMENTMARKER__SCENEOBJECT_);
+		method.addObjectParameter(marker);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropMovementMarker(marker);
+}
+
+void AiActor::dropAllMovemementMarkers() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPALLMOVEMEMENTMARKERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropAllMovemementMarkers();
+}
+
+void AiActor::addMovementMarker(SceneObject* marker) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDMOVEMENTMARKER__SCENEOBJECT_);
+		method.addObjectParameter(marker);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addMovementMarker(marker);
+}
+
+void AiActor::clearPatrolPoints() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARPATROLPOINTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearPatrolPoints();
+}
+
+PatrolPointsVector* AiActor::getPatrolPoints() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPatrolPoints();
+}
+
+void AiActor::addPatrolPoint(PatrolPoint& point) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addPatrolPoint(point);
+}
+
+void AiActor::setHomeLocation(float x, float z, float y, SceneObject* cell) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addObjectParameter(cell);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setHomeLocation(x, z, y, cell);
+}
+
+PatrolPoint* AiActor::getHomeLocation() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getHomeLocation();
+}
+
+void AiActor::setDespawnOnNoPlayerInRange(bool val) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDespawnOnNoPlayerInRange(val);
+}
+
+void AiActor::notifyDespawn(Zone* zone) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYDESPAWN__ZONE_);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyDespawn(zone);
+}
+
+void AiActor::scheduleDespawn(int timeToDespawn) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SCHEDULEDESPAWN__INT_);
+		method.addSignedIntParameter(timeToDespawn);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->scheduleDespawn(timeToDespawn);
+}
+
+void AiActor::respawn(Zone* zone, int level) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESPAWN__ZONE_INT_);
+		method.addObjectParameter(zone);
+		method.addSignedIntParameter(level);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->respawn(zone, level);
+}
+
+void AiActor::scheduleDespawn() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SCHEDULEDESPAWN__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->scheduleDespawn();
+}
+
+void AiActor::clearDespawnEvent() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARDESPAWNEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearDespawnEvent();
+}
+
+void AiActor::setRespawnTimer(float resp) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETRESPAWNTIMER__FLOAT_);
+		method.addFloatParameter(resp);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRespawnTimer(resp);
+}
+
+float AiActor::getRespawnTimer() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETRESPAWNTIMER__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getRespawnTimer();
+}
+
+bool AiActor::getDespawnOnNoPlayerInRange() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDESPAWNONNOPLAYERINRANGE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->getDespawnOnNoPlayerInRange();
+}
+
+int AiActor::getNumberOfPlayersInRange() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNUMBEROFPLAYERSINRANGE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getNumberOfPlayersInRange();
+}
+
+void AiActor::notifyInsert(QuadTreeEntry* entry) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYINSERT__QUADTREEENTRY_);
+		method.addObjectParameter(entry);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyInsert(entry);
+}
+
+void AiActor::notifyDissapear(QuadTreeEntry* entry) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_);
+		method.addObjectParameter(entry);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyDissapear(entry);
+}
+
+int AiActor::notifyConverseObservers(CreatureObject* converser) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_);
+		method.addObjectParameter(converser);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyConverseObservers(converser);
+}
+
+SceneObject* AiActor::getFollowObject() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFOLLOWOBJECT__);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getFollowObject();
+}
+
+void AiActor::setFollowObject(SceneObject* targ) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETFOLLOWOBJECT__SCENEOBJECT_);
+		method.addObjectParameter(targ);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setFollowObject(targ);
+}
+
+void AiActor::setTargetObject(SceneObject* obj) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTARGETOBJECT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTargetObject(obj);
+}
+
+void AiActor::setOblivious() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETOBLIVIOUS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setOblivious();
+}
+
+void AiActor::setDefender(SceneObject* defender) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDEFENDER__SCENEOBJECT_);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDefender(defender);
+}
+
+void AiActor::addDefender(SceneObject* defender) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDDEFENDER__SCENEOBJECT_);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addDefender(defender);
+}
+
+void AiActor::removeDefender(SceneObject* defender) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEDEFENDER__SCENEOBJECT_);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeDefender(defender);
+}
+
+bool AiActor::isAttackableBy(CreatureObject* object) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAttackableBy(object);
+}
+
+bool AiActor::isAggressiveTo(CreatureObject* object) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISAGGRESSIVETO__CREATUREOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAggressiveTo(object);
+}
+
+void AiActor::updateLastDamageReceived() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATELASTDAMAGERECEIVED__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateLastDamageReceived();
+}
+
+void AiActor::sendConversationStartTo(SceneObject* player) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendConversationStartTo(player);
+}
+
+float AiActor::getKinetic() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETKINETIC__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getKinetic();
+}
+
+float AiActor::getEnergy() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETENERGY__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getEnergy();
+}
+
+float AiActor::getElectricity() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETELECTRICITY__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getElectricity();
+}
+
+float AiActor::getStun() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTUN__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getStun();
+}
+
+float AiActor::getBlast() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBLAST__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getBlast();
+}
+
+float AiActor::getHeat() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHEAT__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getHeat();
+}
+
+float AiActor::getCold() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOLD__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getCold();
+}
+
+float AiActor::getAcid() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACID__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getAcid();
+}
+
+float AiActor::getLightSaber() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLIGHTSABER__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getLightSaber();
+}
+
+bool AiActor::isStalker() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSTALKER__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isStalker();
+}
+
+bool AiActor::isKiller() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISKILLER__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isKiller();
+}
+
+unsigned int AiActor::getFerocity() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFEROCITY__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getFerocity();
+}
+
+unsigned int AiActor::getArmor() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETARMOR__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getArmor();
+}
+
+String AiActor::getFactionString() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFACTIONSTRING__);
+
+		String _return_getFactionString;
+		method.executeWithAsciiReturn(_return_getFactionString);
+		return _return_getFactionString;
+	} else
+		return _implementation->getFactionString();
+}
+
+String AiActor::getSocialGroup() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSOCIALGROUP__);
+
+		String _return_getSocialGroup;
+		method.executeWithAsciiReturn(_return_getSocialGroup);
+		return _return_getSocialGroup;
+	} else
+		return _implementation->getSocialGroup();
+}
+
+float AiActor::getChanceHit() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCHANCEHIT__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getChanceHit();
+}
+
+int AiActor::getDamageMin() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDAMAGEMIN__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDamageMin();
+}
+
+int AiActor::getDamageMax() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDAMAGEMAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDamageMax();
+}
+
+int AiActor::getBaseXp() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBASEXP__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getBaseXp();
+}
+
+unsigned int AiActor::getDiet() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDIET__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getDiet();
+}
+
+CreatureAttackMap* AiActor::getAttackMap() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getAttackMap();
+}
+
+LootGroupCollection* AiActor::getLootGroups() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLootGroups();
+}
+
+CreatureTemplate* AiActor::getCreatureTemplate() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCreatureTemplate();
+}
+
+Vector<ManagedReference<WeaponObject* > > AiActor::getWeapons() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWeapons();
 }
 
 DistributedObjectServant* AiActor::_getImplementation() {
@@ -236,6 +1318,31 @@ bool AiActorImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
+	if (_name == "AiActor.npcTemplate") {
+		TypeInfo<CreatureTemplateReference >::parseFromBinaryStream(&npcTemplate, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.weapons") {
+		TypeInfo<Vector<ManagedReference<WeaponObject* > > >::parseFromBinaryStream(&weapons, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.camouflagedObjects") {
+		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&camouflagedObjects, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.loadedOutfit") {
+		TypeInfo<bool >::parseFromBinaryStream(&loadedOutfit, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.isCreature") {
+		TypeInfo<bool >::parseFromBinaryStream(&isCreature, stream);
+		return true;
+	}
+
 	if (_name == "AiActor.currentMessage") {
 		TypeInfo<unsigned short >::parseFromBinaryStream(&currentMessage, stream);
 		return true;
@@ -243,6 +1350,61 @@ bool AiActorImplementation::readObjectMember(ObjectInputStream* stream, const St
 
 	if (_name == "AiActor.host") {
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&host, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.respawnTimer") {
+		TypeInfo<float >::parseFromBinaryStream(&respawnTimer, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.despawnOnNoPlayerInRange") {
+		TypeInfo<bool >::parseFromBinaryStream(&despawnOnNoPlayerInRange, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.numberOfPlayersInRange") {
+		TypeInfo<int >::parseFromBinaryStream(&numberOfPlayersInRange, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.skillCommands") {
+		TypeInfo<Reference<Vector<String>* > >::parseFromBinaryStream(&skillCommands, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.patrolPoints") {
+		TypeInfo<PatrolPointsVector >::parseFromBinaryStream(&patrolPoints, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.homeLocation") {
+		TypeInfo<PatrolPoint >::parseFromBinaryStream(&homeLocation, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.nextStepPosition") {
+		TypeInfo<PatrolPoint >::parseFromBinaryStream(&nextStepPosition, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.baby") {
+		TypeInfo<bool >::parseFromBinaryStream(&baby, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.followObject") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&followObject, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.showNextMovementPosition") {
+		TypeInfo<bool >::parseFromBinaryStream(&showNextMovementPosition, stream);
+		return true;
+	}
+
+	if (_name == "AiActor.movementMarkers") {
+		TypeInfo<Reference<Vector<ManagedReference<SceneObject* > >* > >::parseFromBinaryStream(&movementMarkers, stream);
 		return true;
 	}
 
@@ -279,6 +1441,46 @@ int AiActorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "AiActor.npcTemplate";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<CreatureTemplateReference >::toBinaryStream(&npcTemplate, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.weapons";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<ManagedReference<WeaponObject* > > >::toBinaryStream(&weapons, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.camouflagedObjects";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&camouflagedObjects, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.loadedOutfit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&loadedOutfit, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.isCreature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&isCreature, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "AiActor.currentMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -295,8 +1497,96 @@ int AiActorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "AiActor.respawnTimer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&respawnTimer, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 4;
+	_name = "AiActor.despawnOnNoPlayerInRange";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&despawnOnNoPlayerInRange, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.numberOfPlayersInRange";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&numberOfPlayersInRange, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.skillCommands";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Reference<Vector<String>* > >::toBinaryStream(&skillCommands, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.patrolPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<PatrolPointsVector >::toBinaryStream(&patrolPoints, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.homeLocation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<PatrolPoint >::toBinaryStream(&homeLocation, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.nextStepPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<PatrolPoint >::toBinaryStream(&nextStepPosition, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.baby";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&baby, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.followObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&followObject, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.showNextMovementPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&showNextMovementPosition, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "AiActor.movementMarkers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Reference<Vector<ManagedReference<SceneObject* > >* > >::toBinaryStream(&movementMarkers, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 20;
 }
 
 AiActorImplementation::AiActorImplementation(AiTemplate* ait) {
@@ -305,6 +1595,18 @@ AiActorImplementation::AiActorImplementation(AiTemplate* ait) {
 	host = NULL;
 	// server/zone/objects/creature/ai/AiActor.idl():  		aiTemplate = ait;
 	aiTemplate = ait;
+	// server/zone/objects/creature/ai/AiActor.idl():  		respawnTimer = 0;
+	respawnTimer = 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		showNextMovementPosition = true;
+	showNextMovementPosition = true;
+	// server/zone/objects/creature/ai/AiActor.idl():  		despawnOnNoPlayerInRange = true;
+	despawnOnNoPlayerInRange = true;
+	// server/zone/objects/creature/ai/AiActor.idl():  		numberOfPlayersInRange = 0;
+	numberOfPlayersInRange = 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		loadedOutfit = false;
+	loadedOutfit = false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		isCreature = true;
+	isCreature = true;
 	// server/zone/objects/creature/ai/AiActor.idl():  		Logger.setLoggingName("AiActor");
 	Logger::setLoggingName("AiActor");
 	// server/zone/objects/creature/ai/AiActor.idl():  		Logger.setLogging(false);
@@ -325,14 +1627,373 @@ CreatureObject* AiActorImplementation::getHost() {
 	return host;
 }
 
-void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	// server/zone/objects/creature/ai/AiActor.idl():  		currentState.notifyPositionUpdate(this, entry);
-	currentState->notifyPositionUpdate(_this, entry);
-}
-
 void AiActorImplementation::setCurrentMessage(unsigned short msg) {
 	// server/zone/objects/creature/ai/AiActor.idl():  		currentMessage = msg;
 	currentMessage = msg;
+}
+
+bool AiActorImplementation::isCamouflaged(CreatureObject* target) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return isScentMasked(target) || isConcealed(target);
+	return isScentMasked(target) || isConcealed(target);
+}
+
+void AiActorImplementation::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/ai/AiActor.idl():  			nextStepPosition.setPosition(x, z, y);
+	(&nextStepPosition)->setPosition(x, z, y);
+	// server/zone/objects/creature/ai/AiActor.idl():  			nextStepPosition.setCell(cell);
+	(&nextStepPosition)->setCell(cell);
+}
+}
+
+PatrolPoint* AiActorImplementation::getNextStepPosition() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return nextStepPosition;
+	return (&nextStepPosition);
+}
+
+void AiActorImplementation::setShowNextPosition(bool val) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		showNextMovementPosition = val;
+	showNextMovementPosition = val;
+}
+
+bool AiActorImplementation::isShowNextPosition() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return showNextMovementPosition;
+	return showNextMovementPosition;
+}
+
+Vector<ManagedReference<SceneObject* > >* AiActorImplementation::getMovementMarkers() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return movementMarkers;
+	return movementMarkers;
+}
+
+int AiActorImplementation::getMovementMarkersSize() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return movementMarkers.size();
+	return movementMarkers->size();
+}
+
+SceneObject* AiActorImplementation::getMovementMarker(int i) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return movementMarkers.get(i);
+	return movementMarkers->get(i);
+}
+
+void AiActorImplementation::dropMovementMarker(SceneObject* marker) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		movementMarkers.removeElement(marker);
+	movementMarkers->removeElement(marker);
+}
+
+void AiActorImplementation::dropAllMovemementMarkers() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		movementMarkers.removeAll();
+	movementMarkers->removeAll();
+}
+
+void AiActorImplementation::addMovementMarker(SceneObject* marker) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		movementMarkers.add(marker);
+	movementMarkers->add(marker);
+}
+
+void AiActorImplementation::clearPatrolPoints() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/ai/AiActor.idl():  			patrolPoints.removeAll();
+	(&patrolPoints)->removeAll();
+}
+}
+
+PatrolPointsVector* AiActorImplementation::getPatrolPoints() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return patrolPoints;
+	return (&patrolPoints);
+}
+
+void AiActorImplementation::setHomeLocation(float x, float z, float y, SceneObject* cell) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		homeLocation.setPosition(x, z, y);
+	(&homeLocation)->setPosition(x, z, y);
+	// server/zone/objects/creature/ai/AiActor.idl():  		homeLocation.setCell(cell);
+	(&homeLocation)->setCell(cell);
+	// server/zone/objects/creature/ai/AiActor.idl():  		homeLocation.setReached(true);
+	(&homeLocation)->setReached(true);
+}
+
+PatrolPoint* AiActorImplementation::getHomeLocation() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return homeLocation;
+	return (&homeLocation);
+}
+
+void AiActorImplementation::scheduleDespawn() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		scheduleDespawn(45);
+	scheduleDespawn(45);
+}
+
+void AiActorImplementation::clearDespawnEvent() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		despawnEvent = null;
+	despawnEvent = NULL;
+}
+
+void AiActorImplementation::setRespawnTimer(float resp) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		respawnTimer = resp;
+	respawnTimer = resp;
+}
+
+float AiActorImplementation::getRespawnTimer() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return respawnTimer;
+	return respawnTimer;
+}
+
+bool AiActorImplementation::getDespawnOnNoPlayerInRange() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return despawnOnNoPlayerInRange;
+	return despawnOnNoPlayerInRange;
+}
+
+int AiActorImplementation::getNumberOfPlayersInRange() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return numberOfPlayersInRange;
+	return numberOfPlayersInRange;
+}
+
+SceneObject* AiActorImplementation::getFollowObject() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return followObject;
+	return followObject;
+}
+
+void AiActorImplementation::setFollowObject(SceneObject* targ) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		followObject = targ;
+	followObject = targ;
+}
+
+void AiActorImplementation::setTargetObject(SceneObject* obj) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		}
+{
+	Locker _locker((&targetMutex));
+	// server/zone/objects/creature/ai/AiActor.idl():  		}
+	if (followObject != obj){
+	// server/zone/objects/creature/ai/AiActor.idl():  				clearPatrolPoints();
+	clearPatrolPoints();
+	// server/zone/objects/creature/ai/AiActor.idl():  				followObject = obj;
+	followObject = obj;
+}
+}
+}
+
+void AiActorImplementation::setOblivious() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		setTargetObject(null);
+	setTargetObject(NULL);
+	// server/zone/objects/creature/ai/AiActor.idl():  		next(FORGOT);
+	next(FORGOT);
+}
+
+bool AiActorImplementation::isAttackableBy(CreatureObject* object) {
+	// server/zone/objects/creature/ai/AiActor.idl():  		if 
+	if (object == host)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		if 
+	if (host->getPvpStatusBitmask() == 0)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		if 
+	if (host->isDead())	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		unsigned 
+	if (object->isAiActor())	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		unsigned int targetFaction = object.getFaction();
+	unsigned int targetFaction = object->getFaction();
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if (targetFaction != 0 && host->getFaction() != 0){
+	// server/zone/objects/creature/ai/AiActor.idl():  			PlayerObject ghost = object.getPlayerObject();
+	PlayerObject* ghost = object->getPlayerObject();
+	// server/zone/objects/creature/ai/AiActor.idl():  			if 
+	if (targetFaction == host->getFaction())	// server/zone/objects/creature/ai/AiActor.idl():  				return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		}
+	if (ghost != NULL && (targetFaction != host->getFaction()) && ghost->getFactionStatus() == FactionStatus::ONLEAVE)	// server/zone/objects/creature/ai/AiActor.idl():  				return false;
+	return false;
+}
+
+	else 	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if (targetFaction == 0 && host->getFaction() != 0)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return true;
+	return true;
+}
+
+void AiActorImplementation::updateLastDamageReceived() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		lastDamageReceived.updateToCurrentTime();
+	(&lastDamageReceived)->updateToCurrentTime();
+}
+
+float AiActorImplementation::getKinetic() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getKinetic();
+	return (&npcTemplate)->get()->getKinetic();
+}
+
+float AiActorImplementation::getEnergy() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getEnergy();
+	return (&npcTemplate)->get()->getEnergy();
+}
+
+float AiActorImplementation::getElectricity() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getElectricity();
+	return (&npcTemplate)->get()->getElectricity();
+}
+
+float AiActorImplementation::getStun() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getStun();
+	return (&npcTemplate)->get()->getStun();
+}
+
+float AiActorImplementation::getBlast() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getBlast();
+	return (&npcTemplate)->get()->getBlast();
+}
+
+float AiActorImplementation::getHeat() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getHeat();
+	return (&npcTemplate)->get()->getHeat();
+}
+
+float AiActorImplementation::getCold() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getCold();
+	return (&npcTemplate)->get()->getCold();
+}
+
+float AiActorImplementation::getAcid() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getAcid();
+	return (&npcTemplate)->get()->getAcid();
+}
+
+float AiActorImplementation::getLightSaber() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getLightSaber();
+	return (&npcTemplate)->get()->getLightSaber();
+}
+
+bool AiActorImplementation::isStalker() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().isStalker();
+	return (&npcTemplate)->get()->isStalker();
+}
+
+bool AiActorImplementation::isKiller() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().isKiller();
+	return (&npcTemplate)->get()->isKiller();
+}
+
+unsigned int AiActorImplementation::getFerocity() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getFerocity();
+	return (&npcTemplate)->get()->getFerocity();
+}
+
+unsigned int AiActorImplementation::getArmor() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getArmor();
+	return (&npcTemplate)->get()->getArmor();
+}
+
+String AiActorImplementation::getFactionString() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return "";
+	return "";
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getFaction();
+	return (&npcTemplate)->get()->getFaction();
+}
+
+String AiActorImplementation::getSocialGroup() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return "";
+	return "";
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getSocialGroup();
+	return (&npcTemplate)->get()->getSocialGroup();
+}
+
+float AiActorImplementation::getChanceHit() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getChanceHit();
+	return (&npcTemplate)->get()->getChanceHit();
+}
+
+int AiActorImplementation::getDamageMin() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return host.getWeapon().getMinDamage();
+	return host->getWeapon()->getMinDamage();
+}
+
+int AiActorImplementation::getDamageMax() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return host.getWeapon().getMaxDamage();
+	return host->getWeapon()->getMaxDamage();
+}
+
+int AiActorImplementation::getBaseXp() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getBaseXp();
+	return (&npcTemplate)->get()->getBaseXp();
+}
+
+unsigned int AiActorImplementation::getDiet() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return 0;
+	return 0;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getDiet();
+	return (&npcTemplate)->get()->getDiet();
+}
+
+CreatureAttackMap* AiActorImplementation::getAttackMap() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return null;
+	return NULL;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getAttacks();
+	return (&npcTemplate)->get()->getAttacks();
+}
+
+LootGroupCollection* AiActorImplementation::getLootGroups() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			return null;
+	return NULL;
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get().getLootGroups();
+	return (&npcTemplate)->get()->getLootGroups();
+}
+
+CreatureTemplate* AiActorImplementation::getCreatureTemplate() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate.get();
+	return (&npcTemplate)->get();
 }
 
 /*
@@ -365,6 +2026,11 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			initializeTransientMembers();
 		}
 		break;
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		{
+			fillAttributeList(static_cast<AttributeListMessage*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
 		{
 			notifyPositionUpdate(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
@@ -375,10 +2041,355 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setCurrentMessage(inv->getUnsignedShortParameter());
 		}
 		break;
+	case RPC_NEXT__SHORT_:
+		{
+			next(inv->getUnsignedShortParameter());
+		}
+		break;
+	case RPC_NEXT__:
+		{
+			next();
+		}
+		break;
 	case RPC_ADDTRANSITION__STRING_SHORT_STRING_:
 		{
 			String stateName; String resultState; 
 			addTransition(inv->getAsciiParameter(stateName), inv->getUnsignedShortParameter(), inv->getAsciiParameter(resultState));
+		}
+		break;
+	case RPC_SETLEVEL__INT_:
+		{
+			setLevel(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_CALCULATEATTACKMINDAMAGE__INT_:
+		{
+			resp->insertSignedInt(calculateAttackMinDamage(inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_CALCULATEATTACKMAXDAMAGE__INT_:
+		{
+			resp->insertSignedInt(calculateAttackMaxDamage(inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_CALCULATEATTACKSPEED__INT_:
+		{
+			resp->insertFloat(calculateAttackSpeed(inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_ISSCENTMASKED__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isScentMasked(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_ISCONCEALED__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isConcealed(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_ACTIVATERECOVERY__:
+		{
+			activateRecovery();
+		}
+		break;
+	case RPC_ACTIVATEMOVEMENTEVENT__:
+		{
+			activateMovementEvent();
+		}
+		break;
+	case RPC_ACTIVATEWAITEVENT__:
+		{
+			activateWaitEvent();
+		}
+		break;
+	case RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_:
+		{
+			activateAwarenessEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_ACTIVATEPOSTURERECOVERY__:
+		{
+			activatePostureRecovery();
+		}
+		break;
+	case RPC_QUEUEDIZZYFALLEVENT__:
+		{
+			queueDizzyFallEvent();
+		}
+		break;
+	case RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_:
+		{
+			setNextStepPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETSHOWNEXTPOSITION__BOOL_:
+		{
+			setShowNextPosition(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_ISSHOWNEXTPOSITION__:
+		{
+			resp->insertBoolean(isShowNextPosition());
+		}
+		break;
+	case RPC_GETMOVEMENTMARKERSSIZE__:
+		{
+			resp->insertSignedInt(getMovementMarkersSize());
+		}
+		break;
+	case RPC_GETMOVEMENTMARKER__INT_:
+		{
+			resp->insertLong(getMovementMarker(inv->getSignedIntParameter())->_getObjectID());
+		}
+		break;
+	case RPC_DROPMOVEMENTMARKER__SCENEOBJECT_:
+		{
+			dropMovementMarker(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_DROPALLMOVEMEMENTMARKERS__:
+		{
+			dropAllMovemementMarkers();
+		}
+		break;
+	case RPC_ADDMOVEMENTMARKER__SCENEOBJECT_:
+		{
+			addMovementMarker(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_CLEARPATROLPOINTS__:
+		{
+			clearPatrolPoints();
+		}
+		break;
+	case RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_:
+		{
+			setHomeLocation(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_:
+		{
+			setDespawnOnNoPlayerInRange(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_NOTIFYDESPAWN__ZONE_:
+		{
+			notifyDespawn(static_cast<Zone*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SCHEDULEDESPAWN__INT_:
+		{
+			scheduleDespawn(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_RESPAWN__ZONE_INT_:
+		{
+			respawn(static_cast<Zone*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SCHEDULEDESPAWN__:
+		{
+			scheduleDespawn();
+		}
+		break;
+	case RPC_CLEARDESPAWNEVENT__:
+		{
+			clearDespawnEvent();
+		}
+		break;
+	case RPC_SETRESPAWNTIMER__FLOAT_:
+		{
+			setRespawnTimer(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETRESPAWNTIMER__:
+		{
+			resp->insertFloat(getRespawnTimer());
+		}
+		break;
+	case RPC_GETDESPAWNONNOPLAYERINRANGE__:
+		{
+			resp->insertBoolean(getDespawnOnNoPlayerInRange());
+		}
+		break;
+	case RPC_GETNUMBEROFPLAYERSINRANGE__:
+		{
+			resp->insertSignedInt(getNumberOfPlayersInRange());
+		}
+		break;
+	case RPC_NOTIFYINSERT__QUADTREEENTRY_:
+		{
+			notifyInsert(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_:
+		{
+			notifyDissapear(static_cast<QuadTreeEntry*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_:
+		{
+			resp->insertSignedInt(notifyConverseObservers(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_GETFOLLOWOBJECT__:
+		{
+			resp->insertLong(getFollowObject()->_getObjectID());
+		}
+		break;
+	case RPC_SETFOLLOWOBJECT__SCENEOBJECT_:
+		{
+			setFollowObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETTARGETOBJECT__SCENEOBJECT_:
+		{
+			setTargetObject(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETOBLIVIOUS__:
+		{
+			setOblivious();
+		}
+		break;
+	case RPC_SETDEFENDER__SCENEOBJECT_:
+		{
+			setDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_ADDDEFENDER__SCENEOBJECT_:
+		{
+			addDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVEDEFENDER__SCENEOBJECT_:
+		{
+			removeDefender(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isAggressiveTo(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_UPDATELASTDAMAGERECEIVED__:
+		{
+			updateLastDamageReceived();
+		}
+		break;
+	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
+		{
+			sendConversationStartTo(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_GETKINETIC__:
+		{
+			resp->insertFloat(getKinetic());
+		}
+		break;
+	case RPC_GETENERGY__:
+		{
+			resp->insertFloat(getEnergy());
+		}
+		break;
+	case RPC_GETELECTRICITY__:
+		{
+			resp->insertFloat(getElectricity());
+		}
+		break;
+	case RPC_GETSTUN__:
+		{
+			resp->insertFloat(getStun());
+		}
+		break;
+	case RPC_GETBLAST__:
+		{
+			resp->insertFloat(getBlast());
+		}
+		break;
+	case RPC_GETHEAT__:
+		{
+			resp->insertFloat(getHeat());
+		}
+		break;
+	case RPC_GETCOLD__:
+		{
+			resp->insertFloat(getCold());
+		}
+		break;
+	case RPC_GETACID__:
+		{
+			resp->insertFloat(getAcid());
+		}
+		break;
+	case RPC_GETLIGHTSABER__:
+		{
+			resp->insertFloat(getLightSaber());
+		}
+		break;
+	case RPC_ISSTALKER__:
+		{
+			resp->insertBoolean(isStalker());
+		}
+		break;
+	case RPC_ISKILLER__:
+		{
+			resp->insertBoolean(isKiller());
+		}
+		break;
+	case RPC_GETFEROCITY__:
+		{
+			resp->insertInt(getFerocity());
+		}
+		break;
+	case RPC_GETARMOR__:
+		{
+			resp->insertInt(getArmor());
+		}
+		break;
+	case RPC_GETFACTIONSTRING__:
+		{
+			resp->insertAscii(getFactionString());
+		}
+		break;
+	case RPC_GETSOCIALGROUP__:
+		{
+			resp->insertAscii(getSocialGroup());
+		}
+		break;
+	case RPC_GETCHANCEHIT__:
+		{
+			resp->insertFloat(getChanceHit());
+		}
+		break;
+	case RPC_GETDAMAGEMIN__:
+		{
+			resp->insertSignedInt(getDamageMin());
+		}
+		break;
+	case RPC_GETDAMAGEMAX__:
+		{
+			resp->insertSignedInt(getDamageMax());
+		}
+		break;
+	case RPC_GETBASEXP__:
+		{
+			resp->insertSignedInt(getBaseXp());
+		}
+		break;
+	case RPC_GETDIET__:
+		{
+			resp->insertInt(getDiet());
 		}
 		break;
 	default:
@@ -398,6 +2409,10 @@ void AiActorAdapter::initializeTransientMembers() {
 	(static_cast<AiActor*>(stub))->initializeTransientMembers();
 }
 
+void AiActorAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	(static_cast<AiActor*>(stub))->fillAttributeList(msg, object);
+}
+
 void AiActorAdapter::notifyPositionUpdate(QuadTreeEntry* entry) {
 	(static_cast<AiActor*>(stub))->notifyPositionUpdate(entry);
 }
@@ -406,8 +2421,284 @@ void AiActorAdapter::setCurrentMessage(unsigned short msg) {
 	(static_cast<AiActor*>(stub))->setCurrentMessage(msg);
 }
 
+void AiActorAdapter::next(unsigned short msg) {
+	(static_cast<AiActor*>(stub))->next(msg);
+}
+
+void AiActorAdapter::next() {
+	(static_cast<AiActor*>(stub))->next();
+}
+
 void AiActorAdapter::addTransition(const String& stateName, unsigned short msg, const String& resultState) {
 	(static_cast<AiActor*>(stub))->addTransition(stateName, msg, resultState);
+}
+
+void AiActorAdapter::setLevel(int lvl) {
+	(static_cast<AiActor*>(stub))->setLevel(lvl);
+}
+
+int AiActorAdapter::calculateAttackMinDamage(int level) {
+	return (static_cast<AiActor*>(stub))->calculateAttackMinDamage(level);
+}
+
+int AiActorAdapter::calculateAttackMaxDamage(int level) {
+	return (static_cast<AiActor*>(stub))->calculateAttackMaxDamage(level);
+}
+
+float AiActorAdapter::calculateAttackSpeed(int level) {
+	return (static_cast<AiActor*>(stub))->calculateAttackSpeed(level);
+}
+
+bool AiActorAdapter::isCamouflaged(CreatureObject* target) {
+	return (static_cast<AiActor*>(stub))->isCamouflaged(target);
+}
+
+bool AiActorAdapter::isScentMasked(CreatureObject* target) {
+	return (static_cast<AiActor*>(stub))->isScentMasked(target);
+}
+
+bool AiActorAdapter::isConcealed(CreatureObject* target) {
+	return (static_cast<AiActor*>(stub))->isConcealed(target);
+}
+
+void AiActorAdapter::activateRecovery() {
+	(static_cast<AiActor*>(stub))->activateRecovery();
+}
+
+void AiActorAdapter::activateMovementEvent() {
+	(static_cast<AiActor*>(stub))->activateMovementEvent();
+}
+
+void AiActorAdapter::activateWaitEvent() {
+	(static_cast<AiActor*>(stub))->activateWaitEvent();
+}
+
+void AiActorAdapter::activateAwarenessEvent(CreatureObject* target) {
+	(static_cast<AiActor*>(stub))->activateAwarenessEvent(target);
+}
+
+void AiActorAdapter::activatePostureRecovery() {
+	(static_cast<AiActor*>(stub))->activatePostureRecovery();
+}
+
+void AiActorAdapter::queueDizzyFallEvent() {
+	(static_cast<AiActor*>(stub))->queueDizzyFallEvent();
+}
+
+void AiActorAdapter::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
+	(static_cast<AiActor*>(stub))->setNextStepPosition(x, z, y, cell);
+}
+
+void AiActorAdapter::setShowNextPosition(bool val) {
+	(static_cast<AiActor*>(stub))->setShowNextPosition(val);
+}
+
+bool AiActorAdapter::isShowNextPosition() {
+	return (static_cast<AiActor*>(stub))->isShowNextPosition();
+}
+
+int AiActorAdapter::getMovementMarkersSize() {
+	return (static_cast<AiActor*>(stub))->getMovementMarkersSize();
+}
+
+SceneObject* AiActorAdapter::getMovementMarker(int i) {
+	return (static_cast<AiActor*>(stub))->getMovementMarker(i);
+}
+
+void AiActorAdapter::dropMovementMarker(SceneObject* marker) {
+	(static_cast<AiActor*>(stub))->dropMovementMarker(marker);
+}
+
+void AiActorAdapter::dropAllMovemementMarkers() {
+	(static_cast<AiActor*>(stub))->dropAllMovemementMarkers();
+}
+
+void AiActorAdapter::addMovementMarker(SceneObject* marker) {
+	(static_cast<AiActor*>(stub))->addMovementMarker(marker);
+}
+
+void AiActorAdapter::clearPatrolPoints() {
+	(static_cast<AiActor*>(stub))->clearPatrolPoints();
+}
+
+void AiActorAdapter::setHomeLocation(float x, float z, float y, SceneObject* cell) {
+	(static_cast<AiActor*>(stub))->setHomeLocation(x, z, y, cell);
+}
+
+void AiActorAdapter::setDespawnOnNoPlayerInRange(bool val) {
+	(static_cast<AiActor*>(stub))->setDespawnOnNoPlayerInRange(val);
+}
+
+void AiActorAdapter::notifyDespawn(Zone* zone) {
+	(static_cast<AiActor*>(stub))->notifyDespawn(zone);
+}
+
+void AiActorAdapter::scheduleDespawn(int timeToDespawn) {
+	(static_cast<AiActor*>(stub))->scheduleDespawn(timeToDespawn);
+}
+
+void AiActorAdapter::respawn(Zone* zone, int level) {
+	(static_cast<AiActor*>(stub))->respawn(zone, level);
+}
+
+void AiActorAdapter::scheduleDespawn() {
+	(static_cast<AiActor*>(stub))->scheduleDespawn();
+}
+
+void AiActorAdapter::clearDespawnEvent() {
+	(static_cast<AiActor*>(stub))->clearDespawnEvent();
+}
+
+void AiActorAdapter::setRespawnTimer(float resp) {
+	(static_cast<AiActor*>(stub))->setRespawnTimer(resp);
+}
+
+float AiActorAdapter::getRespawnTimer() {
+	return (static_cast<AiActor*>(stub))->getRespawnTimer();
+}
+
+bool AiActorAdapter::getDespawnOnNoPlayerInRange() {
+	return (static_cast<AiActor*>(stub))->getDespawnOnNoPlayerInRange();
+}
+
+int AiActorAdapter::getNumberOfPlayersInRange() {
+	return (static_cast<AiActor*>(stub))->getNumberOfPlayersInRange();
+}
+
+void AiActorAdapter::notifyInsert(QuadTreeEntry* entry) {
+	(static_cast<AiActor*>(stub))->notifyInsert(entry);
+}
+
+void AiActorAdapter::notifyDissapear(QuadTreeEntry* entry) {
+	(static_cast<AiActor*>(stub))->notifyDissapear(entry);
+}
+
+int AiActorAdapter::notifyConverseObservers(CreatureObject* converser) {
+	return (static_cast<AiActor*>(stub))->notifyConverseObservers(converser);
+}
+
+SceneObject* AiActorAdapter::getFollowObject() {
+	return (static_cast<AiActor*>(stub))->getFollowObject();
+}
+
+void AiActorAdapter::setFollowObject(SceneObject* targ) {
+	(static_cast<AiActor*>(stub))->setFollowObject(targ);
+}
+
+void AiActorAdapter::setTargetObject(SceneObject* obj) {
+	(static_cast<AiActor*>(stub))->setTargetObject(obj);
+}
+
+void AiActorAdapter::setOblivious() {
+	(static_cast<AiActor*>(stub))->setOblivious();
+}
+
+void AiActorAdapter::setDefender(SceneObject* defender) {
+	(static_cast<AiActor*>(stub))->setDefender(defender);
+}
+
+void AiActorAdapter::addDefender(SceneObject* defender) {
+	(static_cast<AiActor*>(stub))->addDefender(defender);
+}
+
+void AiActorAdapter::removeDefender(SceneObject* defender) {
+	(static_cast<AiActor*>(stub))->removeDefender(defender);
+}
+
+bool AiActorAdapter::isAttackableBy(CreatureObject* object) {
+	return (static_cast<AiActor*>(stub))->isAttackableBy(object);
+}
+
+bool AiActorAdapter::isAggressiveTo(CreatureObject* object) {
+	return (static_cast<AiActor*>(stub))->isAggressiveTo(object);
+}
+
+void AiActorAdapter::updateLastDamageReceived() {
+	(static_cast<AiActor*>(stub))->updateLastDamageReceived();
+}
+
+void AiActorAdapter::sendConversationStartTo(SceneObject* player) {
+	(static_cast<AiActor*>(stub))->sendConversationStartTo(player);
+}
+
+float AiActorAdapter::getKinetic() {
+	return (static_cast<AiActor*>(stub))->getKinetic();
+}
+
+float AiActorAdapter::getEnergy() {
+	return (static_cast<AiActor*>(stub))->getEnergy();
+}
+
+float AiActorAdapter::getElectricity() {
+	return (static_cast<AiActor*>(stub))->getElectricity();
+}
+
+float AiActorAdapter::getStun() {
+	return (static_cast<AiActor*>(stub))->getStun();
+}
+
+float AiActorAdapter::getBlast() {
+	return (static_cast<AiActor*>(stub))->getBlast();
+}
+
+float AiActorAdapter::getHeat() {
+	return (static_cast<AiActor*>(stub))->getHeat();
+}
+
+float AiActorAdapter::getCold() {
+	return (static_cast<AiActor*>(stub))->getCold();
+}
+
+float AiActorAdapter::getAcid() {
+	return (static_cast<AiActor*>(stub))->getAcid();
+}
+
+float AiActorAdapter::getLightSaber() {
+	return (static_cast<AiActor*>(stub))->getLightSaber();
+}
+
+bool AiActorAdapter::isStalker() {
+	return (static_cast<AiActor*>(stub))->isStalker();
+}
+
+bool AiActorAdapter::isKiller() {
+	return (static_cast<AiActor*>(stub))->isKiller();
+}
+
+unsigned int AiActorAdapter::getFerocity() {
+	return (static_cast<AiActor*>(stub))->getFerocity();
+}
+
+unsigned int AiActorAdapter::getArmor() {
+	return (static_cast<AiActor*>(stub))->getArmor();
+}
+
+String AiActorAdapter::getFactionString() {
+	return (static_cast<AiActor*>(stub))->getFactionString();
+}
+
+String AiActorAdapter::getSocialGroup() {
+	return (static_cast<AiActor*>(stub))->getSocialGroup();
+}
+
+float AiActorAdapter::getChanceHit() {
+	return (static_cast<AiActor*>(stub))->getChanceHit();
+}
+
+int AiActorAdapter::getDamageMin() {
+	return (static_cast<AiActor*>(stub))->getDamageMin();
+}
+
+int AiActorAdapter::getDamageMax() {
+	return (static_cast<AiActor*>(stub))->getDamageMax();
+}
+
+int AiActorAdapter::getBaseXp() {
+	return (static_cast<AiActor*>(stub))->getBaseXp();
+}
+
+unsigned int AiActorAdapter::getDiet() {
+	return (static_cast<AiActor*>(stub))->getDiet();
 }
 
 /*

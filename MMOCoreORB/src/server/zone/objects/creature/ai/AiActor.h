@@ -25,11 +25,179 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiThinkEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiMoveEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiWaitEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class AiAwarenessEvent;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
+class DespawnCreatureOnPlayerDissappear;
+
+} // namespace events
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::events;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace weapon {
+
+class WeaponObject;
+
+} // namespace weapon
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::weapon;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/creature/ai/components/AiStateComponent.h"
+
+#include "server/zone/objects/creature/PatrolPointsVector.h"
+
+#include "server/zone/objects/creature/PatrolPoint.h"
 
 #include "engine/util/u3d/QuadTreeEntry.h"
 
+#include "system/thread/Mutex.h"
+
 #include "server/zone/templates/AiTemplate.h"
+
+#include "server/zone/objects/creature/variables/CreatureTemplateReference.h"
+
+#include "system/thread/Mutex.h"
+
+#include "system/lang/Time.h"
+
+#include "system/util/Vector.h"
+
+#include "system/lang/ref/Reference.h"
+
+#include "engine/core/ManagedObject.h"
+
+#include "system/lang/Time.h"
 
 namespace server {
 namespace zone {
@@ -57,6 +225,8 @@ public:
 
 	unsigned static const short NONE = 0xFFFF;
 
+	static const int UPDATEMOVEMENTINTERVAL = 500;
+
 	AiActor(AiTemplate* ait);
 
 	void setHost(CreatureObject* creo);
@@ -65,13 +235,177 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void setCurrentMessage(unsigned short msg);
 
+	void next(unsigned short msg);
+
+	void next();
+
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void loadTemplateData(CreatureTemplate* templateData);
+
+	void setLevel(int lvl);
+
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
+
+	bool isCamouflaged(CreatureObject* target);
+
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
+
+	void activateRecovery();
+
+	void activateMovementEvent();
+
+	void activateWaitEvent();
+
+	void activateAwarenessEvent(CreatureObject* target);
+
+	void activatePostureRecovery();
+
+	void queueDizzyFallEvent();
+
+	void setNextPosition(PatrolPoint& point);
+
+	void setNextStepPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	PatrolPoint* getNextStepPosition();
+
+	void setShowNextPosition(bool val);
+
+	bool isShowNextPosition();
+
+	Vector<ManagedReference<SceneObject* > >* getMovementMarkers();
+
+	int getMovementMarkersSize();
+
+	SceneObject* getMovementMarker(int i);
+
+	void dropMovementMarker(SceneObject* marker);
+
+	void dropAllMovemementMarkers();
+
+	void addMovementMarker(SceneObject* marker);
+
+	void clearPatrolPoints();
+
+	PatrolPointsVector* getPatrolPoints();
+
+	void addPatrolPoint(PatrolPoint& point);
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
+	PatrolPoint* getHomeLocation();
+
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void notifyDespawn(Zone* zone);
+
+	void scheduleDespawn(int timeToDespawn);
+
+	void respawn(Zone* zone, int level);
+
+	void scheduleDespawn();
+
+	void clearDespawnEvent();
+
+	void setRespawnTimer(float resp);
+
+	float getRespawnTimer();
+
+	bool getDespawnOnNoPlayerInRange();
+
+	int getNumberOfPlayersInRange();
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	int notifyConverseObservers(CreatureObject* converser);
+
+	SceneObject* getFollowObject();
+
+	void setFollowObject(SceneObject* targ);
+
+	void setTargetObject(SceneObject* obj);
+
+	void setOblivious();
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	void updateLastDamageReceived();
+
+	void sendConversationStartTo(SceneObject* player);
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isKiller();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
+
+	CreatureAttackMap* getAttackMap();
+
+	LootGroupCollection* getLootGroups();
+
+	CreatureTemplate* getCreatureTemplate();
+
+	Vector<ManagedReference<WeaponObject* > > getWeapons();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -130,9 +464,59 @@ protected:
 
 	Reference<AiTemplate* > aiTemplate;
 
+	CreatureTemplateReference npcTemplate;
+
+	Vector<ManagedReference<WeaponObject* > > weapons;
+
+	Vector<ManagedReference<SceneObject* > > camouflagedObjects;
+
+	bool loadedOutfit;
+
+	bool isCreature;
+
 	unsigned short currentMessage;
 
 	ManagedReference<CreatureObject* > host;
+
+	float respawnTimer;
+
+	bool despawnOnNoPlayerInRange;
+
+	int numberOfPlayersInRange;
+
+	Reference<AiThinkEvent* > thinkEvent;
+
+	Reference<AiMoveEvent* > moveEvent;
+
+	Reference<AiWaitEvent* > waitEvent;
+
+	Reference<AiAwarenessEvent* > awarenessEvent;
+
+	Reference<DespawnCreatureOnPlayerDissappear* > despawnEvent;
+
+	Reference<Vector<String>* > skillCommands;
+
+	PatrolPointsVector patrolPoints;
+
+	PatrolPoint homeLocation;
+
+	PatrolPoint nextStepPosition;
+
+	bool baby;
+
+	ManagedReference<SceneObject* > followObject;
+
+	Mutex targetMutex;
+
+	Time lastDamageReceived;
+
+public:
+	static const int UPDATEMOVEMENTINTERVAL = 500;
+
+protected:
+	bool showNextMovementPosition;
+
+	Reference<Vector<ManagedReference<SceneObject* > >* > movementMarkers;
 
 public:
 	AiActorImplementation(AiTemplate* ait);
@@ -145,19 +529,177 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void setCurrentMessage(unsigned short msg);
 
-private:
 	void next(unsigned short msg);
 
 	void next();
 
-public:
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
+
+	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void loadTemplateData(CreatureTemplate* templateData);
+
+	void setLevel(int lvl);
+
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
+
+	bool isCamouflaged(CreatureObject* target);
+
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
+
+	virtual void activateRecovery();
+
+	virtual void activateMovementEvent();
+
+	virtual void activateWaitEvent();
+
+	void activateAwarenessEvent(CreatureObject* target);
+
+	void activatePostureRecovery();
+
+	void queueDizzyFallEvent();
+
+	void setNextPosition(PatrolPoint& point);
+
+	void setNextStepPosition(float x, float z, float y, SceneObject* cell = NULL);
+
+	PatrolPoint* getNextStepPosition();
+
+	void setShowNextPosition(bool val);
+
+	bool isShowNextPosition();
+
+	Vector<ManagedReference<SceneObject* > >* getMovementMarkers();
+
+	int getMovementMarkersSize();
+
+	SceneObject* getMovementMarker(int i);
+
+	void dropMovementMarker(SceneObject* marker);
+
+	void dropAllMovemementMarkers();
+
+	void addMovementMarker(SceneObject* marker);
+
+	void clearPatrolPoints();
+
+	PatrolPointsVector* getPatrolPoints();
+
+	void addPatrolPoint(PatrolPoint& point);
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell = NULL);
+
+	PatrolPoint* getHomeLocation();
+
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void notifyDespawn(Zone* zone);
+
+	void scheduleDespawn(int timeToDespawn);
+
+	void respawn(Zone* zone, int level);
+
+	void scheduleDespawn();
+
+	void clearDespawnEvent();
+
+	void setRespawnTimer(float resp);
+
+	float getRespawnTimer();
+
+	bool getDespawnOnNoPlayerInRange();
+
+	int getNumberOfPlayersInRange();
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	int notifyConverseObservers(CreatureObject* converser);
+
+	SceneObject* getFollowObject();
+
+	void setFollowObject(SceneObject* targ);
+
+	void setTargetObject(SceneObject* obj);
+
+	void setOblivious();
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	void updateLastDamageReceived();
+
+	void sendConversationStartTo(SceneObject* player);
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isKiller();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
+
+	CreatureAttackMap* getAttackMap();
+
+	LootGroupCollection* getLootGroups();
+
+	CreatureTemplate* getCreatureTemplate();
+
+	Vector<ManagedReference<WeaponObject* > > getWeapons();
 
 	WeakReference<AiActor*> _this;
 
@@ -208,11 +750,151 @@ public:
 
 	void initializeTransientMembers();
 
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void setCurrentMessage(unsigned short msg);
 
+	void next(unsigned short msg);
+
+	void next();
+
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
+
+	void setLevel(int lvl);
+
+	int calculateAttackMinDamage(int level);
+
+	int calculateAttackMaxDamage(int level);
+
+	float calculateAttackSpeed(int level);
+
+	bool isCamouflaged(CreatureObject* target);
+
+	bool isScentMasked(CreatureObject* target);
+
+	bool isConcealed(CreatureObject* target);
+
+	void activateRecovery();
+
+	void activateMovementEvent();
+
+	void activateWaitEvent();
+
+	void activateAwarenessEvent(CreatureObject* target);
+
+	void activatePostureRecovery();
+
+	void queueDizzyFallEvent();
+
+	void setNextStepPosition(float x, float z, float y, SceneObject* cell);
+
+	void setShowNextPosition(bool val);
+
+	bool isShowNextPosition();
+
+	int getMovementMarkersSize();
+
+	SceneObject* getMovementMarker(int i);
+
+	void dropMovementMarker(SceneObject* marker);
+
+	void dropAllMovemementMarkers();
+
+	void addMovementMarker(SceneObject* marker);
+
+	void clearPatrolPoints();
+
+	void setHomeLocation(float x, float z, float y, SceneObject* cell);
+
+	void setDespawnOnNoPlayerInRange(bool val);
+
+	void notifyDespawn(Zone* zone);
+
+	void scheduleDespawn(int timeToDespawn);
+
+	void respawn(Zone* zone, int level);
+
+	void scheduleDespawn();
+
+	void clearDespawnEvent();
+
+	void setRespawnTimer(float resp);
+
+	float getRespawnTimer();
+
+	bool getDespawnOnNoPlayerInRange();
+
+	int getNumberOfPlayersInRange();
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	int notifyConverseObservers(CreatureObject* converser);
+
+	SceneObject* getFollowObject();
+
+	void setFollowObject(SceneObject* targ);
+
+	void setTargetObject(SceneObject* obj);
+
+	void setOblivious();
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	bool isAttackableBy(CreatureObject* object);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	void updateLastDamageReceived();
+
+	void sendConversationStartTo(SceneObject* player);
+
+	float getKinetic();
+
+	float getEnergy();
+
+	float getElectricity();
+
+	float getStun();
+
+	float getBlast();
+
+	float getHeat();
+
+	float getCold();
+
+	float getAcid();
+
+	float getLightSaber();
+
+	bool isStalker();
+
+	bool isKiller();
+
+	unsigned int getFerocity();
+
+	unsigned int getArmor();
+
+	String getFactionString();
+
+	String getSocialGroup();
+
+	float getChanceHit();
+
+	int getDamageMin();
+
+	int getDamageMax();
+
+	int getBaseXp();
+
+	unsigned int getDiet();
 
 };
 

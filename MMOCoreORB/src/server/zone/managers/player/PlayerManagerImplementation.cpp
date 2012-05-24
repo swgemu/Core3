@@ -2482,7 +2482,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	//return 0;
 }
 
-void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
+void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
 
 	Locker locker(ai, player);
 
