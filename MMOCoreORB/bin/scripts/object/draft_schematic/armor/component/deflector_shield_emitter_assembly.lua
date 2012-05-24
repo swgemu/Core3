@@ -62,7 +62,7 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"assembly_mounting_frame", "emitter_precharger_array", "emitter_module_insulation", "field_emitter_crystals"},
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal_nonferrous", "copper", "ore", "gemstone_crystalline"},

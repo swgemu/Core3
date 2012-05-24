@@ -43,6 +43,7 @@
 
 object_tangible_mission_quest_item_power_regulator = object_tangible_mission_quest_item_shared_power_regulator:new {
 
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1},
