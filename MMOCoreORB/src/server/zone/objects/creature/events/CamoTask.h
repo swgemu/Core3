@@ -52,7 +52,7 @@ public:
 		if (creature == NULL)
 			return;
 
-		Locker plocker(creature);
+		Locker clocker(creature, target);
 
 		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
 		if (player == NULL)
