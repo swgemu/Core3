@@ -47,6 +47,7 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiDefaultComponent.h"
+#include "events/CamoTask.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -1200,7 +1201,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		return true;
 
 	int camoSkill = target->getSkillMod("mask_scent");
-	int creatureLevel = host->getLevel();
+	int creatureLevel = getLevel();
 
 	bool success = false;
 
@@ -1209,7 +1210,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		success = true;
 	}
 
-	Reference<Task*> ct = new CamoTask(target, host, true, success);
+	Reference<Task*> ct = new CamoTask(target, _this, true, success);
 	ct->execute();
 
 	return success;
@@ -1229,9 +1230,9 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	// Check if camo breaks
 	int camoSkill = target->getSkillMod("private_conceal");
-	int creatureLevel = host->getLevel();
+	int creatureLevel = getLevel();
 
-	if (!isCreature)
+	if (!isCreature())
 		creatureLevel *= 2;
 
 	bool success = false;
@@ -1241,7 +1242,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		success = true;
 	}
 
-	Reference<Task*> ct = new CamoTask(target, host, false, success);
+	Reference<Task*> ct = new CamoTask(target, _this, false, success);
 	ct->execute();
 
 	return success;
