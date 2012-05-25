@@ -64,19 +64,27 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		StringTokenizer tokenizer(arguments.toString());
-
-		String value;
-		tokenizer.getStringToken(value);
-
-		uint32 schematicID = Integer::valueOf(value);
-
 		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
 
 		if(craftingManager == NULL || !creature->isPlayerCreature())
 			return GENERALERROR;
 
-		craftingManager->sendResourceWeightsTo(creature, schematicID);
+		StringTokenizer tokenizer(arguments.toString());
+
+		String value;
+		uint32 schematicID;
+
+		while(tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(value);
+
+			try {
+				schematicID = Integer::valueOf(value);
+
+				craftingManager->sendResourceWeightsTo(creature, schematicID);
+			} catch(Exception& e) {
+				warning("Invalid draft slot request: " + value);
+			}
+		}
 
 		return SUCCESS;
 	}

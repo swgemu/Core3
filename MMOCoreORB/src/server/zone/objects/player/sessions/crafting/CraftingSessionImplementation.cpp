@@ -108,26 +108,6 @@ int CraftingSessionImplementation::startSession() {
 	crafter->sendMessage(ocm);
 	/// ***********************************************
 
-	/// Send all the ingredients to the player
-	for (int i = 0; i < currentSchematicList.size(); ++i) {
-
-		DraftSchematic* draftSchematic = currentSchematicList.get(i).get();
-
-		/// Object Controller Message 1BF
-		draftSchematic->sendDraftSlotsTo(crafter);
-		// End OBJC 1BF***********************************
-	}
-
-	/// Send all the experimental properties to the player
-	for (int i = 0; i < currentSchematicList.size(); ++i) {
-
-		DraftSchematic* draftSchematic = currentSchematicList.get(i).get();
-
-		/// Object Controller Message 207
-		draftSchematic->sendResourceWeightsTo(crafter);
-		// End OBJC 207***********************************
-	}
-
 	/// Reset session state
 	state = 1;
 
