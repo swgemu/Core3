@@ -52,6 +52,9 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	if (camp == NULL || terminal == NULL)
+		return;
+
 	CreatureObject* player = cast<CreatureObject*> (object);
 
 	if (player == NULL)
@@ -94,6 +97,9 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 	object->dropObserver(ObserverEventType::HEALINGPERFORMED, campObserver);
 
 	if (!object->isPlayerCreature())
+		return;
+
+	if (camp == NULL || terminal == NULL)
 		return;
 
 	CreatureObject* player = cast<CreatureObject*> (object);
