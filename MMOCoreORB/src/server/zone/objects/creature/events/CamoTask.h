@@ -29,7 +29,6 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> creature = creo.get();
 		int crc = String("skill_buff_mask_scent").hashCode();
 		String buffMsg = "@skl_use:sys_conceal_stop";
 
@@ -39,10 +38,21 @@ public:
 		}
 
 		ManagedReference<CreatureObject*> target = targ.get();
+		if (target == NULL)
+			return;
+
+		Locker tlocker(target);
+
 		if (!success && target->hasBuff(crc)) {
 			target->sendSystemMessage(buffMsg);
 			target->removeBuff(crc);
 		}
+
+		ManagedReference<CreatureObject*> creature = creo.get();
+		if (creature == NULL)
+			return;
+
+		Locker plocker(creature);
 
 		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
 		if (player == NULL)
