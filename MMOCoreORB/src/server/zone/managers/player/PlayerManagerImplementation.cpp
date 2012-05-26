@@ -2500,6 +2500,9 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 	if (!ai->isDead())
 		return;
 
+	if (ai->getDistanceTo(player) > 6)
+		return;
+
 	int cashCredits = ai->getCashCredits();
 
 	if (cashCredits > 0) {
