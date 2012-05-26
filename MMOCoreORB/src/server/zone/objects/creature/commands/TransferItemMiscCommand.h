@@ -108,6 +108,31 @@ public:
 			return GENERALERROR;
 		}
 
+		Zone* zoneObject = objectToTransfer->getZone();
+
+		if (zoneObject != NULL) {
+			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
+
+			if (!rootParent->isBuildingObject()) {
+				if (rootParent->getDistanceTo(creature) > 6)
+					return TOOFAR;
+			} else {
+				SceneObject* par = NULL;
+				SceneObject* obj = objectToTransfer;
+
+				while ((par = obj->getParent()) != NULL) {
+					if (par->isCellObject()) {
+						if (obj->getDistanceTo(creature) > 6)
+							return TOOFAR;
+						else
+							break;
+					} else {
+						obj = par;
+					}
+				}
+			}
+		}
+
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {

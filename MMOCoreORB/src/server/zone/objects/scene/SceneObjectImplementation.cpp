@@ -982,17 +982,15 @@ SceneObject* SceneObjectImplementation::getRootParent() {
 }
 
 SceneObject* SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
-	if (parent == NULL)
-		return NULL;
+	ManagedReference<SceneObject*> temp = getParent();
 
-	SceneObject* temp = getParent();
+	if (temp == NULL)
+		return NULL;
 
 	if (temp->getGameObjectType() == gameObjectType)
 		return temp;
 
-	while (temp->getParent() != NULL) {
-		temp = temp->getParent();
-
+	while ((temp = temp->getParent()) != NULL) {
 		if (temp->getGameObjectType() == gameObjectType)
 			return temp;
 	}
