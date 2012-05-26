@@ -18,8 +18,6 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 		return 1;
 	}
 
-	Locker locker(self);
-
 	ThreatMap* threatMap = self->getThreatMap();
 
 	if (threatMap != NULL) {
