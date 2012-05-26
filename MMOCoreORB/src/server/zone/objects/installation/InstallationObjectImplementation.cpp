@@ -195,6 +195,12 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			else
 				resourceHopper.remove(i, inso7, 0);
 
+			ResourceSpawn* spawn = container->getSpawnObject();
+			if(spawn != NULL)
+				spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+			else
+				spawnDensity = 0;
+
 			inso7->updateHopperSize(getHopperSize());
 			inso7->updateExtractionRate(getActualRate());
 			inso7->close();

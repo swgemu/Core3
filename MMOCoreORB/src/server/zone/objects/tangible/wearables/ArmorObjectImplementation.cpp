@@ -54,6 +54,8 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		else if (hasArrangementDescriptor("hat"))
 			hitLocation = CombatManager::HEAD;
 	}
+
+	setSliceable(true);
 }
 
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
