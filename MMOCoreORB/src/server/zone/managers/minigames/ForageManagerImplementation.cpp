@@ -102,6 +102,9 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 
 	player->removePendingTask("foraging");
 
+	if (player->getZone() == NULL)
+		return;
+
 	//Check if player moved.
 	if (forageType != ForageManager::SHELLFISH) {
 		float playerX = player->getPositionX();
