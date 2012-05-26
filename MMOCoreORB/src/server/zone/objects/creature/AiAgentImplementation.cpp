@@ -693,8 +693,6 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		creatureInventory->setContainerOwnerID(0);
 	}
 
-	creatureInventory->removeAllContainerObjects();
-
 	if (npcTemplate == NULL)
 		return;
 
