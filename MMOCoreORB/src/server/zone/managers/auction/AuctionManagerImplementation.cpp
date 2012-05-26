@@ -195,9 +195,11 @@ void AuctionManagerImplementation::checkAuctions() {
 					PlayerManager* pman = zoneServer->getPlayerManager();
 					ManagedReference<CreatureObject*> player = pman->getPlayer(item->getOwnerName());
 
-					Locker _locker(player);
-					player->addBankCredits(item->getPrice());
-					player->updateToDatabase();
+					if (player != NULL) {
+						Locker _locker(player);
+						player->addBankCredits(item->getPrice());
+						player->updateToDatabase();
+					}
 
 					UnicodeString subject1("@auction:subject_auction_seller");
 					UnicodeString subject2("@auction:subject_auction_buyer");

@@ -52,12 +52,16 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	if (camp == NULL || terminal == NULL)
+		return;
+
 	CreatureObject* player = cast<CreatureObject*> (object);
 
 	if (player == NULL)
 		return;
 
-	camp->addTemplateSkillMods(player);
+	if (camp != NULL)
+		camp->addTemplateSkillMods(player);
 
 	if (campObserver == NULL) {
 		campObserver = new CampSiteObserver(_this);
@@ -95,12 +99,16 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	if (camp == NULL || terminal == NULL)
+		return;
+
 	CreatureObject* player = cast<CreatureObject*> (object);
 
 	if (player == NULL)
 		return;
 
-	camp->removeTemplateSkillMods(player);
+	if (camp != NULL)
+		camp->removeTemplateSkillMods(player);
 
 	if(abandoned || object != campOwner) {
 		StringIdChatParameter stringID("camp", "prose_camp_exit");

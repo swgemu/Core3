@@ -82,6 +82,8 @@ void ThreatMap::removeObservers() {
 }
 
 void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
+	Locker locker(&lockMutex);
+
 	int idx = find(target);
 	String xpToAward = "";
 
@@ -116,7 +118,11 @@ void ThreatMap::removeAll() {
 void ThreatMap::dropDamage(CreatureObject* target) {
 	Locker locker(self);
 
+	Locker llocker(&lockMutex);
+
 	drop(target);
+
+	llocker.release();
 
 	if (currentThreat == target)
 		currentThreat = NULL;
@@ -129,6 +135,7 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 }
 
 bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 duration, uint64 cooldown) {
+	Locker locker(&lockMutex);
 
 	if((hasState(state) && isUniqueState(state))
 			|| !cooldownTimerMap.isPast(String::valueOf(state)))
@@ -168,6 +175,7 @@ bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 dura
 }
 
 bool ThreatMap::hasState(uint64 state) {
+	Locker locker(&lockMutex);
 
 	for (int i = 0; i < size(); ++i) {
 		ThreatMapEntry* entry = &elementAt(i).getValue();
@@ -183,6 +191,8 @@ bool ThreatMap::isUniqueState(uint64 state) {
 }
 
 void ThreatMap::clearThreatState(CreatureObject* target, uint64 state) {
+	Locker locker(&lockMutex);
+
 	int idx = find(target);
 
 	if (idx != -1) {
@@ -196,6 +206,8 @@ void ThreatMap::clearThreatState(CreatureObject* target, uint64 state) {
 }
 
 uint32 ThreatMap::getTotalDamage() {
+	Locker locker(&lockMutex);
+
 	uint32 totalDamage = 0;
 
 	for (int i = 0; i < size(); ++i) {
@@ -212,6 +224,8 @@ uint32 ThreatMap::getTotalDamage() {
 }
 
 CreatureObject* ThreatMap::getHighestDamagePlayer() {
+	Locker locker(&lockMutex);
+
 	uint32 maxDamage = 0;
 	CreatureObject* player = NULL;
 
@@ -238,6 +252,7 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 }
 
 CreatureObject* ThreatMap::getHighestThreatCreature() {
+	Locker locker(&lockMutex);
 
 	if(currentThreat != NULL
 			&& !currentThreat->isDead()
@@ -261,6 +276,7 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 }
 
 void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
+	Locker locker(&lockMutex);
 
 	int idx = find(target);
 
@@ -282,6 +298,8 @@ void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
 }
 
 void ThreatMap::removeAggro(CreatureObject* target, int value) {
+	Locker locker(&lockMutex);
+
 	int idx = find(target);
 
 	if (idx != -1) {
@@ -291,6 +309,8 @@ void ThreatMap::removeAggro(CreatureObject* target, int value) {
 }
 
 void ThreatMap::clearAggro(CreatureObject* target) {
+	Locker locker(&lockMutex);
+
 	int idx = find(target);
 
 	if (idx != -1) {
@@ -300,6 +320,8 @@ void ThreatMap::clearAggro(CreatureObject* target) {
 }
 
 void ThreatMap::addHeal(CreatureObject* target, int value) {
+	Locker locker(&lockMutex);
+
 	int idx = find(target);
 
 	if (idx == -1) {

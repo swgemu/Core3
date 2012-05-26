@@ -111,6 +111,7 @@ protected:
 	WeakReference<CreatureObject*> currentThreat;
 	ThreatMatrix threatMatrix;
 	ManagedReference<ThreatMapObserver*> threatMapObserver;
+	Mutex lockMutex;
 
 public:
 	ThreatMap(TangibleObject* me) {

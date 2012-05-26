@@ -80,6 +80,9 @@ public:
 
 		Zone* zone = vehicle->getZone();
 
+		if (vehicle != creature->getParent())
+			return GENERALERROR;
+
 		if (zone == NULL)
 			return GENERALERROR;
 
