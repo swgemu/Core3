@@ -688,6 +688,12 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	for (int i = 0; i < movementMarkers.size(); ++i)
 		movementMarkers.get(i)->destroyObjectFromWorld(false);
 
+	SceneObject* creatureInventory = getSlottedObject("inventory");
+
+	if (creatureInventory != NULL) {
+		creatureInventory->setContainerOwnerID(0);
+	}
+
 	if (npcTemplate == NULL)
 		return;
 
