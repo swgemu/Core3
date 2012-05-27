@@ -116,7 +116,7 @@ public:
 			float maxDistance = 11;
 
 			if (!rootParent->isBuildingObject()) {
-				if (rootParent->getDistanceTo(creature) > 11)
+				if (rootParent->getDistanceTo(creature) > maxDistance)
 					return TOOFAR;
 			} else {
 				SceneObject* par = NULL;
@@ -124,7 +124,7 @@ public:
 
 				while ((par = obj->getParent()) != NULL) {
 					if (par->isCellObject()) {
-						if (obj->getDistanceTo(creature) > 11)
+						if (obj->getDistanceTo(creature) > maxDistance)
 							return TOOFAR;
 						else
 							break;
