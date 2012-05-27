@@ -50,7 +50,7 @@ object_tangible_wearables_armor_ithorian_sentinel_ith_armor_s03_bracer_l = objec
 				"object/mobile/vendor/ithorian_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = STUN + LIGHTSABER,
+	vulnerability = STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,

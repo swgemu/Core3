@@ -51,7 +51,7 @@ object_tangible_wearables_armor_ithorian_defender_ith_armor_s01_chest_plate = ob
 				"object/mobile/vendor/ithorian_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = HEAT + COLD + STUN + LIGHTSABER,
+	vulnerability = HEAT + COLD + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,

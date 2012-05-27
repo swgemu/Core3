@@ -46,7 +46,7 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 
-		vulnerabilites = templateData->getIntField("vunerability");
+		vulnerabilites = templateData->getIntField("vulnerability");
 
 		healthEncumbrance = templateData->getIntField("healthEncumbrance");
 		actionEncumbrance = templateData->getIntField("actionEncumbrance");

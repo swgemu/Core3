@@ -84,7 +84,7 @@ object_tangible_wearables_armor_bone_armor_bone_s01_boots = object_tangible_wear
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
-	vunerability = KINETIC + BLAST + STUN + HEAT + COLD + ACID + LIGHTSABER,
+	vulnerability = KINETIC + BLAST + STUN + HEAT + COLD + ACID + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 6,

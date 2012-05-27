@@ -78,7 +78,7 @@ object_tangible_wearables_armor_padded_armor_padded_s01_helmet = object_tangible
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = HEAT + ACID + STUN + LIGHTSABER,
+	vulnerability = HEAT + ACID + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,

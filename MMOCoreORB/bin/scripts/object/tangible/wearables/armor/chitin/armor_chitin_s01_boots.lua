@@ -84,7 +84,7 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_boots = object_tangible_
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damagetypes in WeaponObject
-	vunerability = STUN + HEAT + COLD + ELECTRICITY + LIGHTSABER,
+	vulnerability = STUN + HEAT + COLD + ELECTRICITY + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 13,

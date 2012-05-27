@@ -98,7 +98,7 @@ object_tangible_wearables_armor_stormtrooper_armor_stormtrooper_utility_belt = o
 				"object/mobile/vendor/zabrak_male.iff" },
 	
 	-- Damage types in WeaponObject
-	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
+	vulnerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,

@@ -50,7 +50,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_armor_kashyyykian_hunting_ch
 				"object/mobile/vendor/wookiee_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = STUN + LIGHTSABER,
+	vulnerability = STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
