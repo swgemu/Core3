@@ -204,6 +204,12 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
+	Vector<float>* getTrainerObjectsX();
+
+	Vector<float>* getTrainerObjectsY();
+
+	Vector<String>* getTrainerZone();
+
 	SpawnArea* getSpawnArea(const String& areaname);
 
 	DistributedObjectServant* _getImplementation();
@@ -296,6 +302,12 @@ public:
 	int getSpawnedRandomCreatures();
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
+
+	Vector<float>* getTrainerObjectsX();
+
+	Vector<float>* getTrainerObjectsY();
+
+	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 

@@ -2552,17 +2552,18 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	for (int i = 0; i < 32; ++i)
 		profs.put(i + 1);
 
-	if (profs.size() >= 32) { // Remove ungrindable professions (temporary.)
-		profs.remove(6); // Commando.
-		profs.remove(17); // Droid Engineer.
-		profs.remove(21); // Bio-Engineer.
-		profs.remove(22); // Creature Handler.
-	}
+	 // Remove ungrindable professions (temporary.)
+		// Commando.
+		// Droid Engineer.
+		// Bio-Engineer.
+		// Creature Handler.
+		// Politician.
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
 	for (int i = 0; i < totalProfsNeeded; ++i) {
 		uint8 prof = profs.remove(System::random(profs.size() - 1));
+		if ((prof != 6) && (prof != 17) && (prof != 21) && (prof != 22) && (prof != 32)) // Do not add ungrindable professions.
 		ghost->addHologrindProfession(prof);
 	}
 

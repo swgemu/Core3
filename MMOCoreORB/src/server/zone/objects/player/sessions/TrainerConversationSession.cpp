@@ -10,7 +10,7 @@
  *	TrainerConversationSessionStub
  */
 
-enum {RPC_CLEARTRAINABLESKILLS__ = 6,RPC_ADDTRAINABLESKILL__STRING_,RPC_GETTRAINABLESKILLS__INT_,RPC_GETTRAINABLESKILLSCOUNT__,RPC_CLEARNEXTSKILLS__,RPC_ADDNEXTSKILL__STRING_,RPC_GETNEXTSKILL__INT_,RPC_GETNEXTSKILLSCOUNT__,RPC_SETSELECTEDSKILL__STRING_,RPC_GETSELECTEDSKILL__,RPC_GETMASTERSKILL__,RPC_SETMASTERSKILL__STRING_};
+enum {RPC_CLEARTRAINABLESKILLS__ = 6,RPC_ADDTRAINABLESKILL__STRING_,RPC_GETTRAINABLESKILLS__INT_,RPC_GETTRAINABLESKILLSCOUNT__,RPC_CLEARNEXTSKILLS__,RPC_ADDNEXTSKILL__STRING_,RPC_GETNEXTSKILL__INT_,RPC_GETNEXTSKILLSCOUNT__,RPC_SETSELECTEDSKILL__STRING_,RPC_GETSELECTEDSKILL__,RPC_GETMASTERSKILL__,RPC_SETMASTERSKILL__STRING_,RPC_ADDADDITIONALMASTERSKILL__STRING_,RPC_GETADDITIONALMASTERSKILL__INT_,RPC_GETADDITIONALMASTERSKILLSCOUNT__};
 
 TrainerConversationSession::TrainerConversationSession(CreatureObject* npc) : ConversationSession(DummyConstructorParameter::instance()) {
 	TrainerConversationSessionImplementation* _implementation = new TrainerConversationSessionImplementation(npc);
@@ -198,6 +198,49 @@ void TrainerConversationSession::setMasterSkill(String& skillName) {
 		_implementation->setMasterSkill(skillName);
 }
 
+void TrainerConversationSession::addAdditionalMasterSkill(String& skillName) {
+	TrainerConversationSessionImplementation* _implementation = static_cast<TrainerConversationSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDADDITIONALMASTERSKILL__STRING_);
+		method.addAsciiParameter(skillName);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addAdditionalMasterSkill(skillName);
+}
+
+String TrainerConversationSession::getAdditionalMasterSkill(int selectedOption) {
+	TrainerConversationSessionImplementation* _implementation = static_cast<TrainerConversationSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETADDITIONALMASTERSKILL__INT_);
+		method.addSignedIntParameter(selectedOption);
+
+		String _return_getAdditionalMasterSkill;
+		method.executeWithAsciiReturn(_return_getAdditionalMasterSkill);
+		return _return_getAdditionalMasterSkill;
+	} else
+		return _implementation->getAdditionalMasterSkill(selectedOption);
+}
+
+int TrainerConversationSession::getAdditionalMasterSkillsCount() {
+	TrainerConversationSessionImplementation* _implementation = static_cast<TrainerConversationSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETADDITIONALMASTERSKILLSCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getAdditionalMasterSkillsCount();
+}
+
 DistributedObjectServant* TrainerConversationSession::_getImplementation() {
 
 	_updated = true;
@@ -318,6 +361,11 @@ bool TrainerConversationSessionImplementation::readObjectMember(ObjectInputStrea
 		return true;
 	}
 
+	if (_name == "TrainerConversationSession.additionalMasterSkills") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&additionalMasterSkills, stream);
+		return true;
+	}
+
 	if (_name == "TrainerConversationSession.selectedSkill") {
 		TypeInfo<String >::parseFromBinaryStream(&selectedSkill, stream);
 		return true;
@@ -364,6 +412,14 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "TrainerConversationSession.additionalMasterSkills";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&additionalMasterSkills, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "TrainerConversationSession.selectedSkill";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -373,7 +429,7 @@ int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStr
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 4;
+	return _count + 5;
 }
 
 TrainerConversationSessionImplementation::TrainerConversationSessionImplementation(CreatureObject* npc) : ConversationSessionImplementation(npc) {
@@ -428,6 +484,21 @@ String TrainerConversationSessionImplementation::getMasterSkill() {
 void TrainerConversationSessionImplementation::setMasterSkill(String& skillName) {
 	// server/zone/objects/player/sessions/TrainerConversationSession.idl():  		masterSkill = skillName;
 	masterSkill = skillName;
+}
+
+void TrainerConversationSessionImplementation::addAdditionalMasterSkill(String& skillName) {
+	// server/zone/objects/player/sessions/TrainerConversationSession.idl():  		additionalMasterSkills.add(skillName);
+	(&additionalMasterSkills)->add(skillName);
+}
+
+String TrainerConversationSessionImplementation::getAdditionalMasterSkill(int selectedOption) {
+	// server/zone/objects/player/sessions/TrainerConversationSession.idl():  		return additionalMasterSkills.get(selectedOption);
+	return (&additionalMasterSkills)->get(selectedOption);
+}
+
+int TrainerConversationSessionImplementation::getAdditionalMasterSkillsCount() {
+	// server/zone/objects/player/sessions/TrainerConversationSession.idl():  		return additionalMasterSkills.size();
+	return (&additionalMasterSkills)->size();
 }
 
 /*
@@ -509,6 +580,22 @@ void TrainerConversationSessionAdapter::invokeMethod(uint32 methid, DistributedM
 			setMasterSkill(inv->getAsciiParameter(skillName));
 		}
 		break;
+	case RPC_ADDADDITIONALMASTERSKILL__STRING_:
+		{
+			String skillName; 
+			addAdditionalMasterSkill(inv->getAsciiParameter(skillName));
+		}
+		break;
+	case RPC_GETADDITIONALMASTERSKILL__INT_:
+		{
+			resp->insertAscii(getAdditionalMasterSkill(inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_GETADDITIONALMASTERSKILLSCOUNT__:
+		{
+			resp->insertSignedInt(getAdditionalMasterSkillsCount());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -560,6 +647,18 @@ String TrainerConversationSessionAdapter::getMasterSkill() {
 
 void TrainerConversationSessionAdapter::setMasterSkill(String& skillName) {
 	(static_cast<TrainerConversationSession*>(stub))->setMasterSkill(skillName);
+}
+
+void TrainerConversationSessionAdapter::addAdditionalMasterSkill(String& skillName) {
+	(static_cast<TrainerConversationSession*>(stub))->addAdditionalMasterSkill(skillName);
+}
+
+String TrainerConversationSessionAdapter::getAdditionalMasterSkill(int selectedOption) {
+	return (static_cast<TrainerConversationSession*>(stub))->getAdditionalMasterSkill(selectedOption);
+}
+
+int TrainerConversationSessionAdapter::getAdditionalMasterSkillsCount() {
+	return (static_cast<TrainerConversationSession*>(stub))->getAdditionalMasterSkillsCount();
 }
 
 /*

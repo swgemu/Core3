@@ -65,6 +65,12 @@ public:
 
 	void setMasterSkill(String& skillName);
 
+	void addAdditionalMasterSkill(String& skillName);
+
+	String getAdditionalMasterSkill(int selectedOption);
+
+	int getAdditionalMasterSkillsCount();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -98,6 +104,8 @@ class TrainerConversationSessionImplementation : public ConversationSessionImple
 
 	String masterSkill;
 
+	Vector<String> additionalMasterSkills;
+
 	String selectedSkill;
 
 public:
@@ -128,6 +136,12 @@ public:
 	String getMasterSkill();
 
 	void setMasterSkill(String& skillName);
+
+	void addAdditionalMasterSkill(String& skillName);
+
+	String getAdditionalMasterSkill(int selectedOption);
+
+	int getAdditionalMasterSkillsCount();
 
 	WeakReference<TrainerConversationSession*> _this;
 
@@ -195,6 +209,12 @@ public:
 	String getMasterSkill();
 
 	void setMasterSkill(String& skillName);
+
+	void addAdditionalMasterSkill(String& skillName);
+
+	String getAdditionalMasterSkill(int selectedOption);
+
+	int getAdditionalMasterSkillsCount();
 
 };
 

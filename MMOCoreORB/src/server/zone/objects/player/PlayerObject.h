@@ -456,6 +456,16 @@ public:
 
 	CreatureObject* getConversatingCreature();
 
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
+
 	SortedVector<unsigned long long>* getPersistentMessages();
 
 	void addPersistentMessage(unsigned long long id);
@@ -878,6 +888,12 @@ protected:
 
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
+	float trainerCoordinatesX;
+
+	float trainerCoordinatesY;
+
+	String trainerZone;
+
 	Reference<PlayerDisconnectEvent*> disconnectEvent;
 
 	Reference<PlayerRecoveryEvent*> recoveryEvent;
@@ -1090,6 +1106,16 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	CreatureObject* getConversatingCreature();
+
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -1553,6 +1579,16 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	CreatureObject* getConversatingCreature();
+
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
 
 	void addPersistentMessage(unsigned long long id);
 

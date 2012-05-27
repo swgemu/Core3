@@ -188,6 +188,11 @@ class PlayerObject extends IntangibleObject {
 	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
 	
 	
+	// Jedi Trainers.
+	protected float trainerCoordinatesX;
+	protected float trainerCoordinatesY;
+	protected string trainerZone;
+	
 	@dereferenced
 	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
 	
@@ -629,6 +634,27 @@ class PlayerObject extends IntangibleObject {
 	
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;
+	}
+	
+	public void setTrainerCoordinates(float x, float y) {
+		trainerCoordinatesX = x;
+		trainerCoordinatesY = y;
+	}
+	
+	public float getTrainerCoordinatesY() {
+		return trainerCoordinatesY;
+	}
+	
+	public float getTrainerCoordinatesX() {
+		return trainerCoordinatesX;
+	}
+	
+	public void setTrainerZone(string zone) {
+		trainerZone = zone;
+	}
+	
+	public string getTrainerZone() {
+		return trainerZone;
 	}
 	
 	@local

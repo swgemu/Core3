@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -51,6 +52,21 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		creature->sendMessage(pmm);
 
 		ghost->setJediState(2);
+
+		// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
+		CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
+		Vector<float>* trainersX = creatureManager->getTrainerObjectsX();
+		Vector<float>* trainersY = creatureManager->getTrainerObjectsY();
+		Vector<String>* trainerZone = creatureManager->getTrainerZone();
+		uint32 trainerNumber = System::random(trainersX->size() - 1);
+
+		int posX = trainersX->get(trainerNumber);
+		int posY = trainersY->get(trainerNumber);
+		String planetName = trainerZone->get(trainerNumber);
+
+		ghost->setTrainerCoordinates(posX, posY);
+		ghost->setTrainerZone(planetName);
+
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 

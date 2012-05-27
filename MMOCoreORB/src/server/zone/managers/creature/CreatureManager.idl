@@ -123,5 +123,20 @@ class CreatureManager extends ZoneManager {
 		return spawnAreaMap.getWorldSpawnAreas();
 	}
 	
+	@local
+	public Vector<float> getTrainerObjectsX() {
+		return spawnAreaMap.getTrainerObjectsX();
+	}
+	
+	@local
+	public Vector<float> getTrainerObjectsY() {
+		return spawnAreaMap.getTrainerObjectsY();
+	}
+	
+	@local
+	public Vector<string> getTrainerZone() {
+		return spawnAreaMap.getTrainerZone();
+	}
+	
 	public native SpawnArea getSpawnArea(final string areaname);
 }

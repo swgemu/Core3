@@ -123,6 +123,12 @@ void SpawnAreaMap::loadStaticSpawns() {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
 					ai->setRespawnTimer(respawn);
 				}
+
+				if (name.contains("trainer_")) {
+					trainerObjectsX.add(creatureObject->getWorldPositionX());
+					trainerObjectsY.add(creatureObject->getWorldPositionY());
+					trainerZone.add(zone->getZoneName());
+				}
 			} else {
 				StringBuffer msg;
 				msg << "could not spawn mobile: " + name;
