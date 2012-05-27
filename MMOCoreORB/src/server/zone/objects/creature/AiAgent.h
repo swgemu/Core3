@@ -659,7 +659,7 @@ public:
 
 	void setDespawnOnNoPlayerInRange(bool val);
 
-	void notifyDespawn(Zone* zone);
+	virtual void notifyDespawn(Zone* zone);
 
 	virtual void scheduleDespawn();
 

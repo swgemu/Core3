@@ -359,7 +359,7 @@ class AiAgent extends CreatureObject {
 	/**
 	 * Gets called when the creature was despawned
 	 */
-	public native void notifyDespawn(Zone zone);
+	public abstract native void notifyDespawn(Zone zone);
 	
 	public abstract void scheduleDespawn() {
 		//Despawn in 45 seconds.
