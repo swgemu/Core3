@@ -7,7 +7,7 @@ lok_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "desert_vesp_lair",
+			lairTemplateName = "lok_vesp_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 30,
 			maxDifficulty = 40,
@@ -16,7 +16,7 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "feral_gurk_lair",
+			lairTemplateName = "lok_gurk_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 34,
 			maxDifficulty = 44,
@@ -25,16 +25,16 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "flit_lair",
+			lairTemplateName = "lok_flit_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 18,
 			numberToSpawn = 0,
-			weighting = 25,
+			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "gurk_lair",
+			lairTemplateName = "lok_gurk_lair_neutral_small_01",
 			spawnLimit = -1,
 			minDifficulty = 30,
 			maxDifficulty = 40,
@@ -43,7 +43,7 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "gurnaset_lair",
+			lairTemplateName = "lok_gurnaset_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 15,
 			maxDifficulty = 25,
@@ -52,7 +52,7 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "kusak_lair",
+			lairTemplateName = "lok_kusak_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -61,21 +61,12 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "langlatch_lair",
+			lairTemplateName = "lok_langlatch_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 20,
 			maxDifficulty = 30,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "vesp_lair",
-			spawnLimit = -1,
-			minDifficulty = 93,
-			maxDifficulty = 103,
-			numberToSpawn = 0,
-			weighting = 5,
 			size = 25
 		}
 	}
