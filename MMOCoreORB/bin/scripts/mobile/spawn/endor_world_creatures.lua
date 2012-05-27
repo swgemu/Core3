@@ -7,7 +7,7 @@ endor_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "bark_mite_lair",
+			lairTemplateName = "endor_bark_mite_burrower_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -16,7 +16,7 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "blooming_jax_lair",
+			lairTemplateName = "endor_blooming_jax_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 27,
 			maxDifficulty = 37,
@@ -25,7 +25,7 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "blurrg_lair",
+			lairTemplateName = "endor_blurrg_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 50,
 			maxDifficulty = 60,
@@ -34,16 +34,16 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "blushing_jax_lair",
+			lairTemplateName = "endor_blushing_jax_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 27,
 			maxDifficulty = 37,
 			numberToSpawn = 0,
-			weighting = 15,
-			size = 15
+			weighting = 10,
+			size = 25
 		},
 		{
-			lairTemplateName = "boar_wolf_lair",
+			lairTemplateName = "endor_boar_wolf_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 25,
 			maxDifficulty = 35,
@@ -52,16 +52,7 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "bolma_lair",
-			spawnLimit = -1,
-			minDifficulty = 19,
-			maxDifficulty = 29,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "bordock_be_lair",
+			lairTemplateName = "endor_bordok_stud_mare_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -70,7 +61,7 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "gurreck_lair",
+			lairTemplateName = "endor_gurreck_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 50,
 			maxDifficulty = 60,
@@ -79,7 +70,7 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lantern_bird_lair",
+			lairTemplateName = "endor_lantern_bird_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 21,
 			maxDifficulty = 31,
@@ -88,12 +79,12 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "swirl_prong_lair",
+			lairTemplateName = "endor_swirl_prong_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 29,
 			numberToSpawn = 0,
-			weighting = 15,
+			weighting = 30,
 			size = 25
 		}
 	}
