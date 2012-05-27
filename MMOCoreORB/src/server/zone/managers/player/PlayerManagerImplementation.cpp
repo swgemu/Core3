@@ -2489,8 +2489,21 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (!ai->isDead())
 		return;
 
-	if (ai->getDistanceTo(player) > 6)
+	if (ai->getDistanceTo(player) > 6) {
+		player->sendSystemMessage("@pet/droid_modules:corpse_too_far");
 		return;
+	}
+
+	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+
+	if (creatureInventory == NULL)
+		return;
+
+	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID()) {
+		player->sendSystemMessage("@group:no_loot_permission");
+
+		return;
+	}
 
 	int cashCredits = ai->getCashCredits();
 
@@ -2504,11 +2517,6 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 
 		player->sendSystemMessage(param);
 	}
-
-	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
-
-	if (creatureInventory == NULL)
-		return;
 
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 
