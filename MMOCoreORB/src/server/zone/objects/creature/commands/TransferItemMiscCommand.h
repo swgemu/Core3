@@ -113,8 +113,10 @@ public:
 		if (zoneObject != NULL) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
 
+			float maxDistance = 11;
+
 			if (!rootParent->isBuildingObject()) {
-				if (rootParent->getDistanceTo(creature) > 6)
+				if (rootParent->getDistanceTo(creature) > 11)
 					return TOOFAR;
 			} else {
 				SceneObject* par = NULL;
@@ -122,7 +124,7 @@ public:
 
 				while ((par = obj->getParent()) != NULL) {
 					if (par->isCellObject()) {
-						if (obj->getDistanceTo(creature) > 6)
+						if (obj->getDistanceTo(creature) > 11)
 							return TOOFAR;
 						else
 							break;
