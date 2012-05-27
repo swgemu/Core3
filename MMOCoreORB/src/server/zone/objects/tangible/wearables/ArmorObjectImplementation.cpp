@@ -355,6 +355,8 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 
 void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {
 
+	specialResists = ((int)(craftingValues->getCurrentValue("armor_special_type")));
+
 	for (int i = 0; i <= 8; ++i) {
 
 		int type = pow((float)2,i);
