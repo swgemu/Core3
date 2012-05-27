@@ -7,7 +7,7 @@ naboo_world_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "capper_spineflap_easy",
+			lairTemplateName = "naboo_capper_spineflap_nest_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 10,
@@ -16,7 +16,7 @@ naboo_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "chuba_lair",
+			lairTemplateName = "naboo_chuba_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 10,
@@ -25,100 +25,91 @@ naboo_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "falumpaset_lair",
-			spawnLimit = 1,
+			lairTemplateName = "naboo_falumpaset_lair_neutral_large",
+			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 10,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "fambaa_lair",
-			spawnLimit = 1,
+			lairTemplateName = "naboo_fambaa_lair_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 19,
+			maxDifficulty = 29,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_flewt_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_gnort_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_hermit_spider_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_ikopi_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_kaadu_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_narglatch_male_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_nuna_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_peko_peko_solitary_neutral_none",
+			spawnLimit = -1,
 			minDifficulty = 10,
-			maxDifficulty = 85,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "flewt_lair",
-			spawnLimit = 1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "gnort_lair",
-			spawnLimit = 1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "hermit_spider_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 2,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "ikopi_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "kaadu_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "narglatch_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "nuna_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "peko_peko_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tusk_cat_lair",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 10,
+			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
