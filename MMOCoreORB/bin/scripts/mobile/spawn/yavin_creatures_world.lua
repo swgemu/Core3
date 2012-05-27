@@ -7,7 +7,7 @@ yavin_creatures_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "angler_lair",
+			lairTemplateName = "yavin4_angler_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 32,
@@ -16,16 +16,16 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "choku_lair",
+			lairTemplateName = "yavin4_choku_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 16,
-			maxDifficulty = 26,
+			maxDifficulty = 36,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "crystal_snake_lair",
+			lairTemplateName = "yavin4_crystal_snake_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 25,
 			maxDifficulty = 35,
@@ -34,7 +34,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "enraged_tybis_lair",
+			lairTemplateName = "yavin4_tybis_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 26,
 			maxDifficulty = 36,
@@ -43,16 +43,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "frenzied_choku_lair",
-			spawnLimit = -1,
-			minDifficulty = 21,
-			maxDifficulty = 31,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "gackle_bat_lair",
+			lairTemplateName = "yavin4_gackle_bat_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -61,7 +52,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "kliknik_lair",
+			lairTemplateName = "yavin4_kliknik_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -70,7 +61,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "mamien_matriarch_lair",
+			lairTemplateName = "yavin4_mamien_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 20,
 			maxDifficulty = 30,
@@ -79,7 +70,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "skreeg_scout_lair",
+			lairTemplateName = "yavin4_skreeg_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -88,7 +79,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "spined_puc_lair",
+			lairTemplateName = "yavin4_spined_puc_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -97,7 +88,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "stintaril_lair",
+			lairTemplateName = "yavin4_stintaril_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 24,
@@ -106,7 +97,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tanc_mite_lair",
+			lairTemplateName = "yavin4_tanc_mite_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -115,7 +106,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tanc_mite_warrior_lair",
+			lairTemplateName = "yavin4_tanc_mite_warrior_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 17,
 			maxDifficulty = 27,
@@ -124,7 +115,7 @@ yavin_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "majestic_whisper_bird_lair",
+			lairTemplateName = "yavin4_whisper_bird_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 29,
