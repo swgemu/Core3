@@ -50,9 +50,6 @@ void ThreatMap::registerObserver(CreatureObject* target) {
 		threatMapObserver->deploy();
 	}
 
-	Locker locker(self);
-	Locker clocker(target, self);
-
 	target->registerObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 }
 
@@ -100,8 +97,6 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
 }
 
 void ThreatMap::dropDamage(CreatureObject* target) {
-	Locker locker(self);
-
 	Locker llocker(&lockMutex);
 
 	drop(target);
@@ -112,8 +107,6 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 		currentThreat = NULL;
 
 	if (threatMapObserver != NULL) {
-		Locker clocker(target, self);
-
 		target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 	}
 }
