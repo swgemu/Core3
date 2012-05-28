@@ -834,12 +834,15 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 			threatMap->addDamage(player, damage, xp);
 
 			// TODO: put this logic (or something similar) in the attack state
+			//TODO: THIS IS WRONG, this should be executed ONLY FOR AI
+			/*
 			if (System::random(5) == 1) {
 				if (isAiActor())
 					getGhostObject()->setDefender(player);
 				else
 					setDefender(player);
 			}
+			*/
 		}
 	}
 

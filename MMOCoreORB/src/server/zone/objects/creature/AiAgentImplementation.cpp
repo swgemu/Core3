@@ -1194,6 +1194,8 @@ void AiAgentImplementation::doMovement() {
 }
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
+	return false;
+
 	Locker locker(&targetMutex);
 
 	// Check masked scent
@@ -1223,6 +1225,8 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
+	return false;
+
 	Locker locker(&targetMutex);
 
 	if (!target->hasState(CreatureState::MASKSCENT)) {
@@ -1349,6 +1353,8 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 }
 
 int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	lastDamageReceived.updateToCurrentTime();
+
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {
