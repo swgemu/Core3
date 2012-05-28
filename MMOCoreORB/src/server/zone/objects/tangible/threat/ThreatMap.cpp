@@ -81,8 +81,6 @@ void ThreatMap::removeObservers() {
 void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 	Locker locker(&lockMutex);
 
-	Locker locker(&lockMutex);
-
 	int idx = find(target);
 	String xpToAward = "";
 
