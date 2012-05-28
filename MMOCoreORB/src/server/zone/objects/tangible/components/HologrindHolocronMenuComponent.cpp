@@ -47,6 +47,8 @@ int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 				return 0;
 			}
 		}
+
+		sceneObject->destroyObjectFromWorld(true);
 	}
 
 	return 0;

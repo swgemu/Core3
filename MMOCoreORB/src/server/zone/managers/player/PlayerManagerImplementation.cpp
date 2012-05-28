@@ -1361,18 +1361,26 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 
 	// For the Hologrind - Please uncomment to re-enable when ready.
 
-	/* Vector<byte>* profs = ghost->getHologrindProfessions();
+	/*
+	Vector<byte>* profs = ghost->getHologrindProfessions();
+
+	int profsDone = 0;
 
 	for (int i = 0; i < profs->size(); ++i) { // So that it only sends 1 popup...
-		byte prof = holoProfessions->get(i);
+		byte prof = profs->get(i);
 
 		int badgeIdx = 42 + prof;
 
 		if (!ghost->hasBadge(badgeIdx))
 			continue;
 
+		profsDone++;
+	}
+
+	if (profsDone > 5) // Corresponds to the total professions needed in Generate holo.
 		finishHologrind(player); // Method to send popup and grant Force Sensitive box.
-	}*/
+
+	*/
 
 }
 
@@ -2545,22 +2553,16 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	PlayerObject* ghost = player->getPlayerObject();
 
 	SortedVector<uint8> profs;
-	//Fill the total profs array.
-	for (int i = 0; i < 32; ++i)
+	//Fill the total profs array. Change to 32 if you want to include Politician.
+	for (int i = 0; i < 31; ++i)
 		profs.put(i + 1);
 
-	 // Remove ungrindable professions (temporary.)
-		// Commando.
-		// Droid Engineer.
-		// Bio-Engineer.
-		// Creature Handler.
-		// Politician.
+	 // TODO: Remove ungrindable professions (temporary.)
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
 	for (int i = 0; i < totalProfsNeeded; ++i) {
 		uint8 prof = profs.remove(System::random(profs.size() - 1));
-		if ((prof != 6) && (prof != 17) && (prof != 21) && (prof != 22) && (prof != 32)) // Do not add ungrindable professions.
 		ghost->addHologrindProfession(prof);
 	}
 
