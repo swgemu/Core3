@@ -344,6 +344,21 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				}
 			}
 		}
+
+		SkillList* list = creature->getSkillList();
+
+		int totalSkillPointsWasted = 250;
+
+		for (int i = 0; i < list->size(); ++i) {
+			Skill* skill = list->get(i);
+
+			totalSkillPointsWasted -= skill->getSkillPointsRequired();
+		}
+
+		if (ghost->getSkillPoints() != totalSkillPointsWasted) {
+			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
+			ghost->setSkillPoints(totalSkillPointsWasted);
+		}
 	}
 
 	/// Update client with new values for things like Terrain Negotiation
@@ -415,6 +430,20 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
 		ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
 
+		SkillList* list = creature->getSkillList();
+
+		int totalSkillPointsWasted = 250;
+
+		for (int i = 0; i < list->size(); ++i) {
+			Skill* skill = list->get(i);
+
+			totalSkillPointsWasted -= skill->getSkillPointsRequired();
+		}
+
+		if (ghost->getSkillPoints() != totalSkillPointsWasted) {
+			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
+			ghost->setSkillPoints(totalSkillPointsWasted);
+		}
 	}
 
 	/// Update client with new values for things like Terrain Negotiation
