@@ -85,7 +85,7 @@ object_tangible_component_armor_shield_generator_personal_imperial_test = object
 				"object/mobile/vendor/twilek_male.iff",
 				"object/mobile/vendor/weequay_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
-				"object/mobile/vendor/zabrak_male.iff"
+				"object/mobile/vendor/zabrak_male.iff",
 				"object/creature/player/ithorian_male.iff",
 				"object/creature/player/ithorian_female.iff",
 				"object/mobile/vendor/ithorian_female.iff",
