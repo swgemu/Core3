@@ -84,9 +84,9 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 		session->addAdditionalMasterSkill(jedi3);
 		session->addAdditionalMasterSkill(jedi4);
 		session->addAdditionalMasterSkill(jedi5);
-	} else {
-		session->setMasterSkill(masterSkill);
 	}
+
+		session->setMasterSkill(masterSkill);
 
 	if (conversingPlayer->hasSkill(session->getMasterSkill())) {
 		nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
@@ -111,12 +111,13 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 
 	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
 
-	if (startingMasterSkill == NULL) {
+	if (session->getAdditionalMasterSkillsCount() > 0) {
 		for (int i = 0; i < session->getAdditionalMasterSkillsCount(); i++) {
 			masterSkills.add(SkillManager::instance()->getSkill(session->getAdditionalMasterSkill(i)));
 		}
 	}
 
+	if (masterSkills.size() <= 0)
 	masterSkills.add(startingMasterSkill);
 
 	//Clear options since we will add new below.
@@ -181,12 +182,13 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 
 	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
 
-	if (startingMasterSkill == NULL) {
+	if (session->getAdditionalMasterSkillsCount() > 0) {
 		for (int i = 0; i < session->getAdditionalMasterSkillsCount(); i++) {
 			masterSkills.add(SkillManager::instance()->getSkill(session->getAdditionalMasterSkill(i)));
 		}
 	}
 
+	if (masterSkills.size() <= 0)
 	masterSkills.add(startingMasterSkill);
 
 	//Clear options since we will add new below.
