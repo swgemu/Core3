@@ -2,11 +2,11 @@
 corellia_plumed_rasp_nest_neutral_small = Lair:new {
 	mobiles = {{"plumed_rasp", 10}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/plumed_rasp/lair_plumed_rasp.iff"},
-	buildingsEasy = {"object/tangible/lair/plumed_rasp/lair_plumed_rasp.iff"},
-	buildingsMedium = {"object/tangible/lair/plumed_rasp/lair_plumed_rasp.iff"},
-	buildingsHard = {"object/tangible/lair/plumed_rasp/lair_plumed_rasp.iff"},
-	buildingsVeryHard = {"object/tangible/lair/plumed_rasp/lair_plumed_rasp.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"}
 }
 
 addLairTemplate("corellia_plumed_rasp_nest_neutral_small", corellia_plumed_rasp_nest_neutral_small)
