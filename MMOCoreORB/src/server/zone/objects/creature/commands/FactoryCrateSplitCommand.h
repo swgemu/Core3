@@ -71,6 +71,11 @@ public:
 		if (factoryCrate == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
+		if(!factoryCrate->isASubChildOf(creature)) {
+			creature->sendSystemMessage("@container_error_message:container08");
+			return INVALIDTARGET;
+		}
+
 		Locker locker(factoryCrate, creature);
 
 		ManagedReference<SceneObject*> objectsParent = factoryCrate->getParent();

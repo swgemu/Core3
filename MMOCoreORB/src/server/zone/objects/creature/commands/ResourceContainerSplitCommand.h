@@ -72,6 +72,11 @@ public:
 		if ((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;
 
+		if(!resourceContainer->isASubChildOf(creature)) {
+			creature->sendSystemMessage("@container_error_message:container08");
+			return INVALIDTARGET;
+		}
+
 		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent();
 
 		if (objectsParent == NULL ||
