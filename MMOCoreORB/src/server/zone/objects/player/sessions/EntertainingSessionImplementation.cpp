@@ -172,6 +172,8 @@ void EntertainingSessionImplementation::healWounds(CreatureObject* creature, flo
 		amountHealed += woundHeal;
 	}
 
+	clocker.release();
+
 	if(entertainer->getGroup() != NULL)
 		addHealingXpGroup(amountHealed);
 	else
@@ -183,11 +185,15 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 	ManagedReference<GroupObject*> group = entertainer->getGroup();
 	int groupSize = group->getGroupSize();
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
-	for(int i=0;i<groupSize;i++) {
+
+	for(int i = 0; i < groupSize; ++i) {
 		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+
 		if(groupMember != NULL && groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
 				&& groupMember->hasSkill("social_entertainer_novice")) {
 			String healxptype("entertainer_healing");
+
+			Locker clocker(groupMember, entertainer);
 
 			if (playerManager != NULL)
 				playerManager->awardExperience(groupMember, healxptype, xp, true);
