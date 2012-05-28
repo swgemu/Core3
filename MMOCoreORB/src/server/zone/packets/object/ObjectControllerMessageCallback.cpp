@@ -67,7 +67,7 @@ void ObjectControllerMessageCallback::run() {
 
 	if (objectID != player->getObjectID()) {
 		if (player->getParentID() != objectID) {
-			player->error("wrong object id in object controller message?");
+			//player->error("wrong object id in object controller message?");
 
 			return;
 		}
