@@ -76,8 +76,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen4 = objec
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_onehandlightsaber",
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, jedi_general
+	xpType = "jedi_general",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_onehandlightsaber_gen4" },
@@ -103,16 +103,15 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen4 = objec
 	mindAttackCost = 40,
 	forceCost = 40,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankAccuracy = 3,
+	pointBlankRange = 5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 10,
+	idealAccuracy = 3,
 
-	maxRange = 0,
+	maxRange = 15,
 	maxRangeAccuracy = 0,
-
-	attackSpeed = 0,
+	
 	
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	

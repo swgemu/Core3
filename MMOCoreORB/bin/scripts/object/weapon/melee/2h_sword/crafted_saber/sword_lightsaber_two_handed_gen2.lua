@@ -76,8 +76,8 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen2 = ob
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_twohandlightsaber",
+	-- jedi_general, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	xpType = "jedi_general",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_twohandlightsaber_gen2" },
@@ -103,15 +103,15 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen2 = ob
 	mindAttackCost = 25,
 	forceCost = 24,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 20,
+	pointBlankAccuracy = 3,
+	pointBlankRange = 5,
 
-	idealRange = 15,
+	idealRange = 10,
 	idealAccuracy = 3,
 
-	maxRange = 5,
-	maxRangeAccuracy = 5,
-
+	maxRange = 15,
+	maxRangeAccuracy = 0,
+	
 	minDamage = 100,
 	maxDamage = 190,
 	

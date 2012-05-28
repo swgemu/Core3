@@ -76,8 +76,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_training = object_weapo
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_onehandlightsaber",
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, jedi_general
+	xpType = "jedi_general",
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_onehandlightsaber" },
@@ -103,19 +103,22 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_training = object_weapo
 	mindAttackCost = 40,
 	forceCost = 15,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 0,
+	pointBlankAccuracy = 3,
+	pointBlankRange = 5,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 10,
+	idealAccuracy = 3,
 
-	maxRange = 0,
+	maxRange = 15,
 	maxRangeAccuracy = 0,
+	
 
 	minDamage = 50,
 	maxDamage = 130,
 
 	attackSpeed = 4.8,
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	childObjects = {
 		{templateFile = "object/tangible/inventory/lightsaber_inventory_training.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
