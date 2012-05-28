@@ -32,17 +32,16 @@ narmle_militia_colonel = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5000000},
+				{group = "junk", chance = 3000000},
 				{group = "tailor_components", chance = 500000},
-				{group = "loot_kits", chance = 4500000}
+				{group = "loot_kit_parts", chance = 500000}
 			},
-			lootChance = 5500000
+			lootChance = 3200000
 		}					
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_colonel, "narmle_militia_colonel")

@@ -29,7 +29,7 @@ isshala_daprovan = Creature:new {
 
 	templates = {"object/mobile/dressed_isshala_daprovan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

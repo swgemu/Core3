@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"vegetable_greens", "vegetable_fungi", "water", "softwood", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {25, 25, 20, 20, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

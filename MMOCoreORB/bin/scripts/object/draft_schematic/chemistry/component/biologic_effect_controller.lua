@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_biologic_effect_controller = object_d
    ingredientSlotType = {0, 0},
    resourceTypes = {"organic", "inorganic"},
    resourceQuantities = {6, 6},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

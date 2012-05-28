@@ -28,7 +28,7 @@ villager_force_sensitive_village = Creature:new {
 
 	templates = {"object/mobile/dressed_force_trained_archaist.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

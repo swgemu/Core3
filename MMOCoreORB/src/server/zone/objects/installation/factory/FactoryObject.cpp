@@ -12,11 +12,13 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/installation/factory/FactoryHopperObserver.h"
+
 /*
  *	FactoryObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,RPC_GETREDEEDMESSAGE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_OPENHOPPER__OBSERVABLE_MANAGEDOBJECT_,RPC_CLOSEHOPPER__OBSERVABLE_MANAGEDOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,RPC_GETREDEEDMESSAGE__};
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
@@ -158,6 +160,36 @@ void FactoryObject::sendOutputHopper(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendOutputHopper(player);
+}
+
+void FactoryObject::openHopper(Observable* observable, ManagedObject* arg1) {
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_OPENHOPPER__OBSERVABLE_MANAGEDOBJECT_);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->openHopper(observable, arg1);
+}
+
+void FactoryObject::closeHopper(Observable* observable, ManagedObject* arg1) {
+	FactoryObjectImplementation* _implementation = static_cast<FactoryObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLOSEHOPPER__OBSERVABLE_MANAGEDOBJECT_);
+		method.addObjectParameter(observable);
+		method.addObjectParameter(arg1);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->closeHopper(observable, arg1);
 }
 
 void FactoryObject::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
@@ -413,6 +445,8 @@ FactoryObjectImplementation::FactoryObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/installation/factory/FactoryObject.idl():  		Logger.setLoggingName("FactoryObject");
 	Logger::setLoggingName("FactoryObject");
+	// server/zone/objects/installation/factory/FactoryObject.idl():  		hopperObserver = null;
+	hopperObserver = NULL;
 }
 
 void FactoryObjectImplementation::notifyLoadFromDatabase() {
@@ -485,6 +519,16 @@ void FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendOutputHopper(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_OPENHOPPER__OBSERVABLE_MANAGEDOBJECT_:
+		{
+			openHopper(static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_CLOSEHOPPER__OBSERVABLE_MANAGEDOBJECT_:
+		{
+			closeHopper(static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_:
 		{
 			handleInsertFactorySchem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()));
@@ -545,6 +589,14 @@ void FactoryObjectAdapter::sendIngredientHopper(CreatureObject* player) {
 
 void FactoryObjectAdapter::sendOutputHopper(CreatureObject* player) {
 	(static_cast<FactoryObject*>(stub))->sendOutputHopper(player);
+}
+
+void FactoryObjectAdapter::openHopper(Observable* observable, ManagedObject* arg1) {
+	(static_cast<FactoryObject*>(stub))->openHopper(observable, arg1);
+}
+
+void FactoryObjectAdapter::closeHopper(Observable* observable, ManagedObject* arg1) {
+	(static_cast<FactoryObject*>(stub))->closeHopper(observable, arg1);
 }
 
 void FactoryObjectAdapter::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {

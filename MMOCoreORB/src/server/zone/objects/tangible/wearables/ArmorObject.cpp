@@ -14,7 +14,7 @@
  *	ArmorObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_SETEFFECTIVENESSSLICE__FLOAT_,RPC_SETENCUMBRANCESLICE__FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_SETEFFECTIVENESSSLICE__FLOAT_,RPC_SETENCUMBRANCESLICE__FLOAT_,RPC_GETHITLOCATION__,RPC_SETHITLOCATION__BYTE_};
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
@@ -507,6 +507,33 @@ void ArmorObject::setEncumbranceSlice(float value) {
 		_implementation->setEncumbranceSlice(value);
 }
 
+byte ArmorObject::getHitLocation() {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHITLOCATION__);
+
+		return method.executeWithByteReturn();
+	} else
+		return _implementation->getHitLocation();
+}
+
+void ArmorObject::setHitLocation(byte h) {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETHITLOCATION__BYTE_);
+		method.addByteParameter(h);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setHitLocation(h);
+}
+
 DistributedObjectServant* ArmorObject::_getImplementation() {
 
 	_updated = true;
@@ -687,6 +714,11 @@ bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "ArmorObject.hitLocation") {
+		TypeInfo<byte >::parseFromBinaryStream(&hitLocation, stream);
+		return true;
+	}
+
 	if (_name == "ArmorObject.baseProtection") {
 		TypeInfo<float >::parseFromBinaryStream(&baseProtection, stream);
 		return true;
@@ -844,6 +876,14 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ArmorObject.hitLocation";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<byte >::toBinaryStream(&hitLocation, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "ArmorObject.baseProtection";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -877,7 +917,7 @@ int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 19;
+	return _count + 20;
 }
 
 ArmorObjectImplementation::ArmorObjectImplementation() {
@@ -914,6 +954,10 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	encumbranceSlice = 1;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		hitLocation = 0;
+	hitLocation = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		setSliceable(true);
+	setSliceable(true);
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");
 }
@@ -921,11 +965,6 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 bool ArmorObjectImplementation::isSpecial(int type) {
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return specialResists & type;
 	return specialResists & type;
-}
-
-bool ArmorObjectImplementation::isVulnerable(int type) {
-	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return vulnerabilites & type;
-	return vulnerabilites & type;
 }
 
 bool ArmorObjectImplementation::isArmorObject() {
@@ -1077,6 +1116,16 @@ void ArmorObjectImplementation::setEncumbranceSlice(float value) {
 	return;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice = 1 - value;
 	encumbranceSlice = 1 - value;
+}
+
+byte ArmorObjectImplementation::getHitLocation() {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		return hitLocation;
+	return hitLocation;
+}
+
+void ArmorObjectImplementation::setHitLocation(byte h) {
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		hitLocation = h;
+	hitLocation = h;
 }
 
 /*
@@ -1259,6 +1308,16 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setEncumbranceSlice(inv->getFloatParameter());
 		}
 		break;
+	case RPC_GETHITLOCATION__:
+		{
+			resp->insertByte(getHitLocation());
+		}
+		break;
+	case RPC_SETHITLOCATION__BYTE_:
+		{
+			setHitLocation(inv->getByteParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1394,6 +1453,14 @@ void ArmorObjectAdapter::setEffectivenessSlice(float value) {
 
 void ArmorObjectAdapter::setEncumbranceSlice(float value) {
 	(static_cast<ArmorObject*>(stub))->setEncumbranceSlice(value);
+}
+
+byte ArmorObjectAdapter::getHitLocation() {
+	return (static_cast<ArmorObject*>(stub))->getHitLocation();
+}
+
+void ArmorObjectAdapter::setHitLocation(byte h) {
+	(static_cast<ArmorObject*>(stub))->setHitLocation(h);
 }
 
 /*

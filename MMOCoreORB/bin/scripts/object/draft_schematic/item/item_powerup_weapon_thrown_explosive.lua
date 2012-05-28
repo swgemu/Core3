@@ -67,7 +67,6 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"mineral", "chemical"},
    resourceQuantities = {6, 4},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

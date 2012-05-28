@@ -113,7 +113,7 @@ public:
 		if (zoneObject != NULL) {
 			ManagedReference<SceneObject*> rootParent = objectToTransfer->getRootParent();
 
-			float maxDistance = 11;
+			float maxDistance = 12.5;
 
 			if (!rootParent->isBuildingObject()) {
 				if (rootParent->getDistanceTo(creature) > maxDistance)

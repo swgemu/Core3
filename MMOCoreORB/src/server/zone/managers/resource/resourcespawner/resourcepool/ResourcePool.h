@@ -93,7 +93,7 @@ public:
 	   */
 	ResourcePool(ResourceSpawner* spawner) : Logger("ResourcePool") {
 		resourceSpawner = spawner;
-
+		includedResources.setNullValue(NULL);
 		setGlobalLogging(true);
 		setLogging(true);
 	}

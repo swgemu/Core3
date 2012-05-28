@@ -29,7 +29,7 @@ governor_ian_lago = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_govenor_ian_lago.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

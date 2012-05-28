@@ -28,7 +28,7 @@ mol_nimai = Creature:new {
 
 	templates = {"object/mobile/dressed_ris_inventor_bothan_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "ris_armor_quest_convotemplate",
 	attacks = {
 	}

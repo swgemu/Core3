@@ -29,7 +29,7 @@ blerx_tango = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_blerx_tango.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

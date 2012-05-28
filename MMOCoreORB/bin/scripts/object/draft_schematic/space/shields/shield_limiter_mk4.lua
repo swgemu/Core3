@@ -67,7 +67,6 @@ object_draft_schematic_space_shields_shield_limiter_mk4 = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast_gravitonic"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

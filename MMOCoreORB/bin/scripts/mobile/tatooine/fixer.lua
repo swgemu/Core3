@@ -29,7 +29,7 @@ fixer = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_fixer.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

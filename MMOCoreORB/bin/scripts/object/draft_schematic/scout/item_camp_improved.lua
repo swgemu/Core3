@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "bone"},
    resourceQuantities = {30, 12},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

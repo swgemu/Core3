@@ -28,7 +28,7 @@ four_lom = Creature:new {
 
 	templates = {"object/mobile/4lom.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

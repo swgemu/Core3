@@ -1,6 +1,5 @@
 pirate_weapons_heavy = {
-	"object/weapon/ranged/rifle/rifle_e11.iff",
-	"object/weapon/melee/baton/baton_stun.iff"
+	"object/weapon/ranged/rifle/rifle_lightning.iff"
 }
 
 addWeapon("pirate_weapons_heavy", pirate_weapons_heavy)

@@ -28,21 +28,20 @@ corsec_special_ops_chief = Creature:new {
 
 	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
 	lootGroups = {
-	    {
+	  {
 			groups = {
-				{group = "clothing_attachments", chance = 2500000},
-				{group = "armor_attachments", chance = 2500000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals_premium", chance = 1250000},
-				{group = "color_crystals", chance = 1250000}
+				{group = "crystals_premium", chance = 500000},
+				{group = "color_crystals", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}
 	},
-	weapons = {"ranged_weapons"},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_chief, "corsec_special_ops_chief")

@@ -233,14 +233,6 @@ void BuffImplementation::applyAttributeModifiers() {
 	if (creature == NULL)
 		return;
 
-	if (speedMultiplierMod >= 0.f && speedMultiplierMod != creature->getSpeedMultiplierMod()){
-		creature->setSpeedMultiplierMod(speedMultiplierMod);
-	}
-
-	if (accelerationMultiplierMod >= 0.f &&  accelerationMultiplierMod != creature->getAccelerationMultiplierMod()){
-		creature->setAccelerationMultiplierMod(accelerationMultiplierMod);
-	}
-
 	int size = attributeModifiers.size();
 
 	if (size <= 0)
@@ -283,6 +275,11 @@ void BuffImplementation::applySkillModifiers() {
 
 		creature->addSkillMod(SkillModManager::BUFF, key, value, true);
 	}
+
+	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
+	// the checks for if they haven't changed are in these methods
+	creature->setSpeedMultiplierMod(creature->getSpeedMultiplierBase());
+	creature->setAccelerationMultiplierMod(creature->getAccelerationMultiplierBase());
 }
 
 void BuffImplementation::applyStates() {
@@ -300,14 +297,6 @@ void BuffImplementation::applyStates() {
 void BuffImplementation::removeAttributeModifiers() {
 	if (creature == NULL)
 		return;
-
-	if (speedMultiplierMod >= 0.f &&  speedMultiplierMod == creature->getSpeedMultiplierMod()){
-		creature->setSpeedMultiplierMod(1.f);
-	}
-
-	if (accelerationMultiplierMod >= 0.f &&  accelerationMultiplierMod == creature->getAccelerationMultiplierMod()){
-		creature->setAccelerationMultiplierMod(1.f);
-	}
 
 	int size = attributeModifiers.size();
 
@@ -360,6 +349,11 @@ void BuffImplementation::removeSkillModifiers() {
 		creature->addSkillMod(SkillModManager::BUFF, key, -value, true);
 
 	}
+
+	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
+	// the checks for if they haven't changed are in these methods
+	creature->setSpeedMultiplierMod(creature->getSpeedMultiplierBase());
+	creature->setAccelerationMultiplierMod(creature->getAccelerationMultiplierBase());
 }
 
 void BuffImplementation::removeStates() {

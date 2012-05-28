@@ -91,6 +91,9 @@ public:
 			if(spawn == NULL)
 				return false;
 
+			if(currentSpawn != NULL && currentSpawn != spawn)
+				return false;
+
 			/// Verify the resource is the right type
 			if(!incomingResource->getSpawnObject()->isType(contentType))
 				return false;

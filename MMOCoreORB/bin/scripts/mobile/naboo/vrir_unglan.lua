@@ -29,7 +29,7 @@ vrir_unglan = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_vrir_unglan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

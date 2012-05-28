@@ -98,7 +98,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::HEADARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObjectType::MISCARMOR);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::MISCARMOR); // Some Belts Bando's'
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::LEGARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::HANDARMOR);
@@ -186,10 +186,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::CARBINE);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::POLEARM);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::TWOHANDMELEEWEAPON);
-	objectFactory.registerObject<WeaponObject>(SceneObjectType::LIGHTNINGRIFLE);
-	objectFactory.registerObject<WeaponObject>(SceneObjectType::ONEHANDEDLIGHTSABER);
-	objectFactory.registerObject<WeaponObject>(SceneObjectType::TWOHANDEDLIGHTSABER);
-	objectFactory.registerObject<WeaponObject>(SceneObjectType::DOUBLEBLADEDLIGHTSABER);
 
 	objectFactory.registerObject<MissionObject>(SceneObjectType::MISSIONOBJECT);
 

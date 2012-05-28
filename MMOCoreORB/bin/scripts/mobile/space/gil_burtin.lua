@@ -28,7 +28,7 @@ gil_burtin = Creature:new {
 
 	templates = {"object/mobile/dressed_industrialist_trainer_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

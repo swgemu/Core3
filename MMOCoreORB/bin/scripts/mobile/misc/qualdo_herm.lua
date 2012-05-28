@@ -27,7 +27,7 @@ qualdo_herm = Creature:new {
 
 	templates = {"object/mobile/dressed_qualdo_herm.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

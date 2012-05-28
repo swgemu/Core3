@@ -129,6 +129,7 @@ object_weapon_ranged_carbine_carbine_laser = object_weapon_ranged_carbine_shared
 	experimentalMin = {0, 0, 7, 130, 6, 8, 30, 750, -45, -40, 50, 0, 33, 52, 26},
 	experimentalMax = {0, 0, 13, 240, 4.1, 16, 65, 1500, -45, -40, 50, 10, 18, 28, 14},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_laser, "object/weapon/ranged/carbine/carbine_laser.iff")

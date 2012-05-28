@@ -30,7 +30,7 @@ cll8_binary_load_lifter = Creature:new {
 		"object/mobile/cll8_binary_load_lifter.iff"
 	},		
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

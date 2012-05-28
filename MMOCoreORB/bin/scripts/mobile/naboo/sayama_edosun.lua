@@ -29,7 +29,7 @@ sayama_edosun = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_sayama_edosun.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

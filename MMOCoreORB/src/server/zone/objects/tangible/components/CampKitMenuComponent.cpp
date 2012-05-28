@@ -21,6 +21,7 @@
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/region/Region.h"
 
 void CampKitMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -38,7 +39,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	if (!player->isPlayerCreature())
+	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+
+	if (tano == NULL || !player->isPlayerCreature())
 		return 0;
 
 	if (player->getZone() == NULL)
@@ -118,7 +121,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(planetManager->getRegionAt(player->getPositionX(), player->getPositionY()) != NULL) {
+		ManagedReference<CityRegion*> region = player->getCityRegion();
+		if(region != NULL) {
 			player->sendSystemMessage("@camp:error_muni_true");
 			return 0;
 		}
@@ -143,6 +147,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
+		/// Check if player is elevated, on a building or porch
+
 		/// Check camps/lairs nearby
 		SortedVector<ManagedReference<QuadTreeEntry* > > nearbyObjects;
 		zone->getInRangeObjects(player->getPositionX(), player->getPositionY(),
@@ -156,8 +162,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				return 0;
 			}
 
-			if (scno != NULL && scno->isBuildingObject() && scno->getDistanceTo(
-					player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
+			if (scno != NULL && scno->isStructureObject() &&
+					scno->getDistanceTo(player) <= 100) {
 				player->sendSystemMessage("@camp:error_building_too_close");
 				return 0;
 			}

@@ -1,5 +1,6 @@
 corsec_police_weapons = {
 	"object/weapon/ranged/carbine/carbine_cdef_corsec.iff",
+	"object/weapon/ranged/pistol/pistol_cdef_corsec.iff"
 	
 }
 

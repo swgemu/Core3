@@ -88,7 +88,7 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_bicep_l = object_tangibl
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damagetypes in WeaponObject
-	vunerability = STUN + HEAT + COLD + ELECTRICITY + LIGHTSABER,
+	vulnerability = STUN + HEAT + COLD + ELECTRICITY + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 13,
@@ -116,6 +116,7 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_bicep_l = object_tangibl
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 13, 13, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 8, 8, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_armor_chitin_s01_bicep_l, "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff")

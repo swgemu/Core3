@@ -30,17 +30,16 @@ minion_of_lord_nyax = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "nyax", chance = 2000000},
-				{group = "pistols", chance = 4000000},
-				{group = "rifles", chance = 4000000}
+				{group = "junk", chance = 3000000},
+				{group = "pistols", chance = 500000},
+				{group = "rifles", chance = 500000}
 			},
 			lootChance = 3500000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(minion_of_lord_nyax, "minion_of_lord_nyax")

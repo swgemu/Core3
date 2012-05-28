@@ -55,6 +55,7 @@ object_tangible_deed_player_house_deed_merchant_tent_style_01_deed = object_tang
 	experimentalMin = {0, 0, 21000},
 	experimentalMax = {0, 0, 39000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_merchant_tent_style_01_deed, "object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff")

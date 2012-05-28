@@ -28,7 +28,7 @@ ty_vila = Creature:new {
 
 	templates = {"object/mobile/space_privateer_broker_fired_worker.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

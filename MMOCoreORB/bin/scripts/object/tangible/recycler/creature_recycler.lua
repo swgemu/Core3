@@ -51,6 +51,7 @@ object_tangible_recycler_creature_recycler = object_tangible_recycler_shared_cre
 	experimentalMin = {0, 0, 1000, 2},
 	experimentalMax = {0, 0, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_creature_recycler, "object/tangible/recycler/creature_recycler.iff")

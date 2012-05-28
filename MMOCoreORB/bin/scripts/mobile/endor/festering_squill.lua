@@ -1,6 +1,6 @@
 festering_squill = Creature:new {
 	objectName = "@mob/creature_names:festering_squill",
-	socialGroup = "Endor Squill",
+	socialGroup = "squill",
 	pvpFaction = "",
 	faction = "",
 	level = 31,

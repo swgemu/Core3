@@ -35,6 +35,9 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	baseCommand = data.baseCommand;
 
 	damageMultiplier = data.damageMultiplier;
+	healthDamageMultiplier = data.healthDamageMultiplier;
+	actionDamageMultiplier = data.actionDamageMultiplier;
+	mindDamageMultiplier = data.mindDamageMultiplier;
 	damageMax = data.damageMax;
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
@@ -91,6 +94,10 @@ void CreatureAttackData::fillFromBase() {
 	animationCRC = baseCommand->getAnimationCRC();
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
+
+	healthDamageMultiplier = 1.f;
+	actionDamageMultiplier = 1.f;
+	mindDamageMultiplier = 1.f;
 }
 
 void CreatureAttackData::setVariable(const String& var, const String& val) {
@@ -98,6 +105,15 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 	switch(crc) {
 	case 0xA82FB287: // String("damageMultiplier").hashCode()
 		damageMultiplier = Float::valueOf(val);
+		break;
+	case 0xC60F1652: // String("healthDamageMultiplier").hashCode():
+		healthDamageMultiplier = Float::valueOf(val);
+		break;
+	case 0x77139783: // String("actionDamageMultiplier").hashCode():
+		actionDamageMultiplier = Float::valueOf(val);
+		break;
+	case 0xD7D06F99: // String("mindDamageMultiplier").hashCode():
+		mindDamageMultiplier = Float::valueOf(val);
 		break;
 	case 0xC33D0A1B: // String("accuracyBonus").hashcode()
 		accuracyBonus = Integer::valueOf(val);

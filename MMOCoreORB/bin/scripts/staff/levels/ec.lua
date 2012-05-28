@@ -3,6 +3,7 @@ ec = {
 	name = "ec",
 	tag = "SWGEmu-EC",
 	skills = {
+		"admin_base",
 		"admin_general_admin_01",
 		"admin_general_admin_02",
 		"admin_player_management_01",

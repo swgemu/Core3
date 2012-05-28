@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"copper", "gas_inert", "steel"},
    resourceQuantities = {50, 20, 55},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

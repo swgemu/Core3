@@ -56,7 +56,7 @@ patron = Creature:new {
 		"object/mobile/dressed_rancorclan_hum_01.iff",
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

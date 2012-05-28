@@ -28,7 +28,7 @@ ulaire_roye = Creature:new {
 
 	templates = {"object/mobile/space_greeter_tyrena_disgraced_corsec.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

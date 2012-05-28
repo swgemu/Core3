@@ -1,8 +1,8 @@
 fenri_dalso = Creature:new {
 	objectName = "",
 	customName = "Fenri Dalso",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,
@@ -38,7 +38,7 @@ fenri_dalso = Creature:new {
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",
-	attacks = {}
+	attacks = merge(carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fenri_dalso, "fenri_dalso")

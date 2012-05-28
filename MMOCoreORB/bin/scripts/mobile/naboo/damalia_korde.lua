@@ -29,7 +29,7 @@ damalia_korde = Creature:new {
 
 	templates = {"object/mobile/dressed_damalia_korde.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

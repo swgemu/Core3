@@ -28,17 +28,8 @@ lord_sloan_rusper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lord_sloan_rusper.iff"},
-	lootGroups = {
-	    {
-			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "tailor_components", chance = 500000},
-				{group = "loot_kits", chance = 4500000}
-			},
-			lootChance = 5500000
-		}					
-	},
-	weapons = {""},
+	lootGroups = {},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

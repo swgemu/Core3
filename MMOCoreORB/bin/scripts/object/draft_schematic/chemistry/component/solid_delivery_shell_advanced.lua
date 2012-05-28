@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
    ingredientSlotType = {0, 0},
    resourceTypes = {"oats_domesticated", "iron_dolovite"},
    resourceQuantities = {16, 16},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

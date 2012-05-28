@@ -74,6 +74,7 @@ object_tangible_food_crafted_dessert_gorrnar = object_tangible_food_crafted_shar
 	experimentalMin = {0, 0, 1000, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_gorrnar, "object/tangible/food/crafted/dessert_gorrnar.iff")

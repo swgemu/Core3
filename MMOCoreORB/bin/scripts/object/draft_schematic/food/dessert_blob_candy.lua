@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_blob_candy = object_draft_schematic_food_sha
    ingredientSlotType = {1, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_carbosyrup.iff", "fruit", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {1, 5, 1},
-   combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
 

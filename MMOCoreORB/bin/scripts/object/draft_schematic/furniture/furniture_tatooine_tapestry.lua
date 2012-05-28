@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_tatooine_tapestry = object_draft_sche
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "fiberplast", "petrochem_inert_polymer"},
    resourceQuantities = {30, 80, 25},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -52,6 +52,7 @@ object_tangible_ship_crafted_repair_repair_kit_plasma_conduit = object_tangible_
 	experimentalMin = {0, 0, 50},
 	experimentalMax = {0, 0, 150},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/repair_kit_plasma_conduit.iff")

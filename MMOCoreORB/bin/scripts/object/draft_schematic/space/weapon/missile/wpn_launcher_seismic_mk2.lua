@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_seismic_mk2 = object_dr
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "aluminum"},
    resourceQuantities = {2000, 500},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

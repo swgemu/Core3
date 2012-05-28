@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
    ingredientSlotType = {0, 0},
    resourceTypes = {"aluminum_titanium", "metal_nonferrous"},
    resourceQuantities = {200, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

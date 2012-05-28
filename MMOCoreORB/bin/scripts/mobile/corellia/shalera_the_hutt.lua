@@ -29,7 +29,7 @@ shalera_the_hutt = Creature:new {
 
 	templates = {"object/mobile/shalera.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

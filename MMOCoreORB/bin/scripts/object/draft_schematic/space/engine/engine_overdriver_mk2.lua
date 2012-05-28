@@ -67,7 +67,6 @@ object_draft_schematic_space_engine_engine_overdriver_mk2 = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "ore_siliclastic_fermionic"},
    resourceQuantities = {200, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

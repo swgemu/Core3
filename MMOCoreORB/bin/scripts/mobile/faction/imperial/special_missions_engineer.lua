@@ -28,7 +28,7 @@ special_missions_engineer = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(special_missions_engineer, "special_missions_engineer")

@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_armoire_elegant = object_draft_schema
    ingredientSlotType = {0, 1},
    resourceTypes = {"copper_kelsh", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {250, 8},
-   combineTypes = {0, 1},
    contribution = {100, 100},
 
 

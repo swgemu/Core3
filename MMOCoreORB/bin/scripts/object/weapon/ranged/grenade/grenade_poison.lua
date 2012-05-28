@@ -42,7 +42,7 @@
 
 
 object_weapon_ranged_grenade_grenade_poison = object_weapon_ranged_grenade_shared_grenade_poison:new {
-
+	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_poison, "object/weapon/ranged/grenade/grenade_poison.iff")

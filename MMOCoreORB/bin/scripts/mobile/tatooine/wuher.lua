@@ -29,7 +29,7 @@ wuher = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_wuher.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

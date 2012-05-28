@@ -136,9 +136,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	//info(msg, true);
 
 	switch (windowType) {
-	case SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE:
-		handleManageMaintenance(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::MEDIC_CONSENT:
 		handleConsentBox(player, suiBox, cancel, args);
 		break;
@@ -157,15 +154,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	case SuiWindowType::BAND_CHANGE:
 		handleStartMusic(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM:
-		handleSampleRadioactiveConfirm(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME:
-		handleSurveyConcentratedMinigame(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2:
-		handleSurveyConcentratedMinigame2(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(player, suiBox, cancel, args);
 		break;
@@ -180,15 +168,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 		break;
 	case SuiWindowType::OBJECT_NAME:
 		handleSetObjectName(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::STRUCTURE_ADD_ENERGY:
-		handleAddEnergy(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::FACTORY_SCHEMATIC2BUTTON:
-		handleInsertFactorySchem2(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::FACTORY_SCHEMATIC3BUTTON:
-		handleInsertFactorySchem3(player, suiBox, cancel, args);
 		break;
 	}
 }
@@ -215,99 +194,6 @@ void SuiManager::handleSetObjectName(CreatureObject* player, SuiBox* suiBox, uin
 
 		player->sendSystemMessage(params);
 	}
-}
-
-void SuiManager::handleManageMaintenance(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isTransferBox() || cancel != 0)
-		return;
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isStructureObject())
-		return;
-
-	StructureObject* structureObject = cast<StructureObject*>( object.get());
-
-	if (args->size() < 1)
-		return;
-
-	int transferAmount = Integer::valueOf(args->get(0).toString());
-	int currentCash = player->getCashCredits();
-
-	if (transferAmount > currentCash) {
-		//Send a message ot the player, and return.
-		return;
-	}
-
-	if (transferAmount < 0) {
-		//Send a message to the player, and return.
-		return;
-	}
-
-	Locker _lock(structureObject, player);
-
-	int transferTotal = currentCash - transferAmount;
-
-	//TODO: Handle this in StructureManager.
-	//ManagedReference<StructureManager*> structureManager = structureObject->getZone()->getPlanetManager()->getStructureManager();
-	//structureManager->depositMaintenance(player, structureObject, transferTotal);
-
-	structureObject->addMaintenance(transferTotal);
-	player->subtractCashCredits(transferTotal);
-
-	StringIdChatParameter stringId("base_player", "prose_pay_success");
-	stringId.setTT(structureObject->getObjectID());
-	stringId.setDI(transferTotal);
-
-	player->sendSystemMessage(stringId);
-	structureObject->updateToDatabase();
-
-	player->updateToDatabase();
-}
-
-
-void SuiManager::handleAddEnergy(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isTransferBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	uint32 newEnergyVal = (uint64) Long::valueOf(args->get(0).toString());
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isInstallationObject())
-		return;
-
-	InstallationObject* installation = cast<InstallationObject*>( object.get());
-
-	ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
-
-	//TODO: This should be handled in StructureManager
-
-	Locker _lock(installation, player);
-
-	uint32 energyFromPlayer = resourceManager->getAvailablePowerFromPlayer(player);
-	uint32 energy = energyFromPlayer - newEnergyVal;
-
-	if (energy > energyFromPlayer)
-		return;
-
-	installation->addPower(energy);
-	resourceManager->removePowerFromPlayer(player, energy);
-
-	StringIdChatParameter stringId("player_structure", "deposit_successful");
-	stringId.setDI(energy);
-
-	player->sendSystemMessage(stringId);
-
-	stringId.setStringId("player_structure", "reserve_report");
-	stringId.setDI(installation->getSurplusPower());
-
-	player->sendSystemMessage(stringId);
-
-	installation->updateToDatabase();
 }
 
 void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -362,62 +248,6 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 	else
 		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
 }
-
-void SuiManager::handleSampleRadioactiveConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->consentRadioactiveSample(player);
-}
-
-void SuiManager::handleSurveyConcentratedMinigame(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int value = Integer::valueOf(args->get(0).toString());
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->surveyCnodeMinigame(player, value);
-}
-
-void SuiManager::handleSurveyConcentratedMinigame2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int value = Integer::valueOf(args->get(0).toString());
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
-
-	if (surveyTool == NULL)
-		return;
-
-	Locker _lock(surveyTool);
-	surveyTool->surveyGnodeMinigame(player, value);
-}
-
 
 /*
 void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -712,59 +542,6 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 
 	String name = suiList->getMenuItemName(index);
 	UnconsentCommand::unconscent(player, name);
-}
-
-void SuiManager::handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int index = Integer::valueOf(args->get(0).toString());
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isFactory())
-		return;
-
-	FactoryObject* factory = cast<FactoryObject*>( object.get());
-
-	Locker _lock(factory, player);
-
-	ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
-	factory->handleInsertFactorySchem(player, schematic);
-}
-
-void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 2)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-	int index = Integer::valueOf(args->get(1).toString());
-
-	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-
-	ManagedReference<SceneObject*> object = suiBox->getUsingObject();
-
-	if (object == NULL || !object->isFactory())
-		return;
-
-	FactoryObject* factory = cast<FactoryObject*>( object.get());
-
-	Locker _lock(factory, player);
-
-	factory->handleRemoveFactorySchem(player);
-
-	if (!otherPressed) {
-		ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
-		factory->handleInsertFactorySchem(player, schematic);
-	}
 }
 
 void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback) {

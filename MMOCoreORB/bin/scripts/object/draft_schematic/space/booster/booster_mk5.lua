@@ -67,7 +67,6 @@ object_draft_schematic_space_booster_booster_mk5 = object_draft_schematic_space_
    ingredientSlotType = {0, 0, 0, 3, 0},
    resourceTypes = {"steel", "aluminum", "fuel_petrochem_liquid", "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk5.iff", "ore"},
    resourceQuantities = {1250, 1250, 1250, 1, 1250},
-   combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

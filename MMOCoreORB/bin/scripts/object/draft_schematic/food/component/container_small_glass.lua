@@ -67,7 +67,6 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
    ingredientSlotType = {0},
    resourceTypes = {"gemstone"},
    resourceQuantities = {10},
-   combineTypes = {0},
    contribution = {100},
 
 

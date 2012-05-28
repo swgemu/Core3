@@ -96,6 +96,22 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+namespace ai {
+
+class AiActor;
+
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerObject;
@@ -364,9 +380,13 @@ public:
 
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
+	void setCurrentSpeed(float newSpeed);
+
 	void setHAM(int type, int value, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
@@ -554,6 +574,8 @@ public:
 
 	PlayerObject* getPlayerObject();
 
+	AiActor* getGhostObject();
+
 	bool isListening();
 
 	bool isWatching();
@@ -703,6 +725,8 @@ public:
 	float getSpeedMultiplierBase();
 
 	float getSpeedMultiplierMod();
+
+	float getCurrentSpeed();
 
 	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
 
@@ -860,6 +884,8 @@ public:
 
 	bool isAiAgent();
 
+	bool isAiActor();
+
 	bool isInformantCreature();
 
 	bool isVendorCreature();
@@ -873,6 +899,12 @@ public:
 	byte getCurrentWind();
 
 	void setCurrentWind(byte value);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
+	void destroyObjectFromWorld(bool sendSelfDestroy);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -1119,9 +1151,13 @@ public:
 
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
+	void setCurrentSpeed(float newSpeed);
+
 	void setHAM(int type, int value, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
@@ -1309,6 +1345,8 @@ public:
 
 	PlayerObject* getPlayerObject();
 
+	AiActor* getGhostObject();
+
 	bool isListening();
 
 	bool isWatching();
@@ -1458,6 +1496,8 @@ public:
 	float getSpeedMultiplierBase();
 
 	float getSpeedMultiplierMod();
+
+	float getCurrentSpeed();
 
 	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
 
@@ -1615,6 +1655,8 @@ public:
 
 	virtual bool isAiAgent();
 
+	bool isAiActor();
+
 	virtual bool isInformantCreature();
 
 	virtual bool isVendorCreature();
@@ -1628,6 +1670,12 @@ public:
 	byte getCurrentWind();
 
 	void setCurrentWind(byte value);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
+	void destroyObjectFromWorld(bool sendSelfDestroy);
 
 	WeakReference<CreatureObject*> _this;
 
@@ -1722,9 +1770,13 @@ public:
 
 	void setRunSpeed(float newSpeed, bool notifyClient);
 
+	void setCurrentSpeed(float newSpeed);
+
 	void setHAM(int type, int value, bool notifyClient);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient);
+
+	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient);
 
 	bool hasDamage(int attribute);
 
@@ -1902,6 +1954,8 @@ public:
 
 	PlayerObject* getPlayerObject();
 
+	AiActor* getGhostObject();
+
 	bool isListening();
 
 	bool isWatching();
@@ -2039,6 +2093,8 @@ public:
 	float getSpeedMultiplierBase();
 
 	float getSpeedMultiplierMod();
+
+	float getCurrentSpeed();
 
 	float getRunSpeed();
 
@@ -2186,6 +2242,8 @@ public:
 
 	bool isAiAgent();
 
+	bool isAiActor();
+
 	bool isInformantCreature();
 
 	bool isVendorCreature();
@@ -2199,6 +2257,12 @@ public:
 	byte getCurrentWind();
 
 	void setCurrentWind(byte value);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
+	void destroyObjectFromWorld(bool sendSelfDestroy);
 
 };
 

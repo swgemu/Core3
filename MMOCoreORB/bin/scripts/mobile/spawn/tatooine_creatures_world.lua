@@ -7,7 +7,7 @@ tatooine_creatures_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "bantha_lair",
+			lairTemplateName = "tatooine_bantha_dune_bantha_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 15,
 			maxDifficulty = 25,
@@ -16,7 +16,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "bocatt_lair",
+			lairTemplateName = "tatooine_bocatt_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 32,
@@ -25,7 +25,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "bull_bantha_lair",
+			lairTemplateName = "tatooine_bull_bantha_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 20,
 			maxDifficulty = 30,
@@ -34,7 +34,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "cu_pa_lair",
+			lairTemplateName = "tatooine_cu_pa_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 11,
 			maxDifficulty = 21,
@@ -43,7 +43,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "desert_eopie_lair",
+			lairTemplateName = "tatooine_desert_eopie_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 26,
@@ -52,7 +52,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "desert_squill_lair",
+			lairTemplateName = "tatooine_desert_squill_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 20,
 			maxDifficulty = 30,
@@ -61,7 +61,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dewback_lair",
+			lairTemplateName = "tatooine_dewback_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 29,
@@ -70,7 +70,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dune_bantha_lair",
+			lairTemplateName = "tatooine_dune_bantha_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 17,
 			maxDifficulty = 27,
@@ -79,7 +79,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dune_lizard_lair",
+			lairTemplateName = "tatooine_dune_lizard_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -88,7 +88,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "eopie_lair",
+			lairTemplateName = "tatooine_eopie_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 17,
@@ -97,7 +97,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "greater_desert_womp_rat_lair",
+			lairTemplateName = "tatooine_greater_womprat_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 32,
@@ -106,7 +106,7 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "ronto_lair",
+			lairTemplateName = "tatooine_ronto_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -115,19 +115,10 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "squill_lair",
+			lairTemplateName = "tatooine_squill_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "blight_boar_lair",
-			spawnLimit = -1,
-			minDifficulty = 12,
-			maxDifficulty = 22,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

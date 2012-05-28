@@ -52,6 +52,7 @@ object_tangible_component_weapon_blaster_power_handler_advanced = object_tangibl
 	experimentalMin = {0, 0, 1, 1, 0, 10},
 	experimentalMax = {0, 0, 25, 50, -0.5, 100},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_blaster_power_handler_advanced, "object/tangible/component/weapon/blaster_power_handler_advanced.iff")

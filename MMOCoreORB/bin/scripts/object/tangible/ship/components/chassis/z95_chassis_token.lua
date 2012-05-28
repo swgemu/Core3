@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_z95_chassis_token = object_tangible_ship
 	experimentalMin = {0, 0, 1200, 11700},
 	experimentalMax = {0, 0, 1750, 12300},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_z95_chassis_token, "object/tangible/ship/components/chassis/z95_chassis_token.iff")

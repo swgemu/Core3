@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_em_launcher = object_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive"},
    resourceQuantities = {3750, 1250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

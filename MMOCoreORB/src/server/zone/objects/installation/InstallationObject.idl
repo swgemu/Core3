@@ -88,6 +88,7 @@ class InstallationObject extends StructureObject {
 	protected float hopperSizeMax;
 	protected float extractionRate;
 	protected float extractionRemainder;
+	protected float spawnDensity;
 
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
@@ -101,6 +102,7 @@ class InstallationObject extends StructureObject {
 		
 		hopperSizeMax = 10000;
 		extractionRate = 100;
+		spawnDensity = 0;
 	}
 	
 	public void initializeTransientMembers() {

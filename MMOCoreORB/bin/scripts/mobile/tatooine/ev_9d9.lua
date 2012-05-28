@@ -28,7 +28,7 @@ ev_9d9 = Creature:new {
 
 	templates = {"object/mobile/ev_9d9.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

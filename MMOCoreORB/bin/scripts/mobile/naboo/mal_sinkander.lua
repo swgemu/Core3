@@ -29,7 +29,7 @@ mal_sinkander = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_mal_sikander.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

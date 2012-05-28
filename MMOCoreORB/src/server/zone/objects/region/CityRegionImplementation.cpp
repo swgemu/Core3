@@ -317,8 +317,6 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	zone->removeObject(aa, NULL, false);
 	zone->transferObject(aa, -1, false);
-
-
 }
 
 void CityRegionImplementation::destroyActiveAreas() {
@@ -466,4 +464,3 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 
 	citySkillTrainers.removeAll();
 }
-

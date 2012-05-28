@@ -29,7 +29,7 @@ tedn_dahai = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_figrin_dan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "figrin_dan_band_outfit",
 	attacks = {

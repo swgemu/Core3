@@ -29,7 +29,7 @@ garm_bel_iblis = Creature:new {
 
 	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

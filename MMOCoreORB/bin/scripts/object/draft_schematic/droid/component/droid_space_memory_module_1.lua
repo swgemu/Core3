@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"copper", "gas_inert", "ore_extrusive", "fiberplast", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {16, 10, 8, 6, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

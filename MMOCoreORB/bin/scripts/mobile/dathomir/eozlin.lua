@@ -28,7 +28,7 @@ eozlin = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_surveyor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

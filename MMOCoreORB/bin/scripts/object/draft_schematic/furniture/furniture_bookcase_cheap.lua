@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bookcase_cheap = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {75, 75},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

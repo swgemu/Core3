@@ -29,7 +29,7 @@ yondalla = Creature:new {
 
 	templates = {"object/mobile/dressed_corvette_neutral_yondalla.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

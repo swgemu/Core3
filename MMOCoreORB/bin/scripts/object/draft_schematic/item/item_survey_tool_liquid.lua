@@ -67,7 +67,6 @@ object_draft_schematic_item_item_survey_tool_liquid = object_draft_schematic_ite
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "metal", "mineral"},
    resourceQuantities = {8, 8, 3, 8},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

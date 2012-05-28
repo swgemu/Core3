@@ -29,7 +29,7 @@ farious_gletch = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_farious_gletch.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -64,7 +64,7 @@ object_tangible_wearables_armor_nightsister_armor_nightsister_bicep_r_s01 = obje
 				"object/mobile/vendor/zabrak_female.iff" },
 	
 	-- Damage types in WeaponObject
-	vunerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
+	vulnerability = ELECTRICITY + ACID + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 25,

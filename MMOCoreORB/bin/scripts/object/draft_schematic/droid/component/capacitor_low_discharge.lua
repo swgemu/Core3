@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_capacitor_low_discharge = object_draft_sc
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "fuel_petrochem_solid", "ore"},
    resourceQuantities = {5, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

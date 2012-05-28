@@ -29,7 +29,7 @@ ajuva_vanasterin = Creature:new {
 
 	templates = {"object/mobile/dressed_ajuva_vanasterin.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

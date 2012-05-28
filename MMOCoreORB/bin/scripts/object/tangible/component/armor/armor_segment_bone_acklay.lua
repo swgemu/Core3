@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_segment_bone_acklay = object_tangible_comp
 	experimentalMin = {0, 0, 1000, 1, 100, 1, 1, 1, 1, 2, 1, 100},
 	experimentalMax = {0, 0, 1000, 10, 1000, 6, 8, 4, 1, 2, 20, 5000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_bone_acklay, "object/tangible/component/armor/armor_segment_bone_acklay.iff")

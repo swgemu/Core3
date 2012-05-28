@@ -67,7 +67,6 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_nonferrous", "metal_ferrous"},
    resourceQuantities = {1125, 3125},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

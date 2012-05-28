@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_layer_blast = object_tangible_component_ar
 	experimentalMin = {0, 0, 1000, 1, 100, 20, 20, 20, 1, 4, 1, 20},
 	experimentalMax = {0, 0, 1000, 5, 1000, 0, 0, 0, 1, 4, 15, 50},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_layer_blast, "object/tangible/component/armor/armor_layer_blast.iff")

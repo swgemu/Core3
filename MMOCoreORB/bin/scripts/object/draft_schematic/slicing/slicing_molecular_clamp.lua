@@ -67,7 +67,6 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "metal_nonferrous"},
    resourceQuantities = {25, 25, 40},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

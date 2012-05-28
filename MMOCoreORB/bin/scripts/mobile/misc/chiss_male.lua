@@ -28,7 +28,7 @@ chiss_male = Creature:new {
 
 	templates = {"object/mobile/dressed_patron_chiss_m_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

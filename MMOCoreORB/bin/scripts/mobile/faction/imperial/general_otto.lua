@@ -28,7 +28,7 @@ general_otto = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(general_otto, "general_otto")

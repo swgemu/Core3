@@ -36,17 +36,16 @@ corsec_traitor = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "corsec_weapons", chance = 4000000},
+				{group = "junk", chance = 4000000},
+				{group = "corsec_weapons", chance = 1500000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}
 	},
-	weapons = {"ranged_weapons"},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_traitor, "corsec_traitor")

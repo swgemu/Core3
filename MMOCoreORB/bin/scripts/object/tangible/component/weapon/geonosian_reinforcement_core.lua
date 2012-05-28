@@ -51,6 +51,7 @@ object_tangible_component_weapon_geonosian_reinforcement_core = object_tangible_
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 15, 15, 15},
 	experimentalMax = {0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_geonosian_reinforcement_core, "object/tangible/component/weapon/geonosian_reinforcement_core.iff")

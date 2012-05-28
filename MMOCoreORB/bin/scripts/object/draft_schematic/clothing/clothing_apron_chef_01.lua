@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
    ingredientSlotType = {1, 0, 1, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_fiberplast_panel.iff", "chemical", "object/tangible/component/clothing/shared_metal_fasteners.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
    resourceQuantities = {4, 40, 2, 2, 20},
-   combineTypes = {1, 0, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

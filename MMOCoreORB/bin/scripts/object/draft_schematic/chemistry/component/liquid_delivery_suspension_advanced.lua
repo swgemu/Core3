@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
    ingredientSlotType = {0, 0},
    resourceTypes = {"fruit_berries_dantooine", "water_vapor_talus"},
    resourceQuantities = {6, 6},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

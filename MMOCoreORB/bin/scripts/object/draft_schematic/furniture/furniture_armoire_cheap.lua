@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_armoire_cheap = object_draft_schemati
    ingredientSlotType = {0},
    resourceTypes = {"metal"},
    resourceQuantities = {125},
-   combineTypes = {0},
    contribution = {100},
 
 

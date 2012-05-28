@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_skirt_casual_10 = object_draft_schemati
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"fiberplast", "metal", "fiberplast"},
    resourceQuantities = {10, 5, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

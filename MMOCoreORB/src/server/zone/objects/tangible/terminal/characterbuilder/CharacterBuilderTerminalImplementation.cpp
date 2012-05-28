@@ -37,7 +37,7 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(CreatureObjec
 	if (selectedID != 20) // not use object
 		return 1;
 
-	//sendInitialChoices(player);
+	sendInitialChoices(player);
 
 	return 0;
 }

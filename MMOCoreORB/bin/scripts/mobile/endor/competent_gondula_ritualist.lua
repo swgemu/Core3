@@ -1,8 +1,8 @@
 competent_gondula_ritualist = Creature:new {
 	objectName = "@mob/creature_names:competent_gundula_ritualist",
-	socialGroup = "Condula Tribe",
-	pvpFaction = "Condula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 17,
 	chanceHit = 0.32,
 	damageMin = 150,
@@ -26,12 +26,15 @@ competent_gondula_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_02.iff",
+		"object/mobile/dressed_ewok_f_10.iff",
+		"object/mobile/dressed_ewok_f_11.iff",
+		"object/mobile/dressed_ewok_m_02.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(competent_gondula_ritualist, "competent_gondula_ritualist")

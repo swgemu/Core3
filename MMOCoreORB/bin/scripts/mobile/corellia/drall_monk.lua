@@ -30,19 +30,18 @@ drall_monk = Creature:new {
 		"object/mobile/drall_male.iff",
 		"object/mobile/drall_female.iff"},
 	lootGroups = {
-	  	{
+	      	{
 			groups = {
-				{group = "loot_kits", chance = 3500000},
-				{group = "junk", chance = 6000000},			
+				{group = "junk", chance = 4000000},
+				{group = "loot_kit_parts", chance = 1000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(drall_monk, "drall_monk")

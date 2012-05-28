@@ -29,7 +29,7 @@ record_keeper_jabba = Creature:new {
 
 	templates = {"object/mobile/theme_park_record_keeper_jabba.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

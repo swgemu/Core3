@@ -29,7 +29,7 @@ bardo_klinj = Creature:new {
 
 	templates = {"object/mobile/dressed_bardo_klinj.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

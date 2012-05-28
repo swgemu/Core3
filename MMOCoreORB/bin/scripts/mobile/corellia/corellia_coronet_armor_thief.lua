@@ -33,8 +33,7 @@ corellia_coronet_armor_thief = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_coronet_armor_thief, "corellia_coronet_armor_thief")

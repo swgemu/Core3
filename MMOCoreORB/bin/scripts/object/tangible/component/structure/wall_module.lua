@@ -52,6 +52,7 @@ object_tangible_component_structure_wall_module = object_tangible_component_stru
 	experimentalMin = {0, 0, 200},
 	experimentalMax = {0, 0, 500},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_wall_module, "object/tangible/component/structure/wall_module.iff")

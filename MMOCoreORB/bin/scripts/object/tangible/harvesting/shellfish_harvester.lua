@@ -53,6 +53,7 @@ object_tangible_harvesting_shellfish_harvester = object_tangible_harvesting_shar
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 2},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_harvesting_shellfish_harvester, "object/tangible/harvesting/shellfish_harvester.iff")

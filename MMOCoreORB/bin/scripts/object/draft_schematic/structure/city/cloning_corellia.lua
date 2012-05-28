@@ -67,7 +67,6 @@ object_draft_schematic_structure_city_cloning_corellia = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 2, 1, 1},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_wall_module.iff", "object/tangible/component/structure/shared_power_core_unit.iff", "object/tangible/component/structure/shared_structure_storage_section.iff"},
    resourceQuantities = {1250, 2000, 350, 8, 4, 2},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

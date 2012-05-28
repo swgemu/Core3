@@ -38,7 +38,7 @@ miner = Creature:new {
 				"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 				"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

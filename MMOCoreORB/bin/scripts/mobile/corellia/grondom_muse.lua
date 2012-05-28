@@ -29,7 +29,7 @@ grondom_muse = Creature:new {
 
 	templates = {"object/mobile/dressed_grondorn_muse.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

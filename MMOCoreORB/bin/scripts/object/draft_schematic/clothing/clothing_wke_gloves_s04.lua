@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_gloves_s04 = object_draft_schematic
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"hide", "petrochem_inert", "petrochem_inert"},
    resourceQuantities = {30, 20, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

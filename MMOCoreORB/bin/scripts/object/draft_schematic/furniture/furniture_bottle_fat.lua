@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bottle_fat = object_draft_schematic_f
    ingredientSlotType = {0},
    resourceTypes = {"gemstone_crystalline"},
    resourceQuantities = {55},
-   combineTypes = {0},
    contribution = {100},
 
 

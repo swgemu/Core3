@@ -1,6 +1,6 @@
 hilltop_gurreck_hunter = Creature:new {
 	objectName = "@mob/creature_names:hilltop_gurreck_hunter",
-	socialGroup = "Gurreck",
+	socialGroup = "gurreck",
 	pvpFaction = "",
 	faction = "",
 	level = 41,

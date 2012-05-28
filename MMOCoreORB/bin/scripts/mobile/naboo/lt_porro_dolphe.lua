@@ -29,7 +29,7 @@ lt_porro_dolphe = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_lt_porro_dolphe.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

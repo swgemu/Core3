@@ -27,6 +27,7 @@ int ObjectVersionUpdateManager::updateToVersion3() {
 
 	info("starting database update to version 3", true);
 
+	/*
 	try {
 
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
@@ -97,9 +98,10 @@ int ObjectVersionUpdateManager::updateToVersion3() {
 		e.printStackTrace();
 	}
 
-	//ObjectDatabaseManager::instance()->updateCurrentVersion(3);
+	*/
+	ObjectDatabaseManager::instance()->updateCurrentVersion(3);
 
-	return 1;
+	return 0;
 }
 
 int ObjectVersionUpdateManager::updateToVersion2() {

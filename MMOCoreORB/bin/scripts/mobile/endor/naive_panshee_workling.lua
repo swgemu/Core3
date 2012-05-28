@@ -1,8 +1,8 @@
 naive_panshee_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_panshee_workling",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 10,
 	chanceHit = 0.270000,
 	damageMin = 80,
@@ -25,10 +25,14 @@ naive_panshee_workling = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ewok_f.iff",
+		"object/mobile/dressed_ewok_f_01.iff",
+		"object/mobile/dressed_ewok_m.iff",
+		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(naive_panshee_workling, "naive_panshee_workling")

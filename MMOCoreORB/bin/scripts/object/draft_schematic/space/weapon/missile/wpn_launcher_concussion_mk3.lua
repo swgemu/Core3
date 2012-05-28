@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_wpn_launcher_concussion_mk3 = object
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "aluminum"},
    resourceQuantities = {4000, 1000},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

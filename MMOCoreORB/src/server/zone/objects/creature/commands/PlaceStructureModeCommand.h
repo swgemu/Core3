@@ -93,9 +93,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-
-		if (!obj->isASubChildOf(inventory))
+		if (!obj->isASubChildOf(creature))
 			return GENERALERROR; //Deed must be in inventory...
 
 		Deed* deed = cast<Deed*>(obj.get());

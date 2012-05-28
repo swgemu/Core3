@@ -34,7 +34,7 @@ imperial_recruiter = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_medium"},
+	weapons = {},
 	attacks = {},
 	conversationTemplate = "imperial_recruiter_convotemplate",
 	optionsBitmask = 264

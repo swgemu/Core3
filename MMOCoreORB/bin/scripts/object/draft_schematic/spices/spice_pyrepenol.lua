@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"water", "chemical", "metal"},
    resourceQuantities = {10, 5, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

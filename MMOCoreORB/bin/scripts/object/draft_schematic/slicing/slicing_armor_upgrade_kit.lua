@@ -67,7 +67,6 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "chemical"},
    resourceQuantities = {10, 10, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

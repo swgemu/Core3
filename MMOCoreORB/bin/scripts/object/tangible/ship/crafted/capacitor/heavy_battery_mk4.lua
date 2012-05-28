@@ -52,6 +52,7 @@ object_tangible_ship_crafted_capacitor_heavy_battery_mk4 = object_tangible_ship_
 	experimentalMin = {0, 0, 113, 213},
 	experimentalMax = {0, 0, 153, 288},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/heavy_battery_mk4.iff")

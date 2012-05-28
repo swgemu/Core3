@@ -29,7 +29,7 @@ hal_horn = Creature:new {
 
 	templates = {"object/mobile/dressed_corellia_hal_horn.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

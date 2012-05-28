@@ -67,7 +67,6 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    ingredientSlotType = {0},
    resourceTypes = {"cereal"},
    resourceQuantities = {10},
-   combineTypes = {0},
    contribution = {100},
 
 

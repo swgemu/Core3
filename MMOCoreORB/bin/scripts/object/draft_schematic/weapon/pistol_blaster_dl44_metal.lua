@@ -67,7 +67,6 @@ object_draft_schematic_weapon_pistol_blaster_dl44_metal = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 1, 1, 3},
    resourceTypes = {"steel", "steel", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {25, 8, 4, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

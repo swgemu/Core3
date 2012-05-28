@@ -52,6 +52,7 @@ object_tangible_component_droid_droid_interplanetary_survey = object_tangible_co
 	experimentalMin = {0, 0, 5, 3, 0},
 	experimentalMax = {0, 0, 15, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_droid_interplanetary_survey, "object/tangible/component/droid/droid_interplanetary_survey.iff")

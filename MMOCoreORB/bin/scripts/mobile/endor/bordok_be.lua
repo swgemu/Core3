@@ -1,6 +1,6 @@
 bordok_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_bordok",
-	socialGroup = "Bordok",
+	socialGroup = "bordok",
 	pvpFaction = "",
 	faction = "",
 	level = 1,

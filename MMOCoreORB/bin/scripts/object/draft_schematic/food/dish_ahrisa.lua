@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_ahrisa = object_draft_schematic_food_shared_dis
    ingredientSlotType = {0, 1, 0, 3},
    resourceTypes = {"vegetable_greens", "object/tangible/food/crafted/shared_dish_soypro.iff", "fruit_flowers", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {20, 1, 10, 1},
-   combineTypes = {0, 1, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

@@ -28,7 +28,7 @@ droid_engineer_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_droidengineer_trainer_moncal_male_01.iff","object/mobile/dressed_droidengineer_trainer_human_male_01.iff","object/mobile/dressed_droidengineer_trainer_rodian_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

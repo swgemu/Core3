@@ -52,6 +52,7 @@ object_tangible_ship_crafted_armor_adv_durasteel_plating = object_tangible_ship_
 	experimentalMin = {0, 0, 1059, 1, 10608, 1165, 0, 0},
 	experimentalMax = {0, 0, 1433, 1, 14352, 1576, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_adv_durasteel_plating, "object/tangible/ship/crafted/armor/adv_durasteel_plating.iff")

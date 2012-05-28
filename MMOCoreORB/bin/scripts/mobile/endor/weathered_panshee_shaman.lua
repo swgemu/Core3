@@ -1,8 +1,8 @@
 weathered_panshee_shaman = Creature:new {
 	objectName = "@mob/creature_names:weathered_panshee_shaman",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,
@@ -26,12 +26,14 @@ weathered_panshee_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_03.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_03.iff",
+		"object/mobile/dressed_ewok_m_07.iff",
+		"object/mobile/dressed_ewok_m_11.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(weathered_panshee_shaman, "weathered_panshee_shaman")

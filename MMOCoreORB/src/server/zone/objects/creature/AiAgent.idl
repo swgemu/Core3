@@ -269,6 +269,7 @@ class AiAgent extends CreatureObject {
 	 * @return unused for now
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
 	/**
 	 * sends the conversation notification 
@@ -358,7 +359,7 @@ class AiAgent extends CreatureObject {
 	/**
 	 * Gets called when the creature was despawned
 	 */
-	public native void notifyDespawn(Zone zone);
+	public abstract native void notifyDespawn(Zone zone);
 	
 	public abstract void scheduleDespawn() {
 		//Despawn in 45 seconds.

@@ -67,7 +67,6 @@ object_draft_schematic_space_booster_booster_overdriver_mk4 = object_draft_schem
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

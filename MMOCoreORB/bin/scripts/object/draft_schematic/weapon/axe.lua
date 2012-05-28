@@ -67,7 +67,6 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "wood", "steel"},
    resourceQuantities = {15, 20, 6},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced = obje
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel_duralloy", "iron_plumbum"},
    resourceQuantities = {29, 17},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

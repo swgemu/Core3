@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_gloves_field_10 = object_draft_schemati
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"petrochem_inert", "hide", "petrochem_inert", "metal"},
    resourceQuantities = {20, 20, 30, 10},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

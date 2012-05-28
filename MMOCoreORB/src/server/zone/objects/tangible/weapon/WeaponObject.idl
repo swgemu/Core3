@@ -57,6 +57,7 @@ include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.powerup.PowerupObject;
 import system.util.Vector;
+import system.lang.String;
 include server.zone.objects.tangible.Container;
 
 class WeaponObject extends TangibleObject {
@@ -391,7 +392,7 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isLightningRifle() {
-		return super.gameObjectType == SceneObjectType.LIGHTNINGRIFLE;
+		return weaponTemplate.getServerObjectCRC() == 397924793; // String("object/weapon/ranged/rifle/rifle_lightning.iff").hashCode()
 	}
 	
 	public boolean isCarbineWeapon() {
@@ -419,19 +420,19 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isJediWeapon() {
-		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER || super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+		return isJediOneHandedWeapon() || isJediTwoHandedWeapon() || isJediPolearmWeapon();
 	}
 	
 	public boolean isJediOneHandedWeapon() {
-		return super.gameObjectType == SceneObjectType.ONEHANDEDLIGHTSABER;
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/sword/base/shared_crafted_lightsaber_base.iff");
 	}
 	
 	public boolean isJediTwoHandedWeapon() {
-		return super.gameObjectType == SceneObjectType.TWOHANDEDLIGHTSABER;
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff");
 	}
 	
 	public boolean isJediPolearmWeapon() {
-		return super.gameObjectType == SceneObjectType.DOUBLEBLADEDLIGHTSABER;
+		return weaponTemplate.isDerivedFrom("object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff");
 	}
 	
 	public boolean isWeaponObject() {

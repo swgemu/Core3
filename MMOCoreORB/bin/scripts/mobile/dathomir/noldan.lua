@@ -28,7 +28,7 @@ noldan = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_trainer.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

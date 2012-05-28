@@ -1,8 +1,8 @@
 seasoned_gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_gondula_warrior",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 45,
 	chanceHit = 0.460000,
 	damageMin = 360,
@@ -25,10 +25,12 @@ seasoned_gondula_warrior = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ewok_m_09.iff",
+		"object/mobile/dressed_ewok_m_10.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
-	attacks = {}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(seasoned_gondula_warrior, "seasoned_gondula_warrior")

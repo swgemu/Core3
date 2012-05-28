@@ -29,7 +29,7 @@ palo = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

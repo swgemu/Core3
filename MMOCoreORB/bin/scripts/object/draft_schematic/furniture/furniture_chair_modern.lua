@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_modern = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_nonferrous", "metal"},
    resourceQuantities = {130, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

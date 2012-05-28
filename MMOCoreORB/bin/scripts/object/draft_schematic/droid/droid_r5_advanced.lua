@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_r5_advanced = object_draft_schematic_droid_sh
    ingredientSlotType = {0, 0, 1, 1, 1, 1, 3, 3, 3},
    resourceTypes = {"metal_ferrous", "steel", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system_advanced.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {40, 70, 1, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

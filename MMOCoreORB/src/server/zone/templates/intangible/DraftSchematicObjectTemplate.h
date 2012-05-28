@@ -60,7 +60,6 @@ protected:
 	Vector<short>* ingredientSlotType;
 	Vector<String>* resourceTypes;
 	Vector<int>* resourceQuantities;
-	Vector<short>* combineTypes;
 	Vector<short>* contribution;
 
 	Vector<String>* additionalTemplates;
@@ -90,10 +89,6 @@ public:
 
     String getAssemblySkill() {
         return assemblySkill;
-    }
-
-    Vector<short >* getCombineTypes() {
-        return combineTypes;
     }
 
     short getComplexity() {

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_jacket_formal_25 = object_draft_schemat
    ingredientSlotType = {0, 0, 1, 1},
    resourceTypes = {"petrochem_inert", "hide", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {20, 30, 2, 3},
-   combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
 

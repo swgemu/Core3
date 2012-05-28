@@ -67,7 +67,6 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
    ingredientSlotType = {0, 0, 0, 1, 1, 3},
    resourceTypes = {"steel_neutronium", "iron_plumbum", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {45, 20, 10, 2, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

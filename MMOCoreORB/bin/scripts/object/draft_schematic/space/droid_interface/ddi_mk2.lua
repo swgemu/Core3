@@ -67,7 +67,6 @@ object_draft_schematic_space_droid_interface_ddi_mk2 = object_draft_schematic_sp
    ingredientSlotType = {0, 0, 3, 0, 0},
    resourceTypes = {"steel", "fiberplast", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff", "copper", "ore"},
    resourceQuantities = {125, 125, 1, 125, 125},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

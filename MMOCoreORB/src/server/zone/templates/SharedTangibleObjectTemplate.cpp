@@ -20,6 +20,7 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	experimentalMin = new Vector<float>();
 	experimentalMax = new Vector<float>();
 	experimentalPrecision = new Vector<short>();
+	experimentalCombineType = new Vector<short>();
 	playerRaces = new Vector<uint32>();
 
 	resourceWeights = new Vector<Reference<ResourceWeight* > >();
@@ -40,6 +41,7 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 	delete experimentalMin;
 	delete experimentalMax;
 	delete experimentalPrecision;
+	delete experimentalCombineType;
 	delete playerRaces;
 	delete resourceWeights;
 }
@@ -203,6 +205,13 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaO
 			experimentalPrecision->add(experimentalPrecisionList.getIntAt(i));
 		}
 		experimentalPrecisionList.pop();
+	} else if (varName == "experimentalCombineType") {
+		LuaObject experimentalCombineList(state);
+		experimentalCombineType->removeAll();
+		for (int i = 1; i <= experimentalCombineList.getTableSize(); ++i) {
+			experimentalCombineType->add(experimentalCombineList.getIntAt(i));
+		}
+		experimentalCombineList.pop();
 	} else {
 		data->pop();
 	}
@@ -414,7 +423,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 
 		newWeight->addProperties(experimentalGroupTitles->get(i),
 				experimentalSubGroupTitles->get(i), experimentalMin->get(i),
-				experimentalMax->get(i), experimentalPrecision->get(i));
+				experimentalMax->get(i), experimentalPrecision->get(i), experimentalCombineType->get(i));
 
 		for (uint32 j = 0; j < numberExperimentalProperties->get(i); j++) {
 

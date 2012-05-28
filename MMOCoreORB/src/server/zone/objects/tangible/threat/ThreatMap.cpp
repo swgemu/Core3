@@ -13,10 +13,14 @@
 #include "ThreatMapClearObserversTask.h"
 
 void ThreatMapEntry::addDamage(WeaponObject* weapon, uint32 damage) {
-	int idx = find(weapon);
+	addDamage(weapon->getXpType(), damage);
+}
+
+void ThreatMapEntry::addDamage(String xp, uint32 damage) {
+	int idx = find(xp);
 
 	if (idx == -1) {
-		put(weapon, damage);
+		put(xp, damage);
 
 	} else {
 		uint32* dmg = &elementAt(idx).getValue();
@@ -74,16 +78,23 @@ void ThreatMap::removeObservers() {
 	}*/
 }
 
-void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
+void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
+	Locker locker(&lockMutex);
+
 	Locker locker(&lockMutex);
 
 	int idx = find(target);
+	String xpToAward = "";
 
-	WeaponObject* weapon = target->getWeapon();
+	if (xp == "") {
+		WeaponObject* weapon = target->getWeapon();
+		xpToAward = weapon->getXpType();
+	} else
+		xpToAward = xp;
 
 	if (idx == -1) {
 		ThreatMapEntry entry;
-		entry.addDamage(weapon, damage);
+		entry.addDamage(xpToAward, damage);
 		entry.addAggro(1);
 
 		put(target, entry);
@@ -91,9 +102,16 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage) {
 
 	} else {
 		ThreatMapEntry* entry = &elementAt(idx).getValue();
-		entry->addDamage(weapon, damage);
+		entry->addDamage(xpToAward, damage);
 		entry->addAggro(1);
 	}
+}
+
+void ThreatMap::removeAll() {
+	removeObservers();
+	VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::removeAll();
+	currentThreat = NULL;
+	threatMatrix.clear();
 }
 
 void ThreatMap::dropDamage(CreatureObject* target) {

@@ -356,6 +356,8 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	bool hasCappedExperience(const String& xpType);
+
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
@@ -453,6 +455,16 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	CreatureObject* getConversatingCreature();
+
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -567,10 +579,6 @@ public:
 	void setBadge(unsigned int badge);
 
 	void awardBadge(unsigned int badge);
-
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
 
 	void setTeleporting(bool val);
 
@@ -866,8 +874,6 @@ protected:
 
 	ManagedWeakReference<BuildingObject* > cloningFacility;
 
-	ManagedWeakReference<SurveyTool* > surveyTool;
-
 	SortedVector<unsigned long long> persistentMessages;
 
 	UnicodeString biography;
@@ -881,6 +887,12 @@ protected:
 	Vector<String> lastNpcConvoOptions;
 
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
+
+	float trainerCoordinatesX;
+
+	float trainerCoordinatesY;
+
+	String trainerZone;
 
 	Reference<PlayerDisconnectEvent*> disconnectEvent;
 
@@ -995,6 +1007,8 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	bool hasCappedExperience(const String& xpType);
+
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
@@ -1092,6 +1106,16 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	CreatureObject* getConversatingCreature();
+
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -1206,10 +1230,6 @@ public:
 	void setBadge(unsigned int badge);
 
 	void awardBadge(unsigned int badge);
-
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
 
 	void setTeleporting(bool val);
 
@@ -1482,6 +1502,8 @@ public:
 
 	void removeExperience(const String& xpType, bool notifyClient);
 
+	bool hasCappedExperience(const String& xpType);
+
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient);
@@ -1557,6 +1579,16 @@ public:
 	void setConversatingCreature(CreatureObject* creature);
 
 	CreatureObject* getConversatingCreature();
+
+	void setTrainerCoordinates(float x, float y);
+
+	float getTrainerCoordinatesY();
+
+	float getTrainerCoordinatesX();
+
+	void setTrainerZone(String& zone);
+
+	String getTrainerZone();
 
 	void addPersistentMessage(unsigned long long id);
 
@@ -1663,10 +1695,6 @@ public:
 	void setBadge(unsigned int badge);
 
 	void awardBadge(unsigned int badge);
-
-	void setSurveyTool(SurveyTool* tool);
-
-	SurveyTool* getSurveyTool();
 
 	void setTeleporting(bool val);
 

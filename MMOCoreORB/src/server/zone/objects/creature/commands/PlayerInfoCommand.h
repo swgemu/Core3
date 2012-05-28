@@ -63,6 +63,23 @@ public:
 			promptText << skill->getAbilityName() << endl;
 		}
 
+		if (creature->getPlayerObject()->getAdminLevel() >= 15) {
+			Vector<byte>* holoProfessions = ghost->getHologrindProfessions();
+
+			promptText << endl;
+			promptText << "Hologrind professions:";
+
+			for (int i = 0; i < holoProfessions->size(); ++i) {
+				byte prof = holoProfessions->get(i);
+
+				int badgeIdx = 42 + prof;
+
+				String stringKey = creature->getZoneServer()->getPlayerManager()->getBadgeKey(badgeIdx);
+
+				promptText << "@skl_n:" + stringKey << endl;
+			}
+		}
+
 		box->setPromptText(promptText.toString());
 
 		creature->sendMessage(box->generateMessage());

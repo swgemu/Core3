@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {30, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

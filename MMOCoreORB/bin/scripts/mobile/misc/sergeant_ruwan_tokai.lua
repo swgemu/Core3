@@ -27,7 +27,7 @@ sergeant_ruwan_tokai = Creature:new {
 
 	templates = {"object/mobile/dressed_ruwan_tokai.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -40,7 +40,7 @@ warren_scientist = Creature:new {
 			lootChance = 4800000
 		}			
 	},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

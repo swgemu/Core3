@@ -1,8 +1,8 @@
 gondula_chief = Creature:new {
-	objectName = "@mob/creature_names:Gondula chief",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	objectName = "@mob/creature_names:gundula_chief",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 48,
 	chanceHit = 0.49,
 	damageMin = 385,
@@ -26,12 +26,13 @@ gondula_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_12.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_09.iff",
+		"object/mobile/dressed_ewok_m_10.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_chief, "gondula_chief")

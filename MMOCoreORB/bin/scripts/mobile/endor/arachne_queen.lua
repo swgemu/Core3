@@ -1,6 +1,6 @@
 arachne_queen = Creature:new {
 	objectName = "@mob/creature_names:queen_arachne",
-	socialGroup = "Arachne",
+	socialGroup = "arachne",
 	pvpFaction = "",
 	faction = "",
 	level = 63,

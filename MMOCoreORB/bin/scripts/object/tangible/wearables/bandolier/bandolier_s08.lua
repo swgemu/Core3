@@ -101,6 +101,7 @@ object_tangible_wearables_bandolier_bandolier_s08 = object_tangible_wearables_ba
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_bandolier_s08, "object/tangible/wearables/bandolier/bandolier_s08.iff")

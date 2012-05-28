@@ -29,7 +29,7 @@ draya_korbinari = Creature:new {
 
 	templates = {"object/mobile/dressed_draya_korbinari.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

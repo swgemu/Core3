@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_projectile_rifle_barrel_advanced = objec
    ingredientSlotType = {0, 0},
    resourceTypes = {"iron_axidite", "steel_quadranium"},
    resourceQuantities = {26, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

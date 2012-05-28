@@ -29,7 +29,7 @@ stanic_wavingstar = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_twilek_male_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

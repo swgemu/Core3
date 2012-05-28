@@ -27,8 +27,8 @@ kardeer = Creature:new {
 
 	templates = {"object/mobile/kardeer.iff"},
 	lootGroups = {},
-	weapons = {""},
-	attacks = merge(brawlerua)
+	weapons = {},
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kardeer, "kardeer")

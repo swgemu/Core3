@@ -32,7 +32,7 @@ chadra_fan_female = Creature:new {
 		"object/mobile/dressed_chadra_fan_f_02.iff",
 		"object/mobile/dressed_chadra_fan_f_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

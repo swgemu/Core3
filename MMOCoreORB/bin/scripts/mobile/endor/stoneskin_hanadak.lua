@@ -1,6 +1,6 @@
 stoneskin_hanadak = Creature:new {
 	objectName = "@mob/creature_names:stoneskin_hanadak",
-	socialGroup = "Hanadak",
+	socialGroup = "hanadak",
 	pvpFaction = "",
 	faction = "",
 	level = 139,

@@ -80,6 +80,8 @@ object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
+	experimentalCombineType = {0, 0, 4, 1},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_weapon_tool, "object/tangible/crafting/station/weapon_tool.iff")

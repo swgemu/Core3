@@ -28,7 +28,7 @@ brawler_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_brawler_trainer_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

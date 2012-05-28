@@ -81,6 +81,22 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace factory {
+
+class FactoryObject;
+
+} // namespace factory
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation::factory;
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -190,7 +206,7 @@ public:
 
 	void canManufactureItem(String& type, String& displayedName);
 
-	void manufactureItem();
+	void manufactureItem(FactoryObject* factory);
 
 	void createFactoryBlueprint();
 
@@ -257,6 +273,8 @@ protected:
 	bool assembled;
 
 	bool completed;
+
+	bool initialized;
 
 	int ingredientCounter;
 
@@ -361,7 +379,7 @@ public:
 
 	void canManufactureItem(String& type, String& displayedName);
 
-	void manufactureItem();
+	void manufactureItem(FactoryObject* factory);
 
 	void createFactoryBlueprint();
 
@@ -474,7 +492,7 @@ public:
 
 	void canManufactureItem(String& type, String& displayedName);
 
-	void manufactureItem();
+	void manufactureItem(FactoryObject* factory);
 
 	void createFactoryBlueprint();
 

@@ -29,7 +29,7 @@ tamvar_senzen = Creature:new {
 
 	templates = {"object/mobile/dressed_tamvar_senzen.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

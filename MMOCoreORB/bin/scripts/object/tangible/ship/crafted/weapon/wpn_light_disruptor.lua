@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_wpn_light_disruptor = object_tangible_ship_c
 	experimentalMin = {0, 0, 139, 1, 833, 69, 1, 1850, 361, 268, 231, 694, 16, 315},
 	experimentalMax = {0, 0, 161, 1, 968, 81, 1, 2150, 419, 312, 269, 806, 18, 366},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_wpn_light_disruptor, "object/tangible/ship/crafted/weapon/wpn_light_disruptor.iff")

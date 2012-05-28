@@ -1,8 +1,8 @@
 grassland_blood_marauder = Creature:new {
 	objectName = "@mob/creature_names:grassland_blood_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 420,
@@ -30,8 +30,7 @@ grassland_blood_marauder = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(grassland_blood_marauder, "grassland_blood_marauder")

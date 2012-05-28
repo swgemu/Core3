@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_bracer_r =
    ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 0},
    resourceTypes = {"wood", "hide_leathery", "hide_wooly", "copper", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_padding_segment.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "fiberplast"},
    resourceQuantities = {20, 20, 20, 10, 10, 1, 2, 1, 10},
-   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_structure_naboo_house_player_small_style_02 = object_draf
    ingredientSlotType = {0, 0, 0, 2, 1, 1},
    resourceTypes = {"metal", "ore", "ore", "object/tangible/component/structure/shared_structural_module.iff", "object/tangible/component/structure/shared_light_power_core_unit.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff"},
    resourceQuantities = {100, 200, 200, 10, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

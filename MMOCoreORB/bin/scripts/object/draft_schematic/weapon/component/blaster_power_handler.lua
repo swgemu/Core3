@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
    ingredientSlotType = {0, 0, 0, 0, 0, 3},
    resourceTypes = {"petrochem_inert", "copper", "ore", "metal", "gas_reactive", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"},
    resourceQuantities = {5, 3, 3, 5, 10, 1},
-   combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

@@ -1,8 +1,8 @@
 gondula_ritualist = Creature:new {
-	objectName = "@mob/creature_names:Gondula ritualist",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	objectName = "@mob/creature_names:gundula_ritualist",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 22,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -26,12 +26,15 @@ gondula_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_12.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_f_02.iff",
+		"object/mobile/dressed_ewok_f_10.iff",
+		"object/mobile/dressed_ewok_f_11.iff",
+		"object/mobile/dressed_ewok_m_02.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_ritualist, "gondula_ritualist")

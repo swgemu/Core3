@@ -55,6 +55,7 @@ object_tangible_wearables_wookiee_wke_gloves_s04 = object_tangible_wearables_woo
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_wke_gloves_s04, "object/tangible/wearables/wookiee/wke_gloves_s04.iff")

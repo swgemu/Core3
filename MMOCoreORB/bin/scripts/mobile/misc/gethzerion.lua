@@ -28,7 +28,7 @@ gethzerion = Creature:new {
 
 	templates = {"object/mobile/gethzerion.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -117,6 +117,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen3 = object
 
 	attackSpeed = 5.1,
 	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+	
 	childObjects = {
 		{templateFile = "object/tangible/inventory/lightsaber_inventory_3.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
 	},
@@ -130,6 +132,7 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen3 = object
 	experimentalMin = {0, 0, 195, 285, 5.1, 19, 40, 50, 85, 35},
 	experimentalMax = {0, 0, 215, 305, 4.8, 31, 36, 45, 55, 30},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen3, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen3.iff")

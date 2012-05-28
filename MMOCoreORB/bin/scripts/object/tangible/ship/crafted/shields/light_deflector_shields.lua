@@ -52,6 +52,7 @@ object_tangible_ship_crafted_shields_light_deflector_shields = object_tangible_s
 	experimentalMin = {0, 0, 128, 1, 850, 64, 1, 2125, 213, 213, 1700},
 	experimentalMax = {0, 0, 173, 1, 1150, 86, 1, 2875, 288, 288, 2300},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_light_deflector_shields, "object/tangible/ship/crafted/shields/light_deflector_shields.iff")

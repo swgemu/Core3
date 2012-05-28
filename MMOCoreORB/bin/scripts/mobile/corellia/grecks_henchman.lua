@@ -44,17 +44,16 @@ grecks_henchman = Creature:new {
 	lootGroups = {
       	{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kits", chance = 3500000},
+				{group = "junk", chance = 4000000},
+				{group = "loot_kit_parts", chance = 1000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}	
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(grecks_henchman, "grecks_henchman")

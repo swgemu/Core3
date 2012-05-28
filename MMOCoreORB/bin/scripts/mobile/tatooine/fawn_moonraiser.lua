@@ -28,7 +28,7 @@ fawn_moonraiser = Creature:new {
 
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

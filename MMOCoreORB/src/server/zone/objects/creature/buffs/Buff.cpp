@@ -756,16 +756,6 @@ bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
-	if (_name == "Buff.speedMultiplierMod") {
-		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
-		return true;
-	}
-
-	if (_name == "Buff.accelerationMultiplierMod") {
-		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
-		return true;
-	}
-
 	if (_name == "Buff.fillAttributesOnBuff") {
 		TypeInfo<bool >::parseFromBinaryStream(&fillAttributesOnBuff, stream);
 		return true;
@@ -917,22 +907,6 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.speedMultiplierMod";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&speedMultiplierMod, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "Buff.accelerationMultiplierMod";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&accelerationMultiplierMod, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "Buff.fillAttributesOnBuff";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1046,7 +1020,7 @@ int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 24;
+	return _count + 22;
 }
 
 BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) {
@@ -1059,10 +1033,6 @@ BuffImplementation::BuffImplementation(CreatureObject* creo, unsigned int buffcr
 	buffDuration = duration;
 	// server/zone/objects/creature/buffs/Buff.idl():  		buffType = bufftype;
 	buffType = bufftype;
-	// server/zone/objects/creature/buffs/Buff.idl():  		speedMultiplierMod = -1.f;
-	speedMultiplierMod = -1.f;
-	// server/zone/objects/creature/buffs/Buff.idl():  		accelerationMultiplierMod = -1.f;
-	accelerationMultiplierMod = -1.f;
 	// server/zone/objects/creature/buffs/Buff.idl():  		fillAttributesOnBuff = false;
 	fillAttributesOnBuff = false;
 	// server/zone/objects/creature/buffs/Buff.idl():  		startFlyFile = "";
@@ -1125,13 +1095,13 @@ void BuffImplementation::addState(unsigned long long option) {
 }
 
 void BuffImplementation::setSpeedMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		speedMultiplierMod = multiplier;
-	speedMultiplierMod = multiplier;
+	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_speed_multiplier", multiplier * 100);
+	setSkillModifier("private_speed_multiplier", multiplier * 100);
 }
 
 void BuffImplementation::setAccelerationMultiplierMod(float multiplier) {
-	// server/zone/objects/creature/buffs/Buff.idl():  		accelerationMultiplierMod = multiplier;
-	accelerationMultiplierMod = multiplier;
+	// server/zone/objects/creature/buffs/Buff.idl():  		setSkillModifier("private_acceleration_multiplier", multiplier * 100);
+	setSkillModifier("private_acceleration_multiplier", multiplier * 100);
 }
 
 void BuffImplementation::setFillAttributesOnBuff(bool val) {

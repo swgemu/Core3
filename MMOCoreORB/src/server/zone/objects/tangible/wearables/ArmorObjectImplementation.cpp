@@ -43,6 +43,18 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	acid = armorTemplate->getAcid();
 	lightSaber = armorTemplate->getLightSaber();
 
+	hitLocation = armorTemplate->getHitLocation();
+	if (hitLocation == CombatManager::NOLOCATION) {
+		if (hasArrangementDescriptor("chest2"))
+			hitLocation = CombatManager::CHEST;
+		else if (hasArrangementDescriptor("bicep_r") || hasArrangementDescriptor("bicep_l") || hasArrangementDescriptor("bracer_upper_r") || hasArrangementDescriptor("bracer_upper_l") || hasArrangementDescriptor("gloves"))
+			hitLocation = CombatManager::ARMS;
+		else if (hasArrangementDescriptor("shoes") || hasArrangementDescriptor("pants1"))
+			hitLocation = CombatManager::LEGS;
+		else if (hasArrangementDescriptor("hat"))
+			hitLocation = CombatManager::HEAD;
+	}
+
 	setSliceable(true);
 }
 
@@ -223,11 +235,15 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 
 }
 
+bool ArmorObjectImplementation::isVulnerable(int type) {
+	return (!isSpecial(type) && (vulnerabilites & type));
+}
+
 float ArmorObjectImplementation::getTypeValue(int type, float value) {
 
 	int newValue = 0;
 
-	if(isVulnerable(type))
+	if(vulnerabilites & type)
 		newValue = value;
 
 	else if(isSpecial(type)) {
@@ -330,7 +346,7 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 	baseProtection = values->getCurrentValue("armor_effectiveness");
 
 	/// Because SOE had to be stupid and not make the rules consistant
-	if(values->getMaxValue("armor_special_effectiveness") < 1)
+	if(values->getMaxValue("armor_special_effectiveness") == values->getMinValue("armor_special_effectiveness"))
 		specialProtection = values->getCurrentValue("armor_effectiveness");
 	else
 		specialProtection = values->getCurrentValue("armor_special_effectiveness");
@@ -338,6 +354,8 @@ void ArmorObjectImplementation::updateCraftingValues(CraftingValues* values, boo
 }
 
 void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {
+
+	specialResists = ((int)(craftingValues->getCurrentValue("armor_special_type")));
 
 	for (int i = 0; i <= 8; ++i) {
 
@@ -348,8 +366,7 @@ void ArmorObjectImplementation::calculateSpecialProtection(CraftingValues* craft
 
 		if(value != CraftingValues::VALUENOTFOUND) {
 
-			specialResists = specialResists | type;
-
+			specialResists |= type;
 			setProtectionValue(type, value);
 
 		}

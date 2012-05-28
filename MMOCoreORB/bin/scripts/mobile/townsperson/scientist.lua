@@ -35,7 +35,7 @@ scientist = Creature:new {
 					"object/mobile/dressed_mercenary_medic_rodian_female_01.iff"
 					},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

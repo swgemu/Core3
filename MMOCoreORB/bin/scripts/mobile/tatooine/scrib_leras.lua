@@ -29,7 +29,7 @@ scrib_leras = Creature:new {
 
 	templates = {"object/mobile/dressed_hutt_medic2_twilek_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
 }

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_reinforcement_core_advanced = object_dra
    ingredientSlotType = {0},
    resourceTypes = {"steel_ditanium"},
    resourceQuantities = {25},
-   combineTypes = {0},
    contribution = {100},
 
 

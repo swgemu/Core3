@@ -28,7 +28,7 @@ klaatu = Creature:new {
 
 	templates = {"object/mobile/klaatu.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

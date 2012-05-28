@@ -25,11 +25,9 @@ public:
 		if (args->size() < 1)
 			return;
 
-		PlayerObject* ghost = player->getPlayerObject();
+		ManagedReference<SurveyTool*> surveyTool = cast<SurveyTool*>(suiBox->getUsingObject());
 
-		ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
-
-		if (surveyTool == NULL)
+		if(surveyTool == NULL)
 			return;
 
 		int range = 64 * Integer::valueOf(args->get(0).toString()) + 64;

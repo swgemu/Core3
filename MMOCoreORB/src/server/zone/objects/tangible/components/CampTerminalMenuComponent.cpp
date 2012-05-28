@@ -143,10 +143,9 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 		return;
 	}
 
+	structureManager->destroyStructure(camp);
 	campArea->destroyObjectFromWorld(true);
 	campArea->destroyObjectFromDatabase(true);
-	structureManager->destroyStructure(camp);
-
 }
 
 void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,

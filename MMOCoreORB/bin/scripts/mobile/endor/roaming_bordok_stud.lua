@@ -1,6 +1,6 @@
 roaming_bordok_stud = Creature:new {
 	objectName = "@mob/creature_names:roaming_bordok_stud",
-	socialGroup = "Bordok",
+	socialGroup = "bordok",
 	pvpFaction = "",
 	faction = "",
 	level = 34,

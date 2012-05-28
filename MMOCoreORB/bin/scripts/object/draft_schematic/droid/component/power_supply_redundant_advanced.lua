@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_power_supply_redundant_advanced = object_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel_cubirian", "fuel_petrochem_liquid_known", "gas_reactive_orveth"},
    resourceQuantities = {10, 10, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

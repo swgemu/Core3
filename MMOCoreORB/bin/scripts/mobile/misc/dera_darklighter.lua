@@ -28,7 +28,7 @@ dera_darklighter = Creature:new {
 
 	templates = {"object/mobile/dera_darklighter.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

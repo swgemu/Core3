@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_naboo = object_draft_schematic_scout_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_herbivore_naboo", "hide_scaley_naboo", "bone_avian_naboo"},
    resourceQuantities = {20, 30, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

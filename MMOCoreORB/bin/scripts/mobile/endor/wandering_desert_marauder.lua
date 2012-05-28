@@ -1,8 +1,8 @@
 wandering_desert_marauder = Creature:new {
 	objectName = "@mob/creature_names:wandering_desert_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 47,
 	chanceHit = 0.49,
 	damageMin = 385,
@@ -26,9 +26,9 @@ wandering_desert_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_frenzied_marauder.iff"},
+	templates = {"object/mobile/dressed_wandering_desert_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

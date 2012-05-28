@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_tieaggressor = object_draft_schematic_space
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum", "iron", "fiberplast"},
    resourceQuantities = {24000, 8000, 8000, 8000, 8000, 8000, 8000, 8000},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

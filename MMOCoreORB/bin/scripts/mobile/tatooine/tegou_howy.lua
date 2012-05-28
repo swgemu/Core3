@@ -29,7 +29,7 @@ tegou_howy = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor06.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

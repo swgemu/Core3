@@ -1,8 +1,8 @@
 twisted_donkuwah_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_donkuwah_scavenger",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 280,
@@ -26,9 +26,11 @@ twisted_donkuwah_scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

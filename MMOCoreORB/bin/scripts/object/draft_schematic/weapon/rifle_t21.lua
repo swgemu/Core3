@@ -67,7 +67,6 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
    ingredientSlotType = {0, 0, 0, 0, 1, 0, 1, 3},
    resourceTypes = {"steel_ditanium", "iron_polonium", "metal", "crystalline_gallinorian", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate_alantium", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {150, 85, 20, 15, 10, 30, 1, 1},
-   combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

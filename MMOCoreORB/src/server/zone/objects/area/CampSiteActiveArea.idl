@@ -80,7 +80,7 @@ class CampSiteActiveArea extends ActiveArea {
 	@dereferenced
 	protected TemplateReference<CampStructureTemplate> campStructureData;
 	
-	// 1 Hour Minutes
+	// 1 Hour
 	public final static int DESPAWNTIME = 6000000;
 	
 	// 1 minute
@@ -115,6 +115,7 @@ class CampSiteActiveArea extends ActiveArea {
 	
 	public void setOwner(CreatureObject player) {
 		campOwner = player;
+		camp.setOwnerObjectID(player.getObjectID());
 	}
 	
 	public void setCamp(StructureObject c) {

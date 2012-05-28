@@ -27,7 +27,7 @@ reelo_baruk = Creature:new {
 
 	templates = {"object/mobile/reelo_baruk.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "reelo_baruk_convotemplate",
 	outfit = "reelo_baruk_outfit",
 	attacks = {},

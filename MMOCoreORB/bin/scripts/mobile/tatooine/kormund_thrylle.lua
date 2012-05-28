@@ -29,7 +29,7 @@ kormund_thrylle = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_kormund_thrylle.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

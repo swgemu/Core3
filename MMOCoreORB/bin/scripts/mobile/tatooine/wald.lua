@@ -28,7 +28,7 @@ wald = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_wald.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_performer_effects_e = object_draft_schema
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "gas_inert", "gemstone_crystalline"},
    resourceQuantities = {40, 20, 70},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

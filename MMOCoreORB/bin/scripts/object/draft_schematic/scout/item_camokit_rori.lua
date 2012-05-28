@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_rori = object_draft_schematic_scout_sh
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_carnivore_rori", "hide_leathery_rori", "bone_mammal_rori"},
    resourceQuantities = {25, 30, 15},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

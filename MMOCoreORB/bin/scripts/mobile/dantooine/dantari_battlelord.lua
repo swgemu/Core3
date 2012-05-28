@@ -32,8 +32,7 @@ dantari_battlelord = Creature:new {
 	lootGroups = {},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dantari_battlelord, "dantari_battlelord")

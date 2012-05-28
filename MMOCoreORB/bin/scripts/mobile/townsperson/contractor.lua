@@ -29,7 +29,7 @@ contractor = Creature:new {
 	templates = {"object/mobile/dressed_artisan_trainer_02.iff"},
 				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

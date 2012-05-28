@@ -28,7 +28,7 @@ bapibac = Creature:new {
 	templates = {"object/mobile/dressed_rebel_trooper_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bapibac, "bapibac")

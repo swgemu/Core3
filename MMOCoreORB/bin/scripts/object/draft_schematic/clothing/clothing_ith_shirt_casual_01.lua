@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_01 = object_draft_sche
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "petrochem_inert_polymer"},
    resourceQuantities = {25, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

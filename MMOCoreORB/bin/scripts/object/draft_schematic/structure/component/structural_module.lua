@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "ore", "ore"},
    resourceQuantities = {50, 100, 100},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

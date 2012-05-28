@@ -72,8 +72,18 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<SceneObject*> container = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> container = NULL;
 
+		StringTokenizer args(arguments.toString());
+
+		if(args.hasMoreTokens()) {
+
+			uint64 oid = args.getLongToken();
+			container = server->getZoneServer()->getObject(oid);
+
+		} else {
+			container = server->getZoneServer()->getObject(target);
+		}
 		if (container == NULL)
 			return GENERALERROR;
 

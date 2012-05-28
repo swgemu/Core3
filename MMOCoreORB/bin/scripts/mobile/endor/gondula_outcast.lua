@@ -1,8 +1,8 @@
 gondula_outcast = Creature:new {
-	objectName = "@mob/creature_names:Gondula Outcast",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	objectName = "@mob/creature_names:gundula_outcast",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -26,12 +26,11 @@ gondula_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_12.iff"},
+	templates = {"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_outcast, "gondula_outcast")

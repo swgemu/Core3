@@ -1,8 +1,8 @@
 rageon_vart = Creature:new {
 	objectName = "",
 	customName = "Rageon Vart",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,
@@ -38,8 +38,7 @@ rageon_vart = Creature:new {
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rageon_vart, "rageon_vart")

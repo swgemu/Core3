@@ -29,7 +29,7 @@ huff_darklighter = Creature:new {
 
 	templates = {"object/mobile/huff_darklighter.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "huff_darklighter_outfit",
 	attacks = {

@@ -29,7 +29,7 @@ ytzosh = Creature:new {
 
 	templates = {"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

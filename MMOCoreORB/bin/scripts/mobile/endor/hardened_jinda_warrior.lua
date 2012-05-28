@@ -1,7 +1,7 @@
 hardened_jinda_warrior = Creature:new {
 	objectName = "@mob/creature_names:hardened_jinda_warrior",
-	socialGroup = "Jinda Tribe",
-	pvpFaction = "Jinda Tribe",
+	socialGroup = "jinda_tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 50,
 	chanceHit = 0.5,
@@ -26,9 +26,11 @@ hardened_jinda_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/jinda_male.iff"},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

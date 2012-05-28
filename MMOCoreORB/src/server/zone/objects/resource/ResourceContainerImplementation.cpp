@@ -152,6 +152,7 @@ void ResourceContainerImplementation::split(int newStackSize) {
 }
 
 void ResourceContainerImplementation::split(int newStackSize, CreatureObject* player) {
+
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);

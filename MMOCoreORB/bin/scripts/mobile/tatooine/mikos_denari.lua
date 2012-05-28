@@ -29,7 +29,7 @@ mikos_denari = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_mikos_denari.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

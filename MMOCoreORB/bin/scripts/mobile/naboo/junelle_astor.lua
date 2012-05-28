@@ -29,7 +29,7 @@ junelle_astor = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_junelle_astor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

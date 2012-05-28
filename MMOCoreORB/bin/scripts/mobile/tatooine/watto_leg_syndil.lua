@@ -29,7 +29,7 @@ watto_leg_syndil = Creature:new {
 
 	templates = {"object/mobile/dressed_fs_village_intro_woman.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

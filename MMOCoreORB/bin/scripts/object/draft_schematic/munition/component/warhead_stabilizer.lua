@@ -67,7 +67,6 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"ore", "ore_carbonate", "copper", "gemstone_armophous", "gas_inert", "steel"},
    resourceQuantities = {5, 5, 6, 5, 21, 3},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

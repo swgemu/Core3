@@ -29,10 +29,9 @@ vordin_sildor = Creature:new {
 
 	templates = {"object/mobile/dressed_vordin_sildor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(vordin_sildor, "vordin_sildor")

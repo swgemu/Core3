@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_tie_in_chassis_token = object_tangible_s
 	experimentalMin = {0, 0, 1500, 39000},
 	experimentalMax = {0, 0, 2200, 41000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_tie_in_chassis_token, "object/tangible/ship/components/chassis/tie_in_chassis_token.iff")

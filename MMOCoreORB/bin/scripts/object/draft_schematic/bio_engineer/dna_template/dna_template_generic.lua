@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff"},
    resourceQuantities = {1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

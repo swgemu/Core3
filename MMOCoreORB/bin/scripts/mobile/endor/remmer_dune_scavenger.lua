@@ -1,6 +1,6 @@
 remmer_dune_scavenger = Creature:new {
 	objectName = "@mob/creature_names:remmer_dune_scavenger",
-	socialGroup = "Remmer",
+	socialGroup = "remmer",
 	pvpFaction = "",
 	faction = "",
 	level = 20,

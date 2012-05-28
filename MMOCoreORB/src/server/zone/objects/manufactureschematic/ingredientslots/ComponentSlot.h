@@ -86,7 +86,6 @@ public:
 		if (currentQuantity >= requiredQuantity)
 			return false;
 
-
 		/// Get template
 		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
 
@@ -137,8 +136,6 @@ public:
 			error("Object inserted didn't have a parent");
 			return false;
 		}
-
-
 		/// Extract tano from crate and set it to the incoming object
 		if (crate != NULL) {
 
@@ -148,52 +145,59 @@ public:
 				incomingTano = crate->extractObject(crate->getUseCount());
 		}
 
-		incomingTano->sendAttributeListTo(player);
-
 		if(incomingTano == NULL) {
 			error("Incoming object is NULL");
 			return false;
 		}
 
+		incomingTano->sendAttributeListTo(player);
+
 		ObjectManager* objectManager = ObjectManager::instance();
+		ManagedReference<TangibleObject*> itemToUse = NULL;
 
-		if(incomingTano->getUseCount() <= slotNeeds) {
-
-			if(!satchel->transferObject(incomingTano, -1, true)) {
-				error("cant transfer crafting component");
-				return false;
-			}
-			contents.put(incomingTano, parent);
-
-		} else {
+		if(incomingTano->getUseCount() > slotNeeds) {
 
 			int newCount = incomingTano->getUseCount() - slotNeeds;
 			incomingTano->setUseCount(newCount, true);
-			/// Hacks because the client doesn't display 0 while crafting
-			// Start DTANO3 ***********************************************************
-			// Updates the Complexity and the condition
-			TangibleObjectDeltaMessage3* dtano3 =
-					new TangibleObjectDeltaMessage3(incomingTano);
-			dtano3->addIntUpdate(7, newCount);
-			dtano3->close();
-			player->sendMessage(dtano3);
-			// End DTANO3 *************************************************************
 
-			//incomingTano->setUseCount(newCount, true);
+			itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
+			itemToUse->setUseCount(slotNeeds, false);
+			itemToUse->setParent(NULL);
+			itemToUse->sendAttributeListTo(player);
 
-			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
-			newTano->setUseCount(slotNeeds, false);
+		} else {
+
+			itemToUse = incomingTano;
+		}
+
+		Vector<ManagedReference<TangibleObject*> > itemsToAdd;
+
+		itemsToAdd.add(itemToUse);
+		while(itemToUse->getUseCount() > 1) {
+
+			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(itemToUse));
 			newTano->setParent(NULL);
+			newTano->setUseCount(1, false);
+			itemsToAdd.add(newTano);
 
-			if(!satchel->transferObject(newTano, -1, true)) {
-				error("cant transfer crafting component");
+			itemToUse->decreaseUseCount();
+		}
+
+		while(itemsToAdd.size() > 0) {
+			ManagedReference<TangibleObject*> tano = itemsToAdd.remove(0);
+			if(!satchel->transferObject(tano, -1, true)) {
+				error("cant transfer crafting component Has Items: " + String::valueOf(satchel->getContainerObjectsSize()));
 				return false;
 			}
-			contents.put(newTano, parent);
+			VectorMapEntry<ManagedReference<TangibleObject*>, ManagedReference<SceneObject*> > entry(tano, parent);
 
-			newTano->sendAttributeListTo(player);
+			if(!contents.isEmpty()) {
+				parent->broadcastDestroy(tano, true);
+			}
 
+			contents.add(entry);
 		}
+
 		return true;
 	}
 
@@ -201,7 +205,7 @@ public:
 
 		for(int i = 0; i < contents.size(); ++i) {
 			TangibleObject* object = contents.elementAt(i).getKey();
-			SceneObject* parent = contents.get(object);
+			SceneObject* parent = contents.elementAt(i).getValue();
 
 			if(parent == NULL) {
 				warning("Can't return object, parent is null");
@@ -214,6 +218,7 @@ public:
 			}
 
 			parent->transferObject(object, -1, true);
+			parent->broadcastObject(object, true);
 		}
 
 		contents.removeAll();

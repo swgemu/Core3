@@ -67,7 +67,6 @@ object_draft_schematic_item_item_recycler_chemical = object_draft_schematic_item
    ingredientSlotType = {1, 1, 0, 0},
    resourceTypes = {"object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff", "object/tangible/loot/simple_kit/shared_feed_tubes.iff", "fiberplast", "gemstone"},
    resourceQuantities = {1, 1, 50, 30},
-   combineTypes = {1, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

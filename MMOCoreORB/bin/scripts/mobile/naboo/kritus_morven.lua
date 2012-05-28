@@ -29,7 +29,7 @@ kritus_morven = Creature:new {
 
 	templates = {"object/mobile/dressed_kritus_morven.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

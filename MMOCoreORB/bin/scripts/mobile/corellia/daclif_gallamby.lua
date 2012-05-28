@@ -29,7 +29,7 @@ daclif_gallamby = Creature:new {
 
 	templates = {"object/mobile/dressed_daclif_gallamby.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

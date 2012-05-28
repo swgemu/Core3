@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_hat_casual_14 = object_draft_schematic_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"fiberplast", "petrochem_inert", "fiberplast"},
    resourceQuantities = {10, 6, 6},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

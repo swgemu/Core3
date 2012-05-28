@@ -171,22 +171,20 @@ String WeaponObjectImplementation::getWeaponType() {
 	case SceneObjectType::POLEARM:
 		weaponType = "polearm";
 		break;
+	case SceneObjectType::THROWNWEAPON:
+	case SceneObjectType::MINE:
+	case SceneObjectType::SPECIALHEAVYWEAPON:
 	case SceneObjectType::HEAVYWEAPON:
 		weaponType = "heavyweapon";
-		break;
-	case SceneObjectType::ONEHANDEDLIGHTSABER:
-		weaponType = "onehandlightsaber";
-		break;
-	case SceneObjectType::TWOHANDEDLIGHTSABER:
-		weaponType = "twohandlightsaber";
-		break;
-	case SceneObjectType::DOUBLEBLADEDLIGHTSABER:
-		weaponType = "polearmlightsaber";
 		break;
 	default:
 		weaponType = "unarmed";
 		break;
 	}
+
+	if (isJediOneHandedWeapon()) weaponType = "onehandlightsaber";
+	if (isJediTwoHandedWeapon()) weaponType = "twohandlightsaber";
+	if (isJediPolearmWeapon()) weaponType = "polearmlightsaber";
 
 	return weaponType;
 }

@@ -28,7 +28,7 @@ quarren = Creature:new {
 
 	templates = {"object/mobile/quarren_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

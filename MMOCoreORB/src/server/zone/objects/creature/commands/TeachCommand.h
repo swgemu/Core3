@@ -48,7 +48,6 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/PlayerTeachSuiCallback.h"
-#include "server/zone/objects/player/sessions/PlayerTeachSession.h"
 
 class TeachCommand : public QueueCommand {
 public:
@@ -58,89 +57,32 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
+	int doQueueCommand(CreatureObject* teacher, const uint64& target, const UnicodeString& arguments) {
+		if (!checkStateMask(teacher))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(teacher))
 			return INVALIDLOCOMOTION;
 
-		ZoneServer* zserv = creature->getZoneServer();
+		ZoneServer* zoneServer = server->getZoneServer();
 
-		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
-
-		if (targetObject == NULL || !targetObject->isCreatureObject()) {
-			return INVALIDTARGET; // Shouldn't get here, but...
-		}
-
-		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
+		ManagedReference<SceneObject*> student = zoneServer->getObject(target);
+		zoneServer->getPlayerManager()->promptTeachableSkills(teacher, student);
 
 
-		Locker clocker(targetCreature, creature);
+		/**
+		experience_received You have received %DI Apprenticeship experience.
+		learning_failed Learning failed.
 
-		// By now, the target player should have skills that the teaching player can teach. Let's add each skillbox to a vector.
-
-		PlayerTeachSession* sessioncheck = cast<PlayerTeachSession* >(targetCreature->getActiveSession(SessionFacadeType::PLAYERTEACH));
-
-		if (sessioncheck != NULL) {
-			creature->sendSystemMessage("Your target already has an offer to teach.");
-			targetCreature->dropActiveSession(SessionFacadeType::PLAYERTEACH);
-			return GENERALERROR;
-		}
-
-		ManagedReference<PlayerTeachSession*> session = new PlayerTeachSession(targetCreature);
-		targetCreature->addActiveSession(SessionFacadeType::PLAYERTEACH, session);
-
-		SkillList* skillList = creature->getSkillList();
-
-		// Exclude ones they don't qualify for, AND novice boxes (aren't player teachable.)
-
-		for (int i = 0; i < skillList->size(); ++i) {
-			Skill* skill = skillList->get(i);
-			if (SkillManager::instance()->canLearnSkill(skill->getSkillName(), targetCreature, false) && (skill->getSkillName().indexOf("_novice") == -1)){
-				session->addTeachableSkill(skill->getSkillName());
-			}
-		}
-
-		// Now, we check to see if the training player has any skills the target can learn.
-
-		if (session->getTeachableSkillsSize() == 0){
-			StringIdChatParameter params("teaching", "no_skills_for_student"); // You have no skills that %TT can currently learn."
-			params.setTT(targetCreature->getDisplayedName());
-			creature->sendSystemMessage(params);
-			targetCreature->dropActiveSession(SessionFacadeType::PLAYERTEACH);
-			return GENERALERROR;
-		}
-
-		// Now, we display the teachable skills to the player offering teaching.
-
-		ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::TEACH_SKILL);
-		sui->setPromptTitle("@base_player:swg");
-		sui->setPromptText("Select which skill you wish to teach..."); // TODO: Get actual strings.
-
-		for (int i = 0; i < session->getTeachableSkillsSize(); i++) {
-			String skillbox = session->getTeachableSkill(i);
-			sui->addMenuItem("@skl_n:" + skillbox);
-
-		}
-
-		sui->setCallback(new PlayerTeachSuiCallback(creature->getZoneServer()));
-
-		sui->setCancelButton(true, "Cancel");
-		sui->setUsingObject(targetCreature);
-
-		sui->setForceCloseDistance(32);
-
-		creature->getPlayerObject()->addSuiBox(sui);
-		creature->sendMessage(sui->generateMessage());
-
-		// Dump what was listed in the SUI box, since we've moved on!
-
-		for (int i = 0; i < session->getTeachableSkillsSize() ; i++ ){
-			String theBoxName = session->getTeachableSkill(i);
-			session->dropTeachableSkill(theBoxName);
-		}
+		//no_skills_for_student You have no skills that  %TT can currently learn."
+		offer_given You offer to teach %TT %TO.
+		offer_refused %TT has refused your offer to teach.
+		student_skill_learned You learn %TO from %TT.
+		teacher_skill_learned %TT learns %TO from you.
+		teacher_too_far Your teacher must be nearby in order to learn.
+		teacher_too_far_target You are too far away from %TT to learn.
+		teaching_failed Teaching failed.
+		 */
 
 		return SUCCESS;
 	}

@@ -28,7 +28,7 @@ hunter = Creature:new {
 	templates = {"object/mobile/dressed_commoner_naboo_twilek_female_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hunter, "hunter")

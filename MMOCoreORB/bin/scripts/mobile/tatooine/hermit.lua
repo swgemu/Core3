@@ -28,7 +28,7 @@ hermit = Creature:new {
 
 	templates = {"object/mobile/dressed_hermit_of_tatooine.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

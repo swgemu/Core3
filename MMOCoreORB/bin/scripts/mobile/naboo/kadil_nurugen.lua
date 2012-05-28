@@ -29,7 +29,7 @@ kadil_nurugen = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_kadil_nurugen.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

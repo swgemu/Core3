@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_woolamander_deed = object_tangible_deed_pet_deed_s
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_woolamander_deed, "object/tangible/deed/pet_deed/woolamander_deed.iff")

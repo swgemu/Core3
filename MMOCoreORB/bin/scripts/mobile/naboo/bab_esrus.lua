@@ -29,7 +29,7 @@ bab_esrus = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

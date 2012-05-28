@@ -43,8 +43,7 @@ light_jedi_sentinel = Creature:new {
 	},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(lightsabermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(light_jedi_sentinel, "light_jedi_sentinel")

@@ -67,7 +67,6 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "copper", "metal"},
    resourceQuantities = {10, 20, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

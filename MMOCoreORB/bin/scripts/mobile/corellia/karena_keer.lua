@@ -29,7 +29,7 @@ karena_keer = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_zabrak_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

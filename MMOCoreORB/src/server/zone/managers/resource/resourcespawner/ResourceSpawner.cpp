@@ -58,6 +58,7 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 		ZoneProcessServer* impl, ObjectManager* objMan) {
@@ -390,6 +391,10 @@ ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		const Vector<String>& excludes, const String& zonerestriction) {
+
+	if(type.isEmpty())
+		return NULL;
+
 	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes,
 			zonerestriction);
 
@@ -594,15 +599,19 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	player->inflictDamage(player, CreatureAttribute::MIND, 100, false, true);
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	if(session == NULL) {
+		return;
+	}
 
-	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player == NULL
 			|| player->getZone() == NULL)
 		return;
 
 	String zoneName = player->getZone()->getZoneName();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
 	Survey* surveyMessage = new Survey();
 
@@ -679,12 +688,18 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 		const String& sampleAnimation) {
 
 	// Determine if survey tool is valid, and that resource actually exists
-	PlayerObject* ghost = player->getPlayerObject();
-	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
+	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	if(session == NULL) {
+		return;
+	}
+
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player == NULL
 			|| player->getZone() == NULL)
 		return;
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
 	/*if (player->getHAM(CreatureAttribute::ACTION) < 200) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -721,11 +736,14 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 void ResourceSpawner::sendSampleResults(CreatureObject* player,
 		const float density, const String& resname) {
 
-	Locker playerLocker(player);
+	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	if(session == NULL) {
+		return;
+	}
 
-	// Determine if survey tool is valid, and that resource actually exists
+	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
 	PlayerObject* ghost = player->getPlayerObject();
-	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
+
 	if (surveyTool == NULL || player == NULL || player->getZone() == NULL)
 		return;
 
@@ -755,12 +773,12 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 		return;
 	}
 
-	Coordinate* richSampleLocation = surveyTool->getRichSampleLocation();
+	Coordinate* richSampleLocation = session->getRichSampleLocation();
 
 	float sampleRate = (surveySkill * density) + System::random(100);
 
 	// Was the sample successful or not
-	if (!surveyTool->tryGamble() && richSampleLocation == NULL && sampleRate
+	if (!session->tryGamble() && richSampleLocation == NULL && sampleRate
 			< 40) {
 		StringIdChatParameter message("survey", "sample_failed");
 		message.setTO(resname);
@@ -775,14 +793,14 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 			* samplingMultiplier;
 	int xpcap = 40;
 
-	if (surveyTool->tryGamble()) {
+	if (session->tryGamble()) {
 		if (System::random(2) == 1) {
 			player->sendSystemMessage("@survey:gamble_success");
 			unitsExtracted *= 5;
 		} else {
 			player->sendSystemMessage("@survey:gamble_fail");
 		}
-		surveyTool->clearGamble();
+		session->clearGamble();
 		xpcap = 50;
 	}
 
@@ -798,7 +816,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 			player->sendSystemMessage("@survey:node_not_close");
 		}
 
-		surveyTool->clearRichSampleLocation();
+		session->clearRichSampleLocation();
 		xpcap = 50;
 	}
 

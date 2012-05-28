@@ -28,7 +28,7 @@ smuggler = Creature:new {
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(smuggler, "smuggler")

@@ -487,7 +487,11 @@ void PlanetManagerImplementation::loadClientRegions() {
 			region->setMunicipalZone(true);
 		}
 
-		cityRegion->addRegion(x, y, radius * 2, false);
+		ManagedReference<ActiveArea*> noBuild = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+		noBuild->initializePosition(x, 0, y);
+		noBuild->setRadius(radius * 2);
+		noBuild->setNoBuildArea(true);
+		zone->transferObject(noBuild, -1, true);
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");

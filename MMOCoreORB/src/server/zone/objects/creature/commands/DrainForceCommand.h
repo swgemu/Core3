@@ -46,12 +46,13 @@ which carries forward this exception.
 #define DRAINFORCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
-class DrainForceCommand : public QueueCommand {
+class DrainForceCommand : public CombatQueueCommand {
 public:
 
 	DrainForceCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +64,49 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		// Fail if target is not a player...
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isCreatureObject())
+			return INVALIDTARGET;
+
+		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
+
+		if (targetCreature == NULL)
+			return INVALIDTARGET;
+
+		Locker clocker(targetCreature, creature);
+
+		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (targetGhost == NULL || playerObject == NULL)
+			return GENERALERROR;
+
+		if (targetCreature->isAiAgent())
+			return INVALIDTARGET;
+
+		if (targetGhost != NULL && targetGhost->getForcePower() < 0) {
+			creature->sendSystemMessage("@jedi_spam:target_no_force");
+			return GENERALERROR;
+		}
+
+		if (targetGhost->getForcePower() > 0 && targetCreature->isAttackableBy(creature)) {
+			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
+			playerObject->setForcePower(playerObject->getForcePower() + 100);
+			return doCombatAction(creature, target);
+		}
+
+		return GENERALERROR;
+	}
+
+	float getCommandDuration(CreatureObject* object) {
+		return defaultTime * 3.0;
 	}
 
 };

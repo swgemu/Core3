@@ -1,7 +1,7 @@
 jinda_outcast = Creature:new {
 	objectName = "@mob/creature_names:jinda_outcast",
 	socialGroup = "self",
-	pvpFaction = "Jinda Tribe",
+	pvpFaction = "jinda_tribe",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,
@@ -26,9 +26,13 @@ jinda_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/jinda_male_01.iff"},
+	templates = {
+			"object/mobile/jinda_male.iff",
+			"object/mobile/jinda_male_01.iff",
+			"object/mobile/jinda_female.iff",
+			"object/mobile/jinda_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

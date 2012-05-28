@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_trimpian = object_draft_schematic_food_shared_d
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"meat", "water", "vegetable_beans", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {10, 15, 5, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

@@ -29,7 +29,7 @@ ging_darjeek = Creature:new {
 
 	templates = {"object/mobile/dressed_ging_darjeek.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

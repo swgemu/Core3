@@ -29,7 +29,7 @@ lethin_bludder = Creature:new {
 
 	templates = {"object/mobile/dressed_lethin_bludder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

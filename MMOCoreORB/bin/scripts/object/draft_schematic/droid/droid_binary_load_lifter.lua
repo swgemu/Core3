@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_binary_load_lifter = object_draft_schematic_d
    ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 1, 3},
    resourceTypes = {"steel", "steel_duranium", "metal", "fiberplast", "steel_duralloy", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm.iff", "object/tangible/component/droid/shared_droid_motive_system_advanced.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {250, 250, 750, 500, 750, 1, 2, 6, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

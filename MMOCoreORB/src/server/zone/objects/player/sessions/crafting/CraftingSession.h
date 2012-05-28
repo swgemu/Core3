@@ -152,6 +152,7 @@ namespace zone {
 namespace objects {
 namespace player {
 namespace sessions {
+namespace crafting {
 
 class CraftingSession : public Facade {
 public:
@@ -193,19 +194,21 @@ protected:
 	friend class CraftingSessionHelper;
 };
 
+} // namespace crafting
 } // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player::sessions;
+using namespace server::zone::objects::player::sessions::crafting;
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
 namespace sessions {
+namespace crafting {
 
 class CraftingSessionImplementation : public FacadeImplementation {
 protected:
@@ -388,12 +391,13 @@ public:
 	friend class Singleton<CraftingSessionHelper>;
 };
 
+} // namespace crafting
 } // namespace sessions
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player::sessions;
+using namespace server::zone::objects::player::sessions::crafting;
 
 #endif /*CRAFTINGSESSION_H_*/

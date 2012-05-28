@@ -51,6 +51,7 @@ object_tangible_mission_quest_item_attunement_grid = object_tangible_mission_que
 	experimentalMin = {0, 0, 100, -15},
 	experimentalMax = {0, 0, 150, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_attunement_grid, "object/tangible/mission/quest_item/attunement_grid.iff")

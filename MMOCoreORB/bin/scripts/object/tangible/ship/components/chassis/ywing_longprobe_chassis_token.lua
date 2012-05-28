@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_ywing_longprobe_chassis_token = object_t
 	experimentalMin = {0, 0, 2000, 165750},
 	experimentalMax = {0, 0, 3000, 174250},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_ywing_longprobe_chassis_token, "object/tangible/ship/components/chassis/ywing_longprobe_chassis_token.iff")

@@ -38,7 +38,7 @@ farmer = Creature:new {
 					"object/mobile/dressed_commoner_fat_human_male_01.iff"
 					},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

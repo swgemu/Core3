@@ -67,7 +67,6 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "ore"},
    resourceQuantities = {8, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_bikini_casual_02 = object_draft_schemat
    ingredientSlotType = {1, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "copper", "hide_wooly"},
    resourceQuantities = {2, 50, 50},
-   combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
 

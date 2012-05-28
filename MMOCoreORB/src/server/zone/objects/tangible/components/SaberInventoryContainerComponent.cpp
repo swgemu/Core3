@@ -65,7 +65,7 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	CreatureObject* creature = cast<CreatureObject*>(sceneObject->getParent());
+	CreatureObject* creature = cast<CreatureObject*>(object->getParent());
 
 	if (creature != NULL && crystal->getOwner() != creature->getDisplayedName()){
 		errorDescription = "@jedi_spam:saber_crystal_not_owner";

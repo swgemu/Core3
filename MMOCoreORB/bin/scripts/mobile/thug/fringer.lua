@@ -30,7 +30,7 @@ fringer = Creature:new {
 				"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"
 	},
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {},
 	attacks = {}
 }
 

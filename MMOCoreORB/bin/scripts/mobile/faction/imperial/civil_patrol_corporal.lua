@@ -30,8 +30,7 @@ civil_patrol_corporal = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(civil_patrol_corporal, "civil_patrol_corporal")

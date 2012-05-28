@@ -1,6 +1,6 @@
 roba_runt = Creature:new {
 	objectName = "@mob/creature_names:roba_runt",
-	socialGroup = "Roba",
+	socialGroup = "roba",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

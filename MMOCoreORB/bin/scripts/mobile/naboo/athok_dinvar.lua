@@ -29,7 +29,7 @@ athok_dinvar = Creature:new {
 
 	templates = {"object/mobile/dressed_athok_dinvar.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

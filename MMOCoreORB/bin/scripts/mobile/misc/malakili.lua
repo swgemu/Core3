@@ -28,7 +28,7 @@ malakili = Creature:new {
 
 	templates = {"object/mobile/malakili.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schema
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
    resourceTypes = {"bone", "hide", "hide", "metal", "petrochem_inert", "hide", "object/tangible/component/armor/shared_armor_segment_bone.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {10, 10, 10, 5, 3, 5, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

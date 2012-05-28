@@ -29,7 +29,7 @@ brantlee_spondoon = Creature:new {
 
 	templates = {"object/mobile/dressed_brantlee_spondoon.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

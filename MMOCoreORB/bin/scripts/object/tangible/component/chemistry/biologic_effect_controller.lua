@@ -52,6 +52,7 @@ object_tangible_component_chemistry_biologic_effect_controller = object_tangible
 	experimentalMin = {0, 0, 1, 1, 1000},
 	experimentalMax = {0, 0, 10, 10, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_biologic_effect_controller, "object/tangible/component/chemistry/biologic_effect_controller.iff")

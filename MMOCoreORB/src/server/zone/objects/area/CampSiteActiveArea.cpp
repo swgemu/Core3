@@ -589,6 +589,8 @@ void CampSiteActiveAreaImplementation::setTerminal(Terminal* term) {
 void CampSiteActiveAreaImplementation::setOwner(CreatureObject* player) {
 	// server/zone/objects/area/CampSiteActiveArea.idl():  		campOwner = player;
 	campOwner = player;
+	// server/zone/objects/area/CampSiteActiveArea.idl():  		camp.setOwnerObjectID(player.getObjectID());
+	camp->setOwnerObjectID(player->getObjectID());
 }
 
 void CampSiteActiveAreaImplementation::setCamp(StructureObject* c) {

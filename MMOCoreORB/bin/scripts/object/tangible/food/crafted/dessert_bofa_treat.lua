@@ -74,6 +74,7 @@ object_tangible_food_crafted_dessert_bofa_treat = object_tangible_food_crafted_s
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_bofa_treat, "object/tangible/food/crafted/dessert_bofa_treat.iff")

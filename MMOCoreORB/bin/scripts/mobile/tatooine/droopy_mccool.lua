@@ -28,7 +28,7 @@ droopy_mccool = Creature:new {
 
 	templates = {"object/mobile/droopy_mccool.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

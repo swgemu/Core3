@@ -28,7 +28,7 @@ nym = Creature:new {
 
 	templates = {"object/mobile/nym.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

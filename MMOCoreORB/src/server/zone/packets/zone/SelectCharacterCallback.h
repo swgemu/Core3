@@ -90,17 +90,30 @@ public:
 
 				playerParent = playerParent == NULL ? currentParent : playerParent;
 
-				playerParent->transferObject(player, -1, false);
+				ManagedReference<SceneObject*> root = playerParent->getRootParent();
+
+				root = root == NULL ? playerParent : root;
 
 				ghost->updateLastValidatedPosition();
 
-				if (player->getZone() == NULL) {
-					SceneObject* root = player->getRootParent();
+				if (root->getZone() == NULL && root->isStructureObject()) {
+					player->initializePosition(root->getPositionX(), root->getPositionZ(), root->getPositionY());
 
-					zone->transferObject(root, -1, false);
+					zone->transferObject(player, -1, true);
+
+					playerParent = NULL;
+				} else {
+					playerParent->transferObject(player, -1, false);
+
+					if (player->getZone() == NULL) {
+						SceneObject* root = player->getRootParent();
+
+						zone->transferObject(root, -1, false);
+					}
+
+					player->sendToOwner(true);
 				}
 
-				player->sendToOwner(true);
 			} else if (currentParent == NULL) {
 				zone->transferObject(player, -1, true);
 			} else {

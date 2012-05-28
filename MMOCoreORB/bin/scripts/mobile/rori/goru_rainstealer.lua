@@ -29,7 +29,7 @@ goru_rainstealer = Creature:new {
 
 	templates = {"object/mobile/dressed_goru_rainstealer.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

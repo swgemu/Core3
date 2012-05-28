@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"petrochem_inert_polymer", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {240, 60, 4},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

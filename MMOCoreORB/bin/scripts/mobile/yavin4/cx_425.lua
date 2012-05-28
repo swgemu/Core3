@@ -29,7 +29,7 @@ cx_425 = Creature:new {
 
 	templates = {"object/mobile/dressed_cx_425.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

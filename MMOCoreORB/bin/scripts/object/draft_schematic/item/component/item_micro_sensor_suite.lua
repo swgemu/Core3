@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
    ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 3},
    resourceTypes = {"steel", "metal", "ore", "gas_inert", "metal", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
    resourceQuantities = {10, 6, 3, 15, 3, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 

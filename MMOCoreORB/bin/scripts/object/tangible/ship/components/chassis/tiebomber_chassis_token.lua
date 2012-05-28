@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_tiebomber_chassis_token = object_tangibl
 	experimentalMin = {0, 0, 2500, 185250},
 	experimentalMax = {0, 0, 3500, 194750},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_tiebomber_chassis_token, "object/tangible/ship/components/chassis/tiebomber_chassis_token.iff")

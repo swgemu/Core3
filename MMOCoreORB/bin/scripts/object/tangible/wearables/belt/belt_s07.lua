@@ -101,6 +101,7 @@ object_tangible_wearables_belt_belt_s07 = object_tangible_wearables_belt_shared_
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_belt_belt_s07, "object/tangible/wearables/belt/belt_s07.iff")

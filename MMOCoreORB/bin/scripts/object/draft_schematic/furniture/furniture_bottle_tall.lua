@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_bottle_tall = object_draft_schematic_
    ingredientSlotType = {0},
    resourceTypes = {"gemstone_crystalline"},
    resourceQuantities = {60},
-   combineTypes = {0},
    contribution = {100},
 
 

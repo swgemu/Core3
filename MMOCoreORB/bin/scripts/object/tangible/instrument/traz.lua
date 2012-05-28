@@ -53,6 +53,7 @@ object_tangible_instrument_traz = object_tangible_instrument_shared_traz:new {
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_traz, "object/tangible/instrument/traz.iff")

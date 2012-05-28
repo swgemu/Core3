@@ -758,8 +758,8 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* creature, uint64 entid, const String& mood, bool updateEntValue) {
 	creature->setListenToID(entid, true);
 
-	if (updateEntValue)
-		creature->setTerrainNegotiation(0.8025000095f, true);
+	/*if (updateEntValue)
+		creature->setTerrainNegotiation(0.8025000095f, true);*/
 
 	String str = Races::getMoodStr(mood);
 	creature->setMoodString(str, true);
@@ -767,7 +767,7 @@ void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* 
 
 
 void EntertainingSessionImplementation::sendEntertainingUpdate(CreatureObject* creature, float entval, const String& performance, uint32 perfcntr, int instrid) {
-	creature->setTerrainNegotiation(entval, true);
+	//creature->setTerrainNegotiation(entval, true);
 
 	creature->setPerformanceAnimation(performance, false);
 	creature->setPerformanceCounter(0, false);

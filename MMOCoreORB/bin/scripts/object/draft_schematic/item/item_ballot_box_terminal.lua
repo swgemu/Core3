@@ -67,7 +67,6 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"mineral", "chemical", "metal", "chemical", "steel", "chemical", "copper"},
    resourceQuantities = {8, 4, 2, 6, 5, 5, 5},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

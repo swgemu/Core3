@@ -29,7 +29,7 @@ thracken_sal_solo = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_human_male_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "thracken_sal_solo_outfit",
 	attacks = {

@@ -12,6 +12,7 @@
 #include "LuaTemplate.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 class LootItemTemplate: public LuaTemplate {
 protected:
@@ -51,6 +52,7 @@ public:
 					float max = row.getFloatAt(3);
 					float prec = 0;
 					bool hidden = false;
+					short combineType = CraftingManager::LINEARCOMBINE;
 
 					if (row.getTableSize() > 3)
 						prec = row.getFloatAt(4);
@@ -58,7 +60,11 @@ public:
 					if (row.getTableSize() > 4)
 						hidden = row.getBooleanAt(5);
 
-					craftingValues.addExperimentalProperty(property, property, min, max, prec, hidden);
+					if (row.getTableSize() > 5)
+						combineType = row.getIntAt(6);
+
+					craftingValues.addExperimentalProperty(property, property,
+							min, max, prec, hidden, combineType);
 					craftingValues.setMaxPercentage(property, 1.0f);
 				}
 

@@ -29,7 +29,7 @@ ithorian_musician = Creature:new {
 
 	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

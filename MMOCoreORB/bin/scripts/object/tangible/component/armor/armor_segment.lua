@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_segment = object_tangible_component_armor_
 	experimentalMin = {0, 0, 1000, 1, 100, 9, 11, 9, 1, 2, 1, 100},
 	experimentalMax = {0, 0, 1000, 5, 1000, 1, 1, 1, 1, 2, 10, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment, "object/tangible/component/armor/armor_segment.iff")

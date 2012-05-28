@@ -99,6 +99,10 @@ class ActiveArea extends SceneObject {
 	public abstract boolean isRegion() {
 		return false;
 	}
+	
+	public abstract boolean isCityRegion() {
+		return false;
+	}
 
 	public boolean isNoBuildArea() {
 		return noBuildArea;

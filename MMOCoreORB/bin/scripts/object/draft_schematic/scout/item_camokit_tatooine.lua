@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_tatooine = object_draft_schematic_scou
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_reptilian_tatooine", "hide_wooly_tatooine", "bone_mammal_tatooine"},
    resourceQuantities = {20, 30, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

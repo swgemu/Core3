@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_sofachair_modern = object_draft_schem
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "hide"},
    resourceQuantities = {250, 200},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

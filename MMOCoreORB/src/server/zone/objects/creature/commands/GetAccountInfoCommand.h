@@ -108,6 +108,14 @@ public:
 				if (targetCreature != NULL)
 					account = playerManager->getAccount(targetCreature->getPlayerObject()->getAccountID());
 			} else if(type.toLowerCase() == "-a") {
+
+				while(args.hasMoreTokens()) {
+					String token;
+					args.getStringToken(token);
+
+					name += " " + token;
+				}
+
 				account = playerManager->getAccount(name);
 
 				if(account == NULL) {

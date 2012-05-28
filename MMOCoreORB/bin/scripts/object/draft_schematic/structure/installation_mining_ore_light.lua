@@ -67,7 +67,6 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "steel", "ore", "metal_nonferrous", "aluminum"},
    resourceQuantities = {110, 60, 50, 15, 15},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

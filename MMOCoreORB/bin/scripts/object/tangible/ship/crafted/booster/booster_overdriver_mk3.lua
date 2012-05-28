@@ -52,6 +52,7 @@ object_tangible_ship_crafted_booster_booster_overdriver_mk3 = object_tangible_sh
 	experimentalMin = {0, 0, 12, 9, 980},
 	experimentalMax = {0, 0, 22, 17, 1820},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_booster_booster_overdriver_mk3, "object/tangible/ship/crafted/booster/booster_overdriver_mk3.iff")

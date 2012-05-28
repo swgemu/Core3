@@ -7,7 +7,7 @@ dathomir_world_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "baz_nitch_lair",
+			lairTemplateName = "dathomir_baz_nitch_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 50,
@@ -16,7 +16,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "bolma_lair",
+			lairTemplateName = "dathomir_bolma_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 30,
@@ -25,7 +25,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "brackaset_lair",
+			lairTemplateName = "dathomir_brackaset_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 26,
 			maxDifficulty = 36,
@@ -34,7 +34,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "bull_rancor_lair",
+			lairTemplateName = "dathomir_rancor_bull_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 65,
 			maxDifficulty = 80,
@@ -43,7 +43,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "gaping_spider_lair",
+			lairTemplateName = "dathomir_gaping_spider_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 26,
 			maxDifficulty = 36,
@@ -52,7 +52,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "giant_baz_nitch_lair",
+			lairTemplateName = "dathomir_giant_baz_nitch_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 35,
 			maxDifficulty = 45,
@@ -61,7 +61,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "kwi_lair",
+			lairTemplateName = "dathomir_kwi_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 20,
@@ -70,7 +70,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "malkloc_lair",
+			lairTemplateName = "dathomir_malkloc_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 32,
@@ -79,7 +79,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "purbole_lair",
+			lairTemplateName = "dathomir_purbole_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 17,
 			maxDifficulty = 27,
@@ -88,16 +88,16 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rancor_lair",
+			lairTemplateName = "dathomir_rancor_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 50,
-			maxDifficulty = 120,
+			maxDifficulty = 100,
 			numberToSpawn = 0,
-			weighting = 15,
+			weighting = 30,
 			size = 25
 		},
 		{
-			lairTemplateName = "reptilian_flier_lair",
+			lairTemplateName = "dathomir_reptilian_flyer_flock_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 26,
@@ -106,7 +106,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "shear_mite_lair",
+			lairTemplateName = "dathomir_shear_mite_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 26,
@@ -115,7 +115,7 @@ dathomir_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "verne_lair",
+			lairTemplateName = "dathomir_verne_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 16,

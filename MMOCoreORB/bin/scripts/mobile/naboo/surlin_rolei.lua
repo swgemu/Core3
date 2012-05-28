@@ -29,7 +29,7 @@ surlin_rolei = Creature:new {
 
 	templates = {"object/mobile/dressed_surlin_rolei.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

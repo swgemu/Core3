@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_blaster_pistol_barrel_advanced = object_
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"steel_rhodium", "steel_duralloy", "metal", "armophous_ryll", "metal"},
    resourceQuantities = {17, 14, 10, 3, 6},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

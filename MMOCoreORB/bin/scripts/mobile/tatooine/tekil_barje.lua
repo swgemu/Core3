@@ -29,7 +29,7 @@ tekil_barje = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_tekil_barje.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

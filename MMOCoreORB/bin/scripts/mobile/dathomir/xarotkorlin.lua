@@ -29,7 +29,7 @@ xarotkorlin = Creature:new {
 
 	templates = {"object/mobile/dressed_xarot_korlin.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

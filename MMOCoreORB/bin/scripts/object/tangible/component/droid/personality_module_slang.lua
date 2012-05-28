@@ -52,6 +52,7 @@ object_tangible_component_droid_personality_module_slang = object_tangible_compo
 	experimentalMin = {0, 0, 5, 1000, -10, 25},
 	experimentalMax = {0, 0, 15, 1000, 15, 25},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_slang, "object/tangible/component/droid/personality_module_slang.iff")

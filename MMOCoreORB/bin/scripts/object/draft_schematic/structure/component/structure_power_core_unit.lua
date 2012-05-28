@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_power_core_unit = object_dr
    ingredientSlotType = {0, 0, 0, 0, 1, 1, 1},
    resourceTypes = {"steel", "metal_nonferrous", "ore_carbonate", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff"},
    resourceQuantities = {75, 450, 280, 120, 1, 1, 1},
-   combineTypes = {0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

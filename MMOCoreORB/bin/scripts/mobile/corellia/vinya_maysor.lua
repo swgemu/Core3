@@ -29,7 +29,7 @@ vinya_maysor = Creature:new {
 
 	templates = {"object/mobile/dressed_vinya_maysor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

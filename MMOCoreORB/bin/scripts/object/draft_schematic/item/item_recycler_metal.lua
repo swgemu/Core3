@@ -67,7 +67,6 @@ object_draft_schematic_item_item_recycler_metal = object_draft_schematic_item_sh
    ingredientSlotType = {1, 2, 0, 0, 0},
    resourceTypes = {"object/tangible/loot/simple_kit/shared_motor_small_blue.iff", "object/tangible/loot/simple_kit/shared_heating_element.iff", "fiberplast", "steel", "iron"},
    resourceQuantities = {1, 4, 50, 40, 25},
-   combineTypes = {1, 1, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

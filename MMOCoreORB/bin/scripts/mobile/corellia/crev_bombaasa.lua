@@ -29,7 +29,7 @@ crev_bombaasa = Creature:new {
 
 	templates = {"object/mobile/dressed_crev_bombaasa.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

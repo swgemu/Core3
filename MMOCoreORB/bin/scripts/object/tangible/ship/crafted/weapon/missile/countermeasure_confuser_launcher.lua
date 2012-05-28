@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_confuser_launcher = o
 	experimentalMin = {0, 0, 794, 13260, 397, 1, 978, 0},
 	experimentalMax = {0, 0, 1075, 17940, 537, 1, 1323, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_confuser_launcher, "object/tangible/ship/crafted/weapon/missile/countermeasure_confuser_launcher.iff")

@@ -30,10 +30,9 @@ corsec_soldier = Creature:new {
 		"object/mobile/dressed_corsec_officer_human_male_01.iff",
 		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_soldier, "corsec_soldier")

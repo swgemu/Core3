@@ -52,6 +52,7 @@ object_tangible_ship_crafted_shields_shield_limiter_mk5 = object_tangible_ship_c
 	experimentalMin = {0, 0, -422, -422, 2619},
 	experimentalMax = {0, 0, -312, -312, 3543},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_shield_limiter_mk5, "object/tangible/ship/crafted/shields/shield_limiter_mk5.iff")

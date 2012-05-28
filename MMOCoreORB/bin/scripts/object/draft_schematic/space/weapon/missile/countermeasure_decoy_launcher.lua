@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_decoy_launcher = obje
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive"},
    resourceQuantities = {375, 125},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

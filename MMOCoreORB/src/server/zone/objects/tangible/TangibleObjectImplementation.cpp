@@ -445,6 +445,27 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	return 0;
 }
 
+int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	float newConditionDamage = conditionDamage + damage;
+
+	if (!destroy && newConditionDamage >= maxCondition)
+		newConditionDamage = maxCondition - 1;
+
+	setConditionDamage(newConditionDamage, notifyClient);
+
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0 && attacker != _this)
+			threatMap->addDamage(player, (uint32)damage, xp);
+	}
+
+	if (newConditionDamage >= maxCondition)
+		notifyObjectDestructionObservers(attacker, newConditionDamage);
+
+	return 0;
+}
+
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
@@ -541,11 +562,11 @@ void TangibleObjectImplementation::setInitialCraftingValues(ManufactureSchematic
 	// These 2 values are pretty standard, adding these
 	itemName = "xp";
 	value = float(draftSchematic->getXpAmount());
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
 
 	itemName = "complexity";
 	value = manufactureSchematic->getComplexity();
-	craftingValues->addExperimentalProperty("", itemName, value, value, 0, 1);
+	craftingValues->addExperimentalProperty("", itemName, value, value, 0, true, CraftingManager::OVERRIDECOMBINE);
 
 	float modifier = craftingManager->calculateAssemblyValueModifier(assemblySuccess);
 	int subtitleCounter = 0;
@@ -565,7 +586,8 @@ void TangibleObjectImplementation::setInitialCraftingValues(ManufactureSchematic
 
 		craftingValues->addExperimentalProperty(experimentalTitle, property,
 				resourceWeight->getMinValue(), resourceWeight->getMaxValue(),
-				resourceWeight->getPrecision(), resourceWeight->isFiller());
+				resourceWeight->getPrecision(), resourceWeight->isFiller(),
+				resourceWeight->getCombineType());
 
 		for (int ii = 0; ii < resourceWeight->getPropertyListSize(); ++ii) {
 
@@ -645,7 +667,7 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 
 			modified = true;
 
-			if (craftingValues->hasProperty(property) && !component->getAttributeHidden(property)) {
+			if (craftingValues->hasProperty(property)) {
 
 				max = craftingValues->getMaxValue(property);
 
@@ -657,29 +679,50 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 
 				propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
 
-				currentvalue += propertyvalue;
-				min += propertyvalue;
-				max += propertyvalue;
+				short combineType = craftingValues->getCombineType(property);
 
-				craftingValues->setMinValue(property, min);
-				craftingValues->setMaxValue(property, max);
+				switch(combineType) {
+				case CraftingManager::LINEARCOMBINE:
+					currentvalue += propertyvalue;
+					min += propertyvalue;
+					max += propertyvalue;
 
-				if (draftSlot->getCombineType() == CraftingManager::COMPONENTLINEAR) {
+					craftingValues->setMinValue(property, min);
+					craftingValues->setMaxValue(property, max);
 
 					craftingValues->setCurrentValue(property, currentvalue);
+					break;
+				case CraftingManager::PERCENTAGECOMBINE:
+					currentvalue += propertyvalue;
+					min += propertyvalue;
+					max += propertyvalue;
 
-				} else if (draftSlot->getCombineType() == CraftingManager::COMPONENTPERCENTAGE) {
+					craftingValues->setMinValue(property, min);
+					craftingValues->setMaxValue(property, max);
 
 					craftingValues->setCurrentPercentage(property, currentvalue);
+					break;
+				case CraftingManager::BITSETCOMBINE:
+					currentvalue = (int)currentvalue | (int)propertyvalue;
 
+					craftingValues->setCurrentValue(property , currentvalue);
+					break;
+				case CraftingManager::OVERRIDECOMBINE:
+					// Do nothing because the values should override whatever is
+					// on the component
+					break;
+				default:
+					break;
 				}
-			} else if(!component->getAttributeHidden(property)) {
+
+			} else {
 
 				currentvalue = component->getAttributeValue(property);
 				precision = component->getAttributePrecision(property);
 				experimentalTitle = component->getAttributeTitle(property);
 
-				craftingValues->addExperimentalProperty(experimentalTitle, property, currentvalue, currentvalue, precision, false);
+				craftingValues->addExperimentalProperty(experimentalTitle, property,
+						currentvalue, currentvalue, precision, component->getAttributeHidden(property), CraftingManager::LINEARCOMBINE);
 				craftingValues->setCurrentPercentage(property, 0);
 				craftingValues->setMaxPercentage(property, 0);
 				craftingValues->setCurrentValue(property, currentvalue);

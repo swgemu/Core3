@@ -52,6 +52,7 @@ object_tangible_component_structure_structure_small_storage_section = object_tan
 	experimentalMin = {0, 0, 200},
 	experimentalMax = {0, 0, 500},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_structure_small_storage_section, "object/tangible/component/structure/structure_small_storage_section.iff")

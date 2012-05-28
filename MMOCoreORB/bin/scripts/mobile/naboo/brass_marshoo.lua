@@ -29,7 +29,7 @@ brass_marshoo = Creature:new {
 
 	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_jacket_casual_09 = object_draft_sch
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"petrochem_inert", "hide", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {30, 55, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_belt_formal_17 = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"hide", "petrochem_inert", "ore", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
    resourceQuantities = {25, 15, 4, 2},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

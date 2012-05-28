@@ -29,7 +29,7 @@ bith_musician = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

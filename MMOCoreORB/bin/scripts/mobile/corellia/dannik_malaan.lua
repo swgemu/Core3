@@ -29,7 +29,7 @@ dannik_malaan = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_fat_zabrak_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

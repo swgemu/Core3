@@ -28,7 +28,7 @@ farmers_child = Creature:new {
 
 	templates = {"object/mobile/dressed_quest_farmer_child.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -89,7 +89,7 @@ object_tangible_wearables_armor_composite_armor_composite_bicep_l = object_tangi
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = STUN + LIGHTSABER,
+	vulnerability = STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 25,
@@ -117,6 +117,7 @@ object_tangible_wearables_armor_composite_armor_composite_bicep_l = object_tangi
 	experimentalMin = {0, 0, 0, 1000, 1, 30000, 25, 22, 25, 1, 0, 0, 0},
 	experimentalMax = {0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_armor_composite_bicep_l, "object/tangible/wearables/armor/composite/armor_composite_bicep_l.iff")

@@ -28,7 +28,7 @@ rane_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_neutral.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

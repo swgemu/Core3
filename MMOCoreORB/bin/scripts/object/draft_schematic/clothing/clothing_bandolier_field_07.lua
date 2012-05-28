@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
    ingredientSlotType = {1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_metal_fasteners.iff", "fiberplast", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {1, 15, 1},
-   combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
 

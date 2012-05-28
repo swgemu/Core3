@@ -28,7 +28,7 @@ carbineer_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_carbine_trainer_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

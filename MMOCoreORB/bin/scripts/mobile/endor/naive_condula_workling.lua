@@ -1,8 +1,8 @@
-naive_condula_workling = Creature:new {
+naive_gondula_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_gondula_workling",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 9,
 	chanceHit = 0.27,
 	damageMin = 70,
@@ -26,12 +26,15 @@ naive_condula_workling = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_ewok_f.iff",
+		"object/mobile/dressed_ewok_f_01.iff",
+		"object/mobile/dressed_ewok_m.iff",
+		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(naive_condula_workling, "naive_condula_workling")
+CreatureTemplates:addCreatureTemplate(naive_gondula_workling, "naive_gondula_workling")

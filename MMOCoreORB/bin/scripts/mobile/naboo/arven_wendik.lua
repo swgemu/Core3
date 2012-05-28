@@ -29,7 +29,7 @@ arven_wendik = Creature:new {
 
 	templates = {"object/mobile/dressed_arven_wendik.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

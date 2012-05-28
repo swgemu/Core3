@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_armor_effectiveness_intensifier_mk4 = object
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

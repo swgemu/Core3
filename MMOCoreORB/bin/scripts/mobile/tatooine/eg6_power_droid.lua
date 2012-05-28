@@ -28,7 +28,7 @@ eg6_power_droid = Creature:new {
 
 	templates = {"object/mobile/eg6_power_droid.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

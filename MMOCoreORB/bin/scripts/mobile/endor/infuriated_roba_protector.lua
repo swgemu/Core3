@@ -1,6 +1,6 @@
 infuriated_roba_protector = Creature:new {
 	objectName = "@mob/creature_names:roba_infuriated_protectorate",
-	socialGroup = "Roba",
+	socialGroup = "roba",
 	pvpFaction = "",
 	faction = "",
 	level = 57,

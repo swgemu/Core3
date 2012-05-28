@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_medic_module_2 = object_draft_schematic_d
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "gas_inert", "metal_nonferrous"},
    resourceQuantities = {10, 5, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

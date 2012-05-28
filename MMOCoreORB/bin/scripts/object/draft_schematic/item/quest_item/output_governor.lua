@@ -64,10 +64,9 @@ object_draft_schematic_item_quest_item_output_governor = object_draft_schematic_
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"decoherence_sensor", "signal_cleanup_unit", "signal_rerouter"},
-   ingredientSlotType = {1, 1, 1},
+   ingredientSlotType = {2, 2, 2},
    resourceTypes = {"object/tangible/component/item/quest_item/shared_decoherence_sensor.iff", "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff", "object/tangible/component/item/quest_item/shared_signal_rerouter.iff"},
    resourceQuantities = {1, 1, 1},
-   combineTypes = {1, 1, 1},
    contribution = {100, 100, 100},
 
 

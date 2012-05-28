@@ -119,6 +119,8 @@ using namespace server::zone::objects::tangible::powerup;
 
 #include "system/util/Vector.h"
 
+#include "system/lang/String.h"
+
 namespace server {
 namespace zone {
 namespace objects {

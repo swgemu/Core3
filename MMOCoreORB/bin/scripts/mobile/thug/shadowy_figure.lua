@@ -31,7 +31,7 @@ shadowy_figure = Creature:new {
 		"object/mobile/dressed_assassin_mission_giver_02.iff",
 		"object/mobile/dressed_assassin_mission_giver_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

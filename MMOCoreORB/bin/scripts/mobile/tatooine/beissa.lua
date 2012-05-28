@@ -28,7 +28,7 @@ beissa = Creature:new {
 
 	templates = {"object/mobile/space_rebel_tier3_beissa.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

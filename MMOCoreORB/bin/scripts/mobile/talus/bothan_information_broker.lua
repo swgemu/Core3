@@ -32,7 +32,7 @@ bothan_information_broker = Creature:new {
 		"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
 					},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

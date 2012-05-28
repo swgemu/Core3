@@ -1,9 +1,9 @@
 raglith = Creature:new {
 	objectName = "",
 	customName = "Raglith",
-	socialGroup = "Townsperson",
-	pvpFaction = "",
-	faction = "",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -22,14 +22,14 @@ raglith = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_raglith.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

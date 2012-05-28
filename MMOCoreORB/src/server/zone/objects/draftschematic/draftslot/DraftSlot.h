@@ -62,9 +62,6 @@ private:
 	// example: 2 = Identical items required, 1 = optional, 0 = standard
 	int slotType;
 
-	// Math Type
-	uint32 combineType;
-
 	// Contribution level
 	float contribution;
 
@@ -116,11 +113,6 @@ public:
 		}
 	}
 
-    uint32 getCombineType() const
-    {
-        return combineType;
-    }
-
     float getContribution() const
     {
         return contribution;
@@ -144,11 +136,6 @@ public:
     StringId getStringId() const
     {
         return stringId;
-    }
-
-    void setCombineType(uint32 combineType)
-    {
-        this->combineType = combineType;
     }
 
     void setContribution(float contribution)

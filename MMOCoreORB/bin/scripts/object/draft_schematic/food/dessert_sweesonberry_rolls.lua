@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_sweesonberry_rolls = object_draft_schematic_
    ingredientSlotType = {2, 1, 0, 0, 3},
    resourceTypes = {"object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "object/tangible/food/crafted/shared_dessert_pastebread.iff", "oats", "fruit_berries", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {2, 1, 20, 20, 1},
-   combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

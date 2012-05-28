@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_boots_casual_21 = object_draft_schemati
    ingredientSlotType = {0, 1, 0, 1},
    resourceTypes = {"fiberplast", "object/tangible/component/clothing/shared_metal_fasteners.iff", "hide_wooly", "object/tangible/component/clothing/shared_shoe_sole.iff"},
    resourceQuantities = {20, 1, 20, 1},
-   combineTypes = {0, 1, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

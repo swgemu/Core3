@@ -28,7 +28,7 @@ artisan_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

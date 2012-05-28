@@ -67,7 +67,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "gemstone", "copper"},
    resourceQuantities = {10, 20, 6},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

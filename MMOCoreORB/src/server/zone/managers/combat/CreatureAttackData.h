@@ -20,6 +20,9 @@ protected:
 
 	float damageMax;
 	float damageMultiplier;
+	float healthDamageMultiplier;
+	float actionDamageMultiplier;
+	float mindDamageMultiplier;
 	int accuracyBonus;
 	float speedMultiplier;
 	int poolsToDamage;
@@ -60,6 +63,30 @@ public:
 
     String getCommandName() const;
     uint32 getCommandCRC() const;
+
+	float getActionDamageMultiplier() const {
+		return actionDamageMultiplier;
+	}
+
+	void setActionDamageMultiplier(float actionDamageMultiplier) {
+		this->actionDamageMultiplier = actionDamageMultiplier;
+	}
+
+	float getHealthDamageMultiplier() const {
+		return healthDamageMultiplier;
+	}
+
+	void setHealthDamageMultiplier(float healthDamageMultiplier) {
+		this->healthDamageMultiplier = healthDamageMultiplier;
+	}
+
+	float getMindDamageMultiplier() const {
+		return mindDamageMultiplier;
+	}
+
+	void setMindDamageMultiplier(float mindDamageMultiplier) {
+		this->mindDamageMultiplier = mindDamageMultiplier;
+	}
 
     CombatQueueCommand* getCommand() const {
     	return baseCommand;

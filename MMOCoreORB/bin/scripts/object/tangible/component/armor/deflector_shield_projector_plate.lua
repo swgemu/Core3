@@ -52,6 +52,7 @@ object_tangible_component_armor_deflector_shield_projector_plate = object_tangib
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_deflector_shield_projector_plate, "object/tangible/component/armor/deflector_shield_projector_plate.iff")

@@ -29,7 +29,7 @@ solcar_dienbel = Creature:new {
 
 	templates = {"object/mobile/dressed_solcar_dienbel.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

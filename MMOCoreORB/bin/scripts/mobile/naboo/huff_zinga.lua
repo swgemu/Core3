@@ -29,7 +29,7 @@ huff_zinga = Creature:new {
 
 	templates = {"object/mobile/dressed_huff_zinga.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

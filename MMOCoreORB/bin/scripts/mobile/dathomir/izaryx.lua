@@ -29,7 +29,7 @@ izaryx = Creature:new {
 
 	templates = {"object/mobile/dressed_izaryx.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

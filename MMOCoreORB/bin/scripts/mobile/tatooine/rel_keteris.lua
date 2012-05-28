@@ -28,7 +28,7 @@ rel_keteris = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_swooper_leader.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

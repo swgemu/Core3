@@ -29,7 +29,7 @@ arosp_eslykewa = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_specforce_pathfinder_moncal_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

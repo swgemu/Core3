@@ -89,6 +89,11 @@
 
 #include "server/login/account/Account.h"
 
+#include "server/zone/objects/player/sui/callbacks/PlayerTeachSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
@@ -1126,28 +1131,22 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		uint32 playerWeaponXp = 0;
 
 		for (int j = 0; j < entry->size(); ++j) {
-			ManagedReference<WeaponObject*> weapon = entry->elementAt(j).getKey();
-
-			if (weapon == NULL)
-				continue;
-
 			uint32 damage = entry->elementAt(j).getValue();
-
 			totalPlayerDamage += damage;
 
-			String xpType = weapon->getXpType();
+			String xpType = entry->elementAt(j).getKey();
 
-			int xpAmmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+			int xpAmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
 
 			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
 
-			playerWeaponXp += xpAmmount;
+			playerWeaponXp += xpAmount;
 
-			if (!weapon->isJediWeapon() && weapon->getAttackType() != WeaponObject::FORCEATTACK) {
-				awardExperience(player, xpType, xpAmmount);
+			if (xpType != "jedi_general") {
+				awardExperience(player, xpType, xpAmount);
 				awardExperience(player, "combat_general", playerWeaponXp / 10);
 			} else // Grant Jedi general experience for lightsabers AND Force powers.
-				awardExperience(player, "jedi_general", xpAmmount / 4);
+				awardExperience(player, "jedi_general", xpAmount / 4);
 
 		}
 
@@ -1362,21 +1361,26 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 
 	// For the Hologrind - Please uncomment to re-enable when ready.
 
-	/*Vector<byte>* profs = ghost->getHologrindProfessions();
-	byte prof = 0;
+	/*
+	Vector<byte>* profs = ghost->getHologrindProfessions();
+
+	int profsDone = 0;
 
 	for (int i = 0; i < profs->size(); ++i) { // So that it only sends 1 popup...
-		prof = profs->elementAt(i);
+		byte prof = profs->get(i);
 
 		int badgeIdx = 42 + prof;
 
 		if (!ghost->hasBadge(badgeIdx))
 			continue;
 
-		if (i == 6){
-				finishHologrind(player); // Method to send popup and grant Force Sensitive box.
-		}
-	}*/
+		profsDone++;
+	}
+
+	if (profsDone > 5) // Corresponds to the total professions needed in Generate holo.
+		finishHologrind(player); // Method to send popup and grant Force Sensitive box.
+
+	*/
 
 }
 
@@ -1399,27 +1403,15 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
-	//You receive 30 points of Surveying experience.
 	if (sendSystemMessage) {
-		if (xp <= 0) {
-			if (amount > 0) {
-				VectorMap<String, int>* xpTypeCapList = playerObject->getXpTypeCapList();
-
-				int maxXp = xpTypeCapList->get(xpType);
-
-				if (maxXp > 0) {
-					//StringIdChatParameter message("error_message","prose_at_xp_limit");
-					StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
-					//message.setDI(maxXp);
-					message.setTO("exp_n", xpType);
-					player->sendSystemMessage(message);
-				}
-
-			}
-
-		} else {
+		if (xp > 0) {
 			StringIdChatParameter message("base_player","prose_grant_xp");
 			message.setDI(xp);
+			message.setTO("exp_n", xpType);
+			player->sendSystemMessage(message);
+		}
+		if (xp > 0 && playerObject->hasCappedExperience(xpType)) {
+			StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
 			message.setTO("exp_n", xpType);
 			player->sendSystemMessage(message);
 		}
@@ -2283,28 +2275,29 @@ void PlayerManagerImplementation::updatePermissionLevel(CreatureObject* targetPl
 		return;*/
 
 	if (currentPermissionLevel != 0) {
-		skillManager->removeAbility(ghost, "admin");
 		Vector<String>* skillsToBeRemoved = permissionLevelList->getPermissionSkills(currentPermissionLevel);
 		if(skillsToBeRemoved != NULL) {
 			for(int i = 0; i < skillsToBeRemoved->size(); i++) {
-				skillManager->surrenderSkill(skillsToBeRemoved->get(i), targetPlayer, true);
+				String skill = skillsToBeRemoved->get(i);
+				targetPlayer->sendSystemMessage("Staff skill revoked: " + skill);
+				skillManager->surrenderSkill(skill, targetPlayer, true);
 			}
 		}
 	}
 
 	if(permissionLevel != 0) {
-		skillManager->addAbility(ghost, "admin");
 		Vector<String>* skillsToBeAdded = permissionLevelList->getPermissionSkills(permissionLevel);
 		if(skillsToBeAdded != NULL) {
-			for(int i = 0; i < skillsToBeAdded->size(); i++) {
-				skillManager->awardSkill(skillsToBeAdded->get(i), targetPlayer, false, true, true);
+			for(int i = 0; i < skillsToBeAdded->size(); ++i) {
+				String skill = skillsToBeAdded->get(i);
+				targetPlayer->sendSystemMessage("Staff skill granted: " + skill);
+				skillManager->awardSkill(skill, targetPlayer, false, true, true);
 			}
 		}
 	}
 
 	ghost->setAdminLevel(permissionLevel);
 	updatePermissionName(targetPlayer, permissionLevel);
-
 }
 
 void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, int permissionLevel) {
@@ -2312,6 +2305,7 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 	//Send deltas
 	if (player->isOnline()) {
 		UnicodeString tag = permissionLevelList->getPermissionTag(permissionLevel);
+
 		TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(player);
 		tanod3->updateName(player->getDisplayedName(), tag);
 		tanod3->close();
@@ -2493,15 +2487,28 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	//return 0;
 }
 
-void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
+void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
 
 	Locker locker(ai, player);
 
 	if (!ai->isDead())
 		return;
 
-	if (ai->getDistanceTo(player) > 6)
+	if (ai->getDistanceTo(player) > 6) {
+		player->sendSystemMessage("@pet/droid_modules:corpse_too_far");
 		return;
+	}
+
+	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+
+	if (creatureInventory == NULL)
+		return;
+
+	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID()) {
+		player->sendSystemMessage("@group:no_loot_permission");
+
+		return;
+	}
 
 	int cashCredits = ai->getCashCredits();
 
@@ -2515,11 +2522,6 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, AiAgent* ai) {
 
 		player->sendSystemMessage(param);
 	}
-
-	SceneObject* creatureInventory = ai->getSlottedObject("inventory");
-
-	if (creatureInventory == NULL)
-		return;
 
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 
@@ -2551,11 +2553,11 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	PlayerObject* ghost = player->getPlayerObject();
 
 	SortedVector<uint8> profs;
-	//Fill the total profs array.
-	for (int i = 0; i < 32; ++i)
+	//Fill the total profs array. Change to 32 if you want to include Politician.
+	for (int i = 0; i < 31; ++i)
 		profs.put(i + 1);
 
-	uint32 holomask = 0;
+	 // TODO: Remove ungrindable professions (temporary.)
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
@@ -2564,7 +2566,6 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 		ghost->addHologrindProfession(prof);
 	}
 
-	// For their trainer.
 }
 
 void PlayerManagerImplementation::sendStartingLocationsTo(CreatureObject* player) {
@@ -2680,7 +2681,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
 
-		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 1.0f) && player->isInRange(scno, 7.0f)) {
+		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
 			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
 
@@ -2702,6 +2703,9 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 void PlayerManagerImplementation::finishHologrind(CreatureObject* player) {
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::HOLOGRIND_UNLOCK))
+		return;
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::NONE);
 	box->setPromptTitle("@quest/force_sensitive/intro:force_sensitive"); // You feel a tingle in the Force.
@@ -2969,4 +2973,196 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	}
 
 	return "Character Successfully Unbanned";
+}
+
+bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher, SceneObject* target) {
+	if (target == NULL || !target->isPlayerCreature()) {
+		teacher->sendSystemMessage("@teaching:no_target"); //Whom do you want to teach?
+		return false;
+	}
+
+	if (target == teacher) {
+		teacher->sendSystemMessage("@teaching:no_teach_self"); //You cannot teach yourself.
+		return false;
+	}
+
+	Locker _lock(teacher, target);
+
+	//We checked if they had the player object in slot with isPlayerCreature
+	CreatureObject* student = cast<CreatureObject*>(target);
+
+	if (teacher->getGroup() == NULL || student->getGroup() != teacher->getGroup()) {
+		StringIdChatParameter params("teaching", "not_in_same_group"); //You must be within the same group as %TT in order to teach.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	if (student->isDead()) {
+		StringIdChatParameter params("teaching", "student_dead"); //%TT does not feel like being taught right now.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	if (!student->isInRange(teacher, 32.f)) {
+		teacher->sendSystemMessage("@teaching:student_too_far"); // Your student must be nearby in order to teach.
+		return false;
+	}
+
+	ManagedReference<PlayerObject*> studentGhost = student->getPlayerObject();
+
+	//Do they have an outstanding teaching offer?
+	if (studentGhost->hasSuiBoxWindowType(SuiWindowType::TEACH_OFFER)) {
+		StringIdChatParameter params("teaching", "student_has_offer_to_learn"); //%TT already has an offer to learn.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	SortedVector<String> skills = getTeachableSkills(teacher, student);
+
+	if (skills.size() <= 0) {
+		StringIdChatParameter params("teaching", "no_skills_for_student"); //You have no skills that  %TT can currently learn."
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(teacher, SuiWindowType::TEACH_SKILL);
+	listbox->setUsingObject(student);
+	listbox->setForceCloseDistance(32.f);
+	listbox->setPromptTitle("SELECT SKILL");
+	listbox->setPromptText("Select a skill to teach.");
+	listbox->setCancelButton(true, "@cancel");
+
+	for (int i = 0; i < skills.size(); ++i) {
+		String skill = skills.get(i);
+		listbox->addMenuItem("@skl_n:" + skill, skill.hashCode());
+	}
+
+	listbox->setCallback(new PlayerTeachSuiCallback(server));
+
+	if (teacher->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> teacherGhost = teacher->getPlayerObject();
+
+		teacherGhost->addSuiBox(listbox);
+	}
+
+	teacher->sendMessage(listbox->generateMessage());
+
+	return true;
+}
+
+bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill) {
+	ManagedReference<PlayerObject*> studentGhost = student->getPlayerObject();
+
+	//Do they have an outstanding teaching offer?
+	if (studentGhost->hasSuiBoxWindowType(SuiWindowType::TEACH_OFFER)) {
+		StringIdChatParameter params("teaching", "student_has_offer_to_learn"); //%TT already has an offer to learn.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(teacher, SuiWindowType::TEACH_OFFER);
+	suibox->setUsingObject(teacher);
+	suibox->setForceCloseDistance(32.f);
+	suibox->setPromptTitle("@sui:swg"); //Star Wars Galaxies
+
+	StringIdManager* sidman = StringIdManager::instance();
+
+	String sklname = sidman->getStringId(String("@skl_n:" + skill->getSkillName()).hashCode()).toString();
+	String expname = sidman->getStringId(String("@exp_n:" + skill->getXpType()).hashCode()).toString();
+
+	StringBuffer prompt;
+	prompt << teacher->getDisplayedName()
+					<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+					<< " " << expname  << " experience cost).";
+
+	suibox->setPromptText(prompt.toString());
+	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
+
+	suibox->setOkButton(true, "@yes");
+	suibox->setCancelButton(true, "@no");
+
+	studentGhost->addSuiBox(suibox);
+	student->sendMessage(suibox->generateMessage());
+
+	StringIdChatParameter params("teaching", "offer_given"); //You offer to teach %TT %TO.
+	params.setTT(student->getDisplayedName());
+	params.setTO("@skl_n:" + skill->getSkillName());
+	teacher->sendSystemMessage(params);
+
+	return true;
+}
+
+bool PlayerManagerImplementation::acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill) {
+	if (teacher->getGroup() == NULL || student->getGroup() != teacher->getGroup()) {
+		StringIdChatParameter params("teaching", "not_in_same_group"); //You must be within the same group as %TT in order to teach.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	//Check to see if the teacher still has the skill and the student can still learn the skill.
+	SkillManager* skillManager = SkillManager::instance();
+
+	if (!student->isInRange(teacher, 32.f)) {
+		StringIdChatParameter params("teaching", "teacher_too_far_target"); //You are too far away from %TT to learn.
+		params.setTT(teacher->getDisplayedName());
+		student->sendSystemMessage(params);
+
+		params.setStringId("teaching", "student_too_far_target");
+		params.setTT(student->getDisplayedName()); //You are too far away from %TT to teach.
+		teacher->sendSystemMessage(params);
+		return false;
+	}
+
+	if (teacher->hasSkill(skill->getSkillName()) && skillManager->awardSkill(skill->getSkillName(), student, true, false, false)) {
+		StringIdChatParameter params("teaching", "student_skill_learned"); //You learn %TO from %TT.
+		params.setTO("@skl_n:" + skill->getSkillName());
+		params.setTT(teacher->getDisplayedName());
+		student->sendSystemMessage(params);
+
+		params.setStringId("teaching", "teacher_skill_learned"); //%TT learns %TO from you.
+		params.setTT(student->getDisplayedName());
+		teacher->sendSystemMessage(params);
+
+		if (skillManager->isApprenticeshipEnabled() && !skill->getSkillName().endsWith("novice")) {
+			int exp = 10 + (skill->getTotalChildren() * 10);
+
+			StringIdChatParameter params("teaching", "experience_received"); //You have received %DI Apprenticeship experience.
+			params.setDI(exp);
+			teacher->sendSystemMessage(params);
+
+			awardExperience(teacher, "apprenticeship", exp, false);
+		}
+	} else {
+		student->sendSystemMessage("@teaching:learning_failed"); //Learning failed.
+		teacher->sendSystemMessage("@teaching:teaching_failed"); //Teaching failed.
+		return false;
+	}
+
+	return true;
+}
+
+SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObject* teacher, CreatureObject* student) {
+	SortedVector<String> skills;
+	skills.setNoDuplicateInsertPlan();
+
+	SkillList* skillList = teacher->getSkillList();
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	for (int i = 0; i < skillList->size(); ++i) {
+		Skill* skill = skillList->get(i);
+
+		String skillName = skill->getSkillName();
+
+		if (!skillName.contains("novice") && skillManager->canLearnSkill(skillName, student, false))
+			skills.put(skillName);
+	}
+
+	return skills;
 }

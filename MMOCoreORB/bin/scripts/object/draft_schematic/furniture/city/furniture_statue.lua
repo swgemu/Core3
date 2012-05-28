@@ -67,7 +67,6 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"ore", "gemstone"},
    resourceQuantities = {2000, 1000},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

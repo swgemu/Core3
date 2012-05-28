@@ -28,7 +28,7 @@ diax = Creature:new {
 
 	templates = {"object/mobile/dressed_diax.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

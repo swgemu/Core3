@@ -47,11 +47,12 @@ object_tangible_component_structure_generator_turbine = object_tangible_componen
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT"},
 	experimentalWeights = {1, 1, 1},
-	experimentalGroupTitles = {"null", "null", "null"},
+	experimentalGroupTitles = {"null", "null", "misc"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 5000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_generator_turbine, "object/tangible/component/structure/generator_turbine.iff")

@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_chair_divan = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "hide"},
    resourceQuantities = {80, 120},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

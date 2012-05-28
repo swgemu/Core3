@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"fruit_berries", "fruit_berries", "fruit_fruits", "water", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {20, 20, 20, 20, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

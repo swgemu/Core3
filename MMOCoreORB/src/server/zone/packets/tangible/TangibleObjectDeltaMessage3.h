@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/tangible/TangibleObject.h"
 
+#include "../../objects/player/PlayerObject.h"
+
 class TangibleObjectDeltaMessage3 : public DeltaMessage {
 	TangibleObject* tano;
 
@@ -86,7 +88,7 @@ public:
 		if (tano->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( tano);
 
-			if (player->getPlayerObject()->isPrivileged()) {
+			if (player->getPlayerObject()->isPrivileged() && tag != "") {
 				UnicodeString customName = name + " \\#ffff00[" + tag + "]\\#.";
 				addUnicodeUpdate(2, customName);
 				return;

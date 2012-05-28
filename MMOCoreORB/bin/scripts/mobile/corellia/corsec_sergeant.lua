@@ -30,7 +30,7 @@ corsec_sergeant = Creature:new {
 		"object/mobile/dressed_corsec_officer_human_male_01.iff",
 		"object/mobile/dressed_corsec_officer_human_female_01.iff"},
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

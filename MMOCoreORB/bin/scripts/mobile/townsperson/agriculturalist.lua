@@ -31,7 +31,7 @@ agriculturalist = Creature:new {
 					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
 					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

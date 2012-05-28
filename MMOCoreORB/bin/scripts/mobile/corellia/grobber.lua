@@ -29,7 +29,7 @@ grobber = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_twk_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

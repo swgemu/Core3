@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
    ingredientSlotType = {1, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit", "fruit_flowers", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {1, 15, 10, 1},
-   combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

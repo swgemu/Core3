@@ -1,8 +1,8 @@
 hardened_panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:hardened_panshee_warrior",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 17,
 	chanceHit = 0.31,
 	damageMin = 160,
@@ -26,12 +26,13 @@ hardened_panshee_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/ewok_male.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_06.iff",
+		"object/mobile/dressed_ewok_m_09.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hardened_panshee_warrior, "hardened_panshee_warrior")

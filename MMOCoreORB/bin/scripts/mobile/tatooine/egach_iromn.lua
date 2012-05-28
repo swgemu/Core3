@@ -29,7 +29,7 @@ egach_iromn = Creature:new {
 	
 	templates = {"object/mobile/dressed_bestine_capitol04.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

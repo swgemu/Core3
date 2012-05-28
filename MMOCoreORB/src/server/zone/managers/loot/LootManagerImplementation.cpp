@@ -91,7 +91,7 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 			if (craftingValues->hasProperty(property))
 				continue;
 
-			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false);
+			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false, CraftingManager::LINEARCOMBINE);
 			if(title == "null")
 				craftingValues->setHidden(property);
 		}
@@ -243,7 +243,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	// Use percentages to recalculate the values
 	craftingValues.recalculateValues(false);
 
-	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false);
+	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
 
 	// Update the Tano with new values

@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
    ingredientSlotType = {0, 1, 1},
    resourceTypes = {"aluminum", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {250, 6, 3},
-   combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
 

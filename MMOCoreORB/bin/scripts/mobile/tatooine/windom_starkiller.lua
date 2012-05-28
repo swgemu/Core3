@@ -29,7 +29,7 @@ windom_starkiller = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_windom_starkiller.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

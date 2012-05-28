@@ -1,6 +1,6 @@
 swirl_prong = Creature:new {
 	objectName = "@mob/creature_names:swirl_prong",
-	socialGroup = "Swirl Prong",
+	socialGroup = "prong",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

@@ -29,7 +29,7 @@ lx_466 = Creature:new {
 
 	templates = {"object/mobile/dressed_lx_466.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

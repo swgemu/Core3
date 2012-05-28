@@ -1,8 +1,8 @@
 donkuwah_chieftain = Creature:new {
 	objectName = "@mob/creature_names:donkuwah_chieftan",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 58,
 	chanceHit = 0.57,
 	damageMin = 430,
@@ -28,7 +28,7 @@ donkuwah_chieftain = Creature:new {
 
 	templates = {"object/mobile/dulok_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "petrochem_inert"},
    resourceQuantities = {20, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

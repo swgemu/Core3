@@ -31,7 +31,7 @@ theater_manager = Creature:new {
 		"object/mobile/dressed_entertainer_trainer_twk_male_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

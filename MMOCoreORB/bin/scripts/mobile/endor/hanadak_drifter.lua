@@ -1,6 +1,6 @@
 hanadak_drifter = Creature:new {
 	objectName = "@mob/creature_names:hanadak_drifter",
-	socialGroup = "Hanadak",
+	socialGroup = "hanadak",
 	pvpFaction = "",
 	faction = "",
 	level = 28,

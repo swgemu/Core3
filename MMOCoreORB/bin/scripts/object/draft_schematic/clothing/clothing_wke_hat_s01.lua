@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_hat_s01 = object_draft_schematic_cl
    ingredientSlotType = {1, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert"},
    resourceQuantities = {1, 1, 35},
-   combineTypes = {1, 1, 0},
    contribution = {100, 100, 100},
 
 

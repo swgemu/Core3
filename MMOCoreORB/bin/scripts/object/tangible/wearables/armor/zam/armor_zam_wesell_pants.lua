@@ -88,7 +88,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_pants = object_tangible_wea
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = ACID + ENERGY + STUN + LIGHTSABER,
+	vulnerability = ACID + ENERGY + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
@@ -116,6 +116,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_pants = object_tangible_wea
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 23, 30, 6, 1, 4, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 14, 18, 3, 1, 4, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_armor_zam_wesell_pants, "object/tangible/wearables/armor/zam/armor_zam_wesell_pants.iff")

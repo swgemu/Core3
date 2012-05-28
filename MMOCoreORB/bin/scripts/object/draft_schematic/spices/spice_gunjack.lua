@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"cereal", "meat", "object/tangible/component/food/shared_ingredient_carbosyrup.iff"},
    resourceQuantities = {15, 15, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

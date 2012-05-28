@@ -43,16 +43,16 @@ meatlump_stooge = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "loot_kits", chance = 3000000},
-		    	{group = "junk", chance = 6000000},
-				{group = "color_crystals", chance = 500000},
+				{group = "junk", chance = 3000000},
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "color_crystals", chance = 200000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 3200000
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(meatlump_stooge, "meatlump_stooge")

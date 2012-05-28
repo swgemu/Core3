@@ -28,7 +28,7 @@ rebel_resistance_separatist = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_resistance_separatist, "rebel_resistance_separatist")

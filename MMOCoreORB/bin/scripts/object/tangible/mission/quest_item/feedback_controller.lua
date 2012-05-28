@@ -51,6 +51,7 @@ object_tangible_mission_quest_item_feedback_controller = object_tangible_mission
 	experimentalMin = {0, 0, 100, -15},
 	experimentalMax = {0, 0, 150, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_feedback_controller, "object/tangible/mission/quest_item/feedback_controller.iff")

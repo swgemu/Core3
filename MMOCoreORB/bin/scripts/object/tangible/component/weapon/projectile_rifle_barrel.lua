@@ -52,6 +52,7 @@ object_tangible_component_weapon_projectile_rifle_barrel = object_tangible_compo
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 10, 10, -0.5, 5, 100, 0, 0, 0, 20},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_projectile_rifle_barrel, "object/tangible/component/weapon/projectile_rifle_barrel.iff")

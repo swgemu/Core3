@@ -52,6 +52,7 @@ object_tangible_ship_crafted_engine_engine_overdriver_mk2 = object_tangible_ship
 	experimentalMin = {0, 0, 255, 8},
 	experimentalMax = {0, 0, 345, 11},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_engine_overdriver_mk2, "object/tangible/ship/crafted/engine/engine_overdriver_mk2.iff")

@@ -104,6 +104,7 @@ object_tangible_wearables_armor_padded_armor_padded_s01_belt = object_tangible_w
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+	experimentalCombineType = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_armor_padded_s01_belt, "object/tangible/wearables/armor/padded/armor_padded_s01_belt.iff")

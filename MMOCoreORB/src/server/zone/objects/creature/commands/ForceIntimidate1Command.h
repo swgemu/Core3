@@ -46,12 +46,13 @@ which carries forward this exception.
 #define FORCEINTIMIDATE1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForcePowersQueueCommand.h"
 
-class ForceIntimidate1Command : public QueueCommand {
+class ForceIntimidate1Command : public ForcePowersQueueCommand {
 public:
 
 	ForceIntimidate1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForcePowersQueueCommand(name, server) {
 
 	}
 
@@ -63,8 +64,13 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		if (isWearingArmor(creature)) {
+			return NOJEDIARMOR;
+		}
+
+		return doCombatAction(creature, target);
 	}
+
 
 };
 

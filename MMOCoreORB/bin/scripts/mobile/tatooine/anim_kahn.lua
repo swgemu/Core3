@@ -28,7 +28,7 @@ anim_kahn = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

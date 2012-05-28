@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_soypro = object_draft_schematic_food_shared_dis
    ingredientSlotType = {0, 0},
    resourceTypes = {"cereal", "vegetable"},
    resourceQuantities = {10, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

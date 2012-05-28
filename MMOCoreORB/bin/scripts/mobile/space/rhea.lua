@@ -28,7 +28,7 @@ rhea = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier1_corellia.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

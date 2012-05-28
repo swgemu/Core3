@@ -58,7 +58,7 @@ businessman = Creature:new {
 					"object/mobile/dressed_diplomat_zabrak_male_02.iff"
 					},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

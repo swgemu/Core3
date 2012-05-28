@@ -67,7 +67,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_flavo
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"fruit_berries", "milk", "flora_food", "object/tangible/component/food/secrets/shared_secret_base.iff"},
    resourceQuantities = {35, 40, 45, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

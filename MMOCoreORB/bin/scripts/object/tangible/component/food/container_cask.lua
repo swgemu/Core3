@@ -52,6 +52,7 @@ object_tangible_component_food_container_cask = object_tangible_component_food_s
 	experimentalMin = {0, 0, 3},
 	experimentalMax = {0, 0, 3},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_container_cask, "object/tangible/component/food/container_cask.iff")

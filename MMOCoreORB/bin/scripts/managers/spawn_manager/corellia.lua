@@ -120,1688 +120,1634 @@ corellia_regions = {
 	{"vreni_island_medium_newbie",0,0,0,0,1},
 	{"western_mountain_forest",0,0,0,0,1},
 	{"western_plains",0,0,0,0,1},
-	--{"world_factional_imperial",0,0,-1,6,1,"factional_imperial"},
-	--{"world_factional_neutral",0,0,-1,4,1,"factional_neutral"},
-	--{"world_factional_rebel",0,0,-1,5,1,"factional_rebel"},
 	{"world_spawner",0,0,-1,3,1,"coro_world_easy"},
 }
 
 corellia_static_spawns = {
-	{"afarathu_brute",900,-83.5,-71.6,-169.2,-75,6035627},
-	{"afarathu_brute",900,-100.5,-72.9,-159.1,-98,6035627},
-	{"afarathu_brute",900,-111.7,-69.4,-170.6,-98,6035627},
-	{"afarathu_brute",900,-85.4,-101.5,-111.2,177,6035630},
-	{"afarathu_brute",900,-92.8,-101.1,-111.89,177,6035630},
-	{"afarathu_cult_follower",900,-1.8,-40.7,-74.1,98,6035622},
-	{"afarathu_cult_follower",900,2.6,-40.4,-62.4,1,6035622},
-	{"afarathu_cult_follower",900,3.4,-41,-72.6,-22,6035622},
-	{"afarathu_cult_follower",900,-95.3,-73.7,-170,-22,6035627},
-	{"afarathu_cult_leader",900,-90.7,-101.1,-104.8,1,6035630},
-	{"afarathu_ruffian",900,-2489.6,6,2920,90,0},
-	{"afarathu_ruffian",900,-2494,6,2913.6,90,0},
-	{"afarathu_ruffian",900,-0.6,-13.7,-8.3,-177,6035620},
-	{"afarathu_ruffian",900,11.3,-14.2,-5.5,-177,6035620},
-	{"afarathu_ruffian",900,9.7,-23.9,-28.3,23,6035621},
-	{"afarathu_ruffian",900,-11.3,-30.7,-27.1,99,6035621},
-	{"afarathu_ruffian",900,49.3,-46.8,-53.7,144,6035623},
-	{"afarathu_ruffian",900,43.8,-46.1,-95.1,144,6035623},
-	{"afarathu_ruffian",900,23.6,-45.7,-102.8,98,6035623},
-	{"afarathu_savage",900,-1.7,-45.8,-147.8,99,6035624},
-	{"afarathu_savage",900,-11,-44.4,-136.4,-121,6035624},
-	{"afarathu_savage",900,-4.2,-64,-234.2,0,6035626},
-	{"afarathu_savage",900,-21.7,-65.4,-244.6,-75,6035626},
-	{"assault_trooper",90,-0.197758,0.125265,1.53801,239.449,2715902},
-	{"corsec_deserter",300,6.8,0.2,7.4,94,1855746},
-	{"corsec_deserter",300,-11.3,0.2,-5.7,-179,1855746},
-	{"corsec_deserter",300,-10.1,0.2,-1.3,95,1855742},
-	{"corsec_deserter",300,5224.9,5,1612.7,38,0},
-	{"corsec_deserter",300,5226.9,5,1616.6,-159,0},
-	{"corsec_deserter",300,5229.2,5,1613.3,-85,0},
-	{"corsec_deserter",300,-3.7,0.3,-3.7,4,1855722},
-	{"corsec_traitor",300,-4.6,-10.3,-5.3,4,1855725},
-	{"corsec_traitor",300,5221.2,5,1583.5,156,0},
-	{"corsec_traitor",300,5214.8,5,15.88,-70,0},
-	{"corsec_traitor",300,-8.9,0.2,-5.8,-90,1855746},
-	{"corsec_traitor",300,11.1,0.2,6.8,-89,1855746},
-	{"dark_trooper",900,4696.72,25,-5797.99,198.662,0},
-	{"dark_trooper",900,4694.46,25,-5803.03,351.991,0},
-	{"dark_trooper",900,4689.06,25,-5796.24,257.913,0},
-	{"dark_trooper",900,4694.47,25,-5806.45,224.026,0},
-	{"dark_trooper",900,4696.33,25,-5804.4,253.399,0},
-	{"dark_trooper",900,4683.96,25,-5743.68,348.127,0},
-	{"dark_trooper",900,4675.06,25,-5746.75,279.993,0},
-	{"dark_trooper",900,4687.68,25,-5754,128.516,0},
-	{"dark_trooper",900,4675.8,25,-5752.56,288.664,0},
-	{"dark_trooper",900,4679.01,25,-5742.91,9.6652,0},
-	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0},
-	{"disciple_of_lord_nyax",900,1348.9,31,-320.2,-89,0},
-	{"disciple_of_lord_nyax",900,1356.6,31,-325.4,-37,0},
-	{"drall_chieftain",900,186,-66,-99.3,-70,4275373},
-	{"drall_patriot",900,14.2,-22.5,-7.6,-87,4275365},
-	{"drall_patriot",900,23.4,-27.8,-9,175,4275365},
-	{"drall_patriot",900,91.6,-46.5,-107,-94,4275369},
-	{"drall_patriot",900,89.9,-46.3,-117.6,-63,4275369},
-	{"drall_patriot",900,88.7,-62.1,-17.3,162,4275367},
-	{"drall_patriot",900,93.1,-62.6,-19.8,-108,4275367},
-	{"drall_patriot",900,90.6,-63.3,-23.8,10,4275367},
-	{"drall_patriot",900,96.9,-65.8,-111,-7,4275369},
-	{"drall_patriot",900,95.8,-66.6,-107.1,172,4275369},
-	{"drall_patriot",900,146.5,-67.3,-122.4,-40,4275372},
-	{"drall_patriot",900,149.9,-67.1,-122.7,12,4275372},
-	{"drall_patriot_conqueror",900,52,-48.7,-103.6,-1,4275374},
-	{"drall_patriot_conqueror",900,91.5,-46.7,-143.1,-5,4275375},
-	{"drall_patriot_conqueror",900,53.8,-68.2,-41.9,52,4275366},
-	{"drall_patriot_conqueror",900,181.8,-66,-95.2,-111,4275373},
-	{"drall_patriot_foot_soldier",900,112.9,-66.8,-101.7,7,4275372},
-	{"drall_patriot_foot_soldier",900,113.9,-66.8,-98.2,-162,4275372},
-	{"drall_patriot_foot_soldier",900,92.7,-75.8,-67.9,-58,4275368},
-	{"drall_patriot_foot_soldier",900,86.2,-76.7,-64.9,111,4275368},
-	{"drall_patriot_foot_soldier",900,49.7,-48.5,-57.3,178,4275366},
-	{"drall_patriot_foot_soldier",900,49.9,-48.4,-66,-8,4275366},
-	{"drall_patriot_foot_soldier",900,30.9,-44.3,-69,88,4275366},
-	{"drall_patriot_legionnaire",900,182.3,-65.8,-100.5,-82,4275373},
-	{"drall_patriot_legionnaire",900,86.1,-66.7,-139.5,-103,4275371},
-	{"drall_patriot_legionnaire",900,71.4,-66.2,-139.6,92,4275371},
-	{"drall_patriot_legionnaire",900,57.9,-68.3,-35.9,90,4275366},
-	{"drall_patriot_legionnaire",900,46.8,-47.2,-12.5,-173,4275366},
-	{"drall_patriot_legionnaire",900,48,-47,-7.2,98,4275366},
-	{"drall_patriot_legionnaire",900,94.9,-46.7,-136.7,-47,4275375},
-	{"drall_patriot_legionnaire",900,86.5,-46.8,-138.9,65,4275375},
-	{"drall_patriot_legionnaire",900,23,-42.3,-65.4,0,4275366},
-	{"drall_patriot_legionnaire",900,23.7,-38.5,-33.6,-179,4275366},
-	{"fanatic_of_lord_nyax",900,15.8,-13.8,3.4,-4,6036003},
-	{"fanatic_of_lord_nyax",900,14.3,-13.8,11.8,-87,6036003},
-	{"fanatic_of_lord_nyax",900,-5,-13.7,3.1,-177,6036001},
-	{"fanatic_of_lord_nyax",900,-1.3,-13.7,2.5,178,6036001},
-	{"fanatic_of_lord_nyax",900,-3.4,-13.7,-9.3,-169,6036001},
-	{"fanatic_of_lord_nyax",900,3.7,0.3,-3.1,-1,6035996},
-	{"fanatic_of_lord_nyax",900,1345.6,31,-333.9,-68,0},
-	{"fanatic_of_lord_nyax",900,1337.6,31,-325.9,-89,0},
-	{"fiend_of_lord_nyax",900,14.6,-13.8,-9.8,14,6036004},
-	{"fiend_of_lord_nyax",900,6.1,-6.8,-7.6,-7,6035999},
-	{"fiend_of_lord_nyax",900,2.2,-6.8,-7.2,0,6035999},
-	{"fiend_of_lord_nyax",900,4.3,-6.8,-2.1,0,6035999},
-	{"fiend_of_lord_nyax",900,1371.9,31,-323.5,172,0},
-	{"fiend_of_lord_nyax",900,1378.5,31,-332.9,73,0},
-	{"imperial_first_lieutenant",90,0.50699,0.125265,-1.08195,0,2716039},
-	{"imperial_first_lieutenant",90,4638.27,25,-5777.52,110.48,0},
-	{"imperial_first_lieutenant",90,4637.55,25,-5784.69,185.939,0},
-	{"imperial_first_lieutenant",90,-0.197962,0.125265,-1.71454,0,2715881},
-	{"imperial_first_lieutenant",90,4635.64,25,-5802.22,92.4328,0},
-	{"imperial_major",90,4629.71,25,-5770.51,238.638,0},
-	{"imperial_noncom",90,-1.38669,0.125265,-2.85349,0,2715916},
-	{"imperial_noncom",90,-1.69961,0.125266,-3.22658,0,2715916},
-	{"imperial_recruiter",0,-6719,0,-5804,176,0},
-	{"imperial_surface_marshall",90,4531.47,30.7809,-5823.83,217.385,0},
-	{"imperial_surface_marshall",90,4.99108,0.125266,-4.24489,64.1228,2715904},
-	{"imperial_trooper",90,1.49,0.125264,-2.03378,0,2715959},
-	{"imperial_trooper",90,1.73977,0.125264,-2.76,0,2715959},
-	{"informant_npc_lvl_1",0,-33,0,-4825,45,0},
-	{"informant_npc_lvl_1",0,-86,0,-4829,0,0},
-	{"informant_npc_lvl_1",0,-172,0,-4442,270,0},
-	{"informant_npc_lvl_1",0,-172,0,-4410,225,0},
-	{"informant_npc_lvl_1",0,-212,0,-4465,0,0},
-	{"informant_npc_lvl_1",0,-250,0,-4430,90,0},
-	{"informant_npc_lvl_1",0,-428,0,-4751,225,0},
-	{"informant_npc_lvl_1",0,-477,0,-4553,180,0},
-	{"informant_npc_lvl_1",0,-566,0,-4361,90,0},
-	{"informant_npc_lvl_1",0,-508,0,-4367,45,0},
-	{"informant_npc_lvl_1",0,-359,0,-4210,270,0},
-	{"informant_npc_lvl_1",0,-293,0,-4251,315,0},
-	{"informant_npc_lvl_1",0,-184,0,-4342,90,0},
-	{"informant_npc_lvl_1",0,6687,0,-5594,0,0},
-	{"informant_npc_lvl_1",0,6733,0,-5609,90,0},
-	{"informant_npc_lvl_1",0,6832,315,-5545,270,0},
-	{"informant_npc_lvl_1",0,6901,0,-5606,0,0},
-	{"informant_npc_lvl_1",0,20.9951,-0.894992,21.3608,100,3375357},
-	{"informant_npc_lvl_1",0,3100,0,5224,90,0},
-	{"informant_npc_lvl_1",0,3123,0,5188,0,0},
-	{"informant_npc_lvl_1",0,3145,0,5148,90,0},
-	{"informant_npc_lvl_1",0,3165,0,5077,180,0},
-	{"informant_npc_lvl_1",0,3078,0,5014,270,0},
-	{"informant_npc_lvl_1",0,3210,0,5440,100,0},
-	{"informant_npc_lvl_1",0,3311,0,5386,300,0},
-	{"informant_npc_lvl_1",0,3293,0,5401,90,0},
-	{"informant_npc_lvl_1",0,3297,0,5514,70,0},
-	{"informant_npc_lvl_1",0,-3563,0,3138,60,0},
-	{"informant_npc_lvl_1",0,-3571,0,3176,60,0},
-	{"informant_npc_lvl_1",0,-3574,0,3154,315,0},
-	{"informant_npc_lvl_1",0,-3604,0,3172,90,0},
-	{"informant_npc_lvl_1",0,-3665,0,3139,170,0},
-	{"informant_npc_lvl_1",0,-3375,0,3281,90,0},
-	{"informant_npc_lvl_1",0,-3358,0,3307,140,0},
-	{"informant_npc_lvl_1",0,-3315,0,3234,270,0},
-	{"informant_npc_lvl_1",0,-3386,0,3184,90,0},
-	{"informant_npc_lvl_1",0,-3444,0,3231,225,0},
-	{"informant_npc_lvl_1",0,-3458,0,3165,90,0},
-	{"informant_npc_lvl_1",0,-3416,0,3078,0,0},
-	{"informant_npc_lvl_1",0,-3401,0,3034,270,0},
-	{"informant_npc_lvl_1",0,-3124,0,2808,180,0},
-	{"informant_npc_lvl_1",0,-3128,0,3008,180,0},
-	{"informant_npc_lvl_1",0,-5024,0,-2345,180,0},
-	{"informant_npc_lvl_1",0,-5136,0,-2294,270,0},
-	{"informant_npc_lvl_1",0,-5587,0,-2809,315,0},
-	{"informant_npc_lvl_1",0,-5480,0,-2777,225,0},
-	{"informant_npc_lvl_1",0,-5504,0,-2699,180,0},
-	{"informant_npc_lvl_1",0,-5539,0,-2667,270,0},
-	{"informant_npc_lvl_1",0,-5592,0,-2684,90,0},
-	{"informant_npc_lvl_1",0,-5450,0,-2630,45,0},
-	{"informant_npc_lvl_1",0,-5308,0,-2512,90,0},
-	{"informant_npc_lvl_1",0,-5097,0,-2344,270,0},
-	{"informant_npc_lvl_1",0,-345,0,-4439,0,0},
-	{"informant_npc_lvl_2",0,6775,0,-5487,150,0},
-	{"informant_npc_lvl_2",0,6876,0,-5466,0,0},
-	{"informant_npc_lvl_2",0,-340,0,-4439,0,0},
-	{"informant_npc_lvl_3",0,-5559,0,-6220,90,0},
-	{"informant_npc_lvl_3",0,6860,0,-5761,45,0},
-	{"informant_npc_lvl_3",0,-335,0,-4439,0,0},
-	{"junk_dealer",0,6840,315,-5630,-32,0},
-	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767},
-	{"junk_dealer",0,6756.1,315,-5778,88,0},
-	{"junk_dealer",0,6970,330,-5588,92,0},
-	{"junk_dealer",0,-118.2,28,-4792.9,-144,0},
-	{"junk_dealer",0,-14.5,1.1,2.5,88,1855505},
-	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358},
-	{"junk_dealer",0,3402.4,308,5679,5,0},
-	{"junk_dealer",0,-3133.8,31,2975.5,7,0},
-	{"junk_dealer",0,-14.5,1.1,2.5,88,2955424},
-	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0},
-	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0},
-	{"lord_nyax",3600,18.7,-11.5,-20,-7,6036004},
-	{"meatlump_buffoon",600,-145,28.9,-4959.8,63,0},
-	{"meatlump_buffoon",600,-54.3,28.2,-4963.4,-90,0},
-	{"meatlump_buffoon",600,-20.1,28,-4922.2,109,0},
-	{"meatlump_buffoon",600,266.9,28.5,-4656.5,-109,0},
-	{"meatlump_buffoon",600,284.5,29,-4541.7,-175,0},
-	{"meatlump_buffoon",600,258.2,28,-4424.1,-5,0},
-	{"meatlump_buffoon",600,-365.3,28,-4658.5,26,0},
-	{"meatlump_buffoon",600,-270.1,28,-4923,-97,0},
-	{"meatlump_clod",600,-130.2,31.1,-4993.8,72,0},
-	{"meatlump_clod",600,-11.4,28,-4920.5,63,0},
-	{"meatlump_clod",600,93.4,27.1,-4865,60,0},
-	{"meatlump_cretin",600,-89.4,30.3,-4985.2,33,0},
-	{"meatlump_cretin",600,188.1,27.1,-4770.2,-99,0},
-	{"meatlump_cretin",600,287.1,29.3,-4558,-95,0},
-	{"meatlump_cretin",600,-236.2,28.4,-4947.9,-16,0},
-	{"meatlump_fool",600,172.6,27.9,-4773,-87,0},
-	{"meatlump_fool",600,277.9,28.6,-4545.9,-99,0},
-	{"meatlump_fool",600,266.6,28,-4408.9,68,0},
-	{"meatlump_fool",600,-361.8,28,-4655,164,0},
-	{"meatlump_fool",600,-297.3,28,-4918.8,-86,0},
-	{"meatlump_fool",600,-257,30,-4968.4,24,0},
-	{"meatlump_loon",600,-163,28.2,-49493,102,0},
-	{"meatlump_loon",600,176,27.3,-4763.6,-7,0},
-	{"meatlump_oaf",600,-136,28.8,-4958.5,83,0},
-	{"meatlump_oaf",600,-72,28,-4973.1,-77,0},
-	{"meatlump_oaf",600,97.6,26.6,-4867.1,101,0},
-	{"meatlump_oaf",600,255,28.3,-4666.8,-51,0},
-	{"meatlump_oaf",600,249.6,28,-4418.9,92,0},
-	{"meatlump_oaf",600,-366,28,-4655,148,0},
-	{"meatlump_oaf",600,-308,28,-4897.9,64,0},
-	{"meatlump_stooge",600,-133.5,28.2,-4946,72,0},
-	{"meatlump_stooge",600,-12.6,27.9,-4931.6,-19,0},
-	{"meatlump_stooge",600,90.7,26.6,-4872.1,73,0},
-	{"meatlump_stooge",600,252.9,28.3,-4657.7,-3,0},
-	{"meatlump_stooge",600,293.9,29.7,-4552.4,-93,0},
-	{"rebel_commando",900,-6568.4,407,5911.5,-147,0},
-	{"rebel_commando",900,-6475.8,405,5907.6,74,0},
-	{"rebel_commando",900,-6430.3,405,6037.6,0,0},
-	{"rebel_commando",900,4.5,7,-13,13,8555480},
-	{"rebel_corporal",900,-8.4,7,9.8,-109,8555481},
-	{"rebel_corporal",900,-17.7,1,19.6,-175,8555474},
-	{"rebel_corporal",900,-6466.8,398,5954.2,-57,0},
-	{"rebel_general",900,15.9,1,19.4,-177,8555473},
-	{"rebel_medic",900,-6517.3,398,5959.3,-133,0},
-	{"rebel_medic",900,-16.2,1,15.9,-167,8555474},
-	{"rebel_medic",900,13.3,1,-3.9,-2,8555475},
-	{"rebel_medic",900,20.4,1,15,-164,8555473},
-	{"rebel_recruiter",0,-29,0.5,-0.89,74,8105504},
-	{"rebel_recruiter",0,-29,0.5,-0.89,74,2625363},
-	{"rebel_staff_corporal",900,-6562,405,5923.9,176,0},
-	{"rebel_staff_corporal",900,-6528.1,405,5913.6,-169,0},
-	{"rebel_staff_corporal",900,-6478.7,405,5913.3,161,0},
-	{"rebel_staff_corporal",900,-6437,405,6035.8,19,0},
-	{"rebel_staff_corporal",900,16.9,1,-1.4,-88,8555475},
-	{"rebel_staff_corporal",900,-3.5,1,-19.8,93,8555477},
-	{"rebel_staff_corporal",900,-3.4,1,-9.4,3,8555472},
-	{"rebel_trooper",900,-6512.7,398,5954.8,-137,0},
-	{"rebel_trooper",900,-6559,398,5986,116,0},
-	{"rebel_trooper",900,-6550.8,398,6017.5,122,0},
-	{"rebel_trooper",900,-6518.8,398,6043.2,0,0},
-	{"rebel_trooper",900,-6462.3,398,6008.4,50,0},
-	{"rebel_trooper",900,-6493.4,407.6,5891.7,-143,0},
-	{"rebel_trooper",900,-6550.9,404.8,5905.8,-174,0},
-	{"rebel_trooper",900,15.4,1,15.6,178,8555473},
-	{"rebel_trooper",900,12,1,0.2,179,8555475},
-	{"rebel_trooper",900,3.4,1,-1.8,-175,8555472},
-	{"rebel_trooper",900,17.9,1,-19.9,-88,8555476},
-	{"rebel_trooper",900,10.6,1,-19.8,85,8555476},
-	{"rebel_trooper",900,3.6,1,-20.5,-53,8555477},
-	{"rebel_trooper",900,-18.5,1,-19.8,92,8555478},
-	{"rebel_trooper",900,-19.8,1,15.3,177,8555474},
-	{"rebel_trooper",900,-0.9,7,9.5,-91,8555481},
-	{"rebel_trooper",900,-10.4,7,7.5,-6,8555481},
-	{"rebel_trooper",900,13.7,7,9.2,-27,8555482},
-	{"rebel_trooper",900,8.3,7,8.8,16,8555482},
-	{"renegade_corsec_trooper",300,5239.7,5,1532,169,0},
-	{"renegade_corsec_trooper",300,5242.2,5,1534.8,104,0},
-	{"renegade_corsec_trooper",300,-7.1,0.2,5.9,114,1855738},
-	{"renegade_corsec_trooper",300,2.5,0.2,-1.4,-50,1855738},
-	{"renegade_corsec_trooper",300,10.6,0.2,1.3,1,1855738},
-	{"renegade_corsec_trooper",300,11.2,0.2,5.3,-171,1855738},
-	{"renegade_corsec_trooper",300,1.6,-20.8,18.9,0,1855730},
-	{"rogue_corsec_trooper",300,4.5,-20.8,30.9,-93,1855730},
-	{"rogue_corsec_trooper",300,-0.9,-20.8,31.1,89,1855730},
-	{"rogue_corsec_trooper",300,-7.1,-13.8,7.1,90,1855727},
-	{"rogue_corsec_trooper",300,0.2,-13.8,7.9,-92,1855727},
-	{"rogue_corsec_trooper",300,-4.1,0.2,1.8,-93,1855742},
-	{"rogue_corsec_trooper",300,-10,0.2,5.8,137,1855742},
-	{"rogue_corsec_trooper",300,5207,5,1515.2,76,0},
-	{"rogue_corsec_trooper",300,5203,5,1515.7,-34,0},
-	{"storm_commando",90,-3.02245,0.125266,-3.36259,360.011,2716035},
-	{"stormtrooper",900,4680.98,25,-5821.58,250.209,0},
-	{"stormtrooper",900,4678.34,25,-5829.9,145.272,0},
-	{"stormtrooper",900,4675.82,25,-5825,195.727,0},
-	{"stormtrooper",900,4678.32,25,-5824.85,256.483,0},
-	{"stormtrooper",900,0.298594,0.125266,5.74716,202.607,2715914},
-	{"stormtrooper",900,4688.47,25,-5766.6,272.17,0},
-	{"stormtrooper",900,4693.39,25,-5762.66,34.5588,0},
-	{"stormtrooper",900,4695.82,25,-5761.96,325.144,0},
-	{"stormtrooper",900,4691.89,25,-5774.64,209.751,0},
-	{"stormtrooper",900,4691.92,25,-5763.05,240.515,0},
-	{"stormtrooper",900,-0.207822,0.125265,-1.57078,0,2715952},
-	{"stormtrooper",900,1.4556,0.125264,-3.53267,0,2715952},
-	{"stormtrooper",900,0.879039,0.125264,-2.57846,159.207,2715909},
-	{"stormtrooper",900,-0.805658,0.125265,-3.68196,226.036,2715909},
-	{"stormtrooper",900,4497.73,28.5915,-5829.8,277.53,0},
-	{"stormtrooper_medic",900,0.673475,0.125265,-0.651415,0,2716032},
-	{"stormtrooper_squad_leader",900,4675.99,25,-5809.56,216.285,0},
-	{"stormtrooper_squad_leader",900,4678.77,25,-5757.9,226.393,0},
-	{"trainer_1hsword",0,3284,300,5406,36,0},
-	{"trainer_1hsword",0,-3320,86,3220,0,0},
-	{"trainer_2hsword",0,-3374,86,3285,87,0},
-	{"trainer_architect",0,11,1.13306,-14,0,2365800},
-	{"trainer_architect",0,11,1.13306,-14,0,1855526},
-	{"trainer_architect",0,11,1.13306,-14,0,3075412},
-	{"trainer_architect",0,11,1.13306,-14,0,2955400},
-	{"trainer_architect",0,11,1.13306,-14,0,1935463},
-	{"trainer_armorsmith",0,-12,1.1,5,180,2365799},
-	{"trainer_armorsmith",0,-12,1.1,5,180,1855525},
-	{"trainer_armorsmith",0,-12,1.1,5,180,3075411},
-	{"trainer_armorsmith",0,-12,1.1,5,180,2955399},
-	{"trainer_armorsmith",0,-5118,21,-2337,131,0},
-	{"trainer_armorsmith",0,-12,1.1,5,180,1935462},
-	{"trainer_artisan",0,0,1.13306,-14,0,2365947},
-	{"trainer_artisan",0,6755.99,314.994,-5655.01,269,0},
-	{"trainer_artisan",0,0,1.13306,-14,0,1855517},
-	{"trainer_artisan",0,-187,28,-4700,92,0},
-	{"trainer_artisan",0,0,1.13306,-14,0,3055771},
-	{"trainer_artisan",0,3311,308,5530,83,0},
-	{"trainer_artisan",0,0,1.13306,-14,0,2955416},
-	{"trainer_artisan",0,-5081,21,-2307,134,0},
-	{"trainer_artisan",0,-5300.07,21,-2383,184,0},
-	{"trainer_artisan",0,0,1.13306,-14,0,1935454},
-	{"trainer_bioengineer",0,-424.092,28,-4651.85,94,0},
-	{"trainer_bountyhunter",0,-5130,0,-2302,180,0},
-	{"trainer_brawler",0,-11,1.13306,-14,0,1855508},
-	{"trainer_brawler",0,-11,1.13306,-14,0,3075361},
-	{"trainer_brawler",0,-11,1.13306,-14,0,1935445},
-	{"trainer_brawler",0,-11,1.13306,-14,0,2365770},
-	{"trainer_brawler",0,-11,1.13306,-14,0,2955427},
-	{"trainer_brawler",0,-3193,31,2799,201,0},
-	{"trainer_carbine",0,-5225,0,-2488,180,0},
-	{"trainer_chef",0,3070,0,5260,180,0},
-	{"trainer_chef",0,-3147,31,2792,0,0},
-	{"trainer_chef",0,-11,1.1,-14,0,2955417},
-	{"trainer_combatmedic",0,8.00847,0.184067,5.47322,87,4345354},
-	{"trainer_combatmedic",0,26.676,0.26,5.41823,85,1855531},
-	{"trainer_combatmedic",0,-33.9759,28,-4435.08,95,0},
-	{"trainer_combatmedic",0,-4996.29,21,-2451.61,129,0},
-	{"trainer_combatmedic",0,-17,0.26,10,180,1935835},
-	{"trainer_commando",0,-3344,86,3292,0,0},
-	{"trainer_creaturehandler",0,-55,28,-4566,0,0},
-	{"trainer_creaturehandler",0,3162,300,5191,0,0},
-	{"trainer_dancer",0,16.7961,-0.894993,-10.1031,3,2625355},
-	{"trainer_dancer",0,17.6008,2.12878,53.4279,4,2365436},
-	{"trainer_dancer",0,18.5885,2.12869,53.9366,0,2365399},
-	{"trainer_dancer",0,34.5107,0.105,1.79681,89,3005398},
-	{"trainer_dancer",0,17.7541,2.12875,53.6699,1,4395403},
-	{"trainer_doctor",0,12,0.184067,-1,0,3375392},
-	{"trainer_doctor",0,-2.9,0.7,2.5,132,7615446},
-	{"trainer_doctor",0,-25.2731,0.26,-5,13,1855535},
-	{"trainer_doctor",0,-3.95652,0.184067,0.467273,171,4345354},
-	{"trainer_doctor",0,-5002,0,-2459,180,0},
-	{"trainer_doctor",0,21,0.26,-5,0,1935831},
-	{"trainer_doctor",0,-24.2179,0.26,-3.63691,195,1935835},
-	{"trainer_droidengineer",0,-11,1.13306,-14,0,1935465},
-	{"trainer_droidengineer",0,-11,1.13306,-14,0,2955402},
-	{"trainer_droidengineer",0,-11,1.13306,-14,0,1855528},
-	{"trainer_droidengineer",0,-11,1.13306,-14,0,2365802},
-	{"trainer_droidengineer",0,-11,1.13306,-14,0,3075414},
-	{"trainer_entertainer",0,6829,330,-5429,184,0},
-	{"trainer_entertainer",0,30.358,2.12878,73.5895,265,4395403},
-	{"trainer_entertainer",0,3305,308,5525,151,0},
-	{"trainer_entertainer",0,-3152,31,2807,178,0},
-	{"trainer_entertainer",0,26.1909,-0.894994,10.2549,260,3005399},
-	{"trainer_entertainer",0,-5661,21.6,-2599.57,14,0},
-	{"trainer_entertainer",0,6.15345,-0.894992,-19.3905,0,2625358},
-	{"trainer_entertainer",0,-5062,21,-2291,124,0},
-	{"trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697},
-	{"trainer_entertainer",0,-173,28,-4739,0,0},
-	{"trainer_entertainer",0,-228,28.6,-4118,0,0},
-	{"trainer_imagedesigner",0,-21.4483,2.12878,74.4461,185,2365400},
-	{"trainer_imagedesigner",0,-21.8004,2.12878,74.6487,184,2365437},
-	{"trainer_imagedesigner",0,-2.51106,2.12878,70.8023,2,4395403},
-	{"trainer_marksman",0,6770,0,-5714,180,0},
-	{"trainer_marksman",0,0,1.13306,-14,0,2365769},
-	{"trainer_marksman",0,0,1.13306,-14,0,2955426},
-	{"trainer_marksman",0,-3130,0,2791,180,0},
-	{"trainer_marksman",0,-165,28,-4746,92,0},
-	{"trainer_marksman",0,0,1.13306,-14,0,1855507},
-	{"trainer_marksman",0,0,1.13306,-14,0,3075360},
-	{"trainer_marksman",0,0,1.13306,-14,0,1935444},
-	{"trainer_marksman",0,-35,0,-4372,269,0},
-	{"trainer_marksman",0,3338,0,5516,0,0},
-	{"trainer_marksman",0,-5041,0,-2324,91,0},
-	{"trainer_marksman",0,-5249,21,-2306,180,0},
-	{"trainer_medic",0,-3139,31,2792,0,0},
-	{"trainer_medic",0,-12.6494,0.18406,2.16918,111,3375392},
-	{"trainer_medic",0,-17.7359,0.26,-0.58142,137,1855535},
-	{"trainer_medic",0,14.2688,0.26,4.66124,159,1855531},
-	{"trainer_medic",0,-33,28,-4422,72,0},
-	{"trainer_medic",0,3341,308,5517,47,0},
-	{"trainer_medic",0,-15.9755,0.26,0.30427,15,1935835},
-	{"trainer_medic",0,13.8906,0.26,3.8275,183,1935831},
-	{"trainer_medic",0,-5027,21,-2311,266,0},
-	{"trainer_merchant",0,-369,28,-4533,92,0},
-	{"trainer_merchant",0,12,1.13306,6,180,3075410},
-	{"trainer_merchant",0,12,1.13306,6,180,2955398},
-	{"trainer_merchant",0,12,1.13306,6,180,1935461},
-	{"trainer_merchant",0,12,1.13306,6,180,2365798},
-	{"trainer_musician",0,21.8947,2.12814,63.5,0,2365399},
-	{"trainer_musician",0,22.0995,2.12823,63.5054,0,4395403},
-	{"trainer_musician",0,-5067,21,-2296,158,0},
-	{"trainer_musician",0,21.1399,-0.894993,8.20648,120,2625355},
-	{"trainer_musician",0,21.9985,2.12818,63.5,0,2365436},
-	{"trainer_musician",0,-5408,24.7288,-6260,50,0},
-	{"trainer_pistol",0,-5220,0,-2488,180,0},
-	{"trainer_polearm",0,-3412,86,3084,0,0},
-	{"trainer_ranger",0,-505,0,-4633,180,0},
-	{"trainer_rifleman",0,-5234,21,-2488,176,0},
-	{"trainer_scout",0,-169.45,28,-4712.58,134,0},
-	{"trainer_scout",0,-12,1.13306,5.5,180,1855505},
-	{"trainer_scout",0,-12,1.13306,5.5,180,3075358},
-	{"trainer_scout",0,3330.01,308,5512.46,204,0},
-	{"trainer_scout",0,-12,1.13306,5.5,180,2955424},
-	{"trainer_scout",0,-3164.42,31,2802.08,78,0},
-	{"trainer_scout",0,-5061.86,21,-2322.52,36,0},
-	{"trainer_scout",0,-12,1.13306,5.5,180,1935442},
-	{"trainer_scout",0,-12,1.13306,5.5,180,2365767},
-	{"trainer_scout",0,6737.85,315,-5491.3,31,0},
-	{"trainer_tailor",0,3077,300,5251,0,0},
-	{"trainer_tailor",0,11,1.1,-14,0,2955415},
-	{"trainer_unarmed",0,-3570,86,3146,233,0},
-	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2365801},
-	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1855527},
-	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,3075413},
-	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2955401},
-	{"trainer_weaponsmith",0,-5106,0,-2324,180,0},
-	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1935464},
-	{"visionary_of_lord_nyax",900,15.9,-13.8,-13.2,-4,6036004},
-	{"visionary_of_lord_nyax",900,12.7,-13.8,-13.5,-3,6036004},
-	{"visionary_of_lord_nyax",900,7,-13.8,12.1,-87,6036002},
-	{"visionary_of_lord_nyax",900,-3.5,-3.3,4.1,-178,6035998},
-	{"visionary_of_lord_nyax",900,1376.4,31,-317.1,133,0},
-	{"zealot_of_lord_nyax",900,1365.6,31,-319.8,60,0},
-	{"zealot_of_lord_nyax",900,1367.3,31,-311,20,0},
-	{"zealot_of_lord_nyax",900,0,-13.8,11.6,-150,6036002},
-	{"zealot_of_lord_nyax",900,-4.3,-13.8,11.5,170,6036002},
-	
-	--Coronet
-	{"dannik_malaan", 60, -451.472, 28, -4572.05, 218.458, 0, "calm", "Dannik Malaan"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_noble_fat_zabrak_male_01.iff
-	{"businessman", 60, -306.34, 28, -4620.82, 67.4368, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_bith_male_05.iff
-	{"businessman", 60, -312.404, 28, -4646.51, 242.881, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff
-	{"commoner", 60, -306.539, 28, -4546.52, 95.6639, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
-	{"commoner", 60, -306.061, 28, -4600.68, 146.312, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"commoner", 60, -258.479, 28, -4620, 198.098, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"commoner", 60, -350.892, 28, -4219.92, 244.079, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff
-	{"commoner", 60, -357.932, 28, -4267.81, 39.6745, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"commoner", 60, -350.452, 28, -4287.73, 88.2402, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff
-	{"commoner", 60, -350.998, 28, -4250.76, 129.539, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"commoner", 60, -302.182, 28, -4300.76, 29.3627, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"commoner", 60, -282.189, 28, -4343.57, 319.557, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
-	{"commoner", 60, -239.932, 28, -4522.15, 78.2005, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"commoner", 60, -202.143, 28, -4504.32, 203.539, 0, "calm", "CorSec Agent"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_05.iff
-	{"noble", 60, 11.9421, 1.75, -19.8404, 0, 1855484, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_twk_female_02.iff
-	{"farmer", 60, -9.42234, 1.75, -19.8259, 0, 1855484, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"bodyguard", 60, -9.42234, 1.75, -18.7259, 180.005, 1855484, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_hoodlum_zabrak_female_01.iff
-	{"corsec_agent", 60, -10.5223, 1.75, -18.7259, 134.999, 1855484, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"rikkh", 60, 0.180826, 1.75, -21.4842, 28.861, 1855484, "neutral", ""},  --@npc_spawner_n:rikkh full template: object/mobile/space_privateer_tier2_corellia.iff
-	{"explorer", 60, 17.3045, 2.25, 18.2968, 360.011, 1855477, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"corsec_cadet", 60, 17.3045, 2.25, 19.3968, 180.006, 1855477, "conversation", ""},  --@mob/creature_names:corsec_cadet full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"brawler", 60, 16.2045, 2.25, 19.3968, 135.003, 1855477, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
-	{"rhea", 60, 1.70956, 1.75, -14.1406, 4.76848, 1855483, "neutral", ""},  --@npc_spawner_n:rhea full template: object/mobile/space_privateer_tier1_corellia.iff
-	{"bartender", 60, 7.60649, -0.894992, 1.42464, 324.005, 8105496, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff
-	{"criminal", 60, -5.02826, -0.894991, -21.3375, 60.6357, 8105501, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/dressed_villain_trandoshan_female_01.iff
-	{"businessman", 60, 0.978477, -0.894992, 21.4841, 311.517, 8105500, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"farmer_rancher", 60, 4.71201, -0.894992, -9.83418, 360.011, 8105496, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff
-	{"corsec_rogue", 60, 4.71201, -0.894992, -8.73417, 180.01, 8105496, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_hum_m.iff
-	{"bodyguard", 60, 3.61201, -0.894992, -8.73417, 135.006, 8105496, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_robber_twk_male_01.iff
-	{"entertainer", 60, 2.80432, -0.894991, 9.55434, 360.011, 8105496, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"bodyguard", 60, 2.80432, -0.894991, 10.6543, 180.012, 8105496, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_human_female_01.iff
-	{"rebel_recruiter", 60, -28.3633, -0.894984, 0.335875, 171.796, 8105504, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_01.iff
-	{"ragtag_loon", 60, -386.125, 28, -4867.54, 200.479, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_old_human_male_01.iff
-	{"ragtag_loon", 60, -385.025, 28, -4878.38, 142.066, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_old_human_female_02.iff
-	{"ragtag_loon", 60, -396.754, 28, -4869.82, 8.29735, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
-	{"ragtag_loon", 60, -397.655, 28, -4875.17, 8.04579, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_moncal_male_01.iff
-	{"corsec_lieutenant", 60, 21.8079, 3.22324, 25.517, 360.011, 1855469, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"info_broker", 60, 21.8079, 3.22324, 26.617, 180.006, 1855469, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"farmer", 60, -20.2743, 3.22324, 21.681, 0, 1855468, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_sullustan_male_05.iff
-	{"corsec_detective", 60, -20.2743, 3.22324, 22.781, 180.005, 1855468, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"drall_guard", 60, -21.3743, 3.22324, 22.781, 134.999, 1855468, "conversation", ""},  --@mob/creature_names:drall_guard full template: object/mobile/drall_male.iff
-	{"brawler", 60, -1.72746, 7.9, -32.175, 0, 1855463, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_zabrak_female_01.iff
-	{"scientist", 60, -1.72746, 7.9, -31.075, 180.005, 1855463, "conversation", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
-	{"farmer", 60, -18.6014, 1.30259, -11.3146, 360.011, 1855463, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"slicer", 60, -18.6014, 1.30292, -10.2146, 180.006, 1855463, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"bothan_diplomat", 60, 5.22842, 0.3, 2.91677, 0, 1855463, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"bothan_information_broker", 60, 5.22842, 0.3, 4.01677, 180.005, 1855463, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"noble", 60, 4.12842, 0.3, 4.01677, 134.998, 1855463, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_zabrak_male_02.iff
-	{"farmer", 60, 0.767877, 0.3, -4.00219, 0, 1855463, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_tatooine_bith_male_04.iff
-	{"entertainer", 60, 0.767877, 0.3, -2.90219, 180.005, 1855463, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"corsec_agent", 60, -0.332123, 0.3, -2.90219, 134.998, 1855463, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"medic", 60, -0.332123, 0.3, -4.00219, 45.0054, 1855463, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"thale_dustrunner", 60, -0.052739, 3.0782, -10.9388, 187.319, 1855463, "calm", ""},  --@mob/creature_names:thale_dustrunner full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"zekka_thyne", 60, -22.3764, 1.6, -15.0418, 86.3112, 1855554, "calm", ""},  --@npc_name:bothan_base_male full template: object/mobile/dressed_noble_bothan_male_01.iff
-	{"grobber", 60, -15.4768, 1, -8.20706, 245.925, 1855551, "calm", ""},  --@npc_name:twilek_base_male full template: object/mobile/dressed_noble_old_twk_male_02.iff
-	{"corsec_sergeant", 60, 24.3471, 1.28309, 8.93357, 360.011, 1855549, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"bodyguard", 60, 24.3471, 1.28309, 10.0336, 180.007, 1855549, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_robber_twk_female_01.iff
-	{"corellia_times_investigator", 60, 7.44572, 1.00001, -8.00652, 0, 1855548, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
-	{"corsec_agent", 60, 7.44572, 1.00001, -6.90652, 179.997, 1855548, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"commoner", 60, -24, 1.6, -4, 160, 1855554, "calm", "Pex (an elite storyteller vendor)"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_01.iff
-	{"corsec_major", 60, -7.91375, -0.894992, -5.88587, 0, 8105496, "conversation", ""},  --@mob/creature_names:corsec_major full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"businessman", 60, -7.91375, -0.894992, -4.88587, 179.995, 8105496, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_bith_male_02.iff
-	{"bothan_information_broker", 60, 5.43518, 2.27819, -27.0615, 344.925, 1855463, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"medic", 60, 5.18395, 2.27819, -26.1292, 164.924, 1855463, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"farmer", 60, 37.1168, 1.29422, -4.41488, 0, 1855470, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
-	{"businessman", 60, 37.1168, 1.29422, -3.41488, 180.005, 1855470, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff
-	--{"drall_guard", 60, 17.2826, 1.28309, -12.8404, 0, 1855549, "conversation", ""},  --@mob/creature_names:drall_guard full template: object/mobile/drall_female.iff
-	{"artisan", 60, 17.2826, 1.28309, -11.8404, 179.994, 1855549, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_02.iff
-	{"corsec_trooper", 60, -231.211, 29.5691, -4381.69, 11.5561, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"crackdown_dark_trooper", 60, -574.2, 28, -4247, 333.01, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper", 60, -557.5, 28, -4230.3, 266.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -593.7, 27.9851, -4321.9, 246.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper", 60, -517.9, 28, -4213.9, 303.009, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_medic", 60, -439.1, 28, -4144.4, 335.01, 0, "", ""},  --@mob/creature_names:crackdown_imperial_medic full template: object/mobile/dressed_imperial_medic3_human_male_01.iff
-	{"crackdown_dark_trooper", 60, -303.8, 28, -4144.4, 304.009, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper_rifleman", 60, -118.7, 28, -4204.6, 16.0005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, 26.3, 28, -4290.2, 22.0007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_captain", 60, 22.6, 28, -4290.2, 353.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_captain full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper", 60, 10.5, 28, -4290.5, 42.0012, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, 96.6, 28, -4407.1, 91.0027, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, 96.6, 28, -4394.9, 91.0027, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, 111.5, 28, -4464.9, 26.0008, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper_squad_leader", 60, 144.7, 28, -4536.6, 152.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper", 60, 168.1, 28, -4698.4, 145.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_colonel", 60, 158.9, 28, -4707.2, 137.004, 0, "", ""},  --@mob/creature_names:crackdown_imperial_colonel full template: object/mobile/dressed_imperial_colonel_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -295.9, 28, -4786.4, 194.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -306.7, 28, -4785.9, 187.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -446.5, 28, -4744, 226.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -502.1, 28, -4701.1, 185.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper", 60, -526.1, 28, -4675.8, 252.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -526.1, 28, -4670.1, 290.009, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, -593.7, 28, -4502.9, 272.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -593.7, 28, -4483.1, 270.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -458, 28, -4585, 90.0027, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_elite_dark_trooper", 60, -458, 28, -4590.8, 262.008, 0, "", ""},  --@mob/creature_names:crackdown_elite_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper_sniper", 60, -59.1, 28, -4260.1, 47.0014, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -42.2, 28, -4500.6, 44.0013, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -35.4, 28.5179, -4573.8, 49.0014, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -275.4, 28, -4614.6, 256.27, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -283.2, 28, -4411, 123.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -226.4, 28, -4372, 300.431, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper", 60, -215.7, 29.185, -4509.8, 1.00017, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -204.7, 29.185, -4509.8, 1.00017, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"corsec_renegade", 60, -662.805, 9.26289, -4182.05, 196.426, 0, "calm", ""},  --@mob/creature_names:corsec_renegade full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"gadget_specialist", 60, 19.7425, 28, -4775.49, 27.4957, 0, "calm", ""},  --@mob/creature_names:quest_gadget_specialist full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
-	{"coa2_rebel_coordinator", 60, 94.8749, 28, -4519.08, 121.279, 0, "calm", ""},  --@mob/creature_names:coa2_rebel_coordinator full template: object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff
-	{"businessman", 60, -135.995, 28, -4745.63, 251.824, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_fat_human_male_02.iff
-	{"commoner", 60, -163.792, 28, -4606.3, 8.06951, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"commoner", 60, -163.751, 28, -4552.14, 55.4278, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"commoner", 60, -168.38, 28, -4515.61, 103.857, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"commoner", 60, -158.666, 28, -4526.31, 289.183, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
-	{"commoner", 60, -106.79, 28, -4528.6, 277.086, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_female_02.iff
-	{"commoner", 60, -26.0533, 28, -4558.43, 310.059, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_03.iff
-	{"commoner", 60, -54.9984, 28, -4530.84, 320.833, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"commoner", 60, -37.2537, 28, -4476.76, 289.212, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_04.iff
-	{"commoner", 60, -92.217, 28, -4471.14, 34.4098, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_03.iff
-	{"commoner", 60, -14.9281, 28, -4451.64, 343.833, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"commoner", 60, 40.5453, 28, -4416.63, 80.7447, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"commoner", 60, 14.4606, 28, -4407.11, 38.4825, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_male_02.iff
-	{"commoner", 60, -15.4515, 28, -4415.25, 54.8457, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"commoner", 60, -64.8198, 28, -4398.56, 247.888, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_moncal_male_02.iff
-	{"commoner", 60, -78.7157, 28, -4286.4, 22.2156, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"commoner", 60, -71.0095, 28, -4325.21, 60.8559, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_01.iff
-	{"commoner", 60, -87.6481, 28, -4302.16, 97.3912, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"commoner", 60, -112.646, 28, -4310.7, 151.383, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_03.iff
-	{"commoner", 60, -118.993, 28, -4285.29, 181.854, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
-	{"commoner", 60, -54.3716, 28, -4304.72, 97.2405, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_03.iff
-	{"commoner", 60, -56.7639, 28, -4229.33, 47.6277, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_male_01.iff
-	{"commoner", 60, -103.047, 28, -4182.61, 84.8143, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"commoner", 60, -163.872, 28, -4181.48, 294.873, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
-	{"commoner", 60, -122.156, 28, -4392.8, 270.52, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"commoner", 60, -195.909, 28, -4451.7, 186.379, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_female_01.iff
-	{"commoner", 60, -181.008, 28, -4505.08, 109.502, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"commoner", 60, 71.9271, 28, -4568.97, 267.444, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_08.iff
-	{"commoner", 60, 10.3286, 28, -4633.8, 159.984, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"commoner", 60, 88.4953, 28, -4727.94, 340.398, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
-	{"commoner", 60, 55.6269, 28, -4782.24, 123.611, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"karin_featherlight", 60, -185.082, 28, -4460.71, 86.3314, 0, "calm", ""},  --@npc_name:corellia_herald_02 full template: object/mobile/dressed_herald_corellia_02.iff
-	{"explorer", 60, 26.5189, 2.12846, 71.9319, 0, 2365399, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff
-	{"slicer", 60, 26.5189, 2.12858, 73.0319, 180.005, 2365399, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"businessman", 60, -6.12488, 2.6, 13.0431, 0, 2365397, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
-	{"explorer", 60, -6.12488, 2.6, 14.1431, 180.005, 2365397, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_naboo_moncal_male_02.iff
-	{"scientist", 60, -7.22488, 2.6, 14.1431, 135.008, 2365397, "conversation", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corsec_commissioner", 60, 22.2962, 0.788717, 42.1976, 5.2426, 2365397, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"bothan_information_broker", 60, 22.2962, 0.688613, 43.2884, 180.006, 2365397, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"info_broker", 60, -17.5041, 0.992207, 39.9855, 5.50246, 2365397, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"farmer", 60, -17.5041, 0.887194, 41.0759, 180.006, 2365397, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_tatooine_bith_male_04.iff
-	{"slicer", 60, -18.6041, 0.887072, 41.0759, 134.784, 2365397, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"drall_abbot", 60, 3.66172, 0.6, -3.74185, 0, 2365392, "conversation", ""},  --@mob/creature_names:drall_abbot full template: object/mobile/drall_female.iff
-	{"fringer", 60, 3.66172, 0.6, -2.64185, 180.005, 2365392, "conversation", ""},  --@mob/creature_names:fringer full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"commoner", 60, 2.56172, 0.6, -2.64185, 135, 2365392, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff
-	{"farmer", 60, -62.7673, 2.63942, 40.6604, 360.011, 1855683, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_human_male_01.iff
-	{"mercenary", 60, -62.7673, 2.63942, 41.7604, 179.995, 1855683, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_sullustan_m.iff
-	{"miner", 60, 37.163, 0.639417, 39.6061, 0, 1855678, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_nikto_male_02.iff
-	{"corsec_cadet", 60, 37.163, 0.639417, 40.7061, 180.01, 1855678, "conversation", ""},  --@mob/creature_names:corsec_cadet full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"scientist", 60, 56.669, -0.521137, 32.6689, 360.011, 1855678, "conversation", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_mercenary_medic_rodian_female_01.iff
-	{"bothan_diplomat", 60, 56.669, -0.521137, 33.7689, 180.017, 1855678, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"slicer", 60, -4.61669, 0.639424, 66.7263, 0, 1855675, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"gambler", 60, -4.61669, 0.639424, 67.8263, 180.012, 1855675, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"bothan_diplomat", 60, 8.65132, 0.639421, 74.4483, 256.942, 1855672, "calm", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"hunter", 60, 8.65132, 0.639421, 75.5483, 256.69, 1855672, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_twilek_female_02.iff
-	{"io_tsomcren", 60, -140.701, 28, -4719.16, 44.0418, 0, "neutral", ""},  --@npc_spawner_n:io_tsomcren full template: object/mobile/space_greeter_coronet_shipwright_indifferent.iff
-	{"tarth_jaxx", 60, -137.464, 28, -4718.83, 342.825, 0, "neutral", ""},  --@npc_spawner_n:tarth_jaxx full template: object/mobile/space_greeter_coronet_shipwright_impatient.iff
-	{"ral_mundi", 60, -138.975, 28, -4718.86, 10.0036, 0, "neutral", ""},  --@npc_spawner_n:ral_mundi full template: object/mobile/space_greeter_coronet_merchant.iff
-	{"commoner", 60, 101.283, 28, -4554.86, 358.797, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	--{"human_base_female", 60, 184.405, 25.7416, -4789.02, 322.909, 0, "calm", "Follouckoov Eyagwah"},  --@npc_name:human_base_female full template: object/mobile/dressed_criminal_swooper_human_female_01.iff
-	--{"zabrak_base_female", 60, 185.612, 27.1099, -4773.74, 314.178, 0, "calm", "Eiacif"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff	
-	{"farmer_rancher", 60, -20.3488, 2.12878, 65.9854, 180.006, 2365400, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff
-	{"corellia_times_investigator", 60, 21.5803, 14.26, -8.84205, 360.011, 1855541, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"artisan", 60, 21.5803, 14.26, -7.84205, 180.006, 1855541, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff
-	--{"human_base_female", 60, 1.1, 0.639421, 66.3, 33.001, 1855675, "explain", "Obi Runningstrider"},  --@npc_name:human_base_female full template: object/mobile/dressed_mercenary_weak_hum_f.iff
-	{"corellia_demmi_wot", 60, -452.07, 28, -4467.64, 171.065, 0, "calm", ""},  --@mob/creature_names:corellia_demmi_wot full template: object/mobile/dressed_commoner_naboo_human_male_04.iff
-	{"corellia_coronet_armor_thief", 60, -559.682, 28, -4403.85, 268.809, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_f.iff
-	{"corellia_coronet_armor_thief", 60, -579.972, 28, -4349.14, 100.418, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_m.iff
-	{"surgical_droid_21b", 60, -25.52, 0.26, -3.48, 357.849, 1855535, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/21b_surgical_droid.iff
-	{"noble", 60, 28.93, 2.12878, 58.19, 222.007, 2365398, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_bothan_male_01.iff
-	{"noble", 60, 19.26, 2.12847, 56.13, 266.008, 2365399, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_01.iff
-	--{"quest_crowd_pleaser_theater_manager", 60, 21.99, 2.12804, 64.05, 4.00007, 2365399, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"corellia_frye_troeman", 60, 14.4412, 28, -4577.37, 226.08, 0, "calm", ""},  --@mob/creature_names:corellia_frye_troeman full template: object/mobile/dressed_businessman_human_male_01.iff
-	{"corellia_lieutenant_jasper", 60, -69.16, 28, -4634.16, 224.783, 0, "calm", ""},  --@mob/creature_names:corellia_lieutenant_jasper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"corellia_the_informant", 60, 2.3237, -13.75, -13.3448, 309.863, 18183846445461798810, "npc_dead_03", ""},  --@mob/creature_names:corellia_the_informant full template: object/mobile/dressed_noble_human_male_03.iff
-	{"corellia_pol_handerin", 60, 185.013, 27.9931, -4261.43, 319.93, 0, "calm", ""},  --@mob/creature_names:corellia_pol_handerin full template: object/mobile/dressed_quest_farmer.iff
-	{"corsec_trooper", 60, -222.123, 28.0929, -4065.14, 143.843, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"crackdown_scout_trooper", 60, -582.736, 28, -4260.62, 15.0137, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_imperial_medic", 60, -582.441, 28, -4259.52, 15.0132, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_medic full template: object/mobile/dressed_imperial_medic1_human_male_01.iff
-	{"crackdown_imperial_warrant_officer_ii", 60, -374.063, 28, -4286.45, 23.4486, 0, "", ""},  --@mob/creature_names:crackdown_imperial_warrant_officer_ii full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_imperial_first_lieutenant", 60, -336.602, 28, -4791.97, 283.938, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_first_lieutenant full template: object/mobile/dressed_imperial_officer_m_3.iff
-	{"corsec_detective", 60, -524.755, 28, -4700.63, 114.989, 0, "calm", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"crackdown_imperial_warrant_officer_ii", 60, -535.282, 28, -4633.32, 270.266, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_warrant_officer_ii full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper_bombardier", 60, -547.026, 28, -4669.14, 331.925, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_bombardier full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -291.603, 28, -4413.99, 273.247, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, -569.553, 28, -4243.99, 45.0034, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_captain", 60, -336.361, 28, -4790.74, 283.916, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_captain full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"corsec_trooper", 60, -528.144, 28, -4699.89, 132.784, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"crackdown_stormtrooper_sniper", 60, -533.523, 28, -4632.07, 270.284, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_scout_trooper", 60, -545.52, 28, -4669.28, 331.919, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_imperial_corporal", 60, -291.531, 28, -4412.73, 308.31, 0, "", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"corsec_trooper", 60, 112.862, 28, -4440.48, 143.596, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"r3", 60, -149.754, 28, -4785.34, 297.928, 0, "calm", "R3-E4"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"crackdown_stormtrooper", 60, 128.21, 28, -4459.57, 154.145, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_scout_trooper", 60, 185.754, 28, -4685.24, 220.783, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_specialist_noncom", 60, -289.923, 28, -4414.09, 273.228, 0, "", ""},  --@mob/creature_names:crackdown_specialist_noncom full template: object/mobile/dressed_imperial_officer_m_2.iff
-	{"corsec_master_sergeant", 60, -203.95, 28, -4076.98, 270.008, 0, "calm", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"cll8_binary_load_lifter", 60, -146.217, 28, -4738.99, 346.392, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"crackdown_dark_trooper", 60, 126.785, 28, -4459.52, 154.154, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_scout_trooper", 60, 184.83, 28, -4684.43, 220.787, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"r3", 60, -182.479, 28, -4731.42, 293.019, 0, "calm", "R3-S1"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"ragtag_lunatic", 60, -704.545, 4.87903, -4245.47, 212.096, 0, "calm", ""},  --@mob/creature_names:ragtag_lunatic full template: object/mobile/dressed_commoner_tatooine_rodian_female_02.iff
-	{"corellia_coronet_armor_thief", 60, -565.967, 28, -4394.59, 319.286, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_m.iff
-	{"corellia_coronet_armor_thief", 60, -587.465, 28, -4339.61, 330.119, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"ragtag_maniac", 60, -691.483, 7.08209, -4227.75, 29.5129, 0, "calm", ""},  --@mob/creature_names:ragtag_maniac full template: object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff
-	{"corellia_coronet_armor_thief", 60, -576.928, 28, -4345.95, 128.695, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"corellia_coronet_armor_thief", 60, -569.739, 28, -4411.96, 205.825, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_m.iff
-	{"corellia_coronet_armor_thief", 60, -578.35, 28, -4405.16, 224.215, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"commoner", 60, -51.7918, 28, -4662.65, 360.011, 0, "calm", "Hunter Javeezo"},  --@mob/creature_names:commoner_rodian_male full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"corellia_jonset", 60, -6.6465, -0.894996, 21.8812, 184.278, 8105502, "calm", ""},  --@mob/creature_names:corellia_jonset full template: object/mobile/dressed_assassin_mission_giver_01.iff
-	{"daclif_gallamby", 60, -35.6875, 1.29422, -1.70805, 88.4786, 1855467, "calm", ""},  --@mob/creature_names:daclif_gallamby full template: object/mobile/dressed_daclif_gallamby.iff
-	{"brantlee_spondoon", 60, -24.7, 1.3, -0.5, 124, 1855463, "calm", ""},  --@mob/creature_names:brantlee_spondoon full template: object/mobile/dressed_brantlee_spondoon.iff
-	{"corellia_gallura_handerin", 60, -6.51554, 1.3031, 9.6562, 47.8538, 1855463, "calm", ""},  --@mob/creature_names:corellia_gallura_handerin full template: object/mobile/dressed_noble_human_female_02.iff
-	{"crackdown_stormtrooper", 60, -276.7, 28, -4535.2, 230.415, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"ragtag_loon", 60, 227.709, 28, -4494.78, 296.837, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_rodian_female_03.iff
-	{"ragtag_loon", 60, 229.296, 28, -4484.62, 54.5993, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_old_human_female_01.iff
-	{"ragtag_loon", 60, 234.249, 28, -4490.03, 258.204, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"ragtag_loon", 60, 227.363, 28, -4490.61, 140.577, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
-	{"crackdown_storm_commando", 60, 152.386, 28, -4524.14, 207.005, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"crackdown_elite_sand_trooper", 60, 152.1, 28, -4521.94, 205.76, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
-	{"farmer", 60, 11.9421, 1.75, -18.7404, 129.059, 1855484, "calm", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"corsec_trooper", 60, -1.67932, 28, -4464.42, 93.3597, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"crackdown_dark_trooper", 60, -76.6, 28.5179, -4625.3, 215.006, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"corsec_trooper", 60, -59.6867, 28.5179, -4596.54, 47.4129, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"crackdown_stormtrooper", 60, -148.6, 28, -4660.7, 202.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -159.2, 28, -4660.7, 161.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"corellia_coronet_armor_thief", 60, -497.052, 28, -4410.3, 132.346, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"corellia_coronet_armor_thief", 60, -495.505, 28, -4412.45, 75.4917, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"corellia_coronet_armor_thief", 60, -550.859, 28, -4352.41, 13.9319, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"corellia_coronet_armor_thief", 60, -558.956, 28, -4354.45, 281.748, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"corellia_coronet_armor_thief", 60, -534.583, 28, -4379.03, 226.582, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"corellia_coronet_armor_thief", 60, -535.135, 28, -4372.66, 238.965, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_f.iff
-	{"corellia_coronet_armor_thief", 60, -556.923, 28, -4363.74, 293.058, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"corellia_coronet_armor_thief", 60, -541.906, 28, -4401.13, 338.551, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_rod_m.iff
-	{"corellia_coronet_armor_thief", 60, -539.819, 28, -4403.68, 166.207, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_f.iff
-	{"corellia_coronet_armor_thief", 60, -546.128, 28, -4399.23, 84.3865, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"corellia_coronet_armor_thief", 60, -495.991, 28, -4409.16, 151.206, 0, "calm", ""},  --@mob/creature_names:corellia_coronet_armor_thief full template: object/mobile/dressed_mercenary_strong_hum_f.iff
-	{"corsec_traitor", 60, -2.4866, -13.75, -1.94528, 359.539, 18183846445461798810, "calm", ""},  --@mob/creature_names:corsec_traitor full template: object/mobile/dressed_mercenary_destroyer_nikto_m.iff
-	{"corsec_traitor", 60, 5.61023, -6.75, -2.57632, 181.175, 18183846445461798814, "calm", ""},  --@mob/creature_names:corsec_traitor full template: object/mobile/dressed_mercenary_destroyer_nikto_m.iff
-	{"corsec_rogue", 60, 6.40846, -6.75, -5.03812, 179.538, 18183846445461798814, "calm", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	{"corsec_renegade", 60, -3.75394, -13.75, -11.0451, 4.84778, 18183846445461798810, "calm", ""},  --@mob/creature_names:corsec_renegade full template: object/mobile/dressed_mercenary_strong_hum_m.iff
-	{"corsec_renegade", 60, -2.5029, -13.75, -12.0875, 4.84778, 18183846445461798810, "calm", ""},  --@mob/creature_names:corsec_renegade full template: object/mobile/dressed_mercenary_strong_tran_m.iff
-	{"corellia_corsec_rogue", 60, -5.5575, -6.75, -5.9982, 9.73597, 18183846445461798820, "calm", ""},  --@mob/creature_names:corellia_corsec_rogue full template: object/mobile/dressed_mercenary_destroyer_hum_f.iff
-	{"corsec_renegade", 60, 2.10413, -6.76678, -16.203, 301.207, 18183846445461798817, "calm", ""},  --@mob/creature_names:corsec_renegade full template: object/mobile/dressed_mercenary_strong_hum_m.iff
-	{"corellia_corsec_rogue_sentry", 60, 0.0075745, -6.76678, -14.1183, 261.409, 18183846445461798817, "calm", ""},  --@mob/creature_names:corellia_corsec_rogue_sentry full template: object/mobile/dressed_mercenary_destroyer_nikto_m.iff
-	{"corsec_traitor", 60, -3.20018, -6.75, -4.1671, 339.467, 18183846445461798820, "calm", ""},  --@mob/creature_names:corsec_traitor full template: object/mobile/dressed_mercenary_elite_hum_m.iff
-	{"corellia_ragtag_blackjack", 60, -687.141, 6.74108, -4203.72, 98.2986, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_blackjack full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	{"corellia_ragtag_blackjack", 60, -682.722, 8.47156, -4204.18, 169.259, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_blackjack full template: object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff
-	{"corsec_deserter", 60, -671.712, 6.15933, -4169.03, 37.6923, 0, "calm", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"corsec_traitor", 60, -672.123, 5.60327, -4164.83, 340.354, 0, "calm", ""},  --@mob/creature_names:corsec_traitor full template: object/mobile/dressed_mercenary_destroyer_hum_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -499.3, 28, -4469.1, 219.014, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_scout_trooper", 60, -187.1, 28, -4835, 281.636, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_dark_trooper", 60, -157.6, 28, -4834.8, 328.985, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_imperial_army_captain", 60, -167.548, 28, -4835.07, 322.4, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_army_captain full template: object/mobile/dressed_imperial_captain_m.iff
-	{"crackdown_elite_dark_trooper", 60, -185.046, 28, -4845.97, 90.3211, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper", 60, -216.9, 28.6, -4121.1, 339.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -223.2, 28, -4078, 9.00022, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_scout_trooper", 60, -201.2, 28.6, -4122, 20.0006, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_stormtrooper_rifleman", 60, -188.9, 28, -4076.8, 336.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -12.4, 28.6, -4404.7, 181.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_imperial_first_lieutenant", 60, -199.701, 28, -4077.2, 109.656, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_first_lieutenant full template: object/mobile/dressed_imperial_officer_m_5.iff
-	{"crackdown_stormtrooper", 60, -158.235, 28, -4194.42, 172.18, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"corsec_trooper", 60, -358.581, 28, -4445.64, 90.0027, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"crackdown_stormtrooper", 60, -221.1, 28, -4798.1, 237.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_army_captain", 60, -177.764, 28, -4766.07, 86.2809, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_army_captain full template: object/mobile/dressed_imperial_captain_m.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -175.938, 28, -4767.14, 86.307, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_command_security_guard", 60, -175.887, 28, -4765.95, 86.2823, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_2.iff
-	{"ragtag_kook", 60, -217.315, 28, -4927.23, 40.3799, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	{"ragtag_kook", 60, -213.219, 28, -4926.08, 204.867, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"ragtag_kook", 60, -225.238, 28, -4931.01, 254.658, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"ragtag_kook", 60, -212.993, 28, -4922.77, 38.0909, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -471, 28, -4534.03, 89.4099, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_trooper", 60, -324.144, 28, -4442.29, 277.786, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"ragtag_kook", 60, -712.063, 5.13106, -4304.96, 315.72, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
-	{"ragtag_kook", 60, -719.18, 4.19027, -4309.55, 164.033, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"crackdown_stormtrooper", 60, -533.6, 28, -4626.5, 196.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"smuggler_patrol_thief_5", 60, -526.15, 28, -4558.69, 359.712, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"ragtag_loon", 60, 181.412, 28, -4413.68, 12.8953, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
-	{"ragtag_loon", 60, 184.412, 28, -4413.68, 346.368, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
-	{"ragtag_loon", 60, 183.412, 28, -4407.68, 224.105, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"ragtag_loon", 60, 177.412, 28, -4413.68, 227.101, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_bith_male_01.iff
-	{"ragtag_loon", 60, -205.027, 27.5943, -3996.32, 203.567, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_male_08.iff
-	{"ragtag_loon", 60, 177.412, 28, -4411.68, 159.855, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff
-	{"ragtag_loon", 60, -205.027, 27.2079, -3995.32, 200.21, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"ragtag_loon", 60, -205.027, 28.3091, -3998.32, 80.3182, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"ragtag_loon", 60, -205.027, 29.467, -4002.32, 191.197, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_male_01.iff
-	{"ragtag_loon", 60, -205.027, 29.2182, -4001.32, 192.016, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"ragtag_loon", 60, -532.124, 6.76739, -4078.84, 160.437, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"ragtag_loon", 60, -205.027, 29.467, -4002.32, 115.282, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
-	{"ragtag_kook", 60, -710.949, 2.22724, -4660.02, 70.5273, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_moncal_female_02.iff
-	{"ragtag_loon", 60, -525.124, 5.82557, -4079.84, 207.519, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_sullustan_male_04.iff
-	{"ragtag_loon", 60, -528.124, 8.09628, -4085.84, 191.034, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"ragtag_loon", 60, -534.124, 6.67109, -4078.84, 149.496, 0, "", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_male_07.iff
-	{"ragtag_kook", 60, -703.067, 2.97988, -4657.98, 93.9451, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"ragtag_loon", 60, -529.124, 8.36918, -4087.84, 129.295, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_old_human_male_01.iff
-	{"ragtag_kook", 60, -711.002, 2.29761, -4657.71, 82.4599, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
-	{"ragtag_kook", 60, -707.002, 2.60916, -4659.71, 79.0401, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_07.iff
-	
-	--kor vella
-	{"drall_patriot", 60, -3735.04, 86, 3219.3, 31.1614, 0, "calm", ""},  --@mob/creature_names:drall_patriot full template: object/mobile/drall_female.iff
-	{"commoner", 60, -0.842022, 0.184067, 1.59886, 270.011, 3375392, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
-	{"commoner", 60, -2.84202, 0.184067, 1.59886, 90.0057, 3375392, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"r2", 60, -1.84202, 0.184067, 2.59886, 22.229, 3375392, "calm", "R2-J0"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"farmer", 60, -3713.14, 86, 3105.66, 0, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	{"fringer", 60, -3713.14, 86, 3106.66, 180.005, 0, "conversation", ""},  --@mob/creature_names:fringer full template: object/mobile/dressed_commoner_tatooine_bith_female_02.iff
-	{"corsec_agent", 60, 0.280297, 0.184067, 7.39289, 360.011, 3375392, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"slicer", 60, 0.280297, 0.184067, 8.39289, 180.007, 3375392, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"entertainer", 60, -3602.67, 86, 3221.17, 0, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_human_female_01.iff
-	{"drall_abbot", 60, -3602.67, 86, 3222.17, 180.005, 0, "conversation", ""},  --@mob/creature_names:drall_abbot full template: object/mobile/drall_female.iff
-	{"farmer", 60, -3610.27, 86, 3198.4, 0, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_fat_twilek_male_01.iff
-	{"noble", 60, -3610.27, 86, 3199.4, 180.005, 0, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_01.iff
-	{"commoner", 60, -3522.13, 70, 3234.57, 298.472, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_female_02.iff
-	{"commoner", 60, -3572.52, 70, 3208.39, 214.075, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
-	{"commoner", 60, -3509.45, 78, 3148.97, 307.049, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	{"farmer_rancher", 60, -5.69316, -5.5, -10.3165, 0, 3005430, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"corsec_agent", 60, -5.69316, -5.5, -9.21648, 180.003, 3005430, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"businessman", 60, 3.19577, -5.5, -7.41594, 0, 3005430, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	{"bothan_diplomat", 60, 3.19577, -5.5, -6.31594, 180.007, 3005430, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"brawler", 60, 2.09577, -5.5, -6.31594, 135.004, 3005430, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_crook_zabrak_male_01.iff
-	{"corsec_chief", 60, 3.9861, -0.0513746, -3.1463, 0, 3005428, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"slicer", 60, 3.9861, -0.0513746, -2.0463, 180.006, 3005428, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"miner", 60, 5.57407, -0.0513746, 1.83985, 0, 3005428, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"bothan_information_broker", 60, 5.57407, -0.0513746, 2.93985, 180.01, 3005428, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"bothan_diplomat", 60, 4.47407, -0.0513746, 2.93985, 135.007, 3005428, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"corsec_inspector_sergeant", 60, -3520.73, 78, 3125.57, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"mercenary", 60, -3520.73, 78, 3126.57, 180.005, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_m.iff
-	{"slicer", 60, -3557.49, 86, 3157.11, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"info_broker", 60, -3557.49, 86, 3158.11, 180.005, 0, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"bodyguard", 60, -3587.81, 86, 3134.7, 0, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_robber_human_female_01.iff
-	{"corsec_lieutenant", 60, -3587.81, 86, 3135.7, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"medic", 60, -3591.74, 86, 3179.01, 0, 0, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"businessman", 60, -3591.74, 86, 3180.01, 180.005, 0, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
-	{"corellia_deel_draav", 60, 8.89271, 0.625, -4.32354, 272.897, 18187224143116836370, "calm", ""},  --@mob/creature_names:corellia_deel_draav full template: object/mobile/dressed_mayor.iff
-	{"denell_kelvannon", 60, -3414.11, 74, 3336.52, 28.1393, 0, "calm", "Denell Kel'Vannon"},  --@npc_name:human_base_male full template: object/mobile/dressed_denell_kelvannon.iff
-	{"commoner", 60, -3447.57, 78, 3219.08, 208.852, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
-	{"commoner", 60, -3455.84, 78, 3343.36, 116.625, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
-	{"commoner", 60, -3427.62, 86, 3029.21, 72.4859, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"commoner", 60, -3423.54, 86, 3043.61, 131.267, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_07.iff
-	{"commoner", 60, -3403.44, 86, 2997.65, 181.978, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_02.iff
-	{"commoner", 60, -3403.21, 86, 3111.2, 46.9921, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_04.iff
-	{"commoner", 60, -3408.19, 86, 3125.55, 199.789, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_03.iff
-	{"commoner", 60, -3426.15, 86, 3134.26, 343.162, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff
-	{"commoner", 60, -3444.77, 86, 3143.75, 343.711, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_01.iff
-	{"commoner", 60, -3435.7, 86, 3119.29, 67.1759, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
-	{"commoner", 60, -3416.7, 86, 3033.89, 318.181, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_04.iff
-	{"commoner", 60, -3458.31, 78, 3027.47, 275.402, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_02.iff
-	{"commoner", 60, -3461.07, 86, 3156, 54.5013, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_08.iff
-	{"commoner", 60, -3421.3, 86, 3104.47, 296.197, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"bartender", 60, 6.4346, -0.894992, -2.33458, 156.803, 3005399, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	{"skinkner", 60, 8.84694, -0.894992, 21.4389, 103.785, 3005403, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_skinkner.iff
-	{"slicer", 60, 10.9405, -0.894992, -15.0189, 360.011, 3005402, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"farmer", 60, 10.9405, -0.894992, -13.9189, 180.013, 3005402, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"brawler", 60, 22.6067, -0.894992, 19.6263, 0, 3005401, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_villain_trandoshan_male_01.iff
-	{"fringer", 60, 22.6067, -0.894992, 20.7263, 180.01, 3005401, "conversation", ""},  --@mob/creature_names:fringer full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"commoner", 60, 21.5067, -0.894992, 20.7263, 135.005, 3005401, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"artisan", 60, 34.3598, 0.104999, -8.03626, 0, 3005398, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_03.iff
-	{"mercenary", 60, 34.3598, 0.104999, -6.93626, 180.005, 3005398, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	{"lasha_bindari", 60, 39.0615, 0.104999, 0.934001, 189.839, 3005397, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_lasha_bindari.iff
-	{"crowley", 60, -3404.73, 86, 3092.64, 323.239, 0, "calm", ""},  --@npc_name:twilek_base_female full template: object/mobile/dressed_corvette_rebel_crowley.iff
-	{"gambler", 60, -3408.26, 86, 3048.35, 0, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_female_02.iff
-	{"corsec_detective", 60, -3408.26, 86, 3049.35, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"slicer", 60, -3450.64, 78, 3030.31, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corsec_lieutenant", 60, -3450.64, 78, 3031.31, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"noble", 60, -3459.55, 78, 3225.02, 0, 0, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_human_male_02.iff
-	{"brawler", 60, -3459.55, 78, 3226.02, 180.005, 0, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_crook_zabrak_female_01.iff
-	{"commoner", 60, -45.2379, 0.105009, -21.6909, 360.011, 3005411, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	{"corsec_rogue", 60, -45.2379, 0.105009, -20.6909, 180.003, 3005411, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	{"miner", 60, 20.5946, -0.894996, -19.6063, 0, 3005400, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_05.iff
-	{"corsec_chief", 60, 20.5946, -0.894996, -18.6063, 180.006, 3005400, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"gambler", 60, -2.41153, -0.894993, 23.4367, 0, 3005405, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"brawler", 60, -2.41153, -0.894992, 24.4367, 180.007, 3005405, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_aqualish_female_02.iff
-	{"corsec_commissioner", 60, -25.7262, -0.519991, 10.5232, 360.011, 3005409, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"slicer", 60, -25.7262, -0.519991, 11.5232, 180.007, 3005409, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_female_01.iff
-	{"r2", 60, -3697.43, 87.5185, 3141.62, 327.074, 0, "calm", "R2-Z1"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"crackdown_imperial_first_lieutenant", 60, -3662.58, 86, 3090.82, 101.488, 0, "", ""},  --@mob/creature_names:crackdown_imperial_first_lieutenant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"eg6_power_droid", 60, -3766.44, 86, 3180.9, 54.3954, 0, "calm", ""},  --@mob/creature_names:eg6_power_droid full template: object/mobile/eg6_power_droid.iff
-	{"crackdown_imperial_master_sergeant", 60, -10.0845, 0.184067, -12.51, 272.234, 0, "", ""},  --@mob/creature_names:crackdown_imperial_master_sergeant full template: object/mobile/dressed_imperial_officer_m_5.iff
-	{"miner", 60, 3.29, 1.13306, -9.58, 249.007, 2955416, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	--{"crafting_contractor", 60, -3.69, 1.13306, -6, 11.0003, 2955412, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_03.iff
-	{"gilker_budz", 60, -3336.21, 72.4231, 2926.19, 277.144, 0, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_giker_budz.iff
-	{"commoner", 60, -3361.13, 86, 3217.26, 124.012, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"commoner", 60, -3324.59, 86, 3261.86, 293.486, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, -3322.1, 86, 3230.47, 113.222, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"commoner", 60, -3342.65, 86, 3268.3, 214.421, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff
-	{"commoner", 60, -3365.89, 86, 3284.68, 46.8022, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff
-	{"commoner", 60, -3374.97, 86, 3265.02, 47.337, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"commoner", 60, -3351.81, 86, 3303.25, 24.0851, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_02.iff
-	{"commoner", 60, -3332.16, 86, 3307.2, 264.653, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"commoner", 60, -3322.3, 86, 3283.63, 275.608, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_male_02.iff
-	{"commoner", 60, -3393.47, 86, 3007.94, 286.244, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_02.iff
-	{"commoner", 60, -3378.96, 86, 2985.53, 285.729, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"commoner", 60, -3384.17, 86, 2958.24, 11.3093, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"commoner", 60, -3311.8, 69.6204, 2886.94, 40.0687, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	{"commoner", 60, -3378.65, 86, 3173.54, 240.512, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"commoner", 60, -3396.89, 86, 3131.64, 135.762, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"commoner", 60, -3391.66, 86, 3140.05, 231.255, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_01.iff
-	--{"corsec_pilot", 60, -3368.55, 86, 3144.06, 285.524, 0, "neutral", ""},  --@npc_spawner_n:corsec_pilot full template: object/mobile/space_privateer_retired_corsec_beggar.iff
-	{"corellia_menchi_lerann", 60, -3468.54, 78, 3022.99, 312.222, 0, "calm", ""},  --@mob/creature_names:corellia_menchi_lerann full template: object/mobile/dressed_gran_thug_male_01.iff
-	{"crackdown_imperial_first_lieutenant", 60, -3074, 31, 2825, 235.187, 0, "", ""},  --@mob/creature_names:crackdown_imperial_first_lieutenant full template: object/mobile/dressed_imperial_officer_m_2.iff
-	{"crackdown_stormtrooper_sniper", 60, -3093, 31.0391, 2803, 347.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper_medic", 60, -3112, 31, 2814, 168.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_medic full template: object/mobile/dressed_stormtrooper_medic_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 102.172, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_medic", 60, -3386, 86, 2992, 354.507, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_medic full template: object/mobile/dressed_stormtrooper_medic_m.iff
-	{"crackdown_imperial_corporal", 60, -3387, 86, 2960, 95.0028, 0, "", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"crackdown_stormtrooper", 60, -3368.29, 86, 2949.6, 170.619, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_sergeant", 60, -3435.46, 86, 3034.56, 91.5677, 0, "", ""},  --@mob/creature_names:crackdown_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 102.184, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 93.8986, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 102.188, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 102.173, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3435.46, 86, 3034.56, 102.152, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3460.41, 78, 3112.21, 232.636, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3435.46, 86, 3034.56, 102.209, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_imperial_sergeant", 60, -3435.46, 86, 3034.56, 102.163, 0, "", ""},  --@mob/creature_names:crackdown_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_imperial_sergeant", 60, -3368.45, 86, 3242.5, 216.391, 0, "", ""},  --@mob/creature_names:crackdown_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, -3358.96, 86, 3286.34, 64.5472, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3318.03, 86, 3230.13, 115.958, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3326.35, 86, 3231.94, 52.9842, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_imperial_sergeant", 60, -3366, 86, 3232, 166.005, 0, "", ""},  --@mob/creature_names:crackdown_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3602.47, 86, 3214.02, 44.6678, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -3613.06, 86, 3212.07, 47.9151, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -3719.35, 86.0549, 3175.2, 326.578, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3567.44, 86, 3144.32, 100.505, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_sergeant", 60, -3582, 86, 3143, 333.01, 0, "", ""},  --@mob/creature_names:crackdown_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, -3619.55, 86, 3121.89, 113.533, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3596.69, 86, 3122.97, 236.271, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3726.46, 86, 3185.97, 120.721, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_imperial_first_lieutenant", 60, -3674.98, 86, 3104.95, 180.183, 0, "", ""},  --@mob/creature_names:crackdown_imperial_first_lieutenant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_specialist_noncom", 60, -3660.31, 86, 3103.26, 39.0513, 0, "", ""},  --@mob/creature_names:crackdown_specialist_noncom full template: object/mobile/dressed_imperial_officer_m_4.iff
-	{"crackdown_stormtrooper_sniper", 60, -3715.75, 86.0549, 3169.75, 326.925, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -3752, 86, 3170, 351.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"slicer", 60, -3384.54, 86, 3007.15, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"pilot", 60, -3384.54, 86, 3008.15, 180.005, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	{"cll8_binary_load_lifter", 60, -3654.48, 86, 3081.81, 26.971, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"crackdown_imperial_warrant_officer_ii", 60, -3787.12, 86, 3147.97, 0, 0, "", ""},  --@mob/creature_names:crackdown_imperial_warrant_officer_ii full template: object/mobile/dressed_imperial_officer_m.iff
-	{"commoner", 60, -3296.84, 66.0938, 2877.86, 186.227, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
-	{"commoner", 60, -3225.11, 32.2567, 2816.51, 354.534, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"commoner", 60, -3276.7, 86, 3089.82, 195.888, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_male_01.iff
-	{"commoner", 60, -3256, 86, 3124.3, 90.73, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
-	{"commoner", 60, -3272.53, 86, 3071.96, 247.995, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_09.iff
-	{"chertyl_ruluwoor", 60, -8.54047, 1.6, -11.59, 98.7988, 3005674, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_old_human_female_02.iff
-	{"miner", 60, 21.6158, 1.28309, 8.94, 0, 3005671, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_bith_female_02.iff
-	{"farmer_rancher", 60, 21.6158, 1.28309, 10.04, 180.005, 3005671, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_sullustan_male_05.iff
-	{"commoner", 60, 20.5158, 1.28309, 10.04, 135.006, 3005671, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	{"ta_667", 60, -0.521681, 0.999963, 6.38795, 13.7514, 3005670, "npc_imperial", ""},  --@npc_spawner_n:ta_667 full template: object/mobile/dark_trooper.iff
-	{"zhanks", 60, 1.25263, 0.999968, 6.92433, 340.53, 3005670, "npc_imperial", ""},  --@npc_spawner_n:zhanks full template: object/mobile/dressed_imperial_lieutenant_m.iff
-	{"drall_monk", 60, -16.9034, 1.6, 10.7646, 0, 3005672, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_female.iff
-	{"entertainer", 60, -16.9034, 1.6, 11.8646, 180.006, 3005672, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"commoner", 60, -24, 1.6, -4, 124.701, 3005676, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
-	--{"corellia_jaylon_geissler", 60, -3323.82, 101, 3410.51, 258.908, 0, "calm", ""},  --@mob/creature_names:corellia_jaylon_geissler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -3296.83, 86, 3294.86, 193.382, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"corsec_lieutenant", 60, -3177.78, 31, 2889.93, 360.011, 0, "conversation", ""},  --@mob/creature_names:corsec_lieutenant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"corsec_sergeant", 60, -3177.78, 31, 2891.03, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"bodyguard", 60, -3162.17, 31, 2902.28, 0, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_human_male_01.iff
-	{"miner", 60, -3162.17, 31, 2903.38, 180.005, 0, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
-	{"farmer", 60, -3163.27, 31, 2903.38, 135.004, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_sullustan_male_04.iff
-	{"miner", 60, -3163.27, 31, 2902.28, 45.0013, 0, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_naboo_human_female_01.iff
-	{"corsec_master_sergeant", 60, -3172.38, 31, 2880.85, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"explorer", 60, -3172.38, 31, 2881.95, 180.005, 0, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_bith_male_04.iff
-	{"entertainer", 60, -3100.88, 31, 2889.15, 360.011, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"corsec_commissioner", 60, -3100.88, 31, 2890.25, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"explorer", 60, -3101.09, 31, 2904.87, 0, 0, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"corsec_cadet", 60, -3101.09, 31, 2905.97, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_cadet full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	--{"durni", 60, -3172.9, 101, 3216.97, 120.777, 0, "calm", ""},  --@mob/creature_names:durni full template: object/mobile/durni_hue.iff
-	{"commoner", 60, -3199.88, 30.6149, 2786.24, 349.225, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
-	{"commoner", 60, -3160.26, 30.6615, 2762.28, 0.966738, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	{"commoner", 60, -3178.84, 31, 2775.92, 288.531, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"commoner", 60, -3115.47, 31, 2800.28, 30.7435, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"commoner", 60, -3112.88, 31, 2984.36, 125.035, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, -3131.04, 31, 2995.05, 134.779, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, -3157.04, 101, 3077.75, 219.742, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_07.iff
-	{"commoner", 60, -3191.67, 101, 3052.4, 294.559, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_male_01.iff
-	{"commoner", 60, -3190.54, 101, 3073.46, 88.2138, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff
-	{"commoner", 60, -3185.75, 101, 3104.64, 308.461, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_03.iff
-	{"commoner", 60, -3153.75, 101, 3112.41, 31.6067, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
-	{"commoner", 60, -3188.79, 101, 3156.71, 306.911, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"corsec_inspector_sergeant", 60, -62.2367, 2.63942, 39.7337, 0.189751, 4255431, "conversation", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"medic", 60, -62.2331, 2.63942, 40.8373, 180.197, 4255431, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"medic", 60, 45.9927, -0.521138, 34.7512, 360.011, 4255426, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_hutt_medic1_zabrak_female_01.iff
-	{"explorer", 60, 45.9927, -0.521138, 35.8512, 180.008, 4255426, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"miner", 60, 44.8927, -0.521138, 35.8512, 135.003, 4255426, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_naboo_bothan_male_02.iff
-	{"chassis_broker", 60, -56.7101, 0.974563, 8.33237, 12.6055, 4255433, "neutral", ""},  --@npc_spawner_n:chassis_broker full template: object/mobile/space_chassis_broker_02.iff
-	{"slicer", 60, 0.68378, 0.639421, 62.1666, 180.005, 4255423, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"logro_elsin", 60, -3144.67, 31, 2806.06, 174.404, 0, "neutral", ""},  --@npc_spawner_n:logro_elsin full template: object/mobile/dressed_tie_fighter_m.iff
-	{"eryk_chinn", 60, -3145.32, 31, 2803.95, 208.286, 0, "calm", ""},  --@npc_spawner_n:eryk_chinn full template: object/mobile/dressed_stormtrooper_black_black.iff
-	{"dac_axfow", 60, -3143.7, 31, 2803.73, 233.156, 0, "neutral", ""},  --@npc_spawner_n:dac_axfow full template: object/mobile/space_greeter_kor_vella_imperial_officer.iff
-	{"businessman", 60, -3159.35, 31, 2813.02, 0, 0, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"farmer_rancher", 60, -3159.35, 31, 2814.02, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"businessman", 60, -3152.32, 31, 2971.71, 0, 0, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"slicer", 60, -3152.32, 31, 2972.71, 180.005, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"cll8_binary_load_lifter", 60, -3444.06, 78, 3384.03, 359.013, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"bothan_information_broker", 60, -3088.9, 31, 2902.08, 0, 0, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"slicer", 60, -3088.9, 31, 2903.18, 180.005, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"gambler", 60, -3090, 31, 2903.18, 135.004, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"r5", 60, -3094.48, 31, 2972.63, 268.321, 0, "calm", "R5-W1"},  --@mob/creature_names:r5 full template: object/mobile/r5.iff
-	{"noble", 60, -3095.48, 31, 2971.63, 249.618, 0, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_zabrak_male_01.iff
-	{"commoner", 60, -3068.52, 30.6373, 2772.26, 154.712, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	{"commoner", 60, -3028.15, 29.9485, 2793.83, 126.824, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"commoner", 60, -3066.9, 31, 2925.13, 132.488, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"commoner", 60, -3087.72, 31, 2984.93, 5.4138, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
-
-	--{"corellia_lt_cope", 60, -3101.82, 31, 2799.81, 276.965, 0, "calm", ""},  --@mob/creature_names:corellia_lt_cope full template: object/mobile/dressed_corsec_captain_human_male_01.iff
-	{"r3", 60, -3423.05, 80.6846, 3333.75, 253.023, 0, "calm", "R3-U1"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"r3", 60, -3327.95, 86, 3233.64, 315.946, 0, "calm", "R3-N0"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"corsec_trooper", 60, -3151.32, 31.114, 2772.13, 282.871, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"corsec_major", 60, -3150.16, 31.1352, 2773.01, 282.869, 0, "calm", ""},  --@mob/creature_names:corsec_major full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"r3", 60, -3151.77, 31, 2800, 265.951, 0, "calm", "R3-L8"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"corsec_trooper", 60, -3103.98, 31, 2988.38, 266.983, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_sergeant", 60, -3149.45, 31.1521, 2771.7, 282.87, 0, "calm", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"r5", 60, -3134.32, 31, 2801.71, 82.3858, 0, "calm", "R5-U7"},  --@mob/creature_names:r5 full template: object/mobile/r5.iff
-	{"corsec_trooper", 60, -3102.95, 31, 2989.56, 266.985, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"cll8_binary_load_lifter", 60, -3095.09, 31, 2975.46, 81.028, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"corsec_inspector_sergeant", 60, -3102.24, 31, 2988.47, 266.978, 0, "calm", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"stormtrooper", 60, -3621.27, 86, 3142.55, 28.2333, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3631.32, 86, 3136.46, 252.779, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3410.43, 86, 3142.78, 151.613, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3406.24, 86, 3137.43, 204.684, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3395.4, 86, 3017.79, 72.2994, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3395.16, 86, 3023.07, 57.428, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3344.8, 80.6241, 3240.26, 200.272, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3343.2, 81.762, 3240.54, 177.569, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"smuggler_patrol_thief_5", 60, -3296.89, 86, 3295.02, 160.669, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"stormtrooper", 60, -3767.99, 86, 3180.85, 154.813, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3761.11, 86, 3190.17, 63.2948, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"gambler", 60, 0.68378, 0.639421, 61.0666, 268.449, 4255423, "calm", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_rodian_male_03.iff
-	{"crackdown_stormtrooper", 60, -3774.9, 86, 3203.38, 281.283, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -3774.65, 86, 3204.62, 22.9721, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, -3773.66, 86, 3203.13, 22.9816, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"corsec_rogue", 60, -3340.49, 86, 3292.76, 100.151, 0, "", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_hum_f.iff
-	{"corsec_rogue", 60, -3332.89, 86, 3303.69, 68.6738, 0, "", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_hum_m.iff
-	{"corsec_rogue", 60, -3330.1, 86, 3290.98, 104.099, 0, "", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_messanger_rod_m.iff
-	{"stormtrooper", 60, -3411.64, 74, 3344.7, 179.356, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3416.53, 74, 3346.57, 326.897, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3157.47, 31, 2797.69, 352.434, 0, "npc_imperial", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"stormtrooper", 60, -3155.56, 31, 2792.15, 348.853, 0, "", ""},  --@mob/creature_names:stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	--{"swooper", 60, -3073.63, 31, 2824.36, 145.468, 0, "calm", "Eesiapia Ipeelasxae"},  --@npc_name:zabrak_base_male full template: object/mobile/dressed_criminal_swooper_zabrak_male_01.iff
-	--{"swooper", 60, -3075.63, 31, 2819.36, 192.304, 0, "calm", "Wofie Iamatiew"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
-	--{"swooper", 60, -3072.63, 31, 2822.36, 135.613, 0, "calm", "Iesi Salphe"},  --@npc_name:human_base_female full template: object/mobile/dressed_criminal_swooper_human_female_01.iff
-	--{"swooper", 60, -3074.63, 31, 2825.36, 11.9332, 0, "calm", "Liko Aehien"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3117.69, 178.443, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"ragtag_kook", 60, -3414.17, 86, 3120.69, 230.88, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3120.69, 112.674, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3114.69, 251.872, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"ragtag_kook", 60, -3414.17, 86, 3115.69, 201.83, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	{"ragtag_kook", 60, -3422.17, 86, 3123.69, 67.6278, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	{"ragtag_kook", 60, -3414.17, 86, 3120.69, 5.67066, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"ragtag_kook", 60, -3417.17, 86, 3121.69, 267.905, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	{"ragtag_kook", 60, -3413.17, 86, 3117.69, 319.719, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3119.69, 27.5063, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_female_03.iff
-	{"ragtag_kook", 60, -3417.17, 86, 3115.69, 206.38, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_zabrak_female_01.iff
-	{"ragtag_kook", 60, -3418.17, 86, 3116.69, 219.956, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff
-	{"ragtag_kook", 60, -3424.17, 86, 3120.69, 27.2417, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
-	{"ragtag_kook", 60, -3414.17, 86, 3122.69, 12.7232, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"ragtag_kook", 60, -3416.17, 86, 3118.69, 359.725, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
-	{"crackdown_stormtrooper", 60, 48.13, 0.105, 2.47, 292.979, 3005397, "neutral", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"ragtag_kook", 60, -3422.17, 86, 3122.69, 132.781, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"ragtag_kook", 60, -3418.17, 86, 3121.69, 325.353, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_02.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3118.69, 30.3907, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"ragtag_kook", 60, -3417.17, 86, 3121.69, 186.13, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3119.69, 111.425, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"ragtag_kook", 60, -3415.17, 86, 3116.69, 68.8437, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"crackdown_imperial_corporal", 60, -3404.35, 74, 3347.14, 188.231, 0, "neutral", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_4.iff
-	{"ragtag_kook", 60, -3418.17, 86, 3114.69, 280.554, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"ragtag_kook", 60, -3630.85, 86, 3115.04, 295.53, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"ragtag_kook", 60, -3419.17, 86, 3114.69, 317.368, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"ragtag_kook", 60, -3418.17, 86, 3113.69, 283.302, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
-	{"ragtag_kook", 60, -3637.85, 86, 3118.04, 110.747, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_human_male_02.iff
-	{"ragtag_kook", 60, -3419.17, 86, 3119.69, 200.488, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff
-	{"ragtag_kook", 60, -3634.85, 86, 3116.04, 307.45, 0, "", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3118.69, 156.083, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_09.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3114.69, 162.494, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	{"ragtag_kook", 60, -3639.85, 86, 3121.04, 204.093, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
-	{"ragtag_kook", 60, -3635.85, 86, 3122.04, 52.6115, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
-	{"ragtag_kook", 60, -3631.85, 86, 3117.04, 340.653, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
-	{"ragtag_kook", 60, -3634.85, 86, 3125.04, 205.618, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"ragtag_kook", 60, -3640.85, 86, 3121.04, 123.754, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"ragtag_kook", 60, -3631.85, 86, 3122.04, 239.803, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"ragtag_kook", 60, -3631.85, 86, 3124.04, 227.799, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_08.iff
-	{"ragtag_kook", 60, -3423.17, 86, 3116.69, 75.9716, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_bothan_male_02.iff
-	{"ragtag_kook", 60, -3631.85, 86, 3117.04, 236.27, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"ragtag_kook", 60, -3637.85, 86, 3114.04, 22.9008, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"ragtag_kook", 60, -3631.85, 86, 3119.04, 193.843, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_male_01.iff
-	{"ragtag_kook", 60, -3630.85, 86, 3119.04, 330.28, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_02.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3120.69, 316.141, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	{"ragtag_kook", 60, -3635.85, 86, 3118.04, 247.622, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_female_03.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3122.69, 145.962, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"ragtag_kook", 60, -3637.85, 86, 3120.04, 29.6422, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
-	{"ragtag_kook", 60, -3633.85, 86, 3121.04, 189.65, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	{"ragtag_kook", 60, -3417.17, 86, 3118.69, 112.594, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
-	{"ragtag_kook", 60, -3421.17, 86, 3120.69, 157.139, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"ragtag_kook", 60, -3424.17, 86, 3115.69, 335.402, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"ragtag_kook", 60, -3420.17, 86, 3112.69, 148.406, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	
-	--tyrena
-	{"commoner", 60, -5633.73, 21, -2757.46, 93.1038, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"commoner", 60, -5583.79, 21, -2764.8, 215.273, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_02.iff
-	{"commoner", 60, -5538.94, 21, -2600.55, 4.08279, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_male_01.iff
-	{"miner", 60, 1.29504, 1.75, -20.9672, 360.011, 1935477, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_naboo_human_male_08.iff
-	{"bodyguard", 60, 1.29504, 1.75, -19.8672, 180.011, 1935477, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_hooligan_rodian_male_01.iff
-	{"entertainer", 60, -3.65637, 1.1544, -8.77307, 0, 1935476, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"mercenary", 60, -3.65637, 1.1544, -7.67307, 179.999, 1935476, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
-	{"slicer", 60, 5.78383, 1.1544, -3.05638, 360.011, 1935476, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"noble", 60, 5.78383, 1.1544, -1.95638, 180.012, 1935476, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_twk_male_01.iff
-	{"medic", 60, 11.2683, 1.75, -6.35457, 360.011, 1935476, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"farmer_rancher", 60, 11.2683, 1.75, -5.25457, 180.017, 1935476, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"farmer", 60, 10.1683, 1.75, -5.25457, 135.008, 1935476, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_nikto_male_04.iff
-	{"hal_horn", 60, -15.0532, 2.25, 11.1395, 133.195, 1935472, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_corellia_hal_horn.iff
-	{"slicer", 60, -18.0229, 9, 13.2195, 360.011, 1935472, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"corsec_detective", 60, -18.0229, 9, 14.3195, 180.008, 1935472, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_deserter", 60, -19.1229, 9, 14.3195, 135.007, 1935472, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"commoner", 60, -15.1386, 2.25, 17.5614, 270.01, 1935472, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
-	{"commoner", 60, -17.1386, 2.25, 17.5614, 90.0005, 1935472, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff
-	{"r3", 60, -16.1386, 2.25, 18.5614, 173.343, 1935472, "calm", "R3-X8"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"didina_lippinoss", 60, -8.43192, 1.6, -11.42, 69.197, 1935530, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_noble_human_female_03.iff
-	{"businessman", 60, 17.3056, 1.28309, -7.47174, 0, 1935527, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_devaronian_male_01.iff
-	{"corsec_investigator", 60, 17.3056, 1.28309, -6.37174, 180.003, 1935527, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"commoner", 60, -16.9721, 1, -4.12621, 360.011, 1935528, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
-	{"corsec_rogue", 60, -16.9721, 1.00014, -3.02621, 180.01, 1935528, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_hum_f.iff
-	{"drall_monk", 60, -22.8236, 0.709118, 43.0098, 354.767, 2365434, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_male.iff
-	{"farmer", 60, -22.8235, 0.609014, 44.1007, 180.008, 2365434, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_old_twilek_female_02.iff
-	{"bothan_information_broker", 60, -14.2562, 2.4869, 23.6983, 5.24379, 2365434, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"farmer_rancher", 60, -14.2562, 2.3868, 24.7891, 180.003, 2365434, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_old_zabrak_male_01.iff
-	{"drall_monk", 60, 2.65839, 2.6, 3.05034, 0, 2365434, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_female.iff
-	{"artisan", 60, 2.65839, 2.6, 4.15034, 180.003, 2365434, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_01.iff
-	{"explorer", 60, 1.55839, 2.6, 4.15034, 135.004, 2365434, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"corsec_major", 60, 5.33572, 2.12878, 71.6096, 0, 2365436, "conversation", ""},  --@mob/creature_names:corsec_major full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"gambler", 60, 5.33572, 2.12878, 72.7096, 180.003, 2365436, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_naboo_zabrak_female_01.iff
-	--{"rebel_recruiter", 60, 24.2833, 2.12878, 75.8161, 281.195, 2365436, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_02.iff
-	{"commoner", 60, -24, 1.6, -4, 354.16, 1935532, "calm", "Pex (an elite storyteller vendor)"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"bodyguard", 60, -5537.5, 21, -2615.06, 0, 0, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_goon_twk_male_01.iff
-	{"artisan", 60, -5537.5, 21, -2614.06, 180.005, 0, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff
-	{"corellia_times_investigator", 60, -5568.35, 21, -2664.99, 0, 0, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_fat_twilek_male_01.iff
-	{"explorer", 60, -5568.35, 21, -2663.99, 180.005, 0, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"info_broker", 60, -5574.26, 21, -2684.38, 0, 0, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"farmer", 60, -5574.26, 21, -2683.38, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"entertainer", 60, -5539.77, 21, -2683.65, 0, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_human_female_01.iff
-	{"entertainer", 60, -5539.77, 21, -2682.65, 180.005, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"explorer", 60, -5596.05, 21, -2762.83, 0, 0, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"artisan", 60, -5596.05, 21, -2761.83, 180.005, 0, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_03.iff
-	{"slicer", 60, -5564.23, 21, -2777.78, 0, 0, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"drall_guard", 60, -5564.23, 21, -2776.78, 180.005, 0, "conversation", ""},  --@mob/creature_names:drall_guard full template: object/mobile/drall_male.iff
-	{"info_broker", 60, 25.7618, 0.784388, 42.249, 5.24275, 2365434, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"drall_guard", 60, 25.7618, 0.693385, 43.2406, 180.002, 2365434, "conversation", ""},  --@mob/creature_names:drall_guard full template: object/mobile/drall_female.iff
-	{"businessman", 60, 23.1824, 1.28309, 8.37019, 0, 1935527, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_nikto_male_03.iff
-	{"pilot", 60, 23.1824, 1.28309, 9.37019, 179.994, 1935527, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_weak_rod_m.iff
-	{"noble", 60, -5441.11, 21.0895, -2624.13, 269.845, 0, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_twilek_female_01.iff
-	{"commoner", 60, -5500.8, 21, -2778.27, 175.737, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_08.iff
-	{"commoner", 60, -5409.42, 21, -2700.49, 244.27, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_03.iff
-	{"commoner", 60, -5411.79, 21, -2655.41, 7.76214, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_03.iff
-	{"commoner", 60, -5465.78, 21, -2601.9, 287.819, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_moncal_female_02.iff
-	{"scientist", 60, -5431.41, 21, -2685.81, 106.943, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"swooper_leader", 60, -5416.8, 4.57113, -2286.37, 76.0594, 0, "calm", ""},  --@mob/creature_names:swooper_leader full template: object/mobile/dressed_criminal_swooper_zabrak_male_01.iff
-	{"swooper_leader", 60, -5415.8, 5.33258, -2277.08, 224.956, 0, "calm", ""},  --@mob/creature_names:swooper_leader full template: object/mobile/dressed_criminal_swooper_zabrak_male_01.iff
-	{"swooper_leader", 60, -5420.58, 3.58008, -2285.59, 200.562, 0, "calm", ""},  --@mob/creature_names:swooper_leader full template: object/mobile/dressed_criminal_swooper_zabrak_female_01.iff
-	{"corellia_herald_01", 60, -5418.26, 20.9986, -2792.36, 59.9118, 0, "calm", "Lock Vlash"},  --@npc_name:corellia_herald_01 full template: object/mobile/dressed_herald_corellia_01.iff
-	{"gubbur", 60, -5454.02, 8.85189, -2484.05, 319.757, 0, "calm", ""},  --@mob/creature_names:gubbur full template: object/mobile/gubbur_hue.iff
-	{"coa3_information_rebel", 60, 14.1936, 1.13306, -8.97227, 335.228, 1935453, "calm", ""},  --@mob/creature_names:coa3_information_rebel full template: object/mobile/dressed_rebel_brigadier_general_rodian_female_01.iff
-	{"coa3_tactical_rebel", 60, 9.53575, 1.13306, 0.330446, 310.824, 1935441, "calm", ""},  --@mob/creature_names:coa3_tactical_rebel full template: object/mobile/dressed_rebel_brigadier_general_moncal_female.iff
-	{"adar", 60, -5448.03, 21, -2674.92, 253.163, 0, "calm", "Adar Tallon"},  --@npc_name:human_base_male full template: object/mobile/dressed_corvette_rebel_adar.iff
-	{"corsec_trooper", 60, -5527.51, 22, -2588.06, 86.7137, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"crackdown_stormtrooper", 60, -4944.3, 21, -2387.8, 257.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -4945.7, 21, -2383.1, 249.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -4936.1, 21, -2486.2, 197.971, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, -4941.2, 20.8719, -2522, 214.459, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper", 60, -5031.2, 21, -2614.9, 278.725, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_storm_commando", 60, -5055.1, 21, -2616, 137.004, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"crackdown_stormtrooper", 60, -5092.3, 21, -2648.2, 175.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5135.07, 20.9878, -2659.19, 86.9316, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_scout_trooper", 60, -5128.84, 21, -2652.86, 83.2245, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_stormtrooper", 60, -5174.6, 20.9876, -2656.7, 185.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5212.9, 20.9913, -2650.9, 194.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_command_security_guard", 60, -5312.2, 20.9286, -2572.6, 336.01, 0, "", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"crackdown_stormtrooper", 60, -5343.5, 21, -2471.7, 271.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5338.7, 21, -2427.9, 309.009, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -5227.3, 21, -2272.3, 331.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -5195.9, 21, -2253.9, 336.01, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_command_security_guard", 60, -5112.1, 21, -2279.3, 79.0023, 0, "", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_3.iff
-	{"crackdown_stormtrooper", 60, -5270.9, 21, -2360.7, 133.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_medic", 60, -5302.1, 21, -2379.2, 225.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_medic full template: object/mobile/dressed_stormtrooper_medic_m.iff
-	{"crackdown_stormtrooper", 60, -5281.8, 21, -2349.8, 314.009, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_storm_commando", 60, -5250.6, 21, -2327.7, 42.0012, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"crackdown_dark_trooper", 60, -5381.8, 20.7451, -2741.1, 130.004, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper", 60, -5398.3, 21, -2761.7, 146.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -5418.2, 20.9379, -2799.6, 243.757, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, -5565.5, 20.9967, -2842.9, 340.795, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -5574.1, 20.98, -2843.3, 314.848, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -5633.8, 20.9535, -2824.4, 197.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5485.9, 21, -2585.8, 89.0026, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"comm_operator", 60, -5467.56, 21, -2792.59, 0, 0, "conversation", ""},  --@mob/creature_names:comm_operator full template: object/mobile/dressed_imperial_officer_m_4.iff
-	{"corsec_deserter", 60, -5467.56, 21, -2791.59, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"corellia_times_investigator", 60, -5491.88, 30.0036, -2809.63, 0, 0, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
-	{"corsec_investigator", 60, -5491.88, 30.0036, -2808.63, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -5412.55, 21, -2766.71, 213.391, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"smuggler_patrol_thief_5", 60, -5451.86, 21, -2787.47, 228.946, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"noble", 60, 28.93, 2.12878, 58.19, 222.007, 2365435, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_02.iff
-	{"noble", 60, 19.26, 2.12847, 56.13, 266.008, 2365436, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_trandoshan_male_01.iff
-	--{"quest_crowd_pleaser_theater_manager", 60, 21.99, 2.12804, 64.05, 4.00007, 2365436, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"commoner", 60, -5314.83, 21, -2461.07, 267.814, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"businessman", 60, 3.32, 1.13306, -8.49, 228.007, 1935444, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"hunter", 60, -14.01, 1.13306, -8.53, 120.004, 1935445, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_tatooine_aqualish_male_09.iff
-	{"miner", 60, 3.29, 1.13306, -9.58, 249.007, 1935454, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_naboo_twilek_male_01.iff
-	--{"crafting_contractor", 60, -3.69, 1.13306, -6, 11.0003, 1935450, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_01.iff
-	{"explorer", 60, -5308.12, 21, -2493.27, 0, 0, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_aqualish_male_07.iff
-	{"mercenary", 60, -5308.12, 21, -2492.27, 180.005, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_m.iff
-	{"bothan_information_broker", 60, -5398.52, 21, -2676.03, 0, 0, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"mercenary", 60, -5398.52, 21, -2675.03, 180.005, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -5613.85, 21, -2584, 33.2059, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"corsec_trooper", 60, -5626.49, 21, -2812.58, 261.279, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"crackdown_imperial_corporal", 60, -5590.48, 20.3776, -2854.51, 311.192, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_4.iff
-	{"r3", 60, -5312.13, 25.7208, -2570.41, 64.2735, 0, "calm", "R3-X5"},  --@mob/creature_names:r3 full template: object/mobile/r3.iff
-	{"noren_krast", 60, -5203.33, 21, -2488.13, 176.643, 0, "calm", "Noren Krast"},  --@npc_name:human_base_male full template: object/mobile/dressed_noble_old_human_male_01.iff
-	{"commoner", 60, -5291.55, 21, -2479.74, 323.878, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_03.iff
-	{"commoner", 60, -5274.74, 21, -2574.04, 268.911, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"commoner", 60, -5259.48, 21, -2446.51, 34.7297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"commoner", 60, -5278.98, 21, -2390.6, 94.9464, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"commoner", 60, -5208.22, 21, -2333.68, 118.094, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
-	{"commoner", 60, -5247.09, 21, -2623.54, 285.684, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff
-	{"commoner", 60, -5242.79, 21, -2421.66, 30.7465, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
-	{"ragtag_kook", 60, -5215.15, 29.033, -2198.86, 133.12, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
-	{"ragtag_kook", 60, -5220.6, 30.4428, -2186.49, 348.738, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
-	{"ragtag_kook", 60, -5211.84, 28.4788, -2194.09, 10.766, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"ragtag_kook", 60, -5219.46, 30.4446, -2185.86, 7.83436, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_sullustan_male_03.iff
-	{"coa2_rebel_coordinator", 60, -5218.4, 21, -2602.17, 331.695, 0, "calm", ""},  --@mob/creature_names:coa2_rebel_coordinator full template: object/mobile/dressed_rebel_brigadier_general_rodian_female_01.iff
-	{"bartender", 60, 8.6, -0.9, 0.6, 90, 2625355, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"mercenary", 60, -32.0578, 0.10501, -21.5764, 262.741, 2625366, "calm", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
-	{"corellia_times_investigator", 60, -32.0578, 0.10501, -20.4764, 246.868, 2625366, "calm", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_tatooine_nikto_male_05.iff
-	{"karena_keer", 60, -7.91182, -0.895002, 18.5763, 115.51, 2625361, "calm", "Karena Keer"},  --@npc_name:zabrak_base_female full template: object/mobile/dressed_noble_zabrak_female_01.iff
-	{"artisan", 60, -8.04223, -0.894908, -17.7225, 360.011, 2625360, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_03.iff
-	{"corsec_agent", 60, -8.04223, -0.894941, -16.6225, 180.002, 2625360, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"crev_bombaasa", 60, 45.2285, 0.104999, 0.017077, 135.448, 2625353, "calm", "Crev Bombaasa"},  --@npc_name:human_base_male full template: object/mobile/dressed_crev_bombaasa.iff
-	{"shalera_the_hutt", 60, -19.2041, -0.894989, 22.0094, 239.061, 2625364, "calm", "Shalera the Hutt"},  --@npc_name:hutt_base_female full template: object/mobile/shalera.iff
-	{"vrak", 60, -26.3961, -0.894991, 23.1611, 112, 2625364, "nervous", ""},  --@npc_spawner_n:vrak full template: object/mobile/dressed_nym_destroyer_rod_m.iff
-	--{"rebel_recruiter", 60, -28.6171, -0.894984, 0.197908, 11.8642, 2625363, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_01.iff
-	{"corsec_commissioner", 60, -26.4983, -0.519991, 9.85428, 360.011, 2625365, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"commoner", 60, -26.4983, -0.519991, 10.8543, 179.992, 2625365, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_female_01.iff
-	{"crackdown_dark_trooper", 60, -5565.3, 20.6891, -2852.06, 298.056, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_elite_sand_trooper", 60, -5613.95, 21, -2585.97, 41.9991, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
-	{"r2", 60, -5295.88, 21, -2528.24, 196.589, 0, "calm", "R2-B0"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"commoner", 60, -5110.54, 21, -2505.6, 104.325, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"commoner", 60, -5200.63, 21, -2505.59, 277.113, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"commoner", 60, -5200.12, 21, -2594.79, 332.894, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_03.iff
-	{"commoner", 60, -5162.69, 21, -2277.81, 212.16, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"commoner", 60, -5114.89, 21, -2424.44, 187.746, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_03.iff
-	{"commoner", 60, -5200.74, 21, -2638.47, 308.492, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"commoner", 60, -5164.3, 21, -2639.01, 192.357, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_female_01.iff
-	{"commoner", 60, -5192.9, 21, -2545.55, 46.5164, 0, "calm", "Excited Journalist"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_05.iff
-	{"commoner", 60, -5144.16, 21, -2413.14, 25.4291, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
-	{"commoner", 60, -5156.26, 21, -2376.59, 186.561, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"commoner", 60, -12.4312, 1.6, -16.4443, 270.002, 1935827, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"commoner", 60, -14.4312, 1.6, -16.4443, 89.9986, 1935827, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_02.iff
-	{"r2", 60, -13.4312, 1.6, -15.4443, 7.68027, 1935827, "calm", "R2-P9"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"herald_biogenic_03", 60, 21.3645, 1.28309, 9.48413, 142.744, 1935823, "calm", "Teraeza Furloti"},  --@npc_name:herald_biogenic_03 full template: object/mobile/dressed_herald_biogenic_03.iff
-	{"bodyguard", 60, -23.3263, 1.59523, 3.86229, 0.250236, 1935824, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_mugger.iff
-	{"slicer", 60, -23.3263, 1.6, 4.96228, 180.004, 1935824, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_assassin_human_female_01.iff
-	{"commoner", 60, -24, 1.6, -4, 337.557, 1935828, "calm", "Pex (an elite storyteller vendor)"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_twilek_male_02.iff
-	{"corsec_trooper", 60, -5470.84, 21, -2565.16, 107.104, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"corsec_agent", 60, -5412.5, 20.8978, -2794.47, 215.747, 0, "calm", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"crackdown_elite_sand_trooper", 60, -5560.96, 20.6853, -2852.76, 298.55, 0, "", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
-	{"bothan_diplomat", 60, -5146.7, 21, -2548.18, 0, 0, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"commoner", 60, -5146.7, 21, -2547.18, 180.005, 0, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
-	{"corsec_investigator", 60, -5159.41, 21, -2569.03, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"farmer", 60, -5159.41, 21, -2568.03, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff
-	{"entertainer", 60, -5196.06, 21, -2408.57, 0, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_human_female_01.iff
-	{"farmer", 60, -5196.06, 21, -2407.57, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_rodian_female_01.iff
-	{"entertainer", 60, -6.74614, 1.6, -12.8336, 0, 1935826, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"drall_guard", 60, -6.74614, 1.6, -11.8336, 179.997, 1935826, "conversation", ""},  --@mob/creature_names:drall_guard full template: object/mobile/drall_male.iff
-	{"bothan_diplomat", 60, 15.7701, 1.28309, -9.57401, 360.011, 1935823, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"corsec_chief", 60, 15.7701, 1.28309, -8.57401, 180.007, 1935823, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"eg6_power_droid", 60, -5605.25, 21, -2721.9, 155.92, 0, "calm", ""},  --@mob/creature_names:eg6_power_droid full template: object/mobile/eg6_power_droid.iff
-	{"businessman", 60, -5091.15, 21, -2315.33, 227.834, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_human_female_04.iff
-	{"j_pai_brek", 60, -5073.17, 21, -2342.77, 33.2325, 0, "neutral", ""},  --@npc_spawner_n:j_pai_brek full template: object/mobile/space_rebel_tier3_female_01.iff
-	{"bothan_diplomat", 60, -5009.39, 21, -2497.19, 0, 0, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"entertainer", 60, -5009.39, 21, -2496.09, 180.005, 0, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"corsec_major", 60, -5010.49, 21, -2496.09, 135.004, 0, "conversation", ""},  --@mob/creature_names:corsec_major full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"commoner", 60, -5003.67, 21, -2342.15, 284.215, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff
-	{"commoner", 60, -5090.54, 21, -2580.35, 208.738, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_female_02.iff
-	{"commoner", 60, -5079.26, 21, -2445.52, 106.736, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_01.iff
-	{"commoner", 60, -5064.44, 21, -2392.07, 128.202, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"commoner", 60, -5089.39, 21, -2344.25, 247.178, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"commoner", 60, -5073.15, 21, -2521.26, 351.018, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_06.iff
-	{"commoner", 60, -5048.34, 21, -2490.91, 295.017, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff
-	{"commoner", 60, -5014.32, 21, -2560.74, 19.5735, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
-	{"commoner", 60, -5025.37, 21, -2453.92, 175.818, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"cll_8", 60, -5050.13, 21, -2288.73, 145.718, 0, "neutral", ""},  --@npc_spawner_n:cll_8 full template: object/mobile/cll8_binary_load_lifter.iff
-	{"larek_tatham", 60, -5050.23, 21, -2291.69, 113.059, 0, "neutral", ""},  --@npc_spawner_n:larek_tatham full template: object/mobile/space_greeter_tyrena_pilot_friend.iff
-	{"ulaire_roye", 60, -5048.68, 21, -2291.24, 122.799, 0, "neutral", ""},  --@npc_spawner_n:ulaire_roye full template: object/mobile/space_greeter_tyrena_disgraced_corsec.iff
-	{"corellia_braggans_fist_thug", 60, -5254.58, 21, -2322.33, 102.986, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"corellia_osto_grissom", 60, -5210.35, 21, -2578.05, 125.181, 0, "calm", ""},  --@mob/creature_names:corellia_osto_grissom full template: object/mobile/dressed_royal_pilot_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5262.74, 21, -2422.16, 4.57765, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"corsec_trooper", 60, -5470.71, 21, -2566.52, 107.123, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"corsec_sergeant", 60, -5410.17, 20.9418, -2789.21, 215.169, 0, "calm", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"mercenary", 60, -5059.06, 21, -2400.08, 0, 0, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_rod_m.iff
-	{"corsec_rogue", 60, -5059.06, 21, -2399.08, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_weak_hum_m.iff
-	{"medic", 60, -5095.02, 21, -2514.56, 0, 0, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"info_broker", 60, -5095.02, 21, -2513.56, 180.005, 0, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"corsec_inspector_sergeant", 60, -5061.36, 21, -2532.53, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"corsec_trooper", 60, -5061.36, 21, -2531.53, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"farmer", 60, -4999.24, 21, -2521.71, 0, 0, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_human_female_01.iff
-	{"corsec_detective", 60, -4999.24, 21, -2520.6, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_chief", 60, -5000.34, 21, -2520.6, 135.004, 0, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_male_01.iff
-	{"brawler", 60, -5000.34, 21, -2521.71, 45.0013, 0, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_robber_human_male_01.iff
-	{"commoner", 60, -4942.72, 21, -2445.55, 99.4923, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_02.iff
-	{"commoner", 60, -4960.23, 21, -2357.14, 295.225, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_09.iff
-	{"commoner", 60, -4965.54, 21, -2383.55, 227.39, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
-	{"farmer", 60, -62.089, 2.63942, 40.7477, 0, 1935695, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_tatooine_bith_female_02.iff
-	{"bodyguard", 60, -62.089, 2.63942, 41.8477, 179.999, 1935695, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_zabrak_female_01.iff
-	{"entertainer", 60, -63.189, 2.63942, 41.8477, 134.996, 1935695, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"chassis_broker", 60, -56.6393, 0.974563, 8.33815, 26.9298, 1935697, "neutral", ""},  --@npc_spawner_n:chassis_broker full template: object/mobile/space_chassis_broker_04.iff
-	{"corsec_trooper", 60, 57.1873, -0.521137, 35.1187, 360.011, 1935690, "conversation", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_agent", 60, 57.1873, -0.521137, 36.2187, 180.007, 1935690, "conversation", ""},  --@mob/creature_names:corsec_agent full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corellia_major_walden", 60, -5150.46, 21, -2361.35, 193.703, 0, "calm", ""},  --@mob/creature_names:corellia_major_walden full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"corsec_master_sergeant", 60, -1.85381, 0.639422, 55.3013, 360.011, 1935687, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"corsec_detective", 60, -1.85381, 0.639422, 56.3013, 180.012, 1935687, "conversation", ""},  --@mob/creature_names:corsec_detective full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"bodyguard", 60, 31.7104, 0.639212, 63.2998, 354.769, 1935688, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_criminal_thug_rodian_male_01.iff
-	{"corellia_times_investigator", 60, 31.6347, 0.63915, 64.1249, 174.754, 1935688, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"entertainer", 60, 24.4668, 0.26, 3.56238, 0, 1935831, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_human_female_01.iff
-	{"brawler", 60, 24.4668, 0.26, 4.56238, 180.004, 1935831, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_aqualish_male_01.iff
-	{"mercenary", 60, -5.6917, 7.26, -0.915899, 0.445885, 1935837, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_m.iff
-	{"corsec_trooper", 60, -5.68393, 7.26, 0.077741, 180.455, 1935837, "conversation", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"farmer", 60, 29.3506, 13.25, 9.83587, 360.011, 1935841, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"corsec_sergeant", 60, 29.3506, 13.25, 10.8359, 180.011, 1935841, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"ragtag_kook", 60, -4872.65, 11.1341, -2390.99, 302.831, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
-	{"ragtag_kook", 60, -4868.58, 11.257, -2387.94, 83.5642, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_sullustan_male_02.iff
-	{"ragtag_kook", 60, -4856.48, 12.5979, -2394.59, 115.078, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_twilek_male_01.iff
-	{"gubbur", 60, -4827.25, 31.6625, -2225.7, 157.208, 0, "calm", ""},  --@mob/creature_names:gubbur full template: object/mobile/gubbur_hue.iff
-	{"crackdown_imperial_noncom", 60, -5207.41, 21.425, -2247.49, 237.999, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_noncom full template: object/mobile/dressed_imperial_officer_m.iff
-	{"r5", 60, -5400.32, 21, -2614.17, 236.816, 0, "calm", "R5-S7"},  --@mob/creature_names:r5 full template: object/mobile/r5.iff
-	{"corellia_edbr_yamagh", 60, -5096.19, 21, -2445.25, 244.082, 0, "calm", ""},  --@mob/creature_names:corellia_edbr_yamagh full template: object/mobile/dressed_commoner_naboo_human_male_06.iff
-	{"corellia_retired_officer", 60, -5099.63, 21, -2442.71, 257.845, 0, "calm", ""},  --@mob/creature_names:corellia_retired_officer full template: object/mobile/dressed_noble_fat_human_male_02.iff
-	{"surgical_droid_21b", 60, -25.52, 0.26, -3.48, 5.78928, 1935835, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/21b_surgical_droid.iff
-	{"crackdown_scout_trooper", 60, -5208.06, 21.6077, -2246.46, 296.757, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"r2", 60, -5297.6, 21, -2396.69, 271.4, 0, "calm", "R2-X2"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"corsec_sergeant", 60, -5059.87, 21, -2606.63, 195.299, 0, "calm", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"eg6_power_droid", 60, -5295.6, 21, -2396.69, 237.183, 0, "calm", ""},  --@mob/creature_names:eg6_power_droid full template: object/mobile/eg6_power_droid.iff
-	{"crackdown_scout_trooper", 60, -5194.27, 20.9887, -2653.85, 274.172, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"corsec_trooper", 60, -5060.41, 21, -2604.37, 195.315, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"corsec_trooper", 60, -4944.48, 21, -2488.58, 42.466, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"r5", 60, -4954.81, 21, -2379.55, 166.051, 0, "calm", "R5-C7"},  --@mob/creature_names:r5 full template: object/mobile/r5.iff
-	{"corsec_cadet", 60, -4945.07, 21, -2489.35, 89.6921, 0, "calm", ""},  --@mob/creature_names:corsec_cadet full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"r2", 60, -4954.63, 21, -2376.82, 26.4361, 0, "calm", "R2-E3"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"corellia_braggans_fist_thug", 60, -5263.87, 21, -2423.61, 209.091, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"jom_irimore", 60, -5520, 21.3, -2630.99, 0, 0, "calm", "Jom Irimore"},  --@npc_name:human_base_male full template: object/mobile/dressed_rebel_army_captain_human_male_01.iff
-	{"acun_solari", 60, 19.8219, -0.894996, -19.5533, 0, 2625356, "calm", "Acun Solari"},  --@npc_name:bothan_base_male full template: object/mobile/dressed_rebel_army_captain_bothan_male.iff
-	{"commoner", 60, 15.2091, 0.639422, 56.8933, 284.328, 1935687, "calm", "Amarent Loren"},  --@mob/creature_names:commoner_human_male full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"corellia_braggans_fist_thug", 60, -5229.72, 21, -2376.2, 262.849, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5229.08, 21, -2378.99, 332.95, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"corellia_braggans_fist_thug", 60, -5239.75, 21, -2391.25, 322.293, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5219.18, 21, -2386.63, 69.0228, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"crackdown_dark_trooper", 60, -4975.9, 20.9989, -2323.7, 76.0022, 0, "calm", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper_sniper", 60, -4932.5, 20.978, -2427.7, 123.004, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"crackdown_stormtrooper", 60, -4942.5, 21, -2438.9, 106.003, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"corellia_braggans_fist_thug", 60, -5244.41, 21, -2402.57, 192.74, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"crackdown_dark_trooper", 60, -5347.92, 21.0054, -2440.31, 351.468, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_specialist_noncom", 60, -5342.53, 21, -2468.78, 360.011, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_specialist_noncom full template: object/mobile/dressed_imperial_officer_m_2.iff
-	{"crackdown_elite_dark_trooper", 60, -5654.8, 21.1047, -2805.7, 191.006, 0, "", ""},  --@mob/creature_names:crackdown_elite_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"corellia_braggans_fist_thug", 60, -5148.18, 21, -2295.08, 206.72, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_pirate_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5143.95, 21, -2294.65, 103.409, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5150.16, 21, -2293.51, 248.82, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"ragtag_mercenary", 60, -5672.52, 15.278, -2894.02, 244.65, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_mugger.iff
-	{"ragtag_mercenary", 60, -5691.26, 15.4606, -2887.12, 356.964, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_hoodlum_zabrak_male_01.iff
-	{"ragtag_mercenary", 60, -5672.41, 15.4649, -2890.62, 352.624, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_criminal_thug_rodian_female_01.iff
-	{"ragtag_mercenary", 60, -5672.95, 15.312, -2893.61, 357.718, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_villain_trandoshan_male_01.iff
-	{"ragtag_thug", 60, -5668.9, 16.2378, -2862.15, 261.761, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_hooligan_rodian_female_01.iff
-	{"ragtag_thug", 60, -5677.01, 17.8326, -2830.52, 169.707, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_hooligan_rodian_female_01.iff
-	{"ragtag_mercenary", 60, -5694.23, 15.4638, -2884.47, 185.304, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_criminal_thug_rodian_male_01.iff
-	{"ragtag_thug", 60, -5689.64, 16.9976, -2834.73, 347.584, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_criminal_thug_human_female_01.iff
-	{"ragtag_mercenary", 60, -5711.06, 16.5012, -2847.27, 112.803, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/zabrak_male.iff
-	{"ragtag_thug", 60, -5686.72, 15.8898, -2861.66, 66.5932, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_criminal_thug_aqualish_female_02.iff
-	{"ragtag_mercenary", 60, -5702.54, 15.8374, -2867.88, 183.357, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_ruffian_zabrak_female_01.iff
-	{"ragtag_mercenary", 60, -5708.1, 15.6575, -2871.92, 193.761, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_hooligan_rodian_female_01.iff
-	{"ragtag_thug", 60, -5695.25, 15.8079, -2868.77, 177.337, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_desperado_bith_female_01.iff
-	{"ragtag_mercenary", 60, -5710.95, 16.1501, -2855.67, 160.229, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_hooligan_rodian_male_01.iff
-	{"ragtag_thug", 60, -5695.22, 15.8169, -2860.93, 353.584, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_hooligan_rodian_female_01.iff
-	{"ragtag_thug", 60, -5675.11, 16.1258, -2862.35, 11.3951, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_crook_zabrak_female_01.iff
-	{"ragtag_mercenary", 60, -5705.51, 16.336, -2848.37, 146.516, 0, "calm", ""},  --@mob/creature_names:ragtag_mercenary full template: object/mobile/dressed_criminal_thug_aqualish_female_01.iff
-	{"ragtag_thug", 60, -5683.98, 16.7263, -2843.44, 81.9355, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_criminal_thug_human_male_02.iff
-	{"ragtag_thug", 60, -5685.49, 17.6827, -2825.55, 256.078, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_robber_twk_male_01.iff
-	{"ragtag_thug", 60, -5683.2, 16.9368, -2840.36, 90.595, 0, "calm", ""},  --@mob/creature_names:ragtag_thug full template: object/mobile/dressed_robber_human_male_01.iff
-	{"corsec_trooper", 60, -5363.23, 24.87, -2595.04, 64.2702, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corellia_braggans_fist_thug", 60, -5216.1, 21, -2332.42, 39.3217, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_smuggler_human_female_01.iff
-	{"corellia_braggans_fist_thug", 60, -5219.06, 21, -2335.48, 40.485, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"corellia_braggans_fist_thug", 60, -5255.52, 21, -2322.36, 103.41, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5217.28, 21, -2331.54, 31.0353, 0, "", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5295.97, 21, -2347.63, 265.801, 0, "", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"corsec_trooper", 60, -5069.93, 21, -2474.8, 135.004, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5272.32, 21, -2374.22, 83.1982, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5257.05, 21, -2322.57, 121.658, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5274.76, 21, -2384.12, 82.2966, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5295.73, 21, -2341.81, 315.683, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"corellia_braggans_fist_thug", 60, -5296.21, 21, -2350.01, 43.7867, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corellia_braggans_fist_thug", 60, -5279.97, 21, -2372.61, 52.7651, 0, "calm", ""},  --@mob/creature_names:corellia_braggans_fist_thug full template: object/mobile/dressed_criminal_assassin_human_female_01.iff
-	{"corsec_trooper", 60, -5400.54, 21, -2613.88, 8.55608, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"crackdown_stormtrooper_squad_leader", 60, -5103.81, 21, -2266.4, 126.218, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_imperial_army_captain", 60, -5298.7, 21, -2545.6, 32, 0, "calm", ""},  --@mob/creature_names:crackdown_imperial_army_captain full template: object/mobile/dressed_imperial_captain_m.iff
-	{"crackdown_stormtrooper_sniper", 60, -5094.14, 21, -2270.16, 45.8873, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_sniper full template: object/mobile/dressed_stormtrooper_sniper_m.iff
-	{"corsec_trooper", 60, -5058.83, 21, -2579.08, 135.145, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"crackdown_stormtrooper", 60, -5556.4, 21.6, -2611.8, 99.0029, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -5556.4, 21.6, -2643.5, 79.0023, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, -5112.07, 21, -2248.89, 97.4325, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, -5097.16, 21, -2271.05, 130.264, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper_bombardier", 60, -5086.49, 21, -2255.77, 216.35, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_bombardier full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.782, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5482.24, 21, -2705.49, 262.753, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"crackdown_stormtrooper", 60, -5044.7, 21, -2303, 200.405, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_command_security_guard", 60, -5048.7, 21, -2299.5, 256.201, 0, "calm", ""},  --@mob/creature_names:crackdown_command_security_guard full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"crackdown_stormtrooper_rifleman", 60, -5123, 21, -2425.3, 67.002, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, -5131.1, 21, -2417.7, 6.00023, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5301.8, 21, -2572, 244.007, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5306.8, 21, -2561.2, 247.007, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5399.6, 21, -2608.8, 241.007, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, -5396.8, 21, -2614.9, 251.007, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_scout_trooper", 60, -5468.4, 21.1828, -2841.6, 175.005, 0, "calm", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"crackdown_stormtrooper", 60, -5459.6, 21.2742, -2841.6, 185.005, 0, "calm", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"ragtag_kook", 60, -5735.79, 28.6208, -2610.4, 123.649, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_twilek_female_01.iff
-	{"ragtag_kook", 60, -5737.79, 28.5516, -2607.4, 132.784, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_08.iff
-	{"ragtag_kook", 60, -5734.79, 28.7267, -2609.4, 139.039, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"ragtag_kook", 60, -5752.38, 16.7564, -2798.05, 339.808, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_02.iff
-	{"crackdown_stormtrooper_rifleman", 60, -5245.9, 20.9324, -2636.5, 228.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"ragtag_kook", 60, -5738.79, 28.2523, -2614.4, 291.78, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"ragtag_kook", 60, -5731.79, 29.0178, -2607.4, 282.23, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_nikto_male_08.iff
-	{"ragtag_kook", 60, -5759.38, 16.8412, -2798.05, 36.2043, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff
-	{"ragtag_kook", 60, -5751.38, 16.7032, -2795.05, 315.194, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
-	{"ragtag_kook", 60, -5756.38, 16.7952, -2797.05, 17.1779, 0, "calm", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_old_zabrak_female_01.iff
-	{"ragtag_kook", 60, -5735.79, 28.4972, -2614.4, 161.315, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_sullustan_male_04.iff
-	{"ragtag_kook", 60, -5755.38, 16.8078, -2791.05, 5.21744, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff
-	{"ragtag_kook", 60, -5757.38, 16.8277, -2792.05, 209.008, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_aqualish_male_08.iff
-	{"ragtag_kook", 60, -5750.38, 16.684, -2794.05, 244.293, 0, "neutral", ""},  --@mob/creature_names:ragtag_kook full template: object/mobile/dressed_commoner_tatooine_devaronian_male_02.iff
-	{"ragtag_loon", 60, -4855.73, 11.1455, -2525.71, 169.83, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
-	{"ragtag_loon", 60, -4863.73, 10.6092, -2522.71, 110.033, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"ragtag_loon", 60, -4862.73, 10.6838, -2526.71, 59.8998, 0, "calm", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_nikto_male_04.iff
-	{"ragtag_loon", 60, -4855.73, 11.1789, -2528.71, 285.482, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_sullustan_male_04.iff
-	{"ragtag_loon", 60, -4855.73, 11.1489, -2521.71, 326.785, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_naboo_human_male_03.iff
-	{"ragtag_loon", 60, -4865.73, 10.5102, -2521.71, 326.643, 0, "neutral", ""},  --@mob/creature_names:ragtag_loon full template: object/mobile/dressed_commoner_tatooine_nikto_male_04.iff
-	{"crackdown_stormtrooper", 60, 48.13, 0.105, 2.47, 248.001, 2625353, "neutral", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	
-	--doaba
-	{"bounty_hunter", 60, 17.1745, 1.28309, -13.1361, 0, 3075367, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_03.iff
-	{"corsec_investigator", 60, 17.1745, 1.28309, -12.0361, 179.995, 3075367, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_rogue", 60, 7.8197, 1.00001, -7.0104, 0, 3075366, "conversation", ""},  --@mob/creature_names:corsec_rogue full template: object/mobile/dressed_mercenary_messanger_hum_m.iff
-	{"corsec_commissioner", 60, 7.8197, 1.00001, -5.9104, 180.001, 3075366, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"medic", 60, -4.31306, 0.999965, 5.16959, 0, 3075366, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corellia_times_investigator", 60, -4.31306, 0.999956, 6.26959, 180, 3075366, "conversation", ""},  --@mob/creature_names:corellia_times_investigator full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"corsec_deserter", 60, -5.41306, 0.999953, 6.26959, 134.998, 3075366, "conversation", ""},  --@mob/creature_names:corsec_deserter full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"zo_ssa", 60, -1.1331, 0.999991, 1.50214, 21.773, 3075366, "neutral", ""},  --@npc_spawner_n:zo_ssa full template: object/mobile/dressed_rebel_army_captain_zabrak_female.iff
-	{"willham_burke", 60, 0.861081, 0.999995, 2.33215, 346.259, 3075366, "neutral", ""},  --@npc_spawner_n:willham_burke full template: object/mobile/dressed_rebel_army_captain_human_male_01.iff
-	{"commoner", 60, -24, 1.6, -4, 246.374, 3075372, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
-	{"commoner", 60, 3139.88, 300, 5247.41, 171.321, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
-	{"commoner", 60, 3179.26, 300, 5213.19, 233.367, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"commoner", 60, 3117.25, 300, 5194.73, 153.311, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff
-	{"commoner", 60, 3108.26, 300, 5229.01, 219.942, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"commoner", 60, 3162.05, 290, 4966.73, 255.989, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
-	{"commoner", 60, 3190.76, 300, 5269.61, 131.093, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, 3103.05, 300, 5164.17, 50.255, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_06.iff
-	{"commoner", 60, 3192.45, 302.606, 5113.34, 189.527, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
-	{"smuggler_patrol_thief_5", 60, 3048.33, 300, 5196.77, 276.85, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_sergeant", 60, 3154.04, 300, 5172.07, 0, 0, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"corsec_chief", 60, 3154.04, 300, 5173.07, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"gambler", 60, 3184.22, 300, 5162.04, 0, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
-	{"gambler", 60, 3184.22, 300, 5163.04, 180.005, 0, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"farmer_rancher", 60, 3196.61, 295.033, 5073.8, 350.188, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff
-	{"farmer_rancher", 60, 3196.61, 295.206, 5074.8, 180.005, 0, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_bith_male_06.iff
-	{"farmer", 60, 3145.1, 289.991, 4994.55, 359.489, 0, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_naboo_zabrak_male_02.iff
-	{"hunter", 60, 3145.1, 290, 4995.55, 180.005, 0, "conversation", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_human_male_05.iff
-	{"noble", 60, 3158.95, 300, 5352.24, 80.7765, 0, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_zabrak_male_02.iff
-	{"commoner", 60, 3159.78, 300, 5397.22, 81.297, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_08.iff
-	{"commoner", 60, 3199.22, 300, 5449.92, 146.634, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_03.iff
-	{"pilot", 60, 3202.28, 290, 4988.06, 0, 0, "conversation", ""},  --@mob/creature_names:pilot full template: object/mobile/dressed_mercenary_messanger_rod_m.iff
-	{"bothan_information_broker", 60, 3202.28, 290, 4989.06, 180.005, 0, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"smuggler_patrol_thief_5", 60, 3120.48, 300, 5138.5, 189.369, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, 3103.26, 300, 5141.58, 280.149, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"corellia_lilith_laughlin", 60, 3084.07, 279.996, 4979.36, 2.6099, 0, "calm", ""},  --@mob/creature_names:corellia_lilith_laughlin full template: object/mobile/dressed_robber_human_female_01.iff
-	{"commoner", 60, 3277.95, 300, 5438.73, 232.081, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_06.iff
-	{"commoner", 60, 3240.99, 300, 5415.5, 249.458, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"commoner", 60, 3204.19, 290, 5003.32, 222.69, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
-	{"commoner", 60, 3202.3, 290, 5034.41, 29.3152, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"commoner", 60, 3296.88, 324, 5760.95, 196.788, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"bartender", 60, -4.00542, -0.894992, -2.41, 166.23, 3075429, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_tatooine_aqualish_female_05.iff
-	{"bounty_hunter", 60, -42.098, 0.105009, -24.1786, 0, 3075441, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_01.iff
-	{"bothan_diplomat", 60, -42.098, 0.105009, -23.0786, 180.012, 3075441, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"coraline_dynes", 60, -24.3937, -0.519991, 10.5457, 47.741, 3075439, "calm", ""},  --@npc_name:human_base_female full template: object/mobile/dressed_coraline_dynes.iff
-	{"commoner", 60, 5.6169, -0.894992, 20.9629, 256.55, 3075433, "calm", "Zakarisz Ghent"},  --@obj_n:unknown_creature full template: object/mobile/dressed_ghent.iff
-	{"jadam_questrel", 60, 9.77643, -0.894992, -14.4836, 262.46, 3075432, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_jadam_questrel.iff
-	{"corsec_commissioner", 60, 21.878, -0.894997, -15.7126, 0, 3075430, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"entertainer", 60, 21.878, -0.894997, -14.6126, 179.999, 3075430, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"corsec_investigator", 60, 40.8822, 0.104999, 2.22818, 0, 3075427, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"slicer", 60, 40.8822, 0.104999, 3.32819, 180.003, 3075427, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_slicer_human_male_01.iff
-	{"corran_horn", 60, -2.80228, 2.5, 12.1046, 152.839, 3075353, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_corran_horn.iff
-	{"commoner", 60, 3300.28, 308, 5495.49, 0, 0, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_male_01.iff
-	{"corsec_master_sergeant", 60, 3300.28, 308, 5496.49, 180.005, 0, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"bothan_information_broker", 60, -3.23192, 0.184067, -5.20004, 360.011, 4345354, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"corsec_sergeant", 60, -3.23192, 0.184067, -4.20004, 180.012, 4345354, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_sergeant", 60, 8.35364, -0.894992, 6.38149, 360.011, 3075429, "conversation", ""},  --@mob/creature_names:corsec_sergeant full template: object/mobile/dressed_corsec_officer_human_male_01.iff
-	{"farmer_rancher", 60, 8.35364, -0.894992, 7.38149, 179.999, 3075429, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"disappear_angela", 60, 3166.38, 290, 4989.97, 86.9172, 0, "calm", ""},  --@mob/creature_names:disappear_angela full template: object/mobile/dressed_noble_human_female_03.iff
-	{"miner", 60, 3.29, 1.13306, -9.58, 249.007, 3055771, "calm", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_01.iff
-	--{"crafting_contractor", 60, -3.69, 1.13306, -6, 11.0003, 3055767, "calm", ""},  --@mob/creature_names:crafting_contractor full template: object/mobile/dressed_artisan_trainer_02.iff
-	{"scolex_grath", 60, 3347.39, 308, 5490.74, 251.277, 0, "calm", ""},  --@npc_name:human_base_male full template: object/mobile/dressed_scolex_grath.iff
-	{"commoner", 60, 3316.17, 308, 5496.71, 3.31657, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"commoner", 60, 3308.36, 300, 5396.79, 274.041, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_06.iff
-	{"commoner", 60, 3320.73, 324, 5709.36, 340.725, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff
-	{"commoner", 60, 3307.64, 308.031, 5618.18, 225.888, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_07.iff
-	{"commoner", 60, 3357.46, 308, 5639.47, 212.301, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_07.iff
-	{"commoner", 60, 3385.33, 308, 5699.29, 242.976, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"commoner", 60, 3322.09, 308, 5484.42, 146.419, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, 3303.05, 300, 5351.87, 319.052, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"noble", 60, 47.5747, 0.974633, 22.0108, 238.024, 9665365, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_twilek_male_01.iff
-	{"businessman", 60, 52.3124, 0.639417, 48.2148, 107.997, 9665359, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_nikto_male_07.iff
-	{"farmer", 60, 36.7068, 0.639417, 39.346, 0, 9665359, "", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_naboo_human_male_01.iff
-	{"bothan_diplomat", 60, 36.7068, 0.639417, 40.446, 180.001, 9665359, "conversation", ""},  --@mob/creature_names:bothan_diplomat full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"chassis_broker", 60, -56.6993, 0.974563, 8.57384, 27.5028, 9665366, "neutral", ""},  --@npc_spawner_n:chassis_broker full template: object/mobile/space_chassis_broker_04.iff
-	{"corsec_commissioner", 60, -4.68154, 0.639424, 59.8856, 360.011, 9665356, "conversation", ""},  --@mob/creature_names:corsec_comissioner full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"brawler", 60, -4.68154, 0.639424, 60.9856, 180.005, 9665356, "conversation", ""},  --@mob/creature_names:brawler full template: object/mobile/dressed_criminal_thug_bothan_male_01.iff
-	{"drall_abbot", 60, -5.78154, 0.639424, 60.9856, 135.005, 9665356, "conversation", ""},  --@mob/creature_names:drall_abbot full template: object/mobile/drall_male.iff
-	{"corellia_ragtag_cudgel", 60, 3218.73, 292.197, 4926.53, 179.165, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_human_female_06.iff
-	{"corellia_captain_baize", 60, 3178.36, 300, 5371.88, 251.25, 0, "calm", ""},  --@mob/creature_names:corellia_captain_baize full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"corellia_ragtag_ventil_tamplin", 60, 3244.74, 290.107, 4941.27, 323.827, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_ventil_tamplin full template: object/mobile/dressed_blood_razor_pirate_captain_nikto_m.iff
-	{"corellia_ragtag_cudgel", 60, 3258.27, 290, 4963.72, 206.924, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"corellia_ragtag_cudgel", 60, 3242.42, 290, 4952.31, 112.744, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_nikto_male_01.iff
-	{"corellia_pendretronics_security", 60, 31.9043, -12, 0.806641, 271.806, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
-	{"corellia_ragtag_cudgel", 60, 3257.43, 290, 4977.08, 150.441, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
-	{"corellia_pendretronics_security", 60, 35.1619, -12, 72.5952, 359.971, 18180187270352583977, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
-	{"slicer", 60, 1.28595, 0.639421, 66.8733, 0, 9665356, "conversation", ""},  --@mob/creature_names:slicer full template: object/mobile/dressed_criminal_assassin_human_female_01.iff
-	{"drall_monk", 60, 1.28595, 0.639422, 67.8733, 180.008, 9665356, "conversation", ""},  --@mob/creature_names:drall_monk full template: object/mobile/drall_male.iff
-	{"farmer", 60, -62.5737, 2.63942, 40.0043, 360.011, 9665364, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_naboo_bothan_female_02.iff
-	{"explorer", 60, -62.5737, 2.63942, 41.0043, 180.004, 9665364, "conversation", ""},  --@mob/creature_names:explorer full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"commoner", 60, 3411.89, 308, 5515.19, 208.425, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_07.iff
-	{"commoner", 60, 3414.81, 308, 5624.67, 237.948, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"commoner", 60, 3431.28, 308, 5563.41, 159.884, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
-	{"hunter", 60, -21.8263, 2.12878, 73.7963, 0, 4395404, "conversation", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_human_female_03.iff
-	{"fringer", 60, -21.8263, 2.12878, 74.8963, 179.999, 4395404, "conversation", ""},  --@mob/creature_names:fringer full template: object/mobile/dressed_commoner_tatooine_rodian_male_04.iff
-	{"mercenary", 60, -22.9263, 2.12878, 74.8963, 134.998, 4395404, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_messanger_hum_f.iff
-	{"noble", 60, 15.2654, 2.47978, 23.7759, 5.24424, 4395401, "conversation", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_old_zabrak_female_01.iff
-	{"entertainer", 60, 15.2654, 2.37968, 24.8667, 180.002, 4395401, "conversation", ""},  --@mob/creature_names:entertainer full template: object/mobile/dressed_entertainer_trainer_twk_male_01.iff
-	{"mercenary", 60, -0.629707, 2.6, 2.33132, 360.011, 4395401, "conversation", ""},  --@mob/creature_names:mercenary full template: object/mobile/dressed_mercenary_weak_hum_f.iff
-	{"artisan", 60, -0.629707, 2.6, 3.43132, 180.013, 4395401, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_01.iff
-	{"farmer", 60, -17.5346, 0.765493, 42.402, 354.765, 4395401, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_zabrak_female_01.iff
-	{"farmer", 60, -17.5346, 0.665389, 43.4928, 180.009, 4395401, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_rodian_male_01.iff
-	{"artisan", 60, -1.72179, 0.6, -4.05766, 360.011, 4395396, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_artisan_trainer_01.iff
-	{"bothan_information_broker", 60, -1.72179, 0.6, -2.95766, 180.016, 4395396, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"corsec_trooper", 60, 3112.45, 281.347, 4982.51, 91.063, 0, "calm", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_officer_human_female_01.iff
-	{"businessman", 60, 3.32, 1.13306, -8.49, 228.007, 3075360, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_naboo_bothan_male_01.iff
-	{"hunter", 60, -14.01, 1.13306, -8.53, 120.004, 3075361, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
-	{"surgical_droid_21b", 60, -1.19, 0.184067, -1.89, 230.753, 4345354, "calm", ""},  --@mob/creature_names:surgical_droid_21b full template: object/mobile/21b_surgical_droid.iff
-	{"corellia_pendretronics_employee", 60, -49.8345, -20, 67.874, 43.8552, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_female_01.iff
-	{"corellia_pendretronics_employee", 60, -72.2534, -20, 66.0405, 318.19, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, 12.5409, -20, 123.224, 264.249, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
-	{"corellia_pendretronics_employee", 60, -54.2774, -20, 38.1062, 53.8814, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corellia_shobbo_durron", 60, 4.68399, 0.25, -5.09207, 344.591, 18180187269693384899, "calm", ""},  --@mob/creature_names:corellia_shobbo_durron full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
-	{"corellia_gwhirrye_baric", 60, 3276.87, 300, 5384.97, 136.31, 0, "calm", ""},  --@mob/creature_names:corellia_gwhirrye_baric full template: object/mobile/dressed_villain_trandoshan_male_01.iff
-	{"corellia_pendretronics_employee", 60, 21.2752, -12, 44.3927, 34.6872, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 3.57837, -12, 40.6914, 337.881, 18180187269325663823, "", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corellia_pendretronics_employee", 60, 56.6726, -12, 78.3945, 41.9137, 18180187268981920450, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, -3.66089, 0.25, -0.92627, 260.754, 18180187270192132818, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, -15.7938, -20, 101.034, 127.388, 18180187270326677024, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_mercenary_elite_medic_human_male_01.iff
-	{"corellia_pendretronics_employee", 60, 61.6907, -12, 5.45313, 92.401, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, -28.9434, -20, 106.429, 310.367, 18180187270326677024, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 61.4431, -12, 16.2007, 90.7462, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 37.9663, -20, 125.491, 267.175, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 0.302067, -12, 59.7502, 345.272, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 49.345, -12, 87.7388, 170.714, 18180187268981920450, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corellia_pendretronics_employee", 60, 26.7037, -12, 25.9924, 341.17, 18180187269968720718, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, -63.8616, -20, 12.3726, 85.9093, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, -64.2497, -20, 76.9509, 151.648, 18180187268732898264, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 23.4046, -20, 134.284, 318.68, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, 35.8025, -20, 136.87, 176.622, 18180187269203223766, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_human_female_01.iff
-	{"corellia_pendretronics_employee", 60, -52.9017, -20, 15.4671, 106.359, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
-	{"corellia_pendretronics_employee", 60, -57.0833, -20, 83.585, 267.321, 18180187268732898264, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corellia_pendretronics_employee", 60, 46.8232, -12, 63.9019, 307.247, 18180187268857888443, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff
-	{"corellia_pendretronics_employee", 60, -3.20093, -12, 46.9316, 87.6688, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
-	{"corellia_pendretronics_employee", 60, 46.6401, -12, 54.5313, 212.58, 18180187268857888443, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"corsec_master_sergeant", 60, -14.8394, 2.41844, 24.4443, 5.24424, 4395401, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"info_broker", 60, -14.8394, 2.32744, 25.4359, 180.013, 4395401, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_slicer_human_female_01.iff
-	{"farmer", 60, 25.4426, 0.746078, 42.666, 5.24364, 4395401, "conversation", ""},  --@mob/creature_names:farmer_agriculturalist full template: object/mobile/dressed_commoner_fat_twilek_male_02.iff
-	{"commoner", 60, 25.4426, 0.655075, 43.6577, 180.006, 4395401, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"corsec_trooper", 60, 3.96145, 2.12878, 75.4149, 0, 4395403, "conversation", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_male_01.iff
-	{"farmer", 60, 3.96145, 2.12878, 76.4149, 180.002, 4395403, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_bith_female_01.iff
-	{"bothan_information_broker", 60, -23.9134, 0.6, -4.15254, 360.011, 4395397, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_male_01.iff
-	{"farmer_rancher", 60, -23.9134, 0.6, -3.15254, 179.996, 4395397, "conversation", ""},  --@mob/creature_names:farmer_rancher full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"bodyguard", 60, -20.4229, 2.12878, 64.9439, 0, 4395404, "conversation", ""},  --@mob/creature_names:bodyguard full template: object/mobile/dressed_villain_trandoshan_male_01.iff
-	{"artisan", 60, -20.4229, 2.12878, 65.9439, 180.013, 4395404, "conversation", ""},  --@mob/creature_names:artisan full template: object/mobile/dressed_commoner_artisan_bith_male_01.iff
-	{"crackdown_elite_dark_trooper", 60, 3170.4, 301.801, 5100.6, 279.081, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper_squad_leader", 60, 3198.2, 290.356, 5047.05, 167.76, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"crackdown_stormtrooper_rifleman", 60, 3199.99, 290, 4992.48, 160.986, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"corsec_chief", 60, 3112.43, 280.843, 4981.38, 252.823, 0, "calm", ""},  --@mob/creature_names:corsec_chief full template: object/mobile/dressed_corsec_captain_human_female_01.iff
-	{"crackdown_stormtrooper", 60, 3169.44, 301.774, 5102.07, 66.9422, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, 3200.02, 290, 5032.75, 357.888, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_elite_sand_trooper", 60, 3193.15, 290.013, 5040.79, 176.21, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
-	{"noble", 60, 28.93, 2.12878, 58.19, 222.007, 4395402, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_human_female_02.iff
-	{"noble", 60, 19.26, 2.12847, 56.13, 266.008, 4395403, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_fat_human_male_02.iff
-	--{"quest_crowd_pleaser_theater_manager", 60, 21.99, 2.12804, 64.05, 4.00007, 4395403, "calm", ""},  --@mob/creature_names:quest_crowd_pleaser_theater_manager full template: object/mobile/dressed_entertainer_trainer_twk_female_01.iff
-	{"crackdown_stormtrooper", 60, 3197.73, 290.877, 5049.23, 167.763, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_storm_commando", 60, 3191.1, 290, 5021.3, 165.578, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"crackdown_imperial_noncom", 60, 3297.95, 308, 5563.09, 123.034, 0, "", ""},  --@mob/creature_names:crackdown_imperial_noncom full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, -8.45502, 0.184067, -12.51, nan, 4345355, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"corellia_pendretronics_employee", 60, -60.1056, -20, 36.3912, 207.324, 18180187269747383960, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_doctor_trainer_moncal_female_01.iff
-	{"corellia_pendretronics_employee", 60, -51.6172, -20, 15.6407, 49.0721, 18180187269380432838, "calm", ""},  --@mob/creature_names:corellia_pendretronics_employee full template: object/mobile/dressed_mercenary_medic_rodian_female_01.iff
-	{"corellia_ragtag_cudgel", 60, 3263.11, 290, 4965.73, 183.912, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"corellia_ragtag_cudgel", 60, 3260.62, 290, 4987.67, 308.247, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_fat_zabrak_male_02.iff
-	{"corellia_ragtag_cudgel", 60, 3245.42, 290, 4956.73, 39.1131, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_old_zabrak_male_02.iff
-	{"corellia_ragtag_cudgel", 60, 3219.78, 290, 4932.78, 52.1092, 0, "calm", ""},  --@mob/creature_names:corellia_ragtag_cudgel full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
-	{"corellia_pendretronics_security", 60, 3.31958, -12, 33.9385, 134.191, 18180187269325663823, "calm", ""},  --@mob/creature_names:corellia_pendretronics_security full template: object/mobile/dressed_nym_bodyguard_rod_m.iff
-	{"corellia_chirq_kazic_pendre", 60, -10.7, -20, 8.8, 215.006, 18180187269665795997, "calm", ""},  --@mob/creature_names:corellia_chirq_kazic_pendre full template: object/mobile/dressed_corran_horn.iff
-	{"crackdown_elite_sand_trooper", 60, 3362.39, 308, 5513.99, 113.751, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_elite_sand_trooper full template: object/mobile/dressed_stormtrooper_sand_trooper_m.iff
-	{"crackdown_comm_operator", 60, 3361.35, 308, 5483.26, 95.5634, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_comm_operator full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"crackdown_imperial_corporal", 60, 3367.38, 308, 5495.93, 241.976, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_corporal full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"smuggler_patrol_thief_5", 60, 3048.86, 300, 5196.51, 286.342, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-
-	--vreni island
-	{"commoner", 60, -5708.22, 14.6, -6157.68, 63.8572, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
-	{"scientist", 60, -5691.18, 14.6, -6133.32, 248.134, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_doctor_trainer_moncal_male_01.iff
-	{"commoner", 60, -5686.69, 14.6, -6148.05, 214.943, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_02.iff
-	{"commoner", 60, -5693.27, 14.6, -6177.12, 293.479, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_02.iff
-	{"businessman", 60, -5428.59, 24.1812, -6228.31, 140.458, 0, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_fat_zabrak_male_01.iff
-	{"commoner", 60, -5571.88, 23.4, -6129.85, 97.3312, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_04.iff
-	{"commoner", 60, -5551.88, 23.4, -6221.48, 124.882, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_human_male_02.iff
-	{"commoner", 60, -5495.01, 23.4, -6190.5, 325.039, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"commoner", 60, -5505.69, 23.4, -6118.63, 272.183, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_male_01.iff
-	{"commoner", 60, -5468.42, 23.4, -6144.87, 182.034, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_02.iff
-	{"commoner", 60, -5549.18, 23.4, -6189.25, 119.296, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_zabrak_female_01.iff
-	{"commoner", 60, -5519.68, 23.4, -6224.4, 134.773, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"commoner", 60, -5504.22, 23.4, -6211.56, 1.34408, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_03.iff
-	{"commoner", 60, -5488.87, 23.8964, -6242.6, 304.866, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_human_female_02.iff
-	{"scientist", 60, -5557.29, 23.4, -6203.08, 226.081, 0, "calm", ""},  --@mob/creature_names:scientist full template: object/mobile/dressed_combatmedic_trainer_human_male_01.iff
-	{"noble", 60, -24.96, 1.6, -4.79578, 14.5444, 2775419, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_male_03.iff
-	{"karrek_flim", 60, -6.11988, 1.6, -7.43599, 219.682, 2775417, "calm", ""},  --@npc_name:karrek_film full template: object/mobile/dressed_karrek_film.iff
-	{"corsec_inspector_sergeant", 60, 24.9055, 1.28309, 5.31569, 360.011, 2775414, "conversation", ""},  --@mob/creature_names:corsec_inspector_sergeant full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"corsec_master_sergeant", 60, 24.9055, 1.28309, 6.41569, 180.019, 2775414, "conversation", ""},  --@mob/creature_names:corsec_master_sergeant full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"gambler", 60, -22.5017, 1.59973, 3.53494, 359.971, 2775415, "conversation", ""},  --@mob/creature_names:gambler full template: object/mobile/dressed_commoner_tatooine_aqualish_male_03.iff
-	{"farmer", 60, -22.5021, 1.6, 4.63468, 179.972, 2775415, "conversation", ""},  --@mob/creature_names:farmer full template: object/mobile/dressed_commoner_tatooine_devaronian_male_04.iff
-	{"commoner", 60, -24, 1.6, -4, 353.052, 2775419, "calm", "An Event Promoter"},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_02.iff
-	{"crackdown_rebel_command_security_guard", 60, -5501.09, 23.4, -6128.22, 142.839, 0, "", ""},  --@mob/creature_names:crackdown_rebel_command_security_guard full template: object/mobile/dressed_rebel_crewman_human_female_02.iff
-	{"crackdown_rebel_soldier", 60, -5320, 24, -6237.8, 94.0028, 0, "", ""},  --@mob/creature_names:crackdown_rebel_soldier full template: object/mobile/dressed_rebel_trooper_human_female_01.iff
-	{"crackdown_rebel_guard_captain", 60, -5411.4, 24.9599, -6219.3, 5.00012, 0, "", ""},  --@mob/creature_names:crackdown_rebel_guard_captain full template: object/mobile/dressed_rebel_specforce_captain_trandoshan_male_01.iff
-	{"crackdown_rebel_guardsman", 60, -5429.8, 24, -6218.9, 0, 0, "", ""},  --@mob/creature_names:crackdown_rebel_guardsman full template: object/mobile/dressed_rebel_trooper_twk_female_01.iff
-	{"crackdown_rebel_soldier", 60, -5443.6, 24, -6243, 282.008, 0, "", ""},  --@mob/creature_names:crackdown_rebel_soldier full template: object/mobile/dressed_rebel_trooper_human_male_01.iff
-	{"crackdown_rebel_guardsman", 60, -5534.1, 23.4, -6217.9, 138.004, 0, "", ""},  --@mob/creature_names:crackdown_rebel_guardsman full template: object/mobile/dressed_rebel_trooper_bith_m_01.iff
-	{"crackdown_rebel_liberator", 60, -5549.5, 23.4, -6202.1, 310.009, 0, "", ""},  --@mob/creature_names:crackdown_rebel_liberator full template: object/mobile/dressed_rebel_trooper_twk_female_01.iff
-	{"crackdown_rebel_guardsman", 60, -5538.4, 16.4902, -6054.7, 182.005, 0, "", ""},  --@mob/creature_names:crackdown_rebel_guardsman full template: object/mobile/dressed_rebel_trooper_twk_male_01.iff
-	{"crackdown_rebel_soldier", 60, -5664, 14.6, -6179.3, 94.0028, 0, "", ""},  --@mob/creature_names:crackdown_rebel_soldier full template: object/mobile/dressed_rebel_trooper_sullustan_male_01.iff
-	{"crackdown_rebel_guardsman", 60, -5664, 14.7566, -6185.3, 94.0028, 0, "", ""},  --@mob/creature_names:crackdown_rebel_guardsman full template: object/mobile/dressed_rebel_trooper_human_female_01.iff
-	{"crackdown_rebel_liberator", 60, -5716.1, 14.6, -6147.5, 271.008, 0, "", ""},  --@mob/creature_names:crackdown_rebel_liberator full template: object/mobile/dressed_rebel_trooper_twk_female_01.iff
-	{"crackdown_rebel_soldier", 60, -5716.1, 14.6, -6153.1, 269.008, 0, "", ""},  --@mob/creature_names:crackdown_rebel_soldier full template: object/mobile/dressed_rebel_trooper_twk_male_01.iff
-	{"corsec_investigator", 60, 9.49578, 1.00001, 10.5511, 178.041, 2775413, "conversation", ""},  --@mob/creature_names:corsec_investigator full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"commoner", 60, -5385.68, 24, -6239.93, 118.359, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_02.iff
-	{"smuggler_patrol_thief_5", 60, -5530.12, 23.4, -6190.79, 40.3557, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5557.36, 23.4, -6213.31, 184.279, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_male_01.iff
-	{"cll8_binary_load_lifter", 60, -5692.65, 14.6, -6151.28, 140.406, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"r2", 60, -5528, 23.4, -6195.05, 84.2678, 0, "calm", "R2-P2"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"crackdown_rebel_cadet", 60, -5568.4, 23.4, -6199.11, 90.254, 0, "calm", ""},  --@mob/creature_names:crackdown_rebel_cadet full template: object/mobile/dressed_mercenary_weak_hum_f.iff
-	{"eg6_power_droid", 60, -5692.65, 14.6, -6151.28, 179.632, 0, "calm", ""},  --@mob/creature_names:eg6_power_droid full template: object/mobile/eg6_power_droid.iff
-	{"crackdown_rebel_comm_operator", 60, -5582.42, 23.4, -6199.06, 90.2331, 0, "calm", ""},  --@mob/creature_names:crackdown_rebel_comm_operator full template: object/mobile/dressed_rebel_scout_human_male_01.iff
-	--{"rebel_recruiter", 60, -5516.08, 23.4, -6186.7, 0, 0, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_twilek_female_01.iff
-	--{"rebel_recruiter", 60, -5546.87, 15.7063, -6065.24, 360.011, 0, "calm", ""},  --@mob/creature_names:rebel_recruiter full template: object/mobile/dressed_rebel_recruiter_human_female_02.iff
-	{"smuggler_patrol_thief_5", 60, -5536.02, 23.4, -6106.37, 97.1089, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	{"smuggler_patrol_thief_5", 60, -5570.21, 23.4, -6102.1, 7.82476, 0, "calm", ""},  --@mob/creature_names:smuggler_patrol_thief_5 full template: object/mobile/dressed_corsec_detective_human_female_01.iff
-	
-	--bela vistal
-	--{"imperial_recruiter", 60, 6719.04, 315, -5805.21, 32.7923, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_recruiter full template: object/mobile/dressed_imperial_officer_m.iff
-	{"commoner", 60, 6798.04, 315, -5731.94, 209.929, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff
-	{"commoner", 60, 6760.75, 315, -5733.05, 101.495, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_old_twilek_female_01.iff
-	{"commoner", 60, 6761.43, 315, -5695.98, 3.51103, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff
-	{"commoner", 60, 6755.2, 314.926, -5625.98, 139.418, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_twilek_male_02.iff
-	{"commoner", 60, 6740.98, 315, -5674.9, 168.837, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_rodian_female_04.iff
-	{"noble", 60, 6724.41, 330, -5909.35, 213.723, 0, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_rodian_male_01.iff
-	{"bartender", 60, 8.54, -0.894992, 0.14, 87.0026, 3375355, "neutral", ""},  --@mob/creature_names:bartender full template: object/mobile/dressed_commoner_naboo_zabrak_male_01.iff
-	{"comm_operator", 60, -42.3991, 0.105009, -24.3411, 360.011, 3375367, "conversation", ""},  --@mob/creature_names:comm_operator full template: object/mobile/dressed_imperial_officer_m_5.iff
-	{"commoner", 60, -42.3991, 0.105009, -23.2411, 180.016, 3375367, "conversation", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"medic", 60, -43.4991, 0.105009, -23.2411, 135.007, 3375367, "conversation", ""},  --@mob/creature_names:medic full template: object/mobile/dressed_hutt_medic2_twilek_male_01.iff
-	{"ging_darjeek", 60, -24.6629, -0.519991, 7.12104, 148.001, 3375365, "calm", ""},  --@npc_name:ging_darjeek full template: object/mobile/dressed_ging_darjeek.iff
-	{"miner", 60, -5.46842, -0.894998, 20.8012, 0, 3375361, "conversation", ""},  --@mob/creature_names:miner full template: object/mobile/dressed_commoner_old_zabrak_female_02.iff
-	{"bothan_information_broker", 60, -5.46842, -0.894996, 21.9012, 180.003, 3375361, "conversation", ""},  --@mob/creature_names:bothan_information_broker full template: object/mobile/dressed_eisley_officer_bothan_female_01.iff
-	{"businessman", 60, -6.56842, -0.894996, 21.9012, 135.001, 3375361, "conversation", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_old_twilek_male_02.iff
-	{"palejo_reshad", 60, 1.05969, -0.894992, 21.2156, 111.145, 3375359, "calm", ""},  --@npc_name:palejo_reshad full template: object/mobile/dressed_palejo_reshad.iff
-	{"bounty_hunter", 60, 21.6023, -0.894996, -18.5913, 360.011, 3375356, "conversation", ""},  --@mob/creature_names:bounty_hunter full template: object/mobile/dressed_bountyhunter_trainer_04.iff
-	{"info_broker", 60, 21.6023, -0.894996, -17.4913, 180.012, 3375356, "conversation", ""},  --@mob/creature_names:info_broker full template: object/mobile/dressed_criminal_assassin_human_male_01.iff
-	{"businessman", 60, -10.2935, -0.895782, 7.13264, 339.313, 3375355, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_bith_female_06.iff
-	{"noble", 60, 5.80982, -0.894992, -5.41349, 248.205, 3375355, "calm", ""},  --@mob/creature_names:noble full template: object/mobile/dressed_noble_human_female_02.iff
-	{"pashna", 60, 6772.57, 315, -5697.8, 245.284, 0, "calm", ""},  --@npc_name:moncal_base_male full template: object/mobile/dressed_corvette_rebel_pashna.iff
-	{"corsec_trooper", 60, 6846.25, 317.5, -5789.3, 147.046, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_trooper", 60, 6735, 315, -5806.36, 33.2145, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_trooper", 60, 6735, 315, -5806.36, 5.30953, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"corsec_trooper", 60, 6775.44, 315, -5690.23, 63.8199, 0, "", ""},  --@mob/creature_names:corsec_trooper full template: object/mobile/dressed_corsec_pilot_human_female_01.iff
-	{"crackdown_stormtrooper_rifleman", 60, 6845.3, 315, -5826.8, 130.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper_rifleman full template: object/mobile/dressed_stormtrooper_rifleman_m.iff
-	{"crackdown_stormtrooper", 60, 6852.9, 315, -5826.9, 140.004, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_storm_commando", 60, 6752.1, 315, -5823.5, 273.008, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"crackdown_imperial_noncom", 60, 6663.8, 330, -5913.3, 134.004, 0, "", ""},  --@mob/creature_names:crackdown_imperial_noncom full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, 6837.4, 315, -5774, 260.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, 6819.9, 315, -5720.1, 220.006, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, 6749.3, 315, -5684, 231.007, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff
-	{"crackdown_stormtrooper", 60, 6748.9, 315, -5665.2, 279.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, 6855, 315, -5609.3, 280.008, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"grondom_muse", 60, 6838.16, 315, -5767.67, 266.732, 0, "calm", ""},  --@npc_name:grondorn_muse full template: object/mobile/dressed_grondorn_muse.iff
-	{"commoner", 60, 6832.06, 315, -5606.82, 252.9, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_04.iff
-	{"commoner", 60, 6847.34, 315, -5617.89, 54.6527, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_male_06.iff
-	{"commoner", 60, 6829.04, 315, -5626.01, 119.354, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_fat_twilek_female_01.iff
-	{"commoner", 60, 6821.55, 314.999, -5611.9, 303.021, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_moncal_male_02.iff
-	{"commoner", 60, 6834.25, 315, -5577.61, 150.226, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_aqualish_male_04.iff
-	{"commoner", 60, 6846.25, 315, -5588.75, 54.8409, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_sullustan_male_06.iff
-	{"commoner", 60, 6896.18, 330, -5577.91, 290.907, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_ishitib_male_01.iff
-	{"commoner", 60, 6867.23, 315, -5758.29, 338.874, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff
-	{"commoner", 60, 6829.48, 315, -5813.46, 319.91, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_moncal_female_01.iff
-	{"commoner", 60, 6808.93, 315, -5779.16, 282.269, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_human_female_01.iff
-	{"commoner", 60, 6829.32, 315, -5745.5, 171.619, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_tatooine_bith_female_05.iff
-	{"commoner", 60, 6810.15, 315, -5699.05, 137.601, 0, "calm", ""},  --@mob/creature_names:commoner full template: object/mobile/dressed_commoner_naboo_bothan_female_01.iff
-	{"criminal", 60, 6871.34, 315, -5753.42, 355.947, 0, "calm", ""},  --@mob/creature_names:criminal full template: object/mobile/dressed_criminal_thug_rodian_female_01.iff
-	{"rtp_stormtrooper_elite_85", 60, 6699.38, 315, -5809.72, 220.681, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_leia_stormtrooper_guard", 60, 6646.02, 330, -5931.59, 357.677, 0, "", ""},  --@mob/creature_names:rtp_leia_stormtrooper_guard full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"rtp_leia_stormtrooper_guard", 60, 6644.26, 330, -5937.08, 5.98245, 0, "", ""},  --@mob/creature_names:rtp_leia_stormtrooper_guard full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"rtp_leia_stormtrooper_guard", 60, 6649.56, 330, -5935.6, 128.564, 0, "", ""},  --@mob/creature_names:rtp_leia_stormtrooper_guard full template: object/mobile/dressed_stormtrooper_bombardier_m.iff
-	{"rtp_imperial_sergeant", 60, 6712.78, 315, -5810.38, 112.467, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m_4.iff
-	{"rtp_stormtrooper_elite_85", 60, 6707.89, 315, -5814.25, 131.647, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_imperial_sergeant", 60, 6795.21, 315, -5702.92, 63.9209, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m_3.iff
-	{"rtp_stormtrooper_elite_85", 60, 6794.42, 315, -5696.6, 90.5594, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_stormtrooper_elite_85", 60, 6826.7, 315, -5820.68, 309.206, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_stormtrooper_elite_85", 60, 6825.35, 315, -5620.37, 277.216, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_stormtrooper_elite_85", 60, 6842.92, 315, -5604.11, 56.0358, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_stormtrooper_elite_85", 60, 6852, 315, -5831.51, 128.695, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_stormtrooper_elite_85", 60, 6837.95, 315, -5806.84, 302.784, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_stormtrooper_elite_85 full template: object/mobile/dressed_stormtrooper_m.iff
-	{"rtp_imperial_sergeant", 60, 6823.92, 315, -5597.88, 121.846, 0, "npc_imperial", ""},  --@mob/creature_names:rtp_imperial_sergeant full template: object/mobile/dressed_imperial_officer_m_6.iff
-	{"businessman", 60, 3.32, 1.13306, -8.49, 228.007, 2365769, "calm", ""},  --@mob/creature_names:businessman full template: object/mobile/dressed_commoner_tatooine_ishitib_male_03.iff
-	{"hunter", 60, -14.01, 1.13306, -8.53, 120.004, 2365770, "calm", ""},  --@mob/creature_names:hunter full template: object/mobile/dressed_commoner_naboo_human_male_02.iff
-	{"crackdown_storm_commando", 60, 6648.54, 330, -5939.32, 280.874, 0, "", ""},  --@mob/creature_names:crackdown_storm_commando full template: object/mobile/dressed_scout_trooper_black_black.iff
-	{"imperial_sergeant_major", 60, 6908.17, 330, -5608.54, 27.4568, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_sergeant_major full template: object/mobile/dressed_imperial_officer_m.iff
-	{"imperial_staff_sergeant", 60, 6909.29, 330, -5606.48, 204.967, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_staff_sergeant full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_imperial_army_captain", 60, 6820.49, 315, -5743.53, 353.468, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_army_captain full template: object/mobile/dressed_imperial_captain_m.iff
-	{"crackdown_scout_trooper", 60, 6832.36, 314.758, -5811.93, 312.353, 0, "", ""},  --@mob/creature_names:crackdown_scout_trooper full template: object/mobile/dressed_scout_trooper_white_white.iff
-	{"eg6_power_droid", 60, 6825.9, 315, -5791.64, 173.583, 0, "calm", ""},  --@mob/creature_names:eg6_power_droid full template: object/mobile/eg6_power_droid.iff
-	{"crackdown_stormtrooper_squad_leader", 60, 6650.38, 330, -5938.43, 280.869, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_squad_leader full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	{"cll8_binary_load_lifter", 60, 6826.88, 315, -5778.01, 0.0395659, 0, "calm", ""},  --@mob/creature_names:cll8_binary_load_lifter full template: object/mobile/cll8_binary_load_lifter.iff
-	{"r2", 60, 6857.06, 315, -5702.8, 0, 0, "calm", "R2-J9"},  --@mob/creature_names:r2 full template: object/mobile/r2.iff
-	{"crackdown_specialist_noncom", 60, 6830.18, 314.823, -5816.91, 187.167, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_specialist_noncom full template: object/mobile/dressed_imperial_officer_m_2.iff
-	{"crackdown_imperial_army_captain", 60, 6832.21, 315, -5811.19, 189.637, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_imperial_army_captain full template: object/mobile/dressed_imperial_captain_m.iff
-	{"r4", 60, 6715.38, 330, -5903.81, 0.0395659, 0, "calm", "R4-O8"},  --@mob/creature_names:r4 full template: object/mobile/r4.iff
-	{"crackdown_stormtrooper_captain", 60, 6853.17, 315, -5696.6, 258.27, 0, "npc_imperial", ""},  --@mob/creature_names:crackdown_stormtrooper_captain full template: object/mobile/dressed_stormtrooper_groupleader_m.iff
-	--{"imperial_recruiter", 60, 6835.64, 315, -5788.8, 0, 0, "npc_imperial", ""},  --@mob/creature_names:imperial_recruiter full template: object/mobile/dressed_imperial_officer_m.iff
-	{"crackdown_stormtrooper", 60, 6685.7, 330, -5943.3, 222.007, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_stormtrooper", 60, 6708, 328.664, -5869.7, 166.005, 0, "", ""},  --@mob/creature_names:crackdown_stormtrooper full template: object/mobile/dressed_stormtrooper_m.iff
-	{"crackdown_dark_trooper", 60, 6718.1, 328.537, -5869.6, 186.005, 0, "", ""},  --@mob/creature_names:crackdown_dark_trooper full template: object/mobile/dark_trooper.iff	
+	{"acun_solari",60,19.8219,-0.894996,-19.5533,0,2625356, "calm", "Acun Solari"},
+	{"adar",60,-5448.03,21,-2674.92,253.163,0, "calm", "Adar Tallon"},
+	{"afarathu_brute",900,-83.5,-71.6,-169.2,-75,6035627, "", ""},
+	{"afarathu_brute",900,-100.5,-72.9,-159.1,-98,6035627, "", ""},
+	{"afarathu_brute",900,-111.7,-69.4,-170.6,-98,6035627, "", ""},
+	{"afarathu_brute",900,-85.4,-101.5,-111.2,177,6035630, "", ""},
+	{"afarathu_brute",900,-92.8,-101.1,-111.89,177,6035630, "", ""},
+	{"afarathu_cult_follower",900,-1.8,-40.7,-74.1,98,6035622, "", ""},
+	{"afarathu_cult_follower",900,2.6,-40.4,-62.4,1,6035622, "", ""},
+	{"afarathu_cult_follower",900,3.4,-41,-72.6,-22,6035622, "", ""},
+	{"afarathu_cult_follower",900,-95.3,-73.7,-170,-22,6035627, "", ""},
+	{"afarathu_cult_leader",900,-90.7,-101.1,-104.8,1,6035630, "", ""},
+	{"afarathu_ruffian",900,-2489.6,6,2920,90,0, "", ""},
+	{"afarathu_ruffian",900,-2494,6,2913.6,90,0, "", ""},
+	{"afarathu_ruffian",900,-0.6,-13.7,-8.3,-177,6035620, "", ""},
+	{"afarathu_ruffian",900,11.3,-14.2,-5.5,-177,6035620, "", ""},
+	{"afarathu_ruffian",900,9.7,-23.9,-28.3,23,6035621, "", ""},
+	{"afarathu_ruffian",900,-11.3,-30.7,-27.1,99,6035621, "", ""},
+	{"afarathu_ruffian",900,49.3,-46.8,-53.7,144,6035623, "", ""},
+	{"afarathu_ruffian",900,43.8,-46.1,-95.1,144,6035623, "", ""},
+	{"afarathu_ruffian",900,23.6,-45.7,-102.8,98,6035623, "", ""},
+	{"afarathu_savage",900,-1.7,-45.8,-147.8,99,6035624, "", ""},
+	{"afarathu_savage",900,-11,-44.4,-136.4,-121,6035624, "", ""},
+	{"afarathu_savage",900,-4.2,-64,-234.2,0,6035626, "", ""},
+	{"afarathu_savage",900,-21.7,-65.4,-244.6,-75,6035626, "", ""},
+	{"artisan",60,17.2826,1.28309,-11.8404,179.994,1855549, "conversation", ""},
+	{"artisan",60,21.5803,14.26,-7.84205,180.006,1855541, "conversation", ""},
+	{"artisan",60,34.3598,0.104999,-8.03626,0,3005398, "conversation", ""},
+	{"artisan",60,2.65839,2.6,4.15034,180.003,2365434, "conversation", ""},
+	{"artisan",60,-5537.5,21,-2614.06,180.005,0, "conversation", ""},
+	{"artisan",60,-5596.05,21,-2761.83,180.005,0, "conversation", ""},
+	{"artisan",60,-8.04223,-0.894908,-17.7225,360.011,2625360, "conversation", ""},
+	{"artisan",60,-0.629707,2.6,3.43132,180.013,4395401, "conversation", ""},
+	{"artisan",60,-1.72179,0.6,-4.05766,360.011,4395396, "conversation", ""},
+	{"artisan",60,-20.4229,2.12878,65.9439,180.013,4395404, "conversation", ""},
+	{"assault_trooper",90,-0.197758,0.125265,1.53801,239.449,2715902, "", ""},
+	{"bartender",60,7.60649,-0.894992,1.42464,324.005,8105496, "neutral", ""},
+	{"bartender",60,6.4346,-0.894992,-2.33458,156.803,3005399, "neutral", ""},
+	{"bartender",60,8.6,-0.9,0.6,90,2625355, "neutral", ""},
+	{"bartender",60,-4.00542,-0.894992,-2.41,166.23,3075429, "neutral", ""},
+	{"bartender",60,8.54,-0.894992,0.14,87.0026,3375355, "neutral", ""},
+	{"bodyguard",60,-9.42234,1.75,-18.7259,180.005,1855484, "conversation", ""},
+	{"bodyguard",60,3.61201,-0.894992,-8.73417,135.006,8105496, "conversation", ""},
+	{"bodyguard",60,2.80432,-0.894991,10.6543,180.012,8105496, "conversation", ""},
+	{"bodyguard",60,24.3471,1.28309,10.0336,180.007,1855549, "conversation", ""},
+	{"bodyguard",60,-3587.81,86,3134.7,0,0, "conversation", ""},
+	{"bodyguard",60,-3162.17,31,2902.28,0,0, "conversation", ""},
+	{"bodyguard",60,1.29504,1.75,-19.8672,180.011,1935477, "conversation", ""},
+	{"bodyguard",60,-5537.5,21,-2615.06,0,0, "conversation", ""},
+	{"bodyguard",60,-23.3263,1.59523,3.86229,0.250236,1935824, "conversation", ""},
+	{"bodyguard",60,-62.089,2.63942,41.8477,179.999,1935695, "conversation", ""},
+	{"bodyguard",60,31.7104,0.639212,63.2998,354.769,1935688, "conversation", ""},
+	{"bodyguard",60,-20.4229,2.12878,64.9439,0,4395404, "conversation", ""},
+	{"bothan_diplomat",60,5.22842,0.3,2.91677,0,1855463, "conversation", ""},
+	{"bothan_diplomat",60,56.669,-0.521137,33.7689,180.017,1855678, "conversation", ""},
+	{"bothan_diplomat",60,8.65132,0.639421,74.4483,256.942,1855672, "calm", ""},
+	{"bothan_diplomat",60,3.19577,-5.5,-6.31594,180.007,3005430, "conversation", ""},
+	{"bothan_diplomat",60,4.47407,-0.0513746,2.93985,135.007,3005428, "conversation", ""},
+	{"bothan_diplomat",60,-5146.7,21,-2548.18,0,0, "conversation", ""},
+	{"bothan_diplomat",60,15.7701,1.28309,-9.57401,360.011,1935823, "conversation", ""},
+	{"bothan_diplomat",60,-5009.39,21,-2497.19,0,0, "conversation", ""},
+	{"bothan_diplomat",60,-42.098,0.105009,-23.0786,180.012,3075441, "conversation", ""},
+	{"bothan_diplomat",60,36.7068,0.639417,40.446,180.001,9665359, "conversation", ""},
+	{"bothan_information_broker",60,5.22842,0.3,4.01677,180.005,1855463, "conversation", ""},
+	{"bothan_information_broker",60,5.43518,2.27819,-27.0615,344.925,1855463, "conversation", ""},
+	{"bothan_information_broker",60,22.2962,0.688613,43.2884,180.006,2365397, "conversation", ""},
+	{"bothan_information_broker",60,5.57407,-0.0513746,2.93985,180.01,3005428, "conversation", ""},
+	{"bothan_information_broker",60,-3088.9,31,2902.08,0,0, "conversation", ""},
+	{"bothan_information_broker",60,-14.2562,2.4869,23.6983,5.24379,2365434, "conversation", ""},
+	{"bothan_information_broker",60,-5398.52,21,-2676.03,0,0, "conversation", ""},
+	{"bothan_information_broker",60,3202.28,290,4989.06,180.005,0, "conversation", ""},
+	{"bothan_information_broker",60,-3.23192,0.184067,-5.20004,360.011,4345354, "conversation", ""},
+	{"bothan_information_broker",60,-1.72179,0.6,-2.95766,180.016,4395396, "conversation", ""},
+	{"bothan_information_broker",60,-23.9134,0.6,-4.15254,360.011,4395397, "conversation", ""},
+	{"bothan_information_broker",60,-5.46842,-0.894996,21.9012,180.003,3375361, "conversation", ""},
+	{"bounty_hunter",60,17.1745,1.28309,-13.1361,0,3075367, "conversation", ""},
+	{"bounty_hunter",60,-42.098,0.105009,-24.1786,0,3075441, "conversation", ""},
+	{"bounty_hunter",60,21.6023,-0.894996,-18.5913,360.011,3375356, "conversation", ""},
+	{"brantlee_spondoon",60,-24.7,1.3,-0.5,124,1855463, "calm", ""},
+	{"brawler",60,16.2045,2.25,19.3968,135.003,1855477, "conversation", ""},
+	{"brawler",60,-1.72746,7.9,-32.175,0,1855463, "conversation", ""},
+	{"brawler",60,2.09577,-5.5,-6.31594,135.004,3005430, "conversation", ""},
+	{"brawler",60,22.6067,-0.894992,19.6263,0,3005401, "conversation", ""},
+	{"brawler",60,-3459.55,78,3226.02,180.005,0, "conversation", ""},
+	{"brawler",60,-2.41153,-0.894992,24.4367,180.007,3005405, "conversation", ""},
+	{"brawler",60,-5000.34,21,-2521.71,45.0013,0, "conversation", ""},
+	{"brawler",60,24.4668,0.26,4.56238,180.004,1935831, "conversation", ""},
+	{"brawler",60,-4.68154,0.639424,60.9856,180.005,9665356, "conversation", ""},
+	{"businessman",60,-306.34,28,-4620.82,67.4368,0, "calm", ""},
+	{"businessman",60,-312.404,28,-4646.51,242.881,0, "calm", ""},
+	{"businessman",60,0.978477,-0.894992,21.4841,311.517,8105500, "calm", ""},
+	{"businessman",60,-7.91375,-0.894992,-4.88587,179.995,8105496, "conversation", ""},
+	{"businessman",60,37.1168,1.29422,-3.41488,180.005,1855470, "conversation", ""},
+	{"businessman",60,-135.995,28,-4745.63,251.824,0, "calm", ""},
+	{"businessman",60,-6.12488,2.6,13.0431,0,2365397, "conversation", ""},
+	{"businessman",60,3.19577,-5.5,-7.41594,0,3005430, "conversation", ""},
+	{"businessman",60,-3591.74,86,3180.01,180.005,0, "conversation", ""},
+	{"businessman",60,-3159.35,31,2813.02,0,0, "conversation", ""},
+	{"businessman",60,-3152.32,31,2971.71,0,0, "conversation", ""},
+	{"businessman",60,17.3056,1.28309,-7.47174,0,1935527, "conversation", ""},
+	{"businessman",60,23.1824,1.28309,8.37019,0,1935527, "conversation", ""},
+	{"businessman",60,3.32,1.13306,-8.49,228.007,1935444, "calm", ""},
+	{"businessman",60,-5091.15,21,-2315.33,227.834,0, "calm", ""},
+	{"businessman",60,52.3124,0.639417,48.2148,107.997,9665359, "calm", ""},
+	{"businessman",60,3.32,1.13306,-8.49,228.007,3075360, "calm", ""},
+	{"businessman",60,-5428.59,24.1812,-6228.31,140.458,0, "calm", ""},
+	{"businessman",60,-6.56842,-0.894996,21.9012,135.001,3375361, "conversation", ""},
+	{"businessman",60,-10.2935,-0.895782,7.13264,339.313,3375355, "calm", ""},
+	{"businessman",60,3.32,1.13306,-8.49,228.007,2365769, "calm", ""},
+	{"chassis_broker",60,-56.7101,0.974563,8.33237,12.6055,4255433, "neutral", ""},
+	{"chassis_broker",60,-56.6393,0.974563,8.33815,26.9298,1935697, "neutral", ""},
+	{"chassis_broker",60,-56.6993,0.974563,8.57384,27.5028,9665366, "neutral", ""},
+	{"chertyl_ruluwoor",60,-8.54047,1.6,-11.59,98.7988,3005674, "calm", ""},
+	{"cll8_binary_load_lifter",60,-146.217,28,-4738.99,346.392,0, "calm", ""},
+	{"cll8_binary_load_lifter",60,-3654.48,86,3081.81,26.971,0, "calm", ""},
+	{"cll8_binary_load_lifter",60,-3444.06,78,3384.03,359.013,0, "calm", ""},
+	{"cll8_binary_load_lifter",60,-3095.09,31,2975.46,81.028,0, "calm", ""},
+	{"cll8_binary_load_lifter",60,-5692.65,14.6,-6151.28,140.406,0, "calm", ""},
+	{"cll8_binary_load_lifter",60,6826.88,315,-5778.01,0.0395659,0, "calm", ""},
+	{"cll_8",60,-5050.13,21,-2288.73,145.718,0, "neutral", ""},
+	{"coa2_rebel_coordinator",60,94.8749,28,-4519.08,121.279,0, "calm", ""},
+	{"coa2_rebel_coordinator",60,-5218.4,21,-2602.17,331.695,0, "calm", ""},
+	{"coa3_information_rebel",60,14.1936,1.13306,-8.97227,335.228,1935453, "calm", ""},
+	{"coa3_tactical_rebel",60,9.53575,1.13306,0.330446,310.824,1935441, "calm", ""},
+	{"comm_operator",60,-5467.56,21,-2792.59,0,0, "conversation", ""},
+	{"comm_operator",60,-42.3991,0.105009,-24.3411,360.011,3375367, "conversation", ""},
+	{"commoner",60,-306.539,28,-4546.52,95.6639,0, "calm", ""},
+	{"commoner",60,-306.061,28,-4600.68,146.312,0, "calm", ""},
+	{"commoner",60,-258.479,28,-4620,198.098,0, "calm", ""},
+	{"commoner",60,-350.892,28,-4219.92,244.079,0, "calm", ""},
+	{"commoner",60,-357.932,28,-4267.81,39.6745,0, "calm", ""},
+	{"commoner",60,-350.452,28,-4287.73,88.2402,0, "calm", ""},
+	{"commoner",60,-350.998,28,-4250.76,129.539,0, "calm", ""},
+	{"commoner",60,-302.182,28,-4300.76,29.3627,0, "calm", ""},
+	{"commoner",60,-282.189,28,-4343.57,319.557,0, "calm", ""},
+	{"commoner",60,-239.932,28,-4522.15,78.2005,0, "calm", ""},
+	{"commoner",60,-202.143,28,-4504.32,203.539,0, "calm", "CorSec Agent"},
+	{"commoner",60,-24,1.6,-4,160,1855554, "calm", "Pex (an elite storyteller vendor)"},
+	{"commoner",60,-163.792,28,-4606.3,8.06951,0, "calm", ""},
+	{"commoner",60,-163.751,28,-4552.14,55.4278,0, "calm", ""},
+	{"commoner",60,-168.38,28,-4515.61,103.857,0, "calm", ""},
+	{"commoner",60,-158.666,28,-4526.31,289.183,0, "calm", ""},
+	{"commoner",60,-106.79,28,-4528.6,277.086,0, "calm", ""},
+	{"commoner",60,-26.0533,28,-4558.43,310.059,0, "calm", ""},
+	{"commoner",60,-54.9984,28,-4530.84,320.833,0, "calm", ""},
+	{"commoner",60,-37.2537,28,-4476.76,289.212,0, "calm", ""},
+	{"commoner",60,-92.217,28,-4471.14,34.4098,0, "calm", ""},
+	{"commoner",60,-14.9281,28,-4451.64,343.833,0, "calm", ""},
+	{"commoner",60,40.5453,28,-4416.63,80.7447,0, "calm", ""},
+	{"commoner",60,14.4606,28,-4407.11,38.4825,0, "calm", ""},
+	{"commoner",60,-15.4515,28,-4415.25,54.8457,0, "calm", ""},
+	{"commoner",60,-64.8198,28,-4398.56,247.888,0, "calm", ""},
+	{"commoner",60,-78.7157,28,-4286.4,22.2156,0, "calm", ""},
+	{"commoner",60,-71.0095,28,-4325.21,60.8559,0, "calm", ""},
+	{"commoner",60,-87.6481,28,-4302.16,97.3912,0, "calm", ""},
+	{"commoner",60,-112.646,28,-4310.7,151.383,0, "calm", ""},
+	{"commoner",60,-118.993,28,-4285.29,181.854,0, "calm", ""},
+	{"commoner",60,-54.3716,28,-4304.72,97.2405,0, "calm", ""},
+	{"commoner",60,-56.7639,28,-4229.33,47.6277,0, "calm", ""},
+	{"commoner",60,-103.047,28,-4182.61,84.8143,0, "calm", ""},
+	{"commoner",60,-163.872,28,-4181.48,294.873,0, "calm", ""},
+	{"commoner",60,-122.156,28,-4392.8,270.52,0, "calm", ""},
+	{"commoner",60,-195.909,28,-4451.7,186.379,0, "calm", ""},
+	{"commoner",60,-181.008,28,-4505.08,109.502,0, "calm", ""},
+	{"commoner",60,71.9271,28,-4568.97,267.444,0, "calm", ""},
+	{"commoner",60,10.3286,28,-4633.8,159.984,0, "calm", ""},
+	{"commoner",60,88.4953,28,-4727.94,340.398,0, "calm", ""},
+	{"commoner",60,55.6269,28,-4782.24,123.611,0, "calm", ""},
+	{"commoner",60,2.56172,0.6,-2.64185,135,2365392, "conversation", ""},
+	{"commoner",60,101.283,28,-4554.86,358.797,0, "calm", ""},
+	{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo"},
+	{"commoner",60,-0.842022,0.184067,1.59886,270.011,3375392, "conversation", ""},
+	{"commoner",60,-2.84202,0.184067,1.59886,90.0057,3375392, "conversation", ""},
+	{"commoner",60,-3522.13,70,3234.57,298.472,0, "calm", ""},
+	{"commoner",60,-3572.52,70,3208.39,214.075,0, "calm", ""},
+	{"commoner",60,-3509.45,78,3148.97,307.049,0, "calm", ""},
+	{"commoner",60,-3447.57,78,3219.08,208.852,0, "calm", ""},
+	{"commoner",60,-3455.84,78,3343.36,116.625,0, "calm", ""},
+	{"commoner",60,-3427.62,86,3029.21,72.4859,0, "calm", ""},
+	{"commoner",60,-3423.54,86,3043.61,131.267,0, "calm", ""},
+	{"commoner",60,-3403.44,86,2997.65,181.978,0, "calm", ""},
+	{"commoner",60,-3403.21,86,3111.2,46.9921,0, "calm", ""},
+	{"commoner",60,-3408.19,86,3125.55,199.789,0, "calm", ""},
+	{"commoner",60,-3426.15,86,3134.26,343.162,0, "calm", ""},
+	{"commoner",60,-3444.77,86,3143.75,343.711,0, "calm", ""},
+	{"commoner",60,-3435.7,86,3119.29,67.1759,0, "calm", ""},
+	{"commoner",60,-3416.7,86,3033.89,318.181,0, "calm", ""},
+	{"commoner",60,-3458.31,78,3027.47,275.402,0, "calm", ""},
+	{"commoner",60,-3461.07,86,3156,54.5013,0, "calm", ""},
+	{"commoner",60,-3421.3,86,3104.47,296.197,0, "calm", ""},
+	{"commoner",60,21.5067,-0.894992,20.7263,135.005,3005401, "conversation", ""},
+	{"commoner",60,-45.2379,0.105009,-21.6909,360.011,3005411, "conversation", ""},
+	{"commoner",60,-3361.13,86,3217.26,124.012,0, "calm", ""},
+	{"commoner",60,-3324.59,86,3261.86,293.486,0, "calm", ""},
+	{"commoner",60,-3322.1,86,3230.47,113.222,0, "calm", ""},
+	{"commoner",60,-3342.65,86,3268.3,214.421,0, "calm", ""},
+	{"commoner",60,-3365.89,86,3284.68,46.8022,0, "calm", ""},
+	{"commoner",60,-3374.97,86,3265.02,47.337,0, "calm", ""},
+	{"commoner",60,-3351.81,86,3303.25,24.0851,0, "calm", ""},
+	{"commoner",60,-3332.16,86,3307.2,264.653,0, "calm", ""},
+	{"commoner",60,-3322.3,86,3283.63,275.608,0, "calm", ""},
+	{"commoner",60,-3393.47,86,3007.94,286.244,0, "calm", ""},
+	{"commoner",60,-3378.96,86,2985.53,285.729,0, "calm", ""},
+	{"commoner",60,-3384.17,86,2958.24,11.3093,0, "calm", ""},
+	{"commoner",60,-3311.8,69.6204,2886.94,40.0687,0, "calm", ""},
+	{"commoner",60,-3378.65,86,3173.54,240.512,0, "calm", ""},
+	{"commoner",60,-3396.89,86,3131.64,135.762,0, "calm", ""},
+	{"commoner",60,-3391.66,86,3140.05,231.255,0, "calm", ""},
+	{"commoner",60,-3296.84,66.0938,2877.86,186.227,0, "calm", ""},
+	{"commoner",60,-3225.11,32.2567,2816.51,354.534,0, "calm", ""},
+	{"commoner",60,-3276.7,86,3089.82,195.888,0, "calm", ""},
+	{"commoner",60,-3256,86,3124.3,90.73,0, "calm", ""},
+	{"commoner",60,-3272.53,86,3071.96,247.995,0, "calm", ""},
+	{"commoner",60,20.5158,1.28309,10.04,135.006,3005671, "conversation", ""},
+	{"commoner",60,-24,1.6,-4,124.701,3005676, "calm", "An Event Promoter"},
+	{"commoner",60,-3199.88,30.6149,2786.24,349.225,0, "calm", ""},
+	{"commoner",60,-3160.26,30.6615,2762.28,0.966738,0, "calm", ""},
+	{"commoner",60,-3178.84,31,2775.92,288.531,0, "calm", ""},
+	{"commoner",60,-3115.47,31,2800.28,30.7435,0, "calm", ""},
+	{"commoner",60,-3112.88,31,2984.36,125.035,0, "calm", ""},
+	{"commoner",60,-3131.04,31,2995.05,134.779,0, "calm", ""},
+	{"commoner",60,-3157.04,101,3077.75,219.742,0, "calm", ""},
+	{"commoner",60,-3191.67,101,3052.4,294.559,0, "calm", ""},
+	{"commoner",60,-3190.54,101,3073.46,88.2138,0, "calm", ""},
+	{"commoner",60,-3185.75,101,3104.64,308.461,0, "calm", ""},
+	{"commoner",60,-3153.75,101,3112.41,31.6067,0, "calm", ""},
+	{"commoner",60,-3188.79,101,3156.71,306.911,0, "calm", ""},
+	{"commoner",60,-3068.52,30.6373,2772.26,154.712,0, "calm", ""},
+	{"commoner",60,-3028.15,29.9485,2793.83,126.824,0, "calm", ""},
+	{"commoner",60,-3066.9,31,2925.13,132.488,0, "calm", ""},
+	{"commoner",60,-3087.72,31,2984.93,5.4138,0, "calm", ""},
+	{"commoner",60,-5633.73,21,-2757.46,93.1038,0, "calm", ""},
+	{"commoner",60,-5583.79,21,-2764.8,215.273,0, "calm", ""},
+	{"commoner",60,-5538.94,21,-2600.55,4.08279,0, "calm", ""},
+	{"commoner",60,-15.1386,2.25,17.5614,270.01,1935472, "conversation", ""},
+	{"commoner",60,-17.1386,2.25,17.5614,90.0005,1935472, "conversation", ""},
+	{"commoner",60,-16.9721,1,-4.12621,360.011,1935528, "conversation", ""},
+	{"commoner",60,-24,1.6,-4,354.16,1935532, "calm", "Pex (an elite storyteller vendor)"},
+	{"commoner",60,-5500.8,21,-2778.27,175.737,0, "calm", ""},
+	{"commoner",60,-5409.42,21,-2700.49,244.27,0, "calm", ""},
+	{"commoner",60,-5411.79,21,-2655.41,7.76214,0, "calm", ""},
+	{"commoner",60,-5465.78,21,-2601.9,287.819,0, "calm", ""},
+	{"commoner",60,-5314.83,21,-2461.07,267.814,0, "calm", ""},
+	{"commoner",60,-5291.55,21,-2479.74,323.878,0, "calm", ""},
+	{"commoner",60,-5274.74,21,-2574.04,268.911,0, "calm", ""},
+	{"commoner",60,-5259.48,21,-2446.51,34.7297,0, "calm", ""},
+	{"commoner",60,-5278.98,21,-2390.6,94.9464,0, "calm", ""},
+	{"commoner",60,-5208.22,21,-2333.68,118.094,0, "calm", ""},
+	{"commoner",60,-5247.09,21,-2623.54,285.684,0, "calm", ""},
+	{"commoner",60,-5242.79,21,-2421.66,30.7465,0, "calm", ""},
+	{"commoner",60,-26.4983,-0.519991,10.8543,179.992,2625365, "conversation", ""},
+	{"commoner",60,-5110.54,21,-2505.6,104.325,0, "calm", ""},
+	{"commoner",60,-5200.63,21,-2505.59,277.113,0, "calm", ""},
+	{"commoner",60,-5200.12,21,-2594.79,332.894,0, "calm", ""},
+	{"commoner",60,-5162.69,21,-2277.81,212.16,0, "calm", ""},
+	{"commoner",60,-5114.89,21,-2424.44,187.746,0, "calm", ""},
+	{"commoner",60,-5200.74,21,-2638.47,308.492,0, "calm", ""},
+	{"commoner",60,-5164.3,21,-2639.01,192.357,0, "calm", ""},
+	{"commoner",60,-5192.9,21,-2545.55,46.5164,0, "calm", "Excited Journalist"},
+	{"commoner",60,-5144.16,21,-2413.14,25.4291,0, "calm", ""},
+	{"commoner",60,-5156.26,21,-2376.59,186.561,0, "calm", ""},
+	{"commoner",60,-12.4312,1.6,-16.4443,270.002,1935827, "conversation", ""},
+	{"commoner",60,-14.4312,1.6,-16.4443,89.9986,1935827, "conversation", ""},
+	{"commoner",60,-24,1.6,-4,337.557,1935828, "calm", "Pex (an elite storyteller vendor)"},
+	{"commoner",60,-5146.7,21,-2547.18,180.005,0, "conversation", ""},
+	{"commoner",60,-5003.67,21,-2342.15,284.215,0, "calm", ""},
+	{"commoner",60,-5090.54,21,-2580.35,208.738,0, "calm", ""},
+	{"commoner",60,-5079.26,21,-2445.52,106.736,0, "calm", ""},
+	{"commoner",60,-5064.44,21,-2392.07,128.202,0, "calm", ""},
+	{"commoner",60,-5089.39,21,-2344.25,247.178,0, "calm", ""},
+	{"commoner",60,-5073.15,21,-2521.26,351.018,0, "calm", ""},
+	{"commoner",60,-5048.34,21,-2490.91,295.017,0, "calm", ""},
+	{"commoner",60,-5014.32,21,-2560.74,19.5735,0, "calm", ""},
+	{"commoner",60,-5025.37,21,-2453.92,175.818,0, "calm", ""},
+	{"commoner",60,-4942.72,21,-2445.55,99.4923,0, "calm", ""},
+	{"commoner",60,-4960.23,21,-2357.14,295.225,0, "calm", ""},
+	{"commoner",60,-4965.54,21,-2383.55,227.39,0, "calm", ""},
+	{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren"},
+	{"commoner",60,-24,1.6,-4,246.374,3075372, "calm", "An Event Promoter"},
+	{"commoner",60,3139.88,300,5247.41,171.321,0, "calm", ""},
+	{"commoner",60,3179.26,300,5213.19,233.367,0, "calm", ""},
+	{"commoner",60,3117.25,300,5194.73,153.311,0, "calm", ""},
+	{"commoner",60,3108.26,300,5229.01,219.942,0, "calm", ""},
+	{"commoner",60,3162.05,290,4966.73,255.989,0, "calm", ""},
+	{"commoner",60,3190.76,300,5269.61,131.093,0, "calm", ""},
+	{"commoner",60,3103.05,300,5164.17,50.255,0, "calm", ""},
+	{"commoner",60,3192.45,302.606,5113.34,189.527,0, "calm", ""},
+	{"commoner",60,3159.78,300,5397.22,81.297,0, "calm", ""},
+	{"commoner",60,3199.22,300,5449.92,146.634,0, "calm", ""},
+	{"commoner",60,3277.95,300,5438.73,232.081,0, "calm", ""},
+	{"commoner",60,3240.99,300,5415.5,249.458,0, "calm", ""},
+	{"commoner",60,3204.19,290,5003.32,222.69,0, "calm", ""},
+	{"commoner",60,3202.3,290,5034.41,29.3152,0, "calm", ""},
+	{"commoner",60,3296.88,324,5760.95,196.788,0, "calm", ""},
+	{"commoner",60,5.6169,-0.894992,20.9629,256.55,3075433, "calm", "Zakarisz Ghent"},
+	{"commoner",60,3300.28,308,5495.49,0,0, "conversation", ""},
+	{"commoner",60,3316.17,308,5496.71,3.31657,0, "calm", ""},
+	{"commoner",60,3308.36,300,5396.79,274.041,0, "calm", ""},
+	{"commoner",60,3320.73,324,5709.36,340.725,0, "calm", ""},
+	{"commoner",60,3307.64,308.031,5618.18,225.888,0, "calm", ""},
+	{"commoner",60,3357.46,308,5639.47,212.301,0, "calm", ""},
+	{"commoner",60,3385.33,308,5699.29,242.976,0, "calm", ""},
+	{"commoner",60,3322.09,308,5484.42,146.419,0, "calm", ""},
+	{"commoner",60,3303.05,300,5351.87,319.052,0, "calm", ""},
+	{"commoner",60,3411.89,308,5515.19,208.425,0, "calm", ""},
+	{"commoner",60,3414.81,308,5624.67,237.948,0, "calm", ""},
+	{"commoner",60,3431.28,308,5563.41,159.884,0, "calm", ""},
+	{"commoner",60,25.4426,0.655075,43.6577,180.006,4395401, "conversation", ""},
+	{"commoner",60,-5708.22,14.6,-6157.68,63.8572,0, "calm", ""},
+	{"commoner",60,-5686.69,14.6,-6148.05,214.943,0, "calm", ""},
+	{"commoner",60,-5693.27,14.6,-6177.12,293.479,0, "calm", ""},
+	{"commoner",60,-5571.88,23.4,-6129.85,97.3312,0, "calm", ""},
+	{"commoner",60,-5551.88,23.4,-6221.48,124.882,0, "calm", ""},
+	{"commoner",60,-5495.01,23.4,-6190.5,325.039,0, "calm", ""},
+	{"commoner",60,-5505.69,23.4,-6118.63,272.183,0, "calm", ""},
+	{"commoner",60,-5468.42,23.4,-6144.87,182.034,0, "calm", ""},
+	{"commoner",60,-5549.18,23.4,-6189.25,119.296,0, "calm", ""},
+	{"commoner",60,-5519.68,23.4,-6224.4,134.773,0, "calm", ""},
+	{"commoner",60,-5504.22,23.4,-6211.56,1.34408,0, "calm", ""},
+	{"commoner",60,-5488.87,23.8964,-6242.6,304.866,0, "calm", ""},
+	{"commoner",60,-24,1.6,-4,353.052,2775419, "calm", "An Event Promoter"},
+	{"commoner",60,-5385.68,24,-6239.93,118.359,0, "calm", ""},
+	{"commoner",60,6798.04,315,-5731.94,209.929,0, "calm", ""},
+	{"commoner",60,6760.75,315,-5733.05,101.495,0, "calm", ""},
+	{"commoner",60,6761.43,315,-5695.98,3.51103,0, "calm", ""},
+	{"commoner",60,6755.2,314.926,-5625.98,139.418,0, "calm", ""},
+	{"commoner",60,6740.98,315,-5674.9,168.837,0, "calm", ""},
+	{"commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367, "conversation", ""},
+	{"commoner",60,6832.06,315,-5606.82,252.9,0, "calm", ""},
+	{"commoner",60,6847.34,315,-5617.89,54.6527,0, "calm", ""},
+	{"commoner",60,6829.04,315,-5626.01,119.354,0, "calm", ""},
+	{"commoner",60,6821.55,314.999,-5611.9,303.021,0, "calm", ""},
+	{"commoner",60,6834.25,315,-5577.61,150.226,0, "calm", ""},
+	{"commoner",60,6846.25,315,-5588.75,54.8409,0, "calm", ""},
+	{"commoner",60,6896.18,330,-5577.91,290.907,0, "calm", ""},
+	{"commoner",60,6867.23,315,-5758.29,338.874,0, "calm", ""},
+	{"commoner",60,6829.48,315,-5813.46,319.91,0, "calm", ""},
+	{"commoner",60,6808.93,315,-5779.16,282.269,0, "calm", ""},
+	{"commoner",60,6829.32,315,-5745.5,171.619,0, "calm", ""},
+	{"commoner",60,6810.15,315,-5699.05,137.601,0, "calm", ""},
+	{"coraline_dynes",60,-24.3937,-0.519991,10.5457,47.741,3075439, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5254.58,21,-2322.33,102.986,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5262.74,21,-2422.16,4.57765,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5263.87,21,-2423.61,209.091,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5229.72,21,-2376.2,262.849,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5229.08,21,-2378.99,332.95,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5239.75,21,-2391.25,322.293,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5219.18,21,-2386.63,69.0228,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5244.41,21,-2402.57,192.74,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5148.18,21,-2295.08,206.72,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5143.95,21,-2294.65,103.409,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5150.16,21,-2293.51,248.82,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5216.1,21,-2332.42,39.3217,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5219.06,21,-2335.48,40.485,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5255.52,21,-2322.36,103.41,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5217.28,21,-2331.54,31.0353,0, "", ""},
+	{"corellia_braggans_fist_thug",60,-5295.97,21,-2347.63,265.801,0, "", ""},
+	{"corellia_braggans_fist_thug",60,-5272.32,21,-2374.22,83.1982,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5257.05,21,-2322.57,121.658,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5274.76,21,-2384.12,82.2966,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5295.73,21,-2341.81,315.683,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5296.21,21,-2350.01,43.7867,0, "calm", ""},
+	{"corellia_braggans_fist_thug",60,-5279.97,21,-2372.61,52.7651,0, "calm", ""},
+	{"corellia_captain_baize",60,3178.36,300,5371.88,251.25,0, "calm", ""},
+	{"corellia_chirq_kazic_pendre",60,-10.7,-20,8.8,215.006,9223372036854775808, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-559.682,28,-4403.85,268.809,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-579.972,28,-4349.14,100.418,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-565.967,28,-4394.59,319.286,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-587.465,28,-4339.61,330.119,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-576.928,28,-4345.95,128.695,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-569.739,28,-4411.96,205.825,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-578.35,28,-4405.16,224.215,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-497.052,28,-4410.3,132.346,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-495.505,28,-4412.45,75.4917,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-550.859,28,-4352.41,13.9319,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-558.956,28,-4354.45,281.748,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-534.583,28,-4379.03,226.582,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-535.135,28,-4372.66,238.965,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-556.923,28,-4363.74,293.058,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-541.906,28,-4401.13,338.551,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-539.819,28,-4403.68,166.207,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-546.128,28,-4399.23,84.3865,0, "calm", ""},
+	{"corellia_coronet_armor_thief",60,-495.991,28,-4409.16,151.206,0, "calm", ""},
+	{"corellia_corsec_rogue",60,-5.5575,-6.75,-5.9982,9.73597,9223372036854775808, "calm", ""},
+	{"corellia_corsec_rogue_sentry",60,0.0075745,-6.76678,-14.1183,261.409,9223372036854775808, "calm", ""},
+	{"corellia_deel_draav",60,8.89271,0.625,-4.32354,272.897,9223372036854775808, "calm", ""},
+	{"corellia_demmi_wot",60,-452.07,28,-4467.64,171.065,0, "calm", ""},
+	{"corellia_edbr_yamagh",60,-5096.19,21,-2445.25,244.082,0, "calm", ""},
+	{"corellia_frye_troeman",60,14.4412,28,-4577.37,226.08,0, "calm", ""},
+	{"corellia_gallura_handerin",60,-6.51554,1.3031,9.6562,47.8538,1855463, "calm", ""},
+	{"corellia_gwhirrye_baric",60,3276.87,300,5384.97,136.31,0, "calm", ""},
+	{"corellia_herald_01",60,-5418.26,20.9986,-2792.36,59.9118,0, "calm", "Lock Vlash"},
+	{"corellia_jonset",60,-6.6465,-0.894996,21.8812,184.278,8105502, "calm", ""},
+	{"corellia_lieutenant_jasper",60,-69.16,28,-4634.16,224.783,0, "calm", ""},
+	{"corellia_lilith_laughlin",60,3084.07,279.996,4979.36,2.6099,0, "calm", ""},
+	{"corellia_major_walden",60,-5150.46,21,-2361.35,193.703,0, "calm", ""},
+	{"corellia_menchi_lerann",60,-3468.54,78,3022.99,312.222,0, "calm", ""},
+	{"corellia_osto_grissom",60,-5210.35,21,-2578.05,125.181,0, "calm", ""},
+	{"corellia_pendretronics_employee",60,-49.8345,-20,67.874,43.8552,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-72.2534,-20,66.0405,318.19,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,12.5409,-20,123.224,264.249,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-54.2774,-20,38.1062,53.8814,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,21.2752,-12,44.3927,34.6872,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,3.57837,-12,40.6914,337.881,9223372036854775808, "", ""},
+	{"corellia_pendretronics_employee",60,56.6726,-12,78.3945,41.9137,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-3.66089,0.25,-0.92627,260.754,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-15.7938,-20,101.034,127.388,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,61.6907,-12,5.45313,92.401,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-28.9434,-20,106.429,310.367,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,61.4431,-12,16.2007,90.7462,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,37.9663,-20,125.491,267.175,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,0.302067,-12,59.7502,345.272,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,49.345,-12,87.7388,170.714,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,26.7037,-12,25.9924,341.17,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-63.8616,-20,12.3726,85.9093,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-64.2497,-20,76.9509,151.648,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,23.4046,-20,134.284,318.68,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,35.8025,-20,136.87,176.622,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-52.9017,-20,15.4671,106.359,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-57.0833,-20,83.585,267.321,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,46.8232,-12,63.9019,307.247,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-3.20093,-12,46.9316,87.6688,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,46.6401,-12,54.5313,212.58,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-60.1056,-20,36.3912,207.324,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_employee",60,-51.6172,-20,15.6407,49.0721,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_security",60,31.9043,-12,0.806641,271.806,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_security",60,35.1619,-12,72.5952,359.971,9223372036854775808, "calm", ""},
+	{"corellia_pendretronics_security",60,3.31958,-12,33.9385,134.191,9223372036854775808, "calm", ""},
+	{"corellia_pol_handerin",60,185.013,27.9931,-4261.43,319.93,0, "calm", ""},
+	{"corellia_ragtag_blackjack",60,-687.141,6.74108,-4203.72,98.2986,0, "calm", ""},
+	{"corellia_ragtag_blackjack",60,-682.722,8.47156,-4204.18,169.259,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3218.73,292.197,4926.53,179.165,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3258.27,290,4963.72,206.924,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3242.42,290,4952.31,112.744,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3257.43,290,4977.08,150.441,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3263.11,290,4965.73,183.912,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3260.62,290,4987.67,308.247,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3245.42,290,4956.73,39.1131,0, "calm", ""},
+	{"corellia_ragtag_cudgel",60,3219.78,290,4932.78,52.1092,0, "calm", ""},
+	{"corellia_ragtag_ventil_tamplin",60,3244.74,290.107,4941.27,323.827,0, "calm", ""},
+	{"corellia_retired_officer",60,-5099.63,21,-2442.71,257.845,0, "calm", ""},
+	{"corellia_shobbo_durron",60,4.68399,0.25,-5.09207,344.591,9223372036854775808, "calm", ""},
+	{"corellia_the_informant",60,2.3237,-13.75,-13.3448,309.863,9223372036854775808, "npc_dead_03", ""},
+	{"corellia_times_investigator",60,7.44572,1.00001,-8.00652,0,1855548, "conversation", ""},
+	{"corellia_times_investigator",60,21.5803,14.26,-8.84205,360.011,1855541, "conversation", ""},
+	{"corellia_times_investigator",60,-5568.35,21,-2664.99,0,0, "conversation", ""},
+	{"corellia_times_investigator",60,-5491.88,30.0036,-2809.63,0,0, "conversation", ""},
+	{"corellia_times_investigator",60,-32.0578,0.10501,-20.4764,246.868,2625366, "calm", ""},
+	{"corellia_times_investigator",60,31.6347,0.63915,64.1249,174.754,1935688, "conversation", ""},
+	{"corellia_times_investigator",60,-4.31306,0.999956,6.26959,180,3075366, "conversation", ""},
+	{"corran_horn",60,-2.80228,2.5,12.1046,152.839,3075353, "calm", ""},
+	{"corsec_agent",60,-10.5223,1.75,-18.7259,134.999,1855484, "conversation", ""},
+	{"corsec_agent",60,-0.332123,0.3,-2.90219,134.998,1855463, "conversation", ""},
+	{"corsec_agent",60,7.44572,1.00001,-6.90652,179.997,1855548, "conversation", ""},
+	{"corsec_agent",60,0.280297,0.184067,7.39289,360.011,3375392, "conversation", ""},
+	{"corsec_agent",60,-5.69316,-5.5,-9.21648,180.003,3005430, "conversation", ""},
+	{"corsec_agent",60,-8.04223,-0.894941,-16.6225,180.002,2625360, "conversation", ""},
+	{"corsec_agent",60,-5412.5,20.8978,-2794.47,215.747,0, "calm", ""},
+	{"corsec_agent",60,57.1873,-0.521137,36.2187,180.007,1935690, "conversation", ""},
+	{"corsec_cadet",60,17.3045,2.25,19.3968,180.006,1855477, "conversation", ""},
+	{"corsec_cadet",60,37.163,0.639417,40.7061,180.01,1855678, "conversation", ""},
+	{"corsec_cadet",60,-3101.09,31,2905.97,180.005,0, "conversation", ""},
+	{"corsec_cadet",60,-4945.07,21,-2489.35,89.6921,0, "calm", ""},
+	{"corsec_chief",60,3.9861,-0.0513746,-3.1463,0,3005428, "conversation", ""},
+	{"corsec_chief",60,20.5946,-0.894996,-18.6063,180.006,3005400, "conversation", ""},
+	{"corsec_chief",60,15.7701,1.28309,-8.57401,180.007,1935823, "conversation", ""},
+	{"corsec_chief",60,-5000.34,21,-2520.6,135.004,0, "conversation", ""},
+	{"corsec_chief",60,3154.04,300,5173.07,180.005,0, "conversation", ""},
+	{"corsec_chief",60,3112.43,280.843,4981.38,252.823,0, "calm", ""},
+	{"corsec_commissioner",60,22.2962,0.788717,42.1976,5.2426,2365397, "conversation", ""},
+	{"corsec_commissioner",60,-25.7262,-0.519991,10.5232,360.011,3005409, "conversation", ""},
+	{"corsec_commissioner",60,-3100.88,31,2890.25,180.005,0, "conversation", ""},
+	{"corsec_commissioner",60,-26.4983,-0.519991,9.85428,360.011,2625365, "conversation", ""},
+	{"corsec_commissioner",60,7.8197,1.00001,-5.9104,180.001,3075366, "conversation", ""},
+	{"corsec_commissioner",60,21.878,-0.894997,-15.7126,0,3075430, "conversation", ""},
+	{"corsec_commissioner",60,-4.68154,0.639424,59.8856,360.011,9665356, "conversation", ""},
+	{"corsec_deserter",300,6.8,0.2,7.4,94,1855746, "", ""},
+	{"corsec_deserter",300,-11.3,0.2,-5.7,-179,1855746, "", ""},
+	{"corsec_deserter",300,-10.1,0.2,-1.3,95,1855742, "", ""},
+	{"corsec_deserter",300,5224.9,5,1612.7,38,0, "", ""},
+	{"corsec_deserter",300,5226.9,5,1616.6,-159,0, "", ""},
+	{"corsec_deserter",300,5229.2,5,1613.3,-85,0, "", ""},
+	{"corsec_deserter",300,-3.7,0.3,-3.7,4,1855722, "", ""},
+	{"corsec_deserter",60,-671.712,6.15933,-4169.03,37.6923,0, "calm", ""},
+	{"corsec_deserter",60,-19.1229,9,14.3195,135.007,1935472, "conversation", ""},
+	{"corsec_deserter",60,-5467.56,21,-2791.59,180.005,0, "conversation", ""},
+	{"corsec_deserter",60,-5.41306,0.999953,6.26959,134.998,3075366, "conversation", ""},
+	{"corsec_detective",60,-20.2743,3.22324,22.781,180.005,1855468, "conversation", ""},
+	{"corsec_detective",60,-524.755,28,-4700.63,114.989,0, "calm", ""},
+	{"corsec_detective",60,-3408.26,86,3049.35,180.005,0, "conversation", ""},
+	{"corsec_detective",60,-18.0229,9,14.3195,180.008,1935472, "conversation", ""},
+	{"corsec_detective",60,-4999.24,21,-2520.6,180.005,0, "conversation", ""},
+	{"corsec_detective",60,-1.85381,0.639422,56.3013,180.012,1935687, "conversation", ""},
+	{"corsec_inspector_sergeant",60,-3520.73,78,3125.57,0,0, "conversation", ""},
+	{"corsec_inspector_sergeant",60,-62.2367,2.63942,39.7337,0.189751,4255431, "conversation", ""},
+	{"corsec_inspector_sergeant",60,-3102.24,31,2988.47,266.978,0, "calm", ""},
+	{"corsec_inspector_sergeant",60,-5061.36,21,-2532.53,0,0, "conversation", ""},
+	{"corsec_inspector_sergeant",60,24.9055,1.28309,5.31569,360.011,2775414, "conversation", ""},
+	{"corsec_investigator",60,17.3056,1.28309,-6.37174,180.003,1935527, "conversation", ""},
+	{"corsec_investigator",60,-5491.88,30.0036,-2808.63,180.005,0, "conversation", ""},
+	{"corsec_investigator",60,-5159.41,21,-2569.03,0,0, "conversation", ""},
+	{"corsec_investigator",60,17.1745,1.28309,-12.0361,179.995,3075367, "conversation", ""},
+	{"corsec_investigator",60,40.8822,0.104999,2.22818,0,3075427, "conversation", ""},
+	{"corsec_investigator",60,9.49578,1.00001,10.5511,178.041,2775413, "conversation", ""},
+	{"corsec_lieutenant",60,21.8079,3.22324,25.517,360.011,1855469, "conversation", ""},
+	{"corsec_lieutenant",60,-3587.81,86,3135.7,180.005,0, "conversation", ""},
+	{"corsec_lieutenant",60,-3450.64,78,3031.31,180.005,0, "conversation", ""},
+	{"corsec_lieutenant",60,-3177.78,31,2889.93,360.011,0, "conversation", ""},
+	{"corsec_major",60,-7.91375,-0.894992,-5.88587,0,8105496, "conversation", ""},
+	{"corsec_major",60,-3150.16,31.1352,2773.01,282.869,0, "calm", ""},
+	{"corsec_major",60,5.33572,2.12878,71.6096,0,2365436, "conversation", ""},
+	{"corsec_major",60,-5010.49,21,-2496.09,135.004,0, "conversation", ""},
+	{"corsec_master_sergeant",60,-203.95,28,-4076.98,270.008,0, "calm", ""},
+	{"corsec_master_sergeant",60,-3172.38,31,2880.85,0,0, "conversation", ""},
+	{"corsec_master_sergeant",60,-1.85381,0.639422,55.3013,360.011,1935687, "conversation", ""},
+	{"corsec_master_sergeant",60,3300.28,308,5496.49,180.005,0, "conversation", ""},
+	{"corsec_master_sergeant",60,-14.8394,2.41844,24.4443,5.24424,4395401, "conversation", ""},
+	{"corsec_master_sergeant",60,24.9055,1.28309,6.41569,180.019,2775414, "conversation", ""},
+	{"corsec_renegade",60,-662.805,9.26289,-4182.05,196.426,0, "calm", ""},
+	{"corsec_renegade",60,-3.75394,-13.75,-11.0451,4.84778,9223372036854775808, "calm", ""},
+	{"corsec_renegade",60,-2.5029,-13.75,-12.0875,4.84778,9223372036854775808, "calm", ""},
+	{"corsec_renegade",60,2.10413,-6.76678,-16.203,301.207,9223372036854775808, "calm", ""},
+	{"corsec_rogue",60,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
+	{"corsec_rogue",60,6.40846,-6.75,-5.03812,179.538,9223372036854775808, "calm", ""},
+	{"corsec_rogue",60,-45.2379,0.105009,-20.6909,180.003,3005411, "conversation", ""},
+	{"corsec_rogue",60,-3340.49,86,3292.76,100.151,0, "", ""},
+	{"corsec_rogue",60,-3332.89,86,3303.69,68.6738,0, "", ""},
+	{"corsec_rogue",60,-3330.1,86,3290.98,104.099,0, "", ""},
+	{"corsec_rogue",60,-16.9721,1.00014,-3.02621,180.01,1935528, "conversation", ""},
+	{"corsec_rogue",60,-5059.06,21,-2399.08,180.005,0, "conversation", ""},
+	{"corsec_rogue",60,7.8197,1.00001,-7.0104,0,3075366, "conversation", ""},
+	{"corsec_sergeant",60,24.3471,1.28309,8.93357,360.011,1855549, "conversation", ""},
+	{"corsec_sergeant",60,-3177.78,31,2891.03,180.005,0, "conversation", ""},
+	{"corsec_sergeant",60,-3149.45,31.1521,2771.7,282.87,0, "calm", ""},
+	{"corsec_sergeant",60,-5410.17,20.9418,-2789.21,215.169,0, "calm", ""},
+	{"corsec_sergeant",60,29.3506,13.25,10.8359,180.011,1935841, "conversation", ""},
+	{"corsec_sergeant",60,-5059.87,21,-2606.63,195.299,0, "calm", ""},
+	{"corsec_sergeant",60,3154.04,300,5172.07,0,0, "conversation", ""},
+	{"corsec_sergeant",60,-3.23192,0.184067,-4.20004,180.012,4345354, "conversation", ""},
+	{"corsec_sergeant",60,8.35364,-0.894992,6.38149,360.011,3075429, "conversation", ""},
+	{"corsec_traitor",300,-4.6,-10.3,-5.3,4,1855725, "", ""},
+	{"corsec_traitor",300,5221.2,5,1583.5,156,0, "", ""},
+	{"corsec_traitor",300,5214.8,5,15.88,-70,0, "", ""},
+	{"corsec_traitor",300,-8.9,0.2,-5.8,-90,1855746, "", ""},
+	{"corsec_traitor",300,11.1,0.2,6.8,-89,1855746, "", ""},
+	{"corsec_traitor",60,-2.4866,-13.75,-1.94528,359.539,9223372036854775808, "calm", ""},
+	{"corsec_traitor",60,5.61023,-6.75,-2.57632,181.175,9223372036854775808, "calm", ""},
+	{"corsec_traitor",60,-3.20018,-6.75,-4.1671,339.467,9223372036854775808, "calm", ""},
+	{"corsec_traitor",60,-672.123,5.60327,-4164.83,340.354,0, "calm", ""},
+	{"corsec_trooper",60,-231.211,29.5691,-4381.69,11.5561,0, "", ""},
+	{"corsec_trooper",60,-222.123,28.0929,-4065.14,143.843,0, "calm", ""},
+	{"corsec_trooper",60,-528.144,28,-4699.89,132.784,0, "calm", ""},
+	{"corsec_trooper",60,112.862,28,-4440.48,143.596,0, "calm", ""},
+	{"corsec_trooper",60,-1.67932,28,-4464.42,93.3597,0, "", ""},
+	{"corsec_trooper",60,-59.6867,28.5179,-4596.54,47.4129,0, "", ""},
+	{"corsec_trooper",60,-358.581,28,-4445.64,90.0027,0, "", ""},
+	{"corsec_trooper",60,-324.144,28,-4442.29,277.786,0, "", ""},
+	{"corsec_trooper",60,-3151.32,31.114,2772.13,282.871,0, "calm", ""},
+	{"corsec_trooper",60,-3103.98,31,2988.38,266.983,0, "calm", ""},
+	{"corsec_trooper",60,-3102.95,31,2989.56,266.985,0, "calm", ""},
+	{"corsec_trooper",60,-5527.51,22,-2588.06,86.7137,0, "", ""},
+	{"corsec_trooper",60,-5626.49,21,-2812.58,261.279,0, "calm", ""},
+	{"corsec_trooper",60,-5470.84,21,-2565.16,107.104,0, "calm", ""},
+	{"corsec_trooper",60,-5470.71,21,-2566.52,107.123,0, "calm", ""},
+	{"corsec_trooper",60,-5061.36,21,-2531.53,180.005,0, "conversation", ""},
+	{"corsec_trooper",60,57.1873,-0.521137,35.1187,360.011,1935690, "conversation", ""},
+	{"corsec_trooper",60,-5.68393,7.26,0.077741,180.455,1935837, "conversation", ""},
+	{"corsec_trooper",60,-5060.41,21,-2604.37,195.315,0, "calm", ""},
+	{"corsec_trooper",60,-4944.48,21,-2488.58,42.466,0, "calm", ""},
+	{"corsec_trooper",60,-5363.23,24.87,-2595.04,64.2702,0, "calm", ""},
+	{"corsec_trooper",60,-5069.93,21,-2474.8,135.004,0, "calm", ""},
+	{"corsec_trooper",60,-5400.54,21,-2613.88,8.55608,0, "calm", ""},
+	{"corsec_trooper",60,-5058.83,21,-2579.08,135.145,0, "calm", ""},
+	{"corsec_trooper",60,3112.45,281.347,4982.51,91.063,0, "calm", ""},
+	{"corsec_trooper",60,3.96145,2.12878,75.4149,0,4395403, "conversation", ""},
+	{"corsec_trooper",60,6846.25,317.5,-5789.3,147.046,0, "", ""},
+	{"corsec_trooper",60,6735,315,-5806.36,33.2145,0, "", ""},
+	{"corsec_trooper",60,6735,315,-5806.36,5.30953,0, "", ""},
+	{"corsec_trooper",60,6775.44,315,-5690.23,63.8199,0, "", ""},
+	{"crackdown_comm_operator",60,3361.35,308,5483.26,95.5634,0, "npc_imperial", ""},
+	{"crackdown_command_security_guard",60,-175.887,28,-4765.95,86.2823,0, "npc_imperial", ""},
+	{"crackdown_command_security_guard",60,-5312.2,20.9286,-2572.6,336.01,0, "", ""},
+	{"crackdown_command_security_guard",60,-5112.1,21,-2279.3,79.0023,0, "", ""},
+	{"crackdown_command_security_guard",60,-5048.7,21,-2299.5,256.201,0, "calm", ""},
+	{"crackdown_dark_trooper",60,-574.2,28,-4247,333.01,0, "", ""},
+	{"crackdown_dark_trooper",60,-303.8,28,-4144.4,304.009,0, "", ""},
+	{"crackdown_dark_trooper",60,111.5,28,-4464.9,26.0008,0, "", ""},
+	{"crackdown_dark_trooper",60,126.785,28,-4459.52,154.154,0, "npc_imperial", ""},
+	{"crackdown_dark_trooper",60,-76.6,28.5179,-4625.3,215.006,0, "", ""},
+	{"crackdown_dark_trooper",60,-157.6,28,-4834.8,328.985,0, "", ""},
+	{"crackdown_dark_trooper",60,-3773.66,86,3203.13,22.9816,0, "npc_imperial", ""},
+	{"crackdown_dark_trooper",60,-4941.2,20.8719,-2522,214.459,0, "", ""},
+	{"crackdown_dark_trooper",60,-5381.8,20.7451,-2741.1,130.004,0, "", ""},
+	{"crackdown_dark_trooper",60,-5565.3,20.6891,-2852.06,298.056,0, "", ""},
+	{"crackdown_dark_trooper",60,-4975.9,20.9989,-2323.7,76.0022,0, "calm", ""},
+	{"crackdown_dark_trooper",60,-5347.92,21.0054,-2440.31,351.468,0, "npc_imperial", ""},
+	{"crackdown_dark_trooper",60,3200.02,290,5032.75,357.888,0, "npc_imperial", ""},
+	{"crackdown_dark_trooper",60,6749.3,315,-5684,231.007,0, "", ""},
+	{"crackdown_dark_trooper",60,6718.1,328.537,-5869.6,186.005,0, "", ""},
+	{"crackdown_elite_dark_trooper",60,-458,28,-4590.8,262.008,0, "", ""},
+	{"crackdown_elite_dark_trooper",60,-185.046,28,-4845.97,90.3211,0, "npc_imperial", ""},
+	{"crackdown_elite_dark_trooper",60,-5654.8,21.1047,-2805.7,191.006,0, "", ""},
+	{"crackdown_elite_dark_trooper",60,3170.4,301.801,5100.6,279.081,0, "npc_imperial", ""},
+	{"crackdown_elite_sand_trooper",60,152.1,28,-4521.94,205.76,0, "npc_imperial", ""},
+	{"crackdown_elite_sand_trooper",60,-5613.95,21,-2585.97,41.9991,0, "npc_imperial", ""},
+	{"crackdown_elite_sand_trooper",60,-5560.96,20.6853,-2852.76,298.55,0, "", ""},
+	{"crackdown_elite_sand_trooper",60,3193.15,290.013,5040.79,176.21,0, "npc_imperial", ""},
+	{"crackdown_elite_sand_trooper",60,3362.39,308,5513.99,113.751,0, "npc_imperial", ""},
+	{"crackdown_imperial_army_captain",60,-167.548,28,-4835.07,322.4,0, "npc_imperial", ""},
+	{"crackdown_imperial_army_captain",60,-177.764,28,-4766.07,86.2809,0, "npc_imperial", ""},
+	{"crackdown_imperial_army_captain",60,-5298.7,21,-2545.6,32,0, "calm", ""},
+	{"crackdown_imperial_army_captain",60,6820.49,315,-5743.53,353.468,0, "npc_imperial", ""},
+	{"crackdown_imperial_army_captain",60,6832.21,315,-5811.19,189.637,0, "npc_imperial", ""},
+	{"crackdown_imperial_colonel",60,158.9,28,-4707.2,137.004,0, "", ""},
+	{"crackdown_imperial_corporal",60,-291.531,28,-4412.73,308.31,0, "", ""},
+	{"crackdown_imperial_corporal",60,-3387,86,2960,95.0028,0, "", ""},
+	{"crackdown_imperial_corporal",60,-3404.35,74,3347.14,188.231,0, "neutral", ""},
+	{"crackdown_imperial_corporal",60,-5590.48,20.3776,-2854.51,311.192,0, "npc_imperial", ""},
+	{"crackdown_imperial_corporal",60,3367.38,308,5495.93,241.976,0, "npc_imperial", ""},
+	{"crackdown_imperial_first_lieutenant",60,-336.602,28,-4791.97,283.938,0, "npc_imperial", ""},
+	{"crackdown_imperial_first_lieutenant",60,-199.701,28,-4077.2,109.656,0, "npc_imperial", ""},
+	{"crackdown_imperial_first_lieutenant",60,-3662.58,86,3090.82,101.488,0, "", ""},
+	{"crackdown_imperial_first_lieutenant",60,-3074,31,2825,235.187,0, "", ""},
+	{"crackdown_imperial_first_lieutenant",60,-3674.98,86,3104.95,180.183,0, "", ""},
+	{"crackdown_imperial_master_sergeant",60,-10.0845,0.184067,-12.51,272.234,0, "", ""},
+	{"crackdown_imperial_medic",60,-439.1,28,-4144.4,335.01,0, "", ""},
+	{"crackdown_imperial_medic",60,-582.441,28,-4259.52,15.0132,0, "npc_imperial", ""},
+	{"crackdown_imperial_noncom",60,-5207.41,21.425,-2247.49,237.999,0, "npc_imperial", ""},
+	{"crackdown_imperial_noncom",60,3297.95,308,5563.09,123.034,0, "", ""},
+	{"crackdown_imperial_noncom",60,6663.8,330,-5913.3,134.004,0, "", ""},
+	{"crackdown_imperial_sergeant",60,-3435.46,86,3034.56,91.5677,0, "", ""},
+	{"crackdown_imperial_sergeant",60,-3435.46,86,3034.56,102.163,0, "", ""},
+	{"crackdown_imperial_sergeant",60,-3368.45,86,3242.5,216.391,0, "", ""},
+	{"crackdown_imperial_sergeant",60,-3366,86,3232,166.005,0, "", ""},
+	{"crackdown_imperial_sergeant",60,-3582,86,3143,333.01,0, "", ""},
+	{"crackdown_imperial_warrant_officer_ii",60,-374.063,28,-4286.45,23.4486,0, "", ""},
+	{"crackdown_imperial_warrant_officer_ii",60,-535.282,28,-4633.32,270.266,0, "npc_imperial", ""},
+	{"crackdown_imperial_warrant_officer_ii",60,-3787.12,86,3147.97,0,0, "", ""},
+	{"crackdown_rebel_cadet",60,-5568.4,23.4,-6199.11,90.254,0, "calm", ""},
+	{"crackdown_rebel_comm_operator",60,-5582.42,23.4,-6199.06,90.2331,0, "calm", ""},
+	{"crackdown_rebel_command_security_guard",60,-5501.09,23.4,-6128.22,142.839,0, "", ""},
+	{"crackdown_rebel_guard_captain",60,-5411.4,24.9599,-6219.3,5.00012,0, "", ""},
+	{"crackdown_rebel_guardsman",60,-5429.8,24,-6218.9,0,0, "", ""},
+	{"crackdown_rebel_guardsman",60,-5534.1,23.4,-6217.9,138.004,0, "", ""},
+	{"crackdown_rebel_guardsman",60,-5538.4,16.4902,-6054.7,182.005,0, "", ""},
+	{"crackdown_rebel_guardsman",60,-5664,14.7566,-6185.3,94.0028,0, "", ""},
+	{"crackdown_rebel_liberator",60,-5549.5,23.4,-6202.1,310.009,0, "", ""},
+	{"crackdown_rebel_liberator",60,-5716.1,14.6,-6147.5,271.008,0, "", ""},
+	{"crackdown_rebel_soldier",60,-5320,24,-6237.8,94.0028,0, "", ""},
+	{"crackdown_rebel_soldier",60,-5443.6,24,-6243,282.008,0, "", ""},
+	{"crackdown_rebel_soldier",60,-5664,14.6,-6179.3,94.0028,0, "", ""},
+	{"crackdown_rebel_soldier",60,-5716.1,14.6,-6153.1,269.008,0, "", ""},
+	{"crackdown_scout_trooper",60,-582.736,28,-4260.62,15.0137,0, "", ""},
+	{"crackdown_scout_trooper",60,-545.52,28,-4669.28,331.919,0, "", ""},
+	{"crackdown_scout_trooper",60,185.754,28,-4685.24,220.783,0, "", ""},
+	{"crackdown_scout_trooper",60,184.83,28,-4684.43,220.787,0, "", ""},
+	{"crackdown_scout_trooper",60,-187.1,28,-4835,281.636,0, "", ""},
+	{"crackdown_scout_trooper",60,-201.2,28.6,-4122,20.0006,0, "", ""},
+	{"crackdown_scout_trooper",60,-5128.84,21,-2652.86,83.2245,0, "", ""},
+	{"crackdown_scout_trooper",60,-5208.06,21.6077,-2246.46,296.757,0, "", ""},
+	{"crackdown_scout_trooper",60,-5194.27,20.9887,-2653.85,274.172,0, "", ""},
+	{"crackdown_scout_trooper",60,-5468.4,21.1828,-2841.6,175.005,0, "calm", ""},
+	{"crackdown_scout_trooper",60,6832.36,314.758,-5811.93,312.353,0, "", ""},
+	{"crackdown_specialist_noncom",60,-289.923,28,-4414.09,273.228,0, "", ""},
+	{"crackdown_specialist_noncom",60,-3660.31,86,3103.26,39.0513,0, "", ""},
+	{"crackdown_specialist_noncom",60,-5342.53,21,-2468.78,360.011,0, "npc_imperial", ""},
+	{"crackdown_specialist_noncom",60,6830.18,314.823,-5816.91,187.167,0, "npc_imperial", ""},
+	{"crackdown_storm_commando",60,152.386,28,-4524.14,207.005,0, "", ""},
+	{"crackdown_storm_commando",60,-5055.1,21,-2616,137.004,0, "", ""},
+	{"crackdown_storm_commando",60,-5250.6,21,-2327.7,42.0012,0, "", ""},
+	{"crackdown_storm_commando",60,3191.1,290,5021.3,165.578,0, "", ""},
+	{"crackdown_storm_commando",60,6752.1,315,-5823.5,273.008,0, "", ""},
+	{"crackdown_storm_commando",60,6648.54,330,-5939.32,280.874,0, "", ""},
+	{"crackdown_stormtrooper",60,-557.5,28,-4230.3,266.008,0, "", ""},
+	{"crackdown_stormtrooper",60,-517.9,28,-4213.9,303.009,0, "", ""},
+	{"crackdown_stormtrooper",60,26.3,28,-4290.2,22.0007,0, "", ""},
+	{"crackdown_stormtrooper",60,10.5,28,-4290.5,42.0012,0, "", ""},
+	{"crackdown_stormtrooper",60,96.6,28,-4394.9,91.0027,0, "", ""},
+	{"crackdown_stormtrooper",60,168.1,28,-4698.4,145.004,0, "", ""},
+	{"crackdown_stormtrooper",60,-306.7,28,-4785.9,187.006,0, "", ""},
+	{"crackdown_stormtrooper",60,-446.5,28,-4744,226.007,0, "", ""},
+	{"crackdown_stormtrooper",60,-526.1,28,-4675.8,252.007,0, "", ""},
+	{"crackdown_stormtrooper",60,-593.7,28,-4502.9,272.008,0, "", ""},
+	{"crackdown_stormtrooper",60,-458,28,-4585,90.0027,0, "", ""},
+	{"crackdown_stormtrooper",60,-42.2,28,-4500.6,44.0013,0, "", ""},
+	{"crackdown_stormtrooper",60,-35.4,28.5179,-4573.8,49.0014,0, "", ""},
+	{"crackdown_stormtrooper",60,-283.2,28,-4411,123.004,0, "", ""},
+	{"crackdown_stormtrooper",60,-215.7,29.185,-4509.8,1.00017,0, "", ""},
+	{"crackdown_stormtrooper",60,-204.7,29.185,-4509.8,1.00017,0, "", ""},
+	{"crackdown_stormtrooper",60,-569.553,28,-4243.99,45.0034,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,128.21,28,-4459.57,154.145,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,-276.7,28,-4535.2,230.415,0, "", ""},
+	{"crackdown_stormtrooper",60,-148.6,28,-4660.7,202.006,0, "", ""},
+	{"crackdown_stormtrooper",60,-159.2,28,-4660.7,161.005,0, "", ""},
+	{"crackdown_stormtrooper",60,-216.9,28.6,-4121.1,339.01,0, "", ""},
+	{"crackdown_stormtrooper",60,-158.235,28,-4194.42,172.18,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,-221.1,28,-4798.1,237.007,0, "", ""},
+	{"crackdown_stormtrooper",60,-533.6,28,-4626.5,196.006,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,102.172,0, "", ""},
+	{"crackdown_stormtrooper",60,-3368.29,86,2949.6,170.619,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,102.184,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,93.8986,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,102.188,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,102.173,0, "", ""},
+	{"crackdown_stormtrooper",60,-3435.46,86,3034.56,102.152,0, "", ""},
+	{"crackdown_stormtrooper",60,-3358.96,86,3286.34,64.5472,0, "", ""},
+	{"crackdown_stormtrooper",60,-3719.35,86.0549,3175.2,326.578,0, "", ""},
+	{"crackdown_stormtrooper",60,-3567.44,86,3144.32,100.505,0, "", ""},
+	{"crackdown_stormtrooper",60,-3619.55,86,3121.89,113.533,0, "", ""},
+	{"crackdown_stormtrooper",60,-3596.69,86,3122.97,236.271,0, "", ""},
+	{"crackdown_stormtrooper",60,-3726.46,86,3185.97,120.721,0, "", ""},
+	{"crackdown_stormtrooper",60,-3752,86,3170,351.01,0, "", ""},
+	{"crackdown_stormtrooper",60,-3774.9,86,3203.38,281.283,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,-3774.65,86,3204.62,22.9721,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,48.13,0.105,2.47,292.979,3005397, "neutral", ""},
+	{"crackdown_stormtrooper",60,-4944.3,21,-2387.8,257.008,0, "", ""},
+	{"crackdown_stormtrooper",60,-4945.7,21,-2383.1,249.007,0, "", ""},
+	{"crackdown_stormtrooper",60,-4936.1,21,-2486.2,197.971,0, "", ""},
+	{"crackdown_stormtrooper",60,-5031.2,21,-2614.9,278.725,0, "", ""},
+	{"crackdown_stormtrooper",60,-5092.3,21,-2648.2,175.005,0, "", ""},
+	{"crackdown_stormtrooper",60,-5135.07,20.9878,-2659.19,86.9316,0, "", ""},
+	{"crackdown_stormtrooper",60,-5174.6,20.9876,-2656.7,185.005,0, "", ""},
+	{"crackdown_stormtrooper",60,-5212.9,20.9913,-2650.9,194.006,0, "", ""},
+	{"crackdown_stormtrooper",60,-5343.5,21,-2471.7,271.008,0, "", ""},
+	{"crackdown_stormtrooper",60,-5338.7,21,-2427.9,309.009,0, "", ""},
+	{"crackdown_stormtrooper",60,-5195.9,21,-2253.9,336.01,0, "", ""},
+	{"crackdown_stormtrooper",60,-5270.9,21,-2360.7,133.004,0, "", ""},
+	{"crackdown_stormtrooper",60,-5281.8,21,-2349.8,314.009,0, "", ""},
+	{"crackdown_stormtrooper",60,-5398.3,21,-2761.7,146.004,0, "", ""},
+	{"crackdown_stormtrooper",60,-5565.5,20.9967,-2842.9,340.795,0, "", ""},
+	{"crackdown_stormtrooper",60,-5633.8,20.9535,-2824.4,197.006,0, "", ""},
+	{"crackdown_stormtrooper",60,-5485.9,21,-2585.8,89.0026,0, "", ""},
+	{"crackdown_stormtrooper",60,-4942.5,21,-2438.9,106.003,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5556.4,21.6,-2611.8,99.0029,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5112.07,21,-2248.89,97.4325,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,-5044.7,21,-2303,200.405,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5131.1,21,-2417.7,6.00023,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5301.8,21,-2572,244.007,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5306.8,21,-2561.2,247.007,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5399.6,21,-2608.8,241.007,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5396.8,21,-2614.9,251.007,0, "calm", ""},
+	{"crackdown_stormtrooper",60,-5459.6,21.2742,-2841.6,185.005,0, "calm", ""},
+	{"crackdown_stormtrooper",60,48.13,0.105,2.47,248.001,2625353, "neutral", ""},
+	{"crackdown_stormtrooper",60,3169.44,301.774,5102.07,66.9422,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,3197.73,290.877,5049.23,167.763,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,-8.45502,0.184067,-12.51,0,4345355, "npc_imperial", ""},
+	{"crackdown_stormtrooper",60,6852.9,315,-5826.9,140.004,0, "", ""},
+	{"crackdown_stormtrooper",60,6837.4,315,-5774,260.008,0, "", ""},
+	{"crackdown_stormtrooper",60,6819.9,315,-5720.1,220.006,0, "", ""},
+	{"crackdown_stormtrooper",60,6748.9,315,-5665.2,279.008,0, "", ""},
+	{"crackdown_stormtrooper",60,6855,315,-5609.3,280.008,0, "", ""},
+	{"crackdown_stormtrooper",60,6685.7,330,-5943.3,222.007,0, "", ""},
+	{"crackdown_stormtrooper",60,6708,328.664,-5869.7,166.005,0, "", ""},
+	{"crackdown_stormtrooper_bombardier",60,-547.026,28,-4669.14,331.925,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_bombardier",60,-5086.49,21,-2255.77,216.35,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_captain",60,22.6,28,-4290.2,353.01,0, "", ""},
+	{"crackdown_stormtrooper_captain",60,-336.361,28,-4790.74,283.916,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_captain",60,6853.17,315,-5696.6,258.27,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_medic",60,-3112,31,2814,168.005,0, "", ""},
+	{"crackdown_stormtrooper_medic",60,-3386,86,2992,354.507,0, "", ""},
+	{"crackdown_stormtrooper_medic",60,-5302.1,21,-2379.2,225.007,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-118.7,28,-4204.6,16.0005,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-526.1,28,-4670.1,290.009,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-291.603,28,-4413.99,273.247,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-499.3,28,-4469.1,219.014,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-223.2,28,-4078,9.00022,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-188.9,28,-4076.8,336.01,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-5418.2,20.9379,-2799.6,243.757,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,-5556.4,21.6,-2643.5,79.0023,0, "calm", ""},
+	{"crackdown_stormtrooper_rifleman",60,-5097.16,21,-2271.05,130.264,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_rifleman",60,-5123,21,-2425.3,67.002,0, "calm", ""},
+	{"crackdown_stormtrooper_rifleman",60,-5245.9,20.9324,-2636.5,228.007,0, "", ""},
+	{"crackdown_stormtrooper_rifleman",60,3199.99,290,4992.48,160.986,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_rifleman",60,6845.3,315,-5826.8,130.004,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,96.6,28,-4407.1,91.0027,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-295.9,28,-4786.4,194.006,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-593.7,28,-4483.1,270.008,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-59.1,28,-4260.1,47.0014,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-275.4,28,-4614.6,256.27,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-533.523,28,-4632.07,270.284,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_sniper",60,-3093,31.0391,2803,347.01,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3460.41,78,3112.21,232.636,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3435.46,86,3034.56,102.209,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3318.03,86,3230.13,115.958,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3326.35,86,3231.94,52.9842,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3602.47,86,3214.02,44.6678,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3613.06,86,3212.07,47.9151,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-3715.75,86.0549,3169.75,326.925,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-5227.3,21,-2272.3,331.01,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-5574.1,20.98,-2843.3,314.848,0, "", ""},
+	{"crackdown_stormtrooper_sniper",60,-4932.5,20.978,-2427.7,123.004,0, "calm", ""},
+	{"crackdown_stormtrooper_sniper",60,-5094.14,21,-2270.16,45.8873,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-593.7,27.9851,-4321.9,246.007,0, "", ""},
+	{"crackdown_stormtrooper_squad_leader",60,144.7,28,-4536.6,152.004,0, "", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-502.1,28,-4701.1,185.005,0, "", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-226.4,28,-4372,300.431,0, "", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-12.4,28.6,-4404.7,181.005,0, "", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-175.938,28,-4767.14,86.307,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-5613.85,21,-2584,33.2059,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_squad_leader",60,-5103.81,21,-2266.4,126.218,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_squad_leader",60,3198.2,290.356,5047.05,167.76,0, "npc_imperial", ""},
+	{"crackdown_stormtrooper_squad_leader",60,6650.38,330,-5938.43,280.869,0, "npc_imperial", ""},
+	{"crev_bombaasa",60,45.2285,0.104999,0.017077,135.448,2625353, "calm", "Crev Bombaasa"},
+	{"criminal",60,-5.02826,-0.894991,-21.3375,60.6357,8105501, "calm", ""},
+	{"criminal",60,6871.34,315,-5753.42,355.947,0, "calm", ""},
+	{"crowley",60,-3404.73,86,3092.64,323.239,0, "calm", ""},
+	{"dac_axfow",60,-3143.7,31,2803.73,233.156,0, "neutral", ""},
+	{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""},
+	{"dannik_malaan",60,-451.472,28,-4572.05,218.458,0, "calm", "Dannik Malaan"},
+	{"dark_trooper",900,4696.72,25,-5797.99,198.662,0, "", ""},
+	{"dark_trooper",900,4694.46,25,-5803.03,351.991,0, "", ""},
+	{"dark_trooper",900,4689.06,25,-5796.24,257.913,0, "", ""},
+	{"dark_trooper",900,4694.47,25,-5806.45,224.026,0, "", ""},
+	{"dark_trooper",900,4696.33,25,-5804.4,253.399,0, "", ""},
+	{"dark_trooper",900,4683.96,25,-5743.68,348.127,0, "", ""},
+	{"dark_trooper",900,4675.06,25,-5746.75,279.993,0, "", ""},
+	{"dark_trooper",900,4687.68,25,-5754,128.516,0, "", ""},
+	{"dark_trooper",900,4675.8,25,-5752.56,288.664,0, "", ""},
+	{"dark_trooper",900,4679.01,25,-5742.91,9.6652,0, "", ""},
+	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", ""},
+	{"denell_kelvannon",60,-3414.11,74,3336.52,28.1393,0, "calm", "Denell Kel'Vannon"},
+	{"didina_lippinoss",60,-8.43192,1.6,-11.42,69.197,1935530, "calm", ""},
+	{"disappear_angela",60,3166.38,290,4989.97,86.9172,0, "calm", ""},
+	{"disciple_of_lord_nyax",900,1348.9,31,-320.2,-89,0, "", ""},
+	{"disciple_of_lord_nyax",900,1356.6,31,-325.4,-37,0, "", ""},
+	{"drall_abbot",60,3.66172,0.6,-3.74185,0,2365392, "conversation", ""},
+	{"drall_abbot",60,-3602.67,86,3222.17,180.005,0, "conversation", ""},
+	{"drall_abbot",60,-5.78154,0.639424,60.9856,135.005,9665356, "conversation", ""},
+	{"drall_chieftain",900,186,-66,-99.3,-70,4275373, "", ""},
+	{"drall_guard",60,-21.3743,3.22324,22.781,134.999,1855468, "conversation", ""},
+	{"drall_guard",60,-5564.23,21,-2776.78,180.005,0, "conversation", ""},
+	{"drall_guard",60,25.7618,0.693385,43.2406,180.002,2365434, "conversation", ""},
+	{"drall_guard",60,-6.74614,1.6,-11.8336,179.997,1935826, "conversation", ""},
+	{"drall_monk",60,-16.9034,1.6,10.7646,0,3005672, "conversation", ""},
+	{"drall_monk",60,-22.8236,0.709118,43.0098,354.767,2365434, "conversation", ""},
+	{"drall_monk",60,2.65839,2.6,3.05034,0,2365434, "conversation", ""},
+	{"drall_monk",60,1.28595,0.639422,67.8733,180.008,9665356, "conversation", ""},
+	{"drall_patriot",900,14.2,-22.5,-7.6,-87,4275365, "", ""},
+	{"drall_patriot",900,23.4,-27.8,-9,175,4275365, "", ""},
+	{"drall_patriot",900,91.6,-46.5,-107,-94,4275369, "", ""},
+	{"drall_patriot",900,89.9,-46.3,-117.6,-63,4275369, "", ""},
+	{"drall_patriot",900,88.7,-62.1,-17.3,162,4275367, "", ""},
+	{"drall_patriot",900,93.1,-62.6,-19.8,-108,4275367, "", ""},
+	{"drall_patriot",900,90.6,-63.3,-23.8,10,4275367, "", ""},
+	{"drall_patriot",900,96.9,-65.8,-111,-7,4275369, "", ""},
+	{"drall_patriot",900,95.8,-66.6,-107.1,172,4275369, "", ""},
+	{"drall_patriot",900,146.5,-67.3,-122.4,-40,4275372, "", ""},
+	{"drall_patriot",900,149.9,-67.1,-122.7,12,4275372, "", ""},
+	{"drall_patriot",60,-3735.04,86,3219.3,31.1614,0, "calm", ""},
+	{"drall_patriot_conqueror",900,52,-48.7,-103.6,-1,4275374, "", ""},
+	{"drall_patriot_conqueror",900,91.5,-46.7,-143.1,-5,4275375, "", ""},
+	{"drall_patriot_conqueror",900,53.8,-68.2,-41.9,52,4275366, "", ""},
+	{"drall_patriot_conqueror",900,181.8,-66,-95.2,-111,4275373, "", ""},
+	{"drall_patriot_foot_soldier",900,112.9,-66.8,-101.7,7,4275372, "", ""},
+	{"drall_patriot_foot_soldier",900,113.9,-66.8,-98.2,-162,4275372, "", ""},
+	{"drall_patriot_foot_soldier",900,92.7,-75.8,-67.9,-58,4275368, "", ""},
+	{"drall_patriot_foot_soldier",900,86.2,-76.7,-64.9,111,4275368, "", ""},
+	{"drall_patriot_foot_soldier",900,49.7,-48.5,-57.3,178,4275366, "", ""},
+	{"drall_patriot_foot_soldier",900,49.9,-48.4,-66,-8,4275366, "", ""},
+	{"drall_patriot_foot_soldier",900,30.9,-44.3,-69,88,4275366, "", ""},
+	{"drall_patriot_legionnaire",900,182.3,-65.8,-100.5,-82,4275373, "", ""},
+	{"drall_patriot_legionnaire",900,86.1,-66.7,-139.5,-103,4275371, "", ""},
+	{"drall_patriot_legionnaire",900,71.4,-66.2,-139.6,92,4275371, "", ""},
+	{"drall_patriot_legionnaire",900,57.9,-68.3,-35.9,90,4275366, "", ""},
+	{"drall_patriot_legionnaire",900,46.8,-47.2,-12.5,-173,4275366, "", ""},
+	{"drall_patriot_legionnaire",900,48,-47,-7.2,98,4275366, "", ""},
+	{"drall_patriot_legionnaire",900,94.9,-46.7,-136.7,-47,4275375, "", ""},
+	{"drall_patriot_legionnaire",900,86.5,-46.8,-138.9,65,4275375, "", ""},
+	{"drall_patriot_legionnaire",900,23,-42.3,-65.4,0,4275366, "", ""},
+	{"drall_patriot_legionnaire",900,23.7,-38.5,-33.6,-179,4275366, "", ""},
+	{"eg6_power_droid",60,-3766.44,86,3180.9,54.3954,0, "calm", ""},
+	{"eg6_power_droid",60,-5605.25,21,-2721.9,155.92,0, "calm", ""},
+	{"eg6_power_droid",60,-5295.6,21,-2396.69,237.183,0, "calm", ""},
+	{"eg6_power_droid",60,-5692.65,14.6,-6151.28,179.632,0, "calm", ""},
+	{"eg6_power_droid",60,6825.9,315,-5791.64,173.583,0, "calm", ""},
+	{"entertainer",60,2.80432,-0.894991,9.55434,360.011,8105496, "conversation", ""},
+	{"entertainer",60,0.767877,0.3,-2.90219,180.005,1855463, "conversation", ""},
+	{"entertainer",60,-3602.67,86,3221.17,0,0, "conversation", ""},
+	{"entertainer",60,-16.9034,1.6,11.8646,180.006,3005672, "conversation", ""},
+	{"entertainer",60,-3100.88,31,2889.15,360.011,0, "conversation", ""},
+	{"entertainer",60,-3.65637,1.1544,-8.77307,0,1935476, "conversation", ""},
+	{"entertainer",60,-5539.77,21,-2683.65,0,0, "conversation", ""},
+	{"entertainer",60,-5539.77,21,-2682.65,180.005,0, "conversation", ""},
+	{"entertainer",60,-5196.06,21,-2408.57,0,0, "conversation", ""},
+	{"entertainer",60,-6.74614,1.6,-12.8336,0,1935826, "conversation", ""},
+	{"entertainer",60,-5009.39,21,-2496.09,180.005,0, "conversation", ""},
+	{"entertainer",60,-63.189,2.63942,41.8477,134.996,1935695, "conversation", ""},
+	{"entertainer",60,24.4668,0.26,3.56238,0,1935831, "conversation", ""},
+	{"entertainer",60,21.878,-0.894997,-14.6126,179.999,3075430, "conversation", ""},
+	{"entertainer",60,15.2654,2.37968,24.8667,180.002,4395401, "conversation", ""},
+	{"eryk_chinn",60,-3145.32,31,2803.95,208.286,0, "calm", ""},
+	{"explorer",60,17.3045,2.25,18.2968,360.011,1855477, "conversation", ""},
+	{"explorer",60,26.5189,2.12846,71.9319,0,2365399, "conversation", ""},
+	{"explorer",60,-6.12488,2.6,14.1431,180.005,2365397, "conversation", ""},
+	{"explorer",60,-3172.38,31,2881.95,180.005,0, "conversation", ""},
+	{"explorer",60,-3101.09,31,2904.87,0,0, "conversation", ""},
+	{"explorer",60,45.9927,-0.521138,35.8512,180.008,4255426, "conversation", ""},
+	{"explorer",60,1.55839,2.6,4.15034,135.004,2365434, "conversation", ""},
+	{"explorer",60,-5568.35,21,-2663.99,180.005,0, "conversation", ""},
+	{"explorer",60,-5596.05,21,-2762.83,0,0, "conversation", ""},
+	{"explorer",60,-5308.12,21,-2493.27,0,0, "conversation", ""},
+	{"explorer",60,-62.5737,2.63942,41.0043,180.004,9665364, "conversation", ""},
+	{"fanatic_of_lord_nyax",900,15.8,-13.8,3.4,-4,6036003, "", ""},
+	{"fanatic_of_lord_nyax",900,14.3,-13.8,11.8,-87,6036003, "", ""},
+	{"fanatic_of_lord_nyax",900,-5,-13.7,3.1,-177,6036001, "", ""},
+	{"fanatic_of_lord_nyax",900,-1.3,-13.7,2.5,178,6036001, "", ""},
+	{"fanatic_of_lord_nyax",900,-3.4,-13.7,-9.3,-169,6036001, "", ""},
+	{"fanatic_of_lord_nyax",900,3.7,0.3,-3.1,-1,6035996, "", ""},
+	{"fanatic_of_lord_nyax",900,1345.6,31,-333.9,-68,0, "", ""},
+	{"fanatic_of_lord_nyax",900,1337.6,31,-325.9,-89,0, "", ""},
+	{"farmer",60,-9.42234,1.75,-19.8259,0,1855484, "conversation", ""},
+	{"farmer",60,-20.2743,3.22324,21.681,0,1855468, "conversation", ""},
+	{"farmer",60,-18.6014,1.30259,-11.3146,360.011,1855463, "conversation", ""},
+	{"farmer",60,0.767877,0.3,-4.00219,0,1855463, "conversation", ""},
+	{"farmer",60,37.1168,1.29422,-4.41488,0,1855470, "conversation", ""},
+	{"farmer",60,-17.5041,0.887194,41.0759,180.006,2365397, "conversation", ""},
+	{"farmer",60,-62.7673,2.63942,40.6604,360.011,1855683, "conversation", ""},
+	{"farmer",60,11.9421,1.75,-18.7404,129.059,1855484, "calm", ""},
+	{"farmer",60,-3713.14,86,3105.66,0,0, "conversation", ""},
+	{"farmer",60,-3610.27,86,3198.4,0,0, "conversation", ""},
+	{"farmer",60,10.9405,-0.894992,-13.9189,180.013,3005402, "conversation", ""},
+	{"farmer",60,-3163.27,31,2903.38,135.004,0, "conversation", ""},
+	{"farmer",60,10.1683,1.75,-5.25457,135.008,1935476, "conversation", ""},
+	{"farmer",60,-22.8235,0.609014,44.1007,180.008,2365434, "conversation", ""},
+	{"farmer",60,-5574.26,21,-2683.38,180.005,0, "conversation", ""},
+	{"farmer",60,-5159.41,21,-2568.03,180.005,0, "conversation", ""},
+	{"farmer",60,-5196.06,21,-2407.57,180.005,0, "conversation", ""},
+	{"farmer",60,-4999.24,21,-2521.71,0,0, "conversation", ""},
+	{"farmer",60,-62.089,2.63942,40.7477,0,1935695, "conversation", ""},
+	{"farmer",60,29.3506,13.25,9.83587,360.011,1935841, "conversation", ""},
+	{"farmer",60,3145.1,289.991,4994.55,359.489,0, "conversation", ""},
+	{"farmer",60,36.7068,0.639417,39.346,0,9665359, "", ""},
+	{"farmer",60,-62.5737,2.63942,40.0043,360.011,9665364, "conversation", ""},
+	{"farmer",60,-17.5346,0.765493,42.402,354.765,4395401, "conversation", ""},
+	{"farmer",60,-17.5346,0.665389,43.4928,180.009,4395401, "conversation", ""},
+	{"farmer",60,25.4426,0.746078,42.666,5.24364,4395401, "conversation", ""},
+	{"farmer",60,3.96145,2.12878,76.4149,180.002,4395403, "conversation", ""},
+	{"farmer",60,-22.5021,1.6,4.63468,179.972,2775415, "conversation", ""},
+	{"farmer_rancher",60,4.71201,-0.894992,-9.83418,360.011,8105496, "conversation", ""},
+	{"farmer_rancher",60,-20.3488,2.12878,65.9854,180.006,2365400, "conversation", ""},
+	{"farmer_rancher",60,-5.69316,-5.5,-10.3165,0,3005430, "conversation", ""},
+	{"farmer_rancher",60,21.6158,1.28309,10.04,180.005,3005671, "conversation", ""},
+	{"farmer_rancher",60,-3159.35,31,2814.02,180.005,0, "conversation", ""},
+	{"farmer_rancher",60,11.2683,1.75,-5.25457,180.017,1935476, "conversation", ""},
+	{"farmer_rancher",60,-14.2562,2.3868,24.7891,180.003,2365434, "conversation", ""},
+	{"farmer_rancher",60,3196.61,295.033,5073.8,350.188,0, "conversation", ""},
+	{"farmer_rancher",60,3196.61,295.206,5074.8,180.005,0, "conversation", ""},
+	{"farmer_rancher",60,8.35364,-0.894992,7.38149,179.999,3075429, "conversation", ""},
+	{"farmer_rancher",60,-23.9134,0.6,-3.15254,179.996,4395397, "conversation", ""},
+	{"fiend_of_lord_nyax",900,14.6,-13.8,-9.8,14,6036004, "", ""},
+	{"fiend_of_lord_nyax",900,6.1,-6.8,-7.6,-7,6035999, "", ""},
+	{"fiend_of_lord_nyax",900,2.2,-6.8,-7.2,0,6035999, "", ""},
+	{"fiend_of_lord_nyax",900,4.3,-6.8,-2.1,0,6035999, "", ""},
+	{"fiend_of_lord_nyax",900,1371.9,31,-323.5,172,0, "", ""},
+	{"fiend_of_lord_nyax",900,1378.5,31,-332.9,73,0, "", ""},
+	{"fringer",60,3.66172,0.6,-2.64185,180.005,2365392, "conversation", ""},
+	{"fringer",60,-3713.14,86,3106.66,180.005,0, "conversation", ""},
+	{"fringer",60,22.6067,-0.894992,20.7263,180.01,3005401, "conversation", ""},
+	{"fringer",60,-21.8263,2.12878,74.8963,179.999,4395404, "conversation", ""},
+	{"gadget_specialist",60,19.7425,28,-4775.49,27.4957,0, "calm", ""},
+	{"gambler",60,-4.61669,0.639424,67.8263,180.012,1855675, "conversation", ""},
+	{"gambler",60,-3408.26,86,3048.35,0,0, "conversation", ""},
+	{"gambler",60,-2.41153,-0.894993,23.4367,0,3005405, "conversation", ""},
+	{"gambler",60,-3090,31,2903.18,135.004,0, "conversation", ""},
+	{"gambler",60,0.68378,0.639421,61.0666,268.449,4255423, "calm", ""},
+	{"gambler",60,5.33572,2.12878,72.7096,180.003,2365436, "conversation", ""},
+	{"gambler",60,3184.22,300,5162.04,0,0, "conversation", ""},
+	{"gambler",60,3184.22,300,5163.04,180.005,0, "conversation", ""},
+	{"gambler",60,-22.5017,1.59973,3.53494,359.971,2775415, "conversation", ""},
+	{"gilker_budz",60,-3336.21,72.4231,2926.19,277.144,0, "calm", ""},
+	{"ging_darjeek",60,-24.6629,-0.519991,7.12104,148.001,3375365, "calm", ""},
+	{"grobber",60,-15.4768,1,-8.20706,245.925,1855551, "calm", ""},
+	{"grondom_muse",60,6838.16,315,-5767.67,266.732,0, "calm", ""},
+	{"gubbur",60,-5454.02,8.85189,-2484.05,319.757,0, "calm", ""},
+	{"gubbur",60,-4827.25,31.6625,-2225.7,157.208,0, "calm", ""},
+	{"hal_horn",60,-15.0532,2.25,11.1395,133.195,1935472, "calm", ""},
+	{"herald_biogenic_03",60,21.3645,1.28309,9.48413,142.744,1935823, "calm", "Teraeza Furloti"},
+	{"hunter",60,8.65132,0.639421,75.5483,256.69,1855672, "calm", ""},
+	{"hunter",60,-14.01,1.13306,-8.53,120.004,1935445, "calm", ""},
+	{"hunter",60,3145.1,290,4995.55,180.005,0, "conversation", ""},
+	{"hunter",60,-21.8263,2.12878,73.7963,0,4395404, "conversation", ""},
+	{"hunter",60,-14.01,1.13306,-8.53,120.004,3075361, "calm", ""},
+	{"hunter",60,-14.01,1.13306,-8.53,120.004,2365770, "calm", ""},
+	{"imperial_first_lieutenant",90,0.50699,0.125265,-1.08195,0,2716039, "", ""},
+	{"imperial_first_lieutenant",90,4638.27,25,-5777.52,110.48,0, "", ""},
+	{"imperial_first_lieutenant",90,4637.55,25,-5784.69,185.939,0, "", ""},
+	{"imperial_first_lieutenant",90,-0.197962,0.125265,-1.71454,0,2715881, "", ""},
+	{"imperial_first_lieutenant",90,4635.64,25,-5802.22,92.4328,0, "", ""},
+	{"imperial_major",90,4629.71,25,-5770.51,238.638,0, "", ""},
+	{"imperial_noncom",90,-1.38669,0.125265,-2.85349,0,2715916, "", ""},
+	{"imperial_noncom",90,-1.69961,0.125266,-3.22658,0,2715916, "", ""},
+	{"imperial_recruiter",0,-6719,0,-5804,176,0, "", ""},
+	{"imperial_sergeant_major",60,6908.17,330,-5608.54,27.4568,0, "npc_imperial", ""},
+	{"imperial_staff_sergeant",60,6909.29,330,-5606.48,204.967,0, "npc_imperial", ""},
+	{"imperial_surface_marshall",90,4531.47,30.7809,-5823.83,217.385,0, "", ""},
+	{"imperial_surface_marshall",90,4.99108,0.125266,-4.24489,64.1228,2715904, "", ""},
+	{"imperial_trooper",90,1.49,0.125264,-2.03378,0,2715959, "", ""},
+	{"imperial_trooper",90,1.73977,0.125264,-2.76,0,2715959, "", ""},
+	{"info_broker",60,21.8079,3.22324,26.617,180.006,1855469, "conversation", ""},
+	{"info_broker",60,-17.5041,0.992207,39.9855,5.50246,2365397, "conversation", ""},
+	{"info_broker",60,-3557.49,86,3158.11,180.005,0, "conversation", ""},
+	{"info_broker",60,-5574.26,21,-2684.38,0,0, "conversation", ""},
+	{"info_broker",60,25.7618,0.784388,42.249,5.24275,2365434, "conversation", ""},
+	{"info_broker",60,-5095.02,21,-2513.56,180.005,0, "conversation", ""},
+	{"info_broker",60,-14.8394,2.32744,25.4359,180.013,4395401, "conversation", ""},
+	{"info_broker",60,21.6023,-0.894996,-17.4913,180.012,3375356, "conversation", ""},
+	{"informant_npc_lvl_1",0,-33,0,-4825,45,0, "", ""},
+	{"informant_npc_lvl_1",0,-86,0,-4829,0,0, "", ""},
+	{"informant_npc_lvl_1",0,-172,0,-4442,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-172,0,-4410,225,0, "", ""},
+	{"informant_npc_lvl_1",0,-212,0,-4465,0,0, "", ""},
+	{"informant_npc_lvl_1",0,-250,0,-4430,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-428,0,-4751,225,0, "", ""},
+	{"informant_npc_lvl_1",0,-477,0,-4553,180,0, "", ""},
+	{"informant_npc_lvl_1",0,-566,0,-4361,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-508,0,-4367,45,0, "", ""},
+	{"informant_npc_lvl_1",0,-359,0,-4210,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-293,0,-4251,315,0, "", ""},
+	{"informant_npc_lvl_1",0,-184,0,-4342,90,0, "", ""},
+	{"informant_npc_lvl_1",0,6687,0,-5594,0,0, "", ""},
+	{"informant_npc_lvl_1",0,6733,0,-5609,90,0, "", ""},
+	{"informant_npc_lvl_1",0,6832,315,-5545,270,0, "", ""},
+	{"informant_npc_lvl_1",0,6901,0,-5606,0,0, "", ""},
+	{"informant_npc_lvl_1",0,20.9951,-0.894992,21.3608,100,3375357, "", ""},
+	{"informant_npc_lvl_1",0,3100,0,5224,90,0, "", ""},
+	{"informant_npc_lvl_1",0,3123,0,5188,0,0, "", ""},
+	{"informant_npc_lvl_1",0,3145,0,5148,90,0, "", ""},
+	{"informant_npc_lvl_1",0,3165,0,5077,180,0, "", ""},
+	{"informant_npc_lvl_1",0,3078,0,5014,270,0, "", ""},
+	{"informant_npc_lvl_1",0,3210,0,5440,100,0, "", ""},
+	{"informant_npc_lvl_1",0,3311,0,5386,300,0, "", ""},
+	{"informant_npc_lvl_1",0,3293,0,5401,90,0, "", ""},
+	{"informant_npc_lvl_1",0,3297,0,5514,70,0, "", ""},
+	{"informant_npc_lvl_1",0,-3563,0,3138,60,0, "", ""},
+	{"informant_npc_lvl_1",0,-3571,0,3176,60,0, "", ""},
+	{"informant_npc_lvl_1",0,-3574,0,3154,315,0, "", ""},
+	{"informant_npc_lvl_1",0,-3604,0,3172,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-3665,0,3139,170,0, "", ""},
+	{"informant_npc_lvl_1",0,-3375,0,3281,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-3358,0,3307,140,0, "", ""},
+	{"informant_npc_lvl_1",0,-3315,0,3234,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-3386,0,3184,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-3444,0,3231,225,0, "", ""},
+	{"informant_npc_lvl_1",0,-3458,0,3165,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-3416,0,3078,0,0, "", ""},
+	{"informant_npc_lvl_1",0,-3401,0,3034,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-3124,0,2808,180,0, "", ""},
+	{"informant_npc_lvl_1",0,-3128,0,3008,180,0, "", ""},
+	{"informant_npc_lvl_1",0,-5024,0,-2345,180,0, "", ""},
+	{"informant_npc_lvl_1",0,-5136,0,-2294,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-5587,0,-2809,315,0, "", ""},
+	{"informant_npc_lvl_1",0,-5480,0,-2777,225,0, "", ""},
+	{"informant_npc_lvl_1",0,-5504,0,-2699,180,0, "", ""},
+	{"informant_npc_lvl_1",0,-5539,0,-2667,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-5592,0,-2684,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-5450,0,-2630,45,0, "", ""},
+	{"informant_npc_lvl_1",0,-5308,0,-2512,90,0, "", ""},
+	{"informant_npc_lvl_1",0,-5097,0,-2344,270,0, "", ""},
+	{"informant_npc_lvl_1",0,-345,0,-4439,0,0, "", ""},
+	{"informant_npc_lvl_2",0,6775,0,-5487,150,0, "", ""},
+	{"informant_npc_lvl_2",0,6876,0,-5466,0,0, "", ""},
+	{"informant_npc_lvl_2",0,-340,0,-4439,0,0, "", ""},
+	{"informant_npc_lvl_3",0,-5559,0,-6220,90,0, "", ""},
+	{"informant_npc_lvl_3",0,6860,0,-5761,45,0, "", ""},
+	{"informant_npc_lvl_3",0,-335,0,-4439,0,0, "", ""},
+	{"io_tsomcren",60,-140.701,28,-4719.16,44.0418,0, "neutral", ""},
+	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
+	{"jadam_questrel",60,9.77643,-0.894992,-14.4836,262.46,3075432, "calm", ""},
+	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
+	{"junk_dealer",0,6840,315,-5630,-32,0, "", ""},
+	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", ""},
+	{"junk_dealer",0,6756.1,315,-5778,88,0, "", ""},
+	{"junk_dealer",0,6970,330,-5588,92,0, "", ""},
+	{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", ""},
+	{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", ""},
+	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", ""},
+	{"junk_dealer",0,3402.4,308,5679,5,0, "", ""},
+	{"junk_dealer",0,-3133.8,31,2975.5,7,0, "", ""},
+	{"junk_dealer",0,-14.5,1.1,2.5,88,2955424, "", ""},
+	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", ""},
+	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", ""},
+	{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
+	{"karin_featherlight",60,-185.082,28,-4460.71,86.3314,0, "calm", ""},
+	{"karrek_flim",60,-6.11988,1.6,-7.43599,219.682,2775417, "calm", ""},
+	{"larek_tatham",60,-5050.23,21,-2291.69,113.059,0, "neutral", ""},
+	{"lasha_bindari",60,39.0615,0.104999,0.934001,189.839,3005397, "calm", ""},
+	{"logro_elsin",60,-3144.67,31,2806.06,174.404,0, "neutral", ""},
+	{"lord_nyax",3600,18.7,-11.5,-20,-7,6036004, "", ""},
+	{"meatlump_buffoon",600,-145,28.9,-4959.8,63,0, "", ""},
+	{"meatlump_buffoon",600,-54.3,28.2,-4963.4,-90,0, "", ""},
+	{"meatlump_buffoon",600,-20.1,28,-4922.2,109,0, "", ""},
+	{"meatlump_buffoon",600,266.9,28.5,-4656.5,-109,0, "", ""},
+	{"meatlump_buffoon",600,284.5,29,-4541.7,-175,0, "", ""},
+	{"meatlump_buffoon",600,258.2,28,-4424.1,-5,0, "", ""},
+	{"meatlump_buffoon",600,-365.3,28,-4658.5,26,0, "", ""},
+	{"meatlump_buffoon",600,-270.1,28,-4923,-97,0, "", ""},
+	{"meatlump_clod",600,-130.2,31.1,-4993.8,72,0, "", ""},
+	{"meatlump_clod",600,-11.4,28,-4920.5,63,0, "", ""},
+	{"meatlump_clod",600,93.4,27.1,-4865,60,0, "", ""},
+	{"meatlump_cretin",600,-89.4,30.3,-4985.2,33,0, "", ""},
+	{"meatlump_cretin",600,188.1,27.1,-4770.2,-99,0, "", ""},
+	{"meatlump_cretin",600,287.1,29.3,-4558,-95,0, "", ""},
+	{"meatlump_cretin",600,-236.2,28.4,-4947.9,-16,0, "", ""},
+	{"meatlump_fool",600,172.6,27.9,-4773,-87,0, "", ""},
+	{"meatlump_fool",600,277.9,28.6,-4545.9,-99,0, "", ""},
+	{"meatlump_fool",600,266.6,28,-4408.9,68,0, "", ""},
+	{"meatlump_fool",600,-361.8,28,-4655,164,0, "", ""},
+	{"meatlump_fool",600,-297.3,28,-4918.8,-86,0, "", ""},
+	{"meatlump_fool",600,-257,30,-4968.4,24,0, "", ""},
+	{"meatlump_loon",600,-163,28.2,-49493,102,0, "", ""},
+	{"meatlump_loon",600,176,27.3,-4763.6,-7,0, "", ""},
+	{"meatlump_oaf",600,-136,28.8,-4958.5,83,0, "", ""},
+	{"meatlump_oaf",600,-72,28,-4973.1,-77,0, "", ""},
+	{"meatlump_oaf",600,97.6,26.6,-4867.1,101,0, "", ""},
+	{"meatlump_oaf",600,255,28.3,-4666.8,-51,0, "", ""},
+	{"meatlump_oaf",600,249.6,28,-4418.9,92,0, "", ""},
+	{"meatlump_oaf",600,-366,28,-4655,148,0, "", ""},
+	{"meatlump_oaf",600,-308,28,-4897.9,64,0, "", ""},
+	{"meatlump_stooge",600,-133.5,28.2,-4946,72,0, "", ""},
+	{"meatlump_stooge",600,-12.6,27.9,-4931.6,-19,0, "", ""},
+	{"meatlump_stooge",600,90.7,26.6,-4872.1,73,0, "", ""},
+	{"meatlump_stooge",600,252.9,28.3,-4657.7,-3,0, "", ""},
+	{"meatlump_stooge",600,293.9,29.7,-4552.4,-93,0, "", ""},
+	{"medic",60,-0.332123,0.3,-4.00219,45.0054,1855463, "conversation", ""},
+	{"medic",60,5.18395,2.27819,-26.1292,164.924,1855463, "conversation", ""},
+	{"medic",60,-3591.74,86,3179.01,0,0, "conversation", ""},
+	{"medic",60,-62.2331,2.63942,40.8373,180.197,4255431, "conversation", ""},
+	{"medic",60,45.9927,-0.521138,34.7512,360.011,4255426, "conversation", ""},
+	{"medic",60,11.2683,1.75,-6.35457,360.011,1935476, "conversation", ""},
+	{"medic",60,-5095.02,21,-2514.56,0,0, "conversation", ""},
+	{"medic",60,-4.31306,0.999965,5.16959,0,3075366, "conversation", ""},
+	{"medic",60,-43.4991,0.105009,-23.2411,135.007,3375367, "conversation", ""},
+	{"mercenary",60,-62.7673,2.63942,41.7604,179.995,1855683, "conversation", ""},
+	{"mercenary",60,-3520.73,78,3126.57,180.005,0, "conversation", ""},
+	{"mercenary",60,34.3598,0.104999,-6.93626,180.005,3005398, "conversation", ""},
+	{"mercenary",60,-3.65637,1.1544,-7.67307,179.999,1935476, "conversation", ""},
+	{"mercenary",60,-5308.12,21,-2492.27,180.005,0, "conversation", ""},
+	{"mercenary",60,-5398.52,21,-2675.03,180.005,0, "conversation", ""},
+	{"mercenary",60,-32.0578,0.10501,-21.5764,262.741,2625366, "calm", ""},
+	{"mercenary",60,-5059.06,21,-2400.08,0,0, "conversation", ""},
+	{"mercenary",60,-5.6917,7.26,-0.915899,0.445885,1935837, "conversation", ""},
+	{"mercenary",60,-22.9263,2.12878,74.8963,134.998,4395404, "conversation", ""},
+	{"mercenary",60,-0.629707,2.6,2.33132,360.011,4395401, "conversation", ""},
+	{"miner",60,37.163,0.639417,39.6061,0,1855678, "conversation", ""},
+	{"miner",60,5.57407,-0.0513746,1.83985,0,3005428, "conversation", ""},
+	{"miner",60,20.5946,-0.894996,-19.6063,0,3005400, "conversation", ""},
+	{"miner",60,3.29,1.13306,-9.58,249.007,2955416, "calm", ""},
+	{"miner",60,21.6158,1.28309,8.94,0,3005671, "conversation", ""},
+	{"miner",60,-3162.17,31,2903.38,180.005,0, "conversation", ""},
+	{"miner",60,-3163.27,31,2902.28,45.0013,0, "conversation", ""},
+	{"miner",60,44.8927,-0.521138,35.8512,135.003,4255426, "conversation", ""},
+	{"miner",60,1.29504,1.75,-20.9672,360.011,1935477, "conversation", ""},
+	{"miner",60,3.29,1.13306,-9.58,249.007,1935454, "calm", ""},
+	{"miner",60,3.29,1.13306,-9.58,249.007,3055771, "calm", ""},
+	{"miner",60,-5.46842,-0.894998,20.8012,0,3375361, "conversation", ""},
+	{"noble",60,11.9421,1.75,-19.8404,0,1855484, "conversation", ""},
+	{"noble",60,4.12842,0.3,4.01677,134.998,1855463, "conversation", ""},
+	{"noble",60,28.93,2.12878,58.19,222.007,2365398, "calm", ""},
+	{"noble",60,19.26,2.12847,56.13,266.008,2365399, "calm", ""},
+	{"noble",60,-3610.27,86,3199.4,180.005,0, "conversation", ""},
+	{"noble",60,-3459.55,78,3225.02,0,0, "conversation", ""},
+	{"noble",60,-3095.48,31,2971.63,249.618,0, "calm", ""},
+	{"noble",60,5.78383,1.1544,-1.95638,180.012,1935476, "conversation", ""},
+	{"noble",60,-5441.11,21.0895,-2624.13,269.845,0, "calm", ""},
+	{"noble",60,28.93,2.12878,58.19,222.007,2365435, "calm", ""},
+	{"noble",60,19.26,2.12847,56.13,266.008,2365436, "calm", ""},
+	{"noble",60,3158.95,300,5352.24,80.7765,0, "calm", ""},
+	{"noble",60,47.5747,0.974633,22.0108,238.024,9665365, "calm", ""},
+	{"noble",60,15.2654,2.47978,23.7759,5.24424,4395401, "conversation", ""},
+	{"noble",60,28.93,2.12878,58.19,222.007,4395402, "calm", ""},
+	{"noble",60,19.26,2.12847,56.13,266.008,4395403, "calm", ""},
+	{"noble",60,-24.96,1.6,-4.79578,14.5444,2775419, "calm", ""},
+	{"noble",60,6724.41,330,-5909.35,213.723,0, "calm", ""},
+	{"noble",60,5.80982,-0.894992,-5.41349,248.205,3375355, "calm", ""},
+	{"noren_krast",60,-5203.33,21,-2488.13,176.643,0, "calm", "Noren Krast"},
+	{"palejo_reshad",60,1.05969,-0.894992,21.2156,111.145,3375359, "calm", ""},
+	{"pashna",60,6772.57,315,-5697.8,245.284,0, "calm", ""},
+	{"pilot",60,-3384.54,86,3008.15,180.005,0, "conversation", ""},
+	{"pilot",60,23.1824,1.28309,9.37019,179.994,1935527, "conversation", ""},
+	{"pilot",60,3202.28,290,4988.06,0,0, "conversation", ""},
+	{"r2",60,-1.84202,0.184067,2.59886,22.229,3375392, "calm", "R2-J0"},
+	{"r2",60,-3697.43,87.5185,3141.62,327.074,0, "calm", "R2-Z1"},
+	{"r2",60,-5295.88,21,-2528.24,196.589,0, "calm", "R2-B0"},
+	{"r2",60,-13.4312,1.6,-15.4443,7.68027,1935827, "calm", "R2-P9"},
+	{"r2",60,-5297.6,21,-2396.69,271.4,0, "calm", "R2-X2"},
+	{"r2",60,-4954.63,21,-2376.82,26.4361,0, "calm", "R2-E3"},
+	{"r2",60,-5528,23.4,-6195.05,84.2678,0, "calm", "R2-P2"},
+	{"r2",60,6857.06,315,-5702.8,0,0, "calm", "R2-J9"},
+	{"r3",60,-149.754,28,-4785.34,297.928,0, "calm", "R3-E4"},
+	{"r3",60,-182.479,28,-4731.42,293.019,0, "calm", "R3-S1"},
+	{"r3",60,-3423.05,80.6846,3333.75,253.023,0, "calm", "R3-U1"},
+	{"r3",60,-3327.95,86,3233.64,315.946,0, "calm", "R3-N0"},
+	{"r3",60,-3151.77,31,2800,265.951,0, "calm", "R3-L8"},
+	{"r3",60,-16.1386,2.25,18.5614,173.343,1935472, "calm", "R3-X8"},
+	{"r3",60,-5312.13,25.7208,-2570.41,64.2735,0, "calm", "R3-X5"},
+	{"r4",60,6715.38,330,-5903.81,0.0395659,0, "calm", "R4-O8"},
+	{"r5",60,-3094.48,31,2972.63,268.321,0, "calm", "R5-W1"},
+	{"r5",60,-3134.32,31,2801.71,82.3858,0, "calm", "R5-U7"},
+	{"r5",60,-5400.32,21,-2614.17,236.816,0, "calm", "R5-S7"},
+	{"r5",60,-4954.81,21,-2379.55,166.051,0, "calm", "R5-C7"},
+	{"ragtag_kook",60,-217.315,28,-4927.23,40.3799,0, "calm", ""},
+	{"ragtag_kook",60,-213.219,28,-4926.08,204.867,0, "calm", ""},
+	{"ragtag_kook",60,-225.238,28,-4931.01,254.658,0, "calm", ""},
+	{"ragtag_kook",60,-212.993,28,-4922.77,38.0909,0, "calm", ""},
+	{"ragtag_kook",60,-712.063,5.13106,-4304.96,315.72,0, "calm", ""},
+	{"ragtag_kook",60,-719.18,4.19027,-4309.55,164.033,0, "calm", ""},
+	{"ragtag_kook",60,-710.949,2.22724,-4660.02,70.5273,0, "", ""},
+	{"ragtag_kook",60,-703.067,2.97988,-4657.98,93.9451,0, "", ""},
+	{"ragtag_kook",60,-711.002,2.29761,-4657.71,82.4599,0, "", ""},
+	{"ragtag_kook",60,-707.002,2.60916,-4659.71,79.0401,0, "calm", ""},
+	{"ragtag_kook",60,-3420.17,86,3117.69,178.443,0, "neutral", ""},
+	{"ragtag_kook",60,-3414.17,86,3120.69,230.88,0, "", ""},
+	{"ragtag_kook",60,-3420.17,86,3120.69,112.674,0, "", ""},
+	{"ragtag_kook",60,-3421.17,86,3114.69,251.872,0, "neutral", ""},
+	{"ragtag_kook",60,-3414.17,86,3115.69,201.83,0, "neutral", ""},
+	{"ragtag_kook",60,-3422.17,86,3123.69,67.6278,0, "neutral", ""},
+	{"ragtag_kook",60,-3414.17,86,3120.69,5.67066,0, "neutral", ""},
+	{"ragtag_kook",60,-3417.17,86,3121.69,267.905,0, "neutral", ""},
+	{"ragtag_kook",60,-3413.17,86,3117.69,319.719,0, "neutral", ""},
+	{"ragtag_kook",60,-3420.17,86,3119.69,27.5063,0, "neutral", ""},
+	{"ragtag_kook",60,-3417.17,86,3115.69,206.38,0, "neutral", ""},
+	{"ragtag_kook",60,-3418.17,86,3116.69,219.956,0, "neutral", ""},
+	{"ragtag_kook",60,-3424.17,86,3120.69,27.2417,0, "neutral", ""},
+	{"ragtag_kook",60,-3414.17,86,3122.69,12.7232,0, "neutral", ""},
+	{"ragtag_kook",60,-3416.17,86,3118.69,359.725,0, "neutral", ""},
+	{"ragtag_kook",60,-3422.17,86,3122.69,132.781,0, "", ""},
+	{"ragtag_kook",60,-3418.17,86,3121.69,325.353,0, "neutral", ""},
+	{"ragtag_kook",60,-3420.17,86,3118.69,30.3907,0, "neutral", ""},
+	{"ragtag_kook",60,-3417.17,86,3121.69,186.13,0, "neutral", ""},
+	{"ragtag_kook",60,-3421.17,86,3119.69,111.425,0, "", ""},
+	{"ragtag_kook",60,-3415.17,86,3116.69,68.8437,0, "", ""},
+	{"ragtag_kook",60,-3418.17,86,3114.69,280.554,0, "neutral", ""},
+	{"ragtag_kook",60,-3630.85,86,3115.04,295.53,0, "neutral", ""},
+	{"ragtag_kook",60,-3419.17,86,3114.69,317.368,0, "neutral", ""},
+	{"ragtag_kook",60,-3418.17,86,3113.69,283.302,0, "neutral", ""},
+	{"ragtag_kook",60,-3637.85,86,3118.04,110.747,0, "", ""},
+	{"ragtag_kook",60,-3419.17,86,3119.69,200.488,0, "neutral", ""},
+	{"ragtag_kook",60,-3634.85,86,3116.04,307.45,0, "", ""},
+	{"ragtag_kook",60,-3421.17,86,3118.69,156.083,0, "neutral", ""},
+	{"ragtag_kook",60,-3420.17,86,3114.69,162.494,0, "neutral", ""},
+	{"ragtag_kook",60,-3639.85,86,3121.04,204.093,0, "neutral", ""},
+	{"ragtag_kook",60,-3635.85,86,3122.04,52.6115,0, "neutral", ""},
+	{"ragtag_kook",60,-3631.85,86,3117.04,340.653,0, "neutral", ""},
+	{"ragtag_kook",60,-3634.85,86,3125.04,205.618,0, "neutral", ""},
+	{"ragtag_kook",60,-3640.85,86,3121.04,123.754,0, "calm", ""},
+	{"ragtag_kook",60,-3631.85,86,3122.04,239.803,0, "neutral", ""},
+	{"ragtag_kook",60,-3631.85,86,3124.04,227.799,0, "neutral", ""},
+	{"ragtag_kook",60,-3423.17,86,3116.69,75.9716,0, "neutral", ""},
+	{"ragtag_kook",60,-3631.85,86,3117.04,236.27,0, "neutral", ""},
+	{"ragtag_kook",60,-3637.85,86,3114.04,22.9008,0, "neutral", ""},
+	{"ragtag_kook",60,-3631.85,86,3119.04,193.843,0, "neutral", ""},
+	{"ragtag_kook",60,-3630.85,86,3119.04,330.28,0, "neutral", ""},
+	{"ragtag_kook",60,-3421.17,86,3120.69,316.141,0, "calm", ""},
+	{"ragtag_kook",60,-3635.85,86,3118.04,247.622,0, "neutral", ""},
+	{"ragtag_kook",60,-3421.17,86,3122.69,145.962,0, "calm", ""},
+	{"ragtag_kook",60,-3637.85,86,3120.04,29.6422,0, "neutral", ""},
+	{"ragtag_kook",60,-3633.85,86,3121.04,189.65,0, "neutral", ""},
+	{"ragtag_kook",60,-3417.17,86,3118.69,112.594,0, "neutral", ""},
+	{"ragtag_kook",60,-3421.17,86,3120.69,157.139,0, "neutral", ""},
+	{"ragtag_kook",60,-3424.17,86,3115.69,335.402,0, "neutral", ""},
+	{"ragtag_kook",60,-3420.17,86,3112.69,148.406,0, "neutral", ""},
+	{"ragtag_kook",60,-5215.15,29.033,-2198.86,133.12,0, "calm", ""},
+	{"ragtag_kook",60,-5220.6,30.4428,-2186.49,348.738,0, "calm", ""},
+	{"ragtag_kook",60,-5211.84,28.4788,-2194.09,10.766,0, "calm", ""},
+	{"ragtag_kook",60,-5219.46,30.4446,-2185.86,7.83436,0, "calm", ""},
+	{"ragtag_kook",60,-4872.65,11.1341,-2390.99,302.831,0, "calm", ""},
+	{"ragtag_kook",60,-4868.58,11.257,-2387.94,83.5642,0, "calm", ""},
+	{"ragtag_kook",60,-4856.48,12.5979,-2394.59,115.078,0, "calm", ""},
+	{"ragtag_kook",60,-5735.79,28.6208,-2610.4,123.649,0, "calm", ""},
+	{"ragtag_kook",60,-5737.79,28.5516,-2607.4,132.784,0, "calm", ""},
+	{"ragtag_kook",60,-5734.79,28.7267,-2609.4,139.039,0, "calm", ""},
+	{"ragtag_kook",60,-5752.38,16.7564,-2798.05,339.808,0, "calm", ""},
+	{"ragtag_kook",60,-5738.79,28.2523,-2614.4,291.78,0, "neutral", ""},
+	{"ragtag_kook",60,-5731.79,29.0178,-2607.4,282.23,0, "neutral", ""},
+	{"ragtag_kook",60,-5759.38,16.8412,-2798.05,36.2043,0, "calm", ""},
+	{"ragtag_kook",60,-5751.38,16.7032,-2795.05,315.194,0, "calm", ""},
+	{"ragtag_kook",60,-5756.38,16.7952,-2797.05,17.1779,0, "calm", ""},
+	{"ragtag_kook",60,-5735.79,28.4972,-2614.4,161.315,0, "neutral", ""},
+	{"ragtag_kook",60,-5755.38,16.8078,-2791.05,5.21744,0, "neutral", ""},
+	{"ragtag_kook",60,-5757.38,16.8277,-2792.05,209.008,0, "neutral", ""},
+	{"ragtag_kook",60,-5750.38,16.684,-2794.05,244.293,0, "neutral", ""},
+	{"ragtag_loon",60,-386.125,28,-4867.54,200.479,0, "calm", ""},
+	{"ragtag_loon",60,-385.025,28,-4878.38,142.066,0, "calm", ""},
+	{"ragtag_loon",60,-396.754,28,-4869.82,8.29735,0, "calm", ""},
+	{"ragtag_loon",60,-397.655,28,-4875.17,8.04579,0, "calm", ""},
+	{"ragtag_loon",60,227.709,28,-4494.78,296.837,0, "", ""},
+	{"ragtag_loon",60,229.296,28,-4484.62,54.5993,0, "", ""},
+	{"ragtag_loon",60,234.249,28,-4490.03,258.204,0, "", ""},
+	{"ragtag_loon",60,227.363,28,-4490.61,140.577,0, "", ""},
+	{"ragtag_loon",60,181.412,28,-4413.68,12.8953,0, "neutral", ""},
+	{"ragtag_loon",60,184.412,28,-4413.68,346.368,0, "neutral", ""},
+	{"ragtag_loon",60,183.412,28,-4407.68,224.105,0, "neutral", ""},
+	{"ragtag_loon",60,177.412,28,-4413.68,227.101,0, "neutral", ""},
+	{"ragtag_loon",60,-205.027,27.5943,-3996.32,203.567,0, "neutral", ""},
+	{"ragtag_loon",60,177.412,28,-4411.68,159.855,0, "neutral", ""},
+	{"ragtag_loon",60,-205.027,27.2079,-3995.32,200.21,0, "calm", ""},
+	{"ragtag_loon",60,-205.027,28.3091,-3998.32,80.3182,0, "neutral", ""},
+	{"ragtag_loon",60,-205.027,29.467,-4002.32,191.197,0, "neutral", ""},
+	{"ragtag_loon",60,-205.027,29.2182,-4001.32,192.016,0, "neutral", ""},
+	{"ragtag_loon",60,-532.124,6.76739,-4078.84,160.437,0, "", ""},
+	{"ragtag_loon",60,-205.027,29.467,-4002.32,115.282,0, "neutral", ""},
+	{"ragtag_loon",60,-525.124,5.82557,-4079.84,207.519,0, "", ""},
+	{"ragtag_loon",60,-528.124,8.09628,-4085.84,191.034,0, "", ""},
+	{"ragtag_loon",60,-534.124,6.67109,-4078.84,149.496,0, "", ""},
+	{"ragtag_loon",60,-529.124,8.36918,-4087.84,129.295,0, "neutral", ""},
+	{"ragtag_loon",60,-4855.73,11.1455,-2525.71,169.83,0, "calm", ""},
+	{"ragtag_loon",60,-4863.73,10.6092,-2522.71,110.033,0, "neutral", ""},
+	{"ragtag_loon",60,-4862.73,10.6838,-2526.71,59.8998,0, "calm", ""},
+	{"ragtag_loon",60,-4855.73,11.1789,-2528.71,285.482,0, "neutral", ""},
+	{"ragtag_loon",60,-4855.73,11.1489,-2521.71,326.785,0, "neutral", ""},
+	{"ragtag_loon",60,-4865.73,10.5102,-2521.71,326.643,0, "neutral", ""},
+	{"ragtag_lunatic",60,-704.545,4.87903,-4245.47,212.096,0, "calm", ""},
+	{"ragtag_maniac",60,-691.483,7.08209,-4227.75,29.5129,0, "calm", ""},
+	{"ragtag_mercenary",60,-5672.52,15.278,-2894.02,244.65,0, "calm", ""},
+	{"ragtag_mercenary",60,-5691.26,15.4606,-2887.12,356.964,0, "calm", ""},
+	{"ragtag_mercenary",60,-5672.41,15.4649,-2890.62,352.624,0, "calm", ""},
+	{"ragtag_mercenary",60,-5672.95,15.312,-2893.61,357.718,0, "calm", ""},
+	{"ragtag_mercenary",60,-5694.23,15.4638,-2884.47,185.304,0, "calm", ""},
+	{"ragtag_mercenary",60,-5711.06,16.5012,-2847.27,112.803,0, "calm", ""},
+	{"ragtag_mercenary",60,-5702.54,15.8374,-2867.88,183.357,0, "calm", ""},
+	{"ragtag_mercenary",60,-5708.1,15.6575,-2871.92,193.761,0, "calm", ""},
+	{"ragtag_mercenary",60,-5710.95,16.1501,-2855.67,160.229,0, "calm", ""},
+	{"ragtag_mercenary",60,-5705.51,16.336,-2848.37,146.516,0, "calm", ""},
+	{"ragtag_thug",60,-5668.9,16.2378,-2862.15,261.761,0, "calm", ""},
+	{"ragtag_thug",60,-5677.01,17.8326,-2830.52,169.707,0, "calm", ""},
+	{"ragtag_thug",60,-5689.64,16.9976,-2834.73,347.584,0, "calm", ""},
+	{"ragtag_thug",60,-5686.72,15.8898,-2861.66,66.5932,0, "calm", ""},
+	{"ragtag_thug",60,-5695.25,15.8079,-2868.77,177.337,0, "calm", ""},
+	{"ragtag_thug",60,-5695.22,15.8169,-2860.93,353.584,0, "calm", ""},
+	{"ragtag_thug",60,-5675.11,16.1258,-2862.35,11.3951,0, "calm", ""},
+	{"ragtag_thug",60,-5683.98,16.7263,-2843.44,81.9355,0, "calm", ""},
+	{"ragtag_thug",60,-5685.49,17.6827,-2825.55,256.078,0, "calm", ""},
+	{"ragtag_thug",60,-5683.2,16.9368,-2840.36,90.595,0, "calm", ""},
+	{"ral_mundi",60,-138.975,28,-4718.86,10.0036,0, "neutral", ""},
+	{"rebel_commando",900,-6568.4,407,5911.5,-147,0, "", ""},
+	{"rebel_commando",900,-6475.8,405,5907.6,74,0, "", ""},
+	{"rebel_commando",900,-6430.3,405,6037.6,0,0, "", ""},
+	{"rebel_commando",900,4.5,7,-13,13,8555480, "", ""},
+	{"rebel_corporal",900,-8.4,7,9.8,-109,8555481, "", ""},
+	{"rebel_corporal",900,-17.7,1,19.6,-175,8555474, "", ""},
+	{"rebel_corporal",900,-6466.8,398,5954.2,-57,0, "", ""},
+	{"rebel_general",900,15.9,1,19.4,-177,8555473, "", ""},
+	{"rebel_medic",900,-6517.3,398,5959.3,-133,0, "", ""},
+	{"rebel_medic",900,-16.2,1,15.9,-167,8555474, "", ""},
+	{"rebel_medic",900,13.3,1,-3.9,-2,8555475, "", ""},
+	{"rebel_medic",900,20.4,1,15,-164,8555473, "", ""},
+	{"rebel_recruiter",0,-29,0.5,-0.89,74,2625363, "", ""},
+	{"rebel_recruiter",60,-28.3633,-0.894984,0.335875,171.796,8105504, "calm", ""},
+	{"rebel_staff_corporal",900,-6562,405,5923.9,176,0, "", ""},
+	{"rebel_staff_corporal",900,-6528.1,405,5913.6,-169,0, "", ""},
+	{"rebel_staff_corporal",900,-6478.7,405,5913.3,161,0, "", ""},
+	{"rebel_staff_corporal",900,-6437,405,6035.8,19,0, "", ""},
+	{"rebel_staff_corporal",900,16.9,1,-1.4,-88,8555475, "", ""},
+	{"rebel_staff_corporal",900,-3.5,1,-19.8,93,8555477, "", ""},
+	{"rebel_staff_corporal",900,-3.4,1,-9.4,3,8555472, "", ""},
+	{"rebel_trooper",900,-6512.7,398,5954.8,-137,0, "", ""},
+	{"rebel_trooper",900,-6559,398,5986,116,0, "", ""},
+	{"rebel_trooper",900,-6550.8,398,6017.5,122,0, "", ""},
+	{"rebel_trooper",900,-6518.8,398,6043.2,0,0, "", ""},
+	{"rebel_trooper",900,-6462.3,398,6008.4,50,0, "", ""},
+	{"rebel_trooper",900,-6493.4,407.6,5891.7,-143,0, "", ""},
+	{"rebel_trooper",900,-6550.9,404.8,5905.8,-174,0, "", ""},
+	{"rebel_trooper",900,15.4,1,15.6,178,8555473, "", ""},
+	{"rebel_trooper",900,12,1,0.2,179,8555475, "", ""},
+	{"rebel_trooper",900,3.4,1,-1.8,-175,8555472, "", ""},
+	{"rebel_trooper",900,17.9,1,-19.9,-88,8555476, "", ""},
+	{"rebel_trooper",900,10.6,1,-19.8,85,8555476, "", ""},
+	{"rebel_trooper",900,3.6,1,-20.5,-53,8555477, "", ""},
+	{"rebel_trooper",900,-18.5,1,-19.8,92,8555478, "", ""},
+	{"rebel_trooper",900,-19.8,1,15.3,177,8555474, "", ""},
+	{"rebel_trooper",900,-0.9,7,9.5,-91,8555481, "", ""},
+	{"rebel_trooper",900,-10.4,7,7.5,-6,8555481, "", ""},
+	{"rebel_trooper",900,13.7,7,9.2,-27,8555482, "", ""},
+	{"rebel_trooper",900,8.3,7,8.8,16,8555482, "", ""},
+	{"renegade_corsec_trooper",300,5239.7,5,1532,169,0, "", ""},
+	{"renegade_corsec_trooper",300,5242.2,5,1534.8,104,0, "", ""},
+	{"renegade_corsec_trooper",300,-7.1,0.2,5.9,114,1855738, "", ""},
+	{"renegade_corsec_trooper",300,2.5,0.2,-1.4,-50,1855738, "", ""},
+	{"renegade_corsec_trooper",300,10.6,0.2,1.3,1,1855738, "", ""},
+	{"renegade_corsec_trooper",300,11.2,0.2,5.3,-171,1855738, "", ""},
+	{"renegade_corsec_trooper",300,1.6,-20.8,18.9,0,1855730, "", ""},
+	{"rhea",60,1.70956,1.75,-14.1406,4.76848,1855483, "neutral", ""},
+	{"rikkh",60,0.180826,1.75,-21.4842,28.861,1855484, "neutral", ""},
+	{"rogue_corsec_trooper",300,4.5,-20.8,30.9,-93,1855730, "", ""},
+	{"rogue_corsec_trooper",300,-0.9,-20.8,31.1,89,1855730, "", ""},
+	{"rogue_corsec_trooper",300,-7.1,-13.8,7.1,90,1855727, "", ""},
+	{"rogue_corsec_trooper",300,0.2,-13.8,7.9,-92,1855727, "", ""},
+	{"rogue_corsec_trooper",300,-4.1,0.2,1.8,-93,1855742, "", ""},
+	{"rogue_corsec_trooper",300,-10,0.2,5.8,137,1855742, "", ""},
+	{"rogue_corsec_trooper",300,5207,5,1515.2,76,0, "", ""},
+	{"rogue_corsec_trooper",300,5203,5,1515.7,-34,0, "", ""},
+	{"rtp_imperial_sergeant",60,6712.78,315,-5810.38,112.467,0, "npc_imperial", ""},
+	{"rtp_imperial_sergeant",60,6795.21,315,-5702.92,63.9209,0, "npc_imperial", ""},
+	{"rtp_imperial_sergeant",60,6823.92,315,-5597.88,121.846,0, "npc_imperial", ""},
+	{"rtp_leia_stormtrooper_guard",60,6646.02,330,-5931.59,357.677,0, "", ""},
+	{"rtp_leia_stormtrooper_guard",60,6644.26,330,-5937.08,5.98245,0, "", ""},
+	{"rtp_leia_stormtrooper_guard",60,6649.56,330,-5935.6,128.564,0, "", ""},
+	{"rtp_stormtrooper_elite_85",60,6699.38,315,-5809.72,220.681,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6707.89,315,-5814.25,131.647,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6794.42,315,-5696.6,90.5594,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6826.7,315,-5820.68,309.206,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6825.35,315,-5620.37,277.216,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6842.92,315,-5604.11,56.0358,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6852,315,-5831.51,128.695,0, "npc_imperial", ""},
+	{"rtp_stormtrooper_elite_85",60,6837.95,315,-5806.84,302.784,0, "npc_imperial", ""},
+	{"scientist",60,-1.72746,7.9,-31.075,180.005,1855463, "conversation", ""},
+	{"scientist",60,-7.22488,2.6,14.1431,135.008,2365397, "conversation", ""},
+	{"scientist",60,56.669,-0.521137,32.6689,360.011,1855678, "conversation", ""},
+	{"scientist",60,-5431.41,21,-2685.81,106.943,0, "calm", ""},
+	{"scientist",60,-5691.18,14.6,-6133.32,248.134,0, "calm", ""},
+	{"scientist",60,-5557.29,23.4,-6203.08,226.081,0, "calm", ""},
+	{"scolex_grath",60,3347.39,308,5490.74,251.277,0, "calm", ""},
+	{"shalera_the_hutt",60,-19.2041,-0.894989,22.0094,239.061,2625364, "calm", "Shalera the Hutt"},
+	{"skinkner",60,8.84694,-0.894992,21.4389,103.785,3005403, "calm", ""},
+	{"slicer",60,-18.6014,1.30292,-10.2146,180.006,1855463, "conversation", ""},
+	{"slicer",60,26.5189,2.12858,73.0319,180.005,2365399, "conversation", ""},
+	{"slicer",60,-18.6041,0.887072,41.0759,134.784,2365397, "conversation", ""},
+	{"slicer",60,-4.61669,0.639424,66.7263,0,1855675, "conversation", ""},
+	{"slicer",60,0.280297,0.184067,8.39289,180.007,3375392, "conversation", ""},
+	{"slicer",60,3.9861,-0.0513746,-2.0463,180.006,3005428, "conversation", ""},
+	{"slicer",60,-3557.49,86,3157.11,0,0, "conversation", ""},
+	{"slicer",60,10.9405,-0.894992,-15.0189,360.011,3005402, "conversation", ""},
+	{"slicer",60,-3450.64,78,3030.31,0,0, "conversation", ""},
+	{"slicer",60,-25.7262,-0.519991,11.5232,180.007,3005409, "conversation", ""},
+	{"slicer",60,-3384.54,86,3007.15,0,0, "conversation", ""},
+	{"slicer",60,0.68378,0.639421,62.1666,180.005,4255423, "conversation", ""},
+	{"slicer",60,-3152.32,31,2972.71,180.005,0, "conversation", ""},
+	{"slicer",60,-3088.9,31,2903.18,180.005,0, "conversation", ""},
+	{"slicer",60,5.78383,1.1544,-3.05638,360.011,1935476, "conversation", ""},
+	{"slicer",60,-18.0229,9,13.2195,360.011,1935472, "conversation", ""},
+	{"slicer",60,-5564.23,21,-2777.78,0,0, "conversation", ""},
+	{"slicer",60,-23.3263,1.6,4.96228,180.004,1935824, "conversation", ""},
+	{"slicer",60,40.8822,0.104999,3.32819,180.003,3075427, "conversation", ""},
+	{"slicer",60,1.28595,0.639421,66.8733,0,9665356, "conversation", ""},
+	{"smuggler_patrol_thief_5",60,-3296.89,86,3295.02,160.669,0, "calm", ""},
+	{"smuggler_patrol_thief_5",60,3048.33,300,5196.77,276.85,0, "calm", ""},
+	{"storm_commando",90,-3.02245,0.125266,-3.36259,360.011,2716035, "", ""},
+	{"stormtrooper",900,4680.98,25,-5821.58,250.209,0, "", ""},
+	{"stormtrooper",900,4678.34,25,-5829.9,145.272,0, "", ""},
+	{"stormtrooper",900,4675.82,25,-5825,195.727,0, "", ""},
+	{"stormtrooper",900,4678.32,25,-5824.85,256.483,0, "", ""},
+	{"stormtrooper",900,0.298594,0.125266,5.74716,202.607,2715914, "", ""},
+	{"stormtrooper",900,4688.47,25,-5766.6,272.17,0, "", ""},
+	{"stormtrooper",900,4693.39,25,-5762.66,34.5588,0, "", ""},
+	{"stormtrooper",900,4695.82,25,-5761.96,325.144,0, "", ""},
+	{"stormtrooper",900,4691.89,25,-5774.64,209.751,0, "", ""},
+	{"stormtrooper",900,4691.92,25,-5763.05,240.515,0, "", ""},
+	{"stormtrooper",900,-0.207822,0.125265,-1.57078,0,2715952, "", ""},
+	{"stormtrooper",900,1.4556,0.125264,-3.53267,0,2715952, "", ""},
+	{"stormtrooper",900,0.879039,0.125264,-2.57846,159.207,2715909, "", ""},
+	{"stormtrooper",900,-0.805658,0.125265,-3.68196,226.036,2715909, "", ""},
+	{"stormtrooper",900,4497.73,28.5915,-5829.8,277.53,0, "", ""},
+	{"stormtrooper",60,-3621.27,86,3142.55,28.2333,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3631.32,86,3136.46,252.779,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3410.43,86,3142.78,151.613,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3406.24,86,3137.43,204.684,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3395.4,86,3017.79,72.2994,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3395.16,86,3023.07,57.428,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3344.8,80.6241,3240.26,200.272,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3343.2,81.762,3240.54,177.569,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3767.99,86,3180.85,154.813,0, "", ""},
+	{"stormtrooper",60,-3761.11,86,3190.17,63.2948,0, "", ""},
+	{"stormtrooper",60,-3411.64,74,3344.7,179.356,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3416.53,74,3346.57,326.897,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3157.47,31,2797.69,352.434,0, "npc_imperial", ""},
+	{"stormtrooper",60,-3155.56,31,2792.15,348.853,0, "", ""},
+	{"stormtrooper_medic",900,0.673475,0.125265,-0.651415,0,2716032, "", ""},
+	{"stormtrooper_squad_leader",900,4675.99,25,-5809.56,216.285,0, "", ""},
+	{"stormtrooper_squad_leader",900,4678.77,25,-5757.9,226.393,0, "", ""},
+	{"surgical_droid_21b",60,-25.52,0.26,-3.48,357.849,1855535, "calm", ""},
+	{"surgical_droid_21b",60,-25.52,0.26,-3.48,5.78928,1935835, "calm", ""},
+	{"surgical_droid_21b",60,-1.19,0.184067,-1.89,230.753,4345354, "calm", ""},
+	{"swooper_leader",60,-5416.8,4.57113,-2286.37,76.0594,0, "calm", ""},
+	{"swooper_leader",60,-5415.8,5.33258,-2277.08,224.956,0, "calm", ""},
+	{"swooper_leader",60,-5420.58,3.58008,-2285.59,200.562,0, "calm", ""},
+	{"ta_667",60,-0.521681,0.999963,6.38795,13.7514,3005670, "npc_imperial", ""},
+	{"tarth_jaxx",60,-137.464,28,-4718.83,342.825,0, "neutral", ""},
+	{"thale_dustrunner",60,-0.052739,3.0782,-10.9388,187.319,1855463, "calm", ""},
+	{"trainer_1hsword",0,3284,300,5406,36,0, "", ""},
+	{"trainer_1hsword",0,-3320,86,3220,0,0, "", ""},
+	{"trainer_2hsword",0,-3374,86,3285,87,0, "", ""},
+	{"trainer_architect",0,11,1.13306,-14,0,2365800, "", ""},
+	{"trainer_architect",0,11,1.13306,-14,0,1855526, "", ""},
+	{"trainer_architect",0,11,1.13306,-14,0,3075412, "", ""},
+	{"trainer_architect",0,11,1.13306,-14,0,2955400, "", ""},
+	{"trainer_architect",0,11,1.13306,-14,0,1935463, "", ""},
+	{"trainer_armorsmith",0,-12,1.1,5,180,2365799, "", ""},
+	{"trainer_armorsmith",0,-12,1.1,5,180,1855525, "", ""},
+	{"trainer_armorsmith",0,-12,1.1,5,180,3075411, "", ""},
+	{"trainer_armorsmith",0,-12,1.1,5,180,2955399, "", ""},
+	{"trainer_armorsmith",0,-5118,21,-2337,131,0, "", ""},
+	{"trainer_armorsmith",0,-12,1.1,5,180,1935462, "", ""},
+	{"trainer_artisan",0,0,1.13306,-14,0,2365947, "", ""},
+	{"trainer_artisan",0,6755.99,314.994,-5655.01,269,0, "", ""},
+	{"trainer_artisan",0,0,1.13306,-14,0,1855517, "", ""},
+	{"trainer_artisan",0,-187,28,-4700,92,0, "", ""},
+	{"trainer_artisan",0,0,1.13306,-14,0,3055771, "", ""},
+	{"trainer_artisan",0,3311,308,5530,83,0, "", ""},
+	{"trainer_artisan",0,0,1.13306,-14,0,2955416, "", ""},
+	{"trainer_artisan",0,-5081,21,-2307,134,0, "", ""},
+	{"trainer_artisan",0,-5300.07,21,-2383,184,0, "", ""},
+	{"trainer_artisan",0,0,1.13306,-14,0,1935454, "", ""},
+	{"trainer_bioengineer",0,-424.092,28,-4651.85,94,0, "", ""},
+	{"trainer_bountyhunter",0,-5130,0,-2302,180,0, "", ""},
+	{"trainer_brawler",0,-11,1.13306,-14,0,1855508, "", ""},
+	{"trainer_brawler",0,-11,1.13306,-14,0,3075361, "", ""},
+	{"trainer_brawler",0,-11,1.13306,-14,0,1935445, "", ""},
+	{"trainer_brawler",0,-11,1.13306,-14,0,2365770, "", ""},
+	{"trainer_brawler",0,-11,1.13306,-14,0,2955427, "", ""},
+	{"trainer_brawler",0,-3193,31,2799,201,0, "", ""},
+	{"trainer_carbine",0,-5225,0,-2488,180,0, "", ""},
+	{"trainer_chef",0,3070,0,5260,180,0, "", ""},
+	{"trainer_chef",0,-3147,31,2792,0,0, "", ""},
+	{"trainer_chef",0,-11,1.1,-14,0,2955417, "", ""},
+	{"trainer_combatmedic",0,8.00847,0.184067,5.47322,87,4345354, "", ""},
+	{"trainer_combatmedic",0,26.676,0.26,5.41823,85,1855531, "", ""},
+	{"trainer_combatmedic",0,-33.9759,28,-4435.08,95,0, "", ""},
+	{"trainer_combatmedic",0,-4996.29,21,-2451.61,129,0, "", ""},
+	{"trainer_combatmedic",0,-17,0.26,10,180,1935835, "", ""},
+	{"trainer_commando",0,-3344,86,3292,0,0, "", ""},
+	{"trainer_creaturehandler",0,-55,28,-4566,0,0, "", ""},
+	{"trainer_creaturehandler",0,3162,300,5191,0,0, "", ""},
+	{"trainer_dancer",0,16.7961,-0.894993,-10.1031,3,2625355, "", ""},
+	{"trainer_dancer",0,17.6008,2.12878,53.4279,4,2365436, "", ""},
+	{"trainer_dancer",0,18.5885,2.12869,53.9366,0,2365399, "", ""},
+	{"trainer_dancer",0,34.5107,0.105,1.79681,89,3005398, "", ""},
+	{"trainer_dancer",0,17.7541,2.12875,53.6699,1,4395403, "", ""},
+	{"trainer_doctor",0,12,0.184067,-1,0,3375392, "", ""},
+	{"trainer_doctor",0,-2.9,0.7,2.5,132,7615446, "", ""},
+	{"trainer_doctor",0,-25.2731,0.26,-5,13,1855535, "", ""},
+	{"trainer_doctor",0,-3.95652,0.184067,0.467273,171,4345354, "", ""},
+	{"trainer_doctor",0,-5002,0,-2459,180,0, "", ""},
+	{"trainer_doctor",0,21,0.26,-5,0,1935831, "", ""},
+	{"trainer_doctor",0,-24.2179,0.26,-3.63691,195,1935835, "", ""},
+	{"trainer_droidengineer",0,-11,1.13306,-14,0,1935465, "", ""},
+	{"trainer_droidengineer",0,-11,1.13306,-14,0,2955402, "", ""},
+	{"trainer_droidengineer",0,-11,1.13306,-14,0,1855528, "", ""},
+	{"trainer_droidengineer",0,-11,1.13306,-14,0,2365802, "", ""},
+	{"trainer_droidengineer",0,-11,1.13306,-14,0,3075414, "", ""},
+	{"trainer_entertainer",0,6829,330,-5429,184,0, "", ""},
+	{"trainer_entertainer",0,30.358,2.12878,73.5895,265,4395403, "", ""},
+	{"trainer_entertainer",0,3305,308,5525,151,0, "", ""},
+	{"trainer_entertainer",0,-3152,31,2807,178,0, "", ""},
+	{"trainer_entertainer",0,26.1909,-0.894994,10.2549,260,3005399, "", ""},
+	{"trainer_entertainer",0,-5661,21.6,-2599.57,14,0, "", ""},
+	{"trainer_entertainer",0,6.15345,-0.894992,-19.3905,0,2625358, "", ""},
+	{"trainer_entertainer",0,-5062,21,-2291,124,0, "", ""},
+	{"trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697, "", ""},
+	{"trainer_entertainer",0,-173,28,-4739,0,0, "", ""},
+	{"trainer_entertainer",0,-228,28.6,-4118,0,0, "", ""},
+	{"trainer_imagedesigner",0,-21.4483,2.12878,74.4461,185,2365400, "", ""},
+	{"trainer_imagedesigner",0,-21.8004,2.12878,74.6487,184,2365437, "", ""},
+	{"trainer_imagedesigner",0,-2.51106,2.12878,70.8023,2,4395403, "", ""},
+	{"trainer_marksman",0,6770,0,-5714,180,0, "", ""},
+	{"trainer_marksman",0,0,1.13306,-14,0,2365769, "", ""},
+	{"trainer_marksman",0,0,1.13306,-14,0,2955426, "", ""},
+	{"trainer_marksman",0,-3130,0,2791,180,0, "", ""},
+	{"trainer_marksman",0,-165,28,-4746,92,0, "", ""},
+	{"trainer_marksman",0,0,1.13306,-14,0,1855507, "", ""},
+	{"trainer_marksman",0,0,1.13306,-14,0,3075360, "", ""},
+	{"trainer_marksman",0,0,1.13306,-14,0,1935444, "", ""},
+	{"trainer_marksman",0,-35,0,-4372,269,0, "", ""},
+	{"trainer_marksman",0,3338,0,5516,0,0, "", ""},
+	{"trainer_marksman",0,-5041,0,-2324,91,0, "", ""},
+	{"trainer_marksman",0,-5249,21,-2306,180,0, "", ""},
+	{"trainer_medic",0,-3139,31,2792,0,0, "", ""},
+	{"trainer_medic",0,-12.6494,0.18406,2.16918,111,3375392, "", ""},
+	{"trainer_medic",0,-17.7359,0.26,-0.58142,137,1855535, "", ""},
+	{"trainer_medic",0,14.2688,0.26,4.66124,159,1855531, "", ""},
+	{"trainer_medic",0,-33,28,-4422,72,0, "", ""},
+	{"trainer_medic",0,3341,308,5517,47,0, "", ""},
+	{"trainer_medic",0,-15.9755,0.26,0.30427,15,1935835, "", ""},
+	{"trainer_medic",0,13.8906,0.26,3.8275,183,1935831, "", ""},
+	{"trainer_medic",0,-5027,21,-2311,266,0, "", ""},
+	{"trainer_merchant",0,-369,28,-4533,92,0, "", ""},
+	{"trainer_merchant",0,12,1.13306,6,180,3075410, "", ""},
+	{"trainer_merchant",0,12,1.13306,6,180,2955398, "", ""},
+	{"trainer_merchant",0,12,1.13306,6,180,1935461, "", ""},
+	{"trainer_merchant",0,12,1.13306,6,180,2365798, "", ""},
+	{"trainer_musician",0,21.8947,2.12814,63.5,0,2365399, "", ""},
+	{"trainer_musician",0,22.0995,2.12823,63.5054,0,4395403, "", ""},
+	{"trainer_musician",0,-5067,21,-2296,158,0, "", ""},
+	{"trainer_musician",0,21.1399,-0.894993,8.20648,120,2625355, "", ""},
+	{"trainer_musician",0,21.9985,2.12818,63.5,0,2365436, "", ""},
+	{"trainer_musician",0,-5408,24.7288,-6260,50,0, "", ""},
+	{"trainer_pistol",0,-5220,0,-2488,180,0, "", ""},
+	{"trainer_polearm",0,-3412,86,3084,0,0, "", ""},
+	{"trainer_politician",0,-218,0,-4500,0,0, "", ""},
+	{"trainer_ranger",0,-505,0,-4633,180,0, "", ""},
+	{"trainer_rifleman",0,-5234,21,-2488,176,0, "", ""},
+	{"trainer_scout",0,-169.45,28,-4712.58,134,0, "", ""},
+	{"trainer_scout",0,-12,1.13306,5.5,180,1855505, "", ""},
+	{"trainer_scout",0,-12,1.13306,5.5,180,3075358, "", ""},
+	{"trainer_scout",0,3330.01,308,5512.46,204,0, "", ""},
+	{"trainer_scout",0,-12,1.13306,5.5,180,2955424, "", ""},
+	{"trainer_scout",0,-3164.42,31,2802.08,78,0, "", ""},
+	{"trainer_scout",0,-5061.86,21,-2322.52,36,0, "", ""},
+	{"trainer_scout",0,-12,1.13306,5.5,180,1935442, "", ""},
+	{"trainer_scout",0,-12,1.13306,5.5,180,2365767, "", ""},
+	{"trainer_scout",0,6737.85,315,-5491.3,31,0, "", ""},
+	{"trainer_tailor",0,3077,300,5251,0,0, "", ""},
+	{"trainer_tailor",0,11,1.1,-14,0,2955415, "", ""},
+	{"trainer_unarmed",0,-3570,86,3146,233,0, "", ""},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2365801, "", ""},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1855527, "", ""},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,3075413, "", ""},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,2955401, "", ""},
+	{"trainer_weaponsmith",0,-5106,0,-2324,180,0, "", ""},
+	{"trainer_weaponsmith",0,-2.5,1.13306,-8.4,91,1935464, "", ""},
+	{"ulaire_roye",60,-5048.68,21,-2291.24,122.799,0, "neutral", ""},
+	{"visionary_of_lord_nyax",900,15.9,-13.8,-13.2,-4,6036004, "", ""},
+	{"visionary_of_lord_nyax",900,12.7,-13.8,-13.5,-3,6036004, "", ""},
+	{"visionary_of_lord_nyax",900,7,-13.8,12.1,-87,6036002, "", ""},
+	{"visionary_of_lord_nyax",900,-3.5,-3.3,4.1,-178,6035998, "", ""},
+	{"visionary_of_lord_nyax",900,1376.4,31,-317.1,133,0, "", ""},
+	{"vrak",60,-26.3961,-0.894991,23.1611,112,2625364, "nervous", ""},
+	{"willham_burke",60,0.861081,0.999995,2.33215,346.259,3075366, "neutral", ""},
+	{"zealot_of_lord_nyax",900,1365.6,31,-319.8,60,0, "", ""},
+	{"zealot_of_lord_nyax",900,1367.3,31,-311,20,0, "", ""},
+	{"zealot_of_lord_nyax",900,0,-13.8,11.6,-150,6036002, "", ""},
+	{"zealot_of_lord_nyax",900,-4.3,-13.8,11.5,170,6036002, "", ""},
+	{"zekka_thyne",60,-22.3764,1.6,-15.0418,86.3112,1855554, "calm", ""},
+	{"zhanks",60,1.25263,0.999968,6.92433,340.53,3005670, "npc_imperial", ""},
+	{"zo_ssa",60,-1.1331,0.999991,1.50214,21.773,3075366, "neutral", ""},
 }
 
 corellia_badges = {

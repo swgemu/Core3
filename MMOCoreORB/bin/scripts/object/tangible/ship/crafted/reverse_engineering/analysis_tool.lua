@@ -52,6 +52,7 @@ object_tangible_ship_crafted_reverse_engineering_analysis_tool = object_tangible
 	experimentalMin = {0, 0, 5},
 	experimentalMax = {0, 0, 20},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff")

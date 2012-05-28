@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_parwan_nutricake = object_draft_schematic_fo
    ingredientSlotType = {0, 0, 0, 0, 3},
    resourceTypes = {"wheat", "rice_wild", "fruit_flowers", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {15, 15, 5, 5, 1},
-   combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

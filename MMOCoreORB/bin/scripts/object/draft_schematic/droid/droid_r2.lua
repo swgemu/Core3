@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_r2 = object_draft_schematic_droid_shared_droi
    ingredientSlotType = {0, 0, 1, 1, 1, 1, 1, 3, 3},
    resourceTypes = {"chemical", "chemical", "object/tangible/component/droid/shared_advanced_droid_frame.iff", "object/tangible/component/droid/shared_droid_brain_advanced.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system_advanced.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff", "object/tangible/component/droid/shared_combat_socket_bank.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"},
    resourceQuantities = {120, 90, 1, 1, 1, 1, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

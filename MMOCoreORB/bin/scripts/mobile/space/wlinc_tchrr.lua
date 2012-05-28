@@ -28,7 +28,7 @@ wlinc_tchrr = Creature:new {
 
 	templates = {"object/mobile/space_greeter_bestine_bookie.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

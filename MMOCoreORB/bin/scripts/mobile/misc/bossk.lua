@@ -28,7 +28,7 @@ bossk = Creature:new {
 
 	templates = {"object/mobile/bossk.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

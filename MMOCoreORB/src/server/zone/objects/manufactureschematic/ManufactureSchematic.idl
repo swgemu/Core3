@@ -54,6 +54,7 @@ include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.installation.factory.FactoryObject;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
@@ -105,6 +106,7 @@ class ManufactureSchematic extends IntangibleObject {
 
 	protected transient boolean assembled;
 	protected transient boolean completed;
+	protected transient boolean initialized;
 	protected transient int ingredientCounter;
 	protected transient int experimentingCounter;
 	protected transient int experimentingCounterPrevious;
@@ -126,6 +128,20 @@ class ManufactureSchematic extends IntangibleObject {
 		craftingValues = new CraftingValues();
 		
 		prototype = null;
+		
+		draftSchematic = null;
+		dataSize = 0;
+		complexity = 0;
+		crafter = null;
+		
+		assembled = false;
+		completed = false;
+		initialized = false;
+		ingredientCounter = 0;
+		experimentingCounter = 0;
+		experimentingCounterPrevious = 0;
+		
+		possibleSyncIssue = false;
 		
 		manufactureLimit = 1000;
 		
@@ -306,8 +322,8 @@ class ManufactureSchematic extends IntangibleObject {
 		factoryBlueprint.canManufactureItem(type, displayedName);
 	}
 	
-	public void manufactureItem() {
-		factoryBlueprint.manufactureItem();
+	public void manufactureItem(FactoryObject factory) {
+		factoryBlueprint.manufactureItem(factory);
 		setManufactureLimit(getManufactureLimit() - 1);
 	}
 	

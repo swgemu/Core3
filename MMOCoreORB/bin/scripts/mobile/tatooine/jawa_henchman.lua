@@ -30,19 +30,18 @@ jawa_henchman = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "color_crystals", chance = 400000},
-				{group = "crystals_good", chance = 300000},
-				{group = "pistols", chance = 1600000},
-				{group = "rifles", chance = 1600000},
-				{group = "carbines", chance = 1100000}
+				{group = "junk", chance = 3000000},
+				{group = "color_crystals", chance = 200000},
+				{group = "pistols", chance = 500000},
+				{group = "rifles", chance = 500000},
+				{group = "carbines", chance = 500000}
 			},
-			lootChance = 5500000
-		}				
+			lootChance = 3500000
+		}							
 	},
-	weapons = {"pirate_weapons_light"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_henchman, "jawa_henchman")

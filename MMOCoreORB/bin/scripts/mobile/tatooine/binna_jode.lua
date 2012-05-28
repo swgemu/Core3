@@ -29,7 +29,7 @@ binna_jode = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_binna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

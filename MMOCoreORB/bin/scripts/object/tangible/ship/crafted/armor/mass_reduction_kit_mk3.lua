@@ -52,6 +52,7 @@ object_tangible_ship_crafted_armor_mass_reduction_kit_mk3 = object_tangible_ship
 	experimentalMin = {0, 0, -195, -195, -575},
 	experimentalMax = {0, 0, -144, -144, -425},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_mass_reduction_kit_mk3, "object/tangible/ship/crafted/armor/mass_reduction_kit_mk3.iff")

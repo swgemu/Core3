@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_hat_field_04 = object_draft_schematic_c
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel", "petrochem_inert", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {25, 20, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

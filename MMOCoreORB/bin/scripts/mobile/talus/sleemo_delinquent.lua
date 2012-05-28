@@ -30,7 +30,7 @@ sleemo_delinquent = Creature:new {
 				"object/mobile/dressed_hoodlum_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sleemo_delinquent, "sleemo_delinquent")

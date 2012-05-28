@@ -29,7 +29,7 @@ patron_devaronian = Creature:new {
 		"object/mobile/dressed_patron_devaronian_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

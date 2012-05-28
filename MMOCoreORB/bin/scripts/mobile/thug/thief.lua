@@ -32,7 +32,7 @@ thief = Creature:new {
 		"object/mobile/dressed_binayre_thief_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(thief, "thief")

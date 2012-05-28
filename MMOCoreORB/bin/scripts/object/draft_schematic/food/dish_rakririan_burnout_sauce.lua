@@ -67,7 +67,6 @@ object_draft_schematic_food_dish_rakririan_burnout_sauce = object_draft_schemati
    ingredientSlotType = {0, 1, 0, 0, 3},
    resourceTypes = {"water", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "softwood_evergreen", "fuel_petrochem_liquid", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {20, 1, 30, 20, 1},
-   combineTypes = {0, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

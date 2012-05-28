@@ -28,10 +28,9 @@ imprisoned_jabba_employee = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_thief.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imprisoned_jabba_employee, "imprisoned_jabba_employee")

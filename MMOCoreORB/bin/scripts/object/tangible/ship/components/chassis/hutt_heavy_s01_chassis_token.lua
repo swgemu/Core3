@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_hutt_heavy_s01_chassis_token = object_ta
 	experimentalMin = {0, 0, 2500, 107750},
 	experimentalMax = {0, 0, 3500, 112250},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_hutt_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/hutt_heavy_s01_chassis_token.iff")

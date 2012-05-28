@@ -31,14 +31,14 @@ borvos_soldier = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "color_crystals", chance = 500000},
+				{group = "junk", chance = 3000000},
+				{group = "color_crystals", chance = 200000},
 				{group = "tailor_components", chance = 500000},
-				{group = "loot_kits", chance = 1500000},
-				{group = "rilfes", chance = 1750000},
-				{group = "carbines", chance = 1750000}
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "rilfes", chance = 1000000},
+				{group = "carbines", chance = 1000000}
 			},
-			lootChance = 4800000
+			lootChance = 3200000
 		}				
 	},
 	weapons = {"ranged_weapons"},

@@ -29,7 +29,7 @@ vraker_orde = Creature:new {
 
 	templates = {"object/mobile/dressed_vraker_orde.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

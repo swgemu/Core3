@@ -28,7 +28,7 @@ jabba_the_hutt = Creature:new {
 
 	templates = {"object/mobile/jabba_the_hutt.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

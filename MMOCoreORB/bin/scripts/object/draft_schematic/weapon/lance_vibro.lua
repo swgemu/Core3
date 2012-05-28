@@ -67,7 +67,6 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"steel_ditanium", "copper_polysteel", "metal", "object/tangible/component/weapon/shared_vibro_unit.iff"},
    resourceQuantities = {38, 17, 6, 2},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

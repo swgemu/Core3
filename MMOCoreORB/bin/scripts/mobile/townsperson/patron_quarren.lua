@@ -29,7 +29,7 @@ patron_quarren = Creature:new {
 		"object/mobile/dressed_patron_quarren_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

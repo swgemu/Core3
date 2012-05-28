@@ -28,7 +28,7 @@ govenor = Creature:new {
 
 	templates = {"object/mobile/dressed_governor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

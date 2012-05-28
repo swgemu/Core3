@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_disease_action_b = object_draft_schemat
    ingredientSlotType = {0, 0, 0, 1, 1, 1},
    resourceTypes = {"metal_nonferrous", "meat_insect", "radioactive", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"},
    resourceQuantities = {6, 15, 20, 1, 1, 2},
-   combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

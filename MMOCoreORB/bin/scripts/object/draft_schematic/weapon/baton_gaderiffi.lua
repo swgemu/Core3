@@ -67,7 +67,6 @@ object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_sh
    ingredientSlotType = {0, 0, 0, 1},
    resourceTypes = {"iron", "metal", "metal", "object/tangible/component/weapon/shared_reinforcement_core.iff"},
    resourceQuantities = {20, 23, 5, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

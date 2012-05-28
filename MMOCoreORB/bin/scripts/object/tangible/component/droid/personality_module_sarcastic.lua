@@ -52,6 +52,7 @@ object_tangible_component_droid_personality_module_sarcastic = object_tangible_c
 	experimentalMin = {0, 0, 5, 1000, -10, 10},
 	experimentalMax = {0, 0, 15, 1000, 15, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_sarcastic, "object/tangible/component/droid/personality_module_sarcastic.iff")

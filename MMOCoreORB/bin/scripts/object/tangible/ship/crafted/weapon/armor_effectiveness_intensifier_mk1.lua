@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk1 = object
 	experimentalMin = {0, 0, -54, 46},
 	experimentalMax = {0, 0, -46, 54},
 	experimentalPrecision = {0, 0, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk1, "object/tangible/ship/crafted/weapon/armor_effectiveness_intensifier_mk1.iff")

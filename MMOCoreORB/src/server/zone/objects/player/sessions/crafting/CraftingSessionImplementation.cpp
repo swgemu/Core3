@@ -108,26 +108,6 @@ int CraftingSessionImplementation::startSession() {
 	crafter->sendMessage(ocm);
 	/// ***********************************************
 
-	/// Send all the ingredients to the player
-	for (int i = 0; i < currentSchematicList.size(); ++i) {
-
-		DraftSchematic* draftSchematic = currentSchematicList.get(i).get();
-
-		/// Object Controller Message 1BF
-		draftSchematic->sendDraftSlotsTo(crafter);
-		// End OBJC 1BF***********************************
-	}
-
-	/// Send all the experimental properties to the player
-	for (int i = 0; i < currentSchematicList.size(); ++i) {
-
-		DraftSchematic* draftSchematic = currentSchematicList.get(i).get();
-
-		/// Object Controller Message 207
-		draftSchematic->sendResourceWeightsTo(crafter);
-		// End OBJC 207***********************************
-	}
-
 	/// Reset session state
 	state = 1;
 
@@ -251,12 +231,7 @@ void CraftingSessionImplementation::sendSlotMessage(int counter, int message) {
 void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	if (index >= currentSchematicList.size()) {
-		StringBuffer message;
-		message << "Selected draft schematic is out of range, index = "
-				<< index << " Schematic List size = "
-				<< currentSchematicList.size();
-		crafter->sendSystemMessage(message.toString());
-		error(message.toString());
+		crafter->sendSystemMessage("Invalid Schematic Index");
 		closeCraftingWindow(1);
 		cancelSession();
 		return;
@@ -466,7 +441,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponents->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
 
-		String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
+		//String craftingComponentsSatchelPath = "object/tangible/container/base/base_container_volume.iff";
+		String craftingComponentsSatchelPath = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.iff";
 		craftingComponentsSatchel = crafter->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
 
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);

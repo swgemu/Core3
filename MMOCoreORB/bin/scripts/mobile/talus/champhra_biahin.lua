@@ -28,7 +28,7 @@ champhra_biahin = Creature:new {
 
 	templates = {"object/mobile/dressed_champhra_biahin.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

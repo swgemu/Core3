@@ -28,7 +28,7 @@ specops_agent = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specops_agent, "specops_agent")

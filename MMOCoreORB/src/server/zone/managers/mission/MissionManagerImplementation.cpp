@@ -601,7 +601,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getZone()->getZoneName());
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName(templateObject->getObjectName());
+	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
 
@@ -890,6 +890,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	String planetName = player->getZone()->getZoneName();
 
 	Vector3 playerPosition = player->getWorldPosition();
+	playerPosition.setZ(0);
 	Vector3* startPosition = &playerPosition;
 
 	//Lock spawn point map for the search.

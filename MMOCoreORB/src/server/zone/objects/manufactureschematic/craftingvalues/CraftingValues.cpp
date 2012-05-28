@@ -98,15 +98,15 @@ CreatureObject* CraftingValues::getPlayer() {
 }
 
 void CraftingValues::addExperimentalProperty(const String& title, const String& subtitle,
-		const float min, const float max, const int precision, const bool filler) {
+		const float min, const float max, const int precision, const bool filler, const int combine) {
 	Subclasses* subclasses;
 
 	if (experimentalValuesMap.contains(title)) {
 		subclasses = experimentalValuesMap.get(title);
 
-		subclasses->addSubtitle(subtitle, min, max, precision, filler);
+		subclasses->addSubtitle(subtitle, min, max, precision, filler, combine);
 	} else {
-		subclasses = new Subclasses(title, subtitle, min, max, precision, filler);
+		subclasses = new Subclasses(title, subtitle, min, max, precision, filler, combine);
 
 		experimentalValuesMap.put(title, subclasses);
 	}
@@ -826,6 +826,26 @@ void CraftingValues::setPrecision(const String& attribute, const int value) {
 			}
 		}
 	}
+}
+
+short CraftingValues::getCombineType(const String& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return values->getCombineType();
+			}
+		}
+	}
+
+	return (int)VALUENOTFOUND;
 }
 
 void CraftingValues::recalculateValues(bool initial) {

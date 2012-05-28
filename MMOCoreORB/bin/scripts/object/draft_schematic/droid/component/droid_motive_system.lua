@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "metal", "chemical", "ore", "metal"},
    resourceQuantities = {10, 15, 3, 5, 5, 4},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

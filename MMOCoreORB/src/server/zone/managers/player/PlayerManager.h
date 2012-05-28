@@ -233,6 +233,8 @@ using namespace server::login::account;
 
 #include "server/zone/managers/player/PermissionLevelList.h"
 
+#include "server/zone/objects/creature/variables/Skill.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -322,7 +324,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -393,6 +395,14 @@ public:
 	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
+
+	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
+
+	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
+
+	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
+
+	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -520,7 +530,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -595,6 +605,14 @@ public:
 	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
+
+	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
+
+	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
+
+	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
+
+	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
 
 	WeakReference<PlayerManager*> _this;
 
@@ -693,7 +711,7 @@ public:
 
 	void startListen(CreatureObject* creature, unsigned long long entid);
 
-	void lootAll(CreatureObject* player, AiAgent* creature);
+	void lootAll(CreatureObject* player, CreatureObject* creature);
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
@@ -760,6 +778,8 @@ public:
 	String banCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, unsigned int seconds, const String& reason);
 
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
+
+	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
 
 };
 

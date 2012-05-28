@@ -28,7 +28,7 @@ palpatine = Creature:new {
 
 	templates = {"object/mobile/palpatine.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

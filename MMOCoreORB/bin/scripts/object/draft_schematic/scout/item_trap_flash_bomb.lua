@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_flash_bomb = object_draft_schematic_scout
    ingredientSlotType = {0, 0},
    resourceTypes = {"bone", "metal"},
    resourceQuantities = {20, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

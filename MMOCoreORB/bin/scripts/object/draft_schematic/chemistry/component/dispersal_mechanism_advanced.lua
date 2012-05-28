@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_dispersal_mechanism_advanced = object
    ingredientSlotType = {0, 0},
    resourceTypes = {"petrochem_fuel_liquid_type2", "fiberplast_yavin4"},
    resourceQuantities = {25, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

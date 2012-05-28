@@ -28,7 +28,7 @@ logro_elsin = Creature:new {
 
 	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

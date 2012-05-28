@@ -84,7 +84,7 @@ object_tangible_wearables_armor_tantel_armor_tantel_skreej_boots = object_tangib
 				"object/mobile/vendor/zabrak_male.iff" },
 
 	-- Damage types in WeaponObject
-	vunerability = LIGHTSABER,
+	vulnerability = LIGHTSABER,
 
 	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
@@ -112,6 +112,7 @@ object_tangible_wearables_armor_tantel_armor_tantel_skreej_boots = object_tangib
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 9, 22, 9, 1, 2, 5, 11250},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 6, 13, 5, 1, 2, 30, 18750},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_armor_tantel_skreej_boots, "object/tangible/wearables/armor/tantel/armor_tantel_skreej_boots.iff")

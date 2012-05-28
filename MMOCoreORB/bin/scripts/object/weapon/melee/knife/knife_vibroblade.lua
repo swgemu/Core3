@@ -129,6 +129,7 @@ object_weapon_melee_knife_knife_vibroblade = object_weapon_melee_knife_shared_kn
 	experimentalMin = {0, 0, 11, 60, 4.2, 6, 750, -2, -2, 3, -2, 4, 12, 25, 12},
 	experimentalMax = {0, 0, 20, 111, 2.9, 12, 1500, 8, 8, 3, 8, 4, 2, 11, 2},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_vibroblade, "object/weapon/melee/knife/knife_vibroblade.iff")

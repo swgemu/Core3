@@ -67,7 +67,6 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast"},
    resourceQuantities = {60, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -1,8 +1,8 @@
 ewok_outcast_raider = Creature:new {
 	objectName = "@mob/creature_names:ewok_outcast_raider",
-	socialGroup = "Ewok Outcast",
+	socialGroup = "self",
 	pvpFaction = "",
-	faction = "",
+	faction = "gondula_tribe",
 	level = 31,
 	chanceHit = 0.39,
 	damageMin = 310,
@@ -30,8 +30,7 @@ ewok_outcast_raider = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(ewok_outcast_raider, "ewok_outcast_raider")

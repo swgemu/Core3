@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
    ingredientSlotType = {1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "metal"},
    resourceQuantities = {4, 40},
-   combineTypes = {1, 0},
    contribution = {100, 100},
 
 

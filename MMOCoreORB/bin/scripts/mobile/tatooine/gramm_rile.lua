@@ -29,7 +29,7 @@ gramm_rile = Creature:new {
 
 	templates = {"object/mobile/mos_taike_mayor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "mos_taike_mayor_outfit",
 	attacks = {

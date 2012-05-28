@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_ubese_advanced = object_draft_schemat
    ingredientSlotType = {0, 0, 0, 3, 3},
    resourceTypes = {"iron_axidite", "steel_neutronium", "fiberplast", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {25, 15, 10, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

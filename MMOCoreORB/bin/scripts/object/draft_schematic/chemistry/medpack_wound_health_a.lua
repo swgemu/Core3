@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_wound_health_a = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"organic", "inorganic"},
    resourceQuantities = {8, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

@@ -27,7 +27,7 @@ jan_dodonna = Creature:new {
 
 	templates = {"object/mobile/dressed_jan_dodonna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

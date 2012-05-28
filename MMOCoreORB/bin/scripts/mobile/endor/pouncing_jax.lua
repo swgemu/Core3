@@ -1,6 +1,6 @@
 pouncing_jax = Creature:new {
 	objectName = "@mob/creature_names:pouncing_jax",
-	socialGroup = "Jax",
+	socialGroup = "jax",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

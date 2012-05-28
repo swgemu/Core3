@@ -170,10 +170,6 @@ class PlayerObject extends IntangibleObject {
 	
 	@weakReference
 	protected BuildingObject cloningFacility;
-	
-	/// Reference to last used Survey Tool
-	@weakReference
-	protected SurveyTool surveyTool;
 
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
@@ -191,6 +187,11 @@ class PlayerObject extends IntangibleObject {
 	@weakReference
 	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
 	
+	
+	// Jedi Trainers.
+	protected float trainerCoordinatesX;
+	protected float trainerCoordinatesY;
+	protected string trainerZone;
 	
 	@dereferenced
 	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
@@ -388,6 +389,13 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
 	 */
 	public native void removeExperience(final string xpType, boolean notifyClient = true);
+
+    /**
+	 * Checks if the player has capped the experience type.
+	 * @param xpType The string value for the type of experience to check.
+	 * @return true if experience is capped, false otherwise.
+	 */
+	public native boolean hasCappedExperience(final string xpType);
 	
 	/**
 	 * Adds waypoint object to waypointList
@@ -626,6 +634,27 @@ class PlayerObject extends IntangibleObject {
 	
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;
+	}
+	
+	public void setTrainerCoordinates(float x, float y) {
+		trainerCoordinatesX = x;
+		trainerCoordinatesY = y;
+	}
+	
+	public float getTrainerCoordinatesY() {
+		return trainerCoordinatesY;
+	}
+	
+	public float getTrainerCoordinatesX() {
+		return trainerCoordinatesX;
+	}
+	
+	public void setTrainerZone(string zone) {
+		trainerZone = zone;
+	}
+	
+	public string getTrainerZone() {
+		return trainerZone;
 	}
 	
 	@local
@@ -886,21 +915,6 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void awardBadge(unsigned int badge);
-	
-	/**
-	 * Set active survey tool, this is set whenever
-	 * a SurveyTool is used
-	 */
-	public void setSurveyTool(SurveyTool tool) {
-		surveyTool = tool;
-	}
-	
-	/**
-	 * Returns the active SurveyTool
-	 */
-	public SurveyTool getSurveyTool() {
-		return surveyTool;
-	}
 	
 	public void setTeleporting(boolean val) {
 		teleporting = val;

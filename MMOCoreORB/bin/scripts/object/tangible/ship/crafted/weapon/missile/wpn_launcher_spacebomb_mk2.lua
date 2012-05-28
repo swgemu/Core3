@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_spacebomb_mk2 = object_
 	experimentalMin = {0, 0, 1169, 13260, 585, 1, 1275},
 	experimentalMax = {0, 0, 1582, 17940, 791, 1, 1725},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_wpn_launcher_spacebomb_mk2, "object/tangible/ship/crafted/weapon/missile/wpn_launcher_spacebomb_mk2.iff")

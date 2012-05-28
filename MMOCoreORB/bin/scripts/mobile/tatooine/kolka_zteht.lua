@@ -28,7 +28,7 @@ kolka_zteht = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_artist02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

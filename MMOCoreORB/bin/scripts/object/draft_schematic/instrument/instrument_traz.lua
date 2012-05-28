@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instr
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_nonferrous", "metal"},
    resourceQuantities = {45, 15},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

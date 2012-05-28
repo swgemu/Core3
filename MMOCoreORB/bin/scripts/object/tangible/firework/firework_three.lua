@@ -54,6 +54,7 @@ object_tangible_firework_firework_three = object_tangible_firework_shared_firewo
 	experimentalMin = {0, 0, 1000, 2},
 	experimentalMax = {0, 0, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_firework_three, "object/tangible/firework/firework_three.iff")

@@ -209,10 +209,8 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 
 	Locker _lock(deed, creature);
 
-	ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-
 	//Ensure that it is the correct deed, and that it is in a container in the creature's inventory.
-	if (deed == NULL || !deed->isASubChildOf(inventory)) {
+	if (deed == NULL || !deed->isASubChildOf(creature)) {
 		creature->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
 		return 1;
 	}
@@ -537,15 +535,16 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			deed->setSurplusMaintenance(maint - redeedCost);
 			deed->setSurplusPower(structureObject->getSurplusPower());
 
+			destroyStructure(structureObject);
+
 			inventory->transferObject(deed, -1, true);
 			inventory->broadcastObject(deed, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}
 	} else {
+		destroyStructure(structureObject);
 		creature->sendSystemMessage("@player_structure:structure_destroyed"); //Structured destroyed.
 	}
-
-	destroyStructure(structureObject);
 
 	return session->cancelSession();
 }

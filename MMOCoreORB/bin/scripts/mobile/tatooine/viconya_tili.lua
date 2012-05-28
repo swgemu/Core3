@@ -28,7 +28,7 @@ viconya_tili = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_tatooine_02.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

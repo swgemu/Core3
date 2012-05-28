@@ -29,7 +29,7 @@ shaki_hamachil = Creature:new {
 
 	templates = {"object/mobile/dressed_shaki_hamachil.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

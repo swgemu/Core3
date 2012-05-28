@@ -29,7 +29,7 @@ keanna_likyna = Creature:new {
 
 	templates = {"object/mobile/dressed_keanna_likyna.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

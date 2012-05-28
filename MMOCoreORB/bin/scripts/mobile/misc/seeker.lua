@@ -26,7 +26,7 @@ seeker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/shared_darth_maul_probe_droid.iff"},
+	templates = {"object/creature/npc/droid/crafted/probe_droid.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

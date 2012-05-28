@@ -27,7 +27,7 @@ jinkins = Creature:new {
 
 	templates = {"object/mobile/jinkins.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

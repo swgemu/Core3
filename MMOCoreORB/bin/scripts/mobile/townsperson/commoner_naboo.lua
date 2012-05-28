@@ -61,7 +61,7 @@ commoner_naboo = Creature:new {
 					},
 				
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ nurla_slinthiss = Creature:new {
 
 	templates = {"object/mobile/dressed_nurla_slinthiss.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

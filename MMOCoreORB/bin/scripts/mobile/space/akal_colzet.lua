@@ -28,7 +28,7 @@ akal_colzet = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_trainer_space_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

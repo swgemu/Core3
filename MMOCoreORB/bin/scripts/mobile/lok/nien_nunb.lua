@@ -27,7 +27,7 @@ nien_nunb = Creature:new {
 
 	templates = {"object/mobile/dressed_patron_sullustan_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -28,7 +28,7 @@ ral_mundi = Creature:new {
 
 	templates = {"object/mobile/space_greeter_coronet_merchant.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

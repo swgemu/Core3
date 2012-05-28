@@ -52,6 +52,7 @@ object_tangible_component_droid_medic_module_2 = object_tangible_component_droid
 	experimentalMin = {0, 0, 5, 1000, -10, 3},
 	experimentalMax = {0, 0, 15, 1000, 15, 5},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_medic_module_2, "object/tangible/component/droid/medic_module_2.iff")

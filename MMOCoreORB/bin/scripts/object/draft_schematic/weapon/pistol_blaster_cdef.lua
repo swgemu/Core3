@@ -67,7 +67,6 @@ object_draft_schematic_weapon_pistol_blaster_cdef = object_draft_schematic_weapo
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "chemical", "metal"},
    resourceQuantities = {12, 6, 3},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

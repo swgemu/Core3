@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_medpack_wound_strength_e = object_draft_schemat
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"vegetable_tubers", "petrochem_inert_polymer", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {24, 24, 1, 2, 3},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

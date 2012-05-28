@@ -149,6 +149,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 
+#include "server/zone/managers/creature/AiMap.h"
+
 #include "server/zone/managers/ZoneManager.h"
 
 #include "system/util/Vector.h"
@@ -180,6 +182,8 @@ public:
 
 	void loadSpawnAreas();
 
+	void loadAiTemplates();
+
 	void loadSingleSpawns();
 
 	void loadTrainers();
@@ -199,6 +203,12 @@ public:
 	int getSpawnedRandomCreatures();
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
+
+	Vector<float>* getTrainerObjectsX();
+
+	Vector<float>* getTrainerObjectsY();
+
+	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -232,6 +242,8 @@ protected:
 
 	SpawnAreaMap spawnAreaMap;
 
+	Reference<AiMap* > aiMap;
+
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
@@ -261,6 +273,8 @@ public:
 
 	void loadSpawnAreas();
 
+	void loadAiTemplates();
+
 	void loadSingleSpawns();
 
 	void loadTrainers();
@@ -288,6 +302,12 @@ public:
 	int getSpawnedRandomCreatures();
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
+
+	Vector<float>* getTrainerObjectsX();
+
+	Vector<float>* getTrainerObjectsY();
+
+	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -349,6 +369,8 @@ public:
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
 	void loadSpawnAreas();
+
+	void loadAiTemplates();
 
 	void loadSingleSpawns();
 

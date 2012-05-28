@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_hood_s03 = object_draft_schematic_c
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "hide"},
    resourceQuantities = {15, 10},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

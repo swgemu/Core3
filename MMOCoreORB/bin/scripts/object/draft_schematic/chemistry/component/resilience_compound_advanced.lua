@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_resilience_compound_advanced = object
    ingredientSlotType = {0, 0},
    resourceTypes = {"gas_reactive_tolium", "radioactive_type1"},
    resourceQuantities = {24, 24},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

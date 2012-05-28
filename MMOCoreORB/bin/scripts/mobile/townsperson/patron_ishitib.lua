@@ -29,7 +29,7 @@ patron_ishitib = Creature:new {
 		"object/mobile/dressed_patron_ishi_tib_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

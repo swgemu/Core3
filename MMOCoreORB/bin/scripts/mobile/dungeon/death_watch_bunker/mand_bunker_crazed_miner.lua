@@ -29,7 +29,7 @@ mand_bunker_crazed_miner = Creature:new {
 
 	templates = {"object/mobile/dressed_mand_bunker_crazed_miner.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "insane_miner_convotemplate",
 	attacks = {
 	}

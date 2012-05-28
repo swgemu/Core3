@@ -27,7 +27,7 @@ kais = Creature:new {
 
 	templates = {"object/mobile/dressed_kais.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

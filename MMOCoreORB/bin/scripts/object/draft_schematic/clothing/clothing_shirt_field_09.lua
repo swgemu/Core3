@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_shirt_field_09 = object_draft_schematic
    ingredientSlotType = {0, 0},
    resourceTypes = {"fiberplast", "metal"},
    resourceQuantities = {30, 30},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

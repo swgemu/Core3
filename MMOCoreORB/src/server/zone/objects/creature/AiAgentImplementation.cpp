@@ -47,6 +47,7 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiDefaultComponent.h"
+#include "events/CamoTask.h"
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -100,8 +101,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
 
 				if (weao != NULL) {
-					weao->setMinDamage(minDmg * 1.33);
-					weao->setMaxDamage(maxDmg * 1.33);
+					weao->setMinDamage(minDmg * 0.5);
+					weao->setMaxDamage(maxDmg * 0.5);
 					weao->setAttackSpeed(speed);
 					weapons.add(weao);
 
@@ -247,8 +248,8 @@ void AiAgentImplementation::setLevel(int lvl) {
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weao = weapons.get(i);
 
-		weao->setMinDamage(minDmg * 1.33);
-		weao->setMaxDamage(maxDmg * 1.33);
+		weao->setMinDamage(minDmg * 0.5);
+		weao->setMaxDamage(maxDmg * 0.5);
 		weao->setAttackSpeed(speed);
 	}
 
@@ -1193,98 +1194,64 @@ void AiAgentImplementation::doMovement() {
 }
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
+	Locker locker(&targetMutex);
 
-	/// Check masked scent
+	// Check masked scent
 	if (!target->hasState(CreatureState::MASKSCENT)) {
-		if(camouflagedObjects.contains(target)) {
-			camouflagedObjects.removeElement(target);
-		}
+		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
 
-	/// Don't do anything if object is ignored (Camo / Masked Scent)
+	// Don't do anything if object is ignored (Camo / Masked Scent)
 	if (camouflagedObjects.contains(target))
 		return true;
 
 	int camoSkill = target->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
-	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
-	int roll = System::random(100);
 
-	if (roll > chance) {
-		uint32 crc = String("skill_buff_mask_scent_self").hashCode();
+	bool success = false;
 
-		if(target->hasBuff(crc)) {
-			target->sendSystemMessage("@skl_use:sys_scentmask_break");
-			target->removeBuff(crc);
-		}
-
-	} else {
-		StringIdChatParameter success("skl_use", "sys_scentmask_success");
-		success.setTT(getDisplayedName());
-
-		target->sendSystemMessage(success);
-
+	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
 		camouflagedObjects.add(target);
-
-		PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
-				"ghost"));
-		if (ghost != NULL)
-			ghost->addExperience("scout", (creatureLevel * 2), true);
-		return true;
+		success = true;
 	}
 
-	return false;
+	Reference<Task*> ct = new CamoTask(target, _this, true, success);
+	ct->execute();
+
+	return success;
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
-	//TODO: fix this! too fucked up, no locks anywhere
+	Locker locker(&targetMutex);
 
-	/// Check masked scent state
 	if (!target->hasState(CreatureState::MASKSCENT)) {
-		if(camouflagedObjects.contains(target)) {
-			camouflagedObjects.removeElement(target);
-		}
+		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
 
-	/// Don't do anything if object is ignored (Camo / Masked Scent)
+	// Don't do anything if object is ignored (Camo / Masked Scent)
 	if (camouflagedObjects.contains(target))
 		return true;
 
-	/// Check if camo breaks
-	int camoSkill = 100;
+	// Check if camo breaks
+	int camoSkill = target->getSkillMod("private_conceal");
 	int creatureLevel = getLevel();
 
-	if(isNonPlayerCreatureObject())
+	if (!isCreature())
 		creatureLevel *= 2;
 
-	int chance = (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100;
-	int roll = System::random(100);
+	bool success = false;
 
-	if (roll > chance) {
-		uint32 crc = String("skill_buff_mask_scent").hashCode();
-
-		if (target->hasBuff(crc)) {
-			target->sendSystemMessage("@skl_use:sys_conceal_stop");
-			target->removeBuff(crc);
-		}
-
-	} else {
-
+	if (System::random(100) < (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
 		camouflagedObjects.add(target);
-
-		/// Only rangers get scouting exp
-		if(target->hasSkill("outdoors_ranger_novice")) {
-			PlayerObject* ghost = cast<PlayerObject*> (target->getSlottedObject(
-					"ghost"));
-			if (ghost != NULL)
-				ghost->addExperience("scout", (creatureLevel * 2), true);
-		}
-		return true;
+		success = true;
 	}
 
-	return false;
+	Reference<Task*> ct = new CamoTask(target, _this, false, success);
+	ct->execute();
+
+	return success;
 }
 
 void AiAgentImplementation::activateMovementEvent() {
@@ -1371,6 +1338,24 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 		if (damage > 0) {
 			threatMap->addDamage(player, damage);
+
+			if (System::random(5) == 1) {
+				setDefender(player);
+			}
+		}
+	}
+
+	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
+int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	activateRecovery();
+
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0) {
+			threatMap->addDamage(player, damage, xp);
 
 			if (System::random(5) == 1) {
 				setDefender(player);

@@ -67,7 +67,6 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "gemstone_armophous"},
    resourceQuantities = {20, 8, 8},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

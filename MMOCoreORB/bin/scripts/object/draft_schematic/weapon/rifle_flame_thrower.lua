@@ -67,7 +67,6 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
    ingredientSlotType = {0, 0, 0, 1, 1, 0, 3},
    resourceTypes = {"steel", "iron", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "fuel_petrochem_liquid", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {130, 70, 15, 4, 1, 28, 1},
-   combineTypes = {0, 0, 0, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

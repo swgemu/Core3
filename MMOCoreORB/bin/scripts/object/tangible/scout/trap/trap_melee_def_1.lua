@@ -81,6 +81,7 @@ object_tangible_scout_trap_trap_melee_def_1 = object_tangible_scout_trap_shared_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_trap_melee_def_1, "object/tangible/scout/trap/trap_melee_def_1.iff")

@@ -32,8 +32,7 @@ geonosian_technical_assistant = Creature:new {
 	lootGroups = {},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_technical_assistant, "geonosian_technical_assistant")

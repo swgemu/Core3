@@ -29,7 +29,7 @@ trace_lyson = Creature:new {
 
 	templates = {"object/mobile/dressed_commoner_naboo_human_male_05.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

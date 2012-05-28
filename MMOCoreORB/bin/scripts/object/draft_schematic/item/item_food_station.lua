@@ -67,7 +67,6 @@ object_draft_schematic_item_item_food_station = object_draft_schematic_item_shar
    ingredientSlotType = {0, 0, 4, 4, 4},
    resourceTypes = {"metal", "mineral", "object/tangible/component/item/shared_electronic_control_unit.iff", "object/tangible/component/item/shared_micro_sensor_suite.iff", "object/tangible/component/droid/shared_droid_storage_compartment.iff"},
    resourceQuantities = {400, 50, 2, 2, 5},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

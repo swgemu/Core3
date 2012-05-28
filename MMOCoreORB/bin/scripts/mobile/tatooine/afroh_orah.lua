@@ -29,7 +29,7 @@ afroh_orah = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

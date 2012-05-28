@@ -154,7 +154,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	IntangibleObjectImplementation::notifyLoadFromDatabase();
 
 	chatRooms.removeAll();
-	surveyTool = NULL;
 
 	serverLastMovementStamp.updateToCurrentTime();
 
@@ -513,6 +512,14 @@ void PlayerObjectImplementation::removeExperience(const String& xpType, bool not
 	} else {
 		experienceList.drop(xpType);
 	}
+}
+
+bool PlayerObjectImplementation::hasCappedExperience(const String& xpType) {
+	if (experienceList.contains(xpType) && xpTypeCapList.contains(xpType)) {
+		return experienceList.get(xpType) == xpTypeCapList.get(xpType);
+	}
+
+	return false;
 }
 
 void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool notifyClient) {

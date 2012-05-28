@@ -30,7 +30,7 @@ death_watch_scientist = Creature:new {
 		"object/mobile/dressed_brigade_captain_human_male_01.iff"}, 
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_scientist, "death_watch_scientist") 

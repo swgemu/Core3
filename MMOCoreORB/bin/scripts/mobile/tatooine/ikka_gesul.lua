@@ -29,7 +29,7 @@ ikka_gesul = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_ikka_gesul.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

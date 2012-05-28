@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"aluminum_agrinium", "fuel_petrochem_solid_known", "ore_extrusive_pholokite"},
    resourceQuantities = {10, 10, 10},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

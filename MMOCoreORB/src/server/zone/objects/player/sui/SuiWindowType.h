@@ -154,6 +154,7 @@ public:
 	static const uint16 TEACH_SKILL = 221;
 	static const uint16 TEACH_PLAYER = 222;
 	static const uint16 TEACH_DENY = 223;
+	static const uint16 TEACH_OFFER = 224;
 
 	//Survey Tool 231 - 240
 	static const uint16 SURVEY_TOOL_RANGE = 231;
@@ -203,6 +204,7 @@ public:
 	static const uint16 TUNE_CRYSTAL = 1004;
 	static const uint16 INSTALL_MISSION_TERMINAL = 1005;
 	static const uint16 RECRUIT_SKILL_TRAINER = 1006;
+	static const uint16 HOLOGRIND_UNLOCK = 1007;
 };
 
 #endif /*SuiWindowType_H_*/

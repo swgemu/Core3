@@ -81,6 +81,8 @@ object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
+	experimentalCombineType = {0, 0, 4, 1},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {1, 1, 1, 1},
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_gas, "object/tangible/survey_tool/survey_tool_gas.iff")

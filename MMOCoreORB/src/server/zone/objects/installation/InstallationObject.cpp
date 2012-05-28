@@ -708,6 +708,11 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.spawnDensity") {
+		TypeInfo<float >::parseFromBinaryStream(&spawnDensity, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -789,8 +794,16 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.spawnDensity";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<float >::toBinaryStream(&spawnDensity, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 8;
+
+	return _count + 9;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
@@ -809,6 +822,8 @@ InstallationObjectImplementation::InstallationObjectImplementation() {
 	hopperSizeMax = 10000;
 	// server/zone/objects/installation/InstallationObject.idl():  		extractionRate = 100;
 	extractionRate = 100;
+	// server/zone/objects/installation/InstallationObject.idl():  		spawnDensity = 0;
+	spawnDensity = 0;
 }
 
 void InstallationObjectImplementation::initializeTransientMembers() {

@@ -1,8 +1,8 @@
 bewitching_donkuwah_shaman = Creature:new {
 	objectName = "@mob/creature_names:bewitching_donkuwah_shaman",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 21,
 	chanceHit = 0.34,
 	damageMin = 210,
@@ -26,9 +26,10 @@ bewitching_donkuwah_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_11.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

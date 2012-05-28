@@ -28,7 +28,7 @@ foot_of_solitude = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(foot_of_solitude, "foot_of_solitude")

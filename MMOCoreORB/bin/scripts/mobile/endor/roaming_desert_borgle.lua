@@ -1,6 +1,6 @@
 roaming_desert_borgle = Creature:new {
 	objectName = "@mob/creature_names:borgle_desert_roamer",
-	socialGroup = "Borgle",
+	socialGroup = "borgle",
 	pvpFaction = "",
 	faction = "",
 	level = 32,

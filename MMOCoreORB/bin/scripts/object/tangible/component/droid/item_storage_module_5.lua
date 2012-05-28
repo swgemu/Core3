@@ -52,6 +52,7 @@ object_tangible_component_droid_item_storage_module_5 = object_tangible_componen
 	experimentalMin = {0, 0, 5, 1000, -10, 9},
 	experimentalMax = {0, 0, 15, 1000, 15, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_item_storage_module_5, "object/tangible/component/droid/item_storage_module_5.iff")

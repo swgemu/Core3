@@ -29,7 +29,7 @@ tk_471 = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor07.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

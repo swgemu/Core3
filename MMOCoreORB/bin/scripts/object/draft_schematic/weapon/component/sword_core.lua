@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
    ingredientSlotType = {0},
    resourceTypes = {"metal"},
    resourceQuantities = {12},
-   combineTypes = {0},
    contribution = {100},
 
 

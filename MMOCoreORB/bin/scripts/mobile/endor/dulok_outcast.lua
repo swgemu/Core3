@@ -1,6 +1,6 @@
 dulok_outcast = Creature:new {
 	objectName = "@mob/creature_names:dulok_outcast",
-	socialGroup = "Dulok Outcast",
+	socialGroup = "self",
 	pvpFaction = "",
 	faction = "",
 	level = 20,
@@ -26,9 +26,11 @@ dulok_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

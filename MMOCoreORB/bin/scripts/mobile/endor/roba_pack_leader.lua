@@ -1,6 +1,6 @@
 roba_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:roba_pack_leader",
-	socialGroup = "Roba",
+	socialGroup = "roba",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

@@ -29,7 +29,7 @@ ayn_eckener = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_ayn_eckener.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -52,6 +52,7 @@ object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_dr
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 0, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_jaar, "object/tangible/food/crafted/drink_jaar.iff")

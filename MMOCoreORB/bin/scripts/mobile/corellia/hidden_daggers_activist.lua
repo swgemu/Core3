@@ -35,15 +35,15 @@ hidden_daggers_activist = Creature:new {
 	lootGroups = {
       	{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kits", chance = 3500000},
+				{group = "junk", chance = 4000000},
+				{group = "loot_kit_parts", chance = 1000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
-		}
+			lootChance = 5000000
+		}	
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_activist, "hidden_daggers_activist")

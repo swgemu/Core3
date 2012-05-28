@@ -1,8 +1,8 @@
 klin_nif = Creature:new {
 	objectName = "",
 	customName = "Klin Nif",
-	socialGroup = "Death Watch",
-	pvpFaction = "Death Watch",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,
@@ -38,7 +38,7 @@ klin_nif = Creature:new {
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",
-	attacks = {}
+	attacks = merge(carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(klin_nif, "klin_nif")

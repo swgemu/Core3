@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_droid_detector = object_draft_schemat
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal", "metal"},
    resourceQuantities = {50, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

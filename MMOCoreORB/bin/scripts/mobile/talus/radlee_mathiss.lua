@@ -29,7 +29,7 @@ radlee_mathiss = Creature:new {
 
 	templates = {"object/mobile/dressed_radlee_mathiss.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

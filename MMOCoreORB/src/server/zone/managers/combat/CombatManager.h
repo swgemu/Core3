@@ -30,6 +30,13 @@ public:
 	const static int REFLECT = 0x08;
 	const static int REFLECT_TO_TARGET = 0x09;
 
+	// hit locations (for serverside armor checks)
+	const static uint8 NOLOCATION = 0x00;
+	const static uint8 CHEST = 0x01;
+	const static uint8 ARMS = 0x02;
+	const static uint8 LEGS = 0x04;
+	const static uint8 HEAD = 0x08;
+
 	// trails bitmask
 	const static int NOTRAIL = 0x00;
 	const static int LEFTFOOTTRAIL = 0x01;
@@ -191,7 +198,7 @@ protected:
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
-	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage);
+	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 

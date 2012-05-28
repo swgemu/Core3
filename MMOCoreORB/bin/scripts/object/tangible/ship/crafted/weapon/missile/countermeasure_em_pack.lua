@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_em_pack = object_tang
 	experimentalMin = {0, 0, 102, 77, 289, 7, 0},
 	experimentalMax = {0, 0, 138, 104, 391, 9, 0},
 	experimentalPrecision = {0, 0, 10, 10, 0, 10, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_countermeasure_em_pack, "object/tangible/ship/crafted/weapon/missile/countermeasure_em_pack.iff")

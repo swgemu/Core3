@@ -45,7 +45,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Smuggler\'s Delight",
+   customObjectName = "Smuggler\\\'s Delight",
 
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    ingredientSlotType = {1, 1, 0, 0, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/food/crafted/shared_dessert_bantha_butter.iff", "vegetable_tubers", "fruit_fruits", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {1, 2, 20, 20, 1},
-   combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

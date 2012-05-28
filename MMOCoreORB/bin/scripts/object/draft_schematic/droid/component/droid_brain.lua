@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_droid_brain = object_draft_schematic_droi
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"copper", "gas_inert", "ore_siliclastic", "chemical", "metal", "metal"},
    resourceQuantities = {14, 5, 8, 8, 2, 2},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_capacitor_heavy_battery_mk1 = object_draft_schemati
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "copper_borocarbitic"},
    resourceQuantities = {75, 25},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

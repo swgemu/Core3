@@ -67,7 +67,6 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
    ingredientSlotType = {0, 0},
    resourceTypes = {"aluminum", "metal_ferrous"},
    resourceQuantities = {25, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

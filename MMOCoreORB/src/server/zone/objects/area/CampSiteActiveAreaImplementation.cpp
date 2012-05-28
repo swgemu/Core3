@@ -178,7 +178,7 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 			return false;
 		}
 
-		float durationUsed = ((float)(System::getTime() - timeCreated)) / (campStructureData->getDuration());
+		float durationUsed = ((float)(System::getTime() - timeCreated)) / (campStructureData->getDuration() / 4);
 
 		int amount = 0;
 		amount += (int)(campStructureData->getExperience() * durationUsed);
@@ -215,9 +215,10 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		return false;
 	}
 
+	structureManager->destroyStructure(camp);
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
-	structureManager->destroyStructure(camp);
+
 
 	return true;
 }
@@ -243,15 +244,15 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		ghost->addOwnedStructure(camp);
 	}
 
-	player->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
+	campOwner->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
 
 	if(abandonTask != NULL && abandonTask->isScheduled())
 		abandonTask->cancel();
 
 	if(terminal != NULL) {
-		String campName = player->getFirstName();
-		if(!player->getLastName().isEmpty())
-			campName += " " + player->getLastName();
+		String campName = campOwner->getFirstName();
+		if(!campOwner->getLastName().isEmpty())
+			campName += " " + campOwner->getLastName();
 		campName += "'s Camp";
 		terminal->setCustomObjectName(campName, true);
 	}

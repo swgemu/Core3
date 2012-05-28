@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_personality_module_stupid = object_draft_
    ingredientSlotType = {0, 1},
    resourceTypes = {"copper", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {10, 1},
-   combineTypes = {0, 1},
    contribution = {100, 100},
 
 

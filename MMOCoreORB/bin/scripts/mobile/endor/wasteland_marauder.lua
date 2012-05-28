@@ -1,8 +1,8 @@
 wasteland_marauder = Creature:new {
 	objectName = "@mob/creature_names:wasteland_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 55,
 	chanceHit = 0.55,
 	damageMin = 420,
@@ -28,7 +28,7 @@ wasteland_marauder = Creature:new {
 
 	templates = {"object/mobile/dressed_wandering_desert_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -29,7 +29,7 @@ thrown = Creature:new {
 
 	templates = {"object/mobile/naboo_npc/thrawn.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

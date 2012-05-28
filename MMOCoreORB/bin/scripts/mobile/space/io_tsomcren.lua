@@ -28,7 +28,7 @@ io_tsomcren = Creature:new {
 
 	templates = {"object/mobile/space_greeter_coronet_shipwright_indifferent.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

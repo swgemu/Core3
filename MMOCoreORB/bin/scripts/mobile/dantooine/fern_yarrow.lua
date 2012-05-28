@@ -28,7 +28,7 @@ fern_yarrow = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_brother_imperial.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

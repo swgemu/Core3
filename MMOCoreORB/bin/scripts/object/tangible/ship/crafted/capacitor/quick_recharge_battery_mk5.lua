@@ -52,6 +52,7 @@ object_tangible_ship_crafted_capacitor_quick_recharge_battery_mk5 = object_tangi
 	experimentalMin = {0, 0, -168, 5},
 	experimentalMax = {0, 0, -124, 7},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/quick_recharge_battery_mk5.iff")

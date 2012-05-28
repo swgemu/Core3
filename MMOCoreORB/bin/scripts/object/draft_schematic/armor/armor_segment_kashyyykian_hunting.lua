@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
    ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
    resourceTypes = {"hide_leathery", "bone_avian", "softwood_evergreen", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {15, 10, 5, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

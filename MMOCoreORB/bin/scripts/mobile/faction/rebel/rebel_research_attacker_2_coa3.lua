@@ -31,8 +31,7 @@ rebel_research_attacker_2_coa3 = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_research_attacker_2_coa3, "rebel_research_attacker_2_coa3")

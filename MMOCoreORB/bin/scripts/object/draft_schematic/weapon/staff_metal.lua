@@ -67,7 +67,6 @@ object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "mineral", "metal"},
    resourceQuantities = {15, 10, 14, 3},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

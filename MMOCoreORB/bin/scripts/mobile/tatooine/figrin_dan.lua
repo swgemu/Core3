@@ -29,7 +29,7 @@ figrin_dan = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_figrin_dan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

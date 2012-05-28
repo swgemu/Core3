@@ -67,7 +67,6 @@ object_draft_schematic_item_item_survey_tool_wind = object_draft_schematic_item_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "metal"},
    resourceQuantities = {8, 5, 3},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

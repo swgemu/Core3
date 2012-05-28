@@ -73,6 +73,7 @@ object_tangible_food_spice_spice_giggledust = object_tangible_food_spice_shared_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_giggledust, "object/tangible/food/spice/spice_giggledust.iff")

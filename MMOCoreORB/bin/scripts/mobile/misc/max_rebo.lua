@@ -27,7 +27,7 @@ max_rebo = Creature:new {
 
 	templates = {"object/mobile/max_rebo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_wound_repair_kit_d = object_draft_schematic_d
    ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"copper_beyrllius", "armophous_plexite", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"},
    resourceQuantities = {35, 30, 1, 1, 1},
-   combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

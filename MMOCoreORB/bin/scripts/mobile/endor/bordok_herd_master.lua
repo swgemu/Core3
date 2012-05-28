@@ -1,6 +1,6 @@
 bordok_herd_master = Creature:new {
 	objectName = "@mob/creature_names:bordok_herd_master",
-	socialGroup = "Bordok",
+	socialGroup = "bordok",
 	pvpFaction = "",
 	faction = "",
 	level = 40,

@@ -398,6 +398,10 @@ public:
 		return &groupPermissions;
 	}
 
+	bool hasArrangementDescriptor(String s) {
+		return arrangementDescriptors->getArrangementSlots()->contains(s);
+	}
+
 public:
 	void setAppearanceFilename(String appearanceFilename) {
 		this->appearanceFilename = appearanceFilename;

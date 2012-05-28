@@ -29,7 +29,7 @@ didina_lippinoss = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_human_female_03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"fruit_fruits", "vegetable", "metal"},
    resourceQuantities = {15, 15, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_droid_droid_mse = object_draft_schematic_droid_shared_dro
    ingredientSlotType = {0, 0, 0, 0, 0, 3},
    resourceTypes = {"metal", "chemical", "metal", "metal", "metal", "object/tangible/component/droid/shared_droid_service_module_base.iff"},
    resourceQuantities = {20, 15, 12, 15, 6, 1},
-   combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

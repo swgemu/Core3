@@ -29,7 +29,7 @@ sango_rond = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_sango_rond.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -28,7 +28,7 @@ willham_burke = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_army_captain_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

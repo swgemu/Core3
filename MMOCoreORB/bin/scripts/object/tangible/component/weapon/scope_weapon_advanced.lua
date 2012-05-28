@@ -52,6 +52,7 @@ object_tangible_component_weapon_scope_weapon_advanced = object_tangible_compone
 	experimentalMin = {0, 0, 0, 10, 0, 0, 0, 30, 30, 30},
 	experimentalMax = {0, 0, 20, 100, 0, 0, 45, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_scope_weapon_advanced, "object/tangible/component/weapon/scope_weapon_advanced.iff")

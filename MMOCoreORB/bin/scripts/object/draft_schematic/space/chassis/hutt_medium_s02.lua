@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_hutt_medium_s02 = object_draft_schematic_sp
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "ore", "ore", "petrochem_inert", "aluminum"},
    resourceQuantities = {5000, 2000, 2000, 2000, 2000, 2000},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

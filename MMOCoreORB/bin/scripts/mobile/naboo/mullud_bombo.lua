@@ -29,7 +29,7 @@ mullud_bombo = Creature:new {
 
 	templates = {"object/mobile/dressed_mullud_bombo.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

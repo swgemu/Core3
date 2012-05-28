@@ -52,6 +52,7 @@ object_tangible_component_droid_playback_module = object_tangible_component_droi
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_playback_module, "object/tangible/component/droid/playback_module.iff")

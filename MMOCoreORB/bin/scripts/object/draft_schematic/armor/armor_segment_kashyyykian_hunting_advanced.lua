@@ -67,7 +67,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting_advanced = object
    ingredientSlotType = {0, 0, 0, 3, 3, 3, 3},
    resourceTypes = {"hide_leathery_dantooine", "bone_avian_dantooine", "softwood_evergreen_yavin4", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_armor_layer.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"},
    resourceQuantities = {25, 16, 8, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

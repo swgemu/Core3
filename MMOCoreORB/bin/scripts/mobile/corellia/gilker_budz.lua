@@ -29,7 +29,7 @@ gilker_budz = Creature:new {
 
 	templates = {"object/mobile/dressed_giker_budz.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

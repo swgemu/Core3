@@ -29,7 +29,7 @@ lassin_dedge = Creature:new {
 
 	templates = {"object/mobile/dressed_lassin_dedge.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

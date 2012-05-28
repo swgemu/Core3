@@ -29,7 +29,7 @@ indigo_siyan = Creature:new {
 
 	templates = {"object/mobile/dressed_indigo_siyan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

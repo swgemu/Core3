@@ -52,6 +52,7 @@ object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk4 = object_tangib
 	experimentalMin = {0, 0, 265, 265, 1598},
 	experimentalMax = {0, 0, 358, 358, 2162},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk4, "object/tangible/ship/crafted/armor/armor_reinforcement_panel_mk4.iff")

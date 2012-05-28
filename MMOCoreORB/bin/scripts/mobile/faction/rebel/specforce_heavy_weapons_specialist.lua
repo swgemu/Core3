@@ -28,7 +28,7 @@ specforce_heavy_weapons_specialist = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_heavy_weapons_specialist, "specforce_heavy_weapons_specialist")

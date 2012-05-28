@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"copper", "steel", "ore_carbonate", "metal_nonferrous", "chemical", "aluminum", "gas_reactive"},
    resourceQuantities = {250, 50, 250, 150, 50, 500, 200},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

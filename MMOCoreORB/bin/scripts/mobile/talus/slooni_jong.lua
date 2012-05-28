@@ -29,7 +29,7 @@ slooni_jong = Creature:new {
 
 	templates = {"object/mobile/dressed_slooni_long.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_formal_06 = object_draft_s
    ingredientSlotType = {0, 1},
    resourceTypes = {"petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {300, 4},
-   combineTypes = {0, 1},
    contribution = {100, 100},
 
 

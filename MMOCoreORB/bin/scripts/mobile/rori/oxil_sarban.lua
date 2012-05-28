@@ -29,7 +29,7 @@ oxil_sarban = Creature:new {
 
 	templates = {"object/mobile/dressed_oxil_sarban.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

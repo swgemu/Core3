@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_missile_wpn_proton_missile_mk3 = object_draf
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {1000, 250},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

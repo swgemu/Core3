@@ -67,7 +67,6 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"ore", "metal", "water"},
    resourceQuantities = {1000, 300, 500},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

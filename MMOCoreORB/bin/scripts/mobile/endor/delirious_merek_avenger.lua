@@ -1,6 +1,6 @@
 delirious_merek_avenger = Creature:new {
 	objectName = "@mob/creature_names:delirious_merek_avenger",
-	socialGroup = "Merek",
+	socialGroup = "merek",
 	pvpFaction = "",
 	faction = "",
 	level = 40,

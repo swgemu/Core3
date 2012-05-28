@@ -29,7 +29,7 @@ loam_hedge = Creature:new {
 
 	templates = {"object/mobile/loam_redge.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "loam_redge_outfit",
 	attacks = {

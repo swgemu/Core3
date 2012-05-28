@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"copper", "gas_inert", "ore_carbonate", "gas_reactive"},
    resourceQuantities = {50, 20, 40, 60},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

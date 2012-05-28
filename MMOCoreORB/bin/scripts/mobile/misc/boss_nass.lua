@@ -28,7 +28,7 @@ boss_nass = Creature:new {
 
 	templates = {"object/mobile/boss_nass.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_item_item_firework_show = object_draft_schematic_item_sha
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"mineral", "chemical", "chemical", "gas"},
    resourceQuantities = {6, 4, 2, 2},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

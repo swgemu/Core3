@@ -29,7 +29,7 @@ lorne_prestar = Creature:new {
 
 	templates = {"object/mobile/mos_taike_guard_old.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "mos_taike_guard_old_outfit",
 	attacks = {

@@ -67,7 +67,6 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"wood", "metal", "mineral", "metal_ferrous"},
    resourceQuantities = {15, 10, 10, 5},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

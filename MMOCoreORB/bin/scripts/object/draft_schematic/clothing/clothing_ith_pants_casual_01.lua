@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_pants_casual_01 = object_draft_sche
    ingredientSlotType = {0, 1},
    resourceTypes = {"petrochem_inert", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {13, 1},
-   combineTypes = {0, 1},
    contribution = {100, 100},
 
 

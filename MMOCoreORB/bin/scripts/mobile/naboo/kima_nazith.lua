@@ -29,7 +29,7 @@ kima_nazith = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_fat_human_female_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

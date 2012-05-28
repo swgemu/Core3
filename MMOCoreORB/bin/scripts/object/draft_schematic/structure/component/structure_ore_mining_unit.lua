@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_ore_mining_unit = object_dr
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"steel", "steel", "metal", "steel", "gas_inert"},
    resourceQuantities = {100, 150, 150, 120, 75},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

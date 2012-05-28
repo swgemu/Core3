@@ -31,8 +31,7 @@ trailblazer = Creature:new {
         lootGroups = {},
         weapons = {"rebel_weapons_medium"},
         conversationTemplate = "",
-        attacks = {
-        }
+        attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(trailblazer, "trailblazer")

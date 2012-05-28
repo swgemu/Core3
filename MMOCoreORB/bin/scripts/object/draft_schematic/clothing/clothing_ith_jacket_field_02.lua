@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_jacket_field_02 = object_draft_sche
    ingredientSlotType = {1, 0, 1, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "petrochem_inert", "object/tangible/component/clothing/shared_metal_fasteners.iff", "fiberplast"},
    resourceQuantities = {1, 10, 1, 15},
-   combineTypes = {1, 0, 1, 0},
    contribution = {100, 100, 100, 100},
 
 

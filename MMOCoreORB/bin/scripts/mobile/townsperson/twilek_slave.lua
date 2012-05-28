@@ -28,7 +28,7 @@ twilek_slave = Creature:new {
 
 	templates = {"object/mobile/twilek_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

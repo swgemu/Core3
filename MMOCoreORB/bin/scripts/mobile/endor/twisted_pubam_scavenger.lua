@@ -1,8 +1,8 @@
 twisted_pubam_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_pubam_scavenger",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 34,
 	chanceHit = 0.41,
 	damageMin = 335,
@@ -26,9 +26,11 @@ twisted_pubam_scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

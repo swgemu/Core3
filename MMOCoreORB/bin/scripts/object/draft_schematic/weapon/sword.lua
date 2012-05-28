@@ -67,7 +67,6 @@ object_draft_schematic_weapon_sword = object_draft_schematic_weapon_shared_sword
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"metal", "petrochem_inert", "object/tangible/component/weapon/shared_sword_core.iff"},
    resourceQuantities = {18, 5, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

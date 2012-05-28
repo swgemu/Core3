@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_jewelry_bracelet_02 = object_draft_sche
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"steel", "steel", "object/tangible/component/clothing/shared_jewelry_setting.iff"},
    resourceQuantities = {25, 20, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

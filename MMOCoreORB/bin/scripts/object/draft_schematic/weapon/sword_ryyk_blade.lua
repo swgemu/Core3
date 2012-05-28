@@ -67,7 +67,6 @@ object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_s
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"iron", "petrochem_inert_polymer", "object/tangible/component/weapon/shared_sword_core.iff"},
    resourceQuantities = {42, 12, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

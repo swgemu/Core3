@@ -21,7 +21,7 @@ tusken_commoner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -30,16 +30,16 @@ tusken_commoner = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "tusken", chance = 9500000},
-				{group = "rifles", chance = 250000},
-				{group = "pistols", chance = 250000}
+				{group = "tusken", chance = 3500000},
+				{group = "rifles", chance = 100000},
+				{group = "pistols", chance = 100000}
 			},
 			lootChance = 3500000
 		}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlernmaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_commoner, "tusken_commoner")

@@ -1,8 +1,8 @@
 frenzied_marauder = Creature:new {
 	objectName = "@mob/creature_names:frenzied_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 50,
 	chanceHit = 0.5,
 	damageMin = 470,
@@ -28,7 +28,7 @@ frenzied_marauder = Creature:new {
 
 	templates = {"object/mobile/dressed_frenzied_marauder.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

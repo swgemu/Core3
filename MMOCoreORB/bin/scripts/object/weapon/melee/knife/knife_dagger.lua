@@ -129,6 +129,7 @@ object_weapon_melee_knife_knife_dagger = object_weapon_melee_knife_shared_knife_
 	experimentalMin = {0, 0, 14, 32, 3.9, 6, 750, 17, 17, 3, 17, 4, 8, 38, 8},
 	experimentalMax = {0, 0, 26, 59, 2.7, 12, 1500, 33, 33, 3, 33, 4, 4, 20, 4},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_dagger, "object/weapon/melee/knife/knife_dagger.iff")

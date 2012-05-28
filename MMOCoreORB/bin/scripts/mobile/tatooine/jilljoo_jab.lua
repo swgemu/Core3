@@ -29,7 +29,7 @@ jilljoo_jab = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jilljoo_jab.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

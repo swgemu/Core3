@@ -56,6 +56,7 @@ object_tangible_deed_harvester_deed_harvester_gas_deed_medium = object_tangible_
 	experimentalMin = {0, 0, 2, 50000, 1000},
 	experimentalMax = {0, 0, 6, 75000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff")

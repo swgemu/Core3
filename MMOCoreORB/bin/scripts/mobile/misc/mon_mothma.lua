@@ -28,7 +28,7 @@ mon_mothma = Creature:new {
 
 	templates = {"object/mobile/mon_mothma.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

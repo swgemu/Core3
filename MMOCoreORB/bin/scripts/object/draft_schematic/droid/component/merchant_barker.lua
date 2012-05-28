@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"copper", "gas_inert", "aluminum"},
    resourceQuantities = {50, 20, 40},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

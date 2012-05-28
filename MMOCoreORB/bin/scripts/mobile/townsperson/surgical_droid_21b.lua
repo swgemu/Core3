@@ -30,7 +30,7 @@ surgical_droid_21b = Creature:new {
 		"object/mobile/21b_surgical_droid.iff"
 	},		
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

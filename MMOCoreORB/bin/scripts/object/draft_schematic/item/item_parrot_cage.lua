@@ -67,7 +67,6 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"mineral", "metal", "mineral", "metal"},
    resourceQuantities = {10, 5, 10, 4},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

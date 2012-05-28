@@ -7,7 +7,7 @@ rori_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "borgle_lair",
+			lairTemplateName = "rori_borgle_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 22,
@@ -16,7 +16,7 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "horned_rasp_lair",
+			lairTemplateName = "rori_sickle_rasp_nest_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 16,
@@ -25,7 +25,7 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "ikopi_lair",
+			lairTemplateName = "rori_ikopi_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 17,
@@ -34,7 +34,7 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "squall_lair",
+			lairTemplateName = "rori_squall_warren_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 16,
@@ -43,7 +43,7 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "torton_lair",
+			lairTemplateName = "rori_torton_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 24,
 			maxDifficulty = 34,

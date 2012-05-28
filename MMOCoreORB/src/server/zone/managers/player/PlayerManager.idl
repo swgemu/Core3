@@ -75,6 +75,7 @@ include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
 include server.zone.managers.player.PermissionLevelList;
 import server.login.account.Account;
+include server.zone.objects.creature.variables.Skill;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -191,7 +192,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void startWatch(CreatureObject creature, unsigned long entid);
 	public native void startListen(CreatureObject creature, unsigned long entid);
 	
-	public native void lootAll(CreatureObject player, AiAgent creature);
+	public native void lootAll(CreatureObject player, CreatureObject creature);
 	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
@@ -271,5 +272,30 @@ class PlayerManager extends Observer implements Logger {
 	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, unsigned int seconds, final string reason);
 
 	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
-
+	
+	public native boolean promptTeachableSkills(CreatureObject teacher, SceneObject target);
+	
+	/**
+	 * Sends a confirmation box to the student asking if they want to learn the skill.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
+	@local
+	public native boolean offerTeaching(CreatureObject teacher, CreatureObject student, Skill skill);
+	
+	/**
+	 * Accepts a teaching office.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
+	@local
+	public native boolean acceptTeachingOffer(CreatureObject teacher, CreatureObject student, Skill skill);
+	
+	/**
+	 * Gets a vector skillboxes this teacher can teach this student.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
+	@local @dereferenced
+	public native SortedVector<string> getTeachableSkills(CreatureObject teacher, CreatureObject student);
 }

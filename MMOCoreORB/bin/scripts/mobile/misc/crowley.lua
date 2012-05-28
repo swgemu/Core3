@@ -29,7 +29,7 @@ crowley = Creature:new {
 
 	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

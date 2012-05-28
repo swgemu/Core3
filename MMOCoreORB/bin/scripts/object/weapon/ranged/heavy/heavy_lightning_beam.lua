@@ -42,7 +42,7 @@
 
 
 object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_shared_heavy_lightning_beam:new {
-	
+	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
@@ -126,6 +126,7 @@ object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_sha
 	experimentalMin = {0, 0, 936, 1550, 9.6, 13, 30, 750, -45, -125, 32, 0, 25, 45, 97, 26},
 	experimentalMax = {0, 0, 1340, 3400, 5.4, 23, 65, 1500, -35, -95, 32, 40, 50, 24, 52, 14},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_lightning_beam, "object/weapon/ranged/heavy/heavy_lightning_beam.iff")

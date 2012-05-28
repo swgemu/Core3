@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    ingredientSlotType = {0, 1, 1, 0, 3},
    resourceTypes = {"fruit_berries", "object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "oats", "object/tangible/food/crafted/additive/shared_additive_medium.iff"},
    resourceQuantities = {30, 1, 1, 20, 1},
-   combineTypes = {0, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

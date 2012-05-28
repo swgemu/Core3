@@ -29,7 +29,7 @@ info_broker = Creature:new {
 				 "object/mobile/dressed_criminal_smuggler_human_male_01.iff"
 				 },
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

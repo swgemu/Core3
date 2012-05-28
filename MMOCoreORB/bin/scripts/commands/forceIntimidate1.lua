@@ -43,6 +43,34 @@
 
 ForceIntimidate1Command = {
         name = "forceintimidate1",
+        
+    damageMax = 0,
+	speed = 4.0,
+	forceCost = 300,
+	accuracySkillMod = "forceintimidate_accuracy";
+	coneAngle = 40,
+	coneAction = true,
+
+	stateEffects = {
+	  StateEffect( 
+		INTIMIDATE_EFFECT, 
+		{}, 
+		{}, 
+		{ "force_defense" }, 
+		100, 
+		0, 
+		60 
+	  )
+	},
+	
+	
+	animationCRC = hashCode("force_intimidate"),
+
+	combatSpam = "forceintimidate1",
+	
+	poolsToDamage = NONE,
+
+	range = 32
 }
 
 AddCommand(ForceIntimidate1Command)

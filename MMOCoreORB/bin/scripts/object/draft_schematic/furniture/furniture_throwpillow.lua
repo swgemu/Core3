@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_throwpillow = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "hide"},
    resourceQuantities = {50, 40},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

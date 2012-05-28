@@ -29,7 +29,7 @@ poki_wirqi = Creature:new {
 
 	templates = {"object/mobile/dressed_noble_old_twk_female_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

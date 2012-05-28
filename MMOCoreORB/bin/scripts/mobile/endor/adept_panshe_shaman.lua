@@ -1,8 +1,8 @@
 adept_panshe_shaman = Creature:new {
 	objectName = "@mob/creature_names:adept_panshee_shaman",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 23,
 	chanceHit = 0.35,
 	damageMin = 210,
@@ -26,12 +26,11 @@ adept_panshe_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_11.iff"},
+	templates = {"object/mobile/dressed_ewok_m_03.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(adept_panshe_shaman, "adept_panshe_shaman")

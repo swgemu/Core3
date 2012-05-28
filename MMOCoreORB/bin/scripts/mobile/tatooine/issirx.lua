@@ -29,7 +29,7 @@ issirx = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_rumor04.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

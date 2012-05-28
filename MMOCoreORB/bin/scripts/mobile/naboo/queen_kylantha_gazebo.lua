@@ -29,7 +29,7 @@ queen_kylantha_gazebo = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_queen_kylantha_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

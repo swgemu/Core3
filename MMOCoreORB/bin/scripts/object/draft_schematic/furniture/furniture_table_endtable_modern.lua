@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_endtable_modern = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_nonferrous", "aluminum"},
    resourceQuantities = {75, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

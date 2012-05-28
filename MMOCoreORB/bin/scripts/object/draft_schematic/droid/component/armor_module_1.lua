@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_armor_module_1 = object_draft_schematic_d
    ingredientSlotType = {0, 0},
    resourceTypes = {"metal_ferrous", "gas_inert"},
    resourceQuantities = {35, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

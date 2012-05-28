@@ -28,7 +28,7 @@ spacer = Creature:new {
 	templates = {"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spacer, "spacer")

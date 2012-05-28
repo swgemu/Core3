@@ -28,7 +28,7 @@ boulo_siesi = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_artist06.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

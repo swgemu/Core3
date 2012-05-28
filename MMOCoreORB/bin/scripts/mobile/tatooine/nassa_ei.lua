@@ -29,7 +29,7 @@ nassa_ei = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_capitol02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

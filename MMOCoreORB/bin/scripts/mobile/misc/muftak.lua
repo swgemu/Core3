@@ -27,7 +27,7 @@ muftak = Creature:new {
 
 	templates = {"object/mobile/muftak.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

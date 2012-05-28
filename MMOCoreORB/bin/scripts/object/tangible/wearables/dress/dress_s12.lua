@@ -93,6 +93,7 @@ object_tangible_wearables_dress_dress_s12 = object_tangible_wearables_dress_shar
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_dress_dress_s12, "object/tangible/wearables/dress/dress_s12.iff")

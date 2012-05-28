@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_belt_field_07 = object_draft_schematic_
    ingredientSlotType = {0, 0, 1},
    resourceTypes = {"fiberplast", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {10, 10, 1},
-   combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
 

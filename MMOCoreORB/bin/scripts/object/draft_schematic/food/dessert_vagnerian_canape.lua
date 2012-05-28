@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_vagnerian_canape = object_draft_schematic_fo
    ingredientSlotType = {1, 0, 0, 1, 3},
    resourceTypes = {"object/tangible/component/food/shared_ingredient_ball_of_dough.iff", "fruit_berries", "fruit", "object/tangible/component/food/shared_ingredient_carbosyrup.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"},
    resourceQuantities = {2, 20, 20, 1, 1},
-   combineTypes = {1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

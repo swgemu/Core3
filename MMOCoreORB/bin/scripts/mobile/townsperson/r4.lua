@@ -30,7 +30,7 @@ r4 = Creature:new {
 		"object/mobile/r4.iff"
 	},		
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

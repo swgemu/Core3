@@ -67,7 +67,6 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    ingredientSlotType = {0, 1, 1},
    resourceTypes = {"metal_nonferrous", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/item/shared_electronic_control_unit.iff"},
    resourceQuantities = {300, 1, 1},
-   combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
 

@@ -29,7 +29,7 @@ adar = Creature:new {
 
 	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

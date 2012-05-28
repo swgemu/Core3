@@ -29,7 +29,7 @@ luthin_dlunar = Creature:new {
 
 	templates = {"object/mobile/dressed_luthin_dlunar.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

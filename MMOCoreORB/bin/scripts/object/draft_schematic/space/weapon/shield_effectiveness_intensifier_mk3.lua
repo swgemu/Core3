@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_shield_effectiveness_intensifier_mk3 = objec
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "radioactive_polymetric"},
    resourceQuantities = {350, 150},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

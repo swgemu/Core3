@@ -10,7 +10,6 @@
 
 #include "engine/engine.h"
 
-
 namespace server {
 namespace zone {
 namespace templates {
@@ -175,6 +174,10 @@ public:
 
 	bool isLairTemplate() {
 		return true;
+	}
+
+	String& getName() {
+		return name;
 	}
 
 };

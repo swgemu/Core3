@@ -64,6 +64,7 @@ object_tangible_medicine_crafted_medpack_poison_area_mind_c = object_tangible_me
 	experimentalMin = {0, 0, 10, 15, 15, 20, 100, 25, 30, 1000},
 	experimentalMax = {0, 0, 200, 35, 30, 5, 60, 150, 240, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_poison_area_mind_c, "object/tangible/medicine/crafted/medpack_poison_area_mind_c.iff")

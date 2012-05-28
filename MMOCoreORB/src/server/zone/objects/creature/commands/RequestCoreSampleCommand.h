@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "../../tangible/tool/SurveyTool.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/player/sessions/survey/SurveySession.h"
 
 class RequestCoreSampleCommand : public QueueCommand {
 public:
@@ -84,6 +85,8 @@ public:
 				Time nextExecutionTime;
 				Core::getTaskManager()->getNextExecutionTime(sampletask, nextExecutionTime);
 				int seconds = (int) ((nextExecutionTime.getMiliTime() - Time().getMiliTime()) / 1000.0f);
+				if(seconds < 1)
+					seconds = 1;
 
 				StringIdChatParameter message("survey","tool_recharge_time");
 				message.setDI(seconds);
@@ -100,14 +103,16 @@ public:
 				return SUCCESS;
 			}
 
-			ManagedReference<CreatureObject*> playerCreature = creature;
 
-			PlayerObject* ghost = playerCreature->getPlayerObject();
+			ManagedReference<SurveySession*> session = cast<SurveySession*>(creature->getActiveSession(SessionFacadeType::SURVEY));
 
-			ManagedReference<SurveyTool* > surveyTool = ghost->getSurveyTool();
+			if(session == NULL) {
+				creature->sendSystemMessage("@ui:survey_notool");
+				return GENERALERROR;
+			}
 
-			if (surveyTool != NULL && playerCreature->getZone() != NULL)
-				surveyTool->sendSampleTo(playerCreature, arguments.toString());
+			session->setActiveSurveyTool(session->getOpenSurveyTool());
+			session->startSample(arguments.toString());
 
 		}
 

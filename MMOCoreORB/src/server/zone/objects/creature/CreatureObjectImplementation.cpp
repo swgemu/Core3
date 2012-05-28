@@ -117,6 +117,9 @@
 #include "system/lang/ref/Reference.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 
+#include "ai/AiActor.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -612,6 +615,8 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
+	if (isAiActor()) getGhostObject()->next(AiActor::FORGOT);
+
 	//info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
 		if (stateBitmask & CreatureState::PEACE)
@@ -821,8 +826,27 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 	}
 }
 
-int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
-		int damageType, float damage, bool destroy, bool notifyClient) {
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	if (attacker->isPlayerCreature()) {
+		CreatureObject* player = cast<CreatureObject*>( attacker);
+
+		if (damage > 0) {
+			threatMap->addDamage(player, damage, xp);
+
+			// TODO: put this logic (or something similar) in the attack state
+			if (System::random(5) == 1) {
+				if (isAiActor())
+					getGhostObject()->setDefender(player);
+				else
+					setDefender(player);
+			}
+		}
+	}
+
+	return inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+}
+
+int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
 	if (damageType < 0 || damageType >= hamList.size()) {
 		error(
 				"incorrect damage type in CreatureObjectImplementation::inflictDamage");
@@ -831,6 +855,12 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker,
 
 	if (this->isIncapacitated() || this->isDead())
 		return 0;
+
+	if (isAiActor()) {
+		ManagedReference<AiActor*> actor = getGhostObject();
+		actor->updateLastDamageReceived();
+		actor->next(AiActor::ATTACKED);
+	}
 
 	int currentValue = hamList.get(damageType);
 
@@ -1227,15 +1257,11 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
 	}
 
-	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale(
-			(uint8) newPosture) + speedboost, true);
+	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8) newPosture) + speedboost, true);
 
-	setAccelerationMultiplierMod(
-			CreaturePosture::instance()->getAccelerationScale(
-					(uint8) newPosture), true);
+	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) newPosture), true);
 
-	setTurnScale(CreaturePosture::instance()->getTurnScale(
-			(uint8) newPosture), true);
+	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) newPosture), true);
 
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
@@ -1345,12 +1371,13 @@ void CreatureObjectImplementation::setAccelerationMultiplierBase(
 	}
 }
 
-void CreatureObjectImplementation::setAccelerationMultiplierMod(
-		float newMultiplierMod, bool notifyClient) {
-	if (accelerationMultiplierMod == newMultiplierMod)
+void CreatureObjectImplementation::setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient) {
+	float buffMod = getSkillMod("private_acceleration_multiplier") > 0 ? (float)getSkillMod("private_acceleration_multiplier") / 100.f : 1.f;
+
+	if (accelerationMultiplierMod == newMultiplierMod * buffMod)
 		return;
 
-	accelerationMultiplierMod = newMultiplierMod;
+	accelerationMultiplierMod = newMultiplierMod * buffMod;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
@@ -1411,13 +1438,14 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 	broadcastMessage(msg, true);
 }
 
-void CreatureObjectImplementation::setSpeedMultiplierMod(
-		float newMultiplierMod, bool notifyClient) {
+void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
 
-	if (speedMultiplierMod == newMultiplierMod)
+	float buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
+
+	if (speedMultiplierMod == newMultiplierMod * buffMod)
 		return;
 
-	speedMultiplierMod = newMultiplierMod;
+	speedMultiplierMod = newMultiplierMod * buffMod;
 
 	int bufferSize = speedMultiplierModChanges.size();
 
@@ -1751,9 +1779,18 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	SkillList* playerSkillList = getSkillList();
 
+	int totalSkillPointsWasted = 250;
+
 	for (int i = 0; i < playerSkillList->size(); ++i) {
 		Skill* skill = playerSkillList->get(i);
 		skillManager->awardDraftSchematics(skill, ghost, false);
+
+		totalSkillPointsWasted -= skill->getSkillPointsRequired();
+	}
+
+	if (ghost->getSkillPoints() != totalSkillPointsWasted) {
+		error("skill points on load mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
+		ghost->setSkillPoints(totalSkillPointsWasted);
 	}
 
 	ghost->getSchematics()->addRewardedSchematics(ghost);
@@ -1995,7 +2032,7 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 
 bool CreatureObjectImplementation::setNextAttackDelay(uint32 mod, int del) {
 	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
-		del += mod;
+		//del += mod;
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 
@@ -2312,6 +2349,10 @@ PlayerObject* CreatureObjectImplementation::getPlayerObject() {
 	return dynamic_cast<PlayerObject*> (getSlottedObject("ghost"));
 }
 
+AiActor* CreatureObjectImplementation::getGhostObject() {
+	return dynamic_cast<AiActor*> (getSlottedObject("ghost"));
+}
+
 bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	/*if (duelList.contains(object) && object.requestedDuelTo(this))
 	 return true;*/
@@ -2438,6 +2479,15 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		playerManager->notifyDestruction(attacker, _this, condition);
 	}
 
+	AiActor* actor = getGhostObject();
+
+	if (actor != NULL) {
+		CreatureManager* creatureManager = getZone()->getCreatureManager();
+
+		// TODO: need to rewrite this for AiActor or CreatureObject
+		//creatureManager->notifyDestruction(attacker, host, condition);
+	}
+
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
@@ -2519,4 +2569,21 @@ CampSiteActiveArea* CreatureObjectImplementation::getCurrentCamp() {
 			return cast<CampSiteActiveArea*>(activeAreas.get(i).get());
 	}
 	return NULL;
+}
+
+int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (isDead() && isAiActor()) {
+		switch (selectedID) {
+		case 35:
+			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
+
+			return 0;
+		case 36:
+			getZoneServer()->getPlayerManager()->lootAll(player, _this);
+
+			return 0;
+		}
+	}
+
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }

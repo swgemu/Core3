@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_radar_table = object_draft_schematic_
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"mineral", "metal", "gemstone_crystalline", "aluminum"},
    resourceQuantities = {60, 50, 45, 50},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

@@ -1,8 +1,8 @@
 shaggy_donkuwah_youth = Creature:new {
 	objectName = "@mob/creature_names:shaggy_donkuwah_youth",
-	socialGroup = "Donkuwah Tr.",
-	pvpFaction = "Donkuwah Tr.",
-	faction = "",
+	socialGroup = "donkuwah_tribe",
+	pvpFaction = "donkuwah_tribe",
+	faction = "donkuwah_tribe",
 	level = 14,
 	chanceHit = 0.3,
 	damageMin = 150,
@@ -26,9 +26,11 @@ shaggy_donkuwah_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

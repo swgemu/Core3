@@ -29,7 +29,7 @@ jusani_zhord = Creature:new {
 
 	templates = {"object/mobile/dressed_jusani_zhord.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

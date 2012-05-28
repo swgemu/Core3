@@ -28,7 +28,7 @@ bounty_hunter_trainer = Creature:new {
 
 	templates = {"object/mobile/dressed_bountyhunter_trainer_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

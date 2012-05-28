@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_yavin = object_draft_schematic_scout_s
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"meat_carnivore_yavin4", "hide_scaley_yavin4", "bone_mammal_tatooine"},
    resourceQuantities = {30, 35, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

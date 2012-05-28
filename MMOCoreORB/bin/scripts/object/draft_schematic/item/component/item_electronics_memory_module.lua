@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "gas_inert"},
    resourceQuantities = {8, 5, 2, 3, 2},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

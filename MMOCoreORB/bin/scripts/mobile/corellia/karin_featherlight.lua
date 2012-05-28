@@ -28,7 +28,7 @@ karin_featherlight = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_corellia_02.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

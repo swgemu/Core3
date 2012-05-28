@@ -52,6 +52,7 @@ object_tangible_component_bio_bio_component_clothing_field_defense_2 = object_ta
 	experimentalMin = {0, 0, 30, 1000, 115, 3, 116, 2},
 	experimentalMax = {0, 0, 50, 1000, 115, 20, 116, 5},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 4, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_field_defense_2, "object/tangible/component/bio/bio_component_clothing_field_defense_2.iff")

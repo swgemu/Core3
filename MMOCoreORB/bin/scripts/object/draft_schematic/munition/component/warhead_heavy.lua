@@ -67,7 +67,6 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "petrochem_inert_polymer", "radioactive", "steel_thoranium", "gas_reactive_skevon", "gas_inert_hydron3"},
    resourceQuantities = {160, 20, 10, 50, 40, 80, 10},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_space_chassis_z95 = object_draft_schematic_space_chassis_
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel", "petrochem_inert", "ore", "aluminum"},
    resourceQuantities = {2000, 1000, 1000, 1000},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

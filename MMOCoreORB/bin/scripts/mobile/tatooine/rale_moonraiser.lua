@@ -29,7 +29,7 @@ rale_moonraiser = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pitoleermaster,carbineermaster)
 }

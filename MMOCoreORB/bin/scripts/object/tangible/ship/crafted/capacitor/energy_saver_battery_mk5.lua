@@ -52,6 +52,7 @@ object_tangible_ship_crafted_capacitor_energy_saver_battery_mk5 = object_tangibl
 	experimentalMin = {0, 0, -168, -345},
 	experimentalMax = {0, 0, -124, -255},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/energy_saver_battery_mk5.iff")

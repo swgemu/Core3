@@ -6,6 +6,7 @@
  */
 
 #include "InstallationObject.h"
+#include "sui/InsertPowerSuiCallback.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -101,6 +102,16 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 
 	if (value) {
 
+		if(resourceHopper.size() == 0)
+			return;
+
+		ResourceContainer* container = resourceHopper.get(0);
+		ResourceSpawn* spawn = container->getSpawnObject();
+		if(spawn == NULL)
+			return;
+
+		spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+
 		if (basePowerRate != 0 && surplusPower <= 0) {
 			StringIdChatParameter stringId("player_structure", "power_deposit_incomplete");
 			ChatSystemMessage* msg = new ChatSystemMessage(stringId);
@@ -182,8 +193,16 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			if(oldEntry->getQuantity() > 0)
 				resourceHopper.set(i, oldEntry, inso7, 0);
 			else
-				resourceHopper.remove(i, inso7);
+				resourceHopper.remove(i, inso7, 0);
 
+			ResourceSpawn* spawn = container->getSpawnObject();
+			if(spawn != NULL)
+				spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+			else
+				spawnDensity = 0;
+
+			inso7->updateHopperSize(getHopperSize());
+			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
 
 			broadcastToOperators(inso7);
@@ -211,6 +230,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(CreatureObject* 
 		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.toString(), ssTotalEnergy.toString(), "1");
 		energyBox->addTo("@player_structure:to_deposit", "0", "0", "1");
 
+		energyBox->setCallback(new InsertPowerSuiCallback(server->getZoneServer()));
 		player->getPlayerObject()->addSuiBox(energyBox);
 		player->sendMessage(energyBox->generateMessage());
 
@@ -331,26 +351,26 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	Time harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp : currentTime;
 
 	float elapsedTime = (harvestUntil.getTime() - resourceHopperTimestamp.getTime());
-	float spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
 	float harvestAmount = (elapsedTime / 60.0) * (spawnDensity * getExtractionRate());
 
 	int availableCapacity = (int)(getHopperSizeMax() - getHopperSize());
 	harvestAmount = harvestAmount > availableCapacity ? availableCapacity : harvestAmount;
 
+	if(harvestAmount < 0)
+		harvestAmount = 0;
+
 	harvestAmount += extractionRemainder;
-	extractionRemainder = harvestAmount;
-	extractionRemainder -= (int) harvestAmount;
+	extractionRemainder = harvestAmount - (int) harvestAmount;
+	harvestAmount = (int) harvestAmount;
 
 	float currentQuantity = container->getQuantity();
 
-	if (harvestAmount > 0) {
-		spawn->extractResource(getZone()->getZoneName(), (int) harvestAmount);
+	if(harvestAmount > 0) {
+		spawn->extractResource(getZone()->getZoneName(), harvestAmount);
 
-		updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
-		//container->setQuantity(currentQuantity + harvestAmount);
+		updateResourceContainerQuantity(container, (currentQuantity + harvestAmount), true);
 	}
-
 
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
@@ -382,7 +402,6 @@ void InstallationObjectImplementation::clearResourceHopper() {
 		return;
 
 	//lets delete the containers from db
-
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* container = resourceHopper.get(i);
 
@@ -401,15 +420,9 @@ void InstallationObjectImplementation::clearResourceHopper() {
 
 	inso7->close();
 
-	broadcastToOperators(inso7);
-
-	/*while (resourceHopper.size() > 0) {
-		ResourceContainer* container = resourceHopper.get(0);
-
-		removeResourceFromHopper(container);
-	}*/
-
 	setOperating(false);
+
+	broadcastToOperators(inso7);
 }
 
 void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
@@ -418,13 +431,17 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 	if (index == -1)
 		return;
 
-	container->destroyObjectFromDatabase(true);
-
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
 	inso7->updateHopper();
 	inso7->startUpdate(0x0D);
 
-	resourceHopper.remove(index, inso7, 1);
+	if(isOperating() && index == 0) {
+		container->setQuantity(0, false, true);
+		resourceHopper.set(index, container, inso7, 1);
+	} else {
+		container->destroyObjectFromDatabase(true);
+		resourceHopper.remove(index, inso7, 1);
+	}
 
 	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
 	inso7->updateHopperSize(getHopperSize());
@@ -557,7 +574,7 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 }
 
 void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	if (container->getQuantity() == newQuantity)
+	if (container->getQuantity() == newQuantity && newQuantity != 0)
 		return;
 
 	container->setQuantity(newQuantity, false, true);
@@ -572,7 +589,10 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
 			inso7->updateHopper();
 			inso7->startUpdate(0x0D);
-			resourceHopper.set(i, container, inso7, 1);
+			if(container->getQuantity() == 0 && (!isOperating() || (isOperating() && i != 0)))
+				resourceHopper.remove(i, inso7, 1);
+			else
+				resourceHopper.set(i, container, inso7, 1);
 			inso7->updateHopperSize(getHopperSize());
 			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
@@ -580,6 +600,9 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			broadcastToOperators(inso7);
 		}
 	}
+
+	if(resourceHopper.size() == 0)
+		setOperating(false);
 
 	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this));
 }
@@ -607,7 +630,7 @@ float InstallationObjectImplementation::getActualRate() {
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	return extractionRate * (spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY()));
+	return extractionRate * spawnDensity;
 }
 
 void InstallationObjectImplementation::setExtractionRate(float rate){

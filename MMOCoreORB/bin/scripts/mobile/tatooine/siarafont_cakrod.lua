@@ -28,7 +28,7 @@ siarafont_cakrod = Creature:new {
 
 	templates = {"object/mobile/dressed_sean_questp_market.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

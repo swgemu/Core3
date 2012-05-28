@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "metal", "chemical", "ore", "metal", "metal", "metal"},
    resourceQuantities = {15, 85, 18, 60, 50, 15, 15},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

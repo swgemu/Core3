@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
    ingredientSlotType = {1, 1, 0, 1, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff"},
    resourceQuantities = {1, 1, 25, 1, 1},
-   combineTypes = {1, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

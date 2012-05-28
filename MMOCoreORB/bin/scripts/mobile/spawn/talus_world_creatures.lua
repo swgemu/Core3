@@ -7,7 +7,7 @@ talus_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "flite_rasp_lair",
+			lairTemplateName = "talus_song_rasp_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 18,
@@ -16,7 +16,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "fynock_lair",
+			lairTemplateName = "talus_fynock_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 22,
@@ -25,7 +25,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "guf_drolg_lair",
+			lairTemplateName = "talus_guf_drolg_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 24,
@@ -34,7 +34,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "huf_dun_lair",
+			lairTemplateName = "talus_huf_dun_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 21,
 			maxDifficulty = 31,
@@ -43,7 +43,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "kima_lair",
+			lairTemplateName = "talus_kima_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 28,
@@ -52,7 +52,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "roba_lair",
+			lairTemplateName = "talus_roba_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 26,
 			maxDifficulty = 36,

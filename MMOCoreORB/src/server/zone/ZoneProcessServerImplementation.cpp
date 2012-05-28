@@ -106,6 +106,7 @@ void ZoneProcessServerImplementation::initialize() {
 	vendorManager->initialize();
 
 	professionManager = SkillManager::instance();
+	professionManager->loadLuaConfig();
 	professionManager->loadClientData();
 	//professionManager->setObjectController(objectController);
 	//professionManager->initialize();

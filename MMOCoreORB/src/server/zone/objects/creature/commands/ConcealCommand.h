@@ -154,6 +154,7 @@ public:
 
 		ManagedReference<Buff*> buff = new Buff(targetPlayer, crc, duration, BuffType::SKILL);
 		buff->addState(CreatureState::MASKSCENT);
+		buff->setSkillModifier("private_conceal", camoMod);
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 

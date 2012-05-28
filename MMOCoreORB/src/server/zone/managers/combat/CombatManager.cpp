@@ -201,7 +201,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-		damage = applyDamage(attacker, tano, damage, poolsToDamage);
+		damage = applyDamage(attacker, tano, damage, poolsToDamage, data);
 
 		broadcastCombatAction(attacker, tano, data, 0x01);
 		broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
@@ -622,38 +622,21 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> healthArmor;
-	SceneObject* chest = defender->getSlottedObject("chest2");
-	SceneObject* bicepr = defender->getSlottedObject("bicep_r");
-	SceneObject* bicepl = defender->getSlottedObject("bicep_l");
-	SceneObject* bracerr = defender->getSlottedObject("bracer_upper_r");
-	SceneObject* bracerl = defender->getSlottedObject("bracer_upper_l");
-	SceneObject* gloves = defender->getSlottedObject("gloves");
-	if (bicepr != NULL && bicepr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepr));
-	if (bicepl != NULL && bicepl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bicepl));
-	if (bracerr != NULL && bracerr->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerr));
-	if (bracerl != NULL && bracerl->isArmorObject()) healthArmor.add(cast<ArmorObject*>(bracerl));
-	if (gloves != NULL && gloves->isArmorObject()) healthArmor.add(cast<ArmorObject*>(gloves));
+	Vector<ArmorObject*> healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+
+	if (System::random(1) == 0)
+		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	if (System::random(1) == 0) {
-		if (chest != NULL && chest->isArmorObject())
-			armorToHit = cast<ArmorObject*>(chest);
-	} else {
-		if (!healthArmor.isEmpty())
-			armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
-	}
+	if (!healthArmor.isEmpty())
+		armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
 
 	return armorToHit;
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> actionArmor;
-	SceneObject* boots = defender->getSlottedObject("shoes");
-	SceneObject* pants = defender->getSlottedObject("pants1");
-	if (boots != NULL && boots->isArmorObject()) actionArmor.add(cast<ArmorObject*>(boots));
-	if (pants != NULL && pants->isArmorObject()) actionArmor.add(cast<ArmorObject*>(pants));
+	Vector<ArmorObject*> actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -664,12 +647,14 @@ ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
-	SceneObject* helmet = defender->getSlottedObject("hat");
+	Vector<ArmorObject*> mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
 
-	if (helmet != NULL && helmet->isArmorObject())
-		return cast<ArmorObject*>(helmet);
+	ManagedReference<ArmorObject*> armorToHit = NULL;
 
-	return NULL;
+	if (!mindArmor.isEmpty())
+		armorToHit = mindArmor.get(System::random(mindArmor.size() - 1));
+
+	return armorToHit;
 }
 
 ArmorObject* CombatManager::getPSGArmor(CreatureObject* attacker, CreatureObject* defender) {
@@ -756,33 +741,36 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		psg->inflictDamage(psg, 0, conditionDamage, false, true);
 	}
 
-	// Next is Jedi Force Armor and Shield reduction.
+	// Next is Jedi stuff
+	if (data.getAttackType() == CombatManager::FORCEATTACK) {
+		float jediBuffDamage = 0;
+		float rawDamage = damage;
 
-	int forceArmor = defender->getSkillMod("force_armor");
+		// Force Shield
+		int forceShield = defender->getSkillMod("force_shield");
+		if (forceShield > 0)
+			jediBuffDamage = rawDamage - (damage *= 1.f - (forceShield / 100.f));
 
-	if (forceArmor > 0 && (data.getAttackType() != CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-		damage *= (1.f - (forceArmor / 100.f));
+		// Force Feedback
+		int forceFeedback = defender->getSkillMod("force_feedback");
+		if (forceFeedback > 0)
+			attacker->inflictDamage(defender, System::random(2) * 3, rawDamage - (damage *= 1.f - (forceFeedback / 100.f)), true);
 
-		int damageSent = originalDamage - damage;
+		// Force Absorb
+		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {
+			ManagedReference<PlayerObject*> playerObject = defender->getPlayerObject();
+			if (playerObject != NULL) playerObject->setForcePower(playerObject->getForcePower() + (damage * 0.5));
+		}
 
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
+		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, jediBuffDamage);
+	} else if (data.getAttackType() == CombatManager::WEAPONATTACK) {
+		// Force Armor
+		float rawDamage = damage;
+
+		int forceArmor = defender->getSkillMod("force_armor");
+		if (forceArmor > 0)
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, rawDamage - (damage *= 1.f - (forceArmor / 100.f)));
 	}
-
-
-	// Force Shield.
-
-	int forceShield = defender->getSkillMod("force_shield");
-
-	if (forceShield > 0 && (data.getAttackType() == CombatManager::FORCEATTACK) && defender->isPlayerCreature()){
-		float originalDamage = damage;
-		damage *= (1.f - (forceShield / 100.f));
-
-		int damageSent = originalDamage - damage;
-
-		defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, defender, damageSent);
-	}
-
 
 	// now apply the rest of the damage to the regular armor
 	ManagedReference<ArmorObject*> armor = NULL;
@@ -873,11 +861,6 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
-	// Resets attack type back to normal if the last attack used was not a Force power.
-	int damageTypeCur = weapon->getAttackType();
-	weapon->setAttackType(damageTypeCur);
-
-
 	int diff = calculateDamageRange(attacker, defender, weapon);
 	float minDamage = weapon->getMinDamage();
 
@@ -893,10 +876,6 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 
 	if (damageMax > 0)
 		damage = damageMaxDif;
-
-	if (data.getAttackType() == CombatManager::FORCEATTACK) {
-		weapon->setAttackType(WeaponObject::FORCEATTACK); // For XP purposes.
-	}
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");
@@ -1146,6 +1125,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			// now roll to see if it gets applied
 			uint32 strength = effect.getStateStrength();
 			if (strength == 0) strength = getAttackerAccuracyModifier(creature, creature->getWeapon());
+			strength += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 			if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
 				failed = true;
 
@@ -1233,9 +1213,19 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 
 	WeaponObject* weapon = attacker->getWeapon();
 
+	String xpType;
+	switch (data.getAttackType()) {
+	case CombatManager::FORCEATTACK:
+		xpType = "jedi_general";
+		break;
+	default:
+		xpType = weapon->getXpType();
+		break;
+	}
+
 	if (poolsToDamage & HEALTH) {
-		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true);
+		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH, data) * damageMultiplier * data.getHealthDamageMultiplier();
+		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::HEALTH + System::random(2), 1, true);
 			wounded = true;
@@ -1243,8 +1233,8 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	}
 
 	if (poolsToDamage & ACTION) {
-		actionDamage = getArmorReduction(attacker, defender, damage, ACTION, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true);
+		actionDamage = getArmorReduction(attacker, defender, damage, ACTION, data) * damageMultiplier * data.getActionDamageMultiplier();
+		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::ACTION + System::random(2), 1, true);
 			wounded = true;
@@ -1252,8 +1242,8 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	}
 
 	if (poolsToDamage & MIND) {
-		mindDamage = getArmorReduction(attacker, defender, damage, MIND, data) * damageMultiplier;
-		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true);
+		mindDamage = getArmorReduction(attacker, defender, damage, MIND, data) * damageMultiplier * data.getMindDamageMultiplier();
+		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType);
 		if (!wounded && System::random(100) < ratio) {
 			defender->addWounds(CreatureAttribute::MIND + System::random(2), 1, true);
 			wounded = true;
@@ -1268,7 +1258,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage) {
+int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0)
 		return 0;
 
@@ -1276,11 +1266,21 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 		return 0;
 	}
 
+	// TODO: take into account special attack data when calculating damage
 	int damage = calculateDamage(attacker, defender);
 
-	defender->inflictDamage(attacker, 0, damage, true);
-
 	WeaponObject* weapon = attacker->getWeapon();
+	String xpType;
+	switch (data.getAttackType()) {
+	case CombatManager::FORCEATTACK:
+		xpType = "jedi_general";
+		break;
+	default:
+		xpType = weapon->getXpType();
+		break;
+	}
+
+	defender->inflictDamage(attacker, 0, damage, true, xpType);
 	weapon->decreasePowerupUses(attacker);
 
 	return damage;

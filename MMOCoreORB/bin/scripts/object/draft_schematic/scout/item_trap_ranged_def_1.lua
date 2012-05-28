@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_trap_ranged_def_1 = object_draft_schematic_sco
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"bone", "organic", "organic"},
    resourceQuantities = {2, 4, 2},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

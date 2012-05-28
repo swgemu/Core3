@@ -1,6 +1,6 @@
 arachne_fleshripper = Creature:new {
 	objectName = "@mob/creature_names:arachne_fleshripper",
-	socialGroup = "Arachne",
+	socialGroup = "arachne",
 	pvpFaction = "",
 	faction = "",
 	level = 30,

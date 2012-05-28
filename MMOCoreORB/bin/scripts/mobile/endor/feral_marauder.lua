@@ -1,8 +1,8 @@
 feral_marauder = Creature:new {
 	objectName = "@mob/creature_names:feral_marauder",
-	socialGroup = "Marauder",
-	pvpFaction = "Marauder",
-	faction = "",
+	socialGroup = "endor_marauder",
+	pvpFaction = "endor_marauder",
+	faction = "endor_marauder",
 	level = 44,
 	chanceHit = 0.47,
 	damageMin = 345,
@@ -30,8 +30,7 @@ feral_marauder = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(feral_marauder, "feral_marauder")

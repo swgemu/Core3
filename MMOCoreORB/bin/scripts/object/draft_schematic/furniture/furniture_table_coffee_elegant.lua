@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_table_coffee_elegant = object_draft_s
    ingredientSlotType = {0, 0},
    resourceTypes = {"aluminum", "ore_extrusive_pholokite"},
    resourceQuantities = {100, 75},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

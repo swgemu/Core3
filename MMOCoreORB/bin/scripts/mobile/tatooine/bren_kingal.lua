@@ -29,7 +29,7 @@ bren_kingal = Creature:new {
 
 	templates = {"object/mobile/mos_taike_guard_young.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "mos_taike_guard_outfit",
 	attacks = {

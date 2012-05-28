@@ -29,7 +29,7 @@ senator_pooja_naberrie = Creature:new {
 
 	templates = {"object/mobile/dressed_pooja_naberrie.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

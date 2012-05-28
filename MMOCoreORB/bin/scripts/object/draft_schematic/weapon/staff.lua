@@ -67,7 +67,6 @@ object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff
    ingredientSlotType = {0},
    resourceTypes = {"wood"},
    resourceQuantities = {16},
-   combineTypes = {0},
    contribution = {100},
 
 

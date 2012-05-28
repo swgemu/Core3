@@ -29,7 +29,7 @@ lord_throme_gormengal = Creature:new {
 
 	templates = {"object/mobile/dressed_lord_throme_gormengal.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

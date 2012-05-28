@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
    ingredientSlotType = {0, 0, 0, 3},
    resourceTypes = {"wheat", "oats", "water", "object/tangible/food/crafted/additive/shared_additive_light.iff"},
    resourceQuantities = {20, 10, 10, 1},
-   combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
 

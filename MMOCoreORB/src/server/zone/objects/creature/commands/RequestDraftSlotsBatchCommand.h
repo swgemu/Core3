@@ -69,19 +69,33 @@ public:
 		 * Argument 2 is the SchematicCRC
 		 */
 
-		StringTokenizer tokenizer(arguments.toString());
-
-		String value;
-
-		tokenizer.getStringToken(value);
-		uint32 schematicID = Integer::valueOf(value);
-
 		ManagedReference<CraftingManager* > craftingManager = creature->getZoneServer()->getCraftingManager();
 
 		if(craftingManager == NULL || !creature->isPlayerCreature())
 			return GENERALERROR;
 
-		craftingManager->sendDraftSlotsTo(creature, schematicID);
+		StringTokenizer tokenizer(arguments.toString());
+		tokenizer.setDelimeter(" ");
+		String value;
+		uint32 schematicID;
+
+		while(tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(value);
+
+			if(!tokenizer.hasMoreTokens())
+				break;
+
+			tokenizer.shiftTokens(1);
+
+			try {
+				schematicID = Integer::valueOf(value);
+
+				craftingManager->sendDraftSlotsTo(creature, schematicID);
+			} catch(Exception& e) {
+
+				warning("Invalid draft slot request: " + value);
+			}
+		}
 
 		return SUCCESS;
 	}

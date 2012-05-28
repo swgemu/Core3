@@ -29,7 +29,7 @@ mozo_bondog = Creature:new {
 
 	templates = {"object/mobile/dressed_mozo_bondog.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "mozo_bondog_convotemplate",
 	attacks = {
 	}

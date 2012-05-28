@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_item_storage_module_2 = object_draft_sche
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"steel", "ore", "gas_inert", "metal"},
    resourceQuantities = {7, 4, 4, 7},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

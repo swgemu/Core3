@@ -28,7 +28,7 @@ corellia_herald_01 = Creature:new {
 
 	templates = {"object/mobile/dressed_herald_corellia_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

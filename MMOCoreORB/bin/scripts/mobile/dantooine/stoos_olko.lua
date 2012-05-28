@@ -29,7 +29,7 @@ stoos_olko = Creature:new {
 
 	templates = {"object/mobile/dressed_stoos_olko.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

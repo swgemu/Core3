@@ -1,8 +1,8 @@
 panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:panshee_warrior",
-	socialGroup = "Panshee Tribe",
-	pvpFaction = "Panshee Tribe",
-	faction = "",
+	socialGroup = "panshee_tribe",
+	pvpFaction = "panshee_tribe",
+	faction = "panshee_tribe",
 	level = 27,
 	chanceHit = 0.36,
 	damageMin = 250,
@@ -26,12 +26,13 @@ panshee_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_ewok_m_10.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_06.iff",
+		"object/mobile/dressed_ewok_m_08.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(panshee_warrior, "panshee_warrior")

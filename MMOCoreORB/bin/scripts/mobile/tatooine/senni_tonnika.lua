@@ -29,7 +29,7 @@ senni_tonnika = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_senni_tonnika.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

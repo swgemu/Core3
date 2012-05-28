@@ -64,10 +64,9 @@ object_draft_schematic_item_quest_item_current_alternator = object_draft_schemat
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"cycle_control", "transductive_shunt", "directional_sensor"},
-   ingredientSlotType = {1, 1, 1},
+   ingredientSlotType = {2, 2, 2},
    resourceTypes = {"object/tangible/component/item/quest_item/shared_cycle_control.iff", "object/tangible/component/item/quest_item/shared_transductive_shunt.iff", "object/tangible/component/item/quest_item/shared_directional_sensor.iff"},
    resourceQuantities = {1, 1, 1},
-   combineTypes = {1, 1, 1},
    contribution = {100, 100, 100},
 
 

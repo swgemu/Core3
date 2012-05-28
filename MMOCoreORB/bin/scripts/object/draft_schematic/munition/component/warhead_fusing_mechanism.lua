@@ -67,7 +67,6 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"gemstone_armophous", "steel", "metal", "ore", "metal"},
    resourceQuantities = {6, 4, 3, 3, 2},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

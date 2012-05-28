@@ -30,21 +30,20 @@ corsec_special_ops_comissioner = Creature:new {
 		"object/mobile/dressed_corsec_detective_human_male_01.iff",
 		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
-	    {
+	  {
 			groups = {
-				{group = "clothing_attachments", chance = 2500000},
-				{group = "armor_attachments", chance = 2500000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
 				{group = "corsec_weapons", chance = 2500000},
-				{group = "crystals_premium", chance = 1250000},
-				{group = "color_crystals", chance = 1250000}
+				{group = "crystals_premium", chance = 500000},
+				{group = "color_crystals", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}
 	},
-	weapons = {"ranged_weapons"},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_ops_comissioner, "corsec_special_ops_comissioner")

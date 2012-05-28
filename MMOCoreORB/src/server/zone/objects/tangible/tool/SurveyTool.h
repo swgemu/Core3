@@ -55,8 +55,6 @@ using namespace server::zone;
 
 #include "engine/lua/LuaObject.h"
 
-#include "engine/util/u3d/Coordinate.h"
-
 namespace server {
 namespace zone {
 namespace objects {
@@ -93,49 +91,31 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setRange(int r);
+
+	void sendRangeSui(CreatureObject* player);
 
 	int getRange(CreatureObject* player);
 
 	int getPoints();
 
+	int getToolType();
+
+	String getSurveyType();
+
+	String getSurveyAnimation();
+
+	String getSampleAnimation();
+
 	bool canSampleRadioactive();
-
-	bool tryGamble();
-
-	void clearGamble();
-
-	void consentRadioactiveSample(CreatureObject* player);
 
 	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(CreatureObject* player);
-
-	void surveyCnodeMinigameSui(CreatureObject* player);
-
-	void surveyCnodeMinigame(CreatureObject* player, int value);
-
-	Coordinate* getRichSampleLocation();
-
-	void clearRichSampleLocation();
-
-	void setInUse(bool use);
-
-	bool isInUse();
-
-	void surveyGnodeMinigameSui(CreatureObject* player);
-
-	void surveyGnodeMinigame(CreatureObject* player, int value);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void sendResourceListTo(CreatureObject* player);
-
-	void sendSurveyTo(CreatureObject* player, const String& resname);
-
-	void sendSampleTo(CreatureObject* player, const String& resname);
+	void consentRadioactiveSample(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -177,17 +157,7 @@ protected:
 
 	String sampleAnimation;
 
-	String lastResourceSampleName;
-
-	String lastResourceSurveyName;
-
 	bool radioactiveOk;
-
-	Reference<Coordinate* > richSampleLocation;
-
-	bool doGamble;
-
-	bool inUse;
 
 public:
 	static const int SOLAR = 1;
@@ -220,13 +190,25 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	void setRange(int r);
 
+	void sendRangeSui(CreatureObject* player);
+
 	int getRange(CreatureObject* player);
 
 	int getPoints();
+
+	int getToolType();
+
+	String getSurveyType();
+
+	String getSurveyAnimation();
+
+	String getSampleAnimation();
 
 private:
 	int getSkillBasedRange(int skillLevel);
@@ -234,39 +216,9 @@ private:
 public:
 	bool canSampleRadioactive();
 
-	bool tryGamble();
-
-	void clearGamble();
-
-	void consentRadioactiveSample(CreatureObject* player);
-
 	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(CreatureObject* player);
-
-	void surveyCnodeMinigameSui(CreatureObject* player);
-
-	void surveyCnodeMinigame(CreatureObject* player, int value);
-
-	Coordinate* getRichSampleLocation();
-
-	void clearRichSampleLocation();
-
-	void setInUse(bool use);
-
-	bool isInUse();
-
-	void surveyGnodeMinigameSui(CreatureObject* player);
-
-	void surveyGnodeMinigame(CreatureObject* player, int value);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void sendResourceListTo(CreatureObject* player);
-
-	void sendSurveyTo(CreatureObject* player, const String& resname);
-
-	void sendSampleTo(CreatureObject* player, const String& resname);
+	void consentRadioactiveSample(CreatureObject* player);
 
 	WeakReference<SurveyTool*> _this;
 
@@ -313,45 +265,29 @@ public:
 
 	void initializeTransientMembers();
 
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
 	void setRange(int r);
+
+	void sendRangeSui(CreatureObject* player);
 
 	int getRange(CreatureObject* player);
 
 	int getPoints();
 
+	int getToolType();
+
+	String getSurveyType();
+
+	String getSurveyAnimation();
+
+	String getSampleAnimation();
+
 	bool canSampleRadioactive();
-
-	bool tryGamble();
-
-	void clearGamble();
-
-	void consentRadioactiveSample(CreatureObject* player);
 
 	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(CreatureObject* player);
-
-	void surveyCnodeMinigameSui(CreatureObject* player);
-
-	void surveyCnodeMinigame(CreatureObject* player, int value);
-
-	void clearRichSampleLocation();
-
-	void setInUse(bool use);
-
-	bool isInUse();
-
-	void surveyGnodeMinigameSui(CreatureObject* player);
-
-	void surveyGnodeMinigame(CreatureObject* player, int value);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	void sendResourceListTo(CreatureObject* player);
-
-	void sendSurveyTo(CreatureObject* player, const String& resname);
-
-	void sendSampleTo(CreatureObject* player, const String& resname);
+	void consentRadioactiveSample(CreatureObject* player);
 
 };
 

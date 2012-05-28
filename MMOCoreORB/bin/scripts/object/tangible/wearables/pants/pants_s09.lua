@@ -93,6 +93,7 @@ object_tangible_wearables_pants_pants_s09 = object_tangible_wearables_pants_shar
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_pants_s09, "object/tangible/wearables/pants/pants_s09.iff")

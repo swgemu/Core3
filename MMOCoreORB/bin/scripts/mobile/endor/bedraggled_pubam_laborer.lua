@@ -1,8 +1,8 @@
 bedraggled_pubam_laborer = Creature:new {
 	objectName = "@mob/creature_names:bedraggled_pubam_laborer",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 21,
 	chanceHit = 0.33,
 	damageMin = 210,
@@ -26,9 +26,11 @@ bedraggled_pubam_laborer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

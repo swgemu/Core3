@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_wpn_heavy_disruptor = object_tangible_ship_c
 	experimentalMin = {0, 0, 587, 1, 5203, 294, 1, 2035, 1467, 994, 231, 694, 19, 315},
 	experimentalMax = {0, 0, 682, 1, 6047, 341, 1, 2365, 1704, 1155, 269, 806, 22, 366},
 	experimentalPrecision = {0, 0, 10, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_wpn_heavy_disruptor, "object/tangible/ship/crafted/weapon/wpn_heavy_disruptor.iff")

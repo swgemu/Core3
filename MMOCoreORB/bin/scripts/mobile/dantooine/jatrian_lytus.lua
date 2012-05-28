@@ -29,7 +29,7 @@ jatrian_lytus = Creature:new {
 
 	templates = {"object/mobile/dressed_jatrian_lytus.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

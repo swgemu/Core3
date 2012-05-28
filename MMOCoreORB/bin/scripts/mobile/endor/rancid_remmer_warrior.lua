@@ -1,6 +1,6 @@
 rancid_remmer_warrior = Creature:new {
 	objectName = "@mob/creature_names:rancid_remmer_warrior",
-	socialGroup = "Remmer",
+	socialGroup = "remmer",
 	pvpFaction = "",
 	faction = "",
 	level = 33,

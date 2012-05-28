@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_08 = object_draft_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "steel", "gemstone_crystalline"},
    resourceQuantities = {5, 15, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

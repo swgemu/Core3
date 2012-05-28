@@ -29,10 +29,9 @@ warehouse_thug_coa3 = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(warehouse_thug_coa3, "warehouse_thug_coa3")

@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk4 = object_tangible_shi
 	experimentalMin = {0, 0, -60, 3},
 	experimentalMax = {0, 0, -32, 6},
 	experimentalPrecision = {0, 0, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk4, "object/tangible/ship/crafted/weapon/quick_shot_upgrade_mk4.iff")

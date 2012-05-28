@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_layer_ris = object_tangible_component_armo
 	experimentalMin = {0, 0, 1000, 1, 100, 15, 15, 15, 1, 0, 0, 20},
 	experimentalMax = {0, 0, 1000, 5, 1000, -15, -15, -15, 1, 0, 0, 50},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_layer_ris, "object/tangible/component/armor/armor_layer_ris.iff")

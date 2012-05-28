@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
    ingredientSlotType = {0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "gas_inert", "petrochem_inert_polymer"},
    resourceQuantities = {10, 5, 5, 3, 3, 5},
-   combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
 

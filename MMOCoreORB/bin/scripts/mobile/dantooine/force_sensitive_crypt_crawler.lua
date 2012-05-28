@@ -30,20 +30,19 @@ force_sensitive_crypt_crawler = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "crystals_good", chance = 900000},
-				{group = "color_crystals", chance = 950000},
-				{group = "melee_weapons", chance = 2500000},
-				{group = "armor_attachments", chance = 2750000},
-				{group = "holocron_dark", chance = 150000},
-				{group = "clothing_attachments", chance = 2750000}
+				{group = "junk", chance = 2000000},
+				{group = "crystals_poor", chance = 500000},
+				{group = "color_crystals", chance = 500000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000},
+				{group = "clothing_attachments", chance = 1000000}
 			},
-			lootChance = 4800000
-		}				
+			lootChance = 3000000
+		}	
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_sensitive_crypt_crawler, "force_sensitive_crypt_crawler")

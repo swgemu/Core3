@@ -52,6 +52,7 @@ object_tangible_ship_crafted_shields_shield_overcharger_mk1 = object_tangible_sh
 	experimentalMin = {0, 0, 45, 45, -345},
 	experimentalMax = {0, 0, 60, 60, -255},
 	experimentalPrecision = {0, 0, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_shields_shield_overcharger_mk1, "object/tangible/ship/crafted/shields/shield_overcharger_mk1.iff")

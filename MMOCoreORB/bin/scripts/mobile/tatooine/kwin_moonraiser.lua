@@ -29,7 +29,7 @@ kwin_moonraiser = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,riflemanmaster,carbineermaster,pistoleermaster)
 }

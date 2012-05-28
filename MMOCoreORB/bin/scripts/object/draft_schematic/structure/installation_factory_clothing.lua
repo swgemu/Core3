@@ -67,7 +67,6 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
    ingredientSlotType = {0, 2, 0, 0, 1, 1, 1},
    resourceTypes = {"steel", "object/tangible/component/structure/shared_wall_module.iff", "ore", "ore", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_storage_section.iff", "object/tangible/component/structure/shared_manufacturing_mechanism.iff"},
    resourceQuantities = {300, 3, 250, 400, 1, 1, 1},
-   combineTypes = {0, 1, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

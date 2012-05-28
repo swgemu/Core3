@@ -37,7 +37,7 @@ explorer = Creature:new {
 					"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"
 					},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

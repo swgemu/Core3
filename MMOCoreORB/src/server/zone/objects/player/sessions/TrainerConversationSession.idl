@@ -57,6 +57,9 @@ class TrainerConversationSession extends ConversationSession {
 	private Vector<string> nextSkills;
 
 	private string masterSkill;
+	
+	@dereferenced
+	private Vector<string> additionalMasterSkills;
 
 	private string selectedSkill;
 
@@ -106,5 +109,17 @@ class TrainerConversationSession extends ConversationSession {
 
 	public void setMasterSkill(string skillName) {
 		masterSkill = skillName;
+	}
+	
+	public void addAdditionalMasterSkill(string skillName) {
+		additionalMasterSkills.add(skillName);
+	}
+
+	public string getAdditionalMasterSkill(int selectedOption) {
+		return additionalMasterSkills.get(selectedOption);
+	}
+
+	public int getAdditionalMasterSkillsCount() {
+		return additionalMasterSkills.size();
 	}	
 }

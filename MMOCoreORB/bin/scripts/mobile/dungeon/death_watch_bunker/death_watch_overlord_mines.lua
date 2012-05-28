@@ -43,7 +43,7 @@ death_watch_overlord_mines = Creature:new {
 	},
 	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",
-	attacks = {"defaultattack", ""},
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_overlord_mines, "death_watch_overlord_mines")

@@ -29,7 +29,7 @@ spacer = Creature:new {
 		"object/mobile/dressed_criminal_pirate_human_female_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

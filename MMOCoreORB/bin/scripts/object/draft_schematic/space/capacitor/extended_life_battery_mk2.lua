@@ -67,7 +67,6 @@ object_draft_schematic_space_capacitor_extended_life_battery_mk2 = object_draft_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "copper_borocarbitic"},
    resourceQuantities = {200, 50},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

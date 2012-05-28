@@ -29,7 +29,7 @@ jyr_koble = Creature:new {
 
 	templates = {"object/mobile/dressed_jyr_koble.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

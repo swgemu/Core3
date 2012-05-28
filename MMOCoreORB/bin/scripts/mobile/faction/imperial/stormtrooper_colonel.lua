@@ -30,7 +30,7 @@ stormtrooper_colonel = Creature:new {
 	lootGroups = { },
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = {	}
+	attacks = merge(riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_colonel, "stormtrooper_colonel")

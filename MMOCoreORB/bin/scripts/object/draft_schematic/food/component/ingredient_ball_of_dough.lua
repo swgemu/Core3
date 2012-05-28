@@ -67,7 +67,6 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    ingredientSlotType = {0},
    resourceTypes = {"wheat"},
    resourceQuantities = {10},
-   combineTypes = {0},
    contribution = {100},
 
 

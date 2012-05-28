@@ -67,7 +67,6 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"metal", "metal", "metal"},
    resourceQuantities = {7, 7, 2},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

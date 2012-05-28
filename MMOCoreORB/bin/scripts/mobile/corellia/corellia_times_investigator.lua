@@ -21,20 +21,16 @@ corellia_times_investigator = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_fed_dub_investigator_twk_female_01.iff",
-				 "object/mobile/dressed_commoner_tatooine_rodian_female_01.iff",
-				 "object/mobile/dressed_commoner_tatooine_aqualish_male_02.iff"
-				},
+	templates = {"object/mobile/dressed_fed_dub_investigator_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corellia_times_investigator, "corellia_times_investigator")

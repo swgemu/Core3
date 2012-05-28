@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"steel", "metal_nonferrous", "petrochem_inert_polymer"},
    resourceQuantities = {14, 5, 5},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

@@ -1,8 +1,8 @@
 gifted_gondula_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_gondula_shaman",
-	socialGroup = "Gondula Tribe",
-	pvpFaction = "Gondula Tribe",
-	faction = "",
+	socialGroup = "gondula_tribe",
+	pvpFaction = "gondula_tribe",
+	faction = "gondula_tribe",
 	level = 46,
 	chanceHit = 0.46,
 	damageMin = 365,
@@ -26,12 +26,13 @@ gifted_gondula_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/ewok_male.iff"},
+	templates = {
+		"object/mobile/dressed_ewok_m_07.iff",
+		"object/mobile/dressed_ewok_m_11.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gifted_gondula_shaman, "gifted_gondula_shaman")

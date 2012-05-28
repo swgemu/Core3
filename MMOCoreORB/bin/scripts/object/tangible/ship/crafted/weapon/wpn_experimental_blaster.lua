@@ -52,6 +52,7 @@ object_tangible_ship_crafted_weapon_wpn_experimental_blaster = object_tangible_s
 	experimentalMin = {0, 0, 1018, 1, 32468, 509, 1, 2220, 2969, 1833, 463, 463, 23, 315},
 	experimentalMax = {0, 0, 1183, 1, 37733, 591, 1, 2580, 3450, 2130, 538, 538, 27, 366},
 	experimentalPrecision = {0, 0, 10, 0, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_wpn_experimental_blaster, "object/tangible/ship/crafted/weapon/wpn_experimental_blaster.iff")

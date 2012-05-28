@@ -67,7 +67,6 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
    ingredientSlotType = {0, 0},
    resourceTypes = {"petrochem_inert_polymer", "petrochem_inert"},
    resourceQuantities = {20, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

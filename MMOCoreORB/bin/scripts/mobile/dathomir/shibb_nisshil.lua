@@ -29,7 +29,7 @@ shibb_nisshil = Creature:new {
 
 	templates = {"object/mobile/dressed_shibb_nisshil.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -67,7 +67,6 @@ object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_
    ingredientSlotType = {0, 0},
    resourceTypes = {"milk", "fruit_fruits"},
    resourceQuantities = {20, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

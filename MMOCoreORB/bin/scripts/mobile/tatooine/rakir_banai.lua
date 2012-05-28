@@ -29,7 +29,7 @@ rakir_banai = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_rakir_banai.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

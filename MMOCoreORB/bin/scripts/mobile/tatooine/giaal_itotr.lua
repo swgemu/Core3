@@ -28,7 +28,7 @@ giaal_itotr = Creature:new {
 
 	templates = {"object/mobile/dressed_bestine_artist03.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

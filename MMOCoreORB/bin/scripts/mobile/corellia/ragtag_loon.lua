@@ -43,16 +43,16 @@ ragtag_loon = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "loot_kits", chance = 3500000},
-				{group = "crystals_poor", chance = 500000},
+				{group = "junk", chance = 3000000},
+				{group = "loot_kits", chance = 500000},
+				{group = "crystals_poor", chance = 200000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 3200000
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(ragtag_loon, "ragtag_loon")

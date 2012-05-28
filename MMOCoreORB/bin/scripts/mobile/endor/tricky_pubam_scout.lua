@@ -1,8 +1,8 @@
 tricky_pubam_scout = Creature:new {
 	objectName = "@mob/creature_names:tricky_pubam_scout",
-	socialGroup = "Pubam",
-	pvpFaction = "Pubam",
-	faction = "",
+	socialGroup = "pubam",
+	pvpFaction = "pubam",
+	faction = "pubam",
 	level = 50,
 	chanceHit = 0.55,
 	damageMin = 420,
@@ -26,9 +26,11 @@ tricky_pubam_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dulok_male.iff"},
+	templates = {
+			"object/mobile/dulok_male.iff",
+			"object/mobile/dulok_female.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

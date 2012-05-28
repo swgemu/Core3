@@ -29,10 +29,9 @@ frontiersman = Creature:new {
 
 	templates = {},
 	lootGroups = {},
-	weapons = {"ranged_weapons"},
+	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(frontiersman, "frontiersman")

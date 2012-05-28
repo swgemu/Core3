@@ -27,7 +27,7 @@ moisture_farmer = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_moisture_farmer.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	weapons = {},
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

@@ -75,24 +75,26 @@ void ArmorComponentImplementation::updateCraftingValues(CraftingValues* values, 
 	float specialbase = values->getCurrentValue("armor_special_effectiveness");
 	int specialResists = values->getCurrentValue("armor_special_type");
 
-	if (specialResists & WeaponObject::KINETIC)
-		addProperty("kineticeffectiveness", specialbase + kinetic, 10, expProp);
-	if (specialResists & WeaponObject::ENERGY)
-		addProperty("energyeffectiveness", specialbase + energy, 10, expProp);
-	if (specialResists & WeaponObject::BLAST)
-		addProperty("blasteffectiveness", specialbase + blast, 10, expProp);
-	if (specialResists & WeaponObject::STUN)
-		addProperty("stuneffectiveness", specialbase + stun, 10, expProp);
-	if (specialResists & WeaponObject::LIGHTSABER)
-		addProperty("restraineffectiveness", specialbase + lightSaber, 10, expProp);
-	if (specialResists & WeaponObject::HEAT)
-		addProperty("heateffectiveness", specialbase + heat, 10, expProp);
-	if (specialResists & WeaponObject::COLD)
-		addProperty("coldeffectiveness", specialbase + cold, 10, expProp);
-	if (specialResists & WeaponObject::ACID)
-		addProperty("acideffectiveness", specialbase + acid, 10, expProp);
-	if (specialResists & WeaponObject::ELECTRICITY)
-		addProperty("electricaleffectiveness", specialbase + electricity, 10, expProp);
+	if(specialResists != CraftingValues::VALUENOTFOUND) {
+		if (specialResists & WeaponObject::KINETIC)
+			addProperty("kineticeffectiveness", specialbase + kinetic, 10, expProp);
+		if (specialResists & WeaponObject::ENERGY)
+			addProperty("energyeffectiveness", specialbase + energy, 10, expProp);
+		if (specialResists & WeaponObject::BLAST)
+			addProperty("blasteffectiveness", specialbase + blast, 10, expProp);
+		if (specialResists & WeaponObject::STUN)
+			addProperty("stuneffectiveness", specialbase + stun, 10, expProp);
+		if (specialResists & WeaponObject::LIGHTSABER)
+			addProperty("restraineffectiveness", specialbase + lightSaber, 10, expProp);
+		if (specialResists & WeaponObject::HEAT)
+			addProperty("heateffectiveness", specialbase + heat, 10, expProp);
+		if (specialResists & WeaponObject::COLD)
+			addProperty("coldeffectiveness", specialbase + cold, 10, expProp);
+		if (specialResists & WeaponObject::ACID)
+			addProperty("acideffectiveness", specialbase + acid, 10, expProp);
+		if (specialResists & WeaponObject::ELECTRICITY)
+			addProperty("electricaleffectiveness", specialbase + electricity, 10, expProp);
+	}
 }
 
 void ArmorComponentImplementation::calculateSpecialProtection(CraftingValues* craftingValues) {

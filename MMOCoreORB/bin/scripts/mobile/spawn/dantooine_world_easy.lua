@@ -7,7 +7,7 @@ dantooine_world_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "bile_drenched_quenker_lair",
+			lairTemplateName = "dantooine_quenker_bile_drenched_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -16,7 +16,16 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "grassland_voritor_tracker_lair",
+			lairTemplateName = "dantooine_voritor_tracker_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 10,
+			maxDifficulty = 50,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "dantooine_graul_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -25,7 +34,7 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "graul_lair",
+			lairTemplateName = "dantooine_graul_mauler_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -34,7 +43,7 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "graul_mauler_lair",
+			lairTemplateName = "dantooine_huurton_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -43,7 +52,7 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "huurton_lair",
+			lairTemplateName = "dantooine_piket_plains_walker_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -52,7 +61,7 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "piket_plains_walker_lair",
+			lairTemplateName = "dantooine_quenker_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -61,7 +70,7 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "quenker_lair",
+			lairTemplateName = "dantooine_thune_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 80,
@@ -70,19 +79,10 @@ dantooine_world_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "thune_lair",
+			lairTemplateName = "dantooine_bol_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
-			maxDifficulty = 80,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "bol_lair",
-			spawnLimit = -1,
-			minDifficulty = 10,
-			maxDifficulty = 80,
+			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

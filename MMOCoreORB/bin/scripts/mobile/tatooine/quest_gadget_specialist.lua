@@ -28,7 +28,7 @@ quest_gadget_specialist = Creature:new {
 
 	templates = {"object/mobile/dressed_doctor_trainer_moncal_female_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

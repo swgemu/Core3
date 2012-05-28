@@ -101,7 +101,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4 = ob
 	healthAttackCost = 95,
 	actionAttackCost = 50,
 	mindAttackCost = 45,
-	forceCost = 48,
+	forceCost = 47,
 
 	pointBlankAccuracy = 0,
 	pointBlankRange = 20,
@@ -114,6 +114,8 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4 = ob
 
 	minDamage = 185,
 	maxDamage = 265,
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	childObjects = {
 		{templateFile = "object/tangible/inventory/lightsaber_inventory_4.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
@@ -130,6 +132,7 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4 = ob
 	experimentalMin = {0, 0, 185, 265, 4.8, 25, 55, 95, 60, 45},
 	experimentalMax = {0, 0, 195, 305, 4.5, 50, 48, 65, 45, 40},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen4, "object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen4.iff")

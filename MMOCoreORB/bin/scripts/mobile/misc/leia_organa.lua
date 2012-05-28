@@ -28,7 +28,7 @@ leia_organa = Creature:new {
 
 	templates = {"object/mobile/leia_organa.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -70,6 +70,7 @@
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;
 bool ServerCore::truncateAllData = false;
+ServerCore* ServerCore::instance = NULL;
 
 ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 		Core("log/core3.log"), Logger("Core") {
@@ -84,6 +85,8 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 
 	truncateAllData = truncateDatabases;
 	arguments = args;
+
+	instance = this;
 
 	configManager = ConfigManager::instance();
 
@@ -102,6 +105,14 @@ public:
 		zoneServer->printInfo();
 	}
 };
+
+void ServerCore::signalShutdown() {
+	shutdownBlockMutex.lock();
+
+	waitCondition.broadcast(&shutdownBlockMutex);
+
+	shutdownBlockMutex.unlock();
+}
 
 void ServerCore::initialize() {
 	info("starting up server..");
@@ -401,6 +412,29 @@ void ServerCore::handleCommands() {
 
 			} else if (command == "rev") {
 				System::out << ConfigManager::instance()->getRevision() << endl;
+			} else if (command == "broadcast") {
+				ChatManager* chatManager = zoneServer->getChatManager();
+				chatManager->broadcastGalaxy(NULL, arguments);
+			} else if (command == "shutdown") {
+				int minutes = 1;
+
+				try {
+					minutes = UnsignedInteger::valueOf(arguments);
+				} catch (Exception& e) {
+					System::out << "invalid minutes number expected dec";
+				}
+
+				if (zoneServer != NULL) {
+					zoneServer->timedShutdown(minutes);
+
+					shutdownBlockMutex.lock();
+
+					waitCondition.wait(&shutdownBlockMutex);
+
+					shutdownBlockMutex.unlock();
+				}
+
+				return;
 			} else
 				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {

@@ -28,7 +28,7 @@ r5 = Creature:new {
 
 	templates = {"object/mobile/r5.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

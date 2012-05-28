@@ -62,12 +62,11 @@ object_draft_schematic_armor_component_deflector_shield_generator_particle = obj
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n", "craft_weapon_ingredients_n"},
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
    ingredientTitleNames = {"assembly_mounting_frame", "field_harmonic_tuning_array", "emitter_module_insulation", "field_generation_pile"},
    ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"metal", "copper", "ore", "gemstone_armophous"},
    resourceQuantities = {15, 10, 10, 5},
-   combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
 

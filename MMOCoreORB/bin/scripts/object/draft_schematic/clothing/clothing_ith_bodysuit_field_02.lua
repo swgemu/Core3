@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
    ingredientSlotType = {1, 1, 1, 0, 1},
    resourceTypes = {"object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "petrochem_inert_polymer", "object/tangible/component/clothing/shared_metal_fasteners.iff"},
    resourceQuantities = {2, 4, 2, 120, 3},
-   combineTypes = {1, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
 

@@ -67,7 +67,6 @@ object_draft_schematic_droid_component_chassis_droid_r4 = object_draft_schematic
    ingredientSlotType = {0, 0, 0, 1, 1, 1, 1},
    resourceTypes = {"metal_ferrous", "chemical", "steel", "object/tangible/component/droid/shared_droid_brain.iff", "object/tangible/component/droid/shared_manipulator_arm_package_set.iff", "object/tangible/component/droid/shared_droid_motive_system.iff", "object/tangible/component/droid/shared_sensor_package_droid.iff"},
    resourceQuantities = {30, 60, 40, 1, 1, 1, 1},
-   combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

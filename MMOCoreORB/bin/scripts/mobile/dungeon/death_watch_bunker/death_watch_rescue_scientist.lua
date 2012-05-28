@@ -28,7 +28,7 @@ death_watch_rescue_scientist = Creature:new {
 
 	templates = {"object/mobile/warren_research_scientist.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "death_watch_rescue_scientist_convotemplate",
 	attacks = {
 	}

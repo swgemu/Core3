@@ -28,7 +28,7 @@ adwan_turoldine = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier4_corellia_adwan.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -35,8 +35,7 @@ canyon_corsair_destroyer = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_destroyer, "canyon_corsair_destroyer")

@@ -52,6 +52,7 @@ object_tangible_component_munition_warhead_stabilizer = object_tangible_componen
 	experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
 	experimentalMax = {0, 0, 50, 50, 0, 15, 1000, 10, 10, 10, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_stabilizer, "object/tangible/component/munition/warhead_stabilizer.iff")

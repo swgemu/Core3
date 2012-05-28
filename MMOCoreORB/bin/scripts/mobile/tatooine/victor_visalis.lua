@@ -29,7 +29,7 @@ victor_visalis = Creature:new {
 
 	templates = {"object/mobile/dressed_victor_visalis.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

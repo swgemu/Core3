@@ -52,6 +52,7 @@ object_tangible_ship_crafted_engine_engine_limiter_mk5 = object_tangible_ship_cr
 	experimentalMin = {0, 0, -380, -15},
 	experimentalMax = {0, 0, -281, -11},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_engine_limiter_mk5, "object/tangible/ship/crafted/engine/engine_limiter_mk5.iff")

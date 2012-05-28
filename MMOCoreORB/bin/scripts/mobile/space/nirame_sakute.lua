@@ -28,7 +28,7 @@ nirame_sakute = Creature:new {
 
 	templates = {"object/mobile/space_privateer_tier4_tatooine_nirame.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

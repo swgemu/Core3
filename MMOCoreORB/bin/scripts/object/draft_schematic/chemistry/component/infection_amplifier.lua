@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
    ingredientSlotType = {0, 0},
    resourceTypes = {"gas_reactive", "aluminum"},
    resourceQuantities = {14, 14},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

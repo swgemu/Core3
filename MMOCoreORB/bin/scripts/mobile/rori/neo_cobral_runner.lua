@@ -33,17 +33,16 @@ neo_cobral_runner = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5000000},
+				{group = "junk", chance = 3000000},
 				{group = "tailor_components", chance = 500000},
-				{group = "loot_kits", chance = 4500000}
+				{group = "loot_kit_parts", chance = 500000}
 			},
-			lootChance = 5500000
-		}					
+			lootChance = 3200000
+		}				
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_runner, "neo_cobral_runner")

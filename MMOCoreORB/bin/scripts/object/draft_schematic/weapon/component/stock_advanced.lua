@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"wood_deciduous_corellia", "aluminum_linksteel"},
    resourceQuantities = {28, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

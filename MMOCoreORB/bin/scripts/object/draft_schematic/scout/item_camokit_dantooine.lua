@@ -67,7 +67,6 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
    ingredientSlotType = {0, 0},
    resourceTypes = {"meat_herbivore_dantooine", "hide_scaley_dantooine"},
    resourceQuantities = {40, 45},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

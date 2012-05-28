@@ -28,7 +28,7 @@ juntah_herm = Creature:new {
 
 	templates = {"object/mobile/space_greeter_dantooine_imperial_pilot.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

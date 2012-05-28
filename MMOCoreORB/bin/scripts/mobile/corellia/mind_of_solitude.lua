@@ -28,7 +28,7 @@ mind_of_solitude = Creature:new {
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = {}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(mind_of_solitude, "mind_of_solitude")

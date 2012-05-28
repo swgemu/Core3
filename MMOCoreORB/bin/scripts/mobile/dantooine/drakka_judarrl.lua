@@ -31,8 +31,7 @@ drakka_judarrl = Creature:new {
 	lootGroups = {},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(lightsabermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(drakka_judarrl, "drakka_judarrl")

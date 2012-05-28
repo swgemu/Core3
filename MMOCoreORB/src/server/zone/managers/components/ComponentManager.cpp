@@ -63,6 +63,16 @@
 #include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/creature/components/TrainerMenuComponent.h"
+#include "server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.h"
+#include "server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.h"
+#include "server/zone/objects/creature/ai/components/AiStateComponent.h"
+#include "server/zone/objects/creature/ai/components/AlertStateComponent.h"
+#include "server/zone/objects/creature/ai/components/AttackStateComponent.h"
+#include "server/zone/objects/creature/ai/components/DeathStateComponent.h"
+#include "server/zone/objects/creature/ai/components/FleeStateComponent.h"
+#include "server/zone/objects/creature/ai/components/SpawnStateComponent.h"
+#include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
+#include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -143,5 +153,17 @@ ComponentManager::ComponentManager() {
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
 	components.put("TrainerMenuComponent", new TrainerMenuComponent());
+
+	components.put("FireHeavyWeaponMenuComponent", new FireHeavyWeaponMenuComponent());
+	components.put("ThrowGrenadeMenuComponent", new TrainerMenuComponent());
+
+	components.put("AiStateComponent", new AiStateComponent());
+	components.put("AlertStateComponent", new AlertStateComponent());
+	components.put("AttackStateComponent", new AttackStateComponent());
+	components.put("DeathStateComponent", new DeathStateComponent());
+	components.put("FleeStateComponent", new FleeStateComponent());
+	components.put("SpawnStateComponent", new SpawnStateComponent());
+	components.put("StandingStateComponent", new StandingStateComponent());
+	components.put("WanderingStateComponent", new WanderingStateComponent());
 
 }

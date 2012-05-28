@@ -29,7 +29,7 @@ joz_jodhul = Creature:new {
 
 	templates = {"object/mobile/dressed_joz_jodhul.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

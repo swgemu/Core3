@@ -210,7 +210,7 @@ createTrainerConversationTemplate("trainer_architect", "crafting_architect_maste
 createTrainerConversationTemplate("trainer_armorsmith", "crafting_armorsmith_master", "trainer_armorsmith_convotemplate")
 createTrainerConversationTemplate("trainer_artisan", "crafting_artisan_master", "trainer_artisan_convotemplate")
 createTrainerConversationTemplate("trainer_bioengineer", "outdoors_bio_engineer_master", "trainer_bioengineer_convotemplate")
-createTrainerConversationTemplate("trainer_bountyhunter", "combat_bounthunter_master", "trainer_bountyhunter_convotemplate")
+createTrainerConversationTemplate("trainer_bountyhunter", "combat_bountyhunter_master", "trainer_bountyhunter_convotemplate")
 createTrainerConversationTemplate("trainer_brawler", "combat_brawler_master", "trainer_brawler_convotemplate")
 createTrainerConversationTemplate("trainer_carbine", "combat_carbine_master", "trainer_carbine_convotemplate")
 createTrainerConversationTemplate("trainer_chef", "crafting_chef_master", "trainer_chef_convotemplate")

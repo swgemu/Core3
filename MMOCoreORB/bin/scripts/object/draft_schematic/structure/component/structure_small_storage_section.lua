@@ -67,7 +67,6 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "metal"},
    resourceQuantities = {50, 80},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

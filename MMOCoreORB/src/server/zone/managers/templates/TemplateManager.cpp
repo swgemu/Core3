@@ -653,6 +653,12 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LIVESAMPLE", SharedObjectTemplate::LIVESAMPLE);
 	luaTemplatesInstance->setGlobalInt("CREATUREHABITAT", SharedObjectTemplate::CREATUREHABITAT);
 	luaTemplatesInstance->setGlobalInt("REPAIRTOOL", SharedObjectTemplate::REPAIRTOOL);
+
+	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", CombatManager::NOLOCATION);
+	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", CombatManager::CHEST);
+	luaTemplatesInstance->setGlobalInt("ARMS_HITLOCATION", CombatManager::ARMS);
+	luaTemplatesInstance->setGlobalInt("LEGS_HITLOCATION", CombatManager::LEGS);
+	luaTemplatesInstance->setGlobalInt("HEAD_HITLOCATION", CombatManager::HEAD);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

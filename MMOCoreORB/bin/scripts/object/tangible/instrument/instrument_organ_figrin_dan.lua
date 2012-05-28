@@ -51,6 +51,7 @@ object_tangible_instrument_instrument_organ_figrin_dan = object_tangible_instrum
 	experimentalMin = {0, 0, 100, 1},
 	experimentalMax = {0, 0, 150, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_instrument_organ_figrin_dan, "object/tangible/instrument/instrument_organ_figrin_dan.iff")

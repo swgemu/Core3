@@ -31,7 +31,7 @@ medic = Creature:new {
 				"object/mobile/dressed_mercenary_elite_medic_human_male_01.iff",
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

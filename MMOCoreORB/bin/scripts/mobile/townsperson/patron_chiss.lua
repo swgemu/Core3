@@ -30,7 +30,7 @@ patron_chiss = Creature:new {
 		"object/mobile/dressed_patron_chiss_f_01.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	attacks = {}
 }
 

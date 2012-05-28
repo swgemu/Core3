@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_electronics_gp_module = object_draft_
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "gas_inert"},
    resourceQuantities = {10, 7, 3, 3, 3},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

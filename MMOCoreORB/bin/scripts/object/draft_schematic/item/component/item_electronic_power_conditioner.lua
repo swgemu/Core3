@@ -67,7 +67,6 @@ object_draft_schematic_item_component_item_electronic_power_conditioner = object
    ingredientSlotType = {0, 0, 0, 0, 0, 0, 0},
    resourceTypes = {"metal", "petrochem_inert_polymer", "ore", "copper", "copper", "gas_inert", "gemstone_armophous"},
    resourceQuantities = {12, 6, 5, 2, 2, 3, 2},
-   combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
 

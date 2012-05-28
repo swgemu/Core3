@@ -1,6 +1,6 @@
 deranged_ravisher = Creature:new {
 	objectName = "@mob/creature_names:squill_deranged_ravisher",
-	socialGroup = "Endor Squill",
+	socialGroup = "squill",
 	pvpFaction = "",
 	faction = "",
 	level = 35,

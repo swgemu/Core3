@@ -67,7 +67,6 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
    ingredientSlotType = {0, 0, 0},
    resourceTypes = {"mineral", "wood", "chemical"},
    resourceQuantities = {30, 40, 20},
-   combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
 

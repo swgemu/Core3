@@ -67,7 +67,6 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
    ingredientSlotType = {0, 0},
    resourceTypes = {"organic", "chemical"},
    resourceQuantities = {8, 8},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

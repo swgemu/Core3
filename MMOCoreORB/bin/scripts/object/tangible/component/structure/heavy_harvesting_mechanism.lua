@@ -52,6 +52,7 @@ object_tangible_component_structure_heavy_harvesting_mechanism = object_tangible
 	experimentalMin = {0, 0, 1000, 2},
 	experimentalMax = {0, 0, 5000, 7},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_heavy_harvesting_mechanism, "object/tangible/component/structure/heavy_harvesting_mechanism.iff")

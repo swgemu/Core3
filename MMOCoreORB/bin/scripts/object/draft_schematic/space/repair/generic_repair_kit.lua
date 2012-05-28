@@ -67,7 +67,6 @@ object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"steel", "fiberplast"},
    resourceQuantities = {80, 60},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

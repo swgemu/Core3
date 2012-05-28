@@ -67,7 +67,6 @@ object_draft_schematic_weapon_component_scope_weapon_advanced = object_draft_sch
    ingredientSlotType = {0, 0, 0, 0, 0},
    resourceTypes = {"aluminum_chromium", "petrochem_inert_polymer", "aluminum_chromium", "crystalline_green_diamond", "copper"},
    resourceQuantities = {18, 10, 5, 6, 3},
-   combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

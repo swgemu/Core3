@@ -117,6 +117,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen2 = objec
 
 	attackSpeed = 4.5,
 	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+	
 	childObjects = {
 		{templateFile = "object/tangible/inventory/lightsaber_inventory_2.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
 	},
@@ -129,6 +131,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen2 = objec
 	experimentalMin = {0, 0, 80, 170, 4.5, 13, 28, 25, 47, 45},
 	experimentalMax = {0, 0, 100, 210, 4.2, 25, 24, 20, 32, 40},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen2, "object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen2.iff")

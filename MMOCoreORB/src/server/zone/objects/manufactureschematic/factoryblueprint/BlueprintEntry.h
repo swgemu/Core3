@@ -13,6 +13,22 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+namespace factory {
+
+class FactoryObject;
+
+} // namespace factory
+} // namespace installtion
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation::factory;
+
 /**
  * This class defines a collective entry that makes up a single blueprint item
  * Ex.  If a schematic contains 2 identical ingredients, they will combine to
@@ -77,7 +93,7 @@ public:
 	bool hasEnoughResources();
 
 	/// Remove resources from vector
-	void removeResources();
+	void removeResources(FactoryObject* factory);
 
 	/// Print internal state
 	void print();

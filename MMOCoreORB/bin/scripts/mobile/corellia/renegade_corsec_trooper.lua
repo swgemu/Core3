@@ -32,17 +32,16 @@ renegade_corsec_trooper = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "corsec_weapons", chance = 4000000},
+				{group = "junk", chance = 5000000},
+				{group = "corsec_weapons", chance = 1000000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 6500000
+			lootChance = 5000000
 		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(renegade_corsec_trooper, "renegade_corsec_trooper")

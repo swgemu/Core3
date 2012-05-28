@@ -67,7 +67,6 @@ object_draft_schematic_clothing_clothing_wke_skirt_s04 = object_draft_schematic_
    ingredientSlotType = {0, 0},
    resourceTypes = {"hide", "petrochem_inert"},
    resourceQuantities = {15, 5},
-   combineTypes = {0, 0},
    contribution = {100, 100},
 
 

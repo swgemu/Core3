@@ -34,7 +34,7 @@ chassis_broker = Creature:new {
 		"object/mobile/space_chassis_broker_05.iff"
 	},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

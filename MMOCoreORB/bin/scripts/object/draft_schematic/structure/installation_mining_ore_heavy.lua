@@ -67,7 +67,6 @@ object_draft_schematic_structure_installation_mining_ore_heavy = object_draft_sc
    ingredientSlotType = {0, 0, 1, 0, 0, 2, 0, 1, 1, 1},
    resourceTypes = {"steel", "metal", "object/tangible/component/structure/shared_wall_module.iff", "metal", "metal", "object/tangible/component/structure/shared_wall_module.iff", "chemical", "object/tangible/component/structure/shared_generator_turbine.iff", "object/tangible/component/structure/shared_structure_small_storage_section.iff", "object/tangible/component/structure/shared_ore_mining_unit.iff"},
    resourceQuantities = {400, 600, 1, 200, 300, 6, 400, 2, 6, 2},
-   combineTypes = {0, 0, 1, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
 

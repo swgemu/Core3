@@ -28,7 +28,7 @@ lord_hethrir = Creature:new {
 
 	templates = {"object/mobile/lord_hethrir.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	outfit = "lord_hethrir_outfit",
 	attacks = {

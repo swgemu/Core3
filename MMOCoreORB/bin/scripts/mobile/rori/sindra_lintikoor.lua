@@ -29,7 +29,7 @@ sindra_lintikoor = Creature:new {
 
 	templates = {"object/mobile/dressed_sindra_lintikoor.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

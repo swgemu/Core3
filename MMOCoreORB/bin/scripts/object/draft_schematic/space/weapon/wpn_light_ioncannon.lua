@@ -67,7 +67,6 @@ object_draft_schematic_space_weapon_wpn_light_ioncannon = object_draft_schematic
    ingredientSlotType = {0, 0, 1, 0, 0},
    resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/weapon/shared_base_weapon_subcomponent_mk1.iff", "gas_inert", "ore_carbonate"},
    resourceQuantities = {50, 50, 1, 50, 50},
-   combineTypes = {0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
 

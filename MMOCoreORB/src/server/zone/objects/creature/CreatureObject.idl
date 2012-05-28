@@ -51,6 +51,7 @@ import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.ai.AiActor;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
@@ -440,6 +441,10 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setRunSpeed(float newSpeed, boolean notifyClient = true);
 	
+	public void setCurrentSpeed(float newSpeed) {
+		currentSpeed = newSpeed;
+	}
+	
 	/**
 	 * Updates a specific type of the HAM
 	 * @pre { this object is locked }
@@ -457,6 +462,7 @@ class CreatureObject extends TangibleObject {
 	 * @return unused for now
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 
 	public boolean hasDamage(int attribute) {
 		return maxHamList.get(attribute) - hamList.get(attribute); // should we include woundS?
@@ -935,7 +941,8 @@ class CreatureObject extends TangibleObject {
 	 * @post { this locked, player locked }
 	 */
 	public abstract void sendConversationStartTo(SceneObject player) {
-		
+		if (isAiActor())
+			getGhostObject().sendConversationStartTo(player);
 	}
 	
 	/**
@@ -1023,6 +1030,8 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native PlayerObject getPlayerObject();
+	
+	public native AiActor getGhostObject();
 	
 	public boolean isListening() {
 		return listenToID != 0;
@@ -1285,6 +1294,10 @@ class CreatureObject extends TangibleObject {
 
 	public float getSpeedMultiplierMod() {
 		return speedMultiplierMod;
+	}
+	
+	public float getCurrentSpeed() {
+		return currentSpeed;
 	}
 	
 	@local
@@ -1634,6 +1647,11 @@ class CreatureObject extends TangibleObject {
 		return false;
 	}
 	
+	@read
+	public boolean isAiActor() {
+		return getGhostObject() != null;
+	}
+	
 	public abstract boolean isInformantCreature() {
 		return false;
 	}
@@ -1659,5 +1677,20 @@ class CreatureObject extends TangibleObject {
 	public void setCurrentWind(byte value) {
 		currentWind = value;
 	}
-
+	
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		if (isAiActor()) {
+			getGhostObject().fillAttributeList(msg, object);
+		}
+	}
+	
+	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
+		super.destroyObjectFromWorld(sendSelfDestroy);
+		
+		if (isAiActor()) {
+			getGhostObject().notifyDespawn(getZone());
+		}
+	}
 }

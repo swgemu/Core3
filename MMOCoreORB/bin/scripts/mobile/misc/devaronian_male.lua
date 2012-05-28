@@ -28,7 +28,7 @@ devaronian_male = Creature:new {
 
 	templates = {"object/mobile/devaronian_male.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

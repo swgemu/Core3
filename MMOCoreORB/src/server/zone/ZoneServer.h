@@ -402,6 +402,8 @@ public:
 
 	void stop();
 
+	void timedShutdown(int minutes);
+
 	void handleMessage(ZoneClientSession* client, Packet* message);
 
 	void processMessage(Message* message);
@@ -632,6 +634,8 @@ public:
 
 	void stop();
 
+	void timedShutdown(int minutes);
+
 	void handleMessage(ZoneClientSession* client, Packet* message);
 
 	void processMessage(Message* message);
@@ -798,6 +802,8 @@ public:
 	void start(int p, int mconn);
 
 	void stop();
+
+	void timedShutdown(int minutes);
 
 	void addTotalSentPacket(int count);
 

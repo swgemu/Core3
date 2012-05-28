@@ -52,6 +52,7 @@ object_tangible_ship_components_chassis_yt1300_chassis_token = object_tangible_s
 	experimentalMin = {0, 0, 3200, 4995000},
 	experimentalMax = {0, 0, 4200, 5005000},
 	experimentalPrecision = {0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_yt1300_chassis_token, "object/tangible/ship/components/chassis/yt1300_chassis_token.iff")
