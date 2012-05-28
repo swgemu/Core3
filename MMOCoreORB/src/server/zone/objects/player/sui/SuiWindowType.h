@@ -204,6 +204,7 @@ public:
 	static const uint16 TUNE_CRYSTAL = 1004;
 	static const uint16 INSTALL_MISSION_TERMINAL = 1005;
 	static const uint16 RECRUIT_SKILL_TRAINER = 1006;
+	static const uint16 HOLOGRIND_UNLOCK = 1007;
 };
 
 #endif /*SuiWindowType_H_*/

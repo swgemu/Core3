@@ -1361,20 +1361,17 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 
 	// For the Hologrind - Please uncomment to re-enable when ready.
 
-	/*Vector<byte>* profs = ghost->getHologrindProfessions();
-	byte prof = 0;
+	/* Vector<byte>* profs = ghost->getHologrindProfessions();
 
 	for (int i = 0; i < profs->size(); ++i) { // So that it only sends 1 popup...
-		prof = profs->elementAt(i);
+		byte prof = holoProfessions->get(i);
 
 		int badgeIdx = 42 + prof;
 
 		if (!ghost->hasBadge(badgeIdx))
 			continue;
 
-		if (i == 6){
-				finishHologrind(player); // Method to send popup and grant Force Sensitive box.
-		}
+		finishHologrind(player); // Method to send popup and grant Force Sensitive box.
 	}*/
 
 }
@@ -2704,6 +2701,9 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 void PlayerManagerImplementation::finishHologrind(CreatureObject* player) {
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::HOLOGRIND_UNLOCK))
+		return;
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::NONE);
 	box->setPromptTitle("@quest/force_sensitive/intro:force_sensitive"); // You feel a tingle in the Force.
