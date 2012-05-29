@@ -60,26 +60,6 @@ public:
 			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
 			return false;
 		}
-				
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot use Force Heal Action Wounds while prone.");
-			return false;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot use Force Heal Action Wounds while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
 		
 		return true;
 	}

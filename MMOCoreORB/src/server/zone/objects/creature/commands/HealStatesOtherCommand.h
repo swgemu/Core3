@@ -74,12 +74,12 @@ public:
 		CreatureObject* creature = cast<CreatureObject*>( object);
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		StringBuffer msgTarget, msgPlayer;
-			msgPlayer << "You use the Force to remove all negative states on " << creatureTarget->getFirstName() << ".";
-			msgTarget << creature->getFirstName() << " uses the Force to remove your all negative states.";
+			msgPlayer << "You cure all negative states on " << creatureTarget->getFirstName() << ".";
+//			msgTarget << creature->getFirstName() << " uses the Force to remove your all negative states.";
 
 		if (creature != creatureTarget) 
 			creature->sendSystemMessage(msgPlayer.toString());
-			creatureTarget->sendSystemMessage(msgTarget.toString());
+//			creatureTarget->sendSystemMessage(msgTarget.toString());
 	}	
 	
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -121,6 +121,10 @@ public:
 			return false;
 		}
 		
+		if (creature->isProne()) {
+			return false;
+		}
+				
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
 		if (playerObject->getForcePower() <= 50) {
@@ -162,7 +166,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -186,7 +192,6 @@ public:
 		}
 			
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("You cannot use Force Heal States Other on yourself.");
 			return GENERALERROR;
 		}			
 
