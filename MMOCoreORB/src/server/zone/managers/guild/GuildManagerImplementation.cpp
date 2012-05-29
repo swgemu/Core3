@@ -411,6 +411,8 @@ void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
 	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this->_getObjectID());
 	player->sendMessage(gild3);
 
+	_lock.release();
+
 	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this->_getObjectID());
 	player->sendMessage(gild6);
 
@@ -488,6 +490,8 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();
 
+	_locker.release();
+
 	//Send the delta to everyone currently online!
 	chatManager->broadcastMessage(gildd3);
 
@@ -535,8 +539,11 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 	if (memberList == NULL)
 		return false;
 
+	_lock.release();
+
 	//TODO: This could probably be moved to the GuildObject destructor!
 	for (int i = 0; i < memberList->size(); ++i) {
+		Locker _locker(_this);
 		GuildMemberInfo* gmi = &memberList->get(i);
 
 		if (gmi == NULL)
@@ -557,8 +564,13 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(member);
 		creod6->updateGuildID();
 		creod6->close();
+
+		_lock.release();
+
 		member->broadcastMessage(creod6, true);
 	}
+
+	Locker _locker(_this);
 
 	if (guildList.contains(guild->getGuildKey())) {
 		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
@@ -568,6 +580,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 		guild->destroyObjectFromDatabase(true);
 
+		_locker.release();
 		//Send the delta to everyone currently online!
 		chatManager->broadcastMessage(gildd3);
 	}
