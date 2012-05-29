@@ -2553,11 +2553,21 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	PlayerObject* ghost = player->getPlayerObject();
 
 	SortedVector<uint8> profs;
-	//Fill the total profs array. Change to 32 if you want to include Politician.
-	for (int i = 0; i < 31; ++i)
+	//Fill the total profs array.
+	for (int i = 0; i < 32; ++i)
 		profs.put(i + 1);
 
 	 // TODO: Remove ungrindable professions (temporary.)
+		// Commando.
+		profs.drop(5);
+		// Droid Engineer.
+		profs.drop(16);
+		// Bio-Engineer.
+		profs.drop(20);
+		// Creature Handler.
+		profs.drop(21);
+		// Politician.
+		profs.drop(32);
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 

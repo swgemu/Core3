@@ -69,10 +69,14 @@ public:
 		if (creature == NULL)
 			return GENERALERROR;
 
-		if (!creature->hasSkill("force_title_jedi_rank_02"))
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
 			return GENERALERROR;
 
-		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost->getJediState() < 2)
+			return GENERALERROR;
+
 
 		String planet = ghost->getTrainerZone();
 
