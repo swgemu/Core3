@@ -558,14 +558,14 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 		member->setGuildObject(NULL);
 
+		_locker.release();
+
 		if (!member->isOnline())
 			continue;
 
 		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(member);
 		creod6->updateGuildID();
 		creod6->close();
-
-		_lock.release();
 
 		member->broadcastMessage(creod6, true);
 	}
