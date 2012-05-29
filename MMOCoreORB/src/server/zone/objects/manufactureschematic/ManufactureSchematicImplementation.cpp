@@ -156,7 +156,7 @@ void ManufactureSchematicImplementation::setDraftSchematic(DraftSchematic* schem
 
 void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* player, int value) {
 
-	if(!player->isPlayerCreature() || draftSchematic == NULL || initialized)
+	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
@@ -164,7 +164,8 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 		return;
 	}
 
-	initializeIngredientSlots();
+	if(!initialized)
+		initializeIngredientSlots();
 
 	possibleSyncIssue = false;
 
@@ -299,6 +300,9 @@ void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* p
 void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 	Locker locker(_this);
+
+	if(initialized)
+		return;
 
 	if(draftSchematic == NULL)
 		return;
