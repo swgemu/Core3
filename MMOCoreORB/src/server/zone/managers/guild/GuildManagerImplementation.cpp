@@ -490,7 +490,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();
 
-	_locker.release();
+	_lock.release();
 
 	//Send the delta to everyone currently online!
 	chatManager->broadcastMessage(gildd3);
