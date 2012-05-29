@@ -574,7 +574,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 
@@ -1345,7 +1345,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 
@@ -1954,7 +1954,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 

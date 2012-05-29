@@ -942,7 +942,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public abstract void sendConversationStartTo(SceneObject player) {
 		if (isAiActor())
-			getGhostObject().sendConversationStartTo(player);
+			getActorObject().sendConversationStartTo(player);
 	}
 	
 	/**
@@ -1031,7 +1031,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native PlayerObject getPlayerObject();
 	
-	public native AiActor getGhostObject();
+	public native AiActor getActorObject();
 	
 	public boolean isListening() {
 		return listenToID != 0;
@@ -1649,7 +1649,7 @@ class CreatureObject extends TangibleObject {
 	
 	@read
 	public boolean isAiActor() {
-		return getGhostObject() != null;
+		return getActorObject() != null;
 	}
 	
 	public abstract boolean isInformantCreature() {
@@ -1682,7 +1682,7 @@ class CreatureObject extends TangibleObject {
 	
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		if (isAiActor()) {
-			getGhostObject().fillAttributeList(msg, object);
+			getActorObject().fillAttributeList(msg, object);
 		}
 	}
 	
@@ -1690,7 +1690,7 @@ class CreatureObject extends TangibleObject {
 		super.destroyObjectFromWorld(sendSelfDestroy);
 		
 		if (isAiActor()) {
-			getGhostObject().notifyDespawn(getZone());
+			getActorObject().notifyDespawn(getZone());
 		}
 	}
 }

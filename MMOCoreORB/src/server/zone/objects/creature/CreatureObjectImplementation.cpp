@@ -615,7 +615,7 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
-	if (isAiActor()) getGhostObject()->next(AiActor::FORGOT);
+	if (isAiActor()) getActorObject()->next(AiActor::FORGOT);
 
 	//info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
@@ -833,11 +833,11 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		if (damage > 0) {
 			threatMap->addDamage(player, damage, xp);
 
-			// TODO: put this logic (or something similar) in the attack state
+			// TODO: put this logic (or something similar) in the attack state -- this is temporary
 			if (System::random(5) == 1) {
 				if (isAiActor())
-					getGhostObject()->setDefender(player);
-				else
+					getActorObject()->setDefender(player);
+				else if (!isPlayerCreature())
 					setDefender(player);
 			}
 		}
@@ -857,7 +857,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 
 	if (isAiActor()) {
-		ManagedReference<AiActor*> actor = getGhostObject();
+		ManagedReference<AiActor*> actor = getActorObject();
 		actor->updateLastDamageReceived();
 		actor->next(AiActor::ATTACKED);
 	}
@@ -2349,7 +2349,7 @@ PlayerObject* CreatureObjectImplementation::getPlayerObject() {
 	return dynamic_cast<PlayerObject*> (getSlottedObject("ghost"));
 }
 
-AiActor* CreatureObjectImplementation::getGhostObject() {
+AiActor* CreatureObjectImplementation::getActorObject() {
 	return dynamic_cast<AiActor*> (getSlottedObject("ghost"));
 }
 
@@ -2479,7 +2479,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		playerManager->notifyDestruction(attacker, _this, condition);
 	}
 
-	AiActor* actor = getGhostObject();
+	AiActor* actor = getActorObject();
 
 	if (actor != NULL) {
 		CreatureManager* creatureManager = getZone()->getCreatureManager();
