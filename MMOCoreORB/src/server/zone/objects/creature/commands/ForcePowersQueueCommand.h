@@ -21,6 +21,7 @@
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "CombatQueueCommand.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
+#include "server/zone/managers/visibility/VisibilityManager.h"
 
 class ForcePowersQueueCommand : public CombatQueueCommand {
 public:
@@ -126,6 +127,8 @@ public:
 				error(e.getMessage());
 				e.printStackTrace();
 			}
+			// Increase Visibility for Force Power.
+			VisibilityManager::instance()->increaseVisibility(creature);
 			return SUCCESS;
 		}
 
