@@ -120,8 +120,8 @@ public:
 				if (player->getZone() == NULL) {
 					SceneObject* objectToInsert = currentParent != NULL ? player->getRootParent() : player;
 
-					if (objectToTransfer == NULL)
-						objectToTransfer = player;
+					if (objectToInsert == NULL)
+						objectToInsert = player;
 
 					zone->transferObject(objectToInsert, -1, false);
 				}
