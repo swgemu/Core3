@@ -143,6 +143,8 @@ int CraftingSessionImplementation::cancelSession() {
 
 int CraftingSessionImplementation::clearSession() {
 
+	Locker slocker(_this);
+
 	if (manufactureSchematic != NULL) {
 
 		Locker locker(manufactureSchematic);
@@ -247,6 +249,8 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 	}
 
 	clearSession();
+
+	Locker slocker(_this);
 
 	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Selected DraftSchematic: " + draftschematic->getCustomName());
@@ -415,6 +419,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
+	Locker locker(_this);
+
 	/// Check if item is on the player, but not in a crafting tool
 	/// Or if the item is in a crafting station to prevent some duping
 	if(!tano->isASubChildOf(crafter) && (craftingStation == NULL || !tano->isASubChildOf(craftingStation))) {
@@ -497,6 +503,8 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 		return;
 	}
 
+	Locker locker(_this);
+
 	int result = manufactureSchematic->removeIngredientFromSlot(crafter, tano, slotUpdated);
 
 	if(result == IngredientSlot::OK) {
@@ -536,7 +544,8 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 		return;
 	}
 
-	Locker locker(manufactureSchematic);
+	Locker locker(_this);
+	Locker locker2(manufactureSchematic);
 
 	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 
@@ -771,6 +780,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Locker locker(craftingTool);
 	Locker locker2(manufactureSchematic);
+	Locker locker3(_this);
 
 	StringTokenizer tokenizer(expAttempt);
 
@@ -900,6 +910,7 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 
 	Locker locker(craftingTool);
 	Locker locker2(manufactureSchematic);
+	Locker locker3(_this);
 
 	if (templateChoice != 0xFF) {
 
@@ -1037,7 +1048,9 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool prac
 		return;
 	}
 
+	Locker locker(_this);
 	Locker locker2(manufactureSchematic);
+
 
 	if (manufactureSchematic->isAssembled()
 			&& !manufactureSchematic->isCompleted()) {
@@ -1116,6 +1129,8 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
+
+	Locker locker(_this);
 
 	if (manufactureSchematic->isAssembled()
 			&& !manufactureSchematic->isCompleted()) {
