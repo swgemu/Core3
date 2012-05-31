@@ -206,16 +206,19 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 	if(campOwner != NULL)
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
 
-	if(camp->getZone() == NULL)
-		return false;
+	if (camp != NULL) {
+		if(camp->getZone() == NULL)
+			return false;
 
-	ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
-	if (structureManager == NULL) {
-		error("Unable to get StructureManager when placing camp");
-		return false;
+		ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
+		if (structureManager == NULL) {
+			error("Unable to get StructureManager when placing camp");
+			return false;
+		}
+
+		structureManager->destroyStructure(camp);
 	}
 
-	structureManager->destroyStructure(camp);
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
 
