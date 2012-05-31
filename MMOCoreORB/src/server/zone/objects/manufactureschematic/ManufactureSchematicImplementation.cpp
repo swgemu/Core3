@@ -301,7 +301,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
 	Locker locker(_this);
 
-	if(draftSchematic == NULL)
+	if(draftSchematic == NULL || initialized)
 		return;
 
 	ingredientSlots.removeAll();
