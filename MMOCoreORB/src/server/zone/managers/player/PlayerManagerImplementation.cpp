@@ -1109,38 +1109,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	// Jedi experience loss.
 	if (ghost->getJediState() > 1) {
-		uint32 xpAmount = 0;
-
-		SkillList* skillList = player->getSkillList();
-
-		for (int i = 0; i < skillList->size(); ++i) {
-			Skill* skill = skillList->get(i);
-
-			String skillName = skill->getSkillName();
-
-			if (skillName.contains("force_title_jedi_rank_01"))
-				xpAmount += 4500;
-
-			if (skillName.contains("force_title_jedi_rank_01") && skillName.contains("force_title_jedi_rank_02"))
-				xpAmount += 500;
-
-			if (skillName.contains("force_discipline_")) {
-				if (skillName.contains("_novice"))
-					xpAmount += 10000;
-				if (skillName.contains("_01"))
-					xpAmount += 15000;
-				if (skillName.contains("_02"))
-					xpAmount += 20000;
-				if (skillName.contains("_03"))
-					xpAmount += 50000;
-				if (skillName.contains("_04"))
-					xpAmount += 100000;
-			}
-
-		}
-
-
-		awardExperience(player, "jedi_general", -xpAmount, true);
+		awardExperience(player, "jedi_general", -200000, true);
 	}
 }
 

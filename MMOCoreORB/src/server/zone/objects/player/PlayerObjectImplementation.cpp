@@ -462,10 +462,6 @@ int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool
 
 	Locker locker(_this);
 
-	// Cap for negative Jedi experience is negative 10 million.
-	if (xpType == "jedi_general" && experienceList.get("jedi_general") <= -1000000)
-		return 0;
-
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
 
