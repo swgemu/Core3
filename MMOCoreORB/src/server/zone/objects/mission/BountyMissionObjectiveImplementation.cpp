@@ -477,6 +477,8 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 				ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
 				if (target != NULL) {
 					VisibilityManager::instance()->clearVisibility(target);
+					getPlayerOwner()->getZoneServer()->getPlayerManager()->awardExperience(target, "jedi_general", -(mission->getRewardCredits() * 2), true);
+
 				}
 			}
 

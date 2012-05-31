@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/events/RegainConsciousnessRegenTask.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class RegainConsciousnessCommand : public QueueCommand {
 public:
@@ -98,6 +100,10 @@ public:
 			// Cut Force Regen in Half for 30 Minutes.
 
 			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() / 2);
+
+			// Jedi experience loss.
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+			playerManager->awardExperience(creature, "jedi_general", -50000, true);
 
 			Reference<RegainConsciousnessRegenTask*> rcTask = new RegainConsciousnessRegenTask(creature, playerObject);
 			creature->addPendingTask("regainConsciousnessRegenTask", rcTask, (1800 * 1000));
