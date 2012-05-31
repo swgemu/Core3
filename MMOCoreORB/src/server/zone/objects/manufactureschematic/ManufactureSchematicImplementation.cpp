@@ -160,7 +160,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 		return;
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
-	if(session == NULL) {
+	if(session == NULL || session->getSchematic() != _this) {
 		return;
 	}
 

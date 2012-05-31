@@ -26,7 +26,7 @@
  *	CraftingSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SELECTDRAFTSCHEMATIC__INT_,RPC_SENDINGREDIENTFORUILISTEN__,RPC_ADDINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__INT_,RPC_EXPERIMENT__INT_STRING_INT_,RPC_CUSTOMIZATION__STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__INT_BOOL_,RPC_CREATEMANUFACTURESCHEMATIC__INT_,};
+enum {RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETSCHEMATIC__,RPC_SELECTDRAFTSCHEMATIC__INT_,RPC_SENDINGREDIENTFORUILISTEN__,RPC_ADDINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__INT_,RPC_EXPERIMENT__INT_STRING_INT_,RPC_CUSTOMIZATION__STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__INT_BOOL_,RPC_CREATEMANUFACTURESCHEMATIC__INT_,};
 
 CraftingSession::CraftingSession(CreatureObject* creature) : Facade(DummyConstructorParameter::instance()) {
 	CraftingSessionImplementation* _implementation = new CraftingSessionImplementation(creature);
@@ -83,6 +83,19 @@ int CraftingSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
+}
+
+SceneObject* CraftingSession::getSchematic() {
+	CraftingSessionImplementation* _implementation = static_cast<CraftingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSCHEMATIC__);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getSchematic();
 }
 
 void CraftingSession::selectDraftSchematic(int index) {
@@ -358,6 +371,11 @@ CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* cre
 	craftingManager = NULL;
 }
 
+SceneObject* CraftingSessionImplementation::getSchematic() {
+	// server/zone/objects/player/sessions/crafting/CraftingSession.idl():  		return manufactureSchematic;
+	return manufactureSchematic;
+}
+
 /*
  *	CraftingSessionAdapter
  */
@@ -386,6 +404,11 @@ void CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_CLEARSESSION__:
 		{
 			resp->insertSignedInt(clearSession());
+		}
+		break;
+	case RPC_GETSCHEMATIC__:
+		{
+			resp->insertLong(getSchematic()->_getObjectID());
 		}
 		break;
 	case RPC_SELECTDRAFTSCHEMATIC__INT_:
@@ -450,6 +473,10 @@ int CraftingSessionAdapter::cancelSession() {
 
 int CraftingSessionAdapter::clearSession() {
 	return (static_cast<CraftingSession*>(stub))->clearSession();
+}
+
+SceneObject* CraftingSessionAdapter::getSchematic() {
+	return (static_cast<CraftingSession*>(stub))->getSchematic();
 }
 
 void CraftingSessionAdapter::selectDraftSchematic(int index) {
