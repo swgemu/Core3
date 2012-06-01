@@ -50,8 +50,10 @@ public:
 		if (!success && creature->hasBuff(crc)) {
 			creature->sendSystemMessage(buffMsg);
 			creature->removeBuff(crc);
-			return;
 		}
+
+		if(!success)
+			return;
 
 		//Locker clocker(creature, target);
 
