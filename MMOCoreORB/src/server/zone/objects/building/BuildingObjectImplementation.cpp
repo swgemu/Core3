@@ -367,7 +367,10 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* child = cell->getContainerObject(j);
+			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+
+			if (child == NULL)
+				continue;
 
 			if (child->getCloseObjects() != NULL)
 				child->removeInRangeObject(obj);
