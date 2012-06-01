@@ -970,13 +970,14 @@ void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool no
 }
 
 SceneObject* SceneObjectImplementation::getRootParent() {
-	if (parent == NULL)
+	ManagedReference<SceneObject*> grandParent = getParent();
+	ManagedReference<SceneObject*> tempParent = NULL;
+
+	if (grandParent == NULL)
 		return NULL;
 
-	SceneObject* grandParent = getParent();
-
-	while (grandParent->getParent() != NULL)
-		grandParent = grandParent->getParent();
+	while ((tempParent = grandParent->getParent()) != NULL)
+		grandParent = tempParent;
 
 	return grandParent;
 }
