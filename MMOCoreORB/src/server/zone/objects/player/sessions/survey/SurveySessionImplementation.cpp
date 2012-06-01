@@ -166,7 +166,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 
 	if (surveyer->getHAM(CreatureAttribute::ACTION) < 200) {
 		surveyer->setPosture(CreaturePosture::UPRIGHT, true);
-		surveyer->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		surveyer->sendSystemMessage("@error_message:sample_mind"); //You are exhausted. You nee to clear your head before you can sample again.
 		return;
 	}
 
