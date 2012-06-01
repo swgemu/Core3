@@ -105,9 +105,7 @@ public:
 				} else {
 					playerParent->transferObject(player, -1, false);
 
-					if (player->getZone() == NULL) {
-						SceneObject* root = player->getRootParent();
-
+					if (root->getZone() == NULL) {
 						zone->transferObject(root, -1, false);
 					}
 
