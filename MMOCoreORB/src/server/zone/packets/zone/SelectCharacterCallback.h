@@ -105,7 +105,9 @@ public:
 				} else {
 					playerParent->transferObject(player, -1, false);
 
-					if (root->getZone() == NULL) {
+					if (player->getParent() == NULL) {
+						zone->transferObject(player, -1, false);
+					} else if (root->getZone() == NULL) {
 						zone->transferObject(root, -1, false);
 					}
 
