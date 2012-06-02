@@ -645,10 +645,9 @@ void InstallationObjectImplementation::updateStructureStatus() {
 
 	updateInstallationWork();
 
-	/*float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
-
-	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
-
-	if (surplusPower > 0.f)
-		surplusPower -= powerDue;*/
+	if (surplusMaintenance < 0) {
+		setConditionDamage(-surplusMaintenance, true);
+	} else {
+		setConditionDamage(0, true);
+	}
 }
