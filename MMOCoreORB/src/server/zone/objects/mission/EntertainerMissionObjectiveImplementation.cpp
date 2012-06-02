@@ -20,6 +20,8 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void EntertainerMissionObjectiveImplementation::activate() {
+	Locker _lock(_this);
+
 	MissionObjectiveImplementation::activate();
 
 	if (hasObservers()) {
@@ -74,12 +76,16 @@ void EntertainerMissionObjectiveImplementation::activate() {
 }
 
 void EntertainerMissionObjectiveImplementation::abort() {
+	Locker _lock(_this);
+
 	MissionObjectiveImplementation::abort();
 
 	clearLocationActiveAreaAndObservers();
 }
 
 void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObservers() {
+	Locker _lock(_this);
+
 	if (locationActiveArea != NULL) {
 		Locker locationLocker(locationActiveArea);
 
@@ -102,12 +108,16 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 }
 
 void EntertainerMissionObjectiveImplementation::complete() {
+	Locker _lock(_this);
+
 	clearLocationActiveAreaAndObservers();
 
 	MissionObjectiveImplementation::complete();
 }
 
 void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
+	Locker _lock(_this);
+
 	if (isEntertaining == value) {
 		return;
 	}
@@ -119,6 +129,8 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 
 void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
+	Locker _lock(_this);
+
 	ManagedReference<CreatureObject*> object = getPlayerOwner();
 
 	if (object == NULL)
@@ -142,6 +154,8 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 }
 
 int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	Locker _lock(_this);
+
 	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA) {
 		return 0;
 	}

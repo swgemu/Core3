@@ -52,6 +52,8 @@ void MissionObjectiveImplementation::activate() {
 }
 
 void MissionObjectiveImplementation::complete() {
+	Locker _lock(_this);
+
 	CreatureObject* player = getPlayerOwner();
 
 	if (player == NULL)
@@ -65,6 +67,8 @@ void MissionObjectiveImplementation::complete() {
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
+	Locker _lock(_this);
+
 	if (makePersistent) {
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
 	} else if (!observer->isDeplyoed())
@@ -88,9 +92,11 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	}
 
 	//Award faction points for faction delivery missions.
-	ManagedReference<PlayerObject*> ghost = getPlayerOwner()->getPlayerObject();
+	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
+
+	ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
 	if (ghost != NULL) {
-		Locker ghostLocker(ghost);
+		Locker ghostLocker(creatureOwner);
 
 		//Switch to get the correct order.
 		switch (mission->getFaction()) {
