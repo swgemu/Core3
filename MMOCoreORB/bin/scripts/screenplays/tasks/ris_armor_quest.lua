@@ -119,7 +119,13 @@ function ris_armor_quest_handler:runScreenHandlers(conversationTemplate, convers
 	local playerCreo = LuaCreatureObject(conversingPlayer)
 		
 	if (screenID == "quest_1_start_yes") then
-		self:payNPC(playerCreo)
+		local credits = playerCreo:getCashCredits()
+		
+		if (credits >= 50000) then
+			self:payNPC(playerCreo)
+		else
+			playerCreo:sendSystemMessage("You have insufficient funds")
+		end
 	
 	elseif (screenID == "quest_1_description") then
 		self:startQuest1(playerCreo)
@@ -245,7 +251,13 @@ function ris_armor_quest_handler:getInitialScreen(pPlayer, npc, pConversationTem
 	end
 	
 	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest1.paid, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_1_start_yes")
+		local credits = conversingPlayer:getCashCredits()
+			
+		if (credits < 50000) then
+			return convoTemplate:getScreen("illegal_response")
+		else
+			return convoTemplate:getScreen("quest_1_start_yes")
+		end		
 	end
 	
 	if (conversingPlayer:hasSkill("crafting_armorsmith_master")) then
