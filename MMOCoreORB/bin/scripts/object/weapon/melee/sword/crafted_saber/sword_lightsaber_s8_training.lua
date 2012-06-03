@@ -80,7 +80,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s8_training = object_we
 	xpType = "jedi_general",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_onehandlightsaber" },
+	certificationsRequired = { "cert_onehandlightsaber_training" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "onehandlightsaber_accuracy" },
 
