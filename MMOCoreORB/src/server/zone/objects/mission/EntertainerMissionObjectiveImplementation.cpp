@@ -108,8 +108,6 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 }
 
 void EntertainerMissionObjectiveImplementation::complete() {
-	Locker _lock(_this);
-
 	clearLocationActiveAreaAndObservers();
 
 	MissionObjectiveImplementation::complete();

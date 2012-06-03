@@ -59,6 +59,8 @@ void MissionObjectiveImplementation::complete() {
 	if (player == NULL)
 		return;
 
+	_lock.release();
+
 	awardReward();
 
 	awardFactionPoints();
