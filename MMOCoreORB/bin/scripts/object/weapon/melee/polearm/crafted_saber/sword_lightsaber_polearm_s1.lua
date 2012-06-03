@@ -95,6 +95,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1 = object_w
 	-- Leave blank for now
 	damageModifiers = { },
 	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+	
 	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 
 	-- The values below are the default values.  To be used for blue frog objects primarily

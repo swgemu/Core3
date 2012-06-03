@@ -92,6 +92,8 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_s6 = obje
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "twohandlightsaber_speed" },
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 
 	-- Leave blank for now
 	damageModifiers = { },

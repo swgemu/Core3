@@ -96,6 +96,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object
 	-- Leave blank for now
 	damageModifiers = { },
 	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
 	gameObjectType = 131090,

@@ -96,6 +96,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s6_gen4 = ob
 	-- Leave blank for now
 	damageModifiers = { },
 	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 0,
