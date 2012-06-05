@@ -28,7 +28,7 @@ public:
 			int amountOfTicks = 5;
 			int damage = System::random(2000) + 1000;
 
-			if (!creature->isAiAgent())
+			if (creature->isPlayerCreature())
 				damage *= 0.25; // Player reduction.
 
 
