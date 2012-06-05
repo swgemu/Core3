@@ -887,7 +887,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage *= 1.33f;
 
 	// Toughness reduction
-	if (damageMax > 0)
+	if (damageMax <= 0)
 	damage = getDefenderToughnessModifier(defender, weapon->getDamageType(), damage);
 
 	// PvP Damage Reduction.
