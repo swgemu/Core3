@@ -70,14 +70,23 @@ include system.thread.Mutex;
 import system.lang.Time;
 
 class AiActor extends Observable implements Logger {
+	// finished moving and/or finished dying/spawning
 	public static final unsigned short FINISHED = 0;
+	// not finished moving
 	public static final unsigned short UNFINISHED = 1;
+	// recipient of an attack
 	public static final unsigned short ATTACKED = 2;
+	// found an object of interest
 	public static final unsigned short INTERESTED = 3;
+	// no health
 	public static final unsigned short DEAD = 4;
+	// low health
 	public static final unsigned short ALMOSTDEAD = 5;
+	// scared of something
 	public static final unsigned short SCARED = 6;
+	// forgot mental state
 	public static final unsigned short FORGOT = 7;
+	// no host (remove the aiactor or respawn the host)
 	public static final unsigned short NONE = 0xFFFF;
 	
 	@dereferenced
@@ -582,4 +591,8 @@ class AiActor extends Observable implements Logger {
 	@local
 	@dereferenced
 	public native Vector<WeaponObject> getWeapons();
+	
+	@local
+	@dereferenced
+	public native Time getLastDamageReceived();
 }

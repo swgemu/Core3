@@ -70,6 +70,7 @@
 #include "server/zone/objects/creature/ai/components/AttackStateComponent.h"
 #include "server/zone/objects/creature/ai/components/DeathStateComponent.h"
 #include "server/zone/objects/creature/ai/components/FleeStateComponent.h"
+#include "server/zone/objects/creature/ai/components/RetreatStateComponent.h"
 #include "server/zone/objects/creature/ai/components/SpawnStateComponent.h"
 #include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
 #include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
@@ -162,6 +163,7 @@ ComponentManager::ComponentManager() {
 	components.put("AttackStateComponent", new AttackStateComponent());
 	components.put("DeathStateComponent", new DeathStateComponent());
 	components.put("FleeStateComponent", new FleeStateComponent());
+	components.put("RetreatStateComponent", new RetreatStateComponent());
 	components.put("SpawnStateComponent", new SpawnStateComponent());
 	components.put("StandingStateComponent", new StandingStateComponent());
 	components.put("WanderingStateComponent", new WanderingStateComponent());

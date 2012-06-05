@@ -751,3 +751,7 @@ Vector<ManagedReference<WeaponObject*> > AiActorImplementation::getWeapons() {
 	return weapons;
 }
 
+Time AiActorImplementation::getLastDamageReceived() {
+	return lastDamageReceived;
+}
+

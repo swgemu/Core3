@@ -1203,6 +1203,15 @@ Vector<ManagedReference<WeaponObject* > > AiActor::getWeapons() {
 		return _implementation->getWeapons();
 }
 
+Time AiActor::getLastDamageReceived() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLastDamageReceived();
+}
+
 DistributedObjectServant* AiActor::_getImplementation() {
 
 	_updated = true;

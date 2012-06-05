@@ -407,6 +407,8 @@ public:
 
 	Vector<ManagedReference<WeaponObject* > > getWeapons();
 
+	Time getLastDamageReceived();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -700,6 +702,8 @@ public:
 	CreatureTemplate* getCreatureTemplate();
 
 	Vector<ManagedReference<WeaponObject* > > getWeapons();
+
+	Time getLastDamageReceived();
 
 	WeakReference<AiActor*> _this;
 

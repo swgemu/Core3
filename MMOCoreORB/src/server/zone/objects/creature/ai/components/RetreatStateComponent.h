@@ -1,20 +1,19 @@
 /*
- * AlertStateComponent.h
+ * RetreatStateComponent.h
  *
- *  Created on: May 17, 2012
+ *  Created on: Jun 3, 2012
  *      Author: da
  */
 
-#ifndef ALERTSTATECOMPONENT_H_
-#define ALERTSTATECOMPONENT_H_
+#ifndef RETREATSTATECOMPONENT_H_
+#define RETREATSTATECOMPONENT_H_
 
 #include "AiStateComponent.h"
 #include "../AiActor.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/core/ManagedReference.h"
 
-class AlertStateComponent : public AiStateComponent {
-public:
+class RetreatStateComponent : public AiStateComponent {
 	uint16 onEnter(AiActor* actor) {
 		ManagedReference<CreatureObject*> host = actor->getHost();
 		if (host == NULL)
@@ -23,15 +22,17 @@ public:
 		if (host->isDead())
 			return AiActor::DEAD;
 
-		if (host->isInCombat())
-			return AiActor::ATTACKED;
+		PatrolPoint* homeLocation = actor->getHomeLocation();
+		homeLocation->setReached(false);
 
-		host->showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
+		PatrolPointsVector* patrolPoints = actor->getPatrolPoints();
+		patrolPoints->removeAll();
+		setNextPosition(actor, homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY(), homeLocation->getCell());
 
 		actor->activateMovementEvent();
 		actor->activateRecovery();
 
-		return AiActor::INTERESTED;
+		return AiActor::UNFINISHED;
 	}
 
 	uint16 doRecovery(AiActor* actor) {
@@ -46,19 +47,9 @@ public:
 		host->activateStateRecovery();
 		actor->activatePostureRecovery();
 
-		if (host->isInCombat())
-			return AiActor::ATTACKED;
-
-		ManagedReference<SceneObject*> followObject = actor->getFollowObject();
-		if (followObject == NULL || !host->isInRange(followObject, 128.f))
-			return AiActor::FORGOT;
-
-		if (isScared(host, followObject))
-			return AiActor::SCARED;
-
 		actor->activateRecovery();
 
-		return AiActor::INTERESTED;
+		return AiActor::UNFINISHED;
 	}
 
 	uint16 doMovement(AiActor* actor) {
@@ -69,24 +60,18 @@ public:
 		if (host->isDead())
 			return AiActor::DEAD;
 
-		if (host->isInCombat())
-			return AiActor::ATTACKED;
-
 		ManagedReference<SceneObject*> followObject = actor->getFollowObject();
 		if (followObject == NULL || !host->isInRange(followObject, 128.f))
 			return AiActor::FORGOT;
 
-		if (isScared(host, followObject))
-			return AiActor::SCARED;
-
-		host->setDirection(atan2(followObject->getPositionX() - host->getPositionX(), followObject->getPositionX() - host->getPositionX()));
-		checkNewAngle(actor);
-
-		actor->activateMovementEvent();
-
-		return AiActor::INTERESTED;
+		return AiStateComponent::doMovement(actor);
 	}
+
+	float getSpeed(CreatureObject* host) {
+		return host->getRunSpeed();
+	}
+
 };
 
 
-#endif /* ALERTSTATECOMPONENT_H_ */
+#endif /* RETREATSTATECOMPONENT_H_ */
