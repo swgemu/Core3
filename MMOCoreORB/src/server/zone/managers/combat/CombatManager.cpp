@@ -451,16 +451,20 @@ float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int 
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
 
-	for (int i = 0; i < defenseToughMods->size(); ++i) {
-		int toughMod = defender->getSkillMod(defenseToughMods->get(i));
-		if (toughMod > 0) damage *= 1.f - (toughMod / 100.f);
+	if (damType != WeaponObject::FORCEATTACK) {
+		for (int i = 0; i < defenseToughMods->size(); ++i) {
+			int toughMod = defender->getSkillMod(defenseToughMods->get(i));
+			if (toughMod > 0) damage *= 1.f - (toughMod / 100.f);
+		}
 	}
 
 	int jediToughness = defender->getSkillMod("jedi_toughness");
-	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0) damage *= 1.f - (jediToughness / 100.f);
+	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
+		damage *= 1.f - (jediToughness / 100.f);
 
 	int foodBonus = defender->getSkillMod("mitigate_damage");
-	if (foodBonus > 0) damage *= 1.f - (foodBonus / 100.f);
+	if (foodBonus > 0)
+		damage *= 1.f - (foodBonus / 100.f);
 
 	return damage < 0 ? 0 : damage;
 }
@@ -887,8 +891,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage *= 1.33f;
 
 	// Toughness reduction
-	if (damageMax <= 0)
-	damage = getDefenderToughnessModifier(defender, weapon->getDamageType(), damage);
+	if (data.getAttackType() == CombatManager::FORCEATTACK)
+		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, damage);
+	else
+		damage = getDefenderToughnessModifier(defender, weapon->getDamageType(), damage);
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
