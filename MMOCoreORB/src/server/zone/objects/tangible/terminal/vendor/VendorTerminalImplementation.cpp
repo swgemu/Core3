@@ -23,11 +23,12 @@ void VendorTerminalImplementation::initializeTransientMembers() {
 		vendor.rescheduleEvent();
 
 	VendorManager::instance()->addVendor(getObjectID(), &vendor);
+	storedOid = getObjectID();
 
 }
 
 void VendorTerminalImplementation::finalize() {
-	VendorManager::instance()->dropVendor(getObjectID());
+	VendorManager::instance()->dropVendor(storedOid);
 }
 
 void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
