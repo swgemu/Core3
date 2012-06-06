@@ -216,16 +216,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	int hitVal = 0;
 	float damageMultiplier = data.getDamageMultiplier();
-	int damageMax = data.getDamageMax();
 
 	// need to calculate damage here to get proper client spam
 	int damage = 0;
 
 	if (damageMultiplier != 0)
 		damage = calculateDamage(attacker, defender, data) * damageMultiplier;
-
-	if (damageMax != 0)
-		damage = calculateDamage(attacker, defender, data); // For Powers.
 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
@@ -860,26 +856,26 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 
 float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
-	int damageMax = data.getDamageMax();
-	int damageMaxDif = damageMax - System::random(500);
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
-	int diff = calculateDamageRange(attacker, defender, weapon);
-	float minDamage = weapon->getMinDamage();
+	if (data.getDamage() > 0) { // this is a special attack (force, heavy weapon, etc)
+		damage = data.getDamage();
+		damage -= System::random(damage / 4);
+	} else {
+		int diff = calculateDamageRange(attacker, defender, weapon);
+		float minDamage = weapon->getMinDamage();
 
-	if (diff >= 0)
-		damage = System::random(diff) + (int)minDamage;
+		if (diff >= 0)
+			damage = System::random(diff) + (int)minDamage;
 
-	weapon->decay(attacker, damage);
+		weapon->decay(attacker, damage);
 
-	if (attacker->isPlayerCreature()) {
-		if (!weapon->isCertifiedFor(attacker))
-			damage /= 5;
+		if (attacker->isPlayerCreature()) {
+			if (!weapon->isCertifiedFor(attacker))
+				damage /= 5;
+		}
 	}
-
-	if (damageMax > 0)
-		damage = damageMaxDif;
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");

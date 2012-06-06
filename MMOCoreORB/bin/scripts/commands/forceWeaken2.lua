@@ -44,7 +44,7 @@
 ForceWeaken2Command = {
         name = "forceweaken2",
         
-            damageMax = 0,
+            damage = 0,
 	speed = 4.0,
 	forceCost = 400,
 	accuracySkillMod = "forceweaken_accuracy";

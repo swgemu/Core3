@@ -517,8 +517,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "damageMax")
-			combatCommand->setDamageMax(Lua::getFloatParameter(L));
+		else if (varName == "damage")
+			combatCommand->setDamage(Lua::getFloatParameter(L));
 		else if (varName == "speed")
 			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")

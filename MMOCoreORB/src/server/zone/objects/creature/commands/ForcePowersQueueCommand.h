@@ -26,58 +26,7 @@
 class ForcePowersQueueCommand : public CombatQueueCommand {
 public:
 
-	ForcePowersQueueCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-
-		damageMax = 0;
-		accuracySkillMod = "";
-
-		// Force Power is only set in Jedi-skills.
-		forceCost = 0;
-		speed = 0;
-
-
-		damageMultiplier = 0;
-		accuracyBonus = 0;
-		speedMultiplier = 0;
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		// Force Power is only set in Jedi-skills.
-		forceCostMultiplier = 0;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		knockdownStateChance = 0;
-		postureDownStateChance = 0;
-		postureUpStateChance = 0;
-		dizzyStateChance = 0;
-		blindStateChance = 0;
-		stunStateChance = 0;
-		intimidateStateChance = 0;
-		nextAttackDelayChance = 0;
-
-		durationStateTime = 10;
-
-		dotDuration = 0;
-		dotType = 0;
-		dotPool = 0;
-		dotStrength = 0;
-		dotPotency = 0;
-
-		coneAngle = 30;
-		dotDamageOfHit = false;
-
-
-		range = 1;
-
-		areaRange = 0;
-		areaAction = false;
-		coneAction = false;
-
-		combatSpam = "";
-		animationCRC = 0;
-	}
+	ForcePowersQueueCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {}
 
 	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);

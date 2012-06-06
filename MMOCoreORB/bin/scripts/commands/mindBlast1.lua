@@ -44,7 +44,7 @@
 MindBlast1Command = {
         name = "mindblast1",
 
-    damageMax = 1000,
+    damage = 1000,
 	speed = 4.0,
 	forceCost = 68,
 	accuracySkillMod = "mindblast_accuracy";
