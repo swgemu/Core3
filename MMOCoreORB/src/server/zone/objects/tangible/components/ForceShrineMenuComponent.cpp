@@ -34,7 +34,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		return 0;
 	}
 
-	PlayerObject* ghost = creature->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
 		return 0;
@@ -43,8 +43,6 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		return 0;
 
 	if (creature->hasSkill("force_title_jedi_novice") && !creature->hasSkill("force_title_jedi_rank_02")){
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("@jedi_trials:padawan_trials_title"); // Jedi Trials
 		box->setPromptText("@jedi_trials:padawan_trials_completed");
