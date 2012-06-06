@@ -131,7 +131,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	}
 
 	while (missionBag->getContainerObjectsSize() < maximumNumberOfItemsInMissionBag) {
-		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission
+		ManagedReference<SceneObject*> mission = server->createObject(0x18e19914, 1); // empty mission
 		missionBag->transferObject(mission, -1, false);
 		mission->sendTo(player, true);
 		//missionBag->updateToDatabaseWithoutChildren();
@@ -141,12 +141,12 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 }
 
 void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player) {
-	SceneObject* missionBag = mission->getParent();
+	ManagedReference<SceneObject*> missionBag = mission->getParent();
 
 	if (missionBag == NULL)
 		return;
 
-	SceneObject* bagParent = missionBag->getParent();
+	ManagedReference<SceneObject*> bagParent = missionBag->getParent();
 
 	if (bagParent != player)
 		return;
@@ -354,7 +354,7 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 void MissionManagerImplementation::removeMission(MissionObject* mission, CreatureObject* player) {
 	ManagedReference<MissionObject*> ref = mission;
 
-	SceneObject* missionParent = mission->getParent();
+	ManagedReference<SceneObject*> missionParent = mission->getParent();
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
 	if (missionParent != datapad)
@@ -1592,7 +1592,7 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 
 			if (objective != NULL) {
 				if (objective->getPlayerOwner() != NULL) {
-					objective->getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
+					objective->getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed");
 				}
 				objective->fail();
 			}

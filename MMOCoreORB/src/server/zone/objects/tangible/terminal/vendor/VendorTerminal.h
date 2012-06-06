@@ -162,8 +162,6 @@ public:
 
 	bool isVendorTerminal();
 
-	CityRegion* getCityRegion();
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -222,8 +220,6 @@ public:
 	bool isVendor();
 
 	bool isVendorTerminal();
-
-	CityRegion* getCityRegion();
 
 	WeakReference<VendorTerminal*> _this;
 

@@ -729,39 +729,39 @@ void EntertainingSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* EntertainingSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 EntertainingSessionImplementation::operator const EntertainingSession*() {
-	return _this;
+	return _this.get();
 }
 
 void EntertainingSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void EntertainingSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void EntertainingSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void EntertainingSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void EntertainingSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void EntertainingSessionImplementation::_serializationHelperMethod() {

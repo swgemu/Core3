@@ -32,7 +32,7 @@ void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, C
 	if (terminal == NULL || player == NULL)
 		return;
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	switch (terminal->getMachineType()) {
 		case GamblingTerminal::SLOTMACHINE: {
 			slotGames.put(player, terminal);

@@ -21,6 +21,8 @@ protected:
 public:
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
 		armorMap.setAllowOverwriteInsertPlan();
+
+		addSerializableVariable("armorMap", &armorMap);
 	}
 
 	void insertItemToMessage(ManagedReference<TangibleObject*>* item, BaseMessage* msg) {

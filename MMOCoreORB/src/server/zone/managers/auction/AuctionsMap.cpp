@@ -338,39 +338,39 @@ void AuctionsMapImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* AuctionsMapImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 AuctionsMapImplementation::operator const AuctionsMap*() {
-	return _this;
+	return _this.get();
 }
 
 void AuctionsMapImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void AuctionsMapImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void AuctionsMapImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void AuctionsMapImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void AuctionsMapImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void AuctionsMapImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void AuctionsMapImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void AuctionsMapImplementation::_serializationHelperMethod() {
@@ -537,7 +537,7 @@ int AuctionsMapImplementation::getPlayerVendorItemCount(unsigned long long objec
 
 void AuctionsMapImplementation::dropVendorItem(unsigned long long objectID) {
 	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = vendorItems.get(objectID);
-	AuctionItem* item = (&vendorItems)->get(objectID);
+	ManagedReference<AuctionItem* > item = (&vendorItems)->get(objectID);
 	// server/zone/managers/auction/AuctionsMap.idl():  		int 
 	if (item == NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return;
 	return;
@@ -609,7 +609,7 @@ int AuctionsMapImplementation::getPlayerAuctionCount(unsigned long long objectID
 
 void AuctionsMapImplementation::dropBazaarItem(unsigned long long objectID) {
 	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = auctions.get(objectID);
-	AuctionItem* item = (&auctions)->get(objectID);
+	ManagedReference<AuctionItem* > item = (&auctions)->get(objectID);
 	// server/zone/managers/auction/AuctionsMap.idl():  		int 
 	if (item == NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return;
 	return;
@@ -639,7 +639,7 @@ AuctionItem* AuctionsMapImplementation::getBazaarItem(int index) {
 
 bool AuctionsMapImplementation::checkInStockroom(unsigned long long objectID) {
 	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = vendorItems.get(objectID);
-	AuctionItem* item = (&vendorItems)->get(objectID);
+	ManagedReference<AuctionItem* > item = (&vendorItems)->get(objectID);
 	// server/zone/managers/auction/AuctionsMap.idl():  			return false;
 	if (item != NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return item.isInStockroom();
 	return item->isInStockroom();

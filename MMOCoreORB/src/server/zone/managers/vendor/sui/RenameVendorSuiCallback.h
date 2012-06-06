@@ -31,7 +31,12 @@ public:
 
 		String name = args->get(0).toString();
 
-		TangibleObject* vendor = cast<TangibleObject*>( suiBox->getUsingObject());
+		ManagedReference<SceneObject*> strong = suiBox->getUsingObject();
+
+		if (strong == NULL)
+			return;
+
+		TangibleObject* vendor = cast<TangibleObject*>(strong.get());
 
 		if (vendor == NULL)
 			return;

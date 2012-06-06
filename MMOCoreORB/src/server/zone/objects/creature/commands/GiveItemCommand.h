@@ -90,7 +90,7 @@ public:
 
 		if (object != NULL) {
 
-			SceneObject* objectsParent = object->getParent();
+			ManagedReference<SceneObject*> objectsParent = object->getParent();
 
 			if (objectsParent == NULL)
 				return GENERALERROR;

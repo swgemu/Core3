@@ -64,39 +64,39 @@ void DeliverMissionConversationObserverImplementation::_setStub(DistributedObjec
 }
 
 DistributedObjectStub* DeliverMissionConversationObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DeliverMissionConversationObserverImplementation::operator const DeliverMissionConversationObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void DeliverMissionConversationObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DeliverMissionConversationObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DeliverMissionConversationObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::_serializationHelperMethod() {

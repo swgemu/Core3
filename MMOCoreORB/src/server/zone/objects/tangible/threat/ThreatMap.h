@@ -108,7 +108,7 @@ public:
 protected:
 	ManagedWeakReference<TangibleObject*> self;
 	CooldownTimerMap cooldownTimerMap;
-	WeakReference<CreatureObject*> currentThreat;
+	ManagedWeakReference<CreatureObject*> currentThreat;
 	ThreatMatrix threatMatrix;
 	ManagedReference<ThreatMapObserver*> threatMapObserver;
 	Mutex lockMutex;

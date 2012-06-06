@@ -1200,7 +1200,7 @@ ActiveArea* SceneObject::getActiveRegion() {
 		return _implementation->getActiveRegion();
 }
 
-CityRegion* SceneObject::getCityRegion() {
+ManagedWeakReference<CityRegion* > SceneObject::getCityRegion() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1996,7 +1996,7 @@ unsigned int SceneObject::getMovementCounter() {
 		return _implementation->getMovementCounter();
 }
 
-SceneObject* SceneObject::getParent() {
+ManagedWeakReference<SceneObject* > SceneObject::getParent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2022,7 +2022,7 @@ ZoneServer* SceneObject::getZoneServer() {
 		return _implementation->getZoneServer();
 }
 
-SceneObject* SceneObject::getRootParent() {
+ManagedWeakReference<SceneObject* > SceneObject::getRootParent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2035,7 +2035,7 @@ SceneObject* SceneObject::getRootParent() {
 		return _implementation->getRootParent();
 }
 
-SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
+ManagedWeakReference<SceneObject* > SceneObject::getParentRecursively(unsigned int gameObjectType) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3494,39 +3494,39 @@ void SceneObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SceneObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SceneObjectImplementation::operator const SceneObject*() {
-	return _this;
+	return _this.get();
 }
 
 void SceneObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SceneObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SceneObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SceneObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SceneObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SceneObjectImplementation::_serializationHelperMethod() {
@@ -3900,7 +3900,7 @@ void SceneObjectImplementation::error(const String& msg) {
 
 void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
-	zoneComponent->destroyObjectFromWorld(_this, sendSelfDestroy);
+	zoneComponent->destroyObjectFromWorld(_this.get(), sendSelfDestroy);
 }
 
 int SceneObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -3944,17 +3944,17 @@ void SceneObjectImplementation::setCustomObjectName(const UnicodeString& name, b
 
 byte SceneObjectImplementation::checkContainerPermission(CreatureObject* player, unsigned short permission) {
 	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.checkContainerPermission(this, player, permission);
-	return containerComponent->checkContainerPermission(_this, player, permission);
+	return containerComponent->checkContainerPermission(_this.get(), player, permission);
 }
 
 void SceneObjectImplementation::notifyInsert(QuadTreeEntry* entry) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyInsert(this, entry);
-	zoneComponent->notifyInsert(_this, entry);
+	zoneComponent->notifyInsert(_this.get(), entry);
 }
 
 void SceneObjectImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyDissapear(this, entry);
-	zoneComponent->notifyDissapear(_this, entry);
+	zoneComponent->notifyDissapear(_this.get(), entry);
 }
 
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
@@ -3974,7 +3974,7 @@ unsigned long long SceneObjectImplementation::getParentID() {
 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
 	if (QuadTreeEntryImplementation::parent.getForUpdate() != NULL){
 	// server/zone/objects/scene/SceneObject.idl():  			return super.parent.getObjectID();
-	return QuadTreeEntryImplementation::parent.getForUpdate()->getObjectID();
+	return QuadTreeEntryImplementation::parent.getForUpdate().get()->getObjectID();
 }
 
 	else 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
@@ -4060,7 +4060,7 @@ bool SceneObjectImplementation::hasActiveArea(unsigned long long objectid) {
 	i < (&activeAreas)->size();
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea area = activeAreas.get(i);
-	ActiveArea* area = (&activeAreas)->get(i);
+	ManagedReference<ActiveArea* > area = (&activeAreas)->get(i);
 	// server/zone/objects/scene/SceneObject.idl():  		}
 	if (area->getObjectID() == objectid){
 	// server/zone/objects/scene/SceneObject.idl():  				return true;
@@ -4088,7 +4088,7 @@ ActiveArea* SceneObjectImplementation::getActiveRegion() {
 	i < (&activeAreas)->size();
 i ++) {
 	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea region = activeAreas.get(i);
-	ActiveArea* region = (&activeAreas)->get(i);
+	ManagedReference<ActiveArea* > region = (&activeAreas)->get(i);
 	// server/zone/objects/scene/SceneObject.idl():  		}
 	if (region->isRegion()){
 	// server/zone/objects/scene/SceneObject.idl():  				return region;
@@ -4099,7 +4099,7 @@ i ++) {
 	return NULL;
 }
 
-CityRegion* SceneObjectImplementation::getCityRegion() {
+ManagedWeakReference<CityRegion* > SceneObjectImplementation::getCityRegion() {
 	// server/zone/objects/scene/SceneObject.idl():  		return cityRegion;
 	return cityRegion;
 }
@@ -4110,10 +4110,14 @@ void SceneObjectImplementation::setCityRegion(CityRegion* region) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
+	// server/zone/objects/scene/SceneObject.idl():  		SceneObject strong = null;
+	ManagedReference<SceneObject* > strong = NULL;
 	// server/zone/objects/scene/SceneObject.idl():  		}
-	if (getParent() != NULL){
-	// server/zone/objects/scene/SceneObject.idl():  			return getRootParent().getZone();
-	return getRootParent()->getZone();
+	if ((strong = getParent()) != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  			strong = getRootParent();
+	strong = getRootParent();
+	// server/zone/objects/scene/SceneObject.idl():  			return strong.getZone();
+	return strong->getZone();
 }
 
 	else {
@@ -4281,7 +4285,7 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 	return false;
 }
 	// server/zone/objects/scene/SceneObject.idl():  		SceneObject obj = null;
-	SceneObject* obj = NULL;
+	ManagedReference<SceneObject* > obj = NULL;
 	// server/zone/objects/scene/SceneObject.idl():  		}
 {
 	Locker _locker((&containerLock));
@@ -5526,7 +5530,7 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETPARENT__:
 		{
-			resp->insertLong(getParent()->_getObjectID());
+			resp->insertLong(getParent().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETZONESERVER__:
@@ -5536,12 +5540,12 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETROOTPARENT__:
 		{
-			resp->insertLong(getRootParent()->_getObjectID());
+			resp->insertLong(getRootParent().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETPARENTRECURSIVELY__INT_:
 		{
-			resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter())->_getObjectID());
+			resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter()).get()->_getObjectID());
 		}
 		break;
 	case RPC_ISASUBCHILDOF__SCENEOBJECT_:
@@ -6504,7 +6508,7 @@ unsigned int SceneObjectAdapter::getMovementCounter() {
 	return (static_cast<SceneObject*>(stub))->getMovementCounter();
 }
 
-SceneObject* SceneObjectAdapter::getParent() {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getParent() {
 	return (static_cast<SceneObject*>(stub))->getParent();
 }
 
@@ -6512,11 +6516,11 @@ ZoneServer* SceneObjectAdapter::getZoneServer() {
 	return (static_cast<SceneObject*>(stub))->getZoneServer();
 }
 
-SceneObject* SceneObjectAdapter::getRootParent() {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getRootParent() {
 	return (static_cast<SceneObject*>(stub))->getRootParent();
 }
 
-SceneObject* SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
 	return (static_cast<SceneObject*>(stub))->getParentRecursively(gameObjectType);
 }
 

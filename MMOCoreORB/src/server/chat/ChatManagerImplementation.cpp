@@ -190,7 +190,7 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 
 
 void ChatManagerImplementation::destroyRooms() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
@@ -319,14 +319,14 @@ void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 }
 
 void ChatManagerImplementation::addPlayer(CreatureObject* player) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	String name = player->getFirstName().toLowerCase();
 	playerMap->put(name, player, false);
 }
 
 CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	CreatureObject* player = NULL;
 
@@ -343,7 +343,7 @@ CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
 }
 
 CreatureObject* ChatManagerImplementation::removePlayer(const String& name) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	String lName = name.toLowerCase();
 
@@ -361,7 +361,7 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 	StringBuffer fullMessage;
 	fullMessage << "[" << firstName << "] " << message;
 
-	Locker locker(_this);
+	Locker locker(_this.get());
 	//playerMap->lock();
 
 	playerMap->resetIterator(false);
@@ -374,7 +374,7 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 }
 
 void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	playerMap->resetIterator(false);
 
@@ -525,7 +525,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 //TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ManagedReference<CreatureObject*> sender = cast<CreatureObject*>(message->getClient()->getPlayer());
+	ManagedReference<CreatureObject*> sender = cast<CreatureObject*>(message->getClient()->getPlayer().get().get());
 
 	if (sender == NULL)
 		return;
@@ -591,7 +591,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObj
 }
 
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getRoomID());
 	room->broadcastMessage(msg);

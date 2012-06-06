@@ -155,39 +155,39 @@ void FishingBaitObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FishingBaitObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FishingBaitObjectImplementation::operator const FishingBaitObject*() {
-	return _this;
+	return _this.get();
 }
 
 void FishingBaitObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FishingBaitObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FishingBaitObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FishingBaitObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FishingBaitObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FishingBaitObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FishingBaitObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FishingBaitObjectImplementation::_serializationHelperMethod() {

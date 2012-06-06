@@ -66,6 +66,7 @@ class SurveySession extends Facade {
 	private native void surveyGnodeMinigameSui();
 	public native void surveyGnodeMinigame(int value);
 
+	@weakReference
 	public SurveyTool getActiveSurveyTool() {
 		return activeSurveyTool;
 	}
@@ -74,6 +75,7 @@ class SurveySession extends Facade {
 		activeSurveyTool = tool;
 	}
 	
+	@weakReference
 	public SurveyTool getOpenSurveyTool() {
 		return openSurveyTool;
 	}

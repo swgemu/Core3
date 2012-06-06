@@ -80,7 +80,7 @@ public:
 
 		Zone* zone = vehicle->getZone();
 
-		if (vehicle != creature->getParent())
+		if (vehicle != creature->getParent().get())
 			return GENERALERROR;
 
 		if (zone == NULL)

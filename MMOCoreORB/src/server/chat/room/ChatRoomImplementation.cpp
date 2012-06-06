@@ -56,7 +56,7 @@ which carries forward this exception.
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
-	crl->addChannel(_this);
+	crl->addChannel(_this.get());
 
 	crl->insertChannelListCount();
 	player->sendMessage(crl);
@@ -68,7 +68,7 @@ void ChatRoomImplementation::sendDestroyTo(CreatureObject* player) {
 }
 
 void ChatRoomImplementation::addPlayer(CreatureObject* player, bool doLock) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (playerList.put(player->getFirstName(), player) == -1) {
 		//return;
@@ -83,7 +83,7 @@ void ChatRoomImplementation::addPlayer(CreatureObject* player, bool doLock) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	ghost->addChatRoom(_this);
+	ghost->addChatRoom(_this.get());
 
 
 	/*ChatOnReceiveRoomInvitation* corri = new ChatOnReceiveRoomInvitation(name);
@@ -97,21 +97,21 @@ void ChatRoomImplementation::removePlayer(CreatureObject* player, bool doLock) {
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	ghost->removeChatRoom(_this);
+	ghost->removeChatRoom(_this.get());
 
 	locker.release();
 
-	Locker locker2(_this);
+	Locker locker2(_this.get());
 
 	playerList.drop(player->getFirstName());
 
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this, player);
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.get(), player);
 	player->sendMessage(msg);
 }
 
 void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	CreatureObject* play = playerList.get(player);
 	playerList.drop(player);
@@ -125,9 +125,9 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 
 	PlayerObject* ghost = play->getPlayerObject();
 
-	ghost->removeChatRoom(_this);
+	ghost->removeChatRoom(_this.get());
 
-	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this, play);
+	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom(_this.get(), play);
 	play->sendMessage(msg);
 }
 
@@ -141,16 +141,16 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 }
 
 void ChatRoomImplementation::removeAllPlayers() {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	for (int i = 0; i < playerList.size(); i++) {
 		CreatureObject* player = playerList.get(i);
 
-		Locker clocker(player, _this);
+		Locker clocker(player, _this.get());
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		ghost->removeChatRoom(_this);
+		ghost->removeChatRoom(_this.get());
 	}
 
 	playerList.removeAll();

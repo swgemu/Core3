@@ -83,7 +83,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  		return NULL;
  	}
 
- 	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
+ 	ManagedReference<TangibleObject*> building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
 
  	if (building == NULL) {
  		error("error spawning " + buildingToSpawn);
@@ -119,7 +119,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (reservePool.size() != 0) {
 		int id = System::random(reservePool.size() - 1);

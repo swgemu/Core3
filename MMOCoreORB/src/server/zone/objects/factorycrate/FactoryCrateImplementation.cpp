@@ -36,10 +36,10 @@ void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
 	msg << "sending cell number " << cellNumber << " baselines";
 	info(msg.toString(), true);*/
 
-	BaseMessage* fctyMsg3 = new FactoryCrateObjectMessage3(_this);
+	BaseMessage* fctyMsg3 = new FactoryCrateObjectMessage3(_this.get());
 	player->sendMessage(fctyMsg3);
 
-	BaseMessage* fctyMsg6 = new FactoryCrateObjectMessage6(_this);
+	BaseMessage* fctyMsg6 = new FactoryCrateObjectMessage6(_this.get());
 	player->sendMessage(fctyMsg6);
 
 }
@@ -149,21 +149,21 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 		String errorDescription;
 		int errorNumber = 0;
 
-		if ((errorNumber = getParent()->canAddObject(protoclone, -1, errorDescription)) != 0) {
+		if ((errorNumber = getParent().get()->canAddObject(protoclone, -1, errorDescription)) != 0) {
 			if (errorDescription.length() > 1) {
-				ManagedReference<SceneObject*> player = getParent()->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+				ManagedReference<SceneObject*> player = getParent().get()->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 				if (player != NULL)
 					player->sendMessage(new ChatSystemMessage(errorDescription));
 			} else
-				getParent()->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+				getParent().get()->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
 
 			return false;
 		}
 
 		if (parent != NULL) {
-			getParent()->transferObject(protoclone, -1, true);
-			getParent()->broadcastObject(protoclone, true);
+			getParent().get()->transferObject(protoclone, -1, true);
+			getParent().get()->broadcastObject(protoclone, true);
 		}
 
 		setUseCount(getUseCount() - 1);
@@ -192,8 +192,8 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 		protoclone->setUseCount(count, false);
 
 		if (parent != NULL) {
-			getParent()->broadcastObject(protoclone, true);
-			getParent()->transferObject(protoclone, -1, true);
+			getParent().get()->broadcastObject(protoclone, true);
+			getParent().get()->transferObject(protoclone, -1, true);
 		}
 
 		setUseCount(getUseCount() - count, true);
@@ -233,8 +233,8 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	newCrate->setCustomObjectName(getCustomObjectName(), false);
 
 	if (parent != NULL) {
-		getParent()->transferObject(newCrate, -1, false);
-		getParent()->broadcastObject(newCrate, true);
+		getParent().get()->transferObject(newCrate, -1, false);
+		getParent().get()->broadcastObject(newCrate, true);
 	}
 }
 
@@ -255,7 +255,7 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 	if (!notifyClient)
 		return;
 
-	FactoryCrateObjectDeltaMessage3* dfcty3 = new FactoryCrateObjectDeltaMessage3(_this);
+	FactoryCrateObjectDeltaMessage3* dfcty3 = new FactoryCrateObjectDeltaMessage3(_this.get());
 	dfcty3->setQuantity(newUseCount);
 	dfcty3->close();
 

@@ -70,7 +70,7 @@ public:
 		if(!creature->hasSkill("outdoors_ranger_novice"))
 			return GENERALERROR;
 
-		if(creature->getParent() != NULL && creature->getParent()->isCellObject()) {
+		if(creature->getParent() != NULL && creature->getParent().get()->isCellObject()) {
 			creature->sendSystemMessage("@skl_use:sys_scan_inside");
 			return GENERALERROR;
 		}

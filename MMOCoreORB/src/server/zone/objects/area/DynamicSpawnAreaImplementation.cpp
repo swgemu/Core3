@@ -21,12 +21,12 @@ void DynamicSpawnAreaImplementation::registerObservers() {
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {
 		ManagedReference<SpawnArea*> notHere = noSpawnAreas.get(i);
 
-		ManagedReference<SpawnObserver*> enterObserver = new SpawnObserver(_this);
+		ManagedReference<SpawnObserver*> enterObserver = new SpawnObserver(_this.get());
 		ObjectManager::instance()->persistObject(enterObserver, 1, "spawnobservers");
 		notHere->registerObserver(ObserverEventType::ENTEREDAREA, enterObserver);
 		observers.put(enterObserver);
 
-		ManagedReference<SpawnObserver*> exitObserver = new SpawnObserver(_this);
+		ManagedReference<SpawnObserver*> exitObserver = new SpawnObserver(_this.get());
 		ObjectManager::instance()->persistObject(exitObserver, 1, "spawnobservers");
 		notHere->registerObserver(ObserverEventType::EXITEDAREA, exitObserver);
 		observers.put(exitObserver);
@@ -64,7 +64,7 @@ void DynamicSpawnAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 SpawnDynamicAreaCreatureTask* DynamicSpawnAreaImplementation::addSpawnTask(CreatureObject* player) {
-	Reference<SpawnDynamicAreaCreatureTask*> task = new SpawnDynamicAreaCreatureTask(_this, player);
+	Reference<SpawnDynamicAreaCreatureTask*> task = new SpawnDynamicAreaCreatureTask(_this.get(), player);
 	task->schedule(10000 / (spawnConstant > 0 ? spawnConstant : 1)); // is 10 seconds appropriate?
 
 	return task;

@@ -432,7 +432,7 @@ public:
 
 	ActiveArea* getActiveRegion();
 
-	CityRegion* getCityRegion();
+	ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void setCityRegion(CityRegion* region);
 
@@ -556,13 +556,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1063,7 +1063,7 @@ public:
 
 	ActiveArea* getActiveRegion();
 
-	virtual CityRegion* getCityRegion();
+	virtual ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void setCityRegion(CityRegion* region);
 
@@ -1187,13 +1187,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1706,13 +1706,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 

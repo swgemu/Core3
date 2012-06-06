@@ -560,39 +560,39 @@ void ZoneImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ZoneImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ZoneImplementation::operator const Zone*() {
-	return _this;
+	return _this.get();
 }
 
 void ZoneImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ZoneImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ZoneImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ZoneImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ZoneImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ZoneImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ZoneImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ZoneImplementation::_serializationHelperMethod() {
@@ -704,7 +704,7 @@ QuadTree* ZoneImplementation::getRegionTree() {
 }
 
 void ZoneImplementation::addCityRegionToUpdate(CityRegion* city) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/Zone.idl():  		cityRegionUpdateVector.put(city);
 	(&cityRegionUpdateVector)->put(city);
 }

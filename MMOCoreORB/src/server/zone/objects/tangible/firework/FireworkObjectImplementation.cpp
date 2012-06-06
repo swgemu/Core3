@@ -73,7 +73,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player, int removeDela
 		return;
 	}
 
-	FireworkLaunchEvent* launchEvent = new FireworkLaunchEvent(player, _this, removeDelay);
+	FireworkLaunchEvent* launchEvent = new FireworkLaunchEvent(player, _this.get(), removeDelay);
 	launchEvent->schedule(delay * 1000);
 }
 
@@ -110,7 +110,7 @@ void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int re
 
 		destroyObjectFromWorld(true);
 		/*if (parent != NULL)
-			getParent()->removeObject(_this, true);*/
+			getParent()->removeObject(_this.get(), true);*/
 
 		if (isPersistent())
 			destroyObjectFromDatabase(true);

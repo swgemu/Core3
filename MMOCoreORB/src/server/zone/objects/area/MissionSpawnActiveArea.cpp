@@ -102,39 +102,39 @@ void MissionSpawnActiveAreaImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* MissionSpawnActiveAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MissionSpawnActiveAreaImplementation::operator const MissionSpawnActiveArea*() {
-	return _this;
+	return _this.get();
 }
 
 void MissionSpawnActiveAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::_serializationHelperMethod() {
@@ -220,11 +220,11 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if (destroyMissionObjective != NULL){
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				CreatureObject missionOwner = destroyMissionObjective.getPlayerOwner();
-	CreatureObject* missionOwner = destroyMissionObjective->getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = destroyMissionObjective.get()->getPlayerOwner();
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  					destroyMissionObjective.spawnLair();
-	destroyMissionObjective->spawnLair();
+	destroyMissionObjective.get()->spawnLair();
 }
 }
 

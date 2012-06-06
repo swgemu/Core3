@@ -91,7 +91,7 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 		suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
 		suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
 		suiMessageBox->setCancelButton(true, "Cancel");
-		suiMessageBox->setUsingObject(_this);
+		suiMessageBox->setUsingObject(_this.get());
 		suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
 
 

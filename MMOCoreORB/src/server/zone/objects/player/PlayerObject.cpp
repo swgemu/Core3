@@ -920,7 +920,7 @@ void PlayerObject::setConversatingCreature(CreatureObject* creature) {
 		_implementation->setConversatingCreature(creature);
 }
 
-CreatureObject* PlayerObject::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObject::getConversatingCreature() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1171,7 +1171,7 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 		_implementation->removeCommandMessageString(actionCRC);
 }
 
-BuildingObject* PlayerObject::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObject::getDeclaredResidence() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1212,7 +1212,7 @@ void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
 		_implementation->setCloningFacility(cloningfac);
 }
 
-BuildingObject* PlayerObject::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObject::getCloningFacility() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3067,39 +3067,39 @@ void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PlayerObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PlayerObjectImplementation::operator const PlayerObject*() {
-	return _this;
+	return _this.get();
 }
 
 void PlayerObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PlayerObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PlayerObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PlayerObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PlayerObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PlayerObjectImplementation::_serializationHelperMethod() {
@@ -4058,37 +4058,37 @@ void PlayerObjectImplementation::finalize() {
 }
 
 void PlayerObjectImplementation::addOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj);
 	(&ownedStructures)->put(obj);
 }
 
 void PlayerObjectImplementation::removeOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj);
 	(&ownedStructures)->drop(obj);
 }
 
 int PlayerObjectImplementation::getTotalOwnedStructureCount() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.size();
 	return (&ownedStructures)->size();
 }
 
 bool PlayerObjectImplementation::isOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.contains(obj);
 	return (&ownedStructures)->contains(obj);
 }
 
 StructureObject* PlayerObjectImplementation::getOwnedStructure(int i) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.get(i);
 	return (&ownedStructures)->get(i);
 }
 
 int PlayerObjectImplementation::getLotsRemaining() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		int lotsRemaining = maximumLots;
 	int lotsRemaining = maximumLots;
 	// server/zone/objects/player/PlayerObject.idl():  		}
@@ -4097,7 +4097,7 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	i < (&ownedStructures)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = ownedStructures.get(i);
-	StructureObject* structure = (&ownedStructures)->get(i);
+	ManagedReference<StructureObject* > structure = (&ownedStructures)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  			lotsRemaining = lotsRemaining - structure.getLotSize();
 	lotsRemaining = lotsRemaining - structure->getLotSize();
 }
@@ -4106,7 +4106,7 @@ int PlayerObjectImplementation::getLotsRemaining() {
 }
 
 bool PlayerObjectImplementation::hasLotsRemaining(int lots) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return lots <= getLotsRemaining();
 	return lots <= getLotsRemaining();
 }
@@ -4184,7 +4184,7 @@ void PlayerObjectImplementation::setConversatingCreature(CreatureObject* creatur
 	conversatingCreature = creature;
 }
 
-CreatureObject* PlayerObjectImplementation::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObjectImplementation::getConversatingCreature() {
 	// server/zone/objects/player/PlayerObject.idl():  		return conversatingCreature;
 	return conversatingCreature;
 }
@@ -4276,7 +4276,7 @@ void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionC
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
-BuildingObject* PlayerObjectImplementation::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getDeclaredResidence() {
 	// server/zone/objects/player/PlayerObject.idl():  		return declaredResidence;
 	return declaredResidence;
 }
@@ -4291,7 +4291,7 @@ void PlayerObjectImplementation::setCloningFacility(BuildingObject* cloningfac) 
 	cloningFacility = cloningfac;
 }
 
-BuildingObject* PlayerObjectImplementation::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getCloningFacility() {
 	// server/zone/objects/player/PlayerObject.idl():  		return cloningFacility;
 	return cloningFacility;
 }
@@ -4358,7 +4358,7 @@ bool PlayerObjectImplementation::hasSuiBoxWindowType(unsigned int windowType) {
 	i < (&suiBoxes)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
-	SuiBox* sui = (&suiBoxes)->get(i);
+	ManagedReference<SuiBox* > sui = (&suiBoxes)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  			type = sui.getWindowType();
 	type = sui->getWindowType();
 	// server/zone/objects/player/PlayerObject.idl():  		}
@@ -4373,7 +4373,7 @@ void PlayerObjectImplementation::closeSuiWindowType(unsigned int windowType) {
 	// server/zone/objects/player/PlayerObject.idl():  	}
 	if (hasSuiBoxWindowType(windowType)){
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = getSuiBoxFromWindowType(windowType);
-	SuiBox* sui = getSuiBoxFromWindowType(windowType);
+	ManagedReference<SuiBox* > sui = getSuiBoxFromWindowType(windowType);
 	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (sui != NULL){
 	// server/zone/objects/player/PlayerObject.idl():  				sendMessage(sui.generateCloseMessage());
@@ -4393,7 +4393,7 @@ SuiBox* PlayerObjectImplementation::getSuiBoxFromWindowType(unsigned int windowT
 	i < (&suiBoxes)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
-	SuiBox* sui = (&suiBoxes)->get(i);
+	ManagedReference<SuiBox* > sui = (&suiBoxes)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (windowType == sui->getWindowType())	// server/zone/objects/player/PlayerObject.idl():  				return sui;
 	return sui;
@@ -4766,8 +4766,10 @@ ValidatedPosition* PlayerObjectImplementation::getLastValidatedPosition() {
 }
 
 void PlayerObjectImplementation::updateLastValidatedPosition() {
-	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(super.getParent());
-	(&lastValidatedPosition)->update(IntangibleObjectImplementation::getParent());
+	// server/zone/objects/player/PlayerObject.idl():  		SceneObject par = super.getParent();
+	ManagedReference<SceneObject* > par = IntangibleObjectImplementation::getParent();
+	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(par);
+	(&lastValidatedPosition)->update(par);
 	// server/zone/objects/player/PlayerObject.idl():  		serverLastMovementStamp.updateToCurrentTime();
 	(&serverLastMovementStamp)->updateToCurrentTime();
 }
@@ -5213,7 +5215,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCONVERSATINGCREATURE__:
 		{
-			resp->insertLong(getConversatingCreature()->_getObjectID());
+			resp->insertLong(getConversatingCreature().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETTRAINERCOORDINATES__FLOAT_FLOAT_:
@@ -5298,7 +5300,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETDECLAREDRESIDENCE__:
 		{
-			resp->insertLong(getDeclaredResidence()->_getObjectID());
+			resp->insertLong(getDeclaredResidence().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_:
@@ -5313,7 +5315,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCLONINGFACILITY__:
 		{
-			resp->insertLong(getCloningFacility()->_getObjectID());
+			resp->insertLong(getCloningFacility().get()->_getObjectID());
 		}
 		break;
 	case RPC_NOTIFYONLINE__:
@@ -6163,7 +6165,7 @@ void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
 	(static_cast<PlayerObject*>(stub))->setConversatingCreature(creature);
 }
 
-CreatureObject* PlayerObjectAdapter::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObjectAdapter::getConversatingCreature() {
 	return (static_cast<PlayerObject*>(stub))->getConversatingCreature();
 }
 
@@ -6227,7 +6229,7 @@ void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
 	(static_cast<PlayerObject*>(stub))->removeCommandMessageString(actionCRC);
 }
 
-BuildingObject* PlayerObjectAdapter::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getDeclaredResidence() {
 	return (static_cast<PlayerObject*>(stub))->getDeclaredResidence();
 }
 
@@ -6239,7 +6241,7 @@ void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
 	(static_cast<PlayerObject*>(stub))->setCloningFacility(cloningfac);
 }
 
-BuildingObject* PlayerObjectAdapter::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getCloningFacility() {
 	return (static_cast<PlayerObject*>(stub))->getCloningFacility();
 }
 

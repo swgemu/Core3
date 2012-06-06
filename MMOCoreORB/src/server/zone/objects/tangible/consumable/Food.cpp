@@ -96,39 +96,39 @@ void FoodImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FoodImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FoodImplementation::operator const Food*() {
-	return _this;
+	return _this.get();
 }
 
 void FoodImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FoodImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FoodImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FoodImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FoodImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FoodImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FoodImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FoodImplementation::_serializationHelperMethod() {

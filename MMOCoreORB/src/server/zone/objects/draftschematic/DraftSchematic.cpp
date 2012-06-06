@@ -416,39 +416,39 @@ void DraftSchematicImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* DraftSchematicImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DraftSchematicImplementation::operator const DraftSchematic*() {
-	return _this;
+	return _this.get();
 }
 
 void DraftSchematicImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DraftSchematicImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DraftSchematicImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DraftSchematicImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DraftSchematicImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DraftSchematicImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DraftSchematicImplementation::_serializationHelperMethod() {

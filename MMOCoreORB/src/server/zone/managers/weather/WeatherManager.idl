@@ -63,7 +63,6 @@ class WeatherManager extends ManagedService implements Logger {
 	public static final int HEAVYSTORM = 3;
 	public static final int EXTREMESTORM = 4;
 	
-	@weakReference
 	private transient Zone zone;
 
 	private transient boolean weatherEnabled;

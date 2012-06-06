@@ -153,39 +153,39 @@ void ObjectControllerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ObjectControllerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ObjectControllerImplementation::operator const ObjectController*() {
-	return _this;
+	return _this.get();
 }
 
 void ObjectControllerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ObjectControllerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ObjectControllerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ObjectControllerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ObjectControllerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ObjectControllerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ObjectControllerImplementation::_serializationHelperMethod() {

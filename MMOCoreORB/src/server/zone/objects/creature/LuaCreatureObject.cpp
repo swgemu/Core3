@@ -262,7 +262,7 @@ int LuaCreatureObject::removeSkill(lua_State* L) {
 }
 
 int LuaCreatureObject::getInCellNumber(lua_State* L) {
-	SceneObject* parent = realObject->getParent();
+	SceneObject* parent = realObject->getParent().get().get();
 
 	if (parent == NULL || !parent->isCellObject())
 		lua_pushnumber(L, -1);

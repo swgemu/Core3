@@ -73,9 +73,9 @@ public:
 		ManagedReference<SceneObject*> parent = host->getParent();
 		if (parent != NULL && parent->isCellObject()) {
 			CellObject* ourCell = cast<CellObject*>(parent.get());
-			BuildingObject* building = cast<BuildingObject*>(ourCell->getParent());
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(ourCell->getParent().get().get());
 			int ourCellID = ourCell->getCellNumber();
-			SharedObjectTemplate* templateObject = ourCell->getParent()->getObjectTemplate();
+			SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
 
 			if (templateObject == NULL)
 				return nextPoint;

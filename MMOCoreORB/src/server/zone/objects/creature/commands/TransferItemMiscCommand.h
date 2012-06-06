@@ -98,7 +98,7 @@ public:
 			return GENERALERROR;
 		}
 
-		SceneObject* objectsParent = objectToTransfer->getParent();
+		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectsParent == NULL)
 			return GENERALERROR;
@@ -119,8 +119,8 @@ public:
 				if (rootParent->getDistanceTo(creature) > maxDistance)
 					return TOOFAR;
 			} else {
-				SceneObject* par = NULL;
-				SceneObject* obj = objectToTransfer;
+				ManagedReference<SceneObject*> par = NULL;
+				ManagedReference<SceneObject*> obj = objectToTransfer;
 
 				while ((par = obj->getParent()) != NULL) {
 					if (par->isCellObject()) {
@@ -165,7 +165,7 @@ public:
 
 		objectToTransfer->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
 
-		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent());
+		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent().get());
 
 		Locker clocker(objectsParent, creature);
 

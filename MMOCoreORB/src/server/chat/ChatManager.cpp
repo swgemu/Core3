@@ -614,39 +614,39 @@ void ChatManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ChatManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ChatManagerImplementation::operator const ChatManager*() {
-	return _this;
+	return _this.get();
 }
 
 void ChatManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ChatManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ChatManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ChatManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ChatManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ChatManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ChatManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ChatManagerImplementation::_serializationHelperMethod() {
@@ -680,12 +680,12 @@ bool ChatManagerImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 
 	if (_name == "ChatManager.server") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
+		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
 	if (_name == "ChatManager.playerManager") {
-		TypeInfo<ManagedWeakReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
+		TypeInfo<ManagedReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
 		return true;
 	}
 
@@ -735,7 +735,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
+	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&server, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -743,7 +743,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
+	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -792,13 +792,13 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 }
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/ChatManager.idl():  		roomMap.put(channel.getRoomID(), channel);
 	roomMap->put(channel->getRoomID(), channel);
 }
 
 void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/ChatManager.idl():  		roomMap.remove(channel.getRoomID());
 	roomMap->remove(channel->getRoomID());
 }
@@ -809,19 +809,19 @@ void ChatManagerImplementation::setPlayerManager(PlayerManager* manager) {
 }
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/ChatManager.idl():  		return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/ChatManager.idl():  		return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/ChatManager.idl():  		return ++roomID;
 	return  ++roomID;
 }

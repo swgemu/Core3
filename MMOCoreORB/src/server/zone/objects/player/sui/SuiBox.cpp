@@ -462,7 +462,7 @@ void SuiBox::setForceCloseDisabled() {
 		_implementation->setForceCloseDisabled();
 }
 
-CreatureObject* SuiBox::getPlayer() {
+ManagedWeakReference<CreatureObject* > SuiBox::getPlayer() {
 	SuiBoxImplementation* _implementation = static_cast<SuiBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -501,7 +501,7 @@ int SuiBox::getWindowType() {
 		return _implementation->getWindowType();
 }
 
-SceneObject* SuiBox::getUsingObject() {
+ManagedWeakReference<SceneObject* > SuiBox::getUsingObject() {
 	SuiBoxImplementation* _implementation = static_cast<SuiBoxImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -584,39 +584,39 @@ void SuiBoxImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SuiBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiBoxImplementation::operator const SuiBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiBoxImplementation::_serializationHelperMethod() {
@@ -948,7 +948,7 @@ void SuiBoxImplementation::initialize() {
 	// server/zone/objects/player/sui/SuiBox.idl():  		Logger.setLoggingName("SuiBox");
 	Logger::setLoggingName("SuiBox");
 	// server/zone/objects/player/sui/SuiBox.idl():  		PlayerObject ghost = player.getPlayerObject();
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<PlayerObject* > ghost = player.get()->getPlayerObject();
 	// server/zone/objects/player/sui/SuiBox.idl():  		boxID = ghost.getNewSuiBoxID(windowType);
 	boxID = ghost->getNewSuiBoxID(windowType);
 	// server/zone/objects/player/sui/SuiBox.idl():  		handlerStr = "msgSelected";
@@ -1085,7 +1085,7 @@ bool SuiBoxImplementation::isColorPicker() {
 	return false;
 }
 
-CreatureObject* SuiBoxImplementation::getPlayer() {
+ManagedWeakReference<CreatureObject* > SuiBoxImplementation::getPlayer() {
 	// server/zone/objects/player/sui/SuiBox.idl():  		return player;
 	return player;
 }
@@ -1100,7 +1100,7 @@ int SuiBoxImplementation::getWindowType() {
 	return windowType;
 }
 
-SceneObject* SuiBoxImplementation::getUsingObject() {
+ManagedWeakReference<SceneObject* > SuiBoxImplementation::getUsingObject() {
 	// server/zone/objects/player/sui/SuiBox.idl():  		return usingObject;
 	return usingObject;
 }
@@ -1305,7 +1305,7 @@ void SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETPLAYER__:
 		{
-			resp->insertLong(getPlayer()->_getObjectID());
+			resp->insertLong(getPlayer().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETBOXID__:
@@ -1320,7 +1320,7 @@ void SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETUSINGOBJECT__:
 		{
-			resp->insertLong(getUsingObject()->_getObjectID());
+			resp->insertLong(getUsingObject().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETUSINGOBJECT__SCENEOBJECT_:
@@ -1461,7 +1461,7 @@ void SuiBoxAdapter::setForceCloseDisabled() {
 	(static_cast<SuiBox*>(stub))->setForceCloseDisabled();
 }
 
-CreatureObject* SuiBoxAdapter::getPlayer() {
+ManagedWeakReference<CreatureObject* > SuiBoxAdapter::getPlayer() {
 	return (static_cast<SuiBox*>(stub))->getPlayer();
 }
 
@@ -1473,7 +1473,7 @@ int SuiBoxAdapter::getWindowType() {
 	return (static_cast<SuiBox*>(stub))->getWindowType();
 }
 
-SceneObject* SuiBoxAdapter::getUsingObject() {
+ManagedWeakReference<SceneObject* > SuiBoxAdapter::getUsingObject() {
 	return (static_cast<SuiBox*>(stub))->getUsingObject();
 }
 

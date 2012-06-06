@@ -111,7 +111,7 @@ public:
 				return GENERALERROR;
 			}
 
-			session->setActiveSurveyTool(session->getOpenSurveyTool());
+			session->setActiveSurveyTool(session->getOpenSurveyTool().get());
 			session->startSample(arguments.toString());
 
 		}

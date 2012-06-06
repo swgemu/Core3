@@ -632,6 +632,7 @@ class PlayerObject extends IntangibleObject {
 		conversatingCreature = creature;
 	}
 	
+	@weakReference
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;
 	}
@@ -713,6 +714,7 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.drop(actionCRC);
 	}
 	
+	@weakReference
 	public BuildingObject getDeclaredResidence() {
 		return declaredResidence;
 	}
@@ -725,6 +727,7 @@ class PlayerObject extends IntangibleObject {
 		cloningFacility = cloningfac;
 	}
 	
+	@weakReference
 	public BuildingObject getCloningFacility() {
 		return cloningFacility;
 	}
@@ -1174,7 +1177,8 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void updateLastValidatedPosition() {
-		lastValidatedPosition.update(super.getParent());
+		SceneObject par = super.getParent();
+		lastValidatedPosition.update(par);
 		serverLastMovementStamp.updateToCurrentTime();
 	}
 

@@ -112,8 +112,8 @@ public:
 		Vector3 worldPosition = targetObject->getWorldPosition();
 		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << "\n";
 
-		if (targetObject->getParent() != NULL && targetObject->getParent()->isCellObject()) {
-			ManagedReference<CellObject*> cell = cast<CellObject*>( targetObject->getParent());
+		if (targetObject->getParent() != NULL && targetObject->getParent().get()->isCellObject()) {
+			ManagedReference<CellObject*> cell = cast<CellObject*>( targetObject->getParent().get().get());
 			Vector3 cellPosition = targetObject->getPosition();
 			text << "Cell Position:\t  {x:" << cellPosition.getX() << ", z:" << cellPosition.getZ() << ", y:" << cellPosition.getY() << "} Cell: " << cell->getCellNumber() << " (" << cell->getObjectID() << ")\n";
 		}

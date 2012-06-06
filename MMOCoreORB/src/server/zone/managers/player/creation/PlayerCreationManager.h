@@ -102,7 +102,7 @@ class HairStyleInfo;
 class ProfessionDefaultsInfo;
 
 class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Logger, public Object {
-	ManagedWeakReference<ZoneServer*> zoneServer;
+	ManagedReference<ZoneServer*> zoneServer;
 
 	VectorMap<String, Reference<RacialCreationData*> > racialCreationData;
 	VectorMap<String, Reference<ProfessionDefaultsInfo*> > professionDefaultsInfo;

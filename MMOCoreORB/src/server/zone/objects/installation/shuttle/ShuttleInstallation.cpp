@@ -111,39 +111,39 @@ void ShuttleInstallationImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ShuttleInstallationImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ShuttleInstallationImplementation::operator const ShuttleInstallation*() {
-	return _this;
+	return _this.get();
 }
 
 void ShuttleInstallationImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ShuttleInstallationImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ShuttleInstallationImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ShuttleInstallationImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ShuttleInstallationImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ShuttleInstallationImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ShuttleInstallationImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ShuttleInstallationImplementation::_serializationHelperMethod() {

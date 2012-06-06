@@ -28,7 +28,7 @@ public:
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
 		if (session == NULL) {
-			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject());
+			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject().get().get());
 			if (obj != NULL)
 				obj->dropActiveSession(SessionFacadeType::SLICING);
 

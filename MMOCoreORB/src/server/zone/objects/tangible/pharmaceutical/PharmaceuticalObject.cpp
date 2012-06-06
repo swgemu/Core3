@@ -237,39 +237,39 @@ void PharmaceuticalObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PharmaceuticalObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PharmaceuticalObjectImplementation::operator const PharmaceuticalObject*() {
-	return _this;
+	return _this.get();
 }
 
 void PharmaceuticalObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PharmaceuticalObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PharmaceuticalObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PharmaceuticalObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PharmaceuticalObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PharmaceuticalObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PharmaceuticalObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PharmaceuticalObjectImplementation::_serializationHelperMethod() {

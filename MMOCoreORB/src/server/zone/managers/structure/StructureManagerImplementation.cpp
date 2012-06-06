@@ -367,7 +367,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 		}
 	}
 
-	CityRegion* city = structureObject->getCityRegion();
+	ManagedReference<CityRegion*> city = structureObject->getCityRegion();
 
 	if (city != NULL) {
 		city->removeFromCityStructureInventory(structureObject);
@@ -598,7 +598,7 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 
 			//if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
 			if (creature->getParent() != NULL && !building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
-				if (creature->getParent()->getParent() == childObject->getParent()->getParent()){
+				if (creature->getParent().get()->getParent().get() == childObject->getParent().get()->getParent().get()) {
 
 					childObject->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
 					creature->sendSystemMessage("@player_structure:moved_first_item"); //The first item in your house has been moved to your location.
@@ -634,7 +634,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 		status->addMenuItem("@player_structure:owner_prompt " + owner->getFirstName());
 	}
 
-	ManagedReference<SceneObject*> declaredResidence = ghost->getDeclaredResidence();
+	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 
 	if (declaredResidence == structure) {
 		status->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.

@@ -34,8 +34,10 @@ int CreateVendorSessionImplementation::initializeSession() {
 void CreateVendorSessionImplementation::initalizeWindow(CreatureObject* pl) {
 	player = pl;
 
+	ManagedReference<CreatureObject*> player = this->player.get();
+
 	if (player == NULL)
-			return;
+		return;
 
 	if (player->containsActiveSession(SessionFacadeType::CREATEVENDOR)) {
 		player->sendSystemMessage("@player_structure:already_creating");
@@ -76,10 +78,12 @@ void CreateVendorSessionImplementation::initalizeWindow(CreatureObject* pl) {
 	player->getPlayerObject()->addSuiBox(suiSelectVendor);
 	player->sendMessage(suiSelectVendor->generateMessage());
 
-	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this);
+	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this.get());
 }
 
 void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
+	ManagedReference<CreatureObject*> player = this->player.get();
+
 	int hiringMod = player->getSkillMod("hiring");
 	suiSelectVendor->clearOptions();
 	suiSelectVendor->removeAllMenuItems();
@@ -110,6 +114,8 @@ void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
 }
 
 void CreateVendorSessionImplementation::createVendor(String& name) {
+	ManagedReference<CreatureObject*> player = this->player.get();
+
 	if (!VendorManager::instance()->isValidVendorName(name)) {
 		player->sendSystemMessage("@player_structure:obscene");
 		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
@@ -123,7 +129,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	vendor = player->getZoneServer()->createObject(templatePath.hashCode());
+	ManagedReference<SceneObject*> vendor = player->getZoneServer()->createObject(templatePath.hashCode());
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
@@ -131,6 +137,8 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		cancelSession();
 		return;
 	}
+
+	this->vendor = vendor;
 
 	if (inventory->hasFullContainerObjects()) {
 		player->sendSystemMessage("@player_structure:create_failed");

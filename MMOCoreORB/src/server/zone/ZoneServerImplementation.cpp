@@ -162,7 +162,7 @@ void ZoneServerImplementation::initialize() {
 
 	loadGalaxyName();
 
-	processor = new ZoneProcessServer(_this);
+	processor = new ZoneProcessServer(_this.get());
 	processor->deploy("ZoneProcessServer");
 	processor->initialize();
 
@@ -182,11 +182,11 @@ void ZoneServerImplementation::initialize() {
 
 	info("Initializing chat manager...", true);
 
-	chatManager = new ChatManager(_this, 10000);
+	chatManager = new ChatManager(_this.get(), 10000);
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	playerManager = new PlayerManager(_this, processor);
+	playerManager = new PlayerManager(_this.get(), processor);
 	playerManager->deploy("PlayerManager");
 
 	chatManager->setPlayerManager(playerManager);
@@ -196,14 +196,14 @@ void ZoneServerImplementation::initialize() {
 	craftingManager->setZoneProcessor(processor);
 	craftingManager->initialize();
 
-	lootManager = new LootManager(craftingManager, objectManager, _this);
+	lootManager = new LootManager(craftingManager, objectManager, _this.get());
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
-	resourceManager = new ResourceManager(_this, processor, objectManager);
+	resourceManager = new ResourceManager(_this.get(), processor, objectManager);
 	resourceManager->deploy("ResourceManager");
 
-	cityManager = new CityManager(_this);
+	cityManager = new CityManager(_this.get());
 	cityManager->deploy("CityManager");
 	cityManager->loadLuaConfig();
 
@@ -250,17 +250,17 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	auctionManager = new AuctionManager(_this);
+	auctionManager = new AuctionManager(_this.get());
 	auctionManager->deploy();
 	auctionManager->initialize();
 
-	missionManager = new MissionManager(_this, processor);
+	missionManager = new MissionManager(_this.get(), processor);
 	missionManager->deploy("MissionManager");
 
-	radialManager = new RadialManager(_this);
+	radialManager = new RadialManager(_this.get());
 	radialManager->deploy("RadialManager");
 
-	guildManager = new GuildManager(_this, processor);
+	guildManager = new GuildManager(_this.get(), processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
 	guildManager->loadGuilds();
@@ -275,7 +275,7 @@ void ZoneServerImplementation::startManagers() {
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
-	zoneHandler = new ZoneHandler(_this);
+	zoneHandler = new ZoneHandler(_this.get());
 
 	datagramService->setHandler(zoneHandler);
 
@@ -292,7 +292,7 @@ void ZoneServerImplementation::stop() {
 }
 
 void ZoneServerImplementation::timedShutdown(int minutes) {
-	Reference<Task*> task = new ShutdownTask(_this, minutes);
+	Reference<Task*> task = new ShutdownTask(_this.get(), minutes);
 	task->schedule(60 * 1000);
 
 	String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
@@ -654,7 +654,7 @@ void ZoneServerImplementation::unlock(bool doLock) {
 }
 
 void ZoneServerImplementation::setServerStateLocked() {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	serverState = LOCKED;
 
@@ -664,7 +664,7 @@ void ZoneServerImplementation::setServerStateLocked() {
 }
 
 void ZoneServerImplementation::setServerStateOnline() {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	serverState = ONLINE;
 
@@ -678,7 +678,7 @@ String ZoneServerImplementation::getLoginMessage() {
 }
 
 void ZoneServerImplementation::loadLoginMessage() {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	File* file;
 	FileReader* reader;
@@ -703,7 +703,7 @@ void ZoneServerImplementation::loadLoginMessage() {
 }
 
 void ZoneServerImplementation::changeLoginMessage(const String& motd) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	File* file;
 	FileWriter* writer;

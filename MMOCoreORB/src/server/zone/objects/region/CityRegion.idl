@@ -218,7 +218,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public float getPositionX() {
-		ActiveArea aa = regions.get(0);
+		Region aa = regions.get(0);
 		
 		if (aa == null)
 			return 0.0;
@@ -227,7 +227,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public float getPositionY() {
-		ActiveArea aa = regions.get(0);
+		Region aa = regions.get(0);
 		
 		if (aa == null)
 			return 0.0;
@@ -242,7 +242,7 @@ class CityRegion extends ManagedObject implements Logger {
 			return 0.0;
 		}
 		
-		ActiveArea aa = regions.get(0);
+		Region aa = regions.get(0);
 		
 		if (aa == null)
 			return 0.0;

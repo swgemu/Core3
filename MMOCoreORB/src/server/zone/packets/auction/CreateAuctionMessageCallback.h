@@ -46,7 +46,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(vendorID);
 
 		if (player == NULL || sceno == NULL || !sceno->isVendor())

@@ -99,7 +99,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 				ManagedReference<CreatureObject*> sessionNpc = session->getNPC();
 
 				if (sessionNpc == NULL || npc->getDistanceTo(sessionNpc) > 7.f) {
-					cancelConversationSession(npc, session->getNPC(), true);
+					cancelConversationSession(npc, session->getNPC().get(), true);
 					return 0;
 				}
 			}
@@ -148,7 +148,7 @@ void ConversationObserverImplementation::createConversationSession(CreatureObjec
 }
 
 void ConversationObserverImplementation::createPositionObserver(CreatureObject* player) {
-	player->registerObserver(ObserverEventType::POSITIONCHANGED, _this);
+	player->registerObserver(ObserverEventType::POSITIONCHANGED, _this.get());
 }
 
 void ConversationObserverImplementation::cancelConversationSession(CreatureObject* conversingPlayer, CreatureObject* npc, bool forceClose) {
@@ -160,7 +160,7 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 	conversingPlayer->dropActiveSession(SessionFacadeType::CONVERSATION);
 
-	conversingPlayer->dropObserver(ObserverEventType::POSITIONCHANGED, _this);
+	conversingPlayer->dropObserver(ObserverEventType::POSITIONCHANGED, _this.get());
 
 	if (forceClose && npc != NULL)
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, npc->getObjectID()));

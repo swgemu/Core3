@@ -454,7 +454,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
 	void setTrainerCoordinates(float x, float y);
 
@@ -492,13 +492,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 
@@ -1105,7 +1105,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
 	void setTrainerCoordinates(float x, float y);
 
@@ -1143,13 +1143,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 
@@ -1578,7 +1578,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
 	void setTrainerCoordinates(float x, float y);
 
@@ -1610,13 +1610,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 

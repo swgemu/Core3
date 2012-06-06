@@ -84,39 +84,39 @@ void GarageAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GarageAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GarageAreaImplementation::operator const GarageArea*() {
-	return _this;
+	return _this.get();
 }
 
 void GarageAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GarageAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GarageAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GarageAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GarageAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GarageAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GarageAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GarageAreaImplementation::_serializationHelperMethod() {
@@ -180,9 +180,9 @@ void GarageAreaImplementation::notifyEnter(SceneObject* player) {
 	// server/zone/objects/area/GarageArea.idl():  	}
 	if (player->isPlayerCreature()){
 	// server/zone/objects/area/GarageArea.idl():  			CreatureObject playerCreature = (CreatureObject) player;
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	ManagedReference<CreatureObject* > playerCreature = (CreatureObject*) player;
 	// server/zone/objects/area/GarageArea.idl():  			SceneObject rootParent = playerCreature.getRootParent();
-	SceneObject* rootParent = playerCreature->getRootParent();
+	ManagedReference<SceneObject* > rootParent = playerCreature->getRootParent();
 	// server/zone/objects/area/GarageArea.idl():  			playerCreature.
 	if (rootParent == NULL || !rootParent->isVehicleObject())	// server/zone/objects/area/GarageArea.idl():  				return;
 	return;

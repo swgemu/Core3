@@ -30,7 +30,7 @@ public:
 		if (player->getParent() != NULL)
 					return;
 
-		CityRegion* city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion();
 
 		if (city->getMissionTerminalCount() >= (int) city->getCityRank() * 3){
 					player->sendSystemMessage("@city/city:no_more_mt");
@@ -61,7 +61,7 @@ public:
 
 		case 4: terminalTemplatePath = "object/tangible/terminal/terminal_mission_scout.iff";
 
-
+				break;
 		}
 
 		if (terminalTemplatePath != ""){

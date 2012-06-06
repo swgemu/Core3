@@ -210,7 +210,7 @@ String ComponentImplementation::getProperty(const int j){
 bool ComponentImplementation::compare(Component* inCmpo){
 	for (int i = 0; i < attributeMap.size(); ++i){
 		//if(attributeMap.elementAt(i).compareTo(inCmpo->getProperty(i)) != 0)
-		if(_this->getProperty(i) != inCmpo->getProperty(i))
+		if(getProperty(i) != inCmpo->getProperty(i))
 			return false;
 	}
 	return true;

@@ -64,39 +64,39 @@ void InformantMissionConversationObserverImplementation::_setStub(DistributedObj
 }
 
 DistributedObjectStub* InformantMissionConversationObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 InformantMissionConversationObserverImplementation::operator const InformantMissionConversationObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void InformantMissionConversationObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void InformantMissionConversationObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void InformantMissionConversationObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void InformantMissionConversationObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void InformantMissionConversationObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void InformantMissionConversationObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void InformantMissionConversationObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void InformantMissionConversationObserverImplementation::_serializationHelperMethod() {

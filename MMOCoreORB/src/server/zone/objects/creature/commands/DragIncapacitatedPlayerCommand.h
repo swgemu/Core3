@@ -163,7 +163,7 @@ public:
 		Vector3 newPosition = getCoordinate(targetPlayer, player, maxMovement);
 		targetPlayer->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 		targetPlayer->incrementMovementCounter();
-		SceneObject* parent = player->getParent();
+		ManagedReference<SceneObject*> parent = player->getParent();
 		//targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
 		if (parent != NULL && parent->isCellObject()) {
 			targetPlayer->updateZoneWithParent(parent, false);

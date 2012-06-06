@@ -310,7 +310,7 @@ namespace mission {
 
 class MissionManagerImplementation : public ObserverImplementation, public Logger {
 protected:
-	ManagedWeakReference<ZoneServer* > server;
+	ManagedReference<ZoneServer* > server;
 
 private:
 	ManagedReference<ZoneProcessServer* > processor;

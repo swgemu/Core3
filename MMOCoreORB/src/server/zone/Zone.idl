@@ -94,7 +94,6 @@ class Zone extends SceneObject {
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
 	
-	@weakReference
 	private transient ZoneServer server;
 	
 	@dereferenced

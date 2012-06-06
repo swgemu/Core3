@@ -83,39 +83,39 @@ void RecreationBuildingObjectImplementation::_setStub(DistributedObjectStub* stu
 }
 
 DistributedObjectStub* RecreationBuildingObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 RecreationBuildingObjectImplementation::operator const RecreationBuildingObject*() {
-	return _this;
+	return _this.get();
 }
 
 void RecreationBuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void RecreationBuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void RecreationBuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void RecreationBuildingObjectImplementation::_serializationHelperMethod() {

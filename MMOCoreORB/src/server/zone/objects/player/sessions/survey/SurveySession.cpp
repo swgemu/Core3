@@ -147,7 +147,7 @@ void SurveySession::surveyGnodeMinigame(int value) {
 		_implementation->surveyGnodeMinigame(value);
 }
 
-SurveyTool* SurveySession::getActiveSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySession::getActiveSurveyTool() {
 	SurveySessionImplementation* _implementation = static_cast<SurveySessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -174,7 +174,7 @@ void SurveySession::setActiveSurveyTool(SurveyTool* tool) {
 		_implementation->setActiveSurveyTool(tool);
 }
 
-SurveyTool* SurveySession::getOpenSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySession::getOpenSurveyTool() {
 	SurveySessionImplementation* _implementation = static_cast<SurveySessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -289,39 +289,39 @@ void SurveySessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SurveySessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SurveySessionImplementation::operator const SurveySession*() {
-	return _this;
+	return _this.get();
 }
 
 void SurveySessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SurveySessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SurveySessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SurveySessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SurveySessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SurveySessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SurveySessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SurveySessionImplementation::_serializationHelperMethod() {
@@ -396,7 +396,7 @@ void SurveySessionImplementation::reSample() {
 	startSample(lastResourceSampleName);
 }
 
-SurveyTool* SurveySessionImplementation::getActiveSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySessionImplementation::getActiveSurveyTool() {
 	// server/zone/objects/player/sessions/survey/SurveySession.idl():  		return activeSurveyTool;
 	return activeSurveyTool;
 }
@@ -406,7 +406,7 @@ void SurveySessionImplementation::setActiveSurveyTool(SurveyTool* tool) {
 	activeSurveyTool = tool;
 }
 
-SurveyTool* SurveySessionImplementation::getOpenSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySessionImplementation::getOpenSurveyTool() {
 	// server/zone/objects/player/sessions/survey/SurveySession.idl():  		return openSurveyTool;
 	return openSurveyTool;
 }
@@ -495,7 +495,7 @@ void SurveySessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETACTIVESURVEYTOOL__:
 		{
-			resp->insertLong(getActiveSurveyTool()->_getObjectID());
+			resp->insertLong(getActiveSurveyTool().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETACTIVESURVEYTOOL__SURVEYTOOL_:
@@ -505,7 +505,7 @@ void SurveySessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETOPENSURVEYTOOL__:
 		{
-			resp->insertLong(getOpenSurveyTool()->_getObjectID());
+			resp->insertLong(getOpenSurveyTool().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETOPENSURVEYTOOL__SURVEYTOOL_:
@@ -565,7 +565,7 @@ void SurveySessionAdapter::surveyGnodeMinigame(int value) {
 	(static_cast<SurveySession*>(stub))->surveyGnodeMinigame(value);
 }
 
-SurveyTool* SurveySessionAdapter::getActiveSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySessionAdapter::getActiveSurveyTool() {
 	return (static_cast<SurveySession*>(stub))->getActiveSurveyTool();
 }
 
@@ -573,7 +573,7 @@ void SurveySessionAdapter::setActiveSurveyTool(SurveyTool* tool) {
 	(static_cast<SurveySession*>(stub))->setActiveSurveyTool(tool);
 }
 
-SurveyTool* SurveySessionAdapter::getOpenSurveyTool() {
+ManagedWeakReference<SurveyTool* > SurveySessionAdapter::getOpenSurveyTool() {
 	return (static_cast<SurveySession*>(stub))->getOpenSurveyTool();
 }
 

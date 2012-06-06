@@ -362,39 +362,39 @@ void CreatureImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CreatureImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CreatureImplementation::operator const Creature*() {
-	return _this;
+	return _this.get();
 }
 
 void CreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CreatureImplementation::_serializationHelperMethod() {

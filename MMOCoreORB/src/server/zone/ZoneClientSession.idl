@@ -105,25 +105,7 @@ class ZoneClientSession extends ManagedObject {
 	public native string getAddress();
 	
 	// setters and getters
-	public void setPlayer(SceneObject playerCreature) {
-		if (playerCreature != player) {
-			if (playerCreature == null && player != null) {
-				// TODO: find a proper way to acqure zone server
-				ZoneServer zoneServer = player.getZoneServer();
-				
-				if (zoneServer != null)
-					zoneServer.decreaseOnlinePlayers();
-			} else if (playerCreature != player) {
-				// TODO: find a proper way to acqure zone server
-				ZoneServer zoneServer = playerCreature.getZoneServer();
-				
-				if (zoneServer != null)
-					zoneServer.increaseOnlinePlayers();
-			}
-		}
-		
-		player = playerCreature;
-	}
+	public native void setPlayer(SceneObject playerCreature);
 
 	public void setSessionID(unsigned int id) {
 		sessionID = id;
@@ -153,6 +135,7 @@ class ZoneClientSession extends ManagedObject {
 	@local
 	public native BaseClientProxy getSession();
 	
+	@weakReference
 	public SceneObject getPlayer() {
 		return player;
 	}

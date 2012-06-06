@@ -30,7 +30,7 @@ void DeliverMissionObjectiveImplementation::activate() {
 
 	if (!activateWithResult()) {
 		//Send error message to player.
-		CreatureObject* owner = getPlayerOwner();
+		ManagedReference<CreatureObject*> owner = getPlayerOwner();
 		if (owner == NULL) {
 			return;
 		}
@@ -45,7 +45,9 @@ void DeliverMissionObjectiveImplementation::activate() {
 }
 
 bool DeliverMissionObjectiveImplementation::activateWithResult() {
-	CreatureObject* owner = getPlayerOwner();
+	ManagedReference<CreatureObject*> owner = getPlayerOwner();
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	if (owner == NULL) {
 		return false;
 	}
@@ -146,7 +148,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 		mission->updateMissionLocation();
 	} else {
-		updateMissionTarget(getPlayerOwner());
+		updateMissionTarget(getPlayerOwner().get());
 	}
 
 	return true;
@@ -181,6 +183,8 @@ void DeliverMissionObjectiveImplementation::despawnNpcs() {
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	StringBuffer itemEntry;
 	itemEntry << "m" << mission->getMissionNumber();
 
@@ -229,6 +233,8 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 
 bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* player) {
 	//Now update the waypoint to the new target
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	WaypointObject* waypoint = mission->getWaypointToMission();
 	if (waypoint == NULL) {
 		waypoint = mission->createWaypoint();

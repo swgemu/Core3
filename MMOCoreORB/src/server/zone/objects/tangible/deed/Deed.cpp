@@ -156,39 +156,39 @@ void DeedImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* DeedImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DeedImplementation::operator const Deed*() {
-	return _this;
+	return _this.get();
 }
 
 void DeedImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DeedImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DeedImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DeedImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DeedImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DeedImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DeedImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DeedImplementation::_serializationHelperMethod() {

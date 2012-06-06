@@ -551,39 +551,39 @@ void GuildObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GuildObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GuildObjectImplementation::operator const GuildObject*() {
-	return _this;
+	return _this.get();
 }
 
 void GuildObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GuildObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GuildObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GuildObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GuildObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GuildObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GuildObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GuildObjectImplementation::_serializationHelperMethod() {
@@ -745,25 +745,25 @@ GuildObjectImplementation::GuildObjectImplementation() {
 }
 
 void GuildObjectImplementation::addSponsoredPlayer(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.put(playerID);
 	(&sponsoredPlayers)->put(playerID);
 }
 
 void GuildObjectImplementation::removeSponsoredPlayer(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildObjectImplementation::hasSponsoredPlayer(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/guild/GuildObject.idl():  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 unsigned long long GuildObjectImplementation::getSponsoredPlayer(int idx) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/guild/GuildObject.idl():  		return sponsoredPlayers.get(idx);
 	return (&sponsoredPlayers)->get(idx);
 }

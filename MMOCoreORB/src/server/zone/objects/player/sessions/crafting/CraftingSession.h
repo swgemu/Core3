@@ -164,7 +164,7 @@ public:
 
 	int clearSession();
 
-	SceneObject* getSchematic();
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 	void selectDraftSchematic(int index);
 
@@ -259,7 +259,7 @@ public:
 
 	int clearSession();
 
-	SceneObject* getSchematic();
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 private:
 	void closeCraftingWindow(int clientCounter);
@@ -358,7 +358,7 @@ public:
 
 	int clearSession();
 
-	SceneObject* getSchematic();
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 	void selectDraftSchematic(int index);
 

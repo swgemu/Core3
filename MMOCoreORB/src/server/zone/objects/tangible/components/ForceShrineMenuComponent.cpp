@@ -34,6 +34,14 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		return 0;
 	}
 
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return 0;
+
+	if (ghost->getAdminLevel() < 15)
+		return 0;
+
 	if (creature->hasSkill("force_title_jedi_novice") && !creature->hasSkill("force_title_jedi_rank_02")){
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 

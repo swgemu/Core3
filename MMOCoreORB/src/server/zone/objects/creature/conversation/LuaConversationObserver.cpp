@@ -84,39 +84,39 @@ void LuaConversationObserverImplementation::_setStub(DistributedObjectStub* stub
 }
 
 DistributedObjectStub* LuaConversationObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 LuaConversationObserverImplementation::operator const LuaConversationObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void LuaConversationObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void LuaConversationObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void LuaConversationObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void LuaConversationObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void LuaConversationObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void LuaConversationObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void LuaConversationObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void LuaConversationObserverImplementation::_serializationHelperMethod() {

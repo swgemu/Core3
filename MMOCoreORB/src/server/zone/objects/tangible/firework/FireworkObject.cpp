@@ -192,39 +192,39 @@ void FireworkObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FireworkObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FireworkObjectImplementation::operator const FireworkObject*() {
-	return _this;
+	return _this.get();
 }
 
 void FireworkObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FireworkObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FireworkObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FireworkObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FireworkObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FireworkObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FireworkObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FireworkObjectImplementation::_serializationHelperMethod() {

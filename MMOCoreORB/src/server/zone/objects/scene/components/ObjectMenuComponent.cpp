@@ -18,7 +18,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 	if (sceneObject == NULL)
 		return;
 
-	SceneObject* parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent();
 
 	if (parent == NULL || !parent->isCellObject())
 		return;

@@ -65,7 +65,7 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	CreatureObject* creature = cast<CreatureObject*>(object->getParent());
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());
 
 	if (creature != NULL && crystal->getOwner() != creature->getDisplayedName()){
 		errorDescription = "@jedi_spam:saber_crystal_not_owner";
@@ -102,7 +102,7 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
  * @param object object that has been inserted
  */
 int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
-	WeaponObject* weao = cast<WeaponObject*>( sceneObject->getParent());
+	ManagedReference<WeaponObject*> weao = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
 	if (weao->isJediWeapon()) {
 		ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>( object);
@@ -131,7 +131,7 @@ int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObj
  * @param object object that has been inserted
  */
 int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) {
-	WeaponObject* weao = cast<WeaponObject*>( sceneObject->getParent());
+	ManagedReference<WeaponObject*> weao = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
 		if (weao->isJediWeapon()) {
 			ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>( object);

@@ -51,17 +51,19 @@ void Vendor::runVendorCheck() {
 	if (vendorCheckTask != NULL) {
 		vendorCheckTask->reschedule(1000);
 	} else {
-		vendorCheckTask = new VendorCheckTask(vendorRef);
+		vendorCheckTask = new VendorCheckTask(vendorRef.get());
 		vendorCheckTask->schedule(1000); // trigger
 	}
 }
 
 void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	//Send the mail to the vendor owner
-	if (vendorRef == NULL)
+	ManagedReference<SceneObject*> strongRef = vendorRef.get();
+
+	if (strongRef == NULL)
 		return;
 
-	ManagedReference<SceneObject*> strongOwnerRef = vendorRef->getZoneServer()->getObject(ownerID);
+	ManagedReference<SceneObject*> strongOwnerRef = strongRef->getZoneServer()->getObject(ownerID);
 
 	if (strongOwnerRef == NULL)
 		return;
@@ -72,7 +74,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
-	String sender = vendorRef->getDisplayedName();
+	String sender = strongRef->getDisplayedName();
 	UnicodeString subject("@auction:vendor_status_subject");
 
 	if (cman == NULL || owner == NULL)
@@ -83,18 +85,20 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 
 	if (isEmpty) {
 		StringIdChatParameter body("@auction:vendor_status_empty");
-		body.setTO(vendorRef->getDisplayedName());
+		body.setTO(strongRef->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	} else {
 		StringIdChatParameter body("@auction:vendor_status_normal");
-		body.setTO(vendorRef->getDisplayedName());
+		body.setTO(strongRef->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	}
 
 }
 
 void Vendor::sendVendorDestroyMail() {
-	ManagedReference<SceneObject*> strongOwnerRef = vendorRef->getZoneServer()->getObject(ownerID);
+	ManagedReference<SceneObject*> strongRef = vendorRef.get();
+
+	ManagedReference<SceneObject*> strongOwnerRef = strongRef->getZoneServer()->getObject(ownerID);
 
 	if (strongOwnerRef == NULL || !strongOwnerRef->isPlayerCreature())
 		return;
@@ -102,7 +106,7 @@ void Vendor::sendVendorDestroyMail() {
 	CreatureObject* owner = cast<CreatureObject*>( strongOwnerRef.get());
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
-	String sender = vendorRef->getDisplayedName();
+	String sender = strongRef->getDisplayedName();
 	UnicodeString subject("@auction:vendor_status_subject");
 
 	if (cman == NULL || owner == NULL)
@@ -111,7 +115,7 @@ void Vendor::sendVendorDestroyMail() {
 	Locker playerLocker(owner);
 
 	StringIdChatParameter body("@auction:vendor_status_deleted");
-	body.setTO(vendorRef->getDisplayedName());
+	body.setTO(strongRef->getDisplayedName());
 	cman->sendMail(sender, subject, body, owner->getFirstName());
 
 }

@@ -79,39 +79,39 @@ void HerdGroupImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* HerdGroupImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 HerdGroupImplementation::operator const HerdGroup*() {
-	return _this;
+	return _this.get();
 }
 
 void HerdGroupImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void HerdGroupImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void HerdGroupImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void HerdGroupImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void HerdGroupImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void HerdGroupImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void HerdGroupImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void HerdGroupImplementation::_serializationHelperMethod() {

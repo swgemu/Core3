@@ -21,11 +21,15 @@
 int SurveySessionImplementation::initializeSession(SurveyTool* tool) {
 
 	activeSurveyTool = tool;
-	surveyerGhost = surveyer->getPlayerObject();
+	surveyerGhost = surveyer.get()->getPlayerObject();
 	return startSession();
 }
 
 int SurveySessionImplementation::startSession() {
+	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
+	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
+	ManagedReference<PlayerObject*> surveyerGhost = this->surveyerGhost.get();
 
 	if(surveyer == NULL || activeSurveyTool == NULL || surveyerGhost == NULL) {
 		cancelSession();
@@ -38,15 +42,16 @@ int SurveySessionImplementation::startSession() {
 		return false;
 	}
 
-	surveyer->addActiveSession(SessionFacadeType::SURVEY, _this);
+	surveyer->addActiveSession(SessionFacadeType::SURVEY, _this.get());
 
 	return true;
 }
 
 int SurveySessionImplementation::cancelSession() {
+	ManagedReference<CreatureObject*> ref = surveyer.get();
 
-	if(surveyer != NULL)
-		surveyer->dropActiveSession(SessionFacadeType::SURVEY);
+	if(ref != NULL)
+		ref->dropActiveSession(SessionFacadeType::SURVEY);
 
 
 	return clearSession();
@@ -58,6 +63,9 @@ int SurveySessionImplementation::clearSession() {
 }
 
 void SurveySessionImplementation::startSurvey(const String& resname) {
+	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
+	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
 
 	if (activeSurveyTool == NULL) {
 		error("surveyTool is NULL");
@@ -74,7 +82,7 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getParent() != NULL && surveyer->getParent()->isCellObject()) {
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isCellObject()) {
 		surveyer->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
@@ -125,6 +133,10 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 }
 
 void SurveySessionImplementation::startSample(const String& resname) {
+	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
+	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
+	ManagedReference<PlayerObject*> surveyerGhost = this->surveyerGhost.get();
 
 	if (activeSurveyTool == NULL) {
 		error("surveyTool is NULL");
@@ -149,7 +161,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getParent() != NULL && surveyer->getParent()->isCellObject()) {
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isCellObject()) {
 		surveyer->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;
 	}
@@ -214,6 +226,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 }
 
 void SurveySessionImplementation::surveyCnodeMinigameSui() {
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
+
 	int surveyMod = surveyer->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
@@ -233,6 +247,10 @@ void SurveySessionImplementation::surveyCnodeMinigameSui() {
 }
 
 void SurveySessionImplementation::surveyCnodeMinigame(int value) {
+	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
+	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
+	ManagedReference<PlayerObject*> surveyerGhost = this->surveyerGhost.get();
 
 	if(value == 0) {
 		// Add sampletask
@@ -277,6 +295,8 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 }
 
 void SurveySessionImplementation::surveyGnodeMinigameSui() {
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
+
 	int surveyMod = surveyer->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
@@ -296,6 +316,8 @@ void SurveySessionImplementation::surveyGnodeMinigameSui() {
 }
 
 void SurveySessionImplementation::surveyGnodeMinigame(int value) {
+	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
+	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
 
 	if(value == 1) {
 

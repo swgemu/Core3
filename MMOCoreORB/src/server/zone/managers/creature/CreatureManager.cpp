@@ -420,39 +420,39 @@ void CreatureManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CreatureManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CreatureManagerImplementation::operator const CreatureManager*() {
-	return _this;
+	return _this.get();
 }
 
 void CreatureManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CreatureManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CreatureManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CreatureManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CreatureManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CreatureManagerImplementation::_serializationHelperMethod() {
@@ -486,7 +486,7 @@ bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 
 	if (_name == "CreatureManager.zone") {
-		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
@@ -526,7 +526,7 @@ int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
+	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -584,7 +584,7 @@ void CreatureManagerImplementation::initialize() {
 }
 
 void CreatureManagerImplementation::addToReservePool(AiAgent* agent) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/creature/CreatureManager.idl():  		}
 	if (spawnedRandomCreatures > 0){
 	// server/zone/managers/creature/CreatureManager.idl():  			spawnedRandomCreatures = spawnedRandomCreatures - 1;

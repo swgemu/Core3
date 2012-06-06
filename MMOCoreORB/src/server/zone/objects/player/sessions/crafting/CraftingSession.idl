@@ -82,7 +82,8 @@ class CraftingSession extends Facade {
 	 */
 	public native int clearSession();
 	
-	public SceneObject getSchematic() {
+	@weakReference
+	public ManufactureSchematic getSchematic() {
 		return manufactureSchematic;
 	}
 

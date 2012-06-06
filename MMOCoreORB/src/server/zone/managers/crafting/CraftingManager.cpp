@@ -275,39 +275,39 @@ void CraftingManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CraftingManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CraftingManagerImplementation::operator const CraftingManager*() {
-	return _this;
+	return _this.get();
 }
 
 void CraftingManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CraftingManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CraftingManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CraftingManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CraftingManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CraftingManagerImplementation::_serializationHelperMethod() {

@@ -603,39 +603,39 @@ void InstallationObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* InstallationObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 InstallationObjectImplementation::operator const InstallationObject*() {
-	return _this;
+	return _this.get();
 }
 
 void InstallationObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void InstallationObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void InstallationObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void InstallationObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void InstallationObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void InstallationObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void InstallationObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void InstallationObjectImplementation::_serializationHelperMethod() {

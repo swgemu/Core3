@@ -248,7 +248,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 	// second do actor checks
 	int radius = 32;
-	if(host->getParent() != NULL && host->getParent()->isCellObject())
+	if(host->getParent() != NULL && host->getParent().get()->isCellObject())
 		radius = 12;
 
 	int awarenessRadius = getFerocity() + radius;
@@ -263,7 +263,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	// If not in combat, ignore creatures in different cells
-	if (host->getParent() != NULL && host->getParent() != creoEntry->getParent())
+	if (host->getParent() != NULL && host->getParent().get() != creoEntry->getParent().get())
 		return;
 
 	if (getFollowObject() == NULL || getFollowObject() == creoEntry) {
@@ -271,7 +271,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		doAwarenessCheck(hostCoord, 0, creoEntry); // TODO: this will become an awareness event
 	}
 
-	currentState->notifyPositionUpdate(_this, entry);
+	currentState->notifyPositionUpdate(_this.get(), entry);
 }
 
 void AiActorImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -308,7 +308,7 @@ int AiActorImplementation::notifyConverseObservers(CreatureObject* converser) {
 }
 
 void AiActorImplementation::doAwarenessCheck(Coordinate &start, uint64 time, CreatureObject* target) {
-	currentState->doAwarenessCheck(_this, start, time, target);
+	currentState->doAwarenessCheck(_this.get(), start, time, target);
 }
 
 void AiActorImplementation::addTransition(const String& stateName, uint16 msg, const String& resultState) {
@@ -493,7 +493,7 @@ void AiActorImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
-	currentState->notifyDespawn(_this, zone);
+	currentState->notifyDespawn(_this.get(), zone);
 }
 
 void AiActorImplementation::scheduleDespawn(int timeToDespawn) {

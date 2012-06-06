@@ -438,39 +438,39 @@ void AccountImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* AccountImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 AccountImplementation::operator const Account*() {
-	return _this;
+	return _this.get();
 }
 
 void AccountImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void AccountImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void AccountImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void AccountImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void AccountImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void AccountImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void AccountImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void AccountImplementation::_serializationHelperMethod() {

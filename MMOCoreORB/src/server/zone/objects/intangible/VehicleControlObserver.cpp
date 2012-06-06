@@ -87,39 +87,39 @@ void VehicleControlObserverImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* VehicleControlObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 VehicleControlObserverImplementation::operator const VehicleControlObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void VehicleControlObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void VehicleControlObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void VehicleControlObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void VehicleControlObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void VehicleControlObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void VehicleControlObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void VehicleControlObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void VehicleControlObserverImplementation::_serializationHelperMethod() {
@@ -201,9 +201,9 @@ int VehicleControlObserverImplementation::notifyObserverEvent(unsigned int event
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 
 	if (vehicleControlDevice != NULL){
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  			CreatureObject creature = (CreatureObject) observable;
-	CreatureObject* creature = (CreatureObject*) observable;
+	ManagedReference<CreatureObject* > creature = (CreatureObject*) observable;
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  			vehicleControlDevice.cancelSpawnObject(creature);
-	vehicleControlDevice->cancelSpawnObject(creature);
+	vehicleControlDevice.get()->cancelSpawnObject(creature);
 }
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 1;
 	return 1;

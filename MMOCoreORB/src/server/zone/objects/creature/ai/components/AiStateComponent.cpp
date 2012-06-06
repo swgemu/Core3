@@ -172,7 +172,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 
 			pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
 
-			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != host->getParent()) { //last waypoint
+			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != host->getParent().get()) { //last waypoint
 				cellObject = coord->getCell();
 
 				//TODO: calculate height
@@ -183,7 +183,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 				*nextPosition = *coord;
 				found = true;
 
-				if ((dist <= maxDistance && cellObject == host->getParent())) {
+				if ((dist <= maxDistance && cellObject == host->getParent().get())) {
 					if (i == path->size() - 1) {
 						patrolPoints->remove(0);
 						remove = false;
@@ -196,7 +196,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 
 					if (coord->getCell() != NULL) { //target coord in cell
 						if (oldCoord->getCell() == NULL)  // convert old coord to model space
-							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent());
+							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent().get());
 
 					} else { // target coord in world
 						oldCoordinates = oldCoord->getWorldPosition();
@@ -364,8 +364,8 @@ void AiStateComponent::checkNewAngle(AiActor* actor) {
 	} else {
 		host->incrementMovementCounter();
 
-		if (host->getParent() != NULL && host->getParent()->isCellObject())
-			host->updateZoneWithParent(host->getParent(), true, true);
+		if (host->getParent() != NULL && host->getParent().get()->isCellObject())
+			host->updateZoneWithParent(host->getParent().get(), true, true);
 		else
 			host->updateZone(true, true);
 	}
@@ -375,7 +375,7 @@ void AiStateComponent::sendConversationStartTo(CreatureObject* host, SceneObject
 	//Face player.
 	host->faceObject(player);
 
-	PatrolPoint current(host->getPosition(), host->getParent());
+	PatrolPoint current(host->getPosition(), host->getParent().get());
 
 	broadcastNextPositionUpdate(host, &current);
 

@@ -157,39 +157,39 @@ void CityTreasuryWithdrawalSessionImplementation::_setStub(DistributedObjectStub
 }
 
 DistributedObjectStub* CityTreasuryWithdrawalSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CityTreasuryWithdrawalSessionImplementation::operator const CityTreasuryWithdrawalSession*() {
-	return _this;
+	return _this.get();
 }
 
 void CityTreasuryWithdrawalSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CityTreasuryWithdrawalSessionImplementation::_serializationHelperMethod() {
@@ -316,7 +316,7 @@ void CityTreasuryWithdrawalSessionImplementation::setReason(const String& r) {
 
 int CityTreasuryWithdrawalSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		creatureObject.dropActiveSession(SessionFacadeType.CITYWITHDRAW);
-	creatureObject->dropActiveSession(SessionFacadeType::CITYWITHDRAW);
+	creatureObject.get()->dropActiveSession(SessionFacadeType::CITYWITHDRAW);
 	// server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.idl():  		return 0;
 	return 0;
 }

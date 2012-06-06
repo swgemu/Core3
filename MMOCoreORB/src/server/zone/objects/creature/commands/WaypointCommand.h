@@ -88,11 +88,11 @@ public:
 		float y = creature->getPositionY();
 		float z = 0.0f;
 
-		SceneObject* parentObject = creature->getParent();
+		ManagedReference<SceneObject*> parentObject = creature->getParent();
 
 		if (parentObject != NULL) {
 			if (parentObject->isCellObject()) {
-				SceneObject* grandParentObject = parentObject->getParent();
+				ManagedReference<SceneObject*> grandParentObject = parentObject->getParent();
 
 				if (grandParentObject != NULL) {
 					x = grandParentObject->getPositionX();

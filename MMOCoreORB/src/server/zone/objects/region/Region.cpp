@@ -50,7 +50,7 @@ void Region::setCityRegion(CityRegion* city) {
 		_implementation->setCityRegion(city);
 }
 
-CityRegion* Region::getCityRegion() {
+ManagedWeakReference<CityRegion* > Region::getCityRegion() {
 	RegionImplementation* _implementation = static_cast<RegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -185,39 +185,39 @@ void RegionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* RegionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 RegionImplementation::operator const Region*() {
-	return _this;
+	return _this.get();
 }
 
 void RegionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void RegionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void RegionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void RegionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void RegionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void RegionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void RegionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void RegionImplementation::_serializationHelperMethod() {
@@ -293,7 +293,7 @@ void RegionImplementation::setCityRegion(CityRegion* city) {
 	cityRegion = city;
 }
 
-CityRegion* RegionImplementation::getCityRegion() {
+ManagedWeakReference<CityRegion* > RegionImplementation::getCityRegion() {
 	// server/zone/objects/region/Region.idl():  		return cityRegion;
 	return cityRegion;
 }
@@ -311,28 +311,32 @@ void RegionImplementation::enqueueExitEvent(SceneObject* obj) {
 void RegionImplementation::notifyEnter(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		super.notifyEnter(object);
 	ActiveAreaImplementation::notifyEnter(object);
+	// server/zone/objects/region/Region.idl():  		CityRegion strongReference = cityRegion;
+	ManagedReference<CityRegion* > strongReference = cityRegion;
 	// server/zone/objects/region/Region.idl():  		synchronized 
-	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
+	if (strongReference == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;
 	// server/zone/objects/region/Region.idl():  		}
 {
-	Locker _locker(cityRegion);
-	// server/zone/objects/region/Region.idl():  			cityRegion.notifyEnter(object);
-	cityRegion->notifyEnter(object);
+	Locker _locker(strongReference);
+	// server/zone/objects/region/Region.idl():  			strongReference.notifyEnter(object);
+	strongReference->notifyEnter(object);
 }
 }
 
 void RegionImplementation::notifyExit(SceneObject* object) {
 	// server/zone/objects/region/Region.idl():  		super.notifyExit(object);
 	ActiveAreaImplementation::notifyExit(object);
+	// server/zone/objects/region/Region.idl():  		CityRegion strongReference = cityRegion;
+	ManagedReference<CityRegion* > strongReference = cityRegion;
 	// server/zone/objects/region/Region.idl():  		synchronized 
-	if (cityRegion == NULL)	// server/zone/objects/region/Region.idl():  			return;
+	if (strongReference == NULL)	// server/zone/objects/region/Region.idl():  			return;
 	return;
 	// server/zone/objects/region/Region.idl():  		}
 {
-	Locker _locker(cityRegion);
-	// server/zone/objects/region/Region.idl():  			cityRegion.notifyExit(object);
-	cityRegion->notifyExit(object);
+	Locker _locker(strongReference);
+	// server/zone/objects/region/Region.idl():  			strongReference.notifyExit(object);
+	strongReference->notifyExit(object);
 }
 }
 
@@ -363,7 +367,7 @@ void RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCITYREGION__:
 		{
-			resp->insertLong(getCityRegion()->_getObjectID());
+			resp->insertLong(getCityRegion().get()->_getObjectID());
 		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
@@ -405,7 +409,7 @@ void RegionAdapter::setCityRegion(CityRegion* city) {
 	(static_cast<Region*>(stub))->setCityRegion(city);
 }
 
-CityRegion* RegionAdapter::getCityRegion() {
+ManagedWeakReference<CityRegion* > RegionAdapter::getCityRegion() {
 	return (static_cast<Region*>(stub))->getCityRegion();
 }
 

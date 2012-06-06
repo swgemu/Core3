@@ -17,6 +17,8 @@ int InstrumentObserverImplementation::notifyObserverEvent(unsigned int eventType
 
 	SceneObject* creature = cast<SceneObject*>( observable);
 
+	ManagedReference<Instrument* > instrument = this->instrument.get();
+
 	if (instrument == NULL || instrument->getZone() == NULL) {
 		/*if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
 			observable->dropObserver(ObserverEventType::POSITIONCHANGED, _this);

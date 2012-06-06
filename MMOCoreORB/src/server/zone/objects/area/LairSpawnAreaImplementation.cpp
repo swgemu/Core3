@@ -57,7 +57,7 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
-	SceneObject* parent = object->getParent();
+	ManagedReference<SceneObject*> parent = object->getParent();
 
 	if (parent != NULL && parent->isCellObject())
 		return;
@@ -74,7 +74,7 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 	if (tano == NULL)
 		return 1;
 
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	uint32 lairTemplate = lairTypes.remove(tano->getObjectID());
 
@@ -197,7 +197,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	int spawnLimit = finalSpawn->getSpawnLimit();
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	lastSpawn.updateToCurrentTime();
 
@@ -226,7 +226,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	}
 
 	if (exitObserver == NULL) {
-		exitObserver = new SpawnObserver(_this);
+		exitObserver = new SpawnObserver(_this.get());
 		exitObserver->deploy();
 	}
 
@@ -252,7 +252,7 @@ void LairSpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (!creature->isPlayerCreature())
 		return;
 
-	SceneObject* parent = creature->getParent();
+	ManagedReference<SceneObject*> parent = creature->getParent();
 
 	if (parent != NULL && parent->isCellObject())
 		return;

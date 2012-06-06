@@ -85,7 +85,7 @@ public:
 		/// This is weird, when you select a schematic and the crafting station has a
 		/// Hopper the client requests to open the hopper container to the player
 		/// Which isn't supposed to happen
-		if(objectToOpen->getParent() != NULL && objectToOpen->getParent()->isCraftingStation())
+		if(objectToOpen->getParent() != NULL && objectToOpen->getParent().get()->isCraftingStation())
 			return GENERALERROR;
 
 		Locker clocker(objectToOpen, creature);

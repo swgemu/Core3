@@ -85,39 +85,39 @@ void EntertainingObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* EntertainingObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 EntertainingObserverImplementation::operator const EntertainingObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void EntertainingObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void EntertainingObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void EntertainingObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void EntertainingObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void EntertainingObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void EntertainingObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void EntertainingObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void EntertainingObserverImplementation::_serializationHelperMethod() {
@@ -183,7 +183,7 @@ int EntertainingObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	return 1;
 }
 	// server/zone/objects/player/EntertainingObserver.idl():  		CreatureObject creature = (CreatureObject) observable;
-	CreatureObject* creature = (CreatureObject*) observable;
+	ManagedReference<CreatureObject* > creature = (CreatureObject*) observable;
 	// server/zone/objects/player/EntertainingObserver.idl():  		creature.stopEntertaining();
 	creature->stopEntertaining();
 	// server/zone/objects/player/EntertainingObserver.idl():  		return 1;

@@ -21,6 +21,8 @@
 #include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
 
 void FindSessionImplementation::initalizeFindMenu() {
+	ManagedReference<CreatureObject* > player = this->player.get();
+
 	if (player == NULL)
 		return;
 
@@ -56,10 +58,12 @@ void FindSessionImplementation::initalizeFindMenu() {
 
 	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
-	player->addActiveSession(SessionFacadeType::FIND, _this);
+	player->addActiveSession(SessionFacadeType::FIND, _this.get());
 }
 
 void FindSessionImplementation::addWaypoint(float x, float y, const String& name) {
+	ManagedReference<CreatureObject* > player = this->player.get();
+
 	if (player == NULL)
 		return;
 
@@ -87,6 +91,8 @@ void FindSessionImplementation::addWaypoint(float x, float y, const String& name
 }
 
 void FindSessionImplementation::clearWaypoint() {
+	ManagedReference<CreatureObject* > player = this->player.get();
+
 	if (player == NULL)
 		return;
 
@@ -103,6 +109,8 @@ void FindSessionImplementation::clearWaypoint() {
 }
 
 void FindSessionImplementation::findPlanetaryObject(String& maplocationtype) {
+	ManagedReference<CreatureObject* > player = this->player.get();
+
 	if (player == NULL)
 		return;
 

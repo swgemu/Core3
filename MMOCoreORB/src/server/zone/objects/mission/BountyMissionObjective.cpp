@@ -314,39 +314,39 @@ void BountyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* BountyMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 BountyMissionObjectiveImplementation::operator const BountyMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void BountyMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void BountyMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void BountyMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void BountyMissionObjectiveImplementation::_serializationHelperMethod() {

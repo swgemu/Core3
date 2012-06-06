@@ -75,7 +75,8 @@ class MissionReconActiveArea extends ActiveArea {
 				
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask == null) {
-						completeTask = new CompleteMissionAfterCertainTimeTask(missionObjective);
+						ReconMissionObjective strongReference = missionObjective;
+						completeTask = new CompleteMissionAfterCertainTimeTask(strongReference);
 					}
 					
 					if (!completeTask.isScheduled()) {

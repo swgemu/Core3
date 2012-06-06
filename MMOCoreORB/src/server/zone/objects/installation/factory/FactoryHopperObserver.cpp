@@ -85,39 +85,39 @@ void FactoryHopperObserverImplementation::_setStub(DistributedObjectStub* stub) 
 }
 
 DistributedObjectStub* FactoryHopperObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FactoryHopperObserverImplementation::operator const FactoryHopperObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void FactoryHopperObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FactoryHopperObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FactoryHopperObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FactoryHopperObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FactoryHopperObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FactoryHopperObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FactoryHopperObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FactoryHopperObserverImplementation::_serializationHelperMethod() {
@@ -197,13 +197,13 @@ int FactoryHopperObserverImplementation::notifyObserverEvent(unsigned int eventT
 	// server/zone/objects/installation/factory/FactoryHopperObserver.idl():  		return 
 	if (eventType == ObserverEventType::OPENCONTAINER){
 	// server/zone/objects/installation/factory/FactoryHopperObserver.idl():  			factory.openHopper(observable, arg1);
-	factory->openHopper(observable, arg1);
+	factory.get()->openHopper(observable, arg1);
 }
 
 	else 	// server/zone/objects/installation/factory/FactoryHopperObserver.idl():  		return 
 	if (eventType == ObserverEventType::CLOSECONTAINER){
 	// server/zone/objects/installation/factory/FactoryHopperObserver.idl():  			factory.closeHopper(observable, arg1);
-	factory->closeHopper(observable, arg1);
+	factory.get()->closeHopper(observable, arg1);
 }
 	// server/zone/objects/installation/factory/FactoryHopperObserver.idl():  		return 0;
 	return 0;

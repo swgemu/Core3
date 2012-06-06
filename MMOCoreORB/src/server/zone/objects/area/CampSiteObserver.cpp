@@ -83,39 +83,39 @@ void CampSiteObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CampSiteObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CampSiteObserverImplementation::operator const CampSiteObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void CampSiteObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CampSiteObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CampSiteObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CampSiteObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CampSiteObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CampSiteObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CampSiteObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CampSiteObserverImplementation::_serializationHelperMethod() {
@@ -193,10 +193,10 @@ CampSiteObserverImplementation::CampSiteObserverImplementation(CampSiteActiveAre
 int CampSiteObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	// server/zone/objects/area/CampSiteObserver.idl():  		if(
 	if (campArea != NULL && eventType == ObserverEventType::HEALINGPERFORMED)	// server/zone/objects/area/CampSiteObserver.idl():  			return campArea.notifyHealEvent(arg2);
-	return campArea->notifyHealEvent(arg2);
+	return campArea.get()->notifyHealEvent(arg2);
 	// server/zone/objects/area/CampSiteObserver.idl():  		return 
 	if (campArea != NULL && eventType == ObserverEventType::STARTCOMBAT)	// server/zone/objects/area/CampSiteObserver.idl():  			return campArea.notifyCombatEvent();
-	return campArea->notifyCombatEvent();
+	return campArea.get()->notifyCombatEvent();
 	// server/zone/objects/area/CampSiteObserver.idl():  		return 1;
 	return 1;
 }

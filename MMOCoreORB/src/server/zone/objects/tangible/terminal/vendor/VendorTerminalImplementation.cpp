@@ -35,7 +35,7 @@ void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templa
 	optionsBitmask = 0x108;
 	pvpStatusBitmask = 0;
 
-	vendor.setVendor(_this);
+	vendor.setVendor(_this.get());
 	vendor.setVendorType(Vendor::VENDORTERMINAL);
 
 }
@@ -87,7 +87,7 @@ int VendorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 242: {
-		if (player->getRootParent() != getRootParent()) {
+		if (player->getRootParent().get() != getRootParent().get()) {
 			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
 			return 0;
 		}
@@ -125,7 +125,7 @@ int VendorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 246: {
-		VendorManager::instance()->sendRenameVendorTo(player, _this);
+		VendorManager::instance()->sendRenameVendorTo(player, _this.get());
 		return 0;
 	}
 

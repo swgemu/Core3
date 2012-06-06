@@ -13,7 +13,7 @@
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
 void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (player->getParent() != parent) //Must be in same cell to use
+	if (player->getParent().get() != parent.get()) //Must be in same cell to use
 		return;
 
 	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
@@ -71,7 +71,7 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(CreatureObject* playe
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
 
-	if (obj == _this)
+	if (obj == _this.get())
 		return;
 
 	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
@@ -82,7 +82,7 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	SceneObject* scno = cast<SceneObject*>( obj);
 
 	//Only check elevator terminals in the same cell.
-	if (scno->getParent() != parent || !scno->isTerminal())
+	if (scno->getParent().get() != parent.get() || !scno->isTerminal())
 		return;
 
 	Terminal* terminal = cast<Terminal*>( scno);
@@ -98,12 +98,12 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 		//Make sure that this is the closest elevator terminal.
 		if (elevatorUp == NULL || elevatorUp->getPositionZ() > z) {
 			elevatorUp = eterm;
-			eterm->setElevatorDown(_this);
+			eterm->setElevatorDown(_this.get());
 		}
 	} else if (z < getPositionZ() && temp->isMovingDown()) {
 		if (elevatorDown == NULL || elevatorDown->getPositionZ() < z) {
 			elevatorDown = eterm;
-			eterm->setElevatorUp(_this);
+			eterm->setElevatorUp(_this.get());
 		}
 	}
 }

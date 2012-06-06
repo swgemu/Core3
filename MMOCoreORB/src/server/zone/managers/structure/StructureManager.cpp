@@ -330,39 +330,39 @@ void StructureManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StructureManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StructureManagerImplementation::operator const StructureManager*() {
-	return _this;
+	return _this.get();
 }
 
 void StructureManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StructureManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StructureManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StructureManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StructureManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StructureManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StructureManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StructureManagerImplementation::_serializationHelperMethod() {
@@ -396,7 +396,7 @@ bool StructureManagerImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 
 	if (_name == "StructureManager.zone") {
-		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
@@ -421,7 +421,7 @@ int StructureManagerImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
+	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

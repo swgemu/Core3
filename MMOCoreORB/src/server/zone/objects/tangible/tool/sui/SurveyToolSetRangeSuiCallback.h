@@ -25,7 +25,7 @@ public:
 		if (args->size() < 1)
 			return;
 
-		ManagedReference<SurveyTool*> surveyTool = cast<SurveyTool*>(suiBox->getUsingObject());
+		ManagedReference<SurveyTool*> surveyTool = cast<SurveyTool*>(suiBox->getUsingObject().get().get());
 
 		if(surveyTool == NULL)
 			return;

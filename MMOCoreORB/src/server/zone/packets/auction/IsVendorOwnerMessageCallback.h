@@ -40,7 +40,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		CreatureObject* player = cast<CreatureObject*>( client->getPlayer());
+		CreatureObject* player = cast<CreatureObject*>( client->getPlayer().get().get());
 
 		if (player == NULL)
 			return;

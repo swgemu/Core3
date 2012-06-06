@@ -169,6 +169,7 @@ class Instrument extends TangibleObject {
 		return instrumentType;
 	}
 	
+	@weakReference
 	public CreatureObject getSpawnerPlayer() {
 		return spawnerPlayer;
 	}

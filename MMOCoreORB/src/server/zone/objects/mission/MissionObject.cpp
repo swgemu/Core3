@@ -927,39 +927,39 @@ void MissionObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* MissionObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MissionObjectImplementation::operator const MissionObject*() {
-	return _this;
+	return _this.get();
 }
 
 void MissionObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MissionObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MissionObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MissionObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MissionObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MissionObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MissionObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MissionObjectImplementation::_serializationHelperMethod() {

@@ -217,7 +217,7 @@ namespace managers {
 namespace structure {
 
 class StructureManagerImplementation : public ManagedServiceImplementation, public Logger {
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	ManagedReference<ZoneProcessServer* > server;
 

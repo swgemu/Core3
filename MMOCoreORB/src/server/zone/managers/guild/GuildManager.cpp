@@ -697,39 +697,39 @@ void GuildManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GuildManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GuildManagerImplementation::operator const GuildManager*() {
-	return _this;
+	return _this.get();
 }
 
 void GuildManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GuildManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GuildManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GuildManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GuildManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GuildManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GuildManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GuildManagerImplementation::_serializationHelperMethod() {
@@ -867,49 +867,49 @@ void GuildManagerImplementation::setChatManager(ChatManager* chatmanager) {
 }
 
 void GuildManagerImplementation::addPendingGuild(unsigned long long playerID, const String& guildName) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		pendingGuilds.put(playerID, guildName);
 	(&pendingGuilds)->put(playerID, guildName);
 }
 
 void GuildManagerImplementation::removePendingGuild(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		pendingGuilds.drop(playerID);
 	(&pendingGuilds)->drop(playerID);
 }
 
 String GuildManagerImplementation::getPendingGuildName(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		return pendingGuilds.get(playerID);
 	return (&pendingGuilds)->get(playerID);
 }
 
 void GuildManagerImplementation::addSponsoredPlayer(unsigned long long playerID, GuildObject* guild) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.put(playerID, guild);
 	(&sponsoredPlayers)->put(playerID, guild);
 }
 
 void GuildManagerImplementation::removeSponsoredPlayer(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		sponsoredPlayers.drop(playerID);
 	(&sponsoredPlayers)->drop(playerID);
 }
 
 bool GuildManagerImplementation::isCreatingGuild(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		return pendingGuilds.contains(playerID);
 	return (&pendingGuilds)->contains(playerID);
 }
 
 bool GuildManagerImplementation::isSponsoredPlayer(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		return sponsoredPlayers.contains(playerID);
 	return (&sponsoredPlayers)->contains(playerID);
 }
 
 GuildObject* GuildManagerImplementation::getSponsoredGuild(unsigned long long playerID) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/guild/GuildManager.idl():  		return sponsoredPlayers.get(playerID);
 	return (&sponsoredPlayers)->get(playerID);
 }

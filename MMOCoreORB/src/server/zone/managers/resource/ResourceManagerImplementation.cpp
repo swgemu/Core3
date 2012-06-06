@@ -177,20 +177,20 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	resourceSpawner->start();
 
-	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get());
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get().get());
 	resourceShift->schedule(shiftInterval);
 }
 
 void ResourceManagerImplementation::shiftResources() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	resourceSpawner->shiftResources();
 
-	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get());
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get().get());
 	resourceShift->schedule(shiftInterval);
 }
 
@@ -222,11 +222,11 @@ void ResourceManagerImplementation::sendSurvey(CreatureObject* playerCreature, c
 void ResourceManagerImplementation::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
-	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this);
+	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this.get());
 }
 
 void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
 
@@ -416,7 +416,7 @@ String ResourceManagerImplementation::healthCheck() {
 }
 
 String ResourceManagerImplementation::dumpResources() {
-	Locker locker(_this);
+	Locker locker(_this.get());
 	return resourceSpawner->dumpResources();
 }
 

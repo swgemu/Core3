@@ -25,13 +25,13 @@ void DelegateSuiCallback::run(CreatureObject* creature, SuiBox* sui, bool cancel
 	if (tipAmount == 0)
 		return;
 
-	SceneObject* usingObject = sui->getUsingObject();
+	ManagedReference<SceneObject*> usingObject = sui->getUsingObject();
 
 	if (!usingObject->isPlayerCreature()) {
 		return;
 	}
 
-	CreatureObject* targetPlayer = cast<CreatureObject*>(usingObject);
+	CreatureObject* targetPlayer = cast<CreatureObject*>(usingObject.get());
 
 	if (targetPlayer == NULL)
 		return;

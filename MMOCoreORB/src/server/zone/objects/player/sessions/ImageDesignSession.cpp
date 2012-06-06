@@ -231,39 +231,39 @@ void ImageDesignSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ImageDesignSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ImageDesignSessionImplementation::operator const ImageDesignSession*() {
-	return _this;
+	return _this.get();
 }
 
 void ImageDesignSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ImageDesignSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ImageDesignSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ImageDesignSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ImageDesignSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ImageDesignSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ImageDesignSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ImageDesignSessionImplementation::_serializationHelperMethod() {
@@ -419,7 +419,7 @@ void ImageDesignSessionImplementation::queueIdTimeoutEvent() {
 	Reference<ImageDesignTimeoutEvent*> _ref0;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		if 
 	if (idTimeoutEvent == NULL)	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent = new ImageDesignTimeoutEvent(this);
-	idTimeoutEvent = _ref0 = new ImageDesignTimeoutEvent(_this);
+	idTimeoutEvent = _ref0 = new ImageDesignTimeoutEvent(_this.get());
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  	}
 	if (!idTimeoutEvent->isScheduled())	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent.schedule(30000);
 	idTimeoutEvent->schedule(30000);

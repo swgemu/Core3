@@ -154,39 +154,39 @@ void FindSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FindSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FindSessionImplementation::operator const FindSession*() {
-	return _this;
+	return _this.get();
 }
 
 void FindSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FindSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FindSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FindSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FindSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FindSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FindSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FindSessionImplementation::_serializationHelperMethod() {
@@ -286,7 +286,7 @@ int FindSessionImplementation::initializeSession() {
 int FindSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/FindSession.idl():  		clearSession(
 	if (player != NULL)	// server/zone/objects/player/sessions/FindSession.idl():  			player.dropActiveSession(SessionFacadeType.FIND);
-	player->dropActiveSession(SessionFacadeType::FIND);
+	player.get()->dropActiveSession(SessionFacadeType::FIND);
 	// server/zone/objects/player/sessions/FindSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/FindSession.idl():  		return 0;

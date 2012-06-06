@@ -39,7 +39,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 
 		Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
 

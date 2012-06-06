@@ -208,39 +208,39 @@ void SlicingSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SlicingSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SlicingSessionImplementation::operator const SlicingSession*() {
-	return _this;
+	return _this.get();
 }
 
 void SlicingSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SlicingSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SlicingSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SlicingSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SlicingSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SlicingSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SlicingSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SlicingSessionImplementation::_serializationHelperMethod() {
@@ -411,10 +411,10 @@ SlicingSessionImplementation::SlicingSessionImplementation(CreatureObject* paren
 int SlicingSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/SlicingSession.idl():  		if 
 	if (player != NULL)	// server/zone/objects/player/sessions/SlicingSession.idl():  			player.dropActiveSession(SessionFacadeType.SLICING);
-	player->dropActiveSession(SessionFacadeType::SLICING);
+	player.get()->dropActiveSession(SessionFacadeType::SLICING);
 	// server/zone/objects/player/sessions/SlicingSession.idl():  		clearSession(
 	if (tangibleObject != NULL)	// server/zone/objects/player/sessions/SlicingSession.idl():  			tangibleObject.dropActiveSession(SessionFacadeType.SLICING);
-	tangibleObject->dropActiveSession(SessionFacadeType::SLICING);
+	tangibleObject.get()->dropActiveSession(SessionFacadeType::SLICING);
 	// server/zone/objects/player/sessions/SlicingSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/SlicingSession.idl():  		return 0;
@@ -444,7 +444,7 @@ String SlicingSessionImplementation::getPrefix(TangibleObject* obj) {
 	return "armor_";
 
 	else 	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "";
-	if (obj->isContainerObject() || tangibleObject->getGameObjectType() == 8245)	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "container_";
+	if (obj->isContainerObject() || tangibleObject.get()->getGameObjectType() == 8245)	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "container_";
 	return "container_";
 
 	else 	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "";

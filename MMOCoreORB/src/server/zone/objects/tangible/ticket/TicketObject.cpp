@@ -242,39 +242,39 @@ void TicketObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* TicketObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 TicketObjectImplementation::operator const TicketObject*() {
-	return _this;
+	return _this.get();
 }
 
 void TicketObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void TicketObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void TicketObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void TicketObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void TicketObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void TicketObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void TicketObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void TicketObjectImplementation::_serializationHelperMethod() {

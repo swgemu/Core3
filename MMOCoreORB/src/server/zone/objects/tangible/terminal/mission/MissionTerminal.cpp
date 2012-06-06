@@ -313,39 +313,39 @@ void MissionTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* MissionTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MissionTerminalImplementation::operator const MissionTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void MissionTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MissionTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MissionTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MissionTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MissionTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MissionTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MissionTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MissionTerminalImplementation::_serializationHelperMethod() {
@@ -501,7 +501,7 @@ bool MissionTerminalImplementation::isSlicer(CreatureObject* slicer) {
 	i < (&slicers)->size();
  ++i) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			CreatureObject player = slicers.get(i);
-	CreatureObject* player = (&slicers)->get(i);
+	ManagedReference<CreatureObject* > player = (&slicers)->get(i);
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		}
 	if (player == slicer)	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  				return true;
 	return true;

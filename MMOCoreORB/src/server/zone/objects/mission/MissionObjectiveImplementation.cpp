@@ -27,16 +27,17 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 		observer->destroyObjectFromDatabase();
 	}
 
-	ObjectManager::instance()->destroyObjectFromDatabase(_this->_getObjectID());
+	ObjectManager::instance()->destroyObjectFromDatabase(_this.get()->_getObjectID());
 }
 
-CreatureObject* MissionObjectiveImplementation::getPlayerOwner() {
+ManagedWeakReference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
 	ManagedReference<MissionObject*> strongReference = mission.get();
+	ManagedWeakReference<CreatureObject*> weak;
 
 	if (strongReference != NULL)
-		return cast<CreatureObject*>( strongReference->getParentRecursively(SceneObjectType::PLAYERCREATURE));
-	else
-		return NULL;
+		weak = cast<CreatureObject*>( strongReference->getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+
+	return weak;
 }
 
 void MissionObjectiveImplementation::activate() {
@@ -47,15 +48,19 @@ void MissionObjectiveImplementation::activate() {
 		timeRemaining = 1;
 	}
 
-	failTask = new FailMissionAfterCertainTimeTask(_this);
+	failTask = new FailMissionAfterCertainTimeTask(_this.get());
 	failTask->schedule(timeRemaining);
 }
 
 void MissionObjectiveImplementation::complete() {
-	CreatureObject* player = getPlayerOwner();
+	Locker _lock(_this.get());
+
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player == NULL)
 		return;
+
+	_lock.release();
 
 	awardReward();
 
@@ -65,6 +70,8 @@ void MissionObjectiveImplementation::complete() {
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
+	Locker _lock(_this.get());
+
 	if (makePersistent) {
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
 	} else if (!observer->isDeplyoed())
@@ -80,6 +87,8 @@ void MissionObjectiveImplementation::abort() {
 }
 
 void MissionObjectiveImplementation::awardFactionPoints() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	int factionPointsRebel = mission->getRewardFactionPointsRebel();
 	int factionPointsImperial = mission->getRewardFactionPointsImperial();
 
@@ -88,9 +97,11 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	}
 
 	//Award faction points for faction delivery missions.
-	ManagedReference<PlayerObject*> ghost = getPlayerOwner()->getPlayerObject();
+	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
+
+	ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
 	if (ghost != NULL) {
-		Locker ghostLocker(ghost);
+		Locker ghostLocker(creatureOwner);
 
 		//Switch to get the correct order.
 		switch (mission->getFaction()) {
@@ -115,7 +126,8 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 }
 
 void MissionObjectiveImplementation::removeMissionFromPlayer() {
-	CreatureObject* player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
+	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if (player != NULL) {
 		ZoneServer* zoneServer = player->getZoneServer();
@@ -136,11 +148,11 @@ void MissionObjectiveImplementation::awardReward() {
 
 	Vector3 missionEndPoint = getEndPosition();
 
-	CreatureObject* owner = getPlayerOwner();
+	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
 	Locker locker(owner);
 
-	ManagedReference<GroupObject*> group = getPlayerOwner()->getGroup();
+	ManagedReference<GroupObject*> group = owner->getGroup();
 
 	if (group != NULL) {
 		Locker lockerGroup(group, owner);
@@ -169,6 +181,8 @@ void MissionObjectiveImplementation::awardReward() {
 		players.add(owner);
 	}
 
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	int dividedReward = mission->getRewardCredits() / players.size();
 
 	for (int i = 0; i < players.size(); i++) {
@@ -183,11 +197,13 @@ void MissionObjectiveImplementation::awardReward() {
 }
 
 Vector3 MissionObjectiveImplementation::getEndPosition() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	Vector3 missionEndPoint;
 
 	missionEndPoint.setX(mission->getEndPositionX());
 	missionEndPoint.setY(mission->getEndPositionY());
-	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

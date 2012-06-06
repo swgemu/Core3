@@ -1252,39 +1252,39 @@ void AiActorImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* AiActorImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 AiActorImplementation::operator const AiActor*() {
-	return _this;
+	return _this.get();
 }
 
 void AiActorImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void AiActorImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void AiActorImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void AiActorImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void AiActorImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void AiActorImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void AiActorImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void AiActorImplementation::_serializationHelperMethod() {
@@ -1628,7 +1628,7 @@ void AiActorImplementation::setHost(CreatureObject* creo) {
 	// server/zone/objects/creature/ai/AiActor.idl():  		host = creo;
 	host = creo;
 	// server/zone/objects/creature/ai/AiActor.idl():  		host.addObservableChild(this);
-	host->addObservableChild(_this);
+	host->addObservableChild(_this.get());
 }
 
 CreatureObject* AiActorImplementation::getHost() {
@@ -1809,7 +1809,7 @@ bool AiActorImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/ai/AiActor.idl():  		return 
 	if (targetFaction != 0 && host->getFaction() != 0){
 	// server/zone/objects/creature/ai/AiActor.idl():  			PlayerObject ghost = object.getPlayerObject();
-	PlayerObject* ghost = object->getPlayerObject();
+	ManagedReference<PlayerObject* > ghost = object->getPlayerObject();
 	// server/zone/objects/creature/ai/AiActor.idl():  			if 
 	if (targetFaction == host->getFaction())	// server/zone/objects/creature/ai/AiActor.idl():  				return false;
 	return false;

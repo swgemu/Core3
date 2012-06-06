@@ -248,16 +248,16 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 	info("sending building baselines");
 
-	BaseMessage* buio3 = new TangibleObjectMessage3(_this);
+	BaseMessage* buio3 = new TangibleObjectMessage3(_this.get());
 	player->sendMessage(buio3);
 
-	BaseMessage* buio6 = new TangibleObjectMessage6(_this);
+	BaseMessage* buio6 = new TangibleObjectMessage6(_this.get());
 	player->sendMessage(buio6);
 }
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
-	if (_this->getOwnerCreatureObject() == player)
+	if (getOwnerCreatureObject() == player)
 		return true;
 
 	if (isOnBanList(player))
@@ -281,7 +281,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 
 		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
 
-			if (obj->getRootParent() != _this) {
+			if (obj->getRootParent().get() != _this.get()) {
 
 				if (object->getCloseObjects() != NULL)
 					object->addInRangeObject(obj, false);
@@ -301,7 +301,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 	notifyInsert(object);
 
 	if (object->getCloseObjects() != NULL)
-		object->addInRangeObject(_this, false);
+		object->addInRangeObject(_this.get(), false);
 
 	addInRangeObject(object, false);
 
@@ -320,7 +320,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//return;
 
 	SceneObject* scno = cast<SceneObject*>( obj);
-	bool objectInThisBuilding = scno->getRootParent() == _this;
+	bool objectInThisBuilding = scno->getRootParent() == _this.get();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -367,7 +367,10 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* child = cell->getContainerObject(j);
+			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+
+			if (child == NULL)
+				continue;
 
 			if (child->getCloseObjects() != NULL)
 				child->removeInRangeObject(obj);
@@ -475,7 +478,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 	bool allowEntry = isAllowedEntry(creature);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!allowEntry && creature->getRootParent() == _this) {
+	if (!allowEntry && creature->getRootParent() == _this.get()) {
 		ejectObject(creature);
 	}
 
@@ -527,7 +530,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 				if (zone != NULL) {
 					ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
 					if (structureManager != NULL) {
-						structureManager->promptPayUncondemnMaintenance(player, _this);
+						structureManager->promptPayUncondemnMaintenance(player, _this.get());
 					}
 				}
 			} else {
@@ -589,13 +592,13 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 			object->addInRangeObject(object, false);
 		//info("SceneObjectImplementation::insertToBuilding");
 
-		//parent->transferObject(_this, 0xFFFFFFFF);
+		//parent->transferObject(_this.get(), 0xFFFFFFFF);
 
-		if (object->getParent()->isCellObject()) {
+		if (object->getParent().get()->isCellObject()) {
 
 			bool runInRange = true;
 
-			if ((oldParent == NULL || !oldParent->isCellObject()) || oldParent == object->getParent()) {
+			if ((oldParent == NULL || !oldParent->isCellObject()) || oldParent == object->getParent().get()) {
 				//insert(object);
 
 				if (oldParent == NULL || (oldParent != NULL && dynamic_cast<Zone*>(oldParent) == NULL && !oldParent->isCellObject())) {
@@ -612,7 +615,7 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 			}
 
 			if (runInRange) {
-				CellObject* cell = cast<CellObject*>(object->getParent());
+				ManagedReference<CellObject*> cell = cast<CellObject*>(object->getParent().get().get());
 
 				if (cell != NULL) {
 					for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {

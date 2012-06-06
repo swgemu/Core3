@@ -17,7 +17,7 @@
 #include "server/zone/Zone.h"
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
-	SceneObject* parent = sceneObject->getParent();
+	//SceneObject* parent = sceneObject->getParent();
 
 	/*if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( sceneObject);
@@ -58,7 +58,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 			return;
 	}
 
-	SceneObject* parent = scno->getParent();
+	ManagedReference<SceneObject*> parent = scno->getParent();
 
 	if (parent != NULL /*&& parent->isCellObject()*/) {
 		return;
@@ -83,7 +83,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
 
-		SceneObject* par = sceneObject->getParent();
+		ManagedReference<SceneObject*> par = sceneObject->getParent();
 
 		if (par != NULL && par->isVehicleObject()) {
 			player->executeObjectControllerAction(String("dismount").hashCode());
@@ -109,7 +109,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	}
 
 	if (player != NULL && sceneObject->getParent() != NULL && parentID != 0) {
-		SceneObject* par = sceneObject->getParent();
+		ManagedReference<SceneObject*> par = sceneObject->getParent();
 
 		if (par->isVehicleObject()) {
 			player->executeObjectControllerAction(String("dismount").hashCode());

@@ -323,39 +323,39 @@ void ComponentImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ComponentImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ComponentImplementation::operator const Component*() {
-	return _this;
+	return _this.get();
 }
 
 void ComponentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ComponentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ComponentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ComponentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ComponentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ComponentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ComponentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ComponentImplementation::_serializationHelperMethod() {

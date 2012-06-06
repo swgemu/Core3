@@ -85,7 +85,7 @@ int CraftingSession::clearSession() {
 		return _implementation->clearSession();
 }
 
-SceneObject* CraftingSession::getSchematic() {
+ManagedWeakReference<ManufactureSchematic* > CraftingSession::getSchematic() {
 	CraftingSessionImplementation* _implementation = static_cast<CraftingSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -93,7 +93,7 @@ SceneObject* CraftingSession::getSchematic() {
 
 		DistributedMethod method(this, RPC_GETSCHEMATIC__);
 
-		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+		return static_cast<ManufactureSchematic*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSchematic();
 }
@@ -273,39 +273,39 @@ void CraftingSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CraftingSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CraftingSessionImplementation::operator const CraftingSession*() {
-	return _this;
+	return _this.get();
 }
 
 void CraftingSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CraftingSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CraftingSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CraftingSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CraftingSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CraftingSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CraftingSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CraftingSessionImplementation::_serializationHelperMethod() {
@@ -371,7 +371,7 @@ CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* cre
 	craftingManager = NULL;
 }
 
-SceneObject* CraftingSessionImplementation::getSchematic() {
+ManagedWeakReference<ManufactureSchematic* > CraftingSessionImplementation::getSchematic() {
 	// server/zone/objects/player/sessions/crafting/CraftingSession.idl():  		return manufactureSchematic;
 	return manufactureSchematic;
 }
@@ -408,7 +408,7 @@ void CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_GETSCHEMATIC__:
 		{
-			resp->insertLong(getSchematic()->_getObjectID());
+			resp->insertLong(getSchematic().get()->_getObjectID());
 		}
 		break;
 	case RPC_SELECTDRAFTSCHEMATIC__INT_:
@@ -475,7 +475,7 @@ int CraftingSessionAdapter::clearSession() {
 	return (static_cast<CraftingSession*>(stub))->clearSession();
 }
 
-SceneObject* CraftingSessionAdapter::getSchematic() {
+ManagedWeakReference<ManufactureSchematic* > CraftingSessionAdapter::getSchematic() {
 	return (static_cast<CraftingSession*>(stub))->getSchematic();
 }
 

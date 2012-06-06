@@ -25,7 +25,7 @@ void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obje
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	CityRegion* city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = player->getCityRegion();
 
 	if(city != NULL && city->isMayor(player->getObjectID())){
 
@@ -42,7 +42,7 @@ int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 	if (selectedID == 72) {
 
-		CityRegion* city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion();
 
 		if (city != NULL)
 			city->removeSkillTrainers(sceneObject);

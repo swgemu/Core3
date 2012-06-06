@@ -230,7 +230,8 @@ class FindTargetTask : public Task, public Logger {
 	}
 
 	int getTargetLevel(CreatureObject* player, BountyMissionObjective* objective) {
-		String targetTemplateName = objective->getMissionObject()->getTargetOptionalTemplate();
+		ManagedReference<MissionObject*> strong = objective->getMissionObject();
+		String targetTemplateName = strong->getTargetOptionalTemplate();
 
 		if (targetTemplateName != "") {
 			CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(targetTemplateName.hashCode());
@@ -242,11 +243,11 @@ class FindTargetTask : public Task, public Logger {
 				return 0;
 			}
 		} else {
-			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(player->getZone()->getZoneServer()->getObject(objective->getMissionObject()->getTargetObjectId()));
+			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(player->getZoneServer()->getObject(strong->getTargetObjectId()));
 
 			if (target != NULL) {
 				//TODO: modify this to better suit the calculation.
-				return player->getZone()->getZoneServer()->getPlayerManager()->calculatePlayerLevel(target);
+				return player->getZoneServer()->getPlayerManager()->calculatePlayerLevel(target);
 			}
 		}
 

@@ -88,6 +88,7 @@ class LootkitObject extends TangibleObject {
 	
 	protected native void createItem();
 	
+	@weakReference
 	public native CreatureObject getPlayer();
 	
 	protected native void addToKit(SceneObject object);

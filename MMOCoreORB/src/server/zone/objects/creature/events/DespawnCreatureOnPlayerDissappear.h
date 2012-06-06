@@ -33,19 +33,19 @@ public:
 
 		Locker locker(strongRef);
 
-		creature->clearDespawnEvent();
+		strongRef->clearDespawnEvent();
 
-		Zone* zone = creature->getZone();
+		Zone* zone = strongRef->getZone();
 
 		if (zone == NULL)
 			return;
 
-		if (!creature->getDespawnOnNoPlayerInRange())
+		if (!strongRef->getDespawnOnNoPlayerInRange())
 			return;
 
 		if (strongRef->inRangeObjects(SceneObjectType::PLAYERCREATURE, 128) == 0 && strongRef->getNumberOfPlayersInRange() <= 0) {
-			creature->destroyObjectFromWorld(true);
-			creature->notifyDespawn(zone);
+			strongRef->destroyObjectFromWorld(true);
+			strongRef->notifyDespawn(zone);
 		}
 	}
 };

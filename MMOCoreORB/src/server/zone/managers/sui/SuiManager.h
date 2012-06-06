@@ -81,7 +81,7 @@ namespace server {
    namespace sui {
 
 	  class SuiManager : public Singleton<SuiManager>, public Logger, public Object {
-	  	ManagedWeakReference<ZoneProcessServer*> server;
+	  	ManagedReference<ZoneProcessServer*> server;
 
 	  public:
 	  	SuiManager();

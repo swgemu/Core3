@@ -62,7 +62,9 @@ public:
 	}
 
 	void run() {
-		Locker locker(player->getParent());
+		ManagedReference<SceneObject*> par = player->getParent();
+
+		Locker locker(par);
 
 		try {
 			player->clearDisconnectEvent();

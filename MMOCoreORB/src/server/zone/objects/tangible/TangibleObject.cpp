@@ -1211,39 +1211,39 @@ void TangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* TangibleObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 TangibleObjectImplementation::operator const TangibleObject*() {
-	return _this;
+	return _this.get();
 }
 
 void TangibleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void TangibleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void TangibleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void TangibleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void TangibleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void TangibleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void TangibleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void TangibleObjectImplementation::_serializationHelperMethod() {

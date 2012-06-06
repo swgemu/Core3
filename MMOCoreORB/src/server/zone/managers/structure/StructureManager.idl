@@ -64,7 +64,6 @@ include server.zone.templates.tangible.SharedBuildingObjectTemplate;
 include server.zone.templates.tangible.SharedInstallationObjectTemplate;
 
 class StructureManager extends ManagedService implements Logger {
-	@weakReference
 	private Zone zone;
 	
 	private transient ZoneProcessServer server;

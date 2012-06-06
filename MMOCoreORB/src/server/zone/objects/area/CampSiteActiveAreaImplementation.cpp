@@ -29,7 +29,7 @@ void CampSiteActiveAreaImplementation::init(CampStructureTemplate* campData) {
 
 void CampSiteActiveAreaImplementation::startTasks() {
 	if(despawnTask == NULL) {
-		despawnTask = new CampDespawnTask(_this);
+		despawnTask = new CampDespawnTask(_this.get());
 	} else {
 		if(despawnTask->isScheduled())
 			despawnTask->cancel();
@@ -37,7 +37,7 @@ void CampSiteActiveAreaImplementation::startTasks() {
 
 
 	if(abandonTask == NULL) {
-		abandonTask = new CampAbandonTask(_this);
+		abandonTask = new CampAbandonTask(_this.get());
 	} else {
 		if(abandonTask->isScheduled())
 			abandonTask->cancel();
@@ -64,7 +64,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 		camp->addTemplateSkillMods(player);
 
 	if (campObserver == NULL) {
-		campObserver = new CampSiteObserver(_this);
+		campObserver = new CampSiteObserver(_this.get());
 		campObserver->deploy();
 	}
 
@@ -206,16 +206,19 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 	if(campOwner != NULL)
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
 
-	if(camp->getZone() == NULL)
-		return false;
+	if (camp != NULL) {
+		if(camp->getZone() == NULL)
+			return false;
 
-	ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
-	if (structureManager == NULL) {
-		error("Unable to get StructureManager when placing camp");
-		return false;
+		ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
+		if (structureManager == NULL) {
+			error("Unable to get StructureManager when placing camp");
+			return false;
+		}
+
+		structureManager->destroyStructure(camp);
 	}
 
-	structureManager->destroyStructure(camp);
 	destroyObjectFromWorld(true);
 	destroyObjectFromDatabase(true);
 

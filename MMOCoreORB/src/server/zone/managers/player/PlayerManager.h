@@ -435,7 +435,7 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 
 	int highestBadgeIndex;
 
-	ManagedWeakReference<ZoneServer* > server;
+	ManagedReference<ZoneServer* > server;
 
 	Reference<PlayerMap* > playerMap;
 

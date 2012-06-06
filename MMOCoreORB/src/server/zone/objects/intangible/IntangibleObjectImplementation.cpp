@@ -58,10 +58,10 @@ void IntangibleObjectImplementation::initializeTransientMembers() {
 void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending intangible object baselines");
 
-	BaseMessage* itno3 = new IntangibleObjectMessage3(_this);
+	BaseMessage* itno3 = new IntangibleObjectMessage3(_this.get());
 	player->sendMessage(itno3);
 
-	BaseMessage* itno6 = new IntangibleObjectMessage6(_this);
+	BaseMessage* itno6 = new IntangibleObjectMessage6(_this.get());
 	player->sendMessage(itno6);
 }
 
@@ -77,12 +77,12 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	if (parent == NULL)
 		return;
 
-	SceneObject* player = getParent()->getParent();
+	ManagedReference<SceneObject*> player = getParent().get()->getParent();
 
 	if (player == NULL)
 		return;
 
-	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this);
+	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this.get());
 	delta->updateStatus(newStatus);
 	delta->close();
 	player->sendMessage(delta);

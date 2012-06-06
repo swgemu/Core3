@@ -236,7 +236,7 @@ class AuctionManagerImplementation : public ManagedServiceImplementation, public
 protected:
 	ManagedReference<AuctionsMap* > auctionMap;
 
-	ManagedWeakReference<ZoneServer* > zoneServer;
+	ManagedReference<ZoneServer* > zoneServer;
 
 public:
 	static const int MAXPRICE = 20000;

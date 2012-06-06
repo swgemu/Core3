@@ -64,9 +64,9 @@ void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 		Locker clocker(selectedObject, player);
 
-		BuildingObject* rootParent = cast<BuildingObject*>(selectedObject->getRootParent());
+		ManagedReference<BuildingObject*> rootParent = cast<BuildingObject*>(selectedObject->getRootParent().get().get());
 
-		if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent()))
+		if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent().get()))
 			return;
 
 		/*if (!selectedObject->checkContainerPermission(player, ContainerPermissions::USE))

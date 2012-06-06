@@ -130,7 +130,7 @@ public:
 
 		if (followObject != NULL) {
 			patrolPoints->removeAll();
-			setNextPosition(actor, followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent());
+			setNextPosition(actor, followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent().get());
 		} else
 			return AiActor::FORGOT;
 

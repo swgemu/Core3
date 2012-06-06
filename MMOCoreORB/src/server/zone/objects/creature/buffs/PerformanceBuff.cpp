@@ -113,39 +113,39 @@ void PerformanceBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PerformanceBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PerformanceBuffImplementation::operator const PerformanceBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void PerformanceBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PerformanceBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PerformanceBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PerformanceBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PerformanceBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PerformanceBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PerformanceBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PerformanceBuffImplementation::_serializationHelperMethod() {

@@ -96,39 +96,39 @@ void StateBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StateBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StateBuffImplementation::operator const StateBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void StateBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StateBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StateBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StateBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StateBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StateBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StateBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StateBuffImplementation::_serializationHelperMethod() {
@@ -205,14 +205,14 @@ void StateBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/StateBuff.idl():  		super.activate(applyModifiers);
 	BuffImplementation::activate(applyModifiers);
 	// server/zone/objects/creature/buffs/StateBuff.idl():  		super.creature.setState(stateApplied);
-	BuffImplementation::creature.getForUpdate()->setState(stateApplied);
+	BuffImplementation::creature.getForUpdate().get()->setState(stateApplied);
 }
 
 void StateBuffImplementation::deactivate(bool removeModifiers) {
 	// server/zone/objects/creature/buffs/StateBuff.idl():  		super.deactivate(removeModifiers);
 	BuffImplementation::deactivate(removeModifiers);
 	// server/zone/objects/creature/buffs/StateBuff.idl():  		super.creature.clearState(stateApplied);
-	BuffImplementation::creature.getForUpdate()->clearState(stateApplied);
+	BuffImplementation::creature.getForUpdate().get()->clearState(stateApplied);
 }
 
 /*

@@ -13,6 +13,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "tasks/CallMountTask.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 
 void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
@@ -62,7 +63,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
-		CallMountTask* callMount = new CallMountTask(_this, player, "call_mount");
+		CallMountTask* callMount = new CallMountTask(_this.get(), player, "call_mount");
 
 		StringIdChatParameter message("pet/pet_menu", "call_vehicle_delay");
 		message.setDI(15);
@@ -71,7 +72,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		player->addPendingTask("call_mount", callMount, 15 * 1000);
 
 		if (vehicleControlObserver == NULL) {
-			vehicleControlObserver = new VehicleControlObserver(_this);
+			vehicleControlObserver = new VehicleControlObserver(_this.get());
 			vehicleControlObserver->deploy();
 		}
 
@@ -94,7 +95,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	//TODO: Refactor
 	if (controlledObject->isCreatureObject()) {
 		cast<CreatureObject*>(controlledObject.get())->setCreatureLink(player);
-		cast<CreatureObject*>(controlledObject.get())->setControlDevice(_this);
+		cast<CreatureObject*>(controlledObject.get())->setControlDevice(_this.get());
 	}
 	
 	Zone* zone = player->getZone();

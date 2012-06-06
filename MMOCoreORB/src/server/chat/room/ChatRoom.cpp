@@ -602,39 +602,39 @@ void ChatRoomImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ChatRoomImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ChatRoomImplementation::operator const ChatRoom*() {
-	return _this;
+	return _this.get();
 }
 
 void ChatRoomImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ChatRoomImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ChatRoomImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ChatRoomImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ChatRoomImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ChatRoomImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ChatRoomImplementation::_serializationHelperMethod() {
@@ -931,38 +931,38 @@ void ChatRoomImplementation::init(ZoneServer* serv, ChatRoom* par, const String&
 }
 
 void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		subRooms.put(channel.getName(), channel);
 	(&subRooms)->put(channel->getName(), channel);
 }
 
 void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		subRooms.drop(channel.getName());
 	(&subRooms)->drop(channel->getName());
 }
 
 ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		return subRooms.get(i);
 	return (&subRooms)->get(i);
 }
 
 ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		return subRooms.get(name);
 	return (&subRooms)->get(name);
 }
 
 void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		}
 	for (	// server/chat/room/ChatRoom.idl():  		for (int i = 0;
 	int i = 0;
 	i < (&playerList)->size();
  ++i) {
 	// server/chat/room/ChatRoom.idl():  			CreatureObject player = playerList.get(i);
-	CreatureObject* player = (&playerList)->get(i);
+	ManagedReference<CreatureObject* > player = (&playerList)->get(i);
 	// server/chat/room/ChatRoom.idl():  			}
 	for (	// server/chat/room/ChatRoom.idl():  			for (int j = 0;
 	int j = 0;
@@ -989,13 +989,13 @@ void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 }
 
 bool ChatRoomImplementation::hasPlayer(CreatureObject* player) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		return playerList.contains(player.getFirstName());
 	return (&playerList)->contains(player->getFirstName());
 }
 
 bool ChatRoomImplementation::hasPlayer(const String& name) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/chat/room/ChatRoom.idl():  		return playerList.contains(name);
 	return (&playerList)->contains(name);
 }

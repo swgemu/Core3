@@ -98,7 +98,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 		return;
 
 	Locker playerLocker(player);
-	Locker forageAreasLocker(_this);
+	Locker forageAreasLocker(_this.get());
 
 	player->removePendingTask("foraging");
 

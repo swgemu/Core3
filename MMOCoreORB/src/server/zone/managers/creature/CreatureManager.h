@@ -238,7 +238,7 @@ namespace creature {
 
 class CreatureManagerImplementation : public ZoneManagerImplementation {
 protected:
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	SpawnAreaMap spawnAreaMap;
 

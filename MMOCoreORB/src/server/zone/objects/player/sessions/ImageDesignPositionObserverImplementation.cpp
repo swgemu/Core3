@@ -60,12 +60,14 @@ int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventT
 	if (scene == NULL)
 		return 1;
 
+	ManagedReference<ImageDesignSession*> strong = session.get();
+
 	if (scene->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL) {
 		//queue the timeout
-		session->queueIdTimeoutEvent();
+		strong->queueIdTimeoutEvent();
 	} else {
 		//cancel the timeout
-		session->checkDequeueEvent();
+		strong->checkDequeueEvent();
 	}
 
 	return 0;

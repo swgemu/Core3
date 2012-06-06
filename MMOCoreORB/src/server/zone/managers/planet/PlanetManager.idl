@@ -76,7 +76,6 @@ include server.zone.managers.planet.TravelFare;
 import server.zone.objects.area.ActiveArea;
 
 class PlanetManager extends ManagedService implements Logger {
-	@weakReference
 	protected Zone zone;
 	
 	@dereferenced

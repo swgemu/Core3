@@ -503,39 +503,39 @@ void GamblingManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GamblingManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GamblingManagerImplementation::operator const GamblingManager*() {
-	return _this;
+	return _this.get();
 }
 
 void GamblingManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GamblingManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GamblingManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GamblingManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GamblingManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GamblingManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GamblingManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GamblingManagerImplementation::_serializationHelperMethod() {

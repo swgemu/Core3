@@ -989,11 +989,11 @@ void ZoneServerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ZoneServerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ZoneServerImplementation::operator const ZoneServer*() {
-	return _this;
+	return _this.get();
 }
 
 void ZoneServerImplementation::_serializationHelperMethod() {

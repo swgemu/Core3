@@ -153,39 +153,39 @@ void HuntingMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub
 }
 
 DistributedObjectStub* HuntingMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 HuntingMissionObjectiveImplementation::operator const HuntingMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void HuntingMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void HuntingMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {

@@ -30,7 +30,7 @@ public:
 	}
 
 	void run() {
-		CreatureObject* object = cast<CreatureObject*>( client->getPlayer());
+		CreatureObject* object = cast<CreatureObject*>( client->getPlayer().get().get());
 
 		if (object == NULL)
 			return;

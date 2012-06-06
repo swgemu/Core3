@@ -863,6 +863,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	@local
+	@weakReference
 	public abstract CityRegion getCityRegion() {
 		return cityRegion;
 	}
@@ -874,8 +875,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public Zone getZone() {
-		if (getParent() != null) {
-			return getRootParent().getZone();
+		SceneObject strong = null;
+		
+		if ((strong = getParent()) != null) {
+			strong = getRootParent();
+			
+			return strong.getZone();
 		} else {
 			return zone.get();
 		}
@@ -1175,6 +1180,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
+	@weakReference
 	public native SceneObject getParent();
 
 	@read
@@ -1192,6 +1198,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return returns the parent of all children in the object tree
 	 */
 	@read
+	@weakReference
 	public native SceneObject getRootParent();
 	
 	/**
@@ -1201,6 +1208,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @return Returns the parent of object type in the tree
 	 */
 	@read
+	@weakReference
 	public native SceneObject getParentRecursively(unsigned int gameObjectType);
 
 

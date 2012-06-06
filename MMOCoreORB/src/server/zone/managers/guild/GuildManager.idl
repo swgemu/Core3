@@ -59,11 +59,9 @@ include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 
 class GuildManager extends ManagedService implements Logger {
-	@weakReference
 	private transient ZoneServer server;
 	private transient ZoneProcessServer processor;
 	
-	@weakReference
 	private transient ChatManager chatManager;
 	
 	@dereferenced

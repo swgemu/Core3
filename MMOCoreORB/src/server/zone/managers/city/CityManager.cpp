@@ -616,39 +616,39 @@ void CityManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CityManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CityManagerImplementation::operator const CityManager*() {
-	return _this;
+	return _this.get();
 }
 
 void CityManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CityManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CityManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CityManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CityManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CityManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CityManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CityManagerImplementation::_serializationHelperMethod() {
@@ -721,7 +721,7 @@ CityManagerImplementation::CityManagerImplementation(ZoneServer* zserv) {
 }
 
 bool CityManagerImplementation::containsCityName(const String& name) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/city/CityManager.idl():  		return cities.contains(name);
 	return (&cities)->contains(name);
 }

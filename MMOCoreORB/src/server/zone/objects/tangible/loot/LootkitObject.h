@@ -101,7 +101,7 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -160,7 +160,7 @@ protected:
 	void createItem();
 
 public:
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 protected:
 	void addToKit(SceneObject* object);
@@ -219,7 +219,7 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 

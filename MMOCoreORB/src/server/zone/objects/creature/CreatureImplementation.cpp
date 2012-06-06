@@ -46,14 +46,14 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 	runTrajectory += target->getPosition();
 
 	patrolPoints.removeAll();
-	setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent());
+	setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
 
 	fleeing = true;
 
-	CombatManager::instance()->forcePeace(_this);
+	CombatManager::instance()->forcePeace(_this.get());
 
 	activateMovementEvent();
 }
@@ -66,7 +66,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	if (checkInRangeGarage() && !isDestroyed())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
 
-	if (player->isInRange(_this, 10.0f)
+	if (player->isInRange(_this.get(), 10.0f)
 			&& !player->isInCombat() && player->hasSkill("outdoors_scout_novice")
 			&& isDead() && canHarvestMe(player)) {
 
@@ -95,7 +95,7 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 	if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) &&
 			canHarvestMe(player)) {
 
-		getZone()->getCreatureManager()->harvest(_this, player, selectedID);
+		getZone()->getCreatureManager()->harvest(_this.get(), player, selectedID);
 
 		return 0;
 	}
@@ -207,7 +207,7 @@ void CreatureImplementation::scheduleDespawn() {
 	if (getPendingTask("despawn") != NULL)
 		return;
 
-	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
+	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this.get());
 	//despawn->schedule(300000); /// 5 minutes
 	addPendingTask("despawn", despawn, 45000); /// 45 seconds
 }

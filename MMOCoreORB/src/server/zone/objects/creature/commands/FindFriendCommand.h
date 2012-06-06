@@ -107,7 +107,7 @@ public:
 		ManagedReference<SceneObject*> parent = targetPlayer->getParent();
 
 		if (parent != NULL && parent->isCellObject()) {
-			SceneObject* building = parent->getParent();
+			ManagedReference<SceneObject*> building = parent->getParent();
 
 			x = building->getPositionX();
 			y = building->getPositionY();

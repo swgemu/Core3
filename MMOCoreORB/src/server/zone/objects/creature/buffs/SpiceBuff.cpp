@@ -117,39 +117,39 @@ void SpiceBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SpiceBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SpiceBuffImplementation::operator const SpiceBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void SpiceBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SpiceBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SpiceBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SpiceBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SpiceBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SpiceBuffImplementation::_serializationHelperMethod() {
@@ -213,7 +213,7 @@ SpiceBuffImplementation::SpiceBuffImplementation(CreatureObject* creo, const Str
 
 void SpiceBuffImplementation::activate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_consume");
-	BuffImplementation::creature.getForUpdate()->sendSystemMessage("@spice/spice:" + BuffImplementation::buffName + "_consume");
+	BuffImplementation::creature.getForUpdate().get()->sendSystemMessage("@spice/spice:" + BuffImplementation::buffName + "_consume");
 	// server/zone/objects/creature/buffs/SpiceBuff.idl():  		super.activate(true);
 	BuffImplementation::activate(true);
 }

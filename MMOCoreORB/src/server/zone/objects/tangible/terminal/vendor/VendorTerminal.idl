@@ -121,10 +121,4 @@ class VendorTerminal extends Terminal {
 	public boolean isVendorTerminal() {
 		return true;
 	}
-	
-	@read
-	@local
-	public CityRegion getCityRegion() {
-			return super.cityRegion;
-	}
 }

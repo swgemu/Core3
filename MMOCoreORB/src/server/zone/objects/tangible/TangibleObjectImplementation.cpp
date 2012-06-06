@@ -76,7 +76,7 @@ which carries forward this exception.
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
-	threatMap = new ThreatMap(_this);
+	threatMap = new ThreatMap(_this.get());
 
 	setLoggingName("TangibleObject");
 
@@ -106,16 +106,16 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	faction = tanoData->getFaction();
 
-	threatMap = new ThreatMap(_this);
+	threatMap = new ThreatMap(_this.get());
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending tano baselines");
 
-	BaseMessage* tano3 = new TangibleObjectMessage3(_this);
+	BaseMessage* tano3 = new TangibleObjectMessage3(_this.get());
 	player->sendMessage(tano3);
 
-	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
+	BaseMessage* tano6 = new TangibleObjectMessage6(_this.get());
 	player->sendMessage(tano6);
 
 	if (player->isPlayerCreature())
@@ -137,7 +137,7 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	} else if (!isAggressiveTo(player))
 		newPvpStatusBitmask -= CreatureFlag::AGGRESSIVE;
 
-	BaseMessage* pvp = new UpdatePVPStatusMessage(_this, newPvpStatusBitmask);
+	BaseMessage* pvp = new UpdatePVPStatusMessage(_this.get(), newPvpStatusBitmask);
 	player->sendMessage(pvp);
 }
 
@@ -152,7 +152,7 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 
 		Locker locker(zone);
 
-		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get());
+		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
 
 		for (int i = 0; i < closeobjects->size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeobjects->get(i).get());
@@ -172,7 +172,7 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 
 void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
 	// Send TANO7 Baseline
-	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this);
+	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this.get());
 	player->sendMessage(tano7);
 }
 
@@ -188,7 +188,7 @@ void TangibleObjectImplementation::setSerialNumber(const String& serial) {
 }
 
 void TangibleObjectImplementation::setDefender(SceneObject* defender) {
-	if (defender == _this)
+	if (defender == _this.get())
 		return;
 
 	if (defenderList.size() == 0) {
@@ -206,7 +206,7 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 
 			temp = defenderList.get(0);
 
-			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this.get());
 			dtano6->startUpdate(0x01);
 
 			defenderList.set(0, defender, dtano6, 2);
@@ -227,7 +227,7 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 }
 
 void TangibleObjectImplementation::addDefender(SceneObject* defender) {
-	if (defender == _this)
+	if (defender == _this.get())
 		return;
 
 	for (int i = 0; i < defenderList.size(); ++i) {
@@ -237,7 +237,7 @@ void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 
 	//info("adding defender");
 
-	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this.get());
 	dtano6->startUpdate(0x01);
 
 	defenderList.add(defender, dtano6);
@@ -261,7 +261,7 @@ void TangibleObjectImplementation::removeDefenders() {
 	for (int i = 0; i < defenderList.size(); i++)
 		notifyObservers(ObserverEventType::DEFENDERDROPPED, defenderList.get(i));
 
-	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this.get());
 	dtano6->startUpdate(0x01);
 
 	defenderList.removeAll(dtano6);
@@ -279,7 +279,7 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 		if (defenderList.get(i) == defender) {
 			info("removing defender");
 
-			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this.get());
 
 			dtano6->startUpdate(0x01);
 
@@ -336,7 +336,7 @@ void TangibleObjectImplementation::setCustomizationVariable(byte type, int16 val
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateCustomizationString();
 	dtano3->close();
 
@@ -349,7 +349,7 @@ void TangibleObjectImplementation::setCustomizationVariable(const String& type, 
 	if(!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateCustomizationString();
 	dtano3->close();
 
@@ -366,7 +366,7 @@ void TangibleObjectImplementation::setCountdownTimer(unsigned int newUseCount, b
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateCountdownTimer();
 	dtano3->close();
 
@@ -401,7 +401,7 @@ void TangibleObjectImplementation::setMaxCondition(int maxCond, bool notifyClien
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateMaxCondition();
 	dtano3->close();
 
@@ -417,7 +417,7 @@ void TangibleObjectImplementation::setConditionDamage(float condDamage, bool not
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateConditionDamage();
 	dtano3->close();
 
@@ -435,7 +435,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (attacker->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
-		if (damage > 0 && attacker != _this)
+		if (damage > 0 && attacker != _this.get())
 			threatMap->addDamage(player, (uint32)damage);
 	}
 
@@ -456,7 +456,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (attacker->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
-		if (damage > 0 && attacker != _this)
+		if (damage > 0 && attacker != _this.get())
 			threatMap->addDamage(player, (uint32)damage, xp);
 	}
 
@@ -479,7 +479,7 @@ void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destruc
 	if (defenderList.size() == 0)
 		return;
 
-	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, _this);
+	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, _this.get());
 	Core::getTaskManager()->executeTask(task);
 
 	clearCombatState(true);
@@ -507,7 +507,7 @@ void TangibleObjectImplementation::setCustomObjectName(const UnicodeString& name
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateName(name);
 	dtano3->close();
 
@@ -523,7 +523,7 @@ void TangibleObjectImplementation::setOptionsBitmask(uint32 bitmask, bool notify
 	if (!notifyClient)
 		return;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
 	dtano3->updateOptionsBitmask();
 	dtano3->close();
 
@@ -773,10 +773,10 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 	crate->setMaxCapacity(tanoData->getFactoryCrateSize());
 
 	if (insertSelf) {
-		crate->transferObject(_this, -1, false);
+		crate->transferObject(_this.get(), -1, false);
 	} else {
 
-		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this));
+		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this.get()));
 
 		if (protoclone == NULL)
 			return NULL;

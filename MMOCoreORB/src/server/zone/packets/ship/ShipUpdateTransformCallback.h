@@ -84,7 +84,7 @@ public:
 		msg << "velA:" << velA << " velB:" << velB;
 		info(msg.toString(), true);*/
 
-		CreatureObject* object = cast<CreatureObject*>( client->getPlayer());
+		CreatureObject* object = cast<CreatureObject*>( client->getPlayer().get().get());
 
 		if (object == NULL)
 			return;
@@ -116,7 +116,7 @@ public:
 			return;
 		}
 
-		ShipObject* ship = dynamic_cast<ShipObject*>(object->getParent());
+		ManagedReference<ShipObject*> ship = dynamic_cast<ShipObject*>(object->getParent().get().get());
 
 		if (ship == NULL)
 			return;

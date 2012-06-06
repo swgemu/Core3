@@ -266,39 +266,39 @@ void WaypointObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* WaypointObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 WaypointObjectImplementation::operator const WaypointObject*() {
-	return _this;
+	return _this.get();
 }
 
 void WaypointObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void WaypointObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void WaypointObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void WaypointObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void WaypointObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void WaypointObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void WaypointObjectImplementation::_serializationHelperMethod() {

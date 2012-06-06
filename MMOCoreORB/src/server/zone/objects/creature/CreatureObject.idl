@@ -1244,6 +1244,7 @@ class CreatureObject extends TangibleObject {
 		return factionRank;
 	}
 	
+	@weakReference
 	public CreatureObject getLinkedCreature() {
 		return linkedCreature;
 	}
@@ -1502,6 +1503,7 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.RIDINGMOUNT;
 	}
 	
+	@weakReference
 	public ControlDevice getControlDevice() {
 		return controlDevice;
 	}

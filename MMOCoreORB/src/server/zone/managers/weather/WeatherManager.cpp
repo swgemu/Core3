@@ -198,39 +198,39 @@ void WeatherManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* WeatherManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 WeatherManagerImplementation::operator const WeatherManager*() {
-	return _this;
+	return _this.get();
 }
 
 void WeatherManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void WeatherManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void WeatherManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void WeatherManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void WeatherManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void WeatherManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void WeatherManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void WeatherManagerImplementation::_serializationHelperMethod() {

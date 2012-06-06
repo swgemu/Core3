@@ -50,7 +50,7 @@ void ThreatMapEntry::clearThreatState(uint64 state) {
 void ThreatMap::registerObserver(CreatureObject* target) {
 
 	if(threatMapObserver == NULL) {
-		threatMapObserver = new ThreatMapObserver(self);
+		threatMapObserver = new ThreatMapObserver(self.get());
 		threatMapObserver->deploy();
 	}
 
@@ -106,7 +106,7 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 }
 
 void ThreatMap::removeAll() {
-	Locker llocker(&lockMutex);
+	Locker locker(&lockMutex);
 
 	removeObservers();
 	VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::removeAll();
@@ -150,7 +150,7 @@ bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 dura
 	}
 
 	if(duration > 0) {
-		ClearThreatStateTask* clearThreat = new ClearThreatStateTask(self, target, state);
+		ClearThreatStateTask* clearThreat = new ClearThreatStateTask(self.get(), target, state);
 		clearThreat->schedule(duration);
 	}
 
@@ -249,6 +249,8 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 CreatureObject* ThreatMap::getHighestThreatCreature() {
 	Locker locker(&lockMutex);
 
+	ManagedReference<CreatureObject*> currentThreat = this->currentThreat.get();
+
 	if(currentThreat != NULL
 			&& !currentThreat->isDead()
 			&& !currentThreat->isIncapacitated()
@@ -264,10 +266,10 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 		threatMatrix.add(creature, entry);
 	}
 
-	currentThreat = threatMatrix.getLargestThreat();
+	this->currentThreat = threatMatrix.getLargestThreat();
 
 	cooldownTimerMap.updateToCurrentAndAddMili("doEvaluation", ThreatMap::EVALUATIONCOOLDOWN);
-	return currentThreat;
+	return this->currentThreat.get().get();
 }
 
 void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
@@ -287,7 +289,7 @@ void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
 	}
 
 	if(duration > 0) {
-		RemoveAggroTask* removeAggroTask = new RemoveAggroTask(self, target, value);
+		RemoveAggroTask* removeAggroTask = new RemoveAggroTask(self.get(), target, value);
 		removeAggroTask->schedule(duration);
 	}
 }

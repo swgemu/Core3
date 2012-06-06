@@ -271,39 +271,39 @@ void StructureDeedImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StructureDeedImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StructureDeedImplementation::operator const StructureDeed*() {
-	return _this;
+	return _this.get();
 }
 
 void StructureDeedImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StructureDeedImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StructureDeedImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StructureDeedImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StructureDeedImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StructureDeedImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StructureDeedImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StructureDeedImplementation::_serializationHelperMethod() {
@@ -427,7 +427,7 @@ int StructureDeedImplementation::placeStructure(CreatureObject* creature, float 
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  		return 
 	if (placeStructureComponent != NULL){
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  			return placeStructureComponent.placeStructure(this, creature, x, y, angle);
-	return placeStructureComponent->placeStructure(_this, creature, x, y, angle);
+	return placeStructureComponent->placeStructure(_this.get(), creature, x, y, angle);
 }
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  		return 1;
 	return 1;
@@ -437,7 +437,7 @@ int StructureDeedImplementation::notifyStructurePlaced(CreatureObject* creature,
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  		return 
 	if (placeStructureComponent != NULL){
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  			return placeStructureComponent.notifyStructurePlaced(this, creature, structure);
-	return placeStructureComponent->notifyStructurePlaced(_this, creature, structure);
+	return placeStructureComponent->notifyStructurePlaced(_this.get(), creature, structure);
 }
 	// server/zone/objects/tangible/deed/structure/StructureDeed.idl():  		return 1;
 	return 1;

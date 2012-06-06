@@ -34,7 +34,7 @@ void GeneratorObjectImplementation::synchronizedUIListen(SceneObject* player, in
 
 	updateInstallationWork();
 
-	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this);
+	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.get());
 	player->sendMessage(msg);
 
 	activateUiSync();

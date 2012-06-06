@@ -935,7 +935,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
 
 	if (closestCloning == NULL)//TODO: Add default location so people don't get stuck
 		return;
@@ -1062,7 +1062,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
 		// bind removed
@@ -1304,7 +1304,7 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 	StringIdChatParameter stringId("badge_n", "");
 	stringId.setTO("badge_n", Badge::getName(badge));
 
-	CreatureObject* player = dynamic_cast<CreatureObject*>(ghost->getParent());
+	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
 
 	if (ghost->hasBadge(badge)) {
 		stringId.setStringId("badge_n", "prose_hasbadge");
@@ -2684,7 +2684,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	if (zone == NULL)
 		return NULL;
 
-	ZoneServer* server = zone->getZoneServer();
+	ManagedReference<ZoneServer*> server = zone->getZoneServer();
 
 	if (server == NULL)
 		return NULL;

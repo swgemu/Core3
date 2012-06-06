@@ -1358,39 +1358,39 @@ void AiAgentImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* AiAgentImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 AiAgentImplementation::operator const AiAgent*() {
-	return _this;
+	return _this.get();
 }
 
 void AiAgentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void AiAgentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void AiAgentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void AiAgentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void AiAgentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void AiAgentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void AiAgentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void AiAgentImplementation::_serializationHelperMethod() {
@@ -1752,16 +1752,16 @@ void AiAgentImplementation::setRespawnTimer(float resp) {
 
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (object == _this)	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	if (object == _this.get())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		if 
 	if (CreatureObjectImplementation::pvpStatusBitmask == 0)	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	if (_this.get()->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (_this->isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	if (_this.get()->isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		unsigned 
 	if (object->isAiAgent())	// server/zone/objects/creature/AiAgent.idl():  			return false;
@@ -1771,7 +1771,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/AiAgent.idl():  		return 
 	if (targetFaction != 0 && CreatureObjectImplementation::getFaction() != 0){
 	// server/zone/objects/creature/AiAgent.idl():  			PlayerObject ghost = object.getPlayerObject();
-	PlayerObject* ghost = object->getPlayerObject();
+	ManagedReference<PlayerObject* > ghost = object->getPlayerObject();
 	// server/zone/objects/creature/AiAgent.idl():  			if 
 	if (targetFaction == getFaction())	// server/zone/objects/creature/AiAgent.idl():  				return false;
 	return false;
@@ -1801,7 +1801,7 @@ void AiAgentImplementation::setWatchObject(SceneObject* obj) {
 {
 	Locker _locker((&targetMutex));
 	// server/zone/objects/creature/AiAgent.idl():  			followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
+	if (_this.get()->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
 	// server/zone/objects/creature/AiAgent.idl():  			followState = WATCHING;
 	followState = WATCHING;
@@ -1817,7 +1817,7 @@ void AiAgentImplementation::setStalkObject(SceneObject* obj) {
 {
 	Locker _locker((&targetMutex));
 	// server/zone/objects/creature/AiAgent.idl():  			followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
+	if (_this.get()->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
 	// server/zone/objects/creature/AiAgent.idl():  			followState = STALKING;
 	followState = STALKING;
@@ -1833,7 +1833,7 @@ void AiAgentImplementation::setFollowObject(SceneObject* obj) {
 {
 	Locker _locker((&targetMutex));
 	// server/zone/objects/creature/AiAgent.idl():  			followState 
-	if (_this->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
+	if (_this.get()->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  				return;
 	return;
 	// server/zone/objects/creature/AiAgent.idl():  			followState = FOLLOWING;
 	followState = FOLLOWING;

@@ -23,10 +23,10 @@ void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (client == NULL)
 		return;
 
-	BaseMessage* grup3 = new GroupObjectMessage3(_this);
+	BaseMessage* grup3 = new GroupObjectMessage3(_this.get());
 	client->sendMessage(grup3);
 
-	BaseMessage* grup6 = new GroupObjectMessage6(_this);
+	BaseMessage* grup6 = new GroupObjectMessage6(_this.get());
 	client->sendMessage(grup6);
 
 	if (player->isPlayerCreature() && chatRoom != NULL)
@@ -79,7 +79,7 @@ void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 }
 
 void GroupObjectImplementation::addMember(SceneObject* player) {
-	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this);
+	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 	grp->startUpdate(1);
 	groupMembers.add(player, grp);
 	grp->close();
@@ -101,7 +101,7 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 		SceneObject* scno = groupMembers.get(i);
 
 		if (scno == player) {
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this);
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 			grp->startUpdate(1);
 			groupMembers.remove(i, grp);
 			grp->close();
@@ -148,7 +148,7 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
 		if (groupMembers.get(i) == player) {
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this);
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 			grp->startUpdate(1);
 
 			if (hasSquadLeader())
@@ -174,7 +174,7 @@ void GroupObjectImplementation::disband() {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
 		try {
-			Locker clocker(crea, _this);
+			Locker clocker(crea, _this.get());
 
 
 			if (crea->isPlayerCreature()) {
@@ -357,7 +357,7 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 }
 
 void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) {
-	Locker lock(_this);
+	Locker lock(_this.get());
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
 		GroupMember* member = &groupMembers.get(i);
@@ -373,7 +373,7 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) 
 }
 
 void GroupObjectImplementation::sendSystemMessage(const String& fullPath) {
-	Locker lock(_this);
+	Locker lock(_this.get());
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
 		GroupMember* member = &groupMembers.get(i);

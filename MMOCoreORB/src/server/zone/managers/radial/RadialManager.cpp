@@ -106,39 +106,39 @@ void RadialManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* RadialManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 RadialManagerImplementation::operator const RadialManager*() {
-	return _this;
+	return _this.get();
 }
 
 void RadialManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void RadialManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void RadialManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void RadialManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void RadialManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void RadialManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void RadialManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void RadialManagerImplementation::_serializationHelperMethod() {
@@ -172,7 +172,7 @@ bool RadialManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 
 	if (_name == "RadialManager.zoneServer") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
+		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
 	}
 
@@ -197,7 +197,7 @@ int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
+	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

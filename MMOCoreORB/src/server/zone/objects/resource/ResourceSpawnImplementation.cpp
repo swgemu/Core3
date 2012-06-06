@@ -265,7 +265,7 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    		newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(genericContainer.hashCode(), 2));
    	}
 
-   	newResource->setSpawnObject(_this);
+   	newResource->setSpawnObject(_this.get());
 
    	if (units != 0)
    		newResource->setQuantity(units);

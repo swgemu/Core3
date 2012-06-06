@@ -108,39 +108,39 @@ void CraftingMissionObjectiveImplementation::_setStub(DistributedObjectStub* stu
 }
 
 DistributedObjectStub* CraftingMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CraftingMissionObjectiveImplementation::operator const CraftingMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void CraftingMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CraftingMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CraftingMissionObjectiveImplementation::_serializationHelperMethod() {

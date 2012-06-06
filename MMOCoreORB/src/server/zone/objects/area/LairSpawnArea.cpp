@@ -178,39 +178,39 @@ void LairSpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* LairSpawnAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 LairSpawnAreaImplementation::operator const LairSpawnArea*() {
-	return _this;
+	return _this.get();
 }
 
 void LairSpawnAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void LairSpawnAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void LairSpawnAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void LairSpawnAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void LairSpawnAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void LairSpawnAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void LairSpawnAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void LairSpawnAreaImplementation::_serializationHelperMethod() {

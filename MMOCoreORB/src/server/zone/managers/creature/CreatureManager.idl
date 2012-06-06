@@ -17,7 +17,6 @@ include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
 
 class CreatureManager extends ZoneManager {
-	@weakReference
 	protected Zone zone;
 	
 	/*@dereferenced

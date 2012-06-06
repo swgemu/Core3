@@ -80,7 +80,7 @@ public:
 
 	int sendMail(const String& recipient) {
 		if (recipient == "guild") {
-			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 			ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 			if (guild == NULL)
@@ -115,7 +115,7 @@ public:
 	}
 
 	int sendMailToPlayer(const String& recipientName) {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 		ChatManager* chatManager = server->getChatManager();
 
 		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
@@ -144,7 +144,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 
 		if (player == NULL)
 			return;

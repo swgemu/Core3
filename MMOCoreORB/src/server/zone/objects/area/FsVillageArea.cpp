@@ -84,39 +84,39 @@ void FsVillageAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FsVillageAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FsVillageAreaImplementation::operator const FsVillageArea*() {
-	return _this;
+	return _this.get();
 }
 
 void FsVillageAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FsVillageAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FsVillageAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FsVillageAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FsVillageAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FsVillageAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FsVillageAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FsVillageAreaImplementation::_serializationHelperMethod() {

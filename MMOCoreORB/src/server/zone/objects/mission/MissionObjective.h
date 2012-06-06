@@ -128,11 +128,11 @@ public:
 
 	void fail();
 
-	MissionObject* getMissionObject();
+	ManagedWeakReference<MissionObject* > getMissionObject();
 
 	unsigned int getObjectiveType();
 
-	CreatureObject* getPlayerOwner();
+	ManagedWeakReference<CreatureObject* > getPlayerOwner();
 
 	void awardFactionPoints();
 
@@ -207,11 +207,11 @@ public:
 
 	virtual void fail();
 
-	MissionObject* getMissionObject();
+	ManagedWeakReference<MissionObject* > getMissionObject();
 
 	unsigned int getObjectiveType();
 
-	CreatureObject* getPlayerOwner();
+	ManagedWeakReference<CreatureObject* > getPlayerOwner();
 
 	void awardFactionPoints();
 
@@ -288,11 +288,11 @@ public:
 
 	void fail();
 
-	MissionObject* getMissionObject();
+	ManagedWeakReference<MissionObject* > getMissionObject();
 
 	unsigned int getObjectiveType();
 
-	CreatureObject* getPlayerOwner();
+	ManagedWeakReference<CreatureObject* > getPlayerOwner();
 
 	void awardFactionPoints();
 

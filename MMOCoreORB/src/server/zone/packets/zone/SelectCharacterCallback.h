@@ -105,9 +105,9 @@ public:
 				} else {
 					playerParent->transferObject(player, -1, false);
 
-					if (player->getZone() == NULL) {
-						SceneObject* root = player->getRootParent();
-
+					if (player->getParent() == NULL) {
+						zone->transferObject(player, -1, false);
+					} else if (root->getZone() == NULL) {
 						zone->transferObject(root, -1, false);
 					}
 
@@ -118,7 +118,10 @@ public:
 				zone->transferObject(player, -1, true);
 			} else {
 				if (player->getZone() == NULL) {
-					SceneObject* objectToInsert = currentParent != NULL ? player->getRootParent() : player;
+					ManagedReference<SceneObject*> objectToInsert = currentParent != NULL ? player->getRootParent().get() : player;
+
+					if (objectToInsert == NULL)
+						objectToInsert = player;
 
 					zone->transferObject(objectToInsert, -1, false);
 				}

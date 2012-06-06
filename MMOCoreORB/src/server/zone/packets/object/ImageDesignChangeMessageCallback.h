@@ -50,7 +50,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer());
+		ManagedReference<CreatureObject*> player = static_cast<CreatureObject*>(client->getPlayer().get().get());
 
 		if (player == NULL)
 			return;

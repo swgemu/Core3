@@ -101,39 +101,39 @@ void CloningBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) 
 }
 
 DistributedObjectStub* CloningBuildingObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CloningBuildingObjectImplementation::operator const CloningBuildingObject*() {
-	return _this;
+	return _this.get();
 }
 
 void CloningBuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CloningBuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CloningBuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CloningBuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CloningBuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CloningBuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CloningBuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CloningBuildingObjectImplementation::_serializationHelperMethod() {

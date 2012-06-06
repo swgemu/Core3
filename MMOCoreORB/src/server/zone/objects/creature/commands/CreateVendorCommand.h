@@ -70,14 +70,14 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
-		SceneObject* parent = player->getRootParent();
+		ManagedReference<SceneObject*> parent = player->getRootParent();
 
 		if (parent == NULL || !parent->isBuildingObject()) {
 			player->sendSystemMessage("@player_structure:must_be_in_building");
 			return GENERALERROR;
 		}
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent);
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get());
 
 		if (!building->isOnAdminList(player->getFirstName())) {
 			player->sendSystemMessage("@player_structure:must_be_admin");

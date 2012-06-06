@@ -89,7 +89,7 @@ public:
 		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
 			return GENERALERROR;
 
-		SceneObject* objectsParent = objectToTransfer->getParent();
+		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectsParent == NULL)
 			return GENERALERROR;
@@ -118,7 +118,7 @@ public:
 		}
 
 		if (transferType == 4) {
-			SceneObject* parent = objectToTransfer->getParent();
+			ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
 
 			if (parent == NULL) {
 				creature->error("objectToTransfer parent is NULL in transferitemarmor command");

@@ -291,9 +291,9 @@ namespace server {
 namespace chat {
 
 class ChatManagerImplementation : public ManagedServiceImplementation, public Logger {
-	ManagedWeakReference<ZoneServer* > server;
+	ManagedReference<ZoneServer* > server;
 
-	ManagedWeakReference<PlayerManager* > playerManager;
+	ManagedReference<PlayerManager* > playerManager;
 
 	Reference<PlayerMap* > playerMap;
 

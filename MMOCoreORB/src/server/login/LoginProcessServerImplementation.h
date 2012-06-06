@@ -28,7 +28,7 @@ namespace server {
 
 			void initialize();
 
-			inline LoginServer* getLoginServer() {
+			inline ManagedWeakReference<LoginServer*> getLoginServer() {
 				return server;
 			}
 

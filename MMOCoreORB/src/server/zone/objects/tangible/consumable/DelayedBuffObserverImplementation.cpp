@@ -49,7 +49,7 @@ which carries forward this exception.
 
 int DelayedBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 
-	buff->useCharge();
+	buff.get()->useCharge();
 	return 0;
 
 }

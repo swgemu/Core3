@@ -60,7 +60,7 @@ void AuctionManagerImplementation::initialize() {
 }
 
 void AuctionManagerImplementation::checkVendorItems() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	info("Checking " + String::valueOf(auctionMap->getVendorItemCount()) + " vendor items");
 
@@ -138,7 +138,7 @@ void AuctionManagerImplementation::checkAuctions() {
 	// Check Vendors
 	checkVendorItems();
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	info("Checking " + String::valueOf(auctionMap->getAuctionCount()) + " bazaar items");
 
@@ -251,7 +251,7 @@ void AuctionManagerImplementation::checkAuctions() {
 		}
 	}
 
-	CheckAuctionsTask* task = new CheckAuctionsTask(_this);
+	CheckAuctionsTask* task = new CheckAuctionsTask(_this.get());
 	task->schedule(CHECKEVERY * 60000);
 }
 
@@ -284,7 +284,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 }
 
 void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 objectid, Vendor* vendor, const UnicodeString& description, int price, uint32 duration, bool auction, bool premium) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	Locker _locker2(player); // no cross lock because we never lock bazaar manager after locking player?
 
@@ -590,7 +590,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 }
 
 void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 objectid, int price1, int price2) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	Locker _locker2(player);
 
 	ManagedReference<AuctionItem*> item = NULL;
@@ -727,7 +727,7 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 		return;
 	}
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	Locker _locker2(player);
 
 	Locker _vlocker(terminal);
@@ -1061,9 +1061,9 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 		return;
 	}
 
-	BuildingObject* rootParent = cast<BuildingObject*>(sceno->getRootParent());
+	ManagedReference<BuildingObject*> rootParent = cast<BuildingObject*>(sceno->getRootParent().get().get());
 
-	if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent()))
+	if (rootParent != NULL && (!rootParent->isAllowedEntry(player) || rootParent != player->getRootParent().get()))
 		return;
 
 	Vendor* vendor = getVendorFromObject(sceno);
@@ -1268,7 +1268,7 @@ void AuctionManagerImplementation::getRegionData(CreatureObject* player, Vendor*
 }
 
 void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uint64 objectid) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	UnicodeString description;
 	ManagedReference<AuctionItem*> item = NULL;
@@ -1343,7 +1343,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 		return;
 	}
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	Locker _locker2(player);
 
 	Time expireTime;

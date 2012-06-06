@@ -122,39 +122,39 @@ void ShipControlDeviceImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ShipControlDeviceImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ShipControlDeviceImplementation::operator const ShipControlDevice*() {
-	return _this;
+	return _this.get();
 }
 
 void ShipControlDeviceImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ShipControlDeviceImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ShipControlDeviceImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ShipControlDeviceImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ShipControlDeviceImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ShipControlDeviceImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ShipControlDeviceImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ShipControlDeviceImplementation::_serializationHelperMethod() {
@@ -230,7 +230,7 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 	else 	// server/zone/objects/intangible/ShipControlDevice.idl():  		}
 	if (player->getParent() == NULL){
 	// server/zone/objects/intangible/ShipControlDevice.idl():  				this.generateObject(player);
-	_this->generateObject(player);
+	_this.get()->generateObject(player);
 }
 }
 
@@ -248,12 +248,12 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 	// server/zone/objects/intangible/ShipControlDevice.idl():  				}
 	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
 	// server/zone/objects/intangible/ShipControlDevice.idl():  					this.generateObject(player);
-	_this->generateObject(player);
+	_this.get()->generateObject(player);
 }
 
 	else {
 	// server/zone/objects/intangible/ShipControlDevice.idl():  					this.storeObject(player);
-	_this->storeObject(player);
+	_this.get()->storeObject(player);
 }
 }
 }

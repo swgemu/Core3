@@ -105,7 +105,7 @@ namespace managers {
 namespace radial {
 
 class RadialManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ManagedWeakReference<ZoneServer* > zoneServer;
+	ManagedReference<ZoneServer* > zoneServer;
 
 public:
 	RadialManagerImplementation(ZoneServer* server);

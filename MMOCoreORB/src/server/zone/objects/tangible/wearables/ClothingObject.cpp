@@ -92,39 +92,39 @@ void ClothingObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ClothingObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ClothingObjectImplementation::operator const ClothingObject*() {
-	return _this;
+	return _this.get();
 }
 
 void ClothingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ClothingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ClothingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ClothingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ClothingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ClothingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ClothingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ClothingObjectImplementation::_serializationHelperMethod() {

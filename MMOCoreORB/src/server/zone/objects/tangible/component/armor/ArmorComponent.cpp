@@ -218,39 +218,39 @@ void ArmorComponentImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ArmorComponentImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ArmorComponentImplementation::operator const ArmorComponent*() {
-	return _this;
+	return _this.get();
 }
 
 void ArmorComponentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ArmorComponentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ArmorComponentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ArmorComponentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ArmorComponentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ArmorComponentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ArmorComponentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ArmorComponentImplementation::_serializationHelperMethod() {

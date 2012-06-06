@@ -143,7 +143,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 			object->setParent(NULL);
 
 		if (parent->isCellObject()) {
-			BuildingObject* build = cast<BuildingObject*>(parent->getParent());
+			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(parent->getParent().get().get());
 
 			if (build != NULL) {
 				CreatureObject* creature = cast<CreatureObject*>(object);
@@ -183,7 +183,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 	if (object->isActiveArea())
 		return removeActiveArea(zone, dynamic_cast<ActiveArea*>(object));
 
-	SceneObject* parent = object->getParent();
+	ManagedReference<SceneObject*> parent = object->getParent();
 	Vector<ManagedReference<ActiveArea*> >* activeAreas = object->getActiveAreas();
 	//SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 

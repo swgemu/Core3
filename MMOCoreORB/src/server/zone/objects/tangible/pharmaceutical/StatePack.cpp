@@ -150,39 +150,39 @@ void StatePackImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StatePackImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StatePackImplementation::operator const StatePack*() {
-	return _this;
+	return _this.get();
 }
 
 void StatePackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StatePackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StatePackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StatePackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StatePackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StatePackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StatePackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StatePackImplementation::_serializationHelperMethod() {

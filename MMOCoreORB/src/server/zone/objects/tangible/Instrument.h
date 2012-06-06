@@ -172,7 +172,7 @@ public:
 
 	int getInstrumentType();
 
-	CreatureObject* getSpawnerPlayer();
+	ManagedWeakReference<CreatureObject* > getSpawnerPlayer();
 
 	void setSpawnerPlayer(CreatureObject* pla);
 
@@ -259,7 +259,7 @@ public:
 
 	int getInstrumentType();
 
-	CreatureObject* getSpawnerPlayer();
+	ManagedWeakReference<CreatureObject* > getSpawnerPlayer();
 
 	void setSpawnerPlayer(CreatureObject* pla);
 
@@ -326,7 +326,7 @@ public:
 
 	int getInstrumentType();
 
-	CreatureObject* getSpawnerPlayer();
+	ManagedWeakReference<CreatureObject* > getSpawnerPlayer();
 
 	void setSpawnerPlayer(CreatureObject* pla);
 
