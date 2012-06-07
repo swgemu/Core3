@@ -1659,6 +1659,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isMissionObject() {
 		return false;
 	}
+	
+	@dirty
+	public abstract boolean isActorObject() {
+		return false;
+	}
 
 	@read
 	public int getPlanetMapCategoryCRC() {

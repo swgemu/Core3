@@ -103,6 +103,10 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 		entry->addDamage(xpToAward, damage);
 		entry->addAggro(1);
 	}
+
+	// randomly change target everytime threatmap is added to, TODO: keep this in mind and perhaps make it slightly more complicated
+	if (System::random(5) == 0)
+		currentThreat = target;
 }
 
 void ThreatMap::removeAll() {
@@ -263,7 +267,10 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 		ThreatMapEntry* entry = &elementAt(i).getValue();
 		CreatureObject* creature = elementAt(i).getKey();
 
-		threatMatrix.add(creature, entry);
+		ManagedReference<CreatureObject*> selfStrong = cast<CreatureObject*>(self.get().get());
+
+		if (!creature->isDead() && !creature->isIncapacitated() && creature->isInRange(selfStrong, 128.f) && creature->isAttackableBy(selfStrong))
+			threatMatrix.add(creature, entry);
 	}
 
 	this->currentThreat = threatMatrix.getLargestThreat();

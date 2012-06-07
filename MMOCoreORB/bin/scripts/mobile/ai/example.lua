@@ -1,5 +1,5 @@
 example = {
-	defaultState = "StandingStateComponent",
+	defaultState = "SpawnStateComponent",
 	transitions = {
 		{"SpawnStateComponent", FINISHED, "StandingStateComponent"},
 		{"StandingStateComponent", UNFINISHED, "StandingStateComponent"},

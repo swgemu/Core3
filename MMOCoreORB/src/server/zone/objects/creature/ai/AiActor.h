@@ -63,22 +63,6 @@ namespace objects {
 namespace creature {
 namespace events {
 
-class AiWaitEvent;
-
-} // namespace events
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::events;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-namespace events {
-
 class AiAwarenessEvent;
 
 } // namespace events
@@ -138,20 +122,6 @@ using namespace server::zone::objects::tangible::weapon;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerObject;
@@ -189,6 +159,8 @@ using namespace server::zone;
 
 #include "system/thread/Mutex.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/Vector.h"
@@ -205,7 +177,7 @@ namespace objects {
 namespace creature {
 namespace ai {
 
-class AiActor : public Observable {
+class AiActor : public SceneObject {
 public:
 	unsigned static const short FINISHED = 0;
 
@@ -227,7 +199,7 @@ public:
 
 	static const int UPDATEMOVEMENTINTERVAL = 500;
 
-	AiActor(AiTemplate* ait);
+	AiActor();
 
 	void setHost(CreatureObject* creo);
 
@@ -245,13 +217,15 @@ public:
 
 	void next();
 
+	void destroyActor();
+
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
 
-	void loadTemplateData(SharedObjectTemplate* templateData);
-
 	void loadTemplateData(CreatureTemplate* templateData);
+
+	CreatureTemplateReference* getNpcTemplate();
 
 	void setLevel(int lvl);
 
@@ -270,8 +244,6 @@ public:
 	void activateRecovery();
 
 	void activateMovementEvent();
-
-	void activateWaitEvent();
 
 	void activateAwarenessEvent(CreatureObject* target);
 
@@ -409,6 +381,8 @@ public:
 
 	Time getLastDamageReceived();
 
+	bool isActorObject();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -435,7 +409,7 @@ namespace objects {
 namespace creature {
 namespace ai {
 
-class AiActorImplementation : public ObservableImplementation, public Logger {
+class AiActorImplementation : public SceneObjectImplementation {
 public:
 	unsigned static const short FINISHED = 0;
 
@@ -474,8 +448,6 @@ protected:
 
 	bool loadedOutfit;
 
-	bool isCreature;
-
 	unsigned short currentMessage;
 
 	ManagedReference<CreatureObject* > host;
@@ -489,8 +461,6 @@ protected:
 	Reference<AiThinkEvent* > thinkEvent;
 
 	Reference<AiMoveEvent* > moveEvent;
-
-	Reference<AiWaitEvent* > waitEvent;
 
 	Reference<AiAwarenessEvent* > awarenessEvent;
 
@@ -521,7 +491,7 @@ protected:
 	Reference<Vector<ManagedReference<SceneObject* > >* > movementMarkers;
 
 public:
-	AiActorImplementation(AiTemplate* ait);
+	AiActorImplementation();
 
 	AiActorImplementation(DummyConstructorParameter* param);
 
@@ -541,13 +511,15 @@ public:
 
 	void next();
 
+	void destroyActor();
+
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
 
-	void loadTemplateData(SharedObjectTemplate* templateData);
-
 	void loadTemplateData(CreatureTemplate* templateData);
+
+	CreatureTemplateReference* getNpcTemplate();
 
 	void setLevel(int lvl);
 
@@ -566,8 +538,6 @@ public:
 	virtual void activateRecovery();
 
 	virtual void activateMovementEvent();
-
-	virtual void activateWaitEvent();
 
 	void activateAwarenessEvent(CreatureObject* target);
 
@@ -705,6 +675,8 @@ public:
 
 	Time getLastDamageReceived();
 
+	bool isActorObject();
+
 	WeakReference<AiActor*> _this;
 
 	operator const AiActor*();
@@ -742,7 +714,7 @@ protected:
 	friend class AiActor;
 };
 
-class AiActorAdapter : public ObservableAdapter {
+class AiActorAdapter : public SceneObjectAdapter {
 public:
 	AiActorAdapter(AiActor* impl);
 
@@ -764,6 +736,8 @@ public:
 
 	void next();
 
+	void destroyActor();
+
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
 
 	void setLevel(int lvl);
@@ -783,8 +757,6 @@ public:
 	void activateRecovery();
 
 	void activateMovementEvent();
-
-	void activateWaitEvent();
 
 	void activateAwarenessEvent(CreatureObject* target);
 
@@ -899,6 +871,8 @@ public:
 	int getBaseXp();
 
 	unsigned int getDiet();
+
+	bool isActorObject();
 
 };
 

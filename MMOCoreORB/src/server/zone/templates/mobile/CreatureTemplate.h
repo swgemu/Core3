@@ -85,6 +85,8 @@ protected:
 	//MobileOutfit outfit;
 	String outfit;
 
+	String aiTemplate;
+
 public:
 	CreatureTemplate();
 
@@ -298,6 +300,10 @@ public:
 
 	inline String getOutfit() {
 		return outfit;
+	}
+
+	inline String getAiTemplate() {
+		return aiTemplate;
 	}
 };
 

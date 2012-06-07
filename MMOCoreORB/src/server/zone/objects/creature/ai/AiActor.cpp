@@ -10,8 +10,6 @@
 
 #include "server/zone/objects/creature/events/AiMoveEvent.h"
 
-#include "server/zone/objects/creature/events/AiWaitEvent.h"
-
 #include "server/zone/objects/creature/events/AiAwarenessEvent.h"
 
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
@@ -19,8 +17,6 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -30,16 +26,16 @@
  *	AiActorStub
  */
 
-enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_NEXT__SHORT_,RPC_NEXT__,RPC_ADDTRANSITION__STRING_SHORT_STRING_,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISSHOWNEXTPOSITION__,RPC_GETMOVEMENTMARKERSSIZE__,RPC_GETMOVEMENTMARKER__INT_,RPC_DROPMOVEMENTMARKER__SCENEOBJECT_,RPC_DROPALLMOVEMEMENTMARKERS__,RPC_ADDMOVEMENTMARKER__SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SCHEDULEDESPAWN__,RPC_CLEARDESPAWNEVENT__,RPC_SETRESPAWNTIMER__FLOAT_,RPC_GETRESPAWNTIMER__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_NOTIFYINSERT__QUADTREEENTRY_,RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_UPDATELASTDAMAGERECEIVED__,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,};
+enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_NEXT__SHORT_,RPC_NEXT__,RPC_DESTROYACTOR__,RPC_ADDTRANSITION__STRING_SHORT_STRING_,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISSHOWNEXTPOSITION__,RPC_GETMOVEMENTMARKERSSIZE__,RPC_GETMOVEMENTMARKER__INT_,RPC_DROPMOVEMENTMARKER__SCENEOBJECT_,RPC_DROPALLMOVEMEMENTMARKERS__,RPC_ADDMOVEMENTMARKER__SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SCHEDULEDESPAWN__,RPC_CLEARDESPAWNEVENT__,RPC_SETRESPAWNTIMER__FLOAT_,RPC_GETRESPAWNTIMER__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_NOTIFYINSERT__QUADTREEENTRY_,RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_UPDATELASTDAMAGERECEIVED__,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_ISACTOROBJECT__};
 
-AiActor::AiActor(AiTemplate* ait) : Observable(DummyConstructorParameter::instance()) {
-	AiActorImplementation* _implementation = new AiActorImplementation(ait);
+AiActor::AiActor() : SceneObject(DummyConstructorParameter::instance()) {
+	AiActorImplementation* _implementation = new AiActorImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("AiActor");
 }
 
-AiActor::AiActor(DummyConstructorParameter* param) : Observable(param) {
+AiActor::AiActor(DummyConstructorParameter* param) : SceneObject(param) {
 	_setClassName("AiActor");
 }
 
@@ -158,6 +154,19 @@ void AiActor::next() {
 		_implementation->next();
 }
 
+void AiActor::destroyActor() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYACTOR__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyActor();
+}
+
 void AiActor::doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target) {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -183,7 +192,7 @@ void AiActor::addTransition(const String& stateName, unsigned short msg, const S
 		_implementation->addTransition(stateName, msg, resultState);
 }
 
-void AiActor::loadTemplateData(SharedObjectTemplate* templateData) {
+void AiActor::loadTemplateData(CreatureTemplate* templateData) {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -192,13 +201,13 @@ void AiActor::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void AiActor::loadTemplateData(CreatureTemplate* templateData) {
+CreatureTemplateReference* AiActor::getNpcTemplate() {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->loadTemplateData(templateData);
+		return _implementation->getNpcTemplate();
 }
 
 void AiActor::setLevel(int lvl) {
@@ -323,19 +332,6 @@ void AiActor::activateMovementEvent() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activateMovementEvent();
-}
-
-void AiActor::activateWaitEvent() {
-	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ACTIVATEWAITEVENT__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->activateWaitEvent();
 }
 
 void AiActor::activateAwarenessEvent(CreatureObject* target) {
@@ -1212,6 +1208,19 @@ Time AiActor::getLastDamageReceived() {
 		return _implementation->getLastDamageReceived();
 }
 
+bool AiActor::isActorObject() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISACTOROBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isActorObject();
+}
+
 DistributedObjectServant* AiActor::_getImplementation() {
 
 	_updated = true;
@@ -1226,7 +1235,7 @@ void AiActor::_setImplementation(DistributedObjectServant* servant) {
  *	AiActorImplementation
  */
 
-AiActorImplementation::AiActorImplementation(DummyConstructorParameter* param) : ObservableImplementation(param) {
+AiActorImplementation::AiActorImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -1248,7 +1257,7 @@ void AiActorImplementation::_initializeImplementation() {
 
 void AiActorImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = static_cast<AiActor*>(stub);
-	ObservableImplementation::_setStub(stub);
+	SceneObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* AiActorImplementation::_getStub() {
@@ -1288,7 +1297,7 @@ void AiActorImplementation::runlock(bool doLock) {
 }
 
 void AiActorImplementation::_serializationHelperMethod() {
-	ObservableImplementation::_serializationHelperMethod();
+	SceneObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("AiActor");
 
@@ -1314,7 +1323,7 @@ void AiActorImplementation::readObject(ObjectInputStream* stream) {
 }
 
 bool AiActorImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObservableImplementation::readObjectMember(stream, _name))
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
 	if (_name == "AiActor.currentStateName") {
@@ -1344,11 +1353,6 @@ bool AiActorImplementation::readObjectMember(ObjectInputStream* stream, const St
 
 	if (_name == "AiActor.loadedOutfit") {
 		TypeInfo<bool >::parseFromBinaryStream(&loadedOutfit, stream);
-		return true;
-	}
-
-	if (_name == "AiActor.isCreature") {
-		TypeInfo<bool >::parseFromBinaryStream(&isCreature, stream);
 		return true;
 	}
 
@@ -1429,7 +1433,7 @@ void AiActorImplementation::writeObject(ObjectOutputStream* stream) {
 }
 
 int AiActorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
-	int _count = ObservableImplementation::writeObjectMembers(stream);
+	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
 	String _name;
 	int _offset;
@@ -1479,14 +1483,6 @@ int AiActorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&loadedOutfit, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AiActor.isCreature";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&isCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1595,15 +1591,15 @@ int AiActorImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 20;
+	return _count + 19;
 }
 
-AiActorImplementation::AiActorImplementation(AiTemplate* ait) {
+AiActorImplementation::AiActorImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/creature/ai/AiActor.idl():  		host = null;
 	host = NULL;
-	// server/zone/objects/creature/ai/AiActor.idl():  		aiTemplate = ait;
-	aiTemplate = ait;
+	// server/zone/objects/creature/ai/AiActor.idl():  		aiTemplate = null;
+	aiTemplate = NULL;
 	// server/zone/objects/creature/ai/AiActor.idl():  		respawnTimer = 0;
 	respawnTimer = 0;
 	// server/zone/objects/creature/ai/AiActor.idl():  		showNextMovementPosition = true;
@@ -1614,8 +1610,6 @@ AiActorImplementation::AiActorImplementation(AiTemplate* ait) {
 	numberOfPlayersInRange = 0;
 	// server/zone/objects/creature/ai/AiActor.idl():  		loadedOutfit = false;
 	loadedOutfit = false;
-	// server/zone/objects/creature/ai/AiActor.idl():  		isCreature = true;
-	isCreature = true;
 	// server/zone/objects/creature/ai/AiActor.idl():  		Logger.setLoggingName("AiActor");
 	Logger::setLoggingName("AiActor");
 	// server/zone/objects/creature/ai/AiActor.idl():  		Logger.setLogging(false);
@@ -1639,6 +1633,11 @@ CreatureObject* AiActorImplementation::getHost() {
 void AiActorImplementation::setCurrentMessage(unsigned short msg) {
 	// server/zone/objects/creature/ai/AiActor.idl():  		currentMessage = msg;
 	currentMessage = msg;
+}
+
+CreatureTemplateReference* AiActorImplementation::getNpcTemplate() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return npcTemplate;
+	return (&npcTemplate);
 }
 
 bool AiActorImplementation::isCamouflaged(CreatureObject* target) {
@@ -2005,6 +2004,11 @@ CreatureTemplate* AiActorImplementation::getCreatureTemplate() {
 	return (&npcTemplate)->get();
 }
 
+bool AiActorImplementation::isActorObject() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return true;
+	return true;
+}
+
 /*
  *	AiActorAdapter
  */
@@ -2013,7 +2017,7 @@ CreatureTemplate* AiActorImplementation::getCreatureTemplate() {
 #include "engine/orb/messages/InvokeMethodMessage.h"
 
 
-AiActorAdapter::AiActorAdapter(AiActor* obj) : ObservableAdapter(obj) {
+AiActorAdapter::AiActorAdapter(AiActor* obj) : SceneObjectAdapter(obj) {
 }
 
 void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -2058,6 +2062,11 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NEXT__:
 		{
 			next();
+		}
+		break;
+	case RPC_DESTROYACTOR__:
+		{
+			destroyActor();
 		}
 		break;
 	case RPC_ADDTRANSITION__STRING_SHORT_STRING_:
@@ -2109,11 +2118,6 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ACTIVATEMOVEMENTEVENT__:
 		{
 			activateMovementEvent();
-		}
-		break;
-	case RPC_ACTIVATEWAITEVENT__:
-		{
-			activateWaitEvent();
 		}
 		break;
 	case RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_:
@@ -2401,6 +2405,11 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertInt(getDiet());
 		}
 		break;
+	case RPC_ISACTOROBJECT__:
+		{
+			resp->insertBoolean(isActorObject());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -2436,6 +2445,10 @@ void AiActorAdapter::next(unsigned short msg) {
 
 void AiActorAdapter::next() {
 	(static_cast<AiActor*>(stub))->next();
+}
+
+void AiActorAdapter::destroyActor() {
+	(static_cast<AiActor*>(stub))->destroyActor();
 }
 
 void AiActorAdapter::addTransition(const String& stateName, unsigned short msg, const String& resultState) {
@@ -2476,10 +2489,6 @@ void AiActorAdapter::activateRecovery() {
 
 void AiActorAdapter::activateMovementEvent() {
 	(static_cast<AiActor*>(stub))->activateMovementEvent();
-}
-
-void AiActorAdapter::activateWaitEvent() {
-	(static_cast<AiActor*>(stub))->activateWaitEvent();
 }
 
 void AiActorAdapter::activateAwarenessEvent(CreatureObject* target) {
@@ -2710,6 +2719,10 @@ unsigned int AiActorAdapter::getDiet() {
 	return (static_cast<AiActor*>(stub))->getDiet();
 }
 
+bool AiActorAdapter::isActorObject() {
+	return (static_cast<AiActor*>(stub))->isActorObject();
+}
+
 /*
  *	AiActorHelper
  */
@@ -2731,7 +2744,7 @@ DistributedObject* AiActorHelper::instantiateObject() {
 }
 
 DistributedObjectServant* AiActorHelper::instantiateServant() {
-	return new AiActorImplementation(DummyConstructorParameter::instance());
+	return new AiActorImplementation();
 }
 
 DistributedObjectAdapter* AiActorHelper::createAdapter(DistributedObjectStub* obj) {

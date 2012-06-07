@@ -45,7 +45,6 @@ void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 
 	int oldLevel = host->getLevel();
 
-	actor->loadTemplateData(host->getObjectTemplate());
 	actor->loadTemplateData(actor->getCreatureTemplate());
 
 	if (oldLevel != host->getLevel())

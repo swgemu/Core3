@@ -832,14 +832,6 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 		if (damage > 0) {
 			threatMap->addDamage(player, damage, xp);
-
-			// TODO: put this logic (or something similar) in the attack state -- this is temporary
-			if (System::random(5) == 1) {
-				if (isAiActor())
-					getActorObject()->setDefender(player);
-				else if (!isPlayerCreature())
-					setDefender(player);
-			}
 		}
 	}
 
@@ -2069,6 +2061,9 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 
 void CreatureObjectImplementation::activateStateRecovery() {
 	//applyDots();
+	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
+		damageOverTimeList.activateDots(_this.get());
+	}
 
 	//updateStates();
 }

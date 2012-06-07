@@ -752,6 +752,8 @@ public:
 
 	bool isMissionObject();
 
+	bool isActorObject();
+
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
@@ -1383,6 +1385,8 @@ public:
 
 	virtual bool isMissionObject();
 
+	virtual bool isActorObject();
+
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
@@ -1879,6 +1883,8 @@ public:
 	bool isMissionTerminal();
 
 	bool isMissionObject();
+
+	bool isActorObject();
 
 	int getPlanetMapCategoryCRC();
 

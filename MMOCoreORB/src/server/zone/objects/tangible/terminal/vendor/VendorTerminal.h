@@ -194,6 +194,8 @@ class VendorTerminalImplementation : public TerminalImplementation {
 protected:
 	Vendor vendor;
 
+	unsigned long long storedOid;
+
 public:
 	VendorTerminalImplementation();
 

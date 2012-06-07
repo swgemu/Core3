@@ -48,7 +48,6 @@ include server.zone.objects.creature.ai.components.AiStateComponent;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.events.AiThinkEvent;
 import server.zone.objects.creature.events.AiMoveEvent;
-import server.zone.objects.creature.events.AiWaitEvent;
 import server.zone.objects.creature.events.AiAwarenessEvent;
 import server.zone.objects.creature.events.DespawnCreatureOnPlayerDissappear;
 include server.zone.objects.creature.PatrolPointsVector;
@@ -69,7 +68,7 @@ import engine.core.ManagedObject;
 include system.thread.Mutex;
 import system.lang.Time;
 
-class AiActor extends Observable implements Logger {
+class AiActor extends SceneObject {
 	// finished moving and/or finished dying/spawning
 	public static final unsigned short FINISHED = 0;
 	// not finished moving
@@ -111,8 +110,6 @@ class AiActor extends Observable implements Logger {
 	
 	protected boolean loadedOutfit;
 	
-	protected boolean isCreature;
-	
 	protected unsigned short currentMessage;
 	
 	protected CreatureObject host;
@@ -123,7 +120,6 @@ class AiActor extends Observable implements Logger {
 
 	protected transient AiThinkEvent thinkEvent;
 	protected transient AiMoveEvent moveEvent;
-	protected transient AiWaitEvent waitEvent;
 	protected transient AiAwarenessEvent awarenessEvent;
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
 	
@@ -152,10 +148,10 @@ class AiActor extends Observable implements Logger {
 	protected boolean showNextMovementPosition;
 	protected Vector<SceneObject> movementMarkers;
 	
-	public AiActor(AiTemplate ait) {
+	public AiActor() {
 		host = null;
 		
-		aiTemplate = ait;
+		aiTemplate = null;
 
 		respawnTimer = 0;
 		
@@ -165,7 +161,6 @@ class AiActor extends Observable implements Logger {
 		numberOfPlayersInRange = 0;
 		
 		loadedOutfit = false;
-		isCreature = true;
 		
 		Logger.setLoggingName("AiActor");
 		Logger.setLogging(false);
@@ -204,23 +199,21 @@ class AiActor extends Observable implements Logger {
 	 */
 	public native void next(unsigned short msg);
 	public native void next();
+	public native void destroyActor();
 
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
 	
 	public native void addTransition(final string stateName, unsigned short msg, final string resultState);
 	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	@local
-	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
 	@local
 	public native void loadTemplateData(CreatureTemplate templateData);
+	
+	@local
+	@read
+	public CreatureTemplateReference getNpcTemplate() {
+		return npcTemplate;
+	}
 
 	public native void setLevel(int lvl);
 	public native int calculateAttackMinDamage(int level);
@@ -237,7 +230,6 @@ class AiActor extends Observable implements Logger {
 	// events
 	public abstract native void activateRecovery();
 	public abstract native void activateMovementEvent();
-	public abstract native void activateWaitEvent();
 	public native void activateAwarenessEvent(CreatureObject target);
 	public native void activatePostureRecovery();
 	public native void queueDizzyFallEvent();
@@ -595,4 +587,9 @@ class AiActor extends Observable implements Logger {
 	@local
 	@dereferenced
 	public native Time getLastDamageReceived();
+	
+	@dirty
+	public boolean isActorObject() {
+		return true;
+	}
 }

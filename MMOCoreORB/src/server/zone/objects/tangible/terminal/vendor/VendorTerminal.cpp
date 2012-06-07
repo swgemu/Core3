@@ -305,6 +305,8 @@ VendorTerminalImplementation::VendorTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		Logger.setLoggingName("VendorTerminal");
 	Logger::setLoggingName("VendorTerminal");
+	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		storedOid = 0;
+	storedOid = 0;
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	TerminalImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
 }
