@@ -60,18 +60,24 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		ghost->setJediState(2);
 
 		// Trainer number. Pick a random trainer, there are at least 600 in the galaxy.
-		CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
-		Vector<float>* trainersX = creatureManager->getTrainerObjectsX();
-		Vector<float>* trainersY = creatureManager->getTrainerObjectsY();
-		Vector<String>* trainerZone = creatureManager->getTrainerZone();
-		uint32 trainerNumber = System::random(trainersX->size() - 1);
 
-		int posX = trainersX->get(trainerNumber);
-		int posY = trainersY->get(trainerNumber);
-		String planetName = trainerZone->get(trainerNumber);
+		ZoneServer* zoneServer = ghost->getZoneServer();
+		int randomZone = System::random(zoneServer->getZoneCount() - 1);
 
-		ghost->setTrainerCoordinates(posX, posY);
-		ghost->setTrainerZone(planetName);
+		ManagedReference<Zone*> zone = zoneServer->getZone(randomZone);
+		Vector3 randomTrainer = zone->getCreatureManager()->getRandomJediTrainer();
+
+		if ((randomTrainer.getX() == 0) && (randomTrainer.getY() == 0)) { // No trainers on the zone.
+			ManagedReference<Zone*> zone = zoneServer->getZone(0);
+			Vector3 randomTrainer = zone->getCreatureManager()->getRandomJediTrainer();
+		}
+
+		Vector3 trainerPositionFinal(randomTrainer.getX(), randomTrainer.getY(), 0);
+
+		String zoneName = zone->getZoneName();
+
+		ghost->setTrainerCoordinates(trainerPositionFinal);
+		ghost->setTrainerZoneName(zoneName); // For the Waypoint.
 
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");

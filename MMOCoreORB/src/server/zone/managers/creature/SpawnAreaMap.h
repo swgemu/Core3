@@ -25,10 +25,7 @@ protected:
 
 	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
-	Vector<float> trainerObjectsX;
-	Vector<float> trainerObjectsY;
-
-	Vector<String> trainerZone;
+	Vector<Vector3> trainerObjects;
 
 	void readAreaObject(LuaObject& areaObj);
 	void loadStaticSpawns();
@@ -54,20 +51,10 @@ public:
 
 	void loadMap(Zone* z);
 
+	Vector3 getRandomJediTrainer();
+
 	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
-	}
-
-	Vector<float>* getTrainerObjectsX() {
-		return &trainerObjectsX;
-	}
-
-	Vector<float>* getTrainerObjectsY() {
-		return &trainerObjectsY;
-	}
-
-	Vector<String>* getTrainerZone() {
-		return &trainerZone;
 	}
 };
 

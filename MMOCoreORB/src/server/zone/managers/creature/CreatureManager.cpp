@@ -330,6 +330,15 @@ int CreatureManager::getSpawnedRandomCreatures() {
 		return _implementation->getSpawnedRandomCreatures();
 }
 
+Vector3 CreatureManager::getRandomJediTrainer() {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomJediTrainer();
+}
+
 Vector<ManagedReference<SpawnArea* > >* CreatureManager::getWorldSpawnAreas() {
 	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -337,33 +346,6 @@ Vector<ManagedReference<SpawnArea* > >* CreatureManager::getWorldSpawnAreas() {
 
 	} else
 		return _implementation->getWorldSpawnAreas();
-}
-
-Vector<float>* CreatureManager::getTrainerObjectsX() {
-	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getTrainerObjectsX();
-}
-
-Vector<float>* CreatureManager::getTrainerObjectsY() {
-	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getTrainerObjectsY();
-}
-
-Vector<String>* CreatureManager::getTrainerZone() {
-	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getTrainerZone();
 }
 
 SpawnArea* CreatureManager::getSpawnArea(const String& areaname) {
@@ -605,21 +587,6 @@ int CreatureManagerImplementation::getSpawnedRandomCreatures() {
 Vector<ManagedReference<SpawnArea* > >* CreatureManagerImplementation::getWorldSpawnAreas() {
 	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getWorldSpawnAreas();
 	return (&spawnAreaMap)->getWorldSpawnAreas();
-}
-
-Vector<float>* CreatureManagerImplementation::getTrainerObjectsX() {
-	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getTrainerObjectsX();
-	return (&spawnAreaMap)->getTrainerObjectsX();
-}
-
-Vector<float>* CreatureManagerImplementation::getTrainerObjectsY() {
-	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getTrainerObjectsY();
-	return (&spawnAreaMap)->getTrainerObjectsY();
-}
-
-Vector<String>* CreatureManagerImplementation::getTrainerZone() {
-	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getTrainerZone();
-	return (&spawnAreaMap)->getTrainerZone();
 }
 
 /*

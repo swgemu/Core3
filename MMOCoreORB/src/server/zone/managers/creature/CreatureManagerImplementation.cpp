@@ -578,3 +578,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 		}
 	}
 }
+
+Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
+	return spawnAreaMap.getRandomJediTrainer();
+}

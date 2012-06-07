@@ -283,6 +283,8 @@ using namespace server::zone::objects::player::events;
 
 #include "system/util/SortedVector.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -456,15 +458,13 @@ public:
 
 	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerCoordinates(const Vector3& trainer);
 
-	float getTrainerCoordinatesY();
+	Vector3 getTrainerCoordinates();
 
-	float getTrainerCoordinatesX();
+	void setTrainerZoneName(String& zoneName);
 
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -888,11 +888,9 @@ protected:
 
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
-	float trainerCoordinatesX;
+	Vector3 trainerCoordinates;
 
-	float trainerCoordinatesY;
-
-	String trainerZone;
+	String trainerZoneName;
 
 	Reference<PlayerDisconnectEvent*> disconnectEvent;
 
@@ -1107,15 +1105,13 @@ public:
 
 	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerCoordinates(const Vector3& trainer);
 
-	float getTrainerCoordinatesY();
+	Vector3 getTrainerCoordinates();
 
-	float getTrainerCoordinatesX();
+	void setTrainerZoneName(String& zoneName);
 
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -1580,15 +1576,9 @@ public:
 
 	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerZoneName(String& zoneName);
 
-	float getTrainerCoordinatesY();
-
-	float getTrainerCoordinatesX();
-
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	void addPersistentMessage(unsigned long long id);
 

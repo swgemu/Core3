@@ -125,9 +125,8 @@ void SpawnAreaMap::loadStaticSpawns() {
 				}
 
 				if (name.contains("trainer_")) {
-					trainerObjectsX.add(creatureObject->getWorldPositionX());
-					trainerObjectsY.add(creatureObject->getWorldPositionY());
-					trainerZone.add(zone->getZoneName());
+					Vector3 coords(creatureObject.get()->getWorldPositionX(), creatureObject.get()->getWorldPositionY(), 0);
+					trainerObjects.add(coords);
 				}
 			} else {
 				StringBuffer msg;
@@ -221,4 +220,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 			staticArea->spawnCreatures();
 		}
 	}
+}
+
+Vector3 SpawnAreaMap::getRandomJediTrainer() {
+	uint32 size = trainerObjects.size();
+	return trainerObjects.get(System::random(size - 1));
 }

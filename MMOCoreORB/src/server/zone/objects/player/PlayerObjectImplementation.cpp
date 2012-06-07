@@ -135,6 +135,8 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 	forcePowerMax = getForcePowerMax();
 	forcePowerRegen = getForcePowerRegen();
 
+	trainerZoneName = getTrainerZoneName();
+
 	foodFilling = 0;
 	foodFillingMax = 100;
 
@@ -1600,4 +1602,12 @@ bool PlayerObjectImplementation::isInBountyLockList(uint64 playerId) {
 
 Time PlayerObjectImplementation::getLastVisibilityUpdateTimestamp() {
 	return lastVisibilityUpdateTimestamp;
+}
+
+Vector3 PlayerObjectImplementation::getTrainerCoordinates() {
+	return trainerCoordinates;
+}
+
+void PlayerObjectImplementation::setTrainerCoordinates(const Vector3& trainer) {
+	trainerCoordinates = trainer;
 }

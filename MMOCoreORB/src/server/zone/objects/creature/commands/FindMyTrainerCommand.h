@@ -78,19 +78,17 @@ public:
 			return GENERALERROR;
 
 
-		String planet = ghost->getTrainerZone();
+		String planet = ghost->getTrainerZoneName();
+		uint32 planetCRC = planet.hashCode();
 
-		float x = ghost->getTrainerCoordinatesX();
-		float y = ghost->getTrainerCoordinatesY();
+		Vector3 coords = ghost->getTrainerCoordinates();
 
 		String name = "@jedi_spam:trainer_waypoint_name";
 
 		ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
-		obj->setPlanetCRC(planet.hashCode());
-		obj->setPosition(x, 0, y);
+		obj->setPlanetCRC(planetCRC);
+		obj->setPosition(coords.getX(), 0, coords.getY());
 		obj->setCustomObjectName(name, false);
-		obj->setSpecialTypeID(WaypointObject::COLOR_BLUE);
-		obj->setActive(true);
 
 		ghost->addWaypoint(obj, true, true);
 

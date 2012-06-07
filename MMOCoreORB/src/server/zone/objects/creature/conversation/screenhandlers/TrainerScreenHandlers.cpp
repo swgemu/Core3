@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "TrainerScreenHandlers.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
+#include "server/zone/Zone.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";
@@ -69,8 +70,12 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 
 	String masterSkill = conversationScreen->getOptionLink(0);
 
-	PlayerObject* ghost = conversingPlayer->getPlayerObject();
+	session->setMasterSkill(masterSkill);
 
+	ManagedReference<PlayerObject*> ghost = conversingPlayer->getPlayerObject();
+
+	if (ghost == NULL)
+		return NULL;
 
 	String jedi1 = "force_discipline_light_saber_master";
 	String jedi2 = "force_discipline_defender_master";
@@ -78,15 +83,17 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 	String jedi4 = "force_discipline_enhancements_master";
 	String jedi5 = "force_discipline_healing_master";
 
-	if ((conversingNPC->getWorldPositionX() - ghost->getTrainerCoordinatesX() <= 3) && (conversingNPC->getWorldPositionY() - ghost->getTrainerCoordinatesY() <= 3)) {
+	Vector3 npc(conversingNPC->getWorldPositionX(), conversingNPC->getWorldPositionY(), 0);
+	Vector3 playerCoord = ghost->getTrainerCoordinates();
+	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
+
+	if ((npc == player) && (ghost->getTrainerZoneName() == conversingNPC->getZone()->getZoneName())) {
 		session->addAdditionalMasterSkill(jedi1);
 		session->addAdditionalMasterSkill(jedi2);
 		session->addAdditionalMasterSkill(jedi3);
 		session->addAdditionalMasterSkill(jedi4);
 		session->addAdditionalMasterSkill(jedi5);
 	}
-
-		session->setMasterSkill(masterSkill);
 
 	if (conversingPlayer->hasSkill(session->getMasterSkill())) {
 		nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;

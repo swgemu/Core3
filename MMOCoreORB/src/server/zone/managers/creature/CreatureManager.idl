@@ -15,6 +15,7 @@ import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
+import engine.util.u3d.Vector3;
 
 class CreatureManager extends ZoneManager {
 	protected Zone zone;
@@ -118,23 +119,12 @@ class CreatureManager extends ZoneManager {
 	}
 	
 	@local
+	@dereferenced
+	public native Vector3 getRandomJediTrainer();
+	
+	@local
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
-	}
-	
-	@local
-	public Vector<float> getTrainerObjectsX() {
-		return spawnAreaMap.getTrainerObjectsX();
-	}
-	
-	@local
-	public Vector<float> getTrainerObjectsY() {
-		return spawnAreaMap.getTrainerObjectsY();
-	}
-	
-	@local
-	public Vector<string> getTrainerZone() {
-		return spawnAreaMap.getTrainerZone();
 	}
 	
 	public native SpawnArea getSpawnArea(final string areaname);

@@ -155,6 +155,8 @@ using namespace server::zone::objects::area;
 
 #include "system/util/Vector.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -202,13 +204,9 @@ public:
 
 	int getSpawnedRandomCreatures();
 
+	Vector3 getRandomJediTrainer();
+
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
-
-	Vector<float>* getTrainerObjectsX();
-
-	Vector<float>* getTrainerObjectsY();
-
-	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -301,13 +299,9 @@ public:
 
 	int getSpawnedRandomCreatures();
 
+	Vector3 getRandomJediTrainer();
+
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
-
-	Vector<float>* getTrainerObjectsX();
-
-	Vector<float>* getTrainerObjectsY();
-
-	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
