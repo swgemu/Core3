@@ -34,12 +34,13 @@ void VendorCreatureImplementation::initializeTransientMembers() {
 	if (vendor.isInitialized())
 		vendor.rescheduleEvent();
 
-	VendorManager::instance()->addVendor(getObjectID(), &vendor);
+	storedOid = getObjectID();
+	VendorManager::instance()->addVendor(storedOid, &vendor);
 
 }
 
 void VendorCreatureImplementation::finalize() {
-	VendorManager::instance()->dropVendor(getObjectID());
+	VendorManager::instance()->dropVendor(storedOid);
 }
 
 void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
