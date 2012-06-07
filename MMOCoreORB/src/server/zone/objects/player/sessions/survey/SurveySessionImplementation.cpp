@@ -27,7 +27,6 @@ int SurveySessionImplementation::initializeSession(SurveyTool* tool) {
 
 int SurveySessionImplementation::startSession() {
 	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
-	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
 	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
 	ManagedReference<PlayerObject*> surveyerGhost = this->surveyerGhost.get();
 
