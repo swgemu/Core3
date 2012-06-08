@@ -313,6 +313,9 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (newParent != NULL && newParent->getZone() == NULL)
 		return;
 
+	if (newParent != NULL && !newParent->isCellObject())
+		newParent = NULL;
+
 	if (newParent != NULL)
 		sceneObject->sendMessage(new GameSceneChangedMessage());
 
