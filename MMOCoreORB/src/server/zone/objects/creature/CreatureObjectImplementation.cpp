@@ -279,7 +279,7 @@ void CreatureObjectImplementation::finalize() {
 }
 
 void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isInvisible() && creo != _this.get())
+	if (isInvisible() && player != _this.get())
 		return;
 
 	TangibleObjectImplementation::sendTo(player, doClose);
