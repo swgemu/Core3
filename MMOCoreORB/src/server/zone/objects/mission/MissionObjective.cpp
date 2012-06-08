@@ -202,7 +202,7 @@ void MissionObjective::fail() {
 		_implementation->fail();
 }
 
-MissionObject* MissionObjective::getMissionObject() {
+ManagedWeakReference<MissionObject* > MissionObjective::getMissionObject() {
 	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -228,7 +228,7 @@ unsigned int MissionObjective::getObjectiveType() {
 		return _implementation->getObjectiveType();
 }
 
-CreatureObject* MissionObjective::getPlayerOwner() {
+ManagedWeakReference<CreatureObject* > MissionObjective::getPlayerOwner() {
 	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -329,39 +329,39 @@ void MissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* MissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MissionObjectiveImplementation::operator const MissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void MissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MissionObjectiveImplementation::_serializationHelperMethod() {
@@ -523,7 +523,7 @@ bool MissionObjectiveImplementation::hasObservers() {
 	return (&observers)->size() != 0;
 }
 
-MissionObject* MissionObjectiveImplementation::getMissionObject() {
+ManagedWeakReference<MissionObject* > MissionObjectiveImplementation::getMissionObject() {
 	// server/zone/objects/mission/MissionObjective.idl():  		return mission;
 	return mission;
 }
@@ -610,7 +610,7 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETMISSIONOBJECT__:
 		{
-			resp->insertLong(getMissionObject()->_getObjectID());
+			resp->insertLong(getMissionObject().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETOBJECTIVETYPE__:
@@ -620,7 +620,7 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_GETPLAYEROWNER__:
 		{
-			resp->insertLong(getPlayerOwner()->_getObjectID());
+			resp->insertLong(getPlayerOwner().get()->_getObjectID());
 		}
 		break;
 	case RPC_AWARDFACTIONPOINTS__:
@@ -691,7 +691,7 @@ void MissionObjectiveAdapter::fail() {
 	(static_cast<MissionObjective*>(stub))->fail();
 }
 
-MissionObject* MissionObjectiveAdapter::getMissionObject() {
+ManagedWeakReference<MissionObject* > MissionObjectiveAdapter::getMissionObject() {
 	return (static_cast<MissionObjective*>(stub))->getMissionObject();
 }
 
@@ -699,7 +699,7 @@ unsigned int MissionObjectiveAdapter::getObjectiveType() {
 	return (static_cast<MissionObjective*>(stub))->getObjectiveType();
 }
 
-CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
+ManagedWeakReference<CreatureObject* > MissionObjectiveAdapter::getPlayerOwner() {
 	return (static_cast<MissionObjective*>(stub))->getPlayerOwner();
 }
 

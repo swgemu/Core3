@@ -102,7 +102,7 @@ public:
 
 	void setCityRegion(CityRegion* city);
 
-	CityRegion* getCityRegion();
+	ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void notifyLoadFromDatabase();
 
@@ -151,7 +151,7 @@ public:
 
 	void setCityRegion(CityRegion* city);
 
-	CityRegion* getCityRegion();
+	ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void notifyLoadFromDatabase();
 
@@ -210,7 +210,7 @@ public:
 
 	void setCityRegion(CityRegion* city);
 
-	CityRegion* getCityRegion();
+	ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void notifyLoadFromDatabase();
 

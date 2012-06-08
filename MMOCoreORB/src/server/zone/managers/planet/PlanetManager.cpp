@@ -617,39 +617,39 @@ void PlanetManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PlanetManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PlanetManagerImplementation::operator const PlanetManager*() {
-	return _this;
+	return _this.get();
 }
 
 void PlanetManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PlanetManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PlanetManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PlanetManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PlanetManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PlanetManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PlanetManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PlanetManagerImplementation::_serializationHelperMethod() {
@@ -683,7 +683,7 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 
 	if (_name == "PlanetManager.zone") {
-		TypeInfo<ManagedWeakReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
@@ -748,7 +748,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<Zone* > >::toBinaryStream(&zone, stream);
+	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -901,13 +901,13 @@ CityRegion* PlanetManagerImplementation::getRegionAt(float x, float y) {
 }
 
 void PlanetManagerImplementation::addRegion(CityRegion* region) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/planet/PlanetManager.idl():  		regionMap.addRegion(region);
 	(&regionMap)->addRegion(region);
 }
 
 void PlanetManagerImplementation::dropRegion(const String& region) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/planet/PlanetManager.idl():  		regionMap.dropRegion(region);
 	(&regionMap)->dropRegion(region);
 }
@@ -948,7 +948,7 @@ PlanetTravelPoint* PlanetManagerImplementation::getPlanetTravelPoint(const Strin
 }
 
 void PlanetManagerImplementation::removeShuttle(CreatureObject* shuttle) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.drop(shuttle.getObjectID());
 	(&shuttleMap)->drop(shuttle->getObjectID());
 }

@@ -69,7 +69,9 @@ public:
 	}
 
 	void run() {
-		Locker _locker(player->getParent());
+		ManagedReference<SceneObject*> strongParent = player->getParent();
+
+		Locker _locker(strongParent);
 
 		player->clearRecoveryEvent();
 

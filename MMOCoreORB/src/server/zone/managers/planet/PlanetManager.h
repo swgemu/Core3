@@ -300,7 +300,7 @@ namespace planet {
 
 class PlanetManagerImplementation : public ManagedServiceImplementation, public Logger {
 protected:
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	RegionMap regionMap;
 

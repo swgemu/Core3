@@ -305,39 +305,39 @@ void ResourceContainerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ResourceContainerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ResourceContainerImplementation::operator const ResourceContainer*() {
-	return _this;
+	return _this.get();
 }
 
 void ResourceContainerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ResourceContainerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ResourceContainerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ResourceContainerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ResourceContainerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ResourceContainerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ResourceContainerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ResourceContainerImplementation::_serializationHelperMethod() {

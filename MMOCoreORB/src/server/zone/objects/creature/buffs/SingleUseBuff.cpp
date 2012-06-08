@@ -133,39 +133,39 @@ void SingleUseBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SingleUseBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SingleUseBuffImplementation::operator const SingleUseBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void SingleUseBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SingleUseBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SingleUseBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SingleUseBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SingleUseBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SingleUseBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SingleUseBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SingleUseBuffImplementation::_serializationHelperMethod() {
@@ -282,7 +282,7 @@ SingleUseBuffImplementation::SingleUseBuffImplementation(CreatureObject* creo, u
 void SingleUseBuffImplementation::init(Vector<unsigned int>* events) {
 	ManagedReference<SingleUseBuffObserver*> _ref0;
 	// server/zone/objects/creature/buffs/SingleUseBuff.idl():  		observer = new SingleUseBuffObserver(this);
-	observer = _ref0 = new SingleUseBuffObserver(_this);
+	observer = _ref0 = new SingleUseBuffObserver(_this.get());
 	// server/zone/objects/creature/buffs/SingleUseBuff.idl():  		ObjectManager.instance().persistObject(observer, 1, "buffs");
 	ObjectManager::instance()->persistObject(observer, 1, "buffs");
 	// server/zone/objects/creature/buffs/SingleUseBuff.idl():  		}

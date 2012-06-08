@@ -175,7 +175,7 @@ public:
 		itemWarningLevel = lvl;
 	}
 
-	inline SceneObject* getVendor() {
+	inline ManagedWeakReference<SceneObject*> getVendor() {
 		return vendorRef;
 	}
 

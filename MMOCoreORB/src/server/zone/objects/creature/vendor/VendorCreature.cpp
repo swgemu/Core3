@@ -249,39 +249,39 @@ void VendorCreatureImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VendorCreatureImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 VendorCreatureImplementation::operator const VendorCreature*() {
-	return _this;
+	return _this.get();
 }
 
 void VendorCreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void VendorCreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void VendorCreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void VendorCreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void VendorCreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void VendorCreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void VendorCreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void VendorCreatureImplementation::_serializationHelperMethod() {

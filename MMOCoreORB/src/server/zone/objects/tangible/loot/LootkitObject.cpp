@@ -79,7 +79,7 @@ int LootkitObject::notifyObjectInserted(SceneObject* object) {
 		return _implementation->notifyObjectInserted(object);
 }
 
-CreatureObject* LootkitObject::getPlayer() {
+ManagedWeakReference<CreatureObject* > LootkitObject::getPlayer() {
 	LootkitObjectImplementation* _implementation = static_cast<LootkitObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -156,39 +156,39 @@ void LootkitObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* LootkitObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 LootkitObjectImplementation::operator const LootkitObject*() {
-	return _this;
+	return _this.get();
 }
 
 void LootkitObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void LootkitObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void LootkitObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void LootkitObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void LootkitObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void LootkitObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void LootkitObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void LootkitObjectImplementation::_serializationHelperMethod() {
@@ -353,7 +353,7 @@ void LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETPLAYER__:
 		{
-			resp->insertLong(getPlayer()->_getObjectID());
+			resp->insertLong(getPlayer().get()->_getObjectID());
 		}
 		break;
 	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
@@ -378,7 +378,7 @@ int LootkitObjectAdapter::notifyObjectInserted(SceneObject* object) {
 	return (static_cast<LootkitObject*>(stub))->notifyObjectInserted(object);
 }
 
-CreatureObject* LootkitObjectAdapter::getPlayer() {
+ManagedWeakReference<CreatureObject* > LootkitObjectAdapter::getPlayer() {
 	return (static_cast<LootkitObject*>(stub))->getPlayer();
 }
 

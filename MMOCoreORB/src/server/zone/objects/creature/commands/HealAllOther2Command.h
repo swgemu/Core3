@@ -134,16 +134,14 @@ public:
 		} else if (mindDamage > 0) {
 			msgBody << mindDamage << " mind";
 		} else {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no dmg of that type to heal.	
-			return; //No damage to heal.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
+			return; 
 		}
 
 		msgTail << " damage.";
 
-			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
-			msgTarget << creature->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString(); // You heal %TT for %DI points of %TO.
+			msgTarget << "You are healed for " << msgBody.toString() << " points of damage by " << creature->getFirstName(); // You are healed for %DI points of %TO by %TT.
 
 			creature->sendSystemMessage(msgPlayer.toString());
 			creatureTarget->sendSystemMessage(msgTarget.toString());
@@ -152,32 +150,14 @@ public:
 	
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no wounds of that type to heal.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
 			return false;
 		}
 
 		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Force Heal All Other while prone.");
 			return false;
 		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Force Heal All Other while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
-		
+			
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
@@ -210,7 +190,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -247,7 +229,7 @@ public:
 		
 		if (playerObject->getForcePower() <= 340) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
-			return false;
+			return GENERALERROR;
 		}
 		
 		forceCost = MIN(((healedHealth + healedAction + healedMind) / 9.5), 470);

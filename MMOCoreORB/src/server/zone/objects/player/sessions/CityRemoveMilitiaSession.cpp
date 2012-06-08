@@ -128,39 +128,39 @@ void CityRemoveMilitiaSessionImplementation::_setStub(DistributedObjectStub* stu
 }
 
 DistributedObjectStub* CityRemoveMilitiaSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CityRemoveMilitiaSessionImplementation::operator const CityRemoveMilitiaSession*() {
-	return _this;
+	return _this.get();
 }
 
 void CityRemoveMilitiaSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CityRemoveMilitiaSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CityRemoveMilitiaSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CityRemoveMilitiaSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CityRemoveMilitiaSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CityRemoveMilitiaSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CityRemoveMilitiaSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CityRemoveMilitiaSessionImplementation::_serializationHelperMethod() {
@@ -289,7 +289,7 @@ unsigned long long CityRemoveMilitiaSessionImplementation::getMilitiaID() {
 
 int CityRemoveMilitiaSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/CityRemoveMilitiaSession.idl():  		creatureObject.dropActiveSession(SessionFacadeType.CITYMILITIA);
-	creatureObject->dropActiveSession(SessionFacadeType::CITYMILITIA);
+	creatureObject.get()->dropActiveSession(SessionFacadeType::CITYMILITIA);
 	// server/zone/objects/player/sessions/CityRemoveMilitiaSession.idl():  		return 0;
 	return 0;
 }

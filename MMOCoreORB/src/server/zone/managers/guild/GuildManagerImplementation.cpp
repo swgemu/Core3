@@ -48,7 +48,7 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 
 void GuildManagerImplementation::loadGuilds() {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	ObjectDatabase* guildsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("guilds", true);
 
@@ -137,7 +137,7 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 }
 
 bool GuildManagerImplementation::guildNameExists(const String& guildName) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	for (int i = 0; i < guildList.size(); ++i) {
 		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
@@ -153,7 +153,7 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 }
 
 bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	for (int i = 0; i < guildList.size(); ++i) {
 		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
@@ -403,20 +403,20 @@ void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, Guil
 }
 
 void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
-	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this->_getObjectID(), 0x7D40E2E6);
+	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this.get()->_getObjectID(), 0x7D40E2E6);
 	player->sendMessage(create);
 
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
-	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this->_getObjectID());
+	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this.get()->_getObjectID());
 	player->sendMessage(gild3);
 
 	_lock.release();
 
-	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this->_getObjectID());
+	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this.get()->_getObjectID());
 	player->sendMessage(gild6);
 
-	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this->_getObjectID());
+	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this.get()->_getObjectID());
 	player->sendMessage(close);
 
 
@@ -458,7 +458,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 		return NULL;
 	}
 
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	uint64 playerID = player->getObjectID();
 
@@ -485,7 +485,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	player->setGuildObject(guild);
 	terminal->setGuildObject(guild);
 
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
 	gildd3->startUpdate(0x04);
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();
@@ -506,7 +506,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 }
 
 bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	if (guild == NULL)
 		return false;
@@ -543,7 +543,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 	//TODO: This could probably be moved to the GuildObject destructor!
 	for (int i = 0; i < memberList->size(); ++i) {
-		Locker _locker(_this);
+		Locker _locker(_this.get());
 		GuildMemberInfo* gmi = &memberList->get(i);
 
 		if (gmi == NULL)
@@ -570,10 +570,10 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		member->broadcastMessage(creod6, true);
 	}
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	if (guildList.contains(guild->getGuildKey())) {
-		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this->_getObjectID());
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
 		gildd3->startUpdate(0x04);
 		guildList.drop(guild->getGuildKey(), gildd3);
 		gildd3->close();
@@ -965,7 +965,7 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 		return;
 	}
 
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_GUILDLIST);
 	listBox->setCallback(new ListGuildsResponseSuiCallback(server));

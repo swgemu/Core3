@@ -186,7 +186,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 			obj->initializePosition(x, z, y);
 			obj->setDirection(ow, ox, oy, oz);
 
-			SceneObject* parent = zone->getZoneServer()->getObject(parentID);
+			ManagedReference<SceneObject*> parent = zone->getZoneServer()->getObject(parentID);
 
 			if (parent != NULL)
 				parent->transferObject(obj, -1, true);
@@ -500,7 +500,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {
 	Vector3 testPosition(x, y, 0);
 
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	for (int i = 0; i < regionMap.getTotalRegions(); ++i) {
 		CityRegion* region = regionMap.getRegion(i);
@@ -531,7 +531,7 @@ bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* crea
 
 bool PlanetManagerImplementation::validateRegionName(const String& name) {
 	String lowerCase = name.toLowerCase();
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (hasRegion(name) || hasRegion(lowerCase))
 		return false;
@@ -678,7 +678,7 @@ SceneObject* PlanetManagerImplementation::createTicket(const String& departurePo
 }
 
 bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	Reference<ShuttleDepartureTask*> task = shuttleMap.get(shuttle->getObjectID());
 
@@ -741,7 +741,7 @@ void PlanetManagerImplementation::removePlayerCityTravelPoint(const String& city
 }
 
 void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
-	Locker locket(_this);
+	Locker locket(_this.get());
 
 	shuttle->setPosture(CreaturePosture::UPRIGHT);
 

@@ -59,7 +59,7 @@ public:
 		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION)) {
 			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
 			return false;
-		}
+		}		
 		
 		return true;
 	}

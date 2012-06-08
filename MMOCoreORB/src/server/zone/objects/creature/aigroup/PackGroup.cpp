@@ -79,39 +79,39 @@ void PackGroupImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PackGroupImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PackGroupImplementation::operator const PackGroup*() {
-	return _this;
+	return _this.get();
 }
 
 void PackGroupImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PackGroupImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PackGroupImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PackGroupImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PackGroupImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PackGroupImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PackGroupImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PackGroupImplementation::_serializationHelperMethod() {

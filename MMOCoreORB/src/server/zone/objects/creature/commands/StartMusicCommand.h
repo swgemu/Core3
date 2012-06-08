@@ -152,11 +152,11 @@ public:
 			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
 				targetedInstrument = true;
 				instrument = cast<Instrument*> (nala.get());
-				SceneObject* creatureParent = creature->getParent();
+				ManagedReference<SceneObject*> creatureParent = creature->getParent();
 
 				if (creature->getDistanceTo(nala) >= 3 || nala->getZone()
 						== NULL || (creatureParent == NULL && NULL
-						!= nala->getParent())) {
+						!= nala->getParent().get())) {
 					creature->sendSystemMessage("@elevator_text:too_far");
 
 					return GENERALERROR;

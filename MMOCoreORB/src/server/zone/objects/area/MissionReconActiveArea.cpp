@@ -116,39 +116,39 @@ void MissionReconActiveAreaImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* MissionReconActiveAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MissionReconActiveAreaImplementation::operator const MissionReconActiveArea*() {
-	return _this;
+	return _this.get();
 }
 
 void MissionReconActiveAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MissionReconActiveAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MissionReconActiveAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MissionReconActiveAreaImplementation::_serializationHelperMethod() {
@@ -251,14 +251,16 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if (missionObjective != NULL){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
-	CreatureObject* missionOwner = missionObjective->getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = missionObjective.get()->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  					if 
 	if (completeTask == NULL){
 	Reference<CompleteMissionAfterCertainTimeTask*> _ref0;
-	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask = new CompleteMissionAfterCertainTimeTask(missionObjective);
-	completeTask = _ref0 = new CompleteMissionAfterCertainTimeTask(missionObjective);
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						ReconMissionObjective strongReference = missionObjective;
+	ManagedReference<ReconMissionObjective* > strongReference = missionObjective;
+	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask = new CompleteMissionAfterCertainTimeTask(strongReference);
+	completeTask = _ref0 = new CompleteMissionAfterCertainTimeTask(strongReference);
 }
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				}
 	if (!completeTask->isScheduled()){
@@ -290,7 +292,7 @@ void MissionReconActiveAreaImplementation::notifyExit(SceneObject* player) {
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if (missionObjective != NULL){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
-	CreatureObject* missionOwner = missionObjective->getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = missionObjective.get()->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				}

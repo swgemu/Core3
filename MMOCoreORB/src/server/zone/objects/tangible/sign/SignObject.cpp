@@ -128,39 +128,39 @@ void SignObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SignObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SignObjectImplementation::operator const SignObject*() {
-	return _this;
+	return _this.get();
 }
 
 void SignObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SignObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SignObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SignObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SignObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SignObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SignObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SignObjectImplementation::_serializationHelperMethod() {

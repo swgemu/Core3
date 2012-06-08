@@ -132,39 +132,39 @@ void SuiTransferBoxImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SuiTransferBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiTransferBoxImplementation::operator const SuiTransferBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiTransferBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiTransferBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiTransferBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiTransferBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiTransferBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiTransferBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiTransferBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiTransferBoxImplementation::_serializationHelperMethod() {

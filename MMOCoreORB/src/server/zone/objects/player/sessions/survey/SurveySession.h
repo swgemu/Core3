@@ -132,11 +132,11 @@ public:
 
 	void surveyGnodeMinigame(int value);
 
-	SurveyTool* getActiveSurveyTool();
+	ManagedWeakReference<SurveyTool* > getActiveSurveyTool();
 
 	void setActiveSurveyTool(SurveyTool* tool);
 
-	SurveyTool* getOpenSurveyTool();
+	ManagedWeakReference<SurveyTool* > getOpenSurveyTool();
 
 	void setOpenSurveyTool(SurveyTool* tool);
 
@@ -227,11 +227,11 @@ private:
 public:
 	void surveyGnodeMinigame(int value);
 
-	SurveyTool* getActiveSurveyTool();
+	ManagedWeakReference<SurveyTool* > getActiveSurveyTool();
 
 	void setActiveSurveyTool(SurveyTool* tool);
 
-	SurveyTool* getOpenSurveyTool();
+	ManagedWeakReference<SurveyTool* > getOpenSurveyTool();
 
 	void setOpenSurveyTool(SurveyTool* tool);
 
@@ -302,11 +302,11 @@ public:
 
 	void surveyGnodeMinigame(int value);
 
-	SurveyTool* getActiveSurveyTool();
+	ManagedWeakReference<SurveyTool* > getActiveSurveyTool();
 
 	void setActiveSurveyTool(SurveyTool* tool);
 
-	SurveyTool* getOpenSurveyTool();
+	ManagedWeakReference<SurveyTool* > getOpenSurveyTool();
 
 	void setOpenSurveyTool(SurveyTool* tool);
 

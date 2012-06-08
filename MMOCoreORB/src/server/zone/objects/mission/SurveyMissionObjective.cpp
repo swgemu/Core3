@@ -179,39 +179,39 @@ void SurveyMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* SurveyMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SurveyMissionObjectiveImplementation::operator const SurveyMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void SurveyMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SurveyMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SurveyMissionObjectiveImplementation::_serializationHelperMethod() {
@@ -322,8 +322,10 @@ void SurveyMissionObjectiveImplementation::setEfficiency(unsigned int eff) {
 }
 
 Vector3 SurveyMissionObjectiveImplementation::getEndPosition() {
-	// server/zone/objects/mission/SurveyMissionObjective.idl():  		return getPlayerOwner().getWorldPosition();
-	return getPlayerOwner()->getWorldPosition();
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		CreatureObject owner = getPlayerOwner();
+	ManagedReference<CreatureObject* > owner = getPlayerOwner();
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		return owner.getWorldPosition();
+	return owner->getWorldPosition();
 }
 
 /*

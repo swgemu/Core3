@@ -110,39 +110,39 @@ void NonPlayerCreatureObjectImplementation::_setStub(DistributedObjectStub* stub
 }
 
 DistributedObjectStub* NonPlayerCreatureObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 NonPlayerCreatureObjectImplementation::operator const NonPlayerCreatureObject*() {
-	return _this;
+	return _this.get();
 }
 
 void NonPlayerCreatureObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void NonPlayerCreatureObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void NonPlayerCreatureObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {

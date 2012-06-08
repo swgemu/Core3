@@ -151,7 +151,7 @@ public:
 	static const int EXTREMESTORM = 4;
 
 private:
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	bool weatherEnabled;
 

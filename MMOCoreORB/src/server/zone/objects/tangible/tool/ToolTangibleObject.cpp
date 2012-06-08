@@ -83,39 +83,39 @@ void ToolTangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ToolTangibleObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ToolTangibleObjectImplementation::operator const ToolTangibleObject*() {
-	return _this;
+	return _this.get();
 }
 
 void ToolTangibleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ToolTangibleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ToolTangibleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ToolTangibleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ToolTangibleObjectImplementation::_serializationHelperMethod() {

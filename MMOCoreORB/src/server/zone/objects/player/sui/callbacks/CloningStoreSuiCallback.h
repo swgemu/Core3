@@ -29,7 +29,7 @@ public:
 
 		int cost = 1000;
 
-		SceneObject* term = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> term = suiBox->getUsingObject();
 
 		if (term == NULL) {
 			StringIdChatParameter params;

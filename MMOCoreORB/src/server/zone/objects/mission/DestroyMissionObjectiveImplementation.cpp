@@ -41,6 +41,7 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 
 void DestroyMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
+	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if ((hasObservers() && lairObject != NULL) || mission == NULL) {
 		return;
@@ -48,7 +49,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 	if (spawnActiveArea == NULL) {
 		spawnActiveArea = cast<MissionSpawnActiveArea*>( Core::lookupObject<ZoneServer>("ZoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1));
-		spawnActiveArea->setMissionObjective(_this);
+		spawnActiveArea->setMissionObjective(_this.get());
 	}
 
 	if (spawnActiveArea->getZone() == NULL) {
@@ -112,7 +113,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	if (tries == 128) {
 		//Failed to find a spawn point for the lair, fail mission.
-		getPlayerOwner()->sendSystemMessage("@mission/mission_generic:failed");
+		getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed");
 		fail();
 	}
 
@@ -122,6 +123,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 }
 
 void DestroyMissionObjectiveImplementation::spawnLair() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	if (lairObject != NULL && lairObject->getZone() != NULL)
 		return;
 
@@ -137,7 +140,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	waypoint->setPosition(pos.getX(), 0, pos.getY());
 	mission->updateMissionLocation();
 	//TODO: find correct string id
-	CreatureObject* player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
@@ -147,7 +150,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), minDifficulty, maxDifficulty, pos.getX(), pos.getZ(), pos.getY());
 
 		if (lairObject != NULL) {
-			ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+			ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
 			addObserver(observer, true);
 
 			Locker locker(lairObject);
@@ -168,7 +171,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 	if (hasObservers()) {
 		ManagedReference<MissionObserver*> observer = getObserver(0);
 
-		CreatureObject* player = getPlayerOwner();
+		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 		if (lairObject != NULL) {
 			ManagedReference<SceneObject*> lairH = lairObject.get();
@@ -207,12 +210,14 @@ int DestroyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 }
 
 Vector3 DestroyMissionObjectiveImplementation::getEndPosition() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	Vector3 missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
 
-	Zone* zone = getPlayerOwner()->getZone();
+	Zone* zone = getPlayerOwner().get()->getZone();
 
 	if (zone != NULL) {
 		missionEndPoint.setZ(zone->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));

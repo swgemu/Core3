@@ -134,16 +134,14 @@ public:
 		} else if (mindDamage > 0) {
 			msgBody << mindDamage << " mind";
 		} else {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no dmg of that type to heal.	
-			return; //No damage to heal.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.	
+			return; 
 		}
 
 		msgTail << " damage.";
 
-			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
-			msgTarget << creature->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString(); // You heal %TT for %DI points of %TO.
+			msgTarget << "You are healed for " << msgBody.toString() << " points of damage by " << creature->getFirstName(); // You are healed for %DI points of %TO by %TT.
 
 			creature->sendSystemMessage(msgPlayer.toString());
 			creatureTarget->sendSystemMessage(msgTarget.toString());
@@ -152,11 +150,13 @@ public:
 	
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no wounds of that type to heal.
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
 			return false;
 		}
+		
+		if (creature->isProne()) {
+			return false;
+		}		
 		
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -190,7 +190,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;

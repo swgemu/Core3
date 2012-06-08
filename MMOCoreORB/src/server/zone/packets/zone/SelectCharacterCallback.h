@@ -118,7 +118,7 @@ public:
 				zone->transferObject(player, -1, true);
 			} else {
 				if (player->getZone() == NULL) {
-					SceneObject* objectToInsert = currentParent != NULL ? player->getRootParent() : player;
+					ManagedReference<SceneObject*> objectToInsert = currentParent != NULL ? player->getRootParent().get() : player;
 
 					if (objectToInsert == NULL)
 						objectToInsert = player;

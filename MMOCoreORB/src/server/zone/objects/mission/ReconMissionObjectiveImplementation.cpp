@@ -22,6 +22,7 @@
 
 void ReconMissionObjectiveImplementation::activate() {
 	MissionObjectiveImplementation::activate();
+	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	if (mission == NULL)
 		return;
@@ -30,7 +31,7 @@ void ReconMissionObjectiveImplementation::activate() {
 
 	if (locationActiveArea == NULL) {
 		locationActiveArea = cast<MissionReconActiveArea*>( zoneServer->createObject(String("object/mission_recon_area.iff").hashCode(), 1));
-		locationActiveArea->setMissionObjective(_this);
+		locationActiveArea->setMissionObjective(_this.get());
 	}
 
 	if (!locationActiveArea->isInQuadTree()) {
@@ -75,11 +76,13 @@ void ReconMissionObjectiveImplementation::complete() {
 }
 
 Vector3 ReconMissionObjectiveImplementation::getEndPosition() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	Vector3 missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

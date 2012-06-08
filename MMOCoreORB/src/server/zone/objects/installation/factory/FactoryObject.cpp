@@ -303,39 +303,39 @@ void FactoryObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FactoryObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FactoryObjectImplementation::operator const FactoryObject*() {
-	return _this;
+	return _this.get();
 }
 
 void FactoryObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FactoryObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FactoryObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FactoryObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FactoryObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FactoryObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FactoryObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FactoryObjectImplementation::_serializationHelperMethod() {

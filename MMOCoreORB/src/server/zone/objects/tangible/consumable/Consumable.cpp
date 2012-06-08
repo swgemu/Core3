@@ -219,39 +219,39 @@ void ConsumableImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ConsumableImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ConsumableImplementation::operator const Consumable*() {
-	return _this;
+	return _this.get();
 }
 
 void ConsumableImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ConsumableImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ConsumableImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ConsumableImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ConsumableImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ConsumableImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ConsumableImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ConsumableImplementation::_serializationHelperMethod() {

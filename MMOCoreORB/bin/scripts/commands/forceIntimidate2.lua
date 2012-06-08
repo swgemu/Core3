@@ -44,7 +44,7 @@
 ForceIntimidate2Command = {
         name = "forceintimidate2",
         
-  	damageMax = 0,
+  	damage = 0,
 	speed = 4.0,
 	forceCost = 500,
 	accuracySkillMod = "forceintimidate_accuracy";

@@ -49,7 +49,7 @@ void AiGroupImplementation::setPatrolPoint(AiAgent* member) {
 
 	coord.randomizePosition(radius);
 
-	member->setNextPosition(coord.getPositionX(), getZone()->getHeight(coord.getPositionX(), coord.getPositionY()), coord.getPositionY(), getParent());
+	member->setNextPosition(coord.getPositionX(), getZone()->getHeight(coord.getPositionX(), coord.getPositionY()), coord.getPositionY(), getParent().get());
 	member->activateWaitEvent();
 }
 
@@ -74,7 +74,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 			if (!cellParent->isCellObject())
 				cellParent = NULL;
 			else
-				cellParent->transferObject(_this, -1);
+				cellParent->transferObject(_this.get(), -1);
 		}
 
 		//setParent(cellParent);
@@ -105,14 +105,14 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 
 		prot->setDirection(dir->getW(), dir->getX(), dir->getY(), dir->getZ());
 		prot->setRespawnTimer(templ->getRespawnTime());
-		prot->setHomeLocation(x, z, y, prot->getParent());
+		prot->setHomeLocation(x, z, y, prot->getParent().get());
 
 		protectors.add(prot);
 
 		if (protectors.size() == 1)
 			leader = prot;
 
-		AiGroupObserver* moveObserver = new AiGroupObserver(_this);
+		AiGroupObserver* moveObserver = new AiGroupObserver(_this.get());
 		ObjectManager::instance()->persistObject(moveObserver, 1, "aiobservers");
 		prot->registerObserver(ObserverEventType::DESTINATIONREACHED, moveObserver);
 		observers.put(moveObserver);

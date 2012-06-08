@@ -147,39 +147,39 @@ void ShipObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ShipObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ShipObjectImplementation::operator const ShipObject*() {
-	return _this;
+	return _this.get();
 }
 
 void ShipObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ShipObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ShipObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ShipObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ShipObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ShipObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ShipObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ShipObjectImplementation::_serializationHelperMethod() {

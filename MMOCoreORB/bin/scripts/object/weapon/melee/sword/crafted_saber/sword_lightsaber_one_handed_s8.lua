@@ -76,8 +76,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s8 = object_
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_onehandlightsaber",
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, jedi_general
+	xpType = "jedi_general",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_onehandlightsaber_gen1" },
@@ -95,6 +95,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s8 = object_
 
 	-- Leave blank for now
 	damageModifiers = { },
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily

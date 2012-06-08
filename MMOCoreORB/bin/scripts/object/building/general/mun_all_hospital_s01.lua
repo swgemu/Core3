@@ -42,7 +42,13 @@
 
 
 object_building_general_mun_all_hospital_s01 = object_building_general_shared_mun_all_hospital_s01:new {
+	skillMods = {
+		{"private_medical_rating", 100},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100}
+	},
 
+	planetMapCategory = "medicalcenter"
 }
 
 ObjectTemplates:addTemplate(object_building_general_mun_all_hospital_s01, "object/building/general/mun_all_hospital_s01.iff")

@@ -71,10 +71,10 @@ void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* al
 void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending rnco baselines");
 
-	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this);
+	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this.get());
 	player->sendMessage(rnco3);
 
-	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this);
+	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this.get());
 	player->sendMessage(rnco6);
 }
 
@@ -83,15 +83,15 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 }
 
 void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax) {
-	Locker _locker(_this);
-	SceneObject* parent = getParent();
+	Locker _locker(_this.get());
+	ManagedReference<SceneObject*> parent = getParent();
 	stackQuantity = quantity;
 
 	if(stackQuantity < 1) {
 
 		if(parent != NULL) {
-			/*parent->broadcastDestroy(_this, true);
-			parent->removeObject(_this, false);*/
+			/*parent->broadcastDestroy(_this.get(), true);
+			parent->removeObject(_this.get(), false);*/
 			//setParent(NULL);
 
 			destroyObjectFromWorld(true);
@@ -123,7 +123,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 		return;
 
 	ResourceContainerObjectDeltaMessage3* rcnod3 =
-			new ResourceContainerObjectDeltaMessage3(_this);
+			new ResourceContainerObjectDeltaMessage3(_this.get());
 
 	rcnod3->updateQuantity();
 	rcnod3->close();
@@ -138,7 +138,7 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	SceneObject* sceneParent = cast<SceneObject*>(parent.get());
+	ManagedReference<SceneObject*> sceneParent = cast<SceneObject*>(parent.get().get());
 
 	if(sceneParent->transferObject(newResource, -1, true)) {
 		sceneParent->broadcastObject(newResource, true);
@@ -170,7 +170,7 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 }
 
 void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 
 	ManagedReference<SceneObject*> parent =
 			fromContainer->getParent();

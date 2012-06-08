@@ -85,39 +85,39 @@ void ThreatMapObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ThreatMapObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ThreatMapObserverImplementation::operator const ThreatMapObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void ThreatMapObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ThreatMapObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ThreatMapObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ThreatMapObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ThreatMapObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ThreatMapObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ThreatMapObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ThreatMapObserverImplementation::_serializationHelperMethod() {

@@ -68,6 +68,7 @@ class Region extends ActiveArea {
 		cityRegion = city;
 	}
 	
+	@weakReference
 	public CityRegion getCityRegion() {
 		return cityRegion;
 	}
@@ -85,22 +86,26 @@ class Region extends ActiveArea {
 	public void notifyEnter(SceneObject object) {
 		super.notifyEnter(object);
 		
-		if (cityRegion == null)
+		CityRegion strongReference = cityRegion;
+		
+		if (strongReference == null)
 			return;
 		
-		synchronized (cityRegion) {
-			cityRegion.notifyEnter(object);
+		synchronized (strongReference) {
+			strongReference.notifyEnter(object);
 		}
 	}
 	
 	public void notifyExit(SceneObject object) {
 		super.notifyExit(object);
 		
-		if (cityRegion == null)
+		CityRegion strongReference = cityRegion;
+		
+		if (strongReference == null)
 			return;
 		
-		synchronized (cityRegion) {
-			cityRegion.notifyExit(object);
+		synchronized (strongReference) {
+			strongReference.notifyExit(object);
 		}
 	}
 	

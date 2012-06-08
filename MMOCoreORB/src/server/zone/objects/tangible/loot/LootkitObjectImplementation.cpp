@@ -42,8 +42,8 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	deleteComponents = LootkitData->getDeleteComponents();
 }
 
-CreatureObject* LootkitObjectImplementation::getPlayer() {
-	return cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE));
+ManagedWeakReference<CreatureObject*> LootkitObjectImplementation::getPlayer() {
+	return cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
 }
 
 int LootkitObjectImplementation::notifyObjectInserted(SceneObject* object) {
@@ -59,12 +59,12 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 
 			if (deleteComponents) {
 
-				if (getPlayer() == NULL)
+				if (getPlayer().get() == NULL)
 					return;
 
-				getPlayer()->sendSystemMessage("@loot_kit:item_used");
+				getPlayer().get()->sendSystemMessage("@loot_kit:item_used");
 
-				ManagedReference<SceneObject*> inventory = getPlayer()->getSlottedObject("inventory");
+				ManagedReference<SceneObject*> inventory = getPlayer().get()->getSlottedObject("inventory");
 				Locker locker(object);
 				Locker iLocker(inventory);
 				//removeObject(object, true);
@@ -88,10 +88,10 @@ void LootkitObjectImplementation::createItem() {
 			return; // Still missing pieces
 		}
 	}
-	ManagedReference<CreatureObject*> player = getPlayer();
+	ManagedReference<CreatureObject*> player = getPlayer().get();
 	if (player != NULL) {
 
-		getPlayer()->sendSystemMessage("@loot_kit:new_item_created");
+		getPlayer().get()->sendSystemMessage("@loot_kit:new_item_created");
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		ZoneServer* zoneServer = server->getZoneServer();
@@ -113,8 +113,8 @@ void LootkitObjectImplementation::createItem() {
 int LootkitObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	if (components.contains(object->getServerObjectCRC())) {
 
-		if (!components.get(object->getServerObjectCRC()) && getPlayer() != NULL) {
-			ManagedReference<SceneObject*> inventory = getPlayer()->getSlottedObject("inventory");
+		if (!components.get(object->getServerObjectCRC()) && getPlayer().get() != NULL) {
+			ManagedReference<SceneObject*> inventory = getPlayer().get()->getSlottedObject("inventory");
 
 			if (inventory->hasFullContainerObjects()) {
 				errorDescription = "@error_message:inv_full";
@@ -125,7 +125,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, int containme
 
 		} else {
 
-			if (getPlayer() != NULL) {
+			if (getPlayer().get() != NULL) {
 				errorDescription = "@loot_kit:already_contains";
 			}
 
@@ -133,7 +133,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, int containme
 		}
 	}
 
-	if (getPlayer() != NULL) {
+	if (getPlayer().get() != NULL) {
 		errorDescription = "@loot_kit:incorrect_item";
 	}
 

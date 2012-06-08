@@ -166,39 +166,39 @@ void StimPackImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StimPackImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StimPackImplementation::operator const StimPack*() {
-	return _this;
+	return _this.get();
 }
 
 void StimPackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StimPackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StimPackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StimPackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StimPackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StimPackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StimPackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StimPackImplementation::_serializationHelperMethod() {

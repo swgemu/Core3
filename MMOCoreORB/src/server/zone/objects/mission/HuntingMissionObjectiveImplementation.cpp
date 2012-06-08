@@ -27,11 +27,11 @@ void HuntingMissionObjectiveImplementation::activate() {
 	if (hasObservers())
 		return;
 
-	targetsKilled = 15 * getMissionObject()->getDifficultyLevel();
+	targetsKilled = 15 * getMissionObject().get()->getDifficultyLevel();
 
-	CreatureObject* player = getPlayerOwner();
+	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+	ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
 	addObserver(observer, true);
 
 	Locker locker(player);
@@ -44,7 +44,7 @@ void HuntingMissionObjectiveImplementation::abort() {
 	for (int i = 0; i < getObserverCount(); i++) {
 		ManagedReference<MissionObserver*> observer = getObserver(i);
 
-		CreatureObject* player = getPlayerOwner();
+		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 		if (player != NULL) {
 			Locker locker(player);
@@ -62,8 +62,10 @@ void HuntingMissionObjectiveImplementation::complete() {
 }
 
 int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	if (eventType == ObserverEventType::KILLEDCREATURE) {
-		if (cast<CreatureObject*>(observable) != getPlayerOwner())
+		if (cast<CreatureObject*>(observable) != getPlayerOwner().get())
 			return 0;
 
 		CreatureObject* creature = cast<CreatureObject*>(arg1);
@@ -92,7 +94,7 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 			message.setDI(targetsKilled);
 			message.setTO(mission->getTargetName());
 
-			getPlayerOwner()->sendSystemMessage(message);
+			getPlayerOwner().get()->sendSystemMessage(message);
 		}
 	}
 
@@ -100,11 +102,13 @@ int HuntingMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 }
 
 Vector3 HuntingMissionObjectiveImplementation::getEndPosition() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	Vector3 missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

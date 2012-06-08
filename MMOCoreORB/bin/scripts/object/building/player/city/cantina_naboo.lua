@@ -42,9 +42,6 @@
 
 
 object_building_player_city_cantina_naboo = object_building_player_city_shared_cantina_naboo:new {
-	skillMods = {
-		{"private_med_wound_mind", 100}
-	},
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "naboo", "rori"},

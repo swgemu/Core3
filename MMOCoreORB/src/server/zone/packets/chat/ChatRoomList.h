@@ -146,7 +146,12 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer());
+		ManagedReference<SceneObject*> strongRef = client->getPlayer();
+
+		if (strongRef == NULL)
+			return;
+
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(strongRef.get());
 
 		if (player != NULL)
 			chatManager->sendRoomList(player);

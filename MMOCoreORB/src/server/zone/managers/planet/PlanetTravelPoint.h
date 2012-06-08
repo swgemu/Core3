@@ -149,8 +149,8 @@ public:
 		return (interplanetaryTravelAllowed);
 	}
 
-	CreatureObject* getShuttle() {
-		return shuttleObject;
+	ManagedReference<CreatureObject*> getShuttle() {
+		return shuttleObject.get();
 	}
 
 	String toString() {
@@ -167,9 +167,9 @@ public:
 		if(shuttleObject == NULL) {
 			buf << "NULL";
 		} else {
-			buf << "[oid:" << shuttleObject->getObjectID()
-				<< " " << shuttleObject->getObjectNameStringIdName()
-				<< " @ " << shuttleObject->getWorldPosition().toString()
+			buf << "[oid:" << shuttleObject.get()->getObjectID()
+				<< " " << shuttleObject.get()->getObjectNameStringIdName()
+				<< " @ " << shuttleObject.get()->getWorldPosition().toString()
 				<< "]";
 		}
 

@@ -24,7 +24,7 @@ void SurveyMissionObjectiveImplementation::activate() {
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	if (player != NULL) {
-		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
+		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
 		addObserver(observer, true);
 
 		player->registerObserver(ObserverEventType::SURVEY, observer);
@@ -63,8 +63,8 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		int sampledDensity = (int)arg2;
 		if (sampledSpawn->getFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
 			Vector3 startPosition;
-			startPosition.setX(mission->getStartPositionX());
-			startPosition.setY(mission->getStartPositionY());
+			startPosition.setX(mission.get()->getStartPositionX());
+			startPosition.setY(mission.get()->getStartPositionY());
 			float distance = startPosition.distanceTo(player->getWorldPosition());
 			if (distance > 1024.0f) {
 				complete();

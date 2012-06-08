@@ -164,6 +164,8 @@ public:
 
 	int clearSession();
 
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
+
 	void selectDraftSchematic(int index);
 
 	void sendIngredientForUIListen();
@@ -256,6 +258,8 @@ public:
 	int cancelSession();
 
 	int clearSession();
+
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 private:
 	void closeCraftingWindow(int clientCounter);
@@ -353,6 +357,8 @@ public:
 	int cancelSession();
 
 	int clearSession();
+
+	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 	void selectDraftSchematic(int index);
 

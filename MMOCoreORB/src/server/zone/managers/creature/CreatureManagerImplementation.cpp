@@ -83,7 +83,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  		return NULL;
  	}
 
- 	TangibleObject* building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
+ 	ManagedReference<TangibleObject*> building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
 
  	if (building == NULL) {
  		error("error spawning " + buildingToSpawn);
@@ -119,7 +119,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (reservePool.size() != 0) {
 		int id = System::random(reservePool.size() - 1);
@@ -173,6 +173,48 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 	return creature;
 }
 
+CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
+	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
+	if (object == NULL || !object->isActorObject()) {
+		error("could not spawn actor");
+		return NULL;
+	}
+
+	AiActor* actor = cast<AiActor*>(object.get());
+
+	if (actor == NULL) {
+		error("server did not create actor");
+		return NULL;
+	}
+
+	actor->setHomeLocation(x, z, y, cell);
+	actor->loadTemplateData(creatureTemplateManager->getTemplate(templateCRC));
+
+	CreatureObject* host = actor->getHost();
+
+	return host;
+}
+
+String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
+	String templateToSpawn = "";
+
+	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+
+	Vector<String> objTemps = creoTempl->getTemplates();
+
+	if (objTemps.size() > 0) {
+		uint32 randomTemp = System::random(objTemps.size() - 1);
+		templateToSpawn = objTemps.get(randomTemp);
+	} else {
+		StringBuffer errMsg;
+		errMsg << "could not spawn creature... no object templates in script " << creoTempl->getTemplateName();
+
+		//error(errMsg.toString());
+	}
+
+	return templateToSpawn;
+}
+
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID, bool persistent) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 	if (creoTempl == NULL)
@@ -183,20 +225,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	String templateToSpawn;
 
 	if (objectCRC == 0) {
-		Vector<String> objTemps = creoTempl->getTemplates();
-
-		if (objTemps.size() > 0) {
-			uint32 randomTemp = System::random(objTemps.size() - 1);
-			templateToSpawn = objTemps.get(randomTemp);
-			objectCRC = templateToSpawn.hashCode();
-			//info("spawning " + objTemps.get(randomTemp), true);
-		} else {
-			StringBuffer errMsg;
-			errMsg << "could not spawn creature... no object templates in script " << creoTempl->getTemplateName();
-
-			//error(errMsg.toString());
-			return NULL;
-		}
+		templateToSpawn = getTemplateToSpawn(templateCRC);
+		objectCRC = templateToSpawn.hashCode();
 	}
 
 	creature = createCreature(objectCRC, persistent);
@@ -577,4 +607,8 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 			despawn->reschedule(1000);
 		}
 	}
+}
+
+Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
+	return spawnAreaMap.getRandomJediTrainer();
 }

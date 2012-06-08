@@ -87,39 +87,39 @@ void SuiSlotMachineBoxImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SuiSlotMachineBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiSlotMachineBoxImplementation::operator const SuiSlotMachineBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiSlotMachineBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiSlotMachineBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiSlotMachineBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiSlotMachineBoxImplementation::_serializationHelperMethod() {

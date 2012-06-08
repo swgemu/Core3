@@ -87,39 +87,39 @@ void InstrumentObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* InstrumentObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 InstrumentObserverImplementation::operator const InstrumentObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void InstrumentObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void InstrumentObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void InstrumentObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void InstrumentObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void InstrumentObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void InstrumentObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void InstrumentObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void InstrumentObserverImplementation::_serializationHelperMethod() {

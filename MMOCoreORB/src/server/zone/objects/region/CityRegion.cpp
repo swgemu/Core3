@@ -1203,39 +1203,39 @@ void CityRegionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CityRegionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CityRegionImplementation::operator const CityRegion*() {
-	return _this;
+	return _this.get();
 }
 
 void CityRegionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CityRegionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CityRegionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CityRegionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CityRegionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CityRegionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CityRegionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CityRegionImplementation::_serializationHelperMethod() {
@@ -1621,7 +1621,7 @@ bool CityRegionImplementation::containsPoint(float x, float y) {
 	i < (&regions)->size();
  ++i) {
 	// server/zone/objects/region/CityRegion.idl():  			Region aa = regions.get(i);
-	Region* aa = (&regions)->get(i);
+	ManagedReference<Region* > aa = (&regions)->get(i);
 	// server/zone/objects/region/CityRegion.idl():  		}
 	if (aa->containsPoint(x, y))	// server/zone/objects/region/CityRegion.idl():  				return true;
 	return true;
@@ -1706,8 +1706,8 @@ unsigned long long CityRegionImplementation::getMayorID() {
 }
 
 float CityRegionImplementation::getPositionX() {
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea aa = regions.get(0);
-	ActiveArea* aa = (&regions)->get(0);
+	// server/zone/objects/region/CityRegion.idl():  		Region aa = regions.get(0);
+	ManagedReference<Region* > aa = (&regions)->get(0);
 	// server/zone/objects/region/CityRegion.idl():  		return 
 	if (aa == NULL)	// server/zone/objects/region/CityRegion.idl():  			return 0.0;
 	return 0.0;
@@ -1716,8 +1716,8 @@ float CityRegionImplementation::getPositionX() {
 }
 
 float CityRegionImplementation::getPositionY() {
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea aa = regions.get(0);
-	ActiveArea* aa = (&regions)->get(0);
+	// server/zone/objects/region/CityRegion.idl():  		Region aa = regions.get(0);
+	ManagedReference<Region* > aa = (&regions)->get(0);
 	// server/zone/objects/region/CityRegion.idl():  		return 
 	if (aa == NULL)	// server/zone/objects/region/CityRegion.idl():  			return 0.0;
 	return 0.0;
@@ -1726,15 +1726,15 @@ float CityRegionImplementation::getPositionY() {
 }
 
 float CityRegionImplementation::getRadius() {
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea 
+	// server/zone/objects/region/CityRegion.idl():  		Region 
 	if ((&regions)->size() == 0){
 	// server/zone/objects/region/CityRegion.idl():  			Logger.error("getRadius called with 0 regions for stringid:" + regionName.getFullPath() + " customName:" + customRegionName);
 	Logger::error("getRadius called with 0 regions for stringid:" + (&regionName)->getFullPath() + " customName:" + customRegionName);
 	// server/zone/objects/region/CityRegion.idl():  			return 0.0;
 	return 0.0;
 }
-	// server/zone/objects/region/CityRegion.idl():  		ActiveArea aa = regions.get(0);
-	ActiveArea* aa = (&regions)->get(0);
+	// server/zone/objects/region/CityRegion.idl():  		Region aa = regions.get(0);
+	ManagedReference<Region* > aa = (&regions)->get(0);
 	// server/zone/objects/region/CityRegion.idl():  		return 
 	if (aa == NULL)	// server/zone/objects/region/CityRegion.idl():  			return 0.0;
 	return 0.0;

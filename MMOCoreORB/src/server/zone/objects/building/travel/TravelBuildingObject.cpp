@@ -68,39 +68,39 @@ void TravelBuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* TravelBuildingObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 TravelBuildingObjectImplementation::operator const TravelBuildingObject*() {
-	return _this;
+	return _this.get();
 }
 
 void TravelBuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void TravelBuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void TravelBuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void TravelBuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void TravelBuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void TravelBuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void TravelBuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void TravelBuildingObjectImplementation::_serializationHelperMethod() {

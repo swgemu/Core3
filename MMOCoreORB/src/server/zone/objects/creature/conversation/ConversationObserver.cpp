@@ -101,39 +101,39 @@ void ConversationObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ConversationObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ConversationObserverImplementation::operator const ConversationObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void ConversationObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ConversationObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ConversationObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ConversationObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ConversationObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ConversationObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ConversationObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ConversationObserverImplementation::_serializationHelperMethod() {

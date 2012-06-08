@@ -69,11 +69,11 @@ void BuffImplementation::notifyLoadFromDatabase() {
 	//info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
 	if (nextExecutionTime.isPast()) {
-		buffEvent = new BuffDurationEvent(creature, _this);
+		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
 		buffEvent->schedule(1000);
 		//info("nextExeutionTime.isPast()", true);
 	} else {
-		buffEvent = new BuffDurationEvent(creature, _this);
+		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
 		buffEvent->schedule(nextExecutionTime);
 
 		//info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
@@ -107,21 +107,21 @@ void BuffImplementation::activate(bool applyModifiers) {
 			applyStates();
 		}
 
-		buffEvent = new BuffDurationEvent(creature, _this);
+		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
 		buffEvent->schedule((int) (buffDuration * 1000));
 		//nextExecutionTime = buffEvent->getNextExecutionTime();
 		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 
 		//info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
-		if (creature->isPlayerCreature())
-			sendTo((cast<CreatureObject*>(creature.get())));
+		if (creature.get()->isPlayerCreature())
+			sendTo((cast<CreatureObject*>(creature.get().get())));
 
 		if (!startMessage.isEmpty())
-			creature->sendSystemMessage(startMessage);
+			creature.get()->sendSystemMessage(startMessage);
 
 		if (!startFlyFile.isEmpty())
-			creature->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
+			creature.get()->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
 
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -130,7 +130,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 }
 
 void BuffImplementation::deactivate(bool removeModifiers) {
-	ManagedReference<CreatureObject*> strongRef = creature.get();
+	ManagedReference<CreatureObject*> strongRef = creature.get().get();
 
 	if (strongRef == NULL)
 		return;
@@ -142,14 +142,14 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 			removeStates();
 		}
 
-		if (creature->isPlayerCreature())
-			sendDestroyTo(cast<CreatureObject*>(creature.get()));
+		if (creature.get()->isPlayerCreature())
+			sendDestroyTo(cast<CreatureObject*>(creature.get().get()));
 
 		if (!endMessage.isEmpty())
-			creature->sendSystemMessage(endMessage);
+			creature.get()->sendSystemMessage(endMessage);
 
 		if (!endFlyFile.isEmpty())
-			creature->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
+			creature.get()->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
 
 		clearBuffEvent();
 
@@ -208,7 +208,7 @@ String BuffImplementation::getSkillModifierString() {
 }
 
 void BuffImplementation::scheduleBuffEvent() {
-	//buffEvent = new BuffDurationEvent(creature, _this);
+	//buffEvent = new BuffDurationEvent(creature.get(), _this.get());
 }
 
 float BuffImplementation::getTimeLeft() {
@@ -230,7 +230,7 @@ float BuffImplementation::getTimeLeft() {
 
 
 void BuffImplementation::applyAttributeModifiers() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = attributeModifiers.size();
@@ -247,22 +247,22 @@ void BuffImplementation::applyAttributeModifiers() {
 		if (value == 0)
 			continue;
 
-		int attributemax = creature->getMaxHAM(attribute) + value;
-		int attributeval = MAX(attributemax, creature->getHAM(attribute) + value);
+		int attributemax = creature.get()->getMaxHAM(attribute) + value;
+		int attributeval = MAX(attributemax, creature.get()->getHAM(attribute) + value);
 
-		creature->setMaxHAM(attribute, attributemax);
+		creature.get()->setMaxHAM(attribute, attributemax);
 
 		if (fillAttributesOnBuff) {
-			//creature->setHAM(attribute, attributeval - creature->getWounds(attribute));
-			creature->healDamage(creature, attribute, attributeval, true);
+			//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
+			creature.get()->healDamage(creature.get(), attribute, attributeval, true);
 		} else if (value >= 0)
-			creature->healDamage(creature, attribute, value);
+			creature.get()->healDamage(creature.get(), attribute, value);
 	}
 
 }
 
 void BuffImplementation::applySkillModifiers() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = skillModifiers.size();
@@ -273,29 +273,29 @@ void BuffImplementation::applySkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature->addSkillMod(SkillModManager::BUFF, key, value, true);
+		creature.get()->addSkillMod(SkillModManager::BUFF, key, value, true);
 	}
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature->setSpeedMultiplierMod(creature->getSpeedMultiplierBase());
-	creature->setAccelerationMultiplierMod(creature->getAccelerationMultiplierBase());
+	creature.get()->setSpeedMultiplierMod(creature.get()->getSpeedMultiplierBase());
+	creature.get()->setAccelerationMultiplierMod(creature.get()->getAccelerationMultiplierBase());
 }
 
 void BuffImplementation::applyStates() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
 
-		creature->setState(states.get(i), true);
+		creature.get()->setState(states.get(i), true);
 	}
 }
 
 void BuffImplementation::removeAttributeModifiers() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = attributeModifiers.size();
@@ -312,30 +312,30 @@ void BuffImplementation::removeAttributeModifiers() {
 		if (value == 0)
 			continue;
 
-		int attributemax = creature->getMaxHAM(attribute) - value;
+		int attributemax = creature.get()->getMaxHAM(attribute) - value;
 
-		int currentVal = creature->getHAM(attribute);
+		int currentVal = creature.get()->getHAM(attribute);
 
-		creature->setMaxHAM(attribute, attributemax);
+		creature.get()->setMaxHAM(attribute, attributemax);
 
 		if (currentVal >= attributemax) {
-			//creature->inflictDamage(creature, attribute, currentVal - attributemax, isSpiceBuff());
+			//creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, isSpiceBuff());
 
 			if (attribute % 3 == 0) {
-				creature->inflictDamage(creature, attribute, currentVal - attributemax, false);
+				creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, false);
 			} // else setMaxHam sets secondaries to max
 		}
 
 
-		/*int attributeval = MIN(attributemax, creature->getHAM(attribute) - value);
+		/*int attributeval = MIN(attributemax, creature.get()->getHAM(attribute) - value);
 
-		creature->setHAM(attribute, attributeval);*/
+		creature.get()->setHAM(attribute, attributeval);*/
 	}
 
 }
 
 void BuffImplementation::removeSkillModifiers() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = skillModifiers.size();
@@ -346,24 +346,24 @@ void BuffImplementation::removeSkillModifiers() {
 		String key = entry->getKey();
 		int value = entry->getValue();
 
-		creature->addSkillMod(SkillModManager::BUFF, key, -value, true);
+		creature.get()->addSkillMod(SkillModManager::BUFF, key, -value, true);
 
 	}
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature->setSpeedMultiplierMod(creature->getSpeedMultiplierBase());
-	creature->setAccelerationMultiplierMod(creature->getAccelerationMultiplierBase());
+	creature.get()->setSpeedMultiplierMod(creature.get()->getSpeedMultiplierBase());
+	creature.get()->setAccelerationMultiplierMod(creature.get()->getAccelerationMultiplierBase());
 }
 
 void BuffImplementation::removeStates() {
-	if (creature == NULL)
+	if (creature.get() == NULL)
 		return;
 
 	int size = states.size();
 
 	for (int i = 0; i < size; ++i) {
-		creature->clearState(states.get(i), true);
+		creature.get()->clearState(states.get(i), true);
 	}
 }
 

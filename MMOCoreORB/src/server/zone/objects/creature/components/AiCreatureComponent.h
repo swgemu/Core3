@@ -52,7 +52,7 @@ public:
 
 		int radius = 32;
 
-		if(ai->getParent() != NULL && ai->getParent()->isCellObject())
+		if(ai->getParent() != NULL && ai->getParent().get()->isCellObject())
 			radius = 12;
 
 		int awarenessRadius = ai->getFerocity() + radius;
@@ -76,8 +76,8 @@ public:
 				return;
 
 			/// If not in combat, ignore creatures in different cells
-			if(!ai->isInCombat() && ai->getParent() != NULL) {
-				if(ai->getParent() != creoEntry->getParent())
+			if(!ai->isInCombat() && ai->getParent().get() != NULL) {
+				if(ai->getParent().get().get() != creoEntry->getParent().get().get())
 					return;
 			}
 

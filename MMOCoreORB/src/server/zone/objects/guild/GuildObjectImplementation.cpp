@@ -20,20 +20,20 @@ void GuildObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 }
 
 void GuildObjectImplementation::addMember(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	GuildMemberInfo gmi(playerID);
 	guildMembers.put(playerID, gmi);
 }
 
 void GuildObjectImplementation::removeMember(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	guildMembers.drop(playerID);
 }
 
 bool GuildObjectImplementation::hasMember(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	return guildMembers.contains(playerID);
 }
@@ -43,7 +43,7 @@ uint64 GuildObjectImplementation::getMember(int index) {
 }
 
 GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	return &guildMembers.get(playerID);
 }
@@ -67,7 +67,7 @@ bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!guildMembers.contains(playerID))
 		return false;
@@ -78,7 +78,7 @@ bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!guildMembers.contains(playerID))
 		return false;
@@ -89,7 +89,7 @@ bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasDisbandPermission(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!guildMembers.contains(playerID))
 		return false;
@@ -100,7 +100,7 @@ bool GuildObjectImplementation::hasDisbandPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasNamePermission(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!guildMembers.contains(playerID))
 		return false;
@@ -111,7 +111,7 @@ bool GuildObjectImplementation::hasNamePermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasTitlePermission(uint64 playerID) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!guildMembers.contains(playerID))
 		return false;

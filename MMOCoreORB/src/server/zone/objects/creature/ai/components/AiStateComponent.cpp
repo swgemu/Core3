@@ -45,7 +45,6 @@ void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 
 	int oldLevel = host->getLevel();
 
-	actor->loadTemplateData(host->getObjectTemplate());
 	actor->loadTemplateData(actor->getCreatureTemplate());
 
 	if (oldLevel != host->getLevel())
@@ -172,7 +171,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 
 			pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
 
-			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != host->getParent()) { //last waypoint
+			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != host->getParent().get()) { //last waypoint
 				cellObject = coord->getCell();
 
 				//TODO: calculate height
@@ -183,7 +182,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 				*nextPosition = *coord;
 				found = true;
 
-				if ((dist <= maxDistance && cellObject == host->getParent())) {
+				if ((dist <= maxDistance && cellObject == host->getParent().get())) {
 					if (i == path->size() - 1) {
 						patrolPoints->remove(0);
 						remove = false;
@@ -196,7 +195,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 
 					if (coord->getCell() != NULL) { //target coord in cell
 						if (oldCoord->getCell() == NULL)  // convert old coord to model space
-							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent());
+							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent().get());
 
 					} else { // target coord in world
 						oldCoordinates = oldCoord->getWorldPosition();
@@ -364,8 +363,8 @@ void AiStateComponent::checkNewAngle(AiActor* actor) {
 	} else {
 		host->incrementMovementCounter();
 
-		if (host->getParent() != NULL && host->getParent()->isCellObject())
-			host->updateZoneWithParent(host->getParent(), true, true);
+		if (host->getParent() != NULL && host->getParent().get()->isCellObject())
+			host->updateZoneWithParent(host->getParent().get(), true, true);
 		else
 			host->updateZone(true, true);
 	}
@@ -375,7 +374,7 @@ void AiStateComponent::sendConversationStartTo(CreatureObject* host, SceneObject
 	//Face player.
 	host->faceObject(player);
 
-	PatrolPoint current(host->getPosition(), host->getParent());
+	PatrolPoint current(host->getPosition(), host->getParent().get());
 
 	broadcastNextPositionUpdate(host, &current);
 
@@ -398,8 +397,6 @@ void AiStateComponent::selectWeapon(AiActor* actor) {
 	float diff = 1024.f;
 	ManagedReference<WeaponObject*> currentWeapon = host->getWeapon();
 	ManagedReference<WeaponObject*> finalWeap = currentWeapon;
-
-	Vector<WeaponObject*> selections(5, 5);
 	Vector<ManagedReference<WeaponObject*> > weapons = actor->getWeapons();
 
 	for (int i = 0; i < weapons.size(); ++i) {
@@ -462,27 +459,90 @@ bool AiStateComponent::validateStateAttack(CreatureObject* target, String& args)
 	return true;
 }
 
+bool AiStateComponent::isScared(CreatureObject* host, SceneObject* followObject) {
+	if (!followObject->isCreatureObject())
+		return false;
 
-uint16 AiStateComponent::onEnter() {
+	ManagedReference<CreatureObject*> followCreature = cast<CreatureObject*>(followObject);
+	// disallow checking non-players for now
+	if (!followCreature->isPlayerCreature())
+		return false;
+
+	// TODO: check ferocity vs some formula involving player combat diff + player speed towards mob
+	return false;
+}
+
+uint16 AiStateComponent::onEnter(AiActor* actor) {
+	ManagedReference<CreatureObject*> host = actor->getHost();
+	if (host == NULL)
+		return AiActor::NONE;
+
+	if (host->isDead())
+		return AiActor::DEAD;
+
+	if (host->isInCombat())
+		return AiActor::ATTACKED;
+
+	actor->activateMovementEvent();
+	actor->activateRecovery();
+
+	return AiActor::UNFINISHED;
+}
+
+uint16 AiStateComponent::tryRetreat(AiActor* actor) {
 	return AiActor::NONE;
 }
 
-uint16 AiStateComponent::onExit() {
+uint16 AiStateComponent::doRecovery(AiActor* actor) {
 	return AiActor::NONE;
 }
 
-uint16 AiStateComponent::tryRetreat() {
+uint16 AiStateComponent::doAttack(AiActor* actor) {
 	return AiActor::NONE;
 }
 
-uint16 AiStateComponent::doRecovery() {
-	return AiActor::NONE;
-}
+uint16 AiStateComponent::doMovement(AiActor* actor) {
+	//info("doMovement", true);
+	ManagedReference<CreatureObject*> host = actor->getHost();
+	if (host == NULL)
+		return AiActor::NONE;
 
-uint16 AiStateComponent::doAttack() {
-	return AiActor::NONE;
-}
+	float currentSpeed = host->getCurrentSpeed();
+	PatrolPoint* nextStepPosition = actor->getNextStepPosition();
+	if (currentSpeed != 0) {
+		updateCurrentPosition(host, nextStepPosition);
+		nextStepPosition->setReached(true);
+	}
 
-uint16 AiStateComponent::doMovement() {
-	return AiActor::NONE;
+	if (host->isDead() || (host->getZone() == NULL))
+		return AiActor::DEAD;
+
+	actor->activateMovementEvent();
+
+	WorldCoordinates nextPosition;
+	bool found = findNextPosition(actor, getMaxDistance(host), getSpeed(host), actor->getPatrolPoints(), &nextPosition);
+
+	// couldn't find a path to any patrol point
+	if (!found)
+		return AiActor::FINISHED;
+
+	nextStepPosition->setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
+	nextStepPosition->setCell(nextPosition.getCell());
+
+	float directionangle = atan2(nextPosition.getX() - host->getPositionX(), nextPosition.getY() - host->getPositionY());
+
+	if (directionangle < 0)
+		directionangle = 2 * M_PI + directionangle;
+
+	Quaternion* direction = host->getDirection();
+
+	direction->setHeadingDirection(directionangle);
+
+	nextStepPosition->setReached(false);
+
+	broadcastNextPositionUpdate(host, nextStepPosition);
+
+	actor->activateMovementEvent();
+
+	return AiActor::UNFINISHED;
 }

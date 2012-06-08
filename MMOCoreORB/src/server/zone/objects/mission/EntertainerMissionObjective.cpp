@@ -197,39 +197,39 @@ void EntertainerMissionObjectiveImplementation::_setStub(DistributedObjectStub* 
 }
 
 DistributedObjectStub* EntertainerMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 EntertainerMissionObjectiveImplementation::operator const EntertainerMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void EntertainerMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::_serializationHelperMethod() {

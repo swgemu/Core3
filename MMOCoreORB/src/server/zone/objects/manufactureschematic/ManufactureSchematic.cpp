@@ -579,39 +579,39 @@ void ManufactureSchematicImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ManufactureSchematicImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ManufactureSchematicImplementation::operator const ManufactureSchematic*() {
-	return _this;
+	return _this.get();
 }
 
 void ManufactureSchematicImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ManufactureSchematicImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ManufactureSchematicImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ManufactureSchematicImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ManufactureSchematicImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ManufactureSchematicImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ManufactureSchematicImplementation::_serializationHelperMethod() {

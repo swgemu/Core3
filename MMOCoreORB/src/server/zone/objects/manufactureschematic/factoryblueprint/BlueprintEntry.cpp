@@ -61,7 +61,6 @@ bool BlueprintEntry::equals(BlueprintEntry* entry) {
 
 	return((type == entry->type) &&
 			(key == entry->key) &&
-			(displayedName == entry->displayedName) &&
 			(serialNumber == entry->serialNumber) &&
 			(identical == entry->identical));
 }

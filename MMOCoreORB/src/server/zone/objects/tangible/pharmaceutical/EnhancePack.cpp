@@ -198,39 +198,39 @@ void EnhancePackImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* EnhancePackImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 EnhancePackImplementation::operator const EnhancePack*() {
-	return _this;
+	return _this.get();
 }
 
 void EnhancePackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void EnhancePackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void EnhancePackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void EnhancePackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void EnhancePackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void EnhancePackImplementation::_serializationHelperMethod() {
@@ -416,9 +416,9 @@ unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, C
 	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio());
 	power = power - (power * patient->calculateBFRatio());
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer zoneServer = super.getZoneServer();
-	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
+	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
-	PlayerManager* playerManager = zoneServer->getPlayerManager();
+	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100);
 	float modEnvironment = (healer->getSkillMod("private_medical_rating") / 100);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");

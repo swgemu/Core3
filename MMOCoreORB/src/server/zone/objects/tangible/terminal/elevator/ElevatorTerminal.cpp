@@ -182,39 +182,39 @@ void ElevatorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ElevatorTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ElevatorTerminalImplementation::operator const ElevatorTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void ElevatorTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ElevatorTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ElevatorTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ElevatorTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ElevatorTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ElevatorTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ElevatorTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ElevatorTerminalImplementation::_serializationHelperMethod() {

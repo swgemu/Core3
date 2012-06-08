@@ -140,39 +140,39 @@ void ResourceDeedImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ResourceDeedImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ResourceDeedImplementation::operator const ResourceDeed*() {
-	return _this;
+	return _this.get();
 }
 
 void ResourceDeedImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ResourceDeedImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ResourceDeedImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ResourceDeedImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ResourceDeedImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ResourceDeedImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ResourceDeedImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ResourceDeedImplementation::_serializationHelperMethod() {

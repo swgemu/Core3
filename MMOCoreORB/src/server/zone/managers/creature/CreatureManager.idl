@@ -7,6 +7,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.NonPlayerCreatureObject;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.creature.Creature;
+import server.zone.objects.creature.ai.AiActor;
 import server.zone.managers.ZoneManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.creature.CreatureTemplateManager;
@@ -15,9 +16,9 @@ import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
+import engine.util.u3d.Vector3;
 
 class CreatureManager extends ZoneManager {
-	@weakReference
 	protected Zone zone;
 	
 	/*@dereferenced
@@ -67,11 +68,15 @@ class CreatureManager extends ZoneManager {
 	 * @param parentID cell object id (optional)
 	 * @return returns creature object that has been spawned, NULL on error
 	 */
+	public native CreatureObject spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject cell, boolean persistent = false);
 	public native CreatureObject spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0, boolean persistent = false);
 	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false);
 	public native void placeCreature(CreatureObject creature, float x, float z, float y, unsigned long parentID);
+	
+	@dereferenced
+	public native string getTemplateToSpawn(unsigned int templateCRC);
 	
 	/**
 	 * @pre { destructor and destructedObject locked }
@@ -119,23 +124,12 @@ class CreatureManager extends ZoneManager {
 	}
 	
 	@local
+	@dereferenced
+	public native Vector3 getRandomJediTrainer();
+	
+	@local
 	public Vector<SpawnArea> getWorldSpawnAreas() {
 		return spawnAreaMap.getWorldSpawnAreas();
-	}
-	
-	@local
-	public Vector<float> getTrainerObjectsX() {
-		return spawnAreaMap.getTrainerObjectsX();
-	}
-	
-	@local
-	public Vector<float> getTrainerObjectsY() {
-		return spawnAreaMap.getTrainerObjectsY();
-	}
-	
-	@local
-	public Vector<string> getTrainerZone() {
-		return spawnAreaMap.getTrainerZone();
 	}
 	
 	public native SpawnArea getSpawnArea(final string areaname);

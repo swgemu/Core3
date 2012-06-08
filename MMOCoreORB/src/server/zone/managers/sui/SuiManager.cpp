@@ -440,11 +440,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "enhance_character") {
 
-				SceneObject* scob = cbSui->getUsingObject();
+				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
 				if (scob != NULL) {
 
 					if (scob->getGameObjectType() == SceneObjectType::CHARACTERBUILDERTERMINAL) {
-						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
+						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob.get());
 						bluefrog->enhanceCharacter(player);
 					}
 				}
@@ -456,17 +456,17 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "language") {
 
-				SceneObject* scob = cbSui->getUsingObject();
+				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
 				if (scob != NULL) {
 
 					if (scob->getGameObjectType() == SceneObjectType::CHARACTERBUILDERTERMINAL) {
-						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob);
+						CharacterBuilderTerminal* bluefrog = cast<CharacterBuilderTerminal*>( scob.get());
 						bluefrog->giveLanguages(player);
 					}
 				}
 
 			} else if (templatePath == "apply_dots") {
-				SceneObject* scob = cbSui->getUsingObject();
+				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
 				player->addDotState(CreatureState::POISONED, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
 				player->addDotState(CreatureState::BLEEDING, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);
 				player->addDotState(CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);

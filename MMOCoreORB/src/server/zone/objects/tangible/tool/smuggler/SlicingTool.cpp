@@ -148,39 +148,39 @@ void SlicingToolImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SlicingToolImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SlicingToolImplementation::operator const SlicingTool*() {
-	return _this;
+	return _this.get();
 }
 
 void SlicingToolImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SlicingToolImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SlicingToolImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SlicingToolImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SlicingToolImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SlicingToolImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SlicingToolImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SlicingToolImplementation::_serializationHelperMethod() {

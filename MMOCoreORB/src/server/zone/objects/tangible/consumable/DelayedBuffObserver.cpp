@@ -89,39 +89,39 @@ void DelayedBuffObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* DelayedBuffObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DelayedBuffObserverImplementation::operator const DelayedBuffObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void DelayedBuffObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DelayedBuffObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DelayedBuffObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DelayedBuffObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DelayedBuffObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DelayedBuffObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DelayedBuffObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DelayedBuffObserverImplementation::_serializationHelperMethod() {

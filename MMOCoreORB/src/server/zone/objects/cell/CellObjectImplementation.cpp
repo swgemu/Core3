@@ -86,10 +86,10 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	bool allowEntry = true;
 
-	if (player->isCreatureObject() && parent != NULL && getParent()->isBuildingObject()) {
+	if (player->isCreatureObject() && parent != NULL && getParent().get()->isBuildingObject()) {
 		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>( player);
 
-		allowEntry = (cast<BuildingObject*>(parent.get()))->isAllowedEntry(creature);
+		allowEntry = (cast<BuildingObject*>(parent.get().get()))->isAllowedEntry(creature);
 	}
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
@@ -97,8 +97,8 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (parent != NULL && getParent()->isBuildingObject()) {
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get());
+	if (parent != NULL && getParent().get()->isBuildingObject()) {
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get().get());
 
 		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
@@ -123,7 +123,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 	bool ret = false;
 
-	SceneObject* oldParent = object->getParent();
+	ManagedReference<SceneObject*> oldParent = object->getParent();
 
 	try {
 		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
@@ -135,7 +135,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	}
 
 	if (oldParent == NULL) {
-		BuildingObject* building = cast<BuildingObject*>(parent.get());
+		BuildingObject* building = cast<BuildingObject*>(parent.get().get());
 		CreatureObject* creo = cast<CreatureObject*>(object);
 
 		if (building != NULL && creo != NULL)
@@ -155,7 +155,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-			if (!getParent()->containsChildObject(containerObject) && !containerObject->isCreatureObject())
+			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject())
 				++count;
 		}
 	}
@@ -172,7 +172,7 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 	for (int j = containerSize - 1; j >= 0; --j) {
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-		if (getParent()->containsChildObject(containerObject))
+		if (getParent().get()->containsChildObject(containerObject))
 			continue;
 
 		if (containerObject->isCreatureObject())

@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "TrainerScreenHandlers.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
+#include "server/zone/Zone.h"
 
 const String TrainerScreenHandlers::STARTSCREENHANDLERID = "convoscreenstart";
 const String TrainerScreenHandlers::INFOSCREENHANDLERID = "convoscreentrainerinfo";
@@ -68,7 +69,31 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 	}
 
 	String masterSkill = conversationScreen->getOptionLink(0);
+
 	session->setMasterSkill(masterSkill);
+
+	ManagedReference<PlayerObject*> ghost = conversingPlayer->getPlayerObject();
+
+	if (ghost == NULL)
+		return NULL;
+
+	String jedi1 = "force_discipline_light_saber_master";
+	String jedi2 = "force_discipline_defender_master";
+	String jedi3 = "force_discipline_powers_master";
+	String jedi4 = "force_discipline_enhancements_master";
+	String jedi5 = "force_discipline_healing_master";
+
+	Vector3 npc(conversingNPC->getWorldPositionX(), conversingNPC->getWorldPositionY(), 0);
+	Vector3 playerCoord = ghost->getTrainerCoordinates();
+	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
+
+	if ((npc == player) && (ghost->getTrainerZoneName() == conversingNPC->getZone()->getZoneName())) {
+		session->addAdditionalMasterSkill(jedi1);
+		session->addAdditionalMasterSkill(jedi2);
+		session->addAdditionalMasterSkill(jedi3);
+		session->addAdditionalMasterSkill(jedi4);
+		session->addAdditionalMasterSkill(jedi5);
+	}
 
 	if (conversingPlayer->hasSkill(session->getMasterSkill())) {
 		nextScreenId = TrainerScreenHandlers::TRAINEDMASTERSCREENHANDLERID;
@@ -83,6 +108,7 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 
 ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Vector<String> trainableSkills;
+	Vector<Skill*> masterSkills;
 
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -92,13 +118,25 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 
 	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
 
+	if (session->getAdditionalMasterSkillsCount() > 0) {
+		for (int i = 0; i < session->getAdditionalMasterSkillsCount(); i++) {
+			masterSkills.add(SkillManager::instance()->getSkill(session->getAdditionalMasterSkill(i)));
+		}
+	}
+
+	if (masterSkills.size() <= 0)
+	masterSkills.add(startingMasterSkill);
+
 	//Clear options since we will add new below.
 	for (int i = 0; i < 5; ++i) {
 		conversationScreen->removeOption(0);
 	}
 
 	//Get trainable skills
-	getTrainableSkillsList(conversingPlayer, &trainableSkills, startingMasterSkill);
+	for (int i = 0; i < masterSkills.size(); ++i) {
+		getTrainableSkillsList(conversingPlayer, &trainableSkills, masterSkills.get(i));
+	}
+
 	session->clearTrainableSkills();
 
 	if (trainableSkills.size() > 0) {
@@ -141,6 +179,7 @@ void TrainerTrainableSkillsScreenHandler::getTrainableSkillsList(CreatureObject*
 
 ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	Vector<String> nextSkills;
+	Vector<Skill*> masterSkills;
 
 	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
 	if (session == NULL) {
@@ -150,6 +189,15 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 
 	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
 
+	if (session->getAdditionalMasterSkillsCount() > 0) {
+		for (int i = 0; i < session->getAdditionalMasterSkillsCount(); i++) {
+			masterSkills.add(SkillManager::instance()->getSkill(session->getAdditionalMasterSkill(i)));
+		}
+	}
+
+	if (masterSkills.size() <= 0)
+	masterSkills.add(startingMasterSkill);
+
 	//Clear options since we will add new below.
 	for (int i = 0; i < 5; ++i) {
 		conversationScreen->removeOption(0);
@@ -157,7 +205,9 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 	session->clearNextSkills();
 
 	//Get next skills
-	getNextSkillsList(conversingPlayer, &nextSkills, startingMasterSkill);
+	for (int i = 0; i < masterSkills.size(); ++i) {
+		getNextSkillsList(conversingPlayer, &nextSkills, masterSkills.get(i));
+	}
 
 	if (nextSkills.size() > 0) {
 		//Fill in text.
@@ -205,8 +255,6 @@ ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* 
 		return NULL;
 	}
 
-	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
-
 	//Check if the player selected a skill, back or end conversation.
 	if (selectedOption < session->getNextSkillsCount()) {
 		//Skill selected, get correct skill name from the session.
@@ -232,8 +280,6 @@ ConversationScreen* TrainerCanLearnSkillScreenHandler::handleScreen(CreatureObje
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
 	}
-
-	Skill* startingMasterSkill = SkillManager::instance()->getSkill(session->getMasterSkill());
 
 	//Check if the player selected a skill, back or end conversation.
 	if (selectedOption < session->getTrainableSkillsCount()) {

@@ -113,16 +113,16 @@ void ZoneProcessServerImplementation::initialize() {
 
 	playerCreationManager = PlayerCreationManager::instance();
 
-	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this);
+	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this.get());
 	zonePacketHandler->setLogging(false);
 
-	nameManager = new NameManager(_this);
+	nameManager = new NameManager(_this.get());
 	//nameManager->test();
-	holocronManager = new HolocronManager(_this);
+	holocronManager = new HolocronManager(_this.get());
 	suiManager = SuiManager::instance();
-	suiManager->setZoneProcessServer(_this);
+	suiManager->setZoneProcessServer(_this.get());
 
-	objectController = new ObjectController(_this);
+	objectController = new ObjectController(_this.get());
 
 	fishingManager = new FishingManager();
 	fishingManager->deploy();

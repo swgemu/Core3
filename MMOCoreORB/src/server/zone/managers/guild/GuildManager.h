@@ -239,11 +239,11 @@ namespace managers {
 namespace guild {
 
 class GuildManagerImplementation : public ManagedServiceImplementation, public Logger {
-	ManagedWeakReference<ZoneServer* > server;
+	ManagedReference<ZoneServer* > server;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
-	ManagedWeakReference<ChatManager* > chatManager;
+	ManagedReference<ChatManager* > chatManager;
 
 	DeltaSet<String, ManagedReference<GuildObject* > > guildList;
 

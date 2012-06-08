@@ -201,7 +201,7 @@ void SceneObjectImplementation::createComponents() {
 	if (templateObject != NULL) {
 		String zoneComponentClassName = templateObject->getZoneComponent();
 		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
-		//zoneComponent->initialize(_this);
+		//zoneComponent->initialize(_this.get());
 
 		if (zoneComponent == NULL) {
 			info("zone component null " + zoneComponentClassName + " in " + templateObject->getFullTemplateString());
@@ -227,13 +227,13 @@ void SceneObjectImplementation::createComponents() {
 }
 
 void SceneObjectImplementation::close(SceneObject* client) {
-	BaseMessage* msg = new SceneObjectCloseMessage(_this);
+	BaseMessage* msg = new SceneObjectCloseMessage(_this.get());
 
 	client->sendMessage(msg);
 }
 
 void SceneObjectImplementation::link(SceneObject* client, uint32 containmentType) {
-	BaseMessage* msg = new UpdateContainmentMessage(_this, getParent(), containmentType);
+	BaseMessage* msg = new UpdateContainmentMessage(_this.get(), getParent().get(), containmentType);
 	client->sendMessage(msg);
 }
 
@@ -247,7 +247,7 @@ void SceneObjectImplementation::updateToDatabase() {
 
 void SceneObjectImplementation::updateToDatabaseWithoutChildren() {
 	/*ZoneServer* server = getZoneServer();
-	server->updateObjectToDatabase(_this);*/
+	server->updateObjectToDatabase(_this.get());*/
 }
 
 void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
@@ -257,7 +257,7 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	Time start;
 
 	ZoneServer* server = getZoneServer();
-	server->updateObjectToDatabase(_this);
+	server->updateObjectToDatabase(_this.get());
 
 	SortedVector<SceneObject*> savedObjects(slottedObjects.size() + 1, 5);
 	savedObjects.setNoDuplicateInsertPlan();
@@ -294,7 +294,7 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 
 	server->destroyObjectFromDatabase(getObjectID());
 
-	_this->setPersistent(0);
+	_this.get()->setPersistent(0);
 
 	if (!destroyContainedObjects)
 		return;
@@ -328,11 +328,11 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 }
 
 uint64 SceneObjectImplementation::getObjectID() {
-	return _this->_getObjectID();
+	return _this.get()->_getObjectID();
 }
 
 void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
-	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this.get());
 	player->sendMessage(msg);
 
 	/*if (parent != NULL)
@@ -356,7 +356,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	msgInfo << "sending 0x" << hex << getClientObjectCRC() << " to " << player->getLoggingName();
 	info(msgInfo.toString(), true);*/
 
-	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this.get());
 	player->sendMessage(msg);
 
 	if (parent != NULL)
@@ -378,7 +378,7 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 	if (isStaticObject() || !sendToClient)
 		return;
 
-	BaseMessage* msg = new SceneObjectCreateMessage(_this);
+	BaseMessage* msg = new SceneObjectCreateMessage(_this.get());
 	player->sendMessage(msg);
 
 	if (parent != NULL)
@@ -391,15 +391,15 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
 	for (int i = 0; i < activeAreas.size(); ++i) {
-		activeAreas.get(i)->notifyExit(_this);
+		activeAreas.get(i)->notifyExit(_this.get());
 	}
 
 	activeAreas.removeAll();
 
 	if (zone != NULL) {
-		zone->transferObject(_this, -1, true);
+		zone->transferObject(_this.get(), -1, true);
 	} /*else if (parent != NULL && getParent()->isCellObject()) {
-		getRootParent()->notifyObjectInsertedToChild(_this, getParent(), NULL);
+		getRootParent()->notifyObjectInsertedToChild(_this.get(), getParent(), NULL);
 
 	}*/
 
@@ -483,17 +483,17 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	msg << "sending destroy to " << player->getLoggingName();
 	info(msg.toString(), true);*/
 
-	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
+	BaseMessage* msg = new SceneObjectDestroyMessage(_this.get());
 	player->sendMessage(msg);
 }
 
 void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 
-	AttributeListMessage* alm = new AttributeListMessage(_this);
+	AttributeListMessage* alm = new AttributeListMessage(_this.get());
 
 	try {
 
-		attributeListComponent->fillAttributeList(alm, object, _this);
+		attributeListComponent->fillAttributeList(alm, object, _this.get());
 
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -514,7 +514,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		SceneObject* grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObjectPrivate(object, selfObject);
@@ -574,13 +574,13 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 }
 
 void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
-	SceneObject* selfObject = sendSelf ? NULL : _this;
+	SceneObject* selfObject = sendSelf ? NULL : _this.get();
 	broadcastObjectPrivate(object, selfObject);
 }
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		SceneObject* grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
@@ -639,13 +639,13 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 }
 
 void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	SceneObject* selfObject = sendSelf ? NULL : _this;
+	SceneObject* selfObject = sendSelf ? NULL : _this.get();
 	broadcastDestroyPrivate(object, selfObject);
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	if (parent != NULL) {
-		SceneObject* grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
@@ -713,14 +713,14 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 }
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	SceneObject* selfObject = sendSelf ? NULL : _this;
+	SceneObject* selfObject = sendSelf ? NULL : _this.get();
 
 	broadcastMessagePrivate(message, selfObject, lockZone);
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
-		SceneObject* grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagesPrivate(messages, selfObject);
@@ -797,7 +797,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 }
 
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
-	SceneObject* selfObject = sendSelf ? NULL : _this;
+	SceneObject* selfObject = sendSelf ? NULL : _this.get();
 
 	broadcastMessagesPrivate(messages, selfObject);
 }
@@ -828,7 +828,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 		else
 			scno = cast<SceneObject*>(closeSceneObjects.get(i).get());
 
-		if (scno->isInRange(_this, range) && scno->getGameObjectType() == gameObjectType)
+		if (scno->isInRange(_this.get(), range) && scno->getGameObjectType() == gameObjectType)
 			++numberOfObjects;
 	}
 
@@ -855,7 +855,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
-	SceneObject* parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent();
 
 	if (parent == NULL || !parent->isVehicleObject())
 		return;
@@ -871,7 +871,7 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	zoneComponent->updateZone(_this, lightUpdate, sendPackets);
+	zoneComponent->updateZone(_this.get(), lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::notifySelfPositionUpdate() {
@@ -883,31 +883,31 @@ void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	if (entry == NULL || _this == entry)
+	if (entry == NULL || _this.get() == entry)
 		return;
 
 	//#ifdef WITH_STM
 	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
 	//#else
 
-	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this.get(), entry));
 	//#endif
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	zoneComponent->updateZoneWithParent(_this, newParent, lightUpdate, sendPackets);
+	zoneComponent->updateZoneWithParent(_this.get(), newParent, lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::notifyInsertToZone(Zone* newZone) {
-	zoneComponent->notifyInsertToZone(_this, newZone);
+	zoneComponent->notifyInsertToZone(_this.get(), newZone);
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	zoneComponent->teleport(_this, newPositionX, newPositionZ, newPositionY, parentID);
+	zoneComponent->teleport(_this.get(), newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	zoneComponent->switchZone(_this, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+	zoneComponent->switchZone(_this.get(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {
@@ -916,10 +916,10 @@ void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, fl
 	++movementCounter;
 
 	if (parent != NULL) {
-		DataTransformWithParent* pack = new DataTransformWithParent(_this);
+		DataTransformWithParent* pack = new DataTransformWithParent(_this.get());
 		broadcastMessage(pack, true, true);
 	} else {
-		DataTransform* pack = new DataTransform(_this);
+		DataTransform* pack = new DataTransform(_this.get());
 		broadcastMessage(pack, true, true);
 	}
 }
@@ -930,32 +930,32 @@ void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
 	++movementCounter;
 
 	if (parent != NULL) {
-		DataTransformWithParent* pack = new DataTransformWithParent(_this);
+		DataTransformWithParent* pack = new DataTransformWithParent(_this.get());
 		broadcastMessage(pack, true, true);
 	} else {
-		DataTransform* pack = new DataTransform(_this);
+		DataTransform* pack = new DataTransform(_this.get());
 		broadcastMessage(pack, true, true);
 	}
 }
 
 void SceneObjectImplementation::notifyRemoveFromZone() {
-	zoneComponent->notifyRemoveFromZone(_this);
+	zoneComponent->notifyRemoveFromZone(_this.get());
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return containerComponent->canAddObject(_this, object, containmentType, errorDescription);
+	return containerComponent->canAddObject(_this.get(), object, containmentType, errorDescription);
 }
 
 bool SceneObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return containerComponent->transferObject(_this, object, containmentType, notifyClient);
+	return containerComponent->transferObject(_this.get(), object, containmentType, notifyClient);
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
-	return containerComponent->removeObject(_this, object, destination, notifyClient);
+	return containerComponent->removeObject(_this.get(), object, destination, notifyClient);
 }
 
 void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
-	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
+	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this.get());
 	player->sendMessage(cont);
 
 	sendContainerObjectsTo(player);
@@ -964,12 +964,12 @@ void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
 void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool notify) {
 
 	if(notify) {
-		ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this, true);
+		ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this.get(), true);
 		player->sendMessage(cont);
 	}
 }
 
-SceneObject* SceneObjectImplementation::getRootParent() {
+ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	ManagedReference<SceneObject*> grandParent = getParent();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
@@ -979,37 +979,44 @@ SceneObject* SceneObjectImplementation::getRootParent() {
 	while ((tempParent = grandParent->getParent()) != NULL)
 		grandParent = tempParent;
 
-	return grandParent;
+	ManagedWeakReference<SceneObject*> weak = grandParent.get();
+
+	return weak;
 }
 
-SceneObject* SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
+ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursively(uint32 gameObjectType) {
 	ManagedReference<SceneObject*> temp = getParent();
 
 	if (temp == NULL)
 		return NULL;
 
 	if (temp->getGameObjectType() == gameObjectType)
-		return temp;
+		return temp.get();
 
 	while ((temp = temp->getParent()) != NULL) {
-		if (temp->getGameObjectType() == gameObjectType)
-			return temp;
+		if (temp->getGameObjectType() == gameObjectType) {
+			ManagedWeakReference<SceneObject*> weak = temp.get();
+
+			return weak;
+		}
 	}
 
 	return NULL;
 }
 
 bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
-	if (parent == NULL)
+	ManagedReference<SceneObject*> temp = getParent();
+
+	if (temp == NULL)
 		return false;
 
-	if (parent == object)
+	if (temp == object)
 		return true;
 
-	SceneObject* grandParent = getParent();
+	ManagedReference<SceneObject*> grandParent = temp;
 
-	while (grandParent->getParent() != NULL) {
-		grandParent = grandParent->getParent();
+	while ((temp = grandParent->getParent()) != NULL) {
+		grandParent = temp;
 
 		if (grandParent == object)
 			return true;
@@ -1066,11 +1073,11 @@ void SceneObjectImplementation::rotate(int degrees) {
 }
 
 void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	return objectMenuComponent->fillObjectMenuResponse(_this, menuResponse, player);
+	return objectMenuComponent->fillObjectMenuResponse(_this.get(), menuResponse, player);
 }
 
 int SceneObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return objectMenuComponent->handleObjectMenuSelect(_this, player, selectedID);
+	return objectMenuComponent->handleObjectMenuSelect(_this.get(), player, selectedID);
 }
 
 void SceneObjectImplementation::setObjectName(StringId& stringID) {
@@ -1081,7 +1088,7 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	if (parent == NULL)
 		return getPosition();
 
-	SceneObject* root = getRootParent();
+	ManagedReference<SceneObject*> root = getRootParent();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPosition();
@@ -1124,7 +1131,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 	if (parent == NULL)
 		return getPositionX();
 
-	SceneObject* root = getRootParent();
+	ManagedReference<SceneObject*> root = getRootParent();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionX();
@@ -1139,7 +1146,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 	if (parent == NULL)
 		return getPositionY();
 
-	SceneObject* root = getRootParent();
+	ManagedReference<SceneObject*> root = getRootParent();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionY();
@@ -1154,7 +1161,7 @@ float SceneObjectImplementation::getWorldPositionZ() {
 	if (parent == NULL)
 		return getPositionZ();
 
-	SceneObject* root = getRootParent();
+	ManagedReference<SceneObject*> root = getRootParent();
 
 	if (root == NULL || !root->isBuildingObject())
 		return getPositionZ();
@@ -1192,7 +1199,7 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->setDirection(child->getDirection());
 
 		if (isBuildingObject() && child->getCellId() >= 0) {
-			BuildingObject* buildingObject = cast<BuildingObject*>( (_this.get()));
+			BuildingObject* buildingObject = cast<BuildingObject*>( (_this.get().get()));
 
 			int totalCells = buildingObject->getTotalCellNumber();
 
@@ -1241,7 +1248,7 @@ void SceneObjectImplementation::createChildObjects() {
 		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
-		obj->initializeChildObject(_this);
+		obj->initializeChildObject(_this.get());
 	}
 }
 
@@ -1334,7 +1341,7 @@ void SceneObjectImplementation::setZone(Zone* zone) {
 }
 
 void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
-	ShowFlyText* fly = new ShowFlyText(_this, file, aux, red, green, blue);
+	ShowFlyText* fly = new ShowFlyText(_this.get(), file, aux, red, green, blue);
 
 	broadcastMessage(fly, true);
 }
@@ -1346,8 +1353,13 @@ void SceneObjectImplementation::showFlyText(const String& file, const String& au
 void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
 }
 
-SceneObject* SceneObjectImplementation::getParent() {
-	return dynamic_cast<SceneObject*>(parent.get());
+ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
+	ManagedReference<QuadTreeEntry*> parent = this->parent;
+
+	if (parent == NULL)
+		return NULL;
+
+	return ManagedWeakReference<SceneObject*>(dynamic_cast<SceneObject*>(parent.get()));
 }
 
 SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {

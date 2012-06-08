@@ -15,7 +15,7 @@
 #include "server/zone/Zone.h"
 
 bool InstrumentImplementation::canDropInstrument() {
-	SceneObject* parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent();
 
 	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
 		return false;
@@ -46,15 +46,15 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			}
 		}
 
-		SceneObject* playerParent = player->getParent();
+		ManagedReference<SceneObject*> playerParent = player->getParent();
 
 		if (playerParent != NULL) {
 			if (!playerParent->isCellObject()) {
 				return 1;
 			} else {
-				CellObject* cell = cast<CellObject*>( playerParent);
+				CellObject* cell = cast<CellObject*>( playerParent.get());
 
-				StructureObject* structureObject = dynamic_cast<StructureObject*>(cell->getParent());
+				StructureObject* structureObject = dynamic_cast<StructureObject*>(cell->getParent().get().get());
 
 				if (structureObject == NULL)
 					return 1;
@@ -90,7 +90,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			return 1;
 		}
 
-		if (player->getDistanceTo(_this) >= 5) {
+		if (player->getDistanceTo(_this.get()) >= 5) {
 			player->sendSystemMessage("@elevator_text:too_far");
 		} else
 			player->executeObjectControllerAction(String("startmusic").hashCode(), getObjectID(), "");
@@ -112,7 +112,7 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 
-		player->getParent()->transferObject(instrument, -1);
+		player->getParent().get()->transferObject(instrument, -1);
 		//instrument->insertToZone(player->getZone());
 		//player->getZone()->transferObject(instrument, -1, true);
 
@@ -152,11 +152,11 @@ void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 
 void InstrumentImplementation::spawnInAdminCell(CreatureObject* player) {
 	StringBuffer arguments;
-	arguments << player->getParent()->getObjectID() << " -1 " << player->getPositionX() << " " << player->getPositionZ() << " " << player->getPositionY();
+	arguments << player->getParent().get()->getObjectID() << " -1 " << player->getPositionX() << " " << player->getPositionZ() << " " << player->getPositionY();
 
 	UnicodeString uni = arguments.toString();
 
-	player->executeObjectControllerAction(String("transferitemmisc").hashCode(), _this->getObjectID(), uni);
+	player->executeObjectControllerAction(String("transferitemmisc").hashCode(), _this.get()->getObjectID(), uni);
 
 	spawnerPlayer = NULL;
 

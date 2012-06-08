@@ -66,12 +66,10 @@ include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameterVector;
 
 class ChatManager extends ManagedService implements Logger {
-	@weakReference
 	ZoneServer server;
 
 	//UserManager userManager;
 
-	@weakReference
 	PlayerManager playerManager;
 	//GuildManager guildManager;
 

@@ -102,7 +102,7 @@ public:
 
 	BaseClientProxy* getSession();
 
-	SceneObject* getPlayer();
+	ManagedWeakReference<SceneObject* > getPlayer();
 
 	unsigned int getSessionID();
 
@@ -193,7 +193,7 @@ public:
 
 	BaseClientProxy* getSession();
 
-	SceneObject* getPlayer();
+	ManagedWeakReference<SceneObject* > getPlayer();
 
 	unsigned int getSessionID();
 
@@ -278,7 +278,7 @@ public:
 
 	void resetCommandCount();
 
-	SceneObject* getPlayer();
+	ManagedWeakReference<SceneObject* > getPlayer();
 
 	unsigned int getSessionID();
 

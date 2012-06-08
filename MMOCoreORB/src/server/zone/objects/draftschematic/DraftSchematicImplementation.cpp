@@ -145,7 +145,7 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObjec
 
 	manuSchematic->createChildObjects();
 
-	manuSchematic->setDraftSchematic(_this);
+	manuSchematic->setDraftSchematic(_this.get());
 
 	return manuSchematic;
 }

@@ -24,33 +24,46 @@
 #include "system/thread/Locker.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/creature/events/AiMoveEvent.h"
+#include "server/zone/objects/creature/events/AiAwarenessEvent.h"
+#include "server/zone/objects/creature/events/AiThinkEvent.h"
+#include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "system/thread/Mutex.h"
+#include "engine/core/ManagedReference.h"
 
 using server::zone::objects::creature::conversation::ConversationObserver;
 
-void AiActorImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	host->loadTemplateData(templateData);
-
-	if (templateData->getGameObjectType() == SceneObjectType::CREATURE)
-		isCreature = true;
-	else
-		isCreature = false;
-}
-
 void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
-	if (host == NULL) {
-		error("null host in AiActor " + templateData->getTemplateName());
-		return;
-	}
-
-	ZoneProcessServer* server = host->getZoneProcessServer();
+	ZoneProcessServer* server = getZoneProcessServer();
 	if (server == NULL)
 		return;
 
 	npcTemplate = templateData;
+
+	aiTemplate = AiMap::instance()->get(npcTemplate->getAiTemplate());
+
+	if (aiTemplate == NULL) {
+		error("no ai template in AiActor " + templateData->getTemplateName());
+		return;
+	}
+
+	defaultStateName = aiTemplate->getDefaultName();
+	currentStateName = defaultStateName;
+	currentState = ComponentManager::instance()->getComponent<AiStateComponent*>(currentStateName);
+
+	if (currentState == NULL) {
+		error("ai template has invalid default state " + defaultStateName);
+		return;
+	}
+
+	currentMessage = currentState->onEnter(_this.get());
+
+	if (host == NULL) {
+		error("improper default state resulting in no host in AiActor " + templateData->getTemplateName());
+		return;
+	}
 
 	host->setPvpStatusBitmask(npcTemplate->getPvpBitmask());
 
@@ -219,26 +232,59 @@ float AiActorImplementation::calculateAttackSpeed(int level) {
 }
 
 void AiActorImplementation::initializeTransientMembers() {
-	ObservableImplementation::initializeTransientMembers();
+	SceneObjectImplementation::initializeTransientMembers();
 
-	if (aiTemplate == NULL)
-		aiTemplate = AiMap::instance()->get("example");
-
-	defaultStateName = aiTemplate->getDefaultName();
-	currentStateName = defaultStateName;
+	defaultStateName = "AiStateComponent";
+	currentStateName = "AiStateComponent";
 	currentState = ComponentManager::instance()->getComponent<AiStateComponent*>(currentStateName);
+	currentMessage = AiActor::UNFINISHED;
 
-	transitions = aiTemplate->getTransitions();
+	transitions.removeAll();
 }
 
 void AiActorImplementation::next(uint16 msg) {
-	currentStateName = transitions.get(currentStateName + msg);
+	Locker _locker(&targetMutex);
+
+	if (msg == AiActor::NONE) {
+		error("AiActor has no state to transition to.");
+		destroyActor();
+		return;
+	}
+
+	Reference<AiStateComponent*> previousState = currentState;
+
+	String resultStateName = transitions.get(currentStateName + String::valueOf(msg));
+
+	if (resultStateName == currentStateName)
+		return;
+
+	currentState->onExit(_this.get());
+
+	currentStateName = resultStateName;
 	currentState = ComponentManager::instance()->getComponent<AiStateComponent*>(currentStateName);
-	activateRecovery();
+
+	currentMessage = currentState->onEnter(_this.get());
 }
 
 void AiActorImplementation::next() {
 	next(currentMessage);
+}
+
+void AiActorImplementation::destroyActor() {
+	if (thinkEvent != NULL && thinkEvent->isScheduled())
+		thinkEvent->cancel();
+
+	if (moveEvent != NULL && moveEvent->isScheduled())
+		moveEvent->cancel();
+
+	if (awarenessEvent != NULL && awarenessEvent->isScheduled())
+		awarenessEvent->cancel();
+
+	if (despawnEvent != NULL && despawnEvent->isScheduled())
+		despawnEvent->cancel();
+
+	destroyObjectFromWorld(true);
+	destroyObjectFromDatabase(true);
 }
 
 void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
@@ -248,7 +294,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 	// second do actor checks
 	int radius = 32;
-	if(host->getParent() != NULL && host->getParent()->isCellObject())
+	if(host->getParent() != NULL && host->getParent().get()->isCellObject())
 		radius = 12;
 
 	int awarenessRadius = getFerocity() + radius;
@@ -263,7 +309,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	// If not in combat, ignore creatures in different cells
-	if (host->getParent() != NULL && host->getParent() != creoEntry->getParent())
+	if (host->getParent() != NULL && host->getParent().get() != creoEntry->getParent().get())
 		return;
 
 	if (getFollowObject() == NULL || getFollowObject() == creoEntry) {
@@ -271,7 +317,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		doAwarenessCheck(hostCoord, 0, creoEntry); // TODO: this will become an awareness event
 	}
 
-	currentState->notifyPositionUpdate(_this, entry);
+	currentState->notifyPositionUpdate(_this.get(), entry);
 }
 
 void AiActorImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -308,7 +354,7 @@ int AiActorImplementation::notifyConverseObservers(CreatureObject* converser) {
 }
 
 void AiActorImplementation::doAwarenessCheck(Coordinate &start, uint64 time, CreatureObject* target) {
-	currentState->doAwarenessCheck(_this, start, time, target);
+	currentState->doAwarenessCheck(_this.get(), start, time, target);
 }
 
 void AiActorImplementation::addTransition(const String& stateName, uint16 msg, const String& resultState) {
@@ -316,7 +362,7 @@ void AiActorImplementation::addTransition(const String& stateName, uint16 msg, c
 }
 
 bool AiActorImplementation::isScentMasked(CreatureObject* target) {
-	if (!isCreature)
+	if (!host->isCreature())
 		return false;
 
 	Locker locker(&targetMutex);
@@ -363,7 +409,7 @@ bool AiActorImplementation::isConcealed(CreatureObject* target) {
 	int camoSkill = target->getSkillMod("private_conceal");
 	int creatureLevel = host->getLevel();
 
-	if (!isCreature)
+	if (!host->isCreature())
 		creatureLevel *= 2;
 
 	bool success = false;
@@ -409,23 +455,6 @@ void AiActorImplementation::activateMovementEvent() {
 
 	if (!moveEvent->isScheduled())
 		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
-	*/
-}
-
-void AiActorImplementation::activateWaitEvent() {
-	/*
-	 * TODO: change AiWaitEvent to use AiActor when this gets linked
-	if (getZone() == NULL)
-		return;
-
-	if (waitEvent == NULL) {
-		waitEvent = new AiWaitEvent(_this);
-
-		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
-	}
-
-	if (!waitEvent->isScheduled())
-		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
 	*/
 }
 
@@ -493,7 +522,7 @@ void AiActorImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
-	currentState->notifyDespawn(_this, zone);
+	currentState->notifyDespawn(_this.get(), zone);
 }
 
 void AiActorImplementation::scheduleDespawn(int timeToDespawn) {
@@ -749,5 +778,9 @@ void AiActorImplementation::addPatrolPoint(PatrolPoint& point) {
 
 Vector<ManagedReference<WeaponObject*> > AiActorImplementation::getWeapons() {
 	return weapons;
+}
+
+Time AiActorImplementation::getLastDamageReceived() {
+	return lastDamageReceived;
 }
 

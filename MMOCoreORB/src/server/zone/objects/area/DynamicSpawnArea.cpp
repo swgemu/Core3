@@ -216,39 +216,39 @@ void DynamicSpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* DynamicSpawnAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DynamicSpawnAreaImplementation::operator const DynamicSpawnArea*() {
-	return _this;
+	return _this.get();
 }
 
 void DynamicSpawnAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DynamicSpawnAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DynamicSpawnAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DynamicSpawnAreaImplementation::_serializationHelperMethod() {

@@ -85,39 +85,39 @@ void SpawnObserverImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SpawnObserverImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SpawnObserverImplementation::operator const SpawnObserver*() {
-	return _this;
+	return _this.get();
 }
 
 void SpawnObserverImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SpawnObserverImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SpawnObserverImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SpawnObserverImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SpawnObserverImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SpawnObserverImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SpawnObserverImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SpawnObserverImplementation::_serializationHelperMethod() {
@@ -198,7 +198,7 @@ int SpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Obs
 	return 1;
 
 	else 	// server/zone/objects/area/SpawnObserver.idl():  			return spawnArea.notifyObserverEvent(eventType, observable, arg1, arg2);
-	return spawnArea->notifyObserverEvent(eventType, observable, arg1, arg2);
+	return spawnArea.get()->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
 /*

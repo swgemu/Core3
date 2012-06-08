@@ -206,39 +206,39 @@ void JunkdealerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* JunkdealerCreatureImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 JunkdealerCreatureImplementation::operator const JunkdealerCreature*() {
-	return _this;
+	return _this.get();
 }
 
 void JunkdealerCreatureImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void JunkdealerCreatureImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void JunkdealerCreatureImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void JunkdealerCreatureImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void JunkdealerCreatureImplementation::_serializationHelperMethod() {

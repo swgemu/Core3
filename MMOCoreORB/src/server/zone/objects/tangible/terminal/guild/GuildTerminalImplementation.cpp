@@ -16,7 +16,7 @@
 
 void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (guildObject == NULL) {
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObjectType::BUILDING));
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( getParentRecursively(SceneObjectType::BUILDING).get().get());
 
 		if (building != NULL && building->isOwnerOf(player)) {
 			if (!player->isInGuild()) {
@@ -67,7 +67,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 }
 
 int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
 
@@ -76,24 +76,24 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 	switch (selectedID) {
 	case 185:
-		guildManager->sendGuildCreateNameTo(player, _this);
+		guildManager->sendGuildCreateNameTo(player, _this.get());
 		break;
 	case 193:
 	case 186:
-		guildManager->sendGuildInformationTo(player, guildObject, _this);
+		guildManager->sendGuildInformationTo(player, guildObject, _this.get());
 		break;
 	case 191:
-		guildManager->sendGuildDisbandConfirmTo(player, guildObject, _this);
+		guildManager->sendGuildDisbandConfirmTo(player, guildObject, _this.get());
 		break;
 	case 194:
 	case 187:
-		guildManager->sendGuildMemberListTo(player, guildObject, _this);
+		guildManager->sendGuildMemberListTo(player, guildObject, _this.get());
 		break;
 	case 188:
-		guildManager->sendGuildSponsoredListTo(player, guildObject, _this);
+		guildManager->sendGuildSponsoredListTo(player, guildObject, _this.get());
 		break;
 	case 190:
-		guildManager->sendGuildSponsorTo(player, guildObject, _this);
+		guildManager->sendGuildSponsorTo(player, guildObject, _this.get());
 	default:
 		TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 	}

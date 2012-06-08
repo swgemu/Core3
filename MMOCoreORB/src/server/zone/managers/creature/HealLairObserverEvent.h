@@ -40,14 +40,14 @@ namespace server {
 		   if (strongObserver == NULL)
 			   return;
 
-		   Locker locker(lair);
+		   Locker locker(strongRef);
 
 		  // Locker clocker(attacker, lair);
 
-		   observer->healLair(lair, attacker);
+		   strongObserver->healLair(strongRef, strongAttackerRef);
 
-		   if (lair->getConditionDamage() > 0)
-			   observer->checkForHeal(strongRef, strongAttackerRef, true);
+		   if (strongRef->getConditionDamage() > 0)
+			   strongObserver->checkForHeal(strongRef, strongAttackerRef, true);
 	   }
 
 	   void setAttacker(TangibleObject* obj) {

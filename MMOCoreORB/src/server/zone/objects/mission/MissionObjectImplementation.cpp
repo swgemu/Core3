@@ -20,10 +20,10 @@ void MissionObjectImplementation::initializeTransientMembers() {
 }
 
 void MissionObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	BaseMessage* tano3 = new MissionObjectMessage3(_this);
+	BaseMessage* tano3 = new MissionObjectMessage3(_this.get());
 	player->sendMessage(tano3);
 
-	BaseMessage* tano6 = new MissionObjectMessage6(_this);
+	BaseMessage* tano6 = new MissionObjectMessage6(_this.get());
 	player->sendMessage(tano6);
 }
 
@@ -33,10 +33,10 @@ void MissionObjectImplementation::setRefreshCounter(int ctr, bool notifyClient) 
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateRefreshCount(ctr);
 		delta->close();
 
@@ -53,10 +53,10 @@ void MissionObjectImplementation::setTypeCRC(uint32 crc, bool notifyClient) {
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateTypeCRC(crc);
 		delta->close();
 
@@ -70,10 +70,10 @@ void MissionObjectImplementation::setMissionDescription(const String& file, cons
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateDescriptionStf(&missionDescription);
 		delta->close();
 
@@ -87,10 +87,10 @@ void MissionObjectImplementation::setMissionTitle(const String& file, const Stri
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateTitleStf(&missionTitle);
 		delta->close();
 
@@ -104,10 +104,10 @@ void MissionObjectImplementation::setMissionTargetName(const String& target, boo
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateTargetName(target);
 		delta->close();
 
@@ -124,10 +124,10 @@ void MissionObjectImplementation::setMissionDifficulty(int difficulty, bool noti
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateDifficultyLevel(difficultyLevel);
 		delta->close();
 
@@ -144,10 +144,10 @@ void MissionObjectImplementation::setRewardCredits(int creds, bool notifyClient)
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateRewardCredits(creds);
 		delta->close();
 
@@ -168,10 +168,10 @@ void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templa
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateTemplateCRC(targetTemplate->getClientObjectCRC());
 		delta->close();
 
@@ -190,10 +190,10 @@ WaypointObject* MissionObjectImplementation::createWaypoint() {
 }
 
 void MissionObjectImplementation::updateMissionLocation() {
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3(_this.get());
 		dmiso3->updateWaypoint(waypointToMission);
 		dmiso3->close();
 
@@ -230,10 +230,10 @@ void MissionObjectImplementation::setStartPosition(float posX, float posY, const
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateStartPosition(posX, posY, planet.hashCode());
 		delta->close();
 
@@ -253,10 +253,10 @@ void MissionObjectImplementation::setEndPosition(float posX, float posY, const S
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateDestination(posX, posY, endPlanet.hashCode());
 		delta->close();
 
@@ -270,10 +270,10 @@ void MissionObjectImplementation::setCreatorName(const String& name, bool notify
 	if (!notifyClient)
 		return;
 
-	SceneObject* player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 	if (player != NULL) {
-		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this);
+		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
 		delta->updateCreator();
 		delta->close();
 

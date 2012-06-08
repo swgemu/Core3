@@ -168,7 +168,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
 	Vector3 testPosition(x, y, 0);
 
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
@@ -196,7 +196,7 @@ bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zo
 }
 
 bool CityManagerImplementation::validateCityName(const String& name) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (cities.contains(name) || cities.contains(name.toLowerCase()))
 		return false;
@@ -524,7 +524,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 	Zone* zone = NULL;

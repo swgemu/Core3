@@ -121,6 +121,7 @@ class MissionObjective extends ManagedObject implements Logger {
 	public native abstract void complete();
 	public native abstract void fail();
 	
+	@weakReference
 	public MissionObject getMissionObject() {
 		return mission;
 	}
@@ -129,6 +130,7 @@ class MissionObjective extends ManagedObject implements Logger {
 		return objectiveType;
 	}
 	
+	@weakReference
 	public native CreatureObject getPlayerOwner();
 	
 	public native void awardFactionPoints();

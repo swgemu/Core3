@@ -39,6 +39,7 @@ int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 				StringIdChatParameter params("jedi_spam", "holocron_light_information");
 				params.setTO("@skl_n:" + stringKey);
 				creature->sendSystemMessage(params);
+				sceneObject->destroyObjectFromWorld(true);
 
 				return 0;
 			} else {

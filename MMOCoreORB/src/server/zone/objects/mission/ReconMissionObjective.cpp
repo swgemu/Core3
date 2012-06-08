@@ -135,39 +135,39 @@ void ReconMissionObjectiveImplementation::_setStub(DistributedObjectStub* stub) 
 }
 
 DistributedObjectStub* ReconMissionObjectiveImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ReconMissionObjectiveImplementation::operator const ReconMissionObjective*() {
-	return _this;
+	return _this.get();
 }
 
 void ReconMissionObjectiveImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ReconMissionObjectiveImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ReconMissionObjectiveImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ReconMissionObjectiveImplementation::_serializationHelperMethod() {

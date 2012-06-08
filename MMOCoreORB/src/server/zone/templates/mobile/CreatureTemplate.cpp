@@ -56,6 +56,8 @@ CreatureTemplate::CreatureTemplate() {
 	weapons.removeAll();
 
 	attacks = new CreatureAttackMap();
+
+	aiTemplate = "example";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -165,6 +167,8 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	attackList.pop();
 
 	outfit = templateData->getStringField("outfit");
+
+	aiTemplate = templateData->getStringField("aiTemplate");
 
 	/*if ((pvpBitmask & CreatureFlag::ATTACKABLE) && attacks->size() == 0) {
 		System::out << "ERROR " << templateName << " is attackable but has no skills\n";

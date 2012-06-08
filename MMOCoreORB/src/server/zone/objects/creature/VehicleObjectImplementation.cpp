@@ -32,7 +32,7 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 	SceneObjectImplementation::notifyInsertToZone(zone);
 
-	//inflictDamage(_this, 0, System::random(50), true);
+	//inflictDamage(_this.get(), 0, System::random(50), true);
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
@@ -44,7 +44,7 @@ bool VehicleObjectImplementation::checkInRangeGarage() {
 	if (structureManager == NULL)
 		return false;
 
-	ManagedReference<SceneObject*> garage = structureManager->getInRangeParkingGarage(_this);
+	ManagedReference<SceneObject*> garage = structureManager->getInRangeParkingGarage(_this.get());
 
 	if (garage == NULL)
 		return false;
@@ -58,7 +58,10 @@ int VehicleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		unlock();
 
 		try {
-			controlDevice->storeObject(player);
+			ManagedReference<ControlDevice* > strongRef = controlDevice.get();
+
+			if (strongRef != NULL)
+				strongRef->storeObject(player);
 		} catch (Exception& e) {
 
 		} catch (...) {
@@ -116,7 +119,7 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
         listbox->setCallback(new RepairVehicleSuiCallback(server->getZoneServer()));
 	listbox->setPromptTitle("@pet/pet_menu:confirm_repairs_t"); //Confirm Vehicle Repairs
 	listbox->setPromptText("@pet/pet_menu:vehicle_repair_d"); //You have chosen to repair your vehicle. Please review the listed details and confirm your selection.
-	listbox->setUsingObject(_this);
+	listbox->setUsingObject(_this.get());
 	listbox->setCancelButton(true, "@cancel");
 
 	int repairCost = calculateRepairCost(player);
@@ -157,9 +160,11 @@ int VehicleObjectImplementation::healDamage(TangibleObject* healer, int damageTy
 int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	unlock();
 
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+
 	if (linkedCreature != NULL) {
 		try {
-			if (attacker != _this) {
+			if (attacker != _this.get()) {
 				Locker clocker(linkedCreature, attacker);
 
 				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
@@ -174,7 +179,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 		}
 	}
 
-	if (attacker != _this)
+	if (attacker != _this.get())
 		wlock(attacker);
 	else
 		wlock();
@@ -183,6 +188,8 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 }
 
 void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+
 	if (linkedCreature != NULL && linkedCreature->isMounted())
 		linkedCreature->sendMessage(msg);
 	else

@@ -135,39 +135,39 @@ void GeneratorObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GeneratorObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GeneratorObjectImplementation::operator const GeneratorObject*() {
-	return _this;
+	return _this.get();
 }
 
 void GeneratorObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GeneratorObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GeneratorObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GeneratorObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GeneratorObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GeneratorObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GeneratorObjectImplementation::_serializationHelperMethod() {

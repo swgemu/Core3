@@ -78,6 +78,9 @@ public:
 			SceneObject* object = server->getZoneServer()->getObject(target);
 			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
 
+			if (creatureTarget == NULL)
+				return GENERALERROR;
+
 
 			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creatureTarget);
 			creatureTarget->addPendingTask("forceChokeTickTask", fctTask, 6000);

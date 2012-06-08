@@ -10,6 +10,8 @@
 #include "server/zone/objects/mission/MissionObject.h"
 
 void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	if (inventory == NULL) {
 		return;
@@ -66,6 +68,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 
 void CraftingMissionObjectiveImplementation::abort() {
 	//Remove the schematic.
+	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player != NULL) {

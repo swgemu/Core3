@@ -47,7 +47,7 @@ which carries forward this exception.
 #include "server/zone/objects/cell/CellObject.h"
 
 void TutorialBuildingObjectImplementation::enqueueUnloadEvent() {
-	unloadTask = new UnloadBuildingTask(_this);
+	unloadTask = new UnloadBuildingTask(_this.get());
 	unloadTask->schedule(1000);
 }
 

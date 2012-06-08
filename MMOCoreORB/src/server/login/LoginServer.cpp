@@ -295,39 +295,39 @@ void LoginServerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* LoginServerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 LoginServerImplementation::operator const LoginServer*() {
-	return _this;
+	return _this.get();
 }
 
 void LoginServerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void LoginServerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void LoginServerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void LoginServerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void LoginServerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void LoginServerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void LoginServerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void LoginServerImplementation::_serializationHelperMethod() {

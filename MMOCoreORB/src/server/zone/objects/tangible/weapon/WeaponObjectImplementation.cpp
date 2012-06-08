@@ -126,7 +126,7 @@ void WeaponObjectImplementation::createChildObjects() {
 
 			childObjects.put(obj);
 
-			obj->initializeChildObject(_this);
+			obj->initializeChildObject(_this.get());
 
 			transferObject(obj, child->getContainmentType());
 		}
@@ -136,10 +136,10 @@ void WeaponObjectImplementation::createChildObjects() {
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending weapon object baselines");
 
-	BaseMessage* weao3 = new WeaponObjectMessage3(_this);
+	BaseMessage* weao3 = new WeaponObjectMessage3(_this.get());
 	player->sendMessage(weao3);
 
-	BaseMessage* weao6 = new WeaponObjectMessage6(_this);
+	BaseMessage* weao6 = new WeaponObjectMessage6(_this.get());
 	player->sendMessage(weao6);
 }
 
@@ -330,7 +330,7 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		generateDotAttributes(alm);*/
 
 	if(hasPowerup())
-		powerupObject->fillWeaponAttributeList(alm, _this);
+		powerupObject->fillWeaponAttributeList(alm, _this.get());
 
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
@@ -405,11 +405,10 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 	if(sliced)
 		speed *= speedSlice;
 
-	if(powerupObject != NULL && withPup)
-		return speed -
-				(abs(attackSpeed) *
-				powerupObject->getPowerupStat("attackSpeed")) +
-				getConditionReduction(speed);
+	if(powerupObject != NULL && withPup) {
+		speed -= (abs(speed) * powerupObject->getPowerupStat("attackSpeed"));
+		return speed + getConditionReduction(speed);
+	}
 
 	return speed + getConditionReduction(speed);
 }
@@ -422,11 +421,10 @@ float WeaponObjectImplementation::getMaxDamage(bool withPup) {
 	if(sliced)
 		damage *= damageSlice;
 
-	if(powerupObject != NULL && withPup)
-		return damage +
-				(abs(maxDamage) *
-				powerupObject->getPowerupStat("maxDamage")) -
-				getConditionReduction(damage);
+	if(powerupObject != NULL && withPup) {
+		damage += (abs(damage) * powerupObject->getPowerupStat("maxDamage"));
+		return damage -	getConditionReduction(damage);
+	}
 
 	return damage - getConditionReduction(damage);
 }
@@ -438,11 +436,10 @@ float WeaponObjectImplementation::getMinDamage(bool withPup) {
 	if(sliced)
 		damage *= damageSlice;
 
-	if(powerupObject != NULL && withPup)
-		return damage +
-				(abs(minDamage) *
-				powerupObject->getPowerupStat("minDamage")) -
-				getConditionReduction(damage);
+	if(powerupObject != NULL && withPup) {
+		damage += (abs(damage) * powerupObject->getPowerupStat("minDamage"));
+		return damage -	getConditionReduction(damage);
+	}
 
 	return damage - getConditionReduction(damage);
 }
@@ -527,7 +524,7 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 
 	//value = craftingValues->getCurrentValue("roundsused");
 	//if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
-		//_this->set_______(value);
+		//_this.get()->set_______(value);
 
 	value = values->getCurrentValue("zerorangemod");
 	if(value != CraftingValues::VALUENOTFOUND)
@@ -583,7 +580,7 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 	if (hasPowerup()) {
 		powerupObject->decreaseUses();
 		if (powerupObject->getUses() < 1) {
-			Locker locker(_this);
+			Locker locker(_this.get());
 			StringIdChatParameter message("powerup", "prose_pup_expire"); //The powerup on your %TT has expired.
 			message.setTT(getDisplayedName());
 
@@ -621,11 +618,11 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 }
 
 void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
-	if (_this != user->getSlottedObject("default_weapon") && !user->isAiAgent()) {
+	if (_this.get() != user->getSlottedObject("default_weapon") && !user->isAiAgent()) {
 		damage = damage / 10000.f;
 		if (isSliced()) damage *= 1.1;
 		if (hasPowerup()) damage *= 1.1;
-		inflictDamage(_this, 0, damage, false, true);
+		inflictDamage(_this.get(), 0, damage, false, true);
 
 		if ((conditionDamage - damage / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
 			user->sendSystemMessage("@combat_effects:weapon_quarter");

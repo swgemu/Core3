@@ -70,7 +70,7 @@ public:
 			return;
 		}
 
-		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(bountyHunterRef->getParent());
+		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(bountyHunterRef->getParent().get().get());
 
 		if (creature == NULL) {
 			return;

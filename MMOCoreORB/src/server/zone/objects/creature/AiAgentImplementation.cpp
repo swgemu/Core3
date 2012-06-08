@@ -291,7 +291,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
 		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
-		interface->notifyPositionUpdate(_this, entry);
+		interface->notifyPositionUpdate(_this.get(), entry);
 	}
 
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
@@ -300,7 +300,7 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
 	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
 		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
-		interface->doAwarenessCheck(_this, start, time, target);
+		interface->doAwarenessCheck(_this.get(), start, time, target);
 	}
 }
 
@@ -313,7 +313,7 @@ void AiAgentImplementation::doRecovery() {
 	activatePostureRecovery();
 
 	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
-		damageOverTimeList.activateDots(_this);
+		damageOverTimeList.activateDots(_this.get());
 	}
 
 	doAttack();
@@ -332,9 +332,9 @@ void AiAgentImplementation::doAttack() {
 
 	CreatureObject* target = threatMap->getHighestThreatCreature();
 
-	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this) < 128.f && target->isAttackableBy(_this) && lastDamageReceived.miliDifference() < 20000)
+	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this.get()) < 128.f && target->isAttackableBy(_this.get()) && lastDamageReceived.miliDifference() < 20000)
 		addDefender(target);
-	else if (target != NULL && defenderList.contains(target) && (target->isDead() || target->isIncapacitated() || !target->isInRange(_this, 128) || !target->isAttackableBy(_this))) {
+	else if (target != NULL && defenderList.contains(target) && (target->isDead() || target->isIncapacitated() || !target->isInRange(_this.get(), 128) || !target->isAttackableBy(_this.get()))) {
 		removeDefender(target);
 		target = NULL;
 	}
@@ -346,7 +346,7 @@ void AiAgentImplementation::doAttack() {
 			if (tarObj->isCreatureObject()) {
 				CreatureObject* targetCreature = cast<CreatureObject*>(tarObj);
 
-				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(_this) < 128.f && targetCreature->isAttackableBy(_this)) {
+				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(_this.get()) < 128.f && targetCreature->isAttackableBy(_this.get())) {
 					target = targetCreature;
 
 					break;
@@ -368,11 +368,11 @@ void AiAgentImplementation::doAttack() {
 		return;
 	}
 
-	if (target != NULL && (!target->isInRange(_this, 128) || !target->isAttackableBy(_this) || target->isDead() || target->isIncapacitated()
+	if (target != NULL && (!target->isInRange(_this.get(), 128) || !target->isAttackableBy(_this.get()) || target->isDead() || target->isIncapacitated()
 			|| (target->hasState(CreatureState::PEACE) && (System::random(level) == 1)))) {
-		//Locker clocker(target, _this);
+		//Locker clocker(target, _this.get());
 		/*if (defenderList.size() == 1 && defenderList.contains(target)) {
-			CombatManager::instance()->forcePeace(_this); //calling this on target will cause a deadlock, needs to be called in a new task
+			CombatManager::instance()->forcePeace(_this.get()); //calling this on target will cause a deadlock, needs to be called in a new task
 		} else*/
 
 		removeDefender(target);
@@ -450,7 +450,7 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 			return 0;
 		case 36:
-			getZoneServer()->getPlayerManager()->lootAll(player, _this);
+			getZoneServer()->getPlayerManager()->lootAll(player, _this.get());
 
 			return 0;
 		}
@@ -540,7 +540,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 	if (val && numberOfPlayersInRange <= 0) {
 		if (despawnEvent == NULL) {
-			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
+			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
 		}
 
 		if (!despawnEvent->isScheduled())
@@ -554,13 +554,13 @@ bool AiAgentImplementation::tryRetreat() {
 
 	try {
 
-		if(homeLocation.isInRange(_this, 1.5))
+		if(homeLocation.isInRange(_this.get(), 1.5))
 			return false;
 
 		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
 			return false;
 
-		CombatManager::instance()->forcePeace(_this);
+		CombatManager::instance()->forcePeace(_this.get());
 
 		Locker locker(&targetMutex);
 
@@ -650,7 +650,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 	SceneObject* scno = cast<SceneObject*>( entry);
 
-	if (scno == _this)
+	if (scno == _this.get())
 		return;
 
 	if (scno->isPlayerCreature())
@@ -674,9 +674,9 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	Locker zoneLocker(zone);
 
 	if (cell != NULL)
-		cell->transferObject(_this, -1);
+		cell->transferObject(_this.get(), -1);
 	else
-		zone->transferObject(_this, -1, true);
+		zone->transferObject(_this.get(), -1, true);
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
@@ -725,16 +725,16 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	setTargetObject(NULL);
 	setFollowObject(NULL);
 
-	//_this->printReferenceHolders();
+	//_this.get()->printReferenceHolders();
 
-	//printf("%d ref count\n", _this->getReferenceCount());
+	//printf("%d ref count\n", _this.get()->getReferenceCount());
 
 	if (respawnTimer == 0) {
-		//zone->getCreatureManager()->addToReservePool(_this);
+		//zone->getCreatureManager()->addToReservePool(_this.get());
 		return;
 	}
 
-	Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
+	Reference<Task*> task = new RespawnCreatureTask(_this.get(), zone, level);
 	task->schedule(respawnTimer * 1000);
 }
 
@@ -742,14 +742,14 @@ void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
 	if (getPendingTask("despawn") != NULL)
 		return;
 
-	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this);
+	Reference<DespawnCreatureTask*> despawn = new DespawnCreatureTask(_this.get());
 	addPendingTask("despawn", despawn, timeToDespawn * 1000);
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	SceneObject* scno = cast<SceneObject*>( entry);
 
-	if (scno == _this)
+	if (scno == _this.get())
 		return;
 
 	if (entry == followObject.get())
@@ -757,7 +757,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	if (scno->isPlayerCreature()) {
 		if ((--numberOfPlayersInRange <= 0)  && (despawnEvent == NULL)) {
-			/*despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
+			/*despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
 			despawnEvent->schedule(30000);*/
 		}
 	}
@@ -770,7 +770,7 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 #endif
 
 	if (awarenessEvent == NULL) {
-		awarenessEvent = new AiAwarenessEvent(_this, target);
+		awarenessEvent = new AiAwarenessEvent(_this.get(), target);
 
 		awarenessEvent->schedule(1000);
 
@@ -791,7 +791,7 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 
 void AiAgentImplementation::activateRecovery() {
 	if (thinkEvent == NULL) {
-		thinkEvent = new AiThinkEvent(_this);
+		thinkEvent = new AiThinkEvent(_this.get());
 
 		thinkEvent->schedule(2000);
 	}
@@ -838,8 +838,8 @@ void AiAgentImplementation::checkNewAngle() {
 	} else {
 		++movementCounter;
 
-		if (parent != NULL && getParent()->isCellObject())
-			updateZoneWithParent(getParent(), true, true);
+		if (parent != NULL && getParent().get()->isCellObject())
+			updateZoneWithParent(getParent().get(), true, true);
 		else
 			updateZone(true, true);
 	}
@@ -890,7 +890,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 
-		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get(), targetPosition->getCoordinates());
+		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
 
 		if (path == NULL) {
 			patrolPoints.remove(0);
@@ -931,7 +931,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 			pathDistance += oldCoord->getWorldPosition().distanceTo(nextWorldPos);
 
-			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent) { //last waypoint
+			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent.get()) { //last waypoint
 				cellObject = coord->getCell();
 
 				//TODO: calculate height
@@ -942,7 +942,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				*nextPosition = *coord;
 				found = true;
 
-				if ((dist <= maxDistance && cellObject == parent)) {
+				if ((dist <= maxDistance && cellObject == parent.get())) {
 					if (i == path->size() - 1) {
 						patrolPoints.remove(0);
 						remove = false;
@@ -955,7 +955,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 					if (coord->getCell() != NULL) { //target coord in cell
 						if (oldCoord->getCell() == NULL)  // convert old coord to model space
-							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent());
+							oldCoordinates = PathFinderManager::transformToModelSpace(oldCoord->getPoint(), coord->getCell()->getParent().get());
 
 					} else { // target coord in world
 						oldCoordinates = oldCoord->getWorldPosition();
@@ -1104,14 +1104,14 @@ void AiAgentImplementation::doMovement() {
 		case AiAgent::OBLIVIOUS:
 			break;
 		case AiAgent::WATCHING:
-			setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent());
+			setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get());
 			setDirection(atan2(follow->getPositionX() - getPositionX(), follow->getPositionX() - getPositionX()));
 			checkNewAngle();
 			if (patrolPoints.size() > 0)
 				updateCurrentPosition(&patrolPoints.get(0));
 			break;
 		case AiAgent::STALKING:
-			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
+			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent().get());
 			maxDistance = 25;
 			break;
 		case AiAgent::FOLLOWING: {
@@ -1120,13 +1120,13 @@ void AiAgentImplementation::doMovement() {
 			/*float newX = followObject->getPositionX() + (-3 + System::random(6));
 			float newY = followObject->getPositionY() + (-3 + System::random(6));*/
 
-			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent());
+			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent().get());
 			// stop in weapons range
 			if (weapon != NULL ) {
 				maxDistance = MAX(0.5, weapon->getIdealRange() - 2);
 			}
 
-			if (follow != NULL && !CollisionManager::checkLineOfSight(_this, follow)) {
+			if (follow != NULL && !CollisionManager::checkLineOfSight(_this.get(), follow)) {
 				maxDistance = 0.5;
 			}
 
@@ -1218,7 +1218,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		success = true;
 	}
 
-	Reference<Task*> ct = new CamoTask(target, _this, true, success);
+	Reference<Task*> ct = new CamoTask(target, _this.get(), true, success);
 	ct->execute();
 
 	return success;
@@ -1252,7 +1252,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		success = true;
 	}
 
-	Reference<Task*> ct = new CamoTask(target, _this, false, success);
+	Reference<Task*> ct = new CamoTask(target, _this.get(), false, success);
 	ct->execute();
 
 	return success;
@@ -1263,7 +1263,7 @@ void AiAgentImplementation::activateMovementEvent() {
 		return;
 
 	if (moveEvent == NULL) {
-		moveEvent = new AiMoveEvent(_this);
+		moveEvent = new AiMoveEvent(_this.get());
 
 		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
 	}
@@ -1277,7 +1277,7 @@ void AiAgentImplementation::activateWaitEvent() {
 		return;
 
 	if (waitEvent == NULL) {
-		waitEvent = new AiWaitEvent(_this);
+		waitEvent = new AiWaitEvent(_this.get());
 
 		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
 	}
@@ -1303,14 +1303,14 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 
 	if (point == NULL) {
 		if (parent != NULL)
-			msg = new UpdateTransformWithParentMessage(_this);
+			msg = new UpdateTransformWithParentMessage(_this.get());
 		else
-			msg = new UpdateTransformMessage(_this);
+			msg = new UpdateTransformMessage(_this.get());
 	} else {
 		if (point->getCell() != NULL)
-			msg = new LightUpdateTransformWithParentMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY(), point->getCell()->getObjectID());
+			msg = new LightUpdateTransformWithParentMessage(_this.get(), point->getPositionX(), point->getPositionZ(), point->getPositionY(), point->getCell()->getObjectID());
 		else
-			msg = new LightUpdateTransformMessage(_this, point->getPositionX(), point->getPositionZ(), point->getPositionY());
+			msg = new LightUpdateTransformMessage(_this.get(), point->getPositionX(), point->getPositionZ(), point->getPositionY());
 	}
 
 	broadcastMessage(msg, false);
@@ -1320,7 +1320,7 @@ int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* atta
 	if (getZone() != NULL) {
 		CreatureManager* creatureManager = getZone()->getCreatureManager();
 
-		creatureManager->notifyDestruction(attacker, _this, condition);
+		creatureManager->notifyDestruction(attacker, _this.get(), condition);
 	}
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
@@ -1505,7 +1505,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	//Face player.
 	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), getParent());
+	PatrolPoint current(coordinates.getPosition(), getParent().get());
 
 	broadcastNextPositionUpdate(&current);
 

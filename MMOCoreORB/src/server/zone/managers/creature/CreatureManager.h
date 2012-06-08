@@ -107,6 +107,22 @@ namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+namespace ai {
+
+class AiActor;
+
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
 
 class CreatureObject;
 
@@ -155,6 +171,8 @@ using namespace server::zone::objects::area;
 
 #include "system/util/Vector.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -168,6 +186,8 @@ public:
 
 	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
+	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
+
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
@@ -177,6 +197,8 @@ public:
 	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
+
+	String getTemplateToSpawn(unsigned int templateCRC);
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
@@ -202,13 +224,9 @@ public:
 
 	int getSpawnedRandomCreatures();
 
+	Vector3 getRandomJediTrainer();
+
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
-
-	Vector<float>* getTrainerObjectsX();
-
-	Vector<float>* getTrainerObjectsY();
-
-	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -238,7 +256,7 @@ namespace creature {
 
 class CreatureManagerImplementation : public ZoneManagerImplementation {
 protected:
-	ManagedWeakReference<Zone* > zone;
+	ManagedReference<Zone* > zone;
 
 	SpawnAreaMap spawnAreaMap;
 
@@ -259,6 +277,8 @@ public:
 
 	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
+	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
+
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID = 0);
@@ -268,6 +288,8 @@ public:
 	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
+
+	String getTemplateToSpawn(unsigned int templateCRC);
 
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
@@ -301,13 +323,9 @@ public:
 
 	int getSpawnedRandomCreatures();
 
+	Vector3 getRandomJediTrainer();
+
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
-
-	Vector<float>* getTrainerObjectsX();
-
-	Vector<float>* getTrainerObjectsY();
-
-	Vector<String>* getTrainerZone();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -358,6 +376,8 @@ public:
 
 	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
 
+	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent);
+
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID);
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long long parentID);
@@ -367,6 +387,8 @@ public:
 	CreatureObject* createCreature(unsigned int templateCRC, bool persistent);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
+
+	String getTemplateToSpawn(unsigned int templateCRC);
 
 	void loadSpawnAreas();
 

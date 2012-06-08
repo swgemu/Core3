@@ -956,39 +956,39 @@ void StructureObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StructureObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StructureObjectImplementation::operator const StructureObject*() {
-	return _this;
+	return _this.get();
 }
 
 void StructureObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StructureObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StructureObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StructureObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StructureObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StructureObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StructureObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StructureObjectImplementation::_serializationHelperMethod() {

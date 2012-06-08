@@ -85,7 +85,6 @@ class PlayerManager extends Observer implements Logger {
 	
 	private int highestBadgeIndex;
 	
-	@weakReference
 	private ZoneServer server;
 	
 	transient PlayerMap playerMap;

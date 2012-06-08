@@ -181,39 +181,39 @@ void VehicleControlDeviceImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VehicleControlDeviceImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 VehicleControlDeviceImplementation::operator const VehicleControlDevice*() {
-	return _this;
+	return _this.get();
 }
 
 void VehicleControlDeviceImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void VehicleControlDeviceImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void VehicleControlDeviceImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void VehicleControlDeviceImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void VehicleControlDeviceImplementation::_serializationHelperMethod() {
@@ -305,7 +305,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
 
 	else {
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				this.generateObject(player);
-	_this->generateObject(player);
+	_this.get()->generateObject(player);
 }
 }
 
@@ -323,12 +323,12 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				}
 	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  					this.generateObject(player);
-	_this->generateObject(player);
+	_this.get()->generateObject(player);
 }
 
 	else {
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  					this.storeObject(player);
-	_this->storeObject(player);
+	_this.get()->storeObject(player);
 }
 }
 }

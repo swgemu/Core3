@@ -82,7 +82,7 @@ public:
 
 		if (objectsParent != NULL && objectsParent->isCellObject()) {
 
-			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent());
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent().get().get());
 
 			if (!building->isOnAdminList(creature)) {
 				return GENERALERROR;

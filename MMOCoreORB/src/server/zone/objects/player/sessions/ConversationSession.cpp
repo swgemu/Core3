@@ -48,7 +48,7 @@ ConversationScreen* ConversationSession::getLastConversationScreen() {
 		return _implementation->getLastConversationScreen();
 }
 
-CreatureObject* ConversationSession::getNPC() {
+ManagedWeakReference<CreatureObject* > ConversationSession::getNPC() {
 	ConversationSessionImplementation* _implementation = static_cast<ConversationSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -101,39 +101,39 @@ void ConversationSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ConversationSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ConversationSessionImplementation::operator const ConversationSession*() {
-	return _this;
+	return _this.get();
 }
 
 void ConversationSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ConversationSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ConversationSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ConversationSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ConversationSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ConversationSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ConversationSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ConversationSessionImplementation::_serializationHelperMethod() {
@@ -231,7 +231,7 @@ ConversationScreen* ConversationSessionImplementation::getLastConversationScreen
 	return lastConversationScreen;
 }
 
-CreatureObject* ConversationSessionImplementation::getNPC() {
+ManagedWeakReference<CreatureObject* > ConversationSessionImplementation::getNPC() {
 	// server/zone/objects/player/sessions/ConversationSession.idl():  		return npc;
 	return npc;
 }
@@ -253,7 +253,7 @@ void ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	switch (methid) {
 	case RPC_GETNPC__:
 		{
-			resp->insertLong(getNPC()->_getObjectID());
+			resp->insertLong(getNPC().get()->_getObjectID());
 		}
 		break;
 	default:
@@ -261,7 +261,7 @@ void ConversationSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 }
 
-CreatureObject* ConversationSessionAdapter::getNPC() {
+ManagedWeakReference<CreatureObject* > ConversationSessionAdapter::getNPC() {
 	return (static_cast<ConversationSession*>(stub))->getNPC();
 }
 

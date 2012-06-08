@@ -75,11 +75,11 @@ public:
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		StringBuffer msgTarget, msgPlayer;
 			msgPlayer << creatureTarget->getFirstName() << " disease has slightly decreased.";
-			msgTarget << creature->getFirstName() << " uses the Force to heal your disease.";
+//			msgTarget << creature->getFirstName() << " uses the Force to heal your disease.";
 
 		if (creature != creatureTarget) 
 			creature->sendSystemMessage(msgPlayer.toString());
-			creatureTarget->sendSystemMessage(msgTarget.toString());
+//			creatureTarget->sendSystemMessage(msgTarget.toString());
 	}	
 	
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -111,28 +111,7 @@ public:
 				creature->sendSystemMessage(stringId); //%NT is not diseased.
 			}
 			return false;
-		}
-
-
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Force Cure Disease while prone.");
-			return false;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Force Cure Disease while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
+		}	
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
@@ -175,7 +154,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;

@@ -43,6 +43,7 @@
 
 
 --Children folder includes
+includeFile("creature/ai/serverobjects.lua")
 includeFile("creature/base/serverobjects.lua")
 includeFile("creature/camera/serverobjects.lua")
 includeFile("creature/npc/serverobjects.lua")

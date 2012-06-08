@@ -63,7 +63,6 @@ include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
 	
-	@weakReference
 	protected ZoneServer zoneServer;
 	
 	public final static int MAXPRICE = 20000;

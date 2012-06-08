@@ -145,39 +145,39 @@ void IntangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 IntangibleObjectImplementation::operator const IntangibleObject*() {
-	return _this;
+	return _this.get();
 }
 
 void IntangibleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void IntangibleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void IntangibleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void IntangibleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void IntangibleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void IntangibleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void IntangibleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void IntangibleObjectImplementation::_serializationHelperMethod() {

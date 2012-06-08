@@ -17,24 +17,24 @@ void PowerBoostBuffImplementation::initializeTransientMembers() {
 			return;
 
 		if (nextTickTime.isPast()) {
-			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
+			pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.get());
 			pbBuffEvent->schedule(50);
 		} else {
-			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
+			pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.get());
 			pbBuffEvent->schedule(nextTickTime);
 		}
 }
 
 void PowerBoostBuffImplementation::activate(bool applyModifiers) {
-	if(creature != NULL) {
+	if(creature.get() != NULL) {
 		if(counter == 0) {
 			BuffImplementation::activate(false);
 
-			creature->addMaxHAM(CreatureAttribute::MIND, -(pbTick*20), true);
-			creature->sendSystemMessage("@teraskasi:powerboost_begin"); // [meditation] You focus your mental energies into your physical form.
+			creature.get()->addMaxHAM(CreatureAttribute::MIND, -(pbTick*20), true);
+			creature.get()->sendSystemMessage("@teraskasi:powerboost_begin"); // [meditation] You focus your mental energies into your physical form.
 
 			// DurationEvent to handle calling the deactivate() when the timer expires.
-			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
+			pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.get());
 			//nextTickTime = pbBuffEvent->getNextExecutionTime();
 			Core::getTaskManager()->getNextExecutionTime(pbBuffEvent, nextTickTime);
 
@@ -67,15 +67,15 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 }
 
 void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
-	if(creature != NULL) {
+	if(creature.get() != NULL) {
 		if(counter <= 41) {
 			activate(false);
 		} else if(counter >= 45 && counter < 65) {
 			if(counter == 45)
-				creature->sendSystemMessage("@teraskasi:powerboost_wane"); // [meditation] You feel the effects of your mental focus begin to wane.
+				creature.get()->sendSystemMessage("@teraskasi:powerboost_wane"); // [meditation] You feel the effects of your mental focus begin to wane.
 			activate(false);
 		} else if(counter >= 65) {
-			creature->sendSystemMessage("@teraskasi:powerboost_end"); // [meditation] You feel the effects of mental focus come to an end.
+			creature.get()->sendSystemMessage("@teraskasi:powerboost_end"); // [meditation] You feel the effects of mental focus come to an end.
 			clearBuffEvent();
 			BuffImplementation::deactivate(false);
 		}
@@ -84,19 +84,19 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 
 void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
 	if(up) {
-		creature->addMaxHAM(CreatureAttribute::HEALTH, pbTick ,true);
-		creature->addMaxHAM(CreatureAttribute::ACTION, pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::HEALTH, pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::ACTION, pbTick ,true);
 	} else {
-		creature->addMaxHAM(CreatureAttribute::HEALTH, -pbTick ,true);
-		creature->addMaxHAM(CreatureAttribute::ACTION, -pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::HEALTH, -pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::ACTION, -pbTick ,true);
 	}
 }
 
 void PowerBoostBuffImplementation::doMindTick(bool up) {
 	if(up) {
-		creature->addMaxHAM(CreatureAttribute::MIND, pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::MIND, pbTick ,true);
 	} else {
-		creature->addMaxHAM(CreatureAttribute::MIND, -pbTick ,true);
+		creature.get()->addMaxHAM(CreatureAttribute::MIND, -pbTick ,true);
 	}
 }
 

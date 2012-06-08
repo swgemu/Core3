@@ -82,6 +82,11 @@ class CraftingSession extends Facade {
 	 */
 	public native int clearSession();
 	
+	@weakReference
+	public ManufactureSchematic getSchematic() {
+		return manufactureSchematic;
+	}
+
 	/**
 	 * Closes an open crafting windows
 	 */

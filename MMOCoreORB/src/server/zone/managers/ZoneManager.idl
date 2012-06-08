@@ -52,7 +52,6 @@ import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
 
 class ZoneManager extends ManagedService implements Logger {
-	@weakReference
 	protected transient ZoneServer zoneServer;
 
 	protected transient ZoneProcessServer zoneProcessor;

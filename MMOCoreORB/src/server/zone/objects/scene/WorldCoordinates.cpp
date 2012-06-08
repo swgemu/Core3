@@ -30,7 +30,7 @@ WorldCoordinates& WorldCoordinates::operator=(const WorldCoordinates& c) {
 WorldCoordinates::WorldCoordinates(SceneObject* obj) : Object() {
 	point = obj->getPosition();
 
-	SceneObject* parent = obj->getParent();
+	ManagedReference<SceneObject*> parent = obj->getParent();
 
 	if (parent != NULL && obj != parent && parent->isCellObject())
 		cell = parent;
@@ -62,7 +62,7 @@ Vector3 WorldCoordinates::getWorldPosition() const {
 	if (cell == NULL)
 		return point;
 
-	SceneObject* root = cell->getRootParent();
+	ManagedReference<SceneObject*> root = cell->getRootParent();
 
 	if (root == NULL)
 		return point;

@@ -29,8 +29,8 @@ public:
 		placementComponent = ComponentManager::instance()->getComponent<PlaceStructureComponent*>(componentName);
 	}
 
-	inline PlaceStructureComponent* getStructurePlacementComponent() {
-		return placementComponent;
+	inline Reference<PlaceStructureComponent*> getStructurePlacementComponent() {
+		return placementComponent.get();
 	}
 };
 

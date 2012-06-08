@@ -86,39 +86,39 @@ void ZoneManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ZoneManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ZoneManagerImplementation::operator const ZoneManager*() {
-	return _this;
+	return _this.get();
 }
 
 void ZoneManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ZoneManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ZoneManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ZoneManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ZoneManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ZoneManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ZoneManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ZoneManagerImplementation::_serializationHelperMethod() {

@@ -78,11 +78,11 @@ public:
 
 			//player->info("activating command queue action");
 
-			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
+			ManagedReference<FishingManager*> manager = strong->getZoneProcessServer()->getFishingManager();
 			//Locker lockerManager(manager);
 			//player->removePendingTask("fishing");
 			if (fishingState != FishingManagerImplementation::NOTFISHING) {
-				manager->fishingStep(player);
+				manager->fishingStep(strong);
 
 			} /*else if (marker != NULL) {
 					// new event
@@ -90,7 +90,7 @@ public:
 
 			}*/ else {
 
-				manager->stopFishingEvent(player);
+				manager->stopFishingEvent(strong);
 
 			}
 

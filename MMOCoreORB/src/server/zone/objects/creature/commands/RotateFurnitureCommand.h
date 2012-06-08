@@ -151,7 +151,7 @@ public:
 		obj->incrementMovementCounter();
 
 		if (obj->getParent() != NULL)
-			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), obj->getParent()->getObjectID());
+			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY(), obj->getParent().get()->getObjectID());
 		else
 			obj->teleport(obj->getPositionX(), obj->getPositionZ(), obj->getPositionY());
 

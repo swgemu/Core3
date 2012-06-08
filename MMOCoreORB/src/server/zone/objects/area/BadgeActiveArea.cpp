@@ -113,39 +113,39 @@ void BadgeActiveAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* BadgeActiveAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 BadgeActiveAreaImplementation::operator const BadgeActiveArea*() {
-	return _this;
+	return _this.get();
 }
 
 void BadgeActiveAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void BadgeActiveAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void BadgeActiveAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void BadgeActiveAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void BadgeActiveAreaImplementation::_serializationHelperMethod() {
@@ -225,9 +225,9 @@ void BadgeActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	if (!player->isPlayerCreature())	// server/zone/objects/area/BadgeActiveArea.idl():  			return;
 	return;
 	// server/zone/objects/area/BadgeActiveArea.idl():  		CreatureObject playerCreature = (CreatureObject) player;
-	CreatureObject* playerCreature = (CreatureObject*) player;
+	ManagedReference<CreatureObject* > playerCreature = (CreatureObject*) player;
 	// server/zone/objects/area/BadgeActiveArea.idl():  		PlayerObject ghost = playerCreature.getPlayerObject();
-	PlayerObject* ghost = playerCreature->getPlayerObject();
+	ManagedReference<PlayerObject* > ghost = playerCreature->getPlayerObject();
 	// server/zone/objects/area/BadgeActiveArea.idl():  	}
 	if (!ghost->hasBadge(areaBadge)){
 	// server/zone/objects/area/BadgeActiveArea.idl():  			ghost.awardBadge(areaBadge);

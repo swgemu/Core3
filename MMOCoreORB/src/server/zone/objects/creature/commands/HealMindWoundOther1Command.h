@@ -139,10 +139,8 @@ public:
 		} else if (willpowerWound > 0) {
 			msgBody << willpowerWound << " willpower";
 		} else {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no dmg of that type to heal.	
-			return; //No damage to heal.
+			creature->sendSystemMessage("Your target has no wounds of that type to heal."); //%NT has no wounds of that type to heal.
+			return;
 		}
 
 		msgTail << " wounds.";
@@ -157,11 +155,13 @@ public:
 	
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->getWounds(CreatureAttribute::MIND) && !creatureTarget->getWounds(CreatureAttribute::FOCUS) && !creatureTarget->getWounds(CreatureAttribute::WILLPOWER)) {
-			StringIdChatParameter stringId("@healing_response:healing_response_63");
-			stringId.setTT(creatureTarget->getObjectID());
-			creature->sendSystemMessage(stringId); //%NT has no wounds of that type to heal.
+			creature->sendSystemMessage("Your target has no wounds of that type to heal."); //%NT has no wounds of that type to heal.
 			return false;
 		}
+		
+		if (creature->isProne()) {
+			return false;
+		}		
 		
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -195,7 +195,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -215,7 +217,6 @@ public:
 		}
 		
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("You cannot use Force Heal Mind Wounds Other on yourself.");
 			return GENERALERROR;
 		}		
 
@@ -238,7 +239,7 @@ public:
 		
 		if (playerObject->getForcePower() <= 85) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
-			return false;
+			return GENERALERROR;
 		}
 		
 		forceCost = MIN(((healedMindWound + healedFocusWound + healedWillpowerWound) / 15), 85);

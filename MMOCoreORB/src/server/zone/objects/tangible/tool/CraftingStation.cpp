@@ -236,39 +236,39 @@ void CraftingStationImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CraftingStationImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CraftingStationImplementation::operator const CraftingStation*() {
-	return _this;
+	return _this.get();
 }
 
 void CraftingStationImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CraftingStationImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CraftingStationImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CraftingStationImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CraftingStationImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CraftingStationImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CraftingStationImplementation::_serializationHelperMethod() {

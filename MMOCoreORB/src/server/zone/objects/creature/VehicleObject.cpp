@@ -347,39 +347,39 @@ void VehicleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VehicleObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 VehicleObjectImplementation::operator const VehicleObject*() {
-	return _this;
+	return _this.get();
 }
 
 void VehicleObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void VehicleObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void VehicleObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void VehicleObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void VehicleObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void VehicleObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void VehicleObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void VehicleObjectImplementation::_serializationHelperMethod() {
@@ -486,7 +486,7 @@ bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/VehicleObject.idl():  		return super.linkedCreature.isAttackableBy(object);
-	return CreatureObjectImplementation::linkedCreature.getForUpdate()->isAttackableBy(object);
+	return CreatureObjectImplementation::linkedCreature.getForUpdate().get()->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {

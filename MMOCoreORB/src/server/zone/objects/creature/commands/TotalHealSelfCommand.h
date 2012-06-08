@@ -168,7 +168,7 @@ public:
 
 		msgTail << " damage.";
 
-			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			msgPlayer << "You heal yourself for " << msgBody.toString() << " points of" << msgTail.toString(); // You heal yourself for %DI points of %TO.
 			creature->sendSystemMessage(msgPlayer.toString());
 
 	}	
@@ -185,29 +185,17 @@ public:
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}	
-		
-		if (creature->isProne()) {
-			return GENERALERROR;
-		}
-
-		if (creature->isMeditating()) {
-			return GENERALERROR;
-		}
-
-		if (creature->isRidingCreature()) {
-			return GENERALERROR;
-		}
-
-		if (creature->isMounted()) {
-			return GENERALERROR;
-		}		
-	
-		
+				
 		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION) && !creature->getWounds(CreatureAttribute::ACTION) && !creature->getWounds(CreatureAttribute::QUICKNESS) && !creature->getWounds(CreatureAttribute::STAMINA) && !creature->getWounds(CreatureAttribute::MIND) && !creature->getWounds(CreatureAttribute::FOCUS) && !creature->getWounds(CreatureAttribute::WILLPOWER) && !creature->hasDamage(CreatureAttribute::HEALTH) && !creature->hasDamage(CreatureAttribute::ACTION) && !creature->hasDamage(CreatureAttribute::MIND) && !creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
-			creature->sendSystemMessage("You have nothing to Heal."); // You have no wounds of that type.
+			creature->sendSystemMessage("You have nothing of that type to heal."); // You have nothing of that type to heal.
 			return false;
 		}
-						
+		
+		int healDisease = creature->healDot(CreatureState::DISEASED, 300);
+		int healPoison = creature->healDot(CreatureState::POISONED, 300);
+		int healBleeding = creature->healDot(CreatureState::BLEEDING, 300);
+		int healOnFire = creature->healDot(CreatureState::ONFIRE, 300);			
+		
 		int healedHealthWound = creature->healWound(creature, CreatureAttribute::HEALTH, heal);
 		int healedStrengthWound = creature->healWound(creature, CreatureAttribute::STRENGTH, heal);
 		int healedConstitutionWound = creature->healWound(creature, CreatureAttribute::CONSTITUTION, heal);
@@ -233,12 +221,7 @@ public:
 		creature->removeStateBuff(CreatureState::BLINDED);
 
 		creature->removeStateBuff(CreatureState::INTIMIDATED);
-
-		int healDisease = creature->healDot(CreatureState::DISEASED, 100);
-		int healPoison = creature->healDot(CreatureState::POISONED, 100);
-		int healBleeding = creature->healDot(CreatureState::BLEEDING, 100);
-		int healOnFire = creature->healDot(CreatureState::ONFIRE, 100);		
-		
+			
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
 		if (playerObject->getForcePower() <= 400) {

@@ -29,6 +29,7 @@ class TerrainManager : public Logger, public Object {
 
 public:
 	TerrainManager(Zone* planet);
+	TerrainManager(ManagedWeakReference<Zone*> planet);
 
 	bool initialize(const String& terrainFile);
 

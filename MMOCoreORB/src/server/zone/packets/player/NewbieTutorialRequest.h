@@ -73,7 +73,7 @@ public:
 		if (client == NULL)
 			return;
 
-		Reference<CreatureObject*> sceneObject = dynamic_cast<CreatureObject*>(client->getPlayer());
+		ManagedReference<CreatureObject*> sceneObject = dynamic_cast<CreatureObject*>(client->getPlayer().get().get());
 
 		if (sceneObject == NULL)
 			return;
@@ -99,7 +99,7 @@ public:
 			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
 			if (player->getZone() != NULL && player->getParent() != NULL) {
-				SceneObject* par = player->getParent();
+				ManagedReference<SceneObject*> par = player->getParent();
 
 				if (par->getParent() != NULL) {
 					Zone* zone = player->getZone();

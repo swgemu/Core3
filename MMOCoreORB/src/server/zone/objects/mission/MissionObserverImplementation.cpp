@@ -16,9 +16,9 @@ int MissionObserverImplementation::notifyObserverEvent(uint32 eventType, Observa
 	if (objective == NULL)
 		return 1;
 	else
-		return objective->notifyObserverEvent(_this, eventType, observable, arg1, arg2);
+		return objective->notifyObserverEvent(_this.get(), eventType, observable, arg1, arg2);
 }
 
 void MissionObserverImplementation::destroyObjectFromDatabase() {
-	ObjectManager::instance()->destroyObjectFromDatabase(_this->_getObjectID());
+	ObjectManager::instance()->destroyObjectFromDatabase(_this.get()->_getObjectID());
 }

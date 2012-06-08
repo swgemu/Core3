@@ -169,7 +169,7 @@ int Instrument::getInstrumentType() {
 		return _implementation->getInstrumentType();
 }
 
-CreatureObject* Instrument::getSpawnerPlayer() {
+ManagedWeakReference<CreatureObject* > Instrument::getSpawnerPlayer() {
 	InstrumentImplementation* _implementation = static_cast<InstrumentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -263,39 +263,39 @@ void InstrumentImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* InstrumentImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 InstrumentImplementation::operator const Instrument*() {
-	return _this;
+	return _this.get();
 }
 
 void InstrumentImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void InstrumentImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void InstrumentImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void InstrumentImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void InstrumentImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void InstrumentImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void InstrumentImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void InstrumentImplementation::_serializationHelperMethod() {
@@ -468,7 +468,7 @@ int InstrumentImplementation::getInstrumentType() {
 	return instrumentType;
 }
 
-CreatureObject* InstrumentImplementation::getSpawnerPlayer() {
+ManagedWeakReference<CreatureObject* > InstrumentImplementation::getSpawnerPlayer() {
 	// server/zone/objects/tangible/Instrument.idl():  		return spawnerPlayer;
 	return spawnerPlayer;
 }
@@ -545,7 +545,7 @@ void InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETSPAWNERPLAYER__:
 		{
-			resp->insertLong(getSpawnerPlayer()->_getObjectID());
+			resp->insertLong(getSpawnerPlayer().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETSPAWNERPLAYER__CREATUREOBJECT_:
@@ -600,7 +600,7 @@ int InstrumentAdapter::getInstrumentType() {
 	return (static_cast<Instrument*>(stub))->getInstrumentType();
 }
 
-CreatureObject* InstrumentAdapter::getSpawnerPlayer() {
+ManagedWeakReference<CreatureObject* > InstrumentAdapter::getSpawnerPlayer() {
 	return (static_cast<Instrument*>(stub))->getSpawnerPlayer();
 }
 

@@ -431,39 +431,39 @@ void GroupObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* GroupObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 GroupObjectImplementation::operator const GroupObject*() {
-	return _this;
+	return _this.get();
 }
 
 void GroupObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void GroupObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void GroupObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void GroupObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void GroupObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void GroupObjectImplementation::_serializationHelperMethod() {

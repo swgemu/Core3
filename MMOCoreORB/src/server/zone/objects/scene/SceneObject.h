@@ -432,7 +432,7 @@ public:
 
 	ActiveArea* getActiveRegion();
 
-	CityRegion* getCityRegion();
+	ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void setCityRegion(CityRegion* region);
 
@@ -556,13 +556,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -751,6 +751,8 @@ public:
 	bool isMissionTerminal();
 
 	bool isMissionObject();
+
+	bool isActorObject();
 
 	int getPlanetMapCategoryCRC();
 
@@ -1063,7 +1065,7 @@ public:
 
 	ActiveArea* getActiveRegion();
 
-	virtual CityRegion* getCityRegion();
+	virtual ManagedWeakReference<CityRegion* > getCityRegion();
 
 	void setCityRegion(CityRegion* region);
 
@@ -1187,13 +1189,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1382,6 +1384,8 @@ public:
 	virtual bool isMissionTerminal();
 
 	virtual bool isMissionObject();
+
+	virtual bool isActorObject();
 
 	int getPlanetMapCategoryCRC();
 
@@ -1706,13 +1710,13 @@ public:
 
 	unsigned int getMovementCounter();
 
-	SceneObject* getParent();
+	ManagedWeakReference<SceneObject* > getParent();
 
 	ZoneServer* getZoneServer();
 
-	SceneObject* getRootParent();
+	ManagedWeakReference<SceneObject* > getRootParent();
 
-	SceneObject* getParentRecursively(unsigned int gameObjectType);
+	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
 	bool isASubChildOf(SceneObject* object);
 
@@ -1879,6 +1883,8 @@ public:
 	bool isMissionTerminal();
 
 	bool isMissionObject();
+
+	bool isActorObject();
 
 	int getPlanetMapCategoryCRC();
 

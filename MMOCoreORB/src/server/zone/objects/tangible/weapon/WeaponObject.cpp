@@ -1141,39 +1141,39 @@ void WeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* WeaponObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 WeaponObjectImplementation::operator const WeaponObject*() {
-	return _this;
+	return _this.get();
 }
 
 void WeaponObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void WeaponObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void WeaponObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void WeaponObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void WeaponObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void WeaponObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void WeaponObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void WeaponObjectImplementation::_serializationHelperMethod() {
@@ -1872,7 +1872,7 @@ PowerupObject* WeaponObjectImplementation::removePowerup() {
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return 
 	if (hasPowerup()){
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			PowerupObject pup = powerupObject;
-	PowerupObject* pup = powerupObject;
+	ManagedReference<PowerupObject* > pup = powerupObject;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			powerupObject = null;
 	powerupObject = NULL;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  			return pup;

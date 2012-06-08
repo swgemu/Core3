@@ -181,39 +181,39 @@ void WoundPackImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* WoundPackImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 WoundPackImplementation::operator const WoundPack*() {
-	return _this;
+	return _this.get();
 }
 
 void WoundPackImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void WoundPackImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void WoundPackImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void WoundPackImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void WoundPackImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void WoundPackImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void WoundPackImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void WoundPackImplementation::_serializationHelperMethod() {
@@ -374,9 +374,9 @@ unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, Cre
 	power = power - power * patient->calculateBFRatio();
 }
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer zoneServer = super.getZoneServer();
-	ZoneServer* zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
+	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
-	PlayerManager* playerManager = zoneServer->getPlayerManager();
+	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);
 	float modEnvironment = 1 + (healer->getSkillMod("private_medical_rating") / 100.0f);
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");

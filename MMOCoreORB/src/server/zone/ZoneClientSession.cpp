@@ -255,7 +255,7 @@ BaseClientProxy* ZoneClientSession::getSession() {
 		return _implementation->getSession();
 }
 
-SceneObject* ZoneClientSession::getPlayer() {
+ManagedWeakReference<SceneObject* > ZoneClientSession::getPlayer() {
 	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -375,39 +375,39 @@ void ZoneClientSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ZoneClientSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ZoneClientSessionImplementation::operator const ZoneClientSession*() {
-	return _this;
+	return _this.get();
 }
 
 void ZoneClientSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ZoneClientSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ZoneClientSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ZoneClientSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ZoneClientSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ZoneClientSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ZoneClientSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ZoneClientSessionImplementation::_serializationHelperMethod() {
@@ -552,31 +552,6 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	return _count + 7;
 }
 
-void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl():  		player 
-	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl():  		}
-	if (playerCreature == NULL && player != NULL){
-	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = player.getZoneServer();
-	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl():  			}
-	if (zoneServer != NULL)	// server/zone/ZoneClientSession.idl():  					zoneServer.decreaseOnlinePlayers();
-	zoneServer->decreaseOnlinePlayers();
-}
-
-	else 	// server/zone/ZoneClientSession.idl():  		}
-	if (playerCreature != player){
-	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = playerCreature.getZoneServer();
-	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl():  			}
-	if (zoneServer != NULL)	// server/zone/ZoneClientSession.idl():  					zoneServer.increaseOnlinePlayers();
-	zoneServer->increaseOnlinePlayers();
-}
-}
-	// server/zone/ZoneClientSession.idl():  		player = playerCreature;
-	player = playerCreature;
-}
-
 void ZoneClientSessionImplementation::setSessionID(unsigned int id) {
 	// server/zone/ZoneClientSession.idl():  		sessionID = id;
 	sessionID = id;
@@ -607,7 +582,7 @@ Time* ZoneClientSessionImplementation::getCommandSpamCooldown() {
 	return (&commandSpamCooldown);
 }
 
-SceneObject* ZoneClientSessionImplementation::getPlayer() {
+ManagedWeakReference<SceneObject* > ZoneClientSessionImplementation::getPlayer() {
 	// server/zone/ZoneClientSession.idl():  		return player;
 	return player;
 }
@@ -732,7 +707,7 @@ void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_GETPLAYER__:
 		{
-			resp->insertLong(getPlayer()->_getObjectID());
+			resp->insertLong(getPlayer().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETSESSIONID__:
@@ -825,7 +800,7 @@ void ZoneClientSessionAdapter::resetCommandCount() {
 	(static_cast<ZoneClientSession*>(stub))->resetCommandCount();
 }
 
-SceneObject* ZoneClientSessionAdapter::getPlayer() {
+ManagedWeakReference<SceneObject* > ZoneClientSessionAdapter::getPlayer() {
 	return (static_cast<ZoneClientSession*>(stub))->getPlayer();
 }
 

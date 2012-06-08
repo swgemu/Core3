@@ -302,6 +302,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public native void setForceCloseDisabled();
 
+	@weakReference
 	public CreatureObject getPlayer() {
 		return player;
 	}
@@ -314,6 +315,7 @@ class SuiBox extends ManagedObject implements Logger {
 		return windowType;
 	}
 	
+	@weakReference
 	public SceneObject getUsingObject() {
 		return usingObject;
 	}

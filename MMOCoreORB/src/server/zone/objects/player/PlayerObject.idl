@@ -85,6 +85,7 @@ include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
 import system.util.Vector;
 import system.util.SortedVector;
+import engine.util.u3d.Vector3;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -189,9 +190,11 @@ class PlayerObject extends IntangibleObject {
 	
 	
 	// Jedi Trainers.
-	protected float trainerCoordinatesX;
-	protected float trainerCoordinatesY;
-	protected string trainerZone;
+	@local
+	@dereferenced
+	protected Vector3 trainerCoordinates;
+	
+	protected string trainerZoneName;
 	
 	@dereferenced
 	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
@@ -282,6 +285,8 @@ class PlayerObject extends IntangibleObject {
 		forcePowerMax = 0;
 		forcePowerRegen = 0;
 		jediState = 0;
+		
+		trainerZoneName = "";
 		
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
@@ -632,29 +637,24 @@ class PlayerObject extends IntangibleObject {
 		conversatingCreature = creature;
 	}
 	
+	@weakReference
 	public CreatureObject getConversatingCreature() {
 		return conversatingCreature;
 	}
 	
-	public void setTrainerCoordinates(float x, float y) {
-		trainerCoordinatesX = x;
-		trainerCoordinatesY = y;
+	@local
+	public native void setTrainerCoordinates(@dereferenced final Vector3 trainer);
+	
+	@local
+	@dereferenced
+	public native Vector3 getTrainerCoordinates();
+	
+	public void setTrainerZoneName(string zoneName) {
+		trainerZoneName = zoneName;
 	}
 	
-	public float getTrainerCoordinatesY() {
-		return trainerCoordinatesY;
-	}
-	
-	public float getTrainerCoordinatesX() {
-		return trainerCoordinatesX;
-	}
-	
-	public void setTrainerZone(string zone) {
-		trainerZone = zone;
-	}
-	
-	public string getTrainerZone() {
-		return trainerZone;
+	public string getTrainerZoneName() {
+		return trainerZoneName;
 	}
 	
 	@local
@@ -713,6 +713,7 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.drop(actionCRC);
 	}
 	
+	@weakReference
 	public BuildingObject getDeclaredResidence() {
 		return declaredResidence;
 	}
@@ -725,6 +726,7 @@ class PlayerObject extends IntangibleObject {
 		cloningFacility = cloningfac;
 	}
 	
+	@weakReference
 	public BuildingObject getCloningFacility() {
 		return cloningFacility;
 	}
@@ -1174,7 +1176,8 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void updateLastValidatedPosition() {
-		lastValidatedPosition.update(super.getParent());
+		SceneObject par = super.getParent();
+		lastValidatedPosition.update(par);
 		serverLastMovementStamp.updateToCurrentTime();
 	}
 

@@ -283,6 +283,8 @@ using namespace server::zone::objects::player::events;
 
 #include "system/util/SortedVector.h"
 
+#include "engine/util/u3d/Vector3.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -454,17 +456,15 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerCoordinates(const Vector3& trainer);
 
-	float getTrainerCoordinatesY();
+	Vector3 getTrainerCoordinates();
 
-	float getTrainerCoordinatesX();
+	void setTrainerZoneName(String& zoneName);
 
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -492,13 +492,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 
@@ -888,11 +888,9 @@ protected:
 
 	ManagedWeakReference<CreatureObject* > conversatingCreature;
 
-	float trainerCoordinatesX;
+	Vector3 trainerCoordinates;
 
-	float trainerCoordinatesY;
-
-	String trainerZone;
+	String trainerZoneName;
 
 	Reference<PlayerDisconnectEvent*> disconnectEvent;
 
@@ -1105,17 +1103,15 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerCoordinates(const Vector3& trainer);
 
-	float getTrainerCoordinatesY();
+	Vector3 getTrainerCoordinates();
 
-	float getTrainerCoordinatesX();
+	void setTrainerZoneName(String& zoneName);
 
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	SortedVector<unsigned long long>* getPersistentMessages();
 
@@ -1143,13 +1139,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 
@@ -1578,17 +1574,11 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	CreatureObject* getConversatingCreature();
+	ManagedWeakReference<CreatureObject* > getConversatingCreature();
 
-	void setTrainerCoordinates(float x, float y);
+	void setTrainerZoneName(String& zoneName);
 
-	float getTrainerCoordinatesY();
-
-	float getTrainerCoordinatesX();
-
-	void setTrainerZone(String& zone);
-
-	String getTrainerZone();
+	String getTrainerZoneName();
 
 	void addPersistentMessage(unsigned long long id);
 
@@ -1610,13 +1600,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	BuildingObject* getDeclaredResidence();
+	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	BuildingObject* getCloningFacility();
+	ManagedWeakReference<BuildingObject* > getCloningFacility();
 
 	void notifyOnline();
 

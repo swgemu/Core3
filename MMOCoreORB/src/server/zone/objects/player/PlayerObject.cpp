@@ -40,7 +40,7 @@
  *	PlayerObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_HASCAPPEDEXPERIENCE__STRING_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_SETSCREENPLAYDATA__STRING_STRING_STRING_,RPC_GETSCREENPLAYDATA__STRING_STRING_,RPC_CLEARSCREENPLAYDATA__STRING_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_SETTRAINERCOORDINATES__FLOAT_FLOAT_,RPC_GETTRAINERCOORDINATESY__,RPC_GETTRAINERCOORDINATESX__,RPC_SETTRAINERZONE__STRING_,RPC_GETTRAINERZONE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETFORCEPOWER__INT_BOOL_,RPC_SETFORCEPOWERMAX__INT_BOOL_,RPC_ACTIVATEFORCEREGEN__,RPC_SETFORCEPOWERREGEN__INT_,RPC_GETFORCEPOWERREGEN__,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ADDPERMISSIONGROUP__STRING_,RPC_REMOVEPERMISSIONGROUP__STRING_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_SETJEDISTATE__INT_,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_SETBANKLOCATION__STRING_,RPC_GETBANKLOCATION__,RPC_GETEXPERIENCE__STRING_,RPC_MAXIMIZEEXPERIENCE__,RPC_ACTIVATEMISSIONS__,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_SETFACTIONSTATUS__INT_,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_ADDHOLOGRINDPROFESSION__BYTE_,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__,RPC_GETSTARTERPROFESSION__,RPC_SETSTARTERPROFESSION__STRING_,RPC_ADDTOBOUNTYLOCKLIST__LONG_,RPC_ISINBOUNTYLOCKLIST__LONG_,RPC_REMOVEFROMBOUNTYLOCKLIST__LONG_BOOL_,RPC_REMOVEFROMBOUNTYLOCKLISTDIRECTLY__LONG_,RPC_ISBOUNTYLOCKED__,RPC_GETPERFORMANCEBUFFTARGET__,RPC_SETPERFORMANCEBUFFTARGET__LONG_,RPC_SETDEBUG__BOOL_,RPC_GETDEBUG__,RPC_GETVISIBILITY__,RPC_SETVISIBILITY__FLOAT_,};
+enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_HASCAPPEDEXPERIENCE__STRING_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_SETSCREENPLAYDATA__STRING_STRING_STRING_,RPC_GETSCREENPLAYDATA__STRING_STRING_,RPC_CLEARSCREENPLAYDATA__STRING_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_SETTRAINERZONENAME__STRING_,RPC_GETTRAINERZONENAME__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETFORCEPOWER__INT_BOOL_,RPC_SETFORCEPOWERMAX__INT_BOOL_,RPC_ACTIVATEFORCEREGEN__,RPC_SETFORCEPOWERREGEN__INT_,RPC_GETFORCEPOWERREGEN__,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ADDPERMISSIONGROUP__STRING_,RPC_REMOVEPERMISSIONGROUP__STRING_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_SETJEDISTATE__INT_,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_SETBANKLOCATION__STRING_,RPC_GETBANKLOCATION__,RPC_GETEXPERIENCE__STRING_,RPC_MAXIMIZEEXPERIENCE__,RPC_ACTIVATEMISSIONS__,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_SETFACTIONSTATUS__INT_,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_ADDHOLOGRINDPROFESSION__BYTE_,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__,RPC_GETSTARTERPROFESSION__,RPC_SETSTARTERPROFESSION__STRING_,RPC_ADDTOBOUNTYLOCKLIST__LONG_,RPC_ISINBOUNTYLOCKLIST__LONG_,RPC_REMOVEFROMBOUNTYLOCKLIST__LONG_BOOL_,RPC_REMOVEFROMBOUNTYLOCKLISTDIRECTLY__LONG_,RPC_ISBOUNTYLOCKED__,RPC_GETPERFORMANCEBUFFTARGET__,RPC_SETPERFORMANCEBUFFTARGET__LONG_,RPC_SETDEBUG__BOOL_,RPC_GETDEBUG__,RPC_GETVISIBILITY__,RPC_SETVISIBILITY__FLOAT_,};
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
@@ -920,7 +920,7 @@ void PlayerObject::setConversatingCreature(CreatureObject* creature) {
 		_implementation->setConversatingCreature(creature);
 }
 
-CreatureObject* PlayerObject::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObject::getConversatingCreature() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -933,74 +933,51 @@ CreatureObject* PlayerObject::getConversatingCreature() {
 		return _implementation->getConversatingCreature();
 }
 
-void PlayerObject::setTrainerCoordinates(float x, float y) {
+void PlayerObject::setTrainerCoordinates(const Vector3& trainer) {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setTrainerCoordinates(trainer);
+}
+
+Vector3 PlayerObject::getTrainerCoordinates() {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getTrainerCoordinates();
+}
+
+void PlayerObject::setTrainerZoneName(String& zoneName) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETTRAINERCOORDINATES__FLOAT_FLOAT_);
-		method.addFloatParameter(x);
-		method.addFloatParameter(y);
+		DistributedMethod method(this, RPC_SETTRAINERZONENAME__STRING_);
+		method.addAsciiParameter(zoneName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setTrainerCoordinates(x, y);
+		_implementation->setTrainerZoneName(zoneName);
 }
 
-float PlayerObject::getTrainerCoordinatesY() {
+String PlayerObject::getTrainerZoneName() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETTRAINERCOORDINATESY__);
+		DistributedMethod method(this, RPC_GETTRAINERZONENAME__);
 
-		return method.executeWithFloatReturn();
+		String _return_getTrainerZoneName;
+		method.executeWithAsciiReturn(_return_getTrainerZoneName);
+		return _return_getTrainerZoneName;
 	} else
-		return _implementation->getTrainerCoordinatesY();
-}
-
-float PlayerObject::getTrainerCoordinatesX() {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETTRAINERCOORDINATESX__);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getTrainerCoordinatesX();
-}
-
-void PlayerObject::setTrainerZone(String& zone) {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETTRAINERZONE__STRING_);
-		method.addAsciiParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setTrainerZone(zone);
-}
-
-String PlayerObject::getTrainerZone() {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETTRAINERZONE__);
-
-		String _return_getTrainerZone;
-		method.executeWithAsciiReturn(_return_getTrainerZone);
-		return _return_getTrainerZone;
-	} else
-		return _implementation->getTrainerZone();
+		return _implementation->getTrainerZoneName();
 }
 
 SortedVector<unsigned long long>* PlayerObject::getPersistentMessages() {
@@ -1171,7 +1148,7 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 		_implementation->removeCommandMessageString(actionCRC);
 }
 
-BuildingObject* PlayerObject::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObject::getDeclaredResidence() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1212,7 +1189,7 @@ void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
 		_implementation->setCloningFacility(cloningfac);
 }
 
-BuildingObject* PlayerObject::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObject::getCloningFacility() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3067,39 +3044,39 @@ void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PlayerObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PlayerObjectImplementation::operator const PlayerObject*() {
-	return _this;
+	return _this.get();
 }
 
 void PlayerObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PlayerObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PlayerObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PlayerObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PlayerObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PlayerObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PlayerObjectImplementation::_serializationHelperMethod() {
@@ -3352,18 +3329,13 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "PlayerObject.trainerCoordinatesX") {
-		TypeInfo<float >::parseFromBinaryStream(&trainerCoordinatesX, stream);
+	if (_name == "PlayerObject.trainerCoordinates") {
+		TypeInfo<Vector3 >::parseFromBinaryStream(&trainerCoordinates, stream);
 		return true;
 	}
 
-	if (_name == "PlayerObject.trainerCoordinatesY") {
-		TypeInfo<float >::parseFromBinaryStream(&trainerCoordinatesY, stream);
-		return true;
-	}
-
-	if (_name == "PlayerObject.trainerZone") {
-		TypeInfo<String >::parseFromBinaryStream(&trainerZone, stream);
+	if (_name == "PlayerObject.trainerZoneName") {
+		TypeInfo<String >::parseFromBinaryStream(&trainerZoneName, stream);
 		return true;
 	}
 
@@ -3826,27 +3798,19 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.trainerCoordinatesX";
+	_name = "PlayerObject.trainerCoordinates";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&trainerCoordinatesX, stream);
+	TypeInfo<Vector3 >::toBinaryStream(&trainerCoordinates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.trainerCoordinatesY";
+	_name = "PlayerObject.trainerZoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&trainerCoordinatesY, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "PlayerObject.trainerZone";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&trainerZone, stream);
+	TypeInfo<String >::toBinaryStream(&trainerZoneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -3995,7 +3959,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 65;
+	return _count + 64;
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
@@ -4022,6 +3986,8 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	forcePowerRegen = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		jediState = 0;
 	jediState = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		trainerZoneName = "";
+	trainerZoneName = "";
 	// server/zone/objects/player/PlayerObject.idl():  		duelList.setNoDuplicateInsertPlan();
 	(&duelList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		persistentMessages.setNoDuplicateInsertPlan();
@@ -4058,37 +4024,37 @@ void PlayerObjectImplementation::finalize() {
 }
 
 void PlayerObjectImplementation::addOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj);
 	(&ownedStructures)->put(obj);
 }
 
 void PlayerObjectImplementation::removeOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj);
 	(&ownedStructures)->drop(obj);
 }
 
 int PlayerObjectImplementation::getTotalOwnedStructureCount() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.size();
 	return (&ownedStructures)->size();
 }
 
 bool PlayerObjectImplementation::isOwnedStructure(StructureObject* obj) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.contains(obj);
 	return (&ownedStructures)->contains(obj);
 }
 
 StructureObject* PlayerObjectImplementation::getOwnedStructure(int i) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.get(i);
 	return (&ownedStructures)->get(i);
 }
 
 int PlayerObjectImplementation::getLotsRemaining() {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		int lotsRemaining = maximumLots;
 	int lotsRemaining = maximumLots;
 	// server/zone/objects/player/PlayerObject.idl():  		}
@@ -4097,7 +4063,7 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	i < (&ownedStructures)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = ownedStructures.get(i);
-	StructureObject* structure = (&ownedStructures)->get(i);
+	ManagedReference<StructureObject* > structure = (&ownedStructures)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  			lotsRemaining = lotsRemaining - structure.getLotSize();
 	lotsRemaining = lotsRemaining - structure->getLotSize();
 }
@@ -4106,7 +4072,7 @@ int PlayerObjectImplementation::getLotsRemaining() {
 }
 
 bool PlayerObjectImplementation::hasLotsRemaining(int lots) {
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return lots <= getLotsRemaining();
 	return lots <= getLotsRemaining();
 }
@@ -4184,36 +4150,19 @@ void PlayerObjectImplementation::setConversatingCreature(CreatureObject* creatur
 	conversatingCreature = creature;
 }
 
-CreatureObject* PlayerObjectImplementation::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObjectImplementation::getConversatingCreature() {
 	// server/zone/objects/player/PlayerObject.idl():  		return conversatingCreature;
 	return conversatingCreature;
 }
 
-void PlayerObjectImplementation::setTrainerCoordinates(float x, float y) {
-	// server/zone/objects/player/PlayerObject.idl():  		trainerCoordinatesX = x;
-	trainerCoordinatesX = x;
-	// server/zone/objects/player/PlayerObject.idl():  		trainerCoordinatesY = y;
-	trainerCoordinatesY = y;
+void PlayerObjectImplementation::setTrainerZoneName(String& zoneName) {
+	// server/zone/objects/player/PlayerObject.idl():  		trainerZoneName = zoneName;
+	trainerZoneName = zoneName;
 }
 
-float PlayerObjectImplementation::getTrainerCoordinatesY() {
-	// server/zone/objects/player/PlayerObject.idl():  		return trainerCoordinatesY;
-	return trainerCoordinatesY;
-}
-
-float PlayerObjectImplementation::getTrainerCoordinatesX() {
-	// server/zone/objects/player/PlayerObject.idl():  		return trainerCoordinatesX;
-	return trainerCoordinatesX;
-}
-
-void PlayerObjectImplementation::setTrainerZone(String& zone) {
-	// server/zone/objects/player/PlayerObject.idl():  		trainerZone = zone;
-	trainerZone = zone;
-}
-
-String PlayerObjectImplementation::getTrainerZone() {
-	// server/zone/objects/player/PlayerObject.idl():  		return trainerZone;
-	return trainerZone;
+String PlayerObjectImplementation::getTrainerZoneName() {
+	// server/zone/objects/player/PlayerObject.idl():  		return trainerZoneName;
+	return trainerZoneName;
 }
 
 SortedVector<unsigned long long>* PlayerObjectImplementation::getPersistentMessages() {
@@ -4276,7 +4225,7 @@ void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionC
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
-BuildingObject* PlayerObjectImplementation::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getDeclaredResidence() {
 	// server/zone/objects/player/PlayerObject.idl():  		return declaredResidence;
 	return declaredResidence;
 }
@@ -4291,7 +4240,7 @@ void PlayerObjectImplementation::setCloningFacility(BuildingObject* cloningfac) 
 	cloningFacility = cloningfac;
 }
 
-BuildingObject* PlayerObjectImplementation::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getCloningFacility() {
 	// server/zone/objects/player/PlayerObject.idl():  		return cloningFacility;
 	return cloningFacility;
 }
@@ -4358,7 +4307,7 @@ bool PlayerObjectImplementation::hasSuiBoxWindowType(unsigned int windowType) {
 	i < (&suiBoxes)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
-	SuiBox* sui = (&suiBoxes)->get(i);
+	ManagedReference<SuiBox* > sui = (&suiBoxes)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  			type = sui.getWindowType();
 	type = sui->getWindowType();
 	// server/zone/objects/player/PlayerObject.idl():  		}
@@ -4373,7 +4322,7 @@ void PlayerObjectImplementation::closeSuiWindowType(unsigned int windowType) {
 	// server/zone/objects/player/PlayerObject.idl():  	}
 	if (hasSuiBoxWindowType(windowType)){
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = getSuiBoxFromWindowType(windowType);
-	SuiBox* sui = getSuiBoxFromWindowType(windowType);
+	ManagedReference<SuiBox* > sui = getSuiBoxFromWindowType(windowType);
 	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (sui != NULL){
 	// server/zone/objects/player/PlayerObject.idl():  				sendMessage(sui.generateCloseMessage());
@@ -4393,7 +4342,7 @@ SuiBox* PlayerObjectImplementation::getSuiBoxFromWindowType(unsigned int windowT
 	i < (&suiBoxes)->size();
  ++i) {
 	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
-	SuiBox* sui = (&suiBoxes)->get(i);
+	ManagedReference<SuiBox* > sui = (&suiBoxes)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (windowType == sui->getWindowType())	// server/zone/objects/player/PlayerObject.idl():  				return sui;
 	return sui;
@@ -4766,8 +4715,10 @@ ValidatedPosition* PlayerObjectImplementation::getLastValidatedPosition() {
 }
 
 void PlayerObjectImplementation::updateLastValidatedPosition() {
-	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(super.getParent());
-	(&lastValidatedPosition)->update(IntangibleObjectImplementation::getParent());
+	// server/zone/objects/player/PlayerObject.idl():  		SceneObject par = super.getParent();
+	ManagedReference<SceneObject* > par = IntangibleObjectImplementation::getParent();
+	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(par);
+	(&lastValidatedPosition)->update(par);
 	// server/zone/objects/player/PlayerObject.idl():  		serverLastMovementStamp.updateToCurrentTime();
 	(&serverLastMovementStamp)->updateToCurrentTime();
 }
@@ -5213,33 +5164,18 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCONVERSATINGCREATURE__:
 		{
-			resp->insertLong(getConversatingCreature()->_getObjectID());
+			resp->insertLong(getConversatingCreature().get()->_getObjectID());
 		}
 		break;
-	case RPC_SETTRAINERCOORDINATES__FLOAT_FLOAT_:
+	case RPC_SETTRAINERZONENAME__STRING_:
 		{
-			setTrainerCoordinates(inv->getFloatParameter(), inv->getFloatParameter());
+			String zoneName; 
+			setTrainerZoneName(inv->getAsciiParameter(zoneName));
 		}
 		break;
-	case RPC_GETTRAINERCOORDINATESY__:
+	case RPC_GETTRAINERZONENAME__:
 		{
-			resp->insertFloat(getTrainerCoordinatesY());
-		}
-		break;
-	case RPC_GETTRAINERCOORDINATESX__:
-		{
-			resp->insertFloat(getTrainerCoordinatesX());
-		}
-		break;
-	case RPC_SETTRAINERZONE__STRING_:
-		{
-			String zone; 
-			setTrainerZone(inv->getAsciiParameter(zone));
-		}
-		break;
-	case RPC_GETTRAINERZONE__:
-		{
-			resp->insertAscii(getTrainerZone());
+			resp->insertAscii(getTrainerZoneName());
 		}
 		break;
 	case RPC_ADDPERSISTENTMESSAGE__LONG_:
@@ -5298,7 +5234,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETDECLAREDRESIDENCE__:
 		{
-			resp->insertLong(getDeclaredResidence()->_getObjectID());
+			resp->insertLong(getDeclaredResidence().get()->_getObjectID());
 		}
 		break;
 	case RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_:
@@ -5313,7 +5249,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCLONINGFACILITY__:
 		{
-			resp->insertLong(getCloningFacility()->_getObjectID());
+			resp->insertLong(getCloningFacility().get()->_getObjectID());
 		}
 		break;
 	case RPC_NOTIFYONLINE__:
@@ -6163,28 +6099,16 @@ void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
 	(static_cast<PlayerObject*>(stub))->setConversatingCreature(creature);
 }
 
-CreatureObject* PlayerObjectAdapter::getConversatingCreature() {
+ManagedWeakReference<CreatureObject* > PlayerObjectAdapter::getConversatingCreature() {
 	return (static_cast<PlayerObject*>(stub))->getConversatingCreature();
 }
 
-void PlayerObjectAdapter::setTrainerCoordinates(float x, float y) {
-	(static_cast<PlayerObject*>(stub))->setTrainerCoordinates(x, y);
+void PlayerObjectAdapter::setTrainerZoneName(String& zoneName) {
+	(static_cast<PlayerObject*>(stub))->setTrainerZoneName(zoneName);
 }
 
-float PlayerObjectAdapter::getTrainerCoordinatesY() {
-	return (static_cast<PlayerObject*>(stub))->getTrainerCoordinatesY();
-}
-
-float PlayerObjectAdapter::getTrainerCoordinatesX() {
-	return (static_cast<PlayerObject*>(stub))->getTrainerCoordinatesX();
-}
-
-void PlayerObjectAdapter::setTrainerZone(String& zone) {
-	(static_cast<PlayerObject*>(stub))->setTrainerZone(zone);
-}
-
-String PlayerObjectAdapter::getTrainerZone() {
-	return (static_cast<PlayerObject*>(stub))->getTrainerZone();
+String PlayerObjectAdapter::getTrainerZoneName() {
+	return (static_cast<PlayerObject*>(stub))->getTrainerZoneName();
 }
 
 void PlayerObjectAdapter::addPersistentMessage(unsigned long long id) {
@@ -6227,7 +6151,7 @@ void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
 	(static_cast<PlayerObject*>(stub))->removeCommandMessageString(actionCRC);
 }
 
-BuildingObject* PlayerObjectAdapter::getDeclaredResidence() {
+ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getDeclaredResidence() {
 	return (static_cast<PlayerObject*>(stub))->getDeclaredResidence();
 }
 
@@ -6239,7 +6163,7 @@ void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
 	(static_cast<PlayerObject*>(stub))->setCloningFacility(cloningfac);
 }
 
-BuildingObject* PlayerObjectAdapter::getCloningFacility() {
+ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getCloningFacility() {
 	return (static_cast<PlayerObject*>(stub))->getCloningFacility();
 }
 

@@ -13,6 +13,10 @@ TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
 }
 
+TerrainManager::TerrainManager(ManagedWeakReference<Zone*> planet) : Logger("TerrainManager") {
+	zone = planet.get();
+}
+
 bool TerrainManager::initialize(const String& terrainFile) {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile(terrainFile);
 

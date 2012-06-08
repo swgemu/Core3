@@ -42,10 +42,10 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		return;
 
 
-	zone->addCityRegionToUpdate(_this);
+	zone->addCityRegionToUpdate(_this.get());
 
 	if (isRegistered())
-		zone->getPlanetManager()->addRegion(_this);
+		zone->getPlanetManager()->addRegion(_this.get());
 
 	/*
 	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
@@ -132,14 +132,14 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 	}
 
 	String temp = "object/region_area.iff";
-	SceneObject* obj = zone->getZoneServer()->createObject(temp.hashCode(), persistent ? 1 : 0);
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(temp.hashCode(), persistent ? 1 : 0);
 
 	if (obj == NULL || !obj->isRegion()) {
 		return NULL;
 	}
 
-	ManagedReference<Region*> region = cast<Region*>(obj);
-	region->setCityRegion(_this);
+	ManagedReference<Region*> region = cast<Region*>(obj.get());
+	region->setCityRegion(_this.get());
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 	region->setObjectName(regionName);
@@ -159,7 +159,7 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 		return;
 
 	if (cityUpdateEvent == NULL) {
-		cityUpdateEvent = new CityUpdateEvent(_this, ServerCore::getZoneServer());
+		cityUpdateEvent = new CityUpdateEvent(_this.get(), ServerCore::getZoneServer());
 	} else if (cityUpdateEvent->isScheduled()) {
 		cityUpdateEvent->cancel();
 	}
@@ -173,7 +173,7 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	object->setCityRegion(_this);
+	object->setCityRegion(_this.get());
 
 	BazaarTerminal* term = cast<BazaarTerminal*>(object);
 
@@ -340,7 +340,7 @@ String CityRegionImplementation::getRegionName() {
 }
 
 void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, SceneObject* structure){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if(cityStructureInventory.contains(rankRequired)){
 		cityStructureInventory.get(rankRequired).put(structure);
@@ -351,7 +351,7 @@ void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, S
 }
 
 void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* structure){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if(cityStructureInventory.get(uint8(1)).contains(structure))
 		cityStructureInventory.get(uint8(1)).drop(structure);
@@ -369,7 +369,7 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 }
 
 bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (limitedPlacementStructures.contains(id))
 		return true;
@@ -378,7 +378,7 @@ bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
 }
 
 bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (!limitedPlacementStructures.contains(id)){
 		limitedPlacementStructures.put(id);
@@ -389,14 +389,14 @@ bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
 }
 
 void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	limitedPlacementStructures.drop(id);
 
 }
 
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	SortedVector<ManagedReference<SceneObject*> >* sceneObjects = &cityStructureInventory.get(rank);
 
@@ -408,7 +408,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 		for (i = structureCount - 1; i >= 0; i--) {
 			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
 
-			Locker locker(sceo, _this);
+			Locker locker(sceo, _this.get());
 
 			Zone* zoneObject = sceo->getZone();
 
@@ -433,7 +433,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 
 void CityRegionImplementation::updateMilitia(){
 
-	Locker locker (_this);
+	Locker locker (_this.get());
 
 	uint64 objectID;
 

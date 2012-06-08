@@ -100,7 +100,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	if (ghost == NULL)
 		return false;
 
-	SceneObject* parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent();
 
 	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != NULL && parent != sceneObject) {
 		return parent->checkContainerPermission(creature, permission);
@@ -208,7 +208,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		//object->updateToDatabaseWithoutChildren()();
 	}
 
-	SceneObject* rootParent = object->getRootParent();
+	ManagedReference<SceneObject*> rootParent = object->getRootParent();
 
 	if (rootParent != NULL)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
@@ -287,7 +287,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (sceneObject->getParent() == NULL) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
-		sceneObject->getRootParent()->notifyObjectRemovedFromChild(object, sceneObject);
+		sceneObject->getRootParent().get()->notifyObjectRemovedFromChild(object, sceneObject);
 	}
 
 	return true;

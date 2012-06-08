@@ -286,39 +286,39 @@ void FishingSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FishingSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FishingSessionImplementation::operator const FishingSession*() {
-	return _this;
+	return _this.get();
 }
 
 void FishingSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FishingSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FishingSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FishingSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FishingSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FishingSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FishingSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FishingSessionImplementation::_serializationHelperMethod() {

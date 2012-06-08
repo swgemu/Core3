@@ -41,18 +41,21 @@ public:
 		if (target == NULL)
 			return;
 
-		Locker tlocker(target);
-
-		if (!success && target->hasBuff(crc)) {
-			target->sendSystemMessage(buffMsg);
-			target->removeBuff(crc);
-		}
-
 		ManagedReference<CreatureObject*> creature = creo.get();
 		if (creature == NULL)
 			return;
 
-		Locker clocker(creature, target);
+		Locker locker(creature);
+
+		if (!success && creature->hasBuff(crc)) {
+			creature->sendSystemMessage(buffMsg);
+			creature->removeBuff(crc);
+		}
+
+		if(!success)
+			return;
+
+		//Locker clocker(creature, target);
 
 		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
 		if (player == NULL)
@@ -65,10 +68,10 @@ public:
 			StringIdChatParameter success("skl_use", "sys_scentmask_success");
 			success.setTT(target);
 
-			target->sendSystemMessage(success);
+			creature->sendSystemMessage(success);
 		}
 
-		player->addExperience("scout", (creature->getLevel() * 2), true);
+		player->addExperience("scout", (target->getLevel() * 2), true);
 	}
 };
 

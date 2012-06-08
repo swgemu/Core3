@@ -129,39 +129,39 @@ void TravelTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* TravelTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 TravelTerminalImplementation::operator const TravelTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void TravelTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void TravelTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void TravelTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void TravelTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void TravelTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void TravelTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void TravelTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void TravelTerminalImplementation::_serializationHelperMethod() {
@@ -235,7 +235,7 @@ PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
 	if (planetTravelPoint != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		 return planetTravelPoint;
 	return planetTravelPoint;
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
-	planetTravelPoint = getZone()->getPlanetManager()->getNearestPlanetTravelPoint(_this);
+	planetTravelPoint = getZone()->getPlanetManager()->getNearestPlanetTravelPoint(_this.get());
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return planetTravelPoint;
 	return planetTravelPoint;
 }

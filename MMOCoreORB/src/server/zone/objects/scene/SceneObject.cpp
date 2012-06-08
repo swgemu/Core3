@@ -34,7 +34,7 @@
  *	SceneObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_UPDATEDIRECTION__FLOAT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTMESSAGEPRIVATE__BASEPACKET_SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECTPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROYPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__LONG_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETZONE__,RPC_GETLOCALZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_SETDETAILEDDESCRIPTION__STRING_,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_HASARRANGEMENTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISROBEOBJECT__,RPC_ISLIGHTSABERCRYSTALOBJECT__,RPC_ISFIREWORKOBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISLAIROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISRESOURCESPAWN__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISLIVESAMPLE__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISTRAPOBJECT__,RPC_ISREPAIRTOOL__,RPC_ISCAMOKIT__,RPC_ISATTACHMENT__,RPC_ISDICEOBJECT__,RPC_ISCREATUREHABITAT__,RPC_ISCAMPKIT__,RPC_ISCAMPSTRUCTURE__,RPC_SETCONTAINERDEFAULTALLOWPERMISSION__SHORT_,RPC_SETCONTAINERDEFAULTDENYPERMISSION__SHORT_,RPC_SETCONTAINERINHERITPERMISSIONSFROMPARENT__BOOL_,RPC_SETCONTAINEROWNERID__LONG_,RPC_SETCONTAINERALLOWPERMISSION__STRING_SHORT_,RPC_SETCONTAINERDENYPERMISSION__STRING_SHORT_,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_,RPC_ISINWATER__,RPC_GETDISPLAYEDNAME__,RPC_DOSENDTOCLIENT__,RPC_SETSENDTOCLIENT__BOOL_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_SCENEOBJECT_BOOL_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_UPDATEDIRECTION__FLOAT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTMESSAGEPRIVATE__BASEPACKET_SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTOBJECTPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROYPRIVATE__SCENEOBJECT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_CONTAINSPENDINGTASK__STRING_,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__LONG_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETZONE__,RPC_GETLOCALZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_SETDETAILEDDESCRIPTION__STRING_,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_HASARRANGEMENTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISSHIPOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISROBEOBJECT__,RPC_ISLIGHTSABERCRYSTALOBJECT__,RPC_ISFIREWORKOBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISLAIROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISRESOURCESPAWN__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISLIVESAMPLE__,RPC_ISINSTALLATIONOBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISTRAPOBJECT__,RPC_ISREPAIRTOOL__,RPC_ISCAMOKIT__,RPC_ISATTACHMENT__,RPC_ISDICEOBJECT__,RPC_ISCREATUREHABITAT__,RPC_ISCAMPKIT__,RPC_ISCAMPSTRUCTURE__,RPC_SETCONTAINERDEFAULTALLOWPERMISSION__SHORT_,RPC_SETCONTAINERDEFAULTDENYPERMISSION__SHORT_,RPC_SETCONTAINERINHERITPERMISSIONSFROMPARENT__BOOL_,RPC_SETCONTAINEROWNERID__LONG_,RPC_SETCONTAINERALLOWPERMISSION__STRING_SHORT_,RPC_SETCONTAINERDENYPERMISSION__STRING_SHORT_,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_ISACTOROBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CONTAINSCHILDOBJECT__SCENEOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_,RPC_ISINWATER__,RPC_GETDISPLAYEDNAME__,RPC_DOSENDTOCLIENT__,RPC_SETSENDTOCLIENT__BOOL_};
 
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
@@ -1200,7 +1200,7 @@ ActiveArea* SceneObject::getActiveRegion() {
 		return _implementation->getActiveRegion();
 }
 
-CityRegion* SceneObject::getCityRegion() {
+ManagedWeakReference<CityRegion* > SceneObject::getCityRegion() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1996,7 +1996,7 @@ unsigned int SceneObject::getMovementCounter() {
 		return _implementation->getMovementCounter();
 }
 
-SceneObject* SceneObject::getParent() {
+ManagedWeakReference<SceneObject* > SceneObject::getParent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2022,7 +2022,7 @@ ZoneServer* SceneObject::getZoneServer() {
 		return _implementation->getZoneServer();
 }
 
-SceneObject* SceneObject::getRootParent() {
+ManagedWeakReference<SceneObject* > SceneObject::getRootParent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2035,7 +2035,7 @@ SceneObject* SceneObject::getRootParent() {
 		return _implementation->getRootParent();
 }
 
-SceneObject* SceneObject::getParentRecursively(unsigned int gameObjectType) {
+ManagedWeakReference<SceneObject* > SceneObject::getParentRecursively(unsigned int gameObjectType) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3253,6 +3253,19 @@ bool SceneObject::isMissionObject() {
 		return _implementation->isMissionObject();
 }
 
+bool SceneObject::isActorObject() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISACTOROBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isActorObject();
+}
+
 int SceneObject::getPlanetMapCategoryCRC() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3494,39 +3507,39 @@ void SceneObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SceneObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SceneObjectImplementation::operator const SceneObject*() {
-	return _this;
+	return _this.get();
 }
 
 void SceneObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SceneObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SceneObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SceneObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SceneObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SceneObjectImplementation::_serializationHelperMethod() {
@@ -3900,7 +3913,7 @@ void SceneObjectImplementation::error(const String& msg) {
 
 void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.destroyObjectFromWorld(this, sendSelfDestroy);
-	zoneComponent->destroyObjectFromWorld(_this, sendSelfDestroy);
+	zoneComponent->destroyObjectFromWorld(_this.get(), sendSelfDestroy);
 }
 
 int SceneObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
@@ -3944,17 +3957,17 @@ void SceneObjectImplementation::setCustomObjectName(const UnicodeString& name, b
 
 byte SceneObjectImplementation::checkContainerPermission(CreatureObject* player, unsigned short permission) {
 	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.checkContainerPermission(this, player, permission);
-	return containerComponent->checkContainerPermission(_this, player, permission);
+	return containerComponent->checkContainerPermission(_this.get(), player, permission);
 }
 
 void SceneObjectImplementation::notifyInsert(QuadTreeEntry* entry) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyInsert(this, entry);
-	zoneComponent->notifyInsert(_this, entry);
+	zoneComponent->notifyInsert(_this.get(), entry);
 }
 
 void SceneObjectImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyDissapear(this, entry);
-	zoneComponent->notifyDissapear(_this, entry);
+	zoneComponent->notifyDissapear(_this.get(), entry);
 }
 
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
@@ -3974,7 +3987,7 @@ unsigned long long SceneObjectImplementation::getParentID() {
 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
 	if (QuadTreeEntryImplementation::parent.getForUpdate() != NULL){
 	// server/zone/objects/scene/SceneObject.idl():  			return super.parent.getObjectID();
-	return QuadTreeEntryImplementation::parent.getForUpdate()->getObjectID();
+	return QuadTreeEntryImplementation::parent.getForUpdate().get()->getObjectID();
 }
 
 	else 	// server/zone/objects/scene/SceneObject.idl():  			return 0;
@@ -4060,7 +4073,7 @@ bool SceneObjectImplementation::hasActiveArea(unsigned long long objectid) {
 	i < (&activeAreas)->size();
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea area = activeAreas.get(i);
-	ActiveArea* area = (&activeAreas)->get(i);
+	ManagedReference<ActiveArea* > area = (&activeAreas)->get(i);
 	// server/zone/objects/scene/SceneObject.idl():  		}
 	if (area->getObjectID() == objectid){
 	// server/zone/objects/scene/SceneObject.idl():  				return true;
@@ -4088,7 +4101,7 @@ ActiveArea* SceneObjectImplementation::getActiveRegion() {
 	i < (&activeAreas)->size();
 i ++) {
 	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea region = activeAreas.get(i);
-	ActiveArea* region = (&activeAreas)->get(i);
+	ManagedReference<ActiveArea* > region = (&activeAreas)->get(i);
 	// server/zone/objects/scene/SceneObject.idl():  		}
 	if (region->isRegion()){
 	// server/zone/objects/scene/SceneObject.idl():  				return region;
@@ -4099,7 +4112,7 @@ i ++) {
 	return NULL;
 }
 
-CityRegion* SceneObjectImplementation::getCityRegion() {
+ManagedWeakReference<CityRegion* > SceneObjectImplementation::getCityRegion() {
 	// server/zone/objects/scene/SceneObject.idl():  		return cityRegion;
 	return cityRegion;
 }
@@ -4110,10 +4123,14 @@ void SceneObjectImplementation::setCityRegion(CityRegion* region) {
 }
 
 Zone* SceneObjectImplementation::getZone() {
+	// server/zone/objects/scene/SceneObject.idl():  		SceneObject strong = null;
+	ManagedReference<SceneObject* > strong = NULL;
 	// server/zone/objects/scene/SceneObject.idl():  		}
-	if (getParent() != NULL){
-	// server/zone/objects/scene/SceneObject.idl():  			return getRootParent().getZone();
-	return getRootParent()->getZone();
+	if ((strong = getParent()) != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  			strong = getRootParent();
+	strong = getRootParent();
+	// server/zone/objects/scene/SceneObject.idl():  			return strong.getZone();
+	return strong->getZone();
 }
 
 	else {
@@ -4281,7 +4298,7 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 	return false;
 }
 	// server/zone/objects/scene/SceneObject.idl():  		SceneObject obj = null;
-	SceneObject* obj = NULL;
+	ManagedReference<SceneObject* > obj = NULL;
 	// server/zone/objects/scene/SceneObject.idl():  		}
 {
 	Locker _locker((&containerLock));
@@ -4810,6 +4827,11 @@ bool SceneObjectImplementation::isMissionTerminal() {
 }
 
 bool SceneObjectImplementation::isMissionObject() {
+	// server/zone/objects/scene/SceneObject.idl():  		return false;
+	return false;
+}
+
+bool SceneObjectImplementation::isActorObject() {
 	// server/zone/objects/scene/SceneObject.idl():  		return false;
 	return false;
 }
@@ -5526,7 +5548,7 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETPARENT__:
 		{
-			resp->insertLong(getParent()->_getObjectID());
+			resp->insertLong(getParent().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETZONESERVER__:
@@ -5536,12 +5558,12 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETROOTPARENT__:
 		{
-			resp->insertLong(getRootParent()->_getObjectID());
+			resp->insertLong(getRootParent().get()->_getObjectID());
 		}
 		break;
 	case RPC_GETPARENTRECURSIVELY__INT_:
 		{
-			resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter())->_getObjectID());
+			resp->insertLong(getParentRecursively(inv->getUnsignedIntParameter()).get()->_getObjectID());
 		}
 		break;
 	case RPC_ISASUBCHILDOF__SCENEOBJECT_:
@@ -5960,6 +5982,11 @@ void SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISMISSIONOBJECT__:
 		{
 			resp->insertBoolean(isMissionObject());
+		}
+		break;
+	case RPC_ISACTOROBJECT__:
+		{
+			resp->insertBoolean(isActorObject());
 		}
 		break;
 	case RPC_GETPLANETMAPCATEGORYCRC__:
@@ -6504,7 +6531,7 @@ unsigned int SceneObjectAdapter::getMovementCounter() {
 	return (static_cast<SceneObject*>(stub))->getMovementCounter();
 }
 
-SceneObject* SceneObjectAdapter::getParent() {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getParent() {
 	return (static_cast<SceneObject*>(stub))->getParent();
 }
 
@@ -6512,11 +6539,11 @@ ZoneServer* SceneObjectAdapter::getZoneServer() {
 	return (static_cast<SceneObject*>(stub))->getZoneServer();
 }
 
-SceneObject* SceneObjectAdapter::getRootParent() {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getRootParent() {
 	return (static_cast<SceneObject*>(stub))->getRootParent();
 }
 
-SceneObject* SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
+ManagedWeakReference<SceneObject* > SceneObjectAdapter::getParentRecursively(unsigned int gameObjectType) {
 	return (static_cast<SceneObject*>(stub))->getParentRecursively(gameObjectType);
 }
 
@@ -6850,6 +6877,10 @@ bool SceneObjectAdapter::isMissionTerminal() {
 
 bool SceneObjectAdapter::isMissionObject() {
 	return (static_cast<SceneObject*>(stub))->isMissionObject();
+}
+
+bool SceneObjectAdapter::isActorObject() {
+	return (static_cast<SceneObject*>(stub))->isActorObject();
 }
 
 int SceneObjectAdapter::getPlanetMapCategoryCRC() {

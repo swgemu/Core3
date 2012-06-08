@@ -100,39 +100,39 @@ void StaticSpawnAreaImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* StaticSpawnAreaImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StaticSpawnAreaImplementation::operator const StaticSpawnArea*() {
-	return _this;
+	return _this.get();
 }
 
 void StaticSpawnAreaImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StaticSpawnAreaImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StaticSpawnAreaImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StaticSpawnAreaImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StaticSpawnAreaImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StaticSpawnAreaImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StaticSpawnAreaImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StaticSpawnAreaImplementation::_serializationHelperMethod() {

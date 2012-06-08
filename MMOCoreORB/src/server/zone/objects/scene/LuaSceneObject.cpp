@@ -242,7 +242,7 @@ int LuaSceneObject::isInRangeWithObject(lua_State* L) {
 }
 
 int LuaSceneObject::getParent(lua_State* L) {
-	SceneObject* obj = realObject->getParent();
+	SceneObject* obj = realObject->getParent().get().get();
 
 	if (obj == NULL) {
 		lua_pushnil(L);

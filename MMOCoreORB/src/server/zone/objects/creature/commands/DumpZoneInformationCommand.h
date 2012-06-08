@@ -71,14 +71,14 @@ public:
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
-		SceneObject* cell = creature->getParent();
+		ManagedReference<SceneObject*> cell = creature->getParent();
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
 
 		if (cell != NULL && cell->isCellObject()) {
-			cellid = (cast<CellObject*>(cell))->getCellNumber();
-			SceneObject* building = cell->getParent();
+			cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
+			ManagedReference<SceneObject*> building = cell->getParent();
 			buildingTemplate = building->getServerObjectCRC();
 		}
 

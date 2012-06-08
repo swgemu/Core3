@@ -92,7 +92,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this, 20.0)) {
+			} else if (!player->isInRange(_this.get(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -119,7 +119,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this, 20.0)) {
+			} else if (!player->isInRange(_this.get(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -143,7 +143,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this, 20.0)) {
+			} else if (!player->isInRange(_this.get(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -161,7 +161,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	switch (machineType) {
 		case SLOTMACHINE: {
 			if (state == SLOTGAMEENDED) {//begin new round
@@ -179,9 +179,9 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 					setState(GAMESTARTING);
 					incGameCount();
 
-					gamblingManager->registerPlayer(_this, player);
+					gamblingManager->registerPlayer(_this.get(), player);
 
-					playersWindows.put(player, gamblingManager->createWindow(_this, player));
+					playersWindows.put(player, gamblingManager->createWindow(_this.get(), player));
 
 					statusUpdate(player, JOINTERMINAL);
 
@@ -195,9 +195,9 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 
 				winnings.put(player, 0);
 
-				gamblingManager->registerPlayer(_this, player);
+				gamblingManager->registerPlayer(_this.get(), player);
 
-				playersWindows.put(player, gamblingManager->createWindow(_this, player));
+				playersWindows.put(player, gamblingManager->createWindow(_this.get(), player));
 
 				statusUpdate(player, JOINTERMINAL);
 
@@ -205,7 +205,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 					setState(GAMESTARTING);
 					incGameCount();
 
-					gamblingManager->startGame(_this);
+					gamblingManager->startGame(_this.get());
 				}
 
 			}
@@ -283,7 +283,7 @@ void GamblingTerminalImplementation::closeAllMenus() {
 void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
-	Locker _locker(_this);
+	Locker _locker(_this.get());
 	switch (machineType) {
 		case SLOTMACHINE: {
 
@@ -292,7 +292,7 @@ void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 			statusUpdate(player, LEAVETERMINAL);
 
 			playersWindows.drop(player);
-			gamblingManager->stopGame(_this, true);
+			gamblingManager->stopGame(_this.get(), true);
 
 			break;
 		}
@@ -307,7 +307,7 @@ void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 			winnings.drop(player);
 
 			if (playersWindows.size() == 0) {
-				gamblingManager->stopGame(_this, true);
+				gamblingManager->stopGame(_this.get(), true);
 			}
 
 			break;
@@ -369,7 +369,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case TWOLEFT: {
-					//Locker _locker(_this); Unnecessary, called from continue which locks
+					//Locker _locker(_this.get()); Unnecessary, called from continue which locks
 					first = System::random(7);
 
 					if (player != NULL) {
@@ -380,7 +380,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case ONELEFT: {
-					//Locker _locker(_this);
+					//Locker _locker(_this.get());
 					second = System::random(7);
 
 					if (player != NULL) {
@@ -391,7 +391,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case END: {
-					//Locker _locker(_this);
+					//Locker _locker(_this.get());
 					third = System::random(7);
 
 					if (player != NULL) {
@@ -534,7 +534,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case WHEELSLOW: {
 					// wheel slows down, seems to be.
-					//Locker _locker(_this);
+					//Locker _locker(_this.get());
 
 					first = System::random(37);
 
@@ -542,7 +542,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					body.setTT(String::valueOf(first));
 
 					String terminalName;
-					_this->getObjectName()->getFullPath(terminalName);
+					_this.get()->getObjectName()->getFullPath(terminalName);
 					body.setTO(terminalName);
 
 					notifyAll(&body);
@@ -560,7 +560,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
-						_this->getObjectName()->getFullPath(terminalName);
+						_this.get()->getObjectName()->getFullPath(terminalName);
 
 						body.setTO(terminalName);
 
@@ -574,7 +574,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
-						_this->getObjectName()->getFullPath(terminalName);
+						_this.get()->getObjectName()->getFullPath(terminalName);
 
 						body.setTO(terminalName);
 

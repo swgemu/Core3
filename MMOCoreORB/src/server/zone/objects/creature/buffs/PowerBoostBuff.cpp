@@ -154,39 +154,39 @@ void PowerBoostBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PowerBoostBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PowerBoostBuffImplementation::operator const PowerBoostBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void PowerBoostBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PowerBoostBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PowerBoostBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PowerBoostBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PowerBoostBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PowerBoostBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PowerBoostBuffImplementation::_serializationHelperMethod() {

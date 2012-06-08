@@ -95,11 +95,11 @@ void ZoneImplementation::createContainerComponent() {
 }
 
 void ZoneImplementation::initializePrivateData() {
-	planetManager = new PlanetManager(_this, processor);
+	planetManager = new PlanetManager(_this.get(), processor);
 
-	structureManager = new StructureManager(_this, processor);
+	structureManager = new StructureManager(_this.get(), processor);
 
-	creatureManager = new CreatureManager(_this);
+	creatureManager = new CreatureManager(_this.get());
 	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
 }
@@ -193,38 +193,38 @@ float ZoneImplementation::getHeight(float x, float y) {
 }
 
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	quadTree->insert(entry);
 }
 
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (entry->isInQuadTree())
 		quadTree->remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	quadTree->update(entry);
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	quadTree->inRange(entry, range);
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
-	//Locker locker(_this);
+	//Locker locker(_this.get());
 
-	bool readlock = readLockZone && !_this->isLockedByCurrentThread();
+	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
 
 	Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
 
-	_this->rlock(readlock);
+	_this.get()->rlock(readlock);
 
 	try {
 		quadTree->inRange(x, y, range, *objects);
@@ -253,12 +253,12 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 			}
 		}
 	} catch (...) {
-		_this->runlock(readlock);
+		_this.get()->runlock(readlock);
 
 		throw;
 	}
 
-	_this->runlock(readlock);
+	_this.get()->runlock(readlock);
 
 	for (int i = 0; i < buildingObjects.size(); ++i)
 		objects->put(buildingObjects.get(i));
@@ -267,11 +267,11 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 }
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
-	//Locker locker(_this);
+	//Locker locker(_this.get());
 
-	bool readlock = readLockZone && !_this->isLockedByCurrentThread();
+	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
 
-	_this->rlock(readlock);
+	_this.get()->rlock(readlock);
 
 	try {
 		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
@@ -283,18 +283,18 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 			objects->put(obj);
 		}
 	}catch (...) {
-		_this->runlock(readlock);
+		_this.get()->runlock(readlock);
 
 		throw;
 	}
 
-	_this->runlock(readlock);
+	_this.get()->runlock(readlock);
 
 	return objects->size();
 }
 
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
 
@@ -306,7 +306,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	//locker.release();
 
-	_this->unlock();
+	_this.get()->unlock();
 
 	try {
 
@@ -348,11 +348,11 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		}
 	} catch (...) {
 
-		_this->wlock();
+		_this.get()->wlock();
 		throw;
 	}
 
-	_this->wlock();
+	_this.get()->wlock();
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {

@@ -24,7 +24,7 @@
 
 class CombatQueueCommand : public QueueCommand {
 protected:
-	float damageMax;
+	float damage;
 	float damageMultiplier;
 	int accuracyBonus;
 	float speedMultiplier;
@@ -79,7 +79,7 @@ public:
 
 	CombatQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
-		damageMax = 0;
+		damage = 0;
 		damageMultiplier = 1;
 		accuracyBonus = 0;
 		speedMultiplier = 1;
@@ -484,12 +484,12 @@ public:
 		this->dotEffects = dotEffects;
 	}
 
-	inline float getDamageMax() const {
-		return damageMax;
+	inline float getDamage() const {
+		return damage;
 	}
 
-	void setDamageMax(float dm) {
-		this->damageMax = dm;
+	void setDamage(float dm) {
+		this->damage = dm;
 	}
 
 	void addDotEffect(DotEffect dotEffect) {

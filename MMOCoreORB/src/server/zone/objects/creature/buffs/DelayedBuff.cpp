@@ -136,39 +136,39 @@ void DelayedBuffImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* DelayedBuffImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 DelayedBuffImplementation::operator const DelayedBuff*() {
-	return _this;
+	return _this.get();
 }
 
 void DelayedBuffImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void DelayedBuffImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void DelayedBuffImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void DelayedBuffImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void DelayedBuffImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void DelayedBuffImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void DelayedBuffImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void DelayedBuffImplementation::_serializationHelperMethod() {
@@ -285,7 +285,7 @@ DelayedBuffImplementation::DelayedBuffImplementation(CreatureObject* creo, unsig
 void DelayedBuffImplementation::init(Vector<int>* events) {
 	ManagedReference<DelayedBuffObserver*> _ref0;
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		observer = new DelayedBuffObserver(this);
-	observer = _ref0 = new DelayedBuffObserver(_this);
+	observer = _ref0 = new DelayedBuffObserver(_this.get());
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		ObjectManager.instance().persistObject(observer, 1, "buffs");
 	ObjectManager::instance()->persistObject(observer, 1, "buffs");
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  		}
@@ -320,7 +320,7 @@ void DelayedBuffImplementation::useCharge() {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  	}
 	if (usesRemaining < 1){
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.removeBuff(this);
-	player->removeBuff(_this);
+	player->removeBuff(_this.get());
 }
 }
 
@@ -332,7 +332,7 @@ void DelayedBuffImplementation::setUsesRemaining(int uses) {
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  	}
 	if (usesRemaining < 1){
 	// server/zone/objects/creature/buffs/DelayedBuff.idl():  			player.removeBuff(this);
-	player->removeBuff(_this);
+	player->removeBuff(_this.get());
 }
 }
 

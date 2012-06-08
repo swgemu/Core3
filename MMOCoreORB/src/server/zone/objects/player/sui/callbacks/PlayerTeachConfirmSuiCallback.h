@@ -37,7 +37,7 @@ public:
 		Locker _lock(student, teacher);
 
 		PlayerManager* playerManager = server->getPlayerManager();
-		playerManager->acceptTeachingOffer(teacher, student, skill);
+		playerManager->acceptTeachingOffer(teacher, student, skill.get());
 	}
 };
 

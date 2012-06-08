@@ -51,7 +51,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
-	BuildingObject* building = dynamic_cast<BuildingObject*>(targetCell->getParent());
+	ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(targetCell->getParent().get().get());
 
 	if (building == NULL) {
 		error("building == NULL in PathFinderManager::findPathFromWorldToCell");
@@ -238,9 +238,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	path->add(pointA);
 
 	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
-	BuildingObject* building = cast<BuildingObject*>( ourCell->getParent());
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( ourCell->getParent().get().get());
 	int ourCellID = ourCell->getCellNumber();
-	SharedObjectTemplate* templateObject = ourCell->getParent()->getObjectTemplate();
+	SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
 
 	if (templateObject == NULL)
 		return NULL;
@@ -397,8 +397,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
 
-	BuildingObject* building1 = cast<BuildingObject*>( ourCell->getParent());
-	BuildingObject* building2 = cast<BuildingObject*>( targetCell->getParent());
+	ManagedReference<BuildingObject*> building1 = cast<BuildingObject*>( ourCell->getParent().get().get());
+	ManagedReference<BuildingObject*> building2 = cast<BuildingObject*>( targetCell->getParent().get().get());
 
 	if (building1 != building2) // TODO: implement path finding between 2 buildings
 		return NULL;
@@ -546,7 +546,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	int ourCellID = ourCell->getCellNumber();
 
-	BuildingObject* building = cast<BuildingObject*>( ourCell->getParent());
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( ourCell->getParent().get().get());
 
 	SharedObjectTemplate* templateObject = building->getObjectTemplate();
 

@@ -351,39 +351,39 @@ void AuctionManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* AuctionManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 AuctionManagerImplementation::operator const AuctionManager*() {
-	return _this;
+	return _this.get();
 }
 
 void AuctionManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void AuctionManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void AuctionManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void AuctionManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void AuctionManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void AuctionManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void AuctionManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void AuctionManagerImplementation::_serializationHelperMethod() {
@@ -422,7 +422,7 @@ bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "AuctionManager.zoneServer") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
+		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
 	}
 
@@ -455,7 +455,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
+	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

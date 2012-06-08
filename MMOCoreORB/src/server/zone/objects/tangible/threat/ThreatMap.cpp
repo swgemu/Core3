@@ -50,7 +50,7 @@ void ThreatMapEntry::clearThreatState(uint64 state) {
 void ThreatMap::registerObserver(CreatureObject* target) {
 
 	if(threatMapObserver == NULL) {
-		threatMapObserver = new ThreatMapObserver(self);
+		threatMapObserver = new ThreatMapObserver(self.get());
 		threatMapObserver->deploy();
 	}
 
@@ -103,6 +103,10 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 		entry->addDamage(xpToAward, damage);
 		entry->addAggro(1);
 	}
+
+	// randomly change target everytime threatmap is added to, TODO: keep this in mind and perhaps make it slightly more complicated
+	if (System::random(5) == 0)
+		currentThreat = target;
 }
 
 void ThreatMap::removeAll() {
@@ -150,7 +154,7 @@ bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 dura
 	}
 
 	if(duration > 0) {
-		ClearThreatStateTask* clearThreat = new ClearThreatStateTask(self, target, state);
+		ClearThreatStateTask* clearThreat = new ClearThreatStateTask(self.get(), target, state);
 		clearThreat->schedule(duration);
 	}
 
@@ -249,6 +253,8 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 CreatureObject* ThreatMap::getHighestThreatCreature() {
 	Locker locker(&lockMutex);
 
+	ManagedReference<CreatureObject*> currentThreat = this->currentThreat.get();
+
 	if(currentThreat != NULL
 			&& !currentThreat->isDead()
 			&& !currentThreat->isIncapacitated()
@@ -261,13 +267,16 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 		ThreatMapEntry* entry = &elementAt(i).getValue();
 		CreatureObject* creature = elementAt(i).getKey();
 
-		threatMatrix.add(creature, entry);
+		ManagedReference<CreatureObject*> selfStrong = cast<CreatureObject*>(self.get().get());
+
+		if (!creature->isDead() && !creature->isIncapacitated() && creature->isInRange(selfStrong, 128.f) && creature->isAttackableBy(selfStrong))
+			threatMatrix.add(creature, entry);
 	}
 
-	currentThreat = threatMatrix.getLargestThreat();
+	this->currentThreat = threatMatrix.getLargestThreat();
 
 	cooldownTimerMap.updateToCurrentAndAddMili("doEvaluation", ThreatMap::EVALUATIONCOOLDOWN);
-	return currentThreat;
+	return this->currentThreat.get().get();
 }
 
 void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
@@ -287,7 +296,7 @@ void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
 	}
 
 	if(duration > 0) {
-		RemoveAggroTask* removeAggroTask = new RemoveAggroTask(self, target, value);
+		RemoveAggroTask* removeAggroTask = new RemoveAggroTask(self.get(), target, value);
 		removeAggroTask->schedule(duration);
 	}
 }

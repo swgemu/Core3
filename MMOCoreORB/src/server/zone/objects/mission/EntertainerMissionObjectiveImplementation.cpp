@@ -20,7 +20,9 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void EntertainerMissionObjectiveImplementation::activate() {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
+
+	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	MissionObjectiveImplementation::activate();
 
@@ -55,11 +57,11 @@ void EntertainerMissionObjectiveImplementation::activate() {
 
 	Locker locationLocker(locationActiveArea);
 
-	ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this);
+	ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this.get());
 	addObserver(observer1, true);
 	locationActiveArea->registerObserver(ObserverEventType::ENTEREDAREA, observer1);
 
-	ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this);
+	ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this.get());
 	addObserver(observer2, true);
 	locationActiveArea->registerObserver(ObserverEventType::EXITEDAREA, observer2);
 
@@ -76,7 +78,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 }
 
 void EntertainerMissionObjectiveImplementation::abort() {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	MissionObjectiveImplementation::abort();
 
@@ -84,7 +86,7 @@ void EntertainerMissionObjectiveImplementation::abort() {
 }
 
 void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObservers() {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	if (locationActiveArea != NULL) {
 		Locker locationLocker(locationActiveArea);
@@ -114,7 +116,7 @@ void EntertainerMissionObjectiveImplementation::complete() {
 }
 
 void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	if (isEntertaining == value) {
 		return;
@@ -127,7 +129,7 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 
 void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	ManagedReference<CreatureObject*> object = getPlayerOwner();
 
@@ -136,7 +138,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 
 	if (isEntertaining && inMissionArea && object != NULL && object->getParentID() != 0) {
 		if (completeTask == NULL) {
-			completeTask = new CompleteMissionAfterCertainTimeTask(_this);
+			completeTask = new CompleteMissionAfterCertainTimeTask(_this.get());
 		}
 
 		if (completeTask->isScheduled()) {
@@ -152,7 +154,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 }
 
 int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	Locker _lock(_this);
+	Locker _lock(_this.get());
 
 	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA) {
 		return 0;
@@ -162,7 +164,7 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 		return 0;
 	}
 
-	if (cast<CreatureObject*>(arg1) != getPlayerOwner()) {
+	if (cast<CreatureObject*>(arg1) != getPlayerOwner().get()) {
 		return 0;
 	}
 
@@ -178,11 +180,13 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 }
 
 Vector3 EntertainerMissionObjectiveImplementation::getEndPosition() {
+	ManagedReference<MissionObject* > mission = this->mission.get();
+
 	Vector3 missionEndPoint;
 
 	missionEndPoint.setX(mission->getStartPositionX());
 	missionEndPoint.setY(mission->getStartPositionY());
-	TerrainManager* terrain = getPlayerOwner()->getZone()->getPlanetManager()->getTerrainManager();
+	TerrainManager* terrain = getPlayerOwner().get()->getZone()->getPlanetManager()->getTerrainManager();
 	missionEndPoint.setZ(terrain->getHeight(missionEndPoint.getX(), missionEndPoint.getY()));
 
 	return missionEndPoint;

@@ -236,39 +236,39 @@ void SuiListBoxImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SuiListBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiListBoxImplementation::operator const SuiListBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiListBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiListBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiListBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiListBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiListBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiListBoxImplementation::_serializationHelperMethod() {
@@ -391,7 +391,7 @@ void SuiListBoxImplementation::init() {
 
 String SuiListBoxImplementation::getMenuItemName(int index) {
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		SuiListBoxMenuItem menuItem = menuItems.get(index);
-	SuiListBoxMenuItem* menuItem = (&menuItems)->get(index);
+	ManagedReference<SuiListBoxMenuItem* > menuItem = (&menuItems)->get(index);
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return menuItem.getOptionName();
 	return menuItem->getOptionName();
 }
@@ -405,7 +405,7 @@ unsigned long long SuiListBoxImplementation::getMenuObjectID(unsigned int idx) {
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		return 
 	if (idx < (&menuItems)->size()){
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  			SuiListBoxMenuItem menuItem = menuItems.get(idx);
-	SuiListBoxMenuItem* menuItem = (&menuItems)->get(idx);
+	ManagedReference<SuiListBoxMenuItem* > menuItem = (&menuItems)->get(idx);
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		}
 	if (menuItem != NULL)	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  				return menuItem.getObjectID();
 	return menuItem->getObjectID();

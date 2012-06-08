@@ -26,18 +26,19 @@ public:
 	}
 
 	void run() {
-		if (shuttleObject == NULL) {
-			//cancel();
+		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
+
+		if (strongReference == NULL) {
 			return;
 		}
 
-		Locker _lock(shuttleObject);
+		Locker _lock(strongReference);
 
-		if (shuttleObject->isStanding()) {
-			shuttleObject->setPosture(CreaturePosture::PRONE);
+		if (strongReference->isStanding()) {
+			strongReference->setPosture(CreaturePosture::PRONE);
 			reschedule(DEPARTEDTIME * 1000);
 		} else {
-			shuttleObject->setPosture(CreaturePosture::UPRIGHT);
+			strongReference->setPosture(CreaturePosture::UPRIGHT);
 			reschedule((LANDEDTIME + LANDINGTIME) * 1000);
 		}
 	}
@@ -49,7 +50,13 @@ public:
 	}
 
 	bool isLanded() {
-		if (!shuttleObject->isStanding())
+		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
+
+		if (strongReference == NULL) {
+			return false;
+		}
+
+		if (!strongReference->isStanding())
 			return false;
 
 		//Make sure the shuttle isn't still landing
@@ -60,7 +67,13 @@ public:
 	}
 
 	bool isLanding() {
-		if (shuttleObject->isStanding() && (LANDEDTIME - getSecondsRemaining()) <= LANDINGTIME)
+		ManagedReference<CreatureObject*> strongReference = shuttleObject.get();
+
+		if (strongReference == NULL) {
+			return false;
+		}
+
+		if (strongReference->isStanding() && (LANDEDTIME - getSecondsRemaining()) <= LANDINGTIME)
 			return true;
 
 		return false;

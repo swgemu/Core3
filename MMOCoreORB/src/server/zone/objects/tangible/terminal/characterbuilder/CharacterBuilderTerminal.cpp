@@ -153,39 +153,39 @@ void CharacterBuilderTerminalImplementation::_setStub(DistributedObjectStub* stu
 }
 
 DistributedObjectStub* CharacterBuilderTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CharacterBuilderTerminalImplementation::operator const CharacterBuilderTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void CharacterBuilderTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CharacterBuilderTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CharacterBuilderTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {

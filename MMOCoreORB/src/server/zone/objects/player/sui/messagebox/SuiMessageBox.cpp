@@ -98,39 +98,39 @@ void SuiMessageBoxImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* SuiMessageBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiMessageBoxImplementation::operator const SuiMessageBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiMessageBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiMessageBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiMessageBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiMessageBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiMessageBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiMessageBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiMessageBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiMessageBoxImplementation::_serializationHelperMethod() {

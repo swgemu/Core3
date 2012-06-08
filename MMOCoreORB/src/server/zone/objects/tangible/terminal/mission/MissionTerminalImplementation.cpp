@@ -16,7 +16,7 @@
 
 void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
-	CityRegion* city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = player->getCityRegion();
 
 	if(city != NULL && city->isMayor(player->getObjectID())){
 
@@ -40,7 +40,7 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		//Create Session
 		ManagedReference<SlicingSession*> session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, _this);
+		session->initalizeSlicingMenu(player, _this.get());
 
 		return 0;
 
@@ -48,13 +48,13 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	if (selectedID == 72) {
 
-		CityRegion* city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion();
 
 		if (city != NULL)
-			city->removeMissionTerminal(_this);
+			city->removeMissionTerminal(_this.get());
 
-		_this->destroyObjectFromWorld(true);
-		_this->destroyObjectFromDatabase(false);
+		destroyObjectFromWorld(true);
+		destroyObjectFromDatabase(false);
 
 		return 0;
 	}

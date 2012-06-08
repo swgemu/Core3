@@ -44,7 +44,7 @@
 MindBlast2Command = {
         name = "mindblast2",
 
-    damageMax = 700, -- NOT CORRECT, Need data.
+    damage = 1500,
 	speed = 4.0,
 	forceCost = 160,
 	accuracySkillMod = "mindblast_accuracy";
@@ -76,7 +76,7 @@ MindBlast2Command = {
 	},	
 	
 	
-	animationCRC = hashCode("force_mind_blast_1_particle_level_1_medium"),
+	animationCRC = hashCode("force_mind_blast_1_arc_particle_level_1_light"),
 
 	combatSpam = "mindblast2",
 	

@@ -28,7 +28,7 @@ public:
 			return;
 
 		if (!cancelPressed) {
-			ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>(sui->getUsingObject());
+			ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>(sui->getUsingObject().get().get());
 
 			crystal->tuneCrystal(creature);
 		}

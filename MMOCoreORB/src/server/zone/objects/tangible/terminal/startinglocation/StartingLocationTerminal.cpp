@@ -114,39 +114,39 @@ void StartingLocationTerminalImplementation::_setStub(DistributedObjectStub* stu
 }
 
 DistributedObjectStub* StartingLocationTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 StartingLocationTerminalImplementation::operator const StartingLocationTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void StartingLocationTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void StartingLocationTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void StartingLocationTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void StartingLocationTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void StartingLocationTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void StartingLocationTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void StartingLocationTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void StartingLocationTerminalImplementation::_serializationHelperMethod() {

@@ -66,7 +66,7 @@ public:
 
 		if (objectiveRef != NULL) {
 			//Fail mission.
-			CreatureObject* owner = objectiveRef->getPlayerOwner();
+			ManagedReference<CreatureObject*> owner = objectiveRef->getPlayerOwner();
 			if (owner != NULL) {
 				Locker locker(owner);
 

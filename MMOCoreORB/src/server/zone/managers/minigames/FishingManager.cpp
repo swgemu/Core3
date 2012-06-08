@@ -792,39 +792,39 @@ void FishingManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* FishingManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 FishingManagerImplementation::operator const FishingManager*() {
-	return _this;
+	return _this.get();
 }
 
 void FishingManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void FishingManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void FishingManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void FishingManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void FishingManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void FishingManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void FishingManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void FishingManagerImplementation::_serializationHelperMethod() {

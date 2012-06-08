@@ -114,39 +114,39 @@ void SuiCharacterBuilderBoxImplementation::_setStub(DistributedObjectStub* stub)
 }
 
 DistributedObjectStub* SuiCharacterBuilderBoxImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 SuiCharacterBuilderBoxImplementation::operator const SuiCharacterBuilderBox*() {
-	return _this;
+	return _this.get();
 }
 
 void SuiCharacterBuilderBoxImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::_serializationHelperMethod() {

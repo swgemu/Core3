@@ -145,7 +145,7 @@ bool CollisionManager::checkSphereCollision(const Vector3& origin, float radius,
 }
 
 bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, const Vector3& rayEnd, float distance, CellObject* cellObject) {
-	SceneObject* building = cellObject->getParent();
+	ManagedReference<SceneObject*> building = cellObject->getParent();
 
 	if (building == NULL)
 		return true;
@@ -240,7 +240,7 @@ bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x,
 Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObject* cellObject) {
 	Vector<float>* collisions = NULL;
 
-	SceneObject* rootObject = cellObject->getRootParent();
+	ManagedReference<SceneObject*> rootObject = cellObject->getRootParent();
 
 	if (rootObject == NULL)
 		return NULL;
@@ -372,8 +372,8 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (object2->getZone() != zone)
 		return false;
 
-	SceneObject* rootParent1 = object1->getRootParent();
-	SceneObject* rootParent2 = object2->getRootParent();
+	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
+	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
 
 	if (rootParent1 != NULL || rootParent2 != NULL) {
 		if (rootParent1 == rootParent2) {
@@ -461,16 +461,16 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 	zone->runlock();
 
-	SceneObject* parent1 = object1->getParent();
-	SceneObject* parent2 = object2->getParent();
+	ManagedReference<SceneObject*> parent1 = object1->getParent();
+	ManagedReference<SceneObject*> parent2 = object2->getParent();
 
 	if (parent1 != NULL || parent2 != NULL) {
 		CellObject* cell = NULL;
 
 		if (parent1 != NULL && parent1->isCellObject()) {
-			cell = cast<CellObject*>(parent1);
+			cell = cast<CellObject*>(parent1.get());
 		} else if (parent2 != NULL && parent2->isCellObject()) {
-			cell = cast<CellObject*>(parent2);
+			cell = cast<CellObject*>(parent2.get());
 		}
 
 		if (cell != NULL) {
@@ -697,7 +697,7 @@ bool CollisionManager::checkLineOfSightInParentCell(SceneObject* object, Vector3
 
 	CellObject* cell = cast<CellObject*>( parent.get());
 
-	SharedObjectTemplate* objectTemplate = parent->getRootParent()->getObjectTemplate();
+	SharedObjectTemplate* objectTemplate = parent->getRootParent().get()->getObjectTemplate();
 	PortalLayout* portalLayout = objectTemplate->getPortalLayout();
 	MeshAppearanceTemplate* appearanceMesh = NULL;
 

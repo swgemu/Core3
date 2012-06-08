@@ -60,7 +60,7 @@ public:
 			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
 			return false;
 		}
-		
+	
 		return true;
 	}
 

@@ -352,39 +352,39 @@ void PersistentMessageImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PersistentMessageImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PersistentMessageImplementation::operator const PersistentMessage*() {
-	return _this;
+	return _this.get();
 }
 
 void PersistentMessageImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PersistentMessageImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PersistentMessageImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PersistentMessageImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PersistentMessageImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PersistentMessageImplementation::_serializationHelperMethod() {

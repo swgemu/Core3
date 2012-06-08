@@ -83,7 +83,7 @@ namespace manager {
 
 class ZoneManagerImplementation : public ManagedServiceImplementation, public Logger {
 protected:
-	ManagedWeakReference<ZoneServer* > zoneServer;
+	ManagedReference<ZoneServer* > zoneServer;
 
 	ManagedReference<ZoneProcessServer* > zoneProcessor;
 

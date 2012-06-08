@@ -76,8 +76,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen3 = obj
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
-	xpType = "combat_meleespecialize_polearmlightsaber",
+	-- combat_meleespecialize_twohandlightsaber, jedi_general, combat_meleespecialize_onehandlightsaber
+	xpType = "jedi_general",
 	
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_polearmlightsaber_gen3" },
@@ -95,6 +95,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1_gen3 = obj
 
 	-- Leave blank for now
 	damageModifiers = { },
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 

@@ -164,39 +164,39 @@ void MigrateStatsSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* MigrateStatsSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 MigrateStatsSessionImplementation::operator const MigrateStatsSession*() {
-	return _this;
+	return _this.get();
 }
 
 void MigrateStatsSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void MigrateStatsSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void MigrateStatsSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void MigrateStatsSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void MigrateStatsSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void MigrateStatsSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void MigrateStatsSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void MigrateStatsSessionImplementation::_serializationHelperMethod() {
@@ -308,7 +308,7 @@ int MigrateStatsSessionImplementation::cancelSession() {
 
 	else {
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.dropActiveSession(SessionFacadeType.MIGRATESTATS);
-	creature->dropActiveSession(SessionFacadeType::MIGRATESTATS);
+	creature.get()->dropActiveSession(SessionFacadeType::MIGRATESTATS);
 }
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		return 0;
 	return 0;
@@ -345,13 +345,13 @@ i = i + 1) {
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			int newValue = attributesToModify.get(i);
 	int newValue = (&attributesToModify)->get(i);
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			int originalAmount = creature.getBaseHAM(i);
-	int originalAmount = creature->getBaseHAM(i);
+	int originalAmount = creature.get()->getBaseHAM(i);
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setBaseHAM(i, newValue);
-	creature->setBaseHAM(i, newValue);
+	creature.get()->setBaseHAM(i, newValue);
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setHAM(i, creature.getHAM(i) + (newValue - originalAmount));
-	creature->setHAM(i, creature->getHAM(i) + (newValue - originalAmount));
+	creature.get()->setHAM(i, creature.get()->getHAM(i) + (newValue - originalAmount));
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  			creature.setMaxHAM(i, creature.getMaxHAM(i) + (newValue - originalAmount));
-	creature->setMaxHAM(i, creature->getMaxHAM(i) + (newValue - originalAmount));
+	creature.get()->setMaxHAM(i, creature.get()->getMaxHAM(i) + (newValue - originalAmount));
 }
 	// server/zone/objects/player/sessions/MigrateStatsSession.idl():  		cancelSession();
 	cancelSession();

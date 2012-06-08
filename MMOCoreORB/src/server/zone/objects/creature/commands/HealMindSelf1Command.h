@@ -61,7 +61,7 @@ public:
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
-
+		
 		return true;
 	}
 

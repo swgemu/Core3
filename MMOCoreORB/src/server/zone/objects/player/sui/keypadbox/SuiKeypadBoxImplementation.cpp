@@ -39,7 +39,7 @@ BaseMessage* SuiKeypadBoxImplementation::generateMessage() {
 	message->insertAscii("result.numberBox");
 	message->insertAscii("LocalText");
 
-	message->insertLong(usingObject->getObjectID());
+	message->insertLong(usingObject.get()->getObjectID());
 	message->insertFloat(forceCloseDistance);
 	message->insertLong(0);
 

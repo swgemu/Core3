@@ -17,6 +17,7 @@ int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 		break;
 	default:
 		TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+		break;
 	}
 	return 0;
 }

@@ -117,7 +117,9 @@ public:
 			updatePosition(playerRef);
 		}
 
-		String zoneName = objectiveRef->getMissionObject()->getEndPlanet();
+		ManagedReference<MissionObject*> strongMissionRef = objectiveRef->getMissionObject();
+
+		String zoneName = strongMissionRef->getEndPlanet();
 
 		Zone* zone = playerRef->getZone();
 

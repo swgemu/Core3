@@ -75,7 +75,7 @@ public:
 		if (session == NULL)
 			return;
 
-		idSession->sessionTimeout();
+		session->sessionTimeout();
 	}
 
 };

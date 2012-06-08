@@ -113,7 +113,7 @@ void SuiBoxImplementation::addHeader(const String& variable, const String& type)
 
 void SuiBoxImplementation::generateFooter(SuiCreatePageMessage* message, int type) {
 	if(usingObject != NULL)
-		message->insertFooter(usingObject->getObjectID(), forceCloseDistance, type);
+		message->insertFooter(usingObject.get()->getObjectID(), forceCloseDistance, type);
 	else
 		message->insertFooter(0, 0, type);
 }

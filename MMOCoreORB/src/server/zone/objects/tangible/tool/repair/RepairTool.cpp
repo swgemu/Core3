@@ -118,39 +118,39 @@ void RepairToolImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* RepairToolImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 RepairToolImplementation::operator const RepairTool*() {
-	return _this;
+	return _this.get();
 }
 
 void RepairToolImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void RepairToolImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void RepairToolImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void RepairToolImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void RepairToolImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void RepairToolImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void RepairToolImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void RepairToolImplementation::_serializationHelperMethod() {

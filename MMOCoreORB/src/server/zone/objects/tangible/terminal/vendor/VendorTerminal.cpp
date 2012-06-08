@@ -24,7 +24,7 @@
  *	VendorTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -164,15 +164,6 @@ bool VendorTerminal::isVendorTerminal() {
 		return _implementation->isVendorTerminal();
 }
 
-CityRegion* VendorTerminal::getCityRegion() {
-	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getCityRegion();
-}
-
 DistributedObjectServant* VendorTerminal::_getImplementation() {
 
 	_updated = true;
@@ -211,39 +202,39 @@ void VendorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VendorTerminalImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 VendorTerminalImplementation::operator const VendorTerminal*() {
-	return _this;
+	return _this.get();
 }
 
 void VendorTerminalImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void VendorTerminalImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void VendorTerminalImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void VendorTerminalImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void VendorTerminalImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void VendorTerminalImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void VendorTerminalImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void VendorTerminalImplementation::_serializationHelperMethod() {
@@ -314,6 +305,8 @@ VendorTerminalImplementation::VendorTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		Logger.setLoggingName("VendorTerminal");
 	Logger::setLoggingName("VendorTerminal");
+	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		storedOid = 0;
+	storedOid = 0;
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	TerminalImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
 }
@@ -336,11 +329,6 @@ bool VendorTerminalImplementation::isVendor() {
 bool VendorTerminalImplementation::isVendorTerminal() {
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		return true;
 	return true;
-}
-
-CityRegion* VendorTerminalImplementation::getCityRegion() {
-	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.cityRegion;
-	return TerminalImplementation::cityRegion.getForUpdate();
 }
 
 /*

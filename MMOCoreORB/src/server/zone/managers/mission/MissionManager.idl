@@ -64,7 +64,6 @@ import server.zone.templates.mobile.CreatureTemplate;
 import system.thread.Mutex;
 
 class MissionManager extends Observer implements Logger {
-	@weakReference
 	protected ZoneServer server;
 	transient ZoneProcessServer processor;
 		

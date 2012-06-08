@@ -57,7 +57,7 @@ public:
 
 	ConversationScreen* getLastConversationScreen();
 
-	CreatureObject* getNPC();
+	ManagedWeakReference<CreatureObject* > getNPC();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -100,7 +100,7 @@ public:
 
 	ConversationScreen* getLastConversationScreen();
 
-	CreatureObject* getNPC();
+	ManagedWeakReference<CreatureObject* > getNPC();
 
 	WeakReference<ConversationSession*> _this;
 
@@ -145,7 +145,7 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	CreatureObject* getNPC();
+	ManagedWeakReference<CreatureObject* > getNPC();
 
 };
 

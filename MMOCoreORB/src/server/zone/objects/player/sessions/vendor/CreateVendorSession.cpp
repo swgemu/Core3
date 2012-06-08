@@ -153,39 +153,39 @@ void CreateVendorSessionImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* CreateVendorSessionImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 CreateVendorSessionImplementation::operator const CreateVendorSession*() {
-	return _this;
+	return _this.get();
 }
 
 void CreateVendorSessionImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void CreateVendorSessionImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void CreateVendorSessionImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void CreateVendorSessionImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void CreateVendorSessionImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void CreateVendorSessionImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void CreateVendorSessionImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void CreateVendorSessionImplementation::_serializationHelperMethod() {
@@ -330,10 +330,10 @@ CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObj
 int CreateVendorSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		if 
 	if (player != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			player.dropActiveSession(SessionFacadeType.CREATEVENDOR);
-	player->dropActiveSession(SessionFacadeType::CREATEVENDOR);
+	player.get()->dropActiveSession(SessionFacadeType::CREATEVENDOR);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
 	if (vendor != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			vendor.dropActiveSession(SessionFacadeType.CREATEVENDOR);
-	vendor->dropActiveSession(SessionFacadeType::CREATEVENDOR);
+	vendor.get()->dropActiveSession(SessionFacadeType::CREATEVENDOR);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		return 0;

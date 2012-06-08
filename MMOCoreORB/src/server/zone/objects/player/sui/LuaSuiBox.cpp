@@ -7,6 +7,7 @@
 
 #include "LuaSuiBox.h"
 #include "SuiBox.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 const char LuaSuiBox::className[] = "LuaSuiBox";
 
@@ -30,7 +31,7 @@ int LuaSuiBox::_setObject(lua_State* L) {
 }
 
 int LuaSuiBox::getUsingObject(lua_State* L) {
-	SceneObject* obj = realObject->getUsingObject();
+	SceneObject* obj = realObject->getUsingObject().get().get();
 
 	if (obj != NULL) {
 		lua_pushlightuserdata(L, obj);

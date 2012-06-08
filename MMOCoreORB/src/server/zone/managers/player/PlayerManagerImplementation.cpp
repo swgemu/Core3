@@ -935,7 +935,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
 	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
 
 	if (closestCloning == NULL)//TODO: Add default location so people don't get stuck
 		return;
@@ -1062,7 +1062,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility());
+	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
 		// bind removed
@@ -1106,6 +1106,11 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	task->schedule(3 * 1000);
 
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
+
+	// Jedi experience loss.
+	if (ghost->getJediState() > 1) {
+		awardExperience(player, "jedi_general", -200000, true);
+	}
 }
 
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
@@ -1299,7 +1304,7 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 	StringIdChatParameter stringId("badge_n", "");
 	stringId.setTO("badge_n", Badge::getName(badge));
 
-	CreatureObject* player = dynamic_cast<CreatureObject*>(ghost->getParent());
+	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
 
 	if (ghost->hasBadge(badge)) {
 		stringId.setStringId("badge_n", "prose_hasbadge");
@@ -1416,6 +1421,8 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 			player->sendSystemMessage(message);
 		}
 	}
+
+
 }
 
 void PlayerManagerImplementation::sendLoginMessage(CreatureObject* creature) {
@@ -2553,11 +2560,21 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	PlayerObject* ghost = player->getPlayerObject();
 
 	SortedVector<uint8> profs;
-	//Fill the total profs array. Change to 32 if you want to include Politician.
-	for (int i = 0; i < 31; ++i)
+	//Fill the total profs array.
+	for (int i = 0; i < 32; ++i)
 		profs.put(i + 1);
 
 	 // TODO: Remove ungrindable professions (temporary.)
+		// Commando.
+		profs.drop(5);
+		// Droid Engineer.
+		profs.drop(16);
+		// Bio-Engineer.
+		profs.drop(20);
+		// Creature Handler.
+		profs.drop(21);
+		// Politician.
+		profs.drop(32);
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
@@ -2667,7 +2684,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 	if (zone == NULL)
 		return NULL;
 
-	ZoneServer* server = zone->getZoneServer();
+	ManagedReference<ZoneServer*> server = zone->getZoneServer();
 
 	if (server == NULL)
 		return NULL;

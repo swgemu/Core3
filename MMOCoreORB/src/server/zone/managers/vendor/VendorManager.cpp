@@ -65,7 +65,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, Vendor* vendor) 
 	uint32 itemsForSaleCount = 0;
 
 	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_VENDOR_STATUS);
-	statusBox->setUsingObject(vendor->getVendor());
+	statusBox->setUsingObject(vendor->getVendor().get());
 	statusBox->setPromptTitle("@player_structure:vendor_status");
 	statusBox->setPromptText("Vendor Status");
 
@@ -100,7 +100,7 @@ void VendorManager::sendDestoryTo(CreatureObject* player, Vendor* vendor) {
 
 	SuiMessageBox* destroyBox = new SuiMessageBox(player, SuiWindowType::STRUCTURE_DESTROY_VENDOR_CONFIRM);
 	destroyBox->setCallback(new DestroyVendorSuiCallback(player->getZoneServer()));
-	destroyBox->setUsingObject(vendor->getVendor());
+	destroyBox->setUsingObject(vendor->getVendor().get());
 	destroyBox->setPromptTitle("@player_structure:destroy_vendor_t"); //DestroyVendor?
 	destroyBox->setPromptText("@player_structure:destroy_vendor_d");
 	destroyBox->setOkButton(true, "@yes");
@@ -135,7 +135,7 @@ void VendorManager::handleDestoryCallback(CreatureObject* player, Vendor* vendor
 }
 
 void VendorManager::sendRegisterVendorTo(CreatureObject* player, Vendor* vendor) {
-	SceneObject* vendorObj = vendor->getVendor();
+	ManagedReference<SceneObject*> vendorObj = vendor->getVendor();
 
 	if (vendorObj == NULL)
 		return;

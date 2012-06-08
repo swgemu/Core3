@@ -59,7 +59,7 @@ public:
 		if (!creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
 			creature->sendSystemMessage("@healing_response:healing_response_72"); // You have no states of that type.		
 			return false;
-		}
+		}					
 
 		return true;
 	}

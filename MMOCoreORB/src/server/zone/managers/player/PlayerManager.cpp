@@ -1144,39 +1144,39 @@ void PlayerManagerImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* PlayerManagerImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 PlayerManagerImplementation::operator const PlayerManager*() {
-	return _this;
+	return _this.get();
 }
 
 void PlayerManagerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void PlayerManagerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void PlayerManagerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void PlayerManagerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void PlayerManagerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void PlayerManagerImplementation::_serializationHelperMethod() {
@@ -1215,7 +1215,7 @@ bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "PlayerManager.server") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
+		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
 	}
 
@@ -1253,7 +1253,7 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
+	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&server, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

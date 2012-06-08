@@ -174,39 +174,39 @@ void ControlDeviceImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* ControlDeviceImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 ControlDeviceImplementation::operator const ControlDevice*() {
-	return _this;
+	return _this.get();
 }
 
 void ControlDeviceImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void ControlDeviceImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void ControlDeviceImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void ControlDeviceImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void ControlDeviceImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void ControlDeviceImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void ControlDeviceImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void ControlDeviceImplementation::_serializationHelperMethod() {

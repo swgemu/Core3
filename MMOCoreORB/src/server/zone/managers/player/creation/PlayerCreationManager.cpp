@@ -374,7 +374,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			ClientCreateCharacterCallback*>(data);
 	ZoneClientSession* client = data->getClient();
 
-	PlayerManager* playerManager = zoneServer->getPlayerManager();
+	PlayerManager* playerManager = zoneServer.get()->getPlayerManager();
 
 	SkillManager* skillManager = SkillManager::instance();
 
@@ -414,6 +414,10 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	String profession, customization, hairTemplate, hairCustomization;
 	callback->getSkill(profession);
+
+	if (profession.contains("jedi"))
+		profession = "crafting_artisan";
+
 	callback->getCustomizationString(customization);
 	callback->getHairObject(hairTemplate);
 	callback->getHairCustomization(hairCustomization);
@@ -430,7 +434,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	//bool doTutorial = false;
 
 	ManagedReference<CreatureObject*> playerCreature =
-			dynamic_cast<CreatureObject*>(zoneServer->createObject(
+			dynamic_cast<CreatureObject*>(zoneServer.get()->createObject(
 					serverObjectCRC, 2));
 
 	if (playerCreature == NULL) {
@@ -543,7 +547,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			playerCreature->getObjectID());
 	playerCreature->sendMessage(msg);
 
-	ChatManager* chatManager = zoneServer->getChatManager();
+	ChatManager* chatManager = zoneServer.get()->getChatManager();
 	chatManager->addPlayer(playerCreature);
 
 	String firstName = playerCreature->getFirstName();
@@ -554,7 +558,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		query
 				<< "INSERT INTO `characters_dirty` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
 				<< " VALUES (" << playerCreature->getObjectID() << ","
-				<< client->getAccountID() << "," << zoneServer->getGalaxyID()
+				<< client->getAccountID() << "," << zoneServer.get()->getGalaxyID()
 				<< "," << "'" << firstName.escapeString() << "','"
 				<< lastName.escapeString() << "'," << raceID << "," << 0 << ",'"
 				<< raceFile.escapeString() << "')";

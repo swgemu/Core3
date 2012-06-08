@@ -169,13 +169,13 @@ public:
 
 	void setForceCloseDisabled();
 
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 	unsigned int getBoxID();
 
 	int getWindowType();
 
-	SceneObject* getUsingObject();
+	ManagedWeakReference<SceneObject* > getUsingObject();
 
 	void setUsingObject(SceneObject* object);
 
@@ -338,13 +338,13 @@ public:
 
 	void setForceCloseDisabled();
 
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 	unsigned int getBoxID();
 
 	int getWindowType();
 
-	SceneObject* getUsingObject();
+	ManagedWeakReference<SceneObject* > getUsingObject();
 
 	void setUsingObject(SceneObject* object);
 
@@ -457,13 +457,13 @@ public:
 
 	void setForceCloseDisabled();
 
-	CreatureObject* getPlayer();
+	ManagedWeakReference<CreatureObject* > getPlayer();
 
 	unsigned int getBoxID();
 
 	int getWindowType();
 
-	SceneObject* getUsingObject();
+	ManagedWeakReference<SceneObject* > getUsingObject();
 
 	void setUsingObject(SceneObject* object);
 

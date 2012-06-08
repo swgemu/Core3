@@ -122,7 +122,7 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sceneObject->getCloseObjects();
-	SortedVector<ManagedReference<QuadTreeEntry*> >* parentCloseObjects = sceneObject->getRootParent()->getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> >* parentCloseObjects = sceneObject->getRootParent().get()->getCloseObjects();
 
 	//remove old ones
 	float rangesq = 192.f * 192.f;
@@ -134,8 +134,8 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	float oldy = sceneObject->getPreviousPositionY();
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		QuadTreeEntry* o = closeObjects->get(i);
-		QuadTreeEntry* objectToRemove = o;
+		ManagedReference<QuadTreeEntry*> o = closeObjects->get(i);
+		ManagedReference<QuadTreeEntry*> objectToRemove = o;
 
 		if (o->getParent() != NULL)
 			o = o->getRootParent();
@@ -173,11 +173,11 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 }
 
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
-	SceneObject* parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
 
 	if (zone == NULL)
-		zone = parent->getRootParent()->getZone();
+		zone = parent->getRootParent().get()->getZone();
 
 	if (parent != NULL && parent->isVehicleObject())
 		sceneObject->updateVehiclePosition(sendPackets);
@@ -188,7 +188,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		//parent->removeObject(sceneObject, true);
 		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
 
-		zone = parent->getRootParent()->getZone();
+		zone = parent->getRootParent().get()->getZone();
 
 		zone->transferObject(sceneObject, -1, false);
 	} else {
@@ -233,7 +233,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		return;
 
 	if (zone == NULL)
-		zone = newParent->getRootParent()->getZone();
+		zone = newParent->getRootParent().get()->getZone();
 
 	Locker _locker(zone);
 
@@ -348,7 +348,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		par->removeObject(sceneObject, NULL, false);
 
 		if (par->isCellObject()) {
-			BuildingObject* build = cast<BuildingObject*>(par->getParent());
+			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(par->getParent().get().get());
 
 			if (build != NULL) {
 				CreatureObject* creature = cast<CreatureObject*>(sceneObject);

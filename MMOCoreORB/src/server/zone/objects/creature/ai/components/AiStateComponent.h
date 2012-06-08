@@ -51,19 +51,19 @@ public:
 	 * to update the state based on the outcome of the result
 	 */
 
-	// actions performed when entering a state
-	virtual uint16 onEnter();
+	// actions performed when entering a state -- can result in an immediate change of state
+	virtual uint16 onEnter(AiActor* actor);
 
-	// actions performed when exiting a state
-	virtual uint16 onExit();
+	// actions performed when exiting a state -- can not result in an immediate change of state
+	virtual void onExit(AiActor* actor) {}
 
-	virtual uint16 tryRetreat();
+	virtual uint16 tryRetreat(AiActor* actor);
 
-	virtual uint16 doRecovery();
+	virtual uint16 doRecovery(AiActor* actor);
 
-	virtual uint16 doAttack();
+	virtual uint16 doAttack(AiActor* actor);
 
-	virtual uint16 doMovement();
+	virtual uint16 doMovement(AiActor* actor);
 
 	/*
 	 * host = creature doing moving
@@ -73,6 +73,14 @@ public:
 	 * nextPosition = calculated next position
 	 */
 	bool findNextPosition(Observable* obs, float maxDistance, float speed, PatrolPointsVector* patrolPoints, WorldCoordinates* nextPosition);
+
+	virtual float getMaxDistance(CreatureObject* host) {
+		return 0.5f;
+	}
+
+	virtual float getSpeed(CreatureObject* host) {
+		return host->getCurrentSpeed();
+	}
 
 	void setNextPosition(AiActor* actor, float x, float z, float y, SceneObject* cell = NULL);
 
@@ -87,6 +95,8 @@ public:
 	void selectWeapon(AiActor* actor);
 
 	bool validateStateAttack(CreatureObject* target, String& args);
+
+	virtual bool isScared(CreatureObject* host, SceneObject* followObject);
 };
 
 #endif /* AISTATECOMPONENT_H_ */

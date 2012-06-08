@@ -121,7 +121,7 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 		return;
 
 	if (healLairEvent == NULL) {
-		healLairEvent = new HealLairObserverEvent(lair, attacker, _this);
+		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.get());
 
 		healLairEvent->schedule(1000);
 	} else if (!healLairEvent->isScheduled()) {

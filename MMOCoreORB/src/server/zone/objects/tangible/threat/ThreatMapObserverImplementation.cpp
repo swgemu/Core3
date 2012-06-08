@@ -12,13 +12,13 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 
 int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	ManagedReference<SceneObject*> strongRef = self.get();
+	ManagedReference<TangibleObject*> strongRef = self.get();
 
 	if (eventType != ObserverEventType::HEALINGPERFORMED || strongRef == NULL) {
 		return 1;
 	}
 
-	ThreatMap* threatMap = self->getThreatMap();
+	ThreatMap* threatMap = strongRef->getThreatMap();
 
 	if (threatMap != NULL) {
 		CreatureObject* target = cast<CreatureObject*>(arg1);

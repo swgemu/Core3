@@ -185,39 +185,39 @@ void HarvesterObjectImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* HarvesterObjectImplementation::_getStub() {
-	return _this;
+	return _this.get();
 }
 
 HarvesterObjectImplementation::operator const HarvesterObject*() {
-	return _this;
+	return _this.get();
 }
 
 void HarvesterObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
+	_this.get()->lock(doLock);
 }
 
 void HarvesterObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
+	_this.get()->lock(obj);
 }
 
 void HarvesterObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
+	_this.get()->rlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
+	_this.get()->wlock(doLock);
 }
 
 void HarvesterObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
+	_this.get()->wlock(obj);
 }
 
 void HarvesterObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
+	_this.get()->unlock(doLock);
 }
 
 void HarvesterObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
+	_this.get()->runlock(doLock);
 }
 
 void HarvesterObjectImplementation::_serializationHelperMethod() {

@@ -329,7 +329,7 @@ class ZoneImplementation : public SceneObjectImplementation {
 
 	SortedVector<ManagedReference<CityRegion* > > cityRegionUpdateVector;
 
-	ManagedWeakReference<ZoneServer* > server;
+	ManagedReference<ZoneServer* > server;
 
 	QuadTreeReference regionTree;
 

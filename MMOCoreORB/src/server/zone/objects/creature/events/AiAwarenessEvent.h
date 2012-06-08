@@ -28,7 +28,7 @@ public:
 	AiAwarenessEvent(AiAgent* pl, CreatureObject* t) : Task(1000) {
 		creature = pl;
 		target = t;
-		coord.setPosition(target->getPosition());
+		coord.setPosition(t->getPosition());
 	}
 
 	virtual ~AiAwarenessEvent() {
@@ -55,7 +55,7 @@ public:
 
 	void setTarget(CreatureObject *t) {
 		target = t;
-		coord.setPosition(target->getPosition());
+		coord.setPosition(t->getPosition());
 	}
 };
 

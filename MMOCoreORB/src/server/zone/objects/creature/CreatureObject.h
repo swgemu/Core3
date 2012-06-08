@@ -574,7 +574,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 
@@ -702,7 +702,7 @@ public:
 
 	byte getFactionRank();
 
-	CreatureObject* getLinkedCreature();
+	ManagedWeakReference<CreatureObject* > getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -812,7 +812,7 @@ public:
 
 	bool isRidingMount();
 
-	ControlDevice* getControlDevice();
+	ManagedWeakReference<ControlDevice* > getControlDevice();
 
 	float getSwimHeight();
 
@@ -1345,7 +1345,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 
@@ -1473,7 +1473,7 @@ public:
 
 	byte getFactionRank();
 
-	CreatureObject* getLinkedCreature();
+	ManagedWeakReference<CreatureObject* > getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -1583,7 +1583,7 @@ public:
 
 	bool isRidingMount();
 
-	ControlDevice* getControlDevice();
+	ManagedWeakReference<ControlDevice* > getControlDevice();
 
 	float getSwimHeight();
 
@@ -1954,7 +1954,7 @@ public:
 
 	PlayerObject* getPlayerObject();
 
-	AiActor* getGhostObject();
+	AiActor* getActorObject();
 
 	bool isListening();
 
@@ -2070,7 +2070,7 @@ public:
 
 	byte getFactionRank();
 
-	CreatureObject* getLinkedCreature();
+	ManagedWeakReference<CreatureObject* > getLinkedCreature();
 
 	unsigned long long getCreatureLinkID();
 
@@ -2170,7 +2170,7 @@ public:
 
 	bool isRidingMount();
 
-	ControlDevice* getControlDevice();
+	ManagedWeakReference<ControlDevice* > getControlDevice();
 
 	float getSwimHeight();
 

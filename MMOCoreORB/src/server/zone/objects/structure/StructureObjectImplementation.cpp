@@ -149,7 +149,7 @@ void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
 	}
 
 	if (structureMaintenanceTask == NULL) {
-		structureMaintenanceTask = new StructureMaintenanceTask(_this);
+		structureMaintenanceTask = new StructureMaintenanceTask(_this.get());
 	}
 
 	if (structureMaintenanceTask->isScheduled()) {

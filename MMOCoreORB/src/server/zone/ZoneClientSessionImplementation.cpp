@@ -80,7 +80,7 @@ void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
 
 //this needs to be run in a different thread
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	if (disconnecting) {
 		return;
@@ -88,12 +88,14 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 	disconnecting = true;
 
+	ManagedReference<SceneObject*> player = this->player.get();
+
 	if (session->hasError() || !session->isClientDisconnected()) {
 		if (player != NULL) {
 
-			if (player->getClient() == _this) {
+			if (player->getClient() == _this.get().get()) {
 				//((CreatureObject*)player.get())->disconnect(false, true);
-				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::DISCONNECT);
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
 			}
 		}
@@ -102,18 +104,18 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		PlayerObject* ghost = cast<PlayerObject*>( player->getSlottedObject("ghost"));
 
-		if (ghost->isLoggingOut() && player->getClient() == _this) {
+		if (ghost->isLoggingOut() && player->getClient() == _this.get().get()) {
 			//((CreatureObject*)player.get())->logout(true);
-			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::LOGOUT);
+			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::LOGOUT);
 			Core::getTaskManager()->executeTask(task);
 		}
 		else {
 			try {
 				//player->wlock();
 
-				if (player->getClient() == _this) {
+				if (player->getClient() == _this.get()) {
 					//((CreatureObject*)player.get())->setLinkDead();
-					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this, DisconnectClientEvent::SETLINKDEAD);
+					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::SETLINKDEAD);
 					Core::getTaskManager()->executeTask(task);
 				}
 
@@ -127,22 +129,45 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	}
 	
 
-	/*info("references left " + String::valueOf(_this->getReferenceCount()), true);
-	_this->printReferenceHolders();*/
+	/*info("references left " + String::valueOf(_this.get()->getReferenceCount()), true);
+	_this.get()->printReferenceHolders();*/
 }
 
+void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
+	ManagedReference<SceneObject*> player = this->player.get();
+
+	if (playerCreature != player) {
+		if (playerCreature == NULL && player != NULL) {
+			// TODO: find a proper way to acqure zone server
+			ZoneServer* zoneServer = player->getZoneServer();
+
+			if (zoneServer != NULL)
+				zoneServer->decreaseOnlinePlayers();
+		} else if (playerCreature != player) {
+			// TODO: find a proper way to acqure zone server
+			ZoneServer* zoneServer = playerCreature->getZoneServer();
+
+			if (zoneServer != NULL)
+				zoneServer->increaseOnlinePlayers();
+		}
+	}
+
+	this->player = playerCreature;
+}
+
+
 void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
-	Locker locker(_this);
+	Locker locker(_this.get());
 
 	session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
 	ZoneServer* server = NULL;
-	ManagedReference<CreatureObject*> play = cast<CreatureObject*>(player.get());
+	ManagedReference<CreatureObject*> play = cast<CreatureObject*>(player.get().get());
 
 	if (play != NULL) {
 		server = play->getZoneServer();
 
-		Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this);
+		Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this.get());
 		Core::getTaskManager()->executeTask(task);
 
 		setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter

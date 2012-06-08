@@ -61,8 +61,8 @@ public:
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		 else 
-			creature->doAnimation("force_healing_1");
-	}		
+			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
+	}
 	
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
 		if (!object->isPlayerCreature())
@@ -75,15 +75,15 @@ public:
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		StringBuffer msgTarget, msgPlayer;
 			msgPlayer << creatureTarget->getFirstName() << " bleeding has slightly decreased.";
-			msgTarget << creature->getFirstName() << " uses the Force to heal your bleeding.";
+//			msgTarget << creature->getFirstName() << " bleeding has slightly decreased.";
 
 		if (creature != creatureTarget) 
 			creature->sendSystemMessage(msgPlayer.toString());
-			creatureTarget->sendSystemMessage(msgTarget.toString());
+//			creatureTarget->sendSystemMessage(msgTarget.toString());
 	}	
 	
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
-		// TODO: Pet Check
+
 		if (!creatureTarget->isPlayerCreature()) {
 			return false;
 		}
@@ -111,7 +111,7 @@ public:
 				creature->sendSystemMessage(stringId); //%NT is not bleeding.
 			}
 			return false;
-		}
+		}			
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
@@ -154,7 +154,9 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
+					
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
