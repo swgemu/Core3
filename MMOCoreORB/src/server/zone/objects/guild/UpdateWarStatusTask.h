@@ -49,7 +49,10 @@ public:
 
 				CreatureObject* creo2 = obj2.castTo<CreatureObject*>();
 
+				Locker _lock(creo);
+
 				if (creo->isInRange(creo2, 192.f)) {
+					Locker _crosslock(creo2, creo);
 					creo->sendPvpStatusTo(creo2);
 					creo2->sendPvpStatusTo(creo);
 				}
