@@ -81,7 +81,7 @@ public:
 
 				Locker zoneLocker(zone);
 
-				if (!targetGhost->isInvisible()) {
+				if (!player->isInvisible()) {
 
 					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
 
@@ -93,13 +93,13 @@ public:
 
 					}
 
-					targetGhost->setInvisible(true);
+					player->setInvisible(true);
 					//player->setPvpStatusBitmask(0);
 					player->sendSystemMessage("You are now invisible to other players and creatures.");
 					player->sendSystemMessage("DO NOT CHANGE YOUR EQUIPPED ITEMS!");
 
 				} else {
-					targetGhost->setInvisible(false);
+					player->setInvisible(false);
 
 					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
 

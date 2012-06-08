@@ -119,7 +119,7 @@ class PlayerObject extends IntangibleObject {
 	protected byte maximumLots;
 	
 	protected int jediState;
-	protected unsigned int adminLevel; //TODO: This should be derived from the connected account object.
+	protected unsigned int adminLevel;
 	
 	protected byte languageID;
 	
@@ -215,8 +215,6 @@ class PlayerObject extends IntangibleObject {
 	
 	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
 	
-	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
-	
 	@dereferenced
 	protected Vector<byte> hologrindProfessions;
 	
@@ -293,8 +291,6 @@ class PlayerObject extends IntangibleObject {
 		consentList.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
-		
-		invisible = false;
 		
 		factionStatus = 0;
 		
@@ -1222,14 +1218,6 @@ class PlayerObject extends IntangibleObject {
 	
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
-	}
-
-	public boolean isInvisible() {
-		return invisible;
-	}
-	
-	public void setInvisible(boolean invis) {
-		invisible = invis;
 	}
 	
 	public void addHologrindProfession(byte prof) {

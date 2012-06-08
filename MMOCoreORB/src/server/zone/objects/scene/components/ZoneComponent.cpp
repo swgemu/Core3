@@ -262,8 +262,15 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		}
 	}
 
+	bool isInvis = false;
+	if(sceneObject->isCreatureObject()) {
+		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+		if(creo->isInvisible())
+			isInvis = true;
+	}
 
-	if (sendPackets) {
+	if (sendPackets && !isInvis) {
+
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(sceneObject);
 			sceneObject->broadcastMessage(message, false, false);

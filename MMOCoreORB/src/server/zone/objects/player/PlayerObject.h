@@ -730,10 +730,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	bool isInvisible();
-
-	void setInvisible(bool invis);
-
 	void addHologrindProfession(byte prof);
 
 	Vector<byte>* getHologrindProfessions();
@@ -907,8 +903,6 @@ protected:
 	int factionStatus;
 
 	bool spawnedBlueFrog;
-
-	bool invisible;
 
 	Vector<byte> hologrindProfessions;
 
@@ -1377,10 +1371,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	bool isInvisible();
-
-	void setInvisible(bool invis);
-
 	void addHologrindProfession(byte prof);
 
 	Vector<byte>* getHologrindProfessions();
@@ -1813,10 +1803,6 @@ public:
 	void setFactionStatus(int status);
 
 	unsigned int getClientLastMovementStamp();
-
-	bool isInvisible();
-
-	void setInvisible(bool invis);
 
 	void addHologrindProfession(byte prof);
 

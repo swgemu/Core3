@@ -906,6 +906,10 @@ public:
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -949,6 +953,8 @@ protected:
 	byte locomotion;
 
 	byte factionRank;
+
+	bool invisible;
 
 	ManagedWeakReference<CreatureObject* > linkedCreature;
 
@@ -1677,6 +1683,10 @@ public:
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
 	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
@@ -2263,6 +2273,10 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
 
 };
 
