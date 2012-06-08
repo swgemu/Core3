@@ -1062,7 +1062,7 @@ void CityManagerImplementation::castMayoralVote(CityRegion* city, CreatureObject
 	if (!city->isCitizen(creature->getObjectID()))
 		return;
 
-	if (oid != 0 && !city->isCandidate(oid))
+	if (oid != 0 && !city->isCandidate(oid) && !city->isMayor(oid))
 		return;
 
 	//Check if they chose to abstain from voting.
