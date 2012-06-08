@@ -44,7 +44,8 @@
 object_building_naboo_guild_theater_naboo_s01 = object_building_naboo_shared_guild_theater_naboo_s01:new {
 	gameObjectType = 524,
 	skillMods = {
-		{"private_buff_mind", 100}
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
 	},
 	planetMapCategory = "guild",
 	planetMapSubCategory = "guild_theater"

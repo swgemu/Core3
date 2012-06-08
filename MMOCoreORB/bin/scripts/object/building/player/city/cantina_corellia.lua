@@ -42,9 +42,6 @@
 
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
-	skillMods = {
-		{"private_med_wound_mind", 100}
-	},
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	planetMapCategory = "cantina",
