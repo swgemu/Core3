@@ -572,8 +572,8 @@ class TangibleObject extends SceneObject {
 		if(isBroken())
 			return 0.95 * value;
 		
-		float ratio = (float)getConditionDamage() / (float)getMaxCondition();
-		if(ratio < 75)
+		float ratio = (float)getConditionDamage() / (float)getMaxCondition() * 100.0;
+		if(ratio < 75.0)
 			return 0;
 		
 		float reductionPercent = (ratio - 75.0) / 25.0;

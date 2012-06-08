@@ -622,7 +622,7 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 		damage = damage / 10000.f;
 		if (isSliced()) damage *= 1.1;
 		if (hasPowerup()) damage *= 1.1;
-		inflictDamage(_this.get(), 0, damage, false, true);
+		inflictDamage(_this.get(), 0, damage, true, true);
 
 		if ((conditionDamage - damage / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
 			user->sendSystemMessage("@combat_effects:weapon_quarter");

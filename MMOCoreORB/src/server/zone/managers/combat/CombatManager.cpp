@@ -738,7 +738,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
 		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		psg->inflictDamage(psg, 0, conditionDamage, false, true);
+		psg->inflictDamage(psg, 0, conditionDamage, true, true);
 	}
 
 	// Next is Jedi stuff
@@ -793,7 +793,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 		// inflict condition damage
 		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		armor->inflictDamage(armor, 0, conditionDamage, false, true);
+		armor->inflictDamage(armor, 0, conditionDamage, true, true);
 	}
 
 	return damage;
