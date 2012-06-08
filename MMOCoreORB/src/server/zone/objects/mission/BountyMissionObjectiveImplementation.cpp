@@ -459,6 +459,9 @@ void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
+	if (owner == NULL)
+		return;
+
 	if (attacker != NULL && attacker->getFirstName() == owner->getFirstName() &&
 			attacker->isPlayerCreature()) {
 		//Target killed by player, complete mission.
