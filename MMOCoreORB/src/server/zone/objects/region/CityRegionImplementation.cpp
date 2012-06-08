@@ -364,8 +364,6 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 
 	else if(cityStructureInventory.get(uint8(4)).contains(structure))
 		cityStructureInventory.get(uint8(4)).drop(structure);
-
-
 }
 
 bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
@@ -463,4 +461,9 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	}
 
 	citySkillTrainers.removeAll();
+}
+
+void CityRegionImplementation::resetVotingPeriod() {
+	nextInauguration.updateToCurrentTime();
+	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingDuration * 60000);
 }

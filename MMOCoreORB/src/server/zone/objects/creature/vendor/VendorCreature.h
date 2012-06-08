@@ -175,6 +175,8 @@ class VendorCreatureImplementation : public CreatureObjectImplementation {
 protected:
 	Vendor vendor;
 
+	unsigned long long storedOid;
+
 public:
 	VendorCreatureImplementation();
 

@@ -46,7 +46,7 @@
 ------------------------------
 CitySpecializationCooldown = 604800000 --Milliseconds: 1 Week = 604800000
 TreasuryWithdrawalCooldown = 86400000 --Milliseconds: 1 Day = 86400000
-CityVotingDuration = 1814400 --Seconds until the next vote occurs.
+CityVotingDuration = 10080 --Minutes until the next vote occurs. (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
 CityUpdateInterval = 15 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
 NewCityGracePeriod = 10 --Minutes before a new city has to reach rank 1 citizens before it decays.
 

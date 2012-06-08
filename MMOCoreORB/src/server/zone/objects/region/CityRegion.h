@@ -79,6 +79,20 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace city {
+
+class CityManager;
+
+} // namespace city
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::city;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace tangible {
 namespace terminal {
@@ -302,6 +316,30 @@ public:
 
 	void destroyAllStructuresForRank(byte rank);
 
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	VectorMap<unsigned long long, int>* getCandidates();
+
+	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -331,6 +369,10 @@ protected:
 	ManagedReference<StructureObject* > cityHall;
 
 	StringId regionName;
+
+	VectorMap<unsigned long long, int> candidates;
+
+	VectorMap<unsigned long long, unsigned long long> mayoralVotes;
 
 	String customRegionName;
 
@@ -373,6 +415,8 @@ protected:
 	unsigned long long shuttleID;
 
 	Time nextUpdateTime;
+
+	Time nextInauguration;
 
 	Reference<CityUpdateEvent* > cityUpdateEvent;
 
@@ -562,6 +606,30 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	VectorMap<unsigned long long, int>* getCandidates();
+
+	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
 
 	WeakReference<CityRegion*> _this;
 
@@ -761,6 +829,26 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
 
 };
 

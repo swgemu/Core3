@@ -13,6 +13,7 @@ import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
+import server.zone.managers.city.CityManager;
 include server.zone.managers.planet.PlanetTravelPoint;
 include server.chat.StringIdChatParameter;
 include server.zone.ZoneReference;
@@ -28,6 +29,12 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected StringId regionName;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, int> candidates;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned long> mayoralVotes;
 	
 	protected string customRegionName;
 
@@ -84,6 +91,9 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected Time nextUpdateTime;
 	
+	@dereferenced
+	protected Time nextInauguration;
+	
 	protected transient CityUpdateEvent cityUpdateEvent;
 
 	protected string citySpecialization; //We want to implement this with skill mods.
@@ -97,6 +107,12 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public CityRegion() {
 		initialize();
+		
+		candidates.setAllowOverwriteInsertPlan();
+		candidates.setNullValue(0);
+		
+		mayoralVotes.setAllowOverwriteInsertPlan();
+		mayoralVotes.setNullValue(0);
 	}
 	
 	public native void initialize();
@@ -160,6 +176,7 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public void removeCitizen(unsigned long citizenID) {
 		citizenList.drop(citizenID);
+		militiaMembers.drop(citizenID);
 	}
 	
 	public void addBannedPlayer(unsigned long playerid) {
@@ -434,9 +451,77 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void removeLimitedPlacementStructure(unsigned int id);
 	
-	public native void destroyAllStructuresForRank(byte rank);
+	public native void destroyAllStructuresForRank(byte rank);	
 	
+	/**
+	 * Adds a candidate to the ballot.
+	 */
+	public void addCandidate(unsigned long candidateoid) {
+		candidates.put(candidateoid, 0);
+	}
 	
+	/**
+	 * This method does not check to see if they have previously voted. That logic should be contained in the Manager.
+	 * This is just a data container.
+	 */
+	public void setMayoralVote(unsigned long voteroid, unsigned long candidateoid) {
+		unsigned long currentoid = mayoralVotes.get(voteroid);
+		
+		//Check if they are voting for same person
+		if (currentoid == candidateoid)
+			return;
+		
+		//Remove the current vote for the current candidate
+		if (currentoid != 0 && candidates.contains(currentoid))
+			candidates.put(currentoid, candidates.get(currentoid) - 1);
+		
+		mayoralVotes.put(voteroid, candidateoid);
+		candidates.put(candidateoid, candidates.get(candidateoid) + 1);
+	}
 	
+	public int getCandidateVotes(unsigned long candidateoid) {
+		return candidates.get(candidateoid);
+	}
 	
+	@local
+	public VectorMap<unsigned long, int> getCandidates() {
+		return candidates;
+	}
+	
+	@local
+	public VectorMap<unsigned long, unsigned long> getMayoralVotes() {
+		return mayoralVotes;
+	}
+	
+	/**
+	 * At the end of a voting term, all candidates are removed from the ballot.
+	 */
+	public void resetCandidates() {
+		candidates.removeAll();
+	}
+	
+	/**
+	 * All votes are removed from the ballot.
+	 */
+	public void resetMayoralVotes() {
+		mayoralVotes.removeAll();
+	}
+	
+	public void removeCandidate(unsigned long candidateoid) {
+		candidates.drop(candidateoid);
+	}
+	
+	public boolean isCandidate(unsigned long candidateoid) {
+		return candidates.contains(candidateoid);
+	}
+	
+	public boolean isVotingPeriodOver() {
+		return nextInauguration.isPast();
+	}
+	
+	public boolean isVotingPeriod() {
+		return !nextInauguration.isPast();
+	}
+	
+	public native void resetVotingPeriod();
 }
