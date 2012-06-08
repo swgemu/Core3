@@ -81,6 +81,8 @@ public:
 	static const uint16 GUILD_MEMBER_TITLE = 35;
 	static const uint16 GUILD_TRANSFER_LEADER = 36;
 	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
+	static const uint16 GUILD_WAR_LIST = 38;
+	static const uint16 GUILD_WAR_ENTER_NAME = 39;
 
 	//Travel 51 - 60
 	static const uint16 TICKET_PURCHASE_MESSAGE = 51;

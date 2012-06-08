@@ -120,3 +120,14 @@ bool GuildObjectImplementation::hasTitlePermission(uint64 playerID) {
 
 	return gmi->hasPermission(GuildObject::PERMISSION_TITLE);
 }
+
+bool GuildObjectImplementation::hasWarPermission(uint64 playerID) {
+	Locker locker(_this.get());
+
+	if (!guildMembers.contains(playerID))
+		return false;
+
+	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+
+	return gmi->hasPermission(GuildObject::PERMISSION_WAR);
+}

@@ -63,6 +63,9 @@ class GuildObject extends SceneObject {
 	@dereferenced
 	protected SortedVector<unsigned long> sponsoredPlayers;
 	
+	@dereferenced
+	protected VectorMap<unsigned long, byte> waringGuilds;
+	
 	protected unsigned int guildID;
 	protected string guildName;
 	protected string guildAbbrev;
@@ -80,6 +83,11 @@ class GuildObject extends SceneObject {
 	public static final byte PERMISSION_DISBAND = 0x80;
 	public static final byte PERMISSION_ALL = 0xFF;
 	
+	public static final byte WAR_NONE = 0;
+	public static final byte WAR_MUTUAL = 0x3D; //'='
+	public static final byte WAR_IN = 0x3C; //'<'
+	public static final byte WAR_OUT = 0x3E; //'>'
+	
 	public GuildObject() {		
 		Logger.setLoggingName("GuildObject");
 		
@@ -87,6 +95,7 @@ class GuildObject extends SceneObject {
 		guildID = 0;
 		chatRoom = null;
 		
+		waringGuilds.setAllowOverwriteInsertPlan();
 		sponsoredPlayers.setNoDuplicateInsertPlan();
 		guildMembers.setNoDuplicateInsertPlan();
 	}
@@ -191,6 +200,51 @@ class GuildObject extends SceneObject {
 		return (guildLeaderID == player.getObjectID());
 	}
 	
+	public byte getWarStatus(unsigned long guildoid) {
+		return waringGuilds.get(guildoid);
+	}
+	
+	public void setWarStatus(unsigned long guildoid, byte status) {
+		if (status == WAR_NONE)
+			waringGuilds.drop(guildoid);
+		else
+			waringGuilds.put(guildoid, status);
+	}
+	
+	public boolean isInWaringGuild(CreatureObject creature) {
+		GuildObject attackerGuild = creature.getGuildObject();
+
+		if (attackerGuild != null) {
+			rlock();
+
+			if (isAtWarWith(attackerGuild.getObjectID())) {
+				runlock();
+				return true;
+			}
+
+			runlock();
+		}
+		
+		return false;
+	}
+	
+	public boolean isAtWarWith(unsigned long guildoid) {
+		return waringGuilds.get(guildoid) == WAR_MUTUAL;
+	}
+	
+	public boolean hasDeclaredWarOn(unsigned long guildoid) {
+		return waringGuilds.get(guildoid) == WAR_OUT;
+	}
+	
+	public boolean hasDeclaredWarBy(unsigned long guildoid) {
+		return waringGuilds.get(guildoid) == WAR_IN;
+	}
+	
+	@local
+	public VectorMap<unsigned long, byte> getWaringGuilds() {
+		return waringGuilds;
+	}
+	
 	public native boolean hasMailPermission(unsigned long playerID);
 	public native boolean hasSponsorPermission(unsigned long playerID);
 	public native boolean hasAcceptPermission(unsigned long playerID);
@@ -198,4 +252,5 @@ class GuildObject extends SceneObject {
 	public native boolean hasKickPermission(unsigned long playerID);
 	public native boolean hasNamePermission(unsigned long playerID);
 	public native boolean hasTitlePermission(unsigned long playerID);
+	public native boolean hasWarPermission(unsigned long playerID);
 }

@@ -161,6 +161,16 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native void sendGuildSetTitleTo(CreatureObject player, CreatureObject target);
 	
+	public native void sendGuildWarStatusTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
+	
+	public native void promptAddNewEnemy(CreatureObject player, GuildObject guild, SceneObject terminal);
+	
+	public native void toggleWarStatus(CreatureObject player, GuildObject guild, unsigned long guildoid);
+	
+	public native void declareWarByName(CreatureObject player, GuildObject guild, final string search);
+	
+	public native void updateWarStatusToWaringGuild(GuildObject guild, GuildObject waringGuild);
+	
 	public native void sendMemberPermissionsTo(CreatureObject player, unsigned long targetID, GuildTerminal guildTerminal);
 	
 	public native boolean validateGuildName(CreatureObject player, final string guildName);

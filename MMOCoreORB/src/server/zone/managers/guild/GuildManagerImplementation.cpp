@@ -16,6 +16,8 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/guild/UpdateWarStatusTask.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/guild/GuildMemberList.h"
@@ -37,6 +39,8 @@
 #include "server/zone/objects/guild/sui/GuildSponsorVerifySuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsoredListSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildSponsoredOptionsSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildWarEnemyNameSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildAddEnemySuiCallback.h"
 
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
@@ -1064,4 +1068,160 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdCh
 
 		chatManager->sendMail(guild->getGuildName(), subject, body, recipient->getFirstName());
 	}
+}
+
+void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GUILD_WAR_LIST);
+	listbox->setPromptTitle("@guild:enemies_title"); //Guild Enemies
+	listbox->setPromptText("@guild:enemies_prompt");
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+	listbox->setCallback(new GuildAddEnemySuiCallback(server, guild));
+
+	listbox->addMenuItem("@guild:add_enemy", 0); //Add New Enemy;
+
+	guild->wlock();
+	VectorMap<uint64, byte> waringGuilds = *guild->getWaringGuilds();
+	guild->unlock();
+
+	for (int i = 0; i < waringGuilds.size(); ++i) {
+		VectorMapEntry<uint64, byte>* entry = &waringGuilds.elementAt(i);
+
+		ManagedReference<SceneObject*> obj = server->getObject(entry->getKey());
+
+		if (obj == NULL || !obj->isGuildObject())
+			continue;
+
+		GuildObject* waringGuild = obj.castTo<GuildObject*>();
+
+		Locker _lock(waringGuild);
+
+		String listing;
+		listing += (char) entry->getValue();
+
+		listbox->addMenuItem(listing + " " + waringGuild->getGuildName() + " <" + waringGuild->getGuildAbbrev() + ">", entry->getKey());
+	}
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->addSuiBox(listbox);
+
+	player->sendMessage(listbox->generateMessage());
+}
+
+void GuildManagerImplementation::promptAddNewEnemy(CreatureObject* creature, GuildObject* guild, SceneObject* terminal) {
+	if (guild == NULL || !guild->hasWarPermission(creature->getObjectID())) {
+		creature->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> box = new SuiInputBox(creature, SuiWindowType::GUILD_WAR_ENTER_NAME);
+	box->setPromptTitle("@guild:war_enemy_name_title"); //Declare War
+	box->setPromptText("@guild:war_enemy_name_prompt"); //Enter a guild name or abbreviation to declare war upon.
+	box->setCancelButton(true, "@cancel");
+	box->setUsingObject(terminal);
+	box->setForceCloseDistance(16.f);
+	box->setCallback(new GuildWarEnemyNameSuiCallback(server, guild));
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->addSuiBox(box);
+
+	creature->sendMessage(box->generateMessage());
+}
+
+void GuildManagerImplementation::toggleWarStatus(CreatureObject* creature, GuildObject* guild, uint64 guildoid) {
+	if (guild == NULL || !guild->hasWarPermission(creature->getObjectID())) {
+		creature->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	ManagedReference<SceneObject*> obj = server->getObject(guildoid);
+
+	if (obj == NULL || !obj->isGuildObject())
+		return;
+
+	GuildObject* waringGuild = obj.castTo<GuildObject*>();
+
+	guild->wlock();
+
+	if (guild->hasDeclaredWarOn(guildoid)) {
+		//This means, that they have no mutual war
+		guild->setWarStatus(guildoid, GuildObject::WAR_NONE);
+		guild->unlock();
+
+		waringGuild->wlock();
+		waringGuild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
+		waringGuild->unlock();
+	} else if (guild->hasDeclaredWarBy(guildoid)) {
+		//They have received a war declaration, and are accepting it.
+		guild->setWarStatus(guildoid, GuildObject::WAR_MUTUAL);
+		guild->unlock();
+
+		waringGuild->wlock();
+		waringGuild->setWarStatus(guild->getObjectID(), GuildObject::WAR_MUTUAL);
+		waringGuild->unlock();
+
+		//Both guilds are now at war with each other, update everyone.
+		updateWarStatusToWaringGuild(guild, waringGuild);
+	} else if (guild->isAtWarWith(guildoid)) {
+		//Both guilds are at war, but this guild is rescinding their declaration.
+		guild->setWarStatus(guildoid, GuildObject::WAR_IN);
+		guild->unlock();
+
+		waringGuild->wlock();
+		waringGuild->setWarStatus(guild->getObjectID(), GuildObject::WAR_OUT);
+		waringGuild->unlock();
+
+		//Both guilds are no longer at war with each other, update everyone.
+		updateWarStatusToWaringGuild(guild, waringGuild);
+	} else {
+		//Neither guild is at war, but this guild is declaring.
+		guild->setWarStatus(guildoid, GuildObject::WAR_OUT);
+		guild->unlock();
+
+		waringGuild->wlock();
+		waringGuild->setWarStatus(guild->getObjectID(), GuildObject::WAR_IN);
+		waringGuild->unlock();
+	}
+}
+
+void GuildManagerImplementation::declareWarByName(CreatureObject* creature, GuildObject* guild, const String& search) {
+	ManagedReference<GuildObject*> waringGuild = guildList.get(search);
+
+	if (waringGuild == NULL) {
+		//Might have entered an abbreviation, so now, we gotta search every fucking guild
+		Locker _lock(_this.get());
+
+		for (int i = 0; i < guildList.size(); ++i) {
+			ManagedReference<GuildObject*> g = guildList.getValueAt(i);
+
+			if (g == NULL)
+				continue;
+
+			g->rlock();
+
+			if (g->getGuildAbbrev() == search) {
+				waringGuild = g;
+				g->runlock();
+				break;
+			}
+
+			g->runlock();
+		}
+	}
+
+	if (waringGuild == NULL) {
+		creature->sendSystemMessage("@guild:war_fail_no_such_guild"); //No guild found by that name.
+		return;
+	}
+
+	toggleWarStatus(creature, guild, waringGuild->getObjectID());
+}
+
+void GuildManagerImplementation::updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild) {
+	Reference<UpdateWarStatusTask*> task = new UpdateWarStatusTask(server, guild, waringGuild);
+	task->schedule(10);
 }

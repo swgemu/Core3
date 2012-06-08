@@ -2375,6 +2375,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 		return true;
 	}
 
+	if (guild != NULL && guild->isInWaringGuild(object))
+		return true;
+
 	return false;
 }
 
@@ -2409,6 +2412,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isInBountyMission(object, _this.get())) {
 		return true;
 	}
+
+	if (guild != NULL && guild->isInWaringGuild(object))
+		return true;
 
 	return false;
 }
