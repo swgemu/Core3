@@ -173,15 +173,15 @@ void DestroyMissionObjectiveImplementation::abort() {
 
 		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-		if (lairObject != NULL) {
-			ManagedReference<SceneObject*> lairH = lairObject.get();
+		ManagedReference<TangibleObject*> lair = lairObject;
 
-			Locker locker(lairObject);
+		if (lair != NULL) {
+			Locker locker(lair);
 
-			lairObject->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
-			lairObject->destroyObjectFromWorld(true);
+			lair->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+			lair->destroyObjectFromWorld(true);
 
-			lairObject = NULL;
+			lair = NULL;
 
 			dropObserver(observer, true);
 		}
