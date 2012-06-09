@@ -21,14 +21,15 @@ mos_taike_veteran_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_guard_old.iff"},
 	lootGroups = {},
-	weapons = {"imperial_weapons_heavy"},
+	weapons = {},
+	outfit = "mos_taike_guard_old_outfit",
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
 }

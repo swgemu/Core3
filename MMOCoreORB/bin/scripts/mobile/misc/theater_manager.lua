@@ -26,7 +26,7 @@ theater_manager = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_entertainer_trainer_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

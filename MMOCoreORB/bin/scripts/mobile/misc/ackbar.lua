@@ -1,5 +1,5 @@
 ackbar = Creature:new {
-	objectName = "@theme_park_name:ackbar",
+	objectName = "@theme_park_name:admiral_ackbar",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",

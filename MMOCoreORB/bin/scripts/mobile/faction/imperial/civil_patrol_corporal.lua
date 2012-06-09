@@ -26,7 +26,7 @@ civil_patrol_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",

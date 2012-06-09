@@ -25,7 +25,7 @@ general_otto = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = merge(riflemanmaster,carbineermaster)

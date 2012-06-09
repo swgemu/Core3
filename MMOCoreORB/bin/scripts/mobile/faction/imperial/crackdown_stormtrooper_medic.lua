@@ -26,7 +26,7 @@ crackdown_stormtrooper_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_medic_m.iff"},
 	lootGroups = {
 		{
 			groups = {

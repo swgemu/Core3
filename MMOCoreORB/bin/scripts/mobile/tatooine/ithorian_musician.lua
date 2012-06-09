@@ -1,6 +1,6 @@
 ithorian_musician = Creature:new {
 	objectName = "",
-	customname = "Mellaw Doowan",
+	customName = "Mellaw Doowan",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

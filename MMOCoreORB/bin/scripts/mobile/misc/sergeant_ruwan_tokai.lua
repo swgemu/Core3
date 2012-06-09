@@ -23,6 +23,7 @@ sergeant_ruwan_tokai = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 128
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_ruwan_tokai.iff"},

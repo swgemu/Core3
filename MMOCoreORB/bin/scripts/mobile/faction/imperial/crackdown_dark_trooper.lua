@@ -8,8 +8,8 @@ crackdown_dark_trooper = Creature:new {
 	damageMin = 305,
 	damageMax = 320,
 	baseXp = 3465,
-	baseHAM = 9000,
-	baseHAMmax = 10000,
+	baseHAM = 8600,
+	baseHAMmax = 10500,
 	armor = 0,
 	resists = {40,20,20,50,50,50,50,-1,-1},
 	meatType = "",
@@ -40,7 +40,7 @@ crackdown_dark_trooper = Creature:new {
 			lootChance = 4000000
 		}
 	},
-	weapons = {"crackdown_dark_trooper_weapons"},
+	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,carbineermaster)
 }

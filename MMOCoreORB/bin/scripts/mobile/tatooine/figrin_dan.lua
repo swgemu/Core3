@@ -31,6 +31,7 @@ figrin_dan = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	outfit = "band_kloo_horn_outfit",
 	attacks = {
 	}
 }

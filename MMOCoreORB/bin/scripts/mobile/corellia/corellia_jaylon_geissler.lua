@@ -1,4 +1,4 @@
-corellia_jonset = Creature:new {
+corellia_jaylon_geissler = Creature:new {
 	objectName = "@mob/creature_names:corellia_jaylon_geissler",
 	customName = "Jaylon Geissler",
 	socialGroup = "townsperson",
@@ -35,4 +35,4 @@ corellia_jonset = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(corellia_jonset, "corellia_jonset")
+CreatureTemplates:addCreatureTemplate(corellia_jaylon_geissler, "corellia_jaylon_geissler")

@@ -29,6 +29,7 @@ mos_taike_cantina_owner = Creature:new {
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
 	lootGroups = {},
 	weapons = {},
+	outfit = "stella_outfit",
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
 }

@@ -23,6 +23,7 @@ king_terak = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/king_terak.iff"},

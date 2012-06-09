@@ -23,6 +23,7 @@ qualdo_herm = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_qualdo_herm.iff"},

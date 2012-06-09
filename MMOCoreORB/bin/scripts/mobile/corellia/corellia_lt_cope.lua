@@ -29,7 +29,7 @@ corellia_lt_cope = Creature:new {
 
 	templates = {"object/mobile/dressed_corsec_captain_human_male_01.iff"},
 	lootGroups = {},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -88,9 +88,9 @@ object_weapon_melee_axe_axe_heavy_duty = object_weapon_melee_axe_shared_axe_heav
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "counterattack" },
 
-	defenderToughnessModifiers = { "onehandmelee_toughness" },
+	defenderToughnessModifiers = { "twohandmelee_toughness" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "twohandmelee_speed" },

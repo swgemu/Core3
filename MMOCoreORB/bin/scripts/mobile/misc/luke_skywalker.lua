@@ -28,7 +28,7 @@ luke_skywalker = Creature:new {
 
 	templates = {"object/mobile/dressed_luke_skywalker.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"luke_skywalker_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

@@ -27,7 +27,7 @@ thracken_sal_solo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_noble_old_human_male_02.iff"},
+	templates = {"object/mobile/mos_taike_mayor.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
