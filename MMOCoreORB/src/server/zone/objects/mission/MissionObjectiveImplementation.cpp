@@ -181,6 +181,8 @@ void MissionObjectiveImplementation::awardReward() {
 		players.add(owner);
 	}
 
+	locker.release();
+
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	int dividedReward = mission->getRewardCredits() / players.size();
@@ -191,7 +193,7 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
-		Locker lockerPl(player, owner);
+		Locker lockerPl(player);
 		player->addBankCredits(dividedReward, true);
 	}
 }
