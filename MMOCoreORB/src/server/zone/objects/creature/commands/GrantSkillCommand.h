@@ -79,8 +79,27 @@ public:
 
 		SkillManager* skillManager = SkillManager::instance();
 		skillManager->surrenderSkill(arguments.toString(), targetCreature, true);
-		skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true);
+		bool skillGranted = skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true);
 
+		if (skillGranted) {
+			StringIdChatParameter params;
+			params.setTO(arguments.toString());
+			params.setStringId("skill_teacher", "skill_terminal_grant");
+
+			targetCreature->sendSystemMessage(params);
+
+			creature->sendSystemMessage("Granted skill " + arguments.toString()
+					+ "to " + targetCreature->getFirstName());
+		} else {
+			StringIdChatParameter params;
+			params.setTO(arguments.toString());
+			params.setStringId("skill_teacher", "prose_train_failed");
+
+			targetCreature->sendSystemMessage(params);
+
+			creature->sendSystemMessage("Failed to grant skill " + arguments.toString()
+					+ "to " + targetCreature->getFirstName());
+		}
 		return SUCCESS;
 	}
 
