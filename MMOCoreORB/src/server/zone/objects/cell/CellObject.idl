@@ -48,6 +48,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.Zone;
+include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.templates.SharedObjectTemplate;
 
 class CellObject extends SceneObject {
@@ -65,6 +66,12 @@ class CellObject extends SceneObject {
 	
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public void setAllowEntryPermissionGroup(final string group) {
+		super.setContainerInheritPermissionsFromParent(false);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+		super.setContainerAllowPermission(group, ContainerPermissions.MOVEIN);
+	}
 	
 	/**
 	 * Gets called when this objects is loaded from database

@@ -542,9 +542,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
 	SortedVector<String>* getPermissionGroups();
 
@@ -1191,9 +1191,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
 	SortedVector<String>* getPermissionGroups();
 
@@ -1654,9 +1654,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
 
 	bool isFirstIncapacitationExpired();
 

@@ -12,7 +12,7 @@
  *	CellObjectStub
  */
 
-enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+enum {RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
@@ -37,6 +37,20 @@ void CellObject::loadTemplateData(SharedObjectTemplate* templateData) {
 
 	} else
 		_implementation->loadTemplateData(templateData);
+}
+
+void CellObject::setAllowEntryPermissionGroup(const String& group) {
+	CellObjectImplementation* _implementation = static_cast<CellObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_);
+		method.addAsciiParameter(group);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAllowEntryPermissionGroup(group);
 }
 
 void CellObject::notifyLoadFromDatabase() {
@@ -353,6 +367,15 @@ CellObjectImplementation::CellObjectImplementation() {
 	currentNumberOfItems = 0;
 }
 
+void CellObjectImplementation::setAllowEntryPermissionGroup(const String& group) {
+	// server/zone/objects/cell/CellObject.idl():  		super.setContainerInheritPermissionsFromParent(false);
+	SceneObjectImplementation::setContainerInheritPermissionsFromParent(false);
+	// server/zone/objects/cell/CellObject.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
+	SceneObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN);
+	// server/zone/objects/cell/CellObject.idl():  		super.setContainerAllowPermission(group, ContainerPermissions.MOVEIN);
+	SceneObjectImplementation::setContainerAllowPermission(group, ContainerPermissions::MOVEIN);
+}
+
 int CellObjectImplementation::getCellNumber() {
 	// server/zone/objects/cell/CellObject.idl():  		return cellNumber;
 	return cellNumber;
@@ -383,6 +406,12 @@ void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_:
+		{
+			String group; 
+			setAllowEntryPermissionGroup(inv->getAsciiParameter(group));
+		}
+		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		{
 			notifyLoadFromDatabase();
@@ -442,6 +471,10 @@ void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	default:
 		throw Exception("Method does not exists");
 	}
+}
+
+void CellObjectAdapter::setAllowEntryPermissionGroup(const String& group) {
+	(static_cast<CellObject*>(stub))->setAllowEntryPermissionGroup(group);
 }
 
 void CellObjectAdapter::notifyLoadFromDatabase() {

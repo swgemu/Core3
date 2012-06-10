@@ -235,6 +235,16 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
 			return;
 
+		ContainerPermissions* perms = newParent->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent()) {
+			if (!newParent->checkContainerPermission(object, ContainerPermissions::MOVEIN)) {
+				bounceBack(object, pos);
+
+				return;
+			}
+		}
+
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);

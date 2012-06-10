@@ -33,6 +33,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "server/zone/objects/scene/variables/ContainerPermissions.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -49,6 +51,8 @@ public:
 	CellObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void setAllowEntryPermissionGroup(const String& group);
 
 	void notifyLoadFromDatabase();
 
@@ -108,6 +112,8 @@ public:
 	CellObjectImplementation(DummyConstructorParameter* param);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void setAllowEntryPermissionGroup(const String& group);
 
 	void notifyLoadFromDatabase();
 
@@ -173,6 +179,8 @@ public:
 	CellObjectAdapter(CellObject* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void setAllowEntryPermissionGroup(const String& group);
 
 	void notifyLoadFromDatabase();
 

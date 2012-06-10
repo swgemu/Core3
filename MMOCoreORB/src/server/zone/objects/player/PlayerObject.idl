@@ -839,13 +839,9 @@ class PlayerObject extends IntangibleObject {
 		suiBoxes.put(key, sui);
 	}
 	
-	public void addPermissionGroup(final string group) {
-		permissionGroups.put(group);
-	}
+	public native void addPermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
 	
-	public void removePermissionGroup(final string group) {
-		permissionGroups.drop(group);
-	}
+	public native void removePermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
 	
 	@local
 	public SortedVector<string> getPermissionGroups() {

@@ -32,6 +32,8 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 
@@ -39,7 +41,7 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("BuildingObject");
-
+	
 	updatePaidAccessList();
 }
 
@@ -151,6 +153,17 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		ContainerPermissions* perms = cell->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent()) {
+			CreatureObject* creo = cast<CreatureObject*>(player);
+
+			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::MOVEIN)) {
+				BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
+				player->sendMessage(perm);
+			}
+		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* containerObject = cell->getContainerObject(j);
@@ -509,8 +522,15 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
-		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-		creature->sendMessage(perm);
+		ContainerPermissions* perms = cell->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent() && !cell->checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
+			creature->sendMessage(perm);
+		} else {
+			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+			creature->sendMessage(perm);
+		}
 	}
 }
 
@@ -535,7 +555,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		return;
 
 	int i = 0;
-
+	
 	addTemplateSkillMods(player);
 
 	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
