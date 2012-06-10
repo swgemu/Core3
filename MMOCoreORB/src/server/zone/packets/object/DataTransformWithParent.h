@@ -229,12 +229,6 @@ public:
 			return;
 		}
 
-		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
-			return;
-
-		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
-			return;
-
 		ContainerPermissions* perms = newParent->getContainerPermissions();
 
 		if (!perms->hasInheritPermissionsFromParent()) {
@@ -244,6 +238,12 @@ public:
 				return;
 			}
 		}
+
+		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
+			return;
+
+		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, newParent) != 0)
+			return;
 
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
