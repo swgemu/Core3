@@ -18,6 +18,8 @@
 void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
+	return;
+
 	if(!sceneObject->isVendor())
 		return;
 
@@ -73,6 +75,8 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		CreatureObject* player, byte selectedID) {
+
+	return 0;
 
 	if (!sceneObject->isVendor())
 		return 0;

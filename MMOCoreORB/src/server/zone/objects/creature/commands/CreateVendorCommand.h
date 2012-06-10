@@ -60,6 +60,8 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+		return 0;
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 

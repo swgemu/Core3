@@ -54,8 +54,8 @@ public:
 			vendorRegion = cityRegion->getRegionName();
 
 
-		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion, 0);
-		client->sendMessage(msg);
+		//IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion, 0);
+		//client->sendMessage(msg);
 
 	}
 };

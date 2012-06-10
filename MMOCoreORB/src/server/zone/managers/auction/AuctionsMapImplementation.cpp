@@ -29,7 +29,6 @@ int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, A
 		SortedVector<ManagedReference<AuctionItem*> >* items = new SortedVector<ManagedReference<AuctionItem*> >();
 		items->setNoDuplicateInsertPlan();
 		vendorItemsForSale.put(uid, items);
-System::out << uid << "\n" << endl;
 	}
 
 	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = vendorItemsForSale.get(uid);
@@ -58,7 +57,7 @@ int AuctionsMapImplementation::addBazaarItem(String& uid, AuctionItem* item) {
 		items->setNoDuplicateInsertPlan();
 		bazaarItemsForSale.put(uid, items);
 	}
-System::out << uid << "\n" << endl;
+
 	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = bazaarItemsForSale.get(uid);
 
 	if(bazaarItems == NULL)
@@ -112,7 +111,7 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBaz
 		lowerbound = bazaarItemsForSale.lowerBound(search);
 		upperbound = bazaarItemsForSale.upperBound(search);
 	}
-System::out << "Search: " << search << "\n" << endl;
+
 	SortedVector<ManagedReference<AuctionItem* > > results;
 
 	if(lowerbound == -1 || upperbound == -1)
