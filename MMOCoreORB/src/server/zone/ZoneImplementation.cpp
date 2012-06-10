@@ -54,7 +54,6 @@ which carries forward this exception.
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 
-#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
@@ -385,51 +384,6 @@ void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
 	player->sendMessage(gmlr);
 }
 
-CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObject* creature) {
-	ManagedReference<CloningBuildingObject*> cloning = NULL;
-
-#ifndef WITH_STM
-	mapLocations->rlock();
-#endif
-	try {
-		//cloning type 5
-
-		int index = mapLocations->findLocation("cloningfacility");
-
-		float distance = 16000.f;
-
-		if (index != -1) {
-			SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(index);
-
-			for (int i = 0; i < sortedVector.size(); ++i) {
-				SceneObject* object = sortedVector.get(i).getObject();
-
-				if (object->isCloningBuildingObject()) {
-					float objDistance = object->getDistanceTo(creature);
-
-					if (objDistance < distance) {
-						cloning = cast<CloningBuildingObject*>( object);
-						distance = objDistance;
-					}
-				}
-			}
-
-		}
-	} catch (...) {
-#ifndef WITH_STM
-		mapLocations->runlock();
-#endif
-
-		throw;
-	}
-
-#ifndef WITH_STM
-	mapLocations->runlock();
-#endif
-
-	return cloning.get();
-}
-
 SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	ManagedReference<SceneObject*> planetaryObject = NULL;
 
@@ -437,39 +391,24 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 	mapLocations->rlock();
 #endif
 
-	try {
-		//cloning type 5
-
-		int index = mapLocations->findLocation(mapObjectLocationType);
-
-		float distance = 16000.f;
-
-		if (index != -1) {
-			SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(index);
-
-			for (int i = 0; i < sortedVector.size(); ++i) {
-				SceneObject* vectorObject = sortedVector.get(i).getObject();
-
-				float objDistance = vectorObject->getDistanceTo(object);
-
-				if (objDistance < distance) {
-					planetaryObject = vectorObject;
-					distance = objDistance;
-				}
-			}
-
-		}
-	} catch (...) {
-#ifndef WITH_STM
-		mapLocations->runlock();
-#endif
-
-		throw;
-	}
+	SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapObjectLocationType);
 
 #ifndef WITH_STM
 	mapLocations->runlock();
 #endif
+
+	float distance = 16000.f;
+
+	for (int i = 0; i < sortedVector.size(); ++i) {
+		SceneObject* obj = sortedVector.get(i).getObject();
+
+		float objDistance = object->getDistanceTo(obj);
+
+		if (objDistance < distance) {
+			planetaryObject = obj;
+			distance = objDistance;
+		}
+	}
 	return planetaryObject.get();
 }
 

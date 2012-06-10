@@ -22,8 +22,6 @@
 
 #include "server/zone/managers/minigames/ForageManager.h"
 
-#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/region/CityRegion.h"
@@ -32,7 +30,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -61,20 +59,6 @@ void Zone::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
-}
-
-CloningBuildingObject* Zone::getNearestCloningBuilding(CreatureObject* creature) {
-	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_);
-		method.addObjectParameter(creature);
-
-		return static_cast<CloningBuildingObject*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getNearestCloningBuilding(creature);
 }
 
 SceneObject* Zone::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
@@ -774,11 +758,6 @@ void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			finalize();
 		}
 		break;
-	case RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_:
-		{
-			resp->insertLong(getNearestCloningBuilding(static_cast<CreatureObject*>(inv->getObjectParameter()))->_getObjectID());
-		}
-		break;
 	case RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_:
 		{
 			String mapObjectLocationType; 
@@ -926,10 +905,6 @@ void ZoneAdapter::initializeTransientMembers() {
 
 void ZoneAdapter::finalize() {
 	(static_cast<Zone*>(stub))->finalize();
-}
-
-CloningBuildingObject* ZoneAdapter::getNearestCloningBuilding(CreatureObject* creature) {
-	return (static_cast<Zone*>(stub))->getNearestCloningBuilding(creature);
 }
 
 SceneObject* ZoneAdapter::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {

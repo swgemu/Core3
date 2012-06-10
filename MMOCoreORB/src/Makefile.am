@@ -186,7 +186,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/installation/generator/GeneratorObject.cpp \
 				server/zone/objects/installation/harvester/HarvesterObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
-				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
 				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
 				server/zone/objects/building/travel/TravelBuildingObject.cpp \

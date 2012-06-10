@@ -42,7 +42,6 @@
 
 
 object_building_naboo_cloning_facility_naboo = object_building_naboo_shared_cloning_facility_naboo:new {
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 
 

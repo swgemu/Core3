@@ -44,7 +44,6 @@
 object_building_player_city_cloning_naboo = object_building_player_city_shared_cloning_naboo:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 5,

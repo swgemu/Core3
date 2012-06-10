@@ -23,7 +23,7 @@ max_rebo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/max_rebo.iff"},

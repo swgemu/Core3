@@ -44,7 +44,6 @@
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
-#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 #include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"

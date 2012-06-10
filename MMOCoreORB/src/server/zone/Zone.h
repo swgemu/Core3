@@ -136,22 +136,6 @@ using namespace server::zone::managers::minigames;
 namespace server {
 namespace zone {
 namespace objects {
-namespace building {
-namespace cloning {
-
-class CloningBuildingObject;
-
-} // namespace cloning
-} // namespace building
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::building::cloning;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -217,8 +201,6 @@ public:
 	Zone(ZoneProcessServer* processor, const String& zoneName);
 
 	void initializeTransientMembers();
-
-	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
@@ -352,8 +334,6 @@ public:
 
 	void finalize();
 
-	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
-
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
 	void initializePrivateData();
@@ -470,8 +450,6 @@ public:
 	void initializeTransientMembers();
 
 	void finalize();
-
-	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 

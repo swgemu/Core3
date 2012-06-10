@@ -42,7 +42,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
+#include "server/zone/templates/tangible/CloningBuildingObjectTemplate.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -52,6 +52,8 @@
 #include "server/zone/objects/player/events/MeditateTask.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
+
+#include "server/zone/objects/building/cloning/CloneSpawnPoint.h"
 
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -70,6 +72,7 @@
 #include "server/zone/packets/trade/TradeCompleteMessage.h"
 #include "server/zone/packets/trade/GiveMoneyMessage.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
@@ -919,62 +922,53 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	PlayerObject* ghost = player->getPlayerObject();
 
+	if (ghost == NULL)
+		return;
+
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST);
 	ghost->removeSuiBoxType(SuiWindowType::CLONE_REQUEST_DECAY);
 
-	ManagedReference<SuiListBox*> cloneMenu;
+	ManagedReference<SuiListBox*> cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);
+	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer(), typeofdeath));
+	cloneMenu->setPromptTitle("@base_player:revive_title");
 
+	/*
 	if (typeofdeath == 1) {
 		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST);//no decay - GM command, deathblow or factional death
 	} else if (typeofdeath == 0) {
 		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_DECAY);
 	} else if (ghost->getFactionStatus() == FactionStatus::OVERT) {//TODO: Do proper check if faction death
 		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_FACTIONAL);
-	}
+	}*/
 
-	cloneMenu->setPromptTitle("@base_player:revive_title");
-
-	CloningBuildingObject* closestCloning = zone->getNearestCloningBuilding(player);
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
-
-	if (closestCloning == NULL)//TODO: Add default location so people don't get stuck
-		return;
+	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
+	ManagedReference<SceneObject*> preDesignatedFacility = ghost->getCloningFacility().get().get();
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
-	String closestName;
+	String closestName = "None";
+	String predesignatedName = "None";
 
-	int x = closestCloning->getPositionX();
-	int y = closestCloning->getPositionY();
+	//Get the name of the closest
+	if (closestCloning != NULL) {
+		ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
 
-	CityRegion* cr = planetManager->getRegionAt(x, y);
-
-	if (cr != NULL) {
-		closestName = cr->getRegionName();
-	} else {
-		if (zone->getZoneName() == "tutorial") {
-			closestName = "Aboard a Space Station";
-		} else {
+		if (cr != NULL)
+			closestName = cr->getRegionName();
+		else
 			closestName = closestCloning->getDisplayedName();
-		}
 	}
 
-	String predesignatedName;
+	//Get the name of the predesignated
+	if (preDesignatedFacility != NULL) {
+		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion();
 
-	if (preDesignatedFacility == NULL) {
-		predesignatedName == "None";
-	} else {
-		cr = planetManager->getRegionAt(preDesignatedFacility->getPositionX(), preDesignatedFacility->getPositionY());
 		if (cr != NULL)
 			predesignatedName = cr->getRegionName();
 		else
 			predesignatedName = preDesignatedFacility->getDisplayedName();
 	}
 
-	if (predesignatedName == "")
-		predesignatedName = "None";
-
-	//TODO: Integrate this menu with cloning system.
 	StringBuffer promptText;
 	promptText << "@base_player:revive_closest : " << closestName << "\n"
 			<< "@base_player:revive_bind : " << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
@@ -982,32 +976,28 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			<< "Select the desired option and click OK.";
 
 	cloneMenu->setPromptText(promptText.toString());
-	cloneMenu->setCallback(new CloningRequestSuiCallback(player->getZoneServer()));
-	cloneMenu->addMenuItem("@base_player:revive_closest", closestCloning->getObjectID());
 
-	//TODO: Add force shrine locations for force sensitives
+	if (closestCloning != NULL)
+		cloneMenu->addMenuItem("@base_player:revive_closest", closestCloning->getObjectID());
 
-	//Check if predesignated is on this planet or not.
-	Zone* facilityZone = NULL;
-	if (preDesignatedFacility != NULL && (facilityZone = preDesignatedFacility->getZone()) != NULL && facilityZone->getZoneName() == zone->getZoneName())
+	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone() == zone)
 		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
 
 	// Adding major ones
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
 
-	if (locations.size() != 0) {
-		for (int j = 0; j < locations.size(); j++) {
-			ManagedReference<SceneObject*> location = locations.get(j);
+	for (int j = 0; j < locations.size(); j++) {
+		ManagedReference<SceneObject*> location = locations.get(j);
 
-			if (location != NULL && location->isCloningBuildingObject() && location != preDesignatedFacility && location != closestCloning) {
-				//CloningBuildingObject* cbo = dynamic_cast<CloningBuildingObject*>location;
-				CityRegion* cr = planetManager->getRegionAt(location->getPositionX(), location->getPositionY());
-				if (cr != NULL)
-					cloneMenu->addMenuItem(cr->getRegionName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
-				else
-					cloneMenu->addMenuItem(location->getDisplayedName() + " (" + String::valueOf((int)player->getDistanceTo(location)) + "m)", location->getObjectID());
-			}
-		}
+		if (location == NULL || location == closestCloning || location == preDesignatedFacility)
+			continue;
+
+		ManagedReference<CityRegion*> cr = location->getCityRegion();
+
+		if (cr != NULL)
+			cloneMenu->addMenuItem(cr->getRegionName() + " (" + String::valueOf((int) player->getDistanceTo(location)) + "m)", location->getObjectID());
+		else
+			cloneMenu->addMenuItem(location->getDisplayedName() + " (" + String::valueOf((int) player->getDistanceTo(location)) + "m)", location->getObjectID());
 	}
 
 	ghost->addSuiBox(cloneMenu);
@@ -1020,49 +1010,47 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	info("entering sendPlayerToCloner");
 
 	if (cloner == NULL) {
-		error("cloner is null");
-		return;
-	}
-
-	if (!cloner->isCloningBuildingObject()) {
-		error("cloner is not cloner building");
+		error("Cloning structure is null");
 		return;
 	}
 
 	PlayerObject* ghost = player->getPlayerObject();
-	CloningBuildingObject* cloningBuilding = cast<CloningBuildingObject*>( cloner.get());
 
-	CloneSpawnPoint* clonePoint = cloningBuilding->getRandomSpawnPoint();
+	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(cloner->getObjectTemplate());
+
+	if (cbot == NULL) {
+		error("Not a cloning building template.");
+		return;
+	}
+
+	BuildingObject* cloningBuilding = cloner.castTo<BuildingObject*>();
+
+	CloneSpawnPoint* clonePoint = cbot->getRandomSpawnPoint();
 
 	if (clonePoint == NULL) {
 		error("clone point null");
 		return;
 	}
 
-	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE) {
-		ghost->setFactionStatus(FactionStatus::ONLEAVE); // TODO: setting this to onleave untill we have factional cloners
-	}
-
 	Coordinate* coordinate = clonePoint->getCoordinate();
 	Quaternion* direction = clonePoint->getDirection();
+
 	int cellID = clonePoint->getCellID();
 
 	SceneObject* cell = cloningBuilding->getCell(cellID);
 
 	if (cell == NULL) {
 		StringBuffer msg;
-		msg << "null cell for cellID " << cellID << " in building: " << cloningBuilding->getObjectTemplate()->getFullTemplateString();
+		msg << "null cell for cellID " << cellID << " in building: " << cbot->getFullTemplateString();
 		error(msg.toString());
 		return;
 	}
 
 	Zone* zone = player->getZone();
 
-	ManagedReference<SceneObject*> parent = player->getParent();
-
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
-	CloningBuildingObject* preDesignatedFacility = cast<CloningBuildingObject*>(ghost->getCloningFacility().get().get());
+	ManagedReference<SceneObject*> preDesignatedFacility = ghost->getCloningFacility().get().get();
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
 		// bind removed
@@ -1077,10 +1065,13 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->addShockWounds(100, true);
 
-	// Decay
-	if (typeofdeath == 0 /*|| (typeofdeath == 2 && cloningBuilding-> ADD FACTION CHECK FOR CLONING HERE )*/) {
+	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+		ghost->setFactionStatus(FactionStatus::ONLEAVE);
 
+	// Decay
+	if (typeofdeath == 0) {
 		SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);
+
 		for (int i = 0; i < insurableItems.size(); i++) {
 			SceneObject* item = insurableItems.get(i);
 
@@ -1091,8 +1082,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 					//1% Decay for insured items
 					obj->inflictDamage(obj, 0, 0.01 * obj->getMaxCondition(), true, true);
 					//Set uninsured
-					uint32 bitmask = obj->getOptionsBitmask();
-					bitmask -= OptionBitmask::INSURED;
+					uint32 bitmask = obj->getOptionsBitmask() - OptionBitmask::INSURED;
 					obj->setOptionsBitmask(bitmask);
 				} else {
 					//5% Decay for uninsured items
@@ -1108,9 +1098,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
 	// Jedi experience loss.
-	if (ghost->getJediState() > 1) {
+	if (ghost->getJediState() > 1)
 		awardExperience(player, "jedi_general", -200000, true);
-	}
 }
 
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {

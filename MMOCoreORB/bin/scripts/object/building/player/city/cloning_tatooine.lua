@@ -47,7 +47,6 @@ object_building_player_city_cloning_tatooine = object_building_player_city_share
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 	cityRankRequired = 3,
 	limitToOnePerCity = 1,

@@ -42,7 +42,6 @@
 
 
 object_building_tatooine_cloning_facility_tatooine = object_building_tatooine_shared_cloning_facility_tatooine:new {
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 
 

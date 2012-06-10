@@ -44,7 +44,6 @@ public:
 	const static int TUTORIALBUILDING = 0x204;
 	const static int HOSPITALBUILDING = 0x205;
 	const static int RECREATIONBUILDING = 0x206;
-	const static int CLONINGBUILDING = 0x207;
 	const static int TRAVELBUILDING = 0x208;
 	const static int STARPORTBUILDING = 0x209;
 	const static int CAPITOLBUILDING = 0x20A;
