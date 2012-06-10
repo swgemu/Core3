@@ -24,7 +24,7 @@
  *	VendorTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__,RPC_ISNOTRADE__};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -164,6 +164,28 @@ bool VendorTerminal::isVendorTerminal() {
 		return _implementation->isVendorTerminal();
 }
 
+CityRegion* VendorTerminal::getCityRegion() {
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCityRegion();
+}
+
+bool VendorTerminal::isNoTrade() {
+	VendorTerminalImplementation* _implementation = static_cast<VendorTerminalImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISNOTRADE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isNoTrade();
+}
+
 DistributedObjectServant* VendorTerminal::_getImplementation() {
 
 	_updated = true;
@@ -202,39 +224,39 @@ void VendorTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VendorTerminalImplementation::_getStub() {
-	return _this.get();
+	return _this;
 }
 
 VendorTerminalImplementation::operator const VendorTerminal*() {
-	return _this.get();
+	return _this;
 }
 
 void VendorTerminalImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this->lock(doLock);
 }
 
 void VendorTerminalImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this->lock(obj);
 }
 
 void VendorTerminalImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this->rlock(doLock);
 }
 
 void VendorTerminalImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this->wlock(doLock);
 }
 
 void VendorTerminalImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this->wlock(obj);
 }
 
 void VendorTerminalImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this->unlock(doLock);
 }
 
 void VendorTerminalImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this->runlock(doLock);
 }
 
 void VendorTerminalImplementation::_serializationHelperMethod() {
@@ -305,8 +327,6 @@ VendorTerminalImplementation::VendorTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		Logger.setLoggingName("VendorTerminal");
 	Logger::setLoggingName("VendorTerminal");
-	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		storedOid = 0;
-	storedOid = 0;
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	TerminalImplementation::getContainerPermissions()->setInheritPermissionsFromParent(false);
 }
@@ -327,6 +347,16 @@ bool VendorTerminalImplementation::isVendor() {
 }
 
 bool VendorTerminalImplementation::isVendorTerminal() {
+	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		return true;
+	return true;
+}
+
+CityRegion* VendorTerminalImplementation::getCityRegion() {
+	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  			return super.cityRegion;
+	return TerminalImplementation::cityRegion.getForUpdate();
+}
+
+bool VendorTerminalImplementation::isNoTrade() {
 	// server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl():  		return true;
 	return true;
 }
@@ -386,6 +416,11 @@ void VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(isVendorTerminal());
 		}
 		break;
+	case RPC_ISNOTRADE__:
+		{
+			resp->insertBoolean(isNoTrade());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -421,6 +456,10 @@ bool VendorTerminalAdapter::isVendor() {
 
 bool VendorTerminalAdapter::isVendorTerminal() {
 	return (static_cast<VendorTerminal*>(stub))->isVendorTerminal();
+}
+
+bool VendorTerminalAdapter::isNoTrade() {
+	return (static_cast<VendorTerminal*>(stub))->isNoTrade();
 }
 
 /*

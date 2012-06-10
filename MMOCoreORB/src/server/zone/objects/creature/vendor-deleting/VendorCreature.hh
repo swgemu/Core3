@@ -63,13 +63,9 @@ class VendorCreature extends CreatureObject {
 
 	@dereferenced
 	protected Vendor vendor;
-	
-	protected transient unsigned long storedOid;
 
 	public VendorCreature() {
 		Logger.setLoggingName("VendorCreature");
-		
-		storedOid = 0;
 	
 		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 
@@ -145,6 +141,10 @@ class VendorCreature extends CreatureObject {
 	}
 
 	public abstract boolean isVendorCreature() {
+		return true;
+	}
+	
+	public boolean isNoTrade() {
 		return true;
 	}
 }

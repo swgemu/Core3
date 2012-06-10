@@ -1488,19 +1488,30 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
-	SceneObject* inventory = player->getSlottedObject("inventory");
-	ManagedReference<SceneObject*> inventoryObject = inventory->getContainerObject(itemID);
+	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
 
-	if (inventoryObject == NULL) {
+	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
+			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVEOUT)) {
 		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
 	}
 
-	tradeContainer->addTradeItem(inventoryObject);
+	if (objectToTrade->isNoTrade()) {
+		player->sendSystemMessage("@container_error_message:container26");
+		handleAbortTradeMessage(player);
+		return;
+	}
 
+	if(objectToTrade->isControlDevice()) {
+		cast<ControlDevice*>(objectToTrade.get())->storeObject(player);
+	}
+
+	tradeContainer->addTradeItem(objectToTrade);
+
+	SceneObject* inventory = player->getSlottedObject("inventory");
 	inventory->sendWithoutContainerObjectsTo(receiver);
-	inventoryObject->sendTo(receiver, true);
+	objectToTrade->sendTo(receiver, true);
 
 	AddItemMessage* msg = new AddItemMessage(itemID);
 	receiver->sendMessage(msg);
@@ -1594,38 +1605,102 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 	SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
 
-	if (receiverInventory->getContainerObjectsSize() + tradeContainer->getTradeSize() >= receiverInventory->getContainerVolumeLimit()) {
-		player->sendSystemMessage("@container_error_message:container19");
-		receiver->sendSystemMessage("@container_error_message:container19");
-		return false;
-	}
+	SceneObject* playerDatapad = player->getSlottedObject("datapad");
+	SceneObject* receiverDatapad = receiver->getSlottedObject("datapad");
 
-	if (playerInventory->getContainerObjectsSize() + receiverContainer->getTradeSize() >= playerInventory->getContainerVolumeLimit()) {
-		player->sendSystemMessage("@container_error_message:container19");
-		receiver->sendSystemMessage("@container_error_message:container19");
-		return false;
-	}
+	int playerTanos = 0;
+	int playerItnos = 0;
+	int recieverTanos = 0;
+	int recieverItnos = 0;
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
 
-		String err;
-		if (receiverInventory->canAddObject(scene, -1, err) != 0)
+		if(scene->isNoTrade())
 			return false;
 
-		if (!playerInventory->hasObjectInContainer(scene->getObjectID()))
+		if(scene->isTangibleObject()) {
+
+			String err;
+			if (receiverInventory->canAddObject(scene, -1, err) != 0)
+				return false;
+
+			if (!playerInventory->hasObjectInContainer(scene->getObjectID()))
+				return false;
+
+			recieverTanos++;
+
+		} else if(scene->isIntangibleObject()) {
+
+			String err;
+			if (receiverDatapad->canAddObject(scene, -1, err) != 0)
+				return false;
+
+			if (!playerDatapad->hasObjectInContainer(scene->getObjectID()))
+				return false;
+
+			recieverItnos++;
+
+		} else {
 			return false;
+		}
 	}
 
 	for (int i = 0; i < receiverContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = receiverContainer->getTradeItem(i);
 
-		String err;
-		if (playerInventory->canAddObject(scene, -1, err) != 0)
+		if(scene->isNoTrade())
 			return false;
 
-		if (!receiverInventory->hasObjectInContainer(scene->getObjectID()))
+		if(scene->isTangibleObject()) {
+
+			String err;
+			if (playerInventory->canAddObject(scene, -1, err) != 0)
+				return false;
+
+			if (!receiverInventory->hasObjectInContainer(scene->getObjectID()))
+				return false;
+
+			playerTanos++;
+
+		} else if(scene->isIntangibleObject()) {
+
+			String err;
+			if (playerDatapad->canAddObject(scene, -1, err) != 0)
+				return false;
+
+			if (!receiverDatapad->hasObjectInContainer(scene->getObjectID()))
+				return false;
+
+			playerItnos++;
+
+		} else {
 			return false;
+		}
+	}
+
+	if (receiverInventory->getContainerObjectsSize() + recieverTanos >= receiverInventory->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
+		return false;
+	}
+
+	if (playerInventory->getContainerObjectsSize() + playerTanos >= playerInventory->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
+		return false;
+	}
+
+	if (receiverDatapad->getContainerObjectsSize() + recieverItnos >= receiverDatapad->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
+		return false;
+	}
+
+	if (playerDatapad->getContainerObjectsSize() + playerItnos >= playerDatapad->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@container_error_message:container19");
+		receiver->sendSystemMessage("@container_error_message:container19");
+		return false;
 	}
 
 	int playerMoneyToTrade = tradeContainer->getMoneyToTrade();
@@ -1692,21 +1767,33 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 
 		if (receiverTradeContainer->hasVerifiedTrade()) {
 			SceneObject* receiverInventory = receiver->getSlottedObject("inventory");
+			SceneObject* receiverDatapad = receiver->getSlottedObject("datapad");
 
 			for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 				ManagedReference<SceneObject*> item = tradeContainer->getTradeItem(i);
 
-				if (objectController->transferObject(item, receiverInventory, -1, true))
-					item->sendDestroyTo(player);
+				if(item->isTangibleObject()) {
+					if (objectController->transferObject(item, receiverInventory, -1, true))
+						item->sendDestroyTo(player);
+				} else {
+					if (objectController->transferObject(item, receiverDatapad, -1, true))
+						item->sendDestroyTo(player);
+				}
 			}
 
 			SceneObject* playerInventory = player->getSlottedObject("inventory");
+			SceneObject* playerDatapad = player->getSlottedObject("datapad");
 
 			for (int i = 0; i < receiverTradeContainer->getTradeSize(); ++i) {
 				ManagedReference<SceneObject*> item = receiverTradeContainer->getTradeItem(i);
 
-				if (objectController->transferObject(item, playerInventory, -1, true))
-					item->sendDestroyTo(receiver);
+				if(item->isTangibleObject()) {
+					if (objectController->transferObject(item, playerInventory, -1, true))
+						item->sendDestroyTo(receiver);
+				} else {
+					if (objectController->transferObject(item, playerDatapad, -1, true))
+						item->sendDestroyTo(receiver);
+				}
 			}
 
 			uint32 giveMoney = tradeContainer->getMoneyToTrade();

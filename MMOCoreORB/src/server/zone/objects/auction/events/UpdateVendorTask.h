@@ -42,26 +42,12 @@
  which carries forward this exception.
  */
 
-#ifndef VENDORCHECKTASK_H_
-#define VENDORCHECKTASK_H_
+#ifndef UPDATEVENDORTASK_H_
+#define UPDATEVENDORTASK_H_
 
 #include "engine/engine.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/objects/scene/SceneObject.h"
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace auction {
-
-class Vendor;
-
-}
-}
-}
-}
-
-using namespace server::zone::objects::auction;
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 namespace server {
 namespace zone {
@@ -69,26 +55,35 @@ namespace objects {
 namespace auction {
 namespace events {
 
-class VendorCheckTask: public Task {
+class UpdateVendorTask: public Task {
 protected:
-	ManagedReference<SceneObject*> vendorObj;
+	ManagedReference<TangibleObject*> vendor;
 
 public:
-	VendorCheckTask(SceneObject* vndr) {
-		vendorObj = vndr;
+	UpdateVendorTask(TangibleObject* vndr) {
+		vendor = vndr;
+
 	}
 
-	VendorCheckTask(const VendorCheckTask& v) : Object(), Task() {
-		vendorObj = v.vendorObj;
+	void run() {
+
+		if (vendor == NULL || vendor->isBazaarTerminal())
+			return;
+
+		Locker locker(vendor);
+
+		DataObjectComponentReference* data = vendor->getDataObjectComponent();
+		if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+			return;
+		}
+
+		VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+		if(vendorData == NULL) {
+			return;
+		}
+
+		vendorData->runVendorUpdate();
 	}
-
-	VendorCheckTask& operator=(const VendorCheckTask& v) {
-		vendorObj = v.vendorObj;
-
-		return *this;
-	}
-
-	void run();
 
 };
 
@@ -100,4 +95,4 @@ public:
 
 using namespace server::zone::objects::auction::events;
 
-#endif /* VENDORCHECKTASK_H_ */
+#endif /* UPDATEVENDORTASK_H_ */

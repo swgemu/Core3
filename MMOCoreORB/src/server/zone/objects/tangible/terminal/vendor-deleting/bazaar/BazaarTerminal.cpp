@@ -115,39 +115,39 @@ void BazaarTerminalImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* BazaarTerminalImplementation::_getStub() {
-	return _this.get();
+	return _this;
 }
 
 BazaarTerminalImplementation::operator const BazaarTerminal*() {
-	return _this.get();
+	return _this;
 }
 
 void BazaarTerminalImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this->lock(doLock);
 }
 
 void BazaarTerminalImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this->lock(obj);
 }
 
 void BazaarTerminalImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this->rlock(doLock);
 }
 
 void BazaarTerminalImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this->wlock(doLock);
 }
 
 void BazaarTerminalImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this->wlock(obj);
 }
 
 void BazaarTerminalImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this->unlock(doLock);
 }
 
 void BazaarTerminalImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this->runlock(doLock);
 }
 
 void BazaarTerminalImplementation::_serializationHelperMethod() {

@@ -19,4 +19,3 @@ void NonPlayerCreatureObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiNPCComponent*>("AiNPCComponent"));
 }
-

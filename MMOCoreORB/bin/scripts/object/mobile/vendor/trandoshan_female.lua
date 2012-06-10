@@ -43,9 +43,15 @@
 
 object_mobile_vendor_trandoshan_female = object_mobile_vendor_shared_trandoshan_female:new {
 
-	gameObjectType = 1038,
-	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
+	optionsBitmask = 386,
+	pvpStatusBitmask = 0,
+
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
 
 	hair = {"object/tangible/hair/trandoshan/hair_trandoshan_female_s01.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s02.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s03.iff",
 		"object/tangible/hair/trandoshan/hair_trandoshan_female_s04.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s05.iff","object/tangible/hair/trandoshan/hair_trandoshan_female_s06.iff",

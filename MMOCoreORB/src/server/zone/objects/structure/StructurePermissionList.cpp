@@ -18,6 +18,7 @@ StructurePermissionList::StructurePermissionList() {
 	addList("ENTRY");
 	addList("HOPPER");
 	addList("BAN");
+	addList("VENDOR");
 
 	addSerializableVariables();
 }
@@ -35,8 +36,9 @@ void StructurePermissionList::addSerializableVariables() {
 void StructurePermissionList::sendTo(CreatureObject* creature, const String& listName) {
 	ZoneServer* zoneServer = creature->getZoneServer();
 
-	if (!permissionLists.contains(listName))
-		return;
+	if (!permissionLists.contains(listName)) {
+			return;
+	}
 
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
 

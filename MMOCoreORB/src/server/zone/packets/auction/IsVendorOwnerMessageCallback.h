@@ -46,21 +46,13 @@ public:
 			return;
 
 		String planetString = zone->getZoneName();
-		String vendorRegion = ""; // TODO: Vendors don't have regions impl yet.
+		String vendorRegion = zone->getZoneName();
 
-		//TODO: Relook at this! - POLONEL
-		if (sceno->isTerminal() && (cast<Terminal*>(sceno.get()))->isBazaarTerminal()) {
-			ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
 
-			if (cityRegion == NULL) {
-				sceno->error("NULL AREA FOR THIS TERMINAL");
+		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
+		if(cityRegion != NULL)
+			vendorRegion = cityRegion->getRegionName();
 
-				vendorRegion = "";
-				//return;
-			} else
-				vendorRegion = cityRegion->getRegionName();
-
-		}
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion, 0);
 		client->sendMessage(msg);

@@ -888,8 +888,6 @@ public:
 
 	bool isInformantCreature();
 
-	bool isVendorCreature();
-
 	CampSiteActiveArea* getCurrentCamp();
 
 	byte getCurrentWeather();
@@ -1665,8 +1663,6 @@ public:
 
 	virtual bool isInformantCreature();
 
-	virtual bool isVendorCreature();
-
 	CampSiteActiveArea* getCurrentCamp();
 
 	byte getCurrentWeather();
@@ -2255,8 +2251,6 @@ public:
 	bool isAiActor();
 
 	bool isInformantCreature();
-
-	bool isVendorCreature();
 
 	CampSiteActiveArea* getCurrentCamp();
 

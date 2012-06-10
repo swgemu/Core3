@@ -40,7 +40,7 @@ public:
 		SuiListBox* box = cast<SuiListBox*>( suiBox);
 		byte menuID = box->getMenuObjectID(idx);
 
-		session->handleMenuSelect(menuID);
+		session->handleVendorSelection(menuID);
 
 	}
 };

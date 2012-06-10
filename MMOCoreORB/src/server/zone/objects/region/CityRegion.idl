@@ -11,6 +11,7 @@ package server.zone.objects.region;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.Zone;
 import server.zone.managers.city.CityManager;
@@ -22,7 +23,6 @@ include system.lang.Time;
 include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.CityStructureInventory;
-import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
@@ -72,7 +72,7 @@ class CityRegion extends ManagedObject implements Logger {
 	protected SortedVector<SceneObject> citySkillTrainers;
 	
 	@dereferenced
-	protected transient VectorMap<unsigned long, BazaarTerminal> bazaars;
+	protected transient VectorMap<unsigned long, TangibleObject> bazaars;
 	
 	protected byte cityRank;
 	
@@ -347,7 +347,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	@local
-	public native Vector<SceneObject> getVendorsInCity();
+	public native Vector<TangibleObject> getVendorsInCity();
 
 	@local
 	public native void setRegionName(@dereferenced final StringId name);
@@ -423,11 +423,11 @@ class CityRegion extends ManagedObject implements Logger {
 		citySkillTrainers.drop(trainer);
 	}
 	
-	public void addBazaar(BazaarTerminal ter) {
+	public void addBazaar(TangibleObject ter) {
 		bazaars.put(ter.getObjectID(), ter);
 	}
 
-	public BazaarTerminal getBazaar(int idx) {
+	public TangibleObject getBazaar(int idx) {
 		return bazaars.get(idx);
 	}
 

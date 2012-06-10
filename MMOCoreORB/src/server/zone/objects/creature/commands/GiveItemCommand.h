@@ -51,7 +51,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class GiveItemCommand : public QueueCommand {
 public:
@@ -111,20 +111,41 @@ public:
 				}
 
 			} else if (sceno != NULL) {
-				if (sceno->isVendor()) {
+				if (sceno->isVendor() && sceno->isCreatureObject()) {
 					if (object->isWearableObject() || object->isWeaponObject()) {
+
 						CreatureObject* player = cast<CreatureObject*>(creature);
 						if (player->getSkillMod("hiring") < 90) {
 							player->sendSystemMessage("You lack the necessary skills to perform that action");
 							return GENERALERROR;
 						}
-						TangibleObject* clothing = cast<TangibleObject*>( object.get());
 
-						if (sceno->isCreatureObject()) {
-							VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
-							vendor->addClothingItem(creature, clothing);
-							return SUCCESS;
+						DataObjectComponentReference* data = sceno->getDataObjectComponent();
+						if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+							error("Vendor has no data component");
+							return GENERALERROR;
 						}
+
+						VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+						if(vendorData == NULL) {
+							error("Vendor has invalid data component");
+							return GENERALERROR;
+						}
+
+						TangibleObject* clothing = cast<TangibleObject*>(object.get());
+
+						if (creature->getObjectID() != vendorData->getOwnerId())
+							return GENERALERROR;
+
+						CreatureObject* vendor = cast<CreatureObject*>(sceno.get());
+						if(vendor == NULL || vendor->getZone() == NULL || vendor->getZone()->getCreatureManager() == NULL)
+							return GENERALERROR;
+
+						if(vendor->getZone()->getCreatureManager()->addWearableItem(vendor, clothing))
+							return SUCCESS;
+						else
+							return GENERALERROR;
+
 					}
 				} else if (sceno->isCreatureObject()) {
 					String err;

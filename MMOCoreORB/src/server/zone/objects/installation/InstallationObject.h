@@ -336,6 +336,10 @@ protected:
 
 	Time resourceHopperTimestamp;
 
+	Time lastStartTime;
+
+	Time lastStopTime;
+
 	HopperList resourceHopper;
 
 	float hopperSizeMax;

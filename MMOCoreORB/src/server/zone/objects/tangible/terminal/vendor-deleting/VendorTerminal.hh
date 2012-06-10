@@ -64,13 +64,9 @@ class VendorTerminal extends Terminal {
 
 	@dereferenced
 	protected Vendor vendor;
-	
-	protected transient unsigned long storedOid;
 
 	public VendorTerminal() {
 		Logger.setLoggingName("VendorTerminal");
-		
-		storedOid = 0;
 	
 		super.getContainerPermissions().setInheritPermissionsFromParent(false);
 	}
@@ -123,6 +119,16 @@ class VendorTerminal extends Terminal {
 	}
 
 	public boolean isVendorTerminal() {
+		return true;
+	}
+	
+	@read
+	@local
+	public CityRegion getCityRegion() {
+			return super.cityRegion;
+	}
+	
+	public boolean isNoTrade() {
 		return true;
 	}
 }

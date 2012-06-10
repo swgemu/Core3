@@ -1,13 +1,11 @@
 /*
  * CreateVendorSessionImplementation.cpp
  *
- *  Created on: Mar 20, 2011
- *      Author: polonel
+ *  Created on: May 20, 2012
+ *      Author: Kyle
  */
 
 #include "CreateVendorSession.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/vendor/VendorManager.h"
@@ -16,53 +14,35 @@
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-#include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/managers/auction/AuctionsMap.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 int CreateVendorSessionImplementation::initializeSession() {
-	player = NULL;
-	vendor = NULL;
-	currentNode = NULL;
-	suiSelectVendor = NULL;
-	suiNameVendor = NULL;
-
-	templatePath = "";
-
-	return 0;
-}
-
-void CreateVendorSessionImplementation::initalizeWindow(CreatureObject* pl) {
-	player = pl;
 
 	ManagedReference<CreatureObject*> player = this->player.get();
 
 	if (player == NULL)
-		return;
+		return 0;
 
 	if (player->containsActiveSession(SessionFacadeType::CREATEVENDOR)) {
 		player->sendSystemMessage("@player_structure:already_creating");
-		return;
+		return 0;
+
 	}
 
-	ManagedReference<AuctionManager*> aman = player->getZoneServer()->getAuctionManager();
-
-	if (aman == NULL)
-		return;
-
-	ManagedReference<AuctionsMap*> amap = aman->getAuctionMap();
-
-	if (amap == NULL)
-		return;
-
-	if (amap->getPlayerVendorCount(player->getObjectID()) >= player->getSkillMod("manage_vendor")) {
+	if (player->getPlayerObject()->getVendorCount() >= player->getSkillMod("manage_vendor")) {
 		player->sendSystemMessage("@player_structure:full_vendors");
-		return;
+		cancelSession();
+		return 0;
 	}
 
 	currentNode = VendorManager::instance()->getRootNode();
+	templatePath = "";
 
-	if (!currentNode->hasChildNode())
-		return;
+	if (!currentNode->hasChildNode()) {
+		cancelSession();
+		error("Vendor Root node has no children");
+		return 0;
+	}
 
 	int hiringMod = player->getSkillMod("hiring");
 
@@ -79,9 +59,11 @@ void CreateVendorSessionImplementation::initalizeWindow(CreatureObject* pl) {
 	player->sendMessage(suiSelectVendor->generateMessage());
 
 	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this.get());
+
+	return 0;
 }
 
-void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
+void CreateVendorSessionImplementation::handleVendorSelection(byte menuID) {
 	ManagedReference<CreatureObject*> player = this->player.get();
 
 	int hiringMod = player->getSkillMod("hiring");
@@ -129,16 +111,18 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> vendor = player->getZoneServer()->createObject(templatePath.hashCode());
+	vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (vendor == NULL || inventory == NULL || !vendor->isVendor()) {
+	if (vendor == NULL || inventory == NULL || !vendor.get()->isVendor()) {
 		cancelSession();
 		return;
 	}
 
-	this->vendor = vendor;
+	vendor.get()->createChildObjects();
+
+	Locker inventoryLocker(inventory);
 
 	if (inventory->hasFullContainerObjects()) {
 		player->sendSystemMessage("@player_structure:create_failed");
@@ -146,44 +130,37 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	Locker inventoryLocker(inventory);
-
-	if (vendor->isTerminal()) {
-		VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(vendor.get());
-		vendorTerminal->setOwnerID(player->getObjectID());
-		vendorTerminal->addVendorToMap();
-	} else if (vendor->isCreatureObject()) {
-		VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendor.get());
-		vendorCreature->setOwnerID(player->getObjectID());
-		vendorCreature->createChildObjects();
-		vendorCreature->addVendorToMap();
-	} else {
-		player->sendSystemMessage("Invalid vendor object during createVendor()");
-		return;
-	}
-
-	ManagedReference<AuctionManager*> aman = player->getZoneServer()->getAuctionManager();
-
-	if (aman == NULL) {
+	DataObjectComponentReference* data = vendor.get()->getDataObjectComponent();
+	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+		error("Invalid vendor, no data component: " + templatePath);
+		player->sendSystemMessage("@player_structure:create_failed");
 		cancelSession();
 		return;
 	}
 
-	ManagedReference<AuctionsMap*> amap = aman->getAuctionMap();
+	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+	if(vendorData == NULL) {
+		error("Invalid vendor, no data component: " + templatePath);
+		player->sendSystemMessage("@player_structure:create_failed");
+		cancelSession();
+		return ;
+	}
 
-	if (amap == NULL) {
+	vendorData->setOwnerId(player->getObjectID());
+	vendorData->setVendor(vendor.get());
+
+	vendor.get()->setCustomObjectName("Vendor: " + name, false);
+	vendor.get()->setContainerOwnerID(player->getObjectID());
+
+	if(!inventory->transferObject(vendor.get(), -1, false)) {
+		player->sendSystemMessage("@player_structure:create_failed");
 		cancelSession();
 		return;
 	}
 
-	amap->increasePlayerVendorCount(player->getObjectID());
-
-	vendor->setCustomObjectName("Vendor: " + name, true);
-
-	inventory->transferObject(vendor, -1);
-	vendor->sendTo(player, true);
+	inventory->broadcastObject(vendor.get(), true);
+	player->getPlayerObject()->addVendor(vendor.get());
 
 	player->sendSystemMessage("@player_structure:create_success");
 	cancelSession();
-
 }

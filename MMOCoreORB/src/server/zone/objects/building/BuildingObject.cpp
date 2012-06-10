@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_ISHOSPITALBUILDINGOBJECT__,RPC_ISRECREATIONALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -542,32 +542,6 @@ bool BuildingObject::isBuildingObject() {
 		return _implementation->isBuildingObject();
 }
 
-bool BuildingObject::isHospitalBuildingObject() {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISHOSPITALBUILDINGOBJECT__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isHospitalBuildingObject();
-}
-
-bool BuildingObject::isRecreationalBuildingObject() {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISRECREATIONALBUILDINGOBJECT__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isRecreationalBuildingObject();
-}
-
 void BuildingObject::setSignObject(SignObject* sign) {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -593,46 +567,6 @@ SignObject* BuildingObject::getSignObject() {
 		return static_cast<SignObject*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getSignObject();
-}
-
-bool BuildingObject::isCityHallBuilding() {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISCITYHALLBUILDING__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isCityHallBuilding();
-}
-
-void BuildingObject::setAccessFee(int fee) {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETACCESSFEE__INT_);
-		method.addSignedIntParameter(fee);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setAccessFee(fee);
-}
-
-int BuildingObject::getAccessFee() {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETACCESSFEE__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getAccessFee();
 }
 
 bool BuildingObject::isPublicStructure() {
@@ -740,6 +674,100 @@ String BuildingObject::getRedeedMessage() {
 		return _return_getRedeedMessage;
 	} else
 		return _implementation->getRedeedMessage();
+}
+
+bool BuildingObject::hasAccessFee() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASACCESSFEE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasAccessFee();
+}
+
+bool BuildingObject::canChangeAccessFee() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANCHANGEACCESSFEE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canChangeAccessFee();
+}
+
+void BuildingObject::setAccessFee(int fee, int duration) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETACCESSFEE__INT_INT_);
+		method.addSignedIntParameter(fee);
+		method.addSignedIntParameter(duration);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAccessFee(fee, duration);
+}
+
+void BuildingObject::removeAccessFee() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEACCESSFEE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeAccessFee();
+}
+
+int BuildingObject::getAccessFeeDelay() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACCESSFEEDELAY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getAccessFeeDelay();
+}
+
+void BuildingObject::payAccessFee(CreatureObject* player) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PAYACCESSFEE__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->payAccessFee(player);
+}
+
+void BuildingObject::updatePaidAccessList() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEPAIDACCESSLIST__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updatePaidAccessList();
 }
 
 DistributedObjectServant* BuildingObject::_getImplementation() {
@@ -872,6 +900,16 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "BuildingObject.accessDuration") {
+		TypeInfo<int >::parseFromBinaryStream(&accessDuration, stream);
+		return true;
+	}
+
+	if (_name == "BuildingObject.paidAccessList") {
+		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&paidAccessList, stream);
+		return true;
+	}
+
 	if (_name == "BuildingObject.publicStructure") {
 		TypeInfo<bool >::parseFromBinaryStream(&publicStructure, stream);
 		return true;
@@ -939,6 +977,22 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "BuildingObject.accessDuration";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&accessDuration, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "BuildingObject.paidAccessList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<unsigned long long, unsigned int> >::toBinaryStream(&paidAccessList, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "BuildingObject.publicStructure";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -956,7 +1010,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 7;
+	return _count + 9;
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
@@ -974,6 +1028,10 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	totalCellNumber = 0;
 	// server/zone/objects/building/BuildingObject.idl():  		accessFee = 0;
 	accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		accessDuration = 0;
+	accessDuration = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		lastAccessFeeChange = 0;
+	lastAccessFeeChange = 0;
 	// server/zone/objects/building/BuildingObject.idl():  		deedObjectID = 0;
 	deedObjectID = 0;
 	// server/zone/objects/building/BuildingObject.idl():  		publicStructure = true;
@@ -1021,16 +1079,6 @@ bool BuildingObjectImplementation::isBuildingObject() {
 	return true;
 }
 
-bool BuildingObjectImplementation::isHospitalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl():  		return false;
-	return false;
-}
-
-bool BuildingObjectImplementation::isRecreationalBuildingObject() {
-	// server/zone/objects/building/BuildingObject.idl():  		return false;
-	return false;
-}
-
 void BuildingObjectImplementation::setSignObject(SignObject* sign) {
 	// server/zone/objects/building/BuildingObject.idl():  		signObject = sign;
 	signObject = sign;
@@ -1039,21 +1087,6 @@ void BuildingObjectImplementation::setSignObject(SignObject* sign) {
 SignObject* BuildingObjectImplementation::getSignObject() {
 	// server/zone/objects/building/BuildingObject.idl():  		return signObject;
 	return signObject;
-}
-
-bool BuildingObjectImplementation::isCityHallBuilding() {
-	// server/zone/objects/building/BuildingObject.idl():  		return false;
-	return false;
-}
-
-void BuildingObjectImplementation::setAccessFee(int fee) {
-	// server/zone/objects/building/BuildingObject.idl():  		accessFee = fee;
-	accessFee = fee;
-}
-
-int BuildingObjectImplementation::getAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl():  		return accessFee;
-	return accessFee;
 }
 
 bool BuildingObjectImplementation::isPublicStructure() {
@@ -1092,6 +1125,22 @@ String BuildingObjectImplementation::getRedeedMessage() {
 	return "clear_building_for_delete";
 	// server/zone/objects/building/BuildingObject.idl():  		return "";
 	return "";
+}
+
+bool BuildingObjectImplementation::hasAccessFee() {
+	// server/zone/objects/building/BuildingObject.idl():  		return accessFee > 0;
+	return accessFee > 0;
+}
+
+void BuildingObjectImplementation::removeAccessFee() {
+	// server/zone/objects/building/BuildingObject.idl():  		accessFee = 0;
+	accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		accessDuration = 0;
+	accessDuration = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		paidAccessList.removeAll();
+	(&paidAccessList)->removeAll();
+	// server/zone/objects/building/BuildingObject.idl():  		updatePaidAccessList();
+	updatePaidAccessList();
 }
 
 /*
@@ -1265,16 +1314,6 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(isBuildingObject());
 		}
 		break;
-	case RPC_ISHOSPITALBUILDINGOBJECT__:
-		{
-			resp->insertBoolean(isHospitalBuildingObject());
-		}
-		break;
-	case RPC_ISRECREATIONALBUILDINGOBJECT__:
-		{
-			resp->insertBoolean(isRecreationalBuildingObject());
-		}
-		break;
 	case RPC_SETSIGNOBJECT__SIGNOBJECT_:
 		{
 			setSignObject(static_cast<SignObject*>(inv->getObjectParameter()));
@@ -1283,21 +1322,6 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETSIGNOBJECT__:
 		{
 			resp->insertLong(getSignObject()->_getObjectID());
-		}
-		break;
-	case RPC_ISCITYHALLBUILDING__:
-		{
-			resp->insertBoolean(isCityHallBuilding());
-		}
-		break;
-	case RPC_SETACCESSFEE__INT_:
-		{
-			setAccessFee(inv->getSignedIntParameter());
-		}
-		break;
-	case RPC_GETACCESSFEE__:
-		{
-			resp->insertSignedInt(getAccessFee());
 		}
 		break;
 	case RPC_ISPUBLICSTRUCTURE__:
@@ -1338,6 +1362,41 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETREDEEDMESSAGE__:
 		{
 			resp->insertAscii(getRedeedMessage());
+		}
+		break;
+	case RPC_HASACCESSFEE__:
+		{
+			resp->insertBoolean(hasAccessFee());
+		}
+		break;
+	case RPC_CANCHANGEACCESSFEE__:
+		{
+			resp->insertBoolean(canChangeAccessFee());
+		}
+		break;
+	case RPC_SETACCESSFEE__INT_INT_:
+		{
+			setAccessFee(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_REMOVEACCESSFEE__:
+		{
+			removeAccessFee();
+		}
+		break;
+	case RPC_GETACCESSFEEDELAY__:
+		{
+			resp->insertSignedInt(getAccessFeeDelay());
+		}
+		break;
+	case RPC_PAYACCESSFEE__CREATUREOBJECT_:
+		{
+			payAccessFee(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_UPDATEPAIDACCESSLIST__:
+		{
+			updatePaidAccessList();
 		}
 		break;
 	default:
@@ -1469,32 +1528,12 @@ bool BuildingObjectAdapter::isBuildingObject() {
 	return (static_cast<BuildingObject*>(stub))->isBuildingObject();
 }
 
-bool BuildingObjectAdapter::isHospitalBuildingObject() {
-	return (static_cast<BuildingObject*>(stub))->isHospitalBuildingObject();
-}
-
-bool BuildingObjectAdapter::isRecreationalBuildingObject() {
-	return (static_cast<BuildingObject*>(stub))->isRecreationalBuildingObject();
-}
-
 void BuildingObjectAdapter::setSignObject(SignObject* sign) {
 	(static_cast<BuildingObject*>(stub))->setSignObject(sign);
 }
 
 SignObject* BuildingObjectAdapter::getSignObject() {
 	return (static_cast<BuildingObject*>(stub))->getSignObject();
-}
-
-bool BuildingObjectAdapter::isCityHallBuilding() {
-	return (static_cast<BuildingObject*>(stub))->isCityHallBuilding();
-}
-
-void BuildingObjectAdapter::setAccessFee(int fee) {
-	(static_cast<BuildingObject*>(stub))->setAccessFee(fee);
-}
-
-int BuildingObjectAdapter::getAccessFee() {
-	return (static_cast<BuildingObject*>(stub))->getAccessFee();
 }
 
 bool BuildingObjectAdapter::isPublicStructure() {
@@ -1527,6 +1566,34 @@ unsigned int BuildingObjectAdapter::getMaximumNumberOfPlayerItems() {
 
 String BuildingObjectAdapter::getRedeedMessage() {
 	return (static_cast<BuildingObject*>(stub))->getRedeedMessage();
+}
+
+bool BuildingObjectAdapter::hasAccessFee() {
+	return (static_cast<BuildingObject*>(stub))->hasAccessFee();
+}
+
+bool BuildingObjectAdapter::canChangeAccessFee() {
+	return (static_cast<BuildingObject*>(stub))->canChangeAccessFee();
+}
+
+void BuildingObjectAdapter::setAccessFee(int fee, int duration) {
+	(static_cast<BuildingObject*>(stub))->setAccessFee(fee, duration);
+}
+
+void BuildingObjectAdapter::removeAccessFee() {
+	(static_cast<BuildingObject*>(stub))->removeAccessFee();
+}
+
+int BuildingObjectAdapter::getAccessFeeDelay() {
+	return (static_cast<BuildingObject*>(stub))->getAccessFeeDelay();
+}
+
+void BuildingObjectAdapter::payAccessFee(CreatureObject* player) {
+	(static_cast<BuildingObject*>(stub))->payAccessFee(player);
+}
+
+void BuildingObjectAdapter::updatePaidAccessList() {
+	(static_cast<BuildingObject*>(stub))->updatePaidAccessList();
 }
 
 /*

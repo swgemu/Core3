@@ -586,6 +586,8 @@ public:
 
 	void setContainerComponent(const String& name);
 
+	bool isNoTrade();
+
 	bool isContainerFull();
 
 	bool isShuttleInstallation();
@@ -638,9 +640,13 @@ public:
 
 	bool isInstrument();
 
+	bool isBazaarTerminal();
+
 	bool isLiveSample();
 
 	bool isInstallationObject();
+
+	bool isHarvesterObject();
 
 	bool isGeneratorObject();
 
@@ -671,6 +677,8 @@ public:
 	bool isManufactureSchematic();
 
 	bool isStructureObject();
+
+	bool isAuctionObject();
 
 	bool isFishingBait();
 
@@ -1207,7 +1215,7 @@ public:
 
 	virtual bool isPlayerCreature();
 
-	virtual bool isVendor();
+	bool isVendor();
 
 	ZoneComponent* getZoneComponent();
 
@@ -1218,6 +1226,8 @@ public:
 	void setObjectMenuComponent(const String& name);
 
 	void setContainerComponent(const String& name);
+
+	bool isNoTrade();
 
 	bool isContainerFull();
 
@@ -1271,9 +1281,13 @@ public:
 
 	bool isInstrument();
 
+	bool isBazaarTerminal();
+
 	bool isLiveSample();
 
 	virtual bool isInstallationObject();
+
+	virtual bool isHarvesterObject();
 
 	virtual bool isGeneratorObject();
 
@@ -1304,6 +1318,8 @@ public:
 	virtual bool isManufactureSchematic();
 
 	virtual bool isStructureObject();
+
+	virtual bool isAuctionObject();
 
 	bool isFishingBait();
 
@@ -1726,7 +1742,7 @@ public:
 
 	bool isPlayerCreature();
 
-	bool isVendor();
+	bool isNoTrade();
 
 	bool isContainerFull();
 
@@ -1780,9 +1796,13 @@ public:
 
 	bool isInstrument();
 
+	bool isBazaarTerminal();
+
 	bool isLiveSample();
 
 	bool isInstallationObject();
+
+	bool isHarvesterObject();
 
 	bool isGeneratorObject();
 
@@ -1813,6 +1833,8 @@ public:
 	bool isManufactureSchematic();
 
 	bool isStructureObject();
+
+	bool isAuctionObject();
 
 	bool isFishingBait();
 

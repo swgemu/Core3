@@ -141,6 +141,9 @@ public:
 	static const uint16 STRUCTURE_VENDOR_STATUS = 149;
 	static const uint16 STRUCTURE_VENDOR_REGISTER = 150;
 	static const uint16 STRUCTURE_UNCONDEMN_CONFIRM = 151;
+	static const uint16 STRUCTURE_SET_ACCESS_FEE = 152;
+	static const uint16 STRUCTURE_SET_ACCESS_DURATION = 153;
+	static const uint16 STRUCTURE_CONSENT_PAY_ACCESS_FEE = 154;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;

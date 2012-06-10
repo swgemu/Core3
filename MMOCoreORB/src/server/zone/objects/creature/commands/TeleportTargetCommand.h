@@ -92,8 +92,11 @@ public:
 				x = tokenizer.getFloatToken();
 				y = tokenizer.getFloatToken();
 
-				tokenizer.getStringToken(planetName);
-				planetName = planetName.toLowerCase();
+				if(tokenizer.hasMoreTokens()) {
+					tokenizer.getStringToken(planetName);
+					planetName = planetName.toLowerCase();
+				}
+
 				targetZone = targetZone->getZoneServer()->getZone(planetName);
 
 				if (targetZone == NULL)
@@ -109,7 +112,8 @@ public:
 				parentID = tokenizer.getLongToken();
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /teleportTarget <x> <y> [<planet>] [<z> <parentID>]");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget <name> -- Bring target to you");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget [<name>] <x> <y> [<planet>] [<z> <parentID>]");
 			return INVALIDPARAMETERS;
 		}
 

@@ -43,9 +43,15 @@
 
 object_mobile_vendor_bothan_female = object_mobile_vendor_shared_bothan_female:new {
 
-	gameObjectType = 1038,
-	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
+	optionsBitmask = 386,
+	pvpStatusBitmask = 0,
+
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
 
 	hair = {"object/tangible/hair/bothan/hair_bothan_female_s01.iff","object/tangible/hair/bothan/hair_bothan_female_s02.iff","object/tangible/hair/bothan/hair_bothan_female_s03.iff",
 		"object/tangible/hair/bothan/hair_bothan_female_s04.iff","object/tangible/hair/bothan/hair_bothan_female_s05.iff","object/tangible/hair/bothan/hair_bothan_female_s06.iff",
@@ -146,6 +152,7 @@ object_mobile_vendor_bothan_female = object_mobile_vendor_shared_bothan_female:n
 			"Humanoid870","Humanoid871","Humanoid872","Humanoid873","Humanoid874","Humanoid875","Humanoid876","Humanoid877","Humanoid878","Humanoid879",
 			"Humanoid880","Humanoid881","Humanoid882","Humanoid883","Humanoid884","Humanoid885","Humanoid886","Humanoid887","Humanoid888","Humanoid889",
 			"Humanoid890","Humanoid891","Humanoid892","Humanoid893","Humanoid894","Humanoid895","Humanoid896","Humanoid897","Humanoid898","Humanoid899",
+
 			"Humanoid900","Humanoid901","Humanoid902","Humanoid903","Humanoid904","Humanoid905","Humanoid906","Humanoid907","Humanoid908","Humanoid909",
 			"Humanoid910","Humanoid911","Humanoid912","Humanoid913","Humanoid914","Humanoid915","Humanoid916","Humanoid917","Humanoid918","Humanoid919",
 			"Humanoid920","Humanoid921","Humanoid922","Humanoid923","Humanoid924","Humanoid925","Humanoid926","Humanoid927","Humanoid928","Humanoid929",

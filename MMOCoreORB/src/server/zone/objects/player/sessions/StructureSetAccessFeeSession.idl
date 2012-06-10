@@ -42,16 +42,72 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-package server.zone.objects.tangible.terminal.bazaar;
+package server.zone.objects.player.sessions;
 
-import server.zone.objects.tangible.terminal.Terminal;
+include engine.core.ManagedObject;
 
-class BazaarTerminal extends Terminal {
-	public BazaarTerminal() {
-		Logger.setLoggingName("BazaarTerminal");
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import engine.util.Facade;
+import system.lang.ref.Reference;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.building.BuildingObject;
+include server.zone.objects.scene.SessionFacadeType;
+include server.zone.objects.player.sui.inputbox.SuiInputBox;
+
+
+class StructureSetAccessFeeSession extends Facade {
+
+	@weakreference
+	protected PlayerObject playerGhost;
+	
+	@weakreference
+	protected CreatureObject player;
+	
+	@weakreference
+	protected BuildingObject structure;
+	
+	@weakreference
+	protected SuiInputBox feeAmountBox;
+	
+	@weakreference
+	protected SuiInputBox durationBox;
+	
+	protected int accessFee;
+
+	public StructureSetAccessFeeSession(CreatureObject play, BuildingObject struc) {
+		
+		player = play;
+		playerGhost = player.getPlayerObject();
+		structure = struc;
+		
+		feeAmountBox = null;
+		durationBox = null;
+		
+		accessFee = 0;
+		
+		Logger.setLoggingName("StructureSetAccessFeeSession");
+		Logger.setLogging(true);
 	}
 
-	public abstract boolean isBazaarTerminal() {
-		return true;
+	public native int initializeSession();
+	
+	public int cancelSession() {
+		if (player != null)
+			player.dropActiveSession(SessionFacadeType.SETSTRUCTUREACCESSFEE);
+
+		clearSession();
+		return 0;
 	}
+	
+	public native int clearSession();
+	
+	public native void promptSetAccessFee();
+	
+	public native void setAccessFee(final int fee);
+	
+	public native void promptSetAccessDuration();
+	
+	public native void setAccessDuration(final int duration);
 }

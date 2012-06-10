@@ -361,6 +361,11 @@ bool DotPackImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
+	if (_name == "DotPack.hasArea") {
+		TypeInfo<bool >::parseFromBinaryStream(&hasArea, stream);
+		return true;
+	}
+
 	if (_name == "DotPack.rangeMod") {
 		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
 		return true;
@@ -432,6 +437,14 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "DotPack.hasArea";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&hasArea, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "DotPack.rangeMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -481,7 +494,7 @@ int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 9;
+	return _count + 10;
 }
 
 DotPackImplementation::DotPackImplementation() {
@@ -502,6 +515,8 @@ DotPackImplementation::DotPackImplementation() {
 	dotType = 0;
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		effectiveness = 0;
 	effectiveness = 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		hasArea = false;
+	hasArea = false;
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		setLoggingName("DotPack");
 	setLoggingName("DotPack");
 }
@@ -539,6 +554,8 @@ void DotPackImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 	duration = stimPackTemplate->getDuration();
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		area = stimPackTemplate.getArea();
 	area = stimPackTemplate->getArea();
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		hasArea = stimPackTemplate.isArea();
+	hasArea = stimPackTemplate->isArea();
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		range = stimPackTemplate.getRange();
 	range = stimPackTemplate->getRange();
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		rangeMod = stimPackTemplate.getRangeMod();
@@ -664,8 +681,8 @@ unsigned int DotPackImplementation::getDuration() {
 }
 
 bool DotPackImplementation::isArea() {
-	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return area != 0;
-	return area != 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		return hasArea;
+	return hasArea;
 }
 
 unsigned int DotPackImplementation::getPool() {

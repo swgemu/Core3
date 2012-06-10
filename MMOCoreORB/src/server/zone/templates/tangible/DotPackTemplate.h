@@ -21,6 +21,7 @@ class DotPackTemplate : public SharedTangibleObjectTemplate {
 	uint32 pool;
 	uint32 dotType;
 	String commandToExecute;
+	bool hasArea;
 
 public:
 	DotPackTemplate() {
@@ -33,6 +34,7 @@ public:
 		rangeMod = 0;
 		pool = 0;
 		dotType = 0;
+		hasArea = false;
 	}
 
 	~DotPackTemplate() {
@@ -46,6 +48,7 @@ public:
 		effectiveness = templateData->getFloatField("effectiveness");
 		duration = templateData->getIntField("duration");
 		area = templateData->getFloatField("area");
+		hasArea = area != 0;
 		range = templateData->getFloatField("range");
 		rangeMod = templateData->getFloatField("rangeMod");
 		pool = templateData->getIntField("pool");
@@ -72,6 +75,10 @@ public:
 
 	inline float getArea() {
 		return area;
+	}
+
+	inline bool isArea() {
+		return hasArea;
 	}
 
 	inline float getRangeMod() {

@@ -6,11 +6,15 @@
 
 #include "server/zone/objects/auction/AuctionItem.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
+
 /*
  *	AuctionsMapStub
  */
 
-enum {RPC_GETVENDORITEMCOUNT__ = 6,RPC_CONTAINSVENDORITEM__LONG_,RPC_ADDVENDORITEM__LONG_AUCTIONITEM_,RPC_GETPLAYERVENDORITEMCOUNT__LONG_,RPC_DROPVENDORITEM__LONG_,RPC_GETVENDORITEM__LONG_,RPC_GETVENDORITEM__INT_,RPC_INCREASEPLAYERVENDORCOUNT__LONG_,RPC_DECREASEPLAYERVENDORCOUNT__LONG_,RPC_GETPLAYERVENDORCOUNT__LONG_,RPC_GETAUCTIONCOUNT__,RPC_CONTAINSAUCTION__LONG_,RPC_ADDBAZAARITEM__LONG_AUCTIONITEM_,RPC_GETPLAYERAUCTIONCOUNT__LONG_,RPC_DROPBAZAARITEM__LONG_,RPC_GETBAZAARITEM__LONG_,RPC_GETBAZAARITEM__INT_,RPC_CHECKINSTOCKROOM__LONG_,};
+enum {RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_GETITEM__LONG_,RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_,RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -28,274 +32,80 @@ AuctionsMap::~AuctionsMap() {
 
 
 
-int AuctionsMap::getVendorItemCount() {
+int AuctionsMap::addItem(SceneObject* vendor, String& uid, AuctionItem* item) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETVENDORITEMCOUNT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getVendorItemCount();
-}
-
-bool AuctionsMap::containsVendorItem(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CONTAINSVENDORITEM__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->containsVendorItem(objectID);
-}
-
-void AuctionsMap::addVendorItem(unsigned long long objectID, AuctionItem* item) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDVENDORITEM__LONG_AUCTIONITEM_);
-		method.addUnsignedLongParameter(objectID);
+		DistributedMethod method(this, RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_);
+		method.addObjectParameter(vendor);
+		method.addAsciiParameter(uid);
 		method.addObjectParameter(item);
 
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addVendorItem(objectID, item);
-}
-
-int AuctionsMap::getPlayerVendorItemCount(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETPLAYERVENDORITEMCOUNT__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getPlayerVendorItemCount(objectID);
+		return _implementation->addItem(vendor, uid, item);
 }
 
-void AuctionsMap::dropVendorItem(unsigned long long objectID) {
+AuctionItem* AuctionsMap::getItem(unsigned long long id) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DROPVENDORITEM__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->dropVendorItem(objectID);
-}
-
-AuctionItem* AuctionsMap::getVendorItem(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETVENDORITEM__LONG_);
-		method.addUnsignedLongParameter(objectID);
+		DistributedMethod method(this, RPC_GETITEM__LONG_);
+		method.addUnsignedLongParameter(id);
 
 		return static_cast<AuctionItem*>(method.executeWithObjectReturn());
 	} else
-		return _implementation->getVendorItem(objectID);
+		return _implementation->getItem(id);
 }
 
-AuctionItem* AuctionsMap::getVendorItem(int index) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETVENDORITEM__INT_);
-		method.addSignedIntParameter(index);
-
-		return static_cast<AuctionItem*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getVendorItem(index);
-}
-
-void AuctionsMap::increasePlayerVendorCount(unsigned long long playerID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INCREASEPLAYERVENDORCOUNT__LONG_);
-		method.addUnsignedLongParameter(playerID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->increasePlayerVendorCount(playerID);
-}
-
-void AuctionsMap::decreasePlayerVendorCount(unsigned long long playerID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DECREASEPLAYERVENDORCOUNT__LONG_);
-		method.addUnsignedLongParameter(playerID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->decreasePlayerVendorCount(playerID);
-}
-
-int AuctionsMap::getPlayerVendorCount(unsigned long long playerID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETPLAYERVENDORCOUNT__LONG_);
-		method.addUnsignedLongParameter(playerID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getPlayerVendorCount(playerID);
-}
-
-int AuctionsMap::getAuctionCount() {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETAUCTIONCOUNT__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getAuctionCount();
-}
-
-bool AuctionsMap::containsAuction(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CONTAINSAUCTION__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->containsAuction(objectID);
-}
-
-void AuctionsMap::addBazaarItem(unsigned long long objectID, AuctionItem* item) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDBAZAARITEM__LONG_AUCTIONITEM_);
-		method.addUnsignedLongParameter(objectID);
-		method.addObjectParameter(item);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addBazaarItem(objectID, item);
-}
-
-int AuctionsMap::getPlayerAuctionCount(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETPLAYERAUCTIONCOUNT__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getPlayerAuctionCount(objectID);
-}
-
-void AuctionsMap::dropBazaarItem(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DROPBAZAARITEM__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->dropBazaarItem(objectID);
-}
-
-AuctionItem* AuctionsMap::getBazaarItem(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETBAZAARITEM__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return static_cast<AuctionItem*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getBazaarItem(objectID);
-}
-
-AuctionItem* AuctionsMap::getBazaarItem(int index) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETBAZAARITEM__INT_);
-		method.addSignedIntParameter(index);
-
-		return static_cast<AuctionItem*>(method.executeWithObjectReturn());
-	} else
-		return _implementation->getBazaarItem(index);
-}
-
-bool AuctionsMap::checkInStockroom(unsigned long long objectID) {
-	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHECKINSTOCKROOM__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->checkInStockroom(objectID);
-}
-
-VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMap::getBazaarItems() {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(const String& search) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getBazaarItems();
+		return _implementation->getVendorItems(search);
 }
 
-VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMap::getVendorItems() {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getBazaarItems(const String& search) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getVendorItems();
+		return _implementation->getBazaarItems(search);
+}
+
+int AuctionsMap::getVendorItemCount(PlayerObject* ghost) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_);
+		method.addObjectParameter(ghost);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getVendorItemCount(ghost);
+}
+
+int AuctionsMap::getBazaarItemCount(PlayerObject* ghost) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_);
+		method.addObjectParameter(ghost);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getBazaarItemCount(ghost);
 }
 
 DistributedObjectServant* AuctionsMap::_getImplementation() {
@@ -403,28 +213,18 @@ bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "AuctionsMap.auctions") {
-		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&auctions, stream);
+	if (_name == "AuctionsMap.vendorItemsForSale") {
+		TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::parseFromBinaryStream(&vendorItemsForSale, stream);
 		return true;
 	}
 
-	if (_name == "AuctionsMap.vendorItems") {
-		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&vendorItems, stream);
+	if (_name == "AuctionsMap.bazaarItemsForSale") {
+		TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::parseFromBinaryStream(&bazaarItemsForSale, stream);
 		return true;
 	}
 
-	if (_name == "AuctionsMap.playerAuctionCount") {
-		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerAuctionCount, stream);
-		return true;
-	}
-
-	if (_name == "AuctionsMap.playerVendorItemCount") {
-		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerVendorItemCount, stream);
-		return true;
-	}
-
-	if (_name == "AuctionsMap.playerVendorCount") {
-		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&playerVendorCount, stream);
+	if (_name == "AuctionsMap.allItems") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&allItems, stream);
 		return true;
 	}
 
@@ -445,217 +245,63 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AuctionsMap.auctions";
+	_name = "AuctionsMap.vendorItemsForSale";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&auctions, stream);
+	TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::toBinaryStream(&vendorItemsForSale, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionsMap.vendorItems";
+	_name = "AuctionsMap.bazaarItemsForSale";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&vendorItems, stream);
+	TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::toBinaryStream(&bazaarItemsForSale, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionsMap.playerAuctionCount";
+	_name = "AuctionsMap.allItems";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, int> >::toBinaryStream(&playerAuctionCount, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionsMap.playerVendorItemCount";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, int> >::toBinaryStream(&playerVendorItemCount, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionsMap.playerVendorCount";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, int> >::toBinaryStream(&playerVendorCount, stream);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&allItems, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 5;
+	return _count + 3;
 }
 
 AuctionsMapImplementation::AuctionsMapImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/auction/AuctionsMap.idl():  		auctions.setNullValue(null);
-	(&auctions)->setNullValue(NULL);
-	// server/zone/managers/auction/AuctionsMap.idl():  		auctions.setNoDuplicateInsertPlan();
-	(&auctions)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItems.setNullValue(null);
-	(&vendorItems)->setNullValue(NULL);
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItems.setNoDuplicateInsertPlan();
-	(&vendorItems)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerAuctionCount.setNullValue(0);
-	(&playerAuctionCount)->setNullValue(0);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerAuctionCount.setAllowOverwriteInsertPlan();
-	(&playerAuctionCount)->setAllowOverwriteInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorItemCount.setNullValue(0);
-	(&playerVendorItemCount)->setNullValue(0);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorItemCount.setAllowOverwriteInsertPlan();
-	(&playerVendorItemCount)->setAllowOverwriteInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorCount.setNullValue(0);
-	(&playerVendorCount)->setNullValue(0);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorCount.setAllowOverwriteInsertPlan();
-	(&playerVendorCount)->setAllowOverwriteInsertPlan();
+	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItemsForSale.setNullValue(null);
+	(&vendorItemsForSale)->setNullValue(NULL);
+	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItemsForSale.setNoDuplicateInsertPlan();
+	(&vendorItemsForSale)->setNoDuplicateInsertPlan();
+	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarItemsForSale.setNullValue(null);
+	(&bazaarItemsForSale)->setNullValue(NULL);
+	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarItemsForSale.setNoDuplicateInsertPlan();
+	(&bazaarItemsForSale)->setNoDuplicateInsertPlan();
+	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNullValue(null);
+	(&allItems)->setNullValue(NULL);
+	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNoDuplicateInsertPlan();
+	(&allItems)->setNoDuplicateInsertPlan();
 }
 
-int AuctionsMapImplementation::getVendorItemCount() {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItems.size();
-	return (&vendorItems)->size();
+AuctionItem* AuctionsMapImplementation::getItem(unsigned long long id) {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.get(id);
+	return (&allItems)->get(id);
 }
 
-bool AuctionsMapImplementation::containsVendorItem(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItems.contains(objectID);
-	return (&vendorItems)->contains(objectID);
+int AuctionsMapImplementation::getVendorItemCount(PlayerObject* ghost) {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return 0;
+	return 0;
 }
 
-void AuctionsMapImplementation::addVendorItem(unsigned long long objectID, AuctionItem* item) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItems.put(objectID, item);
-	(&vendorItems)->put(objectID, item);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorItemCount.put(item.getOwnerID(), playerVendorItemCount.get(item.getOwnerID()) + 1);
-	(&playerVendorItemCount)->put(item->getOwnerID(), (&playerVendorItemCount)->get(item->getOwnerID()) + 1);
-}
-
-int AuctionsMapImplementation::getPlayerVendorItemCount(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return playerVendorItemCount.get(objectID);
-	return (&playerVendorItemCount)->get(objectID);
-}
-
-void AuctionsMapImplementation::dropVendorItem(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = vendorItems.get(objectID);
-	ManagedReference<AuctionItem* > item = (&vendorItems)->get(objectID);
-	// server/zone/managers/auction/AuctionsMap.idl():  		int 
-	if (item == NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return;
-	return;
-	// server/zone/managers/auction/AuctionsMap.idl():  		int count = playerVendorItemCount.get(item.getOwnerID());
-	int count = (&playerVendorItemCount)->get(item->getOwnerID());
-	// server/zone/managers/auction/AuctionsMap.idl():  		count = count - 1;
-	count = count - 1;
-	// server/zone/managers/auction/AuctionsMap.idl():  			playerVendorItemCount.put(item.getOwnerID(), count);
-	if (count < 1)	// server/zone/managers/auction/AuctionsMap.idl():  			playerVendorItemCount.drop(item.getOwnerID());
-	(&playerVendorItemCount)->drop(item->getOwnerID());
-
-	else 	// server/zone/managers/auction/AuctionsMap.idl():  			playerVendorItemCount.put(item.getOwnerID(), count);
-	(&playerVendorItemCount)->put(item->getOwnerID(), count);
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItems.drop(objectID);
-	(&vendorItems)->drop(objectID);
-}
-
-AuctionItem* AuctionsMapImplementation::getVendorItem(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItems.get(objectID);
-	return (&vendorItems)->get(objectID);
-}
-
-AuctionItem* AuctionsMapImplementation::getVendorItem(int index) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItems.get(index);
-	return (&vendorItems)->get(index);
-}
-
-void AuctionsMapImplementation::increasePlayerVendorCount(unsigned long long playerID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorCount.put(playerID, playerVendorCount.get(playerID) + 1);
-	(&playerVendorCount)->put(playerID, (&playerVendorCount)->get(playerID) + 1);
-}
-
-void AuctionsMapImplementation::decreasePlayerVendorCount(unsigned long long playerID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		int count = playerVendorCount.get(playerID) - 1;
-	int count = (&playerVendorCount)->get(playerID) - 1;
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorCount.
-	if (count <= 0)	// server/zone/managers/auction/AuctionsMap.idl():  			playerVendorCount.drop(playerID);
-	(&playerVendorCount)->drop(playerID);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerVendorCount.put(playerID, count);
-	(&playerVendorCount)->put(playerID, count);
-}
-
-int AuctionsMapImplementation::getPlayerVendorCount(unsigned long long playerID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return playerVendorCount.get(playerID);
-	return (&playerVendorCount)->get(playerID);
-}
-
-int AuctionsMapImplementation::getAuctionCount() {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return auctions.size();
-	return (&auctions)->size();
-}
-
-bool AuctionsMapImplementation::containsAuction(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return auctions.contains(objectID);
-	return (&auctions)->contains(objectID);
-}
-
-void AuctionsMapImplementation::addBazaarItem(unsigned long long objectID, AuctionItem* item) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		auctions.put(objectID, item);
-	(&auctions)->put(objectID, item);
-	// server/zone/managers/auction/AuctionsMap.idl():  		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
-	(&playerAuctionCount)->put(item->getOwnerID(), (&playerAuctionCount)->get(item->getOwnerID()) + 1);
-}
-
-int AuctionsMapImplementation::getPlayerAuctionCount(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return playerAuctionCount.get(objectID);
-	return (&playerAuctionCount)->get(objectID);
-}
-
-void AuctionsMapImplementation::dropBazaarItem(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = auctions.get(objectID);
-	ManagedReference<AuctionItem* > item = (&auctions)->get(objectID);
-	// server/zone/managers/auction/AuctionsMap.idl():  		int 
-	if (item == NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return;
-	return;
-	// server/zone/managers/auction/AuctionsMap.idl():  		int count = playerAuctionCount.get(item.getOwnerID());
-	int count = (&playerAuctionCount)->get(item->getOwnerID());
-	// server/zone/managers/auction/AuctionsMap.idl():  		count = count - 1;
-	count = count - 1;
-	// server/zone/managers/auction/AuctionsMap.idl():  			playerAuctionCount.put(item.getOwnerID(), count);
-	if (count < 1)	// server/zone/managers/auction/AuctionsMap.idl():  			playerAuctionCount.drop(item.getOwnerID());
-	(&playerAuctionCount)->drop(item->getOwnerID());
-
-	else 	// server/zone/managers/auction/AuctionsMap.idl():  			playerAuctionCount.put(item.getOwnerID(), count);
-	(&playerAuctionCount)->put(item->getOwnerID(), count);
-	// server/zone/managers/auction/AuctionsMap.idl():  		auctions.drop(objectID);
-	(&auctions)->drop(objectID);
-}
-
-AuctionItem* AuctionsMapImplementation::getBazaarItem(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return auctions.get(objectID);
-	return (&auctions)->get(objectID);
-}
-
-AuctionItem* AuctionsMapImplementation::getBazaarItem(int index) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return auctions.get(index);
-	return (&auctions)->get(index);
-}
-
-bool AuctionsMapImplementation::checkInStockroom(unsigned long long objectID) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		AuctionItem item = vendorItems.get(objectID);
-	ManagedReference<AuctionItem* > item = (&vendorItems)->get(objectID);
-	// server/zone/managers/auction/AuctionsMap.idl():  			return false;
-	if (item != NULL)	// server/zone/managers/auction/AuctionsMap.idl():  			return item.isInStockroom();
-	return item->isInStockroom();
-
-	else 	// server/zone/managers/auction/AuctionsMap.idl():  			return false;
-	return false;
-}
-
-VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMapImplementation::getBazaarItems() {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return auctions;
-	return (&auctions);
-}
-
-VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMapImplementation::getVendorItems() {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItems;
-	return (&vendorItems);
+int AuctionsMapImplementation::getBazaarItemCount(PlayerObject* ghost) {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return 0;
+	return 0;
 }
 
 /*
@@ -673,94 +319,25 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_GETVENDORITEMCOUNT__:
+	case RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_:
 		{
-			resp->insertSignedInt(getVendorItemCount());
+			String uid; 
+			resp->insertSignedInt(addItem(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(uid), static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_CONTAINSVENDORITEM__LONG_:
+	case RPC_GETITEM__LONG_:
 		{
-			resp->insertBoolean(containsVendorItem(inv->getUnsignedLongParameter()));
+			resp->insertLong(getItem(inv->getUnsignedLongParameter())->_getObjectID());
 		}
 		break;
-	case RPC_ADDVENDORITEM__LONG_AUCTIONITEM_:
+	case RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_:
 		{
-			addVendorItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
+			resp->insertSignedInt(getVendorItemCount(static_cast<PlayerObject*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_GETPLAYERVENDORITEMCOUNT__LONG_:
+	case RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_:
 		{
-			resp->insertSignedInt(getPlayerVendorItemCount(inv->getUnsignedLongParameter()));
-		}
-		break;
-	case RPC_DROPVENDORITEM__LONG_:
-		{
-			dropVendorItem(inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_GETVENDORITEM__LONG_:
-		{
-			resp->insertLong(getVendorItem(inv->getUnsignedLongParameter())->_getObjectID());
-		}
-		break;
-	case RPC_GETVENDORITEM__INT_:
-		{
-			resp->insertLong(getVendorItem(inv->getSignedIntParameter())->_getObjectID());
-		}
-		break;
-	case RPC_INCREASEPLAYERVENDORCOUNT__LONG_:
-		{
-			increasePlayerVendorCount(inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_DECREASEPLAYERVENDORCOUNT__LONG_:
-		{
-			decreasePlayerVendorCount(inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_GETPLAYERVENDORCOUNT__LONG_:
-		{
-			resp->insertSignedInt(getPlayerVendorCount(inv->getUnsignedLongParameter()));
-		}
-		break;
-	case RPC_GETAUCTIONCOUNT__:
-		{
-			resp->insertSignedInt(getAuctionCount());
-		}
-		break;
-	case RPC_CONTAINSAUCTION__LONG_:
-		{
-			resp->insertBoolean(containsAuction(inv->getUnsignedLongParameter()));
-		}
-		break;
-	case RPC_ADDBAZAARITEM__LONG_AUCTIONITEM_:
-		{
-			addBazaarItem(inv->getUnsignedLongParameter(), static_cast<AuctionItem*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_GETPLAYERAUCTIONCOUNT__LONG_:
-		{
-			resp->insertSignedInt(getPlayerAuctionCount(inv->getUnsignedLongParameter()));
-		}
-		break;
-	case RPC_DROPBAZAARITEM__LONG_:
-		{
-			dropBazaarItem(inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_GETBAZAARITEM__LONG_:
-		{
-			resp->insertLong(getBazaarItem(inv->getUnsignedLongParameter())->_getObjectID());
-		}
-		break;
-	case RPC_GETBAZAARITEM__INT_:
-		{
-			resp->insertLong(getBazaarItem(inv->getSignedIntParameter())->_getObjectID());
-		}
-		break;
-	case RPC_CHECKINSTOCKROOM__LONG_:
-		{
-			resp->insertBoolean(checkInStockroom(inv->getUnsignedLongParameter()));
+			resp->insertSignedInt(getBazaarItemCount(static_cast<PlayerObject*>(inv->getObjectParameter())));
 		}
 		break;
 	default:
@@ -768,76 +345,20 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 }
 
-int AuctionsMapAdapter::getVendorItemCount() {
-	return (static_cast<AuctionsMap*>(stub))->getVendorItemCount();
+int AuctionsMapAdapter::addItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+	return (static_cast<AuctionsMap*>(stub))->addItem(vendor, uid, item);
 }
 
-bool AuctionsMapAdapter::containsVendorItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->containsVendorItem(objectID);
+AuctionItem* AuctionsMapAdapter::getItem(unsigned long long id) {
+	return (static_cast<AuctionsMap*>(stub))->getItem(id);
 }
 
-void AuctionsMapAdapter::addVendorItem(unsigned long long objectID, AuctionItem* item) {
-	(static_cast<AuctionsMap*>(stub))->addVendorItem(objectID, item);
+int AuctionsMapAdapter::getVendorItemCount(PlayerObject* ghost) {
+	return (static_cast<AuctionsMap*>(stub))->getVendorItemCount(ghost);
 }
 
-int AuctionsMapAdapter::getPlayerVendorItemCount(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->getPlayerVendorItemCount(objectID);
-}
-
-void AuctionsMapAdapter::dropVendorItem(unsigned long long objectID) {
-	(static_cast<AuctionsMap*>(stub))->dropVendorItem(objectID);
-}
-
-AuctionItem* AuctionsMapAdapter::getVendorItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->getVendorItem(objectID);
-}
-
-AuctionItem* AuctionsMapAdapter::getVendorItem(int index) {
-	return (static_cast<AuctionsMap*>(stub))->getVendorItem(index);
-}
-
-void AuctionsMapAdapter::increasePlayerVendorCount(unsigned long long playerID) {
-	(static_cast<AuctionsMap*>(stub))->increasePlayerVendorCount(playerID);
-}
-
-void AuctionsMapAdapter::decreasePlayerVendorCount(unsigned long long playerID) {
-	(static_cast<AuctionsMap*>(stub))->decreasePlayerVendorCount(playerID);
-}
-
-int AuctionsMapAdapter::getPlayerVendorCount(unsigned long long playerID) {
-	return (static_cast<AuctionsMap*>(stub))->getPlayerVendorCount(playerID);
-}
-
-int AuctionsMapAdapter::getAuctionCount() {
-	return (static_cast<AuctionsMap*>(stub))->getAuctionCount();
-}
-
-bool AuctionsMapAdapter::containsAuction(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->containsAuction(objectID);
-}
-
-void AuctionsMapAdapter::addBazaarItem(unsigned long long objectID, AuctionItem* item) {
-	(static_cast<AuctionsMap*>(stub))->addBazaarItem(objectID, item);
-}
-
-int AuctionsMapAdapter::getPlayerAuctionCount(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->getPlayerAuctionCount(objectID);
-}
-
-void AuctionsMapAdapter::dropBazaarItem(unsigned long long objectID) {
-	(static_cast<AuctionsMap*>(stub))->dropBazaarItem(objectID);
-}
-
-AuctionItem* AuctionsMapAdapter::getBazaarItem(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->getBazaarItem(objectID);
-}
-
-AuctionItem* AuctionsMapAdapter::getBazaarItem(int index) {
-	return (static_cast<AuctionsMap*>(stub))->getBazaarItem(index);
-}
-
-bool AuctionsMapAdapter::checkInStockroom(unsigned long long objectID) {
-	return (static_cast<AuctionsMap*>(stub))->checkInStockroom(objectID);
+int AuctionsMapAdapter::getBazaarItemCount(PlayerObject* ghost) {
+	return (static_cast<AuctionsMap*>(stub))->getBazaarItemCount(ghost);
 }
 
 /*

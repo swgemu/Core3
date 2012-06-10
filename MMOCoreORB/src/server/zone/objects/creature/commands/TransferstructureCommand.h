@@ -85,6 +85,32 @@ public:
 			return GENERALERROR;
 		}
 
+		if (structure->isBuildingObject() && creature->getRootParent() != structure) {
+
+			BuildingObject* building = cast<BuildingObject*>(structure);
+
+			for (int i = 1; i < building->getTotalCellNumber(); ++i) {
+				ManagedReference<CellObject*> cell = building->getCell(i);
+
+				if(cell == NULL)
+					continue;
+
+				for(int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+					ManagedReference<SceneObject*> obj = cell->getContainerObject(j);
+
+					if(obj == NULL)
+						continue;
+
+					if(obj->isNoTrade()) {
+						StringIdChatParameter param("@player_structure:building_has_notrade");
+						param.setTT(obj->getDisplayedName());
+						creature->sendSystemMessage(param);
+						return GENERALERROR;
+					}
+				}
+			}
+		}
+
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isCreatureObject()) {

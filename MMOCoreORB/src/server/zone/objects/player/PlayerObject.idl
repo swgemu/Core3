@@ -116,6 +116,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<StructureObject> ownedStructures;
 	
+	@dereferenced
+	protected SortedVector<unsigned long> ownedVendors;
+	
 	protected byte maximumLots;
 	
 	protected int jediState;
@@ -1295,4 +1298,16 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@local
 	public native Time getLastVisibilityUpdateTimestamp();
+	
+	public void addVendor(SceneObject vendor) {
+		ownedVendors.add(vendor.getObjectID());
+	}
+
+	public void removeVendor(SceneObject vendor) {
+		ownedVendors.removeElement(vendor.getObjectID());
+	}
+	
+	public int getVendorCount() {
+		return ownedVendors.size();
+	}
 }

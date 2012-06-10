@@ -42,7 +42,12 @@
 
 
 object_tangible_vendor_base_base_vendor = object_tangible_vendor_base_shared_base_vendor:new {
-	containerComponent = "VendorContainerComponent"
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
+	
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_base_base_vendor, "object/tangible/vendor/base/base_vendor.iff")

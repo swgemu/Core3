@@ -56,6 +56,20 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace structure {
 
 class StructureObject;
@@ -90,26 +104,6 @@ class CityManager;
 } // namespace server
 
 using namespace server::zone::managers::city;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace terminal {
-namespace vendor {
-namespace bazaar {
-
-class BazaarTerminal;
-
-} // namespace bazaar
-} // namespace vendor
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
 
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
@@ -252,7 +246,7 @@ public:
 
 	int getMaxWithdrawal();
 
-	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
+	Vector<ManagedReference<TangibleObject* > >* getVendorsInCity();
 
 	void setRegionName(const StringId& name);
 
@@ -292,9 +286,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 
@@ -398,7 +392,7 @@ protected:
 
 	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
 
-	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
+	VectorMap<unsigned long long, ManagedReference<TangibleObject* > > bazaars;
 
 	byte cityRank;
 
@@ -543,7 +537,7 @@ public:
 
 	int getMaxWithdrawal();
 
-	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
+	Vector<ManagedReference<TangibleObject* > >* getVendorsInCity();
 
 	void setRegionName(const StringId& name);
 
@@ -583,9 +577,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 
@@ -806,9 +800,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 

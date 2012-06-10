@@ -34,27 +34,16 @@ void VendorCreatureImplementation::initializeTransientMembers() {
 	if (vendor.isInitialized())
 		vendor.rescheduleEvent();
 
-	storedOid = getObjectID();
-	VendorManager::instance()->addVendor(storedOid, &vendor);
+	VendorManager::instance()->addVendor(getObjectID(), &vendor);
 
 }
 
 void VendorCreatureImplementation::finalize() {
-	VendorManager::instance()->dropVendor(storedOid);
-}
-
-void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	CreatureObjectImplementation::loadTemplateData(templateData);
-
-	optionsBitmask = 0x182; // NPC and Vendor Flag
-	pvpStatusBitmask = 0;
-
-	vendor.setVendor(_this.get());
-	vendor.setVendorType(Vendor::NPCVENDOR);
-
+	VendorManager::instance()->dropVendor(getObjectID());
 }
 
 void VendorCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+
 	if (!vendor.isInitialized())
 		CreatureObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
@@ -103,7 +92,7 @@ int VendorCreatureImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 242: {
-		if (player->getRootParent().get() != getRootParent().get()) {
+		if (player->getRootParent() != getRootParent()) {
 			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
 			return 0;
 		}
@@ -138,12 +127,12 @@ int VendorCreatureImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 245: {
-		VendorManager::instance()->sendDestoryTo(player, &vendor);
+		VendorManager::instance()->sendDestroyTo(player, &vendor);
 		return 0;
 	}
 
 	case 246: {
-		VendorManager::instance()->sendRenameVendorTo(player, _this.get());
+		VendorManager::instance()->sendRenameVendorTo(player, _this);
 		return 0;
 	}
 
@@ -157,49 +146,6 @@ int VendorCreatureImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 void VendorCreatureImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
-
-}
-
-void VendorCreatureImplementation::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
-	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
-		return;
-
-	if (player->getObjectID() != vendor.getOwnerID())
-		return;
-
-	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
-	Vector<uint32>* races = tanoData->getPlayerRaces();
-	String race = getObjectTemplate()->getFullTemplateString();
-
-	if (!races->contains(race.hashCode())) {
-		//TODO: Change this so the vendor speaks it can't wear that item. like live.
-		player->sendSystemMessage("That vendor lacks the necessary requirements to wear this object");
-		return;
-	}
-
-	ManagedReference<SceneObject*> clothingParent = clothing->getParent();
-
-	if (clothingParent == NULL)
-		return;
-
-	//clothingParent->removeObject(clothing, true);
-	//clothing->destroyObjectFromWorld(true);
-
-	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
-		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
-		ManagedReference<SceneObject*> slot = getSlottedObject(arrangementDescriptor);
-
-		if (slot != NULL) {
-			slot->destroyObjectFromWorld(true);
-
-			slot->destroyObjectFromDatabase(true);
-		}
-	}
-
-	transferObject(clothing, 4, false);
-	doAnimation("pose_proudly");
-	broadcastObject(clothing, true);
-	//TODO: Add Chat message from vendor when item is added.
 
 }
 

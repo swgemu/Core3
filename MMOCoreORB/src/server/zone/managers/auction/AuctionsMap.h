@@ -25,6 +25,34 @@ class AuctionItem;
 
 using namespace server::zone::objects::auction;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "engine/core/ManagedObject.h"
 
 #include "system/util/VectorMap.h"
@@ -38,45 +66,17 @@ class AuctionsMap : public ManagedObject {
 public:
 	AuctionsMap();
 
-	int getVendorItemCount();
+	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
 
-	bool containsVendorItem(unsigned long long objectID);
+	AuctionItem* getItem(unsigned long long id);
 
-	void addVendorItem(unsigned long long objectID, AuctionItem* item);
+	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(const String& search);
 
-	int getPlayerVendorItemCount(unsigned long long objectID);
+	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(const String& search);
 
-	void dropVendorItem(unsigned long long objectID);
+	int getVendorItemCount(PlayerObject* ghost);
 
-	AuctionItem* getVendorItem(unsigned long long objectID);
-
-	AuctionItem* getVendorItem(int index);
-
-	void increasePlayerVendorCount(unsigned long long playerID);
-
-	void decreasePlayerVendorCount(unsigned long long playerID);
-
-	int getPlayerVendorCount(unsigned long long playerID);
-
-	int getAuctionCount();
-
-	bool containsAuction(unsigned long long objectID);
-
-	void addBazaarItem(unsigned long long objectID, AuctionItem* item);
-
-	int getPlayerAuctionCount(unsigned long long objectID);
-
-	void dropBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(int index);
-
-	bool checkInStockroom(unsigned long long objectID);
-
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getBazaarItems();
-
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getVendorItems();
+	int getBazaarItemCount(PlayerObject* ghost);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -104,60 +104,38 @@ namespace auction {
 
 class AuctionsMapImplementation : public ManagedObjectImplementation {
 protected:
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > auctions;
+	VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> vendorItemsForSale;
 
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > vendorItems;
+	VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> bazaarItemsForSale;
 
-	VectorMap<unsigned long long, int> playerAuctionCount;
-
-	VectorMap<unsigned long long, int> playerVendorItemCount;
-
-	VectorMap<unsigned long long, int> playerVendorCount;
+	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > allItems;
 
 public:
 	AuctionsMapImplementation();
 
 	AuctionsMapImplementation(DummyConstructorParameter* param);
 
-	int getVendorItemCount();
+	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
 
-	bool containsVendorItem(unsigned long long objectID);
+private:
+	int addVendorItem(SceneObject* vendor, String& uid, AuctionItem* item);
 
-	void addVendorItem(unsigned long long objectID, AuctionItem* item);
+	int addBazaarItem(String& uid, AuctionItem* item);
 
-	int getPlayerVendorItemCount(unsigned long long objectID);
+public:
+	AuctionItem* getItem(unsigned long long id);
 
-	void dropVendorItem(unsigned long long objectID);
+	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(const String& search);
 
-	AuctionItem* getVendorItem(unsigned long long objectID);
+	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(const String& search);
 
-	AuctionItem* getVendorItem(int index);
+private:
+	void sendVendorUpdateMail(SceneObject* vendor, bool isEmpty);
 
-	void increasePlayerVendorCount(unsigned long long playerID);
+public:
+	int getVendorItemCount(PlayerObject* ghost);
 
-	void decreasePlayerVendorCount(unsigned long long playerID);
-
-	int getPlayerVendorCount(unsigned long long playerID);
-
-	int getAuctionCount();
-
-	bool containsAuction(unsigned long long objectID);
-
-	void addBazaarItem(unsigned long long objectID, AuctionItem* item);
-
-	int getPlayerAuctionCount(unsigned long long objectID);
-
-	void dropBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(int index);
-
-	bool checkInStockroom(unsigned long long objectID);
-
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getBazaarItems();
-
-	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getVendorItems();
+	int getBazaarItemCount(PlayerObject* ghost);
 
 	WeakReference<AuctionsMap*> _this;
 
@@ -202,41 +180,13 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int getVendorItemCount();
+	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
 
-	bool containsVendorItem(unsigned long long objectID);
+	AuctionItem* getItem(unsigned long long id);
 
-	void addVendorItem(unsigned long long objectID, AuctionItem* item);
+	int getVendorItemCount(PlayerObject* ghost);
 
-	int getPlayerVendorItemCount(unsigned long long objectID);
-
-	void dropVendorItem(unsigned long long objectID);
-
-	AuctionItem* getVendorItem(unsigned long long objectID);
-
-	AuctionItem* getVendorItem(int index);
-
-	void increasePlayerVendorCount(unsigned long long playerID);
-
-	void decreasePlayerVendorCount(unsigned long long playerID);
-
-	int getPlayerVendorCount(unsigned long long playerID);
-
-	int getAuctionCount();
-
-	bool containsAuction(unsigned long long objectID);
-
-	void addBazaarItem(unsigned long long objectID, AuctionItem* item);
-
-	int getPlayerAuctionCount(unsigned long long objectID);
-
-	void dropBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(unsigned long long objectID);
-
-	AuctionItem* getBazaarItem(int index);
-
-	bool checkInStockroom(unsigned long long objectID);
+	int getBazaarItemCount(PlayerObject* ghost);
 
 };
 

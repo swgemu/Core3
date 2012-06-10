@@ -46,8 +46,7 @@ which carries forward this exception.
 #define ROTATEFURNITURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class RotateFurnitureCommand : public QueueCommand {
 public:
@@ -73,17 +72,9 @@ public:
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
 		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? cast<BuildingObject*>( rootParent.get()) : NULL) : NULL;
-
-		if (!ghost->isPrivileged()) {
-			if (buildingObject == NULL) {
-				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
-				return GENERALERROR;
-			}
-
-			if (!buildingObject->isOnAdminList(creature)) {
-				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
-				return GENERALERROR;
-			}
+		if (buildingObject == NULL) {
+			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+			return GENERALERROR;
 		}
 
 		String dir;
@@ -117,30 +108,18 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!ghost->isPrivileged()) {
-			if (obj == NULL || obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj)) {
-				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
-				return GENERALERROR;
+		if (obj->isVendor() && !obj->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)) {
+			return GENERALERROR;
+		}
 
-			//TODO: clean this up
-			} else if (obj->isVendor()) {
-				Vendor* vendor = NULL;
-				if (obj->isTerminal()) {
-					VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(obj.get());
-					vendor = vendorTerminal->getVendor();
+		if (!obj->isVendor() && !buildingObject->isOnAdminList(creature)) {
+			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+			return GENERALERROR;
+		}
 
-				} else if (obj->isCreatureObject()) {
-					VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(obj.get());
-					vendor = vendorCreature->getVendor();
-
-				} if (vendor == NULL)
-					return GENERALERROR;
-
-				if (vendor->isInitialized()) {
-					creature->sendSystemMessage("@player_structure:cant_move"); // You cannot move a vendor after it has been initialized
-					return GENERALERROR;
-				}
-			}
+		if (obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj)) {
+			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+			return GENERALERROR;
 		}
 
 		if (dir == "right")

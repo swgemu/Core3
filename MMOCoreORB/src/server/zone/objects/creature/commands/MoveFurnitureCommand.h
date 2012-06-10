@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:
@@ -88,23 +89,26 @@ public:
 		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
 
-		if (!ghost->isPrivileged()) {
-			if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
-				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
-				return GENERALERROR;
-			}
+		if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
+			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+			return GENERALERROR;
+		}
 
-			BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
+		if (obj->isVendor()) {
+			creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again at the new location.
+			return GENERALERROR;
+		}
 
-			if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature)) {
-				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
-				return GENERALERROR;
-			}
+		BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
 
-			if (buildingObject->containsChildObject(obj) || obj->isVendor()) {
-				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
-				return GENERALERROR;
-			}
+		if (buildingObject == NULL || obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj)) {
+			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+			return GENERALERROR;
+		}
+
+		if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature)) {
+			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+			return GENERALERROR;
 		}
 
 		String dir;
@@ -166,7 +170,13 @@ public:
 			return GENERALERROR;
 		}
 
-		obj->teleport(x, z, y, obj->getParentID());
+		obj->incrementMovementCounter();
+
+		if (obj->getParent() != NULL)
+			obj->teleport(x, z, y, obj->getParent().get()->getObjectID());
+		else
+			obj->teleport(x, z, y);
+
 
 		return SUCCESS;
 	}

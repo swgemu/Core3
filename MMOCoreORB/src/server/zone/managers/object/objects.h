@@ -10,7 +10,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -27,8 +26,6 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/objects/group/GroupObject.h"

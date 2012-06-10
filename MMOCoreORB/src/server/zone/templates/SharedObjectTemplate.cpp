@@ -49,6 +49,8 @@ SharedObjectTemplate::SharedObjectTemplate() {
 	autoRegisterWithPlanetMap = false;
 
 	inheritPermissionsFromParent = false;
+
+	noTrade = false;
 }
 
 void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
@@ -246,6 +248,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		clientGameObjectType = Lua::getIntParameter(state);
 	} else if (varName == "inheritPermissionsFromParent") {
 		inheritPermissionsFromParent = Lua::getBooleanParameter(state);
+	} else if (varName == "noTrade") {
+		noTrade = (bool) Lua::getByteParameter(state);
 	} else if (varName == "groupPermissions") {
 		groupPermissions.removeAll();
 

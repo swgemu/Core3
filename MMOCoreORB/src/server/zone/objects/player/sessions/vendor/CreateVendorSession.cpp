@@ -10,14 +10,16 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "server/zone/managers/auction/AuctionManager.h"
+
 /*
  *	CreateVendorSessionStub
  */
 
-enum {RPC_INITALIZEWINDOW__CREATUREOBJECT_ = 6,RPC_HANDLEMENUSELECT__BYTE_,RPC_CREATEVENDOR__STRING_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_HANDLEVENDORSELECTION__BYTE_,RPC_CREATEVENDOR__STRING_};
 
-CreateVendorSession::CreateVendorSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
-	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(parent);
+CreateVendorSession::CreateVendorSession(CreatureObject* play) : Facade(DummyConstructorParameter::instance()) {
+	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(play);
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("CreateVendorSession");
@@ -31,48 +33,6 @@ CreateVendorSession::~CreateVendorSession() {
 }
 
 
-
-void CreateVendorSession::initalizeWindow(CreatureObject* pl) {
-	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INITALIZEWINDOW__CREATUREOBJECT_);
-		method.addObjectParameter(pl);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->initalizeWindow(pl);
-}
-
-void CreateVendorSession::handleMenuSelect(byte menuID) {
-	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEMENUSELECT__BYTE_);
-		method.addByteParameter(menuID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->handleMenuSelect(menuID);
-}
-
-void CreateVendorSession::createVendor(String& name) {
-	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATEVENDOR__STRING_);
-		method.addAsciiParameter(name);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createVendor(name);
-}
 
 int CreateVendorSession::initializeSession() {
 	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
@@ -111,6 +71,34 @@ int CreateVendorSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
+}
+
+void CreateVendorSession::handleVendorSelection(byte menuID) {
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HANDLEVENDORSELECTION__BYTE_);
+		method.addByteParameter(menuID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->handleVendorSelection(menuID);
+}
+
+void CreateVendorSession::createVendor(String& name) {
+	CreateVendorSessionImplementation* _implementation = static_cast<CreateVendorSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATEVENDOR__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createVendor(name);
 }
 
 DistributedObjectServant* CreateVendorSession::_getImplementation() {
@@ -224,7 +212,7 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 	}
 
 	if (_name == "CreateVendorSession.vendor") {
-		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&vendor, stream);
+		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&vendor, stream);
 		return true;
 	}
 
@@ -277,7 +265,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&vendor, stream);
+	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&vendor, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -317,23 +305,24 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	return _count + 6;
 }
 
-CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObject* parent) {
+CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObject* play) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		Logger.setLoggingName("CreateVendorSession");
 	Logger::setLoggingName("CreateVendorSession");
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		Logger.setLogging(true);
 	Logger::setLogging(true);
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		initializeSession();
-	initializeSession();
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		player = play;
+	player = play;
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		vendor = null;
+	vendor = NULL;
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		suiNameVendor = null;
+	suiNameVendor = NULL;
 }
 
 int CreateVendorSessionImplementation::cancelSession() {
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		if 
+	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
 	if (player != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			player.dropActiveSession(SessionFacadeType.CREATEVENDOR);
 	player.get()->dropActiveSession(SessionFacadeType::CREATEVENDOR);
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
-	if (vendor != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			vendor.dropActiveSession(SessionFacadeType.CREATEVENDOR);
-	vendor.get()->dropActiveSession(SessionFacadeType::CREATEVENDOR);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		return 0;
@@ -370,22 +359,6 @@ void CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_INITALIZEWINDOW__CREATUREOBJECT_:
-		{
-			initalizeWindow(static_cast<CreatureObject*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_HANDLEMENUSELECT__BYTE_:
-		{
-			handleMenuSelect(inv->getByteParameter());
-		}
-		break;
-	case RPC_CREATEVENDOR__STRING_:
-		{
-			String name; 
-			createVendor(inv->getAsciiParameter(name));
-		}
-		break;
 	case RPC_INITIALIZESESSION__:
 		{
 			resp->insertSignedInt(initializeSession());
@@ -401,21 +374,20 @@ void CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 			resp->insertSignedInt(clearSession());
 		}
 		break;
+	case RPC_HANDLEVENDORSELECTION__BYTE_:
+		{
+			handleVendorSelection(inv->getByteParameter());
+		}
+		break;
+	case RPC_CREATEVENDOR__STRING_:
+		{
+			String name; 
+			createVendor(inv->getAsciiParameter(name));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
-}
-
-void CreateVendorSessionAdapter::initalizeWindow(CreatureObject* pl) {
-	(static_cast<CreateVendorSession*>(stub))->initalizeWindow(pl);
-}
-
-void CreateVendorSessionAdapter::handleMenuSelect(byte menuID) {
-	(static_cast<CreateVendorSession*>(stub))->handleMenuSelect(menuID);
-}
-
-void CreateVendorSessionAdapter::createVendor(String& name) {
-	(static_cast<CreateVendorSession*>(stub))->createVendor(name);
 }
 
 int CreateVendorSessionAdapter::initializeSession() {
@@ -428,6 +400,14 @@ int CreateVendorSessionAdapter::cancelSession() {
 
 int CreateVendorSessionAdapter::clearSession() {
 	return (static_cast<CreateVendorSession*>(stub))->clearSession();
+}
+
+void CreateVendorSessionAdapter::handleVendorSelection(byte menuID) {
+	(static_cast<CreateVendorSession*>(stub))->handleVendorSelection(menuID);
+}
+
+void CreateVendorSessionAdapter::createVendor(String& name) {
+	(static_cast<CreateVendorSession*>(stub))->createVendor(name);
 }
 
 /*

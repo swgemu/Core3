@@ -47,161 +47,54 @@ package server.zone.managers.auction;
 import engine.core.ManagedObject;
 import system.util.VectorMap;
 import server.zone.objects.auction.AuctionItem;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerObject;
 
 class AuctionsMap extends ManagedObject {
-	@dereferenced
-	protected VectorMap<unsigned long, AuctionItem> auctions;
-
-	@dereferenced 
-	protected VectorMap<unsigned long, AuctionItem> vendorItems;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, int> playerAuctionCount;
+	protected VectorMap<string, SortedVector<AuctionItem> > vendorItemsForSale;
+	
+	@dereferenced
+	protected VectorMap<string, SortedVector<AuctionItem> > bazaarItemsForSale;
 
 	@dereferenced
-	protected VectorMap<unsigned long, int> playerVendorItemCount;
-
-	@dereferenced
-	protected VectorMap<unsigned long, int> playerVendorCount;
+	protected VectorMap<unsigned long, AuctionItem> allItems;
 	
 	public AuctionsMap() {
-		auctions.setNullValue(null);
-		auctions.setNoDuplicateInsertPlan();
-
-		vendorItems.setNullValue(null);
-		vendorItems.setNoDuplicateInsertPlan();
+		vendorItemsForSale.setNullValue(null);
+		vendorItemsForSale.setNoDuplicateInsertPlan();
 		
-		playerAuctionCount.setNullValue(0);
-		playerAuctionCount.setAllowOverwriteInsertPlan();
-
-		playerVendorItemCount.setNullValue(0);
-		playerVendorItemCount.setAllowOverwriteInsertPlan();
-
-		playerVendorCount.setNullValue(0);
-		playerVendorCount.setAllowOverwriteInsertPlan();
-
-	}
-
-	public int getVendorItemCount() {
-		return vendorItems.size();
-	}
-
-	public boolean containsVendorItem(unsigned long objectID) {
-		return vendorItems.contains(objectID);
-	}
-
-	public void addVendorItem(unsigned long objectID, AuctionItem item) {
-		vendorItems.put(objectID, item);
-		playerVendorItemCount.put(item.getOwnerID(), playerVendorItemCount.get(item.getOwnerID()) + 1);
-	}
-	
-	public int getPlayerVendorItemCount(unsigned long objectID) {
-		return playerVendorItemCount.get(objectID);
-	}
-
-	public void dropVendorItem(unsigned long objectID) {
-		AuctionItem item = vendorItems.get(objectID);
+		bazaarItemsForSale.setNullValue(null);
+		bazaarItemsForSale.setNoDuplicateInsertPlan();
 		
-		if (item == null)
-			return;
-		
-		int count = playerVendorItemCount.get(item.getOwnerID());
-		
-		count = count - 1;
-		
-		if (count < 1)
-			playerVendorItemCount.drop(item.getOwnerID());
-		else
-			playerVendorItemCount.put(item.getOwnerID(), count);
-		
-		vendorItems.drop(objectID);
-	}
-	
-	public AuctionItem getVendorItem(unsigned long objectID) {
-		return vendorItems.get(objectID);
-	}
-	
-	public AuctionItem getVendorItem(int index) {
-		return vendorItems.get(index);
+		allItems.setNullValue(null);
+		allItems.setNoDuplicateInsertPlan();
 	}
 
-	public void increasePlayerVendorCount(unsigned long playerID) {
-		playerVendorCount.put(playerID, playerVendorCount.get(playerID) + 1);
-	}
+	public native int addItem(SceneObject vendor, string uid, AuctionItem item);
+	private native int addVendorItem(SceneObject vendor, string uid, AuctionItem item);
+	private native int addBazaarItem(string uid, AuctionItem item);
 
-	public void decreasePlayerVendorCount(unsigned long playerID) {
-		int count = playerVendorCount.get(playerID) - 1;
-		if (count <= 0)
-			playerVendorCount.drop(playerID);
-
-		playerVendorCount.put(playerID, count);
-	}
-
-	public int getPlayerVendorCount(unsigned long playerID) {
-		return playerVendorCount.get(playerID);
-	}
-
-//=========================
-	
-	public int getAuctionCount() {
-		return auctions.size();
-	}
-	
-	public boolean containsAuction(unsigned long objectID) {
-		return auctions.contains(objectID);
-	}
-	
-	public void addBazaarItem(unsigned long objectID, AuctionItem item) {
-		auctions.put(objectID, item);
-		playerAuctionCount.put(item.getOwnerID(), playerAuctionCount.get(item.getOwnerID()) + 1);
-	}
-	
-	public int getPlayerAuctionCount(unsigned long objectID) {
-		return playerAuctionCount.get(objectID);
-	}
-	
-	public void dropBazaarItem(unsigned long objectID) {
-		AuctionItem item = auctions.get(objectID);
-		
-		if (item == null)
-			return;
-		
-		int count = playerAuctionCount.get(item.getOwnerID());
-		
-		count = count - 1;
-		
-		if (count < 1)
-			playerAuctionCount.drop(item.getOwnerID());
-		else
-			playerAuctionCount.put(item.getOwnerID(), count);
-		
-		auctions.drop(objectID);
-	}
-	
-	public AuctionItem getBazaarItem(unsigned long objectID) {
-		return auctions.get(objectID);
-	}
-	
-	public AuctionItem getBazaarItem(int index) {
-		return auctions.get(index);
-	}
-
-	public boolean checkInStockroom(unsigned long objectID) {
-		AuctionItem item = vendorItems.get(objectID);
-		
-		if (item != null)
-			return item.isInStockroom();
-		else
-			return false;
-	}
-	
-	@local
-	public VectorMap<unsigned long, AuctionItem> getBazaarItems() {
-		return auctions;
+	public AuctionItem getItem(unsigned long id) {
+		return allItems.get(id);
 	}
 
 	@local
-	public VectorMap<unsigned long, AuctionItem> getVendorItems() {
-		return vendorItems;
+	@dereferenced
+	public native SortedVector<AuctionItem> getVendorItems(final string search);
+	
+	@local
+	@dereferenced
+	public native SortedVector<AuctionItem> getBazaarItems(final string search);
+	
+	private native void sendVendorUpdateMail(SceneObject vendor, boolean isEmpty);
+
+	public int getVendorItemCount(PlayerObject ghost) {
+		return 0;
+	}
+	
+	public int getBazaarItemCount(PlayerObject ghost) {
+		return 0;
 	}
 }

@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "server/zone/objects/auction/AuctionItem.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
 

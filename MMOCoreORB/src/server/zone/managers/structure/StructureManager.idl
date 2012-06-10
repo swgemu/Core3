@@ -181,6 +181,7 @@ class StructureManager extends ManagedService implements Logger {
 	 */
 	public native void promptPayMaintenance(StructureObject structure, CreatureObject creature, SceneObject terminal = null);
 	
+
 	/**
 	 * Attempts to pay the requested amount to the structure, and notifies the creature.
 	 * @param structure The structure being paid maintenance.

@@ -34,6 +34,8 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "LairObserver.h"
+#include "server/zone/packets/object/SpatialChat.h"
+
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -609,6 +611,50 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 }
 
+bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
+
+	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
+		return false;
+
+	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
+	Vector<uint32>* races = tanoData->getPlayerRaces();
+	String race = creature->getObjectTemplate()->getFullTemplateString();
+
+	if (!races->contains(race.hashCode())) {
+		String message = "I can't wear that";
+		SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
+		creature->broadcastMessage(cmsg, false);
+		return false;
+	}
+
+	ManagedReference<SceneObject*> clothingParent = clothing->getParent();
+
+	if (clothingParent == NULL)
+		return false;
+
+	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
+		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
+		ManagedReference<SceneObject*> slot = creature->getSlottedObject(arrangementDescriptor);
+
+		if (slot != NULL) {
+			slot->destroyObjectFromWorld(true);
+			slot->destroyObjectFromDatabase(true);
+		}
+	}
+
+	creature->transferObject(clothing, 4, false);
+	creature->doAnimation("pose_proudly");
+	creature->broadcastObject(clothing, true);
+
+	String message = "Thank you, much better";
+	SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
+	creature->broadcastMessage(cmsg, false);
+
+	return true;
+}
+
+
 Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
 	return spawnAreaMap.getRandomJediTrainer();
 }
+

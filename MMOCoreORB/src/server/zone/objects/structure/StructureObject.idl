@@ -197,6 +197,7 @@ class StructureObject extends TangibleObject {
 	public boolean isOnEntryList(CreatureObject player) {
 		return structurePermissionList.isOnPermissionList("ENTRY", player.getFirstName())
 			|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
+			|| structurePermissionList.isOnPermissionList("VENDOR", player.getFirstName())
 			|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
 	}
 	
@@ -284,9 +285,7 @@ class StructureObject extends TangibleObject {
 	public void setOwnerName(final string ownerName) {
 		structurePermissionList.setOwnerName(ownerName);
 	}
-	
-	public native void createVendor(CreatureObject player);
-	
+
 	/**
 	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
 	 * @return int The cost to redeed this building.

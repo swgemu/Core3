@@ -770,6 +770,12 @@ public:
 
 	Time getLastVisibilityUpdateTimestamp();
 
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -827,6 +833,8 @@ protected:
 	bool teleporting;
 
 	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
+
+	SortedVector<unsigned long long> ownedVendors;
 
 	byte maximumLots;
 
@@ -1415,6 +1423,12 @@ public:
 
 	Time getLastVisibilityUpdateTimestamp();
 
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1839,6 +1853,12 @@ public:
 	float getVisibility();
 
 	void setVisibility(float value);
+
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
 
 };
 

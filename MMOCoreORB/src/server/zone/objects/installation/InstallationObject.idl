@@ -83,6 +83,12 @@ class InstallationObject extends StructureObject {
 	protected Time resourceHopperTimestamp;
 	
 	@dereferenced
+	protected Time lastStartTime;
+	
+	@dereferenced
+	protected Time lastStopTime;
+	
+	@dereferenced
 	protected HopperList resourceHopper; // ID + Size
 
 	protected float hopperSizeMax;

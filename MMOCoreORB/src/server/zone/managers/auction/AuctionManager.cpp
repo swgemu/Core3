@@ -14,11 +14,9 @@
 
 #include "server/zone/managers/auction/AuctionsMap.h"
 
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
-
 #include "server/zone/objects/auction/AuctionItem.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -26,7 +24,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__};
+enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -57,33 +55,7 @@ void AuctionManager::initialize() {
 		_implementation->initialize();
 }
 
-void AuctionManager::checkVendorItems() {
-	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHECKVENDORITEMS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->checkVendorItems();
-}
-
-void AuctionManager::checkAuctions() {
-	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHECKAUCTIONS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->checkAuctions();
-}
-
-void AuctionManager::addSaleItem(CreatureObject* player, unsigned long long objectid, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium) {
+void AuctionManager::addSaleItem(CreatureObject* player, unsigned long long objectid, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -92,7 +64,7 @@ void AuctionManager::addSaleItem(CreatureObject* player, unsigned long long obje
 		_implementation->addSaleItem(player, objectid, vendor, description, price, duration, auction, premium);
 }
 
-AuctionItem* AuctionManager::createVendorItem(CreatureObject* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium) {
+AuctionItem* AuctionManager::createVendorItem(CreatureObject* player, SceneObject* objectToSell, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -101,7 +73,7 @@ AuctionItem* AuctionManager::createVendorItem(CreatureObject* player, SceneObjec
 		return _implementation->createVendorItem(player, objectToSell, vendor, description, price, duration, auction, premium);
 }
 
-int AuctionManager::checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price, bool premium) {
+int AuctionManager::checkSaleItem(CreatureObject* player, SceneObject* object, TangibleObject* vendor, int price, bool premium) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -145,43 +117,16 @@ void AuctionManager::getData(CreatureObject* player, int extent, unsigned long l
 		_implementation->getData(player, extent, vendorObjectID, screen, category, count, offset);
 }
 
-void AuctionManager::getLocalVendorData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset) {
+void AuctionManager::getAuctionData(CreatureObject* player, TangibleObject* vendor, String& search, int screen, unsigned int category, int count, int offset) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->getLocalVendorData(player, vendor, screen, category, count, offset);
+		_implementation->getAuctionData(player, vendor, search, screen, category, count, offset);
 }
 
-void AuctionManager::getGalaxyData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset) {
-	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->getGalaxyData(player, vendor, screen, category, count, offset);
-}
-
-void AuctionManager::getPlanetData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset) {
-	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->getPlanetData(player, vendor, screen, category, count, offset);
-}
-
-void AuctionManager::getRegionData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset) {
-	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->getRegionData(player, vendor, screen, category, count, offset);
-}
-
-int AuctionManager::checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, Vendor* vendor) {
+int AuctionManager::checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -289,7 +234,7 @@ void AuctionManager::cancelItem(CreatureObject* player, unsigned long long objec
 		_implementation->cancelItem(player, objectID);
 }
 
-AuctionQueryHeadersResponseMessage* AuctionManager::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset) {
+AuctionQueryHeadersResponseMessage* AuctionManager::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, TangibleObject* vendor, SortedVector<ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -309,6 +254,32 @@ AuctionsMap* AuctionManager::getAuctionMap() {
 		return static_cast<AuctionsMap*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getAuctionMap();
+}
+
+void AuctionManager::checkVendorItems() {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CHECKVENDORITEMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->checkVendorItems();
+}
+
+void AuctionManager::checkAuctions() {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CHECKAUCTIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->checkAuctions();
 }
 
 DistributedObjectServant* AuctionManager::_getImplementation() {
@@ -500,16 +471,6 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			initialize();
 		}
 		break;
-	case RPC_CHECKVENDORITEMS__:
-		{
-			checkVendorItems();
-		}
-		break;
-	case RPC_CHECKAUCTIONS__:
-		{
-			checkAuctions();
-		}
-		break;
 	case RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_:
 		{
 			getItemAttributes(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
@@ -555,6 +516,16 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertLong(getAuctionMap()->_getObjectID());
 		}
 		break;
+	case RPC_CHECKVENDORITEMS__:
+		{
+			checkVendorItems();
+		}
+		break;
+	case RPC_CHECKAUCTIONS__:
+		{
+			checkAuctions();
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -562,14 +533,6 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 void AuctionManagerAdapter::initialize() {
 	(static_cast<AuctionManager*>(stub))->initialize();
-}
-
-void AuctionManagerAdapter::checkVendorItems() {
-	(static_cast<AuctionManager*>(stub))->checkVendorItems();
-}
-
-void AuctionManagerAdapter::checkAuctions() {
-	(static_cast<AuctionManager*>(stub))->checkAuctions();
 }
 
 void AuctionManagerAdapter::getItemAttributes(CreatureObject* player, unsigned long long objectid) {
@@ -606,6 +569,14 @@ void AuctionManagerAdapter::cancelItem(CreatureObject* player, unsigned long lon
 
 AuctionsMap* AuctionManagerAdapter::getAuctionMap() {
 	return (static_cast<AuctionManager*>(stub))->getAuctionMap();
+}
+
+void AuctionManagerAdapter::checkVendorItems() {
+	(static_cast<AuctionManager*>(stub))->checkVendorItems();
+}
+
+void AuctionManagerAdapter::checkAuctions() {
+	(static_cast<AuctionManager*>(stub))->checkAuctions();
 }
 
 /*

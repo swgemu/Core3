@@ -71,13 +71,18 @@ class BuildingObject extends StructureObject {
 	protected unsigned long deedObjectID;
 	
 	protected int accessFee;
+	protected int accessDuration;
+	protected transient unsigned int lastAccessFeeChange;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned int> paidAccessList;
 	
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
 
 	protected unicode signName;
-	
+		
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 		
@@ -89,6 +94,8 @@ class BuildingObject extends StructureObject {
 		totalCellNumber = 0;
 		
 		accessFee = 0;
+		accessDuration = 0;
+		lastAccessFeeChange = 0;
 		
 		deedObjectID = 0;
 		
@@ -254,15 +261,7 @@ class BuildingObject extends StructureObject {
 	public boolean isBuildingObject() {
 		return true;
 	}
-	
-	public abstract boolean isHospitalBuildingObject() {
-		return false;
-	}
-	
-	public abstract boolean isRecreationalBuildingObject() {
-		return false;
-	}
-	
+
 	public void setSignObject(SignObject sign) {
 		signObject = sign;
 	}
@@ -271,18 +270,6 @@ class BuildingObject extends StructureObject {
 		return signObject;
 	}
 
-	public abstract boolean isCityHallBuilding() {
-		return false;
-	}
-	
-	public void setAccessFee(int fee) {
-		accessFee = fee;
-	}
-	
-	public int getAccessFee() {
-		return accessFee;
-	}
-	
 	public boolean isPublicStructure() {
 		return publicStructure;
 	}
@@ -323,4 +310,27 @@ class BuildingObject extends StructureObject {
 		
 		return "";
 	}
+	
+	public boolean hasAccessFee() {
+		return accessFee > 0;
+	}
+	
+	public native boolean canChangeAccessFee();
+	
+	public native void setAccessFee(int fee, int duration);
+	
+	public void removeAccessFee() {
+		accessFee = 0;
+		accessDuration = 0;
+		paidAccessList.removeAll();
+		updatePaidAccessList();
+	}
+	
+	public native int getAccessFeeDelay();
+	
+	private native void promptPayAccessFee(CreatureObject player);
+	
+	public native void payAccessFee(CreatureObject player);
+
+	public native void updatePaidAccessList();
 }

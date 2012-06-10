@@ -183,18 +183,6 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 	return objid == ownerObjectID;
 }
 
-void StructureObjectImplementation::createVendor(CreatureObject* player) {
-	if (!isPublicStructure()) {
-		player->sendSystemMessage("@player_structure:vendor_public_only");
-		return;
-	}
-
-	//Create Session
-	ManagedReference<CreateVendorSession*> session = new CreateVendorSession(player);
-	session->initalizeWindow(player);
-
-}
-
 void StructureObjectImplementation::updateStructureStatus() {
 	/** Points when updateStructureStatus should occur:
 	 * Prior to inserting or withdrawing maintenance or power, and after the deposit/withdrawal.

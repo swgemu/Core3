@@ -290,6 +290,8 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 			if (prototype == NULL) {
 				crafter->sendSystemMessage("@ui_craft:err_no_prototype");
+				closeCraftingWindow(1);
+				cancelSession();
 				return;
 			}
 
@@ -307,6 +309,10 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 		} else {
 			crafter->sendSystemMessage("This type of object has not yet been implemented");
 		}
+	} else {
+		crafter->sendSystemMessage("@ui_craft:err_no_crafting_tool");
+		closeCraftingWindow(1);
+		cancelSession();
 	}
 }
 

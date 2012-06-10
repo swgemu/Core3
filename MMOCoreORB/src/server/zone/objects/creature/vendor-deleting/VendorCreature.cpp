@@ -20,7 +20,7 @@
  *	VendorCreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__,RPC_ISNOTRADE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -211,6 +211,19 @@ bool VendorCreature::isVendorCreature() {
 		return _implementation->isVendorCreature();
 }
 
+bool VendorCreature::isNoTrade() {
+	VendorCreatureImplementation* _implementation = static_cast<VendorCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISNOTRADE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isNoTrade();
+}
+
 DistributedObjectServant* VendorCreature::_getImplementation() {
 
 	_updated = true;
@@ -249,39 +262,39 @@ void VendorCreatureImplementation::_setStub(DistributedObjectStub* stub) {
 }
 
 DistributedObjectStub* VendorCreatureImplementation::_getStub() {
-	return _this.get();
+	return _this;
 }
 
 VendorCreatureImplementation::operator const VendorCreature*() {
-	return _this.get();
+	return _this;
 }
 
 void VendorCreatureImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this->lock(doLock);
 }
 
 void VendorCreatureImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this->lock(obj);
 }
 
 void VendorCreatureImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this->rlock(doLock);
 }
 
 void VendorCreatureImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this->wlock(doLock);
 }
 
 void VendorCreatureImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this->wlock(obj);
 }
 
 void VendorCreatureImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this->unlock(doLock);
 }
 
 void VendorCreatureImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this->runlock(doLock);
 }
 
 void VendorCreatureImplementation::_serializationHelperMethod() {
@@ -352,8 +365,6 @@ VendorCreatureImplementation::VendorCreatureImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		Logger.setLoggingName("VendorCreature");
 	Logger::setLoggingName("VendorCreature");
-	// server/zone/objects/creature/vendor/VendorCreature.idl():  		storedOid = 0;
-	storedOid = 0;
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 	CreatureObjectImplementation::getContainerPermissions()->setInheritPermissionsFromParent(true);
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		ContainerPermissions permissions = super.getContainerPermissions();
@@ -385,6 +396,11 @@ bool VendorCreatureImplementation::isVendor() {
 }
 
 bool VendorCreatureImplementation::isVendorCreature() {
+	// server/zone/objects/creature/vendor/VendorCreature.idl():  		return true;
+	return true;
+}
+
+bool VendorCreatureImplementation::isNoTrade() {
 	// server/zone/objects/creature/vendor/VendorCreature.idl():  		return true;
 	return true;
 }
@@ -459,6 +475,11 @@ void VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(isVendorCreature());
 		}
 		break;
+	case RPC_ISNOTRADE__:
+		{
+			resp->insertBoolean(isNoTrade());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -506,6 +527,10 @@ bool VendorCreatureAdapter::isVendor() {
 
 bool VendorCreatureAdapter::isVendorCreature() {
 	return (static_cast<VendorCreature*>(stub))->isVendorCreature();
+}
+
+bool VendorCreatureAdapter::isNoTrade() {
+	return (static_cast<VendorCreature*>(stub))->isNoTrade();
 }
 
 /*

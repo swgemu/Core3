@@ -23,12 +23,11 @@ void VendorTerminalImplementation::initializeTransientMembers() {
 		vendor.rescheduleEvent();
 
 	VendorManager::instance()->addVendor(getObjectID(), &vendor);
-	storedOid = getObjectID();
 
 }
 
 void VendorTerminalImplementation::finalize() {
-	VendorManager::instance()->dropVendor(storedOid);
+	VendorManager::instance()->dropVendor(getObjectID());
 }
 
 void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -36,7 +35,7 @@ void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templa
 	optionsBitmask = 0x108;
 	pvpStatusBitmask = 0;
 
-	vendor.setVendor(_this.get());
+	vendor.setVendor(_this);
 	vendor.setVendorType(Vendor::VENDORTERMINAL);
 
 }
@@ -88,7 +87,7 @@ int VendorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 242: {
-		if (player->getRootParent().get() != getRootParent().get()) {
+		if (player->getRootParent() != getRootParent()) {
 			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
 			return 0;
 		}
@@ -121,12 +120,12 @@ int VendorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	}
 
 	case 245: {
-		VendorManager::instance()->sendDestoryTo(player, &vendor);
+		VendorManager::instance()->sendDestroyTo(player, &vendor);
 		return 0;
 	}
 
 	case 246: {
-		VendorManager::instance()->sendRenameVendorTo(player, _this.get());
+		VendorManager::instance()->sendRenameVendorTo(player, _this);
 		return 0;
 	}
 

@@ -97,6 +97,8 @@ protected:
 
 	SortedVector<String> loadedDerivedFiles;
 
+	bool noTrade;
+
 public:
 	const static int SHOT = 'SHOT';
 	const static int STOT = 'STOT';
@@ -297,6 +299,10 @@ public:
 
 	inline float getMaxScale() {
 		return scale.getMax();
+	}
+
+	inline bool isNoTrade() {
+		return noTrade;
 	}
 
 	inline float getScaleThresholdBeforeExtentTest() const {

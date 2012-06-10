@@ -873,6 +873,7 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 		return;
 	}
 
+	Locker locker(inventory);
 	// Check inventory for resource and add if existing
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object =
@@ -895,8 +896,8 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 	// Create New resource container if one isn't found in inventory
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
-	harvestedResource->sendTo(player, true);
-	inventory->transferObject(harvestedResource, -1, true);
+	inventory->transferObject(harvestedResource, -1, false);
+	inventory->broadcastObject(harvestedResource, true);
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
