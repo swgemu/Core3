@@ -113,8 +113,13 @@ void SpawnAreaMap::loadStaticSpawns() {
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));
 
-				if (!moodString.isEmpty())
+				if (!moodString.isEmpty()) {
 					creatureObject->setMoodString(moodString);
+
+					//TODO: remove after fixing commoners
+					if (moodString == "conversation" || moodString == "calm")
+						creatureObject->setPvpStatusBitmask(0);
+				}
 
 				if (!customName.isEmpty())
 					creatureObject->setCustomObjectName(customName, true);

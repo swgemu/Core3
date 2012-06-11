@@ -73,6 +73,13 @@ public:
 				return;
 			}
 
+			if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
+				ErrorMessage* errMsg = new ErrorMessage("Login Error", "You reached the max online character count.", 0x0);
+				client->sendMessage(errMsg);
+
+				return;
+			}
+
 			player->setClient(client);
 			client->setPlayer(obj);
 

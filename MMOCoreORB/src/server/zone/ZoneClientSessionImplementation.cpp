@@ -52,6 +52,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy* session)
 		:  ManagedObjectImplementation() {
@@ -141,14 +142,19 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 			// TODO: find a proper way to acqure zone server
 			ZoneServer* zoneServer = player->getZoneServer();
 
-			if (zoneServer != NULL)
+			if (zoneServer != NULL) {
 				zoneServer->decreaseOnlinePlayers();
+
+				zoneServer->getPlayerManager()->decreaseOnlineCharCount(_this.get());
+
+			}
 		} else if (playerCreature != player) {
 			// TODO: find a proper way to acqure zone server
 			ZoneServer* zoneServer = playerCreature->getZoneServer();
 
-			if (zoneServer != NULL)
+			if (zoneServer != NULL) {
 				zoneServer->increaseOnlinePlayers();
+			}
 		}
 	}
 

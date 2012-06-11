@@ -3259,3 +3259,68 @@ SortedVector<String> PlayerManagerImplementation::getTeachableSkills(CreatureObj
 
 	return skills;
 }
+
+void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* client) {
+	Locker locker(&onlineMapMutex);
+
+	uint32 accountId = client->getAccountID();
+
+	if (!onlineZoneClientMap.containsKey(accountId))
+		return;
+
+	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
+
+	for (int i = 0; i < clients.size(); ++i)
+		if (clients.get(i) == client) {
+			clients.remove(i);
+
+			break;
+		}
+
+	if (clients.size() == 0)
+		onlineZoneClientMap.remove(accountId);
+	else
+		onlineZoneClientMap.put(accountId, clients);
+}
+
+bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
+	Locker locker(&onlineMapMutex);
+
+	uint32 accountId = client->getAccountID();
+
+	if (!onlineZoneClientMap.containsKey(accountId)) {
+		Vector<Reference<ZoneClientSession*> > clients;
+		clients.add(client);
+
+		onlineZoneClientMap.put(accountId, clients);
+
+		return true;
+	}
+
+	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
+
+	int onlineCount = 0;
+
+	for (int i = 0; i < clients.size(); ++i) {
+		ZoneClientSession* session = clients.get(i);
+
+		if (session->getPlayer() != NULL)
+			++onlineCount;
+	}
+
+	if (onlineCount >= MAX_CHAR_ONLINE_COUNT)
+		return false;
+
+	clients.add(client);
+
+	onlineZoneClientMap.put(accountId, clients);
+
+	return true;
+}
+
+/*
+int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
+	//onlineMapMutex.rlock()
+	return 0;
+}
+*/
