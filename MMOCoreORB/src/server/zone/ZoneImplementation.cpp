@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
