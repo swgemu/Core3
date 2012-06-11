@@ -1489,16 +1489,20 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
+	if (objectToTrade == NULL) {
+		player->sendSystemMessage("@container_error_message:container10");
+		handleAbortTradeMessage(player);
+		return;
+	}
 
-	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
-			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVEOUT)) {
-		player->sendSystemMessage("@container_error_message:container26");
+	if (!objectToTrade->isASubChildOf(player) || !objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
+		player->sendSystemMessage("@container_error_message:container08");
 		handleAbortTradeMessage(player);
 		return;
 	}
 
 	if (objectToTrade->isNoTrade()) {
-		player->sendSystemMessage("@container_error_message:container26");
+		player->sendSystemMessage("@container_error_message:container25");
 		handleAbortTradeMessage(player);
 		return;
 	}
