@@ -384,33 +384,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	PlayerManager* playerManager = zoneServer.get()->getPlayerManager();
 
-
-	try {
-		StringBuffer query;
-		//query << "SELECT UNIX_TIMESTAMP(creation_date) FROM characters c WHERE galaxy_id = " << zoneServer.get()->getGalaxyID() << " AND account_id = " << client->getAccountID() << " ORDER BY creation_date desc;";
-		uint32 galaxyId = zoneServer.get()->getGalaxyID();
-		uint32 accountId = client->getAccountID();
-		query << "(SELECT UNIX_TIMESTAMP(c.creation_date) as t FROM characters as c WHERE c.account_id = " << accountId << " AND c.galaxy_id = " << galaxyId << " ORDER BY c.creation_date DESC) UNION (SELECT UNIX_TIMESTAMP(d.creation_date) FROM deleted_characters as d WHERE d.account_id = " << accountId << " AND d.galaxy_id = " << galaxyId << " ORDER BY d.creation_date DESC) ORDER BY t DESC LIMIT 1";
-
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
-
-		if (res != NULL && res->next()) {
-			uint32 sec = res->getUnsignedInt(0);
-
-			Time timeVal(sec);
-
-			if (timeVal.miliDifference() < 86400000) {
-				ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only create 1 character ever 24 hours", 0x0);
-				client->sendMessage(errMsg);
-
-				return false;
-			}
-			//timeVal.se
-		}
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	}
-
 	SkillManager* skillManager = SkillManager::instance();
 
 	//Get all the data and validate it.
@@ -535,30 +508,58 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 				//if (client->has)
 
-				Locker locker(&charCountMutex);
-
-				if (lastCreatedCharacter.containsKey(accID)) {
-					Time lastCreatedTime = lastCreatedCharacter.get(accID);
-
-					if (lastCreatedTime.miliDifference() < 86400000) {
-						ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only create 1 character ever 24 hours", 0x0);
-						client->sendMessage(errMsg);
-
-						return false;
-					} else {
-						lastCreatedTime.updateToCurrentTime();
-
-						lastCreatedCharacter.put(accID, lastCreatedTime);
-					}
-				} else {
-					lastCreatedCharacter.put(accID, Time());
-				}
-
 				int accountPermissionLevel = playerAccount->getAdminLevel();
 				String accountName = playerAccount->getUsername();
 
 				if(accountPermissionLevel > 0) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
+				}
+
+				if (accountPermissionLevel <= 10) {
+					try {
+						StringBuffer query;
+						//query << "SELECT UNIX_TIMESTAMP(creation_date) FROM characters c WHERE galaxy_id = " << zoneServer.get()->getGalaxyID() << " AND account_id = " << client->getAccountID() << " ORDER BY creation_date desc;";
+						uint32 galaxyId = zoneServer.get()->getGalaxyID();
+						uint32 accountId = client->getAccountID();
+						query << "(SELECT UNIX_TIMESTAMP(c.creation_date) as t FROM characters as c WHERE c.account_id = " << accountId << " AND c.galaxy_id = " << galaxyId << " ORDER BY c.creation_date DESC) UNION (SELECT UNIX_TIMESTAMP(d.creation_date) FROM deleted_characters as d WHERE d.account_id = " << accountId << " AND d.galaxy_id = " << galaxyId << " ORDER BY d.creation_date DESC) ORDER BY t DESC LIMIT 1";
+
+						Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+						if (res != NULL && res->next()) {
+							uint32 sec = res->getUnsignedInt(0);
+
+							Time timeVal(sec);
+
+							if (timeVal.miliDifference() < 86400000) {
+								ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only create 1 character ever 24 hours", 0x0);
+								client->sendMessage(errMsg);
+
+								return false;
+							}
+							//timeVal.se
+						}
+					} catch (DatabaseException& e) {
+						error(e.getMessage());
+					}
+
+					Locker locker(&charCountMutex);
+
+					if (lastCreatedCharacter.containsKey(accID)) {
+						Time lastCreatedTime = lastCreatedCharacter.get(accID);
+
+						if (lastCreatedTime.miliDifference() < 86400000) {
+							ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only create 1 character ever 24 hours", 0x0);
+							client->sendMessage(errMsg);
+
+							return false;
+						} else {
+							lastCreatedTime.updateToCurrentTime();
+
+							lastCreatedCharacter.put(accID, lastCreatedTime);
+						}
+					} else {
+						lastCreatedCharacter.put(accID, Time());
+					}
 				}
 
 			} catch (Exception& e) {
