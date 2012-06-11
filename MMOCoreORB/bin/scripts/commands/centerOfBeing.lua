@@ -43,6 +43,7 @@
 
 CenterOfBeingCommand = {
         name = "centerofbeing",
+        defaultPriority = "immediate"
 }
 
 AddCommand(CenterOfBeingCommand)
