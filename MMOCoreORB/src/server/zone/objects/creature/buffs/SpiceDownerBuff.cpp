@@ -214,8 +214,8 @@ void SpiceDownerBuffImplementation::activate(bool applyModifiers) {
 void SpiceDownerBuffImplementation::deactivate(bool applyModifiers) {
 	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_done");
 	BuffImplementation::creature.getForUpdate().get()->sendSystemMessage("@spice/spice:" + BuffImplementation::buffName + "_done");
-	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.deactivate(applyModifiers);
-	BuffImplementation::deactivate(applyModifiers);
+	// server/zone/objects/creature/buffs/SpiceDownerBuff.idl():  		super.deactivate(true);
+	BuffImplementation::deactivate(true);
 }
 
 /*
