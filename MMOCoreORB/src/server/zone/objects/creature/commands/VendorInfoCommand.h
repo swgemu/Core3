@@ -19,19 +19,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return 1;
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
-		ManagedReference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
-		ManagedReference<AuctionsMap*> amap = auctionManager->getAuctionMap();
-
-		int totalVendors = VendorManager::instance()->getVendorMapSize();
-		int totalVendorItems = amap->getVendorItemCount();
-		int totalBazaarItems = amap->getAuctionCount();
-		player->sendSystemMessage("Vendor / Bazaar Information");
-		player->sendSystemMessage("---------------------------");
-		player->sendSystemMessage("Total Number of Items: " + String::valueOf(totalVendorItems + totalBazaarItems));
-		player->sendSystemMessage("Total Number of Vendors: " + String::valueOf(totalVendors));
-		player->sendSystemMessage("Total Number of Vendor Items: " + String::valueOf(totalVendorItems));
-		player->sendSystemMessage("Total Number of Bazaar Items: " + String::valueOf(totalBazaarItems));
 
 		return 0;
 	}

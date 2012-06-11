@@ -88,9 +88,9 @@ object_weapon_melee_sword_sword_lightsaber_luke_2h_test = object_weapon_melee_sw
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "dodge" },
+	defenderSecondaryDefenseModifiers = { "saber_block" },
 
-	defenderToughnessModifiers = { "onehandmelee_toughness" },
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "twohandlightsaber_speed" },

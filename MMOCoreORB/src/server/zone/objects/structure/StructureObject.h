@@ -188,8 +188,6 @@ public:
 
 	void setOwnerName(const String& ownerName);
 
-	void createVendor(CreatureObject* player);
-
 	int getRedeedCost();
 
 	CreatureObject* getOwnerCreatureObject();
@@ -375,8 +373,6 @@ public:
 
 	void setOwnerName(const String& ownerName);
 
-	void createVendor(CreatureObject* player);
-
 	int getRedeedCost();
 
 	CreatureObject* getOwnerCreatureObject();
@@ -545,8 +541,6 @@ public:
 	int revokeAllPermissions(const String& targetName);
 
 	void setOwnerName(const String& ownerName);
-
-	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
 

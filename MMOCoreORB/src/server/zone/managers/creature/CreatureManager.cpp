@@ -30,7 +30,7 @@
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_,RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -399,6 +399,21 @@ SpawnArea* CreatureManager::getSpawnArea(const String& areaname) {
 		return _implementation->getSpawnArea(areaname);
 }
 
+bool CreatureManager::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(clothing);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->addWearableItem(creature, clothing);
+}
+
 DistributedObjectServant* CreatureManager::_getImplementation() {
 
 	_updated = true;
@@ -747,6 +762,11 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			resp->insertLong(getSpawnArea(inv->getAsciiParameter(areaname))->_getObjectID());
 		}
 		break;
+	case RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_:
+		{
+			resp->insertBoolean(addWearableItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter())));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -834,6 +854,10 @@ int CreatureManagerAdapter::getSpawnedRandomCreatures() {
 
 SpawnArea* CreatureManagerAdapter::getSpawnArea(const String& areaname) {
 	return (static_cast<CreatureManager*>(stub))->getSpawnArea(areaname);
+}
+
+bool CreatureManagerAdapter::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
+	return (static_cast<CreatureManager*>(stub))->addWearableItem(creature, clothing);
 }
 
 /*

@@ -42,7 +42,21 @@
 
 
 object_mobile_vendor_wookiee_female = object_mobile_vendor_shared_wookiee_female:new {
-	gameObjectType = 1038
+	
+	templateType = VENDORCREATURE,
+	
+	optionsBitmask = 386,
+	pvpStatusBitmask = 0,
+
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
+
+	hair = {},
+
+	clothing = {},
 }
 
 ObjectTemplates:addTemplate(object_mobile_vendor_wookiee_female, "object/mobile/vendor/wookiee_female.iff")

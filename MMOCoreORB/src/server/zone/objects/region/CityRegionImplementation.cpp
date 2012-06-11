@@ -22,7 +22,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -175,10 +175,26 @@ int CityRegionImplementation::getTimeToUpdate() {
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this.get());
 
-	BazaarTerminal* term = cast<BazaarTerminal*>(object);
+	if (object->isBazaarTerminal()) {
+		TangibleObject* bazaar = cast<TangibleObject*>(object);
+		if(bazaar == NULL) {
+			error("Bazaar terminal isn't really a bazaar terminal");
+			return;
+		}
+		bazaars.put(object->getObjectID(), bazaar);
+	}
 
-	if (term != NULL) {
-		bazaars.put(term->getObjectID(), term);
+	if (object->isVendor()) {
+
+		VendorDataComponent* vendorData = NULL;
+		DataObjectComponentReference* data = object->getDataObjectComponent();
+		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
+			vendorData = cast<VendorDataComponent*>(data->get());
+
+		if(vendorData != NULL)
+			vendorData->updateUID();
+		else
+			error("Unable to update vendor UID");
 	}
 
 	if (isClientRegion())
@@ -227,10 +243,21 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	object->setCityRegion(NULL);
 
-	BazaarTerminal* term = cast<BazaarTerminal*>(object);
+	if (object->isBazaarTerminal()) {
+		bazaars.drop(object->getObjectID());
+	}
 
-	if (term != NULL) {
-		bazaars.drop(term->getObjectID());
+	if (object->isVendor()) {
+
+		VendorDataComponent* vendorData = NULL;
+		DataObjectComponentReference* data = object->getDataObjectComponent();
+		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
+			vendorData = cast<VendorDataComponent*>(data->get());
+
+		if(vendorData != NULL)
+			vendorData->updateUID();
+		else
+			error("Unable to update vendor UID");
 	}
 
 	if (isClientRegion())
@@ -279,8 +306,8 @@ void CityRegionImplementation::setRegionName(const StringId& name) {
 	regionName = name;
 }
 
-Vector<ManagedReference<SceneObject*> >* CityRegionImplementation::getVendorsInCity() {
-	Vector<ManagedReference<SceneObject*> >* vendors = new Vector<ManagedReference<SceneObject*> >();
+Vector<ManagedReference<TangibleObject*> >* CityRegionImplementation::getVendorsInCity() {
+	Vector<ManagedReference<TangibleObject*> >* vendors = new Vector<ManagedReference<TangibleObject*> >();
 
 	return vendors;
 }
@@ -364,8 +391,6 @@ void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* str
 
 	else if(cityStructureInventory.get(uint8(4)).contains(structure))
 		cityStructureInventory.get(uint8(4)).drop(structure);
-
-
 }
 
 bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
@@ -463,4 +488,9 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	}
 
 	citySkillTrainers.removeAll();
+}
+
+void CityRegionImplementation::resetVotingPeriod() {
+	nextInauguration.updateToCurrentTime();
+	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingDuration * 60000);
 }

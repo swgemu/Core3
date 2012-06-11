@@ -78,6 +78,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	case 185:
 		guildManager->sendGuildCreateNameTo(player, _this.get());
 		break;
+	case 189:
+		guildManager->sendGuildWarStatusTo(player, guildObject, _this.get());
+		break;
 	case 193:
 	case 186:
 		guildManager->sendGuildInformationTo(player, guildObject, _this.get());

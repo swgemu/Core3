@@ -235,6 +235,8 @@ using namespace server::login::account;
 
 #include "server/zone/objects/creature/variables/Skill.h"
 
+#include "server/zone/managers/player/OnlineZoneClientMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -251,6 +253,8 @@ using namespace server::login::account;
 
 #include "engine/util/u3d/Vector3.h"
 
+#include "system/thread/ReadWriteLock.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -258,6 +262,8 @@ namespace player {
 
 class PlayerManager : public Observer {
 public:
+	static const int MAX_CHAR_ONLINE_COUNT = 2;
+
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl);
 
 	void loadNameMap();
@@ -398,6 +404,10 @@ public:
 
 	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
 
+	void decreaseOnlineCharCount(ZoneClientSession* client);
+
+	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
+
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
@@ -443,6 +453,14 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 
 	float globalExpMultiplier;
 
+	ReadWriteLock onlineMapMutex;
+
+	OnlineZoneClientMap onlineZoneClientMap;
+
+public:
+	static const int MAX_CHAR_ONLINE_COUNT = 2;
+
+private:
 	Reference<StartingItemList* > startingItemList;
 
 	Reference<PermissionLevelList* > permissionLevelList;
@@ -607,6 +625,10 @@ public:
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
 	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
+
+	void decreaseOnlineCharCount(ZoneClientSession* client);
+
+	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
 
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
@@ -780,6 +802,10 @@ public:
 	String unbanCharacter(PlayerObject* admin, Account* account, const String& name, unsigned int galaxyID, const String& reason);
 
 	bool promptTeachableSkills(CreatureObject* teacher, SceneObject* target);
+
+	void decreaseOnlineCharCount(ZoneClientSession* client);
+
+	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
 
 };
 

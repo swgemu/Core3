@@ -94,6 +94,14 @@ public:
 
 	static const byte PERMISSION_ALL = 0xFF;
 
+	static const byte WAR_NONE = 0;
+
+	static const byte WAR_MUTUAL = 0x3D;
+
+	static const byte WAR_IN = 0x3C;
+
+	static const byte WAR_OUT = 0x3E;
+
 	GuildObject();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -152,6 +160,20 @@ public:
 
 	bool isGuildLeader(CreatureObject* player);
 
+	byte getWarStatus(unsigned long long guildoid);
+
+	void setWarStatus(unsigned long long guildoid, byte status);
+
+	bool isInWaringGuild(CreatureObject* creature);
+
+	bool isAtWarWith(unsigned long long guildoid);
+
+	bool hasDeclaredWarOn(unsigned long long guildoid);
+
+	bool hasDeclaredWarBy(unsigned long long guildoid);
+
+	VectorMap<unsigned long long, byte>* getWaringGuilds();
+
 	bool hasMailPermission(unsigned long long playerID);
 
 	bool hasSponsorPermission(unsigned long long playerID);
@@ -165,6 +187,8 @@ public:
 	bool hasNamePermission(unsigned long long playerID);
 
 	bool hasTitlePermission(unsigned long long playerID);
+
+	bool hasWarPermission(unsigned long long playerID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -198,6 +222,8 @@ protected:
 
 	SortedVector<unsigned long long> sponsoredPlayers;
 
+	VectorMap<unsigned long long, byte> waringGuilds;
+
 	unsigned int guildID;
 
 	String guildName;
@@ -226,6 +252,14 @@ public:
 	static const byte PERMISSION_DISBAND = 0x80;
 
 	static const byte PERMISSION_ALL = 0xFF;
+
+	static const byte WAR_NONE = 0;
+
+	static const byte WAR_MUTUAL = 0x3D;
+
+	static const byte WAR_IN = 0x3C;
+
+	static const byte WAR_OUT = 0x3E;
 
 	GuildObjectImplementation();
 
@@ -287,6 +321,20 @@ public:
 
 	bool isGuildLeader(CreatureObject* player);
 
+	byte getWarStatus(unsigned long long guildoid);
+
+	void setWarStatus(unsigned long long guildoid, byte status);
+
+	bool isInWaringGuild(CreatureObject* creature);
+
+	bool isAtWarWith(unsigned long long guildoid);
+
+	bool hasDeclaredWarOn(unsigned long long guildoid);
+
+	bool hasDeclaredWarBy(unsigned long long guildoid);
+
+	VectorMap<unsigned long long, byte>* getWaringGuilds();
+
 	bool hasMailPermission(unsigned long long playerID);
 
 	bool hasSponsorPermission(unsigned long long playerID);
@@ -300,6 +348,8 @@ public:
 	bool hasNamePermission(unsigned long long playerID);
 
 	bool hasTitlePermission(unsigned long long playerID);
+
+	bool hasWarPermission(unsigned long long playerID);
 
 	WeakReference<GuildObject*> _this;
 
@@ -396,6 +446,18 @@ public:
 
 	bool isGuildLeader(CreatureObject* player);
 
+	byte getWarStatus(unsigned long long guildoid);
+
+	void setWarStatus(unsigned long long guildoid, byte status);
+
+	bool isInWaringGuild(CreatureObject* creature);
+
+	bool isAtWarWith(unsigned long long guildoid);
+
+	bool hasDeclaredWarOn(unsigned long long guildoid);
+
+	bool hasDeclaredWarBy(unsigned long long guildoid);
+
 	bool hasMailPermission(unsigned long long playerID);
 
 	bool hasSponsorPermission(unsigned long long playerID);
@@ -409,6 +471,8 @@ public:
 	bool hasNamePermission(unsigned long long playerID);
 
 	bool hasTitlePermission(unsigned long long playerID);
+
+	bool hasWarPermission(unsigned long long playerID);
 
 };
 

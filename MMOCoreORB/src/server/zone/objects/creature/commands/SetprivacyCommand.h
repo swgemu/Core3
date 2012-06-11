@@ -85,6 +85,22 @@ public:
 			return GENERALERROR;
 		}
 
+		for (int i = 1; i < building->getTotalCellNumber(); ++i) {
+			ManagedReference<CellObject*> cell = building->getCell(i);
+
+			if(cell == NULL)
+				continue;
+
+			for(int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				ManagedReference<SceneObject*> obj = cell->getContainerObject(j);
+
+				if(obj != NULL && obj->isVendor()) {
+					creature->sendSystemMessage("@player_structure:vendor_no_private"); // A structure hosting a vendor cannot be declared private
+					return GENERALERROR;
+				}
+			}
+		}
+
 		if (building->togglePrivacy()) {
 			creature->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
 		} else {

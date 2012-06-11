@@ -47,6 +47,16 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.get());
 	player->sendMessage(msg);
 
+	/// Have to send the spawns of items no in shift, or the dont show
+	/// up in the hopper when you look.
+	for (int i = 0; i < resourceHopper.size(); ++i) {
+		ResourceContainer* container = resourceHopper.get(i);
+
+		if (container != NULL) {
+			container->sendTo(cast<CreatureObject*>(player), true);
+		}
+	}
+
 	activateUiSync();
 }
 

@@ -88,9 +88,9 @@ object_weapon_melee_polearm_lance_lightsaber_01 = object_weapon_melee_polearm_sh
 	defenderDefenseModifiers = { "melee_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
-	defenderSecondaryDefenseModifiers = { "block" },
+	defenderSecondaryDefenseModifiers = { "saber_block" },
 
-	defenderToughnessModifiers = { "polearm_toughness" },
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "polearmlightsaber_speed" },

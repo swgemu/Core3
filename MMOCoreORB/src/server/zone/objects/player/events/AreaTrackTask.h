@@ -107,12 +107,8 @@ public:
 						if(creature == NULL)
 							continue;
 
-						if(creature->isPlayerCreature()) {
-							PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
-							if(ghost != NULL) {
-								if(ghost->isInvisible())
-									continue;
-							}
+						if(creature->isInvisible()) {
+							continue;
 						}
 
 						if(type == 0) {

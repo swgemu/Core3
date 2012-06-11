@@ -13,7 +13,9 @@
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
-#include "server/zone/objects/creature/vendor/VendorContainerComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
@@ -122,6 +124,8 @@ ComponentManager::ComponentManager() {
 	components.put("StructureContainerComponent", new StructureContainerComponent());
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
+	components.put("VendorMenuComponent", new VendorMenuComponent());
+	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 
 	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
 	components.put("CityVotingMenuComponent", new CityVotingMenuComponent());

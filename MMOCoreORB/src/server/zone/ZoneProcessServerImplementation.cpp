@@ -103,7 +103,7 @@ void ZoneProcessServerImplementation::finalize() {
 
 void ZoneProcessServerImplementation::initialize() {
 	vendorManager = VendorManager::instance();
-	vendorManager->initialize();
+	vendorManager->initialize(_this.get());
 
 	professionManager = SkillManager::instance();
 	professionManager->loadLuaConfig();

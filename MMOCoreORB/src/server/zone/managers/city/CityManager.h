@@ -130,6 +130,8 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	void updateCityVoting(CityRegion* city);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -187,6 +189,14 @@ public:
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
+
+	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
+
+	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -234,9 +244,9 @@ public:
 
 	unsigned static long long treasuryWithdrawalCooldown;
 
+private:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
-private:
 	bool configLoaded;
 
 public:
@@ -267,6 +277,8 @@ public:
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
 	void processCityUpdate(CityRegion* city);
+
+	void updateCityVoting(CityRegion* city);
 
 	void contractCity(CityRegion* city);
 
@@ -325,6 +337,14 @@ public:
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
+
+	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
+
+	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 	WeakReference<CityManager*> _this;
 
@@ -380,6 +400,8 @@ public:
 	CityRegion* createCity(CreatureObject* mayor, const String& cityName, float x, float y);
 
 	void processCityUpdate(CityRegion* city);
+
+	void updateCityVoting(CityRegion* city);
 
 	void contractCity(CityRegion* city);
 
@@ -438,6 +460,14 @@ public:
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
 
 	int getTotalCities();
+
+	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
+
+	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 };
 

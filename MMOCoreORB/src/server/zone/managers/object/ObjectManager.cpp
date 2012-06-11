@@ -89,7 +89,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<JunkdealerCreature>(SceneObjectType::JUNKDEALERCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::DROIDCREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::PROBOTCREATURE);
-	objectFactory.registerObject<VendorCreature>(SceneObjectType::VENDORCREATURE);
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::VENDOR);
 
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::PLAYERCREATURE);
 
@@ -153,7 +153,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::BUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::CAPITOLBUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectType::TUTORIALBUILDING);
-	objectFactory.registerObject<CloningBuildingObject>(SceneObjectType::CLONINGBUILDING);
 	objectFactory.registerObject<HospitalBuildingObject>(SceneObjectType::HOSPITALBUILDING);
 	objectFactory.registerObject<TravelBuildingObject>(SceneObjectType::TRAVELBUILDING);
 	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectType::RECREATIONBUILDING);
@@ -195,7 +194,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Terminal>(SceneObjectType::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::INTERACTIVETERMINAL);
 	objectFactory.registerObject<MissionTerminal>(SceneObjectType::MISSIONTERMINAL);
-	objectFactory.registerObject<BazaarTerminal>(SceneObjectType::BAZAAR);
+	objectFactory.registerObject<Terminal>(SceneObjectType::BAZAAR);
 	objectFactory.registerObject<Terminal>(SceneObjectType::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
@@ -207,7 +206,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<GuildTerminal>(SceneObjectType::GUILDTERMINAL);
 	objectFactory.registerObject<GamblingTerminal>(SceneObjectType::GAMBLINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::CLONING);
-	objectFactory.registerObject<VendorTerminal>(SceneObjectType::VENDORTERMINAL);
 
 	objectFactory.registerObject<Deed>(SceneObjectType::DEED);
 	objectFactory.registerObject<VehicleDeed>(SceneObjectType::VEHICLEDEED);

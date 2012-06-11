@@ -24,7 +24,7 @@
  *	GuildManagerStub
  */
 
-enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__CREATUREOBJECT_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_,RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_,RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_,RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_,RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
+enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__CREATUREOBJECT_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDWARSTATUSTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_PROMPTADDNEWENEMY__CREATUREOBJECT_GUILDOBJECT_SCENEOBJECT_,RPC_TOGGLEWARSTATUS__CREATUREOBJECT_GUILDOBJECT_LONG_,RPC_DECLAREWARBYNAME__CREATUREOBJECT_GUILDOBJECT_STRING_,RPC_UPDATEWARSTATUSTOWARINGGUILD__GUILDOBJECT_GUILDOBJECT_,RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_,RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_,RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_,RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_,RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
 
 GuildManager::GuildManager(ZoneServer* serv, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	GuildManagerImplementation* _implementation = new GuildManagerImplementation(serv, proc);
@@ -401,6 +401,85 @@ void GuildManager::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* t
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendGuildSetTitleTo(player, target);
+}
+
+void GuildManager::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDGUILDWARSTATUSTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guild);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildWarStatusTo(player, guild, guildTerminal);
+}
+
+void GuildManager::promptAddNewEnemy(CreatureObject* player, GuildObject* guild, SceneObject* terminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTADDNEWENEMY__CREATUREOBJECT_GUILDOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guild);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptAddNewEnemy(player, guild, terminal);
+}
+
+void GuildManager::toggleWarStatus(CreatureObject* player, GuildObject* guild, unsigned long long guildoid) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TOGGLEWARSTATUS__CREATUREOBJECT_GUILDOBJECT_LONG_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guild);
+		method.addUnsignedLongParameter(guildoid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->toggleWarStatus(player, guild, guildoid);
+}
+
+void GuildManager::declareWarByName(CreatureObject* player, GuildObject* guild, const String& search) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DECLAREWARBYNAME__CREATUREOBJECT_GUILDOBJECT_STRING_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guild);
+		method.addAsciiParameter(search);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->declareWarByName(player, guild, search);
+}
+
+void GuildManager::updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEWARSTATUSTOWARINGGUILD__GUILDOBJECT_GUILDOBJECT_);
+		method.addObjectParameter(guild);
+		method.addObjectParameter(waringGuild);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateWarStatusToWaringGuild(guild, waringGuild);
 }
 
 void GuildManager::sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {
@@ -1051,6 +1130,32 @@ void GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendGuildSetTitleTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_SENDGUILDWARSTATUSTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_:
+		{
+			sendGuildWarStatusTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_PROMPTADDNEWENEMY__CREATUREOBJECT_GUILDOBJECT_SCENEOBJECT_:
+		{
+			promptAddNewEnemy(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_TOGGLEWARSTATUS__CREATUREOBJECT_GUILDOBJECT_LONG_:
+		{
+			toggleWarStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
+		break;
+	case RPC_DECLAREWARBYNAME__CREATUREOBJECT_GUILDOBJECT_STRING_:
+		{
+			String search; 
+			declareWarByName(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()), inv->getAsciiParameter(search));
+		}
+		break;
+	case RPC_UPDATEWARSTATUSTOWARINGGUILD__GUILDOBJECT_GUILDOBJECT_:
+		{
+			updateWarStatusToWaringGuild(static_cast<GuildObject*>(inv->getObjectParameter()), static_cast<GuildObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_:
 		{
 			sendMemberPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), static_cast<GuildTerminal*>(inv->getObjectParameter()));
@@ -1237,6 +1342,26 @@ void GuildManagerAdapter::sendGuildKickPromptTo(CreatureObject* player, Creature
 
 void GuildManagerAdapter::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
 	(static_cast<GuildManager*>(stub))->sendGuildSetTitleTo(player, target);
+}
+
+void GuildManagerAdapter::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->sendGuildWarStatusTo(player, guild, guildTerminal);
+}
+
+void GuildManagerAdapter::promptAddNewEnemy(CreatureObject* player, GuildObject* guild, SceneObject* terminal) {
+	(static_cast<GuildManager*>(stub))->promptAddNewEnemy(player, guild, terminal);
+}
+
+void GuildManagerAdapter::toggleWarStatus(CreatureObject* player, GuildObject* guild, unsigned long long guildoid) {
+	(static_cast<GuildManager*>(stub))->toggleWarStatus(player, guild, guildoid);
+}
+
+void GuildManagerAdapter::declareWarByName(CreatureObject* player, GuildObject* guild, const String& search) {
+	(static_cast<GuildManager*>(stub))->declareWarByName(player, guild, search);
+}
+
+void GuildManagerAdapter::updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild) {
+	(static_cast<GuildManager*>(stub))->updateWarStatusToWaringGuild(guild, waringGuild);
 }
 
 void GuildManagerAdapter::sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal) {

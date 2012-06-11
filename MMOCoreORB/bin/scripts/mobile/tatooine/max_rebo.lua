@@ -22,12 +22,14 @@ max_rebo = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
+	optionsBitmask = 128,
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/max_rebo.iff"},
 	lootGroups = {},
 	weapons = {},
+	outfit = "",
 	attacks = {}
 }
 

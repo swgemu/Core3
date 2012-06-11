@@ -14,7 +14,7 @@
  *	GuildObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_GETMEMBER__INT_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__CREATUREOBJECT_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_GETMEMBER__INT_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__CREATUREOBJECT_,RPC_GETWARSTATUS__LONG_,RPC_SETWARSTATUS__LONG_BYTE_,RPC_ISINWARINGGUILD__CREATUREOBJECT_,RPC_ISATWARWITH__LONG_,RPC_HASDECLAREDWARON__LONG_,RPC_HASDECLAREDWARBY__LONG_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_,RPC_HASWARPERMISSION__LONG_};
 
 GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GuildObjectImplementation* _implementation = new GuildObjectImplementation();
@@ -413,6 +413,100 @@ bool GuildObject::isGuildLeader(CreatureObject* player) {
 		return _implementation->isGuildLeader(player);
 }
 
+byte GuildObject::getWarStatus(unsigned long long guildoid) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETWARSTATUS__LONG_);
+		method.addUnsignedLongParameter(guildoid);
+
+		return method.executeWithByteReturn();
+	} else
+		return _implementation->getWarStatus(guildoid);
+}
+
+void GuildObject::setWarStatus(unsigned long long guildoid, byte status) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETWARSTATUS__LONG_BYTE_);
+		method.addUnsignedLongParameter(guildoid);
+		method.addByteParameter(status);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setWarStatus(guildoid, status);
+}
+
+bool GuildObject::isInWaringGuild(CreatureObject* creature) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISINWARINGGUILD__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isInWaringGuild(creature);
+}
+
+bool GuildObject::isAtWarWith(unsigned long long guildoid) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISATWARWITH__LONG_);
+		method.addUnsignedLongParameter(guildoid);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAtWarWith(guildoid);
+}
+
+bool GuildObject::hasDeclaredWarOn(unsigned long long guildoid) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASDECLAREDWARON__LONG_);
+		method.addUnsignedLongParameter(guildoid);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasDeclaredWarOn(guildoid);
+}
+
+bool GuildObject::hasDeclaredWarBy(unsigned long long guildoid) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASDECLAREDWARBY__LONG_);
+		method.addUnsignedLongParameter(guildoid);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasDeclaredWarBy(guildoid);
+}
+
+VectorMap<unsigned long long, byte>* GuildObject::getWaringGuilds() {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWaringGuilds();
+}
+
 bool GuildObject::hasMailPermission(unsigned long long playerID) {
 	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -509,6 +603,20 @@ bool GuildObject::hasTitlePermission(unsigned long long playerID) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->hasTitlePermission(playerID);
+}
+
+bool GuildObject::hasWarPermission(unsigned long long playerID) {
+	GuildObjectImplementation* _implementation = static_cast<GuildObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASWARPERMISSION__LONG_);
+		method.addUnsignedLongParameter(playerID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasWarPermission(playerID);
 }
 
 DistributedObjectServant* GuildObject::_getImplementation() {
@@ -631,6 +739,11 @@ bool GuildObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "GuildObject.waringGuilds") {
+		TypeInfo<VectorMap<unsigned long long, byte> >::parseFromBinaryStream(&waringGuilds, stream);
+		return true;
+	}
+
 	if (_name == "GuildObject.guildID") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&guildID, stream);
 		return true;
@@ -692,6 +805,14 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "GuildObject.waringGuilds";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<unsigned long long, byte> >::toBinaryStream(&waringGuilds, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "GuildObject.guildID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -725,7 +846,7 @@ int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 7;
+	return _count + 8;
 }
 
 GuildObjectImplementation::GuildObjectImplementation() {
@@ -738,6 +859,8 @@ GuildObjectImplementation::GuildObjectImplementation() {
 	guildID = 0;
 	// server/zone/objects/guild/GuildObject.idl():  		chatRoom = null;
 	chatRoom = NULL;
+	// server/zone/objects/guild/GuildObject.idl():  		waringGuilds.setAllowOverwriteInsertPlan();
+	(&waringGuilds)->setAllowOverwriteInsertPlan();
 	// server/zone/objects/guild/GuildObject.idl():  		sponsoredPlayers.setNoDuplicateInsertPlan();
 	(&sponsoredPlayers)->setNoDuplicateInsertPlan();
 	// server/zone/objects/guild/GuildObject.idl():  		guildMembers.setNoDuplicateInsertPlan();
@@ -848,6 +971,61 @@ bool GuildObjectImplementation::isGuildObject() {
 bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
 	// server/zone/objects/guild/GuildObject.idl():  		return (guildLeaderID == player.getObjectID());
 	return (guildLeaderID == player->getObjectID());
+}
+
+byte GuildObjectImplementation::getWarStatus(unsigned long long guildoid) {
+	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid);
+	return (&waringGuilds)->get(guildoid);
+}
+
+void GuildObjectImplementation::setWarStatus(unsigned long long guildoid, byte status) {
+	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
+	if (status == WAR_NONE)	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.drop(guildoid);
+	(&waringGuilds)->drop(guildoid);
+
+	else 	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
+	(&waringGuilds)->put(guildoid, status);
+}
+
+bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
+	// server/zone/objects/guild/GuildObject.idl():  		GuildObject attackerGuild = creature.getGuildObject();
+	ManagedReference<GuildObject* > attackerGuild = creature->getGuildObject();
+	// server/zone/objects/guild/GuildObject.idl():  		return 
+	if (attackerGuild != NULL){
+	// server/zone/objects/guild/GuildObject.idl():  			rlock();
+	rlock();
+	// server/zone/objects/guild/GuildObject.idl():  			runlock(
+	if (isAtWarWith(attackerGuild->getObjectID())){
+	// server/zone/objects/guild/GuildObject.idl():  				runlock();
+	runlock();
+	// server/zone/objects/guild/GuildObject.idl():  				return true;
+	return true;
+}
+	// server/zone/objects/guild/GuildObject.idl():  			runlock();
+	runlock();
+}
+	// server/zone/objects/guild/GuildObject.idl():  		return false;
+	return false;
+}
+
+bool GuildObjectImplementation::isAtWarWith(unsigned long long guildoid) {
+	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_MUTUAL;
+	return (&waringGuilds)->get(guildoid) == WAR_MUTUAL;
+}
+
+bool GuildObjectImplementation::hasDeclaredWarOn(unsigned long long guildoid) {
+	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_OUT;
+	return (&waringGuilds)->get(guildoid) == WAR_OUT;
+}
+
+bool GuildObjectImplementation::hasDeclaredWarBy(unsigned long long guildoid) {
+	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_IN;
+	return (&waringGuilds)->get(guildoid) == WAR_IN;
+}
+
+VectorMap<unsigned long long, byte>* GuildObjectImplementation::getWaringGuilds() {
+	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds;
+	return (&waringGuilds);
 }
 
 /*
@@ -997,6 +1175,36 @@ void GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isGuildLeader(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_GETWARSTATUS__LONG_:
+		{
+			resp->insertByte(getWarStatus(inv->getUnsignedLongParameter()));
+		}
+		break;
+	case RPC_SETWARSTATUS__LONG_BYTE_:
+		{
+			setWarStatus(inv->getUnsignedLongParameter(), inv->getByteParameter());
+		}
+		break;
+	case RPC_ISINWARINGGUILD__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isInWaringGuild(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_ISATWARWITH__LONG_:
+		{
+			resp->insertBoolean(isAtWarWith(inv->getUnsignedLongParameter()));
+		}
+		break;
+	case RPC_HASDECLAREDWARON__LONG_:
+		{
+			resp->insertBoolean(hasDeclaredWarOn(inv->getUnsignedLongParameter()));
+		}
+		break;
+	case RPC_HASDECLAREDWARBY__LONG_:
+		{
+			resp->insertBoolean(hasDeclaredWarBy(inv->getUnsignedLongParameter()));
+		}
+		break;
 	case RPC_HASMAILPERMISSION__LONG_:
 		{
 			resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
@@ -1030,6 +1238,11 @@ void GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_HASTITLEPERMISSION__LONG_:
 		{
 			resp->insertBoolean(hasTitlePermission(inv->getUnsignedLongParameter()));
+		}
+		break;
+	case RPC_HASWARPERMISSION__LONG_:
+		{
+			resp->insertBoolean(hasWarPermission(inv->getUnsignedLongParameter()));
 		}
 		break;
 	default:
@@ -1141,6 +1354,30 @@ bool GuildObjectAdapter::isGuildLeader(CreatureObject* player) {
 	return (static_cast<GuildObject*>(stub))->isGuildLeader(player);
 }
 
+byte GuildObjectAdapter::getWarStatus(unsigned long long guildoid) {
+	return (static_cast<GuildObject*>(stub))->getWarStatus(guildoid);
+}
+
+void GuildObjectAdapter::setWarStatus(unsigned long long guildoid, byte status) {
+	(static_cast<GuildObject*>(stub))->setWarStatus(guildoid, status);
+}
+
+bool GuildObjectAdapter::isInWaringGuild(CreatureObject* creature) {
+	return (static_cast<GuildObject*>(stub))->isInWaringGuild(creature);
+}
+
+bool GuildObjectAdapter::isAtWarWith(unsigned long long guildoid) {
+	return (static_cast<GuildObject*>(stub))->isAtWarWith(guildoid);
+}
+
+bool GuildObjectAdapter::hasDeclaredWarOn(unsigned long long guildoid) {
+	return (static_cast<GuildObject*>(stub))->hasDeclaredWarOn(guildoid);
+}
+
+bool GuildObjectAdapter::hasDeclaredWarBy(unsigned long long guildoid) {
+	return (static_cast<GuildObject*>(stub))->hasDeclaredWarBy(guildoid);
+}
+
 bool GuildObjectAdapter::hasMailPermission(unsigned long long playerID) {
 	return (static_cast<GuildObject*>(stub))->hasMailPermission(playerID);
 }
@@ -1167,6 +1404,10 @@ bool GuildObjectAdapter::hasNamePermission(unsigned long long playerID) {
 
 bool GuildObjectAdapter::hasTitlePermission(unsigned long long playerID) {
 	return (static_cast<GuildObject*>(stub))->hasTitlePermission(playerID);
+}
+
+bool GuildObjectAdapter::hasWarPermission(unsigned long long playerID) {
+	return (static_cast<GuildObject*>(stub))->hasWarPermission(playerID);
 }
 
 /*

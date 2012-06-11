@@ -48,10 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/auction/Vendor.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class TransferItemMiscCommand : public QueueCommand {
 public:
@@ -103,10 +100,11 @@ public:
 		if (objectsParent == NULL)
 			return GENERALERROR;
 
-		if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)) {
-			creature->sendSystemMessage("@error_message:perm_no_move");
+		if(objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR))
 			return GENERALERROR;
-		}
+
+		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+			return GENERALERROR;
 
 		Zone* zoneObject = objectToTransfer->getZone();
 
@@ -157,7 +155,10 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEIN))
+		if (objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR))
+			return GENERALERROR;
+
+		if (!objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEIN))
 			return GENERALERROR;
 
 		ZoneServer* zoneServer = server->getZoneServer();

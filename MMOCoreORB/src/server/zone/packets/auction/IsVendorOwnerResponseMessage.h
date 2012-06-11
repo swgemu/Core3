@@ -49,54 +49,41 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/auction/Vendor.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(SceneObject* sceno, CreatureObject* player, const String& planet, const String& header, uint32 errorCode = 0) {
+    IsVendorOwnerResponseMessage(SceneObject* vendor, CreatureObject* player, const String& planet, const String& region, uint32 errorCode = 0) {
 		insertShort(3);
 		insertInt(0xCE04173E);
 
 		// Make sure sceno is a valid Vendor Object.
-		if (!sceno->isVendor())
+		if (!vendor->isVendor() && !vendor->isBazaarTerminal())
 			return;
 
-		// And now we figure out what Vendor Class
-		Vendor* vendor = NULL;
-		String vendorName = "unknown";
+		int rights = 2;
 
-		if (sceno->isTerminal()) {
-			Terminal* term = cast<Terminal*>( sceno);
-			if (term->isVendorTerminal()) {
-				VendorTerminal* terminal = cast<VendorTerminal*>( term);
-				vendor = terminal->getVendor();
-				if (!terminal->getCustomObjectName().isEmpty())
-					vendorName = terminal->getCustomObjectName().toString();
+		if(vendor->isVendor()) {
+
+
+			DataObjectComponentReference* data = vendor->getDataObjectComponent();
+			if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+				return;
 			}
 
-		} else if (sceno->isCreatureObject()) {
-			CreatureObject* cero = cast<CreatureObject*>( sceno);
-			if (!cero->isVendorCreature())
+			VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+			if(vendorData == NULL) {
 				return;
+			}
 
-			VendorCreature* vendorCreature = cast<VendorCreature*>( sceno);
-			vendor = vendorCreature->getVendor();
-			if (!vendorCreature->getCustomObjectName().isEmpty())
-				vendorName = vendorCreature->getCustomObjectName().toString();
+			rights = vendorData->getOwnershipRightsOf(player);
+		}
 
-		} else
-			return;
-
-		if (vendor == NULL)
-			return;
-
-		uint64 objectID = sceno->getObjectID();
+		uint64 objectID = vendor->getObjectID();
 
 		// 0: own vendor, 1: someone else owns the vendor, 2: the galaxy owns the vendor (bazaar)
-		insertInt(vendor->getOwnershipRightsOf(player));
+		insertInt(rights);
 
 		insertInt(errorCode);
 		
@@ -105,13 +92,13 @@ public:
 		StringBuffer title;
 		title << planet << ".";
 		
-		int x = sceno->getWorldPositionX();
-		int y = sceno->getWorldPositionY();
+		int x = vendor->getWorldPositionX();
+		int y = vendor->getWorldPositionY();
 
 		if (!vendor->isBazaarTerminal())
-			title << "@planet_n:" << planet <<  ".Vendor: " << vendorName; // VendorName
+			title << "@planet_n:" << planet <<  ".Vendor: " << vendor->getDisplayedName(); // VendorName
 		else
-			title << header << "." << sceno->getDisplayedName();
+			title << region << "." << vendor->getDisplayedName();
 		
 		title << "." << objectID << "#" << x << "," << y;
 		

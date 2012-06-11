@@ -45,7 +45,6 @@ which carries forward this exception.
 package server.zone.objects.building.tutorial;
 
 import server.zone.objects.building.BuildingObject;
-import server.zone.objects.building.cloning.CloningBuildingObject;
 import engine.lua.LuaObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
@@ -54,7 +53,7 @@ import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
 import server.zone.managers.director.DirectorManager;
 
-class TutorialBuildingObject extends CloningBuildingObject {
+class TutorialBuildingObject extends BuildingObject {
 	
 	protected transient UnloadBuildingTask unloadTask;
 

@@ -52,9 +52,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 	if (scno->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( scno);
 
-		PlayerObject* ghost = player->getPlayerObject();
-
-		if (ghost->isInvisible())
+		if (player->isInvisible())
 			return;
 	}
 

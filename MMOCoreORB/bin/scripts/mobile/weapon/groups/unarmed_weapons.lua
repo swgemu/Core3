@@ -1,5 +1,5 @@
 unarmed_weapons = {
-	"object/weapon/special,vibroknuckler"
+	"object/weapon/melee/special/vibroknuckler.iff"
 	
 }
 

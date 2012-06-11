@@ -1611,3 +1611,56 @@ Vector3 PlayerObjectImplementation::getTrainerCoordinates() {
 void PlayerObjectImplementation::setTrainerCoordinates(const Vector3& trainer) {
 	trainerCoordinates = trainer;
 }
+
+void PlayerObjectImplementation::addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+	permissionGroups.put(group);
+
+	if (!updateInRangeBuildingPermissions)
+		return;
+
+	ManagedReference<SceneObject*> parent = getParent();
+
+	Zone* zone = parent->getZone();
+
+	if (zone == NULL)
+		return;
+
+	Locker locker(zone);
+
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects = *parent->getCloseObjects();
+
+	locker.release();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
+
+		if (building != NULL) {
+			building->broadcastCellPermissions();
+		}
+	}
+}
+
+void PlayerObjectImplementation::removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+	permissionGroups.drop(group);
+
+	ManagedReference<SceneObject*> parent = getParent();
+
+	Zone* zone = parent->getZone();
+
+	if (zone == NULL)
+		return;
+
+	Locker locker(zone);
+
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects = *parent->getCloseObjects();
+
+	locker.release();
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
+
+		if (building != NULL) {
+			building->broadcastCellPermissions();
+		}
+	}
+}

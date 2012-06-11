@@ -10,7 +10,6 @@
 
 #include "../MessageCallback.h"
 
-#include "server/zone/objects/auction/Vendor.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 

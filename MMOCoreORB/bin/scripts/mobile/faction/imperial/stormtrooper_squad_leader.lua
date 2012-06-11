@@ -1,7 +1,7 @@
 stormtrooper_squad_leader = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_squad_leader",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 27,
 	chanceHit = 0.37,
@@ -26,7 +26,7 @@ stormtrooper_squad_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_white.iff", "object/mobile/dressed_stormtrooper_squad_leader_black_black.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_squad_leader_white_white.iff"},
 	lootGroups = {
 		{
 			groups = {

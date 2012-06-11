@@ -133,4 +133,7 @@ class CreatureManager extends ZoneManager {
 	}
 	
 	public native SpawnArea getSpawnArea(final string areaname);
+	
+	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
+
 }

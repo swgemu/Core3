@@ -42,7 +42,6 @@
 
 
 object_building_military_outpost_cloning_facility = object_building_military_shared_outpost_cloning_facility:new {
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 
 

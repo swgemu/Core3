@@ -28,7 +28,7 @@ alert_droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {},
-	weapons = {"droideka_weapons"},
+	weapons = {"droid_droideka_ranged"},
 	conversationTemplate = "",
 	attacks = {
 	}

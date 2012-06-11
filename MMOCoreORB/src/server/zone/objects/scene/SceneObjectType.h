@@ -17,12 +17,12 @@ public:
 	const static int GUILDOBJECT = 0x03;
 	const static int LAIR = 0x04;
 	const static int STATICOBJECT = 0x05;
+	const static int VENDOR = 7;
 	const static int LOADBEACON = 8; // Needs Research
 
 	/// Not in client ********
 	const static int CELLOBJECT = 11; //This is marked as 0x00 in the client types xls
 	const static int PLAYEROBJECT = 12;
-	const static int VENDORTERMINAL = 7;
 	/// End not in client *******
 
 	const static int ARMOR = 0x100;
@@ -44,7 +44,6 @@ public:
 	const static int TUTORIALBUILDING = 0x204;
 	const static int HOSPITALBUILDING = 0x205;
 	const static int RECREATIONBUILDING = 0x206;
-	const static int CLONINGBUILDING = 0x207;
 	const static int TRAVELBUILDING = 0x208;
 	const static int STARPORTBUILDING = 0x209;
 	const static int CAPITOLBUILDING = 0x20A;

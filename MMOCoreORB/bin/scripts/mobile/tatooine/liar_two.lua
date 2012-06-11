@@ -1,5 +1,6 @@
 liar_two = Creature:new {
-	objectName = "@mob/creature_names:liar two",
+	objectName = "",
+	customName = "Liar Two",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

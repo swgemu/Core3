@@ -151,7 +151,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected int planetMapSubCategory;
 	
 	protected unicode customName;
-	
+
 	@weakReference
 	protected transient CityRegion cityRegion;
 	
@@ -170,7 +170,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
 
-	
 	/**
 	 * SceneObject constructor, used to initialize the object.
 	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
@@ -1241,9 +1240,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 
-	@dirty
-	public abstract boolean isVendor() {
-		return false;
+	@local
+	@read
+	public boolean isVendor() {
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isVendorData();
 	}
 	
 	@local
@@ -1269,6 +1271,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@local
 	public native void setContainerComponent(final string name);
+	
+	public boolean isNoTrade() {
+		return templateObject.isNoTrade();
+	}
 	
 	@read
 	public boolean isContainerFull() {
@@ -1401,12 +1407,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@read
+	public boolean isBazaarTerminal() {
+		return gameObjectType == SceneObjectType.BAZAAR;
+	}
+	
+	@read
 	public boolean isLiveSample() {
 		return gameObjectType == SceneObjectType.LIVESAMPLE;
 	}
 	
 	@dirty
 	public abstract boolean isInstallationObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isHarvesterObject() {
 		return false;
 	}
 	
@@ -1482,6 +1498,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public abstract boolean isStructureObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isAuctionObject() {
 		return false;
 	}
 

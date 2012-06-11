@@ -32,7 +32,7 @@ emperors_hand = Creature:new {
 		"object/mobile/dressed_emperors_hand_human_female_01.iff",
 		"object/mobile/dressed_emperors_hand_zabrak_male_01.iff"},
 	lootGroups = {},
-	weapons = {dark_jedi_weapons},
+	weapons = {"dark_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

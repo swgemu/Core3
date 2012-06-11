@@ -53,9 +53,21 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
-#include "engine/core/ManagedObject.h"
+namespace server {
+namespace zone {
+namespace managers {
+namespace auction {
 
-#include "server/zone/objects/creature/CreatureObject.h"
+class AuctionManager;
+
+} // namespace auction
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::auction;
+
+#include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
@@ -82,19 +94,17 @@ namespace vendor {
 
 class CreateVendorSession : public Facade {
 public:
-	CreateVendorSession(CreatureObject* parent);
-
-	void initalizeWindow(CreatureObject* pl);
-
-	void handleMenuSelect(byte menuID);
-
-	void createVendor(String& name);
+	CreateVendorSession(CreatureObject* play);
 
 	int initializeSession();
 
 	int cancelSession();
 
 	int clearSession();
+
+	void handleVendorSelection(byte menuID);
+
+	void createVendor(String& name);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -128,7 +138,7 @@ class CreateVendorSessionImplementation : public FacadeImplementation {
 protected:
 	ManagedWeakReference<CreatureObject* > player;
 
-	ManagedWeakReference<SceneObject* > vendor;
+	ManagedWeakReference<TangibleObject* > vendor;
 
 private:
 	Reference<VendorSelectionNode* > currentNode;
@@ -142,21 +152,19 @@ private:
 	String templatePath;
 
 public:
-	CreateVendorSessionImplementation(CreatureObject* parent);
+	CreateVendorSessionImplementation(CreatureObject* play);
 
 	CreateVendorSessionImplementation(DummyConstructorParameter* param);
-
-	void initalizeWindow(CreatureObject* pl);
-
-	void handleMenuSelect(byte menuID);
-
-	void createVendor(String& name);
 
 	int initializeSession();
 
 	int cancelSession();
 
 	int clearSession();
+
+	void handleVendorSelection(byte menuID);
+
+	void createVendor(String& name);
 
 	WeakReference<CreateVendorSession*> _this;
 
@@ -201,17 +209,15 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initalizeWindow(CreatureObject* pl);
-
-	void handleMenuSelect(byte menuID);
-
-	void createVendor(String& name);
-
 	int initializeSession();
 
 	int cancelSession();
 
 	int clearSession();
+
+	void handleVendorSelection(byte menuID);
+
+	void createVendor(String& name);
 
 };
 

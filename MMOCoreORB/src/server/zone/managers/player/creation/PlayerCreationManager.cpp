@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "RacialCreationData.h"
 #include "HairStyleInfo.h"
 #include "../PlayerManager.h"
+#include "server/login/packets/ErrorMessage.h"
 #include "server/chat/ChatManager.h"
 #include "server/login/account/Account.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -374,6 +375,13 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			ClientCreateCharacterCallback*>(data);
 	ZoneClientSession* client = data->getClient();
 
+	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 10) {
+		ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only have 10 characters per galaxy", 0x0);
+		client->sendMessage(errMsg);
+
+		return false;
+	}
+
 	PlayerManager* playerManager = zoneServer.get()->getPlayerManager();
 
 	SkillManager* skillManager = SkillManager::instance();
@@ -488,7 +496,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 		ghost->setAccountID(client->getAccountID());
 
-
 		if (!freeGodMode) {
 			try {
 				uint32 accID = client->getAccountID();
@@ -497,6 +504,27 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 				if (playerAccount == NULL) {
 					return false;
+				}
+
+				//if (client->has)
+
+				Locker locker(&charCountMutex);
+
+				if (lastCreatedCharacter.containsKey(accID)) {
+					Time lastCreatedTime = lastCreatedCharacter.get(accID);
+
+					if (lastCreatedTime.miliDifference() < 86400000) {
+						ErrorMessage* errMsg = new ErrorMessage("Create Error", "You can only create 1 character ever 24 hours", 0x0);
+						client->sendMessage(errMsg);
+
+						return false;
+					} else {
+						lastCreatedTime.updateToCurrentTime();
+
+						lastCreatedCharacter.put(accID, lastCreatedTime);
+					}
+				} else {
+					lastCreatedCharacter.put(accID, Time());
 				}
 
 				int accountPermissionLevel = playerAccount->getAdminLevel();
@@ -528,21 +556,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		ghost->setRaceID(raceID);
 	}
 
-	/*
-	//Add a ship
-	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1));
-	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
-	ShipObject* ship = cast<ShipObject*>( zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
-
-	shipControlDevice->setControlledObject(ship);
-
-	if (!shipControlDevice->transferObject(ship, 4))
-		error("Adding of ship to device failed");
-
-	SceneObject* datapad = playerCreature->getSlottedObject("datapad");
-	datapad->transferObject(shipControlDevice, -1);
-	*/
-
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(
 			playerCreature->getObjectID());
 	playerCreature->sendMessage(msg);
@@ -570,7 +583,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	playerManager->addPlayer(playerCreature);
 
-	client->addCharacter(playerCreature->getObjectID());
+	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
+
 
 	return true;
 }

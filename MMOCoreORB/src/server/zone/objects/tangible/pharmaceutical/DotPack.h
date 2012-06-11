@@ -203,6 +203,8 @@ protected:
 
 	float area;
 
+	bool hasArea;
+
 	float rangeMod;
 
 	float potency;

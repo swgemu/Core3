@@ -61,6 +61,7 @@ import engine.service.proto.events.BaseClientEvent;
 
 import system.lang.Time;
 import system.util.HashSet;
+import system.util.HashTable;
 import engine.log.Logger;
 
 //@nonTransactional
@@ -68,7 +69,10 @@ class ZoneClientSession extends ManagedObject {
 	transient protected BaseClientProxy session;
 	
 	@dereferenced
-	protected HashSet<unsigned long> characters; //TODO: Move to account when ZoneServer get's it own account management
+	protected VectorMap<unsigned int, unsigned long> characters;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, unsigned long> bannedCharacters;
 	
 	@weakReference
 	protected SceneObject player;
@@ -145,18 +149,27 @@ class ZoneClientSession extends ManagedObject {
 	}
 	
 	public unsigned int getAccountID() {
-		return accountID;;
+		return accountID;
 	}
 
-	public boolean hasCharacter(unsigned long cid) {
-		return characters.contains(cid);
-	}
+	public native boolean hasCharacter(unsigned long cid, unsigned int galaxyId);
 
-	public void addCharacter(unsigned long cid) {
-		characters.add(cid);	
+	public void addCharacter(unsigned long cid, unsigned int galaxyId) {
+		characters.put(galaxyId, cid);	
 	}
+	
+	public void addBannedCharacter(unsigned long cid, unsigned int galaxyId) {
+		bannedCharacters.put(galaxyId, cid);
+	}
+	
+	public int getCharacterCount() {
+		return characters.size() + bannedCharacters.size();
+	}
+	
+	public native int getCharacterCount(int galaxyId);
 	
 	public void resetCharacters() {
 		characters.removeAll();
+		bannedCharacters.removeAll();
 	}
 }

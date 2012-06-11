@@ -40,7 +40,7 @@
  *	PlayerObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_HASCAPPEDEXPERIENCE__STRING_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_SETSCREENPLAYDATA__STRING_STRING_STRING_,RPC_GETSCREENPLAYDATA__STRING_STRING_,RPC_CLEARSCREENPLAYDATA__STRING_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_SETTRAINERZONENAME__STRING_,RPC_GETTRAINERZONENAME__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETFORCEPOWER__INT_BOOL_,RPC_SETFORCEPOWERMAX__INT_BOOL_,RPC_ACTIVATEFORCEREGEN__,RPC_SETFORCEPOWERREGEN__INT_,RPC_GETFORCEPOWERREGEN__,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ADDPERMISSIONGROUP__STRING_,RPC_REMOVEPERMISSIONGROUP__STRING_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_SETJEDISTATE__INT_,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_SETBANKLOCATION__STRING_,RPC_GETBANKLOCATION__,RPC_GETEXPERIENCE__STRING_,RPC_MAXIMIZEEXPERIENCE__,RPC_ACTIVATEMISSIONS__,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_SETFACTIONSTATUS__INT_,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_ADDHOLOGRINDPROFESSION__BYTE_,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__,RPC_GETSTARTERPROFESSION__,RPC_SETSTARTERPROFESSION__STRING_,RPC_ADDTOBOUNTYLOCKLIST__LONG_,RPC_ISINBOUNTYLOCKLIST__LONG_,RPC_REMOVEFROMBOUNTYLOCKLIST__LONG_BOOL_,RPC_REMOVEFROMBOUNTYLOCKLISTDIRECTLY__LONG_,RPC_ISBOUNTYLOCKED__,RPC_GETPERFORMANCEBUFFTARGET__,RPC_SETPERFORMANCEBUFFTARGET__LONG_,RPC_SETDEBUG__BOOL_,RPC_GETDEBUG__,RPC_GETVISIBILITY__,RPC_SETVISIBILITY__FLOAT_,};
+enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_HASCAPPEDEXPERIENCE__STRING_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_SETSCREENPLAYDATA__STRING_STRING_STRING_,RPC_GETSCREENPLAYDATA__STRING_STRING_,RPC_CLEARSCREENPLAYDATA__STRING_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_SETTRAINERZONENAME__STRING_,RPC_GETTRAINERZONENAME__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETFORCEPOWER__INT_BOOL_,RPC_SETFORCEPOWERMAX__INT_BOOL_,RPC_ACTIVATEFORCEREGEN__,RPC_SETFORCEPOWERREGEN__INT_,RPC_GETFORCEPOWERREGEN__,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ADDPERMISSIONGROUP__STRING_BOOL_,RPC_REMOVEPERMISSIONGROUP__STRING_BOOL_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_SETJEDISTATE__INT_,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_SETBANKLOCATION__STRING_,RPC_GETBANKLOCATION__,RPC_GETEXPERIENCE__STRING_,RPC_MAXIMIZEEXPERIENCE__,RPC_ACTIVATEMISSIONS__,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_SETFACTIONSTATUS__INT_,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_ADDHOLOGRINDPROFESSION__BYTE_,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__,RPC_GETSTARTERPROFESSION__,RPC_SETSTARTERPROFESSION__STRING_,RPC_ADDTOBOUNTYLOCKLIST__LONG_,RPC_ISINBOUNTYLOCKLIST__LONG_,RPC_REMOVEFROMBOUNTYLOCKLIST__LONG_BOOL_,RPC_REMOVEFROMBOUNTYLOCKLISTDIRECTLY__LONG_,RPC_ISBOUNTYLOCKED__,RPC_GETPERFORMANCEBUFFTARGET__,RPC_SETPERFORMANCEBUFFTARGET__LONG_,RPC_SETDEBUG__BOOL_,RPC_GETDEBUG__,RPC_GETVISIBILITY__,RPC_SETVISIBILITY__FLOAT_,RPC_ADDVENDOR__SCENEOBJECT_,RPC_REMOVEVENDOR__SCENEOBJECT_,RPC_GETVENDORCOUNT__};
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
@@ -1494,32 +1494,34 @@ void PlayerObject::addSuiBox(SuiBox* sui) {
 		_implementation->addSuiBox(sui);
 }
 
-void PlayerObject::addPermissionGroup(const String& group) {
+void PlayerObject::addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDPERMISSIONGROUP__STRING_);
+		DistributedMethod method(this, RPC_ADDPERMISSIONGROUP__STRING_BOOL_);
 		method.addAsciiParameter(group);
+		method.addBooleanParameter(updateInRangeBuildingPermissions);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addPermissionGroup(group);
+		_implementation->addPermissionGroup(group, updateInRangeBuildingPermissions);
 }
 
-void PlayerObject::removePermissionGroup(const String& group) {
+void PlayerObject::removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEPERMISSIONGROUP__STRING_);
+		DistributedMethod method(this, RPC_REMOVEPERMISSIONGROUP__STRING_BOOL_);
 		method.addAsciiParameter(group);
+		method.addBooleanParameter(updateInRangeBuildingPermissions);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removePermissionGroup(group);
+		_implementation->removePermissionGroup(group, updateInRangeBuildingPermissions);
 }
 
 SortedVector<String>* PlayerObject::getPermissionGroups() {
@@ -2713,33 +2715,6 @@ unsigned int PlayerObject::getClientLastMovementStamp() {
 		return _implementation->getClientLastMovementStamp();
 }
 
-bool PlayerObject::isInvisible() {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISINVISIBLE__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isInvisible();
-}
-
-void PlayerObject::setInvisible(bool invis) {
-	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETINVISIBLE__BOOL_);
-		method.addBooleanParameter(invis);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setInvisible(invis);
-}
-
 void PlayerObject::addHologrindProfession(byte prof) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3006,6 +2981,47 @@ Time PlayerObject::getLastVisibilityUpdateTimestamp() {
 		return _implementation->getLastVisibilityUpdateTimestamp();
 }
 
+void PlayerObject::addVendor(SceneObject* vendor) {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDVENDOR__SCENEOBJECT_);
+		method.addObjectParameter(vendor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addVendor(vendor);
+}
+
+void PlayerObject::removeVendor(SceneObject* vendor) {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEVENDOR__SCENEOBJECT_);
+		method.addObjectParameter(vendor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeVendor(vendor);
+}
+
+int PlayerObject::getVendorCount() {
+	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETVENDORCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getVendorCount();
+}
+
 DistributedObjectServant* PlayerObject::_getImplementation() {
 
 	_updated = true;
@@ -3189,6 +3205,11 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "PlayerObject.ownedVendors") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&ownedVendors, stream);
+		return true;
+	}
+
 	if (_name == "PlayerObject.maximumLots") {
 		TypeInfo<byte >::parseFromBinaryStream(&maximumLots, stream);
 		return true;
@@ -3361,11 +3382,6 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 
 	if (_name == "PlayerObject.factionStatus") {
 		TypeInfo<int >::parseFromBinaryStream(&factionStatus, stream);
-		return true;
-	}
-
-	if (_name == "PlayerObject.invisible") {
-		TypeInfo<bool >::parseFromBinaryStream(&invisible, stream);
 		return true;
 	}
 
@@ -3571,6 +3587,14 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&ownedStructures, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "PlayerObject.ownedVendors";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&ownedVendors, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -3854,14 +3878,6 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.invisible";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&invisible, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "PlayerObject.hologrindProfessions";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3996,8 +4012,6 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	(&consentList)->setNoDuplicateInsertPlan();
 	// server/zone/objects/player/PlayerObject.idl():  		accountID = 0;
 	accountID = 0;
-	// server/zone/objects/player/PlayerObject.idl():  		invisible = false;
-	invisible = false;
 	// server/zone/objects/player/PlayerObject.idl():  		factionStatus = 0;
 	factionStatus = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		raceID = 0;
@@ -4356,16 +4370,6 @@ void PlayerObjectImplementation::addSuiBox(SuiBox* sui) {
 	unsigned int key = sui->getBoxID();
 	// server/zone/objects/player/PlayerObject.idl():  		suiBoxes.put(key, sui);
 	(&suiBoxes)->put(key, sui);
-}
-
-void PlayerObjectImplementation::addPermissionGroup(const String& group) {
-	// server/zone/objects/player/PlayerObject.idl():  		permissionGroups.put(group);
-	(&permissionGroups)->put(group);
-}
-
-void PlayerObjectImplementation::removePermissionGroup(const String& group) {
-	// server/zone/objects/player/PlayerObject.idl():  		permissionGroups.drop(group);
-	(&permissionGroups)->drop(group);
 }
 
 SortedVector<String>* PlayerObjectImplementation::getPermissionGroups() {
@@ -4773,16 +4777,6 @@ unsigned int PlayerObjectImplementation::getClientLastMovementStamp() {
 	return clientLastMovementStamp;
 }
 
-bool PlayerObjectImplementation::isInvisible() {
-	// server/zone/objects/player/PlayerObject.idl():  		return invisible;
-	return invisible;
-}
-
-void PlayerObjectImplementation::setInvisible(bool invis) {
-	// server/zone/objects/player/PlayerObject.idl():  		invisible = invis;
-	invisible = invis;
-}
-
 void PlayerObjectImplementation::addHologrindProfession(byte prof) {
 	// server/zone/objects/player/PlayerObject.idl():  		hologrindProfessions.add(prof);
 	(&hologrindProfessions)->add(prof);
@@ -4858,6 +4852,21 @@ void PlayerObjectImplementation::setVisibility(float value) {
 }
 	// server/zone/objects/player/PlayerObject.idl():  		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 	(&lastVisibilityUpdateTimestamp)->updateToCurrentTime();
+}
+
+void PlayerObjectImplementation::addVendor(SceneObject* vendor) {
+	// server/zone/objects/player/PlayerObject.idl():  		ownedVendors.add(vendor.getObjectID());
+	(&ownedVendors)->add(vendor->getObjectID());
+}
+
+void PlayerObjectImplementation::removeVendor(SceneObject* vendor) {
+	// server/zone/objects/player/PlayerObject.idl():  		ownedVendors.removeElement(vendor.getObjectID());
+	(&ownedVendors)->removeElement(vendor->getObjectID());
+}
+
+int PlayerObjectImplementation::getVendorCount() {
+	// server/zone/objects/player/PlayerObject.idl():  		return ownedVendors.size();
+	return (&ownedVendors)->size();
 }
 
 /*
@@ -5358,16 +5367,16 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			addSuiBox(static_cast<SuiBox*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_ADDPERMISSIONGROUP__STRING_:
+	case RPC_ADDPERMISSIONGROUP__STRING_BOOL_:
 		{
 			String group; 
-			addPermissionGroup(inv->getAsciiParameter(group));
+			addPermissionGroup(inv->getAsciiParameter(group), inv->getBooleanParameter());
 		}
 		break;
-	case RPC_REMOVEPERMISSIONGROUP__STRING_:
+	case RPC_REMOVEPERMISSIONGROUP__STRING_BOOL_:
 		{
 			String group; 
-			removePermissionGroup(inv->getAsciiParameter(group));
+			removePermissionGroup(inv->getAsciiParameter(group), inv->getBooleanParameter());
 		}
 		break;
 	case RPC_ISFIRSTINCAPACITATIONEXPIRED__:
@@ -5777,16 +5786,6 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertInt(getClientLastMovementStamp());
 		}
 		break;
-	case RPC_ISINVISIBLE__:
-		{
-			resp->insertBoolean(isInvisible());
-		}
-		break;
-	case RPC_SETINVISIBLE__BOOL_:
-		{
-			setInvisible(inv->getBooleanParameter());
-		}
-		break;
 	case RPC_ADDHOLOGRINDPROFESSION__BYTE_:
 		{
 			addHologrindProfession(inv->getByteParameter());
@@ -5876,6 +5875,21 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETVISIBILITY__FLOAT_:
 		{
 			setVisibility(inv->getFloatParameter());
+		}
+		break;
+	case RPC_ADDVENDOR__SCENEOBJECT_:
+		{
+			addVendor(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVEVENDOR__SCENEOBJECT_:
+		{
+			removeVendor(static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_GETVENDORCOUNT__:
+		{
+			resp->insertSignedInt(getVendorCount());
 		}
 		break;
 	default:
@@ -6251,12 +6265,12 @@ void PlayerObjectAdapter::addSuiBox(SuiBox* sui) {
 	(static_cast<PlayerObject*>(stub))->addSuiBox(sui);
 }
 
-void PlayerObjectAdapter::addPermissionGroup(const String& group) {
-	(static_cast<PlayerObject*>(stub))->addPermissionGroup(group);
+void PlayerObjectAdapter::addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+	(static_cast<PlayerObject*>(stub))->addPermissionGroup(group, updateInRangeBuildingPermissions);
 }
 
-void PlayerObjectAdapter::removePermissionGroup(const String& group) {
-	(static_cast<PlayerObject*>(stub))->removePermissionGroup(group);
+void PlayerObjectAdapter::removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+	(static_cast<PlayerObject*>(stub))->removePermissionGroup(group, updateInRangeBuildingPermissions);
 }
 
 bool PlayerObjectAdapter::isFirstIncapacitationExpired() {
@@ -6579,14 +6593,6 @@ unsigned int PlayerObjectAdapter::getClientLastMovementStamp() {
 	return (static_cast<PlayerObject*>(stub))->getClientLastMovementStamp();
 }
 
-bool PlayerObjectAdapter::isInvisible() {
-	return (static_cast<PlayerObject*>(stub))->isInvisible();
-}
-
-void PlayerObjectAdapter::setInvisible(bool invis) {
-	(static_cast<PlayerObject*>(stub))->setInvisible(invis);
-}
-
 void PlayerObjectAdapter::addHologrindProfession(byte prof) {
 	(static_cast<PlayerObject*>(stub))->addHologrindProfession(prof);
 }
@@ -6657,6 +6663,18 @@ float PlayerObjectAdapter::getVisibility() {
 
 void PlayerObjectAdapter::setVisibility(float value) {
 	(static_cast<PlayerObject*>(stub))->setVisibility(value);
+}
+
+void PlayerObjectAdapter::addVendor(SceneObject* vendor) {
+	(static_cast<PlayerObject*>(stub))->addVendor(vendor);
+}
+
+void PlayerObjectAdapter::removeVendor(SceneObject* vendor) {
+	(static_cast<PlayerObject*>(stub))->removeVendor(vendor);
+}
+
+int PlayerObjectAdapter::getVendorCount() {
+	return (static_cast<PlayerObject*>(stub))->getVendorCount();
 }
 
 /*

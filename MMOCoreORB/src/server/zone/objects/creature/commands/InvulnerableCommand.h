@@ -46,7 +46,7 @@ which carries forward this exception.
 #define INVULNERABLECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/events/InvisibleDelayEvent.h"
+#include "server/zone/objects/creature/events/InvisibleDelayEvent.h"
 
 class InvulnerableCommand : public QueueCommand {
 public:
@@ -79,7 +79,7 @@ public:
 			args.getStringToken(subCmd);
 
 			if (subCmd.toLowerCase() == "invisible") {
-				Reference<Task*> task = player->getPendingTask("invisibledelayevent");
+				Reference<Task*> task = creature->getPendingTask("invisibledelayevent");
 
 				if (task != NULL) {
 					player->sendSystemMessage("You can not go invisible at this time");
@@ -88,8 +88,8 @@ public:
 
 				Reference<InvisibleDelayEvent*> invisTask = new InvisibleDelayEvent(player);
 
-				player->playEffect("clienteffect/pl_force_resist_disease_self.cef");
-				player->addPendingTask("invisibledelayevent", invisTask, 1600);
+				creature->playEffect("clienteffect/pl_force_resist_disease_self.cef");
+				creature->addPendingTask("invisibledelayevent", invisTask, 1600);
 			}
 
 		} else {

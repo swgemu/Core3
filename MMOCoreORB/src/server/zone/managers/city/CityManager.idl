@@ -77,7 +77,7 @@ class CityManager extends ManagedService implements Logger {
 	public transient static unsigned long treasuryWithdrawalCooldown;
 	
 	@dereferenced
-	public transient VectorMap<string, CityRegion> cities;
+	private transient VectorMap<string, CityRegion> cities;
 	
 	private transient boolean configLoaded;
 	
@@ -116,6 +116,13 @@ class CityManager extends ManagedService implements Logger {
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 	
 	public native void processCityUpdate(CityRegion city);
+	
+	/**
+	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
+	 * @pre city locked
+	 * @post city locked
+	 */
+	public native void updateCityVoting(CityRegion city);
 	
 	public native void contractCity(CityRegion city);
 	
@@ -189,4 +196,24 @@ class CityManager extends ManagedService implements Logger {
 	public int getTotalCities() {
 		return cities.size();
 	}
+	
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
+	public native void sendMayoralStandings(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
+	public native void promptMayoralVote(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
+	/**
+	 * @pre city locked, creature locked
+	 * @post city locked, creature locked
+	 */
+	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
+	
+	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
 }

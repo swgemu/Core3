@@ -20,6 +20,7 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
@@ -31,10 +32,17 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+
+#include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
+#include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("BuildingObject");
+	
+	updatePaidAccessList();
 }
 
 void BuildingObjectImplementation::loadTemplateData(
@@ -145,6 +153,17 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
+		ContainerPermissions* perms = cell->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent()) {
+			CreatureObject* creo = cast<CreatureObject*>(player);
+
+			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::MOVEIN)) {
+				BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
+				player->sendMessage(perm);
+			}
+		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* containerObject = cell->getContainerObject(j);
@@ -266,7 +285,22 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 	if (isPrivateStructure() && !isOnEntryList(player))
 		return false;
 
-	//TODO: Add AccessFee entry permissions.
+	if(accessFee > 0 && !isOnEntryList(player)) {
+
+		if(paidAccessList.contains(player->getObjectID())) {
+
+			uint32 expireTime = paidAccessList.get(player->getObjectID());
+
+			if(expireTime > time(0))
+				return true;
+
+			paidAccessList.drop(player->getObjectID());
+		}
+
+		promptPayAccessFee(player);
+
+		ejectObject(player);
+	}
 
 	return true;
 }
@@ -488,8 +522,15 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
-		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-		creature->sendMessage(perm);
+		ContainerPermissions* perms = cell->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent() && !cell->checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
+			creature->sendMessage(perm);
+		} else {
+			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+			creature->sendMessage(perm);
+		}
 	}
 }
 
@@ -514,6 +555,10 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		return;
 
 	int i = 0;
+	
+	addTemplateSkillMods(player);
+
+	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
 	if (!isStaticObject() && (!isAllowedEntry(player) || isCondemned())) {
@@ -540,10 +585,6 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 			}
 		}
 	}
-
-	addTemplateSkillMods(player);
-
-	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
 }
 
 void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parentid) {
@@ -710,3 +751,104 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
 	}
 }
+
+void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
+	if(!player->isPlayerCreature())
+		return;
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::STRUCTURE_CONSENT_PAY_ACCESS_FEE);
+	box->setPromptTitle("@player_structure:access_fee_t");
+	box->setPromptText("You must pay a fee of " + String::valueOf(accessFee) + " credits to enter this building");
+	box->setUsingObject(_this.get());
+	box->setForceCloseDistance(30.f);
+	box->setCallback(new StructurePayAccessFeeSuiCallback(server->getZoneServer()));
+
+	player->getPlayerObject()->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
+
+	if(player->getCashCredits() < accessFee) {
+		player->sendSystemMessage("@player/player_utility:not_enough_money");
+		return;
+	}
+
+	player->subtractCashCredits(accessFee);
+	if(getOwnerCreatureObject() != NULL)
+		getOwnerCreatureObject()->addBankCredits(accessFee, true);
+	else
+		error("Unable to pay access fee credits to owner");
+
+	if(paidAccessList.contains(player->getObjectID()))
+		paidAccessList.drop(player->getObjectID());
+
+	paidAccessList.put(player->getObjectID(), time(0) + (accessDuration * 60));
+	updatePaidAccessList();
+
+	player->sendSystemMessage("@player/player_utility:access_granted");
+
+}
+
+void BuildingObjectImplementation::setAccessFee(int fee, int duration) {
+	accessFee = fee;
+	accessDuration = duration;
+	lastAccessFeeChange = time(0);
+}
+
+bool BuildingObjectImplementation::canChangeAccessFee() {
+	// 10 Minutes between changes
+	return lastAccessFeeChange + 600  < time(0);
+}
+
+int BuildingObjectImplementation::getAccessFeeDelay() {
+	int secondsLeft = lastAccessFeeChange + 600  - time(0);
+	return (secondsLeft / 60) + 1;
+}
+
+void BuildingObjectImplementation::updatePaidAccessList() {
+
+	Vector<uint64> ejectList;
+	uint32 nextExpirationTime = 0;
+
+	for(int i = 0; i < paidAccessList.size(); ++i) {
+		uint32 expirationTime = paidAccessList.elementAt(i).getValue();
+		if(expirationTime <= time(0)) {
+			ejectList.add(paidAccessList.elementAt(i).getKey());
+		}
+
+		if(nextExpirationTime == 0 || nextExpirationTime > expirationTime)
+			nextExpirationTime = expirationTime;
+	}
+
+	for(int i = 0; i < ejectList.size(); ++i)
+	{
+		paidAccessList.drop(ejectList.get(i));
+		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(server->getZoneServer()->getObject(ejectList.get(i)));
+		if(creature != NULL && creature->getRootParent() == _this.get()) {
+			creature->sendSystemMessage("@player_structure:turnstile_expire"); // You have been ejected because your access expired
+			ejectObject(creature);
+		}
+	}
+
+	Reference<Task*> pendingTask = getPendingTask("revokepaidstructureaccess");
+
+	if(paidAccessList.isEmpty()) {
+		if(pendingTask != NULL && pendingTask->isScheduled()) {
+			pendingTask->cancel();
+		}
+		removePendingTask("revokepaidstructureaccess");
+		return;
+	}
+
+	int timeToSchedule = (nextExpirationTime - time(0)) * 1000;
+
+	if(pendingTask == NULL) {
+		pendingTask = new RevokePaidAccessTask(_this.get());
+		addPendingTask("revokepaidstructureaccess", pendingTask, timeToSchedule);
+	} else {
+		pendingTask->reschedule(timeToSchedule);
+	}
+
+}
+

@@ -117,6 +117,8 @@ public:
 				if(permissionLevelList->containsLevel(param)) {
 					int permissionLevel = permissionLevelList->getLevelNumber(param);
 					playerManager->updatePermissionLevel(targetPlayer, permissionLevel);
+					creature->sendSystemMessage("You have set " + targetPlayer->getFirstName()
+							+ "'s permission level to " + param);
 				} else {
 					creature->sendSystemMessage("Invalid permission level: " + param);
 					error("Invalid parameter for setGodMode");

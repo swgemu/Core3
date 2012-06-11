@@ -27,6 +27,7 @@ barada = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/barada.iff"},
+	outfit = "barada_outfit",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

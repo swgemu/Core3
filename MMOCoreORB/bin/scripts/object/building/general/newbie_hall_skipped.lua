@@ -42,7 +42,6 @@
 
 
 object_building_general_newbie_hall_skipped = object_building_general_shared_newbie_hall_skipped:new {
-	gameObjectType = 516
 }
 
 ObjectTemplates:addTemplate(object_building_general_newbie_hall_skipped, "object/building/general/newbie_hall_skipped.iff")

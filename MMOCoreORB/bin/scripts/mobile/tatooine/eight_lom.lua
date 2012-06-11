@@ -1,6 +1,5 @@
 eight_lom = Creature:new {
-	objectName = "@theme_park_name:4lom",
-	customName = "8-LOM",
+	objectName = "@theme_park_name:lom",
 	socialGroup = "jabba",
 	pvpFaction = "jabba",
 	faction = "jabba",

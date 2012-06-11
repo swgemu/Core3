@@ -38,6 +38,7 @@ young_mos_taike_guard = Creature:new {
 		}			
 	},
 	weapons = {},
+	outfit = "mos_taike_guard_outfit",
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

@@ -13,7 +13,19 @@
 class DataObjectComponent : public SceneObjectComponent, public Serializable {
 public:
 
+	virtual void initializeTransientMembers() {
+
+	}
+
+	virtual void notifyObjectDestroyingFromDatabase() {
+
+	}
+
 	virtual bool isDiceData() {
+		return false;
+	}
+
+	virtual bool isVendorData() {
 		return false;
 	}
 

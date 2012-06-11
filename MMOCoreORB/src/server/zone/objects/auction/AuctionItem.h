@@ -14,44 +14,6 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace tangible {
-namespace terminal {
-namespace vendor {
-namespace bazaar {
-
-class BazaarTerminal;
-
-} // namespace bazaar
-} // namespace vendor
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace terminal {
-namespace vendor {
-
-class VendorTerminal;
-
-} // namespace vendor
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::terminal::vendor;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace creature {
 
 class CreatureObject;
@@ -83,6 +45,8 @@ public:
 	static const int OPTION_WITHDRAW = 0x800;
 
 	AuctionItem(unsigned long long objectid);
+
+	int compareTo(AuctionItem* obj);
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
@@ -174,7 +138,9 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner(CreatureObject* player);
+
+	bool isAuctionObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -261,6 +227,8 @@ public:
 
 	AuctionItemImplementation(DummyConstructorParameter* param);
 
+	int compareTo(AuctionItem* obj);
+
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
 	void notifyLoadFromDatabase();
@@ -351,7 +319,9 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner(CreatureObject* player);
+
+	bool isAuctionObject();
 
 	WeakReference<AuctionItem*> _this;
 
@@ -395,6 +365,8 @@ public:
 	AuctionItemAdapter(AuctionItem* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	int compareTo(AuctionItem* obj);
 
 	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
@@ -484,7 +456,9 @@ public:
 
 	bool isPremiumAuction();
 
-	bool isOwner(CreatureObject* obj);
+	bool isOwner(CreatureObject* player);
+
+	bool isAuctionObject();
 
 };
 

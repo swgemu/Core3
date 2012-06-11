@@ -136,9 +136,11 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		if (!(optionsBitmask & 1)) {
 			optionsBitmask |= 1;
 		}
+		lastStartTime.updateToCurrentTime();
 	} else {
 		if (optionsBitmask & 1)
 			optionsBitmask &= ~1;
+		lastStopTime.updateToCurrentTime();
 	}
 
 	InstallationObjectDeltaMessage3* delta = new InstallationObjectDeltaMessage3(_this.get());
@@ -334,9 +336,11 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 }
 
 void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
-	// Nothing to update if we're not operating
-	if (!isOperating())
-		return;
+
+	if (!isOperating()) {
+		if(lastStopTime.compareTo(resourceHopperTimestamp) != -1)
+			return;
+	}
 
 	if (resourceHopper.size() == 0) // no active spawn
 		return;
@@ -348,9 +352,10 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	Time spawnExpireTimestamp(spawn->getDespawned());
 	// if (t1 < t2) return 1 - if spawnTime is sooner currentTime, use spawnTime, else use spawn time
-	Time harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp : currentTime;
+	uint32 harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp.getTime() : currentTime.getTime();
+	uint32 lastHopperUpdate = resourceHopperTimestamp.getTime();
 
-	float elapsedTime = (harvestUntil.getTime() - resourceHopperTimestamp.getTime());
+	int elapsedTime = (harvestUntil - lastHopperUpdate);
 
 	float harvestAmount = (elapsedTime / 60.0) * (spawnDensity * getExtractionRate());
 

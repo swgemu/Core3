@@ -316,6 +316,16 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		//Add abilities
 		Vector<String>* abilityNames = skill->getAbilities();
 		addAbilities(ghost, *abilityNames, notifyClient);
+		if (skill->isGodOnly()) {
+			for (int i = 0; i < abilityNames->size(); ++i) {
+				String ability = abilityNames->get(i);
+				StringIdChatParameter params;
+				params.setTU(ability);
+				params.setStringId("ui", "skill_command_acquired_prose");
+
+				creature->sendSystemMessage(params);
+			}
+		}
 
 		//Add draft schematic groups
 		Vector<String>* schematicsGranted = skill->getSchematicsGranted();

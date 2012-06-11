@@ -56,6 +56,20 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace structure {
 
 class StructureObject;
@@ -79,23 +93,17 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace tangible {
-namespace terminal {
-namespace vendor {
-namespace bazaar {
+namespace managers {
+namespace city {
 
-class BazaarTerminal;
+class CityManager;
 
-} // namespace bazaar
-} // namespace vendor
-} // namespace terminal
-} // namespace tangible
-} // namespace objects
+} // namespace city
+} // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::tangible::terminal::vendor::bazaar;
+using namespace server::zone::managers::city;
 
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
@@ -238,7 +246,7 @@ public:
 
 	int getMaxWithdrawal();
 
-	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
+	Vector<ManagedReference<TangibleObject* > >* getVendorsInCity();
 
 	void setRegionName(const StringId& name);
 
@@ -278,9 +286,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 
@@ -301,6 +309,30 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	VectorMap<unsigned long long, int>* getCandidates();
+
+	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -332,6 +364,10 @@ protected:
 
 	StringId regionName;
 
+	VectorMap<unsigned long long, int> candidates;
+
+	VectorMap<unsigned long long, unsigned long long> mayoralVotes;
+
 	String customRegionName;
 
 	ZoneReference zone;
@@ -356,7 +392,7 @@ protected:
 
 	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
 
-	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
+	VectorMap<unsigned long long, ManagedReference<TangibleObject* > > bazaars;
 
 	byte cityRank;
 
@@ -373,6 +409,8 @@ protected:
 	unsigned long long shuttleID;
 
 	Time nextUpdateTime;
+
+	Time nextInauguration;
 
 	Reference<CityUpdateEvent* > cityUpdateEvent;
 
@@ -499,7 +537,7 @@ public:
 
 	int getMaxWithdrawal();
 
-	Vector<ManagedReference<SceneObject* > >* getVendorsInCity();
+	Vector<ManagedReference<TangibleObject* > >* getVendorsInCity();
 
 	void setRegionName(const StringId& name);
 
@@ -539,9 +577,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 
@@ -562,6 +600,30 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	VectorMap<unsigned long long, int>* getCandidates();
+
+	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
 
 	WeakReference<CityRegion*> _this;
 
@@ -738,9 +800,9 @@ public:
 
 	void removeSkillTrainers(SceneObject* trainer);
 
-	void addBazaar(BazaarTerminal* ter);
+	void addBazaar(TangibleObject* ter);
 
-	BazaarTerminal* getBazaar(int idx);
+	TangibleObject* getBazaar(int idx);
 
 	int getBazaarCount();
 
@@ -761,6 +823,26 @@ public:
 	void removeLimitedPlacementStructure(unsigned int id);
 
 	void destroyAllStructuresForRank(byte rank);
+
+	void addCandidate(unsigned long long candidateoid);
+
+	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
+
+	int getCandidateVotes(unsigned long long candidateoid);
+
+	void resetCandidates();
+
+	void resetMayoralVotes();
+
+	void removeCandidate(unsigned long long candidateoid);
+
+	bool isCandidate(unsigned long long candidateoid);
+
+	bool isVotingPeriodOver();
+
+	bool isVotingPeriod();
+
+	void resetVotingPeriod();
 
 };
 

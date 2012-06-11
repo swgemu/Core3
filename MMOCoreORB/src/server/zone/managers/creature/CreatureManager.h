@@ -230,6 +230,8 @@ public:
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
+	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -329,6 +331,8 @@ public:
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
+	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
+
 	WeakReference<CreatureManager*> _this;
 
 	operator const CreatureManager*();
@@ -413,6 +417,8 @@ public:
 	int getSpawnedRandomCreatures();
 
 	SpawnArea* getSpawnArea(const String& areaname);
+
+	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
 
 };
 

@@ -688,6 +688,16 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.lastStartTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastStartTime, stream);
+		return true;
+	}
+
+	if (_name == "InstallationObject.lastStopTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastStopTime, stream);
+		return true;
+	}
+
 	if (_name == "InstallationObject.resourceHopper") {
 		TypeInfo<HopperList >::parseFromBinaryStream(&resourceHopper, stream);
 		return true;
@@ -762,6 +772,22 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.lastStartTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Time >::toBinaryStream(&lastStartTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "InstallationObject.lastStopTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Time >::toBinaryStream(&lastStopTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "InstallationObject.resourceHopper";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -803,7 +829,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 9;
+	return _count + 11;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {

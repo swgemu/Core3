@@ -542,9 +542,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
 	SortedVector<String>* getPermissionGroups();
 
@@ -730,10 +730,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	bool isInvisible();
-
-	void setInvisible(bool invis);
-
 	void addHologrindProfession(byte prof);
 
 	Vector<byte>* getHologrindProfessions();
@@ -773,6 +769,12 @@ public:
 	void setVisibility(float value);
 
 	Time getLastVisibilityUpdateTimestamp();
+
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -831,6 +833,8 @@ protected:
 	bool teleporting;
 
 	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
+
+	SortedVector<unsigned long long> ownedVendors;
 
 	byte maximumLots;
 
@@ -907,8 +911,6 @@ protected:
 	int factionStatus;
 
 	bool spawnedBlueFrog;
-
-	bool invisible;
 
 	Vector<byte> hologrindProfessions;
 
@@ -1189,9 +1191,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
 	SortedVector<String>* getPermissionGroups();
 
@@ -1377,10 +1379,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	bool isInvisible();
-
-	void setInvisible(bool invis);
-
 	void addHologrindProfession(byte prof);
 
 	Vector<byte>* getHologrindProfessions();
@@ -1424,6 +1422,12 @@ public:
 	void setVisibility(float value);
 
 	Time getLastVisibilityUpdateTimestamp();
+
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
 
 	WeakReference<PlayerObject*> _this;
 
@@ -1650,9 +1654,9 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	void addPermissionGroup(const String& group);
+	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
 
-	void removePermissionGroup(const String& group);
+	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
 
 	bool isFirstIncapacitationExpired();
 
@@ -1814,10 +1818,6 @@ public:
 
 	unsigned int getClientLastMovementStamp();
 
-	bool isInvisible();
-
-	void setInvisible(bool invis);
-
 	void addHologrindProfession(byte prof);
 
 	byte getRaceID();
@@ -1853,6 +1853,12 @@ public:
 	float getVisibility();
 
 	void setVisibility(float value);
+
+	void addVendor(SceneObject* vendor);
+
+	void removeVendor(SceneObject* vendor);
+
+	int getVendorCount();
 
 };
 

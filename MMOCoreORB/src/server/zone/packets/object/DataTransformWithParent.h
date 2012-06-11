@@ -229,6 +229,16 @@ public:
 			return;
 		}
 
+		ContainerPermissions* perms = newParent->getContainerPermissions();
+
+		if (!perms->hasInheritPermissionsFromParent()) {
+			if (!newParent->checkContainerPermission(object, ContainerPermissions::MOVEIN)) {
+				bounceBack(object, pos);
+
+				return;
+			}
+		}
+
 		if (playerManager->checkSpeedHackFirstTest(object, parsedSpeed, pos, 1.1f) != 0)
 			return;
 

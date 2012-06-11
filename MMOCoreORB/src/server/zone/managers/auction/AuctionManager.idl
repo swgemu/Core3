@@ -51,10 +51,8 @@ import engine.core.ManagedService;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.auction.AuctionsMap;
-import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
-import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 import server.zone.objects.auction.AuctionItem;
-include server.zone.objects.auction.Vendor;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 
@@ -65,11 +63,13 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	protected ZoneServer zoneServer;
 	
-	public final static int MAXPRICE = 20000;
+	public final static int MAXBAZAARPRICE = 20000;
 	public final static int MAXSALES = 20; // this only apply to bazaars
 	public final static int SALESFEE = 20;
 	public final static int CHECKEVERY = 2; // Minutes
 	
+	public final static int MAXVENDORPRICE = 99999999;
+	public final static int ITEMSPERPAGE = 100;
 	
 	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
@@ -80,39 +80,32 @@ class AuctionManager extends ManagedService implements Logger {
 	}
 	
 	public native void initialize();
-
-	public native void checkVendorItems();
-	
-	public native void checkAuctions();
 	
 	@local
-	public native void addSaleItem(CreatureObject player, unsigned long objectid, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
-	@local
-	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, Vendor vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	public native void addSaleItem(CreatureObject player, unsigned long objectid, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	
+	private native string getVendorUID(SceneObject vendor);
+	
+	
+	
 	
 	@local
-	public native int checkSaleItem(CreatureObject player, SceneObject object, Vendor vendor, int price, boolean premium);
+	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	
+	@local
+	public native int checkSaleItem(CreatureObject player, SceneObject object, TangibleObject vendor, int price, boolean premium);
 	
 	public native void getItemAttributes(CreatureObject player, unsigned long objectid);
 
 	public native void getData(CreatureObject player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, int count, int offset);	
 
 	@local
-	public native void getLocalVendorData(CreatureObject player, Vendor vendor, int screen, unsigned int category, int count, int offset);
+	public native void getAuctionData(CreatureObject player, TangibleObject vendor, string search, int screen, unsigned int category, int count, int offset);
 
-	@local
-	public native void getGalaxyData(CreatureObject player, Vendor vendor, int screen, unsigned int category, int count, int offset);
-	
-	@local
-	public native void getPlanetData(CreatureObject player, Vendor vendor, int screen, unsigned int category, int count, int offset);
-
-	@local
-	public native void getRegionData(CreatureObject player, Vendor vendor, int screen, unsigned int category, int count, int offset);
-	
 	private native void refundAuction(AuctionItem item); 
 
 	@local
-	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, Vendor vendor);
+	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, TangibleObject vendor);
 	public native void retrieveItem(CreatureObject player, unsigned long objectid, unsigned long vendorID);
 	
 	public native void buyItem(CreatureObject player, unsigned long objectid, int price1, int price2);
@@ -123,13 +116,15 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void cancelItem(CreatureObject player, unsigned long objectID);
 	
 	@local
-	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, Vendor vendor, VectorMap<unsigned long, AuctionItem> items, int screen, unsigned int category, int count, int offset);
-
-	@local
-	private native Vendor getVendorFromObject(SceneObject obj);	
+	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, TangibleObject vendor, SortedVector<AuctionItem> items, int screen, unsigned int category, int count, int offset);
 
 	public AuctionsMap getAuctionMap() {
 		return auctionMap;
 	}
+	
+	public native void checkVendorItems();
+	
+	public native void checkAuctions();
+	
 }
 

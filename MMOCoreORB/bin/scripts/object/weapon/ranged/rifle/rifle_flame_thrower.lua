@@ -94,7 +94,7 @@ object_weapon_ranged_rifle_rifle_flame_thrower = object_weapon_ranged_rifle_shar
 	speedModifiers = { "heavy_flame_thrower_speed" },
 
 	-- Leave blank for now
-	damageModifiers = { "block" },
+	damageModifiers = {  },
 
 
 	-- The values below are the default values.  To be used for blue frog objects primarily

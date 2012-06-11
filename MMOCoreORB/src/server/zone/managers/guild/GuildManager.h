@@ -180,6 +180,16 @@ public:
 
 	void sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target);
 
+	void sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal);
+
+	void promptAddNewEnemy(CreatureObject* player, GuildObject* guild, SceneObject* terminal);
+
+	void toggleWarStatus(CreatureObject* player, GuildObject* guild, unsigned long long guildoid);
+
+	void declareWarByName(CreatureObject* player, GuildObject* guild, const String& search);
+
+	void updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild);
+
 	void sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	bool validateGuildName(CreatureObject* player, const String& guildName);
@@ -310,6 +320,16 @@ public:
 
 	void sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target);
 
+	void sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal);
+
+	void promptAddNewEnemy(CreatureObject* player, GuildObject* guild, SceneObject* terminal);
+
+	void toggleWarStatus(CreatureObject* player, GuildObject* guild, unsigned long long guildoid);
+
+	void declareWarByName(CreatureObject* player, GuildObject* guild, const String& search);
+
+	void updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild);
+
 	void sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 
 	bool validateGuildName(CreatureObject* player, const String& guildName);
@@ -434,6 +454,16 @@ public:
 	void sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target);
 
 	void sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target);
+
+	void sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal);
+
+	void promptAddNewEnemy(CreatureObject* player, GuildObject* guild, SceneObject* terminal);
+
+	void toggleWarStatus(CreatureObject* player, GuildObject* guild, unsigned long long guildoid);
+
+	void declareWarByName(CreatureObject* player, GuildObject* guild, const String& search);
+
+	void updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild);
 
 	void sendMemberPermissionsTo(CreatureObject* player, unsigned long long targetID, GuildTerminal* guildTerminal);
 

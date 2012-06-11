@@ -194,19 +194,9 @@ public:
 
 	bool isBuildingObject();
 
-	bool isHospitalBuildingObject();
-
-	bool isRecreationalBuildingObject();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
-
-	bool isCityHallBuilding();
-
-	void setAccessFee(int fee);
-
-	int getAccessFee();
 
 	bool isPublicStructure();
 
@@ -223,6 +213,20 @@ public:
 	unsigned int getMaximumNumberOfPlayerItems();
 
 	String getRedeedMessage();
+
+	bool hasAccessFee();
+
+	bool canChangeAccessFee();
+
+	void setAccessFee(int fee, int duration);
+
+	void removeAccessFee();
+
+	int getAccessFeeDelay();
+
+	void payAccessFee(CreatureObject* player);
+
+	void updatePaidAccessList();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -259,6 +263,12 @@ protected:
 	unsigned long long deedObjectID;
 
 	int accessFee;
+
+	int accessDuration;
+
+	unsigned int lastAccessFeeChange;
+
+	VectorMap<unsigned long long, unsigned int> paidAccessList;
 
 public:
 	bool publicStructure;
@@ -351,19 +361,9 @@ public:
 
 	bool isBuildingObject();
 
-	virtual bool isHospitalBuildingObject();
-
-	virtual bool isRecreationalBuildingObject();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
-
-	virtual bool isCityHallBuilding();
-
-	void setAccessFee(int fee);
-
-	int getAccessFee();
 
 	bool isPublicStructure();
 
@@ -380,6 +380,24 @@ public:
 	virtual unsigned int getMaximumNumberOfPlayerItems();
 
 	String getRedeedMessage();
+
+	bool hasAccessFee();
+
+	bool canChangeAccessFee();
+
+	void setAccessFee(int fee, int duration);
+
+	void removeAccessFee();
+
+	int getAccessFeeDelay();
+
+private:
+	void promptPayAccessFee(CreatureObject* player);
+
+public:
+	void payAccessFee(CreatureObject* player);
+
+	void updatePaidAccessList();
 
 	WeakReference<BuildingObject*> _this;
 
@@ -486,19 +504,9 @@ public:
 
 	bool isBuildingObject();
 
-	bool isHospitalBuildingObject();
-
-	bool isRecreationalBuildingObject();
-
 	void setSignObject(SignObject* sign);
 
 	SignObject* getSignObject();
-
-	bool isCityHallBuilding();
-
-	void setAccessFee(int fee);
-
-	int getAccessFee();
 
 	bool isPublicStructure();
 
@@ -515,6 +523,20 @@ public:
 	unsigned int getMaximumNumberOfPlayerItems();
 
 	String getRedeedMessage();
+
+	bool hasAccessFee();
+
+	bool canChangeAccessFee();
+
+	void setAccessFee(int fee, int duration);
+
+	void removeAccessFee();
+
+	int getAccessFeeDelay();
+
+	void payAccessFee(CreatureObject* player);
+
+	void updatePaidAccessList();
 
 };
 

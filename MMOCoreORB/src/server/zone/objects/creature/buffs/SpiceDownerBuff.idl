@@ -85,6 +85,6 @@ class SpiceDownerBuff extends Buff {
 	public void deactivate(boolean applyModifiers) {
 		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_done");
 
-		super.deactivate(applyModifiers);
+		super.deactivate(true);
 	}
 }

@@ -30,6 +30,9 @@ namespace server {
     	const static uint16 MOVEOUT = 1 << 2;
     	const static uint16 MOVECONTAINER = 1 << 3;
 
+    	/// Vendors have special checks
+    	const static uint16 MOVEVENDOR = 1 << 8;
+
     	ContainerPermissions();
 
     	bool hasPermission(const String& group, uint16 permission);

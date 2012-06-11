@@ -44,7 +44,6 @@
 object_building_player_city_cloning_corellia = object_building_player_city_shared_cloning_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	gameObjectType = 519,
 	planetMapCategory = "cloningfacility",
 	allowedZones = {"corellia", "talus"},
 	length = 5,

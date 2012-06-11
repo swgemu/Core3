@@ -43,9 +43,15 @@
 
 object_mobile_vendor_ithorian_male = object_mobile_vendor_shared_ithorian_male:new {
 
-	gameObjectType = 1038,
-	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
+	optionsBitmask = 386,
+	pvpStatusBitmask = 0,
+
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
 
 	hair = "",
 	clothing = {"Ithorian1","Ithorian2","Ithorian3","Ithorian4","Ithorian5","Ithorian6","Ithorian7","Ithorian8","Ithorian9","Ithorian10",

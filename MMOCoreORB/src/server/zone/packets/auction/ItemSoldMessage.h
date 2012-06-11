@@ -68,6 +68,7 @@ class ItemSoldMessage : public BaseMessage {
 
 public:
 
+	const static int SUCCESS = 0;
 	const static int INVALIDAUCTIONER = 1;
 	const static int INVALIDITEM = 2;
 	const static int VENDORNOTWORKING = 3;

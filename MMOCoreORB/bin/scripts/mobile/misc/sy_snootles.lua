@@ -23,6 +23,7 @@ sy_snootles = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/sy_snootles.iff"},

@@ -76,6 +76,8 @@ include server.zone.managers.player.CharacterNameMap;
 include server.zone.managers.player.PermissionLevelList;
 import server.login.account.Account;
 include server.zone.objects.creature.variables.Skill;
+include server.zone.managers.player.OnlineZoneClientMap;
+import system.thread.ReadWriteLock;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -90,6 +92,14 @@ class PlayerManager extends Observer implements Logger {
 	transient PlayerMap playerMap;
 	transient CharacterNameMap nameMap;
 	private float globalExpMultiplier;
+	
+	@dereferenced
+	private transient ReadWriteLock onlineMapMutex;
+	
+	@dereferenced
+	private transient OnlineZoneClientMap onlineZoneClientMap;
+	
+	public final static int MAX_CHAR_ONLINE_COUNT = 2;
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
@@ -273,6 +283,10 @@ class PlayerManager extends Observer implements Logger {
 	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
 	
 	public native boolean promptTeachableSkills(CreatureObject teacher, SceneObject target);
+	
+	public native void decreaseOnlineCharCount(ZoneClientSession client);
+	public native boolean increaseOnlineCharCountIfPossible(ZoneClientSession client);
+	//public native int getOnlineCharCount(unsigned int accountId);
 	
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.

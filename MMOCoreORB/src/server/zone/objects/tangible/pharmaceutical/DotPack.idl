@@ -63,6 +63,7 @@ class DotPack extends PharmaceuticalObject {
 	protected float effectiveness;
 	protected float range;
 	protected float area;
+	protected boolean hasArea;
 	protected float rangeMod;
 	protected float potency;
 	protected string commandToExecute;
@@ -80,6 +81,7 @@ class DotPack extends PharmaceuticalObject {
 		pool = 0;
 		dotType = 0;
 		effectiveness = 0;
+		hasArea = false;
 		
 		setLoggingName("DotPack");
 	}
@@ -115,6 +117,7 @@ class DotPack extends PharmaceuticalObject {
 		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
 		duration = stimPackTemplate.getDuration();
 		area = stimPackTemplate.getArea();
+		hasArea = stimPackTemplate.isArea();
 		range = stimPackTemplate.getRange();
 		rangeMod = stimPackTemplate.getRangeMod();
 		pool = stimPackTemplate.getPool();
@@ -227,7 +230,7 @@ class DotPack extends PharmaceuticalObject {
 	}
 	
 	public boolean isArea() {
-		return area != 0;
+		return hasArea;
 	}
 	
 	public unsigned int getPool() {

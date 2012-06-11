@@ -1,5 +1,5 @@
 corellia_herald_01 = Creature:new {
-	objectName = "@mob/creature_names:corellia_herald_01",
+	objectName = "@npc_name:corellia_herald_01",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

@@ -17,36 +17,33 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 class CloningRequestSuiCallback : public SuiCallback {
+	int typeofdeath;
+
 public:
-	CloningRequestSuiCallback(ZoneServer* server)
+	CloningRequestSuiCallback(ZoneServer* server, int tod)
 		: SuiCallback(server) {
+
+		typeofdeath = tod;
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isListBox() || player == NULL)
+		if (!suiBox->isListBox() || player == NULL || args->size() <= 0)
 			return;
 
-		if (args->size() < 1) {
-			player->info("CloningRequestSuiCallback: Wrong arg count");
-			return;
-		}
+		SuiListBox* listbox = cast<SuiListBox*>(suiBox);
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		PlayerManager* playerManager = server->getPlayerManager();
+		if (!player->isDead())
+			return;
 
-		if (index >= 0 && !cancelPressed) {
-			if (!player->isDead()) {
-				player->sendSystemMessage("You must be dead to activate your clone.");
-			} else {
-				SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
-				playerManager->sendPlayerToCloner(player, suiListBox->getMenuObjectID(index), suiBox->getWindowType() - 1);
-			}
-		} else {
-			if (player->isDead())
-				player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+		if (index < 0 || index >= listbox->getMenuSize() || cancelPressed) {
+			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the cloning window.");
+			return;
 		}
 
+		PlayerManager* playerManager = server->getPlayerManager();
+		playerManager->sendPlayerToCloner(player, listbox->getMenuObjectID(index), typeofdeath);
 	}
 };
 

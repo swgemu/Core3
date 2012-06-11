@@ -71,7 +71,6 @@ include engine.util.u3d.Vector3;
 include server.zone.QuadTreeReference;
 
 import system.lang.System;
-import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
@@ -115,9 +114,7 @@ class Zone extends SceneObject {
 	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
 	public native void finalize();
-	
-	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
-	
+
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapObjectLocationType);
 	
 	public native void initializePrivateData();

@@ -46,8 +46,6 @@ package server.zone.objects.auction;
 
 import system.util.VectorMap;
 import engine.core.ManagedObject;
-import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
-import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
 import system.lang.StringBuffer;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
@@ -120,6 +118,23 @@ class AuctionItem extends ManagedObject {
 		auctionOptions = 0;
 		
 		//Logger.setLoggingName("AuctionItem");
+	}
+	
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
+	@read
+	public int compareTo(AuctionItem obj) {
+		if (getAuctionedItemObjectID() < obj.getAuctionedItemObjectID())
+			return 1;
+		else if (getAuctionedItemObjectID() > obj.getAuctionedItemObjectID())
+			return -1;
+		else
+			return 0;
 	}
 	
 	public native void setLocation(final string planet, final string header, unsigned long vendorid, int x, int z, boolean vendor);
@@ -297,8 +312,11 @@ class AuctionItem extends ManagedObject {
 		return auctionOptions & OPTION_PREMIUM;
 	}
 
-	public boolean isOwner(CreatureObject obj) {
-		return obj.getObjectID() == getOwnerID();
+	public boolean isOwner(CreatureObject player) {
+		return player.getObjectID() == getOwnerID();
 	}
 
+	public boolean isAuctionObject() {
+		return true;
+	}
 }

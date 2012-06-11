@@ -13,6 +13,9 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/chat/StringIdChatParameter.h"
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 
@@ -39,11 +42,19 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 			menuResponse->addRadialMenuItemToRadialID(118, 127, 3, "@player_structure:management_residence"); //Declare Residence
 			menuResponse->addRadialMenuItemToRadialID(118, 125, 3, "@player_structure:management_privacy"); //Privacy
 
+			if (creature->hasSkill("crafting_artisan_business_01") && structureObject->isOwnerOf(creature)) {
+				BuildingObject* building = cast<BuildingObject*>(structureObject.get());
+				if(!building->hasAccessFee())
+					menuResponse->addRadialMenuItemToRadialID(118, 68, 3, "@player_structure:management_add_turnstile"); //Set Access Fee
+				else
+					menuResponse->addRadialMenuItemToRadialID(118, 68, 3, "@player_structure:management_remove_turnstile"); //Remove Access Fee
+
+			}
 
 			if (creature->hasSkill("crafting_artisan_business_03"))
 				menuResponse->addRadialMenuItemToRadialID(118, 130, 3, "@player_structure:create_vendor"); //Create Vendor
 
-			//menuResponse->addRadialMenuItemToRadialID(118, 68, 3, "@player_structure:management_add_turnstile"); //Set Access Fee
+
 			//menuResponse->addRadialMenuItemToRadialID(118, 69, 3, "@player_structure:management_change_sign"); //Change Sign
 			//menuResponse->addRadialMenuItemToRadialID(118, 200, 3, "@player_structure:withdraw_maintenance"); //Withdraw from Treasury
 			menuResponse->addRadialMenuItemToRadialID(118, 201, 3, "@player_structure:delete_all_items"); //Delete all items
@@ -57,6 +68,11 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 			menuResponse->addRadialMenuItemToRadialID(117, 119, 3, "@player_structure:permission_enter"); //Entry List
 			menuResponse->addRadialMenuItemToRadialID(117, 120, 3, "@player_structure:permission_banned"); //Ban List
 			menuResponse->addRadialMenuItemToRadialID(117, 122, 3, "@player_structure:permission_vendor"); //Vendor List
+		}
+	} else if(structureObject->isOnPermissionList("VENDOR", creature)) {
+		if (creature->hasSkill("crafting_artisan_business_03")) {
+			menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
+			menuResponse->addRadialMenuItemToRadialID(118, 130, 3, "@player_structure:create_vendor"); //Create Vendor
 		}
 	}
 }
@@ -76,58 +92,85 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 	if (zone == NULL)
 		return 1;
 
-	if (!structureObject->isOnAdminList(creature))
-		return 1;
+	if (structureObject->isOnAdminList(creature)) {
 
-	ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
+		ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
 
-	if (structureManager == NULL)
-		return 1;
+		if (structureManager == NULL)
+			return 1;
 
-	Locker structureLocker(structureObject, creature);
+		Locker structureLocker(structureObject, creature);
 
-	switch (selectedID) {
-	case 201:
-		structureManager->promptDeleteAllItems(creature, structureObject);
-		break;
-	case 202:
-		structureManager->promptFindLostItems(creature, structureObject);
-		break;
-	case 121:
-		structureObject->sendPermissionListTo(creature, "ADMIN");
-		break;
-	case 119:
-		structureObject->sendPermissionListTo(creature, "ENTRY");
-		break;
-	case 120:
-		structureObject->sendPermissionListTo(creature, "BAN");
-		break;
-	case 122:
-		structureObject->sendPermissionListTo(creature, "VENDOR");
-		break;
-	case 128:
-		creature->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
-		break;
-	case 129:
-		creature->executeObjectControllerAction(0xE7E35B30, structureObject->getObjectID(), ""); //payMaintenance
-		break;
-	case 124:
-		creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
-		break;
-	case 127:
-		creature->executeObjectControllerAction(0xF59E3CE1, structureObject->getObjectID(), ""); //declareResidence
-		break;
-	case 125:
-		creature->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
-		break;
-	case 50:
-		structureManager->promptNameStructure(creature, structureObject, NULL);
-		//creature->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
-		break;
-	case 130:
-		structureObject->createVendor(creature);
-		break;
+		switch (selectedID) {
+		case 201:
+			structureManager->promptDeleteAllItems(creature, structureObject);
+			break;
+		case 202:
+			structureManager->promptFindLostItems(creature, structureObject);
+			break;
+		case 121:
+			structureObject->sendPermissionListTo(creature, "ADMIN");
+			break;
+		case 119:
+			structureObject->sendPermissionListTo(creature, "ENTRY");
+			break;
+		case 120:
+			structureObject->sendPermissionListTo(creature, "BAN");
+			break;
+		case 122:
+			structureObject->sendPermissionListTo(creature, "VENDOR");
+			break;
+		case 128:
+			creature->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
+			break;
+		case 129:
+			creature->executeObjectControllerAction(0xE7E35B30, structureObject->getObjectID(), ""); //payMaintenance
+			break;
+		case 124:
+			creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
+			break;
+		case 127:
+			creature->executeObjectControllerAction(0xF59E3CE1, structureObject->getObjectID(), ""); //declareResidence
+			break;
+		case 125:
+			creature->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
+			break;
+		case 68:
+			if(structureObject->isBuildingObject()) {
+				BuildingObject* building = cast<BuildingObject*>(structureObject.get());
+				if(!building->hasAccessFee()) {
+
+					if(!building->canChangeAccessFee()) {
+						StringIdChatParameter param("@player_structure:turnstile_wait");
+						param.setDI(building->getAccessFeeDelay());
+						creature->sendSystemMessage(param);
+						return 0;
+					}
+
+					ManagedReference<StructureSetAccessFeeSession*> session = new StructureSetAccessFeeSession(creature, building);
+					if(session->initializeSession() == 1) {
+						creature->addActiveSession(SessionFacadeType::SETSTRUCTUREACCESSFEE, session);
+						session->promptSetAccessFee();
+					}
+				} else {
+					building->removeAccessFee();
+					creature->sendSystemMessage("Access fee removed");
+				}
+			}
+			break;
+		case 50:
+			structureManager->promptNameStructure(creature, structureObject, NULL);
+			//creature->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
+			break;
+		}
 	}
+
+	if(selectedID == 130 && (structureObject->isOnAdminList(creature) || structureObject->isOnPermissionList("VENDOR", creature))) {
+		if (creature->hasSkill("crafting_artisan_business_03")) {
+			creature->executeObjectControllerAction(String("createvendor").hashCode()); // Create Vendor
+		}
+	}
+
 
 	return 0;
 }

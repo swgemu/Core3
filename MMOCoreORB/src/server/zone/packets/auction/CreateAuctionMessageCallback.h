@@ -11,8 +11,6 @@
 
 #include "../MessageCallback.h"
 #include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 
 class CreateAuctionMessageCallback : public MessageCallback {
@@ -47,34 +45,11 @@ public:
 
 	void run() {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
-		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(vendorID);
+		ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(server->getZoneServer()->getObject(vendorID));
 
-		if (player == NULL || sceno == NULL || !sceno->isVendor())
+		if (player == NULL || !vendor->isVendor() || vendor == NULL)
 			return;
 
-		// And now we figure out what Vendor Class
-		Vendor* vendor = NULL;
-
-		if (sceno->isTerminal()) {
-			Terminal* term = cast<Terminal*>( sceno.get());
-			if (term->isVendorTerminal()) {
-				VendorTerminal* terminal = cast<VendorTerminal*>( term);
-				vendor = terminal->getVendor();
-			}
-
-		} else if (sceno->isCreatureObject()) {
-			CreatureObject* cero = cast<CreatureObject*>( sceno.get());
-			if (!cero->isVendorCreature())
-				return;
-
-			VendorCreature* vendorCreature = cast<VendorCreature*>( cero);
-			vendor = vendorCreature->getVendor();
-
-		} else
-			return;
-
-		if (vendor == NULL)
-			return;
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 		//duration = 60;

@@ -116,10 +116,13 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<StructureObject> ownedStructures;
 	
+	@dereferenced
+	protected SortedVector<unsigned long> ownedVendors;
+	
 	protected byte maximumLots;
 	
 	protected int jediState;
-	protected unsigned int adminLevel; //TODO: This should be derived from the connected account object.
+	protected unsigned int adminLevel;
 	
 	protected byte languageID;
 	
@@ -215,8 +218,6 @@ class PlayerObject extends IntangibleObject {
 	
 	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
 	
-	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
-	
 	@dereferenced
 	protected Vector<byte> hologrindProfessions;
 	
@@ -293,8 +294,6 @@ class PlayerObject extends IntangibleObject {
 		consentList.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
-		
-		invisible = false;
 		
 		factionStatus = 0;
 		
@@ -840,13 +839,9 @@ class PlayerObject extends IntangibleObject {
 		suiBoxes.put(key, sui);
 	}
 	
-	public void addPermissionGroup(final string group) {
-		permissionGroups.put(group);
-	}
+	public native void addPermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
 	
-	public void removePermissionGroup(final string group) {
-		permissionGroups.drop(group);
-	}
+	public native void removePermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
 	
 	@local
 	public SortedVector<string> getPermissionGroups() {
@@ -1223,14 +1218,6 @@ class PlayerObject extends IntangibleObject {
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
 	}
-
-	public boolean isInvisible() {
-		return invisible;
-	}
-	
-	public void setInvisible(boolean invis) {
-		invisible = invis;
-	}
 	
 	public void addHologrindProfession(byte prof) {
 		hologrindProfessions.add(prof);
@@ -1307,4 +1294,16 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@local
 	public native Time getLastVisibilityUpdateTimestamp();
+	
+	public void addVendor(SceneObject vendor) {
+		ownedVendors.add(vendor.getObjectID());
+	}
+
+	public void removeVendor(SceneObject vendor) {
+		ownedVendors.removeElement(vendor.getObjectID());
+	}
+	
+	public int getVendorCount() {
+		return ownedVendors.size();
+	}
 }

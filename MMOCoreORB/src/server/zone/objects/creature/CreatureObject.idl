@@ -102,6 +102,8 @@ class CreatureObject extends TangibleObject {
 	protected byte locomotion;
 	protected byte factionRank;
 	
+	protected boolean invisible;
+	
 	@weakReference
 	protected CreatureObject linkedCreature;
 	
@@ -1658,10 +1660,6 @@ class CreatureObject extends TangibleObject {
 		return false;
 	}
 
-	public abstract boolean isVendorCreature() {
-		return false;
-	}
-	
 	public native CampSiteActiveArea getCurrentCamp();
 	
 	public byte getCurrentWeather() {
@@ -1694,5 +1692,13 @@ class CreatureObject extends TangibleObject {
 		if (isAiActor()) {
 			getActorObject().notifyDespawn(getZone());
 		}
+	}
+	
+	public boolean isInvisible() {
+		return invisible;
+	}
+	
+	public void setInvisible(boolean invis) {
+		invisible = invis;
 	}
 }

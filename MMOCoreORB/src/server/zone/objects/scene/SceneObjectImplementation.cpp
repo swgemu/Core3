@@ -115,6 +115,9 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 	}
 
+	if(dataObjectComponent != NULL)
+		dataObjectComponent->initializeTransientMembers();
+
 	movementCounter = 0;
 
 	//activeAreas.removeAll();
@@ -288,6 +291,10 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 
 	if (isPlayerCreature()) {
 		assert(0 && "attempting to delete a player creature from database");
+	}
+
+	if(dataObjectComponent != NULL) {
+		dataObjectComponent->notifyObjectDestroyingFromDatabase();
 	}
 
 	ZoneServer* server = getZoneServer();

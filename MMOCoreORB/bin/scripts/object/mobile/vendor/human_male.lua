@@ -43,9 +43,15 @@
 
 object_mobile_vendor_human_male = object_mobile_vendor_shared_human_male:new {
 
-	gameObjectType = 1038,
-	containerComponent = {"cpp", "VendorContainerComponent"},
 	templateType = VENDORCREATURE,
+	optionsBitmask = 386,
+	pvpStatusBitmask = 0,
+
+	objectMenuComponent = {"cpp", "VendorMenuComponent"},
+	dataObjectComponent = "VendorDataComponent",	
+	containerComponent = {"cpp", "VendorContainerComponent"},
+
+	noTrade = 1,
 
 	hair = {"object/tangible/hair/human/hair_human_male_s01.iff","object/tangible/hair/human/hair_human_male_s02.iff","object/tangible/hair/human/hair_human_male_s03.iff",
 		"object/tangible/hair/human/hair_human_male_s04.iff","object/tangible/hair/human/hair_human_male_s05.iff","object/tangible/hair/human/hair_human_male_s06.iff",

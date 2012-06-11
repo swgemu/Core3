@@ -26,7 +26,7 @@ civil_patrol_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_commander_m.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

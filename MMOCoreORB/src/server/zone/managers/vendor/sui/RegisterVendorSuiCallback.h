@@ -11,9 +11,6 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/objects/auction/Vendor.h"
-#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
-#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 class RegisterVendorSuiCallback : public SuiCallback {
 public:
@@ -28,28 +25,12 @@ public:
 		if (args->size() < 1)
 			return;
 
-		ManagedReference<SceneObject*> sceno = suiBox->getUsingObject();
+		ManagedReference<SceneObject*> object = suiBox->getUsingObject();
 
-		if (!sceno->isVendor())
+		if (!object->isVendor() || object == NULL)
 			return;
 
-		Vendor* vendor = NULL;
-
-		if (sceno->isTerminal()) {
-			VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(sceno.get());
-
-			if (vendorTerminal != NULL)
-				vendor = vendorTerminal->getVendor();
-
-		} else if (sceno->isCreatureObject()) {
-			VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(sceno.get());
-
-			if (vendorCreature != NULL)
-				vendor = vendorCreature->getVendor();
-		}
-
-		if (vendor == NULL)
-			return;
+		TangibleObject* vendor = cast<TangibleObject*>(object.get());
 
 		SuiListBox* suiListBox = cast<SuiListBox*>( suiBox);
 

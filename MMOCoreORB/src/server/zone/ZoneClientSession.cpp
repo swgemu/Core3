@@ -12,7 +12,7 @@
  *	ZoneClientSessionStub
  */
 
-enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNTID__INT_,RPC_GETCOMMANDCOUNT__,RPC_INCREASECOMMANDCOUNT__,RPC_RESETCOMMANDCOUNT__,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_HASCHARACTER__LONG_,RPC_ADDCHARACTER__LONG_,RPC_RESETCHARACTERS__};
+enum {RPC_DISCONNECT__ = 6,RPC_DISCONNECT__BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_BALANCEPACKETCHECKUPTIME__,RPC_RESETPACKETCHECKUPTIME__,RPC_CLOSECONNECTION__BOOL_BOOL_,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_GETADDRESS__,RPC_SETPLAYER__SCENEOBJECT_,RPC_SETSESSIONID__INT_,RPC_SETACCOUNTID__INT_,RPC_GETCOMMANDCOUNT__,RPC_INCREASECOMMANDCOUNT__,RPC_RESETCOMMANDCOUNT__,RPC_GETPLAYER__,RPC_GETSESSIONID__,RPC_GETACCOUNTID__,RPC_HASCHARACTER__LONG_INT_,RPC_ADDCHARACTER__LONG_INT_,RPC_ADDBANNEDCHARACTER__LONG_INT_,RPC_GETCHARACTERCOUNT__,RPC_GETCHARACTERCOUNT__INT_,RPC_RESETCHARACTERS__};
 
 ZoneClientSession::ZoneClientSession(BaseClientProxy* session) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneClientSessionImplementation* _implementation = new ZoneClientSessionImplementation(session);
@@ -294,32 +294,76 @@ unsigned int ZoneClientSession::getAccountID() {
 		return _implementation->getAccountID();
 }
 
-bool ZoneClientSession::hasCharacter(unsigned long long cid) {
+bool ZoneClientSession::hasCharacter(unsigned long long cid, unsigned int galaxyId) {
 	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HASCHARACTER__LONG_);
+		DistributedMethod method(this, RPC_HASCHARACTER__LONG_INT_);
 		method.addUnsignedLongParameter(cid);
+		method.addUnsignedIntParameter(galaxyId);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasCharacter(cid);
+		return _implementation->hasCharacter(cid, galaxyId);
 }
 
-void ZoneClientSession::addCharacter(unsigned long long cid) {
+void ZoneClientSession::addCharacter(unsigned long long cid, unsigned int galaxyId) {
 	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDCHARACTER__LONG_);
+		DistributedMethod method(this, RPC_ADDCHARACTER__LONG_INT_);
 		method.addUnsignedLongParameter(cid);
+		method.addUnsignedIntParameter(galaxyId);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addCharacter(cid);
+		_implementation->addCharacter(cid, galaxyId);
+}
+
+void ZoneClientSession::addBannedCharacter(unsigned long long cid, unsigned int galaxyId) {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDBANNEDCHARACTER__LONG_INT_);
+		method.addUnsignedLongParameter(cid);
+		method.addUnsignedIntParameter(galaxyId);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addBannedCharacter(cid, galaxyId);
+}
+
+int ZoneClientSession::getCharacterCount() {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCHARACTERCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCharacterCount();
+}
+
+int ZoneClientSession::getCharacterCount(int galaxyId) {
+	ZoneClientSessionImplementation* _implementation = static_cast<ZoneClientSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCHARACTERCOUNT__INT_);
+		method.addSignedIntParameter(galaxyId);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCharacterCount(galaxyId);
 }
 
 void ZoneClientSession::resetCharacters() {
@@ -441,7 +485,12 @@ bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream
 		return true;
 
 	if (_name == "ZoneClientSession.characters") {
-		TypeInfo<HashSet<unsigned long long> >::parseFromBinaryStream(&characters, stream);
+		TypeInfo<VectorMap<unsigned int, unsigned long long> >::parseFromBinaryStream(&characters, stream);
+		return true;
+	}
+
+	if (_name == "ZoneClientSession.bannedCharacters") {
+		TypeInfo<VectorMap<unsigned int, unsigned long long> >::parseFromBinaryStream(&bannedCharacters, stream);
 		return true;
 	}
 
@@ -496,7 +545,15 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<HashSet<unsigned long long> >::toBinaryStream(&characters, stream);
+	TypeInfo<VectorMap<unsigned int, unsigned long long> >::toBinaryStream(&characters, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "ZoneClientSession.bannedCharacters";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<unsigned int, unsigned long long> >::toBinaryStream(&bannedCharacters, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -549,7 +606,7 @@ int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stre
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 7;
+	return _count + 8;
 }
 
 void ZoneClientSessionImplementation::setSessionID(unsigned int id) {
@@ -595,22 +652,28 @@ unsigned int ZoneClientSessionImplementation::getSessionID() {
 unsigned int ZoneClientSessionImplementation::getAccountID() {
 	// server/zone/ZoneClientSession.idl():  		return accountID;
 	return accountID;
-	// server/zone/ZoneClientSession.idl():  		return accountID;;
 }
 
-bool ZoneClientSessionImplementation::hasCharacter(unsigned long long cid) {
-	// server/zone/ZoneClientSession.idl():  		return characters.contains(cid);
-	return (&characters)->contains(cid);
+void ZoneClientSessionImplementation::addCharacter(unsigned long long cid, unsigned int galaxyId) {
+	// server/zone/ZoneClientSession.idl():  		characters.put(galaxyId, cid);
+	(&characters)->put(galaxyId, cid);
 }
 
-void ZoneClientSessionImplementation::addCharacter(unsigned long long cid) {
-	// server/zone/ZoneClientSession.idl():  		characters.add(cid);
-	(&characters)->add(cid);
+void ZoneClientSessionImplementation::addBannedCharacter(unsigned long long cid, unsigned int galaxyId) {
+	// server/zone/ZoneClientSession.idl():  		bannedCharacters.put(galaxyId, cid);
+	(&bannedCharacters)->put(galaxyId, cid);
+}
+
+int ZoneClientSessionImplementation::getCharacterCount() {
+	// server/zone/ZoneClientSession.idl():  		return characters.size() + bannedCharacters.size();
+	return (&characters)->size() + (&bannedCharacters)->size();
 }
 
 void ZoneClientSessionImplementation::resetCharacters() {
 	// server/zone/ZoneClientSession.idl():  		characters.removeAll();
 	(&characters)->removeAll();
+	// server/zone/ZoneClientSession.idl():  		bannedCharacters.removeAll();
+	(&bannedCharacters)->removeAll();
 }
 
 /*
@@ -720,14 +783,29 @@ void ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 			resp->insertInt(getAccountID());
 		}
 		break;
-	case RPC_HASCHARACTER__LONG_:
+	case RPC_HASCHARACTER__LONG_INT_:
 		{
-			resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter()));
+			resp->insertBoolean(hasCharacter(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter()));
 		}
 		break;
-	case RPC_ADDCHARACTER__LONG_:
+	case RPC_ADDCHARACTER__LONG_INT_:
 		{
-			addCharacter(inv->getUnsignedLongParameter());
+			addCharacter(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_ADDBANNEDCHARACTER__LONG_INT_:
+		{
+			addBannedCharacter(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETCHARACTERCOUNT__:
+		{
+			resp->insertSignedInt(getCharacterCount());
+		}
+		break;
+	case RPC_GETCHARACTERCOUNT__INT_:
+		{
+			resp->insertSignedInt(getCharacterCount(inv->getSignedIntParameter()));
 		}
 		break;
 	case RPC_RESETCHARACTERS__:
@@ -812,12 +890,24 @@ unsigned int ZoneClientSessionAdapter::getAccountID() {
 	return (static_cast<ZoneClientSession*>(stub))->getAccountID();
 }
 
-bool ZoneClientSessionAdapter::hasCharacter(unsigned long long cid) {
-	return (static_cast<ZoneClientSession*>(stub))->hasCharacter(cid);
+bool ZoneClientSessionAdapter::hasCharacter(unsigned long long cid, unsigned int galaxyId) {
+	return (static_cast<ZoneClientSession*>(stub))->hasCharacter(cid, galaxyId);
 }
 
-void ZoneClientSessionAdapter::addCharacter(unsigned long long cid) {
-	(static_cast<ZoneClientSession*>(stub))->addCharacter(cid);
+void ZoneClientSessionAdapter::addCharacter(unsigned long long cid, unsigned int galaxyId) {
+	(static_cast<ZoneClientSession*>(stub))->addCharacter(cid, galaxyId);
+}
+
+void ZoneClientSessionAdapter::addBannedCharacter(unsigned long long cid, unsigned int galaxyId) {
+	(static_cast<ZoneClientSession*>(stub))->addBannedCharacter(cid, galaxyId);
+}
+
+int ZoneClientSessionAdapter::getCharacterCount() {
+	return (static_cast<ZoneClientSession*>(stub))->getCharacterCount();
+}
+
+int ZoneClientSessionAdapter::getCharacterCount(int galaxyId) {
+	return (static_cast<ZoneClientSession*>(stub))->getCharacterCount(galaxyId);
 }
 
 void ZoneClientSessionAdapter::resetCharacters() {

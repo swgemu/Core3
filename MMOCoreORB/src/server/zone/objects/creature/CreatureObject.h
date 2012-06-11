@@ -888,8 +888,6 @@ public:
 
 	bool isInformantCreature();
 
-	bool isVendorCreature();
-
 	CampSiteActiveArea* getCurrentCamp();
 
 	byte getCurrentWeather();
@@ -905,6 +903,10 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -949,6 +951,8 @@ protected:
 	byte locomotion;
 
 	byte factionRank;
+
+	bool invisible;
 
 	ManagedWeakReference<CreatureObject* > linkedCreature;
 
@@ -1659,8 +1663,6 @@ public:
 
 	virtual bool isInformantCreature();
 
-	virtual bool isVendorCreature();
-
 	CampSiteActiveArea* getCurrentCamp();
 
 	byte getCurrentWeather();
@@ -1676,6 +1678,10 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
 
 	WeakReference<CreatureObject*> _this;
 
@@ -2246,8 +2252,6 @@ public:
 
 	bool isInformantCreature();
 
-	bool isVendorCreature();
-
 	CampSiteActiveArea* getCurrentCamp();
 
 	byte getCurrentWeather();
@@ -2263,6 +2267,10 @@ public:
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void destroyObjectFromWorld(bool sendSelfDestroy);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
 
 };
 

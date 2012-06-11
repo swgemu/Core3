@@ -191,6 +191,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	actionWoundHeal = 0;
 	mindWoundHeal = 0;
 
+	invisible = false;
+
 	setContainerInheritPermissionsFromParent(false);
 	setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 	setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
@@ -277,6 +279,9 @@ void CreatureObjectImplementation::finalize() {
 }
 
 void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isInvisible() && player != _this.get())
+		return;
+
 	TangibleObjectImplementation::sendTo(player, doClose);
 }
 
@@ -2370,6 +2375,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 		return true;
 	}
 
+	if (guild != NULL && guild->isInWaringGuild(object))
+		return true;
+
 	return false;
 }
 
@@ -2404,6 +2412,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isInBountyMission(object, _this.get())) {
 		return true;
 	}
+
+	if (guild != NULL && guild->isInWaringGuild(object))
+		return true;
 
 	return false;
 }

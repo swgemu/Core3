@@ -1816,10 +1816,10 @@ float TangibleObjectImplementation::getConditionReduction(float value) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		float 
 	if (isBroken())	// server/zone/objects/tangible/TangibleObject.idl():  			return 0.95 * value;
 	return 0.95 * value;
-	// server/zone/objects/tangible/TangibleObject.idl():  		float ratio = (float)getConditionDamage() / (float)getMaxCondition();
-	float ratio = (float) getConditionDamage() / (float) getMaxCondition();
+	// server/zone/objects/tangible/TangibleObject.idl():  		float ratio = (float)getConditionDamage() / (float)getMaxCondition() * 100.0;
+	float ratio = (float) getConditionDamage() / (float) getMaxCondition() * 100.0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		float 
-	if (ratio < 75)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
+	if (ratio < 75.0)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
 	return 0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		float reductionPercent = (ratio - 75.0) / 25.0;
 	float reductionPercent = (ratio - 75.0) / 25.0;

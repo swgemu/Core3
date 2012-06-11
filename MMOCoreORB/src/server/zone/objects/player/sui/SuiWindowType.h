@@ -81,6 +81,8 @@ public:
 	static const uint16 GUILD_MEMBER_TITLE = 35;
 	static const uint16 GUILD_TRANSFER_LEADER = 36;
 	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
+	static const uint16 GUILD_WAR_LIST = 38;
+	static const uint16 GUILD_WAR_ENTER_NAME = 39;
 
 	//Travel 51 - 60
 	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
@@ -124,6 +126,8 @@ public:
 	static const uint16 CITY_TREASURY_REPORT = 124;
 	static const uint16 CITY_ADVANCEMENT = 125;
 	static const uint16 CITY_REGISTER = 126;
+	static const uint16 CITY_MAYOR_STANDINGS = 127;
+	static const uint16 CITY_MAYOR_VOTE = 128;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;
@@ -137,6 +141,9 @@ public:
 	static const uint16 STRUCTURE_VENDOR_STATUS = 149;
 	static const uint16 STRUCTURE_VENDOR_REGISTER = 150;
 	static const uint16 STRUCTURE_UNCONDEMN_CONFIRM = 151;
+	static const uint16 STRUCTURE_SET_ACCESS_FEE = 152;
+	static const uint16 STRUCTURE_SET_ACCESS_DURATION = 153;
+	static const uint16 STRUCTURE_CONSENT_PAY_ACCESS_FEE = 154;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;
