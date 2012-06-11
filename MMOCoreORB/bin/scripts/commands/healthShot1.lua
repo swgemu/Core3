@@ -44,8 +44,8 @@
 HealthShot1Command = {
 	name = "healthshot1",
 
-	damageMultiplier = 1.75,
-	speedMultiplier = 2.0,
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.0,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.75,
 	mindCostMultiplier = 0.5,
@@ -68,6 +68,19 @@ HealthShot1Command = {
 		30 
 	  )
 	},
+	
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING, 
+		{ "resistance_bleeding", "bleed_resist" },
+		HEALTH,
+		true,
+		125,
+		100,
+		60, 
+		60
+	  )
+	},	
 
 	range = -1
 

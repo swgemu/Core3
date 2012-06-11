@@ -66,7 +66,7 @@ SuppressionFire2Command = {
 
 	animationCRC = hashCode("fire_area_medium"),
 
-	combatSpam = "sup",
+	combatSpam = "sup_fire",
 
 	range = -1
 }

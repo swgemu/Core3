@@ -57,7 +57,7 @@ ActionShot2Command = {
 
 	animationCRC = hashCode("fire_area_medium"),
 
-	combatSpam = "legshot",
+	combatSpam = "sapblast",
 
 	dotEffects = {
 	  DotEffect( 

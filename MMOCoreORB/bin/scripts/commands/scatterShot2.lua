@@ -52,7 +52,7 @@ ScatterShot2Command = {
 
 	animationCRC = hashCode("fire_5_single_medium"),
 
-	combatSpam = "scattershot",
+	combatSpam = "scatterblast",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

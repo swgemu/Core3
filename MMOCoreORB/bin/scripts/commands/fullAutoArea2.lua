@@ -52,7 +52,7 @@ FullAutoArea2Command = {
 
 	animationCRC = hashCode("fire_defender_posture_change_down"),
 
-	combatSpam = "a",
+	combatSpam = "a_auto",
 
 	coneAngle = 30,
 	coneAction = true,

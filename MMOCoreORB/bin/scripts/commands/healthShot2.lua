@@ -42,7 +42,8 @@
 --true = 1, false = 0
 
 HealthShot2Command = {
-        name = "healthshot2",
+    name = "healthshot2",
+	
 	damageMultiplier = 3.0,
 	speedMultiplier = 1.9,
 	healthCostMultiplier = 1,
@@ -55,18 +56,30 @@ HealthShot2Command = {
 
 	combatSpam = "sapblast",
 
+	stateEffects = {
+	  StateEffect( 
+		HEALTHDEGRADE_EFFECT, 
+		{}, 
+		{}, 
+		{}, 
+		100, 
+		100, 
+		30 
+	  )
+	},
+	
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 
 		{ "resistance_bleeding", "bleed_resist" },
-		ACTION,
+		HEALTH,
 		true,
 		125,
 		100,
 		60, 
 		60
 	  )
-	},
+	},	
 
 	range = -1
 }

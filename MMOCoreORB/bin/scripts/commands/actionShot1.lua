@@ -55,7 +55,7 @@ ActionShot1Command = {
 
 	animationCRC = hashCode("fire_3_single_light"),
 
-	combatSpam = "kneecapshot",
+	combatSpam = "sapshot",
 	    
 	stateEffects = {
 	  StateEffect( 
