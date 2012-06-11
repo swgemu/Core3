@@ -236,6 +236,9 @@ int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
 bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int galaxyId) {
 	int lowerBound = characters.lowerBound(VectorMapEntry<uint32, uint64>(galaxyId));
 
+	if (lowerBound < 0)
+		return false;
+
 	for (int i = lowerBound; i < characters.size(); ++i) {
 		if (characters.elementAt(i).getKey() != galaxyId)
 			break;
