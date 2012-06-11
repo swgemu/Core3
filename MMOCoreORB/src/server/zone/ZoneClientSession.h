@@ -59,6 +59,8 @@ using namespace server::zone;
 
 #include "system/util/HashSet.h"
 
+#include "system/util/HashTable.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {
@@ -108,9 +110,15 @@ public:
 
 	unsigned int getAccountID();
 
-	bool hasCharacter(unsigned long long cid);
+	bool hasCharacter(unsigned long long cid, unsigned int galaxyId);
 
-	void addCharacter(unsigned long long cid);
+	void addCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	void addBannedCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	int getCharacterCount();
+
+	int getCharacterCount(int galaxyId);
 
 	void resetCharacters();
 
@@ -138,7 +146,9 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation {
 protected:
 	Reference<BaseClientProxy* > session;
 
-	HashSet<unsigned long long> characters;
+	VectorMap<unsigned int, unsigned long long> characters;
+
+	VectorMap<unsigned int, unsigned long long> bannedCharacters;
 
 	ManagedWeakReference<SceneObject* > player;
 
@@ -199,9 +209,15 @@ public:
 
 	unsigned int getAccountID();
 
-	bool hasCharacter(unsigned long long cid);
+	bool hasCharacter(unsigned long long cid, unsigned int galaxyId);
 
-	void addCharacter(unsigned long long cid);
+	void addCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	void addBannedCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	int getCharacterCount();
+
+	int getCharacterCount(int galaxyId);
 
 	void resetCharacters();
 
@@ -284,9 +300,15 @@ public:
 
 	unsigned int getAccountID();
 
-	bool hasCharacter(unsigned long long cid);
+	bool hasCharacter(unsigned long long cid, unsigned int galaxyId);
 
-	void addCharacter(unsigned long long cid);
+	void addCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	void addBannedCharacter(unsigned long long cid, unsigned int galaxyId);
+
+	int getCharacterCount();
+
+	int getCharacterCount(int galaxyId);
 
 	void resetCharacters();
 

@@ -103,7 +103,9 @@ public:
 						CharacterListEntry* entry = &characters->get(i);
 
 						if(!entry->isBanned())
-							client->addCharacter(entry->getObjectID());
+							client->addCharacter(entry->getObjectID(), entry->getGalaxyID());
+						else
+							client->addBannedCharacter(entry->getObjectID(), entry->getGalaxyID());
 					}
 
 					BaseMessage* cpm = new ClientPermissionsMessage();

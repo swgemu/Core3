@@ -67,6 +67,12 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 
 	commandCount = 0;
 
+	characters.setNullValue(0);
+	characters.setAllowDuplicateInsertPlan();
+
+	bannedCharacters.setNullValue(0);
+	bannedCharacters.setAllowDuplicateInsertPlan();
+
 	//session->setDebugLogLevel();
 }
 
@@ -209,4 +215,34 @@ String ZoneClientSessionImplementation::getAddress() {
 
 BaseClientProxy* ZoneClientSessionImplementation::getSession() {
 	return session;
+}
+
+int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
+	int count = 0;
+
+	for (int i = 0; i < characters.size(); ++i) {
+		if (characters.elementAt(i).getKey() == galaxyId)
+			++count;
+	}
+
+	for (int i = 0; i < bannedCharacters.size(); ++i) {
+		if (bannedCharacters.elementAt(i).getKey() == galaxyId)
+			++count;
+	}
+
+	return count;
+}
+
+bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int galaxyId) {
+	int lowerBound = characters.lowerBound(VectorMapEntry<uint32, uint64>(galaxyId));
+
+	for (int i = lowerBound; i < characters.size(); ++i) {
+		if (characters.elementAt(i).getKey() != galaxyId)
+			break;
+
+		if (characters.elementAt(i).getValue() == cid)
+			return true;
+	}
+
+	return false;
 }
