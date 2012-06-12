@@ -407,10 +407,10 @@ class AiAgent extends CreatureObject {
 		if (super.pvpStatusBitmask == 0)
 			return false;
 		
-		if (this.isRetreating())
+		if (isRetreating())
 			return false;
 		
-		if (this.isDead())
+		if (isDead())
 			return false;
 		
 		if (object.isAiAgent())

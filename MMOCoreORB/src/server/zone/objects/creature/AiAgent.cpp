@@ -1758,10 +1758,10 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (CreatureObjectImplementation::pvpStatusBitmask == 0)	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (_this.get()->isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	if (isRetreating())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		if 
-	if (_this.get()->isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
+	if (isDead())	// server/zone/objects/creature/AiAgent.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/AiAgent.idl():  		unsigned 
 	if (object->isAiAgent())	// server/zone/objects/creature/AiAgent.idl():  			return false;
