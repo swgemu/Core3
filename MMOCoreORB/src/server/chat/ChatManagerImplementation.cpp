@@ -438,14 +438,27 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	bool readlock = !zone->isLockedByCurrentThread();
 
-	zone->rlock(readlock);
+	//zone->rlock(readlock);
+
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
+
+	Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
 
 	try {
-
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+		zone->rlock(readlock);
 
 		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+			closeEntryObjects.add(closeObjects->get(i).get());
+		}
+
+		zone->runlock(readlock);
+	} catch (...) {
+		zone->runlock(readlock);
+	}
+
+	try {
+		for (int i = 0; i < closeEntryObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 
 			if (object->isPlayerCreature()) {
 				CreatureObject* creature = cast<CreatureObject*>(object);
@@ -480,7 +493,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} catch (...) {
 		//zone->runlock();
 
-		zone->runlock(readlock);
+		//		zone->runlock(readlock);
 
 		if (param != NULL) {
 			delete param;
@@ -490,7 +503,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		throw;
 	}
 
-	zone->runlock(readlock);
+//	zone->runlock(readlock);
 
 	//zone->runlock();
 
