@@ -440,7 +440,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	//zone->rlock(readlock);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
 
 	Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
 
