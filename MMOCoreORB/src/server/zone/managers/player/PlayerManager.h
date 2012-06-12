@@ -380,6 +380,8 @@ public:
 
 	void addPlayer(CreatureObject* player);
 
+	void removePlayer(String& playerName);
+
 	String getBadgeKey(int idx);
 
 	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
@@ -598,6 +600,8 @@ public:
 
 	void addPlayer(CreatureObject* player);
 
+	void removePlayer(String& playerName);
+
 	String getBadgeKey(int idx);
 
 	CraftingStation* getNearbyCraftingStation(CreatureObject* player, int type);
@@ -778,6 +782,8 @@ public:
 	void generateHologrindSkills(CreatureObject* player);
 
 	void addPlayer(CreatureObject* player);
+
+	void removePlayer(String& playerName);
 
 	String getBadgeKey(int idx);
 

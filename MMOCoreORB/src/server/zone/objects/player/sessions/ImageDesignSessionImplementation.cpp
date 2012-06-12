@@ -146,7 +146,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 	if (commitChanges) {
 		//TODO: set XP Values
 
-		int xpGranted = 50; // Minimum Image Design XP granted (base amount).
+		int xpGranted = 0; // Minimum Image Design XP granted (base amount).
 
 		//if (imageDesignData.mi)
 
@@ -162,6 +162,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 			if (session != NULL) {
 				session->migrateStats();
+				xpGranted = 2000;
 			}
 		}
 
@@ -182,18 +183,28 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 			if (hairObject != NULL)
 				hairObject->setCustomizationString(oldCustomization);
+
+			if (xpGranted < 100)
+				xpGranted = 100;
 		}
 
-		for (int i = 0; i < bodyAttributes->size(); ++i) {
-			VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
-			imageDesignManager->updateCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), strongReferenceTarget);
-			xpGranted += 25;
+		if (bodyAttributes->size() > 0) {
+			if (xpGranted < 300)
+				xpGranted = 300;
+			for (int i = 0; i < bodyAttributes->size(); ++i) {
+				VectorMapEntry<String, float>* entry = &bodyAttributes->elementAt(i);
+				imageDesignManager->updateCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), strongReferenceTarget);
+			}
 		}
 
-		for (int i = 0; i < colorAttributes->size(); ++i) {
-			VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
-			imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, strongReferenceTarget);
-			xpGranted += 25;
+
+		if (colorAttributes->size() > 0) {
+			if(xpGranted < 100)
+				xpGranted = 100;
+			for (int i = 0; i < colorAttributes->size(); ++i) {
+				VectorMapEntry<String, uint32>* entry = &colorAttributes->elementAt(i);
+				imageDesignManager->updateColorCustomization(strongReferenceDesigner, entry->getKey(), entry->getValue(), hairObject, strongReferenceTarget);
+			}
 		}
 
 		imageDesignManager->updateHairObject(strongReferenceTarget, hairObject);
@@ -205,8 +216,11 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 		// Award XP.
 		PlayerManager* playerManager = strongReferenceDesigner->getZoneServer()->getPlayerManager();
 
-		if (playerManager != NULL && strongReferenceDesigner != strongReferenceTarget)
+		if (playerManager != NULL && xpGranted > 0) {
+			if(strongReferenceDesigner == strongReferenceTarget)
+				xpGranted /= 2;
 			playerManager->awardExperience(strongReferenceDesigner, "imagedesigner", xpGranted, true);
+		}
 
 		if (idTimeoutEvent != NULL && idTimeoutEvent->isScheduled())
 			dequeueIdTimeoutEvent();

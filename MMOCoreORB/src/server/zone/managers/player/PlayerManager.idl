@@ -258,6 +258,10 @@ class PlayerManager extends Observer implements Logger {
 		nameMap.put(player);
 	}
 	
+	public void removePlayer(string playerName) {
+		nameMap.remove(playerName);
+	}
+	
 	public native string getBadgeKey(int idx);
 	
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);

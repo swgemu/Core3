@@ -29,6 +29,10 @@ public:
 		return true;
 	}
 
+	void remove(const String& name) {
+		names.remove(name.toLowerCase());
+	}
+
 	uint64& get(const String& name) {
 		return names.get(name);
 	}
