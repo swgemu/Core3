@@ -293,7 +293,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 }
 
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
-	Locker locker(_this.get());
+	//Locker locker(_this.get());
 
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
 
@@ -301,11 +301,24 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
-	regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
+	Zone* managedRef = _this.getReferenceUnsafe();
+
+	bool readlock = !readlock->isLockedByCurrentThread();
+
+	managedRef->rlock(readlock);
+
+	try {
+		regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
+	} catch (...) {
+		error("unexpeted error caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
+	}
+
+	managedRef->runlock(readlock);
 
 	//locker.release();
 
-	_this.get()->unlock();
+
+	managedRef->unlock(!readlock);
 
 	try {
 
@@ -313,9 +326,12 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		for (int i = 0; i < areas.size(); ++i) {
 			ManagedReference<ActiveArea*> area = areas.get(i);
 
+			Locker locker(area, object);
+
 			if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
 				object->dropActiveArea(area);
-				area->enqueueExitEvent(object);
+				//area->enqueueExitEvent(object);
+				area->notifyExit(object);
 			} else {
 				area->notifyPositionUpdate(object);
 			}
@@ -327,8 +343,11 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
 			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+				Locker locker(area, object);
+
 				object->addActiveArea(activeArea);
-				activeArea->enqueueEnterEvent(object);
+				//activeArea->enqueueEnterEvent(object);
+				activeArea->notifyEnter(object);
 			}
 		}
 
@@ -338,20 +357,23 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		for (int i = 0; i < worldAreas->size(); ++i) {
 			ActiveArea* activeArea = worldAreas->get(i);
 
+			Locker locker(area, object);
+
 			if (!object->hasActiveArea(activeArea)) {
 				object->addActiveArea(activeArea);
-				activeArea->enqueueEnterEvent(object);
+				//activeArea->enqueueEnterEvent(object);
+				activeArea->notifyEnter(object);
 			} else {
 				activeArea->notifyPositionUpdate(object);
 			}
 		}
 	} catch (...) {
-
-		_this.get()->wlock();
+		error("unexpected exception caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
+		managedRef->wlock(!readlock);
 		throw;
 	}
 
-	_this.get()->wlock();
+	managedRef->wlock(!readlock);
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {

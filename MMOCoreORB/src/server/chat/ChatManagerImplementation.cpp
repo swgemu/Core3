@@ -272,7 +272,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		return;
 	}
 
-	Locker _zone(zone);
+	bool readlock = !zone->isLockedByCurrentThread();
 
 	bool showtext = true;
 
@@ -286,8 +286,22 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+	Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
+
+	try {
+		zone->rlock(readlock);
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			closeEntryObjects.add(closeObjects->get(i).get());
+		}
+
+		zone->runlock(readlock);
+	} catch (...) {
+		zone->runlock(readlock);
+	}
+
+	for (int i = 0; i < closeEntryObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i));
 
 		if (object->isPlayerCreature()) {
 			CreatureObject* creature = cast<CreatureObject*>(object);
