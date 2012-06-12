@@ -201,19 +201,19 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		}
 	}
 
-	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
-		if (lightUpdate) {
-			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, false);
-		} else {
-			UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, false);
-		}
-	}
-
 	zone->updateActiveAreas(sceneObject);
 
 	zone->unlock();
+
+	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
+		if (lightUpdate) {
+			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
+			sceneObject->broadcastMessage(message, false, true);
+		} else {
+			UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
+			sceneObject->broadcastMessage(message, false, true);
+		}
+	}
 
 	try {
 		notifySelfPositionUpdate(sceneObject);
@@ -262,27 +262,27 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		}
 	}
 
+	//zoneLocker.release();
+
+	zone->unlock();
+
 	bool isInvis = false;
-	if(sceneObject->isCreatureObject()) {
+
+	if (sceneObject->isCreatureObject()) {
 		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
 		if(creo->isInvisible())
 			isInvis = true;
 	}
 
 	if (sendPackets && !isInvis) {
-
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, false);
+			sceneObject->broadcastMessage(message, false, true);
 		} else {
 			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, false);
+			sceneObject->broadcastMessage(message, false, true);
 		}
 	}
-
-	//zoneLocker.release();
-
-	zone->unlock();
 
 	try {
 		notifySelfPositionUpdate(sceneObject);
