@@ -303,7 +303,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	Zone* managedRef = _this.getReferenceUnsafe();
 
-	bool readlock = !readlock->isLockedByCurrentThread();
+	bool readlock = !managedRef->isLockedByCurrentThread();
 
 	managedRef->rlock(readlock);
 
@@ -343,7 +343,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
 			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-				Locker locker(area, object);
+				Locker locker(activeArea, object);
 
 				object->addActiveArea(activeArea);
 				//activeArea->enqueueEnterEvent(object);
@@ -357,7 +357,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		for (int i = 0; i < worldAreas->size(); ++i) {
 			ActiveArea* activeArea = worldAreas->get(i);
 
-			Locker locker(area, object);
+			Locker locker(activeArea, object);
 
 			if (!object->hasActiveArea(activeArea)) {
 				object->addActiveArea(activeArea);
