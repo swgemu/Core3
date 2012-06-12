@@ -88,6 +88,8 @@ public:
 
 		zone->transferObject(creature, -1, false);
 
+		clocker.release();
+
 		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
