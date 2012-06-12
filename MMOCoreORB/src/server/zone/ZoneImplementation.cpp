@@ -325,6 +325,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		// update old ones
 		for (int i = 0; i < areas.size(); ++i) {
 			ManagedReference<ActiveArea*> area = areas.get(i);
+			Locker locker(object);
 
 			Locker locker(area, object);
 
@@ -343,6 +344,8 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
 			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+				Locker locker(object);
+
 				Locker locker(activeArea, object);
 
 				object->addActiveArea(activeArea);
@@ -356,6 +359,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 		for (int i = 0; i < worldAreas->size(); ++i) {
 			ActiveArea* activeArea = worldAreas->get(i);
+			Locker locker(object);
 
 			Locker locker(activeArea, object);
 
