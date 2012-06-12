@@ -90,7 +90,7 @@ public:
 
 			// determine if creature can be a threat
 			if (creoEntry->isAiAgent()) {
-				Reference<AiAgent*> aio = cast<AiAgent*>(creoEntry.get());
+				AiAgent* aio = cast<AiAgent*>(creoEntry);
 				if ((aio->getFerocity() <= 0 || ai->getFerocity() <= 0) && aio->getLevel() >= ai->getLevel())
 					return;
 			} else if (ai->isInRange(scnoEntry, 15) && ai->isAttackableBy(creoEntry) && !creoEntry->isDead()) { //no aigent<->aigent combat for now
