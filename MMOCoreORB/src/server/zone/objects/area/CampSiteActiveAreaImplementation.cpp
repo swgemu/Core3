@@ -169,6 +169,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 }
 
 bool CampSiteActiveAreaImplementation::despawnCamp() {
+	Locker locker(_this.get());
 
 	if(!abandoned && campOwner != NULL && campOwner->getZoneServer() != NULL) {
 		/// Get Player Manager
