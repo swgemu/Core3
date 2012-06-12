@@ -33,7 +33,7 @@ class AiNPCComponent : public AiInterfaceComponent, public Logger {
 public:
 	void notifyPositionUpdate(SceneObject* scno, QuadTreeEntry* entry) {
 		// TODO: all of this logic will change soon, this is just a placeholder from the old code
-		if(!scno->isCreatureObject())
+/*		if(!scno->isCreatureObject())
 			return;
 
 		Reference<CreatureObject*> creo = cast<CreatureObject*>(scno);
@@ -41,12 +41,15 @@ public:
 		if (creo->isDead())
 			return;
 
-		if (!creo->isAiAgent())
-			return;
+		/*if (!creo->isAiAgent())
+			return;*/
 
-		Reference<AiAgent*> ai = cast<AiAgent*>(creo.get());
+		Reference<AiAgent*> ai = cast<AiAgent*>(scno);
 
 		if (ai->getPvpStatusBitmask() == CreatureFlag::NONE)
+			return;
+
+		if (ai->isDead())
 			return;
 
 		int radius = 32;

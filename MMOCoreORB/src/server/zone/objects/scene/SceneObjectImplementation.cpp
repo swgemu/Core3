@@ -890,7 +890,7 @@ void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	if (entry == NULL || _this.get() == entry)
+	if (entry == NULL || _this == entry)
 		return;
 
 	//#ifdef WITH_STM
