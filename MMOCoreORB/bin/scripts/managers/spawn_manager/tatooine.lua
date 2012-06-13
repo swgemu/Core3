@@ -1736,6 +1736,7 @@ tatooine_static_spawns = {
 	{"trainer_musician",0,-2882,0,2171,180,0, "", ""},
 	{"trainer_pistol",0,3358.6,0,-4841.3,36,0, "npc_sitting_chair", ""},
 	{"trainer_polearm",0,-2931,5,2386,0,0, "", ""},
+	{"trainer_politician",0,-1125,12.2,-3616,130,0, "neutral", ""},
 	{"trainer_ranger",0,1240,7,3356,0,0, "", ""},
 	{"trainer_rifleman",0,3426,5,-4917,0,0, "", ""},
 	{"trainer_rifleman",0,12,1.1,2,180,1189635, "", ""},
