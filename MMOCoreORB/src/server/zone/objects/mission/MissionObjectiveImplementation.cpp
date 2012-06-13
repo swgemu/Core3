@@ -192,7 +192,7 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
-		Locker lockerPl(player);
+		Locker lockerPl(player, _this.get());
 		player->addBankCredits(dividedReward, true);
 	}
 }
