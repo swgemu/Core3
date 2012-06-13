@@ -20,7 +20,7 @@ public:
 	}
 
 	void run() {
-		Locker locker(missionObjective);
+		Locker locker(objective);
 
 		if (objective->getPlayerOwner() == NULL)
 			return;
