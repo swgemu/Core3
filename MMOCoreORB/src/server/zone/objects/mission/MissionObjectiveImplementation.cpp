@@ -19,6 +19,7 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
+#include "events/CompleteMissionObjectiveTask.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -62,11 +63,13 @@ void MissionObjectiveImplementation::complete() {
 
 	_lock.release();
 
-	awardReward();
+	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.get());
+	task->execute();
+	/*awardReward();
 
 	awardFactionPoints();
 
-	removeMissionFromPlayer();
+	removeMissionFromPlayer();*/
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
@@ -150,12 +153,10 @@ void MissionObjectiveImplementation::awardReward() {
 
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
-	Locker locker(owner);
-
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
 	if (group != NULL) {
-		Locker lockerGroup(group, owner);
+		Locker lockerGroup(group, _this.get());
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
@@ -180,8 +181,6 @@ void MissionObjectiveImplementation::awardReward() {
 	if (players.size() == 0) {
 		players.add(owner);
 	}
-
-	locker.release();
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
