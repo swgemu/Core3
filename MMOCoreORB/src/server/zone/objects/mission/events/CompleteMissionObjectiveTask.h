@@ -25,11 +25,11 @@ public:
 		if (objective->getPlayerOwner() == NULL)
 			return;
 
-		missionObjective->awardReward();
+		objective->awardReward();
 
-		missionObjective->awardFactionPoints();
+		objective->awardFactionPoints();
 
-		missionObjective->removeMissionFromPlayer();
+		objective->removeMissionFromPlayer();
 	}
 };
 
