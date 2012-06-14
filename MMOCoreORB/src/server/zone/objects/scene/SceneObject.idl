@@ -879,7 +879,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		if ((strong = getParent()) != null) {
 			strong = getRootParent();
 			
-			return strong.getZone();
+			if (strong != null) {
+				return strong.getZone();
+			} else
+				return zone.get();
 		} else {
 			return zone.get();
 		}

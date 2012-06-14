@@ -4177,8 +4177,14 @@ Zone* SceneObjectImplementation::getZone() {
 	if ((strong = getParent()) != NULL){
 	// server/zone/objects/scene/SceneObject.idl():  			strong = getRootParent();
 	strong = getRootParent();
-	// server/zone/objects/scene/SceneObject.idl():  			return strong.getZone();
+	// server/zone/objects/scene/SceneObject.idl():  				return zone.get();
+	if (strong != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  				return strong.getZone();
 	return strong->getZone();
+}
+
+	else 	// server/zone/objects/scene/SceneObject.idl():  				return zone.get();
+	return (&zone)->get();
 }
 
 	else {
