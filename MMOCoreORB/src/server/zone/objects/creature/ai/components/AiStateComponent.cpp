@@ -31,6 +31,7 @@
 #include "system/lang/ref/Reference.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
+#include "server/zone/objects/creature/events/RespawnCreatureTask.h"
 
 void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 	for (int i = 0; i < actor->getMovementMarkersSize(); ++i)
@@ -50,9 +51,9 @@ void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 	if (oldLevel != host->getLevel())
 		actor->setLevel(host->getLevel());
 
-	host->clearState(0xFFFFFFFF, false);
-	host->setPosture(CreaturePosture::UPRIGHT, false);
-	host->setShockWounds(0, false);
+	host->clearState(0xFFFFFFFF, true);
+	host->setPosture(CreaturePosture::UPRIGHT, true);
+	host->setShockWounds(0, true);
 	host->getThreatMap()->removeAll();
 
 	//Delete all loot out of inventory
@@ -70,16 +71,11 @@ void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 	actor->setTargetObject(NULL);
 	actor->setFollowObject(NULL);
 
-	if (actor->getRespawnTimer() == 0) {
-		//zone->getCreatureManager()->addToReservePool(_this);
-		return;
-	}
-
-	/*
-	 * TODO: redo RespawnCreatureTask to take AiActor
-		Reference<Task*> task = new RespawnCreatureTask(_this, zone, level);
+	float respawnTimer = actor->getRespawnTimer();
+	if (respawnTimer > 0) {
+		Reference<Task*> task = new RespawnCreatureTask(actor, zone, host->getLevel());
 		task->schedule(respawnTimer * 1000);
-	 */
+	}
 }
 
 /*
@@ -502,7 +498,7 @@ uint16 AiStateComponent::doAttack(AiActor* actor) {
 }
 
 uint16 AiStateComponent::doMovement(AiActor* actor) {
-	//info("doMovement", true);
+	//actor->info("doMovement", true);
 	ManagedReference<CreatureObject*> host = actor->getHost();
 	if (host == NULL)
 		return AiActor::NONE;
@@ -517,10 +513,8 @@ uint16 AiStateComponent::doMovement(AiActor* actor) {
 	if (host->isDead() || (host->getZone() == NULL))
 		return AiActor::DEAD;
 
-	actor->activateMovementEvent();
-
 	WorldCoordinates nextPosition;
-	bool found = findNextPosition(actor, getMaxDistance(host), getSpeed(host), actor->getPatrolPoints(), &nextPosition);
+	bool found = findNextPosition(actor, actor->getMaxDistance(), actor->getSpeed(), actor->getPatrolPoints(), &nextPosition);
 
 	// couldn't find a path to any patrol point
 	if (!found)

@@ -9,6 +9,7 @@
 #define DESPAWNCREATUREONPLAYERDISSAPPEAR_H_
 
 #include "../AiAgent.h"
+#include "../ai/AiActor.h"
 
 namespace server {
  namespace zone {
@@ -19,14 +20,19 @@ namespace server {
 
 class DespawnCreatureOnPlayerDissappear : public Task {
 	ManagedWeakReference<AiAgent*> creature;
+	ManagedWeakReference<AiActor*> actor;
 
 public:
 	DespawnCreatureOnPlayerDissappear(AiAgent* creo) {
 		creature = creo;
 	}
 
+	DespawnCreatureOnPlayerDissappear(AiActor* a) {
+		actor = a;
+	}
+
 	void run() {
-		ManagedReference<AiAgent*> strongRef = creature.get();
+		ManagedReference<AiActor*> strongRef = actor.get();
 
 		if (strongRef == NULL)
 			return;
@@ -44,6 +50,12 @@ public:
 			return;
 
 		if (strongRef->inRangeObjects(SceneObjectType::PLAYERCREATURE, 128) == 0 && strongRef->getNumberOfPlayersInRange() <= 0) {
+			ManagedReference<CreatureObject*> host = strongRef->getHost();
+			if (host != NULL) {
+				host->destroyObjectFromWorld(true);
+				strongRef->setHost(NULL);
+			}
+
 			strongRef->destroyObjectFromWorld(true);
 			strongRef->notifyDespawn(zone);
 		}

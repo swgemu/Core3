@@ -40,40 +40,19 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
- */
+*/
 
-#ifndef NPCCOMMAND_H_
-#define NPCCOMMAND_H_
+package server.zone.objects.creature.ai;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+import engine.util.Observer;
+import engine.util.Observable;
 
-class NpcCommand : public QueueCommand {
-public:
-
-	NpcCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
-
+class AiObserver extends Observer implements Logger {
+	public AiObserver() {
+		super();
+		
+		Logger.setLoggingName("AiObserver");
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == NULL || !ghost->isPrivileged()) {
-			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
-			return INSUFFICIENTPERMISSION;
-		}
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //NPCCOMMAND_H_
+	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+}

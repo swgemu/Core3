@@ -46,6 +46,8 @@ which carries forward this exception.
 #define HARMFULCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class HarmfulCommand : public QueueCommand {
 public:
@@ -62,6 +64,54 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		StringTokenizer args(arguments.toString());
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL || !ghost->isPrivileged()) {
+			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+			return INSUFFICIENTPERMISSION;
+		}
+
+		try {
+			String commandType;
+			args.getStringToken(commandType);
+
+			ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
+			if (targetObject == NULL || !targetObject->isCreatureObject())
+				return INVALIDTARGET;
+
+			ManagedReference<CreatureObject*> targetCreature = targetObject.castTo<CreatureObject*>();
+			if (targetCreature == NULL || !targetCreature->isAiActor())
+				return INVALIDTARGET;
+
+			ManagedReference<AiActor*> targetActor = targetCreature->getActorObject();
+
+			if (commandType.beginsWith("next")) {
+				if (!args.hasMoreTokens())
+					return INVALIDPARAMETERS;
+
+				uint32 message = args.getIntToken();
+
+				if (targetActor->getFollowObject() == NULL)
+					targetActor->setFollowObject(creature);
+
+				if (message == AiActor::ATTACKED)
+					targetActor->setDefender(targetActor->getFollowObject());
+
+				targetActor->next(message);
+			} else if (commandType.beginsWith("respawn")) {
+				uint32 newTimer = args.getIntToken();
+
+				targetActor->setRespawnTimer(newTimer);
+			}
+		} catch (Exception& e) {
+			creature->sendSystemMessage("SYNTAX: /harmful next <message>");
+			creature->sendSystemMessage("SYNTAX: /harmful respawn <timer>");
+
+			return INVALIDPARAMETERS;
+		}
 
 		return SUCCESS;
 	}

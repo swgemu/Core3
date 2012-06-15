@@ -9,33 +9,44 @@
 #define DESPAWNCREATURETASK_H_
 
 #include "../AiAgent.h"
+#include "../ai/AiActor.h"
 
 class DespawnCreatureTask : public Task {
 	ManagedReference<AiAgent*> creature;
+	ManagedReference<AiActor*> actor;
 
 public:
 	DespawnCreatureTask(AiAgent* cr) {
 		creature = cr;
 	}
 
+	DespawnCreatureTask(AiActor* a) {
+		actor = a;
+	}
+
 	void run() {
-		Locker locker(creature);
+		if (actor == NULL)
+			return;
 
-		Zone* zone = creature->getZone();
+		Locker _locker(actor);
 
-		creature->removePendingTask("despawn");
+		Zone* zone = actor->getZone();
+
+		actor->removePendingTask("despawn");
 
 		if (zone == NULL)
 			return;
 
-		creature->destroyObjectFromWorld(false);
-		creature->notifyDespawn(zone);
+		ManagedReference<CreatureObject*> host = actor->getHost();
+		if (host == NULL)
+			return;
 
-		//creature->printReferenceHolders();
+		Locker clocker(actor, host);
 
-		/*PatrolPoint* homeLocation = creature->getHomeLocation();
+		host->destroyObjectFromWorld(false);
+		actor->destroyObjectFromWorld(false);
 
-		if (homeLocation->getPosit)*/
+		actor->notifyDespawn(zone);
 	}
 };
 

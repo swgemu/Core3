@@ -320,6 +320,7 @@ public:
 	const static int HERDGROUP = 0x4000001;
 	const static int PACKGROUP = 0x4000002;
 	const static int LAIRGROUP = 0x4000003;
+	const static int AIACTOR = 0x4000010;
 
 	const static int SHIP = 0x20000000;
 	const static int SHIPFIGHTER = 0x20000001;

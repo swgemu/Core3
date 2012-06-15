@@ -29,7 +29,9 @@ admin_spawn_management_02 = {
 		"startSpawner",
 		"startTargetSpawner",
 		"stopSpawner",
-		"stopTargetSpawner"
+		"stopTargetSpawner",
+		"harmful",
+		"harmless"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

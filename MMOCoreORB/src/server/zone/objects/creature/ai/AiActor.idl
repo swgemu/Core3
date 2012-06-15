@@ -169,7 +169,9 @@ class AiActor extends SceneObject {
 	
 	public void setHost(CreatureObject creo) {
 		host = creo;
-		host.addObservableChild(this);
+		
+		if (host != null)
+			host.addObservableChild(this);
 	}
 	
 	public CreatureObject getHost() {
@@ -207,6 +209,9 @@ class AiActor extends SceneObject {
 	public native void addTransition(final string stateName, unsigned short msg, final string resultState);
 	
 	@local
+	public native void loadAiTemplate(final string templateName);
+	
+	@local
 	public native void loadTemplateData(CreatureTemplate templateData);
 	
 	@local
@@ -214,6 +219,9 @@ class AiActor extends SceneObject {
 	public CreatureTemplateReference getNpcTemplate() {
 		return npcTemplate;
 	}
+	
+	@local
+	public native void setNpcTemplate(CreatureTemplate templ);
 
 	public native void setLevel(int lvl);
 	public native int calculateAttackMinDamage(int level);
@@ -242,6 +250,7 @@ class AiActor extends SceneObject {
 		synchronized (targetMutex) {
 			nextStepPosition.setPosition(x, z, y);
 			nextStepPosition.setCell(cell);
+			nextStepPosition.setReached(false);
 		}
 	}
 	
@@ -591,5 +600,21 @@ class AiActor extends SceneObject {
 	@dirty
 	public boolean isActorObject() {
 		return true;
+	}
+	
+	public void doRecovery() {
+		currentMessage = currentState.doRecovery(this);
+	}
+	
+	public void doMovement() {
+		next(currentState.doMovement(this));
+	}
+	
+	public float getMaxDistance() {
+		return currentState.getMaxDistance(host);
+	}
+	
+	public float getSpeed() {
+		return currentState.getSpeed(host);
 	}
 }

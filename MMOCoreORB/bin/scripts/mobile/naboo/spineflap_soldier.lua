@@ -32,7 +32,9 @@ spineflap_soldier = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack","stunChance=50"}
-	}
+	},
+	
+	aiTemplate = "example"
 }
 
 CreatureTemplates:addCreatureTemplate(spineflap_soldier, "spineflap_soldier")

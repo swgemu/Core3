@@ -165,8 +165,6 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/creature/SpawnAreaMap.h"
 
-#include "server/zone/managers/creature/AiMap.h"
-
 #include "server/zone/managers/ZoneManager.h"
 
 #include "system/util/Vector.h"
@@ -203,8 +201,6 @@ public:
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
 	void loadSpawnAreas();
-
-	void loadAiTemplates();
 
 	void loadSingleSpawns();
 
@@ -262,8 +258,6 @@ protected:
 
 	SpawnAreaMap spawnAreaMap;
 
-	Reference<AiMap* > aiMap;
-
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
@@ -296,8 +290,6 @@ public:
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
 	void loadSpawnAreas();
-
-	void loadAiTemplates();
 
 	void loadSingleSpawns();
 
@@ -395,8 +387,6 @@ public:
 	String getTemplateToSpawn(unsigned int templateCRC);
 
 	void loadSpawnAreas();
-
-	void loadAiTemplates();
 
 	void loadSingleSpawns();
 

@@ -111,5 +111,6 @@
 #include "server/zone/objects/creature/aigroup/HerdGroup.h"
 #include "server/zone/objects/creature/aigroup/PackGroup.h"
 #include "server/zone/objects/creature/aigroup/LairGroup.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 
 #endif /* OBJECTS_H_ */

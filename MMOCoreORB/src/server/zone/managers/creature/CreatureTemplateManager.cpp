@@ -8,6 +8,7 @@
 #include "CreatureTemplateManager.h"
 #include "LairSpawnGroup.h"
 #include "server/conf/ConfigManager.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 
@@ -30,6 +31,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "addLairGroup", addLairGroup);
 	lua_register(lua->getLuaState(), "addPatrolPathTemplate", addPatrolPathTemplate);
 	lua_register(lua->getLuaState(), "addOutfitGroup", addOutfitGroup);
+	lua_register(lua->getLuaState(), "addAiTemplate", addAiTemplate);
 
 	lua->setGlobalInt("NONE", CreatureFlag::NONE);
 	lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
@@ -51,6 +53,16 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 
 	lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
 	lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
+
+	lua->setGlobalInt("FINISHED", AiActor::FINISHED);
+	lua->setGlobalInt("UNFINISHED", AiActor::UNFINISHED);
+	lua->setGlobalInt("ATTACKED", AiActor::ATTACKED);
+	lua->setGlobalInt("INTERESTED", AiActor::INTERESTED);
+	lua->setGlobalInt("DEAD", AiActor::DEAD);
+	lua->setGlobalInt("ALMOSTDEAD", AiActor::ALMOSTDEAD);
+	lua->setGlobalInt("SCARED", AiActor::SCARED);
+	lua->setGlobalInt("FORGOT", AiActor::FORGOT);
+	lua->setGlobalInt("AINONE", AiActor::NONE);
 }
 
 CreatureTemplateManager::~CreatureTemplateManager() {
@@ -204,3 +216,17 @@ int CreatureTemplateManager::addOutfitGroup(lua_State* L) {
 
 	return 0;
 }
+
+int CreatureTemplateManager::addAiTemplate(lua_State* L) {
+	String name = lua_tostring(L, -2);
+
+	LuaObject obj(L);
+
+	Reference<AiTemplate*> ait = new AiTemplate(name);
+	ait->readObject(&obj);
+
+	instance()->aiMap.put(name, ait);
+
+	return 0;
+}
+

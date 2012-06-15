@@ -45,8 +45,8 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 #ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
-#CC = clang
-#CXX = clang++
+CC = clang
+CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -520,12 +520,22 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/LuaAiAgent.cpp \
 		server/zone/objects/creature/ai/components/AiStateComponent.cpp \
+		server/zone/objects/creature/ai/components/AlertStateComponent.cpp \
+		server/zone/objects/creature/ai/components/AttackStateComponent.cpp \
+		server/zone/objects/creature/ai/components/DeathStateComponent.cpp \
+		server/zone/objects/creature/ai/components/FleeStateComponent.cpp \
+		server/zone/objects/creature/ai/components/RetreatStateComponent.cpp \
+		server/zone/objects/creature/ai/components/SpawnStateComponent.cpp \
+		server/zone/objects/creature/ai/components/StandingStateComponent.cpp \
+		server/zone/objects/creature/ai/components/WanderingStateComponent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
+		server/zone/objects/creature/ai/AiObserver.cpp \
+		server/zone/objects/creature/ai/AiObserverImplementation.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \

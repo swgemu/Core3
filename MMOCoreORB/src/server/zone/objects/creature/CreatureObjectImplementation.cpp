@@ -620,7 +620,7 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
-	if (isAiActor()) getActorObject()->next(AiActor::FORGOT);
+	if (isAiActor()) getActorObject()->setCurrentMessage(AiActor::FORGOT);
 
 	//info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
@@ -856,17 +856,14 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 	if (isAiActor()) {
 		ManagedReference<AiActor*> actor = getActorObject();
 		actor->updateLastDamageReceived();
-		actor->next(AiActor::ATTACKED);
+		actor->next(AiActor::ATTACKED); // this will have the effect of more thinks during combat, which is desirable
 	}
 
 	int currentValue = hamList.get(damageType);
 
 	int newValue = currentValue - damage;
 
-	if (!destroy && newValue <= 0)
-		newValue = 1;
-
-	if (getSkillMod("avoid_incapacitation") > 0)
+	if ((!destroy || getSkillMod("avoid_incapacitation") > 0) && newValue <= 0)
 		newValue = 1;
 
 	if (damageType % 3 != 0 && newValue < 0) // secondaries never should go negative

@@ -323,6 +323,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HerdGroup>(SceneObjectType::HERDGROUP);
 	objectFactory.registerObject<PackGroup>(SceneObjectType::PACKGROUP);
 	objectFactory.registerObject<LairGroup>(SceneObjectType::LAIRGROUP);
+	objectFactory.registerObject<AiActor>(SceneObjectType::AIACTOR);
 
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);

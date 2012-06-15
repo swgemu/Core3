@@ -14,6 +14,7 @@
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/templates/mobile/PatrolPathTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
+#include "server/zone/templates/AiTemplate.h"
 #include "SpawnGroup.h"
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"
@@ -38,6 +39,9 @@ protected:
 	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
 	HashTable<String, Reference<PatrolPathTemplate*> > patrolPaths;
 	HashTable<String, Reference<MobileOutfitGroup*> > outfits;
+
+	HashTable<String, Reference<AiTemplate*> > aiMap;
+
 	static AtomicInteger loadedMobileTemplates;
 
 public:
@@ -55,6 +59,7 @@ public:
 	static int addLairGroup(lua_State* L);
 	static int addPatrolPathTemplate(lua_State* L);
 	static int addOutfitGroup(lua_State* L);
+	static int addAiTemplate(lua_State* L);
 
 	int size() {
 		return hashTable.size();
@@ -118,6 +123,14 @@ public:
 
 	LairTemplate* getLairTemplate(uint32 crc) {
 		return lairTemplates.get(crc);
+	}
+
+	int getAiSize() {
+		return aiMap.size();
+	}
+
+	Reference<AiTemplate*> getAiTemplate(String name) {
+		return aiMap.get(name);
 	}
 
 };

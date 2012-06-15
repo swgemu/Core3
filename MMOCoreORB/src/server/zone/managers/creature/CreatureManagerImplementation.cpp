@@ -9,7 +9,6 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
 #include "SpawnAreaMap.h"
-#include "AiMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/skill/SkillManager.h"
@@ -24,6 +23,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
@@ -161,13 +161,13 @@ void CreatureManagerImplementation::spawnRandomCreature(int number, float x, flo
 		return;
 
 	for (int i = 0; i < number; ++i) {
-		if (spawnCreature(randomTemplate, 0, x, z, y, parentID) != NULL)
+		if (spawnCreatureWithAi(randomTemplate, x, z, y, zoneServer->getObject(parentID)) != NULL)
 			++spawnedRandomCreatures;
 	}
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, uint64 parentID ) {
-	CreatureObject* creature = spawnCreature(mobileTemplateCRC, 0, x, z, y, parentID);
+	CreatureObject* creature = spawnCreatureWithAi(mobileTemplateCRC, x, z, y, zoneServer->getObject(parentID));
 
 	if (creature != NULL)
 		creature->setLevel(level);
@@ -176,6 +176,12 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
+	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+	if (creoTempl == NULL) {
+		error("Invalid template for spawning ai: " + String::valueOf(templateCRC));
+		return NULL;
+	}
+
 	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
 	if (object == NULL || !object->isActorObject()) {
 		error("could not spawn actor");
@@ -189,12 +195,24 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 		return NULL;
 	}
 
+	if (cell != NULL && !cell->isCellObject()) {
+		error("trying to set a parent that is not a cell to actor");
+		cell = NULL;
+	}
+
+	zone->transferObject(actor, -1, true);
+
+	Locker _locker(actor);
+
 	actor->setHomeLocation(x, z, y, cell);
-	actor->loadTemplateData(creatureTemplateManager->getTemplate(templateCRC));
 
-	CreatureObject* host = actor->getHost();
+	actor->setHost(createCreature(getTemplateToSpawn(templateCRC).hashCode()));
 
-	return host;
+	actor->setNpcTemplate(creoTempl);
+
+	actor->loadAiTemplate(creoTempl->getAiTemplate());
+
+	return actor->getHost();
 }
 
 String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
@@ -356,14 +374,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 void CreatureManagerImplementation::loadSpawnAreas() {
 	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
-}
-
-void CreatureManagerImplementation::loadAiTemplates() {
-	info("loading ai templates...", true);
-	aiMap = AiMap::instance();
-	aiMap->initialize();
-	String msg = String("loaded ") + String::valueOf(aiMap->getSize()) + String(" ai templates.");
-	info(msg, true);
 }
 
 void CreatureManagerImplementation::loadSingleSpawns() {

@@ -26,6 +26,7 @@ admin_spawn_management_01 = {
 		"createMissionElement",
 		"createSpawningElement",
 		"createSpawningElementWithDifficulty",
+		"npc"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

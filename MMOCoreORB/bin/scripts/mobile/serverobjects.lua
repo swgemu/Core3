@@ -120,3 +120,6 @@ includeFile("all/wild_bladeblack_boar.lua")
 
 -- Outfits
 includeFile("outfits/serverobjects.lua")
+
+-- AI
+includeFile("ai/serverobjects.lua")

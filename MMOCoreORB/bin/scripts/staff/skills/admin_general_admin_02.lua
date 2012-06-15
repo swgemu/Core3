@@ -21,8 +21,6 @@ admin_general_admin_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"harmful",
-		"harmless",
 		"killPlayer",
 		"teleportTarget",
 		"planetWarpTarget",

@@ -10,6 +10,7 @@
 
 #include "../AiAgent.h"
 #include "../PatrolPoint.h"
+#include "../ai/AiActor.h"
 
 namespace server {
 namespace zone {
@@ -18,29 +19,47 @@ namespace creature {
 namespace events {
 
 class AiMoveEvent : public Task {
-	ManagedReference<AiAgent*> creature;
+	ManagedWeakReference<AiAgent*> creature;
+	ManagedWeakReference<AiActor*> actor;
 
 public:
 	AiMoveEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
 	}
 
+	AiMoveEvent(AiActor* a) : Task(1000) {
+		actor = a;
+	}
+
 	~AiMoveEvent() {
 	}
 
 	void run() {
-		ManagedReference<AiAgent*> strongRef = creature.get();
+		ManagedReference<AiActor*> strongRef = actor.get();
 
 		if (strongRef == NULL)
 			return;
 
 		Locker locker(strongRef);
 
+		ManagedReference<CreatureObject*> host = strongRef->getHost();
+
+		if (host == NULL) {
+			strongRef->next(AiActor::NONE);
+			return;
+		}
+
+		Locker clocker(strongRef, host);
+
 		strongRef->doMovement();
 	}
 
 	void clearCreatureObject() {
 		creature = NULL;
+	}
+
+	void clearActorObject() {
+		actor = NULL;
 	}
 
 };

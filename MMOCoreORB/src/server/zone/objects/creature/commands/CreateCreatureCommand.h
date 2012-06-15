@@ -115,7 +115,7 @@ public:
 		if (tempName.indexOf(".iff") != -1)
 			npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
 		else
-			npc = creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID);
+			npc = creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, zone->getZoneServer()->getObject(parID));
 
 		if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());

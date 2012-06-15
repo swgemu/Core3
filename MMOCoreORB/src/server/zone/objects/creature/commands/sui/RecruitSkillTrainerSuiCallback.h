@@ -146,13 +146,14 @@ public:
 				break;
 
 		case 32: trainerTemplatePath = "trainer_weaponsmith";
+				break;
 
 		}
 
 		if (trainerTemplatePath != ""){
 
 			city->subtractFromCityTreasury(1000);
-			CreatureObject* trainer = zone->getCreatureManager()->spawnCreature(trainerTemplatePath.hashCode(),0,player->getWorldPositionX(),player->getWorldPositionZ(),player->getWorldPositionY(),0,true);
+			CreatureObject* trainer = zone->getCreatureManager()->spawnCreatureWithAi(trainerTemplatePath.hashCode(), player->getWorldPositionX(), player->getWorldPositionZ(), player->getWorldPositionY(), NULL, true);
 			trainer->rotate(player->getDirectionAngle());
 			city->addSkillTrainer(trainer);
 

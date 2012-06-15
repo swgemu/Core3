@@ -32,7 +32,9 @@ cu_pa = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack","stunChance=50"}
-	}
+	},
+	
+	aiTemplate = "example"
 }
 
 CreatureTemplates:addCreatureTemplate(cu_pa, "cu_pa")

@@ -14,62 +14,15 @@
 #include "engine/core/ManagedReference.h"
 
 class RetreatStateComponent : public AiStateComponent {
-	uint16 onEnter(AiActor* actor) {
-		ManagedReference<CreatureObject*> host = actor->getHost();
-		if (host == NULL)
-			return AiActor::NONE;
+	uint16 onEnter(AiActor* actor);
 
-		if (host->isDead())
-			return AiActor::DEAD;
+	uint16 doRecovery(AiActor* actor);
 
-		PatrolPoint* homeLocation = actor->getHomeLocation();
-		homeLocation->setReached(false);
+	uint16 doMovement(AiActor* actor);
 
-		PatrolPointsVector* patrolPoints = actor->getPatrolPoints();
-		patrolPoints->removeAll();
-		setNextPosition(actor, homeLocation->getPositionX(), homeLocation->getPositionZ(), homeLocation->getPositionY(), homeLocation->getCell());
+	void onExit(AiActor* actor);
 
-		actor->activateMovementEvent();
-		actor->activateRecovery();
-
-		return AiActor::UNFINISHED;
-	}
-
-	uint16 doRecovery(AiActor* actor) {
-		ManagedReference<CreatureObject*> host = actor->getHost();
-		if (host == NULL)
-			return AiActor::NONE;
-
-		if (host->isDead())
-			return AiActor::DEAD;
-
-		host->activateHAMRegeneration();
-		host->activateStateRecovery();
-		actor->activatePostureRecovery();
-
-		actor->activateRecovery();
-
-		return AiActor::UNFINISHED;
-	}
-
-	uint16 doMovement(AiActor* actor) {
-		ManagedReference<CreatureObject*> host = actor->getHost();
-		if (host == NULL)
-			return AiActor::NONE;
-
-		if (host->isDead())
-			return AiActor::DEAD;
-
-		ManagedReference<SceneObject*> followObject = actor->getFollowObject();
-		if (followObject == NULL || !host->isInRange(followObject, 128.f))
-			return AiActor::FORGOT;
-
-		return AiStateComponent::doMovement(actor);
-	}
-
-	float getSpeed(CreatureObject* host) {
-		return host->getRunSpeed();
-	}
+	float getSpeed(CreatureObject* host);
 
 };
 

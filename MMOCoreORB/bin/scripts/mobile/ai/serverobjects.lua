@@ -1,1 +1,5 @@
-includeFile("ais.lua")
+-- object declaration
+includeFile("ai/ai.lua")
+
+-- templates
+includeFile("ai/ais.lua")

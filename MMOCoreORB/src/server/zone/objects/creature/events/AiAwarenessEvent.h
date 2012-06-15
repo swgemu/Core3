@@ -11,6 +11,7 @@
 #include "engine/util/u3d/Coordinate.h"
 #include "../AiAgent.h"
 #include "../CreatureObject.h"
+#include "../ai/AiActor.h"
 
 namespace server {
 namespace zone {
@@ -21,6 +22,7 @@ namespace events {
 class AiAwarenessEvent : public Task {
 	ManagedWeakReference<AiAgent*> creature;
 	ManagedWeakReference<CreatureObject*> target;
+	ManagedWeakReference<AiActor*> actor;
 	Coordinate coord;
 	uint64 mtime;
 
@@ -31,11 +33,17 @@ public:
 		coord.setPosition(t->getPosition());
 	}
 
+	AiAwarenessEvent(AiActor* a, CreatureObject* t) : Task(1000) {
+		actor = a;
+		target = t;
+		coord.setPosition(t->getPosition());
+	}
+
 	virtual ~AiAwarenessEvent() {
 	}
 
 	void run() {
-		ManagedReference<AiAgent*> strongRef = creature.get();
+		ManagedReference<AiActor*> strongRef = actor.get();
 		ManagedReference<CreatureObject*> targetRef = target.get();
 
 		if (strongRef == NULL || targetRef == NULL)

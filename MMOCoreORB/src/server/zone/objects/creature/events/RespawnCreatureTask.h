@@ -9,9 +9,11 @@
 #define RESPAWNCREATURETASK_H_
 
 #include "../AiAgent.h"
+#include "../ai/AiActor.h"
 
 class RespawnCreatureTask : public Task {
 	ManagedReference<AiAgent*> creature;
+	ManagedReference<AiActor*> actor;
 	Zone* zone;
 	int level;
 
@@ -22,16 +24,30 @@ public:
 		this->level = level;
 	}
 
+	RespawnCreatureTask(AiActor* a, Zone* zn, int level) {
+		actor = a;
+		zone = zn;
+		this->level = level;
+	}
+
 	void run() {
-		Locker locker(creature);
+		System::out << "running respawn... \n";
+		if (actor == NULL || zone == NULL)
+			return;
 
-		creature->respawn(zone, level);
+		Locker locker(actor);
 
-		//creature->printReferenceHolders();
+		System::out << "in respawn task \n";
 
-		/*PatrolPoint* homeLocation = creature->getHomeLocation();
+		ManagedReference<CreatureObject*> host = actor->getHost();
+		if (host == NULL)
+			return;
 
-		if (homeLocation->getPosit)*/
+		System::out << "non-null host\n";
+
+		Locker clocker(actor, host);
+
+		actor->respawn(zone, level);
 	}
 };
 

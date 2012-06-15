@@ -108,7 +108,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
 
-			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, z, y, parentID);
+			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreatureWithAi(name.hashCode(), x, z, y, zone->getZoneServer()->getObject(parentID));
 
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));

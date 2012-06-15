@@ -223,9 +223,13 @@ public:
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
 
+	void loadAiTemplate(const String& templateName);
+
 	void loadTemplateData(CreatureTemplate* templateData);
 
 	CreatureTemplateReference* getNpcTemplate();
+
+	void setNpcTemplate(CreatureTemplate* templ);
 
 	void setLevel(int lvl);
 
@@ -383,6 +387,14 @@ public:
 
 	bool isActorObject();
 
+	void doRecovery();
+
+	void doMovement();
+
+	float getMaxDistance();
+
+	float getSpeed();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -517,9 +529,13 @@ public:
 
 	void addTransition(const String& stateName, unsigned short msg, const String& resultState);
 
+	void loadAiTemplate(const String& templateName);
+
 	void loadTemplateData(CreatureTemplate* templateData);
 
 	CreatureTemplateReference* getNpcTemplate();
+
+	void setNpcTemplate(CreatureTemplate* templ);
 
 	void setLevel(int lvl);
 
@@ -676,6 +692,14 @@ public:
 	Time getLastDamageReceived();
 
 	bool isActorObject();
+
+	void doRecovery();
+
+	void doMovement();
+
+	float getMaxDistance();
+
+	float getSpeed();
 
 	WeakReference<AiActor*> _this;
 
@@ -873,6 +897,14 @@ public:
 	unsigned int getDiet();
 
 	bool isActorObject();
+
+	void doRecovery();
+
+	void doMovement();
+
+	float getMaxDistance();
+
+	float getSpeed();
 
 };
 

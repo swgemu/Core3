@@ -26,7 +26,7 @@
  *	AiActorStub
  */
 
-enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_NEXT__SHORT_,RPC_NEXT__,RPC_DESTROYACTOR__,RPC_ADDTRANSITION__STRING_SHORT_STRING_,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISSHOWNEXTPOSITION__,RPC_GETMOVEMENTMARKERSSIZE__,RPC_GETMOVEMENTMARKER__INT_,RPC_DROPMOVEMENTMARKER__SCENEOBJECT_,RPC_DROPALLMOVEMEMENTMARKERS__,RPC_ADDMOVEMENTMARKER__SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SCHEDULEDESPAWN__,RPC_CLEARDESPAWNEVENT__,RPC_SETRESPAWNTIMER__FLOAT_,RPC_GETRESPAWNTIMER__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_NOTIFYINSERT__QUADTREEENTRY_,RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_UPDATELASTDAMAGERECEIVED__,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_ISACTOROBJECT__};
+enum {RPC_SETHOST__CREATUREOBJECT_ = 6,RPC_GETHOST__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_SETCURRENTMESSAGE__SHORT_,RPC_NEXT__SHORT_,RPC_NEXT__,RPC_DESTROYACTOR__,RPC_ADDTRANSITION__STRING_SHORT_STRING_,RPC_SETLEVEL__INT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_SETNEXTSTEPPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISSHOWNEXTPOSITION__,RPC_GETMOVEMENTMARKERSSIZE__,RPC_GETMOVEMENTMARKER__INT_,RPC_DROPMOVEMENTMARKER__SCENEOBJECT_,RPC_DROPALLMOVEMEMENTMARKERS__,RPC_ADDMOVEMENTMARKER__SCENEOBJECT_,RPC_CLEARPATROLPOINTS__,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SCHEDULEDESPAWN__,RPC_CLEARDESPAWNEVENT__,RPC_SETRESPAWNTIMER__FLOAT_,RPC_GETRESPAWNTIMER__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_NOTIFYINSERT__QUADTREEENTRY_,RPC_NOTIFYDISSAPEAR__QUADTREEENTRY_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_UPDATELASTDAMAGERECEIVED__,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_ISACTOROBJECT__,RPC_DORECOVERY__,RPC_DOMOVEMENT__,RPC_GETMAXDISTANCE__,RPC_GETSPEED__};
 
 AiActor::AiActor() : SceneObject(DummyConstructorParameter::instance()) {
 	AiActorImplementation* _implementation = new AiActorImplementation();
@@ -192,6 +192,15 @@ void AiActor::addTransition(const String& stateName, unsigned short msg, const S
 		_implementation->addTransition(stateName, msg, resultState);
 }
 
+void AiActor::loadAiTemplate(const String& templateName) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->loadAiTemplate(templateName);
+}
+
 void AiActor::loadTemplateData(CreatureTemplate* templateData) {
 	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -208,6 +217,15 @@ CreatureTemplateReference* AiActor::getNpcTemplate() {
 
 	} else
 		return _implementation->getNpcTemplate();
+}
+
+void AiActor::setNpcTemplate(CreatureTemplate* templ) {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setNpcTemplate(templ);
 }
 
 void AiActor::setLevel(int lvl) {
@@ -1221,6 +1239,58 @@ bool AiActor::isActorObject() {
 		return _implementation->isActorObject();
 }
 
+void AiActor::doRecovery() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DORECOVERY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doRecovery();
+}
+
+void AiActor::doMovement() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DOMOVEMENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doMovement();
+}
+
+float AiActor::getMaxDistance() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMAXDISTANCE__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getMaxDistance();
+}
+
+float AiActor::getSpeed() {
+	AiActorImplementation* _implementation = static_cast<AiActorImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSPEED__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getSpeed();
+}
+
 DistributedObjectServant* AiActor::_getImplementation() {
 
 	_updated = true;
@@ -1621,7 +1691,8 @@ AiActorImplementation::AiActorImplementation() {
 void AiActorImplementation::setHost(CreatureObject* creo) {
 	// server/zone/objects/creature/ai/AiActor.idl():  		host = creo;
 	host = creo;
-	// server/zone/objects/creature/ai/AiActor.idl():  		host.addObservableChild(this);
+	// server/zone/objects/creature/ai/AiActor.idl():  	}
+	if (host != NULL)	// server/zone/objects/creature/ai/AiActor.idl():  			host.addObservableChild(this);
 	host->addObservableChild(_this.get());
 }
 
@@ -1653,6 +1724,8 @@ void AiActorImplementation::setNextStepPosition(float x, float z, float y, Scene
 	(&nextStepPosition)->setPosition(x, z, y);
 	// server/zone/objects/creature/ai/AiActor.idl():  			nextStepPosition.setCell(cell);
 	(&nextStepPosition)->setCell(cell);
+	// server/zone/objects/creature/ai/AiActor.idl():  			nextStepPosition.setReached(false);
+	(&nextStepPosition)->setReached(false);
 }
 }
 
@@ -2007,6 +2080,26 @@ CreatureTemplate* AiActorImplementation::getCreatureTemplate() {
 bool AiActorImplementation::isActorObject() {
 	// server/zone/objects/creature/ai/AiActor.idl():  		return true;
 	return true;
+}
+
+void AiActorImplementation::doRecovery() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		currentMessage = currentState.doRecovery(this);
+	currentMessage = currentState->doRecovery(_this.get());
+}
+
+void AiActorImplementation::doMovement() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		next(currentState.doMovement(this));
+	next(currentState->doMovement(_this.get()));
+}
+
+float AiActorImplementation::getMaxDistance() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return currentState.getMaxDistance(host);
+	return currentState->getMaxDistance(host);
+}
+
+float AiActorImplementation::getSpeed() {
+	// server/zone/objects/creature/ai/AiActor.idl():  		return currentState.getSpeed(host);
+	return currentState->getSpeed(host);
 }
 
 /*
@@ -2410,6 +2503,26 @@ void AiActorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isActorObject());
 		}
 		break;
+	case RPC_DORECOVERY__:
+		{
+			doRecovery();
+		}
+		break;
+	case RPC_DOMOVEMENT__:
+		{
+			doMovement();
+		}
+		break;
+	case RPC_GETMAXDISTANCE__:
+		{
+			resp->insertFloat(getMaxDistance());
+		}
+		break;
+	case RPC_GETSPEED__:
+		{
+			resp->insertFloat(getSpeed());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -2721,6 +2834,22 @@ unsigned int AiActorAdapter::getDiet() {
 
 bool AiActorAdapter::isActorObject() {
 	return (static_cast<AiActor*>(stub))->isActorObject();
+}
+
+void AiActorAdapter::doRecovery() {
+	(static_cast<AiActor*>(stub))->doRecovery();
+}
+
+void AiActorAdapter::doMovement() {
+	(static_cast<AiActor*>(stub))->doMovement();
+}
+
+float AiActorAdapter::getMaxDistance() {
+	return (static_cast<AiActor*>(stub))->getMaxDistance();
+}
+
+float AiActorAdapter::getSpeed() {
+	return (static_cast<AiActor*>(stub))->getSpeed();
 }
 
 /*

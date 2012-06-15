@@ -534,7 +534,7 @@ int AuctionManagerImplementation::checkBidAuction(CreatureObject* player, Auctio
 //		return BidAuctionResponseMessage::NOTENOUGHCREDITS;
 //	}
 //
-//	return 0;
+	return 0;
 }
 
 void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2) {
@@ -788,7 +788,7 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 //		}
 //	}
 //
-//	return 0;
+	return 0;
 }
 
 void AuctionManagerImplementation::refundAuction(AuctionItem* item) {

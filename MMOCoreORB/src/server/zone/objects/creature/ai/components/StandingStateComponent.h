@@ -15,48 +15,11 @@
 
 class StandingStateComponent : public AiStateComponent {
 public:
-	uint16 onEnter(AiActor* actor) {
-		ManagedReference<CreatureObject*> host = actor->getHost();
-		if (host == NULL)
-			return AiActor::NONE;
+	uint16 onEnter(AiActor* actor);
 
-		if (host->isDead())
-			return AiActor::DEAD;
+	uint16 doRecovery(AiActor* actor);
 
-		if (host->isInCombat())
-			return AiActor::ATTACKED;
-
-		actor->getPatrolPoints()->removeAll();
-
-		actor->activateRecovery();
-
-		return AiActor::UNFINISHED;
-	}
-
-	uint16 doRecovery(AiActor* actor) {
-		ManagedReference<CreatureObject*> host = actor->getHost();
-		if (host == NULL)
-			return AiActor::NONE;
-
-		if (host->isDead())
-			return AiActor::DEAD;
-
-		host->activateHAMRegeneration();
-		host->activateStateRecovery();
-		actor->activatePostureRecovery();
-
-		if (host->isInCombat())
-			return AiActor::ATTACKED;
-
-		if (System::random(5) == 0)
-			return AiActor::FINISHED;
-
-		return AiActor::UNFINISHED;
-	}
-
-	uint16 doMovement(AiActor* actor) {
-		return AiActor::UNFINISHED;
-	}
+	uint16 doMovement(AiActor* actor);
 };
 
 
