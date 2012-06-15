@@ -66,10 +66,12 @@ class MissionSpawnActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
-			if (destroyMissionObjective != null) {
+			DestroyMissionObjective objective = destroyMissionObjective; 
+					
+			if (objective != null) {
 				//Logger.info("objective not null", true);
 				
-				CreatureObject missionOwner = destroyMissionObjective.getPlayerOwner();
+				CreatureObject missionOwner = objective.getPlayerOwner();
 				
 				if ((CreatureObject) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
