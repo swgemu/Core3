@@ -282,12 +282,13 @@ void InstallationObjectImplementation::updateInstallationWork() {
 }
 
 bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
-	Time currentTime;
+	int currentTime = time(0);
+	int lastTime = lastMaintenanceTime.getTime();
 
-	float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
-	float workTimePermitted = elapsedTime;
+	int elapsedTime = currentTime - lastTime;
+	int workTimePermitted = elapsedTime;
 
-	float payAmount = (elapsedTime / 3600.0) * getMaintenanceRate();
+	float payAmount = ((float)elapsedTime / 3600.0f) * getMaintenanceRate();
 
 	bool shutdownWork = false;
 
@@ -295,7 +296,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 		//payAmount = surplusMaintenance;
 		//setOperating(false);
 
-		workTimePermitted = surplusMaintenance / getMaintenanceRate() * 3600;
+		workTimePermitted = (surplusMaintenance / getMaintenanceRate()) * 3600;
 
 		Time workTill(lastMaintenanceTime.getTime() + (int) workTimePermitted);
 		workingTime = workTill;

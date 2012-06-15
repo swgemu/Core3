@@ -130,7 +130,7 @@ class StructureObject extends TangibleObject {
 			//Decay is 4 weeks.
 			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 			
-			scheduleMaintenanceTask(10 * 60);
+			scheduleMaintenanceExpirationEvent();
 		}			
 	}
 	
