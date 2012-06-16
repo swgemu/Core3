@@ -655,11 +655,22 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 
 				setPosture(CreaturePosture::SITTING, false);
 
-				if (thisZone != NULL) {
-					Locker locker(thisZone);
+				SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+				int maxInRangeObjects = 0;
 
-					for (int i = 0; i < closeobjects->size(); ++i) {
-						SceneObject* object = cast<SceneObject*> (closeobjects->get(i).get());
+				if (thisZone != NULL) {
+					//Locker locker(thisZone);
+
+					if (closeobjects == NULL) {
+						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), &closeSceneObjects, true);
+						maxInRangeObjects = closeSceneObjects.size();
+					} else {
+						closeobjects.safeCopyTo(closeSceneObjects);
+						maxInRangeObjects = closeSceneObjects.size();
+					}
+
+					for (int i = 0; i < closeSceneObjects.size(); ++i) {
+						SceneObject* object = cast<SceneObject*> (closeSceneObjects.get(i).get());
 
 						if (object->getParent().get() == getParent().get()) {
 							SitOnObject* soo = new SitOnObject(_this.get(), getPositionX(), getPositionZ(), getPositionY());
