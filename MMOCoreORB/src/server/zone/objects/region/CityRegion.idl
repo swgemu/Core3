@@ -175,7 +175,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public int getCurrentPlayerCount() {
-		return currentPlayers;
+		return currentPlayers.get();
 	}
 	
 	public void addCitizen(unsigned long citizenID) {

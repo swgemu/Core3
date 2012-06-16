@@ -71,6 +71,14 @@ public:
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
+		int cityPlayerCount = 0;
+
+		ManagedReference<CityRegion*> city = player->getCityRegion();
+
+		if (city != NULL) {
+			cityPlayerCount = city->getCurrentPlayerCount();
+		}
+
 		ManagedReference<SceneObject*> cell = creature->getParent();
 
 		int cellid = 0;
@@ -93,6 +101,9 @@ public:
 
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+
+		if (cityPlayerCount != 0)
+			msg << endl << "current players in the city:" << cityPlayerCount;
 
 		creature->sendSystemMessage(msg.toString());
 
