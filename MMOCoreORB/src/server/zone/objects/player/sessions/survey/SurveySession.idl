@@ -7,7 +7,12 @@ import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.managers.resource.ResourceManager;
+include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 import engine.util.u3d.Coordinate;
+import server.zone.objects.resource.ResourceSpawn;
+import server.zone.objects.waypoint.WaypointObject;
+include server.zone.packets.resource.SurveyMessage;
+
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.templates.customization.CustomizationVariable;
 
@@ -32,7 +37,11 @@ class SurveySession extends Facade {
 	protected transient boolean doGamble;
 	
 	protected transient string lastResourceSampleName;
-
+	
+	protected transient Task surveyTask;
+	protected transient Task sampleTask;
+	protected transient Task sampleResultsTask;
+	
 	public SurveySession(CreatureObject creature) {
 		Logger.setLoggingName("CraftingSession");
 		Logger.setLogging(true);
@@ -100,4 +109,13 @@ class SurveySession extends Facade {
 	public void clearRichSampleLocation() {
 		richSampleLocation = null;
 	}
+	
+	@local
+	public native void rescheduleSurvey(SurveyMessage surveyMessage, WaypointObject waypoint, float maxDensity, ResourceSpawn resourceSpawn);
+	
+	@local
+	public native void rescheduleSample();
+	
+	@local
+	public native void rescheduleSampleResults(ResourceSpawner resourceSpawner, float density, final string resname);
 }

@@ -17,6 +17,8 @@
 #include "server/zone/objects/player/sessions/survey/sui/SurveyGMinigameSuiCallback.h"
 #include "server/zone/objects/player/sessions/survey/sui/SurveyCMinigameSuiCallback.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
+#include "server/zone/managers/resource/resourcespawner/SurveyTask.h"
+#include "server/zone/managers/resource/resourcespawner/SampleResultsTask.h"
 
 int SurveySessionImplementation::initializeSession(SurveyTool* tool) {
 
@@ -132,6 +134,7 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 }
 
 void SurveySessionImplementation::startSample(const String& resname) {
+
 	ManagedReference<SurveyTool*> activeSurveyTool = this->activeSurveyTool.get();
 	ManagedReference<ResourceManager*> resourceManager = this->resourceManager.get();
 	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
@@ -253,8 +256,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 
 	if(value == 0) {
 		// Add sampletask
-		Reference<SampleTask*> sampleTask = new SampleTask(surveyer, activeSurveyTool);
-		surveyer->addPendingTask("sample", sampleTask, 18000);
+		rescheduleSample();
 
 		return;
 	}
@@ -329,8 +331,28 @@ void SurveySessionImplementation::surveyGnodeMinigame(int value) {
 		doGamble = true;
 	}
 
-	// Add sampletask
-	Reference<SampleTask*> sampleTask = new SampleTask(surveyer, activeSurveyTool);
-	surveyer->addPendingTask("sample", sampleTask, 18000);
-
+	rescheduleSample();
 }
+
+void SurveySessionImplementation::rescheduleSurvey(SurveyMessage* surveyMessage, WaypointObject* waypoint, float maxDensity, ResourceSpawn* resourceSpawn) {
+	surveyTask = new SurveyTask(surveyer, surveyMessage, waypoint, maxDensity * 100, resourceSpawn);
+	surveyer.get()->addPendingTask("survey", surveyTask, 3000);
+}
+
+void SurveySessionImplementation::rescheduleSample() {
+	// Add sampletask
+	if(sampleTask == NULL)
+		sampleTask = new SampleTask(surveyer.get(), activeSurveyTool.get());
+
+	if(surveyer.get()->getPendingTask("sample") == NULL)
+		surveyer.get()->addPendingTask("sample", sampleTask, 25000);
+}
+
+void SurveySessionImplementation::rescheduleSampleResults(ResourceSpawner* resourceSpawner, float density, const String& resname) {
+	// Add sampleresultstask
+	if(surveyer.get()->getPendingTask("sampleresults") == NULL) {
+		sampleResultsTask = new SampleResultsTask(surveyer, resourceSpawner, density, resname);
+		surveyer.get()->addPendingTask("sampleresults", sampleResultsTask, 3000);
+	}
+}
+

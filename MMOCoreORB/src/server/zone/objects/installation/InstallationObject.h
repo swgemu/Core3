@@ -300,6 +300,8 @@ public:
 
 	void setExtractionRate(float rate);
 
+	Vector<String>* getLogs();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -349,6 +351,8 @@ protected:
 	float extractionRemainder;
 
 	float spawnDensity;
+
+	Vector<String> history;
 
 public:
 	InstallationObjectImplementation();
@@ -434,6 +438,8 @@ public:
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
+
+	Vector<String>* getLogs();
 
 	WeakReference<InstallationObject*> _this;
 

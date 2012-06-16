@@ -374,6 +374,11 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 
+	if(getContainerObjectsSize() == 0) {
+		player->sendSystemMessage("No schematic, unable to start");
+		return;
+	}
+
 	ManagedReference<ManufactureSchematic*> schematic = cast<ManufactureSchematic*>(getContainerObject(0));
 	if(schematic == NULL) {
 		player->sendSystemMessage("No schematic, unable to start");

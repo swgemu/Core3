@@ -563,6 +563,15 @@ void InstallationObject::setExtractionRate(float rate) {
 		_implementation->setExtractionRate(rate);
 }
 
+Vector<String>* InstallationObject::getLogs() {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLogs();
+}
+
 DistributedObjectServant* InstallationObject::_getImplementation() {
 
 	_updated = true;
@@ -723,6 +732,11 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.history") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&history, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -828,8 +842,16 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.history";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&history, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 11;
+
+	return _count + 12;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
@@ -919,6 +941,11 @@ bool InstallationObjectImplementation::isGeneratorObject() {
 bool InstallationObjectImplementation::isShuttleInstallation() {
 	// server/zone/objects/installation/InstallationObject.idl():  		return false;
 	return false;
+}
+
+Vector<String>* InstallationObjectImplementation::getLogs() {
+	// server/zone/objects/installation/InstallationObject.idl():  		return history;
+	return (&history);
 }
 
 /*

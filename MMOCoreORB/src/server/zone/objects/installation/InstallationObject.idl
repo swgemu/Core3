@@ -96,6 +96,9 @@ class InstallationObject extends StructureObject {
 	protected float extractionRemainder;
 	protected float spawnDensity;
 
+	@dereferenced
+	protected Vector<string> history;
+	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
@@ -259,6 +262,10 @@ class InstallationObject extends StructureObject {
 	@local
 	public native void setExtractionRate(float rate);
 	
+	@local
+	public Vector<string> getLogs() {
+		return history;
+	}
 	
 }	
 	
