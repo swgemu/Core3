@@ -171,21 +171,23 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 
 void GroupObjectImplementation::disband() {
 	// this locked
+	ManagedReference<ChatRoom* > chat = chatRoom;
+
 	for (int i = 0; i < groupMembers.size(); i++) {
 		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
 		try {
 			Locker clocker(crea, _this.get());
 
-
 			if (crea->isPlayerCreature()) {
-
 				CreatureObject* play = cast<CreatureObject*>( crea);
 
-				chatRoom->removePlayer(play, false);
-				chatRoom->sendDestroyTo(play);
+				if (chat != NULL) {
+					chat->removePlayer(play, false);
+					chat->sendDestroyTo(play);
 
-				ChatRoom* room = chatRoom->getParent();
-				room->sendDestroyTo(play);
+					ChatRoom* room = chat->getParent();
+					room->sendDestroyTo(play);
+				}
 
 				play->updateGroup(NULL);
 				//play->updateGroupId(0);
