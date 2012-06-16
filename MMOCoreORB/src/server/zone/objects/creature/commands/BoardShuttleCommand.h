@@ -60,6 +60,8 @@ which carries forward this exception.
 class BoardShuttleCommand : public QueueCommand {
 public:
 
+	static int MAXIMUM_PLAYER_COUNT = 200;
+
 	BoardShuttleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
@@ -160,6 +162,19 @@ public:
 		if (arrivalPoint == NULL || !closestPoint->canTravelTo(arrivalPoint)) {
 			creature->sendSystemMessage("@travel:wrong_shuttle"); //The ticket is not valid for the given shuttle.
 			return GENERALERROR;
+		}
+
+		ManagedReference<CreatureObject*> shuttle = arrivalPoint->getShuttle();
+
+		if (shuttle != NULL) {
+			ManagedReference<CityRegion*> region = shuttle->getCityRegion();
+
+			if (region != NULL) {
+				if (region->getCurrentPlayerCount() >= MAXIMUM_PLAYER_COUNT) {
+					creature->sendSystemMessage("Your destination is currently under maintenance, please try again later.");
+					return GENERALERROR;
+				}
+			}
 		}
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other

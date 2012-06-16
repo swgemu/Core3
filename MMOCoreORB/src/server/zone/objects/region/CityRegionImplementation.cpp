@@ -197,6 +197,9 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			error("Unable to update vendor UID");
 	}
 
+	if (object->isPlayerCreature())
+		currentPlayers.increment();
+
 	if (isClientRegion())
 		return;
 
@@ -259,6 +262,9 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		else
 			error("Unable to update vendor UID");
 	}
+
+	if (object->isPlayerCreature())
+		currentPlayers.decrement();
 
 	if (isClientRegion())
 		return;
