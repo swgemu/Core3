@@ -60,7 +60,7 @@ which carries forward this exception.
 class BoardShuttleCommand : public QueueCommand {
 public:
 
-	static int MAXIMUM_PLAYER_COUNT = 200;
+	static int MAXIMUM_PLAYER_COUNT;
 
 	BoardShuttleCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
@@ -164,10 +164,10 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CreatureObject*> shuttle = arrivalPoint->getShuttle();
+		ManagedReference<CreatureObject*> targetShuttleObject = arrivalPoint->getShuttle();
 
-		if (shuttle != NULL) {
-			ManagedReference<CityRegion*> region = shuttle->getCityRegion();
+		if (targetShuttleObject != NULL) {
+			ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion();
 
 			if (region != NULL) {
 				if (region->getCurrentPlayerCount() >= MAXIMUM_PLAYER_COUNT) {

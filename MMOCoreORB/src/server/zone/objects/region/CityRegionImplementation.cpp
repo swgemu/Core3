@@ -24,6 +24,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
+int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 200;
+
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 }
