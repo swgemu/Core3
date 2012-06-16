@@ -459,6 +459,11 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 
 void InstallationObjectImplementation::clearResourceHopper() {
+
+	Time timeToWorkTill;
+	history.add(timeToWorkTill.getFormattedTime() + ": clearResourceHopper");
+
+
 	if (resourceHopper.size() == 0)
 		return;
 
@@ -492,6 +497,10 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 	if (index == -1)
 		return;
 
+	Time timeToWorkTill;
+	history.add(timeToWorkTill.getFormattedTime() + ": removeResourceFromHopper: " + container->getSpawnName());
+
+
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
 	inso7->updateHopper();
 	inso7->startUpdate(0x0D);
@@ -519,6 +528,10 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* container) {
 	if (resourceHopper.contains(container))
 		return;
+
+	Time timeToWorkTill;
+	history.add(timeToWorkTill.getFormattedTime() + ": addResourceToHopper: " + container->getSpawnName());
+
 
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
 	inso7->updateHopper();
@@ -549,6 +562,10 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		error("new spawn null");
 		return;
 	}
+
+	Time timeToWorkTill;
+	history.add(timeToWorkTill.getFormattedTime() + ": changeActiveResource: " + newSpawn->getName());
+
 
 	Time currentTime;
 
