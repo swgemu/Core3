@@ -25,6 +25,8 @@ gundark_hooligan = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_hooligan_rodian_female_01.iff",
 		"object/mobile/dressed_hooligan_rodian_male_01.iff"},

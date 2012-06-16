@@ -26,6 +26,8 @@ fawn_moonraiser = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fawn_moonraiser.iff"},
 	lootGroups = {},
 	weapons = {},

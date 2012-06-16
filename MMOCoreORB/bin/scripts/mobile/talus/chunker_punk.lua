@@ -25,6 +25,8 @@ chunker_punk = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_goon_twk_female_01.iff",
 					"object/mobile/dressed_mugger.iff",
 					"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",

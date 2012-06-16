@@ -26,6 +26,8 @@ mos_entha_police_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_swamp_trooper_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},

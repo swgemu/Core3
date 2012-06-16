@@ -26,6 +26,8 @@ kai_tok_bloodreaver = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kai_tok.iff"},
 	lootGroups = {},
 	weapons = {},

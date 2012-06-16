@@ -27,6 +27,8 @@ corellia_major_walden = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corsec_detective_human_female_01.iff"
 				},
 	lootGroups = {},

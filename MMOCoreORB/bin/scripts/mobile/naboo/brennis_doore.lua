@@ -27,6 +27,8 @@ brennis_doore = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_brennis_doore.iff"},
 	lootGroups = {},
 	weapons = {},

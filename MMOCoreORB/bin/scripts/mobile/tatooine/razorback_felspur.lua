@@ -26,6 +26,8 @@ razorback_felspur = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/zucca_boar.iff"},
 	lootGroups = {},
 	weapons = {},

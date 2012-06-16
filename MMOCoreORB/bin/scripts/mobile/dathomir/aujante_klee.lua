@@ -26,6 +26,8 @@ aujante_klee = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_aujante_klee.iff"},
 	lootGroups = {},
 	weapons = {},

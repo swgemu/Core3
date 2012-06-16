@@ -26,6 +26,8 @@ insane_mantigrue_berserker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},
 	lootGroups = {},
 	weapons = {},

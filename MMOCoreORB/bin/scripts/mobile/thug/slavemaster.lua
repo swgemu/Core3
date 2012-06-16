@@ -25,6 +25,8 @@ slavemaster = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

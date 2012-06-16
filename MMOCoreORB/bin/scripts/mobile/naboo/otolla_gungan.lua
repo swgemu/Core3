@@ -25,6 +25,8 @@ otolla_gungan = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gungan_s04_male.iff", "object/mobile/gungan_male.iff"},
 	lootGroups = {
 	    {

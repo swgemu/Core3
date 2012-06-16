@@ -26,6 +26,8 @@ wooded_paralope = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/paralope.iff"},
 	lootGroups = {},
 	weapons = {},

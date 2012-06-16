@@ -26,6 +26,8 @@ desert_demon_brawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_desert_demon_brawler.iff"},
 	lootGroups = {
 	    {

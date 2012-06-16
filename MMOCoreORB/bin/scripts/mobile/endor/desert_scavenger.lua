@@ -26,6 +26,8 @@ desert_scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/borgle.iff"},
 	lootGroups = {},
 	weapons = {},

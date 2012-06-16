@@ -26,6 +26,8 @@ armorsmith_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_armorsmith_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},

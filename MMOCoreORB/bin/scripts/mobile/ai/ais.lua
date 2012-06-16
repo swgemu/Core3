@@ -1,2 +1,2 @@
-includeFile("ai/example.lua")
+includeFile("ai/default.lua")
 includeFile("ai/static.lua")

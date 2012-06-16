@@ -26,6 +26,8 @@ tabage_protector = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tabage.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ chewbacca = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/chewbacca.iff"},
 	lootGroups = {},
 	weapons = {"chewbacca_weapons"},

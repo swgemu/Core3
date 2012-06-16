@@ -26,6 +26,8 @@ rebel_warrant_officer_i = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_first_lieutenant_bothan_male_01.iff",
 		"object/mobile/dressed_rebel_first_lieutenant_human_female_01.iff",

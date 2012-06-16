@@ -26,6 +26,8 @@ graul_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/graul.iff"},
 	lootGroups = {},
 	weapons = {},

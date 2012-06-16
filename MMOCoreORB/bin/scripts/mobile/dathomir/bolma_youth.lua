@@ -26,6 +26,8 @@ bolma_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bolma_youth.iff"},
 	lootGroups = {},
 	weapons = {},

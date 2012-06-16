@@ -26,6 +26,8 @@ nym_surveyer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_surveyer_rod_m.iff",
 				"object/mobile/dressed_nym_surveyer_hum_m.iff",
 				"object/mobile/dressed_nym_surveyer_hum_f.iff",

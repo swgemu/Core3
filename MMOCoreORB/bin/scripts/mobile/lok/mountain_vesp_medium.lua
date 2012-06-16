@@ -25,6 +25,8 @@ mountain_vesp_medium = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vesp.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

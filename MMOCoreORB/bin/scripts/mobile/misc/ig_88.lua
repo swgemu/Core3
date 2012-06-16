@@ -26,6 +26,8 @@ ig_88 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ig_88.iff"},
 	lootGroups = {},
 	weapons = {},

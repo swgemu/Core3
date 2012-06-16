@@ -26,6 +26,8 @@ rotten_gut_remmer_king = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/rotten_gut_remmer_king.iff"},
 	lootGroups = {},
 	weapons = {},

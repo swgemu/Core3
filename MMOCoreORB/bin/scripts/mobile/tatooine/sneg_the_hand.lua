@@ -27,6 +27,8 @@ sneg_the_hand = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_sneg.iff"},
 	lootGroups = {},
 	weapons = {},

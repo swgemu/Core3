@@ -26,6 +26,8 @@ eker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier2_eker.iff"},
 	lootGroups = {},
 	weapons = {},

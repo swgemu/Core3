@@ -26,6 +26,8 @@ bark_mite_burrower_drone = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bark_mite.iff"},
 	lootGroups = {},
 	weapons = {},

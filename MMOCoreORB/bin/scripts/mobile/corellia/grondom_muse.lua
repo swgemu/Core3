@@ -27,6 +27,8 @@ grondom_muse = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_grondorn_muse.iff"},
 	lootGroups = {},
 	weapons = {},

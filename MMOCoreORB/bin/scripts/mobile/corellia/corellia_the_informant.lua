@@ -27,6 +27,8 @@ corellia_the_informant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_human_male_03.iff"
 				},
 	lootGroups = {},

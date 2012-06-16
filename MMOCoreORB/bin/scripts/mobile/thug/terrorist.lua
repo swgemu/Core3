@@ -25,6 +25,8 @@ terrorist = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

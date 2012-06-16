@@ -26,6 +26,8 @@ boss_nass = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/boss_nass.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ tamed_gurrcat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gurrcat.iff"},
 	lootGroups = {},
 	weapons = {},

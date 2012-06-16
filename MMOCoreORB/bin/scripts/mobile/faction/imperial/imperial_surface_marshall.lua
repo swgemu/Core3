@@ -26,6 +26,8 @@ imperial_surface_marshall = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_imperial_officer_f.iff",
 		"object/mobile/dressed_imperial_officer_m.iff",

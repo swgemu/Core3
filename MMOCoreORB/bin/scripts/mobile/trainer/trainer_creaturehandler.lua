@@ -23,6 +23,8 @@ trainer_creaturehandler = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff","object/mobile/dressed_creaturehandler_trainer_rodian_female_01.iff","object/mobile/dressed_creaturehandler_trainer_zabrak_male_01.iff"},
 	conversationTemplate = "trainer_creaturehandler_convotemplate",
 	optionsBitmask = 264

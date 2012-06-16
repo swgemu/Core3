@@ -26,6 +26,8 @@ rebel_surface_marshall = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_surface_marshal_moncal_female_01.iff",
 		"object/mobile/dressed_rebel_surface_marshal_rodian_male_01.iff",

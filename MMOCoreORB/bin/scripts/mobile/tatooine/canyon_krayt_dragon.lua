@@ -26,6 +26,8 @@ canyon_krayt_dragon = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
 	lootGroups = {
 	 {

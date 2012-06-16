@@ -26,6 +26,8 @@ savage_humbaba = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/savage_humbaba.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

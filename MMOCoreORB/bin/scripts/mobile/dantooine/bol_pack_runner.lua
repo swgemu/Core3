@@ -26,6 +26,8 @@ bol_pack_runner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bol_pack_runner.iff"},
 	lootGroups = {},
 	weapons = {},

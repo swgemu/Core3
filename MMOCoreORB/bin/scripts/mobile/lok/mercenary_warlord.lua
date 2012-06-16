@@ -26,6 +26,8 @@ mercenary_warlord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_mercenary_warlord_hum_m.iff",
 		"object/mobile/dressed_mercenary_warlord_nikto_m.iff",

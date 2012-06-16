@@ -26,6 +26,8 @@ mature_snorbal_male = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/elder_snorbal_male.iff"},
 	lootGroups = {},
 	weapons = {},

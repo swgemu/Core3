@@ -26,6 +26,8 @@ volatile_syck = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/scyk.iff"},
 	lootGroups = {},
 	weapons = {},

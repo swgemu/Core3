@@ -26,6 +26,8 @@ grassland_voritor_tracker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/grassland_voritor_tracker.iff"},
 	lootGroups = {
 		 {

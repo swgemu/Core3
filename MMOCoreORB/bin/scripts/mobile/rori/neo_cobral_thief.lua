@@ -26,6 +26,8 @@ neo_cobral_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_cobral_thief_human_female_01.iff",
 		"object/mobile/dressed_cobral_thief_human_male_01.iff"},

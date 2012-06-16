@@ -27,6 +27,8 @@ rebel_research_attacker_2_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},

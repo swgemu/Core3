@@ -26,6 +26,8 @@ peko_peko = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/peko_peko.iff"},
 	lootGroups = {},
 	weapons = {},

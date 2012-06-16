@@ -26,6 +26,8 @@ barlow = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier3_yavin.iff"},
 	lootGroups = {},
 	weapons = {},

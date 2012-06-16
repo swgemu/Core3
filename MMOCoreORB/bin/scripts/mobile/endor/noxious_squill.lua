@@ -26,6 +26,8 @@ noxious_squill = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/squill.iff"},
 	lootGroups = {},
 	weapons = {},

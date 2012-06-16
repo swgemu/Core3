@@ -26,6 +26,8 @@ domestic_humbaba = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/savage_humbaba.iff"},
 	lootGroups = {},
 	weapons = {},

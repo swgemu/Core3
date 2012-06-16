@@ -26,6 +26,8 @@ rhea = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_tier1_corellia.iff"},
 	lootGroups = {},
 	weapons = {},

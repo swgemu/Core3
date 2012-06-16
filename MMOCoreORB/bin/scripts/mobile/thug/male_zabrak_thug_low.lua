@@ -26,6 +26,8 @@ male_zabrak_thug_low = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

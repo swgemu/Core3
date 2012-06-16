@@ -26,6 +26,8 @@ naboo_monk = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_monk.iff",
 				 "object/mobile/dressed_commoner_fat_human_female_02.iff", --in Theed?
 				},

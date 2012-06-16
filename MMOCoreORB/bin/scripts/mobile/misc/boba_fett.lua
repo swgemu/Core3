@@ -26,6 +26,8 @@ boba_fett = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/boba_fett.iff"},
 	lootGroups = {},
 	weapons = {"boba_fett_weapons"},

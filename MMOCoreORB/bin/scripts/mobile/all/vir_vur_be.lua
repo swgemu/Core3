@@ -26,6 +26,8 @@ vir_vur_be = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vir_vur.iff"},
 	lootGroups = {},
 	weapons = {},

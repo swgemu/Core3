@@ -26,6 +26,8 @@ domesticated_blurrg = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/blurrg.iff"},
 	lootGroups = {},
 	weapons = {},

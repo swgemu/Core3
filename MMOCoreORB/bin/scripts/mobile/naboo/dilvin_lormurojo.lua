@@ -27,6 +27,8 @@ dilvin_lormurojo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_human_noble_male_03.iff"},
 	lootGroups = {},
 	weapons = {},

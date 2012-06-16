@@ -26,6 +26,8 @@ rebel_specforce_urban_guerrilla = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
 		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",

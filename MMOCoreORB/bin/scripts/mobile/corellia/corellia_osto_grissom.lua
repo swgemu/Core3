@@ -27,6 +27,8 @@ corellia_osto_grissom = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_royal_pilot_human_male_01.iff"
 				},
 	lootGroups = {},

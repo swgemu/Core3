@@ -27,6 +27,8 @@ adar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corvette_rebel_adar.iff"},
 	lootGroups = {},
 	weapons = {},

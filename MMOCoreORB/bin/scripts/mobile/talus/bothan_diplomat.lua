@@ -26,6 +26,8 @@ bothan_diplomat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/dressed_bth_spynet_pilot_m_01.iff",
 			"object/mobile/dressed_eisley_officer_bothan_female_01.iff",

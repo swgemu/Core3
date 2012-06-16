@@ -26,6 +26,8 @@ howling_plumed_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/plumed_rasp.iff"},
 	lootGroups = {},
 	weapons = {},

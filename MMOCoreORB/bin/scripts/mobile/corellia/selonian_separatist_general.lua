@@ -26,6 +26,8 @@ selonian_separatist_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_selonian_m_01.iff",
 		"object/mobile/dressed_selonian_m_02.iff",

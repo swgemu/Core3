@@ -26,6 +26,8 @@ jace_yiaso = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier4_naboo_jace_yiaso.iff"},
 	lootGroups = {},
 	weapons = {},

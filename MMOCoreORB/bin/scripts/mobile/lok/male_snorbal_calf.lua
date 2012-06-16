@@ -26,6 +26,8 @@ male_snorbal_calf = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/male_snorbal_calf.iff"},
 	lootGroups = {},
 	weapons = {},

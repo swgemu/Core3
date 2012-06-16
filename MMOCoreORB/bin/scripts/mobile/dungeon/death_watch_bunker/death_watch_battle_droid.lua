@@ -26,6 +26,8 @@ death_watch_battle_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/death_watch_battle_droid.iff",
 		"object/mobile/death_watch_battle_droid_02.iff",

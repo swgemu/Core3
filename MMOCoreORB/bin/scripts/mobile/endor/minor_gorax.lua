@@ -26,6 +26,8 @@ minor_gorax = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gorax.iff"},
 	lootGroups = {
 	    {

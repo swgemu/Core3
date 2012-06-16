@@ -27,6 +27,8 @@ arven_wendik = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_arven_wendik.iff"},
 	lootGroups = {},
 	weapons = {},

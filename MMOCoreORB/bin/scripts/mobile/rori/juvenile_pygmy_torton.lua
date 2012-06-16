@@ -26,6 +26,8 @@ juvenile_pygmy_torton = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/torton.iff"},
 	lootGroups = {},
 	weapons = {},

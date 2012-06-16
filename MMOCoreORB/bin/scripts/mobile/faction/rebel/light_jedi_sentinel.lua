@@ -26,6 +26,8 @@ light_jedi_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_jedi_trainer_old_human_male_01.iff",
 		"object/mobile/dressed_jedi_trainer_chiss_male_01.iff",

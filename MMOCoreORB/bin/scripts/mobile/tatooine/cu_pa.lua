@@ -26,15 +26,15 @@ cu_pa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/cu_pa.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack","stunChance=50"}
-	},
-	
-	aiTemplate = "example"
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(cu_pa, "cu_pa")

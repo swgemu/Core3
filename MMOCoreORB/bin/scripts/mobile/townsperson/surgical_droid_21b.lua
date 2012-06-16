@@ -26,6 +26,8 @@ surgical_droid_21b = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/21b_surgical_droid.iff"
 	},		

@@ -26,6 +26,8 @@ piket = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/piket.iff"},
 	lootGroups = {},
 	weapons = {},

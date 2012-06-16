@@ -27,6 +27,8 @@ herald_biogenic_teraeza = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {},

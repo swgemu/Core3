@@ -26,6 +26,8 @@ runty_pharple = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/runty_pharple.iff"},
 	lootGroups = {},
 	weapons = {},

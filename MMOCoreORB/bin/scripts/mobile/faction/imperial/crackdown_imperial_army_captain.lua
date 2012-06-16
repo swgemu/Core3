@@ -26,6 +26,8 @@ crackdown_imperial_army_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff",
 				"object/mobile/dressed_imperial_captain_m.iff"
 	},

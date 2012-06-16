@@ -26,6 +26,8 @@ mara_jade = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mara_jade.iff"},
 	lootGroups = {},
 	weapons = {},

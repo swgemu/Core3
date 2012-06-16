@@ -26,6 +26,8 @@ wounded_villager = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_sad.iff"},
 	lootGroups = {},
 	weapons = {},

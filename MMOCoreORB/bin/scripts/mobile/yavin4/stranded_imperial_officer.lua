@@ -26,6 +26,8 @@ stranded_imperial_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stranded_imperial_officer.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},

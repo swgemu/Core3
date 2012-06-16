@@ -26,6 +26,8 @@ first_brigade_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_brigade_sergeant_zabrak_male_01.iff",
 		"object/mobile/dressed_brigade_sergeant_zabrak_female_01.iff"},

@@ -26,6 +26,8 @@ large_cave_beetle = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/rock_beetle.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

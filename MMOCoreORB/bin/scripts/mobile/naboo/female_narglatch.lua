@@ -26,6 +26,8 @@ female_narglatch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/narglatch_female.iff"},
 	lootGroups = {},
 	weapons = {},

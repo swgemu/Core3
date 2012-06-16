@@ -25,6 +25,8 @@ imperial_captain = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
 	lootGroups = {
 		{

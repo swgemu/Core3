@@ -26,6 +26,8 @@ corsec_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
 	lootGroups = {
 	    {

@@ -25,6 +25,8 @@ imperial_officer_tutorial_2 = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},

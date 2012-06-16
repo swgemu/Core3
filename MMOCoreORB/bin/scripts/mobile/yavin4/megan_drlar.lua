@@ -25,6 +25,8 @@ megan_drlar = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/megan_drlar.iff"},
 	lootGroups = {},
 	weapons = {},

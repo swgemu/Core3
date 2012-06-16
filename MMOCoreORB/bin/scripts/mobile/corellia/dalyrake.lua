@@ -26,6 +26,8 @@ dalyrake = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dalyrake.iff"},
 	lootGroups = {},
 	weapons = {},

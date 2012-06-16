@@ -25,6 +25,8 @@ veteran_compforce_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},

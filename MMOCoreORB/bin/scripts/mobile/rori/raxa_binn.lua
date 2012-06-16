@@ -27,6 +27,8 @@ raxa_binn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_raxa_binn.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ hutt_expeditonary_force_member = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},

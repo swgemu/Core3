@@ -26,6 +26,8 @@ feral_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_feral_marauder.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

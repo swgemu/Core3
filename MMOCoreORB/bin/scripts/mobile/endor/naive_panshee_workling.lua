@@ -25,6 +25,8 @@ naive_panshee_workling = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_f.iff",
 		"object/mobile/dressed_ewok_f_01.iff",

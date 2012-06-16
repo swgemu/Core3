@@ -26,6 +26,8 @@ v3_fx = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier1_naboo_v3fx.iff"},
 	lootGroups = {},
 	weapons = {},

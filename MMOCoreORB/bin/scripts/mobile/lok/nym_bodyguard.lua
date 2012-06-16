@@ -26,6 +26,8 @@ nym_bodyguard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_bodyguard_rod_m.iff",
 				"object/mobile/dressed_nym_bodyguard_hum_m.iff",
 				"object/mobile/dressed_nym_bodyguard_hum_f.iff"},

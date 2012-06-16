@@ -25,6 +25,8 @@ smashball_thug = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_gran_thug_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_02.iff",

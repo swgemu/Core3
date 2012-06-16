@@ -25,6 +25,8 @@ chunker_pest = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {
 	    {

@@ -27,6 +27,8 @@ ind = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_ind.iff"},
 	lootGroups = {},
 	weapons = {},

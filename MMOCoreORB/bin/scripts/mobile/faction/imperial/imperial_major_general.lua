@@ -25,6 +25,8 @@ imperial_major_general = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {
 		{

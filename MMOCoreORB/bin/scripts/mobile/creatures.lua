@@ -24,6 +24,8 @@ Creature = {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = 0,
+
+	aiTemplate = "default",
 	scale = 1.0,
 
 	templates = {},

@@ -26,6 +26,8 @@ nym_patrol_weak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_patrol_weak_hum_f.iff", 
 				"object/mobile/dressed_nym_patrol_weak_rod_m.iff",
 				"object/mobile/dressed_nym_patrol_weak_nikto_m.iff",

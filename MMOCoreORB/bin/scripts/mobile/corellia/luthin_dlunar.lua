@@ -27,6 +27,8 @@ luthin_dlunar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_luthin_dlunar.iff"},
 	lootGroups = {},
 	weapons = {},

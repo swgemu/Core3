@@ -25,6 +25,8 @@ rebel_resistance_agitator = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

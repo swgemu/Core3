@@ -26,6 +26,8 @@ glutted_fynock_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/glutted_fynock_queen.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ geonosian_technical_assistant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_geonosian_noble_01.iff",
 		"object/mobile/dressed_geonosian_noble_02.iff"},

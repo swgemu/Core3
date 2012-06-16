@@ -26,6 +26,8 @@ sif_mercenary = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_01.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},

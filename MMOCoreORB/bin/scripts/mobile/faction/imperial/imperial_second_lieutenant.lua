@@ -25,6 +25,8 @@ imperial_second_lieutenant = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {
 		{

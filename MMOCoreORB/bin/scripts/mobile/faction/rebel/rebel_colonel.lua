@@ -26,6 +26,8 @@ rebel_colonel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_colonel_bothan_male.iff",
 		"object/mobile/dressed_rebel_colonel_fat_zabrak_male.iff",

@@ -26,6 +26,8 @@ beldonnas_league_enforcer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_human_female_01.iff",
 		"object/mobile/dressed_criminal_thug_human_female_02.iff",
 		"object/mobile/dressed_criminal_thug_human_male_01.iff",

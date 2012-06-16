@@ -26,6 +26,8 @@ carbineer_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_carbine_trainer_01.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ skreeg_infant = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/skreeg_infant.iff"},
 	lootGroups = {},
 	weapons = {},

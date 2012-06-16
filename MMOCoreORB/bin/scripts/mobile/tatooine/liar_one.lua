@@ -27,6 +27,8 @@ liar_one = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_quest_liar_01.iff"},
 	lootGroups = {},
 	weapons = {},

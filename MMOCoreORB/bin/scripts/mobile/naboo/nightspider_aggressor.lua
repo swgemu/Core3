@@ -26,6 +26,8 @@ nightspider_aggressor = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/nightspider_aggressor.iff"},
 	lootGroups = {},
 	weapons = {},

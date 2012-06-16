@@ -27,6 +27,8 @@ pathfinder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

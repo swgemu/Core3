@@ -26,6 +26,8 @@ ta_667 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dark_trooper.iff"},
 	lootGroups = {},
 	weapons = {},

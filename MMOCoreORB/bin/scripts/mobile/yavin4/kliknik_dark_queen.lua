@@ -26,6 +26,8 @@ kliknik_dark_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kliknik_queen.iff"},
 	lootGroups = {
 	 {

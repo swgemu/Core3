@@ -27,6 +27,8 @@ serene_floater = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bomarr_spider_monk_droid.iff"},
 	lootGroups = {},
 	weapons = {},

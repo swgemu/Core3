@@ -26,6 +26,8 @@ gualama_patriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gualama_patriarch.iff"},
 	lootGroups = {},
 	weapons = {},

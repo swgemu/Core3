@@ -26,6 +26,8 @@ paemos = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_converter.iff"},
 	lootGroups = {},
 	weapons = {},

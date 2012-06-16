@@ -26,6 +26,8 @@ capper_spineflap = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/capper_spineflap.iff"},
 	lootGroups = {},
 	weapons = {},

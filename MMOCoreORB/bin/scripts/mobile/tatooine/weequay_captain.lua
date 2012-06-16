@@ -27,6 +27,8 @@ weequay_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_weequay_captain.iff"},
 	lootGroups = {
 	    {

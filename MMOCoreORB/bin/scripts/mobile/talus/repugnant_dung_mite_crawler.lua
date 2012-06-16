@@ -26,6 +26,8 @@ repugnant_dung_mite_crawler = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dung_mite.iff"},
 	lootGroups = {},
 	weapons = {},

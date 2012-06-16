@@ -25,6 +25,8 @@ sirad_far = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/sirad_far.iff"},
 	lootGroups = {},
 	weapons = {},

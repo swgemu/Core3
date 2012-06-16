@@ -25,6 +25,8 @@ scholar_szingo = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_scholar_szingo.iff"},
 	lootGroups = {},
 	weapons = {},

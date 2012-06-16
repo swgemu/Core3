@@ -26,6 +26,8 @@ tortur = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/meager_tortur.iff"},
 	lootGroups = {},
 	weapons = {},

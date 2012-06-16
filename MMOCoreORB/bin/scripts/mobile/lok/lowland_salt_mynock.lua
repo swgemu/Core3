@@ -26,6 +26,8 @@ lowland_salt_mynock = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/salt_mynock.iff"},
 	lootGroups = {},
 	weapons = {},

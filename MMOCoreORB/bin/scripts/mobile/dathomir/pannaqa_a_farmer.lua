@@ -26,6 +26,8 @@ pannaqa_a_farmer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_farmer.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ bounty_hunter_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bountyhunter_trainer_02.iff"},
 	lootGroups = {},
 	weapons = {},

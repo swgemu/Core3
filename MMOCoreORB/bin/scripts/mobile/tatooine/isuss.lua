@@ -27,6 +27,8 @@ isuss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_victor_questp_hospital.iff"},
 	lootGroups = {},
 	weapons = {},

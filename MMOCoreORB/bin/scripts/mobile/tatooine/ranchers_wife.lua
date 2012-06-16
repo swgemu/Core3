@@ -26,6 +26,8 @@ ranchers_wife = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_farmer_wife_of_tatooine.iff"},
 	lootGroups = {},
 	weapons = {},

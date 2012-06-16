@@ -26,6 +26,8 @@ eopie_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/eopie_hue.iff"},
 	lootGroups = {},
 	weapons = {},

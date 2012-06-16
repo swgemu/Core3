@@ -26,6 +26,8 @@ infant_graul = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/infant_graul.iff"},
 	lootGroups = {},
 	weapons = {},

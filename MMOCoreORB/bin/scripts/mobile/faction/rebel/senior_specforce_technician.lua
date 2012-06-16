@@ -26,6 +26,8 @@ senior_specforce_technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {
 		{

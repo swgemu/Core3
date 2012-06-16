@@ -26,6 +26,8 @@ lyda_thug_coa2 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

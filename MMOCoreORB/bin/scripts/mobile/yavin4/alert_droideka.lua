@@ -26,6 +26,8 @@ alert_droideka = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {},
 	weapons = {"droid_droideka_ranged"},

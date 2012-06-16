@@ -26,6 +26,8 @@ puss_covered_decay_mite_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/decay_mite.iff"},
 	lootGroups = {},
 	weapons = {},

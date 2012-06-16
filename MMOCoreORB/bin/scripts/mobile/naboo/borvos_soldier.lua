@@ -27,6 +27,8 @@ borvos_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_borvos_soldier.iff"},
 	lootGroups = {
 	    {

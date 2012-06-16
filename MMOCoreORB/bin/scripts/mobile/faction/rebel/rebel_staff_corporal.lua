@@ -26,6 +26,8 @@ rebel_staff_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_staff_corporal_bith_female_01.iff",
 		"object/mobile/dressed_rebel_staff_corporal_bothan_female_01.iff",

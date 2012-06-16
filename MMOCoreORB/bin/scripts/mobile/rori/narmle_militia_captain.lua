@@ -26,6 +26,8 @@ narmle_militia_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_narmle_captain_bith_female_01.iff",
 		"object/mobile/dressed_narmle_captain_bith_male_01.iff"},

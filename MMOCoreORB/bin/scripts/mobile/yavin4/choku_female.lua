@@ -26,6 +26,8 @@ choku_female = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/choku.iff"},
 	lootGroups = {},
 	weapons = {},

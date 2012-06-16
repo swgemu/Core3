@@ -26,6 +26,8 @@ competent_jinda_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/jinda_male.iff",
 			"object/mobile/jinda_male_01.iff",

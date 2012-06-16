@@ -26,6 +26,8 @@ kilnstrider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier4_tatooine_kilnstrider.iff"},
 	lootGroups = {},
 	weapons = {},

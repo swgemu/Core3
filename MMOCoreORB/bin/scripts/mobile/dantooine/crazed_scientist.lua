@@ -26,6 +26,8 @@ crazed_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/warren_irradiated_worker_s01.iff",
 		"object/mobile/warren_irradiated_worker_s02.iff",

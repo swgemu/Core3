@@ -26,6 +26,8 @@ disciple_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_patron_nikto_01.iff"},
 	lootGroups = {
 		{

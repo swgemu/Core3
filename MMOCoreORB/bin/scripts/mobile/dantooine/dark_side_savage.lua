@@ -26,6 +26,8 @@ dark_side_savage = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dark_side_savage.iff"},
 	lootGroups = {
 		{

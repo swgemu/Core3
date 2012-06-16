@@ -26,6 +26,8 @@ dire_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dire_cat.iff"},
 	lootGroups = {},
 	weapons = {},

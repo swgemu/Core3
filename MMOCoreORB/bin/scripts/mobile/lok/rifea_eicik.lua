@@ -25,6 +25,8 @@ rifea_eicik = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_human_female_04.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ savage_guf_drolg = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/guf_drolg.iff"},
 	lootGroups = {},
 	weapons = {},

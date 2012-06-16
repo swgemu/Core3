@@ -26,6 +26,8 @@ nym = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/nym.iff"},
 	lootGroups = {},
 	weapons = {},

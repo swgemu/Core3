@@ -26,6 +26,8 @@ klaatu = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/klaatu.iff"},
 	lootGroups = {},
 	weapons = {},

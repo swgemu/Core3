@@ -26,6 +26,8 @@ valarian_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_valarian_thief.iff"},
 	lootGroups = {
 	    {

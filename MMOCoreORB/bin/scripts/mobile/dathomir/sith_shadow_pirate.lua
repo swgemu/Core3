@@ -26,6 +26,8 @@ sith_shadow_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_sith_shadow_hum_f_01.iff",
 		"object/mobile/dressed_sith_shadow_hum_f_02.iff",

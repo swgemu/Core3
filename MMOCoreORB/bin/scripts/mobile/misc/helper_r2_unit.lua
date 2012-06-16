@@ -26,6 +26,8 @@ helper_r2_unit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/nhelper_droid.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ haymir_rendundi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier3_yavin_blackepsilon.iff"},
 	lootGroups = {},
 	weapons = {},

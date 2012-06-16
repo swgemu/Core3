@@ -26,6 +26,8 @@ technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mand_bunker_technician.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

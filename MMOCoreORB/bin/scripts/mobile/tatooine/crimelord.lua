@@ -26,6 +26,8 @@ crimelord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_crimelord.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

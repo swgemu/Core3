@@ -26,6 +26,8 @@ lost_aqualish_marksman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_lost_aqualish_marksman_female_01.iff",
 		"object/mobile/dressed_lost_aqualish_marksman_male_01.iff"},

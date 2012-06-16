@@ -26,6 +26,8 @@ kaadu = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kaadu.iff"},
 	lootGroups = {},
 	weapons = {},

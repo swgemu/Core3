@@ -25,6 +25,8 @@ naboo_dissident = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_dissident.iff"},
 	lootGroups = {
 	    {

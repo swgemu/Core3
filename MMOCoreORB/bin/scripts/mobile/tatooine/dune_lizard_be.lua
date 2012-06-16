@@ -26,6 +26,8 @@ dune_lizard_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dune_lizard_hue.iff"},
 	lootGroups = {},
 	weapons = {},

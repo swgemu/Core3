@@ -26,6 +26,8 @@ errik_darksider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_herald_tatooine_01.iff"},
 	lootGroups = {},
 	weapons = {},

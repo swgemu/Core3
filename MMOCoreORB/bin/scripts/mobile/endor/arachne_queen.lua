@@ -26,6 +26,8 @@ arachne_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/queen_arachne.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},

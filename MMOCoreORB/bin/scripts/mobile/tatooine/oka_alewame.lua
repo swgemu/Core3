@@ -27,6 +27,8 @@ oka_alewame = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
 	weapons = {},

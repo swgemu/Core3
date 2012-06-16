@@ -26,6 +26,8 @@ cll8_binary_load_lifter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/cll8_binary_load_lifter.iff"
 	},		

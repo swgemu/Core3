@@ -27,6 +27,8 @@ corellia_edbr_yamagh = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_naboo_human_male_06.iff"
 				},
 	lootGroups = {},

@@ -26,6 +26,8 @@ poisonous_krevol_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/poisonous_krevol_queen.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

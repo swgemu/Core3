@@ -26,6 +26,8 @@ hostile_thune_mother = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/thune.iff"},
 	lootGroups = {},
 	weapons = {},

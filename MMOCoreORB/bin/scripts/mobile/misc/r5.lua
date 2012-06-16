@@ -26,6 +26,8 @@ r5 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/r5.iff"},
 	lootGroups = {},
 	weapons = {},

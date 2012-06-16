@@ -26,6 +26,8 @@ gungan_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {
 	    {

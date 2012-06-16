@@ -26,6 +26,8 @@ puny_tanc_mite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/puny_tanc_mite.iff"},
 	lootGroups = {},
 	weapons = {},

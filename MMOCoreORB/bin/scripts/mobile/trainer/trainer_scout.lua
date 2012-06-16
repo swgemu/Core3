@@ -23,6 +23,8 @@ trainer_scout = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_scout_trainer_01.iff","object/mobile/dressed_scout_trainer_02.iff","object/mobile/dressed_scout_trainer_03.iff"},
 	conversationTemplate = "trainer_scout_convotemplate",
 	optionsBitmask = 264

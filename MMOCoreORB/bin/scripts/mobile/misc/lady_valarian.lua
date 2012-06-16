@@ -26,6 +26,8 @@ lady_valarian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lady_valarian.iff"},
 	lootGroups = {},
 	weapons = {},

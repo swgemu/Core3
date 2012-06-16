@@ -26,6 +26,8 @@ fugitive = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_fugitive.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

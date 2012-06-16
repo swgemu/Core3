@@ -25,6 +25,8 @@ giant_peko_peko = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+
+	aiTemplate = "default",
 	scale = 1.4,
 
 	templates = {"object/mobile/giant_peko_peko.iff"},

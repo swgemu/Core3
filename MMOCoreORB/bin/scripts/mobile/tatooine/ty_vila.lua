@@ -26,6 +26,8 @@ ty_vila = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_broker_fired_worker.iff"},
 	lootGroups = {},
 	weapons = {},

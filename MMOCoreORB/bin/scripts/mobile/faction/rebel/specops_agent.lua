@@ -25,6 +25,8 @@ specops_agent = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},

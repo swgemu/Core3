@@ -27,6 +27,8 @@ corran_horn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corran_horn.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ crazed_durni = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/crazed_durni.iff"},
 	lootGroups = {},
 	weapons = {},

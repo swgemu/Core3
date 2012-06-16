@@ -26,6 +26,8 @@ sludge_panther = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/minor_sludge_panther.iff"},
 	lootGroups = {},
 	weapons = {},

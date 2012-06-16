@@ -27,6 +27,8 @@ commander_dkrn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {},
 	weapons = {},

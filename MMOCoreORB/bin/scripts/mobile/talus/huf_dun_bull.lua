@@ -26,6 +26,8 @@ huf_dun_bull = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/huf_dun.iff"},
 	lootGroups = {},
 	weapons = {},

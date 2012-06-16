@@ -26,6 +26,8 @@ vanvi_hotne = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_artist01.iff"},
 	lootGroups = {},
 	weapons = {},

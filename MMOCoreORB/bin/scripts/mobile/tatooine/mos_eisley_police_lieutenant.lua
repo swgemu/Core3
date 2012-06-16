@@ -26,6 +26,8 @@ mos_eisley_police_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_mos_eisley_police_officer.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

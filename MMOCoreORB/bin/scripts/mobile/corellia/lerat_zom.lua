@@ -26,6 +26,8 @@ lerat_zom = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lerat_zom.iff"},
 	lootGroups = {},
 	weapons = {},

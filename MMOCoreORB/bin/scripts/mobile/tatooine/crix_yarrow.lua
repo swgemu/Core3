@@ -27,6 +27,8 @@ crix_yarrow = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_fat_twilek_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

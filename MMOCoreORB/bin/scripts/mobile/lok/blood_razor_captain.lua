@@ -26,6 +26,8 @@ blood_razor_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_blood_razor_pirate_captain_hum_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_captain_nikto_m.iff",

@@ -26,6 +26,8 @@ hermit_spider_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/hermit_spider.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ gold_two = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_gold_two.iff"},
 	lootGroups = {},
 	weapons = {},

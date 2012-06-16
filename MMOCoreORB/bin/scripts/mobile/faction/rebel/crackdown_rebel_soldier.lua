@@ -26,6 +26,8 @@ crackdown_rebel_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_trooper_human_female_01.iff"
 	},

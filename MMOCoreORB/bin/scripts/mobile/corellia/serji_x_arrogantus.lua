@@ -27,6 +27,8 @@ serji_x_arrogantus = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_serjix_arrogantus.iff"},
 	lootGroups = {},
 	weapons = {},

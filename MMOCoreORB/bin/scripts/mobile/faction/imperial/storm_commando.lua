@@ -26,6 +26,8 @@ storm_commando = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_commando1_m.iff"},
 	lootGroups = {
 		{

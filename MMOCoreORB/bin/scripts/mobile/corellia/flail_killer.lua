@@ -25,6 +25,8 @@ flail_killer = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",

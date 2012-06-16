@@ -26,6 +26,8 @@ purbole_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/purbole.iff"},
 	lootGroups = {},
 	weapons = {},

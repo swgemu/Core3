@@ -26,6 +26,8 @@ minion_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_smuggler_human_male_01.iff"},
 	lootGroups = {
 		{

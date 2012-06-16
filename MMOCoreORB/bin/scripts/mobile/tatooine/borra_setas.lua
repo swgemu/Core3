@@ -27,6 +27,8 @@ borra_setas = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_rodian_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

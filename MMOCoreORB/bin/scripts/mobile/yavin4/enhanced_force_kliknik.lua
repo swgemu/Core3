@@ -27,6 +27,8 @@ enhanced_force_kliknik = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kliknik.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

@@ -25,6 +25,8 @@ jan_dodonna = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_jan_dodonna.iff"},
 	lootGroups = {},
 	weapons = {},

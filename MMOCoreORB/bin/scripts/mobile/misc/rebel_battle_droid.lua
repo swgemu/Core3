@@ -26,6 +26,8 @@ rebel_battle_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/battle_droid.iff"},
 	lootGroups = {},
 	weapons = {"battle_droid"},

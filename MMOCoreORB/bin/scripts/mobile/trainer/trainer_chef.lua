@@ -23,6 +23,8 @@ trainer_chef = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_chef_trainer_devaronian_male_01.iff","object/mobile/dressed_chef_trainer_human_female_01.iff","object/mobile/dressed_chef_trainer_human_male_01.iff"},
 	conversationTemplate = "trainer_chef_convotemplate",
 	optionsBitmask = 264

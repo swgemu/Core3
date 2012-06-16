@@ -27,6 +27,8 @@ coris_mao = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_brigade_gunner_bith_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

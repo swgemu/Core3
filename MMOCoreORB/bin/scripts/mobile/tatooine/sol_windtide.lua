@@ -26,6 +26,8 @@ sol_windtide = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_old_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

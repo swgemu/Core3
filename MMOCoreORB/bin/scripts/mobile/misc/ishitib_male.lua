@@ -26,6 +26,8 @@ ishitib_male = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_patron_ishi_tib_01.iff"},
 	lootGroups = {},
 	weapons = {},

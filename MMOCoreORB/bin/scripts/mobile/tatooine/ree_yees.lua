@@ -25,6 +25,8 @@ ree_yees = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gran_male.iff"},
 	lootGroups = {},
 	weapons = {},

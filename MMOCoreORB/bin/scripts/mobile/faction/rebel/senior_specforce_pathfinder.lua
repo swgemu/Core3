@@ -25,6 +25,8 @@ senior_specforce_pathfinder = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {
 		{

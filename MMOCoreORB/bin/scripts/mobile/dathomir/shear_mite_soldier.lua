@@ -26,6 +26,8 @@ shear_mite_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/shear_mite_soldier.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

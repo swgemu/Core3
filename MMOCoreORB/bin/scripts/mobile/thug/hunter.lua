@@ -25,6 +25,8 @@ hunter = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_naboo_twilek_female_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

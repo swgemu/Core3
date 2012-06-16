@@ -26,6 +26,8 @@ death_watch_overlord_mines = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_death_watch_gold.iff"},
 	lootGroups = {
 		{

@@ -26,6 +26,8 @@ blister_rot_mite_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/blister_rot_queen.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

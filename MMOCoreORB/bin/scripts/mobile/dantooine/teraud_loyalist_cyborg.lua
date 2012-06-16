@@ -26,6 +26,8 @@ teraud_loyalist_cyborg = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/warren_teraud_loyalist_cyborg_s01.iff",
 		"object/mobile/warren_teraud_loyalist_cyborg_s02.iff",

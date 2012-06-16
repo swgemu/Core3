@@ -26,6 +26,8 @@ bolle_bol_calf = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bolle_bol_calf.iff"},
 	lootGroups = {},
 	weapons = {},

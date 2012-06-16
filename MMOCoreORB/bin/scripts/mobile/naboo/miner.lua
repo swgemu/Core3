@@ -26,6 +26,8 @@ miner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mand_miner_bith.iff", 
 				"object/mobile/dressed_mand_miner_aqualish.iff",
 				"object/mobile/dressed_mand_miner_hum_01.iff",

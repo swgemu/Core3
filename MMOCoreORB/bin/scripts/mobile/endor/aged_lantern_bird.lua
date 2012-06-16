@@ -26,6 +26,8 @@ aged_lantern_bird = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lantern_bird.iff"},
 	lootGroups = {},
 	weapons = {},

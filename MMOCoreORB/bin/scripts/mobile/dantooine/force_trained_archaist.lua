@@ -26,6 +26,8 @@ force_trained_archaist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_force_trained_archaist.iff"},
 	lootGroups = {
 		{

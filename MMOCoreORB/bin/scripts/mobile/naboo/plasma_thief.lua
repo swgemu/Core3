@@ -25,6 +25,8 @@ plasma_thief = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_plasma_thief.iff"},
 	lootGroups = {
 	    {

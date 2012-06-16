@@ -25,6 +25,8 @@ skaak_tipper_crook = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_crook_zabrak_female_01.iff",
 		"object/mobile/dressed_crook_zabrak_male_01.iff"},

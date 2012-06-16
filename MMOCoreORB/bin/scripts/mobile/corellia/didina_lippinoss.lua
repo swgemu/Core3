@@ -27,6 +27,8 @@ didina_lippinoss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_human_female_03.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ kliknik_hatchling = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kliknik_hatchling.iff"},
 	lootGroups = {},
 	weapons = {},

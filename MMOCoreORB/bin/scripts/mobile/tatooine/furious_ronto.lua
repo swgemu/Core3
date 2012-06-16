@@ -26,6 +26,8 @@ furious_ronto = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ronto.iff"},
 	lootGroups = {},
 	weapons = {},

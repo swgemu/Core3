@@ -27,6 +27,8 @@ rakir_banai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_rakir_banai.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ bantha_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bantha_hue.iff"},
 	lootGroups = {},
 	weapons = {},

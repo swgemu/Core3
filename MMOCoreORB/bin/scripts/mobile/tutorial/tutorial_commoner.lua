@@ -25,6 +25,8 @@ tutorial_commoner = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_02.iff", 
 				"object/mobile/dressed_commoner_naboo_human_female_04.iff", 
 				"object/mobile/dressed_commoner_naboo_human_male_01.iff", 
@@ -70,6 +72,8 @@ tutorial_commoner_1 = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 				"object/mobile/dressed_commoner_old_human_female_02.iff",
 				},
@@ -108,6 +112,8 @@ tutorial_commoner_2 = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 
 	templates = {
 				"object/mobile/dressed_commoner_old_zabrak_male_02.iff",
@@ -148,6 +154,8 @@ tutorial_commoner_3 = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 				"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 				},
@@ -186,6 +194,8 @@ tutorial_commoner_talking = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 
 	templates = {"object/mobile/dressed_commoner_fat_zabrak_male_02.iff", 
 				"object/mobile/dressed_commoner_naboo_human_female_04.iff", 

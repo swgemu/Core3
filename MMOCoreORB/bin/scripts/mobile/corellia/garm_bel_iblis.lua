@@ -27,6 +27,8 @@ garm_bel_iblis = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
 	lootGroups = {},
 	weapons = {},

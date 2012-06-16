@@ -25,6 +25,8 @@ lok_herald_02 = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_herald_lok_02.iff"},
 	lootGroups = {},
 	weapons = {},

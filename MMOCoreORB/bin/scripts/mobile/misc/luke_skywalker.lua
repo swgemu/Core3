@@ -26,6 +26,8 @@ luke_skywalker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_luke_skywalker.iff"},
 	lootGroups = {},
 	weapons = {"luke_skywalker_weapons"},

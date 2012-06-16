@@ -27,6 +27,8 @@ oxil_sarban = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_oxil_sarban.iff"},
 	lootGroups = {},
 	weapons = {},

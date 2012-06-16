@@ -25,6 +25,8 @@ specialist_noncom = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},

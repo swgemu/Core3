@@ -26,6 +26,8 @@ razor_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/corellian_sand_panther.iff"},
 	lootGroups = {},
 	weapons = {},

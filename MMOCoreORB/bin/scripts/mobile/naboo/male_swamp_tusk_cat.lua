@@ -26,6 +26,8 @@ male_swamp_tusk_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tusk_cat.iff"},
 	lootGroups = {},
 	weapons = {},

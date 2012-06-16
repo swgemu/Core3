@@ -26,6 +26,8 @@ bith_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_cobral_hooligan_bith_female_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},

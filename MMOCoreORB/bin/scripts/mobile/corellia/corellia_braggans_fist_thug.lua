@@ -27,6 +27,8 @@ corellia_braggans_fist_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff"
 				},
 	lootGroups = {},

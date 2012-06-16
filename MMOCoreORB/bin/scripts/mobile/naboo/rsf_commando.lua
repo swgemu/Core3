@@ -26,6 +26,8 @@ rsf_commando = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rsf_commando.iff"},
 	lootGroups = {
 	    {

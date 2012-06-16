@@ -26,6 +26,8 @@ nightsister_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dathomir_nightsister_outcast.iff"},
 	lootGroups = {
 		{

@@ -27,6 +27,8 @@ mand_bunker_foreman = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mand_bunker_foreman.iff"},
 	lootGroups = {},
 	weapons = {},

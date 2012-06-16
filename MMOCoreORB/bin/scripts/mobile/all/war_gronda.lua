@@ -26,6 +26,8 @@ war_gronda = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/war_gronda.iff"},
 	lootGroups = {},
 	weapons = {},

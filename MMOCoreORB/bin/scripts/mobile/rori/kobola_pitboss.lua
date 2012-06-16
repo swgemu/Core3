@@ -26,6 +26,8 @@ kobola_pitboss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_kobola_pitboss_trandoshan_male_01.iff",
 		"object/mobile/dressed_kobola_pitboss_trandoshan_female_01.iff"},

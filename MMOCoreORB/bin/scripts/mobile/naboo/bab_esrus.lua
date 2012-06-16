@@ -27,6 +27,8 @@ bab_esrus = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
 	lootGroups = {},
 	weapons = {},

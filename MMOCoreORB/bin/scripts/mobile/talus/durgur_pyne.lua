@@ -27,6 +27,8 @@ durgur_pyne = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_durgur_pyne.iff"},
 	lootGroups = {},
 	weapons = {},

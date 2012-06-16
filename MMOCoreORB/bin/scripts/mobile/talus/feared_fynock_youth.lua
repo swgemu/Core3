@@ -26,6 +26,8 @@ feared_fynock_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/fearful_fynock_youth.iff"},
 	lootGroups = {},
 	weapons = {},

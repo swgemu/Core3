@@ -27,6 +27,8 @@ jaleela_bindoo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_jaleela_bindoo.iff"},
 	lootGroups = {},
 	weapons = {},

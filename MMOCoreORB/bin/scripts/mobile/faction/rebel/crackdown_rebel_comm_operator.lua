@@ -26,6 +26,8 @@ crackdown_rebel_comm_operator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_scout_human_male_01.iff"
 	},

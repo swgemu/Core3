@@ -26,6 +26,8 @@ computer_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_insane_comp_sci.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

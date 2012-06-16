@@ -26,6 +26,8 @@ scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff"},
 	lootGroups = {},
 	weapons = {},

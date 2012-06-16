@@ -26,6 +26,8 @@ hutt_expeditonary_force_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hutt_expedition_force_leader.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

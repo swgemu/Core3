@@ -26,6 +26,8 @@ han_solo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/han_solo.iff"},
 	lootGroups = {},
 	weapons = {"han_solo_weapons"},

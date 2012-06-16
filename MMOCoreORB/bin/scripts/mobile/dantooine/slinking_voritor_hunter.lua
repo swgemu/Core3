@@ -26,6 +26,8 @@ slinking_voritor_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/slinking_voritor_hunter.iff"},
 	lootGroups = {
 	 {

@@ -27,6 +27,8 @@ hal_horn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corellia_hal_horn.iff"},
 	lootGroups = {},
 	weapons = {},

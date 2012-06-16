@@ -25,6 +25,8 @@ slaver = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_slaver.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

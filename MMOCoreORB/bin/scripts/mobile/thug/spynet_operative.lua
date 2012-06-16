@@ -25,6 +25,8 @@ spynet_operative = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

@@ -26,6 +26,8 @@ quenker_relic_reaper = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/quenker_relic_reaper.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ senator_pooja_naberrie = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_pooja_naberrie.iff"},
 	lootGroups = {},
 	weapons = {},

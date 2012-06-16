@@ -27,6 +27,8 @@ brantlee_spondoon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_brantlee_spondoon.iff"},
 	lootGroups = {},
 	weapons = {},

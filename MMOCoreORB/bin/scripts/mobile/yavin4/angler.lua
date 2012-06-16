@@ -26,6 +26,8 @@ angler = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/angler.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},

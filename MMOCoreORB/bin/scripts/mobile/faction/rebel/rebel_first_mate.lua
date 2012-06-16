@@ -26,6 +26,8 @@ rebel_first_mate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_first_lieutenant_bothan_male_01.iff"},
 	lootGroups = {
 		{

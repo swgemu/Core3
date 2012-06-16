@@ -27,6 +27,8 @@ huff_zinga = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_huff_zinga.iff"},
 	lootGroups = {},
 	weapons = {},

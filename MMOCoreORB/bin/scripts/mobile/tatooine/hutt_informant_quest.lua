@@ -27,6 +27,8 @@ hutt_informant_quest = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {},
 	weapons = {},

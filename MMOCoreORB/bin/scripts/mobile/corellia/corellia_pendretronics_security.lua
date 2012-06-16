@@ -27,6 +27,8 @@ corellia_pendretronics_security = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_bodyguard_rod_m.iff"
 				},
 	lootGroups = {},

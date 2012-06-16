@@ -26,6 +26,8 @@ deranged_wrix = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/deranged_wrix.iff"},
 	lootGroups = {},
 	weapons = {},

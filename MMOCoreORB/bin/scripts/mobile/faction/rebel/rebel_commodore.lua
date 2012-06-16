@@ -26,6 +26,8 @@ rebel_commodore = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_commando_zabrak_female_01.iff"},
 	lootGroups = {
 		{

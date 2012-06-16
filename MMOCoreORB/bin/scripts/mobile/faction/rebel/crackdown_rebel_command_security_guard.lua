@@ -26,6 +26,8 @@ crackdown_rebel_command_security_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_crewman_human_male_04.iff",
 		"object/mobile/dressed_rebel_crewman_human_female_01.iff",

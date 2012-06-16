@@ -26,6 +26,8 @@ cyborg_slice_hound = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_cyborg_slicehound.iff"},
 	lootGroups = {},
 	weapons = {},

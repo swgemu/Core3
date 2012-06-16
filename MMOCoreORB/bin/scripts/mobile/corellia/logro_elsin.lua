@@ -26,6 +26,8 @@ logro_elsin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ erran_sif = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_erran_sif.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},

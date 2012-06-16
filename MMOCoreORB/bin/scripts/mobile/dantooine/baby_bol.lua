@@ -26,6 +26,8 @@ baby_bol = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/baby_bol.iff"},
 	lootGroups = {},
 	weapons = {},

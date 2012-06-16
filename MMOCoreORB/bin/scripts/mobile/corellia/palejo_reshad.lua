@@ -27,6 +27,8 @@ palejo_reshad = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_palejo_reshad.iff"},
 	lootGroups = {},
 	weapons = {},

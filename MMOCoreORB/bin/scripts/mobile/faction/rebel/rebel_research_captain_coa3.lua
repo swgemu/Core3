@@ -27,6 +27,8 @@ rebel_research_captain_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

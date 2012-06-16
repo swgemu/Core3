@@ -26,6 +26,8 @@ afarathu_cult_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_selonian_m_01.iff",
 		"object/mobile/dressed_selonian_m_02.iff",
 		"object/mobile/dressed_selonian_m_03.iff",

@@ -26,6 +26,8 @@ bounty_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

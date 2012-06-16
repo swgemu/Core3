@@ -26,6 +26,8 @@ bolle_bol_stomper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bolle_bol.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ adwan_turoldine = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_tier4_corellia_adwan.iff"},
 	lootGroups = {},
 	weapons = {},

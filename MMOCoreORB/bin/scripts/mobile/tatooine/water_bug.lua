@@ -26,6 +26,8 @@ water_bug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_water_bug.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

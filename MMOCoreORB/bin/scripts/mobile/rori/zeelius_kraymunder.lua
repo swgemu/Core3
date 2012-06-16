@@ -27,6 +27,8 @@ zeelius_kraymunder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_zeelius_kraymunder.iff"},
 	lootGroups = {},
 	weapons = {},

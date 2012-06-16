@@ -27,6 +27,8 @@ athok_dinvar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_athok_dinvar.iff"},
 	lootGroups = {},
 	weapons = {},

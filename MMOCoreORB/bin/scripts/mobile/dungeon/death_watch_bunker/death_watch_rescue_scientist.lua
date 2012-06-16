@@ -26,6 +26,8 @@ death_watch_rescue_scientist = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_research_scientist.iff"},
 	lootGroups = {},
 	weapons = {},

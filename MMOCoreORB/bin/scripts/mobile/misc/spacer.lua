@@ -26,6 +26,8 @@ spacer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
 		"object/mobile/dressed_criminal_pirate_human_female_01.iff",

@@ -25,6 +25,8 @@ giant_gackle_bat = Creature:new {
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_gackle_bat.iff"},
 	lootGroups = {},
 	weapons = {},

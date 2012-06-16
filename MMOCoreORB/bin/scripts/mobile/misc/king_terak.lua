@@ -26,6 +26,8 @@ king_terak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/king_terak.iff"},
 	lootGroups = {},
 	weapons = {},

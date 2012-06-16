@@ -26,6 +26,8 @@ first_brigade_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_brigade_scout_trandoshan_male_01.iff",
 		"object/mobile/dressed_brigade_scout_trandoshan_female_01.iff"},

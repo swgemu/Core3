@@ -25,6 +25,8 @@ ra7_bug_droid = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ra7_bug_droid.iff"},
 	lootGroups = {},
 	weapons = {},

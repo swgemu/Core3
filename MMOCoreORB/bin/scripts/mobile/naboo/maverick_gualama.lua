@@ -26,6 +26,8 @@ maverick_gualama = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gualama.iff"},
 	lootGroups = {},
 	weapons = {},

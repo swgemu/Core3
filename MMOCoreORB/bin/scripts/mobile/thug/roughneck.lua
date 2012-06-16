@@ -25,6 +25,8 @@ roughneck = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_criminal_slicer_human_male_01.iff",
 		"object/mobile/dressed_criminal_smuggler_human_male_01.iff",

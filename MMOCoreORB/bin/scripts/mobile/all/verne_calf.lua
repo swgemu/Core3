@@ -26,6 +26,8 @@ verne_call = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/verne_calf.iff"},
 	lootGroups = {},
 	weapons = {},

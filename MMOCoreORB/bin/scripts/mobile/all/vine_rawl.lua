@@ -26,6 +26,8 @@ vine_rawl = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/fanned_rawl.iff"},
 	lootGroups = {},
 	weapons = {},

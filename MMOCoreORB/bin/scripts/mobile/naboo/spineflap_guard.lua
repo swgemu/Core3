@@ -26,6 +26,8 @@ spineflap_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/capper_spineflap.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

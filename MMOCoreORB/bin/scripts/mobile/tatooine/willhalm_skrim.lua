@@ -26,6 +26,8 @@ willhalm_skrim = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
 	lootGroups = {},
 	weapons = {},

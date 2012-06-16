@@ -26,6 +26,8 @@ death_watch_wraith = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_death_watch_silver.iff"},
 	lootGroups = {
 		{

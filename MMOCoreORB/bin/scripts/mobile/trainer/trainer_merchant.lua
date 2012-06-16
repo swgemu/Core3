@@ -23,6 +23,8 @@ trainer_merchant = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_merchant_trainer_01.iff","object/mobile/dressed_merchant_trainer_02.iff","object/mobile/dressed_merchant_trainer_03.iff"},
 	conversationTemplate = "trainer_merchant_convotemplate",
 	optionsBitmask = 264

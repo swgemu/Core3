@@ -26,6 +26,8 @@ cyborg_bol = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_cyborg_bol.iff"},
 	lootGroups = {},
 	weapons = {},

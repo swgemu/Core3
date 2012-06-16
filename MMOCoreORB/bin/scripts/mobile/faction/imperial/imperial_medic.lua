@@ -26,6 +26,8 @@ imperial_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_imperial_medic1_human_male_01.iff",
 		"object/mobile/dressed_imperial_medic2_21b_01.iff",

@@ -25,6 +25,8 @@ slicer = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
 				"object/mobile/dressed_criminal_pirate_human_male_01.iff",
 				"object/mobile/dressed_criminal_slicer_human_female_01.iff"

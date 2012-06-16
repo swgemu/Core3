@@ -26,6 +26,8 @@ fa_zoll = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier2_naboo.iff"},
 	lootGroups = {},
 	weapons = {},

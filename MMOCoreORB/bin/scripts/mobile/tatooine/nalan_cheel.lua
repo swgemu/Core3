@@ -27,6 +27,8 @@ nalan_cheel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tatooine_npc/figrin_dan.iff"},
 	lootGroups = {},
 	weapons = {},

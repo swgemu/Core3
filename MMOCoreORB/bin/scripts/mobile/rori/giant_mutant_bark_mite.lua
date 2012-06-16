@@ -26,6 +26,8 @@ giant_mutant_bark_mite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bark_mite.iff"},
 	lootGroups = {},
 	weapons = {},

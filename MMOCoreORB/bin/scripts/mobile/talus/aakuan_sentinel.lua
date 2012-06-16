@@ -26,6 +26,8 @@ aakuan_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_aakuan_sentinal_rodian_female_01.iff",
 		"object/mobile/dressed_aakuan_sentinal_rodian_male_01.iff"},

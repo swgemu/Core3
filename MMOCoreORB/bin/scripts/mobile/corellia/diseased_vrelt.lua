@@ -26,6 +26,8 @@ diseased_vrelt = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vrelt.iff"},
 	lootGroups = {},
 	weapons = {},

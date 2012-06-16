@@ -27,6 +27,8 @@ warden_vinzel_haylon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_vinzel_haylon.iff"},
 	lootGroups = {},
 	weapons = {},

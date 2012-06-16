@@ -26,6 +26,8 @@ garyns_vigo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_garyn_vigo_bith_male_01.iff",
 		"object/mobile/dressed_garyn_vigo_bith_female_01.iff"},

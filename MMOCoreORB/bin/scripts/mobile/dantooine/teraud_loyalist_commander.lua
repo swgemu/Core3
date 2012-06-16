@@ -26,6 +26,8 @@ teraud_loyalist_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_loyalist_commander.iff"},
 	lootGroups = {
 	    {

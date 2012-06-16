@@ -27,6 +27,8 @@ lasha_bindari = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lasha_bindari.iff"},
 	lootGroups = {},
 	weapons = {},

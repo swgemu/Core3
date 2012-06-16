@@ -26,6 +26,8 @@ corellian_butterfly_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/corellian_butterfly.iff"},
 	lootGroups = {},
 	weapons = {},

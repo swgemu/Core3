@@ -26,6 +26,8 @@ mutant_bark_mite_hatchiing = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bark_mite_hatchling.iff"},
 	lootGroups = {},
 	weapons = {},

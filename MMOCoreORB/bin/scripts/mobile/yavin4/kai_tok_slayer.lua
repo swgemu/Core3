@@ -26,6 +26,8 @@ kai_tok_slayer = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kai_tok.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

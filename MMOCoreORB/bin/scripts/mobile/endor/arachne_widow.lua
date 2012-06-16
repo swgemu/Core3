@@ -26,6 +26,8 @@ arachne_widow = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/angler.iff"},
 	lootGroups = {},
 	weapons = {},

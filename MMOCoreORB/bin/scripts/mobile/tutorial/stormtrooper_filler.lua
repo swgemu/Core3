@@ -25,6 +25,8 @@ stormtrooper_filler_tutorial = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ young_reptilian_flier = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/young_reptilian_flier.iff"},
 	lootGroups = {},
 	weapons = {},

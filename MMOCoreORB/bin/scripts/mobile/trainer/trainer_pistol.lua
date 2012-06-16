@@ -23,6 +23,8 @@ trainer_pistol = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_pistol_trainer_01.iff","object/mobile/dressed_pistol_trainer_02.iff","object/mobile/dressed_pistol_trainer_03.iff"},
 	conversationTemplate = "trainer_pistol_convotemplate",
 	optionsBitmask = 264

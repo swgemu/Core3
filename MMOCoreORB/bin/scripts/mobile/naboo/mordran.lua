@@ -25,6 +25,8 @@ mordran = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mordran.iff"},
 	lootGroups = {},
 	weapons = {"mordran_weapons"},

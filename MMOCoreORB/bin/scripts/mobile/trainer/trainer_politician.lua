@@ -23,6 +23,8 @@ trainer_politician = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_industrialist_trainer_01.iff","object/mobile/dressed_industrialist_trainer_02.iff","object/mobile/dressed_industrialist_trainer_03.iff"},
 	conversationTemplate = "trainer_politician_convotemplate",
 	optionsBitmask = 264

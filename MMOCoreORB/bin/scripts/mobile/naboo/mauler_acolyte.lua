@@ -26,6 +26,8 @@ mauler_acolyte = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mauler_acolyte.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ corellia_retired_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_fat_human_male_02.iff"
 				},
 	lootGroups = {},

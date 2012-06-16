@@ -26,6 +26,8 @@ mos_eisley_police_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_eisley_officer_aqualish_female_01.iff",
 		"object/mobile/dressed_eisley_officer_aqualish_male_01.iff",

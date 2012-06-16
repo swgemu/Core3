@@ -27,6 +27,8 @@ hagrin_zeed = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
 	lootGroups = {},
 	weapons = {},

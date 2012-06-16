@@ -26,6 +26,8 @@ desert_demon_marksman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_desert_demon_marksman.iff"},
 	lootGroups = {
 	    {

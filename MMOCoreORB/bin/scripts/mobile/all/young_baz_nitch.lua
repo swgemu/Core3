@@ -26,6 +26,8 @@ young_baz_nitch = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/young_baz_nitch.iff"},
 	lootGroups = {},
 	weapons = {},

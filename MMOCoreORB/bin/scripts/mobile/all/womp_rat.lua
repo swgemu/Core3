@@ -26,6 +26,8 @@ womp_rat = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/womp_rat.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ osweri_hepa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_specforce_pathfinder_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

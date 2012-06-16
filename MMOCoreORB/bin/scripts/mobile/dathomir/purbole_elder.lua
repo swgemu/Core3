@@ -26,6 +26,8 @@ purbole_elder = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/purbole_elder.iff"},
 	lootGroups = {},
 	weapons = {},

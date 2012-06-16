@@ -26,6 +26,8 @@ rtp_imperial_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_officer_m_4.iff",
 				"object/mobile/dressed_imperial_officer_m_3.iff"
 	},

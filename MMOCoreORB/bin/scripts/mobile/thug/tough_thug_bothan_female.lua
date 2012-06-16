@@ -26,6 +26,8 @@ tough_thug_bothan_female = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

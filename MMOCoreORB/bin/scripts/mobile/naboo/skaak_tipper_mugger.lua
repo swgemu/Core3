@@ -25,6 +25,8 @@ skaak_tipper_mugger = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
 	    {

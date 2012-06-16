@@ -25,6 +25,8 @@ patron_quarren = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_patron_quarren_01.iff"
 	},

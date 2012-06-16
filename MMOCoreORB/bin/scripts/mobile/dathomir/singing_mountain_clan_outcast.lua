@@ -26,6 +26,8 @@ singing_mountain_clan_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_outcast.iff"},
 	lootGroups = {
 		{

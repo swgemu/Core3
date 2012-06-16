@@ -25,6 +25,8 @@ moisture_thief = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_moisture_thief.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

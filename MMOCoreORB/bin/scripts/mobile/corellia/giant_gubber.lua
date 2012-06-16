@@ -26,6 +26,8 @@ giant_gubber = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_gubbur.iff"},
 	lootGroups = {},
 	weapons = {},

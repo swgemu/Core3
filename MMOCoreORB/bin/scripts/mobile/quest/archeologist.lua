@@ -26,6 +26,8 @@ archeologist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_eisley_officer_twilek_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

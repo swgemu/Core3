@@ -26,6 +26,8 @@ ankura_gungan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ankura_gungan.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

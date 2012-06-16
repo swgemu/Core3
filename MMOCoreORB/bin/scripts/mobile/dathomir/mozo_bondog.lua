@@ -27,6 +27,8 @@ mozo_bondog = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mozo_bondog.iff"},
 	lootGroups = {},
 	weapons = {},

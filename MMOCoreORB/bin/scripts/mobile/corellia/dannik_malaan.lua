@@ -27,6 +27,8 @@ dannik_malaan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_fat_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

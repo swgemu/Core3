@@ -26,6 +26,8 @@ extok_evin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier4_extok_evin.iff"},
 	lootGroups = {},
 	weapons = {},

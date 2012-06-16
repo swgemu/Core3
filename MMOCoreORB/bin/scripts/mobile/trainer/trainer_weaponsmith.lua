@@ -23,6 +23,8 @@ trainer_weaponsmith = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_weaponsmith_trainer_01.iff","object/mobile/dressed_weaponsmith_trainer_02.iff","object/mobile/dressed_weaponsmith_trainer_03.iff"},
 	conversationTemplate = "trainer_weaponsmith_convotemplate",
 	optionsBitmask = 264

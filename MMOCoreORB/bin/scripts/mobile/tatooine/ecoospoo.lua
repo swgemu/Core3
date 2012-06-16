@@ -27,6 +27,8 @@ ecoospoo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mercenary_messanger_rod_m.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ jowir_arlensa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_jowir_arlensa.iff"},
 	lootGroups = {},
 	weapons = {},

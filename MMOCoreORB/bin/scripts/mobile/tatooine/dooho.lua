@@ -27,6 +27,8 @@ dooho = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_rodian_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ naboo_nomad = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_nomad.iff",
 				"object/mobile/dressed_commoner_fat_zabrak_male_01.iff"},
 	lootGroups = {

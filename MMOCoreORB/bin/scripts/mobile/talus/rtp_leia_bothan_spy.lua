@@ -26,6 +26,8 @@ rtp_leia_bothan_spy = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_scout_bothan_male_01.iff"},
 				
 	lootGroups = {},

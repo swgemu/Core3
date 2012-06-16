@@ -26,6 +26,8 @@ bordok_foal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bordok_foal.iff"},
 	lootGroups = {},
 	weapons = {},

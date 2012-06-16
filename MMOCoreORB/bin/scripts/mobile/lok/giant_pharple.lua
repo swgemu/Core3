@@ -26,6 +26,8 @@ giant_pharple = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_pharple.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ junk_dealer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/junk_nathan.iff",
 			"object/mobile/junk_lila.iff",

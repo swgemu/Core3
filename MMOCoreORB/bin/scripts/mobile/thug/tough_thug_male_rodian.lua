@@ -26,6 +26,8 @@ tough_thug_male_rodian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff",
 			"object/mobile/dressed_criminal_thug_rodian_male_01.iff"},
 	lootGroups = {},

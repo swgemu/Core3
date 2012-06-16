@@ -26,6 +26,8 @@ death_watch_black_sun_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_black_sun_thug.iff"},
 	lootGroups = {
 		{

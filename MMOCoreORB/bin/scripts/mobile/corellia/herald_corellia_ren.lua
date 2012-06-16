@@ -27,6 +27,8 @@ herald_corellia_ren = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_herald_corellia_02.iff"},
 	lootGroups = {},
 	weapons = {},

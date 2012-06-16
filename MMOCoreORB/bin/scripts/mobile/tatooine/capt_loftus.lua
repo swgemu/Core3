@@ -27,6 +27,8 @@ capt_loftus = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/capt_loftus.iff"},
 	lootGroups = {},
 	weapons = {},

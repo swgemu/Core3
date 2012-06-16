@@ -26,6 +26,8 @@ siarafont_cakrod = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sean_questp_market.iff"},
 	lootGroups = {},
 	weapons = {},

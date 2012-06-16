@@ -26,6 +26,8 @@ novice_force_mystic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {
 		{

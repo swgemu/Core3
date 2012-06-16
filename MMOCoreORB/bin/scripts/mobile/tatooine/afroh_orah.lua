@@ -27,6 +27,8 @@ afroh_orah = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor03.iff"},
 	lootGroups = {},
 	weapons = {},

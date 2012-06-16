@@ -27,6 +27,8 @@ lorne_prestar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mos_taike_guard_old.iff"},
 	lootGroups = {},
 	weapons = {},

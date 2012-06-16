@@ -26,6 +26,8 @@ rebel_brigadier_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_brigadier_general_bith_male.iff",
 		"object/mobile/dressed_rebel_brigadier_general_human_female_01.iff",

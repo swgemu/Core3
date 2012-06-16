@@ -26,6 +26,8 @@ alkhara_bandit_king = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_alkhara_king.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ nym_guard_strong = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff", 
 				"object/mobile/dressed_nym_guard_strong_rod_m.iff",
 				"object/mobile/dressed_nym_guard_strong_nikto_m.iff",

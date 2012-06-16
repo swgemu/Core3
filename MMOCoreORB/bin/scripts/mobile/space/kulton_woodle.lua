@@ -26,6 +26,8 @@ kulton_woodle = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_theed_freighter_captain.iff"},
 	lootGroups = {},
 	weapons = {},

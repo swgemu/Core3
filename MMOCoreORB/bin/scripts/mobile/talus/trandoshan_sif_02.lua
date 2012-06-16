@@ -26,6 +26,8 @@ trandoshan_sif_02 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_02.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},

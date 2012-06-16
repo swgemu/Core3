@@ -26,6 +26,8 @@ explorer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
 					"object/mobile/dressed_commoner_naboo_human_female_07.iff",
 					"object/mobile/dressed_commoner_naboo_human_male_08.iff",

@@ -26,6 +26,8 @@ dim_u_abbot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_dim_u_abbot.iff"},
 	lootGroups = {
 	    {

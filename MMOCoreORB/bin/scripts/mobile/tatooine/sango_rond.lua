@@ -27,6 +27,8 @@ sango_rond = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_sango_rond.iff"},
 	lootGroups = {},
 	weapons = {},

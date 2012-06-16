@@ -23,6 +23,8 @@ trainer_smuggler = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_smuggler_trainer_01.iff","object/mobile/dressed_smuggler_trainer_02.iff","object/mobile/dressed_smuggler_trainer_03.iff"},
 	conversationTemplate = "trainer_smuggler_convotemplate",
 	optionsBitmask = 264

@@ -26,6 +26,8 @@ dim_u_preacher = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_dim_u_preacher.iff"},
 	lootGroups = {
 	    {

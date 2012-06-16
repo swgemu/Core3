@@ -26,6 +26,8 @@ common_thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_plasma_thief.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

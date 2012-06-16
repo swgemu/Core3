@@ -26,6 +26,8 @@ creatureBitmask = PACK,
 optionsBitmask = 128,
 diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 templates = {"object/creature/npc/theme_park/lambda_shuttle.iff"},
 lootGroups = {},
 weapons = {},

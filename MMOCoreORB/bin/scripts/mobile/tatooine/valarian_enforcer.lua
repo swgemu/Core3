@@ -26,6 +26,8 @@ valarian_enforcer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_valarian_enforcer.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ marksman_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_marksman_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},

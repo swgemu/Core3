@@ -27,6 +27,8 @@ rebel_vacca_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dr_vacca.iff"},
 	lootGroups = {},
 	weapons = {},

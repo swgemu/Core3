@@ -26,6 +26,8 @@ strong_mercenary = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/dressed_mercenary_strong_hum_m.iff",
 			"object/mobile/dressed_mercenary_strong_hum_f.iff",

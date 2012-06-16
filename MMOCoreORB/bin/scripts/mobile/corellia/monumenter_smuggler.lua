@@ -25,6 +25,8 @@ monumenter_smuggler = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_criminal_thug_human_male_01.iff",

@@ -26,6 +26,8 @@ flit_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/flit_youth.iff"},
 	lootGroups = {},
 	weapons = {},

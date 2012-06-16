@@ -26,6 +26,8 @@ chadra_fan_female = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/chadra_fan_female.iff",
 		"object/mobile/dressed_chadra_fan_f_01.iff",

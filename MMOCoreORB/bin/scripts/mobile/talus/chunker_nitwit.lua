@@ -25,6 +25,8 @@ chunker_nitwit = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mugger.iff", 
 					"object/mobile/dressed_robber_human_male_01.iff", 
 					"object/mobile/dressed_criminal_thug_zabrak_female_01.iff", 

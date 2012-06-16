@@ -27,6 +27,8 @@ junk_nathan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_nathan.iff"},
 	lootGroups = {},
 	weapons = {},

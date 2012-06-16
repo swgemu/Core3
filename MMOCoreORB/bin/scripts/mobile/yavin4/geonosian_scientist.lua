@@ -26,6 +26,8 @@ geonosian_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_geonosian_scientist_01.iff",
 		"object/mobile/dressed_geonosian_scientist_02.iff"},

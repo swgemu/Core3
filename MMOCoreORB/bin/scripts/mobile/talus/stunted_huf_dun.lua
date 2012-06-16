@@ -26,6 +26,8 @@ stunted_huf_dun = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/stunted_huf_dun.iff"},
 	lootGroups = {},
 	weapons = {},

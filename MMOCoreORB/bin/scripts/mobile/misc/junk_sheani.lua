@@ -27,6 +27,8 @@ junk_sheani = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_sheani.iff"},
 	lootGroups = {},
 	weapons = {},

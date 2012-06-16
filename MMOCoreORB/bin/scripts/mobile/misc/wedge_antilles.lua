@@ -26,6 +26,8 @@ wedge_antilles = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/wedge_antilles.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ herald_dathomir_olof = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_herald_dathomir_nsister_cave_olof.iff"},
 	lootGroups = {},
 	weapons = {},

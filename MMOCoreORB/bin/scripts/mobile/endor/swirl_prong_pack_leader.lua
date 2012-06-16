@@ -26,6 +26,8 @@ swirl_prong_pack_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/swirl_prong.iff"},
 	lootGroups = {},
 	weapons = {},

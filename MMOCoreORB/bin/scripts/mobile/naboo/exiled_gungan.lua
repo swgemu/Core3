@@ -26,6 +26,8 @@ exiled_gungan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gungan_outcast.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

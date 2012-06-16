@@ -26,6 +26,8 @@ canyon_corsair_cutthroat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_corsair_cutthroat_hum_f.iff",
 		"object/mobile/dressed_corsair_cutthroat_hum_m.iff",

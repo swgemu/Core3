@@ -27,6 +27,8 @@ sidoras_bey = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sidoras_bey.iff"},
 	lootGroups = {},
 	weapons = {},

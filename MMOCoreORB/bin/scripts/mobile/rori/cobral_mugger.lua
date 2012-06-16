@@ -27,6 +27,8 @@ cobral_mugger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_cobral_mugger_human_male_01.iff",
 		"object/mobile/dressed_cobral_mugger_human_female_01.iff"},

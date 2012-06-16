@@ -25,6 +25,8 @@ meatlump_clod = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_criminal_thug_human_female_01.iff",
 		"object/mobile/dressed_criminal_thug_human_female_02.iff",

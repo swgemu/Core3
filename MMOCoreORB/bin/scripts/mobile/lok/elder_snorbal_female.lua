@@ -26,6 +26,8 @@ elder_snorbal_female = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/elder_snorbal_female.iff"},
 	lootGroups = {},
 	weapons = {},

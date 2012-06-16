@@ -25,6 +25,8 @@ sleemo_hoodlum = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_human_male_02.iff",
 				"object/mobile/dressed_crook_zabrak_male_01.iff",
 				"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",

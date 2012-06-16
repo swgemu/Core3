@@ -25,6 +25,8 @@ bapibac = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_trooper_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

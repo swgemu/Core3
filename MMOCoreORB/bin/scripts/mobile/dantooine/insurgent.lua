@@ -25,6 +25,8 @@ insurgent = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier4_corellia_nin_gursawe.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

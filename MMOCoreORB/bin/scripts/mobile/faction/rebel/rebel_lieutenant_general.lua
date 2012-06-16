@@ -26,6 +26,8 @@ rebel_lieutenant_general = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_lieutenant_general_human_male_01.iff",
 		"object/mobile/dressed_rebel_lieutenant_general_moncal_female_01.iff",

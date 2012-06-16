@@ -26,6 +26,8 @@ porcellus = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_porcellus.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ scyk = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/scyk.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ lost_aqualish_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_lost_aqualish_soldier_female_01.iff",
 		"object/mobile/dressed_lost_aqualish_soldier_male_01.iff"},

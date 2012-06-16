@@ -26,6 +26,8 @@ flit_harasser = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/flit.iff"},
 	lootGroups = {},
 	weapons = {},

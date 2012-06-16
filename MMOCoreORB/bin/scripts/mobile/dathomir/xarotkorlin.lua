@@ -27,6 +27,8 @@ xarotkorlin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_xarot_korlin.iff"},
 	lootGroups = {},
 	weapons = {},

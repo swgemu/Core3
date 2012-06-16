@@ -27,6 +27,8 @@ ithorian_musician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
 	weapons = {},

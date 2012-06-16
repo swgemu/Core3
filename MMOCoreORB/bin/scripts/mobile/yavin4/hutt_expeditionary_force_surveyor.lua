@@ -26,6 +26,8 @@ hutt_expeditionary_force_surveyor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

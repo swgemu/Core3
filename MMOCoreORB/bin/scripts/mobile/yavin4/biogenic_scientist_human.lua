@@ -27,6 +27,8 @@ biogenic_scientist_human = Creature:new {
 	optionsBitmask = 392,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_doctor_trainer_human_female_01.iff",
 		"object/mobile/dressed_combatmedic_trainer_human_female_01.iff"},

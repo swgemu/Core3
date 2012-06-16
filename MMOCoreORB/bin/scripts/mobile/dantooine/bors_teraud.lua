@@ -26,6 +26,8 @@ bors_teraud = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_bors_teraud.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

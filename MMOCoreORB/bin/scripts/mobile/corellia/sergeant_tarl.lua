@@ -27,6 +27,8 @@ sergeant_tarl = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sargeant_tarl.iff"},
 	lootGroups = {},
 	weapons = {},

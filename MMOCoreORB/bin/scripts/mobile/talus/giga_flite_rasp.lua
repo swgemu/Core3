@@ -26,6 +26,8 @@ giga_flite_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/flite_rasp.iff"},
 	lootGroups = {},
 	weapons = {},

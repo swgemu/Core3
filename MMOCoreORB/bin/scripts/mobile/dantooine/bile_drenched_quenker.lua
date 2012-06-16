@@ -26,6 +26,8 @@ bile_drenched_quenker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bile_drenched_quenker.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_green"},

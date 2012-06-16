@@ -26,6 +26,8 @@ rebel_engineer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_major_human_male_01.iff"},
 	lootGroups = {
 		{

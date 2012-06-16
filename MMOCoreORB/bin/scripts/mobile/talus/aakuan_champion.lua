@@ -26,6 +26,8 @@ aakuan_champion = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_aakuan_champion_zabrak_female_01.iff",
 		"object/mobile/dressed_aakuan_champion_zabrak_male_01.iff"},

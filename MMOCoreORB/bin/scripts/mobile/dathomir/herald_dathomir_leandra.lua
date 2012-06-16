@@ -27,6 +27,8 @@ herald_dathomir_leandra = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_herald_dathomir_nsister_cave_leandra.iff"},
 	lootGroups = {},
 	weapons = {},

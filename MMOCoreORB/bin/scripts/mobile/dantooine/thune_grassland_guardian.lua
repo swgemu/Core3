@@ -26,6 +26,8 @@ thune_grassland_guardian = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/thune_grassland_guardian.iff"},
 	lootGroups = {},
 	weapons = {},

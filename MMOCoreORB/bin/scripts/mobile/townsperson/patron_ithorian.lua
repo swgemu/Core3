@@ -25,6 +25,8 @@ patron_ithorian = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/ithorian_male.iff"
 	},

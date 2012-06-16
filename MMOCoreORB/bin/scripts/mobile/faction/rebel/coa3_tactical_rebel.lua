@@ -26,6 +26,8 @@ coa3_tactical_rebel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_brigadier_general_moncal_female.iff"},
 	lootGroups = {
 		{

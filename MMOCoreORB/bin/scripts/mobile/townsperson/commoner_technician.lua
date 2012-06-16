@@ -26,6 +26,8 @@ commoner_technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 				"object/mobile/dressed_commoner_artisan_trandoshan_male_01.iff",
 				"object/mobile/dressed_commoner_artisan_bith_male_01.iff",

@@ -26,6 +26,8 @@ Nightsister_bull_rancor = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bull_rancor.iff"},
 	lootGroups = {
 		{

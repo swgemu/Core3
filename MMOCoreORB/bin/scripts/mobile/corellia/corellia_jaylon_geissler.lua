@@ -27,6 +27,8 @@ corellia_jaylon_geissler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_bothan_male_01.iff"},
 	lootGroups = {},
 	weapons = {""},

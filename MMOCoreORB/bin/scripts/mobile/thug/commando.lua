@@ -26,6 +26,8 @@ commando = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mercenary_commander_zab_m.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

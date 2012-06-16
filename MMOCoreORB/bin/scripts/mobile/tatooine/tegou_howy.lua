@@ -27,6 +27,8 @@ tegou_howy = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor06.iff"},
 	lootGroups = {},
 	weapons = {},

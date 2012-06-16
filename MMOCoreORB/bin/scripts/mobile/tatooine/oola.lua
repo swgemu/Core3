@@ -27,6 +27,8 @@ oola = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/oola.iff"},
 	lootGroups = {},
 	weapons = {},

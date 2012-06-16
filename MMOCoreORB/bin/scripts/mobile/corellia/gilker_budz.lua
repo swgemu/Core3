@@ -27,6 +27,8 @@ gilker_budz = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_giker_budz.iff"},
 	lootGroups = {},
 	weapons = {},

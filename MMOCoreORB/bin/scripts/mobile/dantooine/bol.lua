@@ -26,6 +26,8 @@ bol = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bol.iff"},
 	lootGroups = {},
 	weapons = {},

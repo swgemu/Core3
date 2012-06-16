@@ -26,6 +26,8 @@ kliknik_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kliknik.iff"},
 	lootGroups = {
 	 {

@@ -27,6 +27,8 @@ slooni_jong = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_slooni_long.iff"},
 	lootGroups = {},
 	weapons = {},

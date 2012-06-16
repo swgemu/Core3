@@ -27,6 +27,8 @@ indintra_imbru_yerevan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_indintra_imbru_yerevan.iff"},
 	lootGroups = {},
 	weapons = {},

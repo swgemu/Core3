@@ -23,6 +23,8 @@ trainer_shipwright = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/space_shipwright_trainer_01.iff","object/mobile/space_shipwright_trainer_02.iff","object/mobile/space_shipwright_trainer_03.iff"},
 	conversationTemplate = "trainer_shipwright_convotemplate",
 	optionsBitmask = 264

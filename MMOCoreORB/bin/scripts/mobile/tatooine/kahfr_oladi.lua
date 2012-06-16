@@ -26,6 +26,8 @@ kahfr_oladi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_artist04.iff"},
 	lootGroups = {},
 	weapons = {},

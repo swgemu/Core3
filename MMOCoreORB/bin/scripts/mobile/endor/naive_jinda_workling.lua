@@ -26,6 +26,8 @@ naive_jinda_workling = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/jinda_male.iff",
 			"object/mobile/jinda_female.iff",

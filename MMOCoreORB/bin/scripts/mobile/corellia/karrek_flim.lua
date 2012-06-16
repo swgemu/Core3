@@ -27,6 +27,8 @@ karrek_flim = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_karrek_film.iff"},
 	lootGroups = {},
 	weapons = {},

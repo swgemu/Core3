@@ -26,6 +26,8 @@ tusken_warlord = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tusken_raider.iff"},
 	lootGroups = {
 		{

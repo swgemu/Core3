@@ -26,6 +26,8 @@ falumpaset_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/falumpaset_hue.iff"},
 	lootGroups = {},
 	weapons = {},

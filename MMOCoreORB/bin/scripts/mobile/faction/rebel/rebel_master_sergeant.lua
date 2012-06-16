@@ -26,6 +26,8 @@ rebel_master_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_master_sergeant_sullustan_male_01.iff"},
 	lootGroups = {
 		{

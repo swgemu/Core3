@@ -25,6 +25,8 @@ mummer_ruffian = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_goon_twk_female_01.iff",

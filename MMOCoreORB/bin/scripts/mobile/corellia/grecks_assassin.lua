@@ -26,6 +26,8 @@ grecks_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",

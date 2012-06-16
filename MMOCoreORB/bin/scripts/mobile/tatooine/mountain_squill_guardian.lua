@@ -26,6 +26,8 @@ mountain_squill_guardian = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mountain_squill.iff"},
 	lootGroups = {},
 	weapons = {},

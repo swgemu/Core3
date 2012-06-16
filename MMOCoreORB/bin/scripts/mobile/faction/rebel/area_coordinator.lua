@@ -26,6 +26,8 @@ area_coordinator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_scout_human_female_02.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

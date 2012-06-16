@@ -26,6 +26,8 @@ corellia_times_reporter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fed_dub_investigator_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

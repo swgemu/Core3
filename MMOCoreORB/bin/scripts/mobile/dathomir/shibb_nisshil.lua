@@ -27,6 +27,8 @@ shibb_nisshil = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_shibb_nisshil.iff"},
 	lootGroups = {},
 	weapons = {},

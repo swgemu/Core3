@@ -26,6 +26,8 @@ bearded_jax_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bearded_jax_hue.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ acun_solari = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_army_captain_bothan_male.iff"},
 	lootGroups = {},
 	weapons = {},

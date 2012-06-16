@@ -27,6 +27,8 @@ denell_kelvannon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_denell_kelvannon.iff"},
 	lootGroups = {},
 	weapons = {},

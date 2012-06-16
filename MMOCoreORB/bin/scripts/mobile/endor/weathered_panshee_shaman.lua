@@ -26,6 +26,8 @@ weathered_panshee_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_m_03.iff",
 		"object/mobile/dressed_ewok_m_07.iff",

@@ -26,6 +26,8 @@ langlatch_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/langlatch.iff"},
 	lootGroups = {},
 	weapons = {},

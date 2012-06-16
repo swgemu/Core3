@@ -27,6 +27,8 @@ yith_seenath = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_yith_seenath.iff"},
 	lootGroups = {},
 	weapons = {},

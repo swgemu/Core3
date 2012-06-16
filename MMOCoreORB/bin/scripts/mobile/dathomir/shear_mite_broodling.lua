@@ -26,6 +26,8 @@ shear_mite_broodling = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/shear_mite_broodling.iff"},
 	lootGroups = {},
 	weapons = {},

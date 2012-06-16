@@ -27,6 +27,8 @@ om_aynat = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_om_aynat.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -25,6 +25,8 @@ panic_npc_1 = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},

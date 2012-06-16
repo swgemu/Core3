@@ -26,6 +26,8 @@ at_at = Creature:new {
 	optionsBitmask = 128,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/atat.iff"},
 	lootGroups = {},
 	weapons = {},

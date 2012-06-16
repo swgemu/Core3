@@ -26,6 +26,8 @@ swarming_lesser_dewback = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/swarming_lesser_dewback.iff"},
 	lootGroups = {},
 	weapons = {},

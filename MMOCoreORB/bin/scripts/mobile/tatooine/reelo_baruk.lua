@@ -25,6 +25,8 @@ reelo_baruk = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/reelo_baruk.iff"},
 	lootGroups = {},
 	weapons = {},

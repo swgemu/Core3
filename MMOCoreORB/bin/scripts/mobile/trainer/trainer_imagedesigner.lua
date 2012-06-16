@@ -23,6 +23,8 @@ trainer_imagedesigner = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_image_designer_trainer_01.iff","object/mobile/dressed_image_designer_trainer_02.iff","object/mobile/dressed_image_designer_trainer_03.iff"},
 	conversationTemplate = "trainer_imagedesigner_convotemplate",
 	optionsBitmask = 264

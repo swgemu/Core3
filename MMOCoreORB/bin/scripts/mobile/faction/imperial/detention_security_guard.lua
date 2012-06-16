@@ -26,6 +26,8 @@ detention_security_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_royal_security_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},

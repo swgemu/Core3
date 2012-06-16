@@ -26,6 +26,8 @@ forsaken_force_drifter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_forsaken_force_drifter.iff"},
 	lootGroups = {
 		{

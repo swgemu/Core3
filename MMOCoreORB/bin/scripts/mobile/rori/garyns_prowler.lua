@@ -26,6 +26,8 @@ garyns_prowler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_garyn_prowler_trandoshan_female_01.iff",
 		"object/mobile/dressed_garyn_prowler_trandoshan_male_01.iff"},

@@ -26,6 +26,8 @@ seething_bol_crusher = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/seething_bol_crusher.iff"},
 	lootGroups = {},
 	weapons = {},

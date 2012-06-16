@@ -26,6 +26,8 @@ diseased_bocatt = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bocatt.iff"},
 	lootGroups = {},
 	weapons = {},

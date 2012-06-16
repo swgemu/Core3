@@ -25,6 +25,8 @@ nomad_chief = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_nomad.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ kreetle_swarmling = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kreetle.iff"},
 	lootGroups = {},
 	weapons = {},

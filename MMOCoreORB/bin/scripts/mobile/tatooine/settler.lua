@@ -25,6 +25,8 @@ settler = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_settler.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

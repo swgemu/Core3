@@ -27,6 +27,8 @@ gramm_rile = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mos_taike_mayor.iff"},
 	lootGroups = {},
 	weapons = {},

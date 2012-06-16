@@ -26,6 +26,8 @@ rebel_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_trooper_bith_m_01.iff",
 		"object/mobile/dressed_rebel_trooper_human_female_01.iff",

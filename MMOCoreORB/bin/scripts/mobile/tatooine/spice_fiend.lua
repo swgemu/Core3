@@ -25,6 +25,8 @@ spice_fiend = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_spice_fiend.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

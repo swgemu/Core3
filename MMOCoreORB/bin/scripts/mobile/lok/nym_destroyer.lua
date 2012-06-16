@@ -26,6 +26,8 @@ nym_destroyer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_destroyer_rod_m.iff",
 				"object/mobile/dressed_nym_destroyer_hum_m.iff",
 				"object/mobile/dressed_nym_destroyer_nikto_m.iff",

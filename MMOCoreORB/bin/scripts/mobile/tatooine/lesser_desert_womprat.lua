@@ -26,6 +26,8 @@ lesser_desert_womprat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/womp_rat_hue.iff"},
 	lootGroups = {},
 	weapons = {},

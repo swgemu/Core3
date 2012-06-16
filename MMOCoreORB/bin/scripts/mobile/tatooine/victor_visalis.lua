@@ -27,6 +27,8 @@ victor_visalis = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_victor_visalis.iff"},
 	lootGroups = {},
 	weapons = {},

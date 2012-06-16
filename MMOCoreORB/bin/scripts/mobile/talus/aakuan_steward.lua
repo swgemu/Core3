@@ -26,6 +26,8 @@ aakuan_steward = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_aakuan_steward_human_female_01.iff",
 		"object/mobile/dressed_aakuan_steward_human_male_01.iff"},

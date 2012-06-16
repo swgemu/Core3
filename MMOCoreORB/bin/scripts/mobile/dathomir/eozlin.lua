@@ -26,6 +26,8 @@ eozlin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_surveyor.iff"},
 	lootGroups = {},
 	weapons = {},

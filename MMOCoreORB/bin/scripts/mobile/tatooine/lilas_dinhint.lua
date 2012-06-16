@@ -27,6 +27,8 @@ lilas_dinhint = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_lilas_dinhint.iff"},
 	lootGroups = {},
 	weapons = {},

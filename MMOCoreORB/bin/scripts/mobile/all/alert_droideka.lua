@@ -26,6 +26,8 @@ alert_droideka = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {},

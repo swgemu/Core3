@@ -27,6 +27,8 @@ stella = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mos_taike_cantina_owner.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ mountain_dewback = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mountain_dewback.iff"},
 	lootGroups = {},
 	weapons = {},

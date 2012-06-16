@@ -26,6 +26,8 @@ talon_karrde = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_talon_karrde.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ death_watch_black_sun_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
 	lootGroups = {
 		{

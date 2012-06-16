@@ -26,6 +26,8 @@ dune_stalker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_dune_stalker.iff"},
 	lootGroups = {
 	    {

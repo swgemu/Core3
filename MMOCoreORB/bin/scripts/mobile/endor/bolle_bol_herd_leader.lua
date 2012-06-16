@@ -26,6 +26,8 @@ bolle_bol_herd_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bolle_bol.iff"},
 	lootGroups = {},
 	weapons = {},

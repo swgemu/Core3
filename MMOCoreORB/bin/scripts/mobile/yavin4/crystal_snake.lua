@@ -26,6 +26,8 @@ crystal_snake = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/crystal_snake.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

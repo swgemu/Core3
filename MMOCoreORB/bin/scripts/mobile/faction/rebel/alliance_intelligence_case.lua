@@ -26,6 +26,8 @@ alliance_intelligence_case = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
 	lootGroups = {
 		{

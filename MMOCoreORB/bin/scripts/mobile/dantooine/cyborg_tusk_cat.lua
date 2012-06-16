@@ -26,6 +26,8 @@ cyborg_tusk_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_cyborg_tuskcat.iff"},
 	lootGroups = {},
 	weapons = {},

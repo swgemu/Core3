@@ -26,6 +26,8 @@ blood_frenzied_boar_wolf = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/boar_wolf.iff"},
 	lootGroups = {},
 	weapons = {},

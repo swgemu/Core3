@@ -26,6 +26,8 @@ giant_worrt = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_worrt.iff"},
 	lootGroups = {},
 	weapons = {},

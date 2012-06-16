@@ -26,6 +26,8 @@ elder_hanadak_matriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/elder_hanadak_matriarch.iff"},
 	lootGroups = {},
 	weapons = {},

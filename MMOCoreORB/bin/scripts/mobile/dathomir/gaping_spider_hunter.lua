@@ -26,6 +26,8 @@ gaping_spider_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gaping_spider.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

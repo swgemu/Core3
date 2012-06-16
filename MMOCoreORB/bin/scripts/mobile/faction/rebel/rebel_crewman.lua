@@ -26,6 +26,8 @@ rebel_crewman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_crewman_human_female_01.iff",
 		"object/mobile/dressed_rebel_crewman_human_female_02.iff",

@@ -26,6 +26,8 @@ emperors_hand = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_emperors_hand_human_male_01.iff",
 		"object/mobile/dressed_emperors_hand_human_male_02.iff",

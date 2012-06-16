@@ -23,6 +23,8 @@ trainer_droidengineer = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_droidengineer_trainer_human_male_01.iff","object/mobile/dressed_droidengineer_trainer_moncal_male_01.iff","object/mobile/dressed_droidengineer_trainer_rodian_male_01.iff"},
 	conversationTemplate = "trainer_droidengineer_convotemplate",
 	optionsBitmask = 264

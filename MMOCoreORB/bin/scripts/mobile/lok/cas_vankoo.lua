@@ -26,6 +26,8 @@ cas_vankoo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
 	lootGroups = {},
 	weapons = {"cas_vankoo_weapons"},

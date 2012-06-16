@@ -26,6 +26,8 @@ tusk_cat_rider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tusk_cat_rider.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

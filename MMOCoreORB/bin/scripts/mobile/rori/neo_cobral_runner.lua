@@ -26,6 +26,8 @@ neo_cobral_runner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_cobral_runner_trandoshan_female_01.iff",
 		"object/mobile/dressed_cobral_runner_trandoshan_male_01.iff"},

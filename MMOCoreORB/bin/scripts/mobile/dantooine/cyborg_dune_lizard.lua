@@ -26,6 +26,8 @@ cyborg_dune_lizard = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/warren_cyborg_dunelizard.iff"},
 	lootGroups = {},
 	weapons = {},

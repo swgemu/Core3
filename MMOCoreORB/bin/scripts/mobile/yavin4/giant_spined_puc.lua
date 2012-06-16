@@ -26,6 +26,8 @@ giant_spined_puc = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_spined_puc.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ pirate_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

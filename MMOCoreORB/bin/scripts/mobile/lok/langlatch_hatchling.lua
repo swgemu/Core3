@@ -26,6 +26,8 @@ langlatch_hatchling = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/langlatch_hatchling.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ furious_devastator = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/fambaa.iff"},
 	lootGroups = {
 	 {

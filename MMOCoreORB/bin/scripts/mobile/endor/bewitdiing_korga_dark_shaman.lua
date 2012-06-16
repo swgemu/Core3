@@ -26,6 +26,8 @@ bewitdiing_korga_dark_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/dulok_male.iff",
 			"object/mobile/dulok_female.iff"},

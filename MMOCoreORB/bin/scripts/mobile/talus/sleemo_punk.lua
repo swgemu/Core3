@@ -25,6 +25,8 @@ sleemo_punk = Creature:new {
 	creatureBitmask = STALKER + HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

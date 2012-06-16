@@ -23,6 +23,8 @@ trainer_commando = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_commando_trainer_human_male_01.iff","object/mobile/dressed_commando_trainer_rodian_male_01.iff","object/mobile/dressed_commando_trainer_trandoshan_male_01.iff"},
 	conversationTemplate = "trainer_commando_convotemplate",
 	optionsBitmask = 264

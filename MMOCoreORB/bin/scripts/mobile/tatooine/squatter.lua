@@ -25,6 +25,8 @@ squatter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_squatter.iff"},
 	lootGroups = {},
 	weapons = {},

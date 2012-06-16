@@ -26,6 +26,8 @@ giaal_itotr = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_artist03.iff"},
 	lootGroups = {},
 	weapons = {},

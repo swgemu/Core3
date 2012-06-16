@@ -26,6 +26,8 @@ nightsister_sentinel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dathomir_nightsister_sentinal.iff"},
 	lootGroups = {
 		{

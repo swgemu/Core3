@@ -25,6 +25,8 @@ kais = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_kais.iff"},
 	lootGroups = {},
 	weapons = {},

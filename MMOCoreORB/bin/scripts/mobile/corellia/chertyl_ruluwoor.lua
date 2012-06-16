@@ -27,6 +27,8 @@ chertyl_ruluwoor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_old_human_female_02.iff"},
 	lootGroups = {},
 	weapons = {},

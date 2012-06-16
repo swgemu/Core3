@@ -26,6 +26,8 @@ flesh_eating_chuba = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/chuba.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ panshee_veteran = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_m_08.iff",
 		"object/mobile/dressed_ewok_m_09.iff",

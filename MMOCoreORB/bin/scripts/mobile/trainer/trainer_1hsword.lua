@@ -26,6 +26,8 @@ trainer_1hsword = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_1handsword_trainer_01.iff","object/mobile/dressed_1handsword_trainer_02.iff","object/mobile/dressed_1handsword_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},

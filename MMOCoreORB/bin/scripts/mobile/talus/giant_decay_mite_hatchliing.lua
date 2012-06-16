@@ -26,6 +26,8 @@ giant_decay_mite_hatchliing = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/decay_mite.iff"},
 	lootGroups = {},
 	weapons = {},

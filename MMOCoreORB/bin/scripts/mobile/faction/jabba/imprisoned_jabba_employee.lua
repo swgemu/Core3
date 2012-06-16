@@ -26,6 +26,8 @@ imprisoned_jabba_employee = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_jabba_thief.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

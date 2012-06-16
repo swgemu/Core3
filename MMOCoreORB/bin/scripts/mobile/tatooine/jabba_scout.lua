@@ -26,6 +26,8 @@ jabba_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_tatooine_jabba_scout.iff",
 		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",

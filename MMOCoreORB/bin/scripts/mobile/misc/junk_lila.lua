@@ -27,6 +27,8 @@ junk_lila = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_lila.iff"},
 	lootGroups = {},
 	weapons = {},

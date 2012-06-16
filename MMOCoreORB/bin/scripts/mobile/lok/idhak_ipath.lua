@@ -25,6 +25,8 @@ idhak_ipath = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_fat_twilek_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

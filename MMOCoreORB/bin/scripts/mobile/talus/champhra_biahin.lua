@@ -26,6 +26,8 @@ champhra_biahin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_champhra_biahin.iff"},
 	lootGroups = {},
 	weapons = {},

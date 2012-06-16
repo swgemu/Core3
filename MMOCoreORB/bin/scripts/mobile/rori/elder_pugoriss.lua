@@ -26,6 +26,8 @@ elder_pugoriss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/elder_pugoriss.iff"},
 	lootGroups = {},
 	weapons = {},

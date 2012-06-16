@@ -26,6 +26,8 @@ young_hanadak_rock_crusher = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/young_hanadak_rock_crusher.iff"},
 	lootGroups = {},
 	weapons = {},

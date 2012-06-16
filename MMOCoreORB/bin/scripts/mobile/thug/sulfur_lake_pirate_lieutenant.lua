@@ -26,6 +26,8 @@ sulfur_lake_pirate_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},

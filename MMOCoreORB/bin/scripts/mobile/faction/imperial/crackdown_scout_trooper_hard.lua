@@ -26,6 +26,8 @@ crackdown_scout_trooper_hard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_scout_trooper_white_white.iff"},
 	lootGroups = {
 		{

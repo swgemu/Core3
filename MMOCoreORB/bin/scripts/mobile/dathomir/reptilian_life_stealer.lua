@@ -26,6 +26,8 @@ reptilian_life_stealer = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/reptilian_flier.iff"},
 	lootGroups = {},
 	weapons = {},

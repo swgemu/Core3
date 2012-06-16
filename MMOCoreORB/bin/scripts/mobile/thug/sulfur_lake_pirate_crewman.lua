@@ -26,6 +26,8 @@ sulfur_lake_pirate_crewman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

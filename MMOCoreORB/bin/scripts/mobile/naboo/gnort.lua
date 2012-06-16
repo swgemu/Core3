@@ -26,6 +26,8 @@ gnort = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gnort.iff"},
 	lootGroups = {},
 	weapons = {},

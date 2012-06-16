@@ -25,6 +25,8 @@ spice_collective_workchief = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_spice_collective_workchief_twk_female_01.iff",
 		"object/mobile/dressed_spice_collective_workchief_twk_male_01.iff"},

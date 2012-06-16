@@ -23,6 +23,8 @@ trainer_squadleader = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_squad_leader_trainer_01.iff","object/mobile/dressed_squad_leader_trainer_02.iff","object/mobile/dressed_squad_leader_trainer_03.iff"},
 	conversationTemplate = "trainer_squadleader_convotemplate",
 	optionsBitmask = 264

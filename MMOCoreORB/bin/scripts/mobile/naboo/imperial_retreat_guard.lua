@@ -25,6 +25,8 @@ imperial_retreat_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/emperor_royal_guard.iff"},
 	lootGroups = {
 	    {

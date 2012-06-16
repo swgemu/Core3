@@ -27,6 +27,8 @@ haleen_snowline = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_haline_snowline.iff"},
 	lootGroups = {},
 	weapons = {},

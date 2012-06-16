@@ -25,6 +25,8 @@ patron_chiss = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_patron_chiss_m_01.iff",
 		"object/mobile/dressed_patron_chiss_f_01.iff"

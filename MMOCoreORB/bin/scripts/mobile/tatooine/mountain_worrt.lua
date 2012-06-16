@@ -26,6 +26,8 @@ mountain_worrt = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mountain_worrt.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

@@ -26,6 +26,8 @@ lieutenant_heb_nee = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lieutenant_heb_nee.iff"},
 	lootGroups = {
 	    {

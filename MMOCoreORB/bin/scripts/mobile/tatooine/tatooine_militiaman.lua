@@ -26,6 +26,8 @@ tatooine_militiaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_tatooine_militiaman.iff",
 		"object/mobile/dressed_eisley_officer_trandoshan_female_01.iff",

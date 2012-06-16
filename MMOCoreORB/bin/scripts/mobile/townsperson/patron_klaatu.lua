@@ -25,6 +25,8 @@ patron_klaatu = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_patron_klaatu_01.iff"
 	},

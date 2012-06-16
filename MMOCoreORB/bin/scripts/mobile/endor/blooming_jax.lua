@@ -26,6 +26,8 @@ blooming_jax = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/blooming_jax.iff"},
 	lootGroups = {},
 	weapons = {},

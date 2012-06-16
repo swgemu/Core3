@@ -26,6 +26,8 @@ domesticated_gurnaset = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gurnaset.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

@@ -27,6 +27,8 @@ junk_malik = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_malik.iff"},
 	lootGroups = {},
 	weapons = {},

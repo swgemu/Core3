@@ -26,6 +26,8 @@ mos_taike_cantina_owner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
 	lootGroups = {},
 	weapons = {},

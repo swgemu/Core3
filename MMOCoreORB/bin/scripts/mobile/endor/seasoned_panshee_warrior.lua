@@ -25,6 +25,8 @@ seasoned_panshee_warrior = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_m_09.iff",
 		"object/mobile/dressed_ewok_m_10.iff"},

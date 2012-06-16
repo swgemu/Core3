@@ -26,6 +26,8 @@ prefect_talmont = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/prefect_talmont.iff"},
 	lootGroups = {},
 	weapons = {},

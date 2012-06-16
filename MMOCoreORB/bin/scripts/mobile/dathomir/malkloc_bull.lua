@@ -26,6 +26,8 @@ malkloc_bull = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/malkloc_bull.iff"},
 	lootGroups = {},
 	weapons = {},

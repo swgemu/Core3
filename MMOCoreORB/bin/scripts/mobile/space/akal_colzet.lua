@@ -26,6 +26,8 @@ akal_colzet = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_trainer_space_01.iff"},
 	lootGroups = {},
 	weapons = {},

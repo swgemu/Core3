@@ -26,6 +26,8 @@ drall_guard_coa2 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

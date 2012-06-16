@@ -26,6 +26,8 @@ swooper_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff",
 				"object/mobile/dressed_criminal_swooper_zabrak_male_01.iff"
 				},

@@ -25,6 +25,8 @@ reggi_tirver = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_reggi.iff"},
 	lootGroups = {},
 	weapons = {},

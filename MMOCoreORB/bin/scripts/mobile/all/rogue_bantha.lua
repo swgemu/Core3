@@ -26,6 +26,8 @@ rogue_bantha = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bantha.iff"},
 	lootGroups = {},
 	weapons = {},

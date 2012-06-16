@@ -26,6 +26,8 @@ voritor_lizard = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/voritor_lizard.iff"},
 	lootGroups = {},
 	weapons = {},

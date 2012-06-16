@@ -26,6 +26,8 @@ panshee_elder_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_f_05.iff",
 		"object/mobile/dressed_ewok_m_04.iff",

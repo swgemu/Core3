@@ -26,6 +26,8 @@ cu_pa_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/cu_pa_hue.iff"},
 	lootGroups = {},
 	weapons = {},

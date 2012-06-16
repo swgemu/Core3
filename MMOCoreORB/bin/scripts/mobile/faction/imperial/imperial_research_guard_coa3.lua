@@ -27,6 +27,8 @@ imperial_research_guard_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

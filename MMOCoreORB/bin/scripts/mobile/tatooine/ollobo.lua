@@ -27,6 +27,8 @@ ollobo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_ollobo.iff"},
 	lootGroups = {},
 	weapons = {},

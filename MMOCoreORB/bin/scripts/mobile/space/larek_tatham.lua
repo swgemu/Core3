@@ -26,6 +26,8 @@ larek_tatham = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_tyrena_pilot_friend.iff"},
 	lootGroups = {},
 	weapons = {},

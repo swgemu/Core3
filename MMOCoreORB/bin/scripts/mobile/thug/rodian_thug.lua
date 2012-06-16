@@ -26,6 +26,8 @@ rodian_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_thug_rodian_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

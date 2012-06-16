@@ -26,6 +26,8 @@ ephant_mon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ephant_mon.iff"},
 	lootGroups = {},
 	weapons = {},

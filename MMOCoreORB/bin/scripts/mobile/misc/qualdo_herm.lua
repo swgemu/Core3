@@ -26,6 +26,8 @@ qualdo_herm = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_qualdo_herm.iff"},
 	lootGroups = {},
 	weapons = {},

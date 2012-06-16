@@ -26,6 +26,8 @@ crazed_geonosian_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_geonosian_warrior_01.iff",
 		"object/mobile/dressed_geonosian_warrior_02.iff",

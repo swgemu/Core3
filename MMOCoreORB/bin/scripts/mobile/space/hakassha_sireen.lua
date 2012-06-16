@@ -26,6 +26,8 @@ hakassha_sireen = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_trainer_space_02.iff"},
 	lootGroups = {},
 	weapons = {},

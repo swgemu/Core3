@@ -26,6 +26,8 @@ donkuwah_chieftain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dulok_male.iff"},
 	lootGroups = {},
 	weapons = {},

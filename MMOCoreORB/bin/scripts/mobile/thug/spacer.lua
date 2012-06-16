@@ -25,6 +25,8 @@ spacer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

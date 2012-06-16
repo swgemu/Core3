@@ -26,6 +26,8 @@ angler_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/angler_hue.iff"},
 	lootGroups = {},
 	weapons = {},

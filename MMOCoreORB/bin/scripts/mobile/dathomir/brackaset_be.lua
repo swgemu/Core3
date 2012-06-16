@@ -26,6 +26,8 @@ brackaset_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/brackaset_hue.iff"},
 	lootGroups = {},
 	weapons = {},

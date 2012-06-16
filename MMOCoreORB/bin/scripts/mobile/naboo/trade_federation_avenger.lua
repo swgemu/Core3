@@ -26,6 +26,8 @@ trade_federation_avenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_trade_federation_avenger.iff"},
 	lootGroups = {
 	    {

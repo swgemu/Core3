@@ -26,6 +26,8 @@ alozen = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier2_tatooine_alozen.iff"},
 	lootGroups = {},
 	weapons = {},

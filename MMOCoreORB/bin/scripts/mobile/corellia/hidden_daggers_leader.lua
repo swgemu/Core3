@@ -26,6 +26,8 @@ hidden_daggers_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_criminal_thug_human_female_01.iff",

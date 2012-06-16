@@ -27,6 +27,8 @@ mal_sinkander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_mal_sikander.iff"},
 	lootGroups = {},
 	weapons = {},

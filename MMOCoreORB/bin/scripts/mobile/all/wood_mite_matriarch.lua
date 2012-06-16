@@ -26,6 +26,8 @@ wood_mite_matriarch = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/confused_wood_mite_hatchling.iff"},
 	lootGroups = {},
 	weapons = {},

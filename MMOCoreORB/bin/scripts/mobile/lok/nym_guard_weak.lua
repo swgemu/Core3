@@ -25,6 +25,8 @@ nym_guard_weak = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_guard_weak_hum_f.iff", 
 				"object/mobile/dressed_nym_guard_weak_rod_m.iff",
 				"object/mobile/dressed_nym_guard_weak_nikto_m.iff",

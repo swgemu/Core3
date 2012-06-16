@@ -26,6 +26,8 @@ yras_shen_jen = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_dantooine_old_pilot.iff"},
 	lootGroups = {},
 	weapons = {},

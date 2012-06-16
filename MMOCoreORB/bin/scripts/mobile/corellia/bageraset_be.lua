@@ -26,6 +26,8 @@ bageraset_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bageraset_hue.iff"},
 	lootGroups = {},
 	weapons = {},

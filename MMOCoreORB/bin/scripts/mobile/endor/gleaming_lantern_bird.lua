@@ -26,6 +26,8 @@ gleaming_lantern_bird = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lantern_bird.iff"},
 	lootGroups = {},
 	weapons = {},

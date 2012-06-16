@@ -26,6 +26,8 @@ quest_crowd_pleaser_theater_manager = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_entertainer_trainer_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

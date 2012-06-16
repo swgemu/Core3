@@ -26,6 +26,8 @@ wasteland_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_wandering_desert_marauder.iff"},
 	lootGroups = {},
 	weapons = {},

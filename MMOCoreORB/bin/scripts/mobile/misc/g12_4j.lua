@@ -26,6 +26,8 @@ g12_4j = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/21b_surgical_droid.iff"},
 	lootGroups = {},
 	weapons = {},

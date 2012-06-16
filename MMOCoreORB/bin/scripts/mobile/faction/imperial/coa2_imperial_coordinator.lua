@@ -26,6 +26,8 @@ coa2_imperial_coordinator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_officer_m_3.iff"},
 	lootGroups = {
 		{

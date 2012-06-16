@@ -27,6 +27,8 @@ feinu_zerk = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_feinu_zerk.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ jawa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/jawa_male.iff"},
 	lootGroups = {
 	    {

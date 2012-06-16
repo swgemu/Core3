@@ -26,6 +26,8 @@ crackdown_comm_operator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
 	lootGroups = {
 		{

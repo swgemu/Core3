@@ -25,6 +25,8 @@ palace_guard = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_palace_guard.iff"},
 	lootGroups = {
 	    {

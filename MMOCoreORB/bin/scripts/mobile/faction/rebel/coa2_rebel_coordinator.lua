@@ -26,6 +26,8 @@ coa2_rebel_coordinator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_brigadier_general_sullustan_male.iff"},
 	lootGroups = {
 		{

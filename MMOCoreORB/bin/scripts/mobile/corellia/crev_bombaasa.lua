@@ -27,6 +27,8 @@ crev_bombaasa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_crev_bombaasa.iff"},
 	lootGroups = {},
 	weapons = {},

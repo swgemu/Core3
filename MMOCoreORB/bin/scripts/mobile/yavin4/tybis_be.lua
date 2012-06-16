@@ -26,6 +26,8 @@ tybis_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tybis_hue.iff"},
 	lootGroups = {},
 	weapons = {},

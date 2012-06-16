@@ -26,6 +26,8 @@ marooned_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_marooned_pirate_bith_m.iff",
 		"object/mobile/dressed_marooned_pirate_hum_f.iff",

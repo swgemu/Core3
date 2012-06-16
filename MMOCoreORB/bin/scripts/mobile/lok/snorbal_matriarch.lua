@@ -26,6 +26,8 @@ snorbal_matriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/snorbal_matriarch.iff"},
 	lootGroups = {},
 	weapons = {},

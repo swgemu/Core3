@@ -26,6 +26,8 @@ corellia_ragtag_cudgel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_naboo_human_female_06.iff",
 				"object/mobile/dressed_commoner_tatooine_nikto_male_01.iff",
 				"object/mobile/dressed_combatmedic_trainer_human_male_01.iff"

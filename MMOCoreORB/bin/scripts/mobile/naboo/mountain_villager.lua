@@ -25,6 +25,8 @@ mountain_villager = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mountain_villager.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

@@ -27,6 +27,8 @@ drenn_zebber = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_drenn_zebber.iff"},
 	lootGroups = {},
 	weapons = {},

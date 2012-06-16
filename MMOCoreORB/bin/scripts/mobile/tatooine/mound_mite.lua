@@ -26,6 +26,8 @@ mound_mite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mound_mite.iff"},
 	lootGroups = {},
 	weapons = {},

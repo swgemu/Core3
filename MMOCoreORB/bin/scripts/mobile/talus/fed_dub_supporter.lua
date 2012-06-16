@@ -26,6 +26,8 @@ fed_dub_supporter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_fed_dub_supporter_human_female_01.iff",
 		"object/mobile/dressed_fed_dub_supporter_human_male_01.iff"},

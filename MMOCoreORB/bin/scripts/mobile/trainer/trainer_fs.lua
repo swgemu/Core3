@@ -23,6 +23,8 @@ trainer_fs = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_fs_trainer.iff"},
 	conversationTemplate = "trainer_fs_convotemplate",
 	optionsBitmask = 264

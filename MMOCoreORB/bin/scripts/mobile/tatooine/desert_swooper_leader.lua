@@ -26,6 +26,8 @@ desert_swooper_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_desert_swooper_leader.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ lost_aqualish_lookout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_lost_aqualish_lookout_female_01.iff",
 		"object/mobile/dressed_lost_aqualish_lookout_male_01.iff"},

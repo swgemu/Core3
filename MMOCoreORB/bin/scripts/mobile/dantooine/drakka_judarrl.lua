@@ -27,6 +27,8 @@ drakka_judarrl = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
 	lootGroups = {},
 	weapons = {"light_jedi_weapons"},

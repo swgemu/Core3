@@ -26,6 +26,8 @@ bolle_bol_female = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bolle_bol.iff"},
 	lootGroups = {},
 	weapons = {},

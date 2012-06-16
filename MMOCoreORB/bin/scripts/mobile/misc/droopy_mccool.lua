@@ -26,6 +26,8 @@ droopy_mccool = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/droopy_mccool.iff"},
 	lootGroups = {},
 	weapons = {},

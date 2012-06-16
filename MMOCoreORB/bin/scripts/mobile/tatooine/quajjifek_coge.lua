@@ -27,6 +27,8 @@ quajjifek_coge = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_victor_questn_cantina.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ thief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_binayre_thief_twk_male_01.iff"},
 	lootGroups = {
 	    {

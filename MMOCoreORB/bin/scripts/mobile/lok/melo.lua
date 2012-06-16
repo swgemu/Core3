@@ -25,6 +25,8 @@ melo = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/rodian_female.iff"},
 	lootGroups = {},
 	weapons = {},

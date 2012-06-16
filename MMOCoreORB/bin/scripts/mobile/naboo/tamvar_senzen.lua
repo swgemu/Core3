@@ -27,6 +27,8 @@ tamvar_senzen = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tamvar_senzen.iff"},
 	lootGroups = {},
 	weapons = {},

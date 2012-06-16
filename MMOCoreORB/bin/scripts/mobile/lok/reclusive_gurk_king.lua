@@ -26,6 +26,8 @@ reclusive_gurk_king = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/recluse_gurk_king.iff"},
 	lootGroups = {
 	 {

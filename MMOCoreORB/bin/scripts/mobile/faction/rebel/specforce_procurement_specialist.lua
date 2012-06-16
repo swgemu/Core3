@@ -25,6 +25,8 @@ specforce_procurement_specialist = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
 	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
 	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",

@@ -26,6 +26,8 @@ mottled_wrix = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/wrix.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ horned_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/horned_rasp.iff"},
 	lootGroups = {},
 	weapons = {},

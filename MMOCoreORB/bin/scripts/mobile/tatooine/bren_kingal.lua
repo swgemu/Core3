@@ -27,6 +27,8 @@ bren_kingal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mos_taike_guard_young.iff"},
 	lootGroups = {},
 	weapons = {},

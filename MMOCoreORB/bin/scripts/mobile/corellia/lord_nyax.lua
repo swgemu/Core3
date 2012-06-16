@@ -26,6 +26,8 @@ lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lord_nyax.iff"},
 	lootGroups = {
 		{

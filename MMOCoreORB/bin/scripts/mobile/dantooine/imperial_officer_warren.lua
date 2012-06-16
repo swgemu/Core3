@@ -26,6 +26,8 @@ imperial_officer_warren = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/warren_imperial_officer_s01.iff",
 		"object/mobile/warren_imperial_officer_s02.iff",

@@ -26,6 +26,8 @@ huurton_huntress = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/huurton.iff"},
 	lootGroups = {},
 	weapons = {},

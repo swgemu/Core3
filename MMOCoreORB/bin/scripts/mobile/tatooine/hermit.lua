@@ -26,6 +26,8 @@ hermit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hermit_of_tatooine.iff"},
 	lootGroups = {},
 	weapons = {},

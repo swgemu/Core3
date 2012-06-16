@@ -26,6 +26,8 @@ j_pai_brek = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier3_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

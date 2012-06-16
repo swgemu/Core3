@@ -25,6 +25,8 @@ flail_cutthroat = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mugger.iff",
 		"object/mobile/dressed_goon_twk_female_01.iff",
 		"object/mobile/dressed_goon_twk_male_01.iff",

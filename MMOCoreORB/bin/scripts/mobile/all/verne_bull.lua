@@ -26,6 +26,8 @@ verne_bull = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/verne_bull.iff"},
 	lootGroups = {},
 	weapons = {},

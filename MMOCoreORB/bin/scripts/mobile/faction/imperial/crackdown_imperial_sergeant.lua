@@ -26,6 +26,8 @@ crackdown_imperial_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff"},
 	lootGroups = {
 		{

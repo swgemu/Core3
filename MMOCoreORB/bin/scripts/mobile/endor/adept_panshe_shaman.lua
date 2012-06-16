@@ -26,6 +26,8 @@ adept_panshe_shaman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_ewok_m_03.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},

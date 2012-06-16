@@ -26,6 +26,8 @@ plague_rat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/womp_rat.iff"},
 	lootGroups = {},
 	weapons = {},

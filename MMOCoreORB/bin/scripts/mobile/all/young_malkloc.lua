@@ -26,6 +26,8 @@ young_malkloc = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/young_malkloc.iff"},
 	lootGroups = {},
 	weapons = {},

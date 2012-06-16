@@ -27,6 +27,8 @@ quich_marae = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/junk_quich.iff"},
 	lootGroups = {},
 	weapons = {},

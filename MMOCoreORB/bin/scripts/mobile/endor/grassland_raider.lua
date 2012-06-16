@@ -26,6 +26,8 @@ grassland_raider = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 			"object/mobile/dressed_grassland_blood_marauder.iff",
 			"object/mobile/dressed_marauder.iff",

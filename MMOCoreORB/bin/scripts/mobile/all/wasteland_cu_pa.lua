@@ -26,6 +26,8 @@ wasteland_cu_pa = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/cu_pa.iff"},
 	lootGroups = {},
 	weapons = {},

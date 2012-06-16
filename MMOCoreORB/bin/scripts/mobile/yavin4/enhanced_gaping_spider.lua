@@ -27,6 +27,8 @@ enhanced_gaping_spider = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gaping_spider.iff"},
 	lootGroups = {
 		{

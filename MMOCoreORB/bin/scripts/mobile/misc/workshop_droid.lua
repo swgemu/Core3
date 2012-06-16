@@ -26,6 +26,8 @@ workshop_droid = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/wed_treadwell.iff"},
 	lootGroups = {},
 	weapons = {},

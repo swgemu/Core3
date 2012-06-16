@@ -26,6 +26,8 @@ rageon_vart = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	
 	templates = {"object/mobile/dressed_death_watch_grey.iff"},
 	lootGroups = {

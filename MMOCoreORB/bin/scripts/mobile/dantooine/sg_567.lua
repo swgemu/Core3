@@ -27,6 +27,8 @@ sg_567 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sg_567.iff"},
 	lootGroups = {},
 	weapons = {},

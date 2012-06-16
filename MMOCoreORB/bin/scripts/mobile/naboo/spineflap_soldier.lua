@@ -26,15 +26,15 @@ spineflap_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/capper_spineflap.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 		{"stunattack","stunChance=50"}
-	},
-	
-	aiTemplate = "example"
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(spineflap_soldier, "spineflap_soldier")

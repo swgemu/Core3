@@ -26,6 +26,8 @@ rebel_commandant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_general_human_female_02.iff"},
 	lootGroups = {
 		{

@@ -1,4 +1,4 @@
-example = {
+default = {
 	defaultState = "StandingStateComponent",
 	transitions = {
 		{"SpawnStateComponent", FINISHED, "StandingStateComponent"},
@@ -27,4 +27,4 @@ example = {
 	}
 }
 
-addAiTemplate("example", example)
+addAiTemplate("default", default)

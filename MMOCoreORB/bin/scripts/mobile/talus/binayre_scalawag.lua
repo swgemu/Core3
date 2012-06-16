@@ -26,6 +26,8 @@ binayre_scalawag = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_binayre_scalawag_twk_female_01.iff",
 		"object/mobile/dressed_binayre_scalawag_twk_male_01.iff"},

@@ -25,6 +25,8 @@ gundark_rogue = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},

@@ -23,6 +23,8 @@ trainer_starfighter_engineer = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/space_starfighter_engineer_trainer_01.iff","object/mobile/space_starfighter_engineer_trainer_02.iff","object/mobile/space_starfighter_engineer_trainer_03.iff"},
 	conversationTemplate = "trainer_starfighter_engineer_convotemplate",
 	optionsBitmask = 264

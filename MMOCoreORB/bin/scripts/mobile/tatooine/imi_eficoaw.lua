@@ -27,6 +27,8 @@ imi_eficoaw = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor05.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ kylaena_haley = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_enemy_kylaena.iff"},
 	lootGroups = {},
 	weapons = {"mixed_force_weapons"},

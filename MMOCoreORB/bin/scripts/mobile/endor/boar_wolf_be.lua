@@ -26,6 +26,8 @@ boar_wolf_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/boar_wolf_hue.iff"},
 	lootGroups = {},
 	weapons = {},

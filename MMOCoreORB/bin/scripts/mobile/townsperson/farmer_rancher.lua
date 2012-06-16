@@ -26,6 +26,8 @@ farmer_rancher = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
 				"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
 				"object/mobile/dressed_commoner_tatooine_bith_female_06.iff"

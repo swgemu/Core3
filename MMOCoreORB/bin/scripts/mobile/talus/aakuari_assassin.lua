@@ -27,6 +27,8 @@ aakuari_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff",
 		"object/mobile/dressed_aakuan_follower_trandoshan_male_01.iff"},

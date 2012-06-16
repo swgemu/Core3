@@ -27,6 +27,8 @@ corellia_lt_cope = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corsec_captain_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

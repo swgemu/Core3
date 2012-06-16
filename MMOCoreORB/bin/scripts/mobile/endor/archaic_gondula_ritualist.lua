@@ -26,6 +26,8 @@ archaic_gondula_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_f_02.iff",
 		"object/mobile/dressed_ewok_f_10.iff",

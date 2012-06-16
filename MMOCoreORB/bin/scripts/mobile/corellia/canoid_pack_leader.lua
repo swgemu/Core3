@@ -26,6 +26,8 @@ canoid_pack_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/canoid_pack_leader.iff"},
 	lootGroups = {},
 	weapons = {},

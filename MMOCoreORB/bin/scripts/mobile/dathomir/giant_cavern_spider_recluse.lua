@@ -26,6 +26,8 @@ giant_cavern_spider_recluse = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	lootGroups = {},
 	weapons = {},

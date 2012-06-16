@@ -26,6 +26,8 @@ slum_rat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
 	lootGroups = {},
 	weapons = {},

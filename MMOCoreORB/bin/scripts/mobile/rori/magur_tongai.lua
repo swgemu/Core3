@@ -27,6 +27,8 @@ magur_tongai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_magur_torigai.iff"},
 	lootGroups = {},
 	weapons = {},

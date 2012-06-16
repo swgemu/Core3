@@ -27,6 +27,8 @@ jazeen_thurmm = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_jazeen_thurmm.iff"},
 	lootGroups = {},
 	weapons = {},

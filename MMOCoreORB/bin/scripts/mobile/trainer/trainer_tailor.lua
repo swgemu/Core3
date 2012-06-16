@@ -23,6 +23,8 @@ trainer_tailor = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_tailor_trainer_01.iff","object/mobile/dressed_tailor_trainer_02.iff","object/mobile/dressed_tailor_trainer_03.iff"},
 	conversationTemplate = "trainer_tailor_convotemplate",
 	optionsBitmask = 264

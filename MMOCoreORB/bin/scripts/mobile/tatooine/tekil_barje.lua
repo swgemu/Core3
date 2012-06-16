@@ -27,6 +27,8 @@ tekil_barje = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_tekil_barje.iff"},
 	lootGroups = {},
 	weapons = {},

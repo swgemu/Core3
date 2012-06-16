@@ -26,6 +26,8 @@ veermok_hunter = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/alpha_veermok.iff"},
 	lootGroups = {},
 	weapons = {},

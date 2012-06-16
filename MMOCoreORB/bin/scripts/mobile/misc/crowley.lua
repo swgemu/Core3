@@ -27,6 +27,8 @@ crowley = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corvette_rebel_crowley.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ lieutenant_ori = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/lieutenant_ori.iff"},
 	lootGroups = {
 	    {

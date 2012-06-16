@@ -23,6 +23,8 @@ trainer_bountyhunter = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_bountyhunter_trainer_01.iff","object/mobile/dressed_bountyhunter_trainer_02.iff","object/mobile/dressed_bountyhunter_trainer_03.iff","object/mobile/dressed_bountyhunter_trainer_04.iff"},
 	conversationTemplate = "trainer_bountyhunter_convotemplate",
 	optionsBitmask = 264

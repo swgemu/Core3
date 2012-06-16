@@ -26,6 +26,8 @@ rancor_youth = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/rancor_youth.iff"},
 	lootGroups = {
 		{

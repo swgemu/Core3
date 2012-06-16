@@ -27,6 +27,8 @@ coraline_dynes = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_coraline_dynes.iff"},
 	lootGroups = {},
 	weapons = {},

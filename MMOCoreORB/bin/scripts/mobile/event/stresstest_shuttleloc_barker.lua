@@ -26,6 +26,8 @@ stresstest_shuttleloc_barker = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	
 	templates = {"object/mobile/dressed_ajuva_vanasterin.iff"},
 	lootGroups = {},

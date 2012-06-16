@@ -26,6 +26,8 @@ rhoa_kwi = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kwi.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

@@ -27,6 +27,8 @@ vraker_orde = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_vraker_orde.iff"},
 	lootGroups = {},
 	weapons = {},

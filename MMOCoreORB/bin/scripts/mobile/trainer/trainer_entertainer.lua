@@ -23,6 +23,8 @@ trainer_entertainer = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_entertainer_trainer_human_female_01.iff","object/mobile/dressed_entertainer_trainer_twk_female_01.iff","object/mobile/dressed_entertainer_trainer_twk_male_01.iff"},
 	conversationTemplate = "trainer_entertainer_convotemplate",
 	optionsBitmask = 264

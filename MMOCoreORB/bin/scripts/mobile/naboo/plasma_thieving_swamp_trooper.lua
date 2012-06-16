@@ -26,6 +26,8 @@ plasma_thieving_swamp_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_swamp_trooper.iff"},
 	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},

@@ -26,6 +26,8 @@ kinad_baz_nitch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/baz_nitch.iff"},
 	lootGroups = {},
 	weapons = {},

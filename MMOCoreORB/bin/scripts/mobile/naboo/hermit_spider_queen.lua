@@ -26,6 +26,8 @@ hermit_spider_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/hermit_spider_queen.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

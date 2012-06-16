@@ -26,6 +26,8 @@ wandering_kitonak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kitonak_male.iff"},
 	lootGroups = {},
 	weapons = {},

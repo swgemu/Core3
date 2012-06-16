@@ -26,6 +26,8 @@ wolf_kima = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kima.iff"},
 	lootGroups = {},
 	weapons = {},

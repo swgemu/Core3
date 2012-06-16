@@ -27,6 +27,8 @@ vetran_explorer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

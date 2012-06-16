@@ -25,6 +25,8 @@ naboo_pirate_lieutenant = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {
 	    {

@@ -25,6 +25,8 @@ bandit_tutorial_1 = Creature:new {
 	creatureBitmask = NONE,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootGroups = {
 		{

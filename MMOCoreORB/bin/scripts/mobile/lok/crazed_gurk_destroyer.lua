@@ -26,6 +26,8 @@ crazed_gurk_destroyer = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gurk.iff"},
 	lootGroups = {},
 	weapons = {},

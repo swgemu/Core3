@@ -26,6 +26,8 @@ rodian_clan_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_rodian_clan_captain.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

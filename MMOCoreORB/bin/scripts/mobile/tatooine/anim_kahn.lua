@@ -26,6 +26,8 @@ anim_kahn = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_valarian_swooper_leader.iff"},
 	lootGroups = {},
 	weapons = {},

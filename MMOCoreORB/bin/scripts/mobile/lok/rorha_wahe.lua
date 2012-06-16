@@ -25,6 +25,8 @@ rorha_wahe = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_noble_human_female_02.iff"},
 	lootGroups = {},
 	weapons = {},

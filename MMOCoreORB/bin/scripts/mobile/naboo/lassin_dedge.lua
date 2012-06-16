@@ -27,6 +27,8 @@ lassin_dedge = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lassin_dedge.iff"},
 	lootGroups = {},
 	weapons = {},

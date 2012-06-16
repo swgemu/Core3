@@ -26,6 +26,8 @@ four_lom = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/4lom.iff"},
 	lootGroups = {},
 	weapons = {},

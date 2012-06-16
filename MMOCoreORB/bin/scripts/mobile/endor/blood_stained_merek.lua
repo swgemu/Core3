@@ -26,6 +26,8 @@ blood_stained_merek = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/merek_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

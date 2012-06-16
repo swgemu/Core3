@@ -26,6 +26,8 @@ ronto_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ronto_hue.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -25,6 +25,8 @@ special_missions_engineer = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},

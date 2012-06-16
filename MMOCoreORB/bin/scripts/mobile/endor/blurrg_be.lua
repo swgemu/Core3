@@ -26,6 +26,8 @@ blurrg_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/blurrg_hue.iff"},
 	lootGroups = {},
 	weapons = {},

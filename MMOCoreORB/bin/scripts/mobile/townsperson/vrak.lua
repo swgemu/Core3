@@ -26,6 +26,8 @@ vrak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_nym_destroyer_rod_m.iff"
 	},		

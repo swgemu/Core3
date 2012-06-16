@@ -26,6 +26,8 @@ narglatch_cub = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/narglatch_cub.iff"},
 	lootGroups = {},
 	weapons = {},

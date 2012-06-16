@@ -26,6 +26,8 @@ shallow_torton = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/shallow_torton.iff"},
 	lootGroups = {},
 	weapons = {},

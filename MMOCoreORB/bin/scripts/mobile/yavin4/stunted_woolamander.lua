@@ -26,6 +26,8 @@ stunted_woolamander = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/woolamander.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ farmer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 					"object/mobile/dressed_quest_farmer.iff",
 					"object/mobile/dressed_commoner_naboo_zabrak_male_02.iff",

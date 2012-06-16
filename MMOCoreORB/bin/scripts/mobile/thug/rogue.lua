@@ -25,6 +25,8 @@ rogue = Creature:new {
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

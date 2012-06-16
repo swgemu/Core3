@@ -23,6 +23,8 @@ trainer_brawler = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_brawler_trainer_01.iff","object/mobile/dressed_brawler_trainer_02.iff","object/mobile/dressed_brawler_trainer_03.iff"},
 	conversationTemplate = "trainer_brawler_convotemplate",
 	optionsBitmask = 264

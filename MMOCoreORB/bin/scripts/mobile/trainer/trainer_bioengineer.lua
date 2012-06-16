@@ -23,6 +23,8 @@ trainer_bioengineer = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_bioengineer_trainer_01.iff","object/mobile/dressed_bioengineer_trainer_02.iff","object/mobile/dressed_bioengineer_trainer_03.iff"},
 	conversationTemplate = "trainer_bioengineer_convotemplate",
 	optionsBitmask = 264

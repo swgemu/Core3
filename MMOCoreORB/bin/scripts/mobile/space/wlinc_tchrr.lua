@@ -26,6 +26,8 @@ wlinc_tchrr = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_bestine_bookie.iff"},
 	lootGroups = {},
 	weapons = {},

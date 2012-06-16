@@ -26,6 +26,8 @@ space_rebel_tier3_beissa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier3_beissa.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -27,6 +27,8 @@ lord_sloan_rusper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lord_sloan_rusper.iff"},
 	lootGroups = {},
 	weapons = {},

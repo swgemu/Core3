@@ -27,6 +27,8 @@ sayama_edosun = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_sayama_edosun.iff"},
 	lootGroups = {},
 	weapons = {},

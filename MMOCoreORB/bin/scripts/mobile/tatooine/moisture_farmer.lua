@@ -25,6 +25,8 @@ moisture_farmer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_moisture_farmer.iff"},
 	lootGroups = {},
 	weapons = {},

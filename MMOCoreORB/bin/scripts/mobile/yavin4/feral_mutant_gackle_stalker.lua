@@ -26,6 +26,8 @@ feral_mutant_gackle_stalker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gackle_bat.iff"},
 	lootGroups = {},
 	weapons = {},

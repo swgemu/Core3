@@ -26,6 +26,8 @@ voracious_patriarch = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/torton.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ swirl_prong_impaler = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/swirl_prong.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ pigmy_pugoriss = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/pigmy_pugoriss.iff"},
 	lootGroups = {},
 	weapons = {},

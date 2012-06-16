@@ -26,6 +26,8 @@ ragtag_mercenary = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 				"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
 				"object/mobile/dressed_criminal_thug_rodian_female_01.iff",

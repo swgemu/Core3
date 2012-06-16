@@ -26,6 +26,8 @@ drall_chieftain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {
 	      	{

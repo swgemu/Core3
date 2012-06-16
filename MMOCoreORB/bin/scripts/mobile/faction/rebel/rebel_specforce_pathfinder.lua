@@ -26,6 +26,8 @@ rebel_specforce_pathfinder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_specforce_pathfinder_human_male_01.iff",
 		"object/mobile/dressed_rebel_specforce_pathfinder_moncal_female_01.iff",

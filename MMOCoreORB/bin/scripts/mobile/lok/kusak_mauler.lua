@@ -26,6 +26,8 @@ kusak_mauler = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kusak.iff"},
 	lootGroups = {},
 	weapons = {},

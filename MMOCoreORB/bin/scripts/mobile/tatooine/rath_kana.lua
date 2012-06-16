@@ -27,6 +27,8 @@ rath_kana = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/ig_assassin_droid.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

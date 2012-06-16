@@ -26,6 +26,8 @@ blastromech = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/blastromech.iff"},
 	lootGroups = {},
 	weapons = {"droid_astromech_ranged"},

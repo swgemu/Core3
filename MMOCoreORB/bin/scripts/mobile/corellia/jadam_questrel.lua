@@ -27,6 +27,8 @@ jadam_questrel = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_jadam_questrel.iff"},
 	lootGroups = {},
 	weapons = {},

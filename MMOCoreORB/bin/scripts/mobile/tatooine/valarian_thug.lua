@@ -26,6 +26,8 @@ valarian_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_tatooine_valarian_thug.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",

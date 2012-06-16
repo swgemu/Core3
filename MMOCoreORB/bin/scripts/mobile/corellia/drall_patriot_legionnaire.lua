@@ -26,6 +26,8 @@ drall_patriot_legionnaire = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/drall_male.iff",
 		"object/mobile/drall_female.iff"},

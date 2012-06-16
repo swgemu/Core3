@@ -26,6 +26,8 @@ viopa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_tier4_naboo_diness.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -25,6 +25,8 @@ info_broker = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
 				 "object/mobile/dressed_criminal_smuggler_human_male_01.iff"
 				 },

@@ -26,6 +26,8 @@ remmer_dune_scavenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/remmer.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

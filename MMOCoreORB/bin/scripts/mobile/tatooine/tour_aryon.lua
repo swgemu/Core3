@@ -27,6 +27,8 @@ tour_aryon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_tour_aryon.iff"},
 	lootGroups = {},
 	weapons = {},

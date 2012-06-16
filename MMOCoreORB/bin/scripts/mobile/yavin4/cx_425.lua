@@ -27,6 +27,8 @@ cx_425 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_cx_425.iff"},
 	lootGroups = {},
 	weapons = {},

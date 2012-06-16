@@ -25,6 +25,8 @@ biogenic_scientist_generic_01 = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 392,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	
 	templates = {
 		"object/mobile/dressed_geonosian_scientist_01.iff",

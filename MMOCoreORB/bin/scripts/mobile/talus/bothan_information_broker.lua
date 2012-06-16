@@ -26,6 +26,8 @@ bothan_information_broker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_hutt_informant_quest.iff",
 		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",

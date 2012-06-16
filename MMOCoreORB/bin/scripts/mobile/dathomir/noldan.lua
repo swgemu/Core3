@@ -26,6 +26,8 @@ noldan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_trainer.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ darklighter_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/darklight_guard.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

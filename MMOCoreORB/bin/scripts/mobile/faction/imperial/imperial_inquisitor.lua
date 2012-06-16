@@ -25,6 +25,8 @@ imperial_inquisitor = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_inquisitor_human_male_01.iff"},
 	lootGroups = {
 		{

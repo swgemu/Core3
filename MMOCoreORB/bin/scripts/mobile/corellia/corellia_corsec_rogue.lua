@@ -26,6 +26,8 @@ corellia_corsec_rogue = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mercenary_destroyer_hum_f.iff"
 		},
 	lootGroups = {

@@ -26,6 +26,8 @@ stranded_rebel_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_scout_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

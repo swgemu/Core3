@@ -26,6 +26,8 @@ corsec_pilot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_retired_corsec_beggar.iff"},
 	lootGroups = {},
 	weapons = {},

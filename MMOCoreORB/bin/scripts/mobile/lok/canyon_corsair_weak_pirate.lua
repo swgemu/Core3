@@ -26,6 +26,8 @@ canyon_corsair_weak_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_corsair_pirate_weak_hum_f.iff",
 		"object/mobile/dressed_corsair_pirate_weak_hum_m.iff",

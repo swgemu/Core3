@@ -26,6 +26,8 @@ arnecio_ulvaw_op = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier3_arnecio.iff"},
 	lootGroups = {},
 	weapons = {},

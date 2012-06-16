@@ -26,6 +26,8 @@ chassis_broker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/space_chassis_broker_01.iff",
 		"object/mobile/space_chassis_broker_02.iff",

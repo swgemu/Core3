@@ -27,6 +27,8 @@ bardo_klinj = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bardo_klinj.iff"},
 	lootGroups = {},
 	weapons = {},

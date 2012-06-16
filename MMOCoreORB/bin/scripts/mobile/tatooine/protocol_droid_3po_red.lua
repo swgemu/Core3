@@ -26,6 +26,8 @@ protocol_droid_3po_red = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/3po_protocol_droid_red.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -25,6 +25,8 @@ spice_collective_courier = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_spice_collective_courier_rodian_female_01.iff"},
 	lootGroups = {
 	    {

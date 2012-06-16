@@ -26,6 +26,8 @@ spice_collective_heavy_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_spice_collective_heavyguard_zabrak_female_01.iff",
 		"object/mobile/dressed_spice_collective_heavyguard_zabrak_male_01.iff"},

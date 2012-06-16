@@ -26,6 +26,8 @@ fambaa_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/fambaa_hue.iff"},
 	lootGroups = {},
 	weapons = {},

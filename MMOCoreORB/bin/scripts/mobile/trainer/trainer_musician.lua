@@ -23,6 +23,8 @@ trainer_musician = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_musician_trainer_01.iff","object/mobile/dressed_musician_trainer_02.iff","object/mobile/dressed_musician_trainer_03.iff"},
 	conversationTemplate = "trainer_musician_convotemplate",
 	optionsBitmask = 264

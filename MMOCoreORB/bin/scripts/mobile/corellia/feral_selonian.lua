@@ -26,6 +26,8 @@ feral_selonian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_selonian_m_06.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

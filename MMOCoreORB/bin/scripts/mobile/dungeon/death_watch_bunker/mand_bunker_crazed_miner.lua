@@ -27,6 +27,8 @@ mand_bunker_crazed_miner = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_mand_bunker_crazed_miner.iff"},
 	lootGroups = {},
 	weapons = {},

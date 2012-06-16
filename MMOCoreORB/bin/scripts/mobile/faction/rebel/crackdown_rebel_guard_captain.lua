@@ -26,6 +26,8 @@ crackdown_rebel_guard_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_specforce_captain_moncal_female_01.iff",
 		"object/mobile/dressed_rebel_specforce_captain_rodian_female_01.iff"

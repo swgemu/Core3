@@ -26,6 +26,8 @@ evil_hermit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_evil_hermit.iff"},
 	lootGroups = {
 	    {

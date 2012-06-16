@@ -27,6 +27,8 @@ daclif_gallamby = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_daclif_gallamby.iff"},
 	lootGroups = {},
 	weapons = {},

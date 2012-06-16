@@ -25,6 +25,8 @@ mellichae = Creature:new {
 	creatureBitmask = KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_enemy_mellichae.iff"},
 	lootGroups = {},
 	weapons = {"dark_jedi_weapons"},

@@ -26,6 +26,8 @@ bestine_merchant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor08.iff"},
 	lootGroups = {},
 	weapons = {},

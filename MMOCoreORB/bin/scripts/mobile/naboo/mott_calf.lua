@@ -26,6 +26,8 @@ mott_calf = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mott_calf.iff"},
 	lootGroups = {},
 	weapons = {},

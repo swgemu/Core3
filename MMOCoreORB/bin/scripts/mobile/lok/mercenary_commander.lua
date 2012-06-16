@@ -26,6 +26,8 @@ mercenary_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_mercenary_commander_hum_m.iff",
 		"object/mobile/dressed_mercenary_commander_nikto_m.iff",

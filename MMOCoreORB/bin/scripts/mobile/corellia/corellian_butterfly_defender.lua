@@ -26,6 +26,8 @@ corellian_butterfly_defender = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/corellian_butterfly_defender.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

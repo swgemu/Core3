@@ -26,6 +26,8 @@ bandit = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_plasma_bandit.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

@@ -26,6 +26,8 @@ nightspider_poison_spitter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/nightspider_poison_spitter.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},

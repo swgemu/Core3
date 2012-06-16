@@ -26,6 +26,8 @@ giant_kimogila = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_kimogila.iff"},
 	lootGroups = {
 	    {

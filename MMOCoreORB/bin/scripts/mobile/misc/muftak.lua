@@ -25,6 +25,8 @@ muftak = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/muftak.iff"},
 	lootGroups = {},
 	weapons = {},

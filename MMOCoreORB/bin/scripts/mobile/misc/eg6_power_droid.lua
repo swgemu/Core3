@@ -26,6 +26,8 @@ eg6_power_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/eg6_power_droid.iff"},
 	lootGroups = {},
 	weapons = {},

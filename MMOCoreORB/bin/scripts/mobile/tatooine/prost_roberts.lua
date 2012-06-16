@@ -26,6 +26,8 @@ prost_roberts = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_mos_espa_young_pilot.iff"},
 	lootGroups = {},
 	weapons = {},

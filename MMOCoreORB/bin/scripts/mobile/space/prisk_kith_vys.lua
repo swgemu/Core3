@@ -26,6 +26,8 @@ prisk_kith_vys = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_imperial_tier2_corellia.iff"},
 	lootGroups = {},
 	weapons = {},

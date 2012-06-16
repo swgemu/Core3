@@ -27,6 +27,8 @@ windom_starkiller = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_windom_starkiller.iff"},
 	lootGroups = {},
 	weapons = {},

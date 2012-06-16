@@ -24,6 +24,8 @@ noble = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	
 
 	templates = {	

@@ -26,6 +26,8 @@ dancer_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dancer_trainer_twk_female_01.iff","object/mobile/dressed_dancer_trainer_human_female_02.iff","object/mobile/dressed_dancer_trainer_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

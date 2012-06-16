@@ -25,6 +25,8 @@ rebel_recruiter = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_recruiter_human_female_01.iff",
 		"object/mobile/dressed_rebel_recruiter_human_female_02.iff",

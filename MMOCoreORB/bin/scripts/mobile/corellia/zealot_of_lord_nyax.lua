@@ -26,6 +26,8 @@ zealot_of_lord_nyax = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},
 	lootGroups = {
 		{

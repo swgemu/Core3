@@ -27,6 +27,8 @@ ovo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_trooper_bith_m_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

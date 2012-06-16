@@ -27,6 +27,8 @@ tk_471 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor07.iff"},
 	lootGroups = {},
 	weapons = {},

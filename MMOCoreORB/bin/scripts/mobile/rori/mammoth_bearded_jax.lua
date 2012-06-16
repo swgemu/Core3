@@ -26,6 +26,8 @@ mammoth_bearded_jax = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mammoth_bearded_jax.iff"},
 	lootGroups = {},
 	weapons = {},

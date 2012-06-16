@@ -26,6 +26,8 @@ kima = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kima.iff"},
 	lootGroups = {},
 	weapons = {},

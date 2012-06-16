@@ -26,6 +26,8 @@ stormtrooper_rifleman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_rifleman_m.iff"},
 	lootGroups = {
 		{

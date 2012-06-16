@@ -26,6 +26,8 @@ Grovo = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/nsister_rancor_grovo.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ sennex_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sennex_pirate_01.iff",
 		"object/mobile/dressed_sennex_pirate_02.iff",
 		"object/mobile/dressed_sennex_pirate_03.iff",

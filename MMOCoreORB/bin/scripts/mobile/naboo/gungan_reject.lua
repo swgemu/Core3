@@ -27,6 +27,8 @@ gungan_reject = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gungan_s03_male.iff"},
 	lootGroups = {
 	    {

@@ -26,6 +26,8 @@ ragtag_thug = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 				"object/mobile/dressed_hooligan_rodian_female_01.iff",
 				"object/mobile/dressed_criminal_thug_human_female_01.iff"

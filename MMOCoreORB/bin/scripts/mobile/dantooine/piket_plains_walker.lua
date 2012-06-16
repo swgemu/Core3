@@ -26,6 +26,8 @@ piket_plains_walker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/piket_plains_walker.iff"},
 	lootGroups = {},
 	weapons = {},

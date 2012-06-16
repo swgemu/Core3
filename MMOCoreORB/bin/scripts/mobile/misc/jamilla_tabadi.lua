@@ -26,6 +26,8 @@ jamilla_tabadi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fs_village_intro_woman.iff"},
 	lootGroups = {},
 	weapons = {},

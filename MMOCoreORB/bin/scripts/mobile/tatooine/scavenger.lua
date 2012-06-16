@@ -25,6 +25,8 @@ scavenger = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_scavenger.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

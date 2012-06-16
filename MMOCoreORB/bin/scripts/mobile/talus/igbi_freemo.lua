@@ -27,6 +27,8 @@ igbi_freemo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_igbi_freemo.iff"},
 	lootGroups = {},
 	weapons = {},

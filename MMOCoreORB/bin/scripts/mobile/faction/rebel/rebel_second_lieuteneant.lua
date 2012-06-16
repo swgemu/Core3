@@ -26,6 +26,8 @@ rebel_second_lieuteneant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff",
 		"object/mobile/dressed_rebel_second_lieutenant_rodian_male_01.iff",

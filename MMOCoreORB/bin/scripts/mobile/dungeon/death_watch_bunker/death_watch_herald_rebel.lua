@@ -27,6 +27,8 @@ death_watch_herald_rebel = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rebel_general_moncal_male_01.iff"},
 	lootGroups = {},
 	weapons = {},

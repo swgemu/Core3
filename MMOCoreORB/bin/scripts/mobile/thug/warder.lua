@@ -27,6 +27,8 @@ warder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_aakuan_warder_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},

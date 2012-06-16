@@ -26,6 +26,8 @@ imperial_lance_corporal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootGroups = {
 		{

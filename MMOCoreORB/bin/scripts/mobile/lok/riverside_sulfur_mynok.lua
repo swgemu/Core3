@@ -26,6 +26,8 @@ riverside_sulfur_mynok = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/riverside_sulfur_mynock.iff"},
 	lootGroups = {},
 	weapons = {},

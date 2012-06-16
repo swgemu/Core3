@@ -27,6 +27,8 @@ graf_zapalo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_graf_zapalo.iff"},
 	lootGroups = {},
 	weapons = {},

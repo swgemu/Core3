@@ -27,6 +27,8 @@ scolex_grath = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_scolex_grath.iff"},
 	lootGroups = {},
 	weapons = {},

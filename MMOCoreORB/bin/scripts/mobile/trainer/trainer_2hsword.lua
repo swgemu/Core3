@@ -23,6 +23,8 @@ trainer_2hsword = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_2handsword_trainer_01.iff","object/mobile/dressed_2handsword_trainer_02.iff","object/mobile/dressed_2handsword_trainer_03.iff"},
 	conversationTemplate = "trainer_2hsword_convotemplate",
 	optionsBitmask = 264

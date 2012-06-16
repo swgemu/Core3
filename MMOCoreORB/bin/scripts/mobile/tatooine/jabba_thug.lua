@@ -26,6 +26,8 @@ jabba_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_jabba_thug.iff"},
 	lootGroups = {
 	    {

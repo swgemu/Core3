@@ -25,6 +25,8 @@ specops_trooper = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},

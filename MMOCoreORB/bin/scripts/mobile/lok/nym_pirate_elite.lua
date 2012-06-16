@@ -26,6 +26,8 @@ nym_pirate_elite = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nym_pirate_elite_rod_m.iff",
 				"object/mobile/dressed_nym_pirate_elite_nikto_m.iff",
 				"object/mobile/dressed_nym_pirate_elite_hum_m.iff",

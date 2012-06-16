@@ -26,6 +26,8 @@ contractor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_artisan_trainer_02.iff"},
 				
 	lootGroups = {},

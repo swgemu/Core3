@@ -26,6 +26,8 @@ voracious_rasp = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/plumed_rasp.iff"},
 	lootGroups = {},
 	weapons = {},

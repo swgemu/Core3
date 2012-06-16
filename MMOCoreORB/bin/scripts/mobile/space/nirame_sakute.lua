@@ -26,6 +26,8 @@ nirame_sakute = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_tier4_tatooine_nirame.iff"},
 	lootGroups = {},
 	weapons = {},

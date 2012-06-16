@@ -26,6 +26,8 @@ tatooine_mynock = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mynock.iff"},
 	lootGroups = {},
 	weapons = {},

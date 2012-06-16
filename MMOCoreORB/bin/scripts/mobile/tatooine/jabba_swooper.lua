@@ -26,6 +26,8 @@ jabba_swooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_jabba_swooper.iff"},
 	lootGroups = {
 	    {

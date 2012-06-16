@@ -26,6 +26,8 @@ fierce_piket_protector = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/piket.iff"},
 	lootGroups = {},
 	weapons = {},

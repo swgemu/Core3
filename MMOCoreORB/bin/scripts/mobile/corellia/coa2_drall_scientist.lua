@@ -27,6 +27,8 @@ coa2_drall_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

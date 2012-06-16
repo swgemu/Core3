@@ -25,6 +25,8 @@ crackdown_specialist_noncom = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff",
 				"object/mobile/dressed_imperial_officer_m_2.iff"
 				},

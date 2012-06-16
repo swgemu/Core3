@@ -26,6 +26,8 @@ rebel_obscureops_agent = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_assassin_mission_giver_reb_01.iff",
 		"object/mobile/dressed_assassin_mission_giver_reb_02.iff",

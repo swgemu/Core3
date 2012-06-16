@@ -26,6 +26,8 @@ dolac_escaped_prisoner = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_dathomir_prisoner_05.iff",
 		"object/mobile/dressed_dathomir_prisoner_04.iff",

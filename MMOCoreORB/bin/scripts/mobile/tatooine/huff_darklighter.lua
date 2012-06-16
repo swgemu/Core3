@@ -27,6 +27,8 @@ huff_darklighter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/huff_darklighter.iff"},
 	lootGroups = {},
 	weapons = {},

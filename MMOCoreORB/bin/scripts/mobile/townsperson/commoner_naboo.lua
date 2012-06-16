@@ -26,6 +26,8 @@ commoner_naboo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {	"object/mobile/dressed_commoner_naboo_bothan_female_01.iff",
 					"object/mobile/dressed_commoner_naboo_bothan_female_02.iff",
 					"object/mobile/dressed_commoner_naboo_bothan_male_01.iff",

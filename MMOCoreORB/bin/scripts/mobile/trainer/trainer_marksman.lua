@@ -23,6 +23,8 @@ trainer_marksman = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_marksman_trainer_01.iff","object/mobile/dressed_marksman_trainer_02.iff","object/mobile/dressed_marksman_trainer_03.iff"},
 	conversationTemplate = "trainer_marksman_convotemplate",
 	optionsBitmask = 264

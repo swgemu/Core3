@@ -27,6 +27,8 @@ draya_korbinari = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_draya_korbinari.iff"},
 	lootGroups = {},
 	weapons = {},

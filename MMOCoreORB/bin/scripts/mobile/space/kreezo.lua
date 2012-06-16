@@ -26,6 +26,8 @@ kreezo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_rebel_tier1_corellia_kreezo.iff"},
 	lootGroups = {},
 	weapons = {},

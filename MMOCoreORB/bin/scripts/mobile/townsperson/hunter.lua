@@ -25,6 +25,8 @@ hunter = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_commoner_tatooine_devaronian_male_03.iff",
 		"object/mobile/dressed_commoner_naboo_twilek_male_01.iff",

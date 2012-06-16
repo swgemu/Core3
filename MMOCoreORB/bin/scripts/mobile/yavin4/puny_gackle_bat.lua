@@ -26,6 +26,8 @@ puny_gackle_bat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/puny_gackle_bat.iff"},
 	lootGroups = {},
 	weapons = {},

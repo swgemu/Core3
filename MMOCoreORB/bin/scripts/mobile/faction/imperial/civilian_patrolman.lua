@@ -26,6 +26,8 @@ civilian_patrolman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_officer_m_5.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},

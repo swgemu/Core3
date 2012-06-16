@@ -26,6 +26,8 @@ death_watch_bloodguard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_death_watch_red.iff"},
 	lootGroups = {
 		{

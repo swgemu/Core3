@@ -26,6 +26,8 @@ mawgax_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mawgax_hue.iff"},
 	lootGroups = {},
 	weapons = {},

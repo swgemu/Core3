@@ -25,6 +25,8 @@ skaak_tipper_swindler = Creature:new {
 	creatureBitmask = PACK + STALKER + HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_desperado_bith_female_01.iff",
 		"object/mobile/dressed_desperado_bith_male_01.iff"},

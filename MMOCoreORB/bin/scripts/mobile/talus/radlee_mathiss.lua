@@ -27,6 +27,8 @@ radlee_mathiss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_radlee_mathiss.iff"},
 	lootGroups = {},
 	weapons = {},

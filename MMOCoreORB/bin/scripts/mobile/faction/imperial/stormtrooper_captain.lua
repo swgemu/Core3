@@ -26,6 +26,8 @@ stormtrooper_captain = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_captain_black_black.iff"},
 	lootGroups = {
 		{

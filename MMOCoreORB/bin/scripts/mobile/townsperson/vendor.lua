@@ -26,6 +26,8 @@ vendor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/twilek_female.iff",
 		"object/mobile/dressed_commoner_fat_twilek_female_02.iff",

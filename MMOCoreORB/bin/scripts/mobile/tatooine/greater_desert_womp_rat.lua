@@ -26,6 +26,8 @@ greater_desert_womp_rat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/greater_desert_womp_rat.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

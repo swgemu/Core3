@@ -26,6 +26,8 @@ merek_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/merek_hue.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ event_perk_vendor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_tatooine_devaronian_male_02.iff",
 				},				
 	lootGroups = {},

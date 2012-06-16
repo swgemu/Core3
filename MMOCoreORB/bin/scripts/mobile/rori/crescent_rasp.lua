@@ -26,6 +26,8 @@ crescent_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/crowned_rasp.iff"},
 	lootGroups = {},
 	weapons = {},

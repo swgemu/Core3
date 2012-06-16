@@ -26,6 +26,8 @@ barada = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/barada.iff"},
 	outfit = "barada_outfit",
 	lootGroups = {},

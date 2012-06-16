@@ -27,6 +27,8 @@ at_st = Creature:new {
 	optionsBitmask = 128,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/atst.iff"},
 	lootGroups = {},
 	weapons = {"vehicle_at_st_ranged"},

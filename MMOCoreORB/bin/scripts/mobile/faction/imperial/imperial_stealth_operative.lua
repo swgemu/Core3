@@ -26,6 +26,8 @@ imperial_stealth_operative = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{}			

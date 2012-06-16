@@ -26,6 +26,8 @@ blood_fanged_gackle_bat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gackle_bat.iff"},
 	lootGroups = {},
 	weapons = {},

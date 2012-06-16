@@ -26,6 +26,8 @@ quest_gadget_specialist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_doctor_trainer_moncal_female_01.iff"},
 	lootGroups = {},
 	weapons = {},

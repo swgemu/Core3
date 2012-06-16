@@ -27,6 +27,8 @@ xolox_guul = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commander_xalox_guul.iff"},
 	lootGroups = {},
 	weapons = {},

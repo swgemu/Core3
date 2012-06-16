@@ -26,6 +26,8 @@ durni_be = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/durni_hue.iff"},
 	lootGroups = {},
 	weapons = {},

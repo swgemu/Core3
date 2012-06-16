@@ -26,6 +26,8 @@ wormed_vrobal = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vrobal.iff"},
 	lootGroups = {},
 	weapons = {},

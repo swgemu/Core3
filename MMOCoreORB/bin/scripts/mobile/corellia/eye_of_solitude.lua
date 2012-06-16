@@ -26,6 +26,8 @@ eye_of_solitude = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

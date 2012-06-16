@@ -26,6 +26,8 @@ chief_engineer_of_aurilia = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nomad_chief.iff"},
 	lootGroups = {},
 	weapons = {},

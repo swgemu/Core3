@@ -26,6 +26,8 @@ graul_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/graul_hue.iff"},
 	lootGroups = {},
 	weapons = {},

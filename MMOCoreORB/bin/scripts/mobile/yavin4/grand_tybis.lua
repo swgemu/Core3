@@ -26,6 +26,8 @@ grand_tybis = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/tybis.iff"},
 	lootGroups = {},
 	weapons = {},

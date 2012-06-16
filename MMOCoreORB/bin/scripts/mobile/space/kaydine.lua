@@ -26,6 +26,8 @@ kaydine = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_privateer_tier2_naboo.iff"},
 	lootGroups = {},
 	weapons = {},

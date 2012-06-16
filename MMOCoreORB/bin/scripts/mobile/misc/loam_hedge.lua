@@ -27,6 +27,8 @@ loam_hedge = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/loam_redge.iff"},
 	lootGroups = {},
 	weapons = {},

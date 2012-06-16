@@ -26,6 +26,8 @@ worrt = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/worrt_hue.iff"},
 	lootGroups = {},
 	weapons = {},

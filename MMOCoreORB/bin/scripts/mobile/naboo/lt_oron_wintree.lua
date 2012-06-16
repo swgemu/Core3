@@ -27,6 +27,8 @@ lt_oron_wintree = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lt_oron_wintree.iff"},
 	lootGroups = {},
 	weapons = {},

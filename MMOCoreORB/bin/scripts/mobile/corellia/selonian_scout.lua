@@ -26,6 +26,8 @@ selonian_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_selonian_f_01.iff",
 		"object/mobile/dressed_selonian_f_02.iff",

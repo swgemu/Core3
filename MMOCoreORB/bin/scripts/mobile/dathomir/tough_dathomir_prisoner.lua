@@ -26,6 +26,8 @@ tough_dathomir_prisoner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_dathomir_prisoner_05.iff",
 		"object/mobile/dressed_dathomir_prisoner_04.iff",

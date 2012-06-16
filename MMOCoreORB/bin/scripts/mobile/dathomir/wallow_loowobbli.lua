@@ -27,6 +27,8 @@ wallow_loowobbli = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_wallaw_loowobbli.iff"},
 	lootGroups = {},
 	weapons = {},

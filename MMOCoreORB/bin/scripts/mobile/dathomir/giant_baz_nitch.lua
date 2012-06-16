@@ -26,6 +26,8 @@ giant_baz_nitch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_baz_nitch.iff"},
 	lootGroups = {},
 	weapons = {},

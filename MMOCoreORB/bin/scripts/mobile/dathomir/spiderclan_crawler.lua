@@ -26,6 +26,8 @@ spiderclan_crawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dathomir_spider_nightsister_crawler.iff"},
 	lootGroups = {
 		{

@@ -26,6 +26,8 @@ borvos_thug = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_borvos_thug.iff"},
 	lootGroups = {
 	    {

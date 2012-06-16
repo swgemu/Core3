@@ -26,6 +26,8 @@ death_watch_s_battle_droid_alt = Creature:new {
 	optionsBitmask = 128,
 	diet = NONE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/death_watch_s_battle_droid.iff",
 		"object/mobile/death_watch_s_battle_droid_02.iff",

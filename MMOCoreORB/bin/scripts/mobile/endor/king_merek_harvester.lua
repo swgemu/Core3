@@ -26,6 +26,8 @@ king_merek_harvester = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/king_merek_harvester.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

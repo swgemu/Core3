@@ -26,6 +26,8 @@ paralope = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/paralope.iff"},
 	lootGroups = {},
 	weapons = {},

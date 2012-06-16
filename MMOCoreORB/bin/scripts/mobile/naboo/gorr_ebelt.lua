@@ -26,6 +26,8 @@ gorr_ebelt = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gorr_ebelt.iff"},
 	lootGroups = {},
 	weapons = {},

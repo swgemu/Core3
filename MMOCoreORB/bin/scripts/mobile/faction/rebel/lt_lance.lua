@@ -27,6 +27,8 @@ lt_lance = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lieutenant_lance.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

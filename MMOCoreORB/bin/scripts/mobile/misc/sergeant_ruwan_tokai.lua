@@ -26,6 +26,8 @@ sergeant_ruwan_tokai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_ruwan_tokai.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ enhanced_kwi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kwi.iff"},
 	lootGroups = {
 		{

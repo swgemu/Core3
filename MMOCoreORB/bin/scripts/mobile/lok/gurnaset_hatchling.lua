@@ -26,6 +26,8 @@ gurnaset_hatchling = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gurnaset_hatchling.iff"},
 	lootGroups = {},
 	weapons = {},

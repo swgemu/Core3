@@ -26,6 +26,8 @@ infuriated_roba_protector = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/roba.iff"},
 	lootGroups = {},
 	weapons = {},

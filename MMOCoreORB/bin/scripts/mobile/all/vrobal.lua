@@ -26,6 +26,8 @@ vrobal = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vrobal.iff"},
 	lootGroups = {},
 	weapons = {},

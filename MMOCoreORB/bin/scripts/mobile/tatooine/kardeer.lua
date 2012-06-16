@@ -25,6 +25,8 @@ kardeer = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kardeer.iff"},
 	lootGroups = {},
 	weapons = {},

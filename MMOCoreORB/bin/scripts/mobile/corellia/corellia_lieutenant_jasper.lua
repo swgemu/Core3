@@ -27,6 +27,8 @@ corellia_lieutenant_jasper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_corsec_officer_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},

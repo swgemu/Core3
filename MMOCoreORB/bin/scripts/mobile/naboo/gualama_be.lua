@@ -26,6 +26,8 @@ gualama_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gualama_hue.iff"},
 	lootGroups = {},
 	weapons = {},

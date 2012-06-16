@@ -26,6 +26,8 @@ first_brigade_gunner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_brigade_gunner_bith_male_01.iff",
 		"object/mobile/dressed_brigade_gunner_bith_female_01.iff"},

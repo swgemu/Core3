@@ -26,6 +26,8 @@ bib_fortuna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bib_fortuna.iff"},
 	lootGroups = {},
 	weapons = {},

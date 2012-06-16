@@ -27,6 +27,8 @@ vrir_unglan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_vrir_unglan.iff"},
 	lootGroups = {},
 	weapons = {},

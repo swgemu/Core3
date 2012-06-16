@@ -26,6 +26,8 @@ rsf_security_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_rsf_security_guard.iff"},
 	lootGroups = {
 	    {

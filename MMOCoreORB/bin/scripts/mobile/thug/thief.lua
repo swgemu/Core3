@@ -25,6 +25,8 @@ thief = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_kobola_thief_rodian_male_01.iff",
 		"object/mobile/dressed_kobola_thief_rodian_female_01.iff",

@@ -26,6 +26,8 @@ novatrooper_cadet = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
 	lootGroups = {
 		{

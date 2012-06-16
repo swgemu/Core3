@@ -27,6 +27,8 @@ plasma_bantid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_plasma_bandit.iff"},
 	lootGroups = {
 	    {

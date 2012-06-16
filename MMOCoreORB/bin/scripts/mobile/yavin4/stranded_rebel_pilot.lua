@@ -26,6 +26,8 @@ stranded_rebel_pilot = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stranded_rebel_pilot.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

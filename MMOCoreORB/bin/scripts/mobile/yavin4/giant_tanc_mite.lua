@@ -26,6 +26,8 @@ giant_tanc_mite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/giant_tanc_mite.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

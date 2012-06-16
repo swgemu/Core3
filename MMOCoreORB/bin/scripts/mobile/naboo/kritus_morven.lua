@@ -27,6 +27,8 @@ kritus_morven = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_kritus_morven.iff"},
 	lootGroups = {},
 	weapons = {},

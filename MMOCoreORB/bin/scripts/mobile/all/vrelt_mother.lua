@@ -26,6 +26,8 @@ vrelt_mother = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vrelt.iff"},
 	lootGroups = {},
 	weapons = {},

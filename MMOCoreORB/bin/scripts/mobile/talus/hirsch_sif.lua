@@ -25,6 +25,8 @@ hirsch_sif = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hirsch_sif.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},

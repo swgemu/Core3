@@ -27,6 +27,8 @@ vinya_maysor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_vinya_maysor.iff"},
 	lootGroups = {},
 	weapons = {},

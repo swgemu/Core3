@@ -26,6 +26,8 @@ narmle_militia_ensign = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_narmle_ensign_human_male_01.iff",
 		"object/mobile/dressed_narmle_ensign_human_female_01.iff"},

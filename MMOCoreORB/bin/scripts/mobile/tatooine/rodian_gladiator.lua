@@ -26,6 +26,8 @@ rodian_gladiator = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_rodian_gladiator.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

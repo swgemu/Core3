@@ -27,6 +27,8 @@ tl_017 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_victor_questn_capitol.iff"},
 	lootGroups = {},
 	weapons = {},

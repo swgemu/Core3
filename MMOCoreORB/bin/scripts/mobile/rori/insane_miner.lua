@@ -27,6 +27,8 @@ insane_miner = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_kobala_miner_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

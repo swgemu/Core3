@@ -26,6 +26,8 @@ desert_vesp = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/vesp.iff"},
 	lootGroups = {},
 	weapons = {},

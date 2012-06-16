@@ -26,6 +26,8 @@ kobola_underboss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_kobola_underboss_bith_female_01.iff",
 		"object/mobile/dressed_kobola_underboss_bith_male_01.iff"},

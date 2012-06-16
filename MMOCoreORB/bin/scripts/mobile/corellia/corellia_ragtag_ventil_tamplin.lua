@@ -26,6 +26,8 @@ corellia_ragtag_ventil_tamplin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_blood_razor_pirate_captain_nikto_m.iff"
 				},
 	lootGroups = {},

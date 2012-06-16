@@ -26,6 +26,8 @@ festering_dung_mite_queen = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dung_mite.iff"},
 	lootGroups = {},
 	weapons = {},

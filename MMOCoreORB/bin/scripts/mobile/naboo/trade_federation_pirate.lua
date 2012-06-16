@@ -26,6 +26,8 @@ trade_federation_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_trade_federation_zealot.iff"},
 	lootGroups = {
 	    {

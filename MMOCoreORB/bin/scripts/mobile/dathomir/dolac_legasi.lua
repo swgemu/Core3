@@ -27,6 +27,8 @@ dolac_legasi = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dolac_legasi.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},

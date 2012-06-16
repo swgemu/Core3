@@ -26,6 +26,8 @@ rockmite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/rock_mite.iff"},
 	lootGroups = {},
 	weapons = {},

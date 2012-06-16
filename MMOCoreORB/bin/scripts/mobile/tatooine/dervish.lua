@@ -26,6 +26,8 @@ dervish = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_dervish.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

@@ -26,6 +26,8 @@ bodyguard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 					"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff",
 					"object/mobile/dressed_mugger.iff",

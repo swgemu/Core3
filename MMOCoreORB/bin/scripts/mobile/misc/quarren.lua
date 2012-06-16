@@ -26,6 +26,8 @@ quarren = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/quarren_male.iff"},
 	lootGroups = {},
 	weapons = {},

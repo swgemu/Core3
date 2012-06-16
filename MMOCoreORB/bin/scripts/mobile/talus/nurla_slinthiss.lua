@@ -27,6 +27,8 @@ nurla_slinthiss = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_nurla_slinthiss.iff"},
 	lootGroups = {},
 	weapons = {},

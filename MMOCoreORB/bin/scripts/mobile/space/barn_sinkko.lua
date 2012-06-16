@@ -26,6 +26,8 @@ barn_sinkko = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_kadaara_imperial_officer.iff"},
 	lootGroups = {},
 	weapons = {},

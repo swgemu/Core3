@@ -26,6 +26,8 @@ juvenile_langlatch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/langlatch_juvenile.iff"},
 	lootGroups = {},
 	weapons = {},

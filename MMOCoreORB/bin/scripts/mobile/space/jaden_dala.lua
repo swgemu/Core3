@@ -26,6 +26,8 @@ jaden_dala = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_dantooine_imperial_officer.iff"},
 	lootGroups = {},
 	weapons = {},

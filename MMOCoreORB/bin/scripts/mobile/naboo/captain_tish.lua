@@ -27,6 +27,8 @@ captain_tish = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_captain_tish.iff"},
 	lootGroups = {},
 	weapons = {},

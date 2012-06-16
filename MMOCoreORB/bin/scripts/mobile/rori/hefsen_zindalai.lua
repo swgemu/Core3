@@ -27,6 +27,8 @@ hefsen_zindalai = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_hefsen_zindalai.iff"},
 	lootGroups = {},
 	weapons = {},

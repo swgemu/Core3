@@ -25,6 +25,8 @@ skaak_tipper_prowler = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ravager_human_female_01.iff",
 		"object/mobile/dressed_ravager_human_male_01.iff",

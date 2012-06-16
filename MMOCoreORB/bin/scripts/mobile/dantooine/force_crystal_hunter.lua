@@ -26,6 +26,8 @@ force_crystal_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dark_force_crystal_hunter.iff"},
 	lootGroups = {
 		{

@@ -26,6 +26,8 @@ ral_mundi = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_coronet_merchant.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ fightmaster_jorak = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_fightmaster_jorak.iff"},
 	lootGroups = {},
 	weapons = {},

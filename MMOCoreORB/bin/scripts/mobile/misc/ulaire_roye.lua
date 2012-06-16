@@ -26,6 +26,8 @@ ulaire_roye = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/space_greeter_tyrena_disgraced_corsec.iff"},
 	lootGroups = {},
 	weapons = {},

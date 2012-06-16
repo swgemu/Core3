@@ -25,6 +25,8 @@ wastrel = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_commoner_old_zabrak_female_02.iff"
 	},

@@ -27,6 +27,8 @@ owaitacyg_amafie = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_rumor02.iff"},
 	lootGroups = {},
 	weapons = {},

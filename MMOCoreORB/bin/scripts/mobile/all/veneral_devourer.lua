@@ -26,6 +26,8 @@ veneral_devourer = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/pugoriss.iff"},
 	lootGroups = {},
 	weapons = {},

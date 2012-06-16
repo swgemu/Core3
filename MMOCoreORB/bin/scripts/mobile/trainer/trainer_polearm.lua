@@ -23,6 +23,8 @@ trainer_polearm = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_polearm_trainer_01.iff","object/mobile/dressed_polearm_trainer_02.iff","object/mobile/dressed_polearm_trainer_03.iff"},
 	conversationTemplate = "trainer_polearm_convotemplate",
 	optionsBitmask = 264

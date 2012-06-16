@@ -27,6 +27,8 @@ nassa_ei = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_bestine_capitol02.iff"},
 	lootGroups = {},
 	weapons = {},

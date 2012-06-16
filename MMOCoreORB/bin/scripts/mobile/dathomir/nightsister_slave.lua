@@ -26,6 +26,8 @@ nightsister_slave = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_dathomir_nightsister_slave.iff"},
 	lootGroups = {},
 	weapons = {},

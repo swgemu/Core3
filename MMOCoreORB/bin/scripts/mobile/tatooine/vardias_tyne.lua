@@ -27,6 +27,8 @@ vardias_tyne = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_vardias_tyne.iff"},
 	lootGroups = {},
 	weapons = {},

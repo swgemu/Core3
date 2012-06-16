@@ -26,6 +26,8 @@ salacious_crumb = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/salacious_crumb.iff"},
 	lootGroups = {},
 	weapons = {},

@@ -26,6 +26,8 @@ infant_brackaset = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/infant_brackaset.iff"},
 	lootGroups = {},
 	weapons = {},

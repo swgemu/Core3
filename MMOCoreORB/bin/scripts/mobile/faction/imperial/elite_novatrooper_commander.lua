@@ -26,6 +26,8 @@ elite_novatrooper_commander = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_commander_black_gold.iff"},
 	lootGroups = {
 		{

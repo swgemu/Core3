@@ -25,6 +25,8 @@ flail_slayer = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_ravager_human_female_01.iff",
 		"object/mobile/dressed_ravager_human_male_01.iff",
 		"object/mobile/dressed_raider_trandoshan_female_01.iff",

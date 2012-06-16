@@ -26,6 +26,8 @@ grand_wrix = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/grand_wrix.iff"},
 	lootGroups = {},
 	weapons = {},

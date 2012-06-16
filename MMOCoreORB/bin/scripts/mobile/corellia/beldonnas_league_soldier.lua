@@ -26,6 +26,8 @@ beldonnas_league_soldier = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_goon_twk_female_01.iff",
 		"object/mobile/dressed_goon_twk_male_01.iff",
 		"object/mobile/dressed_criminal_thug_human_female_02.iff",

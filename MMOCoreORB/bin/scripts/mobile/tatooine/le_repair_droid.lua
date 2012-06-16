@@ -26,6 +26,8 @@ le_repair_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/le_repair_droid.iff"},
 	lootGroups = {},
 	weapons = {},

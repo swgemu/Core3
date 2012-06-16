@@ -26,6 +26,8 @@ krahbu_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/krahbu_hue.iff"},
 	lootGroups = {},
 	weapons = {},

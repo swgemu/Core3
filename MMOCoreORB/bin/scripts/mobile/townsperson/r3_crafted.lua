@@ -26,6 +26,8 @@ r3_crafted = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/r3_crafted.iff"
 	},		

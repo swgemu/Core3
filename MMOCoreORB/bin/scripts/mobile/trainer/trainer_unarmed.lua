@@ -23,6 +23,8 @@ trainer_unarmed = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
+
+	aiTemplate = "default",
 	templates = {"object/mobile/dressed_unarmed_trainer_01.iff","object/mobile/dressed_unarmed_trainer_02.iff","object/mobile/dressed_unarmed_trainer_03.iff"},
 	conversationTemplate = "trainer_unarmed_convotemplate",
 	optionsBitmask = 264

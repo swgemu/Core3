@@ -26,6 +26,8 @@ krayt_dragon_ancient = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/krayt_dragon.iff"},
 	lootGroups = {
 	 {

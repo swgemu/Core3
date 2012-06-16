@@ -26,6 +26,8 @@ remmer_carrion_keeper = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/remmer.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

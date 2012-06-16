@@ -27,6 +27,8 @@ stanic_wavingstar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_commoner_naboo_twilek_male_02.iff"},
 	lootGroups = {},
 	weapons = {},

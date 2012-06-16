@@ -26,6 +26,8 @@ blood_razor_berzerker = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_blood_razor_pirate_berzerker_hum_f.iff",
 		"object/mobile/dressed_blood_razor_pirate_berzerker_hum_m.iff",

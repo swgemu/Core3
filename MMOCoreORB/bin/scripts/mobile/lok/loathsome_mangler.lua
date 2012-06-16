@@ -26,6 +26,8 @@ loathsome_mangler = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/gurk.iff"},
 	lootGroups = {},
 	weapons = {},

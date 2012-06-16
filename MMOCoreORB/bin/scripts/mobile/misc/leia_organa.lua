@@ -26,6 +26,8 @@ leia_organa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/leia_organa.iff"},
 	lootGroups = {},
 	weapons = {},

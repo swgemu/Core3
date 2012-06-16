@@ -26,6 +26,8 @@ hardened_panshee_warrior = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_ewok_m_06.iff",
 		"object/mobile/dressed_ewok_m_09.iff"},

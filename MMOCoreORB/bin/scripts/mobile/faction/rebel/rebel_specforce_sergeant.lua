@@ -26,6 +26,8 @@ rebel_specforce_sergeant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_specforce_sergeant_bothan_male_01.iff",
 		"object/mobile/dressed_rebel_specforce_sergeant_human_male_01.iff",

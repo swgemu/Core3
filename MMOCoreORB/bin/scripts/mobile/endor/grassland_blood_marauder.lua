@@ -26,6 +26,8 @@ grassland_blood_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_grassland_blood_marauder.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},

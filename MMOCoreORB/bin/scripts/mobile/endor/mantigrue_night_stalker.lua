@@ -26,6 +26,8 @@ mantigrue_night_stalker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},

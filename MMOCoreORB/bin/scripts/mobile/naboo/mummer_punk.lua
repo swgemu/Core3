@@ -25,6 +25,8 @@ mummer_punk = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
 		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",

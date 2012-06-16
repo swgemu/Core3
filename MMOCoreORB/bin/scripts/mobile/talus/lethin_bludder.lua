@@ -27,6 +27,8 @@ lethin_bludder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_lethin_bludder.iff"},
 	lootGroups = {},
 	weapons = {},

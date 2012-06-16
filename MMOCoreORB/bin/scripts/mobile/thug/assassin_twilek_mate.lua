@@ -26,6 +26,8 @@ assassin_twilek_mate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_cobral_assassin_twk_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},

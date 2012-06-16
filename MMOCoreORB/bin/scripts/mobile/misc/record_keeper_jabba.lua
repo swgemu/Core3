@@ -27,6 +27,8 @@ record_keeper_jabba = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/theme_park_record_keeper_jabba.iff"},
 	lootGroups = {},
 	weapons = {},

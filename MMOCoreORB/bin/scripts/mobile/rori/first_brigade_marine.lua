@@ -26,6 +26,8 @@ first_brigade_marine = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_brigade_marine_trandoshan_male_01.iff",
 		"object/mobile/dressed_brigade_marine_trandoshan_female_01.iff"},

@@ -26,6 +26,8 @@ dwarf_eopie = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dwarf_eopie.iff"},
 	lootGroups = {},
 	weapons = {},

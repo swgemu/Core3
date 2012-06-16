@@ -26,6 +26,8 @@ dim_u_monastery_nun = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_tatooine_dim_u_monastery_nun.iff"},
 	lootGroups = {
 	    {

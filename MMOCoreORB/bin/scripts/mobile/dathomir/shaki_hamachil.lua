@@ -27,6 +27,8 @@ shaki_hamachil = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_shaki_hamachil.iff"},
 	lootGroups = {},
 	weapons = {},

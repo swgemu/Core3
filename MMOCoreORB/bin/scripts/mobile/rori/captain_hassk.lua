@@ -26,6 +26,8 @@ captain_hassk = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/captain_hassk.iff"},
 	lootGroups = {},
 	weapons = {"captain_hassk_weapons"},

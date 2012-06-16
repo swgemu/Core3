@@ -26,6 +26,8 @@ rebel_medic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_rebel_medic3_moncal_female_01.iff",
 		"object/mobile/dressed_rebel_medic2_21b_01.iff",

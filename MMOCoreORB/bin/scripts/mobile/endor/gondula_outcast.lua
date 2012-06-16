@@ -26,6 +26,8 @@ gondula_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},

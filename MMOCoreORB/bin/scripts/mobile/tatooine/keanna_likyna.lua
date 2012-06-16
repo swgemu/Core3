@@ -27,6 +27,8 @@ keanna_likyna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_keanna_likyna.iff"},
 	lootGroups = {},
 	weapons = {},

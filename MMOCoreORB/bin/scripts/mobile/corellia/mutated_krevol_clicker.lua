@@ -26,6 +26,8 @@ mutated_krevol_clicker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/mutated_krevol_clicker.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

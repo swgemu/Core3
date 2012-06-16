@@ -26,6 +26,8 @@ bomarr_monk = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/bomarr_monk_spider_droid.iff"},
 	lootGroups = {},
 	weapons = {},

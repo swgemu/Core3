@@ -27,6 +27,8 @@ sindra_lintikoor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_sindra_lintikoor.iff"},
 	lootGroups = {},
 	weapons = {},

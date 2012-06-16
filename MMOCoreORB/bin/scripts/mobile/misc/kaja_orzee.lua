@@ -26,6 +26,8 @@ kaja_orzee = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/kaja_orzee.iff"},
 	lootGroups = {},
 	weapons = {},

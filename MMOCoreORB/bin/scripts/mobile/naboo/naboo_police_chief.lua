@@ -26,6 +26,8 @@ naboo_police_chief = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_police_chief.iff"},
 	lootGroups = {
 	    {

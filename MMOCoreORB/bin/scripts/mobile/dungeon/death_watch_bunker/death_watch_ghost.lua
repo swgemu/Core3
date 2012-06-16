@@ -26,6 +26,8 @@ death_watch_ghost = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_death_watch_grey.iff"},
 	lootGroups = {
 		{

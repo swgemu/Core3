@@ -25,6 +25,8 @@ spice_collective_foreman = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {
 		"object/mobile/dressed_spice_collective_foreman_trandoshan_female_01.iff",
 		"object/mobile/dressed_spice_collective_foreman_trandoshan_male_01.iff"},

@@ -27,6 +27,8 @@ kadil_nurugen = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_naboo_kadil_nurugen.iff"},
 	lootGroups = {},
 	weapons = {},

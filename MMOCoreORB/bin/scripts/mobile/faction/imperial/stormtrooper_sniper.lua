@@ -25,6 +25,8 @@ stormtrooper_sniper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
+	aiTemplate = "default",
+
 	templates = {"object/mobile/dressed_stormtrooper_sniper_m.iff"},
 	lootGroups = {
 		{
