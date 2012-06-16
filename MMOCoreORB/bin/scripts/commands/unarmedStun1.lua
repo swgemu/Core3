@@ -64,7 +64,7 @@ UnarmedStun1Command = {
 		{ "jedi_state_defense" }, 
 		30, 
 		100, 
-		0 
+		60 
 	  )
 	},
 
