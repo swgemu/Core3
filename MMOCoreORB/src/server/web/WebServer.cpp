@@ -239,12 +239,12 @@ void* WebServer::uriHandler(
 void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	/// First we validate the IP address to see if we should proceed
-	if(!validateIPAccess(request_info->remote_ip)) {
-
-		displayUnauthorized(conn);
-		info("Unauthorized access attempt from " + ipLongToString((uint32)request_info->remote_ip));
-		return (void*)1;
-	}
+//	if(!validateIPAccess(request_info->remote_ip)) {
+//
+//		displayUnauthorized(conn);
+//		info("Unauthorized access attempt from " + ipLongToString((uint32)request_info->remote_ip));
+//		return (void*)1;
+//	}
 
 	HttpSession* session = getSession(conn, request_info);
 
