@@ -119,6 +119,9 @@ private:
 
 	void* handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
 
+	ManagedReference<Account*> validateAccountCredentials(LoginClient* client, const String& username, const String& password);
+
+
 	HttpSession* getSession(struct mg_connection *conn, const struct mg_request_info *request_info);
 
 	bool validateIPAccess(long remoteIp);

@@ -453,7 +453,7 @@ void WebServer::displayLogin(StringBuffer* out) {
 
 bool WebServer::authorize(HttpSession* session) {
 
-	ManagedReference<Account*> account = loginServer->getAccountManager()->validateAccountCredentials(NULL,
+	ManagedReference<Account*> account = validateAccountCredentials(NULL,
 			session->getUserName(), session->getPassword());
 
 	/// Remove Password
@@ -471,19 +471,49 @@ bool WebServer::authorize(HttpSession* session) {
 		return false;
 	}
 
-	WebCredentials* credentials = authorizedUsers.get(session->getUserName());
-
-	String address = ipLongToString((long)session->getSessionIp());
-
-	if(credentials->contains(address)) {
+//	WebCredentials* credentials = authorizedUsers.get(session->getUserName());
+//
+//	String address = ipLongToString((long)session->getSessionIp());
+//
+//	if(credentials->contains(address)) {
 		session->setAuthenticated(true);
-		info("Successful Login: " + session->getUserName() + " from " + address);
+		info("Successful Login: " + session->getUserName());
 		return true;
+//	}
+//
+//	info("Failed Login: " + session->getUserName());
+//
+//	return false;
+}
+
+ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
+
+
+	ManagedReference<Account*> account = zoneServer->getPlayerManager()->getAccount(username);
+
+	if(account == NULL)
+		return NULL;
+
+	StringBuffer query;
+	query << "SELECT a.password FROM accounts a WHERE a.username = '" << username << " 'LIMIT 1;";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	String dbPassword;
+
+	if (result->next()) {
+		dbPassword = result->getString(0);
+	} else {
+		return NULL;
 	}
 
-	info("Failed Login: " + session->getUserName());
+	String inputtedPassword = Crypto::SHA256Hash(configManager->getDBSecret() + password + account->getSalt());
 
-	return false;
+	if(inputtedPassword == dbPassword) {
+		return account;
+	}
+
+	return NULL;
 }
 
 bool WebServer::isLocalHost(String address) {

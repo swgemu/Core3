@@ -104,6 +104,12 @@ public:
 				int oldQuantity = container->getQuantity();
 				int newQuantity = oldQuantity - quantity;
 
+				if(newQuantity < 0)
+					newQuantity = 0;
+
+				if(newQuantity > ResourceContainer::MAXSIZE)
+					newQuantity = ResourceContainer::MAXSIZE;
+
 				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
 				if (!inventory->hasFullContainerObjects()) {

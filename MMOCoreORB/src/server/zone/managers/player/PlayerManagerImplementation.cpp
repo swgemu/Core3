@@ -2851,6 +2851,8 @@ Account* PlayerManagerImplementation::queryForAccount(const String& query) {
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
 
+		account->setSalt(result->getString(3));
+
 		account->setAccountID(result->getUnsignedInt(4));
 		account->setStationID(result->getUnsignedInt(5));
 
