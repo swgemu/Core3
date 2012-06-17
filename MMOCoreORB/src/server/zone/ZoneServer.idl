@@ -100,6 +100,7 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	private transient ZoneProcessServer processor;
 
+	
 	private VectorMap<string, Zone> zones;
 	
 	private transient ObjectManager objectManager;
@@ -120,6 +121,8 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient CreatureTemplateManager creatureTemplateManager;
 
 	private int totalSentPackets;
+
+	private int serverCap;
 	
 	private int totalResentPackets;
 
@@ -276,6 +279,10 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public boolean isServerLoading() {
 		return serverState == LOADING;
+	}
+
+	public int getServerCap() {
+		return serverCap;
 	}
 
 	@dirty

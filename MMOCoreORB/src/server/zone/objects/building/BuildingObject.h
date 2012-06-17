@@ -89,6 +89,8 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "engine/util/u3d/CloseObjectsVector.h"
+
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"

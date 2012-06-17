@@ -117,8 +117,10 @@ void SpawnAreaMap::loadStaticSpawns() {
 					creatureObject->setMoodString(moodString);
 
 					//TODO: remove after fixing commoners
-					if (moodString == "conversation" || moodString == "calm")
+					if (moodString == "conversation" || moodString == "calm") {
 						creatureObject->setPvpStatusBitmask(0);
+						creatureObject->setCloseObjects(NULL);
+					}
 				}
 
 				if (!customName.isEmpty())

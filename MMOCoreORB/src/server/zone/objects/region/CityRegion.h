@@ -121,6 +121,8 @@ using namespace server::zone::managers::city;
 
 #include "server/zone/objects/region/CityStructureInventory.h"
 
+#include "system/thread/atomic/AtomicInteger.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -173,6 +175,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	Time* getNextUpdateTime();
+
+	int getCurrentPlayerCount();
 
 	void addCitizen(unsigned long long citizenID);
 
@@ -368,6 +372,8 @@ protected:
 
 	VectorMap<unsigned long long, unsigned long long> mayoralVotes;
 
+	AtomicInteger currentPlayers;
+
 	String customRegionName;
 
 	ZoneReference zone;
@@ -464,6 +470,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	Time* getNextUpdateTime();
+
+	int getCurrentPlayerCount();
 
 	void addCitizen(unsigned long long citizenID);
 
@@ -697,6 +705,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	int getCurrentPlayerCount();
 
 	void addCitizen(unsigned long long citizenID);
 

@@ -61,6 +61,8 @@ using namespace server::zone;
 
 #include "system/util/HashTable.h"
 
+#include "system/util/VectorMap.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {

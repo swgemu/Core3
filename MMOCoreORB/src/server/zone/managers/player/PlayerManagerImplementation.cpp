@@ -1491,7 +1491,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
 
 	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
-			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVEOUT)) {
+			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
 		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
@@ -2767,12 +2767,14 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	ManagedReference<CraftingStation*> station = NULL;
 
-	Locker locker(zone);
+	//Locker locker(zone);
 
-	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = player->getCloseObjects();
+	SortedVector < QuadTreeEntry* > *closeObjects = new SortedVector<QuadTreeEntry*>(100, 50);
+	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+	vec->safeCopyTo(*closeObjects);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
+		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i));
 
 		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
@@ -3267,6 +3269,10 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 
 	if (!onlineZoneClientMap.containsKey(accountId))
 		return;
+		
+	BaseClientProxy* session = client->getSession();
+	
+	
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -3281,18 +3287,34 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 		onlineZoneClientMap.remove(accountId);
 	else
 		onlineZoneClientMap.put(accountId, clients);
+		
+	locker.release();
+	
+	if (session != NULL) {
+		onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+	}
 }
 
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
 	uint32 accountId = client->getAccountID();
+	
+	BaseClientProxy* session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
 		Vector<Reference<ZoneClientSession*> > clients;
 		clients.add(client);
 
 		onlineZoneClientMap.put(accountId, clients);
+		
+		locker.release();
+				
+		if (session != NULL) {
+			String ip = session->getIPAddress();
+			
+			onlineZoneClientMap.addAccount(ip, accountId);
+		}
 
 		return true;
 	}
@@ -3314,7 +3336,15 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	clients.add(client);
 
 	onlineZoneClientMap.put(accountId, clients);
-
+	
+	locker.release();
+	
+	if (session != NULL) {
+		String ip = session->getIPAddress();
+			
+		onlineZoneClientMap.addAccount(ip, accountId);
+	}
+	
 	return true;
 }
 

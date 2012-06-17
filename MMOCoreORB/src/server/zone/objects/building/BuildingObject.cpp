@@ -772,7 +772,7 @@ void BuildingObject::updatePaidAccessList() {
 
 DistributedObjectServant* BuildingObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -818,31 +818,31 @@ BuildingObjectImplementation::operator const BuildingObject*() {
 }
 
 void BuildingObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void BuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void BuildingObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void BuildingObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void BuildingObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void BuildingObjectImplementation::_serializationHelperMethod() {
@@ -1015,11 +1015,11 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
+	Reference<CloseObjectsVector*> _ref0;
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
-	StructureObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
+	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new CloseObjectsVector();
+	StructureObjectImplementation::closeobjects = _ref0 = new CloseObjectsVector();
 	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
 	StructureObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;

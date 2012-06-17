@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/login/account/Account.h"
 #include "server/zone/objects/player/sessions/sui/PlayerManagementSessionSuiCallback.h"
-
+#include "engine/service/proto/BaseClientProxy.h"
 
 class GetAccountInfoCommand : public QueueCommand {
 public:
@@ -172,6 +172,8 @@ public:
 			if(adminAccount != NULL)
 				header << "Banned by: " << adminAccount->getUsername() << endl;
 		}
+		
+		
 
 		box->setOtherButton(true, "@data Ban/Unban");
 
@@ -189,19 +191,33 @@ public:
 		box->addMenuItem(username, 0);
 
 		VectorMap<String, Vector<String> > characters;
+		
+		String loggedInIp;
 
 		for(int i = 0; i < characterList->size(); ++i) {
 
 			ManagedReference<PlayerObject* > ghost = NULL;
-
+			
 			CharacterListEntry* entry = &characterList->get(i);
+			ManagedReference<ZoneClientSession*> charClient;
 
 			if(entry->getGalaxyID() == server->getZoneServer()->getGalaxyID()) {
 				targetCreature = playerManager->getPlayer(entry->getFirstName());
 
-				if(targetCreature != NULL || targetCreature->isPlayerCreature())
+				if(targetCreature != NULL || targetCreature->isPlayerCreature()) {
 					ghost = targetCreature->getPlayerObject();
+					charClient = targetCreature->getClient();
+				}
 			}
+			
+			if (charClient != NULL) {
+				BaseClientProxy* session = charClient->getSession();
+				
+				if (session != NULL) {
+					loggedInIp = session->getIPAddress();
+				}
+			}
+			
 			StringBuffer gname;
 			gname << entry->getGalaxyID() << " : " << entry->getGalaxyName();
 
@@ -251,6 +267,18 @@ public:
 				box->addMenuItem(galaxy->get(j), 0);
 			}
 		}
+		
+		if (!loggedInIp.isEmpty()) {
+			header << endl;
+			header << "Logged in accounts from this ip:" << loggedInIp << endl;
+			SortedVector<uint32> loggedInAccounts = server->getZoneServer()->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(loggedInIp);
+			
+			for (int i = 0; i < loggedInAccounts.size(); ++i){
+				header << "\t" << loggedInAccounts.get(i) << endl;
+			}
+		}
+		
+		box->setPromptText(header.toString());
 
 		creature->sendMessage(box->generateMessage());
 

@@ -1134,9 +1134,18 @@ SortedVector<String> PlayerManager::getTeachableSkills(CreatureObject* teacher, 
 		return _implementation->getTeachableSkills(teacher, student);
 }
 
+OnlineZoneClientMap* PlayerManager::getOnlineZoneClientMap() {
+	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getOnlineZoneClientMap();
+}
+
 DistributedObjectServant* PlayerManager::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -1180,31 +1189,31 @@ PlayerManagerImplementation::operator const PlayerManager*() {
 }
 
 void PlayerManagerImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void PlayerManagerImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void PlayerManagerImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void PlayerManagerImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void PlayerManagerImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void PlayerManagerImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void PlayerManagerImplementation::_serializationHelperMethod() {
@@ -1305,6 +1314,11 @@ int PlayerManagerImplementation::getHighestBadgeIndex() {
 void PlayerManagerImplementation::addPlayer(CreatureObject* player) {
 	// server/zone/managers/player/PlayerManager.idl():  		nameMap.put(player);
 	nameMap->put(player);
+}
+
+OnlineZoneClientMap* PlayerManagerImplementation::getOnlineZoneClientMap() {
+	// server/zone/managers/player/PlayerManager.idl():  		return onlineZoneClientMap;
+	return (&onlineZoneClientMap);
 }
 
 /*

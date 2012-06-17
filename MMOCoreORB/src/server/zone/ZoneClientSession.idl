@@ -62,6 +62,7 @@ import engine.service.proto.events.BaseClientEvent;
 import system.lang.Time;
 import system.util.HashSet;
 import system.util.HashTable;
+import system.util.VectorMap;
 import engine.log.Logger;
 
 //@nonTransactional

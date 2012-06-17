@@ -184,7 +184,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	commandQueue = new CommandQueueActionVector();
 	immediateQueue = new CommandQueueActionVector();
 
-	closeobjects = new SortedVector<ManagedReference<QuadTreeEntry*> > ();
+	closeobjects = new CloseObjectsVector();
 	closeobjects->setNoDuplicateInsertPlan();
 
 	healthWoundHeal = 0;
@@ -662,10 +662,10 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 					//Locker locker(thisZone);
 
 					if (closeobjects == NULL) {
-						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), &closeSceneObjects, true);
+						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), 192, &closeSceneObjects, true);
 						maxInRangeObjects = closeSceneObjects.size();
 					} else {
-						closeobjects.safeCopyTo(closeSceneObjects);
+						closeobjects->safeCopyTo(closeSceneObjects);
 						maxInRangeObjects = closeSceneObjects.size();
 					}
 

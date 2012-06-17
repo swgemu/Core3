@@ -200,12 +200,24 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 			updateInRangeObjectsOnMount(sceneObject);
 		}
 	}
+	
+	zone->unlock();
 
 	zone->updateActiveAreas(sceneObject);
 
-	zone->unlock();
+//	zone->unlock();
+	
+	bool isInvis = false;
 
-	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
+	if (sceneObject->isCreatureObject()) {
+		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+		
+		if(creo->isInvisible())
+			isInvis = true;
+		}
+
+
+	if (!isInvis && sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
 			sceneObject->broadcastMessage(message, false, true);
@@ -378,17 +390,25 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 		if (!sceneObject->isActiveArea())
 			rootZone->remove(sceneObject);
+			
+		rootZone->dropSceneObject(sceneObject);
+		
+		locker.release();
 
 		SortedVector<ManagedReference<QuadTreeEntry*> >* closeobjects = sceneObject->getCloseObjects();
 
+		
 		if (closeobjects != NULL) {
-			while (closeobjects->size() > 0) {
-				ManagedReference<QuadTreeEntry*> obj = closeobjects->get(0);
+			try {
+				while (closeobjects->size() > 0) {
+					ManagedReference<QuadTreeEntry*> obj = closeobjects->get(0);
 
-				if (obj != sceneObject && obj->getCloseObjects() != NULL)
-					obj->removeInRangeObject(sceneObject);
-
-				sceneObject->removeInRangeObject((int) 0);
+					if (obj != sceneObject && obj->getCloseObjects() != NULL)
+						obj->removeInRangeObject(sceneObject);
+					
+					sceneObject->removeInRangeObject((int) 0);
+				}
+			} catch (...) {
 			}
 		} else {
 			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
@@ -403,9 +423,9 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			}
 		}
 
-		rootZone->dropSceneObject(sceneObject);
+//		rootZone->dropSceneObject(sceneObject);
 
-		locker.release();
+//		locker.release();
 
 		Vector<ManagedReference<ActiveArea*> >* activeAreas =  sceneObject->getActiveAreas();
 

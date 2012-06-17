@@ -234,7 +234,7 @@ int ZoneClientSessionImplementation::getCharacterCount(int galaxyId) {
 }
 
 bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int galaxyId) {
-	int lowerBound = characters.lowerBound(VectorMapEntry<uint32, uint64>(galaxyId));
+/*	int lowerBound = characters.lowerBound(VectorMapEntry<uint32, uint64>(galaxyId));
 
 	if (lowerBound < 0)
 		return false;
@@ -246,6 +246,15 @@ bool ZoneClientSessionImplementation::hasCharacter(uint64 cid, unsigned int gala
 		if (characters.elementAt(i).getValue() == cid)
 			return true;
 	}
+	
+	*/
+	
+	for (int i = 0; i < characters.size(); ++i) {
+		if (characters.elementAt(i).getKey() == galaxyId && 
+			characters.elementAt(i).getValue() == cid)
+			return true;
+	}
+	
 
 	return false;
 }

@@ -161,7 +161,7 @@ Vector3 EntertainerMissionObjective::getEndPosition() {
 
 DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -205,31 +205,31 @@ EntertainerMissionObjectiveImplementation::operator const EntertainerMissionObje
 }
 
 void EntertainerMissionObjectiveImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void EntertainerMissionObjectiveImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void EntertainerMissionObjectiveImplementation::_serializationHelperMethod() {

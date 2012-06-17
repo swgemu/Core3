@@ -150,12 +150,16 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 	if (closeobjects != NULL) {
 		Zone* zone = getZone();
 
-		Locker locker(zone);
+		//Locker locker(zone);
 
 		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
+		
+		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+		
+		closeobjects->safeCopyTo(closeObjects);
 
-		for (int i = 0; i < closeobjects->size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeobjects->get(i).get());
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
 			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = cast<CreatureObject*>(obj);

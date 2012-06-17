@@ -11,6 +11,8 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+#include "engine/util/u3d/CloseObjectsVector.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"

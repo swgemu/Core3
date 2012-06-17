@@ -128,7 +128,8 @@ void ServerCore::initialize() {
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr,
-				DistributedObjectBroker::NAMING_DIRECTORY_PORT);
+//				DistributedObjectBroker::NAMING_DIRECTORY_PORT);
+				44419);
 
 		orb->setCustomObjectManager(objectManager);
 

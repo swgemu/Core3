@@ -98,6 +98,9 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	galaxyName = "Core3";
 
 	processor = NULL;
+	
+	
+	serverCap = 1500;
 
 	phandler = NULL;
 
@@ -401,8 +404,9 @@ void ZoneServerImplementation::processMessage(Message* message) {
 
 	Task* task = zonePacketHandler->generateMessageTask(client, message);
 
-	if (task != NULL)
-		Core::getTaskManager()->executeTask(task);
+	if (task != NULL) {
+		Core::getTaskManager()->executeTask(task, ((MessageCallback*)task)->getTaskQueue());
+	}
 
 	delete message;
 }
@@ -496,7 +500,10 @@ void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
+	serverCap += amount;
 	//userManager->changeUserCap(amount);
+	
+	info("server cap changed to " + String::valueOf(serverCap), true);
 
 	unlock();
 }
@@ -560,7 +567,8 @@ void ZoneServerImplementation::printInfo() {
 		}
 	}
 
-	msg << dec << totalCreatures << " random creatures spawned" << endl;
+//	msg << dec << totalCreatures << " random creatures spawned" << endl;
+	msg << dec << playerManager->getOnlineZoneClientMap()->getDistinctIps() << " total distinct ips connected";
 #endif
 
 	unlock();

@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class CommandQueueActionEvent : public Task {
-	ManagedReference<CreatureObject*> creature;
+	ManagedWeakReference<CreatureObject*> creature;
 	int type;
 public:
 	const static int IMMEDIATE = 1;
@@ -64,6 +64,11 @@ public:
 		//TODO: FIXME
 		/*if (creature == NULL)
 			return;*/
+			
+		ManagedReference<CreatureObject*> creature = this->creature.get();
+		
+		if (creature == NULL)
+			return;
 
 		try {
 			Locker creatureLocker(creature);

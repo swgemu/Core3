@@ -1317,12 +1317,15 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	}
 
 	try {
-		zone->rlock();
+		//zone->rlock();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+		SortedVector<QuadTreeEntry* > closeObjects(vec->size(), 10);
+				
+		vec->safeCopyTo(closeObjects);
 
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects->get(i).get());
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i));
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
@@ -1356,7 +1359,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			zone->runlock();
+//			zone->runlock();
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
@@ -1370,12 +1373,12 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				throw;
 			}
 
-			zone->rlock();
+//			zone->rlock();
 		}
 
-		zone->runlock();
+//		zone->runlock();
 	} catch (...) {
-		zone->runlock();
+//		zone->runlock();
 
 		throw;
 	}
@@ -1386,12 +1389,14 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
-	Locker _locker(zone);
+	//Locker _locker(zone);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(vec->size(), 10);
+	vec->safeCopyTo(closeObjects);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
 			CreatureObject* player = cast<CreatureObject*>( object);

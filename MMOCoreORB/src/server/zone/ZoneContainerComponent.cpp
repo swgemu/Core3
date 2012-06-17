@@ -201,10 +201,17 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			parent->removeObject(object, NULL, false);
 		} else
 			zone->remove(object);
+			
+		Zone* oldZone = zone;
+			
+//		oldZone->dropSceneObject(object);
+		
+//		zoneLocker.release();
 
 		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = object->getCloseObjects();
 
 		if (closeObjects != NULL) {
+			try {
 			while (closeObjects->size() > 0) {
 				ManagedReference<QuadTreeEntry*> obj = closeObjects->get(0);
 
@@ -212,6 +219,8 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 					obj->removeInRangeObject(object);
 
 				object->removeInRangeObject((int) 0);
+			}
+			} catch (...) {
 			}
 		} else {
 			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
@@ -226,7 +235,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			}
 		}
 
-		Zone* oldZone = zone;
+//		Zone* oldZone = zone;
 		zone = NULL;
 
 		oldZone->dropSceneObject(object);

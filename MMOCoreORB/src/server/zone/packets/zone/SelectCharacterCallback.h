@@ -72,6 +72,11 @@ public:
 
 				return;
 			}
+			
+			if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
+				client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
+				return;				
+			}
 
 			if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
 				ErrorMessage* errMsg = new ErrorMessage("Login Error", "You reached the max online character count.", 0x0);
@@ -101,7 +106,7 @@ public:
 
 				root = root == NULL ? playerParent : root;
 
-				ghost->updateLastValidatedPosition();
+				//ghost->updateLastValidatedPosition();
 
 				if (root->getZone() == NULL && root->isStructureObject()) {
 					player->initializePosition(root->getPositionX(), root->getPositionZ(), root->getPositionY());

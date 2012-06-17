@@ -104,6 +104,12 @@ public:
 
 		if (cityPlayerCount != 0)
 			msg << endl << "current players in the city:" << cityPlayerCount;
+			
+		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+		
+		if (vec != NULL) {
+			msg << endl << "in range object count = " << vec->size() << endl;
+		}
 
 		creature->sendSystemMessage(msg.toString());
 
