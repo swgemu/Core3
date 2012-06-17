@@ -491,40 +491,6 @@ void InstallationObjectImplementation::clearResourceHopper() {
 	broadcastToOperators(inso7);
 }
 
-void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
-	int index = resourceHopper.find(container);
-
-	if (index == -1)
-		return;
-
-	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": removeResourceFromHopper: " + container->getSpawnName());
-
-
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
-	inso7->updateHopper();
-	inso7->startUpdate(0x0D);
-
-	if(isOperating() && index == 0) {
-		container->setQuantity(0, false, true);
-		resourceHopper.set(index, container, inso7, 1);
-	} else {
-		container->destroyObjectFromDatabase(true);
-		resourceHopper.remove(index, inso7, 1);
-	}
-
-	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
-	inso7->updateHopperSize(getHopperSize());
-	inso7->updateExtractionRate(getActualRate());
-
-	inso7->close();
-
-	broadcastToOperators(inso7);
-
-	if (resourceHopper.size() == 0)
-		setOperating(false);
-}
-
 void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* container) {
 	if (resourceHopper.contains(container))
 		return;
@@ -660,14 +626,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	history.add("		oldQuantity: " + String::valueOf(container->getQuantity()));
 	history.add("		notifyClient: " + String::valueOf(notifyClient));
 
-
-	if (container->getQuantity() == newQuantity && newQuantity != 0)
-		return;
-
 	container->setQuantity(newQuantity, false, true);
-
-	if (!notifyClient)
-		return;
 
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* cont = resourceHopper.get(i);
@@ -684,7 +643,10 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
 
-			broadcastToOperators(inso7);
+			if (notifyClient)
+				broadcastToOperators(inso7);
+			else
+				delete inso7;
 		}
 	}
 

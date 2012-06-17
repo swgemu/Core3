@@ -177,7 +177,6 @@ class InstallationObject extends StructureObject {
 	public native void setActiveResource(ResourceContainer container);
 	public native void changeActiveResourceID(unsigned long spawnObjectID);
 	public native void addResourceToHopper(ResourceContainer container);
-	public native void removeResourceFromHopper(ResourceContainer container);
 	public native void clearResourceHopper();
 	
 	public native float getHopperSize();

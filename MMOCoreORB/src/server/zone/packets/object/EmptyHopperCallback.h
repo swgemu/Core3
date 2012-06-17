@@ -107,8 +107,11 @@ public:
 				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
 				if (!inventory->hasFullContainerObjects()) {
-					container->split(quantity, player);
-					inso->updateResourceContainerQuantity(container, container->getQuantity(), true);
+					ManagedReference<ResourceContainer*> newContainer = container->getSpawnObject()->createResource(quantity);
+					inventory->transferObject(newContainer, -1, false);
+					inventory->broadcastObject(newContainer, true);
+
+					inso->updateResourceContainerQuantity(container, container->getQuantity() - quantity, true);
 				} else {
 					StringIdChatParameter stringId("error_message", "inv_full");
 					player->sendSystemMessage(stringId);
