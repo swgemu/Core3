@@ -285,6 +285,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 	if (isPrivateStructure() && !isOnEntryList(player))
 		return false;
 
+	/*
 	if(accessFee > 0 && !isOnEntryList(player)) {
 
 		if(paidAccessList.contains(player->getObjectID())) {
@@ -301,7 +302,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
 		ejectObject(player);
 	}
-
+*/
 	return true;
 }
 
@@ -553,6 +554,29 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	if (getZone() == NULL)
 		return;
+
+	if (accessFee > 0 && !isOnEntryList(player)) {
+		//thread safety issues!
+		if (paidAccessList.contains(player->getObjectID())) {
+			uint32 expireTime = paidAccessList.get(player->getObjectID());
+
+			if(expireTime <= time(0)) {
+				paidAccessList.drop(player->getObjectID());
+
+				promptPayAccessFee(player);
+
+				ejectObject(player);
+
+				return;
+			}
+		} else {
+			promptPayAccessFee(player);
+
+			ejectObject(player);
+
+			return;
+		}
+	}
 
 	int i = 0;
 	
