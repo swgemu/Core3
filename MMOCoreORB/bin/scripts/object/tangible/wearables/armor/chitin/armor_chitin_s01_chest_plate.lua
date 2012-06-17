@@ -116,7 +116,7 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_chest_plate = object_tan
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 125, 38, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 75, 23, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_armor_chitin_s01_chest_plate, "object/tangible/wearables/armor/chitin/armor_chitin_s01_chest_plate.iff")

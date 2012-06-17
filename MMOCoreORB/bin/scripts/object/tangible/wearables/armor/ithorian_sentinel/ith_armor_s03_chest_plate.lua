@@ -78,7 +78,7 @@ object_tangible_wearables_armor_ithorian_sentinel_ith_armor_s03_chest_plate = ob
 	experimentalMin = {0, 0, 0, 1000, 1, 30000, 250, 66, 25, 1, 0, 0, 0},
 	experimentalMax = {0, 0, 0, 1000, 40, 50000, 150, 39, 15, 1, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_sentinel_ith_armor_s03_chest_plate, "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_chest_plate.iff")

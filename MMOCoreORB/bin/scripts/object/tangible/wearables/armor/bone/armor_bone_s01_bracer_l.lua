@@ -116,7 +116,7 @@ object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l = object_tangible_w
 	experimentalMin = {0, 0, 0, 1000, 5, 7500, 6, 8, 4, 1, 2, 5, 7500},
 	experimentalMax = {0, 0, 0, 1000, 20, 12500, 4, 4, 2, 1, 2, 30, 12500},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l, "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff")
