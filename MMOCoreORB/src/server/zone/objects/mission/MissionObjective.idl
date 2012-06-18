@@ -69,11 +69,16 @@ class MissionObjective extends ManagedObject implements Logger {
 	protected Time missionStartTime;
 	
 	protected FailMissionAfterCertainTimeTask failTask;
+	
+	protected unsigned long timeRemaining;
 
 	public MissionObjective(MissionObject parent) {
 		mission = parent;
 		
 		Logger.setLoggingName("MissionObjective");
+		
+		//Default time remaining 2 days.
+		timeRemaining = 48 * 60 * 60 * 1000;
 		
 		missionStartTime.updateToCurrentTime();
 	}

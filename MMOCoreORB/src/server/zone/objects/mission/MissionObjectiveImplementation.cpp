@@ -41,8 +41,7 @@ ManagedWeakReference<CreatureObject*> MissionObjectiveImplementation::getPlayerO
 }
 
 void MissionObjectiveImplementation::activate() {
-	uint64 twoDays = 48 * 60 * 60 * 1000;
-	uint64 timeRemaining = twoDays -  missionStartTime.miliDifference();
+	timeRemaining -= missionStartTime.miliDifference();
 
 	if (timeRemaining < 1) {
 		timeRemaining = 1;

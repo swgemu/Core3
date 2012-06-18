@@ -26,6 +26,7 @@
 #include "MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
+	timeRemaining = 1 * 60 *60 * 1000;
 	MissionObjectiveImplementation::activate();
 
 	if (!activateWithResult()) {

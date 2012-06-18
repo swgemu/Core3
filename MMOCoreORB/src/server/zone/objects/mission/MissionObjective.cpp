@@ -419,6 +419,11 @@ bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
+	if (_name == "MissionObjective.timeRemaining") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&timeRemaining, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -476,8 +481,16 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "MissionObjective.timeRemaining";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&timeRemaining, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 5;
+
+	return _count + 6;
 }
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
@@ -486,6 +499,8 @@ MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* pa
 	mission = parent;
 	// server/zone/objects/mission/MissionObjective.idl():  		Logger.setLoggingName("MissionObjective");
 	Logger::setLoggingName("MissionObjective");
+	// server/zone/objects/mission/MissionObjective.idl():  		timeRemaining = 48 * 60 * 60 * 1000;
+	timeRemaining = 48 * 60 * 60 * 1000;
 	// server/zone/objects/mission/MissionObjective.idl():  		missionStartTime.updateToCurrentTime();
 	(&missionStartTime)->updateToCurrentTime();
 }

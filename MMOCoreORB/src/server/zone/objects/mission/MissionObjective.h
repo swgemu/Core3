@@ -178,6 +178,8 @@ protected:
 
 	Reference<FailMissionAfterCertainTimeTask* > failTask;
 
+	unsigned long long timeRemaining;
+
 public:
 	MissionObjectiveImplementation(MissionObject* parent);
 
