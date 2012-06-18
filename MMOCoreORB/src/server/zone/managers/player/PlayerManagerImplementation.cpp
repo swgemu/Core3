@@ -3326,8 +3326,16 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	for (int i = 0; i < clients.size(); ++i) {
 		ZoneClientSession* session = clients.get(i);
 
-		if (session->getPlayer() != NULL)
-			++onlineCount;
+		ManagedReference<SceneObject*> player = session->getPlayer();
+
+		if (player != NULL) {
+			ManagedReference<PlayerObject*> ghost = player->getSlottedObject("ghost");
+
+			if (ghost != NULL && ghost->getAdminLevel() > 0)
+				continue;
+			else
+				++onlineCount;
+		}
 	}
 
 	if (onlineCount >= MAX_CHAR_ONLINE_COUNT)
