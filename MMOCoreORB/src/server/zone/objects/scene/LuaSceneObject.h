@@ -67,6 +67,8 @@ namespace scene {
 		int setContainerInheritPermissionsFromParent(lua_State* L);
 		int setContainerAllowPermission(lua_State* L);
 		int setContainerDenyPermission(lua_State* L);
+		int setContainerDefaultAllowPermission(lua_State* L);
+		int setContainerDefaultDenyPermission(lua_State* L);
 		int hasActiveArea(lua_State* L);
 
 	private:

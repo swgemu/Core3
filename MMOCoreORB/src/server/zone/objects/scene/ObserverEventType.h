@@ -55,6 +55,7 @@ public:
 	const static int XPAWARDED = 43; // ManagedObject arg1 = player, long arg2 = xp amount
 	const static int SPICEDOWNERACTIVATED = 44; // ManagedObject arg1 = player, long arg2 = 0
 	const static int FORCEBUFFHIT = 45; // ManagedObject arg1 = player, long arg2 = damage amount absorbed.
+	const static int SPATIALCHATRECEIVED = 46; // ManagedObject arg1 = ChatMessage containing string text, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

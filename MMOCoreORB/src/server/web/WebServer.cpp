@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "servlets/character/CharacterServlet.h"
 #include "servlets/account/AccountServlet.h"
 #include "servlets/permissions/PermissionsServlet.h"
+#include "servlets/admin/AdminServlet.h"
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;
@@ -114,13 +115,13 @@ void WebServer::init() {
 }
 
 void WebServer::registerBaseContexts() {
-
 	addContext("login", new LoginServlet("login"));
 	addContext("main", new MainServlet("main"));
 	addContext("logs", new LogsServlet("logs"));
 	addContext("character", new CharacterServlet("character"));
 	addContext("account", new AccountServlet("account"));
 	addContext("permissions", new PermissionsServlet("permissions"));
+	addContext("admin", new AdminServlet("admin"));
 }
 
 void WebServer::whitelistInit() {

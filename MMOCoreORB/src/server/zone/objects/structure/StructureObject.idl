@@ -405,9 +405,8 @@ class StructureObject extends TangibleObject {
 	
 	public native boolean isCampStructure();
 	
-	//The + 1 is for a bug with IDL where <= throws an error...
 	public boolean isRedeedable() {
-		return (getRedeedCost() < (surplusMaintenance + 1));
+		return (getRedeedCost() < surplusMaintenance);
 	}
 	
 	@local

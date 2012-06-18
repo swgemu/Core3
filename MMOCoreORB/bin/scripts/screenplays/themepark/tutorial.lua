@@ -861,7 +861,7 @@ end
 function TutorialScreenPlay:chatEvent(creatureObject, nothing, test)
 	local creature = LuaCreatureObject(creatureObject)
 	
-	message = getChatMessage(nothing)
+	message = string.lower(getChatMessage(nothing))
 	
 	if message == "silence" then
 		writeData(creature:getObjectID() .. ":tutorial:sound", 0)

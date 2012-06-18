@@ -6,6 +6,7 @@
  */
 
 #include "DirectorManager.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
@@ -92,6 +93,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "deleteSharedMemory", deleteSharedMemory);
+	lua_register(luaEngine->getLuaState(), "readStringSharedMemory", readStringSharedMemory);
+	lua_register(luaEngine->getLuaState(), "writeStringSharedMemory", writeStringSharedMemory);
+	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
@@ -158,6 +162,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OBJECTRADIALOPENED", ObserverEventType::OBJECTRADIALOPENED);
 	luaEngine->setGlobalInt("ENTEREDBUILDING", ObserverEventType::ENTEREDBUILDING);
 	luaEngine->setGlobalInt("EXITEDBUILDING", ObserverEventType::EXITEDBUILDING);
+	luaEngine->setGlobalInt("SPATIALCHATRECEIVED", ObserverEventType::SPATIALCHATRECEIVED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -191,6 +196,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 
+	Luna<LuaCellObject>::Register(luaEngine->getLuaState());
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
@@ -337,7 +343,7 @@ int DirectorManager::deleteSharedMemory(lua_State* L) {
 	DirectorManager::instance()->runlock();
 #endif
 
-	return 1;
+	return 0;
 }
 
 int DirectorManager::writeSharedMemory(lua_State* L) {
@@ -349,6 +355,59 @@ int DirectorManager::writeSharedMemory(lua_State* L) {
 #endif
 
 	DirectorManager::instance()->sharedMemory->put(key, data);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->unlock();
+#endif
+
+	return 0;
+}
+
+
+
+int DirectorManager::readStringSharedMemory(lua_State* L) {
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	String data = DirectorManager::instance()->sharedMemory->getString(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	lua_pushstring(L, data);
+
+	return 1;
+}
+
+int DirectorManager::deleteStringSharedMemory(lua_State* L) {
+	String key = Lua::getStringParameter(L);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->rlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->removeString(key);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->runlock();
+#endif
+
+	return 0;
+}
+
+int DirectorManager::writeStringSharedMemory(lua_State* L) {
+	String key = lua_tostring(L, -2);
+	String data = lua_tostring(L, -1);
+
+#ifndef WITH_STM
+	DirectorManager::instance()->wlock();
+#endif
+
+	DirectorManager::instance()->sharedMemory->putString(key, data);
 
 #ifndef WITH_STM
 	DirectorManager::instance()->unlock();
@@ -378,8 +437,6 @@ int DirectorManager::getChatMessage(lua_State* L) {
 
 	if (cm != NULL)
 		text = cm->toString();
-
-	text = text.toLowerCase();
 
 	lua_pushstring(L, text.toCharArray());
 

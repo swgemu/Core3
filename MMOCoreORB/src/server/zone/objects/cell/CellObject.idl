@@ -51,6 +51,7 @@ import server.zone.Zone;
 include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.templates.SharedObjectTemplate;
 
+@lua
 class CellObject extends SceneObject {
 	protected int cellNumber;
 	

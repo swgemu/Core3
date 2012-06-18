@@ -12,18 +12,31 @@
 
 class DirectorSharedMemory : public Object {
 	HashTable<String, uint64> hashTable;
+	HashTable<String, String> stringTable;
 
 public:
 	uint64 get(const String& k) {
 		return hashTable.get(k);
 	}
 
+	String getString(const String& k) {
+		return stringTable.get(k);
+	}
+
 	void put(const String& k, uint64 v) {
 		hashTable.put(k, v);
 	}
 
+	void putString(const String& k, const String& v) {
+		stringTable.put(k, v);
+	}
+
 	void remove(const String& k) {
 		hashTable.remove(k);
+	}
+
+	void removeString(const String& k) {
+		stringTable.remove(k);
 	}
 
 	void setNullValue(uint64 o) {

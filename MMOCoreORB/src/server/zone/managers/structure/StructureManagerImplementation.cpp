@@ -520,7 +520,7 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	int maint = structureObject->getSurplusMaintenance();
 	int redeedCost = structureObject->getRedeedCost();
 
-	if (deed != NULL && maint >= redeedCost) {
+	if (deed != NULL && structureObject->isRedeedable()) {
 		Locker _lock(deed, structureObject);
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");

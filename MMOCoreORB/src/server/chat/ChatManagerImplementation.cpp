@@ -392,7 +392,7 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 }
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
-		Zone* zone = player->getZone();
+	Zone* zone = player->getZone();
 
 	if (zone == NULL)
 		return;
@@ -433,11 +433,18 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		for (int i = 0; i < closeObjects->size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
 
-			if (object->isPlayerCreature()) {
-				CreatureObject* creature = cast<CreatureObject*>(object);
+			if (player->isInRange(object, 128)) {
 
-				if (player->isInRange(creature, 128)) {
+				//Notify observers that are expecting spatial chat.
+				if (object->getObserverCount(ObserverEventType::SPATIALCHATRECEIVED)) {
+					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
+					chatMessage->setString(message.toString());
 
+					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage);
+				}
+
+				if (object->isPlayerCreature()) {
+					CreatureObject* creature = cast<CreatureObject*>(object);
 					PlayerObject* ghost = creature->getPlayerObject();
 
 					if (ghost == NULL)

@@ -80,6 +80,9 @@ namespace server {
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
 		static int deleteSharedMemory(lua_State* L);
+		static int readStringSharedMemory(lua_State* L);
+		static int writeStringSharedMemory(lua_State* L);
+		static int deleteStringSharedMemory(lua_State* L);
 		static int getSceneObject(lua_State* L);
 		static int getCreatureObject(lua_State* L);
 		static int addStartingItemsInto(lua_State* L);
