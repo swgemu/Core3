@@ -334,13 +334,13 @@ int DirectorManager::deleteSharedMemory(lua_State* L) {
 	String key = Lua::getStringParameter(L);
 
 #ifndef WITH_STM
-	DirectorManager::instance()->rlock();
+	DirectorManager::instance()->wlock();
 #endif
 
 	DirectorManager::instance()->sharedMemory->remove(key);
 
 #ifndef WITH_STM
-	DirectorManager::instance()->runlock();
+	DirectorManager::instance()->unlock();
 #endif
 
 	return 0;
@@ -387,13 +387,13 @@ int DirectorManager::deleteStringSharedMemory(lua_State* L) {
 	String key = Lua::getStringParameter(L);
 
 #ifndef WITH_STM
-	DirectorManager::instance()->rlock();
+	DirectorManager::instance()->wlock();
 #endif
 
 	DirectorManager::instance()->sharedMemory->removeString(key);
 
 #ifndef WITH_STM
-	DirectorManager::instance()->runlock();
+	DirectorManager::instance()->unlock();
 #endif
 
 	return 0;
