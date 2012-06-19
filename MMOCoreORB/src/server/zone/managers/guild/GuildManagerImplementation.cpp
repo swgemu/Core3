@@ -259,7 +259,8 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	if (guild == NULL)
 		return;
 
-	Locker _lock(guild);
+	Locker _locker(player);
+	Locker _lock(guild, player);
 
 	GuildMemberList* memberList = guild->getGuildMemberList();
 
