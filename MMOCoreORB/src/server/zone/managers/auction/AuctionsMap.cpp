@@ -14,7 +14,7 @@
  *	AuctionsMapStub
  */
 
-enum {RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_GETITEM__LONG_,RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_,RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_};
+enum {RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_,RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_,RPC_UPDATEUID__STRING_STRING_};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -48,6 +48,22 @@ int AuctionsMap::addItem(SceneObject* vendor, String& uid, AuctionItem* item) {
 		return _implementation->addItem(vendor, uid, item);
 }
 
+int AuctionsMap::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_);
+		method.addObjectParameter(vendor);
+		method.addAsciiParameter(uid);
+		method.addObjectParameter(item);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->removeItem(vendor, uid, item);
+}
+
 AuctionItem* AuctionsMap::getItem(unsigned long long id) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -62,22 +78,36 @@ AuctionItem* AuctionsMap::getItem(unsigned long long id) {
 		return _implementation->getItem(id);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(const String& search) {
+bool AuctionsMap::containsItem(unsigned long long id) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, RPC_CONTAINSITEM__LONG_);
+		method.addUnsignedLongParameter(id);
+
+		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->getVendorItems(search);
+		return _implementation->containsItem(id);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getBazaarItems(const String& search) {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(SceneObject* vendor, const String& vuid, const String& search) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getBazaarItems(search);
+		return _implementation->getVendorItems(vendor, vuid, search);
+}
+
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getBazaarItems(SceneObject* vendor, const String& vuid, const String& search) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getBazaarItems(vendor, vuid, search);
 }
 
 int AuctionsMap::getVendorItemCount(PlayerObject* ghost) {
@@ -106,6 +136,21 @@ int AuctionsMap::getBazaarItemCount(PlayerObject* ghost) {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getBazaarItemCount(ghost);
+}
+
+void AuctionsMap::updateUID(const String& oldUID, const String& newUID) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEUID__STRING_STRING_);
+		method.addAsciiParameter(oldUID);
+		method.addAsciiParameter(newUID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateUID(oldUID, newUID);
 }
 
 DistributedObjectServant* AuctionsMap::_getImplementation() {
@@ -213,21 +258,6 @@ bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "AuctionsMap.vendorItemsForSale") {
-		TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::parseFromBinaryStream(&vendorItemsForSale, stream);
-		return true;
-	}
-
-	if (_name == "AuctionsMap.bazaarItemsForSale") {
-		TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::parseFromBinaryStream(&bazaarItemsForSale, stream);
-		return true;
-	}
-
-	if (_name == "AuctionsMap.allItems") {
-		TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::parseFromBinaryStream(&allItems, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -245,53 +275,36 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AuctionsMap.vendorItemsForSale";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::toBinaryStream(&vendorItemsForSale, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionsMap.bazaarItemsForSale";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> >::toBinaryStream(&bazaarItemsForSale, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionsMap.allItems";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, ManagedReference<AuctionItem* > > >::toBinaryStream(&allItems, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-
-	return _count + 3;
+	return _count + 0;
 }
 
 AuctionsMapImplementation::AuctionsMapImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItemsForSale.setNullValue(null);
-	(&vendorItemsForSale)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItemsForSale.setNoDuplicateInsertPlan();
 	(&vendorItemsForSale)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarItemsForSale.setNullValue(null);
-	(&bazaarItemsForSale)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarItemsForSale.setNoDuplicateInsertPlan();
 	(&bazaarItemsForSale)->setNoDuplicateInsertPlan();
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNullValue(null);
 	(&allItems)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNoDuplicateInsertPlan();
 	(&allItems)->setNoDuplicateInsertPlan();
+	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setLoggingName("AuctionsMap");
+	(&logger)->setLoggingName("AuctionsMap");
+	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setGlobalLogging(true);
+	(&logger)->setGlobalLogging(true);
+	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setLogging(true);
+	(&logger)->setLogging(true);
 }
 
 AuctionItem* AuctionsMapImplementation::getItem(unsigned long long id) {
 	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.get(id);
 	return (&allItems)->get(id);
+}
+
+bool AuctionsMapImplementation::containsItem(unsigned long long id) {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.contains(id);
+	return (&allItems)->contains(id);
 }
 
 int AuctionsMapImplementation::getVendorItemCount(PlayerObject* ghost) {
@@ -325,9 +338,20 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(addItem(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(uid), static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_:
+		{
+			String uid; 
+			resp->insertSignedInt(removeItem(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(uid), static_cast<AuctionItem*>(inv->getObjectParameter())));
+		}
+		break;
 	case RPC_GETITEM__LONG_:
 		{
 			resp->insertLong(getItem(inv->getUnsignedLongParameter())->_getObjectID());
+		}
+		break;
+	case RPC_CONTAINSITEM__LONG_:
+		{
+			resp->insertBoolean(containsItem(inv->getUnsignedLongParameter()));
 		}
 		break;
 	case RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_:
@@ -340,6 +364,12 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getBazaarItemCount(static_cast<PlayerObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_UPDATEUID__STRING_STRING_:
+		{
+			String oldUID; String newUID; 
+			updateUID(inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -349,8 +379,16 @@ int AuctionsMapAdapter::addItem(SceneObject* vendor, String& uid, AuctionItem* i
 	return (static_cast<AuctionsMap*>(stub))->addItem(vendor, uid, item);
 }
 
+int AuctionsMapAdapter::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+	return (static_cast<AuctionsMap*>(stub))->removeItem(vendor, uid, item);
+}
+
 AuctionItem* AuctionsMapAdapter::getItem(unsigned long long id) {
 	return (static_cast<AuctionsMap*>(stub))->getItem(id);
+}
+
+bool AuctionsMapAdapter::containsItem(unsigned long long id) {
+	return (static_cast<AuctionsMap*>(stub))->containsItem(id);
 }
 
 int AuctionsMapAdapter::getVendorItemCount(PlayerObject* ghost) {
@@ -359,6 +397,10 @@ int AuctionsMapAdapter::getVendorItemCount(PlayerObject* ghost) {
 
 int AuctionsMapAdapter::getBazaarItemCount(PlayerObject* ghost) {
 	return (static_cast<AuctionsMap*>(stub))->getBazaarItemCount(ghost);
+}
+
+void AuctionsMapAdapter::updateUID(const String& oldUID, const String& newUID) {
+	(static_cast<AuctionsMap*>(stub))->updateUID(oldUID, newUID);
 }
 
 /*

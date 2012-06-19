@@ -104,4 +104,6 @@ void VendorDataComponent::runVendorUpdate() {
 		vendor->setConditionDamage(-maintAmount, true);
 
 	lastSuccessfulUpdate.updateToCurrentTime();
+
+	vendorCheckTask->reschedule(1000 * 60 * 60);
 }

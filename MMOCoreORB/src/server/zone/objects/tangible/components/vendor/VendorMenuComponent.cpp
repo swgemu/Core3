@@ -18,8 +18,6 @@
 void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
-	return;
-
 	if(!sceneObject->isVendor())
 		return;
 
@@ -63,11 +61,12 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		else
 			menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:enable_vendor_search");
 
-		if (!vendorData->isRegistered())
-			menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
-		else
-			menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
-
+		if(player->hasSkill("crafting_merchant_advertising_3")) {
+			if (!vendorData->isRegistered())
+				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
+			else
+				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
+		}
 	}
 
 	menuResponse->addRadialMenuItemToRadialID(240, 245, 3, "@player_structure:remove_vendor");
@@ -75,8 +74,6 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		CreatureObject* player, byte selectedID) {
-
-	return 0;
 
 	if (!sceneObject->isVendor())
 		return 0;
@@ -135,10 +132,12 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	}
 
 	case 244: {
-		if (!vendorData->isRegistered())
-			VendorManager::instance()->sendRegisterVendorTo(player, vendor);
-		else
-			VendorManager::instance()->handleUnregisterVendor(player, vendor);
+		if(player->hasSkill("crafting_merchant_advertising_3")) {
+			if (!vendorData->isRegistered())
+				VendorManager::instance()->sendRegisterVendorTo(player, vendor);
+			else
+				VendorManager::instance()->handleUnregisterVendor(player, vendor);
+		}
 		return 0;
 	}
 

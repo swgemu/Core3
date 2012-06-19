@@ -49,44 +49,62 @@ import system.util.VectorMap;
 import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerObject;
+include server.zone.managers.auction.VuidString;
+include server.zone.managers.auction.VuidItemMap;
 
 class AuctionsMap extends ManagedObject {
 	
 	@dereferenced
-	protected VectorMap<string, SortedVector<AuctionItem> > vendorItemsForSale;
+	protected transient VuidItemMap vendorItemsForSale;
 	
 	@dereferenced
-	protected VectorMap<string, SortedVector<AuctionItem> > bazaarItemsForSale;
+	protected transient VuidItemMap bazaarItemsForSale;
 
 	@dereferenced
-	protected VectorMap<unsigned long, AuctionItem> allItems;
+	protected transient VectorMap<unsigned long, AuctionItem> allItems;
+	
+	@dereferenced
+	protected transient Logger logger;
 	
 	public AuctionsMap() {
-		vendorItemsForSale.setNullValue(null);
+		//vendorItemsForSale.setNullValue(null);
 		vendorItemsForSale.setNoDuplicateInsertPlan();
 		
-		bazaarItemsForSale.setNullValue(null);
+		//bazaarItemsForSale.setNullValue(null);
 		bazaarItemsForSale.setNoDuplicateInsertPlan();
 		
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
+		
+		logger.setLoggingName("AuctionsMap");
+		logger.setGlobalLogging(true);
+		logger.setLogging(true);
 	}
 
 	public native int addItem(SceneObject vendor, string uid, AuctionItem item);
 	private native int addVendorItem(SceneObject vendor, string uid, AuctionItem item);
 	private native int addBazaarItem(string uid, AuctionItem item);
 
+	public native int removeItem(SceneObject vendor, string uid, AuctionItem item);
+	private native int removeVendorItem(SceneObject vendor, string uid, AuctionItem item);
+	private native int removeBazaarItem(string uid, AuctionItem item);
+
+	
 	public AuctionItem getItem(unsigned long id) {
 		return allItems.get(id);
+	}
+	
+	public boolean containsItem(unsigned long id) {
+		return allItems.contains(id);
 	}
 
 	@local
 	@dereferenced
-	public native SortedVector<AuctionItem> getVendorItems(final string search);
+	public native SortedVector<AuctionItem> getVendorItems(SceneObject vendor, final string vuid, final string search);
 	
 	@local
 	@dereferenced
-	public native SortedVector<AuctionItem> getBazaarItems(final string search);
+	public native SortedVector<AuctionItem> getBazaarItems(SceneObject vendor, final string vuid, final string search);
 	
 	private native void sendVendorUpdateMail(SceneObject vendor, boolean isEmpty);
 
@@ -97,4 +115,7 @@ class AuctionsMap extends ManagedObject {
 	public int getBazaarItemCount(PlayerObject ghost) {
 		return 0;
 	}
+	
+	public native void updateUID(final string oldUID, final string newUID);
+
 }

@@ -73,7 +73,6 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
-		
 		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
@@ -83,11 +82,6 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	@local
 	public native void addSaleItem(CreatureObject player, unsigned long objectid, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
-	
-	private native string getVendorUID(SceneObject vendor);
-	
-	
-	
 	
 	@local
 	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
@@ -105,7 +99,7 @@ class AuctionManager extends ManagedService implements Logger {
 	private native void refundAuction(AuctionItem item); 
 
 	@local
-	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, TangibleObject vendor);
+	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, SceneObject vendor);
 	public native void retrieveItem(CreatureObject player, unsigned long objectid, unsigned long vendorID);
 	
 	public native void buyItem(CreatureObject player, unsigned long objectid, int price1, int price2);
@@ -125,6 +119,12 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void checkVendorItems();
 	
 	public native void checkAuctions();
+
+	public native string getVendorUID(SceneObject vendor);
+	
+	public void updateVendorUID(final string oldUID, final string newUID) {
+		auctionMap.updateUID(oldUID, newUID);
+	}
 	
 }
 

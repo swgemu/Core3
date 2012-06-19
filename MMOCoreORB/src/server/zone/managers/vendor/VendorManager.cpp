@@ -98,7 +98,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 		return;
 	}
 
-	SortedVector<ManagedReference<AuctionItem*> > vendorItems = auctionsMap->getVendorItems(vendorData->getUID());
+	SortedVector<ManagedReference<AuctionItem*> > vendorItems = auctionsMap->getVendorItems(vendor, vendorData->getUID(), vendorData->getUID());
 
 	uint32 itemsForSaleCount = 0;
 

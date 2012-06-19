@@ -25,13 +25,15 @@ int AuctionsMapImplementation::addItem(SceneObject* vendor, String& uid, Auction
 
 int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, AuctionItem* item) {
 
-	if(!vendorItemsForSale.contains(uid)) {
-		SortedVector<ManagedReference<AuctionItem*> >* items = new SortedVector<ManagedReference<AuctionItem*> >();
-		items->setNoDuplicateInsertPlan();
-		vendorItemsForSale.put(uid, items);
+	VuidString vuid(uid);
+
+	if(!vendorItemsForSale.contains(vuid)) {
+		SortedVector<ManagedReference<AuctionItem*> > items;
+		items.setNoDuplicateInsertPlan();
+		vendorItemsForSale.put(vuid, items);
 	}
 
-	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = vendorItemsForSale.get(uid);
+	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = &vendorItemsForSale.get(vuid);
 
 	if(vendorItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
@@ -52,13 +54,15 @@ int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, A
 
 int AuctionsMapImplementation::addBazaarItem(String& uid, AuctionItem* item) {
 
-	if(!bazaarItemsForSale.contains(uid)) {
-		SortedVector<ManagedReference<AuctionItem*> >* items = new SortedVector<ManagedReference<AuctionItem*> >();
-		items->setNoDuplicateInsertPlan();
-		bazaarItemsForSale.put(uid, items);
+	VuidString vuid(uid);
+
+	if(!bazaarItemsForSale.contains(vuid)) {
+		SortedVector<ManagedReference<AuctionItem*> > items;
+		items.setNoDuplicateInsertPlan();
+		bazaarItemsForSale.put(vuid, items);
 	}
 
-	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = bazaarItemsForSale.get(uid);
+	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = &bazaarItemsForSale.get(vuid);
 
 	if(bazaarItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
@@ -74,27 +78,111 @@ int AuctionsMapImplementation::addBazaarItem(String& uid, AuctionItem* item) {
 	return ItemSoldMessage::SUCCESS;
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVendorItems(const String& search) {
+int AuctionsMapImplementation::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+
+	if(vendor->isBazaarTerminal())
+		return removeBazaarItem(uid, item);
+
+	return removeVendorItem(vendor, uid, item);
+}
+
+int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+
+	if(!vendorItemsForSale.contains(uid)) {
+		return ItemSoldMessage::VENDORNOTWORKING;
+	}
+
+	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = &vendorItemsForSale.get(uid);
+
+	Locker _locker(_this.get());
+	if(vendorItems->drop(item)) {
+		allItems.drop(item->getAuctionedItemObjectID());
+
+		if(vendorItems->size() == 0)
+			sendVendorUpdateMail(vendor, true);
+
+		return ItemSoldMessage::SUCCESS;
+	}
+
+	logger.error("unable to remove vendor item");
+	return ItemSoldMessage::UNKNOWNERROR;
+}
+
+int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) {
+
+	if(!bazaarItemsForSale.contains(uid)) {
+		return ItemSoldMessage::VENDORNOTWORKING;
+	}
+
+	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = &bazaarItemsForSale.get(uid);
+
+	Locker _locker(_this.get());
+	if(bazaarItems->drop(item)) {
+		allItems.drop(item->getAuctionedItemObjectID());
+		return ItemSoldMessage::SUCCESS;
+	}
+
+	logger.error("unable to remove bazaar item");
+	return ItemSoldMessage::UNKNOWNERROR;
+}
+
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVendorItems(SceneObject* vendor, const String& vuid, const String& search) {
 	int lowerbound = 0;
 	int upperbound = vendorItemsForSale.size() - 1;
 
-	if(!search.isEmpty()) {
-		lowerbound = vendorItemsForSale.lowerBound(search);
-		upperbound = vendorItemsForSale.upperBound(search);
+	VuidString searchTerm(search);
+
+	if(!searchTerm.isEmpty()) {
+		lowerbound = vendorItemsForSale.lowerBound(searchTerm);
+		upperbound = vendorItemsForSale.upperBound(searchTerm);
 	}
 
 	SortedVector<ManagedReference<AuctionItem* > > results;
 
-	if(lowerbound == -1 || upperbound == -1)
+	if(lowerbound != -1 && upperbound == -1)
+		upperbound = lowerbound;
+
+	if(lowerbound == -1 || upperbound == -1 || vendorItemsForSale.isEmpty())
 		return results;
+
+	VendorDataComponent* vendorData = NULL;
+	DataObjectComponentReference* data = NULL;
+
+	if(vendor != NULL) {
+		data = vendor->getDataObjectComponent();
+		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
+			vendorData = cast<VendorDataComponent*>(data->get());
+	}
 
 	for(int i = lowerbound; i <= upperbound; ++i) {
 
-		SortedVector<ManagedReference<AuctionItem* > >* items = vendorItemsForSale.get(i);
+		SortedVector<ManagedReference<AuctionItem* > >* items = &vendorItemsForSale.get(i);
+		SceneObject* thisVendor = NULL;
+		VendorDataComponent* thisVendorData = NULL;
 
 		for(int j = 0; j < items->size(); ++j) {
 			ManagedReference<AuctionItem*> item = items->get(j);
-			if(item != NULL)
+			if(vendor == NULL) {
+				results.add(item);
+				continue;
+			}
+
+			if(thisVendor == NULL) {
+				thisVendor = vendor->getZoneServer()->getObject(item->getVendorID());
+
+				if(thisVendor != NULL && thisVendor->isVendor()) {
+					DataObjectComponentReference* thisData = thisVendor->getDataObjectComponent();
+					if(thisData != NULL && thisData->get() != NULL && thisData->get()->isVendorData())
+						thisVendorData = cast<VendorDataComponent*>(thisData->get());
+				}
+			}
+
+			if(thisVendorData == NULL || thisVendor == NULL) {
+				logger.error("NULL vendor data");
+				continue;
+			}
+
+			if(thisVendor == vendor || thisVendorData->isVendorSearchEnabled())
 				results.add(item);
 		}
 	}
@@ -102,24 +190,38 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 	return results;
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBazaarItems(const String& search) {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBazaarItems(SceneObject* vendor, const String& vuid, const String& search) {
 
 	int lowerbound = 0;
 	int upperbound = bazaarItemsForSale.size() - 1;
 
-	if(!search.isEmpty()) {
-		lowerbound = bazaarItemsForSale.lowerBound(search);
-		upperbound = bazaarItemsForSale.upperBound(search);
+	VuidString searchTerm(search);
+
+	if(!searchTerm.isEmpty()) {
+		lowerbound = bazaarItemsForSale.lowerBound(searchTerm);
+		upperbound = bazaarItemsForSale.upperBound(searchTerm);
 	}
+	//System::out << "\nSearch: " << searchTerm << " LowerBound: " << lowerbound << " Upperbound: " << upperbound << "\n" << endl;
 
 	SortedVector<ManagedReference<AuctionItem* > > results;
 
-	if(lowerbound == -1 || upperbound == -1)
+	//System::out << "Vendors\n" << endl;
+	//for(int i = 0; i < bazaarItemsForSale.size(); ++i)
+	//	System::out << "  " << i << ". "  << bazaarItemsForSale.elementAt(i).getKey() << "   " << bazaarItemsForSale.elementAt(i).getKey().compareTo(search) << "\n" << endl;
+
+
+	if(lowerbound != -1 && upperbound == -1)
+		upperbound = lowerbound;
+
+	if(lowerbound == -1 || upperbound == -1 || bazaarItemsForSale.isEmpty())
 		return results;
 
+	//System::out << "\nVendor Match\n " << endl;
 	for(int i = lowerbound; i <= upperbound; ++i) {
 
-		SortedVector<ManagedReference<AuctionItem* > >* items = bazaarItemsForSale.get(i);
+		//System::out << i << ". " << bazaarItemsForSale.elementAt(i).getKey() << "\n" << endl;
+
+		SortedVector<ManagedReference<AuctionItem* > >* items = &bazaarItemsForSale.get(i);
 
 		for(int j = 0; j < items->size(); ++j) {
 			ManagedReference<AuctionItem*> item = items->get(j);
@@ -127,6 +229,7 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBaz
 				results.add(item);
 		}
 	}
+	//System::out << "\n" << endl;
 
 	return results;
 }
@@ -163,6 +266,23 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	}
 
+}
+
+void AuctionsMapImplementation::updateUID(const String& oldUID, const String& newUID) {
+
+	if(vendorItemsForSale.contains(oldUID)) {
+		Locker locker(_this.get());
+		SortedVector<ManagedReference<AuctionItem* > > itemList = vendorItemsForSale.get(oldUID);
+		vendorItemsForSale.drop(oldUID);
+		vendorItemsForSale.put(newUID, itemList);
+	}
+
+	if(bazaarItemsForSale.contains(oldUID)) {
+		Locker locker(_this.get());
+		SortedVector<ManagedReference<AuctionItem* > > itemList = bazaarItemsForSale.get(oldUID);
+		bazaarItemsForSale.drop(oldUID);
+		bazaarItemsForSale.put(newUID, itemList);
+	}
 }
 
 //bool AuctionsMapImplementation::addItem(String& vendorUID, AuctionItem* item) {

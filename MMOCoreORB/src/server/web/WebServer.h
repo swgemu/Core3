@@ -71,7 +71,6 @@ namespace server {
 class WebServer : public Singleton<WebServer>, public Logger, public Object {
 private:
 	ManagedReference<ZoneServer*> zoneServer;
-	ManagedReference<LoginServer*> loginServer;
 
 	ConfigManager* configManager;
 

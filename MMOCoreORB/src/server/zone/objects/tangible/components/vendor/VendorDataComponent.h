@@ -40,6 +40,9 @@ protected:
 
 	String UID;
 
+	bool mail1Sent;
+	bool mail2Sent;
+
 public:
 	/// 5 minutes
 	static const int USEXPINTERVAL = 1;//60 * 5;
@@ -76,6 +79,8 @@ public:
 
 		if(vendor == NULL)
 			return;
+
+		String oldUID = UID;
 
 		UID = vendor->getZone()->getZoneName() + ".";
 

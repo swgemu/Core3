@@ -158,7 +158,7 @@ public:
 
 	void getAuctionData(CreatureObject* player, TangibleObject* vendor, String& search, int screen, unsigned int category, int count, int offset);
 
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -179,6 +179,10 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(const String& oldUID, const String& newUID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -231,10 +235,6 @@ public:
 
 	void addSaleItem(CreatureObject* player, unsigned long long objectid, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-private:
-	String getVendorUID(SceneObject* vendor);
-
-public:
 	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
 	int checkSaleItem(CreatureObject* player, SceneObject* object, TangibleObject* vendor, int price, bool premium);
@@ -249,7 +249,7 @@ private:
 	void refundAuction(AuctionItem* item);
 
 public:
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -270,6 +270,10 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(const String& oldUID, const String& newUID);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -337,6 +341,10 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(const String& oldUID, const String& newUID);
 
 };
 

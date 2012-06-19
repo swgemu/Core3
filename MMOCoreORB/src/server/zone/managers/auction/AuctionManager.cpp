@@ -24,7 +24,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__};
+enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__STRING_STRING_};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -126,7 +126,7 @@ void AuctionManager::getAuctionData(CreatureObject* player, TangibleObject* vend
 		_implementation->getAuctionData(player, vendor, search, screen, category, count, offset);
 }
 
-int AuctionManager::checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor) {
+int AuctionManager::checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -280,6 +280,37 @@ void AuctionManager::checkAuctions() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->checkAuctions();
+}
+
+String AuctionManager::getVendorUID(SceneObject* vendor) {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETVENDORUID__SCENEOBJECT_);
+		method.addObjectParameter(vendor);
+
+		String _return_getVendorUID;
+		method.executeWithAsciiReturn(_return_getVendorUID);
+		return _return_getVendorUID;
+	} else
+		return _implementation->getVendorUID(vendor);
+}
+
+void AuctionManager::updateVendorUID(const String& oldUID, const String& newUID) {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEVENDORUID__STRING_STRING_);
+		method.addAsciiParameter(oldUID);
+		method.addAsciiParameter(newUID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateVendorUID(oldUID, newUID);
 }
 
 DistributedObjectServant* AuctionManager::_getImplementation() {
@@ -451,6 +482,11 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
 	return auctionMap;
 }
 
+void AuctionManagerImplementation::updateVendorUID(const String& oldUID, const String& newUID) {
+	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateUID(oldUID, newUID);
+	auctionMap->updateUID(oldUID, newUID);
+}
+
 /*
  *	AuctionManagerAdapter
  */
@@ -526,6 +562,17 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			checkAuctions();
 		}
 		break;
+	case RPC_GETVENDORUID__SCENEOBJECT_:
+		{
+			resp->insertAscii(getVendorUID(static_cast<SceneObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_UPDATEVENDORUID__STRING_STRING_:
+		{
+			String oldUID; String newUID; 
+			updateVendorUID(inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -577,6 +624,14 @@ void AuctionManagerAdapter::checkVendorItems() {
 
 void AuctionManagerAdapter::checkAuctions() {
 	(static_cast<AuctionManager*>(stub))->checkAuctions();
+}
+
+String AuctionManagerAdapter::getVendorUID(SceneObject* vendor) {
+	return (static_cast<AuctionManager*>(stub))->getVendorUID(vendor);
+}
+
+void AuctionManagerAdapter::updateVendorUID(const String& oldUID, const String& newUID) {
+	(static_cast<AuctionManager*>(stub))->updateVendorUID(oldUID, newUID);
 }
 
 /*
