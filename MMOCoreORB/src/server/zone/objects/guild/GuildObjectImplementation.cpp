@@ -44,10 +44,14 @@ bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
 	if (attackerGuild != NULL) {
 		rlock();
 
-		if (isAtWarWith(attackerGuild.getObjectID())) {
+		try {
+			if (isAtWarWith(attackerGuild->getObjectID())) {
 
-			runlock();
-			return true;
+				runlock();
+				return true;
+			}
+		} catch (...) {
+			error("unreported exception caught in bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature)");
 		}
 
 		runlock();
