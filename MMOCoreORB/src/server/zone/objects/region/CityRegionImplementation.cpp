@@ -195,7 +195,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		bazaars.put(object->getObjectID(), bazaar);
 
 		if(aman != NULL)
-			aman->updateVendorUID(oldUID, aman->getVendorUID(object));
+			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
 	}
 
 	if (object->isVendor()) {
@@ -208,7 +208,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		if(vendorData != NULL) {
 			vendorData->updateUID();
 			if(aman != NULL)
-				aman->updateVendorUID(oldUID, aman->getVendorUID(object));
+				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
 
 		} else
 			error("Unable to update vendor UID");
@@ -273,7 +273,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	if (object->isBazaarTerminal()) {
 		bazaars.drop(object->getObjectID());
 		if(aman != NULL)
-			aman->updateVendorUID(oldUID, aman->getVendorUID(object));
+			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
 
 	}
 
@@ -287,7 +287,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		if(vendorData != NULL) {
 			vendorData->updateUID();
 			if(aman != NULL)
-				aman->updateVendorUID(oldUID, aman->getVendorUID(object));
+				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
 		} else
 			error("Unable to update vendor UID");
 	}

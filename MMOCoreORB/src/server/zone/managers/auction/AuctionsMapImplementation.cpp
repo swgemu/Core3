@@ -268,12 +268,28 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 
 }
 
-void AuctionsMapImplementation::updateUID(const String& oldUID, const String& newUID) {
+void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 
 	if(vendorItemsForSale.contains(oldUID)) {
 		Locker locker(_this.get());
 		SortedVector<ManagedReference<AuctionItem* > > itemList = vendorItemsForSale.get(oldUID);
 		vendorItemsForSale.drop(oldUID);
+
+		String planetStr = vendor->getZone()->getZoneName();
+		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+		String region = "";
+
+		if (cityRegion != NULL)
+			region = cityRegion->getRegionName();
+
+		for(int i = 0; i < itemList.size(); ++i) {
+			ManagedReference<AuctionItem* > item = itemList.get(i);
+			if(item == NULL)
+				continue;
+
+			item->setLocation(planetStr, region, vendor->getObjectID(), (int)vendor->getWorldPositionX(), (int)vendor->getWorldPositionY(), !vendor->isBazaarTerminal());
+		}
+
 		vendorItemsForSale.put(newUID, itemList);
 	}
 
@@ -281,6 +297,22 @@ void AuctionsMapImplementation::updateUID(const String& oldUID, const String& ne
 		Locker locker(_this.get());
 		SortedVector<ManagedReference<AuctionItem* > > itemList = bazaarItemsForSale.get(oldUID);
 		bazaarItemsForSale.drop(oldUID);
+
+		String planetStr = vendor->getZone()->getZoneName();
+		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+		String region = "";
+
+		if (cityRegion != NULL)
+			region = cityRegion->getRegionName();
+
+		for(int i = 0; i < itemList.size(); ++i) {
+			ManagedReference<AuctionItem* > item = itemList.get(i);
+			if(item == NULL)
+				continue;
+
+			item->setLocation(planetStr, region, vendor->getObjectID(), (int)vendor->getWorldPositionX(), (int)vendor->getWorldPositionY(), !vendor->isBazaarTerminal());
+		}
+
 		bazaarItemsForSale.put(newUID, itemList);
 	}
 }

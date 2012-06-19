@@ -24,7 +24,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__STRING_STRING_};
+enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -298,19 +298,20 @@ String AuctionManager::getVendorUID(SceneObject* vendor) {
 		return _implementation->getVendorUID(vendor);
 }
 
-void AuctionManager::updateVendorUID(const String& oldUID, const String& newUID) {
+void AuctionManager::updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATEVENDORUID__STRING_STRING_);
+		DistributedMethod method(this, RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_);
+		method.addObjectParameter(vendor);
 		method.addAsciiParameter(oldUID);
 		method.addAsciiParameter(newUID);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->updateVendorUID(oldUID, newUID);
+		_implementation->updateVendorUID(vendor, oldUID, newUID);
 }
 
 DistributedObjectServant* AuctionManager::_getImplementation() {
@@ -482,9 +483,9 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
 	return auctionMap;
 }
 
-void AuctionManagerImplementation::updateVendorUID(const String& oldUID, const String& newUID) {
-	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateUID(oldUID, newUID);
-	auctionMap->updateUID(oldUID, newUID);
+void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateUID(vendor, oldUID, newUID);
+	auctionMap->updateUID(vendor, oldUID, newUID);
 }
 
 /*
@@ -567,10 +568,10 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(getVendorUID(static_cast<SceneObject*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_UPDATEVENDORUID__STRING_STRING_:
+	case RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_:
 		{
 			String oldUID; String newUID; 
-			updateVendorUID(inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
+			updateVendorUID(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
 		}
 		break;
 	default:
@@ -630,8 +631,8 @@ String AuctionManagerAdapter::getVendorUID(SceneObject* vendor) {
 	return (static_cast<AuctionManager*>(stub))->getVendorUID(vendor);
 }
 
-void AuctionManagerAdapter::updateVendorUID(const String& oldUID, const String& newUID) {
-	(static_cast<AuctionManager*>(stub))->updateVendorUID(oldUID, newUID);
+void AuctionManagerAdapter::updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	(static_cast<AuctionManager*>(stub))->updateVendorUID(vendor, oldUID, newUID);
 }
 
 /*

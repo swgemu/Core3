@@ -86,7 +86,7 @@ public:
 
 	int getBazaarItemCount(PlayerObject* ghost);
 
-	void updateUID(const String& oldUID, const String& newUID);
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -159,7 +159,7 @@ public:
 
 	int getBazaarItemCount(PlayerObject* ghost);
 
-	void updateUID(const String& oldUID, const String& newUID);
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	WeakReference<AuctionsMap*> _this;
 
@@ -216,7 +216,7 @@ public:
 
 	int getBazaarItemCount(PlayerObject* ghost);
 
-	void updateUID(const String& oldUID, const String& newUID);
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 };
 

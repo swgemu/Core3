@@ -105,5 +105,8 @@ void VendorDataComponent::runVendorUpdate() {
 
 	lastSuccessfulUpdate.updateToCurrentTime();
 
+	if(vendorCheckTask == NULL)
+		vendorCheckTask = new UpdateVendorTask(vendor);
+
 	vendorCheckTask->reschedule(1000 * 60 * 60);
 }

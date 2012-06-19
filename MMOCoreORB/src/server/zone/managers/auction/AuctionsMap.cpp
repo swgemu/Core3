@@ -14,7 +14,7 @@
  *	AuctionsMapStub
  */
 
-enum {RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_,RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_,RPC_UPDATEUID__STRING_STRING_};
+enum {RPC_ADDITEM__SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__PLAYEROBJECT_,RPC_GETBAZAARITEMCOUNT__PLAYEROBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -138,19 +138,20 @@ int AuctionsMap::getBazaarItemCount(PlayerObject* ghost) {
 		return _implementation->getBazaarItemCount(ghost);
 }
 
-void AuctionsMap::updateUID(const String& oldUID, const String& newUID) {
+void AuctionsMap::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATEUID__STRING_STRING_);
+		DistributedMethod method(this, RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_);
+		method.addObjectParameter(vendor);
 		method.addAsciiParameter(oldUID);
 		method.addAsciiParameter(newUID);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->updateUID(oldUID, newUID);
+		_implementation->updateUID(vendor, oldUID, newUID);
 }
 
 DistributedObjectServant* AuctionsMap::_getImplementation() {
@@ -364,10 +365,10 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getBazaarItemCount(static_cast<PlayerObject*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_UPDATEUID__STRING_STRING_:
+	case RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_:
 		{
 			String oldUID; String newUID; 
-			updateUID(inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
+			updateUID(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
 		}
 		break;
 	default:
@@ -399,8 +400,8 @@ int AuctionsMapAdapter::getBazaarItemCount(PlayerObject* ghost) {
 	return (static_cast<AuctionsMap*>(stub))->getBazaarItemCount(ghost);
 }
 
-void AuctionsMapAdapter::updateUID(const String& oldUID, const String& newUID) {
-	(static_cast<AuctionsMap*>(stub))->updateUID(oldUID, newUID);
+void AuctionsMapAdapter::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	(static_cast<AuctionsMap*>(stub))->updateUID(vendor, oldUID, newUID);
 }
 
 /*

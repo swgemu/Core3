@@ -116,6 +116,6 @@ class AuctionsMap extends ManagedObject {
 		return 0;
 	}
 	
-	public native void updateUID(final string oldUID, final string newUID);
+	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);
 
 }

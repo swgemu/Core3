@@ -182,7 +182,7 @@ public:
 
 	String getVendorUID(SceneObject* vendor);
 
-	void updateVendorUID(const String& oldUID, const String& newUID);
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -273,7 +273,7 @@ public:
 
 	String getVendorUID(SceneObject* vendor);
 
-	void updateVendorUID(const String& oldUID, const String& newUID);
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -344,7 +344,7 @@ public:
 
 	String getVendorUID(SceneObject* vendor);
 
-	void updateVendorUID(const String& oldUID, const String& newUID);
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 };
 
