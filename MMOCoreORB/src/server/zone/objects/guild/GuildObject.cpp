@@ -974,27 +974,43 @@ bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
 }
 
 byte GuildObjectImplementation::getWarStatus(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid);
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid);
 	return (&waringGuilds)->get(guildoid);
+}
 }
 
 void GuildObjectImplementation::setWarStatus(unsigned long long guildoid, byte status) {
-	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
-	if (status == WAR_NONE)	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.drop(guildoid);
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.put(guildoid, status);
+	if (status == WAR_NONE)	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.drop(guildoid);
 	(&waringGuilds)->drop(guildoid);
 
-	else 	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
+	else 	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.put(guildoid, status);
 	(&waringGuilds)->put(guildoid, status);
+}
 }
 
 bool GuildObjectImplementation::hasDeclaredWarOn(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_OUT;
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid) == WAR_OUT;
 	return (&waringGuilds)->get(guildoid) == WAR_OUT;
+}
 }
 
 bool GuildObjectImplementation::hasDeclaredWarBy(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_IN;
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid) == WAR_IN;
 	return (&waringGuilds)->get(guildoid) == WAR_IN;
+}
 }
 
 VectorMap<unsigned long long, byte>* GuildObjectImplementation::getWaringGuilds() {

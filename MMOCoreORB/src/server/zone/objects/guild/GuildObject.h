@@ -59,6 +59,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/guild/GuildMemberInfo.h"
 
+#include "system/thread/ReadWriteLock.h"
+
 #include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -229,6 +231,8 @@ protected:
 	String guildName;
 
 	String guildAbbrev;
+
+	ReadWriteLock waringGuildsMutex;
 
 	unsigned long long guildLeaderID;
 
