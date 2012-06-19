@@ -77,7 +77,7 @@ public:
 
 	void updateUID() {
 
-		if(vendor == NULL)
+		if(vendor == NULL || vendor->getZone() == NULL)
 			return;
 
 		String oldUID = UID;
