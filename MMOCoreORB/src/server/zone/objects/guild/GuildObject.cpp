@@ -987,32 +987,6 @@ void GuildObjectImplementation::setWarStatus(unsigned long long guildoid, byte s
 	(&waringGuilds)->put(guildoid, status);
 }
 
-bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
-	// server/zone/objects/guild/GuildObject.idl():  		GuildObject attackerGuild = creature.getGuildObject();
-	ManagedReference<GuildObject* > attackerGuild = creature->getGuildObject();
-	// server/zone/objects/guild/GuildObject.idl():  		return 
-	if (attackerGuild != NULL){
-	// server/zone/objects/guild/GuildObject.idl():  			rlock();
-	rlock();
-	// server/zone/objects/guild/GuildObject.idl():  			runlock(
-	if (isAtWarWith(attackerGuild->getObjectID())){
-	// server/zone/objects/guild/GuildObject.idl():  				runlock();
-	runlock();
-	// server/zone/objects/guild/GuildObject.idl():  				return true;
-	return true;
-}
-	// server/zone/objects/guild/GuildObject.idl():  			runlock();
-	runlock();
-}
-	// server/zone/objects/guild/GuildObject.idl():  		return false;
-	return false;
-}
-
-bool GuildObjectImplementation::isAtWarWith(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_MUTUAL;
-	return (&waringGuilds)->get(guildoid) == WAR_MUTUAL;
-}
-
 bool GuildObjectImplementation::hasDeclaredWarOn(unsigned long long guildoid) {
 	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_OUT;
 	return (&waringGuilds)->get(guildoid) == WAR_OUT;

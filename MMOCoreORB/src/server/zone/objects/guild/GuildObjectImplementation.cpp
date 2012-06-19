@@ -38,6 +38,36 @@ bool GuildObjectImplementation::hasMember(uint64 playerID) {
 	return guildMembers.contains(playerID);
 }
 
+bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
+	ManagedReference<GuildObject*> attackerGuild = creature->getGuildObject();
+
+	if (attackerGuild != NULL) {
+		rlock();
+
+		if (isAtWarWith(attackerGuild.getObjectID())) {
+
+			runlock();
+			return true;
+		}
+
+		runlock();
+	}
+
+	return false;
+}
+
+bool GuildObjectImplementation::isAtWarWith(unsigned long long guildoid) {
+	try {
+		return waringGuilds.get(guildoid) == WAR_MUTUAL;
+	} catch (...) {
+		error("unreported exception caught in GuildObjectImplementation::isAtWarWith(unsigned long guildoid)");
+
+		return false;
+	}
+
+	return false;
+}
+
 uint64 GuildObjectImplementation::getMember(int index) {
 	return guildMembers.get(index).getPlayerID();
 }

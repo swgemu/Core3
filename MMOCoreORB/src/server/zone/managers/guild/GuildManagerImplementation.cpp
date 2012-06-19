@@ -1202,15 +1202,19 @@ void GuildManagerImplementation::declareWarByName(CreatureObject* creature, Guil
 			if (g == NULL)
 				continue;
 
-			g->rlock();
+			Locker clocker(g, _this.get());
+
+//			g->rlock();
 
 			if (g->getGuildAbbrev() == search) {
 				waringGuild = g;
-				g->runlock();
+
+//				g->runlock();
+
 				break;
 			}
 
-			g->runlock();
+//			g->runlock();
 		}
 	}
 

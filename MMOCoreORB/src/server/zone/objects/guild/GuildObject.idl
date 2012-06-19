@@ -211,26 +211,9 @@ class GuildObject extends SceneObject {
 			waringGuilds.put(guildoid, status);
 	}
 	
-	public boolean isInWaringGuild(CreatureObject creature) {
-		GuildObject attackerGuild = creature.getGuildObject();
-
-		if (attackerGuild != null) {
-			rlock();
-
-			if (isAtWarWith(attackerGuild.getObjectID())) {
-				runlock();
-				return true;
-			}
-
-			runlock();
-		}
-		
-		return false;
-	}
+	public native boolean isInWaringGuild(CreatureObject creature);
 	
-	public boolean isAtWarWith(unsigned long guildoid) {
-		return waringGuilds.get(guildoid) == WAR_MUTUAL;
-	}
+	public native boolean isAtWarWith(unsigned long guildoid);
 	
 	public boolean hasDeclaredWarOn(unsigned long guildoid) {
 		return waringGuilds.get(guildoid) == WAR_OUT;
