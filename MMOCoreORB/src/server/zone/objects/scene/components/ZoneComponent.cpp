@@ -289,7 +289,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		closeObjects->safeCopyTo(objects);
 
 		for (int i = 0; i < objects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(objects.get(i));
+			QuadTreeEntry* object = objects.get(i);
 
 			object->notifyPositionUpdate(sceneObject);
 		}
