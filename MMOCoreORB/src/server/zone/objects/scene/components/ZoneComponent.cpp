@@ -282,11 +282,14 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		//notify in range objects that i moved
 	}
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sceneObject->getCloseObjects();
+	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
 
 	if (closeObjects != NULL) {
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+		SortedVector<ManagedReference<QuadTreeEntry*> > objects(closeObjects->size(), 10);
+		closeObjects->safeCopyTo(objects);
+
+		for (int i = 0; i < objects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(objects.get(i));
 
 			object->notifyPositionUpdate(sceneObject);
 		}
