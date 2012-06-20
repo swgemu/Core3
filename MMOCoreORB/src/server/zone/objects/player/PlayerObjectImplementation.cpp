@@ -830,6 +830,10 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 	}
 
 	PlayerObject* playerToAddGhost = playerToAdd->getPlayerObject();
+
+	if (playerToAddGhost == NULL)
+		return;
+
 	playerToAddGhost->addReverseFriend(cast<CreatureObject*>(parent.get().get())->getFirstName());
 	playerToAddGhost->updateToDatabase();
 
@@ -895,6 +899,10 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	}
 
 	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+
+	if (playerToRemoveGhost == NULL)
+		return;
+
 	playerToRemoveGhost->removeReverseFriend((cast<CreatureObject*>(parent.get().get()))->getFirstName());
 	playerToRemoveGhost->updateToDatabase();
 
