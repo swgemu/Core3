@@ -132,11 +132,11 @@ class AuctionManager : public ManagedService {
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 
@@ -217,11 +217,11 @@ protected:
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 

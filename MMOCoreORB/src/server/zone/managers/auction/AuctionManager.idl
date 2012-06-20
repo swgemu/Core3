@@ -64,9 +64,9 @@ class AuctionManager extends ManagedService implements Logger {
 	protected ZoneServer zoneServer;
 	
 	public final static int MAXBAZAARPRICE = 20000;
-	public final static int MAXSALES = 20; // this only apply to bazaars
+	public final static int MAXSALES = 25; // this only apply to bazaars
 	public final static int SALESFEE = 20;
-	public final static int CHECKEVERY = 2; // Minutes
+	public final static int CHECKEVERY = 60; // Minutes
 	
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;

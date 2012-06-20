@@ -69,6 +69,11 @@ void VendorDataComponent::notifyObjectDestroyingFromDatabase() {
 
 void VendorDataComponent::runVendorUpdate() {
 
+	if(vendorCheckTask == NULL)
+		vendorCheckTask = new UpdateVendorTask(vendor);
+
+	vendorCheckTask->reschedule(1000 * 60 * 60);
+
 	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(vendor->getZoneServer()->getObject(getOwnerId()));
 	ManagedReference<PlayerManager*> playerManager = vendor->getZoneServer()->getPlayerManager();
 	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL) {
@@ -104,9 +109,4 @@ void VendorDataComponent::runVendorUpdate() {
 		vendor->setConditionDamage(-maintAmount, true);
 
 	lastSuccessfulUpdate.updateToCurrentTime();
-
-	if(vendorCheckTask == NULL)
-		vendorCheckTask = new UpdateVendorTask(vendor);
-
-	vendorCheckTask->reschedule(1000 * 60 * 60);
 }

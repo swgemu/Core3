@@ -130,7 +130,7 @@ void AuctionManagerImplementation::checkVendorItems() {
 void AuctionManagerImplementation::checkAuctions() {
 
 	CheckAuctionsTask* task = new CheckAuctionsTask(_this.get());
-	task->schedule(CHECKEVERY * 60000);
+	task->schedule(CHECKEVERY * 60 * 1000);
 
 	SortedVector<ManagedReference<AuctionItem* > > items = auctionMap->getBazaarItems(NULL, "", "");
 
@@ -962,75 +962,32 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 	case 7: // Vendor items screen (including Vendor location search)
 		for (int i = 0; (i < items->size()) && (displaying < (offset + 100)); i++) {
 			AuctionItem* item = items->get(i);
+
 			// This stops from seeing other ppl's items when searching entire galaxy from player's vendor.
-			if (vendor->isBazaarTerminal() || (vendorData != NULL && vendorData->isVendorOwner(player))) {
-				if (!item->isSold() && !item->isRemovedByOwner() && !item->isOfferToVendor() && !item->isInStockroom()) {
-					// Make sure the item belogs to the owner before displaying
-					if (item->getOwnerID() == player->getObjectID()) {
-						//item->setAuctionWithdraw();
+			if (!item->isSold() && !item->isRemovedByOwner() && !item->isOfferToVendor() && !item->isInStockroom()) {
 
-						if (category & 255) { // Searching a sub category
-							if (item->getItemType() == category) {
-								if (displaying >= offset)
-									reply->addItemToList(items->get(i));
-
-								displaying++;
-							}
-						} else if (item->getItemType() & category) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-						} else if ((category == 8192) && (item->getItemType() < 256)) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-						} else if (category == 0) { // Searching all items
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-						}
-					}
-				}
-			} else {
-				// handles if the enable / disable of the vendor search option
-				ManagedReference<SceneObject*> obj = zoneServer->getObject(item->getVendorID());
-
-				if (vendor->isBazaarTerminal() || (vendorData != NULL && !vendorData->isVendorSearchEnabled()))
-					continue;
-
-				// handles displaying other users items and the bazaar vendor search...
-				if (!item->isSold() && !item->isRemovedByOwner() && !item->isOfferToVendor() && !item->isInStockroom()) {
-					/*if (item->getOwnerID() == player->getObjectID())
-						item->setAuctionWithdraw();
-					else
-						item->clearAuctionWithdraw();*/
-
-					if (category & 255) { // Searching a sub category
-						if (item->getItemType() == category) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
-
-							displaying++;
-						}
-					} else if (item->getItemType() & category) {
-						if (displaying >= offset)
-							reply->addItemToList(items->get(i));
-
-						displaying++;
-					} else if ((category == 8192) && (item->getItemType() < 256)) {
-						if (displaying >= offset)
-							reply->addItemToList(items->get(i));
-
-						displaying++;
-					} else if (category == 0) { // Searching all items
+				if (category & 255) { // Searching a sub category
+					if (item->getItemType() == category) {
 						if (displaying >= offset)
 							reply->addItemToList(items->get(i));
 
 						displaying++;
 					}
+				} else if (item->getItemType() & category) {
+					if (displaying >= offset)
+						reply->addItemToList(items->get(i));
+
+					displaying++;
+				} else if ((category == 8192) && (item->getItemType() < 256)) {
+					if (displaying >= offset)
+						reply->addItemToList(items->get(i));
+
+					displaying++;
+				} else if (category == 0) { // Searching all items
+					if (displaying >= offset)
+						reply->addItemToList(items->get(i));
+
+					displaying++;
 				}
 			}
 		}
