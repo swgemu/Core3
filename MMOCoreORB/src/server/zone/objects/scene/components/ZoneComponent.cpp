@@ -121,8 +121,14 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 }
 
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sceneObject->getCloseObjects();
-	SortedVector<ManagedReference<QuadTreeEntry*> >* parentCloseObjects = sceneObject->getRootParent().get()->getCloseObjects();
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
+	CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent().get()->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeObjectsVector->size(), 10);
+	closeObjectsVector->safeCopyTo(closeObjects);
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > parentCloseObjects(parentCloseObjectsVector->size(), 10);
+	parentCloseObjectsVector->safeCopyTo(parentCloseObjectsVector);
 
 	//remove old ones
 	float rangesq = 192.f * 192.f;
@@ -133,12 +139,13 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	float oldx = sceneObject->getPreviousPositionX();
 	float oldy = sceneObject->getPreviousPositionY();
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		ManagedReference<QuadTreeEntry*> o = closeObjects->get(i);
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		ManagedReference<QuadTreeEntry*> o = closeObjects.get(i);
 		ManagedReference<QuadTreeEntry*> objectToRemove = o;
+		ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
 
-		if (o->getParent() != NULL)
-			o = o->getRootParent();
+		if (rootParent != NULL)
+			o = rootParent;
 
 		if (o != sceneObject) {
 			float deltaX = x - o->getPositionX();
@@ -161,8 +168,8 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	}
 
 	//insert new ones
-	for (int i = 0; i < parentCloseObjects->size(); ++i) {
-		QuadTreeEntry* o = parentCloseObjects->get(i);
+	for (int i = 0; i < parentCloseObjects.size(); ++i) {
+		QuadTreeEntry* o = parentCloseObjects.get(i);
 
 		if (sceneObject->getCloseObjects() != NULL)
 			sceneObject->addInRangeObject(o, false);
@@ -184,6 +191,8 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 	Locker _locker(zone);
 
+	bool zoneUnlocked = false;
+
 	if (parent != NULL && parent->isCellObject()) {
 		//parent->removeObject(sceneObject, true);
 		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
@@ -191,21 +200,23 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone = parent->getRootParent().get()->getZone();
 
 		zone->transferObject(sceneObject, -1, false);
+
+		zone->unlock();
 	} else {
 		if (sceneObject->getLocalZone() != NULL) {
 			zone->update(sceneObject);
 
+			zone->unlock();
+
 			zone->inRange(sceneObject, 192);
 		} else if (parent != NULL) {
+			zone->unlock();
+
 			updateInRangeObjectsOnMount(sceneObject);
 		}
 	}
-	
-	zone->unlock();
 
 	zone->updateActiveAreas(sceneObject);
-
-//	zone->unlock();
 	
 	bool isInvis = false;
 
@@ -253,13 +264,20 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		//zone->remove(sceneObject);
 
 		newParent->transferObject(sceneObject, -1, true);
+
+		zone->unlock();
 		//insertToBuilding(sceneObject, dynamic_cast<BuildingObject*>(newParent->getParent()));
 	} else { // we are in cell already
 		if (oldParent != newParent) {
 			//oldParent->removeObject(sceneObject, false);
 			newParent->transferObject(sceneObject, -1, true);
-		} else
+
+			zone->unlock();
+		} else {
+			zone->unlock();
+
 			zone->updateActiveAreas(sceneObject);
+		}
 
 		//notify in range objects that i moved
 	}
@@ -276,7 +294,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 
 	//zoneLocker.release();
 
-	zone->unlock();
+	//zone->unlock();
 
 	bool isInvis = false;
 

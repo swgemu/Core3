@@ -211,9 +211,7 @@ void ZoneImplementation::update(QuadTreeEntry* entry) {
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
-	Locker locker(_this.get());
-
-	quadTree->inRange(entry, range);
+	quadTree->safeInRange(entry, range);
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
