@@ -1399,7 +1399,7 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
 	if (vec != NULL) {
-		closeObjects.removeALl(vec->size(), 10);
+		closeObjects.removeAll(vec->size(), 10);
 		vec->safeCopyTo(closeObjects);
 	} else {
 		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
