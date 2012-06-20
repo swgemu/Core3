@@ -128,7 +128,7 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 	closeObjectsVector->safeCopyTo(closeObjects);
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > parentCloseObjects(parentCloseObjectsVector->size(), 10);
-	parentCloseObjectsVector->safeCopyTo(parentCloseObjectsVector);
+	parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
 
 	//remove old ones
 	float rangesq = 192.f * 192.f;
