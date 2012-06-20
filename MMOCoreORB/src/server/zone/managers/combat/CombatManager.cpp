@@ -1389,11 +1389,22 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
+	if (zone == NULL)
+		return;
+
 	//Locker _locker(zone);
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(vec->size(), 10);
-	vec->safeCopyTo(closeObjects);
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+	if (vec != NULL) {
+		closeObjects.removeALl(vec->size(), 10);
+		vec->safeCopyTo(closeObjects);
+	} else {
+		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+	}
+
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
