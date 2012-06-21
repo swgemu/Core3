@@ -99,7 +99,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 	
-	public static int MAX_CHAR_ONLINE_COUNT;
+	public transient static int MAX_CHAR_ONLINE_COUNT;
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
