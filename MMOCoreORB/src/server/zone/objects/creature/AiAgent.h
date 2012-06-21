@@ -235,6 +235,8 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/creature/variables/CreatureTemplateReference.h"
 
+#include "system/thread/ReadWriteLock.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -295,6 +297,8 @@ public:
 	void doMovement();
 
 	void setLevel(int lvl);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	int calculateAttackMinDamage(int level);
 
@@ -502,6 +506,8 @@ protected:
 
 	Reference<AiAwarenessEvent* > awarenessEvent;
 
+	Reference<ReadWriteLock* > despawnMutex;
+
 	Vector<AiInterfaceComponent*> aiInterfaceComponents;
 
 	Vector<String> skillCommands;
@@ -582,6 +588,8 @@ public:
 	void doMovement();
 
 	void setLevel(int lvl);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	int calculateAttackMinDamage(int level);
 
@@ -821,6 +829,8 @@ public:
 	void doMovement();
 
 	void setLevel(int lvl);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	int calculateAttackMinDamage(int level);
 
