@@ -342,22 +342,24 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	if (player == _this.get()) {
+	Reference<CreatureObject*> thisPointer = _this.get();
+
+	if (player == thisPointer) {
 		//info("sending baselines to myself", true);
 
-		CreatureObjectMessage1* msg = new CreatureObjectMessage1(_this.get());
+		CreatureObjectMessage1* msg = new CreatureObjectMessage1(thisPointer);
 		player->sendMessage(msg);
 	}
 
-	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(_this.get());
+	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(thisPointer);
 	player->sendMessage(msg3);
 
-	if (player == _this.get()) {
-		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(_this.get());
+	if (player == thisPointer) {
+		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(thisPointer);
 		player->sendMessage(msg4);
 	}
 
-	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this.get());
+	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(thisPointer);
 	player->sendMessage(msg6);
 
 	if (!player->isPlayerCreature())
