@@ -343,6 +343,10 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	Reference<CreatureObject*> thisPointer = _this.get();
+	Zone* zone = getZone();
+
+	if (zone == NULL)
+		return;
 
 	if (player == thisPointer) {
 		//info("sending baselines to myself", true);
