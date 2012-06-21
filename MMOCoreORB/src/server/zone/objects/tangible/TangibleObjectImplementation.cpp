@@ -112,10 +112,12 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending tano baselines");
 
-	BaseMessage* tano3 = new TangibleObjectMessage3(_this.get());
+	Reference<TangibleObject*> thisPointer = _this.get();
+
+	BaseMessage* tano3 = new TangibleObjectMessage3(thisPointer);
 	player->sendMessage(tano3);
 
-	BaseMessage* tano6 = new TangibleObjectMessage6(_this.get());
+	BaseMessage* tano6 = new TangibleObjectMessage6(thisPointer);
 	player->sendMessage(tano6);
 
 	if (player->isPlayerCreature())
