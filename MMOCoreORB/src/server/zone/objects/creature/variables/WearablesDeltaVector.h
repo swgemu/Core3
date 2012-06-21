@@ -42,7 +42,7 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocation = armor->getHitLocation();
 
-			Vector<ArmorObject*> armors = armorMap.get(hitLocation);
+			Vector<ManagedReference<ArmorObject*> > armors = armorMap.get(hitLocation);
 			armors.add(armor);
 
 			armorMap.drop(hitLocation);
@@ -59,7 +59,7 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocation = armor->getHitLocation();
 
-			Vector<ArmorObject*> armors = armorMap.get(hitLocation);
+			Vector<ManagedReference<ArmorObject*> > armors = armorMap.get(hitLocation);
 			armors.removeElement(armor);
 
 			armorMap.drop(hitLocation);
@@ -69,7 +69,7 @@ public:
 		return DeltaVector<ManagedReference<TangibleObject*> >::remove(index, message, updates);
 	}
 
-	Vector<ArmorObject*> getArmorAtHitLocation(uint8 hl) {
+	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) {
 		return armorMap.get(hl);
 	}
 };

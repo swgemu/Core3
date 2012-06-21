@@ -622,7 +622,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+	Vector<ManagedReference<ArmorObject*> > healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
 
 	if (System::random(1) == 0)
 		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
@@ -636,7 +636,7 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
+	Vector<ManagedReference<ArmorObject*> > actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -647,7 +647,7 @@ ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
+	Vector<ManagedReference<ArmorObject*> > mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
