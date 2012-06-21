@@ -681,7 +681,15 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		zone->transferObject(_this.get(), -1, true);
 }
 
+void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
+	ReadLocker locker(&despawnMutex);
+
+	CreatureObjectImplementation::sendBaselinesTo(player);
+}
+
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
+	Locker locker(despawnMutex);
+
 	if (moveEvent != NULL) {
 		moveEvent->clearCreatureObject();
 		moveEvent = NULL;

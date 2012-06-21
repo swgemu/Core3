@@ -77,6 +77,7 @@ include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.objects.scene.components.AiInterfaceComponent;
 include server.zone.objects.creature.variables.CreatureTemplateReference;
+include system.thread.ReadWriteLock;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -86,6 +87,9 @@ class AiAgent extends CreatureObject {
 	protected transient AiWaitEvent waitEvent;
 	
 	protected transient AiAwarenessEvent awarenessEvent;
+	
+	@derenferenced
+	protected transient ReadWriteLock despawnMutex;
 	
 	@dereferenced
 	protected transient Vector<AiInterfaceComponent> aiInterfaceComponents;
@@ -196,6 +200,14 @@ class AiAgent extends CreatureObject {
 	public native void doMovement();
 	
 	public native void setLevel(int lvl);
+	
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native void sendBaselinesTo(SceneObject player);
 	
 	public native int calculateAttackMinDamage(int level);
 	public native int calculateAttackMaxDamage(int level);
