@@ -688,7 +688,7 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
-	Locker locker(despawnMutex);
+	Locker locker(&despawnMutex);
 
 	if (moveEvent != NULL) {
 		moveEvent->clearCreatureObject();
