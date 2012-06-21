@@ -16,7 +16,7 @@
 
 class WearablesDeltaVector : public DeltaVector<ManagedReference<TangibleObject*> > {
 protected:
-	VectorMap<uint8, Vector<ArmorObject*> > armorMap;
+	VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > > armorMap;
 
 public:
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
