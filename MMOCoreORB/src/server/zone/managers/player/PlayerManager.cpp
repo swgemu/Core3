@@ -1261,6 +1261,11 @@ bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "PlayerManager.MAX_CHAR_ONLINE_COUNT") {
+		TypeInfo<static int >::parseFromBinaryStream(&MAX_CHAR_ONLINE_COUNT, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -1302,8 +1307,16 @@ int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "PlayerManager.MAX_CHAR_ONLINE_COUNT";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<static int >::toBinaryStream(&MAX_CHAR_ONLINE_COUNT, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 3;
+
+	return _count + 4;
 }
 
 int PlayerManagerImplementation::getHighestBadgeIndex() {

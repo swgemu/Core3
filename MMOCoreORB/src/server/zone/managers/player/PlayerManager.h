@@ -262,8 +262,6 @@ namespace player {
 
 class PlayerManager : public Observer {
 public:
-	static const int MAX_CHAR_ONLINE_COUNT = 1;
-
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl);
 
 	void loadNameMap();
@@ -460,7 +458,7 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 	OnlineZoneClientMap onlineZoneClientMap;
 
 public:
-	static const int MAX_CHAR_ONLINE_COUNT = 1;
+	static int MAX_CHAR_ONLINE_COUNT;
 
 private:
 	Reference<StartingItemList* > startingItemList;

@@ -360,32 +360,36 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
-		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* child = cell->getContainerObject(j);
+		try {
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				SceneObject* child = cell->getContainerObject(j);
 
-			if (child != obj && child != NULL) {
-				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
-					//if (is)
+				if (child != obj && child != NULL) {
+					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
+						//if (is)
 
-					if (child->getCloseObjects() != NULL)
-						child->addInRangeObject(obj, false);
-					else
+						if (child->getCloseObjects() != NULL)
+							child->addInRangeObject(obj, false);
+						else
+							child->notifyInsert(obj);
+
+						child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
+
+						if (scno->getCloseObjects() != NULL)
+							scno->addInRangeObject(child, false);
+						else
+							scno->notifyInsert(child);
+
+						if (scno->getParent() != NULL)
+							scno->sendTo(child, true);
+					} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
 						child->notifyInsert(obj);
-
-					child->sendTo(scno, true);//sendTo because notifyInsert doesnt send objects with parent
-
-					if (scno->getCloseObjects() != NULL)
-						scno->addInRangeObject(child, false);
-					else
-						scno->notifyInsert(child);
-
-					if (scno->getParent() != NULL)
-						scno->sendTo(child, true);
-				} else if (!scno->isCreatureObject() && !child->isCreatureObject()) {
-					child->notifyInsert(obj);
-					obj->notifyInsert(child);
+						obj->notifyInsert(child);
+					}
 				}
 			}
+		} catch (...) {
+
 		}
 	}
 }

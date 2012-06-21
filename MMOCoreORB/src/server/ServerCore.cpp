@@ -64,6 +64,7 @@
 
 #include "zone/managers/object/ObjectManager.h"
 #include "zone/managers/templates/TemplateManager.h"
+#include "zone/managers/player/PlayerManager.h"
 
 #include "zone/objects/creature/CreatureObject.h"
 
@@ -396,6 +397,20 @@ void ServerCore::handleCommands() {
 						<< "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
 			} else if (command == "about") {
 				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
+			} else if (command == "chars") {
+				uint32 num = 0;
+
+				try {
+					num = UnsignedInteger::valueOf(arguments);
+				} catch (Exception& e) {
+					System::out << "invalid number of concurrent chars per account specified";
+				}
+
+				if (num != 0) {
+					PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = num;
+
+					System::out << "changed max concurrent chars per account to: " << num << endl;
+				}
 			} else if (command == "lookupcrc") {
 				uint32 crc = 0;
 				try {

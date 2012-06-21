@@ -97,6 +97,7 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
