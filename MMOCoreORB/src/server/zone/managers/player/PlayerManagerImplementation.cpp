@@ -2837,13 +2837,17 @@ Account* PlayerManagerImplementation::getAccount(uint32 accountID) {
 }
 
 Account* PlayerManagerImplementation::queryForAccount(const String& query) {
-
-
 	Account* account = NULL;
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result;
 
-	if (result->next()) {
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+
+	if (result != NULL && result->next()) {
 
 		account = new Account();
 
@@ -2859,7 +2863,6 @@ Account* PlayerManagerImplementation::queryForAccount(const String& query) {
 		account->updateFromDatabase();
 	}
 
-	delete result;
 	result = NULL;
 
 	return account;
