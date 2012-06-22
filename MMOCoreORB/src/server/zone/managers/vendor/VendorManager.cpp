@@ -100,13 +100,13 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 		return;
 	}
 
-	SortedVector<ManagedReference<AuctionItem*> > vendorItems = auctionsMap->getVendorItems(vendor, vendorData->getUID(), vendorData->getUID());
+	SortedVector<ManagedReference<AuctionItem*> > vendorItems = auctionsMap->getVendorItems(player, vendor, vendorData->getUID(), vendorData->getUID());
 
 	uint32 itemsForSaleCount = 0;
 
 	for (int i = 0; i < vendorItems.size(); ++i) {
 		AuctionItem* item = vendorItems.get(i);
-		if (!item->isOfferToVendor() && !item->isInStockroom() && !item->isSold())
+		if (item->getStatus() == AuctionItem::FORSALE)
 			itemsForSaleCount++;
 
 	}

@@ -58,6 +58,18 @@ public:
 
 	static const int OPTION_WITHDRAW = 0x800;
 
+	static const int FORSALE = 1;
+
+	static const int SOLD = 2;
+
+	static const int WITHDRAWN = 3;
+
+	static const int EXPIRED = 4;
+
+	static const int OFFERED = 5;
+
+	static const int RETRIEVED = 6;
+
 	AuctionItem(unsigned long long objectid);
 
 	int compareTo(AuctionItem* obj);
@@ -90,17 +102,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -108,17 +112,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 
@@ -212,21 +212,13 @@ protected:
 
 	bool auction;
 
-	bool sold;
-
-	bool ownerRemove;
-
-	bool inStockroom;
-
-	bool offer;
+	int status;
 
 	bool onBazaar;
 
 	unsigned long long buyerID;
 
 	unsigned int expireTime;
-
-	int remainingTime;
 
 	bool updated;
 
@@ -236,6 +228,18 @@ public:
 	static const int OPTION_PREMIUM = 0x400;
 
 	static const int OPTION_WITHDRAW = 0x800;
+
+	static const int FORSALE = 1;
+
+	static const int SOLD = 2;
+
+	static const int WITHDRAWN = 3;
+
+	static const int EXPIRED = 4;
+
+	static const int OFFERED = 5;
+
+	static const int RETRIEVED = 6;
 
 	AuctionItemImplementation(unsigned long long objectid);
 
@@ -271,17 +275,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -289,17 +285,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 
@@ -410,17 +402,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -428,17 +412,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 

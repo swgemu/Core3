@@ -143,7 +143,7 @@ public:
 	    	//insertInt(il->getAuctionOptions()); // autionOptions 0x400 = Premium, 0x800 = withdraw
 	    	int additionalValues = 0;
 
-	    	if (il->getOwnerID() == player->getObjectID() && !il->isRemovedByOwner()) {
+	    	if (il->getOwnerID() == player->getObjectID() && il->getStatus() != AuctionItem::WITHDRAWN) {
 	    		additionalValues |= 0x800;
 	    	}
 

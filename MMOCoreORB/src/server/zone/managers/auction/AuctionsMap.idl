@@ -106,7 +106,7 @@ class AuctionsMap extends ManagedObject {
 
 	@local
 	@dereferenced
-	public native SortedVector<AuctionItem> getVendorItems(SceneObject vendor, final string vuid, final string search);
+	public native SortedVector<AuctionItem> getVendorItems(CreatureObject player, SceneObject vendor, final string vuid, final string search);
 	
 	@local
 	@dereferenced

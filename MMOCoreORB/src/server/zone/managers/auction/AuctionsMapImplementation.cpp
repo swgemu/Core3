@@ -140,7 +140,7 @@ int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) 
 	return ItemSoldMessage::UNKNOWNERROR;
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVendorItems(SceneObject* vendor, const String& vuid, const String& search) {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search) {
 	int lowerbound = 0;
 	int upperbound = vendorItemsForSale.size() - 1;
 
@@ -181,6 +181,9 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 				continue;
 			}
 
+			if(player == NULL)
+				break;
+
 			if(thisVendor == NULL) {
 				thisVendor = vendor->getZoneServer()->getObject(item->getVendorID());
 
@@ -196,7 +199,9 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 				continue;
 			}
 
-			if(thisVendor == vendor || thisVendorData->isVendorSearchEnabled())
+			if(vendor->isBazaarTerminal() && thisVendorData->isVendorSearchEnabled())
+				results.add(item);
+			else if(thisVendor == vendor || thisVendorData->getOwnerId() == player->getObjectID())
 				results.add(item);
 		}
 	}

@@ -12,7 +12,7 @@
  *	AuctionItemStub
  */
 
-enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_SETVENDORUID__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETINSTOCKROOM__BOOL_,RPC_SETOFFERTOVENDOR__BOOL_,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_ISONBAZAAR__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_ISINSTOCKROOM__,RPC_ISOFFERTOVENDOR__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_SETREGION__STRING_,RPC_GETREGION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
+enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_SETVENDORUID__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_SETSTATUS__INT_,RPC_ISONBAZAAR__,RPC_ISAUCTION__,RPC_GETSTATUS__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_SETREGION__STRING_,RPC_GETREGION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
@@ -234,34 +234,6 @@ void AuctionItem::setAuction(bool isAuction) {
 		_implementation->setAuction(isAuction);
 }
 
-void AuctionItem::setSold(bool isSold) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSOLD__BOOL_);
-		method.addBooleanParameter(isSold);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setSold(isSold);
-}
-
-void AuctionItem::setRemovedByOwner(bool isRemovedByOwner) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETREMOVEDBYOWNER__BOOL_);
-		method.addBooleanParameter(isRemovedByOwner);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setRemovedByOwner(isRemovedByOwner);
-}
-
 void AuctionItem::setAuctionPremium() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -286,34 +258,6 @@ void AuctionItem::clearAuctionWithdraw() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->clearAuctionWithdraw();
-}
-
-void AuctionItem::setInStockroom(bool inStock) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETINSTOCKROOM__BOOL_);
-		method.addBooleanParameter(inStock);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setInStockroom(inStock);
-}
-
-void AuctionItem::setOfferToVendor(bool val) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETOFFERTOVENDOR__BOOL_);
-		method.addBooleanParameter(val);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setOfferToVendor(val);
 }
 
 void AuctionItem::setOnBazaar(bool val) {
@@ -358,6 +302,20 @@ void AuctionItem::setBuyerID(unsigned long long id) {
 		_implementation->setBuyerID(id);
 }
 
+void AuctionItem::setStatus(int value) {
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSTATUS__INT_);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setStatus(value);
+}
+
 bool AuctionItem::isOnBazaar() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -369,19 +327,6 @@ bool AuctionItem::isOnBazaar() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isOnBazaar();
-}
-
-bool AuctionItem::isSold() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISSOLD__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isSold();
 }
 
 bool AuctionItem::isAuction() {
@@ -397,43 +342,17 @@ bool AuctionItem::isAuction() {
 		return _implementation->isAuction();
 }
 
-bool AuctionItem::isRemovedByOwner() {
+int AuctionItem::getStatus() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISREMOVEDBYOWNER__);
+		DistributedMethod method(this, RPC_GETSTATUS__);
 
-		return method.executeWithBooleanReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->isRemovedByOwner();
-}
-
-bool AuctionItem::isInStockroom() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISINSTOCKROOM__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isInStockroom();
-}
-
-bool AuctionItem::isOfferToVendor() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISOFFERTOVENDOR__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isOfferToVendor();
+		return _implementation->getStatus();
 }
 
 unsigned long long AuctionItem::getVendorID() {
@@ -872,23 +791,8 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "AuctionItem.sold") {
-		TypeInfo<bool >::parseFromBinaryStream(&sold, stream);
-		return true;
-	}
-
-	if (_name == "AuctionItem.ownerRemove") {
-		TypeInfo<bool >::parseFromBinaryStream(&ownerRemove, stream);
-		return true;
-	}
-
-	if (_name == "AuctionItem.inStockroom") {
-		TypeInfo<bool >::parseFromBinaryStream(&inStockroom, stream);
-		return true;
-	}
-
-	if (_name == "AuctionItem.offer") {
-		TypeInfo<bool >::parseFromBinaryStream(&offer, stream);
+	if (_name == "AuctionItem.status") {
+		TypeInfo<int >::parseFromBinaryStream(&status, stream);
 		return true;
 	}
 
@@ -904,11 +808,6 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 
 	if (_name == "AuctionItem.expireTime") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&expireTime, stream);
-		return true;
-	}
-
-	if (_name == "AuctionItem.remainingTime") {
-		TypeInfo<int >::parseFromBinaryStream(&remainingTime, stream);
 		return true;
 	}
 
@@ -1051,35 +950,11 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.sold";
+	_name = "AuctionItem.status";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&sold, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionItem.ownerRemove";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&ownerRemove, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionItem.inStockroom";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&inStockroom, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionItem.offer";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&offer, stream);
+	TypeInfo<int >::toBinaryStream(&status, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1107,14 +982,6 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.remainingTime";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&remainingTime, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "AuctionItem.updated";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1132,7 +999,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 24;
+	return _count + 20;
 }
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {
@@ -1147,24 +1014,16 @@ AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid
 	offerToID = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		price = 0;
 	price = 0;
+	// server/zone/objects/auction/AuctionItem.idl():  		status = FORSALE;
+	status = FORSALE;
 	// server/zone/objects/auction/AuctionItem.idl():  		auction = true;
 	auction = true;
-	// server/zone/objects/auction/AuctionItem.idl():  		sold = false;
-	sold = false;
-	// server/zone/objects/auction/AuctionItem.idl():  		ownerRemove = false;
-	ownerRemove = false;
-	// server/zone/objects/auction/AuctionItem.idl():  		inStockroom = false;
-	inStockroom = false;
-	// server/zone/objects/auction/AuctionItem.idl():  		offer = false;
-	offer = false;
 	// server/zone/objects/auction/AuctionItem.idl():  		onBazaar = false;
 	onBazaar = false;
 	// server/zone/objects/auction/AuctionItem.idl():  		buyerID = 0;
 	buyerID = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		expireTime = 0;
 	expireTime = 0;
-	// server/zone/objects/auction/AuctionItem.idl():  		remainingTime = 0;
-	remainingTime = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		updated = false;
 	updated = false;
 	// server/zone/objects/auction/AuctionItem.idl():  		auctionOptions = 0;
@@ -1244,29 +1103,9 @@ void AuctionItemImplementation::setAuction(bool isAuction) {
 	auction = isAuction;
 }
 
-void AuctionItemImplementation::setSold(bool isSold) {
-	// server/zone/objects/auction/AuctionItem.idl():  		sold = isSold;
-	sold = isSold;
-}
-
-void AuctionItemImplementation::setRemovedByOwner(bool isRemovedByOwner) {
-	// server/zone/objects/auction/AuctionItem.idl():  		ownerRemove = isRemovedByOwner;
-	ownerRemove = isRemovedByOwner;
-}
-
 void AuctionItemImplementation::setAuctionPremium() {
 	// server/zone/objects/auction/AuctionItem.idl():  		auctionOptions = auctionOptions | OPTION_PREMIUM;
 	auctionOptions = auctionOptions | OPTION_PREMIUM;
-}
-
-void AuctionItemImplementation::setInStockroom(bool inStock) {
-	// server/zone/objects/auction/AuctionItem.idl():  		inStockroom = inStock;
-	inStockroom = inStock;
-}
-
-void AuctionItemImplementation::setOfferToVendor(bool val) {
-	// server/zone/objects/auction/AuctionItem.idl():  		offer = val;
-	offer = val;
 }
 
 void AuctionItemImplementation::setOnBazaar(bool val) {
@@ -1284,14 +1123,14 @@ void AuctionItemImplementation::setBuyerID(unsigned long long id) {
 	buyerID = id;
 }
 
+void AuctionItemImplementation::setStatus(int value) {
+	// server/zone/objects/auction/AuctionItem.idl():  		status = value;
+	status = value;
+}
+
 bool AuctionItemImplementation::isOnBazaar() {
 	// server/zone/objects/auction/AuctionItem.idl():  		return onBazaar;
 	return onBazaar;
-}
-
-bool AuctionItemImplementation::isSold() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return sold;
-	return sold;
 }
 
 bool AuctionItemImplementation::isAuction() {
@@ -1299,19 +1138,9 @@ bool AuctionItemImplementation::isAuction() {
 	return auction;
 }
 
-bool AuctionItemImplementation::isRemovedByOwner() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return ownerRemove;
-	return ownerRemove;
-}
-
-bool AuctionItemImplementation::isInStockroom() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return inStockroom;
-	return inStockroom;
-}
-
-bool AuctionItemImplementation::isOfferToVendor() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return offer;
-	return offer;
+int AuctionItemImplementation::getStatus() {
+	// server/zone/objects/auction/AuctionItem.idl():  		return status;
+	return status;
 }
 
 unsigned long long AuctionItemImplementation::getVendorID() {
@@ -1499,16 +1328,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setAuction(inv->getBooleanParameter());
 		}
 		break;
-	case RPC_SETSOLD__BOOL_:
-		{
-			setSold(inv->getBooleanParameter());
-		}
-		break;
-	case RPC_SETREMOVEDBYOWNER__BOOL_:
-		{
-			setRemovedByOwner(inv->getBooleanParameter());
-		}
-		break;
 	case RPC_SETAUCTIONPREMIUM__:
 		{
 			setAuctionPremium();
@@ -1517,16 +1336,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CLEARAUCTIONWITHDRAW__:
 		{
 			clearAuctionWithdraw();
-		}
-		break;
-	case RPC_SETINSTOCKROOM__BOOL_:
-		{
-			setInStockroom(inv->getBooleanParameter());
-		}
-		break;
-	case RPC_SETOFFERTOVENDOR__BOOL_:
-		{
-			setOfferToVendor(inv->getBooleanParameter());
 		}
 		break;
 	case RPC_SETONBAZAAR__BOOL_:
@@ -1544,14 +1353,14 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setBuyerID(inv->getUnsignedLongParameter());
 		}
 		break;
+	case RPC_SETSTATUS__INT_:
+		{
+			setStatus(inv->getSignedIntParameter());
+		}
+		break;
 	case RPC_ISONBAZAAR__:
 		{
 			resp->insertBoolean(isOnBazaar());
-		}
-		break;
-	case RPC_ISSOLD__:
-		{
-			resp->insertBoolean(isSold());
 		}
 		break;
 	case RPC_ISAUCTION__:
@@ -1559,19 +1368,9 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isAuction());
 		}
 		break;
-	case RPC_ISREMOVEDBYOWNER__:
+	case RPC_GETSTATUS__:
 		{
-			resp->insertBoolean(isRemovedByOwner());
-		}
-		break;
-	case RPC_ISINSTOCKROOM__:
-		{
-			resp->insertBoolean(isInStockroom());
-		}
-		break;
-	case RPC_ISOFFERTOVENDOR__:
-		{
-			resp->insertBoolean(isOfferToVendor());
+			resp->insertSignedInt(getStatus());
 		}
 		break;
 	case RPC_GETVENDORID__:
@@ -1731,28 +1530,12 @@ void AuctionItemAdapter::setAuction(bool isAuction) {
 	(static_cast<AuctionItem*>(stub))->setAuction(isAuction);
 }
 
-void AuctionItemAdapter::setSold(bool isSold) {
-	(static_cast<AuctionItem*>(stub))->setSold(isSold);
-}
-
-void AuctionItemAdapter::setRemovedByOwner(bool isRemovedByOwner) {
-	(static_cast<AuctionItem*>(stub))->setRemovedByOwner(isRemovedByOwner);
-}
-
 void AuctionItemAdapter::setAuctionPremium() {
 	(static_cast<AuctionItem*>(stub))->setAuctionPremium();
 }
 
 void AuctionItemAdapter::clearAuctionWithdraw() {
 	(static_cast<AuctionItem*>(stub))->clearAuctionWithdraw();
-}
-
-void AuctionItemAdapter::setInStockroom(bool inStock) {
-	(static_cast<AuctionItem*>(stub))->setInStockroom(inStock);
-}
-
-void AuctionItemAdapter::setOfferToVendor(bool val) {
-	(static_cast<AuctionItem*>(stub))->setOfferToVendor(val);
 }
 
 void AuctionItemAdapter::setOnBazaar(bool val) {
@@ -1767,28 +1550,20 @@ void AuctionItemAdapter::setBuyerID(unsigned long long id) {
 	(static_cast<AuctionItem*>(stub))->setBuyerID(id);
 }
 
-bool AuctionItemAdapter::isOnBazaar() {
-	return (static_cast<AuctionItem*>(stub))->isOnBazaar();
+void AuctionItemAdapter::setStatus(int value) {
+	(static_cast<AuctionItem*>(stub))->setStatus(value);
 }
 
-bool AuctionItemAdapter::isSold() {
-	return (static_cast<AuctionItem*>(stub))->isSold();
+bool AuctionItemAdapter::isOnBazaar() {
+	return (static_cast<AuctionItem*>(stub))->isOnBazaar();
 }
 
 bool AuctionItemAdapter::isAuction() {
 	return (static_cast<AuctionItem*>(stub))->isAuction();
 }
 
-bool AuctionItemAdapter::isRemovedByOwner() {
-	return (static_cast<AuctionItem*>(stub))->isRemovedByOwner();
-}
-
-bool AuctionItemAdapter::isInStockroom() {
-	return (static_cast<AuctionItem*>(stub))->isInStockroom();
-}
-
-bool AuctionItemAdapter::isOfferToVendor() {
-	return (static_cast<AuctionItem*>(stub))->isOfferToVendor();
+int AuctionItemAdapter::getStatus() {
+	return (static_cast<AuctionItem*>(stub))->getStatus();
 }
 
 unsigned long long AuctionItemAdapter::getVendorID() {

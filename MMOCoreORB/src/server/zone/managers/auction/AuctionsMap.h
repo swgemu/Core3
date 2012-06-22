@@ -78,7 +78,7 @@ public:
 
 	bool containsItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(SceneObject* vendor, const String& vuid, const String& search);
+	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search);
 
 	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(SceneObject* vendor, const String& vuid, const String& search);
 
@@ -151,7 +151,7 @@ public:
 
 	bool containsItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(SceneObject* vendor, const String& vuid, const String& search);
+	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search);
 
 	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(SceneObject* vendor, const String& vuid, const String& search);
 

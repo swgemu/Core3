@@ -92,13 +92,13 @@ bool AuctionsMap::containsItem(unsigned long long id) {
 		return _implementation->containsItem(id);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(SceneObject* vendor, const String& vuid, const String& search) {
+SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getVendorItems(vendor, vuid, search);
+		return _implementation->getVendorItems(player, vendor, vuid, search);
 }
 
 SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getBazaarItems(SceneObject* vendor, const String& vuid, const String& search) {
