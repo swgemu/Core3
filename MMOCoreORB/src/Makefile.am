@@ -169,6 +169,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/player/sessions/SlicingSession.cpp \
 				server/zone/objects/player/sessions/FindSession.cpp \
 				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
+				server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.cpp \
 				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				server/zone/objects/player/sessions/ConversationSession.cpp \
@@ -571,6 +572,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/FindSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
+		server/zone/objects/player/sessions/vendor/VendorAdBarkingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \

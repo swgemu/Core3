@@ -25,6 +25,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "system/util/VectorMap.h"
@@ -48,7 +62,7 @@ public:
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -114,7 +128,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -132,7 +146,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 
@@ -186,9 +202,7 @@ protected:
 
 	String region;
 
-	String location;
-
-	String terminalTitle;
+	String vuid;
 
 	String itemName;
 
@@ -229,7 +243,7 @@ public:
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -295,7 +309,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -313,7 +327,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 
@@ -368,7 +384,7 @@ public:
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -432,7 +448,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -450,7 +466,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 

@@ -42,16 +42,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerObject;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/auction/VuidString.h"
 
@@ -82,9 +82,11 @@ public:
 
 	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(SceneObject* vendor, const String& vuid, const String& search);
 
-	int getVendorItemCount(PlayerObject* ghost);
+	int getVendorItemCount(const String& uid);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	void deleteVendorItems(const String& uid);
+
+	int getBazaarItemCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
@@ -119,6 +121,8 @@ protected:
 	VuidItemMap bazaarItemsForSale;
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > allItems;
+
+	VectorMap<unsigned long long, int> bazaarCount;
 
 	Logger logger;
 
@@ -155,9 +159,11 @@ private:
 	void sendVendorUpdateMail(SceneObject* vendor, bool isEmpty);
 
 public:
-	int getVendorItemCount(PlayerObject* ghost);
+	int getVendorItemCount(const String& uid);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	void deleteVendorItems(const String& uid);
+
+	int getBazaarItemCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
@@ -212,9 +218,11 @@ public:
 
 	bool containsItem(unsigned long long id);
 
-	int getVendorItemCount(PlayerObject* ghost);
+	int getVendorItemCount(const String& uid);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	void deleteVendorItems(const String& uid);
+
+	int getBazaarItemCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 

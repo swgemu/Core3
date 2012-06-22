@@ -57,6 +57,8 @@ public:
 
 	void handleDestroyCallback(CreatureObject* player, TangibleObject* vendor);
 
+	void destroyVendor(TangibleObject* vendor);
+
 	void sendRegisterVendorTo(CreatureObject* player, TangibleObject* vendor);
 
 	void handleRegisterVendorCallback(CreatureObject* player, TangibleObject* vendor, const String& planetMapCategoryName);

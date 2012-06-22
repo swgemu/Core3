@@ -624,7 +624,13 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
 	if (!races->contains(race.hashCode())) {
-		UnicodeString message("I can't wear that");
+		UnicodeString message;
+
+		if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+			message = "@player_structure:wear_not_ithorian";
+		else
+			message = "@player_structure:wear_no";
+
 		chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
 		return false;
@@ -649,7 +655,12 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	creature->doAnimation("pose_proudly");
 	creature->broadcastObject(clothing, true);
 
-	UnicodeString message("Thank you master");
+	UnicodeString message;
+	if(clothing->isWeaponObject())
+		message = "@player_structure:wear_yes_weapon";
+	else
+		message = "@player_structure:wear_yes";
+
 	chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
 	return true;

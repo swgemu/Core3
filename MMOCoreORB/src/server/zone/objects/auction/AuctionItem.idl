@@ -48,6 +48,7 @@ import system.util.VectorMap;
 import engine.core.ManagedObject;
 import system.lang.StringBuffer;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.StringId;
 
 class AuctionItem extends ManagedObject {
@@ -64,8 +65,7 @@ class AuctionItem extends ManagedObject {
 
 	protected string planet;
 	protected string region;
-	protected string location;
-	protected string terminalTitle;
+	protected string vuid;
 
 	protected string itemName;
 	protected string itemDescription;
@@ -137,7 +137,7 @@ class AuctionItem extends ManagedObject {
 			return 0;
 	}
 	
-	public native void setLocation(final string planet, final string header, unsigned long vendorid, int x, int z, boolean vendor);
+	public native void setVendorUID(final string uid);
 	
 	public native void notifyLoadFromDatabase();
 		
@@ -264,8 +264,8 @@ class AuctionItem extends ManagedObject {
 		return offerToID;
 	}
 	
-	public string getTerminalTitle() {
-		return terminalTitle;
+	public string getVendorUID() {
+		return vuid;
 	}
 	
 	public string getOwnerName() {
@@ -300,8 +300,12 @@ class AuctionItem extends ManagedObject {
 		return itemDescription;
 	}
 	
-	public string getLocation() {
-		return location;
+	public void setRegion(final string value) {
+		region = value;
+	}
+	
+	public string getRegion() {
+		return region;
 	}
 
 	public int getAuctionOptions() {

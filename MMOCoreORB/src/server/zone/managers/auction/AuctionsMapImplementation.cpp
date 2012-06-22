@@ -13,6 +13,7 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/auction/ItemSoldMessage.h"
 
 int AuctionsMapImplementation::addItem(SceneObject* vendor, String& uid, AuctionItem* item) {
@@ -45,6 +46,7 @@ int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, A
 
 	vendorItems->put(item);
 	allItems.put(item->getAuctionedItemObjectID(), item);
+	item->setVendorUID(vuid);
 
 	if(vendorItems->size() == 1)
 		sendVendorUpdateMail(vendor, false);
@@ -74,6 +76,10 @@ int AuctionsMapImplementation::addBazaarItem(String& uid, AuctionItem* item) {
 
 	bazaarItems->put(item);
 	allItems.put(item->getAuctionedItemObjectID(), item);
+	item->setVendorUID(vuid);
+
+	int count = bazaarCount.get(item->getOwnerID()) + 1;
+	bazaarCount.put(item->getOwnerID(), count);
 
 	return ItemSoldMessage::SUCCESS;
 }
@@ -119,6 +125,14 @@ int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) 
 	Locker _locker(_this.get());
 	if(bazaarItems->drop(item)) {
 		allItems.drop(item->getAuctionedItemObjectID());
+
+		int count = bazaarCount.get(item->getOwnerID()) - 1;
+
+		if(count <= 0)
+			bazaarCount.drop(item->getOwnerID());
+		else
+			bazaarCount.put(item->getOwnerID(), count);
+
 		return ItemSoldMessage::SUCCESS;
 	}
 
@@ -234,6 +248,31 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBaz
 	return results;
 }
 
+int AuctionsMapImplementation::getVendorItemCount(const String& uid) {
+
+	if(!vendorItemsForSale.contains(uid))
+		return 0;
+
+	return vendorItemsForSale.get(uid).size();
+}
+
+void AuctionsMapImplementation::deleteVendorItems(const String& uid) {
+
+	if(!vendorItemsForSale.contains(uid))
+		return;
+
+	SortedVector<ManagedReference<AuctionItem* > >* items = &vendorItemsForSale.get(uid);
+
+	Locker locker(_this.get());
+	while(items->size() > 0) {
+		ManagedReference<AuctionItem* > item = items->remove(0);
+
+		ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+	}
+
+	vendorItemsForSale.drop(uid);
+}
+
 void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool isEmpty) {
 	//Send the mail to the vendor owner
 	if (vendor == NULL || !vendor->isVendor())
@@ -260,10 +299,13 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 		StringIdChatParameter body("@auction:vendor_status_empty");
 		body.setTO(vendor->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
+		vendorData->setEmpty(true);
+		VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
 	} else {
 		StringIdChatParameter body("@auction:vendor_status_normal");
 		body.setTO(vendor->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
+		vendorData->setEmpty(false);
 	}
 
 }
@@ -287,7 +329,9 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 			if(item == NULL)
 				continue;
 
-			item->setLocation(planetStr, region, vendor->getObjectID(), (int)vendor->getWorldPositionX(), (int)vendor->getWorldPositionY(), !vendor->isBazaarTerminal());
+			item->setPlanet(planetStr);
+			item->setRegion(region);
+			item->setVendorUID(newUID);
 		}
 
 		vendorItemsForSale.put(newUID, itemList);
@@ -300,7 +344,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 
 		String planetStr = vendor->getZone()->getZoneName();
 		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-		String region = "";
+		String region = planetStr;
 
 		if (cityRegion != NULL)
 			region = cityRegion->getRegionName();
@@ -310,7 +354,9 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 			if(item == NULL)
 				continue;
 
-			item->setLocation(planetStr, region, vendor->getObjectID(), (int)vendor->getWorldPositionX(), (int)vendor->getWorldPositionY(), !vendor->isBazaarTerminal());
+			item->setPlanet(planetStr);
+			item->setRegion(region);
+			item->setVendorUID(newUID);
 		}
 
 		bazaarItemsForSale.put(newUID, itemList);

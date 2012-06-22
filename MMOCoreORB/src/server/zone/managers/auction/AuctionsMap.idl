@@ -48,7 +48,7 @@ import engine.core.ManagedObject;
 import system.util.VectorMap;
 import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.managers.auction.VuidString;
 include server.zone.managers.auction.VuidItemMap;
 
@@ -64,6 +64,9 @@ class AuctionsMap extends ManagedObject {
 	protected transient VectorMap<unsigned long, AuctionItem> allItems;
 	
 	@dereferenced
+	protected transient VectorMap<unsigned long, int> bazaarCount;
+	
+	@dereferenced
 	protected transient Logger logger;
 	
 	public AuctionsMap() {
@@ -75,6 +78,9 @@ class AuctionsMap extends ManagedObject {
 		
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
+		
+		bazaarCount.setNoDuplicateInsertPlan();
+		bazaarCount.setNullValue(0);
 		
 		logger.setLoggingName("AuctionsMap");
 		logger.setGlobalLogging(true);
@@ -108,12 +114,12 @@ class AuctionsMap extends ManagedObject {
 	
 	private native void sendVendorUpdateMail(SceneObject vendor, boolean isEmpty);
 
-	public int getVendorItemCount(PlayerObject ghost) {
-		return 0;
-	}
+	public native int getVendorItemCount(final string uid);
 	
-	public int getBazaarItemCount(PlayerObject ghost) {
-		return 0;
+	public native void deleteVendorItems(final string uid);
+	
+	public int getBazaarItemCount(CreatureObject player) {
+		return bazaarCount.get(player.getObjectID());
 	}
 	
 	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);

@@ -114,9 +114,14 @@ public:
 				if (sceno->isVendor() && sceno->isCreatureObject()) {
 					if (object->isWearableObject() || object->isWeaponObject()) {
 
+						CreatureObject* vendor = cast<CreatureObject*>(sceno.get());
+
 						CreatureObject* player = cast<CreatureObject*>(creature);
 						if (player->getSkillMod("hiring") < 90) {
-							player->sendSystemMessage("You lack the necessary skills to perform that action");
+
+							UnicodeString message("@player_structure:wear_noway");
+							ChatManager* chatMan = server->getChatManager();
+							chatMan->broadcastMessage(vendor, message, object->getObjectID(), vendor->getMoodID(), 0);
 							return GENERALERROR;
 						}
 
@@ -137,7 +142,6 @@ public:
 						if (creature->getObjectID() != vendorData->getOwnerId())
 							return GENERALERROR;
 
-						CreatureObject* vendor = cast<CreatureObject*>(sceno.get());
 						if(vendor == NULL || vendor->getZone() == NULL || vendor->getZone()->getCreatureManager() == NULL)
 							return GENERALERROR;
 

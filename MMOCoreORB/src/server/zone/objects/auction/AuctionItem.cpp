@@ -6,11 +6,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	AuctionItemStub
  */
 
-enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETINSTOCKROOM__BOOL_,RPC_SETOFFERTOVENDOR__BOOL_,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_ISONBAZAAR__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_ISINSTOCKROOM__,RPC_ISOFFERTOVENDOR__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETTERMINALTITLE__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETLOCATION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
+enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_SETVENDORUID__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETSOLD__BOOL_,RPC_SETREMOVEDBYOWNER__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETINSTOCKROOM__BOOL_,RPC_SETOFFERTOVENDOR__BOOL_,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_ISONBAZAAR__,RPC_ISSOLD__,RPC_ISAUCTION__,RPC_ISREMOVEDBYOWNER__,RPC_ISINSTOCKROOM__,RPC_ISOFFERTOVENDOR__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_SETREGION__STRING_,RPC_GETREGION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
@@ -42,23 +44,18 @@ int AuctionItem::compareTo(AuctionItem* obj) {
 		return _implementation->compareTo(obj);
 }
 
-void AuctionItem::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
+void AuctionItem::setVendorUID(const String& uid) {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_);
-		method.addAsciiParameter(planet);
-		method.addAsciiParameter(header);
-		method.addUnsignedLongParameter(vendorid);
-		method.addSignedIntParameter(x);
-		method.addSignedIntParameter(z);
-		method.addBooleanParameter(vendor);
+		DistributedMethod method(this, RPC_SETVENDORUID__STRING_);
+		method.addAsciiParameter(uid);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setLocation(planet, header, vendorid, x, z, vendor);
+		_implementation->setVendorUID(uid);
 }
 
 void AuctionItem::notifyLoadFromDatabase() {
@@ -491,19 +488,19 @@ unsigned long long AuctionItem::getOfferToID() {
 		return _implementation->getOfferToID();
 }
 
-String AuctionItem::getTerminalTitle() {
+String AuctionItem::getVendorUID() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETTERMINALTITLE__);
+		DistributedMethod method(this, RPC_GETVENDORUID__);
 
-		String _return_getTerminalTitle;
-		method.executeWithAsciiReturn(_return_getTerminalTitle);
-		return _return_getTerminalTitle;
+		String _return_getVendorUID;
+		method.executeWithAsciiReturn(_return_getVendorUID);
+		return _return_getVendorUID;
 	} else
-		return _implementation->getTerminalTitle();
+		return _implementation->getVendorUID();
 }
 
 String AuctionItem::getOwnerName() {
@@ -618,19 +615,33 @@ String AuctionItem::getItemDescription() {
 		return _implementation->getItemDescription();
 }
 
-String AuctionItem::getLocation() {
+void AuctionItem::setRegion(const String& value) {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETLOCATION__);
+		DistributedMethod method(this, RPC_SETREGION__STRING_);
+		method.addAsciiParameter(value);
 
-		String _return_getLocation;
-		method.executeWithAsciiReturn(_return_getLocation);
-		return _return_getLocation;
+		method.executeWithVoidReturn();
 	} else
-		return _implementation->getLocation();
+		_implementation->setRegion(value);
+}
+
+String AuctionItem::getRegion() {
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREGION__);
+
+		String _return_getRegion;
+		method.executeWithAsciiReturn(_return_getRegion);
+		return _return_getRegion;
+	} else
+		return _implementation->getRegion();
 }
 
 int AuctionItem::getAuctionOptions() {
@@ -836,13 +847,8 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "AuctionItem.location") {
-		TypeInfo<String >::parseFromBinaryStream(&location, stream);
-		return true;
-	}
-
-	if (_name == "AuctionItem.terminalTitle") {
-		TypeInfo<String >::parseFromBinaryStream(&terminalTitle, stream);
+	if (_name == "AuctionItem.vuid") {
+		TypeInfo<String >::parseFromBinaryStream(&vuid, stream);
 		return true;
 	}
 
@@ -1005,19 +1011,11 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.location";
+	_name = "AuctionItem.vuid";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&location, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "AuctionItem.terminalTitle";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<String >::toBinaryStream(&terminalTitle, stream);
+	TypeInfo<String >::toBinaryStream(&vuid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1134,7 +1132,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 25;
+	return _count + 24;
 }
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {
@@ -1336,9 +1334,9 @@ unsigned long long AuctionItemImplementation::getOfferToID() {
 	return offerToID;
 }
 
-String AuctionItemImplementation::getTerminalTitle() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return terminalTitle;
-	return terminalTitle;
+String AuctionItemImplementation::getVendorUID() {
+	// server/zone/objects/auction/AuctionItem.idl():  		return vuid;
+	return vuid;
 }
 
 String AuctionItemImplementation::getOwnerName() {
@@ -1381,9 +1379,14 @@ String AuctionItemImplementation::getItemDescription() {
 	return itemDescription;
 }
 
-String AuctionItemImplementation::getLocation() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return location;
-	return location;
+void AuctionItemImplementation::setRegion(const String& value) {
+	// server/zone/objects/auction/AuctionItem.idl():  		region = value;
+	region = value;
+}
+
+String AuctionItemImplementation::getRegion() {
+	// server/zone/objects/auction/AuctionItem.idl():  		return region;
+	return region;
 }
 
 int AuctionItemImplementation::getAuctionOptions() {
@@ -1426,10 +1429,10 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(compareTo(static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_:
+	case RPC_SETVENDORUID__STRING_:
 		{
-			String planet; String header; 
-			setLocation(inv->getAsciiParameter(planet), inv->getAsciiParameter(header), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+			String uid; 
+			setVendorUID(inv->getAsciiParameter(uid));
 		}
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
@@ -1591,9 +1594,9 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertLong(getOfferToID());
 		}
 		break;
-	case RPC_GETTERMINALTITLE__:
+	case RPC_GETVENDORUID__:
 		{
-			resp->insertAscii(getTerminalTitle());
+			resp->insertAscii(getVendorUID());
 		}
 		break;
 	case RPC_GETOWNERNAME__:
@@ -1636,9 +1639,15 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertAscii(getItemDescription());
 		}
 		break;
-	case RPC_GETLOCATION__:
+	case RPC_SETREGION__STRING_:
 		{
-			resp->insertAscii(getLocation());
+			String value; 
+			setRegion(inv->getAsciiParameter(value));
+		}
+		break;
+	case RPC_GETREGION__:
+		{
+			resp->insertAscii(getRegion());
 		}
 		break;
 	case RPC_GETAUCTIONOPTIONS__:
@@ -1670,8 +1679,8 @@ int AuctionItemAdapter::compareTo(AuctionItem* obj) {
 	return (static_cast<AuctionItem*>(stub))->compareTo(obj);
 }
 
-void AuctionItemAdapter::setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor) {
-	(static_cast<AuctionItem*>(stub))->setLocation(planet, header, vendorid, x, z, vendor);
+void AuctionItemAdapter::setVendorUID(const String& uid) {
+	(static_cast<AuctionItem*>(stub))->setVendorUID(uid);
 }
 
 void AuctionItemAdapter::notifyLoadFromDatabase() {
@@ -1798,8 +1807,8 @@ unsigned long long AuctionItemAdapter::getOfferToID() {
 	return (static_cast<AuctionItem*>(stub))->getOfferToID();
 }
 
-String AuctionItemAdapter::getTerminalTitle() {
-	return (static_cast<AuctionItem*>(stub))->getTerminalTitle();
+String AuctionItemAdapter::getVendorUID() {
+	return (static_cast<AuctionItem*>(stub))->getVendorUID();
 }
 
 String AuctionItemAdapter::getOwnerName() {
@@ -1834,8 +1843,12 @@ String AuctionItemAdapter::getItemDescription() {
 	return (static_cast<AuctionItem*>(stub))->getItemDescription();
 }
 
-String AuctionItemAdapter::getLocation() {
-	return (static_cast<AuctionItem*>(stub))->getLocation();
+void AuctionItemAdapter::setRegion(const String& value) {
+	(static_cast<AuctionItem*>(stub))->setRegion(value);
+}
+
+String AuctionItemAdapter::getRegion() {
+	return (static_cast<AuctionItem*>(stub))->getRegion();
 }
 
 int AuctionItemAdapter::getAuctionOptions() {

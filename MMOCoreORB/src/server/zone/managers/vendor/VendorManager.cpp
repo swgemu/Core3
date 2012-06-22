@@ -84,8 +84,10 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	statusBox->setPromptTitle("@player_structure:vendor_status");
 	statusBox->setPromptText("Vendor Status");
 
-	int condition = (float)vendor->getConditionDamage() / (float)vendor->getMaxCondition();
+	int condition = ((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition();
 	statusBox->addMenuItem("Condition: " + String::valueOf(condition) + "%");
+	statusBox->addMenuItem("Maintenance Pool: " + String::valueOf(vendorData->getMaint()));
+
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
 	if(auctionManager == NULL) {
@@ -166,10 +168,42 @@ void VendorManager::promptRenameVendorTo(CreatureObject* player, TangibleObject*
 }
 
 void VendorManager::handleDestroyCallback(CreatureObject* player, TangibleObject* vendor) {
+	destroyVendor(vendor);
+}
 
-	Locker locker(this);
+void VendorManager::destroyVendor(TangibleObject* vendor) {
+	DataObjectComponentReference* data = vendor->getDataObjectComponent();
+	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+		error("Vendor has no data component");
+		return;
+	}
+
+	VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+	if(vendorData == NULL) {
+		error("Vendor has wrong data component");
+		return;
+	}
+
+	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
+	if(auctionManager == NULL) {
+		error("null auction manager");
+		return;
+	}
+	ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
+	if(auctionsMap == NULL) {
+		error("null auctionsMap");
+		return;
+	}
+
+	if (vendorData->isRegistered() && vendor->getZone() != NULL) {
+		vendor->getZone()->unregisterObjectWithPlanetaryMap(vendor);
+	}
+
+	auctionsMap->deleteVendorItems(vendorData->getUID());
+
 	vendor->destroyObjectFromWorld(true);
 	vendor->destroyObjectFromDatabase(true);
+
 
 }
 

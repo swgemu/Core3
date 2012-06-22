@@ -74,7 +74,7 @@ public:
 	}
 
 	void addItemToList(AuctionItem* ai) {
-		locationList.put(ai->getTerminalTitle());
+		locationList.put(ai->getVendorUID());
 		locationList.put(ai->getOwnerName());
 		locationList.put(ai->getBidderName());
 
@@ -127,7 +127,7 @@ public:
 	    	else
 	    		insertByte(1);
 
-	    	insertShort(locationList.find(il->getTerminalTitle()));
+	    	insertShort(locationList.find(il->getVendorUID()));
 
 	    	insertLong(il->getOwnerID()); // seller ID
 	    	insertShort(locationList.find(il->getOwnerName()));

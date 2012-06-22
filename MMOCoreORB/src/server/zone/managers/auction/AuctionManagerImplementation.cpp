@@ -57,7 +57,8 @@ void AuctionManagerImplementation::initialize() {
 		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(Core::getObjectBroker()->lookUp(auctionItem->getVendorID()));
 
 		if(vendor == NULL) {
-			error("unable to load vendor: " + String::valueOf(auctionItem->getVendorID()));
+			ObjectManager::instance()->destroyObjectFromDatabase(auctionItem->_getObjectID());
+			warning("Auction Item's vendor is gone, deleting auction item: " + String::valueOf(auctionItem->_getObjectID()));
 			continue;
 		}
 
@@ -372,13 +373,14 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 
 		UID = vendor->getZone()->getZoneName() + ".";
 
-		String region = vendor->getZone()->getZoneName();
+		String region = "@planet_n:" + vendor->getZone()->getZoneName();
 		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
 		if(cityRegion != NULL)
 			region = cityRegion->getRegionName();
 
-		UID += region + "." + vendor->getDisplayedName() + "#";
-		UID += String::valueOf(vendor->getPositionX()) + "," + String::valueOf(vendor->getPositionY());
+		UID += region + "." + vendor->getDisplayedName() + ".";
+		UID += String::valueOf(vendor->getObjectID()) + "#";
+		UID += String::valueOf(((int)vendor->getPositionX())) + "," + String::valueOf(((int)vendor->getPositionY()));
 
 	} else if(vendor->isVendor()) {
 		VendorDataComponent* vendorData = NULL;
@@ -413,7 +415,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 			vendorData = cast<VendorDataComponent*>(data->get());
 
 		if (player->getObjectID() == vendorData->getOwnerId()) {
-			if (auctionMap->getVendorItemCount(player->getPlayerObject()) >= player->getSkillMod("vendor_item_limit"))
+			if (auctionMap->getVendorItemCount(vendorData->getUID()) >= player->getSkillMod("vendor_item_limit"))
 				return ItemSoldMessage::TOOMANYITEMS;
 		}
 
@@ -422,7 +424,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 	}
 
 	if(vendor->isBazaarTerminal()) {
-		if (auctionMap->getBazaarItemCount(player->getPlayerObject()) >= MAXSALES)
+		if (auctionMap->getBazaarItemCount(player) >= MAXSALES)
 			return ItemSoldMessage::TOOMANYITEMS;
 
 		if (price > MAXBAZAARPRICE)
@@ -458,7 +460,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	item->setPlanet(planetStr);
 
 	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-	String region = "";
+	String region = planetStr;
 
 	if (cityRegion != NULL)
 		region = cityRegion->getRegionName();
@@ -470,9 +472,9 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	if (name.length() < 2)
 		objectName->getFullPath(name);
 
-	//printf("planet:%s region:%s\n", planetStr.toCharArray(), region.toCharArray());
-
-	item->setLocation(planetStr, region, vendor->getObjectID(), (int)vendor->getWorldPositionX(), (int)vendor->getWorldPositionY(), !vendor->isBazaarTerminal());
+	item->setPlanet(planetStr);
+	item->setRegion(region);
+	item->setVendorUID(getVendorUID(vendor));
 
 	if (premium)
 		item->setAuctionPremium();
@@ -769,7 +771,7 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 			String regionName = region->getRegionName();
 			//String region = terminal->getBazaarRegion();
 
-			if (item->getLocation().indexOf(regionName) == -1) {
+			if (item->getRegion().indexOf(regionName) == -1) {
 				return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 			}
 		} else {
