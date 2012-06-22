@@ -21,6 +21,8 @@ class CreateTicketMessageCallback : public MessageCallback {
 public:
 	CreateTicketMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
+
+		taskqueue = 8;
 	}
 
 

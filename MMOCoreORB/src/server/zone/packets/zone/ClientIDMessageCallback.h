@@ -26,6 +26,8 @@ public:
 	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
 
+		taskqueue = 8;
+
 	}
 
 	void parse(Message* message) {
