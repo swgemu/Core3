@@ -192,15 +192,16 @@ void VendorDataComponent::handlePayMaintanence(int value) {
 		return;
 	}
 
-	if(owner->getBankCredits() + owner->getCashCredits() > value) {
+	if(owner->getBankCredits() + owner->getCashCredits() >= value) {
 		maintAmount += value;
+
 		if(owner->getBankCredits() > value) {
 			owner->subtractBankCredits(value);
 		} else {
 			owner->subtractCashCredits(value - owner->getBankCredits());
 			owner->subtractBankCredits(owner->getBankCredits());
 		}
-		owner->subtractBankCredits(value);
+
 		StringIdChatParameter message("@player_structure:vendor_maint_accepted");
 		message.setDI(maintAmount);
 		owner->sendSystemMessage(message);
