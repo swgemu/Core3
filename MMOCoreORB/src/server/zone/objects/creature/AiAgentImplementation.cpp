@@ -688,8 +688,6 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
-	Locker locker(&despawnMutex);
-
 	if (moveEvent != NULL) {
 		moveEvent->clearCreatureObject();
 		moveEvent = NULL;
@@ -709,6 +707,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	int oldLevel = level;
 
+	Locker locker(&despawnMutex);
+
 	loadTemplateData(templateObject);
 	loadTemplateData(npcTemplate);
 
@@ -719,6 +719,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	posture = CreaturePosture::UPRIGHT;
 	shockWounds = 0;
 	threatMap->removeAll();
+
+	locker.release();
 
 	//Delete all loot out of inventory
 	ManagedReference<SceneObject*> inventory = getSlottedObject("inventory");
