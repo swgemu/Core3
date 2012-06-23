@@ -102,28 +102,30 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	//Award faction points for faction delivery missions.
 	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
 
-	ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
-	if (ghost != NULL) {
-		Locker ghostLocker(creatureOwner);
+	if (creatureOwner != NULL) {
+		ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
+		if (ghost != NULL) {
+			Locker ghostLocker(creatureOwner);
 
-		//Switch to get the correct order.
-		switch (mission->getFaction()) {
-		case MissionObject::FACTIONIMPERIAL:
-			if (factionPointsImperial > 0) {
-				ghost->increaseFactionStanding("imperial", factionPointsImperial);
+			//Switch to get the correct order.
+			switch (mission->getFaction()) {
+			case MissionObject::FACTIONIMPERIAL:
+				if (factionPointsImperial > 0) {
+					ghost->increaseFactionStanding("imperial", factionPointsImperial);
+				}
+				if (factionPointsRebel < 0) {
+					ghost->decreaseFactionStanding("rebel", -factionPointsRebel);
+				}
+				break;
+			case MissionObject::FACTIONREBEL:
+				if (factionPointsRebel > 0) {
+					ghost->increaseFactionStanding("rebel", factionPointsRebel);
+				}
+				if (factionPointsImperial < 0) {
+					ghost->decreaseFactionStanding("imperial", -factionPointsImperial);
+				}
+				break;
 			}
-			if (factionPointsRebel < 0) {
-				ghost->decreaseFactionStanding("rebel", -factionPointsRebel);
-			}
-			break;
-		case MissionObject::FACTIONREBEL:
-			if (factionPointsRebel > 0) {
-				ghost->increaseFactionStanding("rebel", factionPointsRebel);
-			}
-			if (factionPointsImperial < 0) {
-				ghost->decreaseFactionStanding("imperial", -factionPointsImperial);
-			}
-			break;
 		}
 	}
 }
