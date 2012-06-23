@@ -121,6 +121,8 @@ using namespace server::zone::objects::scene;
 
 #include "engine/core/ManagedService.h"
 
+#include "engine/core/Task.h"
+
 #include "system/util/VectorMap.h"
 
 namespace server {
@@ -184,6 +186,8 @@ public:
 
 	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
+	void expireAuction(AuctionItem* item);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -213,6 +217,8 @@ protected:
 	ManagedReference<AuctionsMap* > auctionMap;
 
 	ManagedReference<ZoneServer* > zoneServer;
+
+	VectorMap<unsigned long long, Task*> auctionEvents;
 
 public:
 	static const int MAXBAZAARPRICE = 20000;
@@ -274,6 +280,8 @@ public:
 	String getVendorUID(SceneObject* vendor);
 
 	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void expireAuction(AuctionItem* item);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -345,6 +353,8 @@ public:
 	String getVendorUID(SceneObject* vendor);
 
 	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void expireAuction(AuctionItem* item);
 
 };
 

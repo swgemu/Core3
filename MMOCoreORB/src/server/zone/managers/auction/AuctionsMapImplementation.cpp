@@ -16,15 +16,15 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/auction/ItemSoldMessage.h"
 
-int AuctionsMapImplementation::addItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
 
 	if(vendor->isBazaarTerminal())
-		return addBazaarItem(uid, item);
+		return addBazaarItem(player, uid, item);
 
-	return addVendorItem(vendor, uid, item);
+	return addVendorItem(player, vendor, uid, item);
 }
 
-int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addVendorItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
 
 	VuidString vuid(uid);
 
@@ -48,13 +48,13 @@ int AuctionsMapImplementation::addVendorItem(SceneObject* vendor, String& uid, A
 	allItems.put(item->getAuctionedItemObjectID(), item);
 	item->setVendorUID(vuid);
 
-	if(vendorItems->size() == 1)
+	if(vendorItems->size() == 1 && player != NULL)
 		sendVendorUpdateMail(vendor, false);
 
 	return ItemSoldMessage::SUCCESS;
 }
 
-int AuctionsMapImplementation::addBazaarItem(String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, String& uid, AuctionItem* item) {
 
 	VuidString vuid(uid);
 

@@ -70,7 +70,7 @@ class AuctionsMap : public ManagedObject {
 public:
 	AuctionsMap();
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
 	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
 
@@ -131,12 +131,12 @@ public:
 
 	AuctionsMapImplementation(DummyConstructorParameter* param);
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
 private:
-	int addVendorItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addVendorItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
-	int addBazaarItem(String& uid, AuctionItem* item);
+	int addBazaarItem(CreatureObject* player, String& uid, AuctionItem* item);
 
 public:
 	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
@@ -210,7 +210,7 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
 	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
 

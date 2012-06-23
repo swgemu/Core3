@@ -48,6 +48,7 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedService;
+import engine.core.Task;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.auction.AuctionsMap;
@@ -55,13 +56,15 @@ import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
-
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
 	
 	protected ZoneServer zoneServer;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, Task> auctionEvents;
 	
 	public final static int MAXBAZAARPRICE = 20000;
 	public final static int MAXSALES = 25; // this only apply to bazaars
@@ -76,6 +79,9 @@ class AuctionManager extends ManagedService implements Logger {
 		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
+		auctionEvents.setNoDuplicateInsertPlan();
+		auctionEvents.setNullValue(null);
 	}
 	
 	public native void initialize();
@@ -126,5 +132,7 @@ class AuctionManager extends ManagedService implements Logger {
 		auctionMap.updateUID(vendor, oldUID, newUID);
 	}
 	
+	public native void expireAuction(AuctionItem item);
+
 }
 

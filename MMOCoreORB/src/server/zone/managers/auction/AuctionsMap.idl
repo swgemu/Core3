@@ -87,9 +87,9 @@ class AuctionsMap extends ManagedObject {
 		logger.setLogging(true);
 	}
 
-	public native int addItem(SceneObject vendor, string uid, AuctionItem item);
-	private native int addVendorItem(SceneObject vendor, string uid, AuctionItem item);
-	private native int addBazaarItem(string uid, AuctionItem item);
+	public native int addItem(CreatureObject player, SceneObject vendor, string uid, AuctionItem item);
+	private native int addVendorItem(CreatureObject player, SceneObject vendor, string uid, AuctionItem item);
+	private native int addBazaarItem(CreatureObject player, string uid, AuctionItem item);
 
 	public native int removeItem(SceneObject vendor, string uid, AuctionItem item);
 	private native int removeVendorItem(SceneObject vendor, string uid, AuctionItem item);
