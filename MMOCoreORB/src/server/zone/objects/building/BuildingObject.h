@@ -216,6 +216,8 @@ public:
 
 	bool hasAccessFee();
 
+	int getAccessFee();
+
 	bool canChangeAccessFee();
 
 	void setAccessFee(int fee, int duration);
@@ -383,6 +385,8 @@ public:
 
 	bool hasAccessFee();
 
+	int getAccessFee();
+
 	bool canChangeAccessFee();
 
 	void setAccessFee(int fee, int duration);
@@ -525,6 +529,8 @@ public:
 	String getRedeedMessage();
 
 	bool hasAccessFee();
+
+	int getAccessFee();
 
 	bool canChangeAccessFee();
 

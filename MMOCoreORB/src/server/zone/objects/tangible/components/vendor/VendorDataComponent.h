@@ -100,7 +100,7 @@ public:
 
 		UID += region + "." + vendor->getDisplayedName() + ".";
 		UID += String::valueOf(vendor->getObjectID()) + "#";
-		UID += String::valueOf(((int)vendor->getPositionX())) + "," + String::valueOf(((int)vendor->getPositionY()));
+		UID += String::valueOf(((int)vendor->getWorldPositionX())) + "," + String::valueOf(((int)vendor->getWorldPositionY()));
 	}
 
 	String getUID() {

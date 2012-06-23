@@ -56,6 +56,8 @@ class RetrieveAuctionItemResponseMessage : public BaseMessage {
 public:
 	const static int NOTALLOWED = 1;
 	const static int FULLINVENTORY = 12;
+
+	const static int TOOFAR = 0x100;
 public:
     RetrieveAuctionItemResponseMessage(uint64 objectid, int status) : BaseMessage() {
 		insertShort(0x03);

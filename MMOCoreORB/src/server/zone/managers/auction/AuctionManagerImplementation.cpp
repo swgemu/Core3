@@ -391,7 +391,7 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 
 		UID += region + "." + vendor->getDisplayedName() + ".";
 		UID += String::valueOf(vendor->getObjectID()) + "#";
-		UID += String::valueOf(((int)vendor->getPositionX())) + "," + String::valueOf(((int)vendor->getPositionY()));
+		UID += String::valueOf(((int)vendor->getWorldPositionX())) + "," + String::valueOf(((int)vendor->getWorldPositionY()));
 
 	} else if(vendor->isVendor()) {
 		VendorDataComponent* vendorData = NULL;
@@ -561,6 +561,11 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = currentTime + 2592000;
 
+	if(item->getStatus() == AuctionItem::OFFERED) {
+		item->setOwnerID(player->getObjectID());
+		item->setOwnerName(playername);
+	}
+
 	item->setStatus(AuctionItem::SOLD);
 	item->setExpireTime(availableTime);
 	item->setBuyerID(player->getObjectID());
@@ -644,8 +649,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		return;
 	}
 
-	Locker clocker(seller, player);
-
+	Locker locker(seller);
 	seller->addBankCredits(price1);
 
 }
@@ -769,7 +773,7 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
 	if(vendor->isVendor() && !vendor->isInRange(player, 5.0f))
-		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+		return RetrieveAuctionItemResponseMessage::TOOFAR;
 
 
 	if (vendor->isBazaarTerminal()) {
@@ -780,7 +784,7 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 			//String region = terminal->getBazaarRegion();
 
 			if (item->getRegion().indexOf(regionName) == -1) {
-				return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+				return RetrieveAuctionItemResponseMessage::TOOFAR;
 			}
 		} else {
 			StringBuffer msg;
@@ -833,8 +837,10 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 	int res = checkRetrieve(player, objectid, vendor);
 
 	if (res != 0) {
-		msg = new RetrieveAuctionItemResponseMessage(objectid, res);
-		player->sendMessage(msg);
+		if(res != RetrieveAuctionItemResponseMessage::TOOFAR) {
+			msg = new RetrieveAuctionItemResponseMessage(objectid, res);
+			player->sendMessage(msg);
+		}
 		return;
 	}
 

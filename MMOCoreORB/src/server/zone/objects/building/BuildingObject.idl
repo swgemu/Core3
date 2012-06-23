@@ -315,6 +315,10 @@ class BuildingObject extends StructureObject {
 		return accessFee > 0;
 	}
 	
+	public int getAccessFee() {
+		return accessFee;
+	}
+	
 	public native boolean canChangeAccessFee();
 	
 	public native void setAccessFee(int fee, int duration);
