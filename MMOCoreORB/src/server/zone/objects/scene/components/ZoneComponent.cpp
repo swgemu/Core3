@@ -290,8 +290,11 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 
 		for (int i = 0; i < objects.size(); ++i) {
 			QuadTreeEntry* object = objects.get(i);
+			try {
+				object->notifyPositionUpdate(sceneObject);
+			} catch (Exception& e) {
 
-			object->notifyPositionUpdate(sceneObject);
+			}
 		}
 	}
 
