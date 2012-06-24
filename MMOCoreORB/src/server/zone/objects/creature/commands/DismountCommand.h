@@ -103,6 +103,8 @@ public:
 			creature->setAccelerationMultiplierMod(1.822f);
 		}
 
+		creature->clearState(CreatureState::RIDINGMOUNT);
+
 		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 		int bufferSize = changeBuffer->size();
 
