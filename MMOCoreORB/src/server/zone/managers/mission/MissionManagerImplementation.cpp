@@ -1394,13 +1394,10 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		}
 
 		if (neutralMission) {
-			info("Neutral mission.", true);
 			worldAreas = creatureManager->getFactionalNeutralMissionSpawnAreas();
 		} else if (faction == MissionObject::FACTIONIMPERIAL) {
-			info("Imperial mission.", true);
 			worldAreas = creatureManager->getFactionalImperialMissionSpawnAreas();
 		} else {
-			info("Rebel mission.", true);
 			worldAreas = creatureManager->getFactionalRebelMissionSpawnAreas();
 		}
 	}
