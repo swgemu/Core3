@@ -120,8 +120,8 @@ class MissionObject extends IntangibleObject {
 	
 	//Faction types
 	public static final int FACTIONNEUTRAL = 0;
-	public static final int FACTIONIMPERIAL = 1;
-	public static final int FACTIONREBEL = 2;
+	public static final int FACTIONIMPERIAL = 0xDB4ACC54;
+	public static final int FACTIONREBEL = 0x16148850;
 	
 	public MissionObject() {
 		typeCRC = SURVEY;

@@ -75,6 +75,9 @@ dathomir_regions = {
 	{"vass_meindras_5",0,0,0,0,1},
 	{"vass_meindras_6",0,0,0,0,1},
 	{"western_mountains",0,0,0,0,1},
+	{"world_factional_imperial",0,0,-1,6,1,"factional_imperial"},
+	{"world_factional_neutral",0,0,-1,4,1,"factional_neutral"},
+	{"world_factional_rebel",0,0,-1,5,1,"factional_rebel"},
 	{"world_spawner",0,0,-1,3,1,"dathomir_world_easy"},
 	{"yumaou_risoath",0,0,0,0,1},
 }
