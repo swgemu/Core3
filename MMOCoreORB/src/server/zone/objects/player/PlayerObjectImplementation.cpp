@@ -1378,6 +1378,8 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 	Locker locker(parent.get());
 
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
 	if (!isOnline()) {
 		ZoneClientSession* owner = creature->getClient();
 
@@ -1388,8 +1390,6 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 
 		return;
 	}
-
-	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (/*isInCombat() && */!isLinkDead()) {
 		info("link dead");
