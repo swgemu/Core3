@@ -66,8 +66,11 @@ public:
 
 		ManagedReference<SceneObject*> mount = creature->getParent();
 
-		if (mount == NULL || !mount->isCreatureObject())
+		if (mount == NULL || !mount->isCreatureObject()) {
+			creature->clearState(CreatureState::RIDINGMOUNT);
+
 			return GENERALERROR;
+		}
 
 		CreatureObject* vehicle = cast<CreatureObject*>( mount.get());
 
@@ -99,8 +102,6 @@ public:
 			creature->setSpeedMultiplierMod(1.822f);
 			creature->setAccelerationMultiplierMod(1.822f);
 		}
-
-		creature->clearState(CreatureState::RIDINGMOUNT);
 
 		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 		int bufferSize = changeBuffer->size();

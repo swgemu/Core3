@@ -20,6 +20,8 @@
 #include "server/chat/ChatManager.h"
 #include "server/login/account/Account.h"
 
+#include "server/zone/objects/player/events/DisconnectClientEvent.h"
+
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
 public:
@@ -69,6 +71,9 @@ public:
 				_locker.release();
 
 				oldClient->disconnect();
+
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(player, oldClient, DisconnectClientEvent::DISCONNECT);
+				Core::getTaskManager()->executeTask(task);
 
 				return;
 			}
