@@ -43,6 +43,11 @@
 
 object_tangible_ship_components_chassis_tie_in_chassis_token = object_tangible_ship_components_chassis_shared_tie_in_chassis_token:new {
 
+    templateType = SHIPCHASSIS,
+	chassisDeed = "object/tangible/ship/crafted/chassis/tie_in_deed.iff",
+	dealerFee = 4000,
+	certRequired = "",
+	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},

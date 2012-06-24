@@ -43,6 +43,11 @@
 
 object_tangible_ship_components_chassis_decimator_chassis_token = object_tangible_ship_components_chassis_shared_decimator_chassis_token:new {
 
+    templateType = SHIPCHASSIS,
+	chassisDeed = "object/tangible/ship/crafted/chassis/decimator_deed.iff",
+	dealerFee = 20000,
+	certRequired = "",
+	POB = true,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},

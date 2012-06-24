@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_blacksun_medium_s01_deed = object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/blacksun_medium_s01_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_blacksun_medium_s01.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_blacksun_medium_s01_deed, "object/tangible/ship/crafted/chassis/blacksun_medium_s01_deed.iff")

@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_ykl37r_deed = object_tangible_ship_crafted_chassis_shared_ykl37r_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/ykl37r_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_ykl37r.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_ykl37r_deed, "object/tangible/ship/crafted/chassis/ykl37r_deed.iff")
