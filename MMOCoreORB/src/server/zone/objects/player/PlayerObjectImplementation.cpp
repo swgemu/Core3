@@ -1379,6 +1379,13 @@ void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 	Locker locker(parent.get());
 
 	if (!isOnline()) {
+		ZoneClientSession* owner = creature->getClient();
+
+		if (closeClient && owner != NULL)
+			owner->closeConnection(false, true);
+
+		creature->setClient(NULL);
+
 		return;
 	}
 
