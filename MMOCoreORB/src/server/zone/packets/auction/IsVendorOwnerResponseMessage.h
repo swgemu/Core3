@@ -95,16 +95,10 @@ public:
 		int x = vendor->getWorldPositionX();
 		int y = vendor->getWorldPositionY();
 
-		if (!vendor->isBazaarTerminal())
-			title << "@planet_n:" << planet <<  ".Vendor: " << vendor->getDisplayedName(); // VendorName
-		else
-			title << region << "." << vendor->getDisplayedName();
-		
-		title << "." << objectID << "#" << x << "," << y;
-		
-		//printf("title: %s\n", title.toString().toCharArray());
+		Reference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
+		String uuid = auctionManager->getVendorUID(vendor);
 
-		insertAscii(title.toString());
+		insertAscii(uuid);
 		
 		insertShort(0x64); // ?? 64
 	}

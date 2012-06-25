@@ -143,6 +143,7 @@ public:
 	    	insertShort(locationList.find(il->getVendorUID()));
 
 	    	insertLong(il->getOwnerID()); // seller ID
+
 	    	insertShort(locationList.find(il->getOwnerName()));
 
 	    	insertLong(il->getBuyerID()); // buyer ID

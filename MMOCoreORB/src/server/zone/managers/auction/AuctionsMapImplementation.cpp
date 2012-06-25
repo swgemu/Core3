@@ -150,8 +150,14 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 		lowerbound = vendorItemsForSale.lowerBound(searchTerm);
 		upperbound = vendorItemsForSale.upperBound(searchTerm);
 	}
+//	System::out << "\nSearch: " << searchTerm << " LowerBound: " << lowerbound << " Upperbound: " << upperbound << "\n" << endl;
 
 	SortedVector<ManagedReference<AuctionItem* > > results;
+
+//	System::out << "Vendors\n" << endl;
+//	for(int i = 0; i < vendorItemsForSale.size(); ++i)
+//		System::out << "  " << i << ". "  << vendorItemsForSale.elementAt(i).getKey() << "   " << vendorItemsForSale.elementAt(i).getKey().compareTo(search) << "\n" << endl;
+
 
 	if(lowerbound != -1 && upperbound == -1)
 		upperbound = lowerbound;
@@ -168,7 +174,11 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 			vendorData = cast<VendorDataComponent*>(data->get());
 	}
 
+//	System::out << "\nVendor Match\n " << endl;
+
 	for(int i = lowerbound; i <= upperbound; ++i) {
+
+//		System::out << i << ". " << vendorItemsForSale.elementAt(i).getKey() << "\n" << endl;
 
 		SortedVector<ManagedReference<AuctionItem* > >* items = &vendorItemsForSale.get(i);
 		SceneObject* thisVendor = NULL;
@@ -199,12 +209,20 @@ SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVen
 				continue;
 			}
 
+			/// Vendor search should see all items if vendor search is enabled
 			if(vendor->isBazaarTerminal() && thisVendorData->isVendorSearchEnabled())
 				results.add(item);
-			else if(thisVendor == vendor || thisVendorData->getOwnerId() == player->getObjectID())
+
+			/// if the vendor i'm looking at is the same vendor the items is on, list it
+			else if(thisVendorData->getUID() == vuid)
+				results.add(item);
+
+			/// If the owner is search, should see all items that are on his vendors
+			else if(thisVendorData->getOwnerId() == player->getObjectID())
 				results.add(item);
 		}
 	}
+//	System::out << "\n" << endl;
 
 	return results;
 }

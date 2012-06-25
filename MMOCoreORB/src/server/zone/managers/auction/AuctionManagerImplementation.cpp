@@ -46,6 +46,9 @@ void AuctionManagerImplementation::initialize() {
 
 	uint64 objectID = 0;
 
+	Vector<ManagedReference<AuctionItem*> > orphanedBazaarItems;
+	ManagedReference<SceneObject*> defaultBazaar = NULL;
+
 	while (iterator.getNextKey(objectID)) {
 		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
@@ -57,11 +60,18 @@ void AuctionManagerImplementation::initialize() {
 
 		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(Core::getObjectBroker()->lookUp(auctionItem->getVendorID()));
 
-		if(vendor == NULL && !auctionItem->isOnBazaar()) {
+		if(vendor == NULL) {
+			if(auctionItem->isOnBazaar()) {
+				orphanedBazaarItems.add(auctionItem);
+				continue;
+			}
 			ObjectManager::instance()->destroyObjectFromDatabase(auctionItem->_getObjectID());
 			warning("Auction Item's vendor is gone, deleting auction item: " + String::valueOf(auctionItem->_getObjectID()));
 			continue;
 		}
+
+		if(vendor->isBazaarTerminal() && defaultBazaar == NULL)
+			defaultBazaar = vendor;
 
 		String vuid = getVendorUID(vendor);
 		auctionMap->addItem(NULL, vendor, vuid, auctionItem);
@@ -70,6 +80,24 @@ void AuctionManagerImplementation::initialize() {
 			Task* newTask = new ExpireAuctionTask(_this.get(), auctionItem);
 			newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
 			auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
+		}
+	}
+
+	/// This is in case a bazaar is removed, it could move and item
+	/// to a difference city, but at least it doesn't poof
+	if(defaultBazaar != NULL) {
+		for(int i = 0; i < orphanedBazaarItems.size(); ++i) {
+			ManagedReference<AuctionItem*> auctionItem = orphanedBazaarItems.get(i);
+
+			String vuid = getVendorUID(defaultBazaar);
+			auctionMap->addItem(NULL, defaultBazaar, vuid, auctionItem);
+			auctionItem->setVendorID(defaultBazaar->getObjectID());
+
+			if(auctionItem->isAuction()) {
+				Task* newTask = new ExpireAuctionTask(_this.get(), auctionItem);
+				newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
+				auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
+			}
 		}
 	}
 
@@ -554,6 +582,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	ChatManager* cman = zoneServer->getChatManager();
 	PlayerManager* pman = zoneServer->getPlayerManager();
+	ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
 	String sender = "auctioner";
 
@@ -640,9 +669,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 
 	}
-
-	// pay the seller
-	ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
 	if (seller == NULL) {
 		error("seller null for name " + item->getOwnerName());
@@ -765,12 +791,15 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 	String playername = player->getFirstName();
 
 	// only the owner can yank his own auction off the vendor
-	if (item->getStatus() != AuctionItem::SOLD && (playername.toLowerCase() != item->getOwnerName().toLowerCase()))
+	if (item->getStatus() != AuctionItem::SOLD && (player->getObjectID() != item->getOwnerID()))
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
 	// the bidder is the only one who can get his auction after expiration
-	if (item->getStatus() == AuctionItem::SOLD && item->getBuyerID() != player->getObjectID())
+	if (item->getStatus() == AuctionItem::SOLD && item->getBuyerID() != player->getObjectID()) {
+		player->sendSystemMessage(item->getBidderName() + " bought this, " + player->getFirstName() + " trying to retrieve");
+		error(item->getBidderName() + " bought this, " + player->getFirstName() + " trying to retrieve");
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+	}
 
 	if(vendor->isVendor() && !vendor->isInRange(player, 5.0f))
 		return RetrieveAuctionItemResponseMessage::TOOFAR;
@@ -1078,17 +1107,23 @@ void AuctionManagerImplementation::getData(CreatureObject* player, int extent, u
 	}
 
 	String searchQuery = "";
+	String zoneName = player->getZone()->getZoneName();
+	String regionName;
+	if(player->getCityRegion() != NULL) {
+		regionName = player->getCityRegion().get()->getRegionName();
+	} else {
+		regionName = "@planet_n:" + player->getZone()->getZoneName();
+	}
 
 	switch (extent) {
 	case 0:
 		break;
 	case 1:
-		searchQuery = player->getZone()->getZoneName();
+		searchQuery = zoneName;
 		break;
 	case 2:
 		if(player->getCityRegion() != NULL) {
-			searchQuery = player->getZone()->getZoneName();
-			searchQuery += "." + player->getCityRegion().get()->getRegionName();
+			searchQuery = zoneName + "." + regionName;
 		} else {
 			searchQuery = getVendorUID(vendor);
 		}

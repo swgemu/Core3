@@ -167,6 +167,8 @@ public:
 								amountOrPlayer);
 
 				amount = args.getIntToken();
+				if(amount == 0)
+					throw;
 
 				if (targetPlayer == NULL) {
 					StringIdChatParameter ptip("base_player",
