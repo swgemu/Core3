@@ -2900,7 +2900,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 
 					player->sendMessage(new LogoutMessage());
 
-					ZoneClientSession* session = player->getClient();
+					Reference<ZoneClientSession*> session = player->getClient();
 
 					if(session != NULL)
 						session->disconnect(true);

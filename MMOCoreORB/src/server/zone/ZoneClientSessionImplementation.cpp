@@ -170,6 +170,10 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 
 void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
 	Locker locker(_this.get());
+	Reference<BaseClientProxy* > session = this->session;
+
+	if (session == NULL)
+		return;
 
 	session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
