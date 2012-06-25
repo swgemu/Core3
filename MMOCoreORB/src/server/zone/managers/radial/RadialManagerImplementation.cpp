@@ -22,6 +22,7 @@ RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : M
 
 void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, uint64 objectID) {
 	//Pre: Player is WLOCKED
+
 	//Post: Player is WLOCKED
 
 	ManagedReference<SceneObject*> menuObject = zoneServer->getObject(objectID);
@@ -38,8 +39,9 @@ void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player
 
 	player->sendMessage(defaultMenuResponse->clone());
 
-	if (menuObject != NULL)
+	if (menuObject != NULL) {
 		menuObject->notifyObservers(ObserverEventType::OBJECTRADIALOPENED, player, 0);
+	}
 }
 
 void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectID, uint64 objectID) {

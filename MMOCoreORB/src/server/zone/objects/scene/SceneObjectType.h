@@ -172,7 +172,6 @@ public:
 	const static int CHARACTERBUILDERTERMINAL = 0x4010;
 	const static int TICKETCOLLECTOR = 0x4011;
 	const static int TRAVELTERMINAL = 0x4012; // not in the client (See 0x400A)
-	const static int ELEVATORTERMINAL = 0x4013;
 	const static int GUILDTERMINAL = 0x4014;
 	const static int CITYTERMINAL = 0x4015;
 	const static int CITYVOTETERMINAL = 0x4016;

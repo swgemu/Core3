@@ -34,6 +34,11 @@ includeFile("conversations/dungeon/death_watch_bunker/foreman_conv.lua")
 includeFile("conversations/dungeon/death_watch_bunker/haldo_conv.lua")
 includeFile("conversations/dungeon/death_watch_bunker/mand_bunker_technician_conv.lua")
 
+-- Warren
+includeFile("conversations/dungeon/warren/oevitt_piboi_conv.lua")
+includeFile("conversations/dungeon/warren/mirla_conv.lua")
+includeFile("conversations/dungeon/warren/dirk_maggin_conv.lua")
+
 -- ** OTHER **
 
 includeFile("conversations/trainer/trainers_conv.lua")

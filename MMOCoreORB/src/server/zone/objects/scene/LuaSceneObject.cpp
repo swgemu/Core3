@@ -39,6 +39,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "destroyObjectFromDatabase", &LuaSceneObject::destroyObjectFromDatabase },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
+		{ "isPlayerCreature", &LuaSceneObject::isPlayerCreature },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
@@ -378,6 +379,14 @@ int LuaSceneObject::destroyObjectFromDatabase(lua_State* L) {
 
 int LuaSceneObject::isCreatureObject(lua_State* L) {
 	bool val = realObject->isCreatureObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isPlayerCreature(lua_State* L) {
+	bool val = realObject->isPlayerCreature();
 
 	lua_pushboolean(L, val);
 

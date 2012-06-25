@@ -1,8 +1,8 @@
 warren_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_scientist",
 	socialGroup = "warren_scientist",
-	pvpFaction = "warren_scientist",
-	faction = "warren_scientist",
+	pvpFaction = "",
+	faction = "",
 	level = 36,
 	chanceHit = 0.420000,
 	damageMin = 325,
@@ -21,8 +21,8 @@ warren_scientist = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
-	creatureBitmask = NONE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
+	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
 	templates = {

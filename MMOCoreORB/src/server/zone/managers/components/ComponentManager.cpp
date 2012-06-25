@@ -47,6 +47,9 @@
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorMenuComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorUpMenuComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorDownMenuComponent.h"
 #include "server/zone/objects/region/components/CityManagementMenuComponent.h"
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
 #include "server/zone/objects/scene/components/AiInterfaceComponent.h"
@@ -171,5 +174,9 @@ ComponentManager::ComponentManager() {
 	components.put("SpawnStateComponent", new SpawnStateComponent());
 	components.put("StandingStateComponent", new StandingStateComponent());
 	components.put("WanderingStateComponent", new WanderingStateComponent());
+
+	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
+	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());
+	components.put("ElevatorDownMenuComponent", new ElevatorDownMenuComponent());
 
 }

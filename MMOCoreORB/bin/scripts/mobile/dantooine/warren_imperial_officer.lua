@@ -1,8 +1,8 @@
-imperial_officer_warren = Creature:new {
+warren_imperial_officer = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_officer",
 	socialGroup = "warren_imperial",
-	pvpFaction = "warren_imperial",
-	faction = "warren_imperial",
+	pvpFaction = "",
+	faction = "",
 	level = 27,
 	chanceHit = 0.37,
 	damageMin = 260,
@@ -21,8 +21,8 @@ imperial_officer_warren = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = KILLER,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -36,4 +36,4 @@ imperial_officer_warren = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_officer_warren, "imperial_officer_warren")
+CreatureTemplates:addCreatureTemplate(warren_imperial_officer, "warren_imperial_officer")

@@ -266,7 +266,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/wearables/RobeObject.cpp \
 				server/zone/objects/auction/AuctionItem.cpp \
-				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
@@ -288,6 +287,9 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
+		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
+		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
@@ -475,7 +477,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/auction/AuctionItemImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \

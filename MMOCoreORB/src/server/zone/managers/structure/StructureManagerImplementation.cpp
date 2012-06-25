@@ -34,7 +34,6 @@
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/chat/ChatManager.h"

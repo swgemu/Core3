@@ -21,10 +21,6 @@ bool ContainerObjectComponent::checkContainerPermission(SceneObject* sceneObject
 		} else if (container->isContainerLocked()) {
 			creature->sendSystemMessage("@slicing/slicing:locked");
 			return false;
-		} else if (sceneObject->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
-			// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
-			//objectToOpen->openContainerTo(cast<CreatureObject*>( creature));
-			return true;
 		}
 	}
 

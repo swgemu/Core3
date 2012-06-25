@@ -17,6 +17,7 @@ end
 ConvoScreen = {
 	id = "",
 	leftDialog = "",
+	customDialogText = "",
 	options = {}
 }
 

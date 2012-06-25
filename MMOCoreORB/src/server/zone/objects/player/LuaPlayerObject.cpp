@@ -26,6 +26,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic},
 		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup},
 		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup},
+		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup},
 		{ "awardBadge", &LuaPlayerObject::awardBadge},
 		{ 0, 0 }
 };
@@ -161,6 +162,14 @@ int LuaPlayerObject::removePermissionGroup(lua_State* L){
 	realObject->removePermissionGroup(permissionGroup, updateBuildings);
 
 	return 0;
+}
+
+int LuaPlayerObject::hasPermissionGroup(lua_State* L){
+	String permissionGroup = lua_tostring(L, -1);
+
+	lua_pushboolean(L, realObject->hasPermissionGroup(permissionGroup));
+
+	return 1;
 }
 
 int LuaPlayerObject::awardBadge(lua_State* L){

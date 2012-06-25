@@ -81,7 +81,6 @@ which carries forward this exception.
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/templates/ChildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/scene/components/ZoneComponent.h"

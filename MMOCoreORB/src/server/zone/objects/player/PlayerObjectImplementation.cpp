@@ -1643,6 +1643,9 @@ void PlayerObjectImplementation::addPermissionGroup(const String& group, bool up
 void PlayerObjectImplementation::removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
 	permissionGroups.drop(group);
 
+	if (!updateInRangeBuildingPermissions)
+		return;
+
 	ManagedReference<SceneObject*> parent = getParent();
 
 	Zone* zone = parent->getZone();
@@ -1663,4 +1666,8 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 			building->broadcastCellPermissions();
 		}
 	}
+}
+
+bool PlayerObjectImplementation::hasPermissionGroup(const String& group) {
+	return permissionGroups.contains(group);
 }
