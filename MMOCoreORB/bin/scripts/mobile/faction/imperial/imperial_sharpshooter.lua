@@ -32,10 +32,10 @@ imperial_sharpshooter = Creature:new {
 			groups = {
 				{group = "color_crystals", chance = 200000},
 				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "rifles", chance = 300000},
+				{group = "pistols", chance = 300000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
 			},
 			lootChance = 4000000
 		}					
