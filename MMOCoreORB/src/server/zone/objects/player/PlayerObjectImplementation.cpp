@@ -1028,6 +1028,13 @@ void PlayerObjectImplementation::notifyOnline() {
 		}
 	}
 
+	//Resend all suis.
+	for (int i = 0; i < suiBoxes.size(); ++i) {
+		ManagedReference<SuiBox*> sui = suiBoxes.get(i);
+
+		parent->sendMessage(sui->generateMessage());
+	}
+
 	//Login to visibility manager
 	VisibilityManager::instance()->login(playerCreature);
 }
