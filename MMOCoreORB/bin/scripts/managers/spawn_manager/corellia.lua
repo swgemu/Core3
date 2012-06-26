@@ -120,6 +120,9 @@ corellia_regions = {
 	{"vreni_island_medium_newbie",0,0,0,0,1},
 	{"western_mountain_forest",0,0,0,0,1},
 	{"western_plains",0,0,0,0,1},
+	{"world_factional_imperial",0,0,-1,6,1,"factional_imperial"},
+	{"world_factional_neutral",0,0,-1,4,1,"factional_neutral"},
+	{"world_factional_rebel",0,0,-1,5,1,"factional_rebel"},
 	{"world_spawner",0,0,-1,3,1,"coro_world_easy"},
 }
 
@@ -1182,13 +1185,10 @@ corellia_static_spawns = {
 	{"informant_npc_lvl_1",0,-5450,0,-2630,45,0, "", ""},
 	{"informant_npc_lvl_1",0,-5308,0,-2512,90,0, "", ""},
 	{"informant_npc_lvl_1",0,-5097,0,-2344,270,0, "", ""},
-	{"informant_npc_lvl_1",0,-345,0,-4439,0,0, "", ""},
 	{"informant_npc_lvl_2",0,6775,0,-5487,150,0, "", ""},
 	{"informant_npc_lvl_2",0,6876,0,-5466,0,0, "", ""},
-	{"informant_npc_lvl_2",0,-340,0,-4439,0,0, "", ""},
 	{"informant_npc_lvl_3",0,-5559,0,-6220,90,0, "", ""},
 	{"informant_npc_lvl_3",0,6860,0,-5761,45,0, "", ""},
-	{"informant_npc_lvl_3",0,-335,0,-4439,0,0, "", ""},
 	{"io_tsomcren",60,-140.701,28,-4719.16,44.0418,0, "neutral", ""},
 	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
 	{"jadam_questrel",60,9.77643,-0.894992,-14.4836,262.46,3075432, "calm", ""},

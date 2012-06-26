@@ -40,11 +40,23 @@ protected:
 
 	String UID;
 
+	bool adBarking;
+
+	Time emptyTimer;
+	bool empty;
+
+	bool mail1Sent;
+	bool mail2Sent;
+
 public:
 	/// 5 minutes
-	static const int USEXPINTERVAL = 1;//60 * 5;
+	static const int USEXPINTERVAL = 5;
 	// 60 Minutes
-	static const int VENDORCHECKINTERVAL = 1;//60 * 5;
+	static const int VENDORCHECKINTERVAL = 60;
+
+	static const int FIRSTWARNING = 60 * 60 * 24 * 15; // 15 days
+	static const int SECONDWARNING = 60 * 60 * 24 * 30; // 30 days
+	static const int DELETEWARNING = 60 * 60 * 24 * 45; // 45 days
 
 public:
 	VendorDataComponent();
@@ -74,18 +86,21 @@ public:
 
 	void updateUID() {
 
-		if(vendor == NULL)
+		if(vendor == NULL || vendor->getZone() == NULL)
 			return;
+
+		String oldUID = UID;
 
 		UID = vendor->getZone()->getZoneName() + ".";
 
-		String region = vendor->getZone()->getZoneName();
+		String region = "@planet_n:" + vendor->getZone()->getZoneName();
 		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
 		if(cityRegion != NULL)
 			region = cityRegion->getRegionName();
 
-		UID += region + "." + vendor->getDisplayedName() + "#";
-		UID += String::valueOf(vendor->getPositionX()) + "," + String::valueOf(vendor->getPositionY());
+		UID += region + "." + vendor->getDisplayedName() + ".";
+		UID += String::valueOf(vendor->getObjectID()) + "#";
+		UID += String::valueOf(((int)vendor->getWorldPositionX())) + "," + String::valueOf(((int)vendor->getWorldPositionY()));
 	}
 
 	String getUID() {
@@ -163,11 +178,44 @@ public:
 	}
 
 	inline void awardUseXP() {
-		if(time(0) - lastXpAward.getTime() > USEXPINTERVAL) {
+		if(time(0) - lastXpAward.getTime() > USEXPINTERVAL * 60) {
 			awardUsageXP++;
 			lastXpAward.updateToCurrentTime();
 		}
 	}
+
+	inline bool isAdBarkingEnabled() {
+		return adBarking;
+	}
+
+	inline void setAdBarking(bool value) {
+		adBarking = value;
+	}
+
+	inline bool isEmpty() {
+		return empty;
+	}
+
+	inline void setEmpty(bool value) {
+		empty = value;
+		mail1Sent = false;
+		mail2Sent = false;
+
+		if(empty)
+			emptyTimer.updateToCurrentTime();
+	}
+
+	inline int getMaint() {
+		return maintAmount;
+	}
+
+	void payMaintanence();
+
+	void withdrawMaintanence();
+
+	void handlePayMaintanence(int value);
+
+	void handleWithdrawMaintanence(int value);
 
 	private:
 		void addSerializableVariables();

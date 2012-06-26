@@ -224,6 +224,12 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
+	Vector<ManagedReference<SpawnArea* > >* getFactionalNeutralMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
+
 	SpawnArea* getSpawnArea(const String& areaname);
 
 	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
@@ -320,6 +326,12 @@ public:
 	Vector3 getRandomJediTrainer();
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalNeutralMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 

@@ -1,8 +1,8 @@
-imperial_worker = Creature:new {
+warren_imperial_worker = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_worker",
 	socialGroup = "warren_imperial_worker",
-	pvpFaction = "warren_imperial_worker",
-	faction = "warren_imperial_worker",
+	pvpFaction = "",
+	faction = "",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,
@@ -22,11 +22,9 @@ imperial_worker = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = HERD,
+	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-
-	aiTemplate = "default",
 
 	templates = {
 		"object/mobile/warren_imperial_worker_s01.iff",
@@ -41,4 +39,4 @@ imperial_worker = Creature:new {
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_worker, "imperial_worker")
+CreatureTemplates:addCreatureTemplate(warren_imperial_worker, "warren_imperial_worker")

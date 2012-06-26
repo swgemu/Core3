@@ -72,9 +72,9 @@ public:
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == creature)
-			obj = NULL; //In case the player has himself targeted with the command.
+			obj == NULL; //In case the player has himself targeted with the command.
 
-		String targetName;
+		String targetName = "";
 		String planetName = targetZone->getZoneName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
@@ -84,8 +84,7 @@ public:
 		try {
 			UnicodeTokenizer tokenizer(arguments);
 
-			if (obj == NULL)
-				tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
+			tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
 
 			if (tokenizer.hasMoreTokens()) {
 
@@ -119,10 +118,12 @@ public:
 
 		ManagedReference<CreatureObject*> targetCreature = NULL;
 
-		if (obj == NULL) {
+		if (!targetName.isEmpty()) {
 			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 			targetCreature = playerManager->getPlayer(targetName);
 		} else {
+			if(obj == NULL)
+				return GENERALERROR;
 			if (obj->isCreatureObject())
 				targetCreature = cast<CreatureObject*>(obj.get());
 		}

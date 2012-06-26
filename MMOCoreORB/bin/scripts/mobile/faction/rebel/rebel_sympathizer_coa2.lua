@@ -30,19 +30,7 @@ rebel_sympathizer_coa2 = Creature:new {
 	aiTemplate = "default",
 
 	templates = {},
-	lootGroups = {
-		{
-			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
-			},
-			lootChance = 4000000
-		}
-	},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

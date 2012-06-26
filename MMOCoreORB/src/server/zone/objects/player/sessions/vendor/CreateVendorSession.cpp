@@ -16,7 +16,7 @@
  *	CreateVendorSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_HANDLEVENDORSELECTION__BYTE_,RPC_CREATEVENDOR__STRING_};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_HANDLEVENDORSELECTION__BYTE_,RPC_CREATEVENDOR__STRING_,};
 
 CreateVendorSession::CreateVendorSession(CreatureObject* play) : Facade(DummyConstructorParameter::instance()) {
 	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(play);
@@ -207,12 +207,7 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 
 	if (_name == "CreateVendorSession.player") {
-		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
-		return true;
-	}
-
-	if (_name == "CreateVendorSession.vendor") {
-		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&vendor, stream);
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
@@ -257,15 +252,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "CreateVendorSession.vendor";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&vendor, stream);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -302,7 +289,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 6;
+	return _count + 5;
 }
 
 CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObject* play) {
@@ -313,8 +300,6 @@ CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObj
 	Logger::setLogging(true);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		player = play;
 	player = play;
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		vendor = null;
-	vendor = NULL;
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		suiNameVendor = null;
 	suiNameVendor = NULL;
 }
@@ -322,7 +307,7 @@ CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObj
 int CreateVendorSessionImplementation::cancelSession() {
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession(
 	if (player != NULL)	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  			player.dropActiveSession(SessionFacadeType.CREATEVENDOR);
-	player.get()->dropActiveSession(SessionFacadeType::CREATEVENDOR);
+	player->dropActiveSession(SessionFacadeType::CREATEVENDOR);
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		clearSession();
 	clearSession();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		return 0;
@@ -332,8 +317,6 @@ int CreateVendorSessionImplementation::cancelSession() {
 int CreateVendorSessionImplementation::clearSession() {
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		player = null;
 	player = NULL;
-	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		vendor = null;
-	vendor = NULL;
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		currentNode = null;
 	currentNode = NULL;
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		suiSelectVendor = null;

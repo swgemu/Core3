@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_xwing_deed = object_tangible_ship_crafted_chassis_shared_xwing_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/xwing_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_xwing.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_xwing_deed, "object/tangible/ship/crafted/chassis/xwing_deed.iff")

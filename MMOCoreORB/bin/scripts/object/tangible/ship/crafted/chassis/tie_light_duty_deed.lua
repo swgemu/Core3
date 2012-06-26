@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_tie_light_duty_deed = object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/tie_light_duty_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_tie_light_duty.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_tie_light_duty_deed, "object/tangible/ship/crafted/chassis/tie_light_duty_deed.iff")

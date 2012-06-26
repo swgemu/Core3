@@ -544,7 +544,7 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 	UnconsentCommand::unconscent(player, name);
 }
 
-void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback) {
+void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, const String& play, const String& callback) {
 
 	if (keypad == NULL)
 		return;
@@ -567,7 +567,7 @@ void SuiManager::sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneOb
 
 }
 
-void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, String play, String callback, String prompt, String button) {
+void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, const String& play, const String& callback, const String& prompt, const String& button) {
 
 	if (terminal == NULL)
 		return;
@@ -594,7 +594,35 @@ void SuiManager::sendConfirmSui(SceneObject* terminal, SceneObject* player, Stri
 
 }
 
-void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, String title, String text, String okButton, String screenplay, String callback) {
+
+
+void SuiManager::sendInputBox(SceneObject* terminal, SceneObject* player, const String& play, const String& callback, const String& prompt, const String& button) {
+	if (terminal == NULL)
+		return;
+
+	if (player == NULL || !player->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(player);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+		ManagedReference<SuiInputBox*> confirmSui = new SuiInputBox(creature, 0x00);
+		confirmSui->setCallback(new LuaSuiCallback(creature->getZoneServer(), play, callback));
+		confirmSui->setUsingObject(terminal);
+		confirmSui->setPromptText(prompt);
+		confirmSui->setOkButton(true, button);
+		confirmSui->setOtherButton(false, "");
+		confirmSui->setCancelButton(false, "");
+		confirmSui->setForceCloseDistance(32);
+		creature->sendMessage(confirmSui->generateMessage());
+		playerObject->addSuiBox(confirmSui);
+	}
+
+}
+
+void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const String& okButton, const String& screenplay, const String& callback) {
 	if (usingObject == NULL)
 		return;
 

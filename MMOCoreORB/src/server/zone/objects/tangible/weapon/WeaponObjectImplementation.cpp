@@ -410,7 +410,12 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 		return speed + getConditionReduction(speed);
 	}
 
-	return speed + getConditionReduction(speed);
+	float calcSpeed = speed + getConditionReduction(speed);
+
+	if(calcSpeed < 1)
+		calcSpeed = 1;
+
+	return calcSpeed;
 }
 
 

@@ -23,6 +23,7 @@ Luna<LuaConversationScreen>::RegType LuaConversationScreen::Register[] = {
 		{ "setDialogTextTU", &LuaConversationScreen::setDialogTextTU},
 		{ "setDialogTextDF", &LuaConversationScreen::setDialogTextDF},
 		{ "setDialogTextDI", &LuaConversationScreen::setDialogTextDI},
+		{ "setCustomDialogText", &LuaConversationScreen::setCustomDialogText},
 		{ 0, 0 }
 };
 
@@ -180,6 +181,14 @@ int LuaConversationScreen::setDialogTextDI(lua_State* L) {
 	int num = lua_tointeger(L, -1);
 
 	realObject->setDialogTextDI(num);
+
+	return 0;
+}
+
+int LuaConversationScreen::setCustomDialogText(lua_State* L) {
+	String text = lua_tostring(L, -1);
+
+	realObject->setCustomDialogText(UnicodeString(text));
 
 	return 0;
 }

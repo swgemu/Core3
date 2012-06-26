@@ -250,8 +250,6 @@ public:
 
 	void addResourceToHopper(ResourceContainer* container);
 
-	void removeResourceFromHopper(ResourceContainer* container);
-
 	void clearResourceHopper();
 
 	float getHopperSize();
@@ -299,6 +297,8 @@ public:
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
+
+	Vector<String>* getLogs();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -350,6 +350,8 @@ protected:
 
 	float spawnDensity;
 
+	Vector<String> history;
+
 public:
 	InstallationObjectImplementation();
 
@@ -384,8 +386,6 @@ public:
 	void changeActiveResourceID(unsigned long long spawnObjectID);
 
 	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
 
 	void clearResourceHopper();
 
@@ -434,6 +434,8 @@ public:
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
+
+	Vector<String>* getLogs();
 
 	WeakReference<InstallationObject*> _this;
 
@@ -503,8 +505,6 @@ public:
 	void changeActiveResourceID(unsigned long long spawnObjectID);
 
 	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
 
 	void clearResourceHopper();
 

@@ -29,7 +29,16 @@ bandit = Creature:new {
 	aiTemplate = "default",
 
 	templates = {"object/mobile/dressed_plasma_bandit.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "loot_kit_parts", chance = 1000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 5000000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

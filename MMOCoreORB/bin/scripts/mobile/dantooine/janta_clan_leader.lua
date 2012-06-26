@@ -32,6 +32,7 @@ janta_clan_leader = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
+				{group = "junk", chance = 6000000},
 				{group = "janta_common", chance = 1000000},
 				{group = "loot_kit_parts", chance = 3000000}
 			},

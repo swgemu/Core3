@@ -148,9 +148,9 @@ public:
 
 	static const int FACTIONNEUTRAL = 0;
 
-	static const int FACTIONIMPERIAL = 1;
+	static const int FACTIONIMPERIAL = 0xDB4ACC54;
 
-	static const int FACTIONREBEL = 2;
+	static const int FACTIONREBEL = 0x16148850;
 
 	MissionObject();
 
@@ -387,9 +387,9 @@ public:
 
 	static const int FACTIONNEUTRAL = 0;
 
-	static const int FACTIONIMPERIAL = 1;
+	static const int FACTIONIMPERIAL = 0xDB4ACC54;
 
-	static const int FACTIONREBEL = 2;
+	static const int FACTIONREBEL = 0x16148850;
 
 	MissionObjectImplementation();
 

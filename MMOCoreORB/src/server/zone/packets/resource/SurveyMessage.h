@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class Survey : public BaseMessage {
+class SurveyMessage : public BaseMessage {
 public:
 	int listSize;
 	
-	Survey() : BaseMessage() {
+	SurveyMessage() : BaseMessage() {
 		/* Struct
 		 * 02 00 // Operand
 		 * AC 79 7F 87 // Opcode

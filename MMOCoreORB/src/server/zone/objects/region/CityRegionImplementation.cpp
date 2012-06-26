@@ -17,6 +17,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
+#include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/managers/structure/StructureManager.h"
@@ -173,6 +174,16 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
+
+	/// We have to update the VUID of bazaar's and vendors when they enter
+	/// a city region
+	String oldUID = "";
+	ManagedReference<AuctionManager*> aman = object->getZoneServer()->getAuctionManager();
+	if (object->isBazaarTerminal() || object->isVendor()) {
+		if(aman != NULL)
+			oldUID = aman->getVendorUID(object);
+	}
+
 	object->setCityRegion(_this.get());
 
 	if (object->isBazaarTerminal()) {
@@ -182,6 +193,9 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			return;
 		}
 		bazaars.put(object->getObjectID(), bazaar);
+
+		if(aman != NULL)
+			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
 	}
 
 	if (object->isVendor()) {
@@ -191,9 +205,12 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
 			vendorData = cast<VendorDataComponent*>(data->get());
 
-		if(vendorData != NULL)
+		if(vendorData != NULL) {
 			vendorData->updateUID();
-		else
+			if(aman != NULL)
+				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
+
+		} else
 			error("Unable to update vendor UID");
 	}
 
@@ -241,10 +258,23 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
+
+	/// We have to update the VUID of bazaar's and vendors when they exit
+	/// a city region
+	String oldUID = "";
+	ManagedReference<AuctionManager*> aman = object->getZoneServer()->getAuctionManager();
+	if (object->isBazaarTerminal() || object->isVendor()) {
+		if(aman != NULL)
+			oldUID = aman->getVendorUID(object);
+	}
+
 	object->setCityRegion(NULL);
 
 	if (object->isBazaarTerminal()) {
 		bazaars.drop(object->getObjectID());
+		if(aman != NULL)
+			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
+
 	}
 
 	if (object->isVendor()) {
@@ -254,9 +284,11 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
 			vendorData = cast<VendorDataComponent*>(data->get());
 
-		if(vendorData != NULL)
+		if(vendorData != NULL) {
 			vendorData->updateUID();
-		else
+			if(aman != NULL)
+				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
+		} else
 			error("Unable to update vendor UID");
 	}
 

@@ -64,7 +64,11 @@ public:
 	const static int INVALIDITEM = 2;
 	const static int INVALIDPRICE = 4;
 	const static int NOTENOUGHCREDITS = 9;
+	const static int PURCHASEFAILED = 10;
+	const static int PURCHASEREJECTED = 11;
+	const static int PURCHASEHIGHERTHAN20000 = 13;
 	const static int PRICEOVERFLOW = 14;
+
 public:
     BidAuctionResponseMessage(uint64 objectid, int status) : BaseMessage() {
 		insertShort(0x03);

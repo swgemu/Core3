@@ -42,7 +42,8 @@
 
 
 object_tangible_mission_quest_item_warren_passkey_s01 = object_tangible_mission_quest_item_shared_warren_passkey_s01:new {
-
+	objectName = "@theme_park/warren/warren_system_messages:passkey_name",
+	--containerComponent = {"Lua", "warren_main_passkey_container_component"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_warren_passkey_s01, "object/tangible/mission/quest_item/warren_passkey_s01.iff")

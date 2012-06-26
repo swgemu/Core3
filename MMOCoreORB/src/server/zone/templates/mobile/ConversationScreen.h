@@ -61,11 +61,17 @@ namespace mobile {
 
 class ConversationOption : public Object {
 	StringIdChatParameter optionText;
+	UnicodeString customOption;
 	String linkedScreenID;
 
 public:
 	ConversationOption(const StringIdChatParameter& opttext, const String& screenid) {
 		optionText = opttext;
+		linkedScreenID = screenid;
+	}
+
+	ConversationOption(const UnicodeString& customopt, const String& screenid) {
+		customOption = customopt;
 		linkedScreenID = screenid;
 	}
 
@@ -75,6 +81,17 @@ public:
 
 	inline StringIdChatParameter& getOptionText() {
 		return optionText;
+	}
+
+	inline UnicodeString& getCustomOption() {
+		return customOption;
+	}
+
+	inline String getDisplayedName() {
+		if (customOption.isEmpty())
+			return optionText.getFullPath();
+		else
+			return customOption.toString();
 	}
 
 	inline bool isLinked() {
@@ -122,7 +139,10 @@ public:
 	 * @param linkedScreenID The ID of the screen this option is linked.
 	 */
 	void addOption(const String& optionText, const String& linkedScreenID) {
-		options.add(new ConversationOption(optionText, linkedScreenID));
+		if (optionText.beginsWith("@"))
+			options.add(new ConversationOption(StringIdChatParameter(optionText), linkedScreenID));
+		else
+			options.add(new ConversationOption(UnicodeString(optionText), linkedScreenID));
 	}
 
 	void removeOption(int idx) {
@@ -181,7 +201,7 @@ public:
 			if (option == NULL)
 				continue;
 
-			optionsList->insertOption(option->getOptionText().getFullPath());
+			optionsList->insertOption(option->getDisplayedName());
 		}
 
 		player->sendMessage(message);
@@ -208,6 +228,7 @@ public:
 	void readObject(LuaObject* luaObject) {
 		screenID = luaObject->getStringField("id");
 		dialogText.setStringId(luaObject->getStringField("leftDialog"));
+		customText = luaObject->getStringField("customDialogText");
 
 		if (luaObject->getStringField("stopConversation").toLowerCase() == "true") {
 			stopConversation = true;
@@ -222,10 +243,15 @@ public:
 
 			LuaObject luaObj(luaObject->getLuaState());
 
-			StringIdChatParameter stringId(luaObj.getStringAt(1));
+			String optionString = luaObj.getStringAt(1);
 			String linkedId = luaObj.getStringAt(2);
 
-			Reference<ConversationOption*> option = new ConversationOption(stringId, linkedId);
+			Reference<ConversationOption*> option = NULL;
+
+			if (optionString.beginsWith("@"))
+				option = new ConversationOption(StringIdChatParameter(optionString), linkedId);
+			else
+				option = new ConversationOption(UnicodeString(optionString), linkedId);
 
 			options.add(option);
 

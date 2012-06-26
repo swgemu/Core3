@@ -29,7 +29,8 @@ public:
 		if (obj != NULL) {
 			Locker locker(obj.get());
 
-
+			DirectorManager::instance()->activateEvent(this);
+		} else {
 			DirectorManager::instance()->activateEvent(this);
 		}
 	}

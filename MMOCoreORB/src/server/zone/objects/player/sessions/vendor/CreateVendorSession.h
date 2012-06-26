@@ -136,9 +136,7 @@ namespace vendor {
 
 class CreateVendorSessionImplementation : public FacadeImplementation {
 protected:
-	ManagedWeakReference<CreatureObject* > player;
-
-	ManagedWeakReference<TangibleObject* > vendor;
+	ManagedReference<CreatureObject* > player;
 
 private:
 	Reference<VendorSelectionNode* > currentNode;
@@ -166,6 +164,10 @@ public:
 
 	void createVendor(String& name);
 
+private:
+	void randomizeVendorLooks(CreatureObject* vendor);
+
+public:
 	WeakReference<CreateVendorSession*> _this;
 
 	operator const CreateVendorSession*();

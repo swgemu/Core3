@@ -34,6 +34,10 @@ public:
 	int decreaseFactionStanding(lua_State* L);
 	int addWaypoint(lua_State* L);
 	int addRewardedSchematic(lua_State* L);
+	int addPermissionGroup(lua_State* L);
+	int removePermissionGroup(lua_State* L);
+	int hasPermissionGroup(lua_State* L);
+	int awardBadge(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

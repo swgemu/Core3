@@ -556,3 +556,266 @@ DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub*
 	return adapter;
 }
 
+const char LuaCellObject::className[] = "LuaCellObject";
+
+Luna<LuaCellObject>::RegType LuaCellObject::Register[] = {
+	{ "_setObject", &LuaCellObject::_setObject },
+	{ "_getObject", &LuaCellObject::_getObject },
+	{ "loadTemplateData", &LuaCellObject::loadTemplateData },
+	{ "setAllowEntryPermissionGroup", &LuaCellObject::setAllowEntryPermissionGroup },
+	{ "notifyLoadFromDatabase", &LuaCellObject::notifyLoadFromDatabase },
+	{ "sendContainerObjectsTo", &LuaCellObject::sendContainerObjectsTo },
+	{ "canAddObject", &LuaCellObject::canAddObject },
+	{ "transferObject", &LuaCellObject::transferObject },
+	{ "initializeTransientMembers", &LuaCellObject::initializeTransientMembers },
+	{ "sendBaselinesTo", &LuaCellObject::sendBaselinesTo },
+	{ "getCurrentNumberOfPlayerItems", &LuaCellObject::getCurrentNumberOfPlayerItems },
+	{ "destroyAllPlayerItems", &LuaCellObject::destroyAllPlayerItems },
+	{ "getCellNumber", &LuaCellObject::getCellNumber },
+	{ "setCellNumber", &LuaCellObject::setCellNumber },
+	{ "isCellObject", &LuaCellObject::isCellObject },
+	{ 0, 0 }
+};
+
+LuaCellObject::LuaCellObject(lua_State *L) {
+	realObject = static_cast<CellObject*>(lua_touserdata(L, 1));
+}
+
+LuaCellObject::~LuaCellObject() {
+}
+
+int LuaCellObject::_setObject(lua_State* L) {
+	realObject = static_cast<CellObject*>(lua_touserdata(L, -1));
+
+	return 0;
+}
+
+int LuaCellObject::_getObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject.get());
+
+	return 1;
+}
+
+int LuaCellObject::loadTemplateData(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			SharedObjectTemplate* templateData = static_cast<SharedObjectTemplate*>(lua_touserdata(L, -1));
+
+			realObject->loadTemplateData(templateData);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:loadTemplateData(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:loadTemplateData(userdata)'");
+	}
+}
+
+int LuaCellObject::setAllowEntryPermissionGroup(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isstring(L, -1)) {
+		if (parameterCount == 1) {
+			const String group = lua_tostring(L, -1);
+
+			realObject->setAllowEntryPermissionGroup(group);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:setAllowEntryPermissionGroup(string)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:setAllowEntryPermissionGroup(string)'");
+	}
+}
+
+int LuaCellObject::notifyLoadFromDatabase(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		realObject->notifyLoadFromDatabase();
+
+		return 0;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:notifyLoadFromDatabase()'");
+	}
+}
+
+int LuaCellObject::sendContainerObjectsTo(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			SceneObject* player = static_cast<SceneObject*>(lua_touserdata(L, -1));
+
+			realObject->sendContainerObjectsTo(player);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:sendContainerObjectsTo(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendContainerObjectsTo(userdata)'");
+	}
+}
+
+int LuaCellObject::canAddObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isstring(L, -1)) {
+		if (lua_isnumber(L, -2)) {
+			if (lua_isuserdata(L, -3)) {
+				if (parameterCount == 3) {
+					SceneObject* object = static_cast<SceneObject*>(lua_touserdata(L, -3));
+					int containmentType = lua_tointeger(L, -2);
+					String errorDescription = lua_tostring(L, -1);
+
+					int result = realObject->canAddObject(object, containmentType, errorDescription);
+
+					lua_pushinteger(L, result);
+					return 1;
+				} else {
+					throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:canAddObject(userdata, integer, string)'");
+				}
+			} else {
+				throw LuaCallbackException(L, "invalid argument at 2 for lua method 'CellObject:canAddObject(userdata, integer, string)'");
+			}
+		} else {
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'CellObject:canAddObject(userdata, integer, string)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:canAddObject(userdata, integer, string)'");
+	}
+}
+
+int LuaCellObject::transferObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isboolean(L, -1)) {
+		if (lua_isnumber(L, -2)) {
+			if (lua_isuserdata(L, -3)) {
+				if (parameterCount == 3) {
+					SceneObject* object = static_cast<SceneObject*>(lua_touserdata(L, -3));
+					int containmentType = lua_tointeger(L, -2);
+					bool notifyClient = lua_toboolean(L, -1);
+
+					bool result = realObject->transferObject(object, containmentType, notifyClient);
+
+					lua_pushboolean(L, result);
+					return 1;
+				} else {
+					throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+				}
+			} else {
+				throw LuaCallbackException(L, "invalid argument at 2 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+			}
+		} else {
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+	}
+}
+
+int LuaCellObject::initializeTransientMembers(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		realObject->initializeTransientMembers();
+
+		return 0;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:initializeTransientMembers()'");
+	}
+}
+
+int LuaCellObject::sendBaselinesTo(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			SceneObject* player = static_cast<SceneObject*>(lua_touserdata(L, -1));
+
+			realObject->sendBaselinesTo(player);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:sendBaselinesTo(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendBaselinesTo(userdata)'");
+	}
+}
+
+int LuaCellObject::getCurrentNumberOfPlayerItems(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		int result = realObject->getCurrentNumberOfPlayerItems();
+
+		lua_pushinteger(L, result);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:getCurrentNumberOfPlayerItems()'");
+	}
+}
+
+int LuaCellObject::destroyAllPlayerItems(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		realObject->destroyAllPlayerItems();
+
+		return 0;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:destroyAllPlayerItems()'");
+	}
+}
+
+int LuaCellObject::getCellNumber(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		int result = realObject->getCellNumber();
+
+		lua_pushinteger(L, result);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:getCellNumber()'");
+	}
+}
+
+int LuaCellObject::setCellNumber(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isnumber(L, -1)) {
+		if (parameterCount == 1) {
+			int number = lua_tointeger(L, -1);
+
+			realObject->setCellNumber(number);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:setCellNumber(integer)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:setCellNumber(integer)'");
+	}
+}
+
+int LuaCellObject::isCellObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		bool result = realObject->isCellObject();
+
+		lua_pushboolean(L, result);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:isCellObject()'");
+	}
+}
+

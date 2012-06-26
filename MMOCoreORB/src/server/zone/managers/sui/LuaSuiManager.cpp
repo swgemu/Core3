@@ -16,6 +16,7 @@ Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendKeypadSui", &LuaSuiManager::sendKeypadSui },
 		{ "sendConfirmSui", &LuaSuiManager::sendConfirmSui },
 		{ "sendMessageBox", &LuaSuiManager::sendMessageBox },
+		{ "sendInputBox", &LuaSuiManager::sendInputBox },
 		{ 0, 0 }
 };
 
@@ -46,6 +47,19 @@ int LuaSuiManager::sendConfirmSui(lua_State* L) {
 	SceneObject* scno2 = (SceneObject*)lua_touserdata(L, -6);
 
 	realObject->sendConfirmSui(scno2, scno, play, callback, prompt, button);
+
+	return 0;
+}
+
+int LuaSuiManager::sendInputBox(lua_State* L) {
+	String button = lua_tostring(L, -1);
+	String prompt = lua_tostring(L, -2);
+	String callback = lua_tostring(L, -3);
+	String play = lua_tostring(L, -4);
+	SceneObject* player = (SceneObject*) lua_touserdata(L, -5);
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -6);
+
+	realObject->sendInputBox(usingObject, player, play, callback, prompt, button);
 
 	return 0;
 }

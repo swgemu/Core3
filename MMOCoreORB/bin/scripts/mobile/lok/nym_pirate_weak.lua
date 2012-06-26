@@ -36,6 +36,7 @@ nym_pirate_weak = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
+				{group = "junk", chance = 6500000},
 				{group = "nyms_common", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},

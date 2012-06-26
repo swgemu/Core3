@@ -843,6 +843,8 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void removePermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
 	
+	public native boolean hasPermissionGroup(final string group);
+	
 	@local
 	public SortedVector<string> getPermissionGroups() {
 		return permissionGroups;

@@ -26,23 +26,21 @@ crackdown_rebel_cadet = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	aiTemplate = "default",
-
-	templates = {
-		"object/mobile/dressed_mercenary_weak_hum_f.iff"
-	},
+	templates = {"object/mobile/dressed_mercenary_weak_hum_f.iff"},
 	lootGroups = {
 		{
-			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
+	        groups = {
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+                {group = "melee_weapons", chance = 1000000},
+                {group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
 			},
-			lootChance = 4000000
-		}			
+			lootChance = 3000000
+		}	
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

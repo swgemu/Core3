@@ -13,12 +13,11 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
 #include "server/zone/managers/vendor/VendorManager.h"
 
 void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
-	return;
 
 	if(!sceneObject->isVendor())
 		return;
@@ -57,17 +56,27 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 		menuResponse->addRadialMenuItemToRadialID(240, 241, 3, "@player_structure:vendor_status");
 		menuResponse->addRadialMenuItemToRadialID(240, 246, 3, "@player_structure:change_name");
+		menuResponse->addRadialMenuItemToRadialID(240, 248, 3, "@player_structure:pay_vendor_t");
+		menuResponse->addRadialMenuItemToRadialID(240, 249, 3, "@player_structure:withdraw_vendor_t");
 
 		if (vendorData->isVendorSearchEnabled())
 			menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:disable_vendor_search");
 		else
 			menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:enable_vendor_search");
 
-		if (!vendorData->isRegistered())
-			menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
-		else
-			menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
+		if(player->hasSkill("crafting_merchant_advertising_03")) {
+			if (!vendorData->isRegistered())
+				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
+			else
+				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
+		}
 
+		if(player->hasSkill("crafting_merchant_advertising_01")) {
+			if (!vendorData->isAdBarkingEnabled())
+				menuResponse->addRadialMenuItemToRadialID(240, 247, 3, "@player_structure:vendor_areabarks_on");
+			else
+				menuResponse->addRadialMenuItemToRadialID(240, 247, 3, "@player_structure:vendor_areabarks_off");
+		}
 	}
 
 	menuResponse->addRadialMenuItemToRadialID(240, 245, 3, "@player_structure:remove_vendor");
@@ -75,8 +84,6 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		CreatureObject* player, byte selectedID) {
-
-	return 0;
 
 	if (!sceneObject->isVendor())
 		return 0;
@@ -135,10 +142,12 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	}
 
 	case 244: {
-		if (!vendorData->isRegistered())
-			VendorManager::instance()->sendRegisterVendorTo(player, vendor);
-		else
-			VendorManager::instance()->handleUnregisterVendor(player, vendor);
+		if(player->hasSkill("crafting_merchant_advertising_03")) {
+			if (!vendorData->isRegistered())
+				VendorManager::instance()->sendRegisterVendorTo(player, vendor);
+			else
+				VendorManager::instance()->handleUnregisterVendor(player, vendor);
+		}
 		return 0;
 	}
 
@@ -149,6 +158,32 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	case 246: {
 		VendorManager::instance()->promptRenameVendorTo(player, vendor);
+		return 0;
+	}
+
+	case 247: {
+		if(player->hasSkill("crafting_merchant_advertising_01")) {
+			if (!vendorData->isAdBarkingEnabled()) {
+
+				ManagedReference<VendorAdBarkingSession*> session = new VendorAdBarkingSession(player);
+				session->initializeSession();
+
+				player->sendSystemMessage("@player_structure:areabarks_enabled");
+			} else {
+				vendorData->setAdBarking(false);
+				player->sendSystemMessage("@player_structure:areabarks_disabled");
+			}
+		}
+		return 0;
+	}
+
+	case 248: {
+		vendorData->payMaintanence();
+		return 0;
+	}
+
+	case 249: {
+		vendorData->withdrawMaintanence();
 		return 0;
 	}
 

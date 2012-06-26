@@ -40,8 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Updated on: Sat Oct 15 09:39:53 PDT 2011 by lordkator - Fixed several names, positions and interplanetaryTravelAllowed bugs
-
 corellia = {
 
 	weatherEnabled = 1,

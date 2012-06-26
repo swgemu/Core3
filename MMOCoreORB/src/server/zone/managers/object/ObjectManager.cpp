@@ -173,6 +173,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::TURRET);
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::MELEEWEAPON);
@@ -199,7 +200,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
-	objectFactory.registerObject<ElevatorTerminal>(SceneObjectType::ELEVATORTERMINAL);
 	objectFactory.registerObject<TicketCollector>(SceneObjectType::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObjectType::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);

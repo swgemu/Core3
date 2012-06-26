@@ -5,6 +5,9 @@
  *      Author: victor
  */
 
+#ifndef LUABUILDINGOBJECT_H_
+#define LUABUILDINGOBJECT_H_
+
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
@@ -40,3 +43,5 @@ namespace building {
 }
 
 using namespace server::zone::objects::building;
+
+#endif /*LUABUILDINGOBJECT_H_*/

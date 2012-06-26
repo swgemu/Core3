@@ -525,7 +525,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	LairSpawn* randomLairSpawn = getRandomLairSpawn(player);
+	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, faction);
 
 	if (randomLairSpawn == NULL) {
 		mission->setTypeCRC(0);
@@ -610,14 +610,20 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setFaction(faction);
 
+	int factionPointsReward = randomLairSpawn->getMinDifficulty();
+	if (factionPointsReward > 32)
+	{
+		factionPointsReward = 32;
+	}
+
 	switch (faction) {
 	case MissionObject::FACTIONIMPERIAL:
-		mission->setRewardFactionPointsImperial(20);
-		mission->setRewardFactionPointsRebel(-10);
+		mission->setRewardFactionPointsImperial(factionPointsReward * 2);
+		mission->setRewardFactionPointsRebel(-factionPointsReward);
 		break;
 	case MissionObject::FACTIONREBEL:
-		mission->setRewardFactionPointsImperial(-10);
-		mission->setRewardFactionPointsRebel(20);
+		mission->setRewardFactionPointsImperial(-factionPointsReward);
+		mission->setRewardFactionPointsRebel(factionPointsReward * 2);
 		break;
 	default:
 		mission->setRewardFactionPointsImperial(0);
@@ -1126,7 +1132,7 @@ void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	LairSpawn* randomLairSpawn = getRandomLairSpawn(player);
+	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, MissionObject::FACTIONNEUTRAL);
 
 	if (randomLairSpawn == NULL) {
 		mission->setTypeCRC(0);
@@ -1364,7 +1370,7 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 	}
 }
 
-LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* player) {
+LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* player, const int faction) {
 	Zone* zone = player->getZone();
 
 	if (zone == NULL)
@@ -1372,10 +1378,34 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	Vector<ManagedReference<SpawnArea* > >* worldAreas = creatureManager->getWorldSpawnAreas();
+	Vector<ManagedReference<SpawnArea* > >* worldAreas;
+
+	if (faction == MissionObject::FACTIONNEUTRAL) {
+		worldAreas = creatureManager->getWorldSpawnAreas();
+	} else {
+		bool neutralMission = true;
+
+		if (player->getFaction() != 0 && player->getFaction() == faction) {
+			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+			if (ghost->getFactionStatus() == FactionStatus::OVERT) {
+				neutralMission = false;
+			}
+		}
+
+		if (neutralMission) {
+			worldAreas = creatureManager->getFactionalNeutralMissionSpawnAreas();
+		} else if (faction == MissionObject::FACTIONIMPERIAL) {
+			worldAreas = creatureManager->getFactionalImperialMissionSpawnAreas();
+		} else {
+			worldAreas = creatureManager->getFactionalRebelMissionSpawnAreas();
+		}
+	}
+
+
 	ManagedReference<SpawnArea*> spawnArea;
 
-	if (worldAreas->size() == 0) {
+	if (worldAreas == NULL || worldAreas->size() == 0) {
 		return NULL;
 	}
 

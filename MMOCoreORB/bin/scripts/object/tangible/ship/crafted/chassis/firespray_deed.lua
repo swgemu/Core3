@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_firespray_deed = object_tangible_ship_crafted_chassis_shared_firespray_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/firespray_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_firespray.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_firespray_deed, "object/tangible/ship/crafted/chassis/firespray_deed.iff")

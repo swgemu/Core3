@@ -75,11 +75,15 @@ namespace server {
 		static int spawnMobile(lua_State* L);
 		static int spawnSceneObject(lua_State* L);
 		static int createLoot(lua_State* L);
+		static int createLootFromCollection(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int spatialMoodChat(lua_State* L);
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
 		static int deleteSharedMemory(lua_State* L);
+		static int readStringSharedMemory(lua_State* L);
+		static int writeStringSharedMemory(lua_State* L);
+		static int deleteStringSharedMemory(lua_State* L);
 		static int getSceneObject(lua_State* L);
 		static int getCreatureObject(lua_State* L);
 		static int addStartingItemsInto(lua_State* L);

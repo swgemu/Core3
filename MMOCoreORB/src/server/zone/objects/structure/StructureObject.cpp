@@ -1416,8 +1416,8 @@ bool StructureObjectImplementation::isStructureObject() {
 }
 
 bool StructureObjectImplementation::isRedeedable() {
-	// server/zone/objects/structure/StructureObject.idl():  		return (getRedeedCost() < (surplusMaintenance + 1));
-	return (getRedeedCost() < (surplusMaintenance + 1));
+	// server/zone/objects/structure/StructureObject.idl():  		return (getRedeedCost() < surplusMaintenance);
+	return (getRedeedCost() < surplusMaintenance);
 }
 
 String StructureObjectImplementation::getRedeedMessage() {

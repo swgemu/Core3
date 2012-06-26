@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/ZoneServer.h"
 
 class AuctionQueryHeadersResponseMessage : public BaseMessage {
 
@@ -74,7 +76,7 @@ public:
 	}
 
 	void addItemToList(AuctionItem* ai) {
-		locationList.put(ai->getTerminalTitle());
+		locationList.put(ai->getVendorUID());
 		locationList.put(ai->getOwnerName());
 		locationList.put(ai->getBidderName());
 
@@ -112,6 +114,17 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 
+			int accessFee = 0;
+			ManagedReference<SceneObject*> vendor = player->getZoneServer()->getObject(il->getVendorID());
+			if(vendor != NULL && vendor->getParent() != NULL) {
+				ManagedReference<SceneObject*> parent = vendor->getParent();
+				if(parent->isBuildingObject()) {
+					BuildingObject* building = cast<BuildingObject*>(parent.get());
+					if(building != NULL)
+						accessFee = building->getAccessFee();
+				}
+			}
+
 			insertLong(il->getAuctionedItemObjectID()); //item id
 			insertByte(i);  // List item String number
 
@@ -127,9 +140,10 @@ public:
 	    	else
 	    		insertByte(1);
 
-	    	insertShort(locationList.find(il->getTerminalTitle()));
+	    	insertShort(locationList.find(il->getVendorUID()));
 
 	    	insertLong(il->getOwnerID()); // seller ID
+
 	    	insertShort(locationList.find(il->getOwnerName()));
 
 	    	insertLong(il->getBuyerID()); // buyer ID
@@ -143,14 +157,15 @@ public:
 	    	//insertInt(il->getAuctionOptions()); // autionOptions 0x400 = Premium, 0x800 = withdraw
 	    	int additionalValues = 0;
 
-	    	if (il->getOwnerID() == player->getObjectID() && !il->isRemovedByOwner()) {
+	    	if (il->getOwnerID() == player->getObjectID() &&
+	    			(il->getStatus() == AuctionItem::FORSALE || il->getStatus() == AuctionItem::OFFERED)) {
 	    		additionalValues |= 0x800;
 	    	}
 
 	    	insertInt(il->getAuctionOptions() | additionalValues);
 	    	//insertInt(10);
 
-	    	insertInt(0);  //TODO: Vendor entrance fee
+	    	insertInt(accessFee);
 		}
 	}
 

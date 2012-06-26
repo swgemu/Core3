@@ -25,6 +25,20 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "system/util/VectorMap.h"
@@ -44,11 +58,23 @@ public:
 
 	static const int OPTION_WITHDRAW = 0x800;
 
+	static const int FORSALE = 1;
+
+	static const int SOLD = 2;
+
+	static const int WITHDRAWN = 3;
+
+	static const int EXPIRED = 4;
+
+	static const int OFFERED = 5;
+
+	static const int RETRIEVED = 6;
+
 	AuctionItem(unsigned long long objectid);
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -76,17 +102,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -94,17 +112,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 
@@ -114,7 +128,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -132,7 +146,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 
@@ -186,9 +202,7 @@ protected:
 
 	String region;
 
-	String location;
-
-	String terminalTitle;
+	String vuid;
 
 	String itemName;
 
@@ -198,21 +212,13 @@ protected:
 
 	bool auction;
 
-	bool sold;
-
-	bool ownerRemove;
-
-	bool inStockroom;
-
-	bool offer;
+	int status;
 
 	bool onBazaar;
 
 	unsigned long long buyerID;
 
 	unsigned int expireTime;
-
-	int remainingTime;
 
 	bool updated;
 
@@ -223,13 +229,25 @@ public:
 
 	static const int OPTION_WITHDRAW = 0x800;
 
+	static const int FORSALE = 1;
+
+	static const int SOLD = 2;
+
+	static const int WITHDRAWN = 3;
+
+	static const int EXPIRED = 4;
+
+	static const int OFFERED = 5;
+
+	static const int RETRIEVED = 6;
+
 	AuctionItemImplementation(unsigned long long objectid);
 
 	AuctionItemImplementation(DummyConstructorParameter* param);
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -257,17 +275,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -275,17 +285,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 
@@ -295,7 +301,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -313,7 +319,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 
@@ -368,7 +376,7 @@ public:
 
 	int compareTo(AuctionItem* obj);
 
-	void setLocation(const String& planet, const String& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -394,17 +402,9 @@ public:
 
 	void setAuction(bool isAuction);
 
-	void setSold(bool isSold);
-
-	void setRemovedByOwner(bool isRemovedByOwner);
-
 	void setAuctionPremium();
 
 	void clearAuctionWithdraw();
-
-	void setInStockroom(bool inStock);
-
-	void setOfferToVendor(bool val);
 
 	void setOnBazaar(bool val);
 
@@ -412,17 +412,13 @@ public:
 
 	void setBuyerID(unsigned long long id);
 
-	bool isOnBazaar();
+	void setStatus(int value);
 
-	bool isSold();
+	bool isOnBazaar();
 
 	bool isAuction();
 
-	bool isRemovedByOwner();
-
-	bool isInStockroom();
-
-	bool isOfferToVendor();
+	int getStatus();
 
 	unsigned long long getVendorID();
 
@@ -432,7 +428,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getTerminalTitle();
+	String getVendorUID();
 
 	String getOwnerName();
 
@@ -450,7 +446,9 @@ public:
 
 	String getItemDescription();
 
-	String getLocation();
+	void setRegion(const String& value);
+
+	String getRegion();
 
 	int getAuctionOptions();
 

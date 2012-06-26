@@ -32,11 +32,11 @@ drall_chieftain = Creature:new {
 	lootGroups = {
 	      	{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "loot_kit_parts", chance = 1000000},
-				{group = "tailor_components", chance = 500000}
+				{group = "junk", chance = 7000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000}
 			},
-			lootChance = 5000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

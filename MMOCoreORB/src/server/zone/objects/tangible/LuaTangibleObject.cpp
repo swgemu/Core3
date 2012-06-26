@@ -14,6 +14,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
+		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
 		{ 0, 0 }
 };
 
@@ -37,6 +38,14 @@ int LuaTangibleObject::setOptionsBitmask(lua_State* L) {
 	uint32 bitmask = lua_tointeger(L, -1);
 
 	realObject->setOptionsBitmask(bitmask, true);
+
+	return 0;
+}
+
+int LuaTangibleObject::setConditionDamage(lua_State* L) {
+	float damage = lua_tonumber(L, -1);
+
+	realObject->setConditionDamage(damage, true);
 
 	return 0;
 }

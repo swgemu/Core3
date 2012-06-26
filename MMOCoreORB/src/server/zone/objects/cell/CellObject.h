@@ -33,6 +33,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "engine/lua/Luna.h"
+
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -221,6 +223,33 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<CellObjectHelper>;
+};
+
+class LuaCellObject {
+public:
+	static const char className[];
+	static Luna<LuaCellObject>::RegType Register[];
+
+	LuaCellObject(lua_State *L);
+	virtual ~LuaCellObject();
+
+	int _setObject(lua_State *L);
+	int _getObject(lua_State *L);
+	int loadTemplateData(lua_State *L);
+	int setAllowEntryPermissionGroup(lua_State *L);
+	int notifyLoadFromDatabase(lua_State *L);
+	int sendContainerObjectsTo(lua_State *L);
+	int canAddObject(lua_State *L);
+	int transferObject(lua_State *L);
+	int initializeTransientMembers(lua_State *L);
+	int sendBaselinesTo(lua_State *L);
+	int getCurrentNumberOfPlayerItems(lua_State *L);
+	int destroyAllPlayerItems(lua_State *L);
+	int getCellNumber(lua_State *L);
+	int setCellNumber(lua_State *L);
+	int isCellObject(lua_State *L);
+
+	Reference<CellObject*> realObject;
 };
 
 } // namespace cell

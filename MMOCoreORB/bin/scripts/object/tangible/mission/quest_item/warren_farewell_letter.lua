@@ -42,7 +42,8 @@
 
 
 object_tangible_mission_quest_item_warren_farewell_letter = object_tangible_mission_quest_item_shared_warren_farewell_letter:new {
-
+	objectName = "@theme_park/warren/warren_system_messages:letter_name",
+	--@theme_park/warren/warren_system_messages:letter_text
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_warren_farewell_letter, "object/tangible/mission/quest_item/warren_farewell_letter.iff")

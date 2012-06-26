@@ -121,6 +121,8 @@ using namespace server::zone::objects::scene;
 
 #include "engine/core/ManagedService.h"
 
+#include "engine/core/Task.h"
+
 #include "system/util/VectorMap.h"
 
 namespace server {
@@ -132,11 +134,11 @@ class AuctionManager : public ManagedService {
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 
@@ -158,7 +160,7 @@ public:
 
 	void getAuctionData(CreatureObject* player, TangibleObject* vendor, String& search, int screen, unsigned int category, int count, int offset);
 
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -179,6 +181,12 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void expireAuction(AuctionItem* item);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -210,14 +218,16 @@ protected:
 
 	ManagedReference<ZoneServer* > zoneServer;
 
+	VectorMap<unsigned long long, Task*> auctionEvents;
+
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 
@@ -231,10 +241,6 @@ public:
 
 	void addSaleItem(CreatureObject* player, unsigned long long objectid, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-private:
-	String getVendorUID(SceneObject* vendor);
-
-public:
 	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
 	int checkSaleItem(CreatureObject* player, SceneObject* object, TangibleObject* vendor, int price, bool premium);
@@ -249,7 +255,7 @@ private:
 	void refundAuction(AuctionItem* item);
 
 public:
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -270,6 +276,12 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void expireAuction(AuctionItem* item);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -337,6 +349,12 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void expireAuction(AuctionItem* item);
 
 };
 

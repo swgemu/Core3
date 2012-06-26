@@ -137,9 +137,10 @@ namespace server {
 		*/
 	  	void handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
-	  	void sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, String play, String callback);
-	  	void sendConfirmSui(SceneObject* terminal, SceneObject* player, String play, String callback, String prompt, String button);
-	  	void sendMessageBox(SceneObject* usingObject, SceneObject* player, String title, String text, String okButton, String screenplay, String callback);
+	  	void sendKeypadSui(SceneObject* keypad, SceneObject* creatureSceneObject, const String& play, const String& callback);
+	  	void sendConfirmSui(SceneObject* terminal, SceneObject* player, const String& play, const String& callback, const String& prompt, const String& button);
+	  	void sendMessageBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const String& okButton, const String& screenplay, const String& callback);
+	  	void sendInputBox(SceneObject* terminal, SceneObject* player, const String& play, const String& callback, const String& prompt, const String& button);
 
 	  	void setZoneProcessServer(ZoneProcessServer* srv) {
 	  		server = srv;

@@ -1,17 +1,27 @@
 function printf(...) io.write(string.format(unpack(arg))) end
 
 function writeData(key, data)
-	keyUnpacked = string.format(key)
-		
-	writeSharedMemory(keyUnpacked, data)
+	writeSharedMemory(string.format(key), data)
+end
+
+function writeStringData(key, data)
+	writeStringSharedMemory(string.format(key), string.format(data))
 end
 
 function deleteData(key)
 	deleteSharedMemory(string.format(key))
 end
 
+function deleteStringData(key)
+	deleteStringSharedMemory(string.format(key))
+end
+
 function readData(key)
 	return readSharedMemory(string.format(key))
+end
+
+function readStringData(key)
+	return readStringSharedMemory(string.format(key))
 end
 
 Object = { 
@@ -48,9 +58,13 @@ includeFile("recruiters/imperialrecruiter.lua")
 includeFile("recruiters/rebelrecruiter.lua")
 includeFile("dungeon/death_watch_bunker.lua")
 includeFile("dungeon/geonosian_lab.lua")
+includeFile("dungeon/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
+--Caves
+includeFile("caves/tatooine_hutt_hideout.lua")
+
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
-includeFile("event/stresstest_20120128.lua")
+--includeFile("event/stresstest_20120128.lua")

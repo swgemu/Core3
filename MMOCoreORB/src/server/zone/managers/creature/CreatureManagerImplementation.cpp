@@ -11,6 +11,7 @@
 #include "SpawnAreaMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
@@ -626,14 +627,22 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
 		return false;
 
+	ChatManager* chatMan = zoneServer->getChatManager();
+
 	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
 	Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
 	if (!races->contains(race.hashCode())) {
-		String message = "I can't wear that";
-		SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
-		creature->broadcastMessage(cmsg, false);
+		UnicodeString message;
+
+		if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+			message = "@player_structure:wear_not_ithorian";
+		else
+			message = "@player_structure:wear_no";
+
+		chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+
 		return false;
 	}
 
@@ -656,9 +665,13 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	creature->doAnimation("pose_proudly");
 	creature->broadcastObject(clothing, true);
 
-	String message = "Thank you, much better";
-	SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
-	creature->broadcastMessage(cmsg, false);
+	UnicodeString message;
+	if(clothing->isWeaponObject())
+		message = "@player_structure:wear_yes_weapon";
+	else
+		message = "@player_structure:wear_yes";
+
+	chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
 	return true;
 }

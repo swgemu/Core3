@@ -24,6 +24,10 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic},
+		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup},
+		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup},
+		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup},
+		{ "awardBadge", &LuaPlayerObject::awardBadge},
 		{ 0, 0 }
 };
 
@@ -140,5 +144,38 @@ int LuaPlayerObject::addRewardedSchematic(lua_State* L){
 		realObject->addRewardedSchematic(schematic, quantity, notifyClient);
 
 	return 0;
+}
 
+int LuaPlayerObject::addPermissionGroup(lua_State* L){
+	String permissionGroup = lua_tostring(L, -2);
+	bool updateBuildings = lua_toboolean(L, -1);
+
+	realObject->addPermissionGroup(permissionGroup, updateBuildings);
+
+	return 0;
+}
+
+int LuaPlayerObject::removePermissionGroup(lua_State* L){
+	String permissionGroup = lua_tostring(L, -2);
+	bool updateBuildings = lua_toboolean(L, -1);
+
+	realObject->removePermissionGroup(permissionGroup, updateBuildings);
+
+	return 0;
+}
+
+int LuaPlayerObject::hasPermissionGroup(lua_State* L){
+	String permissionGroup = lua_tostring(L, -1);
+
+	lua_pushboolean(L, realObject->hasPermissionGroup(permissionGroup));
+
+	return 1;
+}
+
+int LuaPlayerObject::awardBadge(lua_State* L){
+	int badgeId = lua_tointeger(L, -1);
+
+	realObject->awardBadge(badgeId);
+
+	return 0;
 }

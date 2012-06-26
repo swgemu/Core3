@@ -34,7 +34,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -249,20 +249,6 @@ void InstallationObject::addResourceToHopper(ResourceContainer* container) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->addResourceToHopper(container);
-}
-
-void InstallationObject::removeResourceFromHopper(ResourceContainer* container) {
-	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_);
-		method.addObjectParameter(container);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeResourceFromHopper(container);
 }
 
 void InstallationObject::clearResourceHopper() {
@@ -563,6 +549,15 @@ void InstallationObject::setExtractionRate(float rate) {
 		_implementation->setExtractionRate(rate);
 }
 
+Vector<String>* InstallationObject::getLogs() {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLogs();
+}
+
 DistributedObjectServant* InstallationObject::_getImplementation() {
 
 	_updated = true;
@@ -723,6 +718,11 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.history") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&history, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -828,8 +828,16 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.history";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&history, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 11;
+
+	return _count + 12;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
@@ -921,6 +929,11 @@ bool InstallationObjectImplementation::isShuttleInstallation() {
 	return false;
 }
 
+Vector<String>* InstallationObjectImplementation::getLogs() {
+	// server/zone/objects/installation/InstallationObject.idl():  		return history;
+	return (&history);
+}
+
 /*
  *	InstallationObjectAdapter
  */
@@ -999,11 +1012,6 @@ void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_:
 		{
 			addResourceToHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_:
-		{
-			removeResourceFromHopper(static_cast<ResourceContainer*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_CLEARRESOURCEHOPPER__:
@@ -1156,10 +1164,6 @@ void InstallationObjectAdapter::changeActiveResourceID(unsigned long long spawnO
 
 void InstallationObjectAdapter::addResourceToHopper(ResourceContainer* container) {
 	(static_cast<InstallationObject*>(stub))->addResourceToHopper(container);
-}
-
-void InstallationObjectAdapter::removeResourceFromHopper(ResourceContainer* container) {
-	(static_cast<InstallationObject*>(stub))->removeResourceFromHopper(container);
 }
 
 void InstallationObjectAdapter::clearResourceHopper() {

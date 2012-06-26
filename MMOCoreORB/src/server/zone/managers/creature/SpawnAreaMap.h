@@ -25,6 +25,12 @@ protected:
 
 	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
+	Vector<ManagedReference<SpawnArea*> > factionalNeutralMissionSpawnAreas;
+
+	Vector<ManagedReference<SpawnArea*> > factionalRebelMissionSpawnAreas;
+
+	Vector<ManagedReference<SpawnArea*> > factionalImperialMissionSpawnAreas;
+
 	Vector<Vector3> trainerObjects;
 
 	void readAreaObject(LuaObject& areaObj);
@@ -55,6 +61,18 @@ public:
 
 	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
+	}
+
+	Vector<ManagedReference<SpawnArea*> >* getFactionalNeutralMissionSpawnAreas() {
+		return &factionalNeutralMissionSpawnAreas;
+	}
+
+	Vector<ManagedReference<SpawnArea*> >* getFactionalRebelMissionSpawnAreas() {
+		return &factionalRebelMissionSpawnAreas;
+	}
+
+	Vector<ManagedReference<SpawnArea*> >* getFactionalImperialMissionSpawnAreas() {
+		return &factionalImperialMissionSpawnAreas;
 	}
 };
 

@@ -177,6 +177,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		crc = String("object/dynamic_spawn_area.iff").hashCode();
 		break;
 	case 3:
+	case 4:
+	case 5:
+	case 6:
 		crc = String("object/lair_spawn_area.iff").hashCode();
 		break;
 	default:
@@ -209,7 +212,21 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	else {
 		area->setRadius(zone->getBoundingRadius());
 
-		worldSpawnAreas.add(area);
+		switch (tier) {
+		case 4:
+			factionalNeutralMissionSpawnAreas.add(area);
+			break;
+		case 5:
+			factionalRebelMissionSpawnAreas.add(area);
+			break;
+		case 6:
+			factionalImperialMissionSpawnAreas.add(area);
+			break;
+		default:
+			worldSpawnAreas.add(area);
+			break;
+		}
+
 
 		area->setZone(zone);
 	}

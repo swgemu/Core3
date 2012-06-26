@@ -48,6 +48,7 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.managers.object.ObjectManager;
 import engine.core.ManagedService;
+import engine.core.Task;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.auction.AuctionsMap;
@@ -55,7 +56,6 @@ import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
-
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 
 class AuctionManager extends ManagedService implements Logger {
@@ -63,31 +63,31 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	protected ZoneServer zoneServer;
 	
+	@dereferenced
+	protected VectorMap<unsigned long, Task> auctionEvents;
+	
 	public final static int MAXBAZAARPRICE = 20000;
-	public final static int MAXSALES = 20; // this only apply to bazaars
+	public final static int MAXSALES = 25; // this only apply to bazaars
 	public final static int SALESFEE = 20;
-	public final static int CHECKEVERY = 2; // Minutes
+	public final static int CHECKEVERY = 60; // Minutes
 	
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;
 	
 	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
-		
 		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		
+		auctionEvents.setNoDuplicateInsertPlan();
+		auctionEvents.setNullValue(null);
 	}
 	
 	public native void initialize();
 	
 	@local
 	public native void addSaleItem(CreatureObject player, unsigned long objectid, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
-	
-	private native string getVendorUID(SceneObject vendor);
-	
-	
-	
 	
 	@local
 	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
@@ -105,7 +105,7 @@ class AuctionManager extends ManagedService implements Logger {
 	private native void refundAuction(AuctionItem item); 
 
 	@local
-	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, TangibleObject vendor);
+	public native int checkRetrieve(CreatureObject player, unsigned long objectIdToRetrieve, SceneObject vendor);
 	public native void retrieveItem(CreatureObject player, unsigned long objectid, unsigned long vendorID);
 	
 	public native void buyItem(CreatureObject player, unsigned long objectid, int price1, int price2);
@@ -125,6 +125,14 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void checkVendorItems();
 	
 	public native void checkAuctions();
+
+	public native string getVendorUID(SceneObject vendor);
 	
+	public void updateVendorUID(SceneObject vendor, final string oldUID, final string newUID) {
+		auctionMap.updateUID(vendor, oldUID, newUID);
+	}
+	
+	public native void expireAuction(AuctionItem item);
+
 }
 

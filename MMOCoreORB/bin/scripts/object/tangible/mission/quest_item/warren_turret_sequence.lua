@@ -42,7 +42,8 @@
 
 
 object_tangible_mission_quest_item_warren_turret_sequence = object_tangible_mission_quest_item_shared_warren_turret_sequence:new {
-
+	objectName = "@theme_park/warren/warren_system_messages:turret_data_name",
+	objectMenuComponent = {"Lua", "WarrenTurrentMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_warren_turret_sequence, "object/tangible/mission/quest_item/warren_turret_sequence.iff")

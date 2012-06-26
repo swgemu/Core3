@@ -52,6 +52,7 @@ namespace scene {
 		int destroyObjectFromDatabase(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
+		int isPlayerCreature(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
@@ -67,6 +68,8 @@ namespace scene {
 		int setContainerInheritPermissionsFromParent(lua_State* L);
 		int setContainerAllowPermission(lua_State* L);
 		int setContainerDenyPermission(lua_State* L);
+		int setContainerDefaultAllowPermission(lua_State* L);
+		int setContainerDefaultDenyPermission(lua_State* L);
 		int hasActiveArea(lua_State* L);
 
 	private:

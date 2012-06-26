@@ -48,6 +48,7 @@ import system.util.VectorMap;
 import engine.core.ManagedObject;
 import system.lang.StringBuffer;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.StringId;
 
 class AuctionItem extends ManagedObject {
@@ -64,8 +65,7 @@ class AuctionItem extends ManagedObject {
 
 	protected string planet;
 	protected string region;
-	protected string location;
-	protected string terminalTitle;
+	protected string vuid;
 
 	protected string itemName;
 	protected string itemDescription;
@@ -73,17 +73,14 @@ class AuctionItem extends ManagedObject {
 	protected int price;
 
 	protected boolean auction;
-	protected boolean sold;
-	protected boolean ownerRemove;
-	protected boolean inStockroom;
-	protected boolean offer;
+
+	protected int status;
 
 	protected boolean onBazaar;
 
 	protected unsigned long buyerID;
 
 	protected unsigned int expireTime;
-	protected int remainingTime;
 
 	protected boolean updated;
 
@@ -91,6 +88,13 @@ class AuctionItem extends ManagedObject {
 
 	public final static int OPTION_PREMIUM = 0x400;
 	public final static int OPTION_WITHDRAW = 0x800;
+
+	public final static int FORSALE = 1;
+	public final static int SOLD = 2;
+	public final static int WITHDRAWN = 3;
+	public final static int EXPIRED = 4;
+	public final static int OFFERED = 5;
+	public final static int RETRIEVED = 6;
 	
 	public AuctionItem(unsigned long objectid) {
 		auctionedItemObjectID = objectid;
@@ -100,18 +104,14 @@ class AuctionItem extends ManagedObject {
 		offerToID = 0;
 		
 		price = 0;
+		status = FORSALE;
 		
 		auction = true;
-		sold = false;
-		ownerRemove = false;
-		inStockroom = false;
-		offer = false;
 
 		onBazaar = false;
 		
 		buyerID = 0;
 		expireTime = 0;
-		remainingTime = 0;
 		
 		updated = false;
 
@@ -137,7 +137,7 @@ class AuctionItem extends ManagedObject {
 			return 0;
 	}
 	
-	public native void setLocation(final string planet, final string header, unsigned long vendorid, int x, int z, boolean vendor);
+	public native void setVendorUID(final string uid);
 	
 	public native void notifyLoadFromDatabase();
 		
@@ -189,14 +189,6 @@ class AuctionItem extends ManagedObject {
 	public void setAuction(boolean isAuction) {
 		auction = isAuction;
 	}
-	
-	public void setSold(boolean isSold) {
-		sold = isSold;
-	}
-	
-	public void setRemovedByOwner(boolean isRemovedByOwner) {
-		ownerRemove = isRemovedByOwner;
-	}
 
 	public void setAuctionPremium() {
 		auctionOptions = auctionOptions | OPTION_PREMIUM;
@@ -204,13 +196,6 @@ class AuctionItem extends ManagedObject {
 
 	public native void clearAuctionWithdraw();
 
-	public void setInStockroom(boolean inStock) {
-		inStockroom = inStock;
-	}
-
-	public void setOfferToVendor(boolean val) {
-		offer = val;
-	}
 
 	public void setOnBazaar(boolean val) {
 		onBazaar = val;
@@ -223,29 +208,21 @@ class AuctionItem extends ManagedObject {
 	public void setBuyerID(unsigned long id) {
 		buyerID = id;
 	}
+	
+	public void setStatus(int value) {
+		status = value;
+	}
 
 	public boolean isOnBazaar() {
 		return onBazaar;
 	}
 	
-	public boolean isSold() {
-		return sold;
-	}
-	
 	public boolean isAuction() {
 		return auction;
 	}
-	
-	public boolean isRemovedByOwner() {
-		return ownerRemove;
-	}
 
-	public boolean isInStockroom() {
-		return inStockroom;
-	}
-
-	public boolean isOfferToVendor() {
-		return offer;
+	public int getStatus() {
+		return status;
 	}
 	
 	public unsigned long getVendorID() {
@@ -264,8 +241,8 @@ class AuctionItem extends ManagedObject {
 		return offerToID;
 	}
 	
-	public string getTerminalTitle() {
-		return terminalTitle;
+	public string getVendorUID() {
+		return vuid;
 	}
 	
 	public string getOwnerName() {
@@ -300,8 +277,12 @@ class AuctionItem extends ManagedObject {
 		return itemDescription;
 	}
 	
-	public string getLocation() {
-		return location;
+	public void setRegion(final string value) {
+		region = value;
+	}
+	
+	public string getRegion() {
+		return region;
 	}
 
 	public int getAuctionOptions() {

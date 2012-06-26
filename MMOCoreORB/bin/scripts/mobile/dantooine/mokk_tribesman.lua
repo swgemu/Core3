@@ -34,12 +34,12 @@ mokk_tribesman = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "loot_kit_parts", chance = 1500000},
+				{group = "junk", chance = 6000000},
+				{group = "loot_kit_parts", chance = 3000000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000}
 			},
-			lootChance = 3500000
+			lootChance = 3000000
 		}	
 	},
 	weapons = {"primitive_weapons"},

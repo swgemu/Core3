@@ -57,7 +57,7 @@ namespace events {
 
 class UpdateVendorTask: public Task {
 protected:
-	ManagedReference<TangibleObject*> vendor;
+	ManagedWeakReference<TangibleObject*> vendor;
 
 public:
 	UpdateVendorTask(TangibleObject* vndr) {
@@ -67,12 +67,14 @@ public:
 
 	void run() {
 
-		if (vendor == NULL || vendor->isBazaarTerminal())
+		ManagedReference<TangibleObject*> strongRef = vendor.get();
+
+		if (strongRef == NULL || strongRef->isBazaarTerminal())
 			return;
 
-		Locker locker(vendor);
+		Locker locker(strongRef);
 
-		DataObjectComponentReference* data = vendor->getDataObjectComponent();
+		DataObjectComponentReference* data = strongRef->getDataObjectComponent();
 		if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 			return;
 		}

@@ -66,14 +66,6 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	if (!luaObject.isValidTable())
 		return false;
 
-	// System Enabled
-	weatherEnabled = luaObject.getByteField("weatherEnabled");
-
-	if(!weatherEnabled) {
-		baseWeather = CLEAR;
-		return true;
-	}
-
 	//Starting weather
 	baseWeather = luaObject.getByteField("defaultWeather");
 

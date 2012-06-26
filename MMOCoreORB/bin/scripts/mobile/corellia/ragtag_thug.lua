@@ -35,10 +35,10 @@ ragtag_thug = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "loot_kits", chance = 500000},
-				{group = "crystals_poor", chance = 200000},
-				{group = "tailor_components", chance = 500000}
+				{group = "junk", chance = 7000000},
+				{group = "loot_kits", chance = 1500000},
+				{group = "crystals_poor", chance = 500000},
+				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 3200000
 		}

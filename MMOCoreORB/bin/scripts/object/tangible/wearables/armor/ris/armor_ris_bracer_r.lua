@@ -116,7 +116,7 @@ object_tangible_wearables_armor_ris_armor_ris_bracer_r = object_tangible_wearabl
 	experimentalMin = {0, 0, 0, 1000, 5, 30000, 22, 22, 13, 1, 1, 5, 0},
 	experimentalMax = {0, 0, 0, 1000, 50, 50000, 13, 13, 9, 1, 1, 70, 0},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0},
-	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_armor_ris_bracer_r, "object/tangible/wearables/armor/ris/armor_ris_bracer_r.iff")

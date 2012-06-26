@@ -1,8 +1,8 @@
-stormtrooper_warren = Creature:new {
+warren_stormtrooper = Creature:new {
 	objectName = "@mob/creature_names:warren_stormtrooper",
 	socialGroup = "warren_imperial",
-	pvpFaction = "warren_imperial",
-	faction = "warren_imperial",
+	pvpFaction = "",
+	faction = "",
 	level = 26,
 	chanceHit = 0.360000,
 	damageMin = 240,
@@ -21,11 +21,9 @@ stormtrooper_warren = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
-
-	aiTemplate = "default",
 
 	templates = {"object/mobile/warren_stormtrooper.iff"},
 	lootGroups = {},
@@ -33,4 +31,4 @@ stormtrooper_warren = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(stormtrooper_warren, "stormtrooper_warren")
+CreatureTemplates:addCreatureTemplate(warren_stormtrooper, "warren_stormtrooper")

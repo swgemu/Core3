@@ -183,7 +183,7 @@ public:
 		} else
 			object = creature;
 
-		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
+		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
 	/*	if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("@healing_response:healing_response_a1"); //Target must be a player or a creature pet in order to tend damage.
