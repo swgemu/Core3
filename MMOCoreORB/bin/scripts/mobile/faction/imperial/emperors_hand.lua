@@ -31,10 +31,25 @@ emperors_hand = Creature:new {
 		"object/mobile/dressed_emperors_hand_human_male_02.iff",
 		"object/mobile/dressed_emperors_hand_human_female_01.iff",
 		"object/mobile/dressed_emperors_hand_zabrak_male_01.iff"},
-	lootGroups = {},
-	weapons = {"dark_jedi_weapons"},
+	lootGroups = {
+     	{
+			groups = {
+				{group = "holocron_dark", chance = 850000},
+				{group = "holocron_light", chance = 850000},
+				{group = "crystals_premium", chance = 1600000},
+				{group = "rifles", chance = 1500000},
+				{group = "pistols", chance = 1500000},
+				{group = "melee_weapons", chance = 1500000},
+				{group = "armor_attachments", chance = 1100000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "carbines", chance = 1500000}				
+			},
+			lootChance = 8500000
+		}
+	},
+	weapons = {"dark_jedi_weapons_gen3"},
 	conversationTemplate = "",
-	attacks = {
+	attacks = merge(lightsabermaster)
 	}
 }
 

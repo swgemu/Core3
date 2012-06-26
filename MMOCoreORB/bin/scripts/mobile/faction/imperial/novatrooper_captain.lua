@@ -30,15 +30,17 @@ novatrooper_captain = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
+				{group = "color_crystals", chance = 300000},
+				{group = "junk", chance = 5100000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+                {group = "melee_weapons", chance = 1000000},
+                {group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
 			},
 			lootChance = 4000000
-		}				
+		}			
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",

@@ -30,8 +30,7 @@ death_watch_black_sun_assassin = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners", chance = 9000000},
-				{group = "bounty_hunter_armor_looted", chance =   1000000},--reduce to minimal chance once testing is done/normal blacksuns are in
+				{group = "death_watch_bunker_commoners", chance = 10000000},
 			},
 			lootChance = 1000000
 		}

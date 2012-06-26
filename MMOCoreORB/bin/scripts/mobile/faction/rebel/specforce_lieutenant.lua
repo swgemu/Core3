@@ -32,18 +32,20 @@ specforce_lieutenant = Creature:new {
 	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
 	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
 	},
-	lootGroups = {
+lootGroups = {
 		{
-			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
+	        groups = {
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+                {group = "melee_weapons", chance = 1000000},
+                {group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
 			},
-			lootChance = 4000000
-		}		
+			lootChance = 3000000
+		}	
 	},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

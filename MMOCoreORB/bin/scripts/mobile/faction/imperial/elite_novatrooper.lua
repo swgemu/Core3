@@ -29,15 +29,16 @@ elite_novatrooper = Creature:new {
 	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
 	lootGroups = {
 		{
-			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+			{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 6500000},
+				{group = "rifles", chance = 500000},
+				{group = "loot_kit_parts", chance = 1300000},
+				{group = "carbines", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "armor_attachments", chance = 250000}
 			},
-			lootChance = 4000000
+			lootChance = 3000000
 		}				
 	},
 	weapons = {"stormtrooper_weapons"},

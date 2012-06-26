@@ -32,7 +32,7 @@ first_brigade_infiltrator = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3000000},
+				{group = "junk", chance = 7000000},
 				{group = "color_crystals", chance = 500000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},

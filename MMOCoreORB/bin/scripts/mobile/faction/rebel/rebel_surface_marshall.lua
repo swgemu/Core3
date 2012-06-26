@@ -36,14 +36,17 @@ rebel_surface_marshall = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "holocron_light", chance = 100000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "junk", chance = 3900000},
+				{group = "holocron_dark", chance = 500000},
+				{group = "holocron_light", chance = 500000},
+				{group = "rifles", chance = 1200000},
+				{group = "pistols", chance = 1200000},
+				{group = "carbines", chance = 1200000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "armor_attachments", chance = 250000}
 			},
-			lootChance = 4000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

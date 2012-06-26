@@ -22,28 +22,16 @@ borvos_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_borvos_soldier.iff"},
-	lootGroups = {
-	    {
-			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "color_crystals", chance = 200000},
-				{group = "tailor_components", chance = 500000},
-				{group = "loot_kit_parts", chance = 500000},
-				{group = "rilfes", chance = 1000000},
-				{group = "carbines", chance = 1000000}
-			},
-			lootChance = 3200000
-		}				
-	},
+	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	conversationTemplate = "borvos_guard_convotemplate",
+	attacks = {},
 }
 
 CreatureTemplates:addCreatureTemplate(borvos_guard, "borvos_guard")

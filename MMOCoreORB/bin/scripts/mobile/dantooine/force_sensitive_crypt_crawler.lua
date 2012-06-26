@@ -30,7 +30,7 @@ force_sensitive_crypt_crawler = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2000000},
+				{group = "junk", chance = 6000000},
 				{group = "crystals_poor", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "melee_weapons", chance = 1000000},
