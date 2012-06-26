@@ -9,7 +9,21 @@ HuttHideoutScreenPlay = ScreenPlay:new {
 	},
 	
 	lootLevel = 32,	
-	lootGroups = "armor_attachments",
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 6800000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 4000000
+		}					
+	},
+	
 	lootContainerRespawn = 1800 -- 30 minutes
 }
 
@@ -71,6 +85,7 @@ function HuttHideoutScreenPlay:initializeLootContainers()
 	for k,v in pairs(self.lootContainers) do
 		local pContainer = getSceneObject(v)
 		createObserver(OPENCONTAINER, "HuttHideoutScreenPlay", "spawnContainerLoot", pContainer)
+		self:spawnContainerLoot(pContainer)
 	end
 end
 
@@ -90,14 +105,8 @@ function HuttHideoutScreenPlay:spawnContainerLoot(pContainer)
 	if (container:getContainerObjectsSize() > 0) then
 		return
 	end
-	
-	local lootGroup = self:selectLootGroup()
-	createLoot(pContainer, lootGroup, self.lootLevel)
+
+	createLootFromCollection(pContainer, self.lootGroups, self.lootLevel)
 	
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
-end
-
-function HuttHideoutScreenPlay:selectLootGroup()
-	--TODO: Expand this to allow for multiple loot groups.
-	return self.lootGroups
 end

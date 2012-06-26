@@ -119,6 +119,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	// call for createLoot(SceneObject* container, const String& lootGroup, int level)
 	lua_register(luaEngine->getLuaState(), "createLoot", createLoot);
+	lua_register(luaEngine->getLuaState(), "createLootFromCollection", createLootFromCollection);
 
 	lua_register(luaEngine->getLuaState(), "getRegion", getRegion);
 	lua_register(luaEngine->getLuaState(), "writeScreenPlayData", writeScreenPlayData);
@@ -240,6 +241,28 @@ int DirectorManager::createLoot(lua_State* L) {
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
 	lootManager->createLoot(container, lootGroup, level);
+
+	return 0;
+}
+
+int DirectorManager::createLootFromCollection(lua_State* L) {
+	SceneObject* container = (SceneObject*)lua_touserdata(L, -3);
+
+	if (container == NULL)
+		return 0;
+
+	int level = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	LuaObject luaObject(L);
+
+	LootGroupCollection lootCollection;
+	lootCollection.readObject(&luaObject);
+
+	luaObject.pop();
+
+	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
+	lootManager->createLootFromCollection(container, &lootCollection, level);
 
 	return 0;
 }

@@ -106,6 +106,15 @@ bool LootManager::createLoot(SceneObject* container, AiAgent* creature) {
 		return _implementation->createLoot(container, creature);
 }
 
+bool LootManager::createLootFromCollection(SceneObject* container, LootGroupCollection* collection, int level) {
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->createLootFromCollection(container, collection, level);
+}
+
 bool LootManager::createLoot(SceneObject* container, const String& lootGroup, int level) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

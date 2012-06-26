@@ -75,6 +75,7 @@ namespace server {
 		static int spawnMobile(lua_State* L);
 		static int spawnSceneObject(lua_State* L);
 		static int createLoot(lua_State* L);
+		static int createLootFromCollection(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int spatialMoodChat(lua_State* L);
 		static int readSharedMemory(lua_State* L);
