@@ -138,7 +138,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
-	if (waypoint != NULL) {
+	if (waypoint == NULL) {
 		waypoint = mission->createWaypoint();
 	}
 
