@@ -5,22 +5,23 @@ HuttHideoutScreenPlay = ScreenPlay:new {
 		134411,
 		8496263,
 		8496262,
+		8496261,
 		8496260
 	},
 	
-	lootLevel = 32,	
+	lootLevel = 26,	
 
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 6800000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8600000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
 			},
-			lootChance = 4000000
+			lootChance = 8000000
 		}					
 	},
 	
@@ -79,6 +80,35 @@ function HuttHideoutScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "jabba_compound_guard", 200, -224, -65, -249.8, -174, 4235591)
 	spawnMobile("tatooine", "jabba_henchman", 200, -19.3, -62.6, -261.6, 43, 4235591)
 	spawnMobile("tatooine", "jabba_assassin", 200, -10.6, -63.3, -261.2, -77, 4235591)
+	
+	spawnMobile("tatooine", "jabba_henchman", 200, -57.1, -70.2, -193, -70, 4235592)
+	spawnMobile("tatooine", "jabba_compound_guard", 200, -71.8, -68.6, -182.3, 99, 4235592)
+	spawnMobile("tatooine", "jabba_henchman", 200, -59.3, -69.8, -170.9, -53, 4235592)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -71.5, -70, -166.7, 141, 4235592)
+	spawnMobile("tatooine", "jabba_assassin", 200, -98.3, -72.4, -174.9, 72, 4235592)
+	spawnMobile("tatooine", "jabba_henchman", 200, -112.2, -69.1, -119.7, 84, 4235592)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -106.1, -68.6, -112.2, -76, 4235592)
+	spawnMobile("tatooine", "jabba_assassin", 200, -84.2, -70.3, -129.7, 83, 4235592)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -94.9, -102.6, -137.2, 154, 4235592)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -95.6, -102.1, -140.6, 0, 4235592)
+	
+	spawnMobile("tatooine", "jabba_henchman", 200, -51.4, -68.9, -95.4, 135, 4235593)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -47.6, -69.3, -95.4, -133, 4235593)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -46.3, -69.3, -99, -52, 4235593)
+	spawnMobile("tatooine", "jabba_compound_guard", 200, -59.4, -70.1, -88, -179, 4235593)
+	spawnMobile("tatooine", "jabba_henchman", 200, -69.4, -68.5, -101.7, 110, 4235593)
+	spawnMobile("tatooine", "jabba_compound_guard", 200, -65.6, -68.3, -103.1, -74, 4235593)
+	spawnMobile("tatooine", "jabba_assassin", 200, -8.6, -68.6, -97.1, -162, 4235593)
+	
+	spawnMobile("tatooine", "jabba_compound_guard", 200, -32.1, -80.2, -143.5, 80, 4235594)
+	spawnMobile("tatooine", "jabba_henchman", 200, -19.7, -79.8, -146.9, -59, 4235594)
+	spawnMobile("tatooine", "jabba_henchman", 200, -21.2, -79.6, -143.8, 160, 4235594)
+	
+	spawnMobile("tatooine", "jabba_compound_guard", 200, -79, -100.9, -130, -100, 4235595)
+	spawnMobile("tatooine", "jabba_assassin", 200, -83.8, -100.6, -106.6, -1, 4235595)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -86.4, -100.5, -103.6, 123, 4235595)
+	spawnMobile("tatooine", "jabba_assassin", 200, -100.4, -99.9, -114.2, 162, 4235595)
+	spawnMobile("tatooine", "jabba_enforcer", 200, -98.3, -100, -105.2, -43, 4235595)
 end
 
 function HuttHideoutScreenPlay:initializeLootContainers()
