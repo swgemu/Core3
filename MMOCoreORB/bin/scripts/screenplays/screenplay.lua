@@ -62,6 +62,9 @@ includeFile("dungeon/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
+--Caves
+includeFile("caves/tatooine_hutt_hideout.lua")
+
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
 --includeFile("event/stresstest_20120128.lua")
