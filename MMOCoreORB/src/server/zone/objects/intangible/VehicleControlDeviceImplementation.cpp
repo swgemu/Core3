@@ -148,6 +148,16 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 
 void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	if (controlledObject != NULL) {
+		Locker locker(controlledObject);
+
+		ManagedReference<CreatureObject*> object = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
+
+		if (object != NULL && object->isRidingMount()) {
+			Locker clocker(object, controlledObject);
+
+			object->executeObjectControllerAction(String("dismount").hashCode());
+		}
+
 		controlledObject->destroyObjectFromDatabase(true);
 	}
 
