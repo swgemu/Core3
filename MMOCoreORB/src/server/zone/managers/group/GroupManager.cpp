@@ -123,7 +123,12 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	//Post: player locked
 	uint64 inviterID = player->getGroupInviterID();
 
-	ManagedReference<ZoneServer*> server = player->getZone()->getZoneServer();
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<ZoneServer*> server = zone->getZoneServer();
 	ManagedReference<SceneObject*> object = server->getObject(inviterID);
 
 	if (object == NULL || !object->isPlayerCreature() || object == player)
