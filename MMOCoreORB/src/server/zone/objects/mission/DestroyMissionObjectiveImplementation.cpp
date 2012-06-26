@@ -136,9 +136,15 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	Vector3 pos = findValidSpawnPosition(zone);
 
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
+
+	if (waypoint != NULL) {
+		waypoint = mission->createWaypoint();
+	}
+
 	waypoint->setPosition(pos.getX(), 0, pos.getY());
 	mission->updateMissionLocation();
+
 	//TODO: find correct string id
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
