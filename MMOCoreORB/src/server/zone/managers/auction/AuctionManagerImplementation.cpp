@@ -50,7 +50,7 @@ void AuctionManagerImplementation::initialize() {
 	ManagedReference<SceneObject*> defaultBazaar = NULL;
 
 	while (iterator.getNextKey(objectID)) {
-		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
+		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(zoneServer->getObject(objectID));
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if(auctionItem == NULL) {
@@ -58,7 +58,7 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
-		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(Core::getObjectBroker()->lookUp(auctionItem->getVendorID()));
+		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(zoneServer->getObject(auctionItem->getVendorID()));
 
 		if(vendor == NULL) {
 			if(auctionItem->isOnBazaar()) {
