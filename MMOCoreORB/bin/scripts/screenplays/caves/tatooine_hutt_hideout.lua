@@ -82,9 +82,6 @@ function HuttHideoutScreenPlay:spawnContainerLoot(pContainer)
 	local container = LuaSceneObject(pContainer)
 	local time = getTimestamp()
 	
-	print(time)
-	print(readData(container:getObjectID()))
-	
 	if (readData(container:getObjectID()) > time) then
 		return
 	end
@@ -96,8 +93,6 @@ function HuttHideoutScreenPlay:spawnContainerLoot(pContainer)
 	
 	local lootGroup = self:selectLootGroup()
 	createLoot(pContainer, lootGroup, self.lootLevel)
-	
-	print(time + self.lootContainerRespawn)
 	
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 end
