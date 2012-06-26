@@ -151,7 +151,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 		Locker locker(controlledObject);
 
 		//ManagedReference<CreatureObject*> object = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(object->getSlottedObject("rider"));
+		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(controlledObject->getSlottedObject("rider"));
 
 		if (object != NULL) {
 			Locker clocker(object, controlledObject);
