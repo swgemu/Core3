@@ -506,7 +506,7 @@ protected:
 
 	Reference<AiAwarenessEvent* > awarenessEvent;
 
-	Reference<ReadWriteLock* > despawnMutex;
+	ReadWriteLock despawnMutex;
 
 	Vector<AiInterfaceComponent*> aiInterfaceComponents;
 

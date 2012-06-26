@@ -3333,7 +3333,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 		ManagedReference<SceneObject*> player = session->getPlayer();
 
 		if (player != NULL) {
-			ManagedReference<PlayerObject*> ghost = player->getSlottedObject("ghost");
+			ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
 			if (ghost != NULL && ghost->getAdminLevel() > 0)
 				continue;
