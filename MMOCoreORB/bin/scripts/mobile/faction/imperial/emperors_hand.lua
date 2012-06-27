@@ -50,7 +50,6 @@ emperors_hand = Creature:new {
 	weapons = {"dark_jedi_weapons_gen3"},
 	conversationTemplate = "",
 	attacks = merge(lightsabermaster)
-	}
 }
 
 CreatureTemplates:addCreatureTemplate(emperors_hand, "emperors_hand")

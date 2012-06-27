@@ -64,6 +64,7 @@ includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Caves
 includeFile("caves/tatooine_hutt_hideout.lua")
+includeFile("caves/tatooine_squill_cave.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")

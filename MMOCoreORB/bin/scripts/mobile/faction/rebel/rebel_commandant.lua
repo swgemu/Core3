@@ -28,7 +28,6 @@ rebel_commandant = Creature:new {
 
 	templates = {"object/mobile/dressed_rebel_general_human_female_02.iff"},
 	lootGroups = {
-		lootGroups = {
 		{
 	        groups = {
 				{group = "color_crystals", chance = 300000},
@@ -41,7 +40,7 @@ rebel_commandant = Creature:new {
 				{group = "armor_attachments", chance = 300000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
