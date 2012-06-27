@@ -413,7 +413,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 	}
 
 	for (int i = 0; i < containerObjects.size(); ++i) {
-		ManagedReference<SceneObject* > obj = slottedObjects.get(i);
+		ManagedReference<SceneObject* > obj = containerObjects.get(i);
 
 		if (obj->getParent() != _this.get()) {
 			obj->setParent(_this.get());
