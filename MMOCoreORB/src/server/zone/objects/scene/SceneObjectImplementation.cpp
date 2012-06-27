@@ -398,6 +398,30 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 }
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject* > obj = slottedObjects.get(i);
+
+		if (obj->getParent().get() != _this.get()) {
+			obj->setParent(_this.get());
+			//			obj->setContainmentType(4);
+
+			if (obj->isPlayerCreature())
+				obj->setContainmentType(5);
+			else
+				obj->setContainmentType(4);
+		}
+	}
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		ManagedReference<SceneObject* > obj = slottedObjects.get(i);
+
+		if (obj->getParent() != _this.get()) {
+			obj->setParent(_this.get());
+			obj->setContainmentType(-1);
+			//			obj->setContainmentType(4);
+		}
+	}
+
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		activeAreas.get(i)->notifyExit(_this.get());
 	}
@@ -410,6 +434,8 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		getRootParent()->notifyObjectInsertedToChild(_this.get(), getParent(), NULL);
 
 	}*/
+
+
 
 	//for (int i = 0; i < )
 }
