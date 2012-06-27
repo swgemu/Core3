@@ -32,14 +32,14 @@ aakuan_steward = Creature:new {
 	lootGroups = {
 	    {
 		    groups = {
-				{group = "junk", chance = 3000000},
-				{group = "aakuan_common", chance = 1500000},
-				{group = "armor_attachments", chance = 500000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "pistols", chance = 1000000}				
+				{group = "junk", chance = 7000000},
+				{group = "aakuan_common", chance = 1900000},
+				{group = "armor_attachments", chance = 200000},
+				{group = "rifles", chance = 300000},
+				{group = "carbines", chance = 300000},
+				{group = "pistols", chance = 300000}				
 			},
-		    lootChance = 3500000
+		    lootChance = 2200000
 		}	
 	},
 	weapons = {"melee_weapons"},

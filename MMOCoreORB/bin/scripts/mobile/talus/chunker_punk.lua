@@ -35,13 +35,13 @@ chunker_punk = Creature:new {
 	lootGroups = {
 	    {
 	        groups = {
-				{group = "junk", chance = 3000000},
+				{group = "junk", chance = 7200000},
 				{group = "rifles", chance = 700000},
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000}
 	    	},
-			lootChance = 3200000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

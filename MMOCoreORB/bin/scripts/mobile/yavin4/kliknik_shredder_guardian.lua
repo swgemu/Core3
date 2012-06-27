@@ -30,9 +30,9 @@ kliknik_shredder_guardian = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "kliknik_common", chance = 3300000}
+				{group = "kliknik_common", chance = 10000000}
 			},
-			lootChance = 7000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"creature_spit_small_yellow"},

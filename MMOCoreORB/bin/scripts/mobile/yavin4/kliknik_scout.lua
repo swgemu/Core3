@@ -30,9 +30,9 @@ kliknik_scout = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "kliknik_common", chance = 3300000}
+				{group = "kliknik_common", chance = 10000000}
 			},
-			lootChance = 4300000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"creature_spit_small_yellow"},

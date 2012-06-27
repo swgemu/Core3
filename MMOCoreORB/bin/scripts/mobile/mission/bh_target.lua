@@ -27,8 +27,19 @@ informant_npc = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "carbines", chance = 1000000},
+				{group = "rifles", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000},
+				{group = "clothing_attachments", chance = 1000000}
+			},
+			lootChance = 3000000
+		}	
+	},
+	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "informant_npc",
 	attacks = {
 	}
