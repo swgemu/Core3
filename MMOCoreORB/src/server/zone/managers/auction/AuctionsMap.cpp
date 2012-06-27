@@ -49,7 +49,7 @@ int AuctionsMap::addItem(CreatureObject* player, SceneObject* vendor, String& ui
 		return _implementation->addItem(player, vendor, uid, item);
 }
 
-int AuctionsMap::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMap::removeItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -401,7 +401,7 @@ int AuctionsMapAdapter::addItem(CreatureObject* player, SceneObject* vendor, Str
 	return (static_cast<AuctionsMap*>(stub))->addItem(player, vendor, uid, item);
 }
 
-int AuctionsMapAdapter::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapAdapter::removeItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
 	return (static_cast<AuctionsMap*>(stub))->removeItem(vendor, uid, item);
 }
 

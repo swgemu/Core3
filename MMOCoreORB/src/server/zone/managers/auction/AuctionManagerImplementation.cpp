@@ -50,7 +50,7 @@ void AuctionManagerImplementation::initialize() {
 	ManagedReference<SceneObject*> defaultBazaar = NULL;
 
 	while (iterator.getNextKey(objectID)) {
-		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(zoneServer->getObject(objectID));
+		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if(auctionItem == NULL) {
@@ -60,11 +60,17 @@ void AuctionManagerImplementation::initialize() {
 
 		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(zoneServer->getObject(auctionItem->getVendorID()));
 
-		if(vendor == NULL) {
+		if(vendor == NULL || vendor->getZone() == NULL) {
 			if(auctionItem->isOnBazaar()) {
 				orphanedBazaarItems.add(auctionItem);
 				continue;
 			}
+
+			if(vendor != NULL) {
+				vendor->destroyObjectFromWorld(true);
+				vendor->destroyObjectFromDatabase();
+			}
+
 			ObjectManager::instance()->destroyObjectFromDatabase(auctionItem->_getObjectID());
 			warning("Auction Item's vendor is gone, deleting auction item: " + String::valueOf(auctionItem->_getObjectID()));
 			continue;
@@ -123,8 +129,13 @@ void AuctionManagerImplementation::checkVendorItems() {
 		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 		uint64 objectId = item->getAuctionedItemObjectID();
 
-		if (vendor == NULL)
+		if (vendor == NULL || vendor->getZone() == NULL) {
+
+			auctionMap->removeItem(vendor, item->getVendorUID(), item);
+			ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+
 			continue;
+		}
 
 		String vuid = getVendorUID(vendor);
 
@@ -184,8 +195,13 @@ void AuctionManagerImplementation::checkAuctions() {
 		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 		uint64 objectId = item->getAuctionedItemObjectID();
 
-		if (vendor == NULL)
+		if (vendor == NULL || vendor->getZone() == NULL) {
+
+			auctionMap->removeItem(vendor, item->getVendorUID(), item);
+			ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+
 			continue;
+		}
 
 		String vuid = getVendorUID(vendor);
 

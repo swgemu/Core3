@@ -72,7 +72,7 @@ public:
 
 	int addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
-	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int removeItem(SceneObject* vendor, const String& uid, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 
@@ -139,12 +139,12 @@ private:
 	int addBazaarItem(CreatureObject* player, String& uid, AuctionItem* item);
 
 public:
-	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int removeItem(SceneObject* vendor, const String& uid, AuctionItem* item);
 
 private:
-	int removeVendorItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int removeVendorItem(SceneObject* vendor, const String& uid, AuctionItem* item);
 
-	int removeBazaarItem(String& uid, AuctionItem* item);
+	int removeBazaarItem(const String& uid, AuctionItem* item);
 
 public:
 	AuctionItem* getItem(unsigned long long id);
@@ -212,7 +212,7 @@ public:
 
 	int addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item);
 
-	int removeItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int removeItem(SceneObject* vendor, const String& uid, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 

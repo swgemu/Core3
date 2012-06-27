@@ -84,7 +84,7 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, String& uid
 	return ItemSoldMessage::SUCCESS;
 }
 
-int AuctionsMapImplementation::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
 
 	if(vendor->isBazaarTerminal())
 		return removeBazaarItem(uid, item);
@@ -92,7 +92,7 @@ int AuctionsMapImplementation::removeItem(SceneObject* vendor, String& uid, Auct
 	return removeVendorItem(vendor, uid, item);
 }
 
-int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
 
 	if(!vendorItemsForSale.contains(uid)) {
 		return ItemSoldMessage::VENDORNOTWORKING;
@@ -114,7 +114,7 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, String& uid
 	return ItemSoldMessage::UNKNOWNERROR;
 }
 
-int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeBazaarItem(const String& uid, AuctionItem* item) {
 
 	if(!bazaarItemsForSale.contains(uid)) {
 		return ItemSoldMessage::VENDORNOTWORKING;

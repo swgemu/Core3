@@ -241,7 +241,7 @@ class AuctionItem extends ManagedObject {
 		return offerToID;
 	}
 	
-	public string getVendorUID() {
+	public final string getVendorUID() {
 		return vuid;
 	}
 	

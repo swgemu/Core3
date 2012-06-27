@@ -128,7 +128,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getVendorUID();
+	const String getVendorUID();
 
 	String getOwnerName();
 
@@ -301,7 +301,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getVendorUID();
+	const String getVendorUID();
 
 	String getOwnerName();
 
@@ -428,7 +428,7 @@ public:
 
 	unsigned long long getOfferToID();
 
-	String getVendorUID();
+	const String getVendorUID();
 
 	String getOwnerName();
 

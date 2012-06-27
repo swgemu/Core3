@@ -407,7 +407,7 @@ unsigned long long AuctionItem::getOfferToID() {
 		return _implementation->getOfferToID();
 }
 
-String AuctionItem::getVendorUID() {
+const String AuctionItem::getVendorUID() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1163,7 +1163,7 @@ unsigned long long AuctionItemImplementation::getOfferToID() {
 	return offerToID;
 }
 
-String AuctionItemImplementation::getVendorUID() {
+const String AuctionItemImplementation::getVendorUID() {
 	// server/zone/objects/auction/AuctionItem.idl():  		return vuid;
 	return vuid;
 }
@@ -1582,7 +1582,7 @@ unsigned long long AuctionItemAdapter::getOfferToID() {
 	return (static_cast<AuctionItem*>(stub))->getOfferToID();
 }
 
-String AuctionItemAdapter::getVendorUID() {
+const String AuctionItemAdapter::getVendorUID() {
 	return (static_cast<AuctionItem*>(stub))->getVendorUID();
 }
 
