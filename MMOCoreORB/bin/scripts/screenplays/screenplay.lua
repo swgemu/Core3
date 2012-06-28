@@ -63,7 +63,12 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Caves
+includeFile("caves/corellia_afarathu_cave.lua")
+includeFile("caves/corellia_lord_nyax_cult.lua")
+includeFile("caves/corellia_rebel_hideout.lua")
+includeFile("caves/naboo_narglatch_cave.lua")
 includeFile("caves/tatooine_hutt_hideout.lua")
+includeFile("caves/tatooine_sennex_cave.lua")
 includeFile("caves/tatooine_squill_cave.lua")
 
 --Tests
