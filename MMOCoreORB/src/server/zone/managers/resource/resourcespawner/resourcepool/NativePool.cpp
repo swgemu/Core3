@@ -180,7 +180,10 @@ String NativePool::healthCheck() {
 			if(spawn != NULL) {
 				buffer << "   " << i << ". " << resourceType << " : "
 					   << (pass ? "Pass" : "Fail") << "  " << spawn->getName()
+					   << " Zones: " << String::valueOf(spawn->getSpawnMapSize())
 					   << " (" << spawn->getType() << ")" << endl;
+				if(spawn->getSpawnMapSize() == 0)
+					heathly = false;
 			} else {
 				buffer << "   " << i << ". " << resourceType << " : "
 					   << ("Fail")
