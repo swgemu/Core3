@@ -154,7 +154,7 @@ String FixedPool::healthCheck() {
 
 		if (spawn != NULL) {
 			buffer << "   " << i << ". " << resourceType << " : "
-					<< (pass ? "Pass" : "Fail") << " ("
+					<< (pass ? "Pass" : "Fail") << "  " << spawn->getName() << " ("
 					<< spawn->getType() << ")" << endl;
 		} else {
 			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")

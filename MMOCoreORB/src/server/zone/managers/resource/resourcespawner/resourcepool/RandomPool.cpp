@@ -173,6 +173,7 @@ String RandomPool::healthCheck() {
 		if (spawn != NULL) {
 			buffer << "   " << i << ". " << resourceType << " : "
 					<< (isRightType ? "Pass" : "Fail")
+					<< "  " << spawn->getName()
 					<< " (" << spawn->getType() << ")" << endl;
 		} else {
 			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")

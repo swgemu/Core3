@@ -70,7 +70,18 @@ void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, co
 		return;
 	}
 
-	int index = includedResources.find(poolSlot);
+	int index = -1;
+
+	for(int i = 0; i < includedResources.size(); ++i) {
+		String resourceType = includedResources.elementAt(i).getKey();
+		ManagedReference<ResourceSpawn* > spawn = includedResources.elementAt(i).getValue();
+
+		if(resourceType == poolSlot && spawn == NULL) {
+			index = i;
+			break;
+		}
+	}
+
 	if(index >= 0) {
 		VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(poolSlot, resourceSpawn);
 		includedResources.setElementAt(index, newEntry);
@@ -146,7 +157,7 @@ String MinimumPool::healthCheck() {
 
 		if (spawn != NULL) {
 			buffer << "   " << i << ". " << resourceType << " : "
-					<< (pass ? "Pass" : "Fail") << " ("
+					<< (pass ? "Pass" : "Fail") << "  " << spawn->getName() << " ("
 					<< spawn->getType() << ")" << endl;
 		} else {
 			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")
