@@ -205,6 +205,8 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 }
 
 void FactoryCrateImplementation::split(int newStackSize) {
+	if (getUseCount() <= newStackSize)
+		return;
 
 	TangibleObject* prototype = getPrototype();
 

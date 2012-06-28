@@ -132,6 +132,8 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 }
 
 void ResourceContainerImplementation::split(int newStackSize) {
+	if (getQuantity() <= newStackSize)
+		return;
 
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
 

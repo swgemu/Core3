@@ -66,6 +66,9 @@ public:
 		StringTokenizer tokenizer(arguments.toString());
 		int newStackSize = tokenizer.getIntToken();
 
+		if (newStackSize < 1)
+			return GENERALERROR;
+
 		ManagedReference<FactoryCrate* > factoryCrate = dynamic_cast<FactoryCrate*>(server->getZoneServer()->getObject(target));
 
 		if (factoryCrate == NULL || !creature->isPlayerCreature())
