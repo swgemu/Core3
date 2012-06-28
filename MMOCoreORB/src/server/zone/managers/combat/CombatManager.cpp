@@ -502,11 +502,11 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 			break;
 		}
 
-		for (int i = 1; i <= 3; i++) {
-			if (defenderGhost->hasAbility(mitString + i))
-				continue;
-			else
-				damageMitigation = i - 1;
+		for (int i = 3; i > 0; i--) {
+			if (defenderGhost->hasAbility(mitString + i)) {
+				damageMitigation = i;
+				break;
+			}
 		}
 
 		if (damageMitigation > 0)
