@@ -94,6 +94,7 @@ public:
 	ResourcePool(ResourceSpawner* spawner) : Logger("ResourcePool") {
 		resourceSpawner = spawner;
 		includedResources.setNullValue(NULL);
+		includedResources.setAllowDuplicateInsertPlan();
 		setGlobalLogging(true);
 		setLogging(true);
 	}
