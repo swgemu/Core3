@@ -2437,13 +2437,15 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	uint32 targetFactionStatus = targetGhost->getFactionStatus();
 	uint32 currentFactionStatus = ghost->getFactionStatus();
 
-	if (getFaction() != object->getFaction() && !(currentFactionStatus & FactionStatus::ONLEAVE))
+	System::out << "Current faction status is: " << currentFactionStatus;
+
+	if (getFaction() != object->getFaction() && !(targetFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	if ((targetFactionStatus & FactionStatus::OVERT) && !(currentFactionStatus & FactionStatus::OVERT))
 		return false;
 
-	if ((targetFactionStatus & FactionStatus::COVERT) && (currentFactionStatus & FactionStatus::ONLEAVE))
+	if (!(targetFactionStatus & FactionStatus::ONLEAVE) && (currentFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	return true;
