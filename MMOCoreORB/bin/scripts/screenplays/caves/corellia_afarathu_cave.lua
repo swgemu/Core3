@@ -1,14 +1,14 @@
-ArafathuCaveScreenPlay = ScreenPlay:new {
+AfarathuCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 }
 
-registerScreenPlay("ArafathuCaveScreenPlay", true)
+registerScreenPlay("AfarathuCaveScreenPlay", true)
 
-function ArafathuCaveScreenPlay:start()
+function AfarathuCaveScreenPlay:start()
 	self:spawnMobiles()
 end
 
-function ArafathuCaveScreenPlay:spawnMobiles()
+function AfarathuCaveScreenPlay:spawnMobiles()
 	-- outside cave
 	--spawnCreature("afarathu_ruffian", 300, -2489.6, 2920.0)
 	--spawnCreature("afarathu_ruffian", 300, -2494.0, 2913.6)
