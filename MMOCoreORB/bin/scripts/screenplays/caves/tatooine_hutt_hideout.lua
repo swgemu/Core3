@@ -31,8 +31,10 @@ HuttHideoutScreenPlay = ScreenPlay:new {
 registerScreenPlay("HuttHideoutScreenPlay", true)
 
 function HuttHideoutScreenPlay:start()
-	self:spawnMobiles()
-	self:initializeLootContainers()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function HuttHideoutScreenPlay:spawnMobiles()

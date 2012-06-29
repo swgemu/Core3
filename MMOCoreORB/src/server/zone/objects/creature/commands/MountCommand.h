@@ -94,8 +94,10 @@ public:
 		if (creature->getParent() != NULL)
 			return GENERALERROR;
 
-		if (vehicle->isDestroyed())
+		if (vehicle->isDestroyed()) {
+			creature->sendSystemMessage("@pet/pet_menu:cant_mount_veh_disabled");
 			return GENERALERROR;
+		}
 
 		try {
 			Locker clocker(vehicle, creature);

@@ -370,8 +370,8 @@ unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, Cre
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer zoneServer = super.getZoneServer();
 	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();

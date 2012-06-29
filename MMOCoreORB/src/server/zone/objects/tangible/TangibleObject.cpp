@@ -1695,8 +1695,8 @@ SceneObject* TangibleObjectImplementation::getMainDefender() {
 }
 
 bool TangibleObjectImplementation::isDestroyed() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage > maxCondition;
-	return conditionDamage > maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return conditionDamage >= maxCondition;
+	return conditionDamage >= maxCondition;
 }
 
 void TangibleObjectImplementation::setFaction(unsigned int crc) {

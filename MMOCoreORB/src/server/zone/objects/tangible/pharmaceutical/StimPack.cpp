@@ -301,8 +301,8 @@ unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, Crea
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_injury_treatment");
