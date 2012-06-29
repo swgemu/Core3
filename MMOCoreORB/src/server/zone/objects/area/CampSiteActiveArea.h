@@ -117,6 +117,8 @@ using namespace server::zone::objects::area::events;
 
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 
+#include "system/thread/Mutex.h"
+
 #include "server/zone/templates/TemplateReference.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
@@ -213,6 +215,8 @@ protected:
 	ManagedReference<StructureObject* > camp;
 
 	ManagedReference<Terminal* > terminal;
+
+	Mutex taskMutex;
 
 	Vector<unsigned long long> visitors;
 
