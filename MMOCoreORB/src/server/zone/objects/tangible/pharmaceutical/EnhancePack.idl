@@ -158,7 +158,7 @@ class EnhancePack extends PharmaceuticalObject {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue)
-			power = power - (power * patient.calculateBFRatio());
+			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
 		
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();

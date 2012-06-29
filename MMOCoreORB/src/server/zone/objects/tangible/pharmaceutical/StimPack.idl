@@ -98,7 +98,7 @@ class StimPack extends PharmaceuticalObject {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue) {
-			power = power - power * patient.calculateBFRatio();
+			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
 		}
 
 		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");

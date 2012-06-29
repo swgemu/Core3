@@ -1868,35 +1868,28 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	uint32 battleFatigue = target->getShockWounds();
+	uint32 targetBattleFatigue = target->getShockWounds();
 
-	if (battleFatigue == 0)
-		return;
+	uint32 playerBattleFatigue = player->getShockWounds();
 
 	String targetName = target->getFirstName();
 
-	StringBuffer msgPlayer, msgTarget;
-
-	if (battleFatigue < 250) {
-		return;
-	} else if (battleFatigue < 500) {
-		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 750) {
-		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 1000) {
-		msgPlayer << targetName << "'s battle fatigue is greatly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-	} else {
-		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+	if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
+		target->sendSystemMessage("@healing:shock_effect_low_target");
+	} else if (targetBattleFatigue < 750) {
+		target->sendSystemMessage("@healing:shock_effect_medium_target");
+	} else if (targetBattleFatigue >= 750) {
+		target->sendSystemMessage("@healing:shock_effec_high_target");
 	}
 
-	target->sendSystemMessage(msgTarget.toString());
+	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
+		player->sendSystemMessage("@healing:shock_effect_low");
+	} else if (playerBattleFatigue < 750) {
+		player->sendSystemMessage("@healing:shock_effect_medium");
+	} else if (playerBattleFatigue >= 750) {
+		player->sendSystemMessage("@healing:shock_effect_high");
+	}
 
-	if (player != target)
-		player->sendSystemMessage(msgPlayer.toString());
 }
 
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
