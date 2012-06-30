@@ -1,4 +1,4 @@
-Mauler_veermok = Creature:new {
+mauler_veermok = Creature:new {
 	objectName = "@mob/creature_names:mauler_veermok",
 	socialGroup = "mauler",
 	pvpFaction = "",
@@ -36,4 +36,4 @@ Mauler_veermok = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(Mauler_veermok, "Mauler_veermok")
+CreatureTemplates:addCreatureTemplate(mauler_veermok, "mauler_veermok")

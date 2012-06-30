@@ -122,6 +122,7 @@ includeFile("caves/dantooine_force_crystal_hunter_cave.lua")
 includeFile("poi/tatooine_fort_tusken.lua")
 includeFile("poi/corellia_rogue_corsec_base.lua")
 includeFile("poi/dantooine_dantari_village.lua")
+includeFile("poi/naboo_mauler_stronghold.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
