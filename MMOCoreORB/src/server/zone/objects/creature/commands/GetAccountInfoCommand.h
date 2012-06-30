@@ -204,7 +204,7 @@ public:
 			if(entry->getGalaxyID() == server->getZoneServer()->getGalaxyID()) {
 				targetCreature = playerManager->getPlayer(entry->getFirstName());
 
-				if(targetCreature != NULL || targetCreature->isPlayerCreature()) {
+				if(targetCreature != NULL && targetCreature->isPlayerCreature()) {
 					ghost = targetCreature->getPlayerObject();
 					charClient = targetCreature->getClient();
 				}
