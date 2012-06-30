@@ -116,16 +116,17 @@ end
 function HuttHideoutScreenPlay:initializeLootContainers()
 	for k,v in pairs(self.lootContainers) do
 		local pContainer = getSceneObject(v)
-		createObserver(OPENCONTAINER, "HuttHideoutScreenPlay", "spawnContainerLoot", pContainer)
-		self:spawnContainerLoot(pContainer)
+		if (pContainer ~= nil) then
+			createObserver(OPENCONTAINER, "HuttHideoutScreenPlay", "spawnContainerLoot", pContainer)
+			self:spawnContainerLoot(pContainer)
+			
+			local container = LuaSceneObject(pContainer)
+			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
+		end
 	end
 end
 
 function HuttHideoutScreenPlay:spawnContainerLoot(pContainer)
-	if (pContainer == nil) then
-		return
-	end
-	
 	local container = LuaSceneObject(pContainer)
 	local time = getTimestamp()
 	
