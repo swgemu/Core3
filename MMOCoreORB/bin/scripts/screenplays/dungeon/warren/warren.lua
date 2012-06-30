@@ -412,7 +412,7 @@ function WarrenScreenPlay:recycleMirlaPassword()
 	local code = self:generatePasscode(5)
 	writeData("warren:mirla:password", code)
 	
-	createEvent(self.recyleMirla, "WarrenScreenPlay", "recycleMirlaPassword", nil)
+	createEvent(self.recycleMirla, "WarrenScreenPlay", "recycleMirlaPassword", nil)
 end
 
 function WarrenScreenPlay:generatePasscode(length)
