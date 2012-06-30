@@ -36,9 +36,48 @@ function Object:new (o)
 end
 
 ScreenPlay = Object:new {
+	screenplayName = "",
 	numerOfActs = 0,
-	startingEvent = nil
+	startingEvent = nil,
+	
+	lootContainers = {},
+	lootLevel = 0,
+	lootGroups = {},
+	lootContainerRespawn = 1800 -- 30 minutes
 }
+
+function ScreenPlay:initializeLootContainers()
+	for k,v in pairs(self.lootContainers) do
+		local pContainer = getSceneObject(v)
+		if (pContainer ~= nil) then
+			createObserver(OPENCONTAINER, self.screenplayName, "spawnContainerLoot", pContainer)
+			self:spawnContainerLoot(pContainer)
+			
+			local container = LuaSceneObject(pContainer)
+			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
+		end
+	end
+end
+
+function ScreenPlay:spawnContainerLoot(pContainer)
+	local container = LuaSceneObject(pContainer)
+	local time = getTimestamp()
+	
+	if (readData(container:getObjectID()) > time) then
+		return
+	end
+	
+	--If it has loot already, then exit.
+	if (container:getContainerObjectsSize() > 0) then
+		return
+	end
+
+	createLootFromCollection(pContainer, self.lootGroups, self.lootLevel)
+	
+	writeData(container:getObjectID(), time + self.lootContainerRespawn)
+end
+
+
 
 Act = Object:new {
 		

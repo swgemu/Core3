@@ -1,6 +1,8 @@
 HuttHideoutScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	
+	screenplayName = "HuttHideoutScreenPlay",
+	
 	lootContainers = {
 		134411,
 		8496263,
@@ -14,12 +16,12 @@ HuttHideoutScreenPlay = ScreenPlay:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 160000},
+				{group = "color_crystals", chance = 200000},
 				{group = "junk", chance = 8600000},
 				{group = "rifles", chance = 500000},
 				{group = "pistols", chance = 500000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000}
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
 			},
 			lootChance = 8000000
 		}					
@@ -111,35 +113,4 @@ function HuttHideoutScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "jabba_enforcer", 200, -86.4, -100.5, -103.6, 123, 4235595)
 	spawnMobile("tatooine", "jabba_assassin", 200, -100.4, -99.9, -114.2, 162, 4235595)
 	spawnMobile("tatooine", "jabba_enforcer", 200, -98.3, -100, -105.2, -43, 4235595)
-end
-
-function HuttHideoutScreenPlay:initializeLootContainers()
-	for k,v in pairs(self.lootContainers) do
-		local pContainer = getSceneObject(v)
-		if (pContainer ~= nil) then
-			createObserver(OPENCONTAINER, "HuttHideoutScreenPlay", "spawnContainerLoot", pContainer)
-			self:spawnContainerLoot(pContainer)
-			
-			local container = LuaSceneObject(pContainer)
-			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
-		end
-	end
-end
-
-function HuttHideoutScreenPlay:spawnContainerLoot(pContainer)
-	local container = LuaSceneObject(pContainer)
-	local time = getTimestamp()
-	
-	if (readData(container:getObjectID()) > time) then
-		return
-	end
-	
-	--If it has loot already, then exit.
-	if (container:getContainerObjectsSize() > 0) then
-		return
-	end
-
-	createLootFromCollection(pContainer, self.lootGroups, self.lootLevel)
-	
-	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 end

@@ -1,11 +1,42 @@
 AfarathuCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+	
+	screenplayName = "AfarathuCaveScreenPlay",
+	
+	lootContainers = {
+		8075612,
+		8075613,
+		8075614,
+		8075615,
+		8075616
+	},
+	
+	lootLevel = 26,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 8600000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("AfarathuCaveScreenPlay", true)
 
 function AfarathuCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("corellia")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function AfarathuCaveScreenPlay:spawnMobiles()
