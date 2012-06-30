@@ -87,6 +87,8 @@ class CityRegion extends ManagedObject implements Logger {
 	protected boolean hasShuttle;
 	
 	protected unsigned long shuttleID;
+	
+	protected transient boolean loaded;
 		
 	@dereferenced
 	protected Time nextUpdateTime;
@@ -176,7 +178,10 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public void removeCitizen(unsigned long citizenID) {
 		citizenList.drop(citizenID);
-		militiaMembers.drop(citizenID);
+		
+		if (isLoaded()) {
+			militiaMembers.drop(citizenID);
+		}
 	}
 	
 	public void addBannedPlayer(unsigned long playerid) {
@@ -524,4 +529,12 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public native void resetVotingPeriod();
+	
+	public boolean isLoaded() {
+		return loaded;
+	}
+	
+	public void setLoaded(boolean load) {
+		loaded = load;
+	}
 }

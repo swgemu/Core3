@@ -27,6 +27,8 @@
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
+
+	loaded = false;
 }
 
 void CityRegionImplementation::notifyLoadFromDatabase() {
@@ -77,6 +79,8 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		if (shuttle != NULL)
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
 	}
+
+	loaded = true;
 }
 
 void CityRegionImplementation::initialize() {
