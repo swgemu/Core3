@@ -488,14 +488,14 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 }
 
 void CreatureObjectImplementation::setLevel(int level) {
-	TangibleObjectImplementation::setLevel(level);
-
-	if (this->level == level)
+	if (this->level == level && level >= 0)
 		return;
 
-	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
-			_this.get());
-	msg->updateLevel(level);
+	TangibleObjectImplementation::setLevel(level);
+
+	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this.get());
+
+	msg->updateLevel(this->level);
 	msg->close();
 
 	broadcastMessage(msg, true);

@@ -1105,8 +1105,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
-	int level = destructedObject->getLevel();
-
 	//info("level: " + String::valueOf(level), true);
 
 	VectorMap<GroupObject*, int> groups;
@@ -1130,9 +1128,17 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			String xpType = entry->elementAt(j).getKey();
 
-			int xpAmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+			int xpAmount =  40.f * destructedObject->getLevel(); // TODO: need better formula for tano exp
+
+			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
+			if (ai != NULL)
+				xpAmount = ai->getBaseXp();
+
+			xpAmount *= (int) (float((float(damage) / float(totalDamage))));
 
 			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
+
+			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300);
 
 			playerWeaponXp += xpAmount;
 
@@ -2738,8 +2744,9 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 
 	int level = player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100;
 
-	if (level < 3)
-		level = 3;
+	// don't think we need this
+	/*if (level < 3)
+		level = 3;*/
 
 	return level;
 }
