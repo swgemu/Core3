@@ -3337,7 +3337,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 
 			if (ghost != NULL && ghost->getAdminLevel() > 0)
 				continue;
-			else
+			else if (player->getClient() == session)
 				++onlineCount;
 		}
 	}
