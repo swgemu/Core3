@@ -72,6 +72,17 @@ includeFile("caves/naboo_narglatch_cave.lua")
 includeFile("caves/tatooine_hutt_hideout.lua")
 includeFile("caves/tatooine_sennex_cave.lua")
 includeFile("caves/tatooine_squill_cave.lua")
+includeFile("caves/tatooine_tusken_bunker.lua")
+includeFile("caves/corellia_drall_cave.lua")
+includeFile("caves/naboo_weapons_facility.lua")
+includeFile("caves/dantooine_kunga_stronghold.lua")
+includeFile("caves/dantooine_janta_cave.lua")
+includeFile("caves/dantooine_force_crystal_hunter_cave.lua")
+
+--POIs
+includeFile("poi/tatooine_fort_tusken.lua")
+includeFile("poi/corellia_rogue_corsec_base.lua")
+includeFile("poi/dantooine_dantari_village.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
