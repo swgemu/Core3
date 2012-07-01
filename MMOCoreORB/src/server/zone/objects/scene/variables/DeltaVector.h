@@ -22,6 +22,8 @@ protected:
 	Vector<E> vector;
 	uint32 updateCounter;
 
+	ReadWriteLock mutex;
+
 public:
 	DeltaVector() : Serializable() {
 		updateCounter = 1;
@@ -58,6 +60,8 @@ public:
 	}
 
 	virtual E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
+		Locker locker(&mutex);
+
 		E object = vector.set(idx, newValue);
 
 		if (message != NULL) {
@@ -75,6 +79,8 @@ public:
 	}
 
 	virtual bool add(const E& element, DeltaMessage* message = NULL, int updates = 1) {
+		Locker locker(&mutex);
+
 		bool val = vector.add(element);
 
 		if (message != NULL) {
@@ -96,6 +102,8 @@ public:
 	}
 
 	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {
+		Locker locker(&mutex);
+
 		E object = vector.remove(index);
 
 		if (message != NULL) {
@@ -110,6 +118,8 @@ public:
 	}
 
 	void removeAll(DeltaMessage* message = NULL) {
+		Locker locker(&mutex);
+
 		vector.removeAll();
 
 		if (message != NULL) {
@@ -119,6 +129,8 @@ public:
 	}
 
 	virtual void insertToMessage(BaseMessage* msg) {
+		ReadLocker locker(&mutex);
+
 		msg->insertInt(size());
 		msg->insertInt(updateCounter);
 
