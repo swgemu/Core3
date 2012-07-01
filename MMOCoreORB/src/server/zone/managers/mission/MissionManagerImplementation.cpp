@@ -8,6 +8,7 @@
 #include "MissionManager.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
@@ -540,7 +541,15 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	int difficulty = server->getPlayerManager()->calculatePlayerLevel(player);
+	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
+	int difficulty = 2 * playerLevel + 7;
+	if (player->isGrouped())
+		difficulty += player->getGroup()->getGroupLevel();
+	else
+		difficulty += playerLevel;
+
+	difficulty += System::random(6) - 3;
+
 	String building = lairTemplateObject->getBuilding(difficulty);
 
 	if (building.isEmpty()) {
@@ -633,9 +642,9 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	String messageDifficulty;
 
-	if (difficulty <= 10)
+	if (difficulty <= 20)
 		messageDifficulty = "_easy";
-	else if (difficulty <= 17)
+	else if (difficulty <= 40)
 		messageDifficulty = "_medium";
 	else
 		messageDifficulty = "_hard";
@@ -801,7 +810,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		mission->setTargetObjectId(0);
 
-		mission->setMissionDifficulty(creoTemplate->getLevel());
+		mission->setMissionDifficulty(3 * creoTemplate->getLevel() + 7);
 		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {

@@ -44,13 +44,13 @@ public:
 	String getBuilding(int level) {
 		Vector<String>* objects = NULL;
 
-		if (level <= 50) {
+		if (level <= 20) {
 			objects = buildings.get((uint32)VERYEASY);
-		} else if (level <= 100) {
+		} else if (level <= 40) {
 			objects = buildings.get((uint32)EASY);
-		} else if (level <= 200) {
+		} else if (level <= 60) {
 			objects = buildings.get((uint32)MEDIUM);
-		} else if (level <= 300) {
+		} else if (level <= 80) {
 			objects = buildings.get((uint32)HARD);
 		} else {
 			objects = buildings.get((uint32)VERYHARD);

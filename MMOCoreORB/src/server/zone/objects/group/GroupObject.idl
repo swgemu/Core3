@@ -99,9 +99,9 @@ class GroupObject extends SceneObject {
 	public native float getGroupHarvestModifier(CreatureObject player);
 
 	/*public native void addSquadLeaderBonuses(CreatureObject groupMember);
-	public native void removeSquadLeaderBonuses(CreatureObject groupMember);
+	public native void removeSquadLeaderBonuses(CreatureObject groupMember);*/
 
-	public native void calcGroupLevel();*/
+	public native void calcGroupLevel();
 
 	public int getGroupLevel() {
 		return groupLevel;

@@ -92,6 +92,8 @@ void GroupObjectImplementation::addMember(SceneObject* player) {
 		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( player);
 		addGroupModifiers(playerCreature);
 	}
+
+	calcGroupLevel();
 }
 
 void GroupObjectImplementation::removeMember(SceneObject* player) {
@@ -114,6 +116,8 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( player);
 		removeGroupModifiers(playerCreature);
 	}
+
+	calcGroupLevel();
 }
 
 bool GroupObjectImplementation::hasMember(SceneObject* player) {
@@ -354,6 +358,31 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 		}
 	}
 	return modifier;
+}
+
+void GroupObjectImplementation::calcGroupLevel() {
+        groupLevel = 0;
+
+        for (int i = 0; i < getGroupSize(); i++) {
+                SceneObject* member = getGroupMember(i);
+
+                if (member->isCreatureObject()) {
+                        CreatureObject* creature = (CreatureObject*) member;
+
+                        int currentlevel = groupLevel - getGroupSize();
+                        int memberlevel = creature->getLevel();
+
+                        if (memberlevel > currentlevel)
+                                groupLevel = memberlevel + getGroupSize();
+                }
+        }
+
+    	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.get());
+
+    	msg->updateLevel(this->groupLevel);
+    	msg->close();
+
+    	broadcastMessage(msg);
 }
 
 void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) {
