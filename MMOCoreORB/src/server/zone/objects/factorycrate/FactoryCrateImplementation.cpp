@@ -132,6 +132,13 @@ String FactoryCrateImplementation::getSerialNumber() {
 
 bool FactoryCrateImplementation::extractObjectToParent() {
 
+	Locker locker(_this.get());
+
+	if(getUseCount() < 1) {
+		this->setUseCount(0, true);
+		return false;
+	}
+
 	TangibleObject* prototype = getPrototype();
 
 	if (prototype == NULL || !prototype->isTangibleObject() || parent == NULL) {
@@ -175,6 +182,11 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 }
 
 TangibleObject* FactoryCrateImplementation::extractObject(int count) {
+
+	Locker locker(_this.get());
+
+	if(count > getUseCount())
+		return NULL;
 
 	TangibleObject* prototype = getPrototype();
 
