@@ -31,8 +31,10 @@ SennexCaveScreenPlay = ScreenPlay:new {
 registerScreenPlay("SennexCaveScreenPlay", true)
 
 function SennexCaveScreenPlay:start()
-	self:spawnMobiles()
-	self:initializeLootContainers()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function SennexCaveScreenPlay:spawnMobiles()
