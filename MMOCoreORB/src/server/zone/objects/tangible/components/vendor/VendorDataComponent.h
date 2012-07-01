@@ -43,6 +43,8 @@ protected:
 	bool adBarking;
 
 	Time emptyTimer;
+	Time inactiveTimer;
+
 	bool empty;
 
 	bool mail1Sent;
@@ -54,9 +56,11 @@ public:
 	// 60 Minutes
 	static const int VENDORCHECKINTERVAL = 60;
 
-	static const int FIRSTWARNING = 60 * 60 * 24 * 15; // 15 days
-	static const int SECONDWARNING = 60 * 60 * 24 * 30; // 30 days
-	static const int DELETEWARNING = 60 * 60 * 24 * 45; // 45 days
+	static const int FIRSTWARNING = 60 * 60 * 24 * 25; // 5 days
+	static const int SECONDWARNING = 60 * 60 * 24 * 50; // 10 days
+	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
+
+	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
 
 public:
 	VendorDataComponent();

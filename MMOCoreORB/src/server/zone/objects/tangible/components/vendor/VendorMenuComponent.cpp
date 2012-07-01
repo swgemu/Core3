@@ -125,6 +125,7 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		player->sendSystemMessage("@player_structure:vendor_initialized");
 		vendorData->setInitialized(true);
+		vendorData->setEmpty(true);
 		vendorData->runVendorUpdate();
 		return 0;
 	}

@@ -105,12 +105,17 @@ void VendorDataComponent::runVendorUpdate() {
 	if(owner->hasSkill("crafting_merchant_master"))
 		skillReduction = .60f;
 
-	/// Vendor salaries
-	maintAmount -= ((15.f * skillReduction) * hoursSinceLastUpdate);
+	float regMaint = 0;
 
 	/// 6 credits per hour to be registered
 	if(registered)
-		maintAmount -= (6 * hoursSinceLastUpdate);
+		regMaint -= (6 * hoursSinceLastUpdate);
+
+	if(maintAmount > 0)
+		inactiveTimer.updateToCurrentTime();
+
+	/// Vendor salaries
+	maintAmount -= ((15.f * skillReduction) * hoursSinceLastUpdate) - regMaint;
 
 	if(maintAmount < 0)
 		vendor->setConditionDamage(-maintAmount, true);
@@ -121,7 +126,6 @@ void VendorDataComponent::runVendorUpdate() {
 
 		String sender = vendor->getDisplayedName();
 		UnicodeString subject("@auction:vendor_status_subject");
-
 
 		if(!mail1Sent && time(0) - emptyTimer.getTime() > FIRSTWARNING) {
 			StringIdChatParameter body("@auction:vendor_status_unaccessed");
@@ -137,7 +141,24 @@ void VendorDataComponent::runVendorUpdate() {
 			mail2Sent = true;
 		}
 
-		if(time(0) - emptyTimer.getTime() > DELETEWARNING || vendor->getConditionDamage() >= vendor->getMaxCondition()) {
+		if(time(0) - emptyTimer.getTime() > EMPTYDELETE) {
+			StringIdChatParameter body("@auction:vendor_status_deleted");
+			cman->sendMail(sender, subject, body, owner->getFirstName());
+			VendorManager::instance()->destroyVendor(vendor);
+			vendorCheckTask->cancel();
+			return;
+		}
+	}
+
+	if(maintAmount <= 0) {
+
+		if(time(0) - inactiveTimer.getTime() > DELETEWARNING) {
+
+			ChatManager* cman = vendor->getZoneServer()->getChatManager();
+
+			String sender = vendor->getDisplayedName();
+			UnicodeString subject("@auction:vendor_status_subject");
+
 			StringIdChatParameter body("@auction:vendor_status_deleted");
 			cman->sendMail(sender, subject, body, owner->getFirstName());
 			VendorManager::instance()->destroyVendor(vendor);
@@ -205,6 +226,7 @@ void VendorDataComponent::handlePayMaintanence(int value) {
 		StringIdChatParameter message("@player_structure:vendor_maint_accepted");
 		message.setDI(maintAmount);
 		owner->sendSystemMessage(message);
+
 	} else {
 		owner->sendSystemMessage("@player_structure:vendor_maint_denied");
 	}
