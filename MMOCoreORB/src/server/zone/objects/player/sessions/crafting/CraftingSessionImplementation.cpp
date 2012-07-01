@@ -472,6 +472,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
+	Locker locker2(tano);
+
 	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 	ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;
 
@@ -555,6 +557,7 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 	}
 
 	Locker locker(_this.get());
+	Locker locker2(tano);
 
 	int result = manufactureSchematic->removeIngredientFromSlot(crafter, tano, slotUpdated);
 
