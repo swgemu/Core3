@@ -117,6 +117,7 @@ includeFile("caves/naboo_weapons_facility.lua")
 includeFile("caves/dantooine_kunga_stronghold.lua")
 includeFile("caves/dantooine_janta_cave.lua")
 includeFile("caves/dantooine_force_crystal_hunter_cave.lua")
+includeFile("caves/lok_droid_engineer_cave.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")
