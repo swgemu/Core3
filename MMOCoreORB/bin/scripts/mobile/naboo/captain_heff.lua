@@ -29,7 +29,7 @@ captain_heff = Creature:new {
 	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "captain_heff_convtemplate",
+	conversationTemplate = "CaptainHeffConversationTemplate",
 	attacks = {
 	}
 }

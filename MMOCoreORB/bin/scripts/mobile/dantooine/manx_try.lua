@@ -29,7 +29,7 @@ manx_try = Creature:new {
 	templates = {"object/mobile/warren_research_scientist.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "manx_try_convtemplate",
+	conversationTemplate = "ManxTryConversationTemplate",
 	attacks = {
 	}
 }

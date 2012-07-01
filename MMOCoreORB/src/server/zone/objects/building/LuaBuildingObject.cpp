@@ -22,6 +22,7 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "grantPermission", &LuaBuildingObject::grantPermission },
+		{ "broadcastSpecificCellPermissions", &LuaBuildingObject::broadcastSpecificCellPermissions },
 		{ 0, 0 }
 };
 
@@ -60,4 +61,12 @@ int LuaBuildingObject::grantPermission(lua_State* L) {
 	lua_pushnumber(L, i);
 
 	return 1;
+}
+
+int LuaBuildingObject::broadcastSpecificCellPermissions(lua_State* L) {
+	uint64 cellid = lua_tointeger(L, -1);
+
+	realObject->broadcastCellPermissions(cellid);
+
+	return 0;
 }

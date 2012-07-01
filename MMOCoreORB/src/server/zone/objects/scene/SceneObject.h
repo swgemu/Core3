@@ -702,7 +702,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 
@@ -1343,7 +1347,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 
@@ -1856,7 +1864,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 

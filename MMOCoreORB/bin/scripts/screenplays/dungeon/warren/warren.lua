@@ -1,37 +1,8 @@
---object/tangible/mission/quest_item/shared_warren_device_encryption_key.iff
---object/tangible/mission/quest_item/shared_warren_inquisitor_letter.iff
-
---object/intangible/data_item/shared_warren_encryption_key.iff
---object/intangible/data_item/shared_warren_evidence_01.iff
---object/intangible/data_item/shared_warren_evidence_02.iff
---object/intangible/data_item/shared_warren_evidence_03.iff
---object/intangible/data_item/shared_warren_evidence_04.iff
-
---object/mobile/shared_dressed_warren_cyborg_style_01.iff
---object/mobile/shared_dressed_warren_doctor_style_01.iff
---object/mobile/shared_warren_agro_droid_boss.iff
---object/mobile/shared_warren_agro_droid_s01.iff
---object/mobile/shared_warren_agro_droid_s02.iff
---object/mobile/shared_warren_agro_droid_s03.iff
---object/mobile/shared_warren_agro_droid_s04.iff
---object/mobile/shared_warren_bors_teraud.iff
---object/mobile/shared_warren_crazed_imperial.iff
---object/mobile/shared_warren_cyborg_huurton.iff
---object/mobile/shared_warren_cyborg_tuskcat.iff
---object/mobile/shared_warren_cyborg_worker.iff
---object/mobile/shared_warren_dim_u_loyalist.iff
---object/mobile/shared_warren_droideka_loyalist.iff
---object/mobile/shared_warren_dying_loyalist.iff
---object/mobile/shared_warren_insane_comp_sci.iff
---object/mobile/shared_warren_irradiated_worker_s01.iff
---object/mobile/shared_warren_irradiated_worker_s02.iff
---object/mobile/shared_warren_irradiated_worker_s03.iff
---object/mobile/shared_warren_janna_bel_arde.iff
---object/mobile/shared_warren_jerrd_sonclim.iff
---object/mobile/shared_warren_loyalist_commander.iff
---object/mobile/shared_warren_phy_hudgen.iff
---object/mobile/shared_warren_technician.iff
---object/mobile/shared_warren_teraud_loyalist_scientist.iff
+--Additional Includes
+includeFile("dungeon/warren/mirla_convo_handler.lua")
+includeFile("dungeon/warren/oevitt_piboi_convo_handler.lua")
+includeFile("dungeon/warren/manx_try_convo_handler.lua")
+includeFile("dungeon/warren/captain_heff_convo_handler.lua")
 
 ALPHABET = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 
@@ -42,46 +13,57 @@ WarrenScreenPlay = ScreenPlay:new {
 		mirla = {started = 1, done = 2}
 	},
 	
-	elevatorRelock = 120000, 
+	elevatorRelock = 3600000, 
 	
 	lockedCells = {
 		8575672
 	},
 	
-	recycleMirla = 120000,
+	recycleMirla = 3600000,
+	
+	recycleReactor = 3600000,
 	
 	frontDoor = {x = -552, z = 1, y = -3820},
 	
-	turret = {template = "object/installation/turret/turret_block_med.iff", x = 25.156, z = -20, y = -71.22, cell = 8575695, respawn = 120000},
+	turret = {template = "object/installation/turret/turret_block_med.iff", x = 25.156, z = -20, y = -71.22, cell = 8575695, respawn = 1200000},
 	
-	debris = {x = -54.5, z = -68, y = 0.7, cell = 8575723, respawn = 120000},
+	debris = {x = -54.5, z = -68, y = 0.7, cell = 8575723, respawn = 600000},
 	
 	terminals = {
 		terminal_8575768 = {oid = 8575768, message = "@theme_park/warren/warren_system_messages:welcome_terminal", method="notifyTerminalMessage"},
 		terminal_8575769 = {oid = 8575769, message = "@theme_park/warren/warren_system_messages:comm_terminal", method="notifyTerminalMessage"},
 		terminal_8575770 = {oid = 8575770, message = "@theme_park/warren/warren_system_messages:diary_terminal", method="notifyTerminalMessage"},
-		terminal_8575773 = {oid = 8575773, message = "@theme_park/warren/warren_system_messages:turret_pass_active", method="notifyTurretMessage"}
+		terminal_8575773 = {oid = 8575773, message = "@theme_park/warren/warren_system_messages:turret_pass_active", method="notifyTurretMessage"},
+		terminal_8465579 = {oid = 8465579, message = "@theme_park/warren/warren_system_messages:cell_locked", method="notifyTerminalMessage"}
+	},
+	
+	evidence = {
+		evidence_8465570 = {oid = 8465570, item = "object/intangible/data_item/warren_evidence_01.iff", radialText = "@theme_park/warren/warren_system_messages:get_evidence"},
+		evidence_8465585 = {oid = 8465585, item = "object/intangible/data_item/warren_evidence_02.iff", radialText = "@theme_park/warren/warren_system_messages:get_evidence"},
+		evidence_8465590 = {oid = 8465590, item = "object/intangible/data_item/warren_evidence_03.iff", radialText = "@theme_park/warren/warren_system_messages:get_evidence"},
+		evidence_8465591 = {oid = 8465591, item = "object/intangible/data_item/warren_evidence_04.iff", radialText = "@theme_park/warren/warren_system_messages:get_evidence"},
+		evidence_8465584 = {oid = 8465584, item = "object/intangible/data_item/warren_encryption_key.iff", radialText = "@theme_park/warren/warren_system_messages:mnu_download"}
 	},
 	
 	--Key is the container oid, value is a list of items to spawn in it.
 	questItems = {
-		container_8465549 = {oid=8465549, items={"object/tangible/mission/quest_item/warren_farewell_letter.iff"}, respawn=12000},
-		container_8465550 = {oid=8465550, items={"object/tangible/mission/quest_item/warren_controlroom_passkey1.iff"}, respawn=12000},
-		container_8555708 = {oid=8555708, items={"object/tangible/mission/quest_item/warren_controlroom_passkey2.iff"}, respawn=12000},
-		container_8555709 = {oid=8555709, items={"object/tangible/mission/quest_item/warren_controlroom_passkey3.iff"}, respawn=12000},
-		container_8555710 = {oid=8555710, items={"object/tangible/mission/quest_item/warren_controlroom_passkey4.iff"}, respawn=12000},
-		container_8465551 = {oid=8465551, items={"object/tangible/mission/quest_item/warren_turret_sequence.iff"}, respawn=12000},
-		container_8465598 = {oid=8465598, items={"object/tangible/mission/quest_item/warren_core_control_rod_s01.iff"}, respawn=12000},
-		container_8465597 = {oid=8465597, items={"object/tangible/mission/quest_item/warren_core_control_rod_s02.iff"}, respawn=12000},
-		container_8465580 = {oid=8465580, items={"object/tangible/mission/quest_item/warren_inquisitor_letter.iff"}, respawn=12000}
+		container_8465549 = {oid=8465549, items={"object/tangible/mission/quest_item/warren_farewell_letter.iff"}, respawn=1800000},
+		container_8465550 = {oid=8465550, items={"object/tangible/mission/quest_item/warren_controlroom_passkey1.iff"}, respawn=1800000},
+		container_8555708 = {oid=8555708, items={"object/tangible/mission/quest_item/warren_controlroom_passkey2.iff"}, respawn=1800000},
+		container_8555709 = {oid=8555709, items={"object/tangible/mission/quest_item/warren_controlroom_passkey3.iff"}, respawn=1800000},
+		container_8555710 = {oid=8555710, items={"object/tangible/mission/quest_item/warren_controlroom_passkey4.iff"}, respawn=1800000},
+		container_8465551 = {oid=8465551, items={"object/tangible/mission/quest_item/warren_turret_sequence.iff"}, respawn=1800000},
+		container_8465598 = {oid=8465598, items={"object/tangible/mission/quest_item/warren_core_control_rod_s01.iff"}, respawn=1800000},
+		container_8465597 = {oid=8465597, items={"object/tangible/mission/quest_item/warren_core_control_rod_s02.iff"}, respawn=1800000},
+		container_8465580 = {oid=8465580, items={"object/tangible/mission/quest_item/warren_inquisitor_letter.iff"}, respawn=1800000}
 	},
 	
 	buildingID = 8575671,
 	
+	reactorCore = 6425464,
+	
 	entranceKey = "object/tangible/mission/quest_item/warren_passkey_s01.iff"
 }
-
---string/en/theme_park/warren/warren_system_messages.stf	22	turret_pass_deactivated	Turret Defense System has been DEACTIVED.
 
 registerScreenPlay("WarrenScreenPlay", true)
 
@@ -118,6 +100,7 @@ function WarrenScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "mirla", 1, -59.5, -76, -35.3, 26, 8575725)
 	spawnMobile("dantooine", "manx_try", 1, 27, -54, -118.8, -62, 8575714)
 	spawnMobile("dantooine", "dirk_maggin", 1, -56.1, -28, -89.4, -140, 8575700)
+	spawnMobile("naboo", "captain_heff", 1, 7.6, 12, 84.2, -180, 1688852)
 	
 	--First Room
 	spawnMobile("dantooine", "hostile_huurton", 180, -7.8, -20, -9.9, 53, 8575677)
@@ -256,6 +239,10 @@ function WarrenScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "teraud_loyalist_cyborg", 180, 14.1, -52, -58.6, 0, 8575740)
 	spawnMobile("dantooine", "teraud_loyalist_cyborg", 180, 15.7, -52, -55.5, -51, 8575740)
 	
+	--Irradiated Workers
+	spawnMobile("dantooine", "warren_irradiated_worker", 180, 56.6, -54, -121.6, -13, 8575715)
+	spawnMobile("dantooine", "warren_irradiated_worker", 180, 64, -54, -128.7, 140, 8575715)
+	
 	--Bors Teraud
 	spawnMobile("dantooine", "bors_teraud", 180, 119.5, -52, 41.7, -171, 8575758)
 end
@@ -307,11 +294,9 @@ function WarrenScreenPlay:setupTerminals()
 		local terminal = LuaSceneObject(pTerminal)
 		terminal:setObjectMenuComponent("MCRElevatorMenuComponent")
 	end
-end
-
-function WarrenScreenPlay:initializeDungeon()
-	--Register spatial chat observer on turret terminal
-	local pTerminal = getSceneObject(8575773)
+	
+	--Register spatial chat observer on terminals
+	pTerminal = getSceneObject(8575773)
 	
 	if (pTerminal ~= nil) then
 		createObserver(SPATIALCHATRECEIVED, "WarrenScreenPlay", "notifyTurretTerminalChatReceived", pTerminal)
@@ -322,12 +307,67 @@ function WarrenScreenPlay:initializeDungeon()
 	if (pTerminal ~= nil) then
 		createObserver(SPATIALCHATRECEIVED, "WarrenScreenPlay", "notifyInquisitorTerminalChatReceived", pTerminal)
 	end
+	
+	--Set inquisitor cell component
+	pTerminal = getSceneObject(8575718)
+	
+	if (pTerminal ~= nil) then
+		local cell = LuaSceneObject(pTerminal)
+		cell:setContainerComponent("EnterInquisitorCellComponent")
+	end
+	
+	--Set reactor room
+	pTerminal = getSceneObject(8575715)
+	
+	if (pTerminal ~= nil) then
+		local cell = LuaSceneObject(pTerminal)
+		cell:setContainerComponent("EnterReactorRoomComponent")
+	end
+	
+	--Reactor Core Switches
+	pTerminal = getSceneObject(8465583)
+	
+	if (pTerminal ~= nil) then
+		local terminal = LuaSceneObject(pTerminal)
+		terminal:setObjectName("theme_park/warren/warren_system_messages", "switch_name_1")
+		createObserver(OBJECTRADIALOPENED, "WarrenScreenPlay", "useReactorCoreSwitch", pTerminal)
+	end
+	
+	pTerminal = getSceneObject(8465578)
+	
+	if (pTerminal ~= nil) then
+		local terminal = LuaSceneObject(pTerminal)
+		terminal:setObjectName("theme_park/warren/warren_system_messages", "switch_name_2")
+		createObserver(OBJECTRADIALOPENED, "WarrenScreenPlay", "useReactorCoreSwitch", pTerminal)
+	end
+	
+	--Setup Evidence Terminals
+	for k,v in pairs(self.evidence) do
+		local pTerminal = getSceneObject(v.oid)
+		
+		if (pTerminal ~= nil) then
+			local terminal = LuaSceneObject(pTerminal)
+			terminal:setObjectMenuComponent("DownloadEvidenceMenuComponent")
+		end
+	end
+	
+	--Set control room lobby
+	pTerminal = getSceneObject(8575749)
+	
+	if (pTerminal ~= nil) then
+		local cell = LuaSceneObject(pTerminal)
+		cell:setContainerComponent("EnterControlRoomLobbyComponent")
+	end
+end
 
+function WarrenScreenPlay:initializeDungeon()
 	self:activateTurret(nil)
 	
 	self:deactivateElevator()
 	
 	self:recycleMirlaPassword()
+	
+	self:recycleReactorRoom()
 end
 
 function WarrenScreenPlay:notifyUseCRTerminal(pTerminal, pPlayer)
@@ -410,9 +450,86 @@ end
 
 function WarrenScreenPlay:recycleMirlaPassword()
 	local code = self:generatePasscode(5)
-	writeData("warren:mirla:password", code)
+	writeStringData("warren:mirla:password", code)
+	
+	--Also relock the inquisitor cell.
+	writeData("warren:inquisitor:locked", 1)
 	
 	createEvent(self.recycleMirla, "WarrenScreenPlay", "recycleMirlaPassword", nil)
+end
+
+function WarrenScreenPlay:recycleReactorRoom()
+	writeData("warren:reactor_switch_1:locked", 1)
+	writeData("warren:reactor_switch_2:locked", 1)
+	writeData("warren:reactor:active", 1)
+	
+	--Lock the reactor room door
+	local pCell = getSceneObject(8575715)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		cell:setContainerInheritPermissionsFromParent(false)
+		cell:clearContainerDefaultAllowPermission(MOVEIN)
+		
+		local pWarren = getSceneObject(self.buildingID)
+		
+		if (pWarren ~= nil) then
+			local building = LuaBuildingObject(pWarren)
+			building:broadcastSpecificCellPermissions(8575715)
+		end
+	end
+	
+	--Also, lock the door to the control room
+	pCell = getSceneObject(8575755)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		cell:setContainerInheritPermissionsFromParent(false)
+		cell:clearContainerDefaultAllowPermission(MOVEIN)
+		
+		local pWarren = getSceneObject(self.buildingID)
+		
+		if (pWarren ~= nil) then
+			local building = LuaBuildingObject(pWarren)
+			building:broadcastSpecificCellPermissions(8575755)
+		end
+	end
+end
+
+function WarrenScreenPlay:useReactorCoreSwitch(pTerminal, pPlayer)
+	local terminal = LuaSceneObject(pTerminal)
+	local objid = terminal:getObjectID()
+	
+	local switch1 = readData("warren:reactor_switch_1:locked")
+	local switch2 = readData("warren:reactor_switch_2:locked") 
+	
+	if (objid == 8465583) and (switch1 == 1) then
+		writeData("warren:reactor_switch_1:locked", 0)
+		terminal:showFlyText("theme_park/warren/warren_system_messages", "switch_one", 0, 255, 0)
+		switch1 = 0
+	elseif (objid == 8465578) and (switch2 == 1) then
+		writeData("warren:reactor_switch_2:locked", 0)
+		terminal:showFlyText("theme_park/warren/warren_system_messages", "switch_two", 0, 255, 0)
+		switch2 = 0
+	end
+	
+	if (switch1 == 0) and (switch2 == 0) then
+		local pCell = getSceneObject(8575715)
+		
+		if (pCell ~= nil) then
+			local cell = LuaSceneObject(pCell)
+			cell:setContainerDefaultAllowPermission(MOVEIN)
+			
+			local pWarren = getSceneObject(self.buildingID)
+			
+			if (pWarren ~= nil) then
+				local building = LuaBuildingObject(pWarren)
+				building:broadcastSpecificCellPermissions(8575715)
+			end
+			
+			createEvent(self.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
+		end
+	end
 end
 
 function WarrenScreenPlay:generatePasscode(length)
@@ -610,9 +727,13 @@ end
 function WarrenScreenPlay:notifyInquisitorTerminalChatReceived(pTerminal, pChatMessage, objectID)
 	local msg = getChatMessage(pChatMessage)
 	
-	if (msg == readData("warren:mirla:password")) then
-		
+	if (msg == readStringData("warren:mirla:password")) and (readData("warren:inquisitor:locked") == 1) then
+		local terminal = LuaSceneObject(pTerminal)
+		terminal:showFlyText("theme_park/warren/warren_system_messages", "cell_open", 0, 255, 0)
+		writeData("warren:inquisitor:locked", 0) 
 	end
+	
+	return 0
 end
 
 function WarrenScreenPlay:notifyOkPressed()
@@ -676,3 +797,154 @@ function RespawnContainerContentsComponent:removeObject(pContainer, pObj, slot)
 	return -1
 end
 
+EnterInquisitorCellComponent = {}
+
+function EnterInquisitorCellComponent:transferObject(pContainer, pObj, slot)
+	local obj = LuaSceneObject(pObj)
+	
+	if (obj:isPlayerCreature()) and (readData("warren:inquisitor:locked") == 1) then
+		obj:teleport(26, -50, -149, 8575717)
+		return 0
+	end
+	
+	return -1
+end
+
+function EnterInquisitorCellComponent:canAddObject(pContainer, pObj, slot)	
+	return -1
+end
+
+function EnterInquisitorCellComponent:removeObject(pContainer, pObj, slot)	
+	return -1
+end
+
+EnterReactorRoomComponent = {}
+
+function EnterReactorRoomComponent:transferObject(pContainer, pObj, slot)
+	local obj = LuaSceneObject(pObj)
+	
+	if (obj:isPlayerCreature()) then
+	
+		--If reactor is active, then we need to check if the player has the rods to shut it off.
+		if (readData("warren:reactor:active") == 1) then
+			local creature = LuaCreatureObject(pObj) 
+			--Check for both reactor rods.
+			--object/tangible/mission/quest_item/warren_core_control_rod_s01.iff
+			local pInventory = obj:getSlottedObject("inventory")
+			
+			if (pInventory ~= nil) then
+				local pRod1 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s01.iff", true)
+				local pRod2 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s02.iff", true)
+				
+				if (pRod1 ~= nil) and (pRod2 ~= nil) then
+					--Remove from inventory, and shut off reactor overload.
+					local rod1 = LuaSceneObject(pRod1)
+					local rod2 = LuaSceneObject(pRod2)
+					
+					rod1:destroyObjectFromWorld()
+					rod1:destroyObjectFromDatabase()
+					rod2:destroyObjectFromWorld()
+					rod2:destroyObjectFromDatabase()
+					
+					--Yes, in live it was sent twice, probably once for each rod...
+					creature:sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
+					creature:sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
+					
+					local pReactorCore = getSceneObject(6425464)
+					
+					if (pReactorCore ~= nil) then
+						local reactorCore = LuaSceneObject(pReactorCore)
+						reactorCore:showFlyText("theme_park/warren/warren_system_messages", "deactivate_core", 0, 255, 0)
+					end
+					
+					writeData("warren:reactor:active", 0)
+					
+					--Unlock the door to the control room
+					local pCell = getSceneObject(8575755)
+		
+					if (pCell ~= nil) then
+						local cell = LuaSceneObject(pCell)
+						cell:setContainerDefaultAllowPermission(MOVEIN)
+						
+						local pWarren = getSceneObject(self.buildingID)
+						
+						if (pWarren ~= nil) then
+							local building = LuaBuildingObject(pWarren)
+							building:broadcastSpecificCellPermissions(8575755)
+						end
+						
+						createEvent(self.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
+					end
+				end
+			end
+		end
+		
+		obj:teleport(49.5, -54, -125, 8575714)
+		return 0
+	end
+	
+	return -1
+end
+
+function EnterReactorRoomComponent:canAddObject(pContainer, pObj, slot)	
+	return -1
+end
+
+function EnterReactorRoomComponent:removeObject(pContainer, pObj, slot)	
+	return -1
+end
+
+EnterControlRoomLobbyComponent = {}
+
+function EnterControlRoomLobbyComponent:transferObject(pContainer, pObj, slot)
+	local obj = LuaSceneObject(pObj)
+	
+	if (obj:isPlayerCreature()) and (readData("warren:reactor:active") == 1) then
+		local creature = LuaCreatureObject(pObj)
+		creature:sendSystemMessage("@theme_park/warren/warren_system_messages:core_warning") --WARNING: Reactor Core Overload Imminent. Control Center Lock-Down initiated.
+	end
+	
+	return -1
+end
+
+function EnterControlRoomLobbyComponent:canAddObject(pContainer, pObj, slot)	
+	return -1
+end
+
+function EnterControlRoomLobbyComponent:removeObject(pContainer, pObj, slot)	
+	return -1
+end
+
+DownloadEvidenceMenuComponent = {}
+
+function DownloadEvidenceMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	local object = LuaSceneObject(pSceneObject)
+	
+	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+	menuResponse:addRadialMenuItem(20, 3, WarrenScreenPlay.evidence["evidence_" .. object:getObjectID()].radialText)
+end
+
+function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+	if (selectedID ~= 20) then
+		return
+	end
+	
+	local creature = LuaCreatureObject(pPlayer)
+	local pDatapad = creature:getSlottedObject("datapad")
+	local object = LuaSceneObject(pSceneObject)
+	
+	local pEvidence = getContainerObjectByTemplate(pDatapad, WarrenScreenPlay.evidence["evidence_" .. object:getObjectID()].item, false)
+	
+	if (pDatapad ~= nil) and (pEvidence == nil) then
+		local pItem = giveItem(pDatapad, WarrenScreenPlay.evidence["evidence_" .. object:getObjectID()].item, -1)
+		
+		if (pItem ~= nil) then
+			local item = LuaSceneObject(pItem)
+			item:sendTo(pPlayer)
+			local suiManager = LuaSuiManager()
+			suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", "@theme_park/warren/warren_system_messages:download_complete", "@ok", "WarrenScreenPlay", "notifyOkPressed")
+		end
+	else
+		creature:sendSystemMessage("@theme_park/warren/warren_system_messages:got_evidence") --You have already downloaded evidence from this terminal
+	end
+end

@@ -8,7 +8,7 @@ function MirlaConversationHandler:runScreenHandlers(pConversationTemplate, pConv
 	
 	if (screenID == "mirla_password") then
 		local screen = LuaConversationScreen(pConversationScreen)
-		local code = readData("warren:mirla:password")
+		local code = readStringData("warren:mirla:password")
 		screen:setDialogTextTO(code)
 	elseif (screenID == "mirla_2") then
 		local player = LuaCreatureObject(pConversingPlayer)

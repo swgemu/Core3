@@ -508,6 +508,35 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 	}
 }
 
+void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
+	ManagedReference<SceneObject*> obj = containerObjects.get(objectid);
+
+	if (obj == NULL || !obj->isCellObject())
+		return;
+
+	CellObject* cell = obj.castTo<CellObject*>();
+
+	Locker _lock(zone);
+
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects->get(i).get());
+
+		if (obj->isPlayerCreature()) {
+			CreatureObject* creo = obj.castTo<CreatureObject*>();
+			cell->sendPermissionsTo(creo, isAllowedEntry(creo));
+		} else if (obj->isVehicleObject()) {
+			SceneObject* rider = obj->getSlottedObject("rider");
+
+			if (rider != NULL) {
+				CreatureObject* creo = cast<CreatureObject*>(rider);
+				cell->sendPermissionsTo(creo, isAllowedEntry(creo));
+			}
+		}
+	}
+}
+
 void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creature) {
 	bool allowEntry = isAllowedEntry(creature);
 
@@ -522,15 +551,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
-		ContainerPermissions* perms = cell->getContainerPermissions();
-
-		if (!perms->hasInheritPermissionsFromParent() && !cell->checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
-			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
-			creature->sendMessage(perm);
-		} else {
-			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-			creature->sendMessage(perm);
-		}
+		cell->sendPermissionsTo(creature, allowEntry);
 	}
 }
 

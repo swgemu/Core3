@@ -136,6 +136,8 @@ public:
 
 	void broadcastCellPermissions();
 
+	void broadcastCellPermissions(unsigned long long objectid);
+
 	bool isAllowedEntry(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
@@ -305,6 +307,8 @@ public:
 
 	void broadcastCellPermissions();
 
+	void broadcastCellPermissions(unsigned long long objectid);
+
 	bool isAllowedEntry(CreatureObject* player);
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
@@ -463,6 +467,8 @@ public:
 	void updateCellPermissionsTo(CreatureObject* creature);
 
 	void broadcastCellPermissions();
+
+	void broadcastCellPermissions(unsigned long long objectid);
 
 	bool isAllowedEntry(CreatureObject* player);
 

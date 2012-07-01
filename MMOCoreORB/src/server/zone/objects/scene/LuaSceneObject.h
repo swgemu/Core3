@@ -69,8 +69,11 @@ namespace scene {
 		int setContainerAllowPermission(lua_State* L);
 		int setContainerDenyPermission(lua_State* L);
 		int setContainerDefaultAllowPermission(lua_State* L);
+		int clearContainerDefaultAllowPermission(lua_State* L);
 		int setContainerDefaultDenyPermission(lua_State* L);
+		int clearContainerDefaultDenyPermission(lua_State* L);
 		int hasActiveArea(lua_State* L);
+		int setObjectName(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

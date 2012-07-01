@@ -29,7 +29,7 @@ mirla = Creature:new {
 	templates = {"object/mobile/warren_mirla.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "MirlaConverstaionTemplate",
+	conversationTemplate = "MirlaConversationTemplate",
 	attacks = {
 	}
 }

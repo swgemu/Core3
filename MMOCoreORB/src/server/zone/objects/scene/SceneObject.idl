@@ -1560,8 +1560,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		containerPermissions.setDefaultAllowPermission(perm);
 	}
 	
+	public void clearContainerDefaultAllowPermission(unsigned short perm) {
+		containerPermissions.clearDefaultAllowPermission(perm);
+	}
+	
 	public void setContainerDefaultDenyPermission(unsigned short perm) {
 		containerPermissions.setDefaultDenyPermission(perm);
+	}
+	
+	public void clearContainerDefaultDenyPermission(unsigned short perm) {
+		containerPermissions.clearDefaultDenyPermission(perm);
 	}
 	
 	public void setContainerInheritPermissionsFromParent(boolean val) {

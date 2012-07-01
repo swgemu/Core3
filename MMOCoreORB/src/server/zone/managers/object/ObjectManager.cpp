@@ -94,6 +94,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::PLAYERCREATURE);
 
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::INTANGIBLE);
+	objectFactory.registerObject<IntangibleObject>(SceneObjectType::DATA2);
 
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates

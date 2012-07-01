@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -59,6 +73,8 @@ public:
 	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -120,6 +136,8 @@ public:
 	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -188,6 +206,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
+
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
@@ -239,6 +259,7 @@ public:
 	int setAllowEntryPermissionGroup(lua_State *L);
 	int notifyLoadFromDatabase(lua_State *L);
 	int sendContainerObjectsTo(lua_State *L);
+	int sendPermissionsTo(lua_State *L);
 	int canAddObject(lua_State *L);
 	int transferObject(lua_State *L);
 	int initializeTransientMembers(lua_State *L);

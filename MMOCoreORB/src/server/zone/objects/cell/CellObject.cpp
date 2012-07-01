@@ -4,6 +4,8 @@
 
 #include "CellObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/Zone.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
@@ -12,7 +14,7 @@
  *	CellObjectStub
  */
 
-enum {RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+enum {RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDPERMISSIONSTO__CREATUREOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
@@ -78,6 +80,21 @@ void CellObject::sendContainerObjectsTo(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendContainerObjectsTo(player);
+}
+
+void CellObject::sendPermissionsTo(CreatureObject* object, bool allowEntry) {
+	CellObjectImplementation* _implementation = static_cast<CellObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDPERMISSIONSTO__CREATUREOBJECT_BOOL_);
+		method.addObjectParameter(object);
+		method.addBooleanParameter(allowEntry);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendPermissionsTo(object, allowEntry);
 }
 
 int CellObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
@@ -422,6 +439,11 @@ void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendContainerObjectsTo(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_SENDPERMISSIONSTO__CREATUREOBJECT_BOOL_:
+		{
+			sendPermissionsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		{
 			String errorDescription; 
@@ -483,6 +505,10 @@ void CellObjectAdapter::notifyLoadFromDatabase() {
 
 void CellObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
 	(static_cast<CellObject*>(stub))->sendContainerObjectsTo(player);
+}
+
+void CellObjectAdapter::sendPermissionsTo(CreatureObject* object, bool allowEntry) {
+	(static_cast<CellObject*>(stub))->sendPermissionsTo(object, allowEntry);
 }
 
 int CellObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
@@ -565,6 +591,7 @@ Luna<LuaCellObject>::RegType LuaCellObject::Register[] = {
 	{ "setAllowEntryPermissionGroup", &LuaCellObject::setAllowEntryPermissionGroup },
 	{ "notifyLoadFromDatabase", &LuaCellObject::notifyLoadFromDatabase },
 	{ "sendContainerObjectsTo", &LuaCellObject::sendContainerObjectsTo },
+	{ "sendPermissionsTo", &LuaCellObject::sendPermissionsTo },
 	{ "canAddObject", &LuaCellObject::canAddObject },
 	{ "transferObject", &LuaCellObject::transferObject },
 	{ "initializeTransientMembers", &LuaCellObject::initializeTransientMembers },
@@ -659,6 +686,29 @@ int LuaCellObject::sendContainerObjectsTo(lua_State *L) {
 		}
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendContainerObjectsTo(userdata)'");
+	}
+}
+
+int LuaCellObject::sendPermissionsTo(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isboolean(L, -1)) {
+		if (lua_isuserdata(L, -2)) {
+			if (parameterCount == 2) {
+				CreatureObject* object = static_cast<CreatureObject*>(lua_touserdata(L, -2));
+				bool allowEntry = lua_toboolean(L, -1);
+
+				realObject->sendPermissionsTo(object, allowEntry);
+
+				return 0;
+			} else {
+				throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:sendPermissionsTo(userdata, boolean)'");
+			}
+		} else {
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'CellObject:sendPermissionsTo(userdata, boolean)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendPermissionsTo(userdata, boolean)'");
 	}
 }
 
