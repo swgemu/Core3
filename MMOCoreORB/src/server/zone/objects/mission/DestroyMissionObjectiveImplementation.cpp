@@ -136,9 +136,15 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	Vector3 pos = findValidSpawnPosition(zone);
 
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
+
+	if (waypoint == NULL) {
+		waypoint = mission->createWaypoint();
+	}
+
 	waypoint->setPosition(pos.getX(), 0, pos.getY());
 	mission->updateMissionLocation();
+
 	//TODO: find correct string id
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
@@ -173,15 +179,15 @@ void DestroyMissionObjectiveImplementation::abort() {
 
 		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-		if (lairObject != NULL) {
-			ManagedReference<SceneObject*> lairH = lairObject.get();
+		ManagedReference<TangibleObject*> lair = lairObject;
 
-			Locker locker(lairObject);
+		if (lair != NULL) {
+			Locker locker(lair);
 
-			lairObject->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
-			lairObject->destroyObjectFromWorld(true);
+			lair->dropObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+			lair->destroyObjectFromWorld(true);
 
-			lairObject = NULL;
+			lair = NULL;
 
 			dropObserver(observer, true);
 		}

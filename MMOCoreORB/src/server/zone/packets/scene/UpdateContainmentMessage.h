@@ -52,10 +52,15 @@ which carries forward this exception.
 class UpdateContainmentMessage : public BaseMessage {
 public:
 	UpdateContainmentMessage(SceneObject* object, SceneObject* container, uint32 type) : BaseMessage(30) {
+		uint64 parId = 0;
+
+		if (container != NULL)
+			parId = container->getObjectID();
+
 		insertShort(0x04);
 		insertInt(0x56CBDE9E);  // CRC
 		insertLong(object->getObjectID());  // ObjectID
-		insertLong(container->getObjectID());  // ObjectID
+		insertLong(parId);  // ObjectID
 		insertInt(type);
 
 		/*StringBuffer msg;

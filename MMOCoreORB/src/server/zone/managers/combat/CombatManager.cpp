@@ -622,7 +622,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+	Vector<ManagedReference<ArmorObject*> > healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
 
 	if (System::random(1) == 0)
 		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
@@ -636,7 +636,7 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
+	Vector<ManagedReference<ArmorObject*> > actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -647,7 +647,7 @@ ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
+	Vector<ManagedReference<ArmorObject*> > mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -1323,12 +1323,15 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	}
 
 	try {
-		zone->rlock();
+		//zone->rlock();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+		SortedVector<QuadTreeEntry* > closeObjects(vec->size(), 10);
+				
+		vec->safeCopyTo(closeObjects);
 
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects->get(i).get());
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i));
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
@@ -1362,7 +1365,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			zone->runlock();
+//			zone->runlock();
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
@@ -1376,12 +1379,12 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				throw;
 			}
 
-			zone->rlock();
+//			zone->rlock();
 		}
 
-		zone->runlock();
+//		zone->runlock();
 	} catch (...) {
-		zone->runlock();
+//		zone->runlock();
 
 		throw;
 	}
@@ -1392,12 +1395,25 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
-	Locker _locker(zone);
+	if (zone == NULL)
+		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+	//Locker _locker(zone);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+	if (vec != NULL) {
+		closeObjects.removeAll(vec->size(), 10);
+		vec->safeCopyTo(closeObjects);
+	} else {
+		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+	}
+
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
 			CreatureObject* player = cast<CreatureObject*>( object);

@@ -127,7 +127,7 @@ void StructureSetAccessFeeSession::setAccessDuration(const int duration) {
 
 DistributedObjectServant* StructureSetAccessFeeSession::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -173,31 +173,31 @@ StructureSetAccessFeeSessionImplementation::operator const StructureSetAccessFee
 }
 
 void StructureSetAccessFeeSessionImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void StructureSetAccessFeeSessionImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void StructureSetAccessFeeSessionImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void StructureSetAccessFeeSessionImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void StructureSetAccessFeeSessionImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void StructureSetAccessFeeSessionImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void StructureSetAccessFeeSessionImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void StructureSetAccessFeeSessionImplementation::_serializationHelperMethod() {

@@ -61,6 +61,9 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 
 	if (parent != NULL && parent->isCellObject())
 		return;
+		
+	if (object->getCityRegion() != NULL)
+		return;
 
 	trySpawnLair(object);
 }
@@ -87,6 +90,8 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 			spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
 
 		--currentlySpawnedLairs;
+		
+		locker.release();
 
 		ManagedReference<ActiveArea*> area = cast<ActiveArea*>(ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
 

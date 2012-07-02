@@ -118,7 +118,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	Locker* locker = NULL;
 
 	if (zone != NULL) {
-		locker = new Locker(zone);
+//		locker = new Locker(zone);
 	}
 
 	bool ret = false;

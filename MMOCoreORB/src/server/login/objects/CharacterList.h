@@ -69,7 +69,7 @@ public:
 
 		removeAll();
 
-		ResultSet* characters;
+		Reference<ResultSet*> characters;
 
 		StringBuffer query;
 		query << "SELECT DISTINCT characters.character_oid, characters.account_id, characters.galaxy_id, characters.firstname, "
@@ -96,6 +96,9 @@ public:
 			System::out << "unknown exception caught in ChracterList query" << endl;
 		}
 
+		if (characters == NULL)
+			return;
+
 		while(characters->next()) {
 
 			CharacterListEntry newEntry;
@@ -118,8 +121,6 @@ public:
 
 			add(newEntry);
 		}
-
-		delete characters;
 	}
 };
 

@@ -557,8 +557,12 @@ Vector<String>& ResourceSpawner::getJtlResources() {
 void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 		const int toolType, const String& surveyType) {
 
-	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(
-			player->getZone()->getZoneName());
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zone->getZoneName());
 	if (zoneMap == NULL) {
 		player->sendSystemMessage("The tool fails to locate any resources");
 		return;

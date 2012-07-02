@@ -72,7 +72,7 @@ bool NonPlayerCreatureObject::isCamouflaged(CreatureObject* target) {
 
 DistributedObjectServant* NonPlayerCreatureObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -118,31 +118,31 @@ NonPlayerCreatureObjectImplementation::operator const NonPlayerCreatureObject*()
 }
 
 void NonPlayerCreatureObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void NonPlayerCreatureObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void NonPlayerCreatureObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void NonPlayerCreatureObjectImplementation::_serializationHelperMethod() {

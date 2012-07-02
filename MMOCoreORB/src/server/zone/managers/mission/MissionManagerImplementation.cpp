@@ -902,7 +902,12 @@ int MissionManagerImplementation::getDeliverMissionSpawnType(const int faction) 
 
 bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction) {
 	//Get the current planet and position of the player.
-	String planetName = player->getZone()->getZoneName();
+	ManagedReference<Zone*> zone = player->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	String planetName = zone->getZoneName();
 
 	Vector3 playerPosition = player->getWorldPosition();
 	playerPosition.setZ(0);

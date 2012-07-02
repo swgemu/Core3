@@ -26,6 +26,8 @@ public:
 		MessageCallback(client, server) {
 
 		objectControllerCallback = NULL;
+		
+		taskqueue = 2;
 	}
 
 	static MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;

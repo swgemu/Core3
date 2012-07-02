@@ -1,4 +1,4 @@
- /*
+/*
  * ChatManagerImplementation.cpp
  *
  *  Created on: 28/07/2009
@@ -272,7 +272,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		return;
 	}
 
-	Locker _zone(zone);
+	//bool readlock = !zone->isLockedByCurrentThread();
 
 	bool showtext = true;
 
@@ -284,10 +284,32 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	if (sender->isPlayerCreature())
 		firstName = (cast<CreatureObject*>(sender))->getFirstName().toLowerCase();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = sender->getCloseObjects();
+	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+
+	if (vec != NULL) {
+		vec->safeCopyTo(closeEntryObjects);
+	} else {
+		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
+	}
+
+	//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
+	/*
+	try {
+//		zone->rlock(readlock);
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			closeEntryObjects.add(closeObjects->get(i).get());
+		}
+
+//		zone->runlock(readlock);
+	} catch (...) {
+//		zone->runlock(readlock);
+	}
+	 */
+	for (int i = 0; i < closeEntryObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
 		if (object->isPlayerCreature()) {
 			CreatureObject* creature = cast<CreatureObject*>(object);
@@ -314,8 +336,8 @@ void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 	String game = "SWG";
 	populateRoomListMessage(gameRooms.get(game), crl);
 
- 	crl->insertChannelListCount();
- 	player->sendMessage(crl);
+	crl->insertChannelListCount();
+	player->sendMessage(crl);
 }
 
 void ChatManagerImplementation::addPlayer(CreatureObject* player) {
@@ -422,16 +444,38 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	//Locker zoneLocker(zone);
 	//zone->rlock();
 
-	bool readlock = !zone->isLockedByCurrentThread();
+	//	bool readlock = !zone->isLockedByCurrentThread();
 
-	zone->rlock(readlock);
+	//zone->rlock(readlock);
 
+	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+
+	if (closeObjects != NULL) {
+		closeObjects->safeCopyTo(closeEntryObjects);
+	} else {
+		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
+	}
+
+	/*
 	try {
-
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
+		zone->rlock(readlock);
 
 		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+			closeEntryObjects.add(closeObjects->get(i).get());
+		}
+
+		zone->runlock(readlock);
+	} catch (...) {
+		zone->runlock(readlock);
+	}
+
+	 */
+
+	try {
+		for (int i = 0; i < closeEntryObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
 			if (player->isInRange(object, 128)) {
 
@@ -473,7 +517,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} catch (...) {
 		//zone->runlock();
 
-		zone->runlock(readlock);
+		//		zone->runlock(readlock);
 
 		if (param != NULL) {
 			delete param;
@@ -483,7 +527,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		throw;
 	}
 
-	zone->runlock(readlock);
+	//	zone->runlock(readlock);
 
 	//zone->runlock();
 

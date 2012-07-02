@@ -20,6 +20,8 @@
 #include "server/chat/ChatManager.h"
 #include "server/login/account/Account.h"
 
+#include "server/zone/objects/player/events/DisconnectClientEvent.h"
+
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
 public:
@@ -70,7 +72,15 @@ public:
 
 				oldClient->disconnect();
 
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(player, oldClient, DisconnectClientEvent::DISCONNECT);
+				Core::getTaskManager()->executeTask(task);
+
 				return;
+			}
+			
+			if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
+				client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
+				return;				
 			}
 
 			if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
@@ -101,7 +111,7 @@ public:
 
 				root = root == NULL ? playerParent : root;
 
-				ghost->updateLastValidatedPosition();
+				//ghost->updateLastValidatedPosition();
 
 				if (root->getZone() == NULL && root->isStructureObject()) {
 					player->initializePosition(root->getPositionX(), root->getPositionZ(), root->getPositionY());

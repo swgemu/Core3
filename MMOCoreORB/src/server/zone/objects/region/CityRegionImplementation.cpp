@@ -24,6 +24,10 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+
+int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 200;
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -218,6 +222,9 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			error("Unable to update vendor UID");
 	}
 
+	if (object->isPlayerCreature())
+		currentPlayers.increment();
+
 	if (isClientRegion())
 		return;
 
@@ -295,6 +302,9 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		} else
 			error("Unable to update vendor UID");
 	}
+
+	if (object->isPlayerCreature())
+		currentPlayers.decrement();
 
 	if (isClientRegion())
 		return;

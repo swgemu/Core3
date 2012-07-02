@@ -223,6 +223,9 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) {
 	//info("parsing " + pack->toStringData(), true);
 
+	if (client == NULL)
+		return NULL;
+
 	try {
 		uint16 opcount = pack->parseShort();
 		uint32 opcode = pack->parseInt();

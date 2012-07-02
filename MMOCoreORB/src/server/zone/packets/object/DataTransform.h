@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/Zone.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
@@ -83,11 +84,32 @@ class DataTransformCallback : public MessageCallback {
 	float parsedSpeed;
 
 	ObjectControllerMessageCallback* objectControllerMain;
+	
+//	taskqueue = 3;
 public:
 	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
 		objectControllerMain = objectControllerCallback;
+		
+		taskqueue = 3;
+		
+		ManagedReference<SceneObject*> player = client->getPlayer();
+		
+		if (player != NULL) {
+			Zone* zone = player->getLocalZone();
+			
+			if (zone != NULL) {
+				String zoneName = zone->getZoneName();
+			
+				if (zoneName == "corellia")
+					taskqueue = 4;
+				else if (zoneName == "tatooine")
+					taskqueue = 5;
+				else if (zoneName == "naboo")
+					taskqueue = 6;
+			}
+		}
 	}
 
 	void parse(Message* message) {
@@ -139,7 +161,7 @@ public:
 			object->error(msg.toString());
 
 			return;
-		}
+		}	
 
 		/*float floorHeight = CollisionManager::instance()->getWorldFloorCollision(positionX, positionY, object->getZone(), true);
 
@@ -192,7 +214,24 @@ public:
 			return;
 
 		object->setMovementCounter(movementCounter);
-		object->setDirection(directionW, directionX, directionY, directionZ);
+		//object->setDirection(directionW, directionX, directionY, directionZ);
+		
+		float oldX = object->getPositionX();
+		float oldY = object->getPositionY();
+		float oldZ = object->getPositionZ();
+		
+		float dirw = object->getDirectionW();
+		float dirz = object->getDirectionZ();
+		float diry = object->getDirectionY();
+		float dirx = object->getDirectionX();
+		
+		ghost->setClientLastMovementStamp(movementStamp);
+		
+		if (oldX == positionX && oldY == positionY && oldZ == positionZ && 
+			dirw == directionW && dirz == directionZ && dirx == directionX && diry == directionY) {
+			
+			return;
+		}
 
 		/*StringBuffer degrees;
 		degrees << "angle: " << object->getDirectionAngle();
@@ -200,7 +239,9 @@ public:
 		object->info(degrees.toString(), true);*/
 
 		object->setPosition(positionX, positionZ, positionY);
-		ghost->setClientLastMovementStamp(movementStamp);
+//		ghost->setClientLastMovementStamp(movementStamp);
+		
+		object->setDirection(directionW, directionX, directionY, directionZ);
 
 		/*StringBuffer posMsg;
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;

@@ -212,9 +212,7 @@ void ZoneImplementation::update(QuadTreeEntry* entry) {
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
-	Locker locker(_this.get());
-
-	quadTree->inRange(entry, range);
+	quadTree->safeInRange(entry, range);
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
@@ -224,10 +222,17 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 
 	Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
 
-	_this.get()->rlock(readlock);
+//	_this.get()->rlock(readlock);
 
 	try {
+		_this.getReferenceUnsafeStaticCast()->rlock(readlock);
+		
 		quadTree->inRange(x, y, range, *objects);
+		
+		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+	} catch (...) {
+		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
+	}
 
 		for (int i = 0; i < objects->size(); ++i) {
 			SceneObject* sceneObject = cast<SceneObject*>(objects->get(i).get());
@@ -238,27 +243,27 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					CellObject* cell = building->getCell(j);
 
 					if (cell != NULL) {
-						for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
-							SceneObject* obj = cell->getContainerObject(h);
-
-							buildingObjects.add(obj);
-						}
+					try {
+							for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
+								ManagedReference<QuadTreeEntry*> obj = cell->getContainerObject(h);
+								
+								if (obj != NULL)
+									buildingObjects.add(obj);
+								}
+						
+						} catch (...) {
+					}
 					}
 				}
 			} else if (sceneObject != NULL && sceneObject->isVehicleObject()) {
-				SceneObject* rider = sceneObject->getSlottedObject("rider");
+				ManagedReference<QuadTreeEntry*> rider = sceneObject->getSlottedObject("rider");
 
 				if (rider != NULL)
 					buildingObjects.add(rider);
 			}
 		}
-	} catch (...) {
-		_this.get()->runlock(readlock);
 
-		throw;
-	}
-
-	_this.get()->runlock(readlock);
+	//_this.get()->runlock(readlock);
 
 	for (int i = 0; i < buildingObjects.size(); ++i)
 		objects->put(buildingObjects.get(i));
@@ -271,30 +276,36 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 
 	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
 
-	_this.get()->rlock(readlock);
+	//_this.get()->rlock(readlock);
+	
+	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
 	try {
+		thisZone->rlock(readlock);
+		
 		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
 		regionTree->inRange(x, y, entryObjects);
+		
+		thisZone->runlock(readlock);
 
 		for (int i = 0; i < entryObjects.size(); ++i) {
 			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 			objects->put(obj);
 		}
 	}catch (...) {
-		_this.get()->runlock(readlock);
+//		_this.get()->runlock(readlock);
 
 		throw;
 	}
 
-	_this.get()->runlock(readlock);
+//	_this.get()->runlock(readlock);
 
 	return objects->size();
 }
 
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
-	Locker locker(_this.get());
+	//Locker locker(_this.get());
 
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
 
@@ -302,21 +313,38 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
-	regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
+	Zone* managedRef = _this.getReferenceUnsafeStaticCast();
+
+	bool readlock = !managedRef->isLockedByCurrentThread();
+
+	managedRef->rlock(readlock);
+
+	try {
+		regionTree->inRange(worldPos.getX(), worldPos.getY(), entryObjects);
+	} catch (...) {
+		error("unexpeted error caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
+	}
+
+	managedRef->runlock(readlock);
 
 	//locker.release();
 
-	_this.get()->unlock();
+
+	managedRef->unlock(!readlock);
 
 	try {
 
 		// update old ones
 		for (int i = 0; i < areas.size(); ++i) {
 			ManagedReference<ActiveArea*> area = areas.get(i);
+//			Locker lockerO(object);
+
+//			Locker locker(area, object);
 
 			if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
 				object->dropActiveArea(area);
 				area->enqueueExitEvent(object);
+//				area->notifyExit(object);
 			} else {
 				area->notifyPositionUpdate(object);
 			}
@@ -328,8 +356,13 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
 			if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+				//Locker lockerO(object);
+
+				//Locker locker(activeArea, object);
+
 				object->addActiveArea(activeArea);
 				activeArea->enqueueEnterEvent(object);
+				//activeArea->notifyEnter(object);
 			}
 		}
 
@@ -338,21 +371,25 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 		for (int i = 0; i < worldAreas->size(); ++i) {
 			ActiveArea* activeArea = worldAreas->get(i);
+			Locker lockerO(object);
+
+//			Locker locker(activeArea, object);
 
 			if (!object->hasActiveArea(activeArea)) {
 				object->addActiveArea(activeArea);
-				activeArea->enqueueEnterEvent(object);
+				//activeArea->enqueueEnterEvent(object);
+				activeArea->notifyEnter(object);
 			} else {
 				activeArea->notifyPositionUpdate(object);
 			}
 		}
 	} catch (...) {
-
-		_this.get()->wlock();
+		error("unexpected exception caught in void ZoneImplementation::updateActiveAreas(SceneObject* object) {");
+		managedRef->wlock(!readlock);
 		throw;
 	}
 
-	_this.get()->wlock();
+	managedRef->wlock(!readlock);
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {

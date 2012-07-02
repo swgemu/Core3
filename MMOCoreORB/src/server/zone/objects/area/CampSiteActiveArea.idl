@@ -53,6 +53,7 @@ import server.zone.objects.area.CampSiteObserver;
 import server.zone.objects.area.events.CampDespawnTask;
 import server.zone.objects.area.events.CampAbandonTask;
 include server.zone.templates.tangible.CampStructureTemplate;
+include system.thread.Mutex;
 import system.lang.ref.Reference;
 import system.lang.Time;
 include server.zone.templates.TemplateReference;
@@ -61,6 +62,9 @@ class CampSiteActiveArea extends ActiveArea {
 
 	protected StructureObject camp;
 	protected Terminal terminal;
+	
+	@dereferenced
+	protected transient Mutex taskMutex;
 
 	@dereferenced
 	transient protected Vector<unsigned long> visitors;

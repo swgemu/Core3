@@ -50,7 +50,12 @@ public:
 
 	void schedule(uint64 delay = 0) {
 		mtime = delay;
-		Task::schedule(delay);
+
+		try {
+			Task::schedule(delay);
+		} catch (...) {
+
+		}
 	}
 
 	void setTarget(CreatureObject *t) {

@@ -83,6 +83,9 @@ public:
 			if(command == "despawn")
 				despawnResource(creature, &args);
 
+			if(command == "info")
+				listResourceInfo(creature, &args);
+
 			else
 				throw Exception();
 
@@ -141,6 +144,48 @@ public:
 		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
 
 		creature->sendSystemMessage(resMan->despawnResource(resourceName));
+	}
+
+	void listResourceInfo(CreatureObject* creature, StringTokenizer* args) {
+		if(creature->getZoneServer() == NULL)
+			return;
+
+		String resourceName = "";
+		if(args->hasMoreTokens())
+			args->getStringToken(resourceName);
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+
+		ManagedReference<ResourceSpawn*> spawn = resMan->getResourceSpawn(resourceName);
+		if(spawn == NULL) {
+			creature->sendSystemMessage("Resource not found");
+			return;
+		}
+
+		creature->sendSystemMessage("******** " + spawn->getName() + " *********");
+
+		int hours = (((spawn->getDespawned() - System::getTime()) / 60) /60);
+		int minutes = ((spawn->getDespawned() - System::getTime()) % 60);
+
+		if(hours > 0 || minutes > 0) {
+			creature->sendSystemMessage("Expires: " + String::valueOf(hours) + " hours " + String::valueOf(minutes) + " minutes");
+			creature->sendSystemMessage("Pool: " + String::valueOf(spawn->getSpawnPool()));
+
+			for(int i = 0; i < spawn->getSpawnMapSize(); ++i) {
+				creature->sendSystemMessage("Spawned on: " + spawn->getSpawnMapZone(i));
+			}
+
+		} else
+			creature->sendSystemMessage("No current spawns");
+
+
+		for(int i = 0; i < 12; ++i) {
+			String attribute = "";
+			int value = spawn->getAttributeAndValue(attribute, i);
+			if(attribute != "") {
+				creature->sendSystemMessage(attribute + ": " + String::valueOf(value));
+			}
+		}
 	}
 
 };

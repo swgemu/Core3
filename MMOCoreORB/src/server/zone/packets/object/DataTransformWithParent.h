@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
-
+#include "server/zone/Zone.h"
 
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
@@ -90,11 +90,34 @@ class DataTransformWithParentCallback : public MessageCallback {
 	float parsedSpeed;
 
 	ObjectControllerMessageCallback* objectControllerMain;
+	
+//	taskqueue = 3;
 public:
 	DataTransformWithParentCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
 		objectControllerMain = objectControllerCallback;
+		
+		
+		taskqueue = 3;
+		
+		 ManagedReference<SceneObject*> player = client->getPlayer();
+		 
+                 if (player != NULL) {
+                        Zone* zone = player->getLocalZone();
+                                    
+                         if (zone != NULL) {
+                             String zoneName = zone->getZoneName();
+                                                                           
+                              if (zoneName == "corellia")
+                                   taskqueue = 4;
+                              else if (zoneName == "tatooine")
+                                    taskqueue = 5;
+                               else if (zoneName == "naboo")
+                                        taskqueue = 6;
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                             }
+		                                                                                                                                                                                                                                                                                                                                                                 
 	}
 
 	void parse(Message* message) {

@@ -34,6 +34,9 @@ public:
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
+		if (city == NULL)
+			return;
+
 		if (city->getSkillTrainerCount() >= (int) city->getCityRank() * 3){
 					player->sendSystemMessage("@city/city:no_more_trainers");
 					return;

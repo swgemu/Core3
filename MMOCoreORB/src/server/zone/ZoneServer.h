@@ -462,6 +462,8 @@ public:
 
 	bool isServerLoading();
 
+	int getServerCap();
+
 	int getServerState();
 
 	Zone* getZone(const String& terrainName);
@@ -579,6 +581,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	int totalSentPackets;
 
+	int serverCap;
+
 	int totalResentPackets;
 
 	AtomicInteger currentPlayers;
@@ -693,6 +697,8 @@ public:
 	bool isServerOffline();
 
 	bool isServerLoading();
+
+	int getServerCap();
 
 	int getServerState();
 
@@ -856,6 +862,8 @@ public:
 	bool isServerOffline();
 
 	bool isServerLoading();
+
+	int getServerCap();
 
 	int getServerState();
 

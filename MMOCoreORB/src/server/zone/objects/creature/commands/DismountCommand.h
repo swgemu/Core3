@@ -66,8 +66,11 @@ public:
 
 		ManagedReference<SceneObject*> mount = creature->getParent();
 
-		if (mount == NULL || !mount->isCreatureObject())
+		if (mount == NULL || !mount->isCreatureObject()) {
+			creature->clearState(CreatureState::RIDINGMOUNT);
+
 			return GENERALERROR;
+		}
 
 		CreatureObject* vehicle = cast<CreatureObject*>( mount.get());
 
@@ -87,6 +90,8 @@ public:
 			return GENERALERROR;
 
 		zone->transferObject(creature, -1, false);
+
+		clocker.release();
 
 		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);

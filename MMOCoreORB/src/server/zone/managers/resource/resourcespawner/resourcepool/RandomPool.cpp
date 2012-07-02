@@ -135,7 +135,6 @@ ResourceSpawn* RandomPool::removeSpawn(const String& type) {
 		spawn = pool.get(i);
 		if(spawn != NULL && spawn->isType(type)) {
 			pool.setElementAt(i, NULL);
-			spawn->setSpawnPool(ResourcePool::NOPOOL, "");
 			return spawn;
 		}
 	}
@@ -173,7 +172,10 @@ String RandomPool::healthCheck() {
 		if (spawn != NULL) {
 			buffer << "   " << i << ". " << resourceType << " : "
 					<< (isRightType ? "Pass" : "Fail")
+					<< "  " << spawn->getName() << " Zones: " << String::valueOf(spawn->getSpawnMapSize())
 					<< " (" << spawn->getType() << ")" << endl;
+			if(spawn->getSpawnMapSize() == 0)
+				heathly = false;
 		} else {
 			buffer << "   " << i << ". " << resourceType << " : " << ("Fail")
 					<< " ()" << endl;

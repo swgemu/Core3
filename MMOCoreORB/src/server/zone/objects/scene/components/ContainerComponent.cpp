@@ -242,37 +242,53 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
 
-	if (containedType == 4 || containedType == 5) {
-		Locker contLocker(sceneObject->getContainerLock());
+//	if (containedType == 4 || containedType == 5) {
+	Locker contLocker(sceneObject->getContainerLock());
 
-		int arrangementSize = object->getArrangementDescriptorSize();
+	int arrangementSize = object->getArrangementDescriptorSize();
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+	bool removeFromSlot = false;
 
-			if (slottedObjects->get(childArrangement) != object) {
-				//info("sloted objects contains a different object", true);
-				return false;
-			}
+	for (int i = 0; i < arrangementSize; ++i) {
+		String childArrangement = object->getArrangementDescriptor(i);
+		ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
+
+		if (obj == object) {
+			removeFromSlot = true;
+			//info("sloted objects contains a different object", true);
+			//object->setParent(NULL);
+
+			//return false;
+			break;
 		}
+	}
 
+	if (removeFromSlot) {
 		for (int i = 0; i < arrangementSize; ++i)
 			slottedObjects->drop(object->getArrangementDescriptor(i));
-	} else if (containedType == -1/*containerType == 2 || containerType == 3*/) {
-		Locker contLocker(sceneObject->getContainerLock());
+	}
+	//	} else if (containedType == -1) {
+	//Locker contLocker(sceneObject->getContainerLock());
 
-		if (!containerObjects->contains(object->getObjectID())) {
-			//info("containerObjects doesnt contain specified object", true);
-			return false;
-		}
+	if (containerObjects->contains(object->getObjectID())) {
+		//info("containerObjects doesnt contain specified object", true);
+		//object->setParent(NULL);
+
+		//			return false;
 
 		containerObjects->drop(object->getObjectID());
+	}
+
+	contLocker.release();
+	/*
+
 	} else {
 		sceneObject->error("unknown contained type " + String::valueOf(containedType));
 		StackTrace::printStackTrace();
 
 		return false;
 	}
+	*/
 
 	object->setParent(NULL);
 

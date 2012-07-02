@@ -97,6 +97,7 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
@@ -294,7 +295,7 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 
 	player->sendMessage(new LogoutMessage());
 
-	ZoneClientSession* session = player->getClient();
+	ManagedReference<ZoneClientSession*> session = player->getClient();
 
 	if(session != NULL)
 		session->disconnect(true);
@@ -1495,20 +1496,16 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
-	if (objectToTrade == NULL) {
-		player->sendSystemMessage("@container_error_message:container10");
-		handleAbortTradeMessage(player);
-		return;
-	}
-
-	if (!objectToTrade->isASubChildOf(player) || !objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
-		player->sendSystemMessage("@container_error_message:container08");
+	
+	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
+			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
+		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
 	}
 
 	if (objectToTrade->isNoTrade()) {
-		player->sendSystemMessage("@container_error_message:container25");
+		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
 	}
@@ -2767,12 +2764,14 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	ManagedReference<CraftingStation*> station = NULL;
 
-	Locker locker(zone);
+	//Locker locker(zone);
 
-	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = player->getCloseObjects();
+	SortedVector < QuadTreeEntry* > *closeObjects = new SortedVector<QuadTreeEntry*>(100, 50);
+	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+	vec->safeCopyTo(*closeObjects);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
+		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i));
 
 		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
@@ -2834,20 +2833,22 @@ Account* PlayerManagerImplementation::getAccount(uint32 accountID) {
 }
 
 Account* PlayerManagerImplementation::queryForAccount(const String& query) {
-
-
 	Account* account = NULL;
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result;
 
-	if (result->next()) {
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+
+	if (result != NULL && result->next()) {
 
 		account = new Account();
 
 		account->setActive(result->getBoolean(0));
 		account->setUsername(result->getString(1));
-
-		account->setSalt(result->getString(3));
 
 		account->setAccountID(result->getUnsignedInt(4));
 		account->setStationID(result->getUnsignedInt(5));
@@ -2858,7 +2859,6 @@ Account* PlayerManagerImplementation::queryForAccount(const String& query) {
 		account->updateFromDatabase();
 	}
 
-	delete result;
 	result = NULL;
 
 	return account;
@@ -2896,7 +2896,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 
 					player->sendMessage(new LogoutMessage());
 
-					ZoneClientSession* session = player->getClient();
+					Reference<ZoneClientSession*> session = player->getClient();
 
 					if(session != NULL)
 						session->disconnect(true);
@@ -3269,6 +3269,10 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 
 	if (!onlineZoneClientMap.containsKey(accountId))
 		return;
+		
+	BaseClientProxy* session = client->getSession();
+	
+	
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -3283,18 +3287,34 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 		onlineZoneClientMap.remove(accountId);
 	else
 		onlineZoneClientMap.put(accountId, clients);
+		
+	locker.release();
+	
+	if (session != NULL) {
+		onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+	}
 }
 
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
 	uint32 accountId = client->getAccountID();
+	
+	BaseClientProxy* session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
 		Vector<Reference<ZoneClientSession*> > clients;
 		clients.add(client);
 
 		onlineZoneClientMap.put(accountId, clients);
+		
+		locker.release();
+				
+		if (session != NULL) {
+			String ip = session->getIPAddress();
+			
+			onlineZoneClientMap.addAccount(ip, accountId);
+		}
 
 		return true;
 	}
@@ -3306,8 +3326,16 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	for (int i = 0; i < clients.size(); ++i) {
 		ZoneClientSession* session = clients.get(i);
 
-		if (session->getPlayer() != NULL)
-			++onlineCount;
+		ManagedReference<SceneObject*> player = session->getPlayer();
+
+		if (player != NULL) {
+			ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+
+			if (ghost != NULL && ghost->getAdminLevel() > 0)
+				continue;
+			else if (player->getClient() == session)
+				++onlineCount;
+		}
 	}
 
 	if (onlineCount >= MAX_CHAR_ONLINE_COUNT)
@@ -3316,7 +3344,15 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	clients.add(client);
 
 	onlineZoneClientMap.put(accountId, clients);
-
+	
+	locker.release();
+	
+	if (session != NULL) {
+		String ip = session->getIPAddress();
+			
+		onlineZoneClientMap.addAccount(ip, accountId);
+	}
+	
 	return true;
 }
 

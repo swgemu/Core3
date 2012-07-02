@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/ZoneServer.h"
+#include "BoardShuttleCommand.h"
 
 class ServerInfoCommand {
 public:
@@ -27,6 +28,20 @@ public:
 
 		ghost->addSuiBox(box);
 		creature->sendMessage(box->generateMessage());
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (tokenizer.hasMoreTokens()) {
+			try {
+				int cityCap = tokenizer.getIntToken();
+
+				BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = cityCap;
+
+				creature->sendSystemMessage("Maximum number of player per city set to " + String::valueOf(cityCap));
+			} catch (...) {
+				creature->error("exception parsing city cap");
+			}
+		}
 
 		return 0;
 	}

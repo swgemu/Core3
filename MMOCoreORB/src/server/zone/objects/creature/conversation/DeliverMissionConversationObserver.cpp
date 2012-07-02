@@ -26,7 +26,7 @@ DeliverMissionConversationObserver::~DeliverMissionConversationObserver() {
 
 DistributedObjectServant* DeliverMissionConversationObserver::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -72,31 +72,31 @@ DeliverMissionConversationObserverImplementation::operator const DeliverMissionC
 }
 
 void DeliverMissionConversationObserverImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void DeliverMissionConversationObserverImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void DeliverMissionConversationObserverImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void DeliverMissionConversationObserverImplementation::_serializationHelperMethod() {

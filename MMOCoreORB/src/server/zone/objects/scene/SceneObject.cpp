@@ -3547,7 +3547,7 @@ void SceneObject::setSendToClient(bool val) {
 
 DistributedObjectServant* SceneObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -3591,31 +3591,31 @@ SceneObjectImplementation::operator const SceneObject*() {
 }
 
 void SceneObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void SceneObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void SceneObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void SceneObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void SceneObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void SceneObjectImplementation::_serializationHelperMethod() {
@@ -4205,8 +4205,14 @@ Zone* SceneObjectImplementation::getZone() {
 	if ((strong = getParent()) != NULL){
 	// server/zone/objects/scene/SceneObject.idl():  			strong = getRootParent();
 	strong = getRootParent();
-	// server/zone/objects/scene/SceneObject.idl():  			return strong.getZone();
+	// server/zone/objects/scene/SceneObject.idl():  				return zone.get();
+	if (strong != NULL){
+	// server/zone/objects/scene/SceneObject.idl():  				return strong.getZone();
 	return strong->getZone();
+}
+
+	else 	// server/zone/objects/scene/SceneObject.idl():  				return zone.get();
+	return (&zone)->get();
 }
 
 	else {

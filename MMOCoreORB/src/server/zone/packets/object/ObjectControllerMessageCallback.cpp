@@ -37,6 +37,12 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		client->error(msg.toString());
 		return;
 	}
+	
+	int newTaskQueue = objectControllerCallback->getTaskQueue();
+	
+	if (newTaskQueue > 2)
+		taskqueue = newTaskQueue;
+	
 
 	try {
 

@@ -112,10 +112,12 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending tano baselines");
 
-	BaseMessage* tano3 = new TangibleObjectMessage3(_this.get());
+	Reference<TangibleObject*> thisPointer = _this.get();
+
+	BaseMessage* tano3 = new TangibleObjectMessage3(thisPointer);
 	player->sendMessage(tano3);
 
-	BaseMessage* tano6 = new TangibleObjectMessage6(_this.get());
+	BaseMessage* tano6 = new TangibleObjectMessage6(thisPointer);
 	player->sendMessage(tano6);
 
 	if (player->isPlayerCreature())
@@ -150,12 +152,16 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 	if (closeobjects != NULL) {
 		Zone* zone = getZone();
 
-		Locker locker(zone);
+		//Locker locker(zone);
 
 		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
+		
+		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+		
+		closeobjects->safeCopyTo(closeObjects);
 
-		for (int i = 0; i < closeobjects->size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeobjects->get(i).get());
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
 
 			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = cast<CreatureObject*>(obj);

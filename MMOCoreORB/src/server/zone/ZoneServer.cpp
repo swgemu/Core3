@@ -58,7 +58,7 @@
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_TIMEDSHUTDOWN__INT_,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETCITYMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_TIMEDSHUTDOWN__INT_,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__,RPC_GETINFO__,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERCAP__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETCITYMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
 
 ZoneServer::ZoneServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(config);
@@ -590,6 +590,19 @@ bool ZoneServer::isServerLoading() {
 		return _implementation->isServerLoading();
 }
 
+int ZoneServer::getServerCap() {
+	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSERVERCAP__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getServerCap();
+}
+
 int ZoneServer::getServerState() {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -951,7 +964,7 @@ String ZoneServer::getLoginMessage() {
 
 DistributedObjectServant* ZoneServer::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -1083,6 +1096,11 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 
 	if (_name == "ZoneServer.totalSentPackets") {
 		TypeInfo<int >::parseFromBinaryStream(&totalSentPackets, stream);
+		return true;
+	}
+
+	if (_name == "ZoneServer.serverCap") {
+		TypeInfo<int >::parseFromBinaryStream(&serverCap, stream);
 		return true;
 	}
 
@@ -1249,6 +1267,14 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ZoneServer.serverCap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&serverCap, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "ZoneServer.totalResentPackets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1330,7 +1356,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 22;
+	return _count + 23;
 }
 
 void ZoneServerImplementation::fixScheduler() {
@@ -1369,6 +1395,11 @@ bool ZoneServerImplementation::isServerOffline() {
 bool ZoneServerImplementation::isServerLoading() {
 	// server/zone/ZoneServer.idl():  		return serverState == LOADING;
 	return serverState == LOADING;
+}
+
+int ZoneServerImplementation::getServerCap() {
+	// server/zone/ZoneServer.idl():  		return serverCap;
+	return serverCap;
 }
 
 int ZoneServerImplementation::getServerState() {
@@ -1677,6 +1708,11 @@ void ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isServerLoading());
 		}
 		break;
+	case RPC_GETSERVERCAP__:
+		{
+			resp->insertSignedInt(getServerCap());
+		}
+		break;
 	case RPC_GETSERVERSTATE__:
 		{
 			resp->insertSignedInt(getServerState());
@@ -1947,6 +1983,10 @@ bool ZoneServerAdapter::isServerOffline() {
 
 bool ZoneServerAdapter::isServerLoading() {
 	return (static_cast<ZoneServer*>(stub))->isServerLoading();
+}
+
+int ZoneServerAdapter::getServerCap() {
+	return (static_cast<ZoneServer*>(stub))->getServerCap();
 }
 
 int ZoneServerAdapter::getServerState() {

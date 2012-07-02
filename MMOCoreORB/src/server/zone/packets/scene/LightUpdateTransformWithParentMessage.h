@@ -49,9 +49,9 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class LightUpdateTransformWithParentMessage : public StandaloneBaseMessage {
+class LightUpdateTransformWithParentMessage : public BaseMessage {
 public:
-	LightUpdateTransformWithParentMessage(SceneObject* object) : StandaloneBaseMessage(50) {
+	LightUpdateTransformWithParentMessage(SceneObject* object) : BaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(object->getParentID());
@@ -75,7 +75,7 @@ public:
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
 
-	LightUpdateTransformWithParentMessage(SceneObject* object, float posX, float posZ, float posY, uint64 cellID) : StandaloneBaseMessage(50) {
+	LightUpdateTransformWithParentMessage(SceneObject* object, float posX, float posZ, float posY, uint64 cellID) : BaseMessage(50) {
 		insertShort(0x08);
 		insertInt(0xC867AB5A);
 		insertLong(cellID);

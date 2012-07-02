@@ -27,7 +27,6 @@ int ObjectVersionUpdateManager::updateToVersion3() {
 
 	info("starting database update to version 3", true);
 
-	/*
 	try {
 
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
@@ -65,7 +64,7 @@ int ObjectVersionUpdateManager::updateToVersion3() {
 			if (cash + bank > 100000) {
 				printf("name:%s cash + bank:%d\n", customName.toString().toCharArray(), cash + bank);
 
-				//update = true;
+				update = true;
 			}
 
 			if (update) {
@@ -98,7 +97,6 @@ int ObjectVersionUpdateManager::updateToVersion3() {
 		e.printStackTrace();
 	}
 
-	*/
 	ObjectDatabaseManager::instance()->updateCurrentVersion(3);
 
 	return 0;
