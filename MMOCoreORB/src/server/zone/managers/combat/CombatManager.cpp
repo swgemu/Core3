@@ -727,7 +727,6 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
 
 	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		float originalDamage = damage;
 		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(attacker, psg);
 
@@ -737,8 +736,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
-		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		psg->inflictDamage(psg, 0, conditionDamage, true, true);
+		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
 	}
 
 	// Next is Jedi stuff
@@ -784,7 +782,6 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
 		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		float originalDamage = damage;
 		float armorPiercing = getArmorPiercing(armor, weapon);
 		float armorReduction = getArmorObjectReduction(attacker, armor);
 
@@ -792,8 +789,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
-		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		armor->inflictDamage(armor, 0, conditionDamage, true, true);
+		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
 	}
 
 	return damage;
