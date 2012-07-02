@@ -122,7 +122,8 @@ includeFile("poi/tatooine_fort_tusken.lua")
 includeFile("poi/corellia_rogue_corsec_base.lua")
 includeFile("poi/dantooine_dantari_village.lua")
 includeFile("poi/naboo_mauler_stronghold.lua")
-
+includeFile("poi/yavin_woolymander_temple.lua")
+includeFile("poi/yavin_blueleaf_temple.lua")
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
 --includeFile("event/stresstest_20120128.lua")
