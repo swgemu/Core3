@@ -801,9 +801,12 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
 	int armorPiercing = weapon->getArmorPiercing();
+	if (weapon->isBroken())
+		armorPiercing = 0;
+
 	int armorReduction = 0;
 
-	if (armor != NULL)
+	if (armor != NULL && !armor->isBroken())
 		armorReduction = armor->getRating();
 
 	if (armorPiercing > armorReduction)
@@ -814,6 +817,9 @@ float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) 
 
 float CombatManager::getArmorPiercing(AiAgent* defender, WeaponObject* weapon) {
 	int armorPiercing = weapon->getArmorPiercing();
+	if (weapon->isBroken())
+		armorPiercing = 0;
+
 	int armorReduction = defender->getArmor();
 
 	if (armorPiercing > armorReduction)
