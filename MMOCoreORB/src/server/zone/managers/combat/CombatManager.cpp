@@ -1333,7 +1333,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i));
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
