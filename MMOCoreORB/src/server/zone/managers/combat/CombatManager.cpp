@@ -1322,9 +1322,15 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 		//zone->rlock();
 
 		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-		SortedVector<QuadTreeEntry* > closeObjects(vec->size(), 10);
-				
-		vec->safeCopyTo(closeObjects);
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i));
