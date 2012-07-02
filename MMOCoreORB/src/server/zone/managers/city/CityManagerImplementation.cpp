@@ -576,7 +576,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 	if (currentRank == METROPOLIS) //City doesn't expand if it's metropolis.
 		return;
 
-	uint8 newRank = city->getCityRank() + 1;
+	uint8 newRank = currentRank + 1;
 
 	Zone* zone = city->getZone();
 
@@ -598,6 +598,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 		if (isCityRankCapped(zone->getZoneName(), newRank)) {
 			params.setStringId("city/city", "city_expand_cap_body"); //Capped
 			subject = "@city/city:city_expand_cap_subject";
+			newRank = currentRank;
 		}
 
 		ChatManager* chatManager = zoneServer->getChatManager();
