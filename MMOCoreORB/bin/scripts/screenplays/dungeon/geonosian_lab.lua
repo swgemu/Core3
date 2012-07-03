@@ -27,8 +27,8 @@ geonosian_lab_screenplay = ScreenPlay:new {
 	},
 	
 	timers = {
-		acklay = 900, --Acklay normally 7200 (2 hours)
-		fbspider = 450 --Fire Breathing Spider normally 3600 (1 hour)
+		acklay = 7200, --Acklay normally 7200 (2 hours)
+		fbspider = 3600 --Fire Breathing Spider normally 3600 (1 hour)
 	},
 	
 	geonosianLabObjectID = 1627780,
