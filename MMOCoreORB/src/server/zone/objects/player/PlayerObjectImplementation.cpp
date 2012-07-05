@@ -1693,3 +1693,16 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 bool PlayerObjectImplementation::hasPermissionGroup(const String& group) {
 	return permissionGroups.contains(group);
 }
+
+void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	for (int i = 0; i < ownedStructures.size(); ++i) {
+		ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+
+		if (structure != NULL) {
+			structure->destroyObjectFromWorld(false);
+			structure->destroyObjectFromDatabase(true);
+		}
+	}
+}

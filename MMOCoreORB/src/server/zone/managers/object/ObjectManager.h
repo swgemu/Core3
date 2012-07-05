@@ -57,6 +57,7 @@ which carries forward this exception.
 
 class TemplateManager;
 class UpdateModifiedObjectsThread;
+class DeleteCharactersTask;
 
 namespace engine {
 namespace db {
@@ -79,6 +80,10 @@ namespace zone {
 
 		int galaxyId;
 		Reference<ResultSet*> charactersSaved;
+
+		AtomicInteger saveCounter;
+
+		Reference<DeleteCharactersTask*> deleteCharactersTask;
 
 	public:
 		SceneObjectFactory<SceneObject* (), uint32> objectFactory;

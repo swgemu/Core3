@@ -286,6 +286,51 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	//info("saved in " + String::valueOf(start.miliDifference()) + " ms");
 }
 
+void SceneObjectImplementation::destroyPlayerCreatureFromDatabase(bool destroyContainedObjects) {
+	if (!isPlayerCreature())
+		return;
+
+	if(dataObjectComponent != NULL) {
+		dataObjectComponent->notifyObjectDestroyingFromDatabase();
+	}
+
+	ZoneServer* server = getZoneServer();
+
+	server->destroyObjectFromDatabase(getObjectID());
+
+	_this.get()->setPersistent(0);
+
+	if (!destroyContainedObjects)
+		return;
+
+	SortedVector<ManagedReference<SceneObject*> > destroyedObjects;
+	destroyedObjects.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getSlottedObject(i);
+
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
+	}
+
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> object = getContainerObject(j);
+
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
+	}
+
+	//Remove all child objects from database
+	for (int i = 0; i < childObjects.size(); ++i) {
+		ManagedReference<SceneObject*> child = childObjects.get(i);
+
+		if (child == NULL)
+			continue;
+
+		child->destroyObjectFromDatabase(true);
+	}
+}
+
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	//info("deleting from database", true);
 

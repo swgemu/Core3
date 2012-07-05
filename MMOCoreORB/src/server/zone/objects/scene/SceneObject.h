@@ -304,6 +304,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
+	void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
+
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	int canBeDestroyed(CreatureObject* player);
@@ -943,6 +945,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
+	virtual void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
+
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	virtual int canBeDestroyed(CreatureObject* player);
@@ -1529,6 +1533,8 @@ public:
 	void updateToDatabaseWithoutChildren();
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
