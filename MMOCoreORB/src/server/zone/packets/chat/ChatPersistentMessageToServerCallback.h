@@ -130,9 +130,9 @@ public:
 			return 0;
 
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
-		PlayerObject* ghost = receiverPlayer->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost->isIgnoring(player->getFirstName().toLowerCase())) {
+		if (ghost == NULL || ghost->isIgnoring(player->getFirstName().toLowerCase())) {
 			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
