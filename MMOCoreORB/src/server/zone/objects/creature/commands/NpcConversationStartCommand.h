@@ -72,16 +72,26 @@ public:
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL && object->isCreatureObject()) {
-			CreatureObject* creatureObject = cast<CreatureObject*>( object.get());
+			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
 
 			try {
 				Locker clocker(creatureObject, creature);
 
-				if (creature->isInRange(object, 5)) {
+				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+				uint64 parentid = validPosition->getParent();
+
+				if (parentid != creatureObject->getParentID())
+					return TOOFAR;
+
+				Vector3 vec = validPosition->getWorldPosition(server->getZoneServer());
+
+				if (vec.distanceTo(creatureObject->getWorldPosition()) <= 5.f) {
 					ghost->setConversatingCreature(creatureObject);
 					creatureObject->sendConversationStartTo(creature);
 
 					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
+				} else {
+					return TOOFAR;
 				}
 
 			} catch (Exception& e) {
