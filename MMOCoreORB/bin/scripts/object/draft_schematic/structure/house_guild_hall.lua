@@ -45,7 +45,7 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
 
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Deed for: Tatooine Guildhall",
+   customObjectName = "Deed for: Tatooine Guild Hall",
 
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 36, 
