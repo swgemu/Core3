@@ -26,8 +26,10 @@ public:
 
 		info("Running delete characters task.", true);
 
+		int galaxyid = server->getGalaxyID();
+
 		try {
-			Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery("SELECT character_oid FROM deleted_characters WHERE db_deleted = 0 LIMIT 250");
+			Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery("SELECT character_oid FROM deleted_characters WHERE db_deleted = 0 AND galaxy_id = " + String::valueOf(galaxyid) + " LIMIT 250");
 
 			while (result->next()) {
 				uint64 oid = result->getUnsignedLong(0);
