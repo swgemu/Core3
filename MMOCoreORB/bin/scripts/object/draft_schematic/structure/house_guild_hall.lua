@@ -70,7 +70,7 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
    contribution = {100, 100, 100, 100, 100, 100},
 
 
-   targetTemplate = "object/tangible/deed/guild_deed/tatooine_guild_deed.iff",
+   targetTemplate = "object/tangible/deed/guild_deed/tatooine_guild_style_02_deed.iff",
 
    additionalTemplates = {
              }
