@@ -504,20 +504,23 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		int votes = entry.getValue();
 
 		//Ensure that each vote is for a valid citizen candidate by a current city citizen.
-		if (city->isCitizen(candidateID) && city->isCandidate(candidateID) && city->isCitizen(candidateID)) {
+		if (city->isCitizen(candidateID) && city->isCandidate(candidateID)) {
 			ManagedReference<SceneObject*> mayorObject = zoneServer->getObject(candidateID);
 
 			if (mayorObject != NULL && mayorObject->isPlayerCreature()) {
-				Locker _lock(mayorObject);
+				Locker _crosslock(mayorObject, city);
 
 				CreatureObject* mayor = cast<CreatureObject*>(mayorObject.get());
 				PlayerObject* ghost = cast<PlayerObject*>(mayorObject->getSlottedObject("ghost"));
 
 				//Make sure the candidate is still a politician.
-				if (mayor->hasSkill("social_politician_novice") && votes > topVotes) {
-					ghost->addExperience("political", 300, true);
-					topCandidate = candidateID;
-					topVotes = votes;
+				if (mayor->hasSkill("social_politician_novice")) {
+					ghost->addExperience("political", votes * 300, true);
+
+					if (votes > topVotes) {
+						topCandidate = candidateID;
+						topVotes = votes;
+					}
 				}
 			}
 		}
