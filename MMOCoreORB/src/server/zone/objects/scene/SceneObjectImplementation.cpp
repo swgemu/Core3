@@ -370,11 +370,15 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (parent != NULL)
 		link(player, containmentType);
 
-	sendBaselinesTo(player);
+	try {
+		sendBaselinesTo(player);
 
-	sendContainerObjectsTo(player);
+		sendContainerObjectsTo(player);
 
-	sendSlottedObjectsTo(player);
+		sendSlottedObjectsTo(player);
+	} catch (Exception& e) {
+
+	}
 
 	if (doClose) {
 		SceneObjectImplementation::close(player);
