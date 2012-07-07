@@ -377,8 +377,8 @@ unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, Cre
 	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);
-	float modEnvironment = 1 + (healer->getSkillMod("private_medical_rating") / 100.0f);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);
+	float modEnvironment = 1 + ((float) healer->getSkillMod("private_medical_rating") / 100.0f);
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return (power * modEnvironment * (100.0f + modSkill) / 100.0f);
