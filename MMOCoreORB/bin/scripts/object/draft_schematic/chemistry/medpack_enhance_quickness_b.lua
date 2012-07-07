@@ -64,7 +64,7 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_b = object_draft_sche
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 1, -1, 1},
+   ingredientSlotType = {0, 0, 1, 1, 1},
    resourceTypes = {"meat_avian", "gas", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"},
    resourceQuantities = {18, 18, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
