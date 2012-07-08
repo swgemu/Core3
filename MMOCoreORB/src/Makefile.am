@@ -331,6 +331,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
+		server/zone/objects/scene/components/DataObjectComponent.cpp \
 		server/zone/objects/region/components/CityVotingMenuComponent.cpp \
 		server/zone/objects/region/components/CityManagementMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \

@@ -9,10 +9,6 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/Zone.h"
 
-void AuctionItemImplementation::setVendorUID(const String& uid) {
-	vuid = uid;
-	//printf("terminal title:%s\n", title.toString().toCharArray());
-}
 
 void AuctionItemImplementation::clearAuctionWithdraw() {
 	if (auctionOptions & OPTION_WITHDRAW)

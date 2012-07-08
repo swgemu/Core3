@@ -62,8 +62,6 @@ public:
 
 	static const int SOLD = 2;
 
-	static const int WITHDRAWN = 3;
-
 	static const int EXPIRED = 4;
 
 	static const int OFFERED = 5;
@@ -73,8 +71,6 @@ public:
 	AuctionItem(unsigned long long objectid);
 
 	int compareTo(AuctionItem* obj);
-
-	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -95,8 +91,6 @@ public:
 	void setOfferToID(unsigned long long vendorOwnerID);
 
 	void setBidderName(const String& name);
-
-	void setPlanet(const String& planetid);
 
 	void setOwnerName(const String& name);
 
@@ -128,6 +122,10 @@ public:
 
 	unsigned long long getOfferToID();
 
+	void setSearchable(bool enabled);
+
+	void setVendorUID(const String& uid);
+
 	const String getVendorUID();
 
 	String getOwnerName();
@@ -146,10 +144,6 @@ public:
 
 	String getItemDescription();
 
-	void setRegion(const String& value);
-
-	String getRegion();
-
 	int getAuctionOptions();
 
 	bool isPremiumAuction();
@@ -157,6 +151,8 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
+
+	bool isSearchable();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -198,10 +194,6 @@ protected:
 
 	unsigned long long offerToID;
 
-	String planet;
-
-	String region;
-
 	String vuid;
 
 	String itemName;
@@ -215,6 +207,8 @@ protected:
 	int status;
 
 	bool onBazaar;
+
+	bool searchable;
 
 	unsigned long long buyerID;
 
@@ -233,8 +227,6 @@ public:
 
 	static const int SOLD = 2;
 
-	static const int WITHDRAWN = 3;
-
 	static const int EXPIRED = 4;
 
 	static const int OFFERED = 5;
@@ -246,8 +238,6 @@ public:
 	AuctionItemImplementation(DummyConstructorParameter* param);
 
 	int compareTo(AuctionItem* obj);
-
-	void setVendorUID(const String& uid);
 
 	void notifyLoadFromDatabase();
 
@@ -268,8 +258,6 @@ public:
 	void setOfferToID(unsigned long long vendorOwnerID);
 
 	void setBidderName(const String& name);
-
-	void setPlanet(const String& planetid);
 
 	void setOwnerName(const String& name);
 
@@ -301,6 +289,10 @@ public:
 
 	unsigned long long getOfferToID();
 
+	void setSearchable(bool enabled);
+
+	void setVendorUID(const String& uid);
+
 	const String getVendorUID();
 
 	String getOwnerName();
@@ -319,10 +311,6 @@ public:
 
 	String getItemDescription();
 
-	void setRegion(const String& value);
-
-	String getRegion();
-
 	int getAuctionOptions();
 
 	bool isPremiumAuction();
@@ -330,6 +318,8 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
+
+	bool isSearchable();
 
 	WeakReference<AuctionItem*> _this;
 
@@ -376,8 +366,6 @@ public:
 
 	int compareTo(AuctionItem* obj);
 
-	void setVendorUID(const String& uid);
-
 	void notifyLoadFromDatabase();
 
 	void setVendorID(unsigned long long val);
@@ -428,6 +416,10 @@ public:
 
 	unsigned long long getOfferToID();
 
+	void setSearchable(bool enabled);
+
+	void setVendorUID(const String& uid);
+
 	const String getVendorUID();
 
 	String getOwnerName();
@@ -446,10 +438,6 @@ public:
 
 	String getItemDescription();
 
-	void setRegion(const String& value);
-
-	String getRegion();
-
 	int getAuctionOptions();
 
 	bool isPremiumAuction();
@@ -457,6 +445,8 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
+
+	bool isSearchable();
 
 };
 

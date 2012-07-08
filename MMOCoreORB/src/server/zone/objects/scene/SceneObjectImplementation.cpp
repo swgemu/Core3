@@ -115,8 +115,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 	}
 
-	if(dataObjectComponent != NULL)
+	if(dataObjectComponent != NULL) {
+		dataObjectComponent->setParent(_this.get());
 		dataObjectComponent->initializeTransientMembers();
+	}
 
 	movementCounter = 0;
 

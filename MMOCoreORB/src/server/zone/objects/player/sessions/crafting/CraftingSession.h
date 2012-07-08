@@ -184,6 +184,8 @@ public:
 
 	void createManufactureSchematic(int clientCounter);
 
+	int getState();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -309,6 +311,8 @@ private:
 	void startCreationTasks(int timer, bool practice);
 
 public:
+	int getState();
+
 	WeakReference<CraftingSession*> _this;
 
 	operator const CraftingSession*();
@@ -377,6 +381,8 @@ public:
 	void createPrototype(int clientCounter, bool practice);
 
 	void createManufactureSchematic(int clientCounter);
+
+	int getState();
 
 };
 

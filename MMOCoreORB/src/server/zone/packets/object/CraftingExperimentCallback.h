@@ -61,6 +61,9 @@ public:
 			return;
 		}
 
+		if(session->getState() != 3)
+			return;
+
 		Locker locker(session);
 		session->experiment(numRowsAttempted, expString, clientCounter);
 	}

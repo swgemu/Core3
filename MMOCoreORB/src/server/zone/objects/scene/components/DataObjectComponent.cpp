@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,71 +38,33 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef CREATEPROTOTYPECOMMAND_H_
-#define CREATEPROTOTYPECOMMAND_H_
-
+#include "DataObjectComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-class CreatePrototypeCommand : public QueueCommand {
-public:
+DataObjectComponent::DataObjectComponent() {
 
-	CreatePrototypeCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+}
 
-	}
+DataObjectComponent::~DataObjectComponent() {
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+}
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+void DataObjectComponent::initializeTransientMembers() {
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+}
 
-		/**
-		 * Arguments
-		 *
-		 * 1 Unicode String
-		 * Contains clientCounter and int for practice
-		 *
-		 */
+void DataObjectComponent::notifyObjectDestroyingFromDatabase() {
 
-		if (!creature->isPlayerCreature())
-			return INVALIDTARGET;
+}
 
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+void DataObjectComponent::setParent(SceneObject* object) {
+	parent = object;
+}
 
-		int clientCounter, practice;
+SceneObject* DataObjectComponent::getParent() {
+	return parent;
+}
 
-		StringTokenizer tokenizer(arguments.toString());
-
-		if(tokenizer.hasMoreTokens())
-			clientCounter = tokenizer.getIntToken();
-		else
-			return GENERALERROR;
-
-		if(tokenizer.hasMoreTokens())
-			practice = tokenizer.getIntToken();
-		else
-			practice = 1;
-
-		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
-
-		if(session == NULL) {
-			return GENERALERROR;
-		}
-
-		if(session->getState() != 6)
-			return GENERALERROR;
-
-		Locker locker(session);
-		session->createPrototype(clientCounter, (practice == 0));
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //CREATEPROTOTYPECOMMAND_H_

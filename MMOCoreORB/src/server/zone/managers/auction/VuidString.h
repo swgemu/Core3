@@ -13,15 +13,19 @@
 class VuidString : public String {
 public:
 
-	VuidString() {
+	VuidString() : String()  {
 
 	}
 
-	~VuidString() {
+	~VuidString(){
 
 	}
 
 	VuidString(const String& val) : String(val){
+
+	}
+
+	VuidString(const char* str) : String(str){
 
 	}
 
@@ -34,12 +38,7 @@ public:
 		if(beginsWith(str))
 			return 0;
 
-		int compare = String::compareTo((String)str);
-
-		if(compare > 0)
-			return 1;
-
-		return -1;
+		return String::compareTo((String)str);
 	}
 };
 

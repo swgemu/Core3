@@ -706,8 +706,10 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 				values->getMaxPercentage() <= 1.0f
 				&& !values->isFiller()) {
 
-			average += values->getMaxPercentage();
-			count++;
+			if(values->getValue() < values->getMaxValue()) {
+				average += values->getMaxPercentage();
+				count++;
+			}
 		}
 	}
 

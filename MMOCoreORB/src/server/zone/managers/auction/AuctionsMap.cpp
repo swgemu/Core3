@@ -6,15 +6,13 @@
 
 #include "server/zone/objects/auction/AuctionItem.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	AuctionsMapStub
  */
 
-enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_STRING_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__STRING_,RPC_DELETEVENDORITEMS__STRING_,RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_};
+enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__SCENEOBJECT_,RPC_DELETETERMINALITEMS__SCENEOBJECT_,RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -32,37 +30,35 @@ AuctionsMap::~AuctionsMap() {
 
 
 
-int AuctionsMap::addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMap::addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_STRING_AUCTIONITEM_);
+		DistributedMethod method(this, RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(vendor);
-		method.addAsciiParameter(uid);
 		method.addObjectParameter(item);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->addItem(player, vendor, uid, item);
+		return _implementation->addItem(player, vendor, item);
 }
 
-int AuctionsMap::removeItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
+int AuctionsMap::removeItem(SceneObject* vendor, AuctionItem* item) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_);
+		DistributedMethod method(this, RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_);
 		method.addObjectParameter(vendor);
-		method.addAsciiParameter(uid);
 		method.addObjectParameter(item);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->removeItem(vendor, uid, item);
+		return _implementation->removeItem(vendor, item);
 }
 
 AuctionItem* AuctionsMap::getItem(unsigned long long id) {
@@ -93,50 +89,50 @@ bool AuctionsMap::containsItem(unsigned long long id) {
 		return _implementation->containsItem(id);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search) {
+TerminalListVector AuctionsMap::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getVendorItems(player, vendor, vuid, search);
+		return _implementation->getVendorTerminalData(planet, region, vendor);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMap::getBazaarItems(SceneObject* vendor, const String& vuid, const String& search) {
+TerminalListVector AuctionsMap::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getBazaarItems(vendor, vuid, search);
+		return _implementation->getBazaarTerminalData(planet, region, vendor);
 }
 
-int AuctionsMap::getVendorItemCount(const String& uid) {
+int AuctionsMap::getVendorItemCount(SceneObject* vendor) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETVENDORITEMCOUNT__STRING_);
-		method.addAsciiParameter(uid);
+		DistributedMethod method(this, RPC_GETVENDORITEMCOUNT__SCENEOBJECT_);
+		method.addObjectParameter(vendor);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getVendorItemCount(uid);
+		return _implementation->getVendorItemCount(vendor);
 }
 
-void AuctionsMap::deleteVendorItems(const String& uid) {
+void AuctionsMap::deleteTerminalItems(SceneObject* vendor) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DELETEVENDORITEMS__STRING_);
-		method.addAsciiParameter(uid);
+		DistributedMethod method(this, RPC_DELETETERMINALITEMS__SCENEOBJECT_);
+		method.addObjectParameter(vendor);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->deleteVendorItems(uid);
+		_implementation->deleteTerminalItems(vendor);
 }
 
 int AuctionsMap::getBazaarItemCount(CreatureObject* player) {
@@ -167,6 +163,21 @@ void AuctionsMap::updateUID(SceneObject* vendor, const String& oldUID, const Str
 		method.executeWithVoidReturn();
 	} else
 		_implementation->updateUID(vendor, oldUID, newUID);
+}
+
+void AuctionsMap::updateVendorSearch(SceneObject* vendor, bool enabled) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_);
+		method.addObjectParameter(vendor);
+		method.addBooleanParameter(enabled);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateVendorSearch(vendor, enabled);
 }
 
 DistributedObjectServant* AuctionsMap::_getImplementation() {
@@ -297,10 +308,6 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 AuctionsMapImplementation::AuctionsMapImplementation() {
 	_initializeImplementation();
-	// server/zone/managers/auction/AuctionsMap.idl():  		vendorItemsForSale.setNoDuplicateInsertPlan();
-	(&vendorItemsForSale)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarItemsForSale.setNoDuplicateInsertPlan();
-	(&bazaarItemsForSale)->setNoDuplicateInsertPlan();
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNullValue(null);
 	(&allItems)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNoDuplicateInsertPlan();
@@ -347,16 +354,14 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_STRING_AUCTIONITEM_:
+	case RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_:
 		{
-			String uid; 
-			resp->insertSignedInt(addItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(uid), static_cast<AuctionItem*>(inv->getObjectParameter())));
+			resp->insertSignedInt(addItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_REMOVEITEM__SCENEOBJECT_STRING_AUCTIONITEM_:
+	case RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_:
 		{
-			String uid; 
-			resp->insertSignedInt(removeItem(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(uid), static_cast<AuctionItem*>(inv->getObjectParameter())));
+			resp->insertSignedInt(removeItem(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
 	case RPC_GETITEM__LONG_:
@@ -369,16 +374,14 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(containsItem(inv->getUnsignedLongParameter()));
 		}
 		break;
-	case RPC_GETVENDORITEMCOUNT__STRING_:
+	case RPC_GETVENDORITEMCOUNT__SCENEOBJECT_:
 		{
-			String uid; 
-			resp->insertSignedInt(getVendorItemCount(inv->getAsciiParameter(uid)));
+			resp->insertSignedInt(getVendorItemCount(static_cast<SceneObject*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_DELETEVENDORITEMS__STRING_:
+	case RPC_DELETETERMINALITEMS__SCENEOBJECT_:
 		{
-			String uid; 
-			deleteVendorItems(inv->getAsciiParameter(uid));
+			deleteTerminalItems(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_:
@@ -392,17 +395,22 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			updateUID(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getAsciiParameter(oldUID), inv->getAsciiParameter(newUID));
 		}
 		break;
+	case RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_:
+		{
+			updateVendorSearch(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
 }
 
-int AuctionsMapAdapter::addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
-	return (static_cast<AuctionsMap*>(stub))->addItem(player, vendor, uid, item);
+int AuctionsMapAdapter::addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item) {
+	return (static_cast<AuctionsMap*>(stub))->addItem(player, vendor, item);
 }
 
-int AuctionsMapAdapter::removeItem(SceneObject* vendor, const String& uid, AuctionItem* item) {
-	return (static_cast<AuctionsMap*>(stub))->removeItem(vendor, uid, item);
+int AuctionsMapAdapter::removeItem(SceneObject* vendor, AuctionItem* item) {
+	return (static_cast<AuctionsMap*>(stub))->removeItem(vendor, item);
 }
 
 AuctionItem* AuctionsMapAdapter::getItem(unsigned long long id) {
@@ -413,12 +421,12 @@ bool AuctionsMapAdapter::containsItem(unsigned long long id) {
 	return (static_cast<AuctionsMap*>(stub))->containsItem(id);
 }
 
-int AuctionsMapAdapter::getVendorItemCount(const String& uid) {
-	return (static_cast<AuctionsMap*>(stub))->getVendorItemCount(uid);
+int AuctionsMapAdapter::getVendorItemCount(SceneObject* vendor) {
+	return (static_cast<AuctionsMap*>(stub))->getVendorItemCount(vendor);
 }
 
-void AuctionsMapAdapter::deleteVendorItems(const String& uid) {
-	(static_cast<AuctionsMap*>(stub))->deleteVendorItems(uid);
+void AuctionsMapAdapter::deleteTerminalItems(SceneObject* vendor) {
+	(static_cast<AuctionsMap*>(stub))->deleteTerminalItems(vendor);
 }
 
 int AuctionsMapAdapter::getBazaarItemCount(CreatureObject* player) {
@@ -427,6 +435,10 @@ int AuctionsMapAdapter::getBazaarItemCount(CreatureObject* player) {
 
 void AuctionsMapAdapter::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 	(static_cast<AuctionsMap*>(stub))->updateUID(vendor, oldUID, newUID);
+}
+
+void AuctionsMapAdapter::updateVendorSearch(SceneObject* vendor, bool enabled) {
+	(static_cast<AuctionsMap*>(stub))->updateVendorSearch(vendor, enabled);
 }
 
 /*

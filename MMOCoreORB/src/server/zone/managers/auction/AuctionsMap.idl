@@ -47,18 +47,17 @@ package server.zone.managers.auction;
 import engine.core.ManagedObject;
 import system.util.VectorMap;
 import server.zone.objects.auction.AuctionItem;
-import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.managers.auction.VuidString;
-include server.zone.managers.auction.VuidItemMap;
+include server.zone.managers.auction.AuctionTerminalMap;
+include server.zone.managers.auction.TerminalListVector;
 
 class AuctionsMap extends ManagedObject {
 	
 	@dereferenced
-	protected transient VuidItemMap vendorItemsForSale;
+	protected transient AuctionTerminalMap vendorItemsForSale;
 	
 	@dereferenced
-	protected transient VuidItemMap bazaarItemsForSale;
+	protected transient AuctionTerminalMap bazaarItemsForSale;
 
 	@dereferenced
 	protected transient VectorMap<unsigned long, AuctionItem> allItems;
@@ -70,12 +69,6 @@ class AuctionsMap extends ManagedObject {
 	protected transient Logger logger;
 	
 	public AuctionsMap() {
-		//vendorItemsForSale.setNullValue(null);
-		vendorItemsForSale.setNoDuplicateInsertPlan();
-		
-		//bazaarItemsForSale.setNullValue(null);
-		bazaarItemsForSale.setNoDuplicateInsertPlan();
-		
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
 		
@@ -87,13 +80,13 @@ class AuctionsMap extends ManagedObject {
 		logger.setLogging(true);
 	}
 
-	public native int addItem(CreatureObject player, SceneObject vendor, string uid, AuctionItem item);
-	private native int addVendorItem(CreatureObject player, SceneObject vendor, string uid, AuctionItem item);
-	private native int addBazaarItem(CreatureObject player, string uid, AuctionItem item);
+	public native int addItem(CreatureObject player, SceneObject vendor, AuctionItem item);
+	private native int addVendorItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
+	private native int addBazaarItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
 
-	public native int removeItem(SceneObject vendor, final string uid, AuctionItem item);
-	private native int removeVendorItem(SceneObject vendor, final string uid, AuctionItem item);
-	private native int removeBazaarItem(final string uid, AuctionItem item);
+	public native int removeItem(SceneObject vendor, AuctionItem item);
+	private native int removeVendorItem(final string planet, final string region, SceneObject vendor, AuctionItem item);
+	private native int removeBazaarItem(final string planet, final string region, SceneObject vendor, AuctionItem item);
 
 	
 	public AuctionItem getItem(unsigned long id) {
@@ -106,17 +99,17 @@ class AuctionsMap extends ManagedObject {
 
 	@local
 	@dereferenced
-	public native SortedVector<AuctionItem> getVendorItems(CreatureObject player, SceneObject vendor, final string vuid, final string search);
+	public native TerminalListVector getVendorTerminalData(final string planet, final string region, SceneObject vendor);
 	
 	@local
 	@dereferenced
-	public native SortedVector<AuctionItem> getBazaarItems(SceneObject vendor, final string vuid, final string search);
+	public native TerminalListVector getBazaarTerminalData(final string planet, final string region, SceneObject vendor);
 	
 	private native void sendVendorUpdateMail(SceneObject vendor, boolean isEmpty);
 
-	public native int getVendorItemCount(final string uid);
+	public native int getVendorItemCount(SceneObject vendor);
 	
-	public native void deleteVendorItems(final string uid);
+	public native void deleteTerminalItems(SceneObject vendor);
 	
 	public int getBazaarItemCount(CreatureObject player) {
 		return bazaarCount.get(player.getObjectID());
@@ -124,4 +117,5 @@ class AuctionsMap extends ManagedObject {
 	
 	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);
 
+	public native void updateVendorSearch(SceneObject vendor, boolean enabled);
 }

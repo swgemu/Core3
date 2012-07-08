@@ -57,17 +57,17 @@ namespace events {
 
 class UpdateVendorTask: public Task {
 protected:
-	ManagedWeakReference<TangibleObject*> vendor;
+	ManagedWeakReference<SceneObject*> vendor;
 
 public:
-	UpdateVendorTask(TangibleObject* vndr) {
+	UpdateVendorTask(SceneObject* vndr) {
 		vendor = vndr;
 
 	}
 
 	void run() {
 
-		ManagedReference<TangibleObject*> strongRef = vendor.get();
+		ManagedReference<SceneObject*> strongRef = vendor.get();
 
 		if (strongRef == NULL || strongRef->isBazaarTerminal())
 			return;

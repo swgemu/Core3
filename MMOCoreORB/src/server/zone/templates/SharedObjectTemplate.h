@@ -174,6 +174,8 @@ public:
 	const static int REPAIRTOOL = 0x4000033;
 	const static int ROBEOBJECT = 0x4000034;
 	const static int LIGHTSABERCRYSTAL = 0x4000035;
+	const static int SHIPCHASSIS = 0x4000036;
+	const static int SHIPDEED = 0x4000037;
 
 public:
 	SharedObjectTemplate();
@@ -649,6 +651,14 @@ public:
 	virtual bool isLightsaberCrystalTemplate() {
 		return false;
 	}
+
+	virtual bool isShipChassisTemplate() {
+    	return false;
+    }
+
+	virtual bool isShipDeedTemplate() {
+    	return false;
+    }
 };
 
 

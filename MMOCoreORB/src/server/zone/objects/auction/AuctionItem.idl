@@ -63,8 +63,6 @@ class AuctionItem extends ManagedObject {
 	protected string bidderName;
 	protected unsigned long offerToID;
 
-	protected string planet;
-	protected string region;
 	protected string vuid;
 
 	protected string itemName;
@@ -77,6 +75,7 @@ class AuctionItem extends ManagedObject {
 	protected int status;
 
 	protected boolean onBazaar;
+	protected boolean searchable;
 
 	protected unsigned long buyerID;
 
@@ -91,7 +90,6 @@ class AuctionItem extends ManagedObject {
 
 	public final static int FORSALE = 1;
 	public final static int SOLD = 2;
-	public final static int WITHDRAWN = 3;
 	public final static int EXPIRED = 4;
 	public final static int OFFERED = 5;
 	public final static int RETRIEVED = 6;
@@ -109,6 +107,7 @@ class AuctionItem extends ManagedObject {
 		auction = true;
 
 		onBazaar = false;
+		searchable = false;
 		
 		buyerID = 0;
 		expireTime = 0;
@@ -136,9 +135,7 @@ class AuctionItem extends ManagedObject {
 		else
 			return 0;
 	}
-	
-	public native void setVendorUID(final string uid);
-	
+
 	public native void notifyLoadFromDatabase();
 		
 	public void setVendorID(unsigned long val) {
@@ -176,12 +173,7 @@ class AuctionItem extends ManagedObject {
 	public void setBidderName(final string name) {
 		bidderName = name;
 	}
-	
-	@local
-	public void setPlanet(final string planetid) {
-		planet = planetid;
-	}
-	
+
 	public void setOwnerName(final string name) {
 		ownerName = name;
 	}
@@ -241,6 +233,14 @@ class AuctionItem extends ManagedObject {
 		return offerToID;
 	}
 	
+	public void setSearchable(boolean enabled) {
+		searchable = enabled;
+	}
+	
+	public void setVendorUID(final string uid) {
+		vuid = uid;
+	}
+	
 	public final string getVendorUID() {
 		return vuid;
 	}
@@ -276,14 +276,6 @@ class AuctionItem extends ManagedObject {
 	public string getItemDescription() {
 		return itemDescription;
 	}
-	
-	public void setRegion(final string value) {
-		region = value;
-	}
-	
-	public string getRegion() {
-		return region;
-	}
 
 	public int getAuctionOptions() {
 		return auctionOptions;
@@ -299,5 +291,9 @@ class AuctionItem extends ManagedObject {
 
 	public boolean isAuctionObject() {
 		return true;
+	}
+	
+	public boolean isSearchable() {
+		return searchable == true;
 	}
 }

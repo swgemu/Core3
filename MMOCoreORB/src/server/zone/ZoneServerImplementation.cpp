@@ -210,6 +210,9 @@ void ZoneServerImplementation::initialize() {
 	cityManager->deploy("CityManager");
 	cityManager->loadLuaConfig();
 
+	auctionManager = new AuctionManager(_this.get());
+	auctionManager->deploy();
+
 	startZones();
 
 	startManagers();
@@ -253,10 +256,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	auctionManager = new AuctionManager(_this.get());
-	auctionManager->deploy();
-	auctionManager->initialize();
-
 	missionManager = new MissionManager(_this.get(), processor);
 	missionManager->deploy("MissionManager");
 
@@ -275,6 +274,8 @@ void ZoneServerImplementation::startManagers() {
 
 	//start global screne plays
 	DirectorManager::instance()->startGlobalScreenPlays();
+
+	auctionManager->initialize();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {

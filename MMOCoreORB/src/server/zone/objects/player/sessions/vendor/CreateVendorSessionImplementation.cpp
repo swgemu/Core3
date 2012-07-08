@@ -8,6 +8,9 @@
 #include "CreateVendorSession.h"
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
@@ -150,7 +153,6 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	}
 
 	vendorData->setOwnerId(player->getObjectID());
-	vendorData->setVendor(vendor);
 
 	vendor->setCustomObjectName("Vendor: " + name, false);
 	vendor->setContainerOwnerID(player->getObjectID());

@@ -8,24 +8,18 @@
 #ifndef VENDORDATACOMPONENT_H_
 #define VENDORDATACOMPONENT_H_
 
-#include "VendorDataComponent.h"
+#include "AuctionTerminalDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/Zone.h"
 
-class VendorDataComponent : public DataObjectComponent {
+class VendorDataComponent : public AuctionTerminalDataComponent {
 protected:
 	uint64 ownerId;
-	uint64 vendorId;
-
-	ManagedReference<TangibleObject*> vendor;
 
 	Reference<Task*> vendorCheckTask;
 
-	String location;
 	bool initialized;
 	bool vendorSearchEnabled;
 	bool disabled;
@@ -37,8 +31,6 @@ protected:
 
 	Time lastXpAward;
 	int awardUsageXP;
-
-	String UID;
 
 	bool adBarking;
 
@@ -53,14 +45,16 @@ protected:
 public:
 	/// 5 minutes
 	static const int USEXPINTERVAL = 5;
+
 	// 60 Minutes
-	static const int VENDORCHECKINTERVAL = 60;
+	static const int VENDORCHECKINTERVAL = 1;//60;
+	static const int VENDORCHECKDELAY = 0;//20;
 
-	static const int FIRSTWARNING = 60 * 60 * 24 * 25; // 5 days
-	static const int SECONDWARNING = 60 * 60 * 24 * 50; // 10 days
-	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
+	static const int FIRSTWARNING = 60 * 60 * 3;//24 * 25; // 5 days
+	static const int SECONDWARNING = 60 * 60 * 4;//24 * 50; // 10 days
+	static const int EMPTYDELETE = 60 * 60 * 5;//24 * 14; // 14 days
 
-	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
+	static const int DELETEWARNING = 60 * 60 * 3;//24 * 100; // 100 days
 
 public:
 	VendorDataComponent();
@@ -88,35 +82,8 @@ public:
 		return ownerId;
 	}
 
-	void updateUID() {
-
-		if(vendor == NULL || vendor->getZone() == NULL)
-			return;
-
-		String oldUID = UID;
-
-		UID = vendor->getZone()->getZoneName() + ".";
-
-		String region = "@planet_n:" + vendor->getZone()->getZoneName();
-		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-		if(cityRegion != NULL)
-			region = cityRegion->getRegionName();
-
-		UID += region + "." + vendor->getDisplayedName() + ".";
-		UID += String::valueOf(vendor->getObjectID()) + "#";
-		UID += String::valueOf(((int)vendor->getWorldPositionX())) + "," + String::valueOf(((int)vendor->getWorldPositionY()));
-	}
-
-	String getUID() {
-		return UID;
-	}
-
 	bool isVendorData() {
 		return true;
-	}
-	inline void setVendor(TangibleObject* objRef) {
-		vendor = objRef;
-		vendorId = objRef->getObjectID();
 	}
 
 	inline void setInitialized(bool val) {
@@ -124,9 +91,7 @@ public:
 		updateUID();
 	}
 
-	inline void setVendorSearchEnabled(bool enabled) {
-		vendorSearchEnabled = enabled;
-	}
+	void setVendorSearchEnabled(bool enabled);
 
 	inline void setDisabled(bool isDisabled) {
 		disabled = isDisabled;
@@ -134,19 +99,12 @@ public:
 
 	inline void setRegistered(bool reg) {
 		registered = reg;
-	}
 
-
-	inline TangibleObject* getVendor() {
-		return vendor;
-	}
-
-	virtual inline String getLocation() {
-		return location;
-	}
-
-	inline void setLocation(const String& loc) {
-		location = loc;
+		/// This is just a precaution in case somehow items get lost
+		/// and this would link up a missing auction list unless it was totally
+		/// gone
+		if(registered)
+			updateUID();
 	}
 
 	inline int getOwnershipRightsOf(CreatureObject* player) {

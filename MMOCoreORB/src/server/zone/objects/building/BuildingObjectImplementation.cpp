@@ -580,6 +580,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 
+	addTemplateSkillMods(player);
+
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!
 		if (paidAccessList.contains(player->getObjectID())) {
@@ -604,8 +606,6 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	}
 
 	int i = 0;
-	
-	addTemplateSkillMods(player);
 
 	notifyObservers(ObserverEventType::ENTEREDBUILDING, player, i);
 

@@ -6,16 +6,13 @@
  */
 
 #include "VendorManager.h"
-#include "VendorSelectionNode.h"
 #include "server/zone/managers/vendor/sui/DestroyVendorSuiCallback.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
 #include "server/zone/managers/vendor/sui/RegisterVendorSuiCallback.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -67,6 +64,11 @@ bool VendorManager::isValidVendorName(const String& name) {
 
 void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* vendor) {
 
+	if(vendor->getZone() == NULL) {
+		error("NULL zone in VendorManager::handleDisplayStatus");
+		return;
+	}
+
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
@@ -100,16 +102,34 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 		return;
 	}
 
-	SortedVector<ManagedReference<AuctionItem*> > vendorItems = auctionsMap->getVendorItems(player, vendor, vendorData->getUID(), vendorData->getUID());
+	String planet = vendor->getZone()->getZoneName();
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+
+
+	ManagedReference<CityRegion*> regionObject = vendor->getCityRegion();
+	if(regionObject != NULL)
+		region = regionObject->getRegionName();
+
+	TerminalListVector vendorList = auctionsMap->getVendorTerminalData(planet, region, vendor);
 
 	uint32 itemsForSaleCount = 0;
 
-	for (int i = 0; i < vendorItems.size(); ++i) {
-		AuctionItem* item = vendorItems.get(i);
-		if (item->getStatus() == AuctionItem::FORSALE)
-			itemsForSaleCount++;
+	if(vendorList.size() > 0) {
 
+		Reference<TerminalItemList*> list = vendorList.get(0);
+		if (list != NULL) {
+
+			for (int j = 0; j < list->size(); ++j) {
+				ManagedReference<AuctionItem*> item = list->get(j);
+				if (item == NULL)
+					continue;
+
+				if (item->getStatus() == AuctionItem::FORSALE)
+					itemsForSaleCount++;
+			}
+		}
 	}
+
 
 	statusBox->addMenuItem("Number of Items For Sale: " + String::valueOf(itemsForSaleCount));
 
@@ -171,7 +191,7 @@ void VendorManager::handleDestroyCallback(CreatureObject* player, TangibleObject
 	destroyVendor(vendor);
 }
 
-void VendorManager::destroyVendor(TangibleObject* vendor) {
+void VendorManager::destroyVendor(SceneObject* vendor) {
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 		error("Vendor has no data component");
@@ -186,7 +206,7 @@ void VendorManager::destroyVendor(TangibleObject* vendor) {
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
 	if(auctionManager == NULL) {
-		error("null auction manager");
+		error("null auctionManager when deleting vendor");
 		return;
 	}
 	ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
@@ -199,12 +219,10 @@ void VendorManager::destroyVendor(TangibleObject* vendor) {
 		vendor->getZone()->unregisterObjectWithPlanetaryMap(vendor);
 	}
 
-	auctionsMap->deleteVendorItems(vendorData->getUID());
-
 	vendor->destroyObjectFromWorld(true);
 	vendor->destroyObjectFromDatabase(true);
 
-
+	auctionsMap->deleteTerminalItems(vendor);
 }
 
 void VendorManager::sendRegisterVendorTo(CreatureObject* player, TangibleObject* vendor) {
