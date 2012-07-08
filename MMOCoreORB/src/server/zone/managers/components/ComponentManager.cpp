@@ -16,6 +16,7 @@
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
@@ -129,6 +130,7 @@ ComponentManager::ComponentManager() {
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("VendorMenuComponent", new VendorMenuComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
+	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 
 	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
 	components.put("CityVotingMenuComponent", new CityVotingMenuComponent());
