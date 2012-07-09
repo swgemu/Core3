@@ -48,10 +48,10 @@ UnarmedSpinAttack2Command = {
 	speedMultiplier = 3,
 	areaAction = true,
 	areaRange = 7,
-	
 	healthCostMultiplier = 2,
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 2,
+        accuracyBonus = 15,
 
 	animationCRC = hashCode("combo_3d_medium"),
 

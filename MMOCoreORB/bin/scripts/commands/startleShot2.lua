@@ -44,11 +44,12 @@
 StartleShot2Command = {
         name = "startleshot2",
 
-	damageMultiplier = 4,
-	speedMultiplier = 2.6,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 1.25,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 2.0,
+	accuracyBonus = 5,
 
 	stateEffects = {
 	  StateEffect( 

@@ -44,8 +44,12 @@
 PolearmLegHit3Command = {
         name = "polearmleghit3",
 
-	damageMultiplier = 2.5,
-	speedMultiplier = 3,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.25,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+	accuracyBonus = 10,
 
 	animationCRC = hashCode("combo_3b_medium"),
 

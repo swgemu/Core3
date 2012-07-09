@@ -62,7 +62,7 @@ UnarmedStun1Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		100, 
 		100, 
 		60 
 	  )

@@ -44,11 +44,12 @@
 PistolMeleeDefense1Command = {
         name = "pistolmeleedefense1",
 
-	damageMultiplier = 2.9,
-	speedMultiplier = 2.3,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 2.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 0.50,
+	actionCostMultiplier = 0.75,
+	mindCostMultiplier = 0.50,
+        accuracyBonus = 50,
 
 	stateEffects = {
 	  StateEffect( 

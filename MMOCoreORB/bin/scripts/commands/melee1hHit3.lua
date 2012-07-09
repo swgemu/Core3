@@ -45,7 +45,11 @@ Melee1hHit3Command = {
         name = "melee1hhit3",
 
 	damageMultiplier = 4.0,
-	speedMultiplier = 2.0,
+	speedMultiplier = 2.25,
+	healthCostMultiplier = 1.0,
+	actionCostMultiplier = 1.0,
+	mindCostMultiplier = 2.0,
+        accuracyBonus = 25,
 
 	animationCRC = hashCode("combo_5a_light"),
 
@@ -57,7 +61,7 @@ Melee1hHit3Command = {
 		{ "jedi_state_defense" }, 
 		40, 
 		100, 
-		10 
+		30 
 	  )
 	},
 

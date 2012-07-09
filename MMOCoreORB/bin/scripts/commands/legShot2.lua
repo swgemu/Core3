@@ -51,6 +51,18 @@ LegShot2Command = {
 	mindCostMultiplier = 1.5,
 	accuracyBonus = 25,
 
+	stateEffects = {
+	  StateEffect( 
+		STUN_EFFECT, 
+		{}, 
+		{ "stun_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		85, 
+		100, 
+		45 
+	  )
+	},
+
 	poolsToDamage = ACTION_ATTRIBUTE,
 
 	animationCRC = hashCode("test_homing"),

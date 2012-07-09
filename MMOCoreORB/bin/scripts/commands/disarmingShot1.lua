@@ -45,10 +45,11 @@ DisarmingShot1Command = {
         name = "disarmingshot1",
 
 	damageMultiplier = 2.0,
-	speedMultiplier = 2.3,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.75,
+	mindCostMultiplier = 0.5,
+        accuracyBonus = 50,
 
 	animationCRC = hashCode("fire_3_single_light_face"),
 
