@@ -335,8 +335,16 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature) {
 		accuracy += 16;
 	else if (creature->isProne())
 		accuracy += 50;
-	else if (creature->isRunning())
-		accuracy -= 50;
+
+	creature->updateLocomotion();
+
+	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
+	case CreatureLocomotion::FAST:
+		accuracy -= 40;
+	case CreatureLocomotion::SLOW:
+		accuracy -= 10;
+		break;
+	}
 
 	return accuracy;
 }
@@ -397,6 +405,9 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 }
 
 int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+	if (!defender->isPlayerCreature())
+		return defender->getLevel();
+
 	int targetDefense = 0;
 	int buffDefense = 0;
 
