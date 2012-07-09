@@ -82,7 +82,7 @@ public:
 
 	void setLairTemplate(LairTemplate* tmpl);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 	bool isLairObserver();
 
@@ -118,9 +118,7 @@ protected:
 
 	Reference<HealLairObserverEvent* > healLairEvent;
 
-	int minDifficulty;
-
-	int maxDifficulty;
+	int difficulty;
 
 public:
 	LairObserverImplementation();
@@ -139,7 +137,7 @@ public:
 
 	void setLairTemplate(LairTemplate* tmpl);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 	bool isLairObserver();
 
@@ -196,7 +194,7 @@ public:
 
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 	bool isLairObserver();
 

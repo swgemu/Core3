@@ -65,14 +65,12 @@ class DestroyMissionObjective extends MissionObjective {
 	
 	protected TangibleObject lairObject;
 	
-	int minDifficulty;
-	int maxDifficulty;
+	int difficulty;
 	
 	public DestroyMissionObjective(MissionObject mission) {
 		super(mission);
 		
-		minDifficulty = 0;
-		maxDifficulty = 0;
+		difficulty = 0;
 		
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
@@ -109,9 +107,8 @@ class DestroyMissionObjective extends MissionObjective {
 	@local
 	public native void setLairTemplateToSpawn(final string sp);
 	
-	public void setDifficulty(int min, int max) {
-		minDifficulty = min;
-		maxDifficulty = max;
+	public void setDifficulty(int diff) {
+		difficulty = diff;
 	}
 	
 	@dereferenced

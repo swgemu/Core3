@@ -7,10 +7,28 @@ talus_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "talus_song_rasp_lair_neutral_medium",
+			lairTemplateName = "talus_rasp_flite_large_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 9,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "talus_decay_mite_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 8,
-			maxDifficulty = 18,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "talus_song_rasp_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 9,
+			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -18,8 +36,8 @@ talus_world_creatures = {
 		{
 			lairTemplateName = "talus_fynock_lair_neutral_small",
 			spawnLimit = -1,
-			minDifficulty = 12,
-			maxDifficulty = 22,
+			minDifficulty = 10,
+			maxDifficulty = 14,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -27,17 +45,8 @@ talus_world_creatures = {
 		{
 			lairTemplateName = "talus_guf_drolg_lair_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 14,
-			maxDifficulty = 24,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "talus_huf_dun_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 21,
-			maxDifficulty = 31,
+			minDifficulty = 12,
+			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -45,8 +54,17 @@ talus_world_creatures = {
 		{
 			lairTemplateName = "talus_kima_lair_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 28,
+			minDifficulty = 16,
+			maxDifficulty = 20,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "talus_huf_dun_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 19,
+			maxDifficulty = 24,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -54,8 +72,8 @@ talus_world_creatures = {
 		{
 			lairTemplateName = "talus_roba_lair_neutral_large",
 			spawnLimit = -1,
-			minDifficulty = 26,
-			maxDifficulty = 36,
+			minDifficulty = 23,
+			maxDifficulty = 29,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

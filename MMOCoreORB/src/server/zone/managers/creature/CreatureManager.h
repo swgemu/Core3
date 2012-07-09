@@ -184,7 +184,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
@@ -283,7 +283,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
@@ -390,7 +390,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent);
 

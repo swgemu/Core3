@@ -243,6 +243,20 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/buffs/BuffList.h"

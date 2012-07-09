@@ -17,7 +17,7 @@ namespace mobile {
 
 class LairTemplate : public Object {
 protected:
-	VectorMap<String, uint32> mobiles;
+	VectorMap<String, int> mobiles;
 	int spawnLimit;
 
 	VectorMap<uint32, Vector<String>* > buildings;
@@ -27,7 +27,7 @@ protected:
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
 
-	//      0-50 50-100 100-200 200-300 300+
+	//      0-20 20-40 40-60 60-80 80+
 
 	LairTemplate(const String& templateName) {
 		buildings.setAllowDuplicateInsertPlan();
@@ -79,7 +79,7 @@ public:
 
 			if (mobile.isValidTable()) {
 				String mob = mobile.getStringAt(1);
-				int level = mobile.getIntAt(2);
+				int level = (int)mobile.getIntAt(2);
 
 				mobiles.put(mob, level);
 			}
@@ -168,7 +168,7 @@ public:
 		return spawnLimit;
 	}
 
-	VectorMap<String, uint32>* getMobiles() {
+	VectorMap<String, int>* getMobiles() {
 		return &mobiles;
 	}
 

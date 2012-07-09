@@ -1,5 +1,5 @@
 criminal_base = Lair:new {
-	mobiles = {{"criminal", 7}},
+	mobiles = {{"criminal", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

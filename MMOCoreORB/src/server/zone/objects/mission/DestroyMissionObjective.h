@@ -152,7 +152,7 @@ public:
 
 	void setLairTemplateToSpawn(const String& sp);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 	Vector3 getEndPosition();
 
@@ -189,9 +189,7 @@ protected:
 	ManagedReference<TangibleObject* > lairObject;
 
 private:
-	int minDifficulty;
-
-	int maxDifficulty;
+	int difficulty;
 
 public:
 	DestroyMissionObjectiveImplementation(MissionObject* mission);
@@ -218,7 +216,7 @@ public:
 
 	void setLairTemplateToSpawn(const String& sp);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 	Vector3 getEndPosition();
 
@@ -279,7 +277,7 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void setDifficulty(int min, int max);
+	void setDifficulty(int diff);
 
 };
 
