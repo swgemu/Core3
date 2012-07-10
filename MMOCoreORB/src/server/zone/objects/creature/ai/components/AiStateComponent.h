@@ -44,7 +44,7 @@ public:
 
 	void notifyDespawn(AiActor* actor, Zone* zone);
 
-	virtual void doAwarenessCheck(Observable* obs, Coordinate& start, uint64 time, CreatureObject* target) {}
+	virtual void doAwarenessCheck(Observable* obs, Coordinate& start, uint64 time, CreatureObject* target);
 
 	/*
 	 * every action performed by a state will return a message so that it can be fed back into the FSM

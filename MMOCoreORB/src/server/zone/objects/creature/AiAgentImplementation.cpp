@@ -655,6 +655,8 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno->isPlayerCreature())
 		++numberOfPlayersInRange;
+
+	CreatureObjectImplementation::notifyInsert(entry);
 }
 
 void AiAgentImplementation::clearDespawnEvent() {

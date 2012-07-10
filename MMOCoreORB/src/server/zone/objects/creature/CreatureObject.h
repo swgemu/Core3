@@ -243,6 +243,20 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/buffs/BuffList.h"
@@ -272,6 +286,8 @@ using namespace server::zone;
 #include "server/zone/objects/creature/variables/Skill.h"
 
 #include "server/zone/objects/creature/variables/WearablesDeltaVector.h"
+
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -907,6 +923,10 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -1682,6 +1702,10 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
 
 	WeakReference<CreatureObject*> _this;
 

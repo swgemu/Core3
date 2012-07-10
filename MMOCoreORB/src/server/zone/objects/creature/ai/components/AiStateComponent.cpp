@@ -32,6 +32,7 @@
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/objects/creature/events/RespawnCreatureTask.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 void AiStateComponent::notifyDespawn(AiActor* actor, Zone* zone) {
 	for (int i = 0; i < actor->getMovementMarkersSize(); ++i)
@@ -539,4 +540,61 @@ uint16 AiStateComponent::doMovement(AiActor* actor) {
 	actor->activateMovementEvent();
 
 	return AiActor::UNFINISHED;
+}
+
+void AiStateComponent::doAwarenessCheck(Observable* obs, Coordinate& start, uint64 time, CreatureObject* target) {
+	// TODO: fix locking (host can't be locked, but obs and target come in crosslocked)
+	ManagedReference<AiActor*> actor = cast<AiActor*>(obs);
+	if (actor == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> host = actor->getHost();
+	if (host == NULL)
+		return;
+
+	if (target->getDistanceTo(host) >= 128.f)
+		return;
+
+#ifdef DEBUG
+	info("Starting doAwarenessCheck", true);
+#endif
+
+	if (host->isDead() || host->getZone() == NULL || time == 0 || target->isDead())
+		return;
+
+	// this is cheaper than LOS, do it first
+	if(actor->isCamouflaged(target))
+		return;
+
+	if(!CollisionManager::checkLineOfSight(target, host))
+		return;
+
+#ifdef DEBUG
+	info("Passed LOS check", true);
+#endif
+
+	// first aggro if we should straight aggro
+	Reference<SceneObject*> followObject = actor->getFollowObject();
+	if (actor->isAggressiveTo(target)) {
+		followObject = target;
+		actor->next(AiActor::ATTACKED);
+		return;
+	}
+
+#ifdef DEBUG
+	info("Passed aggressive check", true);
+#endif
+
+	// calculate average speed
+	Vector3 deltaV(target->getPositionX() - start.getPositionX(), target->getPositionY() - start.getPositionY(), 0);
+	float avgSpeed = deltaV.squaredLength() / (time) * 1000000;
+
+	// set frightened or threatened
+	// TODO: weight this by ferocity/level difference
+	if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed())) // moving too slow, uninteresting
+		actor->next(AiActor::FORGOT);
+	else if (isScared(host, followObject)) // scared of target
+		actor->next(AiActor::SCARED);
+	else
+		actor->next(AiActor::INTERESTED); // default to interested
 }

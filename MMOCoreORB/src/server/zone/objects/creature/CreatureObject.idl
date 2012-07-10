@@ -83,8 +83,10 @@ include server.zone.objects.creature.CreatureState;
 include server.zone.objects.creature.SpeedMultiplierModChanges;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.creature.variables.WearablesDeltaVector;
+include server.zone.objects.scene.ObserverEventType;
 import system.lang.Long;
 import engine.service.proto.BasePacket;
+import server.zone.packets.scene.AttributeListMessage;
 
 class CreatureObject extends TangibleObject {
 	protected transient ZoneClientSession owner;
@@ -1700,5 +1702,19 @@ class CreatureObject extends TangibleObject {
 	
 	public void setInvisible(boolean invis) {
 		invisible = invis;
+	}
+	
+	@dirty
+	@local
+	public void notifyInsert(QuadTreeEntry entry) {
+		notifyObservers(ObserverEventType.OBJECTINSERTED, entry, 0);
+		super.notifyInsert(entry);
+	}
+	
+	@dirty
+	@local
+	public void notifyDissapear(QuadTreeEntry entry) {
+		notifyObservers(ObserverEventType.OBJECTDISAPPEARED, entry, 0);
+		super.notifyDissapear(entry);
 	}
 }

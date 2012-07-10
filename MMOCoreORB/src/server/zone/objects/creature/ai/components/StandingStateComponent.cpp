@@ -6,7 +6,7 @@
  */
 
 #include "StandingStateComponent.h"
-#include "../AiActor.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/core/ManagedReference.h"
 
@@ -53,6 +53,9 @@
 	}
 
 	uint16 StandingStateComponent::doMovement(AiActor* actor) {
-		return System::random(5) == 1 ? AiActor::FINISHED : AiActor::UNFINISHED;
+		if (System::random(5) == 1)
+			return AiActor::FINISHED;
+
+		return AiActor::UNFINISHED;
 	}
 

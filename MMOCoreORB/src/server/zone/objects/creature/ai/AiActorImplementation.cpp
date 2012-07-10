@@ -265,6 +265,8 @@ void AiActorImplementation::initializeTransientMembers() {
  	registerObserver(ObserverEventType::OBJECTDESTRUCTION, aiObserver);
  	registerObserver(ObserverEventType::DAMAGERECEIVED, aiObserver);
  	registerObserver(ObserverEventType::OBJECTINRANGEMOVED, aiObserver);
+ 	registerObserver(ObserverEventType::OBJECTINSERTED, aiObserver);
+ 	registerObserver(ObserverEventType::OBJECTDISAPPEARED, aiObserver);
 
 	transitions.removeAll();
 }
@@ -293,7 +295,7 @@ void AiActorImplementation::next(uint16 msg) {
 
 	currentMessage = currentState->onEnter(_this.get());
 
-	info("set mob to state " + currentStateName, true);
+	//info("set mob to state " + currentStateName, true);
 }
 
 void AiActorImplementation::next() {
@@ -324,6 +326,7 @@ void AiActorImplementation::destroyActor() {
 }
 
 void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	// TODO: fix locking (host can't be locked, but actor and entry come in crosslocked)
 	// first do host checks to make sure it is appropriate
 	if (host == NULL || host->isDead() || getNumberOfPlayersInRange() <= 0 || host->isInCombat() || host->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
@@ -340,8 +343,7 @@ void AiActorImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 	// now do entry checks to make sure the entry shouldn't be ignored
 	Reference<CreatureObject*> creoEntry = cast<CreatureObject*>(entry);
-
-	if (creoEntry == host || creoEntry == NULL || creoEntry->getPvpStatusBitmask() == CreatureFlag::NONE || isCamouflaged(creoEntry))
+	if (creoEntry == host || creoEntry == NULL || (!creoEntry->isPlayerCreature() && creoEntry->getPvpStatusBitmask() == CreatureFlag::NONE) || isCamouflaged(creoEntry))
 		return;
 
 	// If not in combat, ignore creatures in different cells
