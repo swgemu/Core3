@@ -1879,7 +1879,7 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 
 	if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
 		target->sendSystemMessage("@healing:shock_effect_low_target");
-	} else if (targetBattleFatigue < 750) {
+	} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
 		target->sendSystemMessage("@healing:shock_effect_medium_target");
 	} else if (targetBattleFatigue >= 750) {
 		target->sendSystemMessage("@healing:shock_effec_high_target");
@@ -1887,13 +1887,11 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 
 	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
 		player->sendSystemMessage("@healing:shock_effect_low");
-	} else if (playerBattleFatigue < 750) {
+	} else if (playerBattleFatigue >= 500 && playerBattleFatigue < 750) {
 		player->sendSystemMessage("@healing:shock_effect_medium");
 	} else if (playerBattleFatigue >= 750) {
 		player->sendSystemMessage("@healing:shock_effect_high");
 	}
-
-}
 
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
 	String buffname = "medical_enhance_" + BuffAttribute::getName(attribute);

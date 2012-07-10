@@ -221,6 +221,8 @@ public:
 
 	void increaseEntertainerBuff(CreatureObject* patron);
 
+	void awardEntertainerExperience();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -384,6 +386,8 @@ public:
 
 	void increaseEntertainerBuff(CreatureObject* patron);
 
+	void awardEntertainerExperience();
+
 	WeakReference<EntertainingSession*> _this;
 
 	operator const EntertainingSession*();
@@ -514,6 +518,8 @@ public:
 	void removeFromDenyServiceList(CreatureObject* target);
 
 	void increaseEntertainerBuff(CreatureObject* patron);
+
+	void awardEntertainerExperience();
 
 };
 
