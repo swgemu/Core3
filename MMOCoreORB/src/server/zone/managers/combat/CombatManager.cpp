@@ -404,7 +404,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	return bonus;
 }
 
-int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
 	if (!defender->isPlayerCreature())
 		return defender->getLevel();
 
@@ -422,7 +422,6 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
 	targetDefense += defender->getSkillMod("private_defense");
-	targetDefense += calculateTargetPostureModifier(attacker, defender);
 
 	// defense hardcap
 	if (targetDefense > 125)
@@ -934,10 +933,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	// need to also add in general attack accuracy (mostly gotten from foods and states)
 	accuracyBonus += getAttackerAccuracyBonus(creature, weapon);
+	accuracyBonus += calculateTargetPostureModifier(creature, targetCreature);
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
-	int targetDefense = getDefenderDefenseModifier(creature, targetCreature, weapon);
+	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
 	// first (and third) argument is divided by 2, second isn't
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
