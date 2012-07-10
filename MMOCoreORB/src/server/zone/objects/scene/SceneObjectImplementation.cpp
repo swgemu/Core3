@@ -552,7 +552,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObjectPrivate(object, selfObject);
@@ -622,7 +622,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent().castTo<SceneObject*>();
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
@@ -691,7 +691,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
@@ -808,7 +808,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = getRootParent();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagesPrivate(messages, selfObject);
