@@ -622,7 +622,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = getRootParent().castTo<SceneObject*>();
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
