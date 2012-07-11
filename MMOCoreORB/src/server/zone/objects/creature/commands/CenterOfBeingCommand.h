@@ -97,7 +97,7 @@ public:
 		} else
 			return GENERALERROR;
 
-		if (duration == 0 || efficacy == 0 || efficacyMod == "")
+		if (duration == 0 || efficacy == 0)
 			return GENERALERROR;
 
 		Buff* centered = new Buff(creature, String("centerofbeing").hashCode(), duration, BuffType::SKILL);
