@@ -334,11 +334,7 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
 
-	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
-
 	int calculatePlayerLevel(CreatureObject* player);
-
-	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
 	void sendLoginMessage(CreatureObject* player);
 
@@ -556,11 +552,7 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
 
-	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
-
 	int calculatePlayerLevel(CreatureObject* player);
-
-	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
 	void sendLoginMessage(CreatureObject* player);
 
@@ -743,11 +735,7 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
-
 	int calculatePlayerLevel(CreatureObject* player);
-
-	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
 	void sendLoginMessage(CreatureObject* player);
 

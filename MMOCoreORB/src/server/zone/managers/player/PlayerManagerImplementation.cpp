@@ -1106,114 +1106,92 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
-	//info("level: " + String::valueOf(level), true);
-
-	VectorMap<GroupObject*, int> groups;
-	groups.setNullValue(0);
+	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
+	slExperience.setNoDuplicateInsertPlan();
+	slExperience.setNullValue(0);
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		CreatureObject* player = threatMap->elementAt(i).getKey();
+
 		if (!player->isPlayerCreature())
 			continue;
+
+		ManagedReference<GroupObject*> group = player->getGroup();
 
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 
 		Locker crossLocker(player, destructedObject);
 
-		uint32 totalPlayerDamage = 0;
-		uint32 playerWeaponXp = 0;
+		uint32 combatXp = 0;
 
 		for (int j = 0; j < entry->size(); ++j) {
 			uint32 damage = entry->elementAt(j).getValue();
-			totalPlayerDamage += damage;
-
 			String xpType = entry->elementAt(j).getKey();
 
-			int xpAmount =  40.f * destructedObject->getLevel(); // TODO: need better formula for tano exp
+			float xpAmount =  40.f * destructedObject->getLevel(); //TODO: need better formula for tano exp
 
 			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
+
 			if (ai != NULL)
 				xpAmount = ai->getBaseXp();
 
-			xpAmount *= (int) (float((float(damage) / float(totalDamage))));
+			xpAmount *= (float) damage / totalDamage;
 
-			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
+			//Cap xp based on player level
+			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300.f);
 
-			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300);
+			//Apply group bonus if in group
+			if (group != NULL)
+				xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
 
-			playerWeaponXp += xpAmount;
+			//Jedi experience doesn't count towards combat experience supposedly.
+			if (xpType != "jedi_general")
+				combatXp += xpAmount;
 
-			if (xpType != "jedi_general") {
-				awardExperience(player, xpType, xpAmount);
-				awardExperience(player, "combat_general", playerWeaponXp / 10);
-			} else // Grant Jedi general experience for lightsabers AND Force powers.
-				awardExperience(player, "jedi_general", xpAmount / 4);
-
+			//Award individual weapon exp.
+			awardExperience(player, xpType, xpAmount);
 		}
 
-		if (player->isGrouped()) {
-			ManagedReference<GroupObject*> group = player->getGroup();
-			if (!squadLeaderCheck(player, group))
-				continue;
+		combatXp /= 10.f;
 
-			int amount = playerWeaponXp;
+		//Award combat xp
+		awardExperience(player, "combat_general", combatXp);
 
-			if (groups.contains(group)) {
-				amount += groups.get(group);
-				groups.drop(group);
-			}
+		//Check if the group leader is a squad leader
+		if (group == NULL)
+			continue;
 
-			groups.put(group, amount);
+		Vector3 pos(player->getWorldPositionX(), player->getWorldPositionY(), 0);
+
+		crossLocker.release();
+
+		ManagedReference<SceneObject*> groupLeader = group->getLeader();
+
+		if (groupLeader == NULL || !groupLeader->isPlayerCreature())
+			continue;
+
+		CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
+
+		Locker squadLock(squadLeader, destructedObject);
+
+		//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
+		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(player->getWorldPosition()) <= 192.f) {
+			int v = slExperience.get(squadLeader) + combatXp;
+			slExperience.put(squadLeader, v);
 		}
-
 	}
 
-	if (!groups.isEmpty())
-		for (int x = 0; x < groups.size(); x++)
-			awardSquadLeaderExperience(groups.elementAt(x).getKey(), groups.get(x), destructedObject);
+	//Send out squad leader experience.
+	for (int i = 0; i < slExperience.size(); ++i) {
+		VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
+
+		Locker clock(entry->getKey(), destructedObject);
+
+		awardExperience(entry->getKey(), "squadleader", entry->getValue() * 2.f);
+	}
 
 	threatMap->removeAll();
 }
-
-void PlayerManagerImplementation::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
-	if (source == NULL || group == NULL || amount <= 0)
-		return;
-
-	ManagedReference<SceneObject*> leader = group->getLeader();
-
-	if (leader == NULL)
-		return;
-
-	if (!leader->isPlayerCreature())
-		return;
-
-	ManagedReference<CreatureObject*> leaderPlayer = cast<CreatureObject*>( leader.get());
-
-	Locker clocker(leaderPlayer, source);
-
-	float groupModifier = group->getGroupSize() / 10.0f;
-	if (groupModifier < 1)
-		groupModifier += 1;
-
-	awardExperience(leaderPlayer, "squadleader", (int) amount * groupModifier * 0.75);
-}
-
-bool PlayerManagerImplementation::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
-	if (player == NULL || group == NULL)
-		return false;
-
-	if (!group->hasSquadLeader())
-		return false;
-
-	if (group->getLeader()->getZone() != player->getZone())
-		return false;
-
-	if (group->getLeader()->compareTo(player) == 0)
-		return false;
-
-	return true;
-}
-
 
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);
