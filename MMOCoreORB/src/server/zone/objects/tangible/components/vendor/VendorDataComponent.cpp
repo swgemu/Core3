@@ -85,8 +85,9 @@ void VendorDataComponent::runVendorUpdate() {
 
 	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent->getZoneServer()->getObject(getOwnerId()));
 	ManagedReference<PlayerManager*> playerManager = parent->getZoneServer()->getPlayerManager();
+	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(parent.get());
 
-	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL) {
+	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL || vendor == NULL) {
 		return;
 	}
 
@@ -113,10 +114,11 @@ void VendorDataComponent::runVendorUpdate() {
 	/// parent salaries
 	maintAmount -= ((15.f * skillReduction) * hoursSinceLastUpdate) - regMaint;
 
-	if(maintAmount < 0) {
-		TangibleObject* vendor = cast<TangibleObject*>(parent.get());
-		if(vendor != NULL)
+	if(maintAmount < 0)
 			vendor->setConditionDamage(-maintAmount, true);
+	else {
+		vendor->setConditionDamage(0, true);
+		vendor->setMaxCondition(1000, true);
 	}
 
 	if(isEmpty()) {
