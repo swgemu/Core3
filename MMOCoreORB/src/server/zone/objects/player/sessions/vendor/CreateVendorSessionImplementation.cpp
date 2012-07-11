@@ -157,6 +157,9 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	vendor->setCustomObjectName("Vendor: " + name, false);
 	vendor->setContainerOwnerID(player->getObjectID());
 
+	vendor->setMaxCondition(1000, false);
+	vendor->setConditionDamage(0, false);
+
 	if(vendor->isCreatureObject()) {
 		randomizeVendorLooks(cast<CreatureObject*>(vendor.get()));
 	}
