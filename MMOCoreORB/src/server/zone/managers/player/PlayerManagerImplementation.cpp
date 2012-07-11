@@ -1892,6 +1892,7 @@ void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* playe
 	} else if (playerBattleFatigue >= 750) {
 		player->sendSystemMessage("@healing:shock_effect_high");
 	}
+}
 
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
 	String buffname = "medical_enhance_" + BuffAttribute::getName(attribute);
