@@ -1107,7 +1107,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
-	slExperience.setNoDuplicateInsertPlan();
+	slExperience.setAllowOverwriteInsertPlan();
 	slExperience.setNullValue(0);
 
 	for (int i = 0; i < threatMap->size(); ++i) {
