@@ -81,24 +81,19 @@ public:
 
 		int duration = 0;
 		int efficacy = 0;
-		String efficacyMod = "";
 
 		if (weapon->isUnarmedWeapon()) {
 			duration = creature->getSkillMod("center_of_being_duration_unarmed");
 			efficacy = creature->getSkillMod("unarmed_center_of_being_efficacy");
-			efficacyMod = "private_unarmed_passive_defense";
 		} else if (weapon->isOneHandMeleeWeapon()) {
 			duration = creature->getSkillMod("center_of_being_duration_onehandmelee");
 			efficacy = creature->getSkillMod("onehandmelee_center_of_being_efficacy");
-			efficacyMod = "private_dodge";
 		} else if (weapon->isTwoHandMeleeWeapon()) {
 			duration = creature->getSkillMod("center_of_being_duration_twohandmelee");
 			efficacy = creature->getSkillMod("twohandmelee_center_of_being_efficacy");
-			efficacyMod = "private_counterattack";
 		} else if (weapon->isPolearmWeaponObject()) {
 			duration = creature->getSkillMod("center_of_being_duration_polearm");
 			efficacy = creature->getSkillMod("polearm_center_of_being_efficacy");
-			efficacyMod = "private_block";
 		} else
 			return GENERALERROR;
 
@@ -106,7 +101,7 @@ public:
 			return GENERALERROR;
 
 		Buff* centered = new Buff(creature, String("centerofbeing").hashCode(), duration, BuffType::SKILL);
-		centered->setSkillModifier(efficacyMod, efficacy);
+		centered->setSkillModifier("private_center_of_being", efficacy);
 
 		StringIdChatParameter startMsg("combat_effects", "center_start");
 		StringIdChatParameter endMsg("combat_effects", "center_stop");

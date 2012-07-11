@@ -982,7 +982,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		else if (accTotal < 0)
 			accTotal = 0;
 
-		if (System::random(100) > accTotal) { // successful secondary defense, return type of defense
+		int cobMod = targetCreature->getSkillMod("private_center_of_being");
+
+		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, cobMod))) { // successful secondary defense, return type of defense
 
 			// this means use defensive acuity, which mean random 1, 2, or 3
 			if (targetWeapon == NULL)
